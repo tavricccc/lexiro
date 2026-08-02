@@ -1,1393 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 84,
   "words": [
-    {
-      "wordKey": "penny",
-      "word": "penny",
-      "senses": [
-        {
-          "id": "sense-9cf638f2",
-          "pos": "noun",
-          "meaningZh": "便士（英國貨幣單位）",
-          "definitionEn": "a fractional monetary unit of Ireland and the United Kingdom; equal to one hundredth of a pound",
-          "examples": [
-            "I only have a penny left in my pocket after buying a candy bar."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-8f861a6e",
-          "pos": "noun",
-          "meaningZh": "一分錢；分（貨幣）",
-          "definitionEn": "a coin worth one-hundredth of the value of the basic unit",
-          "examples": [
-            "Sarah picked up a penny from the ground and added it to her collection of coins."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "pepper",
-      "word": "pepper",
-      "senses": [
-        {
-          "id": "sense-21aa3659",
-          "pos": "noun",
-          "meaningZh": "胡椒；胡椒粉",
-          "definitionEn": "pungent seasoning from the berry of the common pepper plant of East India; used whole or ground",
-          "examples": [
-            "After taking a bite, she realized that she had accidentally added a bit too much pepper to her food, making it extremely spicy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-f9454ac6",
-          "pos": "noun",
-          "meaningZh": "辣椒；甜椒（植物）",
-          "definitionEn": "any of various tropical plants of the genus Capsicum bearing peppers",
-          "examples": [
-            "I added some diced peppers to the stir-fry for extra flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "perform",
-      "word": "perform",
-      "senses": [
-        {
-          "id": "sense-a817b62c",
-          "pos": "verb",
-          "meaningZh": "表演；演出",
-          "definitionEn": "carry out or perform an action",
-          "examples": [
-            "The theater company will perform the play tonight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-56ac674f",
-          "pos": "verb",
-          "meaningZh": "執行；完成",
-          "definitionEn": "get something done",
-          "examples": [
-            "Sarah had to perform a complex surgery on her patient."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "performance",
-      "word": "performance",
-      "senses": [
-        {
-          "id": "sense-0423d618",
-          "pos": "noun",
-          "meaningZh": "演出；表演",
-          "definitionEn": "the act of presenting a play, concert, or other form of entertainment to an audience",
-          "examples": [
-            "The theater company’s performance of ’Hamlet’ received a standing ovation from the audience for its exceptional acting and set design."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-f5fde377",
-          "pos": "noun",
-          "meaningZh": "劇目；節目",
-          "definitionEn": "a theatrical or musical production or show",
-          "examples": [
-            "The local theater put on a stunning performance of Shakespeare’s Hamlet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "permission",
-      "word": "permission",
-      "senses": [
-        {
-          "id": "sense-364f2066",
-          "pos": "noun",
-          "meaningZh": "許可；同意",
-          "definitionEn": "approval or consent to do something",
-          "examples": [
-            "Before going on the field trip, the students needed to get permission slips signed by their parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-b1d78e96",
-          "pos": "noun",
-          "meaningZh": "授權；批准",
-          "definitionEn": "the right or ability to do something",
-          "examples": [
-            "Before entering the restricted area, you need to get permission from the authorities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +2",
-        "textbookTitle": "龍騰 B1·L9、三民 B4·L3、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "permit",
       "word": "permit",
       "senses": [
         {
-          "id": "sense-7517286e",
-          "pos": "verb",
+          "id": "sense-08fa7093",
+          "pos": "v.",
           "meaningZh": "允許；容許",
-          "definitionEn": "to allow something to happen or to allow someone to do something without opposing or prohibiting it",
           "examples": [
             "The school permits students to bring their own lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cec6799f",
-          "pos": "verb",
+          "id": "sense-623ec99e",
+          "pos": "v.",
           "meaningZh": "授權；批准",
-          "definitionEn": "to give permission or consent to do something",
           "examples": [
             "The teacher permitted the students to use their calculators during the exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +2",
-        "textbookTitle": "龍騰 B1·L9、三民 B4·L3、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "persuade",
       "word": "persuade",
       "senses": [
         {
-          "id": "sense-a58f07e1",
-          "pos": "verb",
+          "id": "sense-9f371d20",
+          "pos": "v.",
           "meaningZh": "說服；勸說",
-          "definitionEn": "to cause someone to do or believe something, often by reasoning or urging; convince",
           "examples": [
             "After weeks of campaigning, the politician was able to persuade the voters to support his policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6b523ea9",
-          "pos": "verb",
+          "id": "sense-7bcccd38",
+          "pos": "v.",
           "meaningZh": "爭取支持；打動",
-          "definitionEn": "to win over or gain support of someone",
           "examples": [
             "He was able to persuade his colleagues to support his proposed project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4 +1",
-        "textbookTitle": "龍騰 B2·L4、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "photographer",
       "word": "photographer",
       "senses": [
         {
-          "id": "sense-d66d625f",
-          "pos": "noun",
+          "id": "sense-c8767feb",
+          "pos": "n.",
           "meaningZh": "攝影師；攝影者",
-          "definitionEn": "a person who takes photographs, either as a hobby or professionally",
           "examples": [
             "Samantha is a talented photographer who makes a living by taking photos of everything from landscapes to portraits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L2",
-        "textbookTitle": "三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pigeon",
       "word": "pigeon",
       "senses": [
         {
-          "id": "sense-8776f1ee",
-          "pos": "noun",
+          "id": "sense-3827f9ee",
+          "pos": "n.",
           "meaningZh": "鴿子",
-          "definitionEn": "Wild and domesticated birds having a heavy body and short legs.",
           "examples": [
             "In the park, I spotted a pigeon waddling around, looking for food."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pile",
       "word": "pile",
       "senses": [
         {
-          "id": "sense-47ca8eaa",
-          "pos": "noun",
+          "id": "sense-2bcea45e",
+          "pos": "n.",
           "meaningZh": "一堆；大量",
-          "definitionEn": "a large amount or quantity of something.",
           "examples": [
             "There was a pile of dirty dishes in the sink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8bb217f3",
-          "pos": "verb",
+          "id": "sense-87660952",
+          "pos": "v.",
           "meaningZh": "堆疊；堆放",
-          "definitionEn": "to place or arrange something in a neat stack or heap.",
           "examples": [
             "After cleaning out the garage, I piled all the boxes in the corner to create more space."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pill",
       "word": "pill",
       "senses": [
         {
-          "id": "sense-55ca2a4c",
-          "pos": "noun",
+          "id": "sense-629ab068",
+          "pos": "n.",
           "meaningZh": "藥丸；藥片",
-          "definitionEn": "a small pellet containing medicine or vitamin",
           "examples": [
             "When I had a headache, I took a pill and felt better within minutes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9904e78f",
-          "pos": "noun",
+          "id": "sense-15d1045b",
+          "pos": "n.",
           "meaningZh": "難以接受的事；苦事",
-          "definitionEn": "something unpleasant that needs to be tolerated",
           "examples": [
             "Going to the dentist is always a pill, but it's necessary for maintaining oral health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pilot",
       "word": "pilot",
       "senses": [
         {
-          "id": "sense-bd8759c9",
-          "pos": "noun",
+          "id": "sense-920c9fe5",
+          "pos": "n.",
           "meaningZh": "飛行員；駕駛員",
-          "definitionEn": "someone who is licensed to operate an aircraft in flight",
           "examples": [
             "The pilot skillfully landed the airplane during a heavy thunderstorm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L5",
-        "textbookTitle": "三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pine",
       "word": "pine",
       "senses": [
         {
-          "id": "sense-b7eb865d",
-          "pos": "noun",
+          "id": "sense-35d632ad",
+          "pos": "n.",
           "meaningZh": "松樹；松木",
-          "definitionEn": "a type of evergreen tree with needles instead of leaves",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-a1853fe8",
-          "pos": "noun",
+          "id": "sense-3a4daf38",
+          "pos": "n.",
           "meaningZh": "松木；松材",
-          "definitionEn": "the wood from the pine tree, which is often used for construction and furniture",
           "examples": [
             "The carpenter selected a beautiful piece of pine to build the bookshelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pineapple",
       "word": "pineapple",
       "senses": [
         {
-          "id": "sense-9210b439",
-          "pos": "noun",
+          "id": "sense-7462bc4d",
+          "pos": "n.",
           "meaningZh": "鳳梨（果實）",
-          "definitionEn": "Large sweet and juicy fruit from a tropical American plant that has a tuft of stiff leaves at the top. It is widely grown in the tropics and is commonly eaten fresh or canned.",
           "examples": [
             "On a hot summer day, I enjoyed a refreshing slice of pineapple, its sweet and tangy flavor instantly quenching my thirst."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6a435c91",
-          "pos": "noun",
+          "id": "sense-48a05a75",
+          "pos": "n.",
           "meaningZh": "鳳梨植株；鳳梨",
-          "definitionEn": "A tropical American plant that bears large, fleshy, edible fruits with terminal tufts of stiff leaves. Pineapples are widely cultivated in the tropics for their fruit.",
           "examples": [
             "During our vacation in Hawaii, we visited a pineapple plantation and got to see rows and rows of these delicious tropical fruits growing on the plants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pint",
       "word": "pint",
       "senses": [
         {
-          "id": "sense-fdc8ce32",
-          "pos": "noun",
+          "id": "sense-effdc3da",
+          "pos": "n.",
           "meaningZh": "品脫（英制液量單位）",
-          "definitionEn": "a British imperial capacity measure (liquid or dry) equal to 4 gills or 568.26 cubic centimeters",
           "examples": [
             "The bartender poured a pint of beer and placed it in front of the thirsty customer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pit",
       "word": "pit",
       "senses": [
         {
-          "id": "sense-15c86990",
-          "pos": "noun",
+          "id": "sense-7db596fc",
+          "pos": "n.",
           "meaningZh": "坑；洞",
-          "definitionEn": "a large hole in the ground",
           "examples": [
             "The workers dug a deep pit to bury the pipe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-31223cb4",
-          "pos": "noun",
+          "id": "sense-98b17b70",
+          "pos": "n.",
           "meaningZh": "煤礦；礦坑",
-          "definitionEn": "a coal mine and everything associated with it, including buildings and equipment",
           "examples": [
             "The miners descended into the pit, equipped with helmets and headlamps, ready to extract coal from the depths of the earth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f0ff3d03",
-          "pos": "noun",
+          "id": "sense-d1585187",
+          "pos": "n.",
           "meaningZh": "陷阱；陷坑",
-          "definitionEn": "a trap or concealed hole that catches people or animals",
           "examples": [
             "The hunter dug a deep pit and covered it with leaves to catch unsuspecting animals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pitch",
       "word": "pitch",
       "senses": [
         {
-          "id": "sense-269a5521",
-          "pos": "noun",
+          "id": "sense-98171795",
+          "pos": "n.",
           "meaningZh": "音高；音調",
-          "definitionEn": "the property of sound that varies with variation in the frequency of vibration",
           "examples": [
             "The pitch of the soprano's voice was so high that it could shatter glass."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7256a342",
-          "pos": "verb",
+          "id": "sense-4bd6542f",
+          "pos": "v.",
           "meaningZh": "向前傾倒；栽倒",
-          "definitionEn": "fall or plunge forward",
           "examples": [
             "As he lost his balance, he pitched forward and landed face-first on the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pity",
       "word": "pity",
       "senses": [
         {
-          "id": "sense-22f3e726",
-          "pos": "noun",
+          "id": "sense-6e60fcc2",
+          "pos": "n.",
           "meaningZh": "憐憫；同情",
-          "definitionEn": "a feeling of sympathy and sadness for the difficulties of others",
           "examples": [
             "I couldn't help but feel pity for the homeless man huddled on the cold street corner, trying to keep warm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-84907555",
-          "pos": "noun",
+          "id": "sense-2779f799",
+          "pos": "n.",
           "meaningZh": "惻隱之心；慈悲心",
-          "definitionEn": "the ability to understand and be compassionate about other’s suffering and want to help",
           "examples": [
             "When Sarah saw the homeless man shivering in the cold, she took pity on him and brought him a warm blanket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "plastic",
       "word": "plastic",
       "senses": [
         {
-          "id": "sense-fef7e871",
-          "pos": "noun",
+          "id": "sense-3c5c8991",
+          "pos": "n.",
           "meaningZh": "塑膠；塑料",
-          "definitionEn": "a type of material made from synthetic or partially synthetic materials, which can be molded or shaped into different objects or used to make coatings and adhesives",
           "examples": [
             "He molded the plastic into a toy car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b046f088",
-          "pos": "noun",
+          "id": "sense-765f27a8",
+          "pos": "n.",
           "meaningZh": "信用卡；塑膠貨幣",
-          "definitionEn": "a card typically made of plastic that guarantees a seller payment for a product or service provided to the buyer, based on the buyer’s creditworthiness",
           "examples": [
             "I always pay with my plastic whenever I shop online because it’s more secure than using my debit card."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L5 +2",
-        "textbookTitle": "龍騰 B1·L5、三民 B1·L6、翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "playful",
       "word": "playful",
       "senses": [
         {
-          "id": "sense-b13ce33b",
-          "pos": "adjective",
+          "id": "sense-ab4a462d",
+          "pos": "adj.",
           "meaningZh": "愛玩的；頑皮的",
-          "definitionEn": "full of fun and high spirits",
           "examples": [
             "The children were feeling playful as they ran through the park, laughing and chasing each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-42728657",
-          "pos": "adjective",
+          "id": "sense-8c2a29fd",
+          "pos": "adj.",
           "meaningZh": "開玩笑的；嬉鬧的",
-          "definitionEn": "intending to have fun rather than be serious",
           "examples": [
             "The little girl was very playful with her toys, laughing and giggling as she played with them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "plenty",
       "word": "plenty",
       "senses": [
         {
-          "id": "sense-37643c04",
-          "pos": "noun",
+          "id": "sense-d68df248",
+          "pos": "n.",
           "meaningZh": "充足；足夠的量",
-          "definitionEn": "a full supply or more than enough",
           "examples": [
             "There’s plenty of food in the fridge for everyone to share."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-69b332f3",
-          "pos": "noun",
+          "id": "sense-6d0224ff",
+          "pos": "n.",
           "meaningZh": "大量；許多",
-          "definitionEn": "a large quantity or amount of something",
           "examples": [
             "There was plenty of food at the party, so everyone left feeling satisfied."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4 +1",
-        "textbookTitle": "龍騰 B4·L4、三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "plug",
       "word": "plug",
       "senses": [
         {
-          "id": "sense-d7736af2",
-          "pos": "noun",
+          "id": "sense-a74d761e",
+          "pos": "n.",
           "meaningZh": "插頭",
-          "definitionEn": "the part at the end of a wire that you put into an electrical outlet to connect a device",
           "examples": [
             "He pushed the plug into the socket to charge his phone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9b95492b",
-          "pos": "verb",
+          "id": "sense-6e5dbdda",
+          "pos": "v.",
           "meaningZh": "堵塞；填塞",
-          "definitionEn": "fill or close tightly with or as if with a plug",
           "examples": [
             "The plumber will plug the leak in the pipe using a waterproof sealant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4fcc31eb",
-          "pos": "noun",
+          "id": "sense-9510dd47",
+          "pos": "n.",
           "meaningZh": "火星塞；點火塞",
-          "definitionEn": "electrical device that fits into the cylinder head of an internal-combustion engine and ignites the gas by means of an electric spark",
           "examples": [
             "After cleaning and inspecting the spark plug, he carefully reinserted it back into the engine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pole",
       "word": "pole",
       "senses": [
         {
-          "id": "sense-41375362",
-          "pos": "noun",
+          "id": "sense-c1087482",
+          "pos": "n.",
           "meaningZh": "竿；桿；柱",
-          "definitionEn": "a long, slender, usually cylindrical piece of wood, metal, or other material",
           "examples": [
             "The explorer used a pole to navigate through the dense jungle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "political",
       "word": "political",
       "senses": [
         {
-          "id": "sense-a0beb599",
-          "pos": "adjective",
+          "id": "sense-320141cf",
+          "pos": "adj.",
           "meaningZh": "政治的；有關政治觀點的",
-          "definitionEn": "of or relating to your views about social relationships involving authority or power",
           "examples": [
             "The political leader gave a speech about the importance of democracy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cb5baf97",
-          "pos": "adjective",
+          "id": "sense-1622a0b9",
+          "pos": "adj.",
           "meaningZh": "政黨的；政治活動的",
-          "definitionEn": "involving or characteristic of politics, parties, or politicians and their activities",
           "examples": [
             "The election season is always filled with political ads and debates."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "politician",
       "word": "politician",
       "senses": [
         {
-          "id": "sense-9dc10ce3",
-          "pos": "noun",
+          "id": "sense-d4a2fdb3",
+          "pos": "n.",
           "meaningZh": "政治人物；從政者",
-          "definitionEn": "a person engaged in civil administration or concerned with the making and operation of policies in government",
           "examples": [
             "During the press conference, the politician eloquently outlined their vision for economic reform, impressing the audience with their knowledge and confidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6b95dc9a",
-          "pos": "noun",
+          "id": "sense-6b80564a",
+          "pos": "n.",
           "meaningZh": "政客；候選人",
-          "definitionEn": "a person actively involved in party politics, especially as a candidate for elective office or a holder of office",
           "examples": [
             "During the debate, the politician presented his plans for healthcare reform."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "politics",
       "word": "politics",
       "senses": [
         {
-          "id": "sense-29076a71",
-          "pos": "noun",
+          "id": "sense-132a2de5",
+          "pos": "n.",
           "meaningZh": "政治；政務",
-          "definitionEn": "the activities involved in managing a state or government",
           "examples": [
             "During the campaign, the candidate gave a powerful speech outlining their vision for the future of politics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-520df74d",
-          "pos": "noun",
+          "id": "sense-4681fc91",
+          "pos": "n.",
           "meaningZh": "權力角力；政治手腕",
-          "definitionEn": "social relations and behavior involved in gaining and using power",
           "examples": [
             "During an election, candidates engage in various political strategies to gain the support of voters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "poll",
       "word": "poll",
       "senses": [
         {
-          "id": "sense-1389fd7a",
-          "pos": "noun",
+          "id": "sense-04aff922",
+          "pos": "n.",
           "meaningZh": "民意調查",
-          "definitionEn": "a survey in which people are asked their opinions about something",
           "examples": [
             "A recent poll showed that most voters support the new policy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7d60d61b",
-          "pos": "noun",
+          "id": "sense-2e55a3f3",
+          "pos": "n.",
           "meaningZh": "（動物的）頭頂；兩耳間部位",
-          "definitionEn": "the area between the ears on the head of an animal or bird",
           "examples": [
             "The veterinarian checked the horse’s poll for any signs of injury or discomfort."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pollute",
       "word": "pollute",
       "senses": [
         {
-          "id": "sense-5a41b07e",
-          "pos": "verb",
+          "id": "sense-a93ef471",
+          "pos": "v.",
           "meaningZh": "污染；使不純",
-          "definitionEn": "make impure",
           "examples": [
             "Don’t dump your motor oil in the river, it will pollute the water and harm the aquatic life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-43974804",
-          "pos": "verb",
+          "id": "sense-394998dd",
+          "pos": "v.",
           "meaningZh": "污染（環境）；毒化",
-          "definitionEn": "contaminate (the environment) with waste or harmful substances",
           "examples": [
             "The factory dumped toxic waste into the river, polluting the water supply for the entire town."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pollution",
       "word": "pollution",
       "senses": [
         {
-          "id": "sense-4aba8e83",
-          "pos": "noun",
+          "id": "sense-e4873b0f",
+          "pos": "n.",
           "meaningZh": "污染；環境污染",
-          "definitionEn": "The process of contaminating or polluting the environment, either deliberately or accidentally, with harmful substances or pollutants that have a negative impact on living organisms and/or the natural environment.",
           "examples": [
             "The pollution caused by the industrial waste released into the river caused the death of several aquatic creatures and rendered the water unfit for human consumption."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-74f0bbdb",
-          "pos": "noun",
+          "id": "sense-798b03a7",
+          "pos": "n.",
           "meaningZh": "污染狀態；受污染的環境",
-          "definitionEn": "The undesirable state of the natural environment being contaminated with harmful substances or pollutants as a consequence of human activities.",
           "examples": [
             "The pollution in the river made it impossible for fish to survive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "porcelain",
       "word": "porcelain",
       "senses": [
         {
-          "id": "sense-e9bb17a6",
-          "pos": "noun",
+          "id": "sense-cc0f1052",
+          "pos": "n.",
           "meaningZh": "瓷器；白瓷",
-          "definitionEn": "a type of ceramic made from kaolin (a type of clay), known for its translucency and strength",
           "examples": [
             "The delicate porcelain tea set on the shelf was crafted by a renowned potter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "portion",
+      "word": "portion",
+      "senses": [
+        {
+          "id": "sense-113f8f51",
+          "pos": "n.",
+          "meaningZh": "一份（食物）；份量",
+          "examples": [
+            "I only ate a small portion of the lasagna because it was so filling."
+          ]
+        },
+        {
+          "id": "sense-f65d5f04",
+          "pos": "n.",
+          "meaningZh": "財產份額；分配額",
+          "examples": [
+            "The elderly couple split their life savings into equal portions for their children."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "portrait",
+      "word": "portrait",
+      "senses": [
+        {
+          "id": "sense-a3c3f3ed",
+          "pos": "n.",
+          "meaningZh": "肖像；人像",
+          "examples": [
+            "She commissioned a portrait of her parents to give them as a gift on their anniversary."
+          ]
+        },
+        {
+          "id": "sense-0c412d87",
+          "pos": "n.",
+          "meaningZh": "人物描寫；文字肖像",
+          "examples": [
+            "The artist painted a beautiful portrait of the queen that captured her regal presence and serene expression."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "poster",
+      "word": "poster",
+      "senses": [
+        {
+          "id": "sense-f6f20b29",
+          "pos": "n.",
+          "meaningZh": "海報；宣傳單",
+          "examples": [
+            "The concert poster was displayed on every street corner in the city, announcing the date, time, and location of the highly anticipated event."
+          ]
+        },
+        {
+          "id": "sense-fd790934",
+          "pos": "n.",
+          "meaningZh": "張貼廣告的人",
+          "examples": [
+            "The poster was busy hanging up advertisements for the concert all around the city."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "postpone",
+      "word": "postpone",
+      "senses": [
+        {
+          "id": "sense-52960ca3",
+          "pos": "v.",
+          "meaningZh": "延期；推遲",
+          "examples": [
+            "We will have to postpone the meeting until next week due to scheduling conflicts."
+          ]
+        },
+        {
+          "id": "sense-b944e192",
+          "pos": "v.",
+          "meaningZh": "延後；展期",
+          "examples": [
+            "I will postpone my dentist appointment until next week."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "postponement",
+      "word": "postponement",
+      "senses": [
+        {
+          "id": "sense-4f86eba3",
+          "pos": "n.",
+          "meaningZh": "延期；推遲",
+          "examples": [
+            "The postponement of the meeting allowed for more time to prepare."
+          ]
+        },
+        {
+          "id": "sense-637f5885",
+          "pos": "n.",
+          "meaningZh": "延後期間；等待時間",
+          "examples": [
+            "The postponement of the meeting allowed the team members to prepare more thoroughly."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -15,8 +15,7 @@ export function lockDocumentScroll(): () => void {
     previousPaddingRight = document.body.style.paddingRight
 
     document.body.style.overflow = 'hidden'
-    // Modern browsers reserve the gutter via CSS. Keep a fallback for older WebViews
-    // without applying padding twice when `scrollbar-gutter` is supported.
+    // Reserve the gutter manually when `scrollbar-gutter` is unavailable.
     if (typeof CSS === 'undefined' || !CSS.supports('scrollbar-gutter: stable')) {
       const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth)
       if (scrollbarWidth > 0)

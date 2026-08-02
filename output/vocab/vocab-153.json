@@ -1,1354 +1,637 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 153,
   "words": [
-    {
-      "wordKey": "plead",
-      "word": "plead",
-      "senses": [
-        {
-          "id": "sense-c2dc02d2",
-          "pos": "verb",
-          "meaningZh": "懇求；哀求",
-          "definitionEn": "to make an urgent and emotional appeal, request or entreaty",
-          "examples": [
-            "The defendant had no choice but to plead for mercy in front of the judge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-2e4015f2",
-          "pos": "verb",
-          "meaningZh": "辯護；認罪",
-          "definitionEn": "to offer an excuse or defense for an action or behavior",
-          "examples": [
-            "The defendant decided to plead guilty to the charges rather than go to trial."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "pledge",
-      "word": "pledge",
-      "senses": [
-        {
-          "id": "sense-1b746235",
-          "pos": "noun",
-          "meaningZh": "誓言；承諾",
-          "definitionEn": "a formal promise to do something",
-          "examples": [
-            "She made a pledge to donate a portion of her salary to charity every month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-e1040731",
-          "pos": "noun",
-          "meaningZh": "抵押品；擔保物",
-          "definitionEn": "something valuable given to a lender that can be kept if the loan is not repaid",
-          "examples": [
-            "John offered his car as a pledge to the bank in order to secure a loan for his new business venture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "plunge",
-      "word": "plunge",
-      "senses": [
-        {
-          "id": "sense-9126b060",
-          "pos": "verb",
-          "meaningZh": "浸入；投入（液體）",
-          "definitionEn": "immersed briefly in a liquid to wet, coat, or saturate",
-          "examples": [
-            "She plunged the paintbrush into the can of red paint to coat it evenly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-f470d0f3",
-          "pos": "noun",
-          "meaningZh": "跳水；縱身入水",
-          "definitionEn": "a brief swim in water",
-          "examples": [
-            "After a long hike, they decided to take a refreshing plunge in the crystal clear lake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "plural",
-      "word": "plural",
-      "senses": [
-        {
-          "id": "sense-13f329f8",
-          "pos": "adjective",
-          "meaningZh": "複數的；多數形的",
-          "definitionEn": "Used to describe a word or form of a word that is used to talk about more than one thing.",
-          "examples": [
-            "The word 'cats' is the plural form of 'cat', indicating more than one cat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "poetic",
-      "word": "poetic",
-      "senses": [
-        {
-          "id": "sense-e6b4e603",
-          "pos": "adjective",
-          "meaningZh": "詩歌的；詩人的",
-          "definitionEn": "relating to poetry or poets",
-          "examples": [
-            "The sunset painted the sky in vibrant hues, creating a poetic scene that inspired the hearts of all who witnessed it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-f10908d8",
-          "pos": "adjective",
-          "meaningZh": "富有詩意的；詩情畫意的",
-          "definitionEn": "having the qualities of poetry, such as beauty, rhythm, and emotional expression",
-          "examples": [
-            "As the sun set behind the mountains, the delicate peach and gold hues painted across the sky created a poetic scene that left everyone in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "poke",
       "word": "poke",
       "senses": [
         {
-          "id": "sense-2cf3ac1b",
-          "pos": "verb",
+          "id": "sense-16c5370e",
+          "pos": "v.",
           "meaningZh": "戳；捅；推",
-          "definitionEn": "hit forcefully with a hand, fist, or heavy object",
           "examples": [
             "He was getting agitated, so he poked his finger into his friend's chest to get his attention."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e0f449bf",
-          "pos": "noun",
+          "id": "sense-e992af67",
+          "pos": "n.",
           "meaningZh": "一拳；猛擊",
-          "definitionEn": "a punch or blow with a fist, especially in boxing",
           "examples": [
             "During the match, the boxer threw a powerful poke that landed squarely on his opponent's jaw."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "porch",
       "word": "porch",
       "senses": [
         {
-          "id": "sense-ba7f068a",
-          "pos": "noun",
+          "id": "sense-b488d646",
+          "pos": "n.",
           "meaningZh": "門廊；玄關走廊",
-          "definitionEn": "a covered entrance to a building, often attached to the exterior",
           "examples": [
             "On a warm summer evening, the family gathered on the porch, enjoying the gentle breeze and watching the sun set."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "portfolio",
       "word": "portfolio",
       "senses": [
         {
-          "id": "sense-dfff5265",
-          "pos": "noun",
+          "id": "sense-48e3ac15",
+          "pos": "n.",
           "meaningZh": "公事包；作品夾",
-          "definitionEn": "a large, flat, thin case, often made of leather, for carrying loose papers, drawings, or maps",
           "examples": [
             "As a graphic designer, Sarah always carries her portfolio to showcase her work to potential clients."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e452c008",
-          "pos": "noun",
+          "id": "sense-0f59d6f8",
+          "pos": "n.",
           "meaningZh": "作品集；個人檔案",
-          "definitionEn": "a collection of pieces of creative work, such as writing or design, that is used to showcase one’s skills or work to potential customers or employers",
           "examples": [
             "During her job interview, the graphic designer presented her portfolio which included a range of logos, website designs, and brochures she had created for various clients."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "practitioner",
       "word": "practitioner",
       "senses": [
         {
-          "id": "sense-be4a7403",
-          "pos": "noun",
+          "id": "sense-18774e0f",
+          "pos": "n.",
           "meaningZh": "執業者；從業人員",
-          "definitionEn": "a person who practices a skilled profession",
           "examples": [
             "After years of studying medicine, she became a highly skilled practitioner, specializing in cardiology."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "precaution",
       "word": "precaution",
       "senses": [
         {
-          "id": "sense-bb846d86",
-          "pos": "noun",
+          "id": "sense-a0dcb686",
+          "pos": "n.",
           "meaningZh": "預防措施",
-          "definitionEn": "the trait of practicing caution in advance",
           "examples": [
             "As a precaution, the hikers carried plenty of water with them on their journey through the desert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ba65b6be",
-          "pos": "noun",
+          "id": "sense-14b8d3be",
+          "pos": "n.",
           "meaningZh": "謹慎；審慎",
-          "definitionEn": "judiciousness in avoiding harm or danger",
           "examples": [
             "He took precautions to ensure his safety before going hiking alone in the wilderness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "predator",
       "word": "predator",
       "senses": [
         {
-          "id": "sense-b40c24ab",
-          "pos": "noun",
+          "id": "sense-05c72477",
+          "pos": "n.",
           "meaningZh": "掠食者；肉食動物",
-          "definitionEn": "an animal that preys on other animals for food",
           "examples": [
             "The lion stealthily stalked its prey, demonstrating the behavior of a true predator."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6922a70a",
-          "pos": "noun",
+          "id": "sense-e34f5276",
+          "pos": "n.",
           "meaningZh": "剝削者；掠奪者",
-          "definitionEn": "a person or animal that ruthlessly exploits others for personal gain or gratification",
           "examples": [
             "The charming CEO of the company turned out to be a predator, manipulating employees for his own financial benefit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "preference",
       "word": "preference",
       "senses": [
         {
-          "id": "sense-627bbfce",
-          "pos": "noun",
+          "id": "sense-c5d95896",
+          "pos": "n.",
           "meaningZh": "偏好；優先選擇",
-          "definitionEn": "the act of preferring one thing over another",
           "examples": [
             "His preference for spicy food was obvious as he always added extra spices to his meal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-126648ec",
-          "pos": "noun",
+          "id": "sense-1b7484b4",
+          "pos": "n.",
           "meaningZh": "愛好；傾向",
-          "definitionEn": "a strong liking or inclination towards something",
           "examples": [
             "My preference is to wake up early and go for a run before work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4 +2",
-        "textbookTitle": "龍騰 B3·L4、三民 B4·L9、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prejudice",
       "word": "prejudice",
       "senses": [
         {
-          "id": "sense-3999df99",
-          "pos": "noun",
+          "id": "sense-75fb5771",
+          "pos": "n.",
           "meaningZh": "偏見；歧視；損害",
-          "definitionEn": "harm or injury that results or may result from some action or judgement.",
           "examples": [
             "A person's career prospects may suffer due to prejudice against their race or gender."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-092c1a88",
-          "pos": "verb",
+          "id": "sense-07da6c85",
+          "pos": "v.",
           "meaningZh": "損害；危害",
-          "definitionEn": "cause harm to (a state of affairs).",
           "examples": [
             "Her decision to quit her job will certainly prejudice the company’s chances of meeting its targets this fiscal year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "preliminary",
       "word": "preliminary",
       "senses": [
         {
-          "id": "sense-447b2f38",
-          "pos": "adjective",
+          "id": "sense-9571bde4",
+          "pos": "adj.",
           "meaningZh": "初步的；預備的",
-          "definitionEn": "intended to prepare for something more important; serving as an introduction or prior to the main event",
           "examples": [
             "The coaches held a preliminary meeting with the team to discuss the upcoming game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1eb62691",
-          "pos": "noun",
+          "id": "sense-68c7ee91",
+          "pos": "n.",
           "meaningZh": "預備階段；前置步驟",
-          "definitionEn": "something that serves as a preliminary or introductory step; an initial or preparatory phase",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "premature",
       "word": "premature",
       "senses": [
         {
-          "id": "sense-a6d9b321",
-          "pos": "adjective",
+          "id": "sense-29496513",
+          "pos": "adj.",
           "meaningZh": "過早的；倉促的",
-          "definitionEn": "done, occurring, or available before the appropriate time or age",
           "examples": [
             "The couple’s decision to have a baby at the age of 16 was a premature one and led to many difficulties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3eeee358",
-          "pos": "adjective",
+          "id": "sense-2da63fda",
+          "pos": "adj.",
           "meaningZh": "早產的；未足月的",
-          "definitionEn": "born before the end of the full term of gestation; inadequately developed",
           "examples": [
             "The infant was born premature and had to spend several weeks in the neonatal intensive care unit before going home with his parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "premier",
       "word": "premier",
       "senses": [
         {
-          "id": "sense-148dac4b",
-          "pos": "noun",
+          "id": "sense-57f2084b",
+          "pos": "n.",
           "meaningZh": "總理；首相",
-          "definitionEn": "the person who is head of state in some countries",
           "examples": [
             "The premier addressed the nation during the televised speech."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-687225d8",
-          "pos": "adjective",
+          "id": "sense-c2830c84",
+          "pos": "adj.",
           "meaningZh": "首要的；最高級的",
-          "definitionEn": "first in rank or degree",
           "examples": [
             "After years of hard work, he finally earned the premier position in the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "premise",
       "word": "premise",
       "senses": [
         {
-          "id": "sense-6b4ccb7a",
-          "pos": "noun",
+          "id": "sense-44eb3c52",
+          "pos": "n.",
           "meaningZh": "前提；假設",
-          "definitionEn": "a statement or idea that is accepted as true and used as the basis for an argument",
           "examples": [
             "His argument is based on the premise that all people are equal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0cd56833",
-          "pos": "verb",
+          "id": "sense-1f0bd212",
+          "pos": "v.",
           "meaningZh": "以…為前提；立論於",
-          "definitionEn": "base a theory, argument, or undertaking on.",
           "examples": [
             "Before presenting the main argument, the author laid out several premises to establish the foundation of their theory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "premium",
       "word": "premium",
       "senses": [
         {
-          "id": "sense-7836674f",
-          "pos": "noun",
+          "id": "sense-16dde69b",
+          "pos": "n.",
           "meaningZh": "保費；保險費",
-          "definitionEn": "an amount paid or payable for insurance coverage",
           "examples": [
             "I pay a monthly premium to my health insurance company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a1495c83",
-          "pos": "adjective",
+          "id": "sense-c3b3e015",
+          "pos": "adj.",
           "meaningZh": "高品質的；優質的",
-          "definitionEn": "of superior quality or value",
           "examples": [
             "The car offers premium features like leather seats and advanced safety technologies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prescribe",
       "word": "prescribe",
       "senses": [
         {
-          "id": "sense-e3359613",
-          "pos": "verb",
+          "id": "sense-7e549584",
+          "pos": "v.",
           "meaningZh": "開處方；指定用藥",
-          "definitionEn": "to recommend and authorize the use of a medicine or treatment",
           "examples": [
             "The doctor may prescribe antibiotics to treat the infection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prescription",
       "word": "prescription",
       "senses": [
         {
-          "id": "sense-701ceb21",
-          "pos": "noun",
+          "id": "sense-cecd2bc5",
+          "pos": "n.",
           "meaningZh": "處方箋；藥方",
-          "definitionEn": "a set of written instructions, from a doctor, that authorize the use and dosage of a medication for a particular patient",
           "examples": [
             "As my doctor wrote the prescription for my asthma medication, I took it to the pharmacy to get it filled."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-177685b2",
-          "pos": "noun",
+          "id": "sense-e0ba8316",
+          "pos": "n.",
           "meaningZh": "眼鏡處方",
-          "definitionEn": "written instructions for an optician regarding the lenses needed for a person’s glasses",
           "examples": [
             "After conducting his eye examination, the optometrist gave the patient a prescription for eyeglasses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "presidency",
       "word": "presidency",
       "senses": [
         {
-          "id": "sense-5b3e7684",
-          "pos": "noun",
+          "id": "sense-91355398",
+          "pos": "n.",
           "meaningZh": "總統職位；主席職務",
-          "definitionEn": "the office and function of a president",
           "examples": [
             "The presidency comes with great responsibility and requires strong leadership skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f6028b29",
-          "pos": "noun",
+          "id": "sense-39db5ead",
+          "pos": "n.",
           "meaningZh": "任期；執政期",
-          "definitionEn": "the time period during which a president is in office",
           "examples": [
             "During his presidency, the president implemented several new policies to stimulate economic growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "presidential",
       "word": "presidential",
       "senses": [
         {
-          "id": "sense-4bda7643",
-          "pos": "adjective",
+          "id": "sense-923f9417",
+          "pos": "adj.",
           "meaningZh": "總統的；關於總統職務的",
-          "definitionEn": "relating to or concerning a president, the office of president, or the term of a president",
           "examples": [
             "The presidential debate focused on important issues such as foreign policy and the economy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-74c72ef9",
-          "pos": "adjective",
+          "id": "sense-9c386945",
+          "pos": "adj.",
           "meaningZh": "有總統風範的",
-          "definitionEn": "befitting, characteristic of or appropriate to the president of a state or country",
           "examples": [
             "The President gave a presidential speech during the national address."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "presumably",
       "word": "presumably",
       "senses": [
         {
-          "id": "sense-929e604f",
-          "pos": "adverb",
+          "id": "sense-e50b8510",
+          "pos": "adv.",
           "meaningZh": "大概；據推測",
-          "definitionEn": "most likely; probably",
           "examples": [
             "He is presumably the one who stole the missing money."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "presume",
       "word": "presume",
       "senses": [
         {
-          "id": "sense-6b710892",
-          "pos": "verb",
+          "id": "sense-3178d61b",
+          "pos": "v.",
           "meaningZh": "推定；有根據地假設",
-          "definitionEn": "provide reasonable evidence for",
           "examples": [
             "Based on his extensive research, the scientist can presume that his theory is correct."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8414b136",
-          "pos": "verb",
+          "id": "sense-d8267d6b",
+          "pos": "v.",
           "meaningZh": "擅自；冒昧",
-          "definitionEn": "take liberties or act with too much confidence",
           "examples": [
             "She presumed that she had gotten the job because she had a good interview, but she didn’t hear back from the employer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prevail",
       "word": "prevail",
       "senses": [
         {
-          "id": "sense-96082f6f",
-          "pos": "verb",
+          "id": "sense-fe7a0fea",
+          "pos": "v.",
           "meaningZh": "占優勢；勝出；盛行",
-          "definitionEn": "to be greater in strength or influence; triumph; to be widespread or current; exist everywhere or generally; to advance or become dominant; to be or continue in use or fashion",
           "examples": [
             "Despite the challenges, the team managed to prevail and win the championship game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8745993f",
-          "pos": "verb",
+          "id": "sense-1c5c5ac8",
+          "pos": "v.",
           "meaningZh": "獲勝；占上風",
-          "definitionEn": "to prove superior in power, strength, or influence; to be effective; to gain ascendancy or preponderance; to be in force, use, or effect; to be valid or efficacious",
           "examples": [
             "Despite the odds being against them, the underdog team managed to prevail over the champions in the championship game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prey",
       "word": "prey",
       "senses": [
         {
-          "id": "sense-96a2e1b9",
-          "pos": "noun",
+          "id": "sense-af5e47ed",
+          "pos": "n.",
           "meaningZh": "獵物；被捕食的動物",
-          "definitionEn": "an animal that is hunted and killed for food by another animal",
           "examples": [
             "The lioness crept up silently behind its prey before pouncing on it with lightning-fast reflexes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-03cd8ed1",
-          "pos": "noun",
+          "id": "sense-9ec8d5cd",
+          "pos": "n.",
           "meaningZh": "受害者；容易被剝削的人",
-          "definitionEn": "a person or group that is easily exploited or harmed, especially by another person or group with more power or resources",
           "examples": [
             "The scammer was targeting the elderly as they were considered to be easy prey due to their vulnerability."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prior",
       "word": "prior",
       "senses": [
         {
-          "id": "sense-f3a97aa5",
-          "pos": "adjective",
+          "id": "sense-6705b779",
+          "pos": "adj.",
           "meaningZh": "之前的；優先的",
-          "definitionEn": "existing or coming before in time, order, or importance",
           "examples": [
             "It is important to complete the homework prior to going out with friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "proclaim",
       "word": "proclaim",
       "senses": [
         {
-          "id": "sense-51b7322c",
-          "pos": "verb",
+          "id": "sense-ad48c929",
+          "pos": "v.",
           "meaningZh": "宣布；公告",
-          "definitionEn": "to declare or announce something publicly or officially",
           "examples": [
             "The president stood before the crowd and proclaimed the new law."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "productivity",
       "word": "productivity",
       "senses": [
         {
-          "id": "sense-36f49420",
-          "pos": "noun",
+          "id": "sense-773d9d4c",
+          "pos": "n.",
           "meaningZh": "生產力；生產效率",
-          "definitionEn": "(economics) the rate at which a company or individual produces goods or services, measured against the amount of time, money, and resources consumed in the process",
           "examples": [
             "The introduction of new technology greatly increased the productivity of the factory, enabling them to produce twice as many units in half the time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5388c250",
-          "pos": "noun",
+          "id": "sense-aad2b104",
+          "pos": "n.",
           "meaningZh": "工作效率；生產力水準",
-          "definitionEn": "the state or quality of being productive, or having the power to produce",
           "examples": [
             "In order to increase productivity in the office, the employees implemented a new time management system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "profile",
       "word": "profile",
       "senses": [
         {
-          "id": "sense-6b4a1cf8",
-          "pos": "noun",
+          "id": "sense-b4c3fd4c",
+          "pos": "n.",
           "meaningZh": "個人簡介；履歷",
-          "definitionEn": "a biographical sketch",
           "examples": [
             "When applying for a job, it is important to have a well-written profile that highlights your qualifications and experiences."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6692410a",
-          "pos": "noun",
+          "id": "sense-1275037e",
+          "pos": "n.",
           "meaningZh": "知名度；曝光程度",
-          "definitionEn": "degree of exposure to public notice",
           "examples": [
             "After winning the talent show, Sarah's profile increased as she started receiving offers from various record labels."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "profound",
+      "word": "profound",
+      "senses": [
+        {
+          "id": "sense-d9906b49",
+          "pos": "adj.",
+          "meaningZh": "深刻的；深遠的",
+          "examples": [
+            "The speaker had a profound impact on the audience because her speech had touched their hearts and minds."
+          ]
+        },
+        {
+          "id": "sense-5385d5be",
+          "pos": "adj.",
+          "meaningZh": "深切的；發自內心的",
+          "examples": [
+            "The loss of his father caused a profound sadness that he couldn’t shake for months."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "progressive",
+      "word": "progressive",
+      "senses": [
+        {
+          "id": "sense-d203f62b",
+          "pos": "adj.",
+          "meaningZh": "進步的；漸進的；累進的",
+          "examples": []
+        },
+        {
+          "id": "sense-ef4e43f0",
+          "pos": "n.",
+          "meaningZh": "進步主義者；改革派人士",
+          "examples": [
+            "My aunt is a progressive and always puts civil rights at the forefront of her political choices."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "prohibit",
+      "word": "prohibit",
+      "senses": [
+        {
+          "id": "sense-16504de5",
+          "pos": "v.",
+          "meaningZh": "禁止；不允許",
+          "examples": [
+            "The school prohibits students from bringing their phones to the exams."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "projection",
+      "word": "projection",
+      "senses": [
+        {
+          "id": "sense-51e81220",
+          "pos": "n.",
+          "meaningZh": "預測；推算",
+          "examples": [
+            "Based on the sales figures from the previous year, the financial analyst made a projection for the company's revenue growth for the upcoming quarter."
+          ]
+        },
+        {
+          "id": "sense-ca46e112",
+          "pos": "n.",
+          "meaningZh": "突出物；延伸結構",
+          "examples": [
+            "The tree had many projections extending from its trunk, providing shade and shelter for animals."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "prolong",
+      "word": "prolong",
+      "senses": [
+        {
+          "id": "sense-9f99bc72",
+          "pos": "v.",
+          "meaningZh": "延長；拉長",
+          "examples": [
+            "The meeting was prolonged due to the numerous questions and discussions."
+          ]
+        },
+        {
+          "id": "sense-852b54e2",
+          "pos": "v.",
+          "meaningZh": "使持續更久；延續",
+          "examples": [
+            "They decided to prolong their vacation by another week."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

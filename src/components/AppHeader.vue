@@ -23,7 +23,7 @@ const { hasSets, sets, totalWordCount, activeSet } = storeToRefs(setsStore)
 const { editActiveSet, deleteActiveSet } = setsStore
 
 const isHome = computed(() => route.name === 'home')
-const isPractice = computed(() => ['quiz', 'cloze', 'reading', 'spelling'].includes(String(route.name)))
+const isPractice = computed(() => ['quiz', 'fillBlank', 'reading'].includes(String(route.name)))
 const isReview = computed(() => route.name === 'review')
 const showSessionProgress = computed(() => (isPractice.value && !!currentSession.value) || (isReview.value && !!currentReviewEntry.value))
 
@@ -32,12 +32,10 @@ const practiceLabel = computed(() => {
     return t('practice.dailyQuestions')
   if (route.name === 'quiz')
     return t('practice.quiz')
-  if (route.name === 'cloze')
+  if (route.name === 'fillBlank')
     return t('practice.fillBlank')
   if (route.name === 'reading')
     return t('practice.reading')
-  if (route.name === 'spelling')
-    return t('practice.spelling')
   if (route.name === 'review')
     return t('learning.todayReview')
   return ''

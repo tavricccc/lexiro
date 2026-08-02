@@ -1,17 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-31T15:37:45.075Z",
-  "inputDir": "C:\\temp",
+  "generatedAt": "2026-08-01T14:50:42.287Z",
   "wordBatchSize": 30,
   "stats": {
     "levelItems": 6005,
-    "uniqueWords": 6005,
+    "uniqueWords": 6000,
     "supportedQuestions": {
-      "multipleChoice": 3575,
-      "cloze": 510,
-      "reading": 1012
+      "standard": 80,
+      "fillBlank": 60,
+      "reading": 0
     },
-    "skippedQuestions": 2381
+    "skippedQuestions": 7338
   },
   "files": {
     "vocab": [
@@ -214,49 +213,11 @@
       "vocab-197.json",
       "vocab-198.json",
       "vocab-199.json",
-      "vocab-200.json",
-      "vocab-201.json"
+      "vocab-200.json"
     ],
     "questions": [
-      "multipleChoice-001.json",
-      "multipleChoice-002.json",
-      "multipleChoice-003.json",
-      "multipleChoice-004.json",
-      "multipleChoice-005.json",
-      "multipleChoice-006.json",
-      "multipleChoice-007.json",
-      "multipleChoice-008.json",
-      "multipleChoice-009.json",
-      "multipleChoice-010.json",
-      "multipleChoice-011.json",
-      "multipleChoice-012.json",
-      "multipleChoice-013.json",
-      "multipleChoice-014.json",
-      "multipleChoice-015.json",
-      "multipleChoice-016.json",
-      "multipleChoice-017.json",
-      "multipleChoice-018.json",
-      "multipleChoice-019.json",
-      "multipleChoice-020.json",
-      "multipleChoice-021.json",
-      "multipleChoice-022.json",
-      "multipleChoice-023.json",
-      "multipleChoice-024.json",
-      "multipleChoice-025.json",
-      "cloze-001.json",
-      "cloze-002.json",
-      "cloze-003.json",
-      "cloze-004.json",
-      "cloze-005.json",
-      "reading-001.json",
-      "reading-002.json",
-      "reading-003.json",
-      "reading-004.json",
-      "reading-005.json",
-      "reading-006.json",
-      "reading-007.json",
-      "reading-008.json",
-      "reading-009.json"
+      "standard-001.json",
+      "fillBlank-001.json"
     ]
   }
 }

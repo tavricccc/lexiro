@@ -1,1420 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 26,
   "words": [
-    {
-      "wordKey": "shoe",
-      "word": "shoe",
-      "senses": [
-        {
-          "id": "sense-87568d4b",
-          "pos": "noun",
-          "meaningZh": "鞋子",
-          "definitionEn": "footwear designed to fit the foot (below the ankle) and usually made of leather or plastic, with a sole and heel made of heavier material",
-          "examples": [
-            "Emily went shopping for a new pair of shoes to wear to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-6147c2f7",
-          "pos": "verb",
-          "meaningZh": "為……穿鞋",
-          "definitionEn": "to provide with shoes",
-          "examples": [
-            "After walking in the rain, my mom told me to take off my wet shoes and she quickly shoed me with a dry pair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "shoes",
-      "word": "shoes",
-      "senses": [
-        {
-          "id": "sense-72fa7888",
-          "pos": "noun",
-          "meaningZh": "鞋子（複數）",
-          "definitionEn": "footwear designed to fit the foot (below the ankle) and usually made of leather or plastic, with a sole and heel made of heavier material",
-          "examples": [
-            "Emily went shopping for a new pair of shoes to wear to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-ceb4e888",
-          "pos": "verb",
-          "meaningZh": "為……穿鞋",
-          "definitionEn": "to provide with shoes",
-          "examples": [
-            "After walking in the rain, my mom told me to take off my wet shoes and she quickly shoed me with a dry pair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "shop",
-      "word": "shop",
-      "senses": [
-        {
-          "id": "sense-203ffa7a",
-          "pos": "noun",
-          "meaningZh": "商店；店鋪",
-          "definitionEn": "a place where goods or services are sold to customers",
-          "examples": [
-            "I need to stop by the shop to buy some groceries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-c059cd31",
-          "pos": "noun",
-          "meaningZh": "工坊；作坊",
-          "definitionEn": "a small workplace in which handcrafted items or goods are manufactured",
-          "examples": [
-            "As a young girl, she spent countless hours working in her grandfather’s pottery shop, learning the techniques and artistry required to make beautiful ceramics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "short",
       "word": "short",
       "senses": [
         {
-          "id": "sense-f26c963a",
-          "pos": "adjective",
+          "id": "sense-e846b3c6",
+          "pos": "adj.",
           "meaningZh": "短的；不長的",
-          "definitionEn": "Having little or lacking in length, primarily in relation to space.",
           "examples": [
             "She slipped on her short dress and headed to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-33d16b01",
-          "pos": "adjective",
+          "id": "sense-9934181d",
+          "pos": "adj.",
           "meaningZh": "矮的；身材矮小的",
-          "definitionEn": "Not tall; of low stature.",
           "examples": [
             "He is short and has to stand on a stool to reach the top shelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shorts",
       "word": "shorts",
       "senses": [
         {
-          "id": "sense-128e3600",
-          "pos": "noun",
+          "id": "sense-481e69ac",
+          "pos": "n.",
           "meaningZh": "短褲；及膝以上的褲子",
-          "definitionEn": "trousers that end above the knee",
           "examples": [
             "In the summertime, she prefers to wear shorts to stay cool."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shoulder",
       "word": "shoulder",
       "senses": [
         {
-          "id": "sense-26fbdbde",
-          "pos": "noun",
+          "id": "sense-c3b2e0ca",
+          "pos": "n.",
           "meaningZh": "肩膀；肩關節",
-          "definitionEn": "a ball-and-socket joint connecting the upper arm bone with the shoulder blade",
           "examples": [
             "After injuring his shoulder during a basketball game, he had to undergo physical therapy to regain strength and mobility."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5acc83e0",
-          "pos": "verb",
+          "id": "sense-6fa936f1",
+          "pos": "v.",
           "meaningZh": "扛起；肩負",
-          "definitionEn": "lift or bear (something) on one’s shoulder",
           "examples": [
             "As the strong man shouldered the heavy load, he demonstrated his impressive strength."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shout",
       "word": "shout",
       "senses": [
         {
-          "id": "sense-f7138e42",
-          "pos": "verb",
+          "id": "sense-dbb230f7",
+          "pos": "v.",
           "meaningZh": "大聲喊叫；呼喊",
-          "definitionEn": "to speak or call out loudly, often expressing strong emotion or excitement",
           "examples": [
             "When her daughter finally scored the winning goal, she ran onto the field and shouted with joy!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fac27130",
-          "pos": "verb",
+          "id": "sense-e02e4339",
+          "pos": "v.",
           "meaningZh": "呼喊；嘶喊",
-          "definitionEn": "to make a sudden loud cry, scream or yell",
           "examples": [
             "During the concert, the audience was so excited that they started to shout and sing along with the band."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "show",
       "word": "show",
       "senses": [
         {
-          "id": "sense-9db5e286",
-          "pos": "verb",
+          "id": "sense-38fe4927",
+          "pos": "v.",
           "meaningZh": "展示；使人看見",
-          "definitionEn": "to make something visible or noticeable",
           "examples": [
             "She decided to show her artwork at the exhibition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-66e59f1a",
-          "pos": "verb",
+          "id": "sense-a434afc7",
+          "pos": "v.",
           "meaningZh": "表達；呈現",
-          "definitionEn": "to express or display something",
           "examples": [
             "She will show her painting at the art exhibition next month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shower",
       "word": "shower",
       "senses": [
         {
-          "id": "sense-06a4a9f8",
-          "pos": "noun",
+          "id": "sense-f7213178",
+          "pos": "n.",
           "meaningZh": "淋浴；沖澡",
-          "definitionEn": "washing your body by standing upright under water sprayed from a nozzle",
           "examples": [
             "I always take a shower in the morning before work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cc4b8216",
-          "pos": "noun",
+          "id": "sense-e8695f96",
+          "pos": "n.",
           "meaningZh": "淋浴設備；蓮蓬頭",
-          "definitionEn": "a plumbing fixture that sprays water over you to wash yourself",
           "examples": [
             "After a long day at work, I love to take a relaxing shower to wash away the stress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sick",
       "word": "sick",
       "senses": [
         {
-          "id": "sense-34e801c7",
-          "pos": "adjective",
+          "id": "sense-2b6fc7bb",
+          "pos": "adj.",
           "meaningZh": "生病的；患病的",
-          "definitionEn": "affected by an impairment of normal physical or mental function",
           "examples": [
             "I can’t come to work today because I am too sick to get out of bed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6c26c9e0",
-          "pos": "adjective",
+          "id": "sense-66d6665c",
+          "pos": "adj.",
           "meaningZh": "深受情緒折磨的；痛苦不堪的",
-          "definitionEn": "deeply affected by a strong feeling",
           "examples": [
             "After receiving the tragic news, he was sick with grief and couldn’t leave his room for days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "side",
       "word": "side",
       "senses": [
         {
-          "id": "sense-4e64bbbf",
-          "pos": "noun",
+          "id": "sense-dc9b622b",
+          "pos": "n.",
           "meaningZh": "一側；半邊",
-          "definitionEn": "either of the two halves of something regarded as divided by an imaginary central line",
           "examples": [
             "She cut the cake and served everyone a side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-188372f2",
-          "pos": "noun",
+          "id": "sense-fc48e4ce",
+          "pos": "n.",
           "meaningZh": "側面；旁邊",
-          "definitionEn": "a surface of something that is on the left or right rather than the top or bottom",
           "examples": [
             "He painted a beautiful mural on the side of the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sight",
       "word": "sight",
       "senses": [
         {
-          "id": "sense-917c7974",
-          "pos": "noun",
+          "id": "sense-29a6e258",
+          "pos": "n.",
           "meaningZh": "視覺；視力",
-          "definitionEn": "the ability to see or the act of seeing; visual perception",
           "examples": [
             "Upon reaching the top of the mountain, I was amazed by the breathtaking sight of the vast, rolling landscape below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e7235e3a",
-          "pos": "noun",
+          "id": "sense-ac1d19f6",
+          "pos": "n.",
           "meaningZh": "景象；視野所見",
-          "definitionEn": "anything that is seen; a view or scene",
           "examples": [
             "As she reached the top of the hiking trail, she was rewarded with a breathtaking sight of the valley below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sign",
       "word": "sign",
       "senses": [
         {
-          "id": "sense-b01fda88",
-          "pos": "noun",
+          "id": "sense-b0032110",
+          "pos": "n.",
           "meaningZh": "跡象；徵兆",
-          "definitionEn": "a perceptible indication of something, such as a visible clue that something has happened, which is not immediately apparent",
           "examples": [
             "When I walked into the kitchen and saw the broken glass on the floor, it was a sign that someone had dropped a dish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9e873bc9",
-          "pos": "noun",
+          "id": "sense-42fd3f41",
+          "pos": "n.",
           "meaningZh": "符號；記號",
-          "definitionEn": "a character that indicates a relation between quantities",
           "examples": [
             "In mathematics, the plus (+) sign signifies addition between two numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4",
-        "textbookTitle": "龍騰 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "simple",
       "word": "simple",
       "senses": [
         {
-          "id": "sense-4d3ce0ea",
-          "pos": "adjective",
+          "id": "sense-b609c15e",
+          "pos": "adj.",
           "meaningZh": "簡單的；容易的",
-          "definitionEn": "Not complex or involved; uncomplicated.",
           "examples": [
             "The instructions for assembling the furniture were very simple. Even someone with no prior experience could easily put it together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7cba1478",
-          "pos": "adjective",
+          "id": "sense-d4ce82a4",
+          "pos": "adj.",
           "meaningZh": "樸素的；簡樸的",
-          "definitionEn": "Not adorned or embellished; plain.",
           "examples": [
             "She preferred a simple dress for the wedding instead of a flashy one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "since",
       "word": "since",
       "senses": [
         {
-          "id": "sense-7cd3de43",
-          "pos": "conjunction",
+          "id": "sense-a1f961e3",
+          "pos": "conj.",
           "meaningZh": "自從；從……以來",
-          "definitionEn": "from the time in the past when",
           "examples": [
             "Since we have been friends for years, let's celebrate our friendship with a party!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fa46ec06",
-          "pos": "conjunction",
+          "id": "sense-1d4175e6",
+          "pos": "conj.",
           "meaningZh": "因為；既然",
-          "definitionEn": "because; as",
           "examples": [
             "Since I woke up late, I missed the bus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sing",
       "word": "sing",
       "senses": [
         {
-          "id": "sense-20ea3ec6",
-          "pos": "verb",
+          "id": "sense-be7c612b",
+          "pos": "v.",
           "meaningZh": "唱歌；歌唱",
-          "definitionEn": "to produce musical sounds with the voice",
           "examples": [
             "She loves to sing in the shower every morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8d9b1e03",
-          "pos": "verb",
+          "id": "sense-27e91b64",
+          "pos": "v.",
           "meaningZh": "演唱；用歌聲表現",
-          "definitionEn": "to perform music or a song with one’s voice",
           "examples": [
             "The musician’s voice quivered with emotion as she began to sing the opening notes of the ballad."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "singer",
       "word": "singer",
       "senses": [
         {
-          "id": "sense-0571a3d3",
-          "pos": "noun",
+          "id": "sense-e9480caf",
+          "pos": "n.",
           "meaningZh": "歌手；歌唱者",
-          "definitionEn": "a person who sings, especially professionally or as a hobby",
           "examples": [
             "The singer captivated the audience with her powerful vocals and stage presence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sir",
       "word": "sir",
       "senses": [
         {
-          "id": "sense-ac289616",
-          "pos": "interjection",
+          "id": "sense-31e8589c",
+          "pos": "interj.",
           "meaningZh": "先生（敬稱）",
-          "definitionEn": "Used as a polite or respectful way of addressing a man.",
           "examples": [
             "Excuse me, Sir, could you please direct me to the nearest bank?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-046322ab",
-          "pos": "noun",
+          "id": "sense-55afef47",
+          "pos": "n.",
           "meaningZh": "爵士（頭銜）",
-          "definitionEn": "A title used before the name of a knight or baronet.",
           "examples": [
             "Sir Edward was respected by all for his bravery and chivalry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sister",
       "word": "sister",
       "senses": [
         {
-          "id": "sense-1fdc3056",
-          "pos": "noun",
+          "id": "sense-7d10bcfa",
+          "pos": "n.",
           "meaningZh": "姊妹；姐姐；妹妹",
-          "definitionEn": "a female person who has the same parents as another person",
           "examples": [
             "My sister and I share a strong bond and always support each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f25f85b9",
-          "pos": "noun",
+          "id": "sense-dc3b4afd",
+          "pos": "n.",
           "meaningZh": "（同組織的）女性成員；姊妹",
-          "definitionEn": "a female person who is a fellow member of a sorority or labor union or other group",
           "examples": [
             "At the sorority meeting, Sarah's sister welcomed all the new members with a heartfelt speech."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sit",
       "word": "sit",
       "senses": [
         {
-          "id": "sense-e8399e27",
-          "pos": "verb",
+          "id": "sense-9da6619a",
+          "pos": "v.",
           "meaningZh": "坐下；就坐",
-          "definitionEn": "take a seat",
           "examples": [
             "Please sit down before the movie starts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d7579fee",
-          "pos": "verb",
+          "id": "sense-c4fc6ccb",
+          "pos": "v.",
           "meaningZh": "坐著；就座",
-          "definitionEn": "be seated",
           "examples": [
             "Please sit down and make yourself comfortable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "size",
       "word": "size",
       "senses": [
         {
-          "id": "sense-c5bd79f5",
-          "pos": "noun",
+          "id": "sense-f474096d",
+          "pos": "n.",
           "meaningZh": "尺寸；大小",
-          "definitionEn": "how big or small something is",
           "examples": [
             "What size shoes do you wear?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ddb1f520",
-          "pos": "noun",
+          "id": "sense-38fa57e8",
+          "pos": "n.",
           "meaningZh": "膠料；填料（用於填縫或上漿）",
-          "definitionEn": "a substance used to fill pores or stiffen materials",
           "examples": [
             "Before painting the walls, it is essential to apply a coat of size to ensure a smooth and even finish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skirt",
       "word": "skirt",
       "senses": [
         {
-          "id": "sense-7943a69f",
-          "pos": "noun",
+          "id": "sense-a8d9d5b7",
+          "pos": "n.",
           "meaningZh": "裙子；裙",
-          "definitionEn": "a garment worn mainly by girls and women, hanging from the waist and covering the part of the body below the waist",
           "examples": [
             "She wore a flowy floral skirt to the garden party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-085eebe7",
-          "pos": "noun",
+          "id": "sense-ab57622f",
+          "pos": "n.",
           "meaningZh": "（衣物下擺）裙擺部分",
-          "definitionEn": "a piece of cloth that forms the lower part of a garment",
           "examples": [
             "I wore a short skirt to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sky",
       "word": "sky",
       "senses": [
         {
-          "id": "sense-4e650b6e",
-          "pos": "noun",
+          "id": "sense-bbe7f4a2",
+          "pos": "n.",
           "meaningZh": "天空；天際",
-          "definitionEn": "the part of the atmosphere that can be seen from the earth; the empty space above us where the sun, moon, stars, and clouds are located",
           "examples": [
             "The sky turned pink and purple as the sun set over the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c1c1009d",
-          "pos": "verb",
+          "id": "sense-c5551e1a",
+          "pos": "v.",
           "meaningZh": "輕拋入空中；高飛",
-          "definitionEn": "to throw or toss something lightly into the air",
           "examples": [
             "The kids like to sky their frisbee back and forth at the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sleep",
       "word": "sleep",
       "senses": [
         {
-          "id": "sense-b4fa7cf9",
-          "pos": "noun",
+          "id": "sense-47b4bb61",
+          "pos": "n.",
           "meaningZh": "睡眠；睡覺",
-          "definitionEn": "a period of rest during which you do not notice what is happening around you",
           "examples": [
             "After pulling an all-nighter studying for exams, Emily finally got a good night's sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-58df0c3e",
-          "pos": "noun",
+          "id": "sense-a4dd2126",
+          "pos": "n.",
           "meaningZh": "睡著的時間；入眠期",
-          "definitionEn": "the time when you are sleeping",
           "examples": [
             "After a long day at work, I couldn't wait to crawl into bed and get a good night's sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slim",
       "word": "slim",
       "senses": [
         {
-          "id": "sense-3014465e",
-          "pos": "adjective",
+          "id": "sense-611c4300",
+          "pos": "adj.",
           "meaningZh": "苗條的；纖細的",
-          "definitionEn": "being delicately or slenderly built",
           "examples": [
             "Jane's slim figure made her the perfect candidate for modeling."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c98ce408",
-          "pos": "adjective",
+          "id": "sense-db8f2d82",
+          "pos": "adj.",
           "meaningZh": "微小的；渺茫的",
-          "definitionEn": "small in quantity",
           "examples": [
             "She had a slim chance of winning the lottery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slow",
       "word": "slow",
       "senses": [
         {
-          "id": "sense-1c3a3372",
-          "pos": "adjective",
+          "id": "sense-e20a0d34",
+          "pos": "adj.",
           "meaningZh": "緩慢的；遲緩的",
-          "definitionEn": "moving or operating at a low speed; not quick or fast",
           "examples": [
             "The traffic was slow due to the heavy rain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8f86d5de",
-          "pos": "adverb",
+          "id": "sense-1effc783",
+          "pos": "adv.",
           "meaningZh": "緩慢地；慢慢地",
-          "definitionEn": "at a slow speed; not quickly",
           "examples": [
             "He drove slow and carefully on the icy road to avoid any accidents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "small",
       "word": "small",
       "senses": [
         {
-          "id": "sense-8c71ec46",
-          "pos": "adjective",
+          "id": "sense-b7ea88d8",
+          "pos": "adj.",
           "meaningZh": "小的；微小的",
-          "definitionEn": "of limited size or amount",
           "examples": [
             "She lived in a small apartment with just one bedroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cb7ee43f",
-          "pos": "adjective",
+          "id": "sense-8f4e5b2d",
+          "pos": "adj.",
           "meaningZh": "小而夠用的；不大卻適當的",
-          "definitionEn": "not large but sufficient",
           "examples": [
             "The small house was cozy and perfect for two people."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "smart",
       "word": "smart",
       "senses": [
         {
-          "id": "sense-b289415f",
-          "pos": "adjective",
+          "id": "sense-3c32c2f5",
+          "pos": "adj.",
           "meaningZh": "聰明的；機智的",
-          "definitionEn": "having or showing a quick-witted intelligence",
           "examples": [
             "During the debate, Sarah demonstrated her intelligence by providing smart, well-thought-out arguments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-01cdb29f",
-          "pos": "adjective",
+          "id": "sense-ff670de5",
+          "pos": "adj.",
           "meaningZh": "智慧型的；自動化的",
-          "definitionEn": "capable of automated and self-directed action",
           "examples": [
             "The smart home system automatically adjusts the temperature based on the time of day and the occupants' preferences."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "smell",
       "word": "smell",
       "senses": [
         {
-          "id": "sense-612aaa8b",
-          "pos": "noun",
+          "id": "sense-6bdbc383",
+          "pos": "n.",
           "meaningZh": "氣味；香味",
-          "definitionEn": "an odor or scent, especially a pleasant one",
           "examples": [
             "The smell of freshly baked cookies filled the kitchen, making everyone's mouths water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d93cc586",
-          "pos": "noun",
+          "id": "sense-5524104e",
+          "pos": "n.",
           "meaningZh": "嗅覺；聞的能力",
-          "definitionEn": "the faculty or sense that enables us to distinguish scents and odors",
           "examples": [
             "As soon as I walked into the kitchen, I was greeted with the delightful smell of freshly baked bread."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "smile",
       "word": "smile",
       "senses": [
         {
-          "id": "sense-c2719461",
-          "pos": "noun",
+          "id": "sense-023d6361",
+          "pos": "n.",
           "meaningZh": "微笑；笑容",
-          "definitionEn": "an expression on a person’s face that shows pleasure or amusement, characterized by turning up the corners of the mouth",
           "examples": [
             "After a long day at work, Emily's face lit up with a beautiful smile as she saw her children waiting for her at the front door."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e8acec24",
-          "pos": "verb",
+          "id": "sense-6c35e59d",
+          "pos": "v.",
           "meaningZh": "微笑；露出笑容",
-          "definitionEn": "to express with a smile",
           "examples": [
             "After receiving the surprise gift, she couldn't help but smile from ear to ear."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "smoke",
+      "word": "smoke",
+      "senses": [
+        {
+          "id": "sense-3248d264",
+          "pos": "n.",
+          "meaningZh": "煙；煙霧",
+          "examples": [
+            "The campers breathed in the smoke from the campfire."
+          ]
+        },
+        {
+          "id": "sense-da41a9c6",
+          "pos": "n.",
+          "meaningZh": "（燃燒產生的）濃煙；熱氣",
+          "examples": [
+            "The smoke from the factory chimney billowed out and darkened the sky."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "snake",
+      "word": "snake",
+      "senses": [
+        {
+          "id": "sense-4c46efc8",
+          "pos": "n.",
+          "meaningZh": "蛇；毒蛇",
+          "examples": [
+            "While hiking, we came across a snake on the trail. One of our group members knew how to identify venomous snakes and warned us to keep a safe distance."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "snow",
+      "word": "snow",
+      "senses": [
+        {
+          "id": "sense-fff0766c",
+          "pos": "n.",
+          "meaningZh": "雪；降雪",
+          "examples": [
+            "The ski resort had to close for the day due to heavy snowfall."
+          ]
+        },
+        {
+          "id": "sense-f7fd8894",
+          "pos": "n.",
+          "meaningZh": "積雪；雪地",
+          "examples": [
+            "We built a snowman in the front yard after a heavy snowfall."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

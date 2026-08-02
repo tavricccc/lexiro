@@ -16,50 +16,53 @@ service cloud.firestore {
         && request.resource.data.ownerId == uid;
     }
 
-    function validSet() {
-      return request.resource.data.keys().hasOnly([
-        'id', 'setName', 'difficulty', 'items', 'createdAt', 'updatedAt',
-        'folderId', 'ownerId', 'schemaVersion', 'checksum'
-      ])
-        && request.resource.data.id is string
-        && request.resource.data.setName is string
-        && request.resource.data.setName.size() > 0
-        && request.resource.data.difficulty is number
-        && request.resource.data.items is list
-        && request.resource.data.items.size() > 0
-        && request.resource.data.items.size() <= 500
-        && request.resource.data.schemaVersion == 2
-        && request.resource.data.checksum is string;
-    }
-
     function validProgress() {
       return request.resource.data.keys().hasOnly([
-        'setId', 'cards', 'updatedAt', 'ownerId', 'schemaVersion'
+        'cards', 'updatedAt', 'ownerId', 'schemaVersion'
         ])
-        && request.resource.data.setId is string
         && request.resource.data.cards is map
-        && request.resource.data.schemaVersion == 2;
+        && request.resource.data.updatedAt is string
+        && request.resource.data.schemaVersion == 3;
     }
 
     function validStats() {
       return request.resource.data.keys().hasOnly([
-        'totalReviews', 'correctReviews', 'streakDays', 'longestStreak',
-        'xp', 'level', 'lastStudyDate', 'dailyGoal', 'dailyWordGoal',
-        'dailyQuestionGoal', 'todayReviews', 'todayCorrectReviews',
-        'todayLearningReviews', 'todayLearningCorrectReviews',
-        'todayQuestionReviews', 'todayQuestionCorrectReviews', 'achievements',
+        'totalMemoryReviews', 'correctMemoryReviews', 'totalQuestionReviews',
+        'correctQuestionReviews', 'streakDays', 'longestStreak', 'xp', 'level',
+        'lastStudyDate', 'dailyWordGoal', 'dailyQuestionGoal',
+        'todayMemoryReviews', 'todayMemoryCorrectReviews',
+        'todayQuestionReviews', 'todayQuestionCorrectReviews', 'questionStats',
+        'questionStatsBySense',
+        'dailyHistory',
         'updatedAt', 'ownerId', 'schemaVersion'
       ])
-        && request.resource.data.totalReviews is number
-        && request.resource.data.correctReviews is number
+        && request.resource.data.totalMemoryReviews is number
+        && request.resource.data.correctMemoryReviews is number
+        && request.resource.data.totalQuestionReviews is number
+        && request.resource.data.correctQuestionReviews is number
+        && request.resource.data.streakDays is number
+        && request.resource.data.longestStreak is number
         && request.resource.data.xp is number
         && request.resource.data.level is number
-        && request.resource.data.todayCorrectReviews is number
-        && request.resource.data.todayLearningReviews is number
-        && request.resource.data.todayLearningCorrectReviews is number
+        && request.resource.data.lastStudyDate is string
+        && request.resource.data.dailyWordGoal is number
+        && request.resource.data.dailyQuestionGoal is number
+        && request.resource.data.todayMemoryReviews is number
+        && request.resource.data.todayMemoryCorrectReviews is number
         && request.resource.data.todayQuestionReviews is number
         && request.resource.data.todayQuestionCorrectReviews is number
-        && request.resource.data.schemaVersion == 2;
+        && request.resource.data.questionStats is map
+        && request.resource.data.questionStatsBySense is map
+        && request.resource.data.dailyHistory is map
+        && request.resource.data.updatedAt is string
+        && request.resource.data.schemaVersion == 3;
+    }
+
+    function validSectionItems() {
+      // Firestore Rules cannot iterate through maps nested in arbitrary lists.
+      // Canonical item schemas are validated before writes by the client parser.
+      return request.resource.data.section in ['words', 'sets', 'memberships', 'folders', 'questions']
+        && request.resource.data.items is list;
     }
 
     function validLibraryChunk(chunkId) {
@@ -67,24 +70,18 @@ service cloud.firestore {
         'ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items'
       ])
         && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 2
+        && request.resource.data.schemaVersion == 3
         && request.resource.data.chunkId == chunkId
         && request.resource.data.updatedAt is string
         && request.resource.data.checksum is string
-        && request.resource.data.section in ['words', 'memberships', 'folders', 'questions']
-        && request.resource.data.items is list;
+        && request.resource.data.section in ['words', 'sets', 'memberships', 'folders', 'questions']
+        && request.resource.data.items is list
+        && validSectionItems();
     }
 
     match /users/{uid} {
       allow read, delete: if signedIn(uid);
       allow create, update: if signedIn(uid) && request.resource.data.ownerId == uid;
-
-      match /sets/{setId} {
-        allow read: if signedIn(uid);
-        allow create: if ownerCreate(uid) && validSet();
-        allow update: if ownerUpdate(uid) && validSet();
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
-      }
 
       match /library/{chunkId} {
         allow read: if signedIn(uid);
@@ -93,34 +90,36 @@ service cloud.firestore {
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
-      match /progress/{setId} {
+      match /progress/global {
         allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid) && validProgress();
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
-      match /stats/{statId} {
+      match /stats/summary {
         allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid) && validStats();
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
-      match /stats/daily/{day} {
+      match /settings/ai {
         allow read: if signedIn(uid);
-        allow create, update: if signedIn(uid) && request.resource.data.keys().hasOnly([
-          'date', 'reviews', 'correctReviews', 'questionReviews',
-          'correctQuestionReviews', 'xpEarned', 'updatedAt', 'ownerId', 'schemaVersion'
-        ])
+        allow create, update: if signedIn(uid)
+          && request.resource.data.keys().hasOnly([
+            'enabled', 'provider', 'baseUrl', 'model', 'batchSize',
+            'updatedAt', 'ownerId', 'schemaVersion'
+          ])
           && request.resource.data.ownerId == uid
-          && request.resource.data.date == day
-          && request.resource.data.reviews is number
-          && request.resource.data.correctReviews is number
-          && (!request.resource.data.keys().hasAny(['questionReviews']) || request.resource.data.questionReviews is number)
-          && (!request.resource.data.keys().hasAny(['correctQuestionReviews']) || request.resource.data.correctQuestionReviews is number)
-          && request.resource.data.xpEarned is number
-          && request.resource.data.schemaVersion == 2;
+          && request.resource.data.enabled is bool
+          && request.resource.data.provider in ['openai', 'anthropic', 'google', 'custom']
+          && request.resource.data.baseUrl is string
+          && request.resource.data.model is string
+          && request.resource.data.batchSize is number
+          && request.resource.data.updatedAt is string
+          && request.resource.data.schemaVersion == 3;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
+
     }
   }
 }

@@ -1,1408 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 68,
   "words": [
-    {
-      "wordKey": "chin",
-      "word": "chin",
-      "senses": [
-        {
-          "id": "sense-fd6168dd",
-          "pos": "noun",
-          "meaningZh": "下巴；頦部",
-          "definitionEn": "the part of the face at the bottom of the jaw",
-          "examples": [
-            "The boxer's punch landed squarely on his opponent's chin, knocking him out cold."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-21cb8951",
-          "pos": "noun",
-          "meaningZh": "下頜突出部分",
-          "definitionEn": "the protruding part of the lower jaw",
-          "examples": [
-            "She rested her chin on her hand as she listened intently to the lecture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "chip",
-      "word": "chip",
-      "senses": [
-        {
-          "id": "sense-3dec389b",
-          "pos": "noun",
-          "meaningZh": "洋芋片；薯條；晶片",
-          "definitionEn": "a thin slice of fried potato; (also) a small piece of silicon holding electronic circuits",
-          "examples": [
-            "He opened a bag of chips to share with his friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-a08dc8e2",
-          "pos": "noun",
-          "meaningZh": "牛糞片（曬乾的）",
-          "definitionEn": "a piece of dried bovine dung",
-          "examples": [
-            "After stepping in a pile of cow manure, she had a chip on her shoe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "chop",
-      "word": "chop",
-      "senses": [
-        {
-          "id": "sense-7402de8a",
-          "pos": "verb",
-          "meaningZh": "劈；砍；剁",
-          "definitionEn": "cut with a hacking tool",
-          "examples": [
-            "The lumberjack used his axe to chop down the tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-4d8f4337",
-          "pos": "noun",
-          "meaningZh": "（網球）切球；下旋球",
-          "definitionEn": "a tennis return made with a downward motion that puts backspin on the ball",
-          "examples": [
-            "In the tennis match, Rafael executed a perfect chop which caused the ball to bounce low and spin away from his opponent, making it difficult to return."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "cigarette",
-      "word": "cigarette",
-      "senses": [
-        {
-          "id": "sense-05be9c16",
-          "pos": "noun",
-          "meaningZh": "香菸；紙菸",
-          "definitionEn": "A slender roll of finely cut tobacco wrapped in paper, designed to be smoked.",
-          "examples": [
-            "Thomas took a break from work and stepped outside to enjoy a cigarette."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L5",
-        "textbookTitle": "翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "cinema",
-      "word": "cinema",
-      "senses": [
-        {
-          "id": "sense-0f3d0554",
-          "pos": "noun",
-          "meaningZh": "電影院",
-          "definitionEn": "a theater where films are shown",
-          "examples": [
-            "I love going to the cinema with my friends on weekends to watch the latest movies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-03261d06",
-          "pos": "noun",
-          "meaningZh": "電影（媒介）；電影業",
-          "definitionEn": "a medium that disseminates moving pictures",
-          "examples": [
-            "The cinema was packed over the weekend with moviegoers eager to see the latest blockbuster release."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "circus",
       "word": "circus",
       "senses": [
         {
-          "id": "sense-9b817079",
-          "pos": "noun",
+          "id": "sense-2f1b6c15",
+          "pos": "n.",
           "meaningZh": "馬戲團；流動表演團",
-          "definitionEn": "a travelling company of entertainers, including trained animals",
           "examples": [
             "We took our children to the circus and they loved watching the acrobats, clowns, and trained animals perform."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-59894043",
-          "pos": "noun",
+          "id": "sense-f01a0bb7",
+          "pos": "n.",
           "meaningZh": "馬戲表演；雜技演出",
-          "definitionEn": "a performance of acrobats, clowns, and trained animals given by a travelling company",
           "examples": [
             "We took the kids to the circus and they were amazed by the acrobats, clowns, and trained animals performing in the big top."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "citizen",
       "word": "citizen",
       "senses": [
         {
-          "id": "sense-cce23c95",
-          "pos": "noun",
+          "id": "sense-7b605845",
+          "pos": "n.",
           "meaningZh": "公民；國民",
-          "definitionEn": "a person who is either born or has been given legal rights to live permanently in a country and has the rights and protection of that country",
           "examples": [
             "As a citizen of the United States, John was entitled to vote and receive protection from the government."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "civil",
       "word": "civil",
       "senses": [
         {
-          "id": "sense-5b75b851",
-          "pos": "adjective",
+          "id": "sense-a4a3a5bb",
+          "pos": "adj.",
           "meaningZh": "國內的；公民之間的",
-          "definitionEn": "of or occurring within the state or between or among citizens of the state",
           "examples": [
             "The civil war between the Northern and Southern states in the United States occurred due to differences in political views and economic interests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c29fb371",
-          "pos": "adjective",
+          "id": "sense-65d1333b",
+          "pos": "adj.",
           "meaningZh": "有秩序的；守社會規範的",
-          "definitionEn": "of or in a condition of social order",
           "examples": [
             "During the protest, the police urged everyone to remain civil and not resort to violence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clay",
       "word": "clay",
       "senses": [
         {
-          "id": "sense-63e07560",
-          "pos": "noun",
+          "id": "sense-c75b9e18",
+          "pos": "n.",
           "meaningZh": "黏土；陶土",
-          "definitionEn": "A type of soil that is composed of very fine mineral particles and is used to make pottery, bricks and ceramics.",
           "examples": [
             "The potter molded the clay into a beautiful vase on the pottery wheel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b8aacb07",
-          "pos": "noun",
+          "id": "sense-a01f911f",
+          "pos": "n.",
           "meaningZh": "克萊（美國政治人物亨利·克萊）",
-          "definitionEn": "A United States politician who worked to keep the country united and peaceful by negotiating between free and slave states.",
           "examples": [
             "Henry Clay played a crucial role in crafting the Compromise of 1850, which helped maintain peace between the North and South by addressing the issue of slavery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cleaner",
       "word": "cleaner",
       "senses": [
         {
-          "id": "sense-657160b1",
-          "pos": "noun",
+          "id": "sense-82bc38dd",
+          "pos": "n.",
           "meaningZh": "清潔工；打掃人員",
-          "definitionEn": "a person whose job is to clean things",
           "examples": [
             "The cleaner diligently mopped the floors and sanitized every surface in the office building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-abb42b80",
-          "pos": "noun",
+          "id": "sense-28fecf14",
+          "pos": "n.",
           "meaningZh": "乾洗店業者；洗衣業者",
-          "definitionEn": "a person who operates a dry-cleaning business",
           "examples": [
             "The cleaner examined the suit for any stains before proceeding to dry-clean it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "client",
       "word": "client",
       "senses": [
         {
-          "id": "sense-0dcea046",
-          "pos": "noun",
+          "id": "sense-7b50e28a",
+          "pos": "n.",
           "meaningZh": "客戶；委託人",
-          "definitionEn": "a person or organization that uses the professional advice or services of another",
           "examples": [
             "The advertising agency's biggest client is a multinational corporation who relies on their expertise for their marketing campaigns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-45e93ec7",
-          "pos": "noun",
+          "id": "sense-782981e3",
+          "pos": "n.",
           "meaningZh": "（電腦）客戶端；用戶端",
-          "definitionEn": "(computer science) a computer or program that uses the services provided by another computer or program, typically to request data from a server",
           "examples": [
             "In a web browsing scenario, the user's computer acts as the client, sending requests to a web server to retrieve and display web pages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clinic",
       "word": "clinic",
       "senses": [
         {
-          "id": "sense-a3c09f9f",
-          "pos": "noun",
+          "id": "sense-c96ae383",
+          "pos": "n.",
           "meaningZh": "門診診所；醫療中心",
-          "definitionEn": "a healthcare facility for outpatient care",
           "examples": [
             "She visited the clinic for a routine check-up and was pleased with the courteous staff and the convenient location."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1c9dac94",
-          "pos": "noun",
+          "id": "sense-5c982418",
+          "pos": "n.",
           "meaningZh": "專科診所；聯合診所",
-          "definitionEn": "a medical establishment run by a group of medical specialists",
           "examples": [
             "I visited the dental clinic to get my tooth extracted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L3",
-        "textbookTitle": "三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clip",
       "word": "clip",
       "senses": [
         {
-          "id": "sense-c09ad860",
-          "pos": "noun",
+          "id": "sense-171ad9d0",
+          "pos": "n.",
           "meaningZh": "夾子；迴紋針",
-          "definitionEn": "a small fastener used to hold things together",
           "examples": [
             "I used a clip to hold my papers together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7cdc5f34",
-          "pos": "verb",
+          "id": "sense-ce2d4e77",
+          "pos": "v.",
           "meaningZh": "用夾子夾住；別住",
-          "definitionEn": "to attach with a clip",
           "examples": [
             "She clipped her hair back with a barrette."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "closet",
       "word": "closet",
       "senses": [
         {
-          "id": "sense-290a719c",
-          "pos": "noun",
+          "id": "sense-cff97970",
+          "pos": "n.",
           "meaningZh": "衣櫥；衣櫃",
-          "definitionEn": "a tall piece of furniture that provides storage space for clothes; usually has a door and rails or hooks for hanging clothes",
           "examples": [
             "I need to organize my clothes and create more space in my closet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-01caa1ae",
-          "pos": "noun",
+          "id": "sense-3cfebdea",
+          "pos": "n.",
           "meaningZh": "儲藏間；小儲物室",
-          "definitionEn": "a small room (or recess) or cabinet used for storage space",
           "examples": [
             "She opened the closet and took out her favorite dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clothe",
       "word": "clothe",
       "senses": [
         {
-          "id": "sense-879bd7bb",
-          "pos": "verb",
+          "id": "sense-fc4f3a16",
+          "pos": "v.",
           "meaningZh": "為…穿衣；替…穿衣",
-          "definitionEn": "to dress or put clothes on someone or something",
           "examples": [
             "After the swim, she dried off and quickly clothe herself in warm towels."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2a7f3f0e",
-          "pos": "verb",
+          "id": "sense-b896d8ff",
+          "pos": "v.",
           "meaningZh": "提供衣物；給…穿戴",
-          "definitionEn": "to provide with clothes or covering; dress; array",
           "examples": [
             "The parents loved to clothe their newborn baby in soft, cozy outfits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clown",
       "word": "clown",
       "senses": [
         {
-          "id": "sense-b533b1f0",
-          "pos": "noun",
+          "id": "sense-c1e885bc",
+          "pos": "n.",
           "meaningZh": "小丑；丑角",
-          "definitionEn": "a person who amuses others by ridiculous behavior",
           "examples": [
             "The children at the birthday party were delighted by the clown’s silly jokes and funny antics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d460155b",
-          "pos": "verb",
+          "id": "sense-4cf1fef2",
+          "pos": "v.",
           "meaningZh": "耍寶；胡鬧",
-          "definitionEn": "to act or behave in a silly or foolish manner",
           "examples": [
             "During the meeting, Jack couldn’t resist clowning around, so his boss reprimanded him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clue",
       "word": "clue",
       "senses": [
         {
-          "id": "sense-3e970983",
-          "pos": "noun",
+          "id": "sense-4201f10b",
+          "pos": "n.",
           "meaningZh": "線索；提示",
-          "definitionEn": "evidence or information that helps to solve a problem or mystery",
           "examples": [
             "The detective found a clue at the crime scene that led him to discover the identity of the murderer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coach",
       "word": "coach",
       "senses": [
         {
-          "id": "sense-d99b8408",
-          "pos": "noun",
+          "id": "sense-1169d01c",
+          "pos": "n.",
           "meaningZh": "（體育）教練；指導員",
-          "definitionEn": "(sports) someone in charge of training an athlete or a team",
           "examples": [
             "The coach analyzed the player's performance and provided guidance on how to improve their skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7",
-        "textbookTitle": "龍騰 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cock",
       "word": "cock",
       "senses": [
         {
-          "id": "sense-fb025b91",
-          "pos": "noun",
+          "id": "sense-d2bd03cd",
+          "pos": "n.",
           "meaningZh": "雄鳥；公雞",
-          "definitionEn": "a male bird",
           "examples": [
             "The proud rooster strutted around the farmyard, his vibrant plumage catching the sunlight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9101f64a",
-          "pos": "noun",
+          "id": "sense-f02adba6",
+          "pos": "n.",
           "meaningZh": "公雞；雄雞",
-          "definitionEn": "a rooster",
           "examples": [
             "At the break of dawn, the cock crowed to awaken the farm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cocktail",
       "word": "cocktail",
       "senses": [
         {
-          "id": "sense-7eef7177",
-          "pos": "noun",
+          "id": "sense-ff548547",
+          "pos": "n.",
           "meaningZh": "雞尾酒；調酒",
-          "definitionEn": "a short mixed drink",
           "examples": [
             "The bartender mixed up a delicious cocktail for the customer to sip on."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b1f294b7",
-          "pos": "noun",
+          "id": "sense-790af4e7",
+          "pos": "n.",
           "meaningZh": "開胃小菜；餐前點心",
-          "definitionEn": "an appetizer served as a first course at a meal",
           "examples": [
             "The waiter brought us a tray of bite-sized appetizers, including shrimp cocktail with cocktail sauce, before our main course."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coconut",
       "word": "coconut",
       "senses": [
         {
-          "id": "sense-e2ba85c2",
-          "pos": "noun",
+          "id": "sense-6b6e37ba",
+          "pos": "n.",
           "meaningZh": "椰子",
-          "definitionEn": "the large hard-shelled nut of a palm tree, with white flesh and liquid inside",
           "examples": [
             "We drank fresh juice straight from a coconut on the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-aa968d6d",
-          "pos": "noun",
+          "id": "sense-5ff91bb5",
+          "pos": "n.",
           "meaningZh": "椰子樹；椰樹",
-          "definitionEn": "a tall palm tree that grows coconuts as fruit, widely planted in tropical regions",
           "examples": [
             "In the tropical islands, the locals rely on the coconut tree for its versatile uses, such as using the leaves for shelter, the wood for building, and the coconuts for food and drinks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-16068407",
-          "pos": "noun",
+          "id": "sense-4ab427cf",
+          "pos": "n.",
           "meaningZh": "椰肉；椰子果肉",
-          "definitionEn": "the white, edible meat of a coconut, often shredded and used in cakes and curries",
           "examples": [
             "I added some freshly grated coconut to the curry to enhance its flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collar",
       "word": "collar",
       "senses": [
         {
-          "id": "sense-2c3eb2d1",
-          "pos": "noun",
+          "id": "sense-1f57dd69",
+          "pos": "n.",
           "meaningZh": "衣領",
-          "definitionEn": "the part of a shirt or coat that fits around the neck",
           "examples": [
             "He turned up his collar against the cold wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-bbc3a688",
-          "pos": "noun",
+          "id": "sense-847355c0",
+          "pos": "n.",
           "meaningZh": "（動物頸部的）環形標記；追蹤頸圈",
-          "definitionEn": "a band or marking that encircles the neck of an animal (in zoology)",
           "examples": [
             "The researcher placed a GPS collar around the neck of the lion to track its movements in the wild."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-bce8bc81",
-          "pos": "verb",
+          "id": "sense-35b9cae4",
+          "pos": "v.",
           "meaningZh": "抓住（衣領）；逮捕",
-          "definitionEn": "to seize by the neck or collar",
           "examples": [
             "The police officer swiftly collared the suspect and placed him under arrest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collection",
       "word": "collection",
       "senses": [
         {
-          "id": "sense-e3995641",
-          "pos": "noun",
+          "id": "sense-c2484e3d",
+          "pos": "n.",
           "meaningZh": "收藏品；蒐藏",
-          "definitionEn": "several things grouped together or considered as a whole",
           "examples": [
             "My grandmother has an extensive collection of antique dolls."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1d6455f1",
-          "pos": "noun",
+          "id": "sense-8855de05",
+          "pos": "n.",
           "meaningZh": "合集；文集",
-          "definitionEn": "a publication containing a variety of works",
           "examples": [
             "I visited the library and borrowed a collection of short stories written by different authors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "colony",
       "word": "colony",
       "senses": [
         {
-          "id": "sense-e9bb2894",
-          "pos": "noun",
+          "id": "sense-e373cf14",
+          "pos": "n.",
           "meaningZh": "（生物）群落；群體",
-          "definitionEn": "a group of organisms of the same type living or growing together",
           "examples": [
             "The ants created a colony in the empty space behind the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-02bf821c",
-          "pos": "noun",
+          "id": "sense-3cd9339c",
+          "pos": "n.",
           "meaningZh": "（細菌）菌落；菌群",
-          "definitionEn": "a group of organisms grown from a single parent cell, especially bacteria",
           "examples": [
             "After streaking the bacteria on the agar plate, a visible colony was observed after 24 hours of incubation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "colorful",
       "word": "colorful",
       "senses": [
         {
-          "id": "sense-ae5304c9",
-          "pos": "adjective",
+          "id": "sense-f44745d5",
+          "pos": "adj.",
           "meaningZh": "多彩多姿的；豐富有趣的",
-          "definitionEn": "striking in variety and interest",
           "examples": [
             "The gardens were a riot of colorful flowers, making it a joyful place for visitors to take photographs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9406dc86",
-          "pos": "adjective",
+          "id": "sense-33af853a",
+          "pos": "adj.",
           "meaningZh": "色彩鮮豔的；繽紛的",
-          "definitionEn": "having striking color",
           "examples": [
             "The garden was full of colorful flowers like bright red roses, yellow daisies and purple lilacs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L4",
-        "textbookTitle": "三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "column",
       "word": "column",
       "senses": [
         {
-          "id": "sense-150bb4a9",
-          "pos": "noun",
+          "id": "sense-03a3caf9",
+          "pos": "n.",
           "meaningZh": "圓柱；柱子",
-          "definitionEn": "a vertical cylindrical monument that stands alone",
           "examples": [
             "The ancient Greeks built tall marble columns to support the roofs of their temples."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "comfort",
       "word": "comfort",
       "senses": [
         {
-          "id": "sense-9c01a704",
-          "pos": "noun",
+          "id": "sense-23611db4",
+          "pos": "n.",
           "meaningZh": "安慰；慰藉",
-          "definitionEn": "a feeling of freedom from worry or disappointment",
           "examples": [
             "After a long stressful day, sinking into a plush armchair with a hot cup of tea brought me a deep sense of comfort."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-380228a2",
-          "pos": "noun",
+          "id": "sense-7e915f92",
+          "pos": "n.",
           "meaningZh": "舒適；安逸",
-          "definitionEn": "a state of being relaxed and feeling no pain",
           "examples": [
             "After a long day at work, I like to soak in a warm bath to find comfort and ease my sore muscles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9",
-        "textbookTitle": "龍騰 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "comma",
       "word": "comma",
       "senses": [
         {
-          "id": "sense-fcf81b16",
-          "pos": "noun",
+          "id": "sense-f32e5f8e",
+          "pos": "n.",
           "meaningZh": "逗號；逗點",
-          "definitionEn": "a punctuation mark used to separate elements within a sentence’s grammatical structure",
           "examples": [
             "In the sentence, ’She ate a sandwich, some chips, and a drink,’ the comma separates the items in the list."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7fec139b",
-          "pos": "noun",
+          "id": "sense-20303203",
+          "pos": "n.",
           "meaningZh": "黃鉤蛺蝶（翅膀有逗號紋的蝴蝶）",
-          "definitionEn": "a species of butterfly with a comma-shaped mark on each hind wing’s underside",
           "examples": [
             "Whilst on a nature walk with the local butterfly group, they pointed out a comma butterfly resting on a nearby leaf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "committee",
       "word": "committee",
       "senses": [
         {
-          "id": "sense-63ca8f2d",
-          "pos": "noun",
+          "id": "sense-e87789d9",
+          "pos": "n.",
           "meaningZh": "委員會；（小組）工作委員",
-          "definitionEn": "a group of people appointed for a specific function, typically consisting of members of a larger group.",
           "examples": [
             "The school’s fundraising committee consisted of parents, teachers, and community members who worked together to organize events and raise money for school programs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a93ca920",
-          "pos": "noun",
+          "id": "sense-0001fb64",
+          "pos": "n.",
           "meaningZh": "自發性組織；特別委員會",
-          "definitionEn": "a self-constituted organization to promote something or to carry out a particular task.",
           "examples": [
             "The committee was formed to organize the annual charity event and ensure its success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "communicate",
       "word": "communicate",
       "senses": [
         {
-          "id": "sense-1ebbc9dc",
-          "pos": "verb",
+          "id": "sense-0d4db62d",
+          "pos": "v.",
           "meaningZh": "傳遞（訊息）；溝通",
-          "definitionEn": "transfer to another",
           "examples": [
             "Sarah used sign language to communicate with her deaf sister."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-0d7ff13e",
-          "pos": "verb",
+          "id": "sense-18293219",
+          "pos": "v.",
           "meaningZh": "表達（思想或感情）；傳達",
-          "definitionEn": "transmit thoughts or feelings",
           "examples": [
             "In order to effectively communicate his ideas, John prepared a well-structured presentation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2",
-        "textbookTitle": "龍騰 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "comparison",
+      "word": "comparison",
+      "senses": [
+        {
+          "id": "sense-83138b86",
+          "pos": "n.",
+          "meaningZh": "比較；對照",
+          "examples": [
+            "In order to make a well-informed decision, it is important to conduct a thorough comparison of all available options."
+          ]
+        },
+        {
+          "id": "sense-82a46db9",
+          "pos": "n.",
+          "meaningZh": "比較行為；對比",
+          "examples": [
+            "In order to make an informed decision, it's important to make a thorough comparison of different products before purchasing."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "compete",
+      "word": "compete",
+      "senses": [
+        {
+          "id": "sense-9ea96446",
+          "pos": "v.",
+          "meaningZh": "競爭；角逐",
+          "examples": [
+            "In order to win the championship, the two teams will compete against each other in a thrilling match."
+          ]
+        },
+        {
+          "id": "sense-8b5991a8",
+          "pos": "v.",
+          "meaningZh": "參賽；比賽",
+          "examples": [
+            "In order to prove his skills, John decided to compete in the regional chess tournament."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "complain",
+      "word": "complain",
+      "senses": [
+        {
+          "id": "sense-23fdc565",
+          "pos": "v.",
+          "meaningZh": "抱怨；投訴",
+          "examples": [
+            "She complained to the manager about the poor service she received at the restaurant."
+          ]
+        },
+        {
+          "id": "sense-80698bd7",
+          "pos": "v.",
+          "meaningZh": "訴說（病痛）；申訴",
+          "examples": [
+            "She complained of a severe headache and had to take a painkiller."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "complaint",
+      "word": "complaint",
+      "senses": [
+        {
+          "id": "sense-1da675b3",
+          "pos": "n.",
+          "meaningZh": "投訴；申訴",
+          "examples": [
+            "After receiving a faulty product, she called customer service to file a complaint about its poor quality and request a replacement."
+          ]
+        },
+        {
+          "id": "sense-b430cf26",
+          "pos": "n.",
+          "meaningZh": "不滿；抱怨",
+          "examples": [
+            "After waiting for hours, the customer lodged a complaint about the slow service at the restaurant."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "concert",
+      "word": "concert",
+      "senses": [
+        {
+          "id": "sense-26d7a7ee",
+          "pos": "n.",
+          "meaningZh": "音樂會；演唱會",
+          "examples": [
+            "Last night, I went to a concert at the grand theater downtown. The venue was filled with enthusiastic fans, and the musicians delivered an unforgettable performance with spectacular staging and lighting."
+          ]
+        },
+        {
+          "id": "sense-f2ede000",
+          "pos": "v.",
+          "meaningZh": "協調安排；共同籌劃",
+          "examples": [
+            "Emily and Sarah decided to concert their efforts in organizing a charity concert to raise funds for a local orphanage."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

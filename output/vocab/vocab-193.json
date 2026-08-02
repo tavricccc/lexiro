@@ -1,1366 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 193,
   "words": [
-    {
-      "wordKey": "resent",
-      "word": "resent",
-      "senses": [
-        {
-          "id": "sense-2f7ecf5b",
-          "pos": "verb",
-          "meaningZh": "憤恨；不滿；心懷怨恨",
-          "definitionEn": "feel bitter or indignant about",
-          "examples": [
-            "After being passed over for a promotion, Mary couldn't help but resent her colleague's success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-21d33f40",
-          "pos": "verb",
-          "meaningZh": "嫉妒；忿恨",
-          "definitionEn": "wish ill or allow unwillingly",
-          "examples": [
-            "After being overlooked for a promotion, she couldn't help but resent her coworker's success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "resentment",
-      "word": "resentment",
-      "senses": [
-        {
-          "id": "sense-094f3bfb",
-          "pos": "noun",
-          "meaningZh": "怨恨；憤恨；積怨",
-          "definitionEn": "a feeling of deep and bitter anger and ill-will, usually as a result of a perceived unfairness or injustice",
-          "examples": [
-            "After being passed over for a promotion yet again, Sarah could not hide her resentment towards her colleagues who were given the opportunity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "reside",
-      "word": "reside",
-      "senses": [
-        {
-          "id": "sense-18e6d0c0",
-          "pos": "verb",
-          "meaningZh": "居住；定居",
-          "definitionEn": "to live or stay in a particular place",
-          "examples": [
-            "He chose to reside in a cozy little cottage by the seaside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-479b1f8b",
-          "pos": "verb",
-          "meaningZh": "落戶；安家",
-          "definitionEn": "to have one’s home in a particular place or community",
-          "examples": [
-            "John and Emma decided to reside in a quiet suburban neighborhood after they got married."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "resistant",
-      "word": "resistant",
-      "senses": [
-        {
-          "id": "sense-c6ce15cb",
-          "pos": "adjective",
-          "meaningZh": "耐受的；適應力強的",
-          "definitionEn": "able to tolerate environmental conditions or physiological stress",
-          "examples": [
-            "The plant is resistant to drought and can survive in arid conditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-104d6513",
-          "pos": "adjective",
-          "meaningZh": "有抗性的；不受影響的",
-          "definitionEn": "impervious to being affected",
-          "examples": [
-            "The doctor prescribed an antibiotic for the infection, but it turned out to be resistant and did not improve the patient’s condition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "respective",
-      "word": "respective",
-      "senses": [
-        {
-          "id": "sense-39db566c",
-          "pos": "adjective",
-          "meaningZh": "各自的；分別的",
-          "definitionEn": "considered individually; relating to each of the separate people or things that have been mentioned",
-          "examples": [
-            "The students presented their respective projects to the class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
     {
       "wordKey": "restoration",
       "word": "restoration",
       "senses": [
         {
-          "id": "sense-4a03c7e9",
-          "pos": "noun",
+          "id": "sense-2fd0a289",
+          "pos": "n.",
           "meaningZh": "修復；恢復原狀",
-          "definitionEn": "the act of returning something to its former or original state or condition",
           "examples": [
             "The restoration of the ancient temple took several years and required extensive research and careful reconstruction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-57688742",
-          "pos": "noun",
+          "id": "sense-b66e88a2",
+          "pos": "n.",
           "meaningZh": "復原後的狀態；修復完成",
-          "definitionEn": "the state of having been restored to its former or original state or condition",
           "examples": [
             "The restoration of the old historic building to its former architectural glory took over a year of planning and execution."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "restrain",
       "word": "restrain",
       "senses": [
         {
-          "id": "sense-708e34e4",
-          "pos": "verb",
+          "id": "sense-dbe98de7",
+          "pos": "v.",
           "meaningZh": "約束；控制；制止",
-          "definitionEn": "close within bounds, limit, or restrict from movement",
           "examples": [
             "The flight attendant had to restrain the unruly passenger who was causing a disturbance on the plane."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a6425f4b",
-          "pos": "verb",
+          "id": "sense-3c061b06",
+          "pos": "v.",
           "meaningZh": "限制；節制",
-          "definitionEn": "place limits on (extent or access)",
           "examples": [
             "To restrain his spending, he made a strict budget for himself every month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "restraint",
       "word": "restraint",
       "senses": [
         {
-          "id": "sense-d09fedb3",
-          "pos": "noun",
+          "id": "sense-02995c83",
+          "pos": "n.",
           "meaningZh": "自制；克制；抑制",
-          "definitionEn": "discipline in personal and social activities",
           "examples": [
             "Even though he was furious, he showed great restraint and remained calm during the argument."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ec3a8733",
-          "pos": "noun",
+          "id": "sense-65fc1243",
+          "pos": "n.",
           "meaningZh": "束縛；拘束",
-          "definitionEn": "the state of being physically constrained",
           "examples": [
             "The handcuffs were used as a restraint to prevent the suspect from escaping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "retort",
       "word": "retort",
       "senses": [
         {
-          "id": "sense-31e4d66c",
-          "pos": "noun",
+          "id": "sense-cec81a9c",
+          "pos": "n.",
           "meaningZh": "反駁；機智的反嗆",
-          "definitionEn": "a quick, often witty or critical reply to a question or remark",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-0d1e373b",
-          "pos": "verb",
+          "id": "sense-5b16e224",
+          "pos": "v.",
           "meaningZh": "反嗆；頂回去",
-          "definitionEn": "to respond to a remark or accusation, usually in a sharp or witty manner",
           "examples": [
             "When someone accused her of cheating, she didn’t hesitate to retort with evidence proving her innocence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "retrieve",
       "word": "retrieve",
       "senses": [
         {
-          "id": "sense-eece0277",
-          "pos": "verb",
+          "id": "sense-f00c6996",
+          "pos": "v.",
           "meaningZh": "找回；取回",
-          "definitionEn": "to get back something that was lost or stolen",
           "examples": [
             "James was able to retrieve his wallet from the taxi he left it in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c7e2c962",
-          "pos": "verb",
+          "id": "sense-3925cabf",
+          "pos": "v.",
           "meaningZh": "尋回；去拿回來",
-          "definitionEn": "to fetch or bring something back from a distant place or a specific location",
           "examples": [
             "After realizing he left his wallet at the restaurant, Mark quickly retraced his steps to retrieve it before it closed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revelation",
       "word": "revelation",
       "senses": [
         {
-          "id": "sense-6a704820",
-          "pos": "noun",
+          "id": "sense-943456d8",
+          "pos": "n.",
           "meaningZh": "驚人的揭露；令人震驚的事實",
-          "definitionEn": "an enlightening or astonishing disclosure",
           "examples": [
             "The sudden revelation that her long-lost sister was actually living next door left her speechless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7e6dd152",
-          "pos": "noun",
+          "id": "sense-0fc884ea",
+          "pos": "n.",
           "meaningZh": "神啟；天啟；啟示",
-          "definitionEn": "communication of knowledge to man by a divine or supernatural agency",
           "examples": [
             "The ancient scrolls held a revelation about the existence of a hidden underground city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revival",
       "word": "revival",
       "senses": [
         {
-          "id": "sense-3cc07a05",
-          "pos": "noun",
+          "id": "sense-f63c147d",
+          "pos": "n.",
           "meaningZh": "復興；復甦",
-          "definitionEn": "the act or process of bringing something back to life or relevance",
           "examples": [
             "The renovation of the old stadium led to a revival of interest in sports in the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8f864b9e",
-          "pos": "noun",
+          "id": "sense-46ebde86",
+          "pos": "n.",
           "meaningZh": "再度興盛；重新活躍",
-          "definitionEn": "bringing again into activity and prominence",
           "examples": [
             "The opening of a new music venue in the neighborhood brought a revival of the local music scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revive",
       "word": "revive",
       "senses": [
         {
-          "id": "sense-414bb695",
-          "pos": "verb",
+          "id": "sense-b84f44b4",
+          "pos": "v.",
           "meaningZh": "使復甦；使甦醒",
-          "definitionEn": "bring someone or something back to life or consciousness",
           "examples": [
             "The paramedics were able to revive the patient after he had a heart attack."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8bc28b91",
-          "pos": "verb",
+          "id": "sense-b0556758",
+          "pos": "v.",
           "meaningZh": "恢復精力；振作",
-          "definitionEn": "restore energy, vitality, or strength to someone or something",
           "examples": [
             "After a long nap, he felt revived and ready to take on the day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revolt",
       "word": "revolt",
       "senses": [
         {
-          "id": "sense-93a67cd9",
-          "pos": "noun",
+          "id": "sense-2a18e1f9",
+          "pos": "n.",
           "meaningZh": "起義；叛亂",
-          "definitionEn": "organized opposition to authority; a conflict in which one faction tries to wrest control from another",
           "examples": [
             "The citizens decided to revolt against the corrupt government officials and demanded new elections."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-815e29f7",
-          "pos": "verb",
+          "id": "sense-f96d172e",
+          "pos": "v.",
           "meaningZh": "革命；反抗",
-          "definitionEn": "make revolution",
           "examples": [
             "The oppressed people revolted against their oppressors and established a new government."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revolve",
       "word": "revolve",
       "senses": [
         {
-          "id": "sense-153994be",
-          "pos": "verb",
+          "id": "sense-ac86eccf",
+          "pos": "v.",
           "meaningZh": "旋轉；繞行",
-          "definitionEn": "to move in a circle or curve around a central point, or to make something move in this way",
           "examples": [
             "The Earth revolves around the sun, completing one orbit in approximately 365 days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rigorous",
       "word": "rigorous",
       "senses": [
         {
-          "id": "sense-4d8a7cc0",
-          "pos": "adjective",
+          "id": "sense-dff659f4",
+          "pos": "adj.",
           "meaningZh": "嚴格的；嚴謹的",
-          "definitionEn": "demanding strict attention to rules and procedures",
           "examples": [
             "The chemistry professor gave us a rigorous lab assignment, requiring us to follow a detailed procedure and accurately record our results."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a3bb00c7",
-          "pos": "adjective",
+          "id": "sense-1a75c85b",
+          "pos": "adj.",
           "meaningZh": "精確的；一絲不苟的",
-          "definitionEn": "rigidly accurate; allowing no deviation from a standard",
           "examples": [
             "The teacher's grading system was so rigorous that even the smallest mistake would result in points deducted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ripple",
       "word": "ripple",
       "senses": [
         {
-          "id": "sense-630c01cd",
-          "pos": "noun",
+          "id": "sense-f87a8c6d",
+          "pos": "n.",
           "meaningZh": "漣漪；水波",
-          "definitionEn": "A small wave or series of waves on the surface of water",
           "examples": [
             "As she dropped the pebble into the pond, ripples spread out in concentric circles, gently disturbing the serene surface."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6ce556dc",
-          "pos": "verb",
+          "id": "sense-0d6160ff",
+          "pos": "v.",
           "meaningZh": "泛起漣漪；起波紋",
-          "definitionEn": "To move or flow in a way that creates small waves or ripples",
           "examples": [
             "The stone caused the water's surface to ripple as it skipped across."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rivalry",
       "word": "rivalry",
       "senses": [
         {
-          "id": "sense-9d31d010",
-          "pos": "noun",
+          "id": "sense-4fc46134",
+          "pos": "n.",
           "meaningZh": "競爭；較勁",
-          "definitionEn": "competition for the same objective or for superiority in the same field",
           "examples": [
             "The rivalry between the two soccer teams was intense, with both teams striving to win the championship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "roam",
       "word": "roam",
       "senses": [
         {
-          "id": "sense-960a9358",
-          "pos": "verb",
+          "id": "sense-d2418ef9",
+          "pos": "v.",
           "meaningZh": "漫遊；四處流浪",
-          "definitionEn": "to move around a place without a clear destination, often in search of food or work",
           "examples": [
             "After losing his job, he began to roam the city in search of employment opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "robust",
       "word": "robust",
       "senses": [
         {
-          "id": "sense-bd783e35",
-          "pos": "adjective",
+          "id": "sense-e2292667",
+          "pos": "adj.",
           "meaningZh": "強健的；堅固的",
-          "definitionEn": "sturdy, strong, and well-built",
           "examples": [
             "The robust bridge withstood the heavy storm and remained intact."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ddec2534",
-          "pos": "adjective",
+          "id": "sense-2e1312ca",
+          "pos": "adj.",
           "meaningZh": "耐用的；抗逆能力強的",
-          "definitionEn": "able to withstand difficult conditions or overcome obstacles",
           "examples": [
             "The project team demonstrated their robustness by successfully completing the complex assignment ahead of schedule, despite facing numerous technical challenges."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rotate",
       "word": "rotate",
       "senses": [
         {
-          "id": "sense-cc314453",
-          "pos": "verb",
+          "id": "sense-1f179956",
+          "pos": "v.",
           "meaningZh": "自轉；繞軸旋轉",
-          "definitionEn": "to turn on an axis or a center, typically in a circular or spherical manner",
           "examples": [
             "The Earth rotates on its axis once every 24 hours, causing day and night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1ee09a04",
-          "pos": "verb",
+          "id": "sense-f1758d8f",
+          "pos": "v.",
           "meaningZh": "使旋轉；翻面",
-          "definitionEn": "to cause something to turn on its axis or center",
           "examples": [
             "To evenly cook the chicken, you need to rotate it on the grill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rotation",
       "word": "rotation",
       "senses": [
         {
-          "id": "sense-362348ca",
-          "pos": "noun",
+          "id": "sense-e8eb064a",
+          "pos": "n.",
           "meaningZh": "旋轉；轉動",
-          "definitionEn": "the act of turning around a central point or axis",
           "examples": [
             "The rotation of the Earth causes day and night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d4090098",
-          "pos": "noun",
+          "id": "sense-ac1a9518",
+          "pos": "n.",
           "meaningZh": "輪替；輪班制度",
-          "definitionEn": "the process of regularly changing the person who does a particular job, so that it is done at different times by different people",
           "examples": [
             "In order to maintain fairness and prevent burnout, the company implemented a rotation policy where employees take turns working on different projects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c2ce3192",
-          "pos": "noun",
+          "id": "sense-0139ec12",
+          "pos": "n.",
           "meaningZh": "資產輪動；板塊輪換",
-          "definitionEn": "the practice of shifting investments from one sector to another, in order to take advantage of changing economic conditions",
           "examples": [
             "Investors are advised to consider rotation during periods of economic uncertainty, moving their funds from industries that may be negatively affected to those that are more likely to thrive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "royalty",
       "word": "royalty",
       "senses": [
         {
-          "id": "sense-c3348bf2",
-          "pos": "noun",
+          "id": "sense-934dd512",
+          "pos": "n.",
           "meaningZh": "王室成員；皇族",
-          "definitionEn": "royal persons collectively",
           "examples": [
             "The wedding of Prince Harry and Meghan Markle was attended by various members of royalty from around the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-11cb2b24",
-          "pos": "noun",
+          "id": "sense-49b6a984",
+          "pos": "n.",
           "meaningZh": "版稅；專利使用費",
-          "definitionEn": "payment to the holder of a patent or copyright or resource for the right to use their property",
           "examples": [
             "The artist receives a five percent royalty on every copy of their painting that is sold."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rubbish",
       "word": "rubbish",
       "senses": [
         {
-          "id": "sense-a8624749",
-          "pos": "noun",
+          "id": "sense-ffa35591",
+          "pos": "n.",
           "meaningZh": "垃圾；廢棄物",
-          "definitionEn": "worthless material that should be thrown away",
           "examples": [
             "After cleaning out the garage, we filled multiple bags with old toys, broken tools, and other rubbish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7cde99cf",
-          "pos": "noun",
+          "id": "sense-a162b5d7",
+          "pos": "n.",
           "meaningZh": "廢話；胡言亂語",
-          "definitionEn": "nonsensical or meaningless words or ideas",
           "examples": [
             "During the heated debate, the candidate shared nothing but rubbish, failing to provide any coherent or logical arguments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rugged",
       "word": "rugged",
       "senses": [
         {
-          "id": "sense-834d7db0",
-          "pos": "adjective",
+          "id": "sense-9aa27914",
+          "pos": "adj.",
           "meaningZh": "堅固耐用的；強壯的",
-          "definitionEn": "sturdy and strong in constitution or construction; enduring",
           "examples": [
             "The hiker braved the rugged terrain of the mountain, his sturdy boots enduring the rocky path."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7b7ac841",
-          "pos": "adjective",
+          "id": "sense-94048dbd",
+          "pos": "adj.",
           "meaningZh": "崎嶇的；地勢險峻的",
-          "definitionEn": "topographically very uneven",
           "examples": [
             "The hikers struggled to navigate through the rugged terrain of the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ruthless",
       "word": "ruthless",
       "senses": [
         {
-          "id": "sense-beb91301",
-          "pos": "adjective",
+          "id": "sense-5217d7d5",
+          "pos": "adj.",
           "meaningZh": "無情的；冷酷的",
-          "definitionEn": "showing no mercy or compassion for others",
           "examples": [
             "The ruthless dictator spared no one and executed even those who posed no threat to his regime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "salute",
       "word": "salute",
       "senses": [
         {
-          "id": "sense-06c4380d",
-          "pos": "noun",
+          "id": "sense-f5af91a9",
+          "pos": "n.",
           "meaningZh": "軍禮；敬禮",
-          "definitionEn": "a formal military gesture of respect",
           "examples": [
             "The soldiers stood at attention and gave a salute to the general."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ff661aa8",
-          "pos": "noun",
+          "id": "sense-c79e7354",
+          "pos": "n.",
           "meaningZh": "致敬；表揚",
-          "definitionEn": "an act of honor or courteous recognition",
           "examples": [
             "As the national anthem played, the soldiers stood at attention and gave a salute to the flag."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "salvage",
       "word": "salvage",
       "senses": [
         {
-          "id": "sense-787dbafb",
-          "pos": "noun",
+          "id": "sense-e3e8e577",
+          "pos": "n.",
           "meaningZh": "（海難）打撈救援；搶救",
-          "definitionEn": "the act of rescuing a ship, its crew, or its cargo from a shipwreck, fire, or other peril",
           "examples": [
             "The coast guard worked fervently to salvage the sunken vessel and retrieve any valuables that could still be intact."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2c2eeda4",
-          "pos": "noun",
+          "id": "sense-90fb30b8",
+          "pos": "n.",
           "meaningZh": "搶救財物；搶救行動",
-          "definitionEn": "the act of saving goods or property that are in danger of being lost or destroyed",
           "examples": [
             "The firefighters worked tirelessly to salvage the priceless artifacts from the burning museum."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sanitation",
       "word": "sanitation",
       "senses": [
         {
-          "id": "sense-6a75cc76",
-          "pos": "noun",
+          "id": "sense-be970d1a",
+          "pos": "n.",
           "meaningZh": "環境衛生；清潔維護",
-          "definitionEn": "the act of keeping places clean and healthy",
           "examples": [
             "The city hired a team of sanitation workers to regularly empty the trash bins and clean the streets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4a7a8871",
-          "pos": "noun",
+          "id": "sense-23de6145",
+          "pos": "n.",
           "meaningZh": "消毒；殺菌處理",
-          "definitionEn": "the process of making something free of germs",
           "examples": [
             "Proper sanitation practices, such as regularly cleaning surfaces and washing hands, are essential in preventing the spread of infectious diseases."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "savage",
       "word": "savage",
       "senses": [
         {
-          "id": "sense-7eaad3c8",
-          "pos": "adjective",
+          "id": "sense-17e29f46",
+          "pos": "adj.",
           "meaningZh": "兇猛的；凶暴的",
-          "definitionEn": "wild and threatening",
           "examples": [
             "The barking dog appeared savage to the little girl."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scenic",
+      "word": "scenic",
+      "senses": [
+        {
+          "id": "sense-408f2658",
+          "pos": "adj.",
+          "meaningZh": "風景優美的；景色宜人的",
+          "examples": [
+            "The hike through the National Park was incredibly scenic, with breathtaking views of snow-capped mountains and lush green valleys."
+          ]
+        },
+        {
+          "id": "sense-eb8bb335",
+          "pos": "adj.",
+          "meaningZh": "舞台的；與舞台布景相關的",
+          "examples": [
+            "The play's scenic design captivated the audience, transporting them to a picturesque village in the French countryside."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scorn",
+      "word": "scorn",
+      "senses": [
+        {
+          "id": "sense-4b9b8104",
+          "pos": "n.",
+          "meaningZh": "輕蔑；鄙視",
+          "examples": [
+            "He showed nothing but scorn towards the new hire and made her feel unwelcome."
+          ]
+        },
+        {
+          "id": "sense-602a3ef3",
+          "pos": "v.",
+          "meaningZh": "鄙視；輕視",
+          "examples": [
+            "Simon couldn’t hide his scorn for the boring presentation and decided to leave mid-speech."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scrape",
+      "word": "scrape",
+      "senses": [
+        {
+          "id": "sense-9684ae90",
+          "pos": "v.",
+          "meaningZh": "刮掉；磨損表面",
+          "examples": [
+            "He accidentally scraped the paint off the car when he brushed against the brick wall."
+          ]
+        },
+        {
+          "id": "sense-e24aae8c",
+          "pos": "v.",
+          "meaningZh": "擦傷；刮傷",
+          "examples": [
+            "He scraped his knee when he fell off his skateboard."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "screwdriver",
+      "word": "screwdriver",
+      "senses": [
+        {
+          "id": "sense-935315c4",
+          "pos": "n.",
+          "meaningZh": "螺絲起子",
+          "examples": [
+            "When assembling the new bookshelf, make sure to use a screwdriver to tighten the screws properly."
+          ]
+        },
+        {
+          "id": "sense-80f6d4d3",
+          "pos": "n.",
+          "meaningZh": "螺絲起子調酒；伏特加柳橙汁",
+          "examples": [
+            "At the party, she ordered a refreshing screwdriver and enjoyed the tangy combination of vodka and orange juice."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scroll",
+      "word": "scroll",
+      "senses": [
+        {
+          "id": "sense-a4b9d115",
+          "pos": "n.",
+          "meaningZh": "卷軸；卷冊",
+          "examples": [
+            "The ancient manuscript was carefully unrolled from the scroll and examined by scholars."
+          ]
+        },
+        {
+          "id": "sense-ba00f0f7",
+          "pos": "v.",
+          "meaningZh": "捲動（螢幕）；滾動",
+          "examples": [
+            "To find the information she was looking for on the website, Emily had to scroll through several pages of text."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

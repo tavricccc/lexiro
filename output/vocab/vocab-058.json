@@ -1,1393 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 58,
   "words": [
-    {
-      "wordKey": "silence",
-      "word": "silence",
-      "senses": [
-        {
-          "id": "sense-8a68a3d6",
-          "pos": "noun",
-          "meaningZh": "沉默；靜默",
-          "definitionEn": "the state of being silent",
-          "examples": [
-            "The silence was so profound in the museum that even a small cough echoed through the halls."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-398dd292",
-          "pos": "noun",
-          "meaningZh": "無聲；寂靜",
-          "definitionEn": "the absence of sound",
-          "examples": [
-            "The silence in the library was so profound that even the sound of a pin dropping could be heard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L9",
-        "textbookTitle": "三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "silent",
-      "word": "silent",
-      "senses": [
-        {
-          "id": "sense-aff21bc6",
-          "pos": "adjective",
-          "meaningZh": "安靜的；無聲的",
-          "definitionEn": "not intended to be heard; not made to produce a sound",
-          "examples": [
-            "During the exam, the classroom was silent, with students focused on their work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L9",
-        "textbookTitle": "三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "silly",
-      "word": "silly",
-      "senses": [
-        {
-          "id": "sense-af807302",
-          "pos": "adjective",
-          "meaningZh": "愚蠢的；荒唐的",
-          "definitionEn": "foolish or absurd, often in a humorous way",
-          "examples": [
-            "During the school talent show, Sam dressed up as a clown and performed a silly dance that had everyone in stitches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-fa957196",
-          "pos": "adjective",
-          "meaningZh": "欠考慮的；不明智的",
-          "definitionEn": "showing a lack of good sense or judgment",
-          "examples": [
-            "Running in the rain without an umbrella is a silly thing to do."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "silver",
-      "word": "silver",
-      "senses": [
-        {
-          "id": "sense-471e5b42",
-          "pos": "noun",
-          "meaningZh": "銀；白銀",
-          "definitionEn": "a valuable metal that has a shiny, white appearance and is used to make jewelry, coins, and silverware",
-          "examples": [
-            "Lisa received a beautiful silver necklace for her birthday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-1736770d",
-          "pos": "noun",
-          "meaningZh": "銀製品；銀器",
-          "definitionEn": "items made of silver, such as dishes, bowls, or utensils",
-          "examples": [
-            "For their wedding anniversary, they received a set of elegant silverware."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "similar",
-      "word": "similar",
-      "senses": [
-        {
-          "id": "sense-3ce33c9c",
-          "pos": "adjective",
-          "meaningZh": "相似的；類似的",
-          "definitionEn": "having the same or similar characteristics",
-          "examples": [
-            "The two dresses are similar in style and color."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-f9bb23a1",
-          "pos": "adjective",
-          "meaningZh": "（幾何）相似的",
-          "definitionEn": "(geometry) having the same shape and angle measurements, but not necessarily the same size or position",
-          "examples": [
-            "In a geometry class, the teacher used two triangles to demonstrate similar shapes. Although they were not identical in size or position, they had the exact same angles and proportions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8 +1",
-        "textbookTitle": "龍騰 B1·L8、三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "simply",
       "word": "simply",
       "senses": [
         {
-          "id": "sense-7e8d38ab",
-          "pos": "adverb",
+          "id": "sense-b98579a2",
+          "pos": "adv.",
           "meaningZh": "只是；僅僅",
-          "definitionEn": "only; merely",
           "examples": [
             "She didn't want anything elaborate for her birthday, simply some quality time with her family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e992fcf6",
-          "pos": "adverb",
+          "id": "sense-8bfe377b",
+          "pos": "adv.",
           "meaningZh": "完全；絕對",
-          "definitionEn": "completely or absolutely",
           "examples": [
             "He simply refused to listen to her explanation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "single",
       "word": "single",
       "senses": [
         {
-          "id": "sense-91e22639",
-          "pos": "adjective",
+          "id": "sense-37f64895",
+          "pos": "adj.",
           "meaningZh": "單一的；單獨的",
-          "definitionEn": "only one; not one of several",
           "examples": [
             "There was a single light burning in the window."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b695ab19",
-          "pos": "noun",
+          "id": "sense-c567d2cd",
+          "pos": "n.",
           "meaningZh": "（棒球）一壘安打",
-          "definitionEn": "a base hit on which the batter stops safely at first base",
           "examples": [
             "In the bottom of the ninth inning, the batter hit a single, allowing the winning run to score."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skill",
       "word": "skill",
       "senses": [
         {
-          "id": "sense-03f149bb",
-          "pos": "noun",
+          "id": "sense-87f4df0f",
+          "pos": "n.",
           "meaningZh": "技能；技巧",
-          "definitionEn": "an ability that has been acquired by training or practice",
           "examples": [
             "She has excellent communication skills, which help her in her job as a sales representative."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a31c0af5",
-          "pos": "noun",
+          "id": "sense-b68f45e9",
+          "pos": "n.",
           "meaningZh": "能力；專業技術",
-          "definitionEn": "ability to produce solutions in some problem domain or perform a task efficiently",
           "examples": [
             "John’s skill in programming helped him develop the app in a short period of time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skilled",
       "word": "skilled",
       "senses": [
         {
-          "id": "sense-54551fcb",
-          "pos": "adjective",
+          "id": "sense-722452c7",
+          "pos": "adj.",
           "meaningZh": "熟練的；有專業技術的",
-          "definitionEn": "having or showing specialized knowledge or ability in a particular area",
           "examples": [
             "The skilled carpenter crafted the intricate designs on the wooden table with precision and accuracy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skin",
       "word": "skin",
       "senses": [
         {
-          "id": "sense-c003cc6b",
-          "pos": "noun",
+          "id": "sense-ae2bea73",
+          "pos": "n.",
           "meaningZh": "皮膚；肌膚",
-          "definitionEn": "the natural outer covering of a person’s or animal’s body that provides protection and sensation",
           "examples": [
             "When playing sports, it is important to wear protective gear to prevent any injuries to your skin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-bef7cd38",
-          "pos": "noun",
+          "id": "sense-8f6099c0",
+          "pos": "n.",
           "meaningZh": "（動物）皮；外皮",
-          "definitionEn": "the outermost layer of the body covering of a living animal",
           "examples": [
             "After spending a day at the beach, my skin was sunburned and needed some aloe vera."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sleepy",
       "word": "sleepy",
       "senses": [
         {
-          "id": "sense-9d65af2e",
-          "pos": "adjective",
+          "id": "sense-b64a9ada",
+          "pos": "adj.",
           "meaningZh": "想睡的；昏昏欲睡的",
-          "definitionEn": "tired and ready to fall asleep",
           "examples": [
             "After a long day of hiking, I felt really sleepy and couldn't keep my eyes open."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slide",
       "word": "slide",
       "senses": [
         {
-          "id": "sense-75e1fc31",
-          "pos": "verb",
+          "id": "sense-ae0667c0",
+          "pos": "v.",
           "meaningZh": "滑動；滑行",
-          "definitionEn": "to move smoothly along a surface while maintaining contact with it",
           "examples": [
             "The children screamed with joy as they slid down the water slide at the water park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7ccc8a89",
-          "pos": "verb",
+          "id": "sense-f492f928",
+          "pos": "v.",
           "meaningZh": "打滑；失控側滑",
-          "definitionEn": "to move obliquely or sideways, often in an uncontrolled manner",
           "examples": [
             "As the car hit a patch of ice, it began to slide uncontrollably across the road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slip",
       "word": "slip",
       "senses": [
         {
-          "id": "sense-ad3c86c8",
-          "pos": "verb",
+          "id": "sense-5dca0c85",
+          "pos": "v.",
           "meaningZh": "滑倒；打滑",
-          "definitionEn": "move obliquely or sideways, usually in an uncontrolled manner",
           "examples": [
             "She slipped on the wet floor and fell down the stairs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-77d034ed",
-          "pos": "noun",
+          "id": "sense-763ca37d",
+          "pos": "n.",
           "meaningZh": "失誤；口誤；筆誤",
-          "definitionEn": "a minor inadvertent mistake usually observed in speech or writing or in small accidents or memory lapses etc.",
           "examples": [
             "I made a slip of the tongue and accidentally called my teacher ’mom’."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5 +1",
-        "textbookTitle": "龍騰 B4·L5、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slipper",
       "word": "slipper",
       "senses": [
         {
-          "id": "sense-f71e4ab6",
-          "pos": "noun",
+          "id": "sense-d8ca594a",
+          "pos": "n.",
           "meaningZh": "拖鞋；室內鞋",
-          "definitionEn": "footwear that is easy to put on and take off and is usually worn indoors",
           "examples": [
             "After a long day at work, she slipped off her high heels and put on a comfortable pair of slippers to relax at home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1b074d41",
-          "pos": "noun",
+          "id": "sense-c403367d",
+          "pos": "n.",
           "meaningZh": "容易滑倒的人；滑腳者",
-          "definitionEn": "a person who slips or slides because of a loss of traction",
           "examples": [
             "She fell hard on the icy sidewalk and became a slipper with her feet sliding out from under her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slippers",
       "word": "slippers",
       "senses": [
         {
-          "id": "sense-aefea39f",
-          "pos": "noun",
+          "id": "sense-a1dd043f",
+          "pos": "n.",
           "meaningZh": "拖鞋；室內鞋",
-          "definitionEn": "footwear that is easy to put on and take off and is usually worn indoors",
           "examples": [
             "After a long day at work, she slipped off her high heels and put on a comfortable pair of slippers to relax at home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b9708e50",
-          "pos": "noun",
+          "id": "sense-905a14b0",
+          "pos": "n.",
           "meaningZh": "容易滑倒的人；滑腳者",
-          "definitionEn": "a person who slips or slides because of a loss of traction",
           "examples": [
             "She fell hard on the icy sidewalk and became a slipper with her feet sliding out from under her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "smooth",
       "word": "smooth",
       "senses": [
         {
-          "id": "sense-5d40589d",
-          "pos": "adjective",
+          "id": "sense-cfc4c5b9",
+          "pos": "adj.",
           "meaningZh": "平滑的；光滑的",
-          "definitionEn": "having a surface free from roughness or bumps or ridges or irregularities",
           "examples": [
             "The pebbles in the riverbed were so smooth that they felt like silk against my feet as I waded across."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a1198cd7",
-          "pos": "adjective",
+          "id": "sense-8087176b",
+          "pos": "adj.",
           "meaningZh": "順暢的；平穩的",
-          "definitionEn": "flowing or proceeding without jolts or turbulence",
           "examples": [
             "The boat sailed smoothly across the calm lake, barely causing a ripple in the water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L2",
-        "textbookTitle": "三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "snack",
       "word": "snack",
       "senses": [
         {
-          "id": "sense-f72e5e5c",
-          "pos": "noun",
+          "id": "sense-3b435c30",
+          "pos": "n.",
           "meaningZh": "點心；零食",
-          "definitionEn": "a small amount of food eaten between meals",
           "examples": [
             "I always carry a few nuts as a snack in case I get hungry between meals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-76cb91a9",
-          "pos": "verb",
+          "id": "sense-f22016d0",
+          "pos": "v.",
           "meaningZh": "吃點心；吃零食",
-          "definitionEn": "eat a snack or small amount of food between meals",
           "examples": [
             "After my workout, I like to snack on a handful of almonds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "snail",
       "word": "snail",
       "senses": [
         {
-          "id": "sense-ef81fd39",
-          "pos": "noun",
+          "id": "sense-5521b705",
+          "pos": "n.",
           "meaningZh": "蝸牛",
-          "definitionEn": "a small soft creature that moves slowly and has a hard shell on its back",
           "examples": [
             "A snail left a shiny trail across the garden path."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e4f5b1cd",
-          "pos": "verb",
+          "id": "sense-f5612292",
+          "pos": "v.",
           "meaningZh": "採集蝸牛",
-          "definitionEn": "to collect or gather snails",
           "examples": [
             "We went to the garden after the rain to snail for our escargot dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "snowy",
       "word": "snowy",
       "senses": [
         {
-          "id": "sense-e6d2baa2",
-          "pos": "adjective",
+          "id": "sense-507abace",
+          "pos": "adj.",
           "meaningZh": "被雪覆蓋的；積雪的",
-          "definitionEn": "covered with snow",
           "examples": [
             "The children built a snowman in the snowy backyard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4b6764ee",
-          "pos": "adjective",
+          "id": "sense-0a5aad6a",
+          "pos": "adj.",
           "meaningZh": "多雪的；下雪的",
-          "definitionEn": "marked by the presence of snow",
           "examples": [
             "The children went sledding on the snowy hill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "soap",
       "word": "soap",
       "senses": [
         {
-          "id": "sense-bcc28bf5",
-          "pos": "noun",
+          "id": "sense-9b494e31",
+          "pos": "n.",
           "meaningZh": "肥皂；香皂",
-          "definitionEn": "a cleansing agent made from the salts of vegetable or animal fats, used for washing oneself, clothes and household items",
           "examples": [
             "After a long day at work, I took a relaxing shower and lathered the soap all over my body to cleanse away the dirt and sweat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7d1c8064",
-          "pos": "verb",
+          "id": "sense-627466ef",
+          "pos": "v.",
           "meaningZh": "塗抹肥皂；用肥皂清洗",
-          "definitionEn": "to apply soap to something with the intention of cleaning it",
           "examples": [
             "She used a mild soap to wash her hands thoroughly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "soccer",
       "word": "soccer",
       "senses": [
         {
-          "id": "sense-7b8507e1",
-          "pos": "noun",
+          "id": "sense-11d18545",
+          "pos": "n.",
           "meaningZh": "足球（運動）",
-          "definitionEn": "a game played with a round ball by two teams of eleven players, in which the ball must be kicked or headed into the opponent’s goal to score points",
           "examples": [
             "The crowd cheered as the striker made a powerful kick, sending the ball soaring into the top corner of the net, scoring a goal for his team in the soccer match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "social",
       "word": "social",
       "senses": [
         {
-          "id": "sense-ca631902",
-          "pos": "adjective",
+          "id": "sense-5e612a08",
+          "pos": "adj.",
           "meaningZh": "社會的；與人群相關的",
-          "definitionEn": "relating to human society and its members",
           "examples": [
             "Attending parties and engaging in conversations with different groups of people is a common social activity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ddb43e1a",
-          "pos": "adjective",
+          "id": "sense-a47438e4",
+          "pos": "adj.",
           "meaningZh": "社交的；聯誼性的",
-          "definitionEn": "composed of sociable people or formed for the purpose of sociability",
           "examples": [
             "The social club organized a fundraising event to bring together like-minded individuals for a good cause."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "society",
       "word": "society",
       "senses": [
         {
-          "id": "sense-bf4d3d95",
-          "pos": "noun",
+          "id": "sense-b6bc7699",
+          "pos": "n.",
           "meaningZh": "社會；社群",
-          "definitionEn": "an extended group of people who share common customs, traditions, and beliefs and who are usually organized as a community or state",
           "examples": [
             "In a democratic society, citizens have the right to vote and participate in decision-making processes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fe520574",
-          "pos": "noun",
+          "id": "sense-7c6692c0",
+          "pos": "n.",
           "meaningZh": "（志同道合的）社團；協會",
-          "definitionEn": "a group of people who have a common interest or purpose and who come together to work towards achieving it",
           "examples": [
             "In order to promote literacy in our community, we formed a society of dedicated volunteers who organize reading programs and donate books."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sock",
       "word": "sock",
       "senses": [
         {
-          "id": "sense-a591928d",
-          "pos": "noun",
+          "id": "sense-bb8f6491",
+          "pos": "n.",
           "meaningZh": "短襪；襪子",
-          "definitionEn": "a covering for the foot, typically made of cotton or wool and designed to be worn inside a shoe; it usually reaches to between the ankle and the knee",
           "examples": [
             "In the winter, I always wear warm socks to keep my feet cozy and comfortable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5803dd43",
-          "pos": "verb",
+          "id": "sense-116dfc58",
+          "pos": "v.",
           "meaningZh": "用力打；猛揍",
-          "definitionEn": "to hit hard",
           "examples": [
             "During the boxing match, he delivered a powerful sock to his opponent's jaw."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "socks",
       "word": "socks",
       "senses": [
         {
-          "id": "sense-701b49b8",
-          "pos": "noun",
+          "id": "sense-afd383a4",
+          "pos": "n.",
           "meaningZh": "短襪；襪子",
-          "definitionEn": "a covering for the foot, typically made of cotton or wool and designed to be worn inside a shoe; it usually reaches to between the ankle and the knee",
           "examples": [
             "In the winter, I always wear warm socks to keep my feet cozy and comfortable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5ab00c24",
-          "pos": "verb",
+          "id": "sense-26cca0eb",
+          "pos": "v.",
           "meaningZh": "用力打；猛揍",
-          "definitionEn": "to hit hard",
           "examples": [
             "During the boxing match, he delivered a powerful sock to his opponent's jaw."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "soda",
       "word": "soda",
       "senses": [
         {
-          "id": "sense-cc444d64",
-          "pos": "noun",
+          "id": "sense-c26783bc",
+          "pos": "n.",
           "meaningZh": "汽水；碳酸飲料",
-          "definitionEn": "a sweet fizzy drink made with carbonated water and flavoring",
           "examples": [
             "I like to drink a refreshing soda on a hot summer day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-65a8b1a9",
-          "pos": "noun",
+          "id": "sense-365e68c1",
+          "pos": "n.",
           "meaningZh": "小蘇打；碳酸氫鈉（烘焙用）",
-          "definitionEn": "a white powder consisting of sodium bicarbonate and an acid, typically tartaric acid, used as a raising agent for cakes and breads",
           "examples": [
             "Before baking the cake, make sure you sift the flour, sugar, and soda together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "soft",
       "word": "soft",
       "senses": [
         {
-          "id": "sense-60e15407",
-          "pos": "adjective",
+          "id": "sense-f09f3263",
+          "pos": "adj.",
           "meaningZh": "柔軟的；鬆軟的",
-          "definitionEn": "yielding easily to pressure or weight",
           "examples": [
             "The snow was so soft that I sank up to my knees in it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-efe520f3",
-          "pos": "adjective",
+          "id": "sense-845f46f7",
+          "pos": "adj.",
           "meaningZh": "溫和的；輕柔的",
-          "definitionEn": "not harsh or severe; mild and pleasant",
           "examples": [
             "Her soft voice helped calm the child down."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "soil",
       "word": "soil",
       "senses": [
         {
-          "id": "sense-331bb7da",
-          "pos": "noun",
+          "id": "sense-048307be",
+          "pos": "n.",
           "meaningZh": "土壤；泥土",
-          "definitionEn": "the top layer of the earth’s surface, consisting of organic matter, minerals, and rocks, in which plants can grow",
           "examples": [
             "The farmer tilled the soil before planting the corn seeds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-41871838",
-          "pos": "verb",
+          "id": "sense-e7de9dd5",
+          "pos": "v.",
           "meaningZh": "弄髒；汙染",
-          "definitionEn": "make something dirty or stained",
           "examples": [
             "She accidentally spilled coffee on her white shirt, soil it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "solution",
       "word": "solution",
       "senses": [
         {
-          "id": "sense-c100c819",
-          "pos": "noun",
+          "id": "sense-5fb9eead",
+          "pos": "n.",
           "meaningZh": "解決方法；解答",
-          "definitionEn": "a way to solve a problem or deal with a difficult situation",
           "examples": [
             "When faced with a complex coding error, the programmer diligently went through the code, discovered the bug, and implemented a successful solution."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-19a73b58",
-          "pos": "noun",
+          "id": "sense-be5e04e4",
+          "pos": "n.",
           "meaningZh": "溶液；溶解液",
-          "definitionEn": "a liquid mixture in which a solid substance has been dissolved",
           "examples": [
             "I needed to unclog the drain, so I poured a solution of vinegar and baking soda down the pipe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +2",
-        "textbookTitle": "龍騰 B2·L2、三民 B2·L3、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "solve",
       "word": "solve",
       "senses": [
         {
-          "id": "sense-c3ef85f6",
-          "pos": "verb",
+          "id": "sense-800ea6e7",
+          "pos": "v.",
           "meaningZh": "解答；解決（問題）",
-          "definitionEn": "find the solution or answer to (a problem, question, or mystery)",
           "examples": [
             "After hours of trying to decipher the complicated puzzle, Sarah finally solved it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5dce3152",
-          "pos": "verb",
+          "id": "sense-b8f2edaf",
+          "pos": "v.",
           "meaningZh": "調解；化解（紛爭）",
-          "definitionEn": "settle or resolve (a problem, dispute, or contentious matter)",
           "examples": [
             "After hours of negotiation, the mediator was able to solve the dispute between the two parties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +2",
-        "textbookTitle": "龍騰 B2·L2、三民 B2·L3、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "somewhat",
+      "word": "somewhat",
+      "senses": [
+        {
+          "id": "sense-a5493926",
+          "pos": "adv.",
+          "meaningZh": "有些；相當程度上",
+          "examples": [
+            "He was somewhat disappointed when his favorite team lost the game by one point."
+          ]
+        },
+        {
+          "id": "sense-2594aa07",
+          "pos": "adv.",
+          "meaningZh": "稍微；有一點",
+          "examples": [
+            "I was somewhat disappointed by the ending of the movie."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sort",
+      "word": "sort",
+      "senses": [
+        {
+          "id": "sense-e74892c1",
+          "pos": "n.",
+          "meaningZh": "種類；類型；類別",
+          "examples": [
+            "In the library, books are sorted by genre, making it easier for readers to find their preferred types of books."
+          ]
+        },
+        {
+          "id": "sense-158d08db",
+          "pos": "n.",
+          "meaningZh": "大概；某種程度的例子",
+          "examples": [
+            "Imagine you are teaching someone how to organize their closet. You can say, 'To give you a better idea of how to sort your clothes, let's start with categorizing them by type, such as t-shirts, pants, and dresses.'"
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "soul",
+      "word": "soul",
+      "senses": [
+        {
+          "id": "sense-44aeed46",
+          "pos": "n.",
+          "meaningZh": "靈魂；心靈",
+          "examples": [
+            "She prayed for the souls of the departed."
+          ]
+        },
+        {
+          "id": "sense-5e22655f",
+          "pos": "n.",
+          "meaningZh": "人；人類",
+          "examples": [
+            "Every soul in the room was captivated by the speaker's heartfelt words."
+          ]
+        },
+        {
+          "id": "sense-6dbb17b9",
+          "pos": "n.",
+          "meaningZh": "靈魂樂；Soul 音樂",
+          "examples": [
+            "The live band played soulful tunes, filling the room with the sweet sound of soul."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sour",
+      "word": "sour",
+      "senses": [
+        {
+          "id": "sense-9080530a",
+          "pos": "adj.",
+          "meaningZh": "酸的；酸澀的",
+          "examples": [
+            "The fruit salad tasted sour due to the addition of unripe pineapples."
+          ]
+        },
+        {
+          "id": "sense-ccf9ee87",
+          "pos": "n.",
+          "meaningZh": "酸味；酸性",
+          "examples": [
+            "I added too much lemon juice to the salad and now it’s too sour to eat."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "source",
+      "word": "source",
+      "senses": [
+        {
+          "id": "sense-1df66b4a",
+          "pos": "n.",
+          "meaningZh": "來源；資料出處；資訊來源",
+          "examples": [
+            "In order to write a research paper, it is essential to cite reliable sources such as academic journals and reputable websites."
+          ]
+        },
+        {
+          "id": "sense-c4e84516",
+          "pos": "v.",
+          "meaningZh": "採購；取得（原料）",
+          "examples": [
+            "The company sources its raw materials from sustainable suppliers."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

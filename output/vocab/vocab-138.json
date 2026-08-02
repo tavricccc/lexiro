@@ -1,1408 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 138,
   "words": [
-    {
-      "wordKey": "comprehension",
-      "word": "comprehension",
-      "senses": [
-        {
-          "id": "sense-7646d37c",
-          "pos": "noun",
-          "meaningZh": "理解；領悟",
-          "definitionEn": "the knowledge acquired through understanding something",
-          "examples": [
-            "After studying for hours, she finally achieved full comprehension of the complex mathematical equation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-682b1a16",
-          "pos": "noun",
-          "meaningZh": "理解力；閱讀理解",
-          "definitionEn": "the act or process of understanding something",
-          "examples": [
-            "The teacher tested the students' comprehension of the material by asking them to summarize the main points in their own words."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "comprise",
-      "word": "comprise",
-      "senses": [
-        {
-          "id": "sense-87956e7c",
-          "pos": "verb",
-          "meaningZh": "構成；組成",
-          "definitionEn": "form or compose",
-          "examples": [
-            "The team comprises of both experienced and new players."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-99cd4b8a",
-          "pos": "verb",
-          "meaningZh": "包含；由……組成",
-          "definitionEn": "be composed of",
-          "examples": [
-            "The kit comprises a hammer, nails, and a saw."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "compromise",
-      "word": "compromise",
-      "senses": [
-        {
-          "id": "sense-6ce6cd57",
-          "pos": "noun",
-          "meaningZh": "折衷；妥協方案",
-          "definitionEn": "a middle way between two extremes",
-          "examples": [
-            "After much debate, the team was able to reach a compromise by settling on a solution that partially met everyone's needs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-c3435a1d",
-          "pos": "noun",
-          "meaningZh": "協議；妥協",
-          "definitionEn": "an agreement in which both sides give up something they want in order to end a disagreement or reach a solution that they can both accept",
-          "examples": [
-            "After a lengthy negotiation, the management and the labor union were finally able to reach a compromise. The employees agreed to a slight reduction in their work hours, and in return, the company agreed to increase their salary and provide better work conditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "compulsory",
-      "word": "compulsory",
-      "senses": [
-        {
-          "id": "sense-e2981947",
-          "pos": "adjective",
-          "meaningZh": "強制的；義務的；必修的",
-          "definitionEn": "(Of something) required, obligatory, or mandatory.",
-          "examples": [
-            "Wearing a seatbelt is compulsory while driving."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "conceal",
-      "word": "conceal",
-      "senses": [
-        {
-          "id": "sense-b7582f84",
-          "pos": "verb",
-          "meaningZh": "隱藏；藏匿",
-          "definitionEn": "keep from being seen or discovered",
-          "examples": [
-            "The spy carefully concealed the microfilm in a hidden compartment within his shoe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-b7e13748",
-          "pos": "verb",
-          "meaningZh": "掩飾；隱瞞",
-          "definitionEn": "prevent from being perceived by others",
-          "examples": [
-            "He tried to conceal his surprise when he saw the birthday cake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "concede",
       "word": "concede",
       "senses": [
         {
-          "id": "sense-fb63f40c",
-          "pos": "verb",
+          "id": "sense-4c8426c1",
+          "pos": "v.",
           "meaningZh": "承認；讓步",
-          "definitionEn": "be willing to concede",
           "examples": [
             "After a long and heated debate, John finally conceded that he was wrong."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bf39811b",
-          "pos": "verb",
+          "id": "sense-39665ed6",
+          "pos": "v.",
           "meaningZh": "放棄；認輸",
-          "definitionEn": "surrender or relinquish to the physical control of another",
           "examples": [
             "After a long and difficult battle, the losing team was forced to concede the match to their opponents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conceive",
       "word": "conceive",
       "senses": [
         {
-          "id": "sense-cdb9e40d",
-          "pos": "verb",
+          "id": "sense-2b8e22f0",
+          "pos": "v.",
           "meaningZh": "構思；設想",
-          "definitionEn": "have an idea or thought",
           "examples": [
             "After many hours of brainstorming, she finally conceived a plan to pitch to the investors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e0e4c56d",
-          "pos": "verb",
+          "id": "sense-9d6a0bc4",
+          "pos": "v.",
           "meaningZh": "懷孕；受孕",
-          "definitionEn": "become pregnant; to start developing a new life",
           "examples": [
             "After months of trying, they were finally able to conceive a child."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conception",
       "word": "conception",
       "senses": [
         {
-          "id": "sense-eb6795e4",
-          "pos": "noun",
+          "id": "sense-543b16f4",
+          "pos": "n.",
           "meaningZh": "受孕；懷孕",
-          "definitionEn": "the act of becoming pregnant; fertilization of an ovum by a spermatozoon",
           "examples": [
             "The couple had been trying to start a family for several years, but it wasn’t until the successful conception of twins that their dream finally came true."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9420990b",
-          "pos": "noun",
+          "id": "sense-8cf4573b",
+          "pos": "n.",
           "meaningZh": "構思；概念形成",
-          "definitionEn": "the creation of something in the mind",
           "examples": [
             "The conception of the new business idea occurred to her while she was on a walk in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "condemn",
       "word": "condemn",
       "senses": [
         {
-          "id": "sense-6c63ff9c",
-          "pos": "verb",
+          "id": "sense-9ec4bb4d",
+          "pos": "v.",
           "meaningZh": "譴責；強烈批評",
-          "definitionEn": "to say very strongly that you think something is wrong or bad",
           "examples": [
             "World leaders condemned the attack on the hospital."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-48668327",
-          "pos": "verb",
+          "id": "sense-d442f3a6",
+          "pos": "v.",
           "meaningZh": "判罪；定罪",
-          "definitionEn": "to declare someone as guilty of a crime or wrongdoing",
           "examples": [
             "The jury will condemn the accused murderer to life in prison."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-50f98d2d",
-          "pos": "verb",
+          "id": "sense-dacca856",
+          "pos": "v.",
           "meaningZh": "徵收（私有地）；強制取得",
-          "definitionEn": "to take possession of private property for public use",
           "examples": [
             "During the construction of the new highway, the government decided to condemn several houses to make room for the expansion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conduct",
       "word": "conduct",
       "senses": [
         {
-          "id": "sense-95a7b162",
-          "pos": "verb",
+          "id": "sense-e17149c1",
+          "pos": "v.",
           "meaningZh": "進行；實施；執行",
-          "definitionEn": "to organize and carry out a particular activity",
           "examples": [
             "The scientists conducted an experiment to test the theory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-36fcb8ec",
-          "pos": "verb",
+          "id": "sense-f60dc34d",
+          "pos": "v.",
           "meaningZh": "表現；舉止",
-          "definitionEn": "behave in a certain manner",
           "examples": [
             "During the meeting, it is important to conduct yourself professionally and respectfully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b0780894",
-          "pos": "verb",
+          "id": "sense-4092caa9",
+          "pos": "v.",
           "meaningZh": "指揮；帶領",
-          "definitionEn": "manage or control the direction of something",
           "examples": [
             "The conductor stood on the podium, waving his baton to conduct the orchestra."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L2",
-        "textbookTitle": "三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "confession",
       "word": "confession",
       "senses": [
         {
-          "id": "sense-bc321050",
-          "pos": "noun",
+          "id": "sense-12446b44",
+          "pos": "n.",
           "meaningZh": "供詞；招認",
-          "definitionEn": "a written or spoken statement admitting guilt or sin, especially when used as evidence in court",
           "examples": [
             "During the trial, the suspect made a full confession to the crime, providing details that only the perpetrator would have known."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cab9cfc0",
-          "pos": "noun",
+          "id": "sense-2ace0b94",
+          "pos": "n.",
           "meaningZh": "坦白；認錯",
-          "definitionEn": "an admission of one’s own misdeeds or faults; acknowledgment of guilt or wrongdoing",
           "examples": [
             "After months of denying his involvement in the scandal, the politician finally made a confession to the press."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "confidential",
       "word": "confidential",
       "senses": [
         {
-          "id": "sense-81e8941d",
-          "pos": "adjective",
+          "id": "sense-978dfcf9",
+          "pos": "adj.",
           "meaningZh": "機密的；保密的",
-          "definitionEn": "Entrusted with private information and the confidence of another.",
           "examples": [
             "As a lawyer, it is crucial to maintain the confidentiality of client-attorney communications."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a0964c3f",
-          "pos": "adjective",
+          "id": "sense-51a09193",
+          "pos": "adj.",
           "meaningZh": "親密的；信任的",
-          "definitionEn": "Indicating a close relationship or familiarity.",
           "examples": [
             "As her best friend, she confided in me with her most confidential secrets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "confine",
       "word": "confine",
       "senses": [
         {
-          "id": "sense-e8966246",
-          "pos": "verb",
+          "id": "sense-855b1ee5",
+          "pos": "v.",
           "meaningZh": "限制；使不得外出",
-          "definitionEn": "to close within bounds, limit or hold back from movement",
           "examples": [
             "Due to the pandemic, we have to confine ourselves at home for the safety of all."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a8cc2d83",
-          "pos": "verb",
+          "id": "sense-dbc8a2ea",
+          "pos": "v.",
           "meaningZh": "關押；禁閉",
-          "definitionEn": "place limits on (extent or access)",
           "examples": [
             "The prisoners were confined to their cells after the prison break."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1 +1",
-        "textbookTitle": "龍騰 B3·L1、三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conform",
       "word": "conform",
       "senses": [
         {
-          "id": "sense-6c72b8e9",
-          "pos": "verb",
+          "id": "sense-7af7975c",
+          "pos": "v.",
           "meaningZh": "符合；一致",
-          "definitionEn": "be similar, be in line with",
           "examples": [
             "In order to maintain uniformity, all employees must conform to the company's dress code."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "confront",
       "word": "confront",
       "senses": [
         {
-          "id": "sense-6647fabf",
-          "pos": "verb",
+          "id": "sense-9d02c202",
+          "pos": "v.",
           "meaningZh": "正視；直面（困難）",
-          "definitionEn": "deal with (something unpleasant) head on",
           "examples": [
             "She decided to confront her boss about the unfair treatment she had been receiving."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-80aa8f40",
-          "pos": "verb",
+          "id": "sense-7a501c51",
+          "pos": "v.",
           "meaningZh": "當面質問；對質",
-          "definitionEn": "present somebody with something, usually to accuse or criticize",
           "examples": [
             "The manager decided to confront the employee about their extended absence from work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "confrontation",
       "word": "confrontation",
       "senses": [
         {
-          "id": "sense-7c4afb31",
-          "pos": "noun",
+          "id": "sense-f1f2b041",
+          "pos": "n.",
           "meaningZh": "對峙；正面衝突",
-          "definitionEn": "a situation where people or groups with different ideas or opinions argue angrily or disagree strongly.",
           "examples": [
             "During the heated town hall meeting, there was a confrontation between the proponents and opponents of the new development project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consecutive",
       "word": "consecutive",
       "senses": [
         {
-          "id": "sense-0b6daa40",
-          "pos": "adjective",
+          "id": "sense-57e0f23c",
+          "pos": "adj.",
           "meaningZh": "連續的；接連的",
-          "definitionEn": "following one another in a sequence without interruption or gap",
           "examples": [
             "He has been absent for three consecutive days from work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-30978c46",
-          "pos": "adverb",
+          "id": "sense-13d6727d",
+          "pos": "adv.",
           "meaningZh": "連續地；依序不間斷地",
-          "definitionEn": "in a successive and uninterrupted manner",
           "examples": [
             "Sarah won two consecutive games in the tournament."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consensus",
       "word": "consensus",
       "senses": [
         {
-          "id": "sense-71a4d53c",
-          "pos": "noun",
+          "id": "sense-64b28594",
+          "pos": "n.",
           "meaningZh": "共識；一致意見",
-          "definitionEn": "a general agreement among a group of people; the judgment or opinion reached by such a group",
           "examples": [
             "After hours of debate, a consensus was reached among the board members on the new company policy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consent",
       "word": "consent",
       "senses": [
         {
-          "id": "sense-687e1a8a",
-          "pos": "verb",
+          "id": "sense-35766baf",
+          "pos": "v.",
           "meaningZh": "同意；允許",
-          "definitionEn": "agree to do something or allow someone to do something",
           "examples": [
             "Before conducting any medical procedures, doctors need to obtain the patient's consent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f4b127fe",
-          "pos": "verb",
+          "id": "sense-c60233e7",
+          "pos": "v.",
           "meaningZh": "准許；表示許可",
-          "definitionEn": "give permission for something to happen",
           "examples": [
             "Before conducting any medical procedure, the doctor must gain the patient's consent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conservation",
       "word": "conservation",
       "senses": [
         {
-          "id": "sense-3fb7282d",
-          "pos": "noun",
+          "id": "sense-11d470d5",
+          "pos": "n.",
           "meaningZh": "保育；環境保護",
-          "definitionEn": "the preservation and careful management of the environment and natural resources",
           "examples": [
             "The conservation of energy is important for reducing our carbon footprint."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e2740bbf",
-          "pos": "noun",
+          "id": "sense-3e59f7a7",
+          "pos": "n.",
           "meaningZh": "節約；資源保存",
-          "definitionEn": "an act of preserving from loss or avoiding waste of resources such as time, money, or energy",
           "examples": [
             "To reduce paper waste, the company implemented a conservation policy that required all employees to print documents double-sided and recycle paper instead of throwing it away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "considerate",
       "word": "considerate",
       "senses": [
         {
-          "id": "sense-e69ca299",
-          "pos": "adjective",
+          "id": "sense-ec2655c7",
+          "pos": "adj.",
           "meaningZh": "體貼的；關心他人的",
-          "definitionEn": "showing concern for the feelings and needs of others; thoughtful and kind",
           "examples": [
             "When Sarah found out that her friend was feeling down, she sent her a thoughtful and considerate message, offering her support and sympathy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "constitutional",
       "word": "constitutional",
       "senses": [
         {
-          "id": "sense-d9fd0c36",
-          "pos": "adjective",
+          "id": "sense-638b877a",
+          "pos": "adj.",
           "meaningZh": "憲法的；合憲的",
-          "definitionEn": "related to the system of laws and principles that governs a country or organization",
           "examples": [
             "The Supreme Court ruled that the new law was not constitutional because it violated the rights of citizens."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e4071836",
-          "pos": "adjective",
+          "id": "sense-7492a062",
+          "pos": "adj.",
           "meaningZh": "固有的；本質上的",
-          "definitionEn": "inherent or characteristic of something",
           "examples": [
             "The right to free speech is a fundamental constitutional principle in many democratic countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "constraint",
       "word": "constraint",
       "senses": [
         {
-          "id": "sense-a7038d83",
-          "pos": "noun",
+          "id": "sense-defa68ef",
+          "pos": "n.",
           "meaningZh": "限制；約束條件",
-          "definitionEn": "a device that impedes the motion of something",
           "examples": [
             "The tight deadline imposed a constraint on the project timeline, forcing the team to work more efficiently."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7cb1cc88",
-          "pos": "noun",
+          "id": "sense-2a2fe624",
+          "pos": "n.",
           "meaningZh": "受限狀態；約束",
-          "definitionEn": "the state of being physically restricted or confined",
           "examples": [
             "The tight deadline was a constraint on our ability to fully develop the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consultation",
       "word": "consultation",
       "senses": [
         {
-          "id": "sense-b03b1a68",
-          "pos": "noun",
+          "id": "sense-e606d6f0",
+          "pos": "n.",
           "meaningZh": "諮詢；徵詢意見",
-          "definitionEn": "the act of referring to or seeking advice from someone",
           "examples": [
             "I scheduled a consultation with a financial advisor to get advice on how to manage my investment portfolio."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-253e43c9",
-          "pos": "noun",
+          "id": "sense-06c24fa1",
+          "pos": "n.",
           "meaningZh": "諮商會議；磋商",
-          "definitionEn": "a meeting between two or more people to discuss a particular matter or give advice",
           "examples": [
             "The CEO called for a consultation with the senior leadership team to discuss the future direction of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consumption",
       "word": "consumption",
       "senses": [
         {
-          "id": "sense-7c2af3e7",
-          "pos": "noun",
+          "id": "sense-4ddfc1df",
+          "pos": "n.",
           "meaningZh": "消耗；消費",
-          "definitionEn": "the use of economic goods in order to satisfy needs, especially in manufacturing",
           "examples": [
             "The consumption of raw materials by factories has increased due to the rise in production."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-63a4ffd8",
-          "pos": "noun",
+          "id": "sense-3fa3f2a0",
+          "pos": "n.",
           "meaningZh": "攝取；食用；飲用",
-          "definitionEn": "the process of taking food or drink into your body through your mouth",
           "examples": [
             "After a long day at work, Sarah sat down to enjoy a delicious meal, relishing each bite of food as she engaged in the act of consumption."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contagious",
       "word": "contagious",
       "senses": [
         {
-          "id": "sense-082ef6a8",
-          "pos": "adjective",
+          "id": "sense-f4f1e7cc",
+          "pos": "adj.",
           "meaningZh": "會傳染的；易蔓延的",
-          "definitionEn": "easily diffused or spread from one person to another (used of disease or emotion)",
           "examples": [
             "The flu is highly contagious, and it quickly spread through the whole office, affecting almost everyone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a7868fe2",
-          "pos": "adjective",
+          "id": "sense-efe96226",
+          "pos": "adj.",
           "meaningZh": "具傳染性的",
-          "definitionEn": "capable of being transmitted by infection (used of disease)",
           "examples": [
             "The flu is highly contagious, so it is important to wash your hands frequently and cover your mouth when you cough or sneeze."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contaminate",
       "word": "contaminate",
       "senses": [
         {
-          "id": "sense-0ca0c940",
-          "pos": "verb",
+          "id": "sense-00da1401",
+          "pos": "v.",
           "meaningZh": "污染；使不純淨",
-          "definitionEn": "make impure or unsuitable by contact or mixture with something unclean, harmful, or polluting.",
           "examples": [
             "The floodwaters began to contaminate the drinking water supply, rendering it unsafe for consumption."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5ec7b20c",
-          "pos": "verb",
+          "id": "sense-eca475a5",
+          "pos": "v.",
           "meaningZh": "汙染；毒化",
-          "definitionEn": "to soil, stain, corrupt, or infect by contact or association.",
           "examples": [
             "The floodwaters contaminated the drinking water supply, making it unsafe for consumption."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contemplate",
       "word": "contemplate",
       "senses": [
         {
-          "id": "sense-e2f59ded",
-          "pos": "verb",
+          "id": "sense-1d508dc0",
+          "pos": "v.",
           "meaningZh": "沉思；冥想",
-          "definitionEn": "think deeply and reflectively, especially for spiritual or philosophical purposes",
           "examples": [
             "After a long hike, Sarah sat on the mountaintop to contemplate the beauty of nature and ponder the meaning of life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c268d589",
-          "pos": "verb",
+          "id": "sense-080d6850",
+          "pos": "v.",
           "meaningZh": "凝視；審視",
-          "definitionEn": "observe or study thoughtfully and for a long time",
           "examples": [
             "After finishing their exams, the students sat by the window to contemplate the beautiful sunset."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contemporary",
       "word": "contemporary",
       "senses": [
         {
-          "id": "sense-f6567a46",
-          "pos": "adjective",
+          "id": "sense-2dcca508",
+          "pos": "adj.",
           "meaningZh": "當代的；現代的",
-          "definitionEn": "belonging to the present time or occurring in the same time period",
           "examples": [
             "In contemporary society, social media has become an integral part of daily life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fb1ec423",
-          "pos": "adjective",
+          "id": "sense-1e31571d",
+          "pos": "adj.",
           "meaningZh": "當今的；時下的",
-          "definitionEn": "having characteristics of the present time",
           "examples": [
             "The art exhibition showcased a variety of contemporary works, including paintings, sculptures, and installations that reflected the current cultural and social trends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contempt",
       "word": "contempt",
       "senses": [
         {
-          "id": "sense-3e27b397",
-          "pos": "noun",
+          "id": "sense-c7191877",
+          "pos": "n.",
           "meaningZh": "鄙視；輕蔑",
-          "definitionEn": "a feeling of intense dislike and a lack of respect",
           "examples": [
             "He showed his contempt for his opponent by rolling his eyes and scoffing at their arguments during the debate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6322d780",
-          "pos": "noun",
+          "id": "sense-c3a4a4a0",
+          "pos": "n.",
           "meaningZh": "不尊重；藐視",
-          "definitionEn": "open disrespect for a person or thing",
           "examples": [
             "Samantha's contempt for her boss was evident in her refusal to follow his instructions and constant eye-rolling in meetings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "contend",
+      "word": "contend",
+      "senses": [
+        {
+          "id": "sense-0c75ffc6",
+          "pos": "v.",
+          "meaningZh": "競爭；角逐",
+          "examples": [
+            "In order to secure the promotion, Sarah will have to contend with several other qualified candidates."
+          ]
+        },
+        {
+          "id": "sense-484490d7",
+          "pos": "v.",
+          "meaningZh": "搏鬥；對抗",
+          "examples": [
+            "The two boxers will contend for the championship title tonight."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "continental",
+      "word": "continental",
+      "senses": [
+        {
+          "id": "sense-53780600",
+          "pos": "adj.",
+          "meaningZh": "大陸的；洲際的",
+          "examples": [
+            "The Himalaya mountain range is the longest and highest continental mountain range in the world."
+          ]
+        },
+        {
+          "id": "sense-e92933a5",
+          "pos": "adj.",
+          "meaningZh": "歐洲大陸的；北美大陸的",
+          "examples": [
+            "The restaurant only serves cuisine from the continental region, which excludes dishes from islands and other landmasses surrounded by water."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "contractor",
+      "word": "contractor",
+      "senses": [
+        {
+          "id": "sense-093d0b47",
+          "pos": "n.",
+          "meaningZh": "承包商；包工廠商",
+          "examples": [
+            "After receiving multiple bids from different contractors, we finally hired a reputable contractor to remodel our kitchen."
+          ]
+        },
+        {
+          "id": "sense-81be03f0",
+          "pos": "n.",
+          "meaningZh": "（法律）締約方",
+          "examples": [
+            "The contractor was hired to build the new bridge as per the terms of the agreement."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "contradiction",
+      "word": "contradiction",
+      "senses": [
+        {
+          "id": "sense-22f61b5a",
+          "pos": "n.",
+          "meaningZh": "矛盾；前後不一致",
+          "examples": [
+            "The politician’s actions were a contradiction to his promises during the election campaign."
+          ]
+        },
+        {
+          "id": "sense-98f3f6e5",
+          "pos": "n.",
+          "meaningZh": "（邏輯）矛盾命題",
+          "examples": [
+            "She is both married and single at the same time, which is a clear contradiction."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "controversial",
+      "word": "controversial",
+      "senses": [
+        {
+          "id": "sense-9d524207",
+          "pos": "adj.",
+          "meaningZh": "有爭議的；引發論戰的",
+          "examples": [
+            "The new policy on gun control is highly controversial, with some people strongly supporting it and others vehemently opposed to it."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

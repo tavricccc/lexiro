@@ -1,1369 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 106,
   "words": [
-    {
-      "wordKey": "contentment",
-      "word": "contentment",
-      "senses": [
-        {
-          "id": "sense-40d85598",
-          "pos": "noun",
-          "meaningZh": "滿足感；心滿意足",
-          "definitionEn": "a state of happiness and satisfaction with one’s life and current circumstances",
-          "examples": [
-            "After years of hard work, Maria finally found contentment in her career as a successful architect, living in a beautiful home with a loving family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "contest",
-      "word": "contest",
-      "senses": [
-        {
-          "id": "sense-8e5235d0",
-          "pos": "noun",
-          "meaningZh": "競賽；比賽",
-          "definitionEn": "a competition in which people try to win something",
-          "examples": [
-            "She won first prize in the singing contest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-7b29cd6e",
-          "pos": "verb",
-          "meaningZh": "反駁；質疑",
-          "definitionEn": "to oppose, especially in argument",
-          "examples": [
-            "During the debate, the two candidates constantly contested each other's policies and ideas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-20af16e8",
-          "pos": "verb",
-          "meaningZh": "申訴；異議",
-          "definitionEn": "to claim that a particular action is not fair or legal",
-          "examples": [
-            "After losing the race, he would often contest the results, believing that his competitors had cheated."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "context",
-      "word": "context",
-      "senses": [
-        {
-          "id": "sense-974d5546",
-          "pos": "noun",
-          "meaningZh": "上下文；語境；背景",
-          "definitionEn": "the words, phrases, or sentences that come before or after a particular word or piece of text and give it more meaning",
-          "examples": [
-            "In order to fully understand the meaning of a word, it is important to consider its context. For example, the word 'bank' can have different meanings depending on whether it is used in a financial or natural setting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-1e36f3eb",
-          "pos": "verb",
-          "meaningZh": "置於脈絡中；給予背景",
-          "definitionEn": "to place something in a particular context in order to give it a particular meaning or to help people understand it better",
-          "examples": [
-            "In order to understand the true significance of the historical event, we need to contextualize it within the social and political climate of that time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "continual",
-      "word": "continual",
-      "senses": [
-        {
-          "id": "sense-ec86f750",
-          "pos": "adjective",
-          "meaningZh": "持續不斷的",
-          "definitionEn": "seemingly never-ending; often used interchangeably with `continuous’ which means without a break in between and can be used to describe something that happens for an extended period of time",
-          "examples": [
-            "The construction noise outside my apartment has been continual for the past week, making it difficult to concentrate on my work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-cfebf4b1",
-          "pos": "adjective",
-          "meaningZh": "反覆的；頻繁的",
-          "definitionEn": "happening again and again with very short intervals of time in between; commonly used to describe something that is regularly recurring",
-          "examples": [
-            "The continual sound of the dripping faucet kept me up all night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "continuous",
-      "word": "continuous",
-      "senses": [
-        {
-          "id": "sense-11d7a79c",
-          "pos": "adjective",
-          "meaningZh": "連續不斷的；無間斷的",
-          "definitionEn": "without any interruption in time or space",
-          "examples": [
-            "The marathon runner kept up a continuous pace for the entire race, without taking any breaks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-d0700e0c",
-          "pos": "adjective",
-          "meaningZh": "連續的；不間斷的",
-          "definitionEn": "describing a function or curve that extends without any breaks or irregularities",
-          "examples": [
-            "The temperature on a summer day follows a continuous curve, gradually increasing from morning to midday without any sudden drops or jumps."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "contrary",
       "word": "contrary",
       "senses": [
         {
-          "id": "sense-2291f129",
-          "pos": "noun",
+          "id": "sense-bbd8747d",
+          "pos": "n.",
           "meaningZh": "相反；對立面",
-          "definitionEn": "an opposite or completely different idea, fact, or thing from something else",
           "examples": [
             "Despite the forecast, the weather is quite warm today. It is contrary to what the meteorologist predicted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4a7f9bb5",
-          "pos": "noun",
+          "id": "sense-ce96b289",
+          "pos": "n.",
           "meaningZh": "相反者；對立物",
-          "definitionEn": "a person or thing that is the opposite of someone or something else",
           "examples": [
             "She always speaks in a polite and friendly manner, but her sister is quite the contrary and often rude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contrast",
       "word": "contrast",
       "senses": [
         {
-          "id": "sense-c0f12d3d",
-          "pos": "noun",
+          "id": "sense-c664f4ad",
+          "pos": "n.",
           "meaningZh": "對比；差異",
-          "definitionEn": "the act of distinguishing or separating things by comparing their differences",
           "examples": [
             "The artist used high contrasting colors on the canvas to make the painting pop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9b8dd57f",
-          "pos": "verb",
+          "id": "sense-d0d267c4",
+          "pos": "v.",
           "meaningZh": "形成對比；有差異",
-          "definitionEn": "to be noticeably different from something else",
           "examples": [
             "The bright yellow flowers contrasted against the dark green leaves of the tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contribute",
       "word": "contribute",
       "senses": [
         {
-          "id": "sense-222cf53c",
-          "pos": "verb",
+          "id": "sense-3dbd1839",
+          "pos": "v.",
           "meaningZh": "捐助；貢獻",
-          "definitionEn": "provide or give something, especially money, in order to help achieve or provide something",
           "examples": [
             "I contributed $50 to the charity for the children’s hospital."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-55e7db71",
-          "pos": "verb",
+          "id": "sense-92280756",
+          "pos": "v.",
           "meaningZh": "促成；有助於",
-          "definitionEn": "be a factor that contributes to a particular result or situation",
           "examples": [
             "Her long hours and tireless effort contributed greatly to the success of the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2",
-        "textbookTitle": "龍騰 B3·R2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contribution",
       "word": "contribution",
       "senses": [
         {
-          "id": "sense-da993360",
-          "pos": "noun",
+          "id": "sense-e9faf380",
+          "pos": "n.",
           "meaningZh": "捐款；資助金額",
-          "definitionEn": "an amount of money given to help along with something",
           "examples": [
             "She made a significant contribution to the charity, donating $10,000 towards their cause."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c5d8b09a",
-          "pos": "noun",
+          "id": "sense-e279883a",
+          "pos": "n.",
           "meaningZh": "捐獻行為；貢獻",
-          "definitionEn": "the act of giving together with others for a common purpose, especially to a charity",
           "examples": [
             "In response to the natural disaster, the community came together and made a contribution by organizing a fundraising event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2",
-        "textbookTitle": "龍騰 B3·R2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "convenience",
       "word": "convenience",
       "senses": [
         {
-          "id": "sense-3bf8d3bd",
-          "pos": "noun",
+          "id": "sense-fa08e475",
+          "pos": "n.",
           "meaningZh": "便利；方便",
-          "definitionEn": "the quality of being useful, easy, or suitable for someone",
           "examples": [
             "For your convenience, the store is open 24 hours a day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8fa552de",
-          "pos": "noun",
+          "id": "sense-84e38006",
+          "pos": "n.",
           "meaningZh": "便利的設施",
-          "definitionEn": "a thing that contributes to comfort or saves work",
           "examples": [
             "Modern kitchens are full of conveniences such as dishwashers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L5",
-        "textbookTitle": "龍騰 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "convention",
       "word": "convention",
       "senses": [
         {
-          "id": "sense-34eebb92",
-          "pos": "noun",
+          "id": "sense-35aec0e6",
+          "pos": "n.",
           "meaningZh": "大會；集會",
-          "definitionEn": "a large formal assembly",
           "examples": [
             "At the annual convention, thousands of industry professionals gather to discuss new trends and technologies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-47e799eb",
-          "pos": "noun",
+          "id": "sense-c74d3caf",
+          "pos": "n.",
           "meaningZh": "召集；開會",
-          "definitionEn": "the act of convening",
           "examples": [
             "The convention of world leaders was held in Geneva to discuss global issues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L3",
-        "textbookTitle": "三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conventional",
       "word": "conventional",
       "senses": [
         {
-          "id": "sense-6af0a770",
-          "pos": "adjective",
+          "id": "sense-b2f9384c",
+          "pos": "adj.",
           "meaningZh": "慣例的；符合常規的",
-          "definitionEn": "in agreement with what is generally done or believed",
           "examples": [
             "It is conventional to say ’bless you’ after someone sneezes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-60bb9ba9",
-          "pos": "adjective",
+          "id": "sense-431b6445",
+          "pos": "adj.",
           "meaningZh": "傳統的；守舊的",
-          "definitionEn": "following traditional practices and customs",
           "examples": [
             "The couple chose to have a conventional wedding with a white dress, bridesmaids, and a church ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L3",
-        "textbookTitle": "三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "converse",
       "word": "converse",
       "senses": [
         {
-          "id": "sense-ba731ef3",
-          "pos": "verb",
+          "id": "sense-4a0f984e",
+          "pos": "v.",
           "meaningZh": "交談；談話",
-          "definitionEn": "to talk or have a conversation with someone",
           "examples": [
             "I met up with my old friend for coffee and we spent hours conversing about our shared memories."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2845187f",
-          "pos": "noun",
+          "id": "sense-be786b47",
+          "pos": "n.",
           "meaningZh": "帆布運動鞋（Converse品牌）",
-          "definitionEn": "a type of shoe with a rubber sole and canvas upper, typically in a casual style",
           "examples": [
             "She paired her favorite vintage dress with a pair of white Converse for a stylish but comfortable look."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "convey",
       "word": "convey",
       "senses": [
         {
-          "id": "sense-1378f3b2",
-          "pos": "verb",
+          "id": "sense-1ad803c3",
+          "pos": "v.",
           "meaningZh": "傳達；表達",
-          "definitionEn": "to communicate or express something, often a feeling or message",
           "examples": [
             "She used heartfelt words to convey her gratitude to the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ba447703",
-          "pos": "verb",
+          "id": "sense-3b99245e",
+          "pos": "v.",
           "meaningZh": "傳送；運送",
-          "definitionEn": "to take or carry something from one place to another",
           "examples": [
             "Please convey this message to your boss immediately."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5",
-        "textbookTitle": "龍騰 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "convince",
       "word": "convince",
       "senses": [
         {
-          "id": "sense-4d0816a9",
-          "pos": "verb",
+          "id": "sense-ab2910f2",
+          "pos": "v.",
           "meaningZh": "說服；使相信",
-          "definitionEn": "to cause someone to believe or do something; to persuade",
           "examples": [
             "He was able to convince his friends to go on a road trip with him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5 +1",
-        "textbookTitle": "龍騰 B4·L5、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cooperate",
       "word": "cooperate",
       "senses": [
         {
-          "id": "sense-12f74c37",
-          "pos": "verb",
+          "id": "sense-8ad207be",
+          "pos": "v.",
           "meaningZh": "配合；協助",
-          "definitionEn": "to be helpful by doing what is asked or needed",
           "examples": [
             "The employees need to cooperate with each other in order to complete the project on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2484131e",
-          "pos": "verb",
+          "id": "sense-763e7d37",
+          "pos": "v.",
           "meaningZh": "合作；協力",
-          "definitionEn": "to work together with others to achieve a common goal",
           "examples": [
             "The two companies decided to cooperate on the project, which helped them both achieve their business objectives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L8 +1",
-        "textbookTitle": "龍騰 B2·L8、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cooperation",
       "word": "cooperation",
       "senses": [
         {
-          "id": "sense-dff8afb9",
-          "pos": "noun",
+          "id": "sense-78a40a01",
+          "pos": "n.",
           "meaningZh": "合作；協作",
-          "definitionEn": "the practice of working together towards a common goal",
           "examples": [
             "The construction project was completed successfully due to the cooperation of different contractors and subcontractors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-797a63eb",
-          "pos": "noun",
+          "id": "sense-fd1d9ae3",
+          "pos": "n.",
           "meaningZh": "協調配合；共同努力",
-          "definitionEn": "the act of cooperating or coordinating with others for mutual benefit",
           "examples": [
             "The successful completion of the project was a result of the strong cooperation between the team members who shared responsibility and worked towards achieving a common goal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L8 +1",
-        "textbookTitle": "龍騰 B2·L8、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cooperative",
       "word": "cooperative",
       "senses": [
         {
-          "id": "sense-34c44f13",
-          "pos": "adjective",
+          "id": "sense-29215c1d",
+          "pos": "adj.",
           "meaningZh": "合作社；共同經營組織",
-          "definitionEn": "A cooperative refers to an organization or company that is owned and controlled by a group of members. Each member holds a share in the cooperative, which could include employees or customers.",
           "examples": [
             "The group of farmers formed a cooperative to collectively purchase and share farming equipment, resulting in reduced costs for each member."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cope",
       "word": "cope",
       "senses": [
         {
-          "id": "sense-1cb6d2db",
-          "pos": "verb",
+          "id": "sense-a389a122",
+          "pos": "v.",
           "meaningZh": "應付；克服",
-          "definitionEn": "to deal effectively with something difficult",
           "examples": [
             "After losing her job, Sarah struggled to cope with the sudden financial burden."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c357644c",
-          "pos": "noun",
+          "id": "sense-f9146e84",
+          "pos": "n.",
           "meaningZh": "（牆頂）壓頂磚",
-          "definitionEn": "a brick that is laid sideways at the top of a wall to protect it from the weather",
           "examples": [
             "The mason carefully placed the cope on the wall, ensuring that it provided a sturdy barrier against rain and wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L9",
-        "textbookTitle": "三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "copper",
       "word": "copper",
       "senses": [
         {
-          "id": "sense-f5fa261f",
-          "pos": "noun",
+          "id": "sense-6bcad077",
+          "pos": "n.",
           "meaningZh": "銅（金屬）",
-          "definitionEn": "a soft, reddish-brown metal that conducts electricity well",
           "examples": [
             "Electrical wires are often made of copper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f2a1b3ec",
-          "pos": "noun",
+          "id": "sense-ae3e1e34",
+          "pos": "n.",
           "meaningZh": "銅色；赤褐色",
-          "definitionEn": "a reddish-brown color resembling the color of polished copper",
           "examples": [
             "The sunset painted the sky in shades of copper, creating a breathtaking view."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b0496dbd",
-          "pos": "noun",
+          "id": "sense-6134b285",
+          "pos": "n.",
           "meaningZh": "銅板；銅幣",
-          "definitionEn": "a copper penny",
           "examples": [
             "When I emptied my pockets, I found a shiny copper penny."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cord",
       "word": "cord",
       "senses": [
         {
-          "id": "sense-ae32eee8",
-          "pos": "noun",
+          "id": "sense-2f5f81d4",
+          "pos": "n.",
           "meaningZh": "繩索；（電器）電線",
-          "definitionEn": "thick string or thin rope; an electric wire with a covering",
           "examples": [
             "He tied the box with a strong cord."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1a6e5716",
-          "pos": "noun",
+          "id": "sense-72e4fb1a",
+          "pos": "n.",
           "meaningZh": "（柴薪計量）考得（128立方英尺）",
-          "definitionEn": "a unit of amount of wood cut for burning; 128 cubic feet",
           "examples": [
             "Last winter, we burned through two cords of firewood to keep our home warm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "correspond",
       "word": "correspond",
       "senses": [
         {
-          "id": "sense-94bae3b2",
-          "pos": "verb",
+          "id": "sense-7a33123f",
+          "pos": "v.",
           "meaningZh": "符合；一致",
-          "definitionEn": "be compatible, similar, or consistent; coincide in their characteristics",
           "examples": [
             "The data from the two experiments corresponded perfectly, indicating that the findings were accurate and reliable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f997802a",
-          "pos": "verb",
+          "id": "sense-7e086a47",
+          "pos": "v.",
           "meaningZh": "（數學）對應；等同",
-          "definitionEn": "be equivalent or parallel, in mathematics",
           "examples": [
             "The X-axis and Y-axis in a graph correspond to the horizontal and vertical axes, respectively."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "costume",
       "word": "costume",
       "senses": [
         {
-          "id": "sense-e670714b",
-          "pos": "noun",
+          "id": "sense-e69c000f",
+          "pos": "n.",
           "meaningZh": "服裝；戲服；民族服飾",
-          "definitionEn": "the clothing style of a particular country, time period, or social class",
           "examples": [
             "At the Halloween party, she dressed up in a stunning medieval costume complete with a velvet gown and a jeweled crown."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cottage",
       "word": "cottage",
       "senses": [
         {
-          "id": "sense-a7bdf864",
-          "pos": "noun",
+          "id": "sense-a89c2cc0",
+          "pos": "n.",
           "meaningZh": "小屋；農村小舍",
-          "definitionEn": "a small house, typically located in a rural area or countryside away from a city or town",
           "examples": [
             "After retiring, Mary and John moved to a picturesque cottage nestled in the English countryside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "council",
       "word": "council",
       "senses": [
         {
-          "id": "sense-43d0d9fa",
-          "pos": "noun",
+          "id": "sense-24187432",
+          "pos": "n.",
           "meaningZh": "委員會；議會",
-          "definitionEn": "a group of people who are chosen to make rules, laws, or decisions for a particular group or area",
           "examples": [
             "The city council met to discuss the new zoning laws."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0d2fac62",
-          "pos": "noun",
+          "id": "sense-e6080f4a",
+          "pos": "n.",
           "meaningZh": "（委員會的）會議；集會",
-          "definitionEn": "a meeting where people discuss and make decisions about something",
           "examples": [
             "The city council held a meeting to discuss the proposed changes to the local zoning laws."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "counter",
       "word": "counter",
       "senses": [
         {
-          "id": "sense-6e37c4ee",
-          "pos": "noun",
+          "id": "sense-056bd56e",
+          "pos": "n.",
           "meaningZh": "櫃台；結帳台",
-          "definitionEn": "a long, flat surface where customers are served in a shop or bank",
           "examples": [
             "Please pay for your items at the counter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e5bbdc69",
-          "pos": "adjective",
+          "id": "sense-deb2e0dd",
+          "pos": "adj.",
           "meaningZh": "對立的；反對的",
-          "definitionEn": "indicating opposition or resistance",
           "examples": [
             "The crowd erupted into cheers, but there were a few counter voices of dissent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "courageous",
       "word": "courageous",
       "senses": [
         {
-          "id": "sense-e3299de9",
-          "pos": "adjective",
+          "id": "sense-4282f19f",
+          "pos": "adj.",
           "meaningZh": "勇敢的；有膽識的",
-          "definitionEn": "having or showing bravery, especially when faced with danger or difficulty",
           "examples": [
             "Despite the treacherous conditions, the courageous mountain climbers pressed on, reaching the peak and planting their country's flag."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5 +1",
-        "textbookTitle": "龍騰 B4·L5、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "courtesy",
       "word": "courtesy",
       "senses": [
         {
-          "id": "sense-75a46f32",
-          "pos": "noun",
+          "id": "sense-ea427f62",
+          "pos": "n.",
           "meaningZh": "禮貌；紳士風度",
-          "definitionEn": "polite behavior, especially that of a man towards a woman.",
           "examples": [
             "John showed great courtesy by holding the door open for Mary as she entered the restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-859e4fed",
-          "pos": "noun",
+          "id": "sense-82cbad9d",
+          "pos": "n.",
           "meaningZh": "禮節行為；客套舉動",
-          "definitionEn": "a polite gesture or action to show respect or kindness to others.",
           "examples": [
             "Hold the door open for someone behind you as a courtesy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coward",
       "word": "coward",
       "senses": [
         {
-          "id": "sense-33d02d70",
-          "pos": "noun",
+          "id": "sense-caa405c4",
+          "pos": "n.",
           "meaningZh": "懦夫；膽小者",
-          "definitionEn": "a person who lacks the courage to face danger or pain; a timid or easily intimidated person",
           "examples": [
             "When the fire broke out, the coward ran away from the burning building without warning anyone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "crack",
       "word": "crack",
       "senses": [
         {
-          "id": "sense-45b089f8",
-          "pos": "verb",
+          "id": "sense-ac1db713",
+          "pos": "v.",
           "meaningZh": "使出現裂縫；裂開",
-          "definitionEn": "cause to become cracked or partially broken",
           "examples": [
             "While moving the furniture, he accidentally cracked the frame of the mirror."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "craft",
+      "word": "craft",
+      "senses": [
+        {
+          "id": "sense-cdd24319",
+          "pos": "n.",
+          "meaningZh": "手藝；工藝技術",
+          "examples": [
+            "John’s craft as a carpenter was evident from the beautifully crafted wooden bench he made for the garden."
+          ]
+        },
+        {
+          "id": "sense-cca320bb",
+          "pos": "n.",
+          "meaningZh": "飛行器；船舶；航行器",
+          "examples": [
+            "The new spacecraft by SpaceX is capable of carrying humans to space and back safely."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "creation",
+      "word": "creation",
+      "senses": [
+        {
+          "id": "sense-730cfe96",
+          "pos": "n.",
+          "meaningZh": "作品；創作物",
+          "examples": [
+            "The artist’s masterpiece was a stunning creation, admired and awed by all who viewed it."
+          ]
+        },
+        {
+          "id": "sense-0ce266fe",
+          "pos": "n.",
+          "meaningZh": "宇宙萬物；天地萬象",
+          "examples": [
+            "The Big Bang Theory suggests that the creation of the universe occurred around 13.8 billion years ago."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "creativity",
+      "word": "creativity",
+      "senses": [
+        {
+          "id": "sense-5f1a2bf2",
+          "pos": "n.",
+          "meaningZh": "創造力；創意",
+          "examples": [
+            "His creativity in designing the new logo for the company impressed his colleagues."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "creep",
+      "word": "creep",
+      "senses": [
+        {
+          "id": "sense-d3c15c18",
+          "pos": "v.",
+          "meaningZh": "悄悄移動；潛行",
+          "examples": [
+            "The cat crept across the room, trying not to wake up the sleeping baby."
+          ]
+        },
+        {
+          "id": "sense-810c1e05",
+          "pos": "v.",
+          "meaningZh": "蔓延；爬生",
+          "examples": [
+            "In the garden, the ivy began to creep up the side of the house, damaging the paintwork."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "critic",
+      "word": "critic",
+      "senses": [
+        {
+          "id": "sense-3d7f0c87",
+          "pos": "n.",
+          "meaningZh": "評論家；藝評人",
+          "examples": [
+            "The critic wrote a scathing review of the new art exhibition, pointing out the lack of originality and depth in the artist's work."
+          ]
+        },
+        {
+          "id": "sense-361082c6",
+          "pos": "n.",
+          "meaningZh": "批評者；挑剔的人",
+          "examples": [
+            "During the school play, the critic in the audience loudly criticized the choice of costumes, completely ignoring the talent and effort put in by the young actors."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

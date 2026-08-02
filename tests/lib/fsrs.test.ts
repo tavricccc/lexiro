@@ -16,10 +16,10 @@ describe('fsrs learning progress', () => {
     expect(new Date(next.due).getTime()).toBeGreaterThan(now.getTime())
   })
 
-  it('keeps again cards due sooner than easy cards', () => {
+  it('keeps again cards due sooner than good cards', () => {
     const now = new Date('2026-01-01T00:00:00.000Z')
     const again = reviewCard(null, 'again', now)
-    const easy = reviewCard(null, 'easy', now)
-    expect(new Date(again.due).getTime()).toBeLessThan(new Date(easy.due).getTime())
+    const good = reviewCard(null, 'good', now)
+    expect(new Date(again.due).getTime()).toBeLessThan(new Date(good.due).getTime())
   })
 })

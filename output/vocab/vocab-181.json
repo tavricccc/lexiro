@@ -1,1368 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 181,
   "words": [
-    {
-      "wordKey": "handicraft",
-      "word": "handicraft",
-      "senses": [
-        {
-          "id": "sense-c47ba9c4",
-          "pos": "noun",
-          "meaningZh": "手工藝；工藝技能",
-          "definitionEn": "a craft that requires skillful hands",
-          "examples": [
-            "She spent countless hours perfecting her pottery skills, making beautiful handicrafts that sold like hotcakes at the local art fair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-2f18581e",
-          "pos": "noun",
-          "meaningZh": "手工藝品；手作品",
-          "definitionEn": "a work produced by hand labor",
-          "examples": [
-            "She displayed her skill in handicraft by creating a beautiful hand-knitted sweater."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "harass",
-      "word": "harass",
-      "senses": [
-        {
-          "id": "sense-cfd883d4",
-          "pos": "verb",
-          "meaningZh": "騷擾；持續攻擊",
-          "definitionEn": "exhaust someone or something by constantly attacking or provoking them",
-          "examples": [
-            "The persistent bully at school would harass his victim every day, causing extreme mental and emotional distress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-54ffca67",
-          "pos": "verb",
-          "meaningZh": "糾纏；不斷打擾",
-          "definitionEn": "annoy or bother repeatedly or continuously",
-          "examples": [
-            "The office has a strict policy against harassing any employee regardless of their position or gender."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L6",
-        "textbookTitle": "翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "harassment",
-      "word": "harassment",
-      "senses": [
-        {
-          "id": "sense-db4864f3",
-          "pos": "noun",
-          "meaningZh": "騷擾；霸凌行為",
-          "definitionEn": "the act of persistent and unwanted behavior that makes someone feel uncomfortable, annoyed, frightened, or intimidated",
-          "examples": [
-            "She filed a complaint with HR about the sexual harassment she experienced in the workplace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-3284d4e2",
-          "pos": "noun",
-          "meaningZh": "煩擾；持續干擾",
-          "definitionEn": "a feeling of intense irritation or annoyance caused by being constantly bothered or tormented",
-          "examples": [
-            "The constant harassment of telemarketers really gets on my nerves."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "harden",
-      "word": "harden",
-      "senses": [
-        {
-          "id": "sense-9ecf013a",
-          "pos": "verb",
-          "meaningZh": "使硬化；加硬",
-          "definitionEn": "to make something hard, or harder in texture",
-          "examples": [
-            "Sarah used a blowtorch to harden the edges of the metal sculpture she was creating."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-94d68f7f",
-          "pos": "verb",
-          "meaningZh": "淬火；硬化處理",
-          "definitionEn": "to heat and cool in oil to make something harder and stronger",
-          "examples": [
-            "After the blacksmith hardens the steel blade, it becomes sharp and durable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "harmonica",
-      "word": "harmonica",
-      "senses": [
-        {
-          "id": "sense-ae0b84c0",
-          "pos": "noun",
-          "meaningZh": "口琴",
-          "definitionEn": "a small, rectangular musical instrument with spaces along one side that are blown into to play notes, or this type of instrument generally",
-          "examples": [
-            "Jimmy pulled out his harmonica and began to play a catchy tune at the campfire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-cc323b5e",
-          "pos": "noun",
-          "meaningZh": "口琴；口風琴",
-          "definitionEn": "a wind instrument in the shape of a small rectangular box with metal reeds along its length, played by blowing and drawing air through the reeds using the mouth",
-          "examples": [
-            "At the campfire, Sarah entertained everyone with her melodious tunes on the harmonica."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "harness",
       "word": "harness",
       "senses": [
         {
-          "id": "sense-95914074",
-          "pos": "verb",
+          "id": "sense-031c3a21",
+          "pos": "v.",
           "meaningZh": "利用；駕馭",
-          "definitionEn": "to use (something) for a particular purpose",
           "examples": [
             "She harnessed her creative energy to write a compelling novel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a82433ad",
-          "pos": "verb",
+          "id": "sense-23a60c7c",
+          "pos": "v.",
           "meaningZh": "為動物套上挽具",
-          "definitionEn": "to put a harness on (an animal)",
           "examples": [
             "The farmer harnessed the horse before plowing the field."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "haunt",
       "word": "haunt",
       "senses": [
         {
-          "id": "sense-aaeada5d",
-          "pos": "verb",
+          "id": "sense-94c39074",
+          "pos": "v.",
           "meaningZh": "縈繞腦海；揮之不去",
-          "definitionEn": "to appear often in the thoughts or imagination",
           "examples": [
             "Ever since the car accident, the memory of the crash haunts her thoughts daily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4a9bd15a",
-          "pos": "verb",
+          "id": "sense-20798017",
+          "pos": "v.",
           "meaningZh": "常去；頻繁出沒",
-          "definitionEn": "to visit often",
           "examples": [
             "The memory of that terrible accident haunts him every night, and he cannot sleep peacefully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "headphone",
       "word": "headphone",
       "senses": [
         {
-          "id": "sense-686f5429",
-          "pos": "noun",
+          "id": "sense-5c671eb5",
+          "pos": "n.",
           "meaningZh": "耳機",
-          "definitionEn": "a device that receives audio signals from a source such as a computer or music player and converts them into sound waves that are heard through speakers positioned close to the ears",
           "examples": [
             "I love wearing my headphones while I work, so I can listen to my favorite music without disturbing others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "headphones",
       "word": "headphones",
       "senses": [
         {
-          "id": "sense-f823e0a9",
-          "pos": "noun",
+          "id": "sense-5dfd504d",
+          "pos": "n.",
           "meaningZh": "耳機；頭戴式耳機",
-          "definitionEn": "a device that receives audio signals from a source such as a computer or music player and converts them into sound waves that are heard through speakers positioned close to the ears",
           "examples": [
             "I love wearing my headphones while I work, so I can listen to my favorite music without disturbing others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "healthful",
       "word": "healthful",
       "senses": [
         {
-          "id": "sense-1be00aad",
-          "pos": "adjective",
+          "id": "sense-8ea3a487",
+          "pos": "adj.",
           "meaningZh": "有益健康的；保健的",
-          "definitionEn": "promoting good health",
           "examples": [
             "Eating a well-balanced diet with plenty of fruits and vegetables is a healthful habit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c83c5038",
-          "pos": "adjective",
+          "id": "sense-f0029be2",
+          "pos": "adj.",
           "meaningZh": "促進健康的；有益的",
-          "definitionEn": "conducive to good health of body or mind",
           "examples": [
             "Eating a balanced diet and exercising regularly is essential for maintaining a healthful lifestyle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hearty",
       "word": "hearty",
       "senses": [
         {
-          "id": "sense-cb7c57ad",
-          "pos": "adjective",
+          "id": "sense-168a2163",
+          "pos": "adj.",
           "meaningZh": "熱情誠摯的；衷心的",
-          "definitionEn": "displaying or characterized by warmth and sincerity of emotion",
           "examples": [
             "Joe gave a hearty greeting to his friend whom he hadn’t seen in five years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7c1e2900",
-          "pos": "adjective",
+          "id": "sense-ddd927ae",
+          "pos": "adj.",
           "meaningZh": "強壯結實的；健碩的",
-          "definitionEn": "healthy and strong; robust",
           "examples": [
             "The farmer’s hearty physique allowed him to do strenuous work all day in the fields."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hedge",
       "word": "hedge",
       "senses": [
         {
-          "id": "sense-e7a76c92",
-          "pos": "noun",
+          "id": "sense-8a8a4abe",
+          "pos": "n.",
           "meaningZh": "樹籬；籬笆",
-          "definitionEn": "a row of bushes or small trees planted close together as a boundary",
           "examples": [
             "He trimmed the hedge along the front of the garden."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7ba82f7e",
-          "pos": "verb",
+          "id": "sense-3ca5a1f9",
+          "pos": "v.",
           "meaningZh": "用樹籬圍住；設障阻擋",
-          "definitionEn": "limit or impede with a hedge or similar barrier",
           "examples": [
             "The gardeners hedged the property to prevent trespassers from entering."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9c762395",
-          "pos": "verb",
+          "id": "sense-7614fc08",
+          "pos": "v.",
           "meaningZh": "對沖風險；規避損失",
-          "definitionEn": "reduce the risk of loss or harm",
           "examples": [
             "To hedge against potential financial risk, Martha invested in a diverse portfolio of stocks and bonds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "heighten",
       "word": "heighten",
       "senses": [
         {
-          "id": "sense-932c947c",
-          "pos": "verb",
+          "id": "sense-08290355",
+          "pos": "v.",
           "meaningZh": "提高；增強",
-          "definitionEn": "to increase in quantity, degree, or intensity",
           "examples": [
             "The arrival of the new manager has heightened the expectations of the employees for positive changes in the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d5240d86",
-          "pos": "verb",
+          "id": "sense-17454c97",
+          "pos": "v.",
           "meaningZh": "加深；使更強烈",
-          "definitionEn": "to make more intense, stronger, or more noticeable",
           "examples": [
             "The use of background music can heighten the emotional impact of a scene in a movie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hemisphere",
       "word": "hemisphere",
       "senses": [
         {
-          "id": "sense-ff33ccea",
-          "pos": "noun",
+          "id": "sense-2ad1661e",
+          "pos": "n.",
           "meaningZh": "半球體",
-          "definitionEn": "either of two halves of a sphere",
           "examples": [
             "The earth is divided into the Northern Hemisphere and the Southern Hemisphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cc74df22",
-          "pos": "noun",
+          "id": "sense-dbd9f096",
+          "pos": "n.",
           "meaningZh": "（地球）半球；東西南北半球",
-          "definitionEn": "either of two halves of the Earth, especially the northern and southern halves",
           "examples": [
             "When it is summer in the northern hemisphere, it is winter in the southern hemisphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "heroic",
       "word": "heroic",
       "senses": [
         {
-          "id": "sense-03f166d9",
-          "pos": "adjective",
+          "id": "sense-294c2785",
+          "pos": "adj.",
           "meaningZh": "英雄式的；英勇的",
-          "definitionEn": "having or displaying qualities appropriate for heroes",
           "examples": [
             "In the face of danger, he made a heroic effort to save the trapped hikers from the burning mountain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6f49d07e",
-          "pos": "adjective",
+          "id": "sense-74d4ed52",
+          "pos": "adj.",
           "meaningZh": "勇敢無畏的；英勇的",
-          "definitionEn": "showing extreme courage, especially in desperate situations",
           "examples": [
             "The firefighter made a heroic effort to rescue the trapped survivors from the burning building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "heroin",
       "word": "heroin",
       "senses": [
         {
-          "id": "sense-3274bb4c",
-          "pos": "noun",
+          "id": "sense-42c2d708",
+          "pos": "n.",
           "meaningZh": "海洛因",
-          "definitionEn": "a highly addictive illegal drug made from morphine",
           "examples": [
             "Heroin addiction destroyed his health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "heterosexual",
       "word": "heterosexual",
       "senses": [
         {
-          "id": "sense-54dade06",
-          "pos": "adjective",
+          "id": "sense-6160c1dc",
+          "pos": "adj.",
           "meaningZh": "異性戀的",
-          "definitionEn": "denoting or relating to a person who is sexually attracted to people of the opposite sex",
           "examples": [
             "John realized he was heterosexual after developing feelings for his female coworker."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d4c1bea8",
-          "pos": "noun",
+          "id": "sense-ed3d24a0",
+          "pos": "n.",
           "meaningZh": "異性戀者",
-          "definitionEn": "a person who is sexually attracted to people of the opposite sex; a straight person",
           "examples": [
             "Jill identified as a heterosexual woman, as she was exclusively attracted to men."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hierarchy",
       "word": "hierarchy",
       "senses": [
         {
-          "id": "sense-2a19789d",
-          "pos": "noun",
+          "id": "sense-80558b05",
+          "pos": "n.",
           "meaningZh": "階級體制；組織層級",
-          "definitionEn": "the organization of people at different ranks in an administrative body",
           "examples": [
             "The CEO sits at the top of the hierarchy, followed by the vice presidents, managers, and then the entry-level employees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-bdb5b512",
-          "pos": "noun",
+          "id": "sense-8d2e661a",
+          "pos": "n.",
           "meaningZh": "等級制度；層次結構",
-          "definitionEn": "a series of ordered groupings of people or things within a system",
           "examples": [
             "In the corporate hierarchy, the CEO is at the top, followed by the board of directors, then the executives, and then the employees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hijack",
       "word": "hijack",
       "senses": [
         {
-          "id": "sense-1e2c1296",
-          "pos": "verb",
+          "id": "sense-0f9a757b",
+          "pos": "v.",
           "meaningZh": "劫持；挾持",
-          "definitionEn": "to take or seize control of (a vehicle) by force or threat of force, especially for ransom.",
           "examples": [
             "The desperate criminal hijacked the bus, demanding a large sum of money for the release of the passengers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b4e52f4d",
-          "pos": "noun",
+          "id": "sense-a3348b09",
+          "pos": "n.",
           "meaningZh": "劫機；劫持事件",
-          "definitionEn": "the illegal seizure of a vehicle, especially an airplane, by an armed person or group with the intention of using it for their own purposes or as a means of gaining publicity.",
           "examples": [
             "The terrorists hijacked the plane and demanded a ransom for the safe release of the passengers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hoarse",
       "word": "hoarse",
       "senses": [
         {
-          "id": "sense-3c715aa7",
-          "pos": "adjective",
+          "id": "sense-86e7d3cb",
+          "pos": "adj.",
           "meaningZh": "聲音沙啞的；嘶啞的",
-          "definitionEn": "having a deep, rough, and often harsh sound, especially due to shouting, illness, or strong emotion",
           "examples": [
             "After cheerleading practice, her voice became hoarse from shouting so loud."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "homosexual",
       "word": "homosexual",
       "senses": [
         {
-          "id": "sense-e9fa33ca",
-          "pos": "noun",
+          "id": "sense-a35f2e6e",
+          "pos": "n.",
           "meaningZh": "同性戀者",
-          "definitionEn": "a person who is sexually attracted to those of the same gender",
           "examples": [
             "Sarah came out as a homosexual when she introduced her girlfriend to her family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-f88f9854",
-          "pos": "adjective",
+          "id": "sense-3f830612",
+          "pos": "adj.",
           "meaningZh": "同性戀的",
-          "definitionEn": "relating to or characterized by a sexual attraction to people of one’s own gender",
           "examples": [
             "John came out as homosexual to his friends and family, proudly embracing his identity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "honorary",
       "word": "honorary",
       "senses": [
         {
-          "id": "sense-0bd8f4f7",
-          "pos": "adjective",
+          "id": "sense-40cbd17b",
+          "pos": "adj.",
           "meaningZh": "名譽的；榮譽（不支薪）的",
-          "definitionEn": "having the status of an honorarium; unpaid and done voluntarily",
           "examples": [
             "She was given an honorary degree for her contribution to the field of science."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-372e9981",
-          "pos": "adjective",
+          "id": "sense-19410485",
+          "pos": "adj.",
           "meaningZh": "榮譽授予的；不具常規義務的",
-          "definitionEn": "given as an honor without the normal duties",
           "examples": [
             "The university awarded her an honorary degree in recognition of her contributions to the field, but she is not required to attend classes or take exams as a regular student."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hospitable",
       "word": "hospitable",
       "senses": [
         {
-          "id": "sense-63360262",
-          "pos": "adjective",
+          "id": "sense-4e0709f4",
+          "pos": "adj.",
           "meaningZh": "好客的；熱情款待的",
-          "definitionEn": "disposed to treat guests and strangers with cordiality and generosity",
           "examples": [
             "At the bed and breakfast, the owners were incredibly hospitable, offering us freshly baked cookies upon arrival and providing us with recommendations for local attractions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-dfd29972",
-          "pos": "adjective",
+          "id": "sense-ef3e1130",
+          "pos": "adj.",
           "meaningZh": "心胸開放的；樂於接受的",
-          "definitionEn": "having an open mind",
           "examples": [
             "After moving to a new city, my neighbors were incredibly hospitable and welcomed me with open arms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hospitality",
       "word": "hospitality",
       "senses": [
         {
-          "id": "sense-2c7a6d79",
-          "pos": "noun",
+          "id": "sense-4a09517d",
+          "pos": "n.",
           "meaningZh": "款待；熱情接待",
-          "definitionEn": "the friendly and generous reception and entertainment of guests, visitors, or strangers.",
           "examples": [
             "The hotel's hospitality was outstanding; the staff made us feel like home and pampered us with complimentary drinks and meals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hospitalize",
       "word": "hospitalize",
       "senses": [
         {
-          "id": "sense-b44b1ae4",
-          "pos": "verb",
+          "id": "sense-2679b4a3",
+          "pos": "v.",
           "meaningZh": "使住院；送入醫院",
-          "definitionEn": "to admit or take someone into a hospital for medical care",
           "examples": [
             "After the car accident, they had to hospitalize the injured driver to ensure he received proper medical treatment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hostel",
       "word": "hostel",
       "senses": [
         {
-          "id": "sense-d7429357",
-          "pos": "noun",
+          "id": "sense-ca1f629b",
+          "pos": "n.",
           "meaningZh": "青年旅舍；背包客棧",
-          "definitionEn": "inexpensive supervised lodging (especially for youths on bicycling trips)",
           "examples": [
             "After a long day of cycling, the group of young adventurers stayed at a hostel by the lake for a fraction of the price of a hotel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b0d7818d",
-          "pos": "noun",
+          "id": "sense-09333d21",
+          "pos": "n.",
           "meaningZh": "廉價住宿；旅舍",
-          "definitionEn": "a hotel providing overnight lodging for travelers",
           "examples": [
             "After a long day of sightseeing, the tired backpackers checked into the hostel, where they could rest comfortably before continuing their journey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hover",
       "word": "hover",
       "senses": [
         {
-          "id": "sense-625e5589",
-          "pos": "verb",
+          "id": "sense-4c19c6da",
+          "pos": "v.",
           "meaningZh": "懸停；盤旋於空中",
-          "definitionEn": "to remain in one place in the air",
           "examples": [
             "The helicopter can hover over the building for extended periods of time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-89cb8a14",
-          "pos": "verb",
+          "id": "sense-f5b959cb",
+          "pos": "v.",
           "meaningZh": "徘徊；在附近等候",
-          "definitionEn": "to stay or wait near a place",
           "examples": [
             "The helicopter was seen to hover over the building for several minutes before flying away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "humiliate",
       "word": "humiliate",
       "senses": [
         {
-          "id": "sense-37f82702",
-          "pos": "verb",
+          "id": "sense-0c27f009",
+          "pos": "v.",
           "meaningZh": "羞辱；使難堪",
-          "definitionEn": "to make someone feel ashamed or inferior, often in public",
           "examples": [
             "Jane humiliated her co-worker by publicly pointing out all of their mistakes during the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hunch",
       "word": "hunch",
       "senses": [
         {
-          "id": "sense-d0ca56ab",
-          "pos": "noun",
+          "id": "sense-f75284fb",
+          "pos": "n.",
           "meaningZh": "直覺；預感",
-          "definitionEn": "a feeling or suspicion that something is true, often based on intuition rather than known facts",
           "examples": [
             "Although she had no evidence, Emma had a hunch that her missing keys were hidden somewhere in her bedroom. She followed her intuition and found them under the bed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-fbdb97d9",
-          "pos": "noun",
+          "id": "sense-71374e29",
+          "pos": "n.",
           "meaningZh": "弓背；縮肩姿勢",
-          "definitionEn": "the act of bending forward and drawing the shoulders up and inward",
           "examples": [
             "When the detective had a hunch about the suspect, he leaned forward, drew his shoulders up and inward, and listened intently for any clues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hurdle",
       "word": "hurdle",
       "senses": [
         {
-          "id": "sense-f6ce7446",
-          "pos": "noun",
+          "id": "sense-f860fb66",
+          "pos": "n.",
           "meaningZh": "障礙；難關",
-          "definitionEn": "a problem that needs to be solved or addressed before you can make progress",
           "examples": [
             "As a new entrepreneur, obtaining funding was the biggest hurdle she faced in starting her business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-549af2cd",
-          "pos": "verb",
+          "id": "sense-eb2ac060",
+          "pos": "v.",
           "meaningZh": "跨越跨欄；跳過障礙",
-          "definitionEn": "to jump over a barrier or obstacle while running at speed",
           "examples": [
             "During the track race, the athlete effortlessly hurdled over the series of hurdles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "hybrid",
+      "word": "hybrid",
+      "senses": [
+        {
+          "id": "sense-a6262739",
+          "pos": "n.",
+          "meaningZh": "雜交生物；混種",
+          "examples": [
+            "The liger, a hybrid of a lion and a tiger, possesses both physical and behavioral characteristics of both its parents."
+          ]
+        },
+        {
+          "id": "sense-ad460d3a",
+          "pos": "n.",
+          "meaningZh": "油電混合車；混合動力車",
+          "examples": [
+            "She decided to purchase a hybrid car as it was better for the environment and saved her money on fuel costs."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "hygiene",
+      "word": "hygiene",
+      "senses": [
+        {
+          "id": "sense-bba3d7d0",
+          "pos": "n.",
+          "meaningZh": "衛生；個人清潔習慣",
+          "examples": [
+            "Good hygiene is necessary for preventing the spread of germs, especially in hospitals and other medical facilities."
+          ]
+        },
+        {
+          "id": "sense-e6e1ab28",
+          "pos": "n.",
+          "meaningZh": "衛生學；預防醫學",
+          "examples": [
+            "The importance of hygiene cannot be overstated during the COVID-19 pandemic, as proper hand-washing and sanitizing are crucial in preventing the spread of the virus."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "hypocrite",
+      "word": "hypocrite",
+      "senses": [
+        {
+          "id": "sense-8497afb7",
+          "pos": "n.",
+          "meaningZh": "偽君子；虛偽的人",
+          "examples": [
+            "John claimed to be an environmentalist, but he drove a gas guzzling SUV and threw away plastic bottles. He was clearly a hypocrite."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "iceberg",
+      "word": "iceberg",
+      "senses": [
+        {
+          "id": "sense-7b3a36d7",
+          "pos": "n.",
+          "meaningZh": "冰山",
+          "examples": [
+            "The ship sank after it struck an iceberg."
+          ]
+        },
+        {
+          "id": "sense-e7a9e763",
+          "pos": "n.",
+          "meaningZh": "結球萵苣；冰山萵苣",
+          "examples": [
+            "For a refreshing summer salad, chop up some iceberg lettuce and toss it with tomatoes, cucumber, and a tangy vinaigrette."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "illuminate",
+      "word": "illuminate",
+      "senses": [
+        {
+          "id": "sense-2aad3cc0",
+          "pos": "v.",
+          "meaningZh": "闡明；解說",
+          "examples": [
+            "The teacher used a visual aid to illuminate the concept for the students."
+          ]
+        },
+        {
+          "id": "sense-9db47a7f",
+          "pos": "v.",
+          "meaningZh": "（手稿）彩飾；加插圖裝飾",
+          "examples": [
+            "The talented artist used gold leaf and vibrant colors to illuminate the pages of the ancient manuscript, bringing the illustrations to life."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

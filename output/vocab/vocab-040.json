@@ -1,1432 +1,679 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 40,
   "words": [
-    {
-      "wordKey": "diary",
-      "word": "diary",
-      "senses": [
-        {
-          "id": "sense-88ccfa2b",
-          "pos": "noun",
-          "meaningZh": "日記；日誌",
-          "definitionEn": "a daily written record of personal experiences and observations",
-          "examples": [
-            "Every night before bed, Jane sat down with her diary and chronicled the events of her day, from the mundane to the extraordinary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-73563986",
-          "pos": "noun",
-          "meaningZh": "日記本；日記簿",
-          "definitionEn": "a personal journal (as a physical object)",
-          "examples": [
-            "At the end of each day, Sarah sat down with her diary to reflect on her experiences and record her thoughts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "diet",
-      "word": "diet",
-      "senses": [
-        {
-          "id": "sense-fad76199",
-          "pos": "noun",
-          "meaningZh": "日常飲食；食物攝取",
-          "definitionEn": "the usual food and drink that a person or animal consumes",
-          "examples": [
-            "Maria is following a strict diet of vegetables and lean proteins to lose weight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-80a1b347",
-          "pos": "noun",
-          "meaningZh": "規定飲食；節食",
-          "definitionEn": "a prescribed selection of foods to promote weight loss or treat a medical condition",
-          "examples": [
-            "After being diagnosed with diabetes, Tim followed a strict diet consisting of low-sugar and low-carbohydrate foods."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L4",
-        "textbookTitle": "三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "difference",
-      "word": "difference",
-      "senses": [
-        {
-          "id": "sense-7504cd08",
-          "pos": "noun",
-          "meaningZh": "差異；不同之處",
-          "definitionEn": "the quality or state of being unlike",
-          "examples": [
-            "There is a noticeable difference in taste between the two brands of chocolate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-7c384483",
-          "pos": "noun",
-          "meaningZh": "區別；差別",
-          "definitionEn": "a distinction, variation, or deviation from something",
-          "examples": [
-            "The main difference between apples and oranges is their color: apples are typically red or green, while oranges are orange."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "difficulty",
-      "word": "difficulty",
-      "senses": [
-        {
-          "id": "sense-ff3fa6d2",
-          "pos": "noun",
-          "meaningZh": "困難；艱難",
-          "definitionEn": "something that is hard to do because it is complicated, involves a lot of effort or skill, or has a lot of obstacles",
-          "examples": [
-            "John experienced great difficulty learning how to play the piano, but with consistent practice, he gradually overcame the challenges and became an accomplished pianist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-8895d237",
-          "pos": "noun",
-          "meaningZh": "難題；難關",
-          "definitionEn": "a thing that is hard to accomplish, deal with, or understand, requiring much effort or skill.",
-          "examples": [
-            "Learning to play the piano can be quite a difficulty, especially for beginners."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L7",
-        "textbookTitle": "三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "direct",
-      "word": "direct",
-      "senses": [
-        {
-          "id": "sense-29799315",
-          "pos": "adjective",
-          "meaningZh": "直接的；不繞路的",
-          "definitionEn": "proceeding without deviation or interruption; straight and short in spatial dimensions",
-          "examples": [
-            "The quickest route to the park is a direct path through the woods."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-29c1d7bf",
-          "pos": "adjective",
-          "meaningZh": "直系的；嫡系的",
-          "definitionEn": "in a straight unbroken line of descent from parent to child",
-          "examples": [
-            "The prince is in direct line to the throne, as he is the firstborn son of the king and queen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "direction",
       "word": "direction",
       "senses": [
         {
-          "id": "sense-c691f408",
-          "pos": "noun",
+          "id": "sense-3d3a5074",
+          "pos": "n.",
           "meaningZh": "方向；指引路線",
-          "definitionEn": "a line or path that leads to a place or point",
           "examples": [
             "After getting lost in the woods, we finally found the direction of the nearest town."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-247fbcda",
-          "pos": "noun",
+          "id": "sense-75b195fe",
+          "pos": "n.",
           "meaningZh": "趨勢；走向",
-          "definitionEn": "a general tendency in which something develops",
           "examples": [
             "The direction of the company’s growth is towards expanding its market globally."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "director",
       "word": "director",
       "senses": [
         {
-          "id": "sense-e466db52",
-          "pos": "noun",
+          "id": "sense-1721dbb6",
+          "pos": "n.",
           "meaningZh": "（電影、戲劇）導演",
-          "definitionEn": "the person responsible for supervising the actors and guiding the production of a show or play",
           "examples": [
             "The director gave the actors specific instructions on how to perform their roles and worked closely with the set designers to create the perfect stage for their new production."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1653841b",
-          "pos": "noun",
+          "id": "sense-45154747",
+          "pos": "n.",
           "meaningZh": "主任；總監；主管",
-          "definitionEn": "the person who controls and manages resources and expenditures within an organization",
           "examples": [
             "The director of the company decides which projects to invest in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disagree",
       "word": "disagree",
       "senses": [
         {
-          "id": "sense-197a719f",
-          "pos": "verb",
+          "id": "sense-f3a7ca58",
+          "pos": "v.",
           "meaningZh": "意見不合；不一致",
-          "definitionEn": "not be in accord",
           "examples": [
             "During the meeting, the team members disagreed on the best strategy to achieve their goals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7544b632",
-          "pos": "verb",
+          "id": "sense-99d66b55",
+          "pos": "v.",
           "meaningZh": "持異議；反對",
-          "definitionEn": "have or express a different opinion or belief",
           "examples": [
             "During the meeting, Karen disagreed with her colleagues' proposal, stating her concerns about its feasibility."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disagreement",
       "word": "disagreement",
       "senses": [
         {
-          "id": "sense-ac731c70",
-          "pos": "noun",
+          "id": "sense-389195e4",
+          "pos": "n.",
           "meaningZh": "分歧；不一致",
-          "definitionEn": "a difference between conflicting facts, claims, or opinions",
           "examples": [
             "There was a disagreement between the two groups on how to approach the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-10bcb49f",
-          "pos": "noun",
+          "id": "sense-4ad56b5b",
+          "pos": "n.",
           "meaningZh": "爭論；爭執",
-          "definitionEn": "an argument or dispute between people",
           "examples": [
             "There was a disagreement between the two colleagues regarding the new project proposal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disappear",
       "word": "disappear",
       "senses": [
         {
-          "id": "sense-89c1bc55",
-          "pos": "verb",
+          "id": "sense-c367b85c",
+          "pos": "v.",
           "meaningZh": "消失；不復存在",
-          "definitionEn": "cease to exist",
           "examples": [
             "The magician made the rabbit disappear from the hat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2d64eba1",
-          "pos": "verb",
+          "id": "sense-c91ce2b0",
+          "pos": "v.",
           "meaningZh": "消蹤；突然不見",
-          "definitionEn": "get lost, often suddenly or unexpectedly",
           "examples": [
             "Sarah felt embarrassed and quickly disappeared into the crowd."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L7",
-        "textbookTitle": "三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discover",
       "word": "discover",
       "senses": [
         {
-          "id": "sense-4f019486",
-          "pos": "verb",
+          "id": "sense-0826383b",
+          "pos": "v.",
           "meaningZh": "發現；初次得知",
-          "definitionEn": "find out about something for the first time",
           "examples": [
             "I discovered a great new coffee shop on my way to work this morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ca894a7e",
-          "pos": "verb",
+          "id": "sense-df65e1d7",
+          "pos": "v.",
           "meaningZh": "首次見到；找到",
-          "definitionEn": "see something or someone for the first time",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L9",
-        "textbookTitle": "翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discovery",
       "word": "discovery",
       "senses": [
         {
-          "id": "sense-8132a7fc",
-          "pos": "noun",
+          "id": "sense-8b228aa0",
+          "pos": "n.",
           "meaningZh": "發現；新發現",
-          "definitionEn": "the act of finding or learning something for the first time",
           "examples": [
             "After months of research, the scientists made a groundbreaking discovery that could revolutionize the field of medicine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-98115ecc",
-          "pos": "noun",
+          "id": "sense-b79cf728",
+          "pos": "n.",
           "meaningZh": "（法律）證據開示；蒐證程序",
-          "definitionEn": "(law) the process of revealing relevant information or evidence during a legal case",
           "examples": [
             "During the discovery phase of the trial, the defense attorney uncovered new evidence that completely changed the course of the case."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9 +1",
-        "textbookTitle": "三民 B1·L9、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discuss",
       "word": "discuss",
       "senses": [
         {
-          "id": "sense-4aa689aa",
-          "pos": "verb",
+          "id": "sense-77d72077",
+          "pos": "v.",
           "meaningZh": "討論；交談",
-          "definitionEn": "speak with others about (something); talk (something) over in detail; have a discussion",
           "examples": [
             "During the meeting, we will discuss the proposed changes to the project timeline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c067b93d",
-          "pos": "verb",
+          "id": "sense-14a4e518",
+          "pos": "v.",
           "meaningZh": "探討；論述",
-          "definitionEn": "consider or examine (a subject) in speech or writing; talk about or write about in detail",
           "examples": [
             "During the meeting, let's discuss the new project proposal and explore its feasibility."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7 +1",
-        "textbookTitle": "龍騰 B2·L7、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discussion",
       "word": "discussion",
       "senses": [
         {
-          "id": "sense-bbf7c526",
-          "pos": "noun",
+          "id": "sense-14684e82",
+          "pos": "n.",
           "meaningZh": "討論；商討",
-          "definitionEn": "the act of talking about something with other people and telling them your ideas or opinions",
           "examples": [
             "During the meeting, there was a lively discussion about the new marketing strategy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-92a89065",
-          "pos": "noun",
+          "id": "sense-f739b679",
+          "pos": "n.",
           "meaningZh": "正式討論；辯論",
-          "definitionEn": "a formal conversation or debate on a particular topic",
           "examples": [
             "The board members gathered for a discussion on the company's financial performance and potential strategies for growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7 +1",
-        "textbookTitle": "龍騰 B2·L7、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disease",
       "word": "disease",
       "senses": [
         {
-          "id": "sense-8d9915e9",
-          "pos": "noun",
+          "id": "sense-2c85a4e5",
+          "pos": "n.",
           "meaningZh": "疾病；病症",
-          "definitionEn": "an impairment of health or a condition of abnormal functioning",
           "examples": [
             "After traveling to a tropical region, she contracted a rare and debilitating disease that left her bedridden for months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b2e4ddf5",
-          "pos": "noun",
+          "id": "sense-c1ff3349",
+          "pos": "n.",
           "meaningZh": "病態；惡劣狀況",
-          "definitionEn": "any unwholesome or desperate condition",
           "examples": [
             "The economic downturn left many families in a state of financial disease, struggling to make ends meet and facing overwhelming debt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +2",
-        "textbookTitle": "龍騰 B1·L4、三民 B4·L2、翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "display",
       "word": "display",
       "senses": [
         {
-          "id": "sense-6a87fa09",
-          "pos": "noun",
+          "id": "sense-0dc50875",
+          "pos": "n.",
           "meaningZh": "展示；陳列",
-          "definitionEn": "a visual representation of something",
           "examples": [
             "The art gallery had a beautiful display of paintings and sculptures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4ce82610",
-          "pos": "noun",
+          "id": "sense-c2d6e294",
+          "pos": "n.",
           "meaningZh": "（公開）展覽；展出品",
-          "definitionEn": "something shown to the public",
           "examples": [
             "The museum had a beautiful display of artwork."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8 +1",
-        "textbookTitle": "龍騰 B1·L8、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "distance",
       "word": "distance",
       "senses": [
         {
-          "id": "sense-1a9c71ae",
-          "pos": "noun",
+          "id": "sense-d1e5d7c2",
+          "pos": "n.",
           "meaningZh": "距離；間距",
-          "definitionEn": "the property created by the space between two objects or points",
           "examples": [
             "The distance between my house and the grocery store is approximately two miles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3",
-        "textbookTitle": "龍騰 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "distant",
       "word": "distant",
       "senses": [
         {
-          "id": "sense-b60ed3de",
-          "pos": "adjective",
+          "id": "sense-534d6058",
+          "pos": "adj.",
           "meaningZh": "遙遠的；距離遠的",
-          "definitionEn": "located far away in space",
           "examples": [
             "The closest star to Earth, after the sun, is Proxima Centauri, which is approximately 4.24 light years distant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ad73c8db",
-          "pos": "adjective",
+          "id": "sense-c6531425",
+          "pos": "adj.",
           "meaningZh": "冷淡的；疏遠的",
-          "definitionEn": "not friendly or intimate; cool or reserved",
           "examples": [
             "She gave him a distant smile and didn’t engage in any further conversation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3",
-        "textbookTitle": "龍騰 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "divide",
       "word": "divide",
       "senses": [
         {
-          "id": "sense-11d4fb15",
-          "pos": "verb",
+          "id": "sense-8ccddc1c",
+          "pos": "v.",
           "meaningZh": "劃分；分組",
-          "definitionEn": "make a division or separation",
           "examples": [
             "The teacher asked the students to divide themselves into groups of four for the group activity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c303a73d",
-          "pos": "verb",
+          "id": "sense-dc779034",
+          "pos": "v.",
           "meaningZh": "隔開；分隔",
-          "definitionEn": "act as a barrier between; stand between",
           "examples": [
             "A wide river divides the two cities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "division",
       "word": "division",
       "senses": [
         {
-          "id": "sense-d9e4f16a",
-          "pos": "noun",
+          "id": "sense-08277996",
+          "pos": "n.",
           "meaningZh": "除法；分割",
-          "definitionEn": "the act or process of dividing or separating something into parts",
           "examples": [
             "Long division is a method of dividing two numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-d97a9769",
-          "pos": "noun",
+          "id": "sense-e18d2365",
+          "pos": "n.",
           "meaningZh": "部門；分部",
-          "definitionEn": "a part, section, or group of something that is divided or separated from the whole",
           "examples": [
             "The company will be broken up into three divisions: Sales, HR, and Accounting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "domestic",
       "word": "domestic",
       "senses": [
         {
-          "id": "sense-f7a08910",
-          "pos": "adjective",
+          "id": "sense-d8688644",
+          "pos": "adj.",
           "meaningZh": "國內的；家庭的",
-          "definitionEn": "relating to the home, family or life in one’s own country",
           "examples": [
             "My parents went on a domestic vacation to explore different cities within our country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f877ba84",
-          "pos": "adjective",
+          "id": "sense-0e9c68e8",
+          "pos": "adj.",
           "meaningZh": "家用的；國產的",
-          "definitionEn": "adapted to household use from a foreign import",
           "examples": [
             "The domestic vacuum cleaner is designed specifically for cleaning carpets and floors in the home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dot",
       "word": "dot",
       "senses": [
         {
-          "id": "sense-7463a4b0",
-          "pos": "noun",
+          "id": "sense-6c858f88",
+          "pos": "n.",
           "meaningZh": "點；圓點",
-          "definitionEn": "a very small circular shape, typically used as a punctuation mark or to represent a decimal point",
           "examples": [
             "When writing out a mathematical equation, don’t forget to include the dot to indicate the decimal point."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-780a67b1",
-          "pos": "verb",
+          "id": "sense-b26b9468",
+          "pos": "v.",
           "meaningZh": "打點；點綴",
-          "definitionEn": "mark or cover with small round spots or circles",
           "examples": [
             "The artist carefully dotted the canvas with paint to create a beautiful landscape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "double",
       "word": "double",
       "senses": [
         {
-          "id": "sense-83287f4c",
-          "pos": "adjective",
+          "id": "sense-8b0dbbee",
+          "pos": "adj.",
           "meaningZh": "雙倍的；兩倍的",
-          "definitionEn": "twice as great or many",
           "examples": [
             "After winning the lottery, his bank account balance was double what it had been before."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-18efd42b",
-          "pos": "noun",
+          "id": "sense-d59dc223",
+          "pos": "n.",
           "meaningZh": "加倍賭注（牌局）",
-          "definitionEn": "raising the stakes in a card game by a factor of 2",
           "examples": [
             "In a game of poker, John decided to double the bet in order to increase the excitement and potential winnings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "doubt",
       "word": "doubt",
       "senses": [
         {
-          "id": "sense-c226a149",
-          "pos": "noun",
+          "id": "sense-a4729d4d",
+          "pos": "n.",
           "meaningZh": "懷疑；存疑",
-          "definitionEn": "uncertainty about the truth, factuality, or existence of something",
           "examples": [
             "After hearing conflicting reports from different sources, she began to doubt the accuracy of the news."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-edfebf71",
-          "pos": "noun",
+          "id": "sense-a6627eed",
+          "pos": "n.",
           "meaningZh": "不確定；疑惑",
-          "definitionEn": "the state of being unsure or uncertain of something",
           "examples": [
             "Caught in a sudden doubt, she hesitated before choosing which path to take."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dove",
       "word": "dove",
       "senses": [
         {
-          "id": "sense-488f5568",
-          "pos": "noun",
+          "id": "sense-a91ec344",
+          "pos": "n.",
           "meaningZh": "鴿子",
-          "definitionEn": "any of the numerous small pigeons.",
           "examples": [
             "The children watched in amazement as a flock of doves took flight from the rooftop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9a518d8c",
-          "pos": "noun",
+          "id": "sense-b0c0c830",
+          "pos": "n.",
           "meaningZh": "鴿派人士；主和者",
-          "definitionEn": "a person who prefers negotiations to armed conflict in the conduct of foreign relations.",
           "examples": [
             "In the midst of rising tensions between the two countries, the dove politician advocated for peaceful dialogue and diplomacy instead of resorting to military action."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "download",
       "word": "download",
       "senses": [
         {
-          "id": "sense-317591fc",
-          "pos": "verb",
+          "id": "sense-98f26977",
+          "pos": "v.",
           "meaningZh": "下載",
-          "definitionEn": "to copy a file, program, or other data from the internet or another computer onto your own device",
           "examples": [
             "You can download the app for free before your trip."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a7789537",
-          "pos": "noun",
+          "id": "sense-07cec0cb",
+          "pos": "n.",
           "meaningZh": "下載檔案；下載動作",
-          "definitionEn": "a file that has been or can be copied from the internet, or the act of copying it",
           "examples": [
             "The download took only a few seconds on the new Wi-Fi."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "downstairs",
       "word": "downstairs",
       "senses": [
         {
-          "id": "sense-840721aa",
-          "pos": "adverb",
+          "id": "sense-d28f3f7b",
+          "pos": "adv.",
           "meaningZh": "在樓下；往樓下",
-          "definitionEn": "on a floor below",
           "examples": [
             "She lived in a small apartment on the third floor, so she always had to walk downstairs to get to the mailbox."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3f625612",
-          "pos": "adjective",
+          "id": "sense-46c835b6",
+          "pos": "adj.",
           "meaningZh": "樓下的",
-          "definitionEn": "located on a lower level of a building",
           "examples": [
             "The laundry room is downstairs, so you'll need to take the stairs or the elevator to get there."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dragon",
       "word": "dragon",
       "senses": [
         {
-          "id": "sense-ebbe1876",
-          "pos": "noun",
+          "id": "sense-3ceb637a",
+          "pos": "n.",
           "meaningZh": "龍；神話巨龍",
-          "definitionEn": "a mythical creature often depicted with scaly skin, sharp teeth, wings and talons, and the ability to breathe fire or ice",
           "examples": [
             "In the fantasy novel, the brave knight battled a fierce dragon guarding the treasure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-78cdc02f",
-          "pos": "noun",
+          "id": "sense-9bb88ba3",
+          "pos": "n.",
           "meaningZh": "飛蜥；滑翔蜥蜴",
-          "definitionEn": "any of several small tropical Asian lizards capable of gliding by spreading winglike membranes on each side of the body",
           "examples": [
             "While exploring the rainforest, we came across a dragon gracefully gliding from tree to tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drama",
       "word": "drama",
       "senses": [
         {
-          "id": "sense-de9fc0aa",
-          "pos": "noun",
+          "id": "sense-47f9e5b2",
+          "pos": "n.",
           "meaningZh": "舞台劇；話劇",
-          "definitionEn": "a play that is performed on stage by actors",
           "examples": [
             "I went to see a drama at the theater last night and was blown away by the performances of the actors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f855450c",
-          "pos": "noun",
+          "id": "sense-581481d4",
+          "pos": "n.",
           "meaningZh": "劇本；戲劇文學",
-          "definitionEn": "a type of literature that is intended for theater performances",
           "examples": [
             "The local theater group is putting on a drama about the struggles of a family during the Great Depression."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drawer",
       "word": "drawer",
       "senses": [
         {
-          "id": "sense-6ae23957",
-          "pos": "noun",
+          "id": "sense-c116ebaf",
+          "pos": "n.",
           "meaningZh": "抽屜",
-          "definitionEn": "a container in a piece of furniture that can be pulled out and pushed in, used for storing items",
           "examples": [
             "I organized my socks in the bottom drawer of my dresser."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9262a8fe",
-          "pos": "noun",
+          "id": "sense-51453dc6",
+          "pos": "n.",
           "meaningZh": "繪圖者；素描師",
-          "definitionEn": "a person who is skilled at creating pictures or diagrams with lines on a surface",
           "examples": [
             "The professional drawer was commissioned to create an intricate mural on the side of the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "drawing",
+      "word": "drawing",
+      "senses": [
+        {
+          "id": "sense-04105f71",
+          "pos": "n.",
+          "meaningZh": "繪圖；圖畫",
+          "examples": [
+            "The artist created a beautiful drawing of a flower using charcoal and pencil."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "drug",
+      "word": "drug",
+      "senses": [
+        {
+          "id": "sense-5796070f",
+          "pos": "n.",
+          "meaningZh": "藥物；毒品",
+          "examples": [
+            "The doctor prescribed a new drug for her illness."
+          ]
+        },
+        {
+          "id": "sense-2409c6fd",
+          "pos": "v.",
+          "meaningZh": "給藥；投藥",
+          "examples": [
+            "The doctor will drug the patient to relieve his pain."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dryer",
+      "word": "dryer",
+      "senses": [
+        {
+          "id": "sense-4adfdfc9",
+          "pos": "n.",
+          "meaningZh": "烘衣機；烘乾機",
+          "examples": [
+            "After washing the clothes, she put them in the dryer to get rid of excess water."
+          ]
+        },
+        {
+          "id": "sense-2a302024",
+          "pos": "n.",
+          "meaningZh": "吹風機；烘乾器",
+          "examples": [
+            "After washing the dishes, Sarah used the dryer to make sure they were completely dry before putting them away."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "due",
+      "word": "due",
+      "senses": [
+        {
+          "id": "sense-ab35b4ba",
+          "pos": "adj.",
+          "meaningZh": "到期的；應繳的",
+          "examples": [
+            "The assignment is due by 5 PM tomorrow."
+          ]
+        },
+        {
+          "id": "sense-45d55441",
+          "pos": "adj.",
+          "meaningZh": "歸因於；由⋯造成的",
+          "examples": [
+            "The success of the project was due to the dedication and hard work of the team."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dull",
+      "word": "dull",
+      "senses": [
+        {
+          "id": "sense-07518cf4",
+          "pos": "adj.",
+          "meaningZh": "無聊乏味的；遲鈍的",
+          "examples": [
+            "The lecture was so dull that I almost fell asleep."
+          ]
+        },
+        {
+          "id": "sense-6789e32c",
+          "pos": "v.",
+          "meaningZh": "使暗淡；使失去光澤",
+          "examples": [
+            "The cloudy weather dulled the reflection of the sun on the lake."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

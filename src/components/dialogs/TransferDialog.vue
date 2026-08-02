@@ -20,9 +20,12 @@ const {
   zipImportName,
   zipImportPreview,
   zipImportSets,
+  zipImportFullBackup,
+  zipImportFullPreview,
+  zipImportKind,
   zipImportError,
 } = storeToRefs(backupStore)
-const { resetZipImportState, handleZipImportChange, applyZipImport } = backupStore
+const { resetZipImportState, handleZipImportChange, applyZipImport, exportFullBackup } = backupStore
 </script>
 
 <template>
@@ -71,9 +74,9 @@ const { resetZipImportState, handleZipImportChange, applyZipImport } = backupSto
         <StatusMessage v-if="zipImportError" tone="error" class="mt-3">
           {{ zipImportError }}
         </StatusMessage>
-        <ImportSettings :sets="zipImportSets" prefix="zip" />
+        <ImportSettings :sets="zipImportSets" :kind="zipImportKind" :full-backup="zipImportFullBackup" :full-preview="zipImportFullPreview" />
         <div class="mt-4 flex justify-end border-t border-ink-200/50 pt-4 dark:border-ink-800/50">
-          <Button variant="default" :disabled="!zipImportSets || !zipImportSets.length" class="gap-2" @click="applyZipImport">
+          <Button variant="default" :disabled="!zipImportKind" class="gap-2" @click="applyZipImport">
             <Upload class="h-4 w-4" />
             {{ $t('backup.applyImport') }}
           </Button>
@@ -93,6 +96,12 @@ const { resetZipImportState, handleZipImportChange, applyZipImport } = backupSto
           </div>
         </div>
         <ExportSettings class="mt-4" />
+        <div class="mt-4 flex justify-end border-t border-ink-200/50 pt-4 dark:border-ink-800/50">
+          <Button variant="outline" class="gap-2" @click="exportFullBackup">
+            <Download class="h-4 w-4" />
+            {{ $t('backup.downloadFullZip') }}
+          </Button>
+        </div>
       </SectionPanel>
     </div>
   </Dialog>

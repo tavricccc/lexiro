@@ -7,19 +7,20 @@ import Dialog from '../ui/dialog/Dialog.vue'
 
 const uiStore = useUIStore()
 const { versionUpdateAvailable, versionUpdateReady, versionUpdateLoading } = storeToRefs(uiStore)
+const { setVersionUpdateAvailable, setVersionUpdateLoading } = uiStore
 
 function handleReload() {
   if (versionUpdateReady.value) {
     window.location.reload()
   }
   else {
-    versionUpdateLoading.value = true
+    setVersionUpdateLoading(true)
   }
 }
 
 function handleClose() {
-  versionUpdateAvailable.value = false
-  versionUpdateLoading.value = false
+  setVersionUpdateAvailable(false)
+  setVersionUpdateLoading(false)
 }
 </script>
 

@@ -1,1368 +1,649 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 162,
   "words": [
-    {
-      "wordKey": "telescope",
-      "word": "telescope",
-      "senses": [
-        {
-          "id": "sense-5e04e053",
-          "pos": "noun",
-          "meaningZh": "望遠鏡",
-          "definitionEn": "an optical instrument used for viewing distant objects, consisting of a tube containing lenses and mirrors that reflect and refract light",
-          "examples": [
-            "With his new telescope, he was able to see Jupiter’s four main moons for the first time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-81cd6396",
-          "pos": "verb",
-          "meaningZh": "收縮折疊；縮入",
-          "definitionEn": "to collapse or fold in on itself, often forcefully",
-          "examples": [
-            "The umbrella telescopeed shut in the strong wind, causing the spokes to snap."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "tempt",
-      "word": "tempt",
-      "senses": [
-        {
-          "id": "sense-fb76dc7f",
-          "pos": "verb",
-          "meaningZh": "誘惑；引誘",
-          "definitionEn": "to attract or invite someone to do something that may not be good or acceptable",
-          "examples": [
-            "The aroma of freshly baked cookies tempted her to break her diet and indulge in a sweet treat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-7acbc010",
-          "pos": "verb",
-          "meaningZh": "慫恿；使心動",
-          "definitionEn": "to make someone want to do something they should not do",
-          "examples": [
-            "The smell of freshly baked cookies tempted him to break his diet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L2",
-        "textbookTitle": "三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "temptation",
-      "word": "temptation",
-      "senses": [
-        {
-          "id": "sense-ef3ba280",
-          "pos": "noun",
-          "meaningZh": "誘惑；吸引力",
-          "definitionEn": "an act of influencing or persuading someone by arousing hope or desire",
-          "examples": [
-            "The smell of freshly baked cookies was too much of a temptation for me to resist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-d6d7b5f9",
-          "pos": "noun",
-          "meaningZh": "誘人之物；難以抗拒的事",
-          "definitionEn": "something that seduces or has the quality to seduce",
-          "examples": [
-            "The smell of freshly baked chocolate chip cookies was a temptation too strong for her to resist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "tendency",
-      "word": "tendency",
-      "senses": [
-        {
-          "id": "sense-ffda5ef8",
-          "pos": "noun",
-          "meaningZh": "傾向；習性",
-          "definitionEn": "an inclination or natural disposition toward a certain condition or character",
-          "examples": [
-            "Her tendency to overthink always caused her to doubt herself."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-d49c7931",
-          "pos": "noun",
-          "meaningZh": "趨勢；走向",
-          "definitionEn": "a general direction in which something tends to move",
-          "examples": [
-            "There is a tendency for people to move towards warmer climates as they grow older."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L4",
-        "textbookTitle": "三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "tense",
-      "word": "tense",
-      "senses": [
-        {
-          "id": "sense-d3bf8723",
-          "pos": "adjective",
-          "meaningZh": "緊張的；焦慮的",
-          "definitionEn": "holding or showing stress or anxiety",
-          "examples": [
-            "As the deadline approached, John's tense demeanor was evident to everyone in the office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-e28aef98",
-          "pos": "adjective",
-          "meaningZh": "緊繃的；拉緊的",
-          "definitionEn": "stretched tight; not slack",
-          "examples": [
-            "An important deadline was approaching, and the atmosphere in the office became tense as everyone worked diligently to meet it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "tension",
       "word": "tension",
       "senses": [
         {
-          "id": "sense-024fbf20",
-          "pos": "noun",
+          "id": "sense-3d557d54",
+          "pos": "n.",
           "meaningZh": "張力；緊繃感",
-          "definitionEn": "the physical condition of being stretched or strained",
           "examples": [
             "She could feel the tension in her muscles as she prepared to lift the heavy weight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-95c8a35c",
-          "pos": "noun",
+          "id": "sense-184f7f78",
+          "pos": "n.",
           "meaningZh": "拉力；拉緊狀態",
-          "definitionEn": "the action of stretching something tight",
           "examples": [
             "He felt the tension in the rope as he pulled it with all his strength."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "terminal",
       "word": "terminal",
       "senses": [
         {
-          "id": "sense-96e14282",
-          "pos": "noun",
+          "id": "sense-2fe57d9e",
+          "pos": "n.",
           "meaningZh": "電腦終端機；終端設備",
-          "definitionEn": "electronic equipment consisting of a device providing access to a computer; has a keyboard and display",
           "examples": [
             "The librarian helped the student locate a book using the library's computer terminal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-88432982",
-          "pos": "adjective",
+          "id": "sense-33efccb6",
+          "pos": "adj.",
           "meaningZh": "末端的；終結性的",
-          "definitionEn": "occurring at or forming an end or termination",
           "examples": [
             "The students were nervous as they approached the terminal exams, marking the end of their academic year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1 +1",
-        "textbookTitle": "龍騰 B3·L1、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "terrify",
       "word": "terrify",
       "senses": [
         {
-          "id": "sense-4f7182fe",
-          "pos": "verb",
+          "id": "sense-e1708a19",
+          "pos": "v.",
           "meaningZh": "使恐懼；嚇壞",
-          "definitionEn": "to cause extreme fear or terror; to frighten greatly",
           "examples": [
             "The horror movie was so terrifying that I had trouble sleeping for days after watching it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "terror",
       "word": "terror",
       "senses": [
         {
-          "id": "sense-0d2c53e6",
-          "pos": "noun",
+          "id": "sense-18509be6",
+          "pos": "n.",
           "meaningZh": "恐懼；驚恐",
-          "definitionEn": "an intense feeling of fear or anxiety",
           "examples": [
             "As she walked through the dark and empty alley, the sudden sound of footsteps behind her sent a wave of terror through her body."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-eec8adff",
-          "pos": "noun",
+          "id": "sense-013b45ff",
+          "pos": "n.",
           "meaningZh": "恐怖活動；恐嚇手段",
-          "definitionEn": "the use of extreme fear in order to intimidate people, especially for political reasons",
           "examples": [
             "The terrorist group orchestrated a series of bombings and acts of violence to spread terror and fear among the population."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "testify",
       "word": "testify",
       "senses": [
         {
-          "id": "sense-4b4c935c",
-          "pos": "verb",
+          "id": "sense-aa71d6e5",
+          "pos": "v.",
           "meaningZh": "出庭作證；宣誓作證",
-          "definitionEn": "give testimony in a court of law",
           "examples": [
             "During the trial, the witness was called to testify about what they saw on the night of the incident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f7079772",
-          "pos": "verb",
+          "id": "sense-22c1fd9b",
+          "pos": "v.",
           "meaningZh": "提供證明；佐證",
-          "definitionEn": "provide evidence for",
           "examples": [
             "The witness will testify in court about what they saw on the night of the crime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "texture",
       "word": "texture",
       "senses": [
         {
-          "id": "sense-4101d1d6",
-          "pos": "noun",
+          "id": "sense-b2207f9e",
+          "pos": "n.",
           "meaningZh": "質地；觸感",
-          "definitionEn": "the feel or touch of a surface or a fabric",
           "examples": [
             "The texture of the silk was smooth and luxurious."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1",
-        "textbookTitle": "龍騰 B3·R1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "theft",
       "word": "theft",
       "senses": [
         {
-          "id": "sense-47c953ad",
-          "pos": "noun",
+          "id": "sense-7847eb39",
+          "pos": "n.",
           "meaningZh": "竊盜；盜竊行為",
-          "definitionEn": "the act of taking someone’s property without permission or legal right",
           "examples": [
             "John was convicted of theft after he was caught stealing money from the store's cash register."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3",
-        "textbookTitle": "龍騰 B3·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "theme",
       "word": "theme",
       "senses": [
         {
-          "id": "sense-737ba147",
-          "pos": "noun",
+          "id": "sense-6fad761b",
+          "pos": "n.",
           "meaningZh": "主題；話題",
-          "definitionEn": "a subject or topic of discussion or conversation",
           "examples": [
             "The theme of the party was ’under the sea’, and guests were encouraged to dress up as marine creatures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f60c6980",
-          "pos": "noun",
+          "id": "sense-4620a164",
+          "pos": "n.",
           "meaningZh": "中心思想；主旨",
-          "definitionEn": "a central or recurring idea in literature or art",
           "examples": [
             "In the novel, the theme of love versus duty is explored through the protagonist’s struggle to choose between his heart and his obligations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "theology",
       "word": "theology",
       "senses": [
         {
-          "id": "sense-79372b47",
-          "pos": "noun",
+          "id": "sense-bbde3a0f",
+          "pos": "n.",
           "meaningZh": "神學；宗教學",
-          "definitionEn": "the profession concerned with teaching and researching religion",
           "examples": [
             "After studying theology for years, Sarah became a professor teaching courses on various world religions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0d373b76",
-          "pos": "noun",
+          "id": "sense-da0502ee",
+          "pos": "n.",
           "meaningZh": "神學體系；宗教教義",
-          "definitionEn": "a specific set of beliefs and ideas about religion",
           "examples": [
             "Studying theology helped him to comprehend different religious doctrines and develop a more tolerant worldview."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "theoretical",
       "word": "theoretical",
       "senses": [
         {
-          "id": "sense-59a1f64d",
-          "pos": "adjective",
+          "id": "sense-78e1ac79",
+          "pos": "adj.",
           "meaningZh": "理論性的；假設性的",
-          "definitionEn": "relating to or based on a theory, hypothesis, or speculation and not necessarily on practical experience",
           "examples": [
             "In the theoretical realm of physics, scientists have proposed various hypotheses about the existence of parallel universes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-af9dd39f",
-          "pos": "adjective",
+          "id": "sense-b022118b",
+          "pos": "adj.",
           "meaningZh": "純理論的；偏學術的",
-          "definitionEn": "concerned with the theoretical aspects of a subject rather than its practical applications",
           "examples": [
             "In the theoretical physics class, we discussed abstract concepts and hypothetical scenarios rather than conducting experiments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "therapist",
       "word": "therapist",
       "senses": [
         {
-          "id": "sense-568d171c",
-          "pos": "noun",
+          "id": "sense-863e78b0",
+          "pos": "n.",
           "meaningZh": "心理治療師；諮商師",
-          "definitionEn": "a person trained and licensed to provide therapy, typically to address mental health concerns",
           "examples": [
             "After experiencing prolonged anxiety and depression, Sarah decided to seek help from a therapist to work through her emotional struggles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5044cf04",
-          "pos": "noun",
+          "id": "sense-f79db738",
+          "pos": "n.",
           "meaningZh": "治療師（物理、職能、語言等）",
-          "definitionEn": "a person skilled in a particular type of therapy, such as physical therapy, occupational therapy, or speech therapy",
           "examples": [
             "After my car accident, I sought the help of a physical therapist to aid in my recovery and rehabilitation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "therapy",
       "word": "therapy",
       "senses": [
         {
-          "id": "sense-243a56f7",
-          "pos": "noun",
+          "id": "sense-3394037b",
+          "pos": "n.",
           "meaningZh": "治療；療程",
-          "definitionEn": "The act of providing medical care or treatment (such as through medication or rehabilitation) to help improve a person’s physical or mental health.",
           "examples": [
             "After his accident, John underwent physical therapy to regain strength and mobility in his injured leg."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thereby",
       "word": "thereby",
       "senses": [
         {
-          "id": "sense-4f9392e8",
-          "pos": "adverb",
+          "id": "sense-d3740255",
+          "pos": "adv.",
           "meaningZh": "因此；藉此",
-          "definitionEn": "by that means; as a result of that",
           "examples": [
             "John increased his savings, thereby allowing him to buy a new car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thesis",
       "word": "thesis",
       "senses": [
         {
-          "id": "sense-c7b9054b",
-          "pos": "noun",
+          "id": "sense-cce0208f",
+          "pos": "n.",
           "meaningZh": "論文；學位論文",
-          "definitionEn": "a long piece of writing on a particular subject, typically done as a requirement for an advanced academic degree and presenting a new point of view based on research",
           "examples": [
             "After spending years conducting experiments and analyzing data, Jane finally completed her thesis on the effects of climate change on coastal ecosystems."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-464f503e",
-          "pos": "noun",
+          "id": "sense-58062a82",
+          "pos": "n.",
           "meaningZh": "論點；主張",
-          "definitionEn": "a statement that has not been proven but is put forward as a premise in an argument",
           "examples": [
             "In her thesis, the student proposed that climate change is a result of human activity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thigh",
       "word": "thigh",
       "senses": [
         {
-          "id": "sense-1090ae67",
-          "pos": "noun",
+          "id": "sense-18949c87",
+          "pos": "n.",
           "meaningZh": "大腿",
-          "definitionEn": "the part of the leg between the hip and the knee",
           "examples": [
             "She wore a short skirt that came up to mid-thigh."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8245e80b",
-          "pos": "noun",
+          "id": "sense-c486436b",
+          "pos": "n.",
           "meaningZh": "禽類腿部；雞腿",
-          "definitionEn": "the upper joint of the leg of a bird or other animal",
           "examples": [
             "The roast chicken had perfectly cooked thighs that were juicy and tender."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thorough",
       "word": "thorough",
       "senses": [
         {
-          "id": "sense-5b5f4da3",
-          "pos": "adjective",
+          "id": "sense-d3ab89b7",
+          "pos": "adj.",
           "meaningZh": "徹底的；全面的",
-          "definitionEn": "performed comprehensively and completely",
           "examples": [
             "Before submitting his report, the researcher conducted a thorough investigation of the topic, analyzing every angle and detail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5a96e796",
-          "pos": "adjective",
+          "id": "sense-4ea317f2",
+          "pos": "adj.",
           "meaningZh": "仔細的；嚴謹的",
-          "definitionEn": "painstakingly careful and accurate",
           "examples": [
             "The detective conducted a thorough investigation to uncover all possible evidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8 +1",
-        "textbookTitle": "龍騰 B4·L8、三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thoughtful",
       "word": "thoughtful",
       "senses": [
         {
-          "id": "sense-abacb3ea",
-          "pos": "adjective",
+          "id": "sense-9c8df196",
+          "pos": "adj.",
           "meaningZh": "體貼的；關懷的",
-          "definitionEn": "considerate of others and their feelings",
           "examples": [
             "She was thoughtful enough to plan a surprise birthday party for her best friend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-db611db5",
-          "pos": "adjective",
+          "id": "sense-a6f6f861",
+          "pos": "adj.",
           "meaningZh": "深思熟慮的；謹慎的",
-          "definitionEn": "characterized by careful thinking and good sense",
           "examples": [
             "She was very thoughtful in her approach to the problem, considering all the possible solutions before making a decision."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "threshold",
       "word": "threshold",
       "senses": [
         {
-          "id": "sense-aa812eeb",
-          "pos": "noun",
+          "id": "sense-3a3f46f3",
+          "pos": "n.",
           "meaningZh": "門檻；起點",
-          "definitionEn": "the entrance or starting point for a new state or experience",
           "examples": [
             "He was at the threshold of his career, about to start his first job as a software engineer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2a582475",
-          "pos": "noun",
+          "id": "sense-748602ed",
+          "pos": "n.",
           "meaningZh": "門檻石；門口底部",
-          "definitionEn": "the horizontal piece of wood or stone that forms the bottom of a doorway and offers support when passing through a doorway",
           "examples": [
             "I stumbled over the threshold when I entered the dark room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thrill",
       "word": "thrill",
       "senses": [
         {
-          "id": "sense-edc3dfcb",
-          "pos": "noun",
+          "id": "sense-06f82963",
+          "pos": "n.",
           "meaningZh": "刺激感；興奮感",
-          "definitionEn": "a feeling of great excitement and pleasure",
           "examples": [
             "As the roller coaster soared down the steep drop, an exhilarating thrill rushed through her body."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fac78f9f",
-          "pos": "verb",
+          "id": "sense-adc82216",
+          "pos": "v.",
           "meaningZh": "使興奮；使激動",
-          "definitionEn": "to cause someone to feel a sudden wave of excitement or pleasure",
           "examples": [
             "The roller coaster ride thrilled her, as she was thrown into exhilaration with each twist and turn."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thriller",
       "word": "thriller",
       "senses": [
         {
-          "id": "sense-ebcf2512",
-          "pos": "noun",
+          "id": "sense-7f094392",
+          "pos": "n.",
           "meaningZh": "驚悚片；驚悚小說",
-          "definitionEn": "a genre of fiction, film, and television programming characterized by suspenseful and exciting plots often involving crime, espionage, or the supernatural.",
           "examples": [
             "After reading the thriller novel, I was on the edge of my seat as the main character raced against time to unravel the mystery and catch the killer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thrive",
       "word": "thrive",
       "senses": [
         {
-          "id": "sense-6b4a53fc",
-          "pos": "verb",
+          "id": "sense-08fafaa1",
+          "pos": "v.",
           "meaningZh": "茁壯；蓬勃生長",
-          "definitionEn": "grow vigorously",
           "examples": [
             "The small business started to thrive after implementing a successful marketing strategy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-48e10e12",
-          "pos": "verb",
+          "id": "sense-bc8c41af",
+          "pos": "v.",
           "meaningZh": "蒸蒸日上；繁榮發展",
-          "definitionEn": "make steady progress; reach a high point in career, historical significance, or importance",
           "examples": [
             "Despite facing numerous setbacks, she continued to thrive in her career as a successful entrepreneur."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2",
-        "textbookTitle": "龍騰 B3·R2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "throne",
       "word": "throne",
       "senses": [
         {
-          "id": "sense-6fc50651",
-          "pos": "noun",
+          "id": "sense-eee97881",
+          "pos": "n.",
           "meaningZh": "王位；皇權",
-          "definitionEn": "the position and power of an exalted person who is entitled to sit in a chair of state on ceremonial occasions",
           "examples": [
             "The queen ascended the throne after her father passed away, taking her rightful place as the reigning monarch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4e851876",
-          "pos": "verb",
+          "id": "sense-df0e16e7",
+          "pos": "v.",
           "meaningZh": "登基；即位",
-          "definitionEn": "install a monarch on the throne",
           "examples": [
             "The new king was crowned and seated on the throne amidst great pomp and ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thrust",
       "word": "thrust",
       "senses": [
         {
-          "id": "sense-5a1ba2e1",
-          "pos": "verb",
+          "id": "sense-af6e99e2",
+          "pos": "v.",
           "meaningZh": "猛推；用力推",
-          "definitionEn": "to push forcefully",
           "examples": [
             "With all his strength, he thrust the door open and stormed into the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7b20876c",
-          "pos": "verb",
+          "id": "sense-5deb28e1",
+          "pos": "v.",
           "meaningZh": "插入；按入",
-          "definitionEn": "to press or force something",
           "examples": [
             "He thrust the key into the lock, desperate to open the door."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tick",
       "word": "tick",
       "senses": [
         {
-          "id": "sense-6547dba6",
-          "pos": "noun",
+          "id": "sense-c497b9fe",
+          "pos": "n.",
           "meaningZh": "勾號；打勾符號",
-          "definitionEn": "a mark indicating that something has been noted or completed etc.",
           "examples": [
             "She placed a tick next to each completed task on her to-do list."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3d465968",
-          "pos": "noun",
+          "id": "sense-5c7916c0",
+          "pos": "n.",
           "meaningZh": "床墊布套",
-          "definitionEn": "a light mattress",
           "examples": [
             "The weary hiker lay down and sank into the comfortable tick, blissfully oblivious to the hard ground beneath."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tickle",
       "word": "tickle",
       "senses": [
         {
-          "id": "sense-e539c898",
-          "pos": "verb",
+          "id": "sense-df8d4fd9",
+          "pos": "v.",
           "meaningZh": "撓癢；搔癢",
-          "definitionEn": "(of a person) lightly touch or stroke (someone) in a way that induces a tingling or itching sensation and often laughter or twitching movements",
           "examples": [
             "She tried to tickle her little brother to make him laugh."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d943103d",
-          "pos": "verb",
+          "id": "sense-3963162a",
+          "pos": "v.",
           "meaningZh": "感到癢；輕微刺癢",
-          "definitionEn": "feel or cause to feel a tingling or mildly uncomfortable sensation",
           "examples": [
             "She giggled as her friend tickled her feet with a feather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tile",
+      "word": "tile",
+      "senses": [
+        {
+          "id": "sense-17a4100e",
+          "pos": "n.",
+          "meaningZh": "磁磚；瓷磚",
+          "examples": [
+            "I need to buy more tiles to replace the broken ones in my bathroom floor."
+          ]
+        },
+        {
+          "id": "sense-03cd18b3",
+          "pos": "n.",
+          "meaningZh": "屋瓦；屋頂瓦片",
+          "examples": [
+            "The construction workers carefully laid the tiles on the roof, creating a waterproof barrier."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "timetable",
+      "word": "timetable",
+      "senses": [
+        {
+          "id": "sense-6bab7863",
+          "pos": "n.",
+          "meaningZh": "時間表；課程表",
+          "examples": [
+            "Anna carefully checked her timetable to see when her classes were scheduled throughout the week."
+          ]
+        },
+        {
+          "id": "sense-385b3368",
+          "pos": "n.",
+          "meaningZh": "時刻表（交通）",
+          "examples": [
+            "Before traveling, make sure to check the timetable to see when the train will be arriving at the station."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "timid",
+      "word": "timid",
+      "senses": [
+        {
+          "id": "sense-c4c1b307",
+          "pos": "adj.",
+          "meaningZh": "缺乏自信的；怯懦的",
+          "examples": [
+            "My colleague is too timid to present her ideas in front of the boss."
+          ]
+        },
+        {
+          "id": "sense-979309cd",
+          "pos": "adj.",
+          "meaningZh": "膽小的；畏縮的",
+          "examples": [
+            "As she approached the podium to make her speech, her voice sounded timid and barely audible."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tin",
+      "word": "tin",
+      "senses": [
+        {
+          "id": "sense-3d5d443f",
+          "pos": "n.",
+          "meaningZh": "鐵罐；金屬罐",
+          "examples": [
+            "I bought a tin of coffee beans to keep them fresh."
+          ]
+        },
+        {
+          "id": "sense-391e8b22",
+          "pos": "n.",
+          "meaningZh": "烤盤；烤模",
+          "examples": [
+            "She placed the cookie dough on the greased tin and put it in the oven to bake."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tolerable",
+      "word": "tolerable",
+      "senses": [
+        {
+          "id": "sense-43b579a3",
+          "pos": "adj.",
+          "meaningZh": "可忍受的；還能接受的",
+          "examples": [
+            "The noise level of the party next door was tolerable, but it still made it difficult to concentrate."
+          ]
+        },
+        {
+          "id": "sense-448d6886",
+          "pos": "adj.",
+          "meaningZh": "尚可的；普通的",
+          "examples": [
+            "The food at the restaurant was tolerable, but not particularly delicious."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

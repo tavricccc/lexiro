@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 3,
   "words": [
     {
@@ -8,1401 +8,666 @@
       "word": "bat",
       "senses": [
         {
-          "id": "sense-5924407b",
-          "pos": "noun",
+          "id": "sense-dc37c983",
+          "pos": "n.",
           "meaningZh": "蝙蝠",
-          "definitionEn": "a nocturnal mammal with wings that flies and uses echolocation to navigate",
           "examples": [
             "While taking a nighttime walk, I saw a bat flying overhead and heard its high-pitched echolocation calls bouncing off nearby objects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-276e08e6",
-          "pos": "noun",
+          "id": "sense-21cd8eee",
+          "pos": "n.",
           "meaningZh": "球棒；球拍",
-          "definitionEn": "a club used for hitting a ball in various games, such as baseball and cricket",
           "examples": [
             "The batter swung the bat and hit the ball out of the park, scoring a home run."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bath",
       "word": "bath",
       "senses": [
         {
-          "id": "sense-de809b29",
-          "pos": "noun",
+          "id": "sense-e0dba341",
+          "pos": "n.",
           "meaningZh": "洗澡；沐浴",
-          "definitionEn": "the act of washing the body by sitting or lying in water",
           "examples": [
             "After a long day, he took a hot bath to relax."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0eb4d7c6",
-          "pos": "noun",
+          "id": "sense-d4d46b0e",
+          "pos": "n.",
           "meaningZh": "浴缸",
-          "definitionEn": "a large container, typically long enough to lie down in, that you fill with water to wash your whole body",
           "examples": [
             "She filled the bath with warm water and bubbles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bathroom",
       "word": "bathroom",
       "senses": [
         {
-          "id": "sense-cb89f7e4",
-          "pos": "noun",
+          "id": "sense-5a671564",
+          "pos": "n.",
           "meaningZh": "廁所；洗手間",
-          "definitionEn": "a room or building equipped with one or more toilets",
           "examples": [
             "After a long day at work, she enjoyed taking a relaxing bubble bath in her spacious bathroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-01cee436",
-          "pos": "noun",
+          "id": "sense-54899fb6",
+          "pos": "n.",
           "meaningZh": "浴室；衛浴間",
-          "definitionEn": "a room (as in a residence) containing a bathtub or shower and usually a washbasin and toilet",
           "examples": [
             "After a long day at work, I took a relaxing bubble bath in the bathroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "be",
       "word": "be",
       "senses": [
         {
-          "id": "sense-f9d2ff7b",
-          "pos": "verb",
+          "id": "sense-b5b85720",
+          "pos": "v.",
           "meaningZh": "是；存在",
-          "definitionEn": "Exist or have a quality of being; (copula, used with an adjective or a predicate noun)",
           "examples": [
             "She was exhausted after running the marathon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-70906915",
-          "pos": "verb",
+          "id": "sense-87d86b14",
+          "pos": "v.",
           "meaningZh": "在（某處/某職）；擔任",
-          "definitionEn": "Work or operate in a specific place, with a specific subject, or in a specific function.",
           "examples": [
             "I will be in the office tomorrow, working on a project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beach",
       "word": "beach",
       "senses": [
         {
-          "id": "sense-5b5587ad",
-          "pos": "noun",
+          "id": "sense-a8e3b2f5",
+          "pos": "n.",
           "meaningZh": "海灘；沙灘",
-          "definitionEn": "A beach is an area of sand or stones beside the sea or a lake.",
           "examples": [
             "On a hot summer day, Emily and her friends went to the beach to swim and sunbathe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-56961927",
-          "pos": "noun",
+          "id": "sense-9c1824bf",
+          "pos": "n.",
           "meaningZh": "海岸坡地；灘地",
-          "definitionEn": "A beach is the gently sloping land that leads to the edge of the sea.",
           "examples": [
             "The children built castles out of the sand on the beach while the sun was setting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bean",
       "word": "bean",
       "senses": [
         {
-          "id": "sense-3ce124ae",
-          "pos": "noun",
+          "id": "sense-6be947ae",
+          "pos": "n.",
           "meaningZh": "豆子；豆莢",
-          "definitionEn": "an edible seed of a leguminous plant used for food",
           "examples": [
             "I cooked a pot of beans for dinner last night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-1613e4fa",
-          "pos": "noun",
+          "id": "sense-40a1fbfa",
+          "pos": "n.",
           "meaningZh": "豆科植物",
-          "definitionEn": "a type of plant with edible seeds and pods",
           "examples": [
             "I made a delicious bean salad for dinner last night with kidney beans, black beans, and chickpeas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bear",
       "word": "bear",
       "senses": [
         {
-          "id": "sense-97e88e77",
-          "pos": "verb",
+          "id": "sense-41de1186",
+          "pos": "v.",
           "meaningZh": "忍受；承受",
-          "definitionEn": "to accept or endure something difficult or unpleasant",
           "examples": [
             "I can't bear the thought of leaving my friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-dae3c678",
-          "pos": "verb",
+          "id": "sense-e4e90f49",
+          "pos": "v.",
           "meaningZh": "具有；帶有",
-          "definitionEn": "have",
           "examples": [
             "She bore the weight of her responsibilities with grace and determination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beautiful",
       "word": "beautiful",
       "senses": [
         {
-          "id": "sense-a4098831",
-          "pos": "adjective",
+          "id": "sense-e98387a3",
+          "pos": "adj.",
           "meaningZh": "美麗的；漂亮的",
-          "definitionEn": "delighting the senses or exciting intellectual or emotional admiration",
           "examples": [
             "The sunset on the beach was a beautiful sight that left everyone in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c81b13dc",
-          "pos": "adjective",
+          "id": "sense-7af8700a",
+          "pos": "adj.",
           "meaningZh": "（天氣）宜人的；美好的",
-          "definitionEn": "(of weather) highly enjoyable",
           "examples": [
             "The sun shone, and a gentle breeze blew, making for a beautiful day at the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "because",
       "word": "because",
       "senses": [
         {
-          "id": "sense-8aa08405",
-          "pos": "conjunction",
+          "id": "sense-f2319451",
+          "pos": "conj.",
           "meaningZh": "因為；由於",
-          "definitionEn": "for the reason that",
           "examples": [
             "I didn't go to the party because I was feeling tired."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-233a2390",
-          "pos": "conjunction",
+          "id": "sense-41a4ba6c",
+          "pos": "conj.",
           "meaningZh": "以致於；所以",
-          "definitionEn": "as a result of",
           "examples": [
             "He got wet because it was raining."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "become",
       "word": "become",
       "senses": [
         {
-          "id": "sense-a15d5254",
-          "pos": "verb",
+          "id": "sense-bfe03dcd",
+          "pos": "v.",
           "meaningZh": "成為；變成",
-          "definitionEn": "come into existence or being",
           "examples": [
             "The caterpillar will eventually become a butterfly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-88079118",
-          "pos": "verb",
+          "id": "sense-1b2454d7",
+          "pos": "v.",
           "meaningZh": "逐漸成為；演變為",
-          "definitionEn": "begin to be or develop into a specified quality or role",
           "examples": [
             "After years of studying and training, she finally became a professional dancer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bed",
       "word": "bed",
       "senses": [
         {
-          "id": "sense-a555a06d",
-          "pos": "noun",
+          "id": "sense-12907b15",
+          "pos": "n.",
           "meaningZh": "床；床鋪",
-          "definitionEn": "a piece of furniture designed for sleeping or resting upon",
           "examples": [
             "After a long day of work, I can't wait to crawl into my comfortable bed and get a good night's sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e6700ddf",
-          "pos": "noun",
+          "id": "sense-d6ad80b7",
+          "pos": "n.",
           "meaningZh": "（水下）河床；海床",
-          "definitionEn": "a depression forming the ground under a body of water",
           "examples": [
             "The divers carefully explored the bed of the ocean, discovering colorful coral reefs and hidden sea creatures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bedroom",
       "word": "bedroom",
       "senses": [
         {
-          "id": "sense-fcb89993",
-          "pos": "noun",
+          "id": "sense-a5e74303",
+          "pos": "n.",
           "meaningZh": "臥室；睡房",
-          "definitionEn": "a room primarily used for sleeping",
           "examples": [
             "After a long day at work, I climbed into bed in my cozy bedroom and fell into a deep, restful sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e426b876",
-          "pos": "noun",
+          "id": "sense-32af5aa6",
+          "pos": "n.",
           "meaningZh": "臥房；寢室",
-          "definitionEn": "a room designed for sleeping in",
           "examples": [
             "After a long day at work, I couldn't wait to crawl into my comfortable bed in the cozy bedroom and fall asleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bee",
       "word": "bee",
       "senses": [
         {
-          "id": "sense-2faf8e13",
-          "pos": "noun",
+          "id": "sense-c932cba3",
+          "pos": "n.",
           "meaningZh": "蜜蜂",
-          "definitionEn": "any of numerous hairy-bodied insects including social and solitary species",
           "examples": [
             "The bee buzzed from flower to flower, collecting nectar to bring back to the hive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beef",
       "word": "beef",
       "senses": [
         {
-          "id": "sense-391da399",
-          "pos": "noun",
+          "id": "sense-582fbc89",
+          "pos": "n.",
           "meaningZh": "牛肉",
-          "definitionEn": "the meat from a cow.",
           "examples": [
             "I grilled a juicy steak made from prime beef."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "before",
       "word": "before",
       "senses": [
         {
-          "id": "sense-e9823796",
-          "pos": "adverb",
+          "id": "sense-9b5ac76f",
+          "pos": "adv.",
           "meaningZh": "以前；先前",
-          "definitionEn": "earlier in time; previously",
           "examples": [
             "Before starting the exam, she made sure to read all of the instructions carefully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-36e6b459",
-          "pos": "adverb",
+          "id": "sense-4eecf592",
+          "pos": "adv.",
           "meaningZh": "在前方；在…之前",
-          "definitionEn": "at or in the front",
           "examples": [
             "Please be at the airport 2 hours before your flight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "begin",
       "word": "begin",
       "senses": [
         {
-          "id": "sense-184e0798",
-          "pos": "verb",
+          "id": "sense-022d01d1",
+          "pos": "v.",
           "meaningZh": "開始；啟動",
-          "definitionEn": "cause something to start or set in motion",
           "examples": [
             "She began her speech with a quote from Martin Luther King Jr."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2c7dc41a",
-          "pos": "verb",
+          "id": "sense-6d170c37",
+          "pos": "v.",
           "meaningZh": "居首；位在起頭",
-          "definitionEn": "be the first item, come first in a series or constitute the beginning or start",
           "examples": [
             "Before you begin the race, you must warm up your body to prevent injury."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "behind",
       "word": "behind",
       "senses": [
         {
-          "id": "sense-0abcc94d",
-          "pos": "adverb",
+          "id": "sense-4c3667f6",
+          "pos": "adv.",
           "meaningZh": "在後面；向後",
-          "definitionEn": "toward or in the rear",
           "examples": [
             "The train was moving out of the station and I watched it as it got smaller behind me."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b3744763",
-          "pos": "adverb",
+          "id": "sense-65ff9aba",
+          "pos": "adv.",
           "meaningZh": "在較低位；落後",
-          "definitionEn": "in a lower position or rank",
           "examples": [
             "The intern sat behind the desk while the CEO gave the presentation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "believe",
       "word": "believe",
       "senses": [
         {
-          "id": "sense-91ea3be1",
-          "pos": "verb",
+          "id": "sense-5aaa8b64",
+          "pos": "v.",
           "meaningZh": "相信；信仰",
-          "definitionEn": "accept as true or real; have faith in the truth or existence of something",
           "examples": [
             "I believe that honesty is the best policy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-57ec7aa1",
-          "pos": "verb",
+          "id": "sense-387a6ef4",
+          "pos": "v.",
           "meaningZh": "確信；篤信",
-          "definitionEn": "feel sure that something is true or real",
           "examples": [
             "I choose to believe in myself, even when others doubt me."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bell",
       "word": "bell",
       "senses": [
         {
-          "id": "sense-97aa13c9",
-          "pos": "noun",
+          "id": "sense-29207561",
+          "pos": "n.",
           "meaningZh": "鐘；鈴（打擊樂器）",
-          "definitionEn": "a percussion instrument made of tuned metal bells that are struck with a hammer",
           "examples": [
             "The church organist played a melody accompanied by the chiming of bells overhead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0d715fad",
-          "pos": "noun",
+          "id": "sense-0a57fa65",
+          "pos": "n.",
           "meaningZh": "鐘聲；鈴聲",
-          "definitionEn": "the sound produced by a bell when it is struck",
           "examples": [
             "The bell chimed loudly, signaling the end of the school day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "belong",
       "word": "belong",
       "senses": [
         {
-          "id": "sense-5a876917",
-          "pos": "verb",
+          "id": "sense-e49b1122",
+          "pos": "v.",
           "meaningZh": "屬於；歸…所有",
-          "definitionEn": "be in the possession of",
           "examples": [
             "The necklace belongs to my sister."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cc2f6e12",
-          "pos": "verb",
+          "id": "sense-94fc6d55",
+          "pos": "v.",
           "meaningZh": "歸屬；適合某類別",
-          "definitionEn": "be rightly classified in a class or category",
           "examples": [
             "The rescue dog didn't have a home until it found a loving family who believed it belonged with them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "below",
       "word": "below",
       "senses": [
         {
-          "id": "sense-9348133c",
-          "pos": "adverb",
+          "id": "sense-fca7248d",
+          "pos": "adv.",
           "meaningZh": "在樓下；在下層",
-          "definitionEn": "on a lower floor of a building",
           "examples": [
             "The laundry room is located below the main lobby."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-01259e1d",
-          "pos": "adverb",
+          "id": "sense-c4f12cf2",
+          "pos": "adv.",
           "meaningZh": "在下方；在較低處",
-          "definitionEn": "at or to a lower place or level",
           "examples": [
             "The basement is located below the main floor of the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "belt",
       "word": "belt",
       "senses": [
         {
-          "id": "sense-c8f18cdf",
-          "pos": "noun",
+          "id": "sense-7d5ccbc7",
+          "pos": "n.",
           "meaningZh": "皮帶；腰帶",
-          "definitionEn": "a band worn around the waist to hold clothing in place or for decoration",
           "examples": [
             "She wore a golden belt with her party dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-dade341a",
-          "pos": "noun",
+          "id": "sense-43957ea2",
+          "pos": "n.",
           "meaningZh": "輸送帶；傳動帶",
-          "definitionEn": "a continuously moving strip of material used for transferring objects from one area to another",
           "examples": [
             "The luggage on the conveyor belt circled the baggage claim area."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bench",
       "word": "bench",
       "senses": [
         {
-          "id": "sense-f536cf04",
-          "pos": "noun",
+          "id": "sense-2bd9ce88",
+          "pos": "n.",
           "meaningZh": "長椅；長凳",
-          "definitionEn": "a long seat designed for multiple people to sit on",
           "examples": [
             "The park was crowded with people enjoying the sunny day, sitting side by side on the bench, chatting and laughing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beside",
       "word": "beside",
       "senses": [
         {
-          "id": "sense-5f459509",
-          "pos": "preposition",
+          "id": "sense-1f2d46b0",
+          "pos": "prep.",
           "meaningZh": "在…旁邊；緊鄰",
-          "definitionEn": "at the side of; next to",
           "examples": [
             "She sat beside her best friend during the movie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8da56167",
-          "pos": "adverb",
+          "id": "sense-da0018f2",
+          "pos": "adv.",
           "meaningZh": "此外；除此之外",
-          "definitionEn": "in addition to; apart from that",
           "examples": [
             "Beside his talent for singing, he also excels in dancing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "best",
       "word": "best",
       "senses": [
         {
-          "id": "sense-cd71683a",
-          "pos": "adjective",
+          "id": "sense-78d2a9d6",
+          "pos": "adj.",
           "meaningZh": "最好的；最優秀的",
-          "definitionEn": "Having the most positive qualities; superlative degree of ’good’.",
           "examples": [
             "The best way to ensure success is to prepare thoroughly and work hard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-92f42b88",
-          "pos": "adjective",
+          "id": "sense-24295944",
+          "pos": "adj.",
           "meaningZh": "最明智的；最適當的",
-          "definitionEn": "Wiser or more advantageous, and hence advisable; comparative and superlative degree of ’well’.",
           "examples": [
             "It is best to avoid contact with toxic substances."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "between",
       "word": "between",
       "senses": [
         {
-          "id": "sense-b4b35c02",
-          "pos": "adverb",
+          "id": "sense-7a59cf8b",
+          "pos": "adv.",
           "meaningZh": "在…之間（時間或空間）",
-          "definitionEn": "in the interval",
           "examples": [
             "The meeting is scheduled between 2 PM and 4 PM."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b388daeb",
-          "pos": "adverb",
+          "id": "sense-1549d9a8",
+          "pos": "adv.",
           "meaningZh": "在中間；夾在其中",
-          "definitionEn": "in between",
           "examples": [
             "She was sitting between her two friends at the cinema."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "big",
       "word": "big",
       "senses": [
         {
-          "id": "sense-974d9cbb",
-          "pos": "adjective",
+          "id": "sense-2649113f",
+          "pos": "adj.",
           "meaningZh": "大的；巨大的",
-          "definitionEn": "larger than usual in size or quantity; above average in size or number or magnitude or extent",
           "examples": [
             "The elephant at the circus was incredibly big, towering over all the other animals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ca01dcd6",
-          "pos": "adjective",
+          "id": "sense-9765f7aa",
+          "pos": "adj.",
           "meaningZh": "強烈的；顯著的",
-          "definitionEn": "marked by significant intensity or force",
           "examples": [
             "The athletes displayed big emotions as they celebrated their victory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bird",
       "word": "bird",
       "senses": [
         {
-          "id": "sense-a5a54cf3",
-          "pos": "noun",
+          "id": "sense-31caeda7",
+          "pos": "n.",
           "meaningZh": "鳥；禽類",
-          "definitionEn": "a warm-blooded animal that lays eggs, has feathers, and can fly (or formerly could fly) by using its modified forelimbs as wings",
           "examples": [
             "I woke up to the sound of birds chirping outside my window."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-dd111707",
-          "pos": "noun",
+          "id": "sense-ee02967b",
+          "pos": "n.",
           "meaningZh": "禽肉；鳥肉",
-          "definitionEn": "the flesh of a bird (wild or domestic) used for food",
           "examples": [
             "We had roasted chicken for dinner last night, the meat was so tender because it was the flesh of a bird."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bite",
       "word": "bite",
       "senses": [
         {
-          "id": "sense-3be46222",
-          "pos": "verb",
+          "id": "sense-c9484ef7",
+          "pos": "v.",
           "meaningZh": "咬；啃",
-          "definitionEn": "to grip, cut off, or tear with the teeth or jaws",
           "examples": [
             "The hungry dog took a big bite out of the steak."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4eb9dde5",
-          "pos": "noun",
+          "id": "sense-ac41fc75",
+          "pos": "n.",
           "meaningZh": "小吃；點心",
-          "definitionEn": "a light informal meal, a snack",
           "examples": [
             "After a long day of exploring the city, we stopped at a nearby cafe for a quick bite."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "black",
       "word": "black",
       "senses": [
         {
-          "id": "sense-8a195b51",
-          "pos": "noun",
+          "id": "sense-6901ec59",
+          "pos": "n.",
           "meaningZh": "黑色；漆黑",
-          "definitionEn": "total absence of light",
           "examples": [
             "The cave was so dark that it was just black inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9edda3c6",
-          "pos": "noun",
+          "id": "sense-1725f7de",
+          "pos": "n.",
           "meaningZh": "（棋類）黑棋",
-          "definitionEn": "(board games) the darker pieces",
           "examples": [
             "In chess, the player with the black pieces moves first."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

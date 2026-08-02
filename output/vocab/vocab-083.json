@@ -1,1382 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 83,
   "words": [
-    {
-      "wordKey": "overseas",
-      "word": "overseas",
-      "senses": [
-        {
-          "id": "sense-6b93fa86",
-          "pos": "adverb",
-          "meaningZh": "在海外；到海外",
-          "definitionEn": "on the other side of the sea",
-          "examples": [
-            "My brother moved overseas to study in Europe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-3cd6c1b2",
-          "pos": "adverb",
-          "meaningZh": "在外國；出國",
-          "definitionEn": "in a foreign country across the ocean",
-          "examples": [
-            "After finishing college, she decided to teach English overseas in Japan."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "owe",
-      "word": "owe",
-      "senses": [
-        {
-          "id": "sense-27fd6d07",
-          "pos": "verb",
-          "meaningZh": "欠款；欠債",
-          "definitionEn": "to need to pay or give something to someone because they have lent money to you.",
-          "examples": [
-            "I need to pay back the money I owe my friend before the end of the month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-bb33cf9b",
-          "pos": "verb",
-          "meaningZh": "欠情；感恩",
-          "definitionEn": "to have an obligation or responsibility to do something for someone because of a favor or kindness they have done for you.",
-          "examples": [
-            "After borrowing money from my friend, I owe him a favor, so I offered to help him move to his new apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "owl",
-      "word": "owl",
-      "senses": [
-        {
-          "id": "sense-df125fc1",
-          "pos": "noun",
-          "meaningZh": "貓頭鷹；鴞",
-          "definitionEn": "a bird of prey that hunts at night and has a hooked beak, sharp talons, and large front-facing eyes",
-          "examples": [
-            "As the sun set, the owl silently swooped down from a tree branch, using its sharp talons to snatch a hapless mouse from the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "ownership",
-      "word": "ownership",
-      "senses": [
-        {
-          "id": "sense-a9e33c36",
-          "pos": "noun",
-          "meaningZh": "所有權；擁有",
-          "definitionEn": "the act of having and controlling property",
-          "examples": [
-            "Although he appears to be a wandering artist, he takes pride in his ownership of a sprawling countryside estate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-8e410466",
-          "pos": "noun",
-          "meaningZh": "業主身分；持有",
-          "definitionEn": "the state or fact of being an owner",
-          "examples": [
-            "John was proud of his ownership of the local bakery, which he had built from scratch over the years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "ox",
-      "word": "ox",
-      "senses": [
-        {
-          "id": "sense-2b488269",
-          "pos": "noun",
-          "meaningZh": "牛；野牛",
-          "definitionEn": "any of various wild bovines, especially of the genera Bos or closely related Bibos",
-          "examples": [
-            "The ox struggled to plow the rocky soil, but managed to make progress nonetheless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-d0aabb17",
-          "pos": "noun",
-          "meaningZh": "閹牛；役牛",
-          "definitionEn": "an adult castrated bull of the genus Bos; especially Bos taurus",
-          "examples": [
-            "The farmer used his ox to plow the field."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "pad",
       "word": "pad",
       "senses": [
         {
-          "id": "sense-1eb62886",
-          "pos": "noun",
+          "id": "sense-f9ebc50a",
+          "pos": "n.",
           "meaningZh": "便條本；記事本",
-          "definitionEn": "a number of sheets of paper fastened together along one edge",
           "examples": [
             "I need to buy a pad of paper for taking notes during the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-09641134",
-          "pos": "noun",
+          "id": "sense-bc8ea828",
+          "pos": "n.",
           "meaningZh": "發射台；停機坪",
-          "definitionEn": "a platform from which rockets or space craft are launched",
           "examples": [
             "The astronauts stood on the launch pad, ready for their journey to outer space."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "painter",
       "word": "painter",
       "senses": [
         {
-          "id": "sense-f60c3bc6",
-          "pos": "noun",
+          "id": "sense-26aa0dee",
+          "pos": "n.",
           "meaningZh": "畫家；藝術家",
-          "definitionEn": "an artist who creates paintings",
           "examples": [
             "The painter meticulously applied vibrant colors to the canvas, bringing the landscape to life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-382fe5fe",
-          "pos": "noun",
+          "id": "sense-f039fc36",
+          "pos": "n.",
           "meaningZh": "油漆工；粉刷工",
-          "definitionEn": "a person whose job is to apply paint to surfaces, such as walls, doors, or windows",
           "examples": [
             "The painter carefully brushed strokes of blue paint onto the walls, transforming the room into a tranquil oasis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pal",
       "word": "pal",
       "senses": [
         {
-          "id": "sense-2767edda",
-          "pos": "noun",
+          "id": "sense-211826d6",
+          "pos": "n.",
           "meaningZh": "好友；夥伴",
-          "definitionEn": "a close friend who accompanies his buddies in their activities",
           "examples": [
             "John and Mike have been pals since they were kids. They always go hiking and play sports together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-185710c6",
-          "pos": "verb",
+          "id": "sense-f0bc6a33",
+          "pos": "v.",
           "meaningZh": "結為朋友；交往",
-          "definitionEn": "to become friends or to behave in a friendly way towards someone",
           "examples": [
             "After years of working together, they finally started to pal around outside of the office, going to movies and grabbing lunch together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "palace",
       "word": "palace",
       "senses": [
         {
-          "id": "sense-b99dceb2",
-          "pos": "noun",
+          "id": "sense-7909bade",
+          "pos": "n.",
           "meaningZh": "宮殿；皇宮",
-          "definitionEn": "a large, grand house where a king, queen, or other ruler lives",
           "examples": [
             "Tourists lined up to visit the royal palace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a0db5b3b",
-          "pos": "noun",
+          "id": "sense-11ef6527",
+          "pos": "n.",
           "meaningZh": "宮廷；朝廷",
-          "definitionEn": "The group of people who govern a kingdom, especially a monarch’s immediate advisers.",
           "examples": [
             "The palace was in chaos after the sudden death of the king, as the members of the palace struggled for power and control over the kingdom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1 +1",
-        "textbookTitle": "龍騰 B4·L1、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "palm",
       "word": "palm",
       "senses": [
         {
-          "id": "sense-1daf7686",
-          "pos": "noun",
+          "id": "sense-ca7235a2",
+          "pos": "n.",
           "meaningZh": "手掌；掌心",
-          "definitionEn": "the inner surface of the hand from the wrist to the base of the fingers",
           "examples": [
             "She pressed the coin into the palm of her hand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b2953c70",
-          "pos": "noun",
+          "id": "sense-3f8b2a44",
+          "pos": "n.",
           "meaningZh": "掌寬（長度單位）",
-          "definitionEn": "a linear unit based on the length or width of the human hand",
           "examples": [
             "The carpenter used his palm to measure the length of the board."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pancake",
       "word": "pancake",
       "senses": [
         {
-          "id": "sense-7f663739",
-          "pos": "noun",
+          "id": "sense-db3e66a1",
+          "pos": "n.",
           "meaningZh": "薄煎餅；鬆餅",
-          "definitionEn": "a type of flat cake, typically thin and round, made from a batter and cooked on both sides on a griddle or frying pan",
           "examples": [
             "I woke up early on Saturday morning to make pancakes for breakfast. I mixed the batter, heated up the frying pan, and scooped the perfect amount of batter onto the pan to make delicious, fluffy pancakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b2b3a7ba",
-          "pos": "noun",
+          "id": "sense-7554e6b2",
+          "pos": "n.",
           "meaningZh": "厚鬆餅；麵糊薄餅",
-          "definitionEn": "a thick cake made from a batter of flour, eggs, milk, and other ingredients",
           "examples": [
             "On Sunday mornings, my family loves to have pancakes with maple syrup and butter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "panic",
       "word": "panic",
       "senses": [
         {
-          "id": "sense-d62468a3",
-          "pos": "noun",
+          "id": "sense-b70128eb",
+          "pos": "n.",
           "meaningZh": "恐慌；驚慌",
-          "definitionEn": "a sudden, strong feeling of fear that prevents reasonable thought and action",
           "examples": [
             "During the fire accident, people panicked and ran in different directions, making it difficult for the firefighters to rescue them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-01efc727",
-          "pos": "verb",
+          "id": "sense-ff0089a2",
+          "pos": "v.",
           "meaningZh": "驚慌失措；陷入恐慌",
-          "definitionEn": "to suddenly feel very afraid and unable to think or act normally",
           "examples": [
             "During the fire drill, some children began to panic and ran in all directions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "parade",
       "word": "parade",
       "senses": [
         {
-          "id": "sense-57bbef2d",
-          "pos": "noun",
+          "id": "sense-ddb3e5f5",
+          "pos": "n.",
           "meaningZh": "遊行；閱兵",
-          "definitionEn": "a ceremonial procession where people march in a particular order, often for celebration or demonstration purposes.",
           "examples": [
             "The town organized a parade to celebrate Independence Day, and people from all over the region came to watch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ebca127b",
-          "pos": "noun",
+          "id": "sense-774a06d3",
+          "pos": "n.",
           "meaningZh": "隊伍；行列",
-          "definitionEn": "a long, often elaborate series of people or things",
           "examples": [
             "The parade kicked off with a grand display of marching bands, colorful floats, and cheerleaders."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5",
-        "textbookTitle": "龍騰 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "paradise",
       "word": "paradise",
       "senses": [
         {
-          "id": "sense-72ab9cf6",
-          "pos": "noun",
+          "id": "sense-b4d861ee",
+          "pos": "n.",
           "meaningZh": "樂園；天堂",
-          "definitionEn": "a place or a state of perfect happiness and peace",
           "examples": [
             "After years of hard work and dedication, Ann finally achieved her dream of owning a beautiful beachfront villa, her own personal paradise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-25eaee46",
-          "pos": "noun",
+          "id": "sense-2e2de0fe",
+          "pos": "n.",
           "meaningZh": "理想之地；世外桃源",
-          "definitionEn": "an ideal or idyllic place or state",
           "examples": [
             "After a long hike, we finally reached the mountaintop and were greeted by a breathtaking view of a lush green valley, truly a paradise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "parcel",
       "word": "parcel",
       "senses": [
         {
-          "id": "sense-f836eb4c",
-          "pos": "noun",
+          "id": "sense-9cee4464",
+          "pos": "n.",
           "meaningZh": "包裹；包件",
-          "definitionEn": "a wrapped container",
           "examples": [
             "Emily received a small parcel in the mail, and eagerly tore open the wrapping to reveal a beautiful necklace inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5cfcf919",
-          "pos": "verb",
+          "id": "sense-914b2650",
+          "pos": "v.",
           "meaningZh": "分割；劃分",
-          "definitionEn": "divide into parts",
           "examples": [
             "The teacher decided to parcel the project into smaller tasks to make it more manageable for the students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "parrot",
       "word": "parrot",
       "senses": [
         {
-          "id": "sense-42f861fa",
-          "pos": "noun",
+          "id": "sense-bf46b95e",
+          "pos": "n.",
           "meaningZh": "鸚鵡",
-          "definitionEn": "a colorful tropical bird known for its ability to mimic sounds and human speech",
           "examples": [
             "At the zoo, we marveled at the parrot that flawlessly imitated our laughter and even greeted us with a 'hello'."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e1e2f500",
-          "pos": "verb",
+          "id": "sense-4bef7581",
+          "pos": "v.",
           "meaningZh": "鸚鵡學舌；盲目重複",
-          "definitionEn": "to repeat something said by someone else without thought or understanding",
           "examples": [
             "During the meeting, he was just parroting what his boss said without offering any original ideas or insights."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "passage",
       "word": "passage",
       "senses": [
         {
-          "id": "sense-56f58987",
-          "pos": "noun",
+          "id": "sense-ae883937",
+          "pos": "n.",
           "meaningZh": "（文章的）一段；段落",
-          "definitionEn": "a short part of a piece of writing or a speech",
           "examples": [
             "The teacher asked us to read the passage aloud."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-99762657",
-          "pos": "noun",
+          "id": "sense-0bd3e667",
+          "pos": "n.",
           "meaningZh": "通道；走廊",
-          "definitionEn": "a way through or along which someone or something may pass",
           "examples": [
             "The narrow passage through the mountains offered breathtaking views on both sides."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4faf0f47",
-          "pos": "noun",
+          "id": "sense-84bec717",
+          "pos": "n.",
           "meaningZh": "狹道；通路",
-          "definitionEn": "a path or channel through which something may pass",
           "examples": [
             "The narrow passage between the buildings was the only way for them to reach the main road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "passenger",
       "word": "passenger",
       "senses": [
         {
-          "id": "sense-6ac1e795",
-          "pos": "noun",
+          "id": "sense-9d9d98b5",
+          "pos": "n.",
           "meaningZh": "乘客；旅客",
-          "definitionEn": "a person who travels in a vehicle, such as a car, bus, boat, plane, or train, but is not responsible for operating it.",
           "examples": [
             "During the long train journey, the passengers chatted, read books, and enjoyed the scenic views passing by."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2",
-        "textbookTitle": "龍騰 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "passion",
       "word": "passion",
       "senses": [
         {
-          "id": "sense-4d9fab49",
-          "pos": "noun",
+          "id": "sense-c1aed0c5",
+          "pos": "n.",
           "meaningZh": "熱情；熱愛",
-          "definitionEn": "something that is desired intensely",
           "examples": [
             "Her passion for music was evident as she spent countless hours practicing her guitar."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-bb652bee",
-          "pos": "noun",
+          "id": "sense-63d524aa",
+          "pos": "n.",
           "meaningZh": "強烈情感；執念",
-          "definitionEn": "an irrational but irresistible motive for a belief or action",
           "examples": [
             "Despite facing many challenges, his passion for music kept him going and he eventually became a successful musician."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +2",
-        "textbookTitle": "龍騰 B2·L5、三民 B1·L10、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "passport",
       "word": "passport",
       "senses": [
         {
-          "id": "sense-2a401233",
-          "pos": "noun",
+          "id": "sense-5e641643",
+          "pos": "n.",
           "meaningZh": "護照",
-          "definitionEn": "a document issued by a country to a citizen that allows them to travel abroad and re-enter their home country",
           "examples": [
             "When Mark traveled to Japan for vacation, he made sure to bring his passport with him to ensure a smooth entry into the country and a hassle-free return back home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-26509d3c",
-          "pos": "noun",
+          "id": "sense-d8003ecc",
+          "pos": "n.",
           "meaningZh": "通行憑證；許可",
-          "definitionEn": "any type of authorization to pass or go somewhere",
           "examples": [
             "As a frequent traveler, having a valid passport is essential."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pat",
       "word": "pat",
       "senses": [
         {
-          "id": "sense-26784238",
-          "pos": "verb",
+          "id": "sense-d742d179",
+          "pos": "v.",
           "meaningZh": "輕拍；輕撫",
-          "definitionEn": "to lightly tap or strike",
           "examples": [
             "She patted her dog on the head as a gesture of affection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "patience",
       "word": "patience",
       "senses": [
         {
-          "id": "sense-dee47805",
-          "pos": "noun",
+          "id": "sense-ba0cbcc1",
+          "pos": "n.",
           "meaningZh": "耐心；耐性",
-          "definitionEn": "the capacity to accept or tolerate delay, trouble, or suffering without getting angry or upset",
           "examples": [
             "While waiting for her turn at the crowded doctor's office, Emily practiced patience by keeping herself occupied with a book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5a3eb6d5",
-          "pos": "noun",
+          "id": "sense-6c3a4351",
+          "pos": "n.",
           "meaningZh": "單人紙牌遊戲",
-          "definitionEn": "a card game played by one person",
           "examples": [
             "After a long day, she enjoyed unwinding by playing a game of patience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L9",
-        "textbookTitle": "翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pause",
       "word": "pause",
       "senses": [
         {
-          "id": "sense-5e7acea9",
-          "pos": "noun",
+          "id": "sense-088963f5",
+          "pos": "n.",
           "meaningZh": "暫停；間歇",
-          "definitionEn": "a time interval during which there is a temporary cessation of something",
           "examples": [
             "After completing a long workout, Sarah took a moment to pause and catch her breath."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-76ca3f92",
-          "pos": "verb",
+          "id": "sense-7baeb223",
+          "pos": "v.",
           "meaningZh": "暫停；中斷",
-          "definitionEn": "interrupt an activity temporarily before continuing",
           "examples": [
             "She decided to pause her workout to catch her breath before continuing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1",
-        "textbookTitle": "龍騰 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pave",
       "word": "pave",
       "senses": [
         {
-          "id": "sense-f481a547",
-          "pos": "verb",
+          "id": "sense-642d6386",
+          "pos": "v.",
           "meaningZh": "鋪砌；鋪設路面",
-          "definitionEn": "to cover a surface with flat stones or bricks",
           "examples": [
             "The construction crew worked tirelessly to pave the driveway with smooth asphalt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3b8409ae",
-          "pos": "verb",
+          "id": "sense-2ae2d3b3",
+          "pos": "v.",
           "meaningZh": "鋪路；創造條件",
-          "definitionEn": "to create conditions for something to happen",
           "examples": [
             "The university's scholarship program helped pave the way for students from low-income backgrounds to pursue higher education."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pavement",
       "word": "pavement",
       "senses": [
         {
-          "id": "sense-d354c855",
-          "pos": "noun",
+          "id": "sense-21fc05d5",
+          "pos": "n.",
           "meaningZh": "人行道；步道",
-          "definitionEn": "walkway consisting of a paved area for pedestrians",
           "examples": [
             "The city’s new pavement project improved the walkway by adding a smooth surface for pedestrians to walk on."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-94d48a27",
-          "pos": "noun",
+          "id": "sense-118b27a7",
+          "pos": "n.",
           "meaningZh": "路面；鋪面",
-          "definitionEn": "the hard surface of a road, street, or sidewalk, typically made of concrete or asphalt",
           "examples": [
             "They repaired the cracked pavement on the main street."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pea",
       "word": "pea",
       "senses": [
         {
-          "id": "sense-4dcd8a6d",
-          "pos": "noun",
+          "id": "sense-263a48a1",
+          "pos": "n.",
           "meaningZh": "豌豆（食用種子）",
-          "definitionEn": "seed of a pea plant used for food",
           "examples": [
             "She added peas to the stir-fry for extra color and flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2838e82c",
-          "pos": "noun",
+          "id": "sense-98b74270",
+          "pos": "n.",
           "meaningZh": "豌豆莢；豌豆",
-          "definitionEn": "the fruit or seed of a pea plant",
           "examples": [
             "I added some fresh peas to my salad for extra crunch and sweetness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peanut",
       "word": "peanut",
       "senses": [
         {
-          "id": "sense-c323ca37",
-          "pos": "noun",
+          "id": "sense-5f21131f",
+          "pos": "n.",
           "meaningZh": "花生（植物）",
-          "definitionEn": "a plant that is widely grown in tropical and warm regions, with yellow flowers that bend down towards the ground to ripen their seed pods underground",
           "examples": [
             "The farmer harvested a large crop of peanuts from his field in Georgia."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pearl",
       "word": "pearl",
       "senses": [
         {
-          "id": "sense-e3559cb0",
-          "pos": "noun",
+          "id": "sense-2d7f2550",
+          "pos": "n.",
           "meaningZh": "珍珠",
-          "definitionEn": "a round, shiny object that is usually white or blue-gray in color. It is formed inside certain oyster shells around an irritant such as a grain of sand and is highly valued as a precious gemstone.",
           "examples": [
             "As she opened the velvet box, her eyes widened at the sight of the exquisite pearl necklace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peel",
       "word": "peel",
       "senses": [
         {
-          "id": "sense-f6b68612",
-          "pos": "noun",
+          "id": "sense-86054ef2",
+          "pos": "n.",
           "meaningZh": "果皮；外皮",
-          "definitionEn": "the outer layer/rind of a fruit or vegetable",
           "examples": [
             "She used a sharp knife to peel the apple before chopping it into small pieces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e569bd59",
-          "pos": "verb",
+          "id": "sense-7f7f0c14",
+          "pos": "v.",
           "meaningZh": "剝皮；去皮",
-          "definitionEn": "to remove the skin or outer layer",
           "examples": [
             "She peeled an apple and sliced it into pieces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "penguin",
       "word": "penguin",
       "senses": [
         {
-          "id": "sense-b2ea1833",
-          "pos": "noun",
+          "id": "sense-843bced3",
+          "pos": "n.",
           "meaningZh": "企鵝",
-          "definitionEn": "Flightless birds found in cold regions, especially in Antarctica, with webbed feet and wings modified as flippers for swimming.",
           "examples": [
             "During my trip to Antarctica, I saw a group of penguins waddling on the ice and diving effortlessly into the frigid water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "penny",
+      "word": "penny",
+      "senses": [
+        {
+          "id": "sense-bd2a1efe",
+          "pos": "n.",
+          "meaningZh": "便士（英國貨幣單位）",
+          "examples": [
+            "I only have a penny left in my pocket after buying a candy bar."
+          ]
+        },
+        {
+          "id": "sense-7ee44e1a",
+          "pos": "n.",
+          "meaningZh": "一分錢；分（貨幣）",
+          "examples": [
+            "Sarah picked up a penny from the ground and added it to her collection of coins."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pepper",
+      "word": "pepper",
+      "senses": [
+        {
+          "id": "sense-857fa58d",
+          "pos": "n.",
+          "meaningZh": "胡椒；胡椒粉",
+          "examples": [
+            "After taking a bite, she realized that she had accidentally added a bit too much pepper to her food, making it extremely spicy."
+          ]
+        },
+        {
+          "id": "sense-05d77892",
+          "pos": "n.",
+          "meaningZh": "辣椒；甜椒（植物）",
+          "examples": [
+            "I added some diced peppers to the stir-fry for extra flavor."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "perform",
+      "word": "perform",
+      "senses": [
+        {
+          "id": "sense-f314eca5",
+          "pos": "v.",
+          "meaningZh": "表演；演出",
+          "examples": [
+            "The theater company will perform the play tonight."
+          ]
+        },
+        {
+          "id": "sense-d63d074a",
+          "pos": "v.",
+          "meaningZh": "執行；完成",
+          "examples": [
+            "Sarah had to perform a complex surgery on her patient."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "performance",
+      "word": "performance",
+      "senses": [
+        {
+          "id": "sense-2c6bf3d4",
+          "pos": "n.",
+          "meaningZh": "演出；表演",
+          "examples": [
+            "The theater company’s performance of ’Hamlet’ received a standing ovation from the audience for its exceptional acting and set design."
+          ]
+        },
+        {
+          "id": "sense-5560d78b",
+          "pos": "n.",
+          "meaningZh": "劇目；節目",
+          "examples": [
+            "The local theater put on a stunning performance of Shakespeare’s Hamlet."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "permission",
+      "word": "permission",
+      "senses": [
+        {
+          "id": "sense-4516bb12",
+          "pos": "n.",
+          "meaningZh": "許可；同意",
+          "examples": [
+            "Before going on the field trip, the students needed to get permission slips signed by their parents."
+          ]
+        },
+        {
+          "id": "sense-492226a2",
+          "pos": "n.",
+          "meaningZh": "授權；批准",
+          "examples": [
+            "Before entering the restricted area, you need to get permission from the authorities."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

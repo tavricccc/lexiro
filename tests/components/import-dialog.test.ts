@@ -3,10 +3,11 @@
 import type { VueWrapper } from '@vue/test-utils'
 import { mount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue'
 import ImportDialog from '@/components/dialogs/ImportDialog.vue'
 import { i18n } from '@/lib/i18n'
+import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 
 function findButton(label: string): HTMLButtonElement {
@@ -42,8 +43,9 @@ function mountImportDialog() {
     },
   })
   const store = useSetsStore(pinia)
+  const libraryStore = useLibraryStore(pinia)
 
-  return { store, wrapper }
+  return { store, libraryStore, wrapper }
 }
 
 let wrapper: VueWrapper | null = null
@@ -64,7 +66,7 @@ describe('import dialog', () => {
     await nextTick()
 
     expect(store.importOpen).toBe(true)
-    expect(document.body.textContent).toContain('每個單字只需要填寫英文單字、詞性與繁體中文意思')
+    expect(document.body.textContent).toContain('每個單字可以加入多個字義；例句是選填。')
 
     findButton('AI JSON 匯入').click()
     await nextTick()
@@ -78,44 +80,58 @@ describe('import dialog', () => {
 
     expect(store.importStep).toBe(2)
     expect(document.body.textContent).toContain('或者直接貼上 JSON')
-    expect(document.body.textContent).toContain('匯入')
-    expect(document.body.querySelector('textarea')?.getAttribute('placeholder')).toContain('items')
+    expect(document.body.querySelector('textarea')?.getAttribute('placeholder')).toContain('senses')
   })
 
-  it('creates a set after importing valid JSON from the second step', async () => {
+  it('creates a set after parsing a source-bound AI response', async () => {
     const mounted = mountImportDialog()
     wrapper = mounted.wrapper
-    const { store } = mounted
+    const { store, libraryStore } = mounted
 
-    store.openImport()
-    await nextTick()
-    findButton('AI JSON 匯入').click()
-    store.nextImportStep()
-    store.importJson = JSON.stringify({
-      setName: 'Fruits',
-      items: [
-        {
+    const previousClipboard = navigator.clipboard
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } })
+
+    try {
+      store.openImport()
+      await nextTick()
+      findButton('AI JSON 匯入').click()
+      store.importWords = 'apple'
+      await nextTick()
+      findExactButton('複製匯入指令').click()
+      await nextTick()
+      expect(writeText).toHaveBeenCalledOnce()
+      await vi.waitFor(() => expect(store.importStep).toBe(2))
+
+      store.importJson = JSON.stringify({
+        kind: 'words',
+        words: [{
+          sourceRef: 'source-1',
           word: 'apple',
-          meaning: '蘋果',
-          example: 'I eat an apple.',
-          question: {
-            prompt: '蘋果的英文是？',
-            opts: ['apple', 'banana', 'cherry', 'date'],
-            ans: 0,
-          },
-        },
-      ],
-    })
-    await nextTick()
+          senses: [{ pos: 'n.', meaningZh: '蘋果', examples: [] }],
+        }],
+      })
+      await nextTick()
+      findExactButton('解析 AI 回覆').click()
+      await nextTick()
 
-    findExactButton('匯入').click()
-    await nextTick()
+      const setNameInput = Array.from(document.body.querySelectorAll('input')).find(input => input.getAttribute('placeholder') === '單字集名稱')
+      expect(setNameInput).not.toBeUndefined()
+      setNameInput!.value = 'Fruits'
+      setNameInput!.dispatchEvent(new Event('input', { bubbles: true }))
+      await nextTick()
+      findExactButton('建立單字集').click()
+      await nextTick()
 
-    expect(store.importOpen).toBe(false)
-    expect(store.setEditorOpen).toBe(false)
-    expect(store.sets).toHaveLength(1)
-    expect(store.sets[0].setName).toBe('Fruits')
-    expect(store.sets[0].items[0].word).toBe('apple')
-    expect(store.sets[0].items[0].pos).toBe('')
+      expect(store.importOpen).toBe(false)
+      expect(store.sets).toHaveLength(1)
+      expect(store.sets[0].setName).toBe('Fruits')
+      const studyWords = libraryStore.getSetStudyWords(store.sets[0].id)
+      expect(studyWords[0].word).toBe('apple')
+      expect(studyWords[0].pos).toBe('n.')
+    }
+    finally {
+      Object.defineProperty(navigator, 'clipboard', { configurable: true, value: previousClipboard })
+    }
   })
 })

@@ -5,8 +5,8 @@ import { useRoute, useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import AppSidebar from '@/components/AppSidebar.vue'
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue'
+import GuestDataDialog from '@/components/dialogs/GuestDataDialog.vue'
 import ImportDialog from '@/components/dialogs/ImportDialog.vue'
-import SetEditorDialog from '@/components/dialogs/SetEditorDialog.vue'
 import TransferDialog from '@/components/dialogs/TransferDialog.vue'
 import VersionUpdateDialog from '@/components/dialogs/VersionUpdateDialog.vue'
 import MobileBottomTabs from '@/components/MobileBottomTabs.vue'
@@ -19,8 +19,9 @@ const sessionStore = useSessionStore()
 const router = useRouter()
 const route = useRoute()
 const { sidebarExpanded } = storeToRefs(uiStore)
+const { setVersionUpdateAvailable, setVersionUpdatePending, setVersionUpdateReady } = uiStore
 
-const isSessionRoute = computed(() => ['quiz', 'spelling', 'cloze', 'reading', 'review', 'result'].includes(String(route.name)))
+const isSessionRoute = computed(() => ['quiz', 'fillBlank', 'reading', 'review', 'result'].includes(String(route.name)))
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
@@ -48,10 +49,10 @@ async function checkVersion(force = false) {
       }
 
       if (router.currentRoute.value.path === '/') {
-        uiStore.versionUpdateAvailable = true
+        setVersionUpdateAvailable(true)
       }
       else {
-        uiStore.versionUpdatePending = true
+        setVersionUpdatePending(true)
       }
     }
   }
@@ -85,7 +86,7 @@ onMounted(() => {
 
   router.afterEach((to) => {
     if (to.path === '/' && uiStore.versionUpdatePending) {
-      uiStore.versionUpdateAvailable = true
+      setVersionUpdateAvailable(true)
     }
     else {
       checkVersion()
@@ -94,7 +95,7 @@ onMounted(() => {
 
   if ('serviceWorker' in navigator) {
     controllerChangeListener = () => {
-      uiStore.versionUpdateReady = true
+      setVersionUpdateReady(true)
       if (uiStore.versionUpdateLoading) {
         window.location.reload()
       }
@@ -133,8 +134,8 @@ onUnmounted(() => {
 
     <ImportDialog />
     <TransferDialog />
-    <SetEditorDialog />
     <ConfirmDialog />
+    <GuestDataDialog />
     <VersionUpdateDialog />
 
     <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" />

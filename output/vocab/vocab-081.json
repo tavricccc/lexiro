@@ -1,1390 +1,653 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 81,
   "words": [
-    {
-      "wordKey": "minus",
-      "word": "minus",
-      "senses": [
-        {
-          "id": "sense-eaa2bc4a",
-          "pos": "adjective",
-          "meaningZh": "負數的；零下的",
-          "definitionEn": "on the negative side or lower end of a scale",
-          "examples": [
-            "The temperature tonight is expected to be minus 10 degrees Celsius."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-b6e2a708",
-          "pos": "adjective",
-          "meaningZh": "不利的；有缺點的",
-          "definitionEn": "involving a disadvantage or harm",
-          "examples": [
-            "Having a low credit score is a minus when applying for a loan."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "miracle",
-      "word": "miracle",
-      "senses": [
-        {
-          "id": "sense-a7f11544",
-          "pos": "noun",
-          "meaningZh": "奇蹟；神蹟",
-          "definitionEn": "an incredible or wonderful event that defies explanation or is believed to be caused by a divine or supernatural force",
-          "examples": [
-            "After years of unsuccessful treatments, the patient's sudden recovery from a terminal illness was considered a miracle by the medical staff."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-7a496669",
-          "pos": "noun",
-          "meaningZh": "奇事；驚人之事",
-          "definitionEn": "any remarkable or astonishing occurrence",
-          "examples": [
-            "The recovery of a patient from a terminal illness can be considered a miracle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "misery",
-      "word": "misery",
-      "senses": [
-        {
-          "id": "sense-c56ddc48",
-          "pos": "noun",
-          "meaningZh": "極度痛苦；苦惱",
-          "definitionEn": "a feeling of intense unhappiness",
-          "examples": [
-            "After failing the exam, John drowned himself in misery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-f43047dc",
-          "pos": "noun",
-          "meaningZh": "苦難；悲慘處境",
-          "definitionEn": "a state of ill-being due to affliction or misfortune",
-          "examples": [
-            "The people in the cyclone-affected area were living in misery after losing their homes and belongings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3 +1",
-        "textbookTitle": "龍騰 B3·L3、三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "missile",
-      "word": "missile",
-      "senses": [
-        {
-          "id": "sense-981914af",
-          "pos": "noun",
-          "meaningZh": "飛彈；導彈",
-          "definitionEn": "an object or weapon designed for throwing or shooting a particular object or substance.",
-          "examples": [
-            "The military base developed a new missile that can accurately target enemy tanks from a distance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-48996413",
-          "pos": "noun",
-          "meaningZh": "投擲物；拋射武器",
-          "definitionEn": "a weapon that is forcibly thrown or projected at a target but is not self-propelled",
-          "examples": [
-            "During the war, the fighter jet launched a missile towards the enemy base to destroy their ammunition stockpile."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "missing",
-      "word": "missing",
-      "senses": [
-        {
-          "id": "sense-3c282b18",
-          "pos": "adjective",
-          "meaningZh": "不見的；遺失的",
-          "definitionEn": "Not found where expected or supposed to be; lost or absent.",
-          "examples": [
-            "I was flipping through the pages of my favorite book, and suddenly realized that a chapter was missing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-1cb0dac9",
-          "pos": "noun",
-          "meaningZh": "失蹤者；缺少的東西",
-          "definitionEn": "Someone or something that is lost or absent.",
-          "examples": [
-            "The detective searched for any missing clues at the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "mission",
       "word": "mission",
       "senses": [
         {
-          "id": "sense-4465f21a",
-          "pos": "noun",
+          "id": "sense-110e2cb6",
+          "pos": "n.",
           "meaningZh": "任務；使命",
-          "definitionEn": "an operation assigned by a higher authority, often for a specific purpose or objective",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-e10d25d8",
-          "pos": "noun",
+          "id": "sense-d4a27edc",
+          "pos": "n.",
           "meaningZh": "傳教活動；慈善服務",
-          "definitionEn": "a ministry operated by a religious organization to provide humanitarian aid and assistance to others",
           "examples": [
             "The church sent a mission team to the hurricane-stricken area to provide food and shelter to the victims."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mist",
       "word": "mist",
       "senses": [
         {
-          "id": "sense-5b10b04f",
-          "pos": "noun",
+          "id": "sense-ea579037",
+          "pos": "n.",
           "meaningZh": "薄霧；水氣",
-          "definitionEn": "a thin fog with condensation near the ground",
           "examples": [
             "The mist was so thick on the hiking trail that we could barely see our feet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7a9a25ad",
-          "pos": "verb",
+          "id": "sense-bf4c62dc",
+          "pos": "v.",
           "meaningZh": "起霧；朦朧",
-          "definitionEn": "to become covered with mist",
           "examples": [
             "As we reached the summit of the mountain, it had misted over making it difficult to distinguish the trail ahead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mob",
       "word": "mob",
       "senses": [
         {
-          "id": "sense-33eba53b",
-          "pos": "noun",
+          "id": "sense-b91b6dc7",
+          "pos": "n.",
           "meaningZh": "暴民；亂哄哄的群眾",
-          "definitionEn": "a disorderly crowd of people",
           "examples": [
             "The mob outside the courthouse was becoming increasingly violent as the trial progressed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2b8739ae",
-          "pos": "verb",
+          "id": "sense-fd0c6933",
+          "pos": "v.",
           "meaningZh": "蜂擁而至；擠滿",
-          "definitionEn": "to press tightly together or cram",
           "examples": [
             "The concertgoers mobbed the stadium entrance as they eagerly awaited their favorite band’s performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mobile",
       "word": "mobile",
       "senses": [
         {
-          "id": "sense-e0eb5acc",
-          "pos": "adjective",
+          "id": "sense-aa8112c8",
+          "pos": "adj.",
           "meaningZh": "可移動的；流動的",
-          "definitionEn": "able to move or be moved easily from place to place",
           "examples": [
             "The mobile food truck traveled to different neighborhoods to serve delicious meals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6 +1",
-        "textbookTitle": "龍騰 B5·L6、三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "moist",
       "word": "moist",
       "senses": [
         {
-          "id": "sense-25b0fbe3",
-          "pos": "adjective",
+          "id": "sense-246166cf",
+          "pos": "adj.",
           "meaningZh": "潮濕的；微濕的",
-          "definitionEn": "slightly damp or wet",
           "examples": [
             "Her eyes were red and moist with tears."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "moisture",
       "word": "moisture",
       "senses": [
         {
-          "id": "sense-1dce9816",
-          "pos": "noun",
+          "id": "sense-3693fa86",
+          "pos": "n.",
           "meaningZh": "水分；濕氣",
-          "definitionEn": "a small amount of water or another liquid in the air, on a surface, or in the ground",
           "examples": [
             "After a heavy rainfall, the grass was covered in a glistening layer of moisture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7fcedcae",
-          "pos": "noun",
+          "id": "sense-a0294a5e",
+          "pos": "n.",
           "meaningZh": "潮濕；溼潤狀態",
-          "definitionEn": "the state of being damp or slightly wet",
           "examples": [
             "After the rain, the plants were covered in a glistening layer of moisture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "monk",
       "word": "monk",
       "senses": [
         {
-          "id": "sense-67cbb6ca",
-          "pos": "noun",
+          "id": "sense-fcecbc7e",
+          "pos": "n.",
           "meaningZh": "僧侶；修道士",
-          "definitionEn": "a man who is a member of a religious community, living in a monastery, and devoting himself to a life of prayer and contemplation",
           "examples": [
             "The monk rose early each morning, entering the chapel to begin his day of prayer and contemplation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "monster",
       "word": "monster",
       "senses": [
         {
-          "id": "sense-da4fdf1d",
-          "pos": "noun",
+          "id": "sense-83659fc1",
+          "pos": "n.",
           "meaningZh": "怪物；妖怪",
-          "definitionEn": "an imaginary creature typically depicted with various human and animal parts, and often thought to be frightening or threatening",
           "examples": [
             "In the horror movie, the monster had an elongated face, razor-sharp teeth, and tentacles for arms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-99cf63d1",
-          "pos": "noun",
+          "id": "sense-92aa011d",
+          "pos": "n.",
           "meaningZh": "龐然大物；巨型事物",
-          "definitionEn": "a person or thing that is unusually large, powerful, or impressive",
           "examples": [
             "The Burj Khalifa, standing at a height of 828 meters, is a monster of a skyscraper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "monthly",
       "word": "monthly",
       "senses": [
         {
-          "id": "sense-b5257fc0",
-          "pos": "adjective",
+          "id": "sense-00df003e",
+          "pos": "adj.",
           "meaningZh": "每月的；按月的",
-          "definitionEn": "Happening or done once a month",
           "examples": [
             "The rent is due on a monthly basis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-48c3ce14",
-          "pos": "adverb",
+          "id": "sense-24cd313f",
+          "pos": "adv.",
           "meaningZh": "每月一次；按月地",
-          "definitionEn": "Once a month; every month",
           "examples": [
             "Karen’s gym membership fee is due on a monthly basis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "moral",
       "word": "moral",
       "senses": [
         {
-          "id": "sense-169de65f",
-          "pos": "adjective",
+          "id": "sense-3f1a0ab5",
+          "pos": "adj.",
           "meaningZh": "道德的；合乎倫理的",
-          "definitionEn": "concerned with principles of right and wrong behavior or conforming to standards of character based on those principles",
           "examples": [
             "Teaching children about honesty and the importance of telling the truth is a moral responsibility of parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c5ccc815",
-          "pos": "noun",
+          "id": "sense-3846cafd",
+          "pos": "n.",
           "meaningZh": "寓意；道德教訓",
-          "definitionEn": "the significance or lesson that can be learned from a story or event",
           "examples": [
             "In the fable of the tortoise and the hare, the moral of the story is that slow and steady wins the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9 +1",
-        "textbookTitle": "龍騰 B4·L9、三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mosquito",
       "word": "mosquito",
       "senses": [
         {
-          "id": "sense-59e0287a",
-          "pos": "noun",
+          "id": "sense-4f3e2806",
+          "pos": "n.",
           "meaningZh": "蚊子",
-          "definitionEn": "A small, two-winged insect that can suck the blood of humans and animals through a long, thin nose-like structure called a proboscis.",
           "examples": [
             "After returning from his camping trip, Jack noticed that he had multiple itchy and swollen bites from the mosquitoes that had been swarming around his tent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2abfede5",
-          "pos": "noun",
+          "id": "sense-2c2770b9",
+          "pos": "n.",
           "meaningZh": "病媒蚊（傳播疾病的蚊子）",
-          "definitionEn": "A pest that can be a carrier of diseases such as malaria and Zika.",
           "examples": [
             "The mosquito sprays are a must-have when camping in a mosquito-infested area to avoid getting bitten and possibly contracting a disease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mostly",
       "word": "mostly",
       "senses": [
         {
-          "id": "sense-9b91e0ff",
-          "pos": "adverb",
+          "id": "sense-67b5701e",
+          "pos": "adv.",
           "meaningZh": "主要地；大部分",
-          "definitionEn": "mainly or chiefly; in great extent",
           "examples": [
             "She is mostly vegetarian, but occasionally eats seafood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-71e87060",
-          "pos": "adverb",
+          "id": "sense-5564ac4d",
+          "pos": "adv.",
           "meaningZh": "通常；一般來說",
-          "definitionEn": "generally speaking; usually; as a rule",
           "examples": [
             "Mostly, people enjoy sunny weather and spend the day outdoors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "motel",
       "word": "motel",
       "senses": [
         {
-          "id": "sense-9d17546a",
-          "pos": "noun",
+          "id": "sense-e8845f66",
+          "pos": "n.",
           "meaningZh": "汽車旅館",
-          "definitionEn": "a hotel designed for motorists, usually located beside a highway and featuring parking space directly outside individual rooms allowing for easy access to automobiles",
           "examples": [
             "After a long day of driving, we decided to stay at a motel near the highway to get some rest before continuing our journey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-34def5da",
-          "pos": "noun",
+          "id": "sense-7171c16e",
+          "pos": "n.",
           "meaningZh": "公路旅館；車旅",
-          "definitionEn": "a lodging establishment typically designed for travelers by car providing a place to stay overnight, commonly with a parking area for motor vehicles",
           "examples": [
             "After a long day of driving, the weary family checked into a motel that was conveniently located near the highway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "moth",
       "word": "moth",
       "senses": [
         {
-          "id": "sense-7ccdd7d1",
-          "pos": "noun",
+          "id": "sense-4ebf9a75",
+          "pos": "n.",
           "meaningZh": "蛾；飛蛾",
-          "definitionEn": "An insect that typically flies at night and is attracted to light, having a stout body and feathery or hair-like antennae.",
           "examples": [
             "As I sat on my porch at dusk, a delicate brown moth fluttered around the nearby streetlamp, drawn to its warm glow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "motor",
       "word": "motor",
       "senses": [
         {
-          "id": "sense-1146995e",
-          "pos": "noun",
+          "id": "sense-86725cca",
+          "pos": "n.",
           "meaningZh": "馬達；電動機",
-          "definitionEn": "a machine that converts other forms of energy into mechanical energy, which produces motion",
           "examples": [
             "Sam installed a new motor in his car, enabling it to run smoothly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7d7b13a7",
-          "pos": "noun",
+          "id": "sense-12d3855b",
+          "pos": "n.",
           "meaningZh": "引擎；驅動裝置",
-          "definitionEn": "a nonspecific agent that imparts motion",
           "examples": [
             "The motor in the car abruptly stopped working, leaving us stranded on the side of the road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "multiply",
       "word": "multiply",
       "senses": [
         {
-          "id": "sense-61edd3d0",
-          "pos": "verb",
+          "id": "sense-b5042bfd",
+          "pos": "v.",
           "meaningZh": "相乘；乘以",
-          "definitionEn": "to combine numbers to find their product",
           "examples": [
             "To find the area of a rectangle, you need to multiply its length by its width."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-424b7cf2",
-          "pos": "verb",
+          "id": "sense-afd428c3",
+          "pos": "v.",
           "meaningZh": "繁殖；增殖",
-          "definitionEn": "to produce offspring or new plants or animals",
           "examples": [
             "The rabbits are known to multiply quickly, resulting in large populations in a short amount of time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "murder",
       "word": "murder",
       "senses": [
         {
-          "id": "sense-dabea454",
-          "pos": "noun",
+          "id": "sense-58261bc0",
+          "pos": "n.",
           "meaningZh": "謀殺；兇殺",
-          "definitionEn": "the unlawful and intentional killing of one person by another",
           "examples": [
             "He was found guilty of murder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e6b34b93",
-          "pos": "verb",
+          "id": "sense-5ae607ae",
+          "pos": "v.",
           "meaningZh": "謀殺；殺害",
-          "definitionEn": "to kill someone unlawfully and intentionally",
           "examples": [
             "He was accused of murdering his business partner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "muscle",
       "word": "muscle",
       "senses": [
         {
-          "id": "sense-7cce42f3",
-          "pos": "noun",
+          "id": "sense-71853647",
+          "pos": "n.",
           "meaningZh": "肌肉",
-          "definitionEn": "a type of body tissue that contracts and produces movement",
           "examples": [
             "Athletes need to work hard to build their muscles for better performance in sports."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-22c52a8c",
-          "pos": "noun",
+          "id": "sense-68b751f0",
+          "pos": "n.",
           "meaningZh": "以武力威嚇者；打手",
-          "definitionEn": "a person who uses their physical strength to intimidate or bully others",
           "examples": [
             "The gym teacher acted like a muscle and threatened to harm the students if they didn’t do the exercise properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mushroom",
       "word": "mushroom",
       "senses": [
         {
-          "id": "sense-21723b35",
-          "pos": "noun",
+          "id": "sense-32925835",
+          "pos": "n.",
           "meaningZh": "蘑菇；菇類",
-          "definitionEn": "the fleshy body of any of numerous edible fungi, including the common name for an edible agaric, and related fleshy fungi such as toadstools, puffballs, morels, coral fungi, etc. Also any of various fleshy fungi of the subdivision Basidiomycota consisting of a cap at the end of a stem arising from an underground mycelium",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-d0eea92e",
-          "pos": "verb",
+          "id": "sense-377b4e87",
+          "pos": "v.",
           "meaningZh": "迅速增長；蓬勃發展",
-          "definitionEn": "to grow and spread fast; to pick or gather mushrooms",
           "examples": [
             "After heavy rainfall, the mushrooms mushroomed overnight in the forest, creating a mystical and enchanting scenery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mystery",
       "word": "mystery",
       "senses": [
         {
-          "id": "sense-b35f2f39",
-          "pos": "noun",
+          "id": "sense-e7c72735",
+          "pos": "n.",
           "meaningZh": "謎；謎團",
-          "definitionEn": "something that is difficult or impossible to understand or explain",
           "examples": [
             "The disappearance of Amelia Earhart remains a mystery to this day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-526e0c65",
-          "pos": "noun",
+          "id": "sense-99d0a791",
+          "pos": "n.",
           "meaningZh": "推理小說；懸疑故事",
-          "definitionEn": "a story about a crime (usually murder) presented as a novel, play, or movie",
           "examples": [
             "In the gripping mystery novel, the detective sets out to solve the murder of a wealthy businessman who was found dead in his study."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2 +2",
-        "textbookTitle": "龍騰 B3·R2、三民 B2·L10、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "naked",
       "word": "naked",
       "senses": [
         {
-          "id": "sense-cb36a514",
-          "pos": "adjective",
+          "id": "sense-189e849e",
+          "pos": "adj.",
           "meaningZh": "裸體的；赤裸的",
-          "definitionEn": "without clothes or any covering on the body",
           "examples": [
             "The baby lay naked on the soft towel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-704d57c9",
-          "pos": "adjective",
+          "id": "sense-49da4eff",
+          "pos": "adj.",
           "meaningZh": "（肉眼）未借助工具的",
-          "definitionEn": "not aided by an instrument such as a telescope or microscope",
           "examples": [
             "The comet was visible to the naked eye."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nap",
       "word": "nap",
       "senses": [
         {
-          "id": "sense-9b77f132",
-          "pos": "noun",
+          "id": "sense-4133876a",
+          "pos": "n.",
           "meaningZh": "小睡；午睡",
-          "definitionEn": "a period of time spent sleeping",
           "examples": [
             "After a long day of work, I took a quick 20-minute nap to recharge before dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2e8a735f",
-          "pos": "noun",
+          "id": "sense-54994687",
+          "pos": "n.",
           "meaningZh": "絨毛；細絨（布料質地）",
-          "definitionEn": "a soft or fuzzy surface texture, usually on fabric",
           "examples": [
             "The cozy blanket had a luxurious nap that made it perfect for snuggling on the couch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3",
-        "textbookTitle": "龍騰 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "napkin",
       "word": "napkin",
       "senses": [
         {
-          "id": "sense-ce7b8eb0",
-          "pos": "noun",
+          "id": "sense-b4b9201c",
+          "pos": "n.",
           "meaningZh": "餐巾；餐巾紙",
-          "definitionEn": "a piece of cloth or paper used for wiping the mouth or hands and protecting one’s clothing while eating",
           "examples": [
             "During the fancy dinner, John gracefully unfolded his napkin and placed it on his lap before starting his meal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9e2bbb12",
-          "pos": "noun",
+          "id": "sense-79d0ac26",
+          "pos": "n.",
           "meaningZh": "尿布",
-          "definitionEn": "a garment, often made of cloth or plastic, fastened around a baby’s waist to catch excrement",
           "examples": [
             "When changing a baby's diaper, it is important to securely fasten the napkin around their waist to prevent any leaks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "native",
       "word": "native",
       "senses": [
         {
-          "id": "sense-f354e19d",
-          "pos": "adjective",
+          "id": "sense-3edee88f",
+          "pos": "adj.",
           "meaningZh": "出生地的；原籍的",
-          "definitionEn": "belonging to a person by birth",
           "examples": [
             "As a Native American, she possessed a deep connection to her ancestral lands."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-83bcdd0f",
-          "pos": "noun",
+          "id": "sense-4a929c43",
+          "pos": "n.",
           "meaningZh": "當地人；本地人",
-          "definitionEn": "a person who was born in a particular place or country",
           "examples": [
             "Juan is a native of Mexico."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "navy",
       "word": "navy",
       "senses": [
         {
-          "id": "sense-1c399fcb",
-          "pos": "noun",
+          "id": "sense-9765fb4f",
+          "pos": "n.",
           "meaningZh": "海軍",
-          "definitionEn": "an organization of military vessels belonging to a country and available for sea warfare",
           "examples": [
             "The Navy was called in to protect the country’s coastline from foreign attacks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-76df78c3",
-          "pos": "noun",
+          "id": "sense-e3ef6707",
+          "pos": "n.",
           "meaningZh": "深海軍藍色",
-          "definitionEn": "a dark shade of blue",
           "examples": [
             "She wore a gorgeous navy blue dress to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "neat",
+      "word": "neat",
+      "senses": [
+        {
+          "id": "sense-d3f27b11",
+          "pos": "adj.",
+          "meaningZh": "整齊的；乾淨有序的",
+          "examples": [
+            "She walked into her friend's apartment and was impressed by how neat and tidy it was. The furniture was arranged neatly, there was no clutter, and everything had its designated spot."
+          ]
+        },
+        {
+          "id": "sense-1831e329",
+          "pos": "adj.",
+          "meaningZh": "工整的；細心的",
+          "examples": [
+            "Emily's handwritten notes were so neat that they could easily be mistaken for printed text."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "necessity",
+      "word": "necessity",
+      "senses": [
+        {
+          "id": "sense-f34b537f",
+          "pos": "n.",
+          "meaningZh": "必需品；必要之物",
+          "examples": [
+            "Water is a necessity for survival."
+          ]
+        },
+        {
+          "id": "sense-89aa8648",
+          "pos": "n.",
+          "meaningZh": "必要性；不可或缺",
+          "examples": [
+            "Water is a necessity for life."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "necktie",
+      "word": "necktie",
+      "senses": [
+        {
+          "id": "sense-16a2d778",
+          "pos": "n.",
+          "meaningZh": "領帶",
+          "examples": [
+            "Jack wore a navy blue necktie to the job interview to make a good impression."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "neighborhood",
+      "word": "neighborhood",
+      "senses": [
+        {
+          "id": "sense-eabfc441",
+          "pos": "n.",
+          "meaningZh": "附近地區；周邊",
+          "examples": [
+            "Sarah lives in a friendly neighborhood, where everyone knows and helps each other."
+          ]
+        },
+        {
+          "id": "sense-70377345",
+          "pos": "n.",
+          "meaningZh": "社區；街坊",
+          "examples": [
+            "In our neighborhood, there is a park where the children regularly gather to play and families often have picnics."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "nest",
+      "word": "nest",
+      "senses": [
+        {
+          "id": "sense-e13a80b7",
+          "pos": "n.",
+          "meaningZh": "巢；窩",
+          "examples": [
+            "The mother bird built a cozy nest high up in the tree to protect her eggs from predators."
+          ]
+        },
+        {
+          "id": "sense-0cbc6100",
+          "pos": "v.",
+          "meaningZh": "築巢；住巢",
+          "examples": [
+            "The bird carefully wove twigs together to nest and raise its chicks."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1460 +1,697 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 159,
   "words": [
-    {
-      "wordKey": "specialize",
-      "word": "specialize",
-      "senses": [
-        {
-          "id": "sense-d69db3f8",
-          "pos": "verb",
-          "meaningZh": "專攻；專注於某領域",
-          "definitionEn": "to devote oneself to a particular area of study, occupation, or activity in which one has developed skill or knowledge",
-          "examples": [
-            "He decided to specialize in neurosurgery after completing his medical degree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-c38e8c69",
-          "pos": "verb",
-          "meaningZh": "專門化；使適於特定用途",
-          "definitionEn": "to make something suitable for a particular purpose or use",
-          "examples": [
-            "The company decided to specialize in the production of luxury watches, which helped them establish a strong brand identity and increase their market share."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "specialty",
-      "word": "specialty",
-      "senses": [
-        {
-          "id": "sense-62e1e44f",
-          "pos": "noun",
-          "meaningZh": "專業；專長；專攻領域",
-          "definitionEn": "the special line of work that a person has chosen as their career",
-          "examples": [
-            "After years of studying the human mind, Dr. Andrews established psychology as his specialty."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-da354af5",
-          "pos": "noun",
-          "meaningZh": "特色；特長",
-          "definitionEn": "a distinguishing feature or characteristic of a person or thing",
-          "examples": [
-            "Her specialty in cooking is creating unique flavor combinations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "specify",
-      "word": "specify",
-      "senses": [
-        {
-          "id": "sense-c4aa9ee8",
-          "pos": "verb",
-          "meaningZh": "明確指定；詳細說明",
-          "definitionEn": "To define clearly or be specific about something",
-          "examples": [
-            "Please specify the size and color of the shirt you want to order."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-8ec36ce2",
-          "pos": "verb",
-          "meaningZh": "指定；選定（特定項目）",
-          "definitionEn": "To choose something or someone for a specific purpose",
-          "examples": [
-            "The client needs to specify the color and size of the product they want to order."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "specimen",
-      "word": "specimen",
-      "senses": [
-        {
-          "id": "sense-d834ff30",
-          "pos": "noun",
-          "meaningZh": "樣本；標本",
-          "definitionEn": "an example regarded as typical of its class",
-          "examples": [
-            "The biologist carefully collected and preserved a specimen of the new beetle species found in the Amazon rainforest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-6fb102c7",
-          "pos": "noun",
-          "meaningZh": "（醫學）檢體；樣本組織",
-          "definitionEn": "a bit of tissue or bodily fluid taken for diagnostic purposes",
-          "examples": [
-            "The doctor asked the patient to provide a urine specimen for testing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "spectacular",
-      "word": "spectacular",
-      "senses": [
-        {
-          "id": "sense-18696a41",
-          "pos": "adjective",
-          "meaningZh": "壯觀的；令人嘆為觀止的",
-          "definitionEn": "very impressive, especially in a way that is striking or exciting",
-          "examples": [
-            "The firework display on New Year's Eve was truly spectacular, with bright, vibrant colors lighting up the night sky and explosions that took our breath away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-629db697",
-          "pos": "adjective",
-          "meaningZh": "精彩絕倫的；震撼人心的",
-          "definitionEn": "relating to performances or shows that are impressive and exciting to watch",
-          "examples": [
-            "The fireworks display at the end of the concert was absolutely spectacular, with vibrant colors lighting up the night sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "spectator",
       "word": "spectator",
       "senses": [
         {
-          "id": "sense-b774adf9",
-          "pos": "noun",
+          "id": "sense-b47a2db5",
+          "pos": "n.",
           "meaningZh": "觀眾；旁觀者",
-          "definitionEn": "a person who watches an event or activity, especially a public one",
           "examples": [
             "The stadium was packed with enthusiastic spectators, eagerly cheering and clapping for their favorite team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-46e1145e",
-          "pos": "noun",
+          "id": "sense-fb46ec4a",
+          "pos": "n.",
           "meaningZh": "雙色皮鞋（spectator shoes）",
-          "definitionEn": "a type of shoe with a low heel, typically made of leather and having contrasting colors for the toe and heel",
           "examples": [
             "She wore a pair of sleek black and white spectators to the formal event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spectrum",
       "word": "spectrum",
       "senses": [
         {
-          "id": "sense-53c48edc",
-          "pos": "noun",
+          "id": "sense-5c3e9368",
+          "pos": "n.",
           "meaningZh": "範疇；廣泛系列",
-          "definitionEn": "a broad range of related objects, values, qualities, ideas, or activities",
           "examples": [
             "The political spectrum ranges from extreme left to extreme right."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c6a78837",
-          "pos": "noun",
+          "id": "sense-95baa78b",
+          "pos": "n.",
           "meaningZh": "光譜；頻譜",
-          "definitionEn": "an ordered array of the components of an emission or wave",
           "examples": [
             "The rainbow is a spectrum of colors that can be seen after a rain shower."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "speculate",
       "word": "speculate",
       "senses": [
         {
-          "id": "sense-c3b7bc76",
-          "pos": "verb",
+          "id": "sense-11b19de1",
+          "pos": "v.",
           "meaningZh": "推測；猜測；假設",
-          "definitionEn": "to consider or discuss something without knowing all the details, often making guesses or hypotheses",
           "examples": [
             "Without any evidence, it is not appropriate to speculate about the causes of the crash."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9b6fed36",
-          "pos": "verb",
+          "id": "sense-7c1127dd",
+          "pos": "v.",
           "meaningZh": "深思；冥想；推敲",
-          "definitionEn": "to think carefully and deeply about something",
           "examples": [
             "John and Steve would often sit and speculate about what life on Mars would be like."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sphere",
       "word": "sphere",
       "senses": [
         {
-          "id": "sense-4c288caa",
-          "pos": "noun",
+          "id": "sense-bbbadb82",
+          "pos": "n.",
           "meaningZh": "球體；球形立體",
-          "definitionEn": "a solid figure surrounded by a spherical surface (including the space enclosed by it)",
           "examples": [
             "The crystal ball used by the fortune teller was a perfect sphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-674de042",
-          "pos": "noun",
+          "id": "sense-5d5e933a",
+          "pos": "n.",
           "meaningZh": "球狀物；球形體",
-          "definitionEn": "any object shaped like a sphere",
           "examples": [
             "The Earth is an example of a sphere in our solar system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spicy",
       "word": "spicy",
       "senses": [
         {
-          "id": "sense-8af699f3",
-          "pos": "adjective",
+          "id": "sense-f08a3f8f",
+          "pos": "adj.",
           "meaningZh": "辛辣的；香辣的",
-          "definitionEn": "having a strong, pleasant, and somewhat hot flavor",
           "examples": [
             "She sprinkled some spicy chili flakes on her pizza to give it an extra kick."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spine",
       "word": "spine",
       "senses": [
         {
-          "id": "sense-c889ac00",
-          "pos": "noun",
+          "id": "sense-ab3524e8",
+          "pos": "n.",
           "meaningZh": "脊椎；脊柱",
-          "definitionEn": "the row of bones down the middle of the back",
           "examples": [
             "She injured her spine in the car accident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a7d00d1b",
-          "pos": "noun",
+          "id": "sense-b138f7f3",
+          "pos": "n.",
           "meaningZh": "書脊；書背",
-          "definitionEn": "the thick outer edge of a book cover that encloses the pages and protects them from damage",
           "examples": [
             "The spine of the book was sturdy and kept the pages tightly bound together, even after numerous readings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-13621932",
-          "pos": "noun",
+          "id": "sense-e4b9f02a",
+          "pos": "n.",
           "meaningZh": "刺；棘；硬刺",
-          "definitionEn": "a sharp, rigid animal part, such as a porcupine quill or a raised ridge on a bone or the ray of a fish’s fin",
           "examples": [
             "The hedgehog’s spine makes it difficult for predators to attack."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sponge",
       "word": "sponge",
       "senses": [
         {
-          "id": "sense-474685ff",
-          "pos": "noun",
+          "id": "sense-4a98b5cf",
+          "pos": "n.",
           "meaningZh": "海綿",
-          "definitionEn": "a soft material full of small holes that soaks up water, used for cleaning or washing",
           "examples": [
             "He wiped the table with a wet sponge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-98445eba",
-          "pos": "verb",
+          "id": "sense-310014f9",
+          "pos": "v.",
           "meaningZh": "用海綿擦拭；抹去",
-          "definitionEn": "to erase with a sponge, such as words on a blackboard",
           "examples": [
             "The teacher used a damp sponge to sponge off the writing from the blackboard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-121c5032",
-          "pos": "noun",
+          "id": "sense-dba3eca2",
+          "pos": "n.",
           "meaningZh": "白吃白喝的人；吸血鬼",
-          "definitionEn": "a person who follows someone around without benefiting the person, hoping to gain or advantage",
           "examples": [
             "Jack was always hanging around Tim, asking him for money and never offering anything in return. He was such a sponge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sponsor",
       "word": "sponsor",
       "senses": [
         {
-          "id": "sense-a472eceb",
-          "pos": "verb",
+          "id": "sense-7a9decfc",
+          "pos": "v.",
           "meaningZh": "贊助；資助（活動或組織）",
-          "definitionEn": "to provide support or financial assistance to an activity, event, or organization",
           "examples": [
             "The local business agreed to sponsor the charity run by donating $10,000 towards the event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cae025a4",
-          "pos": "noun",
+          "id": "sense-29e53070",
+          "pos": "n.",
           "meaningZh": "保證人；推薦人",
-          "definitionEn": "a person who presents or vouches for another person or organization, such as for an award, degree, or introduction",
           "examples": [
             "John’s father was proud to be his son’s sponsor when he received the employee of the year award at the company banquet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7",
-        "textbookTitle": "龍騰 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sponsorship",
       "word": "sponsorship",
       "senses": [
         {
-          "id": "sense-1b312262",
-          "pos": "noun",
+          "id": "sense-2f9f77e2",
+          "pos": "n.",
           "meaningZh": "贊助；贊助金；資助",
-          "definitionEn": "financial support provided to an individual, organization, or event by a sponsor or group of sponsors",
           "examples": [
             "The local soccer team was able to participate in the tournament thanks to the generous sponsorship from a local business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spouse",
       "word": "spouse",
       "senses": [
         {
-          "id": "sense-d5a928ce",
-          "pos": "noun",
+          "id": "sense-b09e4872",
+          "pos": "n.",
           "meaningZh": "配偶；夫或妻",
-          "definitionEn": "a person’s married partner",
           "examples": [
             "Tom's spouse surprised him with a romantic dinner for their anniversary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "squad",
       "word": "squad",
       "senses": [
         {
-          "id": "sense-923fe278",
-          "pos": "noun",
+          "id": "sense-d8e07f34",
+          "pos": "n.",
           "meaningZh": "球隊；運動隊伍",
-          "definitionEn": "a team or group of players who work together in a cooperative manner to achieve a common goal, especially in sports",
           "examples": [
             "The coach decided to put his best players in the starting squad for the important match against their rivals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6d359a8c",
-          "pos": "noun",
+          "id": "sense-934b6168",
+          "pos": "n.",
           "meaningZh": "特警隊；專案小組",
-          "definitionEn": "a small unit of police officers trained to deal with a particular type of crime, typically involving drugs or vice",
           "examples": [
             "The narcotics squad was responsible for busting the drug trafficking ring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "squash",
       "word": "squash",
       "senses": [
         {
-          "id": "sense-afaafc6d",
-          "pos": "verb",
+          "id": "sense-b3e14588",
+          "pos": "v.",
           "meaningZh": "壓扁；壓碎",
-          "definitionEn": "to crush something into a flat shape by pressing it",
           "examples": [
             "He accidentally squashed the cake in his bag."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b3327852",
-          "pos": "noun",
+          "id": "sense-1cc7849a",
+          "pos": "n.",
           "meaningZh": "南瓜；葫蘆（蔬菜）",
-          "definitionEn": "edible vegetable consisting of the fruit of any of numerous annual trailing plants of the genus Cucurbita",
           "examples": [
             "I harvested a variety of colorful squashes from my garden, including butternut, spaghetti, and acorn squash."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2f8381ad",
-          "pos": "noun",
+          "id": "sense-afdd6865",
+          "pos": "n.",
           "meaningZh": "壁球（運動）",
-          "definitionEn": "sport resembling tennis but played in an enclosed court with a smaller ball and a racket with a long handle",
           "examples": [
             "Josh enjoys playing squash after work to stay active and improve his hand-eye coordination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "squat",
       "word": "squat",
       "senses": [
         {
-          "id": "sense-6e9e6bce",
-          "pos": "verb",
+          "id": "sense-681783ff",
+          "pos": "v.",
           "meaningZh": "蹲下；蹲踞",
-          "definitionEn": "to sit on one’s heels",
           "examples": [
             "During yoga class, we practiced various poses, including the squat position where we sat on our heels."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-124bebbc",
-          "pos": "noun",
+          "id": "sense-72145fd8",
+          "pos": "n.",
           "meaningZh": "深蹲（健身動作）",
-          "definitionEn": "exercising by repeatedly assuming a crouching position with the knees bent, which strengthens the leg muscles",
           "examples": [
             "During her fitness class, she performed a set of squats to work on her quadriceps and glutes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stability",
       "word": "stability",
       "senses": [
         {
-          "id": "sense-3323d632",
-          "pos": "noun",
+          "id": "sense-88da049a",
+          "pos": "n.",
           "meaningZh": "穩定（秩序）；安定",
-          "definitionEn": "a stable order (especially of society)",
           "examples": [
             "The country has experienced a period of stability after several years of political turmoil."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-53384f77",
-          "pos": "noun",
+          "id": "sense-6af0117f",
+          "pos": "n.",
           "meaningZh": "穩固性；不變性",
-          "definitionEn": "the quality of being enduring and free from change or variation",
           "examples": [
             "The stability of the economy is crucial for the country’s growth and development."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +1",
-        "textbookTitle": "龍騰 B3·L2、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stack",
       "word": "stack",
       "senses": [
         {
-          "id": "sense-11ea38e8",
-          "pos": "noun",
+          "id": "sense-733fe7c8",
+          "pos": "n.",
           "meaningZh": "整齊的疊堆；一疊",
-          "definitionEn": "an orderly pile",
           "examples": [
             "He neatly arranged the books in a stack on the shelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0ea1c796",
-          "pos": "noun",
+          "id": "sense-ebc5fff6",
+          "pos": "n.",
           "meaningZh": "大煙囪；排氣管",
-          "definitionEn": "a large chimney to expel smoke and gas",
           "examples": [
             "The factory had a towering stack that released thick plumes of smoke into the sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stain",
       "word": "stain",
       "senses": [
         {
-          "id": "sense-b602c3a9",
-          "pos": "verb",
+          "id": "sense-f2a16576",
+          "pos": "v.",
           "meaningZh": "弄髒；染色；留下汙漬",
-          "definitionEn": "To make something dirty or spotty through exposure to air or other substances; also used metaphorically.",
           "examples": [
             "While cooking, she accidentally stained her white shirt with tomato sauce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fdea1290",
-          "pos": "verb",
+          "id": "sense-f8f4f559",
+          "pos": "v.",
           "meaningZh": "留下汙跡；染上斑漬",
-          "definitionEn": "To produce or leave marks or blemishes on something.",
           "examples": [
             "I spilled coffee on my shirt, and now there’s a big brown stain on it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stake",
       "word": "stake",
       "senses": [
         {
-          "id": "sense-34ef0b3d",
-          "pos": "noun",
+          "id": "sense-499b3349",
+          "pos": "n.",
           "meaningZh": "利害關係；賭注",
-          "definitionEn": "something, especially money or interest, that you risk or stand to gain",
           "examples": [
             "The workers have a real stake in the company's success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-57441073",
-          "pos": "noun",
+          "id": "sense-8af29347",
+          "pos": "n.",
           "meaningZh": "標樁；界樁",
-          "definitionEn": "a pole or stake set up to mark something, such as the start or end of a race track",
           "examples": [
             "The stakes were set along the race track, indicating the starting and finishing points for the runners."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stall",
       "word": "stall",
       "senses": [
         {
-          "id": "sense-9df2f876",
-          "pos": "noun",
+          "id": "sense-e339be22",
+          "pos": "n.",
           "meaningZh": "攤位；小隔間；展售亭",
-          "definitionEn": "a small area or compartment set off by walls for a special purpose, such as a booth for selling goods or a study area in a library",
           "examples": [
             "In the bustling market, I wandered around before finally stopping at a colorful stall selling handmade jewelry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d09d568a",
-          "pos": "noun",
+          "id": "sense-58a5717e",
+          "pos": "n.",
           "meaningZh": "（戲院）正廳前座",
-          "definitionEn": "seating in the forward part of the main level of a theater or cinema",
           "examples": [
             "As the lights dimmed, the audience members made their way to their stalls, eager to watch the highly-anticipated film."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stance",
       "word": "stance",
       "senses": [
         {
-          "id": "sense-5cb9e19b",
-          "pos": "noun",
+          "id": "sense-4ad27867",
+          "pos": "n.",
           "meaningZh": "立場；態度；觀點",
-          "definitionEn": "a rationalized mental attitude",
           "examples": [
             "Despite their philosophical differences, Mary and John maintained a respectful stance during their debate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9965ccbb",
-          "pos": "noun",
+          "id": "sense-000872c7",
+          "pos": "n.",
           "meaningZh": "站姿；站立姿勢",
-          "definitionEn": "standing posture",
           "examples": [
             "During his presentation, he maintained a confident stance, with his feet shoulder-width apart and his head held high."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "startle",
       "word": "startle",
       "senses": [
         {
-          "id": "sense-32db7808",
-          "pos": "verb",
+          "id": "sense-00eeeeef",
+          "pos": "v.",
           "meaningZh": "使大吃一驚；嚇到",
-          "definitionEn": "to surprise greatly",
           "examples": [
             "The loud crash of thunder startled the sleeping cat and caused it to jump straight into the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-040cf7af",
-          "pos": "verb",
+          "id": "sense-d85d8aa8",
+          "pos": "v.",
           "meaningZh": "使突然反應；令人猛然驚醒",
-          "definitionEn": "to cause someone to react suddenly",
           "examples": [
             "The loud crash startled me out of my deep sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "statistical",
       "word": "statistical",
       "senses": [
         {
-          "id": "sense-09bdb502",
-          "pos": "adjective",
+          "id": "sense-9068fb08",
+          "pos": "adj.",
           "meaningZh": "統計學的；統計上的",
-          "definitionEn": "pertaining to statistics or the use of statistics",
           "examples": [
             "The company used statistical data to analyze the effectiveness of their marketing campaign."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-33aa199d",
-          "pos": "adjective",
+          "id": "sense-7286ae7b",
+          "pos": "adj.",
           "meaningZh": "大量數據的；數量分析的",
-          "definitionEn": "expressing or dealing with a lot of data",
           "examples": [
             "The researchers used statistical analyses to study the trend of COVID-19 cases over time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "steer",
       "word": "steer",
       "senses": [
         {
-          "id": "sense-f5d83be7",
-          "pos": "verb",
+          "id": "sense-61a8bc9c",
+          "pos": "v.",
           "meaningZh": "駕駛；掌舵；引導",
-          "definitionEn": "to control the direction in which a vehicle moves",
           "examples": [
             "He steered the car carefully through the narrow streets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a9d5bff7",
-          "pos": "noun",
+          "id": "sense-4db08493",
+          "pos": "n.",
           "meaningZh": "閹牛；去勢公牛",
-          "definitionEn": "castrated bull",
           "examples": [
             "The rancher decided to use a steer as the lead animal for the cattle drive because its docile nature and lack of aggression made it a reliable choice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bff39825",
-          "pos": "noun",
+          "id": "sense-4927cc69",
+          "pos": "n.",
           "meaningZh": "線索；提示",
-          "definitionEn": "an indication of potential opportunity",
           "examples": [
             "Her excellent grades and extracurricular activities were a steer that she would be successful in her college applications."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stereotype",
       "word": "stereotype",
       "senses": [
         {
-          "id": "sense-d439e040",
-          "pos": "noun",
+          "id": "sense-02469644",
+          "pos": "n.",
           "meaningZh": "刻板印象；成見",
-          "definitionEn": "a widely held and oversimplified idea or image of a particular type of person or thing",
           "examples": [
             "It is a stereotype that all Asians are good at math."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-43f25b14",
-          "pos": "verb",
+          "id": "sense-d7418003",
+          "pos": "v.",
           "meaningZh": "以刻板印象歸類；套入成見",
-          "definitionEn": "view or represent as a stereotype; to categorize or classify someone or something according to a fixed and often oversimplified and unfair idea or image",
           "examples": [
             "It is unfair to stereotype all lawyers as greedy and unscrupulous individuals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stew",
       "word": "stew",
       "senses": [
         {
-          "id": "sense-9ef0f818",
-          "pos": "verb",
+          "id": "sense-5b7005d1",
+          "pos": "v.",
           "meaningZh": "燉煮；慢火烹調",
-          "definitionEn": "cook something slowly and for a long time in liquid",
           "examples": [
             "I decided to stew a hearty beef stew on a cold winter's day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8f5eb4ad",
-          "pos": "verb",
+          "id": "sense-eddaad80",
+          "pos": "v.",
           "meaningZh": "憤慨；悶悶不樂",
-          "definitionEn": "feel angry or resentful",
           "examples": [
             "After waiting for hours, she began to stew with impatience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stimulate",
       "word": "stimulate",
       "senses": [
         {
-          "id": "sense-a2487aca",
-          "pos": "verb",
+          "id": "sense-66ec53ef",
+          "pos": "v.",
           "meaningZh": "刺激；促進",
-          "definitionEn": "provide the needed stimulus for",
           "examples": [
             "To stimulate economic growth, the government has introduced tax cuts and subsidies to attract foreign investment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f7192f66",
-          "pos": "verb",
+          "id": "sense-42bfff8d",
+          "pos": "v.",
           "meaningZh": "振奮；使振作",
-          "definitionEn": "cause to be alert and energetic",
           "examples": [
             "Drinking a cup of coffee in the morning can stimulate the brain and improve focus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stimulus",
+      "word": "stimulus",
+      "senses": [
+        {
+          "id": "sense-f11a1f55",
+          "pos": "n.",
+          "meaningZh": "推動力；激勵因素",
+          "examples": [
+            "The government's investment in infrastructure serves as a stimulus for economic growth and job creation."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stink",
+      "word": "stink",
+      "senses": [
+        {
+          "id": "sense-a734b741",
+          "pos": "n.",
+          "meaningZh": "惡臭；臭味",
+          "examples": [
+            "After days of not showering, his body began to stink."
+          ]
+        },
+        {
+          "id": "sense-a96b9bde",
+          "pos": "v.",
+          "meaningZh": "發出惡臭；臭氣熏人",
+          "examples": [
+            "After days of not bathing, the hiker's body began to stink."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stock",
+      "word": "stock",
+      "senses": [
+        {
+          "id": "sense-a8105965",
+          "pos": "n.",
+          "meaningZh": "股票；存貨",
+          "examples": [
+            "He invested most of his savings in technology stocks."
+          ]
+        },
+        {
+          "id": "sense-0fbf4be0",
+          "pos": "n.",
+          "meaningZh": "紫羅蘭屬植物",
+          "examples": [
+            "I planted stocks in my garden to add pops of color amongst the green foliage."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "storage",
+      "word": "storage",
+      "senses": [
+        {
+          "id": "sense-83ced8cd",
+          "pos": "n.",
+          "meaningZh": "倉儲；儲藏室",
+          "examples": [
+            "The company rented a storage unit to keep their surplus inventory safely."
+          ]
+        },
+        {
+          "id": "sense-7734402b",
+          "pos": "n.",
+          "meaningZh": "倉儲業；儲存服務",
+          "examples": [
+            "To ensure their products are safe and secure, many businesses rely on storage facilities for warehousing and inventory management purposes."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "straighten",
+      "word": "straighten",
+      "senses": [
+        {
+          "id": "sense-b324ba67",
+          "pos": "v.",
+          "meaningZh": "挺直身體；站直",
+          "examples": [
+            "After sitting at their desks for hours, the students straightened their backs and stretched their legs."
+          ]
+        },
+        {
+          "id": "sense-d45389e5",
+          "pos": "v.",
+          "meaningZh": "整理；收拾整齊",
+          "examples": [
+            "After a long day of work, Sarah straightened her desk and arranged all her files neatly before leaving the office."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

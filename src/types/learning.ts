@@ -1,6 +1,26 @@
-import type { VocabItem } from './set'
+import type { StudyWord } from './library'
 
-export type ReviewRating = 'again' | 'hard' | 'good' | 'easy'
+export type ReviewRating = 'again' | 'good'
+export type QuestionStatType = 'standard' | 'fillBlank' | 'reading'
+export type QuestionStatKey = `${QuestionStatType}:${1 | 2 | 3}`
+
+export interface QuestionStats {
+  total: number
+  correct: number
+  retry: number
+}
+
+export interface DailyActivity {
+  date: string
+  memoryAgain: number
+  memoryGood: number
+  questionTotal: number
+  questionCorrect: number
+  questionRetry: number
+  xpEarned: number
+  completed: boolean
+  questionStats: Record<QuestionStatKey, QuestionStats>
+}
 
 export interface CardProgress {
   due: string
@@ -18,42 +38,35 @@ export interface CardProgress {
 }
 
 export interface LearningProgress {
-  setId: string
   cards: Record<string, CardProgress>
   updatedAt: string
 }
 
-export interface Achievement {
-  id: string
-  titleKey: string
-  descriptionKey: string
-  unlockedAt: string
-}
-
 export interface DashboardStats {
-  totalReviews: number
-  correctReviews: number
+  totalMemoryReviews: number
+  correctMemoryReviews: number
+  totalQuestionReviews: number
+  correctQuestionReviews: number
   streakDays: number
   longestStreak: number
   xp: number
   level: number
   lastStudyDate: string
-  dailyGoal: number
   dailyWordGoal: number
   dailyQuestionGoal: number
-  todayReviews: number
-  todayCorrectReviews: number
-  todayLearningReviews: number
-  todayLearningCorrectReviews: number
+  todayMemoryReviews: number
+  todayMemoryCorrectReviews: number
   todayQuestionReviews: number
   todayQuestionCorrectReviews: number
-  achievements: Achievement[]
+  questionStats: Record<QuestionStatKey, QuestionStats>
+  questionStatsBySense: Record<string, Record<QuestionStatKey, QuestionStats>>
+  dailyHistory: Record<string, DailyActivity>
   updatedAt: string
 }
 
 export interface ReviewEntry {
   setId: string
-  item: VocabItem
+  item: StudyWord
   progress: CardProgress | null
 }
 

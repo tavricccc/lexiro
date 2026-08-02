@@ -5,7 +5,7 @@ import type { Firestore } from 'firebase/firestore'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
 import { browserLocalPersistence, getAuth, setPersistence } from 'firebase/auth'
-import { getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
 
 const config = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string | undefined,
@@ -70,15 +70,9 @@ export function getFirebaseFirestore(): Firestore | null {
   if (!app)
     return null
   if (!firestore) {
-    try {
-      firestore = initializeFirestore(app, {
-        localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
-      })
-    }
-    catch {
-      // Private browsing and older browsers may not support IndexedDB persistence.
-      firestore = getFirestore(app)
-    }
+    firestore = initializeFirestore(app, {
+      localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+    })
   }
   return firestore
 }

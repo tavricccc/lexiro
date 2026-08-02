@@ -1,13 +1,6 @@
+import type { AiSettings } from './ai'
 import type { DashboardStats, LearningProgress } from './learning'
-import type { LibraryQuestion, VocabFolder, VocabSetMember, WordEntry } from './library'
-import type { VocabSet } from './set'
-
-export interface FirestoreSetDoc extends VocabSet {
-  ownerId: string
-  schemaVersion: number
-  checksum: string
-  updatedAt: string
-}
+import type { LibraryQuestion, LibrarySet, SetMembership, VocabFolder, WordEntry } from './library'
 
 export interface FirestoreProgressDoc extends LearningProgress {
   ownerId: string
@@ -19,16 +12,10 @@ export interface FirestoreStatsDoc extends DashboardStats {
   schemaVersion: number
 }
 
-export interface FirestoreDailyStatsDoc {
-  date: string
-  reviews: number
-  correctReviews: number
-  questionReviews?: number
-  correctQuestionReviews?: number
-  xpEarned: number
-  updatedAt: string
+export type FirestoreAiSettingsDoc = Omit<AiSettings, 'apiKey'> & {
   ownerId: string
   schemaVersion: number
+  updatedAt: string
 }
 
 export interface FirestoreLibraryChunkBase {
@@ -41,14 +28,8 @@ export interface FirestoreLibraryChunkBase {
 
 export type FirestoreLibraryChunk = FirestoreLibraryChunkBase & (
   | { section: 'words', items: WordEntry[] }
-  | { section: 'memberships', items: { setId: string, members: VocabSetMember[] }[] }
+  | { section: 'sets', items: LibrarySet[] }
+  | { section: 'memberships', items: { setId: string, members: SetMembership[] }[] }
   | { section: 'folders', items: VocabFolder[] }
   | { section: 'questions', items: LibraryQuestion[] }
 )
-
-export interface SetSyncConflict {
-  setId: string
-  setName: string
-  local: VocabSet
-  remote: FirestoreSetDoc
-}

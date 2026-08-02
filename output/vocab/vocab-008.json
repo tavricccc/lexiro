@@ -1,1417 +1,685 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 8,
   "words": [
-    {
-      "wordKey": "deal",
-      "word": "deal",
-      "senses": [
-        {
-          "id": "sense-35ae0df7",
-          "pos": "noun",
-          "meaningZh": "交易；協議",
-          "definitionEn": "an agreement, especially in business",
-          "examples": [
-            "The two companies made a deal to share their technology."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-286e3b7b",
-          "pos": "verb",
-          "meaningZh": "應對；處理；採取行動",
-          "definitionEn": "manage or control; behave in a certain way towards others; act on verbally or in some form of artistic expression; come to terms with; give out as one’s portion or share",
-          "examples": [
-            "In order to successfully deal with a difficult situation, it is important to remain calm and composed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "dear",
       "word": "dear",
       "senses": [
         {
-          "id": "sense-a57a65f9",
-          "pos": "noun",
+          "id": "sense-64cad5ed",
+          "pos": "n.",
           "meaningZh": "心愛的人；親愛的",
-          "definitionEn": "a beloved person; used as a term of endearment",
           "examples": [
             "My dear daughter, I love you so much."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e294b351",
-          "pos": "noun",
+          "id": "sense-9763454d",
+          "pos": "n.",
           "meaningZh": "善良可愛的人；乖巧的孩子",
-          "definitionEn": "a sweet, innocent, mild-mannered person, especially a child",
           "examples": [
             "The dear girl always helps her mother in the kitchen without being asked."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "death",
       "word": "death",
       "senses": [
         {
-          "id": "sense-d250b02b",
-          "pos": "noun",
+          "id": "sense-2442b69f",
+          "pos": "n.",
           "meaningZh": "死亡；去世",
-          "definitionEn": "until someone is dead",
           "examples": [
             "After the death of her husband, she struggled to find meaning in life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4bfbf5d4",
-          "pos": "noun",
+          "id": "sense-aace9010",
+          "pos": "n.",
           "meaningZh": "死亡事實；喪命",
-          "definitionEn": "the fact of someone dying or being killed",
           "examples": [
             "The sudden death of her beloved pet brought her immense grief."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "decide",
       "word": "decide",
       "senses": [
         {
-          "id": "sense-fc1e7e65",
-          "pos": "verb",
+          "id": "sense-26781f8a",
+          "pos": "v.",
           "meaningZh": "決定；下決心",
-          "definitionEn": "to choose between one possibility or another",
           "examples": [
             "After much deliberation, she finally decided to accept the job offer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3405d30f",
-          "pos": "verb",
+          "id": "sense-6725b722",
+          "pos": "v.",
           "meaningZh": "決出勝負；裁定",
-          "definitionEn": "to determine the result of a competition",
           "examples": [
             "After a long and intense game, the final play would decide the winner of the championship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deep",
       "word": "deep",
       "senses": [
         {
-          "id": "sense-05abcc8d",
-          "pos": "adjective",
+          "id": "sense-bebf4309",
+          "pos": "adj.",
           "meaningZh": "深的；不淺的",
-          "definitionEn": "having a relatively large distance between the top and the bottom; not shallow",
           "examples": [
             "The lake is so deep that you can't see the bottom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8d821e96",
-          "pos": "adjective",
+          "id": "sense-5e375172",
+          "pos": "adj.",
           "meaningZh": "深遠的；縱深的",
-          "definitionEn": "going far down or in from the surface or further back or away from a central point; sometimes used with other words to describe the extent or direction",
           "examples": [
             "The diver went deep into the ocean to explore the shipwreck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "define",
       "word": "define",
       "senses": [
         {
-          "id": "sense-819d9a85",
-          "pos": "verb",
+          "id": "sense-adae6264",
+          "pos": "v.",
           "meaningZh": "界定；定義",
-          "definitionEn": "determine the essential quality of",
           "examples": [
             "To define the problem accurately and quickly is critical for a successful project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-88cb7ca2",
-          "pos": "verb",
+          "id": "sense-0af2170f",
+          "pos": "v.",
           "meaningZh": "確定性質；釐清",
-          "definitionEn": "determine the nature of",
           "examples": [
             "Scientists can define the nature of a meteorite by analyzing its chemical composition and structure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "desk",
       "word": "desk",
       "senses": [
         {
-          "id": "sense-3357e91f",
-          "pos": "noun",
+          "id": "sense-1a30dda7",
+          "pos": "n.",
           "meaningZh": "書桌；辦公桌",
-          "definitionEn": "A piece of furniture typically having a flat or sloping top for writing, reading, or using a computer, and often drawers or compartments.",
           "examples": [
             "I sat down at my desk and began working on my computer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dictionary",
       "word": "dictionary",
       "senses": [
         {
-          "id": "sense-4b6ad439",
-          "pos": "noun",
+          "id": "sense-554f7085",
+          "pos": "n.",
           "meaningZh": "字典；詞典",
-          "definitionEn": "a reference book containing an alphabetical list of words with information about them, typically with definitions, etymologies, pronunciations, and other information",
           "examples": [
             "When I couldn't figure out the meaning of a new word, I looked it up in the dictionary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "die",
       "word": "die",
       "senses": [
         {
-          "id": "sense-79ece3e9",
-          "pos": "verb",
+          "id": "sense-f2233310",
+          "pos": "v.",
           "meaningZh": "死亡；死去",
-          "definitionEn": "to suffer or face the pain of death",
           "examples": [
             "After a long battle with cancer, she finally passed away peacefully with her family by her side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3ea5ba5e",
-          "pos": "verb",
+          "id": "sense-50f72391",
+          "pos": "v.",
           "meaningZh": "（機器、系統）停止運作；熄滅",
-          "definitionEn": "to stop operating or functioning",
           "examples": [
             "In the middle of the concert, the speaker system suddenly died, leaving the audience in silence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "different",
       "word": "different",
       "senses": [
         {
-          "id": "sense-7ad082f1",
-          "pos": "adjective",
+          "id": "sense-fbfde79b",
+          "pos": "adj.",
           "meaningZh": "不同的；相異的",
-          "definitionEn": "not the same as something or someone else; not alike in nature, quality, form, or degree.",
           "examples": [
             "Susan and Mark have very different tastes in music. Susan enjoys classical, while Mark prefers rock."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d56dc541",
-          "pos": "adjective",
+          "id": "sense-14333423",
+          "pos": "adj.",
           "meaningZh": "有差異的；各異的",
-          "definitionEn": "showing an unlikeness or diversity; marked by dissimilarity.",
           "examples": [
             "The twins looked so similar that it was hard to tell them apart, but their personalities were completely different."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "difficult",
       "word": "difficult",
       "senses": [
         {
-          "id": "sense-4a08a118",
-          "pos": "adjective",
+          "id": "sense-ac0ac694",
+          "pos": "adj.",
           "meaningZh": "困難的；費力的",
-          "definitionEn": "requiring great physical or mental effort to accomplish or comprehend or endure; not easy",
           "examples": [
             "After months of intense training, running a marathon proved to be a difficult task for Mary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cbdeb769",
-          "pos": "adjective",
+          "id": "sense-399c7c1d",
+          "pos": "adj.",
           "meaningZh": "難以掌控的；棘手的",
-          "definitionEn": "hard to control",
           "examples": [
             "The toddler was difficult to control during the long car ride, constantly squirming and demanding attention."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dig",
       "word": "dig",
       "senses": [
         {
-          "id": "sense-27aa55ea",
-          "pos": "verb",
+          "id": "sense-939fe7f3",
+          "pos": "v.",
           "meaningZh": "挖掘；掘土",
-          "definitionEn": "To turn up, loosen, or remove earth.",
           "examples": [
             "He used a shovel to dig a hole for planting the flowers in the garden."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-551f7b7d",
-          "pos": "verb",
+          "id": "sense-b7da6f32",
+          "pos": "v.",
           "meaningZh": "戳；刺入",
-          "definitionEn": "To poke or thrust abruptly.",
           "examples": [
             "As John was setting up the tent, he used a stick to dig a hole for the tent pole."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dinner",
       "word": "dinner",
       "senses": [
         {
-          "id": "sense-ff7cedb5",
-          "pos": "noun",
+          "id": "sense-21f9e201",
+          "pos": "n.",
           "meaningZh": "正餐；晚餐",
-          "definitionEn": "the main meal of the day served in the evening or at midday",
           "examples": [
             "After a long day at work, I enjoyed relaxing with my family and having a delicious dinner that my wife had prepared."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f07d9a88",
-          "pos": "noun",
+          "id": "sense-0035fd5c",
+          "pos": "n.",
           "meaningZh": "（正式）宴會；晚宴",
-          "definitionEn": "a social occasion in which people com together to eat dinner",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dirty",
       "word": "dirty",
       "senses": [
         {
-          "id": "sense-90dd72d6",
-          "pos": "adjective",
+          "id": "sense-4afb94ba",
+          "pos": "adj.",
           "meaningZh": "髒的；汙穢的",
-          "definitionEn": "soiled or covered in dirt or grime",
           "examples": [
             "After playing outside in the mud, the children’s clothes were dirty and needed to be washed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6822b2d9",
-          "pos": "adjective",
+          "id": "sense-d01d1e0d",
+          "pos": "adj.",
           "meaningZh": "不正當的；卑鄙的",
-          "definitionEn": "not within accepted standards or rules",
           "examples": [
             "She was fired from her job for using dirty tactics to gain a promotion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dish",
       "word": "dish",
       "senses": [
         {
-          "id": "sense-836ba908",
-          "pos": "noun",
+          "id": "sense-ce8cd10c",
+          "pos": "n.",
           "meaningZh": "盤子；碗碟",
-          "definitionEn": "a container with a raised edge, used for serving or holding food",
           "examples": [
             "The waiter placed the hot lasagna on the dish and served it to the customer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c2e3d159",
-          "pos": "noun",
+          "id": "sense-f2201015",
+          "pos": "n.",
           "meaningZh": "餐具（總稱）；碗盤",
-          "definitionEn": "all the plates, glasses, knives, forks, etc., used during a meal",
           "examples": [
             "The waiter cleared the table and stacked the dirty dishes on a cart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "do",
       "word": "do",
       "senses": [
         {
-          "id": "sense-29dc1bcb",
-          "pos": "verb",
+          "id": "sense-932acc2e",
+          "pos": "v.",
           "meaningZh": "做；執行；促成",
-          "definitionEn": "to cause something to happen or be the cause of something happening; perform or have a part in an activity",
           "examples": [
             "John's quick thinking and first aid training did save his friend's life after the accident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b36d1788",
-          "pos": "verb",
+          "id": "sense-c7cfacdd",
+          "pos": "v.",
           "meaningZh": "從事；擔任",
-          "definitionEn": "to work at as a regular job",
           "examples": [
             "John does accounting for a large multinational corporation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dog",
       "word": "dog",
       "senses": [
         {
-          "id": "sense-7322eb05",
-          "pos": "noun",
+          "id": "sense-56a96801",
+          "pos": "n.",
           "meaningZh": "狗；犬",
-          "definitionEn": "a domesticated mammal and a common household pet that is descended from wolves; comes in various breeds and is kept for companionship, guarding, and hunting",
           "examples": [
             "After a long day at work, I was greeted by my dog wagging its tail and excitedly jumping on me."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6e334eae",
-          "pos": "noun",
+          "id": "sense-c1366292",
+          "pos": "n.",
           "meaningZh": "卑鄙之人；無賴",
-          "definitionEn": "a person who is regarded as despicable, dishonest, or annoying",
           "examples": [
             "Despite his friendly demeanor, he turned out to be a real dog, constantly lying and betraying those who trusted him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "doll",
       "word": "doll",
       "senses": [
         {
-          "id": "sense-33c59746",
-          "pos": "noun",
+          "id": "sense-f2fcf4be",
+          "pos": "n.",
           "meaningZh": "玩具娃娃；布偶",
-          "definitionEn": "a toy in the form of a small replica of a person",
           "examples": [
             "As a child, she loved to play with her dolls, dressing them up in different outfits and pretending they were real people."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d2b9bd85",
-          "pos": "noun",
+          "id": "sense-0cb310dd",
+          "pos": "n.",
           "meaningZh": "美女；漂亮姑娘",
-          "definitionEn": "a young woman, especially one regarded as attractive or appealing",
           "examples": [
             "The beautiful blonde at the party caught everyone’s attention and was referred to as the ’doll’ of the night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dollar",
       "word": "dollar",
       "senses": [
         {
-          "id": "sense-fd0dd928",
-          "pos": "noun",
+          "id": "sense-a93c2818",
+          "pos": "n.",
           "meaningZh": "元；美元",
-          "definitionEn": "the unit of currency in the U.S., Canada, Australia, and several other countries",
           "examples": [
             "When I went to the store, I needed to exchange my euros for dollars."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-847e52c7",
-          "pos": "noun",
+          "id": "sense-f2e66537",
+          "pos": "n.",
           "meaningZh": "美元匯率；美元幣值",
-          "definitionEn": "the exchange rate of the U.S. dollar compared to other currencies",
           "examples": [
             "Understanding the dollar's exchange rate is crucial when planning a trip abroad and budgeting for expenses in a foreign country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "door",
       "word": "door",
       "senses": [
         {
-          "id": "sense-406d3ac9",
-          "pos": "noun",
+          "id": "sense-40e4e22d",
+          "pos": "n.",
           "meaningZh": "門；門扉",
-          "definitionEn": "a swinging or sliding barrier that closes off an entrance to a room, building, or vehicle",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-af5abc1b",
-          "pos": "noun",
+          "id": "sense-9d071b27",
+          "pos": "n.",
           "meaningZh": "門口；出入口",
-          "definitionEn": "the entrance or exit point in a wall or building that can be closed by a door",
           "examples": [
             "Please remember to lock the door before leaving the office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "down",
       "word": "down",
       "senses": [
         {
-          "id": "sense-ef8b878a",
-          "pos": "adjective",
+          "id": "sense-e1d8808e",
+          "pos": "adj.",
           "meaningZh": "往下的；下降的",
-          "definitionEn": "being or moving lower in position or less in some value",
           "examples": [
             "The sun is going DOWN in the west. John’s grades are going DOWN since he stopped studying."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-05dd3553",
-          "pos": "adjective",
+          "id": "sense-e7323197",
+          "pos": "adj.",
           "meaningZh": "逐漸降低的",
-          "definitionEn": "becoming progressively lower",
           "examples": [
             "The sun began to go down, and the temperature started dropping rapidly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dozen",
       "word": "dozen",
       "senses": [
         {
-          "id": "sense-4a784b4b",
-          "pos": "noun",
+          "id": "sense-b7761057",
+          "pos": "n.",
           "meaningZh": "一打；十二個",
-          "definitionEn": "a group of twelve items",
           "examples": [
             "The baker had just baked a dozen cupcakes for the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2d6a5105",
-          "pos": "adjective",
+          "id": "sense-3e069119",
+          "pos": "adj.",
           "meaningZh": "十二的；一打的",
-          "definitionEn": "consisting of 12 items or units",
           "examples": [
             "I need a dozen eggs to make this recipe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "draw",
       "word": "draw",
       "senses": [
         {
-          "id": "sense-e6ce0d4d",
-          "pos": "verb",
+          "id": "sense-48dafc82",
+          "pos": "v.",
           "meaningZh": "畫；繪製",
-          "definitionEn": "to make a picture or diagram with a pen, pencil, etc.",
           "examples": [
             "She likes to draw cartoons in her free time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-19a55de5",
-          "pos": "verb",
+          "id": "sense-680bd678",
+          "pos": "v.",
           "meaningZh": "拖出；施力移動",
-          "definitionEn": "move something by applying force",
           "examples": [
             "He used all his strength to draw the heavy box out of the cupboard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dream",
       "word": "dream",
       "senses": [
         {
-          "id": "sense-179e3fed",
-          "pos": "noun",
+          "id": "sense-5b7e61a5",
+          "pos": "n.",
           "meaningZh": "夢境；睡眠時的夢",
-          "definitionEn": "a series of mental images and emotions that occur during sleep",
           "examples": [
             "Last night, I had a vivid dream that I was flying high in the sky and watching beautiful scenery beneath me."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6116b681",
-          "pos": "noun",
+          "id": "sense-b6827319",
+          "pos": "n.",
           "meaningZh": "白日夢；幻想",
-          "definitionEn": "imaginary thoughts that you have while you’re awake",
           "examples": [
             "As a child, Petra had a dream of flying to the moon and meeting aliens."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dress",
       "word": "dress",
       "senses": [
         {
-          "id": "sense-f2450849",
-          "pos": "noun",
+          "id": "sense-ac84eb21",
+          "pos": "n.",
           "meaningZh": "服裝；衣著",
-          "definitionEn": "clothing in general",
           "examples": [
             "She bought a new dress for the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6ae4de88",
-          "pos": "noun",
+          "id": "sense-d219b800",
+          "pos": "n.",
           "meaningZh": "洋裝；禮服",
-          "definitionEn": "clothing of a distinctive style or for a particular occasion",
           "examples": [
             "She wore a beautiful evening dress to the charity gala."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drink",
       "word": "drink",
       "senses": [
         {
-          "id": "sense-0cbd6c18",
-          "pos": "noun",
+          "id": "sense-053fa054",
+          "pos": "n.",
           "meaningZh": "飲料；飲品",
-          "definitionEn": "any liquid suitable for drinking",
           "examples": [
             "Water is the most common drink people consume."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-080b1987",
-          "pos": "noun",
+          "id": "sense-b5a3b0d3",
+          "pos": "n.",
           "meaningZh": "一杯；一份飲料",
-          "definitionEn": "a single serving of a beverage",
           "examples": [
             "Can I get a drink of water please?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drive",
       "word": "drive",
       "senses": [
         {
-          "id": "sense-d811f57c",
-          "pos": "verb",
+          "id": "sense-b516f561",
+          "pos": "v.",
           "meaningZh": "駕駛；開車",
-          "definitionEn": "operate or control a vehicle",
           "examples": [
             "She learned to drive a car when she was 16 years old."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c25dae9d",
-          "pos": "verb",
+          "id": "sense-36112d34",
+          "pos": "v.",
           "meaningZh": "乘車；搭車前往",
-          "definitionEn": "travel or be transported in a vehicle",
           "examples": [
             "He learned to drive a car when he was eighteen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "driver",
       "word": "driver",
       "senses": [
         {
-          "id": "sense-55808521",
-          "pos": "noun",
+          "id": "sense-3cc08821",
+          "pos": "n.",
           "meaningZh": "駕駛；司機",
-          "definitionEn": "the operator of a motor vehicle",
           "examples": [
             "The driver steered the car around the sharp turn."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b82accfb",
-          "pos": "noun",
+          "id": "sense-dcfe0ffb",
+          "pos": "n.",
           "meaningZh": "一號木桿；開球桿（高爾夫）",
-          "definitionEn": "a golf club (a wood) with a near vertical face that is used for hitting long shots from the tee",
           "examples": [
             "He reached for his driver to make the opening shot of the round."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drop",
       "word": "drop",
       "senses": [
         {
-          "id": "sense-c36eff1c",
-          "pos": "noun",
+          "id": "sense-58bc5344",
+          "pos": "n.",
           "meaningZh": "墜落；下落",
-          "definitionEn": "a free and rapid descent by the force of gravity",
           "examples": [
             "The apple fell swiftly, plummeting towards the ground until it made contact with a soft ’plop’ sound upon the lush grass. It was clear to everyone that it was a perfect example of a drop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-1638970e",
-          "pos": "noun",
+          "id": "sense-29da1da6",
+          "pos": "n.",
           "meaningZh": "驟降；急速下跌",
-          "definitionEn": "a sudden sharp decrease in some quantity",
           "examples": [
             "The stock market experienced a major drop after news of the company’s bankruptcy was reported."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drum",
       "word": "drum",
       "senses": [
         {
-          "id": "sense-19496162",
-          "pos": "noun",
+          "id": "sense-79dbeb36",
+          "pos": "n.",
           "meaningZh": "鼓；打擊樂器",
-          "definitionEn": "a percussion instrument made of a hollow cylinder with a skin stretched tightly across each end that is played with sticks or the hands",
           "examples": [
             "During the celebration, the sound of the drum echoed throughout the square, creating a rhythmic and energetic atmosphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c5a4d877",
-          "pos": "noun",
+          "id": "sense-d615540b",
+          "pos": "n.",
           "meaningZh": "鼓聲；鼓響",
-          "definitionEn": "the sound that a drum makes when played",
           "examples": [
             "As the drummer hit the drum, a thunderous rumble filled the concert hall."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dry",
+      "word": "dry",
+      "senses": [
+        {
+          "id": "sense-ec0165a1",
+          "pos": "adj.",
+          "meaningZh": "乾的；乾燥的",
+          "examples": [
+            "The towel is dry now, so you can use it."
+          ]
+        },
+        {
+          "id": "sense-372009f9",
+          "pos": "n.",
+          "meaningZh": "旱季；乾旱期",
+          "examples": [
+            "The farmers in the region were concerned about the extended dry spell as their crops were withering without sufficient water."
+          ]
+        },
+        {
+          "id": "sense-45be6ad1",
+          "pos": "v.",
+          "meaningZh": "弄乾；晾乾",
+          "examples": [
+            "After doing laundry, I hung my clothes outside to dry in the sun."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

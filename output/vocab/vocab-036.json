@@ -1,1418 +1,687 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 36,
   "words": [
-    {
-      "wordKey": "cause",
-      "word": "cause",
-      "senses": [
-        {
-          "id": "sense-b41f620f",
-          "pos": "noun",
-          "meaningZh": "原因；起因",
-          "definitionEn": "a justification for something existing or happening",
-          "examples": [
-            "The heavy rainfall was the cause of the flooding in the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-af3571e0",
-          "pos": "noun",
-          "meaningZh": "導因；肇因",
-          "definitionEn": "events that provide the generative force that is the origin of something",
-          "examples": [
-            "The heavy rain caused flooding in the city, leading to extensive damage and displacement of residents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "ceiling",
-      "word": "ceiling",
-      "senses": [
-        {
-          "id": "sense-67175825",
-          "pos": "noun",
-          "meaningZh": "天花板；頂板",
-          "definitionEn": "the upper surface of a room that is covered",
-          "examples": [
-            "I painted my ceiling white to brighten up the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-dd7fb461",
-          "pos": "noun",
-          "meaningZh": "上限；頂限",
-          "definitionEn": "a limit on something such as a price, quantity, or amount of time",
-          "examples": [
-            "The ceiling on the number of attendees for the event has been reached, and we can no longer accept any more registrations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "cell",
-      "word": "cell",
-      "senses": [
-        {
-          "id": "sense-632068c9",
-          "pos": "noun",
-          "meaningZh": "細胞",
-          "definitionEn": "the smallest basic unit of a living organism",
-          "examples": [
-            "The human body is made up of billions of cells."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-2d19fcb6",
-          "pos": "noun",
-          "meaningZh": "小格；巢房；隔間",
-          "definitionEn": "any small, separate, compartmentalized unit",
-          "examples": [
-            "The honeycomb of a beehive is made up of small six-sided cells in which the bees store their honey, pollen, and larvae."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "centimeter",
-      "word": "centimeter",
-      "senses": [
-        {
-          "id": "sense-559f5a33",
-          "pos": "noun",
-          "meaningZh": "公分；厘米",
-          "definitionEn": "a unit of measurement equal to one hundredth of a meter, used especially to express small distances or dimensions",
-          "examples": [
-            "The length of a pencil is around 18 centimeters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "central",
-      "word": "central",
-      "senses": [
-        {
-          "id": "sense-668c64f2",
-          "pos": "adjective",
-          "meaningZh": "核心的；根本的",
-          "definitionEn": "essential; fundamental",
-          "examples": [
-            "Effective communication is central to maintaining strong relationships."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "century",
       "word": "century",
       "senses": [
         {
-          "id": "sense-6780e6c2",
-          "pos": "noun",
+          "id": "sense-48c0a4e2",
+          "pos": "n.",
           "meaningZh": "世紀；一百年",
-          "definitionEn": "a period of 100 years",
           "examples": [
             "The Great Wall of China has stood for more than a century, and it remains an iconic architectural feat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-73e402c9",
-          "pos": "noun",
+          "id": "sense-0fca7329",
+          "pos": "n.",
           "meaningZh": "百個；一百件",
-          "definitionEn": "a quantity equal to 100 of any specified thing",
           "examples": [
             "She collected over a century of stamps from around the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cereal",
       "word": "cereal",
       "senses": [
         {
-          "id": "sense-06572b08",
-          "pos": "noun",
+          "id": "sense-87758acc",
+          "pos": "n.",
           "meaningZh": "穀片；早餐麥片",
-          "definitionEn": "Breakfast food made from processed grains and usually eaten with milk or yogurt",
           "examples": [
             "Every morning, John enjoys a bowl of cereal with cold milk to start his day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0eade404",
-          "pos": "noun",
+          "id": "sense-3be7a730",
+          "pos": "n.",
           "meaningZh": "穀物食品",
-          "definitionEn": "Any food made from the starchy grains of cereal grasses",
           "examples": [
             "Every morning, John enjoys a bowl of cereal with milk for breakfast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chain",
       "word": "chain",
       "senses": [
         {
-          "id": "sense-ada97f1c",
-          "pos": "noun",
+          "id": "sense-d295be30",
+          "pos": "n.",
           "meaningZh": "鏈條；鎖鏈",
-          "definitionEn": "a connected series of metal links used for fastening, pulling, or decoration",
           "examples": [
             "He locked his bike with a heavy chain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-bfa4b429",
-          "pos": "noun",
+          "id": "sense-22f077f5",
+          "pos": "n.",
           "meaningZh": "鏈（長度單位，約20公尺）",
-          "definitionEn": "a unit of measurement for length equal to 66 feet or 20.117 meters",
           "examples": [
             "The farmer used a chain to measure the length of his field."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chalk",
       "word": "chalk",
       "senses": [
         {
-          "id": "sense-4992cc0f",
-          "pos": "noun",
+          "id": "sense-39fcb3e7",
+          "pos": "n.",
           "meaningZh": "粉筆；白堊",
-          "definitionEn": "a soft, white, powdery limestone or calcite",
           "examples": [
             "The teacher wrote on the blackboard with a piece of chalk."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-136b78f8",
-          "pos": "verb",
+          "id": "sense-e2533b41",
+          "pos": "v.",
           "meaningZh": "用粉筆書寫；粉筆畫",
-          "definitionEn": "to write or draw with chalk",
           "examples": [
             "The teacher used chalk to write on the blackboard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "challenge",
       "word": "challenge",
       "senses": [
         {
-          "id": "sense-3275100c",
-          "pos": "noun",
+          "id": "sense-77716030",
+          "pos": "n.",
           "meaningZh": "挑戰；競賽邀請",
-          "definitionEn": "a call to engage in a contest or fight",
           "examples": [
             "The boxer eagerly accepted the challenge from his rival, knowing it would be a fierce and intense match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0c53e1e9",
-          "pos": "verb",
+          "id": "sense-d00d33b6",
+          "pos": "v.",
           "meaningZh": "向……挑戰；質疑",
-          "definitionEn": "issue a challenge to",
           "examples": [
             "John challenged his co-worker to a game of chess to test their strategic thinking skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "channel",
       "word": "channel",
       "senses": [
         {
-          "id": "sense-f4380b8c",
-          "pos": "noun",
+          "id": "sense-4d421444",
+          "pos": "n.",
           "meaningZh": "（電視）頻道",
-          "definitionEn": "a band of frequencies used by a television or radio station to broadcast programs",
           "examples": [
             "Can you switch to another channel? This show is boring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f1f4135c",
-          "pos": "noun",
+          "id": "sense-948fdb74",
+          "pos": "n.",
           "meaningZh": "（水道）航道；海峽",
-          "definitionEn": "a deep and relatively narrow body of water, allowing the best passage for vessels, such as in a river, harbor, or strait linking two larger bodies of water",
           "examples": [
             "The ship sailed gracefully through the channel, guided by the experienced captain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-59281833",
-          "pos": "noun",
+          "id": "sense-82f6ce3b",
+          "pos": "n.",
           "meaningZh": "溝渠；水道",
-          "definitionEn": "a passage for water or other fluids to flow through",
           "examples": [
             "The irrigation system was blocked, but once they cleared the channel, the water flowed freely to the crops."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chapter",
       "word": "chapter",
       "senses": [
         {
-          "id": "sense-d6b12354",
-          "pos": "noun",
+          "id": "sense-24e6a1d0",
+          "pos": "n.",
           "meaningZh": "章節；篇章",
-          "definitionEn": "a section or division of a larger text, such as a book, business report, or legal document",
           "examples": [
             "In the final chapter of his novel, the author revealed the surprising twist that left readers in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-12e836ae",
-          "pos": "noun",
+          "id": "sense-0b1d6032",
+          "pos": "n.",
           "meaningZh": "章；（書的）一章",
-          "definitionEn": "a main division or part of a story, typically numbered or titled",
           "examples": [
             "In the first chapter of the novel, the main character is introduced."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "character",
       "word": "character",
       "senses": [
         {
-          "id": "sense-db7553cc",
-          "pos": "noun",
+          "id": "sense-4455bcd4",
+          "pos": "n.",
           "meaningZh": "（故事中的）角色；人物",
-          "definitionEn": "an imaginary person represented in a work of fiction (play or film or story)",
           "examples": [
             "In the science fiction novel, the main character is a fearless space explorer on a mission to save humanity from an alien invasion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-efe850bf",
-          "pos": "noun",
+          "id": "sense-5eb80e67",
+          "pos": "n.",
           "meaningZh": "奇特的人；怪人",
-          "definitionEn": "a person of a specified kind (usually with many eccentricities)",
           "examples": [
             "The town's eccentric artist was quite the character, known for his outlandish attire and unpredictable behavior."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L1",
-        "textbookTitle": "三民 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "charge",
       "word": "charge",
       "senses": [
         {
-          "id": "sense-c5b54700",
-          "pos": "noun",
+          "id": "sense-a2d1c0e4",
+          "pos": "n.",
           "meaningZh": "費用；收費",
-          "definitionEn": "an amount of money that you have to pay for goods or services",
           "examples": [
             "There is no charge for delivery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ad3fec94",
-          "pos": "noun",
+          "id": "sense-c8b376f8",
+          "pos": "n.",
           "meaningZh": "命令；指示",
-          "definitionEn": "a formal statement of a command or instruction to do something",
           "examples": [
             "The sergeant issued a charge for the soldiers to advance towards the enemy lines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-34abd776",
-          "pos": "noun",
+          "id": "sense-9fea572a",
+          "pos": "n.",
           "meaningZh": "監管；負責",
-          "definitionEn": "attention and management implying responsibility for safety",
           "examples": [
             "With the festival coming up, the event organizer took charge and ensured that all safety measures were in place."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chart",
       "word": "chart",
       "senses": [
         {
-          "id": "sense-77c2de2e",
-          "pos": "noun",
+          "id": "sense-7974ecde",
+          "pos": "n.",
           "meaningZh": "圖表；表格",
-          "definitionEn": "a diagram or table that displays information clearly",
           "examples": [
             "The teacher drew a chart to show the test results."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-48a91c5f",
-          "pos": "verb",
+          "id": "sense-3f77fc92",
+          "pos": "v.",
           "meaningZh": "以圖表呈現",
-          "definitionEn": "to visually represent data or information by means of a graph",
           "examples": [
             "In order to better understand the sales trends, the manager created a chart displaying the monthly revenue for the past year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chase",
       "word": "chase",
       "senses": [
         {
-          "id": "sense-afc31f6f",
-          "pos": "verb",
+          "id": "sense-a7a3fbd6",
+          "pos": "v.",
           "meaningZh": "追趕；追捕",
-          "definitionEn": "attempt to catch or capture someone by following or chasing them",
           "examples": [
             "The police officer began to chase the suspect on foot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e4ffb111",
-          "pos": "verb",
+          "id": "sense-4888ef84",
+          "pos": "v.",
           "meaningZh": "追求；追求愛情",
-          "definitionEn": "pursue someone with romantic or amorous intentions",
           "examples": [
             "Despite her clear lack of interest, John continued to chase after Mary, calling her regularly and showing up unannounced at her workplace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L9",
-        "textbookTitle": "龍騰 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cheat",
       "word": "cheat",
       "senses": [
         {
-          "id": "sense-fe50515f",
-          "pos": "verb",
+          "id": "sense-7a11bc3a",
+          "pos": "v.",
           "meaningZh": "作弊；欺騙",
-          "definitionEn": "to engage in deceitful behavior; practice trickery or fraud",
           "examples": [
             "He was caught trying to cheat on the exam by looking at his neighbor’s paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-600d4f0a",
-          "pos": "verb",
+          "id": "sense-8d4043e5",
+          "pos": "v.",
           "meaningZh": "行騙；以詭計取勝",
-          "definitionEn": "to defeat or outsmart someone through trickery or deceit",
           "examples": [
             "Benjamin cheated in the game by looking at the cards of other players."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cheer",
       "word": "cheer",
       "senses": [
         {
-          "id": "sense-85dde720",
-          "pos": "noun",
+          "id": "sense-632cc244",
+          "pos": "n.",
           "meaningZh": "歡呼；喝采聲",
-          "definitionEn": "a cry or shout of approval",
           "examples": [
             "When the football team scored a touchdown, the fans erupted in a loud cheer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-539941e1",
-          "pos": "verb",
+          "id": "sense-4d212ee6",
+          "pos": "v.",
           "meaningZh": "為……加油；鼓勵",
-          "definitionEn": "give encouragement to",
           "examples": [
             "I could hear my friends cheering me on from the sidelines as I ran the marathon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chemical",
       "word": "chemical",
       "senses": [
         {
-          "id": "sense-0cc4b464",
-          "pos": "noun",
+          "id": "sense-e8a0a498",
+          "pos": "n.",
           "meaningZh": "化學物質；化學品",
-          "definitionEn": "material produced by or used in a reaction involving changes in atoms or molecules",
           "examples": [
             "Scientists conducted experiments in the laboratory, mixing different chemicals together to observe the resulting reactions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-dfa5706a",
-          "pos": "adjective",
+          "id": "sense-5c79c41e",
+          "pos": "adj.",
           "meaningZh": "化學的；化學性質的",
-          "definitionEn": "relating to or used in chemistry",
           "examples": [
             "The scientist mixed various chemical compounds in a lab to determine their reactions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chess",
       "word": "chess",
       "senses": [
         {
-          "id": "sense-6267cde6",
-          "pos": "noun",
+          "id": "sense-6d20d576",
+          "pos": "n.",
           "meaningZh": "西洋棋",
-          "definitionEn": "a board game played by two people on a checkerboard with 64 squares, using 16 pieces of various shapes and moving them according to their individual rules; the goal is to checkmate the opponent’s king before they checkmate yours",
           "examples": [
             "During their weekly game night, John and Sarah sat down to play a thrilling game of chess. With careful strategizing and calculated moves, they aimed to checkmate each other's kings, vying for victory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8ec5c386",
-          "pos": "noun",
+          "id": "sense-c18d89b6",
+          "pos": "n.",
           "meaningZh": "雀麥（雜草植物）",
-          "definitionEn": "a weedy plant that is native to Europe but is found throughout the world as a weed, particularly in wheat fields",
           "examples": [
             "The farmer was unhappy to discover a patch of chess growing amidst his wheat crop, as it could potentially harm the yield."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chief",
       "word": "chief",
       "senses": [
         {
-          "id": "sense-a986d7e3",
-          "pos": "noun",
+          "id": "sense-f647579f",
+          "pos": "n.",
           "meaningZh": "首領；負責人",
-          "definitionEn": "a person who is in charge",
           "examples": [
             "The chief of the tribe is responsible for making important decisions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8d596083",
-          "pos": "noun",
+          "id": "sense-ac21b70f",
+          "pos": "n.",
           "meaningZh": "酋長；族長",
-          "definitionEn": "the head of a tribe or clan",
           "examples": [
             "The chief of the tribe led his people through the rough terrain to reach their new home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "childhood",
       "word": "childhood",
       "senses": [
         {
-          "id": "sense-1e84d6bc",
-          "pos": "noun",
+          "id": "sense-e97bc5dc",
+          "pos": "n.",
           "meaningZh": "童年；幼年時期",
-          "definitionEn": "the time of person’s life when they are a child",
           "examples": [
             "I have very fond memories of playing with my siblings during our childhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e756cbea",
-          "pos": "noun",
+          "id": "sense-0884fd8a",
+          "pos": "n.",
           "meaningZh": "孩提時代；兒童期",
-          "definitionEn": "the state of being a child, typically between infancy and adolescence",
           "examples": [
             "During my childhood, I used to love playing with my toys and spending time with my family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L6",
-        "textbookTitle": "三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "childish",
       "word": "childish",
       "senses": [
         {
-          "id": "sense-cbd6c148",
-          "pos": "adjective",
+          "id": "sense-7043e434",
+          "pos": "adj.",
           "meaningZh": "幼稚的；孩子氣的（含貶義）",
-          "definitionEn": "showing behavior that is typical of a child, especially in a way that is not acceptable for an adult",
           "examples": [
             "During the meeting, Mark kept interrupting and making silly faces, which was really childish behavior."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "china",
       "word": "china",
       "senses": [
         {
-          "id": "sense-630c4b42",
-          "pos": "noun",
+          "id": "sense-12a9fdfa",
+          "pos": "n.",
           "meaningZh": "瓷器；上等瓷器",
-          "definitionEn": "high quality porcelain originally made only in China",
           "examples": [
             "The collector had a vast collection of china dishes from the Ming Dynasty."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6fe4d72f",
-          "pos": "noun",
+          "id": "sense-25b6a377",
+          "pos": "n.",
           "meaningZh": "瓷製餐具",
-          "definitionEn": "dishware made of high quality porcelain",
           "examples": [
             "The elegant dinner table was set with delicate china plates and teacups."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chopstick",
       "word": "chopstick",
       "senses": [
         {
-          "id": "sense-3f7e3522",
-          "pos": "noun",
+          "id": "sense-de79f692",
+          "pos": "n.",
           "meaningZh": "筷子（一支）",
-          "definitionEn": "A pair of thin sticks, typically made of wood, used as tableware in East Asian cultures for eating food.",
           "examples": [
             "At the Japanese restaurant, she skillfully used her chopsticks to pick up the sushi."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chopsticks",
       "word": "chopsticks",
       "senses": [
         {
-          "id": "sense-9750da80",
-          "pos": "noun",
+          "id": "sense-17864f28",
+          "pos": "n.",
           "meaningZh": "筷子（一雙；東亞餐具）",
-          "definitionEn": "A type of utensil used in East Asian countries for eating. Chopsticks are usually made of wood and come in pairs. They are held in the hand and have a length of approximately 23cm (10 inches).",
           "examples": [
             "Emily ordered a plate of sushi at the Japanese restaurant and skillfully used her chopsticks to pick up each piece."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-cdccca16",
-          "pos": "noun",
+          "id": "sense-f297c6ee",
+          "pos": "n.",
           "meaningZh": "（貶義俚語，用於指稱亞裔，不建議使用）",
-          "definitionEn": "A term referring to a person of Asian ethnicity.",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "claim",
       "word": "claim",
       "senses": [
         {
-          "id": "sense-b9cbf621",
-          "pos": "noun",
+          "id": "sense-4dc32101",
+          "pos": "n.",
           "meaningZh": "主張；聲稱",
-          "definitionEn": "an assertion that something is true or factual",
           "examples": [
             "He made a claim that he had witnessed the accident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8bcae817",
-          "pos": "noun",
+          "id": "sense-e23c92b7",
+          "pos": "n.",
           "meaningZh": "權利；權益主張",
-          "definitionEn": "an established or recognized right",
           "examples": [
             "She presented her claim to the inheritance with all the necessary documents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clap",
       "word": "clap",
       "senses": [
         {
-          "id": "sense-9f313939",
-          "pos": "noun",
+          "id": "sense-aed20259",
+          "pos": "n.",
           "meaningZh": "掌聲；鼓掌",
-          "definitionEn": "the act of hitting your hands together to make a short, loud noise, especially as a sign of approval or to show enjoyment, often done at the end of a speech or performance",
           "examples": [
             "After the comedian's hilarious punchline, the audience erupted in a thunderous clap, showering him with appreciation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4f33bcb8",
-          "pos": "noun",
+          "id": "sense-f44ee058",
+          "pos": "n.",
           "meaningZh": "雷聲；霹靂聲",
-          "definitionEn": "a sudden, loud noise of thunder",
           "examples": [
             "As the storm raged on, a deafening clap jolted the entire neighborhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "classic",
       "word": "classic",
       "senses": [
         {
-          "id": "sense-8f2cb7a4",
-          "pos": "adjective",
+          "id": "sense-80faa9c8",
+          "pos": "adj.",
           "meaningZh": "古典的；典型的",
-          "definitionEn": "of or relating to the most highly developed stage of an earlier civilization and its culture",
           "examples": [
             "The ruins of Pompeii provide a classic example of an ancient Roman city and its culture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e58a829d",
-          "pos": "adjective",
+          "id": "sense-59dd02b9",
+          "pos": "adj.",
           "meaningZh": "經典的；權威的",
-          "definitionEn": "of recognized authority or excellence",
           "examples": [
             "Attending a classical piano concert is a must for any music lover."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6 +1",
-        "textbookTitle": "龍騰 B4·L6、三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "classical",
       "word": "classical",
       "senses": [
         {
-          "id": "sense-377c27a6",
-          "pos": "adjective",
+          "id": "sense-a93d678c",
+          "pos": "adj.",
           "meaningZh": "古典的；古代文明的",
-          "definitionEn": "relating to the highest stage of an earlier civilization and its culture",
           "examples": [
             "During his trip to Greece, Peter visited ancient ruins and admired the classical architecture of the Parthenon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b4019260",
-          "pos": "adjective",
+          "id": "sense-32d0e362",
+          "pos": "adj.",
           "meaningZh": "古希臘羅馬的；古典文學的",
-          "definitionEn": "relating to the study of the literary works of ancient Greece and Rome",
           "examples": [
             "In his literature class, Professor Johnson focused on teaching his students about classical Greek tragedies such as Oedipus Rex and Medea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "classmate",
+      "word": "classmate",
+      "senses": [
+        {
+          "id": "sense-b0c4a046",
+          "pos": "n.",
+          "meaningZh": "同班同學；同學",
+          "examples": [
+            "I study with my classmate, Emma, for our upcoming exams."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "clever",
+      "word": "clever",
+      "senses": [
+        {
+          "id": "sense-b3207285",
+          "pos": "adj.",
+          "meaningZh": "機智的；聰明的",
+          "examples": [
+            "When faced with a challenging puzzle, she was able to come up with a clever solution that no one else had thought of."
+          ]
+        },
+        {
+          "id": "sense-aaf4e12a",
+          "pos": "adj.",
+          "meaningZh": "靈巧的；有創意的",
+          "examples": [
+            "Samantha was clever enough to solve the puzzle in record time."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "click",
+      "word": "click",
+      "senses": [
+        {
+          "id": "sense-568bfb65",
+          "pos": "v.",
+          "meaningZh": "點擊（滑鼠）",
+          "examples": [
+            "Click the icon to open the program."
+          ]
+        },
+        {
+          "id": "sense-24ddc9c5",
+          "pos": "n.",
+          "meaningZh": "（語言學）搭嘴音；吸氣音",
+          "examples": [
+            "In some Bantu languages, the word for 'river' is pronounced with a click sound."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "climate",
+      "word": "climate",
+      "senses": [
+        {
+          "id": "sense-00035f22",
+          "pos": "n.",
+          "meaningZh": "氣候；氣候條件",
+          "examples": [
+            "The tropical climate in this area ensures year-round warmth and high humidity."
+          ]
+        },
+        {
+          "id": "sense-4c2495f2",
+          "pos": "n.",
+          "meaningZh": "（社會）氛圍；風氣",
+          "examples": [
+            "The climate of the office was one of positivity and support, creating a motivating and collaborative work environment."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cloth",
+      "word": "cloth",
+      "senses": [
+        {
+          "id": "sense-c8aacef3",
+          "pos": "n.",
+          "meaningZh": "布料；織物",
+          "examples": [
+            "She bought a beautiful piece of cloth to make curtains for her living room."
+          ]
+        },
+        {
+          "id": "sense-a736d4c9",
+          "pos": "v.",
+          "meaningZh": "用布覆蓋；包覆",
+          "examples": [
+            "She clothed her baby in a soft, warm blanket during the winter."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

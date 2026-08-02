@@ -1,1381 +1,657 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 101,
   "words": [
-    {
-      "wordKey": "aquarium",
-      "word": "aquarium",
-      "senses": [
-        {
-          "id": "sense-18412b99",
-          "pos": "noun",
-          "meaningZh": "水族館",
-          "definitionEn": "a place where aquatic animals and plants are kept and publicly exhibited",
-          "examples": [
-            "We visited the aquarium and marveled at the colorful tropical fish swimming in the tanks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-163255af",
-          "pos": "noun",
-          "meaningZh": "水族箱；魚缸",
-          "definitionEn": "a tank or bowl filled with water for keeping live fish and underwater animals",
-          "examples": [
-            "We visited the local aquarium and marveled at the colorful tropical fish swimming gracefully in their tanks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "arch",
-      "word": "arch",
-      "senses": [
-        {
-          "id": "sense-48214c3b",
-          "pos": "noun",
-          "meaningZh": "拱門；拱形結構",
-          "definitionEn": "a curved structure, often made of bricks or stones, that supports weight above it",
-          "examples": [
-            "The ancient Roman aqueducts were an impressive feat of engineering, with their multiple arches spanning great distances and providing a sturdy support for transporting water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-29c4262b",
-          "pos": "noun",
-          "meaningZh": "拱廊；穿越拱道的通道",
-          "definitionEn": "a passage beneath a curved structure made of bricks or stones",
-          "examples": [
-            "The team explored the ancient ruins, venturing through an arch that led to a hidden chamber."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "arise",
-      "word": "arise",
-      "senses": [
-        {
-          "id": "sense-c617749e",
-          "pos": "verb",
-          "meaningZh": "出現；產生；發生",
-          "definitionEn": "come into existence; take on form or shape",
-          "examples": [
-            "Many new challenges may arise during the project that we didn’t anticipate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-28b9c420",
-          "pos": "verb",
-          "meaningZh": "起源；源自",
-          "definitionEn": "originate or come into being",
-          "examples": [
-            "Her fear of heights arose when she climbed to the top of the mountain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "arms",
-      "word": "arms",
-      "senses": [
-        {
-          "id": "sense-40b09b4f",
-          "pos": "noun",
-          "meaningZh": "武器；軍備",
-          "definitionEn": "weapons considered collectively, such as guns, knives, and swords.",
-          "examples": [
-            "The military personnel were equipped with various arms including rifles, grenades, and combat knives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-ca363c13",
-          "pos": "noun",
-          "meaningZh": "紋章；盾形徽章",
-          "definitionEn": "heraldic bearings or insignia, such as a coat of arms.",
-          "examples": [
-            "The royal family proudly displayed their arms on their castle's entrance gate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "artificial",
-      "word": "artificial",
-      "senses": [
-        {
-          "id": "sense-589ab398",
-          "pos": "adjective",
-          "meaningZh": "人造的；人工的",
-          "definitionEn": "contrived by art or human skill rather than by nature",
-          "examples": [
-            "The flowers at the wedding were artificial and made of plastic, rather than real flowers that grew naturally."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-641c4f06",
-          "pos": "adjective",
-          "meaningZh": "不自然的；矯揉造作的",
-          "definitionEn": "not arising from natural growth or characterized by vital processes",
-          "examples": [
-            "The grass in the garden was so perfect that it looked artificial."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1",
-        "textbookTitle": "龍騰 B3·R1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "artistic",
       "word": "artistic",
       "senses": [
         {
-          "id": "sense-22ba097b",
-          "pos": "adjective",
+          "id": "sense-95a61b65",
+          "pos": "adj.",
           "meaningZh": "藝術的；藝術性的",
-          "definitionEn": "relating to or characteristic of art or artists",
           "examples": [
             "Jenny’s paintings have always been admired for their artistic value."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-843781c2",
-          "pos": "adjective",
+          "id": "sense-24d5243c",
+          "pos": "adj.",
           "meaningZh": "具藝術感的；有美感的",
-          "definitionEn": "satisfying aesthetic standards and sensibilities",
           "examples": [
             "His artistic skills impressed everyone who visited his art studio."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L2",
-        "textbookTitle": "三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ashamed",
       "word": "ashamed",
       "senses": [
         {
-          "id": "sense-e0795c08",
-          "pos": "adjective",
+          "id": "sense-6b8f3f7a",
+          "pos": "adj.",
           "meaningZh": "羞愧的；慚愧的",
-          "definitionEn": "feeling ashamed or guilty or embarrassed or remorseful",
           "examples": [
             "She felt ashamed of herself after she realized that she had lied to her parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-394716cd",
-          "pos": "adjective",
+          "id": "sense-2c6a1f43",
+          "pos": "adj.",
           "meaningZh": "不好意思的；怕丟臉的",
-          "definitionEn": "reluctant to do something through fear of embarrassment or humiliation",
           "examples": [
             "She was ashamed to admit that she couldn’t read or write as an adult."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aspect",
       "word": "aspect",
       "senses": [
         {
-          "id": "sense-c5b3de2d",
-          "pos": "noun",
+          "id": "sense-a412b0b9",
+          "pos": "n.",
           "meaningZh": "面向；層面；方面",
-          "definitionEn": "a particular part or element of something, especially when it is one of several",
           "examples": [
             "One important aspect of the job is being able to work well in a team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e479685c",
-          "pos": "noun",
+          "id": "sense-40b4baf0",
+          "pos": "n.",
           "meaningZh": "特色；特點",
-          "definitionEn": "a characteristic or feature of something",
           "examples": [
             "One of the most important aspects of learning a new language is speaking with native speakers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7",
-        "textbookTitle": "龍騰 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aspirin",
       "word": "aspirin",
       "senses": [
         {
-          "id": "sense-a54829d7",
-          "pos": "noun",
+          "id": "sense-85107557",
+          "pos": "n.",
           "meaningZh": "阿斯匹靈；乙醯水楊酸",
-          "definitionEn": "A medication typically used as an analgesic, anti-inflammatory, and antipyretic drug. It is the acetylated derivative of salicylic acid and is commonly sold under the trade names Bayer, Empirin, and St. Joseph. Aspirin works by poisoning platelets and thus slows clotting in the blood.",
           "examples": [
             "I have a headache, so I’m going to take an aspirin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assemble",
       "word": "assemble",
       "senses": [
         {
-          "id": "sense-e112002c",
-          "pos": "verb",
+          "id": "sense-0cb7c759",
+          "pos": "v.",
           "meaningZh": "組裝；裝配",
-          "definitionEn": "collect in one place",
           "examples": [
             "After receiving the parts, the team quickly assembled the furniture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-83fafd57",
-          "pos": "verb",
+          "id": "sense-d5dd98be",
+          "pos": "v.",
           "meaningZh": "集合；召集",
-          "definitionEn": "get people together",
           "examples": [
             "The teacher will assemble all the students in the auditorium for a special assembly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1",
-        "textbookTitle": "龍騰 B3·R1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assembly",
       "word": "assembly",
       "senses": [
         {
-          "id": "sense-fb30e617",
-          "pos": "noun",
+          "id": "sense-61e1f993",
+          "pos": "n.",
           "meaningZh": "集會；議會；聚集人群",
-          "definitionEn": "a group of people who gather together for a particular purpose",
           "examples": [
             "The assembly of workers decided to go on a strike against the management."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ea3140d6",
-          "pos": "noun",
+          "id": "sense-ef818dca",
+          "pos": "n.",
           "meaningZh": "集合；聚集行為",
-          "definitionEn": "the act of gathering together in a group",
           "examples": [
             "The assembly of all the employees was called by the management to announce the new policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assign",
       "word": "assign",
       "senses": [
         {
-          "id": "sense-f26c8182",
-          "pos": "verb",
+          "id": "sense-37f750d5",
+          "pos": "v.",
           "meaningZh": "指派；分配；安排",
-          "definitionEn": "select something or someone for a specific purpose",
           "examples": [
             "The teacher will assign each student a topic for their research project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bec8c461",
-          "pos": "verb",
+          "id": "sense-523e4628",
+          "pos": "v.",
           "meaningZh": "交付任務；指定任務",
-          "definitionEn": "give an assignment or task to someone",
           "examples": [
             "The teacher will assign a research project to each student."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assignment",
       "word": "assignment",
       "senses": [
         {
-          "id": "sense-314d5d5d",
-          "pos": "noun",
+          "id": "sense-ee1eb5d5",
+          "pos": "n.",
           "meaningZh": "作業；任務分配",
-          "definitionEn": "the act of distributing something to a group of people or to specific locations",
           "examples": [
             "The teacher gave an assignment to each student in the class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d044dea1",
-          "pos": "noun",
+          "id": "sense-042c3e49",
+          "pos": "n.",
           "meaningZh": "派任；指定職務",
-          "definitionEn": "the act of assigning someone to a particular role or position, usually without giving them a choice",
           "examples": [
             "The teacher gave us an assignment to write a 5-page essay on global warming."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assistance",
       "word": "assistance",
       "senses": [
         {
-          "id": "sense-8806caa7",
-          "pos": "noun",
+          "id": "sense-a97eb3cb",
+          "pos": "n.",
           "meaningZh": "援助；協助；幫忙",
-          "definitionEn": "the activity of helping or giving support to someone or something in need",
           "examples": [
             "I called a plumber to provide assistance with fixing the leaky pipe in my house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0ab39e15",
-          "pos": "noun",
+          "id": "sense-73d522d1",
+          "pos": "n.",
           "meaningZh": "指導；幫助",
-          "definitionEn": "help or advice given to someone",
           "examples": [
             "When I was moving to a new city, my friend provided me with valuable assistance in finding a place to live."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L8 +1",
-        "textbookTitle": "龍騰 B2·L8、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "associate",
       "word": "associate",
       "senses": [
         {
-          "id": "sense-bc15eaa0",
-          "pos": "noun",
+          "id": "sense-8ffa52f4",
+          "pos": "n.",
           "meaningZh": "同事；夥伴；合作者",
-          "definitionEn": "a person who joins with others in some activity or endeavor",
           "examples": [
             "The new hire was excited to become an associate in the marketing team and collaborate with her colleagues on upcoming campaigns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-22f84342",
-          "pos": "noun",
+          "id": "sense-2d24fa46",
+          "pos": "n.",
           "meaningZh": "友人；密友",
-          "definitionEn": "a friend who frequently spends time with another person",
           "examples": [
             "My colleague at work is not just a co-worker, he is also my closest associate and we often have lunch together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "association",
       "word": "association",
       "senses": [
         {
-          "id": "sense-f0d032aa",
-          "pos": "noun",
+          "id": "sense-2dd17782",
+          "pos": "n.",
           "meaningZh": "協會；學會；組織",
-          "definitionEn": "a formal organization of people or groups of people",
           "examples": [
             "He was appointed as the head of the football association."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6d4f48fb",
-          "pos": "noun",
+          "id": "sense-ad417153",
+          "pos": "n.",
           "meaningZh": "交往；合作關係",
-          "definitionEn": "a social or business relationship",
           "examples": [
             "Being a member of the local business association can provide valuable networking opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assurance",
       "word": "assurance",
       "senses": [
         {
-          "id": "sense-1a17b920",
-          "pos": "noun",
+          "id": "sense-26ceae84",
+          "pos": "n.",
           "meaningZh": "保證；承諾；擔保",
-          "definitionEn": "a statement or guarantee intended to inspire confidence in the reliability or abilities of a person or product; a promise",
           "examples": [
             "The airline provided assurance to its passengers that their safety was their top priority by implementing strict security measures and conducting regular maintenance checks on their planes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-3dee0711",
-          "pos": "noun",
+          "id": "sense-fabbfc85",
+          "pos": "n.",
           "meaningZh": "自信；把握",
-          "definitionEn": "belief in yourself and your abilities; self-confidence",
           "examples": [
             "Despite the challenging task, she completed it with assurance, knowing that she had the skills and knowledge to succeed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "assure",
       "word": "assure",
       "senses": [
         {
-          "id": "sense-c7395aaf",
-          "pos": "verb",
+          "id": "sense-a9ebc7de",
+          "pos": "v.",
           "meaningZh": "保證；承諾",
-          "definitionEn": "make a promise or commitment",
           "examples": [
             "The salesperson assured me that the product had a money-back guarantee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-23ff95cd",
-          "pos": "verb",
+          "id": "sense-074522d4",
+          "pos": "v.",
           "meaningZh": "使安心；使放心",
-          "definitionEn": "cause to feel sure; give reassurance to",
           "examples": [
             "To assure her mother that she would arrive home safely, she sent a text message before leaving the office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "athletic",
       "word": "athletic",
       "senses": [
         {
-          "id": "sense-e8426c2b",
-          "pos": "adjective",
+          "id": "sense-3d26b077",
+          "pos": "adj.",
           "meaningZh": "運動的；體育的",
-          "definitionEn": "relating to or suitable for sports or athletes",
           "examples": [
             "He has been training for months and his athletic abilities have greatly improved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d1cc3a49",
-          "pos": "adjective",
+          "id": "sense-e4e3f265",
+          "pos": "adj.",
           "meaningZh": "體格健壯的；強健的",
-          "definitionEn": "having a sturdy and well-proportioned body",
           "examples": [
             "Sarah's athleticism and strength allowed her to excel in many sports such as volleyball, basketball, and swimming."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "atmosphere",
       "word": "atmosphere",
       "senses": [
         {
-          "id": "sense-a94df6d2",
-          "pos": "noun",
+          "id": "sense-6c25d3ae",
+          "pos": "n.",
           "meaningZh": "大氣層；大氣",
-          "definitionEn": "the mass of air that surrounds the Earth",
           "examples": [
             "The atmosphere is essential for the survival of life on Earth as it protects us from harmful solar radiation and keeps the temperature within livable limits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b701beed",
-          "pos": "noun",
+          "id": "sense-eaadf461",
+          "pos": "n.",
           "meaningZh": "（天體的）大氣；氣體層",
-          "definitionEn": "the envelope of gases that surround any celestial body",
           "examples": [
             "Scientists study the atmosphere of Mars to learn more about its composition and potential to sustain life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "atom",
       "word": "atom",
       "senses": [
         {
-          "id": "sense-c2e46efd",
-          "pos": "noun",
+          "id": "sense-62bfd8f5",
+          "pos": "n.",
           "meaningZh": "原子",
-          "definitionEn": "the smallest component of an element that has the chemical properties of that element, consisting of a positively charged nucleus surrounded by electrons in orbits within a neutral overall charge",
           "examples": [
             "The nucleus of an atom contains protons and neutrons, while electrons orbit the nucleus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-81e0e51b",
-          "pos": "noun",
+          "id": "sense-2c9f0643",
+          "pos": "n.",
           "meaningZh": "極微量；微粒",
-          "definitionEn": "a very small amount of a thing, virtually indivisible",
           "examples": [
             "The chemist measured the amount of the substance in atoms, showing that it contained only a trace of the element."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "atomic",
       "word": "atomic",
       "senses": [
         {
-          "id": "sense-f8356cfc",
-          "pos": "adjective",
+          "id": "sense-c3f8c3a2",
+          "pos": "adj.",
           "meaningZh": "原子的；核能的",
-          "definitionEn": "relating to or deriving destructive energy from the release of atomic energy (often used in relation to weapons)",
           "examples": [
             "The government is concerned about the potential consequences of a nuclear war and the use of atomic weapons."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "attach",
       "word": "attach",
       "senses": [
         {
-          "id": "sense-9160ad03",
-          "pos": "verb",
+          "id": "sense-dfc38ada",
+          "pos": "v.",
           "meaningZh": "附加；連結",
-          "definitionEn": "be in contact or connected with",
           "examples": [
             "Please attach the file to your email before sending it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "attachment",
       "word": "attachment",
       "senses": [
         {
-          "id": "sense-6d8bfb27",
-          "pos": "noun",
+          "id": "sense-8b0d4eff",
+          "pos": "n.",
           "meaningZh": "（電子郵件）附件",
-          "definitionEn": "a computer file that is sent together with an email",
           "examples": [
             "I have included the presentation slides as an attachment in the email."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d4c7b57f",
-          "pos": "noun",
+          "id": "sense-4d72d9b7",
+          "pos": "n.",
           "meaningZh": "配件；附加裝置",
-          "definitionEn": "a small piece of equipment that you can attach to a computer, machine, etc. to do a particular task",
           "examples": [
             "I bought a new attachment for my camera that allows me to take close-up photos."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "attraction",
       "word": "attraction",
       "senses": [
         {
-          "id": "sense-b472420b",
-          "pos": "noun",
+          "id": "sense-97b4b743",
+          "pos": "n.",
           "meaningZh": "景點；吸引人的事物",
-          "definitionEn": "something that people are interested in and come to see",
           "examples": [
             "The Eiffel Tower in Paris is a famous attraction that draws millions of tourists each year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6 +2",
-        "textbookTitle": "龍騰 B1·L6、三民 B1·L4、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "audio",
       "word": "audio",
       "senses": [
         {
-          "id": "sense-858fc1d1",
-          "pos": "noun",
+          "id": "sense-689d6b75",
+          "pos": "n.",
           "meaningZh": "聲音錄音；音訊",
-          "definitionEn": "a recording of sound waves",
           "examples": [
             "I love listening to audio books while driving."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-60cc3e69",
-          "pos": "noun",
+          "id": "sense-e83a4b0d",
+          "pos": "n.",
           "meaningZh": "音訊；聲音訊號",
-          "definitionEn": "the audible part of a transmitted signal",
           "examples": [
             "I could hear the audio from the TV show even though I was in the other room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "authentic",
       "word": "authentic",
       "senses": [
         {
-          "id": "sense-bd59bdd2",
-          "pos": "adjective",
+          "id": "sense-94c07d80",
+          "pos": "adj.",
           "meaningZh": "真實的；可靠的",
-          "definitionEn": "based on fact and therefore reliable",
           "examples": [
             "The diary entry written by Anne Frank is considered an authentic piece of history as it provides firsthand information about the life of Jews during the Holocaust."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ca78de54",
-          "pos": "adjective",
+          "id": "sense-f4caf25e",
+          "pos": "adj.",
           "meaningZh": "真跡的；真品的",
-          "definitionEn": "genuine and original, not counterfeit or copied",
           "examples": [
             "The art collector was pleased to find an authentic Picasso painting at the estate sale."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "authority",
       "word": "authority",
       "senses": [
         {
-          "id": "sense-82f89a54",
-          "pos": "noun",
+          "id": "sense-1c685458",
+          "pos": "n.",
           "meaningZh": "權力；授權",
-          "definitionEn": "the power or right to give orders or make decisions",
           "examples": [
             "In a democratic society, the government is granted authority by the people to make decisions on their behalf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bb74a3ea",
-          "pos": "noun",
+          "id": "sense-02efdba6",
+          "pos": "n.",
           "meaningZh": "當局；主管機關",
-          "definitionEn": "(usually plural) persons who exercise administrative control over others",
           "examples": [
             "The board of directors is the ultimate authority in the company, making important decisions and overseeing the operations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9 +1",
-        "textbookTitle": "龍騰 B3·L9、三民 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "autobiography",
       "word": "autobiography",
       "senses": [
         {
-          "id": "sense-e82ccf6a",
-          "pos": "noun",
+          "id": "sense-0ca776da",
+          "pos": "n.",
           "meaningZh": "自傳",
-          "definitionEn": "a written account of one’s own life",
           "examples": [
             "In her autobiography, the author recounts her childhood struggles and eventual success as a renowned scientist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "autograph",
       "word": "autograph",
       "senses": [
         {
-          "id": "sense-8ea70f4d",
-          "pos": "noun",
+          "id": "sense-2f41d399",
+          "pos": "n.",
           "meaningZh": "親筆簽名；手跡",
-          "definitionEn": "something written by one’s own hand, especially a personalized signature",
           "examples": [
             "The famous cricket player spent hours autographing cricket bats for his fans after the match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d23aa587",
-          "pos": "verb",
+          "id": "sense-adbeffbe",
+          "pos": "v.",
           "meaningZh": "親筆簽名；簽署",
-          "definitionEn": "to sign one’s own name on something, typically as a memento for someone else",
           "examples": [
             "After the concert, the fans lined up outside the stadium to get the singer’s autograph on their t-shirts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "await",
+      "word": "await",
+      "senses": [
+        {
+          "id": "sense-884b7ad3",
+          "pos": "v.",
+          "meaningZh": "等待；期盼",
+          "examples": [
+            "I cannot wait to  await the arrival of my friend at the airport."
+          ]
+        },
+        {
+          "id": "sense-d120de52",
+          "pos": "v.",
+          "meaningZh": "等候；備候",
+          "examples": [
+            "The passengers were anxiously awaiting the arrival of their delayed flight."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bald",
+      "word": "bald",
+      "senses": [
+        {
+          "id": "sense-36653cd6",
+          "pos": "adj.",
+          "meaningZh": "禿頭的；無毛髮的",
+          "examples": [
+            "Jason used to have a full head of hair, but now he is completely bald."
+          ]
+        },
+        {
+          "id": "sense-5d58a9f0",
+          "pos": "adj.",
+          "meaningZh": "光禿的；無覆蓋的",
+          "examples": [
+            "Bob started losing his hair in his 30s and by the time he turned 40, he was completely bald."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "ballet",
+      "word": "ballet",
+      "senses": [
+        {
+          "id": "sense-b22fbb87",
+          "pos": "n.",
+          "meaningZh": "芭蕾舞；芭蕾舞劇",
+          "examples": [
+            "The ballet troupe performed a stunning rendition of Swan Lake, captivating the audience with their graceful movements and emotive expressions."
+          ]
+        },
+        {
+          "id": "sense-97d6cfe6",
+          "pos": "n.",
+          "meaningZh": "芭蕾舞樂曲；舞蹈配樂",
+          "examples": [
+            "The symphony orchestra rehearsed the intricate ballet score in preparation for the upcoming performance."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bandage",
+      "word": "bandage",
+      "senses": [
+        {
+          "id": "sense-a5814887",
+          "pos": "n.",
+          "meaningZh": "繃帶；紗布",
+          "examples": [
+            "After cutting his finger while chopping vegetables, John wrapped a bandage around it to stop the bleeding."
+          ]
+        },
+        {
+          "id": "sense-e4f42a1b",
+          "pos": "v.",
+          "meaningZh": "包紮；纏繃帶",
+          "examples": [
+            "After cleaning the wound, the nurse applied a sterile bandage to prevent further contamination."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bankrupt",
+      "word": "bankrupt",
+      "senses": [
+        {
+          "id": "sense-3523a3e6",
+          "pos": "adj.",
+          "meaningZh": "破產的；無力償債的",
+          "examples": [
+            "After multiple failed business ventures, John was declared bankrupt and had to sell all of his assets to pay off his debts."
+          ]
+        },
+        {
+          "id": "sense-25d42b57",
+          "pos": "n.",
+          "meaningZh": "破產者；欠債無力償還者",
+          "examples": [
+            "After several failed business ventures, he was declared bankrupt and had to sell all of his assets to repay his debts."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

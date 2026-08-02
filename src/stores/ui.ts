@@ -1,6 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { UI_STORAGE_KEY } from '@/constants'
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { loadFromStorage, saveToStorage } from '@/lib/persist'
+
+export type GuestDataDecision = 'export' | 'continue' | 'cancel'
 
 export const useUIStore = defineStore('ui', () => {
   const theme = ref<'light' | 'dark'>('light')
@@ -12,24 +16,28 @@ export const useUIStore = defineStore('ui', () => {
   const confirmConfirmLabel = ref('')
   const confirmCancelLabel = ref('')
   const confirmDestructive = ref(true)
+  const guestDataWarningOpen = ref(false)
   const transferOpen = ref(false)
   const transferFolderId = ref(UNCATEGORIZED_FOLDER_ID)
   const versionUpdateAvailable = ref(false)
   const versionUpdatePending = ref(false)
   const versionUpdateReady = ref(false)
   const versionUpdateLoading = ref(false)
-  const sidebarExpanded = ref(localStorage.getItem('lexiro_sidebar_expanded') !== 'false')
+  const sidebarExpanded = ref(true)
+  const questionCountPreference = ref(5)
   let themeMediaQuery: MediaQueryList | null = null
   let themeListener: ((event: MediaQueryListEvent) => void) | null = null
 
   let confirmResolver: ((value: boolean) => void) | null = null
-  let toastTimer: number | null = null
+  let guestDataResolver: ((value: GuestDataDecision) => void) | null = null
+  let toastTimer: ReturnType<typeof setTimeout> | null = null
 
   function showToast(message: string) {
     toastMessage.value = message
     toastVisible.value = true
-    window.clearTimeout(toastTimer!)
-    toastTimer = window.setTimeout(() => {
+    if (toastTimer)
+      clearTimeout(toastTimer)
+    toastTimer = setTimeout(() => {
       toastVisible.value = false
     }, 2200)
   }
@@ -62,9 +70,42 @@ export const useUIStore = defineStore('ui', () => {
     }
   }
 
+  function showGuestDataWarning(): Promise<GuestDataDecision> {
+    guestDataWarningOpen.value = true
+    return new Promise((resolve) => {
+      guestDataResolver = resolve
+    })
+  }
+
+  function resolveGuestDataWarning(decision: GuestDataDecision) {
+    guestDataWarningOpen.value = false
+    if (guestDataResolver) {
+      guestDataResolver(decision)
+      guestDataResolver = null
+    }
+  }
+
   function toggleSidebar() {
     sidebarExpanded.value = !sidebarExpanded.value
-    localStorage.setItem('lexiro_sidebar_expanded', String(sidebarExpanded.value))
+    void saveToStorage(UI_STORAGE_KEY, { sidebarExpanded: sidebarExpanded.value })
+  }
+
+  async function loadState() {
+    const stored = await loadFromStorage(UI_STORAGE_KEY)
+    if (!stored.value)
+      return
+    try {
+      const parsed = JSON.parse(stored.value) as Record<string, unknown>
+      if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed) || !Object.keys(parsed).every(key => ['sidebarExpanded', 'questionCountPreference'].includes(key)))
+        throw new Error('Invalid UI preference state')
+      if (typeof parsed.sidebarExpanded === 'boolean')
+        sidebarExpanded.value = parsed.sidebarExpanded
+      if (typeof parsed.questionCountPreference === 'number' && Number.isInteger(parsed.questionCountPreference) && parsed.questionCountPreference > 0)
+        questionCountPreference.value = parsed.questionCountPreference
+    }
+    catch {
+      sidebarExpanded.value = true
+    }
   }
 
   function initTheme() {
@@ -85,8 +126,31 @@ export const useUIStore = defineStore('ui', () => {
     transferOpen.value = true
   }
 
+  function setQuestionCountPreference(value: number) {
+    if (!Number.isInteger(value) || value < 1)
+      return
+    questionCountPreference.value = value
+    void saveToStorage(UI_STORAGE_KEY, { sidebarExpanded: sidebarExpanded.value, questionCountPreference: value })
+  }
+
   function closeTransfer() {
     transferOpen.value = false
+  }
+
+  function setVersionUpdateAvailable(value: boolean) {
+    versionUpdateAvailable.value = value
+  }
+
+  function setVersionUpdatePending(value: boolean) {
+    versionUpdatePending.value = value
+  }
+
+  function setVersionUpdateReady(value: boolean) {
+    versionUpdateReady.value = value
+  }
+
+  function setVersionUpdateLoading(value: boolean) {
+    versionUpdateLoading.value = value
   }
 
   return {
@@ -99,6 +163,7 @@ export const useUIStore = defineStore('ui', () => {
     confirmConfirmLabel,
     confirmCancelLabel,
     confirmDestructive,
+    guestDataWarningOpen,
     transferOpen,
     transferFolderId,
     versionUpdateAvailable,
@@ -106,12 +171,21 @@ export const useUIStore = defineStore('ui', () => {
     versionUpdateReady,
     versionUpdateLoading,
     sidebarExpanded,
+    questionCountPreference,
+    loadState,
     showToast,
     showConfirm,
     resolveConfirm,
+    showGuestDataWarning,
+    resolveGuestDataWarning,
     toggleSidebar,
+    setQuestionCountPreference,
     initTheme,
     openTransfer,
     closeTransfer,
+    setVersionUpdateAvailable,
+    setVersionUpdatePending,
+    setVersionUpdateReady,
+    setVersionUpdateLoading,
   }
 })

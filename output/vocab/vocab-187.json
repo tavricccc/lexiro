@@ -1,1368 +1,657 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 187,
   "words": [
-    {
-      "wordKey": "muse",
-      "word": "muse",
-      "senses": [
-        {
-          "id": "sense-1d85a8f4",
-          "pos": "noun",
-          "meaningZh": "靈感來源；繆思",
-          "definitionEn": "a person or thing that is the source of an artist's inspiration",
-          "examples": [
-            "His wife was the muse behind his finest paintings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-c44ad0b7",
-          "pos": "verb",
-          "meaningZh": "沉思；冥想",
-          "definitionEn": "to think about something carefully and for a long time",
-          "examples": [
-            "She sat by the window, musing on her future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "mustache",
-      "word": "mustache",
-      "senses": [
-        {
-          "id": "sense-e9680e75",
-          "pos": "noun",
-          "meaningZh": "鬍子；上唇鬍",
-          "definitionEn": "hair that grows on a man’s upper lip, often trimmed and styled for fashion or cultural reasons",
-          "examples": [
-            "He twirled his mustache thoughtfully before answering her question."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "mute",
-      "word": "mute",
-      "senses": [
-        {
-          "id": "sense-bb94fb17",
-          "pos": "adjective",
-          "meaningZh": "啞的；無聲的",
-          "definitionEn": "Unable or unwilling to speak (describing a person), or producing no sound (describing a place, object, or activity).",
-          "examples": [
-            "The young girl remained mute during the therapy session, unable to express her feelings through words."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-270043a8",
-          "pos": "noun",
-          "meaningZh": "靜音鍵；消音按鈕",
-          "definitionEn": "A button or switch that controls the sound on a device or instrument.",
-          "examples": [
-            "When watching a movie late at night, I used the mute button on the remote control to silence the TV and prevent disturbing others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "nag",
-      "word": "nag",
-      "senses": [
-        {
-          "id": "sense-5dc16db7",
-          "pos": "verb",
-          "meaningZh": "嘮叨；抱怨煩擾",
-          "definitionEn": "to bother or annoy someone with persistent complaints about insignificant matters",
-          "examples": [
-            "When my sister didn't get her way, she would constantly nag our parents about it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-6e48a7a5",
-          "pos": "verb",
-          "meaningZh": "催促；一再提醒",
-          "definitionEn": "to remind or urge someone repeatedly to do something",
-          "examples": [
-            "Emily would often nag her younger brother to clean his room, reminding him every day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "narrate",
-      "word": "narrate",
-      "senses": [
-        {
-          "id": "sense-da34edc3",
-          "pos": "verb",
-          "meaningZh": "敘述；講述",
-          "definitionEn": "narrate or give a detailed account of",
-          "examples": [
-            "The author skillfully narrated the story of his incredible journey across the country, describing in great detail the people he met and the challenges he faced along the way."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-425682b6",
-          "pos": "verb",
-          "meaningZh": "為…配音；旁白",
-          "definitionEn": "provide commentary for a film or other production",
-          "examples": [
-            "The director asked Morgan Freeman to narrate the documentary about penguins as his voice can add the perfect amount of depth and richness to the story."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "narrator",
       "word": "narrator",
       "senses": [
         {
-          "id": "sense-823c3409",
-          "pos": "noun",
+          "id": "sense-68511f41",
+          "pos": "n.",
           "meaningZh": "敘述者；說書人；旁白",
-          "definitionEn": "a person who narrates something, especially a story or an account of events",
           "examples": [
             "The narrator skillfully took on the voice of each character, bringing the story to life for the listeners."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nationalism",
       "word": "nationalism",
       "senses": [
         {
-          "id": "sense-647acad1",
-          "pos": "noun",
+          "id": "sense-e8718dbd",
+          "pos": "n.",
           "meaningZh": "愛國主義；民族主義",
-          "definitionEn": "love of country and willingness to sacrifice for it",
           "examples": [
             "During times of war, people often feel a strong sense of nationalism and are willing to fight and die for their country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-45142320",
-          "pos": "noun",
+          "id": "sense-c791f1ec",
+          "pos": "n.",
           "meaningZh": "民族獨立運動；民族自決",
-          "definitionEn": "the aspiration for national independence felt by people under foreign domination",
           "examples": [
             "Gandhi’s non-violent nationalism helped India to gain independence from British rule."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "navigate",
       "word": "navigate",
       "senses": [
         {
-          "id": "sense-843fca47",
-          "pos": "verb",
+          "id": "sense-b755ed42",
+          "pos": "v.",
           "meaningZh": "引導；駕駛通過",
-          "definitionEn": "to direct or guide carefully and safely",
           "examples": [
             "The captain navigated the ship through the stormy waters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e985d641",
-          "pos": "verb",
+          "id": "sense-bc75d68c",
+          "pos": "v.",
           "meaningZh": "導航；規劃路線",
-          "definitionEn": "to plan, direct, or control the path or position of a vehicle or vessel as a navigator",
           "examples": [
             "The captain used a map and a compass to navigate the ship through the storm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "navigation",
       "word": "navigation",
       "senses": [
         {
-          "id": "sense-ecde6266",
-          "pos": "noun",
+          "id": "sense-89859d46",
+          "pos": "n.",
           "meaningZh": "導航；航海術",
-          "definitionEn": "the act or science of finding a way from one place to another",
           "examples": [
             "Using a compass and a map, the hikers relied on their navigation skills to find their way through the dense forest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-41fd5c49",
-          "pos": "noun",
+          "id": "sense-75225ba9",
+          "pos": "n.",
           "meaningZh": "網站瀏覽；頁面導覽",
-          "definitionEn": "the act of moving around within or between websites",
           "examples": [
             "When I'm browsing the internet, I use the navigation bar at the top of the page to easily move between different websites and webpages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nearsighted",
       "word": "nearsighted",
       "senses": [
         {
-          "id": "sense-5da11954",
-          "pos": "adjective",
+          "id": "sense-10d3b148",
+          "pos": "adj.",
           "meaningZh": "近視的；患近視的",
-          "definitionEn": "Having myopia; unable to see distant objects clearly.",
           "examples": [
             "Because she was nearsighted, the teacher allowed her to sit at the front of the classroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nickel",
       "word": "nickel",
       "senses": [
         {
-          "id": "sense-5ba8e14e",
-          "pos": "noun",
+          "id": "sense-adfbb55e",
+          "pos": "n.",
           "meaningZh": "五分錢硬幣（美國）",
-          "definitionEn": "a five-cent coin in the United States",
           "examples": [
             "I found a nickel on the street while walking home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nostril",
       "word": "nostril",
       "senses": [
         {
-          "id": "sense-f78d0175",
-          "pos": "noun",
+          "id": "sense-62e635cd",
+          "pos": "n.",
           "meaningZh": "鼻孔",
-          "definitionEn": "Either of the two openings in the nose through which air enters and leaves the body.",
           "examples": [
             "When I have a cold, my left nostril is always congested."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "notable",
       "word": "notable",
       "senses": [
         {
-          "id": "sense-0e365d74",
-          "pos": "adjective",
+          "id": "sense-057737ce",
+          "pos": "adj.",
           "meaningZh": "值得注意的；重要的",
-          "definitionEn": "important and deserving attention",
           "examples": [
             "The scientist made a notable discovery that revolutionized the field of medicine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0a3be787",
-          "pos": "noun",
+          "id": "sense-807d4783",
+          "pos": "n.",
           "meaningZh": "知名人士；重要人物",
-          "definitionEn": "a person or thing worthy of attention",
           "examples": [
             "The famous singer made a notable entrance, causing a stir among the crowd."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "notorious",
       "word": "notorious",
       "senses": [
         {
-          "id": "sense-25f36ba0",
-          "pos": "adjective",
+          "id": "sense-2ff0107c",
+          "pos": "adj.",
           "meaningZh": "惡名昭彰的；聲名狼藉的",
-          "definitionEn": "famous for doing something immoral or bad",
           "examples": [
             "John was notorious for his frequent run-ins with the law."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6c99f7a2",
-          "pos": "adjective",
+          "id": "sense-0a592b2e",
+          "pos": "adj.",
           "meaningZh": "惡名遠播的；臭名的",
-          "definitionEn": "(of a person) well-known in a negative way",
           "examples": [
             "The notorious criminal was finally apprehended after years of evading the authorities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nourish",
       "word": "nourish",
       "senses": [
         {
-          "id": "sense-48734195",
-          "pos": "verb",
+          "id": "sense-f6993f34",
+          "pos": "v.",
           "meaningZh": "滋養；餵養",
-          "definitionEn": "to provide with food or other substances necessary for growth, health, and good condition",
           "examples": [
             "A mother nurses her baby to nourish her with essential nutrients for her growth and good health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8efb0928",
-          "pos": "verb",
+          "id": "sense-872f585d",
+          "pos": "v.",
           "meaningZh": "培育；促進成長",
-          "definitionEn": "to promote growth or development of; foster",
           "examples": [
             "Mothers often nourish their babies by nursing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nourishment",
       "word": "nourishment",
       "senses": [
         {
-          "id": "sense-ab7008af",
-          "pos": "noun",
+          "id": "sense-c258d02f",
+          "pos": "n.",
           "meaningZh": "營養；養分",
-          "definitionEn": "a source of materials to nourish the body",
           "examples": [
             "Eating balanced meals every day is important for getting the proper nourishment your body needs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8df1a750",
-          "pos": "noun",
+          "id": "sense-82db10d0",
+          "pos": "n.",
           "meaningZh": "滋養行為；滋養",
-          "definitionEn": "the act of nourishing",
           "examples": [
             "The plants received the necessary nourishment from the enriched soil."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "novice",
       "word": "novice",
       "senses": [
         {
-          "id": "sense-9d7e9267",
-          "pos": "noun",
+          "id": "sense-866fdb37",
+          "pos": "n.",
           "meaningZh": "新手；初學者",
-          "definitionEn": "a person who is new to and inexperienced in a certain field or activity",
           "examples": [
             "As a novice, he made several mistakes while cooking the dish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e857288d",
-          "pos": "noun",
+          "id": "sense-4af23fbd",
+          "pos": "n.",
           "meaningZh": "見習修道者；修道新手",
-          "definitionEn": "a person who has joined a religious order but has not yet taken final vows",
           "examples": [
             "As a novice monk, she was still learning all the rules and duties of the monastery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nucleus",
       "word": "nucleus",
       "senses": [
         {
-          "id": "sense-de96c6f3",
-          "pos": "noun",
+          "id": "sense-c29ee89f",
+          "pos": "n.",
           "meaningZh": "原子核",
-          "definitionEn": "the positively charged dense center of an atom",
           "examples": [
             "The nucleus of an atom contains protons and neutrons, while the electrons orbit around it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5d9c535c",
-          "pos": "noun",
+          "id": "sense-c33c0f88",
+          "pos": "n.",
           "meaningZh": "細胞核",
-          "definitionEn": "a part of the cell responsible for growth and reproduction and containing genetic information encoded in DNA and RNA",
           "examples": [
             "In biology class, the teacher explained that the nucleus is like the control center of the cell, where all the important genetic information is stored."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nude",
       "word": "nude",
       "senses": [
         {
-          "id": "sense-b1db47f3",
-          "pos": "adjective",
+          "id": "sense-02e54b17",
+          "pos": "adj.",
           "meaningZh": "裸體的；全裸的",
-          "definitionEn": "wearing no clothes; naked",
           "examples": [
             "The painting shows a nude figure reclining on a couch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-dc891452",
-          "pos": "noun",
+          "id": "sense-bbe6bc52",
+          "pos": "n.",
           "meaningZh": "裸體畫；裸體像",
-          "definitionEn": "a painting, sculpture, or photograph of a naked human figure",
           "examples": [
             "The gallery exhibited several classical nudes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nurture",
       "word": "nurture",
       "senses": [
         {
-          "id": "sense-6bc3f0a4",
-          "pos": "noun",
+          "id": "sense-3f56e56c",
+          "pos": "n.",
           "meaningZh": "培育；養育",
-          "definitionEn": "the process of caring for and encouraging the growth or development of someone or something",
           "examples": [
             "It is important for parents to nurture their children, providing them with love, support, and encouragement to help them grow and develop into happy, healthy adults."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-698573a0",
-          "pos": "verb",
+          "id": "sense-40f414e1",
+          "pos": "v.",
           "meaningZh": "培養；扶植",
-          "definitionEn": "help or encourage the development of; assist the progress of",
           "examples": [
             "It is important to nurture a child’s curiosity for learning by providing them with engaging books and educational toys."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oasis",
       "word": "oasis",
       "senses": [
         {
-          "id": "sense-ff60696b",
-          "pos": "noun",
+          "id": "sense-4e7b5f77",
+          "pos": "n.",
           "meaningZh": "沙漠綠洲",
-          "definitionEn": "a fertile tract in a desert (where the water table approaches the surface)",
           "examples": [
             "After a long journey through the scorching desert, the weary travelers finally stumbled upon an oasis. They were relieved to find lush palm trees, flowing water, and a cool breeze to provide them with much-needed refreshment and relief from the harsh conditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-dbda1397",
-          "pos": "noun",
+          "id": "sense-b43e89fb",
+          "pos": "n.",
           "meaningZh": "避風港；庇護所",
-          "definitionEn": "a shelter serving as a place of safety or sanctuary",
           "examples": [
             "After hours of hiking in the desert, we finally found an oasis where we could rest and rehydrate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oath",
       "word": "oath",
       "senses": [
         {
-          "id": "sense-973b98f1",
-          "pos": "noun",
+          "id": "sense-43ce6c7d",
+          "pos": "n.",
           "meaningZh": "誓言；宣誓",
-          "definitionEn": "a commitment to tell the truth, typically made in a court of law; failure to do so may result in charges of perjury",
           "examples": [
             "In the courtroom, the witness placed their hand on the Bible and swore an oath to tell the truth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oatmeal",
       "word": "oatmeal",
       "senses": [
         {
-          "id": "sense-da714275",
-          "pos": "noun",
+          "id": "sense-4f8a736d",
+          "pos": "n.",
           "meaningZh": "燕麥粉；燕麥片",
-          "definitionEn": "meal made from rolled or ground oats",
           "examples": [
             "For breakfast, Jane loves to prepare a bowl of warm oatmeal with sliced banana and a drizzle of honey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-f2522021",
-          "pos": "noun",
+          "id": "sense-d76a0fc9",
+          "pos": "n.",
           "meaningZh": "燕麥粥；麥片粥",
-          "definitionEn": "porridge made of rolled oats",
           "examples": [
             "I love starting my day with a warm bowl of oatmeal topped with fresh berries and honey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oblige",
       "word": "oblige",
       "senses": [
         {
-          "id": "sense-d146af45",
-          "pos": "verb",
+          "id": "sense-214f0c80",
+          "pos": "v.",
           "meaningZh": "強迫；使盡義務",
-          "definitionEn": "to make someone feel it is their duty to do something; to require or compel someone to do something",
           "examples": [
             "When my friend's car broke down, I felt obliged to offer him a ride to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e6642a9b",
-          "pos": "verb",
+          "id": "sense-d73a14d2",
+          "pos": "v.",
           "meaningZh": "幫忙；效勞",
-          "definitionEn": "to do something for someone out of a sense of duty or gratitude; to accommodate or help someone by doing something they have asked for",
           "examples": [
             "When my neighbor's car broke down, I was happy to oblige and give her a ride to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "obsess",
       "word": "obsess",
       "senses": [
         {
-          "id": "sense-785b8d15",
-          "pos": "verb",
+          "id": "sense-ba4c59be",
+          "pos": "v.",
           "meaningZh": "使著迷；令人過度沉迷",
-          "definitionEn": "to be preoccupied with something to an unhealthy extent",
           "examples": [
             "Jack’s obsession with his ex-girlfriend was affecting his ability to function properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4cb477ff",
-          "pos": "verb",
+          "id": "sense-07505c96",
+          "pos": "v.",
           "meaningZh": "縈繞；念念不忘",
-          "definitionEn": "to haunt like a ghost or pursue relentlessly",
           "examples": [
             "After she was rejected, he began to obsess over her, sending her numerous texts and emails per day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "obstinate",
       "word": "obstinate",
       "senses": [
         {
-          "id": "sense-62ccb82c",
-          "pos": "adjective",
+          "id": "sense-f561ec32",
+          "pos": "adj.",
           "meaningZh": "固執的；頑固的",
-          "definitionEn": "not easily persuaded or influenced; stubborn or inflexible",
           "examples": [
             "Despite his parents' pleas, the obstinate toddler refused to eat his vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-674e21a9",
-          "pos": "adjective",
+          "id": "sense-f5612bfb",
+          "pos": "adj.",
           "meaningZh": "堅持己見的；不肯妥協的",
-          "definitionEn": "refusing to change one’s opinion or chosen course of action, despite attempts to persuade one to do so",
           "examples": [
             "Despite numerous arguments and presentations, Sarah remained obstinate in her decision to quit her job and pursue her passion for painting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "occurrence",
       "word": "occurrence",
       "senses": [
         {
-          "id": "sense-d70d1276",
-          "pos": "noun",
+          "id": "sense-f095d6ae",
+          "pos": "n.",
           "meaningZh": "事件；發生的事",
-          "definitionEn": "an event that happens",
           "examples": [
             "The occurrence of the solar eclipse was a once in a lifetime experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-995865b2",
-          "pos": "noun",
+          "id": "sense-0c28e84a",
+          "pos": "n.",
           "meaningZh": "出現；發生情況",
-          "definitionEn": "an instance of something occurring",
           "examples": [
             "There was an occurrence of a power outage last night in our neighborhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "octopus",
       "word": "octopus",
       "senses": [
         {
-          "id": "sense-41e2a838",
-          "pos": "noun",
+          "id": "sense-3f50f7c4",
+          "pos": "n.",
           "meaningZh": "章魚；八爪魚",
-          "definitionEn": "a soft-bodied, eight-limbed mollusk living on the sea floor",
           "examples": [
             "The octopus skillfully camouflaged itself from predators by changing the color and texture of its skin to blend in with its surroundings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-00b4b799",
-          "pos": "noun",
+          "id": "sense-edd20685",
+          "pos": "n.",
           "meaningZh": "（食用）章魚肉",
-          "definitionEn": "the edible tentacles and body of an octopus",
           "examples": [
             "We ordered grilled octopus for appetizers at the restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "odor",
       "word": "odor",
       "senses": [
         {
-          "id": "sense-c30dd863",
-          "pos": "noun",
+          "id": "sense-56d04563",
+          "pos": "n.",
           "meaningZh": "氣味；異味",
-          "definitionEn": "a particular smell, especially an unpleasant one",
           "examples": [
             "The odor coming from the garbage can was so strong that it made me gag."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6632f409",
-          "pos": "noun",
+          "id": "sense-975f7b09",
+          "pos": "n.",
           "meaningZh": "嗅覺感受；氣息",
-          "definitionEn": "the sensation that results when olfactory receptors in the nose are stimulated by particular chemicals in gaseous form",
           "examples": [
             "The odor of freshly baked bread wafted through the kitchen, making my stomach growl with hunger."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "offshore",
       "word": "offshore",
       "senses": [
         {
-          "id": "sense-0aad8209",
-          "pos": "adjective",
+          "id": "sense-b8d6d15d",
+          "pos": "adj.",
           "meaningZh": "向海的；離岸的",
-          "definitionEn": "coming from the land to the sea",
           "examples": [
             "You can see many offshore drilling platforms when you take a boat tour around the coast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-76a04300",
-          "pos": "adjective",
+          "id": "sense-9b565dcc",
+          "pos": "adj.",
           "meaningZh": "近海的；海上的",
-          "definitionEn": "situated at some distance from the shore",
           "examples": [
             "The oil rig was located offshore, about 10 miles from the coast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "offspring",
+      "word": "offspring",
+      "senses": [
+        {
+          "id": "sense-26bb846a",
+          "pos": "n.",
+          "meaningZh": "後代；子嗣",
+          "examples": [
+            "The mare gave birth to a healthy offspring, which grew up to be a strong and beautiful horse."
+          ]
+        },
+        {
+          "id": "sense-b94e428f",
+          "pos": "n.",
+          "meaningZh": "幼獸；稚齡動物",
+          "examples": [
+            "The ducklings followed closely behind their mother as they made their way to the pond."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "operative",
+      "word": "operative",
+      "senses": [
+        {
+          "id": "sense-03c9b7b4",
+          "pos": "adj.",
+          "meaningZh": "有效的；起作用的",
+          "examples": [
+            "The new marketing strategy proved to be highly operative, resulting in a significant increase in sales."
+          ]
+        },
+        {
+          "id": "sense-b21d4b00",
+          "pos": "adj.",
+          "meaningZh": "生效的；有約束力的",
+          "examples": [
+            "The new safety regulations will become operative next month, ensuring that all employees follow strict protocols."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "oppress",
+      "word": "oppress",
+      "senses": [
+        {
+          "id": "sense-7a25d430",
+          "pos": "v.",
+          "meaningZh": "使痛苦；壓迫",
+          "examples": [
+            "The wealthy elite in the society often oppress the poor, depriving them of basic necessities and opportunities for advancement."
+          ]
+        },
+        {
+          "id": "sense-e4949192",
+          "pos": "v.",
+          "meaningZh": "以權力壓制；欺壓",
+          "examples": [
+            "The dictator oppresses his citizens by limiting their freedom of expression and controlling all aspects of their lives."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "oppression",
+      "word": "oppression",
+      "senses": [
+        {
+          "id": "sense-ee8a4a1d",
+          "pos": "n.",
+          "meaningZh": "壓迫；壓制",
+          "examples": [
+            "The oppression of women and minorities has been a persistent problem throughout history."
+          ]
+        },
+        {
+          "id": "sense-81efa436",
+          "pos": "n.",
+          "meaningZh": "迫害；不公平對待",
+          "examples": [
+            "The oppression of minorities in many countries around the world is a significant issue that needs to be addressed and resolved."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "ordeal",
+      "word": "ordeal",
+      "senses": [
+        {
+          "id": "sense-aea387fe",
+          "pos": "n.",
+          "meaningZh": "嚴峻考驗；折磨",
+          "examples": [
+            "After weeks of rigorous training, completing the marathon became an ordeal for John as he battled exhaustion and muscle cramps."
+          ]
+        },
+        {
+          "id": "sense-72ac918c",
+          "pos": "n.",
+          "meaningZh": "（古代）神明裁判；酷刑試罪",
+          "examples": [
+            "In the ancient tribe, the accused person was made to walk barefoot on burning embers as an ordeal to determine their guilt or innocence."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

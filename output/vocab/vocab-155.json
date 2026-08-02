@@ -1,1421 +1,687 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 155,
   "words": [
-    {
-      "wordKey": "ranch",
-      "word": "ranch",
-      "senses": [
-        {
-          "id": "sense-a17ed96e",
-          "pos": "noun",
-          "meaningZh": "大牧場；農場",
-          "definitionEn": "a large farm for raising animals, especially cattle, horses, and sheep",
-          "examples": [
-            "After graduating from college, Emma moved to Texas to work on her uncle’s ranch, where she learned how to ride horses and herd cattle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-fb843645",
-          "pos": "verb",
-          "meaningZh": "經營牧場；從事牧場業",
-          "definitionEn": "to manage or run a ranch",
-          "examples": [
-            "My uncle learned how to ranch cattle and now he manages a large ranch in Texas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "random",
-      "word": "random",
-      "senses": [
-        {
-          "id": "sense-4ae69db7",
-          "pos": "adjective",
-          "meaningZh": "隨機的；任意的",
-          "definitionEn": "having no definite pattern, purpose, or objective; governed by or dependent on chance",
-          "examples": [
-            "She picked a random number out of the hat for the raffle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "ratio",
-      "word": "ratio",
-      "senses": [
-        {
-          "id": "sense-00f3cc77",
-          "pos": "noun",
-          "meaningZh": "比率；比例",
-          "definitionEn": "the relationship between two amounts, represented by a pair of numbers showing how much larger one amount is than the other, or how many times it contains the other",
-          "examples": [
-            "The ratio of boys to girls in the class was 2:3, which means that for every 2 boys there were 3 girls."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-44c0cdb4",
-          "pos": "noun",
-          "meaningZh": "比值；比較",
-          "definitionEn": "a comparison between two amounts, represented by a division of one by the other",
-          "examples": [
-            "The ratio of boys to girls in the classroom is 2:3, which means there are two boys for every three girls."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "rational",
-      "word": "rational",
-      "senses": [
-        {
-          "id": "sense-1d7ff6ec",
-          "pos": "adjective",
-          "meaningZh": "理性的；合理的",
-          "definitionEn": "Using reason; based on reason",
-          "examples": [
-            "When facing a difficult decision, it is important to take a rational approach and weigh the pros and cons before making a choice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-a79bf7dd",
-          "pos": "adjective",
-          "meaningZh": "理智的；邏輯的",
-          "definitionEn": "Relating to the mind; mental",
-          "examples": [
-            "His decision to pursue a career in mathematics instead of music was a rational choice, considering his logical and analytical thinking abilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "rattle",
-      "word": "rattle",
-      "senses": [
-        {
-          "id": "sense-6a7ef373",
-          "pos": "verb",
-          "meaningZh": "嘎嘎作響",
-          "definitionEn": "to make short, sharp knocking sounds by shaking or moving",
-          "examples": [
-            "The wind made the windows rattle all night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-ab34a2f6",
-          "pos": "noun",
-          "meaningZh": "嬰兒搖鈴；撥浪鼓",
-          "definitionEn": "a baby’s toy that makes percussive noises when shaken",
-          "examples": [
-            "The baby giggled as she shook the colorful rattle, enjoying the sound it made."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-6eccd53e",
-          "pos": "noun",
-          "meaningZh": "（呼吸道的）囉音；痰鳴聲",
-          "definitionEn": "a rapid series of short loud sounds, as might be heard with a stethoscope in some types of respiratory disorders",
-          "examples": [
-            "The doctor listened carefully to the patient’s chest, trying to hear any signs of a rattle that would indicate a respiratory problem."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "realism",
       "word": "realism",
       "senses": [
         {
-          "id": "sense-87d3eec3",
-          "pos": "noun",
+          "id": "sense-0bb1917b",
+          "pos": "n.",
           "meaningZh": "現實主義；務實態度",
-          "definitionEn": "the attribute of accepting the facts of life and favoring practicality and literal truth",
           "examples": [
             "The teacher approached the lesson with realism by focusing on the practical application of the material rather than just theory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f219408f",
-          "pos": "noun",
+          "id": "sense-24c81577",
+          "pos": "n.",
           "meaningZh": "真實性；逼真感",
-          "definitionEn": "the state of being actual or real",
           "examples": [
             "The realism of the movie made it seem like the events portrayed could have actually happened in real life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "realm",
       "word": "realm",
       "senses": [
         {
-          "id": "sense-b1e9bc4f",
-          "pos": "noun",
+          "id": "sense-7f202eb7",
+          "pos": "n.",
           "meaningZh": "王國；領地",
-          "definitionEn": "the domain ruled by a king or queen",
           "examples": [
             "In the realm of fantasy literature, dragons and wizards are commonly found."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9a3e75cf",
-          "pos": "noun",
+          "id": "sense-d0933d47",
+          "pos": "n.",
           "meaningZh": "領域；範疇",
-          "definitionEn": "a domain in which something is dominant",
           "examples": [
             "In the realm of sports, she was a fierce competitor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rear",
       "word": "rear",
       "senses": [
         {
-          "id": "sense-99c11692",
-          "pos": "noun",
+          "id": "sense-adf88192",
+          "pos": "n.",
           "meaningZh": "後部；後面",
-          "definitionEn": "the back part of something",
           "examples": [
             "He slowly walked towards the rear of the car to inspect the damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-02f59ff5",
-          "pos": "noun",
+          "id": "sense-ab70caf5",
+          "pos": "n.",
           "meaningZh": "背面；後方",
-          "definitionEn": "the side of something that is opposite the front",
           "examples": [
             "The car in front of me suddenly stopped, so I had to brake hard and nearly hit the rear of their vehicle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reassure",
       "word": "reassure",
       "senses": [
         {
-          "id": "sense-13cda19d",
-          "pos": "verb",
+          "id": "sense-651cae02",
+          "pos": "v.",
           "meaningZh": "安撫；使放心",
-          "definitionEn": "give or restore confidence in; cause to feel sure or certain",
           "examples": [
             "The doctor took her time to fully explain the procedure to the patient in order to reassure her and allay any fears she had."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b42f306c",
-          "pos": "verb",
+          "id": "sense-65b72df9",
+          "pos": "v.",
           "meaningZh": "給予保證；消除疑慮",
-          "definitionEn": "cause to feel sure; give reassurance to",
           "examples": [
             "After the surgery, the doctor came to reassure the family that everything went well."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rebellion",
       "word": "rebellion",
       "senses": [
         {
-          "id": "sense-2d8acb5b",
-          "pos": "noun",
+          "id": "sense-626999e7",
+          "pos": "n.",
           "meaningZh": "反叛；抗拒（權威）",
-          "definitionEn": "a refusal to accept some authority or code or convention",
           "examples": [
             "The citizens staged a rebellion against the corrupt government, demanding their rights and freedom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bb395fc4",
-          "pos": "noun",
+          "id": "sense-6b94b3e0",
+          "pos": "n.",
           "meaningZh": "叛亂；武裝反抗",
-          "definitionEn": "organized opposition to authority; a conflict in which one faction tries to take control from another",
           "examples": [
             "The citizens' rebellion against the oppressive regime led to widespread protests and ultimately resulted in the overthrow of the government."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "recession",
       "word": "recession",
       "senses": [
         {
-          "id": "sense-968a2492",
-          "pos": "noun",
+          "id": "sense-c6efc4ba",
+          "pos": "n.",
           "meaningZh": "經濟衰退；不景氣",
-          "definitionEn": "the state of the economy declining; a widespread decline in the Gross Domestic Product (GDP), employment, and trade, lasting from six months to a year",
           "examples": [
             "During the recession, many businesses were forced to close down, leading to a significant increase in unemployment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bcec2724",
-          "pos": "noun",
+          "id": "sense-f777153c",
+          "pos": "n.",
           "meaningZh": "凹陷；小窪",
-          "definitionEn": "a small concavity",
           "examples": [
             "He noticed a recession in the wall where the nail had been."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "recipient",
       "word": "recipient",
       "senses": [
         {
-          "id": "sense-061353a7",
-          "pos": "noun",
+          "id": "sense-e2ec2d4f",
+          "pos": "n.",
           "meaningZh": "接受者；受惠人",
-          "definitionEn": "the role of the person or entity receiving something, typically a gift or an honor",
           "examples": [
             "The recipient of the ’Employee of the Year’ award was thrilled to receive such a great honor in front of her colleagues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8cab5a32",
-          "pos": "noun",
+          "id": "sense-4a548ada",
+          "pos": "n.",
           "meaningZh": "受獎者；得獎人",
-          "definitionEn": "a person or organization that receives or is awarded something",
           "examples": [
             "The recipient of the award beamed with pride as they accepted the trophy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "recite",
       "word": "recite",
       "senses": [
         {
-          "id": "sense-85600e56",
-          "pos": "verb",
+          "id": "sense-cd5c0487",
+          "pos": "v.",
           "meaningZh": "背誦；朗誦",
-          "definitionEn": "To repeat something from memory, usually out loud.",
           "examples": [
             "During the poetry recital, Sarah confidently recited a beautiful sonnet she had memorized."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a9e301b5",
-          "pos": "verb",
+          "id": "sense-4ca39c44",
+          "pos": "v.",
           "meaningZh": "詳細描述；逐一說明",
-          "definitionEn": "To describe something in detail.",
           "examples": [
             "The tour guide recited the history of the castle, highlighting every significant event and architectural detail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "recommend",
       "word": "recommend",
       "senses": [
         {
-          "id": "sense-5c65c809",
-          "pos": "verb",
+          "id": "sense-740aa964",
+          "pos": "v.",
           "meaningZh": "推薦；介紹",
-          "definitionEn": "express a good opinion of",
           "examples": [
             "I highly recommend this restaurant for their delicious food and excellent service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "recommendation",
       "word": "recommendation",
       "senses": [
         {
-          "id": "sense-1985b9bf",
-          "pos": "noun",
+          "id": "sense-f9ac641b",
+          "pos": "n.",
           "meaningZh": "建議；推薦",
-          "definitionEn": "an act of suggesting or proposing someone or something to be chosen or accepted; something that recommends a person or thing as worthy or desirable",
           "examples": [
             "After reading many positive reviews, I followed my friend's recommendation and booked a table at the new restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-34e051e1",
-          "pos": "noun",
+          "id": "sense-6eb2488d",
+          "pos": "n.",
           "meaningZh": "推薦函；推薦信",
-          "definitionEn": "a letter or statement containing commendation or endorsement, usually by another person in authority",
           "examples": [
             "After reading several positive reviews, I decided to book a table at the restaurant based on the recommendation of a well-known food critic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "recruit",
       "word": "recruit",
       "senses": [
         {
-          "id": "sense-4922e171",
-          "pos": "verb",
+          "id": "sense-68bf30b0",
+          "pos": "v.",
           "meaningZh": "徵召（入伍）；招募",
-          "definitionEn": "enlist (someone) in the armed forces",
           "examples": [
             "After completing basic training, the military recruits were assigned to different regiments based on their skills and preferences."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cf386275",
-          "pos": "verb",
+          "id": "sense-b3386e3c",
+          "pos": "v.",
           "meaningZh": "說服加入；招募（成員）",
-          "definitionEn": "persuade (someone) to join an organization or cause",
           "examples": [
             "The army was able to recruit many young, passionate individuals who were eager to serve their country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5 +1",
-        "textbookTitle": "龍騰 B4·L5、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "refuge",
       "word": "refuge",
       "senses": [
         {
-          "id": "sense-93de4e38",
-          "pos": "noun",
+          "id": "sense-7858a7e4",
+          "pos": "n.",
           "meaningZh": "庇護；避難所",
-          "definitionEn": "protection or shelter from danger or trouble",
           "examples": [
             "During the storm, the family sought refuge in their sturdy basement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "regardless",
       "word": "regardless",
       "senses": [
         {
-          "id": "sense-f55de8c3",
-          "pos": "adverb",
+          "id": "sense-5e212d9a",
+          "pos": "adv.",
           "meaningZh": "不管；儘管如此",
-          "definitionEn": "without regard to drawbacks; despite everything",
           "examples": [
             "She pursued her dreams regardless of the obstacles in her path."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-17c1420a",
-          "pos": "adjective",
+          "id": "sense-edc61126",
+          "pos": "adj.",
           "meaningZh": "不顧一切的；粗心的",
-          "definitionEn": "without due thought or consideration; careless",
           "examples": [
             "He drove regardless of the traffic laws, putting himself and others in danger."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "regime",
       "word": "regime",
       "senses": [
         {
-          "id": "sense-dfaf7470",
-          "pos": "noun",
+          "id": "sense-f860faf4",
+          "pos": "n.",
           "meaningZh": "政權；政治體制",
-          "definitionEn": "the governing authority or system of a country or political unit",
           "examples": [
             "The collapse of the Soviet regime in the 1990s paved way for the independence of several Soviet Republics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-51f8f820",
-          "pos": "noun",
+          "id": "sense-31d5d674",
+          "pos": "n.",
           "meaningZh": "（醫療或飲食）規程；制度",
-          "definitionEn": "a set of rules or guidelines, often for medical treatment or dietary practices",
           "examples": [
             "Following a strict diet regime is important for people with diabetes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rehearsal",
       "word": "rehearsal",
       "senses": [
         {
-          "id": "sense-226092dc",
-          "pos": "noun",
+          "id": "sense-3b5c47c4",
+          "pos": "n.",
           "meaningZh": "排練；彩排",
-          "definitionEn": "a practice session to prepare for a public performance, such as a play, speech, or concert.",
           "examples": [
             "The theater company gathered at the rehearsal space to go through the entire play from start to finish, ensuring that everyone knew their lines and cues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8b7d71da",
-          "pos": "noun",
+          "id": "sense-49b8d972",
+          "pos": "n.",
           "meaningZh": "（記憶心理學）複誦；記憶演練",
-          "definitionEn": "a type of practice in which you repeat information to help you remember it in the short-term memory. This is often used in psychology.",
           "examples": [
             "Before the big presentation, the speaker engaged in a thorough rehearsal of their speech to ensure they remembered all the important points."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reinforce",
       "word": "reinforce",
       "senses": [
         {
-          "id": "sense-132bcac0",
-          "pos": "verb",
+          "id": "sense-8348a231",
+          "pos": "v.",
           "meaningZh": "加強；鞏固",
-          "definitionEn": "make stronger",
           "examples": [
             "After conducting regular training sessions, the team captain noticed a significant improvement in their performance, which helped to reinforce their skills and boost their confidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cafebd8e",
-          "pos": "verb",
+          "id": "sense-df6b1e87",
+          "pos": "v.",
           "meaningZh": "用獎勵強化（行為）",
-          "definitionEn": "strengthen and support with rewards",
           "examples": [
             "To reinforce positive behavior, parents can give their children praise and small rewards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reminder",
       "word": "reminder",
       "senses": [
         {
-          "id": "sense-e93c517a",
-          "pos": "noun",
+          "id": "sense-1ef9385a",
+          "pos": "n.",
           "meaningZh": "提醒（物）；提示",
-          "definitionEn": "a thing that causes someone to remember something",
           "examples": [
             "I set a reminder on my phone for the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2c9288fc",
-          "pos": "noun",
+          "id": "sense-89401c5c",
+          "pos": "n.",
           "meaningZh": "催繳單；提醒通知",
-          "definitionEn": "a letter or note that reminds someone to do something",
           "examples": [
             "The library sent a reminder about the overdue book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L9",
-        "textbookTitle": "翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "removal",
       "word": "removal",
       "senses": [
         {
-          "id": "sense-95d6dfc0",
-          "pos": "noun",
+          "id": "sense-e7cd51f0",
+          "pos": "n.",
           "meaningZh": "清除；移除",
-          "definitionEn": "the process of removing or getting rid of something, often something that is considered to be harmful",
           "examples": [
             "The removal of hazardous waste is essential to protect the environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3ea41475",
-          "pos": "noun",
+          "id": "sense-b86691c5",
+          "pos": "n.",
           "meaningZh": "免職；撤職",
-          "definitionEn": "the process of forcing someone to leave their job or position",
           "examples": [
             "After months of poor performance, the company had no choice but to initiate the removal of the underperforming employee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "render",
       "word": "render",
       "senses": [
         {
-          "id": "sense-011f60c8",
-          "pos": "verb",
+          "id": "sense-b32ab7cd",
+          "pos": "v.",
           "meaningZh": "使成為；使變得",
-          "definitionEn": "to cause someone or something to be in a particular state or condition",
           "examples": [
             "The accident rendered him unable to walk for months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ee708f87",
-          "pos": "verb",
+          "id": "sense-f6bd69a6",
+          "pos": "v.",
           "meaningZh": "歸還；退還",
-          "definitionEn": "give back",
           "examples": [
             "The car rental company will render the deposit after the vehicle is returned in good condition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rental",
       "word": "rental",
       "senses": [
         {
-          "id": "sense-d6f8018c",
-          "pos": "noun",
+          "id": "sense-cf281f7c",
+          "pos": "n.",
           "meaningZh": "租金；出租物",
-          "definitionEn": "an amount of money paid to use something for a period, or something available to rent",
           "examples": [
             "The monthly rental for the apartment is quite reasonable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-40b7c6bd",
-          "pos": "adjective",
+          "id": "sense-ec53bab1",
+          "pos": "adj.",
           "meaningZh": "供出租的；租賃的",
-          "definitionEn": "available to be rented or leased",
           "examples": [
             "The vacation home was a popular rental during the summer months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-db9f7719",
-          "pos": "adjective",
+          "id": "sense-3cc82f9d",
+          "pos": "adj.",
           "meaningZh": "租賃相關的；關於租金的",
-          "definitionEn": "related to the act of paying rent",
           "examples": [
             "She signed a rental agreement for the apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "repay",
       "word": "repay",
       "senses": [
         {
-          "id": "sense-a17878c7",
-          "pos": "verb",
+          "id": "sense-550e325a",
+          "pos": "v.",
           "meaningZh": "償還；歸還",
-          "definitionEn": "to pay back money that you have borrowed",
           "examples": [
             "I borrowed $100 from my friend last week and I need to repay him by the end of this month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-01603136",
-          "pos": "verb",
+          "id": "sense-63eed9a3",
+          "pos": "v.",
           "meaningZh": "回報；答謝",
-          "definitionEn": "to do or give something as a reward or as a way of thanking someone",
           "examples": [
             "After I borrowed money from my friend, I made sure to repay her with a nice dinner and tickets to the show she had wanted to see."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "republican",
       "word": "republican",
       "senses": [
         {
-          "id": "sense-c4c72958",
-          "pos": "adjective",
+          "id": "sense-cd66c03e",
+          "pos": "adj.",
           "meaningZh": "共和黨的；屬於共和黨",
-          "definitionEn": "relating to or belonging to the Republican Party",
           "examples": [
             "The Republican Party has been in power for eight years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bebd0116",
-          "pos": "noun",
+          "id": "sense-7ef9f1da",
+          "pos": "n.",
           "meaningZh": "共和主義者",
-          "definitionEn": "an advocate of a government in which supreme power lies in a body of citizens who can elect representatives or leaders responsible to them",
           "examples": [
             "The senator is a proud Republican who believes in the importance of representation by the people."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resemblance",
       "word": "resemblance",
       "senses": [
         {
-          "id": "sense-87edee57",
-          "pos": "noun",
+          "id": "sense-bc7b427b",
+          "pos": "n.",
           "meaningZh": "相似；相像；類似之處",
-          "definitionEn": "the state or quality of being similar in appearance or external details",
           "examples": [
             "The resemblance between the two siblings was uncanny, as they not only shared similar facial features, but also had the same mannerisms and gestures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reservoir",
       "word": "reservoir",
       "senses": [
         {
-          "id": "sense-d9f29902",
-          "pos": "noun",
+          "id": "sense-cf35e5a6",
+          "pos": "n.",
           "meaningZh": "水庫；蓄水池",
-          "definitionEn": "a lake or artificial body of water used for storing and supplying water for public or agricultural use.",
           "examples": [
             "During the dry season, the reservoir provided ample water for irrigation in the surrounding farmlands."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fed4f758",
-          "pos": "noun",
+          "id": "sense-c4cf34c4",
+          "pos": "n.",
           "meaningZh": "儲液槽；蓄油槽",
-          "definitionEn": "a large tank used for collecting and storing a liquid, especially water or oil.",
           "examples": [
             "During periods of heavy rainfall, the reservoir fills up, ensuring a steady supply of water throughout the year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "residence",
       "word": "residence",
       "senses": [
         {
-          "id": "sense-d31f44e9",
-          "pos": "noun",
+          "id": "sense-0f20ec99",
+          "pos": "n.",
           "meaningZh": "官邸；正式住所",
-          "definitionEn": "the official home of someone important, such as a president or monarch",
           "examples": [
             "The president resides in the White House."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fca54239",
-          "pos": "noun",
+          "id": "sense-a0785309",
+          "pos": "n.",
           "meaningZh": "居住；定居",
-          "definitionEn": "the act of dwelling in a place",
           "examples": [
             "After retiring, they decided to make their summer cottage their permanent residence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "resident",
+      "word": "resident",
+      "senses": [
+        {
+          "id": "sense-721ffdc1",
+          "pos": "n.",
+          "meaningZh": "居民；住戶",
+          "examples": [
+            "Local residents complained about the noise from the new factory."
+          ]
+        },
+        {
+          "id": "sense-d3867f23",
+          "pos": "adj.",
+          "meaningZh": "居住當地的；常駐的",
+          "examples": [
+            "The resident of the house complained about the loud music next door."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "residential",
+      "word": "residential",
+      "senses": [
+        {
+          "id": "sense-9c8abffe",
+          "pos": "adj.",
+          "meaningZh": "住宅的；供居住的",
+          "examples": [
+            "The new housing development is strictly residential, with no commercial buildings allowed."
+          ]
+        },
+        {
+          "id": "sense-e14b3cdf",
+          "pos": "adj.",
+          "meaningZh": "住宅區的；與居住有關的",
+          "examples": [
+            "The quiet residential area was perfect for families with young children."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "resort",
+      "word": "resort",
+      "senses": [
+        {
+          "id": "sense-5e0d7e6c",
+          "pos": "n.",
+          "meaningZh": "度假勝地；渡假村",
+          "examples": [
+            "The beach resort is a popular vacation spot for families during the summer."
+          ]
+        },
+        {
+          "id": "sense-58e2cd4e",
+          "pos": "v.",
+          "meaningZh": "求助於；訴諸；採取",
+          "examples": [
+            "After his car broke down, he had to resort to taking the bus to get to work."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "respondent",
+      "word": "respondent",
+      "senses": [
+        {
+          "id": "sense-e01d5fa6",
+          "pos": "n.",
+          "meaningZh": "受訪者；回應者",
+          "examples": [
+            "The respondent in the survey stated that they were satisfied with the customer service."
+          ]
+        },
+        {
+          "id": "sense-d6eb7613",
+          "pos": "adj.",
+          "meaningZh": "回應的；應答的",
+          "examples": []
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "resume",
+      "word": "resume",
+      "senses": [
+        {
+          "id": "sense-6becb8b2",
+          "pos": "v.",
+          "meaningZh": "恢復；重新開始；繼續",
+          "examples": [
+            "The meeting will resume after a short break."
+          ]
+        },
+        {
+          "id": "sense-c97c0f55",
+          "pos": "n.",
+          "meaningZh": "履歷表；簡歷",
+          "examples": [
+            "After graduating, John prepared a resume to apply for his dream job as a software engineer."
+          ]
+        },
+        {
+          "id": "sense-325976b4",
+          "pos": "n.",
+          "meaningZh": "摘要；簡短說明",
+          "examples": [
+            "Before the interview began, the applicant handed over his resume to the employer."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

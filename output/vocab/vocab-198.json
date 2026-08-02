@@ -1,1368 +1,633 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 198,
   "words": [
-    {
-      "wordKey": "telecommunications",
-      "word": "telecommunications",
-      "senses": [
-        {
-          "id": "sense-b525a67b",
-          "pos": "noun",
-          "meaningZh": "電信業；通訊技術",
-          "definitionEn": "The technology of transmitting information, such as words, sounds, or images, over long distances using electronic means. Often involves the use of devices such as telephones, radios, and computers.",
-          "examples": [
-            "Telecommunication has connected people from across the world, allowing them to communicate instantaneously over long distances via video conferencing, email, and voice calls."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-514586ce",
-          "pos": "noun",
-          "meaningZh": "電信網絡；通訊系統",
-          "definitionEn": "The systems and methods used in transmitting messages electronically over a distance. These can include telephone networks, wireless networks, and computer networks.",
-          "examples": [
-            "Telecommunication has revolutionized the way we communicate with each other. Video conferencing, emails, and chatting apps are some examples of telecommunication that enable us to connect with anyone in the world in real-time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "teller",
-      "word": "teller",
-      "senses": [
-        {
-          "id": "sense-5265e917",
-          "pos": "noun",
-          "meaningZh": "銀行行員；出納員",
-          "definitionEn": "an employee of a bank who receives and pays out money and handles other financial transactions",
-          "examples": [
-            "I went to the teller to deposit my paycheck and withdraw some cash."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-1845373f",
-          "pos": "noun",
-          "meaningZh": "說故事者；講述者",
-          "definitionEn": "someone who tells a story or recounts an event or experience",
-          "examples": [
-            "The teller captivated her audience with her animated retelling of the ancient myth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "tempo",
-      "word": "tempo",
-      "senses": [
-        {
-          "id": "sense-1d4c9f1a",
-          "pos": "noun",
-          "meaningZh": "節拍速度；拍子",
-          "definitionEn": "the speed at which a piece of music is played",
-          "examples": [
-            "The conductor set a lively tempo for the orchestra, energizing the performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-abb32ea8",
-          "pos": "noun",
-          "meaningZh": "節奏；速率",
-          "definitionEn": "the rate at which something is done or happens",
-          "examples": [
-            "In a marathon, it is important for runners to maintain a consistent tempo throughout the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "tenant",
-      "word": "tenant",
-      "senses": [
-        {
-          "id": "sense-229ba525",
-          "pos": "noun",
-          "meaningZh": "房客；承租人",
-          "definitionEn": "a person or organization that pays rent to use land or a building or a vehicle that is owned by someone else",
-          "examples": [
-            "The new tenant just moved into the apartment upstairs and introduced herself to everyone in the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-6b71396a",
-          "pos": "noun",
-          "meaningZh": "租用人；佃戶",
-          "definitionEn": "a person who holds or possesses buildings or lands by any kind of title, such as ownership or lease",
-          "examples": [
-            "The new tenant signed a one-year lease for the apartment and moved in yesterday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8 +1",
-        "textbookTitle": "龍騰 B4·L8、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "tentative",
-      "word": "tentative",
-      "senses": [
-        {
-          "id": "sense-34b6ed17",
-          "pos": "adjective",
-          "meaningZh": "暫定的；試探性的",
-          "definitionEn": "not certain or fixed; provisional.",
-          "examples": [
-            "The team made a tentative plan for the project, but it could change based on new information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-9c6867be",
-          "pos": "adjective",
-          "meaningZh": "猶豫不決的；遲疑的",
-          "definitionEn": "done without confidence; hesitant.",
-          "examples": [
-            "She made a tentative approach towards the wild horse, unsure of how it would react."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
     {
       "wordKey": "terrace",
       "word": "terrace",
       "senses": [
         {
-          "id": "sense-9f441c33",
-          "pos": "noun",
+          "id": "sense-8b496ecf",
+          "pos": "n.",
           "meaningZh": "露台；戶外平台",
-          "definitionEn": "a usually paved area adjoining a house that is used for outdoor living or dining",
           "examples": [
             "On warm summer evenings, the family gathers on the terrace to enjoy a leisurely dinner while watching the sunset."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5659d102",
-          "pos": "noun",
+          "id": "sense-3cd2f4f6",
+          "pos": "n.",
           "meaningZh": "梯形坡地；台地",
-          "definitionEn": "a flat area of land on a slope",
           "examples": [
             "The house was built on a terrace overlooking the ocean, providing stunning views."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "textile",
       "word": "textile",
       "senses": [
         {
-          "id": "sense-fa34bcbd",
-          "pos": "noun",
+          "id": "sense-ae3833a1",
+          "pos": "n.",
           "meaningZh": "紡織品；布料",
-          "definitionEn": "a material made from weaving, felting, knitting, or crocheting natural or synthetic fibers",
           "examples": [
             "She wore a beautiful dress made from handwoven textiles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ced63e59",
-          "pos": "adjective",
+          "id": "sense-4eda983f",
+          "pos": "adj.",
           "meaningZh": "紡織的；布料相關的",
-          "definitionEn": "relating to the production of fabrics or the use of fabric in clothing or household goods",
           "examples": [
             "The textile industry has been booming in India, with cotton being the primary raw material."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thereafter",
       "word": "thereafter",
       "senses": [
         {
-          "id": "sense-fc7558c0",
-          "pos": "adverb",
+          "id": "sense-64dc1e4d",
+          "pos": "adv.",
           "meaningZh": "此後；從那以後",
-          "definitionEn": "from that time on, next in order, in consequence of that",
           "examples": [
             "After the great flood, the town was in ruins; thereafter, the community came together to rebuild and restore it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "thermometer",
       "word": "thermometer",
       "senses": [
         {
-          "id": "sense-4d9a95d6",
-          "pos": "noun",
+          "id": "sense-b6014556",
+          "pos": "n.",
           "meaningZh": "溫度計；體溫計",
-          "definitionEn": "an instrument for measuring temperature, typically consisting of a glass or plastic tube containing a liquid, such as mercury or alcohol, that expands or contracts as the temperature changes, and indicating the temperature by a graduated scale.",
           "examples": [
             "The doctor used a thermometer to check the patient’s body temperature and confirmed that they had a fever."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tilt",
       "word": "tilt",
       "senses": [
         {
-          "id": "sense-8a3bae4b",
-          "pos": "noun",
+          "id": "sense-ca377277",
+          "pos": "n.",
           "meaningZh": "傾斜；歪斜",
-          "definitionEn": "pitching dangerously to one side",
           "examples": [
             "The boat began to tilt to the left as the weight of the cargo shifted to one side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tiptoe",
       "word": "tiptoe",
       "senses": [
         {
-          "id": "sense-3c7b5554",
-          "pos": "verb",
+          "id": "sense-349690f1",
+          "pos": "v.",
           "meaningZh": "踮腳輕行；躡手躡腳",
-          "definitionEn": "to walk quietly and cautiously on the tips of one’s toes",
           "examples": [
             "Afraid of waking his parents, the little boy tiptoed across the creaky floorboards to get a midnight snack."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e0f8c2a5",
-          "pos": "noun",
+          "id": "sense-3e0a9369",
+          "pos": "n.",
           "meaningZh": "腳尖",
-          "definitionEn": "the tip of a toe",
           "examples": [
             "She walked on tiptoe to avoid waking up the baby."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tiresome",
       "word": "tiresome",
       "senses": [
         {
-          "id": "sense-358b8af3",
-          "pos": "adjective",
+          "id": "sense-78ce33ff",
+          "pos": "adj.",
           "meaningZh": "令人厭倦的；無聊乏味的",
-          "definitionEn": "causing one to feel tired or bored; tedious",
           "examples": [
             "After a long day at work, the repetitive tasks became tiresome and made him yearn for a change of scenery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "token",
       "word": "token",
       "senses": [
         {
-          "id": "sense-827ad779",
-          "pos": "noun",
+          "id": "sense-019ee1c5",
+          "pos": "n.",
           "meaningZh": "象徵；代表符號",
-          "definitionEn": "something serving as a sign or symbol of something else",
           "examples": [
             "In the game, the special key acts as a token representing access to the secret chamber."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-49aa37a9",
-          "pos": "noun",
+          "id": "sense-7ea7975d",
+          "pos": "n.",
           "meaningZh": "代幣；籌碼",
-          "definitionEn": "a metal or plastic disk that can be used to represent a unit of value in designated machines",
           "examples": [
             "At the arcade, I exchanged my money for tokens to play the games."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tornado",
       "word": "tornado",
       "senses": [
         {
-          "id": "sense-0a27a72b",
-          "pos": "noun",
+          "id": "sense-89d7d6f7",
+          "pos": "n.",
           "meaningZh": "龍捲風",
-          "definitionEn": "a powerful and destructive windstorm that forms a twisting funnel-shaped cloud",
           "examples": [
             "During the severe storm, a massive tornado touched down and caused widespread damage to the town."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-f7bc54a2",
-          "pos": "noun",
+          "id": "sense-8b1f83ce",
+          "pos": "n.",
           "meaningZh": "強烈龍捲風；旋風",
-          "definitionEn": "a violent thunderstorm that can cause extensive damage and is typically characterized by a funnel-shaped cloud extending towards the ground",
           "examples": [
             "During the tornado, the powerful winds lifted cars off the ground and destroyed several buildings in its path."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "torrent",
       "word": "torrent",
       "senses": [
         {
-          "id": "sense-7128e6d5",
-          "pos": "noun",
+          "id": "sense-f97ac8f9",
+          "pos": "n.",
           "meaningZh": "急流；洪流",
-          "definitionEn": "a violently fast stream of water (or other liquid)",
           "examples": [
             "The road was blocked due to the torrent of water that came downhill during the heavy rain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a19e04c4",
-          "pos": "noun",
+          "id": "sense-d6349140",
+          "pos": "n.",
           "meaningZh": "傾盆大雨",
-          "definitionEn": "a heavy rain",
           "examples": [
             "We had to cancel our picnic because of the torrent that started at noon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trademark",
       "word": "trademark",
       "senses": [
         {
-          "id": "sense-2f551bfa",
-          "pos": "noun",
+          "id": "sense-a4e44812",
+          "pos": "n.",
           "meaningZh": "商標；註冊標誌",
-          "definitionEn": "a name, symbol, or design that is legally registered to represent a company or product",
           "examples": [
             "The company sued its rival for printing a logo too similar to its registered trademark."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8576ddab",
-          "pos": "noun",
+          "id": "sense-45fffa23",
+          "pos": "n.",
           "meaningZh": "標誌性特徵；招牌特色",
-          "definitionEn": "a special feature or habit by which a person or thing is easily recognized",
           "examples": [
             "The singer's red baseball cap has become her trademark at every concert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transcript",
       "word": "transcript",
       "senses": [
         {
-          "id": "sense-23329043",
-          "pos": "noun",
+          "id": "sense-dbc49553",
+          "pos": "n.",
           "meaningZh": "成績單；學籍紀錄",
-          "definitionEn": "an official record of a student’s coursework and academic performance",
           "examples": [
             "The student needed to submit their transcript as part of their college application."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8f94af87",
-          "pos": "noun",
+          "id": "sense-ca505ff7",
+          "pos": "n.",
           "meaningZh": "逐字稿；錄音謄本",
-          "definitionEn": "something that has been transcribed, typically a written record of dictated or recorded speech (usually typewritten)",
           "examples": [
             "During the trial, the court reporter meticulously created a transcript of all the proceedings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transmit",
       "word": "transmit",
       "senses": [
         {
-          "id": "sense-6ddd7c3d",
-          "pos": "verb",
+          "id": "sense-272448b8",
+          "pos": "v.",
           "meaningZh": "傳送；播送",
-          "definitionEn": "to send or pass on (something) to another person or place, especially electronically or by radio",
           "examples": [
             "After finishing the interview, he transmitted the recordings to the news station for broadcast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-f8d8bc8d",
-          "pos": "verb",
+          "id": "sense-9c49034c",
+          "pos": "v.",
           "meaningZh": "傳播；散布",
-          "definitionEn": "to spread or communicate (an emotion, disease, or idea) to others",
           "examples": [
             "During a party, a contagious laughter erupted, quickly transmitting throughout the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transplant",
       "word": "transplant",
       "senses": [
         {
-          "id": "sense-48fa5676",
-          "pos": "noun",
+          "id": "sense-42e8124a",
+          "pos": "n.",
           "meaningZh": "器官移植手術",
-          "definitionEn": "a surgical procedure in which an organ is taken from a donor and implanted into a recipient",
           "examples": [
             "After years of waiting, she finally underwent a successful kidney transplant, and her health began to improve."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-053d5e42",
-          "pos": "noun",
+          "id": "sense-012524e6",
+          "pos": "n.",
           "meaningZh": "移植的器官或組織",
-          "definitionEn": "the transplanted tissue or organ",
           "examples": [
             "After receiving a kidney transplant, she is now able to live a healthier and more active life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "treasury",
       "word": "treasury",
       "senses": [
         {
-          "id": "sense-893a54a6",
-          "pos": "noun",
+          "id": "sense-30799b7e",
+          "pos": "n.",
           "meaningZh": "國庫；財政儲備",
-          "definitionEn": "the funds or assets of a government, institution, or individual",
           "examples": [
             "The national treasury has reserves of $40 billion to finance government operations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0250e3cf",
-          "pos": "noun",
+          "id": "sense-a5879457",
+          "pos": "n.",
           "meaningZh": "寶庫；珍寶室",
-          "definitionEn": "a room or building where valuable items, such as money or jewels, can be kept safely",
           "examples": [
             "The queen’s treasury contains not only gold and diamonds but also ancient artifacts and royal heirlooms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trek",
       "word": "trek",
       "senses": [
         {
-          "id": "sense-43473bf8",
-          "pos": "verb",
+          "id": "sense-6ba80bb5",
+          "pos": "v.",
           "meaningZh": "長途跋涉；艱辛遠行",
-          "definitionEn": "to make a long and arduous journey, especially on foot or in the mountains",
           "examples": [
             "After months of planning, we embarked on a challenging trek through the Himalayas, enduring steep ascents, unpredictable weather, and breathtaking landscapes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ffb155bd",
-          "pos": "noun",
+          "id": "sense-deecb10d",
+          "pos": "n.",
           "meaningZh": "長途跋涉；艱難旅程",
-          "definitionEn": "a long and difficult journey, especially on foot or in the mountains",
           "examples": [
             "After months of planning, they embarked on a challenging trek through the Himalayas, enduring extreme weather conditions and steep terrain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trifle",
       "word": "trifle",
       "senses": [
         {
-          "id": "sense-9459b50d",
-          "pos": "noun",
+          "id": "sense-c0814b9d",
+          "pos": "n.",
           "meaningZh": "瑣事；微不足道的事物",
-          "definitionEn": "something that is of little value or importance",
           "examples": [
             "She considered his opinion on the matter a trifle, as she valued her own judgment more."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c64a329e",
-          "pos": "noun",
+          "id": "sense-a1cbb24e",
+          "pos": "n.",
           "meaningZh": "少量；一點點",
-          "definitionEn": "a small amount or degree of something",
           "examples": [
             "She only needed a trifle of sugar to sweeten her coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trillion",
       "word": "trillion",
       "senses": [
         {
-          "id": "sense-5e7c676d",
-          "pos": "noun",
+          "id": "sense-a9f24fb5",
+          "pos": "n.",
           "meaningZh": "兆；一萬億",
-          "definitionEn": "a very large number, represented by a 1 followed by 12 zeros (in the United States) or 18 zeros (in Great Britain)",
           "examples": [
             "The national debt of the United States is over $22 trillion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tropic",
       "word": "tropic",
       "senses": [
         {
-          "id": "sense-1e09482c",
-          "pos": "noun",
+          "id": "sense-94a8b254",
+          "pos": "n.",
           "meaningZh": "回歸線",
-          "definitionEn": "one of the two imaginary lines around the earth, located at approximately 23.5 degrees north and 23.5 degrees south of the equator",
           "examples": [
             "The tropic regions enjoy warm climates throughout the year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5df4780d",
-          "pos": "noun",
+          "id": "sense-db420895",
+          "pos": "n.",
           "meaningZh": "熱帶地區",
-          "definitionEn": "the region on the Earth that is the hottest, lying between the Tropic of Cancer in the northern hemisphere and the Tropic of Capricorn in the southern hemisphere",
           "examples": [
             "She decided to take a tropical vacation to escape the cold winter weather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trout",
       "word": "trout",
       "senses": [
         {
-          "id": "sense-835dbd5b",
-          "pos": "noun",
+          "id": "sense-39eada1f",
+          "pos": "n.",
           "meaningZh": "鱒魚",
-          "definitionEn": "any of various game and food fishes of cool fresh waters mostly smaller than typical salmons",
           "examples": [
             "After a peaceful morning of fly fishing, the angler proudly displayed his catch of a beautiful rainbow trout."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trustee",
       "word": "trustee",
       "senses": [
         {
-          "id": "sense-bbba6b59",
-          "pos": "noun",
+          "id": "sense-134895f9",
+          "pos": "n.",
           "meaningZh": "受託人；信託管理人",
-          "definitionEn": "a person (or institution) to whom legal title to property is entrusted to use for another’s benefit",
           "examples": [
             "My grandfather appointed a trustee to oversee the inheritance he left for me, so that the money would be used in the manner he intended."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9780f333",
-          "pos": "noun",
+          "id": "sense-60c31313",
+          "pos": "n.",
           "meaningZh": "董事會成員；理事",
-          "definitionEn": "members of a governing board or committee who oversee the management of an organization or institution",
           "examples": [
             "The trustee board of the university decided to allocate more funding towards research programs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tuck",
       "word": "tuck",
       "senses": [
         {
-          "id": "sense-0b7ea7be",
-          "pos": "verb",
+          "id": "sense-6c59ce27",
+          "pos": "v.",
           "meaningZh": "塞入；捲入",
-          "definitionEn": "To make one or more folds in something",
           "examples": [
             "She tucked her hair behind her ear before answering the phone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cd71b407",
-          "pos": "verb",
+          "id": "sense-868a6b22",
+          "pos": "v.",
           "meaningZh": "摺疊；縮起",
-          "definitionEn": "To pull together and create folds or wrinkles",
           "examples": [
             "She tucks her shirt into her pants for a neat appearance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "turmoil",
       "word": "turmoil",
       "senses": [
         {
-          "id": "sense-4c222d93",
-          "pos": "noun",
+          "id": "sense-f28ecbd7",
+          "pos": "n.",
           "meaningZh": "騷動；混亂",
-          "definitionEn": "violent agitation",
           "examples": [
             "The political protest erupted into a state of turmoil, with clashes between the demonstrators and the police."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2046e5ad",
-          "pos": "noun",
+          "id": "sense-df15d891",
+          "pos": "n.",
           "meaningZh": "動盪；劇烈紛擾",
-          "definitionEn": "a violent disturbance",
           "examples": [
             "The city was in a state of turmoil as protesters clashed with the police."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "twilight",
       "word": "twilight",
       "senses": [
         {
-          "id": "sense-18c5a7a9",
-          "pos": "noun",
+          "id": "sense-ce991a25",
+          "pos": "n.",
           "meaningZh": "黃昏；暮光",
-          "definitionEn": "the soft, dim light in the sky just after sunset",
           "examples": [
             "We walked along the beach at twilight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e052d948",
-          "pos": "noun",
+          "id": "sense-3b57cb1c",
+          "pos": "n.",
           "meaningZh": "（事業等的）暮年；沒落期",
-          "definitionEn": "a condition of decline following successes",
           "examples": [
             "After years of being at the top of the charts, the once popular band entered the twilight of their career as their album sales began to decline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "twinkle",
       "word": "twinkle",
       "senses": [
         {
-          "id": "sense-56daa5bc",
-          "pos": "verb",
+          "id": "sense-1ae682fd",
+          "pos": "v.",
           "meaningZh": "閃爍；閃閃發光",
-          "definitionEn": "to shine with a series of quick, intermittent flashes of light",
           "examples": [
             "On a clear summer night, the stars twinkle in the sky, creating a breathtaking spectacle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c5533e17",
-          "pos": "verb",
+          "id": "sense-3c554bfa",
+          "pos": "v.",
           "meaningZh": "閃光；反光閃動",
-          "definitionEn": "to emit or reflect light in a flickering manner",
           "examples": [
             "The stars twinkle in the night sky, creating a mesmerizing display of light."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "unanimous",
+      "word": "unanimous",
+      "senses": [
+        {
+          "id": "sense-9b0486b4",
+          "pos": "adj.",
+          "meaningZh": "一致同意的；無異議的",
+          "examples": [
+            "The jury reached a unanimous decision to acquit the defendant."
+          ]
+        },
+        {
+          "id": "sense-7c3448cc",
+          "pos": "adj.",
+          "meaningZh": "全體一致的；意見相同的",
+          "examples": [
+            "The jury reached a unanimous decision to convict the defendant of all charges."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "unconditional",
+      "word": "unconditional",
+      "senses": [
+        {
+          "id": "sense-1e8708e2",
+          "pos": "adj.",
+          "meaningZh": "無條件的；絕對的",
+          "examples": [
+            "Their love for each other was unconditional, and they supported each other through thick and thin."
+          ]
+        },
+        {
+          "id": "sense-f05bda9b",
+          "pos": "adj.",
+          "meaningZh": "不附條件的；無保留的",
+          "examples": [
+            "The dog's love for its owner is unconditional, always showing affection and loyalty regardless of the circumstances."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "underestimate",
+      "word": "underestimate",
+      "senses": [
+        {
+          "id": "sense-afaa4e93",
+          "pos": "v.",
+          "meaningZh": "低估；輕估",
+          "examples": [
+            "I underestimated the difficulty of the exam and didn’t study enough, so I performed poorly."
+          ]
+        },
+        {
+          "id": "sense-a81e8450",
+          "pos": "n.",
+          "meaningZh": "低估值；過低的估計",
+          "examples": [
+            "John underestimated the amount of time it would take to complete the project and ended up missing the deadline."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "underpass",
+      "word": "underpass",
+      "senses": [
+        {
+          "id": "sense-bc50236a",
+          "pos": "n.",
+          "meaningZh": "地下道；穿越隧道",
+          "examples": [
+            "The city government constructed an underpass for the safety of the school children who have to cross the busy highway to get to their school."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "underway",
+      "word": "underway",
+      "senses": [
+        {
+          "id": "sense-cf78c243",
+          "pos": "adj.",
+          "meaningZh": "進行中的；已啟動的",
+          "examples": [
+            "The construction of the new building is well underway and is expected to be completed by the end of the year."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1408 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 67,
   "words": [
-    {
-      "wordKey": "bury",
-      "word": "bury",
-      "senses": [
-        {
-          "id": "sense-1b83d6c7",
-          "pos": "verb",
-          "meaningZh": "埋葬；安葬",
-          "definitionEn": "to put a dead body into the ground",
-          "examples": [
-            "The grieving family gathered at the cemetery to bury their loved one and say their final goodbyes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-56ae643f",
-          "pos": "verb",
-          "meaningZh": "埋入；掩埋",
-          "definitionEn": "to put something into the ground",
-          "examples": [
-            "She wants to bury the time capsule in the backyard so that it can be dug up in 10 years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "bush",
-      "word": "bush",
-      "senses": [
-        {
-          "id": "sense-b603ff02",
-          "pos": "noun",
-          "meaningZh": "灌木；矮木叢",
-          "definitionEn": "a low woody plant that has several main stems and is usually perennial",
-          "examples": [
-            "We went hiking and spotted a beautiful bush covered in colorful flowers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-c8b24864",
-          "pos": "verb",
-          "meaningZh": "裝襯套；加護套",
-          "definitionEn": "fit (a piece of equipment) with bushes; line or protect with bushes",
-          "examples": [
-            "Before installing the new control panel, make sure to bush it adequately to prevent any electrical issues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "buzz",
-      "word": "buzz",
-      "senses": [
-        {
-          "id": "sense-c95529d9",
-          "pos": "noun",
-          "meaningZh": "嗡嗡聲；振動聲",
-          "definitionEn": "a sound made by something that vibrates rapidly",
-          "examples": [
-            "As the bee flew by, I could hear the soft buzz of its wings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-17b44448",
-          "pos": "verb",
-          "meaningZh": "嗡嗡叫；發嗡鳴聲",
-          "definitionEn": "to make a continuous low sound, like the one a bee makes",
-          "examples": [
-            "As the bees flew around the garden, their buzzing filled the air with a soothing melody."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L2",
-        "textbookTitle": "翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "cabin",
-      "word": "cabin",
-      "senses": [
-        {
-          "id": "sense-c9b95767",
-          "pos": "noun",
-          "meaningZh": "小木屋；山間小屋",
-          "definitionEn": "a small house built of wood, typically in a wooded area",
-          "examples": [
-            "After a long hike through the forest, we reached a cozy cabin nestled among the trees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-385e6a9c",
-          "pos": "noun",
-          "meaningZh": "船艙；客艙",
-          "definitionEn": "a small room where people sleep on a ship or boat",
-          "examples": [
-            "After a long day of fishing, the weary sailors retired to their cabins to rest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "cable",
-      "word": "cable",
-      "senses": [
-        {
-          "id": "sense-f124b430",
-          "pos": "noun",
-          "meaningZh": "電纜；纜線",
-          "definitionEn": "a thick wire or set of wires used to carry electricity, signals, or to pull heavy things",
-          "examples": [
-            "They laid a new cable to bring internet to the village."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-29afd4c3",
-          "pos": "noun",
-          "meaningZh": "鏈節（海洋深度單位）",
-          "definitionEn": "a unit of depth for measuring the depth of water, equal to approximately 100 fathoms",
-          "examples": [
-            "The ship’s captain ordered the crew to start checking the cable as they entered the deep part of the ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "cafeteria",
       "word": "cafeteria",
       "senses": [
         {
-          "id": "sense-7e9ee811",
-          "pos": "noun",
+          "id": "sense-f791bb25",
+          "pos": "n.",
           "meaningZh": "自助餐廳；員工餐廳",
-          "definitionEn": "a self-service restaurant or dining area, where customers usually serve themselves from a buffet and pay a cashier",
           "examples": [
             "I usually eat my lunch at the company cafeteria."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "campus",
       "word": "campus",
       "senses": [
         {
-          "id": "sense-76cf55d2",
-          "pos": "noun",
+          "id": "sense-7945d94a",
+          "pos": "n.",
           "meaningZh": "校園；院區",
-          "definitionEn": "the buildings and land of a university, college, hospital, or large business",
           "examples": [
             "The campus of the university is spread across 100 acres, with state-of-the-art facilities and beautiful landscaping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "canyon",
       "word": "canyon",
       "senses": [
         {
-          "id": "sense-82206eb2",
-          "pos": "noun",
+          "id": "sense-93994fa6",
+          "pos": "n.",
           "meaningZh": "峽谷；深谷",
-          "definitionEn": "a deep, narrow valley with steep sides, often with a stream or river running through it",
           "examples": [
             "We hiked along the rim of the majestic canyon, marveling at the breathtaking views of the river winding through the deep valley."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capable",
       "word": "capable",
       "senses": [
         {
-          "id": "sense-0d9e1d2c",
-          "pos": "adjective",
+          "id": "sense-ee21d730",
+          "pos": "adj.",
           "meaningZh": "有能力的；勝任的",
-          "definitionEn": "having the ability or capacity to accomplish a task or goal",
           "examples": [
             "Despite his young age, Jack proved to be capable of leading the team to victory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1965bbb8",
-          "pos": "adjective",
+          "id": "sense-ea32ea3c",
+          "pos": "adj.",
           "meaningZh": "具備技能的；能幹的",
-          "definitionEn": "possessing the necessary skills and qualifications to perform a task with success",
           "examples": [
             "After years of training, she became capable of playing the piano at a professional level."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "captain",
       "word": "captain",
       "senses": [
         {
-          "id": "sense-24db829c",
-          "pos": "noun",
+          "id": "sense-1a02d01c",
+          "pos": "n.",
           "meaningZh": "領導者；隊長",
-          "definitionEn": "the leader of a group of people",
           "examples": [
             "The captain of the ship was responsible for navigating and maintaining the vessel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-62978043",
-          "pos": "noun",
+          "id": "sense-f6ea1fc3",
+          "pos": "n.",
           "meaningZh": "船長；艦長",
-          "definitionEn": "a licensed officer who commands a merchant ship",
           "examples": [
             "Captain Smith was responsible for safely navigating the cargo ship across the ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L1",
-        "textbookTitle": "翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capture",
       "word": "capture",
       "senses": [
         {
-          "id": "sense-e545163c",
-          "pos": "verb",
+          "id": "sense-e6e907c5",
+          "pos": "v.",
           "meaningZh": "捕捉；逮捕",
-          "definitionEn": "to take hold of something after chasing or pursuing it",
           "examples": [
             "The police were able to capture the thief after a high-speed chase through the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-778c297f",
-          "pos": "verb",
+          "id": "sense-cf856ddc",
+          "pos": "v.",
           "meaningZh": "吸引；抓住（注意力）",
-          "definitionEn": "to attract and make someone interested in something or someone",
           "examples": [
             "The new movie trailer captured the attention of millions of viewers worldwide, resulting in a record-breaking opening weekend at the box office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "career",
       "word": "career",
       "senses": [
         {
-          "id": "sense-58d430a6",
-          "pos": "noun",
+          "id": "sense-c59c4a86",
+          "pos": "n.",
           "meaningZh": "職業生涯；事業",
-          "definitionEn": "the general progression of your working or professional life",
           "examples": [
             "After years of hard work and dedication, she finally reached the peak of her career as a high-powered executive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b592e637",
-          "pos": "verb",
+          "id": "sense-f4b5fc56",
+          "pos": "v.",
           "meaningZh": "全速衝行；飛馳",
-          "definitionEn": "move headlong at high speed",
           "examples": [
             "The race car careers around the track, reaching incredible speeds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carpenter",
       "word": "carpenter",
       "senses": [
         {
-          "id": "sense-86ced51f",
-          "pos": "noun",
+          "id": "sense-3156cf8f",
+          "pos": "n.",
           "meaningZh": "木匠；木工師傅",
-          "definitionEn": "a person who makes or repairs wooden objects, especially in construction",
           "examples": [
             "After the storm, the carpenter came to repair the damaged roof."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carpet",
       "word": "carpet",
       "senses": [
         {
-          "id": "sense-7d3bb61a",
-          "pos": "noun",
+          "id": "sense-bcafaf4e",
+          "pos": "n.",
           "meaningZh": "地毯；毛毯",
-          "definitionEn": "a piece of thick fabric used for covering floors that usually has a soft surface or piles",
           "examples": [
             "I need to buy a new carpet for my living room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d4912470",
-          "pos": "verb",
+          "id": "sense-5c7f8437",
+          "pos": "v.",
           "meaningZh": "鋪地毯；鋪設毛毯",
-          "definitionEn": "to cover a floor or other surface with a carpet",
           "examples": [
             "She decided to carpet her bedroom floor with a soft, plush carpet in a light shade of grey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carriage",
       "word": "carriage",
       "senses": [
         {
-          "id": "sense-9cc73d35",
-          "pos": "noun",
+          "id": "sense-aed909a5",
+          "pos": "n.",
           "meaningZh": "馬車；四輪馬車",
-          "definitionEn": "a vehicle with wheels, usually drawn by horses, that is used for transportation",
           "examples": [
             "The newlyweds rode in a horse-drawn carriage through the streets after their wedding ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1320f6b2",
-          "pos": "noun",
+          "id": "sense-2ec33c22",
+          "pos": "n.",
           "meaningZh": "托架；滑動機構",
-          "definitionEn": "a mechanical component that moves other parts",
           "examples": [
             "The carriage of the typewriter smoothly moves from left to right when I type a sentence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cart",
       "word": "cart",
       "senses": [
         {
-          "id": "sense-42d99f73",
-          "pos": "noun",
+          "id": "sense-b6b9ee83",
+          "pos": "n.",
           "meaningZh": "推車；手推車",
-          "definitionEn": "a vehicle with one, two, or four wheels that can be pushed by a person",
           "examples": [
             "In the grocery store, I loaded the cart with fruits and vegetables before pushing it to the checkout counter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-33c6a041",
-          "pos": "verb",
+          "id": "sense-e4f95ea4",
+          "pos": "v.",
           "meaningZh": "用車搬運；推運",
-          "definitionEn": "move or carry something using a cart",
           "examples": [
             "He carted away all the boxes from the store room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cast",
       "word": "cast",
       "senses": [
         {
-          "id": "sense-952aaf4f",
-          "pos": "verb",
+          "id": "sense-2ba07016",
+          "pos": "v.",
           "meaningZh": "投擲；扔；投射",
-          "definitionEn": "to throw something, or to send out light, a shadow, or a glance",
           "examples": [
             "She cast a stone into the pond and watched the ripples spread."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3a9a17a1",
-          "pos": "verb",
+          "id": "sense-2a9ed9dc",
+          "pos": "v.",
           "meaningZh": "選角；指定角色",
-          "definitionEn": "select to play, sing, or dance a part in a play, movie, musical, opera, or ballet",
           "examples": [
             "The director casted Sarah as the lead actress in the upcoming Broadway musical."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-514e9a6d",
-          "pos": "verb",
+          "id": "sense-036da078",
+          "pos": "v.",
           "meaningZh": "分配角色；安排演員",
-          "definitionEn": "assign the roles of (a movie or a play) to actors",
           "examples": [
             "The director casted the talented actress as the lead role in the upcoming film."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "casual",
       "word": "casual",
       "senses": [
         {
-          "id": "sense-22bbbbd9",
-          "pos": "adjective",
+          "id": "sense-f76d1c43",
+          "pos": "adj.",
           "meaningZh": "漫不經心的；隨便的",
-          "definitionEn": "unconcerned or indifferent; not showing much interest or worry",
           "examples": [
             "Despite having an important exam the following day, Claire was casual about studying and spent the evening watching movies instead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8f9731d9",
-          "pos": "adjective",
+          "id": "sense-6a304567",
+          "pos": "adj.",
           "meaningZh": "休閒的；非正式的",
-          "definitionEn": "appropriate for everyday use or regular occasions",
           "examples": [
             "Wearing jeans and a t-shirt is a casual attire for a weekend brunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cattle",
       "word": "cattle",
       "senses": [
         {
-          "id": "sense-e0c9efbb",
-          "pos": "noun",
+          "id": "sense-e64611c7",
+          "pos": "n.",
           "meaningZh": "牛隻；牲畜",
-          "definitionEn": "A type of domesticated animal, such as cows, bulls, or steers, that are raised for meat or dairy products.",
           "examples": [
             "The farmer’s field was full of cattle grazing on the grass."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cave",
       "word": "cave",
       "senses": [
         {
-          "id": "sense-eddb4430",
-          "pos": "noun",
+          "id": "sense-ba8527f8",
+          "pos": "n.",
           "meaningZh": "洞穴；山洞",
-          "definitionEn": "a large hole in the side of a hill, cliff, or mountain, or underground.",
           "examples": [
             "During their hiking adventure, the explorers stumbled upon a hidden cave in the heart of the dense forest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2cde5242",
-          "pos": "noun",
+          "id": "sense-f76a3bda",
+          "pos": "n.",
           "meaningZh": "天然地下洞穴；岩洞",
-          "definitionEn": "a natural underground space or chamber, typically formed by the erosion of limestone or other soft rocks.",
           "examples": [
             "Explorers discovered ancient drawings on the walls of the deep cave."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "champion",
       "word": "champion",
       "senses": [
         {
-          "id": "sense-75b837a3",
-          "pos": "noun",
+          "id": "sense-a69f882f",
+          "pos": "n.",
           "meaningZh": "冠軍；得勝者",
-          "definitionEn": "a person who has won first place in a competition",
           "examples": [
             "Serena Williams is a true champion having won 23 Grand Slam singles titles in tennis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3d03ce4f",
-          "pos": "adjective",
+          "id": "sense-f89f7bf9",
+          "pos": "adj.",
           "meaningZh": "奪冠的；第一名的",
-          "definitionEn": "holding first place in a contest",
           "examples": [
             "After months of tough competition, she finally became the champion of the tennis tournament."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1",
-        "textbookTitle": "龍騰 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "charm",
       "word": "charm",
       "senses": [
         {
-          "id": "sense-72a9744f",
-          "pos": "verb",
+          "id": "sense-99ff8ac4",
+          "pos": "v.",
           "meaningZh": "迷住；使著迷",
-          "definitionEn": "to please or attract someone by using your personal qualities",
           "examples": [
             "The actor's natural charm won over the audience, making them all laugh and cheer throughout the performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8139c89e",
-          "pos": "verb",
+          "id": "sense-2ad1f30b",
+          "pos": "v.",
           "meaningZh": "施魔法；用符咒",
-          "definitionEn": "to use an object or saying that is believed to bring good luck",
           "examples": [
             "She carried a small rabbit's foot as a charm to bring her good luck in her exams."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chat",
       "word": "chat",
       "senses": [
         {
-          "id": "sense-545e881f",
-          "pos": "noun",
+          "id": "sense-5ba53abf",
+          "pos": "n.",
           "meaningZh": "閒聊；非正式交談",
-          "definitionEn": "an informal conversation",
           "examples": [
             "I met up with my friends at the coffee shop and we had a delightful chat over cups of hot tea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e831763a",
-          "pos": "noun",
+          "id": "sense-59d6369a",
+          "pos": "n.",
           "meaningZh": "獨唱曲（音樂）",
-          "definitionEn": "a musical composition typically sung by one person",
           "examples": [
             "The opera singer performed a beautiful chat, showcasing her incredible vocal range and control."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cheek",
       "word": "cheek",
       "senses": [
         {
-          "id": "sense-dd2e2502",
-          "pos": "noun",
+          "id": "sense-09f47206",
+          "pos": "n.",
           "meaningZh": "臉頰",
-          "definitionEn": "either side of the face below the eyes",
           "examples": [
             "She smiled and blushed, her cheeks turning a rosy pink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-087f88a6",
-          "pos": "noun",
+          "id": "sense-2246bcda",
+          "pos": "n.",
           "meaningZh": "無禮；厚臉皮",
-          "definitionEn": "impudent aggressiveness",
           "examples": [
             "During the meeting, Tom had the audacity to interrupt the CEO and question his decisions, with a display of cheek that left everyone speechless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cheerful",
       "word": "cheerful",
       "senses": [
         {
-          "id": "sense-dd081043",
-          "pos": "adjective",
+          "id": "sense-eb6a6547",
+          "pos": "adj.",
           "meaningZh": "開朗的；愉快的",
-          "definitionEn": "having or showing good spirits; full of or promoting cheer",
           "examples": [
             "Despite the rainy weather, she remained cheerful and brought smiles to everyone's faces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-adb4a5d1",
-          "pos": "adjective",
+          "id": "sense-5f5999a5",
+          "pos": "adj.",
           "meaningZh": "樂觀的；興致勃勃的",
-          "definitionEn": "pleasantly optimistic, even if unrealistic",
           "examples": [
             "Despite the pouring rain, Jane remained cheerful and excited about going to the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cherry",
       "word": "cherry",
       "senses": [
         {
-          "id": "sense-26b2095c",
-          "pos": "noun",
+          "id": "sense-f5037444",
+          "pos": "n.",
           "meaningZh": "櫻桃",
-          "definitionEn": "a small, round fruit with a single hard stone, typically bright or dark red in color.",
           "examples": [
             "She plucked a ripe cherry from the tree and popped it into her mouth, savoring its sweet and tart flavors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e1802629",
-          "pos": "noun",
+          "id": "sense-2d0afab1",
+          "pos": "n.",
           "meaningZh": "櫻桃樹",
-          "definitionEn": "the tree that produces cherries.",
           "examples": [
             "The cherry tree in the backyard is blooming beautifully this spring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chest",
       "word": "chest",
       "senses": [
         {
-          "id": "sense-9e76134e",
-          "pos": "noun",
+          "id": "sense-781177d2",
+          "pos": "n.",
           "meaningZh": "胸部；胸膛",
-          "definitionEn": "the front part of the body between the neck and the stomach",
           "examples": [
             "He put his hand on his chest and said, ’I promise to always love you.’"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a8456784",
-          "pos": "noun",
+          "id": "sense-16834648",
+          "pos": "n.",
           "meaningZh": "箱子；大木箱",
-          "definitionEn": "a container with a lid, used for storing things, typically large and robust",
           "examples": [
             "The treasure chest was full of gold coins and precious gemstones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chill",
       "word": "chill",
       "senses": [
         {
-          "id": "sense-78c4a84a",
-          "pos": "noun",
+          "id": "sense-40a8af8e",
+          "pos": "n.",
           "meaningZh": "發冷；畏寒（病兆）",
-          "definitionEn": "a feeling of coldness that usually indicates the beginning of an illness and the development of a fever",
           "examples": [
             "Sarah woke up with a chill and decided to stay home from work to rest and prevent getting more sick."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8902ee7c",
-          "pos": "noun",
+          "id": "sense-11d92d18",
+          "pos": "n.",
           "meaningZh": "寒意；不寒而慄",
-          "definitionEn": "a sudden feeling of fear or unease",
           "examples": [
             "As she walked through the abandoned house, a chill ran down her spine, making her regret her decision to explore alone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chilly",
       "word": "chilly",
       "senses": [
         {
-          "id": "sense-c954960d",
-          "pos": "adjective",
+          "id": "sense-d036e347",
+          "pos": "adj.",
           "meaningZh": "寒冷的；微寒的",
-          "definitionEn": "cold enough to be uncomfortable, but not very cold",
           "examples": [
             "It was a chilly morning, so I wore a jacket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-dac5d581",
-          "pos": "adjective",
+          "id": "sense-7d1f652b",
+          "pos": "adj.",
           "meaningZh": "冷淡的；不熱情的",
-          "definitionEn": "not showing or feeling any enthusiasm or affection",
           "examples": [
             "Even though it was her birthday, Jane gave a chilly response when her friends surprised her with a party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a49ac48d",
-          "pos": "adjective",
+          "id": "sense-7889cabb",
+          "pos": "adj.",
           "meaningZh": "冷漠的；不友善的",
-          "definitionEn": "lacking warmth or friendliness",
           "examples": [
             "At the party, everyone was dancing and having fun, but John stood in the corner with a chilly expression on his face."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chimney",
       "word": "chimney",
       "senses": [
         {
-          "id": "sense-c1bed491",
-          "pos": "noun",
+          "id": "sense-d9294329",
+          "pos": "n.",
           "meaningZh": "煙囪",
-          "definitionEn": "a vertical channel through which smoke or fumes are carried away from a fire, typically through the roof of a building.",
           "examples": [
             "As the fire crackled in the fireplace, the chimney efficiently funneled the smoke outside, leaving the room free from any lingering smell."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-181ea237",
-          "pos": "noun",
+          "id": "sense-825604bf",
+          "pos": "n.",
           "meaningZh": "（油燈）玻璃燈罩",
-          "definitionEn": "a glass cylinder used to surround the flame of an oil lamp, to protect it from drafts.",
           "examples": [
             "During the power outage, Sarah lit her oil lamp and placed a chimney over the flame to ensure it stayed protected from any drafts in the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "chin",
+      "word": "chin",
+      "senses": [
+        {
+          "id": "sense-eb43f2a9",
+          "pos": "n.",
+          "meaningZh": "下巴；頦部",
+          "examples": [
+            "The boxer's punch landed squarely on his opponent's chin, knocking him out cold."
+          ]
+        },
+        {
+          "id": "sense-64e53215",
+          "pos": "n.",
+          "meaningZh": "下頜突出部分",
+          "examples": [
+            "She rested her chin on her hand as she listened intently to the lecture."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "chip",
+      "word": "chip",
+      "senses": [
+        {
+          "id": "sense-ecd6b43b",
+          "pos": "n.",
+          "meaningZh": "洋芋片；薯條；晶片",
+          "examples": [
+            "He opened a bag of chips to share with his friends."
+          ]
+        },
+        {
+          "id": "sense-47ee9ec2",
+          "pos": "n.",
+          "meaningZh": "牛糞片（曬乾的）",
+          "examples": [
+            "After stepping in a pile of cow manure, she had a chip on her shoe."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "chop",
+      "word": "chop",
+      "senses": [
+        {
+          "id": "sense-6a9154b3",
+          "pos": "v.",
+          "meaningZh": "劈；砍；剁",
+          "examples": [
+            "The lumberjack used his axe to chop down the tree."
+          ]
+        },
+        {
+          "id": "sense-27caae33",
+          "pos": "n.",
+          "meaningZh": "（網球）切球；下旋球",
+          "examples": [
+            "In the tennis match, Rafael executed a perfect chop which caused the ball to bounce low and spin away from his opponent, making it difficult to return."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cigarette",
+      "word": "cigarette",
+      "senses": [
+        {
+          "id": "sense-1422d596",
+          "pos": "n.",
+          "meaningZh": "香菸；紙菸",
+          "examples": [
+            "Thomas took a break from work and stepped outside to enjoy a cigarette."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cinema",
+      "word": "cinema",
+      "senses": [
+        {
+          "id": "sense-bf128ae8",
+          "pos": "n.",
+          "meaningZh": "電影院",
+          "examples": [
+            "I love going to the cinema with my friends on weekends to watch the latest movies."
+          ]
+        },
+        {
+          "id": "sense-a1e1cbaa",
+          "pos": "n.",
+          "meaningZh": "電影（媒介）；電影業",
+          "examples": [
+            "The cinema was packed over the weekend with moviegoers eager to see the latest blockbuster release."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1434 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 95,
   "words": [
-    {
-      "wordKey": "trader",
-      "word": "trader",
-      "senses": [
-        {
-          "id": "sense-c501e510",
-          "pos": "noun",
-          "meaningZh": "交易員；買賣商",
-          "definitionEn": "a person who buys and sells goods in order to make a profit",
-          "examples": [
-            "John works as a trader in a stock brokerage firm, where he buys and sells stocks on behalf of his clients to earn a commission."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-40ecb9ac",
-          "pos": "noun",
-          "meaningZh": "商人；貿易商",
-          "definitionEn": "someone who purchases and maintains an inventory of goods to be sold",
-          "examples": [
-            "The trader purchased a large amount of rice from the farmers and kept them in his warehouse to sell them later for a profit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "tradition",
-      "word": "tradition",
-      "senses": [
-        {
-          "id": "sense-1e7256ab",
-          "pos": "noun",
-          "meaningZh": "傳統；習俗",
-          "definitionEn": "a specific practice of long standing",
-          "examples": [
-            "Every year, our family gathers around the dinner table on Thanksgiving to continue the tradition of sharing a meal together and expressing gratitude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-f29913c2",
-          "pos": "noun",
-          "meaningZh": "世代沿襲的做法",
-          "definitionEn": "an inherited pattern of thought or action",
-          "examples": [
-            "Every year, on Thanksgiving, our family has a tradition of gathering together for a big feast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "traditional",
-      "word": "traditional",
-      "senses": [
-        {
-          "id": "sense-fc1301c2",
-          "pos": "adjective",
-          "meaningZh": "傳統的；依循習俗的",
-          "definitionEn": "related to the customs or ways of life that have been passed down from previous generations",
-          "examples": [
-            "During the Chinese New Year, it is traditional for families to gather together and exchange red envelopes as a sign of good luck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-8c2f8a4d",
-          "pos": "adjective",
-          "meaningZh": "符合既有規範的",
-          "definitionEn": "pertaining to established or widely accepted norms or beliefs",
-          "examples": [
-            "During the holiday season, it is traditional for families to gather around the dinner table and share a meal together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "trail",
-      "word": "trail",
-      "senses": [
-        {
-          "id": "sense-ac41acdc",
-          "pos": "noun",
-          "meaningZh": "小徑；步道",
-          "definitionEn": "a path or track, typically through rough terrain or a wilderness area.",
-          "examples": [
-            "After hours of hiking, we finally found the trail that led us to the stunning waterfall."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-4b4d74a5",
-          "pos": "noun",
-          "meaningZh": "蹤跡；足跡",
-          "definitionEn": "a mark or a series of signs left behind by the passage of someone or something.",
-          "examples": [
-            "The detective followed the trail of footprints, leading him to the hidden treasure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "transport",
-      "word": "transport",
-      "senses": [
-        {
-          "id": "sense-d8d5c392",
-          "pos": "noun",
-          "meaningZh": "交通工具；運輸工具",
-          "definitionEn": "something that serves as a means of transportation",
-          "examples": [
-            "The new subway system will greatly improve the transport of people across the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-d08ac9c6",
-          "pos": "noun",
-          "meaningZh": "貨物運輸業；物流",
-          "definitionEn": "the commercial enterprise of moving goods and materials",
-          "examples": [
-            "The company has a fleet of trucks for transport of goods across the country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "trap",
       "word": "trap",
       "senses": [
         {
-          "id": "sense-2677f71c",
-          "pos": "noun",
+          "id": "sense-c85fd378",
+          "pos": "n.",
           "meaningZh": "陷阱；捕獸器",
-          "definitionEn": "a device used to catch and hold something, usually an animal",
           "examples": [
             "After noticing the mouse in the house, the homeowner quickly set up a trap to catch it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-76c173a1",
-          "pos": "noun",
+          "id": "sense-c6ee102d",
+          "pos": "n.",
           "meaningZh": "（排水管）存水彎；防臭彎管",
-          "definitionEn": "a U-shaped section of drainpipe that holds liquid and prevents the flow of sewer gas back into a building",
           "examples": [
             "The plumber installed a trap in the drain to keep the sewer gas from entering the basement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8 +1",
-        "textbookTitle": "龍騰 B1·L8、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trash",
       "word": "trash",
       "senses": [
         {
-          "id": "sense-81a32813",
-          "pos": "noun",
+          "id": "sense-b75115cf",
+          "pos": "n.",
           "meaningZh": "廢物；垃圾；無用之人",
-          "definitionEn": "People or things that are worthless, inferior, or offensive",
           "examples": [
             "He treats his subordinates like trash, yelling at them on small mistakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5e2352cc",
-          "pos": "verb",
+          "id": "sense-9ece00cd",
+          "pos": "v.",
           "meaningZh": "丟棄；廢棄",
-          "definitionEn": "Get rid of (someone or something) as no longer useful or desirable.",
           "examples": [
             "I had to trash my old computer because it was too outdated to work properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "travel",
       "word": "travel",
       "senses": [
         {
-          "id": "sense-da06242e",
-          "pos": "noun",
+          "id": "sense-d4f9e112",
+          "pos": "n.",
           "meaningZh": "旅行；旅遊",
-          "definitionEn": "the act of going from one place to another",
           "examples": [
             "I love to travel and explore new countries and cultures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c2c3a32a",
-          "pos": "noun",
+          "id": "sense-2d7e4d36",
+          "pos": "n.",
           "meaningZh": "移動；位移",
-          "definitionEn": "a movement through space that changes the location of something",
           "examples": [
             "I need to travel to New York for a business meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "traveler",
       "word": "traveler",
       "senses": [
         {
-          "id": "sense-6aca6b1a",
-          "pos": "noun",
+          "id": "sense-95843726",
+          "pos": "n.",
           "meaningZh": "旅行者；旅客",
-          "definitionEn": "a person who travels or goes on a trip; a person who changes location frequently, especially for business or pleasure",
           "examples": [
             "The traveler packed their bags and set off on a journey across the country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tray",
       "word": "tray",
       "senses": [
         {
-          "id": "sense-688c24dc",
-          "pos": "noun",
+          "id": "sense-81e49f68",
+          "pos": "n.",
           "meaningZh": "托盤；淺盤",
-          "definitionEn": "a flat, open container for holding or displaying items, often used for serving food or drinks.",
           "examples": [
             "The waitress placed the deliciously plated desserts on a silver tray, ready to be served to the eager guests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "treasure",
       "word": "treasure",
       "senses": [
         {
-          "id": "sense-822fed27",
-          "pos": "noun",
+          "id": "sense-cd9c46af",
+          "pos": "n.",
           "meaningZh": "財寶；寶藏",
-          "definitionEn": "a large amount of valuable possessions such as money, jewels, or other valuable items",
           "examples": [
             "While digging up an old chest in the backyard, we found a treasure trove of gold coins and precious jewels that had been buried there centuries ago."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-050cf2fb",
-          "pos": "noun",
+          "id": "sense-451447b3",
+          "pos": "n.",
           "meaningZh": "珍貴之物；寶貝",
-          "definitionEn": "something that is very valuable and important to someone, such as an object, money, or property",
           "examples": [
             "When my grandmother passed away, she left behind a small chest filled with antique jewelry and coins, which turned out to be an absolute treasure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trend",
       "word": "trend",
       "senses": [
         {
-          "id": "sense-224d9d84",
-          "pos": "noun",
+          "id": "sense-ceb8040c",
+          "pos": "n.",
           "meaningZh": "趨勢；走向",
-          "definitionEn": "a general tendency or direction in which something is developing or changing",
           "examples": [
             "The trend of digitalization has changed the way we communicate with each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5d91bd9b",
-          "pos": "noun",
+          "id": "sense-4a911ca3",
+          "pos": "n.",
           "meaningZh": "流行；時尚潮流",
-          "definitionEn": "the popular taste or style at a given time; a fad or vogue",
           "examples": [
             "This season, the trend is for oversized sunglasses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +1",
-        "textbookTitle": "龍騰 B3·R3、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trial",
       "word": "trial",
       "senses": [
         {
-          "id": "sense-b390c487",
-          "pos": "noun",
+          "id": "sense-f8389af7",
+          "pos": "n.",
           "meaningZh": "試驗；測試",
-          "definitionEn": "the process of testing something to see if it works well or is suitable",
           "examples": [
             "The new drug is still undergoing clinical trials."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b7039bac",
-          "pos": "noun",
+          "id": "sense-9f42737c",
+          "pos": "n.",
           "meaningZh": "審判；審訊",
-          "definitionEn": "(law) the determination of a person’s innocence or guilt by due process of law",
           "examples": [
             "The trial lasted for several weeks as the prosecution and defense presented their evidence and arguments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-85852384",
-          "pos": "noun",
+          "id": "sense-7d90e434",
+          "pos": "n.",
           "meaningZh": "（體育）選拔賽；資格預賽",
-          "definitionEn": "(sports) a preliminary competition to determine qualifications",
           "examples": [
             "In order to select the team that will represent our country in the Olympics, a trial will be held to assess the skills and abilities of the athletes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "triangle",
       "word": "triangle",
       "senses": [
         {
-          "id": "sense-6518b1bc",
-          "pos": "noun",
+          "id": "sense-66a9aab8",
+          "pos": "n.",
           "meaningZh": "三角形",
-          "definitionEn": "a three-sided polygon",
           "examples": [
             "The architect drew a triangle on the blueprints to represent the shape of the building's roof."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7ce275e0",
-          "pos": "noun",
+          "id": "sense-5fb3d744",
+          "pos": "n.",
           "meaningZh": "三角板；繪圖三角板",
-          "definitionEn": "any of various triangular drafting instruments used to draw straight lines at specified angles",
           "examples": [
             "The architect used a triangle to accurately draw the angles of the building's blueprints."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tribe",
       "word": "tribe",
       "senses": [
         {
-          "id": "sense-167e947a",
-          "pos": "noun",
+          "id": "sense-70d6910a",
+          "pos": "n.",
           "meaningZh": "部落；族群",
-          "definitionEn": "a group of people who share the same culture, traditions, and language",
           "examples": [
             "The indigenous tribe gathered around the campfire, sharing stories and passing down their ancient traditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b69ef2a1",
-          "pos": "noun",
+          "id": "sense-a1cd0931",
+          "pos": "n.",
           "meaningZh": "（美洲原住民）部族；聯盟",
-          "definitionEn": "a federation or confederation of people or clans, especially among some American Indian peoples.",
           "examples": [
             "The Lakota Sioux tribe gathered together to discuss important matters and make decisions as a cohesive unit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trick",
       "word": "trick",
       "senses": [
         {
-          "id": "sense-816a34c3",
-          "pos": "noun",
+          "id": "sense-b2450f3b",
+          "pos": "n.",
           "meaningZh": "詭計；騙局",
-          "definitionEn": "an attempt to get someone to do something foolish or imprudent",
           "examples": [
             "The scammer tried to trick the elderly woman into giving him her bank account details."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8669417e",
-          "pos": "noun",
+          "id": "sense-188a5406",
+          "pos": "n.",
           "meaningZh": "把戲；特技；魔術",
-          "definitionEn": "a ludicrous or grotesque act done for fun and amusement",
           "examples": [
             "During the Halloween party, the guests were entertained by a magician who performed mind-boggling tricks, leaving everyone amazed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tricky",
       "word": "tricky",
       "senses": [
         {
-          "id": "sense-98f9d8b7",
-          "pos": "adjective",
+          "id": "sense-53e7b94b",
+          "pos": "adj.",
           "meaningZh": "棘手的；難以應付的",
-          "definitionEn": "difficult to deal with or do; requiring skill or ingenuity",
           "examples": [
             "Solving this tricky puzzle required me to think outside the box."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-0198e367",
-          "pos": "adjective",
+          "id": "sense-69e3b5c3",
+          "pos": "adj.",
           "meaningZh": "狡猾的；有欺騙性的",
-          "definitionEn": "involving cunning or deceit; deceptive in action or speech",
           "examples": [
             "The salesman used tricky tactics to persuade the customer into buying an overpriced product."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "troop",
       "word": "troop",
       "senses": [
         {
-          "id": "sense-f5b0d97d",
-          "pos": "noun",
+          "id": "sense-e246f95d",
+          "pos": "n.",
           "meaningZh": "部隊；軍隊",
-          "definitionEn": "a group of soldiers or similar positioned people, especially when organized for a specific purpose.",
           "examples": [
             "The troop of soldiers marched in precise formation to showcase their discipline and unity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-78b75d09",
-          "pos": "noun",
+          "id": "sense-8b12e8e9",
+          "pos": "n.",
           "meaningZh": "騎兵連隊",
-          "definitionEn": "a cavalry unit corresponding to an infantry company.",
           "examples": [
             "The troop of horseback riders charged towards the enemy's flank with precision and speed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tropical",
       "word": "tropical",
       "senses": [
         {
-          "id": "sense-51cd4e1e",
-          "pos": "adjective",
+          "id": "sense-7b56ee1a",
+          "pos": "adj.",
           "meaningZh": "熱帶的；位於熱帶的",
-          "definitionEn": "relating to or situated in the tropics (the region near the equator)",
           "examples": [
             "We enjoyed a tropical vacation on a beautiful island in the Caribbean, where we basked in the warm sun and swam in crystal clear turquoise waters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7365f7b8",
-          "pos": "adjective",
+          "id": "sense-10347c14",
+          "pos": "adj.",
           "meaningZh": "熱帶氣候的；炎熱潮濕的",
-          "definitionEn": "relating to the tropical climate, which is hot and humid",
           "examples": [
             "We packed our bags and headed to a tropical paradise for a much-needed beach vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "true",
       "word": "true",
       "senses": [
         {
-          "id": "sense-f3d14291",
-          "pos": "adjective",
+          "id": "sense-0f7e83ed",
+          "pos": "adj.",
           "meaningZh": "真實的；正確的",
-          "definitionEn": "consistent with fact or reality; not false",
           "examples": [
             "She always speaks the truth, even when it's hard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f468fa00",
-          "pos": "adjective",
+          "id": "sense-511667e4",
+          "pos": "adj.",
           "meaningZh": "如實的；符合事實的",
-          "definitionEn": "expressing or giving expression to the truth",
           "examples": [
             "She always speaks the truth, even when it's difficult."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trumpet",
       "word": "trumpet",
       "senses": [
         {
-          "id": "sense-af92d4cd",
-          "pos": "noun",
+          "id": "sense-9ae2dac1",
+          "pos": "n.",
           "meaningZh": "小號；喇叭",
-          "definitionEn": "a brass musical instrument with a narrow tube and a flared bell, played by blowing air through closed lips to produce a brilliant tone using valves to change the pitch",
           "examples": [
             "The orchestra’s trumpet player stood up and began to play a beautiful solo during the concerto."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d956a269",
-          "pos": "verb",
+          "id": "sense-6503e532",
+          "pos": "v.",
           "meaningZh": "吹小號；吹奏喇叭",
-          "definitionEn": "play or blow the trumpet",
           "examples": [
             "During the parade, the military band will trumpet the nation’s anthem."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trunk",
       "word": "trunk",
       "senses": [
         {
-          "id": "sense-02e4302d",
-          "pos": "noun",
+          "id": "sense-ab947691",
+          "pos": "n.",
           "meaningZh": "樹幹",
-          "definitionEn": "the main stem of a tree, usually covered with bark and providing support for branches and leaves",
           "examples": [
             "The mighty oak tree stood tall, its thick trunk serving as a solid foundation for its sprawling branches and vibrant foliage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c682ad40",
-          "pos": "noun",
+          "id": "sense-fc816aa4",
+          "pos": "n.",
           "meaningZh": "軀幹；身體主幹",
-          "definitionEn": "the main body of a person or animal, excluding the limbs, head, and neck",
           "examples": [
             "The elephant's trunk is a long, muscular appendage that is used for various purposes, such as drinking, grabbing objects, or making trumpet-like sounds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trust",
       "word": "trust",
       "senses": [
         {
-          "id": "sense-7b487057",
-          "pos": "noun",
+          "id": "sense-adff89bb",
+          "pos": "n.",
           "meaningZh": "信任；信賴",
-          "definitionEn": "the belief that someone or something is reliable and can be depended on",
           "examples": [
             "After years of working closely together, Sarah had complete trust in her business partner to make the right decisions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6ea3a80b",
-          "pos": "noun",
+          "id": "sense-e33f0ce7",
+          "pos": "n.",
           "meaningZh": "信託；信託基金",
-          "definitionEn": "a legal agreement where you give someone or an organization the authority to manage money or property on behalf of a chosen person or group of people who will receive the funds",
           "examples": [
             "After his parents passed away, John established a trust to ensure his children would be financially secure and receive their inheritance when they came of age."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L8",
-        "textbookTitle": "三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "truth",
       "word": "truth",
       "senses": [
         {
-          "id": "sense-c5f3a153",
-          "pos": "noun",
+          "id": "sense-37babb27",
+          "pos": "n.",
           "meaningZh": "真相；事實",
-          "definitionEn": "conformity to fact or reality; accuracy, correctness, or verity",
           "examples": [
             "It is always best to tell the truth, even if it is difficult."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1ddbe9e2",
-          "pos": "noun",
+          "id": "sense-f737ae16",
+          "pos": "n.",
           "meaningZh": "誠實；真誠",
-          "definitionEn": "sincerity in action, character, and utterance",
           "examples": [
             "John always speaks the truth and never lies no matter what the situation is."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L9",
-        "textbookTitle": "三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "truthful",
       "word": "truthful",
       "senses": [
         {
-          "id": "sense-9b0953fd",
-          "pos": "adjective",
+          "id": "sense-e1cfd841",
+          "pos": "adj.",
           "meaningZh": "誠實的；說真話的",
-          "definitionEn": "telling the truth in a honest and sincere way",
           "examples": [
             "During the interrogation, the suspect was not forthcoming with information, but the detective's persistent questioning eventually led to a truthful confession."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-0734d160",
-          "pos": "adjective",
+          "id": "sense-dc1a9dc4",
+          "pos": "adj.",
           "meaningZh": "如實的；符合事實的",
-          "definitionEn": "characterized by truth; accurate",
           "examples": [
             "During the investigation, the detective relied on the truthful account provided by the eyewitness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tub",
       "word": "tub",
       "senses": [
         {
-          "id": "sense-c8eb426e",
-          "pos": "noun",
+          "id": "sense-56e08ee6",
+          "pos": "n.",
           "meaningZh": "浴缸；澡盆",
-          "definitionEn": "a relatively large container, typically round, oval, or rectangular in shape, that is filled with water and used for bathing or washing the body",
           "examples": [
             "After a long and tiring trek, she was finally able to relax in a hot tub that was specially set up for her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tube",
       "word": "tube",
       "senses": [
         {
-          "id": "sense-1195cd7b",
-          "pos": "noun",
+          "id": "sense-a9745bab",
+          "pos": "n.",
           "meaningZh": "管子；管狀容器",
-          "definitionEn": "a hollow cylindrical shape or container",
           "examples": [
             "We used a tube to transport the documents from one department to another."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4ce6c6d6",
-          "pos": "verb",
+          "id": "sense-a6f769f3",
+          "pos": "v.",
           "meaningZh": "裝管；插管",
-          "definitionEn": "to provide with a tube, or to insert a tube into something",
           "examples": [
             "The doctor had to tube the patient’s airway to help them breathe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tug",
       "word": "tug",
       "senses": [
         {
-          "id": "sense-26e53f02",
-          "pos": "noun",
+          "id": "sense-006f5c02",
+          "pos": "n.",
           "meaningZh": "猛拉；用力拽",
-          "definitionEn": "a sudden abrupt pull",
           "examples": [
             "I gave a tug to my friend’s hand to pull her up from the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7c19e003",
-          "pos": "verb",
+          "id": "sense-e9396274",
+          "pos": "v.",
           "meaningZh": "拖拉；使勁拉",
-          "definitionEn": "pull or strain hard at",
           "examples": [
             "The sailors had to tug on the ropes to hoist the heavy sails up the mast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tune",
       "word": "tune",
       "senses": [
         {
-          "id": "sense-370db79f",
-          "pos": "noun",
+          "id": "sense-92febc8f",
+          "pos": "n.",
           "meaningZh": "曲調；旋律",
-          "definitionEn": "a series of musical notes that make a pleasing pattern; a melody",
           "examples": [
             "She hummed a cheerful tune while doing the dishes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f7da230e",
-          "pos": "noun",
+          "id": "sense-4ca3f9de",
+          "pos": "n.",
           "meaningZh": "（收音機）調頻；頻率調整",
-          "definitionEn": "the adjustment of a radio receiver or other circuit to a required frequency",
           "examples": [
             "She carefully tuned the radio to the desired station."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5086e185",
-          "pos": "verb",
+          "id": "sense-487ffcd4",
+          "pos": "v.",
           "meaningZh": "調音；調整音準",
-          "definitionEn": "adjust the pitches of (musical instruments) to a required frequency",
           "examples": [
             "The guitarist carefully tuned his guitar before the concert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tunnel",
       "word": "tunnel",
       "senses": [
         {
-          "id": "sense-55ef0a0c",
-          "pos": "noun",
+          "id": "sense-7a832c8c",
+          "pos": "n.",
           "meaningZh": "隧道；地下通道",
-          "definitionEn": "a passageway, usually underground, through or under something, especially for trains or cars",
           "examples": [
             "The city government decided to build a new tunnel for the train line to ease traffic congestion in the city center."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1409ade2",
-          "pos": "verb",
+          "id": "sense-664f2151",
+          "pos": "v.",
           "meaningZh": "挖隧道；開鑿通道",
-          "definitionEn": "to make or force a way through or under something, like digging",
           "examples": [
             "The construction workers tunnelled through the mountain to create a shorter route for the road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "turtle",
+      "word": "turtle",
+      "senses": [
+        {
+          "id": "sense-77035302",
+          "pos": "n.",
+          "meaningZh": "烏龜；海龜",
+          "examples": [
+            "While on vacation at the beach, we spotted a turtle slowly crawling out of the water and making its way up the sandy shore."
+          ]
+        },
+        {
+          "id": "sense-1c8e0c2d",
+          "pos": "n.",
+          "meaningZh": "高領毛衣；高領衫",
+          "examples": [
+            "She bundled up in her cozy turtle before braving the cold winter weather."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tutor",
+      "word": "tutor",
+      "senses": [
+        {
+          "id": "sense-d89909fc",
+          "pos": "n.",
+          "meaningZh": "家庭教師；私人教師",
+          "examples": [
+            "When Sarah struggled with math, her parents hired a tutor to help her improve her grades."
+          ]
+        },
+        {
+          "id": "sense-ca2817a1",
+          "pos": "v.",
+          "meaningZh": "輔導；家教授課",
+          "examples": [
+            "Sarah hired a tutor to help her improve her math skills."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "twin",
+      "word": "twin",
+      "senses": [
+        {
+          "id": "sense-c3ba22c4",
+          "pos": "n.",
+          "meaningZh": "雙胞胎（之一）",
+          "examples": [
+            "My sister and I are twins, but we look very different."
+          ]
+        },
+        {
+          "id": "sense-acb0f392",
+          "pos": "v.",
+          "meaningZh": "結合；配對",
+          "examples": [
+            "The symphony orchestra and the ballet company twinned their performances to create a unique and captivating show."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "twist",
+      "word": "twist",
+      "senses": [
+        {
+          "id": "sense-f0e748f3",
+          "pos": "v.",
+          "meaningZh": "扭曲；使變形",
+          "examples": [
+            "Tiffany accidentally sat on her doll and twisted its arm in an awkward position."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "typhoon",
+      "word": "typhoon",
+      "senses": [
+        {
+          "id": "sense-ea456ab5",
+          "pos": "n.",
+          "meaningZh": "颱風",
+          "examples": [
+            "Residents along the coast evacuated their homes as a powerful typhoon approached, bringing with it destructive winds and torrential downpours."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

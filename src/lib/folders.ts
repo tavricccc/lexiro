@@ -2,6 +2,7 @@ import type { VocabFolder } from '@/types'
 
 export const ALL_FOLDER_ID = '__all__'
 export const UNCATEGORIZED_FOLDER_ID = '__uncategorized__'
+export const UNCATEGORIZED_FOLDER_NAME = '未分類'
 
 export interface FolderOption {
   id: string
@@ -11,11 +12,26 @@ export interface FolderOption {
   parentId?: string
 }
 
-function sortFolders(folders: VocabFolder[]): VocabFolder[] {
+export function createUncategorizedFolder(): VocabFolder {
+  const timestamp = new Date(0).toISOString()
+  return {
+    id: UNCATEGORIZED_FOLDER_ID,
+    name: UNCATEGORIZED_FOLDER_NAME,
+    order: -1,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  }
+}
+
+export function sortFolders(folders: VocabFolder[]): VocabFolder[] {
   return [...folders].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name))
 }
 
-export function buildFolderOptions(folders: VocabFolder[], rootLabel: string): FolderOption[] {
+export function getFolderChildren(folders: VocabFolder[], parentId?: string): VocabFolder[] {
+  return sortFolders(folders.filter(folder => folder.parentId === parentId))
+}
+
+export function buildFolderOptions(folders: VocabFolder[]): FolderOption[] {
   const byParent = new Map<string | undefined, VocabFolder[]>()
   for (const folder of folders) {
     const siblings = byParent.get(folder.parentId) ?? []
@@ -23,7 +39,7 @@ export function buildFolderOptions(folders: VocabFolder[], rootLabel: string): F
     byParent.set(folder.parentId, siblings)
   }
 
-  const options: FolderOption[] = [{ id: UNCATEGORIZED_FOLDER_ID, label: rootLabel, name: rootLabel, depth: 0 }]
+  const options: FolderOption[] = []
   const visited = new Set<string>()
 
   function visit(parentId: string | undefined, depth: number) {
@@ -36,10 +52,14 @@ export function buildFolderOptions(folders: VocabFolder[], rootLabel: string): F
     }
   }
 
-  visit(undefined, 1)
+  visit(undefined, 0)
   return options
 }
 
-export function folderIdFromSelection(value: string): string | undefined {
-  return value === UNCATEGORIZED_FOLDER_ID ? undefined : value || undefined
+export function folderIdFromSelection(value: string): string {
+  return value && value !== ALL_FOLDER_ID ? value : UNCATEGORIZED_FOLDER_ID
+}
+
+export function folderParentIdFromSelection(value: string): string | undefined {
+  return value && value !== ALL_FOLDER_ID ? value : undefined
 }

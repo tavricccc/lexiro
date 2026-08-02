@@ -1,1395 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 54,
   "words": [
-    {
-      "wordKey": "prize",
-      "word": "prize",
-      "senses": [
-        {
-          "id": "sense-a8d0fb06",
-          "pos": "noun",
-          "meaningZh": "獎品；獎勵",
-          "definitionEn": "Something given as a reward for winning a competition or lottery.",
-          "examples": [
-            "The grand prize for the spelling bee competition was a new laptop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-70ef6cfa",
-          "pos": "adjective",
-          "meaningZh": "最高品質的；頂尖的",
-          "definitionEn": "Of the highest quality or worth.",
-          "examples": [
-            "The masterpiece painting was deemed a prize among art collectors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "produce",
-      "word": "produce",
-      "senses": [
-        {
-          "id": "sense-7e99bede",
-          "pos": "verb",
-          "meaningZh": "生產；出產",
-          "definitionEn": "to bring forth or yield something, for example crops or any other product",
-          "examples": [
-            "The farmer's hard work and dedication enabled him to produce a bountiful harvest of fruits and vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-3d7211ff",
-          "pos": "verb",
-          "meaningZh": "製造；製作",
-          "definitionEn": "to create or manufacture a man-made product",
-          "examples": [
-            "The factory produces hundreds of cars every day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L5 +2",
-        "textbookTitle": "龍騰 B1·L5、三民 B1·L6、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "production",
-      "word": "production",
-      "senses": [
-        {
-          "id": "sense-524fb4b5",
-          "pos": "noun",
-          "meaningZh": "生產；製造",
-          "definitionEn": "the creation of value or wealth by producing goods and services",
-          "examples": [
-            "The company’s production of new smartphones has significantly increased its revenue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-1062e69a",
-          "pos": "noun",
-          "meaningZh": "產量；生產數量",
-          "definitionEn": "the amount of something, such as a commodity, that is created during a given period of time",
-          "examples": [
-            "The automobile factory increased its production of cars from 500 per day to 1000 per day to meet the rising demand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L5 +3",
-        "textbookTitle": "龍騰 B1·L5、三民 B1·L6、三民 B4·L3、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "progress",
-      "word": "progress",
-      "senses": [
-        {
-          "id": "sense-0a3ac8fa",
-          "pos": "verb",
-          "meaningZh": "進展；逐步累積",
-          "definitionEn": "to steadily accumulate or form.",
-          "examples": [
-            "With consistent effort, you can make progress towards your goals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-d4885701",
-          "pos": "noun",
-          "meaningZh": "進展；進步",
-          "definitionEn": "the act of moving forward towards a goal.",
-          "examples": [
-            "After weeks of hard work, Jane finally made progress on her research project and gathered valuable data."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "project",
-      "word": "project",
-      "senses": [
-        {
-          "id": "sense-46ca0c28",
-          "pos": "noun",
-          "meaningZh": "計畫；專案",
-          "definitionEn": "a planned undertaking or task",
-          "examples": [
-            "The construction company started a new project to build a hospital in the remote area."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-1c30812e",
-          "pos": "noun",
-          "meaningZh": "國宅；低收入住宅區",
-          "definitionEn": "a publicly funded housing development for low-income families",
-          "examples": [
-            "The local government announced a new project to provide affordable housing for families in need."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2 +2",
-        "textbookTitle": "龍騰 B4·L2、三民 B2·L2、翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "promise",
       "word": "promise",
       "senses": [
         {
-          "id": "sense-2907d2e7",
-          "pos": "noun",
+          "id": "sense-6fbd33eb",
+          "pos": "n.",
           "meaningZh": "承諾；誓言",
-          "definitionEn": "a verbal or written assurance that one will definitely do something or not do something; a vow",
           "examples": [
             "Sarah made a promise to her friend that she would be there to support her during the difficult times."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-eed912cd",
-          "pos": "noun",
+          "id": "sense-5c0530d9",
+          "pos": "n.",
           "meaningZh": "希望；可期待的跡象",
-          "definitionEn": "a reason to expect something; a basis for hope",
           "examples": [
             "After studying hard all semester, getting straight A's is a promise of a great final grade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +1",
-        "textbookTitle": "龍騰 B3·L2、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "proper",
       "word": "proper",
       "senses": [
         {
-          "id": "sense-d47249ae",
-          "pos": "adjective",
+          "id": "sense-ae78841a",
+          "pos": "adj.",
           "meaningZh": "適當的；合宜的",
-          "definitionEn": "appropriate or suitable for a particular person, condition, purpose, or occasion",
           "examples": [
             "It is not proper to wear flip-flops to a job interview."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-db1c470f",
-          "pos": "adjective",
+          "id": "sense-807a4e43",
+          "pos": "adj.",
           "meaningZh": "正確的；符合規範的",
-          "definitionEn": "having all the typical qualities or characteristics of the thing specified",
           "examples": [
             "It is proper to wear a suit and tie to a formal event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L5 +1",
-        "textbookTitle": "龍騰 B1·L5、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "propose",
       "word": "propose",
       "senses": [
         {
-          "id": "sense-5078aef1",
-          "pos": "verb",
+          "id": "sense-6c54c8e0",
+          "pos": "v.",
           "meaningZh": "提議；建議",
-          "definitionEn": "to suggest or offer for consideration, examination, or criticism",
           "examples": [
             "I propose that we have a team meeting to discuss the project goals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6766d814",
-          "pos": "verb",
+          "id": "sense-9e76e6f1",
+          "pos": "v.",
           "meaningZh": "提名；推薦",
-          "definitionEn": "to nominate someone for an appointment, position, or honor",
           "examples": [
             "I propose John as the class representative for this academic year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "protect",
       "word": "protect",
       "senses": [
         {
-          "id": "sense-22a7dfd3",
-          "pos": "verb",
+          "id": "sense-592b0c6e",
+          "pos": "v.",
           "meaningZh": "保護；防護",
-          "definitionEn": "to shield someone or something from danger, injury, destruction, or damage",
           "examples": [
             "Parents always protect their children from harm’s way."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0fde88ca",
-          "pos": "verb",
+          "id": "sense-f9a7eb73",
+          "pos": "v.",
           "meaningZh": "以關稅保護（本國產業）",
-          "definitionEn": "to impose tariffs in order to favor domestic industry",
           "examples": [
             "The government decided to protect the local steel industry by imposing high tariffs on imported steel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "protective",
       "word": "protective",
       "senses": [
         {
-          "id": "sense-b44b9b03",
-          "pos": "adjective",
+          "id": "sense-e1ae1ffd",
+          "pos": "adj.",
           "meaningZh": "防護的；保護用的",
-          "definitionEn": "designed or intended to provide protection",
           "examples": [
             "The firefighter wore a protective suit while attempting to extinguish the fire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-499e3857",
-          "pos": "adjective",
+          "id": "sense-8ec4b059",
+          "pos": "adj.",
           "meaningZh": "呵護的；保護性的",
-          "definitionEn": "showing that you care about someone’s well-being and want to keep them safe",
           "examples": [
             "The mother bear was very protective of her cubs and wouldn’t let any other animal come near them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prove",
       "word": "prove",
       "senses": [
         {
-          "id": "sense-23b4b416",
-          "pos": "verb",
+          "id": "sense-f0447d97",
+          "pos": "v.",
           "meaningZh": "證明；驗證",
-          "definitionEn": "To establish the validity of something, as by an example, explanation, or experiment.",
           "examples": [
             "To prove his theory about gravity, the scientist conducted numerous experiments and gathered substantial evidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5bce30c4",
-          "pos": "verb",
+          "id": "sense-9a740977",
+          "pos": "v.",
           "meaningZh": "以數學形式論證；推導",
-          "definitionEn": "To prove formally; demonstrate by a mathematical, formal proof.",
           "examples": [
             "In order to prove the theorem, the mathematician constructed an elaborate proof, clearly demonstrating the validity of the statement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L8",
-        "textbookTitle": "三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "provide",
       "word": "provide",
       "senses": [
         {
-          "id": "sense-e021a3dc",
-          "pos": "verb",
+          "id": "sense-e622f9c5",
+          "pos": "v.",
           "meaningZh": "提供；供給",
-          "definitionEn": "give something useful or necessary",
           "examples": [
             "The teacher will provide the students with textbooks for the upcoming semester."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8d44e8df",
-          "pos": "verb",
+          "id": "sense-2d5af4f6",
+          "pos": "v.",
           "meaningZh": "規定；訂明（條件）",
-          "definitionEn": "determine what is to happen, especially by including a proviso condition or stipulation",
           "examples": [
             "The contract provided that the project must be completed within six months or a penalty would be imposed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +2",
-        "textbookTitle": "龍騰 B2·L2、三民 B2·L3、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pudding",
       "word": "pudding",
       "senses": [
         {
-          "id": "sense-43173fdb",
-          "pos": "noun",
+          "id": "sense-cb6efccf",
+          "pos": "n.",
           "meaningZh": "烤布丁；麵包布丁",
-          "definitionEn": "a baked dish made by layering bread or cake crumbs with a sweet or savory mixture, often containing meat or fruit",
           "examples": [
             "For our family gathering, I made a delicious apple pudding by layering buttery cake crumbs with sweet cinnamon-spiced apple slices."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0453339e",
-          "pos": "noun",
+          "id": "sense-cc167872",
+          "pos": "n.",
           "meaningZh": "奶凍；甜布丁",
-          "definitionEn": "a soft sweet dessert made by mixing sugar, milk, and a thickening agent such as flour or cornstarch, then cooking it by boiling, baking or steaming it",
           "examples": [
             "For dessert, we enjoyed a rich and creamy chocolate pudding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pumpkin",
       "word": "pumpkin",
       "senses": [
         {
-          "id": "sense-80fc1fa3",
-          "pos": "noun",
+          "id": "sense-143cdd53",
+          "pos": "n.",
           "meaningZh": "南瓜（果實）",
-          "definitionEn": "the large, round, orange fruit of a plant belonging to the squash family; it has hard, yellow-orange skin, flesh, and seeds, and is often eaten as a vegetable or used to make pies or soups",
           "examples": [
             "Every year, on Halloween, we carve scary faces into pumpkins and place candles inside to create jack-o'-lanterns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-10134c29",
-          "pos": "noun",
+          "id": "sense-a5457b79",
+          "pos": "n.",
           "meaningZh": "南瓜植株",
-          "definitionEn": "a type of plant with coarse vines that are widely cultivated for their large, pulpy fruit",
           "examples": [
             "Every year, the town holds a pumpkin festival where people bring their homegrown pumpkins to display and compete for the largest one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "punish",
       "word": "punish",
       "senses": [
         {
-          "id": "sense-4c4dae53",
-          "pos": "verb",
+          "id": "sense-601d8826",
+          "pos": "v.",
           "meaningZh": "懲罰；處罰",
-          "definitionEn": "to make someone suffer as a consequence for doing something wrong or committing a crime, typically by forcing them to do something they do not want to do or by placing them in prison.",
           "examples": [
             "As a parent, it is important to establish clear rules and consequences to punish your child when they misbehave. For example, you may choose to take away their screen time as a form of punishment for not completing their chores."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3 +1",
-        "textbookTitle": "龍騰 B3·L3、翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "punishment",
       "word": "punishment",
       "senses": [
         {
-          "id": "sense-be02b50a",
-          "pos": "noun",
+          "id": "sense-35fdb2f2",
+          "pos": "n.",
           "meaningZh": "懲罰；刑罰",
-          "definitionEn": "the act of punishing or imposing a penalty",
           "examples": [
             "In order to deter future misconduct, the judge imposed a severe punishment on the convicted criminal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3 +1",
-        "textbookTitle": "龍騰 B3·L3、翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pupil",
       "word": "pupil",
       "senses": [
         {
-          "id": "sense-a831aaa8",
-          "pos": "noun",
+          "id": "sense-4e9feb58",
+          "pos": "n.",
           "meaningZh": "學生；學員",
-          "definitionEn": "a learner who is enrolled in an educational institution",
           "examples": [
             "The teacher assessed the pupil’s progress regularly to ensure that she was meeting the expected learning outcomes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fc43f6b6",
-          "pos": "noun",
+          "id": "sense-da974e46",
+          "pos": "n.",
           "meaningZh": "瞳孔",
-          "definitionEn": "the contractile aperture in the center of the iris of the eye; resembles a large black dot",
           "examples": [
             "The ophthalmologist shone a light into the patient’s eye to examine the size of her pupil."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "puppy",
       "word": "puppy",
       "senses": [
         {
-          "id": "sense-baf0302c",
-          "pos": "noun",
+          "id": "sense-7c260c78",
+          "pos": "n.",
           "meaningZh": "幼犬；小狗",
-          "definitionEn": "a young dog, especially one that is not yet fully grown or trained",
           "examples": [
             "When my family brought home a playful puppy, we had to spend time teaching it how to behave properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "purple",
       "word": "purple",
       "senses": [
         {
-          "id": "sense-38b35f7c",
-          "pos": "noun",
+          "id": "sense-b5eb667c",
+          "pos": "n.",
           "meaningZh": "紫色",
-          "definitionEn": "a color made by mixing red and blue",
           "examples": [
             "She painted her bedroom walls a deep purple."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1bde9b2f",
-          "pos": "adjective",
+          "id": "sense-a23d2ba3",
+          "pos": "adj.",
           "meaningZh": "皇室的；帝王的（用色）",
-          "definitionEn": "belonging to or befitting a supreme ruler",
           "examples": [
             "The king's luxurious, velvet throne was adorned with purple cushions and golden trims."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "purpose",
       "word": "purpose",
       "senses": [
         {
-          "id": "sense-fabfa616",
-          "pos": "noun",
+          "id": "sense-ca247c7a",
+          "pos": "n.",
           "meaningZh": "用途；功能",
-          "definitionEn": "what something is used for",
           "examples": [
             "The purpose of a hammer is to drive nails into wood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-993df018",
-          "pos": "noun",
+          "id": "sense-bc45e36c",
+          "pos": "n.",
           "meaningZh": "決心；意志力",
-          "definitionEn": "the quality of being determined to do or achieve something; firmness of purpose",
           "examples": [
             "Despite facing numerous obstacles, her purpose never wavered as she worked tirelessly to achieve her dream of becoming a doctor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6",
-        "textbookTitle": "龍騰 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "puzzle",
       "word": "puzzle",
       "senses": [
         {
-          "id": "sense-d41f99bc",
-          "pos": "noun",
+          "id": "sense-852e93b0",
+          "pos": "n.",
           "meaningZh": "益智玩具；拼圖",
-          "definitionEn": "a game or toy that challenges one’s ingenuity",
           "examples": [
             "Working on a crossword puzzle can be a fun way to pass the time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3aea15f9",
-          "pos": "noun",
+          "id": "sense-d3b9c23d",
+          "pos": "n.",
           "meaningZh": "難題；謎",
-          "definitionEn": "a problem, riddle, or question that is difficult to understand or solve",
           "examples": [
             "The crossword puzzle in the newspaper was so challenging that it took me hours to solve."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quality",
       "word": "quality",
       "senses": [
         {
-          "id": "sense-b8d94f24",
-          "pos": "noun",
+          "id": "sense-83511988",
+          "pos": "n.",
           "meaningZh": "品質；水準",
-          "definitionEn": "a degree or grade of excellence or worth",
           "examples": [
             "The quality of the product is exceptional, with its durable materials and precise craftsmanship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5be182aa",
-          "pos": "noun",
+          "id": "sense-fd393e0e",
+          "pos": "n.",
           "meaningZh": "特性；性質",
-          "definitionEn": "a characteristic property that defines the apparent individual nature of something",
           "examples": [
             "The quality of a diamond is determined by its cut, clarity, and color."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quantity",
       "word": "quantity",
       "senses": [
         {
-          "id": "sense-355b54be",
-          "pos": "noun",
+          "id": "sense-f1749456",
+          "pos": "n.",
           "meaningZh": "數量；份量",
-          "definitionEn": "how much or how many of something there is and that can be measured or counted",
           "examples": [
             "Please provide the quantity of sugar needed to bake the cake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2de0869a",
-          "pos": "noun",
+          "id": "sense-cbd1b712",
+          "pos": "n.",
           "meaningZh": "大量；充足的量",
-          "definitionEn": "an adequate or large amount",
           "examples": [
             "The restaurant gave a huge quantity of food for the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4 +1",
-        "textbookTitle": "龍騰 B5·L4、三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quiz",
       "word": "quiz",
       "senses": [
         {
-          "id": "sense-b3fa94a4",
-          "pos": "noun",
+          "id": "sense-654a94ec",
+          "pos": "n.",
           "meaningZh": "小測驗；隨堂測驗",
-          "definitionEn": "an examination consisting of a few short questions",
           "examples": [
             "The students were nervous before taking the quiz, as it would determine their final grade for the semester."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3cf95971",
-          "pos": "verb",
+          "id": "sense-f4810788",
+          "pos": "v.",
           "meaningZh": "測驗；考問",
-          "definitionEn": "to ask or examine someone’s knowledge of something",
           "examples": [
             "The teacher decided to quiz the students on their understanding of the lesson by giving them a pop quiz."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "raincoat",
       "word": "raincoat",
       "senses": [
         {
-          "id": "sense-4aa0bfa7",
-          "pos": "noun",
+          "id": "sense-7564cbbf",
+          "pos": "n.",
           "meaningZh": "雨衣",
-          "definitionEn": "a coat made from waterproof fabric",
           "examples": [
             "She wore her yellow raincoat to protect herself from the heavy rain during her hike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "range",
       "word": "range",
       "senses": [
         {
-          "id": "sense-376ba85b",
-          "pos": "noun",
+          "id": "sense-307af70f",
+          "pos": "n.",
           "meaningZh": "範圍；範疇",
-          "definitionEn": "the set of things, amounts, or values that are included between certain limits",
           "examples": [
             "The shop sells a wide range of products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-da3fbecf",
-          "pos": "noun",
+          "id": "sense-99d663b3",
+          "pos": "n.",
           "meaningZh": "極限；能力範圍",
-          "definitionEn": "the limit of capability",
           "examples": [
             "In the marathon, some runners pushed themselves to their physical range, while others paced themselves conservatively."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a83d9300",
-          "pos": "noun",
+          "id": "sense-25a176c4",
+          "pos": "n.",
           "meaningZh": "有效距離；射程",
-          "definitionEn": "the limits within which something can be effective",
           "examples": [
             "In order to make sure the Wi-Fi signal reaches all areas of the house, we need to install a router with a larger range."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7 +2",
-        "textbookTitle": "龍騰 B2·L7、三民 B4·L1、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rapid",
       "word": "rapid",
       "senses": [
         {
-          "id": "sense-a718ba2f",
-          "pos": "adjective",
+          "id": "sense-d8d1e0bb",
+          "pos": "adj.",
           "meaningZh": "快速的；迅猛的",
-          "definitionEn": "Moving with great speed.",
           "examples": [
             "The rapid stream carried the canoe downstream."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rare",
       "word": "rare",
       "senses": [
         {
-          "id": "sense-3f87d81c",
-          "pos": "adjective",
+          "id": "sense-3f452680",
+          "pos": "adj.",
           "meaningZh": "罕見的；稀有的",
-          "definitionEn": "not commonly found; not often seen or experienced",
           "examples": [
             "Spotting a white lion in the wild is a rare occurrence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-cdd1b4da",
-          "pos": "adjective",
+          "id": "sense-b311c18e",
+          "pos": "adj.",
           "meaningZh": "（肉）半生的；三分熟的",
-          "definitionEn": "(of meat) cooked very lightly, so that the inside is still red or pink",
           "examples": [
             "I always order my steak rare because I like the meat to be juicy and tender."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L8",
-        "textbookTitle": "翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rat",
       "word": "rat",
       "senses": [
         {
-          "id": "sense-bac46e44",
-          "pos": "noun",
+          "id": "sense-f5c4ec6c",
+          "pos": "n.",
           "meaningZh": "老鼠；大老鼠",
-          "definitionEn": "a small rodent with a long tail, larger than a mouse",
           "examples": [
             "A rat scurried across the alley behind the restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b5b3a6c2",
-          "pos": "noun",
+          "id": "sense-fb706c5a",
+          "pos": "n.",
           "meaningZh": "告密者；線人",
-          "definitionEn": "one who reveals confidential information in return for money",
           "examples": [
             "The disgruntled employee turned into a rat and started leaking company secrets to a rival firm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rather",
       "word": "rather",
       "senses": [
         {
-          "id": "sense-b3e613a7",
-          "pos": "adverb",
+          "id": "sense-4f132922",
+          "pos": "adv.",
           "meaningZh": "相當；有點；頗",
-          "definitionEn": "To some extent; slightly or moderately",
           "examples": [
             "I'm rather tired, so I think I'll go to bed early tonight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-38739218",
-          "pos": "adverb",
+          "id": "sense-a1600833",
+          "pos": "adv.",
           "meaningZh": "寧願；更願意",
-          "definitionEn": "More willingly or with greater preference",
           "examples": [
             "I would rather go to the beach than stay at home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "reality",
+      "word": "reality",
+      "senses": [
+        {
+          "id": "sense-44d137e7",
+          "pos": "n.",
+          "meaningZh": "現實；實際存在的事物",
+          "examples": [
+            "The reality of the situation is that we do not have enough resources to complete the project on time."
+          ]
+        },
+        {
+          "id": "sense-da4d34f6",
+          "pos": "n.",
+          "meaningZh": "事實；客觀真相",
+          "examples": [
+            "His business failed due to his reluctance to face the grim reality of the market."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "realize",
+      "word": "realize",
+      "senses": [
+        {
+          "id": "sense-e727dd98",
+          "pos": "v.",
+          "meaningZh": "意識到；領悟",
+          "examples": [
+            "After years of hard work, she finally realized her dream of becoming a successful entrepreneur."
+          ]
+        },
+        {
+          "id": "sense-17b69e16",
+          "pos": "v.",
+          "meaningZh": "理解；搞清楚",
+          "examples": [
+            "After weeks of studying, she finally realized the solution to the math problem."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "receive",
+      "word": "receive",
+      "senses": [
+        {
+          "id": "sense-c110138e",
+          "pos": "v.",
+          "meaningZh": "收到；獲得",
+          "examples": [
+            "I was excited to receive the package from my friend."
+          ]
+        },
+        {
+          "id": "sense-d478ea2f",
+          "pos": "v.",
+          "meaningZh": "接受（治療）；遭到（對待）",
+          "examples": [
+            "After the surgery, it’s important to receive proper care in order to heal quickly and avoid infection."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "recent",
+      "word": "recent",
+      "senses": [
+        {
+          "id": "sense-88e05a08",
+          "pos": "adj.",
+          "meaningZh": "近來的；最近的",
+          "examples": [
+            "I haven't seen her in recent months."
+          ]
+        },
+        {
+          "id": "sense-3faef00c",
+          "pos": "adj.",
+          "meaningZh": "新的；最新的",
+          "examples": [
+            "After months of anticipation, the company finally released their recent product line."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "record",
+      "word": "record",
+      "senses": [
+        {
+          "id": "sense-4e9c1495",
+          "pos": "n.",
+          "meaningZh": "紀錄；檔案資料",
+          "examples": [
+            "The detective meticulously reviewed the record of the suspect's past criminal activities."
+          ]
+        },
+        {
+          "id": "sense-4d5cf253",
+          "pos": "n.",
+          "meaningZh": "犯罪前科；案底",
+          "examples": [
+            "The judge took into account the defendant's extensive criminal record when deciding the length of the sentencing."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

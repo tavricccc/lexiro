@@ -1,10 +1,13 @@
-import type { PracticeSession, VocabSet } from '@/types'
+import type { LibrarySet, PracticeSession, WordEntry } from '@/types'
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { SESSION_STORAGE_KEY, SETS_STORAGE_KEY } from '@/constants'
+import { LIBRARY_STORAGE_KEY, SESSION_STORAGE_KEY } from '@/constants'
+import { buildSenseId } from '@/lib/library'
+import { loadFromStorage } from '@/lib/persist'
 import { useLibraryStore } from '@/stores/library'
 import { makeSessionKey, useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
+import { seedSet } from '../helpers/library'
 
 const routerPush = vi.hoisted(() => vi.fn())
 
@@ -15,55 +18,40 @@ vi.mock('vue-router', () => ({
   }),
 }))
 
-class MemoryStorage implements Storage {
-  private store = new Map<string, string>()
-
-  get length(): number {
-    return this.store.size
-  }
-
-  clear(): void {
-    this.store.clear()
-  }
-
-  getItem(key: string): string | null {
-    return this.store.get(key) ?? null
-  }
-
-  key(index: number): string | null {
-    return Array.from(this.store.keys())[index] ?? null
-  }
-
-  removeItem(key: string): void {
-    this.store.delete(key)
-  }
-
-  setItem(key: string, value: string): void {
-    this.store.set(key, value)
-  }
-}
-
-const validSet: VocabSet = {
+const validSet: LibrarySet = {
   id: 'set-1',
   setName: 'Fruits',
-  difficulty: 2,
-  items: [
-    {
-      id: 'item-1',
-      word: 'apple',
-      pos: 'n.',
-      meaning: '蘋果',
-      example: 'I eat an apple.',
-    },
-  ],
+  folderId: '__uncategorized__',
+  createdAt: '',
+  updatedAt: '',
+}
+
+const validWord: WordEntry = {
+  wordKey: 'apple',
+  word: 'apple',
+  senses: [{
+    id: buildSenseId('apple', 'n.', '蘋果'),
+    pos: 'n.',
+    meaningZh: '蘋果',
+    examples: ['I eat an apple.'],
+  }],
+  updatedAt: '',
 }
 
 const validSession: PracticeSession = {
   sourceSetId: 'set-1',
   mode: 'quiz',
   entries: [{
-    item: validSet.items[0],
-    question: { prompt: '蘋果的英文是？', opts: ['apple', 'banana', 'cherry', 'date'], ans: 0 },
+    item: {
+      id: 'sense-apple',
+      wordKey: 'apple',
+      word: 'apple',
+      pos: 'n.',
+      meaning: '蘋果',
+      examples: ['I eat an apple.'],
+      example: 'I eat an apple.',
+    },
+    question: { questionId: 'question-apple', questionType: 'standard', difficulty: 1, prompt: '蘋果的英文是？', options: ['apple', 'banana', 'cherry', 'date'], answerIndex: 0 },
     originalIndex: 0,
   }],
   index: 0,
@@ -78,10 +66,6 @@ const validSession: PracticeSession = {
 
 describe('store persistence', () => {
   beforeEach(() => {
-    Object.defineProperty(globalThis, 'localStorage', {
-      value: new MemoryStorage(),
-      configurable: true,
-    })
     Object.defineProperty(globalThis, 'window', {
       value: {
         clearTimeout,
@@ -94,28 +78,29 @@ describe('store persistence', () => {
     setActivePinia(createPinia())
   })
 
-  it('keeps sets and session saves in separate localStorage keys', () => {
+  it('keeps sets and session saves in separate repository keys', async () => {
     const setsStore = useSetsStore()
     const sessionStore = useSessionStore()
+    const libraryStore = useLibraryStore()
 
-    setsStore.sets = [validSet]
+    seedSet(libraryStore, validSet)
+    libraryStore.importWords([validWord])
+    libraryStore.replaceSetMemberships(validSet.id, [{ wordKey: validWord.wordKey, senseIds: validWord.senses.map(sense => sense.id) }])
     setsStore.activeSetId = validSet.id
-    setsStore.saveState()
 
     const key = makeSessionKey(validSet.id, 'quiz')
     sessionStore.sessionsByKey = { [key]: validSession }
     sessionStore.activeKey = key
     sessionStore.currentView = 'quiz'
-    sessionStore.practiceCounts = { [validSet.id]: 1 }
     sessionStore.saveState(true)
 
-    const saved = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}')
-    expect(JSON.parse(localStorage.getItem(SETS_STORAGE_KEY) ?? '{}').sets).toHaveLength(1)
+    const saved = JSON.parse((await loadFromStorage(SESSION_STORAGE_KEY)).value ?? '{}')
+    expect(JSON.parse((await loadFromStorage(LIBRARY_STORAGE_KEY)).value ?? '{}').sets).toHaveLength(1)
     expect(saved.currentView).toBe('quiz')
     expect(saved.sessionsByKey[key].mode).toBe('quiz')
   })
 
-  it('stores quiz progress in the session map', () => {
+  it('stores quiz progress in the session map', async () => {
     const sessionStore = useSessionStore()
     const quizKey = makeSessionKey('set-1', 'quiz')
 
@@ -124,19 +109,25 @@ describe('store persistence', () => {
     }
     sessionStore.saveState(true)
 
-    const saved = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}')
+    const saved = JSON.parse((await loadFromStorage(SESSION_STORAGE_KEY)).value ?? '{}')
     expect(saved.sessionsByKey[quizKey].index).toBe(2)
     expect(saved.sessionsByKey[quizKey].mode).toBe('quiz')
   })
 
   it('marks quiz questions for review after the round', async () => {
-    const setsStore = useSetsStore()
-    setsStore.sets = [validSet]
-    useLibraryStore().importQuestions([{
+    const libraryStore = useLibraryStore()
+    seedSet(libraryStore, validSet)
+    libraryStore.importWords([validWord])
+    libraryStore.replaceSetMemberships(validSet.id, [{ wordKey: validWord.wordKey, senseIds: validWord.senses.map(sense => sense.id) }])
+    libraryStore.importQuestions([{
       id: 'question-apple',
+      fingerprint: 'fp-question-apple',
       kind: 'multipleChoice',
+      questionStyle: 'standard',
       wordKey: 'apple',
-      prompt: '蘋果的英文是？',
+      senseId: validWord.senses[0].id,
+      difficulty: 1,
+      prompt: 'Which fruit is apple?',
       options: ['apple', 'banana', 'cherry', 'date'],
       answerIndex: 0,
       createdAt: new Date().toISOString(),
@@ -155,15 +146,15 @@ describe('store persistence', () => {
     sessionStore.reviewMarkedQuestions()
     expect(sessionStore.currentSession?.review).toBe(true)
     expect(sessionStore.currentSession?.entries).toHaveLength(1)
-    expect(sessionStore.currentSession?.entries[0].item.id).toBe(validSet.items[0].id)
+    expect(sessionStore.currentSession?.entries[0].item.id).toBe(validWord.senses[0].id)
   })
 
-  it('persists imported sets through the shared ZIP import path', () => {
+  it('persists imported library words through the canonical import path', async () => {
     const setsStore = useSetsStore()
 
-    const result = setsStore.applyImported([validSet], 'overwrite')
+    const result = setsStore.importLibraryWords([validWord], validSet.setName)
 
-    expect(result?.imported).toHaveLength(1)
-    expect(JSON.parse(localStorage.getItem(SETS_STORAGE_KEY) ?? '{}').sets).toHaveLength(1)
+    expect(result?.setName).toBe(validSet.setName)
+    expect(JSON.parse((await loadFromStorage(LIBRARY_STORAGE_KEY)).value ?? '{}').sets).toHaveLength(1)
   })
 })

@@ -1,1365 +1,647 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 184,
   "words": [
-    {
-      "wordKey": "knowledgeable",
-      "word": "knowledgeable",
-      "senses": [
-        {
-          "id": "sense-c28f3669",
-          "pos": "adjective",
-          "meaningZh": "博學的；見多識廣的",
-          "definitionEn": "having or showing knowledge or information; well-informed.",
-          "examples": [
-            "The professor was knowledgeable about the subject and could answer any question asked by the students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-2adf61de",
-          "pos": "adjective",
-          "meaningZh": "學識淵博的；精通的",
-          "definitionEn": "having extensive knowledge or understanding; highly educated.",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "lad",
-      "word": "lad",
-      "senses": [
-        {
-          "id": "sense-b55c323f",
-          "pos": "noun",
-          "meaningZh": "男孩；小夥子",
-          "definitionEn": "a boy or man",
-          "examples": [
-            "The lad walked down the street with a basketball under his arm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-2f0c8d5a",
-          "pos": "noun",
-          "meaningZh": "小男孩（暱稱）",
-          "definitionEn": "a male child (a familiar term of address to a boy)",
-          "examples": [
-            "The lad played with his toy truck in the sandbox."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "landlady",
-      "word": "landlady",
-      "senses": [
-        {
-          "id": "sense-d3964cb9",
-          "pos": "noun",
-          "meaningZh": "女房東",
-          "definitionEn": "a woman who is a landlord",
-          "examples": [
-            "After her career in the military, she decided to become a landlady and rent out her properties to college students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "landslide",
-      "word": "landslide",
-      "senses": [
-        {
-          "id": "sense-c927538f",
-          "pos": "noun",
-          "meaningZh": "山崩；土石流",
-          "definitionEn": "a slide of a large mass of dirt and rock down a mountain or cliff",
-          "examples": [
-            "After three days of heavy rain, the landslide created a dam that blocked the river."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-37f8fd33",
-          "pos": "noun",
-          "meaningZh": "壓倒性勝選；大勝",
-          "definitionEn": "an overwhelming electoral victory",
-          "examples": [
-            "The candidate, who had been leading the polls all along, won the election in a landslide, capturing over 70% of the vote."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "latitude",
-      "word": "latitude",
-      "senses": [
-        {
-          "id": "sense-16e32d2e",
-          "pos": "noun",
-          "meaningZh": "緯度",
-          "definitionEn": "the angular distance between an imaginary line around a heavenly body parallel to its equator and the equator itself",
-          "examples": [
-            "The captain adjusted the ship’s course to the correct latitude as they approached the equator."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-fd251f21",
-          "pos": "noun",
-          "meaningZh": "自由度；寬裕空間",
-          "definitionEn": "scope for freedom of e.g. action or thought; freedom from restriction",
-          "examples": [
-            "The company gave employees latitude in choosing their work hours as long as they met their deadlines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "lavish",
       "word": "lavish",
       "senses": [
         {
-          "id": "sense-171e534e",
-          "pos": "adjective",
+          "id": "sense-81fb5a04",
+          "pos": "adj.",
           "meaningZh": "奢華的；鋪張的",
-          "definitionEn": "characterized by extravagance and profusion",
           "examples": [
             "The billionaire hosted a lavish party at his mansion, complete with gourmet food, live entertainment, and a fireworks display."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7a5d54d2",
-          "pos": "adjective",
+          "id": "sense-82efbf50",
+          "pos": "adj.",
           "meaningZh": "慷慨大方的",
-          "definitionEn": "very generous",
           "examples": [
             "She always hosts lavish parties, with extravagant decorations, live music, and an endless supply of gourmet food and drinks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "layman",
       "word": "layman",
       "senses": [
         {
-          "id": "sense-db0a8e40",
-          "pos": "noun",
+          "id": "sense-e02e23b0",
+          "pos": "n.",
           "meaningZh": "外行人；非專業人士",
-          "definitionEn": "a person who is not trained or experienced in a particular profession or field; a non-expert.",
           "examples": [
             "As a layman in the world of finance, I found it difficult to understand the complexities of the stock market."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b4579b53",
-          "pos": "noun",
+          "id": "sense-4d0748e3",
+          "pos": "n.",
           "meaningZh": "俗人；非神職人員",
-          "definitionEn": "someone who is not a clergyman",
           "examples": [
             "The layman was invited to speak at the religious conference because of his unique perspective."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "layout",
       "word": "layout",
       "senses": [
         {
-          "id": "sense-62eabddf",
-          "pos": "noun",
+          "id": "sense-8b33c1ff",
+          "pos": "n.",
           "meaningZh": "版面設計；排版",
-          "definitionEn": "a plan or design of something, especially on a page",
           "examples": [
             "The graphic designer presented the layout of the website to the client before starting the development process."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3e295871",
-          "pos": "noun",
+          "id": "sense-62b380d1",
+          "pos": "n.",
           "meaningZh": "配置；佈局",
-          "definitionEn": "the way in which something is arranged or organized",
           "examples": [
             "The layout of the office was changed to create more space for collaborative work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lease",
       "word": "lease",
       "senses": [
         {
-          "id": "sense-955259e5",
-          "pos": "noun",
+          "id": "sense-1e32b1b1",
+          "pos": "n.",
           "meaningZh": "租約；租賃合約",
-          "definitionEn": "a contract that allows you to use or occupy a property for a certain amount of time in exchange for payment",
           "examples": [
             "After searching for months, I finally found a great apartment and signed a lease for one year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-acea27f5",
-          "pos": "noun",
+          "id": "sense-5bed4ab1",
+          "pos": "n.",
           "meaningZh": "租期；租賃期限",
-          "definitionEn": "the length of time for which a contract granting property to a person is valid",
           "examples": [
             "The lease for the apartment is for one year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "legislator",
       "word": "legislator",
       "senses": [
         {
-          "id": "sense-54a6ff18",
-          "pos": "noun",
+          "id": "sense-2600fe1c",
+          "pos": "n.",
           "meaningZh": "立法委員；立法者",
-          "definitionEn": "a person who makes or enacts laws; a member of a legislative body",
           "examples": [
             "The state senator served as a legislator for over a decade, working tirelessly to influence and shape the policies that affect all of his constituents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lengthy",
       "word": "lengthy",
       "senses": [
         {
-          "id": "sense-fb67ff2d",
-          "pos": "adjective",
+          "id": "sense-b0fccf2f",
+          "pos": "adj.",
           "meaningZh": "費時的；冗長的",
-          "definitionEn": "taking a long time",
           "examples": [
             "The meeting was very lengthy, lasting well into the evening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c445cc99",
-          "pos": "adjective",
+          "id": "sense-a6ca29ef",
+          "pos": "adj.",
           "meaningZh": "過長的；超長的",
-          "definitionEn": "being longer than normal",
           "examples": [
             "The meeting went on for a lengthy four hours, draining everyone's energy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7",
-        "textbookTitle": "龍騰 B3·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lesbian",
       "word": "lesbian",
       "senses": [
         {
-          "id": "sense-a7d1bccb",
-          "pos": "noun",
+          "id": "sense-ccf076bf",
+          "pos": "n.",
           "meaningZh": "女同性戀者；女同志",
-          "definitionEn": "a woman who is attracted to other women sexually",
           "examples": [
             "Sarah always knew she was a lesbian, but it wasn’t until she fell in love with her college roommate, Emily, that she fully embraced her sexuality."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lessen",
       "word": "lessen",
       "senses": [
         {
-          "id": "sense-99b5975a",
-          "pos": "verb",
+          "id": "sense-6872064f",
+          "pos": "v.",
           "meaningZh": "減少；縮小",
-          "definitionEn": "make smaller",
           "examples": [
             "Taking short breaks can lessen fatigue and increase productivity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0a8b6dd2",
-          "pos": "verb",
+          "id": "sense-c63bc29b",
+          "pos": "v.",
           "meaningZh": "減輕；降低",
-          "definitionEn": "decrease in size, extent, or range",
           "examples": [
             "The doctor prescribed pain medication to lessen his discomfort after the surgery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lethal",
       "word": "lethal",
       "senses": [
         {
-          "id": "sense-4aab6dcd",
-          "pos": "adjective",
+          "id": "sense-338bfb91",
+          "pos": "adj.",
           "meaningZh": "致命的；致死的",
-          "definitionEn": "capable of causing death or fatal injury",
           "examples": [
             "The bite of a venomous snake can be lethal if not treated immediately."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "liable",
       "word": "liable",
       "senses": [
         {
-          "id": "sense-3f8757c7",
-          "pos": "adjective",
+          "id": "sense-74d9df99",
+          "pos": "adj.",
           "meaningZh": "有法律責任的；應負責的",
-          "definitionEn": "legally responsible for something",
           "examples": [
             "The company is liable for any damage caused by its products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-490a44c2",
-          "pos": "adjective",
+          "id": "sense-f9fb5360",
+          "pos": "adj.",
           "meaningZh": "可能遭遇的；容易的",
-          "definitionEn": "likely to be or experience something, often something unpleasant",
           "examples": [
             "If you leave the door open, you are liable to let bugs into the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-743d6987",
-          "pos": "adjective",
+          "id": "sense-a442a839",
+          "pos": "adj.",
           "meaningZh": "易受影響的；容易得（病）",
-          "definitionEn": "(often followed by ’to’) likely to be affected with",
           "examples": [
             "With the current flu outbreak, anyone who hasn't been vaccinated is liable to get sick."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "liberate",
       "word": "liberate",
       "senses": [
         {
-          "id": "sense-573576f1",
-          "pos": "verb",
+          "id": "sense-39cfd1b4",
+          "pos": "v.",
           "meaningZh": "釋放；解放（囚禁）",
-          "definitionEn": "to set free from imprisonment or bondage",
           "examples": [
             "After years of captivity, the brave soldiers launched a daring mission to liberate the prisoners of war."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-da50e4bb",
-          "pos": "verb",
+          "id": "sense-4ee09834",
+          "pos": "v.",
           "meaningZh": "解放（壓迫）；使自由",
-          "definitionEn": "to release from a state of oppression or subjection",
           "examples": [
             "After years of fighting for equal rights, the activists finally managed to liberate the oppressed community from their unjust living conditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "liberation",
       "word": "liberation",
       "senses": [
         {
-          "id": "sense-44f3d213",
-          "pos": "noun",
+          "id": "sense-c88675cb",
+          "pos": "n.",
           "meaningZh": "解放；釋放",
-          "definitionEn": "the act of setting something or someone free or released",
           "examples": [
             "The liberation of the captive animals marked a significant milestone in the efforts of wildlife conservation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e0bd160c",
-          "pos": "noun",
+          "id": "sense-d3abc194",
+          "pos": "n.",
           "meaningZh": "解除歧視；爭取平等",
-          "definitionEn": "the process of removing the disadvantages experienced by specific groups within society",
           "examples": [
             "The abolition of slavery in the 19th century marked a significant moment of liberation for millions of enslaved individuals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lieutenant",
       "word": "lieutenant",
       "senses": [
         {
-          "id": "sense-247dd377",
-          "pos": "noun",
+          "id": "sense-e26710cf",
+          "pos": "n.",
           "meaningZh": "陸軍中尉；軍官",
-          "definitionEn": "a commissioned military officer",
           "examples": [
             "The lieutenant led his platoon in a daring rescue mission behind enemy lines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b53f7ef4",
-          "pos": "noun",
+          "id": "sense-c30ffefc",
+          "pos": "n.",
           "meaningZh": "海軍中尉",
-          "definitionEn": "an officer holding a commissioned rank in the United States Navy or the United States Coast Guard, ranked below lieutenant commander and above lieutenant junior grade",
           "examples": [
             "The lieutenant oversaw the deployment of the naval vessels during the military exercise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lifelong",
       "word": "lifelong",
       "senses": [
         {
-          "id": "sense-6d904c15",
-          "pos": "adjective",
+          "id": "sense-1775dc19",
+          "pos": "adj.",
           "meaningZh": "終身的；畢生的",
-          "definitionEn": "lasting or existing throughout the whole of a person’s life",
           "examples": [
             "He made a lifelong commitment to his career in medicine, dedicating himself to helping others until the very end."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lighten",
       "word": "lighten",
       "senses": [
         {
-          "id": "sense-c4aa688f",
-          "pos": "verb",
+          "id": "sense-51456cd6",
+          "pos": "v.",
           "meaningZh": "使變亮；使變淡",
-          "definitionEn": "make something lighter or brighter",
           "examples": [
             "She used a lighter shade of paint to lighten up the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a741a0b1",
-          "pos": "verb",
+          "id": "sense-c005b48c",
+          "pos": "v.",
           "meaningZh": "心情好轉；振作",
-          "definitionEn": "become happier or less sad",
           "examples": [
             "After a good night's sleep, his mood began to lighten and he became more optimistic about the future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "limp",
       "word": "limp",
       "senses": [
         {
-          "id": "sense-925e037e",
-          "pos": "verb",
+          "id": "sense-08c2147b",
+          "pos": "v.",
           "meaningZh": "一瘸一拐地走；跛行",
-          "definitionEn": "to walk with difficulty or a limp, usually due to an injury",
           "examples": [
             "After spraining his ankle, Mark had to limp back home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1aafc250",
-          "pos": "noun",
+          "id": "sense-d0fb06b0",
+          "pos": "n.",
           "meaningZh": "跛行；瘸腿步態",
-          "definitionEn": "an uneven gait resulting from a leg injury",
           "examples": [
             "After spraining his ankle, John walked with a limp, favoring his injured leg."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "liner",
       "word": "liner",
       "senses": [
         {
-          "id": "sense-cee6b24a",
-          "pos": "noun",
+          "id": "sense-ef972b3a",
+          "pos": "n.",
           "meaningZh": "定期班輪；大型客輪",
-          "definitionEn": "a large commercial ship, especially one that carries passengers on a regular schedule",
           "examples": [
             "The liner set sail from New York to Southampton, with hundreds of passengers eagerly awaiting their transatlantic journey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b1ffc0da",
-          "pos": "noun",
+          "id": "sense-ddf95d4a",
+          "pos": "n.",
           "meaningZh": "內襯；防護內層",
-          "definitionEn": "a protective covering that protects the inside surface of something",
           "examples": [
             "She used a liner inside the cardboard box to protect the fragile items during shipping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "linger",
       "word": "linger",
       "senses": [
         {
-          "id": "sense-adfd9972",
-          "pos": "verb",
+          "id": "sense-8866079f",
+          "pos": "v.",
           "meaningZh": "逗留；流連",
-          "definitionEn": "to remain or stay somewhere for a longer time, especially because it is enjoyable or interesting",
           "examples": [
             "After finishing their meal, they decided to linger at the restaurant, savoring the cozy ambiance and engaging in pleasant conversation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a5e6859b",
-          "pos": "verb",
+          "id": "sense-79c7c09e",
+          "pos": "v.",
           "meaningZh": "持續存在；徘徊不散",
-          "definitionEn": "to continue to exist or be noticeable although gradually disappearing",
           "examples": [
             "The sweet aroma of freshly baked cookies lingered in the kitchen long after they had been taken out of the oven."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lining",
       "word": "lining",
       "senses": [
         {
-          "id": "sense-25a0aa55",
-          "pos": "noun",
+          "id": "sense-b21b6fdd",
+          "pos": "n.",
           "meaningZh": "內裡；裡布",
-          "definitionEn": "a layer of material on the inside of a garment for warmth or comfort or style",
           "examples": [
             "The jacket had a soft, faux fur lining that made it perfect for cold winter days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-31735cb9",
-          "pos": "noun",
+          "id": "sense-036979f1",
+          "pos": "n.",
           "meaningZh": "內壁保護層；內襯",
-          "definitionEn": "a protective covering on the inner surface of something",
           "examples": [
             "I need to get my coat’s lining repaired before winter comes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "liter",
       "word": "liter",
       "senses": [
         {
-          "id": "sense-dd082cc2",
-          "pos": "noun",
+          "id": "sense-4a1fee3e",
+          "pos": "n.",
           "meaningZh": "公升（容量單位）",
-          "definitionEn": "a metric unit of capacity, equal to 1,000 cubic centimeters (or approximately 1.75 pints), formerly defined as the volume of one kilogram of pure water under standard conditions",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-907b568a",
-          "pos": "noun",
+          "id": "sense-a1a3c3be",
+          "pos": "n.",
           "meaningZh": "文學愛好者；有文學素養的人",
-          "definitionEn": "one who reads and writes literature; a literary person",
           "examples": [
             "As a liter, she had a deep appreciation for the classics and often spent hours lost in the pages of her favorite authors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "literacy",
       "word": "literacy",
       "senses": [
         {
-          "id": "sense-e8ca3916",
-          "pos": "noun",
+          "id": "sense-5f98870e",
+          "pos": "n.",
           "meaningZh": "讀寫能力；識字率",
-          "definitionEn": "the ability to read and write; knowledge in a specific area",
           "examples": [
             "The government has launched a campaign to promote literacy among adults who missed out on education."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "literal",
       "word": "literal",
       "senses": [
         {
-          "id": "sense-dd561936",
-          "pos": "adjective",
+          "id": "sense-24acd398",
+          "pos": "adj.",
           "meaningZh": "字面的；按字義的",
-          "definitionEn": "limited to the explicit meaning of a word or text",
           "examples": [
             "In a literal sense, 'break a leg' means to wish someone good luck before a performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7905518b",
-          "pos": "adjective",
+          "id": "sense-888f6515",
+          "pos": "adj.",
           "meaningZh": "如實的；不加修飾的",
-          "definitionEn": "without interpretation or embellishment",
           "examples": [
             "When telling a story, it's important to stick to the literal facts and avoid adding any personal opinions or embellishments to ensure accuracy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "literate",
       "word": "literate",
       "senses": [
         {
-          "id": "sense-2b291914",
-          "pos": "adjective",
+          "id": "sense-415bdba8",
+          "pos": "adj.",
           "meaningZh": "有讀寫能力的；識字的",
-          "definitionEn": "able to read and write, having or showing knowledge of literature, writing, and grammar",
           "examples": [
             "As a literate individual, he enjoyed perusing classics and composing thoughtful essays."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c3b24a29",
-          "pos": "adjective",
+          "id": "sense-5b4c8815",
+          "pos": "adj.",
           "meaningZh": "有知識的；博學的",
-          "definitionEn": "knowledgeable and educated in one or several fields",
           "examples": [
             "Sarah is highly literate in literature, history, and philosophy, and she can engage in intellectual discussions on various topics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "livestock",
       "word": "livestock",
       "senses": [
         {
-          "id": "sense-7a0df4b0",
-          "pos": "noun",
+          "id": "sense-e9f0a7b0",
+          "pos": "n.",
           "meaningZh": "牲畜；家畜",
-          "definitionEn": "domesticated animals raised in agricultural settings for their products, such as meat, milk, eggs, wool, or fur.",
           "examples": [
             "The farmer had a diverse range of livestock on his farm including cattle, pigs, and chickens."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lizard",
       "word": "lizard",
       "senses": [
         {
-          "id": "sense-eceb5002",
-          "pos": "noun",
+          "id": "sense-f23ae846",
+          "pos": "n.",
           "meaningZh": "蜥蜴",
-          "definitionEn": "a relatively long-bodied reptile with usually two pairs of legs and a tapering tail",
           "examples": [
             "While hiking in the desert, I spotted a colorful lizard sunning itself on a rock."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1acf075c",
-          "pos": "noun",
+          "id": "sense-55d018a0",
+          "pos": "n.",
           "meaningZh": "靠女性養活的游手好閒者（俚語）",
-          "definitionEn": "a man who idles about in the lounges of hotels and bars in search of women who will support him",
           "examples": [
             "Despite being charming, Mark was known to be a lizard, constantly freeloading off of wealthy ladies he met at upscale hotels and bars."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "locker",
+      "word": "locker",
+      "senses": [
+        {
+          "id": "sense-0d3deee0",
+          "pos": "n.",
+          "meaningZh": "置物櫃；儲物櫃",
+          "examples": [
+            "I always keep my gym shoes locked in a locker at the gym."
+          ]
+        },
+        {
+          "id": "sense-6506d5ba",
+          "pos": "n.",
+          "meaningZh": "行李箱；個人置物箱",
+          "examples": [
+            "The soldiers kept their uniforms in their lockers at the end of the day."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lodge",
+      "word": "lodge",
+      "senses": [
+        {
+          "id": "sense-47cb840f",
+          "pos": "n.",
+          "meaningZh": "小木屋；臨時避難所",
+          "examples": [
+            "After getting caught in the storm, they found a cozy lodge in the woods to take refuge for the night."
+          ]
+        },
+        {
+          "id": "sense-97b85176",
+          "pos": "n.",
+          "meaningZh": "山間旅舍；休閒小屋",
+          "examples": [
+            "After a long day of sightseeing, we checked into a cozy lodge nestled in the heart of the mountains."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lofty",
+      "word": "lofty",
+      "senses": [
+        {
+          "id": "sense-7298bfd1",
+          "pos": "adj.",
+          "meaningZh": "高聳的；巍峨的",
+          "examples": [
+            "The Burj Khalifa, the tallest building in the world, stands with its lofty height of 828 meters above all other buildings in Dubai."
+          ]
+        },
+        {
+          "id": "sense-1661d3a6",
+          "pos": "adj.",
+          "meaningZh": "崇高的；高尚的",
+          "examples": [
+            "The Queen made a lofty speech about the importance of education during the graduation ceremony."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "logo",
+      "word": "logo",
+      "senses": [
+        {
+          "id": "sense-9a610347",
+          "pos": "n.",
+          "meaningZh": "標誌；商標；Logo",
+          "examples": [
+            "Our student club designed a new logo to put on the posters for the school fair."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lonesome",
+      "word": "lonesome",
+      "senses": [
+        {
+          "id": "sense-fd31fb3a",
+          "pos": "adj.",
+          "meaningZh": "孤立的；形單影隻的",
+          "examples": [
+            "After his friends left the party early, John felt lonesome as he sat alone in his apartment."
+          ]
+        },
+        {
+          "id": "sense-a07cc66d",
+          "pos": "adj.",
+          "meaningZh": "感到孤寂的；悵然若失的",
+          "examples": [
+            "After his friends moved away, Peter felt increasingly lonesome in his empty apartment."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

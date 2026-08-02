@@ -1,255 +1,259 @@
-import type { EditorItem, ImportMode, ImportResult, VersionDiff, VocabSet, WordEntry } from '@/types'
+import type { EditorItem, ImportResult, LibraryQuestion, LibrarySet, SetMembership, SharedSet, WordEntry } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { SETS_STORAGE_KEY } from '@/constants'
+import { useRouter } from 'vue-router'
+import { cloneJson } from '@/lib/clone'
 import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/file'
-import { folderIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { i18n } from '@/lib/i18n'
-import { applyImportedSets, parseImportJson, refreshImportVersionDiffs, summarizeDuplicateResult } from '@/lib/import'
-import { loadFromStorage, saveToStorage } from '@/lib/persist'
-import { deduplicateSetsByName } from '@/lib/set-utils'
-import { createBlankEditorItem, createEditorItems, normalizeItem, normalizeSet } from '@/lib/validation'
+import { itemToMembership, itemToWordEntry, normalizeWordKey } from '@/lib/library'
+import { questionBelongsToMemberships } from '@/lib/question-ownership'
+import { createUniqueSetName } from '@/lib/set-name'
+import { countSharedSetSenses } from '@/lib/shared-set'
+import { createBlankSenseDraft } from '@/lib/validation'
 import { useLibraryStore } from './library'
 import { useSessionStore } from './session'
 import { useUIStore } from './ui'
 
 const t = i18n.global.t
+type ImportStep = 1 | 2
 
 export const useSetsStore = defineStore('sets', () => {
-  const sets = ref<VocabSet[]>([])
+  const router = useRouter()
+  const libraryStore = useLibraryStore()
+  const sets = computed(() => libraryStore.sets)
   const activeSetId = ref<string | null>(null)
+  const activeSet = computed(() => sets.value.find(set => set.id === activeSetId.value) ?? null)
+  const hasSets = computed(() => sets.value.length > 0)
+  const totalWordCount = computed(() => sets.value.reduce((sum, set) => sum + libraryStore.getSetStudyWords(set.id).length, 0))
 
-  const setEditorOpen = ref(false)
   const setEditorMode = ref<'create' | 'edit'>('create')
   const setEditorId = ref<string | null>(null)
   const setEditorName = ref('')
   const setEditorFolderId = ref<string | undefined>(undefined)
   const setEditorError = ref('')
   const setEditorDraftItems = ref<EditorItem[]>([])
-  const pendingSetItems = ref<EditorItem[]>([])
 
   const importOpen = ref(false)
-  const importStep = ref(1)
+  const importStep = ref<ImportStep>(1)
   const importWords = ref('')
   const importJson = ref('')
   const importError = ref('')
   const importPreview = ref('')
-  const importDifficulty = ref(2)
   const importFolderId = ref(UNCATEGORIZED_FOLDER_ID)
   const pendingDeleteId = ref<string | null>(null)
 
-  const importMode = ref<ImportMode>('append')
-  const duplicateSummary = ref<ImportResult | null>(null)
-  const importVersionDiffs = ref<VersionDiff[]>([])
-  const importVersionChoices = ref<Record<string, string>>({})
-
-  const hasSets = computed(() => sets.value.length > 0)
-  const activeSet = computed(() => sets.value.find(set => set.id === activeSetId.value) ?? null)
-  const totalWordCount = computed(() => sets.value.reduce((sum, set) => sum + set.items.length, 0))
-
   const exportSelectedIds = ref<string[]>([])
-  const exportSelectedSets = computed(() =>
-    sets.value.filter(set => exportSelectedIds.value.includes(set.id)),
-  )
+  const exportSelectedSets = computed<SharedSet[]>(() => sets.value
+    .filter(set => exportSelectedIds.value.includes(set.id))
+    .map(toSharedSet))
   const exportSelectedCount = computed(() => exportSelectedSets.value.length)
-  const exportSelectedWordCount = computed(() =>
-    exportSelectedSets.value.reduce((sum, set) => sum + set.items.length, 0),
-  )
-  const exportAllSelected = computed(() =>
-    sets.value.length > 0 && exportSelectedCount.value === sets.value.length,
-  )
+  const exportSelectedWordCount = computed(() => countSharedSetSenses(exportSelectedSets.value))
+  const exportAllSelected = computed(() => sets.value.length > 0 && exportSelectedCount.value === sets.value.length)
   const exportError = ref('')
 
-  function saveState() {
-    saveToStorage(SETS_STORAGE_KEY, {
-      sets: sets.value,
-      activeSetId: activeSetId.value,
-    })
+  function questionBelongsToSet(question: LibraryQuestion, setId: string): boolean {
+    return questionBelongsToMemberships(question, libraryStore.state.memberships[setId] ?? [])
   }
 
-  function applyRemoteSets(remoteSets: VocabSet[]) {
-    const libraryStore = useLibraryStore()
-    const remoteIds = new Set(remoteSets.map(set => set.id))
-    for (const localSet of sets.value) {
-      if (!remoteIds.has(localSet.id))
-        libraryStore.unlinkSet(localSet.id)
+  function toSharedSet(set: LibrarySet): SharedSet {
+    const memberships = (libraryStore.state.memberships[set.id] ?? []).map(membership => ({
+      wordKey: membership.wordKey,
+      senseIds: [...membership.senseIds],
+    }))
+    const words = memberships
+      .map((membership) => {
+        const word = libraryStore.getWord(membership.wordKey)
+        if (!word)
+          return null
+        const senseIds = new Set(membership.senseIds)
+        return {
+          ...cloneJson(word),
+          senses: word.senses.filter(sense => senseIds.has(sense.id)),
+        }
+      })
+      .filter((word): word is WordEntry => Boolean(word))
+    const questions = libraryStore.questions
+      .filter(question => questionBelongsToSet(question, set.id))
+      .map(question => cloneJson(question))
+    return {
+      ...set,
+      memberships,
+      words,
+      questions,
     }
-    const canonicalSets = deduplicateSetsByName(remoteSets)
-    sets.value = canonicalSets
-    exportSelectedIds.value = canonicalSets.map(set => set.id)
-    if (activeSetId.value && canonicalSets.some(set => set.id === activeSetId.value)) {
-      saveState()
-      return
+  }
+
+  function getSetWordCount(setId: string): number {
+    return libraryStore.getSetStudyWords(setId).length
+  }
+
+  function wordToEditorItem(word: WordEntry, setId: string): EditorItem {
+    const membership = libraryStore.getMembership(setId, word.wordKey)
+    const allowedSenseIds = new Set(membership?.senseIds ?? [])
+    return {
+      id: `editor-${word.wordKey}`,
+      word: word.word,
+      senses: word.senses
+        .filter(sense => allowedSenseIds.has(sense.id))
+        .map(sense => ({ id: sense.id, pos: sense.pos, meaning: sense.meaningZh, examples: [...sense.examples] })),
     }
-    activeSetId.value = canonicalSets[0]?.id ?? null
-    saveState()
-    for (const set of canonicalSets)
-      libraryStore.linkSet(set)
+  }
+
+  function prepareSetContent(sourceItems: Array<Pick<EditorItem, 'word' | 'senses'>>): { entries: WordEntry[], memberships: SetMembership[] } {
+    const entries = sourceItems
+      .map(item => ({
+        ...item,
+        word: item.word.trim(),
+        senses: item.senses.map(sense => ({
+          ...sense,
+          pos: sense.pos.trim(),
+          meaning: sense.meaning.trim(),
+          examples: sense.examples.map(example => example.trim()).filter(Boolean),
+        })),
+      }))
+      .filter(item => item.word && item.senses.length)
+      .map(itemToWordEntry)
+    if (!entries.length)
+      throw new Error(t('editor.itemsRequired'))
+
+    const memberships = new Map<string, SetMembership>()
+    for (const entry of entries) {
+      const membership = itemToMembership({ word: entry.word, senses: entry.senses.map(sense => ({ id: sense.id, pos: sense.pos, meaning: sense.meaningZh, examples: sense.examples })) })
+      const current = memberships.get(membership.wordKey)
+      memberships.set(membership.wordKey, current
+        ? { ...current, senseIds: Array.from(new Set([...current.senseIds, ...membership.senseIds])) }
+        : membership)
+    }
+    return { entries, memberships: Array.from(memberships.values()) }
   }
 
   async function loadState() {
-    const loaded = await loadFromStorage(SETS_STORAGE_KEY)
-    if (!loaded.value)
-      return
-
-    try {
-      const parsed = JSON.parse(loaded.value)
-      if (Array.isArray(parsed.sets)) {
-        const sanitizedSets = deduplicateSetsByName<VocabSet>(parsed.sets
-          .map((set: unknown, index: number) => {
-            try {
-              return normalizeSet(set, (set as Record<string, unknown>)?.id as string ?? `saved-${index + 1}`)
-            }
-            catch {
-              return null
-            }
-          })
-          .filter((set: VocabSet | null): set is VocabSet => set !== null))
-
-        sets.value = sanitizedSets
-        exportSelectedIds.value = sanitizedSets.map((s: VocabSet) => s.id)
-        const validSetIds = new Set(sanitizedSets.map((s: VocabSet) => s.id))
-        if (parsed.activeSetId && validSetIds.has(parsed.activeSetId)) {
-          activeSetId.value = parsed.activeSetId
-        }
-        else if (sanitizedSets.length > 0) {
-          activeSetId.value = sanitizedSets[0].id
-        }
-      }
-    }
-    catch {
-      // Ignore parse errors
-    }
+    await libraryStore.loadState()
+    exportSelectedIds.value = sets.value.map(set => set.id)
+    if (!activeSetId.value)
+      activeSetId.value = sets.value[0]?.id ?? null
   }
 
   function ensureActiveSet(setId: string) {
-    activeSetId.value = setId
-    saveState()
+    if (sets.value.some(set => set.id === setId))
+      activeSetId.value = setId
   }
 
   function moveSetToFolder(setId: string, folderId?: string) {
-    const target = sets.value.find(set => set.id === setId)
-    if (!target || target.folderId === folderId)
+    if (!libraryStore.getSet(setId))
       return
-    const nextSet = { ...target, folderId: folderId || undefined, updatedAt: new Date().toISOString() }
-    sets.value = sets.value.map(set => set.id === setId ? nextSet : set)
-    saveState()
-    useLibraryStore().linkSet(nextSet)
+    libraryStore.updateSet(setId, { folderId: folderId || undefined })
   }
 
   function isSetInProgress(setId: string): boolean {
-    const sessionStore = useSessionStore()
-    return sessionStore.isSetInProgress(setId)
+    return useSessionStore().isSetInProgress(setId)
   }
 
-  function openSetEditor(mode: 'create' | 'edit', set?: VocabSet | null) {
+  function prepareSetEditor(mode: 'create' | 'edit', set?: LibrarySet | null) {
     setEditorMode.value = mode
     setEditorId.value = set?.id ?? null
     setEditorName.value = set?.setName ?? ''
     setEditorFolderId.value = set?.folderId
-    setEditorDraftItems.value = mode === 'edit' && set ? createEditorItems(set.items) : []
-    pendingSetItems.value = mode === 'create' ? [...pendingSetItems.value] : []
+    setEditorDraftItems.value = mode === 'edit' && set
+      ? libraryStore.getSetWords(set.id).map(word => wordToEditorItem(word, set.id))
+      : [{ id: `editor-${crypto.randomUUID()}`, word: '', senses: [createBlankSenseDraft()] }]
     setEditorError.value = ''
-    setEditorOpen.value = true
+  }
+
+  function setSetEditorName(value: string) {
+    setEditorName.value = value
+  }
+
+  function setSetEditorFolderId(value: string | undefined) {
+    setEditorFolderId.value = value
+  }
+
+  function setSetEditorError(value: string) {
+    setEditorError.value = value
+  }
+
+  function editorErrorMessage(error: unknown): string {
+    const message = error instanceof Error ? error.message : ''
+    const knownMessages = [
+      t('editor.nameRequired'),
+      t('editor.itemsRequired'),
+      t('editor.nameExists'),
+      t('editor.notFound'),
+      t('library.folderNotFound'),
+    ]
+    return knownMessages.includes(message) ? message : t('editor.saveFailed')
+  }
+
+  function updateSetEditorItem(index: number, item: EditorItem) {
+    setEditorDraftItems.value = setEditorDraftItems.value.map((current, currentIndex) => currentIndex === index ? item : current)
+  }
+
+  function openSetEditor(mode: 'create' | 'edit', set?: LibrarySet | null) {
+    prepareSetEditor(mode, set)
+    void router.push(mode === 'create'
+      ? { name: 'set-create' }
+      : { name: 'set-edit', params: { setId: set?.id ?? '' } })
   }
 
   function closeSetEditor() {
-    setEditorOpen.value = false
+    if (router.currentRoute.value.name === 'set-create' || router.currentRoute.value.name === 'set-edit')
+      void router.push({ name: 'library' })
   }
 
-  function createSetFromItems(
-    sourceItems: Array<Pick<EditorItem, 'word' | 'pos' | 'meaning'> & Partial<EditorItem>>,
-    name = '',
-    difficulty = 2,
-    folderId?: string,
-  ): VocabSet | null {
-    const uiStore = useUIStore()
+  function createSetFromItems(sourceItems: Array<Pick<EditorItem, 'word' | 'senses'> & Partial<Pick<EditorItem, 'id'>>>, name: string, folderId?: string): LibrarySet | null {
     try {
-      const items = sourceItems.map((item, index) => normalizeItem(item, index))
-      if (!items.length)
+      if (!name.trim())
+        throw new Error(t('editor.nameRequired'))
+      if (!sourceItems.length)
         throw new Error(t('editor.itemsRequired'))
-
-      const now = new Date()
-      const fallbackName = `單字集 ${now.getMonth() + 1}/${now.getDate()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
-      const nextSet: VocabSet = {
-        id: `${Date.now()}`,
-        setName: name.trim() || fallbackName,
-        difficulty: typeof difficulty === 'number' ? difficulty : 2,
-        items,
-        folderId,
-        createdAt: now.toISOString(),
-        updatedAt: now.toISOString(),
-      }
-      const existing = sets.value.find(set => set.setName.trim().toLocaleLowerCase() === nextSet.setName.toLocaleLowerCase())
-      const savedSet = existing ? { ...nextSet, id: existing.id, createdAt: existing.createdAt } : nextSet
-      sets.value = deduplicateSetsByName([...sets.value.filter(set => set.id !== existing?.id), savedSet])
-      exportSelectedIds.value = sets.value.map(set => set.id)
-      activeSetId.value = savedSet.id
-      saveState()
-      useLibraryStore().linkSet(savedSet)
-      setEditorOpen.value = false
+      const setName = name.trim()
+      const existing = sets.value.find(set => set.setName.trim().toLocaleLowerCase() === setName.toLocaleLowerCase())
+      if (existing)
+        throw new Error(t('editor.nameExists'))
+      const content = prepareSetContent(sourceItems)
+      const set = libraryStore.createSetWithContent(setName, folderId, content.entries, content.memberships)
+      activeSetId.value = set.id
+      exportSelectedIds.value = sets.value.map(item => item.id)
       importOpen.value = false
       setEditorError.value = ''
-      uiStore.showToast(t(existing ? 'editor.replaced' : 'editor.created', { name: savedSet.setName, count: savedSet.items.length }))
-      return savedSet
+      useUIStore().showToast(t('editor.created', { name: setName, count: sourceItems.length }))
+      return libraryStore.getSet(set.id)
     }
     catch (error) {
-      setEditorError.value = (error as Error).message
+      setEditorError.value = editorErrorMessage(error)
       return null
     }
   }
 
   function saveSetEditor() {
-    const uiStore = useUIStore()
     try {
-      if (!setEditorName.value.trim()) {
+      if (!setEditorName.value.trim())
         throw new Error(t('editor.nameRequired'))
-      }
-
-      const sourceItems = setEditorMode.value === 'create' ? pendingSetItems.value : setEditorDraftItems.value
-      const items = sourceItems.map((item, index) => normalizeItem(item, index))
-
-      if (!items.length) {
+      if (!setEditorDraftItems.value.length)
         throw new Error(t('editor.itemsRequired'))
-      }
-
       if (setEditorMode.value === 'create') {
-        createSetFromItems(items, setEditorName.value, importDifficulty.value, setEditorFolderId.value)
+        const created = createSetFromItems(setEditorDraftItems.value, setEditorName.value, setEditorFolderId.value)
+        if (created)
+          void router.push({ name: 'set-study', params: { setId: created.id } })
         return
       }
-      else {
-        const targetIndex = sets.value.findIndex(s => s.id === setEditorId.value)
-        if (targetIndex === -1)
-          throw new Error(t('editor.notFound'))
-
-        const nextSet: VocabSet = {
-          ...sets.value[targetIndex],
-          setName: setEditorName.value.trim(),
-          items,
-          folderId: setEditorFolderId.value || undefined,
-          updatedAt: new Date().toISOString(),
-        }
-        sets.value = sets.value.map(s => (s.id === setEditorId.value ? nextSet : s))
-
-        const sessionStore = useSessionStore()
-        if (sessionStore.isSetInProgress(nextSet.id) || sessionStore.currentSession?.sourceSetId === nextSet.id) {
-          sessionStore.clearSessionsForSet(nextSet.id)
-        }
-        uiStore.showToast(t('editor.updated', { name: nextSet.setName, count: nextSet.items.length }))
-      }
-
-      saveState()
-      useLibraryStore().linkSet(sets.value.find(set => set.id === setEditorId.value)!)
-      setEditorOpen.value = false
+      if (!setEditorId.value || !libraryStore.getSet(setEditorId.value))
+        throw new Error(t('editor.notFound'))
+      const content = prepareSetContent(setEditorDraftItems.value)
+      libraryStore.updateSetWithContent(setEditorId.value, { setName: setEditorName.value.trim(), folderId: setEditorFolderId.value }, content.entries, content.memberships)
+      useSessionStore().clearSessionsForSet(setEditorId.value)
+      useUIStore().showToast(t('editor.updated', { name: setEditorName.value.trim(), count: setEditorDraftItems.value.length }))
       importOpen.value = false
+      void router.push({ name: 'set-study', params: { setId: setEditorId.value } })
     }
     catch (error) {
-      setEditorError.value = (error as Error).message
+      setEditorError.value = editorErrorMessage(error)
     }
   }
 
   function addEditorItem() {
-    setEditorDraftItems.value = [...setEditorDraftItems.value, createBlankEditorItem(setEditorDraftItems.value.length)]
+    setEditorDraftItems.value = [...setEditorDraftItems.value, { id: `editor-${Date.now()}`, word: '', senses: [createBlankSenseDraft()] }]
   }
 
   function removeEditorItem(index: number) {
@@ -262,9 +266,37 @@ export const useSetsStore = defineStore('sets', () => {
     importJson.value = ''
     importError.value = ''
     importPreview.value = ''
-    importDifficulty.value = 2
     importFolderId.value = folderId ?? UNCATEGORIZED_FOLDER_ID
     importOpen.value = true
+  }
+
+  function setImportStep(step: ImportStep) {
+    importStep.value = step
+  }
+
+  function setImportWords(value: string) {
+    importWords.value = value
+  }
+
+  function setImportJson(value: string) {
+    importJson.value = value
+  }
+
+  function setImportError(value: string) {
+    importError.value = value
+  }
+
+  function setImportPreview(value: string) {
+    importPreview.value = value
+  }
+
+  function setImportFolderId(value: string) {
+    importFolderId.value = value
+  }
+
+  function clearImportFeedback() {
+    importError.value = ''
+    importPreview.value = ''
   }
 
   function closeImport() {
@@ -275,253 +307,143 @@ export const useSetsStore = defineStore('sets', () => {
     importStep.value = 2
   }
 
-  function importSet() {
-    const result = parseImportJson(importJson.value.trim())
-    if (!result.valid) {
-      importError.value = result.error
-      return
-    }
-
-    createSetFromItems(result.data.items, result.data.setName, result.data.difficulty, folderIdFromSelection(importFolderId.value))
-  }
-
   async function requestDelete(setId: string) {
     pendingDeleteId.value = setId
-    const uiStore = useUIStore()
-    const lastSet = sets.value.length <= 1
-    const confirmed = await uiStore.showConfirm(
-      t('confirm.deleteTitle'),
-      lastSet ? t('confirm.deleteLastMessage') : t('confirm.deleteMessage'),
-    )
-    if (!confirmed)
+    const confirmed = await useUIStore().showConfirm(t('confirm.deleteTitle'), sets.value.length <= 1 ? t('confirm.deleteLastMessage') : t('confirm.deleteMessage'))
+    if (!confirmed) {
+      pendingDeleteId.value = null
       return
-
-    const sessionStore = useSessionStore()
-    if (lastSet) {
-      sets.value = []
-      activeSetId.value = null
-      useLibraryStore().unlinkSet(pendingDeleteId.value!)
-      sessionStore.resetStudyView()
     }
-    else {
-      sets.value = sets.value.filter(s => s.id !== pendingDeleteId.value)
-      useLibraryStore().unlinkSet(pendingDeleteId.value!)
-      sessionStore.clearSessionsForSet(pendingDeleteId.value!)
-      if (activeSetId.value === pendingDeleteId.value) {
-        activeSetId.value = sets.value[0]?.id ?? null
-      }
-    }
-
-    saveState()
+    libraryStore.removeSet(setId)
+    useSessionStore().clearSessionsForSet(setId)
+    if (activeSetId.value === setId)
+      activeSetId.value = sets.value[0]?.id ?? null
     pendingDeleteId.value = null
   }
 
   async function deleteActiveSet() {
-    if (!activeSet.value)
-      return
-    await requestDelete(activeSet.value.id)
+    if (activeSet.value)
+      await requestDelete(activeSet.value.id)
   }
 
   function editActiveSet() {
-    if (!activeSet.value)
-      return
-    openSetEditor('edit', activeSet.value)
+    if (activeSet.value)
+      openSetEditor('edit', activeSet.value)
   }
 
-  function addItemToSet(setId: string, draft: Pick<EditorItem, 'word' | 'meaning' | 'example' | 'pos'> & Partial<EditorItem>) {
-    const target = sets.value.find(set => set.id === setId)
-    if (!target)
+  function addItemToSet(setId: string, draft: EditorItem) {
+    if (!libraryStore.getSet(setId))
       return false
-
-    const word = draft.word.trim()
-    const item = normalizeItem({
-      ...draft,
-      id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      word,
-      meaning: draft.meaning.trim(),
-      example: draft.example.trim() || `I am learning the word ${word}.`,
-    }, target.items.length)
-
-    const nextSet = {
-      ...target,
-      items: [...target.items, item],
-      updatedAt: new Date().toISOString(),
+    try {
+      const item = { ...draft, id: draft.id || `item-${Date.now()}`, word: draft.word.trim(), senses: draft.senses.map(sense => ({ ...sense, pos: sense.pos.trim(), meaning: sense.meaning.trim(), examples: sense.examples.map(example => example.trim()).filter(Boolean) })) }
+      const word = itemToWordEntry(item)
+      libraryStore.addWordToSets(word, [{ setId, membership: itemToMembership(item) }])
+      useUIStore().showToast(t('dictionary.addedToSet', { word: item.word }))
+      return true
     }
-    sets.value = sets.value.map(set => set.id === setId ? nextSet : set)
-    saveState()
-    useLibraryStore().linkSet(nextSet)
-    useUIStore().showToast(t('dictionary.addedToSet', { word }))
-    return true
+    catch {
+      return false
+    }
+  }
+
+  function importSharedSet(sharedSet: SharedSet, folderId = sharedSet.folderId): LibrarySet {
+    const setName = createUniqueSetName(sharedSet.setName, sets.value.map(set => set.setName))
+    return libraryStore.createSetWithContent(setName, folderId, sharedSet.words, sharedSet.memberships, sharedSet.questions)
   }
 
   function importLibraryWords(words: WordEntry[], setName: string, folderId?: string) {
-    if (!words.length)
+    if (!words.length || !setName.trim())
       return null
-    const items = words.map((word, index) => {
-      const sense = word.senses[0]
-      return normalizeItem({
-        id: `library-${word.wordKey}-${index}`,
-        word: word.word,
-        pos: sense?.pos ?? '',
-        meaning: sense?.meaningZh ?? '',
-        example: sense?.examples[0] ?? '',
-        definition: sense?.definitionEn,
-        phonetic: word.phonetic,
-        audioUrl: word.audioUrl,
-        origin: word.origin,
-        dictionarySource: word.dictionarySource,
-        synonyms: word.synonyms,
-        antonyms: word.antonyms,
-      }, index)
-    })
-    const set = normalizeSet({ id: `import-${Date.now()}`, setName: setName.trim() || `匯入單字 ${new Date().toLocaleDateString()}`, difficulty: 2, items, folderId })
-    sets.value = deduplicateSetsByName([...sets.value, set])
-    exportSelectedIds.value = sets.value.map(item => item.id)
+    const uniqueName = createUniqueSetName(setName, sets.value.map(set => set.setName))
+    const set = libraryStore.createSetWithContent(uniqueName, folderId, words, words.map(word => ({ wordKey: normalizeWordKey(word.wordKey), senseIds: word.senses.map(sense => sense.id) })))
     activeSetId.value = set.id
-    saveState()
-    const additionalSenseIdsByWordKey = Object.fromEntries(
-      words.map(word => [word.wordKey, word.senses.map(sense => sense.id)]),
-    )
-    useLibraryStore().linkSet(set, { additionalSenseIdsByWordKey })
+    exportSelectedIds.value = sets.value.map(item => item.id)
     return set
   }
 
   function toggleExportAll() {
-    exportSelectedIds.value = exportAllSelected.value ? [] : sets.value.map(s => s.id)
+    exportSelectedIds.value = exportAllSelected.value ? [] : sets.value.map(set => set.id)
   }
 
   async function exportSelectedSetsToZip() {
-    const uiStore = useUIStore()
     exportError.value = ''
     if (!exportSelectedSets.value.length) {
       exportError.value = t('backup.selectAtLeastOne')
       return
     }
-
     const blob = await buildExportZipBlob(exportSelectedSets.value)
     downloadBlob(blob, buildExportFileName())
-    uiStore.showToast(t('backup.exported', { count: exportSelectedSets.value.length }))
+    useUIStore().showToast(t('backup.exported', { count: exportSelectedSets.value.length }))
   }
 
-  function refreshDiffs(targetSets: VocabSet[]) {
-    const { diffs, choices } = refreshImportVersionDiffs(sets.value, targetSets, importVersionChoices.value)
-    importVersionDiffs.value = diffs
-    importVersionChoices.value = choices
-  }
-
-  function resetImportVersionDiffs() {
-    importVersionDiffs.value = []
-    importVersionChoices.value = {}
-  }
-
-  function setImportVersionChoice(setName: string, choice: string) {
-    importVersionChoices.value = { ...importVersionChoices.value, [setName]: choice }
-  }
-
-  function applyImported(targetSets: VocabSet[], mode: ImportMode, folderId?: string): ImportResult | null {
-    const uiStore = useUIStore()
-    const sessionStore = useSessionStore()
-
-    const result = applyImportedSets(sets.value, targetSets, mode, importVersionChoices.value)
-
-    if (mode === 'overwrite') {
-      const previousSetIds = new Set(sets.value.map(set => set.id))
-      sets.value = result.imported.map(set => ({ ...set, folderId, updatedAt: new Date().toISOString() }))
-      exportSelectedIds.value = result.imported.map(s => s.id)
-      activeSetId.value = result.imported[0]?.id ?? null
-      sessionStore.resetStudyView()
-      const libraryStore = useLibraryStore()
-      const nextSetIds = new Set(sets.value.map(set => set.id))
-      for (const setId of previousSetIds) {
-        if (!nextSetIds.has(setId))
-          libraryStore.unlinkSet(setId)
-      }
-      for (const set of sets.value)
-        libraryStore.linkSet(set)
-      saveState()
-      duplicateSummary.value = result
-      uiStore.showToast(t('backup.overwriteSuccess', { count: result.imported.length }))
-      return result
+  function applyImported(targetSets: SharedSet[], folderId?: string): ImportResult | null {
+    if (!targetSets.length)
+      return null
+    const imported: SharedSet[] = []
+    const renamed: ImportResult['renamed'] = []
+    for (const target of targetSets) {
+      const beforeNames = new Set(sets.value.map(set => set.setName))
+      const importedSet = importSharedSet(target, folderId ?? target.folderId)
+      const sourceName = target.setName.trim()
+      if (importedSet.setName !== sourceName)
+        renamed.push({ from: sourceName, to: importedSet.setName })
+      imported.push(toSharedSet(importedSet))
+      if (!beforeNames.has(importedSet.setName))
+        activeSetId.value = importedSet.id
     }
-
-    const replacedSetIds = new Set(
-      sets.value
-        .filter(s => result.replacedVersions.includes(s.setName))
-        .map(s => s.id),
-    )
-
-    const nextSets = sets.value.map((s) => {
-      if (result.replacedVersions.includes(s.setName)) {
-        const replacement = result.imported.find(imp => imp.setName === s.setName)
-        return replacement ? { ...replacement, id: s.id, folderId, updatedAt: new Date().toISOString() } : s
-      }
-      return s
-    })
-
-    const newSets = result.imported
-      .filter(imp => !result.replacedVersions.includes(imp.setName))
-      .map(set => ({ ...set, folderId, updatedAt: new Date().toISOString() }))
-    sets.value = [...nextSets, ...newSets]
-    exportSelectedIds.value = [...exportSelectedIds.value, ...newSets.map(s => s.id)]
-
-    if (result.replacedVersions.length) {
-      for (const id of replacedSetIds)
-        sessionStore.clearSessionsForSet(id)
-    }
-
-    if (!activeSetId.value && newSets.length > 0) {
-      activeSetId.value = newSets[0].id
-    }
-
-    saveState()
-    for (const set of sets.value)
-      useLibraryStore().linkSet(set)
-    duplicateSummary.value = result
-    const text = summarizeDuplicateResult(result)
-    uiStore.showToast(text ? `${t('backup.importSuccess', { count: result.imported.length })}；${text}` : t('backup.importSuccess', { count: result.imported.length }))
+    const result: ImportResult = { imported, renamed }
+    exportSelectedIds.value = sets.value.map(set => set.id)
+    const renamedSummary = renamed.length
+      ? `；${renamed.map(item => `${item.from} → ${item.to}`).join('、')}`
+      : ''
+    useUIStore().showToast(`${t('backup.importSuccess', { count: result.imported.length })}${renamedSummary}`)
     return result
   }
 
   return {
     sets,
-    applyRemoteSets,
     activeSetId,
     hasSets,
     activeSet,
     totalWordCount,
-    setEditorOpen,
+    getSetWordCount,
     setEditorMode,
     setEditorId,
     setEditorName,
     setEditorFolderId,
     setEditorError,
     setEditorDraftItems,
-    pendingSetItems,
+    setSetEditorName,
+    setSetEditorFolderId,
+    setSetEditorError,
+    updateSetEditorItem,
     importOpen,
     importStep,
     importWords,
     importJson,
     importError,
     importPreview,
-    importDifficulty,
     importFolderId,
+    setImportStep,
+    setImportWords,
+    setImportJson,
+    setImportError,
+    setImportPreview,
+    setImportFolderId,
+    clearImportFeedback,
     pendingDeleteId,
-    importMode,
-    duplicateSummary,
-    importVersionDiffs,
-    importVersionChoices,
     exportSelectedIds,
     exportSelectedSets,
     exportSelectedCount,
     exportSelectedWordCount,
     exportAllSelected,
     exportError,
-    saveState,
     loadState,
     ensureActiveSet,
     moveSetToFolder,
     isSetInProgress,
     openSetEditor,
+    prepareSetEditor,
     closeSetEditor,
     createSetFromItems,
     saveSetEditor,
@@ -530,7 +452,6 @@ export const useSetsStore = defineStore('sets', () => {
     openImport,
     closeImport,
     nextImportStep,
-    importSet,
     requestDelete,
     deleteActiveSet,
     editActiveSet,
@@ -538,9 +459,6 @@ export const useSetsStore = defineStore('sets', () => {
     importLibraryWords,
     toggleExportAll,
     exportSelectedSetsToZip,
-    refreshDiffs,
-    resetImportVersionDiffs,
-    setImportVersionChoice,
     applyImported,
   }
 })

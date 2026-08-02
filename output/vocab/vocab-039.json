@@ -1,1392 +1,679 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 39,
   "words": [
-    {
-      "wordKey": "daily",
-      "word": "daily",
-      "senses": [
-        {
-          "id": "sense-9b822d7c",
-          "pos": "adjective",
-          "meaningZh": "每日的；每天進行的",
-          "definitionEn": "happening or done every day",
-          "examples": [
-            "She made it a daily habit to go for a morning jog before work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-505f9627",
-          "pos": "adjective",
-          "meaningZh": "日常的；適合每天使用的",
-          "definitionEn": "suitable for everyday or routine occasions",
-          "examples": [
-            "She took a daily walk in the park to stay active and healthy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "damage",
-      "word": "damage",
-      "senses": [
-        {
-          "id": "sense-4841cd72",
-          "pos": "noun",
-          "meaningZh": "損害；傷害賠償",
-          "definitionEn": "any harm or injury resulting from a violation of a legal right",
-          "examples": [
-            "The car owner sued the driver for damages caused to his vehicle due to reckless driving."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "dancer",
-      "word": "dancer",
-      "senses": [
-        {
-          "id": "sense-d18240b9",
-          "pos": "noun",
-          "meaningZh": "舞者；舞蹈演員",
-          "definitionEn": "a performer who dances professionally",
-          "examples": [
-            "The crowd cheered as the talented dancer twirled and lept across the stage with grace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-2659421a",
-          "pos": "noun",
-          "meaningZh": "舞會參與者；跳舞的人",
-          "definitionEn": "a person who participates in a social gathering arranged for dancing (as a ball)",
-          "examples": [
-            "At the ball, Sarah was the best dancer and entertained the guests with her graceful movements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "danger",
-      "word": "danger",
-      "senses": [
-        {
-          "id": "sense-b0e4f2a5",
-          "pos": "noun",
-          "meaningZh": "危險；安全威脅",
-          "definitionEn": "the state of being exposed to harm, injury, or damage",
-          "examples": [
-            "It is important to wear a helmet when riding a motorcycle to protect yourself from the danger of head injuries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-6d156d62",
-          "pos": "noun",
-          "meaningZh": "危險來源；威脅因素",
-          "definitionEn": "something that poses a threat to one’s well-being or safety",
-          "examples": [
-            "Walking alone at night in a high-crime area is a prime example of putting oneself in danger."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "data",
-      "word": "data",
-      "senses": [
-        {
-          "id": "sense-f6abc920",
-          "pos": "noun",
-          "meaningZh": "資料；數據",
-          "definitionEn": "a collection of facts from which conclusions may be drawn; information that is stored or processed by a computer",
-          "examples": [
-            "The scientist analyzed the data collected over several years to draw conclusions about the effects of climate change."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "deaf",
       "word": "deaf",
       "senses": [
         {
-          "id": "sense-2c010ac9",
-          "pos": "adjective",
+          "id": "sense-1c159cad",
+          "pos": "adj.",
           "meaningZh": "失聰的；聽不見的",
-          "definitionEn": "completely unable to hear",
           "examples": [
             "Mary’s grandmother is deaf, so they communicate through sign language."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3ca5b6d3",
-          "pos": "noun",
+          "id": "sense-62245757",
+          "pos": "n.",
           "meaningZh": "聾人；聽覺障礙者",
-          "definitionEn": "a person with total or partial inability to hear",
           "examples": [
             "The concert was so loud that it made him temporarily deaf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "debate",
       "word": "debate",
       "senses": [
         {
-          "id": "sense-02b88636",
-          "pos": "noun",
+          "id": "sense-2467638e",
+          "pos": "n.",
           "meaningZh": "辯論；討論",
-          "definitionEn": "a discussion in which reasons are given for and against some proposal or proposition",
           "examples": [
             "The candidates engaged in an intense debate, presenting opposing views on the issue of immigration."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-818fb102",
-          "pos": "noun",
+          "id": "sense-44614f8a",
+          "pos": "n.",
           "meaningZh": "正式辯論；辯論賽",
-          "definitionEn": "a formal discussion or argument in which two opposing teams defend and attack a proposition or motion",
           "examples": [
             "The candidates participated in a heated debate about the country’s economic policy, with each side presenting their plans and countering the other’s arguments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "debt",
       "word": "debt",
       "senses": [
         {
-          "id": "sense-fd9180b1",
-          "pos": "noun",
+          "id": "sense-8eb18179",
+          "pos": "n.",
           "meaningZh": "債務；欠款",
-          "definitionEn": "money or goods or services owed by one person to another",
           "examples": [
             "After purchasing a new car, John had a significant debt to the bank that would take years to repay."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4ffb786e",
-          "pos": "noun",
+          "id": "sense-6b64d5b6",
+          "pos": "n.",
           "meaningZh": "應盡義務；還款責任",
-          "definitionEn": "an obligation to pay or do something",
           "examples": [
             "She took out a loan to pay off her debt from medical expenses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "decision",
       "word": "decision",
       "senses": [
         {
-          "id": "sense-2fe4e84f",
-          "pos": "noun",
+          "id": "sense-eb97444f",
+          "pos": "n.",
           "meaningZh": "決定；裁決",
-          "definitionEn": "a position, opinion, or judgment reached after careful consideration",
           "examples": [
             "After much thought and deliberation, she made the decision to accept the job offer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ee2b1240",
-          "pos": "noun",
+          "id": "sense-012bae40",
+          "pos": "n.",
           "meaningZh": "決策；抉擇",
-          "definitionEn": "the act of making up your mind about something",
           "examples": [
             "After much contemplation, he finally made the decision to quit his job and pursue his passion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deer",
       "word": "deer",
       "senses": [
         {
-          "id": "sense-171e440e",
-          "pos": "noun",
+          "id": "sense-b41e61f2",
+          "pos": "n.",
           "meaningZh": "鹿",
-          "definitionEn": "A large animal that lives in forests and eats grass and leaves. The males have wide horns that stick out like branches.",
           "examples": [
             "While hiking in the forest, we spotted a graceful deer grazing peacefully in a meadow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "degree",
       "word": "degree",
       "senses": [
         {
-          "id": "sense-7bc7e612",
-          "pos": "noun",
+          "id": "sense-a20e47d6",
+          "pos": "n.",
           "meaningZh": "程度；等級；學位",
-          "definitionEn": "a position on a scale of intensity, amount, or quality",
           "examples": [
             "The level of commitment he showed towards his studies was beyond measure, earning him a master's degree with distinction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1582c068",
-          "pos": "noun",
+          "id": "sense-981e5874",
+          "pos": "n.",
           "meaningZh": "（嚴重）程度；深度",
-          "definitionEn": "the seriousness or extent of something, such as a burn or crime",
           "examples": [
             "The degree of the burn was severe, requiring extensive medical treatment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "delay",
       "word": "delay",
       "senses": [
         {
-          "id": "sense-f7050091",
-          "pos": "noun",
+          "id": "sense-c7d25639",
+          "pos": "n.",
           "meaningZh": "延誤；推遲",
-          "definitionEn": "a period of time during which some action or event is postponed or expected to occur.",
           "examples": [
             "Due to the heavy rain, there was a delay in the start of the football match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fd273070",
-          "pos": "noun",
+          "id": "sense-b6eaf578",
+          "pos": "n.",
           "meaningZh": "耽擱；滯後",
-          "definitionEn": "the act of postponing or slowing down; the state of being delayed.",
           "examples": [
             "The train had a delay of two hours due to a mechanical issue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L5",
-        "textbookTitle": "翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "delicious",
       "word": "delicious",
       "senses": [
         {
-          "id": "sense-36549899",
-          "pos": "adjective",
+          "id": "sense-c6cc210b",
+          "pos": "adj.",
           "meaningZh": "美味的；可口的",
-          "definitionEn": "having a pleasant or agreeable taste; delightful",
           "examples": [
             "The delicious aroma of freshly baked bread filled the kitchen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-d9c09ee8",
-          "pos": "noun",
+          "id": "sense-be012354",
+          "pos": "n.",
           "meaningZh": "元帥蘋果（蘋果品種）",
-          "definitionEn": "a variety of sweet eating apples",
           "examples": [
             "I went to the farmer’s market and bought a bag of Delicious apples to use in my apple pie recipe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deliver",
       "word": "deliver",
       "senses": [
         {
-          "id": "sense-4ab7f455",
-          "pos": "verb",
+          "id": "sense-980e5be4",
+          "pos": "v.",
           "meaningZh": "遞送；交付",
-          "definitionEn": "hand over someone or something to another person",
           "examples": [
             "The pizza delivery person handed me the hot and fresh pizza."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-384fce12",
-          "pos": "verb",
+          "id": "sense-8eabc97b",
+          "pos": "v.",
           "meaningZh": "發表（演說）；傳達",
-          "definitionEn": "present or convey a speech, oration, or idea",
           "examples": [
             "The politician delivered an impassioned speech to rally the crowd."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "delivery",
       "word": "delivery",
       "senses": [
         {
-          "id": "sense-a77babab",
-          "pos": "noun",
+          "id": "sense-c9a5001f",
+          "pos": "n.",
           "meaningZh": "配送；投遞",
-          "definitionEn": "the act of delivering or distributing something, such as goods or mail",
           "examples": [
             "The delivery driver dropped off the package at my doorstep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3fc97249",
-          "pos": "noun",
+          "id": "sense-9de0ef75",
+          "pos": "n.",
           "meaningZh": "（演說）表達方式；口才",
-          "definitionEn": "one’s characteristic style or manner of expressing oneself orally",
           "examples": [
             "With his impeccable timing and energetic gestures, the comedian's delivery had the audience roaring with laughter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dentist",
       "word": "dentist",
       "senses": [
         {
-          "id": "sense-4599b795",
-          "pos": "noun",
+          "id": "sense-1dda442d",
+          "pos": "n.",
           "meaningZh": "牙醫；牙科醫師",
-          "definitionEn": "a person qualified to practice dentistry with the purpose of diagnosing, treating, and preventing diseases and conditions of the mouth and teeth",
           "examples": [
             "It’s important to visit your dentist regularly for cleanings and check-ups to ensure good oral health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deny",
       "word": "deny",
       "senses": [
         {
-          "id": "sense-e70a1b8a",
-          "pos": "verb",
+          "id": "sense-93d1c27f",
+          "pos": "v.",
           "meaningZh": "否認；否定",
-          "definitionEn": "contradict or say something is not true",
           "examples": [
             "She denied stealing the money from the cash register, but the security tape showed otherwise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-61e114f7",
-          "pos": "verb",
+          "id": "sense-0abc70ea",
+          "pos": "v.",
           "meaningZh": "拒絕承認；拒絕接受",
-          "definitionEn": "refuse to recognize or accept something",
           "examples": [
             "The suspect denied all the charges that were put against him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +1",
-        "textbookTitle": "龍騰 B1·L2、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "department",
       "word": "department",
       "senses": [
         {
-          "id": "sense-5decbba8",
-          "pos": "noun",
+          "id": "sense-02a08508",
+          "pos": "n.",
           "meaningZh": "部門；科系",
-          "definitionEn": "a specialized division of a large organization or institution",
           "examples": [
             "The marketing department of the company is responsible for promoting their products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-53f694cd",
-          "pos": "noun",
+          "id": "sense-9ace132d",
+          "pos": "n.",
           "meaningZh": "（學術）學系；專業領域",
-          "definitionEn": "a specialized field of study or knowledge",
           "examples": [
             "She majored in the marketing department and got a job as a marketing analyst after graduation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "depend",
       "word": "depend",
       "senses": [
         {
-          "id": "sense-6b323cb2",
-          "pos": "verb",
+          "id": "sense-685343a3",
+          "pos": "v.",
           "meaningZh": "依賴；仰賴",
-          "definitionEn": "rely on someone or something for support or help.",
           "examples": [
             "In times of financial difficulty, some people may depend on their families for financial support."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e2362763",
-          "pos": "verb",
+          "id": "sense-bb337fa2",
+          "pos": "v.",
           "meaningZh": "信賴；依靠",
-          "definitionEn": "have faith or confidence in",
           "examples": [
             "You can depend on Sarah to finish the work on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L7",
-        "textbookTitle": "翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "depth",
       "word": "depth",
       "senses": [
         {
-          "id": "sense-2eaa49c8",
-          "pos": "noun",
+          "id": "sense-80046f24",
+          "pos": "n.",
           "meaningZh": "深度；深刻；透徹性",
-          "definitionEn": "the quality of being intense, profound, or thorough",
           "examples": [
             "Her speech on global warming was filled with depth, as she explored the intricate connections between climate change, socio-economic factors, and technological advancements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3aa16fd5",
-          "pos": "noun",
+          "id": "sense-0d11b2d1",
+          "pos": "n.",
           "meaningZh": "深度；深淺",
-          "definitionEn": "the extent to which something is deep, either downward, backward, or inward",
           "examples": [
             "When snorkeling, make sure you are aware of the depth of the water before diving in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "describe",
       "word": "describe",
       "senses": [
         {
-          "id": "sense-198d380c",
-          "pos": "verb",
+          "id": "sense-e7032129",
+          "pos": "v.",
           "meaningZh": "描述；形容",
-          "definitionEn": "to give an explanation or representation in words of something",
           "examples": [
             "The detective asked the witness to describe the suspect's appearance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c6e18062",
-          "pos": "verb",
+          "id": "sense-ffe58efb",
+          "pos": "v.",
           "meaningZh": "敘述；描寫",
-          "definitionEn": "to create a written or spoken account of an event, person, or situation, including all the relevant characteristics, qualities, or events",
           "examples": [
             "As part of her job as a crime writer, she had to describe the crime scene in vivid detail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "description",
       "word": "description",
       "senses": [
         {
-          "id": "sense-a820f8ef",
-          "pos": "noun",
+          "id": "sense-56d7a89b",
+          "pos": "n.",
           "meaningZh": "描述；說明",
-          "definitionEn": "a statement that represents something in words",
           "examples": [
             "When writing a scientific report, it is important to provide clear descriptions of the observed phenomena."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ce069243",
-          "pos": "noun",
+          "id": "sense-3d23130f",
+          "pos": "n.",
           "meaningZh": "描述的行為；描述過程",
-          "definitionEn": "the act of describing something",
           "examples": [
             "During a job interview, the candidate was asked to provide a description of their previous work experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "desert",
       "word": "desert",
       "senses": [
         {
-          "id": "sense-3144ddef",
-          "pos": "noun",
+          "id": "sense-dabce8f7",
+          "pos": "n.",
           "meaningZh": "沙漠",
-          "definitionEn": "a large, dry area of land with little rain and few plants",
           "examples": [
             "Camels can travel for days across the desert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-40c984bc",
-          "pos": "verb",
+          "id": "sense-7ae47517",
+          "pos": "v.",
           "meaningZh": "遺棄；拋棄（人）",
-          "definitionEn": "leave someone who needs or counts on you, leave in the lurch",
           "examples": [
             "When the storm hit, the group leader deserted us with no shelter or aid, leaving us stranded in the harsh desert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-967cb639",
-          "pos": "verb",
+          "id": "sense-19cb4be4",
+          "pos": "v.",
           "meaningZh": "背棄；脫離",
-          "definitionEn": "leave behind",
           "examples": [
             "When his team started losing, John decided to desert them and join the winning team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "design",
       "word": "design",
       "senses": [
         {
-          "id": "sense-4e961742",
-          "pos": "noun",
+          "id": "sense-954dc392",
+          "pos": "n.",
           "meaningZh": "設計；設計圖",
-          "definitionEn": "the act of working out the form of something, often by creating a sketch, outline, or plan",
           "examples": [
             "The architecture firm presented their design for the new office building to the board of directors, complete with detailed plans and blueprints."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b14fcc5c",
-          "pos": "noun",
+          "id": "sense-a73976ac",
+          "pos": "n.",
           "meaningZh": "圖樣；方案",
-          "definitionEn": "a scheme or arrangement, usually intended as a guide for making something else",
           "examples": [
             "The architect presented his design for the new building to the committee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "detail",
       "word": "detail",
       "senses": [
         {
-          "id": "sense-494602d8",
-          "pos": "noun",
+          "id": "sense-3148cf30",
+          "pos": "n.",
           "meaningZh": "細節；細部資訊",
-          "definitionEn": "an isolated fact or piece of information that is considered separately from the whole",
           "examples": [
             "The detective noticed a small detail in the crime scene that everyone else had missed, leading them to solve the case."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7ac8d83f",
-          "pos": "noun",
+          "id": "sense-fa88ba07",
+          "pos": "n.",
           "meaningZh": "精細程度；細膩",
-          "definitionEn": "the treatment of individual/small parts of a subject in great detail",
           "examples": [
             "The designer spent hours perfecting every detail of the dress, from the intricate embroidery to the carefully crafted hemline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "develop",
       "word": "develop",
       "senses": [
         {
-          "id": "sense-4a4922f4",
-          "pos": "verb",
+          "id": "sense-7e516581",
+          "pos": "v.",
           "meaningZh": "培養；發展",
-          "definitionEn": "to cause something to grow and differentiate according to its natural growth pattern",
           "examples": [
             "The teacher used various teaching methods to develop the students' critical thinking skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c52cc7c1",
-          "pos": "verb",
+          "id": "sense-7ed67228",
+          "pos": "v.",
           "meaningZh": "習得；累積（技能）",
-          "definitionEn": "to gain knowledge or skill through experience",
           "examples": [
             "As a medical intern, she had the opportunity to develop her diagnostic skills by observing experienced doctors in action."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "development",
       "word": "development",
       "senses": [
         {
-          "id": "sense-7fd914a8",
-          "pos": "noun",
+          "id": "sense-ee88fedc",
+          "pos": "n.",
           "meaningZh": "發展；成長過程",
-          "definitionEn": "The process of something growing or changing gradually into a more advanced or mature form.",
           "examples": [
             "He has shown impressive development in his piano skills over the past year, now playing complex pieces with ease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dial",
       "word": "dial",
       "senses": [
         {
-          "id": "sense-26453798",
-          "pos": "verb",
+          "id": "sense-35d2c493",
+          "pos": "v.",
           "meaningZh": "撥號；轉動刻度盤",
-          "definitionEn": "to make a selection by means of a dial",
           "examples": [
             "She had to dial the combination to open the safe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-42337341",
-          "pos": "noun",
+          "id": "sense-e86d09e1",
+          "pos": "n.",
           "meaningZh": "（鐘錶的）錶盤；錶面",
-          "definitionEn": "the face of a timepiece, showing the hours and minutes",
           "examples": [
             "He glanced at his watch, checking the time on the dial."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dialogue",
       "word": "dialogue",
       "senses": [
         {
-          "id": "sense-240dfefb",
-          "pos": "noun",
+          "id": "sense-64d6028b",
+          "pos": "n.",
           "meaningZh": "對話；交談",
-          "definitionEn": "a conversation between two people",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-7bec88f7",
-          "pos": "noun",
+          "id": "sense-66070587",
+          "pos": "n.",
           "meaningZh": "（戲劇、小說中的）台詞；對白",
-          "definitionEn": "the lines spoken by characters in drama or fiction",
           "examples": [
             "The opening scene of the movie showcases a meaningful dialogue between the protagonist and her mother, setting the tone for the rest of the story."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "diamond",
       "word": "diamond",
       "senses": [
         {
-          "id": "sense-7f4aa6fb",
-          "pos": "noun",
+          "id": "sense-6b17722b",
+          "pos": "n.",
           "meaningZh": "鑽石；寶石",
-          "definitionEn": "a precious gemstone that has been cut and polished to enhance its brilliance and value",
           "examples": [
             "He got down on one knee and presented her with a stunning diamond engagement ring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-449112fa",
-          "pos": "noun",
+          "id": "sense-280cd84a",
+          "pos": "n.",
           "meaningZh": "菱形",
-          "definitionEn": "a quadrilateral with four equal sides and opposite angles that are oblique angles and equal to each other; an oblique-angled equilateral parallelogram",
           "examples": [
             "The jeweler showed me a stunning diamond ring with a perfectly cut diamond at the center."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "diary",
+      "word": "diary",
+      "senses": [
+        {
+          "id": "sense-902068d3",
+          "pos": "n.",
+          "meaningZh": "日記；日誌",
+          "examples": [
+            "Every night before bed, Jane sat down with her diary and chronicled the events of her day, from the mundane to the extraordinary."
+          ]
+        },
+        {
+          "id": "sense-9b8a29ce",
+          "pos": "n.",
+          "meaningZh": "日記本；日記簿",
+          "examples": [
+            "At the end of each day, Sarah sat down with her diary to reflect on her experiences and record her thoughts."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "diet",
+      "word": "diet",
+      "senses": [
+        {
+          "id": "sense-c4db0829",
+          "pos": "n.",
+          "meaningZh": "日常飲食；食物攝取",
+          "examples": [
+            "Maria is following a strict diet of vegetables and lean proteins to lose weight."
+          ]
+        },
+        {
+          "id": "sense-cff580d7",
+          "pos": "n.",
+          "meaningZh": "規定飲食；節食",
+          "examples": [
+            "After being diagnosed with diabetes, Tim followed a strict diet consisting of low-sugar and low-carbohydrate foods."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "difference",
+      "word": "difference",
+      "senses": [
+        {
+          "id": "sense-a610327c",
+          "pos": "n.",
+          "meaningZh": "差異；不同之處",
+          "examples": [
+            "There is a noticeable difference in taste between the two brands of chocolate."
+          ]
+        },
+        {
+          "id": "sense-1db1387f",
+          "pos": "n.",
+          "meaningZh": "區別；差別",
+          "examples": [
+            "The main difference between apples and oranges is their color: apples are typically red or green, while oranges are orange."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "difficulty",
+      "word": "difficulty",
+      "senses": [
+        {
+          "id": "sense-b26f3dca",
+          "pos": "n.",
+          "meaningZh": "困難；艱難",
+          "examples": [
+            "John experienced great difficulty learning how to play the piano, but with consistent practice, he gradually overcame the challenges and became an accomplished pianist."
+          ]
+        },
+        {
+          "id": "sense-620fc8af",
+          "pos": "n.",
+          "meaningZh": "難題；難關",
+          "examples": [
+            "Learning to play the piano can be quite a difficulty, especially for beginners."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "direct",
+      "word": "direct",
+      "senses": [
+        {
+          "id": "sense-1549c91b",
+          "pos": "adj.",
+          "meaningZh": "直接的；不繞路的",
+          "examples": [
+            "The quickest route to the park is a direct path through the woods."
+          ]
+        },
+        {
+          "id": "sense-0b805761",
+          "pos": "adj.",
+          "meaningZh": "直系的；嫡系的",
+          "examples": [
+            "The prince is in direct line to the throne, as he is the firstborn son of the king and queen."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1367 +1,639 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 91,
   "words": [
-    {
-      "wordKey": "stadium",
-      "word": "stadium",
-      "senses": [
-        {
-          "id": "sense-1955f53d",
-          "pos": "noun",
-          "meaningZh": "體育場；運動場館",
-          "definitionEn": "a large structure used for sports or events held outdoors, typically featuring tiered seating for spectators",
-          "examples": [
-            "The stadium was packed with cheering fans, eagerly watching the championship match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "staff",
-      "word": "staff",
-      "senses": [
-        {
-          "id": "sense-5069098b",
-          "pos": "noun",
-          "meaningZh": "員工；職員；工作人員",
-          "definitionEn": "personnel who assist their superior in carrying out an assigned task",
-          "examples": [
-            "The hotel staff efficiently catered to the needs of the guests, ensuring their comfort and satisfaction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-ea039c3c",
-          "pos": "noun",
-          "meaningZh": "教職員；學校職員",
-          "definitionEn": "the body of teachers and administrators at a school",
-          "examples": [
-            "The staff at the school organized a farewell party for the retiring principal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +1",
-        "textbookTitle": "龍騰 B2·L1、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "stale",
-      "word": "stale",
-      "senses": [
-        {
-          "id": "sense-6f47ffed",
-          "pos": "adjective",
-          "meaningZh": "不新鮮的；走味的；過時的",
-          "definitionEn": "not fresh; no longer new or original",
-          "examples": [
-            "The bread in the pantry has gone stale and is no longer good to eat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-251f4506",
-          "pos": "adjective",
-          "meaningZh": "無聊的；老套的；缺乏新意的",
-          "definitionEn": "not lively or interesting; boring",
-          "examples": [
-            "After reading the same book for the tenth time, the story started to feel stale and predictable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "stare",
-      "word": "stare",
-      "senses": [
-        {
-          "id": "sense-6db09bf5",
-          "pos": "verb",
-          "meaningZh": "凝視；目不轉睛地看",
-          "definitionEn": "to fixate one’s eyes",
-          "examples": [
-            "The child could not resist the temptation to stare at the candy for too long."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-69fc132f",
-          "pos": "verb",
-          "meaningZh": "盯著看；直視",
-          "definitionEn": "to look at with fixed eyes",
-          "examples": [
-            "When the teacher scolded him, he just stared at her without saying anything."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6",
-        "textbookTitle": "龍騰 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "starve",
-      "word": "starve",
-      "senses": [
-        {
-          "id": "sense-18433668",
-          "pos": "verb",
-          "meaningZh": "捱餓；因缺糧而受苦",
-          "definitionEn": "suffer from lack of food",
-          "examples": [
-            "During the famine, many people were forced to starve and had little access to food."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-eb5eff51",
-          "pos": "verb",
-          "meaningZh": "挨餓；斷食",
-          "definitionEn": "be hungry; go without food",
-          "examples": [
-            "After hours of hiking, we were all so hungry that we felt like we were going to starve if we didn't eat soon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "statue",
       "word": "statue",
       "senses": [
         {
-          "id": "sense-cd915ba2",
-          "pos": "noun",
+          "id": "sense-cf491856",
+          "pos": "n.",
           "meaningZh": "雕像；塑像",
-          "definitionEn": "a large art object that is made from a hard material, such as stone or metal, and often represents a person or an animal",
           "examples": [
             "In the city park, there is a majestic statue of a brave soldier on horseback, commemorating the heroes of war."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "steady",
       "word": "steady",
       "senses": [
         {
-          "id": "sense-5a4aede1",
-          "pos": "adjective",
+          "id": "sense-6d26e3c5",
+          "pos": "adj.",
           "meaningZh": "穩固的；不晃動的",
-          "definitionEn": "secure and not moving or shaking",
           "examples": [
             "The construction worker balanced himself on a steady beam on the top floor of the skyscraper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f40153f6",
-          "pos": "adjective",
+          "id": "sense-f9a5a17a",
+          "pos": "adj.",
           "meaningZh": "穩定的；不波動的",
-          "definitionEn": "not likely to change, fall or fluctuate",
           "examples": [
             "After a few shaky starts, the company’s earnings have remained steady for the past year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "steal",
       "word": "steal",
       "senses": [
         {
-          "id": "sense-b48893dd",
-          "pos": "verb",
+          "id": "sense-597d3740",
+          "pos": "v.",
           "meaningZh": "偷竊；盜取",
-          "definitionEn": "to take something that belongs to someone else, without permission",
           "examples": [
             "The thief decided to steal a wallet from the crowded subway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-99f43c34",
-          "pos": "noun",
+          "id": "sense-6d893f7c",
+          "pos": "n.",
           "meaningZh": "竊盜行為；偷竊",
-          "definitionEn": "a time when someone takes something without permission",
           "examples": [
             "She was caught on camera trying to steal a watch from the store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "steam",
       "word": "steam",
       "senses": [
         {
-          "id": "sense-a702156c",
-          "pos": "noun",
+          "id": "sense-d848dc6c",
+          "pos": "n.",
           "meaningZh": "水蒸氣；蒸汽",
-          "definitionEn": "The gas that appears when water is boiled. It can be used as a source of power, for example, to turn turbines or engines.",
           "examples": [
             "The steam generated by the boiling water turned the turbine and produced electricity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cf047d01",
-          "pos": "verb",
+          "id": "sense-75ec0e72",
+          "pos": "v.",
           "meaningZh": "冒蒸氣；散發熱氣",
-          "definitionEn": "To emit steam, or to give off boiling water vapor.",
           "examples": [
             "As I poured the hot water into the cup, it began to steam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "steep",
       "word": "steep",
       "senses": [
         {
-          "id": "sense-8632e93d",
-          "pos": "adjective",
+          "id": "sense-5961b07b",
+          "pos": "adj.",
           "meaningZh": "陡峭的；傾斜度大的",
-          "definitionEn": "set at a high angle; steeply sloping",
           "examples": [
             "She decided not to attempt climbing the steep mountain trail due to its precarious incline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d0f5288b",
-          "pos": "adjective",
+          "id": "sense-a3a85ba1",
+          "pos": "adj.",
           "meaningZh": "過高的；不合理的",
-          "definitionEn": "excessive; beyond reasonable limits",
           "examples": [
             "Buying a luxury car on a minimum wage salary is a steep financial decision."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sticky",
       "word": "sticky",
       "senses": [
         {
-          "id": "sense-201e134e",
-          "pos": "adjective",
+          "id": "sense-51ac5d64",
+          "pos": "adj.",
           "meaningZh": "黏的；有黏性的",
-          "definitionEn": "having the properties of being sticky or adhesive",
           "examples": [
             "She tried to peel the sticky label off the jar, but it wouldn't come off easily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ae95c516",
-          "pos": "adjective",
+          "id": "sense-f04d53bc",
+          "pos": "adj.",
           "meaningZh": "悶熱潮濕的；汗濕的",
-          "definitionEn": "damp, typically with sweat or other moisture causing clothing to cling to the skin",
           "examples": [
             "The humid weather made my shirt stick to my back, and I had to change my clothes before attending the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stiff",
       "word": "stiff",
       "senses": [
         {
-          "id": "sense-197c474c",
-          "pos": "adjective",
+          "id": "sense-c2fc4858",
+          "pos": "adj.",
           "meaningZh": "硬的；僵硬的",
-          "definitionEn": "incapable of bending or resistant to being bent",
           "examples": [
             "The metal rod was so stiff that I couldn't bend it, no matter how hard I tried."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-45a82341",
-          "pos": "adjective",
+          "id": "sense-8eca575d",
+          "pos": "adj.",
           "meaningZh": "呆板的；拘謹的",
-          "definitionEn": "rigidly formal and lacking ease or flexibility",
           "examples": [
             "At the formal dinner, John's stiff demeanor made it difficult for others to engage in casual conversation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7 +1",
-        "textbookTitle": "龍騰 B3·L7、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sting",
       "word": "sting",
       "senses": [
         {
-          "id": "sense-d95a83c7",
-          "pos": "verb",
+          "id": "sense-977eddc6",
+          "pos": "v.",
           "meaningZh": "叮；螫",
-          "definitionEn": "to deliver a painful attack with a sharp, pointed body part like that of a bee, scorpion, or stingray",
           "examples": [
             "While out hiking, I accidentally stepped on a bee, causing it to sting me on the foot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-93ba4d7e",
-          "pos": "verb",
+          "id": "sense-9d780c37",
+          "pos": "v.",
           "meaningZh": "刺痛；灼痛",
-          "definitionEn": "to cause a sudden, sharp, and stinging discomfort or pain",
           "examples": [
             "As she reached for the berry, a wasp stung her finger, causing a sharp sting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L2",
-        "textbookTitle": "翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stir",
       "word": "stir",
       "senses": [
         {
-          "id": "sense-20951fec",
-          "pos": "verb",
+          "id": "sense-6479ddb5",
+          "pos": "v.",
           "meaningZh": "攪拌；攪動",
-          "definitionEn": "move an implement through a liquid or other substance in order to mix it thoroughly",
           "examples": [
             "To make the cake, stir the flour mixture into the butter mixture until it is well combined."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stitch",
       "word": "stitch",
       "senses": [
         {
-          "id": "sense-4267dd1b",
-          "pos": "noun",
+          "id": "sense-d02ad623",
+          "pos": "n.",
           "meaningZh": "縫合；傷口縫線",
-          "definitionEn": "a surgical technique that uses sutures to close a wound or incision",
           "examples": [
             "After the operation, the surgeon used a needle and thread to stitch up the patient’s incision."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ac96f975",
-          "pos": "noun",
+          "id": "sense-979ed08d",
+          "pos": "n.",
           "meaningZh": "針腳；縫針",
-          "definitionEn": "a link, loop, or knot made through knitting, crocheting, embroidery, or sewing",
           "examples": [
             "She used a needle to stitch the patch onto her jacket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stomach",
       "word": "stomach",
       "senses": [
         {
-          "id": "sense-686390e3",
-          "pos": "noun",
+          "id": "sense-e222c6cf",
+          "pos": "n.",
           "meaningZh": "胃；腹部",
-          "definitionEn": "the region of the body between the chest and the pelvis, containing the stomach, intestines, and other vital organs",
           "examples": [
             "After eating a big meal, I could feel the food sitting in my stomach, making me feel full."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1be56730",
-          "pos": "noun",
+          "id": "sense-6a0be72c",
+          "pos": "n.",
           "meaningZh": "承受力；膽量",
-          "definitionEn": "an inclination or liking for things involving conflict, difficulty, or unpleasantness; fortitude or resilience",
           "examples": [
             "Despite the challenging conditions and intense competition, she had the stomach for the business world and thrived in the cutthroat industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stool",
       "word": "stool",
       "senses": [
         {
-          "id": "sense-123982ea",
-          "pos": "noun",
+          "id": "sense-72093c32",
+          "pos": "n.",
           "meaningZh": "凳子；無靠背椅",
-          "definitionEn": "a simple seat without a back or arms",
           "examples": [
             "She placed a small wooden stool near the entrance for guests to sit on while taking off their shoes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6897e4d7",
-          "pos": "noun",
+          "id": "sense-d01d6f8f",
+          "pos": "n.",
           "meaningZh": "糞便；排泄物",
-          "definitionEn": "solid excretory product evacuated from the bowels",
           "examples": [
             "After a healthy meal, we expect the body to produce a solid stool."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stormy",
       "word": "stormy",
       "senses": [
         {
-          "id": "sense-3e90cda9",
-          "pos": "adjective",
+          "id": "sense-c5fd9315",
+          "pos": "adj.",
           "meaningZh": "風雨交加的；暴風的",
-          "definitionEn": "affected or characterized by storms or commotion (especially of weather)",
           "examples": [
             "The stormy weather made it difficult for the sailors to navigate the rough seas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6f32a7e1",
-          "pos": "adjective",
+          "id": "sense-525c4e4d",
+          "pos": "adj.",
           "meaningZh": "激烈的；情緒激動的",
-          "definitionEn": "characterized by violent emotions or behavior",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stove",
       "word": "stove",
       "senses": [
         {
-          "id": "sense-574c7c58",
-          "pos": "noun",
+          "id": "sense-a1031e9c",
+          "pos": "n.",
           "meaningZh": "爐灶；瓦斯爐",
-          "definitionEn": "a kitchen appliance used for cooking food",
           "examples": [
             "I used the stove to cook dinner last night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strategy",
       "word": "strategy",
       "senses": [
         {
-          "id": "sense-00ea5941",
-          "pos": "noun",
+          "id": "sense-cdd33349",
+          "pos": "n.",
           "meaningZh": "策略；長期計畫",
-          "definitionEn": "A long-term approach to achieving a goal or objective, usually by considering multiple factors and anticipating potential obstacles.",
           "examples": [
             "In order to increase market share, the company implemented a new marketing strategy that involved targeting a younger demographic and utilizing social media platforms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9b735ed6",
-          "pos": "noun",
+          "id": "sense-ac6c65ce",
+          "pos": "n.",
           "meaningZh": "戰略；系統性方案",
-          "definitionEn": "An elaborate and systematic plan of action, especially in regards to business or politics.",
           "examples": [
             "The company implemented a new marketing *strategy* to increase sales and reach a wider audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8 +1",
-        "textbookTitle": "龍騰 B1·L8、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "straw",
       "word": "straw",
       "senses": [
         {
-          "id": "sense-a570deaf",
-          "pos": "noun",
+          "id": "sense-348b8627",
+          "pos": "n.",
           "meaningZh": "稻草；編織草料",
-          "definitionEn": "a plant material used for making baskets, hats, or as animal feed",
           "examples": [
             "Maria weaved a lovely basket out of straw."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6535a525",
-          "pos": "noun",
+          "id": "sense-bb27e08d",
+          "pos": "n.",
           "meaningZh": "穀稈；乾稻梗",
-          "definitionEn": "the dry stalks of cereal plants, after the grain and chaff have been removed",
           "examples": [
             "In the autumn, farmers gather the straw from their fields to use as bedding for livestock."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strength",
       "word": "strength",
       "senses": [
         {
-          "id": "sense-bf9c7352",
-          "pos": "noun",
+          "id": "sense-47025e9a",
+          "pos": "n.",
           "meaningZh": "力量；體力；意志力",
-          "definitionEn": "the quality or state of being physically or mentally strong.",
           "examples": [
             "He demonstrated the strength of his willpower by running a marathon without stopping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-41f0f520",
-          "pos": "noun",
+          "id": "sense-ca7388a8",
+          "pos": "n.",
           "meaningZh": "兵力；戰力",
-          "definitionEn": "the capacity of personnel and materiel to fight a war.",
           "examples": [
             "The army's strength was evident as they successfully defended the strategic position against enemy forces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1",
-        "textbookTitle": "龍騰 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strip",
       "word": "strip",
       "senses": [
         {
-          "id": "sense-6afd67c0",
-          "pos": "noun",
+          "id": "sense-d94ecc54",
+          "pos": "n.",
           "meaningZh": "長條；細帶",
-          "definitionEn": "a relatively long narrow piece of something",
           "examples": [
             "She tore off a small strip of paper from the edge of the notebook."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5b31efcd",
-          "pos": "noun",
+          "id": "sense-062523c9",
+          "pos": "n.",
           "meaningZh": "長形布料；細條狀物",
-          "definitionEn": "artifact consisting of a narrow flat piece of material",
           "examples": [
             "She used a strip of fabric to tie her hair back."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "structure",
       "word": "structure",
       "senses": [
         {
-          "id": "sense-3114c16a",
-          "pos": "noun",
+          "id": "sense-10cea816",
+          "pos": "n.",
           "meaningZh": "構造物；建築",
-          "definitionEn": "a thing that is made up of different parts put together in a specific way",
           "examples": [
             "The Eiffel Tower is a beautiful structure made up of iron and steel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fa53b904",
-          "pos": "noun",
+          "id": "sense-8d443c10",
+          "pos": "n.",
           "meaningZh": "組織架構；結構安排",
-          "definitionEn": "the arrangement and organization of the different parts of something",
           "examples": [
             "The structure of this organization is very hierarchical, with clear lines of authority and decision-making power."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stubborn",
       "word": "stubborn",
       "senses": [
         {
-          "id": "sense-4ebe11ca",
-          "pos": "adjective",
+          "id": "sense-4b2fc908",
+          "pos": "adj.",
           "meaningZh": "頑固的；固執的",
-          "definitionEn": "unwilling to change one’s opinion or position",
           "examples": [
             "Despite my attempts to convince him to try something new, John was too stubborn to give up his old ways."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L7",
-        "textbookTitle": "三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "studio",
       "word": "studio",
       "senses": [
         {
-          "id": "sense-c0b50d7f",
-          "pos": "noun",
+          "id": "sense-8e4e049f",
+          "pos": "n.",
           "meaningZh": "藝術工作室；練習室",
-          "definitionEn": "a workplace for the teaching or practice of an art, such as painting, music, or dance",
           "examples": [
             "After finishing her dance technique class, Sarah headed to the ballet studio to practice her choreography for the upcoming performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-20968afd",
-          "pos": "noun",
+          "id": "sense-aaf3621d",
+          "pos": "n.",
           "meaningZh": "錄影棚；攝影棚",
-          "definitionEn": "a workplace consisting of a room or building where movies, television shows, or radio programs are produced and recorded",
           "examples": [
             "During the interview, the director discussed the challenges faced while shooting the movie at the studio."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stuff",
       "word": "stuff",
       "senses": [
         {
-          "id": "sense-b432539c",
-          "pos": "noun",
+          "id": "sense-2101f7d0",
+          "pos": "n.",
           "meaningZh": "物品；東西",
-          "definitionEn": "the tangible substance that makes up a physical object",
           "examples": [
             "She filled the box with various stuff, such as clothes, books, and toys."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-dce9347c",
-          "pos": "noun",
+          "id": "sense-35a764a0",
+          "pos": "n.",
           "meaningZh": "廢話；沒意義的話",
-          "definitionEn": "senseless talk",
           "examples": [
             "I couldn’t understand anything from his long, rambling stuff about politics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "substance",
       "word": "substance",
       "senses": [
         {
-          "id": "sense-b41c8371",
-          "pos": "noun",
+          "id": "sense-b516ce7d",
+          "pos": "n.",
           "meaningZh": "物質；實體",
-          "definitionEn": "the real physical matter of which a person or thing consists",
           "examples": [
             "The substance of the cake was made up of flour, sugar, and eggs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-abdf1df6",
-          "pos": "noun",
+          "id": "sense-6b3eaeda",
+          "pos": "n.",
           "meaningZh": "主旨；內容核心",
-          "definitionEn": "the topic or subject of a communication",
           "examples": [
             "The substance of the debate was the government’s proposal to increase taxes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L5 +1",
-        "textbookTitle": "龍騰 B1·L5、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "subtract",
       "word": "subtract",
       "senses": [
         {
-          "id": "sense-d7947d26",
-          "pos": "verb",
+          "id": "sense-c3cd4047",
+          "pos": "v.",
           "meaningZh": "減去；扣除",
-          "definitionEn": "take off or away",
           "examples": [
             "To calculate the total profit, we need to subtract all the expenses from the total revenue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-19043eb4",
-          "pos": "verb",
+          "id": "sense-e0865043",
+          "pos": "v.",
           "meaningZh": "做減法；計算差值",
-          "definitionEn": "make a subtraction",
           "examples": [
             "Maria asked her students to subtract the number of apples she had from the total apples in the basket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suburb",
       "word": "suburb",
       "senses": [
         {
-          "id": "sense-ad5513b7",
-          "pos": "noun",
+          "id": "sense-55413e3f",
+          "pos": "n.",
           "meaningZh": "郊區；市郊住宅區",
-          "definitionEn": "a residential area on the edge of a city or town",
           "examples": [
             "Sarah grew up in a quiet suburb where families gathered at the local park on weekends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "suck",
+      "word": "suck",
+      "senses": [
+        {
+          "id": "sense-b199bb56",
+          "pos": "v.",
+          "meaningZh": "用嘴吸；吸取",
+          "examples": [
+            "He used a straw to suck up the juice from his drink."
+          ]
+        },
+        {
+          "id": "sense-86d4f450",
+          "pos": "v.",
+          "meaningZh": "吸入；抽吸",
+          "examples": [
+            "She used a straw to suck up the juice from the bottom of the glass."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "suffer",
+      "word": "suffer",
+      "senses": [
+        {
+          "id": "sense-f10836bf",
+          "pos": "v.",
+          "meaningZh": "受苦；遭受（痛苦、損失）",
+          "examples": [
+            "Many people suffered greatly during the war."
+          ]
+        },
+        {
+          "id": "sense-a1ff8ddf",
+          "pos": "v.",
+          "meaningZh": "患有；罹患",
+          "examples": [
+            "She seems to suffer from a rare medical condition."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sufficient",
+      "word": "sufficient",
+      "senses": [
+        {
+          "id": "sense-c5ab6849",
+          "pos": "adj.",
+          "meaningZh": "足夠的；充分的",
+          "examples": [
+            "Make sure you have a sufficient amount of money to cover your expenses on this trip."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "suicide",
+      "word": "suicide",
+      "senses": [
+        {
+          "id": "sense-aa849d80",
+          "pos": "n.",
+          "meaningZh": "自殺；輕生",
+          "examples": [
+            "The charity works to prevent suicide among young people."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sum",
+      "word": "sum",
+      "senses": [
+        {
+          "id": "sense-63707e9e",
+          "pos": "n.",
+          "meaningZh": "總和；合計",
+          "examples": [
+            "The sum of 5 and 10 is 15."
+          ]
+        },
+        {
+          "id": "sense-489f24d3",
+          "pos": "n.",
+          "meaningZh": "精華；要點",
+          "examples": [
+            "The sum of the project is to increase sales by 20% in the next quarter."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

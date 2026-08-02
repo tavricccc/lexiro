@@ -1,1380 +1,657 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 71,
   "words": [
-    {
-      "wordKey": "destroy",
-      "word": "destroy",
-      "senses": [
-        {
-          "id": "sense-54eefde8",
-          "pos": "verb",
-          "meaningZh": "摧毀；破壞",
-          "definitionEn": "to completely ruin or damage something so that it cannot be repaired or used again",
-          "examples": [
-            "The earthquake destroyed the entire city and left millions homeless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-395f4dbc",
-          "pos": "verb",
-          "meaningZh": "大敗；壓倒性擊敗",
-          "definitionEn": "to defeat someone or something completely in a game or competition",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +2",
-        "textbookTitle": "龍騰 B1·L9、三民 B1·L10、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "detect",
-      "word": "detect",
-      "senses": [
-        {
-          "id": "sense-baa5301b",
-          "pos": "verb",
-          "meaningZh": "察覺；探測到",
-          "definitionEn": "to discover or notice something, especially something that is difficult to see, hear or taste",
-          "examples": [
-            "Sophie could barely detect the sound of her phone ringing in her noisy office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "determine",
-      "word": "determine",
-      "senses": [
-        {
-          "id": "sense-693ea670",
-          "pos": "verb",
-          "meaningZh": "決定；下定決心",
-          "definitionEn": "to officially decide something, or to firmly intend to do something",
-          "examples": [
-            "She was determined to win the race no matter what."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-f1a4d163",
-          "pos": "verb",
-          "meaningZh": "查明；確定",
-          "definitionEn": "find out or learn something for certain, usually by asking or looking for information",
-          "examples": [
-            "The detective needed to determine the source of the fingerprints found at the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-7bccd3ec",
-          "pos": "verb",
-          "meaningZh": "確立；釐清",
-          "definitionEn": "establish or ascertain something through investigation, calculation, experiment, survey or study",
-          "examples": [
-            "The scientific team sought to determine the impact of the new drug on patients with early signs of Parkinson’s disease and found it to be highly effective."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7 +2",
-        "textbookTitle": "龍騰 B3·L7、三民 B2·L9、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "devil",
-      "word": "devil",
-      "senses": [
-        {
-          "id": "sense-b08a09d5",
-          "pos": "noun",
-          "meaningZh": "惡魔；魔鬼",
-          "definitionEn": "an evil supernatural being",
-          "examples": [
-            "In the horror movie, the protagonist fights a fierce battle against the devil to save his soul."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-3c0be5d0",
-          "pos": "noun",
-          "meaningZh": "惡人；壞傢伙",
-          "definitionEn": "a cruel and wicked person who is often associated with the devil, Satan, or other evil forces",
-          "examples": [
-            "He may seem charming, but deep down he's a devil. He lies, cheats, and shows no remorse for his actions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "dim",
-      "word": "dim",
-      "senses": [
-        {
-          "id": "sense-d1d79db4",
-          "pos": "adjective",
-          "meaningZh": "昏暗的；微弱的",
-          "definitionEn": "made less bright; made dim",
-          "examples": [
-            "The dim lights in the room added to the cozy ambiance of the evening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-59dc5b65",
-          "pos": "verb",
-          "meaningZh": "變暗；減弱光線",
-          "definitionEn": "become dim or lusterless; lose brightness or clarity",
-          "examples": [
-            "As the sun set, the light in the room gradually began to dim."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "dime",
       "word": "dime",
       "senses": [
         {
-          "id": "sense-62939c9f",
-          "pos": "noun",
+          "id": "sense-9b993027",
+          "pos": "n.",
           "meaningZh": "一角硬幣（美國）",
-          "definitionEn": "a coin worth 10 cents in the United States",
           "examples": [
             "Sarah found a dime on the sidewalk and used it to buy a piece of candy from the vending machine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dine",
       "word": "dine",
       "senses": [
         {
-          "id": "sense-faa62c3d",
-          "pos": "verb",
+          "id": "sense-a64998da",
+          "pos": "v.",
           "meaningZh": "用餐；進晚餐",
-          "definitionEn": "eat dinner or supper",
           "examples": [
             "We will dine at 7 PM at our favorite restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3d3a7fc6",
-          "pos": "verb",
+          "id": "sense-c0067caf",
+          "pos": "v.",
           "meaningZh": "宴請；招待用餐",
-          "definitionEn": "invite someone to have dinner as host",
           "examples": [
             "We will dine at my friend’s house this weekend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dinosaur",
       "word": "dinosaur",
       "senses": [
         {
-          "id": "sense-0fae6ee3",
-          "pos": "noun",
+          "id": "sense-b2a9ed17",
+          "pos": "n.",
           "meaningZh": "恐龍",
-          "definitionEn": "Any of a group of extinct reptiles that lived millions of years ago, during the Mesozoic Era. Dinosaurs are known for their heavy, scaly bodies and large sizes.",
           "examples": [
             "Paleontologists discovered a nearly complete dinosaur skeleton in the remote desert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dip",
       "word": "dip",
       "senses": [
         {
-          "id": "sense-35d5efd8",
-          "pos": "verb",
+          "id": "sense-e6d83cf5",
+          "pos": "v.",
           "meaningZh": "浸；蘸",
-          "definitionEn": "to put something quickly into a liquid and take it out again",
           "examples": [
             "She dipped the bread into the soup."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-99f5a904",
-          "pos": "verb",
+          "id": "sense-a7f24799",
+          "pos": "v.",
           "meaningZh": "下傾；向下坡斜",
-          "definitionEn": "to slope downwards",
           "examples": [
             "The driveway dips sharply as it meets the main road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dirt",
       "word": "dirt",
       "senses": [
         {
-          "id": "sense-8c701de6",
-          "pos": "noun",
+          "id": "sense-f2f07a2e",
+          "pos": "n.",
           "meaningZh": "泥土；污垢",
-          "definitionEn": "the part of the earth’s surface consisting of soil and broken down rock",
           "examples": [
             "After a heavy rain, the dirt in the yard turned into mud."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f5294fc2",
-          "pos": "adjective",
+          "id": "sense-ed7cf944",
+          "pos": "adj.",
           "meaningZh": "泥土路的；未鋪設的",
-          "definitionEn": "unpaved or unsurfaced, not suitable for travel except in dry conditions",
           "examples": [
             "After heavy rain, the dirt road became almost impassable with deep mud."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discount",
       "word": "discount",
       "senses": [
         {
-          "id": "sense-1e903c83",
-          "pos": "adjective",
+          "id": "sense-f05d20a1",
+          "pos": "adj.",
           "meaningZh": "折扣的；降價的",
-          "definitionEn": "having a reduced or lowered value",
           "examples": [
             "The store offered a 20% discount on all items during their anniversary sale."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dishonest",
       "word": "dishonest",
       "senses": [
         {
-          "id": "sense-80326c49",
-          "pos": "adjective",
+          "id": "sense-b362e10f",
+          "pos": "adj.",
           "meaningZh": "不誠實的；貪腐的",
-          "definitionEn": "capable of being corrupted",
           "examples": [
             "The politician was dishonest about accepting bribes from lobbyists."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7bf0b465",
-          "pos": "adjective",
+          "id": "sense-d079e7cf",
+          "pos": "adj.",
           "meaningZh": "欺騙的；詐欺的",
-          "definitionEn": "able or likely to give a false impression or mislead; fraudulent",
           "examples": [
             "Sara was caught being dishonest to her boss about the company’s financial status hoping to keep her job."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dislike",
       "word": "dislike",
       "senses": [
         {
-          "id": "sense-3358cdd3",
-          "pos": "noun",
+          "id": "sense-77de733b",
+          "pos": "n.",
           "meaningZh": "厭惡；反感",
-          "definitionEn": "a feeling of aversion or antipathy",
           "examples": [
             "I dislike the taste of mushrooms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-625d4085",
-          "pos": "noun",
+          "id": "sense-0c61402d",
+          "pos": "n.",
           "meaningZh": "不喜歡；不認同",
-          "definitionEn": "an inclination to withhold approval from some person or group",
           "examples": [
             "Although he was known for his generosity and kindness, John had a strong dislike for politicians."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ditch",
       "word": "ditch",
       "senses": [
         {
-          "id": "sense-e0e57374",
-          "pos": "noun",
+          "id": "sense-015bce80",
+          "pos": "n.",
           "meaningZh": "溝渠；排水溝",
-          "definitionEn": "a long narrow excavation in the earth, typically used for drainage beside a road or the edge of a field.",
           "examples": [
             "The farmer dug a ditch in his field to help drain excess water after heavy rains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dive",
       "word": "dive",
       "senses": [
         {
-          "id": "sense-9746fb77",
-          "pos": "verb",
+          "id": "sense-b4c3be6a",
+          "pos": "v.",
           "meaningZh": "跳水；潛水",
-          "definitionEn": "to jump into water headfirst, or to swim down underwater",
           "examples": [
             "He dived off the rocks into the clear blue sea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9aadc0fc",
-          "pos": "noun",
+          "id": "sense-1d315fec",
+          "pos": "n.",
           "meaningZh": "低檔酒吧；破舊夜店",
-          "definitionEn": "a cheap disreputable nightclub or dance hall",
           "examples": [
             "We went to a dive bar in the sketchy part of town last night and it was quite an experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dizzy",
       "word": "dizzy",
       "senses": [
         {
-          "id": "sense-c4d43b41",
-          "pos": "adjective",
+          "id": "sense-558cf6d5",
+          "pos": "adj.",
           "meaningZh": "頭暈的；眩暈的",
-          "definitionEn": "causing a sensation of spinning or whirling and making one feel unsteady and likely to fall",
           "examples": [
             "After going on multiple roller coasters back-to-back, Jess felt so dizzy that she had to sit down and close her eyes to regain her balance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7ddbd869",
-          "pos": "verb",
+          "id": "sense-b8180650",
+          "pos": "v.",
           "meaningZh": "使頭暈；使眩暈",
-          "definitionEn": "make (someone) feel unsteady, confused, or amazed",
           "examples": [
             "After spinning around in circles, she felt so dizzy that she had to sit down."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dock",
       "word": "dock",
       "senses": [
         {
-          "id": "sense-dcb4695c",
-          "pos": "verb",
+          "id": "sense-96357d6d",
+          "pos": "v.",
           "meaningZh": "停靠碼頭；入塢",
-          "definitionEn": "to bring a ship into a dock when it arrives",
           "examples": [
             "After a long voyage, the captain skillfully docked the massive cargo ship at the bustling harbor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3831bb4b",
-          "pos": "verb",
+          "id": "sense-757924fe",
+          "pos": "v.",
           "meaningZh": "扣薪；扣減",
-          "definitionEn": "to reduce the amount of money given to someone",
           "examples": [
             "The company decided to dock Lisa's paycheck for arriving late to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dolphin",
       "word": "dolphin",
       "senses": [
         {
-          "id": "sense-97856c68",
-          "pos": "noun",
+          "id": "sense-c3cdd808",
+          "pos": "n.",
           "meaningZh": "海豚",
-          "definitionEn": "any of various small, toothed whales with a beak-like snout, found worldwide in warm seas and often kept in captivity for entertainment purposes.",
           "examples": [
             "During the cruise, we saw a pod of dolphins swimming alongside the boat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b6f46bc4",
-          "pos": "noun",
+          "id": "sense-74ab4ce4",
+          "pos": "n.",
           "meaningZh": "鯕鰍；鬼頭刀（魚）",
-          "definitionEn": "a large game fish of the mahi-mahi genus, found in tropical and subtropical waters.",
           "examples": [
             "We went deep sea fishing and caught a beautiful dolphin, which we later grilled for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "donkey",
       "word": "donkey",
       "senses": [
         {
-          "id": "sense-d4ba2bc5",
-          "pos": "noun",
+          "id": "sense-1b660271",
+          "pos": "n.",
           "meaningZh": "驢子；毛驢",
-          "definitionEn": "a domesticated animal that is used as a beast of burden and is descended from the African wild ass; known for being patient but also stubborn",
           "examples": [
             "After a long day of hiking, Sam felt like a donkey carrying the heavy backpack on his back."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-122fa0ec",
-          "pos": "noun",
+          "id": "sense-db4d3058",
+          "pos": "n.",
           "meaningZh": "民主黨象徵（驢）",
-          "definitionEn": "the symbol of the Democratic Party in the United States, introduced in political cartoons by Thomas Nast in 1874",
           "examples": [
             "During the election campaign, you could often spot donkey mascots representing the Democratic Party at rallies and events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dose",
       "word": "dose",
       "senses": [
         {
-          "id": "sense-306c1611",
-          "pos": "noun",
+          "id": "sense-9b950b09",
+          "pos": "n.",
           "meaningZh": "一劑；服藥量",
-          "definitionEn": "a measured amount of medicine taken at once",
           "examples": [
             "After her doctor prescribed antibiotics, Martha took a dose of medicine every six hours to ensure a fast recovery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-545d72ed",
-          "pos": "noun",
+          "id": "sense-8ea747d5",
+          "pos": "n.",
           "meaningZh": "吸收量；照射劑量",
-          "definitionEn": "the amount of a substance or radiation taken in or absorbed at one time",
           "examples": [
             "The doctor prescribed a high dose of antibiotics to help fight the infection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "doubtful",
       "word": "doubtful",
       "senses": [
         {
-          "id": "sense-100db4a5",
-          "pos": "adjective",
+          "id": "sense-30dea73b",
+          "pos": "adj.",
           "meaningZh": "不確定的；半信半疑的",
-          "definitionEn": "filled with uncertainty or doubt",
           "examples": [
             "After receiving conflicting information from different sources, I became doubtful about the accuracy of the news."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b2cd4b9a",
-          "pos": "adjective",
+          "id": "sense-9af5d378",
+          "pos": "adj.",
           "meaningZh": "可疑的；靠不住的",
-          "definitionEn": "liable to be doubted or suspicious",
           "examples": [
             "The witness’s testimony was doubtful and didn’t provide enough evidence to convict the defendant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "doughnut",
       "word": "doughnut",
       "senses": [
         {
-          "id": "sense-71a2260e",
-          "pos": "noun",
+          "id": "sense-d7652f8e",
+          "pos": "n.",
           "meaningZh": "甜甜圈；油炸圈餅",
-          "definitionEn": "a small ring-shaped friedcake",
           "examples": [
             "Mary stopped by the bakery and bought a dozen doughnuts for her colleagues at work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6ec01608",
-          "pos": "noun",
+          "id": "sense-e1bba888",
+          "pos": "n.",
           "meaningZh": "圓環形；環形物",
-          "definitionEn": "a toroidal shape",
           "examples": [
             "The baker skillfully shaped the dough into a perfect doughnut, complete with a beautifully round toroidal shape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "downtown",
       "word": "downtown",
       "senses": [
         {
-          "id": "sense-ce355915",
-          "pos": "noun",
+          "id": "sense-7c59d811",
+          "pos": "n.",
           "meaningZh": "市中心；商業中心區",
-          "definitionEn": "the central area or commercial center of a town or city",
           "examples": [
             "The town’s restaurants, bars, shops, and nightlife are all located downtown."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6fc29a18",
-          "pos": "adjective",
+          "id": "sense-3c69fb9c",
+          "pos": "adj.",
           "meaningZh": "市中心的；鬧區的",
-          "definitionEn": "located in or characteristic of the central area of a town or city",
           "examples": [
             "Jessica loves going to downtown every weekend to wander around the shops and restaurants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drag",
       "word": "drag",
       "senses": [
         {
-          "id": "sense-d281a0b0",
-          "pos": "verb",
+          "id": "sense-feadf6dd",
+          "pos": "v.",
           "meaningZh": "拖拽；費力移動",
-          "definitionEn": "to move slowly, especially with difficulty",
           "examples": [
             "Susan dragged her heavy suitcase up the stairs, grunting with exertion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-eeb53d95",
-          "pos": "verb",
+          "id": "sense-a08e4d6c",
+          "pos": "v.",
           "meaningZh": "拖延；漫長進行",
-          "definitionEn": "to continue for a long time",
           "examples": [
             "The meeting dragged on for hours, with no end in sight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dragonfly",
       "word": "dragonfly",
       "senses": [
         {
-          "id": "sense-c6d3c9bf",
-          "pos": "noun",
+          "id": "sense-d0ff709f",
+          "pos": "n.",
           "meaningZh": "蜻蜓",
-          "definitionEn": "An insect with a slender body and iridescent wings that are held outstretched at rest. Both adults and nymphs feed on smaller insects like mosquitoes.",
           "examples": [
             "As I sat by the pond, a beautiful dragonfly landed delicately on a lily pad, showcasing its shimmering wings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drain",
       "word": "drain",
       "senses": [
         {
-          "id": "sense-9c359b1d",
-          "pos": "noun",
+          "id": "sense-02f3f339",
+          "pos": "n.",
           "meaningZh": "排水管；下水道",
-          "definitionEn": "a pipe that carries liquid away",
           "examples": [
             "The plumber installed a drain in the kitchen sink to prevent water from overflowing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c44089f3",
-          "pos": "noun",
+          "id": "sense-1f7b7537",
+          "pos": "n.",
           "meaningZh": "排水；瀝乾",
-          "definitionEn": "the emptying of something by allowing liquid to run out of it",
           "examples": [
             "After washing the vegetables, I let them rest in a colander to drain the excess water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dramatic",
       "word": "dramatic",
       "senses": [
         {
-          "id": "sense-5385b189",
-          "pos": "adjective",
+          "id": "sense-22955863",
+          "pos": "adj.",
           "meaningZh": "震撼人心的；壯觀的",
-          "definitionEn": "exciting or impressive",
           "examples": [
             "The sunset on the beach was so dramatic that it made me catch my breath."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ec16cb18",
-          "pos": "adjective",
+          "id": "sense-3aac42be",
+          "pos": "adj.",
           "meaningZh": "戲劇性的；富戲劇感的",
-          "definitionEn": "relating to or characteristic of drama; theatrical",
           "examples": [
             "The dramatic story of the survival of a hiker who was lost in the wilderness for three days captured the attention of the entire nation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drip",
       "word": "drip",
       "senses": [
         {
-          "id": "sense-fa88060c",
-          "pos": "noun",
+          "id": "sense-d41bf350",
+          "pos": "n.",
           "meaningZh": "水滴；滴落",
-          "definitionEn": "the formation and falling of drops of liquid",
           "examples": [
             "As it rained heavily, the water began to drip from the leaky roof."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fd76e3b3",
-          "pos": "verb",
+          "id": "sense-87314508",
+          "pos": "v.",
           "meaningZh": "滴落；一滴滴落下",
-          "definitionEn": "to fall in drops",
           "examples": [
             "After the heavy rain, the water continued to drip from the leaves of the tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drown",
       "word": "drown",
       "senses": [
         {
-          "id": "sense-edc41a38",
-          "pos": "verb",
+          "id": "sense-b7506d3d",
+          "pos": "v.",
           "meaningZh": "淹沒；沒入水中",
-          "definitionEn": "to submerge or cover something completely with water or another liquid",
           "examples": [
             "The heavy rain caused the river to flood and drown the nearby fields."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4c498a20",
-          "pos": "verb",
+          "id": "sense-07312567",
+          "pos": "v.",
           "meaningZh": "蓋過；壓制（聲音等）",
-          "definitionEn": "to remove or get rid of something completely by covering or overwhelming it",
           "examples": [
             "The loud music drowned out her voice, making it impossible to hear what she was saying."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drugstore",
       "word": "drugstore",
       "senses": [
         {
-          "id": "sense-a549c6fb",
-          "pos": "noun",
+          "id": "sense-ed22f363",
+          "pos": "n.",
           "meaningZh": "藥妝店；零售藥局",
-          "definitionEn": "a retail shop where medicine and other articles are sold",
           "examples": [
             "I stopped by the drugstore to pick up some cold medicine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b5d4b43e",
-          "pos": "noun",
+          "id": "sense-e4a3cbe6",
+          "pos": "n.",
           "meaningZh": "藥局；藥房",
-          "definitionEn": "a pharmacy",
           "examples": [
             "I stopped by the drugstore to pick up my prescription."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "drunk",
+      "word": "drunk",
+      "senses": [
+        {
+          "id": "sense-702d28fa",
+          "pos": "adj.",
+          "meaningZh": "喝醉的；醉酒的",
+          "examples": [
+            "He got drunk at the party last night and ended up making a fool of himself."
+          ]
+        },
+        {
+          "id": "sense-1bb21639",
+          "pos": "n.",
+          "meaningZh": "醉漢；酒鬼",
+          "examples": [
+            "John was so drunk that he couldn’t even stand up straight."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dumb",
+      "word": "dumb",
+      "senses": [
+        {
+          "id": "sense-59d4e067",
+          "pos": "adj.",
+          "meaningZh": "愚蠢的；蠢笨的",
+          "examples": [
+            "It would be dumb to leave your passport at home when you’re about to board a flight."
+          ]
+        },
+        {
+          "id": "sense-739a3854",
+          "pos": "adj.",
+          "meaningZh": "啞的；無法說話的",
+          "examples": [
+            "The little boy was born deaf and dumb."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dump",
+      "word": "dump",
+      "senses": [
+        {
+          "id": "sense-02f70bf3",
+          "pos": "v.",
+          "meaningZh": "傾倒；丟棄",
+          "examples": [
+            "They were fined for dumping rubbish in the river."
+          ]
+        },
+        {
+          "id": "sense-3d536a08",
+          "pos": "n.",
+          "meaningZh": "倉儲場；物資堆放處",
+          "examples": [
+            "The construction worker unloaded the materials at the dump after a long day of work."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dumpling",
+      "word": "dumpling",
+      "senses": [
+        {
+          "id": "sense-959e8436",
+          "pos": "n.",
+          "meaningZh": "水餃；餃子；包子",
+          "examples": [
+            "At the Chinese restaurant, I ordered a plate of delicious pork dumplings."
+          ]
+        },
+        {
+          "id": "sense-38b0d0ba",
+          "pos": "n.",
+          "meaningZh": "水果酥皮派；烤水果包",
+          "examples": [
+            "For dessert tonight, I made a delicious apple dumpling by wrapping sweet, cinnamon-spiced apples in flaky pastry and baking it to golden perfection."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dust",
+      "word": "dust",
+      "senses": [
+        {
+          "id": "sense-4ccdc84f",
+          "pos": "n.",
+          "meaningZh": "灰塵；塵埃",
+          "examples": [
+            "As the wind picked up, a cloud of dust engulfed the construction site, making it difficult to see and breathe."
+          ]
+        },
+        {
+          "id": "sense-c2744665",
+          "pos": "v.",
+          "meaningZh": "撒粉；散布細粒",
+          "examples": [
+            "I watched as the wind gusts dusted the freshly cleaned car with a thin layer of dirt."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1382 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 123,
   "words": [
-    {
-      "wordKey": "overcoat",
-      "word": "overcoat",
-      "senses": [
-        {
-          "id": "sense-47987e98",
-          "pos": "noun",
-          "meaningZh": "大衣；外套",
-          "definitionEn": "a coat worn over other clothes, especially in winter, for warmth and protection",
-          "examples": [
-            "John bundled up in his thick overcoat before heading out into the snowstorm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-066107ea",
-          "pos": "noun",
-          "meaningZh": "面漆；保護塗層",
-          "definitionEn": "an additional layer of coating applied onto a surface for extra protection or durability, such as paint or varnish",
-          "examples": [
-            "Before applying the final layer of paint, it is advisable to add an overcoat to ensure long-lasting protection against weather damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "overcome",
-      "word": "overcome",
-      "senses": [
-        {
-          "id": "sense-dd5e2bcc",
-          "pos": "verb",
-          "meaningZh": "克服；解決",
-          "definitionEn": "to successfully deal with a problem or challenge",
-          "examples": [
-            "She had to overcome her fear of heights in order to climb the mountain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-e985a887",
-          "pos": "verb",
-          "meaningZh": "擊敗；戰勝",
-          "definitionEn": "to win a victory over something or someone",
-          "examples": [
-            "The young boxer was finally able to overcome his opponent in the final round and win the championship title."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +2",
-        "textbookTitle": "龍騰 B2·L5、三民 B2·L2、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "overlook",
-      "word": "overlook",
-      "senses": [
-        {
-          "id": "sense-13c66bad",
-          "pos": "verb",
-          "meaningZh": "忽略；忽視",
-          "definitionEn": "to fail to notice or consider something",
-          "examples": [
-            "He overlooked an important detail in the report."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-1562c6d5",
-          "pos": "noun",
-          "meaningZh": "高台；瞭望台",
-          "definitionEn": "a high place affording a good view",
-          "examples": [
-            "From the overlook, we could see the entire city sprawling out beneath us."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "overnight",
-      "word": "overnight",
-      "senses": [
-        {
-          "id": "sense-d86dc230",
-          "pos": "adjective",
-          "meaningZh": "整夜的；通宵的",
-          "definitionEn": "open, operating, or lasting throughout the night",
-          "examples": [
-            "The convenience store near my house is open overnight, so I can buy snacks even in the late hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-b1390ef8",
-          "pos": "adverb",
-          "meaningZh": "整夜；一整晚",
-          "definitionEn": "for the duration of one night",
-          "examples": [
-            "We decided to stay overnight at the hotel so that we could explore the city for another day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "overthrow",
-      "word": "overthrow",
-      "senses": [
-        {
-          "id": "sense-2bb61c89",
-          "pos": "verb",
-          "meaningZh": "推翻；顛覆",
-          "definitionEn": "to remove a ruler or government from power by force",
-          "examples": [
-            "The citizens of the country united to overthrow the oppressive regime and establish a new democratic government."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "oxygen",
       "word": "oxygen",
       "senses": [
         {
-          "id": "sense-01da8307",
-          "pos": "noun",
+          "id": "sense-3d43162b",
+          "pos": "n.",
           "meaningZh": "氧；氧氣",
-          "definitionEn": "a colorless, odorless gas that makes up about 21% of the Earth’s atmosphere and is necessary for the respiration of living organisms; it is the most abundant element in the Earth’s crust",
           "examples": [
             "Deep-sea divers depend on oxygen tanks to breathe while exploring the depths of the ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pace",
       "word": "pace",
       "senses": [
         {
-          "id": "sense-d151abd1",
-          "pos": "noun",
+          "id": "sense-e7de00ed",
+          "pos": "n.",
           "meaningZh": "速度；節奏",
-          "definitionEn": "the relative speed of progress or change",
           "examples": [
             "The technology industry moves at a breakneck pace, with new innovations and advancements constantly being introduced."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "panel",
       "word": "panel",
       "senses": [
         {
-          "id": "sense-f7f36caa",
-          "pos": "noun",
+          "id": "sense-3c5f0a86",
+          "pos": "n.",
           "meaningZh": "面板；板塊",
-          "definitionEn": "a distinct (usually flat and rectangular) section or component of something",
           "examples": [
             "The control panel of the machine was damaged in the accident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7b78c99a",
-          "pos": "noun",
+          "id": "sense-8340db7e",
+          "pos": "n.",
           "meaningZh": "布料三角片；錐形布片",
-          "definitionEn": "a triangular or tapering piece of cloth used in making garments, umbrellas, or sails",
           "examples": [
             "The tailor used a panel of navy blue cloth to carve out a perfect dress design."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "parachute",
       "word": "parachute",
       "senses": [
         {
-          "id": "sense-5a2a9dfa",
-          "pos": "noun",
+          "id": "sense-e9787712",
+          "pos": "n.",
           "meaningZh": "降落傘",
-          "definitionEn": "a device worn to slow a person’s fall from an aircraft",
           "examples": [
             "In case of emergency, you must follow the instructions of the flight attendants carefully and put on your parachute."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-208da955",
-          "pos": "noun",
+          "id": "sense-a5d2119d",
+          "pos": "n.",
           "meaningZh": "傘形緩降器；降落傘",
-          "definitionEn": "an umbrella-shaped device with a canopy of fabric, attached to a harness and used to slow the fall of a person or thing from an aircraft",
           "examples": [
             "Before jumping from the plane, the skydiver made sure their parachute was securely fastened to their body."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "paragraph",
       "word": "paragraph",
       "senses": [
         {
-          "id": "sense-6b524d54",
-          "pos": "noun",
+          "id": "sense-aed6af30",
+          "pos": "n.",
           "meaningZh": "段落；章節",
-          "definitionEn": "A paragraph is a section of a piece of writing, usually consisting of several sentences and dealing with a single theme, point or idea. The beginning of a paragraph is usually indicated by beginning on a new line and/or by indenting.",
           "examples": [
             "The essay had several paragraphs, each focusing on a different aspect of the topic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1b89c107",
-          "pos": "verb",
+          "id": "sense-5fb9b542",
+          "pos": "v.",
           "meaningZh": "分段；劃分段落",
-          "definitionEn": "To divide a text into paragraphs.",
           "examples": [
             "In academic writing, it is important to break up large blocks of text into paragraphs to improve readability and clearly separate ideas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "partial",
       "word": "partial",
       "senses": [
         {
-          "id": "sense-3e946053",
-          "pos": "adjective",
+          "id": "sense-68a4fe1d",
+          "pos": "adj.",
           "meaningZh": "部分的；不完整的",
-          "definitionEn": "Not complete; only affecting a part of something.",
           "examples": [
             "The painter only finished a partial portrait of the model, leaving the background blank."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-05a312e6",
-          "pos": "adjective",
+          "id": "sense-06cd72e4",
+          "pos": "adj.",
           "meaningZh": "偏愛的；偏好某事物的",
-          "definitionEn": "Having a strong liking for something or someone.",
           "examples": [
             "As a foodie, she had a partiality for exotic cuisines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "participation",
       "word": "participation",
       "senses": [
         {
-          "id": "sense-35274ae6",
-          "pos": "noun",
+          "id": "sense-4b89d572",
+          "pos": "n.",
           "meaningZh": "參與；參加",
-          "definitionEn": "the act of taking part in something such as an activity or event",
           "examples": [
             "Her enthusiastic participation in the school play made it a memorable experience for everyone involved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4d232806",
-          "pos": "noun",
+          "id": "sense-a531f4a2",
+          "pos": "n.",
           "meaningZh": "共同投入；協同",
-          "definitionEn": "the state of sharing in something with others, such as ideas, responsibilities, or benefits",
           "examples": [
             "In order to promote employee participation, the company holds regular brainstorming sessions where everyone can contribute their ideas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4 +1",
-        "textbookTitle": "龍騰 B3·L4、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "partnership",
       "word": "partnership",
       "senses": [
         {
-          "id": "sense-7506a66f",
-          "pos": "noun",
+          "id": "sense-dbdbf6df",
+          "pos": "n.",
           "meaningZh": "合作；夥伴關係",
-          "definitionEn": "a cooperative relationship between individuals or groups who work together towards a common goal",
           "examples": [
             "The partnership between the two companies led to the successful launch of a new product."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e9877b40",
-          "pos": "noun",
+          "id": "sense-f9e6a690",
+          "pos": "n.",
           "meaningZh": "合夥；合夥企業",
-          "definitionEn": "an agreement between two or more people or companies to pool their resources, skills, and profits or losses to achieve a specific goal",
           "examples": [
             "Two tech companies formed a partnership to develop and market a new software product."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "passive",
       "word": "passive",
       "senses": [
         {
-          "id": "sense-f362783f",
-          "pos": "adjective",
+          "id": "sense-0380f80d",
+          "pos": "adj.",
           "meaningZh": "被動的；被動語態",
-          "definitionEn": "denoting a sentence where the subject undergoes the action of the verb; opposite of active voice",
           "examples": [
             "The ball was caught by the dog."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-61c1b7b3",
-          "pos": "adjective",
+          "id": "sense-d06748e9",
+          "pos": "adj.",
           "meaningZh": "消極的；被動的",
-          "definitionEn": "lacking energy or motivation; inactive or inert",
           "examples": [
             "After a long tiring day, John was passive about going out for dinner with his friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pasta",
       "word": "pasta",
       "senses": [
         {
-          "id": "sense-b3cef390",
-          "pos": "noun",
+          "id": "sense-c5ebfc88",
+          "pos": "n.",
           "meaningZh": "義大利麵食；麵條",
-          "definitionEn": "A dish made from flour, water, and sometimes egg that is shaped into different forms and then dried.",
           "examples": [
             "I’m in the mood for some pasta tonight, so I’m going to cook up some spaghetti with meat sauce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-dfccb91f",
-          "pos": "noun",
+          "id": "sense-40c39b37",
+          "pos": "n.",
           "meaningZh": "義大利麵料理",
-          "definitionEn": "A dish consisting of pasta as its main ingredient.",
           "examples": [
             "Last night, we had a delicious pasta dinner with spaghetti and meat sauce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "paw",
       "word": "paw",
       "senses": [
         {
-          "id": "sense-2c22aad1",
-          "pos": "noun",
+          "id": "sense-7cf36c01",
+          "pos": "n.",
           "meaningZh": "爪子；腳掌",
-          "definitionEn": "a foot of an animal that has claws, especially a four-legged one",
           "examples": [
             "The dog left muddy paw prints all over the floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-64f61c8f",
-          "pos": "noun",
+          "id": "sense-3a3d107f",
+          "pos": "n.",
           "meaningZh": "（動物的）腳",
-          "definitionEn": "the bottom part of a hand or a foot that has fingers or toes",
           "examples": [
             "The dog gently rested its paw on my leg, seeking attention."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peculiar",
       "word": "peculiar",
       "senses": [
         {
-          "id": "sense-f2a8a074",
-          "pos": "adjective",
+          "id": "sense-ec576bde",
+          "pos": "adj.",
           "meaningZh": "奇特的；怪異的",
-          "definitionEn": "beyond or deviating from the usual or expected",
           "examples": [
             "The old house had a peculiar odor that made it different from the other houses in the neighborhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c0e82929",
-          "pos": "adjective",
+          "id": "sense-13916cd3",
+          "pos": "adj.",
           "meaningZh": "獨特的；特有的",
-          "definitionEn": "unique to a person, thing, or category; distinctive or special",
           "examples": [
             "Her taste in fashion was rather peculiar, as she often wore mismatched patterns and bright colors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peep",
       "word": "peep",
       "senses": [
         {
-          "id": "sense-157f8ebe",
-          "pos": "verb",
+          "id": "sense-4177675f",
+          "pos": "v.",
           "meaningZh": "偷窺；悄悄窺視",
-          "definitionEn": "to look quickly and secretly",
           "examples": [
             "Lucy quietly peeped through the keyhole to see what her parents were discussing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-115be847",
-          "pos": "verb",
+          "id": "sense-017b87be",
+          "pos": "v.",
           "meaningZh": "微露；稍微顯現",
-          "definitionEn": "to cause something to be seen for a moment",
           "examples": [
             "She quickly opened the door just enough to peep through and see who was outside before closing it again."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peer",
       "word": "peer",
       "senses": [
         {
-          "id": "sense-3a6bbc44",
-          "pos": "noun",
+          "id": "sense-7465ea00",
+          "pos": "n.",
           "meaningZh": "同儕；同等地位者",
-          "definitionEn": "a person who is of equal standing with another in a group",
           "examples": [
             "In order to encourage collaboration and teamwork, the company formed small peer groups to work on specific projects together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-aaf749f1",
-          "pos": "verb",
+          "id": "sense-622624aa",
+          "pos": "v.",
           "meaningZh": "凝視；仔細看",
-          "definitionEn": "to look closely or intently",
           "examples": [
             "I had to peer through the fog to see the road ahead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "penalty",
       "word": "penalty",
       "senses": [
         {
-          "id": "sense-116628a0",
-          "pos": "noun",
+          "id": "sense-bc4d9bec",
+          "pos": "n.",
           "meaningZh": "懲罰；處罰",
-          "definitionEn": "the act of punishing",
           "examples": [
             "The football player received a penalty for tripping his opponent during the game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-65d0a661",
-          "pos": "noun",
+          "id": "sense-ac88fa7d",
+          "pos": "n.",
           "meaningZh": "違約罰款；罰金",
-          "definitionEn": "a fine or payment imposed for not fulfilling a contract",
           "examples": [
             "If you fail to complete the work on time, you will be charged a penalty."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "percent",
       "word": "percent",
       "senses": [
         {
-          "id": "sense-e88c0e14",
-          "pos": "noun",
+          "id": "sense-44c577c8",
+          "pos": "n.",
           "meaningZh": "百分比；百分率",
-          "definitionEn": "The amount or quantity of something, often expressed as a ratio or rate in relation to a unit of 100.",
           "examples": [
             "The interest rate on the loan is 5 percent, which means that for every $100 borrowed, an additional $5 in interest will be charged."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-104968a2",
-          "pos": "adjective",
+          "id": "sense-f9143100",
+          "pos": "adj.",
           "meaningZh": "百分之…的",
-          "definitionEn": "Referring to a value multiplied by 100.",
           "examples": [
             "The teacher said that 80 percent of the students passed the exam with flying colors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L5",
-        "textbookTitle": "三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "percentage",
       "word": "percentage",
       "senses": [
         {
-          "id": "sense-0d1f14c5",
-          "pos": "noun",
+          "id": "sense-5de32831",
+          "pos": "n.",
           "meaningZh": "百分比；百分率",
-          "definitionEn": "the proportion of a whole that is represented by a number expressed as a fraction of 100",
           "examples": [
             "The percentage of students who passed the exam was 80%."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L5",
-        "textbookTitle": "三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "perfection",
       "word": "perfection",
       "senses": [
         {
-          "id": "sense-966840f9",
-          "pos": "noun",
+          "id": "sense-34e272e1",
+          "pos": "n.",
           "meaningZh": "完美；盡善盡美",
-          "definitionEn": "the state of being without any flaws or defects",
           "examples": [
             "After years of practice, her ballet performance reached perfection, as she flawlessly executed every move."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-90b5a6d9",
-          "pos": "noun",
+          "id": "sense-2a6232b1",
+          "pos": "n.",
           "meaningZh": "精益求精；完善",
-          "definitionEn": "the act or process of making something as perfect as possible",
           "examples": [
             "The chef strived for perfection, meticulously garnishing the dish with precise measurements and elegant plating."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L4",
-        "textbookTitle": "三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "perfume",
       "word": "perfume",
       "senses": [
         {
-          "id": "sense-f01c9514",
-          "pos": "noun",
+          "id": "sense-afdde3f4",
+          "pos": "n.",
           "meaningZh": "香水",
-          "definitionEn": "a toiletry that emits and diffuses a fragrant odor",
           "examples": [
             "Sarah sprayed a touch of her favorite perfume before going out on a date."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a1216950",
-          "pos": "noun",
+          "id": "sense-f28fb1b0",
+          "pos": "n.",
           "meaningZh": "芳香；香氣",
-          "definitionEn": "a distinctive and pleasant odor",
           "examples": [
             "As she walked into the room, the sweet scent of her perfume filled the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "permanent",
       "word": "permanent",
       "senses": [
         {
-          "id": "sense-d74ba964",
-          "pos": "adjective",
+          "id": "sense-7ba10bc8",
+          "pos": "adj.",
           "meaningZh": "永久的；不可逆的",
-          "definitionEn": "irreversible or unable to be returned to its original state",
           "examples": [
             "Once the tattoo is inked on your skin, it is permanent and cannot be easily removed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8d30294d",
-          "pos": "adjective",
+          "id": "sense-2e951dc9",
+          "pos": "adj.",
           "meaningZh": "長久的；固定的",
-          "definitionEn": "lasting or continuing without significant change or interruption in status, condition, or location",
           "examples": [
             "After years of moving from place to place, Tom finally found a permanent home where he could settle down and start a family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "persuasion",
       "word": "persuasion",
       "senses": [
         {
-          "id": "sense-440ae2aa",
-          "pos": "noun",
+          "id": "sense-64227ab6",
+          "pos": "n.",
           "meaningZh": "說服；勸說",
-          "definitionEn": "communication intended to induce belief or action; the act of persuading or attempting to persuade",
           "examples": [
             "The fundraiser’s persuasive speech convinced many donors to contribute generously to the charity’s cause."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-679a7a1c",
-          "pos": "noun",
+          "id": "sense-74ce7e88",
+          "pos": "n.",
           "meaningZh": "個人信念；主觀判斷",
-          "definitionEn": "a personal belief or judgment that is not founded on proof or certainty",
           "examples": [
             "Her persuasion was that the company should invest in renewable energy, but she had no strong evidence to support her argument."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4",
-        "textbookTitle": "龍騰 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "persuasive",
       "word": "persuasive",
       "senses": [
         {
-          "id": "sense-228b6042",
-          "pos": "adjective",
+          "id": "sense-06c721b4",
+          "pos": "adj.",
           "meaningZh": "有說服力的；能打動人的",
-          "definitionEn": "having the ability to convince people to do or believe something",
           "examples": [
             "The politician’s persuasive speech convinced the crowd to support his campaign."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4 +1",
-        "textbookTitle": "龍騰 B2·L4、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pessimistic",
       "word": "pessimistic",
       "senses": [
         {
-          "id": "sense-e2498793",
-          "pos": "adjective",
+          "id": "sense-8faaa1d9",
+          "pos": "adj.",
           "meaningZh": "悲觀的；看壞的",
-          "definitionEn": "tending to see the worst aspect of things or believe that the worst will happen",
           "examples": [
             "Despite their exceptional talent, the pessimistic coach constantly doubted the team's ability to win any games."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5b146aec",
-          "pos": "adjective",
+          "id": "sense-677d2c3a",
+          "pos": "adj.",
           "meaningZh": "消極的；灰心的",
-          "definitionEn": "characterized by or exhibiting negativity or pessimism; gloomy",
           "examples": [
             "Despite the beautiful weather forecasted for the weekend, Sarah remained pessimistic and believed it would end up raining."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pest",
       "word": "pest",
       "senses": [
         {
-          "id": "sense-36b3018e",
-          "pos": "noun",
+          "id": "sense-2fbd8cca",
+          "pos": "n.",
           "meaningZh": "害蟲；害獸",
-          "definitionEn": "any insect or animal that is unwanted and destructive, attacking crops, livestock, or food",
           "examples": [
             "The farmer had to hire an exterminator to deal with the pest that was ruining his crops."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bb352ada",
-          "pos": "noun",
+          "id": "sense-1f300996",
+          "pos": "n.",
           "meaningZh": "討厭鬼；麻煩人物",
-          "definitionEn": "an annoying person who persists in bothering or irritating others",
           "examples": [
             "My little brother is such a pest when he insists on playing with my toys and won’t leave me alone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "phenomenon",
       "word": "phenomenon",
       "senses": [
         {
-          "id": "sense-eb408af3",
-          "pos": "noun",
+          "id": "sense-f243b51b",
+          "pos": "n.",
           "meaningZh": "現象；自然現象",
-          "definitionEn": "any state or process known through the senses rather than by intuition or reasoning",
           "examples": [
             "The aurora borealis, also known as the Northern Lights, is a natural phenomenon that can be seen in the night sky of certain polar regions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7cd4a12f",
-          "pos": "noun",
+          "id": "sense-017afe07",
+          "pos": "n.",
           "meaningZh": "奇才；了不起的事物",
-          "definitionEn": "a remarkable person, thing, or development",
           "examples": [
             "The technological advancements in recent years have been a phenomenon, revolutionizing the way we live and work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2",
-        "textbookTitle": "龍騰 B3·R2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "philosopher",
+      "word": "philosopher",
+      "senses": [
+        {
+          "id": "sense-d9e43530",
+          "pos": "n.",
+          "meaningZh": "哲學家；哲學研究者",
+          "examples": [
+            "The philosopher spent hours pondering the nature of existence and discussing the meaning of life with fellow intellectuals."
+          ]
+        },
+        {
+          "id": "sense-a2f29252",
+          "pos": "n.",
+          "meaningZh": "冷靜智慧之人；哲人",
+          "examples": [
+            "In the midst of a heated discussion, John remained the philosopher, calmly presenting his logical arguments without being swayed by emotions."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "philosophical",
+      "word": "philosophical",
+      "senses": [
+        {
+          "id": "sense-bdc1ec84",
+          "pos": "adj.",
+          "meaningZh": "哲學的；哲學上的",
+          "examples": [
+            "The professor led a philosophical discussion on the existence of free will and determinism."
+          ]
+        },
+        {
+          "id": "sense-a0f1439e",
+          "pos": "adj.",
+          "meaningZh": "豁達的；理性沉著的",
+          "examples": [
+            "After losing his job, John took a philosophical approach, spending weeks reflecting on his career trajectory and reassessing his values."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "philosophy",
+      "word": "philosophy",
+      "senses": [
+        {
+          "id": "sense-b3762af6",
+          "pos": "n.",
+          "meaningZh": "哲學",
+          "examples": [
+            "After studying philosophy for four years, Sarah developed a new perspective on life and the universe."
+          ]
+        },
+        {
+          "id": "sense-23ddc33a",
+          "pos": "n.",
+          "meaningZh": "哲學體系；思想主張",
+          "examples": [
+            "The professor's philosophy on ethics emphasizes the importance of moral duty and social responsibility."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "photography",
+      "word": "photography",
+      "senses": [
+        {
+          "id": "sense-2ebbdcab",
+          "pos": "n.",
+          "meaningZh": "攝影；照相術",
+          "examples": [
+            "Photography can be used as a means to capture memories and moments that last a lifetime."
+          ]
+        },
+        {
+          "id": "sense-5773ffa2",
+          "pos": "n.",
+          "meaningZh": "攝影業；攝影藝術",
+          "examples": [
+            "I have been interested in photography since I was a child, and now it has become my profession."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "physical",
+      "word": "physical",
+      "senses": [
+        {
+          "id": "sense-a36fb780",
+          "pos": "adj.",
+          "meaningZh": "身體的；肉體的",
+          "examples": [
+            "After months of studying, she needed a physical activity to refresh her mind and energize her body, so she decided to go for a long run."
+          ]
+        },
+        {
+          "id": "sense-eecdb682",
+          "pos": "adj.",
+          "meaningZh": "物理的；物質的",
+          "examples": [
+            "In the physics laboratory, students conducted various experiments to study physical phenomena."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

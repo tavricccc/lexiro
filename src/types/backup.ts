@@ -1,29 +1,35 @@
-import type { VocabSet } from './set'
+import type { AiSettings } from './ai'
+import type { DashboardStats, LearningProgress } from './learning'
+import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, WordEntry } from './library'
 
-export interface BackupPayload {
+export interface SharedSet extends LibrarySet {
+  words: WordEntry[]
+  memberships: SetMembership[]
+  questions: LibraryQuestion[]
+}
+
+export interface SetSharePayload {
   version: number
   exportedAt: string
   appName: string
-  sets: VocabSet[]
+  kind: 'set-share'
+  sets: SharedSet[]
 }
+
+export interface FullBackupPayload {
+  version: number
+  exportedAt: string
+  appName: string
+  kind: 'full-backup'
+  library: LibraryState
+  learning: LearningProgress
+  stats: DashboardStats
+  aiSettings: Omit<AiSettings, 'apiKey'>
+}
+
+export type BackupPayload = SetSharePayload | FullBackupPayload
 
 export interface ImportResult {
-  imported: VocabSet[]
-  skippedByName: string[]
-  skippedByContent: string[]
-  renamedIds: { setName: string, from: string, to: string }[]
-  replacedVersions: string[]
+  imported: SharedSet[]
+  renamed: { from: string, to: string }[]
 }
-
-export interface VersionDiff {
-  setName: string
-  localSetId: string
-  localCount: number
-  importedCount: number
-  added: string[]
-  removed: string[]
-  changed: string[]
-  identical: boolean
-}
-
-export type ImportMode = 'append' | 'overwrite'

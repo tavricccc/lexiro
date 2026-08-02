@@ -1,1380 +1,671 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 70,
   "words": [
-    {
-      "wordKey": "crew",
-      "word": "crew",
-      "senses": [
-        {
-          "id": "sense-b945a0d9",
-          "pos": "noun",
-          "meaningZh": "全體工作人員；員工團隊",
-          "definitionEn": "a group of people who work together, often for a particular company or on a project",
-          "examples": [
-            "The crew of the ship worked diligently to ensure that all passengers arrived safely at their destination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-6cddf4f3",
-          "pos": "noun",
-          "meaningZh": "划船隊；賽艇組員",
-          "definitionEn": "a group of people who row together as a team in a race",
-          "examples": [
-            "The crew of eight rowers practiced tirelessly for months to prepare for the upcoming regatta."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "cricket",
-      "word": "cricket",
-      "senses": [
-        {
-          "id": "sense-59e3f421",
-          "pos": "noun",
-          "meaningZh": "蟋蟀",
-          "definitionEn": "a type of leaping insect that makes chirping noises by rubbing its forewings together",
-          "examples": [
-            "As the sun started to set, the peaceful sound of crickets filled the warm summer evening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "criminal",
-      "word": "criminal",
-      "senses": [
-        {
-          "id": "sense-8b8650ca",
-          "pos": "noun",
-          "meaningZh": "罪犯；犯罪者",
-          "definitionEn": "a person who has committed a crime or has been legally convicted of one",
-          "examples": [
-            "The police apprehended the notorious criminal after an intense manhunt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-a6a00bab",
-          "pos": "adjective",
-          "meaningZh": "犯罪的；刑事的",
-          "definitionEn": "relating to a crime or having the nature of one",
-          "examples": [
-            "The detective gathered evidence to build a strong case against the criminal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "crispy",
-      "word": "crispy",
-      "senses": [
-        {
-          "id": "sense-4719172b",
-          "pos": "adjective",
-          "meaningZh": "酥脆的；脆口的",
-          "definitionEn": "brittle and easily breakable, especially when referring to foods that have been fried or roasted until they are golden brown and delicious",
-          "examples": [
-            "The fried chicken has a crispy outer layer that is irresistible."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "crop",
-      "word": "crop",
-      "senses": [
-        {
-          "id": "sense-c51560cb",
-          "pos": "noun",
-          "meaningZh": "農作物；栽培植物",
-          "definitionEn": "a cultivated plant grown on a large scale for commercial purposes",
-          "examples": [
-            "The farmer harvested a bountiful crop of corn from his fields."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-252e75b8",
-          "pos": "noun",
-          "meaningZh": "收成；一季產量",
-          "definitionEn": "the amount of produce harvested from plants in a single growing season",
-          "examples": [
-            "After a bountiful harvest, the farmers were pleased with the size of their crop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L4",
-        "textbookTitle": "三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "crown",
       "word": "crown",
       "senses": [
         {
-          "id": "sense-07f6dacf",
-          "pos": "noun",
+          "id": "sense-685e8767",
+          "pos": "n.",
           "meaningZh": "王冠；皇冠",
-          "definitionEn": "a circular ornament, often of gold and jewels, worn on the head by a king or queen",
           "examples": [
             "The queen wore a golden crown at the ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-52ba678c",
-          "pos": "noun",
+          "id": "sense-291ba7a4",
+          "pos": "n.",
           "meaningZh": "英國舊幣克朗（值五先令）",
-          "definitionEn": "a former British coin worth five shillings",
           "examples": [
             "The antique dealer sold a rare crown coin for a high price at the auction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cruel",
       "word": "cruel",
       "senses": [
         {
-          "id": "sense-1cd7e69d",
-          "pos": "adjective",
+          "id": "sense-64f5ae07",
+          "pos": "adj.",
           "meaningZh": "殘忍的；冷酷的",
-          "definitionEn": "causing pain and being very unkind",
           "examples": [
             "He laughed cruelly at her misfortune, making her feel even worse."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-629d70cf",
-          "pos": "adjective",
+          "id": "sense-f7fb3b59",
+          "pos": "adj.",
           "meaningZh": "無情的；毫無憐憫的",
-          "definitionEn": "exhibiting a lack of mercy or compassion",
           "examples": [
             "Despite knowing the consequences, the cruel dictator insisted on sentencing innocent people to life in prison."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +2",
-        "textbookTitle": "龍騰 B2·L6、三民 B2·L1、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cupboard",
       "word": "cupboard",
       "senses": [
         {
-          "id": "sense-64f7231c",
-          "pos": "noun",
+          "id": "sense-10776770",
+          "pos": "n.",
           "meaningZh": "碗櫥；食物儲藏櫃",
-          "definitionEn": "a piece of furniture or a small closet used for storing household items",
           "examples": [
             "I opened the cupboard and found all of my favorite snacks neatly arranged inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dairy",
       "word": "dairy",
       "senses": [
         {
-          "id": "sense-761ecd22",
-          "pos": "adjective",
+          "id": "sense-8e00abf4",
+          "pos": "adj.",
           "meaningZh": "乳製品的；含奶的",
-          "definitionEn": "relating to or containing milk or milk products",
           "examples": [
             "I am unable to consume dairy products due to lactose intolerance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f9f1cb7f",
-          "pos": "noun",
+          "id": "sense-659df8a7",
+          "pos": "n.",
           "meaningZh": "乳牛場；乳品農場",
-          "definitionEn": "a farm where dairy products are produced",
           "examples": [
             "Visiting the dairy, we watched as the cows were milked and the milk was transformed into various dairy products such as cheese and butter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2",
-        "textbookTitle": "龍騰 B3·R2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dam",
       "word": "dam",
       "senses": [
         {
-          "id": "sense-113e42ac",
-          "pos": "noun",
+          "id": "sense-66b2c0a8",
+          "pos": "n.",
           "meaningZh": "水壩；攔水壩",
-          "definitionEn": "a barrier constructed to contain the flow of water or to keep out the sea",
           "examples": [
             "The construction of a dam on the river effectively controlled the water flow and prevented flooding in the nearby villages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4bf4809e",
-          "pos": "verb",
+          "id": "sense-40b7624f",
+          "pos": "v.",
           "meaningZh": "築壩攔截；阻擋水流",
-          "definitionEn": "to stop or slow down the movement or progress of something by putting an obstacle in its way",
           "examples": [
             "The construction of a dam along the river helped regulate the water flow and generate electricity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dare",
       "word": "dare",
       "senses": [
         {
-          "id": "sense-9a31c74d",
-          "pos": "verb",
+          "id": "sense-6362d118",
+          "pos": "v.",
           "meaningZh": "敢於嘗試；鼓起勇氣去做",
-          "definitionEn": "be courageous enough to try or do something",
           "examples": [
             "I dare you to jump off the high dive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d60416ea",
-          "pos": "noun",
+          "id": "sense-daa7867a",
+          "pos": "n.",
           "meaningZh": "激將；膽量挑戰",
-          "definitionEn": "a challenge to do something dangerous or foolhardy",
           "examples": [
             "I dare you to jump off that cliff into the water below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +2",
-        "textbookTitle": "龍騰 B2·L5、三民 B2·L1、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "darling",
       "word": "darling",
       "senses": [
         {
-          "id": "sense-2e5c0c0f",
-          "pos": "noun",
+          "id": "sense-1266ff47",
+          "pos": "n.",
           "meaningZh": "心頭好；最愛的人或事物",
-          "definitionEn": "a favorite or preferred thing or person",
           "examples": [
             "As an avid coffee drinker, my morning cup of joe is my darling and gives me the energy I need to start my day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a4935ca0",
-          "pos": "adjective",
+          "id": "sense-b241649a",
+          "pos": "adj.",
           "meaningZh": "深愛的；最心愛的",
-          "definitionEn": "dearly loved or favorite",
           "examples": [
             "Every year on Valentine's Day, John prepares a romantic candlelit dinner for his darling wife."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dash",
       "word": "dash",
       "senses": [
         {
-          "id": "sense-526fb283",
-          "pos": "noun",
+          "id": "sense-dc4c79f7",
+          "pos": "n.",
           "meaningZh": "衝刺；快跑",
-          "definitionEn": "a quick run",
           "examples": [
             "She made a dash for the finish line, leaving the other runners far behind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-137bc7d6",
-          "pos": "noun",
+          "id": "sense-020f3492",
+          "pos": "n.",
           "meaningZh": "急速移動；匆忙趕赴",
-          "definitionEn": "the act of moving with great haste",
           "examples": [
             "She had to dash to catch the bus before it left without her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "database",
       "word": "database",
       "senses": [
         {
-          "id": "sense-b0d1b0d1",
-          "pos": "noun",
+          "id": "sense-ebec2249",
+          "pos": "n.",
           "meaningZh": "資料庫；數據庫",
-          "definitionEn": "a structured set of data held in a computer, especially one that is accessible in various ways",
           "examples": [
             "Our company uses a database to store all of our customer information, such as names, addresses, and phone numbers, and we can easily access this data to provide personalized services."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dawn",
       "word": "dawn",
       "senses": [
         {
-          "id": "sense-11967671",
-          "pos": "noun",
+          "id": "sense-0cf9ead1",
+          "pos": "n.",
           "meaningZh": "黎明；拂曉",
-          "definitionEn": "the earliest period of the day, typically considered from sunrise to midday",
           "examples": [
             "I love watching the sky change colors during dawn, when the first rays of sunlight begin to hit the horizon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2d77a236",
-          "pos": "noun",
+          "id": "sense-a990dd96",
+          "pos": "n.",
           "meaningZh": "開端；萌芽時期",
-          "definitionEn": "the beginning or first appearance of something",
           "examples": [
             "The dawn of the internet era brought about a significant change in the way we communicate and gather information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dealer",
       "word": "dealer",
       "senses": [
         {
-          "id": "sense-73872221",
-          "pos": "noun",
+          "id": "sense-b4e0a169",
+          "pos": "n.",
           "meaningZh": "商家；貿易商",
-          "definitionEn": "a company that trades in goods or services",
           "examples": [
             "I purchased my car from a trusted dealer in town."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-928a4f87",
-          "pos": "noun",
+          "id": "sense-2acdcd2f",
+          "pos": "n.",
           "meaningZh": "證券自營商；金融資產交易人",
-          "definitionEn": "a person or firm that buys and sells securities or other financial assets for their own account",
           "examples": [
             "The stock dealer advised his clients to invest in a diversified portfolio to minimize risk and maximize return on investment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "decade",
       "word": "decade",
       "senses": [
         {
-          "id": "sense-c35b403d",
-          "pos": "noun",
+          "id": "sense-7e391179",
+          "pos": "n.",
           "meaningZh": "十年；一個年代",
-          "definitionEn": "a period of ten years",
           "examples": [
             "John and Sarah have been married for over a decade, celebrating their tenth wedding anniversary this year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6ac652d3",
-          "pos": "noun",
+          "id": "sense-2ccaa207",
+          "pos": "n.",
           "meaningZh": "十；十的數量",
-          "definitionEn": "the number 10; ten",
           "examples": [
             "He celebrated his 30th birthday with a big party, marking the end of his third decade of life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3",
-        "textbookTitle": "龍騰 B3·R3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deck",
       "word": "deck",
       "senses": [
         {
-          "id": "sense-03ebeaf9",
-          "pos": "noun",
+          "id": "sense-27f8d481",
+          "pos": "n.",
           "meaningZh": "（船）甲板",
-          "definitionEn": "a platform on a ship that is built at different levels",
           "examples": [
             "The captain stood on the topmost deck, scanning the horizon with his binoculars."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6a8627b0",
-          "pos": "noun",
+          "id": "sense-98aaa338",
+          "pos": "n.",
           "meaningZh": "（屋外）露台；木平台",
-          "definitionEn": "a porch that is similar to the deck on a ship",
           "examples": [
             "We sat outside on the deck, sipping lemonade and watching the sunset."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "decorate",
       "word": "decorate",
       "senses": [
         {
-          "id": "sense-2dad08ce",
-          "pos": "verb",
+          "id": "sense-bfb010d3",
+          "pos": "v.",
           "meaningZh": "裝飾；布置",
-          "definitionEn": "provide with decoration",
           "examples": [
             "She decided to decorate her living room with colorful paintings and vibrant throw pillows."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-179edb7c",
-          "pos": "verb",
+          "id": "sense-6f16d38d",
+          "pos": "v.",
           "meaningZh": "美化；點綴",
-          "definitionEn": "make more attractive by adding ornament or color",
           "examples": [
             "The living room was decorated with vibrant paintings and cozy furniture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "decrease",
       "word": "decrease",
       "senses": [
         {
-          "id": "sense-f6b8c20d",
-          "pos": "noun",
+          "id": "sense-da060de9",
+          "pos": "n.",
           "meaningZh": "減少；降低",
-          "definitionEn": "the act or process of decreasing or becoming less",
           "examples": [
             "The decrease in funding led to a reduction in staff numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-968ddd04",
-          "pos": "verb",
+          "id": "sense-866b0795",
+          "pos": "v.",
           "meaningZh": "減少；縮小",
-          "definitionEn": "to become smaller in size, amount, or intensity",
           "examples": [
             "The number of employees at the company decreased by 25% due to budget cuts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deed",
       "word": "deed",
       "senses": [
         {
-          "id": "sense-a7c21ac2",
-          "pos": "noun",
+          "id": "sense-cc6ab492",
+          "pos": "n.",
           "meaningZh": "行為；事跡",
-          "definitionEn": "something that people do or cause to happen",
           "examples": [
             "Her good deeds includes volunteering at the shelter and donating to charity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cbd71128",
-          "pos": "noun",
+          "id": "sense-e56d34d8",
+          "pos": "n.",
           "meaningZh": "（財產）契據；地契",
-          "definitionEn": "a legal document that proves ownership of property",
           "examples": [
             "After the death of the landowner, his heirs found the deed that proved their ownership of the property."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deepen",
       "word": "deepen",
       "senses": [
         {
-          "id": "sense-dffb0288",
-          "pos": "verb",
+          "id": "sense-f2ca8525",
+          "pos": "v.",
           "meaningZh": "加深；挖深",
-          "definitionEn": "to make something deeper",
           "examples": [
             "The construction crew used heavy machinery to deepen the trench."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4ac9eb8e",
-          "pos": "verb",
+          "id": "sense-2c2cede9",
+          "pos": "v.",
           "meaningZh": "（顏色、聲音）變深；加重",
-          "definitionEn": "to become deeper in tone or color",
           "examples": [
             "As the sun began to set, the sky started to deepen into shades of red and orange."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "definition",
       "word": "definition",
       "senses": [
         {
-          "id": "sense-cb79889a",
-          "pos": "noun",
+          "id": "sense-e720d1b2",
+          "pos": "n.",
           "meaningZh": "定義；釋義",
-          "definitionEn": "a clear and brief explanation of the meaning of a word, phrase, or symbol",
           "examples": [
             "I asked my teacher for a definition of the word ’perplexed’ because I was confused about its meaning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f1c38652",
-          "pos": "noun",
+          "id": "sense-5531f7ba",
+          "pos": "n.",
           "meaningZh": "清晰度；清楚程度",
-          "definitionEn": "the quality of being clear and easy to understand",
           "examples": [
             "The definition of this word is quite clear and easy to understand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "democracy",
       "word": "democracy",
       "senses": [
         {
-          "id": "sense-7d107941",
-          "pos": "noun",
+          "id": "sense-3fa0c26d",
+          "pos": "n.",
           "meaningZh": "民主制度；民主政治",
-          "definitionEn": "a system of government where ordinary citizens have a significant role in the decision-making process",
           "examples": [
             "In a democracy, people have the freedom to express their opinions and vote for their representatives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6d95b6a3",
-          "pos": "noun",
+          "id": "sense-8eabbc6f",
+          "pos": "n.",
           "meaningZh": "民主國家；民主政體",
-          "definitionEn": "a political system in which the supreme power is held by the people and exercised by them or by their elected representatives",
           "examples": [
             "The United States of America is a democracy, where citizens have the right to vote and elect their representatives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "democratic",
       "word": "democratic",
       "senses": [
         {
-          "id": "sense-27fe6b29",
-          "pos": "adjective",
+          "id": "sense-55891d17",
+          "pos": "adj.",
           "meaningZh": "民主的；為全民服務的",
-          "definitionEn": "representing or designed to benefit the people as a whole",
           "examples": [
             "A democratic government aims to provide equal opportunities for its citizens, regardless of their background."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8659598a",
-          "pos": "adjective",
+          "id": "sense-51191e3c",
+          "pos": "adj.",
           "meaningZh": "基於民主原則的；主張民主的",
-          "definitionEn": "based on the principles of democracy or social equality, and advocating for them",
           "examples": [
             "The recent protests for equal rights and justice were rooted in the democratic principles of justice and inclusivity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deposit",
       "word": "deposit",
       "senses": [
         {
-          "id": "sense-557af4f2",
-          "pos": "noun",
+          "id": "sense-ba21de16",
+          "pos": "n.",
           "meaningZh": "押金；保證金",
-          "definitionEn": "money given as security for temporary use of an article",
           "examples": [
             "Before renting the equipment, the customer was required to provide a deposit of $100."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-417ef5c7",
-          "pos": "noun",
+          "id": "sense-c5398aa3",
+          "pos": "n.",
           "meaningZh": "訂金；頭期款",
-          "definitionEn": "a partial payment made at the time of purchase, with the balance to be paid later",
           "examples": [
             "Sarah went to the furniture store and made a 20% deposit on the couch she wanted to buy. She would pay the remaining amount in monthly installments over the next year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "designer",
       "word": "designer",
       "senses": [
         {
-          "id": "sense-44d887ca",
-          "pos": "noun",
+          "id": "sense-3090bc12",
+          "pos": "n.",
           "meaningZh": "平面設計師；設計者",
-          "definitionEn": "someone who specializes in graphic design",
           "examples": [
             "Lisa is a talented designer who creates stunning visuals for websites and advertisements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7b0943cc",
-          "pos": "noun",
+          "id": "sense-b5560404",
+          "pos": "n.",
           "meaningZh": "服裝設計師",
-          "definitionEn": "a person who designs clothing",
           "examples": [
             "The designer sketched out a stunning wedding gown."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "desirable",
       "word": "desirable",
       "senses": [
         {
-          "id": "sense-4ff06268",
-          "pos": "adjective",
+          "id": "sense-f6b98b3e",
+          "pos": "adj.",
           "meaningZh": "值得擁有的；理想的",
-          "definitionEn": "worth having or seeking or achieving",
           "examples": [
             "Being fluent in multiple languages is highly desirable in today's globalized job market."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c783b517",
-          "pos": "adjective",
+          "id": "sense-8d0a8c85",
+          "pos": "adj.",
           "meaningZh": "令人嚮往的；有吸引力的",
-          "definitionEn": "worthy of being chosen, particularly as a romantic partner or spouse",
           "examples": [
             "Samira found Alex's kindness and sense of humor to be highly desirable qualities in a potential partner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L8",
-        "textbookTitle": "三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "desire",
       "word": "desire",
       "senses": [
         {
-          "id": "sense-f4f72b94",
-          "pos": "noun",
+          "id": "sense-d746ec44",
+          "pos": "n.",
           "meaningZh": "渴望；欲望",
-          "definitionEn": "a feeling of wanting something",
           "examples": [
             "After weeks of hiking in the mountains, Sarah's desire for a hot shower and a comfortable bed grew stronger and stronger."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7b47d48f",
-          "pos": "noun",
+          "id": "sense-f86aaf1f",
+          "pos": "n.",
           "meaningZh": "強烈意願；心願",
-          "definitionEn": "a strong feeling of wanting or wishing for something",
           "examples": [
             "She felt a strong desire to travel the world and experience new cultures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L8",
-        "textbookTitle": "三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dessert",
       "word": "dessert",
       "senses": [
         {
-          "id": "sense-8730be19",
-          "pos": "noun",
+          "id": "sense-fd0ea8dd",
+          "pos": "n.",
           "meaningZh": "甜點；餐後甜食",
-          "definitionEn": "a sweet dish served as the final course of a meal",
           "examples": [
             "After a satisfying dinner of roast chicken and vegetables, the family enjoyed a delectable chocolate cake as their dessert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "destroy",
+      "word": "destroy",
+      "senses": [
+        {
+          "id": "sense-2b3cfd4d",
+          "pos": "v.",
+          "meaningZh": "摧毀；破壞",
+          "examples": [
+            "The earthquake destroyed the entire city and left millions homeless."
+          ]
+        },
+        {
+          "id": "sense-5c9f5c6f",
+          "pos": "v.",
+          "meaningZh": "大敗；壓倒性擊敗",
+          "examples": []
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "detect",
+      "word": "detect",
+      "senses": [
+        {
+          "id": "sense-71ca8f44",
+          "pos": "v.",
+          "meaningZh": "察覺；探測到",
+          "examples": [
+            "Sophie could barely detect the sound of her phone ringing in her noisy office."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "determine",
+      "word": "determine",
+      "senses": [
+        {
+          "id": "sense-9cf994f5",
+          "pos": "v.",
+          "meaningZh": "決定；下定決心",
+          "examples": [
+            "She was determined to win the race no matter what."
+          ]
+        },
+        {
+          "id": "sense-d00e456e",
+          "pos": "v.",
+          "meaningZh": "查明；確定",
+          "examples": [
+            "The detective needed to determine the source of the fingerprints found at the crime scene."
+          ]
+        },
+        {
+          "id": "sense-a860f1f1",
+          "pos": "v.",
+          "meaningZh": "確立；釐清",
+          "examples": [
+            "The scientific team sought to determine the impact of the new drug on patients with early signs of Parkinson’s disease and found it to be highly effective."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "devil",
+      "word": "devil",
+      "senses": [
+        {
+          "id": "sense-bb09e049",
+          "pos": "n.",
+          "meaningZh": "惡魔；魔鬼",
+          "examples": [
+            "In the horror movie, the protagonist fights a fierce battle against the devil to save his soul."
+          ]
+        },
+        {
+          "id": "sense-85260c4c",
+          "pos": "n.",
+          "meaningZh": "惡人；壞傢伙",
+          "examples": [
+            "He may seem charming, but deep down he's a devil. He lies, cheats, and shows no remorse for his actions."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dim",
+      "word": "dim",
+      "senses": [
+        {
+          "id": "sense-eade8098",
+          "pos": "adj.",
+          "meaningZh": "昏暗的；微弱的",
+          "examples": [
+            "The dim lights in the room added to the cozy ambiance of the evening."
+          ]
+        },
+        {
+          "id": "sense-1e5743a0",
+          "pos": "v.",
+          "meaningZh": "變暗；減弱光線",
+          "examples": [
+            "As the sun set, the light in the room gradually began to dim."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

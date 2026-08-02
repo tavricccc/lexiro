@@ -1,1343 +1,633 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 135,
   "words": [
-    {
-      "wordKey": "boost",
-      "word": "boost",
-      "senses": [
-        {
-          "id": "sense-dcf33219",
-          "pos": "verb",
-          "meaningZh": "提升；增加；促進",
-          "definitionEn": "to increase or raise something",
-          "examples": [
-            "John worked hard to boost his sales numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-8c87814e",
-          "pos": "verb",
-          "meaningZh": "從下方推起；托舉",
-          "definitionEn": "to push or shove something upwards from below or behind",
-          "examples": [
-            "I boosted him up to the window so he could escape the fire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "booth",
-      "word": "booth",
-      "senses": [
-        {
-          "id": "sense-1ad1139e",
-          "pos": "noun",
-          "meaningZh": "攤位；小攤",
-          "definitionEn": "a small shop or stall at a fair or market, used for selling goods or providing entertainment",
-          "examples": [
-            "At the county fair, we stopped by a booth selling handmade crafts and jewelry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-5d9a87bb",
-          "pos": "noun",
-          "meaningZh": "小隔間；包廂",
-          "definitionEn": "a small enclosed area, separated from a larger space for a specific purpose, such as voting or privacy",
-          "examples": [
-            "At the county fair, I visited the photo booth and took some fun pictures with my friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "boredom",
-      "word": "boredom",
-      "senses": [
-        {
-          "id": "sense-26240aec",
-          "pos": "noun",
-          "meaningZh": "無聊；百無聊賴",
-          "definitionEn": "the state of being bored; a feeling of weariness and dissatisfaction arising from a lack of interest or occupation",
-          "examples": [
-            "After finishing all her work and having nothing else to do, Sarah fell prey to a creeping sense of boredom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-716ab357",
-          "pos": "noun",
-          "meaningZh": "厭倦感；乏味感",
-          "definitionEn": "the feeling of being bored by something tedious",
-          "examples": [
-            "After hours of listening to the monotonous lecture, boredom set in and I struggled to stay awake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "bound",
-      "word": "bound",
-      "senses": [
-        {
-          "id": "sense-f6e85efe",
-          "pos": "adjective",
-          "meaningZh": "必然的；幾乎確定的",
-          "definitionEn": "very likely; almost certain to happen",
-          "examples": [
-            "With all the rain we've been getting, it's bound to flood soon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "boundary",
-      "word": "boundary",
-      "senses": [
-        {
-          "id": "sense-7e1f8a30",
-          "pos": "noun",
-          "meaningZh": "邊界；界線",
-          "definitionEn": "a line determining the limits of an area",
-          "examples": [
-            "The boundary between the two countries is marked by a long fence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-909cadbf",
-          "pos": "noun",
-          "meaningZh": "極限；界限",
-          "definitionEn": "the greatest possible degree or extent of something",
-          "examples": [
-            "In order to fully explore his creativity, the artist pushed the boundaries of traditional painting techniques by experimenting with unconventional materials and methods."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "boxer",
       "word": "boxer",
       "senses": [
         {
-          "id": "sense-04374b85",
-          "pos": "noun",
+          "id": "sense-dacf2dc1",
+          "pos": "n.",
           "meaningZh": "拳擊手",
-          "definitionEn": "a person who fights with their fists as a sport, especially in a ring",
           "examples": [
             "The boxer trained hard before the championship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "breakthrough",
       "word": "breakthrough",
       "senses": [
         {
-          "id": "sense-a7bbeb1c",
-          "pos": "noun",
+          "id": "sense-00815828",
+          "pos": "n.",
           "meaningZh": "突破；突破防線",
-          "definitionEn": "a penetration of a barrier, such as an enemy’s defense",
           "examples": [
             "The military strategists devised a clever plan that resulted in a breakthrough in the enemy's heavily fortified defense, allowing our troops to advance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5d110b39",
-          "pos": "noun",
+          "id": "sense-48d31865",
+          "pos": "n.",
           "meaningZh": "重大突破；突破性發現",
-          "definitionEn": "making an important discovery or sudden advance",
           "examples": [
             "After years of extensive research, the scientists finally made a breakthrough in finding a cure for cancer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "briefcase",
       "word": "briefcase",
       "senses": [
         {
-          "id": "sense-2e7dc5d4",
-          "pos": "noun",
+          "id": "sense-053502e4",
+          "pos": "n.",
           "meaningZh": "公事包；手提箱",
-          "definitionEn": "a portable container used for carrying important documents or files, typically with a handle",
           "examples": [
             "He arrived at the meeting with a sleek leather briefcase in hand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bronze",
       "word": "bronze",
       "senses": [
         {
-          "id": "sense-c159b09e",
-          "pos": "noun",
+          "id": "sense-20d67d4a",
+          "pos": "n.",
           "meaningZh": "青銅；銅錫合金",
-          "definitionEn": "an alloy made of copper and tin, sometimes with other elements",
           "examples": [
             "The sculptor created a beautiful statue using bronze, which gave it a rich and lustrous appearance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b630932c",
-          "pos": "noun",
+          "id": "sense-d00eba58",
+          "pos": "n.",
           "meaningZh": "青銅雕像；銅製品",
-          "definitionEn": "a sculpture or object made from bronze",
           "examples": [
             "The talented artist crafted a stunning bronze statue of a warrior."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "browse",
       "word": "browse",
       "senses": [
         {
-          "id": "sense-8a6c181c",
-          "pos": "verb",
+          "id": "sense-ca3c8a75",
+          "pos": "v.",
           "meaningZh": "瀏覽；隨意翻閱",
-          "definitionEn": "to look through a book or magazine without reading everything, or to walk around a store looking at things without intending to buy anything, or without knowing exactly what you want to buy",
           "examples": [
             "After finishing my work at the library, I like to relax and browse through some magazines to see if anything catches my eye."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e904cb61",
-          "pos": "verb",
+          "id": "sense-bb15843c",
+          "pos": "v.",
           "meaningZh": "上網瀏覽；網路衝浪",
-          "definitionEn": "to look at information on the internet",
           "examples": [
             "John loves to browse the web and read articles about his favorite topics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L2 +1",
-        "textbookTitle": "三民 B4·L2、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bruise",
       "word": "bruise",
       "senses": [
         {
-          "id": "sense-342c3ea5",
-          "pos": "noun",
+          "id": "sense-21f4b985",
+          "pos": "n.",
           "meaningZh": "瘀傷；瘀青",
-          "definitionEn": "an injury that results in discoloration but does not break the skin",
           "examples": [
             "After falling off his bike, he showed off his bruise as a badge of honor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8a81cc79",
-          "pos": "verb",
+          "id": "sense-9887cb52",
+          "pos": "v.",
           "meaningZh": "使瘀傷；挫傷",
-          "definitionEn": "injure the underlying soft tissue or bone without breaking the skin",
           "examples": [
             "After falling down the stairs, she had a large bruise on her leg."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bulk",
       "word": "bulk",
       "senses": [
         {
-          "id": "sense-bda6169a",
-          "pos": "noun",
+          "id": "sense-ec0b422e",
+          "pos": "n.",
           "meaningZh": "龐大體積；巨大質量",
-          "definitionEn": "the property of something that is great in size or magnitude",
           "examples": [
             "The construction workers used cranes and bulldozers to move the bulk of the rocks and debris from the demolition site."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-172e4c60",
-          "pos": "noun",
+          "id": "sense-b0eaf95c",
+          "pos": "n.",
           "meaningZh": "大部分；主體",
-          "definitionEn": "the main part or largest quantity of something",
           "examples": [
             "She purchased the bulk of the groceries for the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bully",
       "word": "bully",
       "senses": [
         {
-          "id": "sense-ddcf5083",
-          "pos": "verb",
+          "id": "sense-3de97118",
+          "pos": "v.",
           "meaningZh": "恐嚇；霸凌；欺負",
-          "definitionEn": "discourage or frighten with threats or a domineering manner; intimidate",
           "examples": [
             "The boy used to bully his classmates at school by constantly taunting them and belittling them in front of others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-29e5c7f0",
-          "pos": "noun",
+          "id": "sense-2ef46720",
+          "pos": "n.",
           "meaningZh": "惡霸；霸凌者",
-          "definitionEn": "a cruel and brutal person",
           "examples": [
             "A group of bullies intimidated the younger students at school, stealing their lunch money and threatening physical harm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +1",
-        "textbookTitle": "龍騰 B2·L6、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bureau",
       "word": "bureau",
       "senses": [
         {
-          "id": "sense-99762da4",
-          "pos": "noun",
+          "id": "sense-5fd8c344",
+          "pos": "n.",
           "meaningZh": "局；署；行政機構",
-          "definitionEn": "an administrative unit of government",
           "examples": [
             "The Bureau of Labor Statistics is responsible for measuring labor market activity, working conditions, and price changes in the economy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3b3529dc",
-          "pos": "noun",
+          "id": "sense-7eb12fbc",
+          "pos": "n.",
           "meaningZh": "五斗櫃；衣櫃",
-          "definitionEn": "furniture with drawers for keeping clothes",
           "examples": [
             "Her room was just big enough for a bed, a desk, and a bureau that held her clothes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bureaucracy",
       "word": "bureaucracy",
       "senses": [
         {
-          "id": "sense-066217f3",
-          "pos": "noun",
+          "id": "sense-e4a70fef",
+          "pos": "n.",
           "meaningZh": "官僚制度；繁文縟節",
-          "definitionEn": "a form of government that is characterized by complex procedures, hierarchical structures, and numerous rules and regulations that often slow down decision making and progress.",
           "examples": [
             "In the example of a bureaucracy, a local council has to pass a proposal through multiple committees and layers of approval before implementing a new policy, causing delays and inefficiency."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6d3f1259",
-          "pos": "noun",
+          "id": "sense-62b487ad",
+          "pos": "n.",
           "meaningZh": "官僚體系；行政官員群",
-          "definitionEn": "the group of nonelective officials who manage a government or organization",
           "examples": [
             "The paperwork and approval process for my simple business proposal took so long due to the bureaucracy in the organization."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "burial",
       "word": "burial",
       "senses": [
         {
-          "id": "sense-484456cf",
-          "pos": "noun",
+          "id": "sense-77b61cc7",
+          "pos": "n.",
           "meaningZh": "埋藏；掩埋",
-          "definitionEn": "the act of hiding or putting something underground, often to keep it hidden or protected",
           "examples": [
             "The burial of the time capsule took place in the school’s courtyard on the last day of the academic year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-77754ac8",
-          "pos": "noun",
+          "id": "sense-68220280",
+          "pos": "n.",
           "meaningZh": "葬禮；下葬",
-          "definitionEn": "the act or ceremony of burying a dead body in a grave",
           "examples": [
             "The burial ceremony was held in the deceased’s hometown and was attended by a large number of mourners."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "butcher",
       "word": "butcher",
       "senses": [
         {
-          "id": "sense-21b8abf6",
-          "pos": "noun",
+          "id": "sense-e988460e",
+          "pos": "n.",
           "meaningZh": "肉販；屠夫",
-          "definitionEn": "a person who slaughters or dresses meat for market",
           "examples": [
             "The butcher skillfully cuts and packages the fresh cuts of beef for customers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fb4e4dfa",
-          "pos": "verb",
+          "id": "sense-3676dddb",
+          "pos": "v.",
           "meaningZh": "宰殺；屠宰",
-          "definitionEn": "kill (animals) for food",
           "examples": [
             "The skilled butcher efficiently slaughtered the cow and prepared different cuts of meat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "calcium",
       "word": "calcium",
       "senses": [
         {
-          "id": "sense-f4dfb378",
-          "pos": "noun",
+          "id": "sense-a256f2fc",
+          "pos": "n.",
           "meaningZh": "鈣；鈣質",
-          "definitionEn": "An essential mineral that the body needs to build and maintain strong bones. It is also important for heart health, nerve function, and muscle function.",
           "examples": [
             "Growing children require sufficient intake of calcium to develop healthy bones and teeth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "canal",
       "word": "canal",
       "senses": [
         {
-          "id": "sense-572f9706",
-          "pos": "noun",
+          "id": "sense-25832eae",
+          "pos": "n.",
           "meaningZh": "運河；水道",
-          "definitionEn": "a man-made waterway used for transportation by boats or to move water from one place to another",
           "examples": [
             "The Panama Canal is an impressive engineering feat that connects the Atlantic Ocean to the Pacific Ocean, allowing ships to easily navigate between the two."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "canvas",
       "word": "canvas",
       "senses": [
         {
-          "id": "sense-39fd4f50",
-          "pos": "noun",
+          "id": "sense-deeeb93c",
+          "pos": "n.",
           "meaningZh": "帆布；船帆",
-          "definitionEn": "a sailing ship’s fabric sail and the material it is made from",
           "examples": [
             "The captain instructed the sailors to hoist the canvas sail to catch the wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capability",
       "word": "capability",
       "senses": [
         {
-          "id": "sense-b0dd63aa",
-          "pos": "noun",
+          "id": "sense-cf71e9ba",
+          "pos": "n.",
           "meaningZh": "能力；才能",
-          "definitionEn": "the quality or ability to do something",
           "examples": [
             "Despite her young age, Lucy demonstrated her capability to lead by effectively managing the team and achieving remarkable results."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-922e4979",
-          "pos": "noun",
+          "id": "sense-d6383209",
+          "pos": "n.",
           "meaningZh": "潛力；處理能力",
-          "definitionEn": "the potential of something to be treated in a particular way",
           "examples": [
             "The new software has the capability to handle large amounts of data efficiently."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carbon",
       "word": "carbon",
       "senses": [
         {
-          "id": "sense-dbfb400c",
-          "pos": "noun",
+          "id": "sense-980c5bf4",
+          "pos": "n.",
           "meaningZh": "碳；碳元素",
-          "definitionEn": "a chemical element that is nonmetallic and tetravalent, and occurs in three different forms: amorphous carbon, graphite, and diamond. It is found in all organic compounds.",
           "examples": [
             "Carbon is an essential element for life, and is found in all living organisms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carnival",
       "word": "carnival",
       "senses": [
         {
-          "id": "sense-1e431adc",
-          "pos": "noun",
+          "id": "sense-a5a61e6c",
+          "pos": "n.",
           "meaningZh": "嘉年華；遊樂場",
-          "definitionEn": "a traveling show with sideshows, rides, and games of skill, etc.",
           "examples": [
             "My favorite part of the carnival was riding the Ferris wheel and trying to win a stuffed animal at one of the game booths."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b0991f4a",
-          "pos": "noun",
+          "id": "sense-ac6bff3a",
+          "pos": "n.",
           "meaningZh": "歡鬧場面；混亂喜劇",
-          "definitionEn": "a frenetic, disorganized (and often comic) disturbance suggestive of a large public entertainment",
           "examples": [
             "When the team won the championship, the fans took to the streets in a carnival of celebration and chaos."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "casino",
       "word": "casino",
       "senses": [
         {
-          "id": "sense-c101f3b2",
-          "pos": "noun",
+          "id": "sense-77ee668e",
+          "pos": "n.",
           "meaningZh": "賭場；博弈場所",
-          "definitionEn": "a building or facility that is primarily designed for gambling and other forms of entertainment",
           "examples": [
             "John and his friends decided to spend their evening at the local casino, trying their luck at the slot machines and enjoying the live music performances."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-494f654a",
-          "pos": "noun",
+          "id": "sense-778648ee",
+          "pos": "n.",
           "meaningZh": "卡西諾牌戲（紙牌遊戲）",
-          "definitionEn": "a card game in which cards are selected and matched against others held by the players",
           "examples": [
             "After a long day at work, John and his friends decided to unwind by playing a few rounds of casino at the local poker club."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cathedral",
       "word": "cathedral",
       "senses": [
         {
-          "id": "sense-020411b9",
-          "pos": "noun",
+          "id": "sense-f5829bd9",
+          "pos": "n.",
           "meaningZh": "主教座堂；大教堂",
-          "definitionEn": "the main church of a bishop’s diocese which is considered as the most important and significant one",
           "examples": [
             "As tourists entered the cathedral, they were awestruck by the stunning stained glass windows and towering architecture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2449d3a0",
-          "pos": "noun",
+          "id": "sense-d4db6d80",
+          "pos": "n.",
           "meaningZh": "大型教堂；宏偉教堂",
-          "definitionEn": "any large and important Christian church",
           "examples": [
             "The magnificent stained glass windows and towering spires of the cathedral drew tourists from around the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "caution",
       "word": "caution",
       "senses": [
         {
-          "id": "sense-3a860fcb",
-          "pos": "verb",
+          "id": "sense-74f378fe",
+          "pos": "v.",
           "meaningZh": "警告；告誡",
-          "definitionEn": "to warn strongly; put on guard",
           "examples": [
             "Sam cautioned his friend not to cross the busy street without looking both ways."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ba186048",
-          "pos": "noun",
+          "id": "sense-5d0d494c",
+          "pos": "n.",
           "meaningZh": "謹慎；小心",
-          "definitionEn": "the trait of being attentive to possible danger",
           "examples": [
             "With caution in mind, she walked through the dark alleyway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cautious",
       "word": "cautious",
       "senses": [
         {
-          "id": "sense-029d66c6",
-          "pos": "adjective",
+          "id": "sense-9dd37eac",
+          "pos": "adj.",
           "meaningZh": "謹慎的；保守的",
-          "definitionEn": "avoiding excess",
           "examples": [
             "As a cautious investor, he always thoroughly researches and analyzes potential risks before making any investment decisions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-54946122",
-          "pos": "noun",
+          "id": "sense-02c026fa",
+          "pos": "n.",
           "meaningZh": "謹慎的人；小心翼翼的人",
-          "definitionEn": "people who are fearful and careful",
           "examples": [
             "After a series of robberies in the neighborhood, the residents became more cautious and started locking their doors and windows at all times."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "celebrity",
       "word": "celebrity",
       "senses": [
         {
-          "id": "sense-b865f207",
-          "pos": "noun",
+          "id": "sense-832901e3",
+          "pos": "n.",
           "meaningZh": "名人；知名人士",
-          "definitionEn": "a widely known person",
           "examples": [
             "The celebrity was quickly recognized by fans as she walked down the busy street."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9b10abec",
-          "pos": "noun",
+          "id": "sense-7baf44a8",
+          "pos": "n.",
           "meaningZh": "名氣；聲望",
-          "definitionEn": "the state or quality of being widely honored and acclaimed",
           "examples": [
             "After winning an Oscar, she achieved celebrity status and was constantly pursued by paparazzi."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7 +1",
-        "textbookTitle": "龍騰 B2·L7、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cemetery",
       "word": "cemetery",
       "senses": [
         {
-          "id": "sense-57cd34c6",
-          "pos": "noun",
+          "id": "sense-f0e7ec6a",
+          "pos": "n.",
           "meaningZh": "墓地；公墓",
-          "definitionEn": "a place where dead bodies are buried; a graveyard",
           "examples": [
             "We visited the cemetery to pay our respects to our late grandparents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ceremony",
       "word": "ceremony",
       "senses": [
         {
-          "id": "sense-5f06b4bd",
-          "pos": "noun",
+          "id": "sense-1de3f619",
+          "pos": "n.",
           "meaningZh": "典禮；儀式",
-          "definitionEn": "a formal event performed on a special occasion",
           "examples": [
             "The wedding ceremony was filled with beautiful music, heartfelt vows, and joyful celebrations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8d3aab29",
-          "pos": "noun",
+          "id": "sense-19f445f5",
+          "pos": "n.",
           "meaningZh": "禮節；典禮規範",
-          "definitionEn": "the proper or conventional behavior on some solemn occasion",
           "examples": [
             "During the graduation ceremony, the students proudly walked across the stage to receive their diplomas, while the audience erupted into applause."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6",
-        "textbookTitle": "龍騰 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "certainty",
+      "word": "certainty",
+      "senses": [
+        {
+          "id": "sense-e4bf8be7",
+          "pos": "n.",
+          "meaningZh": "確信；確定性",
+          "examples": [
+            "After months of hard work and preparation, she had a sense of certainty that she would succeed in her exam."
+          ]
+        },
+        {
+          "id": "sense-2a81cd62",
+          "pos": "n.",
+          "meaningZh": "確定之事；必然結果",
+          "examples": [
+            "Even though they had doubts, the team approached the final game with a sense of certainty that they would win."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "certificate",
+      "word": "certificate",
+      "senses": [
+        {
+          "id": "sense-3fa1b2b4",
+          "pos": "n.",
+          "meaningZh": "證書；證明文件",
+          "examples": [
+            "After completing the online course, John received a certificate confirming he had successfully passed the program."
+          ]
+        },
+        {
+          "id": "sense-25290bf7",
+          "pos": "n.",
+          "meaningZh": "股票憑證；有價證券",
+          "examples": [
+            "I received a certificate for the shares of the company, which entitled me to receive regular dividends."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "chaos",
+      "word": "chaos",
+      "senses": [
+        {
+          "id": "sense-9e5d50ab",
+          "pos": "n.",
+          "meaningZh": "混亂；一片混亂",
+          "examples": [
+            "After the earthquake, there was chaos in the city as people ran out of the buildings and emergency services struggled to reach those in need."
+          ]
+        },
+        {
+          "id": "sense-ddbe3cfb",
+          "pos": "n.",
+          "meaningZh": "混沌；原始混亂狀態",
+          "examples": [
+            "The concept of chaos was used in ancient mythology to describe the state of the universe before creation."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "chapel",
+      "word": "chapel",
+      "senses": [
+        {
+          "id": "sense-a63bdc72",
+          "pos": "n.",
+          "meaningZh": "小禮拜堂；小教堂",
+          "examples": [
+            "The couple got married in the quaint little chapel on the hill, surrounded by their closest family and friends."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "characterize",
+      "word": "characterize",
+      "senses": [
+        {
+          "id": "sense-7cdb9879",
+          "pos": "v.",
+          "meaningZh": "描述……的特質；刻畫",
+          "examples": [
+            "In the novel, the author meticulously characterizes the main protagonist, providing a detailed description of his physical appearance, personality, and inner thoughts."
+          ]
+        },
+        {
+          "id": "sense-c33ceca0",
+          "pos": "v.",
+          "meaningZh": "是……的特色；具有……特點",
+          "examples": [
+            "The bright, vibrant colors and playful designs characterize the brand's aesthetic."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

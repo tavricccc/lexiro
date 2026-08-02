@@ -1,1421 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 90,
   "words": [
-    {
-      "wordKey": "skillful",
-      "word": "skillful",
-      "senses": [
-        {
-          "id": "sense-9a707d85",
-          "pos": "adjective",
-          "meaningZh": "精巧的；技術嫻熟的",
-          "definitionEn": "done with delicacy and skill",
-          "examples": [
-            "She was a skillful artist, and her paintings always captured the most intricate details with accuracy and finesse."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-bd6ba6fd",
-          "pos": "adjective",
-          "meaningZh": "有技術的；技藝精湛的",
-          "definitionEn": "having or showing knowledge, ability, or expertise",
-          "examples": [
-            "She is a skillful painter and can beautifully capture emotions through her brushstrokes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "skinny",
-      "word": "skinny",
-      "senses": [
-        {
-          "id": "sense-ea56903e",
-          "pos": "adjective",
-          "meaningZh": "極瘦的；纖細的",
-          "definitionEn": "very thin or slim",
-          "examples": [
-            "She was so skinny that I was worried about her health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-25ff0703",
-          "pos": "adjective",
-          "meaningZh": "緊身的；貼身的",
-          "definitionEn": "fitting tightly to the body",
-          "examples": [
-            "The skinny jeans were so tight that she could barely bend her legs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "skip",
-      "word": "skip",
-      "senses": [
-        {
-          "id": "sense-7af0c6da",
-          "pos": "verb",
-          "meaningZh": "跳過；略過",
-          "definitionEn": "to bypass or ignore something or someone",
-          "examples": [
-            "When reading a book, some people tend to skip over the boring parts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-f6d07808",
-          "pos": "noun",
-          "meaningZh": "跳躍步；蹦跳步",
-          "definitionEn": "a particular way of walking or running that involves alternating steps and hops",
-          "examples": [
-            "The children were playing skip rope in the playground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1",
-        "textbookTitle": "龍騰 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "slave",
-      "word": "slave",
-      "senses": [
-        {
-          "id": "sense-28edaf2c",
-          "pos": "noun",
-          "meaningZh": "奴隸；被奴役者",
-          "definitionEn": "a person who is owned by someone and forced to work for them",
-          "examples": [
-            "The 18th century in America saw a large number of slaves working on cotton and tobacco plantations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-4bfbe305",
-          "pos": "noun",
-          "meaningZh": "無自由的勞工；受奴役之人",
-          "definitionEn": "a person who works very hard and has no control over their work or life",
-          "examples": [
-            "Many people were forced into slavery in the 18th and 19th centuries, where they were made to work long hours without any rights or freedoms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "sleeve",
-      "word": "sleeve",
-      "senses": [
-        {
-          "id": "sense-9fcd8150",
-          "pos": "noun",
-          "meaningZh": "袖子；袖",
-          "definitionEn": "a cloth covering for the arm that is a part of a garment",
-          "examples": [
-            "She rolled up her sleeves and got to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-ebc297fe",
-          "pos": "noun",
-          "meaningZh": "（唱片等的）外套；保護套",
-          "definitionEn": "a protective or decorative case designed to fit around an object",
-          "examples": [
-            "She slid the album out of its sleeve and placed it on the record player."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "slender",
       "word": "slender",
       "senses": [
         {
-          "id": "sense-ec4e6e86",
-          "pos": "adjective",
+          "id": "sense-e6804e18",
+          "pos": "adj.",
           "meaningZh": "纖細的；苗條的",
-          "definitionEn": "being of delicate or slender build",
           "examples": [
             "The ballerina had a slender frame that allowed her to move with ease and grace on the stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f2cdb8f0",
-          "pos": "adjective",
+          "id": "sense-f5435f36",
+          "pos": "adj.",
           "meaningZh": "細長的；窄而長的",
-          "definitionEn": "having little width in proportion to the length or height",
           "examples": [
             "She had a slender figure and was easily able to squeeze through the narrow gap in the fence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slice",
       "word": "slice",
       "senses": [
         {
-          "id": "sense-2a5786e8",
-          "pos": "noun",
+          "id": "sense-3d100c8c",
+          "pos": "n.",
           "meaningZh": "一片；薄片",
-          "definitionEn": "a thin, flat piece that has been cut from something",
           "examples": [
             "I ate a slice of pizza for lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3feb5eeb",
-          "pos": "verb",
+          "id": "sense-289666f4",
+          "pos": "v.",
           "meaningZh": "（球）切削；旋球擊打",
-          "definitionEn": "to hit a ball and make it travel in a different direction by putting spin on it",
           "examples": [
             "He was able to slice the golf ball around the tree and onto the green."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slippery",
       "word": "slippery",
       "senses": [
         {
-          "id": "sense-0569807f",
-          "pos": "adjective",
+          "id": "sense-c4f4748b",
+          "pos": "adj.",
           "meaningZh": "滑溜的；易打滑的",
-          "definitionEn": "tending to cause things to slip or slide",
           "examples": [
             "After the heavy rain, the road became so slippery that cars were skidding and losing control."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f733bf2e",
-          "pos": "adjective",
+          "id": "sense-2ada45e2",
+          "pos": "adj.",
           "meaningZh": "難以掌握的；滑頭的",
-          "definitionEn": "not able to be grasped easily; elusive",
           "examples": [
             "The suspect was a slippery character, always managing to evade capture by the police."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slope",
       "word": "slope",
       "senses": [
         {
-          "id": "sense-3efd2b33",
-          "pos": "noun",
+          "id": "sense-9175b15b",
+          "pos": "n.",
           "meaningZh": "斜坡；坡度",
-          "definitionEn": "the property possessed by a line or surface that departs from the horizontal",
           "examples": [
             "The skier swiftly navigated down the steep slope, effortlessly gliding through the snow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c8098732",
-          "pos": "noun",
+          "id": "sense-8f50b35a",
+          "pos": "n.",
           "meaningZh": "山坡；丘陵地形",
-          "definitionEn": "an elevated geological formation",
           "examples": [
             "We stood at the top of the slope, overlooking the majestic valley below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "snap",
       "word": "snap",
       "senses": [
         {
-          "id": "sense-e6d54813",
-          "pos": "verb",
+          "id": "sense-3b668c06",
+          "pos": "v.",
           "meaningZh": "情緒失控；抓狂",
-          "definitionEn": "lose control of one’s emotions",
           "examples": [
             "After a long day at work, she finally snapped and started screaming at her coworkers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fbdca4d0",
-          "pos": "noun",
+          "id": "sense-7b86cd74",
+          "pos": "n.",
           "meaningZh": "清脆折斷聲；啪一聲",
-          "definitionEn": "a sudden sharp noise",
           "examples": [
             "The twig snapped under my foot as I walked through the forest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "solid",
       "word": "solid",
       "senses": [
         {
-          "id": "sense-502fdc0f",
-          "pos": "adjective",
+          "id": "sense-8532a4a9",
+          "pos": "adj.",
           "meaningZh": "堅固的；結實的",
-          "definitionEn": "firm and strong in structure",
           "examples": [
             "The skyscraper was built with a solid foundation and could withstand the strongest earthquakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "someday",
       "word": "someday",
       "senses": [
         {
-          "id": "sense-85c4fd01",
-          "pos": "noun",
+          "id": "sense-a1f7aeed",
+          "pos": "n.",
           "meaningZh": "未定的某一天；將來某日",
-          "definitionEn": "a day that is expected eventually but has not yet been determined",
           "examples": [
             "Someday, I hope to travel the world and see all of its wonders."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-21b030d9",
-          "pos": "adverb",
+          "id": "sense-0ca3a0e4",
+          "pos": "adv.",
           "meaningZh": "將來某天；有朝一日",
-          "definitionEn": "at an unspecified time in the future",
           "examples": [
             "Someday, I will travel the world and visit all the countries on my bucket list."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "somehow",
       "word": "somehow",
       "senses": [
         {
-          "id": "sense-b8fc0a5f",
-          "pos": "adverb",
+          "id": "sense-857fb574",
+          "pos": "adv.",
           "meaningZh": "以某種方式；不知怎地做到",
-          "definitionEn": "in an unspecified manner or way, or by some unspecified means",
           "examples": [
             "She somehow managed to complete the project on time, even though she had a lot of other work to do."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2a5b36e4",
-          "pos": "adverb",
+          "id": "sense-6814a0b3",
+          "pos": "adv.",
           "meaningZh": "不知為何；莫名其妙地",
-          "definitionEn": "for some unspecified reason or in some way that is not known or clear",
           "examples": [
             "Somehow, I managed to lock myself out of the house even though I had my keys."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +1",
-        "textbookTitle": "龍騰 B2·L1、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sometime",
       "word": "sometime",
       "senses": [
         {
-          "id": "sense-f12d37b3",
-          "pos": "adverb",
+          "id": "sense-3c9820e8",
+          "pos": "adv.",
           "meaningZh": "在某個時間；改天",
-          "definitionEn": "at an unspecified or unknown time",
           "examples": [
             "I'll call you sometime tomorrow to discuss the details of the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9c5583b3",
-          "pos": "adjective",
+          "id": "sense-2d2e2b55",
+          "pos": "adj.",
           "meaningZh": "昔日的；以前的",
-          "definitionEn": "belonging to a former time or previous period",
           "examples": [
             "In his attic, John discovered a box filled with old photographs and letters, bringing back memories of his sometime girlfriend from high school."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sorrow",
       "word": "sorrow",
       "senses": [
         {
-          "id": "sense-87f3b913",
-          "pos": "noun",
+          "id": "sense-a6785367",
+          "pos": "n.",
           "meaningZh": "悲傷；哀愁；遺憾",
-          "definitionEn": "a feeling of deep sadness and regret, often caused by loss or disappointment",
           "examples": [
             "She couldn't hold back her tears as she expressed her sorrow over the passing of her beloved pet dog."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b6fe59f3",
-          "pos": "noun",
+          "id": "sense-3168416f",
+          "pos": "n.",
           "meaningZh": "不幸之事；傷心之事",
-          "definitionEn": "an event or circumstance that causes great unhappiness or distress",
           "examples": [
             "She was overwhelmed with sorrow upon hearing the news of her best friend's passing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spaghetti",
       "word": "spaghetti",
       "senses": [
         {
-          "id": "sense-5df5c978",
-          "pos": "noun",
+          "id": "sense-020349a0",
+          "pos": "n.",
           "meaningZh": "義大利麵條；細條麵",
-          "definitionEn": "Long, thin, cylindrical pasta of Italian origin",
           "examples": [
             "For dinner, I cooked a delicious marinara sauce to go with a plate of spaghetti."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-86295dc6",
-          "pos": "noun",
+          "id": "sense-f7bdf5de",
+          "pos": "n.",
           "meaningZh": "義大利麵（料理）",
-          "definitionEn": "A dish made of spaghetti, typically served with a tomato or meat sauce",
           "examples": [
             "For dinner, she cooked a delicious spaghetti topped with homemade marinara sauce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "specific",
       "word": "specific",
       "senses": [
         {
-          "id": "sense-81ff0990",
-          "pos": "adjective",
+          "id": "sense-de9564f4",
+          "pos": "adj.",
           "meaningZh": "明確的；具體的",
-          "definitionEn": "Clearly and precisely stated",
           "examples": [
             "The professor provided specific instructions for the essay, outlining the required format and the number of sources needed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a602df80",
-          "pos": "adjective",
+          "id": "sense-d8c52b4c",
+          "pos": "adj.",
           "meaningZh": "特定物種的；特種的",
-          "definitionEn": "Relating to a particular species",
           "examples": [
             "The endangered Sumatran tiger is a specific species found only on the island of Sumatra."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spice",
       "word": "spice",
       "senses": [
         {
-          "id": "sense-7d8a54a5",
-          "pos": "noun",
+          "id": "sense-3571ad59",
+          "pos": "n.",
           "meaningZh": "香料；辛香料",
-          "definitionEn": "a type of seasoning made from various strongly flavored plant materials such as cinnamon, cloves, ginger, and pepper, used to enhance the taste of food.",
           "examples": [
             "I like to spice up my stir-fry with a pinch of chili flakes and a dash of ginger."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-bb768ccf",
-          "pos": "noun",
+          "id": "sense-4c8f15d3",
+          "pos": "n.",
           "meaningZh": "綜合香料；調味料",
-          "definitionEn": "a mixture of different crushed herbs or spices used to flavor food",
           "examples": [
             "I added a pinch of spice to my soup to give it a little extra kick."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spill",
       "word": "spill",
       "senses": [
         {
-          "id": "sense-d80610e4",
-          "pos": "verb",
+          "id": "sense-be1584eb",
+          "pos": "v.",
           "meaningZh": "溢出；灑落；濺出",
-          "definitionEn": "to flow or run over the edge of a container, or to cause this to happen",
           "examples": [
             "Sarah accidentally spilled her coffee all over the table when she bumped into it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b982f490",
-          "pos": "verb",
+          "id": "sense-3f0eae1b",
+          "pos": "v.",
           "meaningZh": "洩露（秘密）；說漏嘴",
-          "definitionEn": "to reveal secret information",
           "examples": [
             "In the spy thriller, the main character accidentally spills classified documents, putting his life in danger."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spin",
       "word": "spin",
       "senses": [
         {
-          "id": "sense-1baa7c04",
-          "pos": "verb",
+          "id": "sense-0f5168af",
+          "pos": "v.",
           "meaningZh": "使旋轉；轉動",
-          "definitionEn": "to cause something to rotate quickly",
           "examples": [
             "She spun the top and it kept going for several minutes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-83fa42de",
-          "pos": "noun",
+          "id": "sense-a333d92a",
+          "pos": "n.",
           "meaningZh": "（政治）操弄輿論；美化詮釋",
-          "definitionEn": "a distinctive interpretation, especially as used by politicians to influence public opinion",
           "examples": [
             "The politician put a positive spin on his recent scandal, making it seem like a minor issue and deflecting attention from the real problem."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spinach",
       "word": "spinach",
       "senses": [
         {
-          "id": "sense-8db5a8e7",
-          "pos": "noun",
+          "id": "sense-bccaffe7",
+          "pos": "n.",
           "meaningZh": "菠菜（葉）",
-          "definitionEn": "Dark green leaves that are commonly eaten cooked or raw in salads.",
           "examples": [
             "For a healthy lunch, she prepared a nutritious salad with spinach, cherry tomatoes, and grilled chicken."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spit",
       "word": "spit",
       "senses": [
         {
-          "id": "sense-900beb91",
-          "pos": "noun",
+          "id": "sense-85829bf1",
+          "pos": "n.",
           "meaningZh": "吐痰；吐口水（動作）",
-          "definitionEn": "the act of forcefully expelling saliva",
           "examples": [
             "After expressing his anger, he just spit on the ground and walked away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6152d62f",
-          "pos": "noun",
+          "id": "sense-7e4a098f",
+          "pos": "n.",
           "meaningZh": "唾液；口水",
-          "definitionEn": "a clear liquid that moistens the mouth and starts the digestion of starches, secreted by the salivary and mucous glands of the mouth",
           "examples": [
             "The smell of fresh-baked bread made his mouth water and his body signal for the production of spit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spite",
       "word": "spite",
       "senses": [
         {
-          "id": "sense-27f46603",
-          "pos": "noun",
+          "id": "sense-ae99a4af",
+          "pos": "n.",
           "meaningZh": "惡意；怨恨",
-          "definitionEn": "a feeling or an expression of hatred or malice towards someone",
           "examples": [
             "She painted her ex-boyfriend’s car with spray paint out of spite after he started dating her best friend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f39a6241",
-          "pos": "noun",
+          "id": "sense-fdf8bc35",
+          "pos": "n.",
           "meaningZh": "報復心；嫉恨之情",
-          "definitionEn": "a desire to harm or see others suffer, often due to envy or resentment",
           "examples": [
             "Joan decided to spread false rumors about her coworker out of spite, after he received a promotion she wanted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "splash",
       "word": "splash",
       "senses": [
         {
-          "id": "sense-3857df79",
-          "pos": "verb",
+          "id": "sense-cd722858",
+          "pos": "v.",
           "meaningZh": "潑水；使水濺起",
-          "definitionEn": "to cause liquid or water to spatter about, especially with force.",
           "examples": [
             "The kids gleefully splashed in the pool, sending water droplets flying in every direction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6dcb0ea2",
-          "pos": "verb",
+          "id": "sense-18b56d87",
+          "pos": "v.",
           "meaningZh": "潑灑；噴灑（液體）",
-          "definitionEn": "to throw or hurl (a liquid) onto something; sprinkle or spray.",
           "examples": [
             "When it's hot outside, children love to splash each other with water guns at the pool."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spoil",
       "word": "spoil",
       "senses": [
         {
-          "id": "sense-f4d7a6a8",
-          "pos": "verb",
+          "id": "sense-0450077b",
+          "pos": "v.",
           "meaningZh": "破壞；妨礙；阻撓",
-          "definitionEn": "hinder or prevent (the efforts, plans, or desires) of",
           "examples": [
             "I didn’t want to spoil the surprise, but my sister accidentally revealed the party theme."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-585bdf17",
-          "pos": "verb",
+          "id": "sense-c0f0f65c",
+          "pos": "v.",
           "meaningZh": "使變質；腐壞",
-          "definitionEn": "make imperfect",
           "examples": [
             "Leaving the food out for too long will spoil it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spray",
       "word": "spray",
       "senses": [
         {
-          "id": "sense-bf7eb5b6",
-          "pos": "noun",
+          "id": "sense-d1b69b4a",
+          "pos": "n.",
           "meaningZh": "水霧；飛沫",
-          "definitionEn": "water or other liquid in small drops in the atmosphere, blown from waves or thrown up by a waterfall",
           "examples": [
             "As we approached the towering waterfall, the strong wind carried the misty spray onto our faces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-0f446cf9",
-          "pos": "noun",
+          "id": "sense-7fcad4ad",
+          "pos": "n.",
           "meaningZh": "噴霧器；噴霧罐",
-          "definitionEn": "a device that produces a jet of fine mist or vapor, typically used for applying perfumes, deodorants, or medicines",
           "examples": [
             "She grabbed her favorite perfume spray and lightly misted herself before leaving the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spy",
       "word": "spy",
       "senses": [
         {
-          "id": "sense-7984c80b",
-          "pos": "noun",
+          "id": "sense-e4663387",
+          "pos": "n.",
           "meaningZh": "間諜；暗中監視者",
-          "definitionEn": "a secret watcher; someone who secretly observes other people",
           "examples": [
             "The government sent an undercover spy to gather information about the enemy’s plans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-832a1dc3",
-          "pos": "verb",
+          "id": "sense-95f4c222",
+          "pos": "v.",
           "meaningZh": "從事間諜活動；刺探",
-          "definitionEn": "to secretly collect sensitive or classified information; engage in espionage.",
           "examples": [
             "The detective went undercover to spy on a terrorist organization and gather information about their plans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "squeeze",
       "word": "squeeze",
       "senses": [
         {
-          "id": "sense-5ec1201f",
-          "pos": "verb",
+          "id": "sense-7870276e",
+          "pos": "v.",
           "meaningZh": "擠壓；緊握",
-          "definitionEn": "press firmly",
           "examples": [
             "He squeezed the lemon to extract the juice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-64f0a92d",
-          "pos": "noun",
+          "id": "sense-6d194d0d",
+          "pos": "n.",
           "meaningZh": "（俚）男女朋友；伴侶",
-          "definitionEn": "(slang) a person’s romantic partner",
           "examples": [
             "I saw Mark and his squeeze holding hands at the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L7",
-        "textbookTitle": "三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "squirrel",
       "word": "squirrel",
       "senses": [
         {
-          "id": "sense-7ae2a392",
-          "pos": "noun",
+          "id": "sense-c7e50756",
+          "pos": "n.",
           "meaningZh": "松鼠",
-          "definitionEn": "a kind of arboreal rodent having a long bushy tail and typically living in trees, where it builds nests and stores food, such as acorns and nuts, in fall for winter use; a member of the family Sciuridae.",
           "examples": [
             "As I walked through the park, I watched a squirrel scamper up a tree and stash away an acorn for later."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cf076d05",
-          "pos": "noun",
+          "id": "sense-011888c1",
+          "pos": "n.",
           "meaningZh": "松鼠皮毛",
-          "definitionEn": "the fur of a squirrel; a soft, fine, and usually reddish-brown fur.",
           "examples": [
             "She admired the luxurious squirrel fur coat hanging in the boutique."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stable",
       "word": "stable",
       "senses": [
         {
-          "id": "sense-407f835f",
-          "pos": "adjective",
+          "id": "sense-60ff8195",
+          "pos": "adj.",
           "meaningZh": "穩定的；可靠的；波動小",
-          "definitionEn": "firm and dependable; subject to little fluctuation",
           "examples": [
             "She is looking for a stable job that offers benefits and opportunities for growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8ac208b3",
-          "pos": "adjective",
+          "id": "sense-aba8a039",
+          "pos": "adj.",
           "meaningZh": "化學穩定的；不易反應的",
-          "definitionEn": "not readily participating in chemical change",
           "examples": [
             "The noble gases are stable because they have a full outer shell and do not readily react with other elements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +1",
-        "textbookTitle": "龍騰 B3·L2、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stadium",
+      "word": "stadium",
+      "senses": [
+        {
+          "id": "sense-c0a28d35",
+          "pos": "n.",
+          "meaningZh": "體育場；運動場館",
+          "examples": [
+            "The stadium was packed with cheering fans, eagerly watching the championship match."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "staff",
+      "word": "staff",
+      "senses": [
+        {
+          "id": "sense-f11e699f",
+          "pos": "n.",
+          "meaningZh": "員工；職員；工作人員",
+          "examples": [
+            "The hotel staff efficiently catered to the needs of the guests, ensuring their comfort and satisfaction."
+          ]
+        },
+        {
+          "id": "sense-ac25e3c0",
+          "pos": "n.",
+          "meaningZh": "教職員；學校職員",
+          "examples": [
+            "The staff at the school organized a farewell party for the retiring principal."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stale",
+      "word": "stale",
+      "senses": [
+        {
+          "id": "sense-d9973bf7",
+          "pos": "adj.",
+          "meaningZh": "不新鮮的；走味的；過時的",
+          "examples": [
+            "The bread in the pantry has gone stale and is no longer good to eat."
+          ]
+        },
+        {
+          "id": "sense-e93e8928",
+          "pos": "adj.",
+          "meaningZh": "無聊的；老套的；缺乏新意的",
+          "examples": [
+            "After reading the same book for the tenth time, the story started to feel stale and predictable."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stare",
+      "word": "stare",
+      "senses": [
+        {
+          "id": "sense-02e61b64",
+          "pos": "v.",
+          "meaningZh": "凝視；目不轉睛地看",
+          "examples": [
+            "The child could not resist the temptation to stare at the candy for too long."
+          ]
+        },
+        {
+          "id": "sense-bb31856c",
+          "pos": "v.",
+          "meaningZh": "盯著看；直視",
+          "examples": [
+            "When the teacher scolded him, he just stared at her without saying anything."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "starve",
+      "word": "starve",
+      "senses": [
+        {
+          "id": "sense-bb11c525",
+          "pos": "v.",
+          "meaningZh": "捱餓；因缺糧而受苦",
+          "examples": [
+            "During the famine, many people were forced to starve and had little access to food."
+          ]
+        },
+        {
+          "id": "sense-404b1010",
+          "pos": "v.",
+          "meaningZh": "挨餓；斷食",
+          "examples": [
+            "After hours of hiking, we were all so hungry that we felt like we were going to starve if we didn't eat soon."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

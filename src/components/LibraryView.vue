@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import type { VocabFolder } from '@/types'
 import { ClipboardPaste, FileQuestion, FolderOpen, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ALL_FOLDER_ID, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { ALL_FOLDER_ID } from '@/lib/folders'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import FolderCreateDialog from './dialogs/FolderCreateDialog.vue'
+import FolderManageDialog from './dialogs/FolderManageDialog.vue'
 import FolderTree from './FolderTree.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
@@ -18,35 +21,28 @@ const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
 const router = useRouter()
-const { hasSets, sets } = storeToRefs(setsStore)
-const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
+const { hasSets, sets, totalWordCount } = storeToRefs(setsStore)
+const { isSetInProgress, requestDelete, openSetEditor } = setsStore
 const { openTransfer } = uiStore
 
 const query = ref('')
 const selectedFolderId = ref(ALL_FOLDER_ID)
-const newFolderName = ref('')
+const folderCreateOpen = ref(false)
+const folderManageOpen = ref(false)
+const managedFolder = ref<VocabFolder | null>(null)
 
 const filteredSets = computed(() => {
   const q = query.value.trim().toLowerCase()
   return sets.value.filter((set) => {
     const inFolder = selectedFolderId.value === ALL_FOLDER_ID
-      || (selectedFolderId.value === UNCATEGORIZED_FOLDER_ID ? !set.folderId : set.folderId === selectedFolderId.value)
-    return inFolder && (!q || set.setName.toLowerCase().includes(q) || set.items.some(item => [item.word, item.meaning, item.definition ?? '', ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q))))
+      || set.folderId === selectedFolderId.value
+    const words = libraryStore.getSetWords(set.id)
+    return inFolder && (!q || set.setName.toLowerCase().includes(q) || words.some(word => word.word.toLowerCase().includes(q) || word.senses.some(sense => sense.meaningZh.toLowerCase().includes(q))))
   })
 })
 
-function createFolder() {
-  const name = newFolderName.value.trim()
-  if (!name)
-    return
-  const parentId = selectedFolderId.value === ALL_FOLDER_ID || selectedFolderId.value === UNCATEGORIZED_FOLDER_ID ? undefined : selectedFolderId.value
-  const folder = libraryStore.addFolder(name, parentId)
-  selectedFolderId.value = folder.id
-  newFolderName.value = ''
-}
-
 function openAddSet() {
-  openImport(selectedFolderId.value === ALL_FOLDER_ID ? undefined : selectedFolderId.value)
+  void router.push({ name: 'set-create' })
 }
 
 function openBackupImport() {
@@ -59,6 +55,16 @@ function handleStudy(setId: string) {
 
 function moveSet(setId: string, folderId: string) {
   setsStore.moveSetToFolder(setId, folderId || undefined)
+}
+
+function openFolderManage(folderId: string) {
+  managedFolder.value = libraryStore.folders.find(folder => folder.id === folderId) ?? null
+  folderManageOpen.value = Boolean(managedFolder.value)
+}
+
+function closeFolderManage() {
+  folderManageOpen.value = false
+  managedFolder.value = null
 }
 </script>
 
@@ -98,62 +104,72 @@ function moveSet(setId: string, folderId: string) {
     </EmptyState>
 
     <template v-else>
-      <Card class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p class="text-sm font-black">
-            {{ $t('library.collection') }}
-          </p><p class="mt-1 text-xs font-semibold text-ink-500">
-            {{ sets.length }} {{ $t('library.setUnit') }} · {{ sets.reduce((sum, set) => sum + set.items.length, 0) }} {{ $t('home.wordUnit') }}
+      <div class="grid gap-5 lg:grid-cols-[15rem_minmax(0,1fr)]">
+        <aside class="min-w-0 lg:sticky lg:top-6 lg:self-start">
+          <div class="flex items-center justify-between gap-3 px-1">
+            <div class="flex items-center gap-2">
+              <FolderOpen class="h-4 w-4 text-ink-500" />
+              <p class="text-sm font-semibold text-ink-800 dark:text-ink-100">
+                {{ $t('library.folderTitle') }}
+              </p>
+            </div>
+            <Button variant="ghost" size="icon" class="h-8 w-8" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
+              <Plus class="h-4 w-4" />
+            </Button>
+          </div>
+          <p class="mt-1 px-1 text-xs text-ink-500 dark:text-ink-400">
+            {{ $t('library.folderDescription') }}
           </p>
-        </div>
-        <div class="relative w-full sm:max-w-sm">
-          <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" /><Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
-        </div>
-      </Card>
+          <div class="mt-3 rounded-2xl border border-ink-200/70 bg-white/70 p-2 dark:border-ink-200/15 dark:bg-ink-900/40">
+            <FolderTree
+              v-model="selectedFolderId"
+              :folders="libraryStore.folders"
+              :include-all="true"
+              :all-label="$t('library.allFolders')"
+              :root-label="$t('library.rootFolder')"
+              @edit="openFolderManage"
+              @delete="openFolderManage"
+            />
+          </div>
+          <Button variant="outline" class="mt-3 w-full justify-center gap-2" @click="folderCreateOpen = true">
+            <Plus class="h-4 w-4" />{{ $t('library.newFolder') }}
+          </Button>
+        </aside>
 
-      <Card class="space-y-3 p-3 sm:p-4">
-        <div class="flex items-start gap-2">
-          <FolderOpen class="mt-0.5 h-4 w-4 shrink-0 text-ink-500" />
-          <div>
-            <p class="text-sm font-semibold text-ink-800 dark:text-ink-100">
-              {{ $t('library.folderTitle') }}
-            </p>
-            <p class="mt-0.5 text-xs text-ink-500 dark:text-ink-400">
-              {{ $t('library.folderDescription') }}
-            </p>
+        <div class="min-w-0">
+          <Card class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm font-black">
+                {{ $t('library.collection') }}
+              </p><p class="mt-1 text-xs font-semibold text-ink-500">
+                {{ sets.length }} {{ $t('library.setUnit') }} · {{ totalWordCount }} {{ $t('home.wordUnit') }}
+              </p>
+            </div>
+            <div class="relative w-full sm:max-w-sm">
+              <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" /><Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
+            </div>
+          </Card>
+
+          <div v-if="filteredSets.length" class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div v-for="(set, i) in filteredSets" :key="set.id" class="set-card-enter" :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }">
+              <SetCard
+                :set="set"
+                :folders="libraryStore.folders"
+                :active="isSetInProgress(set.id)"
+                @study="handleStudy"
+                @move="moveSet"
+                @delete="requestDelete"
+                @edit="openSetEditor('edit', sets.find(item => item.id === $event))"
+              />
+            </div>
+          </div>
+          <div v-else class="py-16 text-center text-sm font-semibold text-ink-400">
+            {{ $t('home.noSearchResults') }}
           </div>
         </div>
-        <FolderTree
-          v-model="selectedFolderId"
-          :folders="libraryStore.folders"
-          :include-all="true"
-          :all-label="$t('library.allFolders')"
-          :root-label="$t('library.rootFolder')"
-        />
-        <form class="flex flex-col gap-2 sm:flex-row sm:items-center" @submit.prevent="createFolder">
-          <Input v-model="newFolderName" :placeholder="$t('library.newFolderPlaceholder')" class="min-w-0 flex-1 rounded-xl" />
-          <Button type="submit" size="sm" variant="outline">
-            {{ $t('library.newFolder') }}
-          </Button>
-        </form>
-      </Card>
-
-      <div v-if="filteredSets.length" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <div v-for="(set, i) in filteredSets" :key="set.id" class="set-card-enter" :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }">
-          <SetCard
-            :set="set"
-            :folders="libraryStore.folders"
-            :active="isSetInProgress(set.id)"
-            @study="handleStudy"
-            @move="moveSet"
-            @delete="requestDelete"
-            @edit="openSetEditor('edit', sets.find(item => item.id === $event))"
-          />
-        </div>
       </div>
-      <div v-else class="py-16 text-center text-sm font-semibold text-ink-400">
-        {{ $t('home.noSearchResults') }}
-      </div>
+      <FolderCreateDialog :open="folderCreateOpen" :parent-id="selectedFolderId" @close="folderCreateOpen = false" @created="selectedFolderId = $event" />
+      <FolderManageDialog :open="folderManageOpen" :folder="managedFolder" @close="closeFolderManage" @deleted="selectedFolderId = ALL_FOLDER_ID" />
     </template>
   </section>
 </template>

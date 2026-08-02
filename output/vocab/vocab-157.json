@@ -1,1484 +1,705 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 157,
   "words": [
-    {
-      "wordKey": "scenario",
-      "word": "scenario",
-      "senses": [
-        {
-          "id": "sense-0da7982e",
-          "pos": "noun",
-          "meaningZh": "假設情境；可能情況",
-          "definitionEn": "a postulated sequence of possible events",
-          "examples": [
-            "Let's consider a scenario where a global pandemic results in widespread lockdowns and the collapse of economies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-3567323e",
-          "pos": "noun",
-          "meaningZh": "劇情大綱；劇本概要",
-          "definitionEn": "an outline or synopsis of a play or literary work, especially a screenplay",
-          "examples": [
-            "In the scenario for the upcoming film, the main character embarks on a thrilling adventure to uncover a hidden treasure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "scent",
-      "word": "scent",
-      "senses": [
-        {
-          "id": "sense-044a4bc3",
-          "pos": "noun",
-          "meaningZh": "香氣；氣味",
-          "definitionEn": "a property that can be detected by the sense of smell",
-          "examples": [
-            "The scent of freshly baked bread filled the kitchen, making everyone's mouths water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-deac6bf8",
-          "pos": "verb",
-          "meaningZh": "嗅到；察覺氣味",
-          "definitionEn": "to detect a smell or trace of something",
-          "examples": [
-            "As I walked through the forest, I caught the scent of pine trees in the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "scheme",
-      "word": "scheme",
-      "senses": [
-        {
-          "id": "sense-be8be3b5",
-          "pos": "noun",
-          "meaningZh": "計畫；方案",
-          "definitionEn": "an elaborate and systematic plan of action",
-          "examples": [
-            "The company developed a scheme to triple its profits within the next quarter by cutting down on operational costs and expanding into new markets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-15297194",
-          "pos": "noun",
-          "meaningZh": "草案；初步規劃",
-          "definitionEn": "a schematic or preliminary plan",
-          "examples": [
-            "She spent months working on a scheme for the new product line before presenting it to the board."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "scope",
-      "word": "scope",
-      "senses": [
-        {
-          "id": "sense-a8fee80f",
-          "pos": "noun",
-          "meaningZh": "範圍；職責領域",
-          "definitionEn": "the extent or range of something that a subject, an organization, an activity, etc. deals with or controls: \"the scope of his responsibilities\"",
-          "examples": [
-            "As the project manager, her scope of responsibilities includes overseeing the planning, execution, and monitoring of the entire project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-d7e8fb9d",
-          "pos": "noun",
-          "meaningZh": "望遠鏡；瞄準鏡",
-          "definitionEn": "an optical instrument used for viewing distant objects",
-          "examples": [
-            "John used a scope to observe the birds in the faraway trees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "scramble",
-      "word": "scramble",
-      "senses": [
-        {
-          "id": "sense-c37a87f6",
-          "pos": "verb",
-          "meaningZh": "炒（蛋）；攪拌",
-          "definitionEn": "to beat ingredients rapidly in order to mix or make them light and frothy",
-          "examples": [
-            "Joan decided to scramble some eggs for breakfast, vigorously whisking them in a bowl until they became light and frothy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-ebe74c42",
-          "pos": "verb",
-          "meaningZh": "爬行；手腳並用移動",
-          "definitionEn": "move hurriedly or awkwardly, often using one’s hands to maintain balance",
-          "examples": [
-            "In their rush to catch the bus, the students scramble across the icy sidewalk, flailing their arms to stay upright."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "scrap",
       "word": "scrap",
       "senses": [
         {
-          "id": "sense-6ed5133c",
-          "pos": "noun",
+          "id": "sense-8c910758",
+          "pos": "n.",
           "meaningZh": "碎片；一點點",
-          "definitionEn": "a small piece or amount of something",
           "examples": [
             "She wrote the number on a scrap of paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6bc3b72a",
-          "pos": "noun",
+          "id": "sense-0e5d85ce",
+          "pos": "n.",
           "meaningZh": "打架；衝突",
-          "definitionEn": "a fight or a struggle",
           "examples": [
             "After a heated argument, the two friends got into a physical scrap."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3777d1ff",
-          "pos": "verb",
+          "id": "sense-78edf6c6",
+          "pos": "v.",
           "meaningZh": "廢棄；丟棄",
-          "definitionEn": "dispose of (something useless or old)",
           "examples": [
             "After the remodeling, we decided to scrap the outdated furniture and replace it with new pieces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "script",
       "word": "script",
       "senses": [
         {
-          "id": "sense-d41e697d",
-          "pos": "noun",
+          "id": "sense-e79ed199",
+          "pos": "n.",
           "meaningZh": "劇本；腳本",
-          "definitionEn": "the written text of a play, film, or broadcast",
           "examples": [
             "The actors were still memorizing their lines from the script."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-15d9e580",
-          "pos": "verb",
+          "id": "sense-8493d70f",
+          "pos": "v.",
           "meaningZh": "撰寫劇本；寫腳本",
-          "definitionEn": "to write a script for something, such as a play or movie",
           "examples": [
             "The writer will script the screenplay for the upcoming film."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d6e378fc",
-          "pos": "noun",
+          "id": "sense-617aa340",
+          "pos": "n.",
           "meaningZh": "手寫體；手寫字",
-          "definitionEn": "handwriting or something written by hand",
           "examples": [
             "The love letter was carefully written in elegant script."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sector",
       "word": "sector",
       "senses": [
         {
-          "id": "sense-e1778407",
-          "pos": "noun",
+          "id": "sense-ddabb507",
+          "pos": "n.",
           "meaningZh": "部門；行業",
-          "definitionEn": "a social group that forms part of the society or the economy",
           "examples": [
             "The agricultural sector is the largest employer in our town."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-871d41e2",
-          "pos": "noun",
+          "id": "sense-e94e76e2",
+          "pos": "n.",
           "meaningZh": "防區；陣地區段",
-          "definitionEn": "a portion of a military position",
           "examples": [
             "The battalion was assigned to defend the northern sector of the front line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "segment",
       "word": "segment",
       "senses": [
         {
-          "id": "sense-17e0b397",
-          "pos": "noun",
+          "id": "sense-20012c83",
+          "pos": "n.",
           "meaningZh": "部分；段落",
-          "definitionEn": "one of the parts into which something is divided",
           "examples": [
             "The orange was divided into segments, making it easier to share with friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2a14e2f9",
-          "pos": "noun",
+          "id": "sense-4b35f0ed",
+          "pos": "n.",
           "meaningZh": "區段；獨立分節",
-          "definitionEn": "a part or section of an object or entity that is identifiable as separate or distinct from the rest",
           "examples": [
             "The orange was divided into segments for easy consumption."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "seminar",
       "word": "seminar",
       "senses": [
         {
-          "id": "sense-36cbd893",
-          "pos": "noun",
+          "id": "sense-9741408b",
+          "pos": "n.",
           "meaningZh": "研討會；座談會",
-          "definitionEn": "any meeting for an exchange of ideas",
           "examples": [
             "The university hosted a seminar on climate change, where experts from various fields came together to discuss innovative solutions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d0785d77",
-          "pos": "noun",
+          "id": "sense-5d6cbc7f",
+          "pos": "n.",
           "meaningZh": "研討課；小型進階課",
-          "definitionEn": "a course offered for a small group of advanced students",
           "examples": [
             "In the seminar on quantum physics, the instructor encouraged active discussion among the students to enhance their understanding of complex scientific concepts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "senator",
       "word": "senator",
       "senses": [
         {
-          "id": "sense-faf62285",
-          "pos": "noun",
+          "id": "sense-20987cc1",
+          "pos": "n.",
           "meaningZh": "參議員",
-          "definitionEn": "a member of a senate",
           "examples": [
             "The senator introduced a new bill to address climate change during the legislative session."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-dd11133f",
-          "pos": "noun",
+          "id": "sense-d520b483",
+          "pos": "n.",
           "meaningZh": "參議員；議員",
-          "definitionEn": "a person who is a member of a senate or a similar legislative body in a government",
           "examples": [
             "The senator delivered a powerful speech advocating for healthcare reform during the legislative session."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sensation",
       "word": "sensation",
       "senses": [
         {
-          "id": "sense-b610933d",
-          "pos": "noun",
+          "id": "sense-f4b0910d",
+          "pos": "n.",
           "meaningZh": "感覺；感受",
-          "definitionEn": "an elementary awareness of stimulation, without elaboration or interpretation.",
           "examples": [
             "The sensation of cool water on her skin was refreshing on a hot summer day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-26341ecf",
-          "pos": "noun",
+          "id": "sense-8bc736df",
+          "pos": "n.",
           "meaningZh": "轟動；風靡",
-          "definitionEn": "a state of public excitement and interest created by a noteworthy event or situation.",
           "examples": [
             "The news of the singer’s comeback concert created a sensation among her fans, leading to a sold-out show in just minutes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sensitivity",
       "word": "sensitivity",
       "senses": [
         {
-          "id": "sense-ed0cdae9",
-          "pos": "noun",
+          "id": "sense-babebe41",
+          "pos": "n.",
           "meaningZh": "體貼；敏銳（對他人感受的）",
-          "definitionEn": "the ability to understand and respond to other people's feelings",
           "examples": [
             "She handled the difficult news with great sensitivity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4ea18874",
-          "pos": "noun",
+          "id": "sense-a3c8eeac",
+          "pos": "n.",
           "meaningZh": "感應能力；靈敏度",
-          "definitionEn": "(physiology) the ability to sense or respond to stimuli",
           "examples": [
             "The sensitivity of the fingertips allows us to distinguish between textures such as silk and sandpaper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cd99416d",
-          "pos": "noun",
+          "id": "sense-06175445",
+          "pos": "n.",
           "meaningZh": "易感性；對病原體的敏感",
-          "definitionEn": "the susceptibility to a pathogen",
           "examples": [
             "Because of his weakened immune system, the patient had a heightened sensitivity to germs and often fell sick."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sensor",
       "word": "sensor",
       "senses": [
         {
-          "id": "sense-c464b7a3",
-          "pos": "noun",
+          "id": "sense-6830f423",
+          "pos": "n.",
           "meaningZh": "感測器；感應器",
-          "definitionEn": "A sensor is any device that detects or measures a physical property and records, indicates, or otherwise responds to it.",
           "examples": [
             "The motion sensor detected movement and activated the security alarm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sentiment",
       "word": "sentiment",
       "senses": [
         {
-          "id": "sense-3312a2ae",
-          "pos": "noun",
+          "id": "sense-8a4c407a",
+          "pos": "n.",
           "meaningZh": "看法；主觀感受",
-          "definitionEn": "a personal belief or judgment that is not founded on proof or certainty",
           "examples": [
             "My sentiment is that we should invest in renewable energy sources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-761ce250",
-          "pos": "noun",
+          "id": "sense-6ac60ee4",
+          "pos": "n.",
           "meaningZh": "深情；懷舊情感",
-          "definitionEn": "a tender, romantic, or nostalgic feeling or emotion",
           "examples": [
             "The old couple walking hand in hand on the beach could not hide their sentiment for each other even after all these years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sentimental",
       "word": "sentimental",
       "senses": [
         {
-          "id": "sense-a0677c2d",
-          "pos": "adjective",
+          "id": "sense-260ad319",
+          "pos": "adj.",
           "meaningZh": "感性的；充滿情感的",
-          "definitionEn": "expressive of or appealing to sentiment, especially the tender emotions and feelings, as love, pity, or nostalgia",
           "examples": [
             "The movie’s sentimental ending left us all in tears."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3ddc55f1",
-          "pos": "adjective",
+          "id": "sense-3836e045",
+          "pos": "adj.",
           "meaningZh": "過於多愁善感的；濫情的",
-          "definitionEn": "often or excessively emotional or sentimental; effusive or insincerely emotional",
           "examples": [
             "She became sentimental after watching the romantic movie and started crying inconsolably."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sequence",
       "word": "sequence",
       "senses": [
         {
-          "id": "sense-be759b6e",
-          "pos": "noun",
+          "id": "sense-3adc7e76",
+          "pos": "n.",
           "meaningZh": "順序；序列",
-          "definitionEn": "a following of one thing after another, in a particular ordered manner",
           "examples": [
             "The steps of a recipe should be followed in sequence for the dish to turn out correctly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cfefadc1",
-          "pos": "noun",
+          "id": "sense-d070d649",
+          "pos": "n.",
           "meaningZh": "連續鏡頭；場景段落",
-          "definitionEn": "a series of related shots in a movie that develop a given subject",
           "examples": [
             "The sequence of the car chase scene in the movie was very well executed, keeping the audience on the edge of their seats."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "series",
       "word": "series",
       "senses": [
         {
-          "id": "sense-8a82e30c",
-          "pos": "noun",
+          "id": "sense-5b5ac244",
+          "pos": "n.",
           "meaningZh": "一系列；一連串",
-          "definitionEn": "a number of similar or related things coming one after another",
           "examples": [
             "A series of accidents on the highway caused long delays."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-32eec2e1",
-          "pos": "noun",
+          "id": "sense-4ca12909",
+          "pos": "n.",
           "meaningZh": "系列郵票；成套郵幣",
-          "definitionEn": "a set of postage stamps or coins that have a common theme and are collected or studied as a group",
           "examples": [
             "John's collection of rare series of postage stamps includes a complete set depicting famous scientists throughout history."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3f609284",
-          "pos": "noun",
+          "id": "sense-1d36b79c",
+          "pos": "n.",
           "meaningZh": "數列；級數",
-          "definitionEn": "the result of adding together a sequence of numbers or expressions, either a limited or an infinite one (in mathematics)",
           "examples": [
             "In math class, the teacher gave us the following series to solve: 2 + 4 + 6 + 8 + 10. We had to find the sum of all the numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "server",
       "word": "server",
       "senses": [
         {
-          "id": "sense-58018eb5",
-          "pos": "noun",
+          "id": "sense-002e1be9",
+          "pos": "n.",
           "meaningZh": "伺服器（電腦）",
-          "definitionEn": "a central computer that stores information and supplies it to other computers in a network",
           "examples": [
             "The website crashed because the server was overloaded."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-90ba74ba",
-          "pos": "noun",
+          "id": "sense-0afefe66",
+          "pos": "n.",
           "meaningZh": "發球員",
-          "definitionEn": "the player who serves to start a point in court games",
           "examples": [
             "The server started the game with a powerful serve that the receiver couldn’t return."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-522f93d1",
-          "pos": "noun",
+          "id": "sense-31f50235",
+          "pos": "n.",
           "meaningZh": "餐具托架；上菜器具",
-          "definitionEn": "utensil used to serve food or drink",
           "examples": [
             "The waiter brought the water pitcher and placed it on the server in the center of the table for self-service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "session",
       "word": "session",
       "senses": [
         {
-          "id": "sense-2352baaf",
-          "pos": "noun",
+          "id": "sense-a509f3ff",
+          "pos": "n.",
           "meaningZh": "會議；開會",
-          "definitionEn": "a meeting for the execution of a group’s functions",
           "examples": [
             "The board of directors held a session to discuss the budget for the upcoming project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f29e3efd",
-          "pos": "noun",
+          "id": "sense-d7da7ded",
+          "pos": "n.",
           "meaningZh": "療程；訓練節次",
-          "definitionEn": "a meeting devoted to a particular activity",
           "examples": [
             "I have a therapy session every Monday to deal with my anxiety."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "setting",
       "word": "setting",
       "senses": [
         {
-          "id": "sense-1d3e7084",
-          "pos": "noun",
+          "id": "sense-eea63084",
+          "pos": "n.",
           "meaningZh": "環境；布置；擺設",
-          "definitionEn": "the physical position or location of something",
           "examples": [
             "She carefully arranged the tablecloth, silverware, and flowers, creating a beautiful setting for the dinner party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-13d47237",
-          "pos": "noun",
+          "id": "sense-581bb237",
+          "pos": "n.",
           "meaningZh": "一套餐具；席位餐具組",
-          "definitionEn": "a complete tableware set for one person",
           "examples": [
             "For their anniversary, Sarah gifted her husband a beautiful setting, complete with fine china, crystal glasses, and silver cutlery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shareholder",
       "word": "shareholder",
       "senses": [
         {
-          "id": "sense-66913d71",
-          "pos": "noun",
+          "id": "sense-4fd6b67d",
+          "pos": "n.",
           "meaningZh": "股東；持股人",
-          "definitionEn": "A shareholder is a person or organization that owns shares in a company.",
           "examples": [
             "John is a shareholder in the company and owns a significant portion of its stock."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-819f086f",
-          "pos": "noun",
+          "id": "sense-a96265b3",
+          "pos": "n.",
           "meaningZh": "股東（享有分紅與表決權）",
-          "definitionEn": "They are entitled to a part of the profits of the company and have voting rights at shareholders’ meetings.",
           "examples": [
             "As a shareholder in the company, I received a dividend payment at the end of the fiscal year and had the opportunity to vote on important decisions at the shareholders' meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shatter",
       "word": "shatter",
       "senses": [
         {
-          "id": "sense-941eb217",
-          "pos": "verb",
+          "id": "sense-6e66545e",
+          "pos": "v.",
           "meaningZh": "破碎；粉碎",
-          "definitionEn": "to break suddenly and violently into small pieces",
           "examples": [
             "The sound of glass shattering filled the room as the baseball smashed through the window."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6c2dc1f2",
-          "pos": "verb",
+          "id": "sense-9907c8c5",
+          "pos": "v.",
           "meaningZh": "使破碎；打碎",
-          "definitionEn": "to cause something to break suddenly into small pieces",
           "examples": [
             "The car accident caused the windshield to shatter into tiny fragments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shed",
       "word": "shed",
       "senses": [
         {
-          "id": "sense-377fc3e3",
-          "pos": "noun",
+          "id": "sense-10fe4ee3",
+          "pos": "n.",
           "meaningZh": "小屋；倉庫；棚子",
-          "definitionEn": "a simple roofed building used for storage, shelter, or as a workshop",
           "examples": [
             "I needed a place to store my tools and machinery, so I built a small shed in my backyard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ae93ab67",
-          "pos": "verb",
+          "id": "sense-f42800e8",
+          "pos": "v.",
           "meaningZh": "流出；滲出；散落",
-          "definitionEn": "allow (a substance) to flow out or escape",
           "examples": [
             "He accidentally knocked over the bottle, causing it to shed its contents onto the floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sheer",
       "word": "sheer",
       "senses": [
         {
-          "id": "sense-1196bf0f",
-          "pos": "adjective",
+          "id": "sense-368f0361",
+          "pos": "adj.",
           "meaningZh": "純粹的；完全的",
-          "definitionEn": "used to emphasize that something is complete and nothing else is involved",
           "examples": [
             "The climb to the top took sheer determination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8443b27a",
-          "pos": "adjective",
+          "id": "sense-0a18f0a0",
+          "pos": "adj.",
           "meaningZh": "陡峭的；垂直的",
-          "definitionEn": "very steep; having a prominent and almost vertical front",
           "examples": [
             "The hiker looked up at the sheer cliff, wondering if he would be able to climb it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sheriff",
       "word": "sheriff",
       "senses": [
         {
-          "id": "sense-b491b2bf",
-          "pos": "noun",
+          "id": "sense-2e0bfcb7",
+          "pos": "n.",
           "meaningZh": "縣治安官；警長",
-          "definitionEn": "the highest law-enforcement officer in a county, responsible for maintaining order and enforcing the law",
           "examples": [
             "The sheriff was called to investigate the robbery and apprehend the suspects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shield",
       "word": "shield",
       "senses": [
         {
-          "id": "sense-b911139e",
-          "pos": "noun",
+          "id": "sense-d0f06646",
+          "pos": "n.",
           "meaningZh": "盾牌；護盾",
-          "definitionEn": "a piece of armor carried on the arm as protection against blows or missiles",
           "examples": [
             "The knight raised his shield to block the incoming arrows."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-23ea467f",
-          "pos": "noun",
+          "id": "sense-f09aa917",
+          "pos": "n.",
           "meaningZh": "防護物；防護罩",
-          "definitionEn": "a protective covering or structure that shields against harm or danger",
           "examples": [
             "When facing an enemy, he raised his shield to protect himself from their arrows."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shiver",
       "word": "shiver",
       "senses": [
         {
-          "id": "sense-8355ba0a",
-          "pos": "noun",
+          "id": "sense-c1a6acd6",
+          "pos": "n.",
           "meaningZh": "顫抖；發抖",
-          "definitionEn": "a reflex motion caused by cold or fear or excitement",
           "examples": [
             "As she walked through the haunted house, a shiver ran down her spine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8ca08954",
-          "pos": "noun",
+          "id": "sense-3689a698",
+          "pos": "n.",
           "meaningZh": "恐懼感；毛骨悚然感",
-          "definitionEn": "an almost pleasurable sensation of fright",
           "examples": [
             "As the eerie music played, a delightful shiver ran down her spine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shortage",
       "word": "shortage",
       "senses": [
         {
-          "id": "sense-71044de8",
-          "pos": "noun",
+          "id": "sense-018854f0",
+          "pos": "n.",
           "meaningZh": "短缺；不足",
-          "definitionEn": "an acute insufficiency",
           "examples": [
             "During the summer, there was a shortage of water in the town due to a prolonged drought."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3284556e",
-          "pos": "noun",
+          "id": "sense-bf3e4de6",
+          "pos": "n.",
           "meaningZh": "缺乏量；差額",
-          "definitionEn": "the property of being an amount by which something is less than expected or required",
           "examples": [
             "During the pandemic, there was a shortage of toilet paper, causing people to have difficulty finding it in stores."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shove",
       "word": "shove",
       "senses": [
         {
-          "id": "sense-6f6236f9",
-          "pos": "verb",
+          "id": "sense-4d3424dc",
+          "pos": "v.",
           "meaningZh": "推擠；猛推",
-          "definitionEn": "to push someone or something with force or rough movement",
           "examples": [
             "He gave me a hard shove and I fell to the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-648042e3",
-          "pos": "noun",
+          "id": "sense-6033a10f",
+          "pos": "n.",
           "meaningZh": "推；猛推一下",
-          "definitionEn": "the act of pushing someone or something",
           "examples": [
             "He lost his temper and gave her a hard shove towards the door."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "shrug",
+      "word": "shrug",
+      "senses": [
+        {
+          "id": "sense-7cb94d58",
+          "pos": "v.",
+          "meaningZh": "聳肩（表不知或無所謂）",
+          "examples": [
+            "When I asked him where he had been all night, he just shrugged his shoulders, leaving me even more suspicious."
+          ]
+        },
+        {
+          "id": "sense-cd97c8c7",
+          "pos": "n.",
+          "meaningZh": "聳肩動作",
+          "examples": [
+            "When she was asked about her plans for the evening, she simply shrugged."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "shuttle",
+      "word": "shuttle",
+      "senses": [
+        {
+          "id": "sense-97f3f636",
+          "pos": "n.",
+          "meaningZh": "接駁車；班車；太空梭",
+          "examples": [
+            "I took the shuttle from the airport to the city center."
+          ]
+        },
+        {
+          "id": "sense-63530b50",
+          "pos": "n.",
+          "meaningZh": "梭子（織布機）",
+          "examples": [
+            "The weaver skillfully maneuvered the shuttle back and forth, seamlessly weaving the colorful threads into a beautiful tapestry."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sibling",
+      "word": "sibling",
+      "senses": [
+        {
+          "id": "sense-6325ab3c",
+          "pos": "n.",
+          "meaningZh": "兄弟姊妹；手足",
+          "examples": [
+            "Growing up with a sibling can be both challenging and rewarding, as they are there to share your experiences and support you."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "siege",
+      "word": "siege",
+      "senses": [
+        {
+          "id": "sense-4b34bd18",
+          "pos": "n.",
+          "meaningZh": "圍城；圍攻",
+          "examples": [
+            "During the siege, the town's residents ran out of food and water, forcing them to surrender after several weeks of resistance."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "skeleton",
+      "word": "skeleton",
+      "senses": [
+        {
+          "id": "sense-bdd33895",
+          "pos": "n.",
+          "meaningZh": "骨骼；骨架",
+          "examples": [
+            "The forensic pathologist identified the deceased from the skeleton found in the woods."
+          ]
+        },
+        {
+          "id": "sense-e63c5829",
+          "pos": "n.",
+          "meaningZh": "（物體的）骨架；框架",
+          "examples": [
+            "The dinosaur skeleton exhibit at the museum displayed the impressive framework of the prehistoric animal."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

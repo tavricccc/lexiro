@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { folderIdFromSelection } from '@/lib/folders'
+import { ChevronRight, Folder } from 'lucide-vue-next'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { folderParentIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { useFolderCreation } from '@/lib/use-folder-creation'
 import { useLibraryStore } from '@/stores/library'
 import FolderTree from '../FolderTree.vue'
 import Button from '../ui/button/Button.vue'
+import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
+import Dialog from '../ui/dialog/Dialog.vue'
 import Input from '../ui/input/Input.vue'
+import StatusMessage from '../ui/status-message/StatusMessage.vue'
 
 const props = withDefaults(defineProps<{
   modelValue: string
@@ -17,44 +23,90 @@ const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
 
+const { t } = useI18n()
 const libraryStore = useLibraryStore()
-const newFolderName = ref('')
+const dialogOpen = ref(false)
+const draftFolderId = ref(UNCATEGORIZED_FOLDER_ID)
+const folderCreation = useFolderCreation(
+  name => libraryStore.addFolder(name, folderParentIdFromSelection(draftFolderId.value)),
+  () => t('library.folderNameRequired'),
+)
+const { name: newFolderName, error: folderError, reset: resetFolderCreation } = folderCreation
 
-function update(value: string) {
-  emit('update:modelValue', value)
+const selectedFolderName = computed(() => {
+  return libraryStore.folders.find(folder => folder.id === (props.modelValue || UNCATEGORIZED_FOLDER_ID))?.name ?? t('library.folderNone')
+})
+
+function openDialog() {
+  draftFolderId.value = props.modelValue || UNCATEGORIZED_FOLDER_ID
+  resetFolderCreation()
+  dialogOpen.value = true
+}
+
+function closeDialog() {
+  dialogOpen.value = false
+}
+
+function confirmFolder() {
+  emit('update:modelValue', draftFolderId.value)
+  closeDialog()
 }
 
 function createFolder() {
-  const name = newFolderName.value.trim()
-  if (!name)
+  const folder = folderCreation.submit()
+  if (!folder)
     return
-  const folder = libraryStore.addFolder(name, folderIdFromSelection(props.modelValue))
-  emit('update:modelValue', folder.id)
-  newFolderName.value = ''
+  draftFolderId.value = folder.id
 }
+
+watch(() => props.modelValue, (value) => {
+  if (!dialogOpen.value)
+    draftFolderId.value = value || UNCATEGORIZED_FOLDER_ID
+})
 </script>
 
 <template>
   <div class="space-y-2 text-left">
     <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ title || $t('editor.folder') }}</label>
-    <FolderTree
-      :model-value="modelValue"
-      :folders="libraryStore.folders"
-      @update:model-value="update"
-    />
-    <div class="rounded-xl bg-ink-50/70 p-2.5 dark:bg-ink-900/60">
-      <p class="mb-2 text-[11px] font-semibold text-ink-500 dark:text-ink-400">
-        {{ $t('library.newFolder') }}
-      </p>
-      <form class="flex min-w-0 gap-2" @submit.prevent="createFolder">
-        <Input v-model="newFolderName" class="min-w-0 flex-1 rounded-xl" :placeholder="$t('library.newFolderPlaceholder')" />
-        <Button type="submit" size="sm" variant="outline" :aria-label="$t('library.newFolder')">
-          {{ $t('library.newFolderShort') }}
-        </Button>
-      </form>
-    </div>
-    <p class="text-[11px] leading-relaxed text-ink-400 dark:text-ink-500">
-      {{ $t('library.folderCreateHint') }}
-    </p>
+    <button type="button" class="flex min-h-11 w-full items-center gap-3 rounded-xl border border-ink-200/80 bg-white px-3 py-2 text-left transition-colors hover:border-accent-primary/50 dark:border-ink-200/20 dark:bg-ink-900" @click="openDialog">
+      <Folder class="h-4 w-4 shrink-0 text-accent-primary" />
+      <span class="min-w-0 flex-1 truncate text-sm font-semibold text-ink-800 dark:text-ink-100">{{ selectedFolderName }}</span>
+      <ChevronRight class="h-4 w-4 shrink-0 text-ink-400" />
+    </button>
+
+    <Dialog :open="dialogOpen" :title="$t('library.folderSelectTitle')" :description="$t('library.folderSelectDescription')" width-class="max-w-md" @close="closeDialog">
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
+          <FolderTree v-model="draftFolderId" :folders="libraryStore.folders" :show-actions="false" />
+        </div>
+
+        <div class="rounded-2xl bg-ink-50/70 p-3 dark:bg-ink-900/60">
+          <p class="mb-2 text-xs font-semibold text-ink-500 dark:text-ink-400">
+            {{ $t('library.newFolder') }}
+          </p>
+          <form class="flex min-w-0 gap-2" @submit.prevent="createFolder">
+            <Input v-model="newFolderName" class="min-w-0 flex-1 rounded-xl" :placeholder="$t('library.newFolderPlaceholder')" />
+            <Button type="submit" size="sm" variant="outline">
+              {{ $t('library.newFolderShort') }}
+            </Button>
+          </form>
+          <StatusMessage v-if="folderError" class="mt-2" tone="error">
+            {{ folderError }}
+          </StatusMessage>
+          <p class="mt-2 text-[11px] leading-relaxed text-ink-400">
+            {{ $t('library.folderCreateHint') }}
+          </p>
+        </div>
+
+        <DialogFooter>
+          <Button variant="outline" @click="closeDialog">
+            {{ $t('editor.cancel') }}
+          </Button>
+          <Button variant="default" @click="confirmFolder">
+            {{ $t('library.folderSelectConfirm') }}
+          </Button>
+        </DialogFooter>
+      </div>
+    </Dialog>
   </div>
 </template>

@@ -1,1379 +1,647 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 115,
   "words": [
-    {
-      "wordKey": "greasy",
-      "word": "greasy",
-      "senses": [
-        {
-          "id": "sense-90f1be1f",
-          "pos": "adjective",
-          "meaningZh": "沾油的；油膩的",
-          "definitionEn": "smeared or soiled with grease or oil",
-          "examples": [
-            "After cooking bacon, the greasy pan needed to be scrubbed clean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-a914e628",
-          "pos": "adjective",
-          "meaningZh": "油脂過多的；油滋滋的",
-          "definitionEn": "containing an unusual amount of grease or oil",
-          "examples": [
-            "After eating the greasy burger, his hands were slick with oil."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "greeting",
-      "word": "greeting",
-      "senses": [
-        {
-          "id": "sense-2751b724",
-          "pos": "noun",
-          "meaningZh": "問候；招呼",
-          "definitionEn": "A message or gesture sent to show respect or courtesy.",
-          "examples": [
-            "When entering a room, give a warm greeting to everyone present."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-17c828b0",
-          "pos": "noun",
-          "meaningZh": "致意；問候語",
-          "definitionEn": "An expression of goodwill or friendship when meeting or communicating with someone.",
-          "examples": [
-            "As I entered the room, everyone turned towards me with warm smiles and cheerful greetings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L2",
-        "textbookTitle": "三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "greetings",
-      "word": "greetings",
-      "senses": [
-        {
-          "id": "sense-1eed3873",
-          "pos": "noun",
-          "meaningZh": "問候；招呼",
-          "definitionEn": "A message or gesture sent to show respect or courtesy.",
-          "examples": [
-            "When entering a room, give a warm greeting to everyone present."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-accd26ad",
-          "pos": "noun",
-          "meaningZh": "致意；問候語",
-          "definitionEn": "An expression of goodwill or friendship when meeting or communicating with someone.",
-          "examples": [
-            "As I entered the room, everyone turned towards me with warm smiles and cheerful greetings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "grief",
-      "word": "grief",
-      "senses": [
-        {
-          "id": "sense-44c7a740",
-          "pos": "noun",
-          "meaningZh": "哀傷；喪親之痛",
-          "definitionEn": "intense sorrow caused by loss of a loved one (especially by death)",
-          "examples": [
-            "She was overwhelmed with grief after the sudden death of her mother."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-dec4f78e",
-          "pos": "noun",
-          "meaningZh": "痛苦；悲痛之源",
-          "definitionEn": "something that causes great unhappiness or distress in general",
-          "examples": [
-            "The sudden death of her dog brought great grief to her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "grind",
-      "word": "grind",
-      "senses": [
-        {
-          "id": "sense-a6988c81",
-          "pos": "verb",
-          "meaningZh": "磨碎；研磨",
-          "definitionEn": "reduce to small pieces or particles by pounding or abrading",
-          "examples": [
-            "She used a mortar and pestle to grind the spices into a fine powder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-97ccc9c3",
-          "pos": "verb",
-          "meaningZh": "碾壓；發出刺耳磨擦聲",
-          "definitionEn": "press or grind with a crushing noise",
-          "examples": [
-            "The sound of the coffee beans being ground for my morning cup of coffee was music to my ears."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6 +1",
-        "textbookTitle": "龍騰 B3·L6、三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "guarantee",
       "word": "guarantee",
       "senses": [
         {
-          "id": "sense-cdde6d31",
-          "pos": "noun",
+          "id": "sense-23999b75",
+          "pos": "n.",
           "meaningZh": "保證；承諾",
-          "definitionEn": "an unconditional promise that something will happen or that something is true",
           "examples": [
             "The company offers a money-back guarantee if you are not satisfied with the product."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b82161dc",
-          "pos": "verb",
+          "id": "sense-84ece2f5",
+          "pos": "v.",
           "meaningZh": "保證；確保",
-          "definitionEn": "make sure or certain of something",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guardian",
       "word": "guardian",
       "senses": [
         {
-          "id": "sense-0baf5d62",
-          "pos": "noun",
+          "id": "sense-c4ee5676",
+          "pos": "n.",
           "meaningZh": "監護人；保護者",
-          "definitionEn": "a person who is entrusted with the care of someone or something",
           "examples": [
             "John became the guardian of his younger sister after their parents passed away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guilt",
       "word": "guilt",
       "senses": [
         {
-          "id": "sense-25c38b69",
-          "pos": "noun",
+          "id": "sense-7305dd01",
+          "pos": "n.",
           "meaningZh": "罪惡感；悔恨",
-          "definitionEn": "remorse caused by feeling responsible for some offense",
           "examples": [
             "After lying to her best friend, Sarah was consumed by guilt and couldn't sleep at night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-aca8a23d",
-          "pos": "noun",
+          "id": "sense-b104a965",
+          "pos": "n.",
           "meaningZh": "罪責；有罪狀態",
-          "definitionEn": "the state of having committed an offense",
           "examples": [
             "After stealing the money, he couldn't escape the overwhelming guilt that consumed him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1 +1",
-        "textbookTitle": "龍騰 B4·L1、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guilty",
       "word": "guilty",
       "senses": [
         {
-          "id": "sense-8d15cca9",
-          "pos": "adjective",
+          "id": "sense-6e5b274d",
+          "pos": "adj.",
           "meaningZh": "有罪的；犯罪的",
-          "definitionEn": "having committed an offense, crime, violation, or wrong; responsible for a reprehensible act",
           "examples": [
             "John felt guilty after stealing the money from his friend's wallet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6abf97ab",
-          "pos": "adjective",
+          "id": "sense-71c52ecf",
+          "pos": "adj.",
           "meaningZh": "感到內疚的；自責的",
-          "definitionEn": "feeling remorse or self-reproach because of one’s actions or character; showing a sense of guilt",
           "examples": [
             "After lying to his best friend, John felt guilty and decided to apologize."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1 +1",
-        "textbookTitle": "龍騰 B4·L1、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gulf",
       "word": "gulf",
       "senses": [
         {
-          "id": "sense-eed5c423",
-          "pos": "noun",
+          "id": "sense-00752823",
+          "pos": "n.",
           "meaningZh": "海灣；大海灣",
-          "definitionEn": "an arm of a sea or ocean that is partly enclosed by land; larger than a bay",
           "examples": [
             "The Arabian Gulf is known for its rich oil reserves."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8d5c3cd7",
-          "pos": "noun",
+          "id": "sense-146510d7",
+          "pos": "n.",
           "meaningZh": "深淵；巨大鴻溝",
-          "definitionEn": "a deep wide chasm, either in water or in the earth’s surface",
           "examples": [
             "The hikers stood at the edge of the gulf, marveling at its vastness and the steep cliffs that surrounded it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "habitual",
       "word": "habitual",
       "senses": [
         {
-          "id": "sense-fdf19ad6",
-          "pos": "adjective",
+          "id": "sense-336c0982",
+          "pos": "adj.",
           "meaningZh": "習慣性的；慣常的",
-          "definitionEn": "done or occurring regularly; usual",
           "examples": [
             "She had a habitual morning routine of meditation followed by a healthy breakfast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "halt",
       "word": "halt",
       "senses": [
         {
-          "id": "sense-ff6b7047",
-          "pos": "verb",
+          "id": "sense-e0da6480",
+          "pos": "v.",
           "meaningZh": "使停止；喝令停下",
-          "definitionEn": "to cause someone or something to stop moving or doing something",
           "examples": [
             "The police officer shouted, 'Halt!' and the suspect immediately stopped running."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f8b447b3",
-          "pos": "verb",
+          "id": "sense-44353e32",
+          "pos": "v.",
           "meaningZh": "中止；阻止進展",
-          "definitionEn": "to stop the progress or development of something",
           "examples": [
             "The construction work had to come to a halt due to a lack of funding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "handwriting",
       "word": "handwriting",
       "senses": [
         {
-          "id": "sense-66f221c1",
-          "pos": "noun",
+          "id": "sense-d39d5189",
+          "pos": "n.",
           "meaningZh": "手跡；手寫文字",
-          "definitionEn": "something written by hand",
           "examples": [
             "She received a letter with exquisite handwriting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-759d1486",
-          "pos": "noun",
+          "id": "sense-99ca559e",
+          "pos": "n.",
           "meaningZh": "書寫；手寫行為",
-          "definitionEn": "the activity of writing by hand",
           "examples": [
             "She has beautiful handwriting and her letters are always neat and legible."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hardship",
       "word": "hardship",
       "senses": [
         {
-          "id": "sense-1d313124",
-          "pos": "noun",
+          "id": "sense-9c5e3d40",
+          "pos": "n.",
           "meaningZh": "艱辛；苦難",
-          "definitionEn": "a state of misfortune or affliction",
           "examples": [
             "After losing his job, John faced significant financial hardship, struggling to pay his bills and support his family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5083b671",
-          "pos": "noun",
+          "id": "sense-8859d555",
+          "pos": "n.",
           "meaningZh": "困境；磨難",
-          "definitionEn": "something that causes or entails suffering",
           "examples": [
             "After losing his job, Mark faced financial hardship and struggled to make ends meet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hardware",
       "word": "hardware",
       "senses": [
         {
-          "id": "sense-10856e11",
-          "pos": "noun",
+          "id": "sense-cd7ea72d",
+          "pos": "n.",
           "meaningZh": "硬體；電腦硬體設備",
-          "definitionEn": "the physical machines and equipment of a computer, as opposed to its programs",
           "examples": [
             "You need to upgrade your hardware to run this game smoothly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-cd2155b2",
-          "pos": "noun",
+          "id": "sense-db3f852e",
+          "pos": "n.",
           "meaningZh": "五金工具；器具",
-          "definitionEn": "instrumentalities made of metal, such as tools or implements",
           "examples": [
             "The carpenter used his hardware, including his hammer and saw, to build the wooden bookshelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f54425ae",
-          "pos": "noun",
+          "id": "sense-02c5c5c2",
+          "pos": "n.",
           "meaningZh": "軍事裝備；武器",
-          "definitionEn": "major items of military weaponry, such as tanks or missiles",
           "examples": [
             "The nation’s military hardware was on display during the parade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "harmony",
       "word": "harmony",
       "senses": [
         {
-          "id": "sense-462752c8",
-          "pos": "noun",
+          "id": "sense-1c18a7e4",
+          "pos": "n.",
           "meaningZh": "和諧；協調",
-          "definitionEn": "a harmonious state of things in general and of their properties (such as colors and sounds); congruity of parts with one another and with the whole",
           "examples": [
             "The choir sang in perfect harmony, blending their voices together to create a beautiful sound that was pleasing to the ears."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-973fa63a",
-          "pos": "noun",
+          "id": "sense-0f8612de",
+          "pos": "n.",
           "meaningZh": "和聲；樂曲和弦",
-          "definitionEn": "the structure of music with respect to the composition and progression of chords",
           "examples": [
             "The harmony of the song was so beautiful that it brought tears to her eyes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4 +1",
-        "textbookTitle": "龍騰 B4·L4、三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "harsh",
       "word": "harsh",
       "senses": [
         {
-          "id": "sense-a1914ca2",
-          "pos": "adjective",
+          "id": "sense-6dc3849e",
+          "pos": "adj.",
           "meaningZh": "刺耳的；令人不適的",
-          "definitionEn": "disagreeable to the senses; sharply disagreeable; rigorous",
           "examples": [
             "The harsh sound of the alarm clock abruptly woke him up from his deep sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7f337ac7",
-          "pos": "adjective",
+          "id": "sense-a027dfab",
+          "pos": "adj.",
           "meaningZh": "嚴厲的；苛刻的",
-          "definitionEn": "severe; unpleasantly stern",
           "examples": [
             "The teacher's harsh criticism made the student feel discouraged and humiliated."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "haste",
       "word": "haste",
       "senses": [
         {
-          "id": "sense-5b990a61",
-          "pos": "noun",
+          "id": "sense-8556f469",
+          "pos": "n.",
           "meaningZh": "急速；倉促",
-          "definitionEn": "great speed or swiftness",
           "examples": [
             "In her haste to catch the train, she forgot her suitcase on the platform."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-efb327a2",
-          "pos": "verb",
+          "id": "sense-bf6a266f",
+          "pos": "v.",
           "meaningZh": "急忙；趕緊行動",
-          "definitionEn": "to do something quickly or hurriedly",
           "examples": [
             "In her haste to catch the bus, she left her umbrella behind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hasten",
       "word": "hasten",
       "senses": [
         {
-          "id": "sense-691cddcc",
-          "pos": "verb",
+          "id": "sense-1141c1f1",
+          "pos": "v.",
           "meaningZh": "加速；催促",
-          "definitionEn": "to cause (something) to happen more quickly than it would otherwise; accelerate",
           "examples": [
             "In order to meet the deadline, they decided to hasten the construction process by working overtime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-72c84e96",
-          "pos": "verb",
+          "id": "sense-3ca86043",
+          "pos": "v.",
           "meaningZh": "趕緊；加快進度",
-          "definitionEn": "to accelerate the progress or development of something; expedite",
           "examples": [
             "The construction workers were trying to hasten the completion of the building before the rainy season started."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hatred",
       "word": "hatred",
       "senses": [
         {
-          "id": "sense-b8f24293",
-          "pos": "noun",
+          "id": "sense-15781a1f",
+          "pos": "n.",
           "meaningZh": "憎恨；仇恨",
-          "definitionEn": "a strong feeling of dislike or animosity towards someone or something; the opposite of love",
           "examples": [
             "Despite their long history of friendship, Sarah couldn't shake the feeling of hatred towards her ex-boyfriend after he betrayed her trust."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hawk",
       "word": "hawk",
       "senses": [
         {
-          "id": "sense-2d53077a",
-          "pos": "noun",
+          "id": "sense-a8ee4a92",
+          "pos": "n.",
           "meaningZh": "鷹；猛禽",
-          "definitionEn": "a bird of prey that hunts during the day, often having short, rounded wings and a long tail",
           "examples": [
             "As I walked through the forest, I spotted a majestic hawk soaring through the sky, its short wings and long tail making it easily distinguishable from other birds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-dbfe0832",
-          "pos": "noun",
+          "id": "sense-3d1aee3a",
+          "pos": "n.",
           "meaningZh": "鷹派人士；強硬派",
-          "definitionEn": "an advocate of an aggressive policy on foreign relations",
           "examples": [
             "The politician rose to power as a hawk, pushing for military intervention in multiple international conflicts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "helicopter",
       "word": "helicopter",
       "senses": [
         {
-          "id": "sense-a177fc52",
-          "pos": "noun",
+          "id": "sense-01df856a",
+          "pos": "n.",
           "meaningZh": "直升機",
-          "definitionEn": "A type of aircraft that does not have wings, but instead has long flat parts on top that rotate rapidly. Helicopters have the ability to take off and land vertically.",
           "examples": [
             "The helicopter quickly descended onto the helipad, its rotating blades creating a deafening noise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "herd",
       "word": "herd",
       "senses": [
         {
-          "id": "sense-fc376f26",
-          "pos": "noun",
+          "id": "sense-f7e9051e",
+          "pos": "n.",
           "meaningZh": "（家畜）群；畜群",
-          "definitionEn": "a group of cattle or sheep or other domestic animals of the same kind that are looked after by humans, especially for their milk or meat",
           "examples": [
             "The farmer led his herd of cows into the barn for milking."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ff830c38",
-          "pos": "noun",
+          "id": "sense-5f37eec0",
+          "pos": "n.",
           "meaningZh": "（野生動物）群",
-          "definitionEn": "a group of wild animals of one species that stay together, such as elephants or cows",
           "examples": [
             "The herd of buffalo roamed the plains of Africa."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8 +1",
-        "textbookTitle": "龍騰 B3·L8、三民 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hesitation",
       "word": "hesitation",
       "senses": [
         {
-          "id": "sense-76e030ed",
-          "pos": "noun",
+          "id": "sense-db2f6f9d",
+          "pos": "n.",
           "meaningZh": "遲疑；不情願",
-          "definitionEn": "a certain degree of unwillingness or reluctance to do something",
           "examples": [
             "After many years of hesitation, she finally decided to pursue her dream of starting her own business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-919294d2",
-          "pos": "noun",
+          "id": "sense-303b2242",
+          "pos": "n.",
           "meaningZh": "猶豫；舉棋不定",
-          "definitionEn": "indecision or delay in acting or speaking",
           "examples": [
             "After much hesitation, she finally mustered the courage to ask for a raise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1 +1",
-        "textbookTitle": "龍騰 B3·L1、三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hive",
       "word": "hive",
       "senses": [
         {
-          "id": "sense-d495f101",
-          "pos": "noun",
+          "id": "sense-4762c3b1",
+          "pos": "n.",
           "meaningZh": "蜂巢；蜂箱",
-          "definitionEn": "a structure where bees live, such as a hollow tree or man-made box",
           "examples": [
             "The beekeeper carefully examined each hive, checking for honey production and signs of disease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-50332208",
-          "pos": "noun",
+          "id": "sense-a073d078",
+          "pos": "n.",
           "meaningZh": "熙攘之地；繁忙場所",
-          "definitionEn": "a busy and crowded place, like a beehive",
           "examples": [
             "The coffee shop was a hive of activity with customers coming in and out all day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "homeland",
       "word": "homeland",
       "senses": [
         {
-          "id": "sense-394a345b",
-          "pos": "noun",
+          "id": "sense-69ae6fbb",
+          "pos": "n.",
           "meaningZh": "祖國；故鄉",
-          "definitionEn": "the country where you were born",
           "examples": [
             "She was proud to represent her homeland in the international summit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8cad6f87",
-          "pos": "noun",
+          "id": "sense-ba663127",
+          "pos": "n.",
           "meaningZh": "故土；歸屬之地",
-          "definitionEn": "the place where you feel a strong sense of belonging",
           "examples": [
             "Whenever Jane goes back to her homeland, she feels a sense of ease and comfort that she can’t find anywhere else."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "honeymoon",
       "word": "honeymoon",
       "senses": [
         {
-          "id": "sense-936661dd",
-          "pos": "noun",
+          "id": "sense-88b1bfe1",
+          "pos": "n.",
           "meaningZh": "蜜月旅行；新婚假期",
-          "definitionEn": "a holiday taken by a newly married couple",
           "examples": [
             "John and Jane went on their honeymoon to Bora Bora, where they enjoyed sunbathing on the pristine beaches and snorkeling in the crystal-clear waters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0dfbadbb",
-          "pos": "verb",
+          "id": "sense-f6000494",
+          "pos": "v.",
           "meaningZh": "度蜜月；享受新婚甜蜜",
-          "definitionEn": "to show affection towards one’s beloved, especially after marriage",
           "examples": [
             "After their wedding, John and Sarah went on a romantic honeymoon to a secluded tropical island, where they spent their days basking in the sun and enjoying each other's company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hook",
       "word": "hook",
       "senses": [
         {
-          "id": "sense-27362e60",
-          "pos": "noun",
+          "id": "sense-2cb86f54",
+          "pos": "n.",
           "meaningZh": "鉤子；掛鉤",
-          "definitionEn": "a mechanical device used for suspending, holding, or pulling something, having a curved or bent shape",
           "examples": [
             "The fisherman used a hook to catch the fish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9832cc41",
-          "pos": "verb",
+          "id": "sense-b4e5d848",
+          "pos": "v.",
           "meaningZh": "以鉤釣到；鉤住",
-          "definitionEn": "to catch with a hook",
           "examples": [
             "He spent the day fishing and managed to hook a big fish in the evening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "horizon",
       "word": "horizon",
       "senses": [
         {
-          "id": "sense-0477fb59",
-          "pos": "noun",
+          "id": "sense-95c8cc31",
+          "pos": "n.",
           "meaningZh": "地平線",
-          "definitionEn": "the line at which the sky and Earth appear to meet",
           "examples": [
             "As the sun slowly dipped below the horizon, we all sat in silence admiring the beautiful view."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "horrify",
       "word": "horrify",
       "senses": [
         {
-          "id": "sense-5c9bb670",
-          "pos": "verb",
+          "id": "sense-056b2485",
+          "pos": "v.",
           "meaningZh": "使驚嚇；使感到恐懼",
-          "definitionEn": "cause to feel horror or shock; to shock with intense dread, dismay, or shock",
           "examples": [
             "The gruesome scene in the horror movie will horrify even the bravest of viewers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9 +1",
-        "textbookTitle": "龍騰 B1·L9、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "hose",
+      "word": "hose",
+      "senses": [
+        {
+          "id": "sense-e84c32c0",
+          "pos": "n.",
+          "meaningZh": "水管；軟管",
+          "examples": [
+            "He used a garden hose to water the plants."
+          ]
+        },
+        {
+          "id": "sense-74f9c945",
+          "pos": "v.",
+          "meaningZh": "以水管澆水；用水管沖洗",
+          "examples": [
+            "I use the hose to water my garden every morning."
+          ]
+        },
+        {
+          "id": "sense-1d35d354",
+          "pos": "n.",
+          "meaningZh": "褲襪；絲襪（統稱）",
+          "examples": [
+            "Mary reached into her drawer and pulled out a pair of black hose to wear with her cocktail dress."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "household",
+      "word": "household",
+      "senses": [
+        {
+          "id": "sense-e715a8ba",
+          "pos": "n.",
+          "meaningZh": "家庭；同住成員",
+          "examples": [
+            "The household consisted of a married couple, their two children, and the husband’s elderly mother."
+          ]
+        },
+        {
+          "id": "sense-50e6ad97",
+          "pos": "n.",
+          "meaningZh": "家戶；家庭單位",
+          "examples": [
+            "My household consists of my parents, my siblings, and me."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "housework",
+      "word": "housework",
+      "senses": [
+        {
+          "id": "sense-d133bf3b",
+          "pos": "n.",
+          "meaningZh": "家務；家事",
+          "examples": [
+            "After coming back from work, Jennifer does the housework such as washing dishes, doing laundry, and sweeping the floor."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "humanity",
+      "word": "humanity",
+      "senses": [
+        {
+          "id": "sense-87d54294",
+          "pos": "n.",
+          "meaningZh": "人性；作為人的本質",
+          "examples": [
+            "The kindness they showed towards the refugees exemplifies the true humanity and compassion of our society."
+          ]
+        },
+        {
+          "id": "sense-3c766cc2",
+          "pos": "n.",
+          "meaningZh": "人情味；悲憫之心",
+          "examples": [
+            "The humanity of the volunteers who rushed to help the victims of the natural disaster was truly inspiring."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "humidity",
+      "word": "humidity",
+      "senses": [
+        {
+          "id": "sense-c79f3157",
+          "pos": "n.",
+          "meaningZh": "濕度；空氣含水量",
+          "examples": [
+            "The high humidity made the summer afternoon feel sticky and uncomfortable."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1369 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 151,
   "words": [
-    {
-      "wordKey": "obligation",
-      "word": "obligation",
-      "senses": [
-        {
-          "id": "sense-167eb611",
-          "pos": "noun",
-          "meaningZh": "義務；責任",
-          "definitionEn": "the state of being obligated to do or pay something",
-          "examples": [
-            "John felt a strong obligation to take care of his aging parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-003a43c6",
-          "pos": "noun",
-          "meaningZh": "恩義；虧欠感",
-          "definitionEn": "a personal relation in which one is indebted for a service or favor",
-          "examples": [
-            "After receiving a substantial loan from her friend, Sarah felt a strong obligation to repay the debt as soon as possible."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "obscure",
-      "word": "obscure",
-      "senses": [
-        {
-          "id": "sense-2f089016",
-          "pos": "adjective",
-          "meaningZh": "默默無聞的；鮮為人知的",
-          "definitionEn": "not well known or common",
-          "examples": [
-            "The small town is so obscure that most people have never heard of it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-a8eb13a8",
-          "pos": "adjective",
-          "meaningZh": "晦澀難懂的；模糊的",
-          "definitionEn": "difficult to understand or unclear",
-          "examples": [
-            "The professor's lecture on quantum mechanics was so obscure, most of the students had no idea what he was talking about."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "observer",
-      "word": "observer",
-      "senses": [
-        {
-          "id": "sense-6690fe5d",
-          "pos": "noun",
-          "meaningZh": "觀察者；目擊者",
-          "definitionEn": "someone who watches or notices something",
-          "examples": [
-            "As an observer, she carefully noted every detail of the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-59245d64",
-          "pos": "noun",
-          "meaningZh": "評論員；觀察員",
-          "definitionEn": "an expert who observes and comments on something",
-          "examples": [
-            "During the scientific conference, the esteemed observer meticulously analyzed the research findings and provided insightful comments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "odds",
-      "word": "odds",
-      "senses": [
-        {
-          "id": "sense-f90b1a25",
-          "pos": "noun",
-          "meaningZh": "機率；可能性",
-          "definitionEn": "the likelihood of a thing occurring rather than not occurring",
-          "examples": [
-            "The odds of winning the lottery are extremely low, but someone has to win eventually."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-3cff9497",
-          "pos": "noun",
-          "meaningZh": "賠率；博彩比率",
-          "definitionEn": "the ratio by which one better’s wager is greater than that of another",
-          "examples": [
-            "The odds of winning the lottery are one in a million."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "offering",
-      "word": "offering",
-      "senses": [
-        {
-          "id": "sense-8b678cc4",
-          "pos": "noun",
-          "meaningZh": "提案；產品方案",
-          "definitionEn": "something that is offered or given as a gift or a proposal",
-          "examples": [
-            "The company announced a new offering of shares in order to raise capital for their upcoming projects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-67e00a66",
-          "pos": "noun",
-          "meaningZh": "奉獻；捐款",
-          "definitionEn": "money that is given to a religious organization",
-          "examples": [
-            "The priest collected the offering during the church service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "olive",
       "word": "olive",
       "senses": [
         {
-          "id": "sense-00095742",
-          "pos": "noun",
+          "id": "sense-66aeda5a",
+          "pos": "n.",
           "meaningZh": "橄欖；油橄欖",
-          "definitionEn": "a type of small egg-shaped fruit that grows on trees in Mediterranean countries and is used for making oil and as food",
           "examples": [
             "Maria added some sliced olives to her salad for extra flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a6b80c53",
-          "pos": "adjective",
+          "id": "sense-db0e0af5",
+          "pos": "adj.",
           "meaningZh": "橄欖色的；黃綠色的",
-          "definitionEn": "having a yellow-green color similar to an unripe olive",
           "examples": [
             "The painter used olive hues to capture the unripe grass in the early morning light."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "operational",
       "word": "operational",
       "senses": [
         {
-          "id": "sense-e14495b3",
-          "pos": "adjective",
+          "id": "sense-bada024f",
+          "pos": "adj.",
           "meaningZh": "運作上的；操作的",
-          "definitionEn": "connected with the way in which a business, machine, system, etc. works",
           "examples": [
             "The new computer system has greatly improved the operational efficiency of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d8d98e22",
-          "pos": "adjective",
+          "id": "sense-31feecf6",
+          "pos": "adj.",
           "meaningZh": "可運作的；就緒的",
-          "definitionEn": "ready to be used",
           "examples": [
             "The new factory is now fully operational, and production can begin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "opponent",
       "word": "opponent",
       "senses": [
         {
-          "id": "sense-fbb36181",
-          "pos": "noun",
+          "id": "sense-8efd4759",
+          "pos": "n.",
           "meaningZh": "對手；競爭者",
-          "definitionEn": "a person or group that one is against in a competition, contest, or debate",
           "examples": [
             "In the chess tournament, John's toughest opponent was Emma, who had won several championships in the past."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1b9beb08",
-          "pos": "adjective",
+          "id": "sense-9e4a2cc2",
+          "pos": "adj.",
           "meaningZh": "對立的；抵抗的",
-          "definitionEn": "actively resisting or competing against something or someone",
           "examples": [
             "In the boxing match, Mike faced a formidable opponent who refused to back down."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "opposition",
       "word": "opposition",
       "senses": [
         {
-          "id": "sense-88174827",
-          "pos": "noun",
+          "id": "sense-6eba914b",
+          "pos": "n.",
           "meaningZh": "對手；反對勢力",
-          "definitionEn": "a contestant that you are matched against",
           "examples": [
             "The game ended in a tie due to strong opposition from the other team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "opt",
       "word": "opt",
       "senses": [
         {
-          "id": "sense-b60e1f4c",
-          "pos": "verb",
+          "id": "sense-38589b8d",
+          "pos": "v.",
           "meaningZh": "選擇；決定採用",
-          "definitionEn": "To choose or select something as an alternative over another option.",
           "examples": [
             "I was initially going to watch a movie, but I decided to opt for a walk in the park instead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "optimism",
       "word": "optimism",
       "senses": [
         {
-          "id": "sense-f3dfaf1d",
-          "pos": "noun",
+          "id": "sense-275a9dfd",
+          "pos": "n.",
           "meaningZh": "樂觀主義；樂觀態度",
-          "definitionEn": "a general disposition to expect the best in all things",
           "examples": [
             "Despite the setbacks, John approached his project with optimism, convinced that he could make it a success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1a967abb",
-          "pos": "noun",
+          "id": "sense-a1dd6b1b",
+          "pos": "n.",
           "meaningZh": "樂觀情緒；積極心態",
-          "definitionEn": "the optimistic feeling that all is going to turn out well",
           "examples": [
             "Even though the project faced multiple challenges, we approached it with optimism and eventually succeeded beyond our expectations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5 +1",
-        "textbookTitle": "三民 B2·L5、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "optional",
       "word": "optional",
       "senses": [
         {
-          "id": "sense-3fb95a2f",
-          "pos": "adjective",
+          "id": "sense-724a9a43",
+          "pos": "adj.",
           "meaningZh": "可選的；非強制的",
-          "definitionEn": "left to personal choice; possible but not necessary",
           "examples": [
             "Attending the optional seminar is up to you, but it may provide valuable insights."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "orchard",
       "word": "orchard",
       "senses": [
         {
-          "id": "sense-adb7577e",
-          "pos": "noun",
+          "id": "sense-5cf7b436",
+          "pos": "n.",
           "meaningZh": "果園；堅果園",
-          "definitionEn": "a piece of land planted with fruit trees or nut trees",
           "examples": [
             "The farmer spent most of his day tending to the apple trees in his orchard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "organism",
       "word": "organism",
       "senses": [
         {
-          "id": "sense-8d91b56c",
-          "pos": "noun",
+          "id": "sense-fc63b4f8",
+          "pos": "n.",
           "meaningZh": "生物；有機體",
-          "definitionEn": "a living thing that can function on its own and grow",
           "examples": [
             "The cells of a single-celled organism, such as an amoeba, are capable of living, functioning, and growing independently."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b47af99a",
-          "pos": "noun",
+          "id": "sense-f717539e",
+          "pos": "n.",
           "meaningZh": "有機整體；類生命組織",
-          "definitionEn": "a system, such as an organization or society, that functions together as a whole and is similar to a living body in structure and function",
           "examples": [
             "A successful business is like an organism, each department acting as a vital organ working together to achieve a common goal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "originality",
       "word": "originality",
       "senses": [
         {
-          "id": "sense-cff2ae53",
-          "pos": "noun",
+          "id": "sense-a30b755f",
+          "pos": "n.",
           "meaningZh": "創意；獨創性",
-          "definitionEn": "the quality of being new and original (not derived from something else)",
           "examples": [
             "The designer’s collection showcased remarkable originality in its use of unconventional fabrics and patterns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6e791311",
-          "pos": "noun",
+          "id": "sense-ccf94915",
+          "pos": "n.",
           "meaningZh": "獨立思考能力；創新能力",
-          "definitionEn": "the ability to think and act independently",
           "examples": [
             "The artist showed great originality in his work, incorporating unique techniques and styles that set him apart from his peers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outfit",
       "word": "outfit",
       "senses": [
         {
-          "id": "sense-f1e84b94",
-          "pos": "noun",
+          "id": "sense-42592e38",
+          "pos": "n.",
           "meaningZh": "套裝；整套服裝",
-          "definitionEn": "a coordinated set of garments or accessories",
           "examples": [
             "She spent the morning putting together the perfect outfit for her job interview, complete with matching shoes and a scarf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ba49a1eb",
-          "pos": "noun",
+          "id": "sense-4a5757cf",
+          "pos": "n.",
           "meaningZh": "裝備；配備",
-          "definitionEn": "a group of items or equipment necessary for a particular purpose",
           "examples": [
             "Before going on a hike, you must prepare the right outfit which includes hiking boots, a hat, sunscreen, and a backpack."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outlet",
       "word": "outlet",
       "senses": [
         {
-          "id": "sense-bff15463",
-          "pos": "noun",
+          "id": "sense-abfdbfdb",
+          "pos": "n.",
           "meaningZh": "出口；發洩管道",
-          "definitionEn": "activity that frees or expresses creative energy or emotion",
           "examples": [
             "After a long day at work, painting has become her favorite outlet to release stress and express her emotions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-19b7d53a",
-          "pos": "noun",
+          "id": "sense-ffc64f42",
+          "pos": "n.",
           "meaningZh": "暢貨中心；零售店",
-          "definitionEn": "a place of business for retailing goods",
           "examples": [
             "John went to the outlet to buy a new pair of sneakers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "output",
       "word": "output",
       "senses": [
         {
-          "id": "sense-6983db37",
-          "pos": "noun",
+          "id": "sense-22e3c5cf",
+          "pos": "n.",
           "meaningZh": "產量；產出量",
-          "definitionEn": "the quantity of something that is produced within a given time period (usually of a commodity)",
           "examples": [
             "The output of the factory significantly increased after upgrading their machinery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3c7a80b9",
-          "pos": "noun",
+          "id": "sense-703f0611",
+          "pos": "n.",
           "meaningZh": "產品；成品",
-          "definitionEn": "the final product; the things that are produced",
           "examples": [
             "The output of the factory was over 100 units of the product per day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outsider",
       "word": "outsider",
       "senses": [
         {
-          "id": "sense-8aad3e25",
-          "pos": "noun",
+          "id": "sense-24dae371",
+          "pos": "n.",
           "meaningZh": "局外人；外人",
-          "definitionEn": "someone who is not part of a group or community",
           "examples": [
             "As an outsider, he struggled to find a place to fit in at the new school."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ebd29b3f",
-          "pos": "noun",
+          "id": "sense-dffde6eb",
+          "pos": "n.",
           "meaningZh": "冷門選手；非熱門者",
-          "definitionEn": "a person or animal not expected to win a competition",
           "examples": [
             "The up-and-coming team was seen as outsiders in the playoffs, but they defied expectations and made it to the finals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overall",
       "word": "overall",
       "senses": [
         {
-          "id": "sense-a3130a38",
-          "pos": "adjective",
+          "id": "sense-e5e2f206",
+          "pos": "adj.",
           "meaningZh": "整體的；全面的",
-          "definitionEn": "involving main features including everything",
           "examples": [
             "The overall outcome of the project was a success, as it met all the objectives and encompassed every aspect that was initially planned."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f49eada3",
-          "pos": "noun",
+          "id": "sense-37209e47",
+          "pos": "n.",
           "meaningZh": "工作服；吊帶褲",
-          "definitionEn": "work clothing consisting of denim trousers (usually with a bib and shoulder straps), usually in plural",
           "examples": [
             "The mechanic wore a pair of overalls while repairing the car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overhead",
       "word": "overhead",
       "senses": [
         {
-          "id": "sense-6b1c54d2",
-          "pos": "adjective",
+          "id": "sense-931958fe",
+          "pos": "adj.",
           "meaningZh": "頭頂的；高架的",
-          "definitionEn": "situated or coming from a higher position",
           "examples": [
             "The helicopter flew overhead, providing an aerial view of the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d9ae1b7c",
-          "pos": "noun",
+          "id": "sense-7d254d68",
+          "pos": "n.",
           "meaningZh": "（船艙）頂部；艙頂",
-          "definitionEn": "(nautical) the top part of an enclosed space on a ship",
           "examples": [
             "As the captain shouted commands from the overhead, the crew swiftly carried out their tasks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oversee",
       "word": "oversee",
       "senses": [
         {
-          "id": "sense-9dc74580",
-          "pos": "verb",
+          "id": "sense-5f491901",
+          "pos": "v.",
           "meaningZh": "監督；監管",
-          "definitionEn": "to watch or organize a job or an activity to make certain that it is being done correctly.",
           "examples": [
             "As the project manager, it was my responsibility to oversee the construction of the new office building and ensure that all tasks were completed on time and according to the specifications."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-66f93307",
-          "pos": "verb",
+          "id": "sense-42f52b9e",
+          "pos": "v.",
           "meaningZh": "督導；稽查",
-          "definitionEn": "to watch an activity to ensure that it is being done correctly and in accordance with the law.",
           "examples": [
             "As a project manager, it was my responsibility to oversee the construction process and make sure all safety regulations were followed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overtake",
       "word": "overtake",
       "senses": [
         {
-          "id": "sense-8f36fd6e",
-          "pos": "verb",
+          "id": "sense-cc50f367",
+          "pos": "v.",
           "meaningZh": "超越；超車",
-          "definitionEn": "catch up with and possibly overtake",
           "examples": [
             "The blue car was able to overtake the red car during the final lap of the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cb0bc8a3",
-          "pos": "verb",
+          "id": "sense-31f9a60a",
+          "pos": "v.",
           "meaningZh": "壓倒；突然侵襲",
-          "definitionEn": "overcome, as with emotions or perceptual stimuli",
           "examples": [
             "After the breakup, Sarah was overtaken by feelings of sadness and hopelessness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overturn",
       "word": "overturn",
       "senses": [
         {
-          "id": "sense-e3f6e88b",
-          "pos": "noun",
+          "id": "sense-165ccb13",
+          "pos": "n.",
           "meaningZh": "翻覆；顛覆",
-          "definitionEn": "the act of overturning or the state of being overturned",
           "examples": [
             "The strong winds caused the boat to overturn, throwing its passengers into the water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bd18d9d7",
-          "pos": "verb",
+          "id": "sense-ddc833f2",
+          "pos": "v.",
           "meaningZh": "撤銷；推翻（判決）",
-          "definitionEn": "to change a legal decision, usually by a higher court",
           "examples": [
             "The Supreme Court overturned the lower court's ruling, declaring the defendant innocent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overwhelm",
       "word": "overwhelm",
       "senses": [
         {
-          "id": "sense-a2ce7f97",
-          "pos": "verb",
+          "id": "sense-6e7ef2c2",
+          "pos": "v.",
           "meaningZh": "壓倒；徹底擊潰",
-          "definitionEn": "to defeat someone or something completely and decisively, especially in a way that is demoralizing.",
           "examples": [
             "In the final match, the home team's strong offense completely overwhelmed their opponents, resulting in a devastating 6-0 victory!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2de451c6",
-          "pos": "verb",
+          "id": "sense-aa4e0419",
+          "pos": "v.",
           "meaningZh": "使不堪負荷；淹沒",
-          "definitionEn": "to give someone more things or work than they can deal with.",
           "examples": [
             "The boss overwhelmed his employees by assigning them multiple high-priority projects with tight deadlines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "parallel",
       "word": "parallel",
       "senses": [
         {
-          "id": "sense-ce6ce3c2",
-          "pos": "adjective",
+          "id": "sense-d8488b2c",
+          "pos": "adj.",
           "meaningZh": "平行的；不相交的",
-          "definitionEn": "Being everywhere equidistant and not intersecting",
           "examples": [
             "The train tracks ran parallel to the highway, but they never crossed each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b00fb67d",
-          "pos": "noun",
+          "id": "sense-30a62131",
+          "pos": "n.",
           "meaningZh": "緯線；緯度圈",
-          "definitionEn": "An imaginary line around the Earth parallel to the equator",
           "examples": [
             "The Equator is a parallel that circles Earth at 0 degrees latitude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "participant",
       "word": "participant",
       "senses": [
         {
-          "id": "sense-531b3bae",
-          "pos": "noun",
+          "id": "sense-21991dba",
+          "pos": "n.",
           "meaningZh": "參與者；參加者",
-          "definitionEn": "someone who takes part in an activity",
           "examples": [
             "In the marathon, John was an enthusiastic participant, running alongside thousands of other runners."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b8366c18",
-          "pos": "noun",
+          "id": "sense-66c5919c",
+          "pos": "n.",
           "meaningZh": "競賽者；選手",
-          "definitionEn": "a person who participates in or is skilled at some game or competition",
           "examples": [
             "John was an excellent participant in the chess tournament, showcasing his strategic skills and ability to think several moves ahead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "particle",
       "word": "particle",
       "senses": [
         {
-          "id": "sense-ec191b26",
-          "pos": "noun",
+          "id": "sense-15c99fa6",
+          "pos": "n.",
           "meaningZh": "微粒；粒子",
-          "definitionEn": "a tiny piece or a small amount of anything",
           "examples": [
             "The scientist observed the particle under the microscope."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-952bbb60",
-          "pos": "noun",
+          "id": "sense-4b3cc9e0",
+          "pos": "n.",
           "meaningZh": "基本粒子；次原子粒子",
-          "definitionEn": "a subatomic particle that has mass but occupies very little space and is a fundamental constituent of matter",
           "examples": [
             "In the Large Hadron Collider, scientists study the behavior of particles at high speeds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "partly",
       "word": "partly",
       "senses": [
         {
-          "id": "sense-68d94c01",
-          "pos": "adverb",
+          "id": "sense-7c3041ce",
+          "pos": "adv.",
           "meaningZh": "部分地；在某種程度上",
-          "definitionEn": "to some extent or in some degree; not completely; partially",
           "examples": [
             "She was partly responsible for the success of the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "passionate",
       "word": "passionate",
       "senses": [
         {
-          "id": "sense-480e8184",
-          "pos": "adjective",
+          "id": "sense-ea66a34e",
+          "pos": "adj.",
           "meaningZh": "充滿熱情的；熱切的",
-          "definitionEn": "demonstrating or characterized by intense feelings of enthusiasm, eagerness, or devotion",
           "examples": [
             "She gave a passionate speech, convincing the audience to take action against climate change."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pastry",
+      "word": "pastry",
+      "senses": [
+        {
+          "id": "sense-8a0372d0",
+          "pos": "n.",
+          "meaningZh": "糕點；烘焙點心",
+          "examples": [
+            "I picked up a flaky pastry from the bakery for breakfast."
+          ]
+        },
+        {
+          "id": "sense-061bacbb",
+          "pos": "n.",
+          "meaningZh": "酥皮麵團；糕餅皮",
+          "examples": [
+            "She made delicious pastries filled with fruit and whipped cream."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "patch",
+      "word": "patch",
+      "senses": [
+        {
+          "id": "sense-96b2d994",
+          "pos": "n.",
+          "meaningZh": "補丁；小塊（土地）",
+          "examples": [
+            "She sewed a patch over the hole in his jeans."
+          ]
+        },
+        {
+          "id": "sense-4ef3ecc8",
+          "pos": "n.",
+          "meaningZh": "一段時間；短暫期間",
+          "examples": [
+            "During the patch of heavy rain, we decided to stay indoors and play board games."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "patent",
+      "word": "patent",
+      "senses": [
+        {
+          "id": "sense-d024eb07",
+          "pos": "n.",
+          "meaningZh": "專利；專利證書",
+          "examples": [
+            "Inventors can apply for a patent to protect their idea or invention from being copied or stolen by others."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pathetic",
+      "word": "pathetic",
+      "senses": [
+        {
+          "id": "sense-4309d2e1",
+          "pos": "adj.",
+          "meaningZh": "可悲的；令人憐憫的",
+          "examples": [
+            "The pathetic sight of a grown man crying over spilt milk was quite embarrassing for everyone in the room."
+          ]
+        },
+        {
+          "id": "sense-45b9c877",
+          "pos": "adj.",
+          "meaningZh": "可憐又可鄙的；窩囊的",
+          "examples": [
+            "The once majestic lion in the zoo looked pathetic with its matted fur and sunken eyes, causing visitors to feel both contempt and pity for the once-great animal."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "patrol",
+      "word": "patrol",
+      "senses": [
+        {
+          "id": "sense-b517f43b",
+          "pos": "n.",
+          "meaningZh": "巡邏；巡視",
+          "examples": [
+            "The security guard went on a patrol around the building to check for any signs of trespassing or suspicious activity."
+          ]
+        },
+        {
+          "id": "sense-c51abe31",
+          "pos": "n.",
+          "meaningZh": "巡邏隊；哨兵組",
+          "examples": [
+            "The police set up a patrol to ensure the safety of the neighborhood during the night."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

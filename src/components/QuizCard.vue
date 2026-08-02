@@ -27,9 +27,9 @@ const answered = ref(false)
 const feedbackClass = ref('')
 const question = computed(() => props.entry.question!)
 
-const answerText = computed(() => question.value.opts[question.value.ans])
+const answerText = computed(() => question.value.options[question.value.answerIndex])
 const promptParts = computed(() => question.value.prompt.split('_____'))
-const hasBlank = computed(() => question.value.prompt.includes('_____'))
+const hasBlank = computed(() => question.value.questionType === 'fillBlank')
 
 watch(
   () => props.draft?.selectedIndex,
@@ -49,7 +49,7 @@ function choose(index: number) {
     return
   answered.value = true
   selectedIndex.value = index
-  const correct = index === question.value.ans
+  const correct = index === question.value.answerIndex
   feedbackClass.value = correct ? 'feedback-correct' : 'feedback-wrong'
   emit('draft-change', { selectedIndex: index })
 }
@@ -67,7 +67,7 @@ function skip() {
 }
 
 function optionClass(index: number) {
-  const isCorrect = index === question.value.ans
+  const isCorrect = index === question.value.answerIndex
   const isSelected = index === selectedIndex.value
 
   return cn(
@@ -128,9 +128,14 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
         </p>
         <p>{{ entry.readingPassage }}</p>
       </div>
-      <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
-        {{ $t('practice.quizPromptLabel') }}
-      </p>
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
+          {{ $t('practice.quizPromptLabel') }}
+        </p>
+        <span class="text-xs font-extrabold text-accent-primary">
+          {{ $t('practice.difficultyLabel', { difficulty: $t(`library.difficulty${question.difficulty}`) }) }}
+        </span>
+      </div>
       <p class="mt-3 text-[15px] leading-relaxed text-ink-950 dark:text-ink-50 font-bold sm:text-base">
         <template v-if="!answered && hasBlank">
           {{ promptParts[0] }}
@@ -148,7 +153,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 
     <div class="mt-6 grid gap-3 sm:grid-cols-2">
       <button
-        v-for="(option, optionIndex) in question.opts"
+        v-for="(option, optionIndex) in question.options"
         :key="`${optionIndex}`"
         type="button"
         :class="optionClass(optionIndex)"
@@ -172,12 +177,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       role="status"
       aria-live="polite"
     >
-      <p class="text-sm font-extrabold" :class="[selectedIndex === question.ans ? 'text-emerald-600 dark:text-emerald-400' : selectedIndex == null ? 'text-ink-500' : 'text-red-500']">
-        {{ selectedIndex === question.ans ? $t('result.correct') : selectedIndex == null ? $t('result.skipped') : $t('result.wrong') }}
+      <p class="text-sm font-extrabold" :class="[selectedIndex === question.answerIndex ? 'text-emerald-600 dark:text-emerald-400' : selectedIndex == null ? 'text-ink-500' : 'text-red-500']">
+        {{ selectedIndex === question.answerIndex ? $t('result.correct') : selectedIndex == null ? $t('result.skipped') : $t('result.wrong') }}
       </p>
       <p class="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-400">
         {{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400"> {{ answerText }}</span>。
-        <span class="block mt-2 font-semibold text-ink-950 dark:text-ink-50">{{ entry.item.meaning }}</span>
+        <span v-if="question.questionType !== 'reading'" class="block mt-2 font-semibold text-ink-950 dark:text-ink-50">{{ entry.item.meaning }}</span>
       </p>
     </div>
 

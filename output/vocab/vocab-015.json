@@ -1,1406 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 15,
   "words": [
-    {
-      "wordKey": "inch",
-      "word": "inch",
-      "senses": [
-        {
-          "id": "sense-70033770",
-          "pos": "noun",
-          "meaningZh": "英寸；吋",
-          "definitionEn": "a unit of length equal to one-twelfth of a foot",
-          "examples": [
-            "She measured the fabric and found it to be 10 inches long."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-bf318b2a",
-          "pos": "noun",
-          "meaningZh": "一小段距離；極短距離",
-          "definitionEn": "a small distance",
-          "examples": [
-            "He only had an inch of space left in his suitcase for souvenirs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "insect",
       "word": "insect",
       "senses": [
         {
-          "id": "sense-f68f0db3",
-          "pos": "noun",
+          "id": "sense-6e1fda6f",
+          "pos": "n.",
           "meaningZh": "昆蟲",
-          "definitionEn": "a small air-breathing arthropod that has three pairs of legs and typically one or two pairs of wings",
           "examples": [
             "While hiking in the forest, I spotted a colorful butterfly, an exquisite insect with delicate wings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4c334c1c",
-          "pos": "noun",
+          "id": "sense-e58cb818",
+          "pos": "n.",
           "meaningZh": "卑鄙小人",
-          "definitionEn": "a person who has a nasty or unethical character undeserving of respect",
           "examples": [
             "Despite his charming demeanor, John turned out to be a real insect, cheating his colleagues out of their money."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inside",
       "word": "inside",
       "senses": [
         {
-          "id": "sense-d8240b58",
-          "pos": "noun",
+          "id": "sense-c719340c",
+          "pos": "n.",
           "meaningZh": "內部；裡面",
-          "definitionEn": "the region that is inside of something",
           "examples": [
             "She found her keys inside the pocket of her jacket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-98beeddf",
-          "pos": "noun",
+          "id": "sense-35918973",
+          "pos": "n.",
           "meaningZh": "內側；內壁",
-          "definitionEn": "the inner or enclosed surface of something",
           "examples": [
             "The chocolate was melted on the inside, creating a gooey center."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "interest",
       "word": "interest",
       "senses": [
         {
-          "id": "sense-34c7e07e",
-          "pos": "noun",
+          "id": "sense-344acafe",
+          "pos": "n.",
           "meaningZh": "興趣；關切",
-          "definitionEn": "a reason for wanting something done",
           "examples": [
             "The potential buyer's interest in the product was evident from their numerous inquiries and requests for more information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "interested",
       "word": "interested",
       "senses": [
         {
-          "id": "sense-2f06a810",
-          "pos": "adjective",
+          "id": "sense-f8f73aa2",
+          "pos": "adj.",
           "meaningZh": "感興趣；好奇",
-          "definitionEn": "having or showing interest, especially curiosity, fascination, or concern",
           "examples": [
             "Sarah was very interested in astronomy and would spend hours stargazing every night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a71ae4b7",
-          "pos": "adjective",
+          "id": "sense-1ef83ded",
+          "pos": "adj.",
           "meaningZh": "有利害關係；有切身關聯",
-          "definitionEn": "involved in, affected by, having a claim to, or share in",
           "examples": [
             "As a shareholder, I am interested in the company's financial performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "interesting",
       "word": "interesting",
       "senses": [
         {
-          "id": "sense-1f803d1c",
-          "pos": "adjective",
+          "id": "sense-ebe72068",
+          "pos": "adj.",
           "meaningZh": "有趣；吸引人",
-          "definitionEn": "arousing or holding the attention",
           "examples": [
             "The novel was so interesting that I couldn't put it down until I finished it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a24fbd66",
-          "pos": "adjective",
+          "id": "sense-e0a364ba",
+          "pos": "adj.",
           "meaningZh": "引人好奇；耐人尋味",
-          "definitionEn": "provoking curiosity or interest; puzzling",
           "examples": [
             "The plot twist in the movie was so unexpected and interesting that it kept the audience on the edge of their seats."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "interview",
       "word": "interview",
       "senses": [
         {
-          "id": "sense-3943c490",
-          "pos": "noun",
+          "id": "sense-6aace338",
+          "pos": "n.",
           "meaningZh": "訪談；面試",
-          "definitionEn": "a conversation or meeting between a journalist, employer, or other person seeking information, and someone who is willing to give information about themselves, their work, or their opinions",
           "examples": [
             "During the job interview, the candidate was asked about their previous work experience and how it relates to the role they were applying for."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f2ba62f1",
-          "pos": "verb",
+          "id": "sense-8c2736a8",
+          "pos": "v.",
           "meaningZh": "採訪；面試",
-          "definitionEn": "meet with (someone) to ask them questions and discuss something for the purposes of gathering information, evaluating their suitability for a job, or conducting a media report",
           "examples": [
             "The journalist conducted an interview with the movie star to gather insights about their latest film."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "into",
       "word": "into",
       "senses": [
         {
-          "id": "sense-c797419a",
-          "pos": "preposition",
+          "id": "sense-ceadc57b",
+          "pos": "prep.",
           "meaningZh": "進入；到…裡面",
-          "definitionEn": "used to indicate movement or direction toward the inside of something and about to be contained, surrounded, or enclosed by it",
           "examples": [
             "She stepped into the elevator and pressed the button for the top floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5a86f4dc",
-          "pos": "preposition",
+          "id": "sense-3c9f4211",
+          "pos": "prep.",
           "meaningZh": "投入；涉入",
-          "definitionEn": "connected with or involved in a particular condition or activity",
           "examples": [
             "She jumped into the pool with great enthusiasm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "invite",
       "word": "invite",
       "senses": [
         {
-          "id": "sense-14f15013",
-          "pos": "verb",
+          "id": "sense-433dfb5e",
+          "pos": "v.",
           "meaningZh": "邀請；招待",
-          "definitionEn": "to ask someone in a friendly manner to do something",
           "examples": [
             "I would like to invite you to my party next weekend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a573063a",
-          "pos": "verb",
+          "id": "sense-e57578bf",
+          "pos": "v.",
           "meaningZh": "邀請出席；招請",
-          "definitionEn": "to request the attendance or presence of someone at an event or place",
           "examples": [
             "I would like to invite you to my wedding next month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "island",
       "word": "island",
       "senses": [
         {
-          "id": "sense-0713fee4",
-          "pos": "noun",
+          "id": "sense-e2258a8c",
+          "pos": "n.",
           "meaningZh": "島嶼",
-          "definitionEn": "a land mass surrounded by water and smaller than a continent",
           "examples": [
             "After a long day of hiking, they set up camp on a secluded island in the middle of the lake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ce99fbe0",
-          "pos": "noun",
+          "id": "sense-9a7f2c38",
+          "pos": "n.",
           "meaningZh": "孤立地帶；如島之處",
-          "definitionEn": "an area that is isolated or resembles an island",
           "examples": [
             "During the storm, heavy flooding turned our neighborhood into an island, with water completely surrounding us."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "item",
       "word": "item",
       "senses": [
         {
-          "id": "sense-60514a62",
-          "pos": "noun",
+          "id": "sense-6038c1c6",
+          "pos": "n.",
           "meaningZh": "物品；條目",
-          "definitionEn": "a whole individual unit; especially when included in a list or collection",
           "examples": [
             "She added the item to her grocery list. The museum has an impressive item collection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-05d0ff41",
-          "pos": "noun",
+          "id": "sense-cba40025",
+          "pos": "n.",
           "meaningZh": "（清單上的）項目；細項",
-          "definitionEn": "a distinct part that can be specified separately in a group of things that could be enumerated on a list",
           "examples": [
             "Please make a list of all the items that you want to purchase from the grocery store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jacket",
       "word": "jacket",
       "senses": [
         {
-          "id": "sense-b829ac59",
-          "pos": "noun",
+          "id": "sense-0b6b9579",
+          "pos": "n.",
           "meaningZh": "夾克；短外套",
-          "definitionEn": "a short coat",
           "examples": [
             "He wore a jacket to stay warm in the cold weather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f94e06bd",
-          "pos": "noun",
+          "id": "sense-27dda65d",
+          "pos": "n.",
           "meaningZh": "外殼；包覆層",
-          "definitionEn": "an outer wrapping or casing",
           "examples": [
             "He threw on his jacket to protect himself from the cold wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "jeans",
-      "word": "jeans",
-      "senses": [
-        {
-          "id": "sense-41e1275d",
-          "pos": "plural noun",
-          "meaningZh": "牛仔褲",
-          "definitionEn": "pants made of strong, cotton cloth called denim",
-          "examples": [
-            "She wore a pair of jeans and a casual t-shirt to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "job",
       "word": "job",
       "senses": [
         {
-          "id": "sense-96277762",
-          "pos": "noun",
+          "id": "sense-71651eca",
+          "pos": "n.",
           "meaningZh": "工作；職業",
-          "definitionEn": "a paid position of regular employment",
           "examples": [
             "She got a new job at the hospital."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f62798c2",
-          "pos": "noun",
+          "id": "sense-26aead3a",
+          "pos": "n.",
           "meaningZh": "任務；職責",
-          "definitionEn": "a task or piece of work, especially one done as part of one's duties",
           "examples": [
             "Cleaning the kitchen is your job today."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "join",
       "word": "join",
       "senses": [
         {
-          "id": "sense-fb3250a9",
-          "pos": "verb",
+          "id": "sense-713b1f80",
+          "pos": "v.",
           "meaningZh": "加入；參加",
-          "definitionEn": "to become a member of a group, organization, or activity",
           "examples": [
             "She decided to join the school basketball team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c87376b6",
-          "pos": "noun",
+          "id": "sense-933a1c2a",
+          "pos": "n.",
           "meaningZh": "接合處；連接方式",
-          "definitionEn": "the shape or manner in which things come together and a connection is made",
           "examples": [
             "After winning the championship game, the team celebrated by performing a traditional dance to join the community and show their gratitude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9685c425",
-          "pos": "noun",
+          "id": "sense-87a28409",
+          "pos": "n.",
           "meaningZh": "聯集（數學）",
-          "definitionEn": "a set containing all and only the members of two or more given sets",
           "examples": [
             "The intersection of sets A and B formed the join of the two sets, resulting in a set that contains only those elements that were present in both A and B."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "joke",
       "word": "joke",
       "senses": [
         {
-          "id": "sense-0db943ce",
-          "pos": "verb",
+          "id": "sense-f8d9cff5",
+          "pos": "v.",
           "meaningZh": "說笑；開玩笑",
-          "definitionEn": "to say amusing or playful things",
           "examples": [
             "During the party, John stood up and joked about his embarrassing moment from earlier in the day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-81854ed7",
-          "pos": "noun",
+          "id": "sense-c1cf66eb",
+          "pos": "n.",
           "meaningZh": "笑話；玩笑",
-          "definitionEn": "something said or done to cause amusement or laughter",
           "examples": [
             "During the party, Sarah told a hilarious joke that had everyone laughing uncontrollably."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "joy",
       "word": "joy",
       "senses": [
         {
-          "id": "sense-bef236ca",
-          "pos": "noun",
+          "id": "sense-28ce8776",
+          "pos": "n.",
           "meaningZh": "喜悅；快樂",
-          "definitionEn": "a feeling of great pleasure and happiness",
           "examples": [
             "After months of hard work, she felt an overwhelming sense of joy when she received her acceptance letter from her dream university."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f30481eb",
-          "pos": "verb",
+          "id": "sense-2a141d32",
+          "pos": "v.",
           "meaningZh": "感到喜悅；歡欣",
-          "definitionEn": "to experience or show great happiness",
           "examples": [
             "After months of hard work, she felt an overwhelming joy as she received her high school diploma."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "juice",
       "word": "juice",
       "senses": [
         {
-          "id": "sense-ca4a6206",
-          "pos": "noun",
+          "id": "sense-15eea206",
+          "pos": "n.",
           "meaningZh": "果汁",
-          "definitionEn": "the liquid that comes from fruit or vegetables",
           "examples": [
             "I drink orange juice every morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-09e22931",
-          "pos": "noun",
+          "id": "sense-66aa6931",
+          "pos": "n.",
           "meaningZh": "活力；精力",
-          "definitionEn": "great energy, power, or forcefulness",
           "examples": [
             "After a good night’s sleep, I felt like I had the juice to tackle the tough workout at the gym."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jump",
       "word": "jump",
       "senses": [
         {
-          "id": "sense-d0aaf0f8",
-          "pos": "noun",
+          "id": "sense-57a31c04",
+          "pos": "n.",
           "meaningZh": "跳躍；起跳",
-          "definitionEn": "the act of jumping; propelling yourself off the ground",
           "examples": [
             "The basketball player was able to jump high enough to block the opponent’s shot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ef8ace55",
-          "pos": "verb",
+          "id": "sense-14aa150c",
+          "pos": "v.",
           "meaningZh": "跳下；躍下",
-          "definitionEn": "jump down from an elevated point",
           "examples": [
             "I saw a cat jump off the roof of the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "just",
       "word": "just",
       "senses": [
         {
-          "id": "sense-3786a049",
-          "pos": "adverb",
+          "id": "sense-99c7a694",
+          "pos": "adv.",
           "meaningZh": "恰好；正好",
-          "definitionEn": "indicating exactness or preciseness",
           "examples": [
             "He needed just two more votes to win the election."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-65aede5a",
-          "pos": "adverb",
+          "id": "sense-82b0fa93",
+          "pos": "adv.",
           "meaningZh": "完全；非常",
-          "definitionEn": "absolutely",
           "examples": [
             "I am just exhausted after running the marathon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "keep",
       "word": "keep",
       "senses": [
         {
-          "id": "sense-3864815f",
-          "pos": "verb",
+          "id": "sense-d2a2fbfa",
+          "pos": "v.",
           "meaningZh": "保持；持續",
-          "definitionEn": "continue a certain state, condition, or activity",
           "examples": [
             "I am trying to keep my house clean by tidying up every day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-db23bfec",
-          "pos": "verb",
+          "id": "sense-2a4c33d7",
+          "pos": "v.",
           "meaningZh": "使保鮮；防止腐壞",
-          "definitionEn": "prevent (food) from rotting",
           "examples": [
             "I recommend keeping the food refrigerated to prevent it from rotting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "key",
       "word": "key",
       "senses": [
         {
-          "id": "sense-4690c3b9",
-          "pos": "noun",
+          "id": "sense-40f45ef1",
+          "pos": "n.",
           "meaningZh": "鑰匙",
-          "definitionEn": "a metal device that is used to lock and unlock things",
           "examples": [
             "She used the key to unlock the front door of her house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-059f3122",
-          "pos": "noun",
+          "id": "sense-2df1a60a",
+          "pos": "n.",
           "meaningZh": "上發條的鑰匙；啟動鍵",
-          "definitionEn": "a piece of metal that can be used to wind up a clock or other mechanical device",
           "examples": [
             "John inserted the key into the clock and began winding it up to make it tick again."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kick",
       "word": "kick",
       "senses": [
         {
-          "id": "sense-37772302",
-          "pos": "verb",
+          "id": "sense-54d0f517",
+          "pos": "v.",
           "meaningZh": "踢；踹",
-          "definitionEn": "to strike or hit with the foot",
           "examples": [
             "He kicked the ball into the goal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7a2ea4b1",
-          "pos": "verb",
+          "id": "sense-5770395c",
+          "pos": "v.",
           "meaningZh": "踢進球門；射門得分",
-          "definitionEn": "to make a goal by kicking a ball into the net",
           "examples": [
             "In the final seconds of the game, Alex kicked the ball with immense force, sending it soaring past the goalkeeper and into the net, winning the match for his team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kid",
       "word": "kid",
       "senses": [
         {
-          "id": "sense-718ae755",
-          "pos": "noun",
+          "id": "sense-bfa2d3d5",
+          "pos": "n.",
           "meaningZh": "小孩；兒童",
-          "definitionEn": "a child or young person",
           "examples": [
             "The kids are playing in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7b0e2f0c",
-          "pos": "noun",
+          "id": "sense-86e5d08c",
+          "pos": "n.",
           "meaningZh": "小羊皮；羊皮革",
-          "definitionEn": "soft smooth leather from the hide of an animal",
           "examples": [
             "The designer used the kid leather to make an elegant pair of gloves."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kill",
       "word": "kill",
       "senses": [
         {
-          "id": "sense-b286c21d",
-          "pos": "verb",
+          "id": "sense-3b9e38a8",
+          "pos": "v.",
           "meaningZh": "殺死；殺害",
-          "definitionEn": "to cause someone or something to die",
           "examples": [
             "The hunter killed the deer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-05ca8baf",
-          "pos": "verb",
+          "id": "sense-c3292e2a",
+          "pos": "v.",
           "meaningZh": "意外致死；造成死亡",
-          "definitionEn": "cause the death of someone without intending to do so",
           "examples": [
             "Michael was driving too fast and inadvertently killed a pedestrian who stepped out onto the road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kind",
       "word": "kind",
       "senses": [
         {
-          "id": "sense-decaa283",
-          "pos": "noun",
+          "id": "sense-48ca9283",
+          "pos": "n.",
           "meaningZh": "種類；類型",
-          "definitionEn": "a type or category of something",
           "examples": [
             "There are different kinds of fruits, such as apples, bananas, and oranges."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-1a9e6569",
-          "pos": "adjective",
+          "id": "sense-30b8354d",
+          "pos": "adj.",
           "meaningZh": "仁慈的；友善的",
-          "definitionEn": "having a friendly or generous nature",
           "examples": [
             "Sarah is always willing to lend a hand to anyone in need, she truly exemplifies the meaning of being kind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "king",
       "word": "king",
       "senses": [
         {
-          "id": "sense-0ff2bef3",
-          "pos": "noun",
+          "id": "sense-b99bdb47",
+          "pos": "n.",
           "meaningZh": "國王；君王",
-          "definitionEn": "A male monarch, the highest authority in a monarchy",
           "examples": [
             "The King of the country, along with his Queen and children, made a grand appearance at the state dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c65af6fb",
-          "pos": "noun",
+          "id": "sense-c030b667",
+          "pos": "n.",
           "meaningZh": "王者；王族領袖",
-          "definitionEn": "The head of a royal family, especially a king",
           "examples": [
             "The King’s castle was an impressive sight to behold, with its imposing towers and grand entrance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kiss",
       "word": "kiss",
       "senses": [
         {
-          "id": "sense-75e4de18",
-          "pos": "verb",
+          "id": "sense-26507a11",
+          "pos": "v.",
           "meaningZh": "親吻；接吻",
-          "definitionEn": "to touch or press one’s lips to another person or object as a sign of affection, greeting, or respect",
           "examples": [
             "As the newlywed couple walked down the aisle, the groom leaned in to kiss his bride, sealing their vows with affection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a90bf2c4",
-          "pos": "noun",
+          "id": "sense-daf61744",
+          "pos": "n.",
           "meaningZh": "好時之吻（小糖果）",
-          "definitionEn": "a small, bite-sized candy",
           "examples": [
             "I put some Hershey’s Kisses in the candy dish for our guests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kitchen",
       "word": "kitchen",
       "senses": [
         {
-          "id": "sense-e03e6796",
-          "pos": "noun",
+          "id": "sense-4e6f9126",
+          "pos": "n.",
           "meaningZh": "廚房",
-          "definitionEn": "a room equipped for preparing meals. Typically includes a stove, sink, refrigerator, and cabinets for storing utensils, dishes, and food.",
           "examples": [
             "Jane spent hours in the kitchen, chopping vegetables and preparing a delicious meal for her family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kite",
       "word": "kite",
       "senses": [
         {
-          "id": "sense-58068e79",
-          "pos": "noun",
+          "id": "sense-f669245d",
+          "pos": "n.",
           "meaningZh": "風箏",
-          "definitionEn": "a plaything consisting of a light frame covered with tissue paper, flown in the wind at the end of a string",
           "examples": [
             "Let’s go to the park and fly our kite on a windy day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "knee",
+      "word": "knee",
+      "senses": [
+        {
+          "id": "sense-d9786620",
+          "pos": "n.",
+          "meaningZh": "膝蓋",
+          "examples": [
+            "He fell and hurt his knee."
+          ]
+        },
+        {
+          "id": "sense-bae88e7a",
+          "pos": "n.",
+          "meaningZh": "（動物）膝關節",
+          "examples": [
+            "The horse's knee was swollen from the strain of jumping over the fence."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "knife",
+      "word": "knife",
+      "senses": [
+        {
+          "id": "sense-9d46e8ec",
+          "pos": "n.",
+          "meaningZh": "餐刀；切割刀",
+          "examples": [
+            "He used a knife to cut the cake into slices."
+          ]
+        },
+        {
+          "id": "sense-146add84",
+          "pos": "n.",
+          "meaningZh": "刀具（武器）",
+          "examples": [
+            "Some people use a knife for hunting and self defense, while others use it for cooking and other domestic tasks."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

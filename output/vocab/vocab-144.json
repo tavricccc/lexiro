@@ -1,1393 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 144,
   "words": [
-    {
-      "wordKey": "explicit",
-      "word": "explicit",
-      "senses": [
-        {
-          "id": "sense-9eb11e80",
-          "pos": "adjective",
-          "meaningZh": "明確的；清楚的",
-          "definitionEn": "leaving no room for doubt; clear and unambiguous",
-          "examples": [
-            "The terms of the contract were explicit, stating that the payment must be made in full within 30 days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-96995da2",
-          "pos": "adjective",
-          "meaningZh": "明白的；詳盡的",
-          "definitionEn": "stated clearly and in detail, leaving no room for confusion or doubt",
-          "examples": [
-            "He gave explicit instructions for assembling the furniture, including step-by-step diagrams and written explanations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "exploit",
-      "word": "exploit",
-      "senses": [
-        {
-          "id": "sense-38f0e7e4",
-          "pos": "verb",
-          "meaningZh": "剝削；利用",
-          "definitionEn": "use or manipulate to one’s advantage",
-          "examples": [
-            "The company was accused of exploiting its workers by paying them low wages and not providing any benefits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-55872093",
-          "pos": "verb",
-          "meaningZh": "善用；開發",
-          "definitionEn": "draw from; make good use of",
-          "examples": [
-            "The young entrepreneur was able to exploit his unique skillset and turn it into a successful business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +1",
-        "textbookTitle": "龍騰 B3·R3、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "exploration",
-      "word": "exploration",
-      "senses": [
-        {
-          "id": "sense-f3bc6ac9",
-          "pos": "noun",
-          "meaningZh": "探險；勘探",
-          "definitionEn": "travel for the purpose of discovery",
-          "examples": [
-            "I went on an exploration of the Amazon rainforest to discover new species of plants and animals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-330ed4c9",
-          "pos": "noun",
-          "meaningZh": "探索；考察",
-          "definitionEn": "a systematic consideration",
-          "examples": [
-            "The exploration of outer space is a fascinating subject that attracts many scientists and researchers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "extension",
-      "word": "extension",
-      "senses": [
-        {
-          "id": "sense-d049782e",
-          "pos": "noun",
-          "meaningZh": "延伸範圍；延長期",
-          "definitionEn": "the amount, degree, or range to which something extends",
-          "examples": [
-            "The deadline for the project has been extended by two weeks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-aa2365c3",
-          "pos": "noun",
-          "meaningZh": "擴建部分；延伸設施",
-          "definitionEn": "something that is added to a main structure, usually a building or a machine, that extends its size or capability",
-          "examples": [
-            "The kitchen at the back of the house is an extension added on to the original house to create more living space."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "extensive",
-      "word": "extensive",
-      "senses": [
-        {
-          "id": "sense-8e4a4d9e",
-          "pos": "adjective",
-          "meaningZh": "廣泛的；大量的",
-          "definitionEn": "comprehensive and broad in content or topic",
-          "examples": [
-            "The library boasts an extensive collection of books on various subjects, from history to science fiction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-b36b6716",
-          "pos": "adjective",
-          "meaningZh": "粗放的（農業）",
-          "definitionEn": "relating to agriculture, involving the use of large areas of land with a minimum of labor and cost to increase productivity",
-          "examples": [
-            "To maximize crop yields, the farmer implemented extensive farming techniques, utilizing vast tracts of land while minimizing labor and expenses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "exterior",
       "word": "exterior",
       "senses": [
         {
-          "id": "sense-a4f79454",
-          "pos": "noun",
+          "id": "sense-0b0fca84",
+          "pos": "n.",
           "meaningZh": "外部；外側",
-          "definitionEn": "the region that is outside of something",
           "examples": [
             "The exterior of the building was made of marble and had intricate carvings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a1e2d118",
-          "pos": "noun",
+          "id": "sense-eb07d4a8",
+          "pos": "n.",
           "meaningZh": "外表；外觀",
-          "definitionEn": "the outer side or surface of something",
           "examples": [
             "The exterior of the building was painted blue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "external",
       "word": "external",
       "senses": [
         {
-          "id": "sense-a5938cba",
-          "pos": "adjective",
+          "id": "sense-33bfe164",
+          "pos": "adj.",
           "meaningZh": "外部的；外在的",
-          "definitionEn": "located outside or beyond certain limits, especially the surface of something",
           "examples": [
             "The external walls of the house were stained from years of exposure to the elements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a9449732",
-          "pos": "adjective",
+          "id": "sense-bcd0c9dc",
+          "pos": "adj.",
           "meaningZh": "表面的；外表的",
-          "definitionEn": "pertaining to outward appearance or superficial characteristics",
           "examples": [
             "Although she seemed confident and happy on the outside, everyone knew that internally she was struggling with depression."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "extinct",
       "word": "extinct",
       "senses": [
         {
-          "id": "sense-5ddf5a47",
-          "pos": "adjective",
+          "id": "sense-0be9f9dd",
+          "pos": "adj.",
           "meaningZh": "滅絕的；絕種的",
-          "definitionEn": "no longer in existence; having died out and leaving no living representatives",
           "examples": [
             "The dinosaurs, which ruled the Earth millions of years ago, are now extinct and only exist in fossils."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-30943daa",
-          "pos": "adjective",
+          "id": "sense-43098018",
+          "pos": "adj.",
           "meaningZh": "死火山的；熄滅的",
-          "definitionEn": "permanently inactive, especially said of volcanoes",
           "examples": [
             "The ancient volcano in the region is considered extinct, as it has not shown any signs of activity for thousands of years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "extraordinary",
       "word": "extraordinary",
       "senses": [
         {
-          "id": "sense-2456cd4f",
-          "pos": "adjective",
+          "id": "sense-6ab1ff13",
+          "pos": "adj.",
           "meaningZh": "非凡的；卓越的",
-          "definitionEn": "very unusual, special, or unexpected",
           "examples": [
             "Her talent for singing was extraordinary; she had a voice that could captivate any audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f95537bf",
-          "pos": "adjective",
+          "id": "sense-51aecd13",
+          "pos": "adj.",
           "meaningZh": "特別的；非經常性的",
-          "definitionEn": "involving a large cost or loss that does not occur regularly",
           "examples": [
             "The extravagant wedding reception was nothing short of extraordinary, with a stunning venue, gourmet cuisine, and live entertainment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fabric",
       "word": "fabric",
       "senses": [
         {
-          "id": "sense-276bd169",
-          "pos": "noun",
+          "id": "sense-9aef4e31",
+          "pos": "n.",
           "meaningZh": "布料；布匹",
-          "definitionEn": "cloth",
           "examples": [
             "She picked out a soft, cotton fabric for the curtains in her living room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cfbeeccd",
-          "pos": "noun",
+          "id": "sense-868d94f5",
+          "pos": "n.",
           "meaningZh": "織物；面料",
-          "definitionEn": "material made from fibers, used for making clothing, curtains, and other items",
           "examples": [
             "Karen went to the store to buy fabric for her new dress, and she chose a soft, flowy fabric in her favorite color."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fabulous",
       "word": "fabulous",
       "senses": [
         {
-          "id": "sense-b8d1bac0",
-          "pos": "adjective",
+          "id": "sense-8386c07e",
+          "pos": "adj.",
           "meaningZh": "極好的；令人驚嘆的",
-          "definitionEn": "almost unbelievable; incredible; amazing",
           "examples": [
             "The view from the top of the mountain was absolutely fabulous, with a breathtaking panorama of lush green valleys and snow-capped peaks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "facilitate",
       "word": "facilitate",
       "senses": [
         {
-          "id": "sense-49ac7b71",
-          "pos": "verb",
+          "id": "sense-c68fb528",
+          "pos": "v.",
           "meaningZh": "協助；促進",
-          "definitionEn": "be of use",
           "examples": [
             "The new software will facilitate the data analysis process, making it more efficient and time-saving."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-80113fb7",
-          "pos": "verb",
+          "id": "sense-f1c5e608",
+          "pos": "v.",
           "meaningZh": "使便利；簡化",
-          "definitionEn": "make easier",
           "examples": [
             "The new software will facilitate the process of data analysis by automating repetitive tasks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "faculty",
       "word": "faculty",
       "senses": [
         {
-          "id": "sense-bb514d21",
-          "pos": "noun",
+          "id": "sense-89ba1441",
+          "pos": "n.",
           "meaningZh": "教職員；教師群",
-          "definitionEn": "the body of teachers and administrators at a school",
           "examples": [
             "The faculty at the university organized a seminar for prospective students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ad3361e9",
-          "pos": "noun",
+          "id": "sense-522c4749",
+          "pos": "n.",
           "meaningZh": "（心智）官能；能力",
-          "definitionEn": "one of the inherent cognitive or perceptual powers of the mind",
           "examples": [
             "His faculty for memory allowed him to recall intricate details from events that happened years ago."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fascinate",
       "word": "fascinate",
       "senses": [
         {
-          "id": "sense-7126f0f9",
-          "pos": "verb",
+          "id": "sense-9ba0c50a",
+          "pos": "v.",
           "meaningZh": "吸引；使著迷",
-          "definitionEn": "attract or captivate somebody’s attention; cause to be deeply interested",
           "examples": [
             "The magician's performance fascinated the entire audience, keeping them on the edge of their seats."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-06fac86b",
-          "pos": "verb",
+          "id": "sense-e65a040a",
+          "pos": "v.",
           "meaningZh": "迷住；令人著迷",
-          "definitionEn": "spellbind or hypnotize somebody; render motionless, as with a fixed stare or by arousing terror or awe",
           "examples": [
             "The magician's performance was so captivating that the entire audience was fascinated and sat in complete silence, wide-eyed and spellbound."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7 +1",
-        "textbookTitle": "龍騰 B2·L7、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fatigue",
       "word": "fatigue",
       "senses": [
         {
-          "id": "sense-c1908eae",
-          "pos": "noun",
+          "id": "sense-d2644dba",
+          "pos": "n.",
           "meaningZh": "厭倦；過度疲勞",
-          "definitionEn": "(always used with a modifier) boredom resulting from overexposure to something",
           "examples": [
             "After weeks of non-stop studying, John experienced a deep fatigue from reading the same textbooks over and over again."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "federal",
       "word": "federal",
       "senses": [
         {
-          "id": "sense-8301e926",
-          "pos": "adjective",
+          "id": "sense-ebfa15c0",
+          "pos": "adj.",
           "meaningZh": "聯邦的；聯邦制的",
-          "definitionEn": "relating to a system of government in which power is divided between a central authority and constituent political units, such as states or provinces.",
           "examples": [
             "The United States of America is a federal republic consisting of 50 states and a federal district, with power divided among the central federal government and the individual state governments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fiber",
       "word": "fiber",
       "senses": [
         {
-          "id": "sense-e54f5ac3",
-          "pos": "noun",
+          "id": "sense-dea5f73f",
+          "pos": "n.",
           "meaningZh": "纖維；細絲",
-          "definitionEn": "a slender and greatly elongated substance that can be used to make yarn",
           "examples": [
             "She spun the fiber into a fine thread to weave into a beautiful scarf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "filter",
       "word": "filter",
       "senses": [
         {
-          "id": "sense-e65d3670",
-          "pos": "noun",
+          "id": "sense-77b4cb40",
+          "pos": "n.",
           "meaningZh": "過濾器；濾網",
-          "definitionEn": "a device that is used to remove something solid, liquid, or gas from whatever passes through it, typically by passing it through a porous material or membrane.",
           "examples": [
             "The coffee maker has a built-in filter that removes coffee grounds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c8a75acb",
-          "pos": "verb",
+          "id": "sense-ac3a6496",
+          "pos": "v.",
           "meaningZh": "過濾；淨化",
-          "definitionEn": "remove impurities or unwanted elements from (a liquid, gas, or substance stored in a container), typically in order to purify it.",
           "examples": [
             "After boiling the water, I used a coffee filter to filter out any impurities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fiscal",
       "word": "fiscal",
       "senses": [
         {
-          "id": "sense-ae5c3439",
-          "pos": "adjective",
+          "id": "sense-636b584d",
+          "pos": "adj.",
           "meaningZh": "財政的；國庫的",
-          "definitionEn": "relating to government revenue and expenses",
           "examples": [
             "The government’s fiscal year ends on September 30th, and all budget expenses must be accounted for by then."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-296a4478",
-          "pos": "adjective",
+          "id": "sense-175f2994",
+          "pos": "adj.",
           "meaningZh": "節儉的；精打細算的",
-          "definitionEn": "financially responsible or thrifty",
           "examples": [
             "The government had to make several fiscal cuts in order to avoid a budget crisis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fleet",
       "word": "fleet",
       "senses": [
         {
-          "id": "sense-6bc340cb",
-          "pos": "noun",
+          "id": "sense-cfcc514b",
+          "pos": "n.",
           "meaningZh": "艦隊；船艦群",
-          "definitionEn": "a group of warships organized as a tactical unit",
           "examples": [
             "The navy sent a fleet of battleships to patrol the disputed waters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3558d03d",
-          "pos": "noun",
+          "id": "sense-7d12bbbd",
+          "pos": "n.",
           "meaningZh": "船隊；同一船公司的船群",
-          "definitionEn": "a group of steamships operating together under the same ownership",
           "examples": [
             "The shipping company sent its fleet of vessels to transport goods across the ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "flexibility",
       "word": "flexibility",
       "senses": [
         {
-          "id": "sense-85b311a2",
-          "pos": "noun",
+          "id": "sense-e78326aa",
+          "pos": "n.",
           "meaningZh": "彈性；靈活性",
-          "definitionEn": "the quality of being adaptable or variable",
           "examples": [
             "In order to maintain a healthy work-life balance, one needs to have flexibility in their schedule."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1882c256",
-          "pos": "noun",
+          "id": "sense-260580fe",
+          "pos": "n.",
           "meaningZh": "柔軟度；可彎曲性",
-          "definitionEn": "the property of being flexible; easily bent or shaped",
           "examples": [
             "The Yoga teacher showed great flexibility while performing various asanas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "flip",
       "word": "flip",
       "senses": [
         {
-          "id": "sense-d890a8ca",
-          "pos": "verb",
+          "id": "sense-0dd94bcb",
+          "pos": "v.",
           "meaningZh": "翻轉；拋轉",
-          "definitionEn": "to throw something with a sharp movement so that it turns over in the air",
           "examples": [
             "She flipped the pancake in the frying pan."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-394f3512",
-          "pos": "noun",
+          "id": "sense-931c21f6",
+          "pos": "n.",
           "meaningZh": "快速翻動；一甩",
-          "definitionEn": "a sudden and quick movement",
           "examples": [
             "With a quick flip of her wrist, she caught the flying object."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fluency",
       "word": "fluency",
       "senses": [
         {
-          "id": "sense-5cf217f9",
-          "pos": "noun",
+          "id": "sense-a1eabfc5",
+          "pos": "n.",
           "meaningZh": "流利；流暢度",
-          "definitionEn": "skillfulness in speaking or writing",
           "examples": [
             "After years of practice, Jane achieved fluency in French and was able to have a natural and engaging conversation with native speakers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-556afe78",
-          "pos": "noun",
+          "id": "sense-f51ad2b4",
+          "pos": "n.",
           "meaningZh": "口齒伶俐；表達流暢",
-          "definitionEn": "the quality of being facile in speech and writing",
           "examples": [
             "Her fluency in multiple languages allowed her to effortlessly communicate with people from different countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fluid",
       "word": "fluid",
       "senses": [
         {
-          "id": "sense-5f8696ed",
-          "pos": "noun",
+          "id": "sense-2a1ee41d",
+          "pos": "n.",
           "meaningZh": "流體；液體",
-          "definitionEn": "a substance, either liquid or gas, that flows and takes the shape of its container",
           "examples": [
             "The mechanic added more fluid to the brake system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0c01808a",
-          "pos": "adjective",
+          "id": "sense-36dad1ce",
+          "pos": "adj.",
           "meaningZh": "流暢的；優美的",
-          "definitionEn": "smooth and graceful in movement",
           "examples": [
             "The ballet dancer’s movements were so fluid that she seemed to glide across the stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "forge",
       "word": "forge",
       "senses": [
         {
-          "id": "sense-5824dc06",
-          "pos": "verb",
+          "id": "sense-13a25a53",
+          "pos": "v.",
           "meaningZh": "偽造；造假",
-          "definitionEn": "to illegally copy something in order to deceive someone",
           "examples": [
             "The criminal was able to forge a convincing passport."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-10dfbfe9",
-          "pos": "verb",
+          "id": "sense-d0c3fcdc",
+          "pos": "v.",
           "meaningZh": "建立；締造",
-          "definitionEn": "to make an effort to develop a successful relationship with a person, organization, or country",
           "examples": [
             "After years of negotiations, the two countries were able to forge a strong economic partnership."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "format",
       "word": "format",
       "senses": [
         {
-          "id": "sense-37bb8283",
-          "pos": "noun",
+          "id": "sense-c5650b9f",
+          "pos": "n.",
           "meaningZh": "格式；版面設計",
-          "definitionEn": "the overall design and layout of a document or publication",
           "examples": [
             "The format of the report was easy to read and understand, with clear headings and a logical flow of information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f1855aed",
-          "pos": "verb",
+          "id": "sense-6f434ad4",
+          "pos": "v.",
           "meaningZh": "格式化（磁碟）",
-          "definitionEn": "prepare (a storage medium, especially a disk) for reading and writing data by dividing it into marked sectors",
           "examples": [
             "Before transferring any files to the external hard drive, make sure to format it first to avoid any read/write errors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "forum",
       "word": "forum",
       "senses": [
         {
-          "id": "sense-ff47ffef",
-          "pos": "noun",
+          "id": "sense-381ccc03",
+          "pos": "n.",
           "meaningZh": "公開討論場合；論壇",
-          "definitionEn": "a public facility or meeting for open discussion",
           "examples": [
             "The school organized a forum for students to voice their opinions on the dress code policy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-429d270b",
-          "pos": "noun",
+          "id": "sense-405d720f",
+          "pos": "n.",
           "meaningZh": "網路論壇；討論區",
-          "definitionEn": "a medium, especially a website, for discussion of ideas and issues",
           "examples": [
             "I found a great forum where people discuss their travel experiences and give useful tips on budget accommodation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "foster",
       "word": "foster",
       "senses": [
         {
-          "id": "sense-a3d15cc5",
-          "pos": "verb",
+          "id": "sense-65e665dc",
+          "pos": "v.",
           "meaningZh": "培育；促進發展",
-          "definitionEn": "to nurture and encourage growth",
           "examples": [
             "The foster parents provided a loving and supportive home for the child in need."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-509368eb",
-          "pos": "adjective",
+          "id": "sense-eb169449",
+          "pos": "adj.",
           "meaningZh": "寄養的；代養的",
-          "definitionEn": "having or providing parental care or nurturing, even though not related by blood or legal ties",
           "examples": [
             "Sarah and John decided to foster a child in need, offering them a safe and loving home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "foul",
       "word": "foul",
       "senses": [
         {
-          "id": "sense-64f682ec",
-          "pos": "adjective",
+          "id": "sense-e4bd5060",
+          "pos": "adj.",
           "meaningZh": "惡臭的；汙穢的",
-          "definitionEn": "very dirty, unpleasant, or having a bad smell",
           "examples": [
             "A foul smell came from the rotting garbage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-903bfde1",
-          "pos": "adjective",
+          "id": "sense-8843efa5",
+          "pos": "adj.",
           "meaningZh": "纏結的（船索）；糾纏的",
-          "definitionEn": "pertaining to the lines of a ship, especially in an awkward configuration",
           "examples": [
             "The ship’s performance was affected by the fouled lines, causing it to move sluggishly through the water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fraction",
       "word": "fraction",
       "senses": [
         {
-          "id": "sense-421a6abb",
-          "pos": "noun",
+          "id": "sense-992d808b",
+          "pos": "n.",
           "meaningZh": "分數；小部分",
-          "definitionEn": "a number that represents a part of a whole or a group",
           "examples": [
             "Sarah ate 1/4 of the pizza, leaving only 3/4 for the rest of us to share."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-72fcc11c",
-          "pos": "verb",
+          "id": "sense-10338591",
+          "pos": "v.",
           "meaningZh": "分割；切分",
-          "definitionEn": "divide something into small parts or portions",
           "examples": [
             "At the bakery, the chef would carefully fraction the dough to ensure that each bread roll was the same size."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "fragment",
+      "word": "fragment",
+      "senses": [
+        {
+          "id": "sense-85e9a65b",
+          "pos": "n.",
+          "meaningZh": "碎片；碎塊",
+          "examples": [
+            "As I was cleaning up the broken vase, I found a small fragment of glass on the floor."
+          ]
+        },
+        {
+          "id": "sense-81b8c1ab",
+          "pos": "n.",
+          "meaningZh": "殘片；斷片",
+          "examples": [
+            "After dropping the vase, we were left with only a fragment of porcelain."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "framework",
+      "word": "framework",
+      "senses": [
+        {
+          "id": "sense-16a8640a",
+          "pos": "n.",
+          "meaningZh": "框架；支撐結構",
+          "examples": [
+            "The team used a framework of wooden beams to support the weight of the roof during construction."
+          ]
+        },
+        {
+          "id": "sense-1848e67b",
+          "pos": "n.",
+          "meaningZh": "架構；基本框架",
+          "examples": [
+            "Before starting to build your application, make sure you have a framework in place that outlines the design and architecture."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "franchise",
+      "word": "franchise",
+      "senses": [
+        {
+          "id": "sense-f77af4ba",
+          "pos": "n.",
+          "meaningZh": "特許經營權；加盟授權",
+          "examples": [
+            "After investing in a fast-food franchise, John opened up a restaurant in the busy downtown area with the help of the support he received from the parent company."
+          ]
+        },
+        {
+          "id": "sense-c19f4086",
+          "pos": "n.",
+          "meaningZh": "加盟店；特許店",
+          "examples": [
+            "John opened a Subway franchise in his town, allowing him to sell Subway’s products with the support and recognition of the company behind him."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "fraud",
+      "word": "fraud",
+      "senses": [
+        {
+          "id": "sense-031e379c",
+          "pos": "n.",
+          "meaningZh": "詐欺；欺詐行為",
+          "examples": [
+            "John committed fraud by selling counterfeit products online claiming that they were genuine, causing a financial loss to several buyers."
+          ]
+        },
+        {
+          "id": "sense-546aba82",
+          "pos": "n.",
+          "meaningZh": "詐騙；騙局",
+          "examples": [
+            "The businessman was caught in a fraud scheme that involved falsifying documents and stealing money from investors."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "freight",
+      "word": "freight",
+      "senses": [
+        {
+          "id": "sense-38eb6879",
+          "pos": "n.",
+          "meaningZh": "貨物；貨運",
+          "examples": [
+            "The shipping company was responsible for transporting the freight from the port to the warehouse."
+          ]
+        },
+        {
+          "id": "sense-5a657522",
+          "pos": "v.",
+          "meaningZh": "運送貨物；承運",
+          "examples": [
+            "The company ordered a 20-ton freight of steel beams to be delivered to the construction site."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

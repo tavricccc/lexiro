@@ -6,6 +6,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(import.meta.dirname, 'src'),
+      'idb-keyval': resolve(import.meta.dirname, 'tests/mocks/idb-keyval.ts'),
     },
   },
   plugins: [vue()],

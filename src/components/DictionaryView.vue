@@ -1,53 +1,44 @@
 <script setup lang="ts">
-import type { DictionaryEntry, LibraryQuestion, WordEntry } from '@/types'
+import type { DictionaryEntry, WordEntry } from '@/types'
 import { AudioLines, BookOpen, ExternalLink, LoaderCircle, Search, Volume2 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import { dictionaryAudio, dictionaryDefinitions, lookupDictionary } from '@/lib/dictionary'
+import { useI18n } from 'vue-i18n'
+import { dictionaryAudio, dictionaryDefinitions, DictionaryLookupError, lookupDictionary } from '@/lib/dictionary'
 import { normalizeWordKey } from '@/lib/library'
 import { useLibraryStore } from '@/stores/library'
-import { useSetsStore } from '@/stores/sets'
+import DictionaryAddDialog from './dialogs/DictionaryAddDialog.vue'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Input from './ui/input/Input.vue'
 
 const libraryStore = useLibraryStore()
-const setsStore = useSetsStore()
+const { t } = useI18n()
 const { words } = storeToRefs(libraryStore)
-const { sets } = storeToRefs(setsStore)
 
 const query = ref('')
 const loading = ref(false)
 const error = ref('')
 const entries = ref<DictionaryEntry[]>([])
 const selectedWordKey = ref('')
+const addDialogOpen = ref(false)
+const addEntry = ref<DictionaryEntry | null>(null)
 
 const localMatches = computed(() => {
   const q = query.value.trim().toLowerCase()
   if (!q)
     return []
   return words.value
-    .filter(word => word.word.toLowerCase().includes(q) || word.senses.some(sense => [sense.meaningZh, sense.definitionEn ?? '', ...sense.examples].some(value => value.toLowerCase().includes(q))))
+    .filter(word => word.word.toLowerCase().includes(q) || word.senses.some(sense => [sense.meaningZh, ...sense.examples].some(value => value.toLowerCase().includes(q))))
     .slice(0, 8)
 })
 
 const selectedWord = computed<WordEntry | null>(() => words.value.find(word => word.wordKey === selectedWordKey.value) ?? null)
 
-const selectedQuestions = computed(() => libraryStore.questions.filter((question) => {
-  if (question.kind === 'reading')
-    return question.wordKeys.includes(selectedWordKey.value)
-  return question.wordKey === selectedWordKey.value
-}))
-
-const savedSetNames = computed(() => {
-  if (!selectedWord.value)
-    return []
-  const names = sets.value
-    .filter(set => set.items.some(item => normalizeWordKey(item.word) === selectedWord.value!.wordKey))
-    .map(set => set.setName)
-  return Array.from(new Set(names))
-})
+function senseSetNames(senseId: string): string[] {
+  return selectedWord.value ? libraryStore.getSenseSetNames(selectedWord.value.wordKey, senseId) : []
+}
 
 async function search() {
   const word = query.value.trim()
@@ -61,7 +52,9 @@ async function search() {
   }
   catch (err) {
     entries.value = []
-    error.value = (err as Error).message
+    error.value = err instanceof DictionaryLookupError
+      ? t(`dictionary.${err.code}`)
+      : t('dictionary.lookupFailed')
   }
   finally {
     loading.value = false
@@ -80,12 +73,9 @@ function playAudio(entry: DictionaryEntry) {
     new Audio(url).play().catch(() => undefined)
 }
 
-function questionLabel(question: LibraryQuestion): string {
-  if (question.kind === 'multipleChoice')
-    return '選擇題'
-  if (question.kind === 'cloze')
-    return '填空題'
-  return '閱讀理解'
+function openAddDialog(entry: DictionaryEntry) {
+  addEntry.value = entry
+  addDialogOpen.value = true
 }
 </script>
 
@@ -106,7 +96,7 @@ function questionLabel(question: LibraryQuestion): string {
       </form>
       <div v-if="localMatches.length" class="mt-4 flex flex-wrap gap-2">
         <button v-for="word in localMatches" :key="word.wordKey" type="button" class="rounded-full bg-ink-100 px-3 py-1.5 text-xs font-semibold text-ink-600 transition-colors hover:bg-ink-200 dark:bg-ink-900 dark:text-ink-300" @click="selectLocalWord(word)">
-          {{ word.word }} · {{ word.senses.length }} 個詞義
+          {{ $t('dictionary.localMatchSummary', { word: word.word, count: word.senses.length }) }}
         </button>
       </div>
     </Card>
@@ -116,20 +106,13 @@ function questionLabel(question: LibraryQuestion): string {
     </div>
 
     <Card v-if="selectedWord" class="border border-accent-primary/15 p-5 sm:p-6">
-      <div class="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-accent-primary">
-            {{ $t('dictionary.savedTitle') }}
-          </p>
-          <h2 class="mt-1 text-2xl font-bold tracking-tight">
-            {{ selectedWord.word }}
-          </h2>
-        </div>
-        <div class="flex flex-wrap justify-end gap-1.5">
-          <Badge v-for="name in savedSetNames" :key="name" variant="secondary" class="rounded-lg text-xs">
-            {{ name }}
-          </Badge>
-        </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-accent-primary">
+          {{ $t('dictionary.savedTitle') }}
+        </p>
+        <h2 class="mt-1 text-2xl font-bold tracking-tight">
+          {{ selectedWord.word }}
+        </h2>
       </div>
       <div class="mt-5 space-y-3">
         <article v-for="sense in selectedWord.senses" :key="sense.id" class="surface-inset p-4">
@@ -141,42 +124,17 @@ function questionLabel(question: LibraryQuestion): string {
               {{ sense.meaningZh }}
             </p>
           </div>
-          <p v-if="sense.definitionEn" class="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
-            {{ sense.definitionEn }}
-          </p>
+          <div v-if="senseSetNames(sense.id).length" class="mt-3 flex flex-wrap items-center gap-1.5 text-xs font-semibold text-ink-500">
+            <span>{{ $t('dictionary.senseSets') }}</span>
+            <Badge v-for="name in senseSetNames(sense.id)" :key="name" variant="secondary" class="rounded-md text-[10px]">
+              {{ name }}
+            </Badge>
+          </div>
           <ul v-if="sense.examples.length" class="mt-3 space-y-1 text-sm font-medium italic leading-relaxed text-ink-500">
             <li v-for="example in sense.examples" :key="example">
               “{{ example }}”
             </li>
           </ul>
-        </article>
-      </div>
-      <div v-if="selectedQuestions.length" class="mt-4 space-y-3">
-        <div class="flex items-center gap-2 text-xs font-semibold text-ink-400">
-          <BookOpen class="h-4 w-4" />{{ $t('dictionary.savedQuestion') }}
-        </div>
-        <article v-for="question in selectedQuestions.slice(0, 8)" :key="question.id" class="surface-inset p-4">
-          <Badge variant="secondary" class="rounded-md text-[10px]">
-            {{ questionLabel(question) }}
-          </Badge>
-          <template v-if="question.kind === 'reading'">
-            <p class="mt-2 text-sm font-bold">
-              {{ question.title }}
-            </p>
-            <p class="mt-1 line-clamp-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
-              {{ question.passage }}
-            </p>
-          </template>
-          <template v-else>
-            <p class="mt-2 text-sm font-bold leading-relaxed">
-              {{ question.prompt }}
-            </p>
-            <div v-if="question.kind === 'multipleChoice'" class="mt-3 grid gap-2 sm:grid-cols-2">
-              <div v-for="(option, index) in question.options" :key="`${question.id}-${option}`" class="rounded-xl bg-white/70 px-3 py-2 text-sm dark:bg-ink-900/70" :class="index === question.answerIndex ? 'font-semibold text-emerald-700 dark:text-emerald-300' : 'text-ink-600 dark:text-ink-300'">
-                {{ String.fromCharCode(65 + index) }}. {{ option }}
-              </div>
-            </div>
-          </template>
         </article>
       </div>
     </Card>
@@ -211,16 +169,21 @@ function questionLabel(question: LibraryQuestion): string {
                 {{ entry.phonetic }}
               </Badge>
               <Badge v-if="selectedWord" variant="default" class="rounded-lg">
-                已儲存
+                {{ $t('dictionary.savedBadge') }}
               </Badge>
             </div>
             <p v-if="entry.origin" class="mt-3 text-xs font-semibold leading-relaxed text-ink-500">
               {{ entry.origin }}
             </p>
           </div>
-          <Button v-if="dictionaryAudio(entry)" variant="outline" size="icon" class="rounded-xl" :aria-label="$t('dictionary.playAudio')" @click="playAudio(entry)">
-            <Volume2 class="h-5 w-5" />
-          </Button>
+          <div class="flex items-center gap-2">
+            <Button variant="default" class="gap-2" @click="openAddDialog(entry)">
+              {{ $t('dictionary.addToSet') }}
+            </Button>
+            <Button v-if="dictionaryAudio(entry)" variant="outline" size="icon" class="rounded-xl" :aria-label="$t('dictionary.playAudio')" @click="playAudio(entry)">
+              <Volume2 class="h-5 w-5" />
+            </Button>
+          </div>
         </div>
         <div class="mt-8 space-y-6">
           <article v-for="(definition, index) in dictionaryDefinitions(entry)" :key="`${definition.definition}-${index}`" class="border-t border-ink-200/60 pt-5 dark:border-ink-800">
@@ -252,5 +215,14 @@ function questionLabel(question: LibraryQuestion): string {
         </div>
       </Card>
     </div>
+
+    <DictionaryAddDialog
+      v-if="addEntry"
+      :open="addDialogOpen"
+      :word="addEntry.word"
+      :entries="entries"
+      :existing-word="selectedWord"
+      @close="addDialogOpen = false"
+    />
   </section>
 </template>

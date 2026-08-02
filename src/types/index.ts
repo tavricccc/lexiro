@@ -1,32 +1,39 @@
 export type { AiProvider, AiSettings } from './ai'
 export type {
   BackupPayload,
-  ImportMode,
+  FullBackupPayload,
   ImportResult,
-  VersionDiff,
+  SetSharePayload,
+  SharedSet,
 } from './backup'
-export type { FirestoreDailyStatsDoc, FirestoreLibraryChunk, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict } from './cloud'
+export type { FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreProgressDoc, FirestoreStatsDoc } from './cloud'
 export type { DictionaryDefinition, DictionaryEntry, DictionaryMeaning, DictionaryPhonetic } from './dictionary'
 export type {
-  Achievement,
   CardProgress,
+  DailyActivity,
   DashboardStats,
   LearningProgress,
+  QuestionStatKey,
+  QuestionStats,
+  QuestionStatType,
   ReviewEntry,
   ReviewRating,
   SyncStatus,
 } from './learning'
 export type {
-  ClozeQuestion,
-  LibraryDataSource,
   LibraryQuestion,
   LibraryQuestionBase,
+  LibrarySet,
   LibraryState,
   MultipleChoiceQuestion,
+  QuestionDifficulty,
   ReadingChildQuestion,
   ReadingPack,
+  SetMembership,
+  StudyWord,
   VocabFolder,
-  VocabSetMember,
+  VocabularyDifficultyFilter,
+  VocabularyQuestionTypeFilter,
   WordEntry,
   WordSense,
 } from './library'
@@ -41,7 +48,5 @@ export type {
   ResultSummary,
   SessionEntry,
   SessionStatus,
-  SpellingDraft,
-  SpellingRecord,
 } from './session'
-export type { EditorItem, Question, VocabItem, VocabSet, WordDraft } from './set'
+export type { EditorItem, EditorSenseDraft, PracticeDifficulty, PracticeQuestion, PracticeQuestionType, WordDraft } from './set'

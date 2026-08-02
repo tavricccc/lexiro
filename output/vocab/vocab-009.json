@@ -1,1471 +1,695 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 9,
   "words": [
-    {
-      "wordKey": "dry",
-      "word": "dry",
-      "senses": [
-        {
-          "id": "sense-a3aa34e3",
-          "pos": "adjective",
-          "meaningZh": "乾的；乾燥的",
-          "definitionEn": "having no water or moisture",
-          "examples": [
-            "The towel is dry now, so you can use it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-180020dd",
-          "pos": "noun",
-          "meaningZh": "旱季；乾旱期",
-          "definitionEn": "a period of time when there is no rain or when there is very little rain.",
-          "examples": [
-            "The farmers in the region were concerned about the extended dry spell as their crops were withering without sufficient water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-a58eb000",
-          "pos": "verb",
-          "meaningZh": "弄乾；晾乾",
-          "definitionEn": "to become dry, or to remove water from something.",
-          "examples": [
-            "After doing laundry, I hung my clothes outside to dry in the sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "duck",
       "word": "duck",
       "senses": [
         {
-          "id": "sense-fdb28b5d",
-          "pos": "noun",
+          "id": "sense-9a4c8ae5",
+          "pos": "n.",
           "meaningZh": "鴨子；鴨",
-          "definitionEn": "a common water bird with webbed feet, a broad flat bill, and a waddling walk",
           "examples": [
             "The children threw bread to the ducks swimming in the pond."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ed49a8c7",
-          "pos": "verb",
+          "id": "sense-624cd23e",
+          "pos": "v.",
           "meaningZh": "閃躲；快速藏身",
-          "definitionEn": "to move quickly to another place, especially to avoid being seen",
           "examples": [
             "The cat tried to duck behind the sofa when it saw the dog approaching."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cfb1a0a6",
-          "pos": "verb",
+          "id": "sense-8ac9bb7d",
+          "pos": "v.",
           "meaningZh": "迴避；故意不回答",
-          "definitionEn": "to consciously avoid discussing or answering a subject or question",
           "examples": [
             "During the press conference, the politician tried to duck the reporter's pointed question about his financial ties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "during",
       "word": "during",
       "senses": [
         {
-          "id": "sense-91048f41",
-          "pos": "preposition",
+          "id": "sense-1f80b410",
+          "pos": "prep.",
           "meaningZh": "在⋯期間（某時刻）",
-          "definitionEn": "at any point within (a specific period of time)",
           "examples": [
             "During the summer vacation, we went camping in the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-dc1bc6ac",
-          "pos": "preposition",
+          "id": "sense-88f4b375",
+          "pos": "prep.",
           "meaningZh": "在⋯整個過程中",
-          "definitionEn": "throughout the duration of (a specific period of time)",
           "examples": [
             "During the summer, we spent endless days at the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "each",
       "word": "each",
       "senses": [
         {
-          "id": "sense-ec9956fb",
-          "pos": "adjective",
+          "id": "sense-833fa085",
+          "pos": "adj.",
           "meaningZh": "各個的；每一個的",
-          "definitionEn": "considered individually and regarded as separate items",
           "examples": [
             "Each student has to complete the assignment on their own."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c5843665",
-          "pos": "adverb",
+          "id": "sense-3a2bb420",
+          "pos": "adv.",
           "meaningZh": "各自地；逐一地",
-          "definitionEn": "separately or individually; one by one",
           "examples": [
             "When explaining the concept, the teacher ensured that each student understood it before moving on to the next topic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ear",
       "word": "ear",
       "senses": [
         {
-          "id": "sense-ac85917b",
-          "pos": "noun",
+          "id": "sense-a8c9526b",
+          "pos": "n.",
           "meaningZh": "耳朵；聽覺器官",
-          "definitionEn": "the sense organ responsible for hearing and balance in humans and other vertebrates",
           "examples": [
             "After listening to loud music for hours, his ears were ringing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b782dc59",
-          "pos": "noun",
+          "id": "sense-5f3a2c69",
+          "pos": "n.",
           "meaningZh": "耳廓；外耳",
-          "definitionEn": "the visible part of this organ that protrudes from the head",
           "examples": [
             "She wore large hoop earrings that brushed against her ear when she moved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "early",
       "word": "early",
       "senses": [
         {
-          "id": "sense-e4bae404",
-          "pos": "adverb",
+          "id": "sense-766d8d2d",
+          "pos": "adv.",
           "meaningZh": "提早；早於預定時間",
-          "definitionEn": "before the usual time or the time expected",
           "examples": [
             "I woke up early to catch the sunrise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-af966677",
-          "pos": "adverb",
+          "id": "sense-85ce4d0a",
+          "pos": "adv.",
           "meaningZh": "在早期；在初期",
-          "definitionEn": "during an early stage",
           "examples": [
             "She joined the company at an early stage of its development and played a significant role in shaping its success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "earth",
       "word": "earth",
       "senses": [
         {
-          "id": "sense-de2bc408",
-          "pos": "noun",
+          "id": "sense-63b62ff8",
+          "pos": "n.",
           "meaningZh": "地球",
-          "definitionEn": "the 3rd planet from the sun, the planet we inhabit",
           "examples": [
             "On a clear night, you can see numerous stars in the sky, but Earth is the only planet known to support life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-76b1d3e0",
-          "pos": "noun",
+          "id": "sense-e2860b90",
+          "pos": "n.",
           "meaningZh": "陸地；地表",
-          "definitionEn": "the solid surface of the planet, as distinguished from the sea or air",
           "examples": [
             "The astronauts walked on the moon's surface, which is vastly different from the earth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "east",
       "word": "east",
       "senses": [
         {
-          "id": "sense-8d47df50",
-          "pos": "noun",
+          "id": "sense-019183f8",
+          "pos": "n.",
           "meaningZh": "東方；東邊",
-          "definitionEn": "the cardinal compass point that is at 90 degrees",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-077d52ba",
-          "pos": "noun",
+          "id": "sense-9cf5f0a2",
+          "pos": "n.",
           "meaningZh": "東方方向",
-          "definitionEn": "the direction corresponding to the eastward cardinal compass point",
           "examples": [
             "She woke up early in the morning and faced east to watch the sunrise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "easy",
       "word": "easy",
       "senses": [
         {
-          "id": "sense-425f8562",
-          "pos": "adjective",
+          "id": "sense-e4d80e46",
+          "pos": "adj.",
           "meaningZh": "容易的；簡單的",
-          "definitionEn": "not difficult; needing little effort",
           "examples": [
             "The test was so easy that everyone passed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fe9c542b",
-          "pos": "adjective",
+          "id": "sense-607e7707",
+          "pos": "adj.",
           "meaningZh": "（價格）回落的；趨軟的",
-          "definitionEn": "to be lower in price at the end of a period of time",
           "examples": [
             "After the holiday season, the prices of electronics are often easy, making it the best time to buy a new TV."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "eat",
       "word": "eat",
       "senses": [
         {
-          "id": "sense-ac51cc2d",
-          "pos": "verb",
+          "id": "sense-ff309e86",
+          "pos": "v.",
           "meaningZh": "吃；進食",
-          "definitionEn": "take in solid food; consume food through the mouth",
           "examples": [
             "After a long day at work, I like to eat a delicious home-cooked meal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-313c2a9d",
-          "pos": "verb",
+          "id": "sense-5eaa6294",
+          "pos": "v.",
           "meaningZh": "用餐；吃飯",
-          "definitionEn": "have a meal; consume food or drink",
           "examples": [
             "After a long day at work, I like to eat a satisfying dinner with my family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "egg",
       "word": "egg",
       "senses": [
         {
-          "id": "sense-fac62e2f",
-          "pos": "noun",
+          "id": "sense-27b47c5b",
+          "pos": "n.",
           "meaningZh": "蛋；卵",
-          "definitionEn": "an oval, rounded object with a hard shell produced by female birds and certain female reptiles, from which a baby animal is hatched when it is fully formed",
           "examples": [
             "The mother bird built a nest and carefully laid her eggs inside to keep them warm and protected."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-07eabac5",
-          "pos": "noun",
+          "id": "sense-56c4d679",
+          "pos": "n.",
           "meaningZh": "（雌性的）卵子",
-          "definitionEn": "A woman or female animal produces an egg, which is a cell that could potentially develop into a baby if it combines with sperm from a male",
           "examples": [
             "The hen laid an egg every morning in the chicken coop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "either",
       "word": "either",
       "senses": [
         {
-          "id": "sense-1687ac73",
-          "pos": "conjunction",
+          "id": "sense-088f7d13",
+          "pos": "conj.",
           "meaningZh": "（兩者之中）任一；或…或…",
-          "definitionEn": "used before the first of two or more alternatives that are being specified (Ex. you can have either soup or salad) as well as used to introduce a statement that continues or contrasts with something previously mentioned (Ex. She may be smart, but either way, I’m not working with her) and can be used after a negative statement as an intensive meaning something like ’likewise’ or ’also’.",
           "examples": [
             "Either John stays and helps with the cleaning, or he leaves and goes home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7080af8b",
-          "pos": "pronoun",
+          "id": "sense-cd5e56ff",
+          "pos": "pron.",
           "meaningZh": "（兩者中的）每一個；任一",
-          "definitionEn": "each of two (Ex. either of the two routes)",
           "examples": [
             "Either you can choose the blue shirt or the red one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "elephant",
       "word": "elephant",
       "senses": [
         {
-          "id": "sense-b94ff79a",
-          "pos": "noun",
+          "id": "sense-877cb592",
+          "pos": "n.",
           "meaningZh": "大象",
-          "definitionEn": "a large mammal with a long trunk and tusks, five toes, and often gray skin, native to Africa and Asia",
           "examples": [
             "We went on a safari and saw a herd of elephants bathing in the river."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2da91be7",
-          "pos": "noun",
+          "id": "sense-b5ae7d0f",
+          "pos": "n.",
           "meaningZh": "（美國）共和黨象徵",
-          "definitionEn": "the symbol of the Republican Party in the US; introduced in cartoons by Thomas Nast in 1874",
           "examples": [
             "During campaign season, you often see the elephant symbol used to represent the Republican Party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "else",
       "word": "else",
       "senses": [
         {
-          "id": "sense-8dc1dcb6",
-          "pos": "adverb",
+          "id": "sense-1326935d",
+          "pos": "adv.",
           "meaningZh": "另外；其他；此外",
-          "definitionEn": "in addition to what has been mentioned, other, another, different",
           "examples": [
             "When all of my friends were going to the party, I had nothing else to do."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ab875307",
-          "pos": "adverb",
+          "id": "sense-18f6b824",
+          "pos": "adv.",
           "meaningZh": "別的；不同的",
-          "definitionEn": "other, another, different, additional (following words like any-, every-, no-, and some-, or after how, what, where, who, and why, but not which)",
           "examples": [
             "She had no choice but to find someone else to take care of her children while she was at work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "email",
       "word": "email",
       "senses": [
         {
-          "id": "sense-2cb21500",
-          "pos": "noun",
+          "id": "sense-6e453850",
+          "pos": "n.",
           "meaningZh": "電子郵件；電郵",
-          "definitionEn": "A system of electronic communication that allows a computer user to send and receive messages globally, which can be retrieved at the recipient’s terminal once they log in.",
           "examples": [
             "I will send you an email later today with all of the information you need for the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-eaf6bda3",
-          "pos": "verb",
+          "id": "sense-443c8b8a",
+          "pos": "v.",
           "meaningZh": "寄電子郵件；用電郵聯絡",
-          "definitionEn": "To communicate via electronic messages on a computer.",
           "examples": [
             "I usually email my colleagues instead of calling them on the phone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "end",
       "word": "end",
       "senses": [
         {
-          "id": "sense-22abf832",
-          "pos": "noun",
+          "id": "sense-b9e66dde",
+          "pos": "n.",
           "meaningZh": "結束；終結",
-          "definitionEn": "the final part or conclusion of something",
           "examples": [
             "We left before the end of the movie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3104fbfb",
-          "pos": "noun",
+          "id": "sense-87dee36f",
+          "pos": "n.",
           "meaningZh": "末端；盡頭",
-          "definitionEn": "either extremity of something that has length",
           "examples": [
             "I tied a knot at the end of the rope to keep it from unraveling."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8f0e2d73",
-          "pos": "noun",
+          "id": "sense-1f556027",
+          "pos": "n.",
           "meaningZh": "（三維物體的）端面",
-          "definitionEn": "the surface at either extremity of a three-dimensional object",
           "examples": [
             "I tied a knot at the end of the rope."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "engineer",
       "word": "engineer",
       "senses": [
         {
-          "id": "sense-88f00d55",
-          "pos": "noun",
+          "id": "sense-c793d0ad",
+          "pos": "n.",
           "meaningZh": "工程師",
-          "definitionEn": "a person who uses scientific knowledge to solve practical problems",
           "examples": [
             "After assessing the structural integrity of the building, the engineer devised an innovative solution to reinforce the foundation and prevent further damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2dd74bae",
-          "pos": "noun",
+          "id": "sense-2148d806",
+          "pos": "n.",
           "meaningZh": "火車司機；機車操作員",
-          "definitionEn": "the operator of a railway locomotive",
           "examples": [
             "As an engineer, I am responsible for operating the locomotive and ensuring a smooth and safe journey for the passengers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "enjoy",
       "word": "enjoy",
       "senses": [
         {
-          "id": "sense-8ba8c515",
-          "pos": "verb",
+          "id": "sense-43d3dc18",
+          "pos": "v.",
           "meaningZh": "享受；樂在其中",
-          "definitionEn": "to get pleasure from something; to take delight in something",
           "examples": [
             "I enjoy spending time with my family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ea357851",
-          "pos": "verb",
+          "id": "sense-b1770f74",
+          "pos": "v.",
           "meaningZh": "玩得開心；感到愉快",
-          "definitionEn": "to have fun doing something",
           "examples": [
             "Sarah loves to enjoy a quiet evening at home with a good book and a cup of tea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "enjoyment",
       "word": "enjoyment",
       "senses": [
         {
-          "id": "sense-b4b8ea82",
-          "pos": "noun",
+          "id": "sense-3988995a",
+          "pos": "n.",
           "meaningZh": "享受；快樂",
-          "definitionEn": "The act or state of receiving pleasure or joy from something",
           "examples": [
             "The children’s faces were beaming with enjoyment as they played with their new toys on Christmas morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f3d19bee",
-          "pos": "noun",
+          "id": "sense-ff671c36",
+          "pos": "n.",
           "meaningZh": "愉悅感；歡欣",
-          "definitionEn": "The feeling of pleasure or happiness that comes from having a good time",
           "examples": [
             "Her face lit up with enjoyment as she opened the birthday present."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "enough",
       "word": "enough",
       "senses": [
         {
-          "id": "sense-68b5aeed",
-          "pos": "adjective",
+          "id": "sense-27d0b6f9",
+          "pos": "adj.",
           "meaningZh": "足夠的；充分的",
-          "definitionEn": "sufficient for the intended purpose",
           "examples": [
             "After studying for hours, she had absorbed enough knowledge to ace the exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5fd4e8d2",
-          "pos": "noun",
+          "id": "sense-270927b6",
+          "pos": "n.",
           "meaningZh": "足夠的量；充分的數量",
-          "definitionEn": "an adequate quantity or amount; a quantity that meets or exceeds the minimum requirements",
           "examples": [
             "I have studied enough for the exam and feel confident about it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "enter",
       "word": "enter",
       "senses": [
         {
-          "id": "sense-682eca08",
-          "pos": "verb",
+          "id": "sense-bea9d7b9",
+          "pos": "v.",
           "meaningZh": "進入；進來",
-          "definitionEn": "to come or go into a place",
           "examples": [
             "Please knock before you enter the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ba0a49f9",
-          "pos": "verb",
+          "id": "sense-2ed9b0a8",
+          "pos": "v.",
           "meaningZh": "輸入；登錄",
-          "definitionEn": "to type or record information into a computer, form, or list",
           "examples": [
             "Enter your password and click the button."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "envelope",
       "word": "envelope",
       "senses": [
         {
-          "id": "sense-a8014809",
-          "pos": "noun",
+          "id": "sense-343d5f0d",
+          "pos": "n.",
           "meaningZh": "信封",
-          "definitionEn": "a flat, rectangular container used for holding letters, cards, or thin packages.",
           "examples": [
             "She opened the mailbox and found an envelope addressed to her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "eraser",
       "word": "eraser",
       "senses": [
         {
-          "id": "sense-96c152c4",
-          "pos": "noun",
+          "id": "sense-b417bde0",
+          "pos": "n.",
           "meaningZh": "橡皮擦",
-          "definitionEn": "a small, rubber tool used to remove pencil marks from paper or other surfaces",
           "examples": [
             "After realizing he made a mistake on his math homework, Tom used an eraser to remove the incorrect answer and replace it with the right one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "error",
       "word": "error",
       "senses": [
         {
-          "id": "sense-1cf0fd8e",
-          "pos": "noun",
+          "id": "sense-919512b2",
+          "pos": "n.",
           "meaningZh": "錯誤；失誤",
-          "definitionEn": "an action that is wrong because of bad judgment, ignorance, or lack of attention",
           "examples": [
             "Making an error in calculation can cause serious financial loss."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a5c91acd",
-          "pos": "noun",
+          "id": "sense-e024ec71",
+          "pos": "n.",
           "meaningZh": "誤差；不準確",
-          "definitionEn": "an accidental mistake or inaccuracy",
           "examples": [
             "The accountant made an error in the financial statement, which caused a delay in the audit process."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "even",
       "word": "even",
       "senses": [
         {
-          "id": "sense-37a33731",
-          "pos": "adverb",
+          "id": "sense-ed93d992",
+          "pos": "adv.",
           "meaningZh": "甚至；連…也",
-          "definitionEn": "used to emphasize something surprising or extreme",
           "examples": [
             "He didn't even say goodbye before leaving."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9954b41d",
-          "pos": "adjective",
+          "id": "sense-52d22299",
+          "pos": "adj.",
           "meaningZh": "平坦的；水平的",
-          "definitionEn": "having a flat, smooth, or uniform surface or shape; or located at the same height or level as something else",
           "examples": [
             "The lake was perfectly calm, its surface so even that it reflected the surrounding mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4f9a4ca0",
-          "pos": "adjective",
+          "id": "sense-5d0d5bf4",
+          "pos": "adj.",
           "meaningZh": "均等的；勢均力敵的",
-          "definitionEn": "having the same amount, value, or degree; or being equally matched or balanced",
           "examples": [
             "In their friendly competition, the two teams were evenly matched, with each player demonstrating exceptional skill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "evening",
       "word": "evening",
       "senses": [
         {
-          "id": "sense-dcef342b",
-          "pos": "noun",
+          "id": "sense-364e0c3b",
+          "pos": "n.",
           "meaningZh": "傍晚；黃昏",
-          "definitionEn": "the period of time between late afternoon and nightfall",
           "examples": [
             "As the sun began to set, Sarah took a leisurely stroll along the beach, enjoying the peacefulness of the evening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7727892e",
-          "pos": "noun",
+          "id": "sense-67908f3e",
+          "pos": "n.",
           "meaningZh": "夜晚（早段）；晚間",
-          "definitionEn": "the early part of the night, typically spent in a special way",
           "examples": [
             "After a long day at work, Sarah enjoyed a quiet evening at home, sipping tea and reading her favorite book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ever",
       "word": "ever",
       "senses": [
         {
-          "id": "sense-670c9a26",
-          "pos": "adverb",
+          "id": "sense-8fd74ffd",
+          "pos": "adv.",
           "meaningZh": "曾經；在任何時候",
-          "definitionEn": "at any time",
           "examples": [
             "Have you ever been to Paris?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-45a8fd8f",
-          "pos": "adverb",
+          "id": "sense-d4cc1d76",
+          "pos": "adv.",
           "meaningZh": "一直；始終",
-          "definitionEn": "always; at all times and on every occasion",
           "examples": [
             "She has been my best friend ever since we were kids."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "every",
       "word": "every",
       "senses": [
         {
-          "id": "sense-3355a497",
-          "pos": "adjective",
+          "id": "sense-1e1f0f5d",
+          "pos": "adj.",
           "meaningZh": "每個；每一",
-          "definitionEn": "Each and every member of a group is included, without exception. (used with countable nouns)",
           "examples": [
             "Every student in the class received a perfect score on the test."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0fa38993",
-          "pos": "adjective",
+          "id": "sense-08be1401",
+          "pos": "adj.",
           "meaningZh": "每（隔一段時間）",
-          "definitionEn": "Referring to each and all of a series of entities or intervals, as specified.",
           "examples": [
             "Every morning, Susan wakes up at 6 AM and goes for a run."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "everything",
       "word": "everything",
       "senses": [
         {
-          "id": "sense-8cceacda",
-          "pos": "pronoun",
+          "id": "sense-9409c32e",
+          "pos": "pron.",
           "meaningZh": "一切；所有事物",
-          "definitionEn": "all things",
           "examples": [
             "After a long day at work, I enjoy curling up on the sofa with a good book and a cup of tea, forgetting about everything else."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f327729b",
-          "pos": "noun",
+          "id": "sense-5c5d0ca3",
+          "pos": "n.",
           "meaningZh": "萬物；所有存在的東西",
-          "definitionEn": "all things that exist",
           "examples": [
             "In his tiny apartment, he had managed to fit everything he owned."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "example",
       "word": "example",
       "senses": [
         {
-          "id": "sense-adc406a0",
-          "pos": "noun",
+          "id": "sense-1951cda4",
+          "pos": "n.",
           "meaningZh": "例子；實例",
-          "definitionEn": "an occurrence of something",
           "examples": [
             "An example of a situation where 'example' can be used is when explaining a math problem to a student. For instance, the teacher could say, 'Let me show you an example of how to solve this equation.'"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-37c92ec2",
-          "pos": "noun",
+          "id": "sense-d622185e",
+          "pos": "n.",
           "meaningZh": "範例；樣本",
-          "definitionEn": "a representative form or pattern",
           "examples": [
             "When teaching complex math problems, the teacher used a simple example to illustrate the concept."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "excellent",
+      "word": "excellent",
+      "senses": [
+        {
+          "id": "sense-4fcb24bb",
+          "pos": "adj.",
+          "meaningZh": "優秀的；出色的",
+          "examples": [
+            "The new restaurant in town received excellent reviews for its exceptional food and impeccable service."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

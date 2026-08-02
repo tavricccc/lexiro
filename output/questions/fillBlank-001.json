@@ -1,0 +1,1146 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questions": [
+    {
+      "id": "question-4ee09c0d",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "I drove my new _____ to the beach last weekend.",
+      "options": [
+        "car",
+        "door",
+        "tennis",
+        "driver"
+      ],
+      "answerIndex": 0,
+      "wordKey": "car",
+      "senseId": "sense-f43cc1f7",
+      "fingerprint": "fingerprint-155f94c7",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-2a0370f6",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "After losing his job, John's best _____ offered him a place to stay and helped him find a new job.",
+      "options": [
+        "friend",
+        "meaning",
+        "folk",
+        "balloon"
+      ],
+      "answerIndex": 0,
+      "wordKey": "friend",
+      "senseId": "sense-edec9844",
+      "fingerprint": "fingerprint-26cb5a65",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-58e67cea",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "During the meeting, Mark kept interrupting and making silly faces, which was really _____ behavior.",
+      "options": [
+        "childish",
+        "very",
+        "under",
+        "several"
+      ],
+      "answerIndex": 0,
+      "wordKey": "childish",
+      "senseId": "sense-7043e434",
+      "fingerprint": "fingerprint-67aa02bc",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-177cbe25",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The crowd cheered as the striker made a powerful kick, sending the ball soaring into the top corner of the net, scoring a goal for his team in the _____ match.",
+      "options": [
+        "soccer",
+        "tie",
+        "violin",
+        "chess"
+      ],
+      "answerIndex": 0,
+      "wordKey": "soccer",
+      "senseId": "sense-11d18545",
+      "fingerprint": "fingerprint-1212c557",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6df349a8",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The _____ man struggled to walk up the steep hill.",
+      "options": [
+        "very",
+        "old",
+        "absent",
+        "under"
+      ],
+      "answerIndex": 1,
+      "wordKey": "old",
+      "senseId": "sense-b21eb100",
+      "fingerprint": "fingerprint-89f79adb",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-71563857",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The couple strolled hand in hand through the picturesque park, basking in the _____ atmosphere created by the soft glow of the setting sun.",
+      "options": [
+        "ignorant",
+        "cooperative",
+        "fierce",
+        "romantic"
+      ],
+      "answerIndex": 3,
+      "wordKey": "romantic",
+      "senseId": "sense-5f178495",
+      "fingerprint": "fingerprint-dd9e6a3e",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-2d9438b5",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The _____ called a meeting to discuss the new project deadlines with the team.",
+      "options": [
+        "boat",
+        "boss",
+        "gate",
+        "elephant"
+      ],
+      "answerIndex": 1,
+      "wordKey": "boss",
+      "senseId": "sense-0c0092b1",
+      "fingerprint": "fingerprint-e4690972",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b9e9bc4c",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "On the weekend, my family and I decided to have a picnic at the _____. We played frisbee, enjoyed the sunshine, and had a great time!",
+      "options": [
+        "metro",
+        "earrings",
+        "park",
+        "bench"
+      ],
+      "answerIndex": 2,
+      "wordKey": "park",
+      "senseId": "sense-50bd0847",
+      "fingerprint": "fingerprint-5253f94c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-578bfb57",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The _____ section of the library offers a wide variety of books for children and teenagers.",
+      "options": [
+        "beat",
+        "absent",
+        "junior",
+        "cooperative"
+      ],
+      "answerIndex": 2,
+      "wordKey": "junior",
+      "senseId": "sense-b196203a",
+      "fingerprint": "fingerprint-ed272b4e",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-673fdb6f",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The veterinarian examined the dog’s _____ to make sure it was not injured.",
+      "options": [
+        "elbow",
+        "camel",
+        "sacrifice",
+        "wagon"
+      ],
+      "answerIndex": 0,
+      "wordKey": "elbow",
+      "senseId": "sense-0699d43d",
+      "fingerprint": "fingerprint-b4791b31",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8a0f3bfd",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The _____ meticulously applied vibrant colors to the canvas, bringing the landscape to life.",
+      "options": [
+        "creature",
+        "childhood",
+        "painter",
+        "effect"
+      ],
+      "answerIndex": 2,
+      "wordKey": "painter",
+      "senseId": "sense-26aa0dee",
+      "fingerprint": "fingerprint-bde4f046",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c5c768f3",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "After reviewing all the _____ candidates, the hiring committee decided to offer the position to Jane.",
+      "options": [
+        "luck",
+        "possible",
+        "mountain",
+        "exercise"
+      ],
+      "answerIndex": 1,
+      "wordKey": "possible",
+      "senseId": "sense-06c2cd89",
+      "fingerprint": "fingerprint-610bc8b1",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-9f0728ed",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "I haven't seen her in _____ months.",
+      "options": [
+        "interested",
+        "recent",
+        "intelligent",
+        "absent"
+      ],
+      "answerIndex": 1,
+      "wordKey": "recent",
+      "senseId": "sense-88e05a08",
+      "fingerprint": "fingerprint-0092bfda",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-271009f7",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The _____ with the new computer software was that it kept crashing and was not at all user-friendly.",
+      "options": [
+        "trouble",
+        "keeper",
+        "race",
+        "favorite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "trouble",
+      "senseId": "sense-32b1c4d0",
+      "fingerprint": "fingerprint-7bafa16c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-a347c857",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The flavors of the soup _____ depending on the region it is made in.",
+      "options": [
+        "vary",
+        "digest",
+        "shore",
+        "decrease"
+      ],
+      "answerIndex": 0,
+      "wordKey": "vary",
+      "senseId": "sense-34fc4ade",
+      "fingerprint": "fingerprint-19c05cbd",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-bcc3ec6c",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "After living in different cities for many years, Mary decided to return to her _____ to be closer to her family and childhood friends.",
+      "options": [
+        "self",
+        "servant",
+        "rebel",
+        "hometown"
+      ],
+      "answerIndex": 3,
+      "wordKey": "hometown",
+      "senseId": "sense-49665984",
+      "fingerprint": "fingerprint-ba9e7d1b",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-71b44880",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The new advertisement strategy proved to be highly _____ in increasing sales by 50%.",
+      "options": [
+        "effective",
+        "interested",
+        "iron",
+        "handsome"
+      ],
+      "answerIndex": 0,
+      "wordKey": "effective",
+      "senseId": "sense-1c260026",
+      "fingerprint": "fingerprint-27bfaeaa",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-512ce7de",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "Before the game, the coach made sure all the players had _____ opportunity to play.  He ensured that all team members received the same number of minutes on the court.",
+      "options": [
+        "win",
+        "equal",
+        "mine",
+        "tomorrow"
+      ],
+      "answerIndex": 1,
+      "wordKey": "equal",
+      "senseId": "sense-b269b1ab",
+      "fingerprint": "fingerprint-e2d1454e",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-5e3a2180",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "As he worked on his painting, he would _____ a soothing melody under his breath.",
+      "options": [
+        "jam",
+        "reject",
+        "hum",
+        "snail"
+      ],
+      "answerIndex": 2,
+      "wordKey": "hum",
+      "senseId": "sense-df332962",
+      "fingerprint": "fingerprint-0b8ef93b",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-22870e76",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The _____ organs of the human body include the heart, lungs, and stomach.",
+      "options": [
+        "beat",
+        "several",
+        "some",
+        "internal"
+      ],
+      "answerIndex": 3,
+      "wordKey": "internal",
+      "senseId": "sense-1736b4a4",
+      "fingerprint": "fingerprint-94f79726",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-99fd5e36",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The intense heat made him _____ profusely.",
+      "options": [
+        "flame",
+        "sweat",
+        "watermelon",
+        "analysis"
+      ],
+      "answerIndex": 1,
+      "wordKey": "sweat",
+      "senseId": "sense-f545aabc",
+      "fingerprint": "fingerprint-a27078c2",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8c4bcb58",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The carpenter selected a piece of _____ for the project because of its durability and beautiful grain pattern.",
+      "options": [
+        "gum",
+        "gradual",
+        "shark",
+        "audio"
+      ],
+      "answerIndex": 0,
+      "wordKey": "gum",
+      "senseId": "sense-c570071e",
+      "fingerprint": "fingerprint-0ed9083f",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6dc173a9",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "She expressed her _____ about the safety of the children crossing the busy road.",
+      "options": [
+        "bean",
+        "sausage",
+        "concern",
+        "pocket"
+      ],
+      "answerIndex": 2,
+      "wordKey": "concern",
+      "senseId": "sense-45568491",
+      "fingerprint": "fingerprint-ed6ce7cd",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6b65a172",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The children were feeling _____ as they ran through the park, laughing and chasing each other.",
+      "options": [
+        "mere",
+        "handsome",
+        "fierce",
+        "playful"
+      ],
+      "answerIndex": 3,
+      "wordKey": "playful",
+      "senseId": "sense-ab4a462d",
+      "fingerprint": "fingerprint-ff626765",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6078c778",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "While he had gotten used to the _____ culture, he still missed home.",
+      "options": [
+        "beat",
+        "foreign",
+        "interesting",
+        "very"
+      ],
+      "answerIndex": 1,
+      "wordKey": "foreign",
+      "senseId": "sense-d346cfc7",
+      "fingerprint": "fingerprint-c377fe45",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-73ad82a0",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "I bought the latest _____ of my favorite band and listened to it on repeat all weekend.",
+      "options": [
+        "tour",
+        "expression",
+        "album",
+        "reply"
+      ],
+      "answerIndex": 2,
+      "wordKey": "album",
+      "senseId": "sense-c4d2cc3a",
+      "fingerprint": "fingerprint-9b1eba2d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-0749229b",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The cargo _____ was filled with various goods from different countries and was heading to the port of Los Angeles.",
+      "options": [
+        "ship",
+        "gradual",
+        "mountain",
+        "encouragement"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ship",
+      "senseId": "sense-fcf2f0a0",
+      "fingerprint": "fingerprint-daab763b",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c4b6bb44",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "Playing board games with friends is always a lot of _____.",
+      "options": [
+        "role",
+        "theater",
+        "fun",
+        "experience"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fun",
+      "senseId": "sense-6270bf87",
+      "fingerprint": "fingerprint-4dc5fe47",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-74a51ca9",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "She switched on the _____ and the room was instantly filled with a warm, soft glow.",
+      "options": [
+        "necessary",
+        "baseball",
+        "lamp",
+        "sailor"
+      ],
+      "answerIndex": 2,
+      "wordKey": "lamp",
+      "senseId": "sense-2452c53c",
+      "fingerprint": "fingerprint-39723572",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d21e3e77",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "Her _____ was enough to pay for her living expenses.",
+      "options": [
+        "pan",
+        "salary",
+        "drunk",
+        "voice"
+      ],
+      "answerIndex": 1,
+      "wordKey": "salary",
+      "senseId": "sense-6973fee1",
+      "fingerprint": "fingerprint-5a7f0c79",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-2866def8",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "In a geometry class, the teacher used two triangles to demonstrate _____ shapes. Although they were not identical in size or position, they had the exact same angles and proportions.",
+      "options": [
+        "every",
+        "under",
+        "very",
+        "similar"
+      ],
+      "answerIndex": 3,
+      "wordKey": "similar",
+      "senseId": "sense-31661c02",
+      "fingerprint": "fingerprint-5ea11935",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b1554888",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The living room walls were painted a soft shade of _____, giving the space a modern and elegant feel.",
+      "options": [
+        "absence",
+        "classmate",
+        "truck",
+        "gray"
+      ],
+      "answerIndex": 3,
+      "wordKey": "gray",
+      "senseId": "sense-5c0b9862",
+      "fingerprint": "fingerprint-5d1d9c90",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-3240fa06",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The _____ outside the courthouse was becoming increasingly violent as the trial progressed.",
+      "options": [
+        "mob",
+        "cancer",
+        "accident",
+        "merit"
+      ],
+      "answerIndex": 0,
+      "wordKey": "mob",
+      "senseId": "sense-b91b6dc7",
+      "fingerprint": "fingerprint-ee17745d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-328e99a3",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "In the _____, technology plays a crucial role in our daily lives.",
+      "options": [
+        "raise",
+        "door",
+        "present",
+        "goal"
+      ],
+      "answerIndex": 2,
+      "wordKey": "present",
+      "senseId": "sense-23b90a8f",
+      "fingerprint": "fingerprint-0a425688",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-e04b109b",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The _____ of New York City is over 8 million people.",
+      "options": [
+        "population",
+        "shepherd",
+        "expression",
+        "outdoors"
+      ],
+      "answerIndex": 0,
+      "wordKey": "population",
+      "senseId": "sense-fc776970",
+      "fingerprint": "fingerprint-f6ca28c7",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-9255f990",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "I grilled a juicy steak for dinner last night, it was the most tender _____ I've ever tasted!",
+      "options": [
+        "meat",
+        "pleasure",
+        "bone",
+        "shell"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meat",
+      "senseId": "sense-a4cbe807",
+      "fingerprint": "fingerprint-7c26fb9c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-f626ea80",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "Hank grew up on a ranch and learned to ride horses and handle cattle, he was a true _____ in every sense of the word.",
+      "options": [
+        "servant",
+        "guy",
+        "cowboy",
+        "cookie"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cowboy",
+      "senseId": "sense-baec4855",
+      "fingerprint": "fingerprint-2ae99bd6",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-4401b714",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The _____ cooed and giggled as her mother played peek-a-boo.",
+      "options": [
+        "parents",
+        "mother",
+        "baby",
+        "parent"
+      ],
+      "answerIndex": 2,
+      "wordKey": "baby",
+      "senseId": "sense-00697144",
+      "fingerprint": "fingerprint-a48d5b09",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-f03ae4b3",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The artist’s work was so _____ that it caught everyone’s attention at the art gallery opening.",
+      "options": [
+        "cooperative",
+        "striking",
+        "mere",
+        "dull"
+      ],
+      "answerIndex": 1,
+      "wordKey": "queer",
+      "senseId": "sense-b18c6992",
+      "fingerprint": "fingerprint-c9c8fe37",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-982fe6ab",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "Thomas Edison is known as the _____ of the light bulb.",
+      "options": [
+        "substance",
+        "confidence",
+        "honeymoon",
+        "inventor"
+      ],
+      "answerIndex": 3,
+      "wordKey": "inventor",
+      "senseId": "sense-4b4020b0",
+      "fingerprint": "fingerprint-a7fb31ea",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-2165f357",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The _____ leader gave a speech about the importance of democracy.",
+      "options": [
+        "political",
+        "mere",
+        "beat",
+        "ignorant"
+      ],
+      "answerIndex": 0,
+      "wordKey": "political",
+      "senseId": "sense-320141cf",
+      "fingerprint": "fingerprint-122c8f73",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-7b827997",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "After months of searching, John finally found _____ as a software developer at a reputable company.",
+      "options": [
+        "employment",
+        "silence",
+        "kingdom",
+        "guess"
+      ],
+      "answerIndex": 0,
+      "wordKey": "employment",
+      "senseId": "sense-4683b6ef",
+      "fingerprint": "fingerprint-a44a9137",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-ebadd301",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "Despite the fear of heights, she had the _____ to bungee jump from the highest point in the city.",
+      "options": [
+        "courage",
+        "operator",
+        "stick",
+        "deposit"
+      ],
+      "answerIndex": 0,
+      "wordKey": "courage",
+      "senseId": "sense-f65084ee",
+      "fingerprint": "fingerprint-f5581357",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d10591ac",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "Planning for the _____, she decided to enroll in college and pursue her dream career",
+      "options": [
+        "author",
+        "shirt",
+        "future",
+        "keeper"
+      ],
+      "answerIndex": 2,
+      "wordKey": "future",
+      "senseId": "sense-57632536",
+      "fingerprint": "fingerprint-4f42fe15",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-ebb7a464",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "I _____ tea over coffee because it has a milder flavor.",
+      "options": [
+        "expect",
+        "prefer",
+        "peel",
+        "worst"
+      ],
+      "answerIndex": 1,
+      "wordKey": "prefer",
+      "senseId": "sense-72571498",
+      "fingerprint": "fingerprint-97d58719",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-03be6ef4",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "She colored in the picture with different shades of _____.",
+      "options": [
+        "crayon",
+        "wall",
+        "kilometer",
+        "rust"
+      ],
+      "answerIndex": 0,
+      "wordKey": "crayon",
+      "senseId": "sense-e6a41ec5",
+      "fingerprint": "fingerprint-e5088ad3",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-ddb99dc7",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "When the news of her father’s death reached her, she couldn’t help but _____.",
+      "options": [
+        "rise",
+        "slip",
+        "blow",
+        "cry"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cry",
+      "senseId": "sense-096cf0cb",
+      "fingerprint": "fingerprint-c467d25c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-632a53a9",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "The comfortable _____ in the movie theater made the film even more enjoyable.",
+      "options": [
+        "seat",
+        "toy",
+        "desk",
+        "bed"
+      ],
+      "answerIndex": 0,
+      "wordKey": "seat",
+      "senseId": "sense-ae309468",
+      "fingerprint": "fingerprint-902a6fd8",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c1f2ec72",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "She placed the _____ on the pot to let the soup simmer.",
+      "options": [
+        "fire",
+        "cloth",
+        "lid",
+        "editor"
+      ],
+      "answerIndex": 2,
+      "wordKey": "lid",
+      "senseId": "sense-faf5632c",
+      "fingerprint": "fingerprint-6d92edb8",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-df71504e",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The government is planning to _____ a large area of land to combat deforestation.",
+      "options": [
+        "kick",
+        "exact",
+        "mend",
+        "reforest"
+      ],
+      "answerIndex": 3,
+      "wordKey": "forest",
+      "senseId": "sense-0b41e380",
+      "fingerprint": "fingerprint-d2525a9e",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-e2562c1b",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "He was sentenced to 10 years in _____ for his crimes.",
+      "options": [
+        "postage",
+        "wear",
+        "jail",
+        "producer"
+      ],
+      "answerIndex": 2,
+      "wordKey": "jail",
+      "senseId": "sense-50f8dc50",
+      "fingerprint": "fingerprint-4c49bd21",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-085ed314",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "I wrote a heartfelt _____ to my best friend, expressing my gratitude and love for our lifelong friendship.",
+      "options": [
+        "high",
+        "human",
+        "cool",
+        "letter"
+      ],
+      "answerIndex": 3,
+      "wordKey": "letter",
+      "senseId": "sense-7c62484c",
+      "fingerprint": "fingerprint-050da0e8",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8f50a13a",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The _____ attendant handed out snacks to the passengers before takeoff.",
+      "options": [
+        "flight",
+        "pair",
+        "river",
+        "blanket"
+      ],
+      "answerIndex": 0,
+      "wordKey": "flight",
+      "senseId": "sense-d5b7f4fd",
+      "fingerprint": "fingerprint-00cca581",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b4b38639",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "Studying _____ is important in understanding the development of human society.",
+      "options": [
+        "time",
+        "history",
+        "account",
+        "milk"
+      ],
+      "answerIndex": 1,
+      "wordKey": "history",
+      "senseId": "sense-23d113b8",
+      "fingerprint": "fingerprint-21b2d9c0",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-2d4c16b4",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 1,
+      "prompt": "During interrogation, the spy refused to _____ his cover despite intense pressure from the enemy.",
+      "options": [
+        "blow",
+        "remove",
+        "mirror",
+        "grow"
+      ],
+      "answerIndex": 0,
+      "wordKey": "blow",
+      "senseId": "sense-07ab44fb",
+      "fingerprint": "fingerprint-07d32def",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-0dd9d351",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "In the equation 4 + 2, the plus sign (+) is the _____ that represents the addition operation.",
+      "options": [
+        "operator",
+        "ending",
+        "politician",
+        "honor"
+      ],
+      "answerIndex": 0,
+      "wordKey": "operator",
+      "senseId": "sense-319258bf",
+      "fingerprint": "fingerprint-8b0e140a",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-aef071c8",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "After a long hike through the forest, we reached a cozy _____ nestled among the trees.",
+      "options": [
+        "stitch",
+        "temper",
+        "cabin",
+        "balance"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cabin",
+      "senseId": "sense-9224b333",
+      "fingerprint": "fingerprint-cf1bd0c6",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-fd43c814",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 2,
+      "prompt": "The zookeeper placed the injured bird in a small _____ to provide it with a safe and secure environment for recovery.",
+      "options": [
+        "ski",
+        "medal",
+        "cage",
+        "nest"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cage",
+      "senseId": "sense-71c8403b",
+      "fingerprint": "fingerprint-f0224d93",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-a997dcb6",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The thief decided to _____ a wallet from the crowded subway.",
+      "options": [
+        "drag",
+        "steal",
+        "bandage",
+        "aloud"
+      ],
+      "answerIndex": 1,
+      "wordKey": "steal",
+      "senseId": "sense-597d3740",
+      "fingerprint": "fingerprint-624cc165",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-3ef94918",
+      "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
+      "difficulty": 3,
+      "prompt": "The _____ of the bicycle turned effortlessly as he pedaled down the hill.",
+      "options": [
+        "steam",
+        "overthrow",
+        "wheel",
+        "fate"
+      ],
+      "answerIndex": 2,
+      "wordKey": "wheel",
+      "senseId": "sense-f865dbca",
+      "fingerprint": "fingerprint-fb2ddd7f",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    }
+  ]
+}

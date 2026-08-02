@@ -1,1226 +1,577 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 189,
   "words": [
-    {
-      "wordKey": "overwork",
-      "word": "overwork",
-      "senses": [
-        {
-          "id": "sense-246e28bc",
-          "pos": "verb",
-          "meaningZh": "使過勞；過度工作",
-          "definitionEn": "to make someone work too hard or too long",
-          "examples": [
-            "Despite her husband's pleas for a break, she continued to overwork herself, often clocking in 12-hour workdays."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-8e134294",
-          "pos": "noun",
-          "meaningZh": "過勞；過度操勞",
-          "definitionEn": "the act of working beyond one’s capacity or endurance",
-          "examples": [
-            "After pulling several all-nighters in a row, Sarah experienced the negative effects of overwork when she collapsed from exhaustion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "oyster",
-      "word": "oyster",
-      "senses": [
-        {
-          "id": "sense-2b81f53b",
-          "pos": "noun",
-          "meaningZh": "牡蠣；蚵仔",
-          "definitionEn": "A type of water creature that lives in a shell. Some types of oysters can be eaten, while others produce pearls, which are small, round, white stones used in jewelry.",
-          "examples": [
-            "During our beach vacation, we enjoyed a plate of fresh oysters on the half-shell, accompanied with a lemon wedge and cocktail sauce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "ozone",
-      "word": "ozone",
-      "senses": [
-        {
-          "id": "sense-08d427ae",
-          "pos": "noun",
-          "meaningZh": "臭氧",
-          "definitionEn": "a colorless gas (O3) that is soluble in alkalis and cold water. It is a highly reactive and powerful oxidizing agent that can be produced by an electric discharge in oxygen. Ozone in the Earth’s stratosphere acts as a protective layer, absorbing most of the sun’s harmful ultraviolet radiation.",
-          "examples": [
-            "The ozone layer in the atmosphere shields the Earth from harmful ultraviolet rays, preventing them from reaching the surface and causing damage to living organisms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "packet",
-      "word": "packet",
-      "senses": [
-        {
-          "id": "sense-97f6133c",
-          "pos": "noun",
-          "meaningZh": "小包；小袋",
-          "definitionEn": "a small package or bundle, usually containing a specific number of goods or items for transport or storage",
-          "examples": [
-            "I bought a packet of cookies from the store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-c91e659f",
-          "pos": "noun",
-          "meaningZh": "郵船；貨船",
-          "definitionEn": "a boat or ship used for carrying mail or freight",
-          "examples": [
-            "The packet sailed across the ocean, loaded with crates of goods bound for different countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "paddle",
-      "word": "paddle",
-      "senses": [
-        {
-          "id": "sense-94dfac8a",
-          "pos": "noun",
-          "meaningZh": "槳；划槳",
-          "definitionEn": "a short and light oar used to propel a small boat or canoe without an oarlock",
-          "examples": [
-            "As the sun set, Sarah took her paddle and went out for a peaceful evening paddle on the calm lake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "paperback",
       "word": "paperback",
       "senses": [
         {
-          "id": "sense-61afb6e5",
-          "pos": "noun",
+          "id": "sense-b5e45aa1",
+          "pos": "n.",
           "meaningZh": "平裝本；平裝書",
-          "definitionEn": "a book with paper covers",
           "examples": [
             "I enjoy reading paperback novels by the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "paradox",
       "word": "paradox",
       "senses": [
         {
-          "id": "sense-157c5267",
-          "pos": "noun",
+          "id": "sense-5f2e6b63",
+          "pos": "n.",
           "meaningZh": "矛盾體；弔詭",
-          "definitionEn": "someone or something that seems to have contradictory qualities",
           "examples": [
             "The concept of time travel presents a paradox, as it involves going back in time to change the past, which in turn would alter the future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2f15c58d",
-          "pos": "noun",
+          "id": "sense-7b144759",
+          "pos": "n.",
           "meaningZh": "自相矛盾的命題；悖論",
-          "definitionEn": "(logic) a statement that contradicts itself",
           "examples": [
             "The statement 'I always tell lies' is a classic paradox because if the statement is true, then it must be false, but if it is false, then it must be true."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "paralyze",
       "word": "paralyze",
       "senses": [
         {
-          "id": "sense-a2e4d68e",
-          "pos": "verb",
+          "id": "sense-912d23bf",
+          "pos": "v.",
           "meaningZh": "使癱瘓；使無力運作",
-          "definitionEn": "make powerless and unable to function",
           "examples": [
             "A car accident can paralyze a person’s legs and make them unable to walk."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0d7d0d87",
-          "pos": "verb",
+          "id": "sense-8e87116e",
+          "pos": "v.",
           "meaningZh": "使麻痺；使不能動彈",
-          "definitionEn": "cause to be paralyzed and immobile",
           "examples": [
             "The stroke paralyzed the left side of his body, leaving him immobile and speechless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "parliament",
       "word": "parliament",
       "senses": [
         {
-          "id": "sense-8c903b94",
-          "pos": "noun",
+          "id": "sense-2d550428",
+          "pos": "n.",
           "meaningZh": "國會；議會",
-          "definitionEn": "a legislative assembly in certain countries",
           "examples": [
             "The parliament convened to discuss and pass new laws."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b5ea0ddb",
-          "pos": "noun",
+          "id": "sense-65ea1dbf",
+          "pos": "n.",
           "meaningZh": "接龍紙牌遊戲",
-          "definitionEn": "a card game in which players try to be the first to get rid of their cards by playing them in numerical sequence and by suit",
           "examples": [
             "During our family game night, we played parliament and laughed as we raced to play our cards in perfect order, hoping to be the first one to get rid of all our cards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pastime",
       "word": "pastime",
       "senses": [
         {
-          "id": "sense-66cdb8ff",
-          "pos": "noun",
+          "id": "sense-85496293",
+          "pos": "n.",
           "meaningZh": "消遣；嗜好",
-          "definitionEn": "an activity that one enjoys doing in their free time",
           "examples": [
             "Reading books became his favorite pastime during the pandemic lockdown."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "patriot",
       "word": "patriot",
       "senses": [
         {
-          "id": "sense-eba94831",
-          "pos": "noun",
+          "id": "sense-650dfda9",
+          "pos": "n.",
           "meaningZh": "愛國者；愛國人士",
-          "definitionEn": "a person who loves, supports, and defends their country and its interests",
           "examples": [
             "Jennifer is a true patriot who proudly displays the national flag on her front porch and actively participates in community programs that benefit her country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "patriotic",
       "word": "patriotic",
       "senses": [
         {
-          "id": "sense-2a338430",
-          "pos": "adjective",
+          "id": "sense-5d16597e",
+          "pos": "adj.",
           "meaningZh": "愛國的；有愛國心的",
-          "definitionEn": "Having or expressing devotion to and vigorous support for one’s country.",
           "examples": [
             "On Independence Day, the streets were filled with people waving flags, singing the national anthem, and displaying their patriotic pride."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peacock",
       "word": "peacock",
       "senses": [
         {
-          "id": "sense-4fba16eb",
-          "pos": "noun",
+          "id": "sense-9b43aee7",
+          "pos": "n.",
           "meaningZh": "孔雀",
-          "definitionEn": "a large bird with a long colorful tail that it can spread out like a fan",
           "examples": [
             "The peacock spread its tail to attract a mate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-da4da25b",
-          "pos": "noun",
+          "id": "sense-72b9072f",
+          "pos": "n.",
           "meaningZh": "孔雀蛺蝶",
-          "definitionEn": "a large and brightly colored butterfly found in Europe, with wings that have reddish-brown color and purple spots",
           "examples": [
             "During my visit to the butterfly exhibit, I was captivated by a stunning peacock fluttering gracefully among the flowers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pebble",
       "word": "pebble",
       "senses": [
         {
-          "id": "sense-ae56fa6f",
-          "pos": "noun",
+          "id": "sense-b5c7dc83",
+          "pos": "n.",
           "meaningZh": "小鵝卵石；小圓石",
-          "definitionEn": "a small, smooth, rounded stone, especially one worn away by erosion",
           "examples": [
             "While strolling along the beach, I picked up a pebble and skipped it across the calm surface of the sea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peek",
       "word": "peek",
       "senses": [
         {
-          "id": "sense-80f3f149",
-          "pos": "verb",
+          "id": "sense-2318d852",
+          "pos": "v.",
           "meaningZh": "偷看；瞥一眼",
-          "definitionEn": "take a brief look at; throw a glance at",
           "examples": [
             "John peeked through the window to see if the pizza delivery had arrived."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3544d36a",
-          "pos": "noun",
+          "id": "sense-0b1ccb5e",
+          "pos": "n.",
           "meaningZh": "偷看；一瞥",
-          "definitionEn": "a secret or quick look",
           "examples": [
             "She took a quick peek at her phone to check for any new messages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pending",
       "word": "pending",
       "senses": [
         {
-          "id": "sense-94af6c39",
-          "pos": "adjective",
+          "id": "sense-25966ef7",
+          "pos": "adj.",
           "meaningZh": "待決的；懸而未決的",
-          "definitionEn": "awaiting conclusion or confirmation",
           "examples": [
             "The approval of the treaty is still pending the final signature of all party representatives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b6c1acfd",
-          "pos": "noun",
+          "id": "sense-704e0fd5",
+          "pos": "n.",
           "meaningZh": "未決事項；待處理事務",
-          "definitionEn": "an unresolved matter; a situation waiting for a conclusion or decision",
           "examples": [
             "The approval of my visa is still pending, so I haven’t booked my flight yet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peninsula",
       "word": "peninsula",
       "senses": [
         {
-          "id": "sense-36eb177e",
-          "pos": "noun",
+          "id": "sense-d8fcb4f6",
+          "pos": "n.",
           "meaningZh": "半島",
-          "definitionEn": "a piece of land almost surrounded by water or projecting out into a body of water",
           "examples": [
             "The state of Florida in the United States is mostly a peninsula, surrounded by the Gulf of Mexico to the west and the Atlantic Ocean to the east."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "perch",
       "word": "perch",
       "senses": [
         {
-          "id": "sense-6b9756f2",
-          "pos": "noun",
+          "id": "sense-89d8b002",
+          "pos": "n.",
           "meaningZh": "高處棲息地；停靠高點",
-          "definitionEn": "an elevated place used as a seat or a place to rest",
           "examples": [
             "The birds perched on the highest branch of the tree, enjoying their view of the surrounding landscape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peril",
       "word": "peril",
       "senses": [
         {
-          "id": "sense-edbb49f0",
-          "pos": "noun",
+          "id": "sense-f6c41e4c",
+          "pos": "n.",
           "meaningZh": "危險；險境",
-          "definitionEn": "the state of being in danger or at risk",
           "examples": [
             "The hikers bravely continued their journey despite the perilous weather conditions and steep terrain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9830d3a0",
-          "pos": "noun",
+          "id": "sense-52cb4554",
+          "pos": "n.",
           "meaningZh": "威脅；危害",
-          "definitionEn": "something that is dangerous or has the potential to cause harm or loss",
           "examples": [
             "The hiker ignored the warnings of park rangers and ventured into the wilderness alone, putting himself in grave peril."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "perish",
       "word": "perish",
       "senses": [
         {
-          "id": "sense-85e45de7",
-          "pos": "verb",
+          "id": "sense-03f3abe2",
+          "pos": "v.",
           "meaningZh": "死亡；消亡",
-          "definitionEn": "to die or pass away, losing all physical attributes and functions that are necessary to sustain life.",
           "examples": [
             "After being stranded on the deserted island for months, their only hope was to find food and fresh water, or else they would surely perish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "permissible",
       "word": "permissible",
       "senses": [
         {
-          "id": "sense-ee7e7d06",
-          "pos": "adjective",
+          "id": "sense-304147bc",
+          "pos": "adj.",
           "meaningZh": "允許的；許可的",
-          "definitionEn": "able to be permitted; allowable",
           "examples": [
             "Smoking is not permissible in this building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a418cf85",
-          "pos": "adjective",
+          "id": "sense-13918823",
+          "pos": "adj.",
           "meaningZh": "可接受的；容許的",
-          "definitionEn": "admissible; acceptable",
           "examples": [
             "Wearing jeans to work is not permissible in this office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "persevere",
       "word": "persevere",
       "senses": [
         {
-          "id": "sense-d894b62f",
-          "pos": "verb",
+          "id": "sense-3e1b6836",
+          "pos": "v.",
           "meaningZh": "堅持不懈；持續努力",
-          "definitionEn": "To continue in a course of action despite difficulty or opposition.",
           "examples": [
             "Even though she failed her driving test three times, she decided to persevere until she finally passed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "persistence",
       "word": "persistence",
       "senses": [
         {
-          "id": "sense-07b5b167",
-          "pos": "noun",
+          "id": "sense-9bf18a0f",
+          "pos": "n.",
           "meaningZh": "堅持；毅力",
-          "definitionEn": "persistent determination",
           "examples": [
             "Despite facing numerous setbacks and obstacles, Lisa's persistence helped her achieve her dream of becoming a successful entrepreneur."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8befc902",
-          "pos": "noun",
+          "id": "sense-e53d1c2a",
+          "pos": "n.",
           "meaningZh": "持續；不斷重複",
-          "definitionEn": "the act of persisting or persevering; continuing or repeating behavior",
           "examples": [
             "Despite numerous rejections, her persistence in applying for jobs paid off when she finally landed her dream position."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "persistent",
       "word": "persistent",
       "senses": [
         {
-          "id": "sense-ae094aa0",
-          "pos": "adjective",
+          "id": "sense-f2797ff6",
+          "pos": "adj.",
           "meaningZh": "持續的；不屈不撓的",
-          "definitionEn": "continuing to exist or continue to do something, even after the usual time has passed, or despite facing difficulties or opposition.",
           "examples": [
             "Despite numerous rejections, she remained persistent in her pursuit of a record deal, eventually signing with a major music label."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "petrol",
       "word": "petrol",
       "senses": [
         {
-          "id": "sense-d8bb19b1",
-          "pos": "noun",
+          "id": "sense-7e377cd1",
+          "pos": "n.",
           "meaningZh": "汽油（英式用法）",
-          "definitionEn": "a flammable mixture of hydrocarbons derived from petroleum, used as fuel in internal-combustion engines.",
           "examples": [
             "John went to the gas station to fill up his car with petrol."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "petroleum",
       "word": "petroleum",
       "senses": [
         {
-          "id": "sense-f2dfb841",
-          "pos": "noun",
+          "id": "sense-87a62589",
+          "pos": "n.",
           "meaningZh": "石油；原油",
-          "definitionEn": "an oily, flammable liquid obtained from underground deposits, consisting mainly of hydrocarbons.",
           "examples": [
             "The oil refinery processed crude petroleum into gasoline, diesel and other products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e9d85ee1",
-          "pos": "noun",
+          "id": "sense-0285aeb9",
+          "pos": "n.",
           "meaningZh": "石油（天然資源）",
-          "definitionEn": "a natural resource formed from fossils of plants and animals, used for fuel, lubricants, and various other products.",
           "examples": [
             "The country's economy heavily relies on the export of petroleum, with vast oil fields providing a steady source of income and employment opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pharmacist",
       "word": "pharmacist",
       "senses": [
         {
-          "id": "sense-ca9375d5",
-          "pos": "noun",
+          "id": "sense-92772e55",
+          "pos": "n.",
           "meaningZh": "藥師；藥劑師",
-          "definitionEn": "a trained healthcare professional who specializes in preparing and dispensing drugs prescribed to patients.",
           "examples": [
             "My doctor prescribed me a new medication yesterday, so I went to the pharmacist to have it filled."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pharmacy",
       "word": "pharmacy",
       "senses": [
         {
-          "id": "sense-0911e4aa",
-          "pos": "noun",
+          "id": "sense-ca16c502",
+          "pos": "n.",
           "meaningZh": "藥局；藥房",
-          "definitionEn": "a retail shop where medicine and other articles are sold",
           "examples": [
             "I went to the pharmacy to pick up my prescription medication."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1671e284",
-          "pos": "noun",
+          "id": "sense-0ef0b1ec",
+          "pos": "n.",
           "meaningZh": "藥學；調劑學",
-          "definitionEn": "the art and science of preparing and dispensing drugs and medicines",
           "examples": [
             "After completing her studies, Sara opened her own pharmacy where she could utilize her knowledge and skills in preparing and dispensing drugs to help the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pianist",
       "word": "pianist",
       "senses": [
         {
-          "id": "sense-3ef68650",
-          "pos": "noun",
+          "id": "sense-dc7e9950",
+          "pos": "n.",
           "meaningZh": "鋼琴家；鋼琴演奏者",
-          "definitionEn": "a musician who specializes in playing the piano, typically as a solo instrument",
           "examples": [
             "The pianist captivated the audience with his mesmerizing performance of Chopin's nocturnes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pickpocket",
       "word": "pickpocket",
       "senses": [
         {
-          "id": "sense-c427e5f3",
-          "pos": "noun",
+          "id": "sense-20266027",
+          "pos": "n.",
           "meaningZh": "扒手；扒竊者",
-          "definitionEn": "a person who steals things from people’s pockets, especially in crowded public places",
           "examples": [
             "While exploring the bustling market, I suddenly felt a gentle touch on my back pocket. Alarmed, I turned around to catch a glimpse of a skilled pickpocket swiftly slipping away into the crowd with my wallet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pilgrim",
+      "word": "pilgrim",
+      "senses": [
+        {
+          "id": "sense-3608b631",
+          "pos": "n.",
+          "meaningZh": "朝聖者",
+          "examples": [
+            "During her visit to Mecca, she joined millions of other pilgrims on the hajj, walking around the Kaaba seven times in an act of devotion."
+          ]
+        },
+        {
+          "id": "sense-04bf326f",
+          "pos": "n.",
+          "meaningZh": "旅行者；異鄉客",
+          "examples": [
+            "When she graduated, she felt like a pilgrim starting a new journey in an unknown land."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pimple",
+      "word": "pimple",
+      "senses": [
+        {
+          "id": "sense-59a57023",
+          "pos": "n.",
+          "meaningZh": "粉刺；青春痘；丘疹",
+          "examples": [
+            "I woke up with a big pimple on my forehead, which was very embarrassing."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pinch",
+      "word": "pinch",
+      "senses": [
+        {
+          "id": "sense-eb5de0b3",
+          "pos": "n.",
+          "meaningZh": "夾傷；捏痛",
+          "examples": [
+            "While cooking, she accidentally gave herself a pinch in her finger between the two metal spoons."
+          ]
+        },
+        {
+          "id": "sense-141449b4",
+          "pos": "n.",
+          "meaningZh": "少許；一撮",
+          "examples": [
+            "Add just a pinch of salt to enhance the flavor of the soup."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "plague",
+      "word": "plague",
+      "senses": [
+        {
+          "id": "sense-718178dd",
+          "pos": "n.",
+          "meaningZh": "瘟疫；傳染病",
+          "examples": [
+            "During the Middle Ages, the Black Death ravaged Europe, causing a massive plague that resulted in the deaths of millions of people."
+          ]
+        },
+        {
+          "id": "sense-9bd61280",
+          "pos": "n.",
+          "meaningZh": "鼠疫；黑死病",
+          "examples": [
+            "During the Middle Ages, the plague ravaged Europe, resulting in the death of millions of people."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "plantation",
+      "word": "plantation",
+      "senses": [
+        {
+          "id": "sense-d10f9574",
+          "pos": "n.",
+          "meaningZh": "大農場；種植園",
+          "examples": [
+            "The plantation owner oversaw the cultivation of acres of sugarcane, employing a workforce to ensure a successful harvest."
+          ]
+        },
+        {
+          "id": "sense-7ee7405d",
+          "pos": "n.",
+          "meaningZh": "人工林；樹木園",
+          "examples": [
+            "In the plantation, towering oak trees are interspersed with neatly trimmed hedge rows."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

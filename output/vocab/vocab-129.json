@@ -1,1328 +1,615 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 129,
   "words": [
-    {
-      "wordKey": "settler",
-      "word": "settler",
-      "senses": [
-        {
-          "id": "sense-1127e922",
-          "pos": "noun",
-          "meaningZh": "開拓者；移墾者",
-          "definitionEn": "a person who settles in a new colony or moves into a new country, especially one who has been granted the right to establish a new community",
-          "examples": [
-            "In the 1600s, many European settlers traveled to North America in search of a better life and to establish their own communities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-534504c7",
-          "pos": "noun",
-          "meaningZh": "調解人；仲裁者",
-          "definitionEn": "a negotiator who settles disputes, often between two different groups",
-          "examples": [
-            "In the land dispute between the indigenous tribe and the government, the settler was able to facilitate a fair agreement that satisfied both parties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "severe",
-      "word": "severe",
-      "senses": [
-        {
-          "id": "sense-bcc3118d",
-          "pos": "adjective",
-          "meaningZh": "嚴重的；劇烈的",
-          "definitionEn": "intensely or extremely bad or unpleasant in degree or quality",
-          "examples": [
-            "The tornado caused severe damage to the small town, leaving many homes destroyed and residents displaced."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-6c136459",
-          "pos": "adjective",
-          "meaningZh": "猛烈的；危險的",
-          "definitionEn": "causing fear or anxiety by threatening great harm",
-          "examples": [
-            "The severe storm brought destructive winds and torrential rain, causing widespread damage to homes and infrastructure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "sew",
-      "word": "sew",
-      "senses": [
-        {
-          "id": "sense-73eb087a",
-          "pos": "verb",
-          "meaningZh": "縫製；裁縫",
-          "definitionEn": "create clothes or other objects made of material by joining pieces together using needle and thread",
-          "examples": [
-            "My mother used to sew her own dresses when she was young."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-e7202b6a",
-          "pos": "verb",
-          "meaningZh": "縫合；縫上",
-          "definitionEn": "fasten something by making stitches through it using a needle and thread or a sewing machine",
-          "examples": [
-            "She learned how to sew a button on her shirt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "shade",
-      "word": "shade",
-      "senses": [
-        {
-          "id": "sense-5fdc92bf",
-          "pos": "noun",
-          "meaningZh": "陰影；遮光",
-          "definitionEn": "Relative darkness caused by the interception of light rays by an opaque body.",
-          "examples": [
-            "The tree provided some shade from the hot sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-7d586d11",
-          "pos": "noun",
-          "meaningZh": "遮陽物；遮蔽物",
-          "definitionEn": "A protective covering that shields something from direct sunlight.",
-          "examples": [
-            "During the hot summer months, John likes to relax under the shady trees in his backyard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "shady",
-      "word": "shady",
-      "senses": [
-        {
-          "id": "sense-b510d51a",
-          "pos": "adjective",
-          "meaningZh": "陰暗的；遮蔭的",
-          "definitionEn": "covered in shadow or darkness",
-          "examples": [
-            "The alley was too shady to walk through at night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-083a7201",
-          "pos": "adjective",
-          "meaningZh": "可疑的；不可信賴的",
-          "definitionEn": "not trustworthy; suspicious",
-          "examples": [
-            "The used car salesman had a shady demeanor and people didn’t feel comfortable doing business with him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "shameful",
       "word": "shameful",
       "senses": [
         {
-          "id": "sense-ad3adc26",
-          "pos": "adjective",
+          "id": "sense-5104f2b8",
+          "pos": "adj.",
           "meaningZh": "可恥的；丟臉的",
-          "definitionEn": "deserving or bringing disgrace or shame; morally reprehensible or offensive.",
           "examples": [
             "It is shameful to throw garbage on the streets instead of using trash cans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d97657a8",
-          "pos": "adjective",
+          "id": "sense-9c9951ce",
+          "pos": "adj.",
           "meaningZh": "令人羞恥的；不光彩的",
-          "definitionEn": "causing or deserving shame or disgrace; discreditable; humiliating.",
           "examples": [
             "It is shameful to discriminate against someone based on their race, gender or sexual orientation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shave",
       "word": "shave",
       "senses": [
         {
-          "id": "sense-a652cabf",
-          "pos": "verb",
+          "id": "sense-2eeb4680",
+          "pos": "v.",
           "meaningZh": "刮鬍子；剃毛",
-          "definitionEn": "to remove hair from the body using a razor",
           "examples": [
             "Every morning, John takes his time to shave his face before going to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5dc8beaf",
-          "pos": "noun",
+          "id": "sense-f21442a7",
+          "pos": "n.",
           "meaningZh": "刮臉；剃鬚",
-          "definitionEn": "the act or an instance of shaving",
           "examples": [
             "Adam has to shave every morning before going to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shelter",
       "word": "shelter",
       "senses": [
         {
-          "id": "sense-28517336",
-          "pos": "noun",
+          "id": "sense-605bc7d2",
+          "pos": "n.",
           "meaningZh": "避難所；掩蔽處",
-          "definitionEn": "a structure that provides privacy and protection from danger",
           "examples": [
             "During the hurricane, many people sought shelter in the nearby school building to protect themselves from the high winds and flying debris."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b9721de1",
-          "pos": "noun",
+          "id": "sense-5af0906d",
+          "pos": "n.",
           "meaningZh": "收容所；臨時住所",
-          "definitionEn": "temporary housing for homeless or displaced persons",
           "examples": [
             "The Red Cross set up a shelter for the victims of the hurricane."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L8",
-        "textbookTitle": "龍騰 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shift",
       "word": "shift",
       "senses": [
         {
-          "id": "sense-b2959981",
-          "pos": "verb",
+          "id": "sense-387c26ac",
+          "pos": "v.",
           "meaningZh": "移動；改變位置",
-          "definitionEn": "change position or direction",
           "examples": [
             "She shifted her weight to her other foot as she waited in line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ee563e75",
-          "pos": "verb",
+          "id": "sense-693bbd80",
+          "pos": "v.",
           "meaningZh": "調整；轉變（方向策略）",
-          "definitionEn": "change or adjust in quality or character",
           "examples": [
             "The company decided to shift its focus from traditional advertising to digital marketing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sightseeing",
       "word": "sightseeing",
       "senses": [
         {
-          "id": "sense-a9d1a778",
-          "pos": "noun",
+          "id": "sense-5dafc088",
+          "pos": "n.",
           "meaningZh": "觀光；遊覽",
-          "definitionEn": "the activity of visiting interesting places, especially as a tourist",
           "examples": [
             "We only had two days in Kyoto, so we did most of our sightseeing on foot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "signature",
       "word": "signature",
       "senses": [
         {
-          "id": "sense-ae868a25",
-          "pos": "noun",
+          "id": "sense-ae7fb469",
+          "pos": "n.",
           "meaningZh": "簽名；署名",
-          "definitionEn": "a person’s name written in their own unique way",
           "examples": [
             "When signing important legal documents, it is crucial to use your full signature to ensure authenticity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bc54fb34",
-          "pos": "noun",
+          "id": "sense-3a5b7b00",
+          "pos": "n.",
           "meaningZh": "個人風格；標誌性特色",
-          "definitionEn": "a particular style or characteristic that makes something easily identifiable",
           "examples": [
             "Her unique blend of soulful melodies and powerful lyrics is her signature as a singer-songwriter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "significance",
       "word": "significance",
       "senses": [
         {
-          "id": "sense-c7f48a7a",
-          "pos": "noun",
+          "id": "sense-7c3533f2",
+          "pos": "n.",
           "meaningZh": "重要性；重大意義",
-          "definitionEn": "the quality of being important or notable",
           "examples": [
             "The significance of the discovery of penicillin to the field of medicine cannot be overstated."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-52172acf",
-          "pos": "noun",
+          "id": "sense-a916a297",
+          "pos": "n.",
           "meaningZh": "含義；象徵意義",
-          "definitionEn": "the meaning or importance behind something, often conveyed through symbolism or context",
           "examples": [
             "The significance of the red rose in Western culture is often associated with love and passion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7 +1",
-        "textbookTitle": "龍騰 B3·L7、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sincerity",
       "word": "sincerity",
       "senses": [
         {
-          "id": "sense-39f1c5fc",
-          "pos": "noun",
+          "id": "sense-a7d6db5c",
+          "pos": "n.",
           "meaningZh": "誠意；真誠",
-          "definitionEn": "the quality of being open and truthful; not deceitful or hypocritical",
           "examples": [
             "Her sincerity was evident in the way she admitted her mistake and apologized."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b768361b",
-          "pos": "noun",
+          "id": "sense-f770fabb",
+          "pos": "n.",
           "meaningZh": "誠摯之情；衷心感受",
-          "definitionEn": "an earnest and sincere feeling",
           "examples": [
             "John’s sincerity in his apology was evident when he took full responsibility for his mistake and vowed to make amends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "singular",
       "word": "singular",
       "senses": [
         {
-          "id": "sense-21b09b54",
-          "pos": "adjective",
+          "id": "sense-39f45552",
+          "pos": "adj.",
           "meaningZh": "（文法）單數的",
-          "definitionEn": "in grammar, referring to a noun or pronoun that represents one thing or entity",
           "examples": [
             "The singular of 'book' is 'book', while the plural is 'books'."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e461825d",
-          "pos": "adjective",
+          "id": "sense-fb519e0f",
+          "pos": "adj.",
           "meaningZh": "單一的；獨個的",
-          "definitionEn": "referring to just one person or thing, separate from others",
           "examples": [
             "She lived alone in a small house, preferring the solitude of singular living."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "site",
       "word": "site",
       "senses": [
         {
-          "id": "sense-b8c2edb8",
-          "pos": "noun",
+          "id": "sense-5bf5e704",
+          "pos": "n.",
           "meaningZh": "地點；建築用地",
-          "definitionEn": "the land where something is built or located",
           "examples": [
             "The construction crew was surveying the site for the new office building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6b5a822d",
-          "pos": "noun",
+          "id": "sense-910289c9",
+          "pos": "n.",
           "meaningZh": "現場；所在地",
-          "definitionEn": "the place or location of something",
           "examples": [
             "The site of the crime was searched for evidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sketch",
       "word": "sketch",
       "senses": [
         {
-          "id": "sense-e6e17e71",
-          "pos": "noun",
+          "id": "sense-9afc459d",
+          "pos": "n.",
           "meaningZh": "草圖；素描稿",
-          "definitionEn": "a preliminary drawing made to assist in the later elaboration of a piece of art or design, often showing only outlines or major features.",
           "examples": [
             "The artist quickly created a sketch of the landscape before starting on the detailed painting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-387cf364",
-          "pos": "noun",
+          "id": "sense-55521e28",
+          "pos": "n.",
           "meaningZh": "（報刊）諷刺插畫；漫畫",
-          "definitionEn": "a humorous or satirical illustration, often with a caption, that can appear in a newspaper or magazine.",
           "examples": [
             "The political cartoonist created a sketch depicting the absurdity of the situation, which had everyone laughing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skyscraper",
       "word": "skyscraper",
       "senses": [
         {
-          "id": "sense-e99ec3b3",
-          "pos": "noun",
+          "id": "sense-9f7406fb",
+          "pos": "n.",
           "meaningZh": "摩天大樓；高樓大廈",
-          "definitionEn": "a tall, multi-story building used for offices, apartments or other functions",
           "examples": [
             "The Empire State Building in New York City is a famous skyscraper that houses offices and observation decks for tourists."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slight",
       "word": "slight",
       "senses": [
         {
-          "id": "sense-c63525fb",
-          "pos": "adjective",
+          "id": "sense-ceee9ef5",
+          "pos": "adj.",
           "meaningZh": "輕微的；些許的",
-          "definitionEn": "Not much or almost none; small in quantity or degree; (with ’a’) at least some",
           "examples": [
             "She noticed a slight tremble in his voice when he was speaking about his fear of heights."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-eb6df815",
-          "pos": "adjective",
+          "id": "sense-c46e087f",
+          "pos": "adj.",
           "meaningZh": "無足輕重的；不重要的",
-          "definitionEn": "Lacking substance or significance",
           "examples": [
             "The salesman made a slight effort to persuade us to buy the product, but we were not convinced."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "slogan",
       "word": "slogan",
       "senses": [
         {
-          "id": "sense-ef7af4ef",
-          "pos": "noun",
+          "id": "sense-78905fcf",
+          "pos": "n.",
           "meaningZh": "口號；標語；廣告詞",
-          "definitionEn": "a distinctive phrase or motto that represents a brand or group",
           "examples": [
             "The fast food chain's slogan, 'I'm lovin' it', is instantly recognizable around the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "socket",
       "word": "socket",
       "senses": [
         {
-          "id": "sense-c57462c0",
-          "pos": "noun",
+          "id": "sense-95a51538",
+          "pos": "n.",
           "meaningZh": "插座；電源插口",
-          "definitionEn": "a receptacle into which an electric device can be inserted",
           "examples": [
             "Please plug in the lamp to the socket near the side table."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "software",
       "word": "software",
       "senses": [
         {
-          "id": "sense-09b2d70f",
-          "pos": "noun",
+          "id": "sense-66d4d2d7",
+          "pos": "n.",
           "meaningZh": "軟體；應用程式",
-          "definitionEn": "the programs that computers and other electronic devices use to do their work",
           "examples": [
             "You need to update the software on your laptop before installing the new app."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "solar",
       "word": "solar",
       "senses": [
         {
-          "id": "sense-bf281e4d",
-          "pos": "adjective",
+          "id": "sense-eb3deda3",
+          "pos": "adj.",
           "meaningZh": "太陽的；太陽能的",
-          "definitionEn": "related to the sun or using its energy",
           "examples": [
             "She installed solar panels on her roof to harness the power of the sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spade",
       "word": "spade",
       "senses": [
         {
-          "id": "sense-5102d1f7",
-          "pos": "noun",
+          "id": "sense-f49bfe73",
+          "pos": "n.",
           "meaningZh": "鏟子；鐵鍬",
-          "definitionEn": "a tool with a long handle and a blade used for digging",
           "examples": [
             "The gardener used a spade to dig a hole for planting the tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spare",
       "word": "spare",
       "senses": [
         {
-          "id": "sense-325998eb",
-          "pos": "verb",
+          "id": "sense-73328362",
+          "pos": "v.",
           "meaningZh": "省出；撥出（多餘之物）",
-          "definitionEn": "give up what is not strictly needed.",
           "examples": [
             "When I was packing for my vacation, I decided to spare some of the extra clothes that I didn't need."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spark",
       "word": "spark",
       "senses": [
         {
-          "id": "sense-35736b41",
-          "pos": "noun",
+          "id": "sense-2303678d",
+          "pos": "n.",
           "meaningZh": "火花；火星",
-          "definitionEn": "a small piece of burning material or a piece of material that becomes hot and gives off sparks when rubbed or struck",
           "examples": [
             "I struck the flint against the steel, and a spark ignited the campfire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-61685302",
-          "pos": "noun",
+          "id": "sense-9f3bbd0e",
+          "pos": "n.",
           "meaningZh": "一線（希望）；萌芽",
-          "definitionEn": "a faint signal of something that can become stronger",
           "examples": [
             "On the gloomy horizon, a spark of hope emerged, promising a better future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spear",
       "word": "spear",
       "senses": [
         {
-          "id": "sense-3a344c07",
-          "pos": "noun",
+          "id": "sense-67ef5963",
+          "pos": "n.",
           "meaningZh": "矛；長槍；標槍",
-          "definitionEn": "a long, pointed tool or weapon",
           "examples": [
             "The hunter thrust his spear into the heart of the deer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-68db0408",
-          "pos": "noun",
+          "id": "sense-b9b69aa4",
+          "pos": "n.",
           "meaningZh": "長矛；投擲用長槍",
-          "definitionEn": "a weapon consisting of a pole with a pointed metal head, used for thrusting or throwing",
           "examples": [
             "The warrior threw his spear with such force that it pierced through the enemy’s armor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "species",
       "word": "species",
       "senses": [
         {
-          "id": "sense-2f07546b",
-          "pos": "noun",
+          "id": "sense-4e546def",
+          "pos": "n.",
           "meaningZh": "（生物）物種",
-          "definitionEn": "(biology) a group of organisms that share common characteristics and can interbreed",
           "examples": [
             "Despite being different species, lions and tigers can interbreed and produce offspring known as ligers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-dc482e57",
-          "pos": "noun",
+          "id": "sense-768acd43",
+          "pos": "n.",
           "meaningZh": "種類；類別",
-          "definitionEn": "a specific kind of something",
           "examples": [
             "There are over 10,000 species of birds in the world, including seagulls, parrots, and eagles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "spiritual",
       "word": "spiritual",
       "senses": [
         {
-          "id": "sense-4a5ea819",
-          "pos": "adjective",
+          "id": "sense-7c07f6cf",
+          "pos": "adj.",
           "meaningZh": "心靈的；精神的；非物質的",
-          "definitionEn": "related to the spirit or soul rather than the material world",
           "examples": [
             "After years of searching for meaning, she finally found her spiritual path by practicing meditation and connecting with her inner self."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-47d90f19",
-          "pos": "adjective",
+          "id": "sense-f66ba14b",
+          "pos": "adj.",
           "meaningZh": "宗教的；靈性的",
-          "definitionEn": "relating to religion or religious matters",
           "examples": [
             "During the retreat, she experienced a deep spiritual awakening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L8 +1",
-        "textbookTitle": "龍騰 B2·L8、三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "splendid",
       "word": "splendid",
       "senses": [
         {
-          "id": "sense-1e18d1e7",
-          "pos": "adjective",
+          "id": "sense-6238d959",
+          "pos": "adj.",
           "meaningZh": "極好的；卓越的",
-          "definitionEn": "very good; of the highest quality",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-da1b46c2",
-          "pos": "adjective",
+          "id": "sense-b5d94a18",
+          "pos": "adj.",
           "meaningZh": "壯麗的；富麗堂皇的",
-          "definitionEn": "having great beauty and splendor",
           "examples": [
             "The sunset over the ocean was a splendid sight to behold."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "split",
       "word": "split",
       "senses": [
         {
-          "id": "sense-1a531784",
-          "pos": "verb",
+          "id": "sense-a253b287",
+          "pos": "v.",
           "meaningZh": "分割；劃分；拆開",
-          "definitionEn": "to separate something into parts or portions",
           "examples": [
             "I need to split the cake evenly between all the guests at the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sprinkle",
+      "word": "sprinkle",
+      "senses": [
+        {
+          "id": "sense-3b712bdc",
+          "pos": "v.",
+          "meaningZh": "灑上；撒（少量液體或粉末）",
+          "examples": [
+            "She decided to sprinkle some cinnamon on her oatmeal to add flavor."
+          ]
+        },
+        {
+          "id": "sense-7206eb38",
+          "pos": "v.",
+          "meaningZh": "下毛毛雨；飄小雨",
+          "examples": [
+            "The sprinkles of rain made the leaves on the trees glitter."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "stab",
+      "word": "stab",
+      "senses": [
+        {
+          "id": "sense-d5283e5c",
+          "pos": "v.",
+          "meaningZh": "刺入；戳進（尖物）",
+          "examples": [
+            "He picked up the knife and stabbed it into the apple to cut it in half."
+          ]
+        },
+        {
+          "id": "sense-4247a655",
+          "pos": "v.",
+          "meaningZh": "刺傷；行刺",
+          "examples": [
+            "In a fit of rage, he stabbed his opponent with a kitchen knife."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "statistic",
+      "word": "statistic",
+      "senses": [
+        {
+          "id": "sense-297a7314",
+          "pos": "n.",
+          "meaningZh": "統計數字；數據",
+          "examples": [
+            "The statistic showed that over 70% of the population preferred the new brand of soda over the old one."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "statistics",
+      "word": "statistics",
+      "senses": [
+        {
+          "id": "sense-04c79dd7",
+          "pos": "n.",
+          "meaningZh": "統計學；數據科學",
+          "examples": [
+            "The statistics department at the university studies data on population growth and distribution in countries around the world."
+          ]
+        },
+        {
+          "id": "sense-b9caa400",
+          "pos": "n.",
+          "meaningZh": "統計數據；數值分析",
+          "examples": [
+            "The use of statistics is essential for making informed decisions in many fields such as finance, medicine, and government policy."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "status",
+      "word": "status",
+      "senses": [
+        {
+          "id": "sense-827ed32e",
+          "pos": "n.",
+          "meaningZh": "現況；狀態",
+          "examples": [
+            "After completing all the tasks assigned to me, my status changed from 'in progress' to 'completed'."
+          ]
+        },
+        {
+          "id": "sense-cfe0d448",
+          "pos": "n.",
+          "meaningZh": "地位；身分",
+          "examples": [
+            "In many cultures, wealth and power are often indicators of high status."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

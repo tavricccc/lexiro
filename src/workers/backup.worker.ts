@@ -1,39 +1,63 @@
+import type { BackupWorkerRequest, BackupWorkerResponse } from '@/types/backup-worker'
 import { strFromU8, strToU8, unzipSync, zipSync } from 'fflate'
+import { ZIP_INTERNAL_FILENAME } from '@/constants/backup'
+import { isRecord } from '@/lib/schema'
 
-const ZIP_INTERNAL_FILENAME = 'vocp-sets.json'
+interface BackupWorkerScope {
+  postMessage: (message: BackupWorkerResponse, transfer?: Transferable[]) => void
+  onmessage: ((event: MessageEvent<unknown>) => void) | null
+}
 
-const ctx = globalThis as any
-const pm = ctx.postMessage.bind(ctx)
+const scope = globalThis as unknown as BackupWorkerScope
 
-ctx.onmessage = (e: MessageEvent) => {
+function isRequest(value: unknown): value is BackupWorkerRequest {
+  if (!isRecord(value) || typeof value.id !== 'string' || (value.type !== 'export' && value.type !== 'import'))
+    return false
+  if (value.type === 'export')
+    return true
+  return isRecord(value.payload) && value.payload.buffer instanceof ArrayBuffer
+}
+
+function postMessage(message: BackupWorkerResponse, transfer?: Transferable[]): void {
+  scope.postMessage(message, transfer)
+}
+
+scope.onmessage = (e: MessageEvent<unknown>) => {
+  if (!isRequest(e.data)) {
+    const id = isRecord(e.data) && typeof e.data.id === 'string' ? e.data.id : 'unknown'
+    postMessage({ id, type: 'error', error: '無效的 Worker 請求' })
+    return
+  }
+
   const { id, type, payload } = e.data
 
   if (type === 'export') {
     const jsonText = JSON.stringify(payload, null, 2)
     const zipped = zipSync({ [ZIP_INTERNAL_FILENAME]: strToU8(jsonText) }, { level: 5 })
-    pm({ id, type: 'export', buffer: zipped.buffer }, [zipped.buffer])
+    const buffer = new ArrayBuffer(zipped.byteLength)
+    new Uint8Array(buffer).set(zipped)
+    postMessage({ id, type: 'export', buffer }, [buffer])
     return
   }
 
   if (type === 'import') {
     try {
       const entries = unzipSync(new Uint8Array(payload.buffer))
-      const entryNames = Object.keys(entries)
-      const jsonEntry = entryNames.find(name => name.toLowerCase().endsWith(ZIP_INTERNAL_FILENAME))
-        || entryNames.find(name => name.toLowerCase().endsWith('.json'))
+      const jsonEntry = entries[ZIP_INTERNAL_FILENAME]
       if (!jsonEntry) {
-        pm({ id, type: 'import', error: '找不到 JSON 檔案' })
+        postMessage({ id, type: 'import', error: '找不到 JSON 檔案' })
         return
       }
 
-      const result = JSON.parse(strFromU8(entries[jsonEntry]))
-      pm({ id, type: 'import', result })
+      const result = JSON.parse(strFromU8(jsonEntry))
+      postMessage({ id, type: 'import', result })
     }
     catch (err) {
-      pm({ id, type: 'import', error: (err as Error).message })
+      const message = err instanceof Error ? err.message : '備份檔解析失敗'
+      postMessage({ id, type: 'import', error: message })
     }
     return
   }
 
-  pm({ id, type, error: '未知的 Worker 請求類型' })
+  postMessage({ id, type, error: '未知的 Worker 請求類型' })
 }

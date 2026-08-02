@@ -1,1356 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 45,
   "words": [
-    {
-      "wordKey": "glue",
-      "word": "glue",
-      "senses": [
-        {
-          "id": "sense-5e15afe0",
-          "pos": "noun",
-          "meaningZh": "膠水；黏著劑",
-          "definitionEn": "A sticky substance used for joining or repairing things",
-          "examples": [
-            "Sam used glue to fix the broken vase."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-92f20dd6",
-          "pos": "verb",
-          "meaningZh": "黏合；黏貼",
-          "definitionEn": "Stick or join (something) with or as if with glue",
-          "examples": [
-            "She used glue to affix the broken pieces of the vase back together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "goal",
-      "word": "goal",
-      "senses": [
-        {
-          "id": "sense-49c3b4b6",
-          "pos": "noun",
-          "meaningZh": "目標；目的",
-          "definitionEn": "the end towards which effort is directed.",
-          "examples": [
-            "His goal is to run a marathon by the end of the year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-c5400448",
-          "pos": "noun",
-          "meaningZh": "（足球）進球；得分",
-          "definitionEn": "the score in soccer and hockey when the ball or puck passes completely over the goal line.",
-          "examples": [
-            "The home team scored the winning goal in the final minute of play."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L2",
-        "textbookTitle": "三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "goat",
-      "word": "goat",
-      "senses": [
-        {
-          "id": "sense-4f0c20db",
-          "pos": "noun",
-          "meaningZh": "山羊",
-          "definitionEn": "an agile ruminant related to sheep, characterized by a beard and straight horns",
-          "examples": [
-            "The mountain climber scaled the steep cliffs with the agility of a goat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-f61c5bef",
-          "pos": "noun",
-          "meaningZh": "代罪羔羊；被怪罪的人",
-          "definitionEn": "a person who is blamed for others’ mistakes or shortcomings",
-          "examples": [
-            "I can't believe my coworker is such a goat, always taking credit for other people's work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "gold",
-      "word": "gold",
-      "senses": [
-        {
-          "id": "sense-36c55bc9",
-          "pos": "noun",
-          "meaningZh": "黃金；金",
-          "definitionEn": "a soft, yellow, precious metal that is often used in jewelry and currency, and is found as nuggets in rocks and streams",
-          "examples": [
-            "She wore a stunning gold necklace to the gala."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-5f276d07",
-          "pos": "noun",
-          "meaningZh": "金幣；金製品",
-          "definitionEn": "coins or items made from gold",
-          "examples": [
-            "She inherited a collection of gold coins from her grandfather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "golden",
-      "word": "golden",
-      "senses": [
-        {
-          "id": "sense-481b81e3",
-          "pos": "adjective",
-          "meaningZh": "金黃色的；金色的",
-          "definitionEn": "suggestive of gold",
-          "examples": [
-            "The rays of the setting sun cast a golden glow over the ocean, creating a breathtaking scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-477291b3",
-          "pos": "adjective",
-          "meaningZh": "繁榮昌盛的；黃金時代的",
-          "definitionEn": "marked by peace and prosperity",
-          "examples": [
-            "After years of conflict, the region finally entered a golden era of stability and economic growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "goose",
       "word": "goose",
       "senses": [
         {
-          "id": "sense-88665237",
-          "pos": "noun",
+          "id": "sense-54ba187f",
+          "pos": "n.",
           "meaningZh": "鵝",
-          "definitionEn": "a large water bird with a long neck, webbed feet, and a short broad bill",
           "examples": [
             "A flock of geese flew over the lake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "govern",
       "word": "govern",
       "senses": [
         {
-          "id": "sense-e424f689",
-          "pos": "verb",
+          "id": "sense-ec061bdc",
+          "pos": "v.",
           "meaningZh": "治理；統治",
-          "definitionEn": "to exercise authority over a nation or territory",
           "examples": [
             "The newly elected president will govern the country and make decisions on behalf of its citizens."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-18fe254b",
-          "pos": "verb",
+          "id": "sense-24f80066",
+          "pos": "v.",
           "meaningZh": "支配；約束",
-          "definitionEn": "to direct or strongly influence someone’s behavior",
           "examples": [
             "The strict rules and regulations of the school govern the students' conduct and ensure discipline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "government",
       "word": "government",
       "senses": [
         {
-          "id": "sense-5818c9be",
-          "pos": "noun",
+          "id": "sense-a42bd5ba",
+          "pos": "n.",
           "meaningZh": "政府；執政當局",
-          "definitionEn": "The organization which holds the power to control a political unit.",
           "examples": [
             "The government declared new tax policies to boost the economy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gradual",
       "word": "gradual",
       "senses": [
         {
-          "id": "sense-829a77a3",
-          "pos": "adjective",
+          "id": "sense-e379592f",
+          "pos": "adj.",
           "meaningZh": "逐漸的；漸進的",
-          "definitionEn": "happening slowly over a long period of time",
           "examples": [
             "There has been a gradual improvement in her health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9c83db8e",
-          "pos": "adjective",
+          "id": "sense-9987379a",
+          "pos": "adj.",
           "meaningZh": "坡度平緩的；不陡的",
-          "definitionEn": "(of a topographical gradient) not steep or abrupt",
           "examples": [
             "The hiking trail had a gradual incline, making it easier for beginners to complete."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +1",
-        "textbookTitle": "龍騰 B2·L6、三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grain",
       "word": "grain",
       "senses": [
         {
-          "id": "sense-ef726402",
-          "pos": "noun",
+          "id": "sense-63c61bfa",
+          "pos": "n.",
           "meaningZh": "穀物；穀粒",
-          "definitionEn": "the seeds of cereal plants such as wheat or rice used for food",
           "examples": [
             "The farmers stored their grain for the winter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-33a48bf4",
-          "pos": "noun",
+          "id": "sense-b5f6553c",
+          "pos": "n.",
           "meaningZh": "微粒；極小單位",
-          "definitionEn": "the smallest possible unit of something",
           "examples": [
             "In a digital image, each pixel is a grain of color."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gram",
       "word": "gram",
       "senses": [
         {
-          "id": "sense-0f04bc6b",
-          "pos": "noun",
+          "id": "sense-7481bbff",
+          "pos": "n.",
           "meaningZh": "公克；克（重量單位）",
-          "definitionEn": "a unit of weight in the metric system, equal to one thousandth of a kilogram.",
           "examples": [
             "The recipe calls for 200 grams of sugar."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grand",
       "word": "grand",
       "senses": [
         {
-          "id": "sense-a6ae795c",
-          "pos": "adjective",
+          "id": "sense-053f1df8",
+          "pos": "adj.",
           "meaningZh": "宏偉的；壯觀的",
-          "definitionEn": "very impressive and large in size or extent",
           "examples": [
             "The grand ballroom was adorned with crystal chandeliers and gold trim, creating a truly magnificent atmosphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-aa54cfdf",
-          "pos": "adjective",
+          "id": "sense-a2571fa3",
+          "pos": "adj.",
           "meaningZh": "雄心勃勃的；規模龐大的",
-          "definitionEn": "showing great ambition and impressive in scale or scope of behavior",
           "examples": [
             "The grand finale of the concert featured an elaborate fireworks display synchronized to the live music."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grape",
       "word": "grape",
       "senses": [
         {
-          "id": "sense-1d40518b",
-          "pos": "noun",
+          "id": "sense-d0056473",
+          "pos": "n.",
           "meaningZh": "葡萄",
-          "definitionEn": "any of the various juicy fruits of the genus Vitis with green or purple skins that grow in clusters",
           "examples": [
             "During the picnic, Sarah reached into the basket and grabbed a handful of sweet, ripened grapes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-93fe1dd2",
-          "pos": "noun",
+          "id": "sense-af84f26a",
+          "pos": "n.",
           "meaningZh": "葡萄彈；霰彈",
-          "definitionEn": "a cluster of small projectiles, such as bullets or pellets, fired together from a cannon to produce a hail of shot",
           "examples": [
             "During the battle, the warship's cannons unleashed a grape, decimating the enemy forces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "greet",
       "word": "greet",
       "senses": [
         {
-          "id": "sense-56483e78",
-          "pos": "verb",
+          "id": "sense-3b59159f",
+          "pos": "v.",
           "meaningZh": "打招呼；問候",
-          "definitionEn": "to say hello or welcome to someone",
           "examples": [
             "As soon as I entered the room, everyone greeted me with warm smiles and handshakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4852eaab",
-          "pos": "verb",
+          "id": "sense-1ee38d80",
+          "pos": "v.",
           "meaningZh": "向……致意；送上問候",
-          "definitionEn": "to send a greeting to someone",
           "examples": [
             "Every morning, Sarah would greet her coworkers with a warm smile and a cheerful 'Good morning!'"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L2",
-        "textbookTitle": "三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "growth",
       "word": "growth",
       "senses": [
         {
-          "id": "sense-dac888a3",
-          "pos": "noun",
+          "id": "sense-2774ab5f",
+          "pos": "n.",
           "meaningZh": "增長；成長",
-          "definitionEn": "an increase in size, quantity, or importance",
           "examples": [
             "With proper nutrition and exercise, children experience steady growth in height and weight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c4a5ce12",
-          "pos": "noun",
+          "id": "sense-efe41466",
+          "pos": "n.",
           "meaningZh": "生長物；增生物",
-          "definitionEn": "something that has grown or is growing",
           "examples": [
             "The tree showed significant growth, with its branches extending further and its trunk thickening over the years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guard",
       "word": "guard",
       "senses": [
         {
-          "id": "sense-e6ab9f81",
-          "pos": "noun",
+          "id": "sense-412b44d5",
+          "pos": "n.",
           "meaningZh": "警衛；護衛人員",
-          "definitionEn": "a person or thing that watches over or protects from danger, damage, or injury",
           "examples": [
             "The security guard stood at the entrance, ensuring the safety of everyone entering the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ce76234e",
-          "pos": "noun",
+          "id": "sense-797a7b8a",
+          "pos": "n.",
           "meaningZh": "衛兵；守衛",
-          "definitionEn": "a military unit or person(s) serving to protect someone or something",
           "examples": [
             "The guard stood outside the entrance, ensuring the safety of the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guava",
       "word": "guava",
       "senses": [
         {
-          "id": "sense-19255c4a",
-          "pos": "noun",
+          "id": "sense-94e5390e",
+          "pos": "n.",
           "meaningZh": "芭樂；番石榴",
-          "definitionEn": "A tropical fruit that is round, yellow in color, with pink or white flesh and contains hard seeds.",
           "examples": [
             "I enjoyed a refreshing guava smoothie on a sunny beach in Hawaii."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guest",
       "word": "guest",
       "senses": [
         {
-          "id": "sense-f8d7b891",
-          "pos": "noun",
+          "id": "sense-c230b671",
+          "pos": "n.",
           "meaningZh": "賓客；受邀者",
-          "definitionEn": "someone who is invited to an event or a place and is treated with kindness and respect",
           "examples": [
             "At the wedding reception, the bride and groom made sure to personally greet each guest and ensure they were well taken care of."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-d2cdfaca",
-          "pos": "noun",
+          "id": "sense-1ab2236a",
+          "pos": "n.",
           "meaningZh": "房客；旅客；食客",
-          "definitionEn": "a person who stays at a hotel or eats at a restaurant, or someone who is invited to stay in someone’s home",
           "examples": [
             "The hotel staff welcomed the guest and showed them to their room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "guide",
       "word": "guide",
       "senses": [
         {
-          "id": "sense-58d475ce",
-          "pos": "noun",
+          "id": "sense-f0fb7a5e",
+          "pos": "n.",
           "meaningZh": "導遊；解說員",
-          "definitionEn": "a person who is employed to show places, provide information, and generally help and advice tourists or visitors",
           "examples": [
             "During my trip to Rome, I hired a knowledgeable guide who took me to all the famous historical sites and provided interesting information about each of them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e2d69ad9",
-          "pos": "noun",
+          "id": "sense-415489a9",
+          "pos": "n.",
           "meaningZh": "嚮導；帶路人",
-          "definitionEn": "a person who leads or directs others on a journey or to a destination",
           "examples": [
             "The experienced mountaineer acted as our guide, leading us safely to the summit of the mountain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gun",
       "word": "gun",
       "senses": [
         {
-          "id": "sense-62076c9f",
-          "pos": "noun",
+          "id": "sense-9c90eb73",
+          "pos": "n.",
           "meaningZh": "槍；手槍",
-          "definitionEn": "a weapon that fires a projectile at high speed, typically from a metal tube or barrel",
           "examples": [
             "The police officer drew his gun and aimed it at the suspect."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2b1003b9",
-          "pos": "noun",
+          "id": "sense-a55b4775",
+          "pos": "n.",
           "meaningZh": "砲；重型火砲",
-          "definitionEn": "a portable weapon of war, such as a cannon or artillery piece",
           "examples": [
             "During the battle, the army was equipped with various types of guns such as rifles, pistols, and machine guns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "haircut",
       "word": "haircut",
       "senses": [
         {
-          "id": "sense-0513045c",
-          "pos": "noun",
+          "id": "sense-f60e026c",
+          "pos": "n.",
           "meaningZh": "剪髮；理髮",
-          "definitionEn": "the act of cutting someone’s hair",
           "examples": [
             "I need to schedule a haircut before my sister's wedding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-32799cc6",
-          "pos": "noun",
+          "id": "sense-f5e8cb56",
+          "pos": "n.",
           "meaningZh": "髮型；髮式",
-          "definitionEn": "a particular style in which someone’s hair has been cut or trimmed",
           "examples": [
             "Sara went to the salon and asked for a pixie haircut, leaving her with short, stylish hair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hall",
       "word": "hall",
       "senses": [
         {
-          "id": "sense-87a3f9dd",
-          "pos": "noun",
+          "id": "sense-aec62aa1",
+          "pos": "n.",
           "meaningZh": "大廳；禮堂",
-          "definitionEn": "a large room for gatherings or entertainment",
           "examples": [
             "The wedding reception was held in the grand hall, with chandeliers hanging from the high ceilings and elegant decorations adorning the walls."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-00edd758",
-          "pos": "noun",
+          "id": "sense-8c682234",
+          "pos": "n.",
           "meaningZh": "城堡正廳；主廳",
-          "definitionEn": "the main room of a manor or castle",
           "examples": [
             "The grand hall of the castle was adorned with exquisite tapestries and chandeliers, creating a majestic atmosphere for important gatherings and events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "handle",
       "word": "handle",
       "senses": [
         {
-          "id": "sense-c2b99f20",
-          "pos": "noun",
+          "id": "sense-3dc57da0",
+          "pos": "n.",
           "meaningZh": "把手；握柄",
-          "definitionEn": "the appendage to an object that is designed to be held in order to use or move it",
           "examples": [
             "He tightly grasped the handle of the suitcase and lifted it off the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7ba336bf",
-          "pos": "verb",
+          "id": "sense-8cb0d7b6",
+          "pos": "v.",
           "meaningZh": "觸摸；持握",
-          "definitionEn": "touch, lift, or hold with the hands",
           "examples": [
             "He carefully handled the fragile antique vase."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "handsome",
       "word": "handsome",
       "senses": [
         {
-          "id": "sense-a86e5ad1",
-          "pos": "adjective",
+          "id": "sense-bafb2653",
+          "pos": "adj.",
           "meaningZh": "英俊的；好看的",
-          "definitionEn": "pleasing in appearance, especially by reason of conformity to ideals of form and proportion",
           "examples": [
             "Aaron was considered very handsome with his chiseled jawline and piercing blue eyes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hardly",
       "word": "hardly",
       "senses": [
         {
-          "id": "sense-f9f53d5d",
-          "pos": "adverb",
+          "id": "sense-56b559fe",
+          "pos": "adv.",
           "meaningZh": "幾乎不；勉強",
-          "definitionEn": "barely; almost not",
           "examples": [
             "She could hardly contain her excitement when she got the job offer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-d6c2066a",
-          "pos": "adverb",
+          "id": "sense-1fbf5347",
+          "pos": "adv.",
           "meaningZh": "才剛；剛剛",
-          "definitionEn": "only just; almost not long ago; only a very short time before",
           "examples": [
             "I had hardly stepped out of the house when it started pouring rain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "heaven",
       "word": "heaven",
       "senses": [
         {
-          "id": "sense-73d306ca",
-          "pos": "noun",
+          "id": "sense-dda9250e",
+          "pos": "n.",
           "meaningZh": "天堂；天國",
-          "definitionEn": "a place believed in various religions or mythologies to be the dwelling place of God, gods, goddesses, angels, and heavenly beings, and often the final destination of the souls of the righteous",
           "examples": [
             "After a long and fulfilling life, she hoped to reach heaven and be reunited with her loved ones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "highly",
       "word": "highly",
       "senses": [
         {
-          "id": "sense-a6d6ffb6",
-          "pos": "adverb",
+          "id": "sense-493edabf",
+          "pos": "adv.",
           "meaningZh": "非常；極為",
-          "definitionEn": "to a great extent; very much",
           "examples": [
             "She was highly skilled in the art of negotiation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-29090667",
-          "pos": "adverb",
+          "id": "sense-d45784d6",
+          "pos": "adv.",
           "meaningZh": "高度地；以高位",
-          "definitionEn": "in a high or important position or rank",
           "examples": [
             "As a CEO of the top company, she was highly respected in the business world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "highway",
       "word": "highway",
       "senses": [
         {
-          "id": "sense-5dc41d2e",
-          "pos": "noun",
+          "id": "sense-c0ed4946",
+          "pos": "n.",
           "meaningZh": "公路；幹道",
-          "definitionEn": "a main road, typically one connecting major cities or towns",
           "examples": [
             "The family embarked on a road trip, driving down the highway that stretched between the bustling metropolises."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hike",
       "word": "hike",
       "senses": [
         {
-          "id": "sense-c3be0590",
-          "pos": "noun",
+          "id": "sense-dcd86f5c",
+          "pos": "n.",
           "meaningZh": "健行；徒步旅行",
-          "definitionEn": "a long walk usually for exercise or pleasure",
           "examples": [
             "After a stressful week at work, Lisa decided to go on a hike to enjoy the tranquility of nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e397ab6c",
-          "pos": "noun",
+          "id": "sense-e5582508",
+          "pos": "n.",
           "meaningZh": "（美式足球）開球傳球",
-          "definitionEn": "(American football) putting the ball in play by passing it (between the legs) to a back",
           "examples": [
             "During the game, the quarterback shouted 'hike' to begin the play, then swiftly passed the ball between his legs to the running back."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hip",
       "word": "hip",
       "senses": [
         {
-          "id": "sense-e6e50ebd",
-          "pos": "noun",
+          "id": "sense-4c329439",
+          "pos": "n.",
           "meaningZh": "臀部；髖部",
-          "definitionEn": "the part of the body on either side below the waist where the leg joins",
           "examples": [
             "She stood with her hands on her hips."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f35b6c21",
-          "pos": "adjective",
+          "id": "sense-65fb731f",
+          "pos": "adj.",
           "meaningZh": "時髦的；潮流的",
-          "definitionEn": "informed about the latest trends",
           "examples": [
             "Sarah is always on top of the newest fashion trends, she's so hip!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "historical",
+      "word": "historical",
+      "senses": [
+        {
+          "id": "sense-9038d43f",
+          "pos": "adj.",
+          "meaningZh": "歷史的；與歷史有關的",
+          "examples": [
+            "The museum had a collection of historical artifacts from the ancient civilization."
+          ]
+        },
+        {
+          "id": "sense-8beb753f",
+          "pos": "adj.",
+          "meaningZh": "史上的；歷史記載的",
+          "examples": [
+            "The book provided a historical account of the battle, including first-hand testimonies and detailed descriptions of events."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "hole",
+      "word": "hole",
+      "senses": [
+        {
+          "id": "sense-a49fcb44",
+          "pos": "n.",
+          "meaningZh": "洞；孔",
+          "examples": [
+            "The mouse squeezed through a small hole in the wall."
+          ]
+        },
+        {
+          "id": "sense-7866c5e7",
+          "pos": "n.",
+          "meaningZh": "挖出的坑洞；穿鑿的孔",
+          "examples": [
+            "The construction workers dug a hole for the foundation of the building."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "hop",
+      "word": "hop",
+      "senses": [
+        {
+          "id": "sense-a0ff409e",
+          "pos": "v.",
+          "meaningZh": "輕跳；蹦跳",
+          "examples": [
+            "The child was so happy that he began to hop around the room."
+          ]
+        },
+        {
+          "id": "sense-d52b3f7c",
+          "pos": "v.",
+          "meaningZh": "跳躍前進；蹦過",
+          "examples": [
+            "The frog hopped across the pond to reach the other side."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "huge",
+      "word": "huge",
+      "senses": [
+        {
+          "id": "sense-4c26749c",
+          "pos": "adj.",
+          "meaningZh": "巨大的；龐大的",
+          "examples": [
+            "The elephant was huge and towered over the trees."
+          ]
+        },
+        {
+          "id": "sense-8dfa0106",
+          "pos": "adj.",
+          "meaningZh": "大受歡迎的；非常成功的",
+          "examples": [
+            "The concert was a huge success, with thousands of fans attending and singing along to every song."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "human",
+      "word": "human",
+      "senses": [
+        {
+          "id": "sense-ef40b539",
+          "pos": "n.",
+          "meaningZh": "人類；人",
+          "examples": [
+            "In the movie, the advanced alien species studied humans to better understand intelligence and communication abilities."
+          ]
+        },
+        {
+          "id": "sense-7965b6a1",
+          "pos": "adj.",
+          "meaningZh": "人類的；人性的",
+          "examples": [
+            "The human capacity for language sets us apart from other animals."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

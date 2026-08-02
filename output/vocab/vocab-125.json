@@ -1,1393 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 125,
   "words": [
-    {
-      "wordKey": "preserve",
-      "word": "preserve",
-      "senses": [
-        {
-          "id": "sense-9d007ea1",
-          "pos": "verb",
-          "meaningZh": "保存；維持原狀",
-          "definitionEn": "to keep in an unaltered condition, causing it to remain or last",
-          "examples": [
-            "I use special techniques to preserve my grandmother's old photographs so that they don't fade over time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-8579c5d0",
-          "pos": "verb",
-          "meaningZh": "保護；防止損壞",
-          "definitionEn": "to keep safe and protect from harm, decay, loss, or destruction",
-          "examples": [
-            "Sarah used canning jars to preserve the fresh strawberries she picked from her garden, ensuring that they would stay delicious and free from spoilage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "prevention",
-      "word": "prevention",
-      "senses": [
-        {
-          "id": "sense-e048160a",
-          "pos": "noun",
-          "meaningZh": "預防；防範",
-          "definitionEn": "the act of preventing; hindrance of occurrence, by prior activity",
-          "examples": [
-            "Getting vaccinated is one of the most effective methods of prevention against certain diseases."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L7 +1",
-        "textbookTitle": "三民 B1·L7、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "prime",
-      "word": "prime",
-      "senses": [
-        {
-          "id": "sense-cc9b653f",
-          "pos": "adjective",
-          "meaningZh": "最佳的；頂級的",
-          "definitionEn": "of the best possible quality; excellent",
-          "examples": [
-            "The prime cut of steak was juicy and full of flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-c5f92adf",
-          "pos": "noun",
-          "meaningZh": "質數；素數",
-          "definitionEn": "a positive integer greater than 1 that has no positive integer divisors other than 1 and itself.",
-          "examples": [
-            "To calculate the product of two large prime numbers is the basis of many encryption algorithms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "primitive",
-      "word": "primitive",
-      "senses": [
-        {
-          "id": "sense-b76de748",
-          "pos": "adjective",
-          "meaningZh": "原始的；粗糙的",
-          "definitionEn": "belonging to an early stage of technical development; characterized by simplicity and often crudeness",
-          "examples": [
-            "The cavemen had only primitive tools, such as rocks and sticks, to create a fire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-6bd253e2",
-          "pos": "adjective",
-          "meaningZh": "部落的；未開化的",
-          "definitionEn": "used of preliterate or tribal or nonindustrial societies",
-          "examples": [
-            "The Amazonian tribe was living a primitive lifestyle, relying solely on hunting and gathering for their survival."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "priority",
-      "word": "priority",
-      "senses": [
-        {
-          "id": "sense-d93b1884",
-          "pos": "noun",
-          "meaningZh": "優先事項；輕重緩急",
-          "definitionEn": "status established in order of importance or urgency",
-          "examples": [
-            "In times of emergency, saving lives is our top priority."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-76c5e277",
-          "pos": "noun",
-          "meaningZh": "優先權；優先地位",
-          "definitionEn": "the right to precede others in order, rank, or privilege; precedence",
-          "examples": [
-            "In emergency situations, saving lives takes priority over all other concerns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "privacy",
       "word": "privacy",
       "senses": [
         {
-          "id": "sense-0340652b",
-          "pos": "noun",
+          "id": "sense-3c4d159b",
+          "pos": "n.",
           "meaningZh": "私密；隱私",
-          "definitionEn": "the condition of being concealed or hidden",
           "examples": [
             "The actress was outraged when her privacy was invaded by the paparazzi who took and published unauthorized pictures of her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e28aa82c",
-          "pos": "noun",
+          "id": "sense-b32c28fc",
+          "pos": "n.",
           "meaningZh": "個人空間；不受公眾打擾的狀態",
-          "definitionEn": "the state of being free from public attention",
           "examples": [
             "After Nicole became a celebrity, she found it difficult to maintain her privacy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4 +1",
-        "textbookTitle": "龍騰 B4·L4、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "privilege",
       "word": "privilege",
       "senses": [
         {
-          "id": "sense-0cbf4906",
-          "pos": "noun",
+          "id": "sense-358035de",
+          "pos": "n.",
           "meaningZh": "特權；特別待遇",
-          "definitionEn": "a special advantage, benefit, or favor not enjoyed by everyone",
           "examples": [
             "Having the opportunity to attend a prestigious university like Harvard is a privilege not afforded to everyone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0517f988",
-          "pos": "noun",
+          "id": "sense-3e4d4920",
+          "pos": "n.",
           "meaningZh": "專有權利；優遇",
-          "definitionEn": "a right or advantage exclusive to a particular person or group, especially a right based on heredity or official position",
           "examples": [
             "The royal family enjoys the privilege of having their own private beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "procedure",
       "word": "procedure",
       "senses": [
         {
-          "id": "sense-eac15358",
-          "pos": "noun",
+          "id": "sense-f1b357d4",
+          "pos": "n.",
           "meaningZh": "程序；訴訟步驟",
-          "definitionEn": "the method or process for conducting legal or parliamentary actions or proceedings",
           "examples": [
             "The defendant followed the correct procedure for filing an appeal in court."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e19d66ea",
-          "pos": "noun",
+          "id": "sense-ba442a36",
+          "pos": "n.",
           "meaningZh": "操作流程；程式步驟",
-          "definitionEn": "a prescribed set of instructions or steps to be followed in a particular computer program",
           "examples": [
             "Before installing the software, you must follow a specific procedure that involves several steps to ensure that it works correctly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "proceed",
       "word": "proceed",
       "senses": [
         {
-          "id": "sense-5dd11f39",
-          "pos": "verb",
+          "id": "sense-c2e64b7c",
+          "pos": "v.",
           "meaningZh": "進行；採取行動",
-          "definitionEn": "to follow a course of action",
           "examples": [
             "After careful consideration, the team decided to proceed with the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0954bc27",
-          "pos": "verb",
+          "id": "sense-b2cbac14",
+          "pos": "v.",
           "meaningZh": "繼續；按計畫推進",
-          "definitionEn": "to continue as planned or intended",
           "examples": [
             "Despite the bad weather, the outdoor wedding proceeded smoothly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "productive",
       "word": "productive",
       "senses": [
         {
-          "id": "sense-4b62f0cd",
-          "pos": "adjective",
+          "id": "sense-94a572bf",
+          "pos": "adj.",
           "meaningZh": "有成效的；富創造力的",
-          "definitionEn": "having the ability to produce and initiate new things",
           "examples": [
             "Even though she was feeling overwhelmed, Mary remained productive and completed all of her assignments ahead of schedule."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-dc34ff18",
-          "pos": "adjective",
+          "id": "sense-d72fd10e",
+          "pos": "adj.",
           "meaningZh": "高產的；多產的",
-          "definitionEn": "capable of producing large quantities",
           "examples": [
             "The factory implemented new technology to become more productive, increasing their output by 50%."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2 +1",
-        "textbookTitle": "龍騰 B4·L2、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "profession",
       "word": "profession",
       "senses": [
         {
-          "id": "sense-5f4e87df",
-          "pos": "noun",
+          "id": "sense-eedfa2cf",
+          "pos": "n.",
           "meaningZh": "專業職業；需專業知識的職業",
-          "definitionEn": "an occupation that requires specialized education, especially in the liberal arts or sciences",
           "examples": [
             "After completing her law degree, Jane embarked on her chosen profession as a corporate lawyer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ed38cbae",
-          "pos": "noun",
+          "id": "sense-6208b63e",
+          "pos": "n.",
           "meaningZh": "同業人士；業界人士",
-          "definitionEn": "the group of people who work in a particular profession",
           "examples": [
             "During the conference, I had the opportunity to network with professionals from various industries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "professional",
       "word": "professional",
       "senses": [
         {
-          "id": "sense-028490bb",
-          "pos": "noun",
+          "id": "sense-e60a5197",
+          "pos": "n.",
           "meaningZh": "專業人士；從業者",
-          "definitionEn": "a person engaged in one of the learned professions",
           "examples": [
             "As a professional lawyer, she diligently served her clients and worked towards achieving justice for them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a8320fd4",
-          "pos": "noun",
+          "id": "sense-ca0767c0",
+          "pos": "n.",
           "meaningZh": "資深師傅；傳授技藝者",
-          "definitionEn": "an authority qualified to teach apprentices",
           "examples": [
             "The experienced chef acted as a professional by instructing the young culinary students on proper knife skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "profitable",
       "word": "profitable",
       "senses": [
         {
-          "id": "sense-524b8f38",
-          "pos": "adjective",
+          "id": "sense-aade5a14",
+          "pos": "adj.",
           "meaningZh": "有利潤的；獲利的",
-          "definitionEn": "likely to make a profit or be beneficial",
           "examples": [
             "After expanding their product line to include more popular items, the company became profitable and was able to expand further."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8 +1",
-        "textbookTitle": "龍騰 B1·L8、三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prominent",
       "word": "prominent",
       "senses": [
         {
-          "id": "sense-fbfd8b1c",
-          "pos": "adjective",
+          "id": "sense-f486b408",
+          "pos": "adj.",
           "meaningZh": "引人注目的；顯著的",
-          "definitionEn": "having a quality that thrusts itself into attention",
           "examples": [
             "The prominent politician addressed the crowd with charisma and confidence, capturing everyone's attention."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c721fbdd",
-          "pos": "adjective",
+          "id": "sense-abde6cf1",
+          "pos": "adj.",
           "meaningZh": "知名的；重要的",
-          "definitionEn": "conspicuous in position or importance",
           "examples": [
             "At the conference, the keynote speaker was a prominent figure in the field of technology."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "promising",
       "word": "promising",
       "senses": [
         {
-          "id": "sense-70aabbc1",
-          "pos": "adjective",
+          "id": "sense-56ee738d",
+          "pos": "adj.",
           "meaningZh": "有前途的；前景看好的",
-          "definitionEn": "showing possibility of achievement or excellence",
           "examples": [
             "The young athlete showed promising signs of becoming a professional player in the future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-52c369d8",
-          "pos": "adjective",
+          "id": "sense-de545abc",
+          "pos": "adj.",
           "meaningZh": "充滿潛力的",
-          "definitionEn": "full of promise",
           "examples": [
             "The young author showed great promise through her debut novel, which received rave reviews from literary critics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "promotion",
       "word": "promotion",
       "senses": [
         {
-          "id": "sense-a53e032d",
-          "pos": "noun",
+          "id": "sense-a9e091e9",
+          "pos": "n.",
           "meaningZh": "晉升；升職",
-          "definitionEn": "the act of raising someone to a higher or more important position or rank",
           "examples": [
             "After years of hard work and dedication, she finally received a well-deserved promotion to manager."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6ca2df46",
-          "pos": "noun",
+          "id": "sense-d895d2d2",
+          "pos": "n.",
           "meaningZh": "推廣；促銷",
-          "definitionEn": "the activity of helping something to develop or increase",
           "examples": [
             "The marketing team implemented a strategic online campaign that resulted in a significant promotion of the brand's visibility and sales."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prompt",
       "word": "prompt",
       "senses": [
         {
-          "id": "sense-547a596a",
-          "pos": "verb",
+          "id": "sense-0f13ebc7",
+          "pos": "v.",
           "meaningZh": "促使；激起",
-          "definitionEn": "to cause someone to do something or cause something to happen",
           "examples": [
             "The news prompted many people to donate money."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f4036461",
-          "pos": "adjective",
+          "id": "sense-f908e6bd",
+          "pos": "adj.",
           "meaningZh": "迅速的；立即的",
-          "definitionEn": "ready and willing or quick to act",
           "examples": [
             "The IT team was prompt in resolving the server issue, which helped the company to resume work without any delay."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e92f9d39",
-          "pos": "adjective",
+          "id": "sense-d8fdcdcd",
+          "pos": "adj.",
           "meaningZh": "及時的；即刻完成的",
-          "definitionEn": "performed with little or no delay",
           "examples": [
             "The flight attendant gave prompt instructions for the emergency exit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1",
-        "textbookTitle": "龍騰 B3·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pronunciation",
       "word": "pronunciation",
       "senses": [
         {
-          "id": "sense-5637d8b1",
-          "pos": "noun",
+          "id": "sense-d00fcff5",
+          "pos": "n.",
           "meaningZh": "發音方式；讀音",
-          "definitionEn": "the way a word or a language is customarily spoken",
           "examples": [
             "During the language class, the teacher emphasized the correct pronunciation of each word."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bf32b76e",
-          "pos": "noun",
+          "id": "sense-e4ec513a",
+          "pos": "n.",
           "meaningZh": "發音；念法",
-          "definitionEn": "the manner in which someone utters a word",
           "examples": [
             "Sarah struggled with the pronunciation of the French word 'croissant', often mispronouncing it as 'croy-sant' instead of 'kwah-sahn'."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "proposal",
       "word": "proposal",
       "senses": [
         {
-          "id": "sense-c6d13860",
-          "pos": "noun",
+          "id": "sense-b18061e0",
+          "pos": "n.",
           "meaningZh": "提案；建議；計畫",
-          "definitionEn": "something proposed, such as a plan, suggestion, or hypothesis",
           "examples": [
             "After months of research, the scientist presented her proposal for a new experiment to her colleagues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6a63de98",
-          "pos": "noun",
+          "id": "sense-eab4b218",
+          "pos": "n.",
           "meaningZh": "求婚；提議之舉",
-          "definitionEn": "the act of making a proposal",
           "examples": [
             "He got down on one knee and made a heartfelt proposal of marriage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prosper",
       "word": "prosper",
       "senses": [
         {
-          "id": "sense-6382b621",
-          "pos": "verb",
+          "id": "sense-94c1671c",
+          "pos": "v.",
           "meaningZh": "繁榮；致富",
-          "definitionEn": "to be successful, especially in financial terms; to thrive",
           "examples": [
             "After starting her own business, Sarah began to prosper and soon became one of the wealthiest entrepreneurs in the industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-69b973cb",
-          "pos": "verb",
+          "id": "sense-ef1260a2",
+          "pos": "v.",
           "meaningZh": "蓬勃發展；茁壯成長",
-          "definitionEn": "to grow, develop, or multiply in a healthy or vigorous way",
           "examples": [
             "After years of hard work, the small bakery began to prosper, attracting more customers and expanding to multiple locations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prosperity",
       "word": "prosperity",
       "senses": [
         {
-          "id": "sense-0aa3e04b",
-          "pos": "noun",
+          "id": "sense-cbd92943",
+          "pos": "n.",
           "meaningZh": "繁榮；富裕",
-          "definitionEn": "a situation in which people are successful and have a lot of money.",
           "examples": [
             "After years of hard work and determination, John finally achieved prosperity by starting his own successful business and becoming financially stable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a25d48e4",
-          "pos": "noun",
+          "id": "sense-00c78f5c",
+          "pos": "n.",
           "meaningZh": "昌盛；興旺",
-          "definitionEn": "the state of being prosperous; wealth or success.",
           "examples": [
             "After years of hard work and dedication, Robert achieved a higher level of prosperity, allowing him to live a comfortable and abundant life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prosperous",
       "word": "prosperous",
       "senses": [
         {
-          "id": "sense-7f2868bd",
-          "pos": "adjective",
+          "id": "sense-1eed1d41",
+          "pos": "adj.",
           "meaningZh": "繁榮的；富裕的",
-          "definitionEn": "marked by abundance; thriving; successful in general",
           "examples": [
             "After years of hard work and dedication, the small business became prosperous, with annual profits steadily increasing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-545470c8",
-          "pos": "adjective",
+          "id": "sense-a4b7dbec",
+          "pos": "adj.",
           "meaningZh": "興旺的；成功的",
-          "definitionEn": "having or characterized by financial success or good fortune; flourishing; thriving",
           "examples": [
             "After years of hard work and dedication, the small business became prosperous, with steady growth and record-breaking profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "protein",
       "word": "protein",
       "senses": [
         {
-          "id": "sense-624d3c72",
-          "pos": "noun",
+          "id": "sense-79cf25da",
+          "pos": "n.",
           "meaningZh": "蛋白質",
-          "definitionEn": "Any of a large group of organic compounds that are essential constituents of living cells and involved in protein synthesis and enzyme reactions within cells. Proteins consist of amino acids linked by peptide bonds. They can be obtained from a variety of sources, including meat, eggs, and legumes. They are essential in the diets of animals for growth and repair of tissues.",
           "examples": [
             "After an intense workout, Jane made sure to consume a protein-rich shake to aid in muscle recovery and growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L4",
-        "textbookTitle": "三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "protest",
       "word": "protest",
       "senses": [
         {
-          "id": "sense-a776b3e2",
-          "pos": "noun",
+          "id": "sense-109a234a",
+          "pos": "n.",
           "meaningZh": "正式抗議；異議",
-          "definitionEn": "a formal declaration expressing objection or disapproval",
           "examples": [
             "The students organized a protest against the new rules imposed by the school administration."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0c0868dd",
-          "pos": "noun",
+          "id": "sense-48638595",
+          "pos": "n.",
           "meaningZh": "示威；抗議活動",
-          "definitionEn": "a public demonstration or expression of dissent",
           "examples": [
             "The citizens organized a protest outside the city hall to demand justice for the recent police brutality incident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "psychological",
       "word": "psychological",
       "senses": [
         {
-          "id": "sense-b2066f7b",
-          "pos": "adjective",
+          "id": "sense-f58ecf25",
+          "pos": "adj.",
           "meaningZh": "心理的；精神的",
-          "definitionEn": "relating to the human mind and emotions",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-2f0df260",
-          "pos": "adjective",
+          "id": "sense-f8e6cc92",
+          "pos": "adj.",
           "meaningZh": "心理學的；關於心理學的",
-          "definitionEn": "relating to psychology, the scientific study of the mind and behavior",
           "examples": [
             "The therapist used various psychological techniques to help the patient overcome their anxiety."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "psychologist",
       "word": "psychologist",
       "senses": [
         {
-          "id": "sense-e09afa41",
-          "pos": "noun",
+          "id": "sense-488bbf31",
+          "pos": "n.",
           "meaningZh": "心理師；心理學家",
-          "definitionEn": "a person who studies and treats mental disorders and behavioral problems",
           "examples": [
             "After experiencing anxiety for several months, Sarah decided to visit a psychologist to seek therapy and support."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "psychology",
       "word": "psychology",
       "senses": [
         {
-          "id": "sense-f6b692af",
-          "pos": "noun",
+          "id": "sense-2eb00f57",
+          "pos": "n.",
           "meaningZh": "心理學",
-          "definitionEn": "the scientific study of the human mind and behavior",
           "examples": [
             "In her psychology class, Emily learned about different theories of personality and how they impact human behavior."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "publication",
       "word": "publication",
       "senses": [
         {
-          "id": "sense-a3d2e994",
-          "pos": "noun",
+          "id": "sense-c1b52a50",
+          "pos": "n.",
           "meaningZh": "出版；發行",
-          "definitionEn": "the act or process of making information available to the general public, especially in printed or electronic form",
           "examples": [
             "The publication of a weekly newspaper is a challenging task in today’s digital age."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d7f8b9f9",
-          "pos": "noun",
+          "id": "sense-756c3abd",
+          "pos": "n.",
           "meaningZh": "出版業；出版機構",
-          "definitionEn": "the business or profession of producing and issuing books, journals, newspapers, or other material for sale or distribution",
           "examples": [
             "She works for a well-known publication, editing and proofreading manuscripts before they go to print."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "publicity",
       "word": "publicity",
       "senses": [
         {
-          "id": "sense-7dae3d76",
-          "pos": "noun",
+          "id": "sense-492543de",
+          "pos": "n.",
           "meaningZh": "公開曝光；知名度",
-          "definitionEn": "the quality of being open to public view",
           "examples": [
             "The band's new album received a lot of publicity when it was featured on a popular talk show."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f550d407",
-          "pos": "noun",
+          "id": "sense-aeee81bf",
+          "pos": "n.",
           "meaningZh": "宣傳；公關活動",
-          "definitionEn": "a message issued on behalf of a person, product, cause, idea, or institution",
           "examples": [
             "The new restaurant hired a public relations firm to create publicity for their grand opening, spreading the word through advertisements, social media, and press releases."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "publish",
       "word": "publish",
       "senses": [
         {
-          "id": "sense-9fadc466",
-          "pos": "verb",
+          "id": "sense-913285eb",
+          "pos": "v.",
           "meaningZh": "出版；發行",
-          "definitionEn": "to prepare and release for public distribution or sale",
           "examples": [
             "The author was ecstatic when her book was finally published and made available for readers to purchase in bookstores."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d1fee5ad",
-          "pos": "verb",
+          "id": "sense-a6e691b2",
+          "pos": "v.",
           "meaningZh": "印刷並發行；刊行",
-          "definitionEn": "to print and distribute",
           "examples": [
             "The author was thrilled when her latest book was published and made available in bookstores nationwide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "publisher",
+      "word": "publisher",
+      "senses": [
+        {
+          "id": "sense-1e6ef93e",
+          "pos": "n.",
+          "meaningZh": "出版社；出版公司",
+          "examples": [
+            "I submitted my manuscript to a publisher and waited for their response."
+          ]
+        },
+        {
+          "id": "sense-1c71ac4b",
+          "pos": "n.",
+          "meaningZh": "（報紙）發行人；出版商",
+          "examples": [
+            "The publisher of the New York Times announced a new initiative to support local journalism."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pursue",
+      "word": "pursue",
+      "senses": [
+        {
+          "id": "sense-ee2dad2a",
+          "pos": "v.",
+          "meaningZh": "追求；努力達成",
+          "examples": [
+            "After completing his graduation, he decided to pursue a career in medicine."
+          ]
+        },
+        {
+          "id": "sense-ec7937a0",
+          "pos": "v.",
+          "meaningZh": "追趕；追捕",
+          "examples": [
+            "The officer pursued the suspect on foot until he was able to apprehend him."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pursuit",
+      "word": "pursuit",
+      "senses": [
+        {
+          "id": "sense-70f8c912",
+          "pos": "n.",
+          "meaningZh": "追求；尋找",
+          "examples": [
+            "After months of diligent pursuit, she finally found the perfect apartment that ticked all her boxes for location and price."
+          ]
+        },
+        {
+          "id": "sense-8c043bf6",
+          "pos": "n.",
+          "meaningZh": "追趕；追捕",
+          "examples": [
+            "The police officers were in hot pursuit of the suspect, chasing him through the crowded streets."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "quarrel",
+      "word": "quarrel",
+      "senses": [
+        {
+          "id": "sense-20cb66eb",
+          "pos": "n.",
+          "meaningZh": "爭吵；口角",
+          "examples": [
+            "The quarrel between the two neighbors lasted for two hours and ended with the police being called."
+          ]
+        },
+        {
+          "id": "sense-dacda1c5",
+          "pos": "v.",
+          "meaningZh": "爭吵；起爭執",
+          "examples": [
+            "The brothers quarreled over who would get to use the car on the weekend."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "quilt",
+      "word": "quilt",
+      "senses": [
+        {
+          "id": "sense-eb114ad5",
+          "pos": "n.",
+          "meaningZh": "棉被；拼布被",
+          "examples": [
+            "She snuggled under the warm quilt on a cold winter night."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

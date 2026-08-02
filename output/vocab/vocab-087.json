@@ -1,1406 +1,655 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 87,
   "words": [
-    {
-      "wordKey": "remain",
-      "word": "remain",
-      "senses": [
-        {
-          "id": "sense-19756308",
-          "pos": "verb",
-          "meaningZh": "留下；停留",
-          "definitionEn": "continue to stay in a place, position, or situation",
-          "examples": [
-            "I remained at the office until my work was done."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-eb16831f",
-          "pos": "verb",
-          "meaningZh": "仍然存在；持續",
-          "definitionEn": "continue to exist or be present",
-          "examples": [
-            "Despite the storm, some people remained in their homes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +1",
-        "textbookTitle": "龍騰 B2·L2、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "remind",
-      "word": "remind",
-      "senses": [
-        {
-          "id": "sense-8c3c1d57",
-          "pos": "verb",
-          "meaningZh": "提醒；使想起",
-          "definitionEn": "to help someone remember something; to prompt someone to remember something",
-          "examples": [
-            "I set a timer to ​remind​ me to take the cake out of the oven."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-5818fdb3",
-          "pos": "verb",
-          "meaningZh": "提示；暗示",
-          "definitionEn": "to assist someone who is acting or reciting by suggesting the next words of something that is forgotten or imperfectly learned",
-          "examples": [
-            "The teacher reminded the student of the important dates for the upcoming exam to ensure he doesn’t forget any of them during study time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1 +1",
-        "textbookTitle": "龍騰 B1·L1、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "remote",
-      "word": "remote",
-      "senses": [
-        {
-          "id": "sense-4b6584f9",
-          "pos": "adjective",
-          "meaningZh": "遙遠的；偏遠的",
-          "definitionEn": "located far away",
-          "examples": [
-            "The company had a remote office in a small town in Alaska."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-a8231366",
-          "pos": "adjective",
-          "meaningZh": "僻遠的；難以到達的",
-          "definitionEn": "distant and difficult to reach",
-          "examples": [
-            "The small village located in the jungle was so remote that it took the researchers three days just to get there."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L7",
-        "textbookTitle": "翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "replace",
-      "word": "replace",
-      "senses": [
-        {
-          "id": "sense-2152f194",
-          "pos": "verb",
-          "meaningZh": "替換；取代",
-          "definitionEn": "substitute one thing for another similar or equivalent thing",
-          "examples": [
-            "I need to replace the broken window with a new one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-ee78db77",
-          "pos": "verb",
-          "meaningZh": "接替；代替",
-          "definitionEn": "take the place or position of something else",
-          "examples": [
-            "The old batteries need to be replaced with new ones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "replacement",
-      "word": "replacement",
-      "senses": [
-        {
-          "id": "sense-19ae914d",
-          "pos": "noun",
-          "meaningZh": "替換；更換行為",
-          "definitionEn": "the act of furnishing an equivalent person or thing in the place of another",
-          "examples": [
-            "After her phone was stolen, she went to the store to get a replacement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-d6d1bd59",
-          "pos": "noun",
-          "meaningZh": "替代品；替補人員",
-          "definitionEn": "a person or thing that can take the place of another",
-          "examples": [
-            "When the regular goalkeeper got injured, the coach had to find a replacement for the upcoming match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "represent",
       "word": "represent",
       "senses": [
         {
-          "id": "sense-463ca781",
-          "pos": "verb",
+          "id": "sense-72831f40",
+          "pos": "v.",
           "meaningZh": "代表；代理發言",
-          "definitionEn": "to speak on behalf of a person, organization, etc.",
           "examples": [
             "As the company's spokesperson, John will represent the organization at the conference."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-55e8284f",
-          "pos": "verb",
+          "id": "sense-6d3f9ea6",
+          "pos": "v.",
           "meaningZh": "為…辯護；出庭代理",
-          "definitionEn": "to defend someone in a court of law",
           "examples": [
             "The skillful lawyer was hired to represent the accused in the high-profile murder trial."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6 +1",
-        "textbookTitle": "龍騰 B1·L6、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "representative",
       "word": "representative",
       "senses": [
         {
-          "id": "sense-9ae31692",
-          "pos": "adjective",
+          "id": "sense-db5704ec",
+          "pos": "adj.",
           "meaningZh": "具代表性的；典型的",
-          "definitionEn": "typical of a large group of people or things",
           "examples": [
             "The survey included a representative sample of people from different age groups and backgrounds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-af5c0315",
-          "pos": "adjective",
+          "id": "sense-abea0253",
+          "pos": "adj.",
           "meaningZh": "代表性樣本的；涵蓋全貌的",
-          "definitionEn": "belonging to a small group that contains the same mixture of people or things as a larger group, providing useful information about the larger group",
           "examples": [
             "In order to gather data about the voting preferences of the entire country, pollsters conduct surveys with a representative sample of voters from various regions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "republic",
       "word": "republic",
       "senses": [
         {
-          "id": "sense-26a0f936",
-          "pos": "noun",
+          "id": "sense-8f9afaea",
+          "pos": "n.",
           "meaningZh": "共和國；共和政體",
-          "definitionEn": "a country that is led by a president instead of a king or queen.",
           "examples": [
             "The United States of America is a republic, where the president serves as the head of state and government."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "request",
       "word": "request",
       "senses": [
         {
-          "id": "sense-f9d34ffa",
-          "pos": "noun",
+          "id": "sense-1e9919b6",
+          "pos": "n.",
           "meaningZh": "請求；申請；要求",
-          "definitionEn": "a formal message submitted to an authority requesting something",
           "examples": [
             "She sent a request to her manager requesting two days leave for a family emergency."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-266dbaab",
-          "pos": "noun",
+          "id": "sense-472b246f",
+          "pos": "n.",
           "meaningZh": "請求行為；懇求",
-          "definitionEn": "the act of politely or formally asking for something; a petition or solicitation",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reserve",
       "word": "reserve",
       "senses": [
         {
-          "id": "sense-d0515632",
-          "pos": "verb",
+          "id": "sense-ae4efebb",
+          "pos": "v.",
           "meaningZh": "預留；保留",
-          "definitionEn": "to set aside something for future use or for a particular person",
           "examples": [
             "The hotel guest reserved a room for their upcoming vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d5f1603b",
-          "pos": "verb",
+          "id": "sense-a3d34152",
+          "pos": "v.",
           "meaningZh": "預訂；事先安排",
-          "definitionEn": "to book or make arrangements for something in advance",
           "examples": [
             "I’m going to reserve a table at the restaurant for our anniversary dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resist",
       "word": "resist",
       "senses": [
         {
-          "id": "sense-174c48ef",
-          "pos": "verb",
+          "id": "sense-25ba623e",
+          "pos": "v.",
           "meaningZh": "抵抗；承受",
-          "definitionEn": "to withstand the force or impact of something",
           "examples": [
             "Even though the wind was strong, the sturdy oak tree resisted its powerful gusts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d891e900",
-          "pos": "verb",
+          "id": "sense-8ac08da1",
+          "pos": "v.",
           "meaningZh": "抵制；反抗",
-          "definitionEn": "to express opposition through words or actions",
           "examples": [
             "During the protest, the citizens decided to resist the new government policies by marching through the streets and chanting slogans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2 +1",
-        "textbookTitle": "龍騰 B4·L2、三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resource",
       "word": "resource",
       "senses": [
         {
-          "id": "sense-f7fb3226",
-          "pos": "noun",
+          "id": "sense-8285168a",
+          "pos": "n.",
           "meaningZh": "資源；援助來源",
-          "definitionEn": "a source of aid or support that can be accessed when needed",
           "examples": [
             "During a power outage, candles can be a valuable resource for providing light."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d7c91b4b",
-          "pos": "noun",
+          "id": "sense-8fdf38a7",
+          "pos": "n.",
           "meaningZh": "資源；物資；財富",
-          "definitionEn": "an available source of wealth or a new supply that can be used when needed",
           "examples": [
             "In times of drought, water becomes a scarce resource."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2 +1",
-        "textbookTitle": "龍騰 B3·R2、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "response",
       "word": "response",
       "senses": [
         {
-          "id": "sense-94d3ab59",
-          "pos": "noun",
+          "id": "sense-c6d3508d",
+          "pos": "n.",
           "meaningZh": "回應；反應；結果",
-          "definitionEn": "a result or outcome of an action or event",
           "examples": [
             "The company’s response to the negative feedback on social media was to conduct a survey to understand the issue better."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +2",
-        "textbookTitle": "龍騰 B1·L2、三民 B4·L9、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "responsibility",
       "word": "responsibility",
       "senses": [
         {
-          "id": "sense-f6a3f427",
-          "pos": "noun",
+          "id": "sense-3a5cbb37",
+          "pos": "n.",
           "meaningZh": "職責；責任範圍",
-          "definitionEn": "the proper sphere or extent of one’s activities",
           "examples": [
             "As the CEO of the company, it was his responsibility to ensure the success of the business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d904dfd1",
-          "pos": "noun",
+          "id": "sense-4c0e43c1",
+          "pos": "n.",
           "meaningZh": "責任感；負責任",
-          "definitionEn": "the trait of being answerable to someone for something or being responsible for one’s conduct",
           "examples": [
             "As a parent, it is my responsibility to ensure my child gets a proper education."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +2",
-        "textbookTitle": "龍騰 B3·R3、三民 B1·L3、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "restrict",
       "word": "restrict",
       "senses": [
         {
-          "id": "sense-736b1662",
-          "pos": "verb",
+          "id": "sense-3c238aaf",
+          "pos": "v.",
           "meaningZh": "限制；管制",
-          "definitionEn": "limit or control someone or something, often with rules or regulations",
           "examples": [
             "The company will restrict the use of social media during work hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9eafc02c",
-          "pos": "verb",
+          "id": "sense-7293c11d",
+          "pos": "v.",
           "meaningZh": "限制；設限",
-          "definitionEn": "put a limit on something, such as access or extent",
           "examples": [
             "The school restricts the use of phones during class hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reveal",
       "word": "reveal",
       "senses": [
         {
-          "id": "sense-71839b9e",
-          "pos": "verb",
+          "id": "sense-eee54289",
+          "pos": "v.",
           "meaningZh": "公開；披露；揭露",
-          "definitionEn": "to make public information that was previously only known by a small group of people or was meant to be kept secret",
           "examples": [
             "After months of speculation, the company finally decided to reveal their new product at the upcoming tech conference."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f5c6b41a",
-          "pos": "verb",
+          "id": "sense-687d1afb",
+          "pos": "v.",
           "meaningZh": "顯露；揭示；使現形",
-          "definitionEn": "to make something that was previously hidden or unknown, visible or known",
           "examples": [
             "The magician lifted the heavy curtains to reveal the hidden compartment on the stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L9 +1",
-        "textbookTitle": "龍騰 B2·L9、三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ribbon",
       "word": "ribbon",
       "senses": [
         {
-          "id": "sense-4932f4ce",
-          "pos": "noun",
+          "id": "sense-0ac41492",
+          "pos": "n.",
           "meaningZh": "緞帶；絲帶",
-          "definitionEn": "a long, narrow strip or band of material, typically used for decoration or to tie things together",
           "examples": [
             "She tied a ribbon around her ponytail to add a pop of color to her outfit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6b7ed14c",
-          "pos": "noun",
+          "id": "sense-49cbd3b0",
+          "pos": "n.",
           "meaningZh": "獎帶；競賽彩帶",
-          "definitionEn": "a prize or distinction, especially one awarded for success in a competition or contest",
           "examples": [
             "As a little girl, she won a ribbon at the school science fair for her amazing volcano project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rid",
       "word": "rid",
       "senses": [
         {
-          "id": "sense-b673f002",
-          "pos": "verb",
+          "id": "sense-c70f033f",
+          "pos": "v.",
           "meaningZh": "擺脫；去除",
-          "definitionEn": "to free from",
           "examples": [
             "The shampoo I bought rid my hair of dandruff."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ripe",
       "word": "ripe",
       "senses": [
         {
-          "id": "sense-1a8d5d52",
-          "pos": "adjective",
+          "id": "sense-edb7f1b6",
+          "pos": "adj.",
           "meaningZh": "成熟的；熟透的",
-          "definitionEn": "fully developed or matured and ready to be eaten or used",
           "examples": [
             "The bananas were ripe and sweet, perfect for making banana bread."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7cd89b81",
-          "pos": "adjective",
+          "id": "sense-525e64c5",
+          "pos": "adj.",
           "meaningZh": "學養深厚的；爐火純青的",
-          "definitionEn": "at the highest point of development especially in judgment or knowledge",
           "examples": [
             "After years of studying, the young researcher had become ripe in her understanding of quantum physics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "risk",
       "word": "risk",
       "senses": [
         {
-          "id": "sense-26d826a2",
-          "pos": "noun",
+          "id": "sense-7164a566",
+          "pos": "n.",
           "meaningZh": "風險；危險",
-          "definitionEn": "the possibility of something bad happening",
           "examples": [
             "The company took a huge risk by investing all its money in a single project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d0cf98bd",
-          "pos": "noun",
+          "id": "sense-de6b3f61",
+          "pos": "n.",
           "meaningZh": "感染風險；患病機率",
-          "definitionEn": "the chance of being exposed to a disease or infection",
           "examples": [
             "There is a high risk of contracting COVID-19 if you attend crowded events without proper protective measures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2 +1",
-        "textbookTitle": "龍騰 B4·L2、三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "roar",
       "word": "roar",
       "senses": [
         {
-          "id": "sense-3d3f5b84",
-          "pos": "verb",
+          "id": "sense-0602afa9",
+          "pos": "v.",
           "meaningZh": "吼叫；咆哮",
-          "definitionEn": "to make a loud noise, like an animal or the wind, water or vehicles.",
           "examples": [
             "The lion let out a powerful roar, causing the ground to shake and the birds to scatter in fear."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7637f7a9",
-          "pos": "noun",
+          "id": "sense-9d2db025",
+          "pos": "n.",
           "meaningZh": "吼聲；轟鳴聲",
-          "definitionEn": "a loud, deep, and prolonged sound.",
           "examples": [
             "The roar of the lion echoed through the entire jungle, striking fear into the hearts of all who heard it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L6",
-        "textbookTitle": "三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "roast",
       "word": "roast",
       "senses": [
         {
-          "id": "sense-94b0f31c",
-          "pos": "verb",
+          "id": "sense-16bf4a15",
+          "pos": "v.",
           "meaningZh": "烘烤；烤（肉）",
-          "definitionEn": "to cook food, especially meat, in an oven or over a fire",
           "examples": [
             "We roasted a whole chicken for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d1c87e86",
-          "pos": "adjective",
+          "id": "sense-f302882c",
+          "pos": "adj.",
           "meaningZh": "烤的；烘烤的",
-          "definitionEn": "refers to meat that has been cooked by dry heat, usually in an oven",
           "examples": [
             "For dinner, we are going to roast a chicken with potatoes and carrots in the oven."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2078ac6b",
-          "pos": "verb",
+          "id": "sense-8675dfb8",
+          "pos": "v.",
           "meaningZh": "開玩笑嘲弄；插科打諢批評",
-          "definitionEn": "to make fun of or criticize someone in a joking manner",
           "examples": [
             "At the birthday party, the friends decided to roast the host by telling funny stories about his embarrassing moments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rob",
       "word": "rob",
       "senses": [
         {
-          "id": "sense-c065692d",
-          "pos": "noun",
+          "id": "sense-c6e26be5",
+          "pos": "n.",
           "meaningZh": "搶劫；強奪",
-          "definitionEn": "the act of taking something away by force or without the consent of the owner",
           "examples": [
             "In the dark alley, the masked thief robbed a passerby of their wallet at gunpoint."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6 +1",
-        "textbookTitle": "龍騰 B5·L6、三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "robbery",
       "word": "robbery",
       "senses": [
         {
-          "id": "sense-ec000065",
-          "pos": "noun",
+          "id": "sense-bea38f1d",
+          "pos": "n.",
           "meaningZh": "搶劫；強盜罪",
-          "definitionEn": "the act of taking property from somebody, illegally and by using force, threat, or intimidation",
           "examples": [
             "The gas station was closed for the night, so the thieves resorted to robbery to get the cash register."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3753a462",
-          "pos": "noun",
+          "id": "sense-9b1e33fa",
+          "pos": "n.",
           "meaningZh": "趁亂搶奪；打劫",
-          "definitionEn": "the act of stealing property from a place or person during a time of disorder, or in a war or conflict",
           "examples": [
             "During the riots, there were reports of widespread robbery in the city with many stores being looted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6 +1",
-        "textbookTitle": "龍騰 B5·L6、三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "robe",
       "word": "robe",
       "senses": [
         {
-          "id": "sense-e5878c0d",
-          "pos": "noun",
+          "id": "sense-5a58f0ad",
+          "pos": "n.",
           "meaningZh": "寬鬆長袍；浴袍",
-          "definitionEn": "a loose-fitting garment that is worn over clothing",
           "examples": [
             "She put on her luxurious silk robe after a long day at work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-603ce959",
-          "pos": "verb",
+          "id": "sense-8f834da4",
+          "pos": "v.",
           "meaningZh": "覆蓋；披覆",
-          "definitionEn": "to cover something as if with a robe",
           "examples": [
             "The sun began to set, and the sky was robed in shades of orange and pink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rocket",
       "word": "rocket",
       "senses": [
         {
-          "id": "sense-806d300d",
-          "pos": "noun",
+          "id": "sense-92aaa5e9",
+          "pos": "n.",
           "meaningZh": "火箭；火箭飛行器",
-          "definitionEn": "a vehicle or device that is propelled by a rocket engine",
           "examples": [
             "The rocket soared into the sky, carrying a satellite into orbit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fd5b7c06",
-          "pos": "noun",
+          "id": "sense-a511035a",
+          "pos": "n.",
           "meaningZh": "火箭引擎；噴射推進裝置",
-          "definitionEn": "a jet engine that obtains thrust from the reaction between gases ejected at high speed from within a confined space, as a rocket chamber, and those surrounding it",
           "examples": [
             "NASA launched a rocket into space to carry a satellite into orbit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "romantic",
       "word": "romantic",
       "senses": [
         {
-          "id": "sense-51cf4283",
-          "pos": "adjective",
+          "id": "sense-5f178495",
+          "pos": "adj.",
           "meaningZh": "浪漫的；充滿情意的",
-          "definitionEn": "having an inclination towards expressing or arousing romantic love or affection",
           "examples": [
             "As the sun set over the beach, John set up a romantic picnic complete with candles and soft music."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c362455d",
-          "pos": "adjective",
+          "id": "sense-46dbb8bf",
+          "pos": "adj.",
           "meaningZh": "浪漫主義的；與浪漫運動相關的",
-          "definitionEn": "relating to or characterized by Romanticism or the Romantic Movement in the arts",
           "examples": [
             "The couple strolled hand in hand through the picturesque park, basking in the romantic atmosphere created by the soft glow of the setting sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +1",
-        "textbookTitle": "龍騰 B1·L2、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rot",
       "word": "rot",
       "senses": [
         {
-          "id": "sense-4dd0b37a",
-          "pos": "noun",
+          "id": "sense-b13f900e",
+          "pos": "n.",
           "meaningZh": "腐爛；腐敗過程",
-          "definitionEn": "(biology) the process of decay caused by bacterial or fungal action",
           "examples": [
             "The apple rotted on the ground after falling from the tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4e43ebc7",
-          "pos": "verb",
+          "id": "sense-e1f6e106",
+          "pos": "v.",
           "meaningZh": "腐爛；腐壞",
-          "definitionEn": "break down",
           "examples": [
             "If fruits and vegetables are not stored properly, they will start to rot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rotten",
       "word": "rotten",
       "senses": [
         {
-          "id": "sense-2858ed60",
-          "pos": "adjective",
+          "id": "sense-aa06d274",
+          "pos": "adj.",
           "meaningZh": "腐爛的；腐壞的",
-          "definitionEn": "in a state of decay or decomposition; often associated with a foul smell or taste",
           "examples": [
             "The fruit in the back of the fridge was so rotten, it had turned to mush and was oozing out of the plastic bag."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-35c2102c",
-          "pos": "adjective",
+          "id": "sense-a7edc060",
+          "pos": "adj.",
           "meaningZh": "糟糕透頂的；令人不快的",
-          "definitionEn": "extremely bad or unpleasant",
           "examples": [
             "I opened the fridge and was hit with a horrible smell of rotten eggs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rough",
       "word": "rough",
       "senses": [
         {
-          "id": "sense-a3cea8f1",
-          "pos": "adjective",
+          "id": "sense-92472323",
+          "pos": "adj.",
           "meaningZh": "粗糙的；凹凸不平的",
-          "definitionEn": "having an uneven or irregular surface",
           "examples": [
             "The hiker stumbled over the rough terrain, struggling to find stable footing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fd800d6d",
-          "pos": "adjective",
+          "id": "sense-17904a87",
+          "pos": "adj.",
           "meaningZh": "毛邊的；邊緣不整齊的",
-          "definitionEn": "having an edge that is irregularly cut or fringed or scalloped",
           "examples": [
             "The rough edges of the torn paper made it difficult to handle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6 +1",
-        "textbookTitle": "龍騰 B3·L6、三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "roughly",
+      "word": "roughly",
+      "senses": [
+        {
+          "id": "sense-ce1cec70",
+          "pos": "adv.",
+          "meaningZh": "大約；粗略地",
+          "examples": [
+            "She estimated that there were roughly 100 people in the room."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "routine",
+      "word": "routine",
+      "senses": [
+        {
+          "id": "sense-b8fc4859",
+          "pos": "n.",
+          "meaningZh": "例行公事；日常慣例",
+          "examples": [
+            "Getting up early is part of my daily routine."
+          ]
+        },
+        {
+          "id": "sense-f21a6536",
+          "pos": "n.",
+          "meaningZh": "競技套路；例行動作組合",
+          "examples": [
+            "The gymnast's routine consisted of a series of flips, twists, and balance beam maneuvers."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "rug",
+      "word": "rug",
+      "senses": [
+        {
+          "id": "sense-0a27e684",
+          "pos": "n.",
+          "meaningZh": "地毯；小型厚地毯",
+          "examples": [
+            "She added a colorful rug to her living room to make the space feel cozy and inviting."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "rumor",
+      "word": "rumor",
+      "senses": [
+        {
+          "id": "sense-a934da62",
+          "pos": "n.",
+          "meaningZh": "謠言；未經證實的消息",
+          "examples": [
+            "Despite the rumors of layoffs, the company's CEO has assured the employees that no job cuts are planned."
+          ]
+        },
+        {
+          "id": "sense-7b9b582a",
+          "pos": "v.",
+          "meaningZh": "散布謠言；傳言",
+          "examples": [
+            "In a small town, rumors tend to quickly spread like wildfire, often leading to misunderstandings and unnecessary panic."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "rush",
+      "word": "rush",
+      "senses": [
+        {
+          "id": "sense-f4499c2c",
+          "pos": "n.",
+          "meaningZh": "急遽；一陣忙亂",
+          "examples": [
+            "As soon as the store announced a discount sale, there was a rush of customers into the store."
+          ]
+        },
+        {
+          "id": "sense-7e4c1d4f",
+          "pos": "n.",
+          "meaningZh": "一陣強烈情感；激湧",
+          "examples": [
+            "After the long wait, the customers rushed into the store to grab the limited edition products."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

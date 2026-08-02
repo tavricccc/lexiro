@@ -1,1395 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 107,
   "words": [
-    {
-      "wordKey": "craft",
-      "word": "craft",
-      "senses": [
-        {
-          "id": "sense-e0e7d1f5",
-          "pos": "noun",
-          "meaningZh": "手藝；工藝技術",
-          "definitionEn": "the skilled practice of a practical occupation",
-          "examples": [
-            "John’s craft as a carpenter was evident from the beautifully crafted wooden bench he made for the garden."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-cdb7a9af",
-          "pos": "noun",
-          "meaningZh": "飛行器；船舶；航行器",
-          "definitionEn": "a vehicle designed for navigation in water, air, or outer space",
-          "examples": [
-            "The new spacecraft by SpaceX is capable of carrying humans to space and back safely."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "creation",
-      "word": "creation",
-      "senses": [
-        {
-          "id": "sense-c03dafde",
-          "pos": "noun",
-          "meaningZh": "作品；創作物",
-          "definitionEn": "an artifact brought into existence by someone",
-          "examples": [
-            "The artist’s masterpiece was a stunning creation, admired and awed by all who viewed it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-4d832a76",
-          "pos": "noun",
-          "meaningZh": "宇宙萬物；天地萬象",
-          "definitionEn": "everything that exists anywhere",
-          "examples": [
-            "The Big Bang Theory suggests that the creation of the universe occurred around 13.8 billion years ago."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +2",
-        "textbookTitle": "龍騰 B1·L4、三民 B1·L9、翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "creativity",
-      "word": "creativity",
-      "senses": [
-        {
-          "id": "sense-e63ba872",
-          "pos": "noun",
-          "meaningZh": "創造力；創意",
-          "definitionEn": "the ability to use imagination and original ideas to create something; inventiveness",
-          "examples": [
-            "His creativity in designing the new logo for the company impressed his colleagues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "creep",
-      "word": "creep",
-      "senses": [
-        {
-          "id": "sense-23d2649d",
-          "pos": "verb",
-          "meaningZh": "悄悄移動；潛行",
-          "definitionEn": "to move quietly and stealthily in order to avoid being noticed; to sneak",
-          "examples": [
-            "The cat crept across the room, trying not to wake up the sleeping baby."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-a372f9c8",
-          "pos": "verb",
-          "meaningZh": "蔓延；爬生",
-          "definitionEn": "to grow or spread over a surface, often in an undesirable manner",
-          "examples": [
-            "In the garden, the ivy began to creep up the side of the house, damaging the paintwork."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L2",
-        "textbookTitle": "三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "critic",
-      "word": "critic",
-      "senses": [
-        {
-          "id": "sense-13c44ce3",
-          "pos": "noun",
-          "meaningZh": "評論家；藝評人",
-          "definitionEn": "a person who is professionally engaged in the analysis and interpretation of works of art",
-          "examples": [
-            "The critic wrote a scathing review of the new art exhibition, pointing out the lack of originality and depth in the artist's work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-07e5e452",
-          "pos": "noun",
-          "meaningZh": "批評者；挑剔的人",
-          "definitionEn": "someone who frequently finds fault, or makes harsh and unfair judgments, especially about things that are not really important",
-          "examples": [
-            "During the school play, the critic in the audience loudly criticized the choice of costumes, completely ignoring the talent and effort put in by the young actors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9 +1",
-        "textbookTitle": "龍騰 B4·L9、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "critical",
       "word": "critical",
       "senses": [
         {
-          "id": "sense-d6bdb770",
-          "pos": "adjective",
+          "id": "sense-f47b339a",
+          "pos": "adj.",
           "meaningZh": "至關重要的；緊急的",
-          "definitionEn": "urgently needed; absolutely necessary",
           "examples": [
             "In a situation where a patient's life is at stake, every minute can be critical and every second counts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d79db404",
-          "pos": "adjective",
+          "id": "sense-bd14865a",
+          "pos": "adj.",
           "meaningZh": "批判性的；審慎評估的",
-          "definitionEn": "characterized by careful evaluation and judgment",
           "examples": [
             "The team of doctors conducted a critical analysis of the patient's medical history before making a diagnosis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9 +1",
-        "textbookTitle": "龍騰 B4·L9、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "criticism",
       "word": "criticism",
       "senses": [
         {
-          "id": "sense-f982de50",
-          "pos": "noun",
+          "id": "sense-6aeb2578",
+          "pos": "n.",
           "meaningZh": "評析；批評",
-          "definitionEn": "a serious examination and judgment of something",
           "examples": [
             "The art professor offered constructive criticism to her students during the critique of their final projects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-541277ef",
-          "pos": "noun",
+          "id": "sense-cead1b07",
+          "pos": "n.",
           "meaningZh": "指責；非難",
-          "definitionEn": "disapproval expressed by pointing out faults or shortcomings",
           "examples": [
             "The restaurant received some criticism for serving cold food."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9 +1",
-        "textbookTitle": "龍騰 B4·L9、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "criticize",
       "word": "criticize",
       "senses": [
         {
-          "id": "sense-45e58065",
-          "pos": "verb",
+          "id": "sense-ddf067b8",
+          "pos": "v.",
           "meaningZh": "批評；指出缺失",
-          "definitionEn": "point out real or perceived flaws; find fault with; express criticism of",
           "examples": [
             "During the team meeting, the manager took the opportunity to criticize the sales presentation, pointing out areas for improvement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0d378da8",
-          "pos": "verb",
+          "id": "sense-d8426ead",
+          "pos": "v.",
           "meaningZh": "批判；表達不滿",
-          "definitionEn": "act as a critic or express disapproval or unfavorable judgment",
           "examples": [
             "When reviewing a piece of artwork, it is important to provide constructive feedback rather than simply criticize."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9 +1",
-        "textbookTitle": "龍騰 B4·L9、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cruelty",
       "word": "cruelty",
       "senses": [
         {
-          "id": "sense-7764b504",
-          "pos": "noun",
+          "id": "sense-5b7014d8",
+          "pos": "n.",
           "meaningZh": "殘忍；殘酷行為",
-          "definitionEn": "the quality or state of being cruel; disposition or behavior that causes pain or suffering to others.",
           "examples": [
             "Deliberately hurting someone’s feelings for your own enjoyment is an act of cruelty."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5c4ea344",
-          "pos": "noun",
+          "id": "sense-922f6358",
+          "pos": "n.",
           "meaningZh": "冷漠無情；麻木不仁",
-          "definitionEn": "an intense feeling of indifference to the suffering of others; callousness",
           "examples": [
             "The cruelty of the dictator was evident in his merciless treatment of prisoners."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +2",
-        "textbookTitle": "龍騰 B2·L6、三民 B2·L1、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "crunchy",
       "word": "crunchy",
       "senses": [
         {
-          "id": "sense-8e41f7e6",
-          "pos": "adjective",
+          "id": "sense-6646a9fa",
+          "pos": "adj.",
           "meaningZh": "酥脆的；嘎吱作響的",
-          "definitionEn": "having a crisp texture or crunch when bitten or chewed",
           "examples": [
             "I love the sound of crunchy leaves under my feet during autumn walks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "crush",
       "word": "crush",
       "senses": [
         {
-          "id": "sense-e02ff0f1",
-          "pos": "verb",
+          "id": "sense-ffb5ac74",
+          "pos": "v.",
           "meaningZh": "壓扁；擠壓變形",
-          "definitionEn": "to press or squeeze (something) so hard that it breaks or loses its shape",
           "examples": [
             "He accidentally crushed the pack of chips while carrying the groceries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9812769a",
-          "pos": "verb",
+          "id": "sense-235e9b6d",
+          "pos": "v.",
           "meaningZh": "壓垮；使沮喪無力",
-          "definitionEn": "to cause (someone) to feel powerless or out of control",
           "examples": [
             "The overwhelming workload crushed my ability to work efficiently."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cube",
       "word": "cube",
       "senses": [
         {
-          "id": "sense-ea803e37",
-          "pos": "noun",
+          "id": "sense-aef7afbf",
+          "pos": "n.",
           "meaningZh": "立方體；正方體",
-          "definitionEn": "a solid object with six equal square sides",
           "examples": [
             "The children stacked the wooden cubes into a tower."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8a23fa92",
-          "pos": "noun",
+          "id": "sense-275ff11a",
+          "pos": "n.",
           "meaningZh": "立方數；三次方",
-          "definitionEn": "the result of multiplying a number by itself three times",
           "examples": [
             "The volume of a cube can be calculated by multiplying the length, width, and height of its sides. For example, if each side of a cube is 3 inches long, then the cube’s volume would be 3 x 3 x 3 = 27 cubic inches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b76ceb32",
-          "pos": "verb",
+          "id": "sense-05e98723",
+          "pos": "v.",
           "meaningZh": "求立方；計算三次方",
-          "definitionEn": "to raise a number to the third power",
           "examples": [
             "To calculate the volume of a cube, you need to cube the length of any one side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cue",
       "word": "cue",
       "senses": [
         {
-          "id": "sense-2092b5c1",
-          "pos": "noun",
+          "id": "sense-1bd80fe9",
+          "pos": "n.",
           "meaningZh": "暗號；提示信號",
-          "definitionEn": "a signal or sign that gives information on what to do",
           "examples": [
             "In a theatrical performance, the ringing of a bell can act as a cue for an actor to enter the stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f1df2386",
-          "pos": "noun",
+          "id": "sense-9dfe71ee",
+          "pos": "n.",
           "meaningZh": "撞球桿；球杆",
-          "definitionEn": "a thin stick used in games such as pool or billiards to strike a ball",
           "examples": [
             "He lined up his shot and gently tapped the cue, sending the white ball rolling towards the corner pocket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cunning",
       "word": "cunning",
       "senses": [
         {
-          "id": "sense-7f092ab0",
-          "pos": "adjective",
+          "id": "sense-e34d4394",
+          "pos": "adj.",
           "meaningZh": "狡猾的；詭計多端的",
-          "definitionEn": "marked by skill in deception",
           "examples": [
             "The cunning salesman tricked the customer by selling him a counterfeit product."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-553bdafc",
-          "pos": "noun",
+          "id": "sense-f8683dcc",
+          "pos": "n.",
           "meaningZh": "狡詐；機詐",
-          "definitionEn": "shrewdness as demonstrated by being skilled in deception",
           "examples": [
             "The cunning businessman managed to convince his competitors to invest in his fake company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "curiosity",
       "word": "curiosity",
       "senses": [
         {
-          "id": "sense-f91d519d",
-          "pos": "noun",
+          "id": "sense-fb22be61",
+          "pos": "n.",
           "meaningZh": "好奇心；求知慾",
-          "definitionEn": "a strong desire to know about something",
           "examples": [
             "Sarah's curiosity led her to spend hours researching the history of ancient civilizations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b673e4eb",
-          "pos": "noun",
+          "id": "sense-317f1987",
+          "pos": "n.",
           "meaningZh": "奇特事物；珍奇之物",
-          "definitionEn": "an unusual and interesting thing",
           "examples": [
             "Visiting the local market was a great curiosity for tourists, as they were delighted by the vibrant colors and unique aromas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "curl",
       "word": "curl",
       "senses": [
         {
-          "id": "sense-e9fda78d",
-          "pos": "verb",
+          "id": "sense-2632d84a",
+          "pos": "v.",
           "meaningZh": "捲曲；蜷成螺旋狀",
-          "definitionEn": "to form a curved or spiral shape",
           "examples": [
             "After receiving a perm, her hair began to curl beautifully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-19b2a224",
-          "pos": "verb",
+          "id": "sense-a3aa45a1",
+          "pos": "v.",
           "meaningZh": "蜷縮；縮成一團",
-          "definitionEn": "to shape one’s body into a curled position",
           "examples": [
             "After a long day at work, Susan liked to curl up on the couch with a good book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "curse",
       "word": "curse",
       "senses": [
         {
-          "id": "sense-3487a313",
-          "pos": "noun",
+          "id": "sense-72d04fe7",
+          "pos": "n.",
           "meaningZh": "詛咒；魔咒",
-          "definitionEn": "an evil spell",
           "examples": [
             "In the ancient tale, a wicked sorceress placed a curse on the kingdom, causing crops to wither and disease to spread."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2e3295d8",
-          "pos": "noun",
+          "id": "sense-95fc340c",
+          "pos": "n.",
           "meaningZh": "咒語；降禍的祈求",
-          "definitionEn": "an appeal to some supernatural power to inflict evil on someone or some group",
           "examples": [
             "In fairy tales, the wicked witch often casts a curse on the protagonist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "curve",
       "word": "curve",
       "senses": [
         {
-          "id": "sense-2979bf4d",
-          "pos": "verb",
+          "id": "sense-37e90d2a",
+          "pos": "v.",
           "meaningZh": "彎曲；呈弧形轉向",
-          "definitionEn": "to form an arch or bend in a shape that is not straight",
           "examples": [
             "The road curved sharply to the left, so she had to slow down to avoid crashing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cushion",
       "word": "cushion",
       "senses": [
         {
-          "id": "sense-a07b1754",
-          "pos": "noun",
+          "id": "sense-592cad9c",
+          "pos": "n.",
           "meaningZh": "軟墊；靠墊",
-          "definitionEn": "a soft bag filled with air, feathers, foam rubber or other such material for comfortable support or to reduce impact or shock",
           "examples": [
             "After the surgery, the patient was asked to sit on a cushion to avoid putting pressure on the stitches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "damp",
       "word": "damp",
       "senses": [
         {
-          "id": "sense-ce03343f",
-          "pos": "adjective",
+          "id": "sense-f901e84b",
+          "pos": "adj.",
           "meaningZh": "潮濕的；有些濕的",
-          "definitionEn": "slightly wet in an unpleasant or uncomfortable way",
           "examples": [
             "After the rain, the ground was damp and muddy, making it difficult to walk on."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-563d7085",
-          "pos": "noun",
+          "id": "sense-afdf87e5",
+          "pos": "n.",
           "meaningZh": "潮氣；濕氣",
-          "definitionEn": "moisture or humidity in the air or in a place",
           "examples": [
             "After the rain, the ground was damp and the air felt heavy with moisture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "deadline",
       "word": "deadline",
       "senses": [
         {
-          "id": "sense-3c53f721",
-          "pos": "noun",
+          "id": "sense-adfbbb4d",
+          "pos": "n.",
           "meaningZh": "截止日期；最後期限",
-          "definitionEn": "the latest time or date by which something must be completed",
           "examples": [
             "The deadline for submitting the project proposal is next Monday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "declare",
       "word": "declare",
       "senses": [
         {
-          "id": "sense-d3e5800e",
-          "pos": "verb",
+          "id": "sense-1320b5a7",
+          "pos": "v.",
           "meaningZh": "宣告；宣布",
-          "definitionEn": "to state emphatically and authoritatively",
           "examples": [
             "The president declared war on the neighboring country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d914c33a",
-          "pos": "verb",
+          "id": "sense-1f841203",
+          "pos": "v.",
           "meaningZh": "聲稱；表明",
-          "definitionEn": "to state firmly or positively",
           "examples": [
             "She declared her intention to run for president next year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "decoration",
       "word": "decoration",
       "senses": [
         {
-          "id": "sense-cf0866ef",
-          "pos": "noun",
+          "id": "sense-555f62df",
+          "pos": "n.",
           "meaningZh": "裝飾；裝飾品",
-          "definitionEn": "the act of adding something to an object or place in order to enhance its appearance; something added to an object or place to make it look more attractive",
           "examples": [
             "The living room was filled with beautiful decorations for the holiday season, including twinkling lights, garlands, and a meticulously decorated Christmas tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7a3a367f",
-          "pos": "noun",
+          "id": "sense-a46d65ef",
+          "pos": "n.",
           "meaningZh": "勳章；獎章",
-          "definitionEn": "an official honor in the form of a medal, badge, etc. that is given to a person as a reward",
           "examples": [
             "After winning the Nobel Prize, she proudly wore the decoration around her neck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +1",
-        "textbookTitle": "龍騰 B1·L7、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "defeat",
       "word": "defeat",
       "senses": [
         {
-          "id": "sense-67fb22cf",
-          "pos": "verb",
+          "id": "sense-8d23f36a",
+          "pos": "v.",
           "meaningZh": "打敗；擊敗",
-          "definitionEn": "to win a victory over someone in a game, battle, or competition",
           "examples": [
             "Our team defeated the champions in the final match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a4059baf",
-          "pos": "noun",
+          "id": "sense-d27f8dbb",
+          "pos": "n.",
           "meaningZh": "失敗；落敗",
-          "definitionEn": "an unsuccessful ending to a struggle or contest",
           "examples": [
             "After an intense battle, the underdog managed to defeat the reigning champion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-847e6d24",
-          "pos": "noun",
+          "id": "sense-8435b9a0",
+          "pos": "n.",
           "meaningZh": "挫敗感；洩氣",
-          "definitionEn": "the feeling that accompanies an experience of being thwarted in attaining your goals",
           "examples": [
             "After weeks of preparation, losing the championship game really plunged him into a state of defeat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "defend",
       "word": "defend",
       "senses": [
         {
-          "id": "sense-27c80649",
-          "pos": "verb",
+          "id": "sense-33f33cdc",
+          "pos": "v.",
           "meaningZh": "防守；保衛",
-          "definitionEn": "protect against a challenge or attack",
           "examples": [
             "The knight defended the castle from the enemy invaders."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2f9d35ab",
-          "pos": "verb",
+          "id": "sense-f350e6b6",
+          "pos": "v.",
           "meaningZh": "辯護；為…辯護",
-          "definitionEn": "protect or fight for as a champion",
           "examples": [
             "The lawyer will defend his client in court, using every possible argument to protect them from being convicted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +2",
-        "textbookTitle": "龍騰 B2·L6、三民 B4·L5、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "defense",
       "word": "defense",
       "senses": [
         {
-          "id": "sense-d0687feb",
-          "pos": "noun",
+          "id": "sense-b69983fb",
+          "pos": "n.",
           "meaningZh": "防衛；防守",
-          "definitionEn": "the act of protecting someone or something from harm or attack",
           "examples": [
             "A security guard at the entrance of the building provides defense against unauthorized entry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5dd69466",
-          "pos": "noun",
+          "id": "sense-d2ae58f6",
+          "pos": "n.",
           "meaningZh": "國防；防衛部隊",
-          "definitionEn": "a group of people who protect against attack",
           "examples": [
             "The country deployed its defense forces along the border to deter any potential invasion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +2",
-        "textbookTitle": "龍騰 B2·L6、三民 B4·L5、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "defensible",
       "word": "defensible",
       "senses": [
         {
-          "id": "sense-04efd829",
-          "pos": "adjective",
+          "id": "sense-039a6767",
+          "pos": "adj.",
           "meaningZh": "站得住腳的；可辯護的",
-          "definitionEn": "able to be defended or justified",
           "examples": [
             "The lawyer presented a defensible argument, using all available evidence to support their client's innocence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "defensive",
       "word": "defensive",
       "senses": [
         {
-          "id": "sense-93a2ed24",
-          "pos": "adjective",
+          "id": "sense-71949816",
+          "pos": "adj.",
           "meaningZh": "防禦性的；防衛的",
-          "definitionEn": "intended or appropriate for defending against or deterring aggression or attack",
           "examples": [
             "The army erected a series of defensive barriers along the border to prevent any enemy invasion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-39832bac",
-          "pos": "noun",
+          "id": "sense-dc7e12a8",
+          "pos": "n.",
           "meaningZh": "防禦態勢；戒備狀態",
-          "definitionEn": "an attitude of defensiveness, especially in the phrase `on the defensive’",
           "examples": [
             "After receiving criticism from her boss, Jane became defensive and started making excuses for her mistakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "definite",
       "word": "definite",
       "senses": [
         {
-          "id": "sense-77072b11",
-          "pos": "adjective",
+          "id": "sense-4e03d015",
+          "pos": "adj.",
           "meaningZh": "明確的；確定的",
-          "definitionEn": "clearly stated or decided; not vague or doubtful",
           "examples": [
             "The meeting time is definite and will not change."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c8e56814",
-          "pos": "adjective",
+          "id": "sense-5e629da8",
+          "pos": "adj.",
           "meaningZh": "肯定的；無疑的",
-          "definitionEn": "known for certain; sure",
           "examples": [
             "After weeks of investigation, the police finally found the definite evidence that linked the suspect to the crime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9 +1",
-        "textbookTitle": "龍騰 B4·L9、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "delicate",
       "word": "delicate",
       "senses": [
         {
-          "id": "sense-85debe66",
-          "pos": "adjective",
+          "id": "sense-d049d424",
+          "pos": "adj.",
           "meaningZh": "易碎的；脆弱的",
-          "definitionEn": "easily broken, damaged, or destroyed",
           "examples": [
             "Be careful while handling antique vases, they are delicate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9fe2e20e",
-          "pos": "adjective",
+          "id": "sense-7837deac",
+          "pos": "adj.",
           "meaningZh": "敏感的；纖細的",
-          "definitionEn": "easily hurt or sensitive",
           "examples": [
             "Be very delicate when you handle the fragile porcelain vase."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "delight",
+      "word": "delight",
+      "senses": [
+        {
+          "id": "sense-8e20a99d",
+          "pos": "n.",
+          "meaningZh": "喜悅；歡樂",
+          "examples": [
+            "The sight of blooming flowers in the spring brings great delight."
+          ]
+        },
+        {
+          "id": "sense-d97d5f10",
+          "pos": "v.",
+          "meaningZh": "感到高興；享受",
+          "examples": [
+            "She was filled with delight as she unwrapped the gift her best friend had given her."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "delightful",
+      "word": "delightful",
+      "senses": [
+        {
+          "id": "sense-5699e790",
+          "pos": "adj.",
+          "meaningZh": "令人愉快的；迷人的",
+          "examples": [
+            "The cupcakes she made for the party were absolutely delightful; everyone loved them."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "demand",
+      "word": "demand",
+      "senses": [
+        {
+          "id": "sense-e5e3073e",
+          "pos": "v.",
+          "meaningZh": "強烈要求；迫切要求",
+          "examples": [
+            "The workers went on strike to demand higher wages from the company."
+          ]
+        },
+        {
+          "id": "sense-c9bd1aa9",
+          "pos": "v.",
+          "meaningZh": "需要；要求",
+          "examples": [
+            "The manager demanded that the employees work overtime to meet the deadline."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "demonstrate",
+      "word": "demonstrate",
+      "senses": [
+        {
+          "id": "sense-f17cac46",
+          "pos": "v.",
+          "meaningZh": "示範；演示",
+          "examples": [
+            "During the science fair, Alex used a model volcano to demonstrate the process of an erupting volcano."
+          ]
+        },
+        {
+          "id": "sense-769fde41",
+          "pos": "v.",
+          "meaningZh": "證明；提供佐證",
+          "examples": [
+            "The scientist conducted a series of experiments to demonstrate the effectiveness of the new drug."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "demonstration",
+      "word": "demonstration",
+      "senses": [
+        {
+          "id": "sense-59b3990b",
+          "pos": "n.",
+          "meaningZh": "示威遊行；展示",
+          "examples": [
+            "The students organized a peaceful demonstration to protest against the increase in tuition fees."
+          ]
+        },
+        {
+          "id": "sense-8157380c",
+          "pos": "n.",
+          "meaningZh": "（軍事）演習；示威武力",
+          "examples": [
+            "The military organized a demonstration to display their new weapons and equipment to the public."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

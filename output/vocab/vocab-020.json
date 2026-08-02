@@ -1,1393 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 20,
   "words": [
-    {
-      "wordKey": "night",
-      "word": "night",
-      "senses": [
-        {
-          "id": "sense-f0e06081",
-          "pos": "noun",
-          "meaningZh": "夜晚；黑夜",
-          "definitionEn": "the period of darkness after sunset and before sunrise",
-          "examples": [
-            "She saw a shooting star in the night sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-863068a5",
-          "pos": "noun",
-          "meaningZh": "入夜；夜間時段",
-          "definitionEn": "the time between sunset and midnight",
-          "examples": [
-            "During the summer solstice, the night sky is very short and the sun sets at around 9 pm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "nobody",
-      "word": "nobody",
-      "senses": [
-        {
-          "id": "sense-716b6f14",
-          "pos": "pronoun",
-          "meaningZh": "沒有人；無人",
-          "definitionEn": "no person; not anyone",
-          "examples": [
-            "Nobody answered the door when I knocked."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-f5fcf40f",
-          "pos": "noun",
-          "meaningZh": "無名小卒；不重要的人",
-          "definitionEn": "a person of no importance or authority; not anyone in particular",
-          "examples": [
-            "At the party, nobody was interested in talking to the new guy standing in the corner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "noise",
-      "word": "noise",
-      "senses": [
-        {
-          "id": "sense-5ae9fe80",
-          "pos": "noun",
-          "meaningZh": "聲音；噪音",
-          "definitionEn": "Any kind of sound, particularly those that are unpleasant or discordant",
-          "examples": [
-            "The noise from the construction site kept me awake all night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-a1085241",
-          "pos": "noun",
-          "meaningZh": "噪音；嘈雜聲",
-          "definitionEn": "A sound that is unpleasant and lacks musical quality",
-          "examples": [
-            "The construction site next to my apartment creates so much noise that it's hard to concentrate on anything."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "noisy",
       "word": "noisy",
       "senses": [
         {
-          "id": "sense-29fe150f",
-          "pos": "adjective",
+          "id": "sense-6af13e33",
+          "pos": "adj.",
           "meaningZh": "嘈雜的；喧鬧的",
-          "definitionEn": "characterized by loud and nonmusical sounds",
           "examples": [
             "The construction site next to my house is extremely noisy, with all the heavy machinery and constant banging."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "noon",
       "word": "noon",
       "senses": [
         {
-          "id": "sense-d8f5942f",
-          "pos": "noun",
+          "id": "sense-2a102eff",
+          "pos": "n.",
           "meaningZh": "正午；中午十二點",
-          "definitionEn": "the middle of the day; 12 o’clock pm",
           "examples": [
             "Let’s meet for lunch at noon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "north",
       "word": "north",
       "senses": [
         {
-          "id": "sense-f59bec6c",
-          "pos": "noun",
+          "id": "sense-a66ab684",
+          "pos": "n.",
           "meaningZh": "北方；北邊",
-          "definitionEn": "the direction that is towards the top of a map or towards the North Pole",
           "examples": [
             "If you want to go to Canada, you should travel towards the north."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6788213f",
-          "pos": "noun",
+          "id": "sense-d1b83477",
+          "pos": "n.",
           "meaningZh": "北（指南針方向）",
-          "definitionEn": "the direction in which a magnetized compass needle points",
           "examples": [
             "She set her compass to face north before heading into the woods."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nose",
       "word": "nose",
       "senses": [
         {
-          "id": "sense-92fcbae7",
-          "pos": "noun",
+          "id": "sense-6afca003",
+          "pos": "n.",
           "meaningZh": "鼻子",
-          "definitionEn": "the part of the face above the mouth used for breathing and smelling",
           "examples": [
             "She has a cold and her nose is running."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c2b625ab",
-          "pos": "noun",
+          "id": "sense-b77cc26f",
+          "pos": "n.",
           "meaningZh": "些微差距；一鼻之差",
-          "definitionEn": "a small distance; a short space or gap between two things",
           "examples": [
             "He was just a nose away from winning the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "not",
       "word": "not",
       "senses": [
         {
-          "id": "sense-411efd1f",
-          "pos": "adverb",
+          "id": "sense-4534175e",
+          "pos": "adv.",
           "meaningZh": "不；非（否定）",
-          "definitionEn": "used to negate a word or group of words",
           "examples": [
             "I am not going to the party tonight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "note",
       "word": "note",
       "senses": [
         {
-          "id": "sense-9d028748",
-          "pos": "noun",
+          "id": "sense-6adebf1c",
+          "pos": "n.",
           "meaningZh": "筆記；便條",
-          "definitionEn": "a brief written record",
           "examples": [
             "I jotted down a quick note to remind myself of the appointment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3d849be6",
-          "pos": "noun",
+          "id": "sense-ef9bd6da",
+          "pos": "n.",
           "meaningZh": "音符；樂音",
-          "definitionEn": "a notation representing the pitch and duration of a musical sound",
           "examples": [
             "The music teacher played a high note on the piano to demonstrate the correct pitch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nothing",
       "word": "nothing",
       "senses": [
         {
-          "id": "sense-9c605caa",
-          "pos": "noun",
+          "id": "sense-e92d5f56",
+          "pos": "n.",
           "meaningZh": "什麼都沒有；空無",
-          "definitionEn": "something that has no existence or value; empty or absence of anything important",
           "examples": [
             "After searching through all the drawers, he found nothing but old, dusty papers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-10c09b81",
-          "pos": "adverb",
+          "id": "sense-00c76db4",
+          "pos": "adv.",
           "meaningZh": "一點也不；毫不",
-          "definitionEn": "not at all; in no way",
           "examples": [
             "She had nothing to wear for the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "notice",
       "word": "notice",
       "senses": [
         {
-          "id": "sense-dac9aefa",
-          "pos": "verb",
+          "id": "sense-c9a6a9fd",
+          "pos": "v.",
           "meaningZh": "注意到；發覺",
-          "definitionEn": "make or write a comment on",
           "examples": [
             "The teacher noticed a mistake in the student's essay and wrote a comment suggesting a revision."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5febece9",
-          "pos": "noun",
+          "id": "sense-54627f6d",
+          "pos": "n.",
           "meaningZh": "注意；告示",
-          "definitionEn": "the act of noticing or paying attention",
           "examples": [
             "He quickly glanced at the notice posted on the bulletin board."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "now",
       "word": "now",
       "senses": [
         {
-          "id": "sense-a09698a3",
-          "pos": "adverb",
+          "id": "sense-4a467686",
+          "pos": "adv.",
           "meaningZh": "現在；此刻",
-          "definitionEn": "at the present moment",
           "examples": [
             "I need to finish this report by now."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3bbfe364",
-          "pos": "adverb",
+          "id": "sense-b9ab38f1",
+          "pos": "adv.",
           "meaningZh": "立刻；馬上",
-          "definitionEn": "without delay or hesitation",
           "examples": [
             "The meeting starts now, so please hurry up and join us."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "number",
       "word": "number",
       "senses": [
         {
-          "id": "sense-6dabe161",
-          "pos": "noun",
+          "id": "sense-009dd749",
+          "pos": "n.",
           "meaningZh": "數字；號碼",
-          "definitionEn": "a concept of quantity that includes zero and units",
           "examples": [
             "I need to fill out a form and they're asking for my phone number."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4cee8613",
-          "pos": "noun",
+          "id": "sense-9d5a97ab",
+          "pos": "n.",
           "meaningZh": "數量；總數",
-          "definitionEn": "the property of having a sum, total, or indefinite quantity of units or individuals",
           "examples": [
             "After counting all the books on the shelf, I arrived at a number of 50."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nurse",
       "word": "nurse",
       "senses": [
         {
-          "id": "sense-69ab629f",
-          "pos": "noun",
+          "id": "sense-25470f03",
+          "pos": "n.",
           "meaningZh": "護士；護理師",
-          "definitionEn": "a person who cares for the sick and injured, especially in a hospital",
           "examples": [
             "The nurse checked the patient’s vital signs and gave him his medication."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-01c91694",
-          "pos": "noun",
+          "id": "sense-a073cdc0",
+          "pos": "n.",
           "meaningZh": "保母；褓姆",
-          "definitionEn": "a woman who is responsible for the care of young children",
           "examples": [
             "The nurse rocked the crying baby to sleep and gently placed him back in the crib."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "of",
       "word": "of",
       "senses": [
         {
-          "id": "sense-1f312a35",
-          "pos": "preposition",
+          "id": "sense-ecc2ddfe",
+          "pos": "prep.",
           "meaningZh": "……的；屬於",
-          "definitionEn": "used to show possession, belonging, or origin",
           "examples": [
             "The tail of the dog wagged happily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ee2654b0",
-          "pos": "preposition",
+          "id": "sense-6fc481a3",
+          "pos": "prep.",
           "meaningZh": "由……組成；含有",
-          "definitionEn": "containing or consisting of",
           "examples": [
             "The pie is made of apples."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "off",
       "word": "off",
       "senses": [
         {
-          "id": "sense-ced0b163",
-          "pos": "adverb",
+          "id": "sense-0adc7c22",
+          "pos": "adv.",
           "meaningZh": "離開；脫離",
-          "definitionEn": "no longer on or in contact or attached",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-202bbd2b",
-          "pos": "adverb",
+          "id": "sense-388a065a",
+          "pos": "adv.",
           "meaningZh": "在遠處；在將來",
-          "definitionEn": "at a distance in space or time",
           "examples": [
             "The concert is not until next week, so we are still a long way off."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "office",
       "word": "office",
       "senses": [
         {
-          "id": "sense-7c555472",
-          "pos": "noun",
+          "id": "sense-53896106",
+          "pos": "n.",
           "meaningZh": "辦公室；事務所",
-          "definitionEn": "a place where people work, usually performing administrative or professional tasks",
           "examples": [
             "I have a meeting at the office tomorrow to discuss the new project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-05fef625",
-          "pos": "noun",
+          "id": "sense-a45ce8d1",
+          "pos": "n.",
           "meaningZh": "辦公團隊；辦公人員",
-          "definitionEn": "a group of people who work together in an administrative or professional setting",
           "examples": [
             "At the office, the team gathered to discuss the new project and delegate tasks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "officer",
       "word": "officer",
       "senses": [
         {
-          "id": "sense-5bf19e47",
-          "pos": "noun",
+          "id": "sense-8c35eb63",
+          "pos": "n.",
           "meaningZh": "軍官；武官",
-          "definitionEn": "any person in the armed services who holds a position of authority or command",
           "examples": [
             "The officer gave clear instructions to the soldiers on the battlefield."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-538e5314",
-          "pos": "noun",
+          "id": "sense-04f9ad68",
+          "pos": "n.",
           "meaningZh": "警察；員警",
-          "definitionEn": "a member of a police force",
           "examples": [
             "The officer responded quickly to the emergency call and arrived at the scene within minutes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "often",
       "word": "often",
       "senses": [
         {
-          "id": "sense-d516dff7",
-          "pos": "adverb",
+          "id": "sense-a1278c06",
+          "pos": "adv.",
           "meaningZh": "常常；經常",
-          "definitionEn": "frequently; many times",
           "examples": [
             "He often goes for a run in the morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9d2b9d39",
-          "pos": "adverb",
+          "id": "sense-37c6d874",
+          "pos": "adv.",
           "meaningZh": "頻繁地；多次地",
-          "definitionEn": "in many cases; a lot",
           "examples": [
             "John often goes for a run in the morning to stay fit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oil",
       "word": "oil",
       "senses": [
         {
-          "id": "sense-23ff34b7",
-          "pos": "noun",
+          "id": "sense-3d76ed17",
+          "pos": "n.",
           "meaningZh": "油；潤滑油",
-          "definitionEn": "a slippery or viscous liquid or liquefiable substance that does not mix with water",
           "examples": [
             "The mechanic poured oil into the car engine to lubricate its parts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b7b14879",
-          "pos": "noun",
+          "id": "sense-4f3dd719",
+          "pos": "n.",
           "meaningZh": "植物油；食用油",
-          "definitionEn": "any of a group of liquid fats that are obtained from plants and are used for cooking and other purposes",
           "examples": [
             "She used olive oil to prepare the salad dressing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "old",
       "word": "old",
       "senses": [
         {
-          "id": "sense-79b2167a",
-          "pos": "adjective",
+          "id": "sense-b21eb100",
+          "pos": "adj.",
           "meaningZh": "年老的；老的",
-          "definitionEn": "having lived for a long time; no longer young",
           "examples": [
             "The old man struggled to walk up the steep hill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "on",
       "word": "on",
       "senses": [
         {
-          "id": "sense-3a23bcca",
-          "pos": "preposition",
+          "id": "sense-df2af9eb",
+          "pos": "prep.",
           "meaningZh": "在……上面",
-          "definitionEn": "used to show that something is touching or supported by a surface",
           "examples": [
             "There is a book on the table."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0edc9766",
-          "pos": "adjective",
+          "id": "sense-3654d0f8",
+          "pos": "adj.",
           "meaningZh": "開著的；運作中的",
-          "definitionEn": "in operation or operational",
           "examples": [
             "The light bulb is on, indicating that the power is flowing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0cda8359",
-          "pos": "adverb",
+          "id": "sense-05b1ec88",
+          "pos": "adv.",
           "meaningZh": "啟動；接通電源",
-          "definitionEn": "in a state required for something to function effectively",
           "examples": [
             "Make sure the power switch is on before using the computer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "once",
       "word": "once",
       "senses": [
         {
-          "id": "sense-1db9bc0e",
-          "pos": "adverb",
+          "id": "sense-a9ca1063",
+          "pos": "adv.",
           "meaningZh": "曾經；一度",
-          "definitionEn": "on one occasion; at a previous time",
           "examples": [
             "I once visited Paris and fell in love with the city's charm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f63d8d9e",
-          "pos": "adverb",
+          "id": "sense-c597521b",
+          "pos": "adv.",
           "meaningZh": "一旦；等到",
-          "definitionEn": "as soon as",
           "examples": [
             "Once the cake is baked, we can start decorating it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "online",
       "word": "online",
       "senses": [
         {
-          "id": "sense-95eae36d",
-          "pos": "adjective",
+          "id": "sense-507ed537",
+          "pos": "adj.",
           "meaningZh": "線上的；網路上的",
-          "definitionEn": "accessible or available through the internet or other computer network",
           "examples": [
             "In the modern era, many people prefer to shop online rather than going to physical stores."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c0d0a305",
-          "pos": "adjective",
+          "id": "sense-878519c7",
+          "pos": "adj.",
           "meaningZh": "連線的；上網的",
-          "definitionEn": "currently connected to a computer network or the internet",
           "examples": [
             "Sarah is taking an online course to learn coding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "only",
       "word": "only",
       "senses": [
         {
-          "id": "sense-440f13e4",
-          "pos": "conjunction",
+          "id": "sense-35920240",
+          "pos": "conj.",
           "meaningZh": "只是；不過",
-          "definitionEn": "used to show the single or main reason why something mentioned earlier in the sentence cannot be done or is not entirely true",
           "examples": [
             "I would love to join you for dinner, but I have a work meeting that can't be rescheduled, so I can only meet you afterwards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ecba4428",
-          "pos": "adjective",
+          "id": "sense-e192cd24",
+          "pos": "adj.",
           "meaningZh": "唯一的；僅有的",
-          "definitionEn": "being the one without others; exclusive or sole",
           "examples": [
             "She was the only person at the party wearing a red dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "open",
       "word": "open",
       "senses": [
         {
-          "id": "sense-f07b26b5",
-          "pos": "adjective",
+          "id": "sense-df485ce9",
+          "pos": "adj.",
           "meaningZh": "打開的；開著的",
-          "definitionEn": "not closed, allowing access or passage",
           "examples": [
             "Leave the window open to let in fresh air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6caa1fd7",
-          "pos": "adjective",
+          "id": "sense-4a37997b",
+          "pos": "adj.",
           "meaningZh": "無防禦的；易受攻擊的",
-          "definitionEn": "not defended or capable of being defended",
           "examples": [
             "The city’s open border policy left it vulnerable to attacks from neighboring countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "or",
       "word": "or",
       "senses": [
         {
-          "id": "sense-56ad2630",
-          "pos": "conjunction",
+          "id": "sense-25bc3eb0",
+          "pos": "conj.",
           "meaningZh": "或；還是",
-          "definitionEn": "used to link alternatives",
           "examples": [
             "Would you like tea or coffee?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "orange",
       "word": "orange",
       "senses": [
         {
-          "id": "sense-20a54ce4",
-          "pos": "noun",
+          "id": "sense-dff168e4",
+          "pos": "n.",
           "meaningZh": "柳橙；橘子",
-          "definitionEn": "a round fruit with a bright orange skin that is sweet and juicy to eat",
           "examples": [
             "I plucked a ripe orange from the tree and savored its sweet, juicy flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-55a413df",
-          "pos": "noun",
+          "id": "sense-83e2b7df",
+          "pos": "n.",
           "meaningZh": "橙樹；柳橙樹",
-          "definitionEn": "a citrus tree that produces sweet fruit, native to China and widely grown in warm countries",
           "examples": [
             "In the sprawling orchard, the orange tree stood tall among its neighboring citrus trees, bearing vibrant fruits that radiated a delightful citrusy aroma."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "order",
       "word": "order",
       "senses": [
         {
-          "id": "sense-9ac89783",
-          "pos": "noun",
+          "id": "sense-d3138c23",
+          "pos": "n.",
           "meaningZh": "秩序；順序",
-          "definitionEn": "logical or comprehensible arrangement of separate elements",
           "examples": [
             "In order to bake a cake, you must follow the recipe's order of ingredients and steps."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2dc26527",
-          "pos": "noun",
+          "id": "sense-7c6edcc7",
+          "pos": "n.",
           "meaningZh": "社會秩序；慣例",
-          "definitionEn": "established customary state (especially of society)",
           "examples": [
             "The small town prided itself on maintaining a sense of order, with everyone following the rules and respecting each other's boundaries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "other",
       "word": "other",
       "senses": [
         {
-          "id": "sense-ffce62ed",
-          "pos": "adjective",
+          "id": "sense-87735789",
+          "pos": "adj.",
           "meaningZh": "其他的；另外的",
-          "definitionEn": "not identical to or sharing resemblances with something already mentioned or implied",
           "examples": [
             "I'll have the fish, please. Do you have any other options for the main course?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9167f3d5",
-          "pos": "adjective",
+          "id": "sense-c08d0be9",
+          "pos": "adj.",
           "meaningZh": "不同的；迥異的",
-          "definitionEn": "remarkably different in character or quality from what is considered normal or expected",
           "examples": [
             "The baby giggled, yawned, and waved at the visitors - an otherworldly display of precociousness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "out",
+      "word": "out",
+      "senses": [
+        {
+          "id": "sense-1d9c38ff",
+          "pos": "adv.",
+          "meaningZh": "向外；出去",
+          "examples": [
+            "The cat found a way to get out of the cardboard box."
+          ]
+        },
+        {
+          "id": "sense-b8ee0dea",
+          "pos": "adv.",
+          "meaningZh": "耗盡；缺乏",
+          "examples": [
+            "Tom was out of cash and had to borrow some from his friend."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "outside",
+      "word": "outside",
+      "senses": [
+        {
+          "id": "sense-edefb09b",
+          "pos": "n.",
+          "meaningZh": "外部；外面",
+          "examples": [
+            "The children were playing outside the house when it started raining heavily."
+          ]
+        },
+        {
+          "id": "sense-d0aa6667",
+          "pos": "n.",
+          "meaningZh": "外側；外表面",
+          "examples": [
+            "The cat was waiting outside the house for its owner to return."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "over",
+      "word": "over",
+      "senses": [
+        {
+          "id": "sense-e211657b",
+          "pos": "adv.",
+          "meaningZh": "越過；跨過",
+          "examples": [
+            "Can you please throw the ball over the fence?"
+          ]
+        },
+        {
+          "id": "sense-cc8525a0",
+          "pos": "adv.",
+          "meaningZh": "在另一側；到對面",
+          "examples": [
+            "The plane flew over the mountains to reach the other side."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

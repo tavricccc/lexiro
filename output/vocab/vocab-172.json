@@ -1,1327 +1,625 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 172,
   "words": [
-    {
-      "wordKey": "celery",
-      "word": "celery",
-      "senses": [
-        {
-          "id": "sense-d9c62813",
-          "pos": "noun",
-          "meaningZh": "芹菜（莖）",
-          "definitionEn": "stalks eaten raw or cooked or used as seasoning",
-          "examples": [
-            "I love to add celery to my soups as a seasoning to enhance the flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "cellular",
-      "word": "cellular",
-      "senses": [
-        {
-          "id": "sense-4c28b577",
-          "pos": "adjective",
-          "meaningZh": "細胞的；細胞組成的",
-          "definitionEn": "relating to cells",
-          "examples": [
-            "The biologist studied the cellular structure of the specimen under the microscope."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-126b2909",
-          "pos": "adjective",
-          "meaningZh": "細胞狀的；多格的",
-          "definitionEn": "characterized by or divided into or containing cells or compartments (the smallest organizational or structural unit of an organism or organization)",
-          "examples": [
-            "Scientists have identified a new type of cellular structure that may help researchers understand how cells divide and how they respond to disease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "celsius",
-      "word": "celsius",
-      "senses": [
-        {
-          "id": "sense-03bf0d12",
-          "pos": "noun",
-          "meaningZh": "攝氏（溫標）",
-          "definitionEn": "A temperature scale that defines the freezing point of water as 0 degrees and the boiling point of water as 100 degrees, and in which the units are equal to one degree Celsius. It was named after Swedish astronomer Anders Celsius (1701-1744) who devised the centigrade thermometer.",
-          "examples": [
-            "The weather forecast stated that tomorrow's temperature will reach a high of 25 degrees Celsius."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "cement",
-      "word": "cement",
-      "senses": [
-        {
-          "id": "sense-b40efd64",
-          "pos": "noun",
-          "meaningZh": "水泥",
-          "definitionEn": "a powder made of a mixture of calcined limestone and clay, used with water, sand or gravel to make concrete and mortar, a building material",
-          "examples": [
-            "The construction crew mixed cement with sand and water to form the concrete that would build the foundation of the new skyscraper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-c6fca4e1",
-          "pos": "noun",
-          "meaningZh": "水泥路面；混凝土地面",
-          "definitionEn": "concrete pavement",
-          "examples": [
-            "The city is planning to replace the old asphalt road with the cement pavement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "census",
-      "word": "census",
-      "senses": [
-        {
-          "id": "sense-c3d778d6",
-          "pos": "noun",
-          "meaningZh": "人口普查",
-          "definitionEn": "an official count of the population, typically including details about such characteristics as age and gender",
-          "examples": [
-            "The government conducts a census every ten years to gather accurate data on the population's demographics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-27b5088b",
-          "pos": "verb",
-          "meaningZh": "進行人口普查",
-          "definitionEn": "to conduct a census, or an official count of the population",
-          "examples": [
-            "The government will be conducting a census next month to gather accurate data on the current population."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "ceramic",
       "word": "ceramic",
       "senses": [
         {
-          "id": "sense-2ddb69be",
-          "pos": "noun",
+          "id": "sense-abad8e3e",
+          "pos": "n.",
           "meaningZh": "陶瓷；瓷器",
-          "definitionEn": "a hard, brittle material that is produced from nonmetallic minerals by firing at high temperatures and used for making various objects, such as dishes, tiles, and figurines",
           "examples": [
             "The potter used ceramic to create a beautiful vase."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-615a7aa5",
-          "pos": "adjective",
+          "id": "sense-10b1c0a1",
+          "pos": "adj.",
           "meaningZh": "陶瓷的；陶製的",
-          "definitionEn": "relating to ceramics or made from a ceramic material",
           "examples": [
             "The artist made a ceramic vase with intricate designs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "certify",
       "word": "certify",
       "senses": [
         {
-          "id": "sense-12ad7205",
-          "pos": "verb",
+          "id": "sense-1dc62968",
+          "pos": "v.",
           "meaningZh": "證明；確認",
-          "definitionEn": "To show or confirm that something is true or correct",
           "examples": [
             "The accountant certified that the company’s financial statements were accurate and reliable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a836b42b",
-          "pos": "verb",
+          "id": "sense-2ba4502a",
+          "pos": "v.",
           "meaningZh": "認證；鑑定達標",
-          "definitionEn": "To guarantee that something meets a certain standard or requirement",
           "examples": [
             "The food inspectors will certify the quality of the restaurant’s kitchen before allowing it to open for business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chairwoman",
       "word": "chairwoman",
       "senses": [
         {
-          "id": "sense-83276141",
-          "pos": "noun",
+          "id": "sense-68ebeee9",
+          "pos": "n.",
           "meaningZh": "女主席；女主持人",
-          "definitionEn": "a woman who presides over a meeting or a committee, typically in a formal or professional setting",
           "examples": [
             "The chairwoman called the meeting to order and ensured that everyone had a chance to voice their opinions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "champagne",
       "word": "champagne",
       "senses": [
         {
-          "id": "sense-ae4f30fd",
-          "pos": "noun",
+          "id": "sense-8fdbdf89",
+          "pos": "n.",
           "meaningZh": "香檳酒",
-          "definitionEn": "A sparkling wine made from specific grapes and produced in the Champagne region of France. It is known for its fine bubbles and taste.",
           "examples": [
             "On New Year’s Eve, we popped a bottle of champagne to celebrate the beginning of the year with some bubbles and fizz."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chant",
       "word": "chant",
       "senses": [
         {
-          "id": "sense-cf886ed4",
-          "pos": "verb",
+          "id": "sense-b1e76631",
+          "pos": "v.",
           "meaningZh": "反覆高呼；吟唱",
-          "definitionEn": "to repeat or sing a word or phrase several times",
           "examples": [
             "The crowd started to chant the team’s name after they won the championship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3c3135fb",
-          "pos": "noun",
+          "id": "sense-f2e0b15b",
+          "pos": "n.",
           "meaningZh": "頌歌；反覆吟唱",
-          "definitionEn": "a song with a simple tune and words that are repeated again and again",
           "examples": [
             "The audience began to chant the name of their favorite player repeatedly during the match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "charitable",
       "word": "charitable",
       "senses": [
         {
-          "id": "sense-87519a92",
-          "pos": "adjective",
+          "id": "sense-63932d10",
+          "pos": "adj.",
           "meaningZh": "慈善的；公益的",
-          "definitionEn": "related to or associated with charitable organizations",
           "examples": [
             "She dedicated her time to various charitable causes, volunteering at a homeless shelter and organizing fundraising events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5dac3426",
-          "pos": "adjective",
+          "id": "sense-c887dd50",
+          "pos": "adj.",
           "meaningZh": "仁慈的；慷慨大方的",
-          "definitionEn": "showing kindness and generosity towards others",
           "examples": [
             "She donated a large sum of money to a local charity, demonstrating her charitable nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "checkup",
       "word": "checkup",
       "senses": [
         {
-          "id": "sense-bf10a58d",
-          "pos": "noun",
+          "id": "sense-4c5fd8b9",
+          "pos": "n.",
           "meaningZh": "健康檢查；例行體檢",
-          "definitionEn": "a comprehensive medical exam that includes various tests based on the individual’s age, gender, and overall health",
           "examples": [
             "After turning 50, John scheduled a yearly checkup to monitor his health and catch any potential issues early."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chemist",
       "word": "chemist",
       "senses": [
         {
-          "id": "sense-cde1eeab",
-          "pos": "noun",
+          "id": "sense-70585e73",
+          "pos": "n.",
           "meaningZh": "藥劑師；配藥師",
-          "definitionEn": "a health professional trained in the art of preparing and dispensing drugs",
           "examples": [
             "My mother hired a chemist to make her personalized vitamins that matched the nutrients she lacked."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b5453c34",
-          "pos": "noun",
+          "id": "sense-1bf3456c",
+          "pos": "n.",
           "meaningZh": "化學家；化學研究者",
-          "definitionEn": "a scientist who specializes in chemistry",
           "examples": [
             "Marie Curie was a chemist who discovered radium and polonium."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chestnut",
       "word": "chestnut",
       "senses": [
         {
-          "id": "sense-0c33efa9",
-          "pos": "noun",
+          "id": "sense-27ac21d5",
+          "pos": "n.",
           "meaningZh": "栗子（果實）",
-          "definitionEn": "a smooth, reddish-brown nut that can be eaten when cooked",
           "examples": [
             "We roasted chestnuts over the fire in winter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b789c991",
-          "pos": "noun",
+          "id": "sense-576fb6c5",
+          "pos": "n.",
           "meaningZh": "栗子樹",
-          "definitionEn": "Any of several attractive deciduous trees that turn yellow-brown in autumn and yield a hard wood and edible nuts enclosed in prickly burs.",
           "examples": [
             "Under the shade of the chestnut tree, families gathered to enjoy a picnic in the park, while children collected fallen chestnuts from the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5cbb7f62",
-          "pos": "noun",
+          "id": "sense-577a7c66",
+          "pos": "n.",
           "meaningZh": "栗木；栗木材",
-          "definitionEn": "The hard, durable timber of any of various chestnut trees of the genus Castanea.",
           "examples": [
             "The chestnut wood was used to build a sturdy and beautiful dining table."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chili",
       "word": "chili",
       "senses": [
         {
-          "id": "sense-c7d93d45",
-          "pos": "noun",
+          "id": "sense-caa95c71",
+          "pos": "n.",
           "meaningZh": "辣椒",
-          "definitionEn": "a type of pepper that is very spicy and has a narrow, pointed shape",
           "examples": [
             "The chef added a sprinkle of chopped chili to the curry to give it an extra kick of spice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-652555a6",
-          "pos": "noun",
+          "id": "sense-14096cc2",
+          "pos": "n.",
           "meaningZh": "辣肉醬；辣豆燉肉",
-          "definitionEn": "a dish typically made with ground beef, chili peppers or chili powder, tomatoes, and kidney beans",
           "examples": [
             "I always order a bowl of chili when I am at the stadium to watch a football game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chimpanzee",
       "word": "chimpanzee",
       "senses": [
         {
-          "id": "sense-0870649e",
-          "pos": "noun",
+          "id": "sense-df50b82a",
+          "pos": "n.",
           "meaningZh": "黑猩猩",
-          "definitionEn": "An intelligent ape that lives in the equatorial forests of Africa. They often climb trees and use tools to find food.",
           "examples": [
             "The researcher observed the chimpanzee using a stick to extract termites from a mound, demonstrating their impressive tool-using abilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chirp",
       "word": "chirp",
       "senses": [
         {
-          "id": "sense-aa089619",
-          "pos": "noun",
+          "id": "sense-17701769",
+          "pos": "n.",
           "meaningZh": "啁啾聲；蟲鳴聲",
-          "definitionEn": "a high-pitched sound made by small birds or insects",
           "examples": [
             "Outside my window, I could hear the birds chirping early in the morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-26ce0d7e",
-          "pos": "verb",
+          "id": "sense-1749adfd",
+          "pos": "v.",
           "meaningZh": "啁啾；發出鳥叫聲",
-          "definitionEn": "to make a series of short, sharp, high-pitched sounds",
           "examples": [
             "The baby bird began to chirp loudly in the nest, begging its mother for food."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cholesterol",
       "word": "cholesterol",
       "senses": [
         {
-          "id": "sense-1eda2e22",
-          "pos": "noun",
+          "id": "sense-b5b91692",
+          "pos": "n.",
           "meaningZh": "膽固醇（過高有害心臟）",
-          "definitionEn": "a fatty substance that is found in the body tissue and blood of all animals, and is believed to contribute to heart disease if present in excessive amounts",
           "examples": [
             "After the blood test, the doctor informed him that his cholesterol levels were dangerously high, and advised him to make dietary changes to reduce the risk of heart disease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cigar",
       "word": "cigar",
       "senses": [
         {
-          "id": "sense-5e910c5d",
-          "pos": "noun",
+          "id": "sense-b2fde5c9",
+          "pos": "n.",
           "meaningZh": "雪茄",
-          "definitionEn": "a tightly rolled bundle of cured and fermented tobacco leaves that is ignited so that its smoke may be drawn into the mouth",
           "examples": [
             "After a long day of work, John enjoys sitting on his patio with a glass of whiskey and a fine cigar, savoring the rich flavors and the calming ritual of smoking."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "civilize",
       "word": "civilize",
       "senses": [
         {
-          "id": "sense-ba5ee0bd",
-          "pos": "verb",
+          "id": "sense-115846a8",
+          "pos": "v.",
           "meaningZh": "使文明化；開化",
-          "definitionEn": "raise from a barbaric to a more advanced or humane state",
           "examples": [
             "The missionaries helped to civilize the indigenous people by teaching them the ways of modern society."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-130618ff",
-          "pos": "verb",
+          "id": "sense-16f4b8c2",
+          "pos": "v.",
           "meaningZh": "教化；陶冶品味",
-          "definitionEn": "teach or refine to be discriminative in taste or judgment",
           "examples": [
             "The etiquette teacher aimed to civilize her students by teaching them proper table manners and self-control."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clam",
       "word": "clam",
       "senses": [
         {
-          "id": "sense-b81036b8",
-          "pos": "noun",
+          "id": "sense-d0043b80",
+          "pos": "n.",
           "meaningZh": "蛤蜊；文蛤",
-          "definitionEn": "a burrowing marine mollusk that lives in sand or mud and has a shell that closes tightly",
           "examples": [
             "The kids went clam digging on the beach and found several clams buried in the sand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0f36f3d1",
-          "pos": "noun",
+          "id": "sense-9b766619",
+          "pos": "n.",
           "meaningZh": "蛤蜊肉",
-          "definitionEn": "the flesh of either a hard-shell or soft-shell clam",
           "examples": [
             "We enjoyed a delicious clam chowder for dinner last night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clasp",
       "word": "clasp",
       "senses": [
         {
-          "id": "sense-d838a4e0",
-          "pos": "verb",
+          "id": "sense-d50153bd",
+          "pos": "v.",
           "meaningZh": "緊握；緊抱",
-          "definitionEn": "to hold firmly and tightly",
           "examples": [
             "He reached out and clasped her hand, offering comfort and support."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5d88151f",
-          "pos": "noun",
+          "id": "sense-a7d578fb",
+          "pos": "n.",
           "meaningZh": "扣環；扣件",
-          "definitionEn": "a fastener, such as a buckle or hook, used for holding two things together",
           "examples": [
             "She struggled to adjust the clasp on her necklace before going out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clearance",
       "word": "clearance",
       "senses": [
         {
-          "id": "sense-98f5dd88",
-          "pos": "noun",
+          "id": "sense-b9a0b954",
+          "pos": "n.",
           "meaningZh": "許可；核准",
-          "definitionEn": "permission to proceed",
           "examples": [
             "After receiving security clearance, the employee was granted access to classified information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0c405d34",
-          "pos": "noun",
+          "id": "sense-19943328",
+          "pos": "n.",
           "meaningZh": "間距；淨空",
-          "definitionEn": "the space available for objects to move freely without obstruction",
           "examples": [
             "Make sure there is enough clearance between the furniture and the walls before rearranging the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "climax",
       "word": "climax",
       "senses": [
         {
-          "id": "sense-12196fa3",
-          "pos": "noun",
+          "id": "sense-eb4e8f4f",
+          "pos": "n.",
           "meaningZh": "頂點；高潮；最高峰",
-          "definitionEn": "the highest point of growth, development or unfolding of anything",
           "examples": [
             "The race was reaching its climax as the runners approached the finish line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clockwise",
       "word": "clockwise",
       "senses": [
         {
-          "id": "sense-13327594",
-          "pos": "adverb",
+          "id": "sense-6ce4f0bf",
+          "pos": "adv.",
           "meaningZh": "順時針方向地",
-          "definitionEn": "(of movement) in the direction that the hands of a clock move",
           "examples": [
             "Remember to turn the knob clockwise to tighten the bolt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c2939b35",
-          "pos": "adjective",
+          "id": "sense-75a058b1",
+          "pos": "adj.",
           "meaningZh": "順時針的",
-          "definitionEn": "moving in the same direction as the rotating hands of a clock",
           "examples": [
             "To tighten the screw, turn it clockwise as indicated by the arrow on the device."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clone",
       "word": "clone",
       "senses": [
         {
-          "id": "sense-1c3c4832",
-          "pos": "noun",
+          "id": "sense-536a84fe",
+          "pos": "n.",
           "meaningZh": "複製品；複製體",
-          "definitionEn": "a person or thing that is almost an exact copy of another",
           "examples": [
             "The scientist worked hard to create a clone of the sheep from its DNA, which had an identical genetic makeup to the original animal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-da0dbf71",
-          "pos": "noun",
+          "id": "sense-b148d32d",
+          "pos": "n.",
           "meaningZh": "（生物）無性繁殖群；複製群",
-          "definitionEn": "a group of cells or organisms that are genetically identical and come from a single cell or individual through asexual reproduction",
           "examples": [
             "The farmer discovered a way to clone his best cows, producing a new generation of high-quality milk-makers with the same genetic material."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "closure",
       "word": "closure",
       "senses": [
         {
-          "id": "sense-6e8c1109",
-          "pos": "noun",
+          "id": "sense-b38c23d5",
+          "pos": "n.",
           "meaningZh": "關閉；停業",
-          "definitionEn": "termination of operations",
           "examples": [
             "The company announced the closure of its manufacturing plant, resulting in the loss of hundreds of jobs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9361ffed",
-          "pos": "noun",
+          "id": "sense-a86b4fd1",
+          "pos": "n.",
           "meaningZh": "收尾；定案",
-          "definitionEn": "something settled or resolved; the outcome of decision making",
           "examples": [
             "After months of negotiation, the closure of the deal was finally achieved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coalition",
       "word": "coalition",
       "senses": [
         {
-          "id": "sense-5765155d",
-          "pos": "noun",
+          "id": "sense-d878f08d",
+          "pos": "n.",
           "meaningZh": "聯盟；聯合組織",
-          "definitionEn": "an organization of people or countries that have come together and agreed to work together to achieve a common goal",
           "examples": [
             "In order to tackle climate change effectively, a coalition of several environmental organizations, governments, and concerned citizens was formed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d704e7de",
-          "pos": "noun",
+          "id": "sense-e5517aee",
+          "pos": "n.",
           "meaningZh": "聯合；合併",
-          "definitionEn": "the state of being combined into one body",
           "examples": [
             "The leaders of the political parties formed a coalition to gain a majority in the parliament."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coastline",
       "word": "coastline",
       "senses": [
         {
-          "id": "sense-06c1a7a1",
-          "pos": "noun",
+          "id": "sense-06feeba1",
+          "pos": "n.",
           "meaningZh": "海岸線；海岸輪廓",
-          "definitionEn": "the particular shape or appearance of the land along the edge of the sea",
           "examples": [
             "The cycling route follows the rugged coastline for nearly a hundred kilometers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collision",
       "word": "collision",
       "senses": [
         {
-          "id": "sense-b2c35b74",
-          "pos": "noun",
+          "id": "sense-a58e87d4",
+          "pos": "n.",
           "meaningZh": "碰撞；交通事故",
-          "definitionEn": "An accident that occurs when a moving object hits another object with force",
           "examples": [
             "The collision of two cars resulted in a massive traffic jam on the highway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-aecd67ac",
-          "pos": "noun",
+          "id": "sense-ba48e28c",
+          "pos": "n.",
           "meaningZh": "（物理）碰撞；撞擊",
-          "definitionEn": "In physics, a momentary event in which two or more objects come into contact with each other",
           "examples": [
             "The collision between the two cars resulted in severe damage to both vehicles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "colloquial",
+      "word": "colloquial",
+      "senses": [
+        {
+          "id": "sense-f400bd43",
+          "pos": "adj.",
+          "meaningZh": "口語的；通俗的；非正式的",
+          "examples": [
+            "During lunch, the group engaged in a colloquial discussion about their favorite TV shows."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "comet",
+      "word": "comet",
+      "senses": [
+        {
+          "id": "sense-92f3d6c3",
+          "pos": "n.",
+          "meaningZh": "彗星",
+          "examples": [
+            "As the comet streaked across the night sky, it left a majestic trail of glowing debris."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "commonplace",
+      "word": "commonplace",
+      "senses": [
+        {
+          "id": "sense-66984df7",
+          "pos": "adj.",
+          "meaningZh": "平凡的；司空見慣的",
+          "examples": [
+            "Wearing jeans and a t-shirt has become commonplace attire for casual events."
+          ]
+        },
+        {
+          "id": "sense-d0398dc2",
+          "pos": "n.",
+          "meaningZh": "陳腔濫調；老生常談",
+          "examples": [
+            "During the presentation, the speaker filled their speech with commonplaces, such as 'it is what it is' and 'think outside the box'."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "commonwealth",
+      "word": "commonwealth",
+      "senses": [
+        {
+          "id": "sense-81c77773",
+          "pos": "n.",
+          "meaningZh": "（美國）邦；自治邦",
+          "examples": [
+            "The Commonwealth of Massachusetts was founded by a group of Puritans in 1620."
+          ]
+        },
+        {
+          "id": "sense-f22693ab",
+          "pos": "n.",
+          "meaningZh": "（國家）聯邦；英聯邦",
+          "examples": [
+            "The Commonwealth of Nations is a political association of 54 member states, nearly all of which are former territories of the British Empire."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "communicative",
+      "word": "communicative",
+      "senses": [
+        {
+          "id": "sense-28aadade",
+          "pos": "adj.",
+          "meaningZh": "溝通的；傳播的",
+          "examples": [
+            "The new teacher was a very communicative person, always providing her students with clear instructions and answering their questions in a friendly manner."
+          ]
+        },
+        {
+          "id": "sense-05362c51",
+          "pos": "adj.",
+          "meaningZh": "健談的；愛交流的",
+          "examples": [
+            "As the CEO of the company, she was communicative and always kept her employees informed."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

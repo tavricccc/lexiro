@@ -1,1433 +1,697 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 17,
   "words": [
-    {
-      "wordKey": "lie",
-      "word": "lie",
-      "senses": [
-        {
-          "id": "sense-9846ba6c",
-          "pos": "verb",
-          "meaningZh": "躺；臥",
-          "definitionEn": "be lying down or in a horizontal position",
-          "examples": [
-            "After a long day of work, I like to lie on the couch and relax."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-035b648f",
-          "pos": "verb",
-          "meaningZh": "位於；坐落於",
-          "definitionEn": "be located or situated somewhere; occupy a certain position",
-          "examples": [
-            "The small town lies nestled in a picturesque valley, surrounded by towering mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "life",
-      "word": "life",
-      "senses": [
-        {
-          "id": "sense-e465e749",
-          "pos": "noun",
-          "meaningZh": "生命；生命現象",
-          "definitionEn": "The condition or quality that distinguishes living organisms from dead organisms and inanimate matter, characterized by growth through metabolism, reproduction, and the power of adaptation to environment through changes originating internally.",
-          "examples": [
-            "Watching a seed sprout and grow into a towering tree is a beautiful example of the miracle of life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-e84cb563",
-          "pos": "noun",
-          "meaningZh": "人生；生涯",
-          "definitionEn": "The state or experience of being alive, or one’s time on Earth",
-          "examples": [
-            "She cherished every moment of her life, taking risks and embracing new experiences."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "light",
       "word": "light",
       "senses": [
         {
-          "id": "sense-6a115fde",
-          "pos": "noun",
+          "id": "sense-9014a56e",
+          "pos": "n.",
           "meaningZh": "光；光線",
-          "definitionEn": "(physics) a type of energy that allows us to see things",
           "examples": [
             "As the sun set, the soft golden light bathed the landscape in a warm glow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9e5289b7",
-          "pos": "noun",
+          "id": "sense-b99e0d67",
+          "pos": "n.",
           "meaningZh": "光亮處；明亮區域",
-          "definitionEn": "an area that is lit up",
           "examples": [
             "The sun began to rise, casting a warm golden light over the field."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "like",
       "word": "like",
       "senses": [
         {
-          "id": "sense-53c3e92a",
-          "pos": "verb",
+          "id": "sense-1665d95f",
+          "pos": "v.",
           "meaningZh": "喜歡；喜愛",
-          "definitionEn": "find enjoyable or agreeable",
           "examples": [
             "I really like spending time with my friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7af75e96",
-          "pos": "noun",
+          "id": "sense-b0777c3a",
+          "pos": "n.",
           "meaningZh": "同類；同樣的東西",
-          "definitionEn": "a similar kind",
           "examples": [
             "She chose a new phone like her old one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "line",
       "word": "line",
       "senses": [
         {
-          "id": "sense-b75adc83",
-          "pos": "noun",
+          "id": "sense-d86c0953",
+          "pos": "n.",
           "meaningZh": "線；線條",
-          "definitionEn": "a length without width or thickness; the mark left by a moving point; a narrow band in a spectrum",
           "examples": [
             "The artist drew a straight line across the paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c8caaa33",
-          "pos": "noun",
+          "id": "sense-f4fbe443",
+          "pos": "n.",
           "meaningZh": "排隊；隊列",
-          "definitionEn": "a real or imaginary one-dimensional extent in space; the position of people or things one beside or behind another",
           "examples": [
             "The students formed a line outside the classroom, waiting for their turn to enter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lion",
       "word": "lion",
       "senses": [
         {
-          "id": "sense-9a350c2c",
-          "pos": "noun",
+          "id": "sense-43ef54bc",
+          "pos": "n.",
           "meaningZh": "獅子",
-          "definitionEn": "a large, powerful, and social feline with a tawny coat and a shaggy mane in males found in Africa and India",
           "examples": [
             "During the safari, we were fortunate to witness a majestic lioness leading her pride through the grasslands of Africa."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lip",
       "word": "lip",
       "senses": [
         {
-          "id": "sense-32a007e1",
-          "pos": "noun",
+          "id": "sense-06067b2d",
+          "pos": "n.",
           "meaningZh": "嘴唇",
-          "definitionEn": "either of the two soft edges of the mouth that help in speaking and eating",
           "examples": [
             "She bites her lip when she’s nervous."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-406c8ccc",
-          "pos": "noun",
+          "id": "sense-6dd01418",
+          "pos": "n.",
           "meaningZh": "蝸牛殼開口邊緣",
-          "definitionEn": "the either outer or inner edge of the opening of a snail’s shell",
           "examples": [
             "The lip of the snail shell was chipped, making it difficult for the snail to retreat inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "list",
       "word": "list",
       "senses": [
         {
-          "id": "sense-4c344630",
-          "pos": "noun",
+          "id": "sense-0f11b114",
+          "pos": "n.",
           "meaningZh": "清單；列表",
-          "definitionEn": "a database that organizes and stores information in a specific order",
           "examples": [
             "She gave me a list of things to buy from the grocery store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-212f512f",
-          "pos": "verb",
+          "id": "sense-0cb8c256",
+          "pos": "v.",
           "meaningZh": "列出；列入清單",
-          "definitionEn": "to add something to a list",
           "examples": [
             "I always list down the groceries I need to buy before going to the store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "listen",
       "word": "listen",
       "senses": [
         {
-          "id": "sense-58297f16",
-          "pos": "verb",
+          "id": "sense-ed725721",
+          "pos": "v.",
           "meaningZh": "聆聽；留心聽",
-          "definitionEn": "hear with intention",
           "examples": [
             "During the meeting, it is important to listen attentively to your colleagues' ideas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c8e4c2bb",
-          "pos": "verb",
+          "id": "sense-8f02be34",
+          "pos": "v.",
           "meaningZh": "注意聽；傾聽",
-          "definitionEn": "pay close attention to; give heed to",
           "examples": [
             "During a job interview, it is important to listen carefully to the interviewer's questions and provide thoughtful responses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "little",
       "word": "little",
       "senses": [
         {
-          "id": "sense-b79e0355",
-          "pos": "adjective",
+          "id": "sense-75a702c1",
+          "pos": "adj.",
           "meaningZh": "小的；微小的",
-          "definitionEn": "not large in size, amount, or extent; small",
           "examples": [
             "Tom was a little nervous about presenting his project in front of the class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b90ba51c",
-          "pos": "adjective",
+          "id": "sense-d22584f8",
+          "pos": "adj.",
           "meaningZh": "少量的；不多的",
-          "definitionEn": "relating to a small quantity or degree; not much",
           "examples": [
             "I have very little time to finish this project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "live",
       "word": "live",
       "senses": [
         {
-          "id": "sense-07a23948",
-          "pos": "verb",
+          "id": "sense-8b1c4227",
+          "pos": "v.",
           "meaningZh": "活著；有生命",
-          "definitionEn": "to have life or be alive",
           "examples": [
             "The plants live thanks to the sunlight they receive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f90f5765",
-          "pos": "verb",
+          "id": "sense-a75251f6",
+          "pos": "v.",
           "meaningZh": "生活於；過著（某種生活）",
-          "definitionEn": "to habitually be in a certain condition, circumstances, or environment",
           "examples": [
             "Despite her allergy to cats, she chose to live with her new roommate who owned three felines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lonely",
       "word": "lonely",
       "senses": [
         {
-          "id": "sense-a6fd0b0c",
-          "pos": "adjective",
+          "id": "sense-07b3bfca",
+          "pos": "adj.",
           "meaningZh": "孤單的；寂寞的",
-          "definitionEn": "lacking companionship or the presence of others",
           "examples": [
             "After moving to a new city, John felt lonely without any friends or family nearby."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d660fb81",
-          "pos": "adjective",
+          "id": "sense-37f86fff",
+          "pos": "adj.",
           "meaningZh": "喜歡獨處的；孤僻的",
-          "definitionEn": "preferring to spend time alone rather than with others",
           "examples": [
             "After a long day at work, Sarah enjoys curling up with a good book and a cup of tea, as she is a lonely person."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "long",
       "word": "long",
       "senses": [
         {
-          "id": "sense-70cbb77c",
-          "pos": "adjective",
+          "id": "sense-73961ef0",
+          "pos": "adj.",
           "meaningZh": "長的；漫長的",
-          "definitionEn": "extending for considerable or a greater than average length in space or time",
           "examples": [
             "The line for the new iPhone was so long that I had to wait for over two hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-53406e93",
-          "pos": "adjective",
+          "id": "sense-8584ef4f",
+          "pos": "adj.",
           "meaningZh": "高挑的；修長的",
-          "definitionEn": "of great or more than average height",
           "examples": [
             "The basketball player was so long that he easily dunked the ball without jumping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "look",
       "word": "look",
       "senses": [
         {
-          "id": "sense-460d8b9b",
-          "pos": "verb",
+          "id": "sense-68914a0c",
+          "pos": "v.",
           "meaningZh": "看；注視",
-          "definitionEn": "to direct one’s gaze towards something and see it visually",
           "examples": [
             "I looked in the mirror to check my hair before leaving the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-dde75bc8",
-          "pos": "verb",
+          "id": "sense-2e693fe5",
+          "pos": "v.",
           "meaningZh": "期待；期望",
-          "definitionEn": "to expect or anticipate something",
           "examples": [
             "After weeks of hard work, the team looked forward to their well-deserved vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lose",
       "word": "lose",
       "senses": [
         {
-          "id": "sense-2c5575f9",
-          "pos": "verb",
+          "id": "sense-18359440",
+          "pos": "v.",
           "meaningZh": "失去；喪失",
-          "definitionEn": "cease to have something that one once had; fail to keep or maintain something",
           "examples": [
             "She was devastated to lose her job after working there for 10 years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4a96da2b",
-          "pos": "verb",
+          "id": "sense-ca4ecd1e",
+          "pos": "v.",
           "meaningZh": "痛失（親人）；與…永別",
-          "definitionEn": "suffer the death or removal of a person from one’s life",
           "examples": [
             "She experienced a great sense of loss when her father passed away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lot",
       "word": "lot",
       "senses": [
         {
-          "id": "sense-957b4314",
-          "pos": "noun",
+          "id": "sense-0f8fccec",
+          "pos": "n.",
           "meaningZh": "大量；許多",
-          "definitionEn": "a large amount or number; a great deal",
           "examples": [
             "She bought a lot of groceries at the store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-bf7109be",
-          "pos": "verb",
+          "id": "sense-74ad76a1",
+          "pos": "v.",
           "meaningZh": "分批；劃分（拍賣品）",
-          "definitionEn": "divide into lots or pieces",
           "examples": [
             "The auctioneer lot out the items for bidding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "loud",
       "word": "loud",
       "senses": [
         {
-          "id": "sense-0a5f9ed5",
-          "pos": "adjective",
+          "id": "sense-375f9939",
+          "pos": "adj.",
           "meaningZh": "大聲的；響亮的",
-          "definitionEn": "producing or capable of producing sound of high volume or intensity",
           "examples": [
             "The loud music from the party next door kept me awake all night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2b999c3d",
-          "pos": "adjective",
+          "id": "sense-05a4b0d9",
+          "pos": "adj.",
           "meaningZh": "最強音的；全力演奏的",
-          "definitionEn": "used in music to indicate a section played with maximum volume or intensity",
           "examples": [
             "The rock concert was so loud that it left my ears ringing for hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "love",
       "word": "love",
       "senses": [
         {
-          "id": "sense-6b7f5ceb",
-          "pos": "noun",
+          "id": "sense-ad5acf5f",
+          "pos": "n.",
           "meaningZh": "愛情；戀愛",
-          "definitionEn": "A romantic attraction towards another person.",
           "examples": [
             "After years of dating, they finally declared their love for each other in a candlelit dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-1c5e2a2a",
-          "pos": "noun",
+          "id": "sense-dbecccb6",
+          "pos": "n.",
           "meaningZh": "愛意；深情",
-          "definitionEn": "An emotional feeling of affection and care towards someone.",
           "examples": [
             "After years of dating, they realized that their love was deep enough to last a lifetime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lovely",
       "word": "lovely",
       "senses": [
         {
-          "id": "sense-dbc42de0",
-          "pos": "adjective",
+          "id": "sense-9754d342",
+          "pos": "adj.",
           "meaningZh": "令人喜愛的；迷人的",
-          "definitionEn": "causing feelings of love or affection",
           "examples": [
             "The couple took a stroll along the lovely beach at sunset."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4af13808",
-          "pos": "adjective",
+          "id": "sense-26b81856",
+          "pos": "adj.",
           "meaningZh": "美麗的；秀麗的",
-          "definitionEn": "attractive or beautiful especially in a graceful way",
           "examples": [
             "The bride looked absolutely lovely in her wedding dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "low",
       "word": "low",
       "senses": [
         {
-          "id": "sense-caffd01e",
-          "pos": "adjective",
+          "id": "sense-fed8e4fa",
+          "pos": "adj.",
           "meaningZh": "低矮的；偏低的",
-          "definitionEn": "having a small elevation or upward extension, or being at a position below normal level",
           "examples": [
             "The chair was too low for the desk, causing discomfort to the person working on it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fa45fb29",
-          "pos": "adjective",
+          "id": "sense-06b39d0d",
+          "pos": "adj.",
           "meaningZh": "輕柔的；音量小的",
-          "definitionEn": "producing very little sound, or being at a soft volume",
           "examples": [
             "Please speak in a low voice as the baby is sleeping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lucky",
       "word": "lucky",
       "senses": [
         {
-          "id": "sense-647323a3",
-          "pos": "adjective",
+          "id": "sense-6cd4b0bf",
+          "pos": "adj.",
           "meaningZh": "幸運的；走運的",
-          "definitionEn": "characterized by good luck",
           "examples": [
             "Despite the heavy rain, Sarah managed to catch a taxi on time, proving once again that she's always lucky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e97f01a5",
-          "pos": "adjective",
+          "id": "sense-bf0d7b81",
+          "pos": "adj.",
           "meaningZh": "帶來好運的；吉祥的",
-          "definitionEn": "likely to bring good luck",
           "examples": [
             "She wore her lucky charm necklace to the job interview, hoping it would bring her good fortune."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lunch",
       "word": "lunch",
       "senses": [
         {
-          "id": "sense-6a88550d",
-          "pos": "noun",
+          "id": "sense-1cf34f7d",
+          "pos": "n.",
           "meaningZh": "午餐；午飯",
-          "definitionEn": "a meal eaten during the middle of the day",
           "examples": [
             "Every day at noon, I take a break to eat my lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-40a9e4e7",
-          "pos": "verb",
+          "id": "sense-8444b68a",
+          "pos": "v.",
           "meaningZh": "吃午餐；用午飯",
-          "definitionEn": "eat a meal during the middle of the day",
           "examples": [
             "I usually have a sandwich and some fruit for lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "machine",
       "word": "machine",
       "senses": [
         {
-          "id": "sense-a657a18e",
-          "pos": "noun",
+          "id": "sense-bdce82d2",
+          "pos": "n.",
           "meaningZh": "機器；機械裝置",
-          "definitionEn": "an electrical or mechanical device used for performing or assisting in human tasks",
           "examples": [
             "The factory workers relied on the machine for assembling the products quickly and efficiently."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-bb059ec3",
-          "pos": "noun",
+          "id": "sense-f34189f7",
+          "pos": "n.",
           "meaningZh": "機械（施力克服阻力的裝置）",
-          "definitionEn": "a device that applies force to overcome resistance at one point from another point",
           "examples": [
             "The construction workers used a machine to effortlessly lift heavy steel beams and place them in position."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mad",
       "word": "mad",
       "senses": [
         {
-          "id": "sense-288538d5",
-          "pos": "adjective",
+          "id": "sense-a8a480d1",
+          "pos": "adj.",
           "meaningZh": "瘋狂的；精神失常的",
-          "definitionEn": "affected with madness or insanity",
           "examples": [
             "The man was once a respected professor, but after years of isolation, he became mad and started talking to himself."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cc25ac7f",
-          "pos": "adjective",
+          "id": "sense-2f7d6e5b",
+          "pos": "adj.",
           "meaningZh": "狂熱的；失控激動的",
-          "definitionEn": "marked by uncontrolled excitement or emotion",
           "examples": [
             "The fans went mad when their favorite team scored a last-minute goal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "magic",
       "word": "magic",
       "senses": [
         {
-          "id": "sense-12c1a658",
-          "pos": "adjective",
+          "id": "sense-d6549716",
+          "pos": "adj.",
           "meaningZh": "神奇的；具有魔法的",
-          "definitionEn": "Possessing, using, or characteristic of supernatural powers.",
           "examples": [
             "The magician waved his wand and performed a fascinating display of magic, making a rabbit appear out of thin air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c76f2ce8",
-          "pos": "noun",
+          "id": "sense-a97d6700",
+          "pos": "n.",
           "meaningZh": "魔術；幻術",
-          "definitionEn": "An illusory feat, considered magical by naive observers.",
           "examples": [
             "The magician performed a stunning display of magic, leaving the audience in awe and wondering how he was able to pull off such feats. However, the more seasoned members of the audience knew that it was all just clever illusions and that there was no real magic involved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mail",
       "word": "mail",
       "senses": [
         {
-          "id": "sense-99e1fa0d",
-          "pos": "noun",
+          "id": "sense-703701a9",
+          "pos": "n.",
           "meaningZh": "信件；郵件",
-          "definitionEn": "letters and packages sent and delivered by the postal service",
           "examples": [
             "Did any mail come for me today?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a3d7a031",
-          "pos": "noun",
+          "id": "sense-dca7118d",
+          "pos": "n.",
           "meaningZh": "一批郵件；郵遞物",
-          "definitionEn": "a specific set of letters or packages that are delivered together",
           "examples": [
             "I received a mail containing all the documents I needed to sign and return."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "main",
       "word": "main",
       "senses": [
         {
-          "id": "sense-c5a9e1a4",
-          "pos": "adjective",
+          "id": "sense-3be95546",
+          "pos": "adj.",
           "meaningZh": "主要的；最重要的",
-          "definitionEn": "of the greatest possible importance, significance, or value",
           "examples": [
             "The main objective of the conference is to promote global cooperation in addressing climate change."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3e41f07b",
-          "pos": "adjective",
+          "id": "sense-d6834645",
+          "pos": "adj.",
           "meaningZh": "主要子句的；獨立子句的",
-          "definitionEn": "(of a clause) able to stand alone grammatically as a complete sentence",
           "examples": [
             "The main clause in the sentence 'She loves to read books' is 'She loves to read books.'"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "make",
       "word": "make",
       "senses": [
         {
-          "id": "sense-a4045382",
-          "pos": "verb",
+          "id": "sense-e2e5d3fd",
+          "pos": "v.",
           "meaningZh": "製作；做",
-          "definitionEn": "to produce or create something by putting parts or materials together",
           "examples": [
             "My mother is going to make a cake for my birthday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a774a1d8",
-          "pos": "verb",
+          "id": "sense-70072a0f",
+          "pos": "v.",
           "meaningZh": "執行；進行（某動作）",
-          "definitionEn": "perform or carry out",
           "examples": [
             "Please make sure to lock the door before leaving the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-af96c6f5",
-          "pos": "verb",
+          "id": "sense-eb21a9c6",
+          "pos": "v.",
           "meaningZh": "犯下；實施（某行為）",
-          "definitionEn": "carry out or commit",
           "examples": [
             "The suspect was arrested for attempting to make a fraudulent transaction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "man",
       "word": "man",
       "senses": [
         {
-          "id": "sense-586bde29",
-          "pos": "noun",
+          "id": "sense-6b45d7c9",
+          "pos": "n.",
           "meaningZh": "男人；成年男性",
-          "definitionEn": "a male adult person (as opposed to a woman)",
           "examples": [
             "The man sitting at the bar ordered a beer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0bce3a20",
-          "pos": "noun",
+          "id": "sense-71fe1800",
+          "pos": "n.",
           "meaningZh": "有男子氣概的人；頂天立地的男子",
-          "definitionEn": "an adult male person having qualities often associated with masculinity, such as strength, bravery, and virility, and fulfilling traditional male roles, such as providing for a family",
           "examples": [
             "He is a man in every sense of the word - strong, brave, and a provider for his family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "many",
       "word": "many",
       "senses": [
         {
-          "id": "sense-3f6f962d",
-          "pos": "adjective",
+          "id": "sense-661666a3",
+          "pos": "adj.",
           "meaningZh": "許多的；大量的",
-          "definitionEn": "used to describe a large, indefinite number of countable things; often preceded by ’as’, ’too’, ’so’, or ’that’",
           "examples": [
             "There were so many people at the concert that we could hardly see the stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "map",
+      "word": "map",
+      "senses": [
+        {
+          "id": "sense-e56983b9",
+          "pos": "n.",
+          "meaningZh": "地圖",
+          "examples": [
+            "Before planning our road trip, we studied a map to determine the best route and identify interesting landmarks along the way."
+          ]
+        },
+        {
+          "id": "sense-07c54eb2",
+          "pos": "n.",
+          "meaningZh": "映射函數；對應關係（數學）",
+          "examples": [
+            "In a game of treasure hunt, the map acts as a map function that connects the locations of the hidden treasures (first set) to specific coordinates (unique element) on the game board (second set)."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "mark",
+      "word": "mark",
+      "senses": [
+        {
+          "id": "sense-f436ca65",
+          "pos": "n.",
+          "meaningZh": "分數；成績",
+          "examples": [
+            "She got a high mark on the math exam."
+          ]
+        },
+        {
+          "id": "sense-f9207a3e",
+          "pos": "n.",
+          "meaningZh": "損傷痕跡；刮痕",
+          "examples": [
+            "After the car accident, there was a visible mark on the front bumper."
+          ]
+        },
+        {
+          "id": "sense-a1a572db",
+          "pos": "n.",
+          "meaningZh": "跡象；線索（某事發生的可見證據）",
+          "examples": [
+            "The tire tracks left on the muddy road were a mark that a car had recently passed by."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

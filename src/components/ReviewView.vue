@@ -31,7 +31,7 @@ const activeSet = computed(() => {
   return currentSetId ? setsStore.sets.find(set => set.id === currentSetId) ?? null : null
 })
 
-const ratingKeys: ReviewRating[] = ['again', 'hard', 'good', 'easy']
+const ratingKeys: ReviewRating[] = ['again', 'good']
 
 function speak() {
   const word = currentReviewEntry.value?.item.word
@@ -68,7 +68,7 @@ function next() {
 function onKeydown(event: KeyboardEvent) {
   if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)
     return
-  const shortcuts: Record<string, ReviewRating> = { a: 'again', h: 'hard', g: 'good', e: 'easy' }
+  const shortcuts: Record<string, ReviewRating> = { a: 'again', g: 'good' }
   if (!reviewAnswered.value && shortcuts[event.key.toLowerCase()]) {
     event.preventDefault()
     rate(shortcuts[event.key.toLowerCase()])
@@ -142,7 +142,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           {{ $t('learning.chooseRating') }}
         </div>
 
-        <div v-if="!reviewAnswered" class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div v-if="!reviewAnswered" class="mt-6 grid grid-cols-2 gap-3">
           <Button v-for="rating in ratingKeys" :key="rating" variant="outline" class="h-auto min-h-14 flex-col gap-1 rounded-2xl" @click="rate(rating)">
             <span class="font-extrabold">{{ $t(`learning.rating.${rating}`) }}</span>
             <span class="text-[11px] font-semibold text-ink-400">{{ $t(`learning.ratingHint.${rating}`) }}</span>

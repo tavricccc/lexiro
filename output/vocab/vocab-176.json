@@ -1,1381 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 176,
   "words": [
-    {
-      "wordKey": "disable",
-      "word": "disable",
-      "senses": [
-        {
-          "id": "sense-8a49de7b",
-          "pos": "verb",
-          "meaningZh": "使喪失能力；使無法運作",
-          "definitionEn": "make unable to perform a certain action",
-          "examples": [
-            "After breaking his leg, John was disabled from running for several months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-5d256aff",
-          "pos": "verb",
-          "meaningZh": "使殘障；使永久傷殘",
-          "definitionEn": "injure permanently",
-          "examples": [
-            "The car accident disabled him from walking for the rest of his life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L8",
-        "textbookTitle": "翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "disastrous",
-      "word": "disastrous",
-      "senses": [
-        {
-          "id": "sense-bb3ef0fd",
-          "pos": "adjective",
-          "meaningZh": "災難性的；毀滅性的",
-          "definitionEn": "Causing great damage or harm; bringing about severe negative consequences.",
-          "examples": [
-            "The recent hurricane had a disastrous effect on the small island, leaving many buildings destroyed and thousands homeless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "disbelief",
-      "word": "disbelief",
-      "senses": [
-        {
-          "id": "sense-696aaf01",
-          "pos": "noun",
-          "meaningZh": "不信；懷疑；難以置信",
-          "definitionEn": "the state of not believing or accepting something as true or real",
-          "examples": [
-            "Despite all the evidence, Sheila expressed disbelief in the existence of extraterrestrial life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "discard",
-      "word": "discard",
-      "senses": [
-        {
-          "id": "sense-e482c1f9",
-          "pos": "noun",
-          "meaningZh": "丟棄；廢棄",
-          "definitionEn": "the act of getting rid of something",
-          "examples": [
-            "I had to discard all of my old clothes when I moved to a new city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-48ea0822",
-          "pos": "verb",
-          "meaningZh": "丟棄；處置掉",
-          "definitionEn": "to get rid of something that is no longer wanted or needed",
-          "examples": [
-            "After the expiry date, it is important to discard the medication properly to avoid any potential harm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3",
-        "textbookTitle": "龍騰 B3·R3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "discharge",
-      "word": "discharge",
-      "senses": [
-        {
-          "id": "sense-c91feae1",
-          "pos": "verb",
-          "meaningZh": "排放；釋放；准許離開",
-          "definitionEn": "to release something or someone, or to allow a patient to leave a hospital",
-          "examples": [
-            "The factory was fined for discharging waste into the river."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-0b942e3b",
-          "pos": "verb",
-          "meaningZh": "（武器）走火；射擊",
-          "definitionEn": "cause to go off",
-          "examples": [
-            "He accidentally discharged his firearm while cleaning it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "disciple",
       "word": "disciple",
       "senses": [
         {
-          "id": "sense-95eb03e5",
-          "pos": "noun",
+          "id": "sense-bb887681",
+          "pos": "n.",
           "meaningZh": "信徒；弟子",
-          "definitionEn": "a person who follows and helps to spread the teachings and beliefs of another, especially a religious leader",
           "examples": [
             "The disciple listened carefully to the teachings of his guru and traveled far and wide to spread the message to others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-36e6953d",
-          "pos": "noun",
+          "id": "sense-bc2f7d29",
+          "pos": "n.",
           "meaningZh": "門徒；追隨者",
-          "definitionEn": "a personal follower of a teacher, especially one who assists in spreading their teachings",
           "examples": [
             "After learning the teachings of Buddha from the monk, the young man became his disciple and went on to spread his message."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disciplinary",
       "word": "disciplinary",
       "senses": [
         {
-          "id": "sense-5ec02785",
-          "pos": "adjective",
+          "id": "sense-34865c8b",
+          "pos": "adj.",
           "meaningZh": "紀律的；懲戒的",
-          "definitionEn": "related to the practice or methods of maintaining discipline in behavior",
           "examples": [
             "The teacher implemented disciplinary measures to ensure the students followed the classroom rules."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3198f334",
-          "pos": "adjective",
+          "id": "sense-31dd0ac6",
+          "pos": "adj.",
           "meaningZh": "整頓紀律的；督促的",
-          "definitionEn": "intended to encourage discipline or good behavior",
           "examples": [
             "The school implemented a new disciplinary system to address disruptive behavior and promote a positive learning environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disclosure",
       "word": "disclosure",
       "senses": [
         {
-          "id": "sense-69b09ab1",
-          "pos": "noun",
+          "id": "sense-f90c03b9",
+          "pos": "n.",
           "meaningZh": "揭露；公開（資訊）",
-          "definitionEn": "the act of making something evident or revealing information",
           "examples": [
             "The company made a full disclosure of their financial statements to their investors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discomfort",
       "word": "discomfort",
       "senses": [
         {
-          "id": "sense-7d85d56f",
-          "pos": "noun",
+          "id": "sense-50f19a23",
+          "pos": "n.",
           "meaningZh": "不安；心理不適",
-          "definitionEn": "an uncomfortable feeling of mental painfulness or distress",
           "examples": [
             "I experienced a great discomfort during the funeral ceremony of my beloved grandmother."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-33e31b5c",
-          "pos": "noun",
+          "id": "sense-d75436f8",
+          "pos": "n.",
           "meaningZh": "不適；疼痛感",
-          "definitionEn": "the state of being tense and feeling physical pain",
           "examples": [
             "After sitting in the same position for hours, Maria felt discomfort in her lower back."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "discreet",
       "word": "discreet",
       "senses": [
         {
-          "id": "sense-c3c7dc36",
-          "pos": "adjective",
+          "id": "sense-3d0d0600",
+          "pos": "adj.",
           "meaningZh": "謹言慎行的；守口如瓶的",
-          "definitionEn": "wise in keeping silent about private information and keeping one’s own counsel",
           "examples": [
             "The discreet receptionist refused to disclose the whereabouts of her boss to the persistent salesperson."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-dda8fa77",
-          "pos": "adjective",
+          "id": "sense-fe44e3e5",
+          "pos": "adj.",
           "meaningZh": "低調的；不引人注目的",
-          "definitionEn": "not attracting attention or giving offense; inconspicuous",
           "examples": [
             "The bride asked her bridesmaids to wear discreet jewelry and makeup to avoid drawing attention away from her on her wedding day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disgrace",
       "word": "disgrace",
       "senses": [
         {
-          "id": "sense-ae6dd3a4",
-          "pos": "noun",
+          "id": "sense-07813210",
+          "pos": "n.",
           "meaningZh": "恥辱；丟臉",
-          "definitionEn": "embarrassment and loss of respect from others, or the behavior that leads to this.",
           "examples": [
             "Even though Mark was a successful businessman, his involvement in the scandal brought disgrace upon his family name."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7c0522f2",
-          "pos": "verb",
+          "id": "sense-d997534b",
+          "pos": "v.",
           "meaningZh": "使蒙羞；使丟臉",
-          "definitionEn": "to bring shame or dishonor upon someone or something.",
           "examples": [
             "His behavior at the party was a disgrace to his family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dismay",
       "word": "dismay",
       "senses": [
         {
-          "id": "sense-0988b62d",
-          "pos": "noun",
+          "id": "sense-006ca535",
+          "pos": "n.",
           "meaningZh": "沮喪；絕望",
-          "definitionEn": "a feeling of despair or hopelessness in the face of difficulty, disappointment, or adversity",
           "examples": [
             "Upon receiving a failing grade on her final exam, Sarah felt a deep sense of dismay, fearing that all her hard work had been in vain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c5c4027e",
-          "pos": "noun",
+          "id": "sense-b50637d6",
+          "pos": "n.",
           "meaningZh": "驚恐；驚愕",
-          "definitionEn": "fear or apprehension caused by danger or something unexpected",
           "examples": [
             "Upon opening the door, she was filled with dismay as she discovered her house had been burglarized."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dispensable",
       "word": "dispensable",
       "senses": [
         {
-          "id": "sense-e9534b5b",
-          "pos": "adjective",
+          "id": "sense-9c5f46cf",
+          "pos": "adj.",
           "meaningZh": "可有可無的；非必要的",
-          "definitionEn": "able to be done without or not needed",
           "examples": [
             "During our move, we realized that most of the items in the storage were dispensable and not necessary for our new home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dispense",
       "word": "dispense",
       "senses": [
         {
-          "id": "sense-348cf6d1",
-          "pos": "verb",
+          "id": "sense-e0b17dc4",
+          "pos": "v.",
           "meaningZh": "分發；分配",
-          "definitionEn": "to give out or distribute, especially in portions for people to use or consume",
           "examples": [
             "During the busy holiday season, the soup kitchen dispenses warm meals and hot drinks to the homeless community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5ffc65bc",
-          "pos": "verb",
+          "id": "sense-e0f563a1",
+          "pos": "v.",
           "meaningZh": "配藥；調劑",
-          "definitionEn": "to give or apply (medications or remedies) as prescribed",
           "examples": [
             "The pharmacist will dispense the prescribed medication to the patient."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disposable",
       "word": "disposable",
       "senses": [
         {
-          "id": "sense-c906cd81",
-          "pos": "adjective",
+          "id": "sense-e94b90e5",
+          "pos": "adj.",
           "meaningZh": "用完即丟的；拋棄式的",
-          "definitionEn": "designed to be thrown away after use; intended for use only a few times",
           "examples": [
             "When hosting a picnic, it is convenient to use disposable plates and cutlery that can be easily thrown away after the meal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a3887350",
-          "pos": "adjective",
+          "id": "sense-e4b6556c",
+          "pos": "adj.",
           "meaningZh": "一次性的；不需保留的",
-          "definitionEn": "available to be used or thrown away; not meant to be kept",
           "examples": [
             "After the party, we used disposable plates and cups, so we didn't have to do the dishes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disposal",
       "word": "disposal",
       "senses": [
         {
-          "id": "sense-cc03dbc4",
-          "pos": "noun",
+          "id": "sense-46a92108",
+          "pos": "n.",
           "meaningZh": "（事務）處理；處置",
-          "definitionEn": "a method of tending to or managing the affairs of a group of people (especially the group’s business affairs)",
           "examples": [
             "The board of directors is responsible for the disposal of the company’s assets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2b70e9b0",
-          "pos": "noun",
+          "id": "sense-d60ee0fc",
+          "pos": "n.",
           "meaningZh": "支配權；使用權",
-          "definitionEn": "the power to use something or someone",
           "examples": [
             "As the new CEO, she had complete disposal over the company’s finances."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dispose",
       "word": "dispose",
       "senses": [
         {
-          "id": "sense-da4e33c0",
-          "pos": "verb",
+          "id": "sense-64ea0c91",
+          "pos": "v.",
           "meaningZh": "丟棄；處置",
-          "definitionEn": "throw away or get rid of something",
           "examples": [
             "It is important to properly dispose of hazardous waste to prevent harm to the environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8c6a1314",
-          "pos": "verb",
+          "id": "sense-6e85aa19",
+          "pos": "v.",
           "meaningZh": "排列；安排",
-          "definitionEn": "arrange something in a certain way or order",
           "examples": [
             "She disposed the books on the shelves by genre."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dissent",
       "word": "dissent",
       "senses": [
         {
-          "id": "sense-db3d8eb9",
-          "pos": "noun",
+          "id": "sense-587c72ed",
+          "pos": "n.",
           "meaningZh": "意見分歧；異議",
-          "definitionEn": "a difference of opinion",
           "examples": [
             "The committee vote resulted in a 3-2 decision with two members voicing their dissent on the issue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-45e39fcf",
-          "pos": "noun",
+          "id": "sense-cfb69063",
+          "pos": "n.",
           "meaningZh": "公開反對；異議",
-          "definitionEn": "the act of publicly disagreeing with an opinion, decision, or set of beliefs",
           "examples": [
             "The CEO faced dissent from the staff over the proposed merger with a rival company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "distraction",
       "word": "distraction",
       "senses": [
         {
-          "id": "sense-1d576bad",
-          "pos": "noun",
+          "id": "sense-519cd71d",
+          "pos": "n.",
           "meaningZh": "干擾；令人分心的事物",
-          "definitionEn": "an obstacle to attention",
           "examples": [
             "The blaring music from the street was a constant distraction as I tried to study for my exams."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8c1f74b7",
-          "pos": "noun",
+          "id": "sense-18bb8347",
+          "pos": "n.",
           "meaningZh": "消遣；轉移注意的事",
-          "definitionEn": "an entertainment that provokes pleased interest and distracts you from worries and vexations",
           "examples": [
             "After a long day at work, John decided to watch a comedy movie as a distraction from his stressful day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2",
-        "textbookTitle": "龍騰 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "distress",
       "word": "distress",
       "senses": [
         {
-          "id": "sense-7f59f230",
-          "pos": "noun",
+          "id": "sense-44e989f4",
+          "pos": "n.",
           "meaningZh": "困境；危難",
-          "definitionEn": "a state of adversity, danger, affliction, or need",
           "examples": [
             "During the hurricane, many families were in distress as they lost their homes and belongings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8d3339ab",
-          "pos": "noun",
+          "id": "sense-002234af",
+          "pos": "n.",
           "meaningZh": "痛苦；心理煎熬",
-          "definitionEn": "psychological or emotional suffering",
           "examples": [
             "After losing her job, Jane experienced great distress and found it difficult to cope with the uncertainty of her future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "disturbance",
       "word": "disturbance",
       "senses": [
         {
-          "id": "sense-7ff23133",
-          "pos": "noun",
+          "id": "sense-a247e133",
+          "pos": "n.",
           "meaningZh": "騷擾；干擾",
-          "definitionEn": "the act of disturbing something or someone; setting something in motion",
           "examples": [
             "The loud noise from the construction site caused a disturbance throughout the entire neighborhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-65583ccb",
-          "pos": "noun",
+          "id": "sense-b5f26ccb",
+          "pos": "n.",
           "meaningZh": "騷動；暴力衝突",
-          "definitionEn": "a noisy fight",
           "examples": [
             "The disturbance broke out at the bar when two patrons started throwing punches and shouting at each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4 +1",
-        "textbookTitle": "龍騰 B4·L4、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "diversify",
       "word": "diversify",
       "senses": [
         {
-          "id": "sense-6e71e651",
-          "pos": "verb",
+          "id": "sense-09b4f482",
+          "pos": "v.",
           "meaningZh": "分散風險；多角化經營",
-          "definitionEn": "to vary something in order to spread risk or to expand",
           "examples": [
             "In order to protect his investments, John decided to diversify his portfolio by investing in stocks, bonds, and real estate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ace347ce",
-          "pos": "verb",
+          "id": "sense-4fb496d5",
+          "pos": "v.",
           "meaningZh": "使多元化；增加多樣性",
-          "definitionEn": "to make something more diverse",
           "examples": [
             "In order to attract a wider range of customers, the company decided to diversify its product line by introducing new options for different demographics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "diversion",
       "word": "diversion",
       "senses": [
         {
-          "id": "sense-9583e029",
-          "pos": "noun",
+          "id": "sense-9dee0f5d",
+          "pos": "n.",
           "meaningZh": "改道；繞行",
-          "definitionEn": "the act of turning aside from a course or direction",
           "examples": [
             "The construction on the road caused a diversion for all the vehicles, leading to unexpected traffic delays."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b66aefd5",
-          "pos": "noun",
+          "id": "sense-2d1cc631",
+          "pos": "n.",
           "meaningZh": "消遣；娛樂活動",
-          "definitionEn": "an activity or entertainment that distracts or entertains the mind",
           "examples": [
             "During the long flight, the airline provided in-flight entertainment as a diversion for the passengers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "divert",
       "word": "divert",
       "senses": [
         {
-          "id": "sense-207d0e2f",
-          "pos": "verb",
+          "id": "sense-ab7f0412",
+          "pos": "v.",
           "meaningZh": "使轉向；使改道",
-          "definitionEn": "to turn away from a particular direction or path",
           "examples": [
             "The construction on the main road diverted traffic onto side streets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-37350e83",
-          "pos": "verb",
+          "id": "sense-4069879a",
+          "pos": "v.",
           "meaningZh": "轉移；重新導向",
-          "definitionEn": "to redirect something towards a different destination or course than the intended one",
           "examples": [
             "The construction crew had to divert traffic to a different route while they repaired the bridge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "dividend",
       "word": "dividend",
       "senses": [
         {
-          "id": "sense-3f1e3c61",
-          "pos": "noun",
+          "id": "sense-dcc82e1d",
+          "pos": "n.",
           "meaningZh": "股利；股息",
-          "definitionEn": "A dividend is a portion of a company’s profit that is paid to its shareholders.",
           "examples": [
             "At the annual shareholders' meeting, the CEO announced that the company's dividend for the year would be $2 per share."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d317b660",
-          "pos": "noun",
+          "id": "sense-e69296ec",
+          "pos": "n.",
           "meaningZh": "紅利；分紅",
-          "definitionEn": "In the context of a life insurance company, a dividend refers to a portion of the company’s profits that is distributed to policyholders who have insurance plans with the company.",
           "examples": [
             "After years of paying premiums, John received a dividend from his life insurance company, which was a pleasant surprise and a reward for his loyalty."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "doom",
       "word": "doom",
       "senses": [
         {
-          "id": "sense-682d89e9",
-          "pos": "noun",
+          "id": "sense-99932f21",
+          "pos": "n.",
           "meaningZh": "毀滅；厄運",
-          "definitionEn": "death, destruction, or failure that is certain or unavoidable.",
           "examples": [
             "The kingdom was filled with doom as the dark clouds rolled in, signaling an impending storm of destruction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4854e280",
-          "pos": "verb",
+          "id": "sense-940c785b",
+          "pos": "v.",
           "meaningZh": "注定失敗；使走向滅亡",
-          "definitionEn": "to be the certain cause of someone or something having a bad end, especially to die or fail.",
           "examples": [
             "Neglecting to prepare for the exam will doom your chances of passing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "downward",
       "word": "downward",
       "senses": [
         {
-          "id": "sense-de0d89a2",
-          "pos": "adjective",
+          "id": "sense-f0541d26",
+          "pos": "adj.",
           "meaningZh": "向下的；下行的",
-          "definitionEn": "moving or extending from a higher to a lower place or position",
           "examples": [
             "The hiker carefully made his way downward along the steep mountain trail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-59fa9d45",
-          "pos": "adjective",
+          "id": "sense-b9b8e7e1",
+          "pos": "adj.",
           "meaningZh": "朝下的；往下移的",
-          "definitionEn": "directed, moving, or situated towards a lower surface or position",
           "examples": [
             "After reaching its peak, the roller coaster began its downward descent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "doze",
       "word": "doze",
       "senses": [
         {
-          "id": "sense-d0da7c27",
-          "pos": "verb",
+          "id": "sense-d9a3514a",
+          "pos": "v.",
           "meaningZh": "打盹；小睡",
-          "definitionEn": "to sleep lightly or for a short period of time",
           "examples": [
             "I often doze off during long car rides."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a0a9eb1e",
-          "pos": "noun",
+          "id": "sense-5527aca2",
+          "pos": "n.",
           "meaningZh": "小睡；打盹",
-          "definitionEn": "a short period of light sleep",
           "examples": [
             "I had a quick doze on the train ride home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "drastic",
       "word": "drastic",
       "senses": [
         {
-          "id": "sense-aec69fbb",
-          "pos": "adjective",
+          "id": "sense-efd2fb57",
+          "pos": "adj.",
           "meaningZh": "激烈的；大幅度的",
-          "definitionEn": "severe and extreme; having a strong or violent effect",
           "examples": [
             "In an effort to lose weight, she made the drastic decision to cut out all carbohydrates from her diet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "draught",
       "word": "draught",
       "senses": [
         {
-          "id": "sense-7677d4cf",
-          "pos": "noun",
+          "id": "sense-dbf4c2db",
+          "pos": "n.",
           "meaningZh": "穿堂風；冷風",
-          "definitionEn": "a current of air, especially one that comes into a room through a door or window",
           "examples": [
             "Close the windows properly, or we’ll get a cold draught in the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-91a529aa",
-          "pos": "noun",
+          "id": "sense-2e2d8a3e",
+          "pos": "n.",
           "meaningZh": "生啤；桶裝飲料",
-          "definitionEn": "a serving of drink, especially beer, that is pulled from a container or keg",
           "examples": [
             "I ordered a draught beer at the bar and the bartender poured me a cold pint straight from the tap."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dresser",
+      "word": "dresser",
+      "senses": [
+        {
+          "id": "sense-523a4d4a",
+          "pos": "n.",
+          "meaningZh": "梳妝台；衣櫃",
+          "examples": [
+            "Sarah opened her dresser and pulled out a fresh pair of socks."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dressing",
+      "word": "dressing",
+      "senses": [
+        {
+          "id": "sense-95ed122e",
+          "pos": "n.",
+          "meaningZh": "傷口敷料；繃帶",
+          "examples": [
+            "After cleaning the wound, he applied a sterile dressing to prevent any infection."
+          ]
+        },
+        {
+          "id": "sense-a3c3d23f",
+          "pos": "n.",
+          "meaningZh": "沙拉醬；調味醬",
+          "examples": [
+            "She drizzled the tangy vinaigrette dressing over her fresh garden salad."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dual",
+      "word": "dual",
+      "senses": [
+        {
+          "id": "sense-f6a5dd22",
+          "pos": "adj.",
+          "meaningZh": "雙重的；兩部分組成的",
+          "examples": [
+            "The dual exhaust system on the sports car enhances its performance and gives it a distinctive sound."
+          ]
+        },
+        {
+          "id": "sense-994202c1",
+          "pos": "adj.",
+          "meaningZh": "雙面的；兩種截然不同特質的",
+          "examples": [
+            "Her personality was a dual mix of sweetness and ferocity."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "dubious",
+      "word": "dubious",
+      "senses": [
+        {
+          "id": "sense-8cdca681",
+          "pos": "adj.",
+          "meaningZh": "令人存疑的；可疑的",
+          "examples": [
+            "The manager had a dubious expression on his face as he reviewed the suspect's alibi."
+          ]
+        },
+        {
+          "id": "sense-bd409d25",
+          "pos": "adj.",
+          "meaningZh": "靠不住的；不可信賴的",
+          "examples": [
+            "The salesman's dubious claims about the product's effectiveness made me hesitant to make a purchase."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "duration",
+      "word": "duration",
+      "senses": [
+        {
+          "id": "sense-17eaafc7",
+          "pos": "n.",
+          "meaningZh": "持續時間；時長",
+          "examples": [
+            "The duration of the movie was two hours and thirty minutes."
+          ]
+        },
+        {
+          "id": "sense-a4e4400b",
+          "pos": "n.",
+          "meaningZh": "期間；延續長度",
+          "examples": [
+            "The duration of the concert was three hours."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

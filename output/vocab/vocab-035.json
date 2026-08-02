@@ -1,1379 +1,655 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 35,
   "words": [
-    {
-      "wordKey": "boil",
-      "word": "boil",
-      "senses": [
-        {
-          "id": "sense-1390e9d4",
-          "pos": "verb",
-          "meaningZh": "水煮；烹煮",
-          "definitionEn": "to cook something in boiling water or other liquid",
-          "examples": [
-            "You need to boil the pasta for 10 minutes until it's al dente."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-160da636",
-          "pos": "noun",
-          "meaningZh": "沸騰；煮沸",
-          "definitionEn": "the act or process of bringing a liquid to the temperature at which it starts to turn into a gas",
-          "examples": [
-            "To make pasta, you need to boil water until it reaches a rolling boil."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "bone",
-      "word": "bone",
-      "senses": [
-        {
-          "id": "sense-1a91cd99",
-          "pos": "noun",
-          "meaningZh": "骨頭；骨骼",
-          "definitionEn": "the hard, rigid tissue that forms the skeleton of vertebrates",
-          "examples": [
-            "He broke a bone in his arm after falling off his bike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "bookstore",
-      "word": "bookstore",
-      "senses": [
-        {
-          "id": "sense-758d1181",
-          "pos": "noun",
-          "meaningZh": "書店；書局",
-          "definitionEn": "a store or shop selling books",
-          "examples": [
-            "After browsing the shelves at the local bookstore, Sarah finally found the novel she had been searching for."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "border",
-      "word": "border",
-      "senses": [
-        {
-          "id": "sense-4c511c95",
-          "pos": "noun",
-          "meaningZh": "邊界；國界",
-          "definitionEn": "the line that divides two countries or states",
-          "examples": [
-            "The border between Canada and the United States is heavily guarded."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-c4f2b1a1",
-          "pos": "noun",
-          "meaningZh": "邊緣；邊框",
-          "definitionEn": "a boundary of a surface, such as the edge of a paper or the edge of a garden",
-          "examples": [
-            "To add a decorative touch to my artwork, I drew a colorful border around the edge of the paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "bother",
-      "word": "bother",
-      "senses": [
-        {
-          "id": "sense-79366d53",
-          "pos": "verb",
-          "meaningZh": "打擾；煩擾",
-          "definitionEn": "to annoy or disturb, often with trivial matters",
-          "examples": [
-            "Please don't bother me with such insignificant details while I'm trying to concentrate on my work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-abac4446",
-          "pos": "verb",
-          "meaningZh": "麻煩；添麻煩",
-          "definitionEn": "to cause trouble or inconvenience to someone",
-          "examples": [
-            "I didn't want to bother him, so I managed to fix the problem on my own."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "brain",
       "word": "brain",
       "senses": [
         {
-          "id": "sense-18ed0191",
-          "pos": "noun",
+          "id": "sense-8d5c8891",
+          "pos": "n.",
           "meaningZh": "大腦；腦部",
-          "definitionEn": "that part of the central nervous system enclosed within the skull, consisting of the cerebrum, cerebellum, and brainstem, and including all the higher nervous centers; it is continuous with the spinal cord",
           "examples": [
             "The brain controls all of the body’s functions, allowing us to think, feel, move, and communicate with others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4fa09300",
-          "pos": "noun",
+          "id": "sense-f9a8c800",
+          "pos": "n.",
           "meaningZh": "腦；腦部器官",
-          "definitionEn": "the organ inside the skull that controls all thought, memory, feelings, and bodily functions",
           "examples": [
             "After sustaining a head injury, Mark’s brain had swelling, causing him to experience severe headaches and memory loss."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L4",
-        "textbookTitle": "三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "branch",
       "word": "branch",
       "senses": [
         {
-          "id": "sense-6fce1991",
-          "pos": "noun",
+          "id": "sense-dfda1c05",
+          "pos": "n.",
           "meaningZh": "樹枝；分枝",
-          "definitionEn": "a projection resembling an arm that extends from a larger structure",
           "examples": [
             "The tree had many branches stretching out towards the sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4eed2b7f",
-          "pos": "verb",
+          "id": "sense-b94e4b9a",
+          "pos": "v.",
           "meaningZh": "分叉；分支",
-          "definitionEn": "to divide into two or more branches or sections, forming a fork",
           "examples": [
             "The river branched off into two smaller streams."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "brand",
       "word": "brand",
       "senses": [
         {
-          "id": "sense-73c14a09",
-          "pos": "noun",
+          "id": "sense-65608a5d",
+          "pos": "n.",
           "meaningZh": "品牌；商標",
-          "definitionEn": "a type of product made by a particular company under a particular name",
           "examples": [
             "This is my favorite brand of coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-000f142a",
-          "pos": "noun",
+          "id": "sense-e80db9de",
+          "pos": "n.",
           "meaningZh": "燃燒的木頭；火炬",
-          "definitionEn": "a piece of wood or other material that is burning or has been burned",
           "examples": [
             "After gathering firewood, they carefully arranged the brands into a neat stack for their bonfire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L9",
-        "textbookTitle": "龍騰 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "brief",
       "word": "brief",
       "senses": [
         {
-          "id": "sense-8ace3efd",
-          "pos": "adjective",
+          "id": "sense-f99e4079",
+          "pos": "adj.",
           "meaningZh": "短暫的；簡短的",
-          "definitionEn": "lasting for a short time or covering a short distance",
           "examples": [
             "The teacher gave a brief explanation of the project before moving on to the next topic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-331e0409",
-          "pos": "verb",
+          "id": "sense-c2aec56c",
+          "pos": "v.",
           "meaningZh": "簡報；告知重要資訊",
-          "definitionEn": "to give someone important or essential information quickly and clearly",
           "examples": [
             "I need you to brief me on the project before the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "brilliant",
       "word": "brilliant",
       "senses": [
         {
-          "id": "sense-81c97a73",
-          "pos": "adjective",
+          "id": "sense-4b0bdd65",
+          "pos": "adj.",
           "meaningZh": "傑出的；優秀的",
-          "definitionEn": "of exceptional quality or ability; excellent.",
           "examples": [
             "The book was a brilliant work of literature, winning numerous awards and accolades."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-87e051bc",
-          "pos": "adjective",
+          "id": "sense-5c0dd92e",
+          "pos": "adj.",
           "meaningZh": "才華洋溢的；聰慧的",
-          "definitionEn": "marked by unusual and impressive intelligence; clever.",
           "examples": [
             "Her solution to the complex math problem was brilliant and left the entire class in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L10 +1",
-        "textbookTitle": "三民 B2·L10、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "broad",
       "word": "broad",
       "senses": [
         {
-          "id": "sense-f5e4d0aa",
-          "pos": "adjective",
+          "id": "sense-1d886526",
+          "pos": "adj.",
           "meaningZh": "寬闊的；寬廣的",
-          "definitionEn": "having a wide extent from side to side",
           "examples": [
             "The broad river flowed through the valley, streaming with fresh water and providing a home for many aquatic creatures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-130d37c0",
-          "pos": "adjective",
+          "id": "sense-a462031c",
+          "pos": "adj.",
           "meaningZh": "廣泛的；多樣的",
-          "definitionEn": "including a wide variety of things",
           "examples": [
             "The museum’s collection is very broad, ranging from ancient artifacts to modern art."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "brush",
       "word": "brush",
       "senses": [
         {
-          "id": "sense-cac43c03",
-          "pos": "noun",
+          "id": "sense-7eec7a73",
+          "pos": "n.",
           "meaningZh": "刷子；毛刷",
-          "definitionEn": "a tool consisting of bristles or hairs firmly set into a handle used for cleaning or painting surfaces",
           "examples": [
             "I used a brush to scrub the grime off the tile."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b8b055f2",
-          "pos": "noun",
+          "id": "sense-ec958862",
+          "pos": "n.",
           "meaningZh": "刷牙；刷洗",
-          "definitionEn": "the act of cleaning or scrubbing one’s teeth with a brush",
           "examples": [
             "After every meal, she made sure to brush her teeth thoroughly to maintain good oral hygiene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "building",
       "word": "building",
       "senses": [
         {
-          "id": "sense-10bd9e34",
-          "pos": "noun",
+          "id": "sense-32d38a10",
+          "pos": "n.",
           "meaningZh": "建築物；大樓",
-          "definitionEn": "a structure with a roof and walls, such as a house, office, or school",
           "examples": [
             "The tallest building in the city has a hundred floors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c7bc6c9a",
-          "pos": "noun",
+          "id": "sense-7a841306",
+          "pos": "n.",
           "meaningZh": "建造；施工",
-          "definitionEn": "the act of constructing something",
           "examples": [
             "The building of the new school was completed ahead of schedule."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-90a24c50",
-          "pos": "noun",
+          "id": "sense-c6701be4",
+          "pos": "n.",
           "meaningZh": "建築業；營建業",
-          "definitionEn": "the commercial activity involved in repairing old structures or constructing new ones",
           "examples": [
             "The construction company specializes in building high-rise apartment complexes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bun",
       "word": "bun",
       "senses": [
         {
-          "id": "sense-cb9dc2e4",
-          "pos": "noun",
+          "id": "sense-7f0c0968",
+          "pos": "n.",
           "meaningZh": "小圓麵包；餐包",
-          "definitionEn": "A type of bread that is small and round in shape, which can be plain or sweet.",
           "examples": [
             "I love having a sweet bun as a dessert after dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "burden",
       "word": "burden",
       "senses": [
         {
-          "id": "sense-074bae00",
-          "pos": "noun",
+          "id": "sense-27ff3a44",
+          "pos": "n.",
           "meaningZh": "重擔；負荷",
-          "definitionEn": "weight that is carried or transported",
           "examples": [
             "The hefty load that the porters were carrying was proving to be a burden for them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9aa7153b",
-          "pos": "verb",
+          "id": "sense-f86b8314",
+          "pos": "v.",
           "meaningZh": "加重負擔；使沉重",
-          "definitionEn": "load heavily or oppressively",
           "examples": [
             "The constant bickering and fighting between the two partners burdened their relationship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "burn",
       "word": "burn",
       "senses": [
         {
-          "id": "sense-82681be8",
-          "pos": "verb",
+          "id": "sense-4ef37a09",
+          "pos": "v.",
           "meaningZh": "點燃；燃燒",
-          "definitionEn": "cause to burn or combust",
           "examples": [
             "She carefully placed the logs in the fireplace and struck a match to burn them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-957f3391",
-          "pos": "verb",
+          "id": "sense-b0579b9c",
+          "pos": "v.",
           "meaningZh": "燙傷；灼傷",
-          "definitionEn": "burn with heat, fire, or radiation",
           "examples": [
             "She accidentally burned her finger while cooking."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "burst",
       "word": "burst",
       "senses": [
         {
-          "id": "sense-41741068",
-          "pos": "verb",
+          "id": "sense-7f7a7bf9",
+          "pos": "v.",
           "meaningZh": "爆開；迸裂",
-          "definitionEn": "to suddenly and forcefully break open or apart, as if from internal pressure",
           "examples": [
             "As soon as he bit into the hot pizza, the molten cheese burst out of the slice and onto his chin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c3dcfec5",
-          "pos": "verb",
+          "id": "sense-965cff9c",
+          "pos": "v.",
           "meaningZh": "炸開；突然噴出",
-          "definitionEn": "to suddenly and forcefully erupt outwards, usually accompanied by a noise",
           "examples": [
             "The water balloon burst suddenly and drenched everyone with water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5",
-        "textbookTitle": "龍騰 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "businessman",
       "word": "businessman",
       "senses": [
         {
-          "id": "sense-2320be78",
-          "pos": "noun",
+          "id": "sense-871c5b94",
+          "pos": "n.",
           "meaningZh": "商人；企業家",
-          "definitionEn": "a person who is involved in commerce or industry, especially as an owner or executive",
           "examples": [
             "As a successful businessman, John led his company to global expansion and increased profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cabbage",
       "word": "cabbage",
       "senses": [
         {
-          "id": "sense-095a51a5",
-          "pos": "noun",
+          "id": "sense-1afd099d",
+          "pos": "n.",
           "meaningZh": "高麗菜；甘藍",
-          "definitionEn": "any of various types of cabbage",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-71296f96",
-          "pos": "noun",
+          "id": "sense-973b339e",
+          "pos": "n.",
           "meaningZh": "錢；鈔票（俚語）",
-          "definitionEn": "informal: a slang for money",
           "examples": [
             "After working overtime all week, he finally had enough cabbages to pay off his debts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cage",
       "word": "cage",
       "senses": [
         {
-          "id": "sense-102ae2f7",
-          "pos": "noun",
+          "id": "sense-71c8403b",
+          "pos": "n.",
           "meaningZh": "籠子；鳥籠",
-          "definitionEn": "an enclosure made of wire or metal bars where birds or animals can be kept",
           "examples": [
             "The zookeeper placed the injured bird in a small cage to provide it with a safe and secure environment for recovery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f989fc61",
-          "pos": "noun",
+          "id": "sense-db4343a5",
+          "pos": "n.",
           "meaningZh": "囚籠；束縛（喻義）",
-          "definitionEn": "something that restricts freedom, as a cage restricts movement",
           "examples": [
             "She felt trapped in a loveless marriage, as if she were in a cage with no way out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "calendar",
       "word": "calendar",
       "senses": [
         {
-          "id": "sense-0518f29f",
-          "pos": "noun",
+          "id": "sense-cf6ee2ef",
+          "pos": "n.",
           "meaningZh": "日曆；月曆",
-          "definitionEn": "a chart or table showing the days, weeks, and months of a year",
           "examples": [
             "I always mark important events on my calendar, like birthdays and appointments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-df1b9751",
-          "pos": "verb",
+          "id": "sense-14faf1e0",
+          "pos": "v.",
           "meaningZh": "排入日曆；記入行程",
-          "definitionEn": "to add something to a calendar",
           "examples": [
             "I need to calendar our team meeting for next week."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "calm",
       "word": "calm",
       "senses": [
         {
-          "id": "sense-9802bb4e",
-          "pos": "noun",
+          "id": "sense-41b3c8ea",
+          "pos": "n.",
           "meaningZh": "冷靜；沉著",
-          "definitionEn": "steadiness of mind under stress",
           "examples": [
             "Despite the chaos around her, Jane remained calm and focused on finding a solution to the problem."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a1effc3f",
-          "pos": "noun",
+          "id": "sense-e60c9e8b",
+          "pos": "n.",
           "meaningZh": "無風；風平浪靜",
-          "definitionEn": "wind moving at less than 1 knot; 0 on the Beaufort scale",
           "examples": [
             "As we set sail, the sea was so calm that not a single ripple disturbed the surface."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "camel",
       "word": "camel",
       "senses": [
         {
-          "id": "sense-bbadd4e1",
-          "pos": "noun",
+          "id": "sense-493c4fed",
+          "pos": "n.",
           "meaningZh": "駱駝",
-          "definitionEn": "An animal with a long neck and one or two humps on its back that is often used in desert regions as a draft or saddle animal",
           "examples": [
             "The caravan trekked across the scorching desert, relying on camels to carry their supplies and water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cancel",
       "word": "cancel",
       "senses": [
         {
-          "id": "sense-9d79f1b2",
-          "pos": "verb",
+          "id": "sense-9b012193",
+          "pos": "v.",
           "meaningZh": "取消；撤銷",
-          "definitionEn": "to declare something null and void, to make it ineffective",
           "examples": [
             "I had to cancel my flight due to a sudden illness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-036498b7",
-          "pos": "verb",
+          "id": "sense-aa9cc33c",
+          "pos": "v.",
           "meaningZh": "作廢；使無效",
-          "definitionEn": "to make something invalid for use",
           "examples": [
             "I had to cancel my flight due to bad weather conditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cancer",
       "word": "cancer",
       "senses": [
         {
-          "id": "sense-83815eda",
-          "pos": "noun",
+          "id": "sense-a5e426b6",
+          "pos": "n.",
           "meaningZh": "癌症；惡性腫瘤",
-          "definitionEn": "A disease in which abnormal cells divide uncontrollably and destroy body tissue. There are many types of cancer which can spread to other parts of the body.",
           "examples": [
             "After being diagnosed with cancer, John started chemotherapy to stop the uncontrollable division of cells in his body."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7",
-        "textbookTitle": "龍騰 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "candle",
       "word": "candle",
       "senses": [
         {
-          "id": "sense-719922d6",
-          "pos": "noun",
+          "id": "sense-f37a675e",
+          "pos": "n.",
           "meaningZh": "蠟燭",
-          "definitionEn": "a stick made of wax with a wick in the middle that gives light as it burns",
           "examples": [
             "During a power outage, I lit a candle on the dining table to provide some light in the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4bba86c0",
-          "pos": "verb",
+          "id": "sense-9646ee79",
+          "pos": "v.",
           "meaningZh": "照蛋；驗蛋",
-          "definitionEn": "to examine eggs by holding them against a light to check their freshness",
           "examples": [
             "The farmer used a flashlight to candle the eggs and determine which ones were good for sale."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capital",
       "word": "capital",
       "senses": [
         {
-          "id": "sense-d748e20d",
-          "pos": "noun",
+          "id": "sense-b2da83ed",
+          "pos": "n.",
           "meaningZh": "資本；資金",
-          "definitionEn": "wealth in the form of money or property owned or used in business by a person or corporation.",
           "examples": [
             "John used his personal capital to start his own business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b191607a",
-          "pos": "noun",
+          "id": "sense-5d1508da",
+          "pos": "n.",
           "meaningZh": "資產；生產性資本",
-          "definitionEn": "the assets, such as machinery, land, and factories, used in the production of goods or services.",
           "examples": [
             "In order to expand their business, the company decided to invest in new capital such as state-of-the-art machinery and a larger production facility."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cartoon",
       "word": "cartoon",
       "senses": [
         {
-          "id": "sense-7612c439",
-          "pos": "noun",
+          "id": "sense-aae37335",
+          "pos": "n.",
           "meaningZh": "漫畫；時事諷刺畫",
-          "definitionEn": "a humorous or satirical drawing that is published in a magazine or newspaper",
           "examples": [
             "The New Yorker magazine is known for its cleverly drawn cartoons that provide a fresh perspective on current events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-23786983",
-          "pos": "verb",
+          "id": "sense-8f35604e",
+          "pos": "v.",
           "meaningZh": "畫漫畫；繪製諷刺畫",
-          "definitionEn": "to draw humorous or satirical pictures or cartoons",
           "examples": [
             "The artist cartooned the political figure as a clown, making a satirical comment on their policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cash",
       "word": "cash",
       "senses": [
         {
-          "id": "sense-bde084c9",
-          "pos": "noun",
+          "id": "sense-110ddb6d",
+          "pos": "n.",
           "meaningZh": "現金",
-          "definitionEn": "money in the form of coins or banknotes",
           "examples": [
             "I don't have any cash on me, so I'll pay by card."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-20f9c658",
-          "pos": "verb",
+          "id": "sense-afdd581d",
+          "pos": "v.",
           "meaningZh": "兌換現金；兌現",
-          "definitionEn": "to exchange something for money",
           "examples": [
             "I need to cash this check at the bank."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "castle",
       "word": "castle",
       "senses": [
         {
-          "id": "sense-d2fd69a2",
-          "pos": "noun",
+          "id": "sense-d8f99a9e",
+          "pos": "n.",
           "meaningZh": "城堡；要塞",
-          "definitionEn": "a large fortified building that was used to defend against attacks by enemies",
           "examples": [
             "The king ordered the construction of a castle on the hill to protect his kingdom from invaders."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9d3e98cd",
-          "pos": "noun",
+          "id": "sense-7a261de1",
+          "pos": "n.",
           "meaningZh": "豪宅；宮殿式大宅",
-          "definitionEn": "a large and impressive house that is usually owned by someone wealthy or powerful",
           "examples": [
             "The castle on the hilltop was owned by the king and was guarded by knights in shining armor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cause",
+      "word": "cause",
+      "senses": [
+        {
+          "id": "sense-7f717387",
+          "pos": "n.",
+          "meaningZh": "原因；起因",
+          "examples": [
+            "The heavy rainfall was the cause of the flooding in the city."
+          ]
+        },
+        {
+          "id": "sense-0e29dab8",
+          "pos": "n.",
+          "meaningZh": "導因；肇因",
+          "examples": [
+            "The heavy rain caused flooding in the city, leading to extensive damage and displacement of residents."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "ceiling",
+      "word": "ceiling",
+      "senses": [
+        {
+          "id": "sense-155f0c0d",
+          "pos": "n.",
+          "meaningZh": "天花板；頂板",
+          "examples": [
+            "I painted my ceiling white to brighten up the room."
+          ]
+        },
+        {
+          "id": "sense-b4533499",
+          "pos": "n.",
+          "meaningZh": "上限；頂限",
+          "examples": [
+            "The ceiling on the number of attendees for the event has been reached, and we can no longer accept any more registrations."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cell",
+      "word": "cell",
+      "senses": [
+        {
+          "id": "sense-9c185d05",
+          "pos": "n.",
+          "meaningZh": "細胞",
+          "examples": [
+            "The human body is made up of billions of cells."
+          ]
+        },
+        {
+          "id": "sense-1f3aa1ea",
+          "pos": "n.",
+          "meaningZh": "小格；巢房；隔間",
+          "examples": [
+            "The honeycomb of a beehive is made up of small six-sided cells in which the bees store their honey, pollen, and larvae."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "centimeter",
+      "word": "centimeter",
+      "senses": [
+        {
+          "id": "sense-ab55dc93",
+          "pos": "n.",
+          "meaningZh": "公分；厘米",
+          "examples": [
+            "The length of a pencil is around 18 centimeters."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "central",
+      "word": "central",
+      "senses": [
+        {
+          "id": "sense-cca92500",
+          "pos": "adj.",
+          "meaningZh": "核心的；根本的",
+          "examples": [
+            "Effective communication is central to maintaining strong relationships."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

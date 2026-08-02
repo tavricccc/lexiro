@@ -1,10 +1,14 @@
-import type { DashboardStats, LearningProgress, ReviewEntry, ReviewRating, VocabSet } from '@/types'
+import type { CardProgress, DailyActivity, DashboardStats, LearningProgress, QuestionStatKey, QuestionStatType, ReviewEntry, ReviewRating } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { DAILY_GOAL_OPTIONS, DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS, LEARNING_STORAGE_KEY } from '@/constants'
+import { DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS, LEARNING_STORAGE_KEY } from '@/constants'
 import { isDue, reviewCard } from '@/lib/fsrs'
+import { createDefaultStats, emptyDailyActivity, emptyQuestionStats } from '@/lib/learning-defaults'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
-import { useSetsStore } from './sets'
+import { normalizeDashboardStats, normalizeLearningProgress } from '@/lib/share'
+import { useLibraryStore } from './library'
+
+const LEARNING_STATE_VERSION = 1
 
 function todayKey(date = new Date()): string {
   const year = date.getFullYear()
@@ -13,92 +17,145 @@ function todayKey(date = new Date()): string {
   return `${year}-${month}-${day}`
 }
 
-function defaultStats(): DashboardStats {
-  return {
-    totalReviews: 0,
-    correctReviews: 0,
-    streakDays: 0,
-    longestStreak: 0,
-    xp: 0,
-    level: 1,
-    lastStudyDate: '',
-    dailyGoal: DAILY_GOAL_OPTIONS[0],
-    dailyWordGoal: DAILY_WORD_GOAL_OPTIONS[0],
-    dailyQuestionGoal: DAILY_QUESTION_GOAL_OPTIONS[0],
-    todayReviews: 0,
-    todayCorrectReviews: 0,
-    todayLearningReviews: 0,
-    todayLearningCorrectReviews: 0,
-    todayQuestionReviews: 0,
-    todayQuestionCorrectReviews: 0,
-    achievements: [],
-    updatedAt: new Date().toISOString(),
-  }
-}
-
 export const useLearningStore = defineStore('learning', () => {
-  const progressBySet = ref<Record<string, LearningProgress>>({})
-  const stats = ref<DashboardStats>(defaultStats())
+  const progress = ref<LearningProgress>({ cards: {}, updatedAt: new Date().toISOString() })
+  const stats = ref<DashboardStats>(createDefaultStats())
   const reviewEntries = ref<ReviewEntry[]>([])
   const reviewSetId = ref<string | null>(null)
   const reviewIndex = ref(0)
   const reviewAnswered = ref(false)
   const reviewContext = ref<'daily' | 'set' | null>(null)
+  const dailyCardSeeds = ref<Record<string, CardProgress | null>>({})
   const loaded = ref(false)
 
   const currentReviewEntry = computed(() => reviewEntries.value[reviewIndex.value] ?? null)
   const reviewTotal = computed(() => reviewEntries.value.length)
   const reviewProgress = computed(() => reviewTotal.value ? Math.round((reviewIndex.value / reviewTotal.value) * 100) : 0)
-  const todayProgress = computed(() => Math.min(100, Math.round((stats.value.todayLearningReviews / stats.value.dailyWordGoal) * 100)))
+  const todayProgress = computed(() => Math.min(100, Math.round((stats.value.todayMemoryReviews / stats.value.dailyWordGoal) * 100)))
   const todayQuestionProgress = computed(() => Math.min(100, Math.round((stats.value.todayQuestionReviews / stats.value.dailyQuestionGoal) * 100)))
-  const accuracy = computed(() => stats.value.totalReviews
-    ? Math.round((stats.value.correctReviews / stats.value.totalReviews) * 100)
+  const memoryAccuracy = computed(() => stats.value.totalMemoryReviews
+    ? Math.round((stats.value.correctMemoryReviews / stats.value.totalMemoryReviews) * 100)
     : 0)
 
-  function ensureProgress(setId: string): LearningProgress {
-    const existing = progressBySet.value[setId]
+  function todayActivity(): DailyActivity {
+    const date = todayKey()
+    const existing = stats.value.dailyHistory[date]
     if (existing)
       return existing
-    const created: LearningProgress = { setId, cards: {}, updatedAt: new Date().toISOString() }
-    progressBySet.value = { ...progressBySet.value, [setId]: created }
+    const created = emptyDailyActivity(date)
+    stats.value.dailyHistory = { ...stats.value.dailyHistory, [date]: created }
     return created
   }
 
-  function getSetProgress(setId: string): LearningProgress {
-    return ensureProgress(setId)
+  function addXp(amount: number, activity: DailyActivity) {
+    stats.value.xp += amount
+    activity.xpEarned += amount
+    stats.value.level = Math.floor(stats.value.xp / 100) + 1
   }
 
-  function peekSetProgress(setId: string): LearningProgress | null {
-    return progressBySet.value[setId] ?? null
+  function questionStatKey(questionType: QuestionStatType, difficulty: 1 | 2 | 3): QuestionStatKey {
+    return `${questionType}:${difficulty}` as QuestionStatKey
   }
 
-  function getDueEntries(set: VocabSet, limit = 20): ReviewEntry[] {
-    const progress = peekSetProgress(set.id)
+  function getCardProgress(senseId: string): CardProgress | null {
+    return progress.value.cards[senseId] ?? null
+  }
+
+  function getTodayReviewedSenseIds(): string[] {
+    const today = todayKey()
+    return Object.entries(progress.value.cards)
+      .filter(([, card]) => card.lastReview && todayKey(new Date(card.lastReview)) === today)
+      .map(([senseId]) => senseId)
+  }
+
+  function replaceProgress(next: LearningProgress) {
+    progress.value = {
+      cards: { ...next.cards },
+      updatedAt: next.updatedAt,
+    }
+    saveState()
+  }
+
+  function replaceStats(next: DashboardStats) {
+    stats.value = {
+      ...next,
+      questionStats: { ...next.questionStats },
+      questionStatsBySense: Object.fromEntries(Object.entries(next.questionStatsBySense).map(([senseId, value]) => [senseId, { ...value }])),
+      dailyHistory: Object.fromEntries(Object.entries(next.dailyHistory).map(([date, activity]) => [date, { ...activity, questionStats: { ...activity.questionStats } }])),
+    }
+    saveState()
+  }
+
+  function mergeImportedState(incomingProgress: LearningProgress, incomingStats: DashboardStats) {
+    const localHasActivity = Object.keys(progress.value.cards).length > 0
+      || stats.value.totalMemoryReviews > 0
+      || stats.value.totalQuestionReviews > 0
+      || stats.value.xp > 0
+    progress.value = {
+      cards: { ...incomingProgress.cards, ...progress.value.cards },
+      updatedAt: progress.value.updatedAt || incomingProgress.updatedAt,
+    }
+    if (!localHasActivity)
+      stats.value = { ...incomingStats }
+    pruneSenseData(new Set(Object.values(useLibraryStore().state.words).flatMap(word => word.senses.map(sense => sense.id))))
+    saveState()
+  }
+
+  function pruneSenseData(liveSenseIds: Set<string>): boolean {
+    const nextCards = Object.fromEntries(Object.entries(progress.value.cards).filter(([senseId]) => liveSenseIds.has(senseId)))
+    const nextQuestionStatsBySense = Object.fromEntries(Object.entries(stats.value.questionStatsBySense).filter(([senseId]) => liveSenseIds.has(senseId)))
+    const nextDailyCardSeeds = Object.fromEntries(Object.entries(dailyCardSeeds.value).filter(([senseId]) => liveSenseIds.has(senseId)))
+    const changed = Object.keys(nextCards).length !== Object.keys(progress.value.cards).length
+      || Object.keys(nextQuestionStatsBySense).length !== Object.keys(stats.value.questionStatsBySense).length
+      || Object.keys(nextDailyCardSeeds).length !== Object.keys(dailyCardSeeds.value).length
+    if (!changed)
+      return false
+    progress.value.cards = nextCards
+    stats.value.questionStatsBySense = nextQuestionStatsBySense as DashboardStats['questionStatsBySense']
+    dailyCardSeeds.value = nextDailyCardSeeds
+    progress.value.updatedAt = new Date().toISOString()
+    stats.value.updatedAt = new Date().toISOString()
+    if (loaded.value)
+      saveState()
+    return true
+  }
+
+  function getDueEntries(setId: string, limit = 20): ReviewEntry[] {
     const now = new Date()
-    const due = set.items
+    const studyWords = useLibraryStore().getSetStudyWords(setId)
+    const due = studyWords
       .filter((item) => {
-        const card = progress?.cards[item.id]
+        const card = getCardProgress(item.id)
         return Boolean(card && isDue(card, now))
       })
-      .map(item => ({ setId: set.id, item, progress: progress?.cards[item.id] ?? null }))
+      .map(item => ({ setId, item, progress: getCardProgress(item.id) }))
       .sort((a, b) => new Date(a.progress?.due ?? 0).getTime() - new Date(b.progress?.due ?? 0).getTime())
     return due.slice(0, limit)
   }
 
-  function getNewEntries(set: VocabSet, limit = Number.MAX_SAFE_INTEGER): ReviewEntry[] {
-    const progress = peekSetProgress(set.id)
-    return set.items
-      .filter(item => !progress?.cards[item.id])
-      .map(item => ({ setId: set.id, item, progress: null }))
+  function getNewEntries(setId: string, limit = Number.MAX_SAFE_INTEGER): ReviewEntry[] {
+    const studyWords = useLibraryStore().getSetStudyWords(setId)
+    return studyWords
+      .filter(item => !getCardProgress(item.id))
+      .map(item => ({ setId, item, progress: null }))
       .slice(0, limit)
   }
 
-  function getDueCount(set: VocabSet): number {
-    return getDueEntries(set, Number.MAX_SAFE_INTEGER).length
+  function getDueCount(setId: string): number {
+    return getDueEntries(setId, Number.MAX_SAFE_INTEGER).length
   }
 
-  function getAvailableReviewCount(set: VocabSet): number {
-    return getDueCount(set) + getNewEntries(set).length
+  function getAvailableReviewCount(setId: string): number {
+    return getDueCount(setId) + getNewEntries(setId).length
+  }
+
+  function uniqueEntries(entries: ReviewEntry[]): ReviewEntry[] {
+    const unique = new Map<string, ReviewEntry>()
+    for (const entry of entries) {
+      if (!unique.has(entry.item.id))
+        unique.set(entry.item.id, entry)
+    }
+    return Array.from(unique.values())
   }
 
   function interleaveEntries(first: ReviewEntry[], second: ReviewEntry[]): ReviewEntry[] {
@@ -113,40 +170,36 @@ export const useLearningStore = defineStore('learning', () => {
     return result
   }
 
-  function getDailyReviewEntries(limit = stats.value.dailyWordGoal): ReviewEntry[] {
-    const setsStore = useSetsStore()
-    const dueEntries = setsStore.sets
-      .flatMap(set => getDueEntries(set, Number.MAX_SAFE_INTEGER))
+  function getDailyReviewEntries(limit = Math.max(0, stats.value.dailyWordGoal - stats.value.todayMemoryReviews)): ReviewEntry[] {
+    const libraryStore = useLibraryStore()
+    const dueEntries = uniqueEntries(libraryStore.sets
+      .flatMap(set => getDueEntries(set.id, Number.MAX_SAFE_INTEGER)))
       .sort((a, b) => new Date(a.progress?.due ?? 0).getTime() - new Date(b.progress?.due ?? 0).getTime())
-    const newEntries = setsStore.sets.flatMap(set => getNewEntries(set))
+    const newEntries = uniqueEntries(libraryStore.sets.flatMap(set => getNewEntries(set.id)))
     const target = Math.min(Math.max(0, limit), dueEntries.length + newEntries.length)
     if (!target)
       return []
 
-    const newQuota = Math.min(newEntries.length, Math.ceil(target / 3))
-    const dueQuota = Math.min(dueEntries.length, target - newQuota)
+    const hasDueEntries = dueEntries.length > 0
+    const newQuota = hasDueEntries
+      ? Math.min(newEntries.length, Math.floor(target / 3))
+      : Math.min(newEntries.length, target)
+    const dueQuota = hasDueEntries
+      ? Math.min(dueEntries.length, target - newQuota)
+      : 0
     const selectedDue = dueEntries.slice(0, dueQuota)
     const selectedNew = newEntries.slice(0, newQuota)
-    const selected = interleaveEntries(selectedDue, selectedNew)
-
-    if (selected.length < target) {
-      const remainingDue = dueEntries.slice(dueQuota)
-      const remainingNew = newEntries.slice(newQuota)
-      selected.push(...interleaveEntries(remainingDue, remainingNew).slice(0, target - selected.length))
-    }
-
-    return selected
+    return interleaveEntries(selectedDue, selectedNew)
   }
 
-  function getLearnedCount(set: VocabSet): number {
-    const progress = peekSetProgress(set.id)
-    return set.items.filter(item => (progress?.cards[item.id]?.reviewCount ?? 0) > 0).length
+  function getLearnedCount(setId: string): number {
+    return useLibraryStore().getSetStudyWords(setId).filter(item => (getCardProgress(item.id)?.reviewCount ?? 0) > 0).length
   }
 
   function saveState() {
     saveToStorage(LEARNING_STORAGE_KEY, {
-      version: 1,
-      progressBySet: progressBySet.value,
+      version: LEARNING_STATE_VERSION,
+      progress: progress.value,
       stats: stats.value,
     })
   }
@@ -157,50 +210,35 @@ export const useLearningStore = defineStore('learning', () => {
     const stored = await loadFromStorage(LEARNING_STORAGE_KEY)
     if (stored.value) {
       try {
-        const parsed = JSON.parse(stored.value) as Record<string, unknown>
-        if (parsed.progressBySet && typeof parsed.progressBySet === 'object')
-          progressBySet.value = parsed.progressBySet as Record<string, LearningProgress>
-        if (parsed.stats && typeof parsed.stats === 'object') {
-          const parsedStats = parsed.stats as Partial<DashboardStats>
-          stats.value = {
-            ...defaultStats(),
-            ...parsedStats,
-            dailyWordGoal: typeof parsedStats.dailyWordGoal === 'number' ? parsedStats.dailyWordGoal : Number(parsedStats.dailyGoal ?? DAILY_WORD_GOAL_OPTIONS[0]),
-            dailyQuestionGoal: typeof parsedStats.dailyQuestionGoal === 'number' ? parsedStats.dailyQuestionGoal : DAILY_QUESTION_GOAL_OPTIONS[0],
-            todayLearningReviews: typeof parsedStats.todayLearningReviews === 'number' ? parsedStats.todayLearningReviews : Number(parsedStats.todayReviews ?? 0),
-            todayLearningCorrectReviews: typeof parsedStats.todayLearningCorrectReviews === 'number' ? parsedStats.todayLearningCorrectReviews : Number(parsedStats.todayCorrectReviews ?? 0),
-            todayQuestionReviews: typeof parsedStats.todayQuestionReviews === 'number' ? parsedStats.todayQuestionReviews : 0,
-            todayQuestionCorrectReviews: typeof parsedStats.todayQuestionCorrectReviews === 'number' ? parsedStats.todayQuestionCorrectReviews : 0,
-          }
-        }
+        const parsed: unknown = JSON.parse(stored.value)
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed))
+          throw new Error('learning state must be an object')
+        const source = parsed as Record<string, unknown>
+        if (Object.keys(source).some(key => !['version', 'progress', 'stats'].includes(key)) || source.version !== LEARNING_STATE_VERSION)
+          throw new Error('unsupported learning state')
+        progress.value = normalizeLearningProgress(source.progress)
+        stats.value = normalizeDashboardStats(source.stats)
       }
       catch {
-        // Ignore invalid legacy progress and start clean.
+        progress.value = { cards: {}, updatedAt: new Date().toISOString() }
+        stats.value = createDefaultStats()
       }
     }
+
     const today = todayKey()
-    if (stats.value.lastStudyDate !== today)
-      stats.value.todayReviews = 0
-    if (stats.value.lastStudyDate !== today)
-      stats.value.todayCorrectReviews = 0
     if (stats.value.lastStudyDate !== today) {
-      stats.value.todayLearningReviews = 0
-      stats.value.todayLearningCorrectReviews = 0
+      stats.value.todayMemoryReviews = 0
+      stats.value.todayMemoryCorrectReviews = 0
       stats.value.todayQuestionReviews = 0
       stats.value.todayQuestionCorrectReviews = 0
     }
-    if (!DAILY_WORD_GOAL_OPTIONS.includes(stats.value.dailyWordGoal as typeof DAILY_WORD_GOAL_OPTIONS[number])) {
+    if (!DAILY_WORD_GOAL_OPTIONS.includes(stats.value.dailyWordGoal as typeof DAILY_WORD_GOAL_OPTIONS[number]))
       stats.value.dailyWordGoal = DAILY_WORD_GOAL_OPTIONS[0]
-      stats.value.dailyGoal = DAILY_WORD_GOAL_OPTIONS[0]
-      stats.value.updatedAt = new Date().toISOString()
-      saveState()
-    }
-    if (!DAILY_QUESTION_GOAL_OPTIONS.includes(stats.value.dailyQuestionGoal as typeof DAILY_QUESTION_GOAL_OPTIONS[number])) {
+    if (!DAILY_QUESTION_GOAL_OPTIONS.includes(stats.value.dailyQuestionGoal as typeof DAILY_QUESTION_GOAL_OPTIONS[number]))
       stats.value.dailyQuestionGoal = DAILY_QUESTION_GOAL_OPTIONS[0]
-      stats.value.updatedAt = new Date().toISOString()
-      saveState()
-    }
     loaded.value = true
+    const liveSenseIds = new Set(Object.values(useLibraryStore().state.words).flatMap(word => word.senses.map(sense => sense.id)))
+    pruneSenseData(liveSenseIds)
   }
 
   function setDailyWordGoal(value: number) {
@@ -210,7 +248,6 @@ export const useLearningStore = defineStore('learning', () => {
     if (stats.value.dailyWordGoal === nextGoal)
       return
     stats.value.dailyWordGoal = nextGoal
-    stats.value.dailyGoal = nextGoal
     stats.value.updatedAt = new Date().toISOString()
     saveState()
   }
@@ -226,44 +263,108 @@ export const useLearningStore = defineStore('learning', () => {
     saveState()
   }
 
-  function setDailyGoal(value: number) {
-    setDailyWordGoal(value)
-  }
-
-  function recordDailyQuestionResults(correct: number, total: number) {
-    if (!total)
+  function recordQuestionResults(results: Array<{ senseId: string, questionId: string, questionType: QuestionStatType, difficulty: 1 | 2 | 3, isCorrect: boolean, marked: boolean, retry?: boolean, daily?: boolean }>) {
+    if (!results.length)
       return
-    stats.value.todayQuestionReviews += total
-    stats.value.todayQuestionCorrectReviews += Math.max(0, Math.min(correct, total))
+    const seenSenses = new Set<string>()
+    const effectiveResults = results.map((result) => {
+      const current = getCardProgress(result.senseId)
+      const reviewedToday = current?.lastReview ? todayKey(new Date(current.lastReview)) === todayKey() : false
+      const retry = Boolean(result.retry || reviewedToday || seenSenses.has(result.senseId))
+      seenSenses.add(result.senseId)
+      return { ...result, retry }
+    })
+    const correct = effectiveResults.filter(result => result.isCorrect).length
+    let progressChanged = false
+    const today = todayKey()
+    const groupedResults = new Map<string, typeof effectiveResults>()
+    for (const result of effectiveResults)
+      groupedResults.set(result.senseId, [...(groupedResults.get(result.senseId) ?? []), result])
+    for (const [senseId, senseResults] of groupedResults) {
+      const current = getCardProgress(senseId)
+      const hasSeed = Object.hasOwn(dailyCardSeeds.value, senseId)
+      const seed = dailyCardSeeds.value[senseId] ?? null
+      const reviewedToday = current?.lastReview ? todayKey(new Date(current.lastReview)) === today : false
+      const dailyFlow = senseResults.some(result => result.daily)
+      const shouldBeGood = senseResults.every(result => result.isCorrect && !result.marked)
+      if (dailyFlow && hasSeed) {
+        if (shouldBeGood) {
+          delete dailyCardSeeds.value[senseId]
+          continue
+        }
+        const again = reviewCard(seed, 'again')
+        progress.value.cards[senseId] = {
+          ...again,
+          reviewCount: current?.reviewCount ?? again.reviewCount,
+          correctCount: seed?.correctCount ?? again.correctCount,
+        }
+      }
+      else {
+        if (reviewedToday)
+          continue
+        progress.value.cards[senseId] = reviewCard(current, shouldBeGood ? 'good' : 'again')
+      }
+      delete dailyCardSeeds.value[senseId]
+      progressChanged = true
+    }
+    const activity = todayActivity()
+    const firstFormalActivity = stats.value.todayMemoryReviews === 0 && stats.value.todayQuestionReviews === 0
+    for (const result of effectiveResults) {
+      const key = questionStatKey(result.questionType, result.difficulty)
+      stats.value.questionStats[key].total += 1
+      stats.value.questionStats[key].correct += result.isCorrect ? 1 : 0
+      stats.value.questionStats[key].retry += result.retry ? 1 : 0
+      const senseStats = stats.value.questionStatsBySense[result.senseId] ?? emptyQuestionStats()
+      senseStats[key].total += 1
+      senseStats[key].correct += result.isCorrect ? 1 : 0
+      senseStats[key].retry += result.retry ? 1 : 0
+      stats.value.questionStatsBySense[result.senseId] = senseStats
+      activity.questionStats[key].total += 1
+      activity.questionStats[key].correct += result.isCorrect ? 1 : 0
+      activity.questionStats[key].retry += result.retry ? 1 : 0
+    }
+    if (progressChanged)
+      progress.value.updatedAt = new Date().toISOString()
+    stats.value.totalQuestionReviews += effectiveResults.length
+    stats.value.correctQuestionReviews += correct
+    stats.value.todayQuestionReviews += effectiveResults.length
+    stats.value.todayQuestionCorrectReviews += correct
+    activity.questionTotal += effectiveResults.length
+    activity.questionCorrect += correct
+    activity.questionRetry += effectiveResults.filter(result => result.retry).length
+    const xp = effectiveResults.reduce((total, result) => total + (result.retry ? 5 : 10) + (result.isCorrect && !result.marked ? 2 : 0), 0)
+    addXp(xp + (firstFormalActivity ? 5 : 0), activity)
+    activity.completed = true
     stats.value.updatedAt = new Date().toISOString()
+    updateStreak()
     saveState()
   }
 
-  function unlockAchievements() {
-    const existing = new Set(stats.value.achievements.map(item => item.id))
-    const learnedWords = Object.values(progressBySet.value).reduce((total, progress) => total + Object.values(progress.cards).filter(card => card.reviewCount > 0).length, 0)
-    const candidates = [
-      { id: 'first-review', condition: stats.value.totalReviews >= 1, titleKey: 'learning.achievementFirstTitle', descriptionKey: 'learning.achievementFirstDescription' },
-      { id: 'streak-3', condition: stats.value.longestStreak >= 3, titleKey: 'learning.achievementStreak3Title', descriptionKey: 'learning.achievementStreak3Description' },
-      { id: 'streak-7', condition: stats.value.longestStreak >= 7, titleKey: 'learning.achievementStreak7Title', descriptionKey: 'learning.achievementStreak7Description' },
-      { id: 'streak-30', condition: stats.value.longestStreak >= 30, titleKey: 'learning.achievementStreak30Title', descriptionKey: 'learning.achievementStreak30Description' },
-      { id: 'reviews-100', condition: stats.value.totalReviews >= 100, titleKey: 'learning.achievementReviews100Title', descriptionKey: 'learning.achievementReviews100Description' },
-      { id: 'words-100', condition: learnedWords >= 100, titleKey: 'learning.achievementWords100Title', descriptionKey: 'learning.achievementWords100Description' },
-      { id: 'perfect-day', condition: stats.value.todayReviews > 0 && stats.value.todayCorrectReviews === stats.value.todayReviews, titleKey: 'learning.achievementPerfectDayTitle', descriptionKey: 'learning.achievementPerfectDayDescription' },
-      { id: 'perfect-goal', condition: stats.value.todayLearningReviews >= stats.value.dailyWordGoal, titleKey: 'learning.achievementDailyGoalTitle', descriptionKey: 'learning.achievementDailyGoalDescription' },
-    ]
-    const newlyUnlocked = candidates.filter(item => item.condition && !existing.has(item.id))
-    if (!newlyUnlocked.length)
+  function completePracticeSession() {
+    const activity = todayActivity()
+    addXp(10, activity)
+    activity.completed = true
+    stats.value.updatedAt = new Date().toISOString()
+    updateStreak()
+    saveState()
+  }
+
+  function renameSense(oldSenseId: string, newSenseId: string) {
+    if (oldSenseId === newSenseId)
       return
-    stats.value.achievements = [
-      ...stats.value.achievements,
-      ...newlyUnlocked.map(item => ({
-        id: item.id,
-        titleKey: item.titleKey,
-        descriptionKey: item.descriptionKey,
-        unlockedAt: new Date().toISOString(),
-      })),
-    ]
+    const oldCard = progress.value.cards[oldSenseId]
+    const newCard = progress.value.cards[newSenseId]
+    if (oldCard && !newCard)
+      progress.value.cards[newSenseId] = oldCard
+    delete progress.value.cards[oldSenseId]
+    const oldStats = stats.value.questionStatsBySense[oldSenseId]
+    const newStats = stats.value.questionStatsBySense[newSenseId]
+    if (oldStats && !newStats)
+      stats.value.questionStatsBySense[newSenseId] = oldStats
+    delete stats.value.questionStatsBySense[oldSenseId]
+    progress.value.updatedAt = new Date().toISOString()
+    stats.value.updatedAt = new Date().toISOString()
+    saveState()
   }
 
   function updateStreak(date = todayKey()) {
@@ -282,14 +383,13 @@ export const useLearningStore = defineStore('learning', () => {
   }
 
   function startReview(setId: string) {
-    const setsStore = useSetsStore()
-    const set = setsStore.sets.find(item => item.id === setId)
-    if (!set)
+    if (!useLibraryStore().getSet(setId))
       return false
-    const entries = getDueEntries(set)
+    const entries = getDueEntries(setId)
     if (!entries.length)
       return false
     reviewSetId.value = setId
+    dailyCardSeeds.value = {}
     reviewContext.value = 'set'
     reviewEntries.value = entries
     reviewIndex.value = 0
@@ -302,6 +402,7 @@ export const useLearningStore = defineStore('learning', () => {
     if (!entries.length)
       return false
     reviewSetId.value = null
+    dailyCardSeeds.value = {}
     reviewContext.value = 'daily'
     reviewEntries.value = entries
     reviewIndex.value = 0
@@ -313,27 +414,34 @@ export const useLearningStore = defineStore('learning', () => {
     const current = currentReviewEntry.value
     if (!current || reviewAnswered.value)
       return false
-    const progress = ensureProgress(current.setId)
-    const nextCard = reviewCard(current.progress, rating)
-    progress.cards[current.item.id] = nextCard
-    progress.updatedAt = new Date().toISOString()
+    const previous = getCardProgress(current.item.id)
+    const reviewedToday = previous?.lastReview ? todayKey(new Date(previous.lastReview)) === todayKey() : false
+    if (reviewContext.value === 'daily' && !Object.hasOwn(dailyCardSeeds.value, current.item.id))
+      dailyCardSeeds.value = { ...dailyCardSeeds.value, [current.item.id]: previous ? { ...previous } : null }
+    const hasSeed = Object.hasOwn(dailyCardSeeds.value, current.item.id)
+    const nextCard = hasSeed || !reviewedToday ? reviewCard(hasSeed ? dailyCardSeeds.value[current.item.id] ?? null : previous, rating) : previous
+    if (nextCard) {
+      progress.value.cards[current.item.id] = nextCard
+      progress.value.updatedAt = new Date().toISOString()
+    }
     reviewEntries.value[reviewIndex.value] = { ...current, progress: nextCard }
     reviewAnswered.value = true
 
-    const isCorrect = rating !== 'again'
-    stats.value.totalReviews += 1
-    stats.value.correctReviews += isCorrect ? 1 : 0
-    stats.value.todayReviews += 1
-    stats.value.todayCorrectReviews += isCorrect ? 1 : 0
-    if (reviewContext.value === 'daily') {
-      stats.value.todayLearningReviews += 1
-      stats.value.todayLearningCorrectReviews += isCorrect ? 1 : 0
-    }
-    stats.value.xp += rating === 'easy' ? 15 : rating === 'good' ? 10 : rating === 'hard' ? 6 : 3
-    stats.value.level = Math.floor(stats.value.xp / 100) + 1
+    const isCorrect = rating === 'good'
+    const firstFormalActivity = stats.value.todayMemoryReviews === 0 && stats.value.todayQuestionReviews === 0
+    stats.value.totalMemoryReviews += 1
+    stats.value.correctMemoryReviews += isCorrect ? 1 : 0
+    stats.value.todayMemoryReviews += 1
+    stats.value.todayMemoryCorrectReviews += isCorrect ? 1 : 0
+    const activity = todayActivity()
+    if (isCorrect)
+      activity.memoryGood += 1
+    else
+      activity.memoryAgain += 1
+    addXp((reviewedToday ? 5 : (isCorrect ? 12 : 10)) + (firstFormalActivity ? 5 : 0), activity)
+    activity.completed = true
     stats.value.updatedAt = new Date().toISOString()
     updateStreak()
-    unlockAchievements()
     saveState()
     return true
   }
@@ -342,6 +450,7 @@ export const useLearningStore = defineStore('learning', () => {
     if (!reviewAnswered.value)
       return false
     if (reviewIndex.value >= reviewEntries.value.length - 1) {
+      completePracticeSession()
       reviewEntries.value = []
       reviewSetId.value = null
       reviewIndex.value = 0
@@ -363,9 +472,18 @@ export const useLearningStore = defineStore('learning', () => {
     reviewContext.value = null
   }
 
+  function resetForNamespace() {
+    progress.value = { cards: {}, updatedAt: new Date().toISOString() }
+    stats.value = createDefaultStats()
+    loaded.value = false
+    dailyCardSeeds.value = {}
+    clearReview()
+  }
+
   return {
-    progressBySet,
+    progress,
     stats,
+    loaded,
     reviewEntries,
     reviewSetId,
     reviewIndex,
@@ -376,21 +494,27 @@ export const useLearningStore = defineStore('learning', () => {
     reviewProgress,
     todayProgress,
     todayQuestionProgress,
-    accuracy,
+    memoryAccuracy,
     loadState,
+    resetForNamespace,
     saveState,
-    getSetProgress,
-    peekSetProgress,
+    replaceProgress,
+    replaceStats,
+    mergeImportedState,
+    pruneSenseData,
+    getCardProgress,
+    getTodayReviewedSenseIds,
     getDueEntries,
     getNewEntries,
     getDueCount,
     getAvailableReviewCount,
     getDailyReviewEntries,
     getLearnedCount,
-    setDailyGoal,
     setDailyWordGoal,
     setDailyQuestionGoal,
-    recordDailyQuestionResults,
+    recordQuestionResults,
+    completePracticeSession,
+    renameSense,
     startReview,
     startDailyReview,
     answerCurrent,

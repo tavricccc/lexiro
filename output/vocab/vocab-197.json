@@ -1,1368 +1,657 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 197,
   "words": [
-    {
-      "wordKey": "subscription",
-      "word": "subscription",
-      "senses": [
-        {
-          "id": "sense-a59a2858",
-          "pos": "noun",
-          "meaningZh": "訂閱費；定期付款",
-          "definitionEn": "a payment made periodically to receive regular issues of a publication or service",
-          "examples": [
-            "She signed up for a monthly subscription to her favorite magazine and received a new issue in the mail every month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "subsidize",
-      "word": "subsidize",
-      "senses": [
-        {
-          "id": "sense-0d885fd7",
-          "pos": "verb",
-          "meaningZh": "補貼；提供補助",
-          "definitionEn": "provide financial support to",
-          "examples": [
-            "The government has decided to subsidize the construction of affordable housing for low-income families."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-d255a564",
-          "pos": "verb",
-          "meaningZh": "資助；給予財政支援",
-          "definitionEn": "secure the assistance of by granting a subsidy, as of nations or military forces",
-          "examples": [
-            "The government decided to subsidize the development of renewable energy sources, providing financial support to companies that are investing in solar and wind power."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "succession",
-      "word": "succession",
-      "senses": [
-        {
-          "id": "sense-44e8b21c",
-          "pos": "noun",
-          "meaningZh": "繼承；接任",
-          "definitionEn": "the act of taking over an official position or title; the right to take over an official position or title, especially to become the king or queen of a country",
-          "examples": [
-            "After the sudden passing of the monarch, the prince was next in line for succession and assumed the throne."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-2233a340",
-          "pos": "noun",
-          "meaningZh": "依序接替；連續",
-          "definitionEn": "a number of people or things that follow each other in time or order",
-          "examples": [
-            "After his retirement, Mark's two sons took over the family business in succession."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "successive",
-      "word": "successive",
-      "senses": [
-        {
-          "id": "sense-7003e373",
-          "pos": "adjective",
-          "meaningZh": "連續的；接連的",
-          "definitionEn": "happening or existing one after the other : consecutive",
-          "examples": [
-            "After a series of successive victories, she was declared the champion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-5d212ed3",
-          "pos": "adjective",
-          "meaningZh": "依序排列的；相繼的",
-          "definitionEn": "following each other in order",
-          "examples": [
-            "After Sarah retired, John became the successive CEO of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "suffocate",
-      "word": "suffocate",
-      "senses": [
-        {
-          "id": "sense-b1418f99",
-          "pos": "verb",
-          "meaningZh": "窒息；因缺氧而無法呼吸",
-          "definitionEn": "stop breathing due to lack of oxygen; be asphyxiated",
-          "examples": [
-            "The firefighter put on an airtight mask to avoid suffocating in the smoke-filled room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-34a0c25c",
-          "pos": "verb",
-          "meaningZh": "使窒息；使無法呼吸",
-          "definitionEn": "prevent someone from breathing; deprive of oxygen",
-          "examples": [
-            "The smoke-filled room was so dense that it suffocated everyone inside, causing them to gasp for breath and struggle to escape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
     {
       "wordKey": "suitcase",
       "word": "suitcase",
       "senses": [
         {
-          "id": "sense-3c287a56",
-          "pos": "noun",
+          "id": "sense-996c9dfe",
+          "pos": "n.",
           "meaningZh": "行李箱；旅行箱",
-          "definitionEn": "a rectangular container used for carrying clothes and other personal belongings while traveling",
           "examples": [
             "As a frequent traveler, Jake always made sure to pack light and fit everything he needed in his trusty suitcase."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5",
-        "textbookTitle": "龍騰 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "summon",
       "word": "summon",
       "senses": [
         {
-          "id": "sense-c0e22035",
-          "pos": "verb",
+          "id": "sense-15311b8c",
+          "pos": "v.",
           "meaningZh": "召喚；傳喚",
-          "definitionEn": "to ask someone to come to a place, especially in an official way",
           "examples": [
             "The judge may summon a witness to testify in court."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b8961d33",
-          "pos": "verb",
+          "id": "sense-60ad46aa",
+          "pos": "v.",
           "meaningZh": "傳喚出庭；命令到場",
-          "definitionEn": "to order someone to come to a place, especially a court of law, to answer a charge or a claim",
           "examples": [
             "The judge issued a summon to the witness to come to court and testify about the incident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "superficial",
       "word": "superficial",
       "senses": [
         {
-          "id": "sense-a641a3e1",
-          "pos": "adjective",
+          "id": "sense-4922fff7",
+          "pos": "adj.",
           "meaningZh": "膚淺的；流於表面的",
-          "definitionEn": "concerned only with what is obvious or apparent",
           "examples": [
             "He had a superficial understanding of the issue and failed to grasp its complexities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d8cfbe90",
-          "pos": "adjective",
+          "id": "sense-4f87383a",
+          "pos": "adj.",
           "meaningZh": "表面的；皮膚層的",
-          "definitionEn": "occurring on or near the surface",
           "examples": [
             "The doctor examined the cut and determined it was only superficial, requiring no stitches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "superintendent",
       "word": "superintendent",
       "senses": [
         {
-          "id": "sense-ccbdca60",
-          "pos": "noun",
+          "id": "sense-5f3de950",
+          "pos": "n.",
           "meaningZh": "督學；主管；監督官",
-          "definitionEn": "a person in the US who is responsible for overseeing a government department or official activity to ensure compliance with rules and laws",
           "examples": [
             "The superintendent of the school district was tasked with ensuring that all schools adhered to state regulations and maintained a safe learning environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8324d237",
-          "pos": "noun",
+          "id": "sense-9171c947",
+          "pos": "n.",
           "meaningZh": "（英國）警司；高級警官",
-          "definitionEn": "a high-ranking police officer in the UK",
           "examples": [
             "The superintendent oversaw the investigation into the organized crime syndicate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "superiority",
       "word": "superiority",
       "senses": [
         {
-          "id": "sense-fa85fa0a",
-          "pos": "noun",
+          "id": "sense-dcd8253e",
+          "pos": "n.",
           "meaningZh": "優勢；競爭優勢",
-          "definitionEn": "a competitive advantage or the act of displaying a sense of being better than others",
           "examples": [
             "In the race, John's superior running speed allowed him to cross the finish line first."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c7900abc",
-          "pos": "noun",
+          "id": "sense-5e40c460",
+          "pos": "n.",
           "meaningZh": "優越性；卓越的品質",
-          "definitionEn": "the state or quality of being superior or better than others",
           "examples": [
             "The superior team displayed their superiority by winning the championship for the third consecutive year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "superstitious",
       "word": "superstitious",
       "senses": [
         {
-          "id": "sense-ac546840",
-          "pos": "adjective",
+          "id": "sense-58bd520e",
+          "pos": "adj.",
           "meaningZh": "迷信的；有迷信觀念的",
-          "definitionEn": "having or showing a belief in superstitions or irrational fears, especially regarding luck or chance",
           "examples": [
             "Sarah refuses to walk under ladders and always carries a lucky charm with her, demonstrating her superstitious nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "supplement",
       "word": "supplement",
       "senses": [
         {
-          "id": "sense-2e564c52",
-          "pos": "noun",
+          "id": "sense-584574ce",
+          "pos": "n.",
           "meaningZh": "補充品；營養補充劑",
-          "definitionEn": "a quantity that is added to make up for a deficiency or lack; an extra amount",
           "examples": [
             "She takes vitamin supplements to improve her health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2f17a865",
-          "pos": "verb",
+          "id": "sense-9e4895d0",
+          "pos": "v.",
           "meaningZh": "補充；增補",
-          "definitionEn": "to add something extra to what seems insufficient or inadequate; to provide further support or enhancement",
           "examples": [
             "Since Jane wasn’t getting enough nutrition from her regular diet, she decided to supplement it with vitamins and minerals to improve her health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suppress",
       "word": "suppress",
       "senses": [
         {
-          "id": "sense-1e23aba5",
-          "pos": "verb",
+          "id": "sense-478bdfdc",
+          "pos": "v.",
           "meaningZh": "壓抑；克制（情緒）",
-          "definitionEn": "to control or hide emotions, desires, impulses, or behavior",
           "examples": [
             "Despite feeling angry, she tried to suppress her emotions and maintain a calm facade during the argument."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1366bb51",
-          "pos": "verb",
+          "id": "sense-7ec1711c",
+          "pos": "v.",
           "meaningZh": "鎮壓；強行壓制",
-          "definitionEn": "to forcefully stop something from being expressed or revealed",
           "examples": [
             "The government tried to suppress the media coverage of the protests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "surge",
       "word": "surge",
       "senses": [
         {
-          "id": "sense-388bf27c",
-          "pos": "verb",
+          "id": "sense-da22f369",
+          "pos": "v.",
           "meaningZh": "洶湧而起；波濤翻騰",
-          "definitionEn": "to rise and move, as in waves or billows",
           "examples": [
             "The surging waves crashed against the rocky shore, spraying water everywhere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-bbb4f9d5",
-          "pos": "verb",
+          "id": "sense-33695f5c",
+          "pos": "v.",
           "meaningZh": "（海浪）急速湧起；奔騰",
-          "definitionEn": "to rise or heave upward under the influence of a natural force such as a wave",
           "examples": [
             "As the powerful hurricane approached, the waves began to surge, crashing against the shoreline with tremendous force."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "surgical",
       "word": "surgical",
       "senses": [
         {
-          "id": "sense-bf5bfcf2",
-          "pos": "adjective",
+          "id": "sense-f51f2406",
+          "pos": "adj.",
           "meaningZh": "外科的；手術的",
-          "definitionEn": "related to surgery",
           "examples": [
             "The patient underwent a surgical procedure to remove the tumor from her lungs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-859b6718",
-          "pos": "adjective",
+          "id": "sense-7708d16c",
+          "pos": "adj.",
           "meaningZh": "需要手術治療的",
-          "definitionEn": "able to be treated with surgery, rather than medicine",
           "examples": [
             "In some cases, a surgical procedure may be necessary to remove the tumor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "surname",
       "word": "surname",
       "senses": [
         {
-          "id": "sense-0268d71a",
-          "pos": "noun",
+          "id": "sense-c87af4ee",
+          "pos": "n.",
           "meaningZh": "姓氏；家族姓名",
-          "definitionEn": "a family name that comes after the given name and used to identify members of a family.",
           "examples": [
             "During the family reunion, everyone introduced themselves by their surname to make it easier to identify which branch of the family they belonged to."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-98f6c10d",
-          "pos": "noun",
+          "id": "sense-98641a69",
+          "pos": "n.",
           "meaningZh": "姓；世代相傳的姓",
-          "definitionEn": "a last name or family name that people share and is passed down from one generation to the next.",
           "examples": [
             "When filling out official forms, it is necessary to provide your full name, including your surname."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "surpass",
       "word": "surpass",
       "senses": [
         {
-          "id": "sense-831ff592",
-          "pos": "verb",
+          "id": "sense-3b1e3acb",
+          "pos": "v.",
           "meaningZh": "超越；勝過",
-          "definitionEn": "to be or do something better than someone or something else, or to go beyond an accepted limit",
           "examples": [
             "The young athlete has managed to surpass all the previous records in speed racing, winning four gold medals in the international competition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-779b230a",
-          "pos": "verb",
+          "id": "sense-2e8fa563",
+          "pos": "v.",
           "meaningZh": "超出；凌駕",
-          "definitionEn": "to have a greater degree or amount of something than someone or something else",
           "examples": [
             "His intelligence and creativity enabled him to surpass his colleagues in the workplace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suspense",
       "word": "suspense",
       "senses": [
         {
-          "id": "sense-2125e0ee",
-          "pos": "noun",
+          "id": "sense-623af1ea",
+          "pos": "n.",
           "meaningZh": "懸念；緊張期待",
-          "definitionEn": "apprehension about what is going to happen",
           "examples": [
             "The suspense was unbearable as the detective approached the closed door, wondering what lay behind it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ac2e8e14",
-          "pos": "noun",
+          "id": "sense-965c7e78",
+          "pos": "n.",
           "meaningZh": "不確定感；焦慮等待",
-          "definitionEn": "an uncertain feeling or state of mind",
           "examples": [
             "The suspense was killing me as I waited for the results of my job interview."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suspension",
       "word": "suspension",
       "senses": [
         {
-          "id": "sense-4d1e6f8a",
-          "pos": "noun",
+          "id": "sense-44638e92",
+          "pos": "n.",
           "meaningZh": "懸吊系統；避震裝置",
-          "definitionEn": "a mechanical system of springs or shock absorbers connecting the wheels and axles to the chassis of a wheeled vehicle",
           "examples": [
             "The suspension of the car ensured a smooth and comfortable ride even on bumpy roads."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-f8ac4b5a",
-          "pos": "noun",
+          "id": "sense-7beea5b2",
+          "pos": "n.",
           "meaningZh": "暫時停止；停學；停職",
-          "definitionEn": "temporary cessation or suspension",
           "examples": [
             "The student received a suspension from school for breaking the code of conduct."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "swamp",
       "word": "swamp",
       "senses": [
         {
-          "id": "sense-b8f7075d",
-          "pos": "noun",
+          "id": "sense-73c8aecd",
+          "pos": "n.",
           "meaningZh": "沼澤；濕地",
-          "definitionEn": "a low-lying area of land that is often flooded, typically characterized by woody vegetation and better drainage than a bog.",
           "examples": [
             "After heavy rain, the swamp adjacent to the river filled with water, creating a thriving habitat for various aquatic species."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e2d0066d",
-          "pos": "verb",
+          "id": "sense-de755f5e",
+          "pos": "v.",
           "meaningZh": "淹沒；使泡在水中",
-          "definitionEn": "overwhelm or flood with water.",
           "examples": [
             "After the heavy rain, the streets were swamped with water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "swarm",
       "word": "swarm",
       "senses": [
         {
-          "id": "sense-e632ef86",
-          "pos": "noun",
+          "id": "sense-e2a19676",
+          "pos": "n.",
           "meaningZh": "人群；大批移動的群眾",
-          "definitionEn": "a moving crowd",
           "examples": [
             "As the doors of the concert venue opened, a swarm of excited fans rushed in, eager to secure the best spots in front of the stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a90ca779",
-          "pos": "noun",
+          "id": "sense-45652769",
+          "pos": "n.",
           "meaningZh": "（昆蟲）群；蜂群",
-          "definitionEn": "a group of many things, especially insects, that move together",
           "examples": [
             "As summer approached, a swarm of bees gathered around the blooming flowers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "symbolize",
       "word": "symbolize",
       "senses": [
         {
-          "id": "sense-7f0a90fe",
-          "pos": "verb",
+          "id": "sense-7ac97033",
+          "pos": "v.",
           "meaningZh": "象徵；代表",
-          "definitionEn": "be a symbol; express indirectly by an image, form, or model",
           "examples": [
             "In some cultures, the dove symbolizes peace and purity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-236d9058",
-          "pos": "verb",
+          "id": "sense-143790f7",
+          "pos": "v.",
           "meaningZh": "以符號表示；用象徵來代表",
-          "definitionEn": "use symbols to represent or identify",
           "examples": [
             "In many cultures, the color white symbolizes purity and innocence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "symmetry",
       "word": "symmetry",
       "senses": [
         {
-          "id": "sense-c29c7b9d",
-          "pos": "noun",
+          "id": "sense-326daaad",
+          "pos": "n.",
           "meaningZh": "對稱；均衡美感",
-          "definitionEn": "balance or harmony among the parts of something",
           "examples": [
             "In the garden, the perfectly symmetrical arrangement of flowers on either side of the path created a sense of symmetry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b5bf862c",
-          "pos": "noun",
+          "id": "sense-863a315c",
+          "pos": "n.",
           "meaningZh": "（數學）對稱性；鏡像對稱",
-          "definitionEn": "(mathematics) a quality of a shape, object, or relation; having a reflection or mirror image on opposite sides of a line or plane",
           "examples": [
             "The butterfly's wings displayed perfect symmetry, with each colorful pattern mirrored on the opposite side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sympathize",
       "word": "sympathize",
       "senses": [
         {
-          "id": "sense-7803dc11",
-          "pos": "verb",
+          "id": "sense-065dcb04",
+          "pos": "v.",
           "meaningZh": "表示同情；給予安慰",
-          "definitionEn": "to feel or express sympathy or compassion",
           "examples": [
             "After hearing about her friend's loss, Mary sent a heartfelt card to sympathize with her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-73b4f543",
-          "pos": "verb",
+          "id": "sense-26416034",
+          "pos": "v.",
           "meaningZh": "理解並共感；感同身受",
-          "definitionEn": "understand and share the feelings of someone else",
           "examples": [
             "After losing her pet, Mary's friends sympathized with her by sending flowers and heartfelt messages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "symphony",
       "word": "symphony",
       "senses": [
         {
-          "id": "sense-e736b6d3",
-          "pos": "noun",
+          "id": "sense-685c24ab",
+          "pos": "n.",
           "meaningZh": "交響曲；交響樂",
-          "definitionEn": "a long and complex sonata for symphony orchestra",
           "examples": [
             "The symphony performed by the orchestra filled the concert hall with its majestic and harmonious melodies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "synonym",
       "word": "synonym",
       "senses": [
         {
-          "id": "sense-f7f50532",
-          "pos": "noun",
+          "id": "sense-48cc73ee",
+          "pos": "n.",
           "meaningZh": "同義詞；近義詞",
-          "definitionEn": "A word that has the same meaning as another word in a particular context is called a synonym.",
           "examples": [
             "When writing the essay, I decided to use 'happy' as a synonym for 'joyful' to add variety to my vocabulary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "synthetic",
       "word": "synthetic",
       "senses": [
         {
-          "id": "sense-b6bef6ce",
-          "pos": "adjective",
+          "id": "sense-f4465b2c",
+          "pos": "adj.",
           "meaningZh": "合成的；人造的",
-          "definitionEn": "made by humans instead of by nature; produced artificially",
           "examples": [
             "The clothing brand prides itself on using only synthetic materials, such as polyester and nylon, for their garments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e323b7ab",
-          "pos": "noun",
+          "id": "sense-7fceb533",
+          "pos": "n.",
           "meaningZh": "合成物；人造材料",
-          "definitionEn": "a substance or material that is made by humans and is not found in nature",
           "examples": [
             "She prefers to wear synthetic fabrics because they are more durable and easy to care for."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "syrup",
       "word": "syrup",
       "senses": [
         {
-          "id": "sense-83100255",
-          "pos": "noun",
+          "id": "sense-b1d77b0d",
+          "pos": "n.",
           "meaningZh": "糖漿；甜漿",
-          "definitionEn": "a thick, sweet sticky liquid, usually made from sugar and used as a topping for pancakes, waffles, and desserts.",
           "examples": [
             "She poured maple syrup over her stack of fluffy pancakes until they were completely drenched in sweetness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tan",
       "word": "tan",
       "senses": [
         {
-          "id": "sense-2ba92800",
-          "pos": "adjective",
+          "id": "sense-7aaf1e4e",
+          "pos": "adj.",
           "meaningZh": "棕褐色的；淺棕色的",
-          "definitionEn": "having a light yellowish-brown color",
           "examples": [
             "She wore a lovely dress in tan color and paired it with black pumps."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-16944f4b",
-          "pos": "noun",
+          "id": "sense-62cd3413",
+          "pos": "n.",
           "meaningZh": "棕褐色；淡褐色",
-          "definitionEn": "a shade of brown that is similar to the color of topaz gemstones",
           "examples": [
             "The sand on the beach was a pale tan color."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tedious",
       "word": "tedious",
       "senses": [
         {
-          "id": "sense-19642aa5",
-          "pos": "adjective",
+          "id": "sense-93337803",
+          "pos": "adj.",
           "meaningZh": "枯燥乏味的；單調的",
-          "definitionEn": "causing fatigue, boredom, or weariness due to being excessively long, monotonous, or repetitive",
           "examples": [
             "The teacher gave us a tedious assignment that required us to copy a long passage from the textbook."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ce5de4f1",
-          "pos": "adjective",
+          "id": "sense-98638fc7",
+          "pos": "adj.",
           "meaningZh": "冗長的；囉嗦的",
-          "definitionEn": "using or containing an unnecessary or excessive amount of words",
           "examples": [
             "The professor’s lectures were so tedious that many students fell asleep in class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "telecommunications",
+      "word": "telecommunications",
+      "senses": [
+        {
+          "id": "sense-48ea5333",
+          "pos": "n.",
+          "meaningZh": "電信業；通訊技術",
+          "examples": [
+            "Telecommunication has connected people from across the world, allowing them to communicate instantaneously over long distances via video conferencing, email, and voice calls."
+          ]
+        },
+        {
+          "id": "sense-0dd95816",
+          "pos": "n.",
+          "meaningZh": "電信網絡；通訊系統",
+          "examples": [
+            "Telecommunication has revolutionized the way we communicate with each other. Video conferencing, emails, and chatting apps are some examples of telecommunication that enable us to connect with anyone in the world in real-time."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "teller",
+      "word": "teller",
+      "senses": [
+        {
+          "id": "sense-8779e893",
+          "pos": "n.",
+          "meaningZh": "銀行行員；出納員",
+          "examples": [
+            "I went to the teller to deposit my paycheck and withdraw some cash."
+          ]
+        },
+        {
+          "id": "sense-9926df0b",
+          "pos": "n.",
+          "meaningZh": "說故事者；講述者",
+          "examples": [
+            "The teller captivated her audience with her animated retelling of the ancient myth."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tempo",
+      "word": "tempo",
+      "senses": [
+        {
+          "id": "sense-6f5deca2",
+          "pos": "n.",
+          "meaningZh": "節拍速度；拍子",
+          "examples": [
+            "The conductor set a lively tempo for the orchestra, energizing the performance."
+          ]
+        },
+        {
+          "id": "sense-776f4520",
+          "pos": "n.",
+          "meaningZh": "節奏；速率",
+          "examples": [
+            "In a marathon, it is important for runners to maintain a consistent tempo throughout the race."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tenant",
+      "word": "tenant",
+      "senses": [
+        {
+          "id": "sense-5fb21951",
+          "pos": "n.",
+          "meaningZh": "房客；承租人",
+          "examples": [
+            "The new tenant just moved into the apartment upstairs and introduced herself to everyone in the building."
+          ]
+        },
+        {
+          "id": "sense-52c7433e",
+          "pos": "n.",
+          "meaningZh": "租用人；佃戶",
+          "examples": [
+            "The new tenant signed a one-year lease for the apartment and moved in yesterday."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tentative",
+      "word": "tentative",
+      "senses": [
+        {
+          "id": "sense-e73530ab",
+          "pos": "adj.",
+          "meaningZh": "暫定的；試探性的",
+          "examples": [
+            "The team made a tentative plan for the project, but it could change based on new information."
+          ]
+        },
+        {
+          "id": "sense-ed0d765a",
+          "pos": "adj.",
+          "meaningZh": "猶豫不決的；遲疑的",
+          "examples": [
+            "She made a tentative approach towards the wild horse, unsure of how it would react."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

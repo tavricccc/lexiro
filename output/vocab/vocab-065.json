@@ -1,1380 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 65,
   "words": [
-    {
-      "wordKey": "awkward",
-      "word": "awkward",
-      "senses": [
-        {
-          "id": "sense-9854f8d4",
-          "pos": "adjective",
-          "meaningZh": "尷尬的；不方便的",
-          "definitionEn": "causing inconvenience",
-          "examples": [
-            "It was awkward when I accidentally stepped on someone's foot in the crowded elevator."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-179ed84b",
-          "pos": "adjective",
-          "meaningZh": "笨拙的；不靈活的",
-          "definitionEn": "lacking grace or skill in movement, manner, or performance",
-          "examples": [
-            "The comedian's jokes fell flat and he became awkwardly silent on stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "background",
-      "word": "background",
-      "senses": [
-        {
-          "id": "sense-d76c23dc",
-          "pos": "noun",
-          "meaningZh": "背景；遠景",
-          "definitionEn": "the part of a picture or scene that is behind the main objects in front",
-          "examples": [
-            "In the family photo, you can see a beautiful mountain range in the background, though the focus is on the smiling faces of the family members."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-6135e2e3",
-          "pos": "noun",
-          "meaningZh": "（舞台）布景；背景幕",
-          "definitionEn": "scenic material used to decorate the rear of a stage",
-          "examples": [
-            "The set designer used a painted background of a forest to create the illusion of being in the woods on stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "bacon",
-      "word": "bacon",
-      "senses": [
-        {
-          "id": "sense-ba4f748c",
-          "pos": "noun",
-          "meaningZh": "培根；燻豬肉片",
-          "definitionEn": "Thin slices of salted and smoked pork used as a food, typically fried until crisp.",
-          "examples": [
-            "I woke up to the mouthwatering smell of sizzling bacon wafting through the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-e8d5681d",
-          "pos": "noun",
-          "meaningZh": "培根；醃漬豬背肉",
-          "definitionEn": "Back and sides of a pig, cured and smoked or salted, usually sliced thinly and fried.",
-          "examples": [
-            "The sizzle of the bacon in the morning enticed everyone out of bed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "bacteria",
-      "word": "bacteria",
-      "senses": [
-        {
-          "id": "sense-d5edd4ac",
-          "pos": "noun",
-          "meaningZh": "細菌",
-          "definitionEn": "Microscopic organisms, either single-celled or non-cellular, that lack chlorophyll and reproduce through fission. They can be spherical, spiral, or rod-shaped and are important as both pathogens and for their biochemical properties. Classifying them can be difficult, and they are often erroneously considered to be plants.",
-          "examples": [
-            "The doctor identified the cause of the illness as a strain of bacteria, and prescribed antibiotics to fight the infection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "badly",
-      "word": "badly",
-      "senses": [
-        {
-          "id": "sense-c82531b0",
-          "pos": "adverb",
-          "meaningZh": "表現差地；不好地",
-          "definitionEn": "in a poor or unsatisfactory manner; not well",
-          "examples": [
-            "The students performed badly on the exam despite studying for weeks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-05204f72",
-          "pos": "adverb",
-          "meaningZh": "非常；迫切地",
-          "definitionEn": "very much; strongly",
-          "examples": [
-            "He needed a break badly after working for 12 hours straight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L2",
-        "textbookTitle": "翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "baggage",
       "word": "baggage",
       "senses": [
         {
-          "id": "sense-fc1f221e",
-          "pos": "noun",
+          "id": "sense-56df1cd2",
+          "pos": "n.",
           "meaningZh": "行李；旅行箱",
-          "definitionEn": "cases used to carry belongings when traveling",
           "examples": [
             "Before boarding the plane, make sure to check that your baggage meets the weight and size requirements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bait",
       "word": "bait",
       "senses": [
         {
-          "id": "sense-183ea3ea",
-          "pos": "noun",
+          "id": "sense-62747e6e",
+          "pos": "n.",
           "meaningZh": "餌；誘餌",
-          "definitionEn": "food put on a hook or in a trap to attract fish or animals",
           "examples": [
             "He put a worm on the hook as bait before casting the line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-815123cb",
-          "pos": "verb",
+          "id": "sense-272bd3e6",
+          "pos": "v.",
           "meaningZh": "激怒；挑釁",
-          "definitionEn": "to intentionally make someone angry by saying or doing annoying things.",
           "examples": [
             "Don't take the bait and respond to his rude comments. He's just trying to provoke you."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-28a453ee",
-          "pos": "verb",
+          "id": "sense-cb8aceab",
+          "pos": "v.",
           "meaningZh": "放餌；下餌",
-          "definitionEn": "putting bait on a hook or in a trap.",
           "examples": [
             "The fisherman carefully placed the bait on the hook, hoping to entice a big catch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bamboo",
       "word": "bamboo",
       "senses": [
         {
-          "id": "sense-f8209292",
-          "pos": "noun",
+          "id": "sense-c11f0946",
+          "pos": "n.",
           "meaningZh": "竹子；竹",
-          "definitionEn": "A tall tropical plant with woody stems and a jointed stem, often used as a food source, for making furniture and crafts, or in construction.",
           "examples": [
             "In rural communities, bamboo is commonly used to build traditional houses and fences due to its durability and abundance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bang",
       "word": "bang",
       "senses": [
         {
-          "id": "sense-71d52395",
-          "pos": "noun",
+          "id": "sense-73c0c765",
+          "pos": "n.",
           "meaningZh": "爆炸聲；巨響",
-          "definitionEn": "a loud noise or explosive sound",
           "examples": [
             "The sudden bang of the firework startled everyone at the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6318e68e",
-          "pos": "noun",
+          "id": "sense-8662bc1e",
+          "pos": "n.",
           "meaningZh": "猛烈撞擊；重擊",
-          "definitionEn": "a sudden hard hit",
           "examples": [
             "The car door slammed shut with a loud bang, causing everyone to turn and look."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "banker",
       "word": "banker",
       "senses": [
         {
-          "id": "sense-2bb78ecf",
-          "pos": "noun",
+          "id": "sense-efcdaac7",
+          "pos": "n.",
           "meaningZh": "銀行家；銀行業者",
-          "definitionEn": "a financier who owns or is an executive in a bank",
           "examples": [
             "John’s father is a successful banker and has worked in the banking industry for over 30 years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f4f60cf2",
-          "pos": "noun",
+          "id": "sense-1d8e69aa",
+          "pos": "n.",
           "meaningZh": "（賭局）莊家",
-          "definitionEn": "the person in charge of the bank in a gambling game",
           "examples": [
             "In a game of baccarat, the banker distributes the cards and manages the bets placed by the players."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bare",
       "word": "bare",
       "senses": [
         {
-          "id": "sense-4db80e9d",
-          "pos": "adjective",
+          "id": "sense-edc79269",
+          "pos": "adj.",
           "meaningZh": "赤裸的；光禿的",
-          "definitionEn": "not covered by clothing, leaves, or anything else",
           "examples": [
             "He walked across the hot sand in his bare feet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-32e70024",
-          "pos": "adjective",
+          "id": "sense-7ff1e718",
+          "pos": "adj.",
           "meaningZh": "未上漆的；無塗裝的",
-          "definitionEn": "lacking a surface finish such as paint",
           "examples": [
             "The wooden table was left bare, with no paint or varnish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "barely",
       "word": "barely",
       "senses": [
         {
-          "id": "sense-c893e59e",
-          "pos": "adverb",
+          "id": "sense-1778d175",
+          "pos": "adv.",
           "meaningZh": "勉強；剛剛才",
-          "definitionEn": "only a very short time before",
           "examples": [
             "I had barely finished my breakfast when the taxi arrived."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9f290457",
-          "pos": "adverb",
+          "id": "sense-9ec93e86",
+          "pos": "adv.",
           "meaningZh": "稀少地；幾乎沒有地",
-          "definitionEn": "in a sparse or scanty way",
           "examples": [
             "The little girl barely had any food left in her plate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7",
-        "textbookTitle": "龍騰 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "barn",
       "word": "barn",
       "senses": [
         {
-          "id": "sense-46a50421",
-          "pos": "noun",
+          "id": "sense-6972fcb9",
+          "pos": "n.",
           "meaningZh": "穀倉；農場畜舍",
-          "definitionEn": "a large farm building used for storing crops and keeping animals",
           "examples": [
             "The farmer led the cows into the barn to protect them from the storm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-eecfbad2",
-          "pos": "noun",
+          "id": "sense-91eded6a",
+          "pos": "n.",
           "meaningZh": "（物理）靶恩（面積單位）",
-          "definitionEn": "(physics) a unit of measurement for the cross section area of atomic nuclei",
           "examples": [
             "Scientists use barns to describe the size of atomic nuclei, just as carpenters use square footage to describe the size of a barn."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "barrel",
       "word": "barrel",
       "senses": [
         {
-          "id": "sense-dea09371",
-          "pos": "noun",
+          "id": "sense-a82e49a5",
+          "pos": "n.",
           "meaningZh": "桶；大木桶",
-          "definitionEn": "a cylindrical container that holds liquids",
           "examples": [
             "The winemaker poured the freshly pressed grape juice into a wooden barrel to ferment and age it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fb848bf1",
-          "pos": "noun",
+          "id": "sense-24ed072d",
+          "pos": "n.",
           "meaningZh": "一桶的量；桶容量",
-          "definitionEn": "the quantity that a barrel (of any size) will hold",
           "examples": [
             "The large oak barrel held 50 gallons of wine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "basement",
       "word": "basement",
       "senses": [
         {
-          "id": "sense-a72ec8dc",
-          "pos": "noun",
+          "id": "sense-344f5604",
+          "pos": "n.",
           "meaningZh": "地下室；地下樓層",
-          "definitionEn": "a room or rooms in a building that are located below ground level, either partially or completely",
           "examples": [
             "During the hot summer months, the basement of our house is a cool escape from the heat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bay",
       "word": "bay",
       "senses": [
         {
-          "id": "sense-fbedbeb4",
-          "pos": "noun",
+          "id": "sense-ae098594",
+          "pos": "n.",
           "meaningZh": "海灣；港灣",
-          "definitionEn": "a part of the sea or a lake partly enclosed by a curve of the land",
           "examples": [
             "The boats were anchored safely in the bay."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6b8b3ec1",
-          "pos": "noun",
+          "id": "sense-c0f59fe1",
+          "pos": "n.",
           "meaningZh": "船艙隔間；醫療艙",
-          "definitionEn": "a compartment on a ship between decks, often used as a hospital",
           "examples": [
             "The injured sailors were taken to the bay for treatment and care."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bead",
       "word": "bead",
       "senses": [
         {
-          "id": "sense-c26db954",
-          "pos": "noun",
+          "id": "sense-b51a86b0",
+          "pos": "n.",
           "meaningZh": "串珠；珠子",
-          "definitionEn": "a small ball with a hole through the middle",
           "examples": [
             "She threaded some beads onto a wire to make a necklace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-be34d1e4",
-          "pos": "noun",
+          "id": "sense-55f4c6c0",
+          "pos": "n.",
           "meaningZh": "小圓珠（玻璃、木、石等）",
-          "definitionEn": "a spherical object that is usually small and made of material such as stone, wood, glass or plastic",
           "examples": [
             "She strung beads together to create a beautiful necklace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beam",
       "word": "beam",
       "senses": [
         {
-          "id": "sense-6135a760",
-          "pos": "noun",
+          "id": "sense-13ce027c",
+          "pos": "n.",
           "meaningZh": "樑；橫梁",
-          "definitionEn": "a long and thick piece of wood, metal or concrete used in construction",
           "examples": [
             "The carpenters used a beam to support the ceiling of the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-0f728114",
-          "pos": "noun",
+          "id": "sense-251963f8",
+          "pos": "n.",
           "meaningZh": "平衡木（體操器材）",
-          "definitionEn": "a gymnastics apparatus used by women gymnasts",
           "examples": [
             "The gymnast gracefully balanced on the beam, performing a series of flips and twists with finesse."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beast",
       "word": "beast",
       "senses": [
         {
-          "id": "sense-4713593f",
-          "pos": "noun",
+          "id": "sense-b1d01ad7",
+          "pos": "n.",
           "meaningZh": "野獸；大型動物",
-          "definitionEn": "an animal, especially a large or dangerous one",
           "examples": [
             "During our safari, we encountered a majestic lion, the king of beasts, roaming freely in the wild."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5b99764c",
-          "pos": "noun",
+          "id": "sense-6f6b0334",
+          "pos": "n.",
           "meaningZh": "殘暴的人；惡人",
-          "definitionEn": "a cruelly rapacious person",
           "examples": [
             "The drug lord was a beast, terrorizing the neighborhood and exploiting the vulnerable for his own gain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beetle",
       "word": "beetle",
       "senses": [
         {
-          "id": "sense-26497c58",
-          "pos": "noun",
+          "id": "sense-a756d844",
+          "pos": "n.",
           "meaningZh": "甲蟲",
-          "definitionEn": "an insect that has biting mouthparts and forewings modified into hard covers overlying the membranous rear wings",
           "examples": [
             "As a child, I would catch beetles and keep them in a jar to observe their behavior."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beneath",
       "word": "beneath",
       "senses": [
         {
-          "id": "sense-7e5145bb",
-          "pos": "adverb",
+          "id": "sense-7425e0f2",
+          "pos": "adv.",
           "meaningZh": "在下方；在底下",
-          "definitionEn": "in a lower position than someone or something; under someone or something.",
           "examples": [
             "The fox was hiding beneath the bushes, waiting for the rabbit to come out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-2f5304a0",
-          "pos": "preposition",
+          "id": "sense-e352b807",
+          "pos": "prep.",
           "meaningZh": "在…表面下；在…底下",
-          "definitionEn": "situated or occurring below the surface of something",
           "examples": [
             "The sunken ship lay beneath the waves, silently corroding over time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6 +1",
-        "textbookTitle": "龍騰 B3·L6、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "benefit",
       "word": "benefit",
       "senses": [
         {
-          "id": "sense-f6229376",
-          "pos": "noun",
+          "id": "sense-b374c48e",
+          "pos": "n.",
           "meaningZh": "好處；益處",
-          "definitionEn": "something that promotes or enhances well-being",
           "examples": [
             "Regular exercise is a benefit to overall health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6f2f164a",
-          "pos": "noun",
+          "id": "sense-d0d76ff2",
+          "pos": "n.",
           "meaningZh": "慈善演出；募款活動",
-          "definitionEn": "an event held to raise money for a charitable organization",
           "examples": [
             "The local community organized a benefit concert to support the construction of a new homeless shelter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3 +1",
-        "textbookTitle": "龍騰 B3·L3、三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "berry",
       "word": "berry",
       "senses": [
         {
-          "id": "sense-3deeb502",
-          "pos": "noun",
+          "id": "sense-d7c7acf2",
+          "pos": "n.",
           "meaningZh": "漿果；小果實",
-          "definitionEn": "any of many small pulpy fruits that are often used in desserts, jams, jellies, and preserves",
           "examples": [
             "She picked a handful of ripe strawberries from the garden to add a burst of sweetness to the fruit salad."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-dd0312a4",
-          "pos": "noun",
+          "id": "sense-6363fc74",
+          "pos": "n.",
           "meaningZh": "莓果（葡萄、藍莓等）",
-          "definitionEn": "a small fruit with either a single or multiple seeds, such as grapes, blueberries or blackberries",
           "examples": [
             "She picked a handful of ripe berries from the bush and ate them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "besides",
       "word": "besides",
       "senses": [
         {
-          "id": "sense-b8a157fc",
-          "pos": "adverb",
+          "id": "sense-98f32625",
+          "pos": "adv.",
           "meaningZh": "此外；還有",
-          "definitionEn": "in addition",
           "examples": [
             "Besides studying for her exams, Emily also works part-time at a local café."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L4",
-        "textbookTitle": "三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bet",
       "word": "bet",
       "senses": [
         {
-          "id": "sense-76f48408",
-          "pos": "noun",
+          "id": "sense-b86d2b00",
+          "pos": "n.",
           "meaningZh": "賭注；賭金",
-          "definitionEn": "the money risked on a gamble",
           "examples": [
             "John placed a bet of $50 on his favorite football team to win the game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-60cf7264",
-          "pos": "verb",
+          "id": "sense-c6223919",
+          "pos": "v.",
           "meaningZh": "相信；確信",
-          "definitionEn": "have faith or confidence in",
           "examples": [
             "After years of dedicated practice, I'm willing to bet that he will win the championship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bind",
       "word": "bind",
       "senses": [
         {
-          "id": "sense-2246d107",
-          "pos": "verb",
+          "id": "sense-341d855e",
+          "pos": "v.",
           "meaningZh": "綑綁；捆縛",
-          "definitionEn": "to secure or fasten with ropes, string, or cord",
           "examples": [
             "The prisoner’s wrists were bound tightly with ropes to prevent him from escaping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a85f4faa",
-          "pos": "verb",
+          "id": "sense-356eb62f",
+          "pos": "v.",
           "meaningZh": "固定；紮緊",
-          "definitionEn": "to make something firm or secure by tying or wrapping around with something",
           "examples": [
             "I had to bind the stack of papers with a rubber band to prevent them from falling apart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bitter",
       "word": "bitter",
       "senses": [
         {
-          "id": "sense-2355f82e",
-          "pos": "adjective",
+          "id": "sense-4573ab72",
+          "pos": "adj.",
           "meaningZh": "苦的；苦味的",
-          "definitionEn": "having a sharp, unpleasant taste like strong coffee without sugar",
           "examples": [
             "This medicine has a very bitter taste."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d023b339",
-          "pos": "verb",
+          "id": "sense-c788eda8",
+          "pos": "v.",
           "meaningZh": "使變苦；加苦味",
-          "definitionEn": "to make something bitter in taste",
           "examples": [
             "She added too much baking powder to the muffins, making them bitter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bleed",
       "word": "bleed",
       "senses": [
         {
-          "id": "sense-78a3a4dc",
-          "pos": "verb",
+          "id": "sense-bcfc1e1d",
+          "pos": "v.",
           "meaningZh": "流血；出血",
-          "definitionEn": "to lose blood from one’s body",
           "examples": [
             "After the accident, the injured man began to bleed profusely."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-848c0774",
-          "pos": "verb",
+          "id": "sense-3e4f562b",
+          "pos": "v.",
           "meaningZh": "放血（醫療）",
-          "definitionEn": "to remove blood from someone’s body (e.g to treat them medically)",
           "examples": [
             "The doctor needs to bleed the patient in order to reduce their high blood pressure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bless",
       "word": "bless",
       "senses": [
         {
-          "id": "sense-9963b20f",
-          "pos": "verb",
+          "id": "sense-3dfb0e06",
+          "pos": "v.",
           "meaningZh": "賜福；祝福",
-          "definitionEn": "give a benediction to",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-023f83b2",
-          "pos": "verb",
+          "id": "sense-4f2dfd09",
+          "pos": "v.",
           "meaningZh": "祝聖；畫十字祝禱",
-          "definitionEn": "make the sign of the cross over someone in order to call on God for protection; consecrate",
           "examples": [
             "The priest will bless the wedding rings during the ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bloody",
       "word": "bloody",
       "senses": [
         {
-          "id": "sense-72bc9451",
-          "pos": "adjective",
+          "id": "sense-c3e23c73",
+          "pos": "adj.",
           "meaningZh": "血淋淋的；沾滿血的",
-          "definitionEn": "covered with or accompanied by blood",
           "examples": [
             "After the car accident, my shirt was bloody and my head was throbbing with pain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c5829e34",
-          "pos": "verb",
+          "id": "sense-2ae7bd19",
+          "pos": "v.",
           "meaningZh": "弄出血；使染血",
-          "definitionEn": "to make bloody; to stain or cover with blood",
           "examples": [
             "The butcher accidentally cut his hand and proceeded to bloody the meat he was preparing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "blouse",
+      "word": "blouse",
+      "senses": [
+        {
+          "id": "sense-bce25c5e",
+          "pos": "n.",
+          "meaningZh": "女用上衣；女衫",
+          "examples": [
+            "She paired her new blouse with a skirt for a professional and stylish look."
+          ]
+        },
+        {
+          "id": "sense-328c4553",
+          "pos": "n.",
+          "meaningZh": "寬鬆上衣；罩衫",
+          "examples": [
+            "She paired her floral blouse with a skirt for a feminine look."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bold",
+      "word": "bold",
+      "senses": [
+        {
+          "id": "sense-4aa029e7",
+          "pos": "adj.",
+          "meaningZh": "大膽的；勇敢的",
+          "examples": [
+            "Despite her fear of heights, she took a bold leap off the cliff into the deep blue ocean below."
+          ]
+        },
+        {
+          "id": "sense-77089c64",
+          "pos": "adj.",
+          "meaningZh": "醒目的；鮮明的",
+          "examples": [
+            "The bold headline caught everyone's attention."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bomb",
+      "word": "bomb",
+      "senses": [
+        {
+          "id": "sense-926f8a75",
+          "pos": "n.",
+          "meaningZh": "炸彈；爆炸物",
+          "examples": [
+            "The bomb squad was called in to safely defuse the explosive device."
+          ]
+        },
+        {
+          "id": "sense-96945a3e",
+          "pos": "v.",
+          "meaningZh": "轟炸；投彈",
+          "examples": [
+            "The military bombed the enemy's headquarters, causing significant damage."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bookcase",
+      "word": "bookcase",
+      "senses": [
+        {
+          "id": "sense-d75bf74c",
+          "pos": "n.",
+          "meaningZh": "書櫃；書架",
+          "examples": [
+            "I finally organized my book collection on the bookcase my grandfather built for me."
+          ]
+        },
+        {
+          "id": "sense-cf01a82f",
+          "pos": "n.",
+          "meaningZh": "壁掛書架；嵌牆書架",
+          "examples": [
+            "John proudly displayed his extensive book collection on the bookcase he built himself."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "boot",
+      "word": "boot",
+      "senses": [
+        {
+          "id": "sense-c0ea9c19",
+          "pos": "n.",
+          "meaningZh": "靴子；長靴",
+          "examples": [
+            "She pulled on her rubber boots before going out in the rain."
+          ]
+        },
+        {
+          "id": "sense-0967ccbd",
+          "pos": "v.",
+          "meaningZh": "踢；踹",
+          "examples": [
+            "The bully threatened to boot the timid boy if he didn’t give him his lunch money."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

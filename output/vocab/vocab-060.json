@@ -1,1393 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 60,
   "words": [
-    {
-      "wordKey": "strawberry",
-      "word": "strawberry",
-      "senses": [
-        {
-          "id": "sense-756d391e",
-          "pos": "noun",
-          "meaningZh": "草莓",
-          "definitionEn": "a sweet, juicy, red fruit that grows on a plant with many thin stems and green leaves",
-          "examples": [
-            "Emily enjoyed picking fresh strawberries at the farm and eating them straight from the vine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-3a7b545d",
-          "pos": "noun",
-          "meaningZh": "草莓植株",
-          "definitionEn": "a plant with many runners and white flowers that produces the sweet, fleshy red fruit",
-          "examples": [
-            "During summer, my family enjoys picking ripe strawberries from the garden and eating them straight from the vine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "stream",
-      "word": "stream",
-      "senses": [
-        {
-          "id": "sense-29094b09",
-          "pos": "noun",
-          "meaningZh": "小溪；河流",
-          "definitionEn": "a natural body of running water flowing on or under the earth",
-          "examples": [
-            "The campers hiked along the stream, enjoying the sound of its babbling water and the cool shade of its banks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-ab916e47",
-          "pos": "verb",
-          "meaningZh": "大量湧出；流淌",
-          "definitionEn": "exude profusely",
-          "examples": [
-            "After cutting the lemon, the juice began to stream out of it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "stress",
-      "word": "stress",
-      "senses": [
-        {
-          "id": "sense-b75b1fa1",
-          "pos": "noun",
-          "meaningZh": "壓力；精神緊張",
-          "definitionEn": "a state of mental or emotional strain or tension",
-          "examples": [
-            "The stress of final exams causes many students to stay up late studying and lose sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-8464938f",
-          "pos": "noun",
-          "meaningZh": "強調；重點",
-          "definitionEn": "special emphasis given to something",
-          "examples": [
-            "The teacher put stress on the importance of completing homework on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L1",
-        "textbookTitle": "翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "stretch",
-      "word": "stretch",
-      "senses": [
-        {
-          "id": "sense-71d47a90",
-          "pos": "verb",
-          "meaningZh": "伸展；伸長肢體",
-          "definitionEn": "extend one’s limbs or muscles, or the entire body",
-          "examples": [
-            "Before exercising, I always take a few minutes to stretch my muscles to prevent injuries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-50ce5a60",
-          "pos": "verb",
-          "meaningZh": "拉伸；舒展",
-          "definitionEn": "extend one’s body or limbs",
-          "examples": [
-            "It is important to stretch your muscles before starting a workout to prevent injury."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1",
-        "textbookTitle": "龍騰 B3·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "strict",
-      "word": "strict",
-      "senses": [
-        {
-          "id": "sense-b35e5c86",
-          "pos": "adjective",
-          "meaningZh": "嚴格的；一絲不苟的",
-          "definitionEn": "Not allowing any deviation from a standard; demanding total obedience to rules, procedures, or metrical conventions.",
-          "examples": [
-            "The strict professor demanded that the students follow the citation rules exactly or lose points on their paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-6e5eda06",
-          "pos": "adjective",
-          "meaningZh": "嚴厲的；不通融的",
-          "definitionEn": "Showing little or no flexibility or willingness to compromise.",
-          "examples": [
-            "The teacher was strict about the assignment deadline and refused to accept any submissions after the specified time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "strike",
       "word": "strike",
       "senses": [
         {
-          "id": "sense-dcdfe596",
-          "pos": "verb",
+          "id": "sense-a6da2f9b",
+          "pos": "v.",
           "meaningZh": "用力刺穿；猛擊",
-          "definitionEn": "to pierce with force",
           "examples": [
             "The blacksmith used a hammer to strike the heated metal, shaping it into a horseshoe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "struggle",
       "word": "struggle",
       "senses": [
         {
-          "id": "sense-068a0698",
-          "pos": "noun",
+          "id": "sense-37ecd3ac",
+          "pos": "n.",
           "meaningZh": "艱苦努力；掙扎",
-          "definitionEn": "A strenuous or laboured effort in doing something.",
           "examples": [
             "Despite the hardships, she continued to struggle towards her goal of becoming a doctor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-eec3c8e2",
-          "pos": "noun",
+          "id": "sense-91cd5566",
+          "pos": "n.",
           "meaningZh": "奮力追求；拼搏",
-          "definitionEn": "An energetic attempt to achieve something.",
           "examples": [
             "Despite facing several setbacks, she continued to struggle and eventually achieved her goal of becoming a successful entrepreneur."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +2",
-        "textbookTitle": "龍騰 B2·L1、三民 B1·L5、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "style",
       "word": "style",
       "senses": [
         {
-          "id": "sense-94e95623",
-          "pos": "noun",
+          "id": "sense-3132e6f7",
+          "pos": "n.",
           "meaningZh": "方式；作風",
-          "definitionEn": "a way of doing something or the manner in which it happens",
           "examples": [
             "His style of painting is very unique and recognizable compared to other artists."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-40941d95",
-          "pos": "noun",
+          "id": "sense-2ea4fe11",
+          "pos": "n.",
           "meaningZh": "風格；表現手法",
-          "definitionEn": "a way of expressing oneself through language, art, music, etc. that is characteristic of a particular person, group, or time period",
           "examples": [
             "The band’s style of music is a fusion of jazz and rock, which sets them apart from other bands."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +1",
-        "textbookTitle": "龍騰 B3·R3、三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "succeed",
       "word": "succeed",
       "senses": [
         {
-          "id": "sense-d3f15583",
-          "pos": "verb",
+          "id": "sense-cb25f6aa",
+          "pos": "v.",
           "meaningZh": "成功；達成目標",
-          "definitionEn": "attain a desired goal or achieve success",
           "examples": [
             "After months of hard work and preparation, he finally succeeded in passing the exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-776245ae",
-          "pos": "verb",
+          "id": "sense-d34e635b",
+          "pos": "v.",
           "meaningZh": "繼任；接替",
-          "definitionEn": "follow in order; come after",
           "examples": [
             "After Jason’s resignation, his colleague Tom succeeded him as the CEO of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +1",
-        "textbookTitle": "龍騰 B2·L1、三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "success",
       "word": "success",
       "senses": [
         {
-          "id": "sense-750f4025",
-          "pos": "noun",
+          "id": "sense-88c996bd",
+          "pos": "n.",
           "meaningZh": "成功；財富與名聲",
-          "definitionEn": "the attainment of wealth, prosperity, or fame",
           "examples": [
             "After years of hard work and dedication, John achieved great success in his career, becoming a renowned and highly-paid executive at a prestigious company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-dda70d67",
-          "pos": "noun",
+          "id": "sense-89acea0f",
+          "pos": "n.",
           "meaningZh": "成功的人或事物",
-          "definitionEn": "a person or thing that has achieved success",
           "examples": [
             "The entrepreneur's success was evident in the rapid growth of his company and the numerous awards he received."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +1",
-        "textbookTitle": "龍騰 B2·L1、三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "such",
       "word": "such",
       "senses": [
         {
-          "id": "sense-ebb2d69f",
-          "pos": "adjective",
+          "id": "sense-a3176ced",
+          "pos": "adj.",
           "meaningZh": "如此；這樣程度的",
-          "definitionEn": "of an extreme degree or extent",
           "examples": [
             "She was in such a hurry that she forgot her keys and left the house unlocked."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-60c7c39e",
-          "pos": "adverb",
+          "id": "sense-3fcca9b7",
+          "pos": "adv.",
           "meaningZh": "如此；極度",
-          "definitionEn": "to an extreme degree",
           "examples": [
             "The performance was such a disaster that the audience demanded a refund."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sudden",
       "word": "sudden",
       "senses": [
         {
-          "id": "sense-97c707ae",
-          "pos": "adjective",
+          "id": "sense-a1f00710",
+          "pos": "adj.",
           "meaningZh": "突然的；猝然的",
-          "definitionEn": "occurring abruptly and unexpectedly, without warning or time for preparation",
           "examples": [
             "The sudden thunderstorm startled us and we had to take shelter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suggest",
       "word": "suggest",
       "senses": [
         {
-          "id": "sense-cbe9efd5",
-          "pos": "verb",
+          "id": "sense-3784a158",
+          "pos": "v.",
           "meaningZh": "建議；提議",
-          "definitionEn": "To propose or put forward for consideration.",
           "examples": [
             "I would like to suggest a new idea for the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f86ee10b",
-          "pos": "verb",
+          "id": "sense-809276ee",
+          "pos": "v.",
           "meaningZh": "使人聯想；暗示",
-          "definitionEn": "To bring to mind a thought or idea.",
           "examples": [
             "I suggest that we brainstorm some new ideas for the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suit",
       "word": "suit",
       "senses": [
         {
-          "id": "sense-2c5c34d9",
-          "pos": "noun",
+          "id": "sense-13605ee1",
+          "pos": "n.",
           "meaningZh": "套裝；西裝",
-          "definitionEn": "a set of clothes made of the same fabric and color for wearing outside, usually consisting of a jacket and pants or skirt (most common meaning)",
           "examples": [
             "He wore a stylish navy blue suit to the job interview."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-48915270",
-          "pos": "noun",
+          "id": "sense-448fe318",
+          "pos": "n.",
           "meaningZh": "穿西裝的上班族（俚語）",
-          "definitionEn": "a businessman who is dressed in formal clothing for work (slang meaning)",
           "examples": [
             "John walked into the office wearing a three-piece suit and a tie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4 +2",
-        "textbookTitle": "龍騰 B5·L4、三民 B4·L1、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suitable",
       "word": "suitable",
       "senses": [
         {
-          "id": "sense-1de9ffe5",
-          "pos": "adjective",
+          "id": "sense-183bf71b",
+          "pos": "adj.",
           "meaningZh": "適合的；恰當的",
-          "definitionEn": "appropriate for a particular purpose; fitting",
           "examples": [
             "Wearing a suit and tie would be suitable attire for a job interview."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-232f5f4c",
-          "pos": "adjective",
+          "id": "sense-c0c81786",
+          "pos": "adj.",
           "meaningZh": "符合需求的；合宜的",
-          "definitionEn": "able to meet the requirements or needs of a situation or person",
           "examples": [
             "The dress she wore was not suitable for a business meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4 +2",
-        "textbookTitle": "龍騰 B5·L4、三民 B4·L1、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "super",
       "word": "super",
       "senses": [
         {
-          "id": "sense-6bbf0cf1",
-          "pos": "adjective",
+          "id": "sense-e3cb7b8b",
+          "pos": "adj.",
           "meaningZh": "超級的；涵蓋更大範疇的",
-          "definitionEn": "including more than a specified category",
           "examples": [
             "The superstore offers a wide range of products, including groceries, electronics, and clothing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "supper",
       "word": "supper",
       "senses": [
         {
-          "id": "sense-d5ebf372",
-          "pos": "noun",
+          "id": "sense-aac566fe",
+          "pos": "n.",
           "meaningZh": "晚餐；晚飯",
-          "definitionEn": "a light evening meal, typically eaten between 6 and 7 pm",
           "examples": [
             "After a long day of work, Jane enjoyed a delicious supper of roasted chicken and vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-516b06cc",
-          "pos": "noun",
+          "id": "sense-5057bfa8",
+          "pos": "n.",
           "meaningZh": "晚宴；晚間聚餐",
-          "definitionEn": "a social gathering where a light evening meal is served",
           "examples": [
             "Jill hosted a delightful supper in her backyard, serving a variety of appetizers, salads, and desserts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "supply",
       "word": "supply",
       "senses": [
         {
-          "id": "sense-1dfe20bb",
-          "pos": "verb",
+          "id": "sense-0f6bcf06",
+          "pos": "v.",
           "meaningZh": "供應；提供",
-          "definitionEn": "to provide what is desired or needed, especially support, food, or sustenance",
           "examples": [
             "The organization sent a large supply of food and water to the hurricane victims."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e0286d7d",
-          "pos": "verb",
+          "id": "sense-d00073ea",
+          "pos": "v.",
           "meaningZh": "補充說明；進一步陳述",
-          "definitionEn": "to state or say something further",
           "examples": [
             "Can you supply more information about the issue?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R2",
-        "textbookTitle": "龍騰 B3·R2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "support",
       "word": "support",
       "senses": [
         {
-          "id": "sense-69481e38",
-          "pos": "noun",
+          "id": "sense-77483030",
+          "pos": "n.",
           "meaningZh": "支撐；承重",
-          "definitionEn": "the act of bearing weight or providing strength",
           "examples": [
             "The building requires strong pillars to support its weight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7e0500c7",
-          "pos": "noun",
+          "id": "sense-2e8034df",
+          "pos": "n.",
           "meaningZh": "支柱；支撐結構",
-          "definitionEn": "Supporting structure that holds up or provides a foundation",
           "examples": [
             "The support beams of the bridge were well-constructed, providing a solid foundation for the massive structure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +1",
-        "textbookTitle": "龍騰 B2·L1、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suppose",
       "word": "suppose",
       "senses": [
         {
-          "id": "sense-3961ca68",
-          "pos": "verb",
+          "id": "sense-32124e85",
+          "pos": "v.",
           "meaningZh": "認為；以為",
-          "definitionEn": "believe or expect something to be true",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-24028713",
-          "pos": "verb",
+          "id": "sense-30fba906",
+          "pos": "v.",
           "meaningZh": "假設；猜想",
-          "definitionEn": "make a guess or express an assumption",
           "examples": [
             "Let’s suppose that it rains tomorrow, we need to bring umbrellas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "surf",
       "word": "surf",
       "senses": [
         {
-          "id": "sense-460a166f",
-          "pos": "verb",
+          "id": "sense-8d347268",
+          "pos": "v.",
           "meaningZh": "衝浪",
-          "definitionEn": "Ride on the waves of the sea with a special board.",
           "examples": [
             "While on vacation in Hawaii, I decided to try surfing for the first time. Standing up on the board, I rode the waves and felt an incredible rush of adrenaline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-197ce2ae",
-          "pos": "noun",
+          "id": "sense-0cad24d2",
+          "pos": "n.",
           "meaningZh": "拍岸海浪；碎浪",
-          "definitionEn": "The waves as they break on the shore.",
           "examples": [
             "As the sun set, the surfers rode the powerful waves with skill and grace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "surface",
       "word": "surface",
       "senses": [
         {
-          "id": "sense-b197a1b7",
-          "pos": "noun",
+          "id": "sense-0e3e84ef",
+          "pos": "n.",
           "meaningZh": "表面；外表面",
-          "definitionEn": "the extended two-dimensional area that covers the outer boundary of a three-dimensional object",
           "examples": [
             "The surface of the tennis court was made of clay."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fa2c76da",
-          "pos": "verb",
+          "id": "sense-373415eb",
+          "pos": "v.",
           "meaningZh": "浮出水面；露出",
-          "definitionEn": "appear or become visible; emerge from underneath a liquid or other substance",
           "examples": [
             "The submarine surfaced after being underwater for two days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3 +1",
-        "textbookTitle": "龍騰 B1·L3、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "survival",
       "word": "survival",
       "senses": [
         {
-          "id": "sense-bb056b45",
-          "pos": "noun",
+          "id": "sense-95944e45",
+          "pos": "n.",
           "meaningZh": "存活；倖存",
-          "definitionEn": "something that has continued to exist despite difficult circumstances or opposition",
           "examples": [
             "The survival of the endangered species is threatened by poaching and loss of habitat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1be8774a",
-          "pos": "noun",
+          "id": "sense-b3ca164a",
+          "pos": "n.",
           "meaningZh": "生存能力；適應存活",
-          "definitionEn": "the ability of an organism to adapt to its environment in order to survive and reproduce",
           "examples": [
             "The desert tortoise’s survival depends on its ability to conserve water and algae as sources of hydration in the harsh environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3",
-        "textbookTitle": "龍騰 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "survive",
       "word": "survive",
       "senses": [
         {
-          "id": "sense-9848e13e",
-          "pos": "verb",
+          "id": "sense-98bc9cfb",
+          "pos": "v.",
           "meaningZh": "存活；熬過",
-          "definitionEn": "to continue to exist after overcoming a difficult situation or threat.",
           "examples": [
             "After a grueling battle with a life-threatening illness, she was able to survive and regain her health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0ea8add1",
-          "pos": "verb",
+          "id": "sense-544ffaf8",
+          "pos": "v.",
           "meaningZh": "維持生計；勉強度日",
-          "definitionEn": "to support oneself financially or to subsist.",
           "examples": [
             "After losing his job, he had to find creative ways to survive, such as starting a small online business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3",
-        "textbookTitle": "龍騰 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "swallow",
       "word": "swallow",
       "senses": [
         {
-          "id": "sense-de90a2f3",
-          "pos": "verb",
+          "id": "sense-3ab30b26",
+          "pos": "v.",
           "meaningZh": "吞嚥；嚥下",
-          "definitionEn": "to make food or drink pass from your mouth down into your stomach",
           "examples": [
             "The pill was so big that he could barely swallow it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-de948dea",
-          "pos": "verb",
+          "id": "sense-e7b98b7b",
+          "pos": "v.",
           "meaningZh": "忍住；壓抑（情緒）",
-          "definitionEn": "to stop oneself from expressing something",
           "examples": [
             "In order to maintain professionalism, she had to swallow her frustration and continue the conversation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sweater",
       "word": "sweater",
       "senses": [
         {
-          "id": "sense-3bc5e231",
-          "pos": "noun",
+          "id": "sense-8f8b0ec9",
+          "pos": "n.",
           "meaningZh": "毛衣；針織上衣",
-          "definitionEn": "a garment covering the upper part of the body, typically knitted or crocheted",
           "examples": [
             "On a chilly winter day, Sarah wrapped herself in a cozy sweater to keep warm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-33da164e",
-          "pos": "noun",
+          "id": "sense-85f2a396",
+          "pos": "n.",
           "meaningZh": "大量流汗的人",
-          "definitionEn": "a person who sweats profusely",
           "examples": [
             "After a rigorous workout at the gym, John was a sweater, his clothes soaked in sweat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sweep",
       "word": "sweep",
       "senses": [
         {
-          "id": "sense-7b8cf416",
-          "pos": "verb",
+          "id": "sense-f7b5f2b7",
+          "pos": "v.",
           "meaningZh": "打掃；掃過",
-          "definitionEn": "move across or over something quickly and efficiently",
           "examples": [
             "The broom swept across the floor, collecting all the dust and dirt along the way."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b0f2aeb1",
-          "pos": "noun",
+          "id": "sense-28c17001",
+          "pos": "n.",
           "meaningZh": "大幅弧形動作；揮動",
-          "definitionEn": "a wide, curved movement or shape",
           "examples": [
             "With a sweep of her arm, she indicated the entire city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "swim",
       "word": "swim",
       "senses": [
         {
-          "id": "sense-c6d128c0",
-          "pos": "verb",
+          "id": "sense-8a62a399",
+          "pos": "v.",
           "meaningZh": "游泳；游水",
-          "definitionEn": "to move through water using arms, legs, or fins.",
           "examples": [
             "During our vacation, we decided to go to the beach and swim in the crystal-clear ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e7c893a3",
-          "pos": "noun",
+          "id": "sense-de5f96ef",
+          "pos": "n.",
           "meaningZh": "游泳；泳程",
-          "definitionEn": "the act of swimming.",
           "examples": [
             "On a hot summer day, we decided to go to the beach and take a swim in the ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "swimsuit",
       "word": "swimsuit",
       "senses": [
         {
-          "id": "sense-3c403a51",
-          "pos": "noun",
+          "id": "sense-28b270b9",
+          "pos": "n.",
           "meaningZh": "泳衣；游泳衣",
-          "definitionEn": "a tight-fitting garment worn for swimming or sunbathing",
           "examples": [
             "She put on her swimsuit and headed to the beach for a day of fun in the sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "swing",
       "word": "swing",
       "senses": [
         {
-          "id": "sense-848358d2",
-          "pos": "verb",
+          "id": "sense-1b26a76f",
+          "pos": "v.",
           "meaningZh": "搖擺；來回擺動",
-          "definitionEn": "to move back and forth or from side to side, or to cause something or someone to do so",
           "examples": [
             "The children were swinging on the playground swings, laughing and enjoying the warm summer breeze."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3a51c601",
-          "pos": "noun",
+          "id": "sense-fbf5d0dd",
+          "pos": "n.",
           "meaningZh": "（棒球）揮棒",
-          "definitionEn": "in baseball; a batter’s attempt to hit a pitched ball",
           "examples": [
             "The batter took a powerful swing and hit the ball out of the park for a home run."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "switch",
+      "word": "switch",
+      "senses": [
+        {
+          "id": "sense-242c0e66",
+          "pos": "v.",
+          "meaningZh": "交換；互換",
+          "examples": [
+            "I switched my pencil with my classmate’s pen so that we could both use the writing tool we preferred."
+          ]
+        },
+        {
+          "id": "sense-61f60682",
+          "pos": "v.",
+          "meaningZh": "改換；轉換",
+          "examples": [
+            "I decided to switch my major from biology to chemistry."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "symbol",
+      "word": "symbol",
+      "senses": [
+        {
+          "id": "sense-5c1bfb4e",
+          "pos": "n.",
+          "meaningZh": "符號；記號",
+          "examples": [
+            "In mathematics, the plus '+' sign is a symbol used to represent addition."
+          ]
+        },
+        {
+          "id": "sense-df0d62d3",
+          "pos": "n.",
+          "meaningZh": "象徵；代表",
+          "examples": [
+            "In many cultures, the heart shape is a symbol of love and affection."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "system",
+      "word": "system",
+      "senses": [
+        {
+          "id": "sense-6be33acc",
+          "pos": "n.",
+          "meaningZh": "系統；整體結構",
+          "examples": [
+            "The human body is a complex system of organs and tissues that work together to maintain life."
+          ]
+        },
+        {
+          "id": "sense-9d0b345b",
+          "pos": "n.",
+          "meaningZh": "系統；相互關聯的裝置組合",
+          "examples": [
+            "The security system in the building consists of CCTV cameras, motion sensors, and security personnel who work together to maintain safety."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tale",
+      "word": "tale",
+      "senses": [
+        {
+          "id": "sense-8356076f",
+          "pos": "n.",
+          "meaningZh": "故事；敘事",
+          "examples": [
+            "In the ancient village, the elders would gather the children around the fire to share an enchanting tale of a brave princess and her journey to save her kingdom from an evil sorcerer."
+          ]
+        },
+        {
+          "id": "sense-10fec8c5",
+          "pos": "n.",
+          "meaningZh": "虛構故事；民間傳說",
+          "examples": [
+            "In the campfire, my friends and I took turns telling tales of haunted houses and mythical creatures."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "target",
+      "word": "target",
+      "senses": [
+        {
+          "id": "sense-8a29f7c8",
+          "pos": "n.",
+          "meaningZh": "目標；目的",
+          "examples": [
+            "His ultimate target is to become the CEO of the company."
+          ]
+        },
+        {
+          "id": "sense-2ea95656",
+          "pos": "n.",
+          "meaningZh": "靶；標靶",
+          "examples": [
+            "The archer took aim at the target and released the arrow, hitting the bullseye with impressive accuracy."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

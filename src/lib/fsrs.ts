@@ -6,9 +6,7 @@ const scheduler = fsrs({ enable_fuzz: false })
 
 const ratings: Record<ReviewRating, Rating> = {
   again: Rating.Again,
-  hard: Rating.Hard,
   good: Rating.Good,
-  easy: Rating.Easy,
 }
 
 function cardFromProgress(progress: CardProgress | null, now: Date): Card {

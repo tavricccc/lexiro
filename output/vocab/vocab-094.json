@@ -1,1408 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 94,
   "words": [
-    {
-      "wordKey": "thumb",
-      "word": "thumb",
-      "senses": [
-        {
-          "id": "sense-e0a0ebeb",
-          "pos": "noun",
-          "meaningZh": "拇指",
-          "definitionEn": "the thick, short innermost digit of the forelimb; opposable to each of the other digits and used for grasping and holding objects",
-          "examples": [
-            "She used her thumb to press the button and start the machine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-2006f263",
-          "pos": "verb",
-          "meaningZh": "翻閱；快速瀏覽",
-          "definitionEn": "to flip through a book or magazine quickly; to browse or scan",
-          "examples": [
-            "I thumbed through the magazine, looking for an interesting article to read."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "thunder",
-      "word": "thunder",
-      "senses": [
-        {
-          "id": "sense-70b83c48",
-          "pos": "noun",
-          "meaningZh": "雷聲；巨響",
-          "definitionEn": "any loud and sudden noise, like an explosion or a drum",
-          "examples": [
-            "The sound of thunder echoed through the valley as the storm rolled in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-06e123e1",
-          "pos": "verb",
-          "meaningZh": "大聲怒罵；怒吼",
-          "definitionEn": "to speak or shout loudly and angrily",
-          "examples": [
-            "When the teacher found out that he had cheated on the test, she thundered at him in front of the entire class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "thus",
-      "word": "thus",
-      "senses": [
-        {
-          "id": "sense-438b58f3",
-          "pos": "adverb",
-          "meaningZh": "因此；於是",
-          "definitionEn": "In this way.",
-          "examples": [
-            "He forgot his wallet at home, thus unable to buy lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-41075064",
-          "pos": "noun",
-          "meaningZh": "乳香脂；薰香樹脂",
-          "definitionEn": "An aromatic gum resin obtained from various Arabian or East African trees; formerly valued for worship and for embalming and fumigation.",
-          "examples": [
-            "The ancient Egyptians used thus for embalming their pharaohs and other important figures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "tide",
-      "word": "tide",
-      "senses": [
-        {
-          "id": "sense-aa7f86ae",
-          "pos": "noun",
-          "meaningZh": "潮汐；潮水",
-          "definitionEn": "the regular movement of seawater caused by gravitational forces of the moon and sun",
-          "examples": [
-            "The fishermen knew they had to wait for the high tide to come in before launching their boat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-86af8ae9",
-          "pos": "noun",
-          "meaningZh": "趨勢；潮流",
-          "definitionEn": "a widespread or general tendency, trend, or drift",
-          "examples": [
-            "The tide of opinion has shifted in favor of internet privacy laws."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "tight",
-      "word": "tight",
-      "senses": [
-        {
-          "id": "sense-14fdb057",
-          "pos": "adjective",
-          "meaningZh": "緊固的；牢固的",
-          "definitionEn": "firmly fixed in place; not easily moved or shaken",
-          "examples": [
-            "The ship's anchor was tightly secured to the ocean floor, preventing it from drifting away during the storm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-01a989e8",
-          "pos": "adjective",
-          "meaningZh": "擁擠的；緊密的",
-          "definitionEn": "closely packed together",
-          "examples": [
-            "The students sat tight in the small classroom, shoulder to shoulder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "tighten",
       "word": "tighten",
       "senses": [
         {
-          "id": "sense-208be5a9",
-          "pos": "verb",
+          "id": "sense-3c3d2e38",
+          "pos": "v.",
           "meaningZh": "鎖緊；旋緊",
-          "definitionEn": "make tight or tighter",
           "examples": [
             "Can you please tighten the screws on the chair so that it doesn’t wobble?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fd7af8fd",
-          "pos": "verb",
+          "id": "sense-26c97364",
+          "pos": "v.",
           "meaningZh": "變緊；繃緊",
-          "definitionEn": "become tight or tighter",
           "examples": [
             "As she pulled on the rope, she felt it tighten around the package."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "till",
       "word": "till",
       "senses": [
         {
-          "id": "sense-1cff7df7",
-          "pos": "preposition",
+          "id": "sense-4839c3fa",
+          "pos": "prep.",
           "meaningZh": "直到；在…之前",
-          "definitionEn": "up to a particular time; until",
           "examples": [
             "The store is open till midnight on weekends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e0a1f640",
-          "pos": "noun",
+          "id": "sense-25396ab4",
+          "pos": "n.",
           "meaningZh": "收銀機；現金抽屜",
-          "definitionEn": "a secure container for holding cash or valuables",
           "examples": [
             "The store manager placed the day's earnings in the till before taking it to the bank."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "timber",
       "word": "timber",
       "senses": [
         {
-          "id": "sense-54a66b4b",
-          "pos": "noun",
+          "id": "sense-b5ab6be7",
+          "pos": "n.",
           "meaningZh": "木材；建築用木料",
-          "definitionEn": "the wood of trees, which has been prepared for use in construction or building",
           "examples": [
             "The carpenter selected a sturdy piece of timber to build the frame of the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cb49210f",
-          "pos": "noun",
+          "id": "sense-871b37c3",
+          "pos": "n.",
           "meaningZh": "大木樑；橫樑",
-          "definitionEn": "a large, heavy beam made of wood, that is used in building houses, bridges, etc.",
           "examples": [
             "The construction workers carefully placed the timber across the supports to create a sturdy framework for the new bridge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tiny",
       "word": "tiny",
       "senses": [
         {
-          "id": "sense-6544c35e",
-          "pos": "adjective",
+          "id": "sense-dac0c7ca",
+          "pos": "adj.",
           "meaningZh": "極小的；微小的",
-          "definitionEn": "extremely small",
           "examples": [
             "The tiny kitten fit in the palm of my hand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tire",
       "word": "tire",
       "senses": [
         {
-          "id": "sense-0e75c4f5",
-          "pos": "noun",
+          "id": "sense-557319f5",
+          "pos": "n.",
           "meaningZh": "輪胎",
-          "definitionEn": "a rubber covering that fits over a wheel, used for vehicles such as cars, bicycles, and trucks",
           "examples": [
             "I need to replace the worn-out tire on my bicycle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-87b1b0c9",
-          "pos": "verb",
+          "id": "sense-cfdb12a8",
+          "pos": "v.",
           "meaningZh": "使疲倦；令疲累",
-          "definitionEn": "make (someone) feel in need of rest or sleep; weary",
           "examples": [
             "After a long day of hiking, the exhausted hikers were too tire to continue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tissue",
       "word": "tissue",
       "senses": [
         {
-          "id": "sense-68114ab7",
-          "pos": "noun",
+          "id": "sense-4e15b67b",
+          "pos": "n.",
           "meaningZh": "面紙；衛生紙",
-          "definitionEn": "a soft, thin piece of paper used for wiping tears, sweat, or as a disposable handkerchief",
           "examples": [
             "After watching a heartwarming movie, she reached for a tissue to wipe away her tears."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-95dfead1",
-          "pos": "noun",
+          "id": "sense-2f21311d",
+          "pos": "n.",
           "meaningZh": "組織（生物學）",
-          "definitionEn": "a group of similar cells that together perform a specific function in an organism",
           "examples": [
             "In plants, the tissue known as xylem transports water and nutrients from the roots to the rest of the plant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4 +1",
-        "textbookTitle": "龍騰 B5·L4、三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "title",
       "word": "title",
       "senses": [
         {
-          "id": "sense-fde15a96",
-          "pos": "noun",
+          "id": "sense-827d42da",
+          "pos": "n.",
           "meaningZh": "書名；作品名稱",
-          "definitionEn": "the name of a piece of art, literature, or composition",
           "examples": [
             "The title of the novel was ’Gone with the Wind’."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-60159753",
-          "pos": "noun",
+          "id": "sense-6074a627",
+          "pos": "n.",
           "meaningZh": "標題；章節題目",
-          "definitionEn": "a heading that introduces a section of a written work",
           "examples": [
             "Please remember to include a title and a short description for your paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "toast",
       "word": "toast",
       "senses": [
         {
-          "id": "sense-bd399cbf",
-          "pos": "noun",
+          "id": "sense-c75fac67",
+          "pos": "n.",
           "meaningZh": "吐司；烤麵包",
-          "definitionEn": "Sliced bread that has been browned and crisped by heating",
           "examples": [
             "She spread some butter on the toast and enjoyed it with her morning coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-dee4a210",
-          "pos": "verb",
+          "id": "sense-5c5e354f",
+          "pos": "v.",
           "meaningZh": "烘烤（麵包）",
-          "definitionEn": "To make something brown and crisp by heating it in a toaster or over a fire",
           "examples": [
             "I like to toast my bread in the morning for a crunchy breakfast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tobacco",
       "word": "tobacco",
       "senses": [
         {
-          "id": "sense-c0ad41fe",
-          "pos": "noun",
+          "id": "sense-b110e566",
+          "pos": "n.",
           "meaningZh": "菸草；煙草",
-          "definitionEn": "leaves of the tobacco plant dried and prepared for smoking or ingestion",
           "examples": [
             "Although the harmful effects of tobacco are well-known, many people still choose to smoke."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-bfa11663",
-          "pos": "noun",
+          "id": "sense-d21c548b",
+          "pos": "n.",
           "meaningZh": "菸草植物",
-          "definitionEn": "aromatic annual or perennial herbs and shrubs",
           "examples": [
             "The farmer grew tobacco on his land and sold it to a tobacco company for cigarettes and other tobacco products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tofu",
       "word": "tofu",
       "senses": [
         {
-          "id": "sense-28458f0d",
-          "pos": "noun",
+          "id": "sense-30db98f9",
+          "pos": "n.",
           "meaningZh": "豆腐",
-          "definitionEn": "A cheese-like food made from curdled soybean milk.",
           "examples": [
             "I like to order tofu stir-fry at my favorite Asian restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ton",
       "word": "ton",
       "senses": [
         {
-          "id": "sense-d00ac92b",
-          "pos": "noun",
+          "id": "sense-e3f21ccf",
+          "pos": "n.",
           "meaningZh": "公噸；噸（重量單位）",
-          "definitionEn": "a unit for measuring weight, equal to about 1,000 kilograms",
           "examples": [
             "The truck was carrying ten tons of coal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-74dca9ad",
-          "pos": "noun",
+          "id": "sense-9207b7e1",
+          "pos": "n.",
           "meaningZh": "短噸（美制，2000磅）",
-          "definitionEn": "a United States unit of weight equivalent to 2000 pounds",
           "examples": [
             "The shipment of steel beams weighed three tons and took up the entire flatbed truck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-0b2aac8c",
-          "pos": "noun",
+          "id": "sense-cc086550",
+          "pos": "n.",
           "meaningZh": "長噸（英制，2240磅）",
-          "definitionEn": "a British unit of weight equivalent to 2240 pounds",
           "examples": [
             "The ship was carrying over 10 tons of cargo."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tone",
       "word": "tone",
       "senses": [
         {
-          "id": "sense-89d50edd",
-          "pos": "noun",
+          "id": "sense-f1ddb6e9",
+          "pos": "n.",
           "meaningZh": "語氣；音調",
-          "definitionEn": "the quality of a sound or of someone's voice, expressing a feeling",
           "examples": [
             "I could tell from her tone that she was angry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-38743c26",
-          "pos": "verb",
+          "id": "sense-c22e04e1",
+          "pos": "v.",
           "meaningZh": "強化肌肉；使結實",
-          "definitionEn": "give a healthy elasticity to",
           "examples": [
             "Regular exercise can help tone the muscles and improve flexibility."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tongue",
       "word": "tongue",
       "senses": [
         {
-          "id": "sense-8b5704f0",
-          "pos": "noun",
+          "id": "sense-e6b10bc4",
+          "pos": "n.",
           "meaningZh": "舌頭",
-          "definitionEn": "the mobile mass of muscular tissue covered with mucous membrane in the mouth",
           "examples": [
             "Maria burned her tongue while sipping the hot soup."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-36dfb9c6",
-          "pos": "noun",
+          "id": "sense-f1dd1cda",
+          "pos": "n.",
           "meaningZh": "鐘舌；鐘錘",
-          "definitionEn": "a metal striker that hangs inside a bell and makes a sound by hitting the side",
           "examples": [
             "The church bell rang out loud and clear thanks to the skillful craftsman who carefully tuned the tongue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "toothache",
       "word": "toothache",
       "senses": [
         {
-          "id": "sense-c9e619e4",
-          "pos": "noun",
+          "id": "sense-aeb2a900",
+          "pos": "n.",
           "meaningZh": "牙痛",
-          "definitionEn": "a pain in your tooth caused by a dental problem",
           "examples": [
             "I had a terrible toothache and had to make an emergency appointment with my dentist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-59d47bdf",
-          "pos": "noun",
+          "id": "sense-2610c18b",
+          "pos": "n.",
           "meaningZh": "牙齒疼痛；牙齒酸痛",
-          "definitionEn": "a discomfort or soreness in the tooth",
           "examples": [
             "After eating a large piece of ice cream cake, John developed a toothache that kept him up all night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "toothbrush",
       "word": "toothbrush",
       "senses": [
         {
-          "id": "sense-ccc68b59",
-          "pos": "noun",
+          "id": "sense-62bc57c9",
+          "pos": "n.",
           "meaningZh": "牙刷",
-          "definitionEn": "A small brush with a long handle, used for cleaning teeth.",
           "examples": [
             "Every morning and night, I use my toothbrush to brush my teeth thoroughly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-647c6fbd",
-          "pos": "noun",
+          "id": "sense-7c1c900d",
+          "pos": "n.",
           "meaningZh": "短鬍子（俗稱牙刷鬍）",
-          "definitionEn": "A slang term referring to a mustache.",
           "examples": [
             "When Jack shaved his beard, he decided to keep his toothbrush to add some personality to his face."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "toss",
       "word": "toss",
       "senses": [
         {
-          "id": "sense-e07f3f9a",
-          "pos": "verb",
+          "id": "sense-6181241d",
+          "pos": "v.",
           "meaningZh": "輕拋；隨手丟",
-          "definitionEn": "to throw something lightly and easily",
           "examples": [
             "Timothy tossed the Frisbee to his friend in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6727aaaa",
-          "pos": "verb",
+          "id": "sense-6843d8ff",
+          "pos": "v.",
           "meaningZh": "擲（硬幣）；拋硬幣",
-          "definitionEn": "to throw a coin into the air in order to make a decision based on which side lands facing up",
           "examples": [
             "When we couldn't agree on who should go first, we decided to toss a coin to decide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tough",
       "word": "tough",
       "senses": [
         {
-          "id": "sense-5099286b",
-          "pos": "adjective",
+          "id": "sense-5a204335",
+          "pos": "adj.",
           "meaningZh": "堅韌的；耐嚼的",
-          "definitionEn": "resistant to cutting or chewing",
           "examples": [
             "The leather used for the hiking boots is so tough that it can withstand sharp rocks and rough terrain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-b94ec01f",
-          "pos": "adjective",
+          "id": "sense-38a70d31",
+          "pos": "adj.",
           "meaningZh": "強硬的；不妥協的",
-          "definitionEn": "not given to gentleness or sentimentality",
           "examples": [
             "The tough coach pushed his team to their limits, demanding nothing less than perfection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tour",
       "word": "tour",
       "senses": [
         {
-          "id": "sense-ffa1e82b",
-          "pos": "noun",
+          "id": "sense-18b5e55b",
+          "pos": "n.",
           "meaningZh": "觀光；巡迴旅遊",
-          "definitionEn": "a journey or route all the way around a particular place or area",
           "examples": [
             "We took a guided tour of the city to learn about its history and culture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-707d4834",
-          "pos": "verb",
+          "id": "sense-0a5c05d9",
+          "pos": "v.",
           "meaningZh": "遊覽；觀光旅行",
-          "definitionEn": "to travel and visit places of interest, especially as a holiday",
           "examples": [
             "During our tour of Europe, we visited famous museums, historical monuments, and stunning natural attractions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tourism",
       "word": "tourism",
       "senses": [
         {
-          "id": "sense-c97cebfd",
-          "pos": "noun",
+          "id": "sense-45b9dec9",
+          "pos": "n.",
           "meaningZh": "觀光業；旅遊業",
-          "definitionEn": "the activity of traveling to a place for pleasure; the business of providing services for these travelers.",
           "examples": [
             "Many people love to go to the beach during the summer, and the local economy depends on tourism to support many small businesses that offer services like hotels, restaurants, and entertainment activities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tourist",
       "word": "tourist",
       "senses": [
         {
-          "id": "sense-0b865df3",
-          "pos": "noun",
+          "id": "sense-d04e7457",
+          "pos": "n.",
           "meaningZh": "觀光客；遊客",
-          "definitionEn": "a person who travels to a place for pleasure",
           "examples": [
             "The city of Paris sees millions of tourists every year who come to enjoy the art, culture, food and the scenic beauty of the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tow",
       "word": "tow",
       "senses": [
         {
-          "id": "sense-8af0766a",
-          "pos": "verb",
+          "id": "sense-605eb76b",
+          "pos": "v.",
           "meaningZh": "拖曳；拉引（車輛）",
-          "definitionEn": "to pull a vehicle or boat behind another vehicle, using a rope or chain",
           "examples": [
             "When my car broke down on the highway, a tow truck arrived to tow it to the nearest mechanic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6ea27227",
-          "pos": "noun",
+          "id": "sense-bf9a155b",
+          "pos": "n.",
           "meaningZh": "拖拉；拖車行為",
-          "definitionEn": "the act of pulling a vehicle or boat behind another vehicle, using a rope or chain",
           "examples": [
             "After their car broke down on the highway, they had to call a towing service to tow it to the nearest mechanic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tower",
       "word": "tower",
       "senses": [
         {
-          "id": "sense-81993175",
-          "pos": "noun",
+          "id": "sense-2f96b741",
+          "pos": "n.",
           "meaningZh": "塔；高塔",
-          "definitionEn": "a tall, narrow building or structure",
           "examples": [
             "From the top of the tower, you could see the entire city sprawling below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-e1ad70c0",
-          "pos": "noun",
+          "id": "sense-6161ad24",
+          "pos": "n.",
           "meaningZh": "塔狀物；高聳建物",
-          "definitionEn": "anything that resembles a tower in shape or function",
           "examples": [
             "The lighthouse stood tall, a tower overlooking the treacherous cliffs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trace",
       "word": "trace",
       "senses": [
         {
-          "id": "sense-ba0bc54e",
-          "pos": "noun",
+          "id": "sense-11d8ca52",
+          "pos": "n.",
           "meaningZh": "痕跡；蹤跡",
-          "definitionEn": "an indication or sign that something was present or happened",
           "examples": [
             "The investigators found traces of DNA on the murder weapon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-9df434d7",
-          "pos": "noun",
+          "id": "sense-2c4c00b3",
+          "pos": "n.",
           "meaningZh": "極少量；微量",
-          "definitionEn": "a barely detectable amount",
           "examples": [
             "There was not even a trace of evidence at the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "track",
       "word": "track",
       "senses": [
         {
-          "id": "sense-df5173af",
-          "pos": "noun",
+          "id": "sense-fae040f7",
+          "pos": "n.",
           "meaningZh": "軌道；路線",
-          "definitionEn": "a line or route along which something travels or moves",
           "examples": [
             "The train followed the track through the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d6120d4f",
-          "pos": "noun",
+          "id": "sense-ddbf74c7",
+          "pos": "n.",
           "meaningZh": "小徑；粗路",
-          "definitionEn": "any rough path or road",
           "examples": [
             "The hiker followed the track up the mountain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7",
-        "textbookTitle": "龍騰 B3·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trade",
       "word": "trade",
       "senses": [
         {
-          "id": "sense-9bc0288f",
-          "pos": "noun",
+          "id": "sense-16c487fb",
+          "pos": "n.",
           "meaningZh": "交易；買賣",
-          "definitionEn": "a particular instance of buying or selling something",
           "examples": [
             "I made a trade with my friend - I gave him my old video game in exchange for a new one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ebfd017d",
-          "pos": "noun",
+          "id": "sense-0caf3721",
+          "pos": "n.",
           "meaningZh": "生意；顧客群",
-          "definitionEn": "the business that a commercial establishment gets from its customers",
           "examples": [
             "The new café quickly gained trade from the local office workers who were looking for a place to get their morning coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "trader",
+      "word": "trader",
+      "senses": [
+        {
+          "id": "sense-4f063074",
+          "pos": "n.",
+          "meaningZh": "交易員；買賣商",
+          "examples": [
+            "John works as a trader in a stock brokerage firm, where he buys and sells stocks on behalf of his clients to earn a commission."
+          ]
+        },
+        {
+          "id": "sense-87424288",
+          "pos": "n.",
+          "meaningZh": "商人；貿易商",
+          "examples": [
+            "The trader purchased a large amount of rice from the farmers and kept them in his warehouse to sell them later for a profit."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tradition",
+      "word": "tradition",
+      "senses": [
+        {
+          "id": "sense-03c9f95b",
+          "pos": "n.",
+          "meaningZh": "傳統；習俗",
+          "examples": [
+            "Every year, our family gathers around the dinner table on Thanksgiving to continue the tradition of sharing a meal together and expressing gratitude."
+          ]
+        },
+        {
+          "id": "sense-84dfe232",
+          "pos": "n.",
+          "meaningZh": "世代沿襲的做法",
+          "examples": [
+            "Every year, on Thanksgiving, our family has a tradition of gathering together for a big feast."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "traditional",
+      "word": "traditional",
+      "senses": [
+        {
+          "id": "sense-a3340ec4",
+          "pos": "adj.",
+          "meaningZh": "傳統的；依循習俗的",
+          "examples": [
+            "During the Chinese New Year, it is traditional for families to gather together and exchange red envelopes as a sign of good luck."
+          ]
+        },
+        {
+          "id": "sense-1c7fbd17",
+          "pos": "adj.",
+          "meaningZh": "符合既有規範的",
+          "examples": [
+            "During the holiday season, it is traditional for families to gather around the dinner table and share a meal together."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "trail",
+      "word": "trail",
+      "senses": [
+        {
+          "id": "sense-11895e4c",
+          "pos": "n.",
+          "meaningZh": "小徑；步道",
+          "examples": [
+            "After hours of hiking, we finally found the trail that led us to the stunning waterfall."
+          ]
+        },
+        {
+          "id": "sense-5dffa275",
+          "pos": "n.",
+          "meaningZh": "蹤跡；足跡",
+          "examples": [
+            "The detective followed the trail of footprints, leading him to the hidden treasure."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "transport",
+      "word": "transport",
+      "senses": [
+        {
+          "id": "sense-466e90ae",
+          "pos": "n.",
+          "meaningZh": "交通工具；運輸工具",
+          "examples": [
+            "The new subway system will greatly improve the transport of people across the city."
+          ]
+        },
+        {
+          "id": "sense-7b7675aa",
+          "pos": "n.",
+          "meaningZh": "貨物運輸業；物流",
+          "examples": [
+            "The company has a fleet of trucks for transport of goods across the country."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

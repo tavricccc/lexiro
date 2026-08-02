@@ -1,0 +1,1526 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questions": [
+    {
+      "id": "question-cc2e89fe",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "She put the book on the shelf.",
+      "options": [
+        "set",
+        "rise",
+        "bring",
+        "roll"
+      ],
+      "answerIndex": 0,
+      "wordKey": "put",
+      "senseId": "sense-3746b2c3",
+      "fingerprint": "fingerprint-c4d2fea5",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-aa38d4e2",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "After her long day at work, she enjoyed a full night of uninterrupted sleep.",
+      "options": [
+        "some",
+        "interesting",
+        "interested",
+        "whole"
+      ],
+      "answerIndex": 3,
+      "wordKey": "full",
+      "senseId": "sense-2abd80c1",
+      "fingerprint": "fingerprint-1281f5fa",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6833147b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "After working tirelessly for months, Sarah decided to take a well-deserved holiday to a tropical island.",
+      "options": [
+        "noodle",
+        "vacation",
+        "master",
+        "countryside"
+      ],
+      "answerIndex": 1,
+      "wordKey": "holiday",
+      "senseId": "sense-4150885e",
+      "fingerprint": "fingerprint-b05ddda4",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6bafd627",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "Please use the emergency exit in case of a fire.",
+      "options": [
+        "leave",
+        "shrimp",
+        "spin",
+        "owe"
+      ],
+      "answerIndex": 0,
+      "wordKey": "exit",
+      "senseId": "sense-28b5f921",
+      "fingerprint": "fingerprint-53759562",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-ecfbb7a0",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "She prefers plain black coffee without any sugar or cream.",
+      "options": [
+        "under",
+        "very",
+        "several",
+        "pure"
+      ],
+      "answerIndex": 3,
+      "wordKey": "plain",
+      "senseId": "sense-73152a40",
+      "fingerprint": "fingerprint-d6f2e13f",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-15d64eef",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "Her ability to speak multiple languages made her an asset to the international team.",
+      "options": [
+        "capability",
+        "hour",
+        "mail",
+        "favor"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ability",
+      "senseId": "sense-f144c364",
+      "fingerprint": "fingerprint-d7777ee0",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-e0d33e31",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "In times of financial difficulty, some people may depend on their families for financial support.",
+      "options": [
+        "too",
+        "occasion",
+        "rely",
+        "matter"
+      ],
+      "answerIndex": 2,
+      "wordKey": "depend",
+      "senseId": "sense-685343a3",
+      "fingerprint": "fingerprint-e7ecf1ff",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-beed4026",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "It is common for people to celebrate their birthdays with cake.",
+      "options": [
+        "several",
+        "very",
+        "interesting",
+        "ordinary"
+      ],
+      "answerIndex": 3,
+      "wordKey": "common",
+      "senseId": "sense-8e52965d",
+      "fingerprint": "fingerprint-429875bf",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-79cc20d4",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "As the morning dawned, the birds began to sing and the sky turned a beautiful shade of pink.",
+      "options": [
+        "skill",
+        "employment",
+        "dawn",
+        "secret"
+      ],
+      "answerIndex": 2,
+      "wordKey": "morning",
+      "senseId": "sense-1390a349",
+      "fingerprint": "fingerprint-1599fa19",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-4bd36698",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "The teacher will allow the students to use calculators during the math exam.",
+      "options": [
+        "share",
+        "permit",
+        "roll",
+        "bite"
+      ],
+      "answerIndex": 1,
+      "wordKey": "allow",
+      "senseId": "sense-e783fc52",
+      "fingerprint": "fingerprint-7f20bb2c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-cc40efc4",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "I was anxious to start my new job and meet my coworkers",
+      "options": [
+        "hungry",
+        "beat",
+        "absent",
+        "handsome"
+      ],
+      "answerIndex": 0,
+      "wordKey": "anxious",
+      "senseId": "sense-00f37822",
+      "fingerprint": "fingerprint-ebee561d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-3252c441",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "The tire tracks left on the muddy road were a mark that a car had recently passed by.",
+      "options": [
+        "fee",
+        "country",
+        "indication",
+        "pork"
+      ],
+      "answerIndex": 2,
+      "wordKey": "mark",
+      "senseId": "sense-f436ca65",
+      "fingerprint": "fingerprint-e6ed01b8",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-827bb4e2",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The strict rules and regulations of the school govern the students' conduct and ensure discipline.",
+      "options": [
+        "rob",
+        "career",
+        "jam",
+        "dominate"
+      ],
+      "answerIndex": 3,
+      "wordKey": "govern",
+      "senseId": "sense-ec061bdc",
+      "fingerprint": "fingerprint-7f31d595",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-e8031354",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "In biology, mammals are a type of vertebrate.",
+      "options": [
+        "bill",
+        "hole",
+        "kind",
+        "circle"
+      ],
+      "answerIndex": 2,
+      "wordKey": "type",
+      "senseId": "sense-533eee39",
+      "fingerprint": "fingerprint-179bd782",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-248fdaac",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "While swimming in the ocean, I saw a magnificent creature that resembled a sea dragon.",
+      "options": [
+        "being",
+        "nursery",
+        "frustration",
+        "disguise"
+      ],
+      "answerIndex": 0,
+      "wordKey": "creature",
+      "senseId": "sense-483b8ae3",
+      "fingerprint": "fingerprint-9a76902d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-a4c7a2b7",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "The dark clouds spell trouble for the outdoor event.",
+      "options": [
+        "beyond",
+        "imply",
+        "breakfast",
+        "reject"
+      ],
+      "answerIndex": 1,
+      "wordKey": "spell",
+      "senseId": "sense-fe87944f",
+      "fingerprint": "fingerprint-b83f0da9",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-ac5674f6",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "Please be at the airport 2 hours before your flight.",
+      "options": [
+        "settle",
+        "ahead",
+        "shout",
+        "lie"
+      ],
+      "answerIndex": 1,
+      "wordKey": "before",
+      "senseId": "sense-9b5ac76f",
+      "fingerprint": "fingerprint-79bcb3c6",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-39af0d91",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "In the previous chapter of the novel, the protagonist's true identity is revealed.",
+      "options": [
+        "handsome",
+        "intermediate",
+        "intense",
+        "prior"
+      ],
+      "answerIndex": 3,
+      "wordKey": "previous",
+      "senseId": "sense-b348b537",
+      "fingerprint": "fingerprint-9c76a49c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-56d7d6d6",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The nursing home provides specialized care for the elderly, offering them assistance and support in their daily activities.",
+      "options": [
+        "old",
+        "mere",
+        "intelligent",
+        "cooperative"
+      ],
+      "answerIndex": 0,
+      "wordKey": "elderly",
+      "senseId": "sense-dca4e6ff",
+      "fingerprint": "fingerprint-9d16fca5",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-77a1110a",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The priest will marry the couple in a beautiful church ceremony.",
+      "options": [
+        "fill",
+        "wed",
+        "cradle",
+        "escape"
+      ],
+      "answerIndex": 1,
+      "wordKey": "marry",
+      "senseId": "sense-d754007f",
+      "fingerprint": "fingerprint-a0919896",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b3cb4ae3",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "She showed great nerve during the crisis by staying calm and coming up with a solution.",
+      "options": [
+        "business",
+        "bravery",
+        "high",
+        "slipper"
+      ],
+      "answerIndex": 1,
+      "wordKey": "nerve",
+      "senseId": "sense-3cbf49ca",
+      "fingerprint": "fingerprint-803b3af2",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-abaf3230",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "It was obvious from the look on her face that she was not happy with the surprise party.",
+      "options": [
+        "interested",
+        "iron",
+        "some",
+        "clear"
+      ],
+      "answerIndex": 3,
+      "wordKey": "obvious",
+      "senseId": "sense-fb3b5a3e",
+      "fingerprint": "fingerprint-066b0f16",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-06d11363",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "Having a college degree can give you an advantage in the job market.",
+      "options": [
+        "superiority",
+        "praise",
+        "context",
+        "shy"
+      ],
+      "answerIndex": 0,
+      "wordKey": "advantage",
+      "senseId": "sense-3ec93346",
+      "fingerprint": "fingerprint-16c8f4a6",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-812ec5d8",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "I can’t come to work today because I am too sick to get out of bed.",
+      "options": [
+        "ill",
+        "several",
+        "very",
+        "beat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "sick",
+      "senseId": "sense-2b6fc7bb",
+      "fingerprint": "fingerprint-690c5287",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-33eba178",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "She always arrives early to work.",
+      "options": [
+        "wind",
+        "constantly",
+        "may",
+        "ever"
+      ],
+      "answerIndex": 1,
+      "wordKey": "always",
+      "senseId": "sense-d8f695e0",
+      "fingerprint": "fingerprint-ab4e6b5a",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-cb191984",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The powerful explosion shook the entire building.",
+      "options": [
+        "some",
+        "interested",
+        "under",
+        "strong"
+      ],
+      "answerIndex": 3,
+      "wordKey": "powerful",
+      "senseId": "sense-511d72d3",
+      "fingerprint": "fingerprint-a03bd3e0",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8c974d7b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "I have a busy schedule next week, with meetings and appointments every day.",
+      "options": [
+        "weekend",
+        "timetable",
+        "candle",
+        "chest"
+      ],
+      "answerIndex": 1,
+      "wordKey": "schedule",
+      "senseId": "sense-40cfcabd",
+      "fingerprint": "fingerprint-eff3ab84",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-7b8ec889",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The apartment is spacious and bright. Besides, it is close to the train station.",
+      "options": [
+        "seek",
+        "heap",
+        "furthermore",
+        "cheat"
+      ],
+      "answerIndex": 2,
+      "wordKey": "besides",
+      "senseId": "sense-98f32625",
+      "fingerprint": "fingerprint-e3271c0a",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8531532b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "Please don't bother me with such insignificant details while I'm trying to concentrate on my work.",
+      "options": [
+        "mend",
+        "judge",
+        "hop",
+        "annoy"
+      ],
+      "answerIndex": 3,
+      "wordKey": "bother",
+      "senseId": "sense-6a626fd6",
+      "fingerprint": "fingerprint-c68b1c2a",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-94c93cdb",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The wedding was quite costly, with a lavish venue, extravagant decorations, and a gourmet menu.",
+      "options": [
+        "intermediate",
+        "intense",
+        "expensive",
+        "mere"
+      ],
+      "answerIndex": 2,
+      "wordKey": "costly",
+      "senseId": "sense-2b087892",
+      "fingerprint": "fingerprint-5deb2eff",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-68628be8",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "After a long day of fasting, John decided to pig out at the buffet, devouring plate after plate of food.",
+      "options": [
+        "devour",
+        "behind",
+        "instance",
+        "amount"
+      ],
+      "answerIndex": 0,
+      "wordKey": "pig",
+      "senseId": "sense-c2b7eaf4",
+      "fingerprint": "fingerprint-e73ffd2b",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8470d144",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "As an aspiring astronomer, Sarah spends countless hours gazing at the stars, contemplating the vastness of the universe.",
+      "options": [
+        "dust",
+        "writer",
+        "inn",
+        "space"
+      ],
+      "answerIndex": 3,
+      "wordKey": "universe",
+      "senseId": "sense-80f99065",
+      "fingerprint": "fingerprint-0a8f9336",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-269d5b74",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "Susan and Mark have very different tastes in music. Susan enjoys classical, while Mark prefers rock.",
+      "options": [
+        "interested",
+        "several",
+        "iron",
+        "distinct"
+      ],
+      "answerIndex": 3,
+      "wordKey": "different",
+      "senseId": "sense-fbfde79b",
+      "fingerprint": "fingerprint-aa2ffd3f",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-afcdfd2b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "John adjusted his sitting position to find a more comfortable posture while studying for his exams.",
+      "options": [
+        "electricity",
+        "spelling",
+        "posture",
+        "teenager"
+      ],
+      "answerIndex": 2,
+      "wordKey": "position",
+      "senseId": "sense-e0c3dd9f",
+      "fingerprint": "fingerprint-01925100",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-5f6fb798",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "Despite facing many challenges, she was able to turn her fortune around and build a successful business.",
+      "options": [
+        "nephew",
+        "riddle",
+        "fate",
+        "audience"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fortune",
+      "senseId": "sense-ec8edfdd",
+      "fingerprint": "fingerprint-a3c2d88d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b991b3b5",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "She saw a shooting star in the night sky.",
+      "options": [
+        "nighttime",
+        "rule",
+        "tennis",
+        "border"
+      ],
+      "answerIndex": 0,
+      "wordKey": "night",
+      "senseId": "sense-c075685d",
+      "fingerprint": "fingerprint-f705270d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-7490c4cd",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "I always carry a tablet and pen with me in case I need to jot down any notes.",
+      "options": [
+        "status",
+        "pad",
+        "faucet",
+        "fortune"
+      ],
+      "answerIndex": 1,
+      "wordKey": "tablet",
+      "senseId": "sense-ba973cff",
+      "fingerprint": "fingerprint-a5e219da",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-20b4cdfc",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "Every year on Valentine's Day, John prepares a romantic candlelit dinner for his darling wife.",
+      "options": [
+        "iron",
+        "handsome",
+        "beloved",
+        "ignorant"
+      ],
+      "answerIndex": 2,
+      "wordKey": "darling",
+      "senseId": "sense-b241649a",
+      "fingerprint": "fingerprint-833bc560",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-4aeb2cf9",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "Please arrange the books on the shelf in alphabetical order.",
+      "options": [
+        "on",
+        "thumb",
+        "organize",
+        "consider"
+      ],
+      "answerIndex": 2,
+      "wordKey": "arrange",
+      "senseId": "sense-891d6c2e",
+      "fingerprint": "fingerprint-786b410f",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-1d2db09f",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The company’s profits reached their peak in the third quarter of the year, when they launched their new product line.",
+      "options": [
+        "improvement",
+        "injury",
+        "height",
+        "truck"
+      ],
+      "answerIndex": 2,
+      "wordKey": "peak",
+      "senseId": "sense-1b08b448",
+      "fingerprint": "fingerprint-5a86fc6c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-de4a2ce0",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The jury will pronounce the verdict tomorrow.",
+      "options": [
+        "announce",
+        "tear",
+        "creep",
+        "shortly"
+      ],
+      "answerIndex": 0,
+      "wordKey": "pronounce",
+      "senseId": "sense-36986fa0",
+      "fingerprint": "fingerprint-b5761b25",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b5830df6",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The government declared the area as a protected territory to preserve its natural resources.",
+      "options": [
+        "spy",
+        "zone",
+        "effect",
+        "election"
+      ],
+      "answerIndex": 1,
+      "wordKey": "territory",
+      "senseId": "sense-6c93b446",
+      "fingerprint": "fingerprint-400ad2f7",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-af2012ba",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "Sarah's ex-boyfriend spread false rumors about her, causing her to develop a deep sense of hate towards him.",
+      "options": [
+        "ability",
+        "angle",
+        "fat",
+        "hatred"
+      ],
+      "answerIndex": 3,
+      "wordKey": "hate",
+      "senseId": "sense-f608234d",
+      "fingerprint": "fingerprint-c10e2449",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c69277ed",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "As a teacher, I must sometimes excuse students for being late if they have a valid reason.",
+      "options": [
+        "pardon",
+        "there",
+        "that",
+        "bleed"
+      ],
+      "answerIndex": 0,
+      "wordKey": "excuse",
+      "senseId": "sense-5922a5bd",
+      "fingerprint": "fingerprint-ade0e60c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c2b745bf",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "The scientist conducted extensive research and produced accurate data, ensuring that his findings were right.",
+      "options": [
+        "beat",
+        "under",
+        "correct",
+        "absent"
+      ],
+      "answerIndex": 2,
+      "wordKey": "right",
+      "senseId": "sense-86eebac5",
+      "fingerprint": "fingerprint-19e0a0a1",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-25d1fe22",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "In the realm of fashion, Coco Chanel’s kingdom is unquestionable.",
+      "options": [
+        "realm",
+        "hardware",
+        "badminton",
+        "gallon"
+      ],
+      "answerIndex": 0,
+      "wordKey": "kingdom",
+      "senseId": "sense-6fe1d7ea",
+      "fingerprint": "fingerprint-3fdbe572",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-a84156bf",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The excitement of the crowd was palpable as the famous musician took to the stage.",
+      "options": [
+        "addition",
+        "pal",
+        "enthusiasm",
+        "weekday"
+      ],
+      "answerIndex": 2,
+      "wordKey": "excitement",
+      "senseId": "sense-32660291",
+      "fingerprint": "fingerprint-78ced2d9",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-9ba6c5cf",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "When I traveled to Japan, I felt like a foreigner because I didn't speak the language and was unfamiliar with the customs.",
+      "options": [
+        "frog",
+        "elephant",
+        "bean",
+        "outsider"
+      ],
+      "answerIndex": 3,
+      "wordKey": "foreigner",
+      "senseId": "sense-3643843d",
+      "fingerprint": "fingerprint-06b081a9",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b2227cb0",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "Please take this piece of garbage out to the trash.",
+      "options": [
+        "emphasize",
+        "remove",
+        "believe",
+        "phrase"
+      ],
+      "answerIndex": 1,
+      "wordKey": "take",
+      "senseId": "sense-60354337",
+      "fingerprint": "fingerprint-cd6553a8",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-207e0d67",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "The luxury sports car was too expensive for the average person to afford.",
+      "options": [
+        "beat",
+        "every",
+        "under",
+        "costly"
+      ],
+      "answerIndex": 3,
+      "wordKey": "expensive",
+      "senseId": "sense-cfe94e67",
+      "fingerprint": "fingerprint-bd3042c3",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-096b951d",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "I would advise you to bring an umbrella, as it looks like it's going to rain today.",
+      "options": [
+        "fright",
+        "worst",
+        "recommend",
+        "appropriate"
+      ],
+      "answerIndex": 2,
+      "wordKey": "advise",
+      "senseId": "sense-abc0ec0e",
+      "fingerprint": "fingerprint-12a8c84c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-9e18294b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "After finishing his work, John decided to leave the office and go home.",
+      "options": [
+        "exit",
+        "wait",
+        "wide",
+        "pass"
+      ],
+      "answerIndex": 0,
+      "wordKey": "leave",
+      "senseId": "sense-4929e577",
+      "fingerprint": "fingerprint-c7aad6e3",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c8f74752",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "Last weekend, I went to the comedy club and saw a hilarious comic who had the crowd laughing non-stop.",
+      "options": [
+        "audience",
+        "iron",
+        "hope",
+        "comedian"
+      ],
+      "answerIndex": 3,
+      "wordKey": "comic",
+      "senseId": "sense-a4da46f3",
+      "fingerprint": "fingerprint-cbcdf8b4",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-b6de1d4e",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "She stood nervously in front of the grand entrance of the palace, waiting to be welcomed inside.",
+      "options": [
+        "central",
+        "door",
+        "kidney",
+        "strategy"
+      ],
+      "answerIndex": 1,
+      "wordKey": "entrance",
+      "senseId": "sense-ff7a7d37",
+      "fingerprint": "fingerprint-307d9dc1",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c0353b11",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The hotel staff welcomed the guest and showed them to their room.",
+      "options": [
+        "visitor",
+        "novelist",
+        "aircraft",
+        "shampoo"
+      ],
+      "answerIndex": 0,
+      "wordKey": "guest",
+      "senseId": "sense-c230b671",
+      "fingerprint": "fingerprint-960a5f2c",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-9306a90b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "During the group discussion, we decided to explore the topic of climate change and its impact on the economy.",
+      "options": [
+        "criticize",
+        "toss",
+        "clarify",
+        "discuss"
+      ],
+      "answerIndex": 3,
+      "wordKey": "explore",
+      "senseId": "sense-01598d5b",
+      "fingerprint": "fingerprint-de116d22",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c2472d56",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "Sarah decided to organize her closet by sorting her clothes into different categories and arranging them neatly on hangers.",
+      "options": [
+        "pursue",
+        "mislead",
+        "arrange",
+        "vote"
+      ],
+      "answerIndex": 2,
+      "wordKey": "organize",
+      "senseId": "sense-a3b67a82",
+      "fingerprint": "fingerprint-c4743646",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-8c4177db",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "While hiking in the mountains, an unexpected thunderstorm posed a serious threat to their safety",
+      "options": [
+        "autograph",
+        "sketch",
+        "peril",
+        "organ"
+      ],
+      "answerIndex": 2,
+      "wordKey": "threat",
+      "senseId": "sense-9010ae57",
+      "fingerprint": "fingerprint-cf976550",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-0aeb5a4b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "After failing the exam, John drowned himself in misery.",
+      "options": [
+        "friendship",
+        "steal",
+        "terrorist",
+        "agony"
+      ],
+      "answerIndex": 3,
+      "wordKey": "misery",
+      "senseId": "sense-793f2ffc",
+      "fingerprint": "fingerprint-472b1016",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-05f9402f",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The haunted house was filled with horrible sights and eerie sounds, sending chills down our spines.",
+      "options": [
+        "intelligent",
+        "ignorant",
+        "dreadful",
+        "handsome"
+      ],
+      "answerIndex": 2,
+      "wordKey": "horrible",
+      "senseId": "sense-e0bb7d48",
+      "fingerprint": "fingerprint-0d040dcd",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-1a349ee9",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "I love spending time with my family on weekends, we always have a great time together.",
+      "options": [
+        "join",
+        "wall",
+        "household",
+        "chance"
+      ],
+      "answerIndex": 2,
+      "wordKey": "family",
+      "senseId": "sense-c5793c2e",
+      "fingerprint": "fingerprint-01fbb5da",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-4ff9f282",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The first edition of the novel contained numerous errors, while the revised edition had been thoroughly proofread.",
+      "options": [
+        "version",
+        "praise",
+        "cloth",
+        "tourist"
+      ],
+      "answerIndex": 0,
+      "wordKey": "edition",
+      "senseId": "sense-8951c1c7",
+      "fingerprint": "fingerprint-1822c176",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d2baf919",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "The assassin carefully planned his actions and managed to kill his target without being detected.",
+      "options": [
+        "yet",
+        "slay",
+        "have",
+        "reach"
+      ],
+      "answerIndex": 1,
+      "wordKey": "kill",
+      "senseId": "sense-3b9e38a8",
+      "fingerprint": "fingerprint-6a75c3da",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-67b7bb8b",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "John decided to participate in the marathon to challenge himself and support a charitable cause",
+      "options": [
+        "mirror",
+        "chalk",
+        "engage",
+        "far"
+      ],
+      "answerIndex": 2,
+      "wordKey": "participate",
+      "senseId": "sense-35f87381",
+      "fingerprint": "fingerprint-344befe2",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-f5830b13",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The decrease in funding led to a reduction in staff numbers.",
+      "options": [
+        "reduction",
+        "fountain",
+        "scoop",
+        "cattle"
+      ],
+      "answerIndex": 0,
+      "wordKey": "decrease",
+      "senseId": "sense-da060de9",
+      "fingerprint": "fingerprint-dcd3150a",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-41827752",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The dentist hit a nerve while drilling my tooth, and it was so painful that I threw up.",
+      "options": [
+        "sore",
+        "every",
+        "iron",
+        "handsome"
+      ],
+      "answerIndex": 0,
+      "wordKey": "painful",
+      "senseId": "sense-add4abb6",
+      "fingerprint": "fingerprint-7a1a27b1",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-cb5ae923",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "After several rounds of negotiation, an agreement was finally reached between the two parties.",
+      "options": [
+        "raincoat",
+        "nation",
+        "consensus",
+        "soldier"
+      ],
+      "answerIndex": 2,
+      "wordKey": "agreement",
+      "senseId": "sense-3d13c9f8",
+      "fingerprint": "fingerprint-ae8738d6",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-a9cff31a",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "A good education is essential for a successful career.",
+      "options": [
+        "basement",
+        "angle",
+        "learning",
+        "lunch"
+      ],
+      "answerIndex": 2,
+      "wordKey": "education",
+      "senseId": "sense-e924d4d2",
+      "fingerprint": "fingerprint-f376db86",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-c818d88d",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "The talented musician composed a beautiful symphony that was performed by a renowned orchestra.",
+      "options": [
+        "litter",
+        "sauce",
+        "danger",
+        "composer"
+      ],
+      "answerIndex": 3,
+      "wordKey": "musician",
+      "senseId": "sense-949055b7",
+      "fingerprint": "fingerprint-c860b594",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d228bad2",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "Water is a necessity for survival",
+      "options": [
+        "harm",
+        "sin",
+        "regard",
+        "essential"
+      ],
+      "answerIndex": 3,
+      "wordKey": "necessity",
+      "senseId": "sense-f34b537f",
+      "fingerprint": "fingerprint-7ac2e8e2",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-2d2bce8f",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "I can afford to buy a new car because I received a bonus at work and saved some money previously.",
+      "options": [
+        "manage",
+        "distribute",
+        "flatter",
+        "appeal"
+      ],
+      "answerIndex": 0,
+      "wordKey": "afford",
+      "senseId": "sense-a4dba43a",
+      "fingerprint": "fingerprint-379d5771",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-db5be9ce",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "I am certain that I locked the front door before leaving the house.",
+      "options": [
+        "interested",
+        "sure",
+        "some",
+        "interesting"
+      ],
+      "answerIndex": 1,
+      "wordKey": "certain",
+      "senseId": "sense-74fbfa61",
+      "fingerprint": "fingerprint-2f4969ae",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d5d28e00",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "In order to win the championship, the two teams will compete against each other in a thrilling match.",
+      "options": [
+        "stare",
+        "landscape",
+        "contend",
+        "crawl"
+      ],
+      "answerIndex": 2,
+      "wordKey": "compete",
+      "senseId": "sense-9ea96446",
+      "fingerprint": "fingerprint-93d658e4",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-1fc6a62e",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "John cast his vote for his favorite candidate running for mayor in the local election.",
+      "options": [
+        "mostly",
+        "launch",
+        "ballot",
+        "fairly"
+      ],
+      "answerIndex": 2,
+      "wordKey": "vote",
+      "senseId": "sense-c78e1ef3",
+      "fingerprint": "fingerprint-520d697d",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-38d12fd8",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "We had roasted chicken for dinner last night, the meat was so tender because it was the flesh of a bird.",
+      "options": [
+        "pattern",
+        "fowl",
+        "conflict",
+        "beauty"
+      ],
+      "answerIndex": 1,
+      "wordKey": "bird",
+      "senseId": "sense-31caeda7",
+      "fingerprint": "fingerprint-2e0d34d0",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-6cbc0152",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "I can lend you my car for the weekend, but please fill up the gas tank before returning it.",
+      "options": [
+        "ground",
+        "humble",
+        "loan",
+        "regret"
+      ],
+      "answerIndex": 2,
+      "wordKey": "lend",
+      "senseId": "sense-6c74eb23",
+      "fingerprint": "fingerprint-67f3d3b3",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d8bd7990",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "As the elected president of the club, it is your duty to chair the meeting.",
+      "options": [
+        "hear",
+        "comb",
+        "prepare",
+        "head"
+      ],
+      "answerIndex": 3,
+      "wordKey": "chair",
+      "senseId": "sense-64dc4d20",
+      "fingerprint": "fingerprint-006046ab",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-35032223",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 2,
+      "prompt": "I always keep a rubber on hand to erase any mistakes I make when writing or drawing.",
+      "options": [
+        "engine",
+        "view",
+        "eraser",
+        "entrance"
+      ],
+      "answerIndex": 2,
+      "wordKey": "rubber",
+      "senseId": "sense-4d40d918",
+      "fingerprint": "fingerprint-92a5a3b3",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-a7a98747",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 1,
+      "prompt": "Making a mistake while performing a surgery can be disastrous and cost someone their life.",
+      "options": [
+        "eve",
+        "crime",
+        "error",
+        "clock"
+      ],
+      "answerIndex": 2,
+      "wordKey": "mistake",
+      "senseId": "sense-f6c1cb74",
+      "fingerprint": "fingerprint-3a2cdc87",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "id": "question-d32fe730",
+      "kind": "multipleChoice",
+      "questionStyle": "standard",
+      "difficulty": 3,
+      "prompt": "The sudden flash of lightning outside the window startled her and illuminated the entire room for a split second.",
+      "options": [
+        "environment",
+        "gleam",
+        "costume",
+        "confusion"
+      ],
+      "answerIndex": 1,
+      "wordKey": "flash",
+      "senseId": "sense-cb950352",
+      "fingerprint": "fingerprint-77a5caa9",
+      "createdAt": "2026-08-01T14:50:42.287Z",
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    }
+  ]
+}

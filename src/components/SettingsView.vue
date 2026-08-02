@@ -31,15 +31,15 @@ const dailyQuestionGoal = computed({
   get: () => String(learningStore.stats.dailyQuestionGoal),
   set: (value: string) => learningStore.setDailyQuestionGoal(Number(value)),
 })
-const dailyWordGoalOptions = DAILY_WORD_GOAL_OPTIONS.map(value => ({ value: String(value), label: `${value} 個單字` }))
-const dailyQuestionGoalOptions = DAILY_QUESTION_GOAL_OPTIONS.map(value => ({ value: String(value), label: `${value} 題` }))
+const dailyWordGoalOptions = computed(() => DAILY_WORD_GOAL_OPTIONS.map(value => ({ value: String(value), label: t('settings.dailyWordOption', { value }) })))
+const dailyQuestionGoalOptions = computed(() => DAILY_QUESTION_GOAL_OPTIONS.map(value => ({ value: String(value), label: t('settings.dailyQuestionOption', { value }) })))
 
-const providerOptions = [
-  { value: 'openai', label: 'OpenAI-compatible' },
-  { value: 'anthropic', label: 'Anthropic' },
-  { value: 'google', label: 'Google Gemini' },
-  { value: 'custom', label: 'Custom OpenAI-compatible' },
-]
+const providerOptions = computed(() => [
+  { value: 'openai', label: t('settings.providerOpenai') },
+  { value: 'anthropic', label: t('settings.providerAnthropic') },
+  { value: 'google', label: t('settings.providerGoogle') },
+  { value: 'custom', label: t('settings.providerCustom') },
+])
 const aiModeOptions = computed(() => [
   { value: 'manual', label: t('settings.manualMode') },
   { value: 'api', label: t('settings.apiMode') },
@@ -81,7 +81,8 @@ async function importAiSettings(event: Event) {
   if (!file)
     return
   try {
-    Object.assign(settings, parseAiSettingsJson(await file.text()))
+    const imported = parseAiSettingsJson(await file.text())
+    Object.assign(settings, { ...imported, apiKey: settings.apiKey })
     save()
     uiStore.showToast(t('settings.aiImported'))
   }
@@ -133,7 +134,7 @@ async function signIn() {
         <div class="text-xs font-semibold text-ink-500">
           {{ $t('settings.provider') }}
           <Select v-model="settings.provider" :options="providerOptions" class="mt-2" />
-        </div><label class="text-xs font-semibold text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" placeholder="gpt-4o-mini / claude / gemini" /></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-medium text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label>
+        </div><label class="text-xs font-semibold text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" :placeholder="$t('settings.modelPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-medium text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label>
       </div><div class="mt-6 flex flex-wrap items-center gap-2">
         <Button variant="default" class="gap-2" @click="save">
           <Save class="h-4 w-4" />{{ $t('settings.save') }}
@@ -157,21 +158,21 @@ async function signIn() {
         </div>
         <div>
           <h2 class="font-black">
-            {{ $t('settings.dailyGoalTitle') }}
+            {{ $t('settings.dailyTargetsTitle') }}
           </h2>
           <p class="mt-1 text-sm font-semibold leading-relaxed text-ink-500">
-            {{ $t('settings.dailyGoalDescription') }}
+            {{ $t('settings.dailyTargetsDescription') }}
           </p>
         </div>
       </div>
       <div class="mt-6 grid gap-4 sm:grid-cols-2">
         <label class="text-xs font-black text-ink-500">
           {{ $t('settings.dailyWordGoalLabel') }}
-          <Select v-model="dailyWordGoal" :options="dailyWordGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyGoalSaved'))" />
+          <Select v-model="dailyWordGoal" :options="dailyWordGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyTargetsSaved'))" />
         </label>
         <label class="text-xs font-black text-ink-500">
           {{ $t('settings.dailyQuestionGoalLabel') }}
-          <Select v-model="dailyQuestionGoal" :options="dailyQuestionGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyGoalSaved'))" />
+          <Select v-model="dailyQuestionGoal" :options="dailyQuestionGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyTargetsSaved'))" />
         </label>
       </div>
     </Card>

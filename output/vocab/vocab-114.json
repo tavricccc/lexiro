@@ -1,1356 +1,657 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 114,
   "words": [
-    {
-      "wordKey": "furthermore",
-      "word": "furthermore",
-      "senses": [
-        {
-          "id": "sense-b193cf7b",
-          "pos": "adverb",
-          "meaningZh": "此外；而且",
-          "definitionEn": "in addition or moreover",
-          "examples": [
-            "He not only received a scholarship but, furthermore, earned the highest score in the entrance exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "gallery",
-      "word": "gallery",
-      "senses": [
-        {
-          "id": "sense-6478fc69",
-          "pos": "noun",
-          "meaningZh": "藝廊；展覽館",
-          "definitionEn": "a room or series of rooms where works of art are exhibited",
-          "examples": [
-            "The contemporary art gallery featured an exhibit of mixed media sculptures and installations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-82da222f",
-          "pos": "noun",
-          "meaningZh": "長廊；走廊",
-          "definitionEn": "a long narrow room, especially one used for a specific purpose",
-          "examples": [
-            "The art gallery’s newest exhibit was displayed in a long narrow gallery with dim lighting, allowing the artwork to be the main focus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "gaze",
-      "word": "gaze",
-      "senses": [
-        {
-          "id": "sense-f75d0157",
-          "pos": "verb",
-          "meaningZh": "凝視；注視",
-          "definitionEn": "to look steadily, intently, and with fixed attention",
-          "examples": [
-            "As the fireworks lit up the night sky, everyone gathered on the beach to gaze in awe and wonder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-f8ed1fd7",
-          "pos": "noun",
-          "meaningZh": "注視；凝視的目光",
-          "definitionEn": "a long and steady look",
-          "examples": [
-            "As the bride walked down the aisle, the groom couldn't help but gaze lovingly into her eyes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "gear",
-      "word": "gear",
-      "senses": [
-        {
-          "id": "sense-97860f80",
-          "pos": "noun",
-          "meaningZh": "齒輪；傳動裝置",
-          "definitionEn": "wheelwork consisting of a connected set of rotating gears by which force is transmitted or motion or torque is changed",
-          "examples": [
-            "The gearbox rotates the gears to increase the torque and power under the hood of a car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-7d59274c",
-          "pos": "verb",
-          "meaningZh": "裝齒輪；調整齒輪",
-          "definitionEn": "to equip with gears; adjust gears in",
-          "examples": [
-            "Before embarking on a bike ride, it is necessary to gear up by adjusting the bike’s gears and ensuring that the gears are equipped to handle the terrain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "gender",
-      "word": "gender",
-      "senses": [
-        {
-          "id": "sense-d5b9b312",
-          "pos": "noun",
-          "meaningZh": "性別認同；性別",
-          "definitionEn": "one’s personal experience and expression of their identity in terms of being male, female, both, neither, or a combination thereof, influenced by biological, social, and cultural factors",
-          "examples": [
-            "Samantha, who was assigned female at birth, identifies as male. His gender identity is an important part of his overall identity and self-expression."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "gene",
       "word": "gene",
       "senses": [
         {
-          "id": "sense-22551430",
-          "pos": "noun",
+          "id": "sense-c858f2a8",
+          "pos": "n.",
           "meaningZh": "基因",
-          "definitionEn": "A segment of DNA, a molecule that contains the genetic code, that is used as a template to create proteins. Genes carry genetic information and determine traits like eye color, height, and susceptibility to certain diseases.",
           "examples": [
             "Inheriting the gene for blue eyes from both parents, Sara had no doubt that her own eyes would be mesmerizing azure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4 +1",
-        "textbookTitle": "龍騰 B5·L4、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "generation",
       "word": "generation",
       "senses": [
         {
-          "id": "sense-782c60ee",
-          "pos": "noun",
+          "id": "sense-5a1f1b6e",
+          "pos": "n.",
           "meaningZh": "世代；時代",
-          "definitionEn": "a particular time period considered in terms of the people who were alive then and/or the things that were created or developed then",
           "examples": [
             "The generation that grew up in the 1960s witnessed significant social and cultural changes, such as the civil rights movement and the rise of rock and roll."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d7cbb649",
-          "pos": "noun",
+          "id": "sense-c9c871c9",
+          "pos": "n.",
           "meaningZh": "發電；能源產生",
-          "definitionEn": "the production of heat or electricity, or the process of producing it",
           "examples": [
             "The new power plant uses renewable energy sources for the generation of electricity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "generosity",
       "word": "generosity",
       "senses": [
         {
-          "id": "sense-214dbe04",
-          "pos": "noun",
+          "id": "sense-6806f33c",
+          "pos": "n.",
           "meaningZh": "慷慨；大方",
-          "definitionEn": "the quality or condition of being generous; the willingness to give or share, especially in abundance and without expectation of a return",
           "examples": [
             "In a show of generosity, the billionaire donated millions of dollars to build a children’s hospital."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4f01ae8e",
-          "pos": "noun",
+          "id": "sense-155c39e6",
+          "pos": "n.",
           "meaningZh": "善心之舉；大方的行為",
-          "definitionEn": "an act or instance of such kindness or willingness to give",
           "examples": [
             "The millionaire’s generosity was evident in his regular donations to several charities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3",
-        "textbookTitle": "龍騰 B3·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "genius",
       "word": "genius",
       "senses": [
         {
-          "id": "sense-5441878f",
-          "pos": "noun",
+          "id": "sense-9e9cbf37",
+          "pos": "n.",
           "meaningZh": "天才；奇才",
-          "definitionEn": "unusual mental ability",
           "examples": [
             "Despite his young age, Alex displayed a genius for playing the piano, effortlessly mastering complex compositions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-86e45b9a",
-          "pos": "noun",
+          "id": "sense-a6515502",
+          "pos": "n.",
           "meaningZh": "天賦；才能",
-          "definitionEn": "a natural talent",
           "examples": [
             "Mozart was a musical genius, composing his first symphony at the age of five."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "genuine",
       "word": "genuine",
       "senses": [
         {
-          "id": "sense-6f44c470",
-          "pos": "adjective",
+          "id": "sense-4dcfd90e",
+          "pos": "adj.",
           "meaningZh": "真實的；真誠的",
-          "definitionEn": "showing or representing the true character of something",
           "examples": [
             "When Joe received the antique watch, he suspected it might be a fake, but after examining the craftsmanship and conducting thorough research, he concluded that it was indeed genuine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9e389419",
-          "pos": "adjective",
+          "id": "sense-c798c177",
+          "pos": "adj.",
           "meaningZh": "真品的；非仿冒的",
-          "definitionEn": "real and not fake or counterfeit",
           "examples": [
             "The jeweler assured her that the diamond necklace was genuine, and not a cheap imitation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6",
-        "textbookTitle": "龍騰 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "germ",
       "word": "germ",
       "senses": [
         {
-          "id": "sense-c0cc5450",
-          "pos": "noun",
+          "id": "sense-72ef6038",
+          "pos": "n.",
           "meaningZh": "細菌；病菌",
-          "definitionEn": "a minute life form, especially a disease-causing bacterium or virus",
           "examples": [
             "It is important to wash your hands regularly to prevent the spread of germs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a8f71e32",
-          "pos": "noun",
+          "id": "sense-d844e9ca",
+          "pos": "n.",
           "meaningZh": "胚芽；原始細胞",
-          "definitionEn": "a small structure from which new tissue can develop into a complete organism",
           "examples": [
             "In embryology, a germ is the initial cell or cluster of cells that will eventually grow and differentiate into a fully formed organism."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1",
-        "textbookTitle": "龍騰 B3·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gifted",
       "word": "gifted",
       "senses": [
         {
-          "id": "sense-2402e85e",
-          "pos": "adjective",
+          "id": "sense-0563e44c",
+          "pos": "adj.",
           "meaningZh": "有天賦的；才華出眾的",
-          "definitionEn": "having exceptional talent or ability; naturally skilled",
           "examples": [
             "She was so gifted in playing the piano that she won the music competition at the age of seven."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gigantic",
       "word": "gigantic",
       "senses": [
         {
-          "id": "sense-da6a2297",
-          "pos": "adjective",
+          "id": "sense-87577a93",
+          "pos": "adj.",
           "meaningZh": "巨大的；龐大的",
-          "definitionEn": "extremely large or huge, to the point of suggesting the size of a giant or mammoth",
           "examples": [
             "The cruise ship was so gigantic that it could carry over 5,000 passengers and had multiple swimming pools, restaurants, and theaters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "giggle",
       "word": "giggle",
       "senses": [
         {
-          "id": "sense-438d520f",
-          "pos": "verb",
+          "id": "sense-4762e388",
+          "pos": "v.",
           "meaningZh": "咯咯笑；傻笑",
-          "definitionEn": "to laugh lightly and in a high-pitched manner, often expressing nervousness or amusement",
           "examples": [
             "The children began to giggle when the clown made a funny face."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-511c7d10",
-          "pos": "noun",
+          "id": "sense-34bd9bb8",
+          "pos": "n.",
           "meaningZh": "咯咯笑聲；輕笑",
-          "definitionEn": "a light, silly, nervous or high-pitched laugh",
           "examples": [
             "Sarah couldn’t stop giggling nervously during her first stand-up comedy performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ginger",
       "word": "ginger",
       "senses": [
         {
-          "id": "sense-8ff81208",
-          "pos": "noun",
+          "id": "sense-29543914",
+          "pos": "n.",
           "meaningZh": "薑",
-          "definitionEn": "a root with a strong, spicy flavor used in cooking",
           "examples": [
             "Add a slice of ginger to make the soup taste better."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d79f58bd",
-          "pos": "verb",
+          "id": "sense-18918528",
+          "pos": "v.",
           "meaningZh": "加薑調味；放薑",
-          "definitionEn": "To add ginger to something in order to give it flavor.",
           "examples": [
             "The chef gingered the stir-fry to enhance its taste."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "glimpse",
       "word": "glimpse",
       "senses": [
         {
-          "id": "sense-16ac9670",
-          "pos": "noun",
+          "id": "sense-e7a3ef48",
+          "pos": "n.",
           "meaningZh": "一瞥；驚鴻一瞥",
-          "definitionEn": "a quick look",
           "examples": [
             "As I walked past the cafe, I caught a glimpse of my ex-boyfriend sitting inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7c857927",
-          "pos": "noun",
+          "id": "sense-f61db61f",
+          "pos": "n.",
           "meaningZh": "短暫一瞥；片段映象",
-          "definitionEn": "a brief or incomplete view",
           "examples": [
             "As she walked past the cafe, she caught a glimpse of her ex-boyfriend sitting inside, engrossed in a book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "globe",
       "word": "globe",
       "senses": [
         {
-          "id": "sense-02caf09d",
-          "pos": "noun",
+          "id": "sense-bcfad069",
+          "pos": "n.",
           "meaningZh": "地球儀；地球",
-          "definitionEn": "a model of the earth that is round like a ball",
           "examples": [
             "Marie used a globe to locate different countries and continents for her geography project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a3fc21ca",
-          "pos": "noun",
+          "id": "sense-c726e17e",
+          "pos": "n.",
           "meaningZh": "球體；球狀物",
-          "definitionEn": "an object that is shaped like a ball",
           "examples": [
             "The children passed around a globe, pointing out different countries and continents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "glorious",
       "word": "glorious",
       "senses": [
         {
-          "id": "sense-ce322dc9",
-          "pos": "adjective",
+          "id": "sense-0ec34ccd",
+          "pos": "adj.",
           "meaningZh": "光榮的；值得讚揚的",
-          "definitionEn": "deserving or conferring glory",
           "examples": [
             "The athlete's glorious victory brought joy to the entire nation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-205d18b6",
-          "pos": "adjective",
+          "id": "sense-cb183dc2",
+          "pos": "adj.",
           "meaningZh": "壯麗的；輝煌的",
-          "definitionEn": "characterized by grandeur",
           "examples": [
             "The bride walked down the aisle, bathed in the glorious glow of the setting sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "goods",
       "word": "goods",
       "senses": [
         {
-          "id": "sense-70ceadc2",
-          "pos": "noun",
+          "id": "sense-3f2814a6",
+          "pos": "n.",
           "meaningZh": "商品；貨物",
-          "definitionEn": "things that are produced to be sold",
           "examples": [
             "The factory produces a wide variety of goods, including electronics, clothing, and furniture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8124039b",
-          "pos": "noun",
+          "id": "sense-4c331bef",
+          "pos": "n.",
           "meaningZh": "財物；動產",
-          "definitionEn": "possessions that can be moved",
           "examples": [
             "The moving company was responsible for packing and transporting all of our goods to the new house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7",
-        "textbookTitle": "龍騰 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gown",
       "word": "gown",
       "senses": [
         {
-          "id": "sense-3e75bd56",
-          "pos": "noun",
+          "id": "sense-a80dc962",
+          "pos": "n.",
           "meaningZh": "晚禮服；正式長裙",
-          "definitionEn": "a long, usually formal, dress for women with a fitted top and a flared skirt",
           "examples": [
             "She wore a beautiful beaded gown to the gala."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-651e8cfd",
-          "pos": "noun",
+          "id": "sense-16ef62f9",
+          "pos": "n.",
           "meaningZh": "睡袍；睡衣",
-          "definitionEn": "a loose dress designed for women to wear in bed, also called nightgown or nightdress",
           "examples": [
             "Samantha slipped into her soft silk gown and settled into bed for a restful night's sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grace",
       "word": "grace",
       "senses": [
         {
-          "id": "sense-4df67c2e",
-          "pos": "noun",
+          "id": "sense-5bb79f3e",
+          "pos": "n.",
           "meaningZh": "優雅；雅致",
-          "definitionEn": "elegance and beauty of movement or expression",
           "examples": [
             "Her graceful movements made the dance so beautiful."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7c9f9c15",
-          "pos": "noun",
+          "id": "sense-9dde9bc5",
+          "pos": "n.",
           "meaningZh": "得體；處事周到",
-          "definitionEn": "a sense of propriety and consideration for others",
           "examples": [
             "She handled the situation with grace, always considering what would be best for the other people involved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "graceful",
       "word": "graceful",
       "senses": [
         {
-          "id": "sense-e09a586b",
-          "pos": "adjective",
+          "id": "sense-5c24e0d1",
+          "pos": "adj.",
           "meaningZh": "優雅的；姿態優美的",
-          "definitionEn": "having or characterized by beauty of movement, style, form, or execution",
           "examples": [
             "The ballerina moved across the stage with graceful elegance, captivating the audience with every fluid movement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-120c654d",
-          "pos": "adjective",
+          "id": "sense-c98171ff",
+          "pos": "adj.",
           "meaningZh": "高雅的；從容得體的",
-          "definitionEn": "marked by elegance or refinement, suggesting tasteful quality, ease, and wealth",
           "examples": [
             "As she entered the room in her flowing gown, she moved with such gracefulness that all eyes were on her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gracious",
       "word": "gracious",
       "senses": [
         {
-          "id": "sense-cbaed878",
-          "pos": "adjective",
+          "id": "sense-2fc024b2",
+          "pos": "adj.",
           "meaningZh": "仁慈和藹的；恩待他人的",
-          "definitionEn": "displaying kindness and warm courtesy, especially of a king to his subjects",
           "examples": [
             "The king was gracious to his subjects, always listening to their needs and concerns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6184fa1a",
-          "pos": "adjective",
+          "id": "sense-dd79dcb8",
+          "pos": "adj.",
           "meaningZh": "有禮貌的；彬彬有禮的",
-          "definitionEn": "showing politeness and courtesy",
           "examples": [
             "When the guest arrived, the host greeted them with a warm smile and offered them a gracious welcome."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "graduation",
       "word": "graduation",
       "senses": [
         {
-          "id": "sense-2d182832",
-          "pos": "noun",
+          "id": "sense-799f7516",
+          "pos": "n.",
           "meaningZh": "畢業；畢業典禮",
-          "definitionEn": "the successful completion of a program of study",
           "examples": [
             "After years of hard work and dedication, Lisa experienced great joy and pride during her graduation ceremony when she received her diploma."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grammar",
       "word": "grammar",
       "senses": [
         {
-          "id": "sense-4e55ff54",
-          "pos": "noun",
+          "id": "sense-02c03138",
+          "pos": "n.",
           "meaningZh": "文法；語法規則",
-          "definitionEn": "the set of structural rules governing the composition of clauses, phrases, and words in any given natural language.",
           "examples": [
             "Learning the grammar is important for effective communication in a language."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c478956e",
-          "pos": "noun",
+          "id": "sense-39d9a232",
+          "pos": "n.",
           "meaningZh": "語言結構；語法體系",
-          "definitionEn": "the system and structure of a language or of languages in general, usually considered to consist of syntax and morphology.",
           "examples": [
             "A good understanding of grammar is necessary for effective communication in any language."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grammatical",
       "word": "grammatical",
       "senses": [
         {
-          "id": "sense-d069d8a6",
-          "pos": "adjective",
+          "id": "sense-b6b7141a",
+          "pos": "adj.",
           "meaningZh": "語法的；文法上的",
-          "definitionEn": "of or pertaining to grammar",
           "examples": [
             "The English teacher explained the grammatical rules for constructing a sentence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6e3dd32c",
-          "pos": "adjective",
+          "id": "sense-372c8ff0",
+          "pos": "adj.",
           "meaningZh": "合乎語法的；語法正確的",
-          "definitionEn": "conforming to the rules of grammar or usage accepted by native speakers",
           "examples": [
             "In order to write an effective essay, it is important to use proper grammar and sentence structure. A grammatical sentence would be: 'She studied diligently for her exam.'"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "graph",
       "word": "graph",
       "senses": [
         {
-          "id": "sense-c322aef2",
-          "pos": "noun",
+          "id": "sense-00f94982",
+          "pos": "n.",
           "meaningZh": "圖表；圖形",
-          "definitionEn": "a visual representation of the relationships between certain quantities, often plotted on a set of axes",
           "examples": [
             "To present the sales figures to the board members, the marketing team created a graph illustrating the change in revenue over the past year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e46a1036",
-          "pos": "verb",
+          "id": "sense-370b75b9",
+          "pos": "v.",
           "meaningZh": "繪製圖表；用圖表呈現",
-          "definitionEn": "to plot data on a graph",
           "examples": [
             "The team used software to graph the sales figures for the last quarter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grateful",
       "word": "grateful",
       "senses": [
         {
-          "id": "sense-8562c6d2",
-          "pos": "adjective",
+          "id": "sense-30c307f6",
+          "pos": "adj.",
           "meaningZh": "感激的；感謝的",
-          "definitionEn": "feeling or showing gratitude",
           "examples": [
             "She was grateful to her friends for their kindness during her illness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2dbb5ea9",
-          "pos": "adjective",
+          "id": "sense-8ba384ed",
+          "pos": "adj.",
           "meaningZh": "心存感恩的；感謝恩惠的",
-          "definitionEn": "thankful for favors or benefits received",
           "examples": [
             "I am grateful for my parents’ support during my difficult times."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L6",
-        "textbookTitle": "三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "gratitude",
       "word": "gratitude",
       "senses": [
         {
-          "id": "sense-95c8b802",
-          "pos": "noun",
+          "id": "sense-b1b5f22a",
+          "pos": "n.",
           "meaningZh": "感謝；感激之情",
-          "definitionEn": "a strong feeling of appreciation or thankfulness towards someone or something for their assistance or support",
           "examples": [
             "After receiving a scholarship for college, she expressed her gratitude by writing a heartfelt thank-you letter to the donor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "grave",
       "word": "grave",
       "senses": [
         {
-          "id": "sense-1e404b65",
-          "pos": "noun",
+          "id": "sense-d7198c39",
+          "pos": "n.",
           "meaningZh": "死亡；墳墓",
-          "definitionEn": "the state of being dead",
           "examples": [
             "The grave of the deceased was visited by his family on his death anniversary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-afbc445a",
-          "pos": "adjective",
+          "id": "sense-bf5bbc40",
+          "pos": "adj.",
           "meaningZh": "嚴重的；危險的",
-          "definitionEn": "causing fear or worry by being dangerous or unpleasant",
           "examples": [
             "The sound of the thunder was so grave that people were afraid to leave their houses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "greasy",
+      "word": "greasy",
+      "senses": [
+        {
+          "id": "sense-5b035685",
+          "pos": "adj.",
+          "meaningZh": "沾油的；油膩的",
+          "examples": [
+            "After cooking bacon, the greasy pan needed to be scrubbed clean."
+          ]
+        },
+        {
+          "id": "sense-dfa62552",
+          "pos": "adj.",
+          "meaningZh": "油脂過多的；油滋滋的",
+          "examples": [
+            "After eating the greasy burger, his hands were slick with oil."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "greeting",
+      "word": "greeting",
+      "senses": [
+        {
+          "id": "sense-9a486b78",
+          "pos": "n.",
+          "meaningZh": "問候；招呼",
+          "examples": [
+            "When entering a room, give a warm greeting to everyone present."
+          ]
+        },
+        {
+          "id": "sense-700bb77c",
+          "pos": "n.",
+          "meaningZh": "致意；問候語",
+          "examples": [
+            "As I entered the room, everyone turned towards me with warm smiles and cheerful greetings."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "greetings",
+      "word": "greetings",
+      "senses": [
+        {
+          "id": "sense-de0c3343",
+          "pos": "n.",
+          "meaningZh": "問候；招呼",
+          "examples": [
+            "When entering a room, give a warm greeting to everyone present."
+          ]
+        },
+        {
+          "id": "sense-c3e8ec9d",
+          "pos": "n.",
+          "meaningZh": "致意；問候語",
+          "examples": [
+            "As I entered the room, everyone turned towards me with warm smiles and cheerful greetings."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "grief",
+      "word": "grief",
+      "senses": [
+        {
+          "id": "sense-28390f18",
+          "pos": "n.",
+          "meaningZh": "哀傷；喪親之痛",
+          "examples": [
+            "She was overwhelmed with grief after the sudden death of her mother."
+          ]
+        },
+        {
+          "id": "sense-2196f196",
+          "pos": "n.",
+          "meaningZh": "痛苦；悲痛之源",
+          "examples": [
+            "The sudden death of her dog brought great grief to her."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "grind",
+      "word": "grind",
+      "senses": [
+        {
+          "id": "sense-ab4ec5f8",
+          "pos": "v.",
+          "meaningZh": "磨碎；研磨",
+          "examples": [
+            "She used a mortar and pestle to grind the spices into a fine powder."
+          ]
+        },
+        {
+          "id": "sense-b30a893c",
+          "pos": "v.",
+          "meaningZh": "碾壓；發出刺耳磨擦聲",
+          "examples": [
+            "The sound of the coffee beans being ground for my morning cup of coffee was music to my ears."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

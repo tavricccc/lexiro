@@ -2,14 +2,21 @@ import { describe, expect, it } from 'vitest'
 import { buildImportPrompt } from '@/lib/importPrompt'
 
 describe('buildImportPrompt', () => {
-  it('injects trimmed words and requests only word metadata', () => {
+  it('injects the original input and source references for word metadata', () => {
     const prompt = buildImportPrompt('  adapt, resilient  ')
 
     expect(prompt).toContain('adapt, resilient')
+    expect(prompt).toContain('source-1')
+    expect(prompt).toContain('sourceRef')
     expect(prompt).toContain('word')
     expect(prompt).toContain('pos')
     expect(prompt).toContain('meaning')
-    expect(prompt).not.toContain('example')
+    expect(prompt).toContain('examples')
     expect(prompt).not.toContain('question')
+  })
+
+  it('switches the example contract explicitly', () => {
+    expect(buildImportPrompt('adapt', undefined, true)).toContain('每個 sense 必須提供一個自然、全英文的例句')
+    expect(buildImportPrompt('adapt', undefined, false)).toContain('examples 必須是空陣列')
   })
 })

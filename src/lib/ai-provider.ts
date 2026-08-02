@@ -1,5 +1,7 @@
 import type { AiProvider, AiSettings } from '@/types'
-import { AI_SETTINGS_KEY } from '@/constants'
+import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from '@/constants'
+import { loadFromStorage, saveToStorage } from '@/lib/persist'
+import { isRecord } from './schema'
 
 export const defaultAiSettings: AiSettings = {
   enabled: false,
@@ -15,49 +17,96 @@ export interface AiGenerationOptions {
 }
 
 const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
+let storedSettings: AiSettings = { ...defaultAiSettings }
+const settingsListeners = new Set<(settings: AiSettings) => void>()
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null
+function assertKnownSettingsKeys(value: Record<string, unknown>, includeApiKey: boolean): void {
+  const allowed = includeApiKey
+    ? ['enabled', 'provider', 'apiKey', 'baseUrl', 'model', 'batchSize']
+    : ['enabled', 'provider', 'baseUrl', 'model', 'batchSize']
+  const unknown = Object.keys(value).filter(key => !allowed.includes(key))
+  if (unknown.length)
+    throw new Error(`AI 設定包含不支援欄位：${unknown.join('、')}`)
+}
+
+export function normalizeShareableAiSettings(value: unknown): Omit<AiSettings, 'apiKey'> {
+  if (!isRecord(value))
+    throw new Error('AI 設定格式不正確')
+  assertKnownSettingsKeys(value, false)
+  if (typeof value.enabled !== 'boolean' || typeof value.provider !== 'string' || !aiProviders.includes(value.provider as AiProvider) || typeof value.baseUrl !== 'string' || typeof value.model !== 'string' || !value.model.trim() || typeof value.batchSize !== 'number' || !Number.isFinite(value.batchSize))
+    throw new Error('AI 設定欄位格式錯誤')
+  return {
+    enabled: value.enabled,
+    provider: value.provider as AiProvider,
+    baseUrl: value.baseUrl,
+    model: value.model.trim(),
+    batchSize: Math.min(Math.max(Math.round(value.batchSize), 5), 20),
+  }
 }
 
 export function normalizeAiSettings(value: unknown): AiSettings {
   if (!isRecord(value))
     throw new Error('AI 設定格式不正確')
-
-  const provider = aiProviders.includes(value.provider as AiProvider) ? value.provider as AiProvider : defaultAiSettings.provider
-  const batchSize = Number(value.batchSize)
-
+  assertKnownSettingsKeys(value, true)
+  if (typeof value.apiKey !== 'string')
+    throw new Error('AI 設定欄位格式錯誤')
   return {
-    enabled: value.enabled === true,
-    provider,
-    apiKey: typeof value.apiKey === 'string' ? value.apiKey : '',
-    baseUrl: typeof value.baseUrl === 'string' ? value.baseUrl : '',
-    model: typeof value.model === 'string' && value.model.trim() ? value.model : defaultAiSettings.model,
-    batchSize: Number.isFinite(batchSize) ? Math.min(Math.max(Math.round(batchSize), 5), 20) : defaultAiSettings.batchSize,
+    ...normalizeShareableAiSettings(Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'apiKey'))),
+    apiKey: value.apiKey,
   }
 }
 
 export function loadAiSettings(): AiSettings {
+  return { ...storedSettings }
+}
+
+function defaultShareableAiSettings(): Omit<AiSettings, 'apiKey'> {
+  return getShareableAiSettings(defaultAiSettings)
+}
+
+export function getShareableAiSettings(settings = loadAiSettings()): Omit<AiSettings, 'apiKey'> {
+  const { apiKey: _apiKey, ...shareable } = normalizeAiSettings(settings)
+  return shareable
+}
+
+export function onAiSettingsChanged(listener: (settings: AiSettings) => void): () => void {
+  settingsListeners.add(listener)
+  return () => settingsListeners.delete(listener)
+}
+
+export async function loadAiSettingsState(): Promise<AiSettings> {
+  const [stored, storedApiKey] = await Promise.all([
+    loadFromStorage(AI_SETTINGS_KEY),
+    loadFromStorage(AI_API_KEY_STORAGE_KEY),
+  ])
+  let shareableSettings = defaultShareableAiSettings()
   try {
-    const raw = localStorage.getItem(AI_SETTINGS_KEY)
-    return raw ? normalizeAiSettings(JSON.parse(raw)) : { ...defaultAiSettings }
+    if (stored.value)
+      shareableSettings = normalizeShareableAiSettings(JSON.parse(stored.value))
   }
   catch {
-    return { ...defaultAiSettings }
+    shareableSettings = defaultShareableAiSettings()
   }
+  storedSettings = { ...shareableSettings, apiKey: storedApiKey.value ?? '' }
+  return loadAiSettings()
 }
 
 export function parseAiSettingsJson(raw: string): AiSettings {
   const parsed: unknown = JSON.parse(raw)
-  const payload = isRecord(parsed) && 'settings' in parsed ? parsed.settings : parsed
-  return normalizeAiSettings(payload)
+  if (!isRecord(parsed))
+    throw new Error('AI 設定必須是 object')
+  if (Object.keys(parsed).some(key => !['version', 'exportedAt', 'settings'].includes(key)) || parsed.version !== 1 || typeof parsed.exportedAt !== 'string' || !parsed.exportedAt.trim() || !isRecord(parsed.settings))
+    throw new Error('AI 設定匯出格式錯誤')
+  const payload = parsed.settings
+  return { ...normalizeShareableAiSettings(payload), apiKey: '' }
 }
 
 export function downloadAiSettings(settings: AiSettings): void {
+  const shareableSettings = getShareableAiSettings(settings)
   const payload = JSON.stringify({
     version: 1,
     exportedAt: new Date().toISOString(),
-    settings: normalizeAiSettings(settings),
+    settings: shareableSettings,
   }, null, 2)
   const url = URL.createObjectURL(new Blob([payload], { type: 'application/json' }))
   const anchor = document.createElement('a')
@@ -68,7 +117,12 @@ export function downloadAiSettings(settings: AiSettings): void {
 }
 
 export function saveAiSettings(settings: AiSettings) {
-  localStorage.setItem(AI_SETTINGS_KEY, JSON.stringify(normalizeAiSettings(settings)))
+  storedSettings = normalizeAiSettings(settings)
+  const shareableSettings = getShareableAiSettings(storedSettings)
+  void saveToStorage(AI_SETTINGS_KEY, shareableSettings)
+  void saveToStorage(AI_API_KEY_STORAGE_KEY, storedSettings.apiKey)
+  for (const listener of settingsListeners)
+    listener(loadAiSettings())
 }
 
 function normalizeText(value: unknown): string {

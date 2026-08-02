@@ -1,1330 +1,623 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 173,
   "words": [
-    {
-      "wordKey": "colloquial",
-      "word": "colloquial",
-      "senses": [
-        {
-          "id": "sense-f61c00cd",
-          "pos": "adjective",
-          "meaningZh": "口語的；通俗的；非正式的",
-          "definitionEn": "used in or characteristic of informal conversation; not formal or literary",
-          "examples": [
-            "During lunch, the group engaged in a colloquial discussion about their favorite TV shows."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "comet",
-      "word": "comet",
-      "senses": [
-        {
-          "id": "sense-7c480463",
-          "pos": "noun",
-          "meaningZh": "彗星",
-          "definitionEn": "A comet is a small space object made up of gas, dust, and ice that travels around the sun in a long and narrow orbit.",
-          "examples": [
-            "As the comet streaked across the night sky, it left a majestic trail of glowing debris."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "commonplace",
-      "word": "commonplace",
-      "senses": [
-        {
-          "id": "sense-475b8f2b",
-          "pos": "adjective",
-          "meaningZh": "平凡的；司空見慣的",
-          "definitionEn": "not unusual or special; ordinary",
-          "examples": [
-            "Wearing jeans and a t-shirt has become commonplace attire for casual events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-570e0412",
-          "pos": "noun",
-          "meaningZh": "陳腔濫調；老生常談",
-          "definitionEn": "an unoriginal or obvious remark",
-          "examples": [
-            "During the presentation, the speaker filled their speech with commonplaces, such as 'it is what it is' and 'think outside the box'."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "commonwealth",
-      "word": "commonwealth",
-      "senses": [
-        {
-          "id": "sense-d204f10f",
-          "pos": "noun",
-          "meaningZh": "（美國）邦；自治邦",
-          "definitionEn": "the official name of some states in the United States (Massachusetts and Pennsylvania and Virginia and Kentucky) and associated territories (Puerto Rico)",
-          "examples": [
-            "The Commonwealth of Massachusetts was founded by a group of Puritans in 1620."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-2e66f05f",
-          "pos": "noun",
-          "meaningZh": "（國家）聯邦；英聯邦",
-          "definitionEn": "a politically organized body of people under a single government",
-          "examples": [
-            "The Commonwealth of Nations is a political association of 54 member states, nearly all of which are former territories of the British Empire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "communicative",
-      "word": "communicative",
-      "senses": [
-        {
-          "id": "sense-c4f05f82",
-          "pos": "adjective",
-          "meaningZh": "溝通的；傳播的",
-          "definitionEn": "relating to or involved in the process of communication; conveying information or messages; communicational",
-          "examples": [
-            "The new teacher was a very communicative person, always providing her students with clear instructions and answering their questions in a friendly manner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-b0b4dc75",
-          "pos": "adjective",
-          "meaningZh": "健談的；愛交流的",
-          "definitionEn": "having a disposition to talk or impart information; talkative",
-          "examples": [
-            "As the CEO of the company, she was communicative and always kept her employees informed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "comparative",
       "word": "comparative",
       "senses": [
         {
-          "id": "sense-826c25e4",
-          "pos": "adjective",
+          "id": "sense-500fc26a",
+          "pos": "adj.",
           "meaningZh": "比較的；相對的",
-          "definitionEn": "relating to or involving comparison",
           "examples": [
             "A comparative study of the two products showed significant differences in quality."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1b26c569",
-          "pos": "adjective",
+          "id": "sense-26cd3767",
+          "pos": "adj.",
           "meaningZh": "比較性的；相對而言的",
-          "definitionEn": "estimated by comparison; not absolute or complete",
           "examples": [
             "In a comparative analysis of the two advertising campaigns, we found that the first campaign was more successful than the second one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "compass",
       "word": "compass",
       "senses": [
         {
-          "id": "sense-c31e3767",
-          "pos": "noun",
+          "id": "sense-f402dcd7",
+          "pos": "n.",
           "meaningZh": "圓規",
-          "definitionEn": "a tool used for drawing circles, consisting of a pointed metal leg attached to a pivot that can be adjusted to draw circles of different sizes",
           "examples": [
             "The architect used a compass to draw a perfect circle for the design of the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "compile",
       "word": "compile",
       "senses": [
         {
-          "id": "sense-51203227",
-          "pos": "verb",
+          "id": "sense-fc583a7a",
+          "pos": "v.",
           "meaningZh": "彙編；編纂",
-          "definitionEn": "put together out of existing material",
           "examples": [
             "I need to compile all the research data into a report for my boss."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-17443523",
-          "pos": "verb",
+          "id": "sense-5dbec90e",
+          "pos": "v.",
           "meaningZh": "蒐集；匯整",
-          "definitionEn": "get or gather together",
           "examples": [
             "The librarian will compile all the books that are needed for next month’s book club meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "complement",
       "word": "complement",
       "senses": [
         {
-          "id": "sense-fdad5bc0",
-          "pos": "noun",
+          "id": "sense-591991cc",
+          "pos": "n.",
           "meaningZh": "補充物；相輔之物",
-          "definitionEn": "something that is added to complete, enhance or perfect",
           "examples": [
             "The red shoes complemented her outfit perfectly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5857dfd1",
-          "pos": "noun",
+          "id": "sense-7f547025",
+          "pos": "n.",
           "meaningZh": "補語（語法）",
-          "definitionEn": "a word or phrase used to complete a sentence grammatically",
           "examples": [
             "In the sentence ’She is a talented singer,’ the word ’singer’ is the complement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "complexion",
       "word": "complexion",
       "senses": [
         {
-          "id": "sense-b5ae6650",
-          "pos": "noun",
+          "id": "sense-ab072a40",
+          "pos": "n.",
           "meaningZh": "膚色；面色",
-          "definitionEn": "the color or appearance of a person’s face skin",
           "examples": [
             "She has a radiant complexion, with flawless and smooth skin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "comprehensive",
       "word": "comprehensive",
       "senses": [
         {
-          "id": "sense-185061b1",
-          "pos": "adjective",
+          "id": "sense-9d41405d",
+          "pos": "adj.",
           "meaningZh": "全面的；詳盡的",
-          "definitionEn": "including everything; complete",
           "examples": [
             "The comprehensive report covered all aspects of the business, from sales to marketing strategies and financial analysis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cc554ffe",
-          "pos": "adjective",
+          "id": "sense-5a823192",
+          "pos": "adj.",
           "meaningZh": "廣泛的；包羅萬象的",
-          "definitionEn": "broad in scope; covering extensively",
           "examples": [
             "The comprehensive report provided a thorough analysis of the company's financial performance over the past decade, examining all aspects including revenue, expenses, investments, and market trends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "compute",
       "word": "compute",
       "senses": [
         {
-          "id": "sense-c9f4b8f7",
-          "pos": "verb",
+          "id": "sense-39991c4a",
+          "pos": "v.",
           "meaningZh": "計算；運算",
-          "definitionEn": "to perform mathematical operations on",
           "examples": [
             "Sarah used a calculator to compute the sum of two numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "computerize",
       "word": "computerize",
       "senses": [
         {
-          "id": "sense-b9cf8030",
-          "pos": "verb",
+          "id": "sense-1152d665",
+          "pos": "v.",
           "meaningZh": "電腦化；數位化建檔",
-          "definitionEn": "to record, store, and use information on a computer instead of using paper documents",
           "examples": [
             "The company decided to computerize their entire filing system, making it more efficient and environmentally friendly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0a779918",
-          "pos": "verb",
+          "id": "sense-4877b731",
+          "pos": "v.",
           "meaningZh": "以電腦管理；自動化",
-          "definitionEn": "to use computers to operate a factory, business, job, etc.",
           "examples": [
             "The company decided to computerize their inventory system, allowing for more efficient tracking and management of their products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "comrade",
       "word": "comrade",
       "senses": [
         {
-          "id": "sense-f0061413",
-          "pos": "noun",
+          "id": "sense-f0ac0b4b",
+          "pos": "n.",
           "meaningZh": "同伴；朋友",
-          "definitionEn": "a friend who frequently spends time with another person",
           "examples": [
             "After working together for years, they became close comrades, spending their weekends hiking and camping together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-fe911c75",
-          "pos": "noun",
+          "id": "sense-2a246ecd",
+          "pos": "n.",
           "meaningZh": "戰友；同袍",
-          "definitionEn": "a companion who shared a dangerous experience, especially a fellow soldier",
           "examples": [
             "During the war, Jake and Tom fought side by side as comrades, relying on each other for support and protection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "concession",
       "word": "concession",
       "senses": [
         {
-          "id": "sense-bffc1127",
-          "pos": "noun",
+          "id": "sense-eca9db4b",
+          "pos": "n.",
           "meaningZh": "讓步；退讓",
-          "definitionEn": "the act of conceding or yielding",
           "examples": [
             "In a negotiation, making a concession can help reach a mutually beneficial agreement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-aac35c21",
-          "pos": "noun",
+          "id": "sense-3052096d",
+          "pos": "n.",
           "meaningZh": "讓出的條件；妥協點",
-          "definitionEn": "a point that is given up in a negotiation or argument",
           "examples": [
             "During the heated debate, Sarah made a concession by agreeing to lower the price of the product in order to reach a compromise with her colleague."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "concise",
       "word": "concise",
       "senses": [
         {
-          "id": "sense-8163e0cd",
-          "pos": "adjective",
+          "id": "sense-5c73bac1",
+          "pos": "adj.",
           "meaningZh": "簡潔的；言簡意賅的",
-          "definitionEn": "using few words in speaking and writing, in a way that makes the meaning clear and direct",
           "examples": [
             "Maria’s essay was brief, yet it was very concise and captured all the main points of the topic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "condense",
       "word": "condense",
       "senses": [
         {
-          "id": "sense-ed4bb63c",
-          "pos": "verb",
+          "id": "sense-c0de012d",
+          "pos": "v.",
           "meaningZh": "濃縮；壓縮",
-          "definitionEn": "to become more compact or concentrated",
           "examples": [
             "As a storm approaches, the clouds darken and condense, forming raindrops."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-368e8a0b",
-          "pos": "verb",
+          "id": "sense-99ab6c7c",
+          "pos": "v.",
           "meaningZh": "凝結；使氣體液化",
-          "definitionEn": "to make a gas or vapor change into a liquid",
           "examples": [
             "When the steam from the kettle hit the cold window, it began to condense into droplets of water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "confederation",
       "word": "confederation",
       "senses": [
         {
-          "id": "sense-d01d760b",
-          "pos": "noun",
+          "id": "sense-f78bf0a7",
+          "pos": "n.",
           "meaningZh": "結盟；聯邦形成",
-          "definitionEn": "the act of forming an alliance or confederation",
           "examples": [
             "After years of negotiation, the neighboring countries decided to establish a confederation to strengthen their economic and political ties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d3ac7e2b",
-          "pos": "noun",
+          "id": "sense-e29b0a9f",
+          "pos": "n.",
           "meaningZh": "聯邦；邦聯",
-          "definitionEn": "a union of political organizations",
           "examples": [
             "The confederation of several small countries has allowed them to establish a stronger voice on the global stage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "congresswoman",
       "word": "congresswoman",
       "senses": [
         {
-          "id": "sense-ab926194",
-          "pos": "noun",
+          "id": "sense-5db92a94",
+          "pos": "n.",
           "meaningZh": "（美國）女性眾議員",
-          "definitionEn": "a female member of the United States House of Representatives",
           "examples": [
             "The congresswoman proposed a new bill to address climate change during the legislative session."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conquest",
       "word": "conquest",
       "senses": [
         {
-          "id": "sense-cafb34ad",
-          "pos": "noun",
+          "id": "sense-d2bb042d",
+          "pos": "n.",
           "meaningZh": "征服；武力奪取",
-          "definitionEn": "the act of conquering or taking over something by force",
           "examples": [
             "After years of war, the army finally achieved its conquest of the enemy's capital."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2aad2002",
-          "pos": "noun",
+          "id": "sense-4fea8782",
+          "pos": "n.",
           "meaningZh": "占領地；征服成果",
-          "definitionEn": "a successful and complete acquisition of something, especially a territory or country",
           "examples": [
             "After years of battles, the emperor celebrated his conquest of the neighboring kingdom and claimed it as his own."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conscientious",
       "word": "conscientious",
       "senses": [
         {
-          "id": "sense-86345799",
-          "pos": "adjective",
+          "id": "sense-3faa6c25",
+          "pos": "adj.",
           "meaningZh": "認真負責的；盡職的",
-          "definitionEn": "taking your work seriously and putting in a lot of effort to do it carefully",
           "examples": [
             "When the project deadline was approaching, Sarah, the conscientious employee, stayed late every evening to ensure that everything was completed to the highest standards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2a54ce8a",
-          "pos": "adjective",
+          "id": "sense-5050790e",
+          "pos": "adj.",
           "meaningZh": "一絲不苟的；勤勉的",
-          "definitionEn": "displaying a strong sense of responsibility and diligence in performing tasks",
           "examples": [
             "Sarah is a conscientious student who always completes her assignments on time and with great attention to detail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conserve",
       "word": "conserve",
       "senses": [
         {
-          "id": "sense-7b6f9b1b",
-          "pos": "verb",
+          "id": "sense-e8c5cd82",
+          "pos": "v.",
           "meaningZh": "保護；保存",
-          "definitionEn": "to keep something safe from harm, decay, loss, or destruction",
           "examples": [
             "It is important to conserve water during a drought by taking shorter showers and fixing leaks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-55517870",
-          "pos": "verb",
+          "id": "sense-9d37c83d",
+          "pos": "v.",
           "meaningZh": "節省；節約使用",
-          "definitionEn": "to use something cautiously and frugally",
           "examples": [
             "He tried to conserve his energy during the long hiking trip by taking short breaks and drinking plenty of water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consolation",
       "word": "consolation",
       "senses": [
         {
-          "id": "sense-95dde045",
-          "pos": "noun",
+          "id": "sense-1a6119bd",
+          "pos": "n.",
           "meaningZh": "安慰；慰藉",
-          "definitionEn": "the comfort you feel when consoled in times of disappointment",
           "examples": [
             "After a breakup, her friends offered her words of consolation to make her feel better."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e5d6e8dd",
-          "pos": "noun",
+          "id": "sense-2bcdab65",
+          "pos": "n.",
           "meaningZh": "撫慰行為；給予寬心",
-          "definitionEn": "the act of consoling; giving relief in affliction",
           "examples": [
             "After the loss of his dog, he found consolation in spending time with friends and family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "console",
       "word": "console",
       "senses": [
         {
-          "id": "sense-443a4732",
-          "pos": "noun",
+          "id": "sense-2d3d9066",
+          "pos": "n.",
           "meaningZh": "控制台；操作面板",
-          "definitionEn": "a scientific instrument consisting of displays and an input device that an operator can use to monitor and control a system (especially a computer system)",
           "examples": [
             "The air traffic controller used the console to monitor the flights and instruct the pilots on their course and altitude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cefdccc6",
-          "pos": "noun",
+          "id": "sense-3a1b3432",
+          "pos": "n.",
           "meaningZh": "主機殼；電視機箱",
-          "definitionEn": "housing for electronic instruments, such as a radio or television",
           "examples": [
             "After a long day at work, I like to relax on my couch and watch TV on my large flat-screen console."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "consonant",
       "word": "consonant",
       "senses": [
         {
-          "id": "sense-396b9619",
-          "pos": "noun",
+          "id": "sense-b91d1815",
+          "pos": "n.",
           "meaningZh": "子音；輔音字母",
-          "definitionEn": "a letter of the alphabet that represents a consonant sound",
           "examples": [
             "The words ’b’, ’c’, ’d’, ’f’, ’g’, and ’h’ are all examples of consonants in the English alphabet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0c1b2324",
-          "pos": "adjective",
+          "id": "sense-d784055e",
+          "pos": "adj.",
           "meaningZh": "和諧的；音調協調的",
-          "definitionEn": "having sounds that are harmonious and agreeable",
           "examples": [
             "The choir performed a beautiful a cappella piece, their voices blending perfectly in consonant harmony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "conspiracy",
       "word": "conspiracy",
       "senses": [
         {
-          "id": "sense-4de99ddd",
-          "pos": "noun",
+          "id": "sense-9e3b3019",
+          "pos": "n.",
           "meaningZh": "陰謀；密謀",
-          "definitionEn": "a plot, usually political or criminal, hatched in secret by two or more people to carry out an unlawful or harmful act",
           "examples": [
             "The group of criminals met in a dimly lit warehouse, deep in the outskirts of the city, to plan their conspiracy to rob the bank."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e43507c0",
-          "pos": "noun",
+          "id": "sense-cec1b364",
+          "pos": "n.",
           "meaningZh": "共謀；秘密勾結",
-          "definitionEn": "a secret agreement between two or more people to perform an unlawful act",
           "examples": [
             "The detectives uncovered a conspiracy among high-ranking government officials to embezzle public funds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contention",
       "word": "contention",
       "senses": [
         {
-          "id": "sense-f445ef4d",
-          "pos": "noun",
+          "id": "sense-d3ff2745",
+          "pos": "n.",
           "meaningZh": "論點；主張",
-          "definitionEn": "a point asserted as part of an argument",
           "examples": [
             "In the debate, the main contention was whether or not to increase taxes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b9410511",
-          "pos": "noun",
+          "id": "sense-ee1fe4c9",
+          "pos": "n.",
           "meaningZh": "爭議；爭論",
-          "definitionEn": "a contentious speech act; a dispute where there is strong disagreement",
           "examples": [
             "The hotly contested issue resulted in a heated contention between the two sides."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contestant",
       "word": "contestant",
       "senses": [
         {
-          "id": "sense-e02af710",
-          "pos": "noun",
+          "id": "sense-ce9d8968",
+          "pos": "n.",
           "meaningZh": "參賽者；競賽者",
-          "definitionEn": "a person who participates in competitions or contests",
           "examples": [
             "The contestant was feeling nervous before the final round of the spelling bee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "continuity",
       "word": "continuity",
       "senses": [
         {
-          "id": "sense-4788e437",
-          "pos": "noun",
+          "id": "sense-4495e867",
+          "pos": "n.",
           "meaningZh": "連貫性；持續性",
-          "definitionEn": "the state or quality of being continuous or unbroken",
           "examples": [
             "The company's commitment to continuity is evident in its long-standing tradition of producing quality products year after year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-f1a78833",
-          "pos": "noun",
+          "id": "sense-e5698603",
+          "pos": "n.",
           "meaningZh": "（電影）分鏡腳本；場景連戲",
-          "definitionEn": "a detailed script or plan used in film-making to ensure that there is no interruption or inconsistency in the final product.",
           "examples": [
             "During the production of the movie, the director closely followed the continuity, making sure that the actors' clothing, props, and positions were consistent from one scene to another."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "contradict",
       "word": "contradict",
       "senses": [
         {
-          "id": "sense-0d2cfa0f",
-          "pos": "verb",
+          "id": "sense-47f65a4a",
+          "pos": "v.",
           "meaningZh": "否認；與…矛盾",
-          "definitionEn": "deny the truth of",
           "examples": [
             "She argued that the witness statement contradicted the evidence presented."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "convene",
+      "word": "convene",
+      "senses": [
+        {
+          "id": "sense-53d3bad3",
+          "pos": "v.",
+          "meaningZh": "召開（會議）；召集",
+          "examples": [
+            "The committee will convene a meeting next week to discuss the new project."
+          ]
+        },
+        {
+          "id": "sense-c8dffebd",
+          "pos": "v.",
+          "meaningZh": "正式集會；開會",
+          "examples": [
+            "The board of directors convene every month to discuss company strategies and make important decisions."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "coral",
+      "word": "coral",
+      "senses": [
+        {
+          "id": "sense-d15602f9",
+          "pos": "n.",
+          "meaningZh": "珊瑚；珊瑚蟲",
+          "examples": [
+            "While scuba diving, we were amazed by the vibrant colors and intricate structures of the coral reefs."
+          ]
+        },
+        {
+          "id": "sense-152a4a3f",
+          "pos": "n.",
+          "meaningZh": "珊瑚色；橘粉紅色",
+          "examples": [
+            "She wore a stunning coral dress to the wedding."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "corpse",
+      "word": "corpse",
+      "senses": [
+        {
+          "id": "sense-098982db",
+          "pos": "n.",
+          "meaningZh": "屍體；遺體",
+          "examples": [
+            "The detectives arrived at the crime scene and found the corpse of the victim hidden behind the bushes."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "correspondence",
+      "word": "correspondence",
+      "senses": [
+        {
+          "id": "sense-6636177e",
+          "pos": "n.",
+          "meaningZh": "書信往來；通信",
+          "examples": []
+        },
+        {
+          "id": "sense-a8043587",
+          "pos": "n.",
+          "meaningZh": "對應關係；一致性",
+          "examples": [
+            "The length of the pencil and the distance it can write on paper have a direct correspondence."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cosmetic",
+      "word": "cosmetic",
+      "senses": [
+        {
+          "id": "sense-3476b55d",
+          "pos": "adj.",
+          "meaningZh": "美容的；修飾外表的",
+          "examples": [
+            "She applied a layer of cosmetic foundation to her face before going out for the party."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

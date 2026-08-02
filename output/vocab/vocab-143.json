@@ -1,1408 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 143,
   "words": [
-    {
-      "wordKey": "episode",
-      "word": "episode",
-      "senses": [
-        {
-          "id": "sense-1685ea50",
-          "pos": "noun",
-          "meaningZh": "（連續劇的）集；插曲",
-          "definitionEn": "a part of a series of related events, usually occurring at a specific time or place and marked by its particular characteristics",
-          "examples": [
-            "In the latest episode of the TV show, the main character finally uncovers the truth about his past."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-b441e9d8",
-          "pos": "noun",
-          "meaningZh": "事件；片段",
-          "definitionEn": "a series of related scenes in a film that form a unit of the film’s narrative",
-          "examples": [
-            "In the latest episode of the sci-fi series, the main character discovers a hidden clue that leads to a thrilling twist in the storyline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "equation",
-      "word": "equation",
-      "senses": [
-        {
-          "id": "sense-0e295a07",
-          "pos": "noun",
-          "meaningZh": "方程式；等式",
-          "definitionEn": "a mathematical statement showing that two expressions are equal",
-          "examples": [
-            "To solve the equation, I need to isolate the variable on one side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-bdd0adcb",
-          "pos": "noun",
-          "meaningZh": "等同關係；等量關係",
-          "definitionEn": "the act of considering as equal",
-          "examples": [
-            "When solving a math problem, you must set up an equation to represent the relationship between the unknowns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "equity",
-      "word": "equity",
-      "senses": [
-        {
-          "id": "sense-807536de",
-          "pos": "noun",
-          "meaningZh": "股票；股東權益",
-          "definitionEn": "the ownership interest of shareholders in a corporation",
-          "examples": [
-            "The company raised funds by selling equities to investors, giving them ownership shares in the corporation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-46139384",
-          "pos": "noun",
-          "meaningZh": "房屋淨值；資產淨值",
-          "definitionEn": "the difference between the market value of a property and the claims held against it",
-          "examples": [
-            "John’s equity in his house had grown substantially over the years, thanks to the consistently rising property values and the repayment of his mortgage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "equivalent",
-      "word": "equivalent",
-      "senses": [
-        {
-          "id": "sense-3dee7fbb",
-          "pos": "adjective",
-          "meaningZh": "相等的；等值的",
-          "definitionEn": "essentially equal to something else",
-          "examples": [
-            "One dollar is equivalent to four quarters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-b16597ad",
-          "pos": "noun",
-          "meaningZh": "對應物；等值物",
-          "definitionEn": "a person or thing equal to another in value, measure, force, effect, or significance",
-          "examples": [
-            "The weight of the sugar you are using is not equivalent to the weight of the flour, hence the recipe won’t turn out right."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "erect",
-      "word": "erect",
-      "senses": [
-        {
-          "id": "sense-b3cd1515",
-          "pos": "verb",
-          "meaningZh": "建造；架設",
-          "definitionEn": "build or construct (something, typically a building, wall, or other structure)",
-          "examples": [
-            "The construction company plans to erect a new office building in the city center."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-8c1ff7f8",
-          "pos": "adjective",
-          "meaningZh": "直立的；挺立的",
-          "definitionEn": "standing upright; not bent or leaning",
-          "examples": [
-            "The totem pole stood erect in the center of the village."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1",
-        "textbookTitle": "龍騰 B3·R1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "errand",
       "word": "errand",
       "senses": [
         {
-          "id": "sense-b6d84279",
-          "pos": "noun",
+          "id": "sense-e649edcd",
+          "pos": "n.",
           "meaningZh": "差事；跑腿；外出辦事",
-          "definitionEn": "a short journey made in order to perform a necessary task or mission",
           "examples": [
             "Sarah ran a quick errand to the grocery store to pick up some milk and eggs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "erupt",
       "word": "erupt",
       "senses": [
         {
-          "id": "sense-fd701dcb",
-          "pos": "verb",
+          "id": "sense-b4d8a964",
+          "pos": "v.",
           "meaningZh": "（火山）噴發",
-          "definitionEn": "when a volcano erupts or burning rocks, smoke, etc. erupt or are erupted, the burning rocks, etc. are thrown out from the volcano",
           "examples": [
             "Mount Vesuvius erupted in 79 AD, burying the ancient city of Pompeii under volcanic ash."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cfeab570",
-          "pos": "verb",
+          "id": "sense-cdf46961",
+          "pos": "v.",
           "meaningZh": "突然爆發；迸發",
-          "definitionEn": "to start happening suddenly and violently",
           "examples": [
             "The volcano suddenly erupted, spewing hot lava and ash into the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "escalator",
       "word": "escalator",
       "senses": [
         {
-          "id": "sense-76798aef",
-          "pos": "noun",
+          "id": "sense-541f810f",
+          "pos": "n.",
           "meaningZh": "電扶梯",
-          "definitionEn": "a continuous moving set of stairs",
           "examples": [
             "As I stepped onto the escalator, I gently placed my hand on the handrail and let it effortlessly carry me to the next floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-074bf914",
-          "pos": "noun",
+          "id": "sense-70f43eb4",
+          "pos": "n.",
           "meaningZh": "物價調整條款；浮動條款",
-          "definitionEn": "a clause in a contract that allows for adjusting wages or prices based on specific conditions (like changes in the cost of living index)",
           "examples": [
             "The labor union negotiated an escalator clause in their contract, ensuring that their wages would increase proportionally with any significant rise in the cost of living index."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "essence",
       "word": "essence",
       "senses": [
         {
-          "id": "sense-85c3567f",
-          "pos": "noun",
+          "id": "sense-57728e1b",
+          "pos": "n.",
           "meaningZh": "本質；精髓",
-          "definitionEn": "the most important or fundamental part of something",
           "examples": [
             "The essence of a good movie lies in its captivating story and memorable characters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-362b2b28",
-          "pos": "noun",
+          "id": "sense-fb7e4fe4",
+          "pos": "n.",
           "meaningZh": "主旨；核心要義",
-          "definitionEn": "the main idea or message conveyed by a speech, text, or artistic work",
           "examples": [
             "In her novel, the author skillfully captures the essence of love and its transformative power."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "estate",
       "word": "estate",
       "senses": [
         {
-          "id": "sense-cb10106e",
-          "pos": "noun",
+          "id": "sense-ef42675a",
+          "pos": "n.",
           "meaningZh": "莊園；大片地產",
-          "definitionEn": "extensive landed property (especially in the countryside) that is owned and used by one person or family",
           "examples": [
             "John inherited a large estate from his grandparents, complete with a grand house, sprawling gardens, and acres of farmland."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c783efa9",
-          "pos": "noun",
+          "id": "sense-aaca3f85",
+          "pos": "n.",
           "meaningZh": "遺產；財產",
-          "definitionEn": "all of the things that a person owns, including property and other assets, as well as debts",
           "examples": [
             "After his father passed away, John inherited a vast estate consisting of luxurious properties, stocks, and businesses, as well as some outstanding debts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "eternal",
       "word": "eternal",
       "senses": [
         {
-          "id": "sense-427e5cb8",
-          "pos": "adjective",
+          "id": "sense-bb97c32e",
+          "pos": "adj.",
           "meaningZh": "永恆的；永遠的",
-          "definitionEn": "continuing forever or indefinitely",
           "examples": [
             "According to many religions, heaven is a place where the soul can experience eternal joy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c49d8abc",
-          "pos": "adjective",
+          "id": "sense-3e89aa7e",
+          "pos": "adj.",
           "meaningZh": "永無止境的；無盡的",
-          "definitionEn": "seemingly without end; lasting an infinitely long time",
           "examples": [
             "The infinite expanse of the universe creates an eternal feeling of awe and wonder in us."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ethic",
       "word": "ethic",
       "senses": [
         {
-          "id": "sense-5af6f926",
-          "pos": "noun",
+          "id": "sense-906c4f6e",
+          "pos": "n.",
           "meaningZh": "道德體系；倫理準則",
-          "definitionEn": "a system of principles governing morality and acceptable conduct",
           "examples": [
             "In the workplace, it is important to have a strong work ethic, showing dedication and integrity in order to achieve success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c94c93c6",
-          "pos": "noun",
+          "id": "sense-ed88de0e",
+          "pos": "n.",
           "meaningZh": "道德觀；是非觀",
-          "definitionEn": "the principles of right and wrong that are accepted by an individual or a social group",
           "examples": [
             "The CEO's decision to prioritize environmental sustainability over profits reflects a strong ethical stance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ethical",
       "word": "ethical",
       "senses": [
         {
-          "id": "sense-13a4d340",
-          "pos": "adjective",
+          "id": "sense-36eb41dc",
+          "pos": "adj.",
           "meaningZh": "符合道德的；合乎倫理的",
-          "definitionEn": "relating to beliefs about what is morally right and wrong",
           "examples": [
             "When faced with a difficult decision, she always considered the ethical implications before taking any action."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-16153c87",
-          "pos": "adjective",
+          "id": "sense-7005488b",
+          "pos": "adj.",
           "meaningZh": "有職業道德的；守規範的",
-          "definitionEn": "conforming to accepted standards of behavior",
           "examples": [
             "The company's decision to disclose all information openly and honestly, even when it may have negative implications, reflects its commitment to ethical business practices."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ethics",
       "word": "ethics",
       "senses": [
         {
-          "id": "sense-80e82c47",
-          "pos": "noun",
+          "id": "sense-12d2648b",
+          "pos": "n.",
           "meaningZh": "倫理學；道德哲學",
-          "definitionEn": "the philosophical study of moral values and rules",
           "examples": [
             "Studying ethics at university helped me cultivate a deeper understanding of human behavior and develop a strong moral compass."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f0635daa",
-          "pos": "noun",
+          "id": "sense-095a16be",
+          "pos": "n.",
           "meaningZh": "道德觀；倫理規範",
-          "definitionEn": "motivation based on ideas of right and wrong",
           "examples": [
             "Despite the temptation of a big bonus, her strong ethics convinced her to report the fraudulent activity she discovered at work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "evolution",
       "word": "evolution",
       "senses": [
         {
-          "id": "sense-29719750",
-          "pos": "noun",
+          "id": "sense-cbed64e4",
+          "pos": "n.",
           "meaningZh": "（生物）演化；進化",
-          "definitionEn": "the sequence of events involved in the development of a species or group of organisms over generations, especially through natural selection, genetic drift, and mutation",
           "examples": [
             "The fossils found in the sedimentary rock layers provide evidence of the evolution of fish from ancient marine species to their current forms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-71d5dca0",
-          "pos": "noun",
+          "id": "sense-7e05b9dc",
+          "pos": "n.",
           "meaningZh": "逐漸發展；演進",
-          "definitionEn": "the gradual development or progression of something, especially from a simple or basic form to a more advanced or complex form",
           "examples": [
             "The evolution of technology has transformed communication from letter writing to instant messaging."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "evolve",
       "word": "evolve",
       "senses": [
         {
-          "id": "sense-fe23e9be",
-          "pos": "verb",
+          "id": "sense-f9675163",
+          "pos": "v.",
           "meaningZh": "逐步發展；演變",
-          "definitionEn": "develop gradually, especially from a simple to a more complex form",
           "examples": [
             "Over time, technology has evolved from basic tools like stone axes to sophisticated devices like smartphones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f967e70b",
-          "pos": "verb",
+          "id": "sense-9c1fec82",
+          "pos": "v.",
           "meaningZh": "（生物）演化；進化",
-          "definitionEn": "gain new characteristics or abilities over successive generations by inherited genetic variations",
           "examples": [
             "The finches on the Galapagos Islands evolved different beak shapes to adapt to their respective food sources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exaggeration",
       "word": "exaggeration",
       "senses": [
         {
-          "id": "sense-9c6212ba",
-          "pos": "noun",
+          "id": "sense-75d7528a",
+          "pos": "n.",
           "meaningZh": "誇大；誇張",
-          "definitionEn": "the act of making something more noticeable than usual",
           "examples": [
             "During the fishing trip, Grandpa's stories were full of exaggeration. He claimed to have caught a fish the size of a whale!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b4a60c41",
-          "pos": "noun",
+          "id": "sense-5fe29d91",
+          "pos": "n.",
           "meaningZh": "言過其實；過度渲染",
-          "definitionEn": "making something seem more important than it really is",
           "examples": [
             "During the fishing trip, my uncle caught a fish 'this big' when in reality it was just a small trout."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9 +1",
-        "textbookTitle": "龍騰 B3·L9、三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exceed",
       "word": "exceed",
       "senses": [
         {
-          "id": "sense-3d01df87",
-          "pos": "verb",
+          "id": "sense-919dfe76",
+          "pos": "v.",
           "meaningZh": "超越；超過（標準）",
-          "definitionEn": "to be greater or better than a standard or expected level in a particular area or activity",
           "examples": [
             "The company’s profits exceed their initial estimates for the quarter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3 +1",
-        "textbookTitle": "龍騰 B5·L3、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exceptional",
       "word": "exceptional",
       "senses": [
         {
-          "id": "sense-1793db21",
-          "pos": "adjective",
+          "id": "sense-ecbaaab5",
+          "pos": "adj.",
           "meaningZh": "非凡的；傑出的",
-          "definitionEn": "far beyond what is usual in magnitude or degree",
           "examples": [
             "The talent displayed by the young pianist was exceptional; her skill and musicality surpassed even seasoned professionals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6e503528",
-          "pos": "adjective",
+          "id": "sense-5abaaa3c",
+          "pos": "adj.",
           "meaningZh": "特別優秀的；出乎意料的好",
-          "definitionEn": "surpassing what is common or usual or expected",
           "examples": [
             "Her performance on the test was exceptional and she got the highest score in the class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3 +1",
-        "textbookTitle": "龍騰 B5·L3、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "excessive",
       "word": "excessive",
       "senses": [
         {
-          "id": "sense-6fcdccf8",
-          "pos": "adjective",
+          "id": "sense-90b4c572",
+          "pos": "adj.",
           "meaningZh": "過度的；過分的",
-          "definitionEn": "going beyond what is usual or proper",
           "examples": [
             "She spends an excessive amount of money on clothes every month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0f85723f",
-          "pos": "adjective",
+          "id": "sense-e11c6489",
+          "pos": "adj.",
           "meaningZh": "放縱的；失控的",
-          "definitionEn": "unrestrained or uncontrolled, especially with regard to emotions",
           "examples": [
             "After losing the game, the coach yelled at his players with excessive anger and blame-shifting instead of helping them to identify and correct their mistakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exclaim",
       "word": "exclaim",
       "senses": [
         {
-          "id": "sense-0d7decdb",
-          "pos": "verb",
+          "id": "sense-800657ee",
+          "pos": "v.",
           "meaningZh": "驚呼；大聲說出",
-          "definitionEn": "utter aloud with surprise, horror, or joy",
           "examples": [
             "Startled by the unexpected fireworks display, she exclaimed, 'Wow!'"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d7d7f574",
-          "pos": "verb",
+          "id": "sense-fdb1648d",
+          "pos": "v.",
           "meaningZh": "呼喊；高聲宣稱",
-          "definitionEn": "state or announce something",
           "examples": [
             "She was so surprised by the news that she couldn't help but exclaim, 'No way!'"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exclude",
       "word": "exclude",
       "senses": [
         {
-          "id": "sense-9834be2c",
-          "pos": "verb",
+          "id": "sense-6e259ead",
+          "pos": "v.",
           "meaningZh": "排除；拒之門外",
-          "definitionEn": "shut out or prevent from entering",
           "examples": [
             "The club excludes people who don’t have a membership."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-abf93ea6",
-          "pos": "verb",
+          "id": "sense-84b0529f",
+          "pos": "v.",
           "meaningZh": "不包含；把……除外",
-          "definitionEn": "keep out or prevent from entering",
           "examples": [
             "The party excluded the people who were not on the guest list."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exclusive",
       "word": "exclusive",
       "senses": [
         {
-          "id": "sense-7c613391",
-          "pos": "adjective",
+          "id": "sense-c575905d",
+          "pos": "adj.",
           "meaningZh": "獨家的；專屬的",
-          "definitionEn": "belonging only to one person or organization; not shared",
           "examples": [
             "The club offers exclusive memberships, granting access to a private lounge and special events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-38de28ba",
-          "pos": "adjective",
+          "id": "sense-8ea6f95e",
+          "pos": "adj.",
           "meaningZh": "限定的；只限特定人的",
-          "definitionEn": "not including much or all, especially all but a particular group or minority",
           "examples": [
             "The exclusive club only allows entry to members who have reached a certain income level."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "execute",
       "word": "execute",
       "senses": [
         {
-          "id": "sense-2b669810",
-          "pos": "verb",
+          "id": "sense-c16934ed",
+          "pos": "v.",
           "meaningZh": "執行；實施",
-          "definitionEn": "carry out or perform an action",
           "examples": [
             "The chef will execute the recipe flawlessly, creating a masterpiece dish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5f5a4989",
-          "pos": "verb",
+          "id": "sense-c9a61d58",
+          "pos": "v.",
           "meaningZh": "執行（程式）；運行",
-          "definitionEn": "carry out a process or program, as on a computer or a machine",
           "examples": [
             "After writing the code, you need to execute it in order to see the output."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5",
-        "textbookTitle": "龍騰 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "execution",
       "word": "execution",
       "senses": [
         {
-          "id": "sense-df37265a",
-          "pos": "noun",
+          "id": "sense-e4a75aa6",
+          "pos": "n.",
           "meaningZh": "執行；實施",
-          "definitionEn": "the act of performing or carrying out a task successfully, using knowledge and skills",
           "examples": [
             "The successful execution of a complex surgery requires precision and expertise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ddf473aa",
-          "pos": "noun",
+          "id": "sense-26cf940e",
+          "pos": "n.",
           "meaningZh": "程式執行（電腦）",
-          "definitionEn": "(computer science) the process of carrying out an instruction or code by a computer",
           "examples": [
             "After writing the program, the next step is the execution phase, where the computer goes through each line of code and performs the specified actions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5",
-        "textbookTitle": "龍騰 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "executive",
       "word": "executive",
       "senses": [
         {
-          "id": "sense-e2f26d32",
-          "pos": "noun",
+          "id": "sense-aafb4c3e",
+          "pos": "n.",
           "meaningZh": "行政主管；高管",
-          "definitionEn": "a person responsible for managing and making important decisions in a business or organization",
           "examples": [
             "The executive of the company called a meeting to discuss the new product launch strategy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-12de0b68",
-          "pos": "noun",
+          "id": "sense-edc5320c",
+          "pos": "n.",
           "meaningZh": "行政長官；政府首長",
-          "definitionEn": "a person who is in charge of a government agency or department",
           "examples": [
             "The executive director of the Environmental Protection Agency implemented new policies to promote sustainable energy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exile",
       "word": "exile",
       "senses": [
         {
-          "id": "sense-a37d7716",
-          "pos": "noun",
+          "id": "sense-341613ee",
+          "pos": "n.",
           "meaningZh": "流亡者；被放逐者",
-          "definitionEn": "a person who is expelled from their home or country by authority",
           "examples": [
             "After criticizing the government openly, the journalist was forced into exile to avoid facing charges of sedition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-dad29345",
-          "pos": "noun",
+          "id": "sense-478e39dd",
+          "pos": "n.",
           "meaningZh": "流亡；放逐",
-          "definitionEn": "the state of being barred from one’s native country, typically for political or punitive reasons.",
           "examples": [
             "After being caught with classified information, the spy was sentenced to a life of exile in a remote island nation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exotic",
       "word": "exotic",
       "senses": [
         {
-          "id": "sense-856bef44",
-          "pos": "adjective",
+          "id": "sense-718f6670",
+          "pos": "adj.",
           "meaningZh": "異國情調的；外來的",
-          "definitionEn": "unfamiliar and from or characteristic of another place or part of the world",
           "examples": [
             "During their vacation, they explored the exotic markets of Marrakech, where they encountered vibrant spices and intricately designed carpets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8e66dab7",
-          "pos": "adjective",
+          "id": "sense-26395b1b",
+          "pos": "adj.",
           "meaningZh": "奇異的；特殊的",
-          "definitionEn": "having unusual and striking qualities or attributes",
           "examples": [
             "The exotic flowers bloomed brilliantly in the garden, captivating everyone with their vibrant colors and unique fragrance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "expedition",
       "word": "expedition",
       "senses": [
         {
-          "id": "sense-db3a06df",
-          "pos": "noun",
+          "id": "sense-370e5d5b",
+          "pos": "n.",
           "meaningZh": "探險隊；考察隊",
-          "definitionEn": "an organized group of people undertaking a journey for a particular purpose",
           "examples": [
             "The scientific team went on an expedition to Antarctica to study the impact of climate change on the polar ice caps."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-909fbd06",
-          "pos": "noun",
+          "id": "sense-89ccd242",
+          "pos": "n.",
           "meaningZh": "遠征；探險之旅",
-          "definitionEn": "a journey taken for pleasure",
           "examples": [
             "The mountain climbing expedition to Mount Everest was a thrilling experience for everyone who participated in it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "expertise",
       "word": "expertise",
       "senses": [
         {
-          "id": "sense-7b8dbe7f",
-          "pos": "noun",
+          "id": "sense-fe0e2037",
+          "pos": "n.",
           "meaningZh": "專業知識；專業技能",
-          "definitionEn": "expert skill or knowledge in a particular subject or activity",
           "examples": [
             "The company hired her for her expertise in digital marketing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "explicit",
+      "word": "explicit",
+      "senses": [
+        {
+          "id": "sense-3f2246fc",
+          "pos": "adj.",
+          "meaningZh": "明確的；清楚的",
+          "examples": [
+            "The terms of the contract were explicit, stating that the payment must be made in full within 30 days."
+          ]
+        },
+        {
+          "id": "sense-a3c778ee",
+          "pos": "adj.",
+          "meaningZh": "明白的；詳盡的",
+          "examples": [
+            "He gave explicit instructions for assembling the furniture, including step-by-step diagrams and written explanations."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "exploit",
+      "word": "exploit",
+      "senses": [
+        {
+          "id": "sense-4e5490c1",
+          "pos": "v.",
+          "meaningZh": "剝削；利用",
+          "examples": [
+            "The company was accused of exploiting its workers by paying them low wages and not providing any benefits."
+          ]
+        },
+        {
+          "id": "sense-b766d8da",
+          "pos": "v.",
+          "meaningZh": "善用；開發",
+          "examples": [
+            "The young entrepreneur was able to exploit his unique skillset and turn it into a successful business."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "exploration",
+      "word": "exploration",
+      "senses": [
+        {
+          "id": "sense-c6c569bd",
+          "pos": "n.",
+          "meaningZh": "探險；勘探",
+          "examples": [
+            "I went on an exploration of the Amazon rainforest to discover new species of plants and animals."
+          ]
+        },
+        {
+          "id": "sense-f09bff45",
+          "pos": "n.",
+          "meaningZh": "探索；考察",
+          "examples": [
+            "The exploration of outer space is a fascinating subject that attracts many scientists and researchers."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "extension",
+      "word": "extension",
+      "senses": [
+        {
+          "id": "sense-c16e921a",
+          "pos": "n.",
+          "meaningZh": "延伸範圍；延長期",
+          "examples": [
+            "The deadline for the project has been extended by two weeks."
+          ]
+        },
+        {
+          "id": "sense-fb5364ef",
+          "pos": "n.",
+          "meaningZh": "擴建部分；延伸設施",
+          "examples": [
+            "The kitchen at the back of the house is an extension added on to the original house to create more living space."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "extensive",
+      "word": "extensive",
+      "senses": [
+        {
+          "id": "sense-d8c2ded8",
+          "pos": "adj.",
+          "meaningZh": "廣泛的；大量的",
+          "examples": [
+            "The library boasts an extensive collection of books on various subjects, from history to science fiction."
+          ]
+        },
+        {
+          "id": "sense-6ef6a9e0",
+          "pos": "adj.",
+          "meaningZh": "粗放的（農業）",
+          "examples": [
+            "To maximize crop yields, the farmer implemented extensive farming techniques, utilizing vast tracts of land while minimizing labor and expenses."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

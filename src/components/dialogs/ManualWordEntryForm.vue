@@ -3,7 +3,7 @@ import type { WordDraft } from '@/types'
 import { Plus, Trash2 } from 'lucide-vue-next'
 import Button from '../ui/button/Button.vue'
 import Input from '../ui/input/Input.vue'
-import Textarea from '../ui/textarea/Textarea.vue'
+import SenseDraftList from './SenseDraftList.vue'
 
 const props = defineProps<{ modelValue: WordDraft[] }>()
 
@@ -16,12 +16,12 @@ function updateItem(index: number, patch: Partial<WordDraft>) {
 }
 
 function addItem() {
-  emit('update:modelValue', [...props.modelValue, { word: '', pos: '', meaning: '' }])
+  emit('update:modelValue', [...props.modelValue, { word: '', senses: [] }])
 }
 
 function removeItem(index: number) {
   const next = props.modelValue.filter((_, itemIndex) => itemIndex !== index)
-  emit('update:modelValue', next.length ? next : [{ word: '', pos: '', meaning: '' }])
+  emit('update:modelValue', next.length ? next : [{ word: '', senses: [] }])
 }
 </script>
 
@@ -40,20 +40,8 @@ function removeItem(index: number) {
           <Trash2 class="h-4 w-4" />
         </Button>
       </div>
-      <div class="grid gap-3 sm:grid-cols-2">
-        <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('editor.word') }}</label>
-          <Input :model-value="item.word" :placeholder="$t('import.manualWordPlaceholder')" @update:model-value="updateItem(index, { word: $event })" />
-        </div>
-        <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('editor.pos') }}</label>
-          <Input :model-value="item.pos" :placeholder="$t('import.manualPosPlaceholder')" @update:model-value="updateItem(index, { pos: $event })" />
-        </div>
-        <div class="flex flex-col gap-1.5 sm:col-span-2">
-          <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('editor.meaning') }}</label>
-          <Textarea :model-value="item.meaning" :rows="2" :placeholder="$t('import.manualMeaningPlaceholder')" @update:model-value="updateItem(index, { meaning: $event })" />
-        </div>
-      </div>
+      <Input :model-value="item.word" :placeholder="$t('import.manualWordPlaceholder')" @update:model-value="updateItem(index, { word: $event })" />
+      <SenseDraftList class="mt-4" :senses="item.senses" @update:senses="senses => updateItem(index, { senses })" />
     </div>
 
     <Button variant="outline" class="w-full gap-2 border-dashed" @click="addItem">

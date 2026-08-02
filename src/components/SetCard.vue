@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import type { VocabFolder, VocabItem } from '@/types'
+import type { LibrarySet, VocabFolder } from '@/types'
 import { onClickOutside } from '@vueuse/core'
 import { ArrowRight, Ellipsis, Flame, Folder, FolderOpen, PencilLine, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildFolderOptions, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { buildFolderOptions } from '@/lib/folders'
 import { useLearningStore } from '@/stores/learning'
+import { useLibraryStore } from '@/stores/library'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import MetricPill from './ui/metric-pill/MetricPill.vue'
 
 const props = defineProps<{
-  set: { id: string, setName: string, difficulty: number, items: VocabItem[], folderId?: string }
+  set: LibrarySet
   active?: boolean
   folders?: VocabFolder[]
 }>()
@@ -26,6 +27,7 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 const learningStore = useLearningStore()
+const libraryStore = useLibraryStore()
 const menuOpen = ref(false)
 const menuRef = ref<HTMLElement | null>(null)
 
@@ -33,14 +35,14 @@ onClickOutside(menuRef, () => {
   menuOpen.value = false
 })
 
-const dueCount = computed(() => learningStore.getDueCount(props.set))
-const learnedCount = computed(() => learningStore.getLearnedCount(props.set))
-const favoriteCount = computed(() => props.set.items.filter(item => item.favorite).length)
-const weakCount = computed(() => props.set.items.filter((item) => {
-  const card = learningStore.peekSetProgress(props.set.id)?.cards[item.id]
+const wordCount = computed(() => libraryStore.getSetStudyWords(props.set.id).length)
+const dueCount = computed(() => learningStore.getDueCount(props.set.id))
+const learnedCount = computed(() => learningStore.getLearnedCount(props.set.id))
+const weakCount = computed(() => libraryStore.getSetStudyWords(props.set.id).filter((item) => {
+  const card = learningStore.getCardProgress(item.id)
   return Boolean(card && card.reviewCount >= 2 && card.correctCount / card.reviewCount < 0.6)
 }).length)
-const folderOptions = computed(() => buildFolderOptions(props.folders ?? [], t('study.folderNone')).filter(folder => folder.id !== UNCATEGORIZED_FOLDER_ID))
+const folderOptions = computed(() => buildFolderOptions(props.folders ?? []))
 
 function editSet() {
   menuOpen.value = false
@@ -52,7 +54,7 @@ function deleteSet() {
   emit('delete', props.set.id)
 }
 
-function moveSet(folderId = '') {
+function moveSet(folderId: string) {
   menuOpen.value = false
   emit('move', props.set.id, folderId)
 }
@@ -86,7 +88,7 @@ function moveSet(folderId = '') {
           </Badge>
         </div>
         <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
-          {{ $t('home.wordsCount', { count: set.items.length }) }}
+          {{ $t('home.wordsCount', { count: wordCount }) }}
         </p>
       </div>
 
@@ -117,10 +119,6 @@ function moveSet(folderId = '') {
           <p class="px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-400 dark:text-ink-500">
             {{ t('setCard.moveFolder') }}
           </p>
-          <button type="button" class="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="!set.folderId ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" role="menuitem" :disabled="!set.folderId" @click="moveSet()">
-            <Folder class="h-4 w-4" />
-            {{ $t('study.folderNone') }}
-          </button>
           <button v-for="folder in folderOptions" :key="folder.id" type="button" class="flex w-full items-center gap-2 rounded-xl py-2.5 pr-3 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="set.folderId === folder.id ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" :style="{ paddingLeft: `${0.75 + folder.depth * 0.75}rem` }" role="menuitem" :disabled="set.folderId === folder.id" @click="moveSet(folder.id)">
             <FolderOpen v-if="set.folderId === folder.id" class="h-4 w-4" />
             <Folder v-else class="h-4 w-4" />
@@ -137,9 +135,7 @@ function moveSet(folderId = '') {
     </div>
 
     <div class="mt-4 flex flex-wrap gap-2">
-      <MetricPill :label="$t('setCard.difficulty')" :value="set.difficulty" />
-      <MetricPill v-if="learnedCount" :label="$t('learning.learned')" :value="`${learnedCount}/${set.items.length}`" />
-      <MetricPill v-if="favoriteCount" :label="$t('learning.favorites')" :value="favoriteCount" />
+      <MetricPill v-if="learnedCount" :label="$t('learning.learned')" :value="`${learnedCount}/${wordCount}`" />
       <MetricPill v-if="weakCount" :label="$t('learning.weak')" :value="weakCount" />
     </div>
 

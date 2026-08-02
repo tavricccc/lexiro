@@ -1,37 +1,82 @@
-import type { ClozeQuestion, LibraryDataSource, LibraryQuestion, MultipleChoiceQuestion, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
+import type { LibraryQuestion, MultipleChoiceQuestion, QuestionDifficulty, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
 import { stableHash } from './hash'
-import { buildQuestionId, buildSenseId, normalizeWordKey } from './library'
+import { buildQuestionFingerprint, buildQuestionId, buildSenseId, normalizePartOfSpeech, normalizeWordKey } from './library'
+import { isValidAnswerIndex, questionPromptIssue } from './question-shape'
+import { assertKnownKeys, requiredText } from './schema'
+import { containsHan } from './validation'
+
+export interface QuestionSourceRef {
+  wordKey: string
+  senseId: string
+}
+
+export type QuestionSourceRefs = Record<string, QuestionSourceRef>
 
 function text(value: unknown): string {
   return typeof value === 'string' ? value.trim() : ''
+}
+
+function optionalText(value: unknown, field: string): string | undefined {
+  if (value === undefined)
+    return undefined
+  if (typeof value !== 'string' || !value.trim())
+    throw new Error(`${field} 格式錯誤`)
+  return value.trim()
+}
+
+function stringList(value: unknown, field: string): string[] {
+  if (!Array.isArray(value) || !value.every(item => typeof item === 'string' && item.trim()))
+    throw new Error(`${field} 必須是非空字串陣列`)
+  return value.map(item => (item as string).trim())
+}
+
+function assertSchemaEnvelope(value: Record<string, unknown>, required = true): void {
+  if (required && value.schemaVersion !== 1)
+    throw new Error('匯入資料缺少 schemaVersion 1')
+  if (value.schemaVersion !== undefined && value.schemaVersion !== 1)
+    throw new Error('只支援 schemaVersion 1')
+  if (value.batch !== undefined && (typeof value.batch !== 'number' || !Number.isInteger(value.batch) || value.batch < 1))
+    throw new Error('batch 必須是正整數')
+}
+
+function questionDifficulty(value: unknown, index: number, allowedDifficulty?: QuestionDifficulty): QuestionDifficulty {
+  if (value === 1 || value === 2 || value === 3) {
+    if (allowedDifficulty === undefined || value === allowedDifficulty)
+      return value
+  }
+  if (allowedDifficulty !== undefined)
+    throw new Error(`第 ${index + 1} 題 difficulty 必須是 ${allowedDifficulty}`)
+  throw new Error(`第 ${index + 1} 題缺少有效 difficulty`)
 }
 
 function childQuestionId(question: Omit<ReadingChildQuestion, 'id'>): string {
   return `child-${stableHash(question)}`
 }
 
-function questionId(question: Omit<LibraryQuestion, 'id' | 'createdAt' | 'updatedAt'>): string {
-  return buildQuestionId(question)
-}
-
 function normalizeSense(value: unknown, wordKey: string, index: number): WordSense {
-  const source = value && typeof value === 'object' ? value as Record<string, unknown> : {}
-  const pos = text(source.pos)
-  const meaningZh = text(source.meaningZh ?? source.zh ?? source.meaning)
-  if (!pos || !meaningZh)
-    throw new Error(`第 ${index + 1} 個詞義缺少詞性或中文義`)
-  const examples = Array.isArray(source.examples)
-    ? source.examples.map(text).filter(Boolean)
-    : [text(source.example)].filter(Boolean)
+  if (!value || typeof value !== 'object' || Array.isArray(value))
+    throw new Error(`第 ${index + 1} 個詞義格式錯誤`)
+  const source = value as Record<string, unknown>
+  assertKnownKeys(source, ['id', 'pos', 'meaningZh', 'examples'], `senses[${index}]`)
+  const rawPos = requiredText(source.pos, `senses[${index}].pos`)
+  const pos = normalizePartOfSpeech(rawPos)
+  if (!pos)
+    throw new Error(`senses[${index}].pos 不是支援的詞性`)
+  const meaningZh = requiredText(source.meaningZh, `senses[${index}].meaningZh`)
+  const examples = source.examples
+  if (!Array.isArray(examples))
+    throw new Error(`senses[${index}].examples 格式錯誤`)
+  if (!examples.every(example => typeof example === 'string'))
+    throw new Error(`senses[${index}].examples 格式錯誤`)
+  const id = requiredText(source.id, `senses[${index}].id`)
+  const expectedId = buildSenseId(wordKey, pos, meaningZh)
+  if (id !== expectedId)
+    throw new Error(`senses[${index}].id 與 wordKey、pos、meaningZh 不一致`)
   return {
-    id: text(source.id) || buildSenseId(wordKey, pos, meaningZh),
+    id: expectedId,
     pos,
     meaningZh,
-    definitionEn: text(source.definitionEn ?? source.definition) || undefined,
-    examples,
-    source: source.source === 'user' || source.source === 'dictionary' || source.source === 'ai' || source.source === 'import' ? source.source : 'import',
-    createdAt: text(source.createdAt) || new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    examples: examples.map(example => example.trim()).filter(Boolean),
   }
 }
 
@@ -39,114 +84,250 @@ function normalizeWord(value: unknown, index: number): WordEntry {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new Error(`第 ${index + 1} 個單字格式錯誤`)
   const source = value as Record<string, unknown>
-  const word = text(source.word)
-  const wordKey = normalizeWordKey(text(source.wordKey) || word)
-  if (!wordKey)
-    throw new Error(`第 ${index + 1} 個單字缺少 word`)
-  const rawSenses = Array.isArray(source.senses) ? source.senses : [{ pos: source.pos, meaningZh: source.meaningZh ?? source.zh ?? source.meaning, examples: source.examples ?? [source.example], definitionEn: source.definitionEn ?? source.definition }]
+  assertKnownKeys(source, ['wordKey', 'word', 'senses', 'updatedAt'], `words[${index}]`)
+  const word = requiredText(source.word, `words[${index}].word`)
+  const rawWordKey = requiredText(source.wordKey, `words[${index}].wordKey`)
+  const wordKey = normalizeWordKey(rawWordKey)
+  if (wordKey !== normalizeWordKey(word))
+    throw new Error(`words[${index}].wordKey 必須與 word 相符`)
+  const rawSenses = source.senses
+  if (!Array.isArray(rawSenses))
+    throw new Error(`第 ${index + 1} 個單字的 senses 格式錯誤`)
+  if (!rawSenses.length)
+    throw new Error(`第 ${index + 1} 個單字缺少 senses`)
   const senses = rawSenses.map((sense, senseIndex) => normalizeSense(sense, wordKey, senseIndex))
+  if (new Set(senses.map(sense => sense.id)).size !== senses.length)
+    throw new Error(`第 ${index + 1} 個單字包含重複 sense`)
   return {
     wordKey,
-    word: word || wordKey,
+    word,
     senses,
-    phonetic: text(source.phonetic) || undefined,
-    audioUrl: text(source.audioUrl) || undefined,
-    origin: text(source.origin) || undefined,
-    dictionarySource: text(source.dictionarySource) || undefined,
-    synonyms: Array.isArray(source.synonyms) ? source.synonyms.map(text).filter(Boolean) : [],
-    antonyms: Array.isArray(source.antonyms) ? source.antonyms.map(text).filter(Boolean) : [],
-    metadata: source.metadata && typeof source.metadata === 'object' ? source.metadata as Record<string, unknown> : undefined,
-    updatedAt: new Date().toISOString(),
+    updatedAt: requiredText(source.updatedAt, `words[${index}].updatedAt`),
   }
 }
 
-function normalizeQuestion(value: unknown, index: number): LibraryQuestion {
+function sourceRef(value: Record<string, unknown>, index: number, refs?: QuestionSourceRefs): QuestionSourceRef | null {
+  if (!refs) {
+    if (value.sourceRef !== undefined)
+      throw new Error(`第 ${index + 1} 題不應包含 sourceRef`)
+    return null
+  }
+  const key = text(value.sourceRef)
+  if (!key || !refs[key])
+    throw new Error(`第 ${index + 1} 題缺少有效 sourceRef`)
+  return refs[key]
+}
+
+function assertEnglish(value: string, field: string, requireEnglish = false) {
+  if (requireEnglish && containsHan(value))
+    throw new Error(`${field} 必須使用英文`)
+}
+
+function assertGeneratedIdentity(value: Record<string, unknown>, index: number): void {
+  const generatedOnlyKeys = ['id', 'fingerprint', 'createdAt', 'updatedAt', 'wordKey', 'senseId']
+  const present = generatedOnlyKeys.filter(key => value[key] !== undefined)
+  if (present.length)
+    throw new Error(`第 ${index + 1} 題 AI 回覆不可包含正式身份欄位：${present.join('、')}`)
+}
+
+function generatedQuestionId(value: unknown, refs?: QuestionSourceRefs): string {
+  return refs ? buildQuestionId() : buildQuestionId(requiredText(value, 'question.id'))
+}
+
+function generatedTimestamp(value: unknown, generatedAt: string, refs?: QuestionSourceRefs): string {
+  return refs ? generatedAt : requiredText(value, 'question.timestamp')
+}
+
+function normalizeMultipleChoice(value: Record<string, unknown>, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, expectedQuestionStyle?: 'standard' | 'fillBlank', requireEnglish = false): MultipleChoiceQuestion {
+  assertKnownKeys(value, ['id', 'fingerprint', 'wordKey', 'senseId', 'sourceRef', 'difficulty', 'explanation', 'createdAt', 'updatedAt', 'kind', 'questionStyle', 'prompt', 'options', 'answerIndex', 'trap', 'whyWrong'], `questions[${index}]`)
+  if (refs)
+    assertGeneratedIdentity(value, index)
+  const prompt = requiredText(value.prompt, `questions[${index}].prompt`)
+  const options = stringList(value.options, `questions[${index}].options`)
+  const answerIndex = typeof value.answerIndex === 'number' ? value.answerIndex : Number.NaN
+  if (options.length !== 4 || !isValidAnswerIndex(options.length, answerIndex))
+    throw new Error(`第 ${index + 1} 題選擇題資料不完整`)
+  if (value.questionStyle !== 'standard' && value.questionStyle !== 'fillBlank')
+    throw new Error(`第 ${index + 1} 題缺少 questionStyle`)
+  if (expectedQuestionStyle && value.questionStyle !== expectedQuestionStyle)
+    throw new Error(`第 ${index + 1} 題 questionStyle 必須是 ${expectedQuestionStyle}`)
+  const promptIssue = questionPromptIssue(value.questionStyle, prompt)
+  if (promptIssue === 'fillBlank')
+    throw new Error(`第 ${index + 1} 題填空題題幹必須包含 _____`)
+  if (promptIssue === 'standard')
+    throw new Error(`第 ${index + 1} 題一般四選一題幹不可包含 _____`)
+  assertEnglish(prompt, `第 ${index + 1} 題題幹`, requireEnglish)
+  for (const [optionIndex, option] of options.entries())
+    assertEnglish(option, `第 ${index + 1} 題選項 ${optionIndex + 1}`, requireEnglish)
+  const resolvedSource = sourceRef(value, index, refs)
+  const wordKey = resolvedSource?.wordKey ?? (value.wordKey === undefined ? '' : normalizeWordKey(requiredText(value.wordKey, `questions[${index}].wordKey`)))
+  const senseId = resolvedSource?.senseId ?? (value.senseId === undefined ? '' : requiredText(value.senseId, `questions[${index}].senseId`))
+  if (!wordKey || !senseId)
+    throw new Error(`第 ${index + 1} 題必須綁定 wordKey 與 senseId`)
+  const trap = optionalText(value.trap, `questions[${index}].trap`)
+  const explanation = optionalText(value.explanation, `questions[${index}].explanation`)
+  let whyWrong: Record<string, string> | undefined
+  if (value.whyWrong !== undefined) {
+    if (!value.whyWrong || typeof value.whyWrong !== 'object' || Array.isArray(value.whyWrong) || !Object.values(value.whyWrong).every(item => typeof item === 'string'))
+      throw new Error(`questions[${index}].whyWrong 格式錯誤`)
+    whyWrong = value.whyWrong as Record<string, string>
+  }
+  const content: Omit<MultipleChoiceQuestion, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'> = {
+    kind: 'multipleChoice',
+    wordKey,
+    senseId,
+    difficulty: questionDifficulty(value.difficulty, index, allowedDifficulty),
+    questionStyle: value.questionStyle,
+    prompt,
+    options,
+    answerIndex,
+    explanation,
+    trap,
+    whyWrong,
+  }
+  const fingerprint = buildQuestionFingerprint(content)
+  const now = new Date().toISOString()
+  return { ...content, id: generatedQuestionId(value.id, refs), fingerprint, createdAt: generatedTimestamp(value.createdAt, now, refs), updatedAt: generatedTimestamp(value.updatedAt, now, refs) }
+}
+
+function normalizeReading(value: Record<string, unknown>, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, requireEnglish = false): ReadingPack {
+  assertKnownKeys(value, ['id', 'fingerprint', 'difficulty', 'explanation', 'createdAt', 'updatedAt', 'kind', 'title', 'passage', 'wordKeys', 'questions'], `questions[${index}]`)
+  if (refs)
+    assertGeneratedIdentity(value, index)
+  const title = requiredText(value.title, `questions[${index}].title`)
+  const passage = requiredText(value.passage, `questions[${index}].passage`)
+  assertEnglish(title, `第 ${index + 1} 題標題`, requireEnglish)
+  assertEnglish(passage, `第 ${index + 1} 題文章`, requireEnglish)
+  const rawWordKeys = stringList(value.wordKeys, `questions[${index}].wordKeys`)
+  const wordKeys = rawWordKeys.map((wordKey) => {
+    if (!refs)
+      return normalizeWordKey(wordKey)
+    const source = refs[wordKey]
+    if (!source)
+      throw new Error(`第 ${index + 1} 題包含未知 sourceRef`)
+    return source.wordKey
+  })
+  if (new Set(wordKeys).size !== wordKeys.length)
+    throw new Error(`第 ${index + 1} 題 wordKeys 不可重複`)
+  const rawQuestions = value.questions
+  if (!Array.isArray(rawQuestions))
+    throw new Error(`第 ${index + 1} 題 questions 格式錯誤`)
+  if (!wordKeys.length || !rawQuestions.length)
+    throw new Error(`第 ${index + 1} 題閱讀資料不完整`)
+  const childIds = new Set<string>()
+  const questions = rawQuestions.map((item, childIndex) => {
+    if (!item || typeof item !== 'object' || Array.isArray(item))
+      throw new Error(`閱讀題 ${childIndex + 1} 格式錯誤`)
+    const child = item as Record<string, unknown>
+    assertKnownKeys(child, ['id', 'kind', 'sourceRef', 'prompt', 'options', 'answerIndex', 'wordKey', 'senseId'], `reading.questions[${childIndex}]`)
+    if (refs)
+      assertGeneratedIdentity(child, childIndex)
+    if (child.kind !== 'multipleChoice')
+      throw new Error(`閱讀題 ${childIndex + 1} 必須是 multipleChoice`)
+    const prompt = requiredText(child.prompt, `reading.questions[${childIndex}].prompt`)
+    const options = stringList(child.options, `reading.questions[${childIndex}].options`)
+    const answerIndex = typeof child.answerIndex === 'number' ? child.answerIndex : Number.NaN
+    if (options.length !== 4 || !isValidAnswerIndex(options.length, answerIndex))
+      throw new Error(`閱讀題 ${childIndex + 1} 選項資料不完整`)
+    assertEnglish(prompt, `閱讀題 ${childIndex + 1} 題幹`, requireEnglish)
+    for (const [optionIndex, option] of options.entries())
+      assertEnglish(option, `閱讀題 ${childIndex + 1} 選項 ${optionIndex + 1}`, requireEnglish)
+    const resolvedSource = sourceRef(child, childIndex, refs)
+    const wordKey = resolvedSource?.wordKey ?? (child.wordKey === undefined ? '' : normalizeWordKey(requiredText(child.wordKey, `reading.questions[${childIndex}].wordKey`)))
+    const senseId = resolvedSource?.senseId ?? (child.senseId === undefined ? '' : requiredText(child.senseId, `reading.questions[${childIndex}].senseId`))
+    if (!wordKey || !senseId)
+      throw new Error(`閱讀題 ${childIndex + 1} 必須綁定 wordKey 與 senseId`)
+    const normalized: Omit<ReadingChildQuestion, 'id'> = {
+      kind: 'multipleChoice',
+      prompt,
+      options,
+      answerIndex,
+      wordKey,
+      senseId,
+    }
+    const id = refs ? childQuestionId(normalized) : requiredText(child.id, `reading.questions[${childIndex}].id`)
+    if (childIds.has(id))
+      throw new Error(`閱讀題 ${childIndex + 1} id 不可重複`)
+    childIds.add(id)
+    return { ...normalized, id }
+  })
+  const content: Omit<ReadingPack, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'> = {
+    kind: 'reading',
+    difficulty: questionDifficulty(value.difficulty, index, allowedDifficulty),
+    explanation: optionalText(value.explanation, `questions[${index}].explanation`),
+    title,
+    passage,
+    wordKeys,
+    questions,
+  }
+  const fingerprint = buildQuestionFingerprint(content)
+  const now = new Date().toISOString()
+  return { ...content, id: generatedQuestionId(value.id, refs), fingerprint, createdAt: generatedTimestamp(value.createdAt, now, refs), updatedAt: generatedTimestamp(value.updatedAt, now, refs) }
+}
+
+function normalizeQuestion(value: unknown, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, expectedQuestionKind?: 'multipleChoice' | 'reading', expectedQuestionStyle?: 'standard' | 'fillBlank', requireEnglish = false): LibraryQuestion {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new Error(`第 ${index + 1} 題格式錯誤`)
   const source = value as Record<string, unknown>
-  const now = new Date().toISOString()
-  const createdAt = text(source.createdAt) || now
-  const base = {
-    wordKey: text(source.wordKey) ? normalizeWordKey(text(source.wordKey)) : undefined,
-    senseId: text(source.senseId) || undefined,
-    source: (source.source === 'ai' || source.source === 'user' || source.source === 'dictionary' || source.source === 'import' ? source.source : 'import') as LibraryDataSource,
-    sourceType: text(source.sourceType) || undefined,
-  }
-  if (source.kind === 'reading') {
-    const rawQuestions = Array.isArray(source.questions)
-      ? source.questions.map((item) => {
-          const child = item as Record<string, unknown>
-          const normalized: Omit<ReadingChildQuestion, 'id'> = {
-            kind: child.kind === 'cloze' ? 'cloze' : 'multipleChoice',
-            prompt: text(child.prompt),
-            options: Array.isArray(child.options) ? child.options.map(text).filter(Boolean) : undefined,
-            answerIndex: Number.isInteger(child.answerIndex) ? child.answerIndex as number : undefined,
-            answers: Array.isArray(child.answers) ? child.answers.map(text).filter(Boolean) : undefined,
-            wordKey: text(child.wordKey) ? normalizeWordKey(text(child.wordKey)) : undefined,
-            senseId: text(child.senseId) || undefined,
-          }
-          return { ...normalized, id: childQuestionId(normalized) }
-        })
-      : []
-    if (!text(source.title) || !text(source.passage) || !rawQuestions.length)
-      throw new Error(`第 ${index + 1} 題閱讀資料不完整`)
-    const wordKeys = Array.isArray(source.wordKeys) ? source.wordKeys.map(value => normalizeWordKey(text(value))).filter(Boolean) : []
-    const content: Omit<ReadingPack, 'id' | 'createdAt' | 'updatedAt'> = {
-      ...base,
-      kind: 'reading',
-      title: text(source.title),
-      passage: text(source.passage),
-      wordKeys,
-      questions: rawQuestions,
-    }
-    return { ...content, id: questionId(content), createdAt, updatedAt: now }
-  }
-  if (source.kind === 'cloze') {
-    const answers = Array.isArray(source.answers) ? source.answers.map(text).filter(Boolean) : []
-    if (!text(source.prompt) || !answers.length)
-      throw new Error(`第 ${index + 1} 題填空資料不完整`)
-    const content: Omit<ClozeQuestion, 'id' | 'createdAt' | 'updatedAt'> = {
-      ...base,
-      kind: 'cloze',
-      prompt: text(source.prompt),
-      answers,
-      options: Array.isArray(source.options) ? source.options.map(text).filter(Boolean) : undefined,
-    }
-    return { ...content, id: questionId(content), createdAt, updatedAt: now }
-  }
-  const options = Array.isArray(source.options) ? source.options.map(text).filter(Boolean) : []
-  const answerIndex = Number(source.answerIndex)
-  if (!text(source.prompt) || options.length !== 4 || !Number.isInteger(answerIndex) || answerIndex < 0 || answerIndex >= options.length)
-    throw new Error(`第 ${index + 1} 題選擇題資料不完整`)
-  const content: Omit<MultipleChoiceQuestion, 'id' | 'createdAt' | 'updatedAt'> = {
-    ...base,
-    kind: 'multipleChoice',
-    questionStyle: source.questionStyle === 'fillBlank' || text(source.prompt).includes('_____') ? 'fillBlank' : 'standard',
-    prompt: text(source.prompt),
-    options,
-    answerIndex,
-    trap: text(source.trap) || undefined,
-    whyWrong: source.whyWrong && typeof source.whyWrong === 'object' ? source.whyWrong as Record<string, string> : undefined,
-  }
-  return { ...content, id: questionId(content), createdAt, updatedAt: now }
+  if (expectedQuestionKind && source.kind !== expectedQuestionKind)
+    throw new Error(`第 ${index + 1} 題類型不符合目前生成設定`)
+  if (source.kind === 'reading')
+    return normalizeReading(source, index, refs, allowedDifficulty, requireEnglish)
+  if (source.kind !== 'multipleChoice')
+    throw new Error(`第 ${index + 1} 題必須是 multipleChoice 或 reading`)
+  return normalizeMultipleChoice(source, index, refs, allowedDifficulty, expectedQuestionStyle, requireEnglish)
 }
 
-export type LibraryImportPayload = { kind: 'vocab', words: WordEntry[] } | { kind: 'questions', questions: LibraryQuestion[] }
+export type LibraryImportPayload = { kind: 'words', words: WordEntry[] } | { kind: 'questions', questions: LibraryQuestion[] }
 
-export function parseLibraryImport(textValue: string): { valid: true, data: LibraryImportPayload } | { valid: false, error: string } {
+export interface LibraryImportOptions {
+  questionSources?: QuestionSourceRefs
+  allowedDifficulty?: QuestionDifficulty
+  expectedQuestionKind?: 'multipleChoice' | 'reading'
+  expectedQuestionStyle?: 'standard' | 'fillBlank'
+  requireEnglish?: boolean
+}
+
+export type LibraryImportResult = { valid: true, data: LibraryImportPayload } | { valid: false, error: string }
+
+function normalizeLibraryImportValue(parsedValue: unknown, options: LibraryImportOptions): LibraryImportPayload {
+  if (!parsedValue || typeof parsedValue !== 'object' || Array.isArray(parsedValue))
+    throw new Error('匯入資料必須是 object')
+  const parsed = parsedValue as Record<string, unknown>
+  assertSchemaEnvelope(parsed, !options.questionSources)
+  if (parsed.kind === 'words') {
+    assertKnownKeys(parsed, ['kind', 'schemaVersion', 'batch', 'words'], '匯入資料')
+    if (!Array.isArray(parsed.words))
+      throw new Error('找不到有效的 words 陣列')
+    return { kind: 'words', words: parsed.words.map(normalizeWord) }
+  }
+  if (parsed.kind === 'questions') {
+    assertKnownKeys(parsed, ['kind', 'schemaVersion', 'batch', 'questions'], '匯入資料')
+    if (!Array.isArray(parsed.questions))
+      throw new Error('找不到有效的 questions 陣列')
+    const requireEnglish = options.requireEnglish ?? true
+    return {
+      kind: 'questions',
+      questions: parsed.questions.map((question, index) => normalizeQuestion(question, index, options.questionSources, options.allowedDifficulty, options.expectedQuestionKind, options.expectedQuestionStyle, requireEnglish)),
+    }
+  }
+  throw new Error('找不到 words 或 questions')
+}
+
+export function parseLibraryImportValue(value: unknown, options: LibraryImportOptions = {}): LibraryImportResult {
   try {
-    const parsed = JSON.parse(textValue.replace(/^```(?:json)?\s*/i, '').replace(/\n?```\s*$/, '').trim()) as Record<string, unknown>
-    if (parsed.kind === 'vocab' || Array.isArray(parsed.words)) {
-      const rawWords = Array.isArray(parsed.words) ? parsed.words : []
-      return { valid: true, data: { kind: 'vocab', words: rawWords.map(normalizeWord) } }
-    }
-    if (parsed.kind === 'questions' || Array.isArray(parsed.questions)) {
-      const rawQuestions = Array.isArray(parsed.questions) ? parsed.questions : []
-      return { valid: true, data: { kind: 'questions', questions: rawQuestions.map(normalizeQuestion) } }
-    }
-    return { valid: false, error: '找不到 vocab words 或 questions' }
+    return { valid: true, data: normalizeLibraryImportValue(value, options) }
   }
   catch (error) {
-    return { valid: false, error: (error as Error).message || 'JSON 格式錯誤' }
+    return { valid: false, error: error instanceof Error ? error.message : 'JSON 格式錯誤' }
+  }
+}
+
+export function parseLibraryImport(textValue: string, options: LibraryImportOptions = {}): LibraryImportResult {
+  try {
+    return parseLibraryImportValue(JSON.parse(textValue.trim()), options)
+  }
+  catch (error) {
+    return { valid: false, error: error instanceof Error ? error.message : 'JSON 格式錯誤' }
   }
 }

@@ -1,1406 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 103,
   "words": [
-    {
-      "wordKey": "cabinet",
-      "word": "cabinet",
-      "senses": [
-        {
-          "id": "sense-428febfe",
-          "pos": "noun",
-          "meaningZh": "櫥櫃；展示櫃",
-          "definitionEn": "a piece of furniture with doors and shelves or drawers, typically used for storage or display",
-          "examples": [
-            "Sarah proudly displayed her collection of vintage tea sets in the glass-fronted cabinet in her living room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-f83dbfed",
-          "pos": "noun",
-          "meaningZh": "電器箱體；機殼",
-          "definitionEn": "a case or housing for electronic equipment, such as a radio or television",
-          "examples": [
-            "The television cabinet neatly stores your TV, DVD player, and gaming consoles, keeping all your electronic equipment organized and protected."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L6",
-        "textbookTitle": "三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "calculate",
-      "word": "calculate",
-      "senses": [
-        {
-          "id": "sense-3af894af",
-          "pos": "verb",
-          "meaningZh": "計算；核算",
-          "definitionEn": "to keep a record of something, like expenses or data",
-          "examples": [
-            "I need to calculate how much money I spent on groceries last month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-f00116a1",
-          "pos": "verb",
-          "meaningZh": "信任；依賴（語義存疑）",
-          "definitionEn": "to have trust or belief in something or someone",
-          "examples": [
-            "I cannot calculate his statement because he has lied to me before."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L2",
-        "textbookTitle": "三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "calculation",
-      "word": "calculation",
-      "senses": [
-        {
-          "id": "sense-06798572",
-          "pos": "noun",
-          "meaningZh": "計算；運算",
-          "definitionEn": "the act or process of performing mathematical operations to find a value",
-          "examples": [
-            "My math teacher gave me a complex calculation to solve for homework."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-619bb571",
-          "pos": "noun",
-          "meaningZh": "數學計算；演算",
-          "definitionEn": "the process of using numbers or quantity to solve a problem",
-          "examples": [
-            "Mathematicians use complex calculations to solve problems in physics and engineering."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L2",
-        "textbookTitle": "三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "calorie",
-      "word": "calorie",
-      "senses": [
-        {
-          "id": "sense-45e29e36",
-          "pos": "noun",
-          "meaningZh": "卡路里；熱量單位",
-          "definitionEn": "A unit of measurement for energy in food. It is defined as the amount of heat energy needed to raise the temperature of one gram of water by one degree Celsius.",
-          "examples": [
-            "I burned 500 calories during my morning run."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "campaign",
-      "word": "campaign",
-      "senses": [
-        {
-          "id": "sense-93d5a81f",
-          "pos": "noun",
-          "meaningZh": "宣傳活動；倡議運動",
-          "definitionEn": "a series of actions taken to promote a certain principle or working towards a specific outcome",
-          "examples": [
-            "The environmental organization launched a campaign to raise awareness about plastic pollution and encourage people to reduce their use of single-use plastics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-537c215a",
-          "pos": "noun",
-          "meaningZh": "軍事行動；戰役",
-          "definitionEn": "a series of operations aimed at achieving a particular goal within a set timeframe and location",
-          "examples": [
-            "The political candidate launched a nationwide campaign to gain support for their bid for presidency."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "candidate",
       "word": "candidate",
       "senses": [
         {
-          "id": "sense-d05c41b5",
-          "pos": "noun",
+          "id": "sense-71e69fb9",
+          "pos": "n.",
           "meaningZh": "候選人；競選者",
-          "definitionEn": "a politician who is running for public office",
           "examples": [
             "In the upcoming election, there are several candidates vying for the position of mayor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6cbac505",
-          "pos": "noun",
+          "id": "sense-c814df01",
+          "pos": "n.",
           "meaningZh": "應徵者；候選人選",
-          "definitionEn": "someone who is considered for something, such as an office, prize, or honor",
           "examples": [
             "The city is currently evaluating several candidates for the position of mayor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cane",
       "word": "cane",
       "senses": [
         {
-          "id": "sense-3a67f6b4",
-          "pos": "noun",
+          "id": "sense-c6b9005c",
+          "pos": "n.",
           "meaningZh": "手杖；拐杖",
-          "definitionEn": "a walking stick with a curved handle, used to help someone walk",
           "examples": [
             "After his leg injury, John relied on his cane to provide support and stability as he walked."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e3956c83",
-          "pos": "noun",
+          "id": "sense-8d92045b",
+          "pos": "n.",
           "meaningZh": "藤條；竹莖",
-          "definitionEn": "the long, hollow stems of particular plants such as bamboo",
           "examples": [
             "The craftsman used the cane to create a beautifully woven basket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "canoe",
       "word": "canoe",
       "senses": [
         {
-          "id": "sense-8a87b92f",
-          "pos": "noun",
+          "id": "sense-1a100b33",
+          "pos": "n.",
           "meaningZh": "獨木舟；小划艇",
-          "definitionEn": "a small and narrow boat with pointed ends and typically with space for one or more paddlers; propelled with a paddle",
           "examples": [
             "They decided to take a leisurely paddle down the river in a canoe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e078b653",
-          "pos": "verb",
+          "id": "sense-5b583a14",
+          "pos": "v.",
           "meaningZh": "划獨木舟",
-          "definitionEn": "to travel in or paddle a canoe",
           "examples": [
             "On a sunny weekend, they decided to canoe down the river, enjoying the peacefulness of nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capacity",
       "word": "capacity",
       "senses": [
         {
-          "id": "sense-0428d02c",
-          "pos": "noun",
+          "id": "sense-30aa1b88",
+          "pos": "n.",
           "meaningZh": "容量；容積",
-          "definitionEn": "the amount that can be contained",
           "examples": [
             "The stadium has a seating capacity of 50,000 spectators."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5de4e720",
-          "pos": "noun",
+          "id": "sense-c503dc04",
+          "pos": "n.",
           "meaningZh": "產能；生產能力",
-          "definitionEn": "capability to perform or produce",
           "examples": [
             "The factory has a capacity to produce 1000 units per day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capitalism",
       "word": "capitalism",
       "senses": [
         {
-          "id": "sense-c31e132b",
-          "pos": "noun",
+          "id": "sense-0febea87",
+          "pos": "n.",
           "meaningZh": "資本主義",
-          "definitionEn": "An economic and political system in which a country’s trade and industry are controlled by private owners for profit, rather than by the state.",
           "examples": [
             "In a capitalist society, individuals have the right to start their own businesses and compete in the market to maximize their profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "capitalist",
       "word": "capitalist",
       "senses": [
         {
-          "id": "sense-45e7c3a4",
-          "pos": "noun",
+          "id": "sense-c5d813f0",
+          "pos": "n.",
           "meaningZh": "資本家；投資者",
-          "definitionEn": "a person who invests capital in a business, especially a large one",
           "examples": [
             "John is a successful capitalist who invested his wealth in various corporations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cargo",
       "word": "cargo",
       "senses": [
         {
-          "id": "sense-8bde6081",
-          "pos": "noun",
+          "id": "sense-63506351",
+          "pos": "n.",
           "meaningZh": "貨物；運輸貨品",
-          "definitionEn": "the goods that are transported by ship, plane, or other large vehicle",
           "examples": [
             "The cargo of the ship consisted of containers filled with electronic devices."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-43d1b1c2",
-          "pos": "noun",
+          "id": "sense-a2674232",
+          "pos": "n.",
           "meaningZh": "貨運；一批貨",
-          "definitionEn": "a load or shipment of goods",
           "examples": [
             "The cargo ship was docked at the harbor, ready to unload its valuable cargo of electronics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carrier",
       "word": "carrier",
       "senses": [
         {
-          "id": "sense-4e7ff736",
-          "pos": "noun",
+          "id": "sense-65b473b6",
+          "pos": "n.",
           "meaningZh": "運輸公司；貨運業者",
-          "definitionEn": "a company that transports goods or people from one place to another.",
           "examples": [
             "I need to book a carrier to transport my furniture to the new apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-18b5ff0b",
-          "pos": "noun",
+          "id": "sense-9a569f8b",
+          "pos": "n.",
           "meaningZh": "保險公司；承保業者",
-          "definitionEn": "a company or organization that provides insurance.",
           "examples": [
             "I decided to switch my insurance carrier to get a better deal on my premiums."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "carve",
       "word": "carve",
       "senses": [
         {
-          "id": "sense-137ebbd8",
-          "pos": "verb",
+          "id": "sense-f2b11921",
+          "pos": "v.",
           "meaningZh": "雕刻；刻製",
-          "definitionEn": "form by carving",
           "examples": [
             "The sculptor used a hammer and chisel to carve the intricate design out of the block of stone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-44cc66c4",
-          "pos": "verb",
+          "id": "sense-92395b55",
+          "pos": "v.",
           "meaningZh": "鑿刻；刻劃",
-          "definitionEn": "engrave or cut by chipping away at a surface",
           "examples": [
             "The talented sculptor was able to carve intricate details into the marble statue with ease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "catalogue",
       "word": "catalogue",
       "senses": [
         {
-          "id": "sense-7574a7a2",
-          "pos": "noun",
+          "id": "sense-0801e136",
+          "pos": "n.",
           "meaningZh": "目錄；清單",
-          "definitionEn": "a complete list of things, usually arranged in a particular order",
           "examples": [
             "The bookstore published a comprehensive catalogue of all their available titles, making it easier for customers to browse and find the books they wanted."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4e0d4a61",
-          "pos": "noun",
+          "id": "sense-f052cad5",
+          "pos": "n.",
           "meaningZh": "圖錄；附說明的目錄冊",
-          "definitionEn": "a book or pamphlet containing a list of items arranged systematically, often with descriptive details and illustrations",
           "examples": [
             "I used the catalogue to browse and select the furniture for my new apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "category",
       "word": "category",
       "senses": [
         {
-          "id": "sense-a80da084",
-          "pos": "noun",
+          "id": "sense-70080950",
+          "pos": "n.",
           "meaningZh": "類別；範疇",
-          "definitionEn": "a general concept that marks divisions or coordinations in a conceptual scheme",
           "examples": [
             "In a library, books are typically organized by category, such as fiction, non-fiction, mystery, or romance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b7bfd47e",
-          "pos": "noun",
+          "id": "sense-2a60a9da",
+          "pos": "n.",
           "meaningZh": "分類；種類",
-          "definitionEn": "a collection of things sharing a common attribute",
           "examples": [
             "In a library, books are organized into different categories such as fiction, non-fiction, and reference."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cease",
       "word": "cease",
       "senses": [
         {
-          "id": "sense-266cb966",
-          "pos": "verb",
+          "id": "sense-b2a3d2c3",
+          "pos": "v.",
           "meaningZh": "停止；終止",
-          "definitionEn": "to stop doing something; put an end to a state or an activity",
           "examples": [
             "After working nonstop for 12 hours, he decided to cease his activities and take a much-needed rest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2cd3b3ef",
-          "pos": "verb",
+          "id": "sense-5e0fd7e2",
+          "pos": "v.",
           "meaningZh": "結束；告一段落",
-          "definitionEn": "to come to an end, either spatially or metaphorically",
           "examples": [
             "After a long day of hiking, their energy finally began to cease, and they decided to set up camp for the night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "celebration",
       "word": "celebration",
       "senses": [
         {
-          "id": "sense-88f9c368",
-          "pos": "noun",
+          "id": "sense-1a9c43e8",
+          "pos": "n.",
           "meaningZh": "慶典；節慶活動",
-          "definitionEn": "a joyful occasion for special festivities to mark some happy event",
           "examples": [
             "The town threw a huge celebration to commemorate their victory in the championship game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1dd7d8fd",
-          "pos": "noun",
+          "id": "sense-02ccdb7d",
+          "pos": "n.",
           "meaningZh": "儀式；宗教典禮",
-          "definitionEn": "the public performance of a sacrament or solemn ceremony with all appropriate ritual",
           "examples": [
             "The grand procession and elaborate rituals during the royal wedding were a majestic celebration of love and unity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chamber",
       "word": "chamber",
       "senses": [
         {
-          "id": "sense-9da67a58",
-          "pos": "noun",
+          "id": "sense-e85a7164",
+          "pos": "n.",
           "meaningZh": "房間；（特定用途的）室",
-          "definitionEn": "a room used for a particular purpose",
           "examples": [
             "The king received his guests in the great chamber."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b6aaa73b",
-          "pos": "noun",
+          "id": "sense-28e9b07f",
+          "pos": "n.",
           "meaningZh": "（體內）腔室",
-          "definitionEn": "an enclosed volume in the body",
           "examples": [
             "During the medical examination, the doctor listened to my heart and lungs using a stethoscope, placing it on different chambers of my chest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-18da9e36",
-          "pos": "noun",
+          "id": "sense-3b6aeafa",
+          "pos": "n.",
           "meaningZh": "法官室；法庭內室",
-          "definitionEn": "a room where a judge transacts business",
           "examples": [
             "The lawyer confidently entered the chamber to present her case before the judge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "championship",
       "word": "championship",
       "senses": [
         {
-          "id": "sense-9fdacd45",
-          "pos": "noun",
+          "id": "sense-1b9eb2ad",
+          "pos": "n.",
           "meaningZh": "錦標賽；冠軍賽",
-          "definitionEn": "a competition at which a champion is chosen",
           "examples": [
             "The team trained hard for months to prepare for the championship, hoping to win the title and bring home the trophy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c83ec564",
-          "pos": "noun",
+          "id": "sense-9d225afc",
+          "pos": "n.",
           "meaningZh": "冠軍地位；稱霸",
-          "definitionEn": "the status of being a champion",
           "examples": [
             "After years of hard work and training, she finally achieved the championship in the Olympic Games."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "characteristic",
       "word": "characteristic",
       "senses": [
         {
-          "id": "sense-ac7d9a1d",
-          "pos": "adjective",
+          "id": "sense-fbd401bb",
+          "pos": "adj.",
           "meaningZh": "典型的；特有的",
-          "definitionEn": "having qualities or features that are typical or distinctive of someone or something",
           "examples": [
             "One of her most noticeable characteristics is her infectious laughter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c82e0293",
-          "pos": "noun",
+          "id": "sense-78821deb",
+          "pos": "n.",
           "meaningZh": "特徵；特性",
-          "definitionEn": "a feature or quality that is typical of or distinguishes a particular person or thing",
           "examples": [
             "One characteristic of a successful entrepreneur is their ability to think outside the box and take calculated risks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L1",
-        "textbookTitle": "三民 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "charity",
       "word": "charity",
       "senses": [
         {
-          "id": "sense-f3a7a793",
-          "pos": "noun",
+          "id": "sense-e4ff5d83",
+          "pos": "n.",
           "meaningZh": "慈善；捐助",
-          "definitionEn": "the act of giving to those in need",
           "examples": [
             "The local church organized a charity event to collect food and clothing for the homeless during winter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9633f608",
-          "pos": "noun",
+          "id": "sense-31de6d58",
+          "pos": "n.",
           "meaningZh": "慈善機構；公益組織",
-          "definitionEn": "an institution set up to provide help to those in need",
           "examples": [
             "The charity organization set up a soup kitchen to provide food to the homeless people in the area."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L8",
-        "textbookTitle": "三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chemistry",
       "word": "chemistry",
       "senses": [
         {
-          "id": "sense-e8f76ea9",
-          "pos": "noun",
+          "id": "sense-36331f25",
+          "pos": "n.",
           "meaningZh": "化學（科學）",
-          "definitionEn": "the scientific study of substances, their properties, and the ways in which they react or combine with each other",
           "examples": [
             "In order to create a new drug, the pharmaceutical researcher conducted extensive chemistry experiments to analyze the chemical properties of various substances and determine how they would react when combined."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-288d0904",
-          "pos": "noun",
+          "id": "sense-5b036350",
+          "pos": "n.",
           "meaningZh": "化學特性；化學反應",
-          "definitionEn": "the basic characteristics of substances and how they interact with other substances",
           "examples": [
             "In his chemistry experiment, Mark mixed two substances together and observed a vibrant color change, demonstrating the interaction between the chemicals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cherish",
       "word": "cherish",
       "senses": [
         {
-          "id": "sense-ba57a2ea",
-          "pos": "verb",
+          "id": "sense-ea91f50f",
+          "pos": "v.",
           "meaningZh": "珍愛；珍視",
-          "definitionEn": "to protect and care for (someone) lovingly; to hold dear",
           "examples": [
             "As a mother, she cherished the time spent with her children, making sure they were always safe and loved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chew",
       "word": "chew",
       "senses": [
         {
-          "id": "sense-80e1a18a",
-          "pos": "noun",
+          "id": "sense-344cb756",
+          "pos": "n.",
           "meaningZh": "咀嚼；嚼食",
-          "definitionEn": "the act of biting and grinding food in your mouth so it becomes soft enough to swallow",
           "examples": [
             "After taking a big bite of the hamburger, he began to chew it slowly and thoroughly, savoring every flavorful bite."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5d73bc76",
-          "pos": "noun",
+          "id": "sense-5557bab2",
+          "pos": "n.",
           "meaningZh": "口香糖片；咀嚼糖",
-          "definitionEn": "a small, rectangular piece of flavored, chewable gum that typically comes in a foil wrapper",
           "examples": [
             "After lunch, he took out a pack of chew and offered a piece to his friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "choke",
       "word": "choke",
       "senses": [
         {
-          "id": "sense-14da1c63",
-          "pos": "verb",
+          "id": "sense-3884fdb2",
+          "pos": "v.",
           "meaningZh": "噎住；窒息",
-          "definitionEn": "to struggle for breath or have difficulty breathing due to lack of air flow",
           "examples": [
             "The child started to choke on a piece of candy and his mother quickly performed the Heimlich maneuver to dislodge it and allow him to breathe again."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5dac589f",
-          "pos": "verb",
+          "id": "sense-f01fb458",
+          "pos": "v.",
           "meaningZh": "掐住喉嚨；使窒息",
-          "definitionEn": "to squeeze or press someone’s throat and make it impossible for them to breathe",
           "examples": [
             "He was so scared that he froze, his fear choking him before he could call for help."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chorus",
       "word": "chorus",
       "senses": [
         {
-          "id": "sense-72d3216c",
-          "pos": "noun",
+          "id": "sense-44437d6c",
+          "pos": "n.",
           "meaningZh": "合唱團",
-          "definitionEn": "a group of people assembled together to sing or perform",
           "examples": [
             "The chorus sang the final verse of the song in unison, their voices rising in perfect harmony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-76f95a37",
-          "pos": "noun",
+          "id": "sense-3ad2be37",
+          "pos": "n.",
           "meaningZh": "（歌曲）副歌；合唱部分",
-          "definitionEn": "the part of a song in which a group of singers join the soloist",
           "examples": [
             "The crowd joins the singer in singing the chorus section of the song."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "circular",
       "word": "circular",
       "senses": [
         {
-          "id": "sense-3974c951",
-          "pos": "adjective",
+          "id": "sense-dd795e57",
+          "pos": "adj.",
           "meaningZh": "圓形的；環形的",
-          "definitionEn": "having the shape of a circle",
           "examples": [
             "The table had a circular top, perfect for sharing food with friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-04282bcb",
-          "pos": "adjective",
+          "id": "sense-d5515cc9",
+          "pos": "adj.",
           "meaningZh": "環狀的；圓形移動的",
-          "definitionEn": "describing something that moves or is shaped like a circle",
           "examples": [
             "The moon appears circular in shape when viewed from Earth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "circulate",
       "word": "circulate",
       "senses": [
         {
-          "id": "sense-ed61c5c4",
-          "pos": "verb",
+          "id": "sense-7b00ac4d",
+          "pos": "v.",
           "meaningZh": "循環；流通（回到起點）",
-          "definitionEn": "To move or travel through a space, circuit, or system and return to the starting point.",
           "examples": [
             "The blood circulates throughout the body, delivering oxygen and nutrients to organs and tissues, and removing waste products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1982b45f",
-          "pos": "verb",
+          "id": "sense-d22c72da",
+          "pos": "v.",
           "meaningZh": "循環流動；旋轉",
-          "definitionEn": "To move in circular motions.",
           "examples": [
             "The air conditioner circulates cool air throughout the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "circulation",
       "word": "circulation",
       "senses": [
         {
-          "id": "sense-6da554b2",
-          "pos": "noun",
+          "id": "sense-e37195ba",
+          "pos": "n.",
           "meaningZh": "血液循環；流通",
-          "definitionEn": "the movement of something through a closed system like blood through the heart and blood vessels",
           "examples": [
             "Exercise helps to improve circulation by increasing blood flow throughout the body."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1e1340d1",
-          "pos": "noun",
+          "id": "sense-05740599",
+          "pos": "n.",
           "meaningZh": "（消息、金錢等的）流通；傳播",
-          "definitionEn": "the spread of something to a wider group or area, as of news or money",
           "examples": [
             "The circulation of the magazine increased drastically after the cover story became viral on social media."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "circumstance",
+      "word": "circumstance",
+      "senses": [
+        {
+          "id": "sense-89f94b5d",
+          "pos": "n.",
+          "meaningZh": "情況；背景條件",
+          "examples": [
+            "Due to unforeseen circumstances, the conference has been postponed."
+          ]
+        },
+        {
+          "id": "sense-b6dca88a",
+          "pos": "n.",
+          "meaningZh": "（伴隨事件的）情境；條件",
+          "examples": [
+            "Due to unforeseen circumstances, the wedding had to be postponed until next month."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "civilian",
+      "word": "civilian",
+      "senses": [
+        {
+          "id": "sense-6c330c50",
+          "pos": "n.",
+          "meaningZh": "平民；非軍人",
+          "examples": [
+            "During wartime, the military evacuated the civilians from the conflict zone to ensure their safety."
+          ]
+        },
+        {
+          "id": "sense-8ca488d6",
+          "pos": "adj.",
+          "meaningZh": "平民的；民間的",
+          "examples": [
+            "As a civilian, he worked in a government office and had no military experience."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "civilization",
+      "word": "civilization",
+      "senses": [
+        {
+          "id": "sense-161f95f4",
+          "pos": "n.",
+          "meaningZh": "文明；高度發展的社會",
+          "examples": [
+            "The ancient civilization of Egypt developed a sophisticated legal system, advanced political structures, and intricate religious beliefs that continue to influence society today."
+          ]
+        },
+        {
+          "id": "sense-b1e17d49",
+          "pos": "n.",
+          "meaningZh": "文明發展；文明化進程",
+          "examples": [
+            "The Mayan civilization had advanced systems of agriculture, writing, and astronomy."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "clarify",
+      "word": "clarify",
+      "senses": [
+        {
+          "id": "sense-b338cc10",
+          "pos": "v.",
+          "meaningZh": "釐清；說明白",
+          "examples": [
+            "The teacher asked the student to clarify their answer so that everyone in the class could understand it better."
+          ]
+        },
+        {
+          "id": "sense-70e724b8",
+          "pos": "v.",
+          "meaningZh": "澄清（油脂等）；濾淨",
+          "examples": [
+            "To clarify the butter, the chef melted it down and strained out the milk solids."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "clash",
+      "word": "clash",
+      "senses": [
+        {
+          "id": "sense-07f2d3e7",
+          "pos": "v.",
+          "meaningZh": "衝突；激烈碰撞",
+          "examples": [
+            "During the heated protest, the police clashed with the demonstrators, resulting in chaos and clashes between the two groups."
+          ]
+        },
+        {
+          "id": "sense-428bfaae",
+          "pos": "n.",
+          "meaningZh": "碰撞聲；鏗鏘聲",
+          "examples": [
+            "The clash of cymbals filled the concert hall."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

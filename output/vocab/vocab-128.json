@@ -1,1408 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 128,
   "words": [
-    {
-      "wordKey": "retire",
-      "word": "retire",
-      "senses": [
-        {
-          "id": "sense-14b1ec36",
-          "pos": "verb",
-          "meaningZh": "退休；引退",
-          "definitionEn": "to stop working, usually because you have reached a certain age or because you want to stop",
-          "examples": [
-            "After 40 years of dedicated service, John decided to retire and spend more time with his family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-f70134d4",
-          "pos": "verb",
-          "meaningZh": "就寢；上床睡覺",
-          "definitionEn": "to go to bed in the evening",
-          "examples": [
-            "After a long day at work, he likes to retire early and get a good night's sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "retirement",
-      "word": "retirement",
-      "senses": [
-        {
-          "id": "sense-501b078f",
-          "pos": "noun",
-          "meaningZh": "退休；退休生活",
-          "definitionEn": "the state of being retired from one’s business or occupation",
-          "examples": [
-            "After decades of hard work, John finally reached retirement and was able to relax and enjoy his free time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-a193d94c",
-          "pos": "noun",
-          "meaningZh": "退休；從職場引退",
-          "definitionEn": "withdrawal from one’s position or occupation, especially upon reaching a certain age or after a certain number of years of service",
-          "examples": [
-            "After working tirelessly for over four decades, Sarah finally reached retirement and decided to spend her days traveling the world and enjoying her newfound freedom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "retreat",
-      "word": "retreat",
-      "senses": [
-        {
-          "id": "sense-503403f6",
-          "pos": "noun",
-          "meaningZh": "撤退；後退；撤離",
-          "definitionEn": "the act of withdrawing or moving back, especially to escape something dangerous or unpleasant",
-          "examples": [
-            "During the hike, they encountered a bear and quickly decided to retreat to the safety of their campsite."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-638a9621",
-          "pos": "noun",
-          "meaningZh": "（軍事）撤退；退卻",
-          "definitionEn": "(military) the withdrawal of troops to a more favorable position, either to avoid defeat or after a defeat",
-          "examples": [
-            "After facing heavy losses, the commander ordered a retreat to regroup and strategize for the upcoming battle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "reunion",
-      "word": "reunion",
-      "senses": [
-        {
-          "id": "sense-854de939",
-          "pos": "noun",
-          "meaningZh": "重聚；再次相聚",
-          "definitionEn": "the act of coming together again, especially after a lengthy separation",
-          "examples": [
-            "After being apart for years, the family had an emotional reunion at the airport, hugging and crying tears of joy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-3c03d5b4",
-          "pos": "noun",
-          "meaningZh": "同學會；聚會",
-          "definitionEn": "a party or gathering of former associates, friends, or classmates who have come together again",
-          "examples": [
-            "After years of being apart, the high school reunion brought together old friends to reminisce and catch up with each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4 +1",
-        "textbookTitle": "龍騰 B3·L4、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "revenge",
-      "word": "revenge",
-      "senses": [
-        {
-          "id": "sense-3faefd07",
-          "pos": "noun",
-          "meaningZh": "復仇；報復行動",
-          "definitionEn": "The act of taking action against someone in retaliation for an injury or offense caused by them.",
-          "examples": [
-            "After years of meticulously planning, he finally enacted his revenge on those who had wronged him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-d0b3c295",
-          "pos": "noun",
-          "meaningZh": "復仇欲望；報仇之心",
-          "definitionEn": "The desire to take retaliatory action against someone who has wronged you.",
-          "examples": [
-            "After being betrayed by his best friend, Tom couldn't help but feel a burning desire for revenge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "revise",
       "word": "revise",
       "senses": [
         {
-          "id": "sense-1ae30900",
-          "pos": "verb",
+          "id": "sense-42e2a6df",
+          "pos": "v.",
           "meaningZh": "修改；修訂；校訂",
-          "definitionEn": "to make changes or corrections to something, especially written material",
           "examples": [
             "I need to revise my essay before submitting it for grading."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-75d357b7",
-          "pos": "verb",
+          "id": "sense-b259eb3a",
+          "pos": "v.",
           "meaningZh": "複習；重新學習",
-          "definitionEn": "to study again for the purpose of improving or updating one’s knowledge",
           "examples": [
             "After receiving feedback, I will need to revise the essay to make it better."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revision",
       "word": "revision",
       "senses": [
         {
-          "id": "sense-c9077490",
-          "pos": "noun",
+          "id": "sense-22272f98",
+          "pos": "n.",
           "meaningZh": "修訂；修改",
-          "definitionEn": "the act of rewriting or amending something in order to improve it",
           "examples": [
             "After receiving feedback from her professor, she started her revision of the essay to improve the flow and clarity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-17274c18",
-          "pos": "noun",
+          "id": "sense-d8a29260",
+          "pos": "n.",
           "meaningZh": "修訂版；修改版",
-          "definitionEn": "a new version of something that has been revised or edited",
           "examples": [
             "After receiving feedback from her editor, the author made several revisions to her manuscript before submitting the final version for publication."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revolution",
       "word": "revolution",
       "senses": [
         {
-          "id": "sense-241bbc3d",
-          "pos": "noun",
+          "id": "sense-312e7a61",
+          "pos": "n.",
           "meaningZh": "革命；政權推翻",
-          "definitionEn": "the overthrow of a government by those who are governed",
           "examples": [
             "The citizens successfully organized a revolution and toppled the oppressive regime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-75705c28",
-          "pos": "noun",
+          "id": "sense-b2384724",
+          "pos": "n.",
           "meaningZh": "旋轉；公轉一圈",
-          "definitionEn": "a single complete turn (axial or orbital)",
           "examples": [
             "The Earth completes one revolution around the sun in approximately 365 days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7 +1",
-        "textbookTitle": "龍騰 B4·L7、三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revolutionary",
       "word": "revolutionary",
       "senses": [
         {
-          "id": "sense-8daedfc7",
-          "pos": "adjective",
+          "id": "sense-4fa9f0d1",
+          "pos": "adj.",
           "meaningZh": "革命性的；劃時代的",
-          "definitionEn": "describing something that is new, exciting, and different from anything that has existed or been done before",
           "examples": [
             "The invention of smartphones was revolutionary, as it completely changed the way people communicate and access information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7 +1",
-        "textbookTitle": "龍騰 B4·L7、三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reward",
       "word": "reward",
       "senses": [
         {
-          "id": "sense-46917c46",
-          "pos": "noun",
+          "id": "sense-70da587a",
+          "pos": "n.",
           "meaningZh": "獎賞；懸賞金",
-          "definitionEn": "the offer of money or a gift as a recompense for worthwhile behaviour or retribution for wrongdoing",
           "examples": [
             "The company will reward its top salesperson with a free trip to Hawaii."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9da12055",
-          "pos": "noun",
+          "id": "sense-db04d0d1",
+          "pos": "n.",
           "meaningZh": "報酬；正向強化",
-          "definitionEn": "the return for performance of a desired behaviour; positive reinforcement",
           "examples": [
             "When Timmy got an A+ on his science project, his teacher gave him a reward in the form of extra credit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rhyme",
       "word": "rhyme",
       "senses": [
         {
-          "id": "sense-e48856a0",
-          "pos": "noun",
+          "id": "sense-df36c488",
+          "pos": "n.",
           "meaningZh": "押韻；韻腳",
-          "definitionEn": "a correspondence in the sounds of two or more words, especially at the end",
           "examples": [
             "She loved to write poetry, and her favorite way to end her lines was with a perfect rhyme, like 'love' and 'dove'."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-94914027",
-          "pos": "verb",
+          "id": "sense-dbced564",
+          "pos": "v.",
           "meaningZh": "押韻；使合韻",
-          "definitionEn": "to have or make a rhyme",
           "examples": [
             "The children giggled as they sang a nursery rhyme together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rhythm",
       "word": "rhythm",
       "senses": [
         {
-          "id": "sense-1341bae7",
-          "pos": "noun",
+          "id": "sense-26bcd85b",
+          "pos": "n.",
           "meaningZh": "節奏；韻律",
-          "definitionEn": "the arrangement of spoken words alternating stressed and unstressed elements",
           "examples": [
             "The rhythm of the music made it hard for anyone to sit still."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9723f376",
-          "pos": "noun",
+          "id": "sense-921415d2",
+          "pos": "n.",
           "meaningZh": "節拍；拍子",
-          "definitionEn": "the basic rhythmic unit in a piece of music",
           "examples": [
             "The drummer struggled to keep the rhythm during the song’s fast and complex arrangement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "riddle",
       "word": "riddle",
       "senses": [
         {
-          "id": "sense-d28e2ae9",
-          "pos": "noun",
+          "id": "sense-033319e9",
+          "pos": "n.",
           "meaningZh": "謎題；難解之謎",
-          "definitionEn": "a difficult problem",
           "examples": [
             "The mystery surrounding the disappearance of the ancient artifact was a riddle that puzzled historians for years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2d942005",
-          "pos": "verb",
+          "id": "sense-877e2510",
+          "pos": "v.",
           "meaningZh": "穿孔；鑿滿小孔",
-          "definitionEn": "pierce with many holes",
           "examples": [
             "The shoemaker used an awl to riddle holes into the leather for stitching."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "robber",
       "word": "robber",
       "senses": [
         {
-          "id": "sense-ce70d2bb",
-          "pos": "noun",
+          "id": "sense-d33600df",
+          "pos": "n.",
           "meaningZh": "強盜；搶匪",
-          "definitionEn": "A person who takes property unlawfully from a person or a place by threatening or using force.",
           "examples": [
             "The masked robber entered the bank, brandishing a gun and demanding that everyone lay on the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6 +1",
-        "textbookTitle": "龍騰 B5·L6、三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "romance",
       "word": "romance",
       "senses": [
         {
-          "id": "sense-37ceac80",
-          "pos": "noun",
+          "id": "sense-2e693d44",
+          "pos": "n.",
           "meaningZh": "愛情；戀情",
-          "definitionEn": "an exciting and often short relationship of love between two people",
           "examples": [
             "Their summer romance turned into a lifelong marriage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f3268ddc",
-          "pos": "adjective",
+          "id": "sense-afd24f8a",
+          "pos": "adj.",
           "meaningZh": "羅曼語系的；源自拉丁語的",
-          "definitionEn": "relating to languages derived from Latin",
           "examples": [
             "While studying Spanish, I discovered the similarity between Spanish and Portuguese, both of which are Romance languages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +1",
-        "textbookTitle": "龍騰 B1·L2、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "route",
       "word": "route",
       "senses": [
         {
-          "id": "sense-3e669c03",
-          "pos": "noun",
+          "id": "sense-e3eeebe7",
+          "pos": "n.",
           "meaningZh": "路線；慣走路徑",
-          "definitionEn": "a way or path that is used for travel, especially one that is regularly used by a particular person or group of people",
           "examples": [
             "Every day, Mary takes the same route to work, stopping at the coffee shop on the corner for her morning latte."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-652a77c8",
-          "pos": "noun",
+          "id": "sense-df44e234",
+          "pos": "n.",
           "meaningZh": "路徑；交通路線",
-          "definitionEn": "a way or path that is open to the public for travel or transportation",
           "examples": [
             "The GPS app provided the most efficient route to the airport."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +1",
-        "textbookTitle": "龍騰 B3·L2、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ruin",
       "word": "ruin",
       "senses": [
         {
-          "id": "sense-37216fd3",
-          "pos": "noun",
+          "id": "sense-8e9984a3",
+          "pos": "n.",
           "meaningZh": "廢墟；毀滅狀態",
-          "definitionEn": "a state of complete destruction",
           "examples": [
             "The earthquake left the city in ruins, with buildings collapsed and roads impassable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-055651e2",
-          "pos": "noun",
+          "id": "sense-48b851d2",
+          "pos": "n.",
           "meaningZh": "毀壞；破壞行為",
-          "definitionEn": "the act of destroying or devastating something",
           "examples": [
             "The hurricane unleashed its full fury and left a path of ruin in its wake, destroying entire towns and leaving nothing but debris."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1",
-        "textbookTitle": "龍騰 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rural",
       "word": "rural",
       "senses": [
         {
-          "id": "sense-ef6788ce",
-          "pos": "adjective",
+          "id": "sense-281a51ba",
+          "pos": "adj.",
           "meaningZh": "鄉村的；農村的",
-          "definitionEn": "of or relating to the countryside as opposed to the city",
           "examples": [
             "We decided to leave the city life behind and move to the rural countryside for a more peaceful and quiet lifestyle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d4345a4a",
-          "pos": "adjective",
+          "id": "sense-7586560e",
+          "pos": "adj.",
           "meaningZh": "農業的；田園的",
-          "definitionEn": "living in or characteristic of farming or country life",
           "examples": [
             "The small town had a rural charm with its sprawling farms, open fields, and grazing cattle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rusty",
       "word": "rusty",
       "senses": [
         {
-          "id": "sense-737f5f16",
-          "pos": "adjective",
+          "id": "sense-6598ebbc",
+          "pos": "adj.",
           "meaningZh": "生鏽的；布滿鏽蝕的",
-          "definitionEn": "covered with or consisting of rust, a reddish-brown flaky coating of iron oxide that is formed on iron or steel by oxidation, especially in the presence of moisture",
           "examples": [
             "The old bicycle was so rusty that it was difficult to turn the pedals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-758fb5eb",
-          "pos": "adjective",
+          "id": "sense-03b13475",
+          "pos": "adj.",
           "meaningZh": "生疏的；久未練習的",
-          "definitionEn": "impaired in skill by neglect or disuse, out of practice; lacking experience or ability due to prolonged inactivity",
           "examples": [
             "I used to be a great basketball player, but since I haven’t played in years, I’m pretty rusty now."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sacrifice",
       "word": "sacrifice",
       "senses": [
         {
-          "id": "sense-a766c089",
-          "pos": "verb",
+          "id": "sense-c0675f64",
+          "pos": "v.",
           "meaningZh": "犧牲；捨棄",
-          "definitionEn": "to give up something valuable for the sake of something more important",
           "examples": [
             "She sacrificed her career to take care of her family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4cfa747d",
-          "pos": "verb",
+          "id": "sense-63c719b0",
+          "pos": "v.",
           "meaningZh": "獻祭；殺牲祭神",
-          "definitionEn": "offer or kill something as a religious or other solemn act",
           "examples": [
             "The priest offered a sacrifice of a lamb to the gods during the annual ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "satellite",
       "word": "satellite",
       "senses": [
         {
-          "id": "sense-d5e78251",
-          "pos": "noun",
+          "id": "sense-63dee855",
+          "pos": "n.",
           "meaningZh": "衛星；人造衛星",
-          "definitionEn": "a celestial body that orbits around a planet or star.",
           "examples": [
             "The moon is a natural satellite of the Earth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "satisfaction",
       "word": "satisfaction",
       "senses": [
         {
-          "id": "sense-235a2d3b",
-          "pos": "noun",
+          "id": "sense-de1e170f",
+          "pos": "n.",
           "meaningZh": "滿足感；成就感",
-          "definitionEn": "a feeling of happiness or contentment when one achieves what they desired",
           "examples": [
             "After years of hard work, she finally found satisfaction in her successful career."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-fa016e4c",
-          "pos": "noun",
+          "id": "sense-4e952860",
+          "pos": "n.",
           "meaningZh": "滿足；實現",
-          "definitionEn": "the act of fulfilling a want, need, or appetite",
           "examples": [
             "After months of hard work, she finally achieved her dream of becoming a doctor, bringing her great satisfaction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +1",
-        "textbookTitle": "龍騰 B1·L2、三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scarcely",
       "word": "scarcely",
       "senses": [
         {
-          "id": "sense-9a323ffd",
-          "pos": "adverb",
+          "id": "sense-1919b59e",
+          "pos": "adv.",
           "meaningZh": "幾乎不；勉強",
-          "definitionEn": "almost not",
           "examples": [
             "After months of saving, she could scarcely afford to go on vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a122f81e",
-          "pos": "adverb",
+          "id": "sense-14d096ef",
+          "pos": "adv.",
           "meaningZh": "剛剛；才剛",
-          "definitionEn": "only a very short time before",
           "examples": [
             "She had scarcely finished her meal when the phone rang."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scenery",
       "word": "scenery",
       "senses": [
         {
-          "id": "sense-d85d7d6d",
-          "pos": "noun",
+          "id": "sense-49bc9c49",
+          "pos": "n.",
           "meaningZh": "自然景色；風景",
-          "definitionEn": "the appearance of a place, especially its natural features",
           "examples": [
             "The picturesque scenery of the mountains and the shimmering lake left us in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-46f4fa6a",
-          "pos": "noun",
+          "id": "sense-f11623e6",
+          "pos": "n.",
           "meaningZh": "舞台布景；佈景",
-          "definitionEn": "the painted structures of a stage set that are intended to suggest a particular locale",
           "examples": [
             "The scenery for the play transformed the stage into a magical forest, with towering trees and a stunning sunset painted as the backdrop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scold",
       "word": "scold",
       "senses": [
         {
-          "id": "sense-2b604a99",
-          "pos": "verb",
+          "id": "sense-4cd8e400",
+          "pos": "v.",
           "meaningZh": "責罵；嚴厲批評",
-          "definitionEn": "to reprimand or criticize someone severely or angrily",
           "examples": [
             "After the teacher caught him cheating on the test, she scolded him in front of the entire class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a540b78e",
-          "pos": "verb",
+          "id": "sense-af8d5f0b",
+          "pos": "v.",
           "meaningZh": "訓斥；表示不滿",
-          "definitionEn": "to express one’s disapproval or critical attitude",
           "examples": [
             "The teacher scolded the students for talking during the lecture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scoop",
       "word": "scoop",
       "senses": [
         {
-          "id": "sense-1dbd7dc7",
-          "pos": "verb",
+          "id": "sense-1bf9bd46",
+          "pos": "v.",
           "meaningZh": "舀取；挖取",
-          "definitionEn": "to take out or up with or as if with a scoop",
           "examples": [
             "She used a large scoop to serve ice cream at the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c62b1d0c",
-          "pos": "noun",
+          "id": "sense-ed821b5c",
+          "pos": "n.",
           "meaningZh": "勺形凹陷；挖出的空穴",
-          "definitionEn": "a hollow concave shape made by removing something",
           "examples": [
             "With a quick motion of the wrist, she made a scoop from the ice cream container."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scratch",
       "word": "scratch",
       "senses": [
         {
-          "id": "sense-6e92318d",
-          "pos": "noun",
+          "id": "sense-c0d35211",
+          "pos": "n.",
           "meaningZh": "刮痕；抓痕",
-          "definitionEn": "a depression scratched or carved into a surface",
           "examples": [
             "He used a sharp instrument to scratch his initials into the wooden table."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-3e4ab213",
-          "pos": "noun",
+          "id": "sense-8198ff37",
+          "pos": "n.",
           "meaningZh": "損傷痕跡；刮傷",
-          "definitionEn": "an indication of damage",
           "examples": [
             "John noticed a scratch on his car's door after someone had hit it with a shopping cart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7",
-        "textbookTitle": "龍騰 B3·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sculpture",
       "word": "sculpture",
       "senses": [
         {
-          "id": "sense-4db79f8c",
-          "pos": "noun",
+          "id": "sense-facf9be4",
+          "pos": "n.",
           "meaningZh": "雕塑品；雕像",
-          "definitionEn": "a three-dimensional work of art made by shaping stone, wood, clay, metal, or other materials.",
           "examples": [
             "The city commissioned a sculpture of a famous leader to be put up in the town square."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-18b116f1",
-          "pos": "verb",
+          "id": "sense-d39c1df4",
+          "pos": "v.",
           "meaningZh": "雕刻；塑造",
-          "definitionEn": "to create a sculpture by shaping materials such as stone, wood, clay, metal, etc.",
           "examples": [
             "The artist used a hammer and chisel to sculpture an intricate design into the piece of marble."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "secure",
       "word": "secure",
       "senses": [
         {
-          "id": "sense-53e926df",
-          "pos": "adjective",
+          "id": "sense-a717f151",
+          "pos": "adj.",
           "meaningZh": "安全的；無危險的",
-          "definitionEn": "Free from danger or risk; safe.",
           "examples": [
             "After locking the door, I felt more secure and was able to sleep peacefully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ae70843f",
-          "pos": "verb",
+          "id": "sense-d2d4c70e",
+          "pos": "v.",
           "meaningZh": "取得；確保獲得",
-          "definitionEn": "Provide additional resources or support to.",
           "examples": [
             "The organization secured additional funding to expand their operations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "seize",
       "word": "seize",
       "senses": [
         {
-          "id": "sense-e4274175",
-          "pos": "verb",
+          "id": "sense-07829eb0",
+          "pos": "v.",
           "meaningZh": "抓住；奪取",
-          "definitionEn": "take hold of or grab something",
           "examples": [
             "The police were able to seize a large quantity of drugs during the raid."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-3d809383",
-          "pos": "verb",
+          "id": "sense-7d050e90",
+          "pos": "v.",
           "meaningZh": "吸引；抓住（注意力）",
-          "definitionEn": "attract someone’s attention or imagination",
           "examples": [
             "The colorful advertisement seized my attention as I walked by the shop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5 +1",
-        "textbookTitle": "龍騰 B4·L5、三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "settler",
+      "word": "settler",
+      "senses": [
+        {
+          "id": "sense-c6dc874a",
+          "pos": "n.",
+          "meaningZh": "開拓者；移墾者",
+          "examples": [
+            "In the 1600s, many European settlers traveled to North America in search of a better life and to establish their own communities."
+          ]
+        },
+        {
+          "id": "sense-56dfdedf",
+          "pos": "n.",
+          "meaningZh": "調解人；仲裁者",
+          "examples": [
+            "In the land dispute between the indigenous tribe and the government, the settler was able to facilitate a fair agreement that satisfied both parties."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "severe",
+      "word": "severe",
+      "senses": [
+        {
+          "id": "sense-b9b2b991",
+          "pos": "adj.",
+          "meaningZh": "嚴重的；劇烈的",
+          "examples": [
+            "The tornado caused severe damage to the small town, leaving many homes destroyed and residents displaced."
+          ]
+        },
+        {
+          "id": "sense-9e172ab5",
+          "pos": "adj.",
+          "meaningZh": "猛烈的；危險的",
+          "examples": [
+            "The severe storm brought destructive winds and torrential rain, causing widespread damage to homes and infrastructure."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sew",
+      "word": "sew",
+      "senses": [
+        {
+          "id": "sense-cd98accf",
+          "pos": "v.",
+          "meaningZh": "縫製；裁縫",
+          "examples": [
+            "My mother used to sew her own dresses when she was young."
+          ]
+        },
+        {
+          "id": "sense-15ad2fcb",
+          "pos": "v.",
+          "meaningZh": "縫合；縫上",
+          "examples": [
+            "She learned how to sew a button on her shirt."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "shade",
+      "word": "shade",
+      "senses": [
+        {
+          "id": "sense-cb9f2cfb",
+          "pos": "n.",
+          "meaningZh": "陰影；遮光",
+          "examples": [
+            "The tree provided some shade from the hot sun."
+          ]
+        },
+        {
+          "id": "sense-e39b4885",
+          "pos": "n.",
+          "meaningZh": "遮陽物；遮蔽物",
+          "examples": [
+            "During the hot summer months, John likes to relax under the shady trees in his backyard."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "shady",
+      "word": "shady",
+      "senses": [
+        {
+          "id": "sense-31586bdc",
+          "pos": "adj.",
+          "meaningZh": "陰暗的；遮蔭的",
+          "examples": [
+            "The alley was too shady to walk through at night."
+          ]
+        },
+        {
+          "id": "sense-a2ea9043",
+          "pos": "adj.",
+          "meaningZh": "可疑的；不可信賴的",
+          "examples": [
+            "The used car salesman had a shady demeanor and people didn’t feel comfortable doing business with him."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

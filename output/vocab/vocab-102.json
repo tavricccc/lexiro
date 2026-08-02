@@ -1,1421 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 102,
   "words": [
-    {
-      "wordKey": "await",
-      "word": "await",
-      "senses": [
-        {
-          "id": "sense-d883a216",
-          "pos": "verb",
-          "meaningZh": "等待；期盼",
-          "definitionEn": "to wait for, especially with a feeling of anticipation or excitement",
-          "examples": [
-            "I cannot wait to  await the arrival of my friend at the airport."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-480d14eb",
-          "pos": "verb",
-          "meaningZh": "等候；備候",
-          "definitionEn": "to be in store for; to be ready or in waiting for",
-          "examples": [
-            "The passengers were anxiously awaiting the arrival of their delayed flight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "bald",
-      "word": "bald",
-      "senses": [
-        {
-          "id": "sense-e15322cc",
-          "pos": "adjective",
-          "meaningZh": "禿頭的；無毛髮的",
-          "definitionEn": "having little or no hair on the scalp: hairless",
-          "examples": [
-            "Jason used to have a full head of hair, but now he is completely bald."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-39b00316",
-          "pos": "adjective",
-          "meaningZh": "光禿的；無覆蓋的",
-          "definitionEn": "not covered with natural or usual hair",
-          "examples": [
-            "Bob started losing his hair in his 30s and by the time he turned 40, he was completely bald."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "ballet",
-      "word": "ballet",
-      "senses": [
-        {
-          "id": "sense-02d6e31b",
-          "pos": "noun",
-          "meaningZh": "芭蕾舞；芭蕾舞劇",
-          "definitionEn": "a theatrical representation of a story performed by trained dancers to music",
-          "examples": [
-            "The ballet troupe performed a stunning rendition of Swan Lake, captivating the audience with their graceful movements and emotive expressions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-ac80b9fa",
-          "pos": "noun",
-          "meaningZh": "芭蕾舞樂曲；舞蹈配樂",
-          "definitionEn": "music composed specifically for a ballet performance",
-          "examples": [
-            "The symphony orchestra rehearsed the intricate ballet score in preparation for the upcoming performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "bandage",
-      "word": "bandage",
-      "senses": [
-        {
-          "id": "sense-31eacd1b",
-          "pos": "noun",
-          "meaningZh": "繃帶；紗布",
-          "definitionEn": "a soft material used to cover and protect a wound or injured part of the body",
-          "examples": [
-            "After cutting his finger while chopping vegetables, John wrapped a bandage around it to stop the bleeding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-c72b225c",
-          "pos": "verb",
-          "meaningZh": "包紮；纏繃帶",
-          "definitionEn": "to cover and protect a wound or injured part of the body",
-          "examples": [
-            "After cleaning the wound, the nurse applied a sterile bandage to prevent further contamination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "bankrupt",
-      "word": "bankrupt",
-      "senses": [
-        {
-          "id": "sense-43c677f0",
-          "pos": "adjective",
-          "meaningZh": "破產的；無力償債的",
-          "definitionEn": "having no money and unable to pay debts",
-          "examples": [
-            "After multiple failed business ventures, John was declared bankrupt and had to sell all of his assets to pay off his debts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-d3813a63",
-          "pos": "noun",
-          "meaningZh": "破產者；欠債無力償還者",
-          "definitionEn": "a person or entity that is declared insolvent and unable to pay debts to creditors",
-          "examples": [
-            "After several failed business ventures, he was declared bankrupt and had to sell all of his assets to repay his debts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "bargain",
       "word": "bargain",
       "senses": [
         {
-          "id": "sense-11f5234e",
-          "pos": "noun",
+          "id": "sense-03f82012",
+          "pos": "n.",
           "meaningZh": "便宜貨；划算的買賣",
-          "definitionEn": "an advantageous purchase",
           "examples": [
             "I got a great bargain on this bike at the garage sale for only $20."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c2a45344",
-          "pos": "noun",
+          "id": "sense-722a53c0",
+          "pos": "n.",
           "meaningZh": "協議；協定",
-          "definitionEn": "an agreement between parties, usually arrived at after discussion, fixing the obligations of each",
           "examples": [
             "The real estate agent was able to negotiate a bargain between the seller and the buyer, each party agreeing to a fair price for the property."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "barrier",
       "word": "barrier",
       "senses": [
         {
-          "id": "sense-a64fbcfb",
-          "pos": "noun",
+          "id": "sense-31edf823",
+          "pos": "n.",
           "meaningZh": "障礙物；阻隔物",
-          "definitionEn": "a structure or object that obstructs or impedes free movement",
           "examples": [
             "The tall fence served as a barrier, preventing anyone from entering the construction site without authorization."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7b869397",
-          "pos": "noun",
+          "id": "sense-55a9d8cf",
+          "pos": "n.",
           "meaningZh": "屏障；隔離物",
-          "definitionEn": "anything that separates or divides by obstructing vision or access",
           "examples": [
             "The fence acted as a barrier, preventing the children from entering the construction site."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "basin",
       "word": "basin",
       "senses": [
         {
-          "id": "sense-931503e5",
-          "pos": "noun",
+          "id": "sense-b6a81c71",
+          "pos": "n.",
           "meaningZh": "盆；洗臉盆",
-          "definitionEn": "a bowl-shaped vessel used for holding food or liquids",
           "examples": [
             "She poured the soup into the large basin and carried it to the table."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4a28463e",
-          "pos": "noun",
+          "id": "sense-0b8f72f2",
+          "pos": "n.",
           "meaningZh": "一盆的量；盆容量",
-          "definitionEn": "the quantity that a basin can contain",
           "examples": [
             "The basin in the kitchen sink is large enough to hold all the dishes from dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "battery",
       "word": "battery",
       "senses": [
         {
-          "id": "sense-8e14ba03",
-          "pos": "noun",
+          "id": "sense-e553e96f",
+          "pos": "n.",
           "meaningZh": "電池",
-          "definitionEn": "a device that stores electricity and supplies power to something",
           "examples": [
             "My phone's battery is almost dead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-13dc8f85",
-          "pos": "noun",
+          "id": "sense-510630a1",
+          "pos": "n.",
           "meaningZh": "毆打罪；傷人",
-          "definitionEn": "the act of physically attacking someone",
           "examples": [
             "During the altercation, John was charged with battery after he punched his neighbor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beggar",
       "word": "beggar",
       "senses": [
         {
-          "id": "sense-61e2d37f",
-          "pos": "noun",
+          "id": "sense-f4b36a03",
+          "pos": "n.",
           "meaningZh": "乞丐；行乞者",
-          "definitionEn": "a person who begs for money or food",
           "examples": [
             "In the busy city streets, a frail old man sat on a worn-out cardboard, pleading with outstretched hands as a beggar for any spare change."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "behavior",
       "word": "behavior",
       "senses": [
         {
-          "id": "sense-cae9a3d1",
-          "pos": "noun",
+          "id": "sense-84993ba1",
+          "pos": "n.",
           "meaningZh": "行為；舉止",
-          "definitionEn": "the way a person acts or behaves towards other people",
           "examples": [
             "His behavior towards his colleagues was unprofessional and rude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-50d5f313",
-          "pos": "noun",
+          "id": "sense-b4fa6ba3",
+          "pos": "n.",
           "meaningZh": "表現；態度",
-          "definitionEn": "the manner in which someone behaves or controls themselves",
           "examples": [
             "Her behavior at the party last night was quite appalling. She was shouting and picking up fights with everyone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bin",
       "word": "bin",
       "senses": [
         {
-          "id": "sense-23917ed6",
-          "pos": "noun",
+          "id": "sense-a96376e2",
+          "pos": "n.",
           "meaningZh": "一桶之量；一倉之量",
-          "definitionEn": "an amount of something stored in a bin",
           "examples": [
             "The farmer keeps his harvest of grains in a large bin until he is ready to sell them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-924f16e9",
-          "pos": "verb",
+          "id": "sense-8eb5b4a0",
+          "pos": "v.",
           "meaningZh": "裝桶儲放；入倉",
-          "definitionEn": "to store something in a bin",
           "examples": [
             "After the harvest, the farmer bins the grain in large sacks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "biography",
       "word": "biography",
       "senses": [
         {
-          "id": "sense-8c6a813c",
-          "pos": "noun",
+          "id": "sense-a931ee90",
+          "pos": "n.",
           "meaningZh": "傳記；人物傳記",
-          "definitionEn": "the story of a person’s life, written by someone else, or the genre of literature that focuses on such stories.",
           "examples": [
             "J.K. Rowling penned a captivating biography of the late Steve Jobs, chronicling his journey to success in the tech industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-70906fff",
-          "pos": "noun",
+          "id": "sense-b3e03473",
+          "pos": "n.",
           "meaningZh": "傳記（他人撰寫）",
-          "definitionEn": "a written account of someone’s life, typically written by another person.",
           "examples": [
             "The biography chronicled the life of the famous scientist, highlighting his achievements and struggles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "biology",
       "word": "biology",
       "senses": [
         {
-          "id": "sense-cc66253e",
-          "pos": "noun",
+          "id": "sense-f2eed146",
+          "pos": "n.",
           "meaningZh": "生物學；生物科學",
-          "definitionEn": "The scientific study of living organisms, including their physical structure, chemical processes, molecular interactions, physiological mechanisms, development, and evolution.",
           "examples": [
             "In order to understand how plants grow and reproduce, one must have a strong background in biology."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7d9676e9",
-          "pos": "noun",
+          "id": "sense-540a3541",
+          "pos": "n.",
           "meaningZh": "（生物體的）生命現象；生命特徵",
-          "definitionEn": "The characteristic processes and phenomena of living organisms, including growth, reproduction, adaptation, and response to stimuli.",
           "examples": [
             "Studying biology helps us understand how different organisms have adapted to their environments over time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blade",
       "word": "blade",
       "senses": [
         {
-          "id": "sense-f68064fc",
-          "pos": "noun",
+          "id": "sense-4f108020",
+          "pos": "n.",
           "meaningZh": "刀刃；刀片",
-          "definitionEn": "the thin, flat cutting part of a tool or weapon",
           "examples": [
             "The chef skillfully sliced through the ingredients with a sharp blade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bfc127ec",
-          "pos": "noun",
+          "id": "sense-cadc5de8",
+          "pos": "n.",
           "meaningZh": "（草的）葉片；草葉",
-          "definitionEn": "a thin, flat leaf of grass",
           "examples": [
             "The sharp blade of grass cut through the air as the lawnmower passed over it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blend",
       "word": "blend",
       "senses": [
         {
-          "id": "sense-760633bb",
-          "pos": "verb",
+          "id": "sense-37ad6d92",
+          "pos": "v.",
           "meaningZh": "混合；攪拌",
-          "definitionEn": "to mix different elements together thoroughly",
           "examples": [
             "She used a blender to blend the fruits and yogurt for her breakfast smoothie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b8582e98",
-          "pos": "verb",
+          "id": "sense-36ce3d6d",
+          "pos": "v.",
           "meaningZh": "融合；調和",
-          "definitionEn": "to combine two or more elements into one evenly",
           "examples": [
             "To make a smoothie, you need to blend the fruit and yogurt until they are completely mixed together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blessing",
       "word": "blessing",
       "senses": [
         {
-          "id": "sense-405bdc3c",
-          "pos": "noun",
+          "id": "sense-42896454",
+          "pos": "n.",
           "meaningZh": "幸運；福氣",
-          "definitionEn": "a desirable state",
           "examples": [
             "Winning the lottery was a huge blessing for the struggling family, as it allowed them to pay off all their debts and start a new life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5d27253e",
-          "pos": "noun",
+          "id": "sense-cbb3f316",
+          "pos": "n.",
           "meaningZh": "正式核准；批准",
-          "definitionEn": "the formal act of approving",
           "examples": [
             "The mayor’s office issued a blessing for the new highway construction project, which had been delayed for years due to funding issues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blink",
       "word": "blink",
       "senses": [
         {
-          "id": "sense-82c23601",
-          "pos": "verb",
+          "id": "sense-34e417d4",
+          "pos": "v.",
           "meaningZh": "眨眼；瞬目",
-          "definitionEn": "to briefly close and then open the eyes",
           "examples": [
             "I had to blink several times to clear my vision after being in the bright sun for so long."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-403c4beb",
-          "pos": "noun",
+          "id": "sense-611520d7",
+          "pos": "n.",
           "meaningZh": "眨眼反射動作",
-          "definitionEn": "the reflex act of rapidly closing and opening the eyes",
           "examples": [
             "His eyes started to blink rapidly as he tried to adjust to the bright sunlight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bloom",
       "word": "bloom",
       "senses": [
         {
-          "id": "sense-76e90570",
-          "pos": "noun",
+          "id": "sense-eefc2b08",
+          "pos": "n.",
           "meaningZh": "花；花朵",
-          "definitionEn": "a flower, especially one on a plant grown for its flowers",
           "examples": [
             "The garden was full of colorful blooms in spring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ed05c2dd",
-          "pos": "noun",
+          "id": "sense-e90008b5",
+          "pos": "n.",
           "meaningZh": "全盛期；鼎盛時期",
-          "definitionEn": "the period of greatest prosperity or productivity",
           "examples": [
             "During the summer, the resort town experiences a bloom of tourists and business, leading to a thriving local economy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f61f31f9",
-          "pos": "noun",
+          "id": "sense-19b8ba41",
+          "pos": "n.",
           "meaningZh": "青春最盛期；花樣年華",
-          "definitionEn": "the best time of youth",
           "examples": [
             "She was in the bloom of her youth, full of energy and enthusiasm, ready to conquer the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blossom",
       "word": "blossom",
       "senses": [
         {
-          "id": "sense-7e73fcad",
-          "pos": "noun",
+          "id": "sense-dfd13c71",
+          "pos": "n.",
           "meaningZh": "花朵；（果樹等的）花",
-          "definitionEn": "The reproductive organ of flowering plants, consisting of one or more carpels and typically including petals and sepals. Often colorful and showy.",
           "examples": [
             "The cherry trees blossomed beautifully in the spring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b6081ff3",
-          "pos": "verb",
+          "id": "sense-21be3742",
+          "pos": "v.",
           "meaningZh": "開花；綻放",
-          "definitionEn": "Produce flowers; bloom.",
           "examples": [
             "After the winter, the garden blossomed with bright flowers of various colors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "boast",
       "word": "boast",
       "senses": [
         {
-          "id": "sense-65052676",
-          "pos": "verb",
+          "id": "sense-7e757f4b",
+          "pos": "v.",
           "meaningZh": "誇耀；自吹自擂",
-          "definitionEn": "to talk with excessive pride or self-satisfaction about one’s achievements, possessions, or abilities.",
           "examples": [
             "Although he had little to boast about, he regaled any willing listener with tales of his past glory days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ba9281d8",
-          "pos": "verb",
+          "id": "sense-ce8c6fd1",
+          "pos": "v.",
           "meaningZh": "引以為傲地擁有；自豪地具備",
-          "definitionEn": "to possess (a feature) that is a source of pride.",
           "examples": [
             "She likes to boast about her cooking skills to impress her guests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bond",
       "word": "bond",
       "senses": [
         {
-          "id": "sense-729e2959",
-          "pos": "noun",
+          "id": "sense-80c594b1",
+          "pos": "n.",
           "meaningZh": "債券；公債",
-          "definitionEn": "a certificate of debt issued by a government or corporation in order to raise money; the issuer is required to pay a fixed sum annually until maturity and then a fixed sum to repay the principal.",
           "examples": [
             "The company sold bonds to raise funds for its expansion project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5e77f572",
-          "pos": "noun",
+          "id": "sense-cc37ce3a",
+          "pos": "n.",
           "meaningZh": "保釋金；擔保金",
-          "definitionEn": "money that must be forfeited by the bondsman if an accused person fails to appear in court for trial, according to criminal law.",
           "examples": [
             "If John failed to appear in court, the bondsman would forfeit the bond money."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bounce",
       "word": "bounce",
       "senses": [
         {
-          "id": "sense-df054c70",
-          "pos": "noun",
+          "id": "sense-1c616ce4",
+          "pos": "n.",
           "meaningZh": "彈跳；反彈",
-          "definitionEn": "a light, self-propelled movement upwards or forwards",
           "examples": [
             "The ball bounced off the floor and into the basket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-36e9f401",
-          "pos": "verb",
+          "id": "sense-a706b848",
+          "pos": "v.",
           "meaningZh": "彈起；反彈",
-          "definitionEn": "to spring back; to spring away from an impact",
           "examples": [
             "The basketball bounced off the rim after the player’s attempted shot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bracelet",
       "word": "bracelet",
       "senses": [
         {
-          "id": "sense-c489fe32",
-          "pos": "noun",
+          "id": "sense-9dd096de",
+          "pos": "n.",
           "meaningZh": "手鍊；手環",
-          "definitionEn": "a band, strip, or chain of cloth, leather, beads, or metal worn around the wrist as an ornament or to fasten a wristwatch",
           "examples": [
             "She received a beautiful silver bracelet as a birthday gift."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "breed",
       "word": "breed",
       "senses": [
         {
-          "id": "sense-d925e5d5",
-          "pos": "verb",
+          "id": "sense-8b0e1b44",
+          "pos": "v.",
           "meaningZh": "繁殖；培育",
-          "definitionEn": "When animals breed, they reproduce.",
           "examples": [
             "The farmer selectively breeds his cows to produce the highest-quality milk."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-77f1fcc7",
-          "pos": "noun",
+          "id": "sense-4280fe0b",
+          "pos": "n.",
           "meaningZh": "品種；種類",
-          "definitionEn": "a particular kind or type of animal, plant, or human group.",
           "examples": [
             "Labrador Retrievers are a popular breed of dog known for their friendly and playful nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "broke",
       "word": "broke",
       "senses": [
         {
-          "id": "sense-4dbd3def",
-          "pos": "adjective",
+          "id": "sense-b504ae61",
+          "pos": "adj.",
           "meaningZh": "身無分文；破產",
-          "definitionEn": "lacking funds or unable to pay debts",
           "examples": [
             "After losing his job, John was broke and had to rely on his friends for financial support."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ca0846f4",
-          "pos": "verb",
+          "id": "sense-314b404d",
+          "pos": "v.",
           "meaningZh": "打破（break的過去式）",
-          "definitionEn": "past tense of break",
           "examples": [
             "After tripping on the stairs, he broke his leg and had to wear a cast for six weeks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "broom",
       "word": "broom",
       "senses": [
         {
-          "id": "sense-71407ad9",
-          "pos": "noun",
+          "id": "sense-8bf5be7d",
+          "pos": "n.",
           "meaningZh": "掃帚；掃把",
-          "definitionEn": "a cleaning implement used for sweeping floors, usually a bundle of straws or twigs attached to a long handle",
           "examples": [
             "She grabbed the broom and started sweeping the dirt and debris off the porch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9ada5565",
-          "pos": "verb",
+          "id": "sense-a7b2db74",
+          "pos": "v.",
           "meaningZh": "用掃把整理（表面）",
-          "definitionEn": "to finish a surface with a broom",
           "examples": [
             "He broomed the tennis court after the match."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "brutal",
       "word": "brutal",
       "senses": [
         {
-          "id": "sense-171f0afc",
-          "pos": "adjective",
+          "id": "sense-b3595068",
+          "pos": "adj.",
           "meaningZh": "殘暴的；兇狠的",
-          "definitionEn": "having the qualities of a savage or cruel animal; showing a lack of mercy or compassion",
           "examples": [
             "The brutal dictator ordered the execution of anyone who opposed him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b2ca766b",
-          "pos": "adjective",
+          "id": "sense-42dff087",
+          "pos": "adj.",
           "meaningZh": "嚴酷的；猛烈的",
-          "definitionEn": "harsh",
           "examples": [
             "The brutal beating left him with several broken bones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8 +1",
-        "textbookTitle": "龍騰 B3·L8、三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bulletin",
       "word": "bulletin",
       "senses": [
         {
-          "id": "sense-9c35a47f",
-          "pos": "noun",
+          "id": "sense-5154900b",
+          "pos": "n.",
           "meaningZh": "公告；快訊；新聞簡報",
-          "definitionEn": "a brief report, especially an official statement issued for immediate publication or broadcast.",
           "examples": [
             "The morning bulletin announced that the school will be closed due to heavy snow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c94a93cb",
-          "pos": "verb",
+          "id": "sense-629aaf5a",
+          "pos": "v.",
           "meaningZh": "公告；發布簡報",
-          "definitionEn": "to make something public by publishing it in a bulletin.",
           "examples": [
             "The school bulletin announced the date of the upcoming parent-teacher conference."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "burglar",
       "word": "burglar",
       "senses": [
         {
-          "id": "sense-d9d3ffa5",
-          "pos": "noun",
+          "id": "sense-c9ed8c51",
+          "pos": "n.",
           "meaningZh": "竊賊；入室行竊者",
-          "definitionEn": "someone who illegally enters a building to steal things",
           "examples": [
             "The burglar broke into the house and stole all the electronics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "cabinet",
+      "word": "cabinet",
+      "senses": [
+        {
+          "id": "sense-e9e68e6e",
+          "pos": "n.",
+          "meaningZh": "櫥櫃；展示櫃",
+          "examples": [
+            "Sarah proudly displayed her collection of vintage tea sets in the glass-fronted cabinet in her living room."
+          ]
+        },
+        {
+          "id": "sense-643ca01d",
+          "pos": "n.",
+          "meaningZh": "電器箱體；機殼",
+          "examples": [
+            "The television cabinet neatly stores your TV, DVD player, and gaming consoles, keeping all your electronic equipment organized and protected."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "calculate",
+      "word": "calculate",
+      "senses": [
+        {
+          "id": "sense-aca7bab2",
+          "pos": "v.",
+          "meaningZh": "計算；核算",
+          "examples": [
+            "I need to calculate how much money I spent on groceries last month."
+          ]
+        },
+        {
+          "id": "sense-3c4b2830",
+          "pos": "v.",
+          "meaningZh": "信任；依賴（語義存疑）",
+          "examples": [
+            "I cannot calculate his statement because he has lied to me before."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "calculation",
+      "word": "calculation",
+      "senses": [
+        {
+          "id": "sense-b1ff13d6",
+          "pos": "n.",
+          "meaningZh": "計算；運算",
+          "examples": [
+            "My math teacher gave me a complex calculation to solve for homework."
+          ]
+        },
+        {
+          "id": "sense-b422180d",
+          "pos": "n.",
+          "meaningZh": "數學計算；演算",
+          "examples": [
+            "Mathematicians use complex calculations to solve problems in physics and engineering."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "calorie",
+      "word": "calorie",
+      "senses": [
+        {
+          "id": "sense-0885221e",
+          "pos": "n.",
+          "meaningZh": "卡路里；熱量單位",
+          "examples": [
+            "I burned 500 calories during my morning run."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "campaign",
+      "word": "campaign",
+      "senses": [
+        {
+          "id": "sense-8728ce3f",
+          "pos": "n.",
+          "meaningZh": "宣傳活動；倡議運動",
+          "examples": [
+            "The environmental organization launched a campaign to raise awareness about plastic pollution and encourage people to reduce their use of single-use plastics."
+          ]
+        },
+        {
+          "id": "sense-ea7b73ba",
+          "pos": "n.",
+          "meaningZh": "軍事行動；戰役",
+          "examples": [
+            "The political candidate launched a nationwide campaign to gain support for their bid for presidency."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

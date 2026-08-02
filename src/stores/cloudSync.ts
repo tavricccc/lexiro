@@ -1,23 +1,29 @@
 import type { User } from 'firebase/auth'
 import type { Unsubscribe } from 'firebase/firestore'
-import type { FirestoreDailyStatsDoc, FirestoreLibraryChunk, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, LibraryState, SetSyncConflict, SyncStatus, VocabFolder, VocabSetMember, WordEntry } from '@/types'
+import type { SyncOutboxEntry, SyncRecords } from '@/lib/sync-outbox'
+import type { AiSettings, DashboardStats, LearningProgress, LibraryState, SyncStatus } from '@/types'
 import { useDocumentVisibility, useOnline } from '@vueuse/core'
 import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signOut } from 'firebase/auth'
-import { collection, deleteDoc, doc, onSnapshot, setDoc } from 'firebase/firestore'
-import { defineStore, storeToRefs } from 'pinia'
+import { onSnapshot } from 'firebase/firestore'
+import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
-import { configureFirebaseAuth, getFirebaseAuth, getFirebaseFirestore, isFirebaseConfigured } from '@/lib/firebase'
+import { defaultAiSettings, getShareableAiSettings, loadAiSettings, loadAiSettingsState, onAiSettingsChanged, saveAiSettings } from '@/lib/ai-provider'
+import { loadCloudOutbox, saveCloudOutbox } from '@/lib/cloud-sync-outbox-storage'
+import { reconcileAiSettingsState, reconcileLearningState, reconcileLibraryState } from '@/lib/cloud-sync-reconcile'
+import { cloudCollection, cloudDocument, emptyCloudProgress, emptyCloudStats, parseCloudLibrarySnapshot, readCloudLibrary, requireCloudFirestore, writeCloudAiSettings, writeCloudLearningState, writeCloudLibraryChunks } from '@/lib/cloud-sync-remote'
+import { normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats } from '@/lib/cloud-sync-schema'
+import { configureFirebaseAuth, getFirebaseAuth, isFirebaseConfigured } from '@/lib/firebase'
 import { requestGoogleAccessToken } from '@/lib/googleIdentity'
-import { estimateJsonBytes, stableHash } from '@/lib/hash'
-import { deduplicateSetsByName, isRemoteSetNewer } from '@/lib/set-utils'
+import { stableHash } from '@/lib/hash'
+import { i18n } from '@/lib/i18n'
+import { setStorageNamespace } from '@/lib/persist'
+import { normalizeLibraryState } from '@/lib/share'
+import { hasOutboxDomain, incrementOutboxAttempts, learningRecords, libraryRecords, queueRecordChanges, removeOutboxDomain, settingsRecords } from '@/lib/sync-outbox'
 import { useAccountStore } from './account'
 import { useLearningStore } from './learning'
 import { useLibraryStore } from './library'
-import { useSetsStore } from './sets'
-
-const SCHEMA_VERSION = 2
-const MAX_SET_BYTES = 700 * 1024
-const MAX_LIBRARY_CHUNK_BYTES = 420 * 1024
+import { useSessionStore } from './session'
+import { useUIStore } from './ui'
 
 export const useCloudSyncStore = defineStore('cloudSync', () => {
   const configured = ref(isFirebaseConfigured())
@@ -28,70 +34,106 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   const error = ref('')
   const lastSyncedAt = ref('')
   const pendingWrites = ref(0)
-  const conflicts = ref<SetSyncConflict[]>([])
+  const outbox = ref<SyncOutboxEntry[]>([])
 
-  let setsUnsubscribe: Unsubscribe | null = null
   let libraryUnsubscribe: Unsubscribe | null = null
   let progressUnsubscribe: Unsubscribe | null = null
   let statsUnsubscribe: Unsubscribe | null = null
-  let setSyncTimer: ReturnType<typeof setTimeout> | null = null
+  let aiSettingsUnsubscribe: Unsubscribe | null = null
   let learningSyncTimer: ReturnType<typeof setTimeout> | null = null
   let librarySyncTimer: ReturnType<typeof setTimeout> | null = null
+  let aiSettingsSyncTimer: ReturnType<typeof setTimeout> | null = null
+  let retryTimer: ReturnType<typeof setTimeout> | null = null
+  let retryAttempt = 0
   let started = false
   let activeUid = ''
   let realtimeUid = ''
-  let syncPaused = false
   let applyingRemote = false
-  let previousSetIds = new Set<string>()
-  const knownSetHashes = new Map<string, string>()
-  const knownProgressHashes = new Map<string, string>()
+  let libraryBaselineReady = false
+  let progressBaselineReady = false
+  let statsBaselineReady = false
+  let aiSettingsBaselineReady = false
+  let libraryDirty = false
+  let learningDirty = false
+  let knownProgressHash = ''
   let knownStatsHash = ''
-  let knownDailyHash = ''
   const knownLibraryHashes = new Map<string, string>()
+  let baselineLibraryRecords: SyncRecords = {}
+  let observedLibraryRecords: SyncRecords = {}
+  let baselineLearningRecords: SyncRecords = {}
+  let observedLearningRecords: SyncRecords = {}
+  let remoteProgress: LearningProgress | null = null
+  let remoteStats: DashboardStats | null = null
+  let aiSettingsDirty = false
+  let baselineAiSettingsRecords: SyncRecords = {}
+  let observedAiSettingsRecords: SyncRecords = {}
+  let knownAiSettingsHash = ''
   const isOnline = useOnline()
   const visibility = useDocumentVisibility()
 
   const isSignedIn = computed(() => Boolean(user.value))
   const accountLabel = computed(() => user.value?.displayName || user.value?.email || '')
 
+  async function loadOutbox(uid: string) {
+    outbox.value = await loadCloudOutbox(uid)
+    pendingWrites.value = outbox.value.length
+  }
+
+  async function startAccountSync(uid: string) {
+    try {
+      await loadOutbox(uid)
+      await startRealtime(uid)
+    }
+    catch (syncError) {
+      handleSyncError(syncError)
+    }
+  }
+
+  function persistOutbox() {
+    pendingWrites.value = outbox.value.length
+    void saveCloudOutbox(activeUid, outbox.value)
+  }
+
+  function replaceOutbox(next: SyncOutboxEntry[]) {
+    outbox.value = next
+    persistOutbox()
+  }
+
+  async function switchLocalNamespace(namespace: string) {
+    setStorageNamespace(namespace)
+    const libraryStore = useLibraryStore()
+    const learningStore = useLearningStore()
+    const sessionStore = useSessionStore()
+    libraryStore.resetForNamespace()
+    learningStore.resetForNamespace()
+    sessionStore.resetForNamespace()
+    await libraryStore.loadState()
+    await learningStore.loadState()
+    await sessionStore.loadState()
+    await loadAiSettingsState()
+  }
+
   function userCollection(uid: string, name: string) {
-    const db = getFirebaseFirestore()
-    if (!db)
-      throw new Error('Firebase 尚未設定')
-    return collection(db, 'users', uid, name)
+    return cloudCollection(requireCloudFirestore(), uid, name)
   }
 
   function userDocument(uid: string, collectionName: string, id: string) {
-    const db = getFirebaseFirestore()
-    if (!db)
-      throw new Error('Firebase 尚未設定')
-    return doc(db, 'users', uid, collectionName, id)
-  }
-
-  function dailyStatsDocument(uid: string, day: string) {
-    const db = getFirebaseFirestore()
-    if (!db)
-      throw new Error('Firebase 尚未設定')
-    return doc(db, 'users', uid, 'stats', 'daily', day)
+    return cloudDocument(requireCloudFirestore(), uid, collectionName, id)
   }
 
   function clearListeners() {
-    setsUnsubscribe?.()
     libraryUnsubscribe?.()
     progressUnsubscribe?.()
     statsUnsubscribe?.()
-    setsUnsubscribe = null
+    aiSettingsUnsubscribe?.()
     libraryUnsubscribe = null
     progressUnsubscribe = null
     statsUnsubscribe = null
+    aiSettingsUnsubscribe = null
     realtimeUid = ''
   }
 
   function clearSyncTimers() {
-    if (setSyncTimer) {
-      clearTimeout(setSyncTimer)
-      setSyncTimer = null
-    }
     if (learningSyncTimer) {
       clearTimeout(learningSyncTimer)
       learningSyncTimer = null
@@ -100,16 +142,31 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       clearTimeout(librarySyncTimer)
       librarySyncTimer = null
     }
+    if (aiSettingsSyncTimer) {
+      clearTimeout(aiSettingsSyncTimer)
+      aiSettingsSyncTimer = null
+    }
   }
 
-  function pauseSync() {
-    syncPaused = true
-    clearListeners()
-    clearSyncTimers()
+  function clearRetryTimer() {
+    if (retryTimer) {
+      clearTimeout(retryTimer)
+      retryTimer = null
+    }
   }
 
   function setStatus(next: SyncStatus) {
     status.value = next
+  }
+
+  function withRemoteApplication<T>(operation: () => T): T {
+    applyingRemote = true
+    try {
+      return operation()
+    }
+    finally {
+      applyingRemote = false
+    }
   }
 
   function explainSyncError(error: unknown): string {
@@ -117,16 +174,16 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     const code = error && typeof error === 'object' && 'code' in error ? String(error.code) : ''
     const normalized = `${code} ${message}`.toLowerCase()
     if (normalized.includes('err_blocked_by_client') || normalized.includes('blocked by client'))
-      return '雲端同步已暫停：Firestore 請求被瀏覽器擴充功能或網路攔截。請停用攔截後再按「重新連線」。'
+      return i18n.global.t('sync.errorBlockedByClient')
     if (normalized.includes('app check') || normalized.includes('recaptcha') || normalized.includes('token is invalid'))
-      return '雲端同步已暫停：Firebase App Check／reCAPTCHA 驗證失敗。請確認是 Enterprise Website score-based site key（不是 checkbox key）；若在 localhost，請改用已註冊的 App Check debug token。'
+      return i18n.global.t('sync.errorAppCheck')
     if (normalized.includes('permission-denied') || normalized.includes('missing or insufficient permissions'))
-      return '雲端同步已暫停：Firestore Rules 或 App Check 拒絕這次存取。請確認登入帳號、Rules、site key 與部署網域。'
+      return i18n.global.t('sync.errorPermission')
     if (normalized.includes('unauthenticated') || normalized.includes('auth'))
-      return '登入狀態已失效，請重新登入 Google。'
+      return i18n.global.t('sync.errorAuth')
     if (normalized.includes('unavailable') || normalized.includes('network'))
-      return '網路或 Firebase 暫時無法連線，稍後可重新連線。'
-    return message || 'Firebase 回傳未命名的同步錯誤。'
+      return i18n.global.t('sync.errorNetwork')
+    return i18n.global.t('sync.errorUnknown')
   }
 
   function setError(syncError: unknown) {
@@ -135,347 +192,300 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function handleSyncError(syncError: unknown) {
-    pauseSync()
     setError(syncError)
+    clearListeners()
+    clearSyncTimers()
+    if (user.value && isOnline.value && !retryTimer) {
+      const delay = Math.min(30000, 2000 * (2 ** Math.min(retryAttempt, 4)))
+      retryAttempt += 1
+      retryTimer = setTimeout(() => {
+        retryTimer = null
+        if (user.value && isOnline.value) {
+          void startAccountSync(user.value.uid)
+        }
+      }, delay)
+    }
   }
 
   const handleRealtimeError = handleSyncError
 
   function markSynced() {
     lastSyncedAt.value = new Date().toISOString()
-    pendingWrites.value = 0
+    pendingWrites.value = outbox.value.length
     if (isOnline.value)
       status.value = 'synced'
+    retryAttempt = 0
+    clearRetryTimer()
   }
 
-  function toSetDoc(uid: string, set: FirestoreSetDoc): FirestoreSetDoc {
-    const plain = JSON.parse(JSON.stringify(set)) as FirestoreSetDoc
-    const now = new Date().toISOString()
-    return {
-      ...plain,
-      ownerId: uid,
-      schemaVersion: SCHEMA_VERSION,
-      checksum: stableHash({ id: plain.id, setName: plain.setName, difficulty: plain.difficulty, items: plain.items }),
-      updatedAt: plain.updatedAt || now,
-    }
-  }
-
-  type LibrarySection = FirestoreLibraryChunk['section']
-
-  function buildLibraryChunks(uid: string, library: LibraryState): FirestoreLibraryChunk[] {
-    const sections: { section: LibrarySection, items: unknown[] }[] = [
-      { section: 'words', items: Object.values(library.words) },
-      { section: 'memberships', items: Object.entries(library.memberships).map(([setId, members]) => ({ setId, members })) },
-      { section: 'folders', items: library.folders },
-      { section: 'questions', items: library.questions },
-    ]
-    const chunks: FirestoreLibraryChunk[] = []
-    for (const { section, items } of sections) {
-      let current: unknown[] = []
-      let sectionIndex = 0
-      for (const item of items) {
-        const candidate = { ownerId: uid, schemaVersion: SCHEMA_VERSION, chunkId: '', updatedAt: library.updatedAt, checksum: '', section, items: [...current, item] } as FirestoreLibraryChunk
-        if (current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES) {
-          chunks.push(candidateForSection(uid, library, section, current, sectionIndex))
-          sectionIndex += 1
-          current = []
-        }
-        current.push(item)
-      }
-      if (current.length || !items.length)
-        chunks.push(candidateForSection(uid, library, section, current, sectionIndex))
-    }
-    return chunks
-  }
-
-  function candidateForSection(uid: string, library: LibraryState, section: LibrarySection, items: unknown[], index: number): FirestoreLibraryChunk {
-    const base = { ownerId: uid, schemaVersion: SCHEMA_VERSION, chunkId: `${section}-${String(index + 1).padStart(3, '0')}`, updatedAt: library.updatedAt, section, items } as FirestoreLibraryChunk
-    return { ...base, checksum: stableHash(base) }
-  }
-
-  function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibraryState {
-    const words: Record<string, WordEntry> = {}
-    const memberships: Record<string, VocabSetMember[]> = {}
-    const folders: VocabFolder[] = []
-    const questions: LibraryState['questions'] = []
-    let updatedAt = ''
-    for (const chunk of chunks) {
-      updatedAt = chunk.updatedAt > updatedAt ? chunk.updatedAt : updatedAt
-      if (chunk.section === 'words') {
-        for (const word of chunk.items)
-          words[word.wordKey] = word
-      }
-      else if (chunk.section === 'memberships') {
-        for (const entry of chunk.items)
-          memberships[entry.setId] = entry.members
-      }
-      else if (chunk.section === 'folders') {
-        folders.push(...chunk.items)
-      }
-      else {
-        questions.push(...chunk.items)
-      }
-    }
-    return { version: SCHEMA_VERSION, words, memberships, folders, questions, updatedAt: updatedAt || new Date().toISOString() }
-  }
-
-  async function writeSet(uid: string, set: FirestoreSetDoc) {
-    const payload = toSetDoc(uid, set)
-    if (estimateJsonBytes(payload) > MAX_SET_BYTES)
-      throw new Error(`「${payload.setName}」資料過大，請拆成較小的單字集。`)
-    await setDoc(userDocument(uid, 'sets', payload.id), payload)
-    knownSetHashes.set(payload.id, payload.checksum)
-  }
-
-  async function writeLibraryChunks(uid: string, library: LibraryState) {
-    const chunks = buildLibraryChunks(uid, library)
-    const liveIds = new Set(chunks.map(chunk => chunk.chunkId))
-    const writes: Promise<void>[] = chunks
-      .filter(chunk => knownLibraryHashes.get(chunk.chunkId) !== chunk.checksum)
-      .map(chunk => setDoc(userDocument(uid, 'library', chunk.chunkId), chunk).then(() => {
-        knownLibraryHashes.set(chunk.chunkId, chunk.checksum)
-      }))
-    for (const oldId of Array.from(knownLibraryHashes.keys())) {
-      if (!liveIds.has(oldId)) {
-        writes.push(deleteDoc(userDocument(uid, 'library', oldId)).then(() => {
-          knownLibraryHashes.delete(oldId)
-        }))
-      }
-    }
-    if (writes.length)
-      await Promise.all(writes)
-  }
-
-  function applyRemoteSetChanges(uid: string) {
-    setsUnsubscribe = onSnapshot(userCollection(uid, 'sets'), (snapshot) => {
-      const setsStore = useSetsStore()
-      const remoteSets = deduplicateSetsByName(snapshot.docs.map(item => item.data() as FirestoreSetDoc))
-      const remoteMap = new Map(remoteSets.map(set => [set.id, set]))
-      const nextSets = setsStore.sets.filter(set => remoteMap.has(set.id) || !knownSetHashes.has(set.id))
-      const writes: Promise<void>[] = []
-      for (const remote of remoteSets) {
-        const local = setsStore.sets.find(set => set.id === remote.id)
-        if (!local) {
-          nextSets.push(remote)
-          knownSetHashes.set(remote.id, remote.checksum)
-          continue
-        }
-        const localHash = stableHash({ id: local.id, setName: local.setName, difficulty: local.difficulty, items: local.items })
-        if (localHash === remote.checksum || knownSetHashes.get(remote.id) === remote.checksum) {
-          knownSetHashes.set(remote.id, remote.checksum)
-        }
-        else if (isRemoteSetNewer(local, remote)) {
-          const index = nextSets.findIndex(set => set.id === remote.id)
-          if (index >= 0)
-            nextSets[index] = remote
-          knownSetHashes.set(remote.id, remote.checksum)
-        }
-        else if (!applyingRemote) {
-          writes.push(writeSet(uid, local as FirestoreSetDoc))
-        }
-      }
-      const canonicalNextSets = deduplicateSetsByName(nextSets)
-      const canonicalNextIds = new Set(canonicalNextSets.map(set => set.id))
-      for (const remote of remoteSets) {
-        if (!canonicalNextIds.has(remote.id))
-          writes.push(deleteDoc(userDocument(uid, 'sets', remote.id)).then(() => undefined))
-      }
-      for (const local of setsStore.sets) {
-        const canonical = canonicalNextSets.find(set => set.setName.trim().toLocaleLowerCase() === local.setName.trim().toLocaleLowerCase())
-        if (canonical?.id === local.id && !remoteMap.has(local.id))
-          writes.push(writeSet(uid, local as FirestoreSetDoc))
-      }
-      const setsChanged = canonicalNextSets.length !== setsStore.sets.length || canonicalNextSets.some((set, index) => {
-        const current = setsStore.sets[index]
-        if (!current || current.id !== set.id)
-          return true
-        return stableHash({ id: current.id, setName: current.setName, difficulty: current.difficulty, items: current.items }) !== stableHash({ id: set.id, setName: set.setName, difficulty: set.difficulty, items: set.items })
+  function reconcileLibraryRemote(remote: LibraryState) {
+    const result = reconcileLibraryState(remote, outbox.value)
+    const libraryStore = useLibraryStore()
+    if (stableHash(result.merged) !== stableHash(libraryStore.state)) {
+      withRemoteApplication(() => {
+        libraryStore.replaceState(result.merged)
       })
-      if (!applyingRemote && setsChanged) {
-        applyingRemote = true
-        try {
-          setsStore.applyRemoteSets(canonicalNextSets)
-        }
-        finally {
-          applyingRemote = false
-        }
-      }
-      previousSetIds = new Set(canonicalNextSets.map(set => set.id))
-      if (writes.length)
-        void Promise.all(writes).catch(handleSyncError)
-      markSynced()
-    }, handleRealtimeError)
+    }
+    baselineLibraryRecords = result.baselineRecords
+    observedLibraryRecords = result.observedRecords
+    replaceOutbox([...removeOutboxDomain(outbox.value, 'library'), ...result.accepted])
+    libraryDirty = result.dirty
+    if (libraryDirty)
+      scheduleLibrarySync()
+  }
+
+  async function refreshLibraryRemote(uid: string) {
+    const remote = await readCloudLibrary(requireCloudFirestore(), uid)
+    reconcileLibraryRemote(normalizeLibraryState(remote.library))
+    knownLibraryHashes.clear()
+    for (const [chunkId, checksum] of remote.hashes)
+      knownLibraryHashes.set(chunkId, checksum)
+  }
+
+  function reconcileLearningRemote(progress: LearningProgress, stats: DashboardStats) {
+    if (!progressBaselineReady || !statsBaselineReady)
+      return
+    const result = reconcileLearningState(progress, stats, outbox.value)
+    const learningStore = useLearningStore()
+    if (stableHash(result.merged.progress) !== stableHash(learningStore.progress)) {
+      withRemoteApplication(() => {
+        learningStore.replaceProgress(result.merged.progress)
+      })
+    }
+    if (stableHash(result.merged.stats) !== stableHash(learningStore.stats)) {
+      withRemoteApplication(() => {
+        learningStore.replaceStats(result.merged.stats)
+      })
+    }
+    baselineLearningRecords = result.baselineRecords
+    observedLearningRecords = result.observedRecords
+    replaceOutbox([...removeOutboxDomain(outbox.value, 'learning'), ...result.accepted])
+    learningDirty = result.dirty
+    if (learningDirty)
+      scheduleLearningSync()
+  }
+
+  function reconcileAiSettingsRemote(remote: Omit<AiSettings, 'apiKey'> | null) {
+    if (!aiSettingsBaselineReady)
+      return
+    const localSettings = loadAiSettings()
+    const result = reconcileAiSettingsState(remote, localSettings, outbox.value)
+    if (stableHash(getShareableAiSettings(result.merged)) !== stableHash(getShareableAiSettings(localSettings))) {
+      withRemoteApplication(() => {
+        saveAiSettings(result.merged)
+      })
+    }
+    baselineAiSettingsRecords = result.baselineRecords
+    observedAiSettingsRecords = result.observedRecords
+    knownAiSettingsHash = stableHash(remote ?? null)
+    replaceOutbox([...removeOutboxDomain(outbox.value, 'settings'), ...result.accepted])
+    aiSettingsDirty = result.dirty
+    if (aiSettingsDirty)
+      scheduleAiSettingsSync()
   }
 
   function applyRemoteLibraryChanges(uid: string) {
     libraryUnsubscribe = onSnapshot(userCollection(uid, 'library'), (snapshot) => {
-      if (!snapshot.docs.length)
-        return
-      const chunks = snapshot.docs
-        .map(item => item.data() as FirestoreLibraryChunk)
-        .filter(item => item.section && Array.isArray(item.items))
-      if (!chunks.length)
-        return
-      const libraryStore = useLibraryStore()
-      const remote = combineLibraryChunks(chunks)
-      const remoteHash = stableHash(remote)
-      const localHash = stableHash(libraryStore.state)
-      if (remoteHash === localHash)
-        return
-      applyingRemote = true
+      libraryBaselineReady = true
       try {
-        libraryStore.replaceState(remote)
-        for (const chunk of chunks)
-          knownLibraryHashes.set(chunk.chunkId, chunk.checksum)
+        const remote = parseCloudLibrarySnapshot(snapshot, uid)
+        reconcileLibraryRemote(normalizeLibraryState(remote.library))
+        knownLibraryHashes.clear()
+        for (const [chunkId, checksum] of remote.hashes)
+          knownLibraryHashes.set(chunkId, checksum)
+        markSynced()
       }
-      finally {
-        applyingRemote = false
+      catch (syncError) {
+        handleSyncError(syncError)
       }
-      markSynced()
     }, handleRealtimeError)
   }
 
   function applyRemoteLearningChanges(uid: string) {
-    progressUnsubscribe = onSnapshot(userCollection(uid, 'progress'), (snapshot) => {
-      const learningStore = useLearningStore()
-      const remoteProgressIds = new Set<string>()
-      for (const item of snapshot.docs) {
-        const remote = item.data() as FirestoreProgressDoc
-        remoteProgressIds.add(remote.setId)
-        const local = learningStore.progressBySet[remote.setId]
-        if (!local || new Date(remote.updatedAt).getTime() > new Date(local.updatedAt).getTime()) {
-          learningStore.progressBySet[remote.setId] = remote
-          knownProgressHashes.set(remote.setId, stableHash(remote))
+    progressUnsubscribe = onSnapshot(userDocument(uid, 'progress', 'global'), (snapshot) => {
+      progressBaselineReady = true
+      if (snapshot.exists()) {
+        try {
+          remoteProgress = normalizeCloudProgress(snapshot.data(), uid)
+        }
+        catch (syncError) {
+          handleSyncError(syncError)
+          return
         }
       }
-      const writes = Object.values(learningStore.progressBySet)
-        .filter(progress => !remoteProgressIds.has(progress.setId))
-        .filter(progress => knownProgressHashes.get(progress.setId) !== stableHash(progress))
-        .map((progress) => {
-          knownProgressHashes.set(progress.setId, stableHash(progress))
-          return setDoc(userDocument(uid, 'progress', progress.setId), {
-            ...progress,
-            ownerId: uid,
-            schemaVersion: SCHEMA_VERSION,
-          })
-        })
-      learningStore.saveState()
-      if (writes.length)
-        void Promise.all(writes).catch(handleSyncError)
+      else {
+        remoteProgress = emptyCloudProgress()
+      }
+      if (remoteProgress && remoteStats)
+        reconcileLearningRemote(remoteProgress, remoteStats)
+      if (remoteProgress)
+        knownProgressHash = snapshot.exists() ? stableHash(remoteProgress) : ''
       markSynced()
     }, handleRealtimeError)
     statsUnsubscribe = onSnapshot(userDocument(uid, 'stats', 'summary'), (snapshot) => {
-      const learningStore = useLearningStore()
+      statsBaselineReady = true
       if (!snapshot.exists()) {
-        const localHash = stableHash(learningStore.stats)
-        if (knownStatsHash !== localHash) {
-          knownStatsHash = localHash
-          void setDoc(userDocument(uid, 'stats', 'summary'), {
-            ...learningStore.stats,
-            ownerId: uid,
-            schemaVersion: SCHEMA_VERSION,
-          }).catch(handleSyncError)
-        }
+        remoteStats = emptyCloudStats()
+        if (remoteProgress)
+          reconcileLearningRemote(remoteProgress, remoteStats)
+        markSynced()
         return
       }
-      const remote = snapshot.data() as FirestoreStatsDoc
-      if (new Date(remote.updatedAt).getTime() > new Date(learningStore.stats.updatedAt).getTime()) {
-        learningStore.stats = {
-          ...learningStore.stats,
-          ...remote,
-          todayLearningReviews: remote.todayLearningReviews ?? remote.todayReviews,
-          todayLearningCorrectReviews: remote.todayLearningCorrectReviews ?? remote.todayCorrectReviews,
-        }
-        learningStore.setDailyWordGoal(remote.dailyWordGoal ?? remote.dailyGoal)
-        learningStore.setDailyQuestionGoal(remote.dailyQuestionGoal ?? learningStore.stats.dailyQuestionGoal)
-        knownStatsHash = stableHash(remote)
-        learningStore.saveState()
+      let remoteStatsData: DashboardStats
+      try {
+        remoteStatsData = normalizeCloudStats(snapshot.data(), uid)
+      }
+      catch (syncError) {
+        handleSyncError(syncError)
+        return
+      }
+      remoteStats = remoteStatsData
+      if (remoteProgress)
+        reconcileLearningRemote(remoteProgress, remoteStatsData)
+      knownStatsHash = stableHash(remoteStatsData)
+      markSynced()
+    }, handleRealtimeError)
+  }
+
+  function applyRemoteAiSettingsChanges(uid: string) {
+    aiSettingsUnsubscribe = onSnapshot(userDocument(uid, 'settings', 'ai'), (snapshot) => {
+      aiSettingsBaselineReady = true
+      if (!snapshot.exists()) {
+        reconcileAiSettingsRemote(null)
+        markSynced()
+        return
+      }
+      try {
+        const normalized = normalizeCloudAiSettings(snapshot.data(), uid)
+        reconcileAiSettingsRemote(normalized)
+        knownAiSettingsHash = stableHash(normalized)
+        markSynced()
+      }
+      catch (syncError) {
+        handleSyncError(syncError)
       }
     }, handleRealtimeError)
   }
 
   async function flushLearning() {
-    if (!user.value || syncPaused)
+    if (!user.value || !progressBaselineReady || !statsBaselineReady || !learningDirty)
       return
     const learningStore = useLearningStore()
-    pendingWrites.value += 1
+    const uid = user.value.uid
+    pendingWrites.value = Math.max(pendingWrites.value, 1)
     setStatus('syncing')
     try {
-      const writes = Object.values(learningStore.progressBySet)
-        .filter(progress => knownProgressHashes.get(progress.setId) !== stableHash(progress))
-        .map((progress) => {
-          const progressHash = stableHash(progress)
-          return setDoc(
-            userDocument(user.value!.uid, 'progress', progress.setId),
-            { ...progress, ownerId: user.value!.uid, schemaVersion: SCHEMA_VERSION },
-          ).then(() => {
-            knownProgressHashes.set(progress.setId, progressHash)
-          })
-        })
-      const statsHash = stableHash(learningStore.stats)
-      if (knownStatsHash !== statsHash) {
-        writes.push(setDoc(userDocument(user.value.uid, 'stats', 'summary'), {
-          ...learningStore.stats,
-          ownerId: user.value.uid,
-          schemaVersion: SCHEMA_VERSION,
-        }).then(() => {
+      const result = await writeCloudLearningState(
+        requireCloudFirestore(),
+        uid,
+        learningStore.progress,
+        learningStore.stats,
+        { progress: knownProgressHash, stats: knownStatsHash },
+      )
+      const { progress: progressResult, stats: statsResult, progressHash, statsHash, progressChanged, statsChanged } = result
+      if (!progressResult.written || !statsResult.written) {
+        if (!progressResult.written) {
+          remoteProgress = progressResult.current === null ? emptyCloudProgress() : normalizeCloudProgress(progressResult.current, uid)
+          knownProgressHash = progressResult.current === null ? '' : stableHash(remoteProgress)
+        }
+        else if (progressChanged) {
+          remoteProgress = learningStore.progress
+          knownProgressHash = progressHash
+        }
+        if (!statsResult.written) {
+          remoteStats = statsResult.current === null ? emptyCloudStats() : normalizeCloudStats(statsResult.current, uid)
+          knownStatsHash = statsResult.current === null ? '' : stableHash(remoteStats)
+        }
+        else if (statsChanged) {
+          remoteStats = learningStore.stats
           knownStatsHash = statsHash
-        }))
-      }
-      if (learningStore.stats.todayReviews > 0 || learningStore.stats.todayQuestionReviews > 0) {
-        const daily: FirestoreDailyStatsDoc = {
-          date: learningStore.stats.lastStudyDate,
-          reviews: learningStore.stats.todayReviews,
-          correctReviews: learningStore.stats.todayCorrectReviews,
-          questionReviews: learningStore.stats.todayQuestionReviews,
-          correctQuestionReviews: learningStore.stats.todayQuestionCorrectReviews,
-          xpEarned: learningStore.stats.xp,
-          updatedAt: learningStore.stats.updatedAt,
-          ownerId: user.value.uid,
-          schemaVersion: SCHEMA_VERSION,
         }
-        const dailyHash = stableHash(daily)
-        if (dailyHash !== knownDailyHash) {
-          writes.push(setDoc(dailyStatsDocument(user.value.uid, daily.date), daily).then(() => {
-            knownDailyHash = dailyHash
-          }))
-        }
-      }
-      if (!writes.length) {
+        if (remoteProgress && remoteStats)
+          reconcileLearningRemote(remoteProgress, remoteStats)
+        scheduleLearningSync()
         markSynced()
         return
       }
-      await Promise.all(writes)
+      if (progressChanged)
+        knownProgressHash = progressHash
+      if (statsChanged)
+        knownStatsHash = statsHash
+      learningDirty = false
+      replaceOutbox(removeOutboxDomain(outbox.value, 'learning'))
       markSynced()
     }
     catch (syncError) {
+      replaceOutbox(incrementOutboxAttempts(outbox.value, 'learning'))
       handleSyncError(syncError)
     }
   }
 
   async function flushLibrary() {
-    if (!user.value || syncPaused || applyingRemote)
+    if (!user.value || applyingRemote || !libraryBaselineReady || !libraryDirty)
       return
     const libraryStore = useLibraryStore()
-    pendingWrites.value += 1
+    pendingWrites.value = Math.max(pendingWrites.value, 1)
     setStatus('syncing')
     try {
-      await writeLibraryChunks(user.value.uid, libraryStore.state)
+      const uid = user.value.uid
+      const result = await writeCloudLibraryChunks(requireCloudFirestore(), uid, libraryStore.state, knownLibraryHashes)
+      knownLibraryHashes.clear()
+      for (const [chunkId, checksum] of result.hashes)
+        knownLibraryHashes.set(chunkId, checksum)
+      if (result.conflicted) {
+        await refreshLibraryRemote(uid)
+        scheduleLibrarySync()
+        markSynced()
+        return
+      }
+      libraryDirty = false
+      replaceOutbox(removeOutboxDomain(outbox.value, 'library'))
       markSynced()
     }
     catch (syncError) {
+      replaceOutbox(incrementOutboxAttempts(outbox.value, 'library'))
+      handleSyncError(syncError)
+    }
+  }
+
+  async function flushAiSettings() {
+    if (!user.value || !aiSettingsBaselineReady || !aiSettingsDirty)
+      return
+    pendingWrites.value = Math.max(pendingWrites.value, 1)
+    setStatus('syncing')
+    try {
+      const uid = user.value.uid
+      const result = await writeCloudAiSettings(requireCloudFirestore(), uid, loadAiSettings(), knownAiSettingsHash)
+      if (!result.result.written) {
+        const remote = result.result.current === null ? null : normalizeCloudAiSettings(result.result.current, uid)
+        knownAiSettingsHash = remote ? stableHash(remote) : ''
+        reconcileAiSettingsRemote(remote)
+        scheduleAiSettingsSync()
+        markSynced()
+        return
+      }
+      if (result.changed)
+        knownAiSettingsHash = result.hash
+      aiSettingsDirty = false
+      baselineAiSettingsRecords = settingsRecords(loadAiSettings())
+      observedAiSettingsRecords = baselineAiSettingsRecords
+      replaceOutbox(removeOutboxDomain(outbox.value, 'settings'))
+      markSynced()
+    }
+    catch (syncError) {
+      replaceOutbox(incrementOutboxAttempts(outbox.value, 'settings'))
       handleSyncError(syncError)
     }
   }
 
   async function flushAll() {
-    if (!user.value || syncPaused)
+    if (!user.value)
       return
-    await Promise.all([flushLearning(), flushLibrary()])
+    await Promise.all([flushLearning(), flushLibrary(), flushAiSettings()])
   }
 
   function scheduleLearningSync() {
-    if (!user.value || syncPaused)
+    if (!user.value)
       return
     if (learningSyncTimer)
       clearTimeout(learningSyncTimer)
@@ -483,52 +493,48 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function scheduleLibrarySync() {
-    if (!user.value || syncPaused || applyingRemote)
+    if (!user.value || applyingRemote)
       return
     if (librarySyncTimer)
       clearTimeout(librarySyncTimer)
     librarySyncTimer = setTimeout(() => void flushLibrary(), 1200)
   }
 
-  function scheduleSetSync(nextSets: FirestoreSetDoc[]) {
-    if (!user.value || syncPaused || applyingRemote)
+  function scheduleAiSettingsSync() {
+    if (!user.value || applyingRemote)
       return
-    if (setSyncTimer)
-      clearTimeout(setSyncTimer)
-    pendingWrites.value = Math.max(1, pendingWrites.value)
-    setStatus('syncing')
-    setSyncTimer = setTimeout(async () => {
-      const currentIds = new Set(nextSets.map(set => set.id))
-      try {
-        const writes = nextSets
-          .filter(set => knownSetHashes.get(set.id) !== stableHash({ id: set.id, setName: set.setName, difficulty: set.difficulty, items: set.items }))
-          .map(set => writeSet(user.value!.uid, set))
-        for (const oldId of previousSetIds) {
-          if (!currentIds.has(oldId))
-            writes.push(deleteDoc(userDocument(user.value!.uid, 'sets', oldId)).then(() => undefined))
-        }
-        await Promise.all(writes)
-        previousSetIds = currentIds
-        markSynced()
-      }
-      catch (syncError) {
-        handleSyncError(syncError)
-      }
-    }, 900)
+    if (aiSettingsSyncTimer)
+      clearTimeout(aiSettingsSyncTimer)
+    aiSettingsSyncTimer = setTimeout(() => void flushAiSettings(), 1200)
   }
 
   async function startRealtime(uid: string) {
-    if (syncPaused)
-      return
-    if (realtimeUid === uid && setsUnsubscribe && libraryUnsubscribe && progressUnsubscribe && statsUnsubscribe)
+    if (realtimeUid === uid && libraryUnsubscribe && progressUnsubscribe && statsUnsubscribe && aiSettingsUnsubscribe)
       return
     clearListeners()
+    libraryBaselineReady = false
+    progressBaselineReady = false
+    statsBaselineReady = false
+    aiSettingsBaselineReady = false
+    baselineLibraryRecords = {}
+    observedLibraryRecords = {}
+    knownLibraryHashes.clear()
+    knownProgressHash = ''
+    knownStatsHash = ''
+    baselineLearningRecords = {}
+    observedLearningRecords = {}
+    remoteProgress = null
+    remoteStats = null
+    aiSettingsDirty = false
+    baselineAiSettingsRecords = {}
+    observedAiSettingsRecords = {}
+    knownAiSettingsHash = ''
     realtimeUid = uid
     setStatus('connecting')
     try {
-      applyRemoteSetChanges(uid)
       applyRemoteLibraryChanges(uid)
       applyRemoteLearningChanges(uid)
+      applyRemoteAiSettingsChanges(uid)
     }
     catch (syncError) {
       handleSyncError(syncError)
@@ -538,14 +544,15 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   function stopRealtime() {
     clearListeners()
     if (user.value)
-      setStatus(navigator.onLine ? 'offline' : 'offline')
+      setStatus('offline')
   }
 
   function retryConnection() {
     if (user.value) {
-      syncPaused = false
+      clearRetryTimer()
+      retryAttempt = 0
       error.value = ''
-      void startRealtime(user.value.uid)
+      void startAccountSync(user.value.uid)
     }
   }
 
@@ -562,24 +569,40 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     if (!auth)
       return
     onAuthStateChanged(auth, async (nextUser) => {
-      if (nextUser?.uid !== activeUid) {
-        knownSetHashes.clear()
-        knownProgressHashes.clear()
+      const identityChanged = nextUser?.uid !== activeUid
+      if (identityChanged) {
+        libraryBaselineReady = false
+        progressBaselineReady = false
+        statsBaselineReady = false
+        libraryDirty = false
+        learningDirty = false
+        knownProgressHash = ''
         knownStatsHash = ''
-        knownDailyHash = ''
         knownLibraryHashes.clear()
-        previousSetIds = new Set()
-        syncPaused = false
+        aiSettingsBaselineReady = false
+        aiSettingsDirty = false
+        baselineAiSettingsRecords = {}
+        observedAiSettingsRecords = {}
+        knownAiSettingsHash = ''
+        await switchLocalNamespace(nextUser?.uid || 'guest')
       }
       activeUid = nextUser?.uid || ''
       user.value = nextUser
+      if (nextUser) {
+        outbox.value = []
+        pendingWrites.value = 0
+      }
+      else {
+        outbox.value = []
+        pendingWrites.value = 0
+      }
       if (nextUser)
         accountStore.setProfile(nextUser.displayName || nextUser.email || '', nextUser.photoURL || '')
       else
         accountStore.clearProfile()
       authReady.value = true
       if (nextUser) {
-        void startRealtime(nextUser.uid)
+        await startAccountSync(nextUser.uid)
       }
       else {
         clearListeners()
@@ -594,15 +617,31 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         return
       }
       if (pageVisibility === 'visible' && realtimeUid !== user.value.uid)
-        void startRealtime(user.value.uid)
+        void startAccountSync(user.value.uid)
     })
   }
 
   async function signIn() {
     const auth = getFirebaseAuth()
     if (!auth) {
-      setError('尚未設定 Firebase，請先完成環境變數設定。')
+      setError(i18n.global.t('sync.firebaseNotConfigured'))
       return
+    }
+    const libraryStore = useLibraryStore()
+    const learningStore = useLearningStore()
+    const hasGuestAiSettings = stableHash(getShareableAiSettings(loadAiSettings())) !== stableHash(getShareableAiSettings(defaultAiSettings))
+    const hasGuestData = libraryStore.sets.length > 0
+      || Object.keys(libraryStore.state.words).length > 0
+      || libraryStore.folders.length > 1
+      || Object.keys(learningStore.progress.cards).length > 0
+      || learningStore.stats.xp > 0
+      || learningStore.stats.totalMemoryReviews > 0
+      || learningStore.stats.totalQuestionReviews > 0
+      || hasGuestAiSettings
+    if (hasGuestData) {
+      const decision = await useUIStore().showGuestDataWarning()
+      if (decision !== 'continue')
+        return
     }
     error.value = ''
     try {
@@ -622,42 +661,39 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     await signOut(auth)
   }
 
-  async function resolveConflict(setId: string, choice: 'local' | 'remote') {
-    const conflict = conflicts.value.find(item => item.setId === setId)
-    if (!conflict || !user.value)
-      return
-    try {
-      const setsStore = useSetsStore()
-      if (choice === 'remote') {
-        applyingRemote = true
-        try {
-          setsStore.applyRemoteSets(setsStore.sets.map(set => set.id === setId ? conflict.remote : set))
-          knownSetHashes.set(setId, conflict.remote.checksum)
-        }
-        finally {
-          applyingRemote = false
-        }
-      }
-      else {
-        await writeSet(user.value.uid, conflict.local as FirestoreSetDoc)
-      }
-      conflicts.value = conflicts.value.filter(item => item.setId !== setId)
-    }
-    catch (syncError) {
-      handleSyncError(syncError)
-    }
-  }
-
-  const setsStore = useSetsStore()
   const learningStore = useLearningStore()
-  const { sets } = storeToRefs(setsStore)
-  watch(sets, (nextSets) => {
-    if (user.value)
-      scheduleSetSync(nextSets as FirestoreSetDoc[])
+  watch(() => [learningStore.progress, learningStore.stats], () => {
+    if (applyingRemote || !progressBaselineReady || !statsBaselineReady)
+      return
+    const current = learningRecords(learningStore.progress, learningStore.stats)
+    const next = queueRecordChanges('learning', baselineLearningRecords, observedLearningRecords, current, outbox.value)
+    observedLearningRecords = current
+    replaceOutbox(next)
+    learningDirty = hasOutboxDomain(next, 'learning')
+    scheduleLearningSync()
   }, { deep: true })
-  watch(() => [learningStore.progressBySet, learningStore.stats], () => scheduleLearningSync(), { deep: true })
   const libraryStore = useLibraryStore()
-  watch(() => libraryStore.state, () => scheduleLibrarySync(), { deep: true })
+  watch(() => libraryStore.state, () => {
+    if (applyingRemote || !libraryBaselineReady)
+      return
+    const current = libraryRecords(libraryStore.state)
+    const next = queueRecordChanges('library', baselineLibraryRecords, observedLibraryRecords, current, outbox.value)
+    observedLibraryRecords = current
+    replaceOutbox(next)
+    libraryDirty = hasOutboxDomain(next, 'library')
+    scheduleLibrarySync()
+  }, { deep: true })
+
+  onAiSettingsChanged(() => {
+    if (applyingRemote || !aiSettingsBaselineReady)
+      return
+    const current = settingsRecords(loadAiSettings())
+    const next = queueRecordChanges('settings', baselineAiSettingsRecords, observedAiSettingsRecords, current, outbox.value)
+    observedAiSettingsRecords = current
+    replaceOutbox(next)
+    aiSettingsDirty = hasOutboxDomain(next, 'settings')
+    scheduleAiSettingsSync()
+  })
 
   return {
     configured,
@@ -667,15 +703,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     error,
     lastSyncedAt,
     pendingWrites,
-    conflicts,
     isSignedIn,
     accountLabel,
     init,
     signIn,
     signOutAccount,
     flushLearning,
+    flushAiSettings,
     flushAll,
     retryConnection,
-    resolveConflict,
   }
 })

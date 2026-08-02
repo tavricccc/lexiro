@@ -1,1431 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 156,
   "words": [
-    {
-      "wordKey": "resident",
-      "word": "resident",
-      "senses": [
-        {
-          "id": "sense-a0bc844d",
-          "pos": "noun",
-          "meaningZh": "居民；住戶",
-          "definitionEn": "a person who lives in a particular place",
-          "examples": [
-            "Local residents complained about the noise from the new factory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-d4b05f7f",
-          "pos": "adjective",
-          "meaningZh": "居住當地的；常駐的",
-          "definitionEn": "living or present in a particular place.",
-          "examples": [
-            "The resident of the house complained about the loud music next door."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "residential",
-      "word": "residential",
-      "senses": [
-        {
-          "id": "sense-eaa79f3a",
-          "pos": "adjective",
-          "meaningZh": "住宅的；供居住的",
-          "definitionEn": "used or designed for residence or limited to residences",
-          "examples": [
-            "The new housing development is strictly residential, with no commercial buildings allowed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-9b058cf3",
-          "pos": "adjective",
-          "meaningZh": "住宅區的；與居住有關的",
-          "definitionEn": "of or relating to or connected with residence",
-          "examples": [
-            "The quiet residential area was perfect for families with young children."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "resort",
-      "word": "resort",
-      "senses": [
-        {
-          "id": "sense-1babce64",
-          "pos": "noun",
-          "meaningZh": "度假勝地；渡假村",
-          "definitionEn": "a frequently visited place",
-          "examples": [
-            "The beach resort is a popular vacation spot for families during the summer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-900ada9f",
-          "pos": "verb",
-          "meaningZh": "求助於；訴諸；採取",
-          "definitionEn": "move, travel, or proceed toward some place",
-          "examples": [
-            "After his car broke down, he had to resort to taking the bus to get to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "respondent",
-      "word": "respondent",
-      "senses": [
-        {
-          "id": "sense-44574e96",
-          "pos": "noun",
-          "meaningZh": "受訪者；回應者",
-          "definitionEn": "someone who responds",
-          "examples": [
-            "The respondent in the survey stated that they were satisfied with the customer service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-d92350f7",
-          "pos": "adjective",
-          "meaningZh": "回應的；應答的",
-          "definitionEn": "replying",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "resume",
-      "word": "resume",
-      "senses": [
-        {
-          "id": "sense-16ce7dcd",
-          "pos": "verb",
-          "meaningZh": "恢復；重新開始；繼續",
-          "definitionEn": "to begin again or continue after a pause or interruption",
-          "examples": [
-            "The meeting will resume after a short break."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-ea29e411",
-          "pos": "noun",
-          "meaningZh": "履歷表；簡歷",
-          "definitionEn": "a summary of your academic and work history",
-          "examples": [
-            "After graduating, John prepared a resume to apply for his dream job as a software engineer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-34a54870",
-          "pos": "noun",
-          "meaningZh": "摘要；簡短說明",
-          "definitionEn": "short descriptive summary (of events)",
-          "examples": [
-            "Before the interview began, the applicant handed over his resume to the employer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "retail",
       "word": "retail",
       "senses": [
         {
-          "id": "sense-b5c6e02c",
-          "pos": "noun",
+          "id": "sense-59125898",
+          "pos": "n.",
           "meaningZh": "零售",
-          "definitionEn": "the sale of goods to the public in shops, in small quantities",
           "examples": [
             "She works in retail at a downtown clothing store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cab88b13",
-          "pos": "adverb",
+          "id": "sense-8a356dcc",
+          "pos": "adv.",
           "meaningZh": "以零售方式；直接零售",
-          "definitionEn": "in a manner of selling directly to the public through stores, online platforms, etc., rather than to other businesses or stores:",
           "examples": [
             "The clothing brand decided to open its own retail stores in key cities to reach directly to its customers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "revenue",
       "word": "revenue",
       "senses": [
         {
-          "id": "sense-c8a43571",
-          "pos": "noun",
+          "id": "sense-1d10f3f1",
+          "pos": "n.",
           "meaningZh": "營收；總收入",
-          "definitionEn": "the total income generated by a company, organization, or government, usually measured over a specific period of time",
           "examples": [
             "The company's revenue increased by 20% this quarter, thanks to higher sales and successful marketing campaigns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8d2292fc",
-          "pos": "noun",
+          "id": "sense-772e007c",
+          "pos": "n.",
           "meaningZh": "稅收；財政收入",
-          "definitionEn": "the money that a government or organization receives from its business or other sources, especially through taxes or sales",
           "examples": [
             "The government's revenue increased significantly after implementing new tax policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reverse",
       "word": "reverse",
       "senses": [
         {
-          "id": "sense-d13b4283",
-          "pos": "noun",
+          "id": "sense-eb60fbdf",
+          "pos": "n.",
           "meaningZh": "相反；對立",
-          "definitionEn": "a relation of direct opposition",
           "examples": [
             "His political beliefs are the reverse of his father's."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cd1432d0",
-          "pos": "noun",
+          "id": "sense-f7f410f4",
+          "pos": "n.",
           "meaningZh": "硬幣背面；反面",
-          "definitionEn": "the side of a coin or medal that does not bear the principal design",
           "examples": [
             "When the coin is flipped, it will land on either the heads or the reverse side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7 +1",
-        "textbookTitle": "龍騰 B3·L7、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rhetoric",
       "word": "rhetoric",
       "senses": [
         {
-          "id": "sense-44457437",
-          "pos": "noun",
+          "id": "sense-2a44cbc7",
+          "pos": "n.",
           "meaningZh": "修辭；說服性語言",
-          "definitionEn": "the use of language to persuade or please",
           "examples": [
             "Jane’s use of rhetoric helped her win the debate competition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-aede75cc",
-          "pos": "noun",
+          "id": "sense-5a15fdfc",
+          "pos": "n.",
           "meaningZh": "誇大的言詞；空洞華麗的辭藻",
-          "definitionEn": "a style of speaking or writing characterized by exaggerated or insincere language",
           "examples": [
             "The politician’s speech was full of rhetoric, promising things he knew he couldn’t deliver."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rib",
       "word": "rib",
       "senses": [
         {
-          "id": "sense-9ffc9377",
-          "pos": "noun",
+          "id": "sense-97edb103",
+          "pos": "n.",
           "meaningZh": "肋骨",
-          "definitionEn": "any of the curved bones that surround and protect the chest",
           "examples": [
             "He broke a rib when he fell off his bike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-29b76053",
-          "pos": "noun",
+          "id": "sense-b6908867",
+          "pos": "n.",
           "meaningZh": "肋排；帶骨肉",
-          "definitionEn": "a cut of meat including one or more ribs",
           "examples": [
             "I grilled a delicious rack of ribs for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6aadf403",
-          "pos": "verb",
+          "id": "sense-2a6a3aaa",
+          "pos": "v.",
           "meaningZh": "取笑；揶揄",
-          "definitionEn": "make fun of or tease someone in a lighthearted way",
           "examples": [
             "During the family dinner, everyone would rib my little brother about his new haircut, but it was all in good fun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ridge",
       "word": "ridge",
       "senses": [
         {
-          "id": "sense-d6969901",
-          "pos": "noun",
+          "id": "sense-b80eaea9",
+          "pos": "n.",
           "meaningZh": "山脊；山稜",
-          "definitionEn": "a long, narrow raised strip of land",
           "examples": [
             "The hikers followed the ridge of the mountain as it offered the best view of the scenery around them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6bfed175",
-          "pos": "noun",
+          "id": "sense-2a61057d",
+          "pos": "n.",
           "meaningZh": "海底山脊；海嶺",
-          "definitionEn": "a long, narrow elevation on the ocean floor",
           "examples": [
             "Scientists discovered a new underwater ridge that stretches for hundreds of miles along the ocean floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ridiculous",
       "word": "ridiculous",
       "senses": [
         {
-          "id": "sense-b8313a14",
-          "pos": "adjective",
+          "id": "sense-8a7c6fce",
+          "pos": "adj.",
           "meaningZh": "荒謬的；可笑的",
-          "definitionEn": "deserving or inviting ridicule; absurd",
           "examples": [
             "It is ridiculous to think you can lose twenty pounds in a week."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3ca449d6",
-          "pos": "adjective",
+          "id": "sense-265b7828",
+          "pos": "adj.",
           "meaningZh": "可悲的；令人不齒的",
-          "definitionEn": "arousing or deserving contemptuous pity; pitiful",
           "examples": [
             "The condition of the orphanage was ridiculous, with broken furniture and no proper sanitation facilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1",
-        "textbookTitle": "龍騰 B3·R1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rifle",
       "word": "rifle",
       "senses": [
         {
-          "id": "sense-aef29070",
-          "pos": "noun",
+          "id": "sense-437d649c",
+          "pos": "n.",
           "meaningZh": "步槍；來福槍",
-          "definitionEn": "a firearm with a long barrel and a rifled bore, designed to be fired from the shoulder",
           "examples": [
             "John carefully aimed his rifle at the target and squeezed the trigger, sending the bullet straight through the bullseye."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1e456e0b",
-          "pos": "verb",
+          "id": "sense-8cd7b4e6",
+          "pos": "v.",
           "meaningZh": "翻找；搜查",
-          "definitionEn": "search through something in a hurried and/or careless way in order to find something",
           "examples": [
             "After misplacing his keys, John rifled through his entire apartment, tossing things aside in a frantic search."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rigid",
       "word": "rigid",
       "senses": [
         {
-          "id": "sense-3e18c22b",
-          "pos": "adjective",
+          "id": "sense-5c6e30f1",
+          "pos": "adj.",
           "meaningZh": "堅硬的；不易變形的",
-          "definitionEn": "holding a firm shape or position and not easily changed",
           "examples": [
             "The metal frame of the building was so rigid that it withstood the force of the earthquake without collapsing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7c4af39b",
-          "pos": "adjective",
+          "id": "sense-9c115e01",
+          "pos": "adj.",
           "meaningZh": "死板的；僵化的",
-          "definitionEn": "not able to be changed or adapted easily",
           "examples": [
             "The company's rigid policies stifled innovation and hindered progress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rim",
       "word": "rim",
       "senses": [
         {
-          "id": "sense-2b2ea25b",
-          "pos": "noun",
+          "id": "sense-c3154e5b",
+          "pos": "n.",
           "meaningZh": "邊緣；杯口",
-          "definitionEn": "the upper edge of a container or vessel",
           "examples": [
             "She carefully wiped the rim of the glass with a cloth before pouring the wine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c0f4afd4",
-          "pos": "noun",
+          "id": "sense-4a1133d4",
+          "pos": "n.",
           "meaningZh": "籃框；籃圈",
-          "definitionEn": "the circular metal hoop supporting the net in basketball",
           "examples": [
             "He shot the basketball perfectly, and the ball hit the rim before it fell into the net."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "riot",
       "word": "riot",
       "senses": [
         {
-          "id": "sense-f2331094",
-          "pos": "noun",
+          "id": "sense-eb5b5194",
+          "pos": "n.",
           "meaningZh": "暴動；騷亂",
-          "definitionEn": "a state of disorder involving group violence or public acts of violence by an unruly mob",
           "examples": [
             "The protest escalated into a riot, with people smashing windows and setting cars on fire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-11561525",
-          "pos": "noun",
+          "id": "sense-9e146625",
+          "pos": "n.",
           "meaningZh": "大規模鬧事；群眾滋事",
-          "definitionEn": "a wild and noisy gathering, especially one involving excessive drinking and violent behavior",
           "examples": [
             "The city experienced a riot when the local sports team won the championship. Fans took to the streets, setting cars on fire and looting stores."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rip",
       "word": "rip",
       "senses": [
         {
-          "id": "sense-b5699055",
-          "pos": "verb",
+          "id": "sense-a5a838ac",
+          "pos": "v.",
           "meaningZh": "嚴厲批評；猛烈抨擊",
-          "definitionEn": "to criticize or attack fiercely",
           "examples": [
             "After the team’s loss, the coach ripped into the players for their lack of effort and preparation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-323ba08e",
-          "pos": "noun",
+          "id": "sense-a0a11176",
+          "pos": "n.",
           "meaningZh": "撕裂口；破口",
-          "definitionEn": "an opening made by tearing or pulling something apart",
           "examples": [
             "She accidentally ripped her dress on the door handle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "risky",
       "word": "risky",
       "senses": [
         {
-          "id": "sense-0ff467f1",
-          "pos": "adjective",
+          "id": "sense-62a83bf5",
+          "pos": "adj.",
           "meaningZh": "危險的；有風險的",
-          "definitionEn": "involving danger or the possibility of harm",
           "examples": [
             "It's risky to drive without wearing a seatbelt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cea33033",
-          "pos": "adjective",
+          "id": "sense-a14dc8e7",
+          "pos": "adj.",
           "meaningZh": "冒險的；可能造成損失的",
-          "definitionEn": "involving a risk or a chance of loss or injury",
           "examples": [
             "It's risky to invest all your savings in a single stock."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ritual",
       "word": "ritual",
       "senses": [
         {
-          "id": "sense-f8211c36",
-          "pos": "noun",
+          "id": "sense-56111142",
+          "pos": "n.",
           "meaningZh": "例行儀式；傳統習俗",
-          "definitionEn": "a traditional observance or practice",
           "examples": [
             "Every year, on New Year's Eve, our family gathers around the fireplace to perform a special ritual of lighting candles and sharing our hopes and dreams for the upcoming year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-157c3957",
-          "pos": "noun",
+          "id": "sense-dd65a57b",
+          "pos": "n.",
           "meaningZh": "宗教儀式；祭典程序",
-          "definitionEn": "a series of actions that are always performed in the same way, especially as part of a religious ceremony",
           "examples": [
             "Every Sunday, the congregation gathers at the church for the ritual of Holy Communion, where they partake in the same sequence of prayers, hymns, and the sharing of bread and wine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rival",
       "word": "rival",
       "senses": [
         {
-          "id": "sense-dab68485",
-          "pos": "noun",
+          "id": "sense-4e5addd5",
+          "pos": "n.",
           "meaningZh": "競爭對手；勁敵",
-          "definitionEn": "a person or thing competing with another for the same objective or for superiority in the same field of activity.",
           "examples": [
             "In the world of professional tennis, Serena Williams and Maria Sharapova are fierce rivals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-224667cd",
-          "pos": "verb",
+          "id": "sense-9483f680",
+          "pos": "v.",
           "meaningZh": "與…競爭；抗衡",
-          "definitionEn": "compete with another for the same objective or for superiority in the same field of activity.",
           "examples": [
             "In the world of professional tennis, Serena Williams and Maria Sharapova have been fierce rivals for years, constantly facing off in high-stakes matches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rod",
       "word": "rod",
       "senses": [
         {
-          "id": "sense-afff5549",
-          "pos": "noun",
+          "id": "sense-ea41ac2d",
+          "pos": "n.",
           "meaningZh": "細長棒；竿",
-          "definitionEn": "a long, thin object made of metal or wood",
           "examples": [
             "John used a sturdy metal rod to prop up the tent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sacred",
       "word": "sacred",
       "senses": [
         {
-          "id": "sense-f0d06547",
-          "pos": "adjective",
+          "id": "sense-fe9e0a7b",
+          "pos": "adj.",
           "meaningZh": "神聖的；莊嚴的",
-          "definitionEn": "deserving respect; holy",
           "examples": [
             "The ancient temple hidden deep in the mountains is considered a sacred place by the local community, and only a select few are allowed to enter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "saddle",
       "word": "saddle",
       "senses": [
         {
-          "id": "sense-981bf2e6",
-          "pos": "noun",
+          "id": "sense-1203464a",
+          "pos": "n.",
           "meaningZh": "馬鞍；鞍座",
-          "definitionEn": "a seat for the rider of a horse or camel",
           "examples": [
             "She felt comfortable in the saddle, confident in her ability to control the powerful horse as they rode through the open fields."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0d1a4b88",
-          "pos": "noun",
+          "id": "sense-8cc22a4c",
+          "pos": "n.",
           "meaningZh": "（腳踏車）座墊",
-          "definitionEn": "a seat for the rider of a bicycle",
           "examples": [
             "Tom adjusted the height of his saddle before starting his bike ride."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "saint",
       "word": "saint",
       "senses": [
         {
-          "id": "sense-f3c817a2",
-          "pos": "noun",
+          "id": "sense-82e39de6",
+          "pos": "n.",
           "meaningZh": "聖人；品德高尚者",
-          "definitionEn": "a person who is exceptionally holy and virtuous",
           "examples": [
             "Mother Teresa dedicated her life to helping the poor and needy, earning her the title of saint in the eyes of many."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1fe5118b",
-          "pos": "noun",
+          "id": "sense-404bcb67",
+          "pos": "n.",
           "meaningZh": "聖徒；受封聖品者",
-          "definitionEn": "a person who has been declared a saint by canonization after death",
           "examples": [
             "During the sermon, the priest spoke of the miracles attributed to the saint, giving hope and inspiration to the congregation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "salmon",
       "word": "salmon",
       "senses": [
         {
-          "id": "sense-b67034be",
-          "pos": "noun",
+          "id": "sense-c402c15e",
+          "pos": "n.",
           "meaningZh": "鮭魚",
-          "definitionEn": "a large fish with pink flesh that is eaten as food",
           "examples": [
             "We had grilled salmon for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-296961d9",
-          "pos": "noun",
+          "id": "sense-8f7865f9",
+          "pos": "n.",
           "meaningZh": "鮭魚橙色；淡橙紅色",
-          "definitionEn": "a pale pinkish-orange color",
           "examples": [
             "She decided to paint her bedroom walls in a soothing salmon shade, creating a calm and peaceful ambiance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "salon",
       "word": "salon",
       "senses": [
         {
-          "id": "sense-89e3d0ec",
-          "pos": "noun",
+          "id": "sense-6384fa88",
+          "pos": "n.",
           "meaningZh": "美髮沙龍；美容院",
-          "definitionEn": "a shop where hairdressers and beauticians work",
           "examples": [
             "I went to the salon to get my hair colored and styled for the wedding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c3504092",
-          "pos": "noun",
+          "id": "sense-368b259e",
+          "pos": "n.",
           "meaningZh": "客廳；雅緻接待室",
-          "definitionEn": "elegant sitting room where guests are received",
           "examples": [
             "The wealthy couple received their guests in the spacious salon decorated with antique furniture and luxurious carpets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sandal",
       "word": "sandal",
       "senses": [
         {
-          "id": "sense-77bc57f1",
-          "pos": "noun",
+          "id": "sense-7cfa5625",
+          "pos": "n.",
           "meaningZh": "涼鞋；夾腳拖",
-          "definitionEn": "a type of shoe consisting of a flat sole fastened to the foot by straps",
           "examples": [
             "During summertime, she wore her favorite pair of sandals to the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scan",
       "word": "scan",
       "senses": [
         {
-          "id": "sense-e13cd691",
-          "pos": "verb",
+          "id": "sense-42e99f70",
+          "pos": "v.",
           "meaningZh": "仔細檢視；掃視",
-          "definitionEn": "to examine something very closely or carefully",
           "examples": [
             "The detective scanned the crime scene for any overlooked clues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f6a50f8f",
-          "pos": "verb",
+          "id": "sense-bf11a1f6",
+          "pos": "v.",
           "meaningZh": "搜尋；全面搜索",
-          "definitionEn": "to search through something thoroughly",
           "examples": [
             "The detective scanned the crime scene for any possible clues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scandal",
       "word": "scandal",
       "senses": [
         {
-          "id": "sense-98db3f89",
-          "pos": "noun",
+          "id": "sense-9d84f50d",
+          "pos": "n.",
           "meaningZh": "醜聞；醜事",
-          "definitionEn": "an action or event that shocks people and makes them feel disapproval",
           "examples": [
             "The politician's involvement in a financial scandal caused a public uproar and led to his resignation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3300265f",
-          "pos": "noun",
+          "id": "sense-056029db",
+          "pos": "n.",
           "meaningZh": "醜聞報導；輿論譁然",
-          "definitionEn": "reports about actions or events that cause shock and disapproval",
           "examples": [
             "The scandal surrounding the politician's financial misconduct led to widespread outrage and calls for his resignation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scar",
       "word": "scar",
       "senses": [
         {
-          "id": "sense-000610d3",
-          "pos": "noun",
+          "id": "sense-0015f5bb",
+          "pos": "n.",
           "meaningZh": "疤痕；傷疤",
-          "definitionEn": "a mark left on the skin or other tissue by the healing of a wound, sore, or injury",
           "examples": [
             "After the surgery, a small scar formed on her knee where the incision was made."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-926ad561",
-          "pos": "verb",
+          "id": "sense-8d6f527e",
+          "pos": "v.",
           "meaningZh": "留下疤痕；使留疤",
-          "definitionEn": "to mark with a scar",
           "examples": [
             "After the accident, the deep cut on her arm healed and left a permanent scar."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scenario",
+      "word": "scenario",
+      "senses": [
+        {
+          "id": "sense-03a6b93e",
+          "pos": "n.",
+          "meaningZh": "假設情境；可能情況",
+          "examples": [
+            "Let's consider a scenario where a global pandemic results in widespread lockdowns and the collapse of economies."
+          ]
+        },
+        {
+          "id": "sense-98ae608e",
+          "pos": "n.",
+          "meaningZh": "劇情大綱；劇本概要",
+          "examples": [
+            "In the scenario for the upcoming film, the main character embarks on a thrilling adventure to uncover a hidden treasure."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scent",
+      "word": "scent",
+      "senses": [
+        {
+          "id": "sense-c38f3d9b",
+          "pos": "n.",
+          "meaningZh": "香氣；氣味",
+          "examples": [
+            "The scent of freshly baked bread filled the kitchen, making everyone's mouths water."
+          ]
+        },
+        {
+          "id": "sense-2ac23099",
+          "pos": "v.",
+          "meaningZh": "嗅到；察覺氣味",
+          "examples": [
+            "As I walked through the forest, I caught the scent of pine trees in the air."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scheme",
+      "word": "scheme",
+      "senses": [
+        {
+          "id": "sense-d26c0889",
+          "pos": "n.",
+          "meaningZh": "計畫；方案",
+          "examples": [
+            "The company developed a scheme to triple its profits within the next quarter by cutting down on operational costs and expanding into new markets."
+          ]
+        },
+        {
+          "id": "sense-84bb45c0",
+          "pos": "n.",
+          "meaningZh": "草案；初步規劃",
+          "examples": [
+            "She spent months working on a scheme for the new product line before presenting it to the board."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scope",
+      "word": "scope",
+      "senses": [
+        {
+          "id": "sense-e8121a9f",
+          "pos": "n.",
+          "meaningZh": "範圍；職責領域",
+          "examples": [
+            "As the project manager, her scope of responsibilities includes overseeing the planning, execution, and monitoring of the entire project."
+          ]
+        },
+        {
+          "id": "sense-ac99f4cd",
+          "pos": "n.",
+          "meaningZh": "望遠鏡；瞄準鏡",
+          "examples": [
+            "John used a scope to observe the birds in the faraway trees."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "scramble",
+      "word": "scramble",
+      "senses": [
+        {
+          "id": "sense-442eca9f",
+          "pos": "v.",
+          "meaningZh": "炒（蛋）；攪拌",
+          "examples": [
+            "Joan decided to scramble some eggs for breakfast, vigorously whisking them in a bowl until they became light and frothy."
+          ]
+        },
+        {
+          "id": "sense-c6839a93",
+          "pos": "v.",
+          "meaningZh": "爬行；手腳並用移動",
+          "examples": [
+            "In their rush to catch the bus, the students scramble across the icy sidewalk, flailing their arms to stay upright."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

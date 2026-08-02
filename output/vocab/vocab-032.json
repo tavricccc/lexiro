@@ -1,1381 +1,649 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 32,
   "words": [
-    {
-      "wordKey": "address",
-      "word": "address",
-      "senses": [
-        {
-          "id": "sense-af9b4eeb",
-          "pos": "noun",
-          "meaningZh": "地址；住址",
-          "definitionEn": "the place or location where a person or organization can be found or contacted",
-          "examples": [
-            "If you want to send a letter, make sure you have the correct address of the recipient."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-14c2d9c1",
-          "pos": "noun",
-          "meaningZh": "門牌地址；所在地標示",
-          "definitionEn": "a label or sign indicating the location of a building or business",
-          "examples": [
-            "Make sure you look for the address of the restaurant before heading there."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "admit",
-      "word": "admit",
-      "senses": [
-        {
-          "id": "sense-bcd1c5dd",
-          "pos": "verb",
-          "meaningZh": "承認；坦承",
-          "definitionEn": "declare that something is true; acknowledge the existence or reality of something",
-          "examples": [
-            "After getting caught, the thief finally had to admit that he stole the money."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-4232d010",
-          "pos": "verb",
-          "meaningZh": "准許進入；讓入場",
-          "definitionEn": "allow someone to enter a place",
-          "examples": [
-            "The security guard at the museum will admit visitors who have valid tickets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5 +1",
-        "textbookTitle": "龍騰 B4·L5、三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "adult",
-      "word": "adult",
-      "senses": [
-        {
-          "id": "sense-7ecfd162",
-          "pos": "noun",
-          "meaningZh": "成人；成年人",
-          "definitionEn": "a person who has reached maturity",
-          "examples": [
-            "At 18 years old, she became an adult and was legally allowed to vote and purchase cigarettes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-cd0719c6",
-          "pos": "noun",
-          "meaningZh": "成熟動植物；成體",
-          "definitionEn": "fully developed animal or plant",
-          "examples": [
-            "The oak tree standing in the park is an adult plant and has been standing there for over a hundred years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "advance",
-      "word": "advance",
-      "senses": [
-        {
-          "id": "sense-d9ad88c1",
-          "pos": "noun",
-          "meaningZh": "前進；推進",
-          "definitionEn": "a movement forward",
-          "examples": [
-            "The army was able to advance to the enemy’s territory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-6c2b8a9c",
-          "pos": "noun",
-          "meaningZh": "進展；進步",
-          "definitionEn": "the act of moving forward (as toward a goal)",
-          "examples": [
-            "After years of hard work and dedication, John was finally able to make a significant advance in his career."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "advice",
-      "word": "advice",
-      "senses": [
-        {
-          "id": "sense-d1875492",
-          "pos": "noun",
-          "meaningZh": "建議；忠告",
-          "definitionEn": "recommendations or suggestions offered with regard to prudent action.",
-          "examples": [
-            "She sought advice from her mentor before making a career-changing decision."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +2",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L1、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "affair",
       "word": "affair",
       "senses": [
         {
-          "id": "sense-a6d33409",
-          "pos": "noun",
+          "id": "sense-7a8c72f1",
+          "pos": "n.",
           "meaningZh": "事務；事情",
-          "definitionEn": "a matter or concern",
           "examples": [
             "John’s financial affairs have been in a mess since he lost his job."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-21db0713",
-          "pos": "noun",
+          "id": "sense-cc5479fb",
+          "pos": "n.",
           "meaningZh": "社交活動；場合",
-          "definitionEn": "a vaguely specified social event",
           "examples": [
             "She attended a business affair last night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "affect",
       "word": "affect",
       "senses": [
         {
-          "id": "sense-0e4bddff",
-          "pos": "verb",
+          "id": "sense-4620308a",
+          "pos": "v.",
           "meaningZh": "影響；左右",
-          "definitionEn": "to produce a change or influence something",
           "examples": [
             "The music had a profound affect on her mood, lifting her spirits and filling her with joy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5cf1e0ed",
-          "pos": "verb",
+          "id": "sense-9cd84994",
+          "pos": "v.",
           "meaningZh": "侵襲；波及",
-          "definitionEn": "to act on or cause a change in something physically",
           "examples": [
             "The hurricane affected the coastal town, leaving widespread destruction in its path."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +1",
-        "textbookTitle": "龍騰 B2·L2、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "against",
       "word": "against",
       "senses": [
         {
-          "id": "sense-868a16e0",
-          "pos": "preposition",
+          "id": "sense-8c7af203",
+          "pos": "prep.",
           "meaningZh": "反對；不贊成",
-          "definitionEn": "opposing or disagreeing with someone or something",
           "examples": [
             "She argued against the proposed changes in the company's policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-85736cd7",
-          "pos": "preposition",
+          "id": "sense-c332c28e",
+          "pos": "prep.",
           "meaningZh": "不利於；有害於",
-          "definitionEn": "not beneficial or in favor of someone or something",
           "examples": [
             "She voted against the new legislation, believing it would negatively impact small businesses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ahead",
       "word": "ahead",
       "senses": [
         {
-          "id": "sense-2494680d",
-          "pos": "adverb",
+          "id": "sense-a3637282",
+          "pos": "adv.",
           "meaningZh": "在前方；向前",
-          "definitionEn": "in the front or forward",
           "examples": [
             "The car ahead of us suddenly stopped, causing us to brake quickly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-34c6ad94",
-          "pos": "adjective",
+          "id": "sense-d87fe9e2",
+          "pos": "adj.",
           "meaningZh": "領先的；佔優勢的",
-          "definitionEn": "having the leading position or higher score in a contest",
           "examples": [
             "The home team was ahead by three points going into the final quarter of the game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aid",
       "word": "aid",
       "senses": [
         {
-          "id": "sense-3382deec",
-          "pos": "noun",
+          "id": "sense-55cf1ee8",
+          "pos": "n.",
           "meaningZh": "援助；協助",
-          "definitionEn": "the activity of contributing to the fulfillment of a need or furtherance of an effort or purpose",
           "examples": [
             "The Red Cross provided aid to the victims of the disaster by distributing food, clothing, and medical supplies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a36e2917",
-          "pos": "noun",
+          "id": "sense-3ba0d4cb",
+          "pos": "n.",
           "meaningZh": "急救；醫療照護",
-          "definitionEn": "the work of providing treatment or care for someone or something",
           "examples": [
             "The first aid kit had everything we needed to tend to the injuries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aim",
       "word": "aim",
       "senses": [
         {
-          "id": "sense-7754e4da",
-          "pos": "noun",
+          "id": "sense-969c0616",
+          "pos": "n.",
           "meaningZh": "目標；目的",
-          "definitionEn": "the intended goal or target of something",
           "examples": [
             "His aim in life is to become a successful entrepreneur."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fc51c7b3",
-          "pos": "verb",
+          "id": "sense-6718a7ba",
+          "pos": "v.",
           "meaningZh": "瞄準；對準",
-          "definitionEn": "to point (a weapon or object) towards a target or destination",
           "examples": [
             "The archer took careful aim at the bullseye and released the arrow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8 +1",
-        "textbookTitle": "龍騰 B1·L8、三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aircraft",
       "word": "aircraft",
       "senses": [
         {
-          "id": "sense-aed91287",
-          "pos": "noun",
+          "id": "sense-990e51a7",
+          "pos": "n.",
           "meaningZh": "飛行器；航空器",
-          "definitionEn": "a vehicle that is designed to be able to fly or travel through the air",
           "examples": [
             "The airport had a variety of aircraft including helicopters, airplanes, and gliders."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alarm",
       "word": "alarm",
       "senses": [
         {
-          "id": "sense-808b8bbe",
-          "pos": "noun",
+          "id": "sense-a833fd4a",
+          "pos": "n.",
           "meaningZh": "警報器；警報裝置",
-          "definitionEn": "a device that makes a loud sound or flashing light to signal something unpleasant or dangerous",
           "examples": [
             "The smoke alarm went off in the middle of the night, alerting us to the fire in the kitchen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-dc11b681",
-          "pos": "noun",
+          "id": "sense-c68516ed",
+          "pos": "n.",
           "meaningZh": "鬧鐘；鬧鈴",
-          "definitionEn": "a clock that can be set to make a sound at a certain time to wake someone up",
           "examples": [
             "I always set my alarm before going to bed, so that I can wake up on time for work in the morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "album",
       "word": "album",
       "senses": [
         {
-          "id": "sense-6a3a0552",
-          "pos": "noun",
+          "id": "sense-c4d2cc3a",
+          "pos": "n.",
           "meaningZh": "專輯；唱片",
-          "definitionEn": "a collection of one or more music recordings issued together, originally on 12-inch phonograph records with attractive covers, and later on cassette tape and compact disc.",
           "examples": [
             "I bought the latest album of my favorite band and listened to it on repeat all weekend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-e07329f7",
-          "pos": "n.",
-          "meaningZh": "菌落；培養基上的菌群",
-          "definitionEn": "in microbiology, a mass of bacteria or other microorganisms growing on a culture medium.",
-          "examples": [
-            "After incubating the petri dish for 24 hours, a colorful album of bacteria could be observed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alike",
       "word": "alike",
       "senses": [
         {
-          "id": "sense-ec8abe4b",
-          "pos": "adjective",
+          "id": "sense-a1cafcb7",
+          "pos": "adj.",
           "meaningZh": "相似的；相同的",
-          "definitionEn": "having the same or similar characteristics",
           "examples": [
             "The two sisters look so alike that it’s hard to tell them apart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-963df139",
-          "pos": "adverb",
+          "id": "sense-90f71f88",
+          "pos": "adv.",
           "meaningZh": "同樣地；相似地",
-          "definitionEn": "in a similar way or manner",
           "examples": [
             "The two brothers looked so alike that people often mistook one for the other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alive",
       "word": "alive",
       "senses": [
         {
-          "id": "sense-88264177",
-          "pos": "adjective",
+          "id": "sense-33665a91",
+          "pos": "adj.",
           "meaningZh": "活著的；有生命的",
-          "definitionEn": "possessing life",
           "examples": [
             "After being rescued, the lost hiker felt grateful to be alive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-de63ea36",
-          "pos": "adjective",
+          "id": "sense-b058d78c",
+          "pos": "adj.",
           "meaningZh": "思維靈活的；精神抖擻的",
-          "definitionEn": "mentally alert and responsive",
           "examples": [
             "Despite his advanced age, my grandfather remains alive and engaged in stimulating conversations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alone",
       "word": "alone",
       "senses": [
         {
-          "id": "sense-b28ee698",
-          "pos": "adjective",
+          "id": "sense-7d256fc2",
+          "pos": "adj.",
           "meaningZh": "獨自的；孤單的",
-          "definitionEn": "not accompanied by anyone or anything else, separate, apart",
           "examples": [
             "After her friends left, she felt alone in the empty house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ce76f0ab",
-          "pos": "adverb",
+          "id": "sense-8ff24f90",
+          "pos": "adv.",
           "meaningZh": "單獨地；獨自",
-          "definitionEn": "without others",
           "examples": [
             "After a long day at work, I enjoyed spending some quality time alone to relax and recharge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aloud",
       "word": "aloud",
       "senses": [
         {
-          "id": "sense-b2f4901c",
-          "pos": "adverb",
+          "id": "sense-e24d537d",
+          "pos": "adv.",
           "meaningZh": "出聲地；大聲地",
-          "definitionEn": "using the voice; not silently or to oneself",
           "examples": [
             "She read the poem aloud to the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-403e7971",
-          "pos": "adverb",
+          "id": "sense-aebd1d20",
+          "pos": "adv.",
           "meaningZh": "可聽見地；朗聲",
-          "definitionEn": "in a way that can be heard; audibly",
           "examples": [
             "She read the story aloud to the children at the library."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "altogether",
       "word": "altogether",
       "senses": [
         {
-          "id": "sense-2d243096",
-          "pos": "adverb",
+          "id": "sense-cc7d7175",
+          "pos": "adv.",
           "meaningZh": "完全；徹底；一概",
-          "definitionEn": "completely; entirely",
           "examples": [
             "We decided to cancel the picnic altogether due to the bad weather forecast."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-92855a65",
-          "pos": "adverb",
+          "id": "sense-9091e078",
+          "pos": "adv.",
           "meaningZh": "總共；合計",
-          "definitionEn": "including everything; all in all",
           "examples": [
             "We decided to cancel the picnic altogether due to the rainy weather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "among",
       "word": "among",
       "senses": [
         {
-          "id": "sense-345674c3",
-          "pos": "preposition",
+          "id": "sense-4a70f932",
+          "pos": "prep.",
           "meaningZh": "在……之中；圍繞在",
-          "definitionEn": "in the middle of or surrounded by",
           "examples": [
             "The detective searched among the crowd for the suspect."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c7d8ff8f",
-          "pos": "preposition",
+          "id": "sense-46344416",
+          "pos": "prep.",
           "meaningZh": "在……之列；作為一份子",
-          "definitionEn": "as part of a group or in the group of people or things named",
           "examples": [
             "The teacher noticed a sense of camaraderie among the students, as they worked together on the group project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "amount",
       "word": "amount",
       "senses": [
         {
-          "id": "sense-d8dfd819",
-          "pos": "noun",
+          "id": "sense-7b1607ad",
+          "pos": "n.",
           "meaningZh": "數量；總量",
-          "definitionEn": "a quantity of something that can be measured or counted",
           "examples": [
             "The amount of sugar required for this recipe is two cups."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ancient",
       "word": "ancient",
       "senses": [
         {
-          "id": "sense-22e78900",
-          "pos": "adjective",
+          "id": "sense-fa0041ec",
+          "pos": "adj.",
           "meaningZh": "古代的；遠古的",
-          "definitionEn": "belonging to a time long ago, especially the historical period before the fall of the Western Roman Empire",
           "examples": [
             "During our trip to Rome, we visited the ancient ruins of the Colosseum and marveled at its grandeur."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f7852b85",
-          "pos": "noun",
+          "id": "sense-ebad5fa5",
+          "pos": "n.",
           "meaningZh": "古人；上古時代的人",
-          "definitionEn": "a person from a long time ago",
           "examples": [
             "In the museum, they had a well-preserved mummy of an ancient Egyptian."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6 +1",
-        "textbookTitle": "龍騰 B1·L6、三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "anger",
       "word": "anger",
       "senses": [
         {
-          "id": "sense-4df8645c",
-          "pos": "noun",
+          "id": "sense-7b119db4",
+          "pos": "n.",
           "meaningZh": "憤怒；怒氣；怒火",
-          "definitionEn": "a strong feeling of annoyance, displeasure, or hostility",
           "examples": [
             "His constant teasing had finally reached a level of anger where I had to stand up for myself."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6cc383f7",
-          "pos": "verb",
+          "id": "sense-3604fc74",
+          "pos": "v.",
           "meaningZh": "發怒；生氣；表現憤怒",
-          "definitionEn": "to experience or demonstrate strong feelings of annoyance, displeasure, or hostility",
           "examples": [
             "She clenched her fists and gritted her teeth in anger when her boss criticized her work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "angle",
       "word": "angle",
       "senses": [
         {
-          "id": "sense-bb81a3cd",
-          "pos": "noun",
+          "id": "sense-f63dcc85",
+          "pos": "n.",
           "meaningZh": "角度；夾角",
-          "definitionEn": "the space between two lines or surfaces that meet or cross each other, measured in degrees or radians",
           "examples": [
             "When constructing a building, it is crucial to ensure that the angles of the walls intersect at 90 degrees to maintain structural integrity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3866226f",
-          "pos": "verb",
+          "id": "sense-ca242550",
+          "pos": "v.",
           "meaningZh": "斜移；成角度移動",
-          "definitionEn": "move or cause to move at an angle",
           "examples": [
             "After hitting the curb, the car angle d to the side and scraped against the guardrail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ankle",
       "word": "ankle",
       "senses": [
         {
-          "id": "sense-6062719a",
-          "pos": "noun",
+          "id": "sense-f8b07f82",
+          "pos": "n.",
           "meaningZh": "腳踝；踝關節",
-          "definitionEn": "the joint between the foot and the leg, containing the bones of the leg (tibia and fibula) and the ankle bone (talus)",
           "examples": [
             "After twisting her ankle while running, she had to wear a brace and use crutches for a few weeks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "anytime",
       "word": "anytime",
       "senses": [
         {
-          "id": "sense-d13aa556",
-          "pos": "adverb",
+          "id": "sense-e47fefeb",
+          "pos": "adv.",
           "meaningZh": "隨時；任何時候",
-          "definitionEn": "at any time; whenever you like",
           "examples": [
             "You can return the books anytime before Friday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-90012826",
-          "pos": "exclamation",
-          "meaningZh": "不客氣；別謝了",
-          "definitionEn": "used as a friendly reply when someone thanks you",
-          "examples": [
-            "\"Thanks for the ride home!\" \"Anytime!\""
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "anyway",
       "word": "anyway",
       "senses": [
         {
-          "id": "sense-f5ceabb3",
-          "pos": "adverb",
+          "id": "sense-5a722966",
+          "pos": "adv.",
           "meaningZh": "無論如何；反正",
-          "definitionEn": "in any way whatsoever; regardless",
           "examples": [
             "I know it's a long shot, but I'll apply for the job anyway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5e5e4ece",
-          "pos": "adverb",
+          "id": "sense-6efc8177",
+          "pos": "adv.",
           "meaningZh": "儘管如此；即便如此",
-          "definitionEn": "used to indicate a statement is being made regardless of previous statements; nevertheless",
           "examples": [
             "I told her not to go alone, but anyway, she went hiking in the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ape",
       "word": "ape",
       "senses": [
         {
-          "id": "sense-0f004e24",
-          "pos": "noun",
+          "id": "sense-59061c84",
+          "pos": "n.",
           "meaningZh": "猿；人猿",
-          "definitionEn": "any of various primates with short tails or no tail at all",
           "examples": [
             "In the zoo, we observed an ape swinging effortlessly from branch to branch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-801a4815",
-          "pos": "noun",
+          "id": "sense-08cad275",
+          "pos": "n.",
           "meaningZh": "粗魯之人；蠢人",
-          "definitionEn": "a person who looks or behaves like a nonhuman primate",
           "examples": [
             "Despite his human appearance, Tom’s sudden bursts of anger and juvenile antics at the office earned him a reputation as the office ape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "appearance",
       "word": "appearance",
       "senses": [
         {
-          "id": "sense-8ebf8c04",
-          "pos": "noun",
+          "id": "sense-d9238684",
+          "pos": "n.",
           "meaningZh": "出現；露面",
-          "definitionEn": "the state of being seen or noticed",
           "examples": [
             "She carefully chose her clothing and makeup for the job interview because she knew that her appearance would be judged by the employer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-85682e67",
-          "pos": "noun",
+          "id": "sense-a8ce9be7",
+          "pos": "n.",
           "meaningZh": "外貌；外觀；儀表",
-          "definitionEn": "the way that someone or something looks",
           "examples": [
             "Her appearance was striking with her red dress and matching heels."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5 +1",
-        "textbookTitle": "龍騰 B3·L5、三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "appetite",
       "word": "appetite",
       "senses": [
         {
-          "id": "sense-a51ebd2d",
-          "pos": "noun",
+          "id": "sense-866bb1bd",
+          "pos": "n.",
           "meaningZh": "食慾；胃口；渴望",
-          "definitionEn": "a strong desire or liking for something",
           "examples": [
             "After hiking for eight hours, my appetite for a burger and fries was insatiable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L4",
-        "textbookTitle": "三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "apply",
+      "word": "apply",
+      "senses": [
+        {
+          "id": "sense-54b8358e",
+          "pos": "v.",
+          "meaningZh": "應用；運用；採用",
+          "examples": [
+            "She decided to apply her organizational skills to plan the company's annual conference."
+          ]
+        },
+        {
+          "id": "sense-0de8a194",
+          "pos": "v.",
+          "meaningZh": "申請；應徵",
+          "examples": [
+            "She decided to apply for the job at the prestigious law firm."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "appreciate",
+      "word": "appreciate",
+      "senses": [
+        {
+          "id": "sense-f07b07aa",
+          "pos": "v.",
+          "meaningZh": "欣賞；體認；珍惜",
+          "examples": [
+            "After years of hard work and dedication, Jenny could finally appreciate the true value of financial stability."
+          ]
+        },
+        {
+          "id": "sense-c1214ef1",
+          "pos": "v.",
+          "meaningZh": "增值；升值",
+          "examples": [
+            "Investing in real estate can appreciate its value over time."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "approach",
+      "word": "approach",
+      "senses": [
+        {
+          "id": "sense-54fd5daa",
+          "pos": "n.",
+          "meaningZh": "方法；方式；做法",
+          "examples": [
+            "My approach to solving this problem is to break it down into smaller parts and tackle each one separately."
+          ]
+        },
+        {
+          "id": "sense-4c873072",
+          "pos": "n.",
+          "meaningZh": "處理方案；應對思路",
+          "examples": [
+            "In order to approach the issue of climate change, we must take steps to reduce carbon emissions."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "argue",
+      "word": "argue",
+      "senses": [
+        {
+          "id": "sense-1685bc85",
+          "pos": "v.",
+          "meaningZh": "爭論；爭辯；吵架",
+          "examples": [
+            "During the meeting, the team members started to argue about the best strategy to approach the new project."
+          ]
+        },
+        {
+          "id": "sense-be10bd57",
+          "pos": "v.",
+          "meaningZh": "論述；主張；辯稱",
+          "examples": [
+            "During the trial, the lawyer will argue the case using various pieces of evidence."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "army",
+      "word": "army",
+      "senses": [
+        {
+          "id": "sense-c0e7ae37",
+          "pos": "n.",
+          "meaningZh": "陸軍；軍隊",
+          "examples": [
+            "The army was called into action when the nation faced a threat from a neighboring country."
+          ]
+        },
+        {
+          "id": "sense-65c0b800",
+          "pos": "n.",
+          "meaningZh": "大批人群；一大群人",
+          "examples": [
+            "The army was called in to help during the natural disaster."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

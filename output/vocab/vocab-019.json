@@ -1,1421 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 19,
   "words": [
-    {
-      "wordKey": "moon",
-      "word": "moon",
-      "senses": [
-        {
-          "id": "sense-5fdb8a0e",
-          "pos": "noun",
-          "meaningZh": "月亮；月球",
-          "definitionEn": "the round object that moves around the earth and shines in the sky at night",
-          "examples": [
-            "The moon was full and bright last night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-9c3822e0",
-          "pos": "noun",
-          "meaningZh": "月亮形狀的東西",
-          "definitionEn": "any object resembling a moon",
-          "examples": [
-            "As she walked along the beach, she noticed a beautiful seashell that resembled a tiny moon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-b45833e8",
-          "pos": "verb",
-          "meaningZh": "發呆；做白日夢",
-          "definitionEn": "daydream",
-          "examples": [
-            "As I sat by the window, I gazed at the moon and let my thoughts wander, daydreaming about far-off adventures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "more",
-      "word": "more",
-      "senses": [
-        {
-          "id": "sense-7a3e73d6",
-          "pos": "adjective",
-          "meaningZh": "更多的（不可數）",
-          "definitionEn": "Greater in size, amount, extent, or degree than something else. Used with mass nouns.",
-          "examples": [
-            "John has more money than Peter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "morning",
       "word": "morning",
       "senses": [
         {
-          "id": "sense-2dcafbf9",
-          "pos": "noun",
+          "id": "sense-1390a349",
+          "pos": "n.",
           "meaningZh": "早晨；上午",
-          "definitionEn": "the earliest period of the day, lasting from dawn to noon",
           "examples": [
             "Every morning, I enjoy sipping my coffee while watching the sunrise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5c2df4ef",
-          "pos": "noun",
+          "id": "sense-6c7240bf",
+          "pos": "n.",
           "meaningZh": "黎明；天亮時分",
-          "definitionEn": "the first light of day",
           "examples": [
             "As the morning dawned, the birds began to sing and the sky turned a beautiful shade of pink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "most",
       "word": "most",
       "senses": [
         {
-          "id": "sense-08e458b9",
-          "pos": "adjective",
+          "id": "sense-8a4abb47",
+          "pos": "adj.",
           "meaningZh": "最多的（可數）",
-          "definitionEn": "Quantifier meaning the greatest in number, used with count nouns and often preceded by ’the’.",
           "examples": [
             "The most cars in the parking lot were blue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-44f1cbe0",
-          "pos": "adjective",
+          "id": "sense-777e4e02",
+          "pos": "adj.",
           "meaningZh": "最大量的（不可數）",
-          "definitionEn": "Quantifier meaning the greatest in amount, extent or degree, used with mass nouns and usually preceded by ’the’.",
           "examples": [
             "The most common type of phone in 2021 is the smartphone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mother",
       "word": "mother",
       "senses": [
         {
-          "id": "sense-7d44738c",
-          "pos": "noun",
+          "id": "sense-441684b8",
+          "pos": "n.",
           "meaningZh": "母親；媽媽",
-          "definitionEn": "a woman who has given birth to a child, or a female parent (also used as a term of address to your own mother)",
           "examples": [
             "My mother is the most loving person I know; she always puts her children first and sacrifices a lot for them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f2a917ff",
-          "pos": "noun",
+          "id": "sense-eed7e6d3",
+          "pos": "n.",
           "meaningZh": "如母親般的女性；慈母",
-          "definitionEn": "a term of endearment or respect for an older woman, especially an elderly mother",
           "examples": [
             "She may not be my biological mother, but she has been a mother to me all these years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mountain",
       "word": "mountain",
       "senses": [
         {
-          "id": "sense-00406bd6",
-          "pos": "noun",
+          "id": "sense-f7ce25ba",
+          "pos": "n.",
           "meaningZh": "山；山嶽",
-          "definitionEn": "a high land mass that rises above its surrounding area, larger than a hill.",
           "examples": [
             "We embarked on a challenging hike up the steep slopes of the majestic mountain, enjoying breathtaking views of the valley below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ff475ed7",
-          "pos": "noun",
+          "id": "sense-7ff9b8db",
+          "pos": "n.",
           "meaningZh": "高山；峻嶺",
-          "definitionEn": "a large natural elevation of the earth’s surface rising abruptly from the surrounding level, and typically having a sharp summit, a steep slope, and a rugged western face.",
           "examples": [
             "When we reached the top of the mountain, we were rewarded with a breathtaking view of the valley below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mouse",
       "word": "mouse",
       "senses": [
         {
-          "id": "sense-4fa9a631",
-          "pos": "noun",
+          "id": "sense-fc674c49",
+          "pos": "n.",
           "meaningZh": "老鼠；小鼠",
-          "definitionEn": "any of numerous small rodents that resemble small rats, with pointed snouts, elongated bodies, small ears, and slender tails that are usually without hair.",
           "examples": [
             "While cleaning out the basement, I saw a mouse scurry across the floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4820b148",
-          "pos": "noun",
+          "id": "sense-f5d888d0",
+          "pos": "n.",
           "meaningZh": "膽小的人；沉默寡言者",
-          "definitionEn": "a person who is quiet or timid.",
           "examples": [
             "The mouse of the group, she rarely spoke up during meetings and kept to herself most of the time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mouth",
       "word": "mouth",
       "senses": [
         {
-          "id": "sense-8980f1b4",
-          "pos": "noun",
+          "id": "sense-05da34cc",
+          "pos": "n.",
           "meaningZh": "嘴巴；口",
-          "definitionEn": "the opening through which food is taken in and vocalizations emerge",
           "examples": [
             "She burned her mouth while drinking the hot coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5dd50098",
-          "pos": "noun",
+          "id": "sense-91546e00",
+          "pos": "n.",
           "meaningZh": "食客；飯口",
-          "definitionEn": "a person who consumes food",
           "examples": [
             "My sister is a really picky eater and won’t try any new foods, but my brother is the opposite and has always been an adventurous mouth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "move",
       "word": "move",
       "senses": [
         {
-          "id": "sense-1dd7b5f6",
-          "pos": "verb",
+          "id": "sense-1686645f",
+          "pos": "v.",
           "meaningZh": "移動；移開",
-          "definitionEn": "to change from one place or position to another, or to make something do this",
           "examples": [
             "Please move your chair closer to the table."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d208372a",
-          "pos": "noun",
+          "id": "sense-05d73772",
+          "pos": "n.",
           "meaningZh": "搬遷；移動",
-          "definitionEn": "the act of changing location from one place to another",
           "examples": [
             "After living in the city for many years, Sarah decided to move to a small town in the countryside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-bf883d87",
-          "pos": "noun",
+          "id": "sense-00423c3f",
+          "pos": "n.",
           "meaningZh": "位移；姿勢改變",
-          "definitionEn": "a change of position that does not entail a change of location",
           "examples": [
             "She moved the vase from the table to the shelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "movement",
       "word": "movement",
       "senses": [
         {
-          "id": "sense-636dc754",
-          "pos": "noun",
+          "id": "sense-01f9783c",
+          "pos": "n.",
           "meaningZh": "位置移動；運動",
-          "definitionEn": "any natural event that involves a change in the position or location of something",
           "examples": [
             "The movement of the planets around the sun is a natural event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-766669aa",
-          "pos": "noun",
+          "id": "sense-01d0ddb2",
+          "pos": "n.",
           "meaningZh": "動作；動態",
-          "definitionEn": "the act or process of moving or changing position, without necessarily going anywhere",
           "examples": [
             "The movement of the dancers on stage was graceful and fluid."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mrs",
       "word": "mrs",
       "senses": [
         {
-          "id": "sense-4dc5aade",
-          "pos": "noun",
+          "id": "sense-22f1410e",
+          "pos": "n.",
           "meaningZh": "太太；女士（已婚女性稱謂）",
-          "definitionEn": "a title used before a surname or full name to address or refer to a married woman, generally used for those who do not use their husband’s surname.",
           "examples": [
             "When addressing a letter to a woman who is married but does not use her husband's surname, you can write 'Dear Mrs. Smith'."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "ms",
-      "word": "ms",
-      "senses": [
-        {
-          "id": "sense-ebb0a135",
-          "pos": "abbreviation",
-          "meaningZh": "女士（不標示婚姻狀況的女性稱謂）",
-          "definitionEn": "a title used before a woman's family name that does not show whether she is married",
-          "examples": [
-            "Please send the report to Ms. Chen before Friday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "much",
       "word": "much",
       "senses": [
         {
-          "id": "sense-28fdfdac",
-          "pos": "adjective",
+          "id": "sense-8dee3042",
+          "pos": "adj.",
           "meaningZh": "很多的；大量的",
-          "definitionEn": "great in quantity or degree or extent",
           "examples": [
             "There is so much food at the buffet that I don't know where to start!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8c42d524",
-          "pos": "noun",
+          "id": "sense-e3e30e9c",
+          "pos": "n.",
           "meaningZh": "大量；許多",
-          "definitionEn": "a great amount or extent",
           "examples": [
             "He has so much money that he could buy a mansion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mud",
       "word": "mud",
       "senses": [
         {
-          "id": "sense-549437a9",
-          "pos": "noun",
+          "id": "sense-747ae2fd",
+          "pos": "n.",
           "meaningZh": "泥巴；爛泥",
-          "definitionEn": "Soft, wet soil made up of water and earth",
           "examples": [
             "After the heavy rainfall, the backyard turned into a sea of mud."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6ff10490",
-          "pos": "noun",
+          "id": "sense-897c969c",
+          "pos": "n.",
           "meaningZh": "誹謗；中傷言論",
-          "definitionEn": "False, harmful statements made about someone or something",
           "examples": [
             "She had to defend herself against the mudslinging during the political campaign."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "museum",
       "word": "museum",
       "senses": [
         {
-          "id": "sense-bfb4177a",
-          "pos": "noun",
+          "id": "sense-4e02ba6e",
+          "pos": "n.",
           "meaningZh": "博物館；美術館",
-          "definitionEn": "a place where objects of historical, scientific, artistic, or cultural significance are stored and exhibited for the public to view and learn from.",
           "examples": [
             "We visited the museum to see the old paintings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "music",
       "word": "music",
       "senses": [
         {
-          "id": "sense-635a7afa",
-          "pos": "noun",
+          "id": "sense-b0ca3492",
+          "pos": "n.",
           "meaningZh": "音樂；樂曲",
-          "definitionEn": "a pattern of sounds made by instruments, singing, or a combination of both, or the written symbols that represent these sounds",
           "examples": [
             "The symphony orchestra played beautiful music at the concert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "must",
       "word": "must",
       "senses": [
         {
-          "id": "sense-925ddd82",
-          "pos": "auxiliary verb",
-          "meaningZh": "必須；一定要",
-          "definitionEn": "used to say that something is necessary or very important to do",
-          "examples": [
-            "You must finish your homework before you go out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-2123ba22",
-          "pos": "noun",
+          "id": "sense-ffe808ea",
+          "pos": "n.",
           "meaningZh": "必要之物；必做之事",
-          "definitionEn": "something that is necessary or essential",
           "examples": [
             "Students must study hard to get good grades."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-51fd0bd4",
-          "pos": "adjective",
+          "id": "sense-2fbf299e",
+          "pos": "adj.",
           "meaningZh": "必須的；強烈建議的",
-          "definitionEn": "strongly recommended",
           "examples": [
             "It is must to wear a helmet while riding a bike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "name",
       "word": "name",
       "senses": [
         {
-          "id": "sense-58544d9d",
-          "pos": "noun",
+          "id": "sense-5f12a2e9",
+          "pos": "n.",
           "meaningZh": "名字；名稱",
-          "definitionEn": "a language unit by which a person or thing is known",
           "examples": [
             "During roll call, the teacher called out each student’s name one by one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-89ad1457",
-          "pos": "noun",
+          "id": "sense-4902ad33",
+          "pos": "n.",
           "meaningZh": "姓氏；家族名",
-          "definitionEn": "family based on male descent",
           "examples": [
             "The Smiths are a good example of a name with a long and respected history in the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "national",
       "word": "national",
       "senses": [
         {
-          "id": "sense-5daca11f",
-          "pos": "adjective",
+          "id": "sense-75d29fcb",
+          "pos": "adj.",
           "meaningZh": "國家的；本國的",
-          "definitionEn": "restricted to the people, organizations, or interests of one particular nation",
           "examples": [
             "The national football team will represent our country in the upcoming tournament."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-195b8fdc",
-          "pos": "adjective",
+          "id": "sense-b1571278",
+          "pos": "adj.",
           "meaningZh": "全國性的；國家級的",
-          "definitionEn": "belonging to or relating to a particular nation or country",
           "examples": [
             "The national anthem was played before the start of the football game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nature",
       "word": "nature",
       "senses": [
         {
-          "id": "sense-03284f50",
-          "pos": "noun",
+          "id": "sense-10fd9c24",
+          "pos": "n.",
           "meaningZh": "大自然；自然界",
-          "definitionEn": "the natural world, including plants, animals, landscapes, and other features not created by humans.",
           "examples": [
             "During my camping trip, I was able to fully experience the beauty of nature by hiking through forests, swimming in natural streams, and observing wildlife in its natural habitat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a7501a4f",
-          "pos": "noun",
+          "id": "sense-15df3e13",
+          "pos": "n.",
           "meaningZh": "自然力；造物之力",
-          "definitionEn": "a force or power that creates and controls the universe and everything in it.",
           "examples": [
             "The beauty of nature is awe-inspiring, from the breathtaking mountains to the vast oceans and the diversity of flora and fauna, it is the perfect example of the Creator’s power."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "near",
       "word": "near",
       "senses": [
         {
-          "id": "sense-45d24e23",
-          "pos": "adjective",
+          "id": "sense-cba43f3f",
+          "pos": "adj.",
           "meaningZh": "近的；不遠的",
-          "definitionEn": "not far away in space or time",
           "examples": [
             "I live near the grocery store, so I can easily walk there to buy groceries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-68c4da94",
-          "pos": "adjective",
+          "id": "sense-8a7d05c8",
+          "pos": "adj.",
           "meaningZh": "相近的；接近的",
-          "definitionEn": "very similar to something else",
           "examples": [
             "The two paintings are so near in style that it's hard to tell them apart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "neck",
       "word": "neck",
       "senses": [
         {
-          "id": "sense-a7eabea5",
-          "pos": "noun",
+          "id": "sense-ba392871",
+          "pos": "n.",
           "meaningZh": "脖子；頸部",
-          "definitionEn": "the part of the body connecting the head to the shoulders",
           "examples": [
             "He wore a scarf around his neck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cd65a033",
-          "pos": "verb",
+          "id": "sense-5adeb146",
+          "pos": "v.",
           "meaningZh": "親吻愛撫；摟頸親暱",
-          "definitionEn": "to kiss, embrace or touch with affection, fondness or passion",
           "examples": [
             "John gently wrapped his arms around Jane's waist and leaned in to neck her under the stars."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "need",
       "word": "need",
       "senses": [
         {
-          "id": "sense-b8bb2e16",
-          "pos": "noun",
+          "id": "sense-e7cf851a",
+          "pos": "n.",
           "meaningZh": "需要；急需之物",
-          "definitionEn": "anything that is necessary but lacking",
           "examples": [
             "After her car broke down, she was in desperate need of a ride to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-95ce66e8",
-          "pos": "noun",
+          "id": "sense-6f7978b4",
+          "pos": "n.",
           "meaningZh": "需求；動力驅力",
-          "definitionEn": "the psychological feature that arouses an organism to action toward a desired goal; the reason for the action; that which gives purpose and direction to behavior",
           "examples": [
             "I need a cup of coffee to start my day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "net",
       "word": "net",
       "senses": [
         {
-          "id": "sense-927c0fae",
-          "pos": "noun",
+          "id": "sense-b78ed456",
+          "pos": "n.",
           "meaningZh": "網；漁網",
-          "definitionEn": "an open fabric made of string, rope, or wire woven together with regular gaps between them",
           "examples": [
             "The fisherman cast his net into the water, hoping to catch a big haul of fish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7dd6b0d3",
-          "pos": "noun",
+          "id": "sense-722155bb",
+          "pos": "n.",
           "meaningZh": "球網；球門網",
-          "definitionEn": "a goal in sports such as soccer or hockey that is surrounded by netting",
           "examples": [
             "The soccer player kicked the ball into the net, scoring a goal for his team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "never",
       "word": "never",
       "senses": [
         {
-          "id": "sense-04cb55e5",
-          "pos": "adverb",
+          "id": "sense-aac3ddd0",
+          "pos": "adv.",
           "meaningZh": "從不；從未",
-          "definitionEn": "not ever; at no time in the past or future",
           "examples": [
             "I will never forget my first kiss."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-82672b99",
-          "pos": "adverb",
+          "id": "sense-24bab3c4",
+          "pos": "adv.",
           "meaningZh": "絕不；決不",
-          "definitionEn": "not in any circumstances; not at all; certainly not",
           "examples": [
             "I would never cheat on an exam, it goes against my values."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "new",
       "word": "new",
       "senses": [
         {
-          "id": "sense-f2719dc6",
-          "pos": "adjective",
+          "id": "sense-8c2ebeea",
+          "pos": "adj.",
           "meaningZh": "新的；新近的",
-          "definitionEn": "recently made, acquired, or discovered",
           "examples": [
             "I just bought a new car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-80373932",
-          "pos": "adjective",
+          "id": "sense-30315956",
+          "pos": "adj.",
           "meaningZh": "全新的；創新的",
-          "definitionEn": "original and not seen before",
           "examples": [
             "She wore a stunning new dress to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "news",
       "word": "news",
       "senses": [
         {
-          "id": "sense-eb9159b8",
-          "pos": "noun",
+          "id": "sense-5f39d91c",
+          "pos": "n.",
           "meaningZh": "新聞；消息",
-          "definitionEn": "information about recent and important events",
           "examples": [
             "I am checking the news every morning to stay up-to-date with the latest developments on the pandemic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-01fee36c",
-          "pos": "noun",
+          "id": "sense-ace80498",
+          "pos": "n.",
           "meaningZh": "新聞價值；報導性",
-          "definitionEn": "the quality of being sufficiently interesting to be reported in news bulletins",
           "examples": [
             "The news of the stock market crash made headlines worldwide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "newspaper",
       "word": "newspaper",
       "senses": [
         {
-          "id": "sense-379a268d",
-          "pos": "noun",
+          "id": "sense-e3e35445",
+          "pos": "n.",
           "meaningZh": "報紙；日報",
-          "definitionEn": "a publication that is printed and distributed daily or weekly and contains news articles and advertisements",
           "examples": [
             "Every morning, I look forward to sitting down with a cup of coffee and reading the newspaper from cover to cover."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5b693416",
-          "pos": "noun",
+          "id": "sense-be3a61de",
+          "pos": "n.",
           "meaningZh": "報紙；新聞紙（物理材質）",
-          "definitionEn": "the physical medium on which the content of a newspaper is printed; a folded sheet of paper",
           "examples": [
             "Every morning, I sit at the kitchen table, sipping on coffee, and reading the newspaper to catch up on the latest news."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "next",
       "word": "next",
       "senses": [
         {
-          "id": "sense-eaafd906",
-          "pos": "adjective",
+          "id": "sense-eb7dedbc",
+          "pos": "adj.",
           "meaningZh": "接下來的；下一個",
-          "definitionEn": "immediately following in time or order",
           "examples": [
             "I have a meeting at 3 pm, but next I need to run some errands."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-772e64fe",
-          "pos": "adjective",
+          "id": "sense-ecb80904",
+          "pos": "adj.",
           "meaningZh": "緊鄰的；相鄰的",
-          "definitionEn": "adjoining directly without any space in between",
           "examples": [
             "The next building was so close that you could reach out and touch it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "nice",
       "word": "nice",
       "senses": [
         {
-          "id": "sense-3bdae857",
-          "pos": "adjective",
+          "id": "sense-cda38edd",
+          "pos": "adj.",
           "meaningZh": "好的；令人愉快的",
-          "definitionEn": "pleasant or agreeable in nature or appearance",
           "examples": [
             "The weather is so nice today that we should plan a picnic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9ccb023e",
-          "pos": "adjective",
+          "id": "sense-b74fa968",
+          "pos": "adj.",
           "meaningZh": "有禮貌的；親切的",
-          "definitionEn": "showing politeness and courtesy",
           "examples": [
             "It’s always nice to open the door for someone else."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "night",
+      "word": "night",
+      "senses": [
+        {
+          "id": "sense-c075685d",
+          "pos": "n.",
+          "meaningZh": "夜晚；黑夜",
+          "examples": [
+            "She saw a shooting star in the night sky."
+          ]
+        },
+        {
+          "id": "sense-c6e6d071",
+          "pos": "n.",
+          "meaningZh": "入夜；夜間時段",
+          "examples": [
+            "During the summer solstice, the night sky is very short and the sun sets at around 9 pm."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "nobody",
+      "word": "nobody",
+      "senses": [
+        {
+          "id": "sense-f8934d94",
+          "pos": "pron.",
+          "meaningZh": "沒有人；無人",
+          "examples": [
+            "Nobody answered the door when I knocked."
+          ]
+        },
+        {
+          "id": "sense-f262f1f3",
+          "pos": "n.",
+          "meaningZh": "無名小卒；不重要的人",
+          "examples": [
+            "At the party, nobody was interested in talking to the new guy standing in the corner."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "noise",
+      "word": "noise",
+      "senses": [
+        {
+          "id": "sense-cf5edc5c",
+          "pos": "n.",
+          "meaningZh": "聲音；噪音",
+          "examples": [
+            "The noise from the construction site kept me awake all night."
+          ]
+        },
+        {
+          "id": "sense-a750b01d",
+          "pos": "n.",
+          "meaningZh": "噪音；嘈雜聲",
+          "examples": [
+            "The construction site next to my apartment creates so much noise that it's hard to concentrate on anything."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

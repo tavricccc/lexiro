@@ -13,16 +13,16 @@ function shuffleArray<T>(items: T[]): T[] {
 export function shuffleQuizEntry(entry: SessionEntry): SessionEntry {
   if (!entry.question)
     return entry
-  const opts = entry.question.opts
-  const correct = opts[entry.question.ans]
-  const shuffled = shuffleArray(opts)
-  const ans = Math.max(0, shuffled.indexOf(correct))
+  const options = entry.question.options
+  const correct = options[entry.question.answerIndex]
+  const shuffled = shuffleArray(options)
+  const answerIndex = Math.max(0, shuffled.indexOf(correct))
   return {
     ...entry,
     question: {
       ...entry.question,
-      opts: shuffled,
-      ans,
+      options: shuffled,
+      answerIndex,
     },
   }
 }

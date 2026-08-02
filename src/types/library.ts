@@ -1,36 +1,42 @@
-export type LibraryDataSource = 'user' | 'dictionary' | 'import' | 'ai'
+export type QuestionDifficulty = 1 | 2 | 3
+export type VocabularyQuestionTypeFilter = 'all' | 'standard' | 'fillBlank' | 'reading'
+export type VocabularyDifficultyFilter = 'all' | '1' | '2' | '3'
 
 export interface WordSense {
   id: string
   pos: string
   meaningZh: string
-  definitionEn?: string
   examples: string[]
-  source?: LibraryDataSource
-  createdAt?: string
-  updatedAt?: string
 }
 
 export interface WordEntry {
   wordKey: string
   word: string
   senses: WordSense[]
-  phonetic?: string
-  audioUrl?: string
-  origin?: string
-  dictionarySource?: string
-  synonyms: string[]
-  antonyms: string[]
-  metadata?: Record<string, unknown>
   updatedAt: string
 }
 
-export interface VocabSetMember {
+export interface StudyWord {
+  id: string
+  wordKey: string
+  word: string
+  pos: string
+  meaning: string
+  examples: string[]
+  example: string
+}
+
+export interface LibrarySet {
+  id: string
+  setName: string
+  folderId: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface SetMembership {
   wordKey: string
   senseIds: string[]
-  tags: string[]
-  note?: string
-  favorite?: boolean
 }
 
 export interface VocabFolder {
@@ -44,11 +50,8 @@ export interface VocabFolder {
 
 export interface LibraryQuestionBase {
   id: string
-  wordKey?: string
-  senseId?: string
-  source?: LibraryDataSource
-  sourceType?: string
-  difficulty?: number
+  fingerprint: string
+  difficulty: QuestionDifficulty
   explanation?: string
   createdAt: string
   updatedAt: string
@@ -56,7 +59,9 @@ export interface LibraryQuestionBase {
 
 export interface MultipleChoiceQuestion extends LibraryQuestionBase {
   kind: 'multipleChoice'
-  questionStyle?: 'standard' | 'fillBlank'
+  questionStyle: 'standard' | 'fillBlank'
+  wordKey: string
+  senseId: string
   prompt: string
   options: string[]
   answerIndex: number
@@ -64,22 +69,14 @@ export interface MultipleChoiceQuestion extends LibraryQuestionBase {
   whyWrong?: Record<string, string>
 }
 
-export interface ClozeQuestion extends LibraryQuestionBase {
-  kind: 'cloze'
-  prompt: string
-  answers: string[]
-  options?: string[]
-}
-
 export interface ReadingChildQuestion {
   id: string
-  kind: 'multipleChoice' | 'cloze'
+  kind: 'multipleChoice'
   prompt: string
-  options?: string[]
-  answerIndex?: number
-  answers?: string[]
-  wordKey?: string
-  senseId?: string
+  options: string[]
+  answerIndex: number
+  wordKey: string
+  senseId: string
 }
 
 export interface ReadingPack extends LibraryQuestionBase {
@@ -90,12 +87,13 @@ export interface ReadingPack extends LibraryQuestionBase {
   questions: ReadingChildQuestion[]
 }
 
-export type LibraryQuestion = MultipleChoiceQuestion | ClozeQuestion | ReadingPack
+export type LibraryQuestion = MultipleChoiceQuestion | ReadingPack
 
 export interface LibraryState {
   version: number
   words: Record<string, WordEntry>
-  memberships: Record<string, VocabSetMember[]>
+  sets: LibrarySet[]
+  memberships: Record<string, SetMembership[]>
   folders: VocabFolder[]
   questions: LibraryQuestion[]
   updatedAt: string

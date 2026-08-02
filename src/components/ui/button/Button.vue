@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 import { cn } from '@/lib/cn'
 
 const props = withDefaults(defineProps<{
@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<{
   disabled?: boolean
   class?: string
   type?: 'button' | 'submit' | 'reset'
+  title?: string
 }>(), {
   variant: 'default',
   size: 'default',
@@ -16,7 +17,10 @@ const props = withDefaults(defineProps<{
   disabled: false,
   class: '',
   type: 'button',
+  title: undefined,
 })
+
+const attrs = useAttrs()
 
 const classes = computed(() =>
   cn(
@@ -39,7 +43,12 @@ const classes = computed(() =>
 </script>
 
 <template>
-  <button :type="type" :disabled="disabled || loading" :class="classes">
+  <button
+    :type="type"
+    :disabled="disabled || loading"
+    :title="title || (size === 'icon' ? String(attrs['aria-label'] ?? '') : undefined)"
+    :class="classes"
+  >
     <svg v-if="loading" class="animate-spin h-4 w-4 text-current shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />

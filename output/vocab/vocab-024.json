@@ -1,1406 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 24,
   "words": [
-    {
-      "wordKey": "red",
-      "word": "red",
-      "senses": [
-        {
-          "id": "sense-060f9700",
-          "pos": "adjective",
-          "meaningZh": "紅色的；紅的",
-          "definitionEn": "of a color that resembles blood, cherries, tomatoes, or rubies and is located at the end of the spectrum next to orange",
-          "examples": [
-            "The bride wore a beautiful red dress on her wedding day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-d659830f",
-          "pos": "noun",
-          "meaningZh": "紅色；紅色顏料",
-          "definitionEn": "a red color or pigment, similar to the hue of blood",
-          "examples": [
-            "She wore a stunning red dress to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "relative",
-      "word": "relative",
-      "senses": [
-        {
-          "id": "sense-1348ddb0",
-          "pos": "noun",
-          "meaningZh": "親戚；親屬",
-          "definitionEn": "a person who is connected by blood or marriage; a family member.",
-          "examples": [
-            "At the family reunion, I met several of my relatives whom I had never seen before."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-d2178737",
-          "pos": "adjective",
-          "meaningZh": "相對的；比較而言的",
-          "definitionEn": "considered in relation or in proportion to something else.",
-          "examples": [
-            "In order to understand the true size of a mountain, it is important to hike to a vantage point that allows you to see the mountain in relative to its surroundings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1 +1",
-        "textbookTitle": "龍騰 B3·R1、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "remember",
-      "word": "remember",
-      "senses": [
-        {
-          "id": "sense-db2ef4bb",
-          "pos": "verb",
-          "meaningZh": "記得；記起；回憶",
-          "definitionEn": "recall knowledge from memory; have a recollection",
-          "examples": [
-            "As she looked at the old photo album, memories flooded back and she could remember every detail of that summer vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-cb134491",
-          "pos": "verb",
-          "meaningZh": "牢記；銘記在心",
-          "definitionEn": "keep in mind for attention or consideration",
-          "examples": [
-            "Whenever I go grocery shopping, I always remember to buy milk."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "repeat",
       "word": "repeat",
       "senses": [
         {
-          "id": "sense-5b1d2efa",
-          "pos": "verb",
+          "id": "sense-85e5651b",
+          "pos": "v.",
           "meaningZh": "重複；再說一遍",
-          "definitionEn": "to say, state, or perform something again",
           "examples": [
             "During the rehearsal, the director asked the actors to repeat their lines multiple times to ensure they were delivered correctly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-524850e5",
-          "pos": "verb",
+          "id": "sense-cb2a376c",
+          "pos": "v.",
           "meaningZh": "模仿；複述",
-          "definitionEn": "to imitate or say something again",
           "examples": [
             "He would often repeat his favorite lines from the movie, much to the annoyance of his friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "report",
       "word": "report",
       "senses": [
         {
-          "id": "sense-d52b11bd",
-          "pos": "verb",
+          "id": "sense-4058fdd6",
+          "pos": "v.",
           "meaningZh": "報導；報告；描述",
-          "definitionEn": "to give an account or description of something using words",
           "examples": [
             "The journalist will report on the outcome of the election."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-05f557de",
-          "pos": "verb",
+          "id": "sense-457229bf",
+          "pos": "v.",
           "meaningZh": "播報；公布結果",
-          "definitionEn": "to announce or reveal the result of an investigation or experience",
           "examples": [
             "The news station will report the election results to its viewers tonight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reporter",
       "word": "reporter",
       "senses": [
         {
-          "id": "sense-628a948a",
-          "pos": "noun",
+          "id": "sense-32ee1c72",
+          "pos": "n.",
           "meaningZh": "記者；新聞報導者",
-          "definitionEn": "a person who investigates and reports news stories",
           "examples": [
             "The reporter diligently interviewed witnesses and gathered evidence to write an accurate news article about the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rest",
       "word": "rest",
       "senses": [
         {
-          "id": "sense-1f13486b",
-          "pos": "noun",
+          "id": "sense-f14fd10b",
+          "pos": "n.",
           "meaningZh": "休息；休養",
-          "definitionEn": "a pause in activity or time off from work or daily routine, used for relaxation or recovery",
           "examples": [
             "After a long and tiring week, Sarah decided to take a rest by spending the weekend at a cozy cabin in the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9b64cc1b",
-          "pos": "noun",
+          "id": "sense-59abb93b",
+          "pos": "n.",
           "meaningZh": "剩餘部分；其餘",
-          "definitionEn": "the remaining part of something after the larger part or other parts have been used or taken away",
           "examples": [
             "After eating dinner, there was still a small portion of lasagna left as rest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "restaurant",
       "word": "restaurant",
       "senses": [
         {
-          "id": "sense-0fdf714b",
-          "pos": "noun",
+          "id": "sense-262cfbc7",
+          "pos": "n.",
           "meaningZh": "餐廳；飯館",
-          "definitionEn": "an establishment where prepared food and drinks can be purchased and consumed on the premises",
           "examples": [
             "My friends and I decided to try out the new Italian restaurant in town and were pleased with the delicious pasta and wine we enjoyed there."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rice",
       "word": "rice",
       "senses": [
         {
-          "id": "sense-971241ae",
-          "pos": "noun",
+          "id": "sense-497e72d6",
+          "pos": "n.",
           "meaningZh": "米；米飯",
-          "definitionEn": "Grains used as food, either unpolished or more often polished.",
           "examples": [
             "She cooked a delicious stir-fry with vegetables and rice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-efbfcd99",
-          "pos": "noun",
+          "id": "sense-73091d71",
+          "pos": "n.",
           "meaningZh": "稻；水稻",
-          "definitionEn": "Annual or perennial rhizomatous marsh grasses. The seed is used for food and the straw is used for paper.",
           "examples": [
             "As a staple food, rice is commonly consumed with various dishes such as curry, stir-fry, or sushi."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rich",
       "word": "rich",
       "senses": [
         {
-          "id": "sense-bf790ecb",
-          "pos": "adjective",
+          "id": "sense-a5222ee7",
+          "pos": "adj.",
           "meaningZh": "富裕的；有錢的",
-          "definitionEn": "possessing a lot of money and valuable possessions",
           "examples": [
             "John's lavish mansion, luxury cars, and extensive art collection showcased his immense wealth and exemplified his status as a rich individual."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-cbf66781",
-          "pos": "adjective",
+          "id": "sense-b2f5258d",
+          "pos": "adj.",
           "meaningZh": "油膩的；濃郁的",
-          "definitionEn": "containing a lot of fat, eggs, or sugar",
           "examples": [
             "The rich chocolate cake was filled with layers of creamy frosting and topped with a decadent chocolate ganache."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ride",
       "word": "ride",
       "senses": [
         {
-          "id": "sense-4c865024",
-          "pos": "verb",
+          "id": "sense-1311b07f",
+          "pos": "v.",
           "meaningZh": "騎（動物）；乘騎",
-          "definitionEn": "sit and travel on the back of an animal, usually while controlling its movements",
           "examples": [
             "During their vacation in the countryside, the family decided to go horseback riding and explore the scenic trails."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c7161d9b",
-          "pos": "verb",
+          "id": "sense-27b3d904",
+          "pos": "v.",
           "meaningZh": "騎（車輛）；駕駛",
-          "definitionEn": "sit on and control a vehicle, such as a bicycle, motorcycle, or horse",
           "examples": [
             "John loves to ride his motorcycle along the coastal highway, feeling the cool breeze against his face."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "right",
       "word": "right",
       "senses": [
         {
-          "id": "sense-3b267731",
-          "pos": "adjective",
+          "id": "sense-86eebac5",
+          "pos": "adj.",
           "meaningZh": "正確的；無誤的",
-          "definitionEn": "free from error, conforming to fact or truth",
           "examples": [
             "The scientist conducted extensive research and produced accurate data, ensuring that his findings were right."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0304a30d",
-          "pos": "adjective",
+          "id": "sense-8bb844b9",
+          "pos": "adj.",
           "meaningZh": "精確的；準確的",
-          "definitionEn": "precisely accurate",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ring",
       "word": "ring",
       "senses": [
         {
-          "id": "sense-1013c140",
-          "pos": "noun",
+          "id": "sense-8ac06640",
+          "pos": "n.",
           "meaningZh": "鈴聲；鐘聲",
-          "definitionEn": "the sound of a bell ringing",
           "examples": [
             "The church bells began to ring, signaling the start of the wedding ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2df88165",
-          "pos": "verb",
+          "id": "sense-259b011c",
+          "pos": "v.",
           "meaningZh": "套環標記（鳥腳）；繫環",
-          "definitionEn": "attach a ring to the foot of a bird to identify",
           "examples": [
             "The ornithologist carefully rings the feet of the endangered birds in order to track their population and migration patterns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rise",
       "word": "rise",
       "senses": [
         {
-          "id": "sense-8603372e",
-          "pos": "verb",
+          "id": "sense-f83b3433",
+          "pos": "v.",
           "meaningZh": "上升；升高",
-          "definitionEn": "move upward or increase in height, typically in a gradual way",
           "examples": [
             "As the sun began to rise over the horizon, the warm golden light spread across the land."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-aa7d3932",
-          "pos": "verb",
+          "id": "sense-be609bd3",
+          "pos": "v.",
           "meaningZh": "（天體）升起；東昇",
-          "definitionEn": "come up, as of a celestial body above the horizon",
           "examples": [
             "During the early hours of the morning, the sun began to rise above the horizon, casting a warm golden glow over the landscape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "river",
       "word": "river",
       "senses": [
         {
-          "id": "sense-3e4678ea",
-          "pos": "noun",
+          "id": "sense-cda1a27e",
+          "pos": "n.",
           "meaningZh": "河流；河川",
-          "definitionEn": "a large natural stream of water, flowing towards an ocean, a lake, a sea or another river",
           "examples": [
             "The river was so wide that it took us several minutes to cross in the boat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "road",
       "word": "road",
       "senses": [
         {
-          "id": "sense-c25e8f1b",
-          "pos": "noun",
+          "id": "sense-a89edf8b",
+          "pos": "n.",
           "meaningZh": "道路；公路",
-          "definitionEn": "an open way for travel or transportation, especially one connecting cities or towns",
           "examples": [
             "The winding road took us through picturesque countryside, offering stunning views of rolling hills and vibrant fields."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2cbb6ab3",
-          "pos": "noun",
+          "id": "sense-f44fcae3",
+          "pos": "n.",
           "meaningZh": "途徑；達成之道",
-          "definitionEn": "a way or means to achieve something, especially one that is difficult or challenging to pursue",
           "examples": [
             "Despite facing many obstacles and setbacks, she remained determined and persevered on the road to success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "robot",
       "word": "robot",
       "senses": [
         {
-          "id": "sense-3571da26",
-          "pos": "noun",
+          "id": "sense-30290ba6",
+          "pos": "n.",
           "meaningZh": "機器人",
-          "definitionEn": "a machine that can automatically perform tasks",
           "examples": [
             "The factory implemented robots to assemble cars, increasing efficiency and reducing human error."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rock",
       "word": "rock",
       "senses": [
         {
-          "id": "sense-680695dd",
-          "pos": "noun",
+          "id": "sense-3a835525",
+          "pos": "n.",
           "meaningZh": "岩石；礁石",
-          "definitionEn": "material consisting of the aggregate of minerals like those making up the Earth’s crust",
           "examples": [
             "We climbed the rugged rock formation to reach the breathtaking view at the top."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e39ad934",
-          "pos": "verb",
+          "id": "sense-de57624d",
+          "pos": "v.",
           "meaningZh": "搖晃；前後搖擺",
-          "definitionEn": "move back and forth or sideways",
           "examples": [
             "The cradle rocked gently, lulling the baby to sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "roll",
       "word": "roll",
       "senses": [
         {
-          "id": "sense-a2e4bc10",
-          "pos": "verb",
+          "id": "sense-6225ddd5",
+          "pos": "v.",
           "meaningZh": "滾動；翻滾",
-          "definitionEn": "to move along a surface by turning over and over",
           "examples": [
             "The ball rolled down the hill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f75e1481",
-          "pos": "verb",
+          "id": "sense-1e514e4c",
+          "pos": "v.",
           "meaningZh": "起伏；呈圓滾狀延伸",
-          "definitionEn": "occur in soft rounded shapes",
           "examples": [
             "The hills roll gently in the countryside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8f52828e",
-          "pos": "verb",
+          "id": "sense-e03e0417",
+          "pos": "v.",
           "meaningZh": "搖晃；左右傾側",
-          "definitionEn": "move from side to side in a swaying motion",
           "examples": [
             "The ship began to roll in the rough sea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "room",
       "word": "room",
       "senses": [
         {
-          "id": "sense-8c9a1ad5",
-          "pos": "noun",
+          "id": "sense-0d4064d1",
+          "pos": "n.",
           "meaningZh": "房間；室",
-          "definitionEn": "an area within a building that is enclosed by walls, floor, and ceiling and is used for a particular purpose",
           "examples": [
             "She walked into the room and immediately noticed the smell of fresh paint."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fe275d33",
-          "pos": "noun",
+          "id": "sense-bbe6c547",
+          "pos": "n.",
           "meaningZh": "全室人員；在場人士",
-          "definitionEn": "the people who are present in a room at a particular time",
           "examples": [
             "The room was quiet as only a few people were present, including the speaker and the organizer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "root",
       "word": "root",
       "senses": [
         {
-          "id": "sense-f173e844",
-          "pos": "noun",
+          "id": "sense-a92f18f0",
+          "pos": "n.",
           "meaningZh": "植物根部；根",
-          "definitionEn": "The usually underground part of a plant that absorbs water and nutrients from the soil and anchors the plant to the ground.",
           "examples": [
             "The root system of the tree extended deep into the soil, providing stability and nourishment for the entire tree."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e7469e9d",
-          "pos": "noun",
+          "id": "sense-2f189089",
+          "pos": "n.",
           "meaningZh": "根源；家族血統",
-          "definitionEn": "A person’s or people’s ancestors or family line.",
           "examples": [
             "John traced his family tree and discovered that his roots can be traced back to Ireland."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rope",
       "word": "rope",
       "senses": [
         {
-          "id": "sense-3b7428b7",
-          "pos": "noun",
+          "id": "sense-159df55b",
+          "pos": "n.",
           "meaningZh": "繩索；粗繩",
-          "definitionEn": "a strong, thick line or cord, usually made of twisted strands of fiber or wire, used for lifting, pulling, or securing objects",
           "examples": [
             "John used a rope to securely tie down the heavy equipment in the trailer before transporting it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-53da1c77",
-          "pos": "verb",
+          "id": "sense-22414506",
+          "pos": "v.",
           "meaningZh": "用繩綁住；繫牢",
-          "definitionEn": "to tie or fasten with a rope or a similar cord",
           "examples": [
             "The hiker decided to rope the tent to the tree to prevent it from blowing away in the strong winds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rose",
       "word": "rose",
       "senses": [
         {
-          "id": "sense-a19e4701",
-          "pos": "noun",
+          "id": "sense-c73d4505",
+          "pos": "n.",
           "meaningZh": "玫瑰（花）",
-          "definitionEn": "a sweet-smelling flower with thorns on its stem",
           "examples": [
             "He gave her a red rose on Valentine's Day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6d73c22f",
-          "pos": "adjective",
+          "id": "sense-525ea135",
+          "pos": "adj.",
           "meaningZh": "玫瑰粉紅的；淡紅的",
-          "definitionEn": "having a pale pinkish-red color, like that of a rose flower",
           "examples": [
             "She wore a stunning dress in a delicate rose shade that perfectly complemented her complexion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "round",
       "word": "round",
       "senses": [
         {
-          "id": "sense-12da2094",
-          "pos": "adjective",
+          "id": "sense-840eaa28",
+          "pos": "adj.",
           "meaningZh": "圓的；環形的",
-          "definitionEn": "shaped like a circle or ball",
           "examples": [
             "The Earth is round, not flat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4e5cf96e",
-          "pos": "noun",
+          "id": "sense-44f200be",
+          "pos": "n.",
           "meaningZh": "例行巡迴；定期巡診",
-          "definitionEn": "a series of professional calls (usually in a set order)",
           "examples": [
             "The doctor made his rounds to check the patients in the hospital."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "row",
       "word": "row",
       "senses": [
         {
-          "id": "sense-f05a3373",
-          "pos": "noun",
+          "id": "sense-76b498c3",
+          "pos": "n.",
           "meaningZh": "一排；一列",
-          "definitionEn": "an arrangement of objects or people side by side in a line",
           "examples": [
             "The children formed a row and held hands while walking to the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-3e10313b",
-          "pos": "noun",
+          "id": "sense-45e8476b",
+          "pos": "n.",
           "meaningZh": "橫排；成排延伸",
-          "definitionEn": "a long continuous strip (usually running horizontally)",
           "examples": [
             "We planted the seeds in perfectly straight rows."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rule",
       "word": "rule",
       "senses": [
         {
-          "id": "sense-f750698f",
-          "pos": "noun",
+          "id": "sense-0b4971ef",
+          "pos": "n.",
           "meaningZh": "規則；守則",
-          "definitionEn": "A basic generalization accepted as true that can be used as a basis for reasoning or conduct.",
           "examples": [
             "One important rule of thumb to follow while driving is to keep a safe distance from the vehicle in front of you."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-16ab37c6",
-          "pos": "noun",
+          "id": "sense-15958266",
+          "pos": "n.",
           "meaningZh": "（宗教）會規；修行戒律",
-          "definitionEn": "Any of a systematic body of regulations defining the way of life of members of a religious order.",
           "examples": [
             "The religious order followed a strict rule that required them to wake up early every day and attend regular prayer meetings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ruler",
       "word": "ruler",
       "senses": [
         {
-          "id": "sense-cf84dda8",
-          "pos": "noun",
+          "id": "sense-016da318",
+          "pos": "n.",
           "meaningZh": "尺；直尺",
-          "definitionEn": "measuring stick consisting of a strip of wood or metal or plastic with a straight edge that is used for drawing straight lines and measuring lengths",
           "examples": [
             "The teacher used a ruler to draw a straight line on the chalkboard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-8af19338",
-          "pos": "noun",
+          "id": "sense-702b41e8",
+          "pos": "n.",
           "meaningZh": "統治者；掌權者",
-          "definitionEn": "a device or person that exercises authority or control",
           "examples": [
             "The new CEO is the ruler of the company and makes all the major decisions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "run",
       "word": "run",
       "senses": [
         {
-          "id": "sense-f032408b",
-          "pos": "verb",
+          "id": "sense-db87b60e",
+          "pos": "v.",
           "meaningZh": "跑步；奔跑",
-          "definitionEn": "to move rapidly on foot by lifting one foot and then the other on alternately",
           "examples": [
             "Sally had to run to catch the bus before it left the stop."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4804495d",
-          "pos": "verb",
+          "id": "sense-2baa6aa8",
+          "pos": "v.",
           "meaningZh": "快速移動；趕往",
-          "definitionEn": "to go or travel quickly by any means",
           "examples": [
             "She had to run to catch the bus before it left."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sad",
       "word": "sad",
       "senses": [
         {
-          "id": "sense-b50091f9",
-          "pos": "adjective",
+          "id": "sense-9d780d85",
+          "pos": "adj.",
           "meaningZh": "悲傷的；難過的",
-          "definitionEn": "experiencing or showing sorrow or unhappiness",
           "examples": [
             "After her grandfather passed away, she felt very sad and couldn’t stop crying."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0c82a871",
-          "pos": "adjective",
+          "id": "sense-aff85bbd",
+          "pos": "adj.",
           "meaningZh": "令人悲傷的；使人傷心的",
-          "definitionEn": "likely to cause or associated with sorrow or unhappiness",
           "examples": [
             "It was a sad movie that made most of the audience cry uncontrollably."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "safe",
       "word": "safe",
       "senses": [
         {
-          "id": "sense-eae8f67b",
-          "pos": "adjective",
+          "id": "sense-dc6053dd",
+          "pos": "adj.",
           "meaningZh": "安全的；無危險的",
-          "definitionEn": "Free from danger or risk of harm.",
           "examples": [
             "Wearing a seatbelt while driving ensures that you are safe in case of a car accident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-432e6326",
-          "pos": "adjective",
+          "id": "sense-1d117114",
+          "pos": "adj.",
           "meaningZh": "穩妥的；有保障的",
-          "definitionEn": "Secure from risk, as in an undertaking.",
           "examples": [
             "After thorough research and planning, the team felt safe to proceed with their new business venture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "salad",
+      "word": "salad",
+      "senses": [
+        {
+          "id": "sense-7da3c26a",
+          "pos": "n.",
+          "meaningZh": "沙拉",
+          "examples": [
+            "At the picnic, we enjoyed a refreshing salad of mixed greens, cherry tomatoes, cucumbers, and avocado, topped with a tangy vinaigrette dressing."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sale",
+      "word": "sale",
+      "senses": [
+        {
+          "id": "sense-a91c980a",
+          "pos": "n.",
+          "meaningZh": "銷售；促銷活動",
+          "examples": [
+            "The clothing store is having a huge sale this weekend, with discounts of up to 50% off on all items."
+          ]
+        },
+        {
+          "id": "sense-cec0345a",
+          "pos": "n.",
+          "meaningZh": "販售狀態；出售中",
+          "examples": [
+            "The store advertised a clearance sale with discounts of up to 50% off."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "salt",
+      "word": "salt",
+      "senses": [
+        {
+          "id": "sense-c3eb208b",
+          "pos": "n.",
+          "meaningZh": "鹽；食鹽",
+          "examples": [
+            "I sprinkled a pinch of salt on my scrambled eggs for added flavor."
+          ]
+        },
+        {
+          "id": "sense-03f37b51",
+          "pos": "n.",
+          "meaningZh": "鹽類；化學鹽化合物",
+          "examples": [
+            "I added a pinch of salt to the soup to enhance the flavor."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

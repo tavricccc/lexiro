@@ -1,1339 +1,631 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 136,
   "words": [
-    {
-      "wordKey": "certainty",
-      "word": "certainty",
-      "senses": [
-        {
-          "id": "sense-9de3daf3",
-          "pos": "noun",
-          "meaningZh": "確信；確定性",
-          "definitionEn": "the state of being absolutely sure or confident",
-          "examples": [
-            "After months of hard work and preparation, she had a sense of certainty that she would succeed in her exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-e3c437d6",
-          "pos": "noun",
-          "meaningZh": "確定之事；必然結果",
-          "definitionEn": "something that is certain",
-          "examples": [
-            "Even though they had doubts, the team approached the final game with a sense of certainty that they would win."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "certificate",
-      "word": "certificate",
-      "senses": [
-        {
-          "id": "sense-5251163c",
-          "pos": "noun",
-          "meaningZh": "證書；證明文件",
-          "definitionEn": "a document that confirms something is true",
-          "examples": [
-            "After completing the online course, John received a certificate confirming he had successfully passed the program."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-6083e6bf",
-          "pos": "noun",
-          "meaningZh": "股票憑證；有價證券",
-          "definitionEn": "a document that proves ownership of a certain amount of money or stock and entitles the holder to receive interest or dividends",
-          "examples": [
-            "I received a certificate for the shares of the company, which entitled me to receive regular dividends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "chaos",
-      "word": "chaos",
-      "senses": [
-        {
-          "id": "sense-d57e0c9b",
-          "pos": "noun",
-          "meaningZh": "混亂；一片混亂",
-          "definitionEn": "a state of complete confusion and disorder",
-          "examples": [
-            "After the earthquake, there was chaos in the city as people ran out of the buildings and emergency services struggled to reach those in need."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-fa590dcb",
-          "pos": "noun",
-          "meaningZh": "混沌；原始混亂狀態",
-          "definitionEn": "a formless and disordered state of matter before the creation of the universe",
-          "examples": [
-            "The concept of chaos was used in ancient mythology to describe the state of the universe before creation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "chapel",
-      "word": "chapel",
-      "senses": [
-        {
-          "id": "sense-b9cf0f26",
-          "pos": "noun",
-          "meaningZh": "小禮拜堂；小教堂",
-          "definitionEn": "a place of worship that has its own altar or some religious services may be held there",
-          "examples": [
-            "The couple got married in the quaint little chapel on the hill, surrounded by their closest family and friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "characterize",
-      "word": "characterize",
-      "senses": [
-        {
-          "id": "sense-2cfb324a",
-          "pos": "verb",
-          "meaningZh": "描述……的特質；刻畫",
-          "definitionEn": "describe or portray the character or the qualities or peculiarities of",
-          "examples": [
-            "In the novel, the author meticulously characterizes the main protagonist, providing a detailed description of his physical appearance, personality, and inner thoughts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-7a3312d1",
-          "pos": "verb",
-          "meaningZh": "是……的特色；具有……特點",
-          "definitionEn": "be characteristic of",
-          "examples": [
-            "The bright, vibrant colors and playful designs characterize the brand's aesthetic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "chef",
       "word": "chef",
       "senses": [
         {
-          "id": "sense-62ab6212",
-          "pos": "noun",
+          "id": "sense-1123c8de",
+          "pos": "n.",
           "meaningZh": "主廚；廚師",
-          "definitionEn": "a professional cook, typically the chief cook in a restaurant or hotel",
           "examples": [
             "The chef skillfully prepared a five-course meal for the guests, showcasing his culinary expertise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "choir",
       "word": "choir",
       "senses": [
         {
-          "id": "sense-c998c866",
-          "pos": "noun",
+          "id": "sense-8322d5ce",
+          "pos": "n.",
           "meaningZh": "合唱團；詩班",
-          "definitionEn": "a musical ensemble consisting of singers, often of the same voice type",
           "examples": [
             "The choir performed a beautiful rendition of Handel's Messiah during the annual Christmas concert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chord",
       "word": "chord",
       "senses": [
         {
-          "id": "sense-2a35517d",
-          "pos": "noun",
+          "id": "sense-a9940f61",
+          "pos": "n.",
           "meaningZh": "和弦；和音",
-          "definitionEn": "a combination of three or more notes that blend harmoniously when sounded together",
           "examples": [
             "The musician played a complex chord on his guitar that impressed the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chore",
       "word": "chore",
       "senses": [
         {
-          "id": "sense-2f2b47e0",
-          "pos": "noun",
+          "id": "sense-8c3faf6c",
+          "pos": "n.",
           "meaningZh": "家務；例行雜務",
-          "definitionEn": "a task or job that needs to be done, either as a duty or for payment",
           "examples": [
             "Every week, I have to do the chore of cleaning the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chronic",
       "word": "chronic",
       "senses": [
         {
-          "id": "sense-17b73bcc",
-          "pos": "adjective",
+          "id": "sense-9b9a2628",
+          "pos": "adj.",
           "meaningZh": "慢性的；持續性的",
-          "definitionEn": "having a long duration or lasting a long time",
           "examples": [
             "My grandfather has been suffering from chronic pain in his joints for the past decade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-064b8c16",
-          "pos": "adjective",
+          "id": "sense-53ec9342",
+          "pos": "adj.",
           "meaningZh": "長期的；反覆發作的",
-          "definitionEn": "happening repeatedly or over a long period of time",
           "examples": [
             "She has been suffering from chronic pain for years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chubby",
       "word": "chubby",
       "senses": [
         {
-          "id": "sense-4f059168",
-          "pos": "adjective",
+          "id": "sense-a072910e",
+          "pos": "adj.",
           "meaningZh": "圓胖的；豐滿的",
-          "definitionEn": "having a round and plump physical appearance, often in an attractive way",
           "examples": [
             "The chubby baby looked absolutely adorable in his onesie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chunk",
       "word": "chunk",
       "senses": [
         {
-          "id": "sense-c418a9db",
-          "pos": "noun",
+          "id": "sense-f40365df",
+          "pos": "n.",
           "meaningZh": "大塊；厚片",
-          "definitionEn": "a compact mass or unit",
           "examples": [
             "After chopping the vegetables, I added them to the soup in small, bite-sized chunks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-bd56a441",
-          "pos": "noun",
+          "id": "sense-0c16d76d",
+          "pos": "n.",
           "meaningZh": "大量；一大份",
-          "definitionEn": "a substantial amount or portion",
           "examples": [
             "She ate a chunk of chocolate cake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "circuit",
       "word": "circuit",
       "senses": [
         {
-          "id": "sense-2eb0cbd0",
-          "pos": "noun",
+          "id": "sense-9ef84aa8",
+          "pos": "n.",
           "meaningZh": "電路；線路",
-          "definitionEn": "a complete path around which an electric current flows",
           "examples": [
             "A short circuit caused the lights to go out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-43d58af8",
-          "pos": "noun",
+          "id": "sense-bb9c0030",
+          "pos": "n.",
           "meaningZh": "環繞路線；一圈",
-          "definitionEn": "a journey or route all the way around a particular place or area",
           "examples": [
             "During their trip to France, they took a circuit around the countryside to explore different villages."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9e7b4f21",
-          "pos": "noun",
+          "id": "sense-a0156e19",
+          "pos": "n.",
           "meaningZh": "（巡迴）賽程；巡迴路線",
-          "definitionEn": "an established itinerary of venues or events that a particular group of people travel to",
           "examples": [
             "The annual music festival features different performers on various stages around the city over a three-day circuit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cite",
       "word": "cite",
       "senses": [
         {
-          "id": "sense-f0c0a160",
-          "pos": "verb",
+          "id": "sense-1e5dce29",
+          "pos": "v.",
           "meaningZh": "引用；引述",
-          "definitionEn": "to make reference to something",
           "examples": [
             "In her research paper, Sarah carefully cited all of her sources to give credit to the original authors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e98952d1",
-          "pos": "verb",
+          "id": "sense-c0701ca8",
+          "pos": "v.",
           "meaningZh": "舉例說明；援引",
-          "definitionEn": "to refer to something, usually as an example or support",
           "examples": [
             "In her research paper, she decided to cite several scholarly articles to support her argument."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "citizenship",
       "word": "citizenship",
       "senses": [
         {
-          "id": "sense-4ced0b08",
-          "pos": "noun",
+          "id": "sense-9f1ba54c",
+          "pos": "n.",
           "meaningZh": "公民身分；國籍",
-          "definitionEn": "the state of being a member of a particular country and having the rights and privileges that come with it.",
           "examples": [
             "After residing in the country for five years, she finally obtained citizenship and was granted the right to vote."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-dce94c18",
-          "pos": "noun",
+          "id": "sense-19b90634",
+          "pos": "n.",
           "meaningZh": "公民責任；公民意識",
-          "definitionEn": "the behavior expected of a responsible member of a community",
           "examples": [
             "John is demonstrating good citizenship by volunteering at the local food bank and helping his neighbors with yard work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "civic",
       "word": "civic",
       "senses": [
         {
-          "id": "sense-e6ac7708",
-          "pos": "adjective",
+          "id": "sense-6f154404",
+          "pos": "adj.",
           "meaningZh": "市政的；城市的",
-          "definitionEn": "of or relating to a city or its people or government",
           "examples": [
             "The mayor’s speech focused on the need for more civic engagement in the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2e6cf69d",
-          "pos": "adjective",
+          "id": "sense-8da257c1",
+          "pos": "adj.",
           "meaningZh": "公民的；市民義務的",
-          "definitionEn": "relating to the duties or activities of people in relation to their town, city or local area",
           "examples": [
             "The civic leaders organized a volunteer clean-up effort in the park to encourage community involvement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clarity",
       "word": "clarity",
       "senses": [
         {
-          "id": "sense-30450706",
-          "pos": "noun",
+          "id": "sense-b9aa64f6",
+          "pos": "n.",
           "meaningZh": "清晰；明確性",
-          "definitionEn": "the quality of being easily understood and coherent",
           "examples": [
             "The professor’s explanation provided clarity to the otherwise confusing concept."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-711c4b6a",
-          "pos": "noun",
+          "id": "sense-10e0887a",
+          "pos": "n.",
           "meaningZh": "透明；清澈",
-          "definitionEn": "the quality of being clear and transparent",
           "examples": [
             "The instructions of the experiment lacked clarity, causing confusion among the participants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clause",
       "word": "clause",
       "senses": [
         {
-          "id": "sense-be82d271",
-          "pos": "noun",
+          "id": "sense-9d485369",
+          "pos": "n.",
           "meaningZh": "子句；從句",
-          "definitionEn": "(grammar) an expression including a subject and predicate but not constituting a complete sentence",
           "examples": [
             "The italicized words in this sentence are just a clause, not a complete sentence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fe8bdd1c",
-          "pos": "noun",
+          "id": "sense-57ba7184",
+          "pos": "n.",
           "meaningZh": "（法律文件）條款；條文",
-          "definitionEn": "a separate section of a legal document such as a statute, contract, or will",
           "examples": [
             "The agreement contained a confidentiality clause that prohibited the two parties from disclosing any non-public information to third parties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cling",
       "word": "cling",
       "senses": [
         {
-          "id": "sense-7f54c3ee",
-          "pos": "verb",
+          "id": "sense-dd31445b",
+          "pos": "v.",
           "meaningZh": "緊抓；緊握",
-          "definitionEn": "to hold on tightly or firmly",
           "examples": [
             "The terrified child clung to her mother's leg during the thunderstorm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f7d52c2d",
-          "pos": "verb",
+          "id": "sense-f85aeac4",
+          "pos": "v.",
           "meaningZh": "緊貼；附著",
-          "definitionEn": "to come into close contact with; adhere or stick together and resist separation",
           "examples": [
             "As the hiker slipped on the wet rocks, she tried to cling to the side of the cliff for support."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clinical",
       "word": "clinical",
       "senses": [
         {
-          "id": "sense-b1161422",
-          "pos": "adjective",
+          "id": "sense-9499e090",
+          "pos": "adj.",
           "meaningZh": "臨床的；診療的",
-          "definitionEn": "of or relating to a clinic, its patients, or their treatment",
           "examples": [
             "The doctor conducted a clinical trial to test the effectiveness of the new medication."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-27a17fab",
-          "pos": "adjective",
+          "id": "sense-276d00e9",
+          "pos": "adj.",
           "meaningZh": "以病例為基礎的；實際觀察的",
-          "definitionEn": "based on direct observation of patients, as opposed to theoretical or laboratory studies",
           "examples": [
             "During the medical conference, the doctor presented a clinical case study showcasing the effectiveness of a new treatment based on their direct observation of the patient's response."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cluster",
       "word": "cluster",
       "senses": [
         {
-          "id": "sense-876d7451",
-          "pos": "verb",
+          "id": "sense-cea43ef0",
+          "pos": "v.",
           "meaningZh": "聚集；群聚",
-          "definitionEn": "to come together in a group or gather into a bunch",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-01441b5b",
-          "pos": "verb",
+          "id": "sense-b7c63554",
+          "pos": "v.",
           "meaningZh": "使聚集；匯集",
-          "definitionEn": "to cause things or people to come together in a group",
           "examples": [
             "The students clustered around the teacher during the chemistry experiment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cocaine",
       "word": "cocaine",
       "senses": [
         {
-          "id": "sense-b3eacf0d",
-          "pos": "noun",
+          "id": "sense-d233160d",
+          "pos": "n.",
           "meaningZh": "古柯鹼；可卡因",
-          "definitionEn": "an addictive drug derived from coca leaves, used illegally as a stimulant",
           "examples": [
             "He was arrested for smuggling cocaine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coffin",
       "word": "coffin",
       "senses": [
         {
-          "id": "sense-813dd2f8",
-          "pos": "noun",
+          "id": "sense-3e716a70",
+          "pos": "n.",
           "meaningZh": "棺材；靈柩",
-          "definitionEn": "A box or chest, typically rectangular and often made of wood, used for burying or cremating a dead body",
           "examples": [
             "The undertaker brought the polished mahogany coffin into the church for the funeral service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cognitive",
       "word": "cognitive",
       "senses": [
         {
-          "id": "sense-854c7493",
-          "pos": "adjective",
+          "id": "sense-fa6d579f",
+          "pos": "adj.",
           "meaningZh": "認知的；思維的",
-          "definitionEn": "related to the process of thought",
           "examples": [
             "A cognitive psychologist studies how the brain processes and organizes information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coherent",
       "word": "coherent",
       "senses": [
         {
-          "id": "sense-89d53345",
-          "pos": "adjective",
+          "id": "sense-9d13f811",
+          "pos": "adj.",
           "meaningZh": "思路清晰的；表達條理的",
-          "definitionEn": "capable of thinking and expressing oneself in a clear and consistent manner",
           "examples": [
             "During the meeting, the speaker presented a coherent argument, providing logical reasoning and supporting evidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b04bfb4a",
-          "pos": "adjective",
+          "id": "sense-b2859b9e",
+          "pos": "adj.",
           "meaningZh": "前後一致的；連貫的",
-          "definitionEn": "marked by a logical and consistent relation of parts; consistent",
           "examples": [
             "The professor delivered a coherent lecture, presenting each point in a clear and organized manner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coincidence",
       "word": "coincidence",
       "senses": [
         {
-          "id": "sense-82cd9126",
-          "pos": "noun",
+          "id": "sense-df098136",
+          "pos": "n.",
           "meaningZh": "巧合；湊巧",
-          "definitionEn": "an event that occurs by chance or accident",
           "examples": [
             "It was a strange coincidence that we both wore the same exact outfit to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d9228792",
-          "pos": "noun",
+          "id": "sense-e5f80c62",
+          "pos": "n.",
           "meaningZh": "同時發生；重疊",
-          "definitionEn": "the condition of occupying the same area or position in space or time",
           "examples": [
             "It was quite the coincidence when I bumped into my old friend at the airport while we were both waiting for our flights."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collaboration",
       "word": "collaboration",
       "senses": [
         {
-          "id": "sense-df6d206f",
-          "pos": "noun",
+          "id": "sense-cd7e02db",
+          "pos": "n.",
           "meaningZh": "合作；協作",
-          "definitionEn": "act of working jointly",
           "examples": [
             "The team members exhibited great collaboration as they brainstormed ideas, shared resources, and collectively achieved their project goals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-94d951db",
-          "pos": "noun",
+          "id": "sense-3faa0667",
+          "pos": "n.",
           "meaningZh": "（與敵人）通敵；勾結",
-          "definitionEn": "act of cooperating with an enemy, often while being perceived as a traitor or spy by one’s own countrymen or government",
           "examples": [
             "During war, some individuals resort to collaboration with the enemy, providing them with information or assistance, much to the discontent and suspicion of their fellow countrymen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2",
-        "textbookTitle": "龍騰 B3·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collective",
       "word": "collective",
       "senses": [
         {
-          "id": "sense-f19efd78",
-          "pos": "adjective",
+          "id": "sense-2d1c1d7c",
+          "pos": "adj.",
           "meaningZh": "集體的；共同的",
-          "definitionEn": "formed by individuals acting together",
           "examples": [
             "The collective effort of the team resulted in the successful completion of the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b0cd36ed",
-          "pos": "noun",
+          "id": "sense-03f58a21",
+          "pos": "n.",
           "meaningZh": "集體；共同體",
-          "definitionEn": "a group of individuals who work together towards a common goal",
           "examples": [
             "The collective effort of the team led to the successful completion of the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collector",
       "word": "collector",
       "senses": [
         {
-          "id": "sense-f33e1655",
-          "pos": "noun",
+          "id": "sense-1cbfa9ad",
+          "pos": "n.",
           "meaningZh": "收藏家；蒐集者",
-          "definitionEn": "a person who collects things",
           "examples": [
             "Andy is a passionate collector of rare stamps from all over the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-406d20c1",
-          "pos": "noun",
+          "id": "sense-de430669",
+          "pos": "n.",
           "meaningZh": "收款員；稅務員",
-          "definitionEn": "a person who is employed to collect payments, such as for rent or taxes",
           "examples": [
             "The collector went door to door in the neighborhood, gathering payments for overdue property taxes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "colonial",
       "word": "colonial",
       "senses": [
         {
-          "id": "sense-ce37e990",
-          "pos": "adjective",
+          "id": "sense-235f5386",
+          "pos": "adj.",
           "meaningZh": "殖民地的；殖民的",
-          "definitionEn": "related to or characteristic of a colony",
           "examples": [
             "The colonial powers established trade routes and exploited the resources of their colonies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a28e5748",
-          "pos": "noun",
+          "id": "sense-c690a7bc",
+          "pos": "n.",
           "meaningZh": "殖民地居民；拓殖者",
-          "definitionEn": "a person who lives in a colony, or a member of a colonial military force",
           "examples": [
             "The colonial settlers in the early Americas relied on agriculture to sustain their communities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "columnist",
+      "word": "columnist",
+      "senses": [
+        {
+          "id": "sense-e9f77697",
+          "pos": "n.",
+          "meaningZh": "專欄作家；專欄記者",
+          "examples": [
+            "After working as a freelance writer for years, Sarah finally landed a job as a columnist for the city newspaper."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "combat",
+      "word": "combat",
+      "senses": [
+        {
+          "id": "sense-207b19cf",
+          "pos": "n.",
+          "meaningZh": "戰鬥；搏鬥",
+          "examples": [
+            "The soldiers were trained in combat and were ready to engage in any battle."
+          ]
+        },
+        {
+          "id": "sense-bdc9e1af",
+          "pos": "n.",
+          "meaningZh": "（軍隊）交戰；戰役",
+          "examples": [
+            "The small town was in shambles after the intense combat between the opposing armies."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "comedian",
+      "word": "comedian",
+      "senses": [
+        {
+          "id": "sense-2dbc2a0d",
+          "pos": "n.",
+          "meaningZh": "喜劇演員；笑匠",
+          "examples": [
+            "The comedian had the audience in stitches with his hilarious impersonations and witty one-liners."
+          ]
+        },
+        {
+          "id": "sense-009023bb",
+          "pos": "n.",
+          "meaningZh": "搞笑的人；幽默者",
+          "examples": [
+            "The comedian had the audience in tears with his hilarious jokes."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "commentary",
+      "word": "commentary",
+      "senses": [
+        {
+          "id": "sense-a7592c07",
+          "pos": "n.",
+          "meaningZh": "（廣播電視）現場解說；評論",
+          "examples": [
+            "During the live football game, the sports commentator provided insightful commentary on the players' strategies and highlighted key moments of the match."
+          ]
+        },
+        {
+          "id": "sense-c1532bd7",
+          "pos": "n.",
+          "meaningZh": "詳細分析；評述",
+          "examples": [
+            "During the football game, the sports commentator provided insightful commentary on the players' strategies and performance."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "commentator",
+      "word": "commentator",
+      "senses": [
+        {
+          "id": "sense-54e1b5e1",
+          "pos": "n.",
+          "meaningZh": "評論員；時事評論家",
+          "examples": [
+            "The political commentator provided insightful analysis of the latest election results."
+          ]
+        },
+        {
+          "id": "sense-7f1a2363",
+          "pos": "n.",
+          "meaningZh": "（體育）解說員；播報員",
+          "examples": [
+            "During the football match, the commentator provided insightful analysis and commentary on the teams' strategies and player performances."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

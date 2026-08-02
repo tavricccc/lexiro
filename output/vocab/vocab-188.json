@@ -1,1382 +1,633 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 188,
   "words": [
-    {
-      "wordKey": "offspring",
-      "word": "offspring",
-      "senses": [
-        {
-          "id": "sense-720f4a1a",
-          "pos": "noun",
-          "meaningZh": "後代；子嗣",
-          "definitionEn": "the immediate descendants of a person or organism",
-          "examples": [
-            "The mare gave birth to a healthy offspring, which grew up to be a strong and beautiful horse."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-c4e75f1f",
-          "pos": "noun",
-          "meaningZh": "幼獸；稚齡動物",
-          "definitionEn": "any immature animal",
-          "examples": [
-            "The ducklings followed closely behind their mother as they made their way to the pond."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "operative",
-      "word": "operative",
-      "senses": [
-        {
-          "id": "sense-751bcfda",
-          "pos": "adjective",
-          "meaningZh": "有效的；起作用的",
-          "definitionEn": "capable of producing the desired effect; effective",
-          "examples": [
-            "The new marketing strategy proved to be highly operative, resulting in a significant increase in sales."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-4ce58cd2",
-          "pos": "adjective",
-          "meaningZh": "生效的；有約束力的",
-          "definitionEn": "in force; exerting force; operative law",
-          "examples": [
-            "The new safety regulations will become operative next month, ensuring that all employees follow strict protocols."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "oppress",
-      "word": "oppress",
-      "senses": [
-        {
-          "id": "sense-0e69f39f",
-          "pos": "verb",
-          "meaningZh": "使痛苦；壓迫",
-          "definitionEn": "cause to suffer",
-          "examples": [
-            "The wealthy elite in the society often oppress the poor, depriving them of basic necessities and opportunities for advancement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-c5d11871",
-          "pos": "verb",
-          "meaningZh": "以權力壓制；欺壓",
-          "definitionEn": "come down on or keep down by unjust use of one’s authority",
-          "examples": [
-            "The dictator oppresses his citizens by limiting their freedom of expression and controlling all aspects of their lives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "oppression",
-      "word": "oppression",
-      "senses": [
-        {
-          "id": "sense-7882de39",
-          "pos": "noun",
-          "meaningZh": "壓迫；壓制",
-          "definitionEn": "the state of being kept down by unjust use of force or authority: After years of oppression, the people finally revolted.",
-          "examples": [
-            "The oppression of women and minorities has been a persistent problem throughout history."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-0b4ef4b2",
-          "pos": "noun",
-          "meaningZh": "迫害；不公平對待",
-          "definitionEn": "the act of treating a group of people unfairly and cruelly, and preventing them from having the same rights as other people",
-          "examples": [
-            "The oppression of minorities in many countries around the world is a significant issue that needs to be addressed and resolved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "ordeal",
-      "word": "ordeal",
-      "senses": [
-        {
-          "id": "sense-e468191a",
-          "pos": "noun",
-          "meaningZh": "嚴峻考驗；折磨",
-          "definitionEn": "a severe or trying experience",
-          "examples": [
-            "After weeks of rigorous training, completing the marathon became an ordeal for John as he battled exhaustion and muscle cramps."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-7886b798",
-          "pos": "noun",
-          "meaningZh": "（古代）神明裁判；酷刑試罪",
-          "definitionEn": "a primitive method of determining a person’s guilt or innocence by subjecting the accused person to dangerous or painful tests believed to be under divine control; escape was usually taken as a sign of innocence",
-          "examples": [
-            "In the ancient tribe, the accused person was made to walk barefoot on burning embers as an ordeal to determine their guilt or innocence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "orderly",
       "word": "orderly",
       "senses": [
         {
-          "id": "sense-78ce3188",
-          "pos": "adjective",
+          "id": "sense-f0f0686a",
+          "pos": "adj.",
           "meaningZh": "整齊有序的；有條理的",
-          "definitionEn": "being well arranged or organized.",
           "examples": [
             "The librarian kept the books on the shelves in an orderly manner, making it easy for patrons to find what they were looking for."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d930fda6",
-          "pos": "noun",
+          "id": "sense-2b8372fe",
+          "pos": "n.",
           "meaningZh": "（醫院或軍隊）勤務員；工友",
-          "definitionEn": "a person who keeps things organized or in order, especially in a hospital or military setting.",
           "examples": [
             "The orderly efficiently arranged the medical supplies, ensuring that everything was easily accessible during emergencies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "organizer",
       "word": "organizer",
       "senses": [
         {
-          "id": "sense-bf3fb6ad",
-          "pos": "noun",
+          "id": "sense-8408d989",
+          "pos": "n.",
           "meaningZh": "籌辦人；活動主辦者",
-          "definitionEn": "a person who brings order and organization to an enterprise",
           "examples": [
             "The event planner was an excellent organizer, ensuring that every detail of the conference ran smoothly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "orient",
       "word": "orient",
       "senses": [
         {
-          "id": "sense-67208bca",
-          "pos": "verb",
+          "id": "sense-4a714fab",
+          "pos": "v.",
           "meaningZh": "辨別方向；定位",
-          "definitionEn": "to determine one’s position relative to another point",
           "examples": [
             "Before starting the hike, we need to orient ourselves using a compass and map to ensure we are heading in the right direction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-82651e81",
-          "pos": "verb",
+          "id": "sense-99e8fe8a",
+          "pos": "v.",
           "meaningZh": "使熟悉環境；引導適應",
-          "definitionEn": "to make familiar with new surroundings or circumstances",
           "examples": [
             "When starting a new job, it may take some time to orient yourself to the office layout and get to know your colleagues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "oriental",
       "word": "oriental",
       "senses": [
         {
-          "id": "sense-71bc618c",
-          "pos": "noun",
+          "id": "sense-ef485790",
+          "pos": "n.",
           "meaningZh": "東方的；亞洲的（文化或事物）",
-          "definitionEn": "A term used to describe people, cultures, or objects from Eastern Asia, Southeast Asia, or the Indian subcontinent.",
           "examples": [
             "The restaurant had a variety of delicious oriental dishes on their menu, including sushi, stir-fry, and dumplings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2b4b217f",
-          "pos": "noun",
+          "id": "sense-53eae693",
+          "pos": "n.",
           "meaningZh": "東方人；亞洲人（現多視為過時用語）",
-          "definitionEn": "A member of a group of people originating from Eastern Asia, Southeast Asia, or the Indian subcontinent.",
           "examples": [
             "My neighbor is an Oriental woman who moved here from Taiwan."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "originate",
       "word": "originate",
       "senses": [
         {
-          "id": "sense-a030c03c",
-          "pos": "verb",
+          "id": "sense-4f2836a7",
+          "pos": "v.",
           "meaningZh": "起源於；源自",
-          "definitionEn": "come into existence or begin from a particular source or origin",
           "examples": [
             "The tradition of exchanging roses on Valentine's Day originates from ancient Roman times."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3b3cbb43",
-          "pos": "verb",
+          "id": "sense-502c4902",
+          "pos": "v.",
           "meaningZh": "創始；開創",
-          "definitionEn": "create or initiate something",
           "examples": [
             "The famous singer originated a new style of music that revolutionized the industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L8",
-        "textbookTitle": "龍騰 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ornament",
       "word": "ornament",
       "senses": [
         {
-          "id": "sense-cc9f9f39",
-          "pos": "noun",
+          "id": "sense-b1946ba5",
+          "pos": "n.",
           "meaningZh": "裝飾品；飾物",
-          "definitionEn": "something that is used to decorate or beautify",
           "examples": [
             "She carefully placed the delicate glass ornament on the Christmas tree, adding a touch of elegance and sparkle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4254cdfe",
-          "pos": "verb",
+          "id": "sense-da13106f",
+          "pos": "v.",
           "meaningZh": "裝飾；美化",
-          "definitionEn": "to make something more attractive by adding decoration, color, or other features",
           "examples": [
             "She decided to ornament the living room for the holidays by hanging colorful lights and placing festive decorations throughout."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "orphanage",
       "word": "orphanage",
       "senses": [
         {
-          "id": "sense-bad66cee",
-          "pos": "noun",
+          "id": "sense-56bbd40a",
+          "pos": "n.",
           "meaningZh": "孤兒院",
-          "definitionEn": "a public institution for the care of orphans",
           "examples": [
             "The young girl found solace and companionship in the supportive environment of the orphanage after tragically losing her parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b9b1bb28",
-          "pos": "noun",
+          "id": "sense-0d666af4",
+          "pos": "n.",
           "meaningZh": "孤兒狀態；無父母的處境",
-          "definitionEn": "the condition of being a child without living parents",
           "examples": [
             "After losing both of his parents in a tragic car accident, Jake was placed in an orphanage where he received love and care from the dedicated staff."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "orthodox",
       "word": "orthodox",
       "senses": [
         {
-          "id": "sense-a2a44308",
-          "pos": "adjective",
+          "id": "sense-a6f01fc2",
+          "pos": "adj.",
           "meaningZh": "正統的；傳統的",
-          "definitionEn": "adhering to what is commonly accepted",
           "examples": [
             "The Orthodox church still uses ancient rituals and traditions in their worship services."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7e639ba4",
-          "pos": "adjective",
+          "id": "sense-634d2082",
+          "pos": "adj.",
           "meaningZh": "嚴格遵循教義的；保守的",
-          "definitionEn": "following or conforming to the traditional or generally accepted rules or beliefs of a religion, philosophy, or practice",
           "examples": [
             "The orthodox religious leaders insisted on following the age-old customs and traditions during the rituals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ounce",
       "word": "ounce",
       "senses": [
         {
-          "id": "sense-64699776",
-          "pos": "noun",
+          "id": "sense-32bd8b22",
+          "pos": "n.",
           "meaningZh": "盎司（重量單位，約28.35克）",
-          "definitionEn": "a unit of weight that is equal to one-sixteenth of a pound, 16 drams, or 28.349 grams",
           "examples": [
             "The recipe called for one ounce of chocolate, but I accidentally used two ounces and it turned out even better!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outbreak",
       "word": "outbreak",
       "senses": [
         {
-          "id": "sense-3624dc14",
-          "pos": "noun",
+          "id": "sense-7a4681e0",
+          "pos": "n.",
           "meaningZh": "爆發；突發",
-          "definitionEn": "a sudden occurrence of something, typically something unwelcome or hostile",
           "examples": [
             "An outbreak of a new infectious disease swept through the city, causing widespread panic and leading to the implementation of strict quarantine measures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7cda0a56",
-          "pos": "noun",
+          "id": "sense-79ddc01a",
+          "pos": "n.",
           "meaningZh": "疫情；蔓延",
-          "definitionEn": "the sudden appearance or increase of something, usually a disease or emotion",
           "examples": [
             "The outbreak of the flu led to a surge in hospital admissions and increased demand for vaccinations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outgoing",
       "word": "outgoing",
       "senses": [
         {
-          "id": "sense-8802f6e6",
-          "pos": "adjective",
+          "id": "sense-c38753b2",
+          "pos": "adj.",
           "meaningZh": "外向的；開朗的",
-          "definitionEn": "at ease in talking to others",
           "examples": [
             "As an outgoing person, she not only made friends easily, but also showed great interpersonal skills in every social activity she participated in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1a974323",
-          "pos": "adjective",
+          "id": "sense-b58d378f",
+          "pos": "adj.",
           "meaningZh": "即將卸任的；離職的",
-          "definitionEn": "retiring from a position or office",
           "examples": [
             "The outgoing CEO of the company held a farewell party where he shared memorable moments of his tenure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outing",
       "word": "outing",
       "senses": [
         {
-          "id": "sense-dbbc0232",
-          "pos": "noun",
+          "id": "sense-523bfdbe",
+          "pos": "n.",
           "meaningZh": "郊遊；出遊",
-          "definitionEn": "a journey taken for pleasure",
           "examples": [
             "He planned an outing to the beach with his friends for the weekend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-08575686",
-          "pos": "noun",
+          "id": "sense-cb39c18a",
+          "pos": "n.",
           "meaningZh": "戶外聚會；遠足活動",
-          "definitionEn": "a day devoted to an outdoor social gathering",
           "examples": [
             "My friends and I planned an outing to the park for a picnic and some fun outdoor games on the weekend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outlaw",
       "word": "outlaw",
       "senses": [
         {
-          "id": "sense-38a8c92c",
-          "pos": "noun",
+          "id": "sense-c3931e88",
+          "pos": "n.",
           "meaningZh": "罪犯；亡命之徒",
-          "definitionEn": "a person who has committed a crime or has been legally convicted",
           "examples": [
             "The sheriff and his deputies were on a mission to capture the notorious outlaw who had been terrorizing the town for months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e836f099",
-          "pos": "verb",
+          "id": "sense-d392ad3c",
+          "pos": "v.",
           "meaningZh": "宣布違法；取締",
-          "definitionEn": "to declare illegal",
           "examples": [
             "The government decided to outlaw the production and sale of certain drugs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outlook",
       "word": "outlook",
       "senses": [
         {
-          "id": "sense-b6cae275",
-          "pos": "noun",
+          "id": "sense-bbfed54d",
+          "pos": "n.",
           "meaningZh": "前景；看法",
-          "definitionEn": "belief about the future, especially concerning the likelihood of future events",
           "examples": [
             "Despite facing some setbacks, Sarah maintained an optimistic outlook, believing that things would improve in the long run."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4fdbad99",
-          "pos": "noun",
+          "id": "sense-e072d1b1",
+          "pos": "n.",
           "meaningZh": "瞭望；展望",
-          "definitionEn": "the act of looking out",
           "examples": [
             "Before going on a hike, it's important to check the weather outlook to ensure a safe and enjoyable experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outnumber",
       "word": "outnumber",
       "senses": [
         {
-          "id": "sense-112b6246",
-          "pos": "verb",
+          "id": "sense-c990e92f",
+          "pos": "v.",
           "meaningZh": "數量超過；多於",
-          "definitionEn": "to be greater in number than another group",
           "examples": [
             "In the student council election, the candidates from the sophomore class outnumbered those from the junior class, making it more likely for a sophomore to win."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outrage",
       "word": "outrage",
       "senses": [
         {
-          "id": "sense-421a7f16",
-          "pos": "noun",
+          "id": "sense-eded2efa",
+          "pos": "n.",
           "meaningZh": "憤慨；義憤",
-          "definitionEn": "a feeling of righteous anger",
           "examples": [
             "The public response was an outrage, as they demanded justice for the innocent victim."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-fb54558e",
-          "pos": "noun",
+          "id": "sense-6c00a592",
+          "pos": "n.",
           "meaningZh": "公憤；冒犯行為",
-          "definitionEn": "the act of scandalizing or offending",
           "examples": [
             "The insensitive comment made at the meeting caused a collective outrage among the attendees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outrageous",
       "word": "outrageous",
       "senses": [
         {
-          "id": "sense-5d8d6d74",
-          "pos": "adjective",
+          "id": "sense-8fede7c0",
+          "pos": "adj.",
           "meaningZh": "無恥的；駭人的",
-          "definitionEn": "grossly offensive to decency or morality; causing horror",
           "examples": [
             "The comedian's jokes were so outrageous that many audience members walked out of the show in disgust."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-85f3889d",
-          "pos": "adjective",
+          "id": "sense-2967f201",
+          "pos": "adj.",
           "meaningZh": "過分的；離譜的",
-          "definitionEn": "greatly exceeding bounds of reason or moderation",
           "examples": [
             "His demands for a million-dollar signing bonus were outrageous, considering he had never played professional sports before."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outright",
       "word": "outright",
       "senses": [
         {
-          "id": "sense-6e7aec5b",
-          "pos": "adverb",
+          "id": "sense-45a182f6",
+          "pos": "adv.",
           "meaningZh": "斷然地；毫無保留地",
-          "definitionEn": "completely and without reservation or concealment",
           "examples": [
             "The politician outright rejected the proposal without any hesitation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-096d8899",
-          "pos": "adjective",
+          "id": "sense-38055165",
+          "pos": "adj.",
           "meaningZh": "徹底的；完全的",
-          "definitionEn": "complete and total; absolute",
           "examples": [
             "The company fired the employee outright for stealing money from the cash register."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outset",
       "word": "outset",
       "senses": [
         {
-          "id": "sense-8021dc14",
-          "pos": "noun",
+          "id": "sense-81d90b20",
+          "pos": "n.",
           "meaningZh": "開始；起初",
-          "definitionEn": "the beginning of something, especially something difficult or unpleasant",
           "examples": [
             "At the outset of the marathon, the runners were excited and full of energy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outskirts",
       "word": "outskirts",
       "senses": [
         {
-          "id": "sense-71a6566a",
-          "pos": "noun",
+          "id": "sense-25c8d98a",
+          "pos": "n.",
           "meaningZh": "郊區；市郊",
-          "definitionEn": "a part of the city far from the center",
           "examples": [
             "She lived on the outskirts of town, where there were more trees and open spaces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-79f4fd8e",
-          "pos": "noun",
+          "id": "sense-4e39f6ee",
+          "pos": "n.",
           "meaningZh": "城市外圍；邊緣地帶",
-          "definitionEn": "the outer area of a town or city",
           "examples": [
             "We decided to go for a hike in the outskirt of the city, where we could enjoy the peacefulness of nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "outward",
       "word": "outward",
       "senses": [
         {
-          "id": "sense-7d089274",
-          "pos": "adverb",
+          "id": "sense-acaf8771",
+          "pos": "adv.",
           "meaningZh": "向外；朝外",
-          "definitionEn": "toward the outside",
           "examples": [
             "The leaves of the tree were bent outward due to the strong wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-770eaaf1",
-          "pos": "adjective",
+          "id": "sense-2c817d55",
+          "pos": "adj.",
           "meaningZh": "向外的；外顯的",
-          "definitionEn": "moving, directed, or turned toward the outside or away from a center",
           "examples": [
             "She showed no outward emotion as she listened to the bad news."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overdo",
       "word": "overdo",
       "senses": [
         {
-          "id": "sense-9a0febe7",
-          "pos": "verb",
+          "id": "sense-f60c7fe4",
+          "pos": "v.",
           "meaningZh": "做過頭；過度",
-          "definitionEn": "do something to an excessive degree",
           "examples": [
             "Sarah was so determined to win the race that she overdid the training and ended up injuring herself."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-a615d81a",
-          "pos": "verb",
+          "id": "sense-5a8b7e73",
+          "pos": "v.",
           "meaningZh": "誇大；過分強調",
-          "definitionEn": "exaggerate or overemphasize (something)",
           "examples": [
             "John always overdoes his compliments to impress his boss."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overflow",
       "word": "overflow",
       "senses": [
         {
-          "id": "sense-68c348dc",
-          "pos": "verb",
+          "id": "sense-2008a439",
+          "pos": "v.",
           "meaningZh": "溢出；漫出",
-          "definitionEn": "to flow over the top or brim of a container",
           "examples": [
             "The heavy rain caused the river to overflow its banks, flooding the nearby fields."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-597b00ad",
-          "pos": "verb",
+          "id": "sense-2ded3d30",
+          "pos": "v.",
           "meaningZh": "充溢；洋溢",
-          "definitionEn": "to have more than enough of a certain thing, often accompanied by feelings or emotions",
           "examples": [
             "After receiving a promotion at work, Sally's heart was overflowing with joy and pride."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overhear",
       "word": "overhear",
       "senses": [
         {
-          "id": "sense-4b950815",
-          "pos": "verb",
+          "id": "sense-ed618596",
+          "pos": "v.",
           "meaningZh": "無意中聽到；偷聽",
-          "definitionEn": "To hear what other people are saying without their knowledge",
           "examples": [
             "While sitting in the café, I couldn't help but overhear an interesting conversation about a secret business deal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6",
-        "textbookTitle": "龍騰 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "overlap",
       "word": "overlap",
       "senses": [
         {
-          "id": "sense-c43611d1",
-          "pos": "verb",
+          "id": "sense-bc10578a",
+          "pos": "v.",
           "meaningZh": "重疊；蓋住一部分",
-          "definitionEn": "to cover part of something, especially when one thing covers part of another thing",
           "examples": [
             "The branches of the two trees overlapped, creating a natural archway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6ac6d686",
-          "pos": "verb",
+          "id": "sense-57bb89e5",
+          "pos": "v.",
           "meaningZh": "交疊；有共同之處",
-          "definitionEn": "to exist at the same time or to share common ground with something else",
           "examples": [
             "The schedules of the two conferences overlap, so attendees will have to choose which sessions to attend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "overwork",
+      "word": "overwork",
+      "senses": [
+        {
+          "id": "sense-0625226f",
+          "pos": "v.",
+          "meaningZh": "使過勞；過度工作",
+          "examples": [
+            "Despite her husband's pleas for a break, she continued to overwork herself, often clocking in 12-hour workdays."
+          ]
+        },
+        {
+          "id": "sense-3de13eb8",
+          "pos": "n.",
+          "meaningZh": "過勞；過度操勞",
+          "examples": [
+            "After pulling several all-nighters in a row, Sarah experienced the negative effects of overwork when she collapsed from exhaustion."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "oyster",
+      "word": "oyster",
+      "senses": [
+        {
+          "id": "sense-3040c567",
+          "pos": "n.",
+          "meaningZh": "牡蠣；蚵仔",
+          "examples": [
+            "During our beach vacation, we enjoyed a plate of fresh oysters on the half-shell, accompanied with a lemon wedge and cocktail sauce."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "ozone",
+      "word": "ozone",
+      "senses": [
+        {
+          "id": "sense-d06a0a86",
+          "pos": "n.",
+          "meaningZh": "臭氧",
+          "examples": [
+            "The ozone layer in the atmosphere shields the Earth from harmful ultraviolet rays, preventing them from reaching the surface and causing damage to living organisms."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "packet",
+      "word": "packet",
+      "senses": [
+        {
+          "id": "sense-0fc63260",
+          "pos": "n.",
+          "meaningZh": "小包；小袋",
+          "examples": [
+            "I bought a packet of cookies from the store."
+          ]
+        },
+        {
+          "id": "sense-c7b07cf3",
+          "pos": "n.",
+          "meaningZh": "郵船；貨船",
+          "examples": [
+            "The packet sailed across the ocean, loaded with crates of goods bound for different countries."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "paddle",
+      "word": "paddle",
+      "senses": [
+        {
+          "id": "sense-ba68f02e",
+          "pos": "n.",
+          "meaningZh": "槳；划槳",
+          "examples": [
+            "As the sun set, Sarah took her paddle and went out for a peaceful evening paddle on the calm lake."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

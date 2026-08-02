@@ -1,1343 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 185,
   "words": [
-    {
-      "wordKey": "locker",
-      "word": "locker",
-      "senses": [
-        {
-          "id": "sense-da7692ac",
-          "pos": "noun",
-          "meaningZh": "置物櫃；儲物櫃",
-          "definitionEn": "a storage compartment with a lock for keeping clothes and valuable items",
-          "examples": [
-            "I always keep my gym shoes locked in a locker at the gym."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-56268fa6",
-          "pos": "noun",
-          "meaningZh": "行李箱；個人置物箱",
-          "definitionEn": "a type of trunk typically kept at the foot of a bed, especially in barracks",
-          "examples": [
-            "The soldiers kept their uniforms in their lockers at the end of the day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "lodge",
-      "word": "lodge",
-      "senses": [
-        {
-          "id": "sense-77be75e7",
-          "pos": "noun",
-          "meaningZh": "小木屋；臨時避難所",
-          "definitionEn": "a small, rustic house used as a temporary shelter",
-          "examples": [
-            "After getting caught in the storm, they found a cozy lodge in the woods to take refuge for the night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-b82e95ae",
-          "pos": "noun",
-          "meaningZh": "山間旅舍；休閒小屋",
-          "definitionEn": "a hotel providing overnight lodging for travelers",
-          "examples": [
-            "After a long day of sightseeing, we checked into a cozy lodge nestled in the heart of the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "lofty",
-      "word": "lofty",
-      "senses": [
-        {
-          "id": "sense-8dff9d2d",
-          "pos": "adjective",
-          "meaningZh": "高聳的；巍峨的",
-          "definitionEn": "standing high above others",
-          "examples": [
-            "The Burj Khalifa, the tallest building in the world, stands with its lofty height of 828 meters above all other buildings in Dubai."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-1f34d1c2",
-          "pos": "adjective",
-          "meaningZh": "崇高的；高尚的",
-          "definitionEn": "having great dignity or nobility",
-          "examples": [
-            "The Queen made a lofty speech about the importance of education during the graduation ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "logo",
-      "word": "logo",
-      "senses": [
-        {
-          "id": "sense-bdaf8c4b",
-          "pos": "noun",
-          "meaningZh": "標誌；商標；Logo",
-          "definitionEn": "a design or symbol used by a company or organization to advertise its products and make them easy to recognize",
-          "examples": [
-            "Our student club designed a new logo to put on the posters for the school fair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "lonesome",
-      "word": "lonesome",
-      "senses": [
-        {
-          "id": "sense-430b8e5e",
-          "pos": "adjective",
-          "meaningZh": "孤立的；形單影隻的",
-          "definitionEn": "being the only one; single and isolated from others",
-          "examples": [
-            "After his friends left the party early, John felt lonesome as he sat alone in his apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-61b1acd9",
-          "pos": "adjective",
-          "meaningZh": "感到孤寂的；悵然若失的",
-          "definitionEn": "marked by depressed feelings due to being alone or lacking companionship",
-          "examples": [
-            "After his friends moved away, Peter felt increasingly lonesome in his empty apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "longevity",
       "word": "longevity",
       "senses": [
         {
-          "id": "sense-601e6269",
-          "pos": "noun",
+          "id": "sense-680eaeb1",
+          "pos": "n.",
           "meaningZh": "長壽；長命",
-          "definitionEn": "the property of being long-lived",
           "examples": [
             "The Galápagos giant tortoise is renowned for its longevity, with some individuals living well over 100 years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-87b5b3ec",
-          "pos": "noun",
+          "id": "sense-6ca041a4",
+          "pos": "n.",
           "meaningZh": "服務年資；任職資歷",
-          "definitionEn": "duration of service",
           "examples": [
             "After 30 years of dedicated work at the company, John's longevity was recognized with a special retirement ceremony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "longitude",
       "word": "longitude",
       "senses": [
         {
-          "id": "sense-efbaabb5",
-          "pos": "noun",
+          "id": "sense-a3139309",
+          "pos": "n.",
           "meaningZh": "經度（與本初子午線的角距）",
-          "definitionEn": "the angular distance between a point on any meridian and the prime meridian at Greenwich, England",
           "examples": [
             "The longitude of New York City is approximately 74 degrees west of the prime meridian at Greenwich, England."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-462b47e4",
-          "pos": "noun",
+          "id": "sense-a27dd0d8",
+          "pos": "n.",
           "meaningZh": "經度座標；東西方位值",
-          "definitionEn": "a geographic coordinate that specifies the east-west position of a point on the Earth’s surface",
           "examples": [
             "The captain used a sextant to determine our longitude and latitude."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lotion",
       "word": "lotion",
       "senses": [
         {
-          "id": "sense-18daa13b",
-          "pos": "noun",
+          "id": "sense-2aadaecf",
+          "pos": "n.",
           "meaningZh": "乳液；護膚液",
-          "definitionEn": "any of various cosmetic preparations that are applied to the skin.",
           "examples": [
             "After spending a day in the sun, Jennifer applied a soothing lotion to her sunburned skin to help relieve the discomfort."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1f93c6b3",
-          "pos": "noun",
+          "id": "sense-6463341f",
+          "pos": "n.",
           "meaningZh": "藥水；外用液劑",
-          "definitionEn": "a liquid preparation having a soothing or antiseptic or medicinal action when applied to the skin.",
           "examples": [
             "After a long day in the sun, she applied a cooling lotion to her sunburnt skin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lottery",
       "word": "lottery",
       "senses": [
         {
-          "id": "sense-124dc92b",
-          "pos": "noun",
+          "id": "sense-54561a57",
+          "pos": "n.",
           "meaningZh": "彩券；樂透",
-          "definitionEn": "a chance game where players buy or are given tickets and the winners are selected at random",
           "examples": [
             "I won the $1 million jackpot in the lottery, even though my chances of winning were slim."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3435ab45",
-          "pos": "noun",
+          "id": "sense-377f67c1",
+          "pos": "n.",
           "meaningZh": "碰運氣的事；偶然決定的事",
-          "definitionEn": "an event or situation determined by chance",
           "examples": [
             "Winning the lottery is a rare achievement that can change someone’s life completely."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lotus",
       "word": "lotus",
       "senses": [
         {
-          "id": "sense-79db69a0",
-          "pos": "noun",
+          "id": "sense-5dca9968",
+          "pos": "n.",
           "meaningZh": "蓮花；荷花（亞洲品種）",
-          "definitionEn": "A plant that is native to eastern Asia and is widely cultivated for its large pink or white flowers.",
           "examples": [
             "The lotus flower is highly revered in many Asian cultures for spiritual and religious significance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5087bb7e",
-          "pos": "noun",
+          "id": "sense-5f4a26e6",
+          "pos": "n.",
           "meaningZh": "白睡蓮；埃及聖蓮",
-          "definitionEn": "A water lily of Egypt to southeastern Africa, also known as the white Egyptian lotus. This plant was held sacred by the Egyptians.",
           "examples": [
             "The ancient Egyptians considered the lotus as a symbol of creation and rebirth because it bloomed at sunrise and closed at sunset."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "loudspeaker",
       "word": "loudspeaker",
       "senses": [
         {
-          "id": "sense-436a4b1d",
-          "pos": "noun",
+          "id": "sense-5b906781",
+          "pos": "n.",
           "meaningZh": "擴音器；揚聲器；喇叭",
-          "definitionEn": "a device that converts electrical signals into sound waves loud enough to be heard from a distance",
           "examples": [
             "We hired a loudspeaker system for the concert so that everyone in the crowd could hear the music clearly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lucrative",
       "word": "lucrative",
       "senses": [
         {
-          "id": "sense-e57200dc",
-          "pos": "adjective",
+          "id": "sense-8695ac76",
+          "pos": "adj.",
           "meaningZh": "有利可圖的；獲利豐厚的",
-          "definitionEn": "producing a significant amount of money or profit",
           "examples": [
             "John’s decision to invest in the stock market turned out to be lucrative, earning him a sizable profit in a short amount of time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lullaby",
       "word": "lullaby",
       "senses": [
         {
-          "id": "sense-9d53a7b0",
-          "pos": "noun",
+          "id": "sense-c26f1388",
+          "pos": "n.",
           "meaningZh": "搖籃曲；催眠歌",
-          "definitionEn": "a quiet and gentle song that is sung to children to help them fall asleep",
           "examples": [
             "As the tired mother softly sang a beautiful lullaby, her baby gradually closed his eyes and drifted off to sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lunar",
       "word": "lunar",
       "senses": [
         {
-          "id": "sense-1b37e156",
-          "pos": "adjective",
+          "id": "sense-c0a7d31a",
+          "pos": "adj.",
           "meaningZh": "月球的；月亮的",
-          "definitionEn": "relating to the moon",
           "examples": [
             "The astronauts were studying the lunar surface during their mission."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lure",
       "word": "lure",
       "senses": [
         {
-          "id": "sense-6eb09828",
-          "pos": "noun",
+          "id": "sense-31be6ba8",
+          "pos": "n.",
           "meaningZh": "魚餌；誘餌（捕魚或捕獵用）",
-          "definitionEn": "something used to lure fish or other animals into danger so they can be trapped or killed",
           "examples": [
             "The hunter set up a trap with a shiny lure, hoping to catch some fish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-868b7d4c",
-          "pos": "noun",
+          "id": "sense-de7d66cc",
+          "pos": "n.",
           "meaningZh": "誘惑物；吸引力",
-          "definitionEn": "anything that serves as an enticement",
           "examples": [
             "Using the smell of freshly baked cookies as a lure, the real estate agent enticed potential buyers into the open house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lush",
       "word": "lush",
       "senses": [
         {
-          "id": "sense-1506f4ec",
-          "pos": "adjective",
+          "id": "sense-4f16b0f8",
+          "pos": "adj.",
           "meaningZh": "茂盛的；鬱鬱蔥蔥的",
-          "definitionEn": "abundant in growth or production",
           "examples": [
             "After the rainy season, the garden became lush with blooming flowers and fruits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e3d92467",
-          "pos": "adjective",
+          "id": "sense-d58e12bb",
+          "pos": "adj.",
           "meaningZh": "汁多的；鮮嫩的",
-          "definitionEn": "full of juice or succulent",
           "examples": [
             "The grass in the meadow was so lush that it was a pleasure to lie down on it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "magnify",
       "word": "magnify",
       "senses": [
         {
-          "id": "sense-672ac937",
-          "pos": "verb",
+          "id": "sense-9550a0f4",
+          "pos": "v.",
           "meaningZh": "放大；使變大",
-          "definitionEn": "make large",
           "examples": [
             "To get a better view of the tiny object, he used a magnifying glass to magnify it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b703453d",
-          "pos": "verb",
+          "id": "sense-60c64302",
+          "pos": "v.",
           "meaningZh": "擴大；增強（影響力或重要性）",
-          "definitionEn": "increase in size, volume or significance",
           "examples": [
             "In his motivational speech, the speaker used personal anecdotes and inspiring stories to magnify the impact of small acts of kindness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "maiden",
       "word": "maiden",
       "senses": [
         {
-          "id": "sense-6b3d1245",
-          "pos": "noun",
+          "id": "sense-7e4e1fc1",
+          "pos": "n.",
           "meaningZh": "少女；未婚女子",
-          "definitionEn": "a young unmarried woman",
           "examples": [
             "The maiden blushed as she received a bouquet of roses from her secret admirer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-2649cf54",
-          "pos": "adjective",
+          "id": "sense-95c94090",
+          "pos": "adj.",
           "meaningZh": "首次的；初次的",
-          "definitionEn": "being the first or earliest of its type",
           "examples": [
             "The maiden voyage of the Titanic was met with much anticipation and excitement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mainland",
       "word": "mainland",
       "senses": [
         {
-          "id": "sense-4811a92c",
-          "pos": "noun",
+          "id": "sense-97a983a0",
+          "pos": "n.",
           "meaningZh": "大陸；本土（相對於島嶼或半島）",
-          "definitionEn": "the primary landmass of a country or continent, as distinguished from islands or peninsulas",
           "examples": [
             "The Great Wall of China stretches from the eastern seaboard of the mainland to the Gobi Desert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "majestic",
       "word": "majestic",
       "senses": [
         {
-          "id": "sense-8701ee24",
-          "pos": "adjective",
+          "id": "sense-48ba33c0",
+          "pos": "adj.",
           "meaningZh": "威嚴的；莊嚴的",
-          "definitionEn": "having or displaying great dignity or nobility",
           "examples": [
             "The majestic eagle soared above the mountains, its wings spread wide as it glided effortlessly through the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cc39200c",
-          "pos": "adjective",
+          "id": "sense-5fae3558",
+          "pos": "adj.",
           "meaningZh": "帝王氣派的；壯麗的",
-          "definitionEn": "belonging to or befitting a supreme ruler",
           "examples": [
             "The majestic palace of the Sultan was adorned with intricate carvings and precious gemstones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "majesty",
       "word": "majesty",
       "senses": [
         {
-          "id": "sense-f8260584",
-          "pos": "noun",
+          "id": "sense-71a7f45c",
+          "pos": "n.",
           "meaningZh": "威嚴；莊嚴偉大",
-          "definitionEn": "the quality of being impressive and great, especially in appearance or manner",
           "examples": [
             "The queen entered the room with such majesty that everyone in attendance was in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d9665c67",
-          "pos": "noun",
+          "id": "sense-5711741f",
+          "pos": "n.",
           "meaningZh": "陛下（對君主的敬稱）",
-          "definitionEn": "a title used to address or refer to a sovereign or other distinguished person who reigned supreme in their country or area at a particular time",
           "examples": [
             "All rise! Let us welcome Her Majesty, the Queen, as she enters the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "manuscript",
       "word": "manuscript",
       "senses": [
         {
-          "id": "sense-c6e66317",
-          "pos": "noun",
+          "id": "sense-3555cc93",
+          "pos": "n.",
           "meaningZh": "手稿；原稿（未出版）",
-          "definitionEn": "a handwritten or typed document that has not yet been published",
           "examples": [
             "The author completed writing his next great novel and submitted it to his publisher in the form of a manuscript."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0facdd42",
-          "pos": "noun",
+          "id": "sense-879af9ae",
+          "pos": "n.",
           "meaningZh": "手寫或打字稿本",
-          "definitionEn": "a handwritten or typed book or document",
           "examples": [
             "The famous author’s original manuscript was sold for millions of dollars at auction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "maple",
       "word": "maple",
       "senses": [
         {
-          "id": "sense-af00c069",
-          "pos": "noun",
+          "id": "sense-e83b3855",
+          "pos": "n.",
           "meaningZh": "楓樹；槭樹",
-          "definitionEn": "A tree or shrub belonging to the genus Acer, which produces winged seeds in pairs. These plants are typically found in the northern temperate zone.",
           "examples": [
             "During the autumn season, the maple trees adorn the landscape with their vibrant red, orange, and yellow leaves."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-55dc15ac",
-          "pos": "noun",
+          "id": "sense-26e86228",
+          "pos": "n.",
           "meaningZh": "楓木（木材）",
-          "definitionEn": "The wood of a maple tree, especially the hard, close-grained wood of the sugar maple. This type of wood is commonly used for furniture and flooring.",
           "examples": [
             "The carpenter crafted a beautiful dining table using maple wood, showcasing its elegant grain pattern and durability."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mar",
       "word": "mar",
       "senses": [
         {
-          "id": "sense-c123e2d8",
-          "pos": "verb",
+          "id": "sense-cf29c7c1",
+          "pos": "v.",
           "meaningZh": "損毀；破壞（外觀或完整性）",
-          "definitionEn": "destroy or injure severely",
           "examples": [
             "The car accident marred the once pristine painting, causing irreparable damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "marginal",
       "word": "marginal",
       "senses": [
         {
-          "id": "sense-83bb4556",
-          "pos": "adjective",
+          "id": "sense-2dc0543c",
+          "pos": "adj.",
           "meaningZh": "邊緣的；微不足道的",
-          "definitionEn": "of questionable or minimal quality",
           "examples": [
             "The company's sales were declining and they were only making marginal profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9151d621",
-          "pos": "adjective",
+          "id": "sense-ab7221ab",
+          "pos": "adj.",
           "meaningZh": "勉強損益平衡的；收益微薄的",
-          "definitionEn": "producing at a rate that barely covers production costs",
           "examples": [
             "The small family-owned bakery was struggling to make ends meet as their sales remained marginal, barely covering the expenses of ingredients, utilities, and staff salaries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "martial",
       "word": "martial",
       "senses": [
         {
-          "id": "sense-edf638c2",
-          "pos": "adjective",
+          "id": "sense-c930c716",
+          "pos": "adj.",
           "meaningZh": "軍事的；武裝的",
-          "definitionEn": "relating to soldiers or the armed forces",
           "examples": [
             "He had many years of martial training and was well-prepared for deployment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-430228c2",
-          "pos": "adjective",
+          "id": "sense-a545f09e",
+          "pos": "adj.",
           "meaningZh": "尚武的；好戰的",
-          "definitionEn": "having the qualities of a warrior",
           "examples": [
             "He had a martial spirit and never surrendered easily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "marvel",
       "word": "marvel",
       "senses": [
         {
-          "id": "sense-cc0ff427",
-          "pos": "noun",
+          "id": "sense-cb0df14b",
+          "pos": "n.",
           "meaningZh": "奇蹟；令人讚嘆之物",
-          "definitionEn": "something that causes feelings of wonder",
           "examples": [
             "When I first saw the Grand Canyon, I couldn't help but marvel at its breathtaking beauty."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-bfeff0a6",
-          "pos": "verb",
+          "id": "sense-a3e1afe3",
+          "pos": "v.",
           "meaningZh": "驚嘆；讚嘆",
-          "definitionEn": "be amazed at",
           "examples": [
             "As the fireworks lit up the night sky, the crowd marvelled at the breathtaking display of colors and patterns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mastery",
       "word": "mastery",
       "senses": [
         {
-          "id": "sense-e24f60d0",
-          "pos": "noun",
+          "id": "sense-757633ac",
+          "pos": "n.",
           "meaningZh": "精通；熟練",
-          "definitionEn": "great skillfulness and knowledge of a particular subject or activity",
           "examples": [
             "She has achieved mastery in the art of cooking after years of practice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mediate",
       "word": "mediate",
       "senses": [
         {
-          "id": "sense-75acaeda",
-          "pos": "verb",
+          "id": "sense-2e18ed0b",
+          "pos": "v.",
           "meaningZh": "調解；斡旋",
-          "definitionEn": "to intervene between two parties in order to help settle a disagreement or negotiate a compromise",
           "examples": [
             "When the two countries reached a stalemate in their negotiations, they agreed to bring in a neutral third party to mediate the dispute and find a resolution."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c907439b",
-          "pos": "verb",
+          "id": "sense-c8f48faa",
+          "pos": "v.",
           "meaningZh": "居中協調；作為中介",
-          "definitionEn": "to connect two things or act as a middleman between them",
           "examples": [
             "In the negotiation between the two countries, the United Nations was brought in to mediate and facilitate the conversation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "medieval",
       "word": "medieval",
       "senses": [
         {
-          "id": "sense-976ae80e",
-          "pos": "adjective",
+          "id": "sense-54244bb0",
+          "pos": "adj.",
           "meaningZh": "中世紀的；中古的",
-          "definitionEn": "Relating to or belonging to the Middle Ages.",
           "examples": [
             "The castle is a medieval building, complete with a drawbridge and a moat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9b890899",
-          "pos": "adjective",
+          "id": "sense-54e86ecb",
+          "pos": "adj.",
           "meaningZh": "中古時代的；古老過時的",
-          "definitionEn": "Belonging to or dating from the Middle Ages; archaic.",
           "examples": [
             "The castle was built in the medieval era and still stands today as a popular tourist attraction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "meditate",
+      "word": "meditate",
+      "senses": [
+        {
+          "id": "sense-d590e91b",
+          "pos": "v.",
+          "meaningZh": "沉思；冥想",
+          "examples": [
+            "Every morning, I like to meditate for twenty minutes to clear my mind and focus on my goals."
+          ]
+        },
+        {
+          "id": "sense-32b27848",
+          "pos": "v.",
+          "meaningZh": "靜坐冥想；修行打坐",
+          "examples": [
+            "Every morning, she would meditate for 30 minutes to clear her mind and start the day with a positive attitude."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "meditation",
+      "word": "meditation",
+      "senses": [
+        {
+          "id": "sense-9933d56b",
+          "pos": "n.",
+          "meaningZh": "冥想；靜心",
+          "examples": [
+            "Every morning, Sarah practices meditation by sitting in a quiet room, closing her eyes, and taking slow, deep breaths to calm her mind and body."
+          ]
+        },
+        {
+          "id": "sense-6c47bfc4",
+          "pos": "n.",
+          "meaningZh": "靜思；宗教默禱",
+          "examples": [
+            "After a long day at work, Sarah found solace in meditation, sitting quietly in her backyard and contemplating the meaning of life."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "melancholy",
+      "word": "melancholy",
+      "senses": [
+        {
+          "id": "sense-fbff75d6",
+          "pos": "adj.",
+          "meaningZh": "憂鬱的；沮喪的",
+          "examples": [
+            "After her cat passed away, Lisa felt a deep melancholy and couldn’t bring herself to do anything."
+          ]
+        },
+        {
+          "id": "sense-a5e93651",
+          "pos": "adj.",
+          "meaningZh": "令人憂鬱的；悲傷的",
+          "examples": [
+            "As the sun set behind the mountains, Sarah felt a sense of melancholy wash over her as she gazed out at the peaceful scenery."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "mentality",
+      "word": "mentality",
+      "senses": [
+        {
+          "id": "sense-aff1bd91",
+          "pos": "n.",
+          "meaningZh": "心態；思維模式",
+          "examples": [
+            "His competitive mentality helped him to achieve success in his career."
+          ]
+        },
+        {
+          "id": "sense-18f710b5",
+          "pos": "n.",
+          "meaningZh": "心智能力；智力",
+          "examples": [
+            "Her strong mentality allowed her to overcome difficult challenges and achieve success."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "merchandise",
+      "word": "merchandise",
+      "senses": [
+        {
+          "id": "sense-bfea7169",
+          "pos": "n.",
+          "meaningZh": "商品；貨品",
+          "examples": [
+            "The store owner stocked his shelves with a wide variety of merchandise, including clothing, electronics, and home goods."
+          ]
+        },
+        {
+          "id": "sense-8e9da0c9",
+          "pos": "n.",
+          "meaningZh": "貿易商品；買賣貨物",
+          "examples": [
+            "The large retail store is filled with a wide variety of merchandise, including clothing, electronics, and home goods."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

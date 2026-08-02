@@ -1,1368 +1,625 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 178,
   "words": [
-    {
-      "wordKey": "equalize",
-      "word": "equalize",
-      "senses": [
-        {
-          "id": "sense-c1a5fae8",
-          "pos": "verb",
-          "meaningZh": "使平等；拉平",
-          "definitionEn": "To make something equal or uniform, corresponding, or matching",
-          "examples": [
-            "To promote fairness, the company decided to equalize salaries across all departments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-f4f35b67",
-          "pos": "verb",
-          "meaningZh": "補償差距；均等化",
-          "definitionEn": "To compensate for differences; to make something score equally",
-          "examples": [
-            "In order to give everyone a fair chance, the professor decided to equalize the scores by adding extra points to the students who had a lower grade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "equate",
-      "word": "equate",
-      "senses": [
-        {
-          "id": "sense-e9e74d09",
-          "pos": "verb",
-          "meaningZh": "等同；視為相同",
-          "definitionEn": "to consider or describe as similar, equal, or analogous",
-          "examples": [
-            "Do not equate intelligence with academic success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-588b889b",
-          "pos": "verb",
-          "meaningZh": "使相等；使均衡",
-          "definitionEn": "to make equal, uniform, corresponding, or matching",
-          "examples": [
-            "In order to achieve pay equity, it’s important to equate salaries for workers in the same job that have similar experience and skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "escort",
-      "word": "escort",
-      "senses": [
-        {
-          "id": "sense-c2a3c939",
-          "pos": "verb",
-          "meaningZh": "護送；陪同",
-          "definitionEn": "to accompany someone, especially for protection, guidance, or courtesy",
-          "examples": [
-            "The bodyguard escorted the celebrity through the crowd to ensure her safety."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-77fb0b65",
-          "pos": "verb",
-          "meaningZh": "護衛；隨行保護",
-          "definitionEn": "to accompany as an escort, often for protection or as a courtesy",
-          "examples": [
-            "The president's motorcade was escorted by a team of highly trained bodyguards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "esteem",
-      "word": "esteem",
-      "senses": [
-        {
-          "id": "sense-23ffaf5d",
-          "pos": "noun",
-          "meaningZh": "尊重；敬重",
-          "definitionEn": "an attitude of admiration",
-          "examples": [
-            "He was held in high esteem by his colleagues for his exceptional problem-solving skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-7855d953",
-          "pos": "verb",
-          "meaningZh": "尊敬；推崇",
-          "definitionEn": "to respect and admire someone",
-          "examples": [
-            "As a teacher, it is important to show esteem towards your students in order to create a positive learning environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "eternity",
-      "word": "eternity",
-      "senses": [
-        {
-          "id": "sense-71e46d9e",
-          "pos": "noun",
-          "meaningZh": "永恆；無限時間",
-          "definitionEn": "time without an end or limit",
-          "examples": [
-            "Their love would last for eternity, never fading or diminishing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-71ed8523",
-          "pos": "noun",
-          "meaningZh": "來世；永生",
-          "definitionEn": "a state of eternal existence believed in some religions to characterize the afterlife",
-          "examples": [
-            "After living a righteous life, believers hope to experience eternity in paradise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "evacuate",
       "word": "evacuate",
       "senses": [
         {
-          "id": "sense-91c80035",
-          "pos": "verb",
+          "id": "sense-6ac0eeac",
+          "pos": "v.",
           "meaningZh": "疏散；撤離（人員）",
-          "definitionEn": "to move people from a place of danger to a safer place",
           "examples": [
             "During a hurricane, the government orders people to evacuate the town to avoid the danger of flooding and strong wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4efd72d7",
-          "pos": "verb",
+          "id": "sense-6f0b1872",
+          "pos": "v.",
           "meaningZh": "抽空；清空",
-          "definitionEn": "to empty completely, especially of air or water",
           "examples": [
             "During a hurricane, the government ordered everyone to evacuate the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "evergreen",
       "word": "evergreen",
       "senses": [
         {
-          "id": "sense-34b33251",
-          "pos": "adjective",
+          "id": "sense-cc45bf4b",
+          "pos": "adj.",
           "meaningZh": "常綠的；四季長青的",
-          "definitionEn": "describing plants or trees that have green leaves throughout the year",
           "examples": [
             "The pine trees in our yard are evergreen and maintain their green needles even during the winter months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c47ae682",
-          "pos": "noun",
+          "id": "sense-1b7b6f6a",
+          "pos": "n.",
           "meaningZh": "常綠植物；常青樹",
-          "definitionEn": "a plant that remains green throughout the year, including both trees and shrubs",
           "examples": [
             "The evergreen trees in the forest provide shelter for animals during the winter months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "evoke",
       "word": "evoke",
       "senses": [
         {
-          "id": "sense-0cd1bed4",
-          "pos": "verb",
+          "id": "sense-35b1b025",
+          "pos": "v.",
           "meaningZh": "引發（情感）；喚起",
-          "definitionEn": "to bring forth or elicit (emotions, feelings, and responses)",
           "examples": [
             "The photo album of my childhood memories evokes a feeling of nostalgia and longing for the simpler times."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9b924293",
-          "pos": "verb",
+          "id": "sense-db09852e",
+          "pos": "v.",
           "meaningZh": "令人回想；勾起記憶",
-          "definitionEn": "to bring to mind or recall",
           "examples": [
             "The old song evokes memories of my childhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "examinee",
       "word": "examinee",
       "senses": [
         {
-          "id": "sense-e3aa0f03",
-          "pos": "noun",
+          "id": "sense-fd823f03",
+          "pos": "n.",
           "meaningZh": "應考者；受測者",
-          "definitionEn": "A person who is being tested, such as in an intelligence test or an academic exam.",
           "examples": [
             "During the final exams, the teacher distributed different question papers to each examinee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "examiner",
       "word": "examiner",
       "senses": [
         {
-          "id": "sense-73d45954",
-          "pos": "noun",
+          "id": "sense-0f27be70",
+          "pos": "n.",
           "meaningZh": "考官；主考人",
-          "definitionEn": "someone who administers a test to determine your qualifications",
           "examples": [
             "The examiner handed out the exam and walked around the room, monitoring the students’ progress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-48d0831a",
-          "pos": "noun",
+          "id": "sense-2a51a786",
+          "pos": "n.",
           "meaningZh": "調查員；檢查員",
-          "definitionEn": "an investigator who observes carefully",
           "examples": [
             "The police have called in an examiner to investigate the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "excel",
       "word": "excel",
       "senses": [
         {
-          "id": "sense-978253e9",
-          "pos": "verb",
+          "id": "sense-5d514560",
+          "pos": "v.",
           "meaningZh": "擅長；出類拔萃",
-          "definitionEn": "to do something very well or be highly skilled",
           "examples": [
             "John excels in mathematics and always scores the highest in his class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "excerpt",
       "word": "excerpt",
       "senses": [
         {
-          "id": "sense-328e9120",
-          "pos": "verb",
+          "id": "sense-a6463a11",
+          "pos": "v.",
           "meaningZh": "節錄；摘取",
-          "definitionEn": "to select and remove a particular section or passage from a larger work for quoting or publishing",
           "examples": [
             "The professor asked the student to provide an excerpt from the novel that highlighted the theme of love."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b3caa0db",
-          "pos": "noun",
+          "id": "sense-ac606367",
+          "pos": "n.",
           "meaningZh": "摘錄；節選",
-          "definitionEn": "a short piece of text or passage taken from a longer work, such as a book or article",
           "examples": [
             "The professor read an excerpt from the novel to illustrate the author's use of symbolism."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "excess",
       "word": "excess",
       "senses": [
         {
-          "id": "sense-6b9c530b",
-          "pos": "noun",
+          "id": "sense-91609d37",
+          "pos": "n.",
           "meaningZh": "過量；過剩",
-          "definitionEn": "the state of being more than full",
           "examples": [
             "After indulging in the buffet, he felt the excess of food weighing him down."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b6f8fed7",
-          "pos": "adjective",
+          "id": "sense-bca80369",
+          "pos": "adj.",
           "meaningZh": "多餘的；過剩的",
-          "definitionEn": "more than is needed, desired, or required",
           "examples": [
             "After the holiday feast, there was an excess of food leftover."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exclusion",
       "word": "exclusion",
       "senses": [
         {
-          "id": "sense-d92c0b62",
-          "pos": "noun",
+          "id": "sense-a852a9e2",
+          "pos": "n.",
           "meaningZh": "被排除；隔絕",
-          "definitionEn": "the state of being excluded from a group or activity",
           "examples": [
             "In high school, Beth felt a sense of exclusion when she wasn't invited to any of the popular kids' parties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exempt",
       "word": "exempt",
       "senses": [
         {
-          "id": "sense-73f74ec3",
-          "pos": "verb",
+          "id": "sense-1aad0ffe",
+          "pos": "v.",
           "meaningZh": "免除；豁免",
-          "definitionEn": "to allow someone to not do or pay something that others must do or pay",
           "examples": [
             "The organization agreed to exempt veterans from paying membership fees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1718dd8a",
-          "pos": "adjective",
+          "id": "sense-db63a37c",
+          "pos": "adj.",
           "meaningZh": "被豁免的；免於義務的",
-          "definitionEn": "exempt from an obligation, payment, or rule",
           "examples": [
             "Children under the age of five are exempt from paying bus fare."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "exert",
       "word": "exert",
       "senses": [
         {
-          "id": "sense-d64f2460",
-          "pos": "verb",
+          "id": "sense-d1f9a735",
+          "pos": "v.",
           "meaningZh": "施加（力量）；運用",
-          "definitionEn": "use or apply (a skill, power, or pressure)",
           "examples": [
             "He needs to exert more effort to complete the project on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-53b848d3",
-          "pos": "verb",
+          "id": "sense-0cdc368e",
+          "pos": "v.",
           "meaningZh": "努力；用力",
-          "definitionEn": "make a physical or mental effort; to exercise",
           "examples": [
             "He needed to exert himself to lift the heavy furniture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "expenditure",
       "word": "expenditure",
       "senses": [
         {
-          "id": "sense-0ef8900d",
-          "pos": "noun",
+          "id": "sense-f77ba9d1",
+          "pos": "n.",
           "meaningZh": "支出金額；費用",
-          "definitionEn": "money paid out; an amount spent",
           "examples": [
             "Keeping track of your monthly expenditures is an essential part of budgeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5a369f8e",
-          "pos": "noun",
+          "id": "sense-169e9ad2",
+          "pos": "n.",
           "meaningZh": "花費；消費",
-          "definitionEn": "the act of spending money for goods or services",
           "examples": [
             "John carefully tracks his monthly expenditure to ensure he stays within his budget."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "expiration",
       "word": "expiration",
       "senses": [
         {
-          "id": "sense-71b5043c",
-          "pos": "noun",
+          "id": "sense-632eb234",
+          "pos": "n.",
           "meaningZh": "到期；期滿",
-          "definitionEn": "a coming to an end of a contract period",
           "examples": [
             "The expiration of your lease agreement means you will need to vacate the apartment by the end of the month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "expire",
       "word": "expire",
       "senses": [
         {
-          "id": "sense-446bb88c",
-          "pos": "verb",
+          "id": "sense-0333d9c1",
+          "pos": "v.",
           "meaningZh": "到期；失效",
-          "definitionEn": "to lose validity, as in a contract or license",
           "examples": [
             "Make sure you renew your driver’s license before it expires or you won’t be able to drive legally."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-57477684",
-          "pos": "verb",
+          "id": "sense-d6825ee1",
+          "pos": "v.",
           "meaningZh": "呼氣；吐氣",
-          "definitionEn": "to breathe out; exhale air from the lungs",
           "examples": [
             "After inhaling deeply, she began to expire slowly and steadily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "extract",
       "word": "extract",
       "senses": [
         {
-          "id": "sense-d2f12c51",
-          "pos": "verb",
+          "id": "sense-93717398",
+          "pos": "v.",
           "meaningZh": "提取；擷取",
-          "definitionEn": "to obtain a substance or information by using effort or a process",
           "examples": [
             "She had to extract the information from the lengthy report."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-74b550b2",
-          "pos": "verb",
+          "id": "sense-96eb2cf3",
+          "pos": "v.",
           "meaningZh": "拔除；取出",
-          "definitionEn": "to remove or take out something, usually with effort or force, or by using a machine",
           "examples": [
             "The dentist was able to extract the decayed tooth without causing much discomfort."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "extracurricular",
       "word": "extracurricular",
       "senses": [
         {
-          "id": "sense-fda991a3",
-          "pos": "adjective",
+          "id": "sense-7f17a7e7",
+          "pos": "adj.",
           "meaningZh": "課外的；課程以外的",
-          "definitionEn": "outside the regular academic curriculum",
           "examples": [
             "Some examples of extracurricular activities include joining a sports team, participating in a school club, volunteering in the community, or learning a new language outside of class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-bf52c54c",
-          "pos": "adjective",
+          "id": "sense-a51ed118",
+          "pos": "adj.",
           "meaningZh": "業外的；工作以外的",
-          "definitionEn": "related to activities that are not part of your job or school work, especially when you do them with other people",
           "examples": [
             "John joined the basketball club as an extracurricular activity to improve his physical well-being, and also to make new friends outside of his academic life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "eyelid",
       "word": "eyelid",
       "senses": [
         {
-          "id": "sense-b6a3dd76",
-          "pos": "noun",
+          "id": "sense-72851bc6",
+          "pos": "n.",
           "meaningZh": "眼瞼；眼皮",
-          "definitionEn": "Either of the two movable folds of skin that cover and uncover each eyeball.",
           "examples": [
             "She blinked her eyelids rapidly to clear away the dust from her eyes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "eyesight",
       "word": "eyesight",
       "senses": [
         {
-          "id": "sense-7e2b6865",
-          "pos": "noun",
+          "id": "sense-ca186cf5",
+          "pos": "n.",
           "meaningZh": "視力；視覺",
-          "definitionEn": "The ability to see; normal use of the faculty of vision",
           "examples": [
             "Even with her deteriorating eyesight, she managed to complete the intricate puzzle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-75c2c71f",
-          "pos": "noun",
+          "id": "sense-e6a4762f",
+          "pos": "n.",
           "meaningZh": "視野；視程",
-          "definitionEn": "The range or scope of vision",
           "examples": [
             "Her eyesight was so sharp that she could spot a rare bird from a distance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fable",
       "word": "fable",
       "senses": [
         {
-          "id": "sense-df7ee421",
-          "pos": "noun",
+          "id": "sense-90c36e0d",
+          "pos": "n.",
           "meaningZh": "寓言；道德故事",
-          "definitionEn": "a short story, typically with animals as characters, conveying a moral message",
           "examples": [
             "Once upon a time, there was a clever fox and a vain crow. The fable teaches us to not trust flattery, as the crow eventually dropped the tasty cheese it was holding in its beak after being tricked by the fox."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-aec0bc00",
-          "pos": "noun",
+          "id": "sense-e368575c",
+          "pos": "n.",
           "meaningZh": "神話；傳說故事",
-          "definitionEn": "a legendary story of supernatural beings or heroes, often explaining some phenomenon or phenomenon of nature",
           "examples": [
             "In the fable of 'The Tortoise and the Hare,' the slow and steady tortoise teaches us the valuable lesson that consistency and perseverance can lead to success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "faction",
       "word": "faction",
       "senses": [
         {
-          "id": "sense-04bb55c6",
-          "pos": "noun",
+          "id": "sense-79c1df16",
+          "pos": "n.",
           "meaningZh": "派系；小集團",
-          "definitionEn": "a group within a larger group, particularly one that holds slightly different ideas compared to the main group",
           "examples": [
             "In the political party, there was a faction of members who advocated for a more progressive agenda while the majority held more conservative views."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8f9be0a7",
-          "pos": "noun",
+          "id": "sense-8c0947f7",
+          "pos": "n.",
           "meaningZh": "小派別；分支團體",
-          "definitionEn": "a small subgroup within a larger organization, typically characterized by distinct beliefs or principles",
           "examples": [
             "In the political party, there was a faction that strongly advocated for environmental protection and sustainable development."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fahrenheit",
       "word": "fahrenheit",
       "senses": [
         {
-          "id": "sense-c504fe77",
-          "pos": "adjective",
+          "id": "sense-4d7a9393",
+          "pos": "adj.",
           "meaningZh": "華氏的；華氏溫標的",
-          "definitionEn": "relating to or based on the Fahrenheit temperature scale, having the freezing point of water at 32°F and the boiling point at 212°F",
           "examples": [
             "The weather report says that the temperature will be in the high 80s Fahrenheit, which means it will be quite hot outside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "falter",
       "word": "falter",
       "senses": [
         {
-          "id": "sense-5ed1bd28",
-          "pos": "verb",
+          "id": "sense-16005101",
+          "pos": "v.",
           "meaningZh": "猶豫；結巴",
-          "definitionEn": "to move or speak hesitantly, as if unsure or weak",
           "examples": [
             "The singer’s voice faltered as she reached the high note, causing some of the audience members to cringe with discomfort."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-92a8550a",
-          "pos": "verb",
+          "id": "sense-28efa477",
+          "pos": "v.",
           "meaningZh": "蹣跚；步履不穩",
-          "definitionEn": "to walk unsteadily or stumble",
           "examples": [
             "She faltered along the rough path in the dark, tripping several times before finally reaching her destination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "familiarity",
       "word": "familiarity",
       "senses": [
         {
-          "id": "sense-e72a6b01",
-          "pos": "noun",
+          "id": "sense-9f2bca45",
+          "pos": "n.",
           "meaningZh": "熟識；熟悉感",
-          "definitionEn": "the state of being well-known and recognized",
           "examples": [
             "After working at the company for over a decade, John had a strong sense of familiarity with his coworkers and the company culture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-61db0486",
-          "pos": "noun",
+          "id": "sense-594a37fa",
+          "pos": "n.",
           "meaningZh": "親密關係；熟稔",
-          "definitionEn": "a close or warm relationship between people",
           "examples": [
             "After years of working together, there was a strong sense of familiarity between the colleagues. They understood each other's strengths and weaknesses, and could anticipate each other's needs without even having to ask."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fascination",
       "word": "fascination",
       "senses": [
         {
-          "id": "sense-6665219c",
-          "pos": "noun",
+          "id": "sense-68c99b48",
+          "pos": "n.",
           "meaningZh": "著迷；深深吸引",
-          "definitionEn": "the feeling of being extremely interested or captivated by someone or something",
           "examples": [
             "Her fascination with space exploration led her to pursue a career as an astronaut."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d9b3f9ea",
-          "pos": "noun",
+          "id": "sense-f2bcc436",
+          "pos": "n.",
           "meaningZh": "魅力；迷人之處",
-          "definitionEn": "the state or condition of finding someone or something fascinating",
           "examples": [
             "During her visit to the aquarium, Emily experienced a deep fascination as she watched the graceful movements of the dolphins and learned about their incredible intelligence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "feasible",
       "word": "feasible",
       "senses": [
         {
-          "id": "sense-d2fbbede",
-          "pos": "adjective",
+          "id": "sense-0770fc80",
+          "pos": "adj.",
           "meaningZh": "可行的；辦得到的",
-          "definitionEn": "Capable of being accomplished or brought about; possible.",
           "examples": [
             "I don’t think buying a yacht is feasible for us right now, but maybe in a few years when we’re making more money."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-eb3b908f",
-          "pos": "adjective",
+          "id": "sense-b25d9c61",
+          "pos": "adj.",
           "meaningZh": "可實現的；可操作的",
-          "definitionEn": "Capable of being done with the means at hand and circumstances as they are; feasible under the given conditions.",
           "examples": [
             "I can’t afford to buy a new car, but repairing my old car is feasible with my limited budget."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "feeble",
+      "word": "feeble",
+      "senses": [
+        {
+          "id": "sense-f34294e5",
+          "pos": "adj.",
+          "meaningZh": "虛弱的；體力不支的",
+          "examples": [
+            "The feeble old man struggled to carry the heavy grocery bag to his car."
+          ]
+        },
+        {
+          "id": "sense-afaf81e7",
+          "pos": "adj.",
+          "meaningZh": "無力的；衰弱的",
+          "examples": [
+            "The feeble old man could barely walk without assistance."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "feminine",
+      "word": "feminine",
+      "senses": [
+        {
+          "id": "sense-317265d1",
+          "pos": "n.",
+          "meaningZh": "陰性；女性特質",
+          "examples": [
+            "Sara's elegant dress and graceful movements showcased her feminine charm."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "fertility",
+      "word": "fertility",
+      "senses": [
+        {
+          "id": "sense-75806368",
+          "pos": "n.",
+          "meaningZh": "生育力；受孕能力",
+          "examples": [
+            "After two years of trying, the couple finally celebrated their fertility when they became parents to twins."
+          ]
+        },
+        {
+          "id": "sense-48520c68",
+          "pos": "n.",
+          "meaningZh": "（土地）肥沃度；豐產",
+          "examples": [
+            "The combination of rich soil, ample sunlight, and regular rainfall creates the perfect conditions for fertility, allowing the farmers to cultivate bountiful crops year after year."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "fertilizer",
+      "word": "fertilizer",
+      "senses": [
+        {
+          "id": "sense-959e7436",
+          "pos": "n.",
+          "meaningZh": "肥料；化學肥料",
+          "examples": [
+            "The farmer spread fertilizer on his crops to help them grow."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "fin",
+      "word": "fin",
+      "senses": [
+        {
+          "id": "sense-8f81090d",
+          "pos": "n.",
+          "meaningZh": "鰭；翼狀突",
+          "examples": [
+            "The sleek shark gracefully maneuvered through the ocean depths, its powerful fin effortlessly propelling it forward."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

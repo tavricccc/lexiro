@@ -1,1420 +1,687 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 99,
   "words": [
-    {
-      "wordKey": "wound",
-      "word": "wound",
-      "senses": [
-        {
-          "id": "sense-9e945f47",
-          "pos": "noun",
-          "meaningZh": "傷口；創傷",
-          "definitionEn": "an injury to living tissue, especially one involving a cut or break in the skin",
-          "examples": [
-            "She cleaned and dressed the wound on her leg after falling off her bike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-9ab58dff",
-          "pos": "verb",
-          "meaningZh": "傷害；使受傷",
-          "definitionEn": "cause harm to (someone) as a result of an action",
-          "examples": [
-            "The clumsy chef accidentally wound himself with a sharp knife while preparing dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L9 +1",
-        "textbookTitle": "三民 B2·L9、翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "yam",
-      "word": "yam",
-      "senses": [
-        {
-          "id": "sense-05835ffb",
-          "pos": "noun",
-          "meaningZh": "山藥；薯蕷",
-          "definitionEn": "the tuberous root of any of these vines, eaten as a vegetable",
-          "examples": [
-            "In the fall, we dug up the yams, washed them, and boiled them for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-ec6c0d9f",
-          "pos": "noun",
-          "meaningZh": "山藥藤；薯蕷植物",
-          "definitionEn": "any of several tropical vines that produce starchy tubers, such as Dioscorea alata and Dioscorea esculenta",
-          "examples": [
-            "The farmers harvested a bountiful crop of yams from the fields in preparation for the upcoming festival."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "youth",
-      "word": "youth",
-      "senses": [
-        {
-          "id": "sense-d62d6148",
-          "pos": "noun",
-          "meaningZh": "青春；青少年時期",
-          "definitionEn": "the time of life between childhood and adulthood",
-          "examples": [
-            "In her youth, Mary was a talented dancer and won many awards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-2ad80d13",
-          "pos": "noun",
-          "meaningZh": "年輕人；青年族群",
-          "definitionEn": "young people considered as a group",
-          "examples": [
-            "The organization aims to provide education and employment opportunities for underprivileged youth in the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "zebra",
-      "word": "zebra",
-      "senses": [
-        {
-          "id": "sense-ca17790c",
-          "pos": "noun",
-          "meaningZh": "斑馬",
-          "definitionEn": "an African animal with black and white stripes",
-          "examples": [
-            "During our safari in Africa, we spotted a magnificent zebra grazing peacefully on the savannah."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "abandon",
-      "word": "abandon",
-      "senses": [
-        {
-          "id": "sense-94620ce4",
-          "pos": "verb",
-          "meaningZh": "拋棄；放棄責任",
-          "definitionEn": "stop taking responsibility for or control of",
-          "examples": [
-            "After being elected as class president, he abandoned his responsibilities and didn't attend any meetings or fulfill his duties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-eee03a36",
-          "pos": "verb",
-          "meaningZh": "遺棄；撤離",
-          "definitionEn": "leave behind empty; move out of",
-          "examples": [
-            "After the hurricane, the residents had to abandon their homes and seek shelter elsewhere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "absolute",
       "word": "absolute",
       "senses": [
         {
-          "id": "sense-6e4bb15e",
-          "pos": "adjective",
+          "id": "sense-81dd41b0",
+          "pos": "adj.",
           "meaningZh": "絕對的；完全的",
-          "definitionEn": "complete and without restrictions or qualifications; sometimes used informally as intensifiers",
           "examples": [
             "John has an absolute commitment to his health and exercises every day, rain or shine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0683381a",
-          "pos": "noun",
+          "id": "sense-3475db52",
+          "pos": "n.",
           "meaningZh": "絕對事物；不相對的概念",
-          "definitionEn": "something that is conceived or exists independently and not in relation to other things; something that does not depend on anything else and is beyond human control; something that is not relative",
           "examples": [
             "In mathematics, an absolute value is always positive, regardless of the sign of the number."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6",
-        "textbookTitle": "龍騰 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "absorb",
       "word": "absorb",
       "senses": [
         {
-          "id": "sense-ef359631",
-          "pos": "verb",
+          "id": "sense-3fead414",
+          "pos": "v.",
           "meaningZh": "吸收；吸入",
-          "definitionEn": "suck up or take in, as a sponge does with water",
           "examples": [
             "After heavy rain, the dry ground began to absorb the water and turn into mud."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d79e997e",
-          "pos": "verb",
+          "id": "sense-8bd43c59",
+          "pos": "v.",
           "meaningZh": "吸取（液體）",
-          "definitionEn": "take in or soak up a liquid",
           "examples": [
             "After a long run, I drank a large glass of water to help my body absorb the much-needed hydration."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L7",
-        "textbookTitle": "三民 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abstract",
       "word": "abstract",
       "senses": [
         {
-          "id": "sense-447c5836",
-          "pos": "adjective",
+          "id": "sense-7afb1cf2",
+          "pos": "adj.",
           "meaningZh": "抽象的",
-          "definitionEn": "based on general ideas rather than physical things or real examples",
           "examples": [
             "Freedom is an abstract concept that is hard to define."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-019a2b18",
-          "pos": "noun",
+          "id": "sense-87066778",
+          "pos": "n.",
           "meaningZh": "抽象概念；抽象物",
-          "definitionEn": "a concept or idea not associated with any specific instance",
           "examples": [
             "Love is an abstract concept that differs from person to person."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-059d21d0",
-          "pos": "noun",
+          "id": "sense-96d6a670",
+          "pos": "n.",
           "meaningZh": "摘要；概要",
-          "definitionEn": "a sketchy summary of the main points of an argument or theory",
           "examples": [
             "In order to present her thesis effectively, Sarah provided an abstract that briefly summarized her main arguments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "academic",
       "word": "academic",
       "senses": [
         {
-          "id": "sense-b4dbf5a0",
-          "pos": "adjective",
+          "id": "sense-562608ae",
+          "pos": "adj.",
           "meaningZh": "學術的；學校的",
-          "definitionEn": "related to education and schools",
           "examples": [
             "The conference was attended by several academic professionals from various universities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f2d6df80",
-          "pos": "adjective",
+          "id": "sense-3ad85fde",
+          "pos": "adj.",
           "meaningZh": "理論性的；研究性的",
-          "definitionEn": "based on research and study rather than practical or personal experience",
           "examples": [
             "The professor’s lecture was full of academic language, referencing various studies and research articles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accent",
       "word": "accent",
       "senses": [
         {
-          "id": "sense-6b6276af",
-          "pos": "noun",
+          "id": "sense-6acf369f",
+          "pos": "n.",
           "meaningZh": "口音；腔調",
-          "definitionEn": "a distinctive manner of pronunciation especially one that is characteristic of an individual, a group of people, or a region",
           "examples": [
             "The Southern accent in the United States is distinct and characterized by a drawl and elongated vowels."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-95f067d8",
-          "pos": "verb",
+          "id": "sense-f3479299",
+          "pos": "v.",
           "meaningZh": "強調；突出",
-          "definitionEn": "emphasize a particular feature or quality of something",
           "examples": [
             "The artist accented the details on the painting by using bold brushstrokes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L10",
-        "textbookTitle": "三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acceptance",
       "word": "acceptance",
       "senses": [
         {
-          "id": "sense-d3c369f6",
-          "pos": "noun",
+          "id": "sense-126c863a",
+          "pos": "n.",
           "meaningZh": "接受；同意",
-          "definitionEn": "the act or process of agreeing to receive or allow something",
           "examples": [
             "After reviewing the application, the university sent a letter of acceptance to the student."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-aabb113d",
-          "pos": "noun",
+          "id": "sense-13a1dbb1",
+          "pos": "n.",
           "meaningZh": "認可；錄取",
-          "definitionEn": "favorable reception or approval; the act of accepting something as satisfactory",
           "examples": [
             "After months of auditions, he finally received an acceptance letter to the prestigious acting school."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L2",
-        "textbookTitle": "翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "access",
       "word": "access",
       "senses": [
         {
-          "id": "sense-bfbf0fe3",
-          "pos": "noun",
+          "id": "sense-7b9a6933",
+          "pos": "n.",
           "meaningZh": "使用權；進入資格",
-          "definitionEn": "the right to enter or make use of something, such as a service or a membership",
           "examples": [
             "After becoming a member, she was granted access to the exclusive club."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c2c57e0c",
-          "pos": "noun",
+          "id": "sense-677724bc",
+          "pos": "n.",
           "meaningZh": "存取碼；密碼",
-          "definitionEn": "a code or password that must be entered to obtain the use of a telephone line, computer, or network",
           "examples": [
             "Please make sure to remember your access code in order to log into the company's secure network."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +1",
-        "textbookTitle": "龍騰 B3·R3、三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accidental",
       "word": "accidental",
       "senses": [
         {
-          "id": "sense-2d13335e",
-          "pos": "adjective",
+          "id": "sense-02c5f6ca",
+          "pos": "adj.",
           "meaningZh": "偶然的；意外的",
-          "definitionEn": "happening by chance or unexpectedly or unintentionally",
           "examples": [
             "She made an accidental discovery while cleaning out her closet and found a valuable antique hidden in the back."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7e04f678",
-          "pos": "noun",
+          "id": "sense-3e18a974",
+          "pos": "n.",
           "meaningZh": "（音樂）臨時升降記號",
-          "definitionEn": "in music, a symbol that indicates a note should be played as sharp, flat, or natural even though it does not align with the key signature",
           "examples": [
             "During the pianist's performance, he came across an accidental in the sheet music that required him to play a note as a sharp instead of a natural as indicated by the key signature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accompany",
       "word": "accompany",
       "senses": [
         {
-          "id": "sense-bd98ae56",
-          "pos": "verb",
+          "id": "sense-890eff4b",
+          "pos": "v.",
           "meaningZh": "陪同；同行",
-          "definitionEn": "go or travel along with",
           "examples": [
             "Emily asked her best friend to accompany her on her weekend getaway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7cf4b47d",
-          "pos": "verb",
+          "id": "sense-eac3c6bc",
+          "pos": "v.",
           "meaningZh": "伴隨；伴奏",
-          "definitionEn": "be present or connected with an event or entity",
           "examples": [
             "Music always accompanies my morning routine, setting the mood for the day ahead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accomplish",
       "word": "accomplish",
       "senses": [
         {
-          "id": "sense-a36ba646",
-          "pos": "verb",
+          "id": "sense-0a47a213",
+          "pos": "v.",
           "meaningZh": "達成；完成",
-          "definitionEn": "to successfully complete something with effort or skill",
           "examples": [
             "After months of hard work and dedication, she was able to accomplish her goal of running a marathon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-95bacf91",
-          "pos": "verb",
+          "id": "sense-ec42add4",
+          "pos": "v.",
           "meaningZh": "實現；成就",
-          "definitionEn": "to bring about or make happen",
           "examples": [
             "With great determination and hard work, he was able to accomplish his dream of becoming a doctor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accomplishment",
       "word": "accomplishment",
       "senses": [
         {
-          "id": "sense-a10c87af",
-          "pos": "noun",
+          "id": "sense-e66c3cb3",
+          "pos": "n.",
           "meaningZh": "成就；完成目標",
-          "definitionEn": "the successful completion of a task or achievement of a goal",
           "examples": [
             "Graduating from college after years of hard work and dedication is a great accomplishment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1ddb50d9",
-          "pos": "noun",
+          "id": "sense-70d07d1d",
+          "pos": "n.",
           "meaningZh": "成果；成績",
-          "definitionEn": "something that has been achieved successfully, especially through hard work or skill",
           "examples": [
             "Graduating from college with honors is a great accomplishment that requires dedication and hard work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +1",
-        "textbookTitle": "龍騰 B1·L4、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accountant",
       "word": "accountant",
       "senses": [
         {
-          "id": "sense-dab5bd64",
-          "pos": "noun",
+          "id": "sense-33c9b948",
+          "pos": "n.",
           "meaningZh": "會計師；會計人員",
-          "definitionEn": "A professional who prepares, maintains, and audits financial records for individuals or companies.",
           "examples": [
             "After graduating with a degree in accounting, John started working as an accountant at a prestigious financial firm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accuracy",
       "word": "accuracy",
       "senses": [
         {
-          "id": "sense-82881010",
-          "pos": "noun",
+          "id": "sense-2cfafac8",
+          "pos": "n.",
           "meaningZh": "準確度；精確性",
-          "definitionEn": "the quality of being close to the exact value",
           "examples": [
             "The accuracy of the scale was crucial in measuring ingredients for the recipe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f0ab45a0",
-          "pos": "noun",
+          "id": "sense-7d94c4e8",
+          "pos": "n.",
           "meaningZh": "（數學）有效數字；精度",
-          "definitionEn": "(mathematics) the number of digits that are correct in a measurement or calculation",
           "examples": [
             "When measuring the length of a table, the accuracy of the measurement can be determined by comparing the measured value to the actual value using a ruler with fine divisions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "accuse",
       "word": "accuse",
       "senses": [
         {
-          "id": "sense-df74d042",
-          "pos": "verb",
+          "id": "sense-b60826f3",
+          "pos": "v.",
           "meaningZh": "指控；指責",
-          "definitionEn": "make a claim of wrongdoing or misbehavior against; blame for",
           "examples": [
             "During the trial, the prosecution will accuse the defendant of stealing the valuable artwork."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-27a2b560",
-          "pos": "verb",
+          "id": "sense-902e7285",
+          "pos": "v.",
           "meaningZh": "控告；提出指控",
-          "definitionEn": "level a charge against; bring an accusation against",
           "examples": [
             "During the trial, the prosecutor accused the defendant of committing the crime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1 +1",
-        "textbookTitle": "龍騰 B4·L1、三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acid",
       "word": "acid",
       "senses": [
         {
-          "id": "sense-83dff2e1",
-          "pos": "noun",
+          "id": "sense-0e6c6299",
+          "pos": "n.",
           "meaningZh": "酸；酸性物質",
-          "definitionEn": "a chemical substance that has a sour taste and can react with a base to form a salt",
           "examples": [
             "The pH level of the soil was so low that the farmer had to add acid to neutralize it before planting crops."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acquaintance",
       "word": "acquaintance",
       "senses": [
         {
-          "id": "sense-472bd999",
-          "pos": "noun",
+          "id": "sense-ee5ad871",
+          "pos": "n.",
           "meaningZh": "點頭之交；泛泛相識",
-          "definitionEn": "a person with whom you are familiar, but not very close to",
           "examples": [
             "I saw an acquaintance at the grocery store and we exchanged polite greetings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d12f25ed",
-          "pos": "noun",
+          "id": "sense-7788be35",
+          "pos": "n.",
           "meaningZh": "認識；了解",
-          "definitionEn": "knowledge or information about something or someone",
           "examples": [
             "She was happy to make the acquaintance of her new neighbors and learn about their hobbies and interests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acquire",
       "word": "acquire",
       "senses": [
         {
-          "id": "sense-ffe60a5b",
-          "pos": "verb",
+          "id": "sense-7500e1fa",
+          "pos": "v.",
           "meaningZh": "取得；獲得",
-          "definitionEn": "to gain possession of something, whether it be tangible or intangible",
           "examples": [
             "After years of saving money, Samantha was finally able to acquire her dream car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-99e4d220",
-          "pos": "verb",
+          "id": "sense-5f21d515",
+          "pos": "v.",
           "meaningZh": "習得（技能或知識）",
-          "definitionEn": "to gain knowledge or learn a skill through one’s own efforts or experiences",
           "examples": [
             "After years of practice and dedication, she was finally able to acquire the ability to play the piano beautifully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adapt",
       "word": "adapt",
       "senses": [
         {
-          "id": "sense-7c342067",
-          "pos": "verb",
+          "id": "sense-f6a9f59a",
+          "pos": "v.",
           "meaningZh": "適應；調適",
-          "definitionEn": "to adjust oneself to new or different conditions or environment",
           "examples": [
             "The new student had to adapt to the different customs in the foreign country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f14d5da6",
-          "pos": "verb",
+          "id": "sense-b09303cf",
+          "pos": "v.",
           "meaningZh": "改編；調整使用",
-          "definitionEn": "to change something to make it suitable for a new use or situation",
           "examples": [
             "As a result of the pandemic, many businesses had to adapt to remote work in order to continue operating."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L4",
-        "textbookTitle": "三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "addict",
       "word": "addict",
       "senses": [
         {
-          "id": "sense-dcdf1cc9",
-          "pos": "noun",
+          "id": "sense-5008d491",
+          "pos": "n.",
           "meaningZh": "成癮者；上癮者",
-          "definitionEn": "someone who is physiologically dependent on a substance, and sudden stopping the use of that substance can cause withdrawal symptoms",
           "examples": [
             "After years of heavy smoking, Mark became an addict, relying on cigarettes to get through his day. When he tried to quit cold turkey, he experienced intense withdrawal symptoms such as irritability, insomnia, and intense cravings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-85691298",
-          "pos": "verb",
+          "id": "sense-d1209619",
+          "pos": "v.",
           "meaningZh": "使成癮；使上癮",
-          "definitionEn": "to make someone or oneself become dependent on something, especially a narcotic drug",
           "examples": [
             "After being prescribed painkillers for his injury, John gradually became addict and started relying on them to function."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adequate",
       "word": "adequate",
       "senses": [
         {
-          "id": "sense-39fc6ef3",
-          "pos": "adjective",
+          "id": "sense-643d288f",
+          "pos": "adj.",
           "meaningZh": "足夠的；充分的",
-          "definitionEn": "Sufficient or satisfactory to meet a particular need or purpose",
           "examples": [
             "The company provided an adequate amount of resources for the project to be completed on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1077be1e",
-          "pos": "adjective",
+          "id": "sense-827275ea",
+          "pos": "adj.",
           "meaningZh": "尚可的；還過得去的",
-          "definitionEn": "Being about average or acceptable",
           "examples": [
             "The hotel’s amenities are adequate, but I wouldn’t call them luxurious."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8 +1",
-        "textbookTitle": "龍騰 B3·L8、三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adjust",
       "word": "adjust",
       "senses": [
         {
-          "id": "sense-0feb1150",
-          "pos": "verb",
+          "id": "sense-825f3d8d",
+          "pos": "v.",
           "meaningZh": "調整；微調",
-          "definitionEn": "to change or move something slightly to improve it or make it fit better",
           "examples": [
             "After assembling the shelves, I needed to adjust them to make sure they were level."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-32e7b3b2",
-          "pos": "verb",
+          "id": "sense-53c47543",
+          "pos": "v.",
           "meaningZh": "調節；符合標準",
-          "definitionEn": "to change something to meet a particular standard or requirement",
           "examples": [
             "He had to adjust his speech to suit the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +1",
-        "textbookTitle": "龍騰 B3·L2、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adjustment",
       "word": "adjustment",
       "senses": [
         {
-          "id": "sense-fa5bd529",
-          "pos": "noun",
+          "id": "sense-f74b4d55",
+          "pos": "n.",
           "meaningZh": "調整；修正",
-          "definitionEn": "the process of making small changes to something to improve it or make it fit better",
           "examples": [
             "After trying on the jacket, I needed to make some adjustments to the sleeve length and the fit around my waist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0eab6a0d",
-          "pos": "noun",
+          "id": "sense-64ffd139",
+          "pos": "n.",
           "meaningZh": "增減金額；補正",
-          "definitionEn": "an amount that is added or subtracted based on specific circumstances or conditions that apply",
           "examples": [
             "After reviewing my expenses, I made an adjustment to my budget by decreasing my restaurant allowance and increasing my grocery allowance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +1",
-        "textbookTitle": "龍騰 B3·L2、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "admirable",
       "word": "admirable",
       "senses": [
         {
-          "id": "sense-aad20693",
-          "pos": "adjective",
+          "id": "sense-6f277261",
+          "pos": "adj.",
           "meaningZh": "令人欽佩的；值得讚揚",
-          "definitionEn": "inspiring admiration or approval",
           "examples": [
             "His determination to overcome every obstacle and succeed was truly admirable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4aa250f0",
-          "pos": "adjective",
+          "id": "sense-53a21726",
+          "pos": "adj.",
           "meaningZh": "出色的；了不起的",
-          "definitionEn": "deserving of the highest esteem or admiration",
           "examples": [
             "After years of hard work and dedication, she created an admirable business empire from scratch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "admiration",
       "word": "admiration",
       "senses": [
         {
-          "id": "sense-5edf751b",
-          "pos": "noun",
+          "id": "sense-8f73d487",
+          "pos": "n.",
           "meaningZh": "欽佩；仰慕",
-          "definitionEn": "a feeling of delighted approval and liking",
           "examples": [
             "Jane looked at her sister with admiration as she played the piano beautifully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5040a1e6",
-          "pos": "noun",
+          "id": "sense-0dbb5982",
+          "pos": "n.",
           "meaningZh": "讚賞；佳評",
-          "definitionEn": "a favorable judgment",
           "examples": [
             "The admiration from the audience was evident as the performer took his final bow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +1",
-        "textbookTitle": "龍騰 B2·L1、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "admission",
       "word": "admission",
       "senses": [
         {
-          "id": "sense-de20f632",
-          "pos": "noun",
+          "id": "sense-2f6855de",
+          "pos": "n.",
           "meaningZh": "入場許可；入場資格",
-          "definitionEn": "the right or permission to enter",
           "examples": [
             "I was denied admission to the club because I did not meet the dress code requirements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-58e4be04",
-          "pos": "noun",
+          "id": "sense-7a60b1e0",
+          "pos": "n.",
           "meaningZh": "入場費；門票費用",
-          "definitionEn": "the amount of money charged for entry to a place",
           "examples": [
             "The admission fee for the museum is $10 for adults and $5 for children."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L5",
-        "textbookTitle": "三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "adopt",
+      "word": "adopt",
+      "senses": [
+        {
+          "id": "sense-4d7a97cb",
+          "pos": "v.",
+          "meaningZh": "採用；採納",
+          "examples": [
+            "After careful consideration, the company decided to adopt a new marketing strategy to reach a wider audience."
+          ]
+        },
+        {
+          "id": "sense-e2480c15",
+          "pos": "v.",
+          "meaningZh": "收養（孩子或寵物）",
+          "examples": [
+            "After a long and careful process, John and Mary decided to adopt a newborn baby from an orphanage."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "agency",
+      "word": "agency",
+      "senses": [
+        {
+          "id": "sense-665ea885",
+          "pos": "n.",
+          "meaningZh": "機構；代辦處",
+          "examples": [
+            "The investigative agency worked diligently to uncover the truth behind the mysterious disappearance."
+          ]
+        },
+        {
+          "id": "sense-aa2a6ba6",
+          "pos": "n.",
+          "meaningZh": "自主性；行動能力",
+          "examples": [
+            "When she turned 18, Sarah gained agency over her own life and was able to make decisions about where to go to college and what career to pursue."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "agent",
+      "word": "agent",
+      "senses": [
+        {
+          "id": "sense-ecad2bfd",
+          "pos": "n.",
+          "meaningZh": "代理人；仲介",
+          "examples": []
+        },
+        {
+          "id": "sense-014acaab",
+          "pos": "n.",
+          "meaningZh": "試劑；作用物質",
+          "examples": [
+            "The cleaning agent removed the stubborn stain from the carpet."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "aggressive",
+      "word": "aggressive",
+      "senses": [
+        {
+          "id": "sense-a76a17bc",
+          "pos": "adj.",
+          "meaningZh": "具攻擊性的；好鬥的",
+          "examples": [
+            "In a heated argument, Jake became aggressive and started yelling at his opponent."
+          ]
+        },
+        {
+          "id": "sense-4036f29c",
+          "pos": "adj.",
+          "meaningZh": "積極進取的；強勢的",
+          "examples": [
+            "During the negotiations, Sarah took an aggressive approach, clearly stating her demands and not backing down until they were met."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "agreeable",
+      "word": "agreeable",
+      "senses": [
+        {
+          "id": "sense-eb334f67",
+          "pos": "adj.",
+          "meaningZh": "令人愉快的；宜人的",
+          "examples": [
+            "We spent an agreeable afternoon walking in the park."
+          ]
+        },
+        {
+          "id": "sense-5ac511be",
+          "pos": "adj.",
+          "meaningZh": "樂意的；好說話的",
+          "examples": [
+            "The team found John to be a very agreeable person, always willing to listen and compromise in order to reach a solution."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

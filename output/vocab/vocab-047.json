@@ -1,1378 +1,659 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 47,
   "words": [
-    {
-      "wordKey": "insist",
-      "word": "insist",
-      "senses": [
-        {
-          "id": "sense-843a2799",
-          "pos": "verb",
-          "meaningZh": "堅持；強烈要求",
-          "definitionEn": "to state or demand something forcefully, especially in the face of opposition",
-          "examples": [
-            "Despite their objections, she insisted on going skydiving for her birthday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-9dd0b353",
-          "pos": "verb",
-          "meaningZh": "固執己見；堅守",
-          "definitionEn": "to hold firmly to a particular opinion or belief",
-          "examples": [
-            "Even when faced with strong opposition, she continued to insist on the importance of her ideas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "instance",
-      "word": "instance",
-      "senses": [
-        {
-          "id": "sense-30cc9af7",
-          "pos": "noun",
-          "meaningZh": "實例；案例",
-          "definitionEn": "an occurrence of something",
-          "examples": [
-            "For instance, the instance of a power outage caused the office to shut down for the day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "instant",
-      "word": "instant",
-      "senses": [
-        {
-          "id": "sense-735f0e6e",
-          "pos": "noun",
-          "meaningZh": "特定時刻；瞬間",
-          "definitionEn": "a specific moment or point in time.",
-          "examples": [
-            "At the instant the clock struck midnight, fireworks erupted in the sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-76da9bdc",
-          "pos": "noun",
-          "meaningZh": "片刻；一瞬間",
-          "definitionEn": "a very short period of time, such as the time it takes to blink or to beat the heart.",
-          "examples": [
-            "In an instant, the lightning lit up the dark sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "instead",
-      "word": "instead",
-      "senses": [
-        {
-          "id": "sense-d2fbc268",
-          "pos": "adverb",
-          "meaningZh": "代替；取而代之",
-          "definitionEn": "as an alternative to or in place of",
-          "examples": [
-            "We decided to go to the beach instead of the movie theater."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-da532288",
-          "pos": "adverb",
-          "meaningZh": "反而；相反地",
-          "definitionEn": "on the contrary",
-          "examples": [
-            "I thought she would be angry when I cancelled plans, but instead she was relieved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "instruction",
-      "word": "instruction",
-      "senses": [
-        {
-          "id": "sense-c8ef4df4",
-          "pos": "noun",
-          "meaningZh": "教學；教導",
-          "definitionEn": "Activities that impart knowledge or skill; the act of educating or instructing.",
-          "examples": [
-            "The teacher gave clear instructions to the students on how to solve the math problem."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-d10749ec",
-          "pos": "noun",
-          "meaningZh": "指示；使用說明",
-          "definitionEn": "A message or information that directs or advises on how something should be done or set up.",
-          "examples": [
-            "The assembly instructions provided with the furniture helped me set it up easily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1 +1",
-        "textbookTitle": "龍騰 B4·L1、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "instrument",
       "word": "instrument",
       "senses": [
         {
-          "id": "sense-818e45d8",
-          "pos": "noun",
+          "id": "sense-9cc3ea60",
+          "pos": "n.",
           "meaningZh": "樂器",
-          "definitionEn": "any of various devices or contrivances that can be used to produce musical tones or sounds",
           "examples": [
             "The orchestra conductor raised his baton, and the musicians began playing their instruments in perfect harmony."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-57f481f1",
-          "pos": "noun",
+          "id": "sense-cdd1ca19",
+          "pos": "n.",
           "meaningZh": "工具；器械",
-          "definitionEn": "the means whereby some act is accomplished",
           "examples": [
             "A scalpel is a crucial instrument in surgery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "internal",
       "word": "internal",
       "senses": [
         {
-          "id": "sense-66d16a02",
-          "pos": "adjective",
+          "id": "sense-1736b4a4",
+          "pos": "adj.",
           "meaningZh": "內部的；體內的",
-          "definitionEn": "essential; intrinsic; pertaining to the inside",
           "examples": [
             "The internal organs of the human body include the heart, lungs, and stomach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e0cbfad9",
-          "pos": "adjective",
+          "id": "sense-c747245b",
+          "pos": "adj.",
           "meaningZh": "組織內部的；對內的",
-          "definitionEn": "occurring within an organization, institution, or community",
           "examples": [
             "The internal decision-making process of the company is not transparent to the public."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "international",
       "word": "international",
       "senses": [
         {
-          "id": "sense-2f2eb5f2",
-          "pos": "adjective",
+          "id": "sense-48ee2c5e",
+          "pos": "adj.",
           "meaningZh": "國際的；跨國的",
-          "definitionEn": "concerning or belonging to all or at least two or more nations",
           "examples": [
             "The United Nations is an international organization that promotes peace and cooperation among nations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-40a99472",
-          "pos": "adjective",
+          "id": "sense-030d4b6e",
+          "pos": "adj.",
           "meaningZh": "來自他國；各國間的",
-          "definitionEn": "from or between other countries",
           "examples": [
             "The conference was attended by international delegates from over 50 different countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "introduce",
       "word": "introduce",
       "senses": [
         {
-          "id": "sense-b1d66b66",
-          "pos": "verb",
+          "id": "sense-770cdebf",
+          "pos": "v.",
           "meaningZh": "介紹；使人認識",
-          "definitionEn": "cause someone or something to become known by making them available to other people",
           "examples": [
             "Sarah decided to introduce her new business venture by hosting a launch party, inviting potential investors and influential members of the industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-13b7314e",
-          "pos": "verb",
+          "id": "sense-b721c663",
+          "pos": "v.",
           "meaningZh": "引入；推出",
-          "definitionEn": "bring in or establish something new in a place or environment",
           "examples": [
             "The company decided to introduce a new product line to expand their market reach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2",
-        "textbookTitle": "龍騰 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "introduction",
       "word": "introduction",
       "senses": [
         {
-          "id": "sense-924f8f73",
-          "pos": "noun",
+          "id": "sense-9f6fb14f",
+          "pos": "n.",
           "meaningZh": "開頭；引言",
-          "definitionEn": "the act of beginning something new",
           "examples": [
             "The introduction of his new book was captivating and made the readers more interested in reading the rest of the story."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-61e77a56",
-          "pos": "noun",
+          "id": "sense-2ea67392",
+          "pos": "n.",
           "meaningZh": "推出；首次引進",
-          "definitionEn": "the act of starting something for the first time or presenting something new",
           "examples": [
             "The introduction of a new product is always exciting for the customers as they get to experience something new and innovative."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2",
-        "textbookTitle": "龍騰 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "iron",
       "word": "iron",
       "senses": [
         {
-          "id": "sense-1ba47138",
-          "pos": "noun",
+          "id": "sense-5e265a48",
+          "pos": "n.",
           "meaningZh": "鐵；鐵製品",
-          "definitionEn": "a silver-white metal that easily rusts and is used to make construction materials, tools, and weapons, and is important in carrying oxygen in the blood",
           "examples": [
             "The blacksmith used the iron to forge a new sword while the doctor checked the patient’s iron levels in their blood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fd63fa34",
-          "pos": "adjective",
+          "id": "sense-2d158d38",
+          "pos": "adj.",
           "meaningZh": "鐵一般堅強；堅毅",
-          "definitionEn": "extremely strong and sturdy",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jam",
       "word": "jam",
       "senses": [
         {
-          "id": "sense-737242dd",
-          "pos": "verb",
+          "id": "sense-36d57ba4",
+          "pos": "v.",
           "meaningZh": "夾壓；擠壓",
-          "definitionEn": "crush or bruise",
           "examples": [
             "When Mary dropped her phone, it got jammed between the sofa cushions and got crushed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b2d1b5a0",
-          "pos": "noun",
+          "id": "sense-9ff78800",
+          "pos": "n.",
           "meaningZh": "人群擁塞；堵塞",
-          "definitionEn": "a dense crowd of people",
           "examples": [
             "There was a huge jam outside the concert venue as everyone tried to get in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jog",
       "word": "jog",
       "senses": [
         {
-          "id": "sense-9d87eb98",
-          "pos": "verb",
+          "id": "sense-ee1ae90d",
+          "pos": "v.",
           "meaningZh": "慢跑；健跑",
-          "definitionEn": "run for exercise",
           "examples": [
             "Every morning, Sarah goes to the park to jog and keep fit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-46fac12b",
-          "pos": "verb",
+          "id": "sense-dbbc9cea",
+          "pos": "v.",
           "meaningZh": "小跑步",
-          "definitionEn": "run at a moderately swift pace",
           "examples": [
             "After work, I like to jog around the park to unwind and get some exercise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "joint",
       "word": "joint",
       "senses": [
         {
-          "id": "sense-72209069",
-          "pos": "noun",
+          "id": "sense-b5185369",
+          "pos": "n.",
           "meaningZh": "關節",
-          "definitionEn": "a point or part of the body where two bones meet, typically allowing for movement",
           "examples": [
             "When I had my accident, I injured my wrist and had to wear a cast to support the joint while it healed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a1cee550",
-          "pos": "noun",
+          "id": "sense-55f68050",
+          "pos": "n.",
           "meaningZh": "接合處；榫接",
-          "definitionEn": "a place or part where two or more things are joined together",
           "examples": [
             "The construction workers used strong adhesive to create a solid joint between the two metal beams."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "journal",
       "word": "journal",
       "senses": [
         {
-          "id": "sense-54da1aab",
-          "pos": "noun",
+          "id": "sense-2555a553",
+          "pos": "n.",
           "meaningZh": "日記；日誌",
-          "definitionEn": "a daily written record of personal experiences and observations",
           "examples": [
             "Emily made it a habit to write in her journal every night before bed, capturing the small details and reflections of her day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c59c16ad",
-          "pos": "noun",
+          "id": "sense-65d54a15",
+          "pos": "n.",
           "meaningZh": "帳簿；流水帳",
-          "definitionEn": "a book in which transactions are recorded as they occur",
           "examples": [
             "At the end of each day, the store manager would sit down with the journal and document all the sales and customer transactions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "judge",
       "word": "judge",
       "senses": [
         {
-          "id": "sense-beea8b37",
-          "pos": "noun",
+          "id": "sense-9378788f",
+          "pos": "n.",
           "meaningZh": "法官",
-          "definitionEn": "a public official with the authority to decide cases in a court of law",
           "examples": [
             "The judge sentenced the man to five years in prison."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-bdd354b5",
-          "pos": "noun",
+          "id": "sense-cc3a7ccd",
+          "pos": "n.",
           "meaningZh": "評審；鑑定者",
-          "definitionEn": "a person who is able to assess the worth or quality of something",
           "examples": [
             "The judge carefully evaluated all the evidence before delivering a verdict."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-99c793e4",
-          "pos": "verb",
+          "id": "sense-c38b7229",
+          "pos": "v.",
           "meaningZh": "裁決；評判",
-          "definitionEn": "officially decide about",
           "examples": [
             "The panel of judges will evaluate the dance performances and determine the winner of the competition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "justice",
       "word": "justice",
       "senses": [
         {
-          "id": "sense-267db876",
-          "pos": "noun",
+          "id": "sense-b9fc1b92",
+          "pos": "n.",
           "meaningZh": "正義；公正",
-          "definitionEn": "the quality or state of being just or fair, especially moral, impartial, and unbiased conduct",
           "examples": [
             "The judge made a decision based on evidence and without bias, demonstrating justice in the court of law."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7534f755",
-          "pos": "noun",
+          "id": "sense-e5085f99",
+          "pos": "n.",
           "meaningZh": "司法；法律執行",
-          "definitionEn": "the exercise of authority and power in upholding what is just or fair",
           "examples": [
             "The judge’s decision to sentence the convicted criminal to a period of imprisonment demonstrated his commitment to justice and fairness in the legal system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "keeper",
       "word": "keeper",
       "senses": [
         {
-          "id": "sense-d9acc72a",
-          "pos": "noun",
+          "id": "sense-c653fb1a",
+          "pos": "n.",
           "meaningZh": "負責人；看守者",
-          "definitionEn": "a person who is in charge of other people",
           "examples": [
             "The school principal is the keeper of the students and ensures their safety and well-being."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4e42d039",
-          "pos": "noun",
+          "id": "sense-9669ae49",
+          "pos": "n.",
           "meaningZh": "管理員；飼育員",
-          "definitionEn": "a person who takes care of a building, property, or animals",
           "examples": [
             "The zookeeper diligently fed and cleaned up after the animals in the wildlife sanctuary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ketchup",
       "word": "ketchup",
       "senses": [
         {
-          "id": "sense-16695c91",
-          "pos": "noun",
+          "id": "sense-bd139bdd",
+          "pos": "n.",
           "meaningZh": "番茄醬",
-          "definitionEn": "A thick, sweet and tangy sauce made primarily from tomatoes, vinegar, sugar, and spices, typically used as a condiment for food such as French fries, burgers, hot dogs, and meatloaf.",
           "examples": [
             "I love to slather ketchup all over my hot dog."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kilogram",
       "word": "kilogram",
       "senses": [
         {
-          "id": "sense-4e919566",
-          "pos": "noun",
+          "id": "sense-3a2237b6",
+          "pos": "n.",
           "meaningZh": "公斤；千克",
-          "definitionEn": "The base unit of mass in the International System of Units (SI), equal to 1,000 grams.",
           "examples": [
             "The weight of a bag of rice is 5 kilograms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lack",
       "word": "lack",
       "senses": [
         {
-          "id": "sense-0f4838b9",
-          "pos": "verb",
+          "id": "sense-e7c8ec1c",
+          "pos": "v.",
           "meaningZh": "缺乏；不足",
-          "definitionEn": "to not have something that you need or want",
           "examples": [
             "After moving to a new city, I realized I had a lack of furniture in my apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-94dfafde",
-          "pos": "noun",
+          "id": "sense-322c1816",
+          "pos": "n.",
           "meaningZh": "欠缺；缺少",
-          "definitionEn": "a situation when something is missing or absent",
           "examples": [
             "The lack of rain caused the crops to wither and die."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lady",
       "word": "lady",
       "senses": [
         {
-          "id": "sense-094abfc4",
-          "pos": "noun",
+          "id": "sense-773a3ad0",
+          "pos": "n.",
           "meaningZh": "淑女；女士",
-          "definitionEn": "a woman who is polite and behaves well toward other people",
           "examples": [
             "The lady gracefully held the door open for the elderly man."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-07081d4b",
-          "pos": "noun",
+          "id": "sense-a9d507c7",
+          "pos": "n.",
           "meaningZh": "女士（禮貌稱呼）",
-          "definitionEn": "a polite way of addressing any woman",
           "examples": [
             "Excuse me, lady, could you please point me in the direction of the nearest coffee shop?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ladybug",
       "word": "ladybug",
       "senses": [
         {
-          "id": "sense-db6d215b",
-          "pos": "noun",
+          "id": "sense-1ad650ef",
+          "pos": "n.",
           "meaningZh": "瓢蟲",
-          "definitionEn": "A small, round beetle with bright colors and spots. Ladybugs usually feed on aphids and other insect pests, making them beneficial to gardeners and farmers.",
           "examples": [
             "In the garden, a ladybug happily crawls onto a leaf, its bright red wings contrasting against the green foliage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lamb",
       "word": "lamb",
       "senses": [
         {
-          "id": "sense-f797960f",
-          "pos": "noun",
+          "id": "sense-f2a30d9b",
+          "pos": "n.",
           "meaningZh": "小羊；羔羊",
-          "definitionEn": "a young sheep",
           "examples": [
             "On the farm, the shepherd carefully tended to the little lamb, making sure it had enough milk and keeping it safe from harm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b58871a6",
-          "pos": "noun",
+          "id": "sense-59e1073a",
+          "pos": "n.",
           "meaningZh": "羊肉",
-          "definitionEn": "the meat from a young domestic sheep",
           "examples": [
             "She roasted a delicious leg of lamb for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lane",
       "word": "lane",
       "senses": [
         {
-          "id": "sense-b70976a1",
-          "pos": "noun",
+          "id": "sense-119bbf21",
+          "pos": "n.",
           "meaningZh": "車道；賽道",
-          "definitionEn": "a well-defined track or path; for e.g. swimmers or lines of traffic",
           "examples": [
             "The swimmers dived into their designated lanes at the start of the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-116be25c",
-          "pos": "noun",
+          "id": "sense-956970dc",
+          "pos": "n.",
           "meaningZh": "小路；巷道",
-          "definitionEn": "a narrow way or road",
           "examples": [
             "The winding lane led us through a peaceful countryside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lantern",
       "word": "lantern",
       "senses": [
         {
-          "id": "sense-4ac46e27",
-          "pos": "noun",
+          "id": "sense-207f31a7",
+          "pos": "n.",
           "meaningZh": "燈籠；手提燈",
-          "definitionEn": "a portable light consisting of a transparent protective case for holding and protecting a source of light, such as a candle or bulb",
           "examples": [
             "The family gathered around the lantern as they roasted marshmallows and told stories around the campfire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lap",
       "word": "lap",
       "senses": [
         {
-          "id": "sense-dad2e321",
-          "pos": "noun",
+          "id": "sense-d67fcd3d",
+          "pos": "n.",
           "meaningZh": "大腿上方；膝上",
-          "definitionEn": "the upper side of the thighs of a seated person",
           "examples": [
             "She cradled the baby in her lap."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "latest",
       "word": "latest",
       "senses": [
         {
-          "id": "sense-bf1709cb",
-          "pos": "adjective",
+          "id": "sense-467dce65",
+          "pos": "adj.",
           "meaningZh": "最新的；最近的",
-          "definitionEn": "up to the immediate present; most recent or most up-to-date",
           "examples": [
             "Could you please provide me with the latest update on the project status?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7df15e90",
-          "pos": "noun",
+          "id": "sense-7ed78d84",
+          "pos": "n.",
           "meaningZh": "最新消息；最新動態",
-          "definitionEn": "the most recent news or development",
           "examples": [
             "Have you heard the latest news about the election?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "latter",
       "word": "latter",
       "senses": [
         {
-          "id": "sense-a54bbe14",
-          "pos": "adjective",
+          "id": "sense-93090d98",
+          "pos": "adj.",
           "meaningZh": "後者的；後面提及的",
-          "definitionEn": "referring to the second of two things or persons mentioned (or the last one or ones of several)",
           "examples": [
             "He was considering between two job offers, and he chose the latter, which meant he chose the second job offer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8a27a87c",
-          "pos": "noun",
+          "id": "sense-c9090940",
+          "pos": "n.",
           "meaningZh": "後者",
-          "definitionEn": "the second of two or the second mentioned of two",
           "examples": [
             "I prefer tea to coffee, the latter being too bitter for my taste."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "law",
       "word": "law",
       "senses": [
         {
-          "id": "sense-47f0a6d0",
-          "pos": "noun",
+          "id": "sense-aada1cc0",
+          "pos": "n.",
           "meaningZh": "法律；法規",
-          "definitionEn": "a rule or body of rules of conduct inherent in human nature and essential to or binding upon human society",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-cfaf000d",
-          "pos": "noun",
+          "id": "sense-6e8da37d",
+          "pos": "n.",
           "meaningZh": "定律；法則",
-          "definitionEn": "a generalization that describes recurring facts or events in nature",
           "examples": [
             "The law of gravity explains why objects fall towards the ground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lay",
+      "word": "lay",
+      "senses": [
+        {
+          "id": "sense-4b8975fc",
+          "pos": "v.",
+          "meaningZh": "擺放；佈置",
+          "examples": [
+            "Before starting the race, the athletes laid their running shoes beside the track."
+          ]
+        },
+        {
+          "id": "sense-08b344f6",
+          "pos": "v.",
+          "meaningZh": "施加；強加",
+          "examples": [
+            "He was laid with the task of finishing the project by tomorrow."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "leadership",
+      "word": "leadership",
+      "senses": [
+        {
+          "id": "sense-3ad4227a",
+          "pos": "n.",
+          "meaningZh": "領導能力",
+          "examples": [
+            "During the crisis, her strong leadership guided the team towards success."
+          ]
+        },
+        {
+          "id": "sense-f16a7bcc",
+          "pos": "n.",
+          "meaningZh": "領導行為；領導工作",
+          "examples": [
+            "During the crisis, her effective leadership helped the team stay focused and motivated."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "leaf",
+      "word": "leaf",
+      "senses": [
+        {
+          "id": "sense-38ad93a1",
+          "pos": "n.",
+          "meaningZh": "葉子；葉片",
+          "examples": [
+            "In the fall, the leaves on the trees change color and eventually fall off."
+          ]
+        },
+        {
+          "id": "sense-71c3cab4",
+          "pos": "n.",
+          "meaningZh": "活頁；折葉（桌或門）",
+          "examples": [
+            "I accidentally closed the door, trapping my finger in the leaf."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "legal",
+      "word": "legal",
+      "senses": [
+        {
+          "id": "sense-617e0981",
+          "pos": "adj.",
+          "meaningZh": "合法的；法律許可的",
+          "examples": [
+            "It is legal to drive only when you have a valid license."
+          ]
+        },
+        {
+          "id": "sense-72906269",
+          "pos": "adj.",
+          "meaningZh": "法律的；司法的",
+          "examples": []
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lend",
+      "word": "lend",
+      "senses": [
+        {
+          "id": "sense-6c74eb23",
+          "pos": "v.",
+          "meaningZh": "借出；借給",
+          "examples": [
+            "I can lend you my car for the weekend, but please fill up the gas tank before returning it."
+          ]
+        },
+        {
+          "id": "sense-84a0525a",
+          "pos": "v.",
+          "meaningZh": "提供支援；給予協助",
+          "examples": [
+            "I will lend you some money so you can buy a new laptop."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

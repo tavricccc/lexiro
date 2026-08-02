@@ -1,1395 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 57,
   "words": [
-    {
-      "wordKey": "seek",
-      "word": "seek",
-      "senses": [
-        {
-          "id": "sense-6ebb8e71",
-          "pos": "verb",
-          "meaningZh": "尋找；尋求",
-          "definitionEn": "try to locate, discover, or establish the existence of",
-          "examples": [
-            "After losing my dog, I began to seek him throughout the neighborhood, knocking on doors and asking neighbors for any information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-8393f8d8",
-          "pos": "verb",
-          "meaningZh": "嘗試；努力爭取",
-          "definitionEn": "make an effort or attempt",
-          "examples": [
-            "John decided to seek a new job after being unhappy with his current position."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "seem",
-      "word": "seem",
-      "senses": [
-        {
-          "id": "sense-a64e438c",
-          "pos": "verb",
-          "meaningZh": "似乎存在；看似",
-          "definitionEn": "appear to exist",
-          "examples": [
-            "The spaceship seemed to hover in mid-air, defying the laws of physics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-9a0dae3d",
-          "pos": "verb",
-          "meaningZh": "看起來；顯得",
-          "definitionEn": "give a certain impression or have a certain outward aspect",
-          "examples": [
-            "He seems tired after working all day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "seesaw",
-      "word": "seesaw",
-      "senses": [
-        {
-          "id": "sense-d1566e62",
-          "pos": "noun",
-          "meaningZh": "蹺蹺板",
-          "definitionEn": "a long plank balanced on a central pivot, on which people sit on opposite ends and move up and down",
-          "examples": [
-            "The children took turns on the seesaw, giggling as they went up and down."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "seldom",
-      "word": "seldom",
-      "senses": [
-        {
-          "id": "sense-4a0d8601",
-          "pos": "adverb",
-          "meaningZh": "很少；難得",
-          "definitionEn": "infrequently or rarely",
-          "examples": [
-            "He seldom goes to the cinema, preferring to watch movies at home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "select",
-      "word": "select",
-      "senses": [
-        {
-          "id": "sense-a9066ece",
-          "pos": "verb",
-          "meaningZh": "挑選；選取",
-          "definitionEn": "To carefully choose or pick out from a group of options or alternatives",
-          "examples": [
-            "After reviewing all the resumes, the hiring manager will select the five most qualified candidates for the second round of interviews."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-62463d28",
-          "pos": "adjective",
-          "meaningZh": "精選的；特選的",
-          "definitionEn": "Chosen for a specific purpose, often due to special qualifications or qualities",
-          "examples": [
-            "The IT department will carefully select candidates for the software developer position based on their technical skills, programming expertise, and previous work experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "selection",
       "word": "selection",
       "senses": [
         {
-          "id": "sense-481a5486",
-          "pos": "noun",
+          "id": "sense-6b4f8642",
+          "pos": "n.",
           "meaningZh": "選擇範圍；品項",
-          "definitionEn": "an array or assortment of items from which a choice may be made",
           "examples": [
             "The car dealership had a great selection of vehicles, ranging from sports cars to family sedans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b724941d",
-          "pos": "noun",
+          "id": "sense-31c07b01",
+          "pos": "n.",
           "meaningZh": "挑選；選拔",
-          "definitionEn": "the act or process of choosing or selecting from a group of alternatives",
           "examples": [
             "During the interview, the manager asked the candidates to make a selection from a list of available projects they preferred to work on."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "self",
       "word": "self",
       "senses": [
         {
-          "id": "sense-88ef0a78",
-          "pos": "noun",
+          "id": "sense-d2b12178",
+          "pos": "n.",
           "meaningZh": "自我；本我",
-          "definitionEn": "A person’s essential being that distinguishes them from others, especially considered as the object of introspection or reflexive action.",
           "examples": [
             "After spending a week in solitude, she finally had the chance to reflect on her self and make important personal discoveries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-15f432cb",
-          "pos": "noun",
+          "id": "sense-0ce007cb",
+          "pos": "n.",
           "meaningZh": "自我意識；個人身分認同",
-          "definitionEn": "The consciousness or awareness of one’s own individual identity, character, and existence.",
           "examples": [
             "Through meditation, she cultivated a deep sense of self and connectedness to the world around her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "selfish",
       "word": "selfish",
       "senses": [
         {
-          "id": "sense-4af3679c",
-          "pos": "adjective",
+          "id": "sense-b5f074f0",
+          "pos": "adj.",
           "meaningZh": "自私的；只顧自己的",
-          "definitionEn": "having or showing little or no concern for others; concerned chiefly with one’s own personal profit or pleasure",
           "examples": [
             "Jason refused to share his dessert with anyone at the table, displaying his selfish nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sense",
       "word": "sense",
       "senses": [
         {
-          "id": "sense-e6e88c4e",
-          "pos": "noun",
+          "id": "sense-f34b43da",
+          "pos": "n.",
           "meaningZh": "感官；感覺",
-          "definitionEn": "the faculty through which we perceive the outside world",
           "examples": [
             "Her acute sense of hearing allowed her to detect even the faintest of sounds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-122ca4cd",
-          "pos": "noun",
+          "id": "sense-bd82a9f9",
+          "pos": "n.",
           "meaningZh": "含義；語意",
-          "definitionEn": "the meaning of a word or expression; how a word, expression, or situation can be interpreted",
           "examples": [
             "When interpreting a piece of literature, it is important to consider the different senses in which a word can be understood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sensitive",
       "word": "sensitive",
       "senses": [
         {
-          "id": "sense-b0ee279a",
-          "pos": "adjective",
+          "id": "sense-0057c08e",
+          "pos": "adj.",
           "meaningZh": "敏感的；容易受影響的",
-          "definitionEn": "easily influenced or affected by something",
           "examples": [
             "Maria is very sensitive to criticism, so she gets upset easily when people say something negative about her work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4f18114a",
-          "pos": "adjective",
+          "id": "sense-0c4938c6",
+          "pos": "adj.",
           "meaningZh": "機密的；需謹慎處理的",
-          "definitionEn": "requiring careful handling or confidentiality",
           "examples": [
             "Since the information in this file is sensitive, only authorized personnel are allowed access."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4 +2",
-        "textbookTitle": "龍騰 B1·L4、三民 B4·L8、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "separate",
       "word": "separate",
       "senses": [
         {
-          "id": "sense-1b66ac2d",
-          "pos": "verb",
+          "id": "sense-b82cfba4",
+          "pos": "v.",
           "meaningZh": "分開；拆分",
-          "definitionEn": "force, take, or pull apart",
           "examples": [
             "Tara used a pair of scissors to separate the pages of her book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2f9d2330",
-          "pos": "verb",
+          "id": "sense-7f7c86e9",
+          "pos": "v.",
           "meaningZh": "脫離；裂開",
-          "definitionEn": "come apart",
           "examples": [
             "As I was folding the laundry, I noticed that the seam on my shirt had come apart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "servant",
       "word": "servant",
       "senses": [
         {
-          "id": "sense-cfeffa09",
-          "pos": "noun",
+          "id": "sense-f2d4072d",
+          "pos": "n.",
           "meaningZh": "僕人；傭人",
-          "definitionEn": "a person working in the service of another (especially in a household)",
           "examples": [
             "The servant efficiently prepared breakfast for the entire household and ensured everything was tidy before the family woke up."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-18306f11",
-          "pos": "noun",
+          "id": "sense-aa34620d",
+          "pos": "n.",
           "meaningZh": "下屬；侍從",
-          "definitionEn": "a person in a subordinate position",
           "examples": [
             "The young man worked diligently as a servant, tending to all the needs of his wealthy employer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "serve",
       "word": "serve",
       "senses": [
         {
-          "id": "sense-9115c3bf",
-          "pos": "verb",
+          "id": "sense-749ad8da",
+          "pos": "v.",
           "meaningZh": "服務；效力",
-          "definitionEn": "to give your time and effort to support a country, institution, or idea",
           "examples": [
             "He decided to serve his country and joined the military."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fde9e313",
-          "pos": "verb",
+          "id": "sense-c5d19f5a",
+          "pos": "v.",
           "meaningZh": "擔任；就職",
-          "definitionEn": "to work in a specific function or as an office holder",
           "examples": [
             "Jennifer serves as the Chief Financial Officer at the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "settle",
       "word": "settle",
       "senses": [
         {
-          "id": "sense-6919b8e8",
-          "pos": "verb",
+          "id": "sense-49b2b2eb",
+          "pos": "v.",
           "meaningZh": "解決；確定；達成協議",
-          "definitionEn": "arrange or fix in the desired order",
           "examples": [
             "After much negotiation, the parties were finally able to settle on the terms of the contract."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-bacaa31e",
-          "pos": "verb",
+          "id": "sense-72c19ccb",
+          "pos": "v.",
           "meaningZh": "降落；沉降",
-          "definitionEn": "come as if by falling",
           "examples": [
             "After a long and turbulent flight, the plane finally began to settle onto the runway."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "settlement",
       "word": "settlement",
       "senses": [
         {
-          "id": "sense-a79bf53c",
-          "pos": "noun",
+          "id": "sense-f637f868",
+          "pos": "n.",
           "meaningZh": "解決；和解；協議",
-          "definitionEn": "an official agreement that ends an argument or dispute",
           "examples": [
             "The two companies reached a settlement before the trial began."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-395feaef",
-          "pos": "noun",
+          "id": "sense-caf902eb",
+          "pos": "n.",
           "meaningZh": "移民群體；僑民社區",
-          "definitionEn": "a group of people who leave their own country to live in a new country, often with a connection to their home country",
           "examples": [
             "After facing severe economic difficulties, a large settlement of Irish immigrants moved to the United States in search of better opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sex",
       "word": "sex",
       "senses": [
         {
-          "id": "sense-2292a35d",
-          "pos": "noun",
+          "id": "sense-54316bfd",
+          "pos": "n.",
           "meaningZh": "性別",
-          "definitionEn": "either of the two main categories, male and female, into which humans and most living things are divided",
           "examples": [
             "Please indicate your sex on the registration form."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shame",
       "word": "shame",
       "senses": [
         {
-          "id": "sense-2e578527",
-          "pos": "noun",
+          "id": "sense-239c17b7",
+          "pos": "n.",
           "meaningZh": "恥辱；丟臉的事",
-          "definitionEn": "something that causes a feeling of shame or humiliation.",
           "examples": [
             "After losing the race, he felt a great sense of shame."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f0d1df23",
-          "pos": "noun",
+          "id": "sense-ea4448f3",
+          "pos": "n.",
           "meaningZh": "羞恥；羞愧感",
-          "definitionEn": "a painful feeling of humiliation or distress caused by the consciousness of wrong or foolish behavior.",
           "examples": [
             "The athlete felt shame after being caught using performance-enhancing drugs during the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shark",
       "word": "shark",
       "senses": [
         {
-          "id": "sense-0ed3c570",
-          "pos": "noun",
+          "id": "sense-45dbf25c",
+          "pos": "n.",
           "meaningZh": "鯊魚",
-          "definitionEn": "a type of fish found mostly in the ocean, with a long body, tough skin covered with small toothlike scales and a tail fin that is longer on the top than on the bottom",
           "examples": [
             "While on vacation, we had the opportunity to go scuba diving and catch a glimpse of a majestic shark swimming gracefully in its natural habitat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4bef72c1",
-          "pos": "noun",
+          "id": "sense-fc1e50ad",
+          "pos": "n.",
           "meaningZh": "奸商；貪婪狡詐之人",
-          "definitionEn": "a person who is ruthless, greedy, and dishonest, especially in business or financial dealings",
           "examples": [
             "In the cutthroat world of Wall Street, he earned a reputation as a shark, always looking for an opportunity to exploit others for personal gain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sheet",
       "word": "sheet",
       "senses": [
         {
-          "id": "sense-792e3d9d",
-          "pos": "noun",
+          "id": "sense-7a3ea5c5",
+          "pos": "n.",
           "meaningZh": "（一張）紙；薄板",
-          "definitionEn": "a flat, thin, usually rectangular piece of paper, metal, or other material",
           "examples": [
             "She wrote her name at the top of the blank sheet of paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f8b07680",
-          "pos": "noun",
+          "id": "sense-13a77458",
+          "pos": "n.",
           "meaningZh": "床單；被單",
-          "definitionEn": "a large rectangular piece of cotton or linen cloth that you put on a bed and use to lie on or lie under",
           "examples": [
             "I spread a fresh white sheet on the bed before going to sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c31d3c9a",
-          "pos": "noun",
+          "id": "sense-b995e702",
+          "pos": "n.",
           "meaningZh": "（帆船）帆索；纜繩",
-          "definitionEn": "a line, made of rope or chain, that is used to control the angle of a sail in relation to the wind when sailing",
           "examples": [
             "The sailor adjusted the sheet to change the sail's position, ensuring it caught the optimal amount of wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shelf",
       "word": "shelf",
       "senses": [
         {
-          "id": "sense-0e9cdfb6",
-          "pos": "noun",
+          "id": "sense-031e94b6",
+          "pos": "n.",
           "meaningZh": "架子；書架；層板",
-          "definitionEn": "a horizontal board or platform for holding objects",
           "examples": [
             "She placed her favorite books on the shelf in her bedroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5f388a32",
-          "pos": "noun",
+          "id": "sense-24bd1532",
+          "pos": "n.",
           "meaningZh": "岩棚；突出的岩礁",
-          "definitionEn": "a projecting ridge of rock or land, such as a ledge or small cliff",
           "examples": [
             "We stood on the shelf of the mountain, enjoying the breathtaking view of the valley below."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shell",
       "word": "shell",
       "senses": [
         {
-          "id": "sense-4865ac72",
-          "pos": "noun",
+          "id": "sense-c90e07a6",
+          "pos": "n.",
           "meaningZh": "蛋殼；貝殼",
-          "definitionEn": "the exterior covering of a bird’s egg",
           "examples": [
             "The children carefully gathered the shells from the ground and marveled at their delicate patterns."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0056ae22",
-          "pos": "noun",
+          "id": "sense-41369efe",
+          "pos": "n.",
           "meaningZh": "砲彈；炮殼",
-          "definitionEn": "ammunition consisting of a cylindrical metal casing containing an explosive charge and a projectile, fired from a large gun",
           "examples": [
             "The battleship fired a massive shell that exploded upon impact, demolishing the enemy fortifications."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shine",
       "word": "shine",
       "senses": [
         {
-          "id": "sense-e481f7aa",
-          "pos": "verb",
+          "id": "sense-2341b553",
+          "pos": "v.",
           "meaningZh": "發光；照耀",
-          "definitionEn": "to emit or reflect bright light",
           "examples": [
             "The sun started to shine through the cloudy sky, warming up the chilly morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6b63e68c",
-          "pos": "noun",
+          "id": "sense-13da5d64",
+          "pos": "n.",
           "meaningZh": "光澤；光輝",
-          "definitionEn": "the quality of being bright from reflected light on the surface",
           "examples": [
             "The sun's rays caused the ocean's surface to shine brightly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L3",
-        "textbookTitle": "翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shock",
       "word": "shock",
       "senses": [
         {
-          "id": "sense-e729370c",
-          "pos": "verb",
+          "id": "sense-a6480fe5",
+          "pos": "v.",
           "meaningZh": "使震驚；使大吃一驚",
-          "definitionEn": "surprise greatly; knock someone’s socks off",
           "examples": [
             "The unexpected proposal in front of all their friends and family was enough to shock her into silence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6b0a308d",
-          "pos": "noun",
+          "id": "sense-65c83859",
+          "pos": "n.",
           "meaningZh": "地震波；震動",
-          "definitionEn": "an instance of agitation of the earth’s crust",
           "examples": [
             "The earthquake sent shockwaves through the city, causing buildings to collapse and people to panic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shoot",
       "word": "shoot",
       "senses": [
         {
-          "id": "sense-39b6e172",
-          "pos": "verb",
+          "id": "sense-5d15449f",
+          "pos": "v.",
           "meaningZh": "開槍；射擊",
-          "definitionEn": "to fire a weapon or a missile",
           "examples": [
             "The soldier took aim and shot at the target."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-50f254b4",
-          "pos": "verb",
+          "id": "sense-c4e24929",
+          "pos": "v.",
           "meaningZh": "射中；擊中",
-          "definitionEn": "to hit with a missile from a weapon, such as a gun",
           "examples": [
             "The hunter took careful aim and pulled the trigger, causing the bullet to shoot through the air towards its target."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3 +1",
-        "textbookTitle": "龍騰 B2·L3、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shopkeeper",
       "word": "shopkeeper",
       "senses": [
         {
-          "id": "sense-61d118e3",
-          "pos": "noun",
+          "id": "sense-16850503",
+          "pos": "n.",
           "meaningZh": "店主；店家",
-          "definitionEn": "a person who owns or manages a store or shop",
           "examples": [
             "The shopkeeper demonstrated excellent customer service skills by greeting every customer with a smile."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shore",
       "word": "shore",
       "senses": [
         {
-          "id": "sense-ef376db2",
-          "pos": "noun",
+          "id": "sense-ffdb6ef6",
+          "pos": "n.",
           "meaningZh": "岸；海岸",
-          "definitionEn": "the land along the edge of a sea, lake, or other large body of water",
           "examples": [
             "We walked along the shore as the sun set."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2b6d8169",
-          "pos": "verb",
+          "id": "sense-839ae4d0",
+          "pos": "v.",
           "meaningZh": "支撐；加固",
-          "definitionEn": "serve as a shore to, or provide with a shore",
           "examples": [
             "The workers are building a seawall to shore up the eroding shore."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shot",
       "word": "shot",
       "senses": [
         {
-          "id": "sense-df33a846",
-          "pos": "noun",
+          "id": "sense-ac97eea2",
+          "pos": "n.",
           "meaningZh": "射擊；開槍；（球類）投籃／射門",
-          "definitionEn": "the act of firing a gun, or an attempt to score in a sport by kicking or throwing a ball",
           "examples": [
             "He took a shot at the goal but missed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b92be9b9",
-          "pos": "noun",
+          "id": "sense-c9e52075",
+          "pos": "n.",
           "meaningZh": "射手；槍手",
-          "definitionEn": "a person who shoots, usually with respect to their ability to shoot",
           "examples": [
             "The star basketball player was known as a skilled shot, rarely missing a basket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ce55fca8",
-          "pos": "noun",
+          "id": "sense-9bdc3744",
+          "pos": "n.",
           "meaningZh": "子彈；砲彈",
-          "definitionEn": "a solid missile discharged from a firearm",
           "examples": [
             "The hunter carefully aimed and fired a single shot, quickly hitting his target."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shut",
       "word": "shut",
       "senses": [
         {
-          "id": "sense-1a7e672a",
-          "pos": "verb",
+          "id": "sense-253ca633",
+          "pos": "v.",
           "meaningZh": "關閉；關上",
-          "definitionEn": "to close something, such as a door or a window, or to create a barrier that prevents entrance or exit",
           "examples": [
             "Please shut the door behind you when you leave the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-bb369a57",
-          "pos": "verb",
+          "id": "sense-a2bc9d2a",
+          "pos": "v.",
           "meaningZh": "阻擋進入；隔絕",
-          "definitionEn": "to not allow something or someone to enter; to keep out",
           "examples": [
             "Please shut the door to keep the cold air from coming in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shy",
       "word": "shy",
       "senses": [
         {
-          "id": "sense-59a31e46",
-          "pos": "adjective",
+          "id": "sense-a64b55fa",
+          "pos": "adj.",
           "meaningZh": "害羞的；靦腆的",
-          "definitionEn": "tending to avoid or be wary of something because of fear or lack of confidence",
           "examples": [
             "At the party, he was too shy to approach anyone and spent most of the night standing alone in the corner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5b00b111",
-          "pos": "noun",
+          "id": "sense-f57c0ffd",
+          "pos": "n.",
           "meaningZh": "（動物）突然驚跳；猛然側閃",
-          "definitionEn": "a sudden quick movement, especially one in a particular direction",
           "examples": [
             "Startled by the loud noise, the deer made a shy and darted into the dense forest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sidewalk",
       "word": "sidewalk",
       "senses": [
         {
-          "id": "sense-f3907486",
-          "pos": "noun",
+          "id": "sense-5aa83b86",
+          "pos": "n.",
           "meaningZh": "人行道",
-          "definitionEn": "A paved surface, usually next to a road, that people can walk on.",
           "examples": [
             "She tripped and fell on the uneven sidewalk while texting on her phone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "silence",
+      "word": "silence",
+      "senses": [
+        {
+          "id": "sense-39714c8e",
+          "pos": "n.",
+          "meaningZh": "沉默；靜默",
+          "examples": [
+            "The silence was so profound in the museum that even a small cough echoed through the halls."
+          ]
+        },
+        {
+          "id": "sense-7ee1d73a",
+          "pos": "n.",
+          "meaningZh": "無聲；寂靜",
+          "examples": [
+            "The silence in the library was so profound that even the sound of a pin dropping could be heard."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "silent",
+      "word": "silent",
+      "senses": [
+        {
+          "id": "sense-f6a713ec",
+          "pos": "adj.",
+          "meaningZh": "安靜的；無聲的",
+          "examples": [
+            "During the exam, the classroom was silent, with students focused on their work."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "silly",
+      "word": "silly",
+      "senses": [
+        {
+          "id": "sense-91ae9dc8",
+          "pos": "adj.",
+          "meaningZh": "愚蠢的；荒唐的",
+          "examples": [
+            "During the school talent show, Sam dressed up as a clown and performed a silly dance that had everyone in stitches."
+          ]
+        },
+        {
+          "id": "sense-ce9fa678",
+          "pos": "adj.",
+          "meaningZh": "欠考慮的；不明智的",
+          "examples": [
+            "Running in the rain without an umbrella is a silly thing to do."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "silver",
+      "word": "silver",
+      "senses": [
+        {
+          "id": "sense-347a7f2a",
+          "pos": "n.",
+          "meaningZh": "銀；白銀",
+          "examples": [
+            "Lisa received a beautiful silver necklace for her birthday."
+          ]
+        },
+        {
+          "id": "sense-e623fbe5",
+          "pos": "n.",
+          "meaningZh": "銀製品；銀器",
+          "examples": [
+            "For their wedding anniversary, they received a set of elegant silverware."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "similar",
+      "word": "similar",
+      "senses": [
+        {
+          "id": "sense-31661c02",
+          "pos": "adj.",
+          "meaningZh": "相似的；類似的",
+          "examples": [
+            "The two dresses are similar in style and color."
+          ]
+        },
+        {
+          "id": "sense-d9570e5b",
+          "pos": "adj.",
+          "meaningZh": "（幾何）相似的",
+          "examples": [
+            "In a geometry class, the teacher used two triangles to demonstrate similar shapes. Although they were not identical in size or position, they had the exact same angles and proportions."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

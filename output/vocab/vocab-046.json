@@ -1,1445 +1,687 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 46,
   "words": [
-    {
-      "wordKey": "historical",
-      "word": "historical",
-      "senses": [
-        {
-          "id": "sense-7e5b53cb",
-          "pos": "adjective",
-          "meaningZh": "歷史的；與歷史有關的",
-          "definitionEn": "relating to or concerning the study of history and what has happened in the past",
-          "examples": [
-            "The museum had a collection of historical artifacts from the ancient civilization."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-0c97a56b",
-          "pos": "adjective",
-          "meaningZh": "史上的；歷史記載的",
-          "definitionEn": "belonging to the past, especially something or someone important or famous in the past",
-          "examples": [
-            "The book provided a historical account of the battle, including first-hand testimonies and detailed descriptions of events."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "hole",
-      "word": "hole",
-      "senses": [
-        {
-          "id": "sense-2aa69cd4",
-          "pos": "noun",
-          "meaningZh": "洞；孔",
-          "definitionEn": "an opening into or through something",
-          "examples": [
-            "The mouse squeezed through a small hole in the wall."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-fd6614b7",
-          "pos": "noun",
-          "meaningZh": "挖出的坑洞；穿鑿的孔",
-          "definitionEn": "an opening deliberately made in or through something",
-          "examples": [
-            "The construction workers dug a hole for the foundation of the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "hop",
-      "word": "hop",
-      "senses": [
-        {
-          "id": "sense-c2014ceb",
-          "pos": "verb",
-          "meaningZh": "輕跳；蹦跳",
-          "definitionEn": "to jump lightly or with small leaps",
-          "examples": [
-            "The child was so happy that he began to hop around the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-39bf07cd",
-          "pos": "verb",
-          "meaningZh": "跳躍前進；蹦過",
-          "definitionEn": "to make a sudden jump forward or upward",
-          "examples": [
-            "The frog hopped across the pond to reach the other side."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "huge",
-      "word": "huge",
-      "senses": [
-        {
-          "id": "sense-6af9084a",
-          "pos": "adjective",
-          "meaningZh": "巨大的；龐大的",
-          "definitionEn": "extremely large in size or amount",
-          "examples": [
-            "The elephant was huge and towered over the trees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-1e00db18",
-          "pos": "adjective",
-          "meaningZh": "大受歡迎的；非常成功的",
-          "definitionEn": "very popular or successful",
-          "examples": [
-            "The concert was a huge success, with thousands of fans attending and singing along to every song."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "human",
-      "word": "human",
-      "senses": [
-        {
-          "id": "sense-f3c824c5",
-          "pos": "noun",
-          "meaningZh": "人類；人",
-          "definitionEn": "any living or extinct member of the family Hominidae, including Homo sapiens, characterized by superior intelligence, articulate speech, and erect posture",
-          "examples": [
-            "In the movie, the advanced alien species studied humans to better understand intelligence and communication abilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-6311b3af",
-          "pos": "adjective",
-          "meaningZh": "人類的；人性的",
-          "definitionEn": "relating to or characteristic of humankind",
-          "examples": [
-            "The human capacity for language sets us apart from other animals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "humble",
       "word": "humble",
       "senses": [
         {
-          "id": "sense-c0e556ff",
-          "pos": "adjective",
+          "id": "sense-9357b501",
+          "pos": "adj.",
           "meaningZh": "謙虛的；卑微的",
-          "definitionEn": "not proud; having a modest opinion of one's own importance",
           "examples": [
             "Despite his success, he remained humble."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-82c0db23",
-          "pos": "verb",
+          "id": "sense-e0916694",
+          "pos": "v.",
           "meaningZh": "使謙卑；挫折傲氣",
-          "definitionEn": "lower someone in dignity or importance; cause to be modest",
           "examples": [
             "He was humbled by his defeat in the championship game and realized that he needed to work harder to improve his skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hunt",
       "word": "hunt",
       "senses": [
         {
-          "id": "sense-020437bf",
-          "pos": "noun",
+          "id": "sense-d42a5e77",
+          "pos": "n.",
           "meaningZh": "狩獵；打獵",
-          "definitionEn": "the work of finding and killing or capturing animals for food or pelts",
           "examples": [
             "The indigenous tribe relied on hunting to sustain themselves, tracking animals through the dense forest and using traditional traps to capture their prey."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9b80306b",
-          "pos": "noun",
+          "id": "sense-7c9596d3",
+          "pos": "n.",
           "meaningZh": "搜尋；尋找",
-          "definitionEn": "the activity of looking thoroughly in order to find something or someone",
           "examples": [
             "John went on a hunt to find his missing car keys."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hunter",
       "word": "hunter",
       "senses": [
         {
-          "id": "sense-9d972a0c",
-          "pos": "noun",
+          "id": "sense-17de449c",
+          "pos": "n.",
           "meaningZh": "獵人；狩獵者",
-          "definitionEn": "a person who hunts game or other wild animals for food or sport",
           "examples": [
             "The hunter patiently waited in the forest for hours before finally shooting a deer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ca2904ec",
-          "pos": "noun",
+          "id": "sense-7553a6bc",
+          "pos": "n.",
           "meaningZh": "獵戶座（星座）",
-          "definitionEn": "a constellation on the equator to the east of Taurus; contains Betelgeuse and Rigel",
           "examples": [
             "The Hunter constellation is easily visible in the night sky during the winter months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hurry",
       "word": "hurry",
       "senses": [
         {
-          "id": "sense-7939ab94",
-          "pos": "noun",
+          "id": "sense-ab4e4e28",
+          "pos": "n.",
           "meaningZh": "緊迫；急忙的狀態",
-          "definitionEn": "a condition of urgency making it necessary to hurry",
           "examples": [
             "I was in such a hurry to catch my flight that I left my keys behind in the hotel room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3990b600",
-          "pos": "noun",
+          "id": "sense-ddaa7ab4",
+          "pos": "n.",
           "meaningZh": "倉促；草率的急速",
-          "definitionEn": "overly eager speed (and possible carelessness)",
           "examples": [
             "In her hurry to catch the bus, she tripped and dropped her coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ideal",
       "word": "ideal",
       "senses": [
         {
-          "id": "sense-4377b488",
-          "pos": "noun",
+          "id": "sense-799ae71c",
+          "pos": "n.",
           "meaningZh": "理想；完美典範",
-          "definitionEn": "something that is considered perfect or excellent and that people want to achieve or have",
           "examples": [
             "The new restaurant in town is the ideal place to go for a romantic dinner. Its elegant atmosphere, delicious food, and impeccable service make it a perfect choice for a special date."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-d3d6b41f",
-          "pos": "noun",
+          "id": "sense-70de0a23",
+          "pos": "n.",
           "meaningZh": "最佳範例；完美的人事物",
-          "definitionEn": "a person or thing that is considered perfect or without equal",
           "examples": [
             "In my opinion, Leonardo da Vinci's Mona Lisa is the ideal example of a timeless masterpiece."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L3",
-        "textbookTitle": "三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "identity",
       "word": "identity",
       "senses": [
         {
-          "id": "sense-9dbd8e4a",
-          "pos": "noun",
+          "id": "sense-2fe1a7aa",
+          "pos": "n.",
           "meaningZh": "身分；識別特徵",
-          "definitionEn": "the individual characteristics by which someone or something is recognized or known",
           "examples": [
             "She was asked to provide a valid ID card as proof of her identity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f01498c8",
-          "pos": "noun",
+          "id": "sense-ca5de168",
+          "pos": "n.",
           "meaningZh": "自我認同；獨特性格",
-          "definitionEn": "the unique qualities and personality that define a person or group",
           "examples": [
             "Through his actions, he found his true identity as a leader and role model for the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ignore",
       "word": "ignore",
       "senses": [
         {
-          "id": "sense-002e15ba",
-          "pos": "verb",
+          "id": "sense-a3738dcf",
+          "pos": "v.",
           "meaningZh": "忽視；漠視",
-          "definitionEn": "to prevent someone or something from receiving the attention or consideration they deserve",
           "examples": [
             "Despite his brilliant ideas, John felt ignored during the meeting as everyone kept talking over him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6c16baf5",
-          "pos": "verb",
+          "id": "sense-aa3280b2",
+          "pos": "v.",
           "meaningZh": "不理會；視而不見",
-          "definitionEn": "to refuse to acknowledge or give any attention to someone or something",
           "examples": [
             "Despite numerous attempts to get her attention, he chose to ignore her completely."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +1",
-        "textbookTitle": "龍騰 B1·L2、三民 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ill",
       "word": "ill",
       "senses": [
         {
-          "id": "sense-287af3da",
-          "pos": "adjective",
+          "id": "sense-c3f3e530",
+          "pos": "adj.",
           "meaningZh": "生病的；不適的",
-          "definitionEn": "sick or not feeling well, with an impairment of normal physical or mental function",
           "examples": [
             "After catching the flu, Jack felt ill and had to stay home from work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-178d622d",
-          "pos": "adverb",
+          "id": "sense-6d7fbc08",
+          "pos": "adv.",
           "meaningZh": "不當地；差勁地",
-          "definitionEn": "in a poor, improper, or unsatisfactory manner; not well",
           "examples": [
             "She performed ill in the exam due to lack of preparation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1 +1",
-        "textbookTitle": "龍騰 B3·L1、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "image",
       "word": "image",
       "senses": [
         {
-          "id": "sense-d7e6da92",
-          "pos": "noun",
+          "id": "sense-33b4ad6e",
+          "pos": "n.",
           "meaningZh": "圖像；影像",
-          "definitionEn": "a visual representation of an object, scene, person, or idea",
           "examples": [
             "The art exhibit featured a stunning image of a rose garden that looked so real, visitors could imagine the fragrance in the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-698e4546",
-          "pos": "noun",
+          "id": "sense-cbb0776a",
+          "pos": "n.",
           "meaningZh": "形象；外貌",
-          "definitionEn": "someone who looks like another person, especially an actor",
           "examples": [
             "The actor was delighted to learn that his image would be used as part of a marketing campaign for a new fragrance line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L9 +1",
-        "textbookTitle": "龍騰 B2·L9、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imagine",
       "word": "imagine",
       "senses": [
         {
-          "id": "sense-689e1d58",
-          "pos": "verb",
+          "id": "sense-7ff013eb",
+          "pos": "v.",
           "meaningZh": "想像；在腦中構想",
-          "definitionEn": "to form or have a mental picture or idea of something or someone",
           "examples": [
             "Close your eyes and imagine yourself on a tropical beach, feeling the soft sand between your toes and listening to the gentle sound of waves crashing on the shore."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-77b450ab",
-          "pos": "verb",
+          "id": "sense-ed0239ae",
+          "pos": "v.",
           "meaningZh": "臆想；以為",
-          "definitionEn": "to think that something exists, has happened, or is true, even if it is not real or true",
           "examples": [
             "Close your eyes and imagine yourself on a beautiful sandy beach, feeling the warm sun on your skin and hearing the sound of the waves crashing against the shore."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "importance",
       "word": "importance",
       "senses": [
         {
-          "id": "sense-f7cfa756",
-          "pos": "noun",
+          "id": "sense-8a19a8d6",
+          "pos": "n.",
           "meaningZh": "重要性；重要程度",
-          "definitionEn": "the quality or state of being important or significant",
           "examples": [
             "The importance of good communication skills cannot be overstated in the workplace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-7d00cb65",
-          "pos": "noun",
+          "id": "sense-f2eac1e5",
+          "pos": "n.",
           "meaningZh": "重要地位；珍貴性",
-          "definitionEn": "the condition of being highly valued or esteemed",
           "examples": [
             "In a job interview, punctuality and preparedness are of utmost importance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "impressive",
       "word": "impressive",
       "senses": [
         {
-          "id": "sense-23e0b687",
-          "pos": "adjective",
+          "id": "sense-c62e4361",
+          "pos": "adj.",
           "meaningZh": "令人印象深刻的；出色的",
-          "definitionEn": "producing a strong effect",
           "examples": [
             "The team’s impressive win over the undefeated opponent stunned the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-d4406850",
-          "pos": "adjective",
+          "id": "sense-af2ad1f2",
+          "pos": "adj.",
           "meaningZh": "震撼人心的；鮮明有力的",
-          "definitionEn": "making a strong or vivid impression",
           "examples": [
             "The impressive firework display left the audience in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3 +2",
-        "textbookTitle": "龍騰 B1·L3、三民 B1·L7、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "improve",
       "word": "improve",
       "senses": [
         {
-          "id": "sense-4c36c538",
-          "pos": "verb",
+          "id": "sense-a6b3e5ed",
+          "pos": "v.",
           "meaningZh": "改善；提升品質",
-          "definitionEn": "to make better or enhance the quality of something",
           "examples": [
             "She took a public speaking course to improve her communication skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-005eacdc",
-          "pos": "verb",
+          "id": "sense-d7afe2e9",
+          "pos": "v.",
           "meaningZh": "進步；好轉",
-          "definitionEn": "to become better or make progress",
           "examples": [
             "Studying every day will improve your grades."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "improvement",
       "word": "improvement",
       "senses": [
         {
-          "id": "sense-d066714d",
-          "pos": "noun",
+          "id": "sense-fe4af87d",
+          "pos": "n.",
           "meaningZh": "改善；提升過程",
-          "definitionEn": "the act or process of making something better",
           "examples": [
             "The company’s profits have shown a significant improvement since implementing the new marketing strategy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ae6ea321",
-          "pos": "noun",
+          "id": "sense-b6c2ac11",
+          "pos": "n.",
           "meaningZh": "進步；品質提升",
-          "definitionEn": "a positive change in quality or condition; progress in development",
           "examples": [
             "The new training program led to a significant improvement in employee productivity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "include",
       "word": "include",
       "senses": [
         {
-          "id": "sense-9a3a13ad",
-          "pos": "verb",
+          "id": "sense-35bf4264",
+          "pos": "v.",
           "meaningZh": "包含；涵蓋",
-          "definitionEn": "be composed of; have as a part",
           "examples": [
             "The ingredients for the salad include lettuce, tomatoes, and cucumbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5f5c7011",
-          "pos": "verb",
+          "id": "sense-797360a4",
+          "pos": "v.",
           "meaningZh": "納入；列入考量",
-          "definitionEn": "regard something as part of a whole; take into account",
           "examples": [
             "When planning a family vacation, make sure to include activities that cater to everyone's interests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L1 +1",
-        "textbookTitle": "三民 B2·L1、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "income",
       "word": "income",
       "senses": [
         {
-          "id": "sense-28c002a9",
-          "pos": "noun",
+          "id": "sense-0352bfa5",
+          "pos": "n.",
           "meaningZh": "收入；所得",
-          "definitionEn": "the financial gain (earned or unearned) accruing over a given period of time",
           "examples": [
             "Tom’s monthly income from his job is $4000."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-cbb10023",
-          "pos": "noun",
+          "id": "sense-2cd297bf",
+          "pos": "n.",
           "meaningZh": "定期收入；薪資所得",
-          "definitionEn": "money received on a regular basis through work or investments",
           "examples": [
             "She had a steady income from her full-time job as a nurse."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "increase",
       "word": "increase",
       "senses": [
         {
-          "id": "sense-6b3e5355",
-          "pos": "noun",
+          "id": "sense-62db9611",
+          "pos": "n.",
           "meaningZh": "增加；成長",
-          "definitionEn": "the process of becoming larger, longer, more numerous, or more important",
           "examples": [
             "The company saw an increase in profits this quarter due to their new marketing strategy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a3563d2a",
-          "pos": "noun",
+          "id": "sense-7749e00e",
+          "pos": "n.",
           "meaningZh": "增加量；增幅",
-          "definitionEn": "the amount by which something increases",
           "examples": [
             "The increase in the company’s sales this year was remarkable compared to last year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7 +1",
-        "textbookTitle": "龍騰 B2·L7、三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "indeed",
       "word": "indeed",
       "senses": [
         {
-          "id": "sense-f04ae0d3",
-          "pos": "adverb",
+          "id": "sense-f15e526e",
+          "pos": "adv.",
           "meaningZh": "確實；的確",
-          "definitionEn": "in truth, in fact; truly (often used for emphasis)",
           "examples": [
             "I had a feeling it was going to rain, and indeed, the storm clouds rolled in shortly after."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-79cbf9fa",
-          "pos": "adverb",
+          "id": "sense-12f363d3",
+          "pos": "adv.",
           "meaningZh": "（表強調或驚訝）真的；果然",
-          "definitionEn": "(used as an interjection) expressing agreement or to emphasize a statement; also expressing surprise, skepticism, or irony",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2 +1",
-        "textbookTitle": "龍騰 B4·L2、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "independence",
       "word": "independence",
       "senses": [
         {
-          "id": "sense-80c722dc",
-          "pos": "noun",
+          "id": "sense-d52a1bec",
+          "pos": "n.",
           "meaningZh": "獨立；自主",
-          "definitionEn": "the state of being free from the control or influence of another or others",
           "examples": [
             "After years of hard work, Lisa finally achieved independence by starting her own business and becoming financially self-sufficient."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8c0ce81d",
-          "pos": "noun",
+          "id": "sense-669abb2d",
+          "pos": "n.",
           "meaningZh": "（美國）獨立建國",
-          "definitionEn": "the successful ending of the American Revolution",
           "examples": [
             "The signing of the Declaration of Independence marked the culmination of the American Revolution and symbolized the newfound independence of the United States."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "independent",
       "word": "independent",
       "senses": [
         {
-          "id": "sense-1b192fee",
-          "pos": "adjective",
+          "id": "sense-80564c92",
+          "pos": "adj.",
           "meaningZh": "獨立的；不受他人支配的",
-          "definitionEn": "not under the control or influence of others",
           "examples": [
             "As a young adult, I decided to live independently and move out of my parents' house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-19478f29",
-          "pos": "adjective",
+          "id": "sense-cc5b375d",
+          "pos": "adj.",
           "meaningZh": "自主的；不受外部控制的",
-          "definitionEn": "not subject to outside authority or control",
           "examples": [
             "She started her own business to become independent from her previous employer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6 +1",
-        "textbookTitle": "龍騰 B1·L6、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "indicate",
       "word": "indicate",
       "senses": [
         {
-          "id": "sense-3a36810b",
-          "pos": "verb",
+          "id": "sense-14f65b1a",
+          "pos": "v.",
           "meaningZh": "顯示；表明",
-          "definitionEn": "to show something or make something clear",
           "examples": [
             "He used hand gestures to indicate which way to turn."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4f57ce07",
-          "pos": "verb",
+          "id": "sense-aabf375e",
+          "pos": "v.",
           "meaningZh": "指向；指出",
-          "definitionEn": "to point to something",
           "examples": [
             "She raised her hand to indicate that she had a question."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +1",
-        "textbookTitle": "龍騰 B2·L2、三民 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "individual",
       "word": "individual",
       "senses": [
         {
-          "id": "sense-2827548f",
-          "pos": "noun",
+          "id": "sense-b514fc7b",
+          "pos": "n.",
           "meaningZh": "個人；個體",
-          "definitionEn": "a human being",
           "examples": [
             "It is important to recognize each individual’s strengths and weaknesses in a team setting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fad56eac",
-          "pos": "adjective",
+          "id": "sense-f90bdafe",
+          "pos": "adj.",
           "meaningZh": "個別的；各自的",
-          "definitionEn": "being or characteristic of one single thing or person",
           "examples": [
             "Each individual is unique and has their own set of strengths and weaknesses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1 +1",
-        "textbookTitle": "龍騰 B3·R1、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "industry",
       "word": "industry",
       "senses": [
         {
-          "id": "sense-0ee93ef3",
-          "pos": "noun",
+          "id": "sense-1c17d103",
+          "pos": "n.",
           "meaningZh": "工業；產業",
-          "definitionEn": "the organized action of producing goods and services for sale",
           "examples": [
             "The textile industry plays a significant role in our country's economy, manufacturing and selling various types of fabrics and garments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-941e6446",
-          "pos": "noun",
+          "id": "sense-ed8cdd16",
+          "pos": "n.",
           "meaningZh": "（特定）行業；業界",
-          "definitionEn": "the people and companies involved in a particular kind of business activity",
           "examples": [
             "The automotive industry is highly competitive with many major car manufacturers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L8",
-        "textbookTitle": "三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "influence",
       "word": "influence",
       "senses": [
         {
-          "id": "sense-8934c8af",
-          "pos": "verb",
+          "id": "sense-74b3ee1a",
+          "pos": "v.",
           "meaningZh": "影響；左右",
-          "definitionEn": "to shape or direct something or someone",
           "examples": [
             "The CEO’s speech had a great influence on the employees during the annual meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5c5200d3",
-          "pos": "noun",
+          "id": "sense-3f11bc2b",
+          "pos": "n.",
           "meaningZh": "影響力；勢力",
-          "definitionEn": "the power to affect people or events, especially based on prestige or status",
           "examples": [
             "The CEO’s influence in the industry was so great that even competitors would take note of her opinions and strategies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L4 +1",
-        "textbookTitle": "三民 B1·L4、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ink",
       "word": "ink",
       "senses": [
         {
-          "id": "sense-f277c5c5",
-          "pos": "noun",
+          "id": "sense-0413b335",
+          "pos": "n.",
           "meaningZh": "墨水；油墨",
-          "definitionEn": "a liquid used for writing, printing, or drawing",
           "examples": [
             "She filled her fountain pen with black ink and began writing a heartfelt letter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-818ea128",
-          "pos": "noun",
+          "id": "sense-f8bdcb38",
+          "pos": "n.",
           "meaningZh": "（頭足類動物）墨汁；噴墨",
-          "definitionEn": "a dark protective fluid that is ejected into the water by cuttlefish and other cephalopods",
           "examples": [
             "The cuttlefish squirted ink into the water to escape from its predator."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "insist",
+      "word": "insist",
+      "senses": [
+        {
+          "id": "sense-72709a98",
+          "pos": "v.",
+          "meaningZh": "堅持；強烈要求",
+          "examples": [
+            "Despite their objections, she insisted on going skydiving for her birthday."
+          ]
+        },
+        {
+          "id": "sense-69cccf5a",
+          "pos": "v.",
+          "meaningZh": "固執己見；堅守",
+          "examples": [
+            "Even when faced with strong opposition, she continued to insist on the importance of her ideas."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "instance",
+      "word": "instance",
+      "senses": [
+        {
+          "id": "sense-85efb013",
+          "pos": "n.",
+          "meaningZh": "實例；案例",
+          "examples": [
+            "For instance, the instance of a power outage caused the office to shut down for the day."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "instant",
+      "word": "instant",
+      "senses": [
+        {
+          "id": "sense-c743a79a",
+          "pos": "n.",
+          "meaningZh": "特定時刻；瞬間",
+          "examples": [
+            "At the instant the clock struck midnight, fireworks erupted in the sky."
+          ]
+        },
+        {
+          "id": "sense-a21fee78",
+          "pos": "n.",
+          "meaningZh": "片刻；一瞬間",
+          "examples": [
+            "In an instant, the lightning lit up the dark sky."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "instead",
+      "word": "instead",
+      "senses": [
+        {
+          "id": "sense-cdfcbcc5",
+          "pos": "adv.",
+          "meaningZh": "代替；取而代之",
+          "examples": [
+            "We decided to go to the beach instead of the movie theater."
+          ]
+        },
+        {
+          "id": "sense-b74e4497",
+          "pos": "adv.",
+          "meaningZh": "反而；相反地",
+          "examples": [
+            "I thought she would be angry when I cancelled plans, but instead she was relieved."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "instruction",
+      "word": "instruction",
+      "senses": [
+        {
+          "id": "sense-29977144",
+          "pos": "n.",
+          "meaningZh": "教學；教導",
+          "examples": [
+            "The teacher gave clear instructions to the students on how to solve the math problem."
+          ]
+        },
+        {
+          "id": "sense-6b06779c",
+          "pos": "n.",
+          "meaningZh": "指示；使用說明",
+          "examples": [
+            "The assembly instructions provided with the furniture helped me set it up easily."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

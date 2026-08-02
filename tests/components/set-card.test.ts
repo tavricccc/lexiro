@@ -14,10 +14,14 @@ describe('set card actions menu', () => {
         set: {
           id: 'set-1',
           setName: 'Fruits',
-          difficulty: 2,
-          items: [{ id: 'item-1', word: 'apple', pos: 'n.', meaning: '蘋果', example: '' }],
+          folderId: '__uncategorized__',
+          createdAt: '',
+          updatedAt: '',
         },
-        folders: [{ id: 'folder-1', name: '學校', parentId: undefined, order: 0, createdAt: '', updatedAt: '' }],
+        folders: [
+          { id: '__uncategorized__', name: '未分類', parentId: undefined, order: -1, createdAt: '', updatedAt: '' },
+          { id: 'folder-1', name: '學校', parentId: undefined, order: 0, createdAt: '', updatedAt: '' },
+        ],
       },
     })
 

@@ -1,1339 +1,653 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 88,
   "words": [
-    {
-      "wordKey": "roughly",
-      "word": "roughly",
-      "senses": [
-        {
-          "id": "sense-51490203",
-          "pos": "adverb",
-          "meaningZh": "大約；粗略地",
-          "definitionEn": "not exactly or precisely",
-          "examples": [
-            "She estimated that there were roughly 100 people in the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "routine",
-      "word": "routine",
-      "senses": [
-        {
-          "id": "sense-8eb1bc49",
-          "pos": "noun",
-          "meaningZh": "例行公事；日常慣例",
-          "definitionEn": "the usual order and way in which you regularly do things",
-          "examples": [
-            "Getting up early is part of my daily routine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-05345746",
-          "pos": "noun",
-          "meaningZh": "競技套路；例行動作組合",
-          "definitionEn": "a set sequence of exercises performed during a competition or athletic event",
-          "examples": [
-            "The gymnast's routine consisted of a series of flips, twists, and balance beam maneuvers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L8",
-        "textbookTitle": "三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "rug",
-      "word": "rug",
-      "senses": [
-        {
-          "id": "sense-58a39d48",
-          "pos": "noun",
-          "meaningZh": "地毯；小型厚地毯",
-          "definitionEn": "a piece of thick fabric used to cover part of a floor, often having a textured surface for decoration or warmth",
-          "examples": [
-            "She added a colorful rug to her living room to make the space feel cozy and inviting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "rumor",
-      "word": "rumor",
-      "senses": [
-        {
-          "id": "sense-c9d375be",
-          "pos": "noun",
-          "meaningZh": "謠言；未經證實的消息",
-          "definitionEn": "Information or story that is circulating but is not confirmed or verified.",
-          "examples": [
-            "Despite the rumors of layoffs, the company's CEO has assured the employees that no job cuts are planned."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-d384cc67",
-          "pos": "verb",
-          "meaningZh": "散布謠言；傳言",
-          "definitionEn": "To spread or circulate a rumor or rumors about.",
-          "examples": [
-            "In a small town, rumors tend to quickly spread like wildfire, often leading to misunderstandings and unnecessary panic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "rush",
-      "word": "rush",
-      "senses": [
-        {
-          "id": "sense-612c2bcc",
-          "pos": "noun",
-          "meaningZh": "急遽；一陣忙亂",
-          "definitionEn": "a sudden burst of activity",
-          "examples": [
-            "As soon as the store announced a discount sale, there was a rush of customers into the store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-2354f86f",
-          "pos": "noun",
-          "meaningZh": "一陣強烈情感；激湧",
-          "definitionEn": "the swift release of a store of affective force",
-          "examples": [
-            "After the long wait, the customers rushed into the store to grab the limited edition products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "rust",
       "word": "rust",
       "senses": [
         {
-          "id": "sense-7cbc3553",
-          "pos": "noun",
+          "id": "sense-648fc853",
+          "pos": "n.",
           "meaningZh": "鏽；鐵鏽",
-          "definitionEn": "a reddish-brown coating on iron or steel caused by moisture and oxygen",
           "examples": [
             "The old bicycle in the backyard had accumulated rust on its chain and handlebars after sitting in the rain for weeks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6131fad2",
-          "pos": "noun",
+          "id": "sense-8b14a3d2",
+          "pos": "n.",
           "meaningZh": "銹病；植物鏽菌病",
-          "definitionEn": "a plant disease that creates a reddish-brown discoloration on leaves and stems; caused by various rust fungi",
           "examples": [
             "The rust on the leaves of the flowers caused them to wither and fall off."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sack",
       "word": "sack",
       "senses": [
         {
-          "id": "sense-4576ff93",
-          "pos": "noun",
+          "id": "sense-300badc3",
+          "pos": "n.",
           "meaningZh": "袋子；麻袋",
-          "definitionEn": "a large bag made of strong material, used for carrying things",
           "examples": [
             "The farmer carried a sack of potatoes on his shoulder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-304a7b54",
-          "pos": "noun",
+          "id": "sense-3eafa1a4",
+          "pos": "n.",
           "meaningZh": "洗劫；掠奪",
-          "definitionEn": "an act of stealing or plundering, especially during a war or rioting",
           "examples": [
             "Amid the chaos of the riot, looters began to sack the electronics store, grabbing televisions and smartphones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L5",
-        "textbookTitle": "龍騰 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sake",
       "word": "sake",
       "senses": [
         {
-          "id": "sense-a1589b1c",
-          "pos": "noun",
+          "id": "sense-0364c150",
+          "pos": "n.",
           "meaningZh": "目的；緣故",
-          "definitionEn": "the purpose of achieving or obtaining",
           "examples": [
             "He worked late into the night, for the sake of finishing the project on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5515fec5",
-          "pos": "noun",
+          "id": "sense-bb869ce9",
+          "pos": "n.",
           "meaningZh": "理由；動機",
-          "definitionEn": "a reason for wanting something done",
           "examples": [
             "For the sake of efficiency, we need to streamline our processes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "salary",
       "word": "salary",
       "senses": [
         {
-          "id": "sense-0bfbe5e1",
-          "pos": "noun",
+          "id": "sense-6973fee1",
+          "pos": "n.",
           "meaningZh": "薪水；薪資",
-          "definitionEn": "a fixed amount of money or compensation paid on a regular basis in exchange for work or services rendered",
           "examples": [
             "Her salary was enough to pay for her living expenses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "satisfactory",
       "word": "satisfactory",
       "senses": [
         {
-          "id": "sense-f5883f4a",
-          "pos": "adjective",
+          "id": "sense-8a510f66",
+          "pos": "adj.",
           "meaningZh": "令人滿意的；達標的",
-          "definitionEn": "meeting requirements",
           "examples": [
             "The completion of the project was deemed satisfactory as it met all the specified goals and expectations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5ebf1504",
-          "pos": "adjective",
+          "id": "sense-0cd90f80",
+          "pos": "adj.",
           "meaningZh": "令人滿意的；合乎要求的",
-          "definitionEn": "giving satisfaction",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L4",
-        "textbookTitle": "三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sauce",
       "word": "sauce",
       "senses": [
         {
-          "id": "sense-4f01d58c",
-          "pos": "noun",
+          "id": "sense-bebff994",
+          "pos": "n.",
           "meaningZh": "醬汁；調味醬",
-          "definitionEn": "a thick liquid that is made and used with food to enhance its flavor.",
           "examples": [
             "She drizzled the spicy peanut sauce over the grilled chicken."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "saucer",
       "word": "saucer",
       "senses": [
         {
-          "id": "sense-8890997e",
-          "pos": "noun",
+          "id": "sense-3305bbe2",
+          "pos": "n.",
           "meaningZh": "茶托；碟子",
-          "definitionEn": "a small shallow dish, usually with a handle and used for holding a cup at the table",
           "examples": [
             "Sarah placed the teacup on the saucer and served it to her guest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sausage",
       "word": "sausage",
       "senses": [
         {
-          "id": "sense-fdb71c2a",
-          "pos": "noun",
+          "id": "sense-6f5f6102",
+          "pos": "n.",
           "meaningZh": "香腸；臘腸",
-          "definitionEn": "minced meat mixed with spices and other ingredients, packed into a casing and cooked or preserved in some way",
           "examples": [
             "We grilled sausages and served them with mustard and sauerkraut for a classic German meal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-735b686e",
-          "pos": "noun",
+          "id": "sense-2af94996",
+          "pos": "n.",
           "meaningZh": "香腸；烤腸",
-          "definitionEn": "a cylindrical tube of minced meat, often pork, usually grilled or fried and typically served in a bread roll or with potatoes",
           "examples": [
             "I love grilling sausages and serving them in a crusty bread roll with mustard and sauerkraut."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "saving",
       "word": "saving",
       "senses": [
         {
-          "id": "sense-6b426697",
-          "pos": "noun",
+          "id": "sense-9a275567",
+          "pos": "n.",
           "meaningZh": "儲蓄；保全",
-          "definitionEn": "the activity of protecting something from loss or danger",
           "examples": [
             "John started saving money each month to build an emergency fund in case of unexpected expenses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-1fcb2e2d",
-          "pos": "noun",
+          "id": "sense-0cea29bd",
+          "pos": "n.",
           "meaningZh": "節省；節約",
-          "definitionEn": "reduction in cost achieved by careful management",
           "examples": [
             "By diligently monitoring their spending and finding cost-cutting opportunities, the family was able to save enough money to go on a much-needed vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "savings",
       "word": "savings",
       "senses": [
         {
-          "id": "sense-496dfede",
-          "pos": "noun",
+          "id": "sense-273b3a96",
+          "pos": "n.",
           "meaningZh": "儲蓄；積蓄",
-          "definitionEn": "the activity of protecting something from loss or danger",
           "examples": [
             "John started saving money each month to build an emergency fund in case of unexpected expenses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-04c90a18",
-          "pos": "noun",
+          "id": "sense-e33fbea0",
+          "pos": "n.",
           "meaningZh": "節省費用；節約支出",
-          "definitionEn": "reduction in cost achieved by careful management",
           "examples": [
             "By diligently monitoring their spending and finding cost-cutting opportunities, the family was able to save enough money to go on a much-needed vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scale",
       "word": "scale",
       "senses": [
         {
-          "id": "sense-0bdeb7f5",
-          "pos": "noun",
+          "id": "sense-0feb7ba9",
+          "pos": "n.",
           "meaningZh": "規模；規格",
-          "definitionEn": "the size or level of something, especially when it is large.",
           "examples": [
             "The scale of the earthquake was unprecedented, with buildings collapsing and widespread devastation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-47af8790",
-          "pos": "noun",
+          "id": "sense-dfa963f4",
+          "pos": "n.",
           "meaningZh": "刻度；比例尺",
-          "definitionEn": "a set of numbers, amounts, etc. used to measure or compare the level of something.",
           "examples": [
             "In order to accurately assess the severity of an earthquake, scientists use the Richter scale."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scales",
       "word": "scales",
       "senses": [
         {
-          "id": "sense-c0614b5b",
-          "pos": "noun",
+          "id": "sense-3d8c33e7",
+          "pos": "n.",
           "meaningZh": "磅秤；體重計",
-          "definitionEn": "A device for measuring weight.",
           "examples": [
             "I used the scales in the bathroom to check my weight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7aeb44fc",
-          "pos": "noun",
+          "id": "sense-dd0690d0",
+          "pos": "n.",
           "meaningZh": "等級制度；薪資級距",
-          "definitionEn": "Gradation; succession of ascending and descending steps and degrees; progressive series; scheme of comparative rank or order.",
           "examples": [
             "In her speech, the politician highlighted the importance of implementing a wage scales that recognize and reward employees based on their skills and experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scarce",
       "word": "scarce",
       "senses": [
         {
-          "id": "sense-075e98d4",
-          "pos": "adjective",
+          "id": "sense-971c472a",
+          "pos": "adj.",
           "meaningZh": "稀少的；短缺的",
-          "definitionEn": "not enough or insufficient compared to the demand",
           "examples": [
             "Due to the scarce rainfall this year, the crops have not grown properly and the farmers are facing huge losses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-14d11ee5",
-          "pos": "adverb",
+          "id": "sense-57268244",
+          "pos": "adv.",
           "meaningZh": "僅僅；剛剛",
-          "definitionEn": "only a very short time before",
           "examples": [
             "The players arrived scarce before the start of the match and had no time to warm up."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scarf",
       "word": "scarf",
       "senses": [
         {
-          "id": "sense-829d7925",
-          "pos": "noun",
+          "id": "sense-8246a959",
+          "pos": "n.",
           "meaningZh": "圍巾；頭巾",
-          "definitionEn": "a piece of cloth worn around the neck or head for warmth or decoration",
           "examples": [
             "In winters, I put on a cozy scarf to keep myself warm while going out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fae6edaa",
-          "pos": "noun",
+          "id": "sense-bae2924e",
+          "pos": "n.",
           "meaningZh": "斜切接合；疊接",
-          "definitionEn": "a joint formed by overlapping two pieces of timber or metal and joining them together",
           "examples": [
             "The carpenter used a scarf joint to connect the two pieces of wood and make a longer beam for his project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scary",
       "word": "scary",
       "senses": [
         {
-          "id": "sense-5f28bf6b",
-          "pos": "adjective",
+          "id": "sense-a69bcfff",
+          "pos": "adj.",
           "meaningZh": "令人害怕的；恐怖的",
-          "definitionEn": "causing or capable of causing fear, fright, or terror",
           "examples": [
             "The haunted house was so scary that even the bravest person refused to enter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +1",
-        "textbookTitle": "龍騰 B2·L6、三民 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scatter",
       "word": "scatter",
       "senses": [
         {
-          "id": "sense-5c325896",
-          "pos": "verb",
+          "id": "sense-7a5e86f1",
+          "pos": "v.",
           "meaningZh": "撒散；使分散",
-          "definitionEn": "to cause to separate and move in different directions",
           "examples": [
             "The children gathered excitedly around the pinata as their father scattered candy across the yard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-cba30a13",
-          "pos": "verb",
+          "id": "sense-0ea87eb2",
+          "pos": "v.",
           "meaningZh": "散開；四散",
-          "definitionEn": "to move or be moved away from each other",
           "examples": [
             "When the teacher announced free time, the students scatter ed across the playground to play different games."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scholar",
       "word": "scholar",
       "senses": [
         {
-          "id": "sense-5ea2d4c4",
-          "pos": "noun",
+          "id": "sense-453977d8",
+          "pos": "n.",
           "meaningZh": "學者；博學之人",
-          "definitionEn": "a learned person who has gained mastery in one or more disciplines, especially in the humanities, through long study",
           "examples": [
             "The scholar presented an insightful lecture on Shakespeare’s work at the literary conference."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d7c60ca9",
-          "pos": "noun",
+          "id": "sense-7eb5066d",
+          "pos": "n.",
           "meaningZh": "獎學金得主；學術生",
-          "definitionEn": "a student who receives a scholarship to study at a school, college, or university",
           "examples": [
             "Katie was thrilled to be selected as a scholar to attend Oxford University and pursue her passion for literature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scholarship",
       "word": "scholarship",
       "senses": [
         {
-          "id": "sense-744efb50",
-          "pos": "noun",
+          "id": "sense-e9bb10d0",
+          "pos": "n.",
           "meaningZh": "獎學金",
-          "definitionEn": "financial aid provided to a student on the basis of academic merit",
           "examples": [
             "Ravi received a full scholarship to attend the prestigious university, as his excellent grades and impressive extracurricular activities made him a deserving candidate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8bf3ff01",
-          "pos": "noun",
+          "id": "sense-fb238f81",
+          "pos": "n.",
           "meaningZh": "深厚學識；學術造詣",
-          "definitionEn": "profound scholarly knowledge",
           "examples": [
             "The professor's scholarship on ancient Greek history is unrivaled."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scientific",
       "word": "scientific",
       "senses": [
         {
-          "id": "sense-432062bc",
-          "pos": "adjective",
+          "id": "sense-cf4181d2",
+          "pos": "adj.",
           "meaningZh": "科學的；符合科學方法的",
-          "definitionEn": "relating to or involving science or scientific methods",
           "examples": [
             "The scientists conducted a series of scientific experiments to test their hypothesis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3deed400",
-          "pos": "adjective",
+          "id": "sense-328edb76",
+          "pos": "adj.",
           "meaningZh": "學術上的；屬於科學的",
-          "definitionEn": "of or relating to science as an academic subject",
           "examples": [
             "The researchers conducted a scientific experiment to test their hypothesis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3 +2",
-        "textbookTitle": "龍騰 B1·L3、三民 B1·L10、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scientist",
       "word": "scientist",
       "senses": [
         {
-          "id": "sense-508a0f0e",
-          "pos": "noun",
+          "id": "sense-8ce0552a",
+          "pos": "n.",
           "meaningZh": "科學家；研究人員",
-          "definitionEn": "a person who is trained in and has expertise in one or more areas of science, and who uses that knowledge to seek answers to questions through scientific inquiry",
           "examples": [
             "Dr. Smith, a renowned scientist, conducted experiments to determine the effectiveness of a new cancer treatment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3 +2",
-        "textbookTitle": "龍騰 B1·L3、三民 B1·L10、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scissors",
       "word": "scissors",
       "senses": [
         {
-          "id": "sense-cb8b146e",
-          "pos": "noun",
+          "id": "sense-e77931fa",
+          "pos": "n.",
           "meaningZh": "剪刀",
-          "definitionEn": "a cutting tool consisting of two crossed blades with pivot pins in the middle",
           "examples": [
             "She used the scissors to cut out the fabric for her sewing project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-58cbfe71",
-          "pos": "noun",
+          "id": "sense-523f5a5d",
+          "pos": "n.",
           "meaningZh": "剪式夾頸；剪式摔角技",
-          "definitionEn": "a wrestling hold in which one wrestler’s legs grip the opponent’s head or body while flexed inwardly",
           "examples": [
             "During the match, the wrestler executed a perfect scissors, trapping his opponent and forcing him to submit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scout",
       "word": "scout",
       "senses": [
         {
-          "id": "sense-c1e3c7f9",
-          "pos": "noun",
+          "id": "sense-e15c4f55",
+          "pos": "n.",
           "meaningZh": "偵察員；斥候",
-          "definitionEn": "a person employed to keep watch for some anticipated event",
           "examples": [
             "The scout climbed up the tall tree to get a better vantage point and kept watch for any signs of the approaching enemy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-eb641322",
-          "pos": "verb",
+          "id": "sense-38b483c3",
+          "pos": "v.",
           "meaningZh": "偵察；探查",
-          "definitionEn": "to explore an area with the goal of finding something or somebody",
           "examples": [
             "John decided to scout the forest for any signs of wild animals before setting up the camp."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scream",
       "word": "scream",
       "senses": [
         {
-          "id": "sense-1da036bf",
-          "pos": "verb",
+          "id": "sense-d933a36e",
+          "pos": "v.",
           "meaningZh": "尖叫；大聲喊叫",
-          "definitionEn": "to make a loud, piercing cry or sound, often because of fear, excitement, or pain",
           "examples": [
             "When the spider suddenly crawled up her leg, she let out a blood-curdling scream."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-25f639b7",
-          "pos": "noun",
+          "id": "sense-75be64af",
+          "pos": "n.",
           "meaningZh": "尖叫聲；叫聲",
-          "definitionEn": "a loud, sharp cry or sound that is often high-pitched and sudden",
           "examples": [
             "I heard a blood-curdling scream and rushed to see what was going on."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "screw",
       "word": "screw",
       "senses": [
         {
-          "id": "sense-06bd68de",
-          "pos": "noun",
+          "id": "sense-9d25bbbe",
+          "pos": "n.",
           "meaningZh": "螺絲；螺釘",
-          "definitionEn": "a simple machine consisting of a spirally threaded cylindrical rod that fits into a similarly threaded hole",
           "examples": [
             "I used a screw to secure the shelf to the wall."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-48578e15",
-          "pos": "noun",
+          "id": "sense-3afb9cb5",
+          "pos": "n.",
           "meaningZh": "螺旋槳",
-          "definitionEn": "a propeller with angled blades that rotate to push against water or air",
           "examples": [
             "The captain turned on the engine, and soon the screw began to spin, propelling the boat forward through the water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "scrub",
       "word": "scrub",
       "senses": [
         {
-          "id": "sense-b0b1fa69",
-          "pos": "verb",
+          "id": "sense-85a50788",
+          "pos": "v.",
           "meaningZh": "刷洗；擦洗",
-          "definitionEn": "to rub something hard, especially with a brush, in order to clean it",
           "examples": [
             "She scrubbed the floor until it shone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "seal",
+      "word": "seal",
+      "senses": [
+        {
+          "id": "sense-e9e97d06",
+          "pos": "n.",
+          "meaningZh": "海豹",
+          "examples": [
+            "A group of seals was resting on the rocks near the shore."
+          ]
+        },
+        {
+          "id": "sense-1ae3e1d0",
+          "pos": "n.",
+          "meaningZh": "封蠟；印泥；封印",
+          "examples": [
+            "After putting the contents in the envelope, he applied the seal on the flap to ensure that the letter stays safely sealed during transit."
+          ]
+        },
+        {
+          "id": "sense-147ad15f",
+          "pos": "v.",
+          "meaningZh": "封緘；密封",
+          "examples": [
+            "Please seal the envelope before you put it in the mailbox so that it doesn’t accidentally open in transit."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "security",
+      "word": "security",
+      "senses": [
+        {
+          "id": "sense-bab8a8cd",
+          "pos": "n.",
+          "meaningZh": "安全感；安心感",
+          "examples": [
+            "After installing a state-of-the-art security system in her house, Maria felt a sense of security and could sleep peacefully at night."
+          ]
+        },
+        {
+          "id": "sense-4c82eded",
+          "pos": "n.",
+          "meaningZh": "安全措施；保全",
+          "examples": [
+            "The company hired a team of security experts to install surveillance cameras, access control systems, and alarms to ensure the security of their premises."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "semester",
+      "word": "semester",
+      "senses": [
+        {
+          "id": "sense-3972e198",
+          "pos": "n.",
+          "meaningZh": "學期",
+          "examples": [
+            "In my freshman year, I took a biology class during the fall semester."
+          ]
+        },
+        {
+          "id": "sense-b36e1ab0",
+          "pos": "n.",
+          "meaningZh": "半年；六個月",
+          "examples": [
+            "I will be studying abroad for a semester in Europe."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "senior",
+      "word": "senior",
+      "senses": [
+        {
+          "id": "sense-0f50a19a",
+          "pos": "adj.",
+          "meaningZh": "資深的；年長的",
+          "examples": []
+        },
+        {
+          "id": "sense-927d7be5",
+          "pos": "adj.",
+          "meaningZh": "資歷較深的；年資較高的",
+          "examples": [
+            "John has worked at the company for 25 years and is now a senior member of the team."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sensible",
+      "word": "sensible",
+      "senses": [
+        {
+          "id": "sense-afdee32d",
+          "pos": "adj.",
+          "meaningZh": "明智的；理性的",
+          "examples": [
+            "Her decision to save money for the future instead of splurging on expensive vacations was quite sensible."
+          ]
+        },
+        {
+          "id": "sense-505c0387",
+          "pos": "adj.",
+          "meaningZh": "可感知的；可察覺的",
+          "examples": [
+            "The aroma of freshly baked bread wafting through the kitchen was a sensible reminder that it was time for breakfast."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

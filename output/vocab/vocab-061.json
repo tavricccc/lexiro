@@ -1,1421 +1,681 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 61,
   "words": [
-    {
-      "wordKey": "switch",
-      "word": "switch",
-      "senses": [
-        {
-          "id": "sense-c661bc0f",
-          "pos": "verb",
-          "meaningZh": "交換；互換",
-          "definitionEn": "exchange or give something in exchange for another",
-          "examples": [
-            "I switched my pencil with my classmate’s pen so that we could both use the writing tool we preferred."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-ae50a367",
-          "pos": "verb",
-          "meaningZh": "改換；轉換",
-          "definitionEn": "abandon or leave something for another",
-          "examples": [
-            "I decided to switch my major from biology to chemistry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "symbol",
-      "word": "symbol",
-      "senses": [
-        {
-          "id": "sense-4c70a0ba",
-          "pos": "noun",
-          "meaningZh": "符號；記號",
-          "definitionEn": "an arbitrary sign (written or printed) that has acquired a conventional significance",
-          "examples": [
-            "In mathematics, the plus '+' sign is a symbol used to represent addition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-841fd39f",
-          "pos": "noun",
-          "meaningZh": "象徵；代表",
-          "definitionEn": "something visible that by association or convention represents something else that is invisible",
-          "examples": [
-            "In many cultures, the heart shape is a symbol of love and affection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6",
-        "textbookTitle": "龍騰 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "system",
-      "word": "system",
-      "senses": [
-        {
-          "id": "sense-274101f4",
-          "pos": "noun",
-          "meaningZh": "系統；整體結構",
-          "definitionEn": "a unified whole comprised of independent but interrelated elements",
-          "examples": [
-            "The human body is a complex system of organs and tissues that work together to maintain life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-0dfd3603",
-          "pos": "noun",
-          "meaningZh": "系統；相互關聯的裝置組合",
-          "definitionEn": "a group of interrelated artifacts that work together as a coherent entity",
-          "examples": [
-            "The security system in the building consists of CCTV cameras, motion sensors, and security personnel who work together to maintain safety."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "tale",
-      "word": "tale",
-      "senses": [
-        {
-          "id": "sense-3c71af1b",
-          "pos": "noun",
-          "meaningZh": "故事；敘事",
-          "definitionEn": "a message that tells the details of an event, activity or a series of events, presented in different forms such as writing, drama, cinema, or radio or television programs",
-          "examples": [
-            "In the ancient village, the elders would gather the children around the fire to share an enchanting tale of a brave princess and her journey to save her kingdom from an evil sorcerer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-25a53401",
-          "pos": "noun",
-          "meaningZh": "虛構故事；民間傳說",
-          "definitionEn": "a story that is not true, usually trivial in nature",
-          "examples": [
-            "In the campfire, my friends and I took turns telling tales of haunted houses and mythical creatures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "target",
-      "word": "target",
-      "senses": [
-        {
-          "id": "sense-b63d89a0",
-          "pos": "noun",
-          "meaningZh": "目標；目的",
-          "definitionEn": "a place or thing that somebody aims at or tries to reach",
-          "examples": [
-            "His ultimate target is to become the CEO of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-55b842fe",
-          "pos": "noun",
-          "meaningZh": "靶；標靶",
-          "definitionEn": "a piece of sports equipment that you aim at in order to score points",
-          "examples": [
-            "The archer took aim at the target and released the arrow, hitting the bullseye with impressive accuracy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L6",
-        "textbookTitle": "翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "task",
       "word": "task",
       "senses": [
         {
-          "id": "sense-a3c2db62",
-          "pos": "noun",
+          "id": "sense-ddf64dda",
+          "pos": "n.",
           "meaningZh": "工作；任務",
-          "definitionEn": "a piece of work that needs to be done or that someone is expected to do",
           "examples": [
             "I have a new task to complete before the end of the day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-cc0df239",
-          "pos": "noun",
+          "id": "sense-871e9ec1",
+          "pos": "n.",
           "meaningZh": "指派任務；職責",
-          "definitionEn": "a specific job that needs to be completed, either as part of a larger project or as a separate duty",
           "examples": [
             "My boss assigned me the task of organizing the files for the upcoming audit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tax",
       "word": "tax",
       "senses": [
         {
-          "id": "sense-4229a57f",
-          "pos": "noun",
+          "id": "sense-97e29e43",
+          "pos": "n.",
           "meaningZh": "稅；稅款",
-          "definitionEn": "a mandatory payment imposed by the government on individuals or businesses based on their income or the purchase of goods/services",
           "examples": [
             "Every year, I have to file my income tax return with the Internal Revenue Service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c264c41f",
-          "pos": "verb",
+          "id": "sense-6f66b05a",
+          "pos": "v.",
           "meaningZh": "課稅；徵稅",
-          "definitionEn": "to require people or businesses to pay a portion of their earnings or expenses to the government",
           "examples": [
             "As an employee, a portion of my salary is automatically deducted to pay for income tax."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L9",
-        "textbookTitle": "三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "teapot",
       "word": "teapot",
       "senses": [
         {
-          "id": "sense-a374a12e",
-          "pos": "noun",
+          "id": "sense-51c5d136",
+          "pos": "n.",
           "meaningZh": "茶壺",
-          "definitionEn": "A teapot is a pot that is specifically made for brewing and serving tea. It usually comes with a spout and a handle to make pouring easier.",
           "examples": [
             "I placed the teapot on the table, filled it with hot water, and added tea leaves to brew a fresh pot of tea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "visit",
       "word": "visit",
       "senses": [
         {
-          "id": "sense-afa7cc76",
-          "pos": "noun",
+          "id": "sense-1d46335e",
+          "pos": "n.",
           "meaningZh": "探訪；參觀",
-          "definitionEn": "the act of going to see someone or something for a short time",
           "examples": [
             "I plan to visit my grandparents this weekend."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-20abc584",
-          "pos": "noun",
+          "id": "sense-619a7e7c",
+          "pos": "n.",
           "meaningZh": "看診；就醫約診",
-          "definitionEn": "a meeting arranged with a professional for treatment or advice",
           "examples": [
             "After experiencing persistent migraines, Sarah decided to schedule a visit with a neurologist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "visitor",
       "word": "visitor",
       "senses": [
         {
-          "id": "sense-42f6956e",
-          "pos": "noun",
+          "id": "sense-566e984a",
+          "pos": "n.",
           "meaningZh": "訪客；參觀者",
-          "definitionEn": "a person who visits a place for a short time",
           "examples": [
             "The museum saw an increase in visitors after the famous artist’s exhibit opened."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "voice",
       "word": "voice",
       "senses": [
         {
-          "id": "sense-8e778ce8",
-          "pos": "noun",
+          "id": "sense-f4a7073c",
+          "pos": "n.",
           "meaningZh": "聲音；歌喉",
-          "definitionEn": "a sound that resembles speech",
           "examples": [
             "The singer showcased her powerful voice during the concert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9f96fd6b",
-          "pos": "noun",
+          "id": "sense-3a376b9f",
+          "pos": "n.",
           "meaningZh": "說話能力；嗓音",
-          "definitionEn": "the ability to speak",
           "examples": [
             "Even though she had lost her voice due to a cold, her passionate singing still moved the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wait",
       "word": "wait",
       "senses": [
         {
-          "id": "sense-a5192064",
-          "pos": "verb",
+          "id": "sense-39538505",
+          "pos": "v.",
           "meaningZh": "等待；等候",
-          "definitionEn": "to stay in one place and anticipate or expect something to happen",
           "examples": [
             "While at the doctor's office, Sarah had to wait patiently for her turn."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-36a78134",
-          "pos": "verb",
+          "id": "sense-dd1ab8dd",
+          "pos": "v.",
           "meaningZh": "延遲；暫緩",
-          "definitionEn": "to delay taking an action until a particular time or until something else happens",
           "examples": [
             "After finishing dinner, Sarah had to wait for the movie to start."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wake",
       "word": "wake",
       "senses": [
         {
-          "id": "sense-ce045388",
-          "pos": "verb",
+          "id": "sense-ffec8b6d",
+          "pos": "v.",
           "meaningZh": "叫醒；喚醒",
-          "definitionEn": "to cause someone to become awake or conscious",
           "examples": [
             "He set his alarm clock to wake him up early for his morning run."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-c5492068",
-          "pos": "noun",
+          "id": "sense-edf3de54",
+          "pos": "n.",
           "meaningZh": "後果；餘波",
-          "definitionEn": "the consequences or aftermath of an event, especially a catastrophic event",
           "examples": [
             "The wake of the earthquake included widespread destruction, displaced families, and the urgent need for humanitarian aid."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "walk",
       "word": "walk",
       "senses": [
         {
-          "id": "sense-52058a6e",
-          "pos": "verb",
+          "id": "sense-9f1fa52b",
+          "pos": "v.",
           "meaningZh": "步行；走路",
-          "definitionEn": "advance by taking steps using one’s feet",
           "examples": [
             "After a long tiring day, I decided to take a leisurely walk in the park to relax and clear my mind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a9f10b80",
-          "pos": "verb",
+          "id": "sense-36f01b1d",
+          "pos": "v.",
           "meaningZh": "散步；漫步",
-          "definitionEn": "move at a leisurely pace while walking for pleasure or exercise",
           "examples": [
             "On Sunday mornings, I like to walk along the beach, enjoying the fresh air and scenic views."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wall",
       "word": "wall",
       "senses": [
         {
-          "id": "sense-591d0f36",
-          "pos": "noun",
+          "id": "sense-204224c2",
+          "pos": "n.",
           "meaningZh": "牆；隔牆",
-          "definitionEn": "an architectural partition used to divide or enclose an area, support another structure, or built as a masonry fence around an estate or garden",
           "examples": [
             "The construction workers erected a tall concrete wall to separate the parking lot from the playground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e2f79d99",
-          "pos": "noun",
+          "id": "sense-06fb751d",
+          "pos": "n.",
           "meaningZh": "圍牆；防禦牆",
-          "definitionEn": "a layer of material enclosing space or an embankment built around a space for defensive purposes",
           "examples": [
             "The soldiers built a tall stone wall around their camp to protect themselves from enemy attacks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "want",
       "word": "want",
       "senses": [
         {
-          "id": "sense-22c1d766",
-          "pos": "verb",
+          "id": "sense-6d0791bd",
+          "pos": "v.",
           "meaningZh": "想要；要",
-          "definitionEn": "to have a desire to have or do something",
           "examples": [
             "I want a cup of coffee before we leave."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-b7c88650",
-          "pos": "noun",
+          "id": "sense-d8d3b630",
+          "pos": "n.",
           "meaningZh": "渴望；欲望",
-          "definitionEn": "a specific feeling of desire",
           "examples": [
             "After a long day at work, I want nothing more than to curl up on the couch with a good book."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a1029c69",
-          "pos": "noun",
+          "id": "sense-5072aac9",
+          "pos": "n.",
           "meaningZh": "缺乏；匱乏",
-          "definitionEn": "the state of needing something that is absent or unavailable",
           "examples": [
             "After a long day at work, I want nothing more than a hot cup of tea and a cozy blanket."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "warm",
       "word": "warm",
       "senses": [
         {
-          "id": "sense-9ab7e4b1",
-          "pos": "adjective",
+          "id": "sense-259dc6e7",
+          "pos": "adj.",
           "meaningZh": "溫暖的；暖和的",
-          "definitionEn": "having or producing a comfortable and agreeable degree of heat",
           "examples": [
             "After spending a long day skiing in the mountains, we sat by the fireplace to warm our cold hands and feet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-87e5256b",
-          "pos": "adjective",
+          "id": "sense-f4272359",
+          "pos": "adj.",
           "meaningZh": "熱情的；友善的",
-          "definitionEn": "psychologically warm; friendly and responsive",
           "examples": [
             "After a long day, Mary received a warm welcome from her friends who had prepared a surprise dinner for her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "watch",
       "word": "watch",
       "senses": [
         {
-          "id": "sense-809bf42d",
-          "pos": "noun",
+          "id": "sense-dbe98545",
+          "pos": "n.",
           "meaningZh": "手錶；腕錶",
-          "definitionEn": "a small portable timepiece",
           "examples": [
             "I always wear a watch to keep track of time during my runs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2a74450c",
-          "pos": "noun",
+          "id": "sense-5358b8f4",
+          "pos": "n.",
           "meaningZh": "值班；守衛時段",
-          "definitionEn": "the period during which someone (especially a guard) is on duty",
           "examples": [
             "The security guard’s watch ended at midnight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "water",
       "word": "water",
       "senses": [
         {
-          "id": "sense-8c4080f5",
-          "pos": "noun",
+          "id": "sense-bcfa1e7d",
+          "pos": "n.",
           "meaningZh": "水；飲用水",
-          "definitionEn": "a clear, colorless, odorless, and tasteless liquid that is essential for most plant and animal life and constitutes the rivers, lakes, oceans, and other forms of bodies of water.",
           "examples": [
             "After a long hike, I drank a refreshing glass of water to quench my thirst."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a0135200",
-          "pos": "noun",
+          "id": "sense-33da7f98",
+          "pos": "n.",
           "meaningZh": "水（H₂O）",
-          "definitionEn": "a compound consisting of two atoms of hydrogen and one atom of oxygen",
           "examples": [
             "I turned on the faucet and water splashed out, filling up the glass."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wave",
       "word": "wave",
       "senses": [
         {
-          "id": "sense-b883e662",
-          "pos": "noun",
+          "id": "sense-022a692a",
+          "pos": "n.",
           "meaningZh": "海浪；波浪",
-          "definitionEn": "a movement of the sea caused by the wind",
           "examples": [
             "The waves were so strong that the boat was rocking back and forth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9a2406c6",
-          "pos": "verb",
+          "id": "sense-3f917e67",
+          "pos": "v.",
           "meaningZh": "搖曳；飄動",
-          "definitionEn": "to move to and fro with a swaying motion",
           "examples": [
             "The wheat field looked as if it was a sea with golden waves rolling in the wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "way",
       "word": "way",
       "senses": [
         {
-          "id": "sense-2ef52870",
-          "pos": "noun",
+          "id": "sense-2dbe9be8",
+          "pos": "n.",
           "meaningZh": "路；路徑",
-          "definitionEn": "a line leading to a place or point",
           "examples": [
             "The hikers followed the winding way through the forest to reach the summit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-66094214",
-          "pos": "noun",
+          "id": "sense-5d0e783c",
+          "pos": "n.",
           "meaningZh": "道路；通道",
-          "definitionEn": "any artifact consisting of a road or path affording passage from one place to another",
           "examples": [
             "After hiking for several hours, they finally reached a narrow winding way that led to a breathtaking view of the valley."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "weak",
       "word": "weak",
       "senses": [
         {
-          "id": "sense-20c7dc74",
-          "pos": "adjective",
+          "id": "sense-d83d57e0",
+          "pos": "adj.",
           "meaningZh": "脆弱的；易崩潰的",
-          "definitionEn": "likely to fail under stress or pressure; deficient in moral strength, courage, or will",
           "examples": [
             "The weak bridge collapsed under the weight of the heavy truck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0ed36aae",
-          "pos": "adjective",
+          "id": "sense-e149336a",
+          "pos": "adj.",
           "meaningZh": "微弱的；不清晰的",
-          "definitionEn": "barely perceptible or deficient in magnitude; lacking clarity, brightness, or loudness",
           "examples": [
             "The weak signal on my phone made it impossible to hear the conversation clearly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wear",
       "word": "wear",
       "senses": [
         {
-          "id": "sense-1e15f816",
-          "pos": "noun",
+          "id": "sense-984ec902",
+          "pos": "n.",
           "meaningZh": "穿戴；穿著行為",
-          "definitionEn": "the act of having on one’s person as a covering or adornment",
           "examples": [
             "She decided to wear her favorite red dress to the party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "weather",
       "word": "weather",
       "senses": [
         {
-          "id": "sense-f44532cb",
-          "pos": "noun",
+          "id": "sense-efa523bb",
+          "pos": "n.",
           "meaningZh": "天氣；氣候狀況",
-          "definitionEn": "the state of the atmosphere, including temperature, wind, clouds, and precipitation",
           "examples": [
             "Today's weather is sunny and warm, perfect for a picnic in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-71493450",
-          "pos": "verb",
+          "id": "sense-173aff6b",
+          "pos": "v.",
           "meaningZh": "風化；受侵蝕",
-          "definitionEn": "be worn away or altered by the effects of weather",
           "examples": [
             "The old wooden fence was weathered by years of exposure to wind, rain, and sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "week",
       "word": "week",
       "senses": [
         {
-          "id": "sense-5034f667",
-          "pos": "noun",
+          "id": "sense-46c887c3",
+          "pos": "n.",
           "meaningZh": "一週；七天",
-          "definitionEn": "a period of seven consecutive days starting on Sunday",
           "examples": [
             "Let's meet next week to discuss our project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-339085ec",
-          "pos": "noun",
+          "id": "sense-61b4d9b8",
+          "pos": "n.",
           "meaningZh": "一週；連續七日",
-          "definitionEn": "any period of seven consecutive days",
           "examples": [
             "I am going on vacation next week, so I won't be available for meetings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "weekend",
       "word": "weekend",
       "senses": [
         {
-          "id": "sense-00dd529d",
-          "pos": "noun",
+          "id": "sense-0f547c21",
+          "pos": "n.",
           "meaningZh": "週末；週末假期",
-          "definitionEn": "a period of time that includes Saturday and Sunday, especially from Friday evening to Sunday night",
           "examples": [
             "I am planning to go out of town for the weekend to escape the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9b8556e5",
-          "pos": "noun",
+          "id": "sense-621eb541",
+          "pos": "n.",
           "meaningZh": "週末時光",
-          "definitionEn": "any part of the week that includes Saturday and Sunday, whether it is a workday or not",
           "examples": [
             "She spends most of her weekends hiking and camping."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "welcome",
       "word": "welcome",
       "senses": [
         {
-          "id": "sense-9558d464",
-          "pos": "noun",
+          "id": "sense-26058ae4",
+          "pos": "n.",
           "meaningZh": "歡迎；款待",
-          "definitionEn": "the state of being received with pleasure",
           "examples": [
             "As we entered the party, we were greeted with a warm welcome by the host."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0ff2211f",
-          "pos": "noun",
+          "id": "sense-f07d1c9f",
+          "pos": "n.",
           "meaningZh": "歡迎儀式；迎接",
-          "definitionEn": "a greeting or reception",
           "examples": [
             "As soon as we arrived at the party, we were given a warm welcome by the host."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "well",
       "word": "well",
       "senses": [
         {
-          "id": "sense-e47b7799",
-          "pos": "adverb",
+          "id": "sense-02584512",
+          "pos": "adv.",
           "meaningZh": "好地；出色地",
-          "definitionEn": "in a good or satisfactory manner, often to a high standard.",
           "examples": [
             "He performed well in his exams and scored the highest marks among his classmates."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-e8fc16fc",
-          "pos": "adverb",
+          "id": "sense-a49520c1",
+          "pos": "adv.",
           "meaningZh": "良好地；令人滿意地",
-          "definitionEn": "in a favorable way; with approval",
           "examples": [
             "She was pleased to hear that her proposal was received well by the board of directors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "west",
       "word": "west",
       "senses": [
         {
-          "id": "sense-6eed3faa",
-          "pos": "noun",
+          "id": "sense-33afebde",
+          "pos": "n.",
           "meaningZh": "西方；西邊",
-          "definitionEn": "the direction or area lying opposite to the east",
           "examples": [
             "She watched the sun set over the horizon in the west."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-dcc1db7d",
-          "pos": "noun",
+          "id": "sense-dcdeb1b9",
+          "pos": "n.",
           "meaningZh": "西部地區；西側",
-          "definitionEn": "a location situated in the western region of a country, region, or city",
           "examples": [
             "If you head west from here, you'll reach the coast in just a few hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wet",
       "word": "wet",
       "senses": [
         {
-          "id": "sense-06e46bf5",
-          "pos": "adjective",
+          "id": "sense-d44d4fb9",
+          "pos": "adj.",
           "meaningZh": "濕的；浸濕的",
-          "definitionEn": "covered or soaked with a liquid, especially water",
           "examples": [
             "After playing in the rain, my clothes were wet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4f853b65",
-          "pos": "adjective",
+          "id": "sense-070910e9",
+          "pos": "adj.",
           "meaningZh": "潮濕的；有水分的",
-          "definitionEn": "containing moisture or moistness; damp",
           "examples": [
             "The children got wet in the rain and had to change their clothes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "what",
+      "word": "what",
+      "senses": [
+        {
+          "id": "sense-e198279c",
+          "pos": "pron.",
+          "meaningZh": "什麼；哪件事",
+          "examples": [
+            "What is that noise coming from the kitchen?"
+          ]
+        },
+        {
+          "id": "sense-e4981ab9",
+          "pos": "pron.",
+          "meaningZh": "用於表達看法或詢問",
+          "examples": [
+            "What do you think about the new movie?"
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "when",
+      "word": "when",
+      "senses": [
+        {
+          "id": "sense-f37614bc",
+          "pos": "conj.",
+          "meaningZh": "當……時；既然",
+          "examples": [
+            "When it started raining, we decided to stay indoors."
+          ]
+        },
+        {
+          "id": "sense-66d63ae5",
+          "pos": "conj.",
+          "meaningZh": "儘管；雖然",
+          "examples": [
+            "When I was sick, I still managed to finish my work on time."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "where",
+      "word": "where",
+      "senses": [
+        {
+          "id": "sense-3e4fba6a",
+          "pos": "conj.",
+          "meaningZh": "在哪裡；何處",
+          "examples": [
+            "Where is the nearest coffee shop?"
+          ]
+        },
+        {
+          "id": "sense-fe1e95ba",
+          "pos": "conj.",
+          "meaningZh": "在哪個階段；到了哪一步",
+          "examples": [
+            "Where are we in the project timeline?"
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "whether",
+      "word": "whether",
+      "senses": [
+        {
+          "id": "sense-5db68e5f",
+          "pos": "conj.",
+          "meaningZh": "是否；不管……還是",
+          "examples": [
+            "I can't decide whether to go on vacation or stay home and relax."
+          ]
+        },
+        {
+          "id": "sense-6c104ad8",
+          "pos": "conj.",
+          "meaningZh": "不論；無論……還是",
+          "examples": [
+            "I'm not sure whether I should go to the party or stay home tonight."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "which",
+      "word": "which",
+      "senses": [
+        {
+          "id": "sense-d84e9bee",
+          "pos": "pron.",
+          "meaningZh": "哪一個；哪些",
+          "examples": [
+            "Which book would you like to borrow from the library?"
+          ]
+        },
+        {
+          "id": "sense-c5f02223",
+          "pos": "pron.",
+          "meaningZh": "其中；用以補充說明",
+          "examples": [
+            "She received two job offers, one from a small startup and another from a large corporation, of which she chose the latter."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

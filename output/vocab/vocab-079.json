@@ -1,1330 +1,633 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 79,
   "words": [
-    {
-      "wordKey": "lace",
-      "word": "lace",
-      "senses": [
-        {
-          "id": "sense-d16cf1a0",
-          "pos": "noun",
-          "meaningZh": "蕾絲；花邊",
-          "definitionEn": "a delicate fabric with symmetrical patterns made by weaving threads together",
-          "examples": [
-            "She wore a beautiful lace dress to the formal event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-63d90a03",
-          "pos": "verb",
-          "meaningZh": "繫緊；綁好",
-          "definitionEn": "fasten or tighten (something) with a lace",
-          "examples": [
-            "She used a piece of lace to tie her shoelaces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "ladder",
-      "word": "ladder",
-      "senses": [
-        {
-          "id": "sense-85935c7e",
-          "pos": "noun",
-          "meaningZh": "梯子；攀梯",
-          "definitionEn": "a structure consisting of two parallel side pieces connected by a series of rungs, used for climbing up or down",
-          "examples": [
-            "In order to fix the roof, I had to climb up the ladder to reach it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "lately",
-      "word": "lately",
-      "senses": [
-        {
-          "id": "sense-7ccb62f9",
-          "pos": "adverb",
-          "meaningZh": "最近；近來",
-          "definitionEn": "recently; in the recent past; not long ago",
-          "examples": [
-            "I haven't seen her lately, I wonder how she's been."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L3",
-        "textbookTitle": "龍騰 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "laughter",
-      "word": "laughter",
-      "senses": [
-        {
-          "id": "sense-9cd63a8c",
-          "pos": "noun",
-          "meaningZh": "笑聲",
-          "definitionEn": "the sound of laughing",
-          "examples": [
-            "The comedian’s jokes were so funny that the audience was filled with the sound of uproarious laughter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-3b98fee0",
-          "pos": "noun",
-          "meaningZh": "歡笑；笑鬧",
-          "definitionEn": "the activity of laughing; the expression of joy, mirth, or ridicule",
-          "examples": [
-            "Her contagious laughter filled the room, as everyone joined in with their own joyous sounds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1",
-        "textbookTitle": "龍騰 B3·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "laundry",
-      "word": "laundry",
-      "senses": [
-        {
-          "id": "sense-d6e0901b",
-          "pos": "noun",
-          "meaningZh": "待洗衣物；洗好的衣物",
-          "definitionEn": "clothes, towels, and sheets that are to be washed or that have been recently washed",
-          "examples": [
-            "I have a huge pile of laundry to do after our vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-721dad85",
-          "pos": "noun",
-          "meaningZh": "洗衣店；洗衣房",
-          "definitionEn": "a business establishment where clothes and linens are laundered",
-          "examples": [
-            "I took my dirty clothes to the laundry because my washing machine was broken."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "lawn",
       "word": "lawn",
       "senses": [
         {
-          "id": "sense-8f79fa40",
-          "pos": "noun",
+          "id": "sense-f2f53750",
+          "pos": "n.",
           "meaningZh": "草坪；草地",
-          "definitionEn": "a area of grass that is kept mowed and tidy, usually in a yard or park",
           "examples": [
             "I like to relax on my lawn and read a book on sunny afternoons."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "leak",
       "word": "leak",
       "senses": [
         {
-          "id": "sense-9b2dfd3f",
-          "pos": "verb",
+          "id": "sense-9720f7ca",
+          "pos": "v.",
           "meaningZh": "漏水；洩漏",
-          "definitionEn": "to have an opening that allows substances or light to come in or go out",
           "examples": [
             "The roof of the house had a leak, causing water to drip into the living room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5daa4f38",
-          "pos": "verb",
+          "id": "sense-d8a0cadd",
+          "pos": "v.",
           "meaningZh": "滲入；漏出",
-          "definitionEn": "to enter or escape through a hole or crack",
           "examples": [
             "After heavy rain, water started to leak through the roof of the old house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "leap",
       "word": "leap",
       "senses": [
         {
-          "id": "sense-469f2e53",
-          "pos": "noun",
+          "id": "sense-bae73903",
+          "pos": "n.",
           "meaningZh": "跳躍；一躍",
-          "definitionEn": "a light, self-propelled movement upwards or forwards",
           "examples": [
             "The athlete took a breathtaking leap, clearing the high jump bar with ease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8b832707",
-          "pos": "verb",
+          "id": "sense-306f4b36",
+          "pos": "v.",
           "meaningZh": "躍進；跳躍前進",
-          "definitionEn": "move forward by leaps and bounds",
           "examples": [
             "After weeks of hard work and dedication, John leaped ahead of his competition to claim the top spot in the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "learning",
       "word": "learning",
       "senses": [
         {
-          "id": "sense-ef4fbb38",
-          "pos": "noun",
+          "id": "sense-cc68a808",
+          "pos": "n.",
           "meaningZh": "學習；知識習得",
-          "definitionEn": "the cognitive process of acquiring skill or knowledge",
           "examples": [
             "Online learning has become a popular way to acquire new knowledge and skills in recent years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8a587a35",
-          "pos": "noun",
+          "id": "sense-c40a9945",
+          "pos": "n.",
           "meaningZh": "學識；學問",
-          "definitionEn": "profound scholarly knowledge",
           "examples": [
             "His learning of ancient Greek and Roman history is impressive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "leather",
       "word": "leather",
       "senses": [
         {
-          "id": "sense-7ac95b59",
-          "pos": "noun",
+          "id": "sense-3a62d8ad",
+          "pos": "n.",
           "meaningZh": "皮革；皮料",
-          "definitionEn": "the material made from an animal skin by removing the hair, then tanning and made smooth and flexible",
           "examples": [
             "The cowboy wore a pair of leather boots while riding his horse."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3f2708af",
-          "pos": "verb",
+          "id": "sense-4cf7839e",
+          "pos": "v.",
           "meaningZh": "用皮帶抽打",
-          "definitionEn": "beat or whip someone or something with a leather strap",
           "examples": [
             "The cruel prison guard threatened to leather the prisoners if they didn’t get back to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "leisure",
       "word": "leisure",
       "senses": [
         {
-          "id": "sense-9992fa62",
-          "pos": "noun",
+          "id": "sense-e30977fa",
+          "pos": "n.",
           "meaningZh": "休閒；娛樂時間",
-          "definitionEn": "the freedom to do things that you enjoy in your spare time",
           "examples": [
             "After finishing her work obligations, Amy settled into her favorite armchair with a good book and a cup of tea, finally able to enjoy some leisure time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-bb15c1bb",
-          "pos": "noun",
+          "id": "sense-08030593",
+          "pos": "n.",
           "meaningZh": "空閒時間；閒暇",
-          "definitionEn": "the time when you are not working or doing other duties",
           "examples": [
             "After a long week of hard work, I like to spend my leisure time reading a good book and relaxing in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5 +1",
-        "textbookTitle": "龍騰 B3·L5、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lemonade",
       "word": "lemonade",
       "senses": [
         {
-          "id": "sense-f1ac00f6",
-          "pos": "noun",
+          "id": "sense-77fb846e",
+          "pos": "n.",
           "meaningZh": "檸檬水；檸檬汽水",
-          "definitionEn": "a sweet drink made from diluted lemon juice and sugar",
           "examples": [
             "On a hot summer day, there is nothing quite as refreshing as a tall glass of homemade, ice-cold lemonade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "leopard",
       "word": "leopard",
       "senses": [
         {
-          "id": "sense-113ffc5a",
-          "pos": "noun",
+          "id": "sense-151e3de6",
+          "pos": "n.",
           "meaningZh": "豹；花豹",
-          "definitionEn": "a type of big cat found in Africa and south Asia, known for its yellow fur with black spots",
           "examples": [
             "During our safari in Africa, we were lucky enough to spot a majestic leopard lounging in a tree, camouflaged by the dense foliage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lettuce",
       "word": "lettuce",
       "senses": [
         {
-          "id": "sense-56777bfd",
-          "pos": "noun",
+          "id": "sense-eb3d4261",
+          "pos": "n.",
           "meaningZh": "萵苣；生菜",
-          "definitionEn": "the leaves of a plant, eaten as a vegetable and commonly used in salads",
           "examples": [
             "She prepared a Greek salad with chopped lettuce, cucumber, tomatoes, onion, and feta cheese."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "liberty",
       "word": "liberty",
       "senses": [
         {
-          "id": "sense-7138b5f8",
-          "pos": "noun",
+          "id": "sense-6b1b2ef0",
+          "pos": "n.",
           "meaningZh": "自由；人身自由",
-          "definitionEn": "personal freedom from servitude, confinement, or oppression",
           "examples": [
             "The statue of liberty in the United States stands as a symbol of freedom and liberty for all those seeking refuge and asylum."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-07166303",
-          "pos": "noun",
+          "id": "sense-b6b47a5b",
+          "pos": "n.",
           "meaningZh": "自由選擇權；行動自由",
-          "definitionEn": "freedom of choice or action without external constraint",
           "examples": [
             "The citizens of the country celebrated their liberty by exercising their right to vote in free and fair elections."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lick",
       "word": "lick",
       "senses": [
         {
-          "id": "sense-56638df0",
-          "pos": "verb",
+          "id": "sense-796fb393",
+          "pos": "v.",
           "meaningZh": "舔；舔舐",
-          "definitionEn": "To pass the tongue over something.",
           "examples": [
             "The young girl giggled as she leaned forward to lick the ice cream cone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-277848b4",
-          "pos": "noun",
+          "id": "sense-5be472fc",
+          "pos": "n.",
           "meaningZh": "鹽礦舔舐處（動物補鹽地點）",
-          "definitionEn": "A salt deposit that animals regularly consume.",
           "examples": [
             "During dry seasons, the elephants trek for miles to reach the nearby lick and replenish their salt intake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L4",
-        "textbookTitle": "翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lifetime",
       "word": "lifetime",
       "senses": [
         {
-          "id": "sense-f8a3f014",
-          "pos": "noun",
+          "id": "sense-3127a660",
+          "pos": "n.",
           "meaningZh": "一生；在世期間",
-          "definitionEn": "the period of time throughout which a person is alive or something continues to exist",
           "examples": [
             "Her grandmother's artwork has brought her joy throughout her lifetime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lighthouse",
       "word": "lighthouse",
       "senses": [
         {
-          "id": "sense-3cb0cd47",
-          "pos": "noun",
+          "id": "sense-b4781a73",
+          "pos": "n.",
           "meaningZh": "燈塔",
-          "definitionEn": "a tall structure with a powerful light used to guide ships safely to shore and warn them of dangerous areas",
           "examples": [
             "As the stormy night grew darker, the lighthouse stood proud and illuminated the treacherous waters, providing a guiding beacon for the lost ship."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lightning",
       "word": "lightning",
       "senses": [
         {
-          "id": "sense-4aae1752",
-          "pos": "noun",
+          "id": "sense-d0d30006",
+          "pos": "n.",
           "meaningZh": "閃電；雷電",
-          "definitionEn": "abrupt electric discharge from cloud to cloud or from cloud to earth accompanied by the emission of light",
           "examples": [
             "The sky lit up with bolts of lightning during the thunderstorm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-49d1b492",
-          "pos": "noun",
+          "id": "sense-37decd36",
+          "pos": "n.",
           "meaningZh": "閃電光芒",
-          "definitionEn": "the flash of light that accompanies an electric discharge in the atmosphere or something resembling such a flash and can scintillate for a second or more",
           "examples": [
             "During last night’s storm, a bolt of lightning lit up the sky and illuminated the entire room for a split second."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lily",
       "word": "lily",
       "senses": [
         {
-          "id": "sense-263f028b",
-          "pos": "noun",
+          "id": "sense-fde2018f",
+          "pos": "n.",
           "meaningZh": "百合花；百合",
-          "definitionEn": "a kind of flower with large showy petals hanging from a stem, which belongs to the lilium family of plants.",
           "examples": [
             "She received a bouquet of lilies on her birthday, their sweet fragrance filling the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "limb",
       "word": "limb",
       "senses": [
         {
-          "id": "sense-a54b243b",
-          "pos": "noun",
+          "id": "sense-48d9f79f",
+          "pos": "n.",
           "meaningZh": "四肢；翼肢",
-          "definitionEn": "an arm, leg, wing, flipper, or other jointed appendage of an animal used for movement or grasping",
           "examples": [
             "The bird flapped its wings, stretching every limb as it took off into the sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-671b23ae",
-          "pos": "noun",
+          "id": "sense-f45d2bea",
+          "pos": "n.",
           "meaningZh": "樹枝；枝幹",
-          "definitionEn": "a projection resembling a human arm",
           "examples": [
             "The tree had several limbs extending in different directions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L8",
-        "textbookTitle": "翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "litter",
       "word": "litter",
       "senses": [
         {
-          "id": "sense-bffe389d",
-          "pos": "noun",
+          "id": "sense-a0b43901",
+          "pos": "n.",
           "meaningZh": "垃圾；隨地丟棄的廢物",
-          "definitionEn": "rubbish that is carelessly dropped or left in public places",
           "examples": [
             "After the picnic, they left their litter scattered all over the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-3f0e3c83",
-          "pos": "noun",
+          "id": "sense-82a1e0bf",
+          "pos": "n.",
           "meaningZh": "墊料；動物臥鋪材料",
-          "definitionEn": "material, such as hay or straw, used as bedding for animals",
           "examples": [
             "The farmer spread fresh litter in the chicken coop to provide a cozy and clean resting area for the hens."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lively",
       "word": "lively",
       "senses": [
         {
-          "id": "sense-49081e13",
-          "pos": "adjective",
+          "id": "sense-7d37cb61",
+          "pos": "adj.",
           "meaningZh": "活潑的；有朝氣的",
-          "definitionEn": "full of spirit",
           "examples": [
             "The lively crowd cheered and danced to the energetic music."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5638c2ac",
-          "pos": "adjective",
+          "id": "sense-619b4ada",
+          "pos": "adj.",
           "meaningZh": "生氣勃勃的；熱鬧的",
-          "definitionEn": "full of life and energy",
           "examples": [
             "The lively children were running and laughing in the playground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "loaf",
       "word": "loaf",
       "senses": [
         {
-          "id": "sense-d89eeaa4",
-          "pos": "noun",
+          "id": "sense-a8402294",
+          "pos": "n.",
           "meaningZh": "一條麵包",
-          "definitionEn": "a mass of baked bread in a specific shape, often sliced before consumption",
           "examples": [
             "I bought a loaf of bread from the bakery yesterday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lobby",
       "word": "lobby",
       "senses": [
         {
-          "id": "sense-de119113",
-          "pos": "noun",
+          "id": "sense-e9be8383",
+          "pos": "n.",
           "meaningZh": "大廳；門廳",
-          "definitionEn": "a large hall or entrance area inside a hotel, theater, or other public building",
           "examples": [
             "We waited for our friends in the hotel lobby."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-fbff0d64",
-          "pos": "noun",
+          "id": "sense-36a56eb4",
+          "pos": "n.",
           "meaningZh": "遊說團體；壓力集團",
-          "definitionEn": "a group of people who actively try to influence legislation",
           "examples": [
             "The oil lobby was working hard to convince legislators to lift restrictions on drilling in protected lands."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a6b9521a",
-          "pos": "noun",
+          "id": "sense-cf8a19ea",
+          "pos": "n.",
           "meaningZh": "倡議群體；利益集團",
-          "definitionEn": "the people who support a common cause, business, principle, or sectional interest",
           "examples": [
             "The environmental lobby was successful in convincing the government to pass stricter laws on pollution control."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "locate",
       "word": "locate",
       "senses": [
         {
-          "id": "sense-4b823c7f",
-          "pos": "verb",
+          "id": "sense-69cdca4e",
+          "pos": "v.",
           "meaningZh": "找到；查明位置",
-          "definitionEn": "to discover the location or position of something or someone by searching or investigating",
           "examples": [
             "The detective was able to locate the missing person’s whereabouts using the GPS system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f27ff615",
-          "pos": "verb",
+          "id": "sense-bec80cf8",
+          "pos": "v.",
           "meaningZh": "標定位置；測定方位",
-          "definitionEn": "to determine and mark or indicate the place, site, or boundaries of something, often using a tool or a survey",
           "examples": [
             "The treasure hunters were able to locate the buried chest using metal detectors and ground-penetrating radar."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "location",
       "word": "location",
       "senses": [
         {
-          "id": "sense-08c52bae",
-          "pos": "noun",
+          "id": "sense-4c336d5a",
+          "pos": "n.",
           "meaningZh": "所在地點；位置",
-          "definitionEn": "a determination of where something is located",
           "examples": [
             "The Google Maps app can help you find the location of your favorite restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ac06c4c6",
-          "pos": "noun",
+          "id": "sense-60f1fcd2",
+          "pos": "n.",
           "meaningZh": "放置地點；投遞地址",
-          "definitionEn": "the act of placing or putting something in a certain place",
           "examples": [
             "Please send us the location where the package should be delivered."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L4",
-        "textbookTitle": "龍騰 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lock",
       "word": "lock",
       "senses": [
         {
-          "id": "sense-9465c0b9",
-          "pos": "noun",
+          "id": "sense-8a0db865",
+          "pos": "n.",
           "meaningZh": "鎖；門鎖",
-          "definitionEn": "a fastener used to keep a door or drawer firmly closed",
           "examples": [
             "Sarah turned the key in the lock and opened the front door of her house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-21773ef1",
-          "pos": "verb",
+          "id": "sense-789b0200",
+          "pos": "v.",
           "meaningZh": "上鎖；鎖住",
-          "definitionEn": "to fasten something with a lock",
           "examples": [
             "She always locks her car before leaving it in the parking lot."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "log",
       "word": "log",
       "senses": [
         {
-          "id": "sense-42e8cdc7",
-          "pos": "noun",
+          "id": "sense-d7214edb",
+          "pos": "n.",
           "meaningZh": "記錄；日誌",
-          "definitionEn": "a written record of messages that have been sent or received",
           "examples": [
             "Keep a log of all the emails you send and receive for future reference."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-472948e3",
-          "pos": "noun",
+          "id": "sense-85d54057",
+          "pos": "n.",
           "meaningZh": "原木；木材",
-          "definitionEn": "a segment of a tree trunk that has been stripped of its branches",
           "examples": [
             "The lumberjacks stacked the logs neatly in a pile, ready to be transported to the sawmill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "lollipop",
       "word": "lollipop",
       "senses": [
         {
-          "id": "sense-4e3eff04",
-          "pos": "noun",
+          "id": "sense-48b0fd70",
+          "pos": "n.",
           "meaningZh": "棒棒糖",
-          "definitionEn": "a type of hard candy that is fixed onto a stick or a handle",
           "examples": [
             "As the children explored the carnival, they eagerly picked out their favorite lollipops from the colorful booth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-6eb1d309",
-          "pos": "noun",
+          "id": "sense-22028f6d",
+          "pos": "n.",
           "meaningZh": "冰棒；雪糕（有棍的冷凍甜點）",
-          "definitionEn": "a type of frozen dessert, such as ice cream or water ice, on a small wooden stick",
           "examples": [
             "On a hot summer day, the children enjoyed licking their lollipops to cool down and satisfy their sweet tooth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "loose",
+      "word": "loose",
+      "senses": [
+        {
+          "id": "sense-38652d6b",
+          "pos": "adj.",
+          "meaningZh": "鬆的；未固定的",
+          "examples": [
+            "The rope was loose and could easily be untied."
+          ]
+        },
+        {
+          "id": "sense-8c4e19d7",
+          "pos": "adj.",
+          "meaningZh": "鬆散的；疏鬆的",
+          "examples": [
+            "The soil in the garden was loose and easy to dig."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lord",
+      "word": "lord",
+      "senses": [
+        {
+          "id": "sense-76bf1dd6",
+          "pos": "n.",
+          "meaningZh": "領主；貴族；君主",
+          "examples": [
+            "The lord of the castle summoned his knights to prepare for battle."
+          ]
+        },
+        {
+          "id": "sense-caa0521a",
+          "pos": "v.",
+          "meaningZh": "封為勛爵；授予貴族頭銜",
+          "examples": [
+            "In the ceremony, the queen will lord him in recognition of his remarkable service to the country."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "loser",
+      "word": "loser",
+      "senses": [
+        {
+          "id": "sense-5f2b1376",
+          "pos": "n.",
+          "meaningZh": "落敗者；輸家",
+          "examples": [
+            "After joining the singing competition, he unfortunately became the loser in the final round."
+          ]
+        },
+        {
+          "id": "sense-0917bc22",
+          "pos": "n.",
+          "meaningZh": "失敗慣犯；窩囊廢",
+          "examples": [
+            "Despite his best efforts, he was always the first one to lose in any game or competition. He truly lived up to his reputation as a loser."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lover",
+      "word": "lover",
+      "senses": [
+        {
+          "id": "sense-2110a922",
+          "pos": "n.",
+          "meaningZh": "情人；愛侶（非婚姻關係）",
+          "examples": [
+            "After years of dating, they finally introduced each other as lovers to their friends and family."
+          ]
+        },
+        {
+          "id": "sense-9cfcedaf",
+          "pos": "n.",
+          "meaningZh": "戀人；相愛的人",
+          "examples": [
+            "John and Jane had been dating for years, and they were deeply in love with each other. They were inseparable lovers who supported and cared for each other through thick and thin."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "luggage",
+      "word": "luggage",
+      "senses": [
+        {
+          "id": "sense-0c5c633e",
+          "pos": "n.",
+          "meaningZh": "行李；旅行袋",
+          "examples": [
+            "I packed my clothes and toiletries in my luggage before heading to the airport."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1432 +1,687 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 53,
   "words": [
-    {
-      "wordKey": "policy",
-      "word": "policy",
-      "senses": [
-        {
-          "id": "sense-437bd275",
-          "pos": "noun",
-          "meaningZh": "政策；方針",
-          "definitionEn": "a plan of action adopted by an individual or social group",
-          "examples": [
-            "The government implemented a new policy to promote renewable energy and reduce carbon emissions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-0df69cb0",
-          "pos": "noun",
-          "meaningZh": "施政依據；政策說明",
-          "definitionEn": "a line of argument used by a government as a reason for its course of action",
-          "examples": [
-            "The government's policy on renewable energy emphasizes the need to reduce greenhouse gas emissions and transition to sustainable sources such as solar and wind power."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4 +1",
-        "textbookTitle": "龍騰 B2·L4、三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "pop",
-      "word": "pop",
-      "senses": [
-        {
-          "id": "sense-7c76aa22",
-          "pos": "noun",
-          "meaningZh": "流行音樂；流行的",
-          "definitionEn": "modern popular music that appeals to a wide audience",
-          "examples": [
-            "She loves listening to pop music."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-bc4fc519",
-          "pos": "noun",
-          "meaningZh": "爆破聲；砰的一聲",
-          "definitionEn": "a sharp explosive sound, such as from a gunshot or drawing a cork",
-          "examples": [
-            "The balloon made a loud pop as it burst."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "population",
-      "word": "population",
-      "senses": [
-        {
-          "id": "sense-de684564",
-          "pos": "noun",
-          "meaningZh": "人口；族群數量",
-          "definitionEn": "the people who live in a specific place or territory, or a group of organisms of the same species living in a particular area",
-          "examples": [
-            "The population of New York City is over 8 million people."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-baca3c2f",
-          "pos": "noun",
-          "meaningZh": "總人口；居住人數",
-          "definitionEn": "the act of filling a place with people or living organisms, or the total number of inhabitants in a given place",
-          "examples": [
-            "The population of the city grew rapidly after several new housing developments were built."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "pork",
-      "word": "pork",
-      "senses": [
-        {
-          "id": "sense-ca84b20e",
-          "pos": "noun",
-          "meaningZh": "豬肉",
-          "definitionEn": "meat obtained from pigs that are raised for consumption",
-          "examples": [
-            "For dinner, we had roasted pork with mashed sweet potatoes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-0a9ce2f8",
-          "pos": "noun",
-          "meaningZh": "政治肥肉；利益輸送",
-          "definitionEn": "an act of adding government funds to a project, legislation, etc. with the aim of benefiting a specific group of people or gaining political support",
-          "examples": [
-            "Opponents of the new policy accuse it of being nothing more than pork, designed to gain the support of the agricultural industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "port",
-      "word": "port",
-      "senses": [
-        {
-          "id": "sense-f09e69ea",
-          "pos": "noun",
-          "meaningZh": "港口；口岸",
-          "definitionEn": "a place, such as a seaport or airport, where people and goods can enter or leave a country",
-          "examples": [
-            "The port of Los Angeles is one of the busiest ports in the world, facilitating the importation and exportation of goods between the United States and many other countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-8b337e05",
-          "pos": "noun",
-          "meaningZh": "砲孔；船舷孔",
-          "definitionEn": "an opening, as in a wall or ship, through which something can be passed or fired",
-          "examples": [
-            "The pirates aimed their cannons at the port in the ship’s wall, trying to blast their way through to the treasure inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L3",
-        "textbookTitle": "三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "pose",
       "word": "pose",
       "senses": [
         {
-          "id": "sense-9970b4d0",
-          "pos": "verb",
+          "id": "sense-5b468c47",
+          "pos": "v.",
           "meaningZh": "擺姿勢；擺拍",
-          "definitionEn": "assume a posture, especially for artistic purposes",
           "examples": [
             "The model held a difficult pose for over an hour while the artist painted her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-dece5d13",
-          "pos": "verb",
+          "id": "sense-9c014aea",
+          "pos": "v.",
           "meaningZh": "擺放；安置",
-          "definitionEn": "put something into a certain place or abstract location",
           "examples": [
             "He posed for a photograph in front of the Eiffel Tower."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "position",
       "word": "position",
       "senses": [
         {
-          "id": "sense-22377a03",
-          "pos": "noun",
+          "id": "sense-e0c3dd9f",
+          "pos": "n.",
           "meaningZh": "職位；職務",
-          "definitionEn": "a person’s rank or role in an organization, especially in a company or military",
           "examples": [
             "In the company, John holds a high-ranking position as the Director of Sales."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-98fd2026",
-          "pos": "noun",
+          "id": "sense-7a781c1a",
+          "pos": "n.",
           "meaningZh": "姿勢；姿態",
-          "definitionEn": "a particular way in which someone stands, sits, or holds their body",
           "examples": [
             "John adjusted his sitting position to find a more comfortable posture while studying for his exams."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "positive",
       "word": "positive",
       "senses": [
         {
-          "id": "sense-214d3ad7",
-          "pos": "adjective",
+          "id": "sense-21a293c9",
+          "pos": "adj.",
           "meaningZh": "正面的；積極的",
-          "definitionEn": "showing or implying advantage or progress",
           "examples": [
             "She had a positive outlook on life, always finding a silver lining in any situation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4e85724a",
-          "pos": "adjective",
+          "id": "sense-d8683d38",
+          "pos": "adj.",
           "meaningZh": "肯定的；確信的",
-          "definitionEn": "showing certainty or agreement; confident",
           "examples": [
             "The team had a positive attitude towards the project, confidently believing they would succeed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "possibility",
       "word": "possibility",
       "senses": [
         {
-          "id": "sense-fbf2a665",
-          "pos": "noun",
+          "id": "sense-a80cca1d",
+          "pos": "n.",
           "meaningZh": "可能性；可能發生",
-          "definitionEn": "the capability of something being true or happening",
           "examples": [
             "There is a possibility of rain later today, so don’t forget to bring your umbrella."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-10bbd771",
-          "pos": "noun",
+          "id": "sense-1c6fcc99",
+          "pos": "n.",
           "meaningZh": "可能性；潛在機率",
-          "definitionEn": "a potential or likelihood of something occurring in the future",
           "examples": [
             "Because there’s a possibility of rain, I am bringing an umbrella."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "post",
       "word": "post",
       "senses": [
         {
-          "id": "sense-d85a8fe5",
-          "pos": "noun",
+          "id": "sense-e91bdb65",
+          "pos": "n.",
           "meaningZh": "木樁；立柱",
-          "definitionEn": "an upright structure made of wood or metal that is fixed vertically",
           "examples": [
             "The carpenter used a sturdy oak post to support the porch roof."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6c9cde3d",
-          "pos": "noun",
+          "id": "sense-8f5d87bd",
+          "pos": "n.",
           "meaningZh": "郵政；郵寄系統",
-          "definitionEn": "the system used to send and receive mail through a post office",
           "examples": [
             "Sarah went to the post office to send a package to her sister."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L6",
-        "textbookTitle": "翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "postcard",
       "word": "postcard",
       "senses": [
         {
-          "id": "sense-90b0fb79",
-          "pos": "noun",
+          "id": "sense-b35646d5",
+          "pos": "n.",
           "meaningZh": "明信片",
-          "definitionEn": "a card with a picture on one side that you write a message on and send by mail without an envelope",
           "examples": [
             "She sent me a postcard from Paris with a photo of the Eiffel Tower on it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pound",
       "word": "pound",
       "senses": [
         {
-          "id": "sense-591256e8",
-          "pos": "noun",
+          "id": "sense-29bec97c",
+          "pos": "n.",
           "meaningZh": "磅（重量單位）",
-          "definitionEn": "16 ounces avoirdupois, a unit of weight",
           "examples": [
             "I need to buy a pound of flour to bake the cake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-ec0434a4",
-          "pos": "noun",
+          "id": "sense-ba2924c8",
+          "pos": "n.",
           "meaningZh": "英鎊",
-          "definitionEn": "the basic unit of currency in Great Britain and Northern Ireland; equal to 100 pence",
           "examples": [
             "I exchanged my dollars for pounds at the bank before my trip to London."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "powerful",
       "word": "powerful",
       "senses": [
         {
-          "id": "sense-8f8f6497",
-          "pos": "adjective",
+          "id": "sense-511d72d3",
+          "pos": "adj.",
           "meaningZh": "強大的；有力的",
-          "definitionEn": "having great strength or force",
           "examples": [
             "The powerful explosion shook the entire building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4f73d5a6",
-          "pos": "adjective",
+          "id": "sense-87a9362a",
+          "pos": "adj.",
           "meaningZh": "影響深遠的；震撼人心的",
-          "definitionEn": "having a strong or significant impact",
           "examples": [
             "The CEO's powerful speech inspired the employees to work harder and achieve their goals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "praise",
       "word": "praise",
       "senses": [
         {
-          "id": "sense-80552b0d",
-          "pos": "noun",
+          "id": "sense-32c33ab1",
+          "pos": "n.",
           "meaningZh": "讚美；稱讚",
-          "definitionEn": "an expression of approval and admiration",
           "examples": [
             "After the performance, the audience gave a standing ovation to praise the young musician for her incredible talent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-be163a4e",
-          "pos": "verb",
+          "id": "sense-def366f3",
+          "pos": "v.",
           "meaningZh": "讚揚；稱頌",
-          "definitionEn": "to express approval or admiration of someone or something",
           "examples": [
             "During the award ceremony, the speaker praised the recipient for her remarkable contributions to the field of medical research."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pray",
       "word": "pray",
       "senses": [
         {
-          "id": "sense-3f7e2d39",
-          "pos": "verb",
+          "id": "sense-8652cafc",
+          "pos": "v.",
           "meaningZh": "祈禱；禱告",
-          "definitionEn": "say a prayer to a deity, prophet, saint, or object of worship",
           "examples": [
             "Every evening, Maria would kneel down and pray to God for guidance and strength."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a66c7f6a",
-          "pos": "verb",
+          "id": "sense-ccd0e06f",
+          "pos": "v.",
           "meaningZh": "懇求；祈求",
-          "definitionEn": "make a fervent request or wish to someone or something",
           "examples": [
             "In times of desperate need, many people turn to their faith and pray for guidance and strength."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prayer",
       "word": "prayer",
       "senses": [
         {
-          "id": "sense-e80fc272",
-          "pos": "noun",
+          "id": "sense-bd41da7e",
+          "pos": "n.",
           "meaningZh": "祈禱文；禱詞",
-          "definitionEn": "a fixed text used in praying",
           "examples": [
             "The pastor led the congregation in reciting a collective prayer for peace and unity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prefer",
       "word": "prefer",
       "senses": [
         {
-          "id": "sense-a42d3617",
-          "pos": "verb",
+          "id": "sense-72571498",
+          "pos": "v.",
           "meaningZh": "偏好；較喜歡",
-          "definitionEn": "to choose something over something else because you think it would be better or more suitable",
           "examples": [
             "I prefer tea over coffee because it has a milder flavor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-6d2ede2f",
-          "pos": "verb",
+          "id": "sense-b2dbb112",
+          "pos": "v.",
           "meaningZh": "優先清償；優先給付",
-          "definitionEn": "in business, to give priority to one creditor over another",
           "examples": [
             "In order to maintain a good relationship with a key supplier, the company had to prefer them over other creditors and pay their outstanding invoices first."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4 +2",
-        "textbookTitle": "龍騰 B3·L4、三民 B4·L9、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "president",
       "word": "president",
       "senses": [
         {
-          "id": "sense-6456cc60",
-          "pos": "noun",
+          "id": "sense-2bddb7b0",
+          "pos": "n.",
           "meaningZh": "總統；總裁",
-          "definitionEn": "the chief executive of a republic, such as the President of the United States",
           "examples": [
             "During his term as president, he implemented major healthcare reforms and improved the economy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4014251f",
-          "pos": "noun",
+          "id": "sense-2a8a3a4f",
+          "pos": "n.",
           "meaningZh": "校長；院長",
-          "definitionEn": "the head administrative officer of a college or university",
           "examples": [
             "As the president of the university, Dr. Johnson oversees all academic and administrative affairs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "press",
       "word": "press",
       "senses": [
         {
-          "id": "sense-a577e683",
-          "pos": "verb",
+          "id": "sense-2eb30ef6",
+          "pos": "v.",
           "meaningZh": "按壓；壓印",
-          "definitionEn": "to create by applying pressure",
           "examples": [
             "The artist presses the brush onto the canvas, creating a beautiful painting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-a4f9125f",
-          "pos": "verb",
+          "id": "sense-18330586",
+          "pos": "v.",
           "meaningZh": "推壓；施力",
-          "definitionEn": "to force something in a particular direction",
           "examples": [
             "Please press the brake pedal to slow down the car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pressure",
       "word": "pressure",
       "senses": [
         {
-          "id": "sense-9c9c301f",
-          "pos": "noun",
+          "id": "sense-3f40ddcb",
+          "pos": "n.",
           "meaningZh": "壓力；壓強",
-          "definitionEn": "the force applied to a unit area of surface, measured in pascals or dynes",
           "examples": [
             "The doctor applied pressure to the wound in order to stop the bleeding."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-19769013",
-          "pos": "noun",
+          "id": "sense-7326d13f",
+          "pos": "n.",
           "meaningZh": "壓感；擠壓感",
-          "definitionEn": "the somatic sensation that results from applying force to an area of skin",
           "examples": [
             "The pressure of the tight shoes made her feet ache."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +1",
-        "textbookTitle": "龍騰 B2·L2、翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pride",
       "word": "pride",
       "senses": [
         {
-          "id": "sense-d5fe9806",
-          "pos": "noun",
+          "id": "sense-bffde35a",
+          "pos": "n.",
           "meaningZh": "驕傲；自豪感",
-          "definitionEn": "satisfaction with your or another’s achievements",
           "examples": [
             "She couldn't hide her pride as she watched her daughter graduate at the top of her class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-435fb315",
-          "pos": "noun",
+          "id": "sense-fd68d5a9",
+          "pos": "n.",
           "meaningZh": "自尊；自我價值感",
-          "definitionEn": "a feeling of self-respect and personal worth",
           "examples": [
             "Even though Sara faced many challenges, she never let them diminish her pride in her accomplishments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1 +2",
-        "textbookTitle": "龍騰 B2·L1、三民 B2·L1、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "priest",
       "word": "priest",
       "senses": [
         {
-          "id": "sense-20ff6460",
-          "pos": "noun",
+          "id": "sense-04da15a4",
+          "pos": "n.",
           "meaningZh": "神父；牧師；教士",
-          "definitionEn": "a clergyman in Christian churches who has the authority to perform or administer various religious rites; one of the Holy Orders",
           "examples": [
             "The priest conducted a beautiful ceremony, complete with hymns and prayers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-dcca14ce",
-          "pos": "verb",
+          "id": "sense-4ce4eaf3",
+          "pos": "v.",
           "meaningZh": "擔任神職；執行祭司職務",
-          "definitionEn": "to act as a priest or perform priestly duties",
           "examples": [
             "After his ordination, John began to priest at the local church and officiated at the Sunday mass."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "primary",
       "word": "primary",
       "senses": [
         {
-          "id": "sense-9181152e",
-          "pos": "adjective",
+          "id": "sense-9ab9eb82",
+          "pos": "adj.",
           "meaningZh": "首要的；主要的",
-          "definitionEn": "of first rank or importance; direct and immediate rather than secondary",
           "examples": [
             "In a democracy, voting is the primary way for citizens to participate in decision-making."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1c6a6bd3",
-          "pos": "adjective",
+          "id": "sense-e589ad97",
+          "pos": "adj.",
           "meaningZh": "初步的；基礎的",
-          "definitionEn": "relating to the earliest stage of development",
           "examples": [
             "The primary objective of this research is to examine the impact of early childhood education on cognitive development."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1 +1",
-        "textbookTitle": "龍騰 B4·L1、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "principal",
       "word": "principal",
       "senses": [
         {
-          "id": "sense-d82da0a7",
-          "pos": "noun",
+          "id": "sense-0ceac453",
+          "pos": "n.",
           "meaningZh": "校長",
-          "definitionEn": "the head or person in charge of a school",
           "examples": [
             "The principal gave a speech at the graduation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-4a9b640f",
-          "pos": "noun",
+          "id": "sense-967d55eb",
+          "pos": "n.",
           "meaningZh": "主犯；主嫌",
-          "definitionEn": "A person who commits a crime, especially as the main perpetrator.",
           "examples": [
             "The detective finally caught the principal behind the elaborate art heist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4",
-        "textbookTitle": "龍騰 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "principle",
       "word": "principle",
       "senses": [
         {
-          "id": "sense-940bea0b",
-          "pos": "noun",
+          "id": "sense-65f5886b",
+          "pos": "n.",
           "meaningZh": "原理；法則",
-          "definitionEn": "a basic truth or law",
           "examples": [
             "The principle of supply and demand states that the price of a good will increase as the demand for it increases and the supply of it decreases."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-cbf22b07",
-          "pos": "noun",
+          "id": "sense-bd853227",
+          "pos": "n.",
           "meaningZh": "原則；行為準則",
-          "definitionEn": "a rule or standard of good behavior",
           "examples": [
             "One of the principles of our company is to treat our employees with respect and fairness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "print",
       "word": "print",
       "senses": [
         {
-          "id": "sense-42e7e55c",
-          "pos": "verb",
+          "id": "sense-32c9bbb5",
+          "pos": "v.",
           "meaningZh": "印刷；列印",
-          "definitionEn": "to produce text or images on paper using a machine, or to send a document to a printer",
           "examples": [
             "Please print three copies of this report for the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-aede275a",
-          "pos": "noun",
+          "id": "sense-509da152",
+          "pos": "n.",
           "meaningZh": "印刷文字；版面",
-          "definitionEn": "the text appearing in a book, newspaper, or other printed publication",
           "examples": [
             "The print on this page is too small for me to read without my glasses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-52b07059",
-          "pos": "noun",
+          "id": "sense-37d112f1",
+          "pos": "n.",
           "meaningZh": "影片拷貝；底片",
-          "definitionEn": "a copy of a movie on film (especially a particular version of it)",
           "examples": [
             "The film archive had a rare print of the classic movie that was thought to be lost for decades."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "printer",
       "word": "printer",
       "senses": [
         {
-          "id": "sense-05544fc7",
-          "pos": "noun",
+          "id": "sense-8c1aed47",
+          "pos": "n.",
           "meaningZh": "印表機；列印機",
-          "definitionEn": "a device that takes digital data and produces a physical copy onto paper or other materials",
           "examples": [
             "After finishing her research paper, Sarah sent the document to the printer to create a hard copy for submission."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-5e66f5e9",
-          "pos": "noun",
+          "id": "sense-75f5eb69",
+          "pos": "n.",
           "meaningZh": "印刷業者；印刷工",
-          "definitionEn": "a person who professionally prints text or images",
           "examples": [
             "I need to hire a printer to design and print the flyers for our event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prison",
       "word": "prison",
       "senses": [
         {
-          "id": "sense-51abd0f5",
-          "pos": "noun",
+          "id": "sense-360bc9d9",
+          "pos": "n.",
           "meaningZh": "監獄；看守所",
-          "definitionEn": "a correctional institution where persons are confined for punishment or while on trial",
           "examples": [
             "After being convicted of the crime, he was sentenced to five years in prison."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-686894d9",
-          "pos": "noun",
+          "id": "sense-1b7a7bfd",
+          "pos": "n.",
           "meaningZh": "囚禁之地；如牢籠般的處境",
-          "definitionEn": "a place of seeming confinement, typically with no escape",
           "examples": [
             "After being convicted of theft, Peter was sent to prison for five years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9",
-        "textbookTitle": "龍騰 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "prisoner",
       "word": "prisoner",
       "senses": [
         {
-          "id": "sense-756d370d",
-          "pos": "noun",
+          "id": "sense-0ab8b7d1",
+          "pos": "n.",
           "meaningZh": "囚犯；受刑人",
-          "definitionEn": "a person held in custody, captivity, or a condition of forcible restraint, especially while on trial or serving a sentence in a prison",
           "examples": [
             "The prisoner was escorted from the courthouse to the prison by the guards."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-556dfe8a",
-          "pos": "noun",
+          "id": "sense-76dd9496",
+          "pos": "n.",
           "meaningZh": "戰俘；被俘者",
-          "definitionEn": "a person captured and kept confined by an enemy or opponent, typically a member of a military force or a terrorist organization",
           "examples": [
             "The enemy forces had taken several prisoners of war and were holding them in undisclosed locations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9",
-        "textbookTitle": "龍騰 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "private",
       "word": "private",
       "senses": [
         {
-          "id": "sense-6ae4b10c",
-          "pos": "adjective",
+          "id": "sense-a27fe15e",
+          "pos": "adj.",
           "meaningZh": "私人的；非公開的",
-          "definitionEn": "confined to particular persons or groups or providing privacy",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-4101cb65",
-          "pos": "adjective",
+          "id": "sense-7cd77ec7",
+          "pos": "adj.",
           "meaningZh": "隱私的；個人的",
-          "definitionEn": "relating to personal and sometimes sensitive matters",
           "examples": [
             "I cannot disclose my client’s private information to anyone else."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4 +1",
-        "textbookTitle": "龍騰 B4·L4、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "prize",
+      "word": "prize",
+      "senses": [
+        {
+          "id": "sense-73ee4b06",
+          "pos": "n.",
+          "meaningZh": "獎品；獎勵",
+          "examples": [
+            "The grand prize for the spelling bee competition was a new laptop."
+          ]
+        },
+        {
+          "id": "sense-0f577b0e",
+          "pos": "adj.",
+          "meaningZh": "最高品質的；頂尖的",
+          "examples": [
+            "The masterpiece painting was deemed a prize among art collectors."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "produce",
+      "word": "produce",
+      "senses": [
+        {
+          "id": "sense-1e04b73f",
+          "pos": "v.",
+          "meaningZh": "生產；出產",
+          "examples": [
+            "The farmer's hard work and dedication enabled him to produce a bountiful harvest of fruits and vegetables."
+          ]
+        },
+        {
+          "id": "sense-a1f0a166",
+          "pos": "v.",
+          "meaningZh": "製造；製作",
+          "examples": [
+            "The factory produces hundreds of cars every day."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "production",
+      "word": "production",
+      "senses": [
+        {
+          "id": "sense-777a3d79",
+          "pos": "n.",
+          "meaningZh": "生產；製造",
+          "examples": [
+            "The company’s production of new smartphones has significantly increased its revenue."
+          ]
+        },
+        {
+          "id": "sense-9f985666",
+          "pos": "n.",
+          "meaningZh": "產量；生產數量",
+          "examples": [
+            "The automobile factory increased its production of cars from 500 per day to 1000 per day to meet the rising demand."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "progress",
+      "word": "progress",
+      "senses": [
+        {
+          "id": "sense-b657ee4b",
+          "pos": "v.",
+          "meaningZh": "進展；逐步累積",
+          "examples": [
+            "With consistent effort, you can make progress towards your goals."
+          ]
+        },
+        {
+          "id": "sense-835edb25",
+          "pos": "n.",
+          "meaningZh": "進展；進步",
+          "examples": [
+            "After weeks of hard work, Jane finally made progress on her research project and gathered valuable data."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "project",
+      "word": "project",
+      "senses": [
+        {
+          "id": "sense-b7a0057c",
+          "pos": "n.",
+          "meaningZh": "計畫；專案",
+          "examples": [
+            "The construction company started a new project to build a hospital in the remote area."
+          ]
+        },
+        {
+          "id": "sense-0abb5e12",
+          "pos": "n.",
+          "meaningZh": "國宅；低收入住宅區",
+          "examples": [
+            "The local government announced a new project to provide affordable housing for families in need."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

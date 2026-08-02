@@ -31,27 +31,32 @@ describe('createDebouncedSaver', () => {
 })
 
 describe('shuffleQuizEntry', () => {
-  it('keeps the correct answer text after remapping ans', () => {
+  it('keeps the correct answer text after remapping answerIndex', () => {
     const entry: SessionEntry = {
       originalIndex: 0,
       item: {
         id: '1',
+        wordKey: 'apple',
         word: 'apple',
         pos: 'n.',
         meaning: '蘋果',
+        examples: ['I eat an apple.'],
         example: 'I eat an apple.',
       },
       question: {
+        questionId: 'question-apple',
+        questionType: 'fillBlank',
+        difficulty: 1,
         prompt: '_____ is a fruit.',
-        opts: ['apple', 'banana', 'cherry', 'date'],
-        ans: 0,
+        options: ['apple', 'banana', 'cherry', 'date'],
+        answerIndex: 0,
       },
     }
 
     const shuffled = shuffleQuizEntry(entry)
-    const correct = entry.question!.opts[entry.question!.ans]
-    expect(shuffled.question!.opts[shuffled.question!.ans]).toBe(correct)
-    expect(shuffled.question!.opts).toHaveLength(4)
-    expect(new Set(shuffled.question!.opts)).toEqual(new Set(entry.question!.opts))
+    const correct = entry.question!.options[entry.question!.answerIndex]
+    expect(shuffled.question!.options[shuffled.question!.answerIndex]).toBe(correct)
+    expect(shuffled.question!.options).toHaveLength(4)
+    expect(new Set(shuffled.question!.options)).toEqual(new Set(entry.question!.options))
   })
 })

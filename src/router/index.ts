@@ -11,13 +11,20 @@ const router = createRouter({
       component: () => import('@/components/HomeView.vue'),
     },
     {
-      path: '/study',
-      redirect: '/library',
-    },
-    {
       path: '/library',
       name: 'library',
       component: () => import('@/components/LibraryView.vue'),
+    },
+    {
+      path: '/sets/new',
+      name: 'set-create',
+      component: () => import('@/components/SetEditorView.vue'),
+    },
+    {
+      path: '/sets/:setId/edit',
+      name: 'set-edit',
+      component: () => import('@/components/SetEditorView.vue'),
+      props: true,
     },
     {
       path: '/dictionary',
@@ -41,6 +48,24 @@ const router = createRouter({
       props: true,
     },
     {
+      path: '/set/:setId/questions/generate',
+      name: 'question-generation',
+      component: () => import('@/components/QuestionGenerationView.vue'),
+      props: true,
+    },
+    {
+      path: '/vocabulary/:wordKey/questions',
+      name: 'question-editor',
+      component: () => import('@/components/QuestionEditorView.vue'),
+      props: true,
+    },
+    {
+      path: '/vocabulary/:wordKey',
+      name: 'vocabulary',
+      component: () => import('@/components/VocabularyView.vue'),
+      props: true,
+    },
+    {
       path: '/quiz/:setId',
       name: 'quiz',
       component: () => import('@/components/PracticeView.vue'),
@@ -48,17 +73,10 @@ const router = createRouter({
       meta: { requiresSession: true },
     },
     {
-      path: '/spelling/:setId',
-      name: 'spelling',
+      path: '/fill-blank/:setId',
+      name: 'fillBlank',
       component: () => import('@/components/PracticeView.vue'),
-      props: { mode: 'spelling' },
-      meta: { requiresSession: true },
-    },
-    {
-      path: '/cloze/:setId',
-      name: 'cloze',
-      component: () => import('@/components/PracticeView.vue'),
-      props: { mode: 'cloze' },
+      props: { mode: 'fillBlank' },
       meta: { requiresSession: true },
     },
     {

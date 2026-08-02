@@ -82,7 +82,7 @@ const settingsOpen = ref(false)
                 {{ set.setName }}
               </p>
               <p class="text-[11px] font-semibold text-ink-400 dark:text-ink-500">
-                {{ $t('home.wordsCount', { count: set.items.length }) }}
+                {{ $t('home.wordsCount', { count: setsStore.getSetWordCount(set.id) }) }}
               </p>
             </div>
           </label>

@@ -1,102 +1,59 @@
-import { del, get, set } from 'idb-keyval'
+import { get, set } from 'idb-keyval'
 
 export interface StorageLoadResult {
   value: string | null
 }
 
-const INDEXED_DB_MARKER = '__indexeddb__'
-const INDEXED_DB_PREFIX = 'lexiro-storage:'
-const INDEXED_DB_THRESHOLD = 250_000
-const INDEXED_DB_KEYS = new Set(['lexiro_library_data'])
-const indexedDbWrites = new Map<string, Promise<void>>()
+const pendingWrites = new Map<string, Promise<void>>()
+let storageNamespace = 'guest'
 
-function canUseIndexedDb(): boolean {
-  return typeof indexedDB !== 'undefined'
+const NAMESPACE_SCOPED_KEYS = new Set([
+  'lexiro_session_data',
+  'lexiro_learning_data',
+  'lexiro_library_data',
+  'lexiro_ai_settings',
+  'lexiro_ui_data',
+])
+
+export function setStorageNamespace(namespace: string): void {
+  const normalized = namespace.trim()
+  storageNamespace = normalized || 'guest'
 }
 
-function indexedDbKey(key: string): string {
-  return `${INDEXED_DB_PREFIX}${key}`
+export function getStorageNamespace(): string {
+  return storageNamespace
 }
 
-function queueIndexedDbWrite(key: string, write: () => Promise<void>) {
-  const previous = indexedDbWrites.get(key) ?? Promise.resolve()
+function resolveKey(key: string): string {
+  return NAMESPACE_SCOPED_KEYS.has(key) ? `${storageNamespace}:${key}` : key
+}
+
+function enqueueWrite(key: string, write: () => Promise<void>): Promise<void> {
+  const previous = pendingWrites.get(key) ?? Promise.resolve()
   const next = previous.catch(() => undefined).then(write)
-  indexedDbWrites.set(key, next)
+  pendingWrites.set(key, next)
   void next.then(() => {
-    if (indexedDbWrites.get(key) === next)
-      indexedDbWrites.delete(key)
+    if (pendingWrites.get(key) === next)
+      pendingWrites.delete(key)
   }, () => {
-    if (indexedDbWrites.get(key) === next)
-      indexedDbWrites.delete(key)
+    if (pendingWrites.get(key) === next)
+      pendingWrites.delete(key)
+  })
+  return next
+}
+
+export function saveToStorage(key: string, data: unknown): Promise<void> {
+  const serialized = typeof data === 'string' ? data : JSON.stringify(data)
+  const resolvedKey = resolveKey(key)
+  return enqueueWrite(resolvedKey, async () => {
+    await set(resolvedKey, serialized)
   })
 }
 
-export function saveToStorage(key: string, data: unknown): void {
-  const serialized = JSON.stringify(data)
-  if (canUseIndexedDb() && (INDEXED_DB_KEYS.has(key) || serialized.length > INDEXED_DB_THRESHOLD)) {
-    queueIndexedDbWrite(key, async () => {
-      await set(indexedDbKey(key), serialized)
-      try {
-        localStorage.setItem(key, INDEXED_DB_MARKER)
-      }
-      catch {
-        try {
-          localStorage.removeItem(key)
-        }
-        catch {
-          // IndexedDB remains the source of truth when localStorage is full.
-        }
-      }
-    })
-    return
-  }
-
-  localStorage.setItem(key, serialized)
-  if (canUseIndexedDb()) {
-    queueIndexedDbWrite(key, async () => {
-      await del(indexedDbKey(key))
-    })
-  }
-}
-
 export async function loadFromStorage(key: string): Promise<StorageLoadResult> {
-  const local = localStorage.getItem(key)
-  if (local === INDEXED_DB_MARKER && canUseIndexedDb()) {
-    try {
-      const indexed = await get<string>(indexedDbKey(key))
-      return { value: indexed ?? null }
-    }
-    catch {
-      return { value: null }
-    }
-  }
-  if (local) {
-    if (canUseIndexedDb() && INDEXED_DB_KEYS.has(key)) {
-      try {
-        await set(indexedDbKey(key), local)
-        localStorage.setItem(key, INDEXED_DB_MARKER)
-      }
-      catch {
-        // Keep using the local copy if IndexedDB is unavailable or blocked.
-      }
-    }
-    return {
-      value: local,
-    }
-  }
-  if (canUseIndexedDb()) {
-    try {
-      const indexed = await get<string>(indexedDbKey(key))
-      if (indexed)
-        return { value: indexed }
-    }
-    catch {
-      // Treat an unavailable IndexedDB as an empty optional cache.
-    }
-  }
-  return {
-    value: null,
-  }
+  const resolvedKey = resolveKey(key)
+  await pendingWrites.get(resolvedKey)
+  return { value: await get<string>(resolvedKey) ?? null }
 }
 
 /** Debounced save helper: schedule() coalesces writes; flush() writes immediately. */

@@ -1,50 +1,17 @@
-import { beforeEach, describe, expect, it } from 'vitest'
-import { loadFromStorage, saveToStorage } from '@/lib/persist'
-
-class MemoryStorage implements Storage {
-  private store = new Map<string, string>()
-
-  get length(): number {
-    return this.store.size
-  }
-
-  clear(): void {
-    this.store.clear()
-  }
-
-  getItem(key: string): string | null {
-    return this.store.get(key) ?? null
-  }
-
-  key(index: number): string | null {
-    return Array.from(this.store.keys())[index] ?? null
-  }
-
-  removeItem(key: string): void {
-    this.store.delete(key)
-  }
-
-  setItem(key: string, value: string): void {
-    this.store.set(key, value)
-  }
-}
+import { describe, expect, it } from 'vitest'
+import { loadFromStorage, saveToStorage, setStorageNamespace } from '@/lib/persist'
 
 describe('persist', () => {
-  beforeEach(() => {
-    Object.defineProperty(globalThis, 'localStorage', {
-      value: new MemoryStorage(),
-      configurable: true,
+  it('saves data to the shared repository', async () => {
+    await saveToStorage('target-key', { value: 1 })
+
+    await expect(loadFromStorage('target-key')).resolves.toEqual({
+      value: JSON.stringify({ value: 1 }),
     })
   })
 
-  it('saves data to localStorage synchronously', () => {
-    saveToStorage('target-key', { value: 1 })
-
-    expect(localStorage.getItem('target-key')).toBe(JSON.stringify({ value: 1 }))
-  })
-
-  it('loads the current storage key', async () => {
-    localStorage.setItem('target-key', 'target')
+  it('loads the current repository key', async () => {
+    await saveToStorage('target-key', 'target')
 
     const result = await loadFromStorage('target-key')
 
@@ -53,9 +20,29 @@ describe('persist', () => {
     })
   })
 
-  it('keeps small values in localStorage', () => {
-    saveToStorage('target-key', { value: 'small' })
+  it('stores small and large values through the same path', async () => {
+    await saveToStorage('target-key', { value: 'small' })
+    await saveToStorage('large-key', { value: 'x'.repeat(300_000) })
 
-    expect(localStorage.getItem('target-key')).toBe(JSON.stringify({ value: 'small' }))
+    await expect(loadFromStorage('target-key')).resolves.toEqual({
+      value: JSON.stringify({ value: 'small' }),
+    })
+    await expect(loadFromStorage('large-key')).resolves.toEqual({
+      value: JSON.stringify({ value: 'x'.repeat(300_000) }),
+    })
+  })
+
+  it('isolates user preferences between namespaces', async () => {
+    setStorageNamespace('guest-test')
+    await saveToStorage('lexiro_ui_data', { questionCountPreference: 3 })
+
+    setStorageNamespace('account-test')
+    await expect(loadFromStorage('lexiro_ui_data')).resolves.toEqual({ value: null })
+
+    setStorageNamespace('guest-test')
+    await expect(loadFromStorage('lexiro_ui_data')).resolves.toEqual({
+      value: JSON.stringify({ questionCountPreference: 3 }),
+    })
+    setStorageNamespace('guest')
   })
 })

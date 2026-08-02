@@ -1,1330 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 96,
   "words": [
-    {
-      "wordKey": "turtle",
-      "word": "turtle",
-      "senses": [
-        {
-          "id": "sense-85b0c382",
-          "pos": "noun",
-          "meaningZh": "烏龜；海龜",
-          "definitionEn": "a reptile that mostly lives in water and land. It has a bony shell and flipper-like legs for swimming.",
-          "examples": [
-            "While on vacation at the beach, we spotted a turtle slowly crawling out of the water and making its way up the sandy shore."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-a46f05ad",
-          "pos": "noun",
-          "meaningZh": "高領毛衣；高領衫",
-          "definitionEn": "a sweater or jersey with a high, close-fitting collar.",
-          "examples": [
-            "She bundled up in her cozy turtle before braving the cold winter weather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "tutor",
-      "word": "tutor",
-      "senses": [
-        {
-          "id": "sense-ba6ee81c",
-          "pos": "noun",
-          "meaningZh": "家庭教師；私人教師",
-          "definitionEn": "a person who provides private teaching or instruction, especially for an individual student or a small group",
-          "examples": [
-            "When Sarah struggled with math, her parents hired a tutor to help her improve her grades."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-34fa5814",
-          "pos": "verb",
-          "meaningZh": "輔導；家教授課",
-          "definitionEn": "to provide individual or group instruction or teaching, especially outside of a formal school or academic setting",
-          "examples": [
-            "Sarah hired a tutor to help her improve her math skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "twin",
-      "word": "twin",
-      "senses": [
-        {
-          "id": "sense-b2226074",
-          "pos": "noun",
-          "meaningZh": "雙胞胎（之一）",
-          "definitionEn": "one of two children born to the same mother at the same time",
-          "examples": [
-            "My sister and I are twins, but we look very different."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        },
-        {
-          "id": "sense-6495ddbb",
-          "pos": "verb",
-          "meaningZh": "結合；配對",
-          "definitionEn": "bring two objects, ideas, or people together",
-          "examples": [
-            "The symphony orchestra and the ballet company twinned their performances to create a unique and captivating show."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "twist",
-      "word": "twist",
-      "senses": [
-        {
-          "id": "sense-c6023dc8",
-          "pos": "verb",
-          "meaningZh": "扭曲；使變形",
-          "definitionEn": "to cause a plastic object to become crooked or angular",
-          "examples": [
-            "Tiffany accidentally sat on her doll and twisted its arm in an awkward position."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "typhoon",
-      "word": "typhoon",
-      "senses": [
-        {
-          "id": "sense-ad1cea39",
-          "pos": "noun",
-          "meaningZh": "颱風",
-          "definitionEn": "a tropical cyclone occurring in the western Pacific or Indian oceans, characterized by strong winds, heavy rain, and a circular wind pattern",
-          "examples": [
-            "Residents along the coast evacuated their homes as a powerful typhoon approached, bringing with it destructive winds and torrential downpours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "typical",
       "word": "typical",
       "senses": [
         {
-          "id": "sense-7043a02f",
-          "pos": "adjective",
+          "id": "sense-6b7ecfdb",
+          "pos": "adj.",
           "meaningZh": "典型的；符合類型的",
-          "definitionEn": "conforming to a type",
           "examples": [
             "The typical morning routine for most people includes waking up, brushing their teeth, and having a cup of coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-4105eec9",
-          "pos": "adjective",
+          "id": "sense-be3df2fd",
+          "pos": "adj.",
           "meaningZh": "一般的；通常的",
-          "definitionEn": "exhibiting the qualities or characteristics that identify a group or category",
           "examples": [
             "A typical workday for me starts at 9:00 AM and ends at 5:00 PM."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6 +1",
-        "textbookTitle": "三民 B4·L6、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ugly",
       "word": "ugly",
       "senses": [
         {
-          "id": "sense-f2aa1cb7",
-          "pos": "adjective",
+          "id": "sense-0024e685",
+          "pos": "adj.",
           "meaningZh": "醜陋的；令人反感的",
-          "definitionEn": "provoking horror; shocking",
           "examples": [
             "The pile-up of garbage on the beach was so ugly that tourists were compelled to leave."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5008e6ab",
-          "pos": "adjective",
+          "id": "sense-d4c9a21d",
+          "pos": "adj.",
           "meaningZh": "凶狠的；帶有威脅意味的",
-          "definitionEn": "inclined to anger or bad feelings with overtones of menace; threatening",
           "examples": [
             "The man’s face twisted in an ugly snarl as he threatened his opponent with violence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "umbrella",
       "word": "umbrella",
       "senses": [
         {
-          "id": "sense-e03bee77",
-          "pos": "noun",
+          "id": "sense-b0841c9b",
+          "pos": "n.",
           "meaningZh": "雨傘；陽傘",
-          "definitionEn": "a collapsible canopy used as a protection against rain or sun",
           "examples": [
             "I always keep an umbrella in my bag when I am out, so that I do not get wet during sudden rain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-30c79c29",
-          "pos": "adjective",
+          "id": "sense-169c3e7d",
+          "pos": "adj.",
           "meaningZh": "統括的；涵蓋多項的",
-          "definitionEn": "involving or covering several similar items or parts",
           "examples": [
             "The umbrella organization oversees several smaller charities across the country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "underlying",
       "word": "underlying",
       "senses": [
         {
-          "id": "sense-4a8f73e7",
-          "pos": "adjective",
+          "id": "sense-07553421",
+          "pos": "adj.",
           "meaningZh": "根本的；基礎的；潛在的",
-          "definitionEn": "being or involving basic facts or principles",
           "examples": [
             "The underlying cause of their argument was a difference in values."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "underwear",
       "word": "underwear",
       "senses": [
         {
-          "id": "sense-89ec6660",
-          "pos": "noun",
+          "id": "sense-4156ecc4",
+          "pos": "n.",
           "meaningZh": "內衣；貼身衣物",
-          "definitionEn": "clothes that are worn underneath other clothes, next to the skin",
           "examples": [
             "He always wears clean underwear for hygiene and comfort."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "union",
       "word": "union",
       "senses": [
         {
-          "id": "sense-91316a2e",
-          "pos": "noun",
+          "id": "sense-03125e46",
+          "pos": "n.",
           "meaningZh": "聯合；合併；工會",
-          "definitionEn": "the act of making or becoming a single unit",
           "examples": [
             "The union of the two companies resulted in a stronger and more profitable business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8c83ea4d",
-          "pos": "noun",
+          "id": "sense-29285cc5",
+          "pos": "n.",
           "meaningZh": "聯集；並集（數學）",
-          "definitionEn": "a set containing all and only the members of two or more given sets",
           "examples": [
             "The union of the set of prime numbers and the set of even numbers is the set of all natural numbers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "unique",
       "word": "unique",
       "senses": [
         {
-          "id": "sense-fbf8f918",
-          "pos": "adjective",
+          "id": "sense-50d10a4e",
+          "pos": "adj.",
           "meaningZh": "獨一無二的；唯一的",
-          "definitionEn": "being the only one of its kind",
           "examples": [
             "Her handmade jewelry is truly unique, as each piece is meticulously crafted and no two are alike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-159f389b",
-          "pos": "adjective",
+          "id": "sense-1dab7df5",
+          "pos": "adj.",
           "meaningZh": "獨特的；與眾不同的",
-          "definitionEn": "distinctive and unparalleled",
           "examples": [
             "Her fashion sense is truly unique, no one else at the party wore such a daring and unconventional outfit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L2 +2",
-        "textbookTitle": "龍騰 B3·L2、三民 B2·L4、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "unit",
       "word": "unit",
       "senses": [
         {
-          "id": "sense-e64a7e26",
-          "pos": "noun",
+          "id": "sense-9bd2e736",
+          "pos": "n.",
           "meaningZh": "單位；基本單元",
-          "definitionEn": "a single, complete entity or thing",
           "examples": [
             "The basic unit of language is the word."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-f51cbda2",
-          "pos": "noun",
+          "id": "sense-2f869412",
+          "pos": "n.",
           "meaningZh": "組成單元；個體",
-          "definitionEn": "an individual element or group regarded as a constituent part of a larger whole",
           "examples": [
             "The basic unit of a molecule is an atom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "unite",
       "word": "unite",
       "senses": [
         {
-          "id": "sense-22b8a125",
-          "pos": "verb",
+          "id": "sense-7dea65ae",
+          "pos": "v.",
           "meaningZh": "聯合；結合；合併",
-          "definitionEn": "to join or combine things together",
           "examples": [
             "The students from different schools united to form a powerful advocacy group for education reform."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-c28008fa",
-          "pos": "verb",
+          "id": "sense-03f1e637",
+          "pos": "v.",
           "meaningZh": "團結；凝聚（共同目標）",
-          "definitionEn": "to bring people or things together for a common purpose or action or ideology or in a shared situation",
           "examples": [
             "During the global climate change protest, thousands of activists came together to unite their voices for a sustainable future."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "unity",
       "word": "unity",
       "senses": [
         {
-          "id": "sense-2e62c7cb",
-          "pos": "noun",
+          "id": "sense-0291f59f",
+          "pos": "n.",
           "meaningZh": "團結；一致；統一",
-          "definitionEn": "the quality of being united into one",
           "examples": [
             "The unity among the team members helped them to win the game against their rival team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "universe",
       "word": "universe",
       "senses": [
         {
-          "id": "sense-d20624a1",
-          "pos": "noun",
+          "id": "sense-80f99065",
+          "pos": "n.",
           "meaningZh": "宇宙；天地萬物",
-          "definitionEn": "all existing matter and space as a whole",
           "examples": [
             "Astronomers study distant galaxies to learn more about the vastness of the universe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a0837b1c",
-          "pos": "noun",
+          "id": "sense-ef2a8b80",
+          "pos": "n.",
           "meaningZh": "宇宙；太空；世界",
-          "definitionEn": "the whole of space and everything in it",
           "examples": [
             "As an aspiring astronomer, Sarah spends countless hours gazing at the stars, contemplating the vastness of the universe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3",
-        "textbookTitle": "龍騰 B3·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "university",
       "word": "university",
       "senses": [
         {
-          "id": "sense-ce873e8d",
-          "pos": "noun",
+          "id": "sense-43d1f149",
+          "pos": "n.",
           "meaningZh": "大學；大學院校",
-          "definitionEn": "a large institution of higher education that offers undergraduate and graduate degrees in a variety of fields",
           "examples": [
             "After completing high school, John enrolled in a university to pursue a degree in Computer Science."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-04eef9c7",
-          "pos": "noun",
+          "id": "sense-9f06e57b",
+          "pos": "n.",
           "meaningZh": "大學（機構）；高等學府",
-          "definitionEn": "a place where higher education is offered, including administrative, teaching, and research facilities",
           "examples": [
             "After finishing high school, Sarah decided to attend university to pursue a degree in computer science."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "unless",
       "word": "unless",
       "senses": [
         {
-          "id": "sense-07c0196f",
-          "pos": "conjunction",
+          "id": "sense-88d60bfb",
+          "pos": "conj.",
           "meaningZh": "除非；如果不",
-          "definitionEn": "used to express a condition where something will or will not happen, except if another condition is not met",
           "examples": [
             "I won't go to the park unless it stops raining."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "upload",
       "word": "upload",
       "senses": [
         {
-          "id": "sense-3da6afcd",
-          "pos": "verb",
+          "id": "sense-d042601c",
+          "pos": "v.",
           "meaningZh": "上傳（檔案或資料）",
-          "definitionEn": "to send a file, photo, or other data from your device to the internet or another computer",
           "examples": [
             "Please upload your homework to the class website before Friday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-668bc72f",
-          "pos": "noun",
+          "id": "sense-52f0d6c7",
+          "pos": "n.",
           "meaningZh": "上傳；上傳的資料",
-          "definitionEn": "the act of sending data to another computer system, or the data that is sent",
           "examples": [
             "The upload took almost an hour because the video file was so large."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "upon",
       "word": "upon",
       "senses": [
         {
-          "id": "sense-499076be",
-          "pos": "preposition",
+          "id": "sense-fd0470ef",
+          "pos": "prep.",
           "meaningZh": "在…之上；位於",
-          "definitionEn": "on:",
           "examples": [
             "She slipped upon the icy pavement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-d42b3e9d",
-          "pos": "preposition",
+          "id": "sense-d6eec7be",
+          "pos": "prep.",
           "meaningZh": "一…就；在…之後隨即",
-          "definitionEn": "used to show that something happens soon after, and often because of, something else:",
           "examples": [
             "Upon hearing the news of her promotion, she celebrated with her colleagues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "upper",
       "word": "upper",
       "senses": [
         {
-          "id": "sense-0f9ab833",
-          "pos": "adjective",
+          "id": "sense-eccfdcaf",
+          "pos": "adj.",
           "meaningZh": "上面的；較高的；上層的",
-          "definitionEn": "situated above another part; higher in position or rank",
           "examples": [
             "He lives on the upper floor of the building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "upset",
       "word": "upset",
       "senses": [
         {
-          "id": "sense-3a82adda",
-          "pos": "adjective",
+          "id": "sense-b8000ddc",
+          "pos": "adj.",
           "meaningZh": "心煩的；難過的；不安的",
-          "definitionEn": "unhappy or worried because something unpleasant has happened",
           "examples": [
             "She was upset when she heard the bad news."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-8b723bec",
-          "pos": "noun",
+          "id": "sense-e5af0d74",
+          "pos": "n.",
           "meaningZh": "翻倒；打翻",
-          "definitionEn": "the act of upsetting something",
           "examples": [
             "She accidentally kicked over the vase and caused an upset in the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1 +2",
-        "textbookTitle": "龍騰 B1·L1、三民 B2·L6、翰林 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "upstairs",
       "word": "upstairs",
       "senses": [
         {
-          "id": "sense-0f80dd1e",
-          "pos": "adjective",
+          "id": "sense-e45cc588",
+          "pos": "adj.",
           "meaningZh": "樓上的；位於上層",
-          "definitionEn": "on or of upper floors of a building",
           "examples": [
             "She went upstairs to get her luggage from her room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-12c8adad",
-          "pos": "noun",
+          "id": "sense-c591af89",
+          "pos": "n.",
           "meaningZh": "樓上；上層空間",
-          "definitionEn": "the part of a building above the ground floor",
           "examples": [
             "The bedrooms are located upstairs from the living room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "urban",
       "word": "urban",
       "senses": [
         {
-          "id": "sense-81fd4726",
-          "pos": "adjective",
+          "id": "sense-39585292",
+          "pos": "adj.",
           "meaningZh": "都市的；城市的",
-          "definitionEn": "related to or concerned with a city or densely populated area",
           "examples": [
             "The new park in the center of the city has been a welcome addition to the urban landscape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-7e99b35d",
-          "pos": "adjective",
+          "id": "sense-4a783589",
+          "pos": "adj.",
           "meaningZh": "城市特有的；都會的",
-          "definitionEn": "characteristic of a city or city life; located in a city",
           "examples": [
             "The urban landscape was filled with skyscrapers and busy streets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L7",
-        "textbookTitle": "三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "used",
       "word": "used",
       "senses": [
         {
-          "id": "sense-f7a4b63c",
-          "pos": "adjective",
+          "id": "sense-d124b856",
+          "pos": "adj.",
           "meaningZh": "二手的；已使用過的",
-          "definitionEn": "previously owned or utilized by another person or entity",
           "examples": [
             "She bought a used car from a local dealer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-ca1d34f7",
-          "pos": "adjective",
+          "id": "sense-6d361fa5",
+          "pos": "adj.",
           "meaningZh": "被用來的；用於…的",
-          "definitionEn": "employed in achieving a particular purpose",
           "examples": [
             "The hammer was used to drive the nail into the wood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "user",
       "word": "user",
       "senses": [
         {
-          "id": "sense-1027dad1",
-          "pos": "noun",
+          "id": "sense-6bd8fc25",
+          "pos": "n.",
           "meaningZh": "使用者；用戶",
-          "definitionEn": "a person who uses or operates something, especially a computer or other machine",
           "examples": [
             "The app now has over a million users."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "usual",
       "word": "usual",
       "senses": [
         {
-          "id": "sense-57e25c9b",
-          "pos": "adjective",
+          "id": "sense-d2822107",
+          "pos": "adj.",
           "meaningZh": "慣常的；照例的；一如往常",
-          "definitionEn": "occurring or encountered frequently in accordance with regular practice or procedure",
           "examples": [
             "It is usual for the bus to arrive at the same time every morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-5b6b836c",
-          "pos": "adjective",
+          "id": "sense-bdb94750",
+          "pos": "adj.",
           "meaningZh": "平常的；普通的",
-          "definitionEn": "commonly encountered",
           "examples": [
             "It is not unusual for people to go grocery shopping on the weekends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vacant",
       "word": "vacant",
       "senses": [
         {
-          "id": "sense-e67e7fbb",
-          "pos": "adjective",
+          "id": "sense-7ceb795d",
+          "pos": "adj.",
           "meaningZh": "空著的；無人使用的",
-          "definitionEn": "not currently occupied by anyone",
           "examples": [
             "The hotel room was still vacant despite being advertised at a discounted price."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-84d59b51",
-          "pos": "adjective",
+          "id": "sense-76089827",
+          "pos": "adj.",
           "meaningZh": "空閒的；可供使用的",
-          "definitionEn": "empty or available for use",
           "examples": [
             "The hotel had many vacant rooms available for booking."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vacation",
       "word": "vacation",
       "senses": [
         {
-          "id": "sense-0e277021",
-          "pos": "noun",
+          "id": "sense-050c9945",
+          "pos": "n.",
           "meaningZh": "假期；度假；休假",
-          "definitionEn": "a period of time devoted to rest, travel, or recreation",
           "examples": [
             "After working non-stop for a year, she finally took a much-needed vacation to Hawaii."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         },
         {
-          "id": "sense-a6efa0e0",
-          "pos": "verb",
+          "id": "sense-4f5c38bf",
+          "pos": "v.",
           "meaningZh": "去度假；外出休假",
-          "definitionEn": "to take a period of time for rest, travel, or recreation",
           "examples": [
             "Every year, my family goes on a beach vacation for two weeks to unwind and bond with each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "valley",
       "word": "valley",
       "senses": [
         {
-          "id": "sense-a5ce92ef",
-          "pos": "noun",
+          "id": "sense-f02e0a93",
+          "pos": "n.",
           "meaningZh": "山谷；河谷；谷地",
-          "definitionEn": "a low area of land between hills or mountains, often with a river running through it",
           "examples": [
             "The hikers marveled at the breathtaking view as they stood at the edge of the valley, with the winding river snaking through the lush green landscape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-3.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "3"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3",
-        "textbookTitle": "龍騰 B5·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "valuable",
+      "word": "valuable",
+      "senses": [
+        {
+          "id": "sense-adb67358",
+          "pos": "adj.",
+          "meaningZh": "有價值的；珍貴的",
+          "examples": [
+            "The antique necklace is valuable because it is made from rare gemstones and has been passed down through generations."
+          ]
+        },
+        {
+          "id": "sense-7d1f126d",
+          "pos": "n.",
+          "meaningZh": "貴重物品；財物",
+          "examples": [
+            "Her grandmother's antique necklace was a valuable heirloom."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "value",
+      "word": "value",
+      "senses": [
+        {
+          "id": "sense-a97a99dd",
+          "pos": "n.",
+          "meaningZh": "價值；重要性",
+          "examples": [
+            "The value of teamwork becomes evident when everyone collaborates effectively to achieve a common goal."
+          ]
+        },
+        {
+          "id": "sense-d26842cc",
+          "pos": "n.",
+          "meaningZh": "數值；金額；估值",
+          "examples": [
+            "The appraiser determined the value of the antique vase to be $5000."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "van",
+      "word": "van",
+      "senses": [
+        {
+          "id": "sense-b068f7f2",
+          "pos": "n.",
+          "meaningZh": "廂型車；貨車",
+          "examples": [
+            "I rented a van to transport all the equipment for the music festival."
+          ]
+        },
+        {
+          "id": "sense-e3d90615",
+          "pos": "n.",
+          "meaningZh": "前鋒部隊；先頭部隊",
+          "examples": [
+            "The van of the army marched forward, clearing a path through the dense forest."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "vanish",
+      "word": "vanish",
+      "senses": [
+        {
+          "id": "sense-87a1a35d",
+          "pos": "v.",
+          "meaningZh": "消失；不見蹤影",
+          "examples": [
+            "When the magician waved his wand, the rabbit vanished into thin air."
+          ]
+        },
+        {
+          "id": "sense-9facc33f",
+          "pos": "v.",
+          "meaningZh": "突然消失；憑空消失",
+          "examples": [
+            "The magician made the rabbit vanish from the hat, leaving the audience in awe."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "variety",
+      "word": "variety",
+      "senses": [
+        {
+          "id": "sense-fa5c5eb2",
+          "pos": "n.",
+          "meaningZh": "種類；多樣性；各種各樣",
+          "examples": [
+            "The farmers market had a variety of fruits and vegetables, including apples, oranges, kale, and carrots."
+          ]
+        },
+        {
+          "id": "sense-12c77ffa",
+          "pos": "n.",
+          "meaningZh": "多元化；豐富多樣",
+          "examples": [
+            "The restaurant had a variety of dishes on its menu, catering to the tastes of different customers."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

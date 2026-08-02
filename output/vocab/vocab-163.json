@@ -1,1406 +1,663 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 163,
   "words": [
-    {
-      "wordKey": "tile",
-      "word": "tile",
-      "senses": [
-        {
-          "id": "sense-e58bb9ca",
-          "pos": "noun",
-          "meaningZh": "磁磚；瓷磚",
-          "definitionEn": "a thin, flat, rectangular piece made of fired clay, rubber, or linoleum that is commonly used to cover surfaces, such as floors and walls",
-          "examples": [
-            "I need to buy more tiles to replace the broken ones in my bathroom floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-f146dbbf",
-          "pos": "noun",
-          "meaningZh": "屋瓦；屋頂瓦片",
-          "definitionEn": "a thin, flat, rectangular piece made of fired clay that is used for roofing",
-          "examples": [
-            "The construction workers carefully laid the tiles on the roof, creating a waterproof barrier."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "timetable",
-      "word": "timetable",
-      "senses": [
-        {
-          "id": "sense-ab8d56bb",
-          "pos": "noun",
-          "meaningZh": "時間表；課程表",
-          "definitionEn": "a schedule listing events and the times at which they will take place",
-          "examples": [
-            "Anna carefully checked her timetable to see when her classes were scheduled throughout the week."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-b3627010",
-          "pos": "noun",
-          "meaningZh": "時刻表（交通）",
-          "definitionEn": "a schedule of times of arrivals and departures",
-          "examples": [
-            "Before traveling, make sure to check the timetable to see when the train will be arriving at the station."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "timid",
-      "word": "timid",
-      "senses": [
-        {
-          "id": "sense-cd5dc6a1",
-          "pos": "adjective",
-          "meaningZh": "缺乏自信的；怯懦的",
-          "definitionEn": "lacking self-confidence",
-          "examples": [
-            "My colleague is too timid to present her ideas in front of the boss."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-976e0c47",
-          "pos": "adjective",
-          "meaningZh": "膽小的；畏縮的",
-          "definitionEn": "lacking conviction, boldness or courage",
-          "examples": [
-            "As she approached the podium to make her speech, her voice sounded timid and barely audible."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "tin",
-      "word": "tin",
-      "senses": [
-        {
-          "id": "sense-bbdb0da7",
-          "pos": "noun",
-          "meaningZh": "鐵罐；金屬罐",
-          "definitionEn": "a round container, often made of metal, for storing dry foods such as tea or flour.",
-          "examples": [
-            "I bought a tin of coffee beans to keep them fresh."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-fd76ba8a",
-          "pos": "noun",
-          "meaningZh": "烤盤；烤模",
-          "definitionEn": "a container made of tinplate and used mainly for baking.",
-          "examples": [
-            "She placed the cookie dough on the greased tin and put it in the oven to bake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "tolerable",
-      "word": "tolerable",
-      "senses": [
-        {
-          "id": "sense-e7d0ce47",
-          "pos": "adjective",
-          "meaningZh": "可忍受的；還能接受的",
-          "definitionEn": "able to be endured or tolerated",
-          "examples": [
-            "The noise level of the party next door was tolerable, but it still made it difficult to concentrate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-5e7f77fa",
-          "pos": "adjective",
-          "meaningZh": "尚可的；普通的",
-          "definitionEn": "of average or acceptable quality",
-          "examples": [
-            "The food at the restaurant was tolerable, but not particularly delicious."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "tolerance",
       "word": "tolerance",
       "senses": [
         {
-          "id": "sense-ddf14980",
-          "pos": "noun",
+          "id": "sense-1cec26a8",
+          "pos": "n.",
           "meaningZh": "包容；寬容",
-          "definitionEn": "willingness to recognize and respect the beliefs or practices of others",
           "examples": [
             "In a diverse society, tolerance is essential for fostering understanding and harmony among individuals of different cultures and religions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4aae3d80",
-          "pos": "noun",
+          "id": "sense-296398e8",
+          "pos": "n.",
           "meaningZh": "忍耐；容忍",
-          "definitionEn": "the act of tolerating or enduring something without opposition",
           "examples": [
             "In a diverse society, it is important to practice tolerance and respect for different cultures and beliefs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tolerant",
       "word": "tolerant",
       "senses": [
         {
-          "id": "sense-dcbfccb3",
-          "pos": "adjective",
+          "id": "sense-7f63bc95",
+          "pos": "adj.",
           "meaningZh": "包容的；寬容的",
-          "definitionEn": "showing respect for the rights or opinions or practices of others",
           "examples": [
             "In a diverse classroom, the teacher encouraged tolerant discussions that allowed students to share their different perspectives without judgment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-44754519",
-          "pos": "adjective",
+          "id": "sense-41d47b2f",
+          "pos": "adj.",
           "meaningZh": "耐受的（生理或環境）",
-          "definitionEn": "able to tolerate environmental conditions or physiological stress",
           "examples": [
             "The drought-tolerant plants in my garden continue to thrive even during extended periods of little rainfall."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tolerate",
       "word": "tolerate",
       "senses": [
         {
-          "id": "sense-12491e19",
-          "pos": "verb",
+          "id": "sense-b44b9990",
+          "pos": "v.",
           "meaningZh": "忍受；包容",
-          "definitionEn": "put up with something or somebody unpleasant",
           "examples": [
             "As the professor, you must learn to tolerate different student behaviors and attitudes in your class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3197db4b",
-          "pos": "verb",
+          "id": "sense-328fef9a",
+          "pos": "v.",
           "meaningZh": "容許；允許存在",
-          "definitionEn": "allow the presence of or allow (an activity) without opposing or prohibiting",
           "examples": [
             "As a teacher, I cannot tolerate cheating in the classroom and will take appropriate action if necessary."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "toll",
       "word": "toll",
       "senses": [
         {
-          "id": "sense-e84a3128",
-          "pos": "noun",
+          "id": "sense-19edd310",
+          "pos": "n.",
           "meaningZh": "通行費；過路費",
-          "definitionEn": "a fee charged for using a particular road or bridge",
           "examples": [
             "To cross the bridge, you have to pay a toll of $5."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4e331463",
-          "pos": "noun",
+          "id": "sense-c12dc40b",
+          "pos": "n.",
           "meaningZh": "鐘聲；鐘鳴",
-          "definitionEn": "the sound made by a bell when it is struck",
           "examples": [
             "The toll of the church bells echoed through the quiet town, announcing the arrival of the new year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tomb",
       "word": "tomb",
       "senses": [
         {
-          "id": "sense-353ce525",
-          "pos": "noun",
+          "id": "sense-8cfcba85",
+          "pos": "n.",
           "meaningZh": "墳墓；陵寢",
-          "definitionEn": "a place, typically a grave or a chamber in a mausoleum, for the remains of the deceased to be buried or entombed",
           "examples": [
             "The ancient pharaoh was laid to rest in an elaborately adorned tomb, filled with priceless treasures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "torch",
       "word": "torch",
       "senses": [
         {
-          "id": "sense-a721c6f3",
-          "pos": "noun",
+          "id": "sense-205aaa8f",
+          "pos": "n.",
           "meaningZh": "火炬；手電筒",
-          "definitionEn": "a light source, typically a stick-shaped object containing a flammable material that can be set on fire and used to provide light",
           "examples": [
             "During our camping trip, we used a torch to navigate through the dark forest at night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "torment",
       "word": "torment",
       "senses": [
         {
-          "id": "sense-3df0dfb6",
-          "pos": "noun",
+          "id": "sense-7ed38f2a",
+          "pos": "n.",
           "meaningZh": "折磨；痛苦（心理）",
-          "definitionEn": "extreme mental distress",
           "examples": [
             "After losing her job and experiencing a series of personal failures, Sarah was caught in a never-ending cycle of torment, doubting her own worth and feeling helpless to change her circumstances."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e3cda97e",
-          "pos": "noun",
+          "id": "sense-9c9dff52",
+          "pos": "n.",
           "meaningZh": "劇痛；苦難",
-          "definitionEn": "intense feelings of suffering or acute mental or physical pain",
           "examples": [
             "After the car accident, Sarah was tormented by recurring nightmares and flashbacks of the incident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tortoise",
       "word": "tortoise",
       "senses": [
         {
-          "id": "sense-6e6849a0",
-          "pos": "noun",
+          "id": "sense-a1a4c5fc",
+          "pos": "n.",
           "meaningZh": "陸龜；烏龜",
-          "definitionEn": "A type of land turtle with clawed elephant-like limbs, typically herbivorous; found worldwide in arid areas except Australia and Antarctica.",
           "examples": [
             "I saw a tortoise slowly crossing the road on my drive to work today."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "torture",
       "word": "torture",
       "senses": [
         {
-          "id": "sense-b28ae903",
-          "pos": "noun",
+          "id": "sense-2163485b",
+          "pos": "n.",
           "meaningZh": "酷刑；嚴刑逼供",
-          "definitionEn": "the deliberate, systematic, or wanton infliction of physical or mental suffering in an attempt to force another person to yield information, make a confession, or for any other purpose",
           "examples": [
             "The use of torture by a government to extract information from prisoners violates human rights and is internationally recognized as a crime against humanity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-eb8b531c",
-          "pos": "noun",
+          "id": "sense-e1c2cba4",
+          "pos": "n.",
           "meaningZh": "極大痛苦；煎熬",
-          "definitionEn": "intense physical or mental pain and suffering",
           "examples": [
             "The prisoner was subjected to brutal torture methods to extract information from him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3 +1",
-        "textbookTitle": "龍騰 B3·L3、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tournament",
       "word": "tournament",
       "senses": [
         {
-          "id": "sense-c011a32c",
-          "pos": "noun",
+          "id": "sense-0c20c9d8",
+          "pos": "n.",
           "meaningZh": "錦標賽；競賽",
-          "definitionEn": "a series of contests in which participants compete in games or sports to decide the winner",
           "examples": [
             "The annual chess tournament brought together players from all over the world to compete for the title of Grandmaster."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-426aa397",
-          "pos": "noun",
+          "id": "sense-b34da6c3",
+          "pos": "n.",
           "meaningZh": "中世紀馬上比武",
-          "definitionEn": "a medieval competition in which knights competed against each other in a series of jousts for a prize",
           "examples": [
             "In the grand tournament, Sir Arthur displayed his exceptional horseback riding skills and won the coveted golden trophy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "toxic",
       "word": "toxic",
       "senses": [
         {
-          "id": "sense-5e5e2b54",
-          "pos": "adjective",
+          "id": "sense-42962252",
+          "pos": "adj.",
           "meaningZh": "有毒的；毒性的",
-          "definitionEn": "poisonous or harmful to living organisms, capable of causing harm or death",
           "examples": [
             "The chemicals in the factory were so toxic that it caused harm not only to the workers but also to the flora and fauna in the surrounding environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-46fda334",
-          "pos": "adjective",
+          "id": "sense-5b59b52e",
+          "pos": "adj.",
           "meaningZh": "由毒素引起的",
-          "definitionEn": "relating to or caused by a toxin or poison",
           "examples": [
             "The hazardous waste dump was closed due to the toxic fumes that endangered nearby residents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3",
-        "textbookTitle": "龍騰 B3·R3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tragedy",
       "word": "tragedy",
       "senses": [
         {
-          "id": "sense-e7d4dfdb",
-          "pos": "noun",
+          "id": "sense-500a8a37",
+          "pos": "n.",
           "meaningZh": "悲劇（文學體裁）",
-          "definitionEn": "drama that tells the story of a person or group of people who suffer great misfortune and bring feelings of pity or sadness to the reader or audience",
           "examples": [
             "The play, Romeo and Juliet is a tragedy that tells the story of two young lovers who pursue their love despite the bitter feud of their rival families. It brings about a feeling of pity and sadness to the audience as the story ends with the tragic deaths of both Romeo and Juliet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-47810d05",
-          "pos": "noun",
+          "id": "sense-9aa68ea9",
+          "pos": "n.",
           "meaningZh": "悲劇事件；慘劇",
-          "definitionEn": "an event or situation that causes great suffering, distress, and/or loss",
           "examples": [
             "The earthquake that struck the region in 2010 was a tragedy that left thousands homeless and claimed many lives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tragic",
       "word": "tragic",
       "senses": [
         {
-          "id": "sense-7decb77a",
-          "pos": "adjective",
+          "id": "sense-ddf01f9e",
+          "pos": "adj.",
           "meaningZh": "悲慘的；令人悲痛的",
-          "definitionEn": "involving or causing extreme sorrow or sadness, especially because of a disaster or death",
           "examples": [
             "The news of the plane crash was tragic, leaving everyone in the city devastated."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a93cab6e",
-          "pos": "adjective",
+          "id": "sense-9063886a",
+          "pos": "adj.",
           "meaningZh": "悲劇性的；以災難收場的",
-          "definitionEn": "relating to or characteristic of tragedy; having a disastrous or fatal conclusion",
           "examples": [
             "The crash was tragic, resulting in the loss of many innocent lives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L10",
-        "textbookTitle": "三民 B1·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trait",
       "word": "trait",
       "senses": [
         {
-          "id": "sense-6c1a910d",
-          "pos": "noun",
+          "id": "sense-96fc7a8d",
+          "pos": "n.",
           "meaningZh": "個性特徵；人格特質",
-          "definitionEn": "a distinguishing feature of a person’s nature or character",
           "examples": [
             "One of her most striking traits was her ability to remain calm in the face of adversity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-aef0be9b",
-          "pos": "noun",
+          "id": "sense-f7faf11b",
+          "pos": "n.",
           "meaningZh": "遺傳特徵；遺傳特質",
-          "definitionEn": "a genetically determined or inherited characteristic",
           "examples": [
             "One of his most prominent traits was his athletic ability, which he inherited from his mother’s side of the family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "traitor",
       "word": "traitor",
       "senses": [
         {
-          "id": "sense-8e339bb0",
-          "pos": "noun",
+          "id": "sense-cd1af9ec",
+          "pos": "n.",
           "meaningZh": "叛國者；通敵者",
-          "definitionEn": "someone who betrays his country by committing treason",
           "examples": [
             "During times of war, a traitor may provide confidential information to the enemy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7465d47f",
-          "pos": "noun",
+          "id": "sense-861be12b",
+          "pos": "n.",
           "meaningZh": "背叛者；出賣者",
-          "definitionEn": "a person who says one thing and does another",
           "examples": [
             "After years of working with the team and gaining their trust, he revealed himself to be a traitor by leaking sensitive information to the enemy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transaction",
       "word": "transaction",
       "senses": [
         {
-          "id": "sense-4101e99f",
-          "pos": "noun",
+          "id": "sense-d7c0cfff",
+          "pos": "n.",
           "meaningZh": "交易；業務往來",
-          "definitionEn": "the act of transacting within or between groups, such as carrying on commercial activities",
           "examples": [
             "The transaction was completed as soon as the buyer paid the seller and received the product."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-19c364f1",
-          "pos": "noun",
+          "id": "sense-2e46ea91",
+          "pos": "n.",
           "meaningZh": "交易紀錄；帳務明細",
-          "definitionEn": "a record or statement of financial expenditure or receipts relating to a particular period or purpose",
           "examples": [
             "I need to check my bank statements to see the transaction history of my account."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transfer",
       "word": "transfer",
       "senses": [
         {
-          "id": "sense-80d2fde2",
-          "pos": "verb",
+          "id": "sense-6eda369f",
+          "pos": "v.",
           "meaningZh": "轉移；移送",
-          "definitionEn": "move from one place to another",
           "examples": [
             "She transferred her files from her old computer to her new one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-966f3f27",
-          "pos": "verb",
+          "id": "sense-483fbf1e",
+          "pos": "v.",
           "meaningZh": "轉學；調職",
-          "definitionEn": "move around",
           "examples": [
             "After finishing high school, Sarah had to transfer to a new university in a different city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transform",
       "word": "transform",
       "senses": [
         {
-          "id": "sense-5d12e5af",
-          "pos": "verb",
+          "id": "sense-afcc865a",
+          "pos": "v.",
           "meaningZh": "使轉變；使改變",
-          "definitionEn": "to change or alter the form, appearance, or nature of something",
           "examples": [
             "After years of hard work and dedication, the shy and introverted teenager transformed into a confident and outgoing young adult."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1589024c",
-          "pos": "verb",
+          "id": "sense-a475ec4d",
+          "pos": "v.",
           "meaningZh": "改變外形；變形",
-          "definitionEn": "to change the outward structure or appearance of something",
           "examples": [
             "The caterpillar transformed into a beautiful butterfly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transformation",
       "word": "transformation",
       "senses": [
         {
-          "id": "sense-5040436d",
-          "pos": "noun",
+          "id": "sense-860a64d5",
+          "pos": "n.",
           "meaningZh": "轉變；蛻變",
-          "definitionEn": "the act or process of changing in form, appearance, nature, or character",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-80c3218d",
-          "pos": "noun",
+          "id": "sense-2380b715",
+          "pos": "n.",
           "meaningZh": "（生物）變態；質變",
-          "definitionEn": "a qualitative or quantitative change in an organism or its components",
           "examples": [
             "The caterpillar's transformation into a butterfly is a remarkable process of metamorphosis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transit",
       "word": "transit",
       "senses": [
         {
-          "id": "sense-431fcada",
-          "pos": "noun",
+          "id": "sense-244aac72",
+          "pos": "n.",
           "meaningZh": "運輸途中；過境",
-          "definitionEn": "a journey, usually by ship or other means of transportation",
           "examples": [
             "After a long day of exploring the city, we decided to take a leisurely transit along the river, enjoying the picturesque views as we made our way back to our hotel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fb41d603",
-          "pos": "verb",
+          "id": "sense-aeb85280",
+          "pos": "v.",
           "meaningZh": "使通過；轉運",
-          "definitionEn": "to cause or enable to pass through something",
           "examples": [
             "John used his diplomatic connections to transit the goods across the border without any issues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transition",
       "word": "transition",
       "senses": [
         {
-          "id": "sense-08fd3c90",
-          "pos": "noun",
+          "id": "sense-171fb70c",
+          "pos": "n.",
           "meaningZh": "過渡；轉換",
-          "definitionEn": "a change from one place, subject, stage, or state to another",
           "examples": [
             "Moving from high school to college can be a challenging transition for many students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-56576647",
-          "pos": "noun",
+          "id": "sense-115d0b73",
+          "pos": "n.",
           "meaningZh": "轉變過程；銜接期",
-          "definitionEn": "the act or process of moving from one state or stage to another",
           "examples": [
             "After completing high school, many students experience a period of transition as they enter college or the workforce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "translate",
       "word": "translate",
       "senses": [
         {
-          "id": "sense-dc4d313d",
-          "pos": "verb",
+          "id": "sense-0851697c",
+          "pos": "v.",
           "meaningZh": "翻譯；轉譯",
-          "definitionEn": "to express the meaning of words from one language in another",
           "examples": [
             "Can you translate this letter into English for me?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e1480925",
-          "pos": "verb",
+          "id": "sense-3c01b44e",
+          "pos": "v.",
           "meaningZh": "（數學）平移圖形",
-          "definitionEn": "to change the position of (figures or bodies) in space without rotation",
           "examples": [
             "The graphic designer used software to translate the image to a different location on the webpage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "translation",
       "word": "translation",
       "senses": [
         {
-          "id": "sense-a1cc4e71",
-          "pos": "noun",
+          "id": "sense-c77c4649",
+          "pos": "n.",
           "meaningZh": "翻譯；譯文",
-          "definitionEn": "a piece of writing or speech that has been put into another language",
           "examples": [
             "I read an English translation of the French novel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-893465f1",
-          "pos": "noun",
+          "id": "sense-e2065aa9",
+          "pos": "n.",
           "meaningZh": "均勻位移；直線移動",
-          "definitionEn": "the process of moving something in a uniform motion",
           "examples": [
             "The translation of the crane’s arm was smooth and slow, allowing the operator to move the heavy load with pinpoint accuracy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "translator",
       "word": "translator",
       "senses": [
         {
-          "id": "sense-c9ed1113",
-          "pos": "noun",
+          "id": "sense-37a18283",
+          "pos": "n.",
           "meaningZh": "譯者；翻譯人員",
-          "definitionEn": "a person who translates written messages from one language to another",
           "examples": [
             "When I traveled to Japan, I hired a professional translator to help me communicate with the locals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9d457b4e",
-          "pos": "noun",
+          "id": "sense-a79e239e",
+          "pos": "n.",
           "meaningZh": "口譯員；傳譯者",
-          "definitionEn": "someone who facilitates communication between speakers of different languages",
           "examples": [
             "When attending the international conference, they hired a skilled translator to ensure seamless communication between the delegates from different countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "transmission",
       "word": "transmission",
       "senses": [
         {
-          "id": "sense-7c1f547d",
-          "pos": "noun",
+          "id": "sense-d9f757b9",
+          "pos": "n.",
           "meaningZh": "（汽車）變速箱；傳動裝置",
-          "definitionEn": "the gears that transmit power from an automobile engine via the driveshaft to the live axle",
           "examples": [
             "When I pressed the gas pedal, I could hear the smooth hum of the transmission as it shifted gears."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8f3f92f6",
-          "pos": "noun",
+          "id": "sense-3272bb7a",
+          "pos": "n.",
           "meaningZh": "廣播訊號；播送傳輸",
-          "definitionEn": "communication by means of transmitted signals",
           "examples": [
             "During the press conference, the live transmission of the event was interrupted due to technical difficulties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "transparent",
+      "word": "transparent",
+      "senses": [
+        {
+          "id": "sense-055a0c8c",
+          "pos": "adj.",
+          "meaningZh": "透明的；可透視的",
+          "examples": [
+            "The glass windows of the skyscraper were transparent, providing a stunning view of the city skyline."
+          ]
+        },
+        {
+          "id": "sense-2c5b711e",
+          "pos": "adj.",
+          "meaningZh": "薄透的；輕薄透亮的",
+          "examples": [
+            "The delicate fabric of the wedding dress was so transparent that you could see the outline of the bride's body."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "transportation",
+      "word": "transportation",
+      "senses": [
+        {
+          "id": "sense-b638eb84",
+          "pos": "n.",
+          "meaningZh": "運輸；搬運",
+          "examples": [
+            "Shipping companies play a crucial role in the transportation of goods around the world."
+          ]
+        },
+        {
+          "id": "sense-a70bd846",
+          "pos": "n.",
+          "meaningZh": "交通運輸系統；運輸設施",
+          "examples": [
+            "The transportation system in the city includes buses, trains, and subway stations, allowing people to commute easily."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "trauma",
+      "word": "trauma",
+      "senses": [
+        {
+          "id": "sense-1e75f189",
+          "pos": "n.",
+          "meaningZh": "心理創傷；精神傷害",
+          "examples": [
+            "She developed a fear of enclosed spaces as a result of the trauma she experienced while trapped in an elevator."
+          ]
+        },
+        {
+          "id": "sense-87dd4966",
+          "pos": "n.",
+          "meaningZh": "外傷；身體損傷",
+          "examples": [
+            "The car accident left her with both physical and emotional trauma."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "treaty",
+      "word": "treaty",
+      "senses": [
+        {
+          "id": "sense-c941dee8",
+          "pos": "n.",
+          "meaningZh": "條約；國際協定",
+          "examples": [
+            "After months of negotiations, the countries signed a treaty to end the long-standing border dispute and promote economic cooperation."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "tremble",
+      "word": "tremble",
+      "senses": [
+        {
+          "id": "sense-3f21645e",
+          "pos": "v.",
+          "meaningZh": "顫抖；發抖",
+          "examples": [
+            "As I stood on the edge of the cliff, the fear caused my legs to tremble uncontrollably."
+          ]
+        },
+        {
+          "id": "sense-0f3e9070",
+          "pos": "n.",
+          "meaningZh": "顫抖；哆嗦",
+          "examples": [
+            "He couldn't help but tremble with fear as he walked in the dark and eerie forest."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

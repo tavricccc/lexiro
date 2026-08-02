@@ -1,1366 +1,639 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 194,
   "words": [
-    {
-      "wordKey": "scenic",
-      "word": "scenic",
-      "senses": [
-        {
-          "id": "sense-6aeaa326",
-          "pos": "adjective",
-          "meaningZh": "風景優美的；景色宜人的",
-          "definitionEn": "having beautiful natural scenery",
-          "examples": [
-            "The hike through the National Park was incredibly scenic, with breathtaking views of snow-capped mountains and lush green valleys."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-6ee1af3b",
-          "pos": "adjective",
-          "meaningZh": "舞台的；與舞台布景相關的",
-          "definitionEn": "of or relating to the stage or stage scenery",
-          "examples": [
-            "The play's scenic design captivated the audience, transporting them to a picturesque village in the French countryside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "scorn",
-      "word": "scorn",
-      "senses": [
-        {
-          "id": "sense-5493a8bc",
-          "pos": "noun",
-          "meaningZh": "輕蔑；鄙視",
-          "definitionEn": "a feeling and often show of disrespect, contempt, or disdain towards someone or something considered unworthy or inferior",
-          "examples": [
-            "He showed nothing but scorn towards the new hire and made her feel unwelcome."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-372b0de2",
-          "pos": "verb",
-          "meaningZh": "鄙視；輕視",
-          "definitionEn": "to feel or display contempt or disdain towards someone or something considered unworthy or inferior",
-          "examples": [
-            "Simon couldn’t hide his scorn for the boring presentation and decided to leave mid-speech."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "scrape",
-      "word": "scrape",
-      "senses": [
-        {
-          "id": "sense-3b5bbd75",
-          "pos": "verb",
-          "meaningZh": "刮掉；磨損表面",
-          "definitionEn": "wear away the surface of by rubbing it against something rough or sharp",
-          "examples": [
-            "He accidentally scraped the paint off the car when he brushed against the brick wall."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-0e34f411",
-          "pos": "verb",
-          "meaningZh": "擦傷；刮傷",
-          "definitionEn": "injure or damage by rubbing against something rough or sharp",
-          "examples": [
-            "He scraped his knee when he fell off his skateboard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "screwdriver",
-      "word": "screwdriver",
-      "senses": [
-        {
-          "id": "sense-b96cb808",
-          "pos": "noun",
-          "meaningZh": "螺絲起子",
-          "definitionEn": "a tool used for turning screws; typically consisting of a handle attached to a shaft with a slot or cross-shaped end that fits into the head of a screw.",
-          "examples": [
-            "When assembling the new bookshelf, make sure to use a screwdriver to tighten the screws properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-618c594f",
-          "pos": "noun",
-          "meaningZh": "螺絲起子調酒；伏特加柳橙汁",
-          "definitionEn": "a cocktail made with vodka and orange juice.",
-          "examples": [
-            "At the party, she ordered a refreshing screwdriver and enjoyed the tangy combination of vodka and orange juice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
-    {
-      "wordKey": "scroll",
-      "word": "scroll",
-      "senses": [
-        {
-          "id": "sense-7f82227d",
-          "pos": "noun",
-          "meaningZh": "卷軸；卷冊",
-          "definitionEn": "a document or manuscript that can be rolled up (as for storage)",
-          "examples": [
-            "The ancient manuscript was carefully unrolled from the scroll and examined by scholars."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-4433be5a",
-          "pos": "verb",
-          "meaningZh": "捲動（螢幕）；滾動",
-          "definitionEn": "to move text or images on a computer screen, especially in order to view parts that do not fit on the screen at the same time",
-          "examples": [
-            "To find the information she was looking for on the website, Emily had to scroll through several pages of text."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
-    },
     {
       "wordKey": "scrutiny",
       "word": "scrutiny",
       "senses": [
         {
-          "id": "sense-8ae88d10",
-          "pos": "noun",
+          "id": "sense-39260af8",
+          "pos": "n.",
           "meaningZh": "仔細檢查；審查",
-          "definitionEn": "the act of examining something closely (as for mistakes)",
           "examples": [
             "The professor's scrutiny of the lab reports revealed several errors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-9fda2f7b",
-          "pos": "noun",
+          "id": "sense-c41c7513",
+          "pos": "n.",
           "meaningZh": "審視；凝視",
-          "definitionEn": "a prolonged intense look",
           "examples": [
             "The detective observed the crime scene with meticulous scrutiny, examining every detail for potential clues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sculptor",
       "word": "sculptor",
       "senses": [
         {
-          "id": "sense-96ce4cd4",
-          "pos": "noun",
+          "id": "sense-c272b334",
+          "pos": "n.",
           "meaningZh": "雕刻家；雕塑家",
-          "definitionEn": "a person who creates sculptures by chiseling, carving, modeling, or casting",
           "examples": [
             "The sculptor spent months chiseling away at the block of marble, until he had created a beautiful statue of a goddess."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "seduce",
       "word": "seduce",
       "senses": [
         {
-          "id": "sense-21ac1100",
-          "pos": "verb",
+          "id": "sense-b9cb4a6d",
+          "pos": "v.",
           "meaningZh": "引誘；勾引",
-          "definitionEn": "to persuade someone to have sex, or to attract someone strongly",
           "examples": [
             "The advertisement is designed to seduce customers into buying more."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ad9787cb",
-          "pos": "verb",
+          "id": "sense-836492de",
+          "pos": "v.",
           "meaningZh": "誘使偏離；引誘放棄原則",
-          "definitionEn": "lure or entice away from duty, principles, or proper conduct",
           "examples": [
             "He tried to seduce her away from her husband and convince her to run away with him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "selective",
       "word": "selective",
       "senses": [
         {
-          "id": "sense-5bc55bad",
-          "pos": "adjective",
+          "id": "sense-efa1cc11",
+          "pos": "adj.",
           "meaningZh": "精挑細選的；嚴格篩選的",
-          "definitionEn": "characterized by very careful or fastidious selection",
           "examples": [
             "The restaurant has a selective menu, featuring only the finest and freshest ingredients."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-eddcbc83",
-          "pos": "adjective",
+          "id": "sense-7e63fb37",
+          "pos": "adj.",
           "meaningZh": "挑剔的；有判斷力的",
-          "definitionEn": "characterized by careful choice, especially of what is good or desirable; having a discerning taste or judgment",
           "examples": [
             "Mary is very selective when it comes to buying clothes. She only buys clothes made of good quality fabric and which flatter her body shape."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "serene",
       "word": "serene",
       "senses": [
         {
-          "id": "sense-f43b15c9",
-          "pos": "adjective",
+          "id": "sense-35cc051d",
+          "pos": "adj.",
           "meaningZh": "平靜的；寧靜的",
-          "definitionEn": "calm, peaceful, and untroubled; tranquil.",
           "examples": [
             "The ocean was completely calm, and as he looked out over the serene water, he felt a deep sense of peace wash over him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6f2a5a46",
-          "pos": "adjective",
+          "id": "sense-cadfeb5a",
+          "pos": "adj.",
           "meaningZh": "晴朗的；澄澈的",
-          "definitionEn": "completely clear and fine; bright and unclouded.",
           "examples": [
             "After a long day of hiking, Emily sat by the calm lake, enjoying the serene sunset."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sergeant",
       "word": "sergeant",
       "senses": [
         {
-          "id": "sense-a0cb808d",
-          "pos": "noun",
+          "id": "sense-2c2c91f1",
+          "pos": "n.",
           "meaningZh": "陸軍中士；士官",
-          "definitionEn": "a non-commissioned officer rank in the Army or Air Force or Marines above a corporal",
           "examples": [
             "The sergeant barked out orders to the squad, making sure they were all in line and ready to execute their mission."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7fc85719",
-          "pos": "noun",
+          "id": "sense-c6390a75",
+          "pos": "n.",
           "meaningZh": "警察中士；警察班長",
-          "definitionEn": "a police officer with the rank of sergeant",
           "examples": [
             "The sergeant instructed the new recruits on how to properly handcuff and arrest suspects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "serial",
       "word": "serial",
       "senses": [
         {
-          "id": "sense-e294b7be",
-          "pos": "adjective",
+          "id": "sense-74e98e3a",
+          "pos": "adj.",
           "meaningZh": "連續的；系列的",
-          "definitionEn": "produced or occurring in a series",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-e5cd06c7",
-          "pos": "adjective",
+          "id": "sense-a1b28b1b",
+          "pos": "adj.",
           "meaningZh": "串列的；序列執行的",
-          "definitionEn": "relating to or using the sequential performance of multiple operations",
           "examples": [
             "The factory had a serial process, where each worker completed one task before passing it on to the next person."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sermon",
       "word": "sermon",
       "senses": [
         {
-          "id": "sense-fea8f50f",
-          "pos": "noun",
+          "id": "sense-641c665b",
+          "pos": "n.",
           "meaningZh": "佈道；講道",
-          "definitionEn": "an address of a religious nature (usually delivered during a church service)",
           "examples": [
             "The pastor delivered a powerful sermon about forgiveness, urging the congregation to let go of grudges and embrace compassion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5aa96b31",
-          "pos": "noun",
+          "id": "sense-119c793d",
+          "pos": "n.",
           "meaningZh": "說教；訓誡",
-          "definitionEn": "a moralistic rebuke",
           "examples": [
             "During the church service, the preacher delivered a passionate sermon admonishing the congregation for their lack of commitment to charitable causes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "serving",
       "word": "serving",
       "senses": [
         {
-          "id": "sense-1dedf5b7",
-          "pos": "noun",
+          "id": "sense-29820ce7",
+          "pos": "n.",
           "meaningZh": "一份食物；一客",
-          "definitionEn": "an individual quantity of food or drink taken as part of a meal",
           "examples": [
             "For dinner, she had a serving of roast chicken with a side of vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "setback",
       "word": "setback",
       "senses": [
         {
-          "id": "sense-82c5ee3c",
-          "pos": "noun",
+          "id": "sense-c82cbb14",
+          "pos": "n.",
           "meaningZh": "挫折；阻礙",
-          "definitionEn": "an event that delays or prevents progress; a difficulty or obstacle that is encountered",
           "examples": [
             "After months of hard work, the unexpected financial crisis served as a significant setback for the company’s expansion plans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shabby",
       "word": "shabby",
       "senses": [
         {
-          "id": "sense-e7be78a4",
-          "pos": "adjective",
+          "id": "sense-ed701542",
+          "pos": "adj.",
           "meaningZh": "破舊的；衣衫襤褸的",
-          "definitionEn": "worn out and in poor condition",
           "examples": [
             "After years of neglect, the old house became shabby, with peeling paint and a sagging roof."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-be02c4e0",
-          "pos": "adjective",
+          "id": "sense-6fbe6132",
+          "pos": "adj.",
           "meaningZh": "卑鄙的；無恥的",
-          "definitionEn": "morally despicable and mean",
           "examples": [
             "The landlord refused to return the security deposit and made up false claims, which was a shabby way to treat his tenants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sharpen",
       "word": "sharpen",
       "senses": [
         {
-          "id": "sense-a4be94c3",
-          "pos": "verb",
+          "id": "sense-2c42bb3a",
+          "pos": "v.",
           "meaningZh": "削尖；磨利",
-          "definitionEn": "to give a point to something",
           "examples": [
             "I need to sharpen my pencil before I can complete my homework."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-05b1d3c3",
-          "pos": "verb",
+          "id": "sense-7a1faf50",
+          "pos": "v.",
           "meaningZh": "升高音調；調高音",
-          "definitionEn": "to raise the pitch of musical notes",
           "examples": [
             "During the practice session, the music teacher asked the students to sharpen their vocal pitch for the choir competition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shaver",
       "word": "shaver",
       "senses": [
         {
-          "id": "sense-12831c75",
-          "pos": "noun",
+          "id": "sense-2cd83001",
+          "pos": "n.",
           "meaningZh": "電動刮鬍刀；剃鬚刀",
-          "definitionEn": "a device, especially an electric one, used for shaving the hair from the face or body",
           "examples": [
             "John plugged in his shaver and gently ran it over his stubble, effortlessly removing the excess hair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shortcoming",
       "word": "shortcoming",
       "senses": [
         {
-          "id": "sense-7b9aade3",
-          "pos": "noun",
+          "id": "sense-9911142f",
+          "pos": "n.",
           "meaningZh": "缺點；不足之處",
-          "definitionEn": "a flaw or weakness in someone’s character or actions.",
           "examples": [
             "Although she was a talented musician, her lack of discipline and organization skills were her main shortcoming."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d1f958b9",
-          "pos": "noun",
+          "id": "sense-19a3d7cd",
+          "pos": "n.",
           "meaningZh": "缺失；未達標準",
-          "definitionEn": "a failure to meet expectations or requirements.",
           "examples": [
             "Her only shortcoming was her poor time management skills, which often caused her to miss deadlines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shortsighted",
       "word": "shortsighted",
       "senses": [
         {
-          "id": "sense-7644f153",
-          "pos": "adjective",
+          "id": "sense-992a6047",
+          "pos": "adj.",
           "meaningZh": "目光短淺的；缺乏遠見的",
-          "definitionEn": "lacking foresight or scope",
           "examples": [
             "The company's shortsighted decision to cut costs resulted in the loss of key clients and declining profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3f7e731f",
-          "pos": "adjective",
+          "id": "sense-e1e07dbb",
+          "pos": "adj.",
           "meaningZh": "考慮不周的；輕率的",
-          "definitionEn": "not given careful consideration",
           "examples": [
             "John made a shortsighted decision by quitting his job without having another one lined up."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shred",
       "word": "shred",
       "senses": [
         {
-          "id": "sense-d2420763",
-          "pos": "verb",
+          "id": "sense-689738c2",
+          "pos": "v.",
           "meaningZh": "撕碎；切碎",
-          "definitionEn": "to tear or cut into small pieces or strips",
           "examples": [
             "I need to shred this important document before throwing it away to protect sensitive information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-fd363d70",
-          "pos": "noun",
+          "id": "sense-4fdcd7b4",
+          "pos": "n.",
           "meaningZh": "碎片；細條",
-          "definitionEn": "a small, thin piece that has been torn or cut off of something larger",
           "examples": [
             "She used a cheese grater to shred the block of cheese into small pieces."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shriek",
       "word": "shriek",
       "senses": [
         {
-          "id": "sense-c9b48ddd",
-          "pos": "noun",
+          "id": "sense-0abb5add",
+          "pos": "n.",
           "meaningZh": "尖叫聲；刺耳的叫聲",
-          "definitionEn": "a sharp, high-pitched cry",
           "examples": [
             "When the roller coaster plummeted down, the thrill-seeker couldn't help but let out a piercing shriek."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6ff95534",
-          "pos": "noun",
+          "id": "sense-5f3c5634",
+          "pos": "n.",
           "meaningZh": "尖銳叫聲；恐懼嘶鳴",
-          "definitionEn": "a sound that is high-pitched and resembles a human cry",
           "examples": [
             "As the haunted house tour reached its climax, the guests let out a collective shriek of terror."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shrub",
       "word": "shrub",
       "senses": [
         {
-          "id": "sense-6bb3701b",
-          "pos": "noun",
+          "id": "sense-aa66727b",
+          "pos": "n.",
           "meaningZh": "灌木；矮樹叢",
-          "definitionEn": "a low, woody plant with several stems that typically reaches heights between two and six feet",
           "examples": [
             "She planted a row of shrubs along the fence to provide privacy for her backyard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shuffle",
       "word": "shuffle",
       "senses": [
         {
-          "id": "sense-4061c074",
-          "pos": "verb",
+          "id": "sense-4372225b",
+          "pos": "v.",
           "meaningZh": "拖著腳步走；挪動",
-          "definitionEn": "move about, move back and forth",
           "examples": [
             "The group of dancers shuffled their feet to the rhythmic beat of the music."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c1663e89",
-          "pos": "verb",
+          "id": "sense-f08d4764",
+          "pos": "v.",
           "meaningZh": "洗牌；隨機排列",
-          "definitionEn": "mix so as to make a random order or arrangement",
           "examples": [
             "I need to shuffle the cards before we start the game."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "shutter",
       "word": "shutter",
       "senses": [
         {
-          "id": "sense-cd02909d",
-          "pos": "noun",
+          "id": "sense-36f65009",
+          "pos": "n.",
           "meaningZh": "百葉窗；窗板",
-          "definitionEn": "a hinged blind, typically metal or wooden, for covering a window to keep light or cold air out and provide privacy",
           "examples": [
             "On a hot summer day, she closed the shutters tightly to block out the scorching sun and keep the room cool."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7ac2ad2f",
-          "pos": "noun",
+          "id": "sense-27cc3643",
+          "pos": "n.",
           "meaningZh": "快門（相機）",
-          "definitionEn": "a mechanical device on a camera that opens and closes to control the duration of a photographic exposure and the amount of light that reaches the film or image sensor",
           "examples": [
             "To capture a clear image of the fast-moving subject, the photographer adjusted the shutter speed to a fast setting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "simplicity",
       "word": "simplicity",
       "senses": [
         {
-          "id": "sense-a546eb9d",
-          "pos": "noun",
+          "id": "sense-2bb903b5",
+          "pos": "n.",
           "meaningZh": "簡單；單純性",
-          "definitionEn": "the quality of being simple or uncompounded",
           "examples": [
             "The design of the new phone emphasizes simplicity, with only a few essential buttons and a clean, uncluttered interface."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-dc1a93dd",
-          "pos": "noun",
+          "id": "sense-041ac8a5",
+          "pos": "n.",
           "meaningZh": "簡便；輕鬆易行",
-          "definitionEn": "freedom from difficulty or hardship or effort",
           "examples": [
             "The simplicity of a well-designed user interface can make navigating a website effortless."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "simplify",
       "word": "simplify",
       "senses": [
         {
-          "id": "sense-7cb85d53",
-          "pos": "verb",
+          "id": "sense-75c0d8a8",
+          "pos": "v.",
           "meaningZh": "簡化；使易懂",
-          "definitionEn": "to make something easier to do or to understand",
           "examples": [
             "The teacher used diagrams and pictures to simplify the concept and make it easier for the students to understand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e543909c",
-          "pos": "verb",
+          "id": "sense-3893ea43",
+          "pos": "v.",
           "meaningZh": "降低複雜度；化繁為簡",
-          "definitionEn": "to reduce the complexity of something or make it less complicated",
           "examples": [
             "To make it easier for the students to understand, the teacher decided to simplify the difficult concept by using visual aids during the lecture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "simultaneous",
       "word": "simultaneous",
       "senses": [
         {
-          "id": "sense-8abd7388",
-          "pos": "adjective",
+          "id": "sense-5977c47a",
+          "pos": "adj.",
           "meaningZh": "同時的；同步發生的",
-          "definitionEn": "happening or done at the same time as something else",
           "examples": [
             "The band members played their instruments with skill and precision, resulting in a magnificent performance that showcased their ability to create a beautiful sound through simultaneous playing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skeptical",
       "word": "skeptical",
       "senses": [
         {
-          "id": "sense-39f81a66",
-          "pos": "adjective",
+          "id": "sense-552e0a0a",
+          "pos": "adj.",
           "meaningZh": "存疑的；懷疑的",
-          "definitionEn": "doubting or questioning something",
           "examples": [
             "Although the seller claimed the watch was genuine, I remained skeptical and had it examined by an expert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0c69bd47",
-          "pos": "adjective",
+          "id": "sense-9f54bd1b",
+          "pos": "adj.",
           "meaningZh": "不相信的；持懷疑態度的",
-          "definitionEn": "disbelieving or inclined to disbelieve",
           "examples": [
             "The scientist was skeptical of the new findings and demanded further investigation before accepting the results."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "skim",
       "word": "skim",
       "senses": [
         {
-          "id": "sense-3f50fb7b",
-          "pos": "verb",
+          "id": "sense-53da7092",
+          "pos": "v.",
           "meaningZh": "掠過；輕拂（水面）",
-          "definitionEn": "move or pass swiftly and lightly over the surface of",
           "examples": [
             "She watched the bird skim over the water surface as it caught fish for food."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ade76cb8",
-          "pos": "verb",
+          "id": "sense-8b581fb9",
+          "pos": "v.",
           "meaningZh": "打水漂；沿水面滑行",
-          "definitionEn": "travel on the surface of water",
           "examples": [
             "The children loved to skim stones across the lake during their picnic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.074Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "slang",
+      "word": "slang",
+      "senses": [
+        {
+          "id": "sense-e59ed4e0",
+          "pos": "n.",
+          "meaningZh": "俚語；行話",
+          "examples": [
+            "Using too much slang during a job interview can give a bad impression of your professionalism."
+          ]
+        },
+        {
+          "id": "sense-ef50bb0e",
+          "pos": "v.",
+          "meaningZh": "使用俚語；說粗話",
+          "examples": [
+            "Even though he was giving a presentation at work, he couldn’t resist the urge to slang and it was unprofessional."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "slash",
+      "word": "slash",
+      "senses": [
+        {
+          "id": "sense-a883adf3",
+          "pos": "v.",
+          "meaningZh": "揮砍；劈砍",
+          "examples": [
+            "The farmer slashed the tall grass with his machete before planting the crops."
+          ]
+        },
+        {
+          "id": "sense-524f68ec",
+          "pos": "v.",
+          "meaningZh": "大砍；大幅削減",
+          "examples": [
+            "The chef used a sharp knife to slash through the meat."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "slaughter",
+      "word": "slaughter",
+      "senses": [
+        {
+          "id": "sense-e1bafc29",
+          "pos": "n.",
+          "meaningZh": "屠宰（牲畜）",
+          "examples": [
+            "The farmer took his livestock to the slaughterhouse to provide meat for the community."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "slay",
+      "word": "slay",
+      "senses": [
+        {
+          "id": "sense-30c06faf",
+          "pos": "v.",
+          "meaningZh": "殺死；誅殺",
+          "examples": [
+            "The hitman was hired to slay the rival gang leader."
+          ]
+        },
+        {
+          "id": "sense-c7eb2599",
+          "pos": "v.",
+          "meaningZh": "令人驚艷；征服（觀眾）",
+          "examples": [
+            "She slayed the audience with her singing."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "sloppy",
+      "word": "sloppy",
+      "senses": [
+        {
+          "id": "sense-b0ba8cf5",
+          "pos": "adj.",
+          "meaningZh": "凌亂的；邋遢的",
+          "examples": [
+            "Janice’s room was so sloppy, clothes were strewn across the floor and empty food containers were piled up on her desk."
+          ]
+        },
+        {
+          "id": "sense-3e36a54a",
+          "pos": "adj.",
+          "meaningZh": "馬虎的；草率的",
+          "examples": [
+            "After a night of heavy drinking, John was feeling sloppy and couldn’t even stand straight."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,1408 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 165,
   "words": [
-    {
-      "wordKey": "unfold",
-      "word": "unfold",
-      "senses": [
-        {
-          "id": "sense-f92e38ce",
-          "pos": "verb",
-          "meaningZh": "展開；伸展至全長",
-          "definitionEn": "to stretch out or extend something to its full length or greater length",
-          "examples": [
-            "He unfolded the map to show us the way to the destination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-dc129564",
-          "pos": "verb",
-          "meaningZh": "打開；攤開折疊的東西",
-          "definitionEn": "to open or spread out something that has been closed or folded",
-          "examples": [
-            "Jane carefully unfolded the letter and began to read its contents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "universal",
-      "word": "universal",
-      "senses": [
-        {
-          "id": "sense-4ea0c2e2",
-          "pos": "adjective",
-          "meaningZh": "普遍的；全體適用的",
-          "definitionEn": "applicable to or common to all members of a group or set",
-          "examples": [
-            "The rules of mathematics are considered universal and apply to all cultures and civilizations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-6c10ad82",
-          "pos": "adjective",
-          "meaningZh": "萬用的；多功能的",
-          "definitionEn": "adapted to various purposes, sizes, forms, and operations",
-          "examples": [
-            "The Swiss Army Knife is a universal tool that can be used for cutting, opening, and screwing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3",
-        "textbookTitle": "龍騰 B3·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "unlock",
-      "word": "unlock",
-      "senses": [
-        {
-          "id": "sense-115d9fc1",
-          "pos": "verb",
-          "meaningZh": "開鎖；解鎖",
-          "definitionEn": "open the lock of",
-          "examples": [
-            "I forgot the combination to my safe, so I had to call a locksmith to help me unlock it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-ea473b3d",
-          "pos": "verb",
-          "meaningZh": "釋放；解除限制",
-          "definitionEn": "set free or release",
-          "examples": [
-            "After serving his sentence, the prisoner was finally unlocked from his cell and allowed to go home."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L2",
-        "textbookTitle": "翰林 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "unprecedented",
-      "word": "unprecedented",
-      "senses": [
-        {
-          "id": "sense-f614edd0",
-          "pos": "adjective",
-          "meaningZh": "史無前例的；空前的；前所未有的",
-          "definitionEn": "never done or known before; without previous example; unparalleled",
-          "examples": [
-            "The COVID-19 pandemic has led to an unprecedented global lockdown causing severe disruption to the global economy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "update",
-      "word": "update",
-      "senses": [
-        {
-          "id": "sense-6f57b71f",
-          "pos": "verb",
-          "meaningZh": "更新（軟體或系統）；升級",
-          "definitionEn": "To bring something up to the latest state of technology",
-          "examples": [
-            "After installing the latest software update, my computer was running faster and more efficiently."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-89f16f63",
-          "pos": "verb",
-          "meaningZh": "更新；修訂至最新版本",
-          "definitionEn": "To make something more modern or current",
-          "examples": [
-            "After years of using the same operating system, it was time to update my computer to the latest version."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "upgrade",
       "word": "upgrade",
       "senses": [
         {
-          "id": "sense-b203925d",
-          "pos": "noun",
+          "id": "sense-cae7bced",
+          "pos": "n.",
           "meaningZh": "升級；效能提升",
-          "definitionEn": "an improvement in something",
           "examples": [
             "After installing the new software version, my computer experienced a significant upgrade in speed and performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b238b8e8",
-          "pos": "noun",
+          "id": "sense-656c9c38",
+          "pos": "n.",
           "meaningZh": "升等；升艙",
-          "definitionEn": "better travel arrangements than what you originally paid for",
           "examples": [
             "After realizing that their flight was overbooked, the airline offered to upgrade John's economy ticket to first class for free."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "urge",
       "word": "urge",
       "senses": [
         {
-          "id": "sense-3a9598a4",
-          "pos": "noun",
+          "id": "sense-180455a8",
+          "pos": "n.",
           "meaningZh": "衝動；本能驅動",
-          "definitionEn": "an instinctive motive",
           "examples": [
             "Despite his exhaustion, John felt an overwhelming urge to keep running towards the finish line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a617533e",
-          "pos": "noun",
+          "id": "sense-4fd320a2",
+          "pos": "n.",
           "meaningZh": "強烈欲望；渴望",
-          "definitionEn": "a strong, restless desire",
           "examples": [
             "Despite being exhausted, he couldn't resist the urge to stay up all night playing video games."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L8",
-        "textbookTitle": "龍騰 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "urgent",
       "word": "urgent",
       "senses": [
         {
-          "id": "sense-16414eac",
-          "pos": "adjective",
+          "id": "sense-a5e13562",
+          "pos": "adj.",
           "meaningZh": "緊急的；急迫的；刻不容緩",
-          "definitionEn": "requiring immediate action",
           "examples": [
             "When a fire alarm goes off, it is important to exit the building in an urgent manner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "usage",
       "word": "usage",
       "senses": [
         {
-          "id": "sense-3d1f535d",
-          "pos": "noun",
+          "id": "sense-0287a345",
+          "pos": "n.",
           "meaningZh": "用法；語言慣用方式",
-          "definitionEn": "the way in which words and phrases are actually used in a language by native speakers",
           "examples": [
             "The linguist analyzed the usage of slang in the conversation between the teenagers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-abf77f5d",
-          "pos": "noun",
+          "id": "sense-bf842a15",
+          "pos": "n.",
           "meaningZh": "使用方式；用量",
-          "definitionEn": "the act or manner of using something; use",
           "examples": [
             "The safe usage of power tools is crucial to prevent accidents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L9",
-        "textbookTitle": "龍騰 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "utility",
       "word": "utility",
       "senses": [
         {
-          "id": "sense-1902827f",
-          "pos": "noun",
+          "id": "sense-e8312e2f",
+          "pos": "n.",
           "meaningZh": "實用性；有用性",
-          "definitionEn": "the quality of being useful or practical",
           "examples": [
             "The invention of smartphones has increased the utility and convenience of staying in touch with family and friends from anywhere in the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0e790e67",
-          "pos": "noun",
+          "id": "sense-731f6737",
+          "pos": "n.",
           "meaningZh": "效用；功利（經濟學）",
-          "definitionEn": "a measure of usefulness or benefit, especially in economics",
           "examples": [
             "For a company, the utility of investing in a new technology is determined by weighing the potential benefits against the costs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "utilize",
       "word": "utilize",
       "senses": [
         {
-          "id": "sense-63e72297",
-          "pos": "verb",
+          "id": "sense-31bc9f8a",
+          "pos": "v.",
           "meaningZh": "利用；善加運用",
-          "definitionEn": "To make use of something in order to achieve a particular goal.",
           "examples": [
             "The team was able to utilize their resources efficiently and complete the project ahead of schedule."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6a25faf6",
-          "pos": "verb",
+          "id": "sense-0c8bdc7f",
+          "pos": "v.",
           "meaningZh": "轉化運用；改為他用",
-          "definitionEn": "To convert something from one form to another in order to use it for a particular purpose.",
           "examples": [
             "You can utilize this empty space in your room by turning it into a home office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vacancy",
       "word": "vacancy",
       "senses": [
         {
-          "id": "sense-fafbbd3c",
-          "pos": "noun",
+          "id": "sense-c15c78c8",
+          "pos": "n.",
           "meaningZh": "空缺；空位；職缺",
-          "definitionEn": "an empty area or space",
           "examples": [
             "There was a vacancy on the team after one of the players got injured."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8c499147",
-          "pos": "noun",
+          "id": "sense-27ecf27b",
+          "pos": "n.",
           "meaningZh": "空置狀態；空房",
-          "definitionEn": "the state of being unoccupied",
           "examples": [
             "There was a vacant apartment on the other side of the street. The vacancy had been there for months and no one had shown any interest in renting it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vacuum",
       "word": "vacuum",
       "senses": [
         {
-          "id": "sense-9ba0ec00",
-          "pos": "noun",
+          "id": "sense-5272d5d4",
+          "pos": "n.",
           "meaningZh": "真空；真空狀態",
-          "definitionEn": "an empty space with no matter in it",
           "examples": [
             "In space, there is a vacuum with no air or atmosphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-30b3a26f",
-          "pos": "noun",
+          "id": "sense-708a091b",
+          "pos": "n.",
           "meaningZh": "吸塵器",
-          "definitionEn": "a device powered by electricity that uses suction to clean floors and other surfaces",
           "examples": [
             "I need to vacuum the carpet in my living room before my guests arrive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vague",
       "word": "vague",
       "senses": [
         {
-          "id": "sense-ebf12460",
-          "pos": "adjective",
+          "id": "sense-0ed806c4",
+          "pos": "adj.",
           "meaningZh": "模糊的；不清楚的",
-          "definitionEn": "not clearly understood or expressed",
           "examples": [
             "The instructions were so vague that I had no idea what to do next."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-83db2cc8",
-          "pos": "adjective",
+          "id": "sense-fac79454",
+          "pos": "adj.",
           "meaningZh": "含混的；不明確的",
-          "definitionEn": "lacking clarity or distinctness",
           "examples": [
             "The instructions she gave were so vague that nobody understood what to do."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vain",
       "word": "vain",
       "senses": [
         {
-          "id": "sense-d295239c",
-          "pos": "adjective",
+          "id": "sense-c3319de8",
+          "pos": "adj.",
           "meaningZh": "虛榮的；自負的；愛慕虛榮",
-          "definitionEn": "having an exaggerated sense of self-importance; characteristic of false pride",
           "examples": [
             "She constantly checked herself out in the mirror, admiring her appearance and showing off an air of vain self-importance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1ee45689",
-          "pos": "adjective",
+          "id": "sense-3dce1ebd",
+          "pos": "adj.",
           "meaningZh": "徒勞的；無效的；白費力氣",
-          "definitionEn": "unsuccessful; producing no result or effect",
           "examples": [
             "After months of vain attempts to fix the old washing machine, he finally gave up and bought a new one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "valid",
       "word": "valid",
       "senses": [
         {
-          "id": "sense-fb3d4ebb",
-          "pos": "adjective",
+          "id": "sense-8243d24f",
+          "pos": "adj.",
           "meaningZh": "有效的；合法的",
-          "definitionEn": "legally acceptable or recognized",
           "examples": [
             "The passport must be valid for at least six months in order to enter the country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5f7279db",
-          "pos": "adjective",
+          "id": "sense-5e7fe7f7",
+          "pos": "adj.",
           "meaningZh": "有根據的；合乎邏輯的",
-          "definitionEn": "having a sound basis in logic or truth",
           "examples": [
             "In order for your argument to be valid, you need to provide evidence and logical reasoning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "variable",
       "word": "variable",
       "senses": [
         {
-          "id": "sense-89a86895",
-          "pos": "adjective",
+          "id": "sense-11ab78d9",
+          "pos": "adj.",
           "meaningZh": "易變的；可變的",
-          "definitionEn": "likely to change or able to be changed",
           "examples": [
             "The weather in spring is highly variable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e82b4f53",
-          "pos": "noun",
+          "id": "sense-f42741a7",
+          "pos": "n.",
           "meaningZh": "變數；未知量（數學）",
-          "definitionEn": "a letter or symbol used in mathematics or logic to represent a value that can change or is not yet known",
           "examples": [
             "In the equation y = mx + c, the value of ’m’ is a variable that represents the slope of the line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-efeb992f",
-          "pos": "noun",
+          "id": "sense-0dd4ac23",
+          "pos": "n.",
           "meaningZh": "變星（天文）",
-          "definitionEn": "a star that changes in brightness over time",
           "examples": [
             "Astronomers study the light curves of variable stars to determine their periods and amplitudes of brightness changes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "variation",
       "word": "variation",
       "senses": [
         {
-          "id": "sense-f1b07c35",
-          "pos": "noun",
+          "id": "sense-768a25e1",
+          "pos": "n.",
           "meaningZh": "變化；改變；差異",
-          "definitionEn": "the process of varying or being varied",
           "examples": [
             "In order to add interest to the play, the director decided to introduce variations in the costumes and set designs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0da8ac1c",
-          "pos": "noun",
+          "id": "sense-60dbd748",
+          "pos": "n.",
           "meaningZh": "變體；略有不同的版本",
-          "definitionEn": "the act of changing or altering something slightly but noticeably from the norm or standard",
           "examples": [
             "The artist added a variation of colors to the painting, giving it a unique and vibrant appearance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vast",
       "word": "vast",
       "senses": [
         {
-          "id": "sense-31242012",
-          "pos": "adjective",
+          "id": "sense-9efd9de6",
+          "pos": "adj.",
           "meaningZh": "廣闊的；遼闊的；龐大的",
-          "definitionEn": "immense or extensive in area, range, or scope",
           "examples": [
             "The Sahara Desert is a vast expanse of sand dunes and rocky terrain that stretches across many African countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7db25b02",
-          "pos": "adjective",
+          "id": "sense-b356f8e6",
+          "pos": "adj.",
           "meaningZh": "巨大的；大量的",
-          "definitionEn": "very great in size, amount, degree, or extent",
           "examples": [
             "The Sahara is a vast desert that spans over several countries in North Africa."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5 +1",
-        "textbookTitle": "龍騰 B5·L5、三民 B2·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vegetarian",
       "word": "vegetarian",
       "senses": [
         {
-          "id": "sense-5a4b30a9",
-          "pos": "adjective",
+          "id": "sense-76fa632d",
+          "pos": "adj.",
           "meaningZh": "素食的；不含肉的",
-          "definitionEn": "relating to a diet that does not include meat, poultry, or fish",
           "examples": [
             "After years of eating meat, Sarah decided to adopt a vegetarian lifestyle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0ff57f87",
-          "pos": "noun",
+          "id": "sense-50f3c093",
+          "pos": "n.",
           "meaningZh": "素食者；吃素的人",
-          "definitionEn": "a person who eats a diet consisting mainly of fruits, vegetables, grains, and nuts, and avoids meat and fish",
           "examples": [
             "John decided to become a vegetarian, so he substituted meat with tofu and started incorporating more plant-based foods into his meals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vein",
       "word": "vein",
       "senses": [
         {
-          "id": "sense-56934e7f",
-          "pos": "noun",
+          "id": "sense-0319635f",
+          "pos": "n.",
           "meaningZh": "靜脈；血管",
-          "definitionEn": "a tube in the body that carries blood back to the heart from the other parts of the body",
           "examples": [
             "When the nurse drew blood, she carefully inserted the needle into a vein in my arm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e4c6f4a4",
-          "pos": "noun",
+          "id": "sense-dd765644",
+          "pos": "n.",
           "meaningZh": "葉脈；植物輸導管",
-          "definitionEn": "any of the many small tubes in the leaves of plants that carry sap (liquid containing a plant’s food)",
           "examples": [
             "During the biology class, the teacher used a microscope to show the intricate network of veins in a leaf and explained how they transport nutrients throughout the plant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vendor",
       "word": "vendor",
       "senses": [
         {
-          "id": "sense-587685f5",
-          "pos": "noun",
+          "id": "sense-6d5089f5",
+          "pos": "n.",
           "meaningZh": "攤販；供應商；銷售商",
-          "definitionEn": "a person or company that sells goods or services",
           "examples": [
             "I bought these beautiful flowers from a local vendor at the farmer’s market."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "venture",
       "word": "venture",
       "senses": [
         {
-          "id": "sense-d47d9704",
-          "pos": "noun",
+          "id": "sense-36cace0c",
+          "pos": "n.",
           "meaningZh": "冒險旅程；大膽嘗試",
-          "definitionEn": "a risky or daring journey or undertaking",
           "examples": [
             "She decided to venture into the unknown territory alone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ab874b6f",
-          "pos": "noun",
+          "id": "sense-827dcf97",
+          "pos": "n.",
           "meaningZh": "風險投資；投機事業",
-          "definitionEn": "an investment that has a high risk of losing money but also the potential for substantial profits",
           "examples": [
             "John decided to venture into the stock market and although there was a risk of losing his investment, he also had the potential for substantial profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "venue",
       "word": "venue",
       "senses": [
         {
-          "id": "sense-0fcf3e74",
-          "pos": "noun",
+          "id": "sense-d6517d1c",
+          "pos": "n.",
           "meaningZh": "場地；舉辦地點",
-          "definitionEn": "the place where an event or action takes place (especially the location of a meeting or concert)",
           "examples": [
             "The wedding reception will be held at the beautiful beach-side venue that they rented."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-23c6527f",
-          "pos": "noun",
+          "id": "sense-054a3f57",
+          "pos": "n.",
           "meaningZh": "審判地；訴訟管轄地（法律）",
-          "definitionEn": "in law, the location where a trial or legal proceeding will be held",
           "examples": [
             "The county courthouse was selected as the venue for the high-profile trial."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "verbal",
       "word": "verbal",
       "senses": [
         {
-          "id": "sense-81dd158a",
-          "pos": "adjective",
+          "id": "sense-e23529be",
+          "pos": "adj.",
           "meaningZh": "語言的；口頭的；文字的",
-          "definitionEn": "expressed in spoken or written words",
           "examples": [
             "The job interview required not only a candidate’s resume, but also strong verbal communication skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-11a9c762",
-          "pos": "adjective",
+          "id": "sense-3ca8ba8e",
+          "pos": "adj.",
           "meaningZh": "擅長語言表達的；言辭豐富的",
-          "definitionEn": "relating to or having facility in the use of words",
           "examples": [
             "Because she had a verbal style of communication, she was able to easily express herself."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "verdict",
       "word": "verdict",
       "senses": [
         {
-          "id": "sense-59bacab5",
-          "pos": "noun",
+          "id": "sense-237b9949",
+          "pos": "n.",
           "meaningZh": "裁決；陪審團判決",
-          "definitionEn": "the decision of a jury on a matter submitted to it in trial and being either a finding of fact or a verdict of guilty or not guilty; can be used in formulating a final judgement",
           "examples": [
             "After deliberating for hours, the jury finally reached a verdict, finding the defendant guilty of the crime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d4b8d996",
-          "pos": "noun",
+          "id": "sense-30ffb46a",
+          "pos": "n.",
           "meaningZh": "結論；判斷意見",
-          "definitionEn": "a judgment or opinion based on careful consideration and evaluation of evidence",
           "examples": [
             "The jury deliberated for hours before reaching their verdict, finding the defendant guilty of all charges."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "version",
       "word": "version",
       "senses": [
         {
-          "id": "sense-4e5ae05e",
-          "pos": "noun",
+          "id": "sense-2fd852de",
+          "pos": "n.",
           "meaningZh": "版本；個人詮釋",
-          "definitionEn": "a mental image or understanding of the significance of something",
           "examples": [
             "After hearing about the new movie, she formed a version of what the plot might be like in her mind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9",
-        "textbookTitle": "龍騰 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "versus",
       "word": "versus",
       "senses": [
         {
-          "id": "sense-062076bd",
-          "pos": "preposition",
+          "id": "sense-f3956b84",
+          "pos": "prep.",
           "meaningZh": "對比；相對於；與…相較",
-          "definitionEn": "used when comparing two ideas, opinions, etc.",
           "examples": [
             "In the ongoing debate, the proponents of renewable energy argue for sustainability, whereas the opponents favor fossil fuels. This is a classic case of solar power versus coal power."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5edfa9f3",
-          "pos": "preposition",
+          "id": "sense-3bc3ecfe",
+          "pos": "prep.",
           "meaningZh": "對抗；對上；訴（法律）",
-          "definitionEn": "used to show opposition or conflict between two different people, groups, organizations, etc. in a competition, legal case, etc.",
           "examples": [
             "The final match of the basketball tournament will be Team A versus Team B."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vertical",
       "word": "vertical",
       "senses": [
         {
-          "id": "sense-6796a416",
-          "pos": "adjective",
+          "id": "sense-6a875002",
+          "pos": "adj.",
           "meaningZh": "垂直的；直立的",
-          "definitionEn": "perpendicular to a horizontal plane; upright in position or posture",
           "examples": [
             "She carefully hung the painting on the wall, making sure it was perfectly vertical."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a4b021fd",
-          "pos": "adjective",
+          "id": "sense-dbc77179",
+          "pos": "adj.",
           "meaningZh": "縱向的；垂直層級的",
-          "definitionEn": "relating to different levels in a hierarchy, such as social class or income group",
           "examples": [
             "In the corporate world, promotions are often seen as a vertical move, indicating a climb up the social ladder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "vessel",
       "word": "vessel",
       "senses": [
         {
-          "id": "sense-3eb1f36a",
-          "pos": "noun",
+          "id": "sense-51260a6a",
+          "pos": "n.",
           "meaningZh": "容器；器皿",
-          "definitionEn": "a container, especially for liquids",
           "examples": [
             "My aunt brought a painted vessel filled with delicious curry for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f2bdab77",
-          "pos": "noun",
+          "id": "sense-6e96fc77",
+          "pos": "n.",
           "meaningZh": "船隻；艦艇",
-          "definitionEn": "a craft designed for water transportation",
           "examples": [
             "The large container vessel sailed across the ocean to deliver goods from one country to another."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "veteran",
+      "word": "veteran",
+      "senses": [
+        {
+          "id": "sense-1cefa5cf",
+          "pos": "n.",
+          "meaningZh": "退伍軍人；老兵",
+          "examples": [
+            "After retiring from the army, John became an active veteran, dedicating his time to supporting fellow servicemen and women."
+          ]
+        },
+        {
+          "id": "sense-08f76775",
+          "pos": "n.",
+          "meaningZh": "身經百戰的老兵；資深士兵",
+          "examples": [
+            "After serving multiple tours in Iraq and Afghanistan, he emerged as a seasoned veteran with a wealth of combat knowledge."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "via",
+      "word": "via",
+      "senses": [
+        {
+          "id": "sense-b743a628",
+          "pos": "prep.",
+          "meaningZh": "透過；藉由",
+          "examples": [
+            "She communicated with her friends via video call during the lockdown."
+          ]
+        },
+        {
+          "id": "sense-5e7a1220",
+          "pos": "adv.",
+          "meaningZh": "經由；途經",
+          "examples": [
+            "We will be traveling to Europe via Paris."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "viable",
+      "word": "viable",
+      "senses": [
+        {
+          "id": "sense-6f2ffdd4",
+          "pos": "adj.",
+          "meaningZh": "可行的；行得通的",
+          "examples": [
+            "It is not a viable option to launch a new product without sufficient market research and financial backing."
+          ]
+        },
+        {
+          "id": "sense-5ae1e5fe",
+          "pos": "adj.",
+          "meaningZh": "有生命力的；能存活的",
+          "examples": [
+            "After conducting a thorough examination, the doctors determined that the newborn baby is viable and healthy."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "vicious",
+      "word": "vicious",
+      "senses": [
+        {
+          "id": "sense-8357e942",
+          "pos": "adj.",
+          "meaningZh": "品行惡劣的；充滿惡意的",
+          "examples": [
+            "Despite his friendly facade, the new neighbor's vicious gossipmongering caused a lot of trouble in the small community."
+          ]
+        },
+        {
+          "id": "sense-e26a5ff3",
+          "pos": "adj.",
+          "meaningZh": "兇猛的；殘暴的",
+          "examples": [
+            "The vicious dog lunged at the stranger, baring its sharp teeth and growling ferociously."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "viewer",
+      "word": "viewer",
+      "senses": [
+        {
+          "id": "sense-dab88f5f",
+          "pos": "n.",
+          "meaningZh": "觀眾；收視者",
+          "examples": [
+            "The viewer was completely engrossed in the movie and did not move from their seat until the end."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

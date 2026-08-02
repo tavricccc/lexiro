@@ -1,1355 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 164,
   "words": [
-    {
-      "wordKey": "transparent",
-      "word": "transparent",
-      "senses": [
-        {
-          "id": "sense-e0a76580",
-          "pos": "adjective",
-          "meaningZh": "透明的；可透視的",
-          "definitionEn": "allowing light to pass through so that objects behind can be distinctly seen; see-through",
-          "examples": [
-            "The glass windows of the skyscraper were transparent, providing a stunning view of the city skyline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-5fbd07e2",
-          "pos": "adjective",
-          "meaningZh": "薄透的；輕薄透亮的",
-          "definitionEn": "having a thin, delicate appearance",
-          "examples": [
-            "The delicate fabric of the wedding dress was so transparent that you could see the outline of the bride's body."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "transportation",
-      "word": "transportation",
-      "senses": [
-        {
-          "id": "sense-c6a748f4",
-          "pos": "noun",
-          "meaningZh": "運輸；搬運",
-          "definitionEn": "the act of moving something from one location to another",
-          "examples": [
-            "Shipping companies play a crucial role in the transportation of goods around the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-0b72ba16",
-          "pos": "noun",
-          "meaningZh": "交通運輸系統；運輸設施",
-          "definitionEn": "a facility consisting of the means and equipment necessary for the movement of passengers or goods",
-          "examples": [
-            "The transportation system in the city includes buses, trains, and subway stations, allowing people to commute easily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "trauma",
-      "word": "trauma",
-      "senses": [
-        {
-          "id": "sense-37984bd9",
-          "pos": "noun",
-          "meaningZh": "心理創傷；精神傷害",
-          "definitionEn": "an emotional wound or shock, often having long-lasting effects",
-          "examples": [
-            "She developed a fear of enclosed spaces as a result of the trauma she experienced while trapped in an elevator."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-71ba1af6",
-          "pos": "noun",
-          "meaningZh": "外傷；身體損傷",
-          "definitionEn": "any physical damage to the body caused by violence, accident, or fracture, etc.",
-          "examples": [
-            "The car accident left her with both physical and emotional trauma."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "treaty",
-      "word": "treaty",
-      "senses": [
-        {
-          "id": "sense-8de5a3ac",
-          "pos": "noun",
-          "meaningZh": "條約；國際協定",
-          "definitionEn": "a formal and binding agreement between two or more states or sovereigns, often establishing a framework for peace, trade, or other important issues",
-          "examples": [
-            "After months of negotiations, the countries signed a treaty to end the long-standing border dispute and promote economic cooperation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "tremble",
-      "word": "tremble",
-      "senses": [
-        {
-          "id": "sense-820add67",
-          "pos": "verb",
-          "meaningZh": "顫抖；發抖",
-          "definitionEn": "to shake involuntarily with quick, short movements up and down or sideways, as from fear or excitement.",
-          "examples": [
-            "As I stood on the edge of the cliff, the fear caused my legs to tremble uncontrollably."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-6390c5a4",
-          "pos": "noun",
-          "meaningZh": "顫抖；哆嗦",
-          "definitionEn": "a reflex movement caused by cold or fear.",
-          "examples": [
-            "He couldn't help but tremble with fear as he walked in the dark and eerie forest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "tremendous",
       "word": "tremendous",
       "senses": [
         {
-          "id": "sense-45bcf4d5",
-          "pos": "adjective",
+          "id": "sense-186d6371",
+          "pos": "adj.",
           "meaningZh": "極好的；驚人的",
-          "definitionEn": "extraordinarily good or great; used especially as an intensifier",
           "examples": [
             "The team had a tremendous victory over their biggest rival, winning by a landslide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-141fecc3",
-          "pos": "adjective",
+          "id": "sense-8f4cc63f",
+          "pos": "adj.",
           "meaningZh": "龐大的；巨大的",
-          "definitionEn": "extremely large in size, amount, or degree",
           "examples": [
             "The construction of Burj Khalifa in Dubai involved tremendous effort and resources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L1 +1",
-        "textbookTitle": "龍騰 B3·L1、三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tribal",
       "word": "tribal",
       "senses": [
         {
-          "id": "sense-0ac3cc4e",
-          "pos": "adjective",
+          "id": "sense-a98b4af2",
+          "pos": "adj.",
           "meaningZh": "部落的；氏族的",
-          "definitionEn": "relating to or characteristic of a tribe",
           "examples": [
             "The tribe performed a traditional tribal dance around the campfire."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3044dd25",
-          "pos": "adjective",
+          "id": "sense-baa43e11",
+          "pos": "adj.",
           "meaningZh": "部落文化的；族群共同體的",
-          "definitionEn": "relating to or involving members of a group or community with a shared culture or way of life",
           "examples": [
             "The tribal dance performance showcased the traditional customs and rituals of the indigenous people."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tribute",
       "word": "tribute",
       "senses": [
         {
-          "id": "sense-1331374f",
-          "pos": "noun",
+          "id": "sense-36c7d2b7",
+          "pos": "n.",
           "meaningZh": "敬意；感謝之表示",
-          "definitionEn": "something given or done as an expression of admiration or gratitude",
           "examples": [
             "At the retirement party, colleagues presented a touching tribute to their long-serving boss, highlighting his accomplishments and expressing their gratitude for his leadership."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-80401b5c",
-          "pos": "noun",
+          "id": "sense-41746054",
+          "pos": "n.",
           "meaningZh": "致敬；讚辭",
-          "definitionEn": "an act or statement showing respect or admiration",
           "examples": [
             "At the retirement party, the coworkers gave heartfelt speeches as a tribute to their esteemed colleague."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trigger",
       "word": "trigger",
       "senses": [
         {
-          "id": "sense-e1862251",
-          "pos": "noun",
+          "id": "sense-81c15fd1",
+          "pos": "n.",
           "meaningZh": "（槍）扳機",
-          "definitionEn": "a lever that activates the firing mechanism of a gun",
           "examples": [
             "He pulled the trigger and the gun went off with a loud bang."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-671c69ac",
-          "pos": "noun",
+          "id": "sense-c8dc4b2c",
+          "pos": "n.",
           "meaningZh": "觸發裝置；引爆器",
-          "definitionEn": "a device that causes something to happen, activates, or releases",
           "examples": [
             "Pulling the trigger of a gun results in the bullet firing from the barrel."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trim",
       "word": "trim",
       "senses": [
         {
-          "id": "sense-9dd90ec1",
-          "pos": "verb",
+          "id": "sense-c873822c",
+          "pos": "v.",
           "meaningZh": "削減；縮減",
-          "definitionEn": "cut down on or make a reduction in",
           "examples": [
             "To reduce expenses, the company had to trim its workforce by 20%."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-28642dac",
-          "pos": "adjective",
+          "id": "sense-fe842f90",
+          "pos": "adj.",
           "meaningZh": "簡潔的；線條俐落的",
-          "definitionEn": "severely simple in line or design",
           "examples": [
             "The minimalist interior of the apartment was beautifully trim, with sleek furniture and clean lines."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "triple",
       "word": "triple",
       "senses": [
         {
-          "id": "sense-101df18d",
-          "pos": "adjective",
+          "id": "sense-0ce06c39",
+          "pos": "adj.",
           "meaningZh": "三倍的；三重的",
-          "definitionEn": "consisting of three units or parts",
           "examples": [
             "On their anniversary, they ordered a triple-layered cake to celebrate their love."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1f00941e",
-          "pos": "noun",
+          "id": "sense-716c703a",
+          "pos": "n.",
           "meaningZh": "三倍量；三重份",
-          "definitionEn": "a quantity that is three times as great as another",
           "examples": [
             "She ordered a triple scoop of ice cream, with three different flavors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "triumph",
       "word": "triumph",
       "senses": [
         {
-          "id": "sense-b5f00ef6",
-          "pos": "noun",
+          "id": "sense-19f26cde",
+          "pos": "n.",
           "meaningZh": "勝利；成功",
-          "definitionEn": "the state of being victorious or successful in a struggle or contest",
           "examples": [
             "After years of hard work and dedication, she finally achieved triumph in her career by becoming the CEO of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d500bfba",
-          "pos": "noun",
+          "id": "sense-05b149e2",
+          "pos": "n.",
           "meaningZh": "凱旋；喜悅之情",
-          "definitionEn": "a great and exultant joy resulting from victory or success",
           "examples": [
             "After months of rigorous training, John finally achieved his goal of climbing Mount Everest, and his face lit up with a look of triumph as he raised his arms in the air and let out a loud cheer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trivial",
       "word": "trivial",
       "senses": [
         {
-          "id": "sense-f8fce488",
-          "pos": "adjective",
+          "id": "sense-4d2aaf6e",
+          "pos": "adj.",
           "meaningZh": "微不足道的；瑣碎的",
-          "definitionEn": "of little substance or significance",
           "examples": [
             "He was more interested in trivial gossip than the important issues at hand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7312c786",
-          "pos": "adjective",
+          "id": "sense-996d7fa8",
+          "pos": "adj.",
           "meaningZh": "無關緊要的；小事",
-          "definitionEn": "(informal) small and of little importance",
           "examples": [
             "I don’t want to waste our time on trivial matters like what we’re going to have for lunch. Let’s focus on the agenda of this meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "trophy",
       "word": "trophy",
       "senses": [
         {
-          "id": "sense-c42ba2c2",
-          "pos": "noun",
+          "id": "sense-b7859c72",
+          "pos": "n.",
           "meaningZh": "獎盃；獎杯",
-          "definitionEn": "something given as a token of victory",
           "examples": [
             "She proudly displayed her bowling trophy on the mantelpiece."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b35ba394",
-          "pos": "noun",
+          "id": "sense-0a902ae4",
+          "pos": "n.",
           "meaningZh": "戰利品；勝利紀念品",
-          "definitionEn": "an award for success in war or hunting",
           "examples": [
             "The ancient Greeks awarded a trophy called a ’tropaion’ to the victorious soldier in battle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "troublesome",
       "word": "troublesome",
       "senses": [
         {
-          "id": "sense-633bdc7c",
-          "pos": "adjective",
+          "id": "sense-827f620a",
+          "pos": "adj.",
           "meaningZh": "麻煩的；令人困擾的",
-          "definitionEn": "causing difficulty or annoyance",
           "examples": [
             "The new software update was so troublesome that it caused many users to switch to a different software."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tuition",
       "word": "tuition",
       "senses": [
         {
-          "id": "sense-99d01870",
-          "pos": "noun",
+          "id": "sense-62ca4f70",
+          "pos": "n.",
           "meaningZh": "學費",
-          "definitionEn": "A fee paid for instruction, especially for higher education.",
           "examples": [
             "The cost of tuition for the four-year engineering program is prohibitively expensive for many students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-311fa44b",
-          "pos": "noun",
+          "id": "sense-cef5ad4b",
+          "pos": "n.",
           "meaningZh": "家教輔導；個別授課",
-          "definitionEn": "The act of teaching individual students, usually by a privately hired tutor.",
           "examples": [
             "Due to his poor performance in math, Sarah’s parents hired a tutor to provide him with extra tuition after school."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tumble",
       "word": "tumble",
       "senses": [
         {
-          "id": "sense-61b36c9e",
-          "pos": "verb",
+          "id": "sense-6480fb93",
+          "pos": "v.",
           "meaningZh": "混雜翻滾；攪拌",
-          "definitionEn": "to mix things together in a confused way",
           "examples": [
             "The dog tumbled all of the pillows together making a cozy spot to sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c57a51bb",
-          "pos": "verb",
+          "id": "sense-dbd93cfa",
+          "pos": "v.",
           "meaningZh": "翻滾；被風捲動",
-          "definitionEn": "to move or fly around quickly and erratically",
           "examples": [
             "The dried leaves tumbled down the street in the gusty wind."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tumor",
       "word": "tumor",
       "senses": [
         {
-          "id": "sense-84ea1265",
-          "pos": "noun",
+          "id": "sense-5260ca6d",
+          "pos": "n.",
           "meaningZh": "腫瘤；腫塊",
-          "definitionEn": "A mass or lump of abnormal tissue that may be cancerous or noncancerous.",
           "examples": [
             "The patient had a tumor on her lung that was causing her breathing difficulties."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "tuna",
       "word": "tuna",
       "senses": [
         {
-          "id": "sense-ddb9201a",
-          "pos": "noun",
+          "id": "sense-61c92b3a",
+          "pos": "n.",
           "meaningZh": "鮪魚；金槍魚",
-          "definitionEn": "A type of important fatty fish that lives in warm waters, belonging to the genus Thunnus of the family Scombridae. It is usually served as steaks.",
           "examples": [
             "Grilled tuna is a popular dish in coastal towns during the summer months."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "twig",
       "word": "twig",
       "senses": [
         {
-          "id": "sense-da277316",
-          "pos": "noun",
+          "id": "sense-9176da3e",
+          "pos": "n.",
           "meaningZh": "細枝；嫩枝",
-          "definitionEn": "a small thin branch of a tree or bush",
           "examples": [
             "The birds built their nest out of dry twigs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0a73b7cd",
-          "pos": "verb",
+          "id": "sense-a504732a",
+          "pos": "v.",
           "meaningZh": "（英式俚）恍然大悟；領會",
-          "definitionEn": "to understand something, especially after some difficulty",
           "examples": [
             "After reading the chapter a few times, I finally twigged what the author was trying to say."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ultimate",
       "word": "ultimate",
       "senses": [
         {
-          "id": "sense-95af7190",
-          "pos": "adjective",
+          "id": "sense-f465ed66",
+          "pos": "adj.",
           "meaningZh": "最終的；最後的",
-          "definitionEn": "being the last or concluding element of a series",
           "examples": [
             "Landing a perfect triple axel was the ultimate achievement for the figure skater."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-cc761bf1",
-          "pos": "adjective",
+          "id": "sense-85a166fb",
+          "pos": "adj.",
           "meaningZh": "最高的；極致的",
-          "definitionEn": "being the highest possible degree or order; utmost or extreme",
           "examples": [
             "After years of training, he achieved the ultimate level of mastery in his martial art."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "uncover",
       "word": "uncover",
       "senses": [
         {
-          "id": "sense-34dde1dc",
-          "pos": "verb",
+          "id": "sense-113d12fb",
+          "pos": "v.",
           "meaningZh": "揭露；發現；查明",
-          "definitionEn": "to make something known or reveal something that was hidden or secret.",
           "examples": [
             "The detective worked tirelessly to uncover the truth behind the mysterious disappearance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-622fa9f8",
-          "pos": "verb",
+          "id": "sense-792228fb",
+          "pos": "v.",
           "meaningZh": "移去覆蓋物；掀開",
-          "definitionEn": "to remove a covering or layer to expose something.",
           "examples": [
             "The archaeologist gently brushed away the dirt and debris to uncover the ancient artifacts buried beneath the surface."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "undergo",
       "word": "undergo",
       "senses": [
         {
-          "id": "sense-110d3760",
-          "pos": "verb",
+          "id": "sense-95e2106b",
+          "pos": "v.",
           "meaningZh": "經歷；承受；接受",
-          "definitionEn": "to experience something, especially a change or something unpleasant",
           "examples": [
             "My grandfather had to undergo heart surgery last week."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "undergraduate",
       "word": "undergraduate",
       "senses": [
         {
-          "id": "sense-49f10223",
-          "pos": "noun",
+          "id": "sense-f38ffa3b",
+          "pos": "n.",
           "meaningZh": "大學部學生；大學生",
-          "definitionEn": "a university student who has not yet received a first degree",
           "examples": [
             "The university organized a welcome party for all new undergraduates."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6a0a5ecf",
-          "pos": "adjective",
+          "id": "sense-0081a499",
+          "pos": "adj.",
           "meaningZh": "大學部的；學士班的",
-          "definitionEn": "relating to or denoting a student pursuing a bachelor’s degree",
           "examples": [
             "She is an undergraduate student studying biology at the university."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "underline",
       "word": "underline",
       "senses": [
         {
-          "id": "sense-570e89ff",
-          "pos": "verb",
+          "id": "sense-f672f244",
+          "pos": "v.",
           "meaningZh": "在…下劃線；強調",
-          "definitionEn": "to draw a line or lines underneath a text to make it stand out or to indicate emphasis",
           "examples": [
             "In her essay, she chose to underline important quotes to highlight their significance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a509810d",
-          "pos": "noun",
+          "id": "sense-f9d7fa2d",
+          "pos": "n.",
           "meaningZh": "底線；下劃線",
-          "definitionEn": "a line placed underneath a written or printed text to emphasize or indicate importance",
           "examples": [
             "The teacher asked the students to underline the key points in their textbooks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "undermine",
       "word": "undermine",
       "senses": [
         {
-          "id": "sense-10012c40",
-          "pos": "verb",
+          "id": "sense-7474e6a7",
+          "pos": "v.",
           "meaningZh": "損害；削弱；破壞",
-          "definitionEn": "destroy property or hinder normal operations",
           "examples": [
             "The sabotage of oil pipelines undermines the country’s economy and causes environmental damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3997b728",
-          "pos": "verb",
+          "id": "sense-b3d34a47",
+          "pos": "v.",
           "meaningZh": "從下方侵蝕；挖空地基",
-          "definitionEn": "hollow out as if making a cave or opening",
           "examples": [
             "The constant movement of water can undermine the foundation of a building."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "undertake",
       "word": "undertake",
       "senses": [
         {
-          "id": "sense-1ad22e25",
-          "pos": "verb",
+          "id": "sense-254c8650",
+          "pos": "v.",
           "meaningZh": "著手進行；承擔（困難任務）",
-          "definitionEn": "to begin doing something, especially something that will take a long time or be difficult",
           "examples": [
             "After months of training, she decided to undertake the challenging task of climbing Mount Everest."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-fdb1eddf",
-          "pos": "verb",
+          "id": "sense-1dd3452e",
+          "pos": "v.",
           "meaningZh": "承諾；保證",
-          "definitionEn": "to make a promise or commitment to do something",
           "examples": [
             "John undertook to finish the project by the end of the week."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "undo",
       "word": "undo",
       "senses": [
         {
-          "id": "sense-84836774",
-          "pos": "verb",
+          "id": "sense-d7278907",
+          "pos": "v.",
           "meaningZh": "撤銷；還原；取消",
-          "definitionEn": "cancel or reverse an action or its effect",
           "examples": [
             "She realized she had made a mistake in her essay and quickly pressed the undo button to revert it back to the previous version."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4001dbbe",
-          "pos": "verb",
+          "id": "sense-e447c857",
+          "pos": "v.",
           "meaningZh": "解開；鬆開包裝",
-          "definitionEn": "remove the outer cover or wrapping of something",
           "examples": [
             "She carefully undid the ribbon to reveal the present inside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "undoubtedly",
       "word": "undoubtedly",
       "senses": [
         {
-          "id": "sense-e6d0089a",
-          "pos": "adverb",
+          "id": "sense-47b1a7af",
+          "pos": "adv.",
           "meaningZh": "無疑地；確實；毫無疑問",
-          "definitionEn": "certainly; without any doubt or hesitation",
           "examples": [
             "After months of extensive research, the scientists were undoubtedly confident in their groundbreaking discovery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9 +1",
-        "textbookTitle": "龍騰 B3·L9、三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "unemployment",
       "word": "unemployment",
       "senses": [
         {
-          "id": "sense-3a0d94b1",
-          "pos": "noun",
+          "id": "sense-8a1ab9f9",
+          "pos": "n.",
           "meaningZh": "失業（狀態）；無業",
-          "definitionEn": "The state of being without a job or work.",
           "examples": [
             "After graduating from college, John experienced a period of unemployment as he searched for a job in his field."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "unfold",
+      "word": "unfold",
+      "senses": [
+        {
+          "id": "sense-a6d9d559",
+          "pos": "v.",
+          "meaningZh": "展開；伸展至全長",
+          "examples": [
+            "He unfolded the map to show us the way to the destination."
+          ]
+        },
+        {
+          "id": "sense-c6862c0f",
+          "pos": "v.",
+          "meaningZh": "打開；攤開折疊的東西",
+          "examples": [
+            "Jane carefully unfolded the letter and began to read its contents."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "universal",
+      "word": "universal",
+      "senses": [
+        {
+          "id": "sense-51f1f9b8",
+          "pos": "adj.",
+          "meaningZh": "普遍的；全體適用的",
+          "examples": [
+            "The rules of mathematics are considered universal and apply to all cultures and civilizations."
+          ]
+        },
+        {
+          "id": "sense-d945d9d8",
+          "pos": "adj.",
+          "meaningZh": "萬用的；多功能的",
+          "examples": [
+            "The Swiss Army Knife is a universal tool that can be used for cutting, opening, and screwing."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "unlock",
+      "word": "unlock",
+      "senses": [
+        {
+          "id": "sense-8c26b4ac",
+          "pos": "v.",
+          "meaningZh": "開鎖；解鎖",
+          "examples": [
+            "I forgot the combination to my safe, so I had to call a locksmith to help me unlock it."
+          ]
+        },
+        {
+          "id": "sense-842903e0",
+          "pos": "v.",
+          "meaningZh": "釋放；解除限制",
+          "examples": [
+            "After serving his sentence, the prisoner was finally unlocked from his cell and allowed to go home."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "unprecedented",
+      "word": "unprecedented",
+      "senses": [
+        {
+          "id": "sense-c416a1bc",
+          "pos": "adj.",
+          "meaningZh": "史無前例的；空前的；前所未有的",
+          "examples": [
+            "The COVID-19 pandemic has led to an unprecedented global lockdown causing severe disruption to the global economy."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "update",
+      "word": "update",
+      "senses": [
+        {
+          "id": "sense-60a72e98",
+          "pos": "v.",
+          "meaningZh": "更新（軟體或系統）；升級",
+          "examples": [
+            "After installing the latest software update, my computer was running faster and more efficiently."
+          ]
+        },
+        {
+          "id": "sense-6aeb5d1c",
+          "pos": "v.",
+          "meaningZh": "更新；修訂至最新版本",
+          "examples": [
+            "After years of using the same operating system, it was time to update my computer to the latest version."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

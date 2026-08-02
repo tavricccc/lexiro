@@ -1,1469 +1,703 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 23,
   "words": [
-    {
-      "wordKey": "present",
-      "word": "present",
-      "senses": [
-        {
-          "id": "sense-6e023947",
-          "pos": "noun",
-          "meaningZh": "禮物",
-          "definitionEn": "something that you give to someone, usually on a special occasion",
-          "examples": [
-            "He gave his mother a present on her birthday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-4fa10e90",
-          "pos": "noun",
-          "meaningZh": "現在；當下",
-          "definitionEn": "the period of time that is happening now; any continuous stretch of time including the moment of speech",
-          "examples": [
-            "In the present, technology plays a crucial role in our daily lives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-94f30971",
-          "pos": "adjective",
-          "meaningZh": "現在的；目前的",
-          "definitionEn": "temporal sense; intermediate between past and future; happening or existing now or in consideration",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6 +2",
-        "textbookTitle": "龍騰 B1·L6、三民 B4·L2、翰林 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "pretty",
-      "word": "pretty",
-      "senses": [
-        {
-          "id": "sense-772b31d1",
-          "pos": "adjective",
-          "meaningZh": "漂亮的；好看的",
-          "definitionEn": "pleasing in appearance or manner; attractive; graceful",
-          "examples": [
-            "She looked pretty in her new dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-69abdce3",
-          "pos": "adverb",
-          "meaningZh": "相當；頗",
-          "definitionEn": "to a considerable extent; fairly; quite",
-          "examples": [
-            "She did pretty well in her exams considering she only studied for a few hours."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "price",
-      "word": "price",
-      "senses": [
-        {
-          "id": "sense-f6a6a079",
-          "pos": "noun",
-          "meaningZh": "售價；價格",
-          "definitionEn": "The amount of money expected, required, or given in payment for something.",
-          "examples": [
-            "The price of the house was far too high for our budget, so we had to keep looking for a more affordable option."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-0850ce1b",
-          "pos": "noun",
-          "meaningZh": "代價；成本",
-          "definitionEn": "The cost at which something is obtained.",
-          "examples": [
-            "The price of the new car was too high for me to afford, so I bought a cheaper used car instead."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "probably",
       "word": "probably",
       "senses": [
         {
-          "id": "sense-59793064",
-          "pos": "adverb",
+          "id": "sense-6e5241a9",
+          "pos": "adv.",
           "meaningZh": "大概；多半",
-          "definitionEn": "without much doubt; with considerable certainty",
           "examples": [
             "He will probably finish his project by tomorrow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9cb35fc4",
-          "pos": "adverb",
+          "id": "sense-4c9a4901",
+          "pos": "adv.",
           "meaningZh": "看來；根據現有情況",
-          "definitionEn": "on the basis of available evidence, easy to believe",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "problem",
       "word": "problem",
       "senses": [
         {
-          "id": "sense-bf9000b1",
-          "pos": "noun",
+          "id": "sense-d46b8b59",
+          "pos": "n.",
           "meaningZh": "問題；困難",
-          "definitionEn": "a state of difficulty that needs to be resolved",
           "examples": [
             "The problem with the computer is that it keeps shutting down unexpectedly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f2077ae6",
-          "pos": "noun",
+          "id": "sense-5f6be18e",
+          "pos": "n.",
           "meaningZh": "麻煩；障礙",
-          "definitionEn": "a source of difficulty or trouble",
           "examples": [
             "She had a problem with her car and had to call a mechanic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "program",
       "word": "program",
       "senses": [
         {
-          "id": "sense-2915abc8",
-          "pos": "noun",
+          "id": "sense-ff09d848",
+          "pos": "n.",
           "meaningZh": "節目；廣播節目",
-          "definitionEn": "a radio or television show",
           "examples": [
             "Last night, I watched a captivating program on the history of ancient civilizations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6395d9f9",
-          "pos": "noun",
+          "id": "sense-a68d0b79",
+          "pos": "n.",
           "meaningZh": "程式；電腦程式",
-          "definitionEn": "a sequence of instructions that a computer can interpret and execute (usage most frequently associated with computer science)",
           "examples": [
             "The software engineer spent hours writing code to create a program that would effectively sort large datasets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L3",
-        "textbookTitle": "三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "proud",
       "word": "proud",
       "senses": [
         {
-          "id": "sense-f6da197c",
-          "pos": "adjective",
+          "id": "sense-07c3c940",
+          "pos": "adj.",
           "meaningZh": "自豪的；驕傲的",
-          "definitionEn": "feeling self-respect or pleasure in something by which one measures their self-worth, or being a reason for pride",
           "examples": [
             "After months of hard work and dedication, Mary felt proud as she held her college diploma in her hands."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-bc790db7",
-          "pos": "adjective",
+          "id": "sense-eef9c23b",
+          "pos": "adj.",
           "meaningZh": "有尊嚴的；自重的",
-          "definitionEn": "having or displaying great dignity, importance, or self-respect",
           "examples": [
             "After months of hard work and dedication, she felt proud of her accomplishments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L1",
-        "textbookTitle": "龍騰 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "public",
       "word": "public",
       "senses": [
         {
-          "id": "sense-6ac52047",
-          "pos": "adjective",
+          "id": "sense-163becd5",
+          "pos": "adj.",
           "meaningZh": "公共的；公眾的",
-          "definitionEn": "affecting the people or community as a whole",
           "examples": [
             "The new park will be open to the public, providing a space for everyone in the community to enjoy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e731c4a1",
-          "pos": "noun",
+          "id": "sense-d211d209",
+          "pos": "n.",
           "meaningZh": "大眾；民眾",
-          "definitionEn": "a body of people sharing some common interest",
           "examples": [
             "The public showed great interest in the new library opening, with many people attending the grand opening event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pull",
       "word": "pull",
       "senses": [
         {
-          "id": "sense-a241ae32",
-          "pos": "verb",
+          "id": "sense-3a48db29",
+          "pos": "v.",
           "meaningZh": "拉；拖拉",
-          "definitionEn": "cause to move by pulling",
           "examples": [
             "She had to pull the heavy suitcase up the stairs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-da11ff84",
-          "pos": "verb",
+          "id": "sense-272faa09",
+          "pos": "v.",
           "meaningZh": "拉扯；施力拉動",
-          "definitionEn": "apply force so as to cause motion towards the source of the motion",
           "examples": [
             "I pulled the drawer out to get a pen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "push",
       "word": "push",
       "senses": [
         {
-          "id": "sense-abfe1842",
-          "pos": "verb",
+          "id": "sense-5b98f28d",
+          "pos": "v.",
           "meaningZh": "推；推動",
-          "definitionEn": "move with force, as in \"He pushed the table into a corner\"",
           "examples": [
             "As the crowd surged forward, pushing and shoving each other, I felt myself being pushed against the barrier."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d2156b13",
-          "pos": "verb",
+          "id": "sense-13a4ed26",
+          "pos": "v.",
           "meaningZh": "用力抵推；施壓",
-          "definitionEn": "press against forcefully without moving",
           "examples": [
             "I have to push the heavy door to open it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "put",
       "word": "put",
       "senses": [
         {
-          "id": "sense-a2b0e90e",
-          "pos": "verb",
+          "id": "sense-3746b2c3",
+          "pos": "v.",
           "meaningZh": "放置；擺放",
-          "definitionEn": "place (something) in a specific location",
           "examples": [
             "She put the book on the shelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-54f838cf",
-          "pos": "verb",
+          "id": "sense-a4a5bdc8",
+          "pos": "v.",
           "meaningZh": "使處於（某狀態）",
-          "definitionEn": "cause (someone or something) to be in a particular state or condition",
           "examples": [
             "The mechanic put the car in perfect working condition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quarter",
       "word": "quarter",
       "senses": [
         {
-          "id": "sense-7cf06de3",
-          "pos": "noun",
+          "id": "sense-4e2436e3",
+          "pos": "n.",
           "meaningZh": "四分之一",
-          "definitionEn": "one of four equal parts of something",
           "examples": [
             "She cut the apple into quarters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b96d17e4",
-          "pos": "verb",
+          "id": "sense-90b4bc87",
+          "pos": "v.",
           "meaningZh": "切成四份；四等分",
-          "definitionEn": "divide into quarters",
           "examples": [
             "After harvesting the watermelon, we quartered it to easily serve to all our guests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "queen",
       "word": "queen",
       "senses": [
         {
-          "id": "sense-65290dff",
-          "pos": "noun",
+          "id": "sense-30f8f033",
+          "pos": "n.",
           "meaningZh": "王后；女王",
-          "definitionEn": "the wife or widow of a king",
           "examples": [
             "The queen attended the state reception in her regal attire, representing the royal family."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b33f5947",
-          "pos": "noun",
+          "id": "sense-f9b386bb",
+          "pos": "n.",
           "meaningZh": "（西洋棋）后",
-          "definitionEn": "the most powerful piece in chess",
           "examples": [
             "In the chess game, the queen strategizes her moves, expertly outmaneuvering her opponents to control the board."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "question",
       "word": "question",
       "senses": [
         {
-          "id": "sense-a5c6fe4c",
-          "pos": "noun",
+          "id": "sense-b9d1f170",
+          "pos": "n.",
           "meaningZh": "問題；疑問句",
-          "definitionEn": "a sentence used to ask for information or to test someone’s knowledge",
           "examples": [
             "Can you please answer this question?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b34159a5",
-          "pos": "noun",
+          "id": "sense-3b6ceeb9",
+          "pos": "n.",
           "meaningZh": "提問；質詢",
-          "definitionEn": "an act of asking questions or discussing something in order to get information",
           "examples": [
             "During the Q&A session, the audience eagerly raised their hands, each person having a burning question for the speaker."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quick",
       "word": "quick",
       "senses": [
         {
-          "id": "sense-39e931fe",
-          "pos": "adjective",
+          "id": "sense-acaaff74",
+          "pos": "adj.",
           "meaningZh": "快速的；迅速的",
-          "definitionEn": "lasting or taking a short time; fast",
           "examples": [
             "I need a quick response to this email."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-068dac18",
-          "pos": "adjective",
+          "id": "sense-907555de",
+          "pos": "adj.",
           "meaningZh": "機靈的；反應快的",
-          "definitionEn": "able to learn or understand things rapidly; intelligent",
           "examples": [
             "Sarah was able to solve the math problem quickly, demonstrating her quick thinking and problem-solving skills."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quiet",
       "word": "quiet",
       "senses": [
         {
-          "id": "sense-cf7fa585",
-          "pos": "adjective",
+          "id": "sense-3c10d641",
+          "pos": "adj.",
           "meaningZh": "安靜的；平靜的",
-          "definitionEn": "with little or no activity or no agitation; calm and peaceful",
           "examples": [
             "After a long day at work, Sarah enjoys sitting in her backyard, listening to the quiet sounds of nature."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4e862665",
-          "pos": "verb",
+          "id": "sense-878f37f0",
+          "pos": "v.",
           "meaningZh": "使安靜；使平靜",
-          "definitionEn": "make or become silent or calm",
           "examples": [
             "Please keep quiet during the exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "quite",
       "word": "quite",
       "senses": [
         {
-          "id": "sense-ec86923f",
-          "pos": "adverb",
+          "id": "sense-bee68508",
+          "pos": "adv.",
           "meaningZh": "相當；頗",
-          "definitionEn": "to a large degree or extent",
           "examples": [
             "She was quite surprised when she opened her birthday present and found a brand-new car."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-355a3de0",
-          "pos": "adverb",
+          "id": "sense-b632f391",
+          "pos": "adv.",
           "meaningZh": "完全；徹底",
-          "definitionEn": "completely or entirely",
           "examples": [
             "She was quite angry when she found out about the mistake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rabbit",
       "word": "rabbit",
       "senses": [
         {
-          "id": "sense-af011730",
-          "pos": "noun",
+          "id": "sense-c067dc44",
+          "pos": "n.",
           "meaningZh": "兔子；家兔",
-          "definitionEn": "a burrowing animal with long ears and a short tail, belonging to the family Leporidae; some are domesticated for pets or food",
           "examples": [
             "Sarah has a pet rabbit named Snowball that she takes care of in her backyard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-04af9634",
-          "pos": "noun",
+          "id": "sense-b39738c0",
+          "pos": "n.",
           "meaningZh": "兔肉",
-          "definitionEn": "the flesh of any wild or domesticated rabbit or hare, usually eaten as food",
           "examples": [
             "I grilled the rabbit and served it with roasted vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "race",
       "word": "race",
       "senses": [
         {
-          "id": "sense-b4843e2a",
-          "pos": "noun",
+          "id": "sense-6719a4e2",
+          "pos": "n.",
           "meaningZh": "競速；賽跑",
-          "definitionEn": "a contest of speed",
           "examples": [
             "The athletes lined up at the starting line, eagerly anticipating the start of the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-07a6c793",
-          "pos": "noun",
+          "id": "sense-90a314eb",
+          "pos": "n.",
           "meaningZh": "競爭；競賽",
-          "definitionEn": "any competition",
           "examples": [
             "The marathon is a popular race that takes place every year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "radio",
       "word": "radio",
       "senses": [
         {
-          "id": "sense-ee868c06",
-          "pos": "noun",
+          "id": "sense-940d9c9e",
+          "pos": "n.",
           "meaningZh": "收音機；無線電接收器",
-          "definitionEn": "An electronic receiver that detects, demodulates, and amplifies transmitted signals.",
           "examples": [
             "I love listening to the radio while driving. It keeps me entertained and informed with the latest news and music."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a66d0292",
-          "pos": "noun",
+          "id": "sense-39faa69a",
+          "pos": "n.",
           "meaningZh": "無線電（通訊媒介）",
-          "definitionEn": "A medium for communication.",
           "examples": [
             "During the storm, our only means of communication was the battery-powered radio."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rain",
       "word": "rain",
       "senses": [
         {
-          "id": "sense-dffc86e8",
-          "pos": "noun",
+          "id": "sense-6c1cce38",
+          "pos": "n.",
           "meaningZh": "雨；雨水",
-          "definitionEn": "water that falls from clouds in small drops",
           "examples": [
             "I forgot my umbrella and got soaked in the rain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-803f86fb",
-          "pos": "noun",
+          "id": "sense-2a3337ab",
+          "pos": "n.",
           "meaningZh": "降雨；雨滴",
-          "definitionEn": "the drops of water that fall from clouds as precipitation",
           "examples": [
             "During the summer storm, the rain poured down, drenching everything in sight and providing much-needed water for the crops."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rainbow",
       "word": "rainbow",
       "senses": [
         {
-          "id": "sense-37bfac79",
-          "pos": "noun",
+          "id": "sense-4b0482cd",
+          "pos": "n.",
           "meaningZh": "彩虹",
-          "definitionEn": "an arc of colored light in the sky caused by the refraction of the sun’s rays by rain",
           "examples": [
             "As the sun emerged from behind the clouds, a beautiful rainbow appeared in the sky, stretching from one end of the horizon to the other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-f8634752",
-          "pos": "noun",
+          "id": "sense-97b41d0e",
+          "pos": "n.",
           "meaningZh": "虛幻的希望；癡心妄想",
-          "definitionEn": "an illusory hope or unrealistic wish",
           "examples": [
             "Believing that he will become a millionaire overnight is just a rainbow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rainy",
       "word": "rainy",
       "senses": [
         {
-          "id": "sense-039be7d9",
-          "pos": "adjective",
+          "id": "sense-cdd4cbf3",
+          "pos": "adj.",
           "meaningZh": "多雨的；下雨的",
-          "definitionEn": "experiencing or characterized by frequent and heavy rainfall",
           "examples": [
             "Don't forget to bring your umbrella, it's going to be a rainy day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c8db9083",
-          "pos": "adjective",
+          "id": "sense-4c513e6d",
+          "pos": "adj.",
           "meaningZh": "陰雨的；雨天的",
-          "definitionEn": "(of weather) wet or characterized by periods of rain",
           "examples": [
             "Don't forget your umbrella today because it's going to be a rainy day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "raise",
       "word": "raise",
       "senses": [
         {
-          "id": "sense-1c85f411",
-          "pos": "verb",
+          "id": "sense-84e5c1e0",
+          "pos": "v.",
           "meaningZh": "舉起；抬高",
-          "definitionEn": "to lift or move something to a higher position.",
           "examples": [
             "She asked her brother to raise the heavy boxes onto the top shelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6e5e3934",
-          "pos": "noun",
+          "id": "sense-1f522cc4",
+          "pos": "n.",
           "meaningZh": "加薪；薪資調漲",
-          "definitionEn": "an increase in salary or wages.",
           "examples": [
             "After working at the company for five years, Sarah finally received a raise, which allowed her to afford a nicer apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reach",
       "word": "reach",
       "senses": [
         {
-          "id": "sense-f2d9d939",
-          "pos": "verb",
+          "id": "sense-d41386c0",
+          "pos": "v.",
           "meaningZh": "伸手觸及；達到（目標）",
-          "definitionEn": "to move forward or upward in order to touch something, often in a physical sense. Can also be used in a metaphorical sense.",
           "examples": [
             "Sarah had to reach up to put the dishes on the top shelf. \nIn order to reach his goals, John had to work hard and stay focused."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e3385589",
-          "pos": "verb",
+          "id": "sense-9ea8695a",
+          "pos": "v.",
           "meaningZh": "延伸至；夠到",
-          "definitionEn": "to extend as far as a certain point, often used to describe physical distance.",
           "examples": [
             "I had to reach on my tiptoes to grab the book from the top shelf."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "read",
       "word": "read",
       "senses": [
         {
-          "id": "sense-920c269b",
-          "pos": "verb",
+          "id": "sense-cd6471c6",
+          "pos": "v.",
           "meaningZh": "閱讀；看書",
-          "definitionEn": "look at something written or printed and interpret its meaning",
           "examples": [
             "I like to read books in my free time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ready",
       "word": "ready",
       "senses": [
         {
-          "id": "sense-e9a71939",
-          "pos": "adjective",
+          "id": "sense-c34fb4f7",
+          "pos": "adj.",
           "meaningZh": "準備好的；就緒的",
-          "definitionEn": "prepared and able to do something or to be used immediately",
           "examples": [
             "Dinner is ready, so let's eat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ed0119a9",
-          "pos": "adjective",
+          "id": "sense-c9cda88b",
+          "pos": "adj.",
           "meaningZh": "隨時應對的；反應靈敏的",
-          "definitionEn": "able to react quickly to something",
           "examples": [
             "After the fire drill, everyone in the building was ready to evacuate in case of a real emergency."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9fc8a88f",
-          "pos": "noun",
+          "id": "sense-0cee8937",
+          "pos": "n.",
           "meaningZh": "備戰狀態；準備就緒",
-          "definitionEn": "preparedness for action",
           "examples": [
             "I am ready to take on any challenge that comes my way."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "real",
       "word": "real",
       "senses": [
         {
-          "id": "sense-7501aaa7",
-          "pos": "adjective",
+          "id": "sense-d034f38b",
+          "pos": "adj.",
           "meaningZh": "真實的；實際存在的",
-          "definitionEn": "being or occurring in fact or actuality; not imaginary; having verified existence",
           "examples": [
             "The witness provided real evidence that helped to convict the perpetrator."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d75721d5",
-          "pos": "adjective",
+          "id": "sense-5dc7a9a9",
+          "pos": "adj.",
           "meaningZh": "真正的；貨真價實的",
-          "definitionEn": "coinciding with reality; authentic; genuine",
           "examples": [
             "The diamond looked too perfect to be real, but after verifying its authenticity with an expert, it turned out to be genuine."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "really",
       "word": "really",
       "senses": [
         {
-          "id": "sense-9c8aae07",
-          "pos": "adverb",
+          "id": "sense-a86abe30",
+          "pos": "adv.",
           "meaningZh": "真正地；確實",
-          "definitionEn": "truly; genuinely",
           "examples": [
             "She was really excited about her promotion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9df6b6b6",
-          "pos": "adverb",
+          "id": "sense-a9bea869",
+          "pos": "adv.",
           "meaningZh": "實際上；真的（加強語氣）",
-          "definitionEn": "in fact; actually; used to emphasize a statement or situation",
           "examples": [
             "I am really tired after running a marathon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reason",
       "word": "reason",
       "senses": [
         {
-          "id": "sense-973ed776",
-          "pos": "noun",
+          "id": "sense-777a5c72",
+          "pos": "n.",
           "meaningZh": "原因；理由",
-          "definitionEn": "a cause or explanation for why something happens or is done",
           "examples": [
             "The main reason for his absence was illness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-aa4760c1",
-          "pos": "noun",
+          "id": "sense-548d558d",
+          "pos": "n.",
           "meaningZh": "理性；推理能力",
-          "definitionEn": "the capacity for rational thought or inference or discrimination",
           "examples": [
             "She had the reason to believe that the accused was not at the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fa6abb0f",
-          "pos": "noun",
+          "id": "sense-911cafa3",
+          "pos": "n.",
           "meaningZh": "常識；明智判斷",
-          "definitionEn": "the state of having good sense and sound judgment",
           "examples": [
             "Before making any decision, it’s important to listen to both sides of an argument and use reason to come to a fair conclusion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "red",
+      "word": "red",
+      "senses": [
+        {
+          "id": "sense-1a2cbf82",
+          "pos": "adj.",
+          "meaningZh": "紅色的；紅的",
+          "examples": [
+            "The bride wore a beautiful red dress on her wedding day."
+          ]
+        },
+        {
+          "id": "sense-1d7551d7",
+          "pos": "n.",
+          "meaningZh": "紅色；紅色顏料",
+          "examples": [
+            "She wore a stunning red dress to the party."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "relative",
+      "word": "relative",
+      "senses": [
+        {
+          "id": "sense-e8018a94",
+          "pos": "n.",
+          "meaningZh": "親戚；親屬",
+          "examples": [
+            "At the family reunion, I met several of my relatives whom I had never seen before."
+          ]
+        },
+        {
+          "id": "sense-4b3976bb",
+          "pos": "adj.",
+          "meaningZh": "相對的；比較而言的",
+          "examples": [
+            "In order to understand the true size of a mountain, it is important to hike to a vantage point that allows you to see the mountain in relative to its surroundings."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "remember",
+      "word": "remember",
+      "senses": [
+        {
+          "id": "sense-13a1f3e0",
+          "pos": "v.",
+          "meaningZh": "記得；記起；回憶",
+          "examples": [
+            "As she looked at the old photo album, memories flooded back and she could remember every detail of that summer vacation."
+          ]
+        },
+        {
+          "id": "sense-b53c0f28",
+          "pos": "v.",
+          "meaningZh": "牢記；銘記在心",
+          "examples": [
+            "Whenever I go grocery shopping, I always remember to buy milk."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

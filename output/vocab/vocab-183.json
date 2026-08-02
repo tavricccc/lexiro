@@ -1,1367 +1,647 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 183,
   "words": [
-    {
-      "wordKey": "intake",
-      "word": "intake",
-      "senses": [
-        {
-          "id": "sense-979dedf0",
-          "pos": "noun",
-          "meaningZh": "攝取量；吸入量",
-          "definitionEn": "the amount of food, breath, or liquid that is taken in by someone or something",
-          "examples": [
-            "After a long run, it is important to replenish your intake of water to stay hydrated."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "intellect",
-      "word": "intellect",
-      "senses": [
-        {
-          "id": "sense-2522d56d",
-          "pos": "noun",
-          "meaningZh": "理智；思辨能力",
-          "definitionEn": "the capacity for rational thought, inference, or discrimination",
-          "examples": [
-            "Her intellect helped her solve complex mathematical problems quickly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-ae15bfe3",
-          "pos": "noun",
-          "meaningZh": "智力；學習能力",
-          "definitionEn": "knowledge and ability to learn quickly and easily",
-          "examples": [
-            "His intellect made him excel in his studies, and he easily grasped complex concepts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "interpreter",
-      "word": "interpreter",
-      "senses": [
-        {
-          "id": "sense-cb69f2d3",
-          "pos": "noun",
-          "meaningZh": "口譯員；翻譯",
-          "definitionEn": "a person who translates spoken or written words from one language to another, facilitating communication between speakers of different languages",
-          "examples": [
-            "The United Nations provided interpreters for the meeting so that delegates from different countries could communicate effectively."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-40f264dc",
-          "pos": "noun",
-          "meaningZh": "（電腦）直譯器",
-          "definitionEn": "a computer program that translates and executes source code one line at a time",
-          "examples": [
-            "The programmer used an interpreter to check whether the newly written code is working correctly or not."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "intersection",
-      "word": "intersection",
-      "senses": [
-        {
-          "id": "sense-20050eed",
-          "pos": "noun",
-          "meaningZh": "交叉路口；交會點",
-          "definitionEn": "a point where lines or paths cross",
-          "examples": [
-            "At the intersection, I had to wait for the traffic light to turn green before crossing the road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-6c329d67",
-          "pos": "noun",
-          "meaningZh": "（數學）交集",
-          "definitionEn": "the set of shared elements between two or more sets",
-          "examples": [
-            "In the Venn diagram, the intersection between set A and set B consists of the elements that are common to both sets."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "intervene",
-      "word": "intervene",
-      "senses": [
-        {
-          "id": "sense-3a7b19f1",
-          "pos": "verb",
-          "meaningZh": "介入；干預",
-          "definitionEn": "to become involved in a difficult situation in order to improve it or prevent it from getting worse",
-          "examples": [
-            "During the heated argument, the teacher intervened to separate the two students and resolve the conflict peacefully."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-da1a3fa5",
-          "pos": "verb",
-          "meaningZh": "調解；斡旋",
-          "definitionEn": "to come between two or more people or groups in order to solve a problem or settle a dispute",
-          "examples": [
-            "When my two friends started arguing about which movie to watch, I decided to intervene and suggest a compromise."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "intimacy",
       "word": "intimacy",
       "senses": [
         {
-          "id": "sense-f427e126",
-          "pos": "noun",
+          "id": "sense-2f926926",
+          "pos": "n.",
           "meaningZh": "親密；深厚情誼",
-          "definitionEn": "close or warm friendship",
           "examples": [
             "After years of shared experiences and deep conversations, their intimacy grew, and they became each other's closest confidants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "intimidate",
       "word": "intimidate",
       "senses": [
         {
-          "id": "sense-7f0a9ce7",
-          "pos": "verb",
+          "id": "sense-77d2e3b0",
+          "pos": "v.",
           "meaningZh": "使恐懼；嚇唬",
-          "definitionEn": "make timid or fearful",
           "examples": [
             "The aggressive dog's barking and snarling did not hesitate to intimidate the intruders, causing them to retreat immediately!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-fa2adcf6",
-          "pos": "verb",
+          "id": "sense-167a51ef",
+          "pos": "v.",
           "meaningZh": "威脅；恐嚇",
-          "definitionEn": "compel or deter by or as if by threats",
           "examples": [
             "The bully tried to intimidate the smaller boy by making empty threats."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "intonation",
       "word": "intonation",
       "senses": [
         {
-          "id": "sense-da7b0a15",
-          "pos": "noun",
+          "id": "sense-91322c2d",
+          "pos": "n.",
           "meaningZh": "語調；聲調起伏",
-          "definitionEn": "the rise and fall of the pitch of the voice",
           "examples": [
             "During the presentation, she used her intonation to express excitement and engage the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-0e9dbf79",
-          "pos": "noun",
+          "id": "sense-240b5091",
+          "pos": "n.",
           "meaningZh": "音準；發音音調",
-          "definitionEn": "the production of musical tones by voice or instrument, especially the accuracy of the pitch",
           "examples": [
             "The singer's intonation was flawless as she effortlessly hit each high note in the song."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "intrigue",
       "word": "intrigue",
       "senses": [
         {
-          "id": "sense-896b787d",
-          "pos": "noun",
+          "id": "sense-d6ce35b9",
+          "pos": "n.",
           "meaningZh": "陰謀；密謀",
-          "definitionEn": "a plot, often complex and designed to achieve a sinister or dubious end",
           "examples": [
             "In the political thriller, the protagonist uncovers an intricate web of intrigue involving corruption and espionage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cd37b9b7",
-          "pos": "verb",
+          "id": "sense-d07a6026",
+          "pos": "v.",
           "meaningZh": "密謀；策劃",
-          "definitionEn": "to form a plot or scheme, especially a secret one",
           "examples": [
             "The spies met in a hidden basement to intrigue against the enemy forces and plan their next move."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "intrude",
       "word": "intrude",
       "senses": [
         {
-          "id": "sense-d6aaf2cf",
-          "pos": "verb",
+          "id": "sense-3d8323a6",
+          "pos": "v.",
           "meaningZh": "擅闖；侵入",
-          "definitionEn": "to enter a place or situation without being invited or welcome",
           "examples": [
             "Despite the sign saying 'Private Property: No Trespassing,' the teenagers decided to intrude onto the abandoned property to explore."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c6a3c5f1",
-          "pos": "verb",
+          "id": "sense-42fbd89c",
+          "pos": "v.",
           "meaningZh": "打擾；侵犯隱私",
-          "definitionEn": "to enter a place or property without permission, especially in a disruptive or bothersome way",
           "examples": [
             "Sarah's loud and unannounced entry into her roommate's room late at night intruded upon his privacy and disturbed his sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "intruder",
       "word": "intruder",
       "senses": [
         {
-          "id": "sense-82614870",
-          "pos": "noun",
+          "id": "sense-4b41cd84",
+          "pos": "n.",
           "meaningZh": "入侵者；闖入者",
-          "definitionEn": "a person or creature that enters a place or situation without permission or welcome, often with harmful intent; someone who intrudes on the privacy or property of another without permission",
           "examples": [
             "The homeowner got scared when he saw an intruder in his backyard, trying to break in through the back door."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "invaluable",
       "word": "invaluable",
       "senses": [
         {
-          "id": "sense-311be0a4",
-          "pos": "adjective",
+          "id": "sense-e51b623e",
+          "pos": "adj.",
           "meaningZh": "無價；非常寶貴",
-          "definitionEn": "extremely useful; priceless",
           "examples": [
             "The advice she gave me during my job hunt was invaluable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "invariably",
       "word": "invariably",
       "senses": [
         {
-          "id": "sense-a41b0b7d",
-          "pos": "adverb",
+          "id": "sense-61606868",
+          "pos": "adv.",
           "meaningZh": "總是；無例外地",
-          "definitionEn": "always and without exception",
           "examples": [
             "John is invariably late to every meeting, without fail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d7dd2220",
-          "pos": "adverb",
+          "id": "sense-f7311f5d",
+          "pos": "adv.",
           "meaningZh": "始終一致；不改變地",
-          "definitionEn": "in a way that does not vary or change",
           "examples": [
             "He would invariably arrive at the office before anyone else, showing his unwavering dedication to his job."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inventory",
       "word": "inventory",
       "senses": [
         {
-          "id": "sense-a86118c0",
-          "pos": "noun",
+          "id": "sense-9adf7fc0",
+          "pos": "n.",
           "meaningZh": "庫存盤點",
-          "definitionEn": "the process of creating a detailed list of merchandise or supplies currently in stock",
           "examples": [
             "The store manager spent several hours conducting an inventory to ensure accurate record-keeping and restocking of items."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1ababadb",
-          "pos": "noun",
+          "id": "sense-277177db",
+          "pos": "n.",
           "meaningZh": "現有資源清單；存貨",
-          "definitionEn": "a collection of resources that are available for use",
           "examples": [
             "Before starting the new project, it is important to take an inventory of all the materials and equipment needed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ironic",
       "word": "ironic",
       "senses": [
         {
-          "id": "sense-ca1c2385",
-          "pos": "adjective",
+          "id": "sense-f06ca059",
+          "pos": "adj.",
           "meaningZh": "諷刺的；反語的",
-          "definitionEn": "using words to convey a meaning that is the opposite of its literal meaning; containing or exemplifying irony",
           "examples": [
             "The weather forecast predicts a sunny day, but as soon as you step out, it starts raining. How ironic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3cbaffd2",
-          "pos": "adjective",
+          "id": "sense-46d5a516",
+          "pos": "adj.",
           "meaningZh": "諷刺意味；令人玩味",
-          "definitionEn": "characterized by often poignant difference or incongruity between what is expected and what actually is",
           "examples": [
             "It was ironic that the fire station burned down because there was no fire truck available to put out the flames."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "irritable",
       "word": "irritable",
       "senses": [
         {
-          "id": "sense-84fe595f",
-          "pos": "adjective",
+          "id": "sense-6dfe4013",
+          "pos": "adj.",
           "meaningZh": "易怒；暴躁",
-          "definitionEn": "easily annoyed or easily becoming annoyed",
           "examples": [
             "She is irritable in the mornings until she has had her coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-da1bd899",
-          "pos": "adjective",
+          "id": "sense-b73fe0bd",
+          "pos": "adj.",
           "meaningZh": "過度敏感；易受刺激",
-          "definitionEn": "having an abnormally high sensitivity to a stimulus",
           "examples": [
             "After a hectic day at work, she was irritable and easily annoyed by minor things like noise and chatty colleagues."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "irritate",
       "word": "irritate",
       "senses": [
         {
-          "id": "sense-85bf9dd8",
-          "pos": "verb",
+          "id": "sense-37978f57",
+          "pos": "v.",
           "meaningZh": "惹惱；使煩躁",
-          "definitionEn": "to cause annoyance or frustration, especially through minor or repeated actions",
           "examples": [
             "The constant ticking of the clock irritated him during the exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-8c92d514",
-          "pos": "verb",
+          "id": "sense-fb2107a5",
+          "pos": "v.",
           "meaningZh": "刺激（皮膚）；引起發炎",
-          "definitionEn": "to cause inflammation or anger in a part of the body, or to cause someone to become angry or agitated",
           "examples": [
             "The scratch from the mosquito bite irritated my skin and caused redness and swelling."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "isle",
       "word": "isle",
       "senses": [
         {
-          "id": "sense-79aa42dd",
-          "pos": "noun",
+          "id": "sense-91f03b89",
+          "pos": "n.",
           "meaningZh": "小島",
-          "definitionEn": "a small island",
           "examples": [
             "We took a boat to the isle and spent a peaceful day exploring its untouched beaches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-16e905bf",
-          "pos": "verb",
+          "id": "sense-96d766e6",
+          "pos": "v.",
           "meaningZh": "隔離；使與外界隔絕",
-          "definitionEn": "to isolate or seclude someone or something",
           "examples": [
             "During the pandemic, the family decided to rent a private isle for their vacation, ensuring complete isolation from others."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "itch",
       "word": "itch",
       "senses": [
         {
-          "id": "sense-1770d0f3",
-          "pos": "noun",
+          "id": "sense-bce423f3",
+          "pos": "n.",
           "meaningZh": "癢感；搔癢",
-          "definitionEn": "an irritating feeling on the skin that makes you want to scratch",
           "examples": [
             "After spending hours outside playing soccer, the sweat made Sarah's skin itch and she couldn't resist scratching it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5491bdf4",
-          "pos": "noun",
+          "id": "sense-e89a78f4",
+          "pos": "n.",
           "meaningZh": "強烈渴望；躍躍欲試",
-          "definitionEn": "a strong restless desire to do something",
           "examples": [
             "After years of working in an office, John felt the itch to pursue his passion and become a professional photographer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ivy",
       "word": "ivy",
       "senses": [
         {
-          "id": "sense-688fd77a",
-          "pos": "noun",
+          "id": "sense-afbca8a6",
+          "pos": "n.",
           "meaningZh": "常春藤",
-          "definitionEn": "A type of climbing plant that has evergreen leaves and small black berries.",
           "examples": [
             "The ivy gracefully climbed up the side of the house, its vibrant green leaves providing a natural decoration."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-6b8cf6e2",
-          "pos": "noun",
+          "id": "sense-09e7e696",
+          "pos": "n.",
           "meaningZh": "常春藤花冠；象徵榮耀的藤飾",
-          "definitionEn": "A wreath or garland made of ivy leaves, used as a decoration or a symbol of victory or honor.",
           "examples": [
             "The ivy wreath was awarded to the winner of the poetry competition as a symbol of victory and honor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jade",
       "word": "jade",
       "senses": [
         {
-          "id": "sense-550ca713",
-          "pos": "noun",
+          "id": "sense-fbc89403",
+          "pos": "n.",
           "meaningZh": "玉石；翠玉",
-          "definitionEn": "a semiprecious gemstone that takes a high polish; is usually green but sometimes whitish; consists of jadeite or nephrite",
           "examples": [
             "Sarah received a beautiful jade necklace for her birthday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-39433ec2",
-          "pos": "noun",
+          "id": "sense-049775b2",
+          "pos": "n.",
           "meaningZh": "翡翠綠色",
-          "definitionEn": "a light green color varying from bluish green to yellowish green",
           "examples": [
             "The bride wore a stunning jade-colored gown, which perfectly complemented her red hair."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "janitor",
       "word": "janitor",
       "senses": [
         {
-          "id": "sense-daec600b",
-          "pos": "noun",
+          "id": "sense-7be50d1f",
+          "pos": "n.",
           "meaningZh": "清潔工；管理員",
-          "definitionEn": "a person who is employed to clean and maintain a building, such as a school or office building",
           "examples": [
             "After the school day ended, the janitor meticulously swept and mopped the classroom floors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L8",
-        "textbookTitle": "翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jasmine",
       "word": "jasmine",
       "senses": [
         {
-          "id": "sense-1067dee3",
-          "pos": "noun",
+          "id": "sense-992c06b7",
+          "pos": "n.",
           "meaningZh": "茉莉花",
-          "definitionEn": "The fragrant flower of any of these plants, used as an ornament, in perfumery, and in tea.",
           "examples": [
             "As she walked through the garden, the delicate scent of jasmine filled the air."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7b0cdf2c",
-          "pos": "noun",
+          "id": "sense-01fd4848",
+          "pos": "n.",
           "meaningZh": "茉莉花植株",
-          "definitionEn": "Any of several shrubs and vines of the genus Jasminum, having fragrant white or yellow flowers, native to Asia.",
           "examples": [
             "The garden was filled with the sweet scent of jasmine flowers, creating a peaceful and calming atmosphere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jingle",
       "word": "jingle",
       "senses": [
         {
-          "id": "sense-cfbed47d",
-          "pos": "noun",
+          "id": "sense-8ab393d5",
+          "pos": "n.",
           "meaningZh": "叮噹聲；金屬碰撞聲",
-          "definitionEn": "a metallic sound",
           "examples": [
             "The jingle of the keys in her handbag could be heard from across the room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-3c2d6eed",
-          "pos": "noun",
+          "id": "sense-956efc95",
+          "pos": "n.",
           "meaningZh": "廣告歌；順口溜",
-          "definitionEn": "a catchy and repetitive verse or advertising slogan",
           "examples": [
             "The jingle for the new soda commercial was so catchy that it played in my head all day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jockey",
       "word": "jockey",
       "senses": [
         {
-          "id": "sense-2166335a",
-          "pos": "noun",
+          "id": "sense-26d897fe",
+          "pos": "n.",
           "meaningZh": "賽馬騎師",
-          "definitionEn": "a professional horse rider who competes in horse races",
           "examples": [
             "My friend’s dream is to become a jockey and race in the Kentucky Derby."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-1a9ad4e1",
-          "pos": "noun",
+          "id": "sense-20952ec5",
+          "pos": "n.",
           "meaningZh": "操控者；駕駛員",
-          "definitionEn": "a person who operates a vehicle, machine, or apparatus",
           "examples": [
             "The jockey skillfully maneuvered the racehorse through the crowded field to emerge victorious."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "jolly",
       "word": "jolly",
       "senses": [
         {
-          "id": "sense-a8c92588",
-          "pos": "adjective",
+          "id": "sense-083c2354",
+          "pos": "adj.",
           "meaningZh": "歡樂的；愉快的",
-          "definitionEn": "expressing good cheer or being full of high spirits and merriment",
           "examples": [
             "The children were jolly as they played in the snow, laughing and building snowmen."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7fc80488",
-          "pos": "noun",
+          "id": "sense-331550b4",
+          "pos": "n.",
           "meaningZh": "歡聚；同樂會",
-          "definitionEn": "a festive gathering characterized by good spirits and high merriment",
           "examples": [
             "The entire neighborhood came together for a jolly Christmas party, complete with carol singing, laughter, and a visit from Santa Claus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "joyous",
       "word": "joyous",
       "senses": [
         {
-          "id": "sense-1836fd70",
-          "pos": "adjective",
+          "id": "sense-9cbfdcc6",
+          "pos": "adj.",
           "meaningZh": "歡欣的；充滿喜樂的",
-          "definitionEn": "full of or characterized by joy or happiness",
           "examples": [
             "After receiving good news, Jake felt a joyous feeling that he hadn’t experienced in a long time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "junction",
       "word": "junction",
       "senses": [
         {
-          "id": "sense-d16c91eb",
-          "pos": "noun",
+          "id": "sense-553e6a6f",
+          "pos": "n.",
           "meaningZh": "交叉路口；匯合處",
-          "definitionEn": "the place where two or more things come together or meet",
           "examples": [
             "The highway exit was closed due to a major accident at the junction of two busy roads."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cf94ffa0",
-          "pos": "noun",
+          "id": "sense-96a4fb1c",
+          "pos": "n.",
           "meaningZh": "接合裝置；連接件",
-          "definitionEn": "something that joins or connects two or more things together",
           "examples": [
             "At the junction of the two rivers, there was a beautiful park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kin",
       "word": "kin",
       "senses": [
         {
-          "id": "sense-6eea1247",
-          "pos": "noun",
+          "id": "sense-acd206fb",
+          "pos": "n.",
           "meaningZh": "親屬；家族",
-          "definitionEn": "a group of people related by blood or marriage",
           "examples": [
             "During the family reunion, all of my kin gathered together to catch up and celebrate our shared heritage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-b845db40",
-          "pos": "noun",
+          "id": "sense-1a1fdc7c",
+          "pos": "n.",
           "meaningZh": "親人；血親",
-          "definitionEn": "a person having kinship with another or others",
           "examples": [
             "After not seeing each other for years, the siblings shared a warm embrace, reveling in the joy of being kin once again."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "kindle",
       "word": "kindle",
       "senses": [
         {
-          "id": "sense-83ae464f",
-          "pos": "verb",
+          "id": "sense-b4fa6eca",
+          "pos": "v.",
           "meaningZh": "點燃；生火",
-          "definitionEn": "to cause a fire to start burning",
           "examples": [
             "He used dry leaves and twigs to kindle a campfire in the woods."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-5f415207",
-          "pos": "verb",
+          "id": "sense-5fead7b2",
+          "pos": "v.",
           "meaningZh": "引燃；點著",
-          "definitionEn": "to ignite or set something on fire",
           "examples": [
             "She used matches and twigs to kindle a fire in the fireplace during the camping trip."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "knowledgeable",
+      "word": "knowledgeable",
+      "senses": [
+        {
+          "id": "sense-728ce0e5",
+          "pos": "adj.",
+          "meaningZh": "博學的；見多識廣的",
+          "examples": [
+            "The professor was knowledgeable about the subject and could answer any question asked by the students."
+          ]
+        },
+        {
+          "id": "sense-0e57cc3a",
+          "pos": "adj.",
+          "meaningZh": "學識淵博的；精通的",
+          "examples": []
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "lad",
+      "word": "lad",
+      "senses": [
+        {
+          "id": "sense-85bd0033",
+          "pos": "n.",
+          "meaningZh": "男孩；小夥子",
+          "examples": [
+            "The lad walked down the street with a basketball under his arm."
+          ]
+        },
+        {
+          "id": "sense-0020b49e",
+          "pos": "n.",
+          "meaningZh": "小男孩（暱稱）",
+          "examples": [
+            "The lad played with his toy truck in the sandbox."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "landlady",
+      "word": "landlady",
+      "senses": [
+        {
+          "id": "sense-4cc4ccf1",
+          "pos": "n.",
+          "meaningZh": "女房東",
+          "examples": [
+            "After her career in the military, she decided to become a landlady and rent out her properties to college students."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "landslide",
+      "word": "landslide",
+      "senses": [
+        {
+          "id": "sense-be5083bb",
+          "pos": "n.",
+          "meaningZh": "山崩；土石流",
+          "examples": [
+            "After three days of heavy rain, the landslide created a dam that blocked the river."
+          ]
+        },
+        {
+          "id": "sense-b8be3457",
+          "pos": "n.",
+          "meaningZh": "壓倒性勝選；大勝",
+          "examples": [
+            "The candidate, who had been leading the polls all along, won the election in a landslide, capturing over 70% of the vote."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "latitude",
+      "word": "latitude",
+      "senses": [
+        {
+          "id": "sense-83054e92",
+          "pos": "n.",
+          "meaningZh": "緯度",
+          "examples": [
+            "The captain adjusted the ship’s course to the correct latitude as they approached the equator."
+          ]
+        },
+        {
+          "id": "sense-7705d32d",
+          "pos": "n.",
+          "meaningZh": "自由度；寬裕空間",
+          "examples": [
+            "The company gave employees latitude in choosing their work hours as long as they met their deadlines."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

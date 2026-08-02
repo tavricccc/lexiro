@@ -1,24 +1,20 @@
 <script setup lang="ts">
-import type { WordDraft } from '@/types'
-import { Check, Sparkles } from 'lucide-vue-next'
+import type { LibraryQuestion, WordDraft } from '@/types'
 import { storeToRefs } from 'pinia'
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { extractJsonText, generateWithAi, loadAiSettings } from '@/lib/ai-provider'
-import { copyToClipboard } from '@/lib/clipboard'
 import { folderIdFromSelection } from '@/lib/folders'
-import { parseImportJson } from '@/lib/import'
-import { buildImportPrompt } from '@/lib/importPrompt'
 import { parseLibraryImport } from '@/lib/library-import'
+import { areWordDraftsComplete, createBlankSenseDraft, getFilledWordDrafts } from '@/lib/validation'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
 import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
-import SectionPanel from '../ui/section-panel/SectionPanel.vue'
+import Input from '../ui/input/Input.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
-import Textarea from '../ui/textarea/Textarea.vue'
+import AiWordImportPanel from './AiWordImportPanel.vue'
 import FolderPicker from './FolderPicker.vue'
 import ManualWordEntryForm from './ManualWordEntryForm.vue'
 
@@ -28,126 +24,56 @@ const { t } = useI18n()
 const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
-const { importOpen, importStep, importWords, importJson, importError, importPreview, importFolderId, setEditorError } = storeToRefs(setsStore)
-const { closeImport, nextImportStep, importSet, createSetFromItems } = setsStore
+const { importOpen, importError, importFolderId, setEditorError } = storeToRefs(setsStore)
+const { closeImport, createSetFromItems, setImportError, setImportFolderId, setImportPreview, setImportStep, setSetEditorError } = setsStore
 const { showToast } = uiStore
 
-const importTextarea = ref<InstanceType<typeof Textarea> | null>(null)
-const aiSettings = ref(loadAiSettings())
-const aiGenerating = ref(false)
 const libraryImporting = ref(false)
 const inputMode = ref<InputMode>('manual')
-const manualItems = ref<WordDraft[]>([{ word: '', pos: '', meaning: '' }])
-const wordCount = computed(() => importWords.value.split(/[^\p{L}\p{N}]+/u).filter(Boolean).length)
+const manualSetName = ref('')
+const manualItems = ref<WordDraft[]>([{ word: '', senses: [createBlankSenseDraft()] }])
+const selectedFolderId = computed({
+  get: () => importFolderId.value,
+  set: (value: string) => setImportFolderId(value),
+})
 
 watch(importOpen, (open) => {
   if (!open)
     return
   inputMode.value = 'manual'
-  manualItems.value = [{ word: '', pos: '', meaning: '' }]
-  aiSettings.value = loadAiSettings()
-  nextTick(() => importTextarea.value?.focus())
-})
-
-watch(importStep, () => {
-  if (importOpen.value && inputMode.value === 'ai')
-    nextTick(() => importTextarea.value?.focus())
-})
-
-watch(importJson, (value) => {
-  if (!value.trim()) {
-    setsStore.importPreview = ''
-    setsStore.importError = ''
-    return
-  }
-  const result = parseImportJson(value.trim())
-  if (result.valid) {
-    setsStore.importPreview = t('import.jsonValid', { count: result.data.items.length })
-    setsStore.importError = ''
-  }
-  else {
-    setsStore.importPreview = ''
-    setsStore.importError = result.error
-  }
+  manualSetName.value = ''
+  manualItems.value = [{ word: '', senses: [createBlankSenseDraft()] }]
 })
 
 function switchInputMode(mode: InputMode) {
   inputMode.value = mode
-  setsStore.importError = ''
-  setsStore.importPreview = ''
-  setsStore.importStep = 1
-  if (mode === 'manual')
-    manualItems.value = [{ word: '', pos: '', meaning: '' }]
+  setsStore.clearImportFeedback()
+  setImportStep(1)
+  if (mode === 'manual') {
+    manualSetName.value = ''
+    manualItems.value = [{ word: '', senses: [createBlankSenseDraft()] }]
+  }
 }
 
 function createManualSet() {
-  const entries = manualItems.value.filter(item => item.word.trim() || item.pos.trim() || item.meaning.trim())
+  if (!manualSetName.value.trim()) {
+    setImportError(t('editor.nameRequired'))
+    return
+  }
+  const entries = getFilledWordDrafts(manualItems.value)
   if (!entries.length) {
-    setsStore.importError = t('import.manualWordsRequired')
+    setImportError(t('import.manualWordsRequired'))
     return
   }
-  if (entries.some(item => !item.word.trim() || !item.pos.trim() || !item.meaning.trim())) {
-    setsStore.importError = t('import.manualFieldsRequired')
+  if (!areWordDraftsComplete(entries)) {
+    setImportError(t('import.manualFieldsRequired'))
     return
   }
 
-  setEditorError.value = ''
-  const created = createSetFromItems(entries, '', 2, folderIdFromSelection(importFolderId.value))
+  setSetEditorError('')
+  const created = createSetFromItems(entries, manualSetName.value.trim(), folderIdFromSelection(importFolderId.value))
   if (!created)
-    setsStore.importError = setEditorError.value || t('import.manualFailed')
-}
-
-async function runWordAiGeneration() {
-  if (!wordCount.value) {
-    setsStore.importError = t('import.wordsRequired')
-    return
-  }
-
-  const settings = loadAiSettings()
-  aiSettings.value = settings
-  const words = importWords.value.split(/[^\p{L}\p{N}]+/u).map(word => word.trim()).filter(Boolean)
-  const prompt = buildImportPrompt(words.join(', '))
-
-  if (!settings.enabled) {
-    try {
-      await copyToClipboard(prompt)
-      showToast(t('import.copied'))
-      nextImportStep()
-    }
-    catch {
-      showToast(t('import.copyFailed'))
-    }
-    return
-  }
-  if (!settings.apiKey.trim()) {
-    setsStore.importError = t('import.aiConfigureHint')
-    return
-  }
-
-  const batchSize = Math.min(Math.max(Number(settings.batchSize) || 10, 5), 20)
-  const batches = Array.from({ length: Math.ceil(words.length / batchSize) }, (_, index) => words.slice(index * batchSize, (index + 1) * batchSize))
-  aiGenerating.value = true
-  setsStore.importError = ''
-  try {
-    const items = []
-    for (const batch of batches) {
-      const response = await generateWithAi(settings, buildImportPrompt(batch.join(', ')))
-      const result = parseImportJson(extractJsonText(response))
-      if (!result.valid)
-        throw new Error(result.error)
-      items.push(...result.data.items)
-    }
-    setsStore.importJson = JSON.stringify({ items }, null, 2)
-    setsStore.importPreview = t('import.jsonValid', { count: items.length })
-    nextImportStep()
-    showToast(t('import.generated', { count: items.length }))
-  }
-  catch (error) {
-    setsStore.importError = (error as Error).message || t('import.aiFailed')
-  }
-  finally {
-    aiGenerating.value = false
-  }
+    setImportError(setEditorError.value || t('import.manualFailed'))
 }
 
 async function importLibraryFiles(event: Event) {
@@ -157,29 +83,35 @@ async function importLibraryFiles(event: Event) {
     return
   libraryImporting.value = true
   const messages: string[] = []
+  const wordFiles: Array<{ name: string, words: Parameters<typeof setsStore.importLibraryWords>[0] }> = []
+  const questionFiles: Array<{ name: string, questions: LibraryQuestion[] }> = []
   try {
     for (const file of files) {
       const result = parseLibraryImport(await file.text())
       if (!result.valid) {
-        messages.push(`${file.name}：${result.error}`)
+        messages.push(t('import.fileInvalid', { name: file.name }))
         continue
       }
-      if (result.data.kind === 'vocab') {
-        libraryStore.importWords(result.data.words)
-        setsStore.importLibraryWords(result.data.words, file.name.replace(/\.json$/i, ''), folderIdFromSelection(importFolderId.value))
-        messages.push(`${file.name}：${result.data.words.length} 個單字`)
-      }
-      else {
-        libraryStore.importQuestions(result.data.questions)
-        messages.push(`${file.name}：${result.data.questions.length} 題`)
-      }
+      if (result.data.kind === 'words')
+        wordFiles.push({ name: file.name, words: result.data.words })
+      else
+        questionFiles.push({ name: file.name, questions: result.data.questions })
     }
-    setsStore.importPreview = messages.join('；')
-    setsStore.importError = ''
+    for (const file of wordFiles) {
+      const set = setsStore.importLibraryWords(file.words, file.name.replace(/\.json$/i, ''), folderIdFromSelection(importFolderId.value))
+      if (set)
+        messages.push(t('import.fileWordsSummary', { name: file.name, count: file.words.length }))
+    }
+    for (const file of questionFiles) {
+      const imported = libraryStore.importQuestions(file.questions)
+      messages.push(t('import.fileQuestionsSummary', { name: file.name, imported, total: file.questions.length }))
+    }
+    setImportPreview(messages.join(t('import.fileSummarySeparator')))
+    setImportError('')
     showToast(t('import.libraryImported'))
   }
-  catch (error) {
-    setsStore.importError = (error as Error).message
+  catch {
+    setImportError(t('import.fileImportFailed'))
   }
   finally {
     libraryImporting.value = false
@@ -191,7 +123,7 @@ async function importLibraryFiles(event: Event) {
 <template>
   <Dialog :open="importOpen" :title="$t('import.title')" :description="$t('import.description')" @close="closeImport">
     <div class="space-y-5">
-      <FolderPicker v-model="importFolderId" :title="$t('import.folderLabel')" />
+      <FolderPicker v-model="selectedFolderId" :title="$t('import.folderLabel')" />
 
       <div class="flex items-center justify-between gap-3">
         <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
@@ -207,17 +139,14 @@ async function importLibraryFiles(event: Event) {
         </div>
       </div>
 
-      <ol v-if="inputMode === 'ai'" class="grid grid-cols-2 gap-2" :aria-label="$t('import.progressLabel')">
-        <li v-for="step in 2" :key="step" class="flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-bold" :class="step <= importStep ? 'border-accent-primary/20 bg-accent-primary/10 text-accent-primary' : 'border-ink-200/60 text-ink-400 dark:border-ink-200/20'">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[10px]"><Check v-if="step < importStep" class="h-3 w-3" /><span v-else>{{ step }}</span></span>
-          {{ step === 1 ? $t('import.progressWords') : $t('import.progressPaste') }}
-        </li>
-      </ol>
-
       <div v-if="inputMode === 'manual'" class="space-y-4">
         <p class="text-xs leading-relaxed text-ink-500 dark:text-ink-400">
           {{ $t('import.manualHint') }}
         </p>
+        <div class="space-y-1.5 text-left">
+          <label class="text-xs font-black uppercase tracking-wider text-ink-400">{{ $t('editor.setName') }}</label>
+          <Input v-model="manualSetName" :placeholder="$t('editor.setName')" />
+        </div>
         <ManualWordEntryForm v-model="manualItems" />
         <StatusMessage v-if="importError" tone="error">
           {{ importError }}
@@ -241,56 +170,7 @@ async function importLibraryFiles(event: Event) {
         </DialogFooter>
       </div>
 
-      <div v-else-if="importStep === 1" class="space-y-5">
-        <div class="flex flex-col gap-1.5 w-full text-left">
-          <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('import.aiWordsLabel') }}</label>
-          <Textarea ref="importTextarea" v-model="importWords" :rows="7" class="font-mono text-sm leading-relaxed" :placeholder="$t('import.wordPlaceholder')" />
-          <p class="text-xs font-semibold text-ink-400">
-            {{ $t('import.wordCount', { count: wordCount }) }}
-          </p>
-        </div>
-        <SectionPanel class="border-accent-primary/15 bg-accent-primary/10">
-          <p class="text-xs font-bold text-accent-primary">
-            {{ $t('import.aiJsonMode') }}
-          </p>
-          <p class="mt-1.5 text-xs leading-relaxed text-ink-500 dark:text-ink-400">
-            {{ aiSettings.enabled ? $t('import.apiHint') : $t('import.manualAiHint') }}
-          </p>
-        </SectionPanel>
-        <StatusMessage v-if="importError" tone="error">
-          {{ importError }}
-        </StatusMessage>
-        <DialogFooter>
-          <Button variant="outline" @click="closeImport">
-            {{ $t('editor.cancel') }}
-          </Button>
-          <Button variant="secondary" class="gap-2" :loading="aiGenerating" @click="runWordAiGeneration">
-            <Sparkles class="h-4 w-4" />
-            <span>{{ aiSettings.enabled ? (aiGenerating ? $t('import.generating') : $t('import.generateWithAi')) : $t('import.copyPrompt') }}</span>
-          </Button>
-        </DialogFooter>
-      </div>
-
-      <div v-else class="space-y-5">
-        <div class="flex flex-col gap-1.5 w-full text-left">
-          <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('import.importJson') }}</label>
-          <Textarea ref="importTextarea" v-model="importJson" :rows="9" class="font-mono text-xs leading-relaxed" :placeholder="$t('import.jsonPlaceholder')" />
-        </div>
-        <StatusMessage v-if="importPreview" tone="success">
-          {{ importPreview }}
-        </StatusMessage>
-        <StatusMessage v-if="importError" tone="error">
-          {{ $t('import.jsonError') }}：{{ importError }}
-        </StatusMessage>
-        <DialogFooter>
-          <Button variant="outline" @click="importStep = 1">
-            {{ $t('import.backToWords') }}
-          </Button>
-          <Button variant="default" :disabled="!importPreview" @click="importSet">
-            {{ $t('import.import') }}
-          </Button>
-        </DialogFooter>
-      </div>
+      <AiWordImportPanel v-else />
     </div>
   </Dialog>
 </template>

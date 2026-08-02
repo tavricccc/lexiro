@@ -1,1418 +1,671 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 113,
   "words": [
-    {
-      "wordKey": "flea",
-      "word": "flea",
-      "senses": [
-        {
-          "id": "sense-4daf9bb8",
-          "pos": "noun",
-          "meaningZh": "跳蚤",
-          "definitionEn": "A parasitic insect without wings that feeds on the blood of mammals and birds. Fleas are known for their ability to jump long distances.",
-          "examples": [
-            "After taking her dog for a walk in the park, Sarah discovered a flea on his fur that she promptly removed and treated."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "flee",
-      "word": "flee",
-      "senses": [
-        {
-          "id": "sense-bcec2de2",
-          "pos": "verb",
-          "meaningZh": "逃跑；逃離",
-          "definitionEn": "to run away from a place or situation",
-          "examples": [
-            "As the fire spread rapidly through the building, the panicked crowd began to flee in all directions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-237b6654",
-          "pos": "verb",
-          "meaningZh": "逃走；出走",
-          "definitionEn": "to escape by running away, especially because of danger or fear",
-          "examples": [
-            "When the fire alarm went off, the students quickly fled the classroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L10",
-        "textbookTitle": "三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "flexible",
-      "word": "flexible",
-      "senses": [
-        {
-          "id": "sense-ec0d153a",
-          "pos": "adjective",
-          "meaningZh": "柔軟的；可彎曲的",
-          "definitionEn": "able to bend easily; capable of flexing",
-          "examples": [
-            "The gymnast's body is incredibly flexible, allowing her to perform advanced contortions with ease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-e7a114b7",
-          "pos": "adjective",
-          "meaningZh": "靈活的；可調整的",
-          "definitionEn": "able to adjust easily to different conditions",
-          "examples": [
-            "She's a freelance writer, which allows her to have a flexible schedule and work from anywhere."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R1",
-        "textbookTitle": "龍騰 B3·R1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "fluent",
-      "word": "fluent",
-      "senses": [
-        {
-          "id": "sense-162b3760",
-          "pos": "adjective",
-          "meaningZh": "流利的；流暢的",
-          "definitionEn": "able to express oneself easily and articulately",
-          "examples": [
-            "After years of practice, Sarah became fluent in Spanish and was able to hold engaging conversations with native speakers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-dae08c12",
-          "pos": "adjective",
-          "meaningZh": "圓滑的；行雲流水的",
-          "definitionEn": "smooth and flowing in movement or speech",
-          "examples": [
-            "Sarah spoke in such a fluent manner during her presentation that the audience was captivated by her every word."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "flush",
-      "word": "flush",
-      "senses": [
-        {
-          "id": "sense-ddf72cac",
-          "pos": "verb",
-          "meaningZh": "沖洗；沖乾淨",
-          "definitionEn": "rinse, clean, or empty with a liquid",
-          "examples": [
-            "After using the toilet, please remember to flush it with water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-30b8392a",
-          "pos": "verb",
-          "meaningZh": "使沖流；灌入",
-          "definitionEn": "cause to flow or flood with or as if with water",
-          "examples": [
-            "The heavy rain flushed out the drains on the road."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "foam",
       "word": "foam",
       "senses": [
         {
-          "id": "sense-6f092845",
-          "pos": "noun",
+          "id": "sense-afd4850d",
+          "pos": "n.",
           "meaningZh": "泡沫；氣泡",
-          "definitionEn": "a mass of small bubbles formed in or on a liquid",
           "examples": [
             "The beer mug was filled with foam after being poured too quickly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b3d450fb",
-          "pos": "noun",
+          "id": "sense-793cd303",
+          "pos": "n.",
           "meaningZh": "泡棉；發泡材料",
-          "definitionEn": "a lightweight material in cellular form; made by introducing gas bubbles during manufacture",
           "examples": [
             "She poured the soap onto her hands and worked it into a lather, and it created foam as it moved in between her fingers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "forbid",
       "word": "forbid",
       "senses": [
         {
-          "id": "sense-8168950d",
-          "pos": "verb",
+          "id": "sense-73e9ef94",
+          "pos": "v.",
           "meaningZh": "禁止；命令不得",
-          "definitionEn": "to command someone not to do something",
           "examples": [
             "The mother forbade her son from watching TV until he finished his homework."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6c08886e",
-          "pos": "verb",
+          "id": "sense-13ae09ab",
+          "pos": "v.",
           "meaningZh": "阻止；使不可能",
-          "definitionEn": "to make something impossible to happen or stop it from happening",
           "examples": [
             "The school forbids students from chewing gum in the classroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4 +1",
-        "textbookTitle": "龍騰 B2·L4、三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "forecast",
       "word": "forecast",
       "senses": [
         {
-          "id": "sense-21172be0",
-          "pos": "noun",
+          "id": "sense-49d89598",
+          "pos": "n.",
           "meaningZh": "預報；預測",
-          "definitionEn": "a prediction about how something, such as the weather, will develop",
           "examples": [
             "The meteorologist has forecasted heavy rainfall for the next two days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b01c57b3",
-          "pos": "verb",
+          "id": "sense-c62aa686",
+          "pos": "v.",
           "meaningZh": "預測；預報",
-          "definitionEn": "to predict or estimate a future event or trend",
           "examples": [
             "The meteorologist carefully analyzed the weather patterns to forecast whether it would rain or not."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "formation",
       "word": "formation",
       "senses": [
         {
-          "id": "sense-f2fbf2cb",
-          "pos": "noun",
+          "id": "sense-b8248fd3",
+          "pos": "n.",
           "meaningZh": "隊形；構型",
-          "definitionEn": "a particular arrangement or configuration of something",
           "examples": [
             "The formation of the new government was a long and difficult process."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2ed0714d",
-          "pos": "noun",
+          "id": "sense-9f820cb5",
+          "pos": "n.",
           "meaningZh": "形成；組建",
-          "definitionEn": "the act or process of forming or creating something",
           "examples": [
             "The formation of a new political party caused quite a stir among the existing ones."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "formula",
       "word": "formula",
       "senses": [
         {
-          "id": "sense-b5ec756b",
-          "pos": "noun",
+          "id": "sense-2a0d7a37",
+          "pos": "n.",
           "meaningZh": "公式；算式",
-          "definitionEn": "a group of symbols used in a mathematical equation or expression to represent the relationship between quantities",
           "examples": [
             "The Pythagorean theorem is a well-known formula that states that the square of the hypotenuse of a right triangle is equal to the sum of the squares of the other two sides."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-92846b06",
-          "pos": "noun",
+          "id": "sense-9f02f462",
+          "pos": "n.",
           "meaningZh": "配方；方法",
-          "definitionEn": "a method or set of prescribed steps for carrying out a procedure or solving a problem",
           "examples": [
             "In chemistry, the formula for calculating the molar mass of a compound is to sum the atomic masses of all its constituent elements."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5",
-        "textbookTitle": "三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fort",
       "word": "fort",
       "senses": [
         {
-          "id": "sense-a9f7012d",
-          "pos": "noun",
+          "id": "sense-ecfd0415",
+          "pos": "n.",
           "meaningZh": "堡壘；要塞",
-          "definitionEn": "a strong building or position used by soldiers for defense",
           "examples": [
             "The soldiers defended the fort against the enemy attack."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-876cf707",
-          "pos": "verb",
+          "id": "sense-69d725e6",
+          "pos": "v.",
           "meaningZh": "聚集防禦；躲避",
-          "definitionEn": "to gather together, or huddle, as if for protection or defense in a fort",
           "examples": [
             "During the storm, the children fort in their blankets, seeking shelter from the thunder and lightning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fortunate",
       "word": "fortunate",
       "senses": [
         {
-          "id": "sense-115d51be",
-          "pos": "adjective",
+          "id": "sense-206ad4b2",
+          "pos": "adj.",
           "meaningZh": "幸運的；有福的",
-          "definitionEn": "supremely favored",
           "examples": [
             "Winning the lottery was a fortunate event that changed Mary’s life forever."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ea88f227",
-          "pos": "adjective",
+          "id": "sense-4879461b",
+          "pos": "adj.",
           "meaningZh": "走運的；偶得好運",
-          "definitionEn": "having unexpected good fortune",
           "examples": [
             "She was fortunate enough to win the lottery and pay off all of her debts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1 +1",
-        "textbookTitle": "龍騰 B1·L1、三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fossil",
       "word": "fossil",
       "senses": [
         {
-          "id": "sense-c3c6e436",
-          "pos": "noun",
+          "id": "sense-7be937a2",
+          "pos": "n.",
           "meaningZh": "化石；古生物遺跡",
-          "definitionEn": "the remains or impression of a prehistoric plant or animal that has been preserved in rock",
           "examples": [
             "The paleontologist carefully excavated the fossilized bones of a long-extinct dinosaur from the rock formation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-8aa6fba4",
-          "pos": "noun",
+          "id": "sense-efce7f48",
+          "pos": "n.",
           "meaningZh": "守舊之物；老古板",
-          "definitionEn": "someone or something that is outdated or old-fashioned",
           "examples": [
             "Using a typewriter to write a novel in the digital age is like being a fossil among modern writers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "foundation",
       "word": "foundation",
       "senses": [
         {
-          "id": "sense-0c291c6e",
-          "pos": "noun",
+          "id": "sense-6b343756",
+          "pos": "n.",
           "meaningZh": "地基；基礎結構",
-          "definitionEn": "the lowest support of a structure",
           "examples": [
             "The concrete pillars serve as the foundation for the skyscraper, providing stability and support."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4a691098",
-          "pos": "noun",
+          "id": "sense-ec789a60",
+          "pos": "n.",
           "meaningZh": "根基；基礎",
-          "definitionEn": "the basis on which something is grounded",
           "examples": [
             "The strong financial support provided by her parents served as the foundation for her successful business venture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "founder",
       "word": "founder",
       "senses": [
         {
-          "id": "sense-5b39cae6",
-          "pos": "noun",
+          "id": "sense-5e7b06de",
+          "pos": "n.",
           "meaningZh": "創辦人；創始人",
-          "definitionEn": "a person who establishes an institution, organization, or company",
           "examples": [
             "Steve Jobs is the founder of Apple Inc."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b8742931",
-          "pos": "verb",
+          "id": "sense-fcde03c8",
+          "pos": "v.",
           "meaningZh": "失敗；垮掉",
-          "definitionEn": "fail completely; collapse",
           "examples": [
             "The business foundered after the economic recession."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fragile",
       "word": "fragile",
       "senses": [
         {
-          "id": "sense-ded111d5",
-          "pos": "adjective",
+          "id": "sense-b7836399",
+          "pos": "adj.",
           "meaningZh": "易碎的；需小心處理的",
-          "definitionEn": "requiring delicate or cautious handling; easily damaged or injured",
           "examples": [
             "Please be careful with the antique china, it's very fragile and can break easily."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-106d5bd4",
-          "pos": "adjective",
+          "id": "sense-02f3b210",
+          "pos": "adj.",
           "meaningZh": "脆弱的；易損壞的",
-          "definitionEn": "easily broken, damaged, or destroyed",
           "examples": [
             "Handle the vase with care as it is extremely fragile."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "frame",
       "word": "frame",
       "senses": [
         {
-          "id": "sense-cbd51b00",
-          "pos": "noun",
+          "id": "sense-421cde7c",
+          "pos": "n.",
           "meaningZh": "框架；架構",
-          "definitionEn": "a structure that surrounds and supports something, such as a picture or window",
           "examples": [
             "She put the photo in a silver frame."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-396c5855",
-          "pos": "noun",
+          "id": "sense-e1a42c49",
+          "pos": "n.",
           "meaningZh": "骨架；骨骼",
-          "definitionEn": "the hard structure (bones and cartilages) that provides a frame for the body of an animal",
           "examples": [
             "The frame of a human body consists of bones such as the skull, ribs, and spine, which provide structural support and protect internal organs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "frequency",
       "word": "frequency",
       "senses": [
         {
-          "id": "sense-2ed06bf4",
-          "pos": "noun",
+          "id": "sense-ef860e98",
+          "pos": "n.",
           "meaningZh": "頻率；發生次數",
-          "definitionEn": "the number of times something happens within a certain period",
           "examples": [
             "The earthquake’s frequency had increased to one major shock per day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-72fa307d",
-          "pos": "noun",
+          "id": "sense-0f21aa69",
+          "pos": "n.",
           "meaningZh": "頻率；出現次數（統計）",
-          "definitionEn": "the number of times something is observed in a particular statistical group",
           "examples": [
             "The frequency of earthquakes in that region has increased over the past decade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "freshman",
       "word": "freshman",
       "senses": [
         {
-          "id": "sense-c5da7df0",
-          "pos": "noun",
+          "id": "sense-45248df4",
+          "pos": "n.",
           "meaningZh": "大一新生；大學一年級生",
-          "definitionEn": "a first-year undergraduate student in college or university",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-cf57e663",
-          "pos": "noun",
+          "id": "sense-39ca2857",
+          "pos": "n.",
           "meaningZh": "新手；生手",
-          "definitionEn": "a person who is new to or inexperienced in a particular activity or field",
           "examples": [
             "As a freshman in college, Sarah was nervous about navigating campus and finding her classes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "frost",
       "word": "frost",
       "senses": [
         {
-          "id": "sense-468af974",
-          "pos": "noun",
+          "id": "sense-32cc50a0",
+          "pos": "n.",
           "meaningZh": "霜；霜晶",
-          "definitionEn": "the thin, white layer of ice crystals that forms on surfaces outside",
           "examples": [
             "The morning frost glistened on the grass as the sun rose over the trees."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c2d4258c",
-          "pos": "noun",
+          "id": "sense-8ed40a80",
+          "pos": "n.",
           "meaningZh": "霜凍；冰凍天氣",
-          "definitionEn": "weather that is cold enough to make water freeze and form ice crystals, especially on surfaces outside",
           "examples": [
             "The car was covered in a thick layer of frost after an especially cold night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "frown",
       "word": "frown",
       "senses": [
         {
-          "id": "sense-c508a2ec",
-          "pos": "verb",
+          "id": "sense-503bdd89",
+          "pos": "v.",
           "meaningZh": "皺眉；蹙眉",
-          "definitionEn": "to show displeasure or disapproval by drawing down the corners of the mouth and making wrinkles on the forehead",
           "examples": [
             "She gave a frown when she saw her test score."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6401b3f9",
-          "pos": "noun",
+          "id": "sense-c1f19669",
+          "pos": "n.",
           "meaningZh": "皺眉；愁眉",
-          "definitionEn": "an expression of displeasure or disapproval shown by turning down the corners of the mouth and making wrinkles on the forehead",
           "examples": [
             "She started to frown when she heard the bad news about her friend’s illness."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "frustrate",
       "word": "frustrate",
       "senses": [
         {
-          "id": "sense-b2f21ee6",
-          "pos": "verb",
+          "id": "sense-a9de0353",
+          "pos": "v.",
           "meaningZh": "使沮喪；使挫折",
-          "definitionEn": "to cause to feel upset or annoyed, especially due to being unable to change or achieve something desired",
           "examples": [
             "After weeks of studying, he was frustrated when he didn't pass the exam."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2469a2d6",
-          "pos": "verb",
+          "id": "sense-21e8c1bb",
+          "pos": "v.",
           "meaningZh": "阻撓；妨礙",
-          "definitionEn": "to hinder or prevent (the efforts, plans, or desires) of someone or something",
           "examples": [
             "The unexpected power outage frustrated her attempts to finish the important presentation before the deadline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "frustration",
       "word": "frustration",
       "senses": [
         {
-          "id": "sense-37f6506a",
-          "pos": "noun",
+          "id": "sense-97939942",
+          "pos": "n.",
           "meaningZh": "挫折感；懊惱",
-          "definitionEn": "a feeling of annoyance at being hindered or criticized",
           "examples": [
             "She felt frustration when her project was rejected after months of hard work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-80b80dc2",
-          "pos": "noun",
+          "id": "sense-3f26671a",
+          "pos": "n.",
           "meaningZh": "受挫；不得志",
-          "definitionEn": "the feeling that accompanies an experience of being thwarted in attaining your goals",
           "examples": [
             "After failing the driving test multiple times, he couldn’t help but feel frustration."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fulfill",
       "word": "fulfill",
       "senses": [
         {
-          "id": "sense-37b190c4",
-          "pos": "verb",
+          "id": "sense-eaf25a0d",
+          "pos": "v.",
           "meaningZh": "滿足；實現（需求）",
-          "definitionEn": "to meet a need or desire",
           "examples": [
             "The company made every effort to fulfill their customers’ orders within 24 hours of purchase."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b0ff975b",
-          "pos": "verb",
+          "id": "sense-614b4db2",
+          "pos": "v.",
           "meaningZh": "完成；履行（義務）",
-          "definitionEn": "to perform or do something as expected",
           "examples": [
             "It was his lifelong dream to fulfill his father’s unfulfilled ambitions and complete the project that he had left unfinished."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5",
-        "textbookTitle": "龍騰 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fulfillment",
       "word": "fulfillment",
       "senses": [
         {
-          "id": "sense-e33b2807",
-          "pos": "noun",
+          "id": "sense-13a1ecbb",
+          "pos": "n.",
           "meaningZh": "滿足感；成就感",
-          "definitionEn": "a feeling of satisfaction at having achieved your desires",
           "examples": [
             "After years of hard work, graduating from college brought her a sense of fulfillment she had never experienced before."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-0ac24702",
-          "pos": "noun",
+          "id": "sense-be510ab6",
+          "pos": "n.",
           "meaningZh": "實現；達成",
-          "definitionEn": "the act of consummating something (a desire or promise etc)",
           "examples": [
             "After years of hard work and perseverance, her dream of becoming a published author was finally fulfilled when her debut novel hit the bestseller list."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "functional",
       "word": "functional",
       "senses": [
         {
-          "id": "sense-b2ef2d39",
-          "pos": "adjective",
+          "id": "sense-342da6e3",
+          "pos": "adj.",
           "meaningZh": "功能性的；以功能為導向的",
-          "definitionEn": "relating to or based on function, especially as opposed to structure",
           "examples": [
             "The IT department will evaluate the functional aspects of the new software program before determining if it should be implemented."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a58c7db1",
-          "pos": "adjective",
+          "id": "sense-1aa2fe2f",
+          "pos": "adj.",
           "meaningZh": "可正常使用的；實用的",
-          "definitionEn": "fit or ready for use or service",
           "examples": [
             "The new machine is now fully functional and is ready to be delivered to the customer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L2",
-        "textbookTitle": "三民 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "fundamental",
       "word": "fundamental",
       "senses": [
         {
-          "id": "sense-dfc9a84b",
-          "pos": "adjective",
+          "id": "sense-d6cc44ad",
+          "pos": "adj.",
           "meaningZh": "根本的；基礎的",
-          "definitionEn": "forming a necessary base or core; of central importance",
           "examples": [
             "Understanding basic mathematics is fundamental to solving complex equations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-ce0fea75",
-          "pos": "adjective",
+          "id": "sense-9767ea8f",
+          "pos": "adj.",
           "meaningZh": "基本的；核心的",
-          "definitionEn": "relating to the basic principles or essential structure of something",
           "examples": [
             "Understanding math is fundamental to solving complex problems."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "funeral",
       "word": "funeral",
       "senses": [
         {
-          "id": "sense-446fa5b3",
-          "pos": "noun",
+          "id": "sense-37e4e23b",
+          "pos": "n.",
           "meaningZh": "葬禮；喪禮",
-          "definitionEn": "a ceremony for honoring, remembering, or burying a dead person",
           "examples": [
             "The funeral service was somber, with family and friends sharing memories and shedding tears as they said their final goodbyes to their loved one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "furious",
       "word": "furious",
       "senses": [
         {
-          "id": "sense-769bdc7a",
-          "pos": "adjective",
+          "id": "sense-24e0443c",
+          "pos": "adj.",
           "meaningZh": "憤怒的；暴怒的",
-          "definitionEn": "very angry or enraged",
           "examples": [
             "After waiting in line for three hours, the furious customer demanded to speak to the manager."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5e2a8239",
-          "pos": "adjective",
+          "id": "sense-cc63ea73",
+          "pos": "adj.",
           "meaningZh": "猛烈的；狂暴的",
-          "definitionEn": "full of extreme and intense energy",
           "examples": [
             "The furious storm sent trees crashing to the ground and turned the peaceful town into a chaotic mess!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3",
-        "textbookTitle": "龍騰 B3·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "furnish",
       "word": "furnish",
       "senses": [
         {
-          "id": "sense-dcd2bd4b",
-          "pos": "verb",
+          "id": "sense-aef7bb0e",
+          "pos": "v.",
           "meaningZh": "佈置家具；添置傢俱",
-          "definitionEn": "to provide or equip with furniture",
           "examples": [
             "The interior designer will furnish the new house with stylish and comfortable furniture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-49c4abfa",
-          "pos": "verb",
+          "id": "sense-e8364677",
+          "pos": "v.",
           "meaningZh": "提供；供給",
-          "definitionEn": "to give something that is useful or necessary to",
           "examples": [
             "She decided to furnish her new apartment with modern and stylish furniture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "furthermore",
+      "word": "furthermore",
+      "senses": [
+        {
+          "id": "sense-6f5a9ca6",
+          "pos": "adv.",
+          "meaningZh": "此外；而且",
+          "examples": [
+            "He not only received a scholarship but, furthermore, earned the highest score in the entrance exam."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "gallery",
+      "word": "gallery",
+      "senses": [
+        {
+          "id": "sense-da70d715",
+          "pos": "n.",
+          "meaningZh": "藝廊；展覽館",
+          "examples": [
+            "The contemporary art gallery featured an exhibit of mixed media sculptures and installations."
+          ]
+        },
+        {
+          "id": "sense-f9d1f793",
+          "pos": "n.",
+          "meaningZh": "長廊；走廊",
+          "examples": [
+            "The art gallery’s newest exhibit was displayed in a long narrow gallery with dim lighting, allowing the artwork to be the main focus."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "gaze",
+      "word": "gaze",
+      "senses": [
+        {
+          "id": "sense-14c1acde",
+          "pos": "v.",
+          "meaningZh": "凝視；注視",
+          "examples": [
+            "As the fireworks lit up the night sky, everyone gathered on the beach to gaze in awe and wonder."
+          ]
+        },
+        {
+          "id": "sense-f4b88a3f",
+          "pos": "n.",
+          "meaningZh": "注視；凝視的目光",
+          "examples": [
+            "As the bride walked down the aisle, the groom couldn't help but gaze lovingly into her eyes."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "gear",
+      "word": "gear",
+      "senses": [
+        {
+          "id": "sense-28e21aac",
+          "pos": "n.",
+          "meaningZh": "齒輪；傳動裝置",
+          "examples": [
+            "The gearbox rotates the gears to increase the torque and power under the hood of a car."
+          ]
+        },
+        {
+          "id": "sense-fd335eff",
+          "pos": "v.",
+          "meaningZh": "裝齒輪；調整齒輪",
+          "examples": [
+            "Before embarking on a bike ride, it is necessary to gear up by adjusting the bike’s gears and ensuring that the gears are equipped to handle the terrain."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "gender",
+      "word": "gender",
+      "senses": [
+        {
+          "id": "sense-572f47ea",
+          "pos": "n.",
+          "meaningZh": "性別認同；性別",
+          "examples": [
+            "Samantha, who was assigned female at birth, identifies as male. His gender identity is an important part of his overall identity and self-expression."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

@@ -1,13 +1,15 @@
-import type { Question, VocabItem } from './set'
+import type { StudyWord } from './library'
+import type { PracticeQuestion } from './set'
 
-export type PracticeMode = 'quiz' | 'cloze' | 'reading' | 'spelling'
+export type PracticeMode = 'quiz' | 'fillBlank' | 'reading'
 export type SessionStatus = 'in-progress' | 'completed'
 
 export interface SessionEntry {
-  item: VocabItem
-  question?: Question
+  item: StudyWord
+  question?: PracticeQuestion
   originalIndex: number
   readingPassage?: string
+  readingPackId?: string
 }
 
 export interface QuizDraft {
@@ -15,12 +17,7 @@ export interface QuizDraft {
   answered: boolean
 }
 
-export interface SpellingDraft {
-  answer: string
-  submitted: boolean
-}
-
-export type Draft = QuizDraft | SpellingDraft | null
+export type Draft = QuizDraft | null
 
 export interface QuizRecord {
   type: 'quiz'
@@ -31,15 +28,7 @@ export interface QuizRecord {
   skipped: boolean
 }
 
-export interface SpellingRecord {
-  type: 'spelling'
-  userAnswer: string
-  correctAnswer: string
-  isCorrect: boolean
-  skipped: boolean
-}
-
-export type AnswerRecord = QuizRecord | SpellingRecord
+export type AnswerRecord = QuizRecord
 
 export interface PracticeSession {
   sourceSetId: string

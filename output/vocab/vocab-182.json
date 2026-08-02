@@ -1,1395 +1,665 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 182,
   "words": [
-    {
-      "wordKey": "hybrid",
-      "word": "hybrid",
-      "senses": [
-        {
-          "id": "sense-4a10dc89",
-          "pos": "noun",
-          "meaningZh": "雜交生物；混種",
-          "definitionEn": "an organism that is produced by breeding two different types of plants or animals",
-          "examples": [
-            "The liger, a hybrid of a lion and a tiger, possesses both physical and behavioral characteristics of both its parents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-a592caea",
-          "pos": "noun",
-          "meaningZh": "油電混合車；混合動力車",
-          "definitionEn": "a vehicle that uses both electricity and gasoline to power its engine",
-          "examples": [
-            "She decided to purchase a hybrid car as it was better for the environment and saved her money on fuel costs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "hygiene",
-      "word": "hygiene",
-      "senses": [
-        {
-          "id": "sense-dcc2b058",
-          "pos": "noun",
-          "meaningZh": "衛生；個人清潔習慣",
-          "definitionEn": "the practice of keeping oneself and one’s surroundings clean",
-          "examples": [
-            "Good hygiene is necessary for preventing the spread of germs, especially in hospitals and other medical facilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-3866aff0",
-          "pos": "noun",
-          "meaningZh": "衛生學；預防醫學",
-          "definitionEn": "the science concerned with the prevention of illness and the promotion of health",
-          "examples": [
-            "The importance of hygiene cannot be overstated during the COVID-19 pandemic, as proper hand-washing and sanitizing are crucial in preventing the spread of the virus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2",
-        "textbookTitle": "龍騰 B4·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "hypocrite",
-      "word": "hypocrite",
-      "senses": [
-        {
-          "id": "sense-b2aaba53",
-          "pos": "noun",
-          "meaningZh": "偽君子；虛偽的人",
-          "definitionEn": "a person who professes beliefs and opinions that they do not hold, in order to conceal their real feelings or motives; insincere person.",
-          "examples": [
-            "John claimed to be an environmentalist, but he drove a gas guzzling SUV and threw away plastic bottles. He was clearly a hypocrite."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "iceberg",
-      "word": "iceberg",
-      "senses": [
-        {
-          "id": "sense-aafa2b3b",
-          "pos": "noun",
-          "meaningZh": "冰山",
-          "definitionEn": "a very large mass of ice floating in the sea",
-          "examples": [
-            "The ship sank after it struck an iceberg."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-3f6c85af",
-          "pos": "noun",
-          "meaningZh": "結球萵苣；冰山萵苣",
-          "definitionEn": "crisp tightly packed lettuce with leaves in a firm head, often used in salads",
-          "examples": [
-            "For a refreshing summer salad, chop up some iceberg lettuce and toss it with tomatoes, cucumber, and a tangy vinaigrette."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "illuminate",
-      "word": "illuminate",
-      "senses": [
-        {
-          "id": "sense-d00a53a5",
-          "pos": "verb",
-          "meaningZh": "闡明；解說",
-          "definitionEn": "make clear and understandable",
-          "examples": [
-            "The teacher used a visual aid to illuminate the concept for the students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        },
-        {
-          "id": "sense-6f1e524c",
-          "pos": "verb",
-          "meaningZh": "（手稿）彩飾；加插圖裝飾",
-          "definitionEn": "add decoration or artistic features to (a book or manuscript)",
-          "examples": [
-            "The talented artist used gold leaf and vibrant colors to illuminate the pages of the ancient manuscript, bringing the illustrations to life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "imminent",
       "word": "imminent",
       "senses": [
         {
-          "id": "sense-3097d9c7",
-          "pos": "adjective",
+          "id": "sense-f7252c1d",
+          "pos": "adj.",
           "meaningZh": "即將來臨的；迫在眉睫的",
-          "definitionEn": "about to happen; likely to occur soon",
           "examples": [
             "The dark clouds in the sky suggest that a storm is imminent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-80f23d4f",
-          "pos": "adjective",
+          "id": "sense-43652141",
+          "pos": "adj.",
           "meaningZh": "眼前的；近在咫尺的",
-          "definitionEn": "close in time; happening soon",
           "examples": [
             "The thunderstorm clouds suggested that a downpour was imminent."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imperative",
       "word": "imperative",
       "senses": [
         {
-          "id": "sense-cd1e93c3",
-          "pos": "noun",
+          "id": "sense-ae58c6c3",
+          "pos": "n.",
           "meaningZh": "當務之急；必要之事",
-          "definitionEn": "something that needs to be done or given attention immediately",
           "examples": [
             "When a fire alarm goes off, it is imperative to evacuate the building quickly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-ece4dcf8",
-          "pos": "noun",
+          "id": "sense-cd1b2bf8",
+          "pos": "n.",
           "meaningZh": "（文法）祈使語氣",
-          "definitionEn": "the mood of a verb used for giving orders",
           "examples": [
             "Close the door before you leave!"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imperial",
       "word": "imperial",
       "senses": [
         {
-          "id": "sense-553a6fe5",
-          "pos": "adjective",
+          "id": "sense-8fdbaf57",
+          "pos": "adj.",
           "meaningZh": "帝國的；皇室的",
-          "definitionEn": "befitting or belonging to an emperor or empress",
           "examples": [
             "The king’s crown was adorned with imperial jewels that shone brightly in the sun."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e6e8ddb8",
-          "pos": "adjective",
+          "id": "sense-01d1cb32",
+          "pos": "adj.",
           "meaningZh": "英制的；英帝國度量衡的",
-          "definitionEn": "of or belonging to the British Imperial System of weights and measures",
           "examples": [
             "In the imperial system, a gallon is equivalent to 4.546 liters."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "implicit",
       "word": "implicit",
       "senses": [
         {
-          "id": "sense-e3187126",
-          "pos": "adjective",
+          "id": "sense-133f8458",
+          "pos": "adj.",
           "meaningZh": "隱含的；不言而喻的",
-          "definitionEn": "implied but not directly expressed; inherent in the nature of something",
           "examples": [
             "The love between the mother and child was implicit and didn’t require words to express it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-bb61c74d",
-          "pos": "adjective",
+          "id": "sense-3efd2c1b",
+          "pos": "adj.",
           "meaningZh": "絕對的；無保留的",
-          "definitionEn": "being without doubt or reserve",
           "examples": [
             "His implicit trust in the team’s ability to win the game was evident in his exuberant celebration after they scored the winning goal."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imposing",
       "word": "imposing",
       "senses": [
         {
-          "id": "sense-48fbc02f",
-          "pos": "adjective",
+          "id": "sense-2d696bfb",
+          "pos": "adj.",
           "meaningZh": "氣派的；雄偉的",
-          "definitionEn": "impressive in appearance",
           "examples": [
             "The grand entrance of the mansion with its towering columns and ornate details was an imposing sight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-27547a0e",
-          "pos": "adjective",
+          "id": "sense-fc9fce2a",
+          "pos": "adj.",
           "meaningZh": "威嚴的；懾人的",
-          "definitionEn": "used of a person’s appearance or behavior; befitting an eminent person",
           "examples": [
             "Dressed in a sharp suit and exuding confidence, the CEO made an imposing entrance into the boardroom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imprison",
       "word": "imprison",
       "senses": [
         {
-          "id": "sense-6c7f88e0",
-          "pos": "verb",
+          "id": "sense-6b6b9841",
+          "pos": "v.",
           "meaningZh": "監禁；關押",
-          "definitionEn": "lock up or confine, as in a jail",
           "examples": [
             "The judge decided to imprison the criminal for 10 years for his severe actions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4b096110",
-          "pos": "verb",
+          "id": "sense-8f52d545",
+          "pos": "v.",
           "meaningZh": "禁錮；困住",
-          "definitionEn": "confine as if in a prison",
           "examples": [
             "She was imprisoned in her own home for three weeks during the lockdown."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imprisonment",
       "word": "imprisonment",
       "senses": [
         {
-          "id": "sense-5ba6ac81",
-          "pos": "noun",
+          "id": "sense-3b7f3d59",
+          "pos": "n.",
           "meaningZh": "監禁狀態；繫獄",
-          "definitionEn": "the state of being imprisoned",
           "examples": [
             "After being found guilty, the criminal faced a lengthy period of imprisonment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-25097db1",
-          "pos": "noun",
+          "id": "sense-96b7ee69",
+          "pos": "n.",
           "meaningZh": "入獄；判處監禁",
-          "definitionEn": "putting someone in prison or in jail as lawful punishment",
           "examples": [
             "After being found guilty of robbery, the judge sentenced the perpetrator to five years of imprisonment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "incline",
       "word": "incline",
       "senses": [
         {
-          "id": "sense-609d94e6",
-          "pos": "verb",
+          "id": "sense-d5abebd7",
+          "pos": "v.",
           "meaningZh": "傾向於；使傾向",
-          "definitionEn": "to feel or make someone feel willing or likely to do something",
           "examples": [
             "I'm inclined to agree with your suggestion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-886f559b",
-          "pos": "noun",
+          "id": "sense-ba50a93f",
+          "pos": "n.",
           "meaningZh": "斜坡；坡道",
-          "definitionEn": "an inclined surface connecting two levels",
           "examples": [
             "The church was built on an incline which made it difficult for some attendees to walk up the hill to get to the entrance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-4c5d583f",
-          "pos": "noun",
+          "id": "sense-f46dd42b",
+          "pos": "n.",
           "meaningZh": "山坡；坡面",
-          "definitionEn": "an elevated geological formation",
           "examples": [
             "The hikers trekked up the steep incline to reach the mountain’s summit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inclusive",
       "word": "inclusive",
       "senses": [
         {
-          "id": "sense-9f3302fe",
-          "pos": "adjective",
+          "id": "sense-7d4d7d02",
+          "pos": "adj.",
           "meaningZh": "全面的；包羅一切的",
-          "definitionEn": "complete, covering all elements or aspects, or including and allowing all people, ideas, etc.",
           "examples": [
             "Our company has an inclusive hiring policy which welcomes people from diverse backgrounds to apply."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-d54cf696",
-          "pos": "adjective",
+          "id": "sense-3e629a22",
+          "pos": "adj.",
           "meaningZh": "包容的；不排外的",
-          "definitionEn": "tending to include, as opposed to exclusive",
           "examples": [
             "The company’s hiring initiative was inclusive of all races, genders, and backgrounds, and resulted in a diverse and talented workforce."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "incur",
       "word": "incur",
       "senses": [
         {
-          "id": "sense-be330474",
-          "pos": "verb",
+          "id": "sense-39d5eb4f",
+          "pos": "v.",
           "meaningZh": "承擔；招致（損失或責任）",
-          "definitionEn": "become liable to; bring upon oneself; make oneself subject to",
           "examples": [
             "By failing to pay his bills on time, he will incur late fees and damage his credit score."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7dffd985",
-          "pos": "verb",
+          "id": "sense-a180f138",
+          "pos": "v.",
           "meaningZh": "引來；遭受",
-          "definitionEn": "receive a specified treatment (abstract)",
           "examples": [
             "Incur the wrath of your boss by constantly arriving late to work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "indifference",
       "word": "indifference",
       "senses": [
         {
-          "id": "sense-1ac9a6e9",
-          "pos": "noun",
+          "id": "sense-35638cad",
+          "pos": "n.",
           "meaningZh": "冷漠；漠不關心",
-          "definitionEn": "a casual lack of concern; the trait of remaining calm and seeming not to care",
           "examples": [
             "Despite her friends' excitement, Sara showed complete indifference towards the outcome of the game, lounging on the couch and barely glancing at the TV."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-e670f341",
-          "pos": "noun",
+          "id": "sense-7d7016dd",
+          "pos": "n.",
           "meaningZh": "無動於衷；缺乏興趣",
-          "definitionEn": "the trait of lacking enthusiasm or interest in things generally",
           "examples": [
             "Despite all the effort put into the presentation, the audience showed complete indifference by not asking any questions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "indignant",
       "word": "indignant",
       "senses": [
         {
-          "id": "sense-636e0519",
-          "pos": "adjective",
+          "id": "sense-b1cc0495",
+          "pos": "adj.",
           "meaningZh": "憤慨的；義憤填膺的",
-          "definitionEn": "feeling or showing anger or annoyance at what is perceived as unfair treatment",
           "examples": [
             "When the employee discovered he was being paid significantly less than his colleagues for the same work, he became indignant and lodged a formal complaint with human resources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "induce",
       "word": "induce",
       "senses": [
         {
-          "id": "sense-50a73470",
-          "pos": "verb",
+          "id": "sense-4d0ebf4f",
+          "pos": "v.",
           "meaningZh": "誘使；促使（某人做某事）",
-          "definitionEn": "to cause someone to do or feel something, especially something that is bad or unpleasant",
           "examples": [
             "The advertisement that induced me to purchase the product turned out to be a complete lie."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7233aac6",
-          "pos": "verb",
+          "id": "sense-cc0ddb83",
+          "pos": "v.",
           "meaningZh": "引發；導致",
-          "definitionEn": "to cause something to happen or exist",
           "examples": [
             "The doctor suggested a drug to induce sleep."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "industrialize",
       "word": "industrialize",
       "senses": [
         {
-          "id": "sense-aa9e270d",
-          "pos": "verb",
+          "id": "sense-5241cd5e",
+          "pos": "v.",
           "meaningZh": "工業化；發展工業",
-          "definitionEn": "develop industry; become industrial",
           "examples": [
             "After the discovery of oil, the country quickly industrialized and experienced rapid economic growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-cceea07c",
-          "pos": "verb",
+          "id": "sense-f99e5c7f",
+          "pos": "v.",
           "meaningZh": "使工業化；組織成產業",
-          "definitionEn": "organize (the production of something) into an industry",
           "examples": [
             "The government implemented a plan to industrialize the rural area, transforming it into a manufacturing hub and creating numerous job opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "infectious",
       "word": "infectious",
       "senses": [
         {
-          "id": "sense-b25f673c",
-          "pos": "adjective",
+          "id": "sense-3a1fb05e",
+          "pos": "adj.",
           "meaningZh": "容易傳播的；傳染性強的",
-          "definitionEn": "easily spread",
           "examples": [
             "The infectious disease quickly spread through the crowded city, infecting thousands of people within weeks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7a8cf497",
-          "pos": "adjective",
+          "id": "sense-f75e1949",
+          "pos": "adj.",
           "meaningZh": "傳染性的；感染相關的",
-          "definitionEn": "relating to infection",
           "examples": [
             "The outbreak of COVID-19 was incredibly infectious, leading to a rapid increase in cases worldwide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "infer",
       "word": "infer",
       "senses": [
         {
-          "id": "sense-7b9c4ffc",
-          "pos": "verb",
+          "id": "sense-8a134085",
+          "pos": "v.",
           "meaningZh": "推斷；推論",
-          "definitionEn": "to conclude or decide based on evidence or reasoning, especially by deduction",
           "examples": [
             "After noticing the wet umbrella and the puddles on the floor, she could infer that it had been raining outside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-97ec6975",
-          "pos": "verb",
+          "id": "sense-232c53be",
+          "pos": "v.",
           "meaningZh": "推測；以間接証據判斷",
-          "definitionEn": "to make an educated guess; to solve by guessing",
           "examples": [
             "When I saw the empty pizza box on the counter and crumbs on his shirt, I could infer that he had eaten pizza for lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inflict",
       "word": "inflict",
       "senses": [
         {
-          "id": "sense-63075f2d",
-          "pos": "verb",
+          "id": "sense-13289db2",
+          "pos": "v.",
           "meaningZh": "造成（傷害或痛苦）；施加",
-          "definitionEn": "to cause pain or harm to someone or something",
           "examples": [
             "The warrior inflicted a deep wound on his opponent with his sword."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-c860fe15",
-          "pos": "verb",
+          "id": "sense-fc172224",
+          "pos": "v.",
           "meaningZh": "強加（不愉快的事）；使承受",
-          "definitionEn": "to force someone to experience something unpleasant",
           "examples": [
             "The prison guard cruelly inflicted physical pain on the inmates as a form of punishment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inhabit",
       "word": "inhabit",
       "senses": [
         {
-          "id": "sense-e61497b1",
-          "pos": "verb",
+          "id": "sense-96370b6e",
+          "pos": "v.",
           "meaningZh": "居住於；棲居",
-          "definitionEn": "to live in a particular place",
           "examples": [
             "The remote island is uninhabited due to its harsh climate and lack of resources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-34727a3c",
-          "pos": "verb",
+          "id": "sense-dbbfeabb",
+          "pos": "v.",
           "meaningZh": "存在於；棲息（某地）",
-          "definitionEn": "to be present in a place",
           "examples": [
             "Many different species of birds inhabit the lush rainforests of the Amazon."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inhabitant",
       "word": "inhabitant",
       "senses": [
         {
-          "id": "sense-34b8f8f6",
-          "pos": "noun",
+          "id": "sense-e503f492",
+          "pos": "n.",
           "meaningZh": "居民；棲居者",
-          "definitionEn": "a person or animal that lives permanently or temporarily in a particular place",
           "examples": [
             "The city is known for its friendly inhabitants who welcome tourists with open arms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "injustice",
       "word": "injustice",
       "senses": [
         {
-          "id": "sense-91d28914",
-          "pos": "noun",
+          "id": "sense-0d631414",
+          "pos": "n.",
           "meaningZh": "不公平；不公義",
-          "definitionEn": "unfair treatment; lack of justice",
           "examples": [
             "The injustice was evident when the wealthy executive received a shorter prison sentence for the same crime as the impoverished individual."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-df34ec3b",
-          "pos": "noun",
+          "id": "sense-2168953b",
+          "pos": "n.",
           "meaningZh": "不公義行為；不正義之舉",
-          "definitionEn": "an unjust or unfair act or occurrence",
           "examples": [
             "The wrongful conviction of an innocent person is a clear example of injustice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inland",
       "word": "inland",
       "senses": [
         {
-          "id": "sense-348e9035",
-          "pos": "adjective",
+          "id": "sense-7d96b6a1",
+          "pos": "adj.",
           "meaningZh": "內陸的；遠離海岸的",
-          "definitionEn": "located or situated away from a coast or border",
           "examples": [
             "The small town was located inland from the bustling city center."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-fc7a90d1",
-          "pos": "adverb",
+          "id": "sense-741e8734",
+          "pos": "adv.",
           "meaningZh": "向內陸；往內地",
-          "definitionEn": "towards or into the interior of a region",
           "examples": [
             "He decided to leave the crowded coastal cities and move inland to start a new life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "innumerable",
       "word": "innumerable",
       "senses": [
         {
-          "id": "sense-f0d27eba",
-          "pos": "adjective",
+          "id": "sense-4179c02e",
+          "pos": "adj.",
           "meaningZh": "無數的；數不清的",
-          "definitionEn": "too numerous to be counted",
           "examples": [
             "The farmer faced an innumerable amount of tasks, from planting the crops to tending the animals."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "inquire",
       "word": "inquire",
       "senses": [
         {
-          "id": "sense-1c2e4933",
-          "pos": "verb",
+          "id": "sense-764635ba",
+          "pos": "v.",
           "meaningZh": "詢問；查問",
-          "definitionEn": "have a wish or desire to know something",
           "examples": [
             "She decided to inquire about the availability of tickets for the concert."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-53cbe082",
-          "pos": "verb",
+          "id": "sense-90056483",
+          "pos": "v.",
           "meaningZh": "打聽；探詢",
-          "definitionEn": "inquire about",
           "examples": [
             "When planning a vacation to a new city, it's always a good idea to inquire about local attractions and recommendations from residents who know the area well."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "insistence",
       "word": "insistence",
       "senses": [
         {
-          "id": "sense-25b01a1d",
-          "pos": "noun",
+          "id": "sense-a84d7e91",
+          "pos": "n.",
           "meaningZh": "堅持；一再要求",
-          "definitionEn": "the act of insisting on something",
           "examples": [
             "Despite his mother’s insistence that he wear a coat, he refused and went outside in the cold."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         },
         {
-          "id": "sense-7ff8ad53",
-          "pos": "noun",
+          "id": "sense-fdc2137f",
+          "pos": "n.",
           "meaningZh": "強烈主張",
-          "definitionEn": "the state of demanding notice or attention",
           "examples": [
             "Despite her parents’ insistence that she study medicine, Sarah enrolled in an art school."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "instinctive",
       "word": "instinctive",
       "senses": [
         {
-          "id": "sense-1f3fc11e",
-          "pos": "adjective",
+          "id": "sense-26c90d32",
+          "pos": "adj.",
           "meaningZh": "本能的；直覺的",
-          "definitionEn": "arising from a natural tendency; intuitive; unthinking; prompted by (or as if by) instinct",
           "examples": [
             "The baby’s instinctive desire for milk led it to the mother’s breast without any prompting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-6.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "6"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L9",
-        "textbookTitle": "龍騰 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "intake",
+      "word": "intake",
+      "senses": [
+        {
+          "id": "sense-1a924044",
+          "pos": "n.",
+          "meaningZh": "攝取量；吸入量",
+          "examples": [
+            "After a long run, it is important to replenish your intake of water to stay hydrated."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "intellect",
+      "word": "intellect",
+      "senses": [
+        {
+          "id": "sense-eb4cb5bd",
+          "pos": "n.",
+          "meaningZh": "理智；思辨能力",
+          "examples": [
+            "Her intellect helped her solve complex mathematical problems quickly."
+          ]
+        },
+        {
+          "id": "sense-431410b3",
+          "pos": "n.",
+          "meaningZh": "智力；學習能力",
+          "examples": [
+            "His intellect made him excel in his studies, and he easily grasped complex concepts."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "interpreter",
+      "word": "interpreter",
+      "senses": [
+        {
+          "id": "sense-9aeb7d97",
+          "pos": "n.",
+          "meaningZh": "口譯員；翻譯",
+          "examples": [
+            "The United Nations provided interpreters for the meeting so that delegates from different countries could communicate effectively."
+          ]
+        },
+        {
+          "id": "sense-fbd44540",
+          "pos": "n.",
+          "meaningZh": "（電腦）直譯器",
+          "examples": [
+            "The programmer used an interpreter to check whether the newly written code is working correctly or not."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "intersection",
+      "word": "intersection",
+      "senses": [
+        {
+          "id": "sense-6d468965",
+          "pos": "n.",
+          "meaningZh": "交叉路口；交會點",
+          "examples": [
+            "At the intersection, I had to wait for the traffic light to turn green before crossing the road."
+          ]
+        },
+        {
+          "id": "sense-e39bf5bf",
+          "pos": "n.",
+          "meaningZh": "（數學）交集",
+          "examples": [
+            "In the Venn diagram, the intersection between set A and set B consists of the elements that are common to both sets."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "intervene",
+      "word": "intervene",
+      "senses": [
+        {
+          "id": "sense-be0d7a00",
+          "pos": "v.",
+          "meaningZh": "介入；干預",
+          "examples": [
+            "During the heated argument, the teacher intervened to separate the two students and resolve the conflict peacefully."
+          ]
+        },
+        {
+          "id": "sense-ab6f6b74",
+          "pos": "v.",
+          "meaningZh": "調解；斡旋",
+          "examples": [
+            "When my two friends started arguing about which movie to watch, I decided to intervene and suggest a compromise."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

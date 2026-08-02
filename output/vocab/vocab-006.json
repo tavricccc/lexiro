@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 6,
   "words": [
     {
@@ -8,1388 +8,658 @@
       "word": "chance",
       "senses": [
         {
-          "id": "sense-bdaa826c",
-          "pos": "noun",
+          "id": "sense-c86bb330",
+          "pos": "n.",
           "meaningZh": "機率；可能性；運氣",
-          "definitionEn": "an unknown and unpredictable phenomenon that causes an event to result one way rather than another",
           "examples": [
             "There’s a good chance that it will rain tomorrow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "change",
       "word": "change",
       "senses": [
         {
-          "id": "sense-350edc8d",
-          "pos": "verb",
+          "id": "sense-5fcbe12c",
+          "pos": "v.",
           "meaningZh": "改變；轉變",
-          "definitionEn": "to become different, while still maintaining some of the original qualities",
           "examples": [
             "After the renovation, the old house had changed beyond recognition yet still maintained its original charm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ffbe68ad",
-          "pos": "noun",
+          "id": "sense-4ad899c1",
+          "pos": "n.",
           "meaningZh": "變化；改變",
-          "definitionEn": "an event that leads to a difference between states or phases",
           "examples": [
             "The sudden change in weather from sunny to stormy ruined our picnic plans."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cheap",
       "word": "cheap",
       "senses": [
         {
-          "id": "sense-55c0c912",
-          "pos": "adjective",
+          "id": "sense-89b8881c",
+          "pos": "adj.",
           "meaningZh": "便宜的；低廉的",
-          "definitionEn": "charging low prices; inexpensive",
           "examples": [
             "After comparing prices at different stores, she found a cheap pair of jeans on sale."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c1f65e9a",
-          "pos": "adjective",
+          "id": "sense-41691bb4",
+          "pos": "adj.",
           "meaningZh": "劣質的；低劣的",
-          "definitionEn": "of poor quality; inferior",
           "examples": [
             "The knockoff handbag looked cheap with its flimsy material and poorly stitched seams."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "check",
       "word": "check",
       "senses": [
         {
-          "id": "sense-3ec8d870",
-          "pos": "verb",
+          "id": "sense-5639e8ed",
+          "pos": "v.",
           "meaningZh": "查看；確認",
-          "definitionEn": "make sure or investigate",
           "examples": [
             "I need to check my email before I leave the office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5dcfeb1a",
-          "pos": "verb",
+          "id": "sense-5ed883a7",
+          "pos": "v.",
           "meaningZh": "核實；查核",
-          "definitionEn": "confirm or find out with certainty by making an inquiry or other effort",
           "examples": [
             "I need to check my bank account balance before making any purchases."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cheese",
       "word": "cheese",
       "senses": [
         {
-          "id": "sense-deb9c2f5",
-          "pos": "noun",
+          "id": "sense-0845e6cd",
+          "pos": "n.",
           "meaningZh": "起司；乳酪",
-          "definitionEn": "a solid food made from milk",
           "examples": [
             "I topped my pizza with melted cheese."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-60d30b96",
-          "pos": "noun",
+          "id": "sense-72a324ae",
+          "pos": "n.",
           "meaningZh": "起司（食品）",
-          "definitionEn": "a type of food that’s usually yellow or white, made from milk",
           "examples": [
             "I made a delicious grilled cheese sandwich for lunch."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chicken",
       "word": "chicken",
       "senses": [
         {
-          "id": "sense-19c95838",
-          "pos": "noun",
+          "id": "sense-88718590",
+          "pos": "n.",
           "meaningZh": "雞；家禽",
-          "definitionEn": "a domestic fowl bred for its meat or eggs, believed to have originated from the red junglefowl",
           "examples": [
             "My uncle raises chickens in his backyard and sells the eggs to his neighbors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-764df73b",
-          "pos": "noun",
+          "id": "sense-37d67503",
+          "pos": "n.",
           "meaningZh": "雞肉",
-          "definitionEn": "the meat of a chicken, used as food",
           "examples": [
             "My favorite dish is grilled chicken with roasted vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "child",
       "word": "child",
       "senses": [
         {
-          "id": "sense-e2ea0efd",
-          "pos": "noun",
+          "id": "sense-9c0f5c09",
+          "pos": "n.",
           "meaningZh": "兒童；小孩",
-          "definitionEn": "a person from the time of birth until he or she becomes an adult",
           "examples": [
             "The park was filled with laughter and playfulness as the children ran around and swung on the swings."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-170e2c9c",
-          "pos": "noun",
+          "id": "sense-41a51fa8",
+          "pos": "n.",
           "meaningZh": "子女；孩子",
-          "definitionEn": "a son or daughter of any age",
           "examples": [
             "The child played happily in the park with his friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "chocolate",
       "word": "chocolate",
       "senses": [
         {
-          "id": "sense-e13157e4",
-          "pos": "noun",
+          "id": "sense-86476b88",
+          "pos": "n.",
           "meaningZh": "巧克力",
-          "definitionEn": "a food made from roasted and ground cacao beans, often sweetened and used in candy, desserts, and baked goods.",
           "examples": [
             "She baked a delicious chocolate cake for her son’s birthday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ec66c57b",
-          "pos": "noun",
+          "id": "sense-6313d1bf",
+          "pos": "n.",
           "meaningZh": "熱可可；巧克力飲品",
-          "definitionEn": "a beverage made from cocoa powder, milk, and sugar, usually served hot.",
           "examples": [
             "After a long tiring day, I like to unwind by savoring a cup of hot chocolate."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "choice",
       "word": "choice",
       "senses": [
         {
-          "id": "sense-b9a65650",
-          "pos": "noun",
+          "id": "sense-7d3b0f84",
+          "pos": "n.",
           "meaningZh": "選擇；抉擇",
-          "definitionEn": "the act of selecting something",
           "examples": [
             "After carefully weighing the pros and cons, she made the choice to accept the job offer from the prestigious company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d848b306",
-          "pos": "noun",
+          "id": "sense-00adac02",
+          "pos": "n.",
           "meaningZh": "選項；供選擇的事物",
-          "definitionEn": "an option among a number of alternatives",
           "examples": [
             "When it came to deciding what to have for dinner, I had a difficult choice between pizza and sushi."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "choose",
       "word": "choose",
       "senses": [
         {
-          "id": "sense-db648352",
-          "pos": "verb",
+          "id": "sense-13ea1d9b",
+          "pos": "v.",
           "meaningZh": "選擇；挑選",
-          "definitionEn": "to pick out or select from a number of alternatives, typically after careful consideration or deliberation",
           "examples": [
             "After much research, I had to choose between two universities for my graduate program."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a37946d3",
-          "pos": "verb",
+          "id": "sense-48b853a2",
+          "pos": "v.",
           "meaningZh": "偏好；選擇……而非",
-          "definitionEn": "to prefer or opt for one option over another",
           "examples": [
             "I always choose coffee over tea in the morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "church",
       "word": "church",
       "senses": [
         {
-          "id": "sense-117c74e0",
-          "pos": "noun",
+          "id": "sense-cd6bc39c",
+          "pos": "n.",
           "meaningZh": "教堂；禮拜堂",
-          "definitionEn": "a building where Christian religious activities take place",
           "examples": [
             "On Sunday mornings, the congregation gathers at the church for worship and prayer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "circle",
       "word": "circle",
       "senses": [
         {
-          "id": "sense-adc5df18",
-          "pos": "noun",
+          "id": "sense-70d6c55c",
+          "pos": "n.",
           "meaningZh": "圓形；圓",
-          "definitionEn": "a closed shape where all points on its border are equally distant from its center",
           "examples": [
             "The students were asked to draw a circle on the paper by using a compass."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "city",
       "word": "city",
       "senses": [
         {
-          "id": "sense-df4e148d",
-          "pos": "noun",
+          "id": "sense-0bdc52f1",
+          "pos": "n.",
           "meaningZh": "城市；大都市",
-          "definitionEn": "a large and densely populated urban area that may include several independent administrative districts",
           "examples": [
             "New York City is the most populous city in the United States with over 8 million residents."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-79f80ddc",
-          "pos": "noun",
+          "id": "sense-0a3990d0",
+          "pos": "n.",
           "meaningZh": "市；都市",
-          "definitionEn": "a municipality that is densely populated with people",
           "examples": [
             "New York City is a bustling metropolis with a diverse population and many opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "class",
       "word": "class",
       "senses": [
         {
-          "id": "sense-bcc94f16",
-          "pos": "noun",
+          "id": "sense-5b95fb96",
+          "pos": "n.",
           "meaningZh": "班級；課；上課",
-          "definitionEn": "a group of students who are taught together, or a period of teaching",
           "examples": [
             "Our English class starts at nine o'clock every morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-929088ff",
-          "pos": "noun",
+          "id": "sense-a55a967f",
+          "pos": "n.",
           "meaningZh": "類別；種類",
-          "definitionEn": "a collection of things that have something in common",
           "examples": [
             "In this photography class, students learn different techniques for capturing beautiful images."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b93b0243",
-          "pos": "verb",
+          "id": "sense-47b2c51e",
+          "pos": "v.",
           "meaningZh": "分類；歸類",
-          "definitionEn": "to arrange or group things based on similarities or categories",
           "examples": [
             "In the biology class, the teacher asked the students to classify different species of animals based on their habitats."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clean",
       "word": "clean",
       "senses": [
         {
-          "id": "sense-39f036e0",
-          "pos": "adjective",
+          "id": "sense-20bcecb6",
+          "pos": "adj.",
           "meaningZh": "乾淨的；整潔的",
-          "definitionEn": "Free from dirt, dust, or impurities. Example: a clean glass window.",
           "examples": [
             "After hours of scrubbing, the kitchen countertop was finally clean enough to eat off of."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-1c3e3b20",
-          "pos": "adjective",
+          "id": "sense-3048eba2",
+          "pos": "adj.",
           "meaningZh": "無菌的；無污染的",
-          "definitionEn": "Free from bacteria or harmful substances.",
           "examples": [
             "After using public transportation, it is important to clean your hands with soap and water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clear",
       "word": "clear",
       "senses": [
         {
-          "id": "sense-cc1c58d5",
-          "pos": "adjective",
+          "id": "sense-12966c5f",
+          "pos": "adj.",
           "meaningZh": "清晰的；明確的",
-          "definitionEn": "easily understood; not vague or ambiguous",
           "examples": [
             "Please make your instructions more clear, so that anyone can easily follow them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-882c7b65",
-          "pos": "adjective",
+          "id": "sense-83c9423f",
+          "pos": "adj.",
           "meaningZh": "準確的；無誤的",
-          "definitionEn": "accurate and precise; without mistakes or errors",
           "examples": [
             "The instructions for assembling the bookshelf were clear and easy to follow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clerk",
       "word": "clerk",
       "senses": [
         {
-          "id": "sense-13f160fc",
-          "pos": "noun",
+          "id": "sense-6dbb4e08",
+          "pos": "n.",
           "meaningZh": "辦事員；店員；文書人員",
-          "definitionEn": "a person who works in an office or a store and performs administrative or sales duties, such as keeping records, accounts, or answering phones.",
           "examples": [
             "The clerk at the front desk greeted customers with a warm smile and efficiently handled their inquiries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "climb",
       "word": "climb",
       "senses": [
         {
-          "id": "sense-9d5a2e80",
-          "pos": "verb",
+          "id": "sense-61971a35",
+          "pos": "v.",
           "meaningZh": "攀登；爬升",
-          "definitionEn": "to ascend or move upwards with effort or difficulty by using one’s hands and feet",
           "examples": [
             "She had to climb the steep mountain trail to reach the summit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ec39faf7",
-          "pos": "verb",
+          "id": "sense-f4ddac34",
+          "pos": "v.",
           "meaningZh": "（地形）逐漸傾斜上升",
-          "definitionEn": "to slope or incline upwards",
           "examples": [
             "The trail started to climb steeply, making it challenging for hikers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clock",
       "word": "clock",
       "senses": [
         {
-          "id": "sense-ea556df7",
-          "pos": "noun",
+          "id": "sense-3b83e863",
+          "pos": "n.",
           "meaningZh": "時鐘；掛鐘",
-          "definitionEn": "a timepiece that shows the time of day",
           "examples": [
             "I glanced at the clock on the wall and realized I was running late for my appointment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-dbfac4d3",
-          "pos": "verb",
+          "id": "sense-149da74c",
+          "pos": "v.",
           "meaningZh": "重擊；揍",
-          "definitionEn": "to hit or punch someone very hard, causing them to fall or become unconscious",
           "examples": [
             "In the boxing match, the champion delivered a powerful uppercut that clocked his opponent, instantly knocking him out."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "close",
       "word": "close",
       "senses": [
         {
-          "id": "sense-6a4d97ec",
-          "pos": "adjective",
+          "id": "sense-280e1430",
+          "pos": "adj.",
           "meaningZh": "接近的；靠近的",
-          "definitionEn": "at or within a short distance in space or time or having elements near each other",
           "examples": [
             "I live close to the city center. OR The two friends were standing close to each other."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c53617d8",
-          "pos": "adjective",
+          "id": "sense-3bc47a44",
+          "pos": "adj.",
           "meaningZh": "近乎；幾乎達到",
-          "definitionEn": "not far distant in time or space or circumstances; near",
           "examples": [
             "She was very close to getting a job offer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "clothes",
       "word": "clothes",
       "senses": [
         {
-          "id": "sense-a061172e",
-          "pos": "noun",
+          "id": "sense-c9f795fe",
+          "pos": "n.",
           "meaningZh": "衣服；服裝",
-          "definitionEn": "items worn to cover the body",
           "examples": [
             "When going to a job interview, it is important to dress professionally and wear appropriate clothes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cloud",
       "word": "cloud",
       "senses": [
         {
-          "id": "sense-3b5c7c46",
-          "pos": "noun",
+          "id": "sense-f6e7142a",
+          "pos": "n.",
           "meaningZh": "雲；雲朵",
-          "definitionEn": "a white or gray mass of water droplets floating in the sky",
           "examples": [
             "Dark clouds gathered before the storm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6c2361d2",
-          "pos": "verb",
+          "id": "sense-a49a485f",
+          "pos": "v.",
           "meaningZh": "渲染（色彩）；暈染",
-          "definitionEn": "to color or blur with streaks or blotches of different shades",
           "examples": [
             "The artist expertly clouded the canvas, using various shades of blue and purple to create a dreamy and ethereal effect."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "club",
       "word": "club",
       "senses": [
         {
-          "id": "sense-13c3c117",
-          "pos": "noun",
+          "id": "sense-af4d4c93",
+          "pos": "n.",
           "meaningZh": "社團；俱樂部",
-          "definitionEn": "a formal association of people with similar interests",
           "examples": [
             "He joined the hiking club to meet new people who shared his love for the outdoors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b43adf68",
-          "pos": "noun",
+          "id": "sense-e8261c94",
+          "pos": "n.",
           "meaningZh": "（棒球）球隊；球團",
-          "definitionEn": "a team of professional baseball players who play and travel together",
           "examples": [
             "The New York Yankees is one of the most well-known clubs in baseball history."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
-    {
-      "wordKey": "coat",
-      "word": "coat",
-      "senses": [
-        {
-          "id": "sense-b8566479",
-          "pos": "n./v.",
-          "meaningZh": "外套；大衣",
-          "definitionEn": "an outer garment that covers the body from the shoulders down and has sleeves, worn outdoors",
-          "examples": [
-            "As the temperature dropped, Jane reached for her warm woolen coat before going outside."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-84b36784",
-          "pos": "n./v.",
-          "meaningZh": "（表面的）一層塗料；覆蓋層",
-          "definitionEn": "a layer covering something, typically a surface or body part",
-          "examples": [
-            "John put on his thick coat to stay warm in the freezing weather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "coffee",
       "word": "coffee",
       "senses": [
         {
-          "id": "sense-f81fbcbe",
-          "pos": "noun",
+          "id": "sense-a3f903ea",
+          "pos": "n.",
           "meaningZh": "咖啡（飲料）",
-          "definitionEn": "a hot drink made from roasted and ground coffee beans",
           "examples": [
             "I start my day with a hot cup of coffee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7132783b",
-          "pos": "noun",
+          "id": "sense-e1b887f7",
+          "pos": "n.",
           "meaningZh": "咖啡樹；咖啡灌木",
-          "definitionEn": "a small tree or tropical shrub that bears coffee beans, native to Africa and Asia",
           "examples": [
             "The plantation owner took us on a tour of the coffee trees, pointing out the ripe berries that would soon be harvested for roasting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "cold",
       "word": "cold",
       "senses": [
         {
-          "id": "sense-e255129e",
-          "pos": "noun",
+          "id": "sense-e406c20e",
+          "pos": "n.",
           "meaningZh": "寒冷；低溫",
-          "definitionEn": "the absence of heat",
           "examples": [
             "She shivered in the cold winter air, wrapping her scarf tightly around her neck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5f5fb1ff",
-          "pos": "noun",
+          "id": "sense-939633cf",
+          "pos": "n.",
           "meaningZh": "寒意；冷感",
-          "definitionEn": "the sensation produced by low temperatures",
           "examples": [
             "After playing in the snow for hours, the children came inside with rosy cheeks and frozen fingers, seeking warmth from the fireplace to combat the cold."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "collect",
       "word": "collect",
       "senses": [
         {
-          "id": "sense-61a39aa0",
-          "pos": "verb",
+          "id": "sense-db8feb29",
+          "pos": "v.",
           "meaningZh": "收藏；蒐集",
-          "definitionEn": "accumulate as a hobby or for study",
           "examples": [
             "Jane loves to collect vintage stamps from all over the world. She spends hours searching for rare and valuable pieces to add to her collection."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-fa5dfa86",
-          "pos": "verb",
+          "id": "sense-9580dc4b",
+          "pos": "v.",
           "meaningZh": "收集；彙整",
-          "definitionEn": "gather or bring together",
           "examples": [
             "I need to collect all the documents related to the project before the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L7",
-        "textbookTitle": "龍騰 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "color",
       "word": "color",
       "senses": [
         {
-          "id": "sense-98919163",
-          "pos": "noun",
+          "id": "sense-c15ed13b",
+          "pos": "n.",
           "meaningZh": "顏色；色彩",
-          "definitionEn": "a visual characteristic of things that arises from the light they emit, transmit or reflect",
           "examples": [
             "The vibrant colors of the sunset painted the sky with hues of red, orange, and purple."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-366d4b28",
-          "pos": "noun",
+          "id": "sense-9edaa310",
+          "pos": "n.",
           "meaningZh": "色澤；色調",
-          "definitionEn": "the way objects (or light sources) appear to a person in terms of their hue, lightness (or brightness) and saturation",
           "examples": [
             "She painted her bedroom walls in a vibrant shade of blue, adding color and personality to the space."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "come",
       "word": "come",
       "senses": [
         {
-          "id": "sense-e85d1128",
-          "pos": "verb",
+          "id": "sense-2b0b9f83",
+          "pos": "v.",
           "meaningZh": "來；前來",
-          "definitionEn": "move or travel towards something or somebody",
           "examples": [
             "Jessica decided to come to the party despite the bad weather."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4d2a2c6e",
-          "pos": "verb",
+          "id": "sense-df48a1ef",
+          "pos": "v.",
           "meaningZh": "到達；抵達",
-          "definitionEn": "arrive at a destination by progressing or moving",
           "examples": [
             "I will come to your house tomorrow for dinner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "comfortable",
       "word": "comfortable",
       "senses": [
         {
-          "id": "sense-d41aa30b",
-          "pos": "adjective",
+          "id": "sense-cc6b6a9f",
+          "pos": "adj.",
           "meaningZh": "舒適的；舒服的",
-          "definitionEn": "providing physical well-being or relief; cozy or snug (`comfy’ is informal)",
           "examples": [
             "After a long day of hiking, the lodge provided a comfortable place to rest and relax."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e8c75f20",
-          "pos": "adjective",
+          "id": "sense-9eeb00e4",
+          "pos": "adj.",
           "meaningZh": "輕鬆的；令人安心的",
-          "definitionEn": "free from stress or conducive to mental ease; calming and relaxing",
           "examples": [
             "After a long day at work, she settled into her comfortable armchair, sipping a cup of tea and enjoying the peace and quiet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "common",
+      "word": "common",
+      "senses": [
+        {
+          "id": "sense-8e52965d",
+          "pos": "adj.",
+          "meaningZh": "普通的；常見的",
+          "examples": [
+            "It is common for people to celebrate their birthdays with cake."
+          ]
+        },
+        {
+          "id": "sense-8e441e7a",
+          "pos": "n.",
+          "meaningZh": "公共草地；公有地",
+          "examples": [
+            "During the summer, the local residents gather at the common to have picnics and play outdoor games."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

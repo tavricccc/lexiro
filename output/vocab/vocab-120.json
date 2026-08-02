@@ -1,1340 +1,647 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 120,
   "words": [
-    {
-      "wordKey": "magnificent",
-      "word": "magnificent",
-      "senses": [
-        {
-          "id": "sense-56343896",
-          "pos": "adjective",
-          "meaningZh": "雄偉的；壯觀的",
-          "definitionEn": "grand and impressive; characterized by grandeur",
-          "examples": [
-            "The Taj Mahal in India is a magnificent example of Mughal architecture, with its intricate carvings and beautiful marble façade."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-65754591",
-          "pos": "adjective",
-          "meaningZh": "精美的；出色卓越的",
-          "definitionEn": "outstandingly beautiful or artistic",
-          "examples": [
-            "The Mona Lisa painting is a magnificent work of art, admired by millions of people worldwide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L5",
-        "textbookTitle": "龍騰 B3·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "makeup",
-      "word": "makeup",
-      "senses": [
-        {
-          "id": "sense-888aae7f",
-          "pos": "noun",
-          "meaningZh": "化妝品；妝容",
-          "definitionEn": "cosmetics applied to the face to improve or change one’s appearance",
-          "examples": [
-            "For her graduation ceremony, Joanne put on makeup that transformed her from a fresh-faced girl to a glamorous young woman."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-a713b0f1",
-          "pos": "noun",
-          "meaningZh": "補辦的活動；補考；補場",
-          "definitionEn": "an event or item that is substituted for a previously cancelled event or item",
-          "examples": [
-            "The concert was cancelled due to bad weather, but a makeup concert was scheduled for next week."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "manual",
-      "word": "manual",
-      "senses": [
-        {
-          "id": "sense-3bbbd7b0",
-          "pos": "noun",
-          "meaningZh": "手冊；操作說明書",
-          "definitionEn": "a small handbook",
-          "examples": [
-            "The new employee was given a manual that contained all the company policies and procedures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "manufacture",
-      "word": "manufacture",
-      "senses": [
-        {
-          "id": "sense-b2d49770",
-          "pos": "noun",
-          "meaningZh": "製造業；生產活動",
-          "definitionEn": "the organized action of making goods and services for sale",
-          "examples": [
-            "The local factory’s primary focus is to manufacture high-quality automobile parts for export."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-436e06af",
-          "pos": "noun",
-          "meaningZh": "製造過程；加工生產",
-          "definitionEn": "the act of making something (a product) from raw materials",
-          "examples": [
-            "The automobile company has a large factory where they manufacture their vehicles from raw steel and plastic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +1",
-        "textbookTitle": "龍騰 B3·R3、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "manufacturer",
-      "word": "manufacturer",
-      "senses": [
-        {
-          "id": "sense-496f7707",
-          "pos": "noun",
-          "meaningZh": "製造者；生產者",
-          "definitionEn": "someone who manufactures something",
-          "examples": [
-            "The manufacturer produced thousands of cars each month."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-215aa556",
-          "pos": "noun",
-          "meaningZh": "製造商；廠商",
-          "definitionEn": "a business engaged in manufacturing some product",
-          "examples": [
-            "The manufacturer produces high-quality automobiles at competitive prices."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3 +1",
-        "textbookTitle": "龍騰 B3·R3、三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "marathon",
       "word": "marathon",
       "senses": [
         {
-          "id": "sense-f7cc0580",
-          "pos": "noun",
+          "id": "sense-da1306d0",
+          "pos": "n.",
           "meaningZh": "馬拉松賽跑（42.195公里）",
-          "definitionEn": "a foot race of 26 miles and 385 yards",
           "examples": [
             "John trained for months to compete in his first marathon, crossing the finish line after hours of running."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-25f0cc04",
-          "pos": "noun",
+          "id": "sense-06d0b274",
+          "pos": "n.",
           "meaningZh": "漫長艱辛的任務；馬拉松式考驗",
-          "definitionEn": "any long and arduous undertaking",
           "examples": [
             "Preparing for and completing a doctoral degree can be compared to running a marathon - it requires years of dedicated effort and perseverance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "margin",
       "word": "margin",
       "senses": [
         {
-          "id": "sense-6e3dadc8",
-          "pos": "noun",
+          "id": "sense-0ff0ef98",
+          "pos": "n.",
           "meaningZh": "邊界；頁邊空白",
-          "definitionEn": "the boundary line or the area immediately inside the boundary",
           "examples": [
             "The text should not extend beyond the left margin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f5b9285e",
-          "pos": "noun",
+          "id": "sense-22e4eeee",
+          "pos": "n.",
           "meaningZh": "利潤；毛利（財務）",
-          "definitionEn": "(finance) the net sales minus the cost of goods and services sold",
           "examples": [
             "The company’s profit margin was quite high this quarter, as they were able to increase their sales and streamline their manufacturing process."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "maturity",
       "word": "maturity",
       "senses": [
         {
-          "id": "sense-fc2df128",
-          "pos": "noun",
+          "id": "sense-bc3f70ac",
+          "pos": "n.",
           "meaningZh": "成熟；成年",
-          "definitionEn": "the state or quality of being fully grown or developed",
           "examples": [
             "A prime example of maturity is when a person takes responsibility for their actions and learns from their mistakes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1077c89f",
-          "pos": "noun",
+          "id": "sense-80c77de3",
+          "pos": "n.",
           "meaningZh": "成熟期；心智成熟",
-          "definitionEn": "a stage reached after a period of growth during which physical changes become stabilized and mental functions reach adult levels of adaptation and responsibility",
           "examples": [
             "As he entered his 20s, John started displaying maturity by taking on more responsibilities and making thoughtful decisions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "maximum",
       "word": "maximum",
       "senses": [
         {
-          "id": "sense-821302ca",
-          "pos": "noun",
+          "id": "sense-348698be",
+          "pos": "n.",
           "meaningZh": "最大值；最高量",
-          "definitionEn": "the greatest possible quantity or degree",
           "examples": [
             "The maximum number of guests allowed in the conference room is 30."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e0824402",
-          "pos": "adjective",
+          "id": "sense-31dc4356",
+          "pos": "adj.",
           "meaningZh": "最大的；最高的",
-          "definitionEn": "being the greatest or highest possible in degree or amount",
           "examples": [
             "The maximum speed limit on this road is 60 miles per hour."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "measurable",
       "word": "measurable",
       "senses": [
         {
-          "id": "sense-5ff20e76",
-          "pos": "adjective",
+          "id": "sense-4d62fc5c",
+          "pos": "adj.",
           "meaningZh": "可測量的；可量化的",
-          "definitionEn": "able to be measured",
           "examples": [
             "The success of the marketing campaign was measurable by the increase in sales."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-87878c7e",
-          "pos": "adjective",
+          "id": "sense-1cc7a600",
+          "pos": "adj.",
           "meaningZh": "有具體數值的；可評估的",
-          "definitionEn": "having a quantifiable size or value",
           "examples": [
             "The success of the company’s marketing campaign was measurable in terms of the increase in sales and website traffic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L8",
-        "textbookTitle": "龍騰 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "measures",
       "word": "measures",
       "senses": [
         {
-          "id": "sense-988880a9",
-          "pos": "noun",
+          "id": "sense-95131e61",
+          "pos": "n.",
           "meaningZh": "措施；對策",
-          "definitionEn": "official actions taken to deal with a problem",
           "examples": [
             "The government took strong measures to control the disease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d50f11f6",
-          "pos": "noun",
+          "id": "sense-c21141be",
+          "pos": "n.",
           "meaningZh": "計量單位；標準尺度",
-          "definitionEn": "a standard or unit used for measuring",
           "examples": [
             "In order to determine the length of the room, the carpenter used a tape measure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mechanic",
       "word": "mechanic",
       "senses": [
         {
-          "id": "sense-394634b7",
-          "pos": "noun",
+          "id": "sense-9f0bc317",
+          "pos": "n.",
           "meaningZh": "機械師；修車技工",
-          "definitionEn": "a craftsman skilled in operating machine tools",
           "examples": [
             "The mechanic fixed the broken engine part and got the car running again."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L7",
-        "textbookTitle": "翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mechanical",
       "word": "mechanical",
       "senses": [
         {
-          "id": "sense-57c6a065",
-          "pos": "adjective",
+          "id": "sense-42255327",
+          "pos": "adj.",
           "meaningZh": "機械的；機器操作的",
-          "definitionEn": "related to or operated by machines, tools, or devices",
           "examples": [
             "The factory had a mechanical system for sorting and packaging the products."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-33fc8dea",
-          "pos": "adjective",
+          "id": "sense-d42cbb20",
+          "pos": "adj.",
           "meaningZh": "機械性的；涉及機器的",
-          "definitionEn": "relating to machinery or tools, in particular",
           "examples": [
             "The mechanical failure of the engine caused the plane to crash."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L7",
-        "textbookTitle": "翰林 B1·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "memorable",
       "word": "memorable",
       "senses": [
         {
-          "id": "sense-6d0a0b44",
-          "pos": "adjective",
+          "id": "sense-371ef008",
+          "pos": "adj.",
           "meaningZh": "難忘的；值得紀念的",
-          "definitionEn": "worth remembering; notable or remarkable",
           "examples": [
             "The graduation ceremony was a memorable event that will be cherished forever."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1",
-        "textbookTitle": "龍騰 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "memorial",
       "word": "memorial",
       "senses": [
         {
-          "id": "sense-a112d60c",
-          "pos": "noun",
+          "id": "sense-58d1e82c",
+          "pos": "n.",
           "meaningZh": "紀念碑；紀念建築",
-          "definitionEn": "a structure built to honor and remember a person or an important event",
           "examples": [
             "The Lincoln Memorial was built in Washington D.C. to honor the 16th President of United States, Abraham Lincoln."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6fca7c75",
-          "pos": "adjective",
+          "id": "sense-d7344ff9",
+          "pos": "adj.",
           "meaningZh": "紀念的；追悼的",
-          "definitionEn": "related to remembering someone or something",
           "examples": [
             "The memorial service was held in honor of the soldiers who lost their lives in the war."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L6",
-        "textbookTitle": "龍騰 B5·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "memorize",
       "word": "memorize",
       "senses": [
         {
-          "id": "sense-9a49b441",
-          "pos": "verb",
+          "id": "sense-f4927168",
+          "pos": "v.",
           "meaningZh": "記憶；背誦",
-          "definitionEn": "to commit to memory; to learn by heart",
           "examples": [
             "In order to pass the spelling bee, she had to memorize all the words on the list."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1 +1",
-        "textbookTitle": "龍騰 B1·L1、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "merchant",
       "word": "merchant",
       "senses": [
         {
-          "id": "sense-83d1f081",
-          "pos": "noun",
+          "id": "sense-1fc8435d",
+          "pos": "n.",
           "meaningZh": "商人；批發商",
-          "definitionEn": "a person who buys and sells goods, especially in large amounts",
           "examples": [
             "My uncle is a successful merchant who imports goods from China and sells them in his store."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mercy",
       "word": "mercy",
       "senses": [
         {
-          "id": "sense-c20f27a1",
-          "pos": "noun",
+          "id": "sense-c9d3b091",
+          "pos": "n.",
           "meaningZh": "憐憫；慈悲",
-          "definitionEn": "the feeling that motivates compassion",
           "examples": [
             "When the weary traveler arrived at the doorstep, drenched from the pounding rain, the kind innkeeper took pity and offered them a warm and dry room for the night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-764134aa",
-          "pos": "noun",
+          "id": "sense-2edbfb7a",
+          "pos": "n.",
           "meaningZh": "寬容；仁慈（司法）",
-          "definitionEn": "leniency and compassion shown toward offenders by a person or agency charged with administering justice",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8 +1",
-        "textbookTitle": "龍騰 B3·L8、三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mere",
       "word": "mere",
       "senses": [
         {
-          "id": "sense-ff14cb84",
-          "pos": "adjective",
+          "id": "sense-e909748a",
+          "pos": "adj.",
           "meaningZh": "僅僅；不過是",
-          "definitionEn": "nothing more than; nothing more important than",
           "examples": [
             "Her criticism was a mere distraction from the main issue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e4c7fd31",
-          "pos": "adjective",
+          "id": "sense-1cc685d7",
+          "pos": "adj.",
           "meaningZh": "只不過；單純的",
-          "definitionEn": "only; just",
           "examples": [
             "He is not a friend, he is a mere acquaintance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6",
-        "textbookTitle": "龍騰 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "merit",
       "word": "merit",
       "senses": [
         {
-          "id": "sense-2a679e96",
-          "pos": "noun",
+          "id": "sense-5dfcb4f2",
+          "pos": "n.",
           "meaningZh": "功績；值得稱讚之處",
-          "definitionEn": "the quality of being deserving or worthy of praise or reward",
           "examples": [
             "Receiving a promotion after consistently producing high-quality work demonstrates the employee's merit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7da8713f",
-          "pos": "noun",
+          "id": "sense-a354a81b",
+          "pos": "n.",
           "meaningZh": "優點；長處",
-          "definitionEn": "a praiseworthy quality, trait, or characteristic",
           "examples": [
             "The candidate's extensive work experience and excellent problem-solving skills are clear merits that make him an ideal fit for the job."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "messenger",
       "word": "messenger",
       "senses": [
         {
-          "id": "sense-cba26c11",
-          "pos": "noun",
+          "id": "sense-cedf6919",
+          "pos": "n.",
           "meaningZh": "信使；傳遞者",
-          "definitionEn": "a person who carries a message",
           "examples": [
             "The messenger rushed to deliver the urgent message to the boss before the deadline."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-7a7e6857",
-          "pos": "noun",
+          "id": "sense-65f678ff",
+          "pos": "n.",
           "meaningZh": "通訊軟體；即時通",
-          "definitionEn": "a service or application that facilitates communication or delivery of messages between people or systems",
           "examples": [
             "She uses a messenger app on her phone to chat with her friends in different countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "messy",
       "word": "messy",
       "senses": [
         {
-          "id": "sense-545a6885",
-          "pos": "adjective",
+          "id": "sense-17b11d2f",
+          "pos": "adj.",
           "meaningZh": "凌亂的；不整潔的",
-          "definitionEn": "characterized by a lack of organization or neatness",
           "examples": [
             "Her room was so messy that she couldn’t find her favorite shirt among the piles of clothes on the floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-fb423831",
-          "pos": "adjective",
+          "id": "sense-95f0ced3",
+          "pos": "adj.",
           "meaningZh": "邋遢的；容易弄髒的",
-          "definitionEn": "causing a mess; untidy; sloppy",
           "examples": [
             "When she cooks, she always leaves the kitchen messy with food scraps all over the counter and dirty dishes in the sink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L9",
-        "textbookTitle": "龍騰 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "microscope",
       "word": "microscope",
       "senses": [
         {
-          "id": "sense-96cc3bc3",
-          "pos": "noun",
+          "id": "sense-42462bff",
+          "pos": "n.",
           "meaningZh": "顯微鏡",
-          "definitionEn": "A device used to magnify small objects, allowing them to be seen in greater detail.",
           "examples": [
             "The biologist examined the specimen under the microscope to study its intricate cellular structure."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mild",
       "word": "mild",
       "senses": [
         {
-          "id": "sense-9f9c330d",
-          "pos": "adjective",
+          "id": "sense-aa927dc9",
+          "pos": "adj.",
           "meaningZh": "溫和的；溫暖的",
-          "definitionEn": "not harsh or severe, gentle or temperate",
           "examples": [
             "The sun felt mild on her skin as she relaxed on the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a3c4a34e",
-          "pos": "adjective",
+          "id": "sense-aa8816ea",
+          "pos": "adj.",
           "meaningZh": "口味清淡的；微辣的",
-          "definitionEn": "pleasant and not strongly flavoured",
           "examples": [
             "The mild salsa added just a hint of heat to the dish, allowing the other flavors to shine through."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mill",
       "word": "mill",
       "senses": [
         {
-          "id": "sense-87e02c17",
-          "pos": "noun",
+          "id": "sense-bd2784e7",
+          "pos": "n.",
           "meaningZh": "磨坊；工廠",
-          "definitionEn": "a building with machinery for grinding grain or making materials",
           "examples": [
             "The old flour mill by the river is now a museum."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-23e8b248",
-          "pos": "verb",
+          "id": "sense-5a0d767d",
+          "pos": "v.",
           "meaningZh": "亂繞；聚集擁擠",
-          "definitionEn": "to move around in a confused manner",
           "examples": [
             "After the concert ended, the crowd began to mill around, searching for their friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "millionaire",
       "word": "millionaire",
       "senses": [
         {
-          "id": "sense-7df126b8",
-          "pos": "noun",
+          "id": "sense-fa1c0cf0",
+          "pos": "n.",
           "meaningZh": "百萬富翁；富豪",
-          "definitionEn": "a person who has money or property worth at least a million dollars or who earns at least a million dollars in annual income",
           "examples": [
             "John, a successful entrepreneur, became a millionaire after selling his tech startup for a high price."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "miner",
       "word": "miner",
       "senses": [
         {
-          "id": "sense-071b7cd6",
-          "pos": "noun",
+          "id": "sense-0078581e",
+          "pos": "n.",
           "meaningZh": "礦工；採礦工人",
-          "definitionEn": "A worker who is employed in a mine, who extracts minerals or other valuable substances from the earth through excavation.",
           "examples": [
             "The miner descended into the dark depths of the mine, armed with his pickaxe and helmet."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6",
-        "textbookTitle": "龍騰 B3·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "mineral",
       "word": "mineral",
       "senses": [
         {
-          "id": "sense-8ef81932",
-          "pos": "noun",
+          "id": "sense-3e467dae",
+          "pos": "n.",
           "meaningZh": "礦物；礦石",
-          "definitionEn": "A solid, naturally occurring substance that has a definite chemical composition and a crystalline structure.",
           "examples": [
             "The silver mine contained an abundance of valuable minerals including silver, gold and copper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-77b99ee3",
-          "pos": "adjective",
+          "id": "sense-c19465f7",
+          "pos": "adj.",
           "meaningZh": "礦物的；礦物質的",
-          "definitionEn": "Relating to minerals.",
           "examples": [
             "The mineral content of the soil was too low for the plants to grow properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "minimum",
       "word": "minimum",
       "senses": [
         {
-          "id": "sense-905f41fa",
-          "pos": "noun",
+          "id": "sense-b5b6ca5a",
+          "pos": "n.",
           "meaningZh": "最小量；最低限度",
-          "definitionEn": "the smallest possible quantity",
           "examples": [
             "The rental period is a minimum of two days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-c101b2bc",
-          "pos": "adjective",
+          "id": "sense-6e0d6ed0",
+          "pos": "adj.",
           "meaningZh": "最少的；最低的",
-          "definitionEn": "the least possible",
           "examples": [
             "He needed a minimum of six hours of sleep to function properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "minister",
       "word": "minister",
       "senses": [
         {
-          "id": "sense-fb937e68",
-          "pos": "noun",
+          "id": "sense-36dcb724",
+          "pos": "n.",
           "meaningZh": "部長；閣員",
-          "definitionEn": "a person appointed to a high office in the government",
           "examples": [
             "The Prime Minister is the head of government in Canada."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e1e92361",
-          "pos": "noun",
+          "id": "sense-a114475d",
+          "pos": "n.",
           "meaningZh": "外交使節；公使",
-          "definitionEn": "a diplomat representing one government to another; ranks below ambassador",
           "examples": [
             "The newly appointed minister of foreign affairs presented his credentials to the president of the host country."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "ministry",
+      "word": "ministry",
+      "senses": [
+        {
+          "id": "sense-3ce858b0",
+          "pos": "n.",
+          "meaningZh": "（政府的）部；部會",
+          "examples": [
+            "The Ministry of Education announced a new policy for schools."
+          ]
+        },
+        {
+          "id": "sense-ca613293",
+          "pos": "n.",
+          "meaningZh": "宗教事業；牧師職務",
+          "examples": [
+            "The ministry of the local church involves leading worship services, performing sacraments, and providing spiritual guidance to the congregation."
+          ]
+        },
+        {
+          "id": "sense-3301fbdf",
+          "pos": "n.",
+          "meaningZh": "教牧團體；神職人員",
+          "examples": [
+            "The ministry of the Presbyterian church gathered for weekly meetings to discuss community outreach projects and provide spiritual support to their congregation."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "mischief",
+      "word": "mischief",
+      "senses": [
+        {
+          "id": "sense-52294047",
+          "pos": "n.",
+          "meaningZh": "惡作劇；調皮搗蛋",
+          "examples": [
+            "The children created mischief in the classroom by throwing pencils, spilling paint and shouting loudly."
+          ]
+        },
+        {
+          "id": "sense-51803209",
+          "pos": "n.",
+          "meaningZh": "危害性；惡意",
+          "examples": [
+            "The little boy got into mischief when he broke the vase with his baseball, causing his parents to be upset and angry."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "miserable",
+      "word": "miserable",
+      "senses": [
+        {
+          "id": "sense-79078b2a",
+          "pos": "adj.",
+          "meaningZh": "悲慘的；痛苦的",
+          "examples": [
+            "After losing his job and going through a difficult breakup, he felt utterly miserable."
+          ]
+        },
+        {
+          "id": "sense-8cc980d5",
+          "pos": "adj.",
+          "meaningZh": "可憐的；令人同情的",
+          "examples": [
+            "After losing his job and going through a messy divorce, John found himself living on the streets, his miserable state drawing the compassion of passersby."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "misfortune",
+      "word": "misfortune",
+      "senses": [
+        {
+          "id": "sense-13aa1534",
+          "pos": "n.",
+          "meaningZh": "不幸；厄運",
+          "examples": [
+            "After losing his job, John suffered a series of misfortunes; his car broke down, he got robbed, and even his beloved dog passed away."
+          ]
+        },
+        {
+          "id": "sense-50c6f614",
+          "pos": "n.",
+          "meaningZh": "倒楣；逆境",
+          "examples": [
+            "The misfortune of losing her job caused her to fall into debt."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "mislead",
+      "word": "mislead",
+      "senses": [
+        {
+          "id": "sense-dccfd1ec",
+          "pos": "v.",
+          "meaningZh": "誤導；欺騙",
+          "examples": [
+            "The con artist used his charm and smooth talking to mislead unsuspecting victims into investing in a fake business."
+          ]
+        },
+        {
+          "id": "sense-fc15815e",
+          "pos": "v.",
+          "meaningZh": "給予錯誤訊息；使產生誤解",
+          "examples": [
+            "The salesman intentionally mislead the customer by promising a warranty that didn't actually exist."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

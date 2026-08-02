@@ -1,1380 +1,655 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 127,
   "words": [
-    {
-      "wordKey": "registration",
-      "word": "registration",
-      "senses": [
-        {
-          "id": "sense-d3a86a9e",
-          "pos": "noun",
-          "meaningZh": "報名；登記；註冊",
-          "definitionEn": "the act of enrolling or signing up for something.",
-          "examples": [
-            "John completed his registration for the conference online, providing all the necessary information and payment details."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-45da8ff4",
-          "pos": "noun",
-          "meaningZh": "同期報名人數；同期登記群體",
-          "definitionEn": "the group of people (such as students) who register or enrol at the same time.",
-          "examples": [
-            "During freshman orientation, the registration consisted of hundreds of new students eagerly signing up for their classes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "regulate",
-      "word": "regulate",
-      "senses": [
-        {
-          "id": "sense-472a048a",
-          "pos": "verb",
-          "meaningZh": "管制；規範",
-          "definitionEn": "to put rules and controls in place in order to ensure that something is done or made to a certain standard.",
-          "examples": [
-            "The government should regulate the food industry to ensure food safety and quality standards are met."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-bd47d7d4",
-          "pos": "verb",
-          "meaningZh": "調節；控制",
-          "definitionEn": "to direct or influence the way something happens or how someone behaves.",
-          "examples": [
-            "The teacher uses a timer to regulate the length of each student's presentation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3",
-        "textbookTitle": "龍騰 B3·R3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "regulation",
-      "word": "regulation",
-      "senses": [
-        {
-          "id": "sense-4797c2f5",
-          "pos": "noun",
-          "meaningZh": "規定；法規",
-          "definitionEn": "an authoritative rule",
-          "examples": [
-            "The school has implemented strict regulations regarding dress code for all students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-ca6c82e1",
-          "pos": "noun",
-          "meaningZh": "管理；統一規範",
-          "definitionEn": "the act of bringing to uniformity; making regular",
-          "examples": [
-            "The government implemented new regulations on how companies handle personal data, in order to protect people’s privacy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·R3",
-        "textbookTitle": "龍騰 B3·R3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "rejection",
-      "word": "rejection",
-      "senses": [
-        {
-          "id": "sense-aa09bc7f",
-          "pos": "noun",
-          "meaningZh": "拒絕；回絕",
-          "definitionEn": "the act of rejecting something, or refusing to accept or consider something",
-          "examples": [
-            "After receiving numerous rejection letters, she finally landed her dream job."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-b8d7c22a",
-          "pos": "noun",
-          "meaningZh": "被拒的狀態；遭拒",
-          "definitionEn": "the state of being rejected, or being turned down or dismissed",
-          "examples": [
-            "After months of waiting, she received yet another rejection letter from the job she had applied to."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3",
-        "textbookTitle": "三民 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "relaxation",
-      "word": "relaxation",
-      "senses": [
-        {
-          "id": "sense-d75599e7",
-          "pos": "noun",
-          "meaningZh": "休息；放鬆",
-          "definitionEn": "Freedom from activity, work, strain, or responsibility.",
-          "examples": [
-            "After a long week of exams and deadlines, she decided to book a weekend getaway to a spa for some much-needed relaxation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-2986be34",
-          "pos": "noun",
-          "meaningZh": "輕鬆；無壓力感",
-          "definitionEn": "A feeling of refreshing tranquility and an absence of tension or worry.",
-          "examples": [
-            "After a long week of work, she decided to treat herself to a day at the spa for some much-needed relaxation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "relevant",
       "word": "relevant",
       "senses": [
         {
-          "id": "sense-56174a4d",
-          "pos": "adjective",
+          "id": "sense-df36c5c3",
+          "pos": "adj.",
           "meaningZh": "相關的；切題的",
-          "definitionEn": "related or applicable to the matter at hand.",
           "examples": [
             "During a job interview, it is crucial to provide relevant examples of your previous work experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "relieve",
       "word": "relieve",
       "senses": [
         {
-          "id": "sense-7b88dd92",
-          "pos": "verb",
+          "id": "sense-7623bc17",
+          "pos": "v.",
           "meaningZh": "紓解；改善",
-          "definitionEn": "to take action to improve a difficult situation",
           "examples": [
             "The company hired extra staff to relieve the workload during the busy season."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4b0fb19c",
-          "pos": "verb",
+          "id": "sense-528ae659",
+          "pos": "v.",
           "meaningZh": "減輕；緩和",
-          "definitionEn": "to remove or lessen the intensity of pain or discomfort",
           "examples": [
             "After a long day at work, a hot bath can relieve muscle tension and help you relax."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3 +1",
-        "textbookTitle": "龍騰 B4·L3、三民 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reluctant",
       "word": "reluctant",
       "senses": [
         {
-          "id": "sense-6545c789",
-          "pos": "adjective",
+          "id": "sense-25fde4c5",
+          "pos": "adj.",
           "meaningZh": "不情願的；勉強的",
-          "definitionEn": "unwilling to do something contrary to your custom",
           "examples": [
             "Even though she was a picky eater, she was reluctant to try sushi for the first time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f54fb457",
-          "pos": "adjective",
+          "id": "sense-58583f7b",
+          "pos": "adj.",
           "meaningZh": "猶豫的；不願介入的",
-          "definitionEn": "disinclined to become involved",
           "examples": [
             "After being asked several times to volunteer at the charity event, she finally agreed, albeit reluctantly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3",
-        "textbookTitle": "三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "remark",
       "word": "remark",
       "senses": [
         {
-          "id": "sense-29c1a908",
-          "pos": "noun",
+          "id": "sense-e76deffc",
+          "pos": "n.",
           "meaningZh": "評語；看法；言論",
-          "definitionEn": "a statement that expresses a personal opinion or belief or adds information",
           "examples": [
             "After the movie, James made a remark about the poor special effects."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-bf09af56",
-          "pos": "noun",
+          "id": "sense-d63a046a",
+          "pos": "n.",
           "meaningZh": "注意；評論",
-          "definitionEn": "explicit notice",
           "examples": [
             "She did not make any remark about his new haircut."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L10",
-        "textbookTitle": "三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "remarkable",
       "word": "remarkable",
       "senses": [
         {
-          "id": "sense-cb42d5a9",
-          "pos": "adjective",
+          "id": "sense-8dd650cd",
+          "pos": "adj.",
           "meaningZh": "值得注意的；出色的",
-          "definitionEn": "worthy of notice",
           "examples": [
             "The musician's performance was truly remarkable, leaving the audience in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-00048f5e",
-          "pos": "adjective",
+          "id": "sense-081d9d22",
+          "pos": "adj.",
           "meaningZh": "非凡的；驚人的",
-          "definitionEn": "unusual or striking",
           "examples": [
             "The acrobat's performance was truly remarkable, with death-defying stunts that left the audience in awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L6 +1",
-        "textbookTitle": "龍騰 B3·L6、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "remedy",
       "word": "remedy",
       "senses": [
         {
-          "id": "sense-77efaca5",
-          "pos": "noun",
+          "id": "sense-19214be9",
+          "pos": "n.",
           "meaningZh": "藥物；療法；治療",
-          "definitionEn": "a medicine or therapy that cures a disease or relieves pain",
           "examples": [
             "After suffering from a severe headache, she took a painkiller as a remedy and felt instant relief."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9bba2931",
-          "pos": "noun",
+          "id": "sense-3f84732d",
+          "pos": "n.",
           "meaningZh": "補救措施；糾正方法",
-          "definitionEn": "the act of correcting an error, fault, or evil",
           "examples": [
             "After the data breach, the company took immediate action to remedy the situation by strengthening their cybersecurity measures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L6",
-        "textbookTitle": "三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "renew",
       "word": "renew",
       "senses": [
         {
-          "id": "sense-5f70b22a",
-          "pos": "verb",
+          "id": "sense-9def4f0d",
+          "pos": "v.",
           "meaningZh": "更新；使煥然一新",
-          "definitionEn": "make new or like new; restore to freshness, vigor, or perfection",
           "examples": [
             "After spending an hour at the spa, I felt renewed and revitalized."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-43312410",
-          "pos": "verb",
+          "id": "sense-c5b73379",
+          "pos": "v.",
           "meaningZh": "重新振作；重振",
-          "definitionEn": "cause something to become new or different again; reestablish on a new, usually improved, basis",
           "examples": [
             "After a long day at work, I decided to renew my energy by going for a run in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "repetition",
       "word": "repetition",
       "senses": [
         {
-          "id": "sense-b1cae702",
-          "pos": "noun",
+          "id": "sense-b06ee78e",
+          "pos": "n.",
           "meaningZh": "重複；反覆練習",
-          "definitionEn": "the act of repeating something that has already been said or done",
           "examples": [
             "The coach instructed the team to practice the play again and again until they got it right, emphasizing the importance of repetition in mastering the skill."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-615feb29",
-          "pos": "noun",
+          "id": "sense-1f668d05",
+          "pos": "n.",
           "meaningZh": "重複出現；循環",
-          "definitionEn": "the repeated occurrence of something",
           "examples": [
             "The band’s performance was marked by the repetition of the chorus which made the audience clap and sing along."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "representation",
       "word": "representation",
       "senses": [
         {
-          "id": "sense-56bcb6a5",
-          "pos": "noun",
+          "id": "sense-c5da6d4d",
+          "pos": "n.",
           "meaningZh": "呈現；描繪；表達",
-          "definitionEn": "a creation that is a visual or tangible rendering of someone or something",
           "examples": [
             "The artist’s painting was a stunning representation of the beautiful sunset over the ocean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-cfaf51df",
-          "pos": "noun",
+          "id": "sense-0af625b7",
+          "pos": "n.",
           "meaningZh": "心理表徵；意象",
-          "definitionEn": "a presentation of an idea or image in the mind",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L6 +1",
-        "textbookTitle": "龍騰 B1·L6、三民 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reputation",
       "word": "reputation",
       "senses": [
         {
-          "id": "sense-86a2211b",
-          "pos": "noun",
+          "id": "sense-a997657f",
+          "pos": "n.",
           "meaningZh": "聲譽；名聲",
-          "definitionEn": "the opinion that people have of someone or something, based on their past behavior or character.",
           "examples": [
             "After the scandal, the politician's reputation was irreparably damaged."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-93613154",
-          "pos": "noun",
+          "id": "sense-35a66ba8",
+          "pos": "n.",
           "meaningZh": "口碑；公眾形象",
-          "definitionEn": "being widely known or recognized by others because of what people say about someone or something, rather than through personal experience.",
           "examples": [
             "After consistently delivering high-quality work, Sarah has built a strong reputation as a reliable and efficient employee."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L1",
-        "textbookTitle": "三民 B2·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "rescue",
       "word": "rescue",
       "senses": [
         {
-          "id": "sense-1af98516",
-          "pos": "noun",
+          "id": "sense-4341c29e",
+          "pos": "n.",
           "meaningZh": "救援；援救行動",
-          "definitionEn": "recovery or preservation from loss or danger",
           "examples": [
             "After the storm, the heroic firefighter joined a team of volunteers to rescue stranded residents from their flooded homes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-820d9dd9",
-          "pos": "verb",
+          "id": "sense-13412fe0",
+          "pos": "v.",
           "meaningZh": "救出；解救",
-          "definitionEn": "free from harm or evil",
           "examples": [
             "The lifeguard rescued the drowning swimmer from the turbulent waves."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、三民 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "research",
       "word": "research",
       "senses": [
         {
-          "id": "sense-39d40c07",
-          "pos": "noun",
+          "id": "sense-7d71fe5f",
+          "pos": "n.",
           "meaningZh": "研究；調查",
-          "definitionEn": "a systematic investigation to establish facts",
           "examples": [
             "The scientist conducted extensive research to determine the causes of the disease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-1de704d8",
-          "pos": "noun",
+          "id": "sense-fbc77710",
+          "pos": "n.",
           "meaningZh": "學術研究；探究",
-          "definitionEn": "a search for knowledge",
           "examples": [
             "She spent months in the library conducting research on the cultural practices of indigenous peoples."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2 +1",
-        "textbookTitle": "龍騰 B2·L2、三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "researcher",
       "word": "researcher",
       "senses": [
         {
-          "id": "sense-1b3291fc",
-          "pos": "noun",
+          "id": "sense-bdc12e1c",
+          "pos": "n.",
           "meaningZh": "研究人員；研究者",
-          "definitionEn": "a person who conducts research, particularly in a scientific field",
           "examples": [
             "The researcher conducted a study on the effects of climate change on marine life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L5",
-        "textbookTitle": "三民 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resemble",
       "word": "resemble",
       "senses": [
         {
-          "id": "sense-93c454e8",
-          "pos": "verb",
+          "id": "sense-b45ebb35",
+          "pos": "v.",
           "meaningZh": "類似；相似；像",
-          "definitionEn": "to look like or to be similar to someone or something",
           "examples": [
             "The two sisters resemble each other so much that people often mistake them for twins."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4",
-        "textbookTitle": "龍騰 B3·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "reservation",
       "word": "reservation",
       "senses": [
         {
-          "id": "sense-82924f98",
-          "pos": "noun",
+          "id": "sense-f18f028c",
+          "pos": "n.",
           "meaningZh": "預訂；預約",
-          "definitionEn": "an arrangement to have something kept for you, such as a seat on an airplane or a table at a restaurant.",
           "examples": [
             "I called the restaurant and made a reservation for two at 7 PM."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resign",
       "word": "resign",
       "senses": [
         {
-          "id": "sense-c03cbd83",
-          "pos": "verb",
+          "id": "sense-d2efa822",
+          "pos": "v.",
           "meaningZh": "辭職；辭去職位",
-          "definitionEn": "leave (a job, post, or position) voluntarily",
           "examples": [
             "After years of feeling unfulfilled, Mark decided to resign from his corporate job and pursue his passion for photography full-time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-fd095787",
-          "pos": "verb",
+          "id": "sense-3e489776",
+          "pos": "v.",
           "meaningZh": "退職；離職",
-          "definitionEn": "give up or retire from a position",
           "examples": [
             "After years of working as CEO, Susan decided to resign and focus on her personal interests."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resignation",
       "word": "resignation",
       "senses": [
         {
-          "id": "sense-a8f64ebb",
-          "pos": "noun",
+          "id": "sense-d7f1a5b7",
+          "pos": "n.",
           "meaningZh": "辭職；辭去",
-          "definitionEn": "the act of giving up (a claim, office, or possession)",
           "examples": [
             "After years of struggling with her health, Sarah finally decided to submit her resignation and retire from her job as CEO of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-aaecd776",
-          "pos": "noun",
+          "id": "sense-a84d072a",
+          "pos": "n.",
           "meaningZh": "辭呈；辭職書",
-          "definitionEn": "a formal document that gives notice of one’s intention to resign",
           "examples": [
             "After years of unhappiness in her job, Sarah finally decided to submit her resignation to pursue a career in a field she was passionate about."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resistance",
       "word": "resistance",
       "senses": [
         {
-          "id": "sense-e2f90723",
-          "pos": "noun",
+          "id": "sense-be69cf3b",
+          "pos": "n.",
           "meaningZh": "抵抗力；免疫力",
-          "definitionEn": "the capacity of an organism to defend itself against harmful environmental agents",
           "examples": [
             "The use of antibiotics has led to the development of bacterial strains with increased resistance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L2 +1",
-        "textbookTitle": "龍騰 B4·L2、三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resolution",
       "word": "resolution",
       "senses": [
         {
-          "id": "sense-e501baab",
-          "pos": "noun",
+          "id": "sense-9241b03b",
+          "pos": "n.",
           "meaningZh": "決心；決議",
-          "definitionEn": "a decision or determination to do something or to behave in a certain manner",
           "examples": [
             "After months of deliberation, Sarah finally made the resolution to quit her job and start her own business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-58cabc74",
-          "pos": "noun",
+          "id": "sense-818767a4",
+          "pos": "n.",
           "meaningZh": "解決方案；決定",
-          "definitionEn": "a statement or set of instructions that provides a solution or explains how to solve a problem",
           "examples": [
             "After hours of debate, the committee finally reached a resolution on how to address the budget deficit."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "resolve",
       "word": "resolve",
       "senses": [
         {
-          "id": "sense-1facc30d",
-          "pos": "verb",
+          "id": "sense-b5072f64",
+          "pos": "v.",
           "meaningZh": "解決；處理",
-          "definitionEn": "find the solution",
           "examples": [
             "The team was able to resolve the conflict and reach a mutually beneficial agreement."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-319bc69f",
-          "pos": "verb",
+          "id": "sense-c06c51ba",
+          "pos": "v.",
           "meaningZh": "決定；下定決心",
-          "definitionEn": "reach a decision or a firm decision to do something",
           "examples": [
             "After a long discussion, they were able to resolve their disagreement and come to a mutual decision on how to proceed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "respectable",
       "word": "respectable",
       "senses": [
         {
-          "id": "sense-0b074bf6",
-          "pos": "adjective",
+          "id": "sense-63c4a372",
+          "pos": "adj.",
           "meaningZh": "受人尊敬的；有地位的",
-          "definitionEn": "deserving of esteem and respect, often due to social status or achievement",
           "examples": [
             "Despite facing many challenges, he built a respectable business empire that earned him a respected place in the society."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f6a04bbf",
-          "pos": "adjective",
+          "id": "sense-3ff893a3",
+          "pos": "adj.",
           "meaningZh": "正派的；品行端正的",
-          "definitionEn": "having morally correct behavior and beliefs, in accordance with social norms or conventions",
           "examples": [
             "It is important for public figures to have a respectable image to gain trust and form positive relationships with the community."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "respectful",
       "word": "respectful",
       "senses": [
         {
-          "id": "sense-bb87c5b0",
-          "pos": "adjective",
+          "id": "sense-0bc187f6",
+          "pos": "adj.",
           "meaningZh": "有禮貌的；尊重他人的",
-          "definitionEn": "showing polite behavior and good manners towards other people, especially those who are older or in positions of authority",
           "examples": [
             "During the meeting, Sarah listened attentively and spoke in a respectful manner, acknowledging everyone's opinions and addressing her colleagues with courtesy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e0537cb8",
-          "pos": "adjective",
+          "id": "sense-39a63146",
+          "pos": "adj.",
           "meaningZh": "敬重的；崇敬的",
-          "definitionEn": "feeling or showing deep admiration for someone or something",
           "examples": [
             "After the presentation, the audience stood up and applauded in a respectful manner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "restore",
       "word": "restore",
       "senses": [
         {
-          "id": "sense-44740f8d",
-          "pos": "verb",
+          "id": "sense-3bc94044",
+          "pos": "v.",
           "meaningZh": "修復；修繕",
-          "definitionEn": "restore by replacing a part or putting together what is torn or broken",
           "examples": [
             "After my bike accident, the mechanic was able to restore it by replacing the broken handlebar and patching up the torn seat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d834480a",
-          "pos": "verb",
+          "id": "sense-ae50d277",
+          "pos": "v.",
           "meaningZh": "歸還；恢復",
-          "definitionEn": "give or bring back",
           "examples": [
             "After the fire, the restoration team worked tirelessly to restore the old building to its former glory."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4 +1",
-        "textbookTitle": "龍騰 B3·L4、三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "restriction",
       "word": "restriction",
       "senses": [
         {
-          "id": "sense-b23c333b",
-          "pos": "noun",
+          "id": "sense-281ee6b7",
+          "pos": "n.",
           "meaningZh": "限制；管制；禁令",
-          "definitionEn": "the act of limiting or restricting something by law or regulation",
           "examples": [
             "In order to protect the environment, the government implemented a restriction on single-use plastics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-a87e9f2a",
-          "pos": "noun",
+          "id": "sense-79ba5d66",
+          "pos": "n.",
           "meaningZh": "約束；限制措施",
-          "definitionEn": "the act of keeping something within certain limits or boundaries, sometimes by force if necessary",
           "examples": [
             "During the pandemic, the government imposed strict travel restrictions to limit the spread of the virus."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "retain",
       "word": "retain",
       "senses": [
         {
-          "id": "sense-47b5fd00",
-          "pos": "verb",
+          "id": "sense-0e2080c9",
+          "pos": "v.",
           "meaningZh": "保留；保有",
-          "definitionEn": "to keep or hold on to something, especially something of value, for future use",
           "examples": [
             "I always retain my receipts for big purchases in case I need to return or exchange an item."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-45328c6d",
-          "pos": "verb",
+          "id": "sense-2b959818",
+          "pos": "v.",
           "meaningZh": "記住；記憶",
-          "definitionEn": "to remember or not forget something",
           "examples": [
             "She has an exceptional memory and can retain large amounts of information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "retire",
+      "word": "retire",
+      "senses": [
+        {
+          "id": "sense-11f9e99b",
+          "pos": "v.",
+          "meaningZh": "退休；引退",
+          "examples": [
+            "After 40 years of dedicated service, John decided to retire and spend more time with his family."
+          ]
+        },
+        {
+          "id": "sense-a48cae15",
+          "pos": "v.",
+          "meaningZh": "就寢；上床睡覺",
+          "examples": [
+            "After a long day at work, he likes to retire early and get a good night's sleep."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "retirement",
+      "word": "retirement",
+      "senses": [
+        {
+          "id": "sense-b732f26b",
+          "pos": "n.",
+          "meaningZh": "退休；退休生活",
+          "examples": [
+            "After decades of hard work, John finally reached retirement and was able to relax and enjoy his free time."
+          ]
+        },
+        {
+          "id": "sense-3de317e8",
+          "pos": "n.",
+          "meaningZh": "退休；從職場引退",
+          "examples": [
+            "After working tirelessly for over four decades, Sarah finally reached retirement and decided to spend her days traveling the world and enjoying her newfound freedom."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "retreat",
+      "word": "retreat",
+      "senses": [
+        {
+          "id": "sense-ce9fc45e",
+          "pos": "n.",
+          "meaningZh": "撤退；後退；撤離",
+          "examples": [
+            "During the hike, they encountered a bear and quickly decided to retreat to the safety of their campsite."
+          ]
+        },
+        {
+          "id": "sense-d87f4b69",
+          "pos": "n.",
+          "meaningZh": "（軍事）撤退；退卻",
+          "examples": [
+            "After facing heavy losses, the commander ordered a retreat to regroup and strategize for the upcoming battle."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "reunion",
+      "word": "reunion",
+      "senses": [
+        {
+          "id": "sense-cdf76a69",
+          "pos": "n.",
+          "meaningZh": "重聚；再次相聚",
+          "examples": [
+            "After being apart for years, the family had an emotional reunion at the airport, hugging and crying tears of joy."
+          ]
+        },
+        {
+          "id": "sense-65a19724",
+          "pos": "n.",
+          "meaningZh": "同學會；聚會",
+          "examples": [
+            "After years of being apart, the high school reunion brought together old friends to reminisce and catch up with each other."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "revenge",
+      "word": "revenge",
+      "senses": [
+        {
+          "id": "sense-71a692bb",
+          "pos": "n.",
+          "meaningZh": "復仇；報復行動",
+          "examples": [
+            "After years of meticulously planning, he finally enacted his revenge on those who had wronged him."
+          ]
+        },
+        {
+          "id": "sense-eeeebf11",
+          "pos": "n.",
+          "meaningZh": "復仇欲望；報仇之心",
+          "examples": [
+            "After being betrayed by his best friend, Tom couldn't help but feel a burning desire for revenge."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

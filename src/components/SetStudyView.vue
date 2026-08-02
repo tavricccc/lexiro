@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import type { PracticeMode } from '@/types'
+import type { PracticeDifficulty, PracticeMode } from '@/types'
 import { ArrowLeft, ArrowRight, BookOpenText, CheckCircle2, ChevronLeft, ChevronRight, FileText, Folder, PanelLeftClose, PanelLeftOpen } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { createPracticeDifficultyOptions } from '@/lib/question-options'
 import { useLibraryStore } from '@/stores/library'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import QuestionGenerationPanel from './QuestionGenerationPanel.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
+import Select from './ui/select/Select.vue'
 import WordDetailCard from './WordDetailCard.vue'
 
 const route = useRoute()
@@ -24,14 +26,20 @@ const setId = computed(() => typeof route.params.setId === 'string' ? route.para
 const activeSet = computed(() => sets.value.find(set => set.id === setId.value) ?? null)
 const words = computed(() => activeSet.value ? libraryStore.getSetWords(activeSet.value.id) : [])
 const selectedIndex = ref(0)
-const selectedMode = ref<Extract<PracticeMode, 'cloze' | 'reading'>>('cloze')
-const selectedCount = ref(5)
+const selectedMode = ref<PracticeMode>('quiz')
+const selectedDifficulty = ref<PracticeDifficulty>('all')
+const selectedCount = ref(1)
 const wordListOpen = ref(true)
 
 const selectedWord = computed(() => words.value[selectedIndex.value] ?? words.value[0] ?? null)
 const isFirstWord = computed(() => selectedIndex.value <= 0)
 const isLastWord = computed(() => selectedIndex.value >= words.value.length - 1)
-const availableCount = computed(() => activeSet.value ? sessionStore.getAvailablePracticeCount(activeSet.value.id, selectedMode.value) : 0)
+const difficultyOptions = computed(() => createPracticeDifficultyOptions(t))
+const difficultyModel = computed({
+  get: () => String(selectedDifficulty.value),
+  set: (value: string) => { selectedDifficulty.value = value === 'all' ? 'all' : Number(value) as 1 | 2 | 3 },
+})
+const availableCount = computed(() => activeSet.value ? sessionStore.getAvailablePracticeCount(activeSet.value.id, selectedMode.value, selectedDifficulty.value) : 0)
 const countOptions = computed(() => {
   const total = availableCount.value
   if (total <= 5)
@@ -49,11 +57,11 @@ const folderName = computed(() => {
 
 watch([setId, words], () => {
   selectedIndex.value = Math.min(selectedIndex.value, Math.max(0, words.value.length - 1))
-  selectedCount.value = countOptions.value.at(-1) ?? 1
+  selectedCount.value = sessionStore.getPracticeCount(countOptions.value.at(-1) ?? 0)
 }, { immediate: true })
 
-watch(selectedMode, () => {
-  selectedCount.value = countOptions.value.at(-1) ?? 1
+watch([selectedMode, selectedDifficulty], () => {
+  selectedCount.value = sessionStore.getPracticeCount(countOptions.value.at(-1) ?? 0)
 })
 
 function updateSelectedCount(event: Event) {
@@ -78,8 +86,8 @@ function selectNextWord() {
 function startPractice() {
   if (!activeSet.value || !availableCount.value)
     return
-  sessionStore.handlePracticeCountChange(activeSet.value.id, selectedCount.value, availableCount.value)
-  void sessionStore.startRound(selectedMode.value, activeSet.value.id)
+  sessionStore.handlePracticeCountChange(selectedCount.value, availableCount.value)
+  void sessionStore.startRound(selectedMode.value, activeSet.value.id, null, selectedDifficulty.value)
 }
 
 function enterSet() {
@@ -132,8 +140,10 @@ onMounted(enterSet)
         <Button v-if="!wordListOpen" variant="ghost" class="mb-3 -ml-3 gap-2" @click="wordListOpen = true">
           <PanelLeftOpen class="h-4 w-4" />{{ $t('study.showWordList') }}
         </Button>
-        <WordDetailCard :word="selectedWord" />
-        <div class="mt-4 flex items-center justify-between gap-3">
+        <div class="h-[min(64dvh,42rem)] min-h-[22rem] overflow-y-auto overscroll-contain pr-2">
+          <WordDetailCard :word="selectedWord" :set-id="activeSet.id" />
+        </div>
+        <div class="mt-4 flex shrink-0 items-center justify-between gap-3">
           <Button variant="outline" class="gap-2" :disabled="isFirstWord" @click="selectPreviousWord">
             <ChevronLeft class="h-4 w-4" />{{ $t('study.previousWord') }}
           </Button>
@@ -157,13 +167,21 @@ onMounted(enterSet)
           {{ $t('study.practiceDescription') }}
         </p>
       </div>
-      <div class="mt-5 grid gap-3 sm:grid-cols-2">
-        <button type="button" class="rounded-2xl border p-4 text-left transition-colors" :class="selectedMode === 'cloze' ? 'border-accent-primary bg-accent-primary/10' : 'border-ink-200/70 hover:border-accent-primary/40 dark:border-ink-200/20'" @click="selectedMode = 'cloze'">
+      <div class="mt-5 grid gap-3 sm:grid-cols-3">
+        <button type="button" class="rounded-2xl border p-4 text-left transition-colors" :class="selectedMode === 'quiz' ? 'border-accent-primary bg-accent-primary/10' : 'border-ink-200/70 hover:border-accent-primary/40 dark:border-ink-200/20'" @click="selectedMode = 'quiz'">
+          <div class="flex items-center gap-3">
+            <CheckCircle2 class="h-5 w-5 text-accent-primary" /><span class="font-extrabold">{{ $t('practice.quiz') }}</span>
+          </div>
+          <p class="mt-2 text-xs font-semibold text-ink-500">
+            {{ $t('study.available', { count: sessionStore.getAvailablePracticeCount(activeSet.id, 'quiz', selectedDifficulty) }) }}
+          </p>
+        </button>
+        <button type="button" class="rounded-2xl border p-4 text-left transition-colors" :class="selectedMode === 'fillBlank' ? 'border-accent-primary bg-accent-primary/10' : 'border-ink-200/70 hover:border-accent-primary/40 dark:border-ink-200/20'" @click="selectedMode = 'fillBlank'">
           <div class="flex items-center gap-3">
             <FileText class="h-5 w-5 text-accent-primary" /><span class="font-extrabold">{{ $t('practice.fillBlank') }}</span>
           </div>
           <p class="mt-2 text-xs font-semibold text-ink-500">
-            {{ $t('study.available', { count: sessionStore.getAvailablePracticeCount(activeSet.id, 'cloze') }) }}
+            {{ $t('study.available', { count: sessionStore.getAvailablePracticeCount(activeSet.id, 'fillBlank', selectedDifficulty) }) }}
           </p>
         </button>
         <button type="button" class="rounded-2xl border p-4 text-left transition-colors" :class="selectedMode === 'reading' ? 'border-accent-primary bg-accent-primary/10' : 'border-ink-200/70 hover:border-accent-primary/40 dark:border-ink-200/20'" @click="selectedMode = 'reading'">
@@ -171,9 +189,13 @@ onMounted(enterSet)
             <BookOpenText class="h-5 w-5 text-accent-primary" /><span class="font-extrabold">{{ $t('practice.reading') }}</span>
           </div>
           <p class="mt-2 text-xs font-semibold text-ink-500">
-            {{ $t('study.available', { count: sessionStore.getAvailablePracticeCount(activeSet.id, 'reading') }) }}
+            {{ $t('study.available', { count: sessionStore.getAvailablePracticeCount(activeSet.id, 'reading', selectedDifficulty) }) }}
           </p>
         </button>
+      </div>
+      <div class="mt-5 space-y-2">
+        <label class="text-xs font-black uppercase tracking-wider text-ink-400">{{ $t('library.questionDifficulty') }}</label>
+        <Select v-model="difficultyModel" :options="difficultyOptions" />
       </div>
       <div class="mt-5 space-y-2">
         <label class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-ink-400"><span>{{ $t('practice.countLabel') }}</span><span class="text-ink-950 dark:text-ink-50">{{ $t('study.selectedQuestionCount', { count: selectedCount }) }}</span></label>

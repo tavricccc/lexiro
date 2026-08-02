@@ -1,1368 +1,649 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 160,
   "words": [
-    {
-      "wordKey": "stimulus",
-      "word": "stimulus",
-      "senses": [
-        {
-          "id": "sense-7d3fc441",
-          "pos": "noun",
-          "meaningZh": "推動力；激勵因素",
-          "definitionEn": "something that causes growth or development in something else; something that encourages creativity or effort",
-          "examples": [
-            "The government's investment in infrastructure serves as a stimulus for economic growth and job creation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "stink",
-      "word": "stink",
-      "senses": [
-        {
-          "id": "sense-b57a738d",
-          "pos": "noun",
-          "meaningZh": "惡臭；臭味",
-          "definitionEn": "a strong and unpleasant odor",
-          "examples": [
-            "After days of not showering, his body began to stink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-047d139b",
-          "pos": "verb",
-          "meaningZh": "發出惡臭；臭氣熏人",
-          "definitionEn": "to emit a strong and unpleasant odor",
-          "examples": [
-            "After days of not bathing, the hiker's body began to stink."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "stock",
-      "word": "stock",
-      "senses": [
-        {
-          "id": "sense-abf7afd9",
-          "pos": "noun",
-          "meaningZh": "股票；存貨",
-          "definitionEn": "shares in a company, or a supply of goods kept for sale",
-          "examples": [
-            "He invested most of his savings in technology stocks."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-a643ca2c",
-          "pos": "noun",
-          "meaningZh": "紫羅蘭屬植物",
-          "definitionEn": "an ornamental plant with brightly colored flowers in the genus Malcolmia",
-          "examples": [
-            "I planted stocks in my garden to add pops of color amongst the green foliage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "storage",
-      "word": "storage",
-      "senses": [
-        {
-          "id": "sense-c5036211",
-          "pos": "noun",
-          "meaningZh": "倉儲；儲藏室",
-          "definitionEn": "a depository for goods",
-          "examples": [
-            "The company rented a storage unit to keep their surplus inventory safely."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-bad55c2f",
-          "pos": "noun",
-          "meaningZh": "倉儲業；儲存服務",
-          "definitionEn": "the commercial enterprise of storing goods and materials",
-          "examples": [
-            "To ensure their products are safe and secure, many businesses rely on storage facilities for warehousing and inventory management purposes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
-    {
-      "wordKey": "straighten",
-      "word": "straighten",
-      "senses": [
-        {
-          "id": "sense-983fa272",
-          "pos": "verb",
-          "meaningZh": "挺直身體；站直",
-          "definitionEn": "(of a person) to stand up straight from a sitting or slouching position",
-          "examples": [
-            "After sitting at their desks for hours, the students straightened their backs and stretched their legs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-75b24e24",
-          "pos": "verb",
-          "meaningZh": "整理；收拾整齊",
-          "definitionEn": "to put things or places in order",
-          "examples": [
-            "After a long day of work, Sarah straightened her desk and arranged all her files neatly before leaving the office."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
-    },
     {
       "wordKey": "straightforward",
       "word": "straightforward",
       "senses": [
         {
-          "id": "sense-2f2f64ea",
-          "pos": "adjective",
+          "id": "sense-fdfb2218",
+          "pos": "adj.",
           "meaningZh": "直接坦率的；誠實的",
-          "definitionEn": "done or said in a direct and honest way without trying to hide unpleasant facts",
           "examples": [
             "When asked if he had made a mistake, the manager gave a straightforward answer, admitting his error and apologizing for any inconvenience caused."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-899217ff",
-          "pos": "adjective",
+          "id": "sense-d1c030f5",
+          "pos": "adj.",
           "meaningZh": "簡單明瞭的；容易理解的",
-          "definitionEn": "easy to understand; direct and uncomplicated",
           "examples": [
             "The instructions for assembling the toy were straightforward and I was able to assemble it in just a few minutes."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strain",
       "word": "strain",
       "senses": [
         {
-          "id": "sense-2e469b4f",
-          "pos": "verb",
+          "id": "sense-e00cf7b6",
+          "pos": "v.",
           "meaningZh": "使緊張；使焦慮",
-          "definitionEn": "cause to be tense and uneasy or nervous or anxious",
           "examples": [
             "The upcoming exam is starting to strain me, making me feel tense and uneasy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strand",
       "word": "strand",
       "senses": [
         {
-          "id": "sense-4a2c80c7",
-          "pos": "noun",
+          "id": "sense-cd7ff203",
+          "pos": "n.",
           "meaningZh": "纖維；細絲",
-          "definitionEn": "a very thin fiber, either natural or synthetic",
           "examples": [
             "She carefully plucked a strand of hair from her head and examined it closely."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strap",
       "word": "strap",
       "senses": [
         {
-          "id": "sense-d1a51a5f",
-          "pos": "noun",
+          "id": "sense-04d594a3",
+          "pos": "n.",
           "meaningZh": "背帶；肩帶",
-          "definitionEn": "a strip of material that goes over the shoulder and supports a bag, weapon, or other item",
           "examples": [
             "She adjusted the strap of her backpack before continuing on the hike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-98242c23",
-          "pos": "verb",
+          "id": "sense-0f2bf56a",
+          "pos": "v.",
           "meaningZh": "以皮帶打；鞭打",
-          "definitionEn": "hit or beat (someone) with a strap",
           "examples": [
             "The teacher threatened to strap the misbehaving student with a leather belt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "strategic",
       "word": "strategic",
       "senses": [
         {
-          "id": "sense-3c8e7254",
-          "pos": "adjective",
+          "id": "sense-0fd377f0",
+          "pos": "adj.",
           "meaningZh": "策略性的；戰略上的",
-          "definitionEn": "relating to or concerned with strategy",
           "examples": [
             "The company developed a strategic plan to launch a new product line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ae85608c",
-          "pos": "adjective",
+          "id": "sense-c6b4c868",
+          "pos": "adj.",
           "meaningZh": "具戰略意義的；關鍵的",
-          "definitionEn": "highly important to or an integral part of a strategy or plan of action especially in war",
           "examples": [
             "In order to win the battle, the general came up with a strategic plan."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "striking",
       "word": "striking",
       "senses": [
         {
-          "id": "sense-1fe823c8",
-          "pos": "adjective",
+          "id": "sense-55b66bda",
+          "pos": "adj.",
           "meaningZh": "引人注目的；令人印象深刻的",
-          "definitionEn": "noticeable or impressive in a way that catches people’s attention",
           "examples": [
             "The fireworks display was truly striking, with bursts of vibrant colors lighting up the night sky."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b10545a3",
-          "pos": "adjective",
+          "id": "sense-8a54e149",
+          "pos": "adj.",
           "meaningZh": "非常吸引人的；出眾的",
-          "definitionEn": "very attractive or impressive in a way that is impressive and often unexpected",
           "examples": [
             "The actress made a striking entrance onto the red carpet, wearing a dazzling gown."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "structural",
       "word": "structural",
       "senses": [
         {
-          "id": "sense-2b1e083c",
-          "pos": "adjective",
+          "id": "sense-2e3b9c96",
+          "pos": "adj.",
           "meaningZh": "結構性的；有關結構的",
-          "definitionEn": "relating to or characterized by structure",
           "examples": [
             "In order to comprehend complex engineering problems, one needs to have a thorough understanding of the structural elements involved."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6c65adc8",
-          "pos": "adjective",
+          "id": "sense-11684612",
+          "pos": "adj.",
           "meaningZh": "涉及建造的；關於架構的",
-          "definitionEn": "involved in or affecting the construction or structure of something",
           "examples": [
             "The structural engineer was tasked with designing the foundation of the skyscraper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "stumble",
       "word": "stumble",
       "senses": [
         {
-          "id": "sense-3c06d73e",
-          "pos": "verb",
+          "id": "sense-11063a23",
+          "pos": "v.",
           "meaningZh": "絆倒；踉蹌",
-          "definitionEn": "to miss a step and almost fall or fall down",
           "examples": [
             "While walking on a dark and uneven path, he stumbled and almost tripped over a tree root."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ae177172",
-          "pos": "noun",
+          "id": "sense-cf01a15e",
+          "pos": "n.",
           "meaningZh": "失誤；出糗",
-          "definitionEn": "an embarrassing mistake or blunder made unintentionally",
           "examples": [
             "During the job interview, Mark stumbled over his words and forgot to mention his relevant work experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sturdy",
       "word": "sturdy",
       "senses": [
         {
-          "id": "sense-94c0db41",
-          "pos": "adjective",
+          "id": "sense-9afc87c7",
+          "pos": "adj.",
           "meaningZh": "強健的；堅韌的",
-          "definitionEn": "having strong and tough physical strength, able to handle difficult situations and endure hardships",
           "examples": [
             "The sturdy bridge withstood the strong winds and heavy rain from the storm without any damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f3c56b61",
-          "pos": "adjective",
+          "id": "sense-07b03a4b",
+          "pos": "adj.",
           "meaningZh": "堅固耐用的；結實的",
-          "definitionEn": "made or constructed in a robust and durable manner",
           "examples": [
             "The sturdy building withstood the severe storm without any damage."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "submarine",
       "word": "submarine",
       "senses": [
         {
-          "id": "sense-e76d7da7",
-          "pos": "noun",
+          "id": "sense-21401d17",
+          "pos": "n.",
           "meaningZh": "潛水艦；潛艇",
-          "definitionEn": "a warship capable of operating underwater, often armed with torpedoes",
           "examples": [
             "The submarine quietly patrolled the depths of the ocean, ready to launch its torpedoes at enemy ships."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-35aec020",
-          "pos": "adjective",
+          "id": "sense-8ef572c4",
+          "pos": "adj.",
           "meaningZh": "海底的；水下的",
-          "definitionEn": "situated or occurring beneath the surface of the sea",
           "examples": [
             "During the naval exercise, the submarine stealthily maneuvered underwater to gather intelligence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "submit",
       "word": "submit",
       "senses": [
         {
-          "id": "sense-f87b5815",
-          "pos": "verb",
+          "id": "sense-016f80d0",
+          "pos": "v.",
           "meaningZh": "提交申請；遞件",
-          "definitionEn": "Make an application, typically for a job, funding, or permission.",
           "examples": [
             "After carefully crafting her resume and cover letter, Sarah decided to submit her application for the dream job she had been waiting for."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1f40026a",
-          "pos": "verb",
+          "id": "sense-a6621a37",
+          "pos": "v.",
           "meaningZh": "服從；接受",
-          "definitionEn": "Accept or undergo (something), often unwillingly.",
           "examples": [
             "John had to submit to the rules of the company even though he disagreed with them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "subsequent",
       "word": "subsequent",
       "senses": [
         {
-          "id": "sense-9e1252a1",
-          "pos": "adjective",
+          "id": "sense-4aab3d2f",
+          "pos": "adj.",
           "meaningZh": "後續的；之後的",
-          "definitionEn": "following in time or order",
           "examples": [
             "After the initial interview, subsequent meetings were scheduled to discuss the candidate’s qualifications further."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c62fd037",
-          "pos": "adverb",
+          "id": "sense-ffd2300a",
+          "pos": "adv.",
           "meaningZh": "隨後；其後",
-          "definitionEn": "following something in time; later",
           "examples": [
             "The company first launched its product in the US, and subsequent expansion to other countries followed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2",
-        "textbookTitle": "龍騰 B5·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "subsidy",
       "word": "subsidy",
       "senses": [
         {
-          "id": "sense-8235b334",
-          "pos": "noun",
+          "id": "sense-ac636db8",
+          "pos": "n.",
           "meaningZh": "補貼；政府補助金",
-          "definitionEn": "financial assistance given by a government or organization to support a particular activity or business sector, usually one that benefits the public",
           "examples": [
             "The government provided a subsidy to the renewable energy sector, enabling the construction of solar panels and wind farms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "substantial",
       "word": "substantial",
       "senses": [
         {
-          "id": "sense-06f61a40",
-          "pos": "adjective",
+          "id": "sense-6f508424",
+          "pos": "adj.",
           "meaningZh": "實質的；真實存在的",
-          "definitionEn": "having a solid and real quality; not imaginary",
           "examples": [
             "The architect constructed a substantial bridge that could withstand earthquakes and extreme weather conditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-e117a6c4",
-          "pos": "adjective",
+          "id": "sense-54169150",
+          "pos": "adj.",
           "meaningZh": "品質優良的；建造堅固的",
-          "definitionEn": "of good quality and condition; solidly built",
           "examples": [
             "The old Victorian house had substantial craftsmanship, with its intricate woodwork and sturdy foundation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4 +1",
-        "textbookTitle": "龍騰 B5·L4、三民 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "substitute",
       "word": "substitute",
       "senses": [
         {
-          "id": "sense-973d6ea0",
-          "pos": "noun",
+          "id": "sense-a6adffc4",
+          "pos": "n.",
           "meaningZh": "替代者；代替品",
-          "definitionEn": "a person or thing that can take the place of another",
           "examples": [
             "During the basketball game, John had to leave due to an injury, and his teammate Mark became his substitute, taking his place on the court."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-ff3b5d0a",
-          "pos": "noun",
+          "id": "sense-76d2d27e",
+          "pos": "n.",
           "meaningZh": "替補球員；候補",
-          "definitionEn": "an athlete who replaces a starter in a team",
           "examples": [
             "When the starting player injured his ankle, the substitute quickly stepped onto the field to take his place."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "subtle",
       "word": "subtle",
       "senses": [
         {
-          "id": "sense-8892067a",
-          "pos": "adjective",
+          "id": "sense-8775c304",
+          "pos": "adj.",
           "meaningZh": "不明顯的；細微的",
-          "definitionEn": "not immediately obvious or noticeable",
           "examples": [
             "The scent of the flowers in the garden was so subtle that I almost didn't notice it until I walked closer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-345869f7",
-          "pos": "adjective",
+          "id": "sense-b3fd5bc9",
+          "pos": "adj.",
           "meaningZh": "敏銳的；善於辨別的",
-          "definitionEn": "able to understand or make fine distinctions",
           "examples": [
             "In a crowded room, she had the subtle ability to aptly pick up on the underlying emotions of those around her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suburban",
       "word": "suburban",
       "senses": [
         {
-          "id": "sense-c5f5c291",
-          "pos": "adjective",
+          "id": "sense-d4ed4c85",
+          "pos": "adj.",
           "meaningZh": "位於郊區的；住在郊區的",
-          "definitionEn": "Situated or living in a suburb.",
           "examples": [
             "Jane and her family enjoy the peacefulness of their suburban neighborhood after a long day at work and school."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8059f945",
-          "pos": "adjective",
+          "id": "sense-dec4abb9",
+          "pos": "adj.",
           "meaningZh": "郊區的；市郊相關的",
-          "definitionEn": "Relating to a suburb.",
           "examples": [
             "Many families choose to live in suburban areas because of the quieter and more family-friendly environment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "successor",
       "word": "successor",
       "senses": [
         {
-          "id": "sense-a8754a78",
-          "pos": "noun",
+          "id": "sense-21a780b4",
+          "pos": "n.",
           "meaningZh": "接班人；繼任者",
-          "definitionEn": "a person who follows next in order",
           "examples": [
             "After the CEO retired, his successor took over the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1a36d996",
-          "pos": "noun",
+          "id": "sense-9efd9b6a",
+          "pos": "n.",
           "meaningZh": "繼承人；承接職位者",
-          "definitionEn": "a person who inherits some title or office",
           "examples": [
             "After the current CEO retires, John will become his successor and take on the responsibilities of running the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "sue",
       "word": "sue",
       "senses": [
         {
-          "id": "sense-280052bb",
-          "pos": "verb",
+          "id": "sense-cba2074a",
+          "pos": "v.",
           "meaningZh": "控告；提起訴訟",
-          "definitionEn": "to bring a civil action against another person for causing damage or injury",
           "examples": [
             "When her car was hit by a reckless driver, she decided to sue him for the damages and injuries she had suffered."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suggestion",
       "word": "suggestion",
       "senses": [
         {
-          "id": "sense-7d38f3b0",
-          "pos": "noun",
+          "id": "sense-7ae786ec",
+          "pos": "n.",
           "meaningZh": "建議；提案",
-          "definitionEn": "a proposal put forward for others to accept or reject",
           "examples": [
             "I have a suggestion for our next team meeting agenda."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f5637f97",
-          "pos": "noun",
+          "id": "sense-a5ff733b",
+          "pos": "n.",
           "meaningZh": "聯想；啟發",
-          "definitionEn": "the mental process of linking thoughts together by association",
           "examples": [
             "After brainstorming for hours, Daniel’s suggestion to incorporate a pop of colors in the logo design finally led to a breakthrough."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "suite",
       "word": "suite",
       "senses": [
         {
-          "id": "sense-42bb6f8d",
-          "pos": "noun",
+          "id": "sense-9c19ac0d",
+          "pos": "n.",
           "meaningZh": "套房；（飯店）套間",
-          "definitionEn": "an apartment consisting of a series of connected rooms used as a living unit, especially in a hotel",
           "examples": [
             "The honeymoon suite at the luxurious hotel had a spacious sitting area, a king-sized bed, and a balcony with a stunning view of the beach."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9275b893",
-          "pos": "noun",
+          "id": "sense-c07ee613",
+          "pos": "n.",
           "meaningZh": "成套家具",
-          "definitionEn": "a matching set of fashionable furniture, especially for a reception room or private apartment",
           "examples": [
             "The interior designer selected a beautiful suite of furniture for the newly-renovated apartment, including a plush sofa, a sleek coffee table, and elegant wing chairs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "summarize",
       "word": "summarize",
       "senses": [
         {
-          "id": "sense-c46120fd",
-          "pos": "verb",
+          "id": "sense-568ac830",
+          "pos": "v.",
           "meaningZh": "摘要；概述",
-          "definitionEn": "to provide a brief statement or account of the main points of (something)",
           "examples": [
             "After finishing the book, she asked her friend to summarize the plot for her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6b0bb6dc",
-          "pos": "verb",
+          "id": "sense-01edfdcf",
+          "pos": "v.",
           "meaningZh": "作為……的摘要；總結",
-          "definitionEn": "to be a summary or an abstract of (something)",
           "examples": [
             "The executive summary should be able to summarize the entire report in just a few paragraphs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "superb",
       "word": "superb",
       "senses": [
         {
-          "id": "sense-6710cb06",
-          "pos": "adjective",
+          "id": "sense-cbd56654",
+          "pos": "adj.",
           "meaningZh": "絕佳的；出色的",
-          "definitionEn": "of surpassing excellence",
           "examples": [
             "The opera singer’s performance was superb; her voice mesmerized the audience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4c2c7d16",
-          "pos": "adjective",
+          "id": "sense-69fed840",
+          "pos": "adj.",
           "meaningZh": "極優秀的；卓越的",
-          "definitionEn": "surpassingly good",
           "examples": [
             "The performance of the artist was superb, leaving the audience mesmerized."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "superstition",
       "word": "superstition",
       "senses": [
         {
-          "id": "sense-530a0f14",
-          "pos": "noun",
+          "id": "sense-89d0950c",
+          "pos": "n.",
           "meaningZh": "迷信；無知的妄念",
-          "definitionEn": "an irrational belief arising from ignorance or fear",
           "examples": [
             "Despite knowing that it was just a superstition, Sarah couldn't help but knock on wood for good luck before her important job interview."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "supervise",
       "word": "supervise",
       "senses": [
         {
-          "id": "sense-fcf3dbb6",
-          "pos": "verb",
+          "id": "sense-9ae7b0a3",
+          "pos": "v.",
           "meaningZh": "監督；管理",
-          "definitionEn": "keep under supervision; direct or manage",
           "examples": [
             "As a teacher, I supervise the students during recess to ensure their safety and well-being."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3d005210",
-          "pos": "verb",
+          "id": "sense-30d74065",
+          "pos": "v.",
           "meaningZh": "監看；監視",
-          "definitionEn": "watch closely; oversee; monitor",
           "examples": [
             "The teacher will supervise the students during their exam to ensure they do not cheat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.073Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "supervision",
+      "word": "supervision",
+      "senses": [
+        {
+          "id": "sense-67ec792b",
+          "pos": "n.",
+          "meaningZh": "監督；監管",
+          "examples": [
+            "The construction site manager provided constant supervision to ensure that safety protocols were followed and the project was completed on time."
+          ]
+        },
+        {
+          "id": "sense-59447ab0",
+          "pos": "n.",
+          "meaningZh": "督導；管理工作",
+          "examples": [
+            "The construction site manager was responsible for the supervision of the workers to ensure that all safety protocols were followed."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "supervisor",
+      "word": "supervisor",
+      "senses": [
+        {
+          "id": "sense-afc8d987",
+          "pos": "n.",
+          "meaningZh": "主管；監督者",
+          "examples": [
+            "The supervisor inspected the construction site to ensure that all safety protocols were being followed."
+          ]
+        },
+        {
+          "id": "sense-976879e5",
+          "pos": "n.",
+          "meaningZh": "監控程式；管理程序",
+          "examples": [
+            "In a computer network, the supervisor ensures that all the programs running on the server are functioning properly and efficiently."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "supposedly",
+      "word": "supposedly",
+      "senses": [
+        {
+          "id": "sense-10de1fda",
+          "pos": "adv.",
+          "meaningZh": "據說；相傳",
+          "examples": [
+            "Supposedly, the flowers in this garden are known to bloom year round."
+          ]
+        },
+        {
+          "id": "sense-7ebbdc6e",
+          "pos": "adv.",
+          "meaningZh": "據稱；據我所知",
+          "examples": [
+            "She is supposedly the best detective in town, but nobody has ever seen her solve a case."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "supreme",
+      "word": "supreme",
+      "senses": [
+        {
+          "id": "sense-e0f6affe",
+          "pos": "adj.",
+          "meaningZh": "最高的；卓越超群的",
+          "examples": [
+            "He was crowned the supreme champion of the competition after winning every single match and showcasing unparalleled skill."
+          ]
+        },
+        {
+          "id": "sense-cdb7a277",
+          "pos": "adj.",
+          "meaningZh": "最高權力的；至高無上的",
+          "examples": [
+            "In a monarchy, the king holds supreme power over the entire kingdom."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "surgeon",
+      "word": "surgeon",
+      "senses": [
+        {
+          "id": "sense-3cb4a31b",
+          "pos": "n.",
+          "meaningZh": "外科醫生；外科醫師",
+          "examples": [
+            "The patient needed immediate surgery due to a life-threatening injury, so the surgeon was called in to perform the operation."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

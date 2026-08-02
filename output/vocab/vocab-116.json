@@ -1,1354 +1,637 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 116,
   "words": [
-    {
-      "wordKey": "hose",
-      "word": "hose",
-      "senses": [
-        {
-          "id": "sense-7d101008",
-          "pos": "noun",
-          "meaningZh": "水管；軟管",
-          "definitionEn": "a long flexible tube used to carry water or other liquids",
-          "examples": [
-            "He used a garden hose to water the plants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-f9b27358",
-          "pos": "verb",
-          "meaningZh": "以水管澆水；用水管沖洗",
-          "definitionEn": "to water with a hose",
-          "examples": [
-            "I use the hose to water my garden every morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-17920cac",
-          "pos": "noun",
-          "meaningZh": "褲襪；絲襪（統稱）",
-          "definitionEn": "socks, stockings, and tights collectively (including undergarments in British English)",
-          "examples": [
-            "Mary reached into her drawer and pulled out a pair of black hose to wear with her cocktail dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "household",
-      "word": "household",
-      "senses": [
-        {
-          "id": "sense-61bfe9c6",
-          "pos": "noun",
-          "meaningZh": "家庭；同住成員",
-          "definitionEn": "A group of people who live together in a house or apartment and share common living arrangements, responsibilities, and resources.",
-          "examples": [
-            "The household consisted of a married couple, their two children, and the husband’s elderly mother."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-6a135593",
-          "pos": "noun",
-          "meaningZh": "家戶；家庭單位",
-          "definitionEn": "A domestic establishment comprising one or more families, often constituted as a social and economic unit.",
-          "examples": [
-            "My household consists of my parents, my siblings, and me."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L6",
-        "textbookTitle": "三民 B1·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "housework",
-      "word": "housework",
-      "senses": [
-        {
-          "id": "sense-92007a17",
-          "pos": "noun",
-          "meaningZh": "家務；家事",
-          "definitionEn": "regular work done in a household especially cleaning and maintaining the spaces, doing laundry and running errands",
-          "examples": [
-            "After coming back from work, Jennifer does the housework such as washing dishes, doing laundry, and sweeping the floor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "humanity",
-      "word": "humanity",
-      "senses": [
-        {
-          "id": "sense-95b4fe50",
-          "pos": "noun",
-          "meaningZh": "人性；作為人的本質",
-          "definitionEn": "the quality of being human",
-          "examples": [
-            "The kindness they showed towards the refugees exemplifies the true humanity and compassion of our society."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-29b65e0e",
-          "pos": "noun",
-          "meaningZh": "人情味；悲憫之心",
-          "definitionEn": "the compassionate and empathetic nature of humans",
-          "examples": [
-            "The humanity of the volunteers who rushed to help the victims of the natural disaster was truly inspiring."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "humidity",
-      "word": "humidity",
-      "senses": [
-        {
-          "id": "sense-145125ef",
-          "pos": "noun",
-          "meaningZh": "濕度；空氣含水量",
-          "definitionEn": "the amount of water vapor present in the air",
-          "examples": [
-            "The high humidity made the summer afternoon feel sticky and uncomfortable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "hurricane",
       "word": "hurricane",
       "senses": [
         {
-          "id": "sense-20cd2521",
-          "pos": "noun",
+          "id": "sense-459a89a9",
+          "pos": "n.",
           "meaningZh": "颶風；強烈熱帶氣旋",
-          "definitionEn": "a severe tropical cyclone usually with heavy rains and winds moving at 73-136 knots (12 on the Beaufort scale).",
           "examples": [
             "As the hurricane approached the coast, residents were urged to evacuate to safer areas."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hush",
       "word": "hush",
       "senses": [
         {
-          "id": "sense-fd173111",
-          "pos": "verb",
+          "id": "sense-51520630",
+          "pos": "v.",
           "meaningZh": "使安靜；叫人別出聲",
-          "definitionEn": "cause to be quiet or not talk",
           "examples": [
             "The librarian raised her hand to hush the noisy students in the library."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-58ec4dd1",
-          "pos": "verb",
+          "id": "sense-6ba9e3d8",
+          "pos": "v.",
           "meaningZh": "安靜下來；噤聲",
-          "definitionEn": "become quiet or still; fall silent",
           "examples": [
             "Everyone in the library asked him to hush after he started talking loudly on his phone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hydrogen",
       "word": "hydrogen",
       "senses": [
         {
-          "id": "sense-970d7a6b",
-          "pos": "noun",
+          "id": "sense-13a93727",
+          "pos": "n.",
           "meaningZh": "氫；氫元素",
-          "definitionEn": "The simplest, lightest, and most abundant element in the universe. Hydrogen is a nonmetallic, univalent element, normally a colorless and odorless highly flammable diatomic gas.",
           "examples": [
             "Burning hydrogen in a rocket engine produces thrust, making it a popular fuel choice for space vehicles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "identical",
       "word": "identical",
       "senses": [
         {
-          "id": "sense-e71f8c32",
-          "pos": "adjective",
+          "id": "sense-181ef978",
+          "pos": "adj.",
           "meaningZh": "完全相同的；一模一樣的",
-          "definitionEn": "exactly the same or very similar",
           "examples": [
             "The two twins were wearing identical outfits, making it difficult to tell them apart."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L1",
-        "textbookTitle": "龍騰 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "identification",
       "word": "identification",
       "senses": [
         {
-          "id": "sense-9dac752b",
-          "pos": "noun",
+          "id": "sense-5b8beaab",
+          "pos": "n.",
           "meaningZh": "身分確認；識別",
-          "definitionEn": "the condition or act of establishing or designating the identity of something or someone",
           "examples": [
             "During the security check at the airport, passengers are required to show a valid form of identification such as a passport or driver's license before boarding the plane."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6fbbf087",
-          "pos": "noun",
+          "id": "sense-29c7fc07",
+          "pos": "n.",
           "meaningZh": "認同；自我投射",
-          "definitionEn": "the act of attributing to oneself the qualities or traits of someone else, either consciously or unconsciously",
           "examples": [
             "Mia's constant imitation of her favorite singer's hairstyle and clothing choices was a clear case of identification."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5 +1",
-        "textbookTitle": "三民 B4·L5、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "identify",
       "word": "identify",
       "senses": [
         {
-          "id": "sense-90abfb8c",
-          "pos": "verb",
+          "id": "sense-f7ecd749",
+          "pos": "v.",
           "meaningZh": "辨識；認出",
-          "definitionEn": "to find and be able to describe someone or something.",
           "examples": [
             "The detective was able to identify the suspect based on the fingerprints found at the crime scene."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b5e5e28b",
-          "pos": "verb",
+          "id": "sense-a7973c6a",
+          "pos": "v.",
           "meaningZh": "確認身分；證明是誰",
-          "definitionEn": "to say or prove who or what someone or something is.",
           "examples": [
             "The detective was able to identify the suspect through the fingerprint evidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L5 +1",
-        "textbookTitle": "三民 B4·L5、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "idiom",
       "word": "idiom",
       "senses": [
         {
-          "id": "sense-7766645b",
-          "pos": "noun",
+          "id": "sense-dd829e3b",
+          "pos": "n.",
           "meaningZh": "慣用語；成語",
-          "definitionEn": "an expression or phrase whose meaning cannot be understood based on the individual words used",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-0fd1cf08",
-          "pos": "noun",
+          "id": "sense-99d0b868",
+          "pos": "n.",
           "meaningZh": "行話；專業用語",
-          "definitionEn": "a set of words or phrases that are used in a particular profession or by a specific group of people",
           "examples": [
             "The legal idiom ’pro bono’ is commonly used among lawyers to refer to providing free legal services to clients who cannot afford it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "idle",
       "word": "idle",
       "senses": [
         {
-          "id": "sense-19b90bea",
-          "pos": "adjective",
+          "id": "sense-8500621e",
+          "pos": "adj.",
           "meaningZh": "閒置的；無所事事的",
-          "definitionEn": "not working or being used; doing nothing",
           "examples": [
             "The machines stood idle during the strike."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6a23d3f4",
-          "pos": "adjective",
+          "id": "sense-a794bc88",
+          "pos": "adj.",
           "meaningZh": "無根據的；毫無理性的",
-          "definitionEn": "without a rational basis",
           "examples": [
             "His arguments were idle, lacking any evidence or logical reasoning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "idol",
       "word": "idol",
       "senses": [
         {
-          "id": "sense-5fc5d414",
-          "pos": "noun",
+          "id": "sense-050b4714",
+          "pos": "n.",
           "meaningZh": "偶像；崇拜對象",
-          "definitionEn": "someone who is adored blindly and excessively",
           "examples": [
             "The popstar became Mary's biggest idol during her teenage years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-eebacb7a",
-          "pos": "noun",
+          "id": "sense-f51d9a7a",
+          "pos": "n.",
           "meaningZh": "完美典範；理想化身",
-          "definitionEn": "an ideal instance; a perfect embodiment of a concept",
           "examples": [
             "The idol of generosity, she donated a significant portion of her wealth to various charitable organizations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ignorance",
       "word": "ignorance",
       "senses": [
         {
-          "id": "sense-63dd0d38",
-          "pos": "noun",
+          "id": "sense-253eb558",
+          "pos": "n.",
           "meaningZh": "無知；不了解",
-          "definitionEn": "lack of knowledge or understanding about something",
           "examples": [
             "When discussing climate change, it is important to address people's ignorance by providing them with accurate scientific information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-18afc6f9",
-          "pos": "noun",
+          "id": "sense-8ef09d59",
+          "pos": "n.",
           "meaningZh": "缺乏資訊；不知情",
-          "definitionEn": "lack of information about something",
           "examples": [
             "The student failed the test due to his ignorance on the topic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2",
-        "textbookTitle": "龍騰 B1·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ignorant",
       "word": "ignorant",
       "senses": [
         {
-          "id": "sense-3763cf4e",
-          "pos": "adjective",
+          "id": "sense-4b4d8b0a",
+          "pos": "adj.",
           "meaningZh": "無知；欠缺知識",
-          "definitionEn": "lacking knowledge or expertise in a particular field or subject",
           "examples": [
             "Despite attending multiple science classes, I remained ignorant about basic chemistry principles."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-d0d0893b",
-          "pos": "adjective",
+          "id": "sense-280a738f",
+          "pos": "adj.",
           "meaningZh": "渾然不知；不察覺",
-          "definitionEn": "unaware due to a lack of relevant information or knowledge",
           "examples": [
             "Although she went to school in the city, the girl was ignorant of the fact that cows produce milk."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "illustrate",
       "word": "illustrate",
       "senses": [
         {
-          "id": "sense-2aa0030a",
-          "pos": "verb",
+          "id": "sense-87fb9c77",
+          "pos": "v.",
           "meaningZh": "舉例說明；闡釋",
-          "definitionEn": "give examples to help to explain or prove something",
           "examples": [
             "To better illustrate my point, let's consider the following scenario: Imagine you are teaching a biology class and you want to explain the process of photosynthesis. To illustrate this, you can use a visual representation such as a diagram or a series of images showcasing the different stages of photosynthesis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4f2879e2",
-          "pos": "verb",
+          "id": "sense-9b9803c7",
+          "pos": "v.",
           "meaningZh": "配圖說明；繪製插圖",
-          "definitionEn": "provide pictures or diagrams to accompany an explanation or description",
           "examples": [
             "The biology teacher used a detailed diagram to illustrate the process of photosynthesis."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "illustration",
       "word": "illustration",
       "senses": [
         {
-          "id": "sense-734cfc8e",
-          "pos": "noun",
+          "id": "sense-9f5d91fe",
+          "pos": "n.",
           "meaningZh": "插畫；圖解",
-          "definitionEn": "visual art that depicts a subject or concept to make it clear or engaging",
           "examples": [
             "The children's book was filled with beautiful illustrations of animals and plants, helping young readers easily understand and connect with the story."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f49cfa13",
-          "pos": "noun",
+          "id": "sense-700387e3",
+          "pos": "n.",
           "meaningZh": "說明圖；示意圖",
-          "definitionEn": "a picture or diagram used to make something easier to understand or more attractive",
           "examples": [
             "The textbook included helpful illustrations that helped explain complex concepts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L2 +1",
-        "textbookTitle": "龍騰 B5·L2、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imaginary",
       "word": "imaginary",
       "senses": [
         {
-          "id": "sense-119061c1",
-          "pos": "adjective",
+          "id": "sense-a3954687",
+          "pos": "adj.",
           "meaningZh": "虛構的；想像中的",
-          "definitionEn": "existing only in the imagination; not real",
           "examples": [
             "Sarah loved to read fantasy novels filled with mythical creatures and imaginary worlds."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9ef620e0",
-          "pos": "noun",
+          "id": "sense-7147646c",
+          "pos": "n.",
           "meaningZh": "（數學）虛數",
-          "definitionEn": "(mathematics) a complex number represented in the form a+bi, where a and b are real numbers and i is the square root of -1",
           "examples": [
             "In the equation x^2 + 6x + 9 = 0, the solutions are imaginary since the discriminant is negative."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imaginative",
       "word": "imaginative",
       "senses": [
         {
-          "id": "sense-66918a4b",
-          "pos": "adjective",
+          "id": "sense-9c511d9f",
+          "pos": "adj.",
           "meaningZh": "富想像力的；有創意的",
-          "definitionEn": "Having or showing creativity or inventiveness",
           "examples": [
             "The aspiring artist painted a vibrant and imaginative masterpiece, combining colors and shapes in ways that dazzled the viewers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5 +1",
-        "textbookTitle": "龍騰 B2·L5、三民 B2·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imitate",
       "word": "imitate",
       "senses": [
         {
-          "id": "sense-b9ad02f5",
-          "pos": "verb",
+          "id": "sense-aea79cac",
+          "pos": "v.",
           "meaningZh": "模仿；仿效",
-          "definitionEn": "to copy the behavior, mannerisms, or appearance of someone or something",
           "examples": [
             "During the school play, Emily imitated her favorite actor by walking, talking, and dressing just like him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-2bfdd42d",
-          "pos": "verb",
+          "id": "sense-fcb1d1b8",
+          "pos": "v.",
           "meaningZh": "仿照；模擬",
-          "definitionEn": "to resemble or simulate the behavior or appearance of someone or something",
           "examples": [
             "In the school play, Sarah tried to imitate her favorite actress by copying her mannerisms and speaking style."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imitation",
       "word": "imitation",
       "senses": [
         {
-          "id": "sense-4502dce7",
-          "pos": "noun",
+          "id": "sense-4cc99047",
+          "pos": "n.",
           "meaningZh": "模仿；仿效",
-          "definitionEn": "the act of copying the behavior or actions of someone else",
           "examples": [
             "The comedian’s imitation of the politician’s mannerisms had the crowd roaring with laughter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-f6dc5106",
-          "pos": "noun",
+          "id": "sense-a0de94a6",
+          "pos": "n.",
           "meaningZh": "滑稽模仿；惟妙惟肖的學樣",
-          "definitionEn": "a representation of a person that exaggerates their traits or behavior for comic effect",
           "examples": [
             "The comedian’s imitation of the President’s speech left the audience in stitches."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "immigrant",
       "word": "immigrant",
       "senses": [
         {
-          "id": "sense-ff8895a7",
-          "pos": "noun",
+          "id": "sense-2aed5bab",
+          "pos": "n.",
           "meaningZh": "移民；外來移居者",
-          "definitionEn": "a person who comes to live permanently in a foreign country because of social, economic, or political reasons",
           "examples": [
             "My great-grandfather was an immigrant who came to America to escape poverty and persecution in his homeland."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "immigrate",
       "word": "immigrate",
       "senses": [
         {
-          "id": "sense-94ee3239",
-          "pos": "verb",
+          "id": "sense-19dc0096",
+          "pos": "v.",
           "meaningZh": "移民（至他國）；定居外國",
-          "definitionEn": "to come into a new country and establish permanent residency",
           "examples": [
             "After years of dreaming about a better life, Maria decided to immigrate to Canada to seek new opportunities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-332cd84f",
-          "pos": "verb",
+          "id": "sense-d151ff72",
+          "pos": "v.",
           "meaningZh": "遷移；跨國移居",
-          "definitionEn": "to move from one place to another, especially across national borders",
           "examples": [
             "Marta decided to immigrate to the United States in search of better job opportunities and a higher standard of living."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "immigration",
       "word": "immigration",
       "senses": [
         {
-          "id": "sense-9e9853fa",
-          "pos": "noun",
+          "id": "sense-4eccc556",
+          "pos": "n.",
           "meaningZh": "移民；入境移居",
-          "definitionEn": "the act of coming to live permanently in a foreign country",
           "examples": [
             "John's decision to embark on immigration was driven by a desire for better career opportunities and a higher standard of living."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-877a826f",
-          "pos": "noun",
+          "id": "sense-94e3c763",
+          "pos": "n.",
           "meaningZh": "移民人口；移入群體",
-          "definitionEn": "the body of immigrants arriving during a specified interval or in a particular place",
           "examples": [
             "The city experienced a significant increase in population due to immigration from various countries."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "impact",
       "word": "impact",
       "senses": [
         {
-          "id": "sense-12c43c53",
-          "pos": "noun",
+          "id": "sense-9ce73d53",
+          "pos": "n.",
           "meaningZh": "影響；衝擊",
-          "definitionEn": "a strong effect that something has on a situation, process, or person",
           "examples": [
             "The impact of the earthquake was devastating, causing widespread destruction and loss of life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-30708402",
-          "pos": "noun",
+          "id": "sense-c3aed302",
+          "pos": "n.",
           "meaningZh": "撞擊；衝擊力",
-          "definitionEn": "the act of one object colliding with another",
           "examples": [
             "The impact of the car crash was so severe that both vehicles were completely destroyed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "imply",
       "word": "imply",
       "senses": [
         {
-          "id": "sense-d2b08826",
-          "pos": "verb",
+          "id": "sense-14596c43",
+          "pos": "v.",
           "meaningZh": "暗示；示意",
-          "definitionEn": "to suggest something, without saying it directly",
           "examples": [
             "When Sarah said she was too busy to go to the party, it implied that she didn't want to go."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-4820df28",
-          "pos": "verb",
+          "id": "sense-968569f3",
+          "pos": "v.",
           "meaningZh": "意味著；蘊含",
-          "definitionEn": "to have something as a logical result or necessary part",
           "examples": [
             "His sudden departure from the party implied his dissatisfaction with the event."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "impose",
       "word": "impose",
       "senses": [
         {
-          "id": "sense-b78d1897",
-          "pos": "verb",
+          "id": "sense-1372e6dc",
+          "pos": "v.",
           "meaningZh": "強加；施行（規定或命令）",
-          "definitionEn": "put in place or require by authority",
           "examples": [
             "The government decided to impose a curfew to ensure public safety during the pandemic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-6b62522e",
-          "pos": "verb",
+          "id": "sense-5f4fd7d3",
+          "pos": "v.",
           "meaningZh": "強迫；勒令",
-          "definitionEn": "compel someone to do something",
           "examples": [
             "The teacher imposed a deadline on the students to submit their assignments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "impression",
       "word": "impression",
       "senses": [
         {
-          "id": "sense-dddf30cf",
-          "pos": "noun",
+          "id": "sense-497cad97",
+          "pos": "n.",
           "meaningZh": "印象；外在觀感",
-          "definitionEn": "an outward appearance",
           "examples": [
             "She gave the impression of being confident, but deep down she was filled with anxiety."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L3 +1",
-        "textbookTitle": "龍騰 B1·L3、翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "incident",
       "word": "incident",
       "senses": [
         {
-          "id": "sense-e6627adf",
-          "pos": "noun",
+          "id": "sense-c3bde7bf",
+          "pos": "n.",
           "meaningZh": "事件；事故",
-          "definitionEn": "an event, especially one that is unusual or unpleasant",
           "examples": [
             "The police are investigating the shooting incident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-75a2a0cc",
-          "pos": "adjective",
+          "id": "sense-d1f53760",
+          "pos": "adj.",
           "meaningZh": "事故的；事件相關的",
-          "definitionEn": "relating to an event or occurrence",
           "examples": [
             "The police are currently investigating the incident that occurred last night."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L6 +1",
-        "textbookTitle": "龍騰 B2·L6、三民 B2·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "including",
+      "word": "including",
+      "senses": [
+        {
+          "id": "sense-50aac50d",
+          "pos": "v.",
+          "meaningZh": "包含；涵蓋",
+          "examples": [
+            "The ingredients for the salad include lettuce, tomatoes, and cucumbers."
+          ]
+        },
+        {
+          "id": "sense-5e12ac96",
+          "pos": "v.",
+          "meaningZh": "包括在內；含括",
+          "examples": [
+            "When planning a family vacation, make sure to include activities that cater to everyone's interests."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "incredible",
+      "word": "incredible",
+      "senses": [
+        {
+          "id": "sense-1fa75964",
+          "pos": "adj.",
+          "meaningZh": "驚人的；了不起的",
+          "examples": [
+            "The performance of the gymnast was incredible, she executed the routine flawlessly and left the audience in awe."
+          ]
+        },
+        {
+          "id": "sense-401b9624",
+          "pos": "adj.",
+          "meaningZh": "難以置信的；不可思議的",
+          "examples": [
+            "The view from the top of the mountain was incredible. It was so breathtaking and stunning that it was beyond belief or understanding."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "indication",
+      "word": "indication",
+      "senses": [
+        {
+          "id": "sense-4fcbf3f9",
+          "pos": "n.",
+          "meaningZh": "跡象；徵兆",
+          "examples": [
+            "The dark clouds were an indication that it might rain soon."
+          ]
+        },
+        {
+          "id": "sense-447c8f94",
+          "pos": "n.",
+          "meaningZh": "指示；標示",
+          "examples": [
+            "The sudden dark clouds and the distant sound of thunder are an indication of an approaching storm."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "infant",
+      "word": "infant",
+      "senses": [
+        {
+          "id": "sense-36e4919b",
+          "pos": "n.",
+          "meaningZh": "嬰兒；未滿一歲的幼兒",
+          "examples": [
+            "The new parents were filled with joy as they cradled their adorable infant in their arms."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "infection",
+      "word": "infection",
+      "senses": [
+        {
+          "id": "sense-6e87818e",
+          "pos": "n.",
+          "meaningZh": "感染；病菌侵入",
+          "examples": []
+        },
+        {
+          "id": "sense-b8584a34",
+          "pos": "n.",
+          "meaningZh": "傳染；病菌傳播",
+          "examples": [
+            "After being in close contact with a sick coworker who had the flu, Sarah unfortunately contracted the infection and became ill."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

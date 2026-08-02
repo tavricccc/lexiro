@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { dictionaryAudio, dictionaryDefinitions, lookupDictionary } from '@/lib/dictionary'
 
 const entry = {
@@ -12,16 +12,6 @@ const entry = {
 }
 
 describe('dictionary client', () => {
-  beforeEach(() => {
-    const values = new Map<string, string>()
-    vi.stubGlobal('localStorage', {
-      getItem: (key: string) => values.get(key) ?? null,
-      setItem: (key: string, value: string) => values.set(key, value),
-      removeItem: (key: string) => values.delete(key),
-    })
-    vi.restoreAllMocks()
-  })
-
   it('normalizes audio and definition details', () => {
     expect(dictionaryAudio(entry)).toBe('https://example.com/abandon.mp3')
     expect(dictionaryDefinitions(entry)).toEqual([{

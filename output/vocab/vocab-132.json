@@ -1,1408 +1,673 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 132,
   "words": [
-    {
-      "wordKey": "accelerate",
-      "word": "accelerate",
-      "senses": [
-        {
-          "id": "sense-41d429cc",
-          "pos": "verb",
-          "meaningZh": "加速（使物加快）",
-          "definitionEn": "cause to move faster",
-          "examples": [
-            "The race car driver stepped on the accelerator to accelerate the car’s speed around the track."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L5",
-        "textbookTitle": "龍騰 B5·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "accessible",
-      "word": "accessible",
-      "senses": [
-        {
-          "id": "sense-ec9c8537",
-          "pos": "adjective",
-          "meaningZh": "易懂的；平易近人的",
-          "definitionEn": "capable of being understood; comprehensible",
-          "examples": [
-            "The teacher made sure to use accessible language so that all the students could understand the lesson."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-28d88149",
-          "pos": "adjective",
-          "meaningZh": "可進入的；無障礙的",
-          "definitionEn": "capable of being reached or entered",
-          "examples": [
-            "The new building has ramps and elevators to make it easily accessible for people with disabilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "accommodate",
-      "word": "accommodate",
-      "senses": [
-        {
-          "id": "sense-0cf69be6",
-          "pos": "verb",
-          "meaningZh": "容納；提供空間",
-          "definitionEn": "have enough space or room for something or someone without feeling too tight or crowded",
-          "examples": [
-            "The hotel can accommodate up to 500 guests for the conference, providing ample space and comfort for everyone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-98a35ef7",
-          "pos": "verb",
-          "meaningZh": "滿足需求；配合",
-          "definitionEn": "provide someone with something they need or want",
-          "examples": [
-            "The hotel was able to accommodate our request for a room with an ocean view."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "accommodation",
-      "word": "accommodation",
-      "senses": [
-        {
-          "id": "sense-562cda88",
-          "pos": "noun",
-          "meaningZh": "住宿；膳宿",
-          "definitionEn": "the act of providing lodging, seat or food to meet a need",
-          "examples": [
-            "The hotel provided comfortable accommodation to the travelers who were stranded due to the flight cancellation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-c7628257",
-          "pos": "noun",
-          "meaningZh": "住宿設施；客房",
-          "definitionEn": "living quarters provided for public convenience",
-          "examples": [
-            "The hotel had different types of accommodation, ranging from single rooms to spacious suites with balconies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L9",
-        "textbookTitle": "龍騰 B3·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "accord",
-      "word": "accord",
-      "senses": [
-        {
-          "id": "sense-0d7bd1d0",
-          "pos": "noun",
-          "meaningZh": "協議；一致意見",
-          "definitionEn": "concurrence of opinion",
-          "examples": [
-            "After much discussion, the committee came to an accord on the best way to proceed with the project."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-53ae824d",
-          "pos": "verb",
-          "meaningZh": "符合；一致",
-          "definitionEn": "be harmonious or consistent with",
-          "examples": [
-            "His actions were not in accord with his words, making it difficult for others to trust him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "accounting",
       "word": "accounting",
       "senses": [
         {
-          "id": "sense-b7d465a3",
-          "pos": "noun",
+          "id": "sense-bb71ddeb",
+          "pos": "n.",
           "meaningZh": "會計；會計學",
-          "definitionEn": "a system that provides financial information in numerical form",
           "examples": [
             "The accounting department of the company prepares financial statements, such as the balance sheet and income statement, which provide a numerical summary of the company’s financial performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2bae1496",
-          "pos": "noun",
+          "id": "sense-251d939e",
+          "pos": "n.",
           "meaningZh": "說明；解釋（財務）",
-          "definitionEn": "an explanation that reveals the underlying reasons for something, often used in a financial or business context",
           "examples": [
             "The accounting department provided a detailed accounting of the company’s finances, highlighting the sources of income and the areas where expenses could be reduced."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acquaint",
       "word": "acquaint",
       "senses": [
         {
-          "id": "sense-d22918eb",
-          "pos": "verb",
+          "id": "sense-d0f5d00c",
+          "pos": "v.",
           "meaningZh": "使熟悉；了解",
-          "definitionEn": "make familiar or conversant with",
           "examples": [
             "When I started my new job, it took some time to acquaint myself with the company's procedures and policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-a60f01f4",
-          "pos": "verb",
+          "id": "sense-40fd4c2d",
+          "pos": "v.",
           "meaningZh": "結識；介紹認識",
-          "definitionEn": "cause to come to know personally",
           "examples": [
             "After moving to a new city, it is important to acquaint yourself with the local customs and traditions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acquisition",
       "word": "acquisition",
       "senses": [
         {
-          "id": "sense-8bf49338",
-          "pos": "noun",
+          "id": "sense-0d645d60",
+          "pos": "n.",
           "meaningZh": "收購；習得",
-          "definitionEn": "the act of acquiring something, such as a skill or possession",
           "examples": [
             "The company made a strategic acquisition of a smaller competitor to expand its market presence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b07d6029",
-          "pos": "noun",
+          "id": "sense-50899261",
+          "pos": "n.",
           "meaningZh": "所取得之物；新增資產",
-          "definitionEn": "something that has been acquired",
           "examples": [
             "After years of hard work, he finally made the acquisition of his dream house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "activist",
       "word": "activist",
       "senses": [
         {
-          "id": "sense-678fed45",
-          "pos": "noun",
+          "id": "sense-608702cd",
+          "pos": "n.",
           "meaningZh": "社會運動人士；倡議者",
-          "definitionEn": "a person who campaigns to bring about political or social change",
           "examples": [
             "The activist protested outside of the government building, demanding change in the healthcare system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6f8c2265",
-          "pos": "adjective",
+          "id": "sense-9d755627",
+          "pos": "adj.",
           "meaningZh": "倡議的；推動社會改革的",
-          "definitionEn": "supporting or advocating for political or social change through direct action",
           "examples": [
             "A group of climate activists staged a protest outside the government building to demand action on reducing greenhouse gas emissions."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "acute",
       "word": "acute",
       "senses": [
         {
-          "id": "sense-20332674",
-          "pos": "adjective",
+          "id": "sense-6416f090",
+          "pos": "adj.",
           "meaningZh": "急性的；急發的",
-          "definitionEn": "having or experiencing a rapid onset and short but severe course",
           "examples": [
             "The patient presented with acute chest pain, shortness of breath, and a rapid heart rate, indicating a possible cardiac emergency."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8de2cf23",
-          "pos": "adjective",
+          "id": "sense-c50d49ff",
+          "pos": "adj.",
           "meaningZh": "劇烈的；強烈的",
-          "definitionEn": "extremely sharp or intense",
           "examples": [
             "The pain in my chest was so acute that it took my breath away."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "administration",
       "word": "administration",
       "senses": [
         {
-          "id": "sense-9aee52f2",
-          "pos": "noun",
+          "id": "sense-90324002",
+          "pos": "n.",
           "meaningZh": "行政；治理",
-          "definitionEn": "the act of governing or exercising authority",
           "examples": [
             "The new president was tasked with the administration of the country, making decisions and implementing policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4a2e0099",
-          "pos": "noun",
+          "id": "sense-c98d8609",
+          "pos": "n.",
           "meaningZh": "給藥；投藥",
-          "definitionEn": "the act of giving out medication",
           "examples": [
             "The nurse was responsible for the administration of medication to the patients throughout the day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "administrative",
       "word": "administrative",
       "senses": [
         {
-          "id": "sense-fbe739e5",
-          "pos": "adjective",
+          "id": "sense-3d0892b9",
+          "pos": "adj.",
           "meaningZh": "行政的；管理事務的",
-          "definitionEn": "related to the work of managing a company or organization, including organizing its activities and supervising its employees.",
           "examples": [
             "As the administrative assistant, Sarah was responsible for scheduling meetings, coordinating employee attendance, and managing office supplies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3941d3a4",
-          "pos": "adjective",
+          "id": "sense-24e1bac0",
+          "pos": "adj.",
           "meaningZh": "行政管理的；組織管理的",
-          "definitionEn": "relating to the organization and management of a government, business, or institution.",
           "examples": [
             "In his role as an administrative assistant, John is responsible for scheduling meetings, managing correspondence, and maintaining records for the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "administrator",
       "word": "administrator",
       "senses": [
         {
-          "id": "sense-42160bff",
-          "pos": "noun",
+          "id": "sense-8968a383",
+          "pos": "n.",
           "meaningZh": "行政人員；主管",
-          "definitionEn": "a person who manages or supervises a government agency or department",
           "examples": [
             "The administrator of the Environmental Protection Agency implemented new regulations to reduce pollution in the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-b21951ec",
-          "pos": "noun",
+          "id": "sense-c52cb620",
+          "pos": "n.",
           "meaningZh": "（法律）遺產管理人",
-          "definitionEn": "a legal representative appointed by a probate court to distribute the estate of a deceased person who did not specify an executor or write a will",
           "examples": [
             "After the death of his uncle, John became the administrator of his estate as he did not leave behind a will or an appointed executor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adolescent",
       "word": "adolescent",
       "senses": [
         {
-          "id": "sense-01a04e00",
-          "pos": "adjective",
+          "id": "sense-df0df3e4",
+          "pos": "adj.",
           "meaningZh": "青春期的；青少年的",
-          "definitionEn": "relating to or characteristic of adolescence",
           "examples": [
             "The adolescent years are often a time of great change and self-discovery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-8f67ddeb",
-          "pos": "noun",
+          "id": "sense-d4ab4c27",
+          "pos": "n.",
           "meaningZh": "青少年；青春期的人",
-          "definitionEn": "a young person who is between puberty and adulthood",
           "examples": [
             "During his adolescent years, he struggled to fit in with his peers while also trying to discover his own identity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adore",
       "word": "adore",
       "senses": [
         {
-          "id": "sense-381733e1",
-          "pos": "verb",
+          "id": "sense-30be5a4c",
+          "pos": "v.",
           "meaningZh": "深愛；疼愛",
-          "definitionEn": "to love or admire someone or something very much",
           "examples": [
             "She adores her little sister and spends hours playing with her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7",
-        "textbookTitle": "龍騰 B3·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "adverse",
       "word": "adverse",
       "senses": [
         {
-          "id": "sense-37c11f33",
-          "pos": "adjective",
+          "id": "sense-76a9eb37",
+          "pos": "adj.",
           "meaningZh": "不利的；有害的",
-          "definitionEn": "contrary to your interests or welfare",
           "examples": [
             "The adverse weather conditions made it impossible for the farmers to harvest their crops on time."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-da4cbca9",
-          "pos": "adjective",
+          "id": "sense-20a98835",
+          "pos": "adj.",
           "meaningZh": "相反方向的；逆向的",
-          "definitionEn": "in an opposing direction",
           "examples": [
             "The wind blew adverse to the direction we wanted to sail."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "advocate",
       "word": "advocate",
       "senses": [
         {
-          "id": "sense-f3440e52",
-          "pos": "noun",
+          "id": "sense-9a8a9cca",
+          "pos": "n.",
           "meaningZh": "倡導者；支持者",
-          "definitionEn": "a person who publicly supports or recommends a particular cause or policy",
           "examples": [
             "The environmentalist advocates for the protection of endangered species."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c7169b3a",
-          "pos": "noun",
+          "id": "sense-e27093e2",
+          "pos": "n.",
           "meaningZh": "辯護律師；代言人",
-          "definitionEn": "a person who pleads for another person, as in a legal or ecclesiastical court",
           "examples": [
             "The lawyer acted as an advocate for her client, arguing for their innocence in front of the judge."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "affection",
       "word": "affection",
       "senses": [
         {
-          "id": "sense-9b7a6cac",
-          "pos": "noun",
+          "id": "sense-a09a0c98",
+          "pos": "n.",
           "meaningZh": "情感；喜愛；依戀",
-          "definitionEn": "a fondness, liking, or attachment to a person, animal, or thing",
           "examples": [
             "Despite her busy schedule, Jane always made time to show affection towards her dog by taking him for walks, playing with him, and giving him love and attention."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L7 +1",
-        "textbookTitle": "龍騰 B3·L7、三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "agenda",
       "word": "agenda",
       "senses": [
         {
-          "id": "sense-8a64801d",
-          "pos": "noun",
+          "id": "sense-c819de41",
+          "pos": "n.",
           "meaningZh": "議程；日程",
-          "definitionEn": "a temporally organized plan for matters to be attended to",
           "examples": [
             "I suggest we create an agenda before the meeting so that we can cover all the important points."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9e0ec4fd",
-          "pos": "noun",
+          "id": "sense-a3e4c851",
+          "pos": "n.",
           "meaningZh": "議事項目；議程表",
-          "definitionEn": "a list of matters to be taken up (as at a meeting)",
           "examples": [
             "Before the meeting started, the chairperson distributed a copy of the agenda to everyone in attendance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aggression",
       "word": "aggression",
       "senses": [
         {
-          "id": "sense-6bd67868",
-          "pos": "noun",
+          "id": "sense-fc5e3ccc",
+          "pos": "n.",
           "meaningZh": "挑釁；侵略行為",
-          "definitionEn": "the act of initiating hostilities or attacking someone or something",
           "examples": [
             "The football player was known for his aggression on the field, often starting fights with opposing players."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-400b4ac4",
-          "pos": "noun",
+          "id": "sense-f0098660",
+          "pos": "n.",
           "meaningZh": "攻擊性；好戰傾向",
-          "definitionEn": "the tendency to act in a hostile way, often with violent intent",
           "examples": [
             "The hostility shown by the football fans towards the opposing team was a clear display of aggression."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "agony",
       "word": "agony",
       "senses": [
         {
-          "id": "sense-b3ed3a50",
-          "pos": "noun",
+          "id": "sense-449fcb50",
+          "pos": "n.",
           "meaningZh": "極度痛苦；煎熬",
-          "definitionEn": "Intense mental or physical suffering",
           "examples": [
             "She was doubled over in agony after the accident."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0f6edf11",
-          "pos": "noun",
+          "id": "sense-82188e11",
+          "pos": "n.",
           "meaningZh": "劇痛；苦不堪言",
-          "definitionEn": "A state of acute and persistent pain",
           "examples": [
             "After twisting her ankle, Mary lay on the ground in agony as she waited for the ambulance to arrive."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L6",
-        "textbookTitle": "三民 B4·L6"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "agricultural",
       "word": "agricultural",
       "senses": [
         {
-          "id": "sense-e437ac6a",
-          "pos": "adjective",
+          "id": "sense-99cdc01c",
+          "pos": "adj.",
           "meaningZh": "農業的；農耕的",
-          "definitionEn": "related to or involved in agriculture or farming, such as planting and harvesting crops or raising livestock",
           "examples": [
             "John’s family has been in the agricultural business for generations. They raise crops and livestock on their farm and sell them at the local farmer’s market."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-493d9f8b",
-          "pos": "adjective",
+          "id": "sense-bc9e0d49",
+          "pos": "adj.",
           "meaningZh": "農村的；鄉村的",
-          "definitionEn": "related to rural areas, such as the countryside or small towns and villages",
           "examples": [
             "The agricultural fair in the small town showcased locally grown produce and livestock."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L3 +1",
-        "textbookTitle": "龍騰 B5·L3、三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "aisle",
       "word": "aisle",
       "senses": [
         {
-          "id": "sense-7ee39384",
-          "pos": "noun",
+          "id": "sense-b34723b4",
+          "pos": "n.",
           "meaningZh": "走道；通道",
-          "definitionEn": "a passageway between seating areas, as in an auditorium or passenger vehicle, or between areas of shelves of goods, as in stores",
           "examples": [
             "I always choose an aisle seat when I fly, as it allows me to easily stretch my legs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5c0e3f41",
-          "pos": "noun",
+          "id": "sense-51c04bf1",
+          "pos": "n.",
           "meaningZh": "（教堂）側廊",
-          "definitionEn": "a part of a church that is divided laterally from the nave proper by rows of pillars or columns",
           "examples": [
             "The bride walked down the aisle of the church, guided by her father as all eyes in the congregation turned toward her."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alcoholic",
       "word": "alcoholic",
       "senses": [
         {
-          "id": "sense-bf402089",
-          "pos": "adjective",
+          "id": "sense-ce81176d",
+          "pos": "adj.",
           "meaningZh": "含酒精的；酒精性的",
-          "definitionEn": "containing or relating to alcohol",
           "examples": [
             "The bartender mixed several alcoholic drinks including martinis and daiquiris."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2a854196",
-          "pos": "noun",
+          "id": "sense-ab4c2e0a",
+          "pos": "n.",
           "meaningZh": "酗酒者；酒癮患者",
-          "definitionEn": "a person who is addicted to alcohol and drinks excessively",
           "examples": [
             "After losing his job, John turned to alcohol to cope with his stress and eventually became an alcoholic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L5",
-        "textbookTitle": "翰林 B1·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alien",
       "word": "alien",
       "senses": [
         {
-          "id": "sense-2920731f",
-          "pos": "noun",
+          "id": "sense-b746bbd7",
+          "pos": "n.",
           "meaningZh": "外國人；外僑",
-          "definitionEn": "a person who comes from a foreign country",
           "examples": [
             "When Maria moved to the United States from Spain, she was an alien until she obtained her green card."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3a3d130d",
-          "pos": "noun",
+          "id": "sense-7d443f85",
+          "pos": "n.",
           "meaningZh": "格格不入者；外來者",
-          "definitionEn": "anyone who does not belong in the environment in which they are found",
           "examples": [
             "The astronaut felt like an alien on the foreign planet, unsure of the strange surroundings and the alien creatures that surrounded him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "allergic",
       "word": "allergic",
       "senses": [
         {
-          "id": "sense-87be1072",
-          "pos": "adjective",
+          "id": "sense-33b6538c",
+          "pos": "adj.",
           "meaningZh": "過敏性的；由過敏引起的",
-          "definitionEn": "caused by or relating to an allergy",
           "examples": [
             "She broke out in hives after eating shellfish, which indicated that she might be allergic to it."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2b17a08f",
-          "pos": "adjective",
+          "id": "sense-4e3e5201",
+          "pos": "adj.",
           "meaningZh": "對……過敏的",
-          "definitionEn": "having an allergy or excessive sensitivity, especially to a specific substance",
           "examples": [
             "He couldn’t eat peanuts because he was allergic to them."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "allergy",
       "word": "allergy",
       "senses": [
         {
-          "id": "sense-2f10677f",
-          "pos": "noun",
+          "id": "sense-9988c25f",
+          "pos": "n.",
           "meaningZh": "過敏反應；過敏症",
-          "definitionEn": "An abnormal reaction of the immune system to a substance, especially a particular food, pollen, or dust, resulting in itching, sneezing, or wheezing.",
           "examples": [
             "After eating shrimp, Sarah experienced an allergic reaction, with redness and swelling on her face."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f09221d7",
-          "pos": "noun",
+          "id": "sense-a8b806b7",
+          "pos": "n.",
           "meaningZh": "過敏體質；過敏症狀",
-          "definitionEn": "A condition that causes discomfort or illness to a person when they eat or come into contact with a particular substance.",
           "examples": [
             "Sarah has an allergy to peanuts, so she experiences severe itching and swelling when she accidentally consumes any food containing peanuts."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L4",
-        "textbookTitle": "龍騰 B5·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "alliance",
       "word": "alliance",
       "senses": [
         {
-          "id": "sense-11558ec2",
-          "pos": "noun",
+          "id": "sense-1bda249a",
+          "pos": "n.",
           "meaningZh": "聯盟；同盟協議",
-          "definitionEn": "a formal agreement establishing an association or alliance between nations or other groups to achieve a particular aim",
           "examples": [
             "The military alliance between the United States and South Korea aims to maintain peace and security in the Korean peninsula."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f1611aad",
-          "pos": "noun",
+          "id": "sense-171816c5",
+          "pos": "n.",
           "meaningZh": "聯盟組織；同盟國",
-          "definitionEn": "an organization of people (or countries) involved in a pact or treaty",
           "examples": [
             "The alliance formed between the two companies helped them to overcome competition and gain a larger market share."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "allocate",
       "word": "allocate",
       "senses": [
         {
-          "id": "sense-31dac106",
-          "pos": "verb",
+          "id": "sense-70491a3b",
+          "pos": "v.",
           "meaningZh": "分配；撥款",
-          "definitionEn": "to give a specific amount of time, money, etc. to someone or something for a specific purpose",
           "examples": [
             "The company plans to allocate $1 million towards research and development next year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-9b104726",
-          "pos": "verb",
+          "id": "sense-c1edecb3",
+          "pos": "v.",
           "meaningZh": "指定配給；正式分派",
-          "definitionEn": "to officially determine that something should be given to a specific person",
           "examples": [
             "The company will allocate funds for employee bonuses at the end of the year."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ally",
       "word": "ally",
       "senses": [
         {
-          "id": "sense-2f1cede0",
-          "pos": "noun",
+          "id": "sense-9efb4ad0",
+          "pos": "n.",
           "meaningZh": "盟友；同盟者",
-          "definitionEn": "an associate who provides cooperation or assistance",
           "examples": [
             "During the war, the two countries became allies, collaborating closely on military strategies and sharing resources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-35973c93",
-          "pos": "noun",
+          "id": "sense-243242c3",
+          "pos": "n.",
           "meaningZh": "盟國；友邦",
-          "definitionEn": "a friendly nation",
           "examples": [
             "During the war, Country A became a strong ally of Country B, providing military support and resources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "alongside",
+      "word": "alongside",
+      "senses": [
+        {
+          "id": "sense-71980a94",
+          "pos": "adv.",
+          "meaningZh": "並排；在旁邊",
+          "examples": [
+            "Sarah walked alongside her best friend as they strolled down the beach, enjoying the warm sand between their toes."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "alter",
+      "word": "alter",
+      "senses": [
+        {
+          "id": "sense-92607aec",
+          "pos": "v.",
+          "meaningZh": "改變；修改",
+          "examples": [
+            "She decided to alter her appearance by dyeing her hair pink."
+          ]
+        },
+        {
+          "id": "sense-ed600db2",
+          "pos": "v.",
+          "meaningZh": "調整；更動",
+          "examples": [
+            "Alice decided to alter her dress by shortening the hem and adding sequins to give it a more glamorous look."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "alternate",
+      "word": "alternate",
+      "senses": [
+        {
+          "id": "sense-316ccd95",
+          "pos": "adj.",
+          "meaningZh": "交替的；輪流的",
+          "examples": [
+            "The teacher asked the students to form two straight lines, with each student in one row taking turns to alternate as the leader of their group."
+          ]
+        },
+        {
+          "id": "sense-29d7713c",
+          "pos": "n.",
+          "meaningZh": "代替者；代理人",
+          "examples": [
+            "Samantha was sick, so her colleague acted as her alternate during the meeting."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "amend",
+      "word": "amend",
+      "senses": [
+        {
+          "id": "sense-7d6aa935",
+          "pos": "v.",
+          "meaningZh": "修正；修改",
+          "examples": [
+            "After getting feedback from his supervisor, he amended the proposal to include additional details and clarify his proposal."
+          ]
+        },
+        {
+          "id": "sense-d326f69f",
+          "pos": "v.",
+          "meaningZh": "改善；彌補過失",
+          "examples": [
+            "He amended his mistake by apologizing to his colleague."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "ample",
+      "word": "ample",
+      "senses": [
+        {
+          "id": "sense-a7c36374",
+          "pos": "adj.",
+          "meaningZh": "充裕的；寬敞的",
+          "examples": [
+            "The picnic basket was filled with ample amounts of delicious food and drinks, satisfying everyone's hunger and thirst."
+          ]
+        },
+        {
+          "id": "sense-8e7c1d08",
+          "pos": "adj.",
+          "meaningZh": "足夠的；綽綽有餘的",
+          "examples": [
+            "They had ample time to finish the project before the deadline."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

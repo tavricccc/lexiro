@@ -1,1405 +1,671 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 14,
   "words": [
-    {
-      "wordKey": "high",
-      "word": "high",
-      "senses": [
-        {
-          "id": "sense-9d9b60a0",
-          "pos": "adjective",
-          "meaningZh": "高的",
-          "definitionEn": "extending far upward; of great height",
-          "examples": [
-            "They climbed a very high mountain."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        },
-        {
-          "id": "sense-14a6c870",
-          "pos": "noun",
-          "meaningZh": "高峰；高點",
-          "definitionEn": "a lofty level or position or degree",
-          "examples": [
-            "Reaching the highest point on the mountain, she felt a sense of accomplishment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
-    },
     {
       "wordKey": "hill",
       "word": "hill",
       "senses": [
         {
-          "id": "sense-d4aece3a",
-          "pos": "noun",
+          "id": "sense-1eac1866",
+          "pos": "n.",
           "meaningZh": "小山；山丘",
-          "definitionEn": "a raised area of land, smaller than a mountain",
           "examples": [
             "We walked up the hill to see the view."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-602b2a1a",
-          "pos": "noun",
+          "id": "sense-eee04e4e",
+          "pos": "n.",
           "meaningZh": "土丘；人工土堆",
-          "definitionEn": "a pile of earth or stones that is made artificially",
           "examples": [
             "The children enjoyed rolling down the hill that was created in the park."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4d94c600",
-          "pos": "noun",
+          "id": "sense-1b8713cc",
+          "pos": "n.",
           "meaningZh": "（棒球）投手丘",
-          "definitionEn": "(in baseball) a small mound of earth from which the pitcher delivers the ball",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
-          ]
+          "examples": []
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "history",
       "word": "history",
       "senses": [
         {
-          "id": "sense-ca879698",
-          "pos": "noun",
+          "id": "sense-23d113b8",
+          "pos": "n.",
           "meaningZh": "歷史記載；史記",
-          "definitionEn": "a record or narrative description of past events",
           "examples": [
             "Studying history enables us to understand the present by learning from the past."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b4ec202f",
-          "pos": "noun",
+          "id": "sense-d656640f",
+          "pos": "n.",
           "meaningZh": "歷史學；史學",
-          "definitionEn": "the discipline that records and interprets past events involving human beings",
           "examples": [
             "Studying history is important in understanding the development of human society."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hit",
       "word": "hit",
       "senses": [
         {
-          "id": "sense-0099d718",
-          "pos": "verb",
+          "id": "sense-02fbdf09",
+          "pos": "v.",
           "meaningZh": "碰撞；撞上",
-          "definitionEn": "hit against; come into sudden contact with",
           "examples": [
             "He hit his head against the low hanging branch while taking a walk."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-636fbd5e",
-          "pos": "verb",
+          "id": "sense-16d22a3b",
+          "pos": "v.",
           "meaningZh": "擊打；打擊",
-          "definitionEn": "deal a blow to, either with the hand or with an instrument",
           "examples": [
             "He’s really good at hitting the ball with the bat."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hobby",
       "word": "hobby",
       "senses": [
         {
-          "id": "sense-11123e10",
-          "pos": "noun",
+          "id": "sense-454e4170",
+          "pos": "n.",
           "meaningZh": "嗜好；興趣",
-          "definitionEn": "an auxiliary activity or interest pursued for pleasure and relaxation",
           "examples": [
             "After a long day at work, Sarah enjoys painting as a hobby to unwind and express her creativity."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-2a84d70a",
-          "pos": "noun",
+          "id": "sense-a0bccd6a",
+          "pos": "n.",
           "meaningZh": "木馬玩具；搖搖馬",
-          "definitionEn": "a child’s toy consisting of an imitation horse mounted on rockers; the child straddles it and pretends to ride",
           "examples": [
             "As a birthday present, Emily received a beautiful hobby which she loved playing with in her imaginary stable."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hold",
       "word": "hold",
       "senses": [
         {
-          "id": "sense-698d2ef2",
-          "pos": "verb",
+          "id": "sense-69e8b56f",
+          "pos": "v.",
           "meaningZh": "握住；抓住",
-          "definitionEn": "have or hold in one’s hands or grip",
           "examples": [
             "She was holding a cup of coffee in her hand."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-e0fd43ef",
-          "pos": "verb",
+          "id": "sense-f3a88426",
+          "pos": "v.",
           "meaningZh": "承載；支撐重量",
-          "definitionEn": "be the physical support of; carry the weight of",
           "examples": [
             "He had to hold the heavy box in his arms while walking up the stairs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "holiday",
       "word": "holiday",
       "senses": [
         {
-          "id": "sense-03bdc23e",
-          "pos": "noun",
+          "id": "sense-4150885e",
+          "pos": "n.",
           "meaningZh": "假期；休假",
-          "definitionEn": "Leisure time away from work devoted to rest or pleasure.",
           "examples": [
             "After working tirelessly for months, Sarah decided to take a well-deserved holiday to a tropical island."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-6d87e367",
-          "pos": "noun",
+          "id": "sense-055f9c47",
+          "pos": "n.",
           "meaningZh": "節日；公定假日",
-          "definitionEn": "A day on which work is suspended by law or custom.",
           "examples": [
             "On Christmas Day, most people spend time with their families and exchange gifts, making it a special holiday."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "home",
       "word": "home",
       "senses": [
         {
-          "id": "sense-bd7201b4",
-          "pos": "noun",
+          "id": "sense-93aeb4e0",
+          "pos": "n.",
           "meaningZh": "家；住所",
-          "definitionEn": "the place where one lives, usually with one’s family",
           "examples": [
             "After a long day at work, I love coming home to my cozy apartment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-46bc153a",
-          "pos": "noun",
+          "id": "sense-cf7e90de",
+          "pos": "n.",
           "meaningZh": "家鄉；居住地",
-          "definitionEn": "the country, state, or city where one lives",
           "examples": [
             "After a long day at work, I look forward to returning to my home in the peaceful suburbs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "homework",
       "word": "homework",
       "senses": [
         {
-          "id": "sense-7bf3b515",
-          "pos": "noun",
+          "id": "sense-4a310135",
+          "pos": "n.",
           "meaningZh": "家庭作業；回家作業",
-          "definitionEn": "School assignments given to students to complete at home.",
           "examples": [
             "After school, Sarah sat at her desk and diligently worked on her math homework, solving equations and completing word problems."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-4cb6c30a",
-          "pos": "noun",
+          "id": "sense-9980936a",
+          "pos": "n.",
           "meaningZh": "課外功課；課後作業",
-          "definitionEn": "Preparatory school work done outside school (especially at home)",
           "examples": [
             "After finishing my classes for the day, I sat down at my desk to complete my homework assignments."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "honest",
       "word": "honest",
       "senses": [
         {
-          "id": "sense-c40f574f",
-          "pos": "adjective",
+          "id": "sense-13c44cad",
+          "pos": "adj.",
           "meaningZh": "正當的；不欺不詐的",
-          "definitionEn": "gained or earned without cheating or stealing",
           "examples": [
             "He was praised for his honest work ethic, as he always completed his tasks with integrity and never resorted to dishonest means to achieve success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-40f70a53",
-          "pos": "adjective",
+          "id": "sense-a7419aa9",
+          "pos": "adj.",
           "meaningZh": "坦誠的；不虛偽的",
-          "definitionEn": "without pretensions",
           "examples": [
             "During the job interview, she was honest about her qualifications and experience."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L9",
-        "textbookTitle": "三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "honey",
       "word": "honey",
       "senses": [
         {
-          "id": "sense-9affbfd4",
-          "pos": "noun",
+          "id": "sense-b1b33f9c",
+          "pos": "n.",
           "meaningZh": "蜂蜜",
-          "definitionEn": "a sweet, sticky, yellow-to-amber colored substance produced by bees and other insects from nectar collected from flowers",
           "examples": [
             "As John stirred a spoonful of honey into his tea, he savored the rich, sweet taste that lingered on his tongue."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hope",
       "word": "hope",
       "senses": [
         {
-          "id": "sense-c57f775c",
-          "pos": "noun",
+          "id": "sense-a8a7de0c",
+          "pos": "n.",
           "meaningZh": "希望；期盼",
-          "definitionEn": "the general feeling that some desire will be fulfilled",
           "examples": [
             "After sending out her job applications, Laura felt a sense of hope that she would receive interview invitations."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-74306931",
-          "pos": "noun",
+          "id": "sense-d1b4b021",
+          "pos": "n.",
           "meaningZh": "寄望所在；希望之源",
-          "definitionEn": "someone or something on which expectations are centered",
           "examples": [
             "After months of searching for a job, Jane finally received a call for an interview. She clung onto this glimmer of hope, believing that it could be the opportunity she had been waiting for."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "horse",
       "word": "horse",
       "senses": [
         {
-          "id": "sense-682fb3de",
-          "pos": "noun",
+          "id": "sense-a273130a",
+          "pos": "n.",
           "meaningZh": "馬",
-          "definitionEn": "a solid-hoofed, herbivorous, quadruped domesticated since prehistoric times",
           "examples": [
             "I went for a horseback ride in the mountains."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-b3d6af26",
-          "pos": "noun",
+          "id": "sense-b6e8f7e2",
+          "pos": "n.",
           "meaningZh": "騎兵；馬隊",
-          "definitionEn": "troops trained to fight on horseback",
           "examples": [
             "During the medieval period, horse was the primary means of transport for armies and horsemen were highly valued for their speed and agility on the battlefield."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hospital",
       "word": "hospital",
       "senses": [
         {
-          "id": "sense-ca29f094",
-          "pos": "noun",
+          "id": "sense-6b489824",
+          "pos": "n.",
           "meaningZh": "醫院",
-          "definitionEn": "a health facility where patients receive treatment",
           "examples": [
             "After injuring his leg, John was rushed to the hospital for immediate medical attention."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-1616a9fa",
-          "pos": "noun",
+          "id": "sense-eb49b58a",
+          "pos": "n.",
           "meaningZh": "醫療院所",
-          "definitionEn": "a medical institution where sick or injured people are given medical or surgical care",
           "examples": [
             "After breaking his leg, John was rushed to the hospital for immediate treatment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hot",
       "word": "hot",
       "senses": [
         {
-          "id": "sense-59e4c61e",
-          "pos": "adjective",
+          "id": "sense-828bab34",
+          "pos": "adj.",
           "meaningZh": "高溫的；灼熱的",
-          "definitionEn": "having a high or higher than desirable temperature; producing a sensation of heat or burning",
           "examples": [
             "After spending hours under the scorching sun, Emma's skin became hot and flushed."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d5012657",
-          "pos": "adjective",
+          "id": "sense-c1f96ee9",
+          "pos": "adj.",
           "meaningZh": "辛辣的；嗆辣的",
-          "definitionEn": "producing a burning sensation on the taste buds",
           "examples": [
             "The hot salsa made my mouth burn and my eyes water."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hotel",
       "word": "hotel",
       "senses": [
         {
-          "id": "sense-68d8bc81",
-          "pos": "noun",
+          "id": "sense-8cf978d5",
+          "pos": "n.",
           "meaningZh": "飯店；旅館",
-          "definitionEn": "a place where you can pay to stay, usually for a short amount of time and with meals and other services available",
           "examples": [
             "After a long flight, I checked into a luxurious hotel and enjoyed a comfortable stay with excellent room service."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hour",
       "word": "hour",
       "senses": [
         {
-          "id": "sense-d633dd70",
-          "pos": "noun",
+          "id": "sense-3a6c46c0",
+          "pos": "n.",
           "meaningZh": "小時；鐘頭",
-          "definitionEn": "a period of time equal to 1/24th of a day",
           "examples": [
             "I worked for eight hours today."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-c521cc21",
-          "pos": "noun",
+          "id": "sense-e7769051",
+          "pos": "n.",
           "meaningZh": "時刻；時點",
-          "definitionEn": "clock time",
           "examples": [
             "My flight is scheduled to depart at 10 o’clock in the evening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "house",
       "word": "house",
       "senses": [
         {
-          "id": "sense-ecfc5989",
-          "pos": "noun",
+          "id": "sense-594f4d99",
+          "pos": "n.",
           "meaningZh": "房子；住宅",
-          "definitionEn": "a dwelling for one or more families to live in",
           "examples": [
             "After graduating from college, she moved into a small house in the suburbs with her husband and their two children."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-9fc35ada",
-          "pos": "noun",
+          "id": "sense-f419f6ea",
+          "pos": "n.",
           "meaningZh": "家庭；同住群體",
-          "definitionEn": "a group of people who live together or are considered a single unit of society",
           "examples": [
             "The housemates decided to have a movie night together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "housewife",
       "word": "housewife",
       "senses": [
         {
-          "id": "sense-3c6de1c0",
-          "pos": "noun",
+          "id": "sense-79fa1164",
+          "pos": "n.",
           "meaningZh": "家庭主婦",
-          "definitionEn": "a woman who is a homemaker and manages a household, typically while her spouse earns the family income",
           "examples": [
             "The housewife was busy cleaning the house, doing laundry, cooking and taking care of her kids while her husband was at work."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "how",
       "word": "how",
       "senses": [
         {
-          "id": "sense-17ab9c62",
-          "pos": "adverb",
+          "id": "sense-b8ef46d5",
+          "pos": "adv.",
           "meaningZh": "怎麼；以何種方式",
-          "definitionEn": "in what way or manner",
           "examples": [
             "How did you fix your car after it broke down on the highway?"
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "however",
       "word": "however",
       "senses": [
         {
-          "id": "sense-5f8a4e17",
-          "pos": "adverb",
+          "id": "sense-e2bf8aba",
+          "pos": "adv.",
           "meaningZh": "然而；不過（轉折）",
-          "definitionEn": "by contrast; on the other hand",
           "examples": [
             "She loves sweet treats; however, she tries to limit her sugar intake."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-ae2866e0",
-          "pos": "adverb",
+          "id": "sense-aefe3649",
+          "pos": "adv.",
           "meaningZh": "無論如何；不管多麼",
-          "definitionEn": "to whatever degree or extent",
           "examples": [
             "However hard she tried, she couldn't solve the puzzle."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hundred",
       "word": "hundred",
       "senses": [
         {
-          "id": "sense-f3f9295a",
-          "pos": "noun",
+          "id": "sense-6f490a4a",
+          "pos": "n.",
           "meaningZh": "一百；百",
-          "definitionEn": "the number equivalent to ten 10s",
           "examples": [
             "She collected a hundred seashells during her beach vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-19c158f3",
-          "pos": "adjective",
+          "id": "sense-8c6b9d8f",
+          "pos": "adj.",
           "meaningZh": "一百的；百（個）的",
-          "definitionEn": "being ten more than ninety",
           "examples": [
             "She saved a hundred dollars to buy a new phone."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hungry",
       "word": "hungry",
       "senses": [
         {
-          "id": "sense-69a0abe4",
-          "pos": "adjective",
+          "id": "sense-b45d557a",
+          "pos": "adj.",
           "meaningZh": "飢餓的；肚子餓的",
-          "definitionEn": "needing or wanting food; feeling the physical sensation of hunger.",
           "examples": [
             "After skipping breakfast, I felt incredibly hungry by lunchtime."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-7ac18b26",
-          "pos": "adjective",
+          "id": "sense-276021fc",
+          "pos": "adj.",
           "meaningZh": "渴望的；強烈想要的",
-          "definitionEn": "craving for food; feeling a strong desire or urge for something",
           "examples": [
             "After working for 10 hours straight, I was hungry and craved for a pizza from my favorite restaurant."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "hurt",
       "word": "hurt",
       "senses": [
         {
-          "id": "sense-742ace93",
-          "pos": "verb",
+          "id": "sense-d1fbd138",
+          "pos": "v.",
           "meaningZh": "使受傷；傷害",
-          "definitionEn": "cause physical pain or injury to",
           "examples": [
             "He accidentally cut his finger while chopping vegetables."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-37f6f794",
-          "pos": "verb",
+          "id": "sense-32b2db85",
+          "pos": "v.",
           "meaningZh": "感到疼痛；受傷",
-          "definitionEn": "feel pain or discomfort",
           "examples": [
             "After tripping and falling, Sam hurt his knee and couldn't walk properly."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "husband",
       "word": "husband",
       "senses": [
         {
-          "id": "sense-b8ddc4bf",
-          "pos": "noun",
+          "id": "sense-42251367",
+          "pos": "n.",
           "meaningZh": "丈夫；先生",
-          "definitionEn": "a male partner in a marriage; a married man",
           "examples": [
             "John is a loving husband who always takes care of his wife."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-36dcfc92",
-          "pos": "verb",
+          "id": "sense-7955556f",
+          "pos": "v.",
           "meaningZh": "節約使用；善加管理",
-          "definitionEn": "to use or manage (resources, etc.) thriftily or carefully",
           "examples": [
             "As a small business owner, it’s important to husband your resources if you want to maximize profits."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ice",
       "word": "ice",
       "senses": [
         {
-          "id": "sense-081976b5",
-          "pos": "noun",
+          "id": "sense-c4cfd9cd",
+          "pos": "n.",
           "meaningZh": "冰；冰塊",
-          "definitionEn": "water frozen in the solid state",
           "examples": [
             "I put some ice cubes in my drink to keep it cold."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-5c7020f1",
-          "pos": "noun",
+          "id": "sense-edfa2689",
+          "pos": "n.",
           "meaningZh": "結冰水面；冰面",
-          "definitionEn": "the frozen part of a body of water",
           "examples": [
             "After the lake froze, John went ice skating with his friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "idea",
       "word": "idea",
       "senses": [
         {
-          "id": "sense-c90ccdbd",
-          "pos": "noun",
+          "id": "sense-151ccaf1",
+          "pos": "n.",
           "meaningZh": "想法；點子",
-          "definitionEn": "the main thing you are thinking about; a thought or suggestion about a possible course of action",
           "examples": [
             "I have an idea for a new business venture that could revolutionize the industry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-a0396c01",
-          "pos": "noun",
+          "id": "sense-4f02da3d",
+          "pos": "n.",
           "meaningZh": "個人見解；主觀看法",
-          "definitionEn": "a personal opinion or belief",
           "examples": [
             "In my idea, starting a business during a recession may seem counterintuitive, but it can actually lead to great success."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "if",
       "word": "if",
       "senses": [
         {
-          "id": "sense-283b6618",
-          "pos": "conjunction",
+          "id": "sense-014fb15c",
+          "pos": "conj.",
           "meaningZh": "如果；假如",
-          "definitionEn": "introduces a condition or possibility",
           "examples": [
             "If it rains, we will stay indoors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-0db52b97",
-          "pos": "noun",
+          "id": "sense-2339f6eb",
+          "pos": "n.",
           "meaningZh": "假設條件；不確定因素",
-          "definitionEn": "a condition or situation that is not yet certain or decided",
           "examples": [
             "If it rains tomorrow, we'll have to cancel the picnic."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "important",
       "word": "important",
       "senses": [
         {
-          "id": "sense-3cd58002",
-          "pos": "adjective",
+          "id": "sense-0b7080a6",
+          "pos": "adj.",
           "meaningZh": "重要的；關鍵的",
-          "definitionEn": "vital and significant; necessary for resolving a crisis",
           "examples": [
             "Having a first aid kit is important in case of emergencies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-d43db79f",
-          "pos": "adjective",
+          "id": "sense-f60f8053",
+          "pos": "adj.",
           "meaningZh": "有影響力的；舉足輕重的",
-          "definitionEn": "having authority, influence, or power",
           "examples": [
             "It is important for a leader to maintain credibility among their followers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "in",
       "word": "in",
       "senses": [
         {
-          "id": "sense-bfc4ec4e",
-          "pos": "preposition",
+          "id": "sense-d0a9cfef",
+          "pos": "prep.",
           "meaningZh": "在……之內；在……裡面",
-          "definitionEn": "expressing the situation of being enclosed or surrounded by something",
           "examples": [
             "The keys are in the drawer."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         },
         {
-          "id": "sense-12dd6408",
-          "pos": "adverb",
+          "id": "sense-56dd9185",
+          "pos": "adv.",
           "meaningZh": "進入；向內",
-          "definitionEn": "into a space, room, or container; so as to be inside",
           "examples": [
             "She opened the door and went in."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-1.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "1"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.070Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "inch",
+      "word": "inch",
+      "senses": [
+        {
+          "id": "sense-1f5ba034",
+          "pos": "n.",
+          "meaningZh": "英寸；吋",
+          "examples": [
+            "She measured the fabric and found it to be 10 inches long."
+          ]
+        },
+        {
+          "id": "sense-56b847de",
+          "pos": "n.",
+          "meaningZh": "一小段距離；極短距離",
+          "examples": [
+            "He only had an inch of space left in his suitcase for souvenirs."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

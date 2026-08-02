@@ -15,8 +15,7 @@ const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
 const learningStore = useLearningStore()
 const { sets, hasSets, totalWordCount } = storeToRefs(setsStore)
-const { stats, todayProgress, accuracy } = storeToRefs(learningStore)
-const { openImport } = setsStore
+const { stats, todayProgress, memoryAccuracy } = storeToRefs(learningStore)
 
 const dailyReviewCount = computed(() => learningStore.getDailyReviewEntries().length)
 const activeSessions = computed(() => sets.value.filter(set => sessionStore.isSetInProgress(set.id)).slice(0, 3))
@@ -55,7 +54,7 @@ async function continueSet(setId: string) {
         <p class="mt-3 max-w-md text-sm font-semibold leading-relaxed opacity-70">
           {{ $t('home.emptyDescription') }}
         </p>
-        <Button variant="secondary" class="mt-6 gap-2" @click="openImport">
+        <Button variant="secondary" class="mt-6 gap-2" @click="router.push({ name: 'set-create' })">
           <Plus class="h-4 w-4" />
           {{ $t('home.addSet') }}
         </Button>
@@ -84,7 +83,7 @@ async function continueSet(setId: string) {
                 {{ $t('learning.todayGoal') }}
               </p>
               <p class="mt-3 text-4xl font-black tabular-nums">
-                {{ stats.todayLearningReviews }}<span class="text-xl opacity-50">/{{ stats.dailyWordGoal }}</span>
+                {{ stats.todayMemoryReviews }}<span class="text-xl opacity-50">/{{ stats.dailyWordGoal }}</span>
               </p>
               <p class="mt-2 text-sm font-semibold opacity-70">
                 {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : $t('learning.noDue') }}
@@ -141,7 +140,7 @@ async function continueSet(setId: string) {
             </div>
             <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70">
               <Target class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">
-                {{ accuracy }}%
+                {{ memoryAccuracy }}%
               </p><p class="text-xs font-bold text-ink-500">
                 {{ $t('learning.accuracy') }}
               </p>
@@ -164,7 +163,7 @@ async function continueSet(setId: string) {
               {{ set.setName }}
             </p>
             <p class="mt-1 text-xs font-semibold text-ink-500">
-              {{ $t('home.inProgress') }} · {{ set.items.length }} {{ $t('home.wordUnit') }}
+              {{ $t('home.inProgress') }} · {{ setsStore.getSetWordCount(set.id) }} {{ $t('home.wordUnit') }}
             </p>
             <button type="button" class="mt-4 inline-flex items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300" @click="continueSet(set.id)">
               {{ $t('home.continue') }} <ArrowRight class="h-3.5 w-3.5" />
@@ -187,7 +186,7 @@ async function continueSet(setId: string) {
               {{ set.setName }}
             </p>
             <p class="mt-1 text-xs font-semibold text-ink-500">
-              {{ set.items.length }} {{ $t('home.wordUnit') }} · {{ $t('setCard.difficulty') }} {{ set.difficulty }}
+              {{ setsStore.getSetWordCount(set.id) }} {{ $t('home.wordUnit') }}
             </p>
           </RouterLink>
         </div>

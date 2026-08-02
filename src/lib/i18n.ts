@@ -4,7 +4,6 @@ import zhTW from '@/locales/zh-TW'
 export const i18n = createI18n({
   legacy: false,
   locale: 'zh-TW',
-  fallbackLocale: 'zh-TW',
   messages: {
     'zh-TW': zhTW,
   },

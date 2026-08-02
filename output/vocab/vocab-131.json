@@ -1,1315 +1,615 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 131,
   "words": [
-    {
-      "wordKey": "wealthy",
-      "word": "wealthy",
-      "senses": [
-        {
-          "id": "sense-9b1b6553",
-          "pos": "adjective",
-          "meaningZh": "富有的；有錢的",
-          "definitionEn": "having a lot of money or possessions",
-          "examples": [
-            "The new CEO of the company is incredibly wealthy, owning multiple luxury cars and vacation homes around the world."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-d3474db2",
-          "pos": "noun",
-          "meaningZh": "富人；有錢人（總稱）",
-          "definitionEn": "rich people",
-          "examples": [
-            "In the extravagant ballroom, the wealthy socialites sipped champagne and mingled with ease."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1 +1",
-        "textbookTitle": "龍騰 B5·L1、三民 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "weapon",
-      "word": "weapon",
-      "senses": [
-        {
-          "id": "sense-aff45505",
-          "pos": "noun",
-          "meaningZh": "武器；兵器",
-          "definitionEn": "any instrument or tool used for fighting or hunting",
-          "examples": [
-            "The knight wielded his sword as his primary weapon on the battlefield."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-cd5f3d88",
-          "pos": "noun",
-          "meaningZh": "說服工具；論辯武器",
-          "definitionEn": "a tool or strategy used for persuading or arguing",
-          "examples": [
-            "In the heated debate, her weapon was her ability to present logical and well-researched evidence."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L4",
-        "textbookTitle": "龍騰 B2·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "weave",
-      "word": "weave",
-      "senses": [
-        {
-          "id": "sense-9685d826",
-          "pos": "verb",
-          "meaningZh": "編織；織布",
-          "definitionEn": "create fabric by interlacing threads of wool, cotton, or other materials",
-          "examples": [
-            "She learned how to weave a blanket on the loom at her grandmother’s house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-0996493a",
-          "pos": "noun",
-          "meaningZh": "織法；編織結構",
-          "definitionEn": "the pattern or structure of a fabric created by interlacing threads",
-          "examples": [
-            "My grandmother used to weave beautiful blankets on her antique loom."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L5",
-        "textbookTitle": "龍騰 B2·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "web",
-      "word": "web",
-      "senses": [
-        {
-          "id": "sense-bf77a081",
-          "pos": "noun",
-          "meaningZh": "網路；全球資訊網",
-          "definitionEn": "a system of connected documents on the internet, filled with various types of media, that can be used to search for information on a specific topic",
-          "examples": [
-            "When researching for my school project, I relied heavily on the web to find relevant articles and resources."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "wed",
-      "word": "wed",
-      "senses": [
-        {
-          "id": "sense-921a3f32",
-          "pos": "verb",
-          "meaningZh": "娶；嫁",
-          "definitionEn": "take in marriage",
-          "examples": [
-            "After years of dating, John finally asked Jane to wed him."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        },
-        {
-          "id": "sense-e2d23e36",
-          "pos": "verb",
-          "meaningZh": "主持婚禮；為人證婚",
-          "definitionEn": "perform a marriage ceremony",
-          "examples": [
-            "The priest will wed the couple in a beautiful chapel by the sea."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "weed",
       "word": "weed",
       "senses": [
         {
-          "id": "sense-fccf8cce",
-          "pos": "verb",
+          "id": "sense-89efd713",
+          "pos": "v.",
           "meaningZh": "除草；拔除雜草",
-          "definitionEn": "to remove weeds from (an area of land or a garden)",
           "examples": [
             "I spent the morning weeding the vegetable garden to make space for the plants to grow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "weekly",
       "word": "weekly",
       "senses": [
         {
-          "id": "sense-df489cfb",
-          "pos": "adjective",
+          "id": "sense-19326c95",
+          "pos": "adj.",
           "meaningZh": "每週一次的；週定期的",
-          "definitionEn": "happening once a week or every week",
           "examples": [
             "Our team has a weekly meeting every Monday to discuss project updates."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-3be380f5",
-          "pos": "adverb",
+          "id": "sense-5fa8eae8",
+          "pos": "adv.",
           "meaningZh": "每週；按週",
-          "definitionEn": "occurring on a weekly basis",
           "examples": [
             "They have a weekly team meeting every Monday morning."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "weep",
       "word": "weep",
       "senses": [
         {
-          "id": "sense-5e38ec57",
-          "pos": "verb",
+          "id": "sense-ec32ce4e",
+          "pos": "v.",
           "meaningZh": "哭泣；流淚",
-          "definitionEn": "to cry, typically in response to something sad or painful",
           "examples": [
             "After the funeral, the family would often gather and weep together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wheat",
       "word": "wheat",
       "senses": [
         {
-          "id": "sense-e2f6bceb",
-          "pos": "noun",
+          "id": "sense-40802a83",
+          "pos": "n.",
           "meaningZh": "小麥（植物）",
-          "definitionEn": "A type of plant from which grain is harvested, typically an annual or biennial grass with erect flower spikes and light brown grains.",
           "examples": [
             "The farmer's field was filled with rows of vibrant, golden wheat swaying gracefully in the gentle breeze."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e5fd61a8",
-          "pos": "noun",
+          "id": "sense-66bdc9c0",
+          "pos": "n.",
           "meaningZh": "小麥穀粒；麥粒",
-          "definitionEn": "The grains of wheat are commonly ground into flour or cooked whole or cracked as a cereal.",
           "examples": [
             "Jim harvested a bountiful crop of wheat and took it to the mill to be ground into flour."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L9",
-        "textbookTitle": "翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "whip",
       "word": "whip",
       "senses": [
         {
-          "id": "sense-74589ae1",
-          "pos": "verb",
+          "id": "sense-feed97c8",
+          "pos": "v.",
           "meaningZh": "鞭打；抽打",
-          "definitionEn": "beat (a person or animal) with a whip or similar instrument",
           "examples": [
             "He threatened to whip the horse if it wouldn’t move forward."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-fae6d645",
-          "pos": "verb",
+          "id": "sense-a9ff8a8c",
+          "pos": "v.",
           "meaningZh": "快速移動；急速轉動",
-          "definitionEn": "move quickly, especially in a specified direction",
           "examples": [
             "The horse whipped around the track, its hooves pounding against the dirt."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "whistle",
       "word": "whistle",
       "senses": [
         {
-          "id": "sense-28dcfcce",
-          "pos": "noun",
+          "id": "sense-0bd8a4a2",
+          "pos": "n.",
           "meaningZh": "口哨聲；哨音",
-          "definitionEn": "the sound created by forcing breath through pursed lips",
           "examples": [
             "He blew on the whistle to alert everyone that it was time to start the race."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-008225bb",
-          "pos": "verb",
+          "id": "sense-0b66c216",
+          "pos": "v.",
           "meaningZh": "吹口哨；以哨聲示意",
-          "definitionEn": "signal or summon someone by whistling",
           "examples": [
             "I couldn't find my friend in the crowd, so I whistled loudly to get his attention and he turned towards me."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wicked",
       "word": "wicked",
       "senses": [
         {
-          "id": "sense-5e7d405d",
-          "pos": "adjective",
+          "id": "sense-44afc0f7",
+          "pos": "adj.",
           "meaningZh": "邪惡的；惡劣的",
-          "definitionEn": "morally bad or wrong",
           "examples": [
             "The wicked stepmother mistreated Cinderella and made her work all day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-fbf45409",
-          "pos": "adjective",
+          "id": "sense-7b9a67ff",
+          "pos": "adj.",
           "meaningZh": "頑皮的；惡作劇的",
-          "definitionEn": "naughtily playful; mischievous",
           "examples": [
             "The wicked child gleefully pulled pranks on her siblings, leaving them in fits of laughter."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "widen",
       "word": "widen",
       "senses": [
         {
-          "id": "sense-35c3c548",
-          "pos": "verb",
+          "id": "sense-f138c3c1",
+          "pos": "v.",
           "meaningZh": "拓寬；擴大",
-          "definitionEn": "to make something wider or become wider in size or scope",
           "examples": [
             "The government is planning to widen the highway to alleviate traffic congestion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wipe",
       "word": "wipe",
       "senses": [
         {
-          "id": "sense-320c42dc",
-          "pos": "verb",
+          "id": "sense-cd11431b",
+          "pos": "v.",
           "meaningZh": "擦拭；抹乾淨",
-          "definitionEn": "to clean or dry (something) by rubbing its surface with a cloth, a piece of paper, or one’s hand",
           "examples": [
             "After spilling coffee on the table, he quickly grabbed a paper towel to wipe up the mess."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-9673ab90",
-          "pos": "noun",
+          "id": "sense-23861284",
+          "pos": "n.",
           "meaningZh": "擦拭動作；一抹",
-          "definitionEn": "an act of cleaning or drying something by rubbing its surface with a cloth, a piece of paper, or one’s hand",
           "examples": [
             "After eating spaghetti, she used a napkin to wipe her mouth clean."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wisdom",
       "word": "wisdom",
       "senses": [
         {
-          "id": "sense-e9e1a6cc",
-          "pos": "noun",
+          "id": "sense-9ec1e6a0",
+          "pos": "n.",
           "meaningZh": "睿智；明智",
-          "definitionEn": "the quality of being prudent and sensible",
           "examples": [
             "When faced with a difficult decision, his wisdom guided him to consider all the options before making a choice."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-b77f1825",
-          "pos": "noun",
+          "id": "sense-82f8ec01",
+          "pos": "n.",
           "meaningZh": "智慧；見識",
-          "definitionEn": "the trait of utilizing knowledge and experience with common sense and insight",
           "examples": [
             "After years of working in the financial industry, Sarah had gained a great deal of wisdom. She was able to make sound decisions by drawing on her extensive knowledge and experience, combined with her natural ability to see things from different perspectives."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L4",
-        "textbookTitle": "龍騰 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wrap",
       "word": "wrap",
       "senses": [
         {
-          "id": "sense-29735355",
-          "pos": "verb",
+          "id": "sense-5710239c",
+          "pos": "v.",
           "meaningZh": "包；裹",
-          "definitionEn": "to cover something by folding paper or cloth around it",
           "examples": [
             "She wrapped the gift in colorful paper."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-5a44bb86",
-          "pos": "noun",
+          "id": "sense-d9bd8032",
+          "pos": "n.",
           "meaningZh": "披肩；裹身布料",
-          "definitionEn": "a piece of fabric or clothing that is wrapped around the body",
           "examples": [
             "She used the wrap to keep herself warm on a cold winter day."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-e59a40d0",
-          "pos": "noun",
+          "id": "sense-9683f9fc",
+          "pos": "n.",
           "meaningZh": "包裝材料；外層包覆",
-          "definitionEn": "the material used to cover or enclose something",
           "examples": [
             "She used a bright gift wrap to decorate the present."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L3 +1",
-        "textbookTitle": "三民 B4·L3、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "wrist",
       "word": "wrist",
       "senses": [
         {
-          "id": "sense-86148e6a",
-          "pos": "noun",
+          "id": "sense-92b2f812",
+          "pos": "n.",
           "meaningZh": "手腕；腕關節",
-          "definitionEn": "The joint or the region of the joint between the forearm and the hand. It comprises of the eight bones in the human carpus.",
           "examples": [
             "After falling off his skateboard, he landed on his wrists, causing some pain and swelling."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "yearly",
       "word": "yearly",
       "senses": [
         {
-          "id": "sense-236872b6",
-          "pos": "adverb",
+          "id": "sense-5cafeb13",
+          "pos": "adv.",
           "meaningZh": "每年；一年一次",
-          "definitionEn": "every year",
           "examples": [
             "The company holds a yearly meeting to discuss their financial performance."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "yell",
       "word": "yell",
       "senses": [
         {
-          "id": "sense-f4a17889",
-          "pos": "verb",
+          "id": "sense-b4a04e08",
+          "pos": "v.",
           "meaningZh": "大叫；呼喊",
-          "definitionEn": "to let out a sudden loud cry of pain or excitement",
           "examples": [
             "After scoring the winning goal, the soccer player let out a yell of joy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         },
         {
-          "id": "sense-df9ed21e",
-          "pos": "noun",
+          "id": "sense-c9e94a1e",
+          "pos": "n.",
           "meaningZh": "大叫聲；呼喊聲",
-          "definitionEn": "a loud expression of emotion, often when unable to articulate",
           "examples": [
             "After scoring the winning goal, the crowd erupted into a joyous yell of celebration."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1",
-        "textbookTitle": "龍騰 B1·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "yolk",
       "word": "yolk",
       "senses": [
         {
-          "id": "sense-750f788c",
-          "pos": "noun",
+          "id": "sense-a0f8f274",
+          "pos": "n.",
           "meaningZh": "蛋黃",
-          "definitionEn": "the yellow circular part in the center of an egg",
           "examples": [
             "She cracked open the egg and carefully separated the yolk from the egg white."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "youngster",
       "word": "youngster",
       "senses": [
         {
-          "id": "sense-e91646fa",
-          "pos": "noun",
+          "id": "sense-5000746a",
+          "pos": "n.",
           "meaningZh": "年輕人；少年；孩子",
-          "definitionEn": "a young person, typically child or teenager",
           "examples": [
             "The park is filled with laughter and excitement as the youngsters play on the swings and slide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "zipper",
       "word": "zipper",
       "senses": [
         {
-          "id": "sense-f634faf2",
-          "pos": "noun",
+          "id": "sense-7752cb72",
+          "pos": "n.",
           "meaningZh": "拉鍊",
-          "definitionEn": "a device used to fasten clothes, bags, etc., consisting of two rows of small metal or plastic parts that can be locked together by sliding another part over them",
           "examples": [
             "She used the zipper on her jacket to quickly close it and keep warm."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "zone",
       "word": "zone",
       "senses": [
         {
-          "id": "sense-d82e139f",
-          "pos": "noun",
+          "id": "sense-6a03beaf",
+          "pos": "n.",
           "meaningZh": "地帶；區域",
-          "definitionEn": "a region with a particular feature that distinguishes it from the surrounding areas",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-d510c082",
-          "pos": "noun",
+          "id": "sense-22671f12",
+          "pos": "n.",
           "meaningZh": "特定區域；專區",
-          "definitionEn": "a specific area with its own unique characteristics",
           "examples": [
             "The industrial zone of the city is home to several factories and manufacturing plants."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-4.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "4"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abnormal",
       "word": "abnormal",
       "senses": [
         {
-          "id": "sense-f02c0fe6",
-          "pos": "adjective",
+          "id": "sense-d55dc08a",
+          "pos": "adj.",
           "meaningZh": "異常的；反常的",
-          "definitionEn": "not typical or usual; deviating from what is considered normal or average",
           "examples": [
             "She found his behavior to be abnormal when he started laughing uncontrollably at a funeral."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-77144174",
-          "pos": "adjective",
+          "id": "sense-3cea0490",
+          "pos": "adj.",
           "meaningZh": "不正常的；偏差的",
-          "definitionEn": "showing a departure from what is considered normal in intelligence or development",
           "examples": [
             "Despite being a kind-hearted person, his abnormal behavior often made others question his stability."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 翰林 B1·L3",
-        "textbookTitle": "翰林 B1·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abolish",
       "word": "abolish",
       "senses": [
         {
-          "id": "sense-dfb46e5b",
-          "pos": "verb",
+          "id": "sense-80c44756",
+          "pos": "v.",
           "meaningZh": "廢除；廢止",
-          "definitionEn": "To officially end or stop something, especially an organization or law.",
           "examples": [
             "The government decided to abolish the outdated tax system and implement a more fair and efficient one."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d8c82d64",
-          "pos": "verb",
+          "id": "sense-42cba875",
+          "pos": "v.",
           "meaningZh": "終止；撤銷",
-          "definitionEn": "To put an end to.",
           "examples": [
             "The committee voted to abolish the outdated policy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abortion",
       "word": "abortion",
       "senses": [
         {
-          "id": "sense-99f456ec",
-          "pos": "noun",
+          "id": "sense-9f10cb00",
+          "pos": "n.",
           "meaningZh": "墮胎；人工流產",
-          "definitionEn": "termination of pregnancy; a medical procedure to end a pregnancy",
           "examples": [
             "After finding out about her pregnancy, she decided to have an abortion because she was not ready to have a child."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3bbaf77f",
-          "pos": "noun",
+          "id": "sense-1651d03b",
+          "pos": "n.",
           "meaningZh": "終止妊娠（含社會爭議意涵）",
-          "definitionEn": "the intentional termination of a pregnancy; a controversial and often emotional topic in politics and society",
           "examples": [
             "The debate over abortion rights often leads to heated discussions between those who believe in a woman’s right to choose and those who believe in the sanctity of life."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abrupt",
       "word": "abrupt",
       "senses": [
         {
-          "id": "sense-add1df2e",
-          "pos": "adjective",
+          "id": "sense-9aaef36a",
+          "pos": "adj.",
           "meaningZh": "突然的；急促的",
-          "definitionEn": "Having sudden changes in the subject and containing sharp transitions.",
           "examples": [
             "The movie had an abrupt ending, leaving the audience shocked and wanting more."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-6f31d363",
-          "pos": "adjective",
+          "id": "sense-78507837",
+          "pos": "adj.",
           "meaningZh": "唐突的；無禮的",
-          "definitionEn": "Unexpectedly rude or brief in conversation without any intention.",
           "examples": [
             "The customer was taken aback by the abrupt response from the salesperson who rudely dismissed their inquiry."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "absurd",
       "word": "absurd",
       "senses": [
         {
-          "id": "sense-fc5f1ad8",
-          "pos": "adjective",
+          "id": "sense-5b78b8d2",
+          "pos": "adj.",
           "meaningZh": "荒謬的；荒唐的",
-          "definitionEn": "completely unreasonable or ridiculous",
           "examples": [
             "It would be absurd to wear a bikini in a blizzard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abundant",
       "word": "abundant",
       "senses": [
         {
-          "id": "sense-7fa124a2",
-          "pos": "adjective",
+          "id": "sense-2da7fc24",
+          "pos": "adj.",
           "meaningZh": "豐富的；充裕的",
-          "definitionEn": "existing or available in large quantities; plentiful.",
           "examples": [
             "The garden was filled with abundant flowers, creating a beautiful and colorful display."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L3",
-        "textbookTitle": "龍騰 B4·L3"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "abuse",
       "word": "abuse",
       "senses": [
         {
-          "id": "sense-2fa57fd9",
-          "pos": "noun",
+          "id": "sense-ed64ff05",
+          "pos": "n.",
           "meaningZh": "虐待；傷害",
-          "definitionEn": "cruel treatment of a person or animal, often causing physical or emotional harm",
           "examples": [
             "She suffered years of emotional and physical abuse at the hands of her husband."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-5e8a412e",
-          "pos": "noun",
+          "id": "sense-65cf9922",
+          "pos": "n.",
           "meaningZh": "辱罵；惡言相向",
-          "definitionEn": "an insulting, rude, or offensive remark aimed at someone",
           "examples": [
             "The customer service representative received abuse from the angry customer who was upset with the company’s policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L8",
-        "textbookTitle": "龍騰 B3·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "accelerate",
+      "word": "accelerate",
+      "senses": [
+        {
+          "id": "sense-4d503b3b",
+          "pos": "v.",
+          "meaningZh": "加速（使物加快）",
+          "examples": [
+            "The race car driver stepped on the accelerator to accelerate the car’s speed around the track."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "accessible",
+      "word": "accessible",
+      "senses": [
+        {
+          "id": "sense-2cae4ff3",
+          "pos": "adj.",
+          "meaningZh": "易懂的；平易近人的",
+          "examples": [
+            "The teacher made sure to use accessible language so that all the students could understand the lesson."
+          ]
+        },
+        {
+          "id": "sense-687b04ad",
+          "pos": "adj.",
+          "meaningZh": "可進入的；無障礙的",
+          "examples": [
+            "The new building has ramps and elevators to make it easily accessible for people with disabilities."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "accommodate",
+      "word": "accommodate",
+      "senses": [
+        {
+          "id": "sense-1536050f",
+          "pos": "v.",
+          "meaningZh": "容納；提供空間",
+          "examples": [
+            "The hotel can accommodate up to 500 guests for the conference, providing ample space and comfort for everyone."
+          ]
+        },
+        {
+          "id": "sense-77472b3a",
+          "pos": "v.",
+          "meaningZh": "滿足需求；配合",
+          "examples": [
+            "The hotel was able to accommodate our request for a room with an ocean view."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "accommodation",
+      "word": "accommodation",
+      "senses": [
+        {
+          "id": "sense-ba124738",
+          "pos": "n.",
+          "meaningZh": "住宿；膳宿",
+          "examples": [
+            "The hotel provided comfortable accommodation to the travelers who were stranded due to the flight cancellation."
+          ]
+        },
+        {
+          "id": "sense-1277e547",
+          "pos": "n.",
+          "meaningZh": "住宿設施；客房",
+          "examples": [
+            "The hotel had different types of accommodation, ranging from single rooms to spacious suites with balconies."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "accord",
+      "word": "accord",
+      "senses": [
+        {
+          "id": "sense-d1609224",
+          "pos": "n.",
+          "meaningZh": "協議；一致意見",
+          "examples": [
+            "After much discussion, the committee came to an accord on the best way to proceed with the project."
+          ]
+        },
+        {
+          "id": "sense-76143cd0",
+          "pos": "v.",
+          "meaningZh": "符合；一致",
+          "examples": [
+            "His actions were not in accord with his words, making it difficult for others to trust him."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

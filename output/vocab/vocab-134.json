@@ -1,1368 +1,641 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 134,
   "words": [
-    {
-      "wordKey": "attic",
-      "word": "attic",
-      "senses": [
-        {
-          "id": "sense-e9f95708",
-          "pos": "noun",
-          "meaningZh": "閣樓；屋頂夾層",
-          "definitionEn": "a space or room at the top of a building, just under the roof, often used for storing things",
-          "examples": [
-            "After a long day of cleaning, I decided to go up to the attic and find some old photographs to reminisce about my childhood."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-9814c66e",
-          "pos": "noun",
-          "meaningZh": "（俚）頭；腦袋",
-          "definitionEn": "slang: the human head",
-          "examples": [
-            "He got hit on the attic and now he has a massive headache."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "attorney",
-      "word": "attorney",
-      "senses": [
-        {
-          "id": "sense-339d65ec",
-          "pos": "noun",
-          "meaningZh": "律師；法律顧問",
-          "definitionEn": "a person who is qualified and licensed to represent clients in legal matters, conducting lawsuits and providing legal advice",
-          "examples": [
-            "The attorney provided legal advice to his client on the due diligence requirements for the acquisition of a new business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-2d69319f",
-          "pos": "noun",
-          "meaningZh": "代理人；受託人",
-          "definitionEn": "a person appointed to act for another in business or legal matters",
-          "examples": [
-            "Her attorney advised her to plead not guilty during the trial."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "attribute",
-      "word": "attribute",
-      "senses": [
-        {
-          "id": "sense-09e0f39b",
-          "pos": "verb",
-          "meaningZh": "歸因於；認為是……所致",
-          "definitionEn": "to say that something is caused by a particular thing or person",
-          "examples": [
-            "She attributes her success to hard work and luck."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-ed43c02d",
-          "pos": "noun",
-          "meaningZh": "特質；特性",
-          "definitionEn": "a characteristic or quality of an entity or individual",
-          "examples": [
-            "His intelligence is a key attribute that sets him apart from others in his field."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "auction",
-      "word": "auction",
-      "senses": [
-        {
-          "id": "sense-489fb379",
-          "pos": "noun",
-          "meaningZh": "拍賣；競標會",
-          "definitionEn": "a public sale where items are sold to the highest bidder",
-          "examples": [
-            "The estate sale was conducted as an auction where bidders vied with each other to buy a rare painting by a local artist."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-7fa69b1b",
-          "pos": "verb",
-          "meaningZh": "拍賣；競標出售",
-          "definitionEn": "to sell an item or property through a public auction",
-          "examples": [
-            "The house was sold through an auction to the highest bidder."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
-    {
-      "wordKey": "authorize",
-      "word": "authorize",
-      "senses": [
-        {
-          "id": "sense-d876f823",
-          "pos": "verb",
-          "meaningZh": "授權；委任",
-          "definitionEn": "give or delegate power or authority to",
-          "examples": [
-            "The CEO authorized the manager to sign the contract on behalf of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        },
-        {
-          "id": "sense-56add083",
-          "pos": "verb",
-          "meaningZh": "批准；核准",
-          "definitionEn": "grant authorization or clearance for",
-          "examples": [
-            "The manager was authorized to make the final decision on the project budget."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
-    },
     {
       "wordKey": "autonomy",
       "word": "autonomy",
       "senses": [
         {
-          "id": "sense-fa9a2cf6",
-          "pos": "noun",
+          "id": "sense-0be545f6",
+          "pos": "n.",
           "meaningZh": "自治；自主權",
-          "definitionEn": "political independence; immunity from arbitrary exercise of authority",
           "examples": [
             "After their successful revolution, the country finally achieved autonomy from their former oppressor."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-105d4f0a",
-          "pos": "noun",
+          "id": "sense-aabdfa0a",
+          "pos": "n.",
           "meaningZh": "獨立自主；自決",
-          "definitionEn": "personal independence",
           "examples": [
             "When I turned 18, my parents granted me autonomy over my life, allowing me to make my own decisions and choices."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "awe",
       "word": "awe",
       "senses": [
         {
-          "id": "sense-e9cf4da2",
-          "pos": "noun",
+          "id": "sense-528a693a",
+          "pos": "n.",
           "meaningZh": "敬畏；讚嘆",
-          "definitionEn": "a feeling of profound respect for someone or something",
           "examples": [
             "She watched in awe as the Olympic athlete broke the world record."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-c206d6dc",
-          "pos": "verb",
+          "id": "sense-0e5c81a9",
+          "pos": "v.",
           "meaningZh": "令人敬畏；震懾",
-          "definitionEn": "to inspire with awe",
           "examples": [
             "As she stood on top of the mountain, overlooking the breathtaking view, she was filled with awe."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "backyard",
       "word": "backyard",
       "senses": [
         {
-          "id": "sense-2c5d319a",
-          "pos": "noun",
+          "id": "sense-9ca9b5de",
+          "pos": "n.",
           "meaningZh": "後院；庭院",
-          "definitionEn": "an area of land behind a house, often covered with grass",
           "examples": [
             "The kids spent the whole afternoon playing in the backyard with the dog."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2047a112",
-          "pos": "noun",
+          "id": "sense-5c1936ee",
+          "pos": "n.",
           "meaningZh": "附近地區；勢力範圍",
-          "definitionEn": "the area or region near where you live, or one that a country feels belongs to its sphere of influence",
           "examples": [
             "Residents were shocked to learn that a waste plant might be built in their own backyard."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ballot",
       "word": "ballot",
       "senses": [
         {
-          "id": "sense-5c790423",
-          "pos": "noun",
+          "id": "sense-d4809d93",
+          "pos": "n.",
           "meaningZh": "投票；選票",
-          "definitionEn": "the process of voting by marking and casting a vote on a ballot",
           "examples": [
             "The school’s Parent-Teacher Association organized a ballot to vote for the best plan of action to raise funds for the school library."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-eda9e655",
-          "pos": "verb",
+          "id": "sense-17924ee2",
+          "pos": "v.",
           "meaningZh": "投票；以選票表決",
-          "definitionEn": "to vote in an election by marking and casting a ballot",
           "examples": [
             "In a democracy, every citizen has the right to ballot without fear of intimidation or discrimination."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "ban",
       "word": "ban",
       "senses": [
         {
-          "id": "sense-efc369e3",
-          "pos": "noun",
+          "id": "sense-b0f00fbf",
+          "pos": "n.",
           "meaningZh": "禁令；禁止令",
-          "definitionEn": "a decree that prohibits something",
           "examples": [
             "The government decided to ban smoking in all public places to protect people from harmful effects of smoking and second-hand smoke."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-44891842",
-          "pos": "verb",
+          "id": "sense-bd07500f",
+          "pos": "v.",
           "meaningZh": "驅逐；禁止入境",
-          "definitionEn": "expel someone from a community or group",
           "examples": [
             "The school banned the student from campus after he broke several rules and disturbed other students."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7 +1",
-        "textbookTitle": "龍騰 B4·L7、三民 B4·L5"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "banner",
       "word": "banner",
       "senses": [
         {
-          "id": "sense-8acc34fc",
-          "pos": "noun",
+          "id": "sense-97a0dd2c",
+          "pos": "n.",
           "meaningZh": "橫幅；布條",
-          "definitionEn": "a long strip of cloth or paper used for decoration or advertising",
           "examples": [
             "The company hung a colorful banner outside their store to draw attention to their grand opening."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-7e90379d",
-          "pos": "noun",
+          "id": "sense-4ed1034d",
+          "pos": "n.",
           "meaningZh": "旗幟；旗幟標誌",
-          "definitionEn": "a distinctive flag",
           "examples": [
             "During the parade, the patriotic group proudly carried their country's banner."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "barren",
       "word": "barren",
       "senses": [
         {
-          "id": "sense-2314cf82",
-          "pos": "adjective",
+          "id": "sense-2c61b97e",
+          "pos": "adj.",
           "meaningZh": "不毛的；貧瘠的",
-          "definitionEn": "lacking vegetation or unable to support plants",
           "examples": [
             "The dry desert was barren, with nothing but sand dunes stretching as far as the eye could see."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-1f422a85",
-          "pos": "adjective",
+          "id": "sense-c2be7c71",
+          "pos": "adj.",
           "meaningZh": "無收穫的；荒廢的",
-          "definitionEn": "not productive; unfruitful",
           "examples": [
             "After months of drought, the once fertile farmland became barren, with no crops able to grow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "batch",
       "word": "batch",
       "senses": [
         {
-          "id": "sense-a8748acc",
-          "pos": "noun",
+          "id": "sense-32179eac",
+          "pos": "n.",
           "meaningZh": "一批；一爐；一組",
-          "definitionEn": "a collection of things or persons that are handled together",
           "examples": [
             "The bakery made a batch of fresh bread for the morning rush."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "behalf",
       "word": "behalf",
       "senses": [
         {
-          "id": "sense-f8b2cacf",
-          "pos": "noun",
+          "id": "sense-b18c5a7b",
+          "pos": "n.",
           "meaningZh": "代表（on behalf of）",
-          "definitionEn": "on behalf of - as the agent of or on behalf of someone else",
           "examples": [
             "John spoke on behalf of the team during the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-02cbaabf",
-          "pos": "noun",
+          "id": "sense-6586427b",
+          "pos": "n.",
           "meaningZh": "為了…利益（in behalf of）",
-          "definitionEn": "in behalf of - for the benefit or interest of someone",
           "examples": [
             "The lawyer spoke in behalf of his client during the court hearing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "belongings",
       "word": "belongings",
       "senses": [
         {
-          "id": "sense-4da0ebcf",
-          "pos": "noun",
+          "id": "sense-4723714f",
+          "pos": "n.",
           "meaningZh": "個人物品；財物",
-          "definitionEn": "the things that a person owns, especially that can be carried",
           "examples": [
             "Please take all your belongings when you leave the train."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4b8c52de",
-          "pos": "noun",
+          "id": "sense-90725b5e",
+          "pos": "n.",
           "meaningZh": "被接納的感受；融入感",
-          "definitionEn": "the feeling of being connected or accepted in a certain place or environment",
           "examples": [
             "After moving to a new country, she found a sense of belonging in the local community by joining a neighborhood book club and making new friends."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L4",
-        "textbookTitle": "三民 B4·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beloved",
       "word": "beloved",
       "senses": [
         {
-          "id": "sense-27cdbe13",
-          "pos": "noun",
+          "id": "sense-23a4840b",
+          "pos": "n.",
           "meaningZh": "心愛的人；摯愛",
-          "definitionEn": "a beloved person; used as terms of endearment",
           "examples": [
             "My grandmother was a beloved figure in our family, always bringing us together with her delicious cooking and warm embrace."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-192cf8ba",
-          "pos": "adjective",
+          "id": "sense-044f7fa8",
+          "pos": "adj.",
           "meaningZh": "深愛的；摯愛的",
-          "definitionEn": "loved very much",
           "examples": [
             "She was his beloved wife for over 50 years."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B5·L1",
-        "textbookTitle": "龍騰 B5·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beneficial",
       "word": "beneficial",
       "senses": [
         {
-          "id": "sense-d5f12f3a",
-          "pos": "adjective",
+          "id": "sense-d7e9eb56",
+          "pos": "adj.",
           "meaningZh": "有益的；有利的",
-          "definitionEn": "producing a favorable outcome or result",
           "examples": [
             "Regular exercise is beneficial for improving overall health and reducing the risk of chronic diseases."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2f8babe6",
-          "pos": "adjective",
+          "id": "sense-07cf3882",
+          "pos": "adj.",
           "meaningZh": "促進健康的；有助於的",
-          "definitionEn": "promoting or enhancing well-being",
           "examples": [
             "Regular exercise is beneficial for maintaining good physical and mental health."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L3 +1",
-        "textbookTitle": "龍騰 B3·L3、三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "betray",
       "word": "betray",
       "senses": [
         {
-          "id": "sense-eab7131d",
-          "pos": "verb",
+          "id": "sense-51f4c91c",
+          "pos": "v.",
           "meaningZh": "背叛；出軌",
-          "definitionEn": "be unfaithful to one’s partner by having sexual relations with someone else",
           "examples": [
             "It is not fair to betray your spouse by having an affair with your coworker."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L10",
-        "textbookTitle": "三民 B4·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "beware",
       "word": "beware",
       "senses": [
         {
-          "id": "sense-4f30fe69",
-          "pos": "verb",
+          "id": "sense-6234e718",
+          "pos": "v.",
           "meaningZh": "當心；謹防",
-          "definitionEn": "to be cautious and careful because something may be dangerous or harmful",
           "examples": [
             "Beware of the dog; it has a tendency to bite unfamiliar people."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bias",
       "word": "bias",
       "senses": [
         {
-          "id": "sense-08ab78d9",
-          "pos": "noun",
+          "id": "sense-01646b31",
+          "pos": "n.",
           "meaningZh": "偏見；偏頗",
-          "definitionEn": "a partiality that makes someone unable to judge fairly",
           "examples": [
             "The newspaper article clearly showed bias as it only presented one side of the story, ignoring important facts that would have provided a more balanced perspective."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f6da8496",
-          "pos": "noun",
+          "id": "sense-30e23cfe",
+          "pos": "n.",
           "meaningZh": "斜紋；斜裁（布料）",
-          "definitionEn": "a diagonal line or cut across a fabric’s grain, not at a right angle with either of the edges",
           "examples": [
             "When sewing a dress, make sure to cut the fabric on the bias to create a beautiful drape and flow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bid",
       "word": "bid",
       "senses": [
         {
-          "id": "sense-d2bed404",
-          "pos": "noun",
+          "id": "sense-40dfaf5c",
+          "pos": "n.",
           "meaningZh": "出價；投標",
-          "definitionEn": "a formal proposal to buy at a specified price",
           "examples": [
             "She submitted a bid of $10,000 for the antique vase at the auction."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "C1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "biological",
       "word": "biological",
       "senses": [
         {
-          "id": "sense-e3730e4d",
-          "pos": "adjective",
+          "id": "sense-ab9cb84b",
+          "pos": "adj.",
           "meaningZh": "生物學的；生物性的",
-          "definitionEn": "related to the study of living organisms and their processes",
           "examples": [
             "In her biology class, Sarah conducted various biological experiments to study the effects of different environments on plant growth."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-34ff3050",
-          "pos": "adjective",
+          "id": "sense-ee69fafe",
+          "pos": "adj.",
           "meaningZh": "與生物特性相關的",
-          "definitionEn": "relating to the characteristics and phenomena of living organisms",
           "examples": [
             "In order to study the effects of pollution on aquatic life, the scientists conducted a series of biological experiments in the lab that involved observing the behavior and growth of different species of fish."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bizarre",
       "word": "bizarre",
       "senses": [
         {
-          "id": "sense-9741289e",
-          "pos": "adjective",
+          "id": "sense-50f3b0d0",
+          "pos": "adj.",
           "meaningZh": "奇異的；怪誕的",
-          "definitionEn": "very strange or unusual; weird",
           "examples": [
             "The circus performer swallowed a sword while riding a unicycle, which was a bizarre and captivating sight."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blast",
       "word": "blast",
       "senses": [
         {
-          "id": "sense-d3b4dc1a",
-          "pos": "noun",
+          "id": "sense-5d326fce",
+          "pos": "n.",
           "meaningZh": "爆炸聲；轟然巨響",
-          "definitionEn": "a sudden and very loud noise",
           "examples": [
             "The blast from the fireworks startled the neighborhood and set off car alarms."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blur",
       "word": "blur",
       "senses": [
         {
-          "id": "sense-d409b953",
-          "pos": "verb",
+          "id": "sense-2a618350",
+          "pos": "v.",
           "meaningZh": "使模糊；使不清晰",
-          "definitionEn": "to make something unclear, hazy, or less distinct",
           "examples": [
             "The artist used a brush to blur the edges of the painting, giving it a dreamlike quality."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-3e4fa7e6",
-          "pos": "verb",
+          "id": "sense-6591746b",
+          "pos": "v.",
           "meaningZh": "弄髒；塗抹",
-          "definitionEn": "to smudge or soil by smudging",
           "examples": [
             "While painting, she accidentally reached across the canvas and blur the fresh colors together."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "blush",
       "word": "blush",
       "senses": [
         {
-          "id": "sense-d86d9961",
-          "pos": "verb",
+          "id": "sense-1195752c",
+          "pos": "v.",
           "meaningZh": "泛紅；臉紅",
-          "definitionEn": "to become reddish in color",
           "examples": [
             "As soon as she saw her crush, she couldn't help but blush."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-d022dc1d",
-          "pos": "verb",
+          "id": "sense-9e2e7184",
+          "pos": "v.",
           "meaningZh": "因羞愧臉紅；因窘迫泛紅",
-          "definitionEn": "to become red in the face, especially from embarrassment or shame",
           "examples": [
             "When the teacher complimented her presentation, Sarah couldn't help but blush with embarrassment."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bodyguard",
       "word": "bodyguard",
       "senses": [
         {
-          "id": "sense-454169f9",
-          "pos": "noun",
+          "id": "sense-f75f4e2d",
+          "pos": "n.",
           "meaningZh": "保鑣；護衛",
-          "definitionEn": "a person hired to protect someone, especially a celebrity or high-ranking public figure",
           "examples": [
             "The famous actor always travels with a bodyguard to ensure his safety and privacy."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-2c159658",
-          "pos": "noun",
+          "id": "sense-7d34420c",
+          "pos": "n.",
           "meaningZh": "護衛隊；警衛團",
-          "definitionEn": "a group of people employed to protect someone important",
           "examples": [
             "The celebrity arrived at the event with a team of bodyguards who meticulously scanned the surroundings for any potential threats."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bolt",
       "word": "bolt",
       "senses": [
         {
-          "id": "sense-b0773910",
-          "pos": "noun",
+          "id": "sense-e760a8d4",
+          "pos": "n.",
           "meaningZh": "螺栓；螺釘",
-          "definitionEn": "a screw that screws into a nut to form a fastener",
           "examples": [
             "Please use a wrench to tighten the bolt holding the metal railing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-0db0ccc7",
-          "pos": "noun",
+          "id": "sense-72811a7b",
+          "pos": "n.",
           "meaningZh": "門閂；鎖舌",
-          "definitionEn": "the part of a lock that is engaged or withdrawn with a key",
           "examples": [
             "She inserted the key and turned it, and the bolt clicked as the lock released."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "bonus",
       "word": "bonus",
       "senses": [
         {
-          "id": "sense-615af938",
-          "pos": "noun",
+          "id": "sense-cbff0f90",
+          "pos": "n.",
           "meaningZh": "獎金；紅利",
-          "definitionEn": "an additional payment given to an employee as a reward for doing their job well",
           "examples": [
             "After exceeding her sales target for the quarter, Sarah received a generous bonus that allowed her to take her dream vacation."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-f8fa71ef",
-          "pos": "noun",
+          "id": "sense-beecc137",
+          "pos": "n.",
           "meaningZh": "分紅；保險紅利",
-          "definitionEn": "a payment made to the customers of an insurance company from its profits",
           "examples": [
             "After years of being a loyal customer, I finally received a bonus from my insurance company as a thank-you for my continued business."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L8",
-        "textbookTitle": "三民 B4·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "boom",
       "word": "boom",
       "senses": [
         {
-          "id": "sense-5e0519cb",
-          "pos": "noun",
+          "id": "sense-b1de56ef",
+          "pos": "n.",
           "meaningZh": "巨響；轟隆聲",
-          "definitionEn": "a deep, prolonged, loud noise",
           "examples": [
             "The sudden boom of thunder frightened the children and shook the windows of the house."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         },
         {
-          "id": "sense-4fc7db33",
-          "pos": "noun",
+          "id": "sense-953da2c7",
+          "pos": "n.",
           "meaningZh": "帆桁；吊桿",
-          "definitionEn": "a pole used to extend the foot of a sail or for handling cargo or in mooring, which can be horizontal or vertical",
           "examples": [
             "The sailor tightened the boom to catch the wind and make the boat move faster."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-5.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "5"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.072Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "boost",
+      "word": "boost",
+      "senses": [
+        {
+          "id": "sense-690371ae",
+          "pos": "v.",
+          "meaningZh": "提升；增加；促進",
+          "examples": [
+            "John worked hard to boost his sales numbers."
+          ]
+        },
+        {
+          "id": "sense-5f8ac879",
+          "pos": "v.",
+          "meaningZh": "從下方推起；托舉",
+          "examples": [
+            "I boosted him up to the window so he could escape the fire."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "booth",
+      "word": "booth",
+      "senses": [
+        {
+          "id": "sense-41a96a9e",
+          "pos": "n.",
+          "meaningZh": "攤位；小攤",
+          "examples": [
+            "At the county fair, we stopped by a booth selling handmade crafts and jewelry."
+          ]
+        },
+        {
+          "id": "sense-7260aebb",
+          "pos": "n.",
+          "meaningZh": "小隔間；包廂",
+          "examples": [
+            "At the county fair, I visited the photo booth and took some fun pictures with my friends."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "boredom",
+      "word": "boredom",
+      "senses": [
+        {
+          "id": "sense-50e81d18",
+          "pos": "n.",
+          "meaningZh": "無聊；百無聊賴",
+          "examples": [
+            "After finishing all her work and having nothing else to do, Sarah fell prey to a creeping sense of boredom."
+          ]
+        },
+        {
+          "id": "sense-833b9fdb",
+          "pos": "n.",
+          "meaningZh": "厭倦感；乏味感",
+          "examples": [
+            "After hours of listening to the monotonous lecture, boredom set in and I struggled to stay awake."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "bound",
+      "word": "bound",
+      "senses": [
+        {
+          "id": "sense-66b7c1ca",
+          "pos": "adj.",
+          "meaningZh": "必然的；幾乎確定的",
+          "examples": [
+            "With all the rain we've been getting, it's bound to flood soon."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "boundary",
+      "word": "boundary",
+      "senses": [
+        {
+          "id": "sense-03043d10",
+          "pos": "n.",
+          "meaningZh": "邊界；界線",
+          "examples": [
+            "The boundary between the two countries is marked by a long fence."
+          ]
+        },
+        {
+          "id": "sense-4605365f",
+          "pos": "n.",
+          "meaningZh": "極限；界限",
+          "examples": [
+            "In order to fully explore his creativity, the artist pushed the boundaries of traditional painting techniques by experimenting with unconventional materials and methods."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

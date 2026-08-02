@@ -1,1391 +1,653 @@
 {
   "schemaVersion": 1,
-  "kind": "vocab",
+  "kind": "words",
   "batch": 52,
   "words": [
-    {
-      "wordKey": "participate",
-      "word": "participate",
-      "senses": [
-        {
-          "id": "sense-f56991ec",
-          "pos": "verb",
-          "meaningZh": "參與；參加",
-          "definitionEn": "to take part in an activity or event",
-          "examples": [
-            "John decided to participate in the marathon to challenge himself and support a charitable cause."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-2d5b9a5c",
-          "pos": "verb",
-          "meaningZh": "共同分享；一起投入",
-          "definitionEn": "to share in something with others",
-          "examples": [
-            "I will participate in the school talent show by singing a song."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B3·L4 +1",
-        "textbookTitle": "龍騰 B3·L4、三民 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "particular",
-      "word": "particular",
-      "senses": [
-        {
-          "id": "sense-3ab1725d",
-          "pos": "adjective",
-          "meaningZh": "特定的；特有的",
-          "definitionEn": "unique or specific to a person, thing, or category",
-          "examples": [
-            "The coach was looking for a particular set of skills in the soccer player he wanted to recruit for the team."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-43be4aac",
-          "pos": "adjective",
-          "meaningZh": "特別的；個別的",
-          "definitionEn": "separate and distinct from others of the same group or category",
-          "examples": [
-            "I am looking for a particular dress, not just any dress."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L6 +1",
-        "textbookTitle": "龍騰 B4·L6、三民 B2·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "partner",
-      "word": "partner",
-      "senses": [
-        {
-          "id": "sense-1d009cce",
-          "pos": "noun",
-          "meaningZh": "夥伴；合夥人",
-          "definitionEn": "a person who is jointly involved in an activity or business venture with another person or group",
-          "examples": [
-            "After years of hard work, Sarah finally found a reliable partner who shared the same vision for their start-up."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-11368f1d",
-          "pos": "noun",
-          "meaningZh": "合夥人；股東",
-          "definitionEn": "a member of a partnership",
-          "examples": [
-            "John and Jane are business partners, working together to build their company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L1",
-        "textbookTitle": "三民 B4·L1"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "password",
-      "word": "password",
-      "senses": [
-        {
-          "id": "sense-9ab6b065",
-          "pos": "noun",
-          "meaningZh": "密碼；登入密碼",
-          "definitionEn": "a set of characters used for authentication and access control",
-          "examples": [
-            "Please create a strong password, using a combination of uppercase and lowercase letters, numbers, and special characters, to protect your personal information."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-43baaae2",
-          "pos": "noun",
-          "meaningZh": "口令；通關密語",
-          "definitionEn": "a secret word or phrase known only to a restricted group",
-          "examples": [
-            "The group members were required to enter their password to gain access to the secure meeting room."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中高級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
-    {
-      "wordKey": "paste",
-      "word": "paste",
-      "senses": [
-        {
-          "id": "sense-5cfbd499",
-          "pos": "verb",
-          "meaningZh": "貼上；黏貼",
-          "definitionEn": "to stick something onto a surface with glue; to insert copied text or images",
-          "examples": [
-            "Copy the sentence and paste it into the document."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-cea39739",
-          "pos": "noun",
-          "meaningZh": "抹醬；膏狀食物",
-          "definitionEn": "a tasty mixture used for spreading on bread or crackers or in preparing other dishes",
-          "examples": [
-            "I made a delicious garlic and herb paste to spread on my fresh baguette."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        },
-        {
-          "id": "sense-33fc2410",
-          "pos": "noun",
-          "meaningZh": "糊狀物；膏狀材料",
-          "definitionEn": "a soft and malleable mixture of materials",
-          "examples": [
-            "The baker carefully spread the paste of sugar and almond extract onto the cake layers."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
-        }
-      ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
-    },
     {
       "wordKey": "path",
       "word": "path",
       "senses": [
         {
-          "id": "sense-c043ba58",
-          "pos": "noun",
+          "id": "sense-878fbe0c",
+          "pos": "n.",
           "meaningZh": "路徑；軌跡",
-          "definitionEn": "a line or route along which something travels or moves",
           "examples": [
             "The hikers followed a narrow path through the woods."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0c6bce53",
-          "pos": "noun",
+          "id": "sense-96b37937",
+          "pos": "n.",
           "meaningZh": "小徑；步道",
-          "definitionEn": "a way, especially designed for a particular use",
           "examples": [
             "The path through the forest was well-marked and easy to follow."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B4·L7",
-        "textbookTitle": "龍騰 B4·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "patient",
       "word": "patient",
       "senses": [
         {
-          "id": "sense-c16ef176",
-          "pos": "noun",
+          "id": "sense-a04972aa",
+          "pos": "n.",
           "meaningZh": "病人；患者",
-          "definitionEn": "a person who requires medical care",
           "examples": [
             "The patient was admitted to the hospital with a high fever and severe cough."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-56f7d6c8",
-          "pos": "adjective",
+          "id": "sense-5c9ae1ae",
+          "pos": "adj.",
           "meaningZh": "有耐心的；能忍耐的",
-          "definitionEn": "able to endure waiting, delay, or provocation without becoming annoyed or upset, or characterized by such endurance",
           "examples": [
             "Despite the long line at the supermarket, Jane remained patient and waited her turn without complaining."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B1·L3 +1",
-        "textbookTitle": "三民 B1·L3、翰林 B1·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pattern",
       "word": "pattern",
       "senses": [
         {
-          "id": "sense-7edd5729",
-          "pos": "noun",
+          "id": "sense-236d2995",
+          "pos": "n.",
           "meaningZh": "版型；紙樣",
-          "definitionEn": "something intended as a guide for making something else",
           "examples": [
             "The dressmaker used a pattern to cut out the fabric pieces for the dress she was sewing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-0ef24e86",
-          "pos": "noun",
+          "id": "sense-8eb4ccaa",
+          "pos": "n.",
           "meaningZh": "範本；模式",
-          "definitionEn": "something regarded as a normative example",
           "examples": [
             "When teaching young children to write, teachers often provide them with tracing paper that has patterns of letters to follow as a normative example."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peace",
       "word": "peace",
       "senses": [
         {
-          "id": "sense-15db75a2",
-          "pos": "noun",
+          "id": "sense-afb8a046",
+          "pos": "n.",
           "meaningZh": "和平；太平",
-          "definitionEn": "the state of being free from war or violence",
           "examples": [
             "After years of conflict, the treaty brought peace to the region."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-29f2a006",
-          "pos": "noun",
+          "id": "sense-db1039c2",
+          "pos": "n.",
           "meaningZh": "和約；停戰協議",
-          "definitionEn": "a treaty or agreement to end hostilities",
           "examples": [
             "After years of war, the two countries finally signed a peace treaty and declared an end to all hostilities."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peaceful",
       "word": "peaceful",
       "senses": [
         {
-          "id": "sense-0c1f6589",
-          "pos": "adjective",
+          "id": "sense-7f946f7b",
+          "pos": "adj.",
           "meaningZh": "平靜的；安寧的",
-          "definitionEn": "not disturbed by strife or turmoil or war",
           "examples": [
             "The countryside was a peaceful escape from the noise and chaos of the city."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-14ce1c86",
-          "pos": "adjective",
+          "id": "sense-d6488248",
+          "pos": "adj.",
           "meaningZh": "和平的；非暴力的",
-          "definitionEn": "resisting peacefully in response to injustice",
           "examples": [
             "The protesters staged a peaceful sit-in outside the government building, demanding an end to the discriminatory policies."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L7",
-        "textbookTitle": "三民 B2·L7"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peach",
       "word": "peach",
       "senses": [
         {
-          "id": "sense-0bd7e2b9",
-          "pos": "noun",
+          "id": "sense-f213c4c5",
+          "pos": "n.",
           "meaningZh": "桃子；水蜜桃",
-          "definitionEn": "a type of fruit that is juicy, slightly furry, and has sweet yellowish or whitish flesh",
           "examples": [
             "She took a bite of the ripe peach, savoring the sweet and refreshing taste as the juice dripped down her chin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "peak",
       "word": "peak",
       "senses": [
         {
-          "id": "sense-ef892484",
-          "pos": "noun",
+          "id": "sense-1b08b448",
+          "pos": "n.",
           "meaningZh": "頂峰；極致",
-          "definitionEn": "the highest level or degree attainable, the pinnacle of something",
           "examples": [
             "She reached the peak of her career when she was appointed as the CEO of the company."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-f8fbc576",
-          "pos": "noun",
+          "id": "sense-c972b31a",
+          "pos": "n.",
           "meaningZh": "全盛期；高峰期",
-          "definitionEn": "the period of greatest success, prosperity, or productivity",
           "examples": [
             "The company’s profits reached their peak in the third quarter of the year, when they launched their new product line."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B4·L9",
-        "textbookTitle": "三民 B4·L9"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pear",
       "word": "pear",
       "senses": [
         {
-          "id": "sense-0cf2c3ce",
-          "pos": "noun",
+          "id": "sense-4bec9182",
+          "pos": "n.",
           "meaningZh": "梨子；水梨",
-          "definitionEn": "Sweet, juicy fruit with a gritty texture, available in many varieties.",
           "examples": [
             "She bit into the ripe pear, savoring its sweet, refreshing flavor as the juice dripped down her chin."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-42d2b7d0",
-          "pos": "noun",
+          "id": "sense-062ec064",
+          "pos": "n.",
           "meaningZh": "梨樹",
-          "definitionEn": "A tree originally from the Old World, cultivated in many varieties for its sweet, juicy, gritty-textured fruit.",
           "examples": [
             "During their picnic, they enjoyed the delicious sweetness of a ripe pear, savoring its juicy texture."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "per",
       "word": "per",
       "senses": [
         {
-          "id": "sense-557d75c9",
-          "pos": "preposition",
+          "id": "sense-4e8d0b56",
+          "pos": "prep.",
           "meaningZh": "每；每一",
-          "definitionEn": "used to talk about prices, rates, etc., meaning the amount for each one",
           "examples": [
             "The cost of renting the venue is $100 per hour."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-2b3f29bf",
-          "pos": "preposition",
+          "id": "sense-903624ba",
+          "pos": "prep.",
           "meaningZh": "依照；按照",
-          "definitionEn": "according to something",
           "examples": [
             "She calculated the cost per person for the trip."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "perfect",
       "word": "perfect",
       "senses": [
         {
-          "id": "sense-3b6b336a",
-          "pos": "adjective",
+          "id": "sense-44e31be8",
+          "pos": "adj.",
           "meaningZh": "完美的；無瑕的",
-          "definitionEn": "being complete in every way and without any flaws or defects",
           "examples": [
             "After weeks of practice, the gymnast performed a perfect routine during the competition."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-8606b521",
-          "pos": "adjective",
+          "id": "sense-555b970b",
+          "pos": "adj.",
           "meaningZh": "精準的；無誤的",
-          "definitionEn": "accurate and exact to the highest degree",
           "examples": [
             "She played a perfect game of chess, making no mistakes and winning in 10 moves."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L1 +2",
-        "textbookTitle": "龍騰 B1·L1、三民 B2·L4、翰林 B1·L8"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "period",
       "word": "period",
       "senses": [
         {
-          "id": "sense-eec7aee0",
-          "pos": "noun",
+          "id": "sense-a45fe7c8",
+          "pos": "n.",
           "meaningZh": "時期；一段時間",
-          "definitionEn": "an amount of time",
           "examples": [
             "She took a sabbatical for an extended period to travel and explore different cultures."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-3a55280f",
-          "pos": "noun",
+          "id": "sense-08c2d4e7",
+          "pos": "n.",
           "meaningZh": "週期；循環",
-          "definitionEn": "the interval taken to complete one cycle of a regularly repeating phenomenon",
           "examples": [
             "The Earth completes one orbit around the sun in a period of approximately 365 days."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "personal",
       "word": "personal",
       "senses": [
         {
-          "id": "sense-0c1ab82f",
-          "pos": "adjective",
+          "id": "sense-3568d92b",
+          "pos": "adj.",
           "meaningZh": "個人的；私人的",
-          "definitionEn": "unique to an individual",
           "examples": [
             "Everyone has their own personal preferences, such as favorite foods and colors."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-fb03d33b",
-          "pos": "adjective",
+          "id": "sense-180e9737",
+          "pos": "adj.",
           "meaningZh": "人格上的；性格方面的",
-          "definitionEn": "relating to a person’s personality",
           "examples": [
             "When hiring for this position, we are interested in your professional qualifications, as well as your personal characteristics."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L2 +1",
-        "textbookTitle": "龍騰 B1·L2、三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "personality",
       "word": "personality",
       "senses": [
         {
-          "id": "sense-bf862dab",
-          "pos": "noun",
+          "id": "sense-2336dacb",
+          "pos": "n.",
           "meaningZh": "個性；人格特質",
-          "definitionEn": "the set of characteristics that make up a person’s character, including their behavior, temperament, emotions, and thoughts",
           "examples": [
             "John's outgoing and friendly personality makes him the life of every party."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-880d3394",
-          "pos": "noun",
+          "id": "sense-f73e3174",
+          "pos": "n.",
           "meaningZh": "知名人士；名人",
-          "definitionEn": "a person who is well-known or important",
           "examples": [
             "The Hollywood actor is a well-known personality, loved by fans worldwide."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 三民 B2·L10",
-        "textbookTitle": "三民 B2·L10"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "phrase",
       "word": "phrase",
       "senses": [
         {
-          "id": "sense-7c2570b7",
-          "pos": "noun",
+          "id": "sense-a4bb6ccf",
+          "pos": "n.",
           "meaningZh": "片語；慣用語",
-          "definitionEn": "a group of words that functions as a unit and has its own meaning",
           "examples": [
             "The phrase ’spill the beans’ means to reveal a secret."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9512b091",
-          "pos": "verb",
+          "id": "sense-f479569e",
+          "pos": "v.",
           "meaningZh": "措辭；用語言表達",
-          "definitionEn": "to express something in words",
           "examples": [
             "She struggled to phrase her thoughts clearly in the meeting."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pillow",
       "word": "pillow",
       "senses": [
         {
-          "id": "sense-44d14e40",
-          "pos": "noun",
+          "id": "sense-95cc9068",
+          "pos": "n.",
           "meaningZh": "枕頭；靠枕",
-          "definitionEn": "a cushion, typically used to support the head of a sleeping person",
           "examples": [
             "My favorite pillow is filled with down feathers and is incredibly soft and comfortable to sleep on."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pizza",
       "word": "pizza",
       "senses": [
         {
-          "id": "sense-e9f2c499",
-          "pos": "noun",
+          "id": "sense-4b0c09bd",
+          "pos": "n.",
           "meaningZh": "披薩；比薩",
-          "definitionEn": "A dish originally from Italy, consisting of a flat, round base of dough that is baked with toppings of tomato sauce and cheese, typically with added meat or vegetables.",
           "examples": [
             "On Friday nights, my friends and I love to gather at the local pizzeria and indulge in a delicious pizza topped with pepperoni, mushrooms, and extra cheese."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "plain",
       "word": "plain",
       "senses": [
         {
-          "id": "sense-ceb29984",
-          "pos": "adjective",
+          "id": "sense-73152a40",
+          "pos": "adj.",
           "meaningZh": "純粹的；無添加的",
-          "definitionEn": "Not mixed with anything else; pure.",
           "examples": [
             "She prefers plain black coffee without any sugar or cream."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-eb60bb73",
-          "pos": "adjective",
+          "id": "sense-1ba2402f",
+          "pos": "adj.",
           "meaningZh": "直白的；坦率的",
-          "definitionEn": "Said or done in an honest and direct way.",
           "examples": [
             "She gave him a plain answer to his question, not sugarcoating anything."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B1·L7 +2",
-        "textbookTitle": "龍騰 B1·L7、龍騰 B5·L3、翰林 B1·L4"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "platform",
       "word": "platform",
       "senses": [
         {
-          "id": "sense-4703c6b4",
-          "pos": "noun",
+          "id": "sense-58b112b8",
+          "pos": "n.",
           "meaningZh": "平台；作業系統環境",
-          "definitionEn": "the combination of a particular computer and a particular operating system",
           "examples": [
             "In order to ensure full compatibility, it is important to choose the right software platform for your computer’s operating system."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-1833411c",
-          "pos": "noun",
+          "id": "sense-c577bfd0",
+          "pos": "n.",
           "meaningZh": "政黨政綱；政策宣言",
-          "definitionEn": "a document stating the aims and principles of a political party",
           "examples": [
             "The party’s platform promises to increase funding for education and healthcare while reducing taxes for the middle class."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "playground",
       "word": "playground",
       "senses": [
         {
-          "id": "sense-c7f8b65a",
-          "pos": "noun",
+          "id": "sense-7409fb92",
+          "pos": "n.",
           "meaningZh": "遊樂場；操場",
-          "definitionEn": "yard consisting of an outdoor area for children’s play",
           "examples": [
             "The playground was filled with children laughing and playing on the swings, slides, and monkey bars."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-af2efa65",
-          "pos": "noun",
+          "id": "sense-a49e8a0d",
+          "pos": "n.",
           "meaningZh": "休閒場所；娛樂區",
-          "definitionEn": "an area where many people go for recreation",
           "examples": [
             "The children were having a great time playing on the swings and slides at the local playground."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "pleasant",
       "word": "pleasant",
       "senses": [
         {
-          "id": "sense-25777b49",
-          "pos": "adjective",
+          "id": "sense-dbf27f95",
+          "pos": "adj.",
           "meaningZh": "令人愉快的；宜人的",
-          "definitionEn": "affording pleasure; pleasing; delightful",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-7e0e6331",
-          "pos": "adjective",
+          "id": "sense-a74310b5",
+          "pos": "adj.",
           "meaningZh": "和藹的；討人喜歡的",
-          "definitionEn": "(of persons) having pleasing manners or behavior",
           "examples": [
             "At the dinner party, Carol was a pleasant host, always smiling and making sure everyone felt welcome."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": true,
-        "textbookLabel": "📘 龍騰 B2·L2",
-        "textbookTitle": "龍騰 B2·L2"
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "plus",
       "word": "plus",
       "senses": [
         {
-          "id": "sense-21b89949",
-          "pos": "conjunction",
+          "id": "sense-47b65ad9",
+          "pos": "conj.",
           "meaningZh": "加上；還有",
-          "definitionEn": "used to add one thing to another",
           "examples": [
             "She decided to buy the vacation package, plus an extra day of sightseeing."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-9ada86c0",
-          "pos": "noun",
+          "id": "sense-0d10ada4",
+          "pos": "n.",
           "meaningZh": "優點；加分之處",
-          "definitionEn": "a positive quantity or value; an advantage",
           "examples": [
             "Having a high level of education is a definite plus when applying for jobs."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "A2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "poem",
       "word": "poem",
       "senses": [
         {
-          "id": "sense-0ec45cfc",
-          "pos": "noun",
+          "id": "sense-56c71990",
+          "pos": "n.",
           "meaningZh": "詩；詩篇",
-          "definitionEn": "a piece of writing in which the expression of feelings and ideas is given intensity by particular attention to diction (sometimes involving rhyme), rhythm, and imagery",
           "examples": [
             "As she read her heartfelt poem aloud, the audience was captivated by the beautiful words, rhythmic flow, and vivid imagery."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "poet",
       "word": "poet",
       "senses": [
         {
-          "id": "sense-1fdc2ff8",
-          "pos": "noun",
+          "id": "sense-39eef62c",
+          "pos": "n.",
           "meaningZh": "詩人",
-          "definitionEn": "a writer of poems, often with a particular focus on creating beauty and emotional depth through the use of language",
           "examples": [
             "As she sat by the window, lost in her thoughts, the poet carefully selected words to craft a heartfelt sonnet about unrequited love."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "poetry",
       "word": "poetry",
       "senses": [
         {
-          "id": "sense-c833dc1a",
-          "pos": "noun",
+          "id": "sense-f57b64c2",
+          "pos": "n.",
           "meaningZh": "詩歌；詩文",
-          "definitionEn": "literature in metrical form",
           "examples": [
             "She turned her emotions into poetry, capturing the essence of heartbreak in beautifully crafted verses."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         },
         {
-          "id": "sense-05ac20ef",
-          "pos": "noun",
+          "id": "sense-34cf4887",
+          "pos": "n.",
           "meaningZh": "詩意；詩一般的美感",
-          "definitionEn": "any communication resembling poetry in beauty or the evocation of feeling",
           "examples": [
             "The way the painter blended colors on the canvas was like poetry in motion."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B1",
-        "exams": [
-          "學測",
-          "GEPT中級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     },
     {
       "wordKey": "poison",
       "word": "poison",
       "senses": [
         {
-          "id": "sense-71974e04",
-          "pos": "noun",
+          "id": "sense-c0296b88",
+          "pos": "n.",
           "meaningZh": "毒藥；毒物",
-          "definitionEn": "a substance that can cause harm or death if it enters the body",
-          "examples": [],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
-          ]
+          "examples": []
         },
         {
-          "id": "sense-0a503803",
-          "pos": "verb",
+          "id": "sense-ecda3742",
+          "pos": "v.",
           "meaningZh": "毒害；下毒",
-          "definitionEn": "to cause harm or death to someone by giving them poison",
           "examples": [
             "The evil stepmother plotted to poison Snow White with a poisoned apple, hoping to trick her into taking a bite."
-          ],
-          "source": "import",
-          "sourceFiles": [
-            "level-2.json"
           ]
         }
       ],
-      "synonyms": [],
-      "antonyms": [],
-      "metadata": {
-        "levels": [
-          "2"
-        ],
-        "cefr": "B2",
-        "exams": [
-          "學測",
-          "GEPT初級"
-        ],
-        "textbook": false,
-        "textbookLabel": "",
-        "textbookTitle": ""
-      },
-      "updatedAt": "2026-07-31T15:37:45.071Z"
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "policy",
+      "word": "policy",
+      "senses": [
+        {
+          "id": "sense-fed5b6d5",
+          "pos": "n.",
+          "meaningZh": "政策；方針",
+          "examples": [
+            "The government implemented a new policy to promote renewable energy and reduce carbon emissions."
+          ]
+        },
+        {
+          "id": "sense-86e16910",
+          "pos": "n.",
+          "meaningZh": "施政依據；政策說明",
+          "examples": [
+            "The government's policy on renewable energy emphasizes the need to reduce greenhouse gas emissions and transition to sustainable sources such as solar and wind power."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pop",
+      "word": "pop",
+      "senses": [
+        {
+          "id": "sense-ed06a82a",
+          "pos": "n.",
+          "meaningZh": "流行音樂；流行的",
+          "examples": [
+            "She loves listening to pop music."
+          ]
+        },
+        {
+          "id": "sense-3d48b301",
+          "pos": "n.",
+          "meaningZh": "爆破聲；砰的一聲",
+          "examples": [
+            "The balloon made a loud pop as it burst."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "population",
+      "word": "population",
+      "senses": [
+        {
+          "id": "sense-fc776970",
+          "pos": "n.",
+          "meaningZh": "人口；族群數量",
+          "examples": [
+            "The population of New York City is over 8 million people."
+          ]
+        },
+        {
+          "id": "sense-e37986f3",
+          "pos": "n.",
+          "meaningZh": "總人口；居住人數",
+          "examples": [
+            "The population of the city grew rapidly after several new housing developments were built."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "pork",
+      "word": "pork",
+      "senses": [
+        {
+          "id": "sense-09a4968e",
+          "pos": "n.",
+          "meaningZh": "豬肉",
+          "examples": [
+            "For dinner, we had roasted pork with mashed sweet potatoes."
+          ]
+        },
+        {
+          "id": "sense-0992f378",
+          "pos": "n.",
+          "meaningZh": "政治肥肉；利益輸送",
+          "examples": [
+            "Opponents of the new policy accuse it of being nothing more than pork, designed to gain the support of the agricultural industry."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
+    },
+    {
+      "wordKey": "port",
+      "word": "port",
+      "senses": [
+        {
+          "id": "sense-f2802ee6",
+          "pos": "n.",
+          "meaningZh": "港口；口岸",
+          "examples": [
+            "The port of Los Angeles is one of the busiest ports in the world, facilitating the importation and exportation of goods between the United States and many other countries."
+          ]
+        },
+        {
+          "id": "sense-f162ce49",
+          "pos": "n.",
+          "meaningZh": "砲孔；船舷孔",
+          "examples": [
+            "The pirates aimed their cannons at the port in the ship’s wall, trying to blast their way through to the treasure inside."
+          ]
+        }
+      ],
+      "updatedAt": "2026-08-01T14:50:42.287Z"
     }
   ]
 }

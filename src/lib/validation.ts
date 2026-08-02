@@ -1,98 +1,73 @@
-import type { EditorItem, PracticeSession, VocabItem, VocabSet } from '@/types'
+import type { EditorItem, EditorSenseDraft, PracticeQuestion, PracticeSession, QuizRecord, SessionEntry, StudyWord, WordDraft } from '@/types'
+import { hasOnlyKeys, isRecord } from './schema'
 
-function isNonEmptyString(value: unknown): value is string {
-  return typeof value === 'string' && value.trim().length > 0
+function generateEditorId(): string {
+  return `editor-${crypto.randomUUID()}`
 }
 
-function generateId(prefix?: string): string {
-  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
-    return crypto.randomUUID()
-  }
-  const suffix = Math.random().toString(36).substring(2, 11)
-  return prefix ? `${prefix}-${Date.now()}-${suffix}` : `${Date.now()}`
+export function createBlankSenseDraft(): EditorSenseDraft {
+  return { id: `sense-editor-${crypto.randomUUID()}`, pos: '', meaning: '', examples: [] }
 }
 
-export function normalizeItem(item: unknown, itemIndex: number): VocabItem {
-  if (!item || typeof item !== 'object' || Array.isArray(item)) {
-    throw new Error(`第 ${itemIndex + 1} 筆資料格式錯誤`)
-  }
-  const it = item as Record<string, unknown>
-  if (!isNonEmptyString(it.word)) {
-    throw new Error(`第 ${itemIndex + 1} 筆缺少 word`)
-  }
-  if (!isNonEmptyString(it.meaning)) {
-    throw new Error(`第 ${itemIndex + 1} 筆缺少 meaning`)
-  }
-  return {
-    id: isNonEmptyString(it.id) ? (it.id as string).trim() : generateId('item'),
-    word: (it.word as string).trim(),
-    pos: isNonEmptyString(it.pos) ? (it.pos as string).trim() : '',
-    meaning: (it.meaning as string).trim(),
-    example: isNonEmptyString(it.example) ? (it.example as string).trim() : '',
-    definition: isNonEmptyString(it.definition) ? (it.definition as string).trim() : undefined,
-    phonetic: isNonEmptyString(it.phonetic) ? (it.phonetic as string).trim() : undefined,
-    audioUrl: isNonEmptyString(it.audioUrl) ? (it.audioUrl as string).trim() : undefined,
-    origin: isNonEmptyString(it.origin) ? (it.origin as string).trim() : undefined,
-    dictionarySource: isNonEmptyString(it.dictionarySource) ? (it.dictionarySource as string).trim() : undefined,
-    synonyms: Array.isArray(it.synonyms) ? it.synonyms.filter(isNonEmptyString).map(tag => tag.trim()) : [],
-    antonyms: Array.isArray(it.antonyms) ? it.antonyms.filter(isNonEmptyString).map(tag => tag.trim()) : [],
-    note: isNonEmptyString(it.note) ? (it.note as string).trim() : undefined,
-    tags: Array.isArray(it.tags) ? it.tags.filter(isNonEmptyString).map(tag => tag.trim()) : [],
-    favorite: Boolean(it.favorite),
-  }
+export function containsHan(value: string): boolean {
+  return /[\u3400-\u9FFF]/u.test(value)
 }
 
-export function normalizeSet(data: unknown, fallbackId = generateId()): VocabSet {
-  if (!data || typeof data !== 'object' || Array.isArray(data)) {
-    throw new Error('最外層必須是單一 JSON object')
-  }
-  const d = data as Record<string, unknown>
-  if (!Array.isArray(d.items)) {
-    throw new TypeError('缺少 items 陣列')
-  }
-  if (!d.items.length) {
-    throw new Error('items 不可為空')
-  }
-
-  const now = new Date()
-  const fallbackName = `單字集 ${now.getMonth() + 1}/${now.getDate()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
-
-  return {
-    id: isNonEmptyString(d.id) ? (d.id as string).trim() : fallbackId,
-    setName: isNonEmptyString(d.setName) ? (d.setName as string).trim() : fallbackName,
-    difficulty: (d.difficulty as number) ?? 2,
-    items: (d.items as unknown[]).map((item, index) => normalizeItem(item, index)),
-    folderId: isNonEmptyString(d.folderId) ? (d.folderId as string).trim() : undefined,
-    createdAt: isNonEmptyString(d.createdAt) ? d.createdAt as string : undefined,
-    updatedAt: isNonEmptyString(d.updatedAt) ? d.updatedAt as string : undefined,
-  }
+export function getFilledWordDrafts(items: WordDraft[]): WordDraft[] {
+  return items.filter(item => item.word.trim() || item.senses.some(sense => sense.pos.trim() || sense.meaning.trim() || sense.examples.some(example => example.trim())))
 }
 
-export function normalizeExportPayload(data: unknown): VocabSet[] {
-  if (!data || typeof data !== 'object' || Array.isArray(data)) {
-    throw new Error('匯入資料必須是 JSON object')
-  }
-  const d = data as Record<string, unknown>
-
-  const timestamp = Date.now()
-  if (Array.isArray(d.sets)) {
-    if (!d.sets.length)
-      throw new Error('sets 不可為空')
-    return d.sets.map((set: unknown, index: number) => normalizeSet(set, `imported-${timestamp}-${index + 1}`))
-  }
-
-  if (Array.isArray(d.items)) {
-    return [normalizeSet(data as Record<string, unknown>, `imported-${timestamp}-1`)]
-  }
-
-  throw new Error('找不到 sets 或 items')
+export function areWordDraftsComplete(items: WordDraft[]): boolean {
+  return items.length > 0 && items.every(item => item.word.trim() && item.senses.length > 0 && item.senses.every(sense => sense.pos.trim() && sense.meaning.trim()))
 }
 
-export function toSessionEntries(items: VocabItem[]) {
+export function toSessionEntries(items: StudyWord[]) {
   return items.map((item, index) => ({
     item,
     originalIndex: index,
   }))
+}
+
+function isStudyWord(value: unknown): value is StudyWord {
+  if (!isRecord(value) || !hasOnlyKeys(value, ['id', 'wordKey', 'word', 'pos', 'meaning', 'examples', 'example']) || typeof value.id !== 'string' || typeof value.wordKey !== 'string' || typeof value.word !== 'string' || typeof value.pos !== 'string' || typeof value.meaning !== 'string' || typeof value.example !== 'string' || !Array.isArray(value.examples))
+    return false
+  return value.examples.every(example => typeof example === 'string')
+}
+
+function isPracticeQuestion(value: unknown): value is PracticeQuestion {
+  if (!isRecord(value) || !hasOnlyKeys(value, ['questionId', 'questionType', 'difficulty', 'prompt', 'options', 'answerIndex']) || typeof value.questionId !== 'string' || !value.questionId.trim() || !['standard', 'fillBlank', 'reading'].includes(String(value.questionType)) || ![1, 2, 3].includes(Number(value.difficulty)) || typeof value.prompt !== 'string' || !Array.isArray(value.options) || !Number.isInteger(value.answerIndex))
+    return false
+  return value.options.length === 4 && value.options.every(option => typeof option === 'string') && Number(value.answerIndex) >= 0 && Number(value.answerIndex) < value.options.length
+}
+
+function isSessionEntry(value: unknown): value is SessionEntry {
+  if (!isRecord(value) || !hasOnlyKeys(value, ['item', 'question', 'originalIndex', 'readingPassage', 'readingPackId']) || !isStudyWord(value.item) || typeof value.originalIndex !== 'number' || !Number.isInteger(value.originalIndex) || value.originalIndex < 0)
+    return false
+  const hasValidReadingPack = !(isPracticeQuestion(value.question) && value.question.questionType === 'reading')
+    || (typeof value.readingPassage === 'string' && value.readingPassage.trim().length > 0 && typeof value.readingPackId === 'string' && value.readingPackId.trim().length > 0)
+  return (value.question === undefined || isPracticeQuestion(value.question))
+    && (value.readingPassage === undefined || typeof value.readingPassage === 'string')
+    && (value.readingPackId === undefined || typeof value.readingPackId === 'string')
+    && hasValidReadingPack
+}
+
+function isDraft(value: unknown): boolean {
+  if (value === null)
+    return true
+  if (!isRecord(value) || !hasOnlyKeys(value, ['selectedIndex', 'answered']) || typeof value.answered !== 'boolean')
+    return false
+  return value.selectedIndex === null || (Number.isInteger(value.selectedIndex) && Number(value.selectedIndex) >= 0)
+}
+
+function isQuizRecord(value: unknown): value is QuizRecord {
+  return isRecord(value)
+    && hasOnlyKeys(value, ['type', 'selectedIndex', 'userAnswer', 'correctAnswer', 'isCorrect', 'skipped'])
+    && value.type === 'quiz'
+    && (value.selectedIndex === null || (Number.isInteger(value.selectedIndex) && Number(value.selectedIndex) >= 0))
+    && typeof value.userAnswer === 'string'
+    && typeof value.correctAnswer === 'string'
+    && typeof value.isCorrect === 'boolean'
+    && typeof value.skipped === 'boolean'
 }
 
 export function normalizeSession(
@@ -102,63 +77,56 @@ export function normalizeSession(
 ): PracticeSession | null {
   if (!session || typeof session !== 'object' || Array.isArray(session))
     return null
-  const s = session as Record<string, unknown>
-  if (!isNonEmptyString(s.sourceSetId))
+  const source = session as Record<string, unknown>
+  if (!hasOnlyKeys(source, ['sourceSetId', 'mode', 'entries', 'index', 'correctCount', 'wrongEntries', 'answers', 'drafts', 'markedForReview', 'review', 'status']))
     return null
-  if (!validSetIds.has(s.sourceSetId as string))
+  if (typeof source.sourceSetId !== 'string' || !validSetIds.has(source.sourceSetId))
     return null
-  if (!isNonEmptyString(s.mode))
+  if (typeof source.mode !== 'string' || !['quiz', 'fillBlank', 'reading'].includes(source.mode))
     return null
-  if (!Array.isArray(s.entries) || !s.entries.length)
-    return null
-  if (!['quiz', 'cloze', 'reading', 'spelling'].includes(s.mode as string))
+  if (!Array.isArray(source.entries) || !source.entries.length || !source.entries.every(isSessionEntry))
     return null
 
-  const markedForReview = Array.isArray(s.markedForReview)
-    ? s.markedForReview.slice(0, s.entries.length).map(Boolean)
-    : []
-  while (markedForReview.length < s.entries.length)
-    markedForReview.push(false)
+  if (typeof source.index !== 'number' || !Number.isInteger(source.index) || source.index < 0 || source.index >= source.entries.length || typeof source.correctCount !== 'number' || !Number.isInteger(source.correctCount) || source.correctCount < 0 || source.correctCount > source.entries.length)
+    return null
+  if (!Array.isArray(source.markedForReview) || source.markedForReview.length !== source.entries.length || !source.markedForReview.every(value => typeof value === 'boolean'))
+    return null
+  if (!Array.isArray(source.wrongEntries) || !source.wrongEntries.every(isSessionEntry) || !Array.isArray(source.answers) || !source.answers.every(isQuizRecord) || !Array.isArray(source.drafts) || !source.drafts.every(isDraft) || typeof source.review !== 'boolean' || (source.status !== 'in-progress' && source.status !== 'completed'))
+    return null
+  const markedForReview = source.markedForReview
 
   return {
-    sourceSetId: s.sourceSetId as string,
-    mode: s.mode as PracticeSession['mode'],
-    entries: s.entries as PracticeSession['entries'],
-    index: Number.isInteger(s.index) && (s.index as number) >= 0 ? (s.index as number) : 0,
-    correctCount: Number.isInteger(s.correctCount) && (s.correctCount as number) >= 0 ? (s.correctCount as number) : 0,
-    wrongEntries: Array.isArray(s.wrongEntries) ? s.wrongEntries as PracticeSession['wrongEntries'] : [],
-    answers: Array.isArray(s.answers) ? s.answers as PracticeSession['answers'] : [],
-    drafts: Array.isArray(s.drafts) ? s.drafts as PracticeSession['drafts'] : [],
+    sourceSetId: source.sourceSetId,
+    mode: source.mode as PracticeSession['mode'],
+    entries: source.entries,
+    index: source.index,
+    correctCount: source.correctCount,
+    wrongEntries: source.wrongEntries,
+    answers: source.answers,
+    drafts: source.drafts,
     markedForReview,
-    review: Boolean(s.review),
-    status: s.status === 'completed' || view === 'result' ? 'completed' : 'in-progress',
+    review: source.review,
+    status: source.status === 'completed' || view === 'result' ? 'completed' : 'in-progress',
   }
 }
 
-export function createEditorItem(item?: VocabItem | null, index = 0): EditorItem {
+export function createEditorItem(item?: Pick<EditorItem, 'word' | 'senses'> | StudyWord | null): EditorItem {
+  const senses = item && 'senses' in item
+    ? item.senses.map(sense => ({ ...sense, examples: [...sense.examples] }))
+    : item
+      ? [{ id: item.id, pos: item.pos, meaning: item.meaning, examples: [...item.examples] }]
+      : [createBlankSenseDraft()]
   return {
-    id: isNonEmptyString(item?.id) ? (item.id as string).trim() : generateId(`editor-${index}`),
+    id: item && 'id' in item && typeof item.id === 'string' ? item.id : generateEditorId(),
     word: item?.word ?? '',
-    pos: item?.pos ?? '',
-    meaning: item?.meaning ?? '',
-    example: item?.example ?? '',
-    definition: item?.definition,
-    phonetic: item?.phonetic,
-    audioUrl: item?.audioUrl,
-    origin: item?.origin,
-    dictionarySource: item?.dictionarySource,
-    synonyms: item?.synonyms ?? [],
-    antonyms: item?.antonyms ?? [],
-    note: item?.note,
-    tags: item?.tags ?? [],
-    favorite: item?.favorite ?? false,
+    senses,
   }
 }
 
-export function createBlankEditorItem(index = 0): EditorItem {
-  return createEditorItem(null, index)
+export function createBlankEditorItem(): EditorItem {
+  return createEditorItem(null)
 }
 
-export function createEditorItems(items: VocabItem[] = []): EditorItem[] {
-  return items.map((item, index) => createEditorItem(item, index))
+export function createEditorItems(items: StudyWord[] = []): EditorItem[] {
+  return items.map(item => createEditorItem(item))
 }
