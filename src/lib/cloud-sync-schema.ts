@@ -2,6 +2,7 @@ import type { SyncRecords } from './sync-outbox'
 import type { AiSettings, DashboardStats, FirestoreLibraryChunk, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
 import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
 import { getShareableAiSettings, normalizeAiSettings } from './ai-provider'
+import { CloudSyncError } from './cloud-sync-errors'
 import { estimateJsonBytes, stableHash } from './hash'
 import { normalizeDashboardStats, normalizeLearningProgress } from './share'
 
@@ -71,11 +72,11 @@ export function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibrarySt
 
 export function validateLibraryChunk(value: unknown, uid: string, documentId: string): FirestoreLibraryChunk {
   if (!value || typeof value !== 'object' || Array.isArray(value))
-    throw new Error('Cloud library chunk 格式錯誤')
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library chunk 格式錯誤')
   const source = value as Record<string, unknown>
   const allowed = ['ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items']
   if (Object.keys(source).some(key => !allowed.includes(key)) || source.ownerId !== uid || source.schemaVersion !== CLOUD_SCHEMA_VERSION || source.chunkId !== documentId || typeof source.chunkId !== 'string' || typeof source.updatedAt !== 'string' || typeof source.checksum !== 'string' || !['words', 'sets', 'memberships', 'folders', 'questions'].includes(String(source.section)) || !Array.isArray(source.items))
-    throw new Error('Cloud library chunk schema 不受支援')
+    throw new CloudSyncError('cloud/schema-unsupported', 'Cloud library chunk schema 不受支援')
   const base = {
     ownerId: source.ownerId,
     schemaVersion: source.schemaVersion,
@@ -85,17 +86,17 @@ export function validateLibraryChunk(value: unknown, uid: string, documentId: st
     items: source.items,
   }
   if (stableHash(base) !== source.checksum)
-    throw new Error('Cloud library chunk checksum 不一致')
+    throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library chunk checksum 不一致')
   return source as unknown as FirestoreLibraryChunk
 }
 
 export function validateCloudEnvelope(value: unknown, uid: string, field: string, payloadKeys: readonly string[] = []): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value))
-    throw new Error(`${field} 格式錯誤`)
+    throw new CloudSyncError('cloud/data-invalid', `${field} 格式錯誤`)
   const source = value as Record<string, unknown>
   const allowedKeys = new Set(['ownerId', 'schemaVersion', ...payloadKeys])
   if (Object.keys(source).some(key => !allowedKeys.has(key)) || source.ownerId !== uid || source.schemaVersion !== CLOUD_SCHEMA_VERSION)
-    throw new Error(`${field} schema 不受支援`)
+    throw new CloudSyncError('cloud/schema-unsupported', `${field} schema 不受支援`)
   return source
 }
 

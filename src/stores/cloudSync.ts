@@ -1,4 +1,4 @@
-import type { User } from 'firebase/auth'
+import type { Auth, User } from 'firebase/auth'
 import type { Unsubscribe } from 'firebase/firestore'
 import type { SyncOutboxEntry, SyncRecords } from '@/lib/sync-outbox'
 import type { AiSettings, DashboardStats, LearningProgress, LibraryState, SyncStatus } from '@/types'
@@ -8,6 +8,7 @@ import { onSnapshot } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import { defaultAiSettings, getShareableAiSettings, loadAiSettings, loadAiSettingsState, onAiSettingsChanged, saveAiSettings } from '@/lib/ai-provider'
+import { CloudSyncError, isRetryableSyncError, syncErrorDetails } from '@/lib/cloud-sync-errors'
 import { loadCloudOutbox, saveCloudOutbox } from '@/lib/cloud-sync-outbox-storage'
 import { reconcileAiSettingsState, reconcileLearningState, reconcileLibraryState } from '@/lib/cloud-sync-reconcile'
 import { cloudCollection, cloudDocument, emptyCloudProgress, emptyCloudStats, parseCloudLibrarySnapshot, readCloudLibrary, requireCloudFirestore, writeCloudAiSettings, writeCloudLearningState, writeCloudLibraryChunks } from '@/lib/cloud-sync-remote'
@@ -170,28 +171,25 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function explainSyncError(error: unknown): string {
-    const message = error instanceof Error ? error.message : String(error)
-    const code = error && typeof error === 'object' && 'code' in error ? String(error.code) : ''
-    const normalized = `${code} ${message}`.toLowerCase()
-    if (normalized.includes('err_blocked_by_client') || normalized.includes('blocked by client'))
-      return i18n.global.t('sync.errorBlockedByClient')
-    if (normalized.includes('app check') || normalized.includes('appcheck') || normalized.includes('recaptcha') || normalized.includes('token is invalid'))
-      return i18n.global.t('sync.errorAppCheck')
-    if (normalized.includes('permission-denied') || normalized.includes('missing or insufficient permissions'))
-      return i18n.global.t('sync.errorPermission')
-    if (normalized.includes('unauthenticated') || normalized.includes('auth'))
-      return i18n.global.t('sync.errorAuth')
-    if (normalized.includes('failed-precondition') || normalized.includes('indexeddb') || normalized.includes('persistence') || normalized.includes('multiple tab'))
-      return i18n.global.t('sync.errorPersistence')
-    if (normalized.includes('deadline-exceeded') || normalized.includes('timeout'))
-      return i18n.global.t('sync.errorTimeout')
-    if (normalized.includes('resource-exhausted'))
-      return i18n.global.t('sync.errorResource')
-    if (normalized.includes('aborted'))
-      return i18n.global.t('sync.errorAborted')
-    if (normalized.includes('unavailable') || normalized.includes('network'))
-      return i18n.global.t('sync.errorNetwork')
-    return i18n.global.t('sync.errorUnknown', { code: code || 'unknown' })
+    const details = syncErrorDetails(error)
+    const translationKeys = {
+      'aborted': 'sync.errorAborted',
+      'app-check': 'sync.errorAppCheck',
+      'auth': 'sync.errorAuth',
+      'blocked-client': 'sync.errorBlockedByClient',
+      'cloud-data': 'sync.errorCloudData',
+      'cloud-schema': 'sync.errorCloudSchema',
+      'network': 'sync.errorNetwork',
+      'not-configured': 'sync.firebaseNotConfigured',
+      'outbox': 'sync.errorOutbox',
+      'permission': 'sync.errorPermission',
+      'persistence': 'sync.errorPersistence',
+      'resource': 'sync.errorResource',
+      'timeout': 'sync.errorTimeout',
+    } as const
+    if (details.kind === 'unknown')
+      return i18n.global.t('sync.errorUnknown', { code: details.code })
+    return i18n.global.t(translationKeys[details.kind])
   }
 
   function setError(syncError: unknown) {
@@ -200,10 +198,17 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function handleSyncError(syncError: unknown) {
+    const details = syncErrorDetails(syncError)
+    console.error('[Cloud Sync] operation failed', {
+      code: details.code,
+      kind: details.kind,
+      message: details.message,
+      error: syncError,
+    })
     setError(syncError)
     clearListeners()
     clearSyncTimers()
-    if (user.value && isOnline.value && !retryTimer) {
+    if (user.value && isOnline.value && isRetryableSyncError(syncError) && !retryTimer) {
       const delay = Math.min(30000, 2000 * (2 ** Math.min(retryAttempt, 4)))
       retryAttempt += 1
       retryTimer = setTimeout(() => {
@@ -573,10 +578,32 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       status.value = 'disabled'
       return
     }
-    const auth = await configureFirebaseAuth()
+    let auth: Auth | null
+    try {
+      auth = await configureFirebaseAuth()
+    }
+    catch (authError) {
+      handleSyncError(authError)
+      authReady.value = true
+      return
+    }
     if (!auth)
       return
-    onAuthStateChanged(auth, async (nextUser) => {
+    onAuthStateChanged(auth, async nextUser => applyAuthState(nextUser), handleSyncError)
+    watch([isOnline, visibility], ([online, pageVisibility]) => {
+      if (!user.value)
+        return
+      if (!online) {
+        stopRealtime()
+        return
+      }
+      if (pageVisibility === 'visible' && realtimeUid !== user.value.uid)
+        void startAccountSync(user.value.uid)
+    })
+  }
+
+  async function applyAuthState(nextUser: User | null) {
+    try {
       const identityChanged = nextUser?.uid !== activeUid
       if (identityChanged) {
         libraryBaselineReady = false
@@ -596,14 +623,8 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       activeUid = nextUser?.uid || ''
       user.value = nextUser
-      if (nextUser) {
-        outbox.value = []
-        pendingWrites.value = 0
-      }
-      else {
-        outbox.value = []
-        pendingWrites.value = 0
-      }
+      outbox.value = []
+      pendingWrites.value = 0
       if (nextUser)
         accountStore.setProfile(nextUser.displayName || nextUser.email || '', nextUser.photoURL || '')
       else
@@ -616,23 +637,17 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         clearListeners()
         status.value = 'signed-out'
       }
-    })
-    watch([isOnline, visibility], ([online, pageVisibility]) => {
-      if (!user.value)
-        return
-      if (!online) {
-        stopRealtime()
-        return
-      }
-      if (pageVisibility === 'visible' && realtimeUid !== user.value.uid)
-        void startAccountSync(user.value.uid)
-    })
+    }
+    catch (authStateError) {
+      authReady.value = true
+      handleSyncError(authStateError)
+    }
   }
 
   async function signIn() {
     const auth = getFirebaseAuth()
     if (!auth) {
-      setError(i18n.global.t('sync.firebaseNotConfigured'))
+      setError(new CloudSyncError('cloud/not-configured', 'Firebase 尚未設定'))
       return
     }
     const libraryStore = useLibraryStore()

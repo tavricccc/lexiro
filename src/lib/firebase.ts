@@ -5,7 +5,9 @@ import type { Firestore } from 'firebase/firestore'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
 import { browserLocalPersistence, connectAuthEmulator, getAuth, setPersistence } from 'firebase/auth'
-import { connectFirestoreEmulator, getFirestore, initializeFirestore, memoryLocalCache, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
+import { connectFirestoreEmulator, initializeFirestore, memoryLocalCache } from 'firebase/firestore'
+import { CloudSyncError } from './cloud-sync-errors'
+import { shouldEnableAppCheck } from './firebase-config'
 
 const config = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string | undefined,
@@ -45,11 +47,17 @@ export function getFirebaseApp(): FirebaseApp | null {
   if (!isFirebaseConfigured())
     return null
   firebaseApp ??= getApps().length ? getApp() : initializeApp(config)
-  const hasDebugToken = Boolean(config.appCheckDebugToken && !import.meta.env.PROD)
-  // App Check is always enabled in production when the production site key is
-  // present. The explicit flag is only a local-development switch; it must
-  // never become a production bypass when Firestore enforcement is enabled.
-  const shouldUseAppCheck = Boolean(!useEmulators() && config.appCheckSiteKey && (import.meta.env.PROD || config.appCheckEnabled === 'true' || hasDebugToken))
+  const hasDebugToken = Boolean(config.appCheckDebugToken?.trim() && !import.meta.env.PROD)
+  // A site key alone does not mean the Firebase Web App is registered with
+  // App Check. Require an explicit switch so an incomplete console setup does
+  // not break every Firestore request in production.
+  const shouldUseAppCheck = shouldEnableAppCheck({
+    production: import.meta.env.PROD,
+    emulatorEnabled: useEmulators(),
+    appCheckSiteKey: config.appCheckSiteKey,
+    appCheckEnabled: config.appCheckEnabled,
+    appCheckDebugToken: config.appCheckDebugToken,
+  })
   if (shouldUseAppCheck && !appCheck) {
     try {
       if (hasDebugToken) {
@@ -64,6 +72,7 @@ export function getFirebaseApp(): FirebaseApp | null {
     catch (error) {
       console.error('[Firebase App Check] initialization failed', error)
       appCheck = null
+      throw new CloudSyncError('cloud/app-check-initialization', 'Firebase App Check 初始化失敗', { cause: error })
     }
   }
   return firebaseApp
@@ -91,20 +100,11 @@ export function getFirebaseFirestore(): Firestore | null {
   if (!app)
     return null
   if (!firestore) {
-    try {
-      firestore = initializeFirestore(app, {
-        localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
-      })
-    }
-    catch (error) {
-      console.warn('[Firebase Firestore] persistent cache is unavailable; using memory cache', error)
-      try {
-        firestore = initializeFirestore(app, { localCache: memoryLocalCache() })
-      }
-      catch {
-        firestore = getFirestore(app)
-      }
-    }
+    // Application state and pending writes already live in lexiro's own
+    // namespaced IndexedDB repository. Keeping a second persistent Firestore
+    // cache can replay documents from an older Cloud schema before the server
+    // snapshot arrives, so Firestore intentionally uses memory-only caching.
+    firestore = initializeFirestore(app, { localCache: memoryLocalCache() })
   }
   if (useEmulators() && !firestoreEmulatorConnected) {
     try {

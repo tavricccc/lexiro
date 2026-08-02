@@ -4,6 +4,7 @@ import type { AiSettings, DashboardStats, FirestoreAiSettingsDoc, FirestoreProgr
 import { collection, doc, getDocs } from 'firebase/firestore'
 import { CLOUD_SCHEMA_VERSION } from '@/constants'
 import { getShareableAiSettings } from './ai-provider'
+import { CloudSyncError } from './cloud-sync-errors'
 import { buildLibraryChunks, cloudChunkHash, combineLibraryChunks, normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats, validateLibraryChunk } from './cloud-sync-schema'
 import { getFirebaseFirestore } from './firebase'
 import { deleteDocIfUnchanged, setDocIfUnchanged } from './firestore-cas'
@@ -14,7 +15,7 @@ import { createDefaultStats } from './learning-defaults'
 export function requireCloudFirestore(): Firestore {
   const db = getFirebaseFirestore()
   if (!db)
-    throw new Error('Firebase 尚未設定')
+    throw new CloudSyncError('cloud/not-configured', 'Firebase 尚未設定')
   return db
 }
 

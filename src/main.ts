@@ -34,7 +34,7 @@ async function bootstrap() {
   window.setTimeout(() => {
     void import('./stores/cloudSync')
       .then(({ useCloudSyncStore }) => useCloudSyncStore(pinia).init())
-      .catch(() => undefined)
+      .catch(error => console.error('[Cloud Sync] initialization failed', error))
   }, 1200)
 }
 

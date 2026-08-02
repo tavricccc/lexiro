@@ -1,5 +1,6 @@
 import type { SyncOutboxEntry } from './sync-outbox'
 import { SYNC_OUTBOX_STORAGE_KEY } from '@/constants'
+import { CloudSyncError } from './cloud-sync-errors'
 import { loadFromStorage, saveToStorage } from './persist'
 import { isSyncOutboxEntry } from './sync-outbox'
 
@@ -16,10 +17,10 @@ export async function loadCloudOutbox(uid: string): Promise<SyncOutboxEntry[]> {
     parsed = JSON.parse(stored.value)
   }
   catch {
-    throw new Error('Cloud sync outbox 格式錯誤')
+    throw new CloudSyncError('cloud/outbox-invalid', 'Cloud sync outbox 格式錯誤')
   }
   if (!Array.isArray(parsed) || !parsed.every(isSyncOutboxEntry))
-    throw new Error('Cloud sync outbox 格式錯誤')
+    throw new CloudSyncError('cloud/outbox-invalid', 'Cloud sync outbox 格式錯誤')
   return parsed
 }
 
