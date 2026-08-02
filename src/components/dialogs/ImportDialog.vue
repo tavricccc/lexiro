@@ -1,86 +1,38 @@
 <script setup lang="ts">
-import type { LibraryQuestion, WordDraft } from '@/types'
+import type { LibraryQuestion } from '@/types'
 import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { folderIdFromSelection } from '@/lib/folders'
 import { parseLibraryImport } from '@/lib/library-import'
-import { areWordDraftsComplete, createBlankSenseDraft, getFilledWordDrafts } from '@/lib/validation'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
 import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
-import Input from '../ui/input/Input.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
-import AiWordImportPanel from './AiWordImportPanel.vue'
 import FolderPicker from './FolderPicker.vue'
-import ManualWordEntryForm from './ManualWordEntryForm.vue'
-
-type InputMode = 'manual' | 'ai'
 
 const { t } = useI18n()
 const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
-const uiStore = useUIStore()
-const { importOpen, importError, importFolderId, setEditorError } = storeToRefs(setsStore)
-const { closeImport, createSetFromItems, setImportError, setImportFolderId, setImportPreview, setImportStep, setSetEditorError } = setsStore
-const { showToast } = uiStore
+const { importOpen, importError, importPreview, importFolderId } = storeToRefs(setsStore)
+const { closeImport, setImportError, setImportFolderId, setImportPreview } = setsStore
+const { showToast } = useUIStore()
 
 const libraryImporting = ref(false)
-const inputMode = ref<InputMode>('manual')
-const manualSetName = ref('')
-const manualItems = ref<WordDraft[]>([{ word: '', senses: [createBlankSenseDraft()] }])
 const selectedFolderId = computed({
   get: () => importFolderId.value,
   set: (value: string) => setImportFolderId(value),
 })
-
-watch(importOpen, (open) => {
-  if (!open)
-    return
-  inputMode.value = 'manual'
-  manualSetName.value = ''
-  manualItems.value = [{ word: '', senses: [createBlankSenseDraft()] }]
-})
-
-function switchInputMode(mode: InputMode) {
-  inputMode.value = mode
-  setsStore.clearImportFeedback()
-  setImportStep(1)
-  if (mode === 'manual') {
-    manualSetName.value = ''
-    manualItems.value = [{ word: '', senses: [createBlankSenseDraft()] }]
-  }
-}
-
-function createManualSet() {
-  if (!manualSetName.value.trim()) {
-    setImportError(t('editor.nameRequired'))
-    return
-  }
-  const entries = getFilledWordDrafts(manualItems.value)
-  if (!entries.length) {
-    setImportError(t('import.manualWordsRequired'))
-    return
-  }
-  if (!areWordDraftsComplete(entries)) {
-    setImportError(t('import.manualFieldsRequired'))
-    return
-  }
-
-  setSetEditorError('')
-  const created = createSetFromItems(entries, manualSetName.value.trim(), folderIdFromSelection(importFolderId.value))
-  if (!created)
-    setImportError(setEditorError.value || t('import.manualFailed'))
-}
 
 async function importLibraryFiles(event: Event) {
   const input = event.target as HTMLInputElement
   const files = Array.from(input.files ?? [])
   if (!files.length)
     return
+
   libraryImporting.value = true
   const messages: string[] = []
   const wordFiles: Array<{ name: string, words: Parameters<typeof setsStore.importLibraryWords>[0] }> = []
@@ -97,6 +49,7 @@ async function importLibraryFiles(event: Event) {
       else
         questionFiles.push({ name: file.name, questions: result.data.questions })
     }
+
     for (const file of wordFiles) {
       const set = setsStore.importLibraryWords(file.words, file.name.replace(/\.json$/i, ''), folderIdFromSelection(importFolderId.value))
       if (set)
@@ -106,7 +59,8 @@ async function importLibraryFiles(event: Event) {
       const imported = libraryStore.importQuestions(file.questions)
       messages.push(t('import.fileQuestionsSummary', { name: file.name, imported, total: file.questions.length }))
     }
-    setImportPreview(messages.join(t('import.fileSummarySeparator')))
+
+    setImportPreview(messages.join(t('import.fileSummarySeparator')) || t('import.noFilesImported'))
     setImportError('')
     showToast(t('import.libraryImported'))
   }
@@ -125,52 +79,28 @@ async function importLibraryFiles(event: Event) {
     <div class="space-y-5">
       <FolderPicker v-model="selectedFolderId" :title="$t('import.folderLabel')" />
 
-      <div class="flex items-center justify-between gap-3">
-        <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
-          {{ $t('import.inputMode') }}
+      <div class="surface-inset space-y-2 p-4 text-left">
+        <p class="text-sm font-bold text-ink-900 dark:text-ink-100">
+          {{ $t('import.outputFilesTitle') }}
         </p>
-        <div class="inline-flex rounded-xl border border-ink-200/70 bg-ink-50 p-1 dark:border-ink-200/20 dark:bg-ink-900">
-          <button type="button" class="rounded-lg px-3 py-2 text-xs font-bold transition-colors" :class="inputMode === 'manual' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500'" @click="switchInputMode('manual')">
-            {{ $t('import.manualMode') }}
-          </button>
-          <button type="button" class="rounded-lg px-3 py-2 text-xs font-bold transition-colors" :class="inputMode === 'ai' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500'" @click="switchInputMode('ai')">
-            {{ $t('import.aiJsonMode') }}
-          </button>
-        </div>
-      </div>
-
-      <div v-if="inputMode === 'manual'" class="space-y-4">
         <p class="text-xs leading-relaxed text-ink-500 dark:text-ink-400">
-          {{ $t('import.manualHint') }}
+          {{ $t('import.outputFilesHint') }}
         </p>
-        <div class="space-y-1.5 text-left">
-          <label class="text-xs font-black uppercase tracking-wider text-ink-400">{{ $t('editor.setName') }}</label>
-          <Input v-model="manualSetName" :placeholder="$t('editor.setName')" />
-        </div>
-        <ManualWordEntryForm v-model="manualItems" />
-        <StatusMessage v-if="importError" tone="error">
-          {{ importError }}
-        </StatusMessage>
-        <details class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-4 text-left dark:border-ink-200/20 dark:bg-ink-900/50">
-          <summary class="cursor-pointer text-sm font-bold text-ink-700 dark:text-ink-200">
-            {{ $t('import.libraryFilesTitle') }}
-          </summary>
-          <p class="mt-2 text-xs leading-relaxed text-ink-500 dark:text-ink-400">
-            {{ $t('import.libraryFilesHint') }}
-          </p>
-          <input type="file" accept="application/json,.json" multiple class="mt-3 block w-full text-xs font-semibold text-ink-500 file:mr-3 file:rounded-lg file:border-0 file:bg-accent-primary/10 file:px-3 file:py-2 file:font-bold file:text-accent-primary" :disabled="libraryImporting" @change="importLibraryFiles">
-        </details>
-        <DialogFooter>
-          <Button variant="outline" @click="closeImport">
-            {{ $t('editor.cancel') }}
-          </Button>
-          <Button variant="default" @click="createManualSet">
-            {{ $t('import.createSet') }}
-          </Button>
-        </DialogFooter>
+        <input type="file" accept="application/json,.json" multiple class="mt-2 block w-full text-xs font-semibold text-ink-500 file:mr-3 file:rounded-lg file:border-0 file:bg-accent-primary/10 file:px-3 file:py-2 file:font-bold file:text-accent-primary" :disabled="libraryImporting" @change="importLibraryFiles">
       </div>
 
-      <AiWordImportPanel v-else />
+      <StatusMessage v-if="importPreview" tone="success">
+        {{ importPreview }}
+      </StatusMessage>
+      <StatusMessage v-if="importError" tone="error">
+        {{ importError }}
+      </StatusMessage>
+
+      <DialogFooter>
+        <Button variant="outline" @click="closeImport">
+          {{ $t('editor.cancel') }}
+        </Button>
+      </DialogFooter>
     </div>
   </Dialog>
 </template>

@@ -16,7 +16,6 @@ import { useSessionStore } from './session'
 import { useUIStore } from './ui'
 
 const t = i18n.global.t
-type ImportStep = 1 | 2
 
 export const useSetsStore = defineStore('sets', () => {
   const router = useRouter()
@@ -35,9 +34,6 @@ export const useSetsStore = defineStore('sets', () => {
   const setEditorDraftItems = ref<EditorItem[]>([])
 
   const importOpen = ref(false)
-  const importStep = ref<ImportStep>(1)
-  const importWords = ref('')
-  const importJson = ref('')
   const importError = ref('')
   const importPreview = ref('')
   const importFolderId = ref(UNCATEGORIZED_FOLDER_ID)
@@ -261,25 +257,10 @@ export const useSetsStore = defineStore('sets', () => {
   }
 
   function openImport(folderId?: string) {
-    importStep.value = 1
-    importWords.value = ''
-    importJson.value = ''
     importError.value = ''
     importPreview.value = ''
     importFolderId.value = folderId ?? UNCATEGORIZED_FOLDER_ID
     importOpen.value = true
-  }
-
-  function setImportStep(step: ImportStep) {
-    importStep.value = step
-  }
-
-  function setImportWords(value: string) {
-    importWords.value = value
-  }
-
-  function setImportJson(value: string) {
-    importJson.value = value
   }
 
   function setImportError(value: string) {
@@ -294,17 +275,8 @@ export const useSetsStore = defineStore('sets', () => {
     importFolderId.value = value
   }
 
-  function clearImportFeedback() {
-    importError.value = ''
-    importPreview.value = ''
-  }
-
   function closeImport() {
     importOpen.value = false
-  }
-
-  function nextImportStep() {
-    importStep.value = 2
   }
 
   async function requestDelete(setId: string) {
@@ -418,19 +390,12 @@ export const useSetsStore = defineStore('sets', () => {
     setSetEditorError,
     updateSetEditorItem,
     importOpen,
-    importStep,
-    importWords,
-    importJson,
     importError,
     importPreview,
     importFolderId,
-    setImportStep,
-    setImportWords,
-    setImportJson,
     setImportError,
     setImportPreview,
     setImportFolderId,
-    clearImportFeedback,
     pendingDeleteId,
     exportSelectedIds,
     exportSelectedSets,
@@ -451,7 +416,6 @@ export const useSetsStore = defineStore('sets', () => {
     removeEditorItem,
     openImport,
     closeImport,
-    nextImportStep,
     requestDelete,
     deleteActiveSet,
     editActiveSet,

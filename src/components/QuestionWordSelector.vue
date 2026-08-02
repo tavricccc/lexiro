@@ -7,9 +7,11 @@ import { generationSenseKey } from '@/lib/question-generation'
 import { createGeneratedQuestionTypeOptions, createQuestionDifficultyOptions } from '@/lib/question-options'
 import Button from './ui/button/Button.vue'
 import Input from './ui/input/Input.vue'
-import Select from './ui/select/Select.vue'
+
+type GenerationStep = 1 | 2
 
 const props = defineProps<{
+  step: GenerationStep
   kind: GeneratedQuestionKind
   difficulty: GeneratedQuestionDifficulty
   words: WordEntry[]
@@ -19,6 +21,8 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
+  'next': []
+  'back': []
   'update:kind': [value: GeneratedQuestionKind]
   'update:difficulty': [value: GeneratedQuestionDifficulty]
   'update:query': [value: string]
@@ -32,6 +36,7 @@ const difficultyModel = computed({
   get: () => String(props.difficulty),
   set: (value: string) => emit('update:difficulty', Number(value) as 1 | 2 | 3),
 })
+const selectedTypeLabel = computed(() => questionTypes.value.find(option => option.value === props.kind)?.label ?? '')
 const matches = computed(() => {
   const normalized = props.query.trim().toLocaleLowerCase()
   return props.words
@@ -97,7 +102,14 @@ function clearSelection() {
 
 <template>
   <div class="space-y-5">
-    <div class="space-y-2 text-left">
+    <ol class="grid grid-cols-2 gap-2" :aria-label="$t('library.questionGenerationSteps')">
+      <li v-for="currentStep in 2" :key="currentStep" class="flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-bold" :class="currentStep <= step ? 'border-accent-primary/20 bg-accent-primary/10 text-accent-primary' : 'border-ink-200/60 text-ink-400 dark:border-ink-200/20'">
+        <span class="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[10px]">{{ currentStep }}</span>
+        {{ currentStep === 1 ? $t('library.chooseQuestionType') : $t('library.questionDifficulty') }}
+      </li>
+    </ol>
+
+    <div v-if="step === 1" class="space-y-4 text-left">
       <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
         {{ $t('library.chooseQuestionType') }}
       </p>
@@ -109,16 +121,40 @@ function clearSelection() {
       <p v-if="selectionLimit" class="text-xs text-ink-400">
         {{ $t('library.readingSelectionLimit', { count: selectionLimit }) }}
       </p>
+      <div class="flex justify-end">
+        <Button variant="default" @click="emit('next')">
+          {{ $t('library.nextStep') }}
+        </Button>
+      </div>
     </div>
 
-    <div class="space-y-2 text-left">
-      <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
-        {{ $t('library.questionDifficulty') }}
-      </p>
-      <Select v-model="difficultyModel" :options="difficultyOptions" />
-    </div>
+    <div v-else class="space-y-5 text-left">
+      <div class="space-y-3 rounded-2xl bg-accent-primary/10 p-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-accent-primary">
+              {{ $t('library.questionDifficulty') }}
+            </p>
+            <p class="mt-1 text-sm font-bold text-ink-900 dark:text-ink-100">
+              {{ selectedTypeLabel }} · {{ difficultyOptions.find(option => option.value === String(difficulty))?.label }}
+            </p>
+          </div>
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-primary text-sm font-black text-white">
+            {{ difficulty }}
+          </span>
+        </div>
+        <input v-model="difficultyModel" type="range" min="1" max="3" step="1" class="h-2 w-full cursor-pointer accent-[var(--accent-primary)]" :aria-label="$t('library.questionDifficulty')">
+        <div class="flex justify-between gap-2 text-[11px] font-semibold text-ink-500 dark:text-ink-400">
+          <span v-for="option in difficultyOptions" :key="option.value">{{ option.label }}</span>
+        </div>
+      </div>
 
-    <div class="space-y-2 text-left">
+      <div class="flex justify-start">
+        <Button variant="ghost" class="-ml-3" @click="emit('back')">
+          {{ $t('library.backStep') }}
+        </Button>
+      </div>
+
       <div class="flex flex-wrap items-center justify-between gap-2">
         <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
           {{ $t('library.chooseWords') }} · {{ $t('library.selectedSensesCount', { count: selectedSenseCount }) }}

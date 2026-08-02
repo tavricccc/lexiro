@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DictionaryEntry, WordEntry } from '@/types'
-import { AudioLines, BookOpen, ExternalLink, LoaderCircle, Search, Volume2 } from 'lucide-vue-next'
+import { ExternalLink, LoaderCircle, Search, Volume2 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -85,6 +85,9 @@ function openAddDialog(entry: DictionaryEntry) {
       <h1 class="text-3xl font-black tracking-tight">
         {{ $t('dictionary.title') }}
       </h1>
+      <p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500 dark:text-ink-400">
+        {{ $t('dictionary.featureLookup') }} · {{ $t('dictionary.featurePronunciation') }} · {{ $t('dictionary.featureSave') }}
+      </p>
     </div>
 
     <Card class="p-4 sm:p-5">
@@ -138,24 +141,6 @@ function openAddDialog(entry: DictionaryEntry) {
         </article>
       </div>
     </Card>
-
-    <div v-if="!entries.length && !loading && !error" class="grid gap-4 lg:grid-cols-3">
-      <div class="surface-inset p-4">
-        <Search class="h-5 w-5 text-ink-400" /><h2 class="mt-3 text-sm font-semibold">
-          {{ $t('dictionary.featureLookup') }}
-        </h2>
-      </div>
-      <div class="surface-inset p-4">
-        <AudioLines class="h-5 w-5 text-ink-400" /><h2 class="mt-3 text-sm font-semibold">
-          {{ $t('dictionary.featurePronunciation') }}
-        </h2>
-      </div>
-      <div class="surface-inset p-4">
-        <BookOpen class="h-5 w-5 text-ink-400" /><h2 class="mt-3 text-sm font-semibold">
-          {{ $t('dictionary.featureSave') }}
-        </h2>
-      </div>
-    </div>
 
     <div v-for="entry in entries" :key="`${entry.word}-${entry.phonetic}`" class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <Card class="p-6 sm:p-8">

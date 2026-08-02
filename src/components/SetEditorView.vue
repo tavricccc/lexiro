@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { EditorItem } from '@/types'
-import { Plus } from 'lucide-vue-next'
+import type { EditorItem, WordDraft } from '@/types'
+import { Plus, Sparkles } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { createEditorItem } from '@/lib/validation'
 import { useSetsStore } from '@/stores/sets'
+import AiWordImportPanel from './dialogs/AiWordImportPanel.vue'
 import EditorItemCard from './dialogs/EditorItemCard.vue'
 import FolderPicker from './dialogs/FolderPicker.vue'
 import Button from './ui/button/Button.vue'
@@ -19,8 +21,11 @@ const setsStore = useSetsStore()
 const { setEditorName, setEditorFolderId, setEditorDraftItems, setEditorError } = storeToRefs(setsStore)
 const { prepareSetEditor, closeSetEditor, removeEditorItem, addEditorItem, saveSetEditor, openImport, setSetEditorFolderId, setSetEditorName, updateSetEditorItem } = setsStore
 
+type EditorInputMode = 'manual' | 'ai'
+
 const mode = computed(() => route.name === 'set-create' ? 'create' : 'edit')
 const setId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : '')
+const editorInputMode = ref<EditorInputMode>('manual')
 const selectedFolderId = computed({
   get: () => setEditorFolderId.value ?? UNCATEGORIZED_FOLDER_ID,
   set: (value: string) => setSetEditorFolderId(value),
@@ -34,6 +39,7 @@ const isValidEditRoute = computed(() => mode.value === 'create' || setsStore.set
 function prepare() {
   const set = setsStore.sets.find(item => item.id === setId.value) ?? null
   prepareSetEditor(mode.value, set)
+  editorInputMode.value = 'manual'
 }
 
 watch([mode, setId], prepare, { immediate: true })
@@ -41,6 +47,12 @@ onMounted(prepare)
 
 function updateEditorItem(itemIndex: number, item: EditorItem) {
   updateSetEditorItem(itemIndex, item)
+}
+
+function applyAiItems(items: WordDraft[]) {
+  setEditorDraftItems.value = items.map(item => createEditorItem(item))
+  setEditorError.value = ''
+  editorInputMode.value = 'manual'
 }
 
 function close() {
@@ -67,7 +79,7 @@ function save() {
         </p>
       </div>
       <Button v-if="mode === 'create'" variant="outline" @click="openImport()">
-        {{ $t('editor.importInstead') }}
+        {{ $t('editor.importOutput') }}
       </Button>
     </div>
 
@@ -91,11 +103,20 @@ function save() {
             {{ $t('editor.wordsDescription') }}
           </p>
         </div>
-        <Button variant="outline" class="gap-2" @click="addEditorItem">
-          <Plus class="h-4 w-4" />{{ $t('editor.addWord') }}
-        </Button>
+        <div class="flex flex-wrap justify-end gap-2">
+          <Button v-if="mode === 'create' && editorInputMode === 'manual'" variant="outline" class="gap-2" @click="editorInputMode = 'ai'">
+            <Sparkles class="h-4 w-4" />{{ $t('editor.switchToAiImport') }}
+          </Button>
+          <Button v-if="mode === 'create' && editorInputMode === 'ai'" variant="ghost" class="gap-2" @click="editorInputMode = 'manual'">
+            {{ $t('editor.switchToManual') }}
+          </Button>
+          <Button v-if="editorInputMode === 'manual'" variant="outline" class="gap-2" @click="addEditorItem">
+            <Plus class="h-4 w-4" />{{ $t('editor.addWord') }}
+          </Button>
+        </div>
       </div>
-      <div class="space-y-4">
+      <AiWordImportPanel v-if="editorInputMode === 'ai'" @apply="applyAiItems" />
+      <div v-else class="space-y-4">
         <EditorItemCard
           v-for="(item, itemIndex) in setEditorDraftItems"
           :key="item.id"

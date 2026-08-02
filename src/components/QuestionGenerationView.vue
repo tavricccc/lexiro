@@ -33,6 +33,7 @@ const query = ref('')
 const selectedKeys = ref<string[]>([])
 const kind = ref<GeneratedQuestionKind>('fillBlank')
 const difficulty = ref<GeneratedQuestionDifficulty>(2)
+const generationStep = ref<1 | 2>(1)
 const preview = ref<LibraryQuestion[]>([])
 const error = ref('')
 const generating = ref(false)
@@ -44,6 +45,8 @@ const selectedWords = computed(() => getSelectedGenerationWords(availableWords.v
 const selectedSenseCount = computed(() => selectedWords.value.reduce((count, word) => count + word.senses.length, 0))
 const selectedWordNames = computed(() => selectedWords.value.map(word => `${word.word}（${word.senses.map(sense => `${sense.pos}｜${sense.meaningZh}`).join('、')}）`).join('、'))
 const selectionLimit = computed(() => kind.value === 'reading' ? QUESTION_BATCH_SIZE : null)
+const usesApi = computed(() => aiSettings.value.enabled)
+const apiReady = computed(() => !usesApi.value || Boolean(aiSettings.value.apiKey.trim()))
 
 function questionOptions() {
   return {
@@ -101,12 +104,29 @@ async function copyPrompt() {
     return
   try {
     await copyToClipboard(buildQuestionGenerationPrompt(getGenerationWords(selectedWords.value, kind.value), kind.value, difficulty.value))
+    manualResponse.value = ''
     waitingForManualResponse.value = true
     uiStore.showToast(t('library.promptCopied'))
   }
   catch {
     error.value = t('library.copyFailed')
   }
+}
+
+async function runAiAction() {
+  aiSettings.value = loadAiSettings()
+  if (aiSettings.value.enabled)
+    await generate()
+  else
+    await copyPrompt()
+}
+
+function nextGenerationStep() {
+  generationStep.value = 2
+}
+
+function previousGenerationStep() {
+  generationStep.value = 1
 }
 
 function parseManualResponse() {
@@ -165,12 +185,15 @@ function importPreview(questions: LibraryQuestion[] = preview.value) {
         v-model:difficulty="difficulty"
         v-model:query="query"
         v-model:selected-keys="selectedKeys"
+        :step="generationStep"
         :words="availableWords"
         :selection-limit="selectionLimit"
+        @next="nextGenerationStep"
+        @back="previousGenerationStep"
       />
     </Card>
 
-    <Card class="space-y-5 p-5 sm:p-6">
+    <Card v-if="generationStep === 2" class="space-y-5 p-5 sm:p-6">
       <div class="rounded-2xl bg-accent-primary/10 p-4">
         <p class="text-sm font-bold text-accent-primary">
           {{ $t('library.selectedSensesCount', { count: selectedSenseCount }) }}
@@ -183,15 +206,12 @@ function importPreview(questions: LibraryQuestion[] = preview.value) {
         {{ error }}
       </StatusMessage>
 
-      <div v-if="!waitingForManualResponse && !preview.length" class="grid gap-2 sm:grid-cols-2">
-        <Button variant="outline" @click="copyPrompt">
-          {{ $t('library.copyPrompt') }}
-        </Button>
-        <Button :disabled="!aiSettings.enabled || !aiSettings.apiKey.trim()" :loading="generating" @click="generate">
-          <Sparkles class="mr-1 h-4 w-4" />{{ $t('library.generateSelected') }}
+      <div v-if="!waitingForManualResponse && !preview.length" class="flex flex-wrap items-center gap-2">
+        <Button :disabled="!apiReady" :loading="generating" @click="runAiAction">
+          <Sparkles class="mr-1 h-4 w-4" />{{ usesApi ? $t('library.generateSelected') : $t('library.copyPrompt') }}
         </Button>
       </div>
-      <p v-if="!aiSettings.enabled || !aiSettings.apiKey.trim()" class="text-xs text-ink-500 dark:text-ink-400">
+      <p v-if="usesApi && !apiReady" class="text-xs text-ink-500 dark:text-ink-400">
         {{ $t('library.apiGenerationUnavailable') }}
       </p>
 

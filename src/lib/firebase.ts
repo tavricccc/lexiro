@@ -4,8 +4,8 @@ import type { Auth } from 'firebase/auth'
 import type { Firestore } from 'firebase/firestore'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
-import { browserLocalPersistence, getAuth, setPersistence } from 'firebase/auth'
-import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
+import { browserLocalPersistence, connectAuthEmulator, getAuth, setPersistence } from 'firebase/auth'
+import { connectFirestoreEmulator, getFirestore, initializeFirestore, memoryLocalCache, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
 
 const config = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string | undefined,
@@ -17,6 +17,8 @@ const config = {
   appCheckSiteKey: import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY as string | undefined,
   appCheckEnabled: import.meta.env.VITE_FIREBASE_APPCHECK_ENABLED as string | undefined,
   appCheckDebugToken: import.meta.env.VITE_FIREBASE_APPCHECK_DEBUG_TOKEN as string | undefined,
+  emulatorEnabled: import.meta.env.VITE_FIREBASE_EMULATOR_ENABLED as string | undefined,
+  emulatorHost: import.meta.env.VITE_FIREBASE_EMULATOR_HOST as string | undefined,
   googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined,
 }
 
@@ -28,6 +30,16 @@ let firebaseApp: FirebaseApp | null = null
 let firebaseAuth: Auth | null = null
 let firestore: Firestore | null = null
 let appCheck: AppCheck | null = null
+let authEmulatorConnected = false
+let firestoreEmulatorConnected = false
+
+function useEmulators(): boolean {
+  return !import.meta.env.PROD && config.emulatorEnabled === 'true'
+}
+
+function emulatorHost(): string {
+  return config.emulatorHost?.trim() || '127.0.0.1'
+}
 
 export function getFirebaseApp(): FirebaseApp | null {
   if (!isFirebaseConfigured())
@@ -37,7 +49,7 @@ export function getFirebaseApp(): FirebaseApp | null {
   // App Check is always enabled in production when the production site key is
   // present. The explicit flag is only a local-development switch; it must
   // never become a production bypass when Firestore enforcement is enabled.
-  const shouldUseAppCheck = Boolean(config.appCheckSiteKey && (import.meta.env.PROD || config.appCheckEnabled === 'true' || hasDebugToken))
+  const shouldUseAppCheck = Boolean(!useEmulators() && config.appCheckSiteKey && (import.meta.env.PROD || config.appCheckEnabled === 'true' || hasDebugToken))
   if (shouldUseAppCheck && !appCheck) {
     try {
       if (hasDebugToken) {
@@ -62,6 +74,15 @@ export function getFirebaseAuth(): Auth | null {
   if (!app)
     return null
   firebaseAuth ??= getAuth(app)
+  if (useEmulators() && !authEmulatorConnected) {
+    try {
+      connectAuthEmulator(firebaseAuth, `http://${emulatorHost()}:9099`, { disableWarnings: true })
+    }
+    catch (error) {
+      console.warn('[Firebase Auth] emulator connection was not enabled', error)
+    }
+    authEmulatorConnected = true
+  }
   return firebaseAuth
 }
 
@@ -70,9 +91,29 @@ export function getFirebaseFirestore(): Firestore | null {
   if (!app)
     return null
   if (!firestore) {
-    firestore = initializeFirestore(app, {
-      localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
-    })
+    try {
+      firestore = initializeFirestore(app, {
+        localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+      })
+    }
+    catch (error) {
+      console.warn('[Firebase Firestore] persistent cache is unavailable; using memory cache', error)
+      try {
+        firestore = initializeFirestore(app, { localCache: memoryLocalCache() })
+      }
+      catch {
+        firestore = getFirestore(app)
+      }
+    }
+  }
+  if (useEmulators() && !firestoreEmulatorConnected) {
+    try {
+      connectFirestoreEmulator(firestore, emulatorHost(), 8080)
+    }
+    catch (error) {
+      console.warn('[Firebase Firestore] emulator connection was not enabled', error)
+    }
+    firestoreEmulatorConnected = true
   }
   return firestore
 }
