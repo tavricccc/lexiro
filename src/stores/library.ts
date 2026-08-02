@@ -1,7 +1,7 @@
-import type { DashboardStats, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, SetMembership, StudyWord, VocabFolder, WordEntry, WordSense } from '@/types'
+import type { DashboardStats, LearningProgress, LibraryQuestion, LibrarySet, LibrarySetSummary, LibraryState, SetMembership, StudyWord, VocabFolder, WordEntry, WordSense } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { LIBRARY_STORAGE_KEY } from '@/constants'
+import { LIBRARY_STORAGE_KEY, LIBRARY_SYNC_PENDING_STORAGE_KEY } from '@/constants'
 import { cloneJson } from '@/lib/clone'
 import { ALL_FOLDER_ID, createUncategorizedFolder, normalizeFolderParentId, sortFolders, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { stableHash } from '@/lib/hash'
@@ -9,7 +9,9 @@ import { i18n } from '@/lib/i18n'
 import { buildSenseId, canonicalizeQuestion, mergeUniqueStrings, mergeWord, normalizePartOfSpeech, normalizeWordKey, senseToStudyWord } from '@/lib/library'
 import { parseLibraryImportValue } from '@/lib/library-import'
 import { membershipsCoverWords, sanitizeMemberships } from '@/lib/library-membership'
-import { loadFromStorage, saveToStorage } from '@/lib/persist'
+import { mergeLibraryStates } from '@/lib/library-merge'
+import { getLibraryRepository } from '@/lib/library-repository'
+import { saveToStorage } from '@/lib/persist'
 import { questionBelongsToAnyMemberships, questionBelongsToMemberships, questionUsesWords } from '@/lib/question-ownership'
 import { createUniqueSetName } from '@/lib/set-name'
 import { normalizeLibraryState } from '@/lib/share'
@@ -35,6 +37,10 @@ export interface SenseRemovalUndoSnapshot {
   learningAfter: LearningUndoState | null
 }
 
+interface RemoteActivationOptions {
+  preserveHydratedSets?: boolean
+}
+
 function emptyState(): LibraryState {
   return {
     version: CURRENT_VERSION,
@@ -45,6 +51,12 @@ function emptyState(): LibraryState {
     questions: [],
     updatedAt: new Date().toISOString(),
   }
+}
+
+function stripSetSummary(set: LibrarySet): LibrarySet {
+  const source = set as LibrarySetSummary
+  const { wordCount: _wordCount, senseCount: _senseCount, questionCount: _questionCount, ...metadata } = source
+  return metadata
 }
 
 function normalizeQuestionForStore(question: LibraryQuestion): LibraryQuestion | null {
@@ -81,6 +93,13 @@ function mergeWordEntries(base: Record<string, WordEntry>, entries: WordEntry[])
 export const useLibraryStore = defineStore('library', () => {
   const state = ref<LibraryState>(emptyState())
   const loaded = ref(false)
+  const hydratedSetIds = ref(new Set<string>())
+  const hydrationVersion = ref(0)
+  const legacyMirrorEnabled = ref(true)
+  const fullyHydrated = ref(false)
+  let repositoryPersistPromise: Promise<void> = Promise.resolve()
+  let localTransactionDepth = 0
+  let localTransactionDirty = false
 
   const words = computed(() => Object.values(state.value.words))
   const sets = computed(() => state.value.sets)
@@ -89,7 +108,81 @@ export const useLibraryStore = defineStore('library', () => {
 
   function touch() {
     state.value.updatedAt = new Date().toISOString()
-    saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    if (localTransactionDepth > 0) {
+      localTransactionDirty = true
+      return
+    }
+    persistLocalSnapshot()
+  }
+
+  function persistLocalSnapshot() {
+    if (legacyMirrorEnabled.value)
+      void saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    queueRepositoryPersist(cloneJson(state.value))
+  }
+
+  /** Apply several explicit form changes as one local repository submission. */
+  function runLocalTransaction<T>(operation: () => T): T {
+    const before = cloneJson(state.value)
+    localTransactionDepth += 1
+    let succeeded = false
+    try {
+      const result = operation()
+      succeeded = true
+      return result
+    }
+    catch (error) {
+      state.value = before
+      throw error
+    }
+    finally {
+      localTransactionDepth -= 1
+      if (localTransactionDepth === 0) {
+        const shouldPersist = succeeded && localTransactionDirty
+        localTransactionDirty = false
+        if (shouldPersist)
+          persistLocalSnapshot()
+      }
+    }
+  }
+
+  function queueRepositoryPersist(snapshot: LibraryState) {
+    const repository = getLibraryRepository()
+    const next = repositoryPersistPromise
+      .catch(() => undefined)
+      .then(() => persistToRepository(snapshot, repository))
+    repositoryPersistPromise = next
+    void next.catch(() => undefined)
+  }
+
+  async function persistToRepository(snapshot: LibraryState, repository: ReturnType<typeof getLibraryRepository>): Promise<void> {
+    let next = snapshot
+    if (!fullyHydrated.value) {
+      const base = await repository.loadState()
+      const activeSetIds = new Set(snapshot.sets.map(set => set.id))
+      const memberships = Object.fromEntries(snapshot.sets.map(set => [set.id, snapshot.memberships[set.id] ?? base.memberships[set.id] ?? []]))
+      const referencedWordKeys = new Set(Object.values(memberships).flat().map(member => normalizeWordKey(member.wordKey)))
+      const words = Object.fromEntries(Object.entries({ ...base.words, ...snapshot.words }).filter(([wordKey]) => referencedWordKeys.has(wordKey)))
+      const hydratedQuestionIds = new Set(base.questions
+        .filter(question => Array.from(hydratedSetIds.value).some(setId => questionBelongsToMemberships(question, memberships[setId] ?? base.memberships[setId] ?? [])))
+        .map(question => question.id))
+      const questionById = new Map(base.questions
+        .filter(question => !hydratedQuestionIds.has(question.id))
+        .map(question => [question.id, question]))
+      for (const question of snapshot.questions)
+        questionById.set(question.id, question)
+      next = {
+        ...base,
+        ...snapshot,
+        sets: snapshot.sets.map(stripSetSummary),
+        words,
+        memberships,
+        questions: Array.from(questionById.values()).filter(question => activeSetIds.size > 0
+          && questionUsesWords(question, words)
+          && questionBelongsToAnyMemberships(question, Object.values(memberships))),
+      }
+    }
+    await repository.commitRecords(next)
   }
 
   function upsertWordInternal(incoming: WordEntry): WordEntry {
@@ -537,7 +630,10 @@ export const useLibraryStore = defineStore('library', () => {
       return false
 
     state.value = cloneJson(snapshot.libraryBefore)
-    saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    hydrationVersion.value += 1
+    if (legacyMirrorEnabled.value)
+      void saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    queueRepositoryPersist(cloneJson(state.value))
     if (snapshot.learningBefore) {
       if (!learningStore.loaded)
         return false
@@ -675,15 +771,161 @@ export const useLibraryStore = defineStore('library', () => {
     state.value = normalizeLibraryState(next)
     normalizeAllMemberships()
     pruneOrphans()
-    saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    fullyHydrated.value = true
+    hydratedSetIds.value = new Set(state.value.sets.map(set => set.id))
+    hydrationVersion.value += 1
+    if (legacyMirrorEnabled.value)
+      void saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    queueRepositoryPersist(cloneJson(state.value))
+  }
+
+  /**
+   * Publishes a fully reconciled remote snapshot through a staging generation.
+   * The active marker changes only after every remote record has been written
+   * and the repository has rebuilt and verified its lightweight index.
+   */
+  async function activateRemoteState(next: LibraryState, options: RemoteActivationOptions = {}): Promise<void> {
+    const normalized = normalizeLibraryState(next)
+    const repository = getLibraryRepository()
+    const generation = `remote-${Date.now()}-${crypto.randomUUID()}`
+    await repository.stageRemoteBatch(generation, normalized)
+    await activateStagedRemoteState(generation, normalized, options)
+  }
+
+  async function activateStagedRemoteState(generation: string, next: LibraryState, options: RemoteActivationOptions = {}): Promise<void> {
+    const normalized = normalizeLibraryState(next)
+    const preservedSetIds = options.preserveHydratedSets && !fullyHydrated.value
+      ? Array.from(hydratedSetIds.value)
+      : []
+    await getLibraryRepository().activateGeneration(generation)
+    if (options.preserveHydratedSets) {
+      await loadIndexState(preservedSetIds)
+      return
+    }
+    state.value = normalized
+    normalizeAllMemberships()
+    fullyHydrated.value = true
+    hydratedSetIds.value = new Set(state.value.sets.map(set => set.id))
+    hydrationVersion.value += 1
   }
 
   function resetForNamespace() {
     state.value = emptyState()
     loaded.value = false
+    fullyHydrated.value = false
+    hydratedSetIds.value = new Set()
+    hydrationVersion.value += 1
+    legacyMirrorEnabled.value = true
+    repositoryPersistPromise = Promise.resolve()
+  }
+
+  async function hydrateSets(setIds: string[], signal?: AbortSignal): Promise<number> {
+    const repository = getLibraryRepository()
+    const hydrationGeneration = (await repository.loadIndex()).generation
+    const payloads = await repository.loadSetPayloads(setIds, { signal })
+    if (!payloads.size)
+      return 0
+    if ((await repository.loadIndex()).generation !== hydrationGeneration)
+      return 0
+    const nextWords = { ...state.value.words }
+    const nextMemberships = { ...state.value.memberships }
+    const nextQuestions = new Map(state.value.questions.map(question => [question.id, question]))
+    const nextSets = state.value.sets.map((set) => {
+      const payload = payloads.get(set.id)
+      if (!payload)
+        return set
+      for (const word of payload.words)
+        nextWords[normalizeWordKey(word.wordKey)] = word
+      nextMemberships[set.id] = payload.memberships
+      for (const question of payload.questions)
+        nextQuestions.set(question.id, question)
+      return { ...set, ...payload.set }
+    })
+    state.value = {
+      ...state.value,
+      sets: nextSets,
+      words: nextWords,
+      memberships: nextMemberships,
+      questions: Array.from(nextQuestions.values()),
+    }
+    const nextHydratedSetIds = new Set(hydratedSetIds.value)
+    for (const setId of payloads.keys()) {
+      nextHydratedSetIds.delete(setId)
+      nextHydratedSetIds.add(setId)
+    }
+    const evictedSetIds: string[] = []
+    if (!fullyHydrated.value) {
+      while (nextHydratedSetIds.size > 48) {
+        const oldest = nextHydratedSetIds.values().next().value
+        if (!oldest)
+          break
+        nextHydratedSetIds.delete(oldest)
+        evictedSetIds.push(oldest)
+      }
+    }
+    for (const evictedSetId of evictedSetIds)
+      delete nextMemberships[evictedSetId]
+    const liveWordKeys = new Set(Object.values(nextMemberships).flat().map(member => normalizeWordKey(member.wordKey)))
+    const liveWords = Object.fromEntries(Object.entries(nextWords).filter(([wordKey]) => liveWordKeys.has(wordKey)))
+    state.value = {
+      ...state.value,
+      words: liveWords,
+      memberships: nextMemberships,
+      questions: state.value.questions.filter(question => questionBelongsToAnyMemberships(question, Object.values(nextMemberships))),
+    }
+    hydratedSetIds.value = nextHydratedSetIds
+    hydrationVersion.value += 1
+    return payloads.size
+  }
+
+  async function hydrateSet(setId: string, signal?: AbortSignal): Promise<boolean> {
+    return (await hydrateSets([setId], signal)) > 0
+  }
+
+  async function loadAllContent(): Promise<void> {
+    await repositoryPersistPromise
+    if (fullyHydrated.value)
+      return
+    const snapshot = cloneJson(state.value)
+    const complete = await getLibraryRepository().loadState()
+    if (!fullyHydrated.value) {
+      const memberships = Object.fromEntries(snapshot.sets.map(set => [set.id, snapshot.memberships[set.id] ?? complete.memberships[set.id] ?? []]))
+      const referencedWordKeys = new Set(Object.values(memberships).flat().map(member => normalizeWordKey(member.wordKey)))
+      const questionById = new Map(complete.questions.map(question => [question.id, question]))
+      for (const question of snapshot.questions)
+        questionById.set(question.id, question)
+      state.value = normalizeLibraryState({
+        ...complete,
+        ...snapshot,
+        sets: snapshot.sets.map(stripSetSummary),
+        words: Object.fromEntries(Object.entries({ ...complete.words, ...snapshot.words }).filter(([wordKey]) => referencedWordKeys.has(wordKey))),
+        memberships,
+        questions: Array.from(questionById.values()),
+      })
+    }
+    else {
+      state.value = normalizeLibraryState({ ...complete, sets: complete.sets.map(stripSetSummary) })
+    }
+    normalizeAllMemberships()
+    fullyHydrated.value = true
+    hydratedSetIds.value = new Set(state.value.sets.map(set => set.id))
+    const learningStore = useLearningStore()
+    if (learningStore.loaded)
+      learningStore.pruneSenseData(new Set(Object.values(state.value.words).flatMap(word => word.senses.map(sense => sense.id))))
+    hydrationVersion.value += 1
+  }
+
+  async function waitForPersistence(): Promise<void> {
+    await repositoryPersistPromise
   }
 
   function mergeImportedState(incoming: LibraryState): LibraryMergeResult {
+    if (fullyHydrated.value) {
+      const merged = mergeLibraryStates(state.value, incoming)
+      state.value = merged.state
+      touch()
+      return merged.result
+    }
     const nextWords = mergeWordEntries(state.value.words, Object.values(incoming.words))
 
     const existingFolderIds = new Set(state.value.folders.map(folder => folder.id))
@@ -759,20 +1001,53 @@ export const useLibraryStore = defineStore('library', () => {
     return { addedSets, addedQuestions }
   }
 
+  async function mergeImportedStateFromRepository(incoming: LibraryState): Promise<LibraryMergeResult> {
+    await repositoryPersistPromise
+    const repository = getLibraryRepository()
+    const current = await repository.loadState()
+    const merged = mergeLibraryStates(current, incoming)
+    await saveToStorage(LIBRARY_SYNC_PENDING_STORAGE_KEY, { pending: true })
+    const committed = await repository.commitRecords(merged.state)
+    await saveToStorage(LIBRARY_SYNC_PENDING_STORAGE_KEY, { pending: true, generation: committed.generation })
+    const learningStore = useLearningStore()
+    if (learningStore.loaded)
+      learningStore.pruneSenseData(new Set(Object.values(merged.state.words).flatMap(word => word.senses.map(sense => sense.id))))
+
+    if (fullyHydrated.value) {
+      state.value = merged.state
+      hydratedSetIds.value = new Set(state.value.sets.map(set => set.id))
+      hydrationVersion.value += 1
+    }
+    else {
+      const preserveSetIds = Array.from(hydratedSetIds.value)
+      await loadIndexState(preserveSetIds)
+    }
+    return merged.result
+  }
+
+  async function loadIndexState(preserveSetIds: string[] = []) {
+    const index = await getLibraryRepository().loadIndex()
+    state.value = {
+      version: CURRENT_VERSION,
+      words: {},
+      sets: index.sets,
+      memberships: {},
+      folders: index.folders,
+      questions: [],
+      updatedAt: index.updatedAt,
+    }
+    hydratedSetIds.value = new Set()
+    fullyHydrated.value = false
+    hydrationVersion.value += 1
+    if (preserveSetIds.length)
+      await hydrateSets(preserveSetIds)
+  }
+
   async function loadState() {
     if (loaded.value)
       return
-    const stored = await loadFromStorage(LIBRARY_STORAGE_KEY)
-    if (stored.value) {
-      try {
-        state.value = normalizeLibraryState(JSON.parse(stored.value))
-        normalizeAllMemberships()
-        pruneOrphans()
-      }
-      catch {
-        state.value = emptyState()
-      }
-    }
+    await loadIndexState()
+    legacyMirrorEnabled.value = false
     loaded.value = true
   }
 
@@ -783,8 +1058,19 @@ export const useLibraryStore = defineStore('library', () => {
     folders,
     questions,
     loaded,
+    fullyHydrated,
+    hydratedSetIds,
+    hydrationVersion,
+    runLocalTransaction,
+    hydrateSet,
+    hydrateSets,
+    loadAllContent,
+    mergeImportedStateFromRepository,
+    waitForPersistence,
     loadState,
     replaceState,
+    activateRemoteState,
+    activateStagedRemoteState,
     resetForNamespace,
     mergeImportedState,
     importWords,

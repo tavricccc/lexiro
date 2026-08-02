@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { ReadingChildQuestion, ReadingPack, StudyWord } from '@/types'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import { canonicalizeQuestion, senseToStudyWord } from '@/lib/library'
 import { createAnswerOptions, createQuestionDifficultyOptions } from '@/lib/question-options'
@@ -44,6 +45,7 @@ const availableStudyWords = computed<StudyWord[]>(() => {
 const difficultyOptions = computed(() => createQuestionDifficultyOptions(t))
 const readingDraft = ref<ReadingPack>(createReadingPack(null))
 const initialReadingSnapshot = ref('')
+const pendingLocalCommit = ref(false)
 
 function now(): string {
   return new Date().toISOString()
@@ -90,14 +92,20 @@ function createReadingPack(question: ReadingPack | null): ReadingPack {
 }
 
 watch(
-  [() => existingReading.value?.id ?? '', () => wordKey.value, () => setId.value],
+  [() => existingReading.value?.id ?? '', () => wordKey.value, () => setId.value, () => availableStudyWords.value.map(item => item.id).join('|')],
   () => {
     readingDraft.value = createReadingPack(existingReading.value)
     error.value = ''
+    pendingLocalCommit.value = false
     initialReadingSnapshot.value = readingSnapshot()
   },
   { immediate: true },
 )
+
+onMounted(() => {
+  if (setId.value)
+    void libraryStore.hydrateSet(setId.value).catch(() => undefined)
+})
 
 function setQuestionDifficulty(value: string) {
   const difficulty = parseQuestionDifficulty(value)
@@ -155,6 +163,13 @@ async function saveQuestion(question: ReadingPack): Promise<boolean> {
     error.value = t('vocabulary.questionSourceInvalid')
     return false
   }
+  pendingLocalCommit.value = true
+  const synced = await syncAfterLocalCommit()
+  readingDraft.value = question
+  if (!synced)
+    return false
+  pendingLocalCommit.value = false
+  initialReadingSnapshot.value = readingSnapshot()
   await router.back()
   return true
 }
@@ -163,9 +178,18 @@ function readingSnapshot(): string {
   return JSON.stringify(readingDraft.value)
 }
 
-const readingDirty = computed(() => initialReadingSnapshot.value !== readingSnapshot())
+const readingDirty = computed(() => pendingLocalCommit.value || initialReadingSnapshot.value !== readingSnapshot())
 
 async function save(): Promise<boolean> {
+  if (pendingLocalCommit.value) {
+    const synced = await syncAfterLocalCommit()
+    if (!synced)
+      return false
+    pendingLocalCommit.value = false
+    initialReadingSnapshot.value = readingSnapshot()
+    await router.back()
+    return true
+  }
   error.value = ''
   const normalized = {
     ...readingDraft.value,
@@ -190,18 +214,22 @@ async function save(): Promise<boolean> {
   return saved
 }
 
-useDirtyForm({
+const dirtyForm = useDirtyForm({
   id: 'reading-question-editor',
   isDirty: () => readingDirty.value,
   save,
   discard: () => { void router.back() },
 })
+
+function goBack() {
+  void dirtyForm.requestClose()
+}
 </script>
 
 <template>
   <section v-if="word && (!existingQuestion || existingReading)" class="space-y-6 text-left">
     <div>
-      <Button variant="ghost" class="mb-3 -ml-3" @click="router.back()">
+      <Button variant="ghost" class="mb-3 -ml-3" @click="goBack">
         {{ $t('vocabulary.back') }}
       </Button>
       <div class="flex flex-wrap items-center gap-3">
@@ -217,45 +245,47 @@ useDirtyForm({
       </p>
     </div>
 
-    <Card class="space-y-4 p-5 sm:p-6">
-      <div class="grid gap-3 sm:grid-cols-2">
-        <Input v-model="readingDraft.title" :placeholder="$t('library.readingTitle')" />
-        <Select :model-value="String(readingDraft.difficulty)" :options="difficultyOptions" :placeholder="$t('library.questionDifficulty')" @update:model-value="setQuestionDifficulty" />
-      </div>
-      <Textarea v-model="readingDraft.passage" :rows="8" :placeholder="$t('library.readingPassage')" />
-      <div class="space-y-3 border-t border-ink-200/70 pt-4 dark:border-ink-800">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-lg font-black">
-            {{ $t('vocabulary.readingQuestions') }}
-          </h2>
-          <Button variant="outline" size="sm" @click="addReadingChild">
-            {{ $t('vocabulary.addReadingQuestion') }}
-          </Button>
+    <fieldset :disabled="pendingLocalCommit" class="contents">
+      <Card class="space-y-4 p-5 sm:p-6">
+        <div class="grid gap-3 sm:grid-cols-2">
+          <Input v-model="readingDraft.title" :placeholder="$t('library.readingTitle')" />
+          <Select :model-value="String(readingDraft.difficulty)" :options="difficultyOptions" :placeholder="$t('library.questionDifficulty')" @update:model-value="setQuestionDifficulty" />
         </div>
-        <article v-for="(child, index) in readingDraft.questions" :key="child.id" class="space-y-3 rounded-2xl border border-ink-200/70 p-4 dark:border-ink-200/20">
+        <Textarea v-model="readingDraft.passage" :rows="8" :placeholder="$t('library.readingPassage')" />
+        <div class="space-y-3 border-t border-ink-200/70 pt-4 dark:border-ink-800">
           <div class="flex items-center justify-between gap-3">
-            <p class="text-xs font-black uppercase tracking-wider text-ink-400">
-              {{ $t('library.questionNumber', { number: index + 1 }) }}
-            </p>
-            <Button variant="ghost" size="sm" :disabled="readingDraft.questions.length <= 1" @click="removeReadingChild(index)">
-              {{ $t('vocabulary.removeReadingQuestion') }}
+            <h2 class="text-lg font-black">
+              {{ $t('vocabulary.readingQuestions') }}
+            </h2>
+            <Button variant="outline" size="sm" @click="addReadingChild">
+              {{ $t('vocabulary.addReadingQuestion') }}
             </Button>
           </div>
-          <Select :model-value="child.senseId" :options="availableStudyWords.map(sense => ({ value: sense.id, label: `${sense.word} · ${sense.pos}｜${sense.meaning}` }))" :placeholder="$t('vocabulary.readingSense')" @update:model-value="setChildSense(child, $event)" />
-          <Textarea v-model="child.prompt" :rows="3" :placeholder="$t('library.readingQuestionPrompt')" />
-          <div class="grid gap-2 sm:grid-cols-2">
-            <Input v-for="(_, optionIndex) in child.options" :key="optionIndex" v-model="child.options[optionIndex]" :placeholder="$t('library.answerOption', { index: optionIndex + 1 })" />
-          </div>
-          <Select :model-value="String(child.answerIndex)" :options="childAnswerOptions()" :placeholder="$t('library.correctAnswer')" @update:model-value="setChildAnswer(child, $event)" />
-        </article>
-      </div>
-    </Card>
+          <article v-for="(child, index) in readingDraft.questions" :key="child.id" class="space-y-3 rounded-2xl border border-ink-200/70 p-4 dark:border-ink-200/20">
+            <div class="flex items-center justify-between gap-3">
+              <p class="text-xs font-black uppercase tracking-wider text-ink-400">
+                {{ $t('library.questionNumber', { number: index + 1 }) }}
+              </p>
+              <Button variant="ghost" size="sm" :disabled="readingDraft.questions.length <= 1" @click="removeReadingChild(index)">
+                {{ $t('vocabulary.removeReadingQuestion') }}
+              </Button>
+            </div>
+            <Select :model-value="child.senseId" :options="availableStudyWords.map(sense => ({ value: sense.id, label: `${sense.word} · ${sense.pos}｜${sense.meaning}` }))" :placeholder="$t('vocabulary.readingSense')" @update:model-value="setChildSense(child, $event)" />
+            <Textarea v-model="child.prompt" :rows="3" :placeholder="$t('library.readingQuestionPrompt')" />
+            <div class="grid gap-2 sm:grid-cols-2">
+              <Input v-for="(_, optionIndex) in child.options" :key="optionIndex" v-model="child.options[optionIndex]" :placeholder="$t('library.answerOption', { index: optionIndex + 1 })" />
+            </div>
+            <Select :model-value="String(child.answerIndex)" :options="childAnswerOptions()" :placeholder="$t('library.correctAnswer')" @update:model-value="setChildAnswer(child, $event)" />
+          </article>
+        </div>
+      </Card>
+    </fieldset>
 
     <StatusMessage v-if="error" tone="error">
       {{ error }}
     </StatusMessage>
     <div class="flex justify-end gap-2">
-      <Button variant="outline" @click="router.back()">
+      <Button variant="outline" @click="goBack">
         {{ $t('editor.cancel') }}
       </Button>
       <Button @click="save">

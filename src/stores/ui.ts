@@ -6,6 +6,7 @@ import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 
 export type GuestDataDecision = 'export' | 'continue' | 'cancel'
+export type DirtyFormDecision = 'save' | 'discard' | 'cancel'
 
 export const useUIStore = defineStore('ui', () => {
   const theme = ref<'light' | 'dark'>('light')
@@ -19,6 +20,7 @@ export const useUIStore = defineStore('ui', () => {
   const confirmConfirmLabel = ref('')
   const confirmCancelLabel = ref('')
   const confirmDestructive = ref(true)
+  const dirtyFormPromptOpen = ref(false)
   const guestDataWarningOpen = ref(false)
   const transferOpen = ref(false)
   const transferFolderId = ref(UNCATEGORIZED_FOLDER_ID)
@@ -37,6 +39,7 @@ export const useUIStore = defineStore('ui', () => {
 
   let confirmResolver: ((value: boolean) => void) | null = null
   let guestDataResolver: ((value: GuestDataDecision) => void) | null = null
+  let dirtyFormResolver: ((value: DirtyFormDecision) => void) | null = null
   let toastTimer: ReturnType<typeof setTimeout> | null = null
 
   function showToast(message: string, options?: { actionLabel?: string, action?: () => void, duration?: number }) {
@@ -85,6 +88,25 @@ export const useUIStore = defineStore('ui', () => {
     for (const form of dirtyForms.values()) {
       if (form.isDirty())
         form.discard()
+    }
+  }
+
+  function showDirtyFormPrompt(formId?: string): Promise<DirtyFormDecision> {
+    if (formId && !dirtyForms.get(formId)?.isDirty())
+      return Promise.resolve('discard')
+    if (!hasDirtyForms.value)
+      return Promise.resolve('discard')
+    dirtyFormPromptOpen.value = true
+    return new Promise((resolve) => {
+      dirtyFormResolver = resolve
+    })
+  }
+
+  function resolveDirtyFormPrompt(decision: DirtyFormDecision) {
+    dirtyFormPromptOpen.value = false
+    if (dirtyFormResolver) {
+      dirtyFormResolver(decision)
+      dirtyFormResolver = null
     }
   }
 
@@ -216,6 +238,7 @@ export const useUIStore = defineStore('ui', () => {
     confirmConfirmLabel,
     confirmCancelLabel,
     confirmDestructive,
+    dirtyFormPromptOpen,
     guestDataWarningOpen,
     transferOpen,
     transferFolderId,
@@ -234,6 +257,8 @@ export const useUIStore = defineStore('ui', () => {
     registerDirtyForm,
     saveDirtyForms,
     discardDirtyForms,
+    showDirtyFormPrompt,
+    resolveDirtyFormPrompt,
     showConfirm,
     resolveConfirm,
     showGuestDataWarning,

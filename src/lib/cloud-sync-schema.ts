@@ -1,9 +1,11 @@
 import type { SyncRecords } from './sync-outbox'
-import type { AiSettings, DashboardStats, FirestoreLibraryChunk, FirestoreLibraryManifest, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
-import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
+import type { AiSettings, DashboardStats, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
+import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, LIBRARY_CLOUD_SCHEMA_VERSION, MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
 import { getShareableAiSettings, normalizeAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
 import { canonicalHash, estimateJsonBytes } from './hash'
+import { normalizeWordKey } from './library'
+import { questionBelongsToAnyMemberships, questionUsesWords } from './question-ownership'
 import { normalizeDashboardStats, normalizeLearningProgress } from './share'
 
 type LibrarySection = FirestoreLibraryChunk['section']
@@ -51,14 +53,82 @@ export function buildLibraryManifest(uid: string, chunks: FirestoreLibraryChunk[
   }
 }
 
+function v5ChunkForSection(uid: string, library: LibraryState, section: LibrarySection, items: unknown[]): FirestoreLibraryV5Chunk {
+  const contentHash = canonicalHash({ section, items, updatedAt: library.updatedAt })
+  const chunkId = `chunk-${contentHash}`
+  const base = {
+    ownerId: uid,
+    schemaVersion: LIBRARY_CLOUD_SCHEMA_VERSION,
+    chunkId,
+    updatedAt: library.updatedAt,
+    section,
+    items,
+  } satisfies Omit<FirestoreLibraryV5Chunk, 'checksum'>
+  return { ...base, checksum: canonicalHash(base) }
+}
+
+/** Builds immutable, content-addressed v5 chunks. */
+export function buildV5LibraryChunks(uid: string, library: LibraryState): FirestoreLibraryV5Chunk[] {
+  const sections: { section: LibrarySection, items: unknown[] }[] = [
+    { section: 'words', items: Object.values(library.words) },
+    { section: 'sets', items: library.sets },
+    { section: 'memberships', items: Object.entries(library.memberships).map(([setId, members]) => ({ setId, members })) },
+    { section: 'folders', items: library.folders },
+    { section: 'questions', items: library.questions },
+  ]
+  const chunks: FirestoreLibraryV5Chunk[] = []
+  for (const { section, items } of sections) {
+    let current: unknown[] = []
+    for (const item of items) {
+      const candidate = v5ChunkForSection(uid, library, section, [...current, item])
+      if (!current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES)
+        throw new CloudSyncError('cloud/data-invalid', `Cloud ${section} 單筆資料超過大小限制`)
+      if (current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES) {
+        chunks.push(v5ChunkForSection(uid, library, section, current))
+        current = []
+      }
+      current.push(item)
+    }
+    if (current.length || !items.length)
+      chunks.push(v5ChunkForSection(uid, library, section, current))
+  }
+  return chunks
+}
+
+export function buildV5LibraryManifest(uid: string, chunks: FirestoreLibraryV5Chunk[], updatedAt: string): FirestoreLibraryV5Manifest {
+  const checksums = Object.fromEntries(chunks.map(chunk => [chunk.chunkId, chunk.checksum]))
+  return {
+    ownerId: uid,
+    schemaVersion: LIBRARY_CLOUD_SCHEMA_VERSION,
+    documentType: 'library-manifest',
+    updatedAt,
+    revision: canonicalHash({ checksums, updatedAt }),
+    chunks: checksums,
+  }
+}
+
+export function validateV5LibraryManifest(value: unknown, uid: string): FirestoreLibraryV5Manifest {
+  const manifest = validateLibraryManifestShape(value, uid, LIBRARY_CLOUD_SCHEMA_VERSION)
+  return manifest as FirestoreLibraryV5Manifest
+}
+
+export function validateV5LibraryChunk(value: unknown, uid: string, documentId: string): FirestoreLibraryV5Chunk {
+  const chunk = validateLibraryChunkShape(value, uid, documentId, LIBRARY_CLOUD_SCHEMA_VERSION)
+  return chunk as FirestoreLibraryV5Chunk
+}
+
 export function validateLibraryManifest(value: unknown, uid: string): FirestoreLibraryManifest {
+  return validateLibraryManifestShape(value, uid, CLOUD_SCHEMA_VERSION)
+}
+
+function validateLibraryManifestShape(value: unknown, uid: string, schemaVersion: number): FirestoreLibraryManifest {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 格式錯誤')
   const source = value as Record<string, unknown>
   const allowed = ['ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks']
   if (Object.keys(source).some(key => !allowed.includes(key))
     || source.ownerId !== uid
-    || source.schemaVersion !== CLOUD_SCHEMA_VERSION
+    || source.schemaVersion !== schemaVersion
     || source.documentType !== 'library-manifest'
     || typeof source.updatedAt !== 'string'
     || typeof source.revision !== 'string'
@@ -110,6 +180,50 @@ export function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibrarySt
   return { version: 1, words, sets, memberships, folders, questions, updatedAt: updatedAt || new Date().toISOString() }
 }
 
+export function validateV5LibraryChunkSet(chunks: FirestoreLibraryV5Chunk[]): void {
+  if (!chunks.length)
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少必要 chunks')
+  const updatedAt = chunks[0].updatedAt
+  for (const section of LIBRARY_SECTIONS) {
+    const sectionChunks = chunks.filter(chunk => chunk.section === section)
+    if (!sectionChunks.length)
+      throw new CloudSyncError('cloud/data-invalid', `Cloud library 缺少 ${section} chunk`)
+    if (sectionChunks.some(chunk => chunk.updatedAt !== updatedAt || !chunk.chunkId.startsWith('chunk-')))
+      throw new CloudSyncError('cloud/data-invalid', 'Cloud library v5 chunks 不屬於同一次提交')
+  }
+}
+
+export function combineV5LibraryChunks(chunks: FirestoreLibraryV5Chunk[]): LibraryState {
+  validateV5LibraryChunkSet(chunks)
+  const words: Record<string, WordEntry> = {}
+  const sets: LibrarySet[] = []
+  const memberships: Record<string, SetMembership[]> = {}
+  const folders: VocabFolder[] = []
+  const questions: LibraryState['questions'] = []
+  let updatedAt = ''
+  for (const chunk of chunks) {
+    updatedAt = chunk.updatedAt > updatedAt ? chunk.updatedAt : updatedAt
+    if (chunk.section === 'words') {
+      for (const word of chunk.items as WordEntry[])
+        words[word.wordKey] = word
+    }
+    else if (chunk.section === 'sets') {
+      sets.push(...chunk.items as LibrarySet[])
+    }
+    else if (chunk.section === 'memberships') {
+      for (const entry of chunk.items as { setId: string, members: SetMembership[] }[])
+        memberships[entry.setId] = entry.members
+    }
+    else if (chunk.section === 'folders') {
+      folders.push(...chunk.items as VocabFolder[])
+    }
+    else {
+      questions.push(...chunk.items as LibraryState['questions'])
+    }
+  }
+  return { version: 1, words, sets, memberships, folders, questions, updatedAt: updatedAt || new Date().toISOString() }
+}
+
 export function validateLibraryChunkSet(chunks: FirestoreLibraryChunk[]): void {
   if (!chunks.length)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少必要 chunks')
@@ -131,11 +245,15 @@ export function validateLibraryChunkSet(chunks: FirestoreLibraryChunk[]): void {
 }
 
 export function validateLibraryChunk(value: unknown, uid: string, documentId: string): FirestoreLibraryChunk {
+  return validateLibraryChunkShape(value, uid, documentId, CLOUD_SCHEMA_VERSION)
+}
+
+function validateLibraryChunkShape(value: unknown, uid: string, documentId: string, schemaVersion: number): FirestoreLibraryChunk {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library chunk 格式錯誤')
   const source = value as Record<string, unknown>
   const allowed = ['ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items']
-  if (Object.keys(source).some(key => !allowed.includes(key)) || source.ownerId !== uid || source.schemaVersion !== CLOUD_SCHEMA_VERSION || source.chunkId !== documentId || typeof source.chunkId !== 'string' || typeof source.updatedAt !== 'string' || typeof source.checksum !== 'string' || !['words', 'sets', 'memberships', 'folders', 'questions'].includes(String(source.section)) || !Array.isArray(source.items))
+  if (Object.keys(source).some(key => !allowed.includes(key)) || source.ownerId !== uid || source.schemaVersion !== schemaVersion || source.chunkId !== documentId || typeof source.chunkId !== 'string' || typeof source.updatedAt !== 'string' || typeof source.checksum !== 'string' || !['words', 'sets', 'memberships', 'folders', 'questions'].includes(String(source.section)) || !Array.isArray(source.items))
     throw new CloudSyncError('cloud/schema-unsupported', 'Cloud library chunk schema 不受支援')
   const base = {
     ownerId: source.ownerId,
@@ -204,7 +322,26 @@ export function libraryStateFromRecords(base: LibraryState, records: SyncRecords
     else if (key.startsWith('question:'))
       questions.push(payload as LibraryState['questions'][number])
   }
-  return { ...base, words, sets, memberships, folders, questions }
+  const liveFolderIds = new Set<string>()
+  let addedFolder = true
+  while (addedFolder) {
+    addedFolder = false
+    for (const folder of folders) {
+      if (liveFolderIds.has(folder.id) || (folder.parentId && !liveFolderIds.has(folder.parentId)))
+        continue
+      liveFolderIds.add(folder.id)
+      addedFolder = true
+    }
+  }
+  const liveFolders = folders.filter(folder => liveFolderIds.has(folder.id))
+  const liveSets = sets.filter(set => liveFolderIds.has(set.folderId))
+  const liveSetIds = new Set(liveSets.map(set => set.id))
+  const liveMembershipRecords = Object.fromEntries(Object.entries(memberships).filter(([setId]) => liveSetIds.has(setId)))
+  const referencedWordKeys = new Set(Object.values(liveMembershipRecords).flatMap(members => members.map(member => normalizeWordKey(member.wordKey))))
+  const liveWords = Object.fromEntries(Object.entries(words).filter(([wordKey]) => referencedWordKeys.has(wordKey)))
+  const liveMemberships = Object.values(liveMembershipRecords)
+  const liveQuestions = questions.filter(question => questionUsesWords(question, liveWords) && questionBelongsToAnyMemberships(question, liveMemberships))
+  return { ...base, words: liveWords, sets: liveSets, memberships: liveMembershipRecords, folders: liveFolders, questions: liveQuestions }
 }
 
 export function learningStateFromRecords(baseProgress: LearningProgress, baseStats: DashboardStats, records: SyncRecords): { progress: LearningProgress, stats: DashboardStats } {

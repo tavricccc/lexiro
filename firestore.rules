@@ -70,8 +70,9 @@ service cloud.firestore {
         'ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items'
       ])
         && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 4
+        && request.resource.data.schemaVersion == 5
         && request.resource.data.chunkId == chunkId
+        && request.resource.data.chunkId.matches('chunk-[a-f0-9]{8}')
         && request.resource.data.updatedAt is string
         && request.resource.data.checksum is string
         && request.resource.data.section in ['words', 'sets', 'memberships', 'folders', 'questions']
@@ -84,11 +85,16 @@ service cloud.firestore {
         'ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks'
       ])
         && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 4
+        && request.resource.data.schemaVersion == 5
         && request.resource.data.documentType == 'library-manifest'
         && request.resource.data.updatedAt is string
         && request.resource.data.revision is string
         && request.resource.data.chunks is map;
+    }
+
+    function manifestDoesNotReference(uid, chunkId) {
+      return !exists(/databases/$(database)/documents/users/$(uid)/library/manifest)
+        || !get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.chunks.keys().hasAny([chunkId]);
     }
 
     match /users/{uid} {
@@ -105,8 +111,22 @@ service cloud.firestore {
       match /library/{chunkId} {
         allow read: if signedIn(uid);
         allow create: if ownerCreate(uid) && validLibraryChunk(chunkId);
-        allow update: if ownerUpdate(uid) && validLibraryChunk(chunkId);
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
+        // v5 chunks are content-addressed and immutable. Replaying an
+        // identical write is harmless, but changing a published chunk is not.
+        allow update: if ownerUpdate(uid) && validLibraryChunk(chunkId) && request.resource.data == resource.data;
+        allow delete: if signedIn(uid) && resource.data.ownerId == uid && manifestDoesNotReference(uid, chunkId);
+      }
+
+      match /libraryLocks/{lockId} {
+        allow read: if signedIn(uid);
+        allow create, update: if signedIn(uid)
+          && lockId == 'v5-write'
+          && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'token', 'expiresAt'])
+          && request.resource.data.ownerId == uid
+          && request.resource.data.schemaVersion == 5
+          && request.resource.data.token is string
+          && request.resource.data.expiresAt is number;
+        allow delete: if signedIn(uid) && lockId == 'v5-write' && resource.data.ownerId == uid;
       }
 
       match /progress/global {

@@ -5,6 +5,7 @@ import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS } from '@/constants'
 import { defaultAiSettings, downloadAiSettings, loadAiSettings, parseAiSettingsJson, saveAiSettings } from '@/lib/ai-provider'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useLearningStore } from '@/stores/learning'
@@ -13,29 +14,35 @@ import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Input from './ui/input/Input.vue'
 import Select from './ui/select/Select.vue'
+import SyncProgress from './ui/sync-progress/SyncProgress.vue'
 
 const uiStore = useUIStore()
 const learningStore = useLearningStore()
 const cloudStore = useCloudSyncStore()
 const { t } = useI18n()
-const { configured, isSignedIn, accountLabel, status, error } = storeToRefs(cloudStore)
+const { configured, isSignedIn, accountLabel, status, error, progress } = storeToRefs(cloudStore)
 const { signIn: signInAccount, signOutAccount } = cloudStore
 const statusLabel = computed(() => {
-  const key = status.value === 'disabled' ? 'notConfigured' : status.value === 'signed-out' ? 'signedOut' : status.value
-  return t(`sync.${key}`)
+  if (status.value === 'disabled')
+    return t('sync.notConfigured')
+  if (status.value === 'signed-out')
+    return t('sync.signedOut')
+  if (['preparing', 'downloading', 'reconciling', 'uploading', 'verifying'].includes(status.value))
+    return t(`sync.phase.${status.value}`)
+  return t(`sync.${status.value}`)
 })
+const isSyncing = computed(() => ['connecting', 'preparing', 'downloading', 'reconciling', 'uploading', 'verifying', 'syncing'].includes(status.value))
 const settings = reactive({ ...loadAiSettings() })
 const initialSettingsSnapshot = ref(JSON.stringify(settings))
 const saved = ref(false)
+const pendingAiSave = ref(false)
+const dailyWordGoalDraft = ref(String(learningStore.stats.dailyWordGoal))
+const dailyQuestionGoalDraft = ref(String(learningStore.stats.dailyQuestionGoal))
+const initialDailyTargetsSnapshot = ref(`${dailyWordGoalDraft.value}:${dailyQuestionGoalDraft.value}`)
+const dailySaved = ref(false)
+const pendingDailySave = ref(false)
 const aiImportInput = ref<HTMLInputElement | null>(null)
-const dailyWordGoal = computed({
-  get: () => String(learningStore.stats.dailyWordGoal),
-  set: (value: string) => learningStore.setDailyWordGoal(Number(value)),
-})
-const dailyQuestionGoal = computed({
-  get: () => String(learningStore.stats.dailyQuestionGoal),
-  set: (value: string) => learningStore.setDailyQuestionGoal(Number(value)),
-})
+const dailyTargetsDirty = computed(() => `${dailyWordGoalDraft.value}:${dailyQuestionGoalDraft.value}` !== initialDailyTargetsSnapshot.value)
 const dailyWordGoalOptions = computed(() => DAILY_WORD_GOAL_OPTIONS.map(value => ({ value: String(value), label: t('settings.dailyWordOption', { value }) })))
 const dailyQuestionGoalOptions = computed(() => DAILY_QUESTION_GOAL_OPTIONS.map(value => ({ value: String(value), label: t('settings.dailyQuestionOption', { value }) })))
 
@@ -60,8 +67,16 @@ function settingsSnapshot(): string {
 
 const settingsDirty = computed(() => initialSettingsSnapshot.value !== settingsSnapshot())
 
-function save(): boolean {
-  saveAiSettings({ ...settings, batchSize: Math.min(Math.max(Number(settings.batchSize) || 10, 5), 20) })
+async function save(): Promise<boolean> {
+  if (!pendingAiSave.value) {
+    const normalized = { ...settings, batchSize: Math.min(Math.max(Number(settings.batchSize) || 10, 5), 20) }
+    Object.assign(settings, normalized)
+    saveAiSettings(normalized)
+    pendingAiSave.value = true
+  }
+  if (!await syncAfterLocalCommit())
+    return false
+  pendingAiSave.value = false
   initialSettingsSnapshot.value = settingsSnapshot()
   saved.value = true
   uiStore.showToast(t('settings.saved'))
@@ -71,7 +86,6 @@ function save(): boolean {
 
 function reset() {
   Object.assign(settings, defaultAiSettings)
-  save()
 }
 
 function discardSettings() {
@@ -79,10 +93,38 @@ function discardSettings() {
 }
 
 useDirtyForm({
-  id: 'settings',
+  id: 'settings-ai',
   isDirty: () => settingsDirty.value,
   save,
   discard: discardSettings,
+})
+
+async function saveDailyGoals(): Promise<boolean> {
+  if (!pendingDailySave.value) {
+    learningStore.setDailyGoals(Number(dailyWordGoalDraft.value), Number(dailyQuestionGoalDraft.value))
+    pendingDailySave.value = true
+  }
+  if (!await syncAfterLocalCommit())
+    return false
+  pendingDailySave.value = false
+  initialDailyTargetsSnapshot.value = `${dailyWordGoalDraft.value}:${dailyQuestionGoalDraft.value}`
+  dailySaved.value = true
+  uiStore.showToast(t('settings.dailyTargetsSaved'))
+  window.setTimeout(() => dailySaved.value = false, 1800)
+  return true
+}
+
+function discardDailyGoals() {
+  const [wordGoal, questionGoal] = initialDailyTargetsSnapshot.value.split(':')
+  dailyWordGoalDraft.value = wordGoal
+  dailyQuestionGoalDraft.value = questionGoal
+}
+
+useDirtyForm({
+  id: 'settings-daily-targets',
+  isDirty: () => dailyTargetsDirty.value,
+  save: saveDailyGoals,
+  discard: discardDailyGoals,
 })
 
 function updateBatchSize(value: string) {
@@ -90,8 +132,7 @@ function updateBatchSize(value: string) {
 }
 
 function exportAiSettings() {
-  save()
-  downloadAiSettings(settings)
+  downloadAiSettings(JSON.parse(initialSettingsSnapshot.value))
   uiStore.showToast(t('settings.aiExported'))
 }
 
@@ -107,8 +148,7 @@ async function importAiSettings(event: Event) {
   try {
     const imported = parseAiSettingsJson(await file.text())
     Object.assign(settings, { ...imported, apiKey: settings.apiKey })
-    save()
-    uiStore.showToast(t('settings.aiImported'))
+    uiStore.showToast(t('settings.aiImportedDraft'))
   }
   catch {
     uiStore.showToast(t('settings.aiImportFailed'))
@@ -145,31 +185,34 @@ async function signIn() {
           </h2>
         </div>
       </div>
-      <div class="mt-7">
-        <p class="text-xs font-semibold text-ink-500">
-          {{ $t('settings.aiMode') }}
-        </p>
-        <Select v-model="aiMode" :options="aiModeOptions" class="mt-2 max-w-md" />
-        <p class="mt-2 text-xs font-semibold leading-relaxed text-ink-400">
-          {{ settings.enabled ? $t('settings.apiModeHint') : $t('settings.manualModeHint') }}
-        </p>
-      </div>
-      <div v-if="settings.enabled" class="mt-5 grid gap-4 sm:grid-cols-2">
-        <div class="text-xs font-semibold text-ink-500">
-          {{ $t('settings.provider') }}
-          <Select v-model="settings.provider" :options="providerOptions" class="mt-2" />
-        </div><label class="text-xs font-semibold text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" :placeholder="$t('settings.modelPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-medium text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label>
-      </div><div class="mt-6 flex flex-wrap items-center gap-2">
+      <fieldset :disabled="pendingAiSave" class="contents">
+        <div class="mt-7">
+          <p class="text-xs font-semibold text-ink-500">
+            {{ $t('settings.aiMode') }}
+          </p>
+          <Select v-model="aiMode" :options="aiModeOptions" class="mt-2 max-w-md" />
+          <p class="mt-2 text-xs font-semibold leading-relaxed text-ink-400">
+            {{ settings.enabled ? $t('settings.apiModeHint') : $t('settings.manualModeHint') }}
+          </p>
+        </div>
+        <div v-if="settings.enabled" class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="text-xs font-semibold text-ink-500">
+            {{ $t('settings.provider') }}
+            <Select v-model="settings.provider" :options="providerOptions" class="mt-2" />
+          </div><label class="text-xs font-semibold text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" :placeholder="$t('settings.modelPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-medium text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label>
+        </div>
+      </fieldset>
+      <div class="mt-6 flex flex-wrap items-center gap-2">
         <Button variant="default" class="gap-2" @click="save">
           <Save class="h-4 w-4" />{{ $t('settings.save') }}
-        </Button><Button variant="ghost" @click="reset">
+        </Button><Button variant="ghost" :disabled="pendingAiSave" @click="reset">
           {{ $t('settings.reset') }}
         </Button>
         <Button variant="outline" class="gap-2" @click="exportAiSettings">
           <Download class="h-4 w-4" />{{ $t('settings.aiExport') }}
-        </Button><Button variant="outline" class="gap-2" @click="openAiImport">
+        </Button><Button variant="outline" class="gap-2" :disabled="pendingAiSave" @click="openAiImport">
           <Upload class="h-4 w-4" />{{ $t('settings.aiImport') }}
-        </Button><input ref="aiImportInput" type="file" accept="application/json,.json" class="hidden" @change="importAiSettings">
+        </Button><input ref="aiImportInput" type="file" accept="application/json,.json" class="hidden" :disabled="pendingAiSave" @change="importAiSettings">
         <span v-if="saved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600"><Check class="h-3.5 w-3.5" />{{ $t('settings.saved') }}</span>
       </div><div class="mt-5 flex gap-3 rounded-2xl bg-amber-50 p-3.5 text-xs font-medium leading-relaxed text-amber-800 dark:bg-amber-950/20 dark:text-amber-200">
         <LockKeyhole class="mt-0.5 h-4 w-4 shrink-0" />{{ $t('settings.keySafety') }}
@@ -189,15 +232,23 @@ async function signIn() {
           </p>
         </div>
       </div>
-      <div class="mt-6 grid gap-4 sm:grid-cols-2">
-        <label class="text-xs font-black text-ink-500">
-          {{ $t('settings.dailyWordGoalLabel') }}
-          <Select v-model="dailyWordGoal" :options="dailyWordGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyTargetsSaved'))" />
-        </label>
-        <label class="text-xs font-black text-ink-500">
-          {{ $t('settings.dailyQuestionGoalLabel') }}
-          <Select v-model="dailyQuestionGoal" :options="dailyQuestionGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyTargetsSaved'))" />
-        </label>
+      <fieldset :disabled="pendingDailySave" class="contents">
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <label class="text-xs font-black text-ink-500">
+            {{ $t('settings.dailyWordGoalLabel') }}
+            <Select v-model="dailyWordGoalDraft" :options="dailyWordGoalOptions" class="mt-2" />
+          </label>
+          <label class="text-xs font-black text-ink-500">
+            {{ $t('settings.dailyQuestionGoalLabel') }}
+            <Select v-model="dailyQuestionGoalDraft" :options="dailyQuestionGoalOptions" class="mt-2" />
+          </label>
+        </div>
+      </fieldset>
+      <div class="mt-5 flex flex-wrap items-center gap-2">
+        <Button variant="default" class="gap-2" :disabled="!dailyTargetsDirty && !pendingDailySave" @click="saveDailyGoals">
+          <Save class="h-4 w-4" />{{ $t('settings.saveDailyTargets') }}
+        </Button>
+        <span v-if="dailySaved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600"><Check class="h-3.5 w-3.5" />{{ $t('settings.saved') }}</span>
       </div>
     </Card>
     <Card class="p-5 sm:p-6">
@@ -228,6 +279,7 @@ async function signIn() {
       <p v-if="error" class="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold leading-relaxed text-red-600 dark:bg-red-950/20 dark:text-red-300" role="alert">
         {{ $t('sync.errorDetail', { message: error }) }}
       </p>
+      <SyncProgress v-if="isSyncing" class="mt-4" :state="progress" @retry="cloudStore.retryConnection" @continue-offline="cloudStore.continueOffline" />
       <div class="mt-5 flex flex-wrap gap-2">
         <Button variant="outline" class="gap-2" @click="uiStore.openTransfer">
           <Upload class="h-4 w-4" />{{ $t('backup.exportImport') }}

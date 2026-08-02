@@ -1,4 +1,4 @@
-import type { AiSettings, DashboardStats, LearningProgress, LibraryState } from '@/types'
+import type { AiSettings, DashboardStats, LearningProgress, LibrarySetSummary, LibraryState } from '@/types'
 import { getShareableAiSettings } from './ai-provider'
 import { cloneJson } from './clone'
 import { canonicalHash } from './hash'
@@ -104,8 +104,10 @@ export function libraryRecords(state: LibraryState): SyncRecords {
   const records: SyncRecords = {}
   for (const [wordKey, word] of Object.entries(state.words))
     records[`word:${wordKey}`] = word
-  for (const set of state.sets)
-    records[`set:${set.id}`] = set
+  for (const set of state.sets) {
+    const { wordCount: _wordCount, senseCount: _senseCount, questionCount: _questionCount, ...metadata } = set as LibrarySetSummary
+    records[`set:${set.id}`] = metadata
+  }
   for (const [setId, memberships] of Object.entries(state.memberships))
     records[`membership:${setId}`] = memberships
   for (const folder of state.folders)
@@ -171,6 +173,14 @@ export function rebaseQueuedRecords(remote: SyncRecords, entries: SyncOutboxEntr
     if (remoteHash !== entry.baseHash) {
       if (remoteHash === recordHash(entry.payload))
         continue
+      // A local submission that has not reached Cloud yet remains the
+      // winning value for this record. Keep it queued so the next CAS upload
+      // can publish the merged snapshot without silently dropping the edit.
+      if (entry.payload === null)
+        delete records[entry.recordKey]
+      else
+        records[entry.recordKey] = cloneJson(entry.payload)
+      accepted.push(entry)
       conflicted.push(entry)
       continue
     }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { ALL_FOLDER_ID, folderParentIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { useFolderCreation } from '@/lib/use-folder-creation'
 import { useLibraryStore } from '@/stores/library'
@@ -29,20 +31,58 @@ const folderCreation = useFolderCreation(
   () => t('library.folderNameRequired'),
 )
 const { name, error, reset: resetCreation } = folderCreation
+const initialDraftSnapshot = ref('')
+const pendingFolderId = ref<string | null>(null)
+
+function draftSnapshot(): string {
+  return JSON.stringify({ name: name.value, parentId: selectedParentId.value })
+}
+
+const draftDirty = computed(() => props.open && (pendingFolderId.value !== null || initialDraftSnapshot.value !== draftSnapshot()))
 
 function reset() {
   resetCreation()
+  pendingFolderId.value = null
   selectedParentId.value = props.parentId && props.parentId !== ALL_FOLDER_ID && props.parentId !== UNCATEGORIZED_FOLDER_ID
     ? props.parentId
     : ALL_FOLDER_ID
+  initialDraftSnapshot.value = draftSnapshot()
 }
 
-function createFolder() {
+async function createFolder(): Promise<boolean> {
+  if (pendingFolderId.value) {
+    const synced = await syncAfterLocalCommit()
+    if (!synced)
+      return false
+    const createdId = pendingFolderId.value
+    pendingFolderId.value = null
+    emit('created', createdId)
+    emit('close')
+    return true
+  }
   const folder = folderCreation.submit()
   if (!folder)
-    return
+    return false
+  pendingFolderId.value = folder.id
+  const synced = await syncAfterLocalCommit()
+  initialDraftSnapshot.value = draftSnapshot()
+  if (!synced)
+    return false
+  pendingFolderId.value = null
   emit('created', folder.id)
   emit('close')
+  return true
+}
+
+const dirtyForm = useDirtyForm({
+  id: 'folder-create',
+  isDirty: () => draftDirty.value,
+  save: async () => await createFolder(),
+  discard: () => emit('close'),
+})
+
+function close() {
+  void dirtyForm.requestClose()
 }
 
 watch(() => props.open, (open) => {
@@ -52,29 +92,31 @@ watch(() => props.open, (open) => {
 </script>
 
 <template>
-  <Dialog :open="open" :title="$t('library.folderCreateTitle')" :description="$t('library.folderCreateDescription')" width-class="max-w-md" @close="emit('close')">
-    <div class="space-y-4">
-      <div class="space-y-1.5 text-left">
-        <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('library.newFolderPlaceholder') }}</label>
-        <Input v-model="name" autofocus :placeholder="$t('library.newFolderPlaceholder')" @keydown.enter.prevent="createFolder" />
-      </div>
-
-      <div class="space-y-2 text-left">
-        <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
-          {{ $t('library.folderParentLabel') }}
-        </p>
-        <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
-          <FolderTree v-model="selectedParentId" :folders="libraryStore.folders" :include-root="true" :show-actions="false" :allow-uncategorized="false" />
+  <Dialog :open="open" :title="$t('library.folderCreateTitle')" :description="$t('library.folderCreateDescription')" width-class="max-w-md" @close="close">
+    <fieldset :disabled="pendingFolderId !== null" class="contents">
+      <div class="space-y-4">
+        <div class="space-y-1.5 text-left">
+          <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('library.newFolderPlaceholder') }}</label>
+          <Input v-model="name" autofocus :placeholder="$t('library.newFolderPlaceholder')" @keydown.enter.prevent="createFolder" />
         </div>
-      </div>
 
-      <StatusMessage v-if="error" tone="error">
-        {{ error }}
-      </StatusMessage>
-    </div>
+        <div class="space-y-2 text-left">
+          <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
+            {{ $t('library.folderParentLabel') }}
+          </p>
+          <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
+            <FolderTree v-model="selectedParentId" :folders="libraryStore.folders" :include-root="true" :show-actions="false" :allow-uncategorized="false" />
+          </div>
+        </div>
+
+        <StatusMessage v-if="error" tone="error">
+          {{ error }}
+        </StatusMessage>
+      </div>
+    </fieldset>
     <template #footer>
       <DialogFooter>
-        <Button variant="outline" @click="emit('close')">
+        <Button variant="outline" @click="close">
           {{ $t('editor.cancel') }}
         </Button>
         <Button variant="default" @click="createFolder">

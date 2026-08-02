@@ -19,6 +19,7 @@ export interface AiGenerationOptions {
 const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
 let storedSettings: AiSettings = { ...defaultAiSettings }
 const settingsListeners = new Set<(settings: AiSettings) => void>()
+let settingsPersistencePromise: Promise<void> = Promise.resolve()
 
 function assertKnownSettingsKeys(value: Record<string, unknown>, includeApiKey: boolean): void {
   const allowed = includeApiKey
@@ -91,6 +92,10 @@ export async function loadAiSettingsState(): Promise<AiSettings> {
   return loadAiSettings()
 }
 
+export async function waitForAiSettingsPersistence(): Promise<void> {
+  await settingsPersistencePromise
+}
+
 export function parseAiSettingsJson(raw: string): AiSettings {
   const parsed: unknown = JSON.parse(raw)
   if (!isRecord(parsed))
@@ -119,8 +124,12 @@ export function downloadAiSettings(settings: AiSettings): void {
 export function saveAiSettings(settings: AiSettings) {
   storedSettings = normalizeAiSettings(settings)
   const shareableSettings = getShareableAiSettings(storedSettings)
-  void saveToStorage(AI_SETTINGS_KEY, shareableSettings)
-  void saveToStorage(AI_API_KEY_STORAGE_KEY, storedSettings.apiKey)
+  const apiKey = storedSettings.apiKey
+  const settingsWrite = saveToStorage(AI_SETTINGS_KEY, shareableSettings)
+  const apiKeyWrite = saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey)
+  const next = Promise.all([settingsPersistencePromise.catch(() => undefined), settingsWrite, apiKeyWrite]).then(() => undefined)
+  settingsPersistencePromise = next
+  void next.catch(() => undefined)
   for (const listener of settingsListeners)
     listener(loadAiSettings())
 }

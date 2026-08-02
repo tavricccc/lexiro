@@ -51,22 +51,22 @@ export function useSenseManagement(options: SenseManagementOptions) {
   }
 
   async function saveEditor(value: SenseEditValue): Promise<boolean> {
-    const sense = editingSense.value
-    if (!sense)
-      return false
-    const usages = libraryStore.getSenseSetIds(options.getWordKey(), sense.id)
-    if (usages.length > 1) {
-      const confirmed = await uiStore.showConfirm(
-        t('vocabulary.sharedChangeTitle'),
-        t('vocabulary.sharedChangeMessage', { count: usages.length, sets: usages.map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、') }),
-      )
-      if (!confirmed)
-        return false
-    }
     try {
+      await libraryStore.loadAllContent()
+      const sense = editingSense.value
+      if (!sense)
+        return false
+      const usages = libraryStore.getSenseSetIds(options.getWordKey(), sense.id)
+      if (usages.length > 1) {
+        const confirmed = await uiStore.showConfirm(
+          t('vocabulary.sharedChangeTitle'),
+          t('vocabulary.sharedChangeMessage', { count: usages.length, sets: usages.map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、') }),
+        )
+        if (!confirmed)
+          return false
+      }
       if (!libraryStore.updateSense(options.getWordKey(), sense.id, value))
         throw new Error(t('vocabulary.saveFailed'))
-      closeEditor()
       return true
     }
     catch (error) {
@@ -80,6 +80,13 @@ export function useSenseManagement(options: SenseManagementOptions) {
     const setId = options.getSetId()
     if (!setId)
       return
+    try {
+      await libraryStore.loadAllContent()
+    }
+    catch {
+      uiStore.showToast(t('vocabulary.saveFailed'))
+      return
+    }
     if (withUndo) {
       const snapshot = libraryStore.removeSenseFromSetWithUndo(setId, wordKey, sense.id)
       if (!snapshot)
@@ -88,8 +95,13 @@ export function useSenseManagement(options: SenseManagementOptions) {
         actionLabel: t('toast.undo'),
         duration: 5000,
         action: () => {
-          if (libraryStore.restoreSenseRemoval(snapshot))
-            uiStore.showToast(t('vocabulary.senseRestored'))
+          if (libraryStore.restoreSenseRemoval(snapshot)) {
+            void (async () => {
+              const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
+              await syncAfterLocalCommit()
+              uiStore.showToast(t('vocabulary.senseRestored'))
+            })()
+          }
         },
       })
     }
@@ -99,10 +111,19 @@ export function useSenseManagement(options: SenseManagementOptions) {
     else {
       uiStore.showToast(t('vocabulary.senseRemoved', { meaning: sense.meaningZh }))
     }
+    const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
+    await syncAfterLocalCommit()
     await options.onRemoved?.()
   }
 
   async function requestRemove(sense: WordSense) {
+    try {
+      await libraryStore.loadAllContent()
+    }
+    catch {
+      uiStore.showToast(t('vocabulary.saveFailed'))
+      return
+    }
     pendingRemovalId.value = sense.id
     const currentImpact = impact.value
     pendingRemovalId.value = null

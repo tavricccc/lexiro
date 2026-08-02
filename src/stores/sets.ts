@@ -1,4 +1,4 @@
-import type { EditorItem, ImportResult, LibraryQuestion, LibrarySet, SetMembership, SharedSet, WordEntry } from '@/types'
+import type { EditorItem, ImportResult, LibrarySet, LibrarySetSummary, LibraryState, SetMembership, SharedSet, WordEntry } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -7,9 +7,9 @@ import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/fil
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { i18n } from '@/lib/i18n'
 import { itemToMembership, itemToWordEntry, normalizeWordKey } from '@/lib/library'
+import { getLibraryRepository } from '@/lib/library-repository'
 import { questionBelongsToMemberships } from '@/lib/question-ownership'
 import { createUniqueSetName } from '@/lib/set-name'
-import { countSharedSetSenses } from '@/lib/shared-set'
 import { createBlankSenseDraft } from '@/lib/validation'
 import { useLibraryStore } from './library'
 import { useSessionStore } from './session'
@@ -24,7 +24,7 @@ export const useSetsStore = defineStore('sets', () => {
   const activeSetId = ref<string | null>(null)
   const activeSet = computed(() => sets.value.find(set => set.id === activeSetId.value) ?? null)
   const hasSets = computed(() => sets.value.length > 0)
-  const totalWordCount = computed(() => sets.value.reduce((sum, set) => sum + libraryStore.getSetStudyWords(set.id).length, 0))
+  const totalWordCount = computed(() => sets.value.reduce((sum, set) => sum + ((set as LibrarySetSummary).senseCount ?? libraryStore.getSetStudyWords(set.id).length), 0))
 
   const setEditorMode = ref<'create' | 'edit'>('create')
   const setEditorId = ref<string | null>(null)
@@ -43,23 +43,20 @@ export const useSetsStore = defineStore('sets', () => {
   const exportSelectedSets = computed<SharedSet[]>(() => sets.value
     .filter(set => exportSelectedIds.value.includes(set.id))
     .map(toSharedSet))
-  const exportSelectedCount = computed(() => exportSelectedSets.value.length)
-  const exportSelectedWordCount = computed(() => countSharedSetSenses(exportSelectedSets.value))
+  const selectedSummarySets = computed(() => sets.value.filter(set => exportSelectedIds.value.includes(set.id)))
+  const exportSelectedCount = computed(() => selectedSummarySets.value.length)
+  const exportSelectedWordCount = computed(() => selectedSummarySets.value.reduce((total, set) => total + ((set as LibrarySetSummary).senseCount ?? libraryStore.getSetStudyWords(set.id).length), 0))
   const exportAllSelected = computed(() => sets.value.length > 0 && exportSelectedCount.value === sets.value.length)
   const exportError = ref('')
 
-  function questionBelongsToSet(question: LibraryQuestion, setId: string): boolean {
-    return questionBelongsToMemberships(question, libraryStore.state.memberships[setId] ?? [])
-  }
-
-  function toSharedSet(set: LibrarySet): SharedSet {
-    const memberships = (libraryStore.state.memberships[set.id] ?? []).map(membership => ({
+  function toSharedSetFromState(set: LibrarySet, library: LibraryState): SharedSet {
+    const memberships = (library.memberships[set.id] ?? []).map(membership => ({
       wordKey: membership.wordKey,
       senseIds: [...membership.senseIds],
     }))
     const words = memberships
       .map((membership) => {
-        const word = libraryStore.getWord(membership.wordKey)
+        const word = library.words[normalizeWordKey(membership.wordKey)]
         if (!word)
           return null
         const senseIds = new Set(membership.senseIds)
@@ -69,8 +66,8 @@ export const useSetsStore = defineStore('sets', () => {
         }
       })
       .filter((word): word is WordEntry => Boolean(word))
-    const questions = libraryStore.questions
-      .filter(question => questionBelongsToSet(question, set.id))
+    const questions = library.questions
+      .filter(question => questionBelongsToMemberships(question, memberships))
       .map(question => cloneJson(question))
     return {
       ...set,
@@ -80,8 +77,13 @@ export const useSetsStore = defineStore('sets', () => {
     }
   }
 
+  function toSharedSet(set: LibrarySet): SharedSet {
+    return toSharedSetFromState(set, libraryStore.state)
+  }
+
   function getSetWordCount(setId: string): number {
-    return libraryStore.getSetStudyWords(setId).length
+    const set = sets.value.find(item => item.id === setId)
+    return (set as LibrarySetSummary | undefined)?.senseCount ?? libraryStore.getSetStudyWords(setId).length
   }
 
   function wordToEditorItem(word: WordEntry, setId: string): EditorItem {
@@ -129,6 +131,23 @@ export const useSetsStore = defineStore('sets', () => {
     exportSelectedIds.value = sets.value.map(set => set.id)
     if (!activeSetId.value)
       activeSetId.value = sets.value[0]?.id ?? null
+  }
+
+  function resetForNamespace() {
+    activeSetId.value = null
+    setEditorMode.value = 'create'
+    setEditorId.value = null
+    setEditorName.value = ''
+    setEditorFolderId.value = undefined
+    setEditorError.value = ''
+    setEditorDraftItems.value = []
+    importOpen.value = false
+    importError.value = ''
+    importPreview.value = ''
+    importFolderId.value = UNCATEGORIZED_FOLDER_ID
+    pendingDeleteId.value = null
+    exportSelectedIds.value = []
+    exportError.value = ''
   }
 
   function ensureActiveSet(setId: string) {
@@ -222,7 +241,8 @@ export const useSetsStore = defineStore('sets', () => {
     }
   }
 
-  function saveSetEditor(): boolean {
+  function saveSetEditor(options: { navigate?: boolean } = {}): boolean {
+    const navigate = options.navigate ?? true
     try {
       if (!setEditorName.value.trim())
         throw new Error(t('editor.nameRequired'))
@@ -230,7 +250,7 @@ export const useSetsStore = defineStore('sets', () => {
         throw new Error(t('editor.itemsRequired'))
       if (setEditorMode.value === 'create') {
         const created = createSetFromItems(setEditorDraftItems.value, setEditorName.value, setEditorFolderId.value)
-        if (created)
+        if (created && navigate)
           void router.push({ name: 'set-overview', params: { setId: created.id } })
         return Boolean(created)
       }
@@ -241,7 +261,8 @@ export const useSetsStore = defineStore('sets', () => {
       useSessionStore().clearSessionsForSet(setEditorId.value)
       useUIStore().showToast(t('editor.updated', { name: setEditorName.value.trim(), count: setEditorDraftItems.value.length }))
       importOpen.value = false
-      void router.push({ name: 'set-overview', params: { setId: setEditorId.value } })
+      if (navigate)
+        void router.push({ name: 'set-overview', params: { setId: setEditorId.value } })
       return true
     }
     catch (error) {
@@ -281,23 +302,26 @@ export const useSetsStore = defineStore('sets', () => {
     importOpen.value = false
   }
 
-  async function requestDelete(setId: string) {
+  async function requestDelete(setId: string): Promise<boolean> {
     pendingDeleteId.value = setId
     const confirmed = await useUIStore().showConfirm(t('confirm.deleteTitle'), sets.value.length <= 1 ? t('confirm.deleteLastMessage') : t('confirm.deleteMessage'))
     if (!confirmed) {
       pendingDeleteId.value = null
-      return
+      return false
     }
     libraryStore.removeSet(setId)
     useSessionStore().clearSessionsForSet(setId)
     if (activeSetId.value === setId)
       activeSetId.value = sets.value[0]?.id ?? null
     pendingDeleteId.value = null
+    const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
+    return syncAfterLocalCommit()
   }
 
-  async function deleteActiveSet() {
+  async function deleteActiveSet(): Promise<boolean> {
     if (activeSet.value)
-      await requestDelete(activeSet.value.id)
+      return requestDelete(activeSet.value.id)
+    return false
   }
 
   function editActiveSet() {
@@ -341,13 +365,18 @@ export const useSetsStore = defineStore('sets', () => {
 
   async function exportSelectedSetsToZip() {
     exportError.value = ''
-    if (!exportSelectedSets.value.length) {
+    await libraryStore.waitForPersistence()
+    const library = await getLibraryRepository().loadState()
+    const selectedSets = library.sets
+      .filter(set => exportSelectedIds.value.includes(set.id))
+      .map(set => toSharedSetFromState(set, library))
+    if (!selectedSets.length) {
       exportError.value = t('backup.selectAtLeastOne')
       return
     }
-    const blob = await buildExportZipBlob(exportSelectedSets.value)
+    const blob = await buildExportZipBlob(selectedSets)
     downloadBlob(blob, buildExportFileName())
-    useUIStore().showToast(t('backup.exported', { count: exportSelectedSets.value.length }))
+    useUIStore().showToast(t('backup.exported', { count: selectedSets.length }))
   }
 
   function applyImported(targetSets: SharedSet[], folderId?: string): ImportResult | null {
@@ -406,6 +435,7 @@ export const useSetsStore = defineStore('sets', () => {
     exportAllSelected,
     exportError,
     loadState,
+    resetForNamespace,
     ensureActiveSet,
     moveSetToFolder,
     isSetInProgress,

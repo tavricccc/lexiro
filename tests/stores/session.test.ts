@@ -107,11 +107,12 @@ describe('session validation', () => {
     const libraryStore = useLibraryStore()
     const learningStore = useLearningStore()
     const sessionStore = useSessionStore()
-    const set: LibrarySet = { id: 'daily-set', setName: 'Daily', folderId: '__uncategorized__', createdAt: '', updatedAt: '' }
+    const timestamp = new Date().toISOString()
+    const set: LibrarySet = { id: 'daily-set', setName: 'Daily', folderId: '__uncategorized__', createdAt: timestamp, updatedAt: timestamp }
     const words: WordEntry[] = Array.from({ length: 10 }, (_, index) => {
       const wordKey = `daily-${index + 1}`
       const senseId = buildSenseId(wordKey, 'n.', `意思${index + 1}`)
-      return { wordKey, word: wordKey, senses: [{ id: senseId, pos: 'n.', meaningZh: `意思${index + 1}`, examples: [] }], updatedAt: '' }
+      return { wordKey, word: wordKey, senses: [{ id: senseId, pos: 'n.', meaningZh: `意思${index + 1}`, examples: [] }], updatedAt: timestamp }
     })
     const standardQuestions: LibraryQuestion[] = words.slice(0, 4).map((word, index) => ({
       id: `daily-standard-${index + 1}`,
@@ -124,8 +125,8 @@ describe('session validation', () => {
       prompt: `Choose ${word.wordKey}.`,
       options: [word.wordKey, 'other-a', 'other-b', 'other-c'],
       answerIndex: 0,
-      createdAt: '',
-      updatedAt: '',
+      createdAt: timestamp,
+      updatedAt: timestamp,
     }))
     const fillBlankQuestions: LibraryQuestion[] = words.slice(4, 8).map((word, index) => ({
       id: `daily-fill-${index + 1}`,
@@ -138,8 +139,8 @@ describe('session validation', () => {
       prompt: `I _____ ${word.wordKey}.`,
       options: [word.wordKey, 'other-a', 'other-b', 'other-c'],
       answerIndex: 0,
-      createdAt: '',
-      updatedAt: '',
+      createdAt: timestamp,
+      updatedAt: timestamp,
     }))
     const readingPack: LibraryQuestion = {
       id: 'daily-reading-pack',
@@ -149,8 +150,8 @@ describe('session validation', () => {
       passage: 'A short English passage for today.',
       wordKeys: words.slice(8).map(word => word.wordKey),
       difficulty: 2,
-      createdAt: '',
-      updatedAt: '',
+      createdAt: timestamp,
+      updatedAt: timestamp,
       questions: words.slice(8).map((word, index) => ({
         id: `daily-reading-child-${index + 1}`,
         kind: 'multipleChoice',

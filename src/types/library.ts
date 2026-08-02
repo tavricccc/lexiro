@@ -40,6 +40,29 @@ export interface LibrarySet {
   updatedAt: string
 }
 
+/** Lightweight metadata kept in the Library index. Content is loaded on demand. */
+export interface LibrarySetSummary extends LibrarySet {
+  wordCount: number
+  senseCount: number
+  questionCount: number
+}
+
+export interface LibrarySearchEntry {
+  setId: string
+  setName: string
+  normalizedSetName: string
+  terms: string[]
+}
+
+export interface LibraryIndex {
+  schemaVersion: 1
+  generation: string
+  updatedAt: string
+  folders: VocabFolder[]
+  sets: LibrarySetSummary[]
+  searchIndex: LibrarySearchEntry[]
+}
+
 export interface SetMembership {
   wordKey: string
   senseIds: string[]

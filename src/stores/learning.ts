@@ -4,6 +4,8 @@ import { computed, ref } from 'vue'
 import { DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS, LEARNING_STORAGE_KEY } from '@/constants'
 import { isDue, reviewCard } from '@/lib/fsrs'
 import { createDefaultStats, emptyDailyActivity, emptyQuestionStats } from '@/lib/learning-defaults'
+import { normalizeWordKey, senseToStudyWord } from '@/lib/library'
+import { getLibraryRepository } from '@/lib/library-repository'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { normalizeDashboardStats, normalizeLearningProgress } from '@/lib/share'
 import { useLibraryStore } from './library'
@@ -27,6 +29,7 @@ export const useLearningStore = defineStore('learning', () => {
   const reviewContext = ref<'daily' | 'set' | null>(null)
   const dailyCardSeeds = ref<Record<string, CardProgress | null>>({})
   const loaded = ref(false)
+  let persistencePromise: Promise<void> = Promise.resolve()
 
   const currentReviewEntry = computed(() => reviewEntries.value[reviewIndex.value] ?? null)
   const reviewTotal = computed(() => reviewEntries.value.length)
@@ -97,7 +100,13 @@ export const useLearningStore = defineStore('learning', () => {
     }
     if (!localHasActivity)
       stats.value = { ...incomingStats }
-    pruneSenseData(new Set(Object.values(useLibraryStore().state.words).flatMap(word => word.senses.map(sense => sense.id))))
+    // Library startup keeps only its index and recently hydrated sets. Do not
+    // interpret that intentionally partial Pinia state as an empty library
+    // while restoring a complete backup; the repository-level import already
+    // pruned against the complete merged generation when appropriate.
+    const libraryStore = useLibraryStore()
+    if (libraryStore.fullyHydrated)
+      pruneSenseData(new Set(Object.values(libraryStore.state.words).flatMap(word => word.senses.map(sense => sense.id))))
     saveState()
   }
 
@@ -196,12 +205,74 @@ export const useLearningStore = defineStore('learning', () => {
     return useLibraryStore().getSetStudyWords(setId).filter(item => (getCardProgress(item.id)?.reviewCount ?? 0) > 0).length
   }
 
-  function saveState() {
-    saveToStorage(LEARNING_STORAGE_KEY, {
+  async function getDailyReviewEntriesFromRepository(limit = Math.max(0, stats.value.dailyWordGoal - stats.value.todayMemoryReviews)): Promise<ReviewEntry[]> {
+    const safeLimit = Math.max(0, Math.floor(limit))
+    if (!safeLimit)
+      return []
+    await useLibraryStore().waitForPersistence()
+    const index = await getLibraryRepository().loadIndex()
+    const dueEntries: ReviewEntry[] = []
+    const dueEntryIds = new Set<string>()
+    const newEntries = new Map<string, ReviewEntry>()
+    const now = new Date()
+    for await (const payloads of getLibraryRepository().streamSetPayloads(index.sets.map(set => set.id))) {
+      for (const [setId, payload] of payloads) {
+        const words = new Map(payload.words.map(word => [normalizeWordKey(word.wordKey), word]))
+        for (const membership of payload.memberships) {
+          const word = words.get(normalizeWordKey(membership.wordKey))
+          if (!word)
+            continue
+          const senseIds = new Set(membership.senseIds)
+          for (const sense of word.senses) {
+            if (!senseIds.has(sense.id))
+              continue
+            const item = senseToStudyWord(word, sense)
+            const card = getCardProgress(item.id)
+            if (card && isDue(card, now)) {
+              if (dueEntryIds.has(item.id))
+                continue
+              dueEntryIds.add(item.id)
+              dueEntries.push({ setId, item, progress: card })
+              dueEntries.sort((left, right) => new Date(left.progress?.due ?? 0).getTime() - new Date(right.progress?.due ?? 0).getTime())
+              if (dueEntries.length > safeLimit) {
+                const removed = dueEntries.pop()
+                if (removed)
+                  dueEntryIds.delete(removed.item.id)
+              }
+            }
+            else if (!card && newEntries.size < safeLimit && !newEntries.has(item.id)) {
+              newEntries.set(item.id, { setId, item, progress: null })
+            }
+          }
+        }
+      }
+    }
+    const due = dueEntries
+    const fresh = Array.from(newEntries.values())
+    const target = Math.min(safeLimit, due.length + fresh.length)
+    if (!target)
+      return []
+    const hasDue = due.length > 0
+    const newQuota = hasDue ? Math.min(fresh.length, Math.floor(target / 3)) : Math.min(fresh.length, target)
+    const dueQuota = hasDue ? Math.min(due.length, target - newQuota) : 0
+    return interleaveEntries(due.slice(0, dueQuota), fresh.slice(0, newQuota))
+  }
+
+  function saveState(): Promise<void> {
+    const snapshot = {
       version: LEARNING_STATE_VERSION,
       progress: progress.value,
       stats: stats.value,
-    })
+    }
+    const write = saveToStorage(LEARNING_STORAGE_KEY, snapshot)
+    const next = Promise.all([persistencePromise.catch(() => undefined), write]).then(() => undefined)
+    persistencePromise = next
+    void next.catch(() => undefined)
+    return next
+  }
+
+  async function waitForPersistence(): Promise<void> {
+    await persistencePromise
   }
 
   async function loadState() {
@@ -237,8 +308,14 @@ export const useLearningStore = defineStore('learning', () => {
     if (!DAILY_QUESTION_GOAL_OPTIONS.includes(stats.value.dailyQuestionGoal as typeof DAILY_QUESTION_GOAL_OPTIONS[number]))
       stats.value.dailyQuestionGoal = DAILY_QUESTION_GOAL_OPTIONS[0]
     loaded.value = true
-    const liveSenseIds = new Set(Object.values(useLibraryStore().state.words).flatMap(word => word.senses.map(sense => sense.id)))
-    pruneSenseData(liveSenseIds)
+    const libraryStore = useLibraryStore()
+    // Library startup intentionally hydrates metadata only. Do not mistake an
+    // empty content cache for an empty library and prune valid cards before a
+    // page or full-content load has supplied the sense records.
+    if (libraryStore.fullyHydrated) {
+      const liveSenseIds = new Set(Object.values(libraryStore.state.words).flatMap(word => word.senses.map(sense => sense.id)))
+      pruneSenseData(liveSenseIds)
+    }
   }
 
   function setDailyWordGoal(value: number) {
@@ -259,6 +336,21 @@ export const useLearningStore = defineStore('learning', () => {
     if (stats.value.dailyQuestionGoal === nextGoal)
       return
     stats.value.dailyQuestionGoal = nextGoal
+    stats.value.updatedAt = new Date().toISOString()
+    saveState()
+  }
+
+  function setDailyGoals(wordGoal: number, questionGoal: number) {
+    const nextWordGoal = DAILY_WORD_GOAL_OPTIONS.includes(wordGoal as typeof DAILY_WORD_GOAL_OPTIONS[number])
+      ? wordGoal
+      : DAILY_WORD_GOAL_OPTIONS[0]
+    const nextQuestionGoal = DAILY_QUESTION_GOAL_OPTIONS.includes(questionGoal as typeof DAILY_QUESTION_GOAL_OPTIONS[number])
+      ? questionGoal
+      : DAILY_QUESTION_GOAL_OPTIONS[0]
+    if (stats.value.dailyWordGoal === nextWordGoal && stats.value.dailyQuestionGoal === nextQuestionGoal)
+      return
+    stats.value.dailyWordGoal = nextWordGoal
+    stats.value.dailyQuestionGoal = nextQuestionGoal
     stats.value.updatedAt = new Date().toISOString()
     saveState()
   }
@@ -410,6 +502,19 @@ export const useLearningStore = defineStore('learning', () => {
     return true
   }
 
+  async function startDailyReviewFromRepository(): Promise<boolean> {
+    const entries = await getDailyReviewEntriesFromRepository()
+    if (!entries.length)
+      return false
+    reviewSetId.value = null
+    dailyCardSeeds.value = {}
+    reviewContext.value = 'daily'
+    reviewEntries.value = entries
+    reviewIndex.value = 0
+    reviewAnswered.value = false
+    return true
+  }
+
   function answerCurrent(rating: ReviewRating) {
     const current = currentReviewEntry.value
     if (!current || reviewAnswered.value)
@@ -478,6 +583,7 @@ export const useLearningStore = defineStore('learning', () => {
     loaded.value = false
     dailyCardSeeds.value = {}
     clearReview()
+    persistencePromise = Promise.resolve()
   }
 
   return {
@@ -498,6 +604,7 @@ export const useLearningStore = defineStore('learning', () => {
     loadState,
     resetForNamespace,
     saveState,
+    waitForPersistence,
     replaceProgress,
     replaceStats,
     mergeImportedState,
@@ -510,13 +617,16 @@ export const useLearningStore = defineStore('learning', () => {
     getAvailableReviewCount,
     getDailyReviewEntries,
     getLearnedCount,
+    getDailyReviewEntriesFromRepository,
     setDailyWordGoal,
     setDailyQuestionGoal,
+    setDailyGoals,
     recordQuestionResults,
     completePracticeSession,
     renameSense,
     startReview,
     startDailyReview,
+    startDailyReviewFromRepository,
     answerCurrent,
     nextReview,
     clearReview,

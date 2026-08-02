@@ -3,6 +3,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { LEARNING_STORAGE_KEY } from '@/constants'
 import { reviewCard } from '@/lib/fsrs'
+import { createDefaultStats } from '@/lib/learning-defaults'
 import { buildSenseId } from '@/lib/library'
 import { loadFromStorage } from '@/lib/persist'
 import { useLearningStore } from '@/stores/learning'
@@ -92,6 +93,17 @@ describe('global sense learning', () => {
 
     learningStore.setDailyWordGoal(10)
     expect(learningStore.stats.dailyWordGoal).toBe(15)
+  })
+
+  it('does not prune restored cards while the library only has its startup index', () => {
+    const libraryStore = useLibraryStore()
+    const learningStore = useLearningStore()
+    const senseId = words[0].senses[0].id
+
+    expect(libraryStore.fullyHydrated).toBe(false)
+    learningStore.mergeImportedState({ cards: { [senseId]: reviewCard(null, 'good') }, updatedAt: '' }, createDefaultStats())
+
+    expect(learningStore.getCardProgress(senseId)).not.toBeNull()
   })
 
   it('stores one card per sense even when daily review spans multiple sets', async () => {

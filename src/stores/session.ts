@@ -1,5 +1,6 @@
 import type {
   Draft,
+  LibraryQuestion,
   MultipleChoiceQuestion,
   PracticeDifficulty,
   PracticeMode,
@@ -16,6 +17,8 @@ import { useRouter } from 'vue-router'
 import { SESSION_STORAGE_KEY } from '@/constants'
 import { buildDailyQuestionEntries as selectDailyQuestionEntries } from '@/lib/daily-question-selection'
 import { i18n } from '@/lib/i18n'
+import { normalizeWordKey, senseToStudyWord } from '@/lib/library'
+import { getLibraryRepository } from '@/lib/library-repository'
 import { createDebouncedSaver, loadFromStorage, saveToStorage } from '@/lib/persist'
 import { nextPracticeMode } from '@/lib/practice'
 import { toPracticeQuestion } from '@/lib/practice-question'
@@ -74,6 +77,9 @@ export const useSessionStore = defineStore('session', () => {
   const sessionsByKey = ref<Record<string, PracticeSession>>({})
   const activeKey = ref<string | null>(null)
   const currentView = ref<string>('home')
+  const pendingRoundSync = ref(false)
+  const roundSyncing = ref(false)
+  let persistencePromise: Promise<void> = Promise.resolve()
 
   const currentSession = computed(() => {
     if (!activeKey.value)
@@ -140,7 +146,10 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   const sessionSaver = createDebouncedSaver(() => {
-    saveToStorage(SESSION_STORAGE_KEY, snapshot())
+    const write = saveToStorage(SESSION_STORAGE_KEY, snapshot())
+    const next = Promise.all([persistencePromise.catch(() => undefined), write]).then(() => undefined)
+    persistencePromise = next
+    void next.catch(() => undefined)
   }, 300)
 
   function saveState(immediate = false) {
@@ -151,11 +160,19 @@ export const useSessionStore = defineStore('session', () => {
     sessionSaver.schedule()
   }
 
+  async function waitForPersistence(): Promise<void> {
+    sessionSaver.flush()
+    await persistencePromise
+  }
+
   function resetForNamespace() {
     sessionSaver.cancel()
     sessionsByKey.value = {}
     activeKey.value = null
     currentView.value = 'home'
+    pendingRoundSync.value = false
+    roundSyncing.value = false
+    persistencePromise = Promise.resolve()
   }
 
   function putSession(setId: string, mode: PracticeMode, session: PracticeSession, activate = true) {
@@ -316,16 +333,29 @@ export const useSessionStore = defineStore('session', () => {
     return buildQuestionEntries(setId, items, mode, difficulty).length
   }
 
-  function globalStudyWords(): Map<string, StudyWord> {
+  async function loadRepositoryStudySnapshot(): Promise<{ questions: LibraryQuestion[], words: Map<string, StudyWord> }> {
+    await useLibraryStore().waitForPersistence()
+    const index = await getLibraryRepository().loadIndex()
     const words = new Map<string, StudyWord>()
-    const libraryStore = useLibraryStore()
-    for (const set of libraryStore.sets) {
-      for (const item of libraryStore.getSetStudyWords(set.id)) {
-        if (!words.has(item.id))
-          words.set(item.id, item)
+    const questions = new Map<string, LibraryQuestion>()
+    for await (const payloads of getLibraryRepository().streamSetPayloads(index.sets.map(set => set.id))) {
+      for (const payload of payloads.values()) {
+        const wordsByKey = new Map(payload.words.map(word => [normalizeWordKey(word.wordKey), word]))
+        for (const membership of payload.memberships) {
+          const word = wordsByKey.get(normalizeWordKey(membership.wordKey))
+          if (!word)
+            continue
+          const senseIds = new Set(membership.senseIds)
+          for (const sense of word.senses) {
+            if (senseIds.has(sense.id) && !words.has(sense.id))
+              words.set(sense.id, senseToStudyWord(word, sense))
+          }
+        }
+        for (const question of payload.questions)
+          questions.set(question.id, question)
       }
     }
-    return words
+    return { questions: Array.from(questions.values()), words }
   }
 
   function selectQuestionEntries(entries: SessionEntry[], mode: PracticeMode, target: number): SessionEntry[] {
@@ -335,10 +365,11 @@ export const useSessionStore = defineStore('session', () => {
     return takeBalancedQuestionEntries(pools, target, new Set(), new Set())
   }
 
-  function buildDailyQuestionEntries(): SessionEntry[] {
+  async function buildDailyQuestionEntriesFromRepository(): Promise<SessionEntry[]> {
     const learningStore = useLearningStore()
     const target = Math.max(0, learningStore.stats.dailyQuestionGoal - learningStore.stats.todayQuestionReviews)
-    return selectDailyQuestionEntries(useLibraryStore().questions, globalStudyWords(), new Set(learningStore.getTodayReviewedSenseIds()), target)
+    const snapshot = await loadRepositoryStudySnapshot()
+    return selectDailyQuestionEntries(snapshot.questions, snapshot.words, new Set(learningStore.getTodayReviewedSenseIds()), target)
   }
 
   function createSession(mode: PracticeMode, entries: SessionEntry[], review = false, sourceSetId: string | null = null): PracticeSession {
@@ -427,6 +458,7 @@ export const useSessionStore = defineStore('session', () => {
       if (confirmed) {
         activeKey.value = makeSessionKey(setId, mode)
         currentView.value = mode
+        pendingRoundSync.value = false
         saveState(true)
         await navigateToSession(mode, setId)
         window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -451,23 +483,41 @@ export const useSessionStore = defineStore('session', () => {
 
     putSession(setId, mode, createSession(mode, limitedEntries, Boolean(reviewEntries), setId))
     currentView.value = mode
+    pendingRoundSync.value = false
     saveState(true)
     await navigateToSession(mode, setId)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   async function startDailyQuestionRound(reviewEntries: SessionEntry[] | null = null) {
-    const entries = reviewEntries
-      ? expandReadingReviewEntries(reviewEntries, readingGroupsForItems(useLibraryStore().questions, Array.from(globalStudyWords().values())))
-      : buildDailyQuestionEntries()
+    let entries: SessionEntry[]
+    if (reviewEntries) {
+      if (reviewEntries.some(entry => entry.readingPackId)) {
+        const snapshot = await loadRepositoryStudySnapshot()
+        entries = expandReadingReviewEntries(reviewEntries, readingGroupsForItems(snapshot.questions, Array.from(snapshot.words.values())))
+      }
+      else {
+        entries = reviewEntries
+      }
+    }
+    else {
+      entries = await buildDailyQuestionEntriesFromRepository()
+    }
     if (!entries.length)
       return false
     putSession('daily', 'quiz', createSession('quiz', entries, Boolean(reviewEntries), 'daily'))
     currentView.value = 'quiz'
+    pendingRoundSync.value = false
     saveState(true)
     await navigateToSession('quiz', 'daily')
     window.scrollTo({ top: 0, behavior: 'smooth' })
     return true
+  }
+
+  function startDailyQuestionRoundSafely(reviewEntries: SessionEntry[] | null = null) {
+    void startDailyQuestionRound(reviewEntries).catch(() => {
+      useUIStore().showToast(t('sync.errorPersistence'))
+    })
   }
 
   function handlePracticeCountChange(value: string | number, total: number) {
@@ -500,9 +550,32 @@ export const useSessionStore = defineStore('session', () => {
     }
   }
 
-  function submitCurrentRound() {
-    if (!currentSession.value || currentSession.value.status === 'completed')
+  async function syncCompletedRound(): Promise<boolean> {
+    if (roundSyncing.value)
+      return false
+    roundSyncing.value = true
+    try {
+      const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
+      const synced = await syncAfterLocalCommit()
+      if (synced) {
+        pendingRoundSync.value = false
+        finishRound()
+      }
+      return synced
+    }
+    finally {
+      roundSyncing.value = false
+    }
+  }
+
+  async function submitCurrentRound(): Promise<void> {
+    if (!currentSession.value)
       return
+    if (currentSession.value.status === 'completed') {
+      if (pendingRoundSync.value)
+        await syncCompletedRound()
+      return
+    }
 
     const records = currentSession.value.entries.map((entry, index) => buildQuizRecord(entry, currentSession.value!.drafts[index] ?? null))
 
@@ -528,27 +601,34 @@ export const useSessionStore = defineStore('session', () => {
     const learningStore = useLearningStore()
     learningStore.recordQuestionResults(questionResults)
     learningStore.completePracticeSession()
-    finishRound()
+    pendingRoundSync.value = true
+    saveState(true)
+    await syncCompletedRound()
   }
 
   function finishRound() {
     if (currentSession.value)
       currentSession.value.status = 'completed'
+    pendingRoundSync.value = false
     currentView.value = 'result'
     saveState(true)
     router.push({ name: 'result' })
   }
 
-  function advanceToNext() {
+  async function advanceToNext(): Promise<void> {
     if (!currentSession.value)
       return
+    if (currentSession.value.status === 'completed') {
+      await submitCurrentRound()
+      return
+    }
     const nextIndex = currentSession.value.index + 1
     if (nextIndex < currentSession.value.entries.length) {
       currentSession.value.index = nextIndex
       saveState(true)
     }
     else {
-      submitCurrentRound()
+      await submitCurrentRound()
     }
   }
 
@@ -581,7 +661,7 @@ export const useSessionStore = defineStore('session', () => {
     if (activeKey.value)
       removeSessionKey(activeKey.value)
     if (resultSummary.value.mode === 'quiz' && sourceSetId === 'daily')
-      void startDailyQuestionRound()
+      startDailyQuestionRoundSafely()
     else
       void startRound(resultSummary.value.mode, sourceSetId ?? setsStore.activeSet!.id)
   }
@@ -591,7 +671,7 @@ export const useSessionStore = defineStore('session', () => {
     if (!resultSummary.value || (currentSession.value?.sourceSetId !== 'daily' && !setsStore.activeSet))
       return
     if (currentSession.value?.sourceSetId === 'daily') {
-      void startDailyQuestionRound()
+      startDailyQuestionRoundSafely()
       return
     }
     const nextMode = nextPracticeMode(resultSummary.value.mode)
@@ -603,7 +683,7 @@ export const useSessionStore = defineStore('session', () => {
     if (!currentSession.value?.wrongEntries.length)
       return
     if (currentSession.value.sourceSetId === 'daily')
-      void startDailyQuestionRound(currentSession.value.wrongEntries)
+      startDailyQuestionRoundSafely(currentSession.value.wrongEntries)
     else if (setsStore.activeSet)
       void startRound(currentSession.value.mode, setsStore.activeSet.id, currentSession.value.wrongEntries)
   }
@@ -618,7 +698,7 @@ export const useSessionStore = defineStore('session', () => {
       return
 
     if (session.sourceSetId === 'daily')
-      void startDailyQuestionRound(markedEntries)
+      startDailyQuestionRoundSafely(markedEntries)
     else
       void startRound(session.mode, session.sourceSetId, markedEntries)
   }
@@ -658,6 +738,8 @@ export const useSessionStore = defineStore('session', () => {
     activeKey,
     currentSession,
     currentView,
+    pendingRoundSync,
+    roundSyncing,
     sessionEntries,
     totalItems,
     currentIndex,
@@ -667,6 +749,7 @@ export const useSessionStore = defineStore('session', () => {
     resultSummary,
     resultRows,
     saveState,
+    waitForPersistence,
     resetForNamespace,
     loadState,
     clearStudyProgress,

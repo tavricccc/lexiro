@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import type { LibrarySet, VocabFolder } from '@/types'
+import type { LibrarySet, LibrarySetSummary, VocabFolder } from '@/types'
 import { ArrowRight, Ellipsis, Flame, Folder, FolderOpen, PencilLine, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { buildFolderOptions } from '@/lib/folders'
-import { useLearningStore } from '@/stores/learning'
-import { useLibraryStore } from '@/stores/library'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -14,6 +12,13 @@ import Menu from './ui/popover/Menu.vue'
 
 const props = defineProps<{
   set: LibrarySet
+  summary?: LibrarySetSummary
+  metrics?: {
+    wordCount: number
+    dueCount: number
+    learnedCount: number
+    weakCount: number
+  }
   active?: boolean
   folders?: VocabFolder[]
 }>()
@@ -26,17 +31,12 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
-const learningStore = useLearningStore()
-const libraryStore = useLibraryStore()
 const menuOpen = ref(false)
 
-const wordCount = computed(() => libraryStore.getSetStudyWords(props.set.id).length)
-const dueCount = computed(() => learningStore.getDueCount(props.set.id))
-const learnedCount = computed(() => learningStore.getLearnedCount(props.set.id))
-const weakCount = computed(() => libraryStore.getSetStudyWords(props.set.id).filter((item) => {
-  const card = learningStore.getCardProgress(item.id)
-  return Boolean(card && card.reviewCount >= 2 && card.correctCount / card.reviewCount < 0.6)
-}).length)
+const wordCount = computed(() => props.metrics?.wordCount ?? props.summary?.senseCount ?? 0)
+const dueCount = computed(() => props.metrics?.dueCount ?? 0)
+const learnedCount = computed(() => props.metrics?.learnedCount ?? 0)
+const weakCount = computed(() => props.metrics?.weakCount ?? 0)
 const folderOptions = computed(() => buildFolderOptions(props.folders ?? []))
 
 function editSet() {

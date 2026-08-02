@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick, ref } from 'vue'
-import { AI_SETTINGS_KEY, LEARNING_STORAGE_KEY } from '@/constants'
+import { AI_SETTINGS_KEY, LEARNING_STORAGE_KEY, LIBRARY_SYNC_PENDING_STORAGE_KEY } from '@/constants'
 import { loadAiSettings } from '@/lib/ai-provider'
 import { loadCloudOutbox } from '@/lib/cloud-sync-outbox-storage'
 import { canonicalHash } from '@/lib/hash'
@@ -13,9 +13,11 @@ import { useLearningStore } from '@/stores/learning'
 import { useLibraryStore } from '@/stores/library'
 
 const mockedCloud = vi.hoisted(() => ({
-  authCallbacks: [] as Array<(user: { uid: string, displayName: string, email: string, photoURL: string }) => Promise<void>>,
+  authCallbacks: [] as Array<(user: { uid: string, displayName: string, email: string, photoURL: string } | null) => Promise<void>>,
   remoteSettings: null as Record<string, unknown> | null,
   transactionSets: [] as unknown[],
+  transactionDocuments: new Map<string, unknown>(),
+  libraryBatchCommits: 0,
   runTransaction: vi.fn(),
   serverSnapshotsEnabled: true,
 }))
@@ -53,7 +55,10 @@ vi.mock('firebase/auth', () => ({
 vi.mock('firebase/firestore', () => ({
   collection: vi.fn((...segments: unknown[]) => ({ kind: 'collection', path: segments.join('/') })),
   doc: vi.fn((...segments: unknown[]) => ({ kind: 'document', path: segments.join('/') })),
+  documentId: vi.fn(() => '__name__'),
+  getDocFromServer: vi.fn(async () => ({ exists: () => false, data: () => undefined })),
   getDocsFromServer: vi.fn(async () => ({ docs: [] })),
+  limit: vi.fn((value: number) => ({ kind: 'limit', value })),
   onSnapshot: vi.fn((reference, optionsOrCallback, callbackOrError) => {
     const callback = typeof optionsOrCallback === 'function' ? optionsOrCallback : callbackOrError
     if (reference.kind === 'collection') {
@@ -82,7 +87,15 @@ vi.mock('firebase/firestore', () => ({
     }
     return vi.fn()
   }),
+  orderBy: vi.fn((field: unknown) => ({ kind: 'orderBy', field })),
+  query: vi.fn((...parts: unknown[]) => ({ kind: 'query', parts })),
   runTransaction: mockedCloud.runTransaction,
+  startAfter: vi.fn((cursor: unknown) => ({ kind: 'startAfter', cursor })),
+  writeBatch: vi.fn(() => ({
+    set: vi.fn(),
+    delete: vi.fn(),
+    commit: vi.fn(async () => { mockedCloud.libraryBatchCommits += 1 }),
+  })),
 }))
 
 describe('cloud sync baseline rebase', () => {
@@ -90,6 +103,8 @@ describe('cloud sync baseline rebase', () => {
     setActivePinia(createPinia())
     mockedCloud.authCallbacks.length = 0
     mockedCloud.transactionSets.length = 0
+    mockedCloud.transactionDocuments.clear()
+    mockedCloud.libraryBatchCommits = 0
     mockedCloud.serverSnapshotsEnabled = true
     mockedCloud.remoteSettings = {
       enabled: true,
@@ -103,9 +118,19 @@ describe('cloud sync baseline rebase', () => {
     mockedCloud.runTransaction.mockReset()
     mockedCloud.runTransaction.mockImplementation(async (_db: unknown, callback: (transaction: unknown) => Promise<unknown>) => {
       const transaction = {
-        get: async () => ({ exists: () => true, data: () => mockedCloud.remoteSettings }),
-        set: vi.fn((...args: unknown[]) => mockedCloud.transactionSets.push(args)),
-        delete: vi.fn(),
+        get: async (reference: { path?: string }) => reference.path?.endsWith('/settings/ai')
+          ? { exists: () => true, data: () => mockedCloud.remoteSettings }
+          : (() => {
+              const data = mockedCloud.transactionDocuments.get(reference.path ?? '')
+              return { exists: () => data !== undefined, data: () => data }
+            })(),
+        set: vi.fn((reference: { path?: string }, payload: unknown) => {
+          mockedCloud.transactionSets.push([reference, payload])
+          mockedCloud.transactionDocuments.set(reference.path ?? '', payload)
+        }),
+        delete: vi.fn((reference: { path?: string }) => {
+          mockedCloud.transactionDocuments.delete(reference.path ?? '')
+        }),
       }
       return callback(transaction)
     })
@@ -205,6 +230,8 @@ describe('cloud sync baseline rebase', () => {
     const cloudStore = useCloudSyncStore()
     await cloudStore.init()
     await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+    await vi.waitFor(() => expect(cloudStore.status).toBe('synced'))
+    await vi.waitFor(() => expect(cloudStore.appReady).toBe(true))
 
     const learningStore = useLearningStore()
     expect(learningStore.stats.xp).toBe(0)
@@ -223,6 +250,7 @@ describe('cloud sync baseline rebase', () => {
     })
     setStorageNamespace('guest')
     mockedCloud.remoteSettings = null
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
 
     const cloudStore = useCloudSyncStore()
     await cloudStore.init()
@@ -230,5 +258,165 @@ describe('cloud sync baseline rebase', () => {
 
     expect(loadAiSettings().enabled).toBe(false)
     expect(loadAiSettings().model).toBe('gpt-4o-mini')
+  })
+
+  it('does not restart cloud writes after choosing to continue offline', async () => {
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+
+    mockedCloud.runTransaction.mockClear()
+    cloudStore.continueOffline()
+
+    expect(cloudStore.status).toBe('offline')
+    expect(await cloudStore.syncNow()).toBe(true)
+    expect(mockedCloud.runTransaction).not.toHaveBeenCalled()
+  })
+
+  it('uploads repository-only Library pending work after reconnect', async () => {
+    setStorageNamespace('cloud-user')
+    await saveToStorage(LIBRARY_SYNC_PENDING_STORAGE_KEY, { pending: true })
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
+    setStorageNamespace('guest')
+    mockedCloud.remoteSettings = null
+
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+
+    await vi.waitFor(() => expect(mockedCloud.libraryBatchCommits).toBeGreaterThan(0))
+    expect(cloudStore.pendingWrites).toBe(0)
+    setStorageNamespace('cloud-user')
+    expect((await loadFromStorage(LIBRARY_SYNC_PENDING_STORAGE_KEY)).value).toBe('')
+  })
+
+  it('keeps a learning edit made during upload in the outbox', async () => {
+    vi.useFakeTimers()
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
+
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+    await vi.waitFor(() => expect(cloudStore.status).toBe('synced'))
+    await vi.waitFor(() => expect(cloudStore.appReady).toBe(true))
+
+    const learningStore = useLearningStore()
+    learningStore.replaceStats({ ...learningStore.stats, xp: 1 })
+    await nextTick()
+    expect((await loadCloudOutbox('cloud-user')).some(entry => entry.recordKey === 'stats:summary')).toBe(true)
+
+    let releaseTransaction: (() => void) | undefined
+    mockedCloud.runTransaction.mockImplementationOnce(async (_db: unknown, callback: (transaction: unknown) => Promise<unknown>) => new Promise((resolve, reject) => {
+      releaseTransaction = () => {
+        void callback({
+          get: async () => ({ exists: () => false, data: () => undefined }),
+          set: vi.fn((reference: { path?: string }, payload: unknown) => mockedCloud.transactionDocuments.set(reference.path ?? '', payload)),
+          delete: vi.fn(),
+        }).then(resolve, reject)
+      }
+    }))
+
+    const upload = cloudStore.flushLearning()
+    await vi.waitFor(() => expect(releaseTransaction).toBeTypeOf('function'))
+    learningStore.replaceStats({ ...learningStore.stats, xp: 2 })
+    await nextTick()
+    await nextTick()
+    expect(learningStore.stats.xp).toBe(2)
+    expect((await loadCloudOutbox('cloud-user')).find(entry => entry.recordKey === 'stats:summary')?.payload).toMatchObject({ xp: 2 })
+    releaseTransaction?.()
+    await upload
+    await nextTick()
+
+    const outbox = await loadCloudOutbox('cloud-user')
+    expect(outbox).toContainEqual(expect.objectContaining({
+      domain: 'learning',
+      recordKey: 'stats:summary',
+      payload: expect.objectContaining({ xp: 2 }),
+    }))
+    vi.clearAllTimers()
+  })
+
+  it('keeps a Library edit made during manifest publication in the outbox', async () => {
+    vi.useFakeTimers()
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
+
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+    await vi.waitFor(() => expect(cloudStore.status).toBe('synced'))
+
+    const libraryStore = useLibraryStore()
+    const firstSenseId = buildSenseId('first', 'n.', '第一個')
+    libraryStore.createSetWithContent(
+      'First set',
+      undefined,
+      [{ wordKey: 'first', word: 'first', senses: [{ id: firstSenseId, pos: 'n.', meaningZh: '第一個', examples: [] }], updatedAt: '2026-08-02T00:00:00.000Z' }],
+      [{ wordKey: 'first', senseIds: [firstSenseId] }],
+    )
+    await nextTick()
+    await libraryStore.waitForPersistence()
+
+    let releaseTransaction: (() => void) | undefined
+    mockedCloud.runTransaction.mockImplementationOnce(async (_db: unknown, callback: (transaction: unknown) => Promise<unknown>) => new Promise((resolve, reject) => {
+      releaseTransaction = () => {
+        void callback({
+          get: async () => ({ exists: () => false, data: () => undefined }),
+          set: vi.fn((reference: { path?: string }, payload: unknown) => mockedCloud.transactionDocuments.set(reference.path ?? '', payload)),
+          delete: vi.fn(),
+        }).then(resolve, reject)
+      }
+    }))
+
+    const upload = cloudStore.flushAll()
+    await vi.waitFor(() => expect(releaseTransaction).toBeTypeOf('function'))
+    const secondSenseId = buildSenseId('second', 'n.', '第二個')
+    const secondSet = libraryStore.createSetWithContent(
+      'Second set',
+      undefined,
+      [{ wordKey: 'second', word: 'second', senses: [{ id: secondSenseId, pos: 'n.', meaningZh: '第二個', examples: [] }], updatedAt: '2026-08-02T00:00:00.000Z' }],
+      [{ wordKey: 'second', senseIds: [secondSenseId] }],
+    )
+    await nextTick()
+    await libraryStore.waitForPersistence()
+    releaseTransaction?.()
+    await upload
+
+    const outbox = await loadCloudOutbox('cloud-user')
+    expect(outbox.some(entry => entry.domain === 'library' && entry.recordKey === `set:${secondSet.id}`)).toBe(true)
+    vi.clearAllTimers()
+  })
+
+  it('does not let a stale account transition overwrite the newer namespace', async () => {
+    mockedCloud.serverSnapshotsEnabled = false
+    await saveToStorage('lexiro_sync_outbox:account-a', [{
+      id: 'account-a-pending',
+      domain: 'settings',
+      recordKey: 'settings:ai',
+      baseHash: '',
+      payload: {
+        enabled: true,
+        provider: 'openai',
+        baseUrl: '',
+        model: 'account-a-model',
+        batchSize: 10,
+      },
+      attempts: 0,
+      createdAt: '2026-08-02T00:00:00.000Z',
+      updatedAt: '2026-08-02T00:00:00.000Z',
+    }])
+    await saveToStorage('lexiro_sync_outbox:account-b', [])
+
+    const pinia = createPinia()
+    setActivePinia(pinia)
+    const cloudStore = useCloudSyncStore(pinia)
+    await cloudStore.init()
+    const accountA = mockedCloud.authCallbacks[0]({ uid: 'account-a', displayName: 'A', email: 'a@example.com', photoURL: '' })
+    const accountB = mockedCloud.authCallbacks[0]({ uid: 'account-b', displayName: 'B', email: 'b@example.com', photoURL: '' })
+    await Promise.all([accountA, accountB])
+
+    expect(cloudStore.user?.uid).toBe('account-b')
+    expect(cloudStore.pendingWrites).toBe(0)
+    setStorageNamespace('account-b')
+    expect((await loadFromStorage(LIBRARY_SYNC_PENDING_STORAGE_KEY)).value).not.toBe('{"pending":true}')
   })
 })

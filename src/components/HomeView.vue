@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ArrowRight, BookOpen, Flame, Library, Plus, RotateCcw, Sparkles, Target } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 import { useLearningStore } from '@/stores/learning'
+import { useLibraryStore } from '@/stores/library'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
+import { useUIStore } from '@/stores/ui'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Progress from './ui/progress/Progress.vue'
@@ -14,19 +17,34 @@ const router = useRouter()
 const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
 const learningStore = useLearningStore()
+const libraryStore = useLibraryStore()
 const { sets, hasSets, totalWordCount } = storeToRefs(setsStore)
 const { stats, todayProgress, memoryAccuracy } = storeToRefs(learningStore)
+const uiStore = useUIStore()
+const { t } = useI18n()
+const reviewPreparing = ref(false)
 
 const dailyReviewCount = computed(() => learningStore.getDailyReviewEntries().length)
+const canStartDailyReview = computed(() => dailyReviewCount.value > 0 || (!libraryStore.fullyHydrated && hasSets.value))
 const activeSessions = computed(() => sets.value.filter(set => sessionStore.isSetInProgress(set.id)).slice(0, 3))
 const recentSets = computed(() => [...sets.value].sort((a, b) => (b.updatedAt ?? '').localeCompare(a.updatedAt ?? '')).slice(0, 3))
 
-function startReview() {
-  if (learningStore.startDailyReview())
-    router.push({ name: 'review' })
+async function startReview() {
+  reviewPreparing.value = true
+  try {
+    if (await learningStore.startDailyReviewFromRepository())
+      await router.push({ name: 'review' })
+  }
+  catch {
+    uiStore.showToast(t('sync.errorPersistence'))
+  }
+  finally {
+    reviewPreparing.value = false
+  }
 }
 
 async function continueSet(setId: string) {
+  await libraryStore.hydrateSet(setId)
   const mode = sessionStore.getInProgressModes(setId)[0]
   if (mode && await sessionStore.resumeSession(setId, mode))
     return
@@ -86,7 +104,7 @@ async function continueSet(setId: string) {
                 {{ stats.todayMemoryReviews }}<span class="text-xl opacity-50">/{{ stats.dailyWordGoal }}</span>
               </p>
               <p class="mt-2 text-sm font-semibold opacity-70">
-                {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : $t('learning.noDue') }}
+                {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : canStartDailyReview ? $t('home.reviewPreparing') : $t('learning.noDue') }}
               </p>
               <p class="mt-1 text-xs font-semibold opacity-60">
                 {{ $t('learning.todayQuestions') }}：{{ stats.todayQuestionReviews }}/{{ stats.dailyQuestionGoal }}
@@ -97,9 +115,9 @@ async function continueSet(setId: string) {
             </div>
           </div>
           <Progress :model-value="todayProgress" class="mt-7 bg-white/15 [&>div]:bg-white dark:bg-ink-200/30 dark:[&>div]:bg-ink-950" />
-          <Button v-if="dailyReviewCount" variant="secondary" class="mt-6 gap-2" @click="startReview">
+          <Button v-if="canStartDailyReview" variant="secondary" class="mt-6 gap-2" :loading="reviewPreparing" @click="startReview">
             <RotateCcw class="h-4 w-4" />
-            {{ $t('learning.startToday', { count: dailyReviewCount }) }}
+            {{ dailyReviewCount ? $t('learning.startToday', { count: dailyReviewCount }) : $t('home.startReview') }}
             <ArrowRight class="h-4 w-4" />
           </Button>
           <RouterLink v-else to="/library" class="mt-6 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">

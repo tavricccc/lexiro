@@ -1,4 +1,4 @@
-import type { VocabFolder } from '@/types'
+import type { LibrarySetSummary, VocabFolder } from '@/types'
 import { i18n } from '@/lib/i18n'
 import { useLibraryStore } from '@/stores/library'
 import { useSessionStore } from '@/stores/session'
@@ -13,7 +13,10 @@ export async function confirmAndRemoveFolder(folder: VocabFolder): Promise<boole
   const uiStore = useUIStore()
   const folderIds = libraryStore.getFolderTreeIds(folder.id)
   const setIds = libraryStore.sets.filter(set => folderIds.has(set.folderId)).map(set => set.id)
-  const wordCount = setIds.reduce((total, setId) => total + libraryStore.getSetStudyWords(setId).length, 0)
+  const wordCount = setIds.reduce((total, setId) => {
+    const set = libraryStore.getSet(setId) as LibrarySetSummary | null
+    return total + (set?.senseCount ?? libraryStore.getSetStudyWords(setId).length)
+  }, 0)
   const confirmed = await uiStore.showConfirm(
     t('library.folderDeleteTitle'),
     t('library.folderDeleteMessage', { folder: folder.name, folders: folderIds.size, sets: setIds.length, words: wordCount }),

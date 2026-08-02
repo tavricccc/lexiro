@@ -5,23 +5,30 @@ import { useRoute, useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import AppSidebar from '@/components/AppSidebar.vue'
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue'
+import DirtyFormDialog from '@/components/dialogs/DirtyFormDialog.vue'
 import GuestDataDialog from '@/components/dialogs/GuestDataDialog.vue'
 import ImportDialog from '@/components/dialogs/ImportDialog.vue'
 import TransferDialog from '@/components/dialogs/TransferDialog.vue'
 import VersionUpdateDialog from '@/components/dialogs/VersionUpdateDialog.vue'
 import MobileBottomTabs from '@/components/MobileBottomTabs.vue'
+import SyncProgress from '@/components/ui/sync-progress/SyncProgress.vue'
 import Toast from '@/components/ui/toast/Toast.vue'
+import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useSessionStore } from '@/stores/session'
 import { useUIStore } from '@/stores/ui'
 
 const uiStore = useUIStore()
 const sessionStore = useSessionStore()
+const cloudStore = useCloudSyncStore()
 const router = useRouter()
 const route = useRoute()
-const { sidebarExpanded } = storeToRefs(uiStore)
+const { sidebarExpanded, hasDirtyForms } = storeToRefs(uiStore)
+const { appReady, configured, progress, pendingWrites } = storeToRefs(cloudStore)
 const { setVersionUpdateAvailable, setVersionUpdatePending, setVersionUpdateReady } = uiStore
 
 const isSessionRoute = computed(() => ['quiz', 'fillBlank', 'reading', 'review', 'result'].includes(String(route.name)))
+const showSyncGate = computed(() => configured.value && !appReady.value)
+const showInlineSync = computed(() => !showSyncGate.value && ['preparing', 'downloading', 'reconciling', 'uploading', 'verifying', 'offline', 'error'].includes(progress.value.phase))
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
@@ -71,8 +78,12 @@ function handleVisibilityChange() {
   }
 }
 
-function handleBeforeUnload() {
+function handleBeforeUnload(event: BeforeUnloadEvent) {
   sessionStore.saveState(true)
+  if (hasDirtyForms.value) {
+    event.preventDefault()
+    event.returnValue = ''
+  }
 }
 
 onMounted(() => {
@@ -117,7 +128,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']">
+  <SyncProgress v-if="showSyncGate" fullscreen :state="progress" allow-offline @retry="cloudStore.retryConnection" @continue-offline="cloudStore.continueOffline" />
+  <div v-else class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']">
     <AppSidebar v-if="!isSessionRoute" />
     <MobileBottomTabs v-if="!isSessionRoute" />
     <AppHeader v-if="isSessionRoute" />
@@ -135,9 +147,18 @@ onUnmounted(() => {
     <ImportDialog />
     <TransferDialog />
     <ConfirmDialog />
+    <DirtyFormDialog />
     <GuestDataDialog />
     <VersionUpdateDialog />
 
     <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" :action-label="uiStore.toastActionLabel" @action="uiStore.triggerToastAction" />
+    <Transition name="toast-slide">
+      <div v-if="showInlineSync" class="fixed bottom-4 left-4 z-[80] w-[min(26rem,calc(100vw-2rem))]">
+        <SyncProgress :state="progress" allow-offline @retry="cloudStore.retryConnection" @continue-offline="cloudStore.continueOffline" />
+      </div>
+    </Transition>
+    <div v-if="pendingWrites > 0" class="fixed right-4 top-4 z-[80] rounded-full border border-amber-300/70 bg-amber-50/95 px-3 py-2 text-xs font-black text-amber-800 shadow-soft backdrop-blur dark:border-amber-700/60 dark:bg-amber-950/90 dark:text-amber-100" role="status">
+      {{ $t('sync.pending', { count: pendingWrites }) }}
+    </div>
   </div>
 </template>

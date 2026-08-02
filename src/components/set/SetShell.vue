@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft, Ellipsis, Folder, PencilLine, Play, Sparkles, Trash2 } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { useLibraryStore } from '@/stores/library'
@@ -34,11 +34,18 @@ const tabs = [
 ] as const
 const menuOpen = ref(false)
 const practiceOpen = ref(false)
+let hydrationController: AbortController | null = null
 
 watch(setId, (value) => {
-  if (value)
+  hydrationController?.abort()
+  if (value) {
     setsStore.ensureActiveSet(value)
+    hydrationController = new AbortController()
+    void libraryStore.hydrateSet(value, hydrationController.signal).catch(() => undefined)
+  }
 }, { immediate: true })
+
+onUnmounted(() => hydrationController?.abort())
 
 function openPractice() {
   menuOpen.value = false
@@ -55,8 +62,8 @@ async function deleteSet() {
   menuOpen.value = false
   if (!activeSet.value)
     return
-  await setsStore.requestDelete(activeSet.value.id)
-  if (!libraryStore.getSet(setId.value))
+  const synced = await setsStore.requestDelete(activeSet.value.id)
+  if (synced && !libraryStore.getSet(setId.value))
     await router.push({ name: 'library' })
 }
 

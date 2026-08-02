@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Download, FileArchive, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import { useBackupStore } from '@/stores/backup'
 import { useUIStore } from '@/stores/ui'
@@ -29,22 +30,63 @@ const {
 } = storeToRefs(backupStore)
 const { resetZipImportState, handleZipImportChange, applyZipImport, exportFullBackup } = backupStore
 const transferDirty = computed(() => transferOpen.value && Boolean(zipImportName.value || zipImportPreview.value || zipImportError.value || zipImportKind.value))
+const appliedLocally = ref(false)
+const saving = ref(false)
+const transferFolderDraft = ref(transferFolderId.value)
 
-function saveTransfer(): boolean {
-  return !transferDirty.value || applyZipImport()
+watch(transferOpen, (open) => {
+  if (open)
+    transferFolderDraft.value = transferFolderId.value
+})
+
+async function saveTransfer(): Promise<boolean> {
+  if (saving.value)
+    return false
+  if (!transferDirty.value)
+    return true
+  saving.value = true
+  try {
+    if (!appliedLocally.value) {
+      const applied = await applyZipImport(transferFolderDraft.value)
+      if (!applied)
+        return false
+      appliedLocally.value = true
+    }
+    const synced = await syncAfterLocalCommit()
+    if (!synced)
+      return false
+    appliedLocally.value = false
+    transferFolderId.value = transferFolderDraft.value
+    resetZipImportState()
+    closeTransfer()
+    return true
+  }
+  finally {
+    saving.value = false
+  }
 }
 
 function discardTransfer() {
+  appliedLocally.value = false
   resetZipImportState()
   closeTransfer()
 }
 
-useDirtyForm({
+async function handleTransferFileChange(event: Event) {
+  appliedLocally.value = false
+  await handleZipImportChange(event)
+}
+
+const dirtyForm = useDirtyForm({
   id: 'backup-transfer',
   isDirty: () => transferDirty.value,
   save: saveTransfer,
   discard: discardTransfer,
 })
+
+async function requestTransferClose() {
+  await dirtyForm.requestClose()
+}
 </script>
 
 <template>
@@ -53,7 +95,8 @@ useDirtyForm({
     :title="$t('backup.title')"
     :description="$t('backup.description')"
     width-class="max-w-3xl"
-    @close="closeTransfer"
+    :busy="saving"
+    @close="requestTransferClose"
   >
     <div class="space-y-6">
       <SectionPanel>
@@ -69,19 +112,20 @@ useDirtyForm({
               </p>
             </div>
           </div>
-          <Button variant="outline" size="sm" :disabled="!zipImportPreview && !zipImportError && !zipImportName" @click="resetZipImportState">
+          <Button variant="outline" size="sm" :disabled="saving || appliedLocally || (!zipImportPreview && !zipImportError && !zipImportName)" @click="resetZipImportState">
             {{ $t('backup.clear') }}
           </Button>
         </div>
 
         <div class="mt-4 space-y-2">
-          <FolderPicker v-model="transferFolderId" :title="$t('backup.importFolderLabel')" />
+          <FolderPicker v-model="transferFolderDraft" :title="$t('backup.importFolderLabel')" :disabled="saving || appliedLocally" />
           <input
             :key="zipImportInputKey"
             type="file"
             accept=".zip"
             class="block w-full text-sm text-ink-500 file:mr-4 file:rounded-xl file:border-0 file:bg-ink-950 file:px-4 file:py-2.5 file:text-xs file:font-semibold file:text-white file:transition-all hover:file:opacity-90"
-            @change="handleZipImportChange"
+            :disabled="saving || appliedLocally"
+            @change="handleTransferFileChange"
           >
           <p v-if="zipImportName" class="text-xs font-bold text-ink-400">
             {{ $t('backup.selectedFile', { name: zipImportName }) }}
@@ -95,7 +139,7 @@ useDirtyForm({
         </StatusMessage>
         <ImportSettings :sets="zipImportSets" :kind="zipImportKind" :full-backup="zipImportFullBackup" :full-preview="zipImportFullPreview" />
         <div class="mt-4 flex justify-end border-t border-ink-200/50 pt-4 dark:border-ink-800/50">
-          <Button variant="default" :disabled="!zipImportKind" class="gap-2" @click="applyZipImport">
+          <Button variant="default" :disabled="saving || !zipImportKind" :loading="saving" class="gap-2" @click="saveTransfer">
             <Upload class="h-4 w-4" />
             {{ $t('backup.applyImport') }}
           </Button>

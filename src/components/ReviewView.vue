@@ -6,7 +6,9 @@ import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useLearningStore } from '@/stores/learning'
+import { useLibraryStore } from '@/stores/library'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
@@ -18,12 +20,13 @@ import Progress from './ui/progress/Progress.vue'
 const route = useRoute()
 const router = useRouter()
 const learningStore = useLearningStore()
+const libraryStore = useLibraryStore()
 const sessionStore = useSessionStore()
 const setsStore = useSetsStore()
 const uiStore = useUIStore()
 const { t } = useI18n()
 const { currentReviewEntry, reviewSetId, reviewIndex, reviewTotal, reviewProgress, reviewAnswered, reviewContext } = storeToRefs(learningStore)
-const { answerCurrent, nextReview, startReview, startDailyReview, clearReview } = learningStore
+const { answerCurrent, nextReview, startReview, startDailyReviewFromRepository, clearReview } = learningStore
 const { startDailyQuestionRound } = sessionStore
 const routeSetId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : null)
 const activeSet = computed(() => {
@@ -48,17 +51,25 @@ function rate(rating: ReviewRating) {
   answerCurrent(rating)
 }
 
-function next() {
+async function next() {
   const wasDaily = reviewContext.value === 'daily'
   if (nextReview())
     return
   clearReview()
+  if (!await syncAfterLocalCommit()) {
+    uiStore.showToast(t('sync.error'))
+    void router.push({ name: 'home' })
+    return
+  }
   if (wasDaily) {
     void startDailyQuestionRound().then((started) => {
       if (!started) {
         uiStore.showToast(t('learning.noDailyQuestions'))
         router.push({ name: 'home' })
       }
+    }).catch(() => {
+      uiStore.showToast(t('sync.errorPersistence'))
+      void router.push({ name: 'home' })
     })
     return
   }
@@ -79,9 +90,11 @@ function onKeydown(event: KeyboardEvent) {
   }
 }
 
-onMounted(() => {
+async function initializeReview() {
+  if (routeSetId.value)
+    await libraryStore.hydrateSet(routeSetId.value)
   if (!activeSet.value || reviewSetId.value !== routeSetId.value || !currentReviewEntry.value) {
-    const started = routeSetId.value ? startReview(routeSetId.value) : startDailyReview()
+    const started = routeSetId.value ? startReview(routeSetId.value) : await startDailyReviewFromRepository()
     if (!started) {
       uiStore.showToast(t('learning.noDue'))
       router.replace({ name: 'home' })
@@ -89,6 +102,13 @@ onMounted(() => {
     }
   }
   window.addEventListener('keydown', onKeydown)
+}
+
+onMounted(() => {
+  void initializeReview().catch(() => {
+    uiStore.showToast(t('sync.errorPersistence'))
+    void router.replace({ name: 'home' })
+  })
 })
 
 onUnmounted(() => window.removeEventListener('keydown', onKeydown))

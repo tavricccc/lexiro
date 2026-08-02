@@ -2,6 +2,7 @@
 import type { SenseEditValue, WordSense } from '@/types'
 import { Plus, Trash2 } from 'lucide-vue-next'
 import { computed, ref, useId, watch } from 'vue'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
@@ -29,10 +30,12 @@ const emit = defineEmits<{
 const idPrefix = useId().replace(/:/g, '-')
 const draft = ref<SenseEditValue>({ pos: '', meaningZh: '', examples: [] })
 const initialDraftSnapshot = ref('')
+const pendingLocalCommit = ref(false)
 const saving = ref(false)
 const isBusy = computed(() => props.busy || saving.value)
 
 function syncDraft() {
+  pendingLocalCommit.value = false
   draft.value = props.sense
     ? { pos: props.sense.pos, meaningZh: props.sense.meaningZh, examples: [...props.sense.examples] }
     : { pos: '', meaningZh: '', examples: [] }
@@ -40,7 +43,7 @@ function syncDraft() {
 }
 
 watch(() => [props.open, props.sense?.id] as const, ([open]) => {
-  if (open)
+  if (open && !pendingLocalCommit.value)
     syncDraft()
 }, { immediate: true })
 
@@ -56,7 +59,7 @@ function draftSnapshot(): string {
   return JSON.stringify(draft.value)
 }
 
-const draftDirty = computed(() => props.open && initialDraftSnapshot.value !== draftSnapshot())
+const draftDirty = computed(() => props.open && (pendingLocalCommit.value || initialDraftSnapshot.value !== draftSnapshot()))
 
 async function save(): Promise<boolean> {
   if (isBusy.value)
@@ -68,11 +71,27 @@ async function save(): Promise<boolean> {
   }
   saving.value = true
   try {
+    if (pendingLocalCommit.value) {
+      const synced = await syncAfterLocalCommit()
+      if (!synced)
+        return false
+      pendingLocalCommit.value = false
+      initialDraftSnapshot.value = draftSnapshot()
+      emit('close')
+      return true
+    }
     const saved = props.saveHandler
       ? await props.saveHandler(value)
       : (emit('save', value), true)
-    if (saved)
+    if (saved) {
+      pendingLocalCommit.value = true
+      const synced = await syncAfterLocalCommit()
+      if (!synced)
+        return false
+      pendingLocalCommit.value = false
       initialDraftSnapshot.value = draftSnapshot()
+      emit('close')
+    }
     return saved
   }
   catch {
@@ -83,12 +102,18 @@ async function save(): Promise<boolean> {
   }
 }
 
-useDirtyForm({
+const dirtyForm = useDirtyForm({
   id: `sense-editor-${idPrefix}`,
   isDirty: () => draftDirty.value,
   save,
   discard: () => emit('close'),
 })
+
+async function close() {
+  if (isBusy.value)
+    return
+  await dirtyForm.requestClose()
+}
 </script>
 
 <template>
@@ -100,58 +125,60 @@ useDirtyForm({
     presentation="responsive-sheet"
     :busy="isBusy"
     :initial-focus="`#${idPrefix}-pos`"
-    @close="emit('close')"
+    @close="close"
   >
-    <div class="space-y-5">
-      <StatusMessage v-if="error" tone="error">
-        {{ error }}
-      </StatusMessage>
+    <fieldset :disabled="pendingLocalCommit" class="contents">
+      <div class="space-y-5">
+        <StatusMessage v-if="error" tone="error">
+          {{ error }}
+        </StatusMessage>
 
-      <div class="grid gap-4 sm:grid-cols-2">
-        <label class="block text-sm font-bold" :for="`${idPrefix}-pos`">
-          {{ $t('editor.pos') }}
-          <Input :id="`${idPrefix}-pos`" v-model="draft.pos" class="mt-2" />
-        </label>
-        <label class="block text-sm font-bold" :for="`${idPrefix}-meaning`">
-          {{ $t('editor.meaning') }}
-          <Input :id="`${idPrefix}-meaning`" v-model="draft.meaningZh" class="mt-2" />
-        </label>
-      </div>
-
-      <section class="space-y-3" :aria-labelledby="`${idPrefix}-examples-title`">
-        <div class="flex items-center justify-between gap-3">
-          <h3 :id="`${idPrefix}-examples-title`" class="text-sm font-black">
-            {{ $t('editor.examples') }}
-          </h3>
-          <Button variant="outline" class="min-h-11 gap-2" :disabled="isBusy" @click="addExample">
-            <Plus class="h-4 w-4" />{{ $t('editor.addExample') }}
-          </Button>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block text-sm font-bold" :for="`${idPrefix}-pos`">
+            {{ $t('editor.pos') }}
+            <Input :id="`${idPrefix}-pos`" v-model="draft.pos" class="mt-2" />
+          </label>
+          <label class="block text-sm font-bold" :for="`${idPrefix}-meaning`">
+            {{ $t('editor.meaning') }}
+            <Input :id="`${idPrefix}-meaning`" v-model="draft.meaningZh" class="mt-2" />
+          </label>
         </div>
 
-        <div v-if="draft.examples.length" class="space-y-3">
-          <div v-for="(_, index) in draft.examples" :key="index" class="flex items-start gap-2">
-            <Textarea v-model="draft.examples[index]" :rows="2" class="min-w-0 flex-1" :placeholder="$t('editor.examplePlaceholder')" />
-            <Button
-              variant="ghost"
-              size="icon"
-              class="h-11 w-11 shrink-0 text-red-500"
-              :disabled="isBusy"
-              :aria-label="$t('editor.removeExample')"
-              @click="removeExample(index)"
-            >
-              <Trash2 class="h-4 w-4" />
+        <section class="space-y-3" :aria-labelledby="`${idPrefix}-examples-title`">
+          <div class="flex items-center justify-between gap-3">
+            <h3 :id="`${idPrefix}-examples-title`" class="text-sm font-black">
+              {{ $t('editor.examples') }}
+            </h3>
+            <Button variant="outline" class="min-h-11 gap-2" :disabled="isBusy" @click="addExample">
+              <Plus class="h-4 w-4" />{{ $t('editor.addExample') }}
             </Button>
           </div>
-        </div>
-        <p v-else class="rounded-2xl border border-dashed border-ink-200/70 px-4 py-5 text-sm font-semibold text-ink-400 dark:border-ink-200/20">
-          {{ $t('editor.noExamples') }}
-        </p>
-      </section>
-    </div>
+
+          <div v-if="draft.examples.length" class="space-y-3">
+            <div v-for="(_, index) in draft.examples" :key="index" class="flex items-start gap-2">
+              <Textarea v-model="draft.examples[index]" :rows="2" class="min-w-0 flex-1" :placeholder="$t('editor.examplePlaceholder')" />
+              <Button
+                variant="ghost"
+                size="icon"
+                class="h-11 w-11 shrink-0 text-red-500"
+                :disabled="isBusy"
+                :aria-label="$t('editor.removeExample')"
+                @click="removeExample(index)"
+              >
+                <Trash2 class="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+          <p v-else class="rounded-2xl border border-dashed border-ink-200/70 px-4 py-5 text-sm font-semibold text-ink-400 dark:border-ink-200/20">
+            {{ $t('editor.noExamples') }}
+          </p>
+        </section>
+      </div>
+    </fieldset>
 
     <template #footer>
       <DialogFooter>
-        <Button variant="outline" :disabled="isBusy" @click="emit('close')">
+        <Button variant="outline" :disabled="isBusy" @click="close">
           {{ $t('editor.cancel') }}
         </Button>
         <Button :loading="isBusy" @click="save">

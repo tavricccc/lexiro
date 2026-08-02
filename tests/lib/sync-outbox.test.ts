@@ -1,5 +1,6 @@
+import type { LibraryState } from '@/types'
 import { describe, expect, it } from 'vitest'
-import { hasOutboxDomain, incrementOutboxAttempts, isSyncOutboxEntry, queueRecordChanges, rebaseQueuedRecords, removeOutboxDomain } from '@/lib/sync-outbox'
+import { hasOutboxDomain, incrementOutboxAttempts, isSyncOutboxEntry, libraryRecords, queueRecordChanges, rebaseQueuedRecords, removeOutboxDomain } from '@/lib/sync-outbox'
 
 describe('sync outbox', () => {
   it('accepts the membership record generated when a set is created', () => {
@@ -14,6 +15,17 @@ describe('sync outbox', () => {
 
     expect(entries).toHaveLength(1)
     expect(isSyncOutboxEntry(entries[0])).toBe(true)
+  })
+
+  it('ignores index-only set summary fields when comparing sync records', () => {
+    const baseSet = { id: 'set-1', setName: 'A', folderId: '__uncategorized__', createdAt: 'created', updatedAt: 'updated' }
+    const baseState: LibraryState = { version: 1, words: {}, sets: [baseSet], memberships: {}, folders: [], questions: [], updatedAt: 'updated' }
+    const summaryState: LibraryState = {
+      ...baseState,
+      sets: [{ ...baseSet, wordCount: 2, senseCount: 3, questionCount: 1 } as LibraryState['sets'][number]],
+    }
+
+    expect(queueRecordChanges('library', libraryRecords(baseState), libraryRecords(baseState), libraryRecords(summaryState), [])).toEqual([])
   })
 
   it('queues record-level create, update, and delete changes', () => {
@@ -67,7 +79,7 @@ describe('sync outbox', () => {
     expect(reverted).toEqual([])
   })
 
-  it('rebases non-conflicting records and sends conflicts to Cloud', () => {
+  it('keeps unsynced local records ahead of conflicting Cloud values', () => {
     const entries = queueRecordChanges(
       'library',
       { 'word:a': { value: 1 }, 'word:b': { value: 1 } },
@@ -82,8 +94,8 @@ describe('sync outbox', () => {
     )
 
     expect(result.records['word:a']).toEqual({ value: 2 })
-    expect(result.records['word:b']).toEqual({ value: 9 })
-    expect(result.accepted.map(entry => entry.recordKey)).toEqual(['word:a'])
+    expect(result.records['word:b']).toEqual({ value: 2 })
+    expect(result.accepted.map(entry => entry.recordKey)).toEqual(['word:a', 'word:b'])
     expect(result.conflicted.map(entry => entry.recordKey)).toEqual(['word:b'])
   })
 

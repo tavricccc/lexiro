@@ -4,6 +4,7 @@ import { Pencil, Plus, Search, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { createVocabularyDifficultyOptions, createVocabularyQuestionTypeOptions, questionTypeLabel } from '@/lib/question-options'
 import { useLibraryStore } from '@/stores/library'
 import { useUIStore } from '@/stores/ui'
@@ -77,8 +78,10 @@ function editQuestion(question: LibraryQuestion) {
 
 async function deleteQuestion(question: LibraryQuestion) {
   const names = libraryStore.getQuestionSetIds(question).map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、')
-  if (await uiStore.showConfirm(t('vocabulary.deleteQuestionTitle'), t('vocabulary.deleteQuestionMessage', { sets: names })))
-    libraryStore.removeQuestion(question.id)
+  if (await uiStore.showConfirm(t('vocabulary.deleteQuestionTitle'), t('vocabulary.deleteQuestionMessage', { sets: names }))) {
+    if (libraryStore.removeQuestion(question.id))
+      await syncAfterLocalCommit()
+  }
 }
 </script>
 

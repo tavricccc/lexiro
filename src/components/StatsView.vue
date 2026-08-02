@@ -1,46 +1,82 @@
 <script setup lang="ts">
 import { BarChart3, Brain, CalendarDays, Flame, Gauge, ListChecks, Target, TrendingUp } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { isDue } from '@/lib/fsrs'
+import { getLibraryRepository } from '@/lib/library-repository'
 import { useLearningStore } from '@/stores/learning'
-import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
+import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Select from './ui/select/Select.vue'
 
 const learningStore = useLearningStore()
-const libraryStore = useLibraryStore()
 const setsStore = useSetsStore()
 const { t } = useI18n()
 const { stats } = storeToRefs(learningStore)
 const { sets } = storeToRefs(setsStore)
 const selectedSetId = ref('')
+const studySenseIdsBySet = ref<Record<string, string[]>>({})
+const studyIndexReady = ref(false)
+const studyIndexError = ref(false)
+let studyIndexRequest = 0
+
+async function loadStudyIndex() {
+  const request = ++studyIndexRequest
+  studyIndexReady.value = false
+  studyIndexError.value = false
+  try {
+    const next = new Map<string, Set<string>>()
+    for await (const batch of getLibraryRepository().streamMemberships()) {
+      if (request !== studyIndexRequest)
+        return
+      for (const entry of batch) {
+        const senseIds = next.get(entry.setId) ?? new Set<string>()
+        for (const membership of entry.memberships)
+          membership.senseIds.forEach(senseId => senseIds.add(senseId))
+        next.set(entry.setId, senseIds)
+      }
+    }
+    if (request !== studyIndexRequest)
+      return
+    studySenseIdsBySet.value = Object.fromEntries(Array.from(next.entries()).map(([setId, senseIds]) => [setId, Array.from(senseIds)]))
+    studyIndexReady.value = true
+  }
+  catch {
+    if (request === studyIndexRequest)
+      studyIndexError.value = true
+  }
+}
+
+onMounted(() => void loadStudyIndex())
+onUnmounted(() => {
+  studyIndexRequest += 1
+})
 
 const setOptions = computed(() => [
   { value: '', label: t('stats.allSets') },
   ...sets.value.map(set => ({ value: set.id, label: set.setName })),
 ])
 const scopedSets = computed(() => selectedSetId.value ? sets.value.filter(set => set.id === selectedSetId.value) : sets.value)
+const uniqueSenseIds = computed(() => Array.from(new Set(scopedSets.value.flatMap(set => studySenseIdsBySet.value[set.id] ?? []))))
 
 const setStats = computed(() => scopedSets.value
   .map(set => ({
     set,
-    learned: learningStore.getLearnedCount(set.id),
-    due: learningStore.getDueCount(set.id),
+    learned: (studySenseIdsBySet.value[set.id] ?? []).filter(senseId => (learningStore.getCardProgress(senseId)?.reviewCount ?? 0) > 0).length,
+    due: (studySenseIdsBySet.value[set.id] ?? []).filter((senseId) => {
+      const card = learningStore.getCardProgress(senseId)
+      return Boolean(card && isDue(card))
+    }).length,
     total: setsStore.getSetWordCount(set.id),
   }))
   .sort((a, b) => b.learned - a.learned))
 
-const uniqueSenseItems = computed(() => Array.from(new Map(
-  scopedSets.value.flatMap(set => libraryStore.getSetStudyWords(set.id)).map(item => [item.id, item]),
-).values()))
-
 const fsrsStatuses = computed(() => {
   const counts = { unlearned: 0, learning: 0, scheduled: 0, due: 0 }
-  for (const item of uniqueSenseItems.value) {
-    const card = learningStore.getCardProgress(item.id)
+  for (const senseId of uniqueSenseIds.value) {
+    const card = learningStore.getCardProgress(senseId)
     if (!card)
       counts.unlearned += 1
     else if (card.state === 1 || card.state === 3)
@@ -54,15 +90,15 @@ const fsrsStatuses = computed(() => {
 })
 
 const memoryStats = computed(() => {
-  const total = uniqueSenseItems.value.reduce((sum, item) => sum + (learningStore.getCardProgress(item.id)?.reviewCount ?? 0), 0)
-  const correct = uniqueSenseItems.value.reduce((sum, item) => sum + (learningStore.getCardProgress(item.id)?.correctCount ?? 0), 0)
+  const total = uniqueSenseIds.value.reduce((sum, senseId) => sum + (learningStore.getCardProgress(senseId)?.reviewCount ?? 0), 0)
+  const correct = uniqueSenseIds.value.reduce((sum, senseId) => sum + (learningStore.getCardProgress(senseId)?.correctCount ?? 0), 0)
   return { total, correct, accuracy: total ? Math.round((correct / total) * 100) : 0 }
 })
 
 const scopedQuestionStats = computed(() => {
   const result = Object.fromEntries(Object.keys(stats.value.questionStats).map(key => [key, { total: 0, correct: 0, retry: 0 }])) as typeof stats.value.questionStats
-  for (const item of uniqueSenseItems.value) {
-    const senseStats = stats.value.questionStatsBySense[item.id]
+  for (const senseId of uniqueSenseIds.value) {
+    const senseStats = stats.value.questionStatsBySense[senseId]
     if (!senseStats)
       continue
     for (const [key, value] of Object.entries(senseStats)) {
@@ -116,6 +152,18 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
         {{ $t('stats.openLibrary') }}
       </RouterLink>
     </Card>
+
+    <template v-else-if="!studyIndexReady">
+      <Card class="mx-auto max-w-xl p-8 text-center" role="status" aria-live="polite">
+        <BarChart3 class="mx-auto h-8 w-8 text-accent-primary" />
+        <h2 class="mt-4 text-xl font-black">
+          {{ studyIndexError ? $t('stats.loadingFailed') : $t('stats.loading') }}
+        </h2>
+        <Button v-if="studyIndexError" class="mt-5" @click="loadStudyIndex">
+          {{ $t('sync.retry') }}
+        </Button>
+      </Card>
+    </template>
 
     <template v-else>
       <Card class="p-4">
@@ -174,7 +222,7 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
                 {{ $t('stats.memoryTitle') }}
               </h2>
             </div>
-            <span class="text-xs font-bold text-ink-400">{{ $t('stats.senseCount', { count: uniqueSenseItems.length }) }}</span>
+            <span class="text-xs font-bold text-ink-400">{{ $t('stats.senseCount', { count: uniqueSenseIds.length }) }}</span>
           </div>
           <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
             <div class="surface-inset p-3">

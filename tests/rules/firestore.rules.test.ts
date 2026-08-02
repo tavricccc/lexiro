@@ -5,7 +5,7 @@ import { assertFails, assertSucceeds, initializeTestEnvironment } from '@firebas
 import { afterAll, beforeAll, describe, it } from 'vitest'
 import { defaultAiSettings, getShareableAiSettings } from '@/lib/ai-provider'
 import { parseCloudLibrarySnapshot } from '@/lib/cloud-sync-remote'
-import { buildLibraryChunks, buildLibraryManifest, validateLibraryChunk, validateLibraryManifest } from '@/lib/cloud-sync-schema'
+import { buildV5LibraryChunks, buildV5LibraryManifest, validateV5LibraryChunk, validateV5LibraryManifest } from '@/lib/cloud-sync-schema'
 import { prepareFirestoreData } from '@/lib/firestore-data'
 import { createDefaultStats } from '@/lib/learning-defaults'
 
@@ -33,32 +33,31 @@ rulesDescribe('Firestore security rules', () => {
     await assertFails(db.doc('users/alice/library/sets-001').get())
   })
 
-  it('isolates users and protects ownerId on canonical library chunks', async () => {
+  it('isolates users and protects ownerId on canonical v5 library chunks', async () => {
     const alice = testEnv.authenticatedContext('alice').firestore()
     const bob = testEnv.authenticatedContext('bob').firestore()
     const payload = {
       ownerId: 'alice',
-      schemaVersion: 4,
-      chunkId: 'sets-001',
+      schemaVersion: 5,
+      chunkId: 'chunk-1234abcd',
       section: 'sets',
       items: [{ id: 'set-1', setName: 'Basics', folderId: 'folder-1', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }],
       checksum: 'abc123',
       updatedAt: new Date().toISOString(),
     }
 
-    await assertSucceeds(alice.doc('users/alice/library/sets-001').set(payload))
-    await assertFails(bob.doc('users/alice/library/sets-001').get())
-    await assertFails(alice.doc('users/alice/library/sets-001').update({ ownerId: 'bob' }))
+    await assertSucceeds(alice.doc('users/alice/library/chunk-1234abcd').set(payload))
+    await assertFails(bob.doc('users/alice/library/chunk-1234abcd').get())
+    await assertFails(alice.doc('users/alice/library/chunk-1234abcd').update({ ownerId: 'bob' }))
   })
 
   it('rejects unknown fields on canonical library chunks', async () => {
     const alice = testEnv.authenticatedContext('alice').firestore()
-    await assertFails(alice.doc('users/alice/library/sets-002').set({ ownerId: 'alice', schemaVersion: 4, chunkId: 'sets-002', section: 'sets', items: [], unexpected: true }))
+    await assertFails(alice.doc('users/alice/library/chunk-1234abcd').set({ ownerId: 'alice', schemaVersion: 5, chunkId: 'chunk-1234abcd', section: 'sets', items: [], unexpected: true }))
   })
 
-  it('allows the v3 library chunks and keeps them isolated', async () => {
+  it('rejects legacy v4 library writes while allowing authenticated reads', async () => {
     const alice = testEnv.authenticatedContext('alice').firestore()
-    const bob = testEnv.authenticatedContext('bob').firestore()
     const payload = {
       ownerId: 'alice',
       schemaVersion: 4,
@@ -69,15 +68,13 @@ rulesDescribe('Firestore security rules', () => {
       items: [],
     }
 
-    await assertSucceeds(alice.doc('users/alice/library/words-001').set(payload))
-    await assertFails(bob.doc('users/alice/library/words-001').get())
-    await assertFails(alice.doc('users/alice/library/words-001').update({ schemaVersion: 2 }))
+    await assertFails(alice.doc('users/alice/library/words-001').set(payload))
   })
 
   it('accepts every production chunk for a newly created local set', async () => {
     const alice = testEnv.authenticatedContext('alice').firestore()
     const timestamp = '2026-08-02T00:00:00.000Z'
-    const chunks = buildLibraryChunks('alice', {
+    const chunks = buildV5LibraryChunks('alice', {
       version: 1,
       words: {
         apple: { wordKey: 'apple', word: 'apple', senses: [{ id: 'sense-1', pos: 'n.', meaningZh: '蘋果', examples: [] }], updatedAt: timestamp },
@@ -89,7 +86,7 @@ rulesDescribe('Firestore security rules', () => {
       updatedAt: timestamp,
     })
 
-    const manifest = buildLibraryManifest('alice', chunks, timestamp)
+    const manifest = buildV5LibraryManifest('alice', chunks, timestamp)
     await assertSucceeds(alice.runTransaction(async (transaction) => {
       for (const chunk of chunks)
         transaction.set(alice.doc(`users/alice/library/${chunk.chunkId}`), prepareFirestoreData(chunk))
@@ -99,11 +96,11 @@ rulesDescribe('Firestore security rules', () => {
     for (const chunk of chunks) {
       const reference = alice.doc(`users/alice/library/${chunk.chunkId}`)
       const snapshot = await assertSucceeds(reference.get())
-      validateLibraryChunk(snapshot.data(), 'alice', chunk.chunkId)
+      validateV5LibraryChunk(snapshot.data(), 'alice', chunk.chunkId)
     }
     const manifestReference = alice.doc('users/alice/library/manifest')
     const manifestSnapshot = await assertSucceeds(manifestReference.get())
-    validateLibraryManifest(manifestSnapshot.data(), 'alice')
+    validateV5LibraryManifest(manifestSnapshot.data(), 'alice')
     const collectionSnapshot = await assertSucceeds(alice.collection('users/alice/library').get())
     const parsed = parseCloudLibrarySnapshot(collectionSnapshot as never, 'alice')
     if (parsed.library.folders[0].parentId !== undefined)

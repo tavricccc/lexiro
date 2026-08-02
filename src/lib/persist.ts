@@ -11,6 +11,7 @@ const NAMESPACE_SCOPED_KEYS = new Set([
   'lexiro_session_data',
   'lexiro_learning_data',
   'lexiro_library_data',
+  'lexiro_library_sync_pending',
   'lexiro_ai_settings',
   'lexiro_ui_data',
 ])

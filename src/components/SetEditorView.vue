@@ -2,11 +2,13 @@
 import type { EditorItem, WordDraft } from '@/types'
 import { Plus, Sparkles } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { createEditorItem } from '@/lib/validation'
+import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import AiWordImportPanel from './dialogs/AiWordImportPanel.vue'
 import EditorItemCard from './dialogs/EditorItemCard.vue'
@@ -18,6 +20,7 @@ import StatusMessage from './ui/status-message/StatusMessage.vue'
 
 const route = useRoute()
 const router = useRouter()
+const libraryStore = useLibraryStore()
 const setsStore = useSetsStore()
 const { setEditorName, setEditorFolderId, setEditorDraftItems, setEditorError } = storeToRefs(setsStore)
 const { prepareSetEditor, closeSetEditor, removeEditorItem, addEditorItem, saveSetEditor, openImport, setSetEditorFolderId, setSetEditorName, updateSetEditorItem } = setsStore
@@ -28,6 +31,7 @@ const mode = computed(() => route.name === 'set-create' ? 'create' : 'edit')
 const setId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : '')
 const editorInputMode = ref<EditorInputMode>('manual')
 const initialEditorSnapshot = ref('')
+const pendingLocalCommit = ref(false)
 const selectedFolderId = computed({
   get: () => setEditorFolderId.value ?? UNCATEGORIZED_FOLDER_ID,
   set: (value: string) => setSetEditorFolderId(value),
@@ -38,15 +42,17 @@ const editorName = computed({
 })
 const isValidEditRoute = computed(() => mode.value === 'create' || setsStore.sets.some(set => set.id === setId.value))
 
-function prepare() {
+async function prepare() {
   const set = setsStore.sets.find(item => item.id === setId.value) ?? null
+  if (set && mode.value === 'edit')
+    await libraryStore.hydrateSet(set.id)
   prepareSetEditor(mode.value, set)
   editorInputMode.value = 'manual'
+  pendingLocalCommit.value = false
   initialEditorSnapshot.value = editorSnapshot()
 }
 
-watch([mode, setId], prepare, { immediate: true })
-onMounted(prepare)
+watch([mode, setId], () => void prepare(), { immediate: true })
 
 function updateEditorItem(itemIndex: number, item: EditorItem) {
   updateSetEditorItem(itemIndex, item)
@@ -58,10 +64,6 @@ function applyAiItems(items: WordDraft[]) {
   editorInputMode.value = 'manual'
 }
 
-function close() {
-  closeSetEditor()
-}
-
 function editorSnapshot(): string {
   return JSON.stringify({
     name: setEditorName.value,
@@ -70,21 +72,43 @@ function editorSnapshot(): string {
   })
 }
 
-const editorDirty = computed(() => initialEditorSnapshot.value !== editorSnapshot())
+const editorDirty = computed(() => pendingLocalCommit.value || initialEditorSnapshot.value !== editorSnapshot())
 
-function save(): boolean {
-  const saved = saveSetEditor()
-  if (saved)
-    initialEditorSnapshot.value = editorSnapshot()
-  return saved
+async function finishCommittedSave(targetSetId: string): Promise<boolean> {
+  const synced = await syncAfterLocalCommit()
+  if (!synced)
+    return false
+  pendingLocalCommit.value = false
+  initialEditorSnapshot.value = editorSnapshot()
+  await router.push({ name: 'set-overview', params: { setId: targetSetId } })
+  return true
 }
 
-useDirtyForm({
+async function save(): Promise<boolean> {
+  if (pendingLocalCommit.value) {
+    const targetSetId = mode.value === 'create' ? setsStore.activeSetId : setId.value
+    return targetSetId ? finishCommittedSave(targetSetId) : false
+  }
+  const saved = saveSetEditor({ navigate: false })
+  if (!saved)
+    return false
+  const targetSetId = mode.value === 'create' ? setsStore.activeSetId : setId.value
+  if (!targetSetId)
+    return false
+  pendingLocalCommit.value = true
+  return finishCommittedSave(targetSetId)
+}
+
+const dirtyForm = useDirtyForm({
   id: 'set-editor',
   isDirty: () => editorDirty.value,
   save,
-  discard: close,
+  discard: closeSetEditor,
 })
+
+function close() {
+  void dirtyForm.requestClose()
+}
 </script>
 
 <template>
@@ -106,50 +130,52 @@ useDirtyForm({
       </Button>
     </div>
 
-    <Card class="space-y-5 p-5 sm:p-6">
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="space-y-1.5">
-          <label class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.setName') }}</label>
-          <Input v-model="editorName" :placeholder="$t('editor.setName')" />
+    <fieldset :disabled="pendingLocalCommit" class="contents">
+      <Card class="space-y-5 p-5 sm:p-6">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.setName') }}</label>
+            <Input v-model="editorName" :placeholder="$t('editor.setName')" />
+          </div>
+          <FolderPicker v-model="selectedFolderId" :title="$t('editor.folder')" :disabled="pendingLocalCommit" />
         </div>
-        <FolderPicker v-model="selectedFolderId" :title="$t('editor.folder')" />
-      </div>
-    </Card>
+      </Card>
 
-    <Card class="space-y-4 p-5 sm:p-6">
-      <div class="flex items-center justify-between gap-3">
-        <div>
-          <h2 class="text-lg font-black">
-            {{ $t('editor.wordsTitle') }}
-          </h2>
-          <p class="mt-1 text-xs font-semibold text-ink-500">
-            {{ $t('editor.wordsDescription') }}
-          </p>
+      <Card class="space-y-4 p-5 sm:p-6">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-black">
+              {{ $t('editor.wordsTitle') }}
+            </h2>
+            <p class="mt-1 text-xs font-semibold text-ink-500">
+              {{ $t('editor.wordsDescription') }}
+            </p>
+          </div>
+          <div class="flex flex-wrap justify-end gap-2">
+            <Button v-if="mode === 'create' && editorInputMode === 'manual'" variant="outline" class="gap-2" @click="editorInputMode = 'ai'">
+              <Sparkles class="h-4 w-4" />{{ $t('editor.switchToAiImport') }}
+            </Button>
+            <Button v-if="mode === 'create' && editorInputMode === 'ai'" variant="ghost" class="gap-2" @click="editorInputMode = 'manual'">
+              {{ $t('editor.switchToManual') }}
+            </Button>
+            <Button v-if="editorInputMode === 'manual'" variant="outline" class="gap-2" @click="addEditorItem">
+              <Plus class="h-4 w-4" />{{ $t('editor.addWord') }}
+            </Button>
+          </div>
         </div>
-        <div class="flex flex-wrap justify-end gap-2">
-          <Button v-if="mode === 'create' && editorInputMode === 'manual'" variant="outline" class="gap-2" @click="editorInputMode = 'ai'">
-            <Sparkles class="h-4 w-4" />{{ $t('editor.switchToAiImport') }}
-          </Button>
-          <Button v-if="mode === 'create' && editorInputMode === 'ai'" variant="ghost" class="gap-2" @click="editorInputMode = 'manual'">
-            {{ $t('editor.switchToManual') }}
-          </Button>
-          <Button v-if="editorInputMode === 'manual'" variant="outline" class="gap-2" @click="addEditorItem">
-            <Plus class="h-4 w-4" />{{ $t('editor.addWord') }}
-          </Button>
+        <AiWordImportPanel v-if="editorInputMode === 'ai'" @apply="applyAiItems" />
+        <div v-else class="space-y-4">
+          <EditorItemCard
+            v-for="(item, itemIndex) in setEditorDraftItems"
+            :key="item.id"
+            :item="item"
+            :item-index="itemIndex"
+            @remove="removeEditorItem(itemIndex)"
+            @update:item="updateEditorItem(itemIndex, $event)"
+          />
         </div>
-      </div>
-      <AiWordImportPanel v-if="editorInputMode === 'ai'" @apply="applyAiItems" />
-      <div v-else class="space-y-4">
-        <EditorItemCard
-          v-for="(item, itemIndex) in setEditorDraftItems"
-          :key="item.id"
-          :item="item"
-          :item-index="itemIndex"
-          @remove="removeEditorItem(itemIndex)"
-          @update:item="updateEditorItem(itemIndex, $event)"
-        />
-      </div>
-    </Card>
+      </Card>
+    </fieldset>
 
     <StatusMessage v-if="setEditorError" tone="error">
       {{ setEditorError }}

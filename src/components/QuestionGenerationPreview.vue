@@ -11,9 +11,12 @@ import Input from './ui/input/Input.vue'
 import Select from './ui/select/Select.vue'
 import Textarea from './ui/textarea/Textarea.vue'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   questions: LibraryQuestion[]
-}>()
+  locked?: boolean
+}>(), {
+  locked: false,
+})
 
 const emit = defineEmits<{
   import: [questions: LibraryQuestion[]]
@@ -46,16 +49,22 @@ function cloneQuestion(question: LibraryQuestion): LibraryQuestion {
 }
 
 function removeQuestion(index: number) {
+  if (props.locked)
+    return
   editableQuestions.value.splice(index, 1)
 }
 
 function updateAnswerIndex(question: { answerIndex: number, options: string[] }, value: string) {
+  if (props.locked)
+    return
   const answerIndex = parseAnswerIndex(value, question.options.length)
   if (answerIndex !== null)
     question.answerIndex = answerIndex
 }
 
 function updateDifficulty(question: LibraryQuestion, value: string) {
+  if (props.locked)
+    return
   const difficulty = parseQuestionDifficulty(value)
   if (difficulty)
     question.difficulty = difficulty
@@ -88,38 +97,38 @@ function importQuestions() {
           <span class="text-xs font-bold text-ink-500 dark:text-ink-400">
             {{ t('library.questionNumber', { number: questionIndex + 1 }) }} · {{ questionTypeLabel(question, t) }}
           </span>
-          <Button size="icon" variant="ghost" :aria-label="t('library.removeQuestion')" @click="removeQuestion(questionIndex)">
+          <Button size="icon" variant="ghost" :disabled="locked" :aria-label="t('library.removeQuestion')" @click="removeQuestion(questionIndex)">
             <Trash2 class="h-4 w-4 text-red-500" />
           </Button>
         </div>
 
         <template v-if="question.kind === 'reading'">
           <div class="space-y-2">
-            <Input v-model="question.title" :placeholder="t('library.readingTitle')" />
-            <Textarea v-model="question.passage" :rows="4" :placeholder="t('library.readingPassage')" />
-            <Select :model-value="String(question.difficulty)" :options="difficultyOptions" :placeholder="t('library.questionDifficulty')" @update:model-value="updateDifficulty(question, $event)" />
+            <Input v-model="question.title" :disabled="locked" :placeholder="t('library.readingTitle')" />
+            <Textarea v-model="question.passage" :disabled="locked" :rows="4" :placeholder="t('library.readingPassage')" />
+            <Select :model-value="String(question.difficulty)" :disabled="locked" :options="difficultyOptions" :placeholder="t('library.questionDifficulty')" @update:model-value="updateDifficulty(question, $event)" />
           </div>
 
           <div class="mt-3 space-y-3 border-t border-ink-200/70 pt-3 dark:border-ink-800">
             <div v-for="child in question.questions" :key="child.id" class="space-y-2 rounded-xl bg-ink-50/80 p-3 dark:bg-ink-950/40">
-              <Input v-model="child.prompt" :placeholder="t('library.readingQuestionPrompt')" />
+              <Input v-model="child.prompt" :disabled="locked" :placeholder="t('library.readingQuestionPrompt')" />
               <div class="grid gap-2 sm:grid-cols-2">
-                <Input v-for="(_, optionIndex) in child.options" :key="optionIndex" v-model="child.options[optionIndex]" :placeholder="t('library.answerOption', { index: optionIndex + 1 })" />
+                <Input v-for="(_, optionIndex) in child.options" :key="optionIndex" v-model="child.options[optionIndex]" :disabled="locked" :placeholder="t('library.answerOption', { index: optionIndex + 1 })" />
               </div>
-              <Select :model-value="String(child.answerIndex)" :options="answerOptions(child.options)" :placeholder="t('library.correctAnswer')" @update:model-value="updateAnswerIndex(child, $event)" />
+              <Select :model-value="String(child.answerIndex)" :disabled="locked" :options="answerOptions(child.options)" :placeholder="t('library.correctAnswer')" @update:model-value="updateAnswerIndex(child, $event)" />
             </div>
           </div>
         </template>
 
         <template v-else>
           <div class="space-y-2">
-            <Textarea v-model="question.prompt" :rows="3" :placeholder="t('library.questionPrompt')" />
+            <Textarea v-model="question.prompt" :disabled="locked" :rows="3" :placeholder="t('library.questionPrompt')" />
             <div class="grid gap-2 sm:grid-cols-2">
-              <Input v-for="(_, optionIndex) in question.options" :key="optionIndex" v-model="question.options[optionIndex]" :placeholder="t('library.answerOption', { index: optionIndex + 1 })" />
+              <Input v-for="(_, optionIndex) in question.options" :key="optionIndex" v-model="question.options[optionIndex]" :disabled="locked" :placeholder="t('library.answerOption', { index: optionIndex + 1 })" />
             </div>
             <div class="grid gap-2 sm:grid-cols-2">
-              <Select :model-value="String(question.answerIndex)" :options="answerOptions(question.options)" :placeholder="t('library.correctAnswer')" @update:model-value="updateAnswerIndex(question, $event)" />
-              <Select :model-value="String(question.difficulty)" :options="difficultyOptions" :placeholder="t('library.questionDifficulty')" @update:model-value="updateDifficulty(question, $event)" />
+              <Select :model-value="String(question.answerIndex)" :disabled="locked" :options="answerOptions(question.options)" :placeholder="t('library.correctAnswer')" @update:model-value="updateAnswerIndex(question, $event)" />
+              <Select :model-value="String(question.difficulty)" :disabled="locked" :options="difficultyOptions" :placeholder="t('library.questionDifficulty')" @update:model-value="updateDifficulty(question, $event)" />
             </div>
           </div>
         </template>

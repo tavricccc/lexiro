@@ -69,7 +69,11 @@ describe('output file import dialog', () => {
 
     await new Promise(resolve => setTimeout(resolve, 20))
     expect(mounted.store.importError).toBe('')
-    expect(mounted.store.importPreview).toContain('vocab-001.json')
+    expect(mounted.store.sets).toHaveLength(0)
+    expect(document.body.textContent).toContain('vocab-001.json')
+    const applyButton = Array.from(document.body.querySelectorAll('button')).find(button => button.textContent?.includes('確認匯入'))
+    expect(applyButton).toBeDefined()
+    applyButton!.click()
     await vi.waitFor(() => expect(mounted.store.sets).toHaveLength(1))
     expect(mounted.store.sets[0].setName).toBe('vocab-001')
   })

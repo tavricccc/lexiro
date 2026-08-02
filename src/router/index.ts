@@ -1,5 +1,7 @@
+import { getActivePinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
+import { useUIStore } from '@/stores/ui'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -136,7 +138,20 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
+  const pinia = getActivePinia()
+  if (pinia) {
+    const uiStore = useUIStore(pinia)
+    if (uiStore.hasDirtyForms) {
+      const decision = await uiStore.showDirtyFormPrompt()
+      if (decision === 'cancel')
+        return false
+      if (decision === 'discard')
+        uiStore.discardDirtyForms()
+      if (decision === 'save' && !await uiStore.saveDirtyForms())
+        return false
+    }
+  }
   if (!to.meta.requiresSession)
     return true
   const sessionStore = useSessionStore()

@@ -3,6 +3,8 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { reviewCard } from '@/lib/fsrs'
 import { buildSenseId } from '@/lib/library'
+import { getLibraryRepository } from '@/lib/library-repository'
+import { setStorageNamespace } from '@/lib/persist'
 import { useLearningStore } from '@/stores/learning'
 import { useLibraryStore } from '@/stores/library'
 import { seedSet } from '../helpers/library'
@@ -378,5 +380,42 @@ describe('library shared word membership', () => {
 
     expect(() => libraryStore.updateSense('run', firstSenseId, { meaningZh: '經營' })).toThrow()
     expect(libraryStore.getWord('run')?.senses.map(sense => sense.id)).toEqual([firstSenseId, secondSenseId])
+  })
+
+  it('persists question deletion from a partially hydrated set without restoring it', async () => {
+    const namespace = `partial-question-${crypto.randomUUID()}`
+    setStorageNamespace(namespace)
+    const libraryStore = useLibraryStore()
+    const senseId = buildSenseId('delete', 'v.', '刪除')
+    const set = libraryStore.createSetWithContent(
+      'Question set',
+      undefined,
+      [{ wordKey: 'delete', word: 'delete', senses: [{ id: senseId, pos: 'v.', meaningZh: '刪除', examples: [] }], updatedAt: '2026-08-02T00:00:00.000Z' }],
+      [{ wordKey: 'delete', senseIds: [senseId] }],
+    )
+    libraryStore.importQuestions([{
+      id: 'partial-question',
+      fingerprint: 'partial-question-fingerprint',
+      kind: 'multipleChoice',
+      questionStyle: 'standard',
+      wordKey: 'delete',
+      senseId,
+      difficulty: 1,
+      prompt: 'Which word means delete?',
+      options: ['delete', 'keep', 'open', 'save'],
+      answerIndex: 0,
+      createdAt: '2026-08-02T00:00:00.000Z',
+      updatedAt: '2026-08-02T00:00:00.000Z',
+    }])
+    await libraryStore.waitForPersistence()
+
+    libraryStore.resetForNamespace()
+    await libraryStore.loadState()
+    expect(await libraryStore.hydrateSet(set.id)).toBe(true)
+    expect(libraryStore.removeQuestion('partial-question')).toBeTruthy()
+    await libraryStore.waitForPersistence()
+
+    expect((await getLibraryRepository(namespace).loadState()).questions).toEqual([])
+    setStorageNamespace('guest')
   })
 })

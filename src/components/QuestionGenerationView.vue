@@ -2,11 +2,13 @@
 import type { GeneratedQuestionDifficulty, GeneratedQuestionKind } from '@/lib/question-generation'
 import type { LibraryQuestion } from '@/types'
 import { ArrowLeft, Sparkles } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { extractJsonText, generateWithAi, loadAiSettings } from '@/lib/ai-provider'
 import { copyToClipboard } from '@/lib/clipboard'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { parseLibraryImport } from '@/lib/library-import'
 import { buildQuestionGenerationPrompt, filterQuestionsForWords, getGenerationWords, getQuestionSourceRefs, getSelectedGenerationWords, QUESTION_BATCH_SIZE, splitGenerationBatches } from '@/lib/question-generation'
 import { useLibraryStore } from '@/stores/library'
@@ -40,6 +42,14 @@ const generating = ref(false)
 const manualResponse = ref('')
 const waitingForManualResponse = ref(false)
 const aiSettings = ref(loadAiSettings())
+const initialDraftSnapshot = ref('')
+const pendingLocalCommit = ref(false)
+const pendingImportedCount = ref(0)
+
+onMounted(() => {
+  if (setId.value)
+    void libraryStore.hydrateSet(setId.value).catch(() => undefined)
+})
 
 const selectedWords = computed(() => getSelectedGenerationWords(availableWords.value, selectedKeys.value))
 const selectedSenseCount = computed(() => selectedWords.value.reduce((count, word) => count + word.senses.length, 0))
@@ -47,6 +57,13 @@ const selectedWordNames = computed(() => selectedWords.value.map(word => `${word
 const selectionLimit = computed(() => kind.value === 'reading' ? QUESTION_BATCH_SIZE : null)
 const usesApi = computed(() => aiSettings.value.enabled)
 const apiReady = computed(() => !usesApi.value || Boolean(aiSettings.value.apiKey.trim()))
+
+function draftSnapshot(): string {
+  return JSON.stringify({ query: query.value, selectedKeys: selectedKeys.value, kind: kind.value, difficulty: difficulty.value, generationStep: generationStep.value, preview: preview.value, manualResponse: manualResponse.value, waitingForManualResponse: waitingForManualResponse.value })
+}
+
+initialDraftSnapshot.value = draftSnapshot()
+const draftDirty = computed(() => pendingLocalCommit.value || initialDraftSnapshot.value !== draftSnapshot())
 
 function questionOptions() {
   return {
@@ -152,23 +169,52 @@ function parseManualResponse() {
   error.value = ''
 }
 
-function importPreview(questions: LibraryQuestion[] = preview.value) {
+async function importPreview(questions: LibraryQuestion[] = preview.value): Promise<boolean> {
+  if (pendingLocalCommit.value) {
+    const synced = await syncAfterLocalCommit()
+    if (!synced)
+      return false
+    pendingLocalCommit.value = false
+    initialDraftSnapshot.value = draftSnapshot()
+    uiStore.showToast(t('library.questionsImported', { count: pendingImportedCount.value }))
+    void router.back()
+    return true
+  }
   if (!questions.length)
-    return
+    return false
   const imported = libraryStore.importQuestions(questions)
   if (!imported) {
     error.value = t('library.aiResponseError')
-    return
+    return false
   }
+  pendingLocalCommit.value = true
+  pendingImportedCount.value = imported
+  const synced = await syncAfterLocalCommit()
+  if (!synced)
+    return false
+  pendingLocalCommit.value = false
+  initialDraftSnapshot.value = draftSnapshot()
   uiStore.showToast(t('library.questionsImported', { count: imported }))
   void router.back()
+  return true
+}
+
+const dirtyForm = useDirtyForm({
+  id: 'question-generation',
+  isDirty: () => draftDirty.value,
+  save: () => importPreview(),
+  discard: () => { void router.back() },
+})
+
+function goBack() {
+  void dirtyForm.requestClose()
 }
 </script>
 
 <template>
   <section v-if="set" class="space-y-6 text-left">
     <div>
-      <Button variant="ghost" class="mb-3 -ml-3 gap-2" @click="router.back()">
+      <Button variant="ghost" class="mb-3 -ml-3 gap-2" @click="goBack">
         <ArrowLeft class="h-4 w-4" />{{ $t('vocabulary.back') }}
       </Button>
       <h1 class="text-3xl font-black tracking-tight">
@@ -179,55 +225,59 @@ function importPreview(questions: LibraryQuestion[] = preview.value) {
       </p>
     </div>
 
-    <Card class="p-5 sm:p-6">
-      <QuestionWordSelector
-        v-model:kind="kind"
-        v-model:difficulty="difficulty"
-        v-model:query="query"
-        v-model:selected-keys="selectedKeys"
-        :step="generationStep"
-        :words="availableWords"
-        :selection-limit="selectionLimit"
-        @next="nextGenerationStep"
-        @back="previousGenerationStep"
-      />
-    </Card>
+    <fieldset :disabled="pendingLocalCommit" class="contents">
+      <Card class="p-5 sm:p-6">
+        <QuestionWordSelector
+          v-model:kind="kind"
+          v-model:difficulty="difficulty"
+          v-model:query="query"
+          v-model:selected-keys="selectedKeys"
+          :step="generationStep"
+          :words="availableWords"
+          :selection-limit="selectionLimit"
+          @next="nextGenerationStep"
+          @back="previousGenerationStep"
+        />
+      </Card>
+    </fieldset>
 
     <Card v-if="generationStep === 2" class="space-y-5 p-5 sm:p-6">
-      <div class="rounded-2xl bg-accent-primary/10 p-4">
-        <p class="text-sm font-bold text-accent-primary">
-          {{ $t('library.selectedSensesCount', { count: selectedSenseCount }) }}
-        </p>
-        <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">
-          {{ selectedWordNames || $t('library.selectWordsError') }}
-        </p>
-      </div>
-      <StatusMessage v-if="error" tone="error">
-        {{ error }}
-      </StatusMessage>
-
-      <div v-if="!waitingForManualResponse && !preview.length" class="flex flex-wrap items-center gap-2">
-        <Button :disabled="!apiReady" :loading="generating" @click="runAiAction">
-          <Sparkles class="mr-1 h-4 w-4" />{{ usesApi ? $t('library.generateSelected') : $t('library.copyPrompt') }}
-        </Button>
-      </div>
-      <p v-if="usesApi && !apiReady" class="text-xs text-ink-500 dark:text-ink-400">
-        {{ $t('library.apiGenerationUnavailable') }}
-      </p>
-
-      <div v-if="waitingForManualResponse" class="space-y-3">
-        <StatusMessage tone="info">
-          {{ $t('library.promptCopiedHint') }}
+      <fieldset :disabled="pendingLocalCommit" class="contents">
+        <div class="rounded-2xl bg-accent-primary/10 p-4">
+          <p class="text-sm font-bold text-accent-primary">
+            {{ $t('library.selectedSensesCount', { count: selectedSenseCount }) }}
+          </p>
+          <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">
+            {{ selectedWordNames || $t('library.selectWordsError') }}
+          </p>
+        </div>
+        <StatusMessage v-if="error" tone="error">
+          {{ error }}
         </StatusMessage>
-        <Textarea v-model="manualResponse" :rows="9" class="font-mono text-xs" :placeholder="$t('library.responsePlaceholder')" />
-        <Button variant="outline" @click="parseManualResponse">
-          {{ $t('library.parseResponse') }}
-        </Button>
-      </div>
 
-      <QuestionGenerationPreview :questions="preview" @import="importPreview" />
+        <div v-if="!waitingForManualResponse && !preview.length" class="flex flex-wrap items-center gap-2">
+          <Button :disabled="!apiReady" :loading="generating" @click="runAiAction">
+            <Sparkles class="mr-1 h-4 w-4" />{{ usesApi ? $t('library.generateSelected') : $t('library.copyPrompt') }}
+          </Button>
+        </div>
+        <p v-if="usesApi && !apiReady" class="text-xs text-ink-500 dark:text-ink-400">
+          {{ $t('library.apiGenerationUnavailable') }}
+        </p>
+
+        <div v-if="waitingForManualResponse" class="space-y-3">
+          <StatusMessage tone="info">
+            {{ $t('library.promptCopiedHint') }}
+          </StatusMessage>
+          <Textarea v-model="manualResponse" :rows="9" class="font-mono text-xs" :placeholder="$t('library.responsePlaceholder')" />
+          <Button variant="outline" @click="parseManualResponse">
+            {{ $t('library.parseResponse') }}
+          </Button>
+        </div>
+      </fieldset>
+
+      <QuestionGenerationPreview :questions="preview" :locked="pendingLocalCommit" @import="importPreview" />
       <DialogFooter>
-        <Button variant="outline" @click="router.back()">
+        <Button variant="outline" @click="goBack">
           {{ $t('editor.cancel') }}
         </Button>
       </DialogFooter>

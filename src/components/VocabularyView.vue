@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { LibraryQuestion, MultipleChoiceQuestion, VocabularyDifficultyFilter, VocabularyQuestionTypeFilter } from '@/types'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { createVocabularyDifficultyOptions, createVocabularyQuestionTypeOptions } from '@/lib/question-options'
 import { useSenseManagement } from '@/lib/use-sense-management'
 import { useLibraryStore } from '@/stores/library'
@@ -45,6 +46,15 @@ const currentSet = computed(() => libraryStore.getSet(setId.value))
 const currentSenseIds = computed(() => new Set(libraryStore.getMembership(setId.value, word.value?.wordKey ?? '')?.senseIds ?? []))
 const currentSenses = computed(() => word.value?.senses.filter(sense => currentSenseIds.value.has(sense.id)) ?? [])
 const otherSenses = computed(() => word.value?.senses.filter(sense => !currentSenseIds.value.has(sense.id)) ?? [])
+
+function hydrateRequestedSet() {
+  const requestedSetId = typeof route.query.setId === 'string' ? route.query.setId : ''
+  if (requestedSetId)
+    void libraryStore.hydrateSet(requestedSetId).catch(() => undefined)
+}
+
+onMounted(hydrateRequestedSet)
+watch(() => route.query.setId, hydrateRequestedSet)
 const senseManager = useSenseManagement({
   getWordKey: () => wordKey.value,
   getSetId: () => setId.value,
@@ -76,8 +86,10 @@ const questions = computed(() => libraryStore.questions.filter((question) => {
 }))
 async function removeQuestion(question: LibraryQuestion) {
   const names = libraryStore.getQuestionSetIds(question).map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、')
-  if (await uiStore.showConfirm(t('vocabulary.deleteQuestionTitle'), t('vocabulary.deleteQuestionMessage', { sets: names })))
-    libraryStore.removeQuestion(question.id)
+  if (await uiStore.showConfirm(t('vocabulary.deleteQuestionTitle'), t('vocabulary.deleteQuestionMessage', { sets: names }))) {
+    if (libraryStore.removeQuestion(question.id))
+      await syncAfterLocalCommit()
+  }
 }
 
 function openQuestionEditor(question?: LibraryQuestion) {
@@ -100,6 +112,23 @@ function openReadingEditor() {
 function closeQuestionDialog() {
   questionDialogOpen.value = false
   editingQuestion.value = null
+}
+
+async function saveQuestion(question: MultipleChoiceQuestion): Promise<boolean> {
+  if (editingQuestion.value) {
+    const usages = libraryStore.getQuestionSetIds(editingQuestion.value)
+    if (usages.length > 1 && !await uiStore.showConfirm(
+      t('vocabulary.sharedChangeTitle'),
+      t('vocabulary.sharedChangeMessage', {
+        count: usages.length,
+        sets: usages.map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、'),
+      }),
+    )) {
+      return false
+    }
+    return libraryStore.updateQuestion(question)
+  }
+  return Boolean(libraryStore.importQuestions([question]))
 }
 
 function editQuestion(question: LibraryQuestion) {
@@ -208,6 +237,7 @@ watch([() => route.query.action, () => route.query.questionId, () => currentSens
     :word-key="wordKey"
     :set-id="setId"
     :question="editingQuestion"
+    :save-handler="saveQuestion"
     @close="closeQuestionDialog"
   />
 </template>

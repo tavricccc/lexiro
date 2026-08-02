@@ -35,6 +35,16 @@ export interface FirestoreLibraryManifest {
   chunks: Record<string, string>
 }
 
+export interface FirestoreLibraryV5Manifest extends FirestoreLibraryManifest {
+  schemaVersion: 5
+}
+
+export type FirestoreLibraryV5Chunk = FirestoreLibraryChunkBase & {
+  schemaVersion: 5
+  section: 'words' | 'sets' | 'memberships' | 'folders' | 'questions'
+  items: unknown[]
+}
+
 export type FirestoreLibraryChunk = FirestoreLibraryChunkBase & (
   | { section: 'words', items: WordEntry[] }
   | { section: 'sets', items: LibrarySet[] }
@@ -42,3 +52,19 @@ export type FirestoreLibraryChunk = FirestoreLibraryChunkBase & (
   | { section: 'folders', items: VocabFolder[] }
   | { section: 'questions', items: LibraryQuestion[] }
 )
+
+export type SyncProgressPhase = 'preparing' | 'downloading' | 'reconciling' | 'uploading' | 'verifying' | 'synced' | 'offline' | 'error'
+export type SyncDirection = 'idle' | 'download' | 'upload'
+
+export interface SyncProgressState {
+  phase: SyncProgressPhase
+  direction: SyncDirection
+  completed: number
+  total: number
+  percent: number
+  message: string
+  retryable: boolean
+  currentBatch: number
+  totalBatches: number
+  pendingWrites: number
+}
