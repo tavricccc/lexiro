@@ -92,7 +92,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
 
   function persistOutbox() {
     pendingWrites.value = outbox.value.length
-    void saveCloudOutbox(activeUid, outbox.value)
+    void saveCloudOutbox(activeUid, outbox.value).catch(handleSyncError)
   }
 
   function replaceOutbox(next: SyncOutboxEntry[]) {

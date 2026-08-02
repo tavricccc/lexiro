@@ -24,6 +24,18 @@ describe('cloud sync outbox storage', () => {
     await expect(loadCloudOutbox('outbox-test-user')).resolves.toEqual([validEntry])
   })
 
+  it('round-trips the membership array produced when a set is created', async () => {
+    const membershipEntry = {
+      ...validEntry,
+      id: 'sync-membership',
+      recordKey: 'membership:set-1',
+      payload: [{ wordKey: 'apple', senseIds: ['sense-1'] }],
+    }
+    await saveCloudOutbox('outbox-membership-user', [membershipEntry])
+
+    await expect(loadCloudOutbox('outbox-membership-user')).resolves.toEqual([membershipEntry])
+  })
+
   it('rejects malformed JSON instead of replacing the queue with an empty one', async () => {
     await saveToStorage('lexiro_sync_outbox:outbox-invalid-json', '{')
 
@@ -34,5 +46,11 @@ describe('cloud sync outbox storage', () => {
     await saveToStorage('lexiro_sync_outbox:outbox-invalid-entry', [{ ...validEntry, attempts: -1 }])
 
     await expect(loadCloudOutbox('outbox-invalid-entry')).rejects.toThrow('Cloud sync outbox 格式錯誤')
+  })
+
+  it('refuses to save an entry that the loader would reject', async () => {
+    const invalidEntry = { ...validEntry, recordKey: 'word:apple', payload: [] }
+
+    await expect(saveCloudOutbox('outbox-invalid-write', [invalidEntry])).rejects.toThrow('拒絕保存')
   })
 })

@@ -24,6 +24,8 @@ export async function loadCloudOutbox(uid: string): Promise<SyncOutboxEntry[]> {
   return parsed
 }
 
-export function saveCloudOutbox(uid: string, entries: SyncOutboxEntry[]): Promise<void> {
-  return saveToStorage(cloudOutboxStorageKey(uid), entries)
+export async function saveCloudOutbox(uid: string, entries: SyncOutboxEntry[]): Promise<void> {
+  if (!entries.every(isSyncOutboxEntry))
+    throw new CloudSyncError('cloud/outbox-invalid', '拒絕保存無法重新載入的 Cloud sync outbox')
+  await saveToStorage(cloudOutboxStorageKey(uid), entries)
 }

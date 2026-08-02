@@ -1,13 +1,16 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { AI_SETTINGS_KEY, LEARNING_STORAGE_KEY } from '@/constants'
 import { loadAiSettings } from '@/lib/ai-provider'
+import { loadCloudOutbox } from '@/lib/cloud-sync-outbox-storage'
 import { stableHash } from '@/lib/hash'
 import { createDefaultStats } from '@/lib/learning-defaults'
+import { buildSenseId } from '@/lib/library'
 import { loadFromStorage, saveToStorage, setStorageNamespace } from '@/lib/persist'
 import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useLearningStore } from '@/stores/learning'
+import { useLibraryStore } from '@/stores/library'
 
 const mockedCloud = vi.hoisted(() => ({
   authCallbacks: [] as Array<(user: { uid: string, displayName: string, email: string, photoURL: string }) => Promise<void>>,
@@ -127,6 +130,29 @@ describe('cloud sync baseline rebase', () => {
     expect(mockedCloud.transactionSets).toHaveLength(1)
     expect(cloudStore.pendingWrites).toBe(0)
     expect(cloudStore.status).toBe('synced')
+  })
+
+  it('persists a newly created set membership as a valid outbox record', async () => {
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+
+    const libraryStore = useLibraryStore()
+    const senseId = buildSenseId('apple', 'n.', '蘋果')
+    libraryStore.createSetWithContent(
+      'Fresh set',
+      undefined,
+      [{ wordKey: 'apple', word: 'apple', senses: [{ id: senseId, pos: 'n.', meaningZh: '蘋果', examples: [] }], updatedAt: '2026-08-02T00:00:00.000Z' }],
+      [{ wordKey: 'apple', senseIds: [senseId] }],
+    )
+    await nextTick()
+
+    const stored = await loadCloudOutbox('cloud-user')
+    expect(stored).toContainEqual(expect.objectContaining({
+      domain: 'library',
+      recordKey: expect.stringMatching(/^membership:set-/),
+      payload: [{ wordKey: 'apple', senseIds: [senseId] }],
+    }))
   })
 
   it('treats missing Cloud learning documents as an empty authoritative baseline', async () => {

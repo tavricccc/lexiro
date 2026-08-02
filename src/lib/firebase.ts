@@ -5,7 +5,7 @@ import type { Firestore } from 'firebase/firestore'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
 import { browserLocalPersistence, connectAuthEmulator, getAuth, setPersistence } from 'firebase/auth'
-import { connectFirestoreEmulator, initializeFirestore, memoryLocalCache } from 'firebase/firestore'
+import { connectFirestoreEmulator, getFirestore, initializeFirestore, memoryLocalCache, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
 import { CloudSyncError } from './cloud-sync-errors'
 import { shouldEnableAppCheck } from './firebase-config'
 
@@ -100,11 +100,20 @@ export function getFirebaseFirestore(): Firestore | null {
   if (!app)
     return null
   if (!firestore) {
-    // Application state and pending writes already live in lexiro's own
-    // namespaced IndexedDB repository. Keeping a second persistent Firestore
-    // cache can replay documents from an older Cloud schema before the server
-    // snapshot arrives, so Firestore intentionally uses memory-only caching.
-    firestore = initializeFirestore(app, { localCache: memoryLocalCache() })
+    try {
+      firestore = initializeFirestore(app, {
+        localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+      })
+    }
+    catch (error) {
+      console.warn('[Firebase Firestore] persistent cache is unavailable; using memory cache', error)
+      try {
+        firestore = initializeFirestore(app, { localCache: memoryLocalCache() })
+      }
+      catch {
+        firestore = getFirestore(app)
+      }
+    }
   }
   if (useEmulators() && !firestoreEmulatorConnected) {
     try {

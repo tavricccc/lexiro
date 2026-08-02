@@ -1,7 +1,21 @@
 import { describe, expect, it } from 'vitest'
-import { hasOutboxDomain, incrementOutboxAttempts, queueRecordChanges, rebaseQueuedRecords, removeOutboxDomain } from '@/lib/sync-outbox'
+import { hasOutboxDomain, incrementOutboxAttempts, isSyncOutboxEntry, queueRecordChanges, rebaseQueuedRecords, removeOutboxDomain } from '@/lib/sync-outbox'
 
 describe('sync outbox', () => {
+  it('accepts the membership record generated when a set is created', () => {
+    const entries = queueRecordChanges(
+      'library',
+      {},
+      {},
+      { 'membership:set-1': [{ wordKey: 'apple', senseIds: ['sense-1'] }] },
+      [],
+      '2026-08-01T00:00:00.000Z',
+    )
+
+    expect(entries).toHaveLength(1)
+    expect(isSyncOutboxEntry(entries[0])).toBe(true)
+  })
+
   it('queues record-level create, update, and delete changes', () => {
     const baseline = { 'word:run': { meaning: '跑步' }, 'word:keep': { meaning: '保留' } }
     const previous = { ...baseline }

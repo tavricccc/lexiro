@@ -36,6 +36,23 @@ describe('cloud sync schema', () => {
     expect(() => validateLibraryChunk({ ...chunk, checksum: 'tampered' }, 'user-1', chunk.chunkId)).toThrow('checksum')
   })
 
+  it('writes memberships to Firestore as set records containing member arrays', () => {
+    const populated: LibraryState = {
+      ...library,
+      sets: [{ id: 'set-1', setName: 'Fresh set', folderId: 'folder-uncategorized', createdAt: library.updatedAt, updatedAt: library.updatedAt }],
+      memberships: { 'set-1': [{ wordKey: 'apple', senseIds: ['sense-1'] }] },
+    }
+
+    const chunks = buildLibraryChunks('user-1', populated)
+    const membershipChunk = chunks.find(chunk => chunk.section === 'memberships')
+
+    expect(membershipChunk?.items).toEqual([{
+      setId: 'set-1',
+      members: [{ wordKey: 'apple', senseIds: ['sense-1'] }],
+    }])
+    expect(combineLibraryChunks(chunks)).toEqual(populated)
+  })
+
   it('normalizes Cloud AI settings without accepting a device key', () => {
     expect(normalizeCloudAiSettings({
       ownerId: 'user-1',

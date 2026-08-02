@@ -17,6 +17,35 @@ export interface SyncOutboxEntry {
   updatedAt: string
 }
 
+function isObjectPayload(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
+}
+
+function isMembershipPayload(value: unknown): value is LibraryState['memberships'][string] {
+  return Array.isArray(value) && value.every((membership) => {
+    if (!isObjectPayload(membership))
+      return false
+    return Object.keys(membership).every(key => key === 'wordKey' || key === 'senseIds')
+      && typeof membership.wordKey === 'string'
+      && Array.isArray(membership.senseIds)
+      && membership.senseIds.every(senseId => typeof senseId === 'string')
+  })
+}
+
+function isPayloadForRecord(domain: SyncDomain, recordKey: string, payload: unknown): boolean {
+  if (payload === null)
+    return true
+  if (domain === 'library') {
+    if (recordKey.startsWith('membership:'))
+      return isMembershipPayload(payload)
+    return ['word:', 'set:', 'folder:', 'question:'].some(prefix => recordKey.startsWith(prefix))
+      && isObjectPayload(payload)
+  }
+  if (domain === 'learning')
+    return (recordKey.startsWith('card:') || recordKey === 'stats:summary') && isObjectPayload(payload)
+  return recordKey === 'settings:ai' && isObjectPayload(payload)
+}
+
 export function isSyncOutboxEntry(value: unknown): value is SyncOutboxEntry {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     return false
@@ -25,7 +54,7 @@ export function isSyncOutboxEntry(value: unknown): value is SyncOutboxEntry {
     && (entry.domain === 'library' || entry.domain === 'learning' || entry.domain === 'settings')
     && typeof entry.recordKey === 'string'
     && typeof entry.baseHash === 'string'
-    && (entry.payload === null || (typeof entry.payload === 'object' && !Array.isArray(entry.payload)))
+    && isPayloadForRecord(entry.domain, entry.recordKey, entry.payload)
     && typeof entry.attempts === 'number'
     && Number.isInteger(entry.attempts)
     && entry.attempts >= 0
