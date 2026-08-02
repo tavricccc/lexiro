@@ -4,6 +4,7 @@ import { Plus, Sparkles } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { createEditorItem } from '@/lib/validation'
 import { useSetsStore } from '@/stores/sets'
@@ -26,6 +27,7 @@ type EditorInputMode = 'manual' | 'ai'
 const mode = computed(() => route.name === 'set-create' ? 'create' : 'edit')
 const setId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : '')
 const editorInputMode = ref<EditorInputMode>('manual')
+const initialEditorSnapshot = ref('')
 const selectedFolderId = computed({
   get: () => setEditorFolderId.value ?? UNCATEGORIZED_FOLDER_ID,
   set: (value: string) => setSetEditorFolderId(value),
@@ -40,6 +42,7 @@ function prepare() {
   const set = setsStore.sets.find(item => item.id === setId.value) ?? null
   prepareSetEditor(mode.value, set)
   editorInputMode.value = 'manual'
+  initialEditorSnapshot.value = editorSnapshot()
 }
 
 watch([mode, setId], prepare, { immediate: true })
@@ -59,9 +62,29 @@ function close() {
   closeSetEditor()
 }
 
-function save() {
-  saveSetEditor()
+function editorSnapshot(): string {
+  return JSON.stringify({
+    name: setEditorName.value,
+    folderId: setEditorFolderId.value,
+    items: setEditorDraftItems.value,
+  })
 }
+
+const editorDirty = computed(() => initialEditorSnapshot.value !== editorSnapshot())
+
+function save(): boolean {
+  const saved = saveSetEditor()
+  if (saved)
+    initialEditorSnapshot.value = editorSnapshot()
+  return saved
+}
+
+useDirtyForm({
+  id: 'set-editor',
+  isDirty: () => editorDirty.value,
+  save,
+  discard: close,
+})
 </script>
 
 <template>

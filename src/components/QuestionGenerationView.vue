@@ -16,7 +16,7 @@ import QuestionGenerationPreview from './QuestionGenerationPreview.vue'
 import QuestionWordSelector from './QuestionWordSelector.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
-import DialogFooter from './ui/dialog-footer/DialogFooter.vue'
+import DialogFooter from './ui/dialog/DialogFooter.vue'
 import StatusMessage from './ui/status-message/StatusMessage.vue'
 import Textarea from './ui/textarea/Textarea.vue'
 

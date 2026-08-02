@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Settings } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
+import { LAYERS } from '@/constants/layers'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
 import { useAccountStore } from '@/stores/account'
 import { useUIStore } from '@/stores/ui'
@@ -23,13 +24,13 @@ function toggle() {
 </script>
 
 <template>
-  <aside class="app-sidebar fixed inset-y-0 left-0 z-40 hidden flex-col border-r border-ink-200/60 bg-white/90 py-4 shadow-soft backdrop-blur-xl dark:border-ink-200/10 dark:bg-ink-950/90 md:flex" :class="expanded ? 'app-sidebar--expanded w-64' : 'app-sidebar--collapsed w-20'">
+  <aside class="app-sidebar fixed inset-y-0 left-0 hidden flex-col border-r border-ink-200/60 bg-white/90 py-4 shadow-soft backdrop-blur-xl dark:border-ink-200/10 dark:bg-ink-950/90 md:flex" :style="{ zIndex: LAYERS.navigation }" :class="expanded ? 'app-sidebar--expanded w-64' : 'app-sidebar--collapsed w-20'">
     <div class="relative flex h-12 items-center px-3">
       <RouterLink to="/" class="flex h-12 min-w-0 flex-1 items-center gap-3 rounded-2xl px-3 text-ink-950 hover:bg-ink-100 dark:text-ink-50 dark:hover:bg-ink-900" :aria-label="t('app.name')">
         <img src="/icons/lexiro.png" alt="" class="h-9 w-9 shrink-0 rounded-xl object-cover" aria-hidden="true">
         <span v-if="expanded" class="truncate text-sm font-black tracking-wide">lexiro</span>
       </RouterLink>
-      <Button variant="ghost" size="icon" class="absolute -right-3 h-7 w-7 rounded-full border border-ink-200 bg-white shadow-sm dark:border-ink-700 dark:bg-ink-900" :aria-label="expanded ? t('nav.collapseSidebar') : t('nav.expandSidebar')" @click="toggle">
+      <Button variant="ghost" size="icon" class="absolute -right-3 h-11 w-11 rounded-full border border-ink-200 bg-white shadow-sm dark:border-ink-700 dark:bg-ink-900" :aria-label="expanded ? t('nav.collapseSidebar') : t('nav.expandSidebar')" @click="toggle">
         <ChevronLeft v-if="expanded" class="h-3.5 w-3.5" />
         <ChevronRight v-else class="h-3.5 w-3.5" />
       </Button>
@@ -107,7 +108,7 @@ function toggle() {
   position: absolute;
   left: calc(100% + 0.65rem);
   top: 50%;
-  z-index: 70;
+  z-index: var(--layer-toast);
   border-radius: 0.65rem;
   background: var(--color-on-surface);
   color: var(--color-surface);

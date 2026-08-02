@@ -5,6 +5,7 @@ import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS } from '@/constants'
 import { defaultAiSettings, downloadAiSettings, loadAiSettings, parseAiSettingsJson, saveAiSettings } from '@/lib/ai-provider'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useLearningStore } from '@/stores/learning'
 import { useUIStore } from '@/stores/ui'
@@ -19,8 +20,12 @@ const cloudStore = useCloudSyncStore()
 const { t } = useI18n()
 const { configured, isSignedIn, accountLabel, status, error } = storeToRefs(cloudStore)
 const { signIn: signInAccount, signOutAccount } = cloudStore
-const statusLabel = computed(() => t(`sync.${status.value === 'disabled' ? 'notConfigured' : status.value}`))
+const statusLabel = computed(() => {
+  const key = status.value === 'disabled' ? 'notConfigured' : status.value === 'signed-out' ? 'signedOut' : status.value
+  return t(`sync.${key}`)
+})
 const settings = reactive({ ...loadAiSettings() })
+const initialSettingsSnapshot = ref(JSON.stringify(settings))
 const saved = ref(false)
 const aiImportInput = ref<HTMLInputElement | null>(null)
 const dailyWordGoal = computed({
@@ -49,17 +54,36 @@ const aiMode = computed({
   set: (value: string) => { settings.enabled = value === 'api' },
 })
 
-function save() {
+function settingsSnapshot(): string {
+  return JSON.stringify(settings)
+}
+
+const settingsDirty = computed(() => initialSettingsSnapshot.value !== settingsSnapshot())
+
+function save(): boolean {
   saveAiSettings({ ...settings, batchSize: Math.min(Math.max(Number(settings.batchSize) || 10, 5), 20) })
+  initialSettingsSnapshot.value = settingsSnapshot()
   saved.value = true
   uiStore.showToast(t('settings.saved'))
   window.setTimeout(() => saved.value = false, 1800)
+  return true
 }
 
 function reset() {
   Object.assign(settings, defaultAiSettings)
   save()
 }
+
+function discardSettings() {
+  Object.assign(settings, JSON.parse(initialSettingsSnapshot.value) as typeof settings)
+}
+
+useDirtyForm({
+  id: 'settings',
+  isDirty: () => settingsDirty.value,
+  save,
+  discard: discardSettings,
+})
 
 function updateBatchSize(value: string) {
   settings.batchSize = Number(value) || 10

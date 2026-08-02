@@ -114,7 +114,7 @@ function clearSelection() {
         {{ $t('library.chooseQuestionType') }}
       </p>
       <div class="grid gap-2 sm:grid-cols-3">
-        <button v-for="option in questionTypes" :key="option.value" type="button" class="rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-colors" :class="kind === option.value ? 'border-accent-primary bg-accent-primary/10 text-accent-primary' : 'border-ink-200/70 text-ink-700 hover:border-accent-primary/40 dark:border-ink-200/20 dark:text-ink-200'" @click="emit('update:kind', option.value)">
+        <button v-for="option in questionTypes" :key="option.value" type="button" class="min-h-11 rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-colors" :class="kind === option.value ? 'border-accent-primary bg-accent-primary/10 text-accent-primary' : 'border-ink-200/70 text-ink-700 hover:border-accent-primary/40 dark:border-ink-200/20 dark:text-ink-200'" @click="emit('update:kind', option.value)">
           {{ option.label }}
         </button>
       </div>

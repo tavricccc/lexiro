@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+import { LAYERS } from '@/constants/layers'
 import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
@@ -53,7 +54,8 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
 
 <template>
   <header
-    class="app-header fixed inset-x-0 top-0 z-40 backdrop-blur-xl transition-all duration-200"
+    class="app-header fixed inset-x-0 top-0 backdrop-blur-xl transition-all duration-200"
+    :style="{ zIndex: LAYERS.navigation }"
   >
     <div class="app-header__inner route-page-frame viewport-frame flex items-center justify-between gap-3 py-3">
       <div class="flex items-center gap-3 min-w-0">
@@ -61,7 +63,7 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
           v-if="!isHome"
           variant="ghost"
           size="icon"
-          class="h-9 w-9 shrink-0"
+          class="h-11 w-11 shrink-0"
           :aria-label="t('appHeader.back')"
           @click="exitCurrentView"
         >
@@ -100,7 +102,7 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
           <Button
             variant="outline"
             size="icon"
-            class="h-9 w-9 text-ink-600 dark:text-ink-400 hover:text-accent-primary dark:hover:text-accent-primary"
+            class="h-11 w-11 text-ink-600 dark:text-ink-400 hover:text-accent-primary dark:hover:text-accent-primary"
             :aria-label="t('appHeader.editSet')"
             @click="editActiveSet"
           >
@@ -109,7 +111,7 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
           <Button
             variant="outline"
             size="icon"
-            class="h-9 w-9 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/15"
+            class="h-11 w-11 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/15"
             :aria-label="t('appHeader.deleteSet')"
             @click="deleteActiveSet"
           >

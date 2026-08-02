@@ -4,8 +4,8 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useSetsStore } from '@/stores/sets'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 
 const setsStore = useSetsStore()
@@ -95,7 +95,8 @@ const settingsOpen = ref(false)
         <StatusMessage v-if="exportError" tone="error">
           {{ exportError }}
         </StatusMessage>
-
+      </div>
+      <template #footer>
         <DialogFooter>
           <Button variant="outline" @click="settingsOpen = false">
             {{ $t('editor.cancel') }}
@@ -105,7 +106,7 @@ const settingsOpen = ref(false)
             <span>{{ $t('backup.downloadZip') }}</span>
           </Button>
         </DialogFooter>
-      </div>
+      </template>
     </Dialog>
   </div>
 </template>

@@ -36,7 +36,7 @@ function removeItem(index: number) {
         <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
           {{ $t('import.wordRow', { index: index + 1 }) }}
         </p>
-        <Button variant="ghost" size="icon" class="h-8 w-8 text-red-500" :aria-label="$t('import.removeWord')" @click="removeItem(index)">
+        <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('import.removeWord')" @click="removeItem(index)">
           <Trash2 class="h-4 w-4" />
         </Button>
       </div>

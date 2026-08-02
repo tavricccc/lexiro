@@ -84,6 +84,15 @@
   --motion-duration: 0.28s;
   --motion-duration-panel: 0.42s;
 
+  --layer-navigation: 20;
+  --layer-popover: 40;
+  --layer-dialog: 50;
+  --layer-dialog-content: 51;
+  --layer-nested-dialog: 60;
+  --layer-nested-dialog-content: 61;
+  --layer-toast: 70;
+  --layer-local-content: 1;
+
   --theme-primary: #000000;
   --theme-on-primary: #ffffff;
   --theme-primary-container: #f2f2f2;
@@ -457,6 +466,11 @@ button,
 input,
 textarea {
   font: inherit;
+}
+
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
 ::selection {

@@ -70,18 +70,18 @@ export const useBackupStore = defineStore('backup', () => {
     }
   }
 
-  function applyZipImport() {
+  function applyZipImport(): boolean {
     const setsStore = useSetsStore()
     const uiStore = useUIStore()
     zipImportError.value = ''
     if (zipImportKind.value === 'set-share') {
       if (!zipImportSets.value?.length) {
         zipImportError.value = t('backup.zipImportError')
-        return
+        return false
       }
       const result = setsStore.applyImported(zipImportSets.value, folderIdFromSelection(uiStore.transferFolderId))
       if (!result)
-        return
+        return false
     }
     else if (zipImportKind.value === 'full-backup' && zipImportFullBackup.value) {
       const libraryStore = useLibraryStore()
@@ -94,10 +94,11 @@ export const useBackupStore = defineStore('backup', () => {
     }
     else {
       zipImportError.value = t('backup.zipImportError')
-      return
+      return false
     }
     resetZipImportState()
     uiStore.closeTransfer()
+    return true
   }
 
   async function exportAllToZip() {

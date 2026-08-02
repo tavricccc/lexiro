@@ -29,6 +29,7 @@ export type {
   QuestionDifficulty,
   ReadingChildQuestion,
   ReadingPack,
+  SenseEditValue,
   SetMembership,
   StudyWord,
   VocabFolder,

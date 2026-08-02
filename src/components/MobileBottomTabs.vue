@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
+import { LAYERS } from '@/constants/layers'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
 import AccountAvatar from './AccountAvatar.vue'
 
@@ -15,7 +16,7 @@ const activeIndex = computed(() => {
 </script>
 
 <template>
-  <nav class="mobile-bottom-tabs fixed z-40 mx-auto max-w-md rounded-full border-0 bg-white/95 px-3 py-1.5 backdrop-blur-xl dark:bg-ink-950/95 md:hidden" :aria-label="t('nav.main')">
+  <nav class="mobile-bottom-tabs fixed mx-auto max-w-md rounded-full border-0 bg-white/95 px-3 py-1.5 backdrop-blur-xl dark:bg-ink-950/95 md:hidden" :style="{ zIndex: LAYERS.navigation }" :aria-label="t('nav.main')">
     <div class="relative mx-auto grid w-full" :style="{ gridTemplateColumns: `repeat(${itemCount}, minmax(0, 1fr))` }">
       <span v-if="activeIndex >= 0" class="mobile-bottom-tabs__indicator" :style="{ width: `${100 / itemCount}%`, transform: `translateX(${activeIndex * 100}%)` }" aria-hidden="true" />
       <RouterLink v-for="item in APP_NAV_ITEMS" :key="item.key" :to="item.to" class="mobile-bottom-tab" :class="route.name === item.key ? 'mobile-bottom-tab--active' : ''">
@@ -53,7 +54,7 @@ const activeIndex = computed(() => {
 
 .mobile-bottom-tabs :deep(.mobile-bottom-tab) {
   position: relative;
-  z-index: 1;
+  z-index: var(--layer-local-content);
   display: flex;
   min-width: 0;
   height: 3rem;

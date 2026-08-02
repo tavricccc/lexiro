@@ -9,8 +9,8 @@ import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 import FolderPicker from './FolderPicker.vue'
 
@@ -95,12 +95,13 @@ async function importLibraryFiles(event: Event) {
       <StatusMessage v-if="importError" tone="error">
         {{ importError }}
       </StatusMessage>
-
+    </div>
+    <template #footer>
       <DialogFooter>
         <Button variant="outline" @click="closeImport">
           {{ $t('editor.cancel') }}
         </Button>
       </DialogFooter>
-    </div>
+    </template>
   </Dialog>
 </template>

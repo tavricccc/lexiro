@@ -1,22 +1,46 @@
 <script setup lang="ts">
-import { X } from 'lucide-vue-next'
-import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, provide, ref, useId, watch } from 'vue'
+import { DIALOG_CONTENT_LAYER_KEY, LAYERS } from '@/constants/layers'
 import { lockDocumentScroll } from '@/lib/scrollLock'
-import Button from '../button/Button.vue'
+import DialogBody from './DialogBody.vue'
+import DialogHeader from './DialogHeader.vue'
+
+type DialogCloseAction = 'escape' | 'backdrop' | 'explicit'
+type DialogClosePolicy = 'all' | 'escape' | 'backdrop' | 'explicit' | 'blocked' | {
+  escape?: boolean
+  backdrop?: boolean
+  explicit?: boolean
+}
+
+type DialogSize = 'sm' | 'md' | 'lg' | 'xl'
+type DialogPresentation = 'center' | 'responsive-sheet'
+type DialogTone = 'default' | 'destructive' | 'mandatory'
 
 const props = withDefaults(defineProps<{
   open: boolean
   title?: string
   description?: string
   widthClass?: string
+  size?: DialogSize
+  presentation?: DialogPresentation
+  tone?: DialogTone
   showClose?: boolean
+  closePolicy?: DialogClosePolicy
+  busy?: boolean
+  initialFocus?: string
   overlayZIndex?: number
 }>(), {
   title: '',
   description: '',
-  widthClass: 'max-w-lg',
+  widthClass: '',
+  size: 'md',
+  presentation: 'responsive-sheet',
+  tone: 'default',
   showClose: true,
-  overlayZIndex: 50,
+  closePolicy: 'all',
+  busy: false,
+  initialFocus: '',
+  overlayZIndex: LAYERS.dialog,
 })
 
 const emit = defineEmits<{
@@ -24,8 +48,61 @@ const emit = defineEmits<{
 }>()
 
 const panelRef = ref<HTMLElement | null>(null)
+const idPrefix = useId().replace(/:/g, '-')
+const titleId = `${idPrefix}-title`
+const descriptionId = `${idPrefix}-description`
+const panelLayer = computed(() => props.overlayZIndex + 1)
+provide(DIALOG_CONTENT_LAYER_KEY, panelLayer)
+const sizeClasses: Record<DialogSize, string> = {
+  sm: 'max-w-sm',
+  md: 'max-w-lg',
+  lg: 'max-w-2xl',
+  xl: 'max-w-4xl',
+}
+const resolvedWidthClass = computed(() => props.widthClass || sizeClasses[props.size])
+const overlayClasses = computed(() => props.presentation === 'center'
+  ? 'items-center p-4 sm:p-6'
+  : 'items-end p-0 sm:items-center sm:p-6')
+const panelClasses = computed(() => [
+  resolvedWidthClass.value,
+  props.presentation === 'center'
+    ? 'rounded-[22px]'
+    : 'rounded-t-[22px] sm:rounded-[22px]',
+  props.tone === 'destructive' ? 'border-red-300/70 dark:border-red-900/70' : '',
+])
 let previousActive: HTMLElement | null = null
 let releaseScrollLock: (() => void) | null = null
+
+function canClose(action: DialogCloseAction): boolean {
+  if (props.busy || props.closePolicy === 'blocked')
+    return false
+  if (props.closePolicy === 'all')
+    return true
+  if (typeof props.closePolicy === 'string')
+    return props.closePolicy === action
+  return props.closePolicy[action] ?? false
+}
+
+function requestClose(action: DialogCloseAction) {
+  if (canClose(action))
+    emit('close')
+}
+
+function isTopmostDialog(): boolean {
+  if (typeof document === 'undefined')
+    return true
+  const overlays = Array.from(document.querySelectorAll<HTMLElement>('.dialog-overlay'))
+  let highestLayer = Number.NEGATIVE_INFINITY
+  let topmostOverlay: HTMLElement | null = null
+  for (const overlay of overlays) {
+    const layer = Number.parseInt(overlay.style.zIndex || '0', 10)
+    if (layer >= highestLayer) {
+      highestLayer = layer
+      topmostOverlay = overlay
+    }
+  }
+  return panelRef.value?.closest('.dialog-overlay') === topmostOverlay
+}
 
 function getFocusable(): HTMLElement[] {
   if (!panelRef.value)
@@ -36,14 +113,25 @@ function getFocusable(): HTMLElement[] {
   return Array.from(nodes).filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null)
 }
 
+function getInitialFocus(): HTMLElement | undefined {
+  if (!panelRef.value || !props.initialFocus)
+    return undefined
+  try {
+    return panelRef.value.querySelector<HTMLElement>(props.initialFocus) ?? undefined
+  }
+  catch {
+    return undefined
+  }
+}
+
 function onKeydown(e: KeyboardEvent) {
-  if (!props.open)
+  if (!props.open || !isTopmostDialog())
     return
 
   if (e.key === 'Escape') {
     e.preventDefault()
     e.stopPropagation()
-    emit('close')
+    requestClose('escape')
     return
   }
 
@@ -78,7 +166,7 @@ function openDialog() {
   releaseScrollLock = lockDocumentScroll()
 
   nextTick(() => {
-    focusWithoutScrolling(getFocusable()[0])
+    focusWithoutScrolling(getInitialFocus() ?? getFocusable()[0])
   })
 }
 
@@ -115,44 +203,42 @@ onUnmounted(() => {
     <Transition name="dialog-fade">
       <div
         v-if="open"
-        class="dialog-overlay fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-black/35 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+        class="dialog-overlay fixed inset-0 flex justify-center overflow-y-auto overscroll-contain bg-black/35 backdrop-blur-sm"
         :style="{ zIndex: overlayZIndex }"
         role="presentation"
-        @click.self="$emit('close')"
+        :class="overlayClasses"
+        @click.self="requestClose('backdrop')"
       >
         <div
           ref="panelRef"
           role="dialog"
           aria-modal="true"
-          :aria-label="title || undefined"
-          class="dialog-content-panel flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[22px] border border-ink-200/60 bg-white shadow-2xl dark:border-ink-200/10 dark:bg-ink-800 sm:max-h-[calc(100dvh-3rem)] sm:rounded-[22px]"
-          :class="[widthClass]"
+          :aria-label="!title && !description ? undefined : title ? undefined : description"
+          :aria-labelledby="title ? titleId : undefined"
+          :aria-describedby="description ? descriptionId : undefined"
+          class="dialog-content-panel flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[22px] border border-ink-200/60 bg-white shadow-modal dark:border-ink-200/10 dark:bg-ink-800 sm:max-h-[calc(100dvh-3rem)] sm:rounded-[22px]"
+          :class="panelClasses"
         >
           <div class="w-12 h-1.5 rounded-full bg-ink-200 dark:bg-ink-300 mx-auto mt-3 shrink-0 sm:hidden" aria-hidden="true" />
 
-          <div class="flex shrink-0 items-start justify-between gap-4 px-6 pt-4 pb-3">
-            <div class="space-y-1 text-left">
-              <h2 class="text-lg font-bold tracking-tight text-ink-950 dark:text-ink-50">
-                {{ title }}
-              </h2>
-              <p v-if="description" class="text-xs text-ink-500 dark:text-ink-400 leading-relaxed font-medium">
-                {{ description }}
-              </p>
-            </div>
-            <Button
-              v-if="showClose"
-              variant="ghost"
-              size="icon"
-              class="h-8 w-8 hover:bg-ink-200 dark:hover:bg-ink-200/60 rounded-xl shrink-0"
-              :aria-label="$t('editor.cancel')"
-              @click="$emit('close')"
-            >
-              <X class="h-4.5 w-4.5 text-ink-500 dark:text-ink-400" />
-            </Button>
-          </div>
+          <slot name="header">
+            <DialogHeader
+              v-if="title || description || showClose"
+              :title="title"
+              :description="description"
+              :title-id="title ? titleId : undefined"
+              :description-id="description ? descriptionId : undefined"
+              :show-close="showClose && canClose('explicit')"
+              @close="requestClose('explicit')"
+            />
+          </slot>
 
-          <div class="dialog-scroll-region overflow-y-auto overscroll-contain px-6 pb-6 pt-1 text-left">
+          <DialogBody>
             <slot />
+          </DialogBody>
+
+          <div v-if="$slots.footer" class="shrink-0 px-6 pb-6 text-left">
+            <slot name="footer" />
           </div>
         </div>
       </div>

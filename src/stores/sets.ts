@@ -222,7 +222,7 @@ export const useSetsStore = defineStore('sets', () => {
     }
   }
 
-  function saveSetEditor() {
+  function saveSetEditor(): boolean {
     try {
       if (!setEditorName.value.trim())
         throw new Error(t('editor.nameRequired'))
@@ -231,8 +231,8 @@ export const useSetsStore = defineStore('sets', () => {
       if (setEditorMode.value === 'create') {
         const created = createSetFromItems(setEditorDraftItems.value, setEditorName.value, setEditorFolderId.value)
         if (created)
-          void router.push({ name: 'set-study', params: { setId: created.id } })
-        return
+          void router.push({ name: 'set-overview', params: { setId: created.id } })
+        return Boolean(created)
       }
       if (!setEditorId.value || !libraryStore.getSet(setEditorId.value))
         throw new Error(t('editor.notFound'))
@@ -241,10 +241,12 @@ export const useSetsStore = defineStore('sets', () => {
       useSessionStore().clearSessionsForSet(setEditorId.value)
       useUIStore().showToast(t('editor.updated', { name: setEditorName.value.trim(), count: setEditorDraftItems.value.length }))
       importOpen.value = false
-      void router.push({ name: 'set-study', params: { setId: setEditorId.value } })
+      void router.push({ name: 'set-overview', params: { setId: setEditorId.value } })
+      return true
     }
     catch (error) {
       setEditorError.value = editorErrorMessage(error)
+      return false
     }
   }
 

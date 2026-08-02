@@ -4,8 +4,8 @@ import { Plus, Trash2 } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { createBlankSenseDraft } from '@/lib/validation'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import Input from '../ui/input/Input.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 import Textarea from '../ui/textarea/Textarea.vue'
@@ -81,7 +81,7 @@ function removeExample(senseIndex: number, exampleIndex: number) {
         <p class="text-xs font-black uppercase tracking-wider text-ink-500 dark:text-ink-400">
           {{ $t('editor.sense', { index: senseIndex + 1 }) }}
         </p>
-        <Button variant="ghost" size="icon" class="h-8 w-8 text-red-500" :aria-label="$t('editor.removeSense')" @click="removeSense(senseIndex)">
+        <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('editor.removeSense')" @click="removeSense(senseIndex)">
           <Trash2 class="h-4 w-4" />
         </Button>
       </div>
@@ -105,7 +105,7 @@ function removeExample(senseIndex: number, exampleIndex: number) {
         <div v-if="sense.examples.length" class="space-y-2">
           <div v-for="(example, exampleIndex) in sense.examples" :key="`${sense.id}-${exampleIndex}`" class="flex items-start gap-2">
             <Textarea :model-value="example" :rows="2" class="min-w-0" :placeholder="$t('editor.examplePlaceholder')" @update:model-value="updateExample(senseIndex, exampleIndex, $event)" />
-            <Button variant="ghost" size="icon" class="h-9 w-9 shrink-0 text-red-500" :aria-label="$t('editor.removeExample')" @click="removeExample(senseIndex, exampleIndex)">
+            <Button variant="ghost" size="icon" class="h-11 w-11 shrink-0 text-red-500" :aria-label="$t('editor.removeExample')" @click="removeExample(senseIndex, exampleIndex)">
               <Trash2 class="h-4 w-4" />
             </Button>
           </div>
@@ -135,6 +135,8 @@ function removeExample(senseIndex: number, exampleIndex: number) {
           {{ $t('editor.example') }}
           <Textarea v-model="newSenseExample" class="mt-2" :rows="3" :placeholder="$t('editor.examplePlaceholder')" />
         </label>
+      </div>
+      <template #footer>
         <DialogFooter>
           <Button variant="outline" @click="newSenseDialogOpen = false">
             {{ $t('editor.cancel') }}
@@ -143,7 +145,7 @@ function removeExample(senseIndex: number, exampleIndex: number) {
             {{ $t('editor.save') }}
           </Button>
         </DialogFooter>
-      </div>
+      </template>
     </Dialog>
   </div>
 </template>

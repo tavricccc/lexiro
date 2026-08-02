@@ -3,6 +3,7 @@ import type { ReadingChildQuestion, ReadingPack, StudyWord } from '@/types'
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { canonicalizeQuestion, senseToStudyWord } from '@/lib/library'
 import { createAnswerOptions, createQuestionDifficultyOptions } from '@/lib/question-options'
 import { parseAnswerIndex, parseQuestionDifficulty } from '@/lib/question-shape'
@@ -42,6 +43,7 @@ const availableStudyWords = computed<StudyWord[]>(() => {
 })
 const difficultyOptions = computed(() => createQuestionDifficultyOptions(t))
 const readingDraft = ref<ReadingPack>(createReadingPack(null))
+const initialReadingSnapshot = ref('')
 
 function now(): string {
   return new Date().toISOString()
@@ -92,6 +94,7 @@ watch(
   () => {
     readingDraft.value = createReadingPack(existingReading.value)
     error.value = ''
+    initialReadingSnapshot.value = readingSnapshot()
   },
   { immediate: true },
 )
@@ -131,7 +134,7 @@ function removeReadingChild(index: number) {
     readingDraft.value.questions.splice(index, 1)
 }
 
-async function saveQuestion(question: ReadingPack) {
+async function saveQuestion(question: ReadingPack): Promise<boolean> {
   if (existingReading.value) {
     const usages = libraryStore.getQuestionSetIds(existingReading.value)
     if (usages.length > 1 && !await uiStore.showConfirm(
@@ -141,21 +144,28 @@ async function saveQuestion(question: ReadingPack) {
         sets: usages.map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、'),
       }),
     )) {
-      return
+      return false
     }
     if (!libraryStore.updateQuestion(question)) {
       error.value = t('vocabulary.questionSourceInvalid')
-      return
+      return false
     }
   }
   else if (!libraryStore.importQuestions([question])) {
     error.value = t('vocabulary.questionSourceInvalid')
-    return
+    return false
   }
   await router.back()
+  return true
 }
 
-async function save() {
+function readingSnapshot(): string {
+  return JSON.stringify(readingDraft.value)
+}
+
+const readingDirty = computed(() => initialReadingSnapshot.value !== readingSnapshot())
+
+async function save(): Promise<boolean> {
   error.value = ''
   const normalized = {
     ...readingDraft.value,
@@ -172,10 +182,20 @@ async function save() {
   const validation = validateReadingDraft(normalized)
   if (validation) {
     error.value = validation === 'englishOnly' ? t('vocabulary.questionEnglishOnly') : t('vocabulary.readingFieldsRequired')
-    return
+    return false
   }
-  await saveQuestion(canonicalizeQuestion(normalized) as ReadingPack)
+  const saved = await saveQuestion(canonicalizeQuestion(normalized) as ReadingPack)
+  if (saved)
+    initialReadingSnapshot.value = readingSnapshot()
+  return saved
 }
+
+useDirtyForm({
+  id: 'reading-question-editor',
+  isDirty: () => readingDirty.value,
+  save,
+  discard: () => { void router.back() },
+})
 </script>
 
 <template>

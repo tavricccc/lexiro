@@ -138,6 +138,6 @@ onUnmounted(() => {
     <GuestDataDialog />
     <VersionUpdateDialog />
 
-    <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" />
+    <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" :action-label="uiStore.toastActionLabel" @action="uiStore.triggerToastAction" />
   </div>
 </template>

@@ -2,15 +2,16 @@
 import type { DictionaryEntry, WordEntry } from '@/types'
 import { Plus, Trash2 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, useId, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { dictionaryDefinitions } from '@/lib/dictionary'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { buildSenseId, mergeUniqueStrings, normalizePartOfSpeech, normalizeWordKey } from '@/lib/library'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import Input from '../ui/input/Input.vue'
 import Select from '../ui/select/Select.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
@@ -63,6 +64,8 @@ const step = ref<Step>(1)
 const targetSetIds = ref<string[]>([])
 const drafts = ref<SenseDraft[]>([])
 const error = ref('')
+const initialDraftSnapshot = ref('')
+const dirtyFormId = `dictionary-add-${useId().replace(/:/g, '-')}`
 
 const selectedDrafts = computed(() => drafts.value.filter(draft => draft.selected))
 const existingSenses = computed(() => props.existingWord?.senses ?? [])
@@ -118,6 +121,7 @@ function reset() {
   error.value = ''
   const definitions = props.entries.flatMap(entry => dictionaryDefinitions(entry))
   drafts.value = definitions.map((definition, index) => draftFromDefinition(definition, index))
+  initialDraftSnapshot.value = draftSnapshot()
 }
 
 function close() {
@@ -169,10 +173,16 @@ function back() {
     step.value = (step.value - 1) as Step
 }
 
-function save() {
+function draftSnapshot(): string {
+  return JSON.stringify({ step: step.value, targetSetIds: targetSetIds.value, drafts: drafts.value })
+}
+
+const draftDirty = computed(() => props.open && initialDraftSnapshot.value !== draftSnapshot())
+
+function save(): boolean {
   if (!previewSenses.value.length) {
     error.value = t('dictionary.selectAtLeastOneSource')
-    return
+    return false
   }
   const wordKey = normalizeWordKey(props.word)
   const current = libraryStore.getWord(wordKey)
@@ -192,11 +202,20 @@ function save() {
   }
   catch {
     error.value = t('dictionary.saveFailed')
-    return
+    return false
   }
+  initialDraftSnapshot.value = draftSnapshot()
   emit('saved')
   emit('close')
+  return true
 }
+
+useDirtyForm({
+  id: dirtyFormId,
+  isDirty: () => draftDirty.value,
+  save,
+  discard: close,
+})
 </script>
 
 <template>
@@ -238,7 +257,7 @@ function save() {
             <div v-for="(example, index) in draft.examples" :key="example.id" class="flex items-start gap-2">
               <input v-model="example.selected" type="checkbox" class="mt-3">
               <Textarea v-model="example.text" :rows="2" class="min-w-0" :placeholder="$t('editor.examplePlaceholder')" />
-              <Button variant="ghost" size="icon" class="h-9 w-9 shrink-0 text-red-500" :aria-label="$t('editor.removeExample')" @click="removeExample(draft, index)">
+              <Button variant="ghost" size="icon" class="h-11 w-11 shrink-0 text-red-500" :aria-label="$t('editor.removeExample')" @click="removeExample(draft, index)">
                 <Trash2 class="h-4 w-4" />
               </Button>
             </div>
@@ -291,6 +310,9 @@ function save() {
       <StatusMessage v-if="error" tone="error">
         {{ error }}
       </StatusMessage>
+    </div>
+
+    <template #footer>
       <DialogFooter>
         <Button variant="outline" @click="close">
           {{ $t('editor.cancel') }}
@@ -305,6 +327,6 @@ function save() {
           {{ $t('dictionary.confirmAdd') }}
         </Button>
       </DialogFooter>
-    </div>
+    </template>
   </Dialog>
 </template>

@@ -76,7 +76,7 @@ watch(() => props.modelValue, ensureSelectedAncestors, { immediate: true })
     <button
       v-if="includeAll"
       type="button"
-      class="flex min-h-10 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors"
+      class="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors"
       :class="selectedId === ALL_FOLDER_ID ? 'bg-ink-100 text-ink-950 dark:bg-ink-800 dark:text-ink-50' : 'text-ink-600 hover:bg-ink-100/80 dark:text-ink-300 dark:hover:bg-ink-800/80'"
       role="option"
       :aria-selected="selectedId === ALL_FOLDER_ID"
@@ -91,7 +91,7 @@ watch(() => props.modelValue, ensureSelectedAncestors, { immediate: true })
     <button
       v-if="includeRoot"
       type="button"
-      class="flex min-h-10 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors"
+      class="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors"
       :class="selectedId === ALL_FOLDER_ID ? 'bg-accent-primary/10 text-accent-primary' : 'text-ink-700 hover:bg-ink-100/80 dark:text-ink-200 dark:hover:bg-ink-800/80'"
       role="option"
       :aria-selected="selectedId === ALL_FOLDER_ID"

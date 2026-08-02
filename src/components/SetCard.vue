@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { LibrarySet, VocabFolder } from '@/types'
-import { onClickOutside } from '@vueuse/core'
 import { ArrowRight, Ellipsis, Flame, Folder, FolderOpen, PencilLine, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -11,6 +10,7 @@ import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import MetricPill from './ui/metric-pill/MetricPill.vue'
+import Menu from './ui/popover/Menu.vue'
 
 const props = defineProps<{
   set: LibrarySet
@@ -29,11 +29,6 @@ const { t } = useI18n()
 const learningStore = useLearningStore()
 const libraryStore = useLibraryStore()
 const menuOpen = ref(false)
-const menuRef = ref<HTMLElement | null>(null)
-
-onClickOutside(menuRef, () => {
-  menuOpen.value = false
-})
 
 const wordCount = computed(() => libraryStore.getSetStudyWords(props.set.id).length)
 const dueCount = computed(() => learningStore.getDueCount(props.set.id))
@@ -92,46 +87,42 @@ function moveSet(folderId: string) {
         </p>
       </div>
 
-      <div ref="menuRef" class="relative z-30 shrink-0" @click.stop>
-        <Button
-          variant="ghost"
-          size="icon"
-          class="h-8 w-8"
-          :aria-label="t('setCard.actions')"
-          aria-haspopup="menu"
-          :aria-expanded="menuOpen"
-          @click="menuOpen = !menuOpen"
-        >
-          <Ellipsis class="h-4 w-4" />
-        </Button>
+      <Menu v-model:open="menuOpen" align="end" :max-height="288" width-class="w-64" @click.stop>
+        <template #trigger="{ open, toggle, menuId }">
+          <Button
+            variant="ghost"
+            size="icon"
+            class="h-11 w-11"
+            :aria-label="t('setCard.actions')"
+            aria-haspopup="menu"
+            :aria-expanded="open"
+            :aria-controls="open ? menuId : undefined"
+            @click="toggle"
+          >
+            <Ellipsis class="h-4 w-4" />
+          </Button>
+        </template>
+        <button type="button" class="flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-bold text-ink-800 transition-colors hover:bg-ink-100/80 dark:text-ink-200 dark:hover:bg-ink-800/80" role="menuitem" @click="editSet">
+          <PencilLine class="h-4 w-4 text-ink-500" />
+          {{ t('setCard.edit') }}
+        </button>
 
-        <div
-          v-if="menuOpen"
-          class="absolute right-0 top-full z-50 mt-2 max-h-72 w-64 overflow-y-auto rounded-2xl border border-ink-200/80 bg-white/95 p-1.5 text-left shadow-floating backdrop-blur-xl dark:border-ink-700/80 dark:bg-ink-950/95"
-          role="menu"
-        >
-          <button type="button" class="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-bold text-ink-800 transition-colors hover:bg-ink-100/80 dark:text-ink-200 dark:hover:bg-ink-800/80" role="menuitem" @click="editSet">
-            <PencilLine class="h-4 w-4 text-ink-500" />
-            {{ t('setCard.edit') }}
-          </button>
+        <div class="my-1 border-t border-ink-200/70 dark:border-ink-700/70" />
+        <p class="px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-400 dark:text-ink-500">
+          {{ t('setCard.moveFolder') }}
+        </p>
+        <button v-for="folder in folderOptions" :key="folder.id" type="button" class="flex min-h-11 w-full items-center gap-2 rounded-xl py-2.5 pr-3 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="set.folderId === folder.id ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" :style="{ paddingLeft: `${0.75 + folder.depth * 0.75}rem` }" role="menuitem" :disabled="set.folderId === folder.id" @click="moveSet(folder.id)">
+          <FolderOpen v-if="set.folderId === folder.id" class="h-4 w-4" />
+          <Folder v-else class="h-4 w-4" />
+          <span class="truncate">{{ folder.name }}</span>
+        </button>
 
-          <div class="my-1 border-t border-ink-200/70 dark:border-ink-700/70" />
-          <p class="px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-400 dark:text-ink-500">
-            {{ t('setCard.moveFolder') }}
-          </p>
-          <button v-for="folder in folderOptions" :key="folder.id" type="button" class="flex w-full items-center gap-2 rounded-xl py-2.5 pr-3 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="set.folderId === folder.id ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" :style="{ paddingLeft: `${0.75 + folder.depth * 0.75}rem` }" role="menuitem" :disabled="set.folderId === folder.id" @click="moveSet(folder.id)">
-            <FolderOpen v-if="set.folderId === folder.id" class="h-4 w-4" />
-            <Folder v-else class="h-4 w-4" />
-            <span class="truncate">{{ folder.name }}</span>
-          </button>
-
-          <div class="my-1 border-t border-ink-200/70 dark:border-ink-700/70" />
-          <button type="button" class="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-bold text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/20" role="menuitem" @click="deleteSet">
-            <Trash2 class="h-4 w-4" />
-            {{ t('setCard.delete') }}
-          </button>
-        </div>
-      </div>
+        <div class="my-1 border-t border-ink-200/70 dark:border-ink-700/70" />
+        <button type="button" class="flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-bold text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/20" role="menuitem" @click="deleteSet">
+          <Trash2 class="h-4 w-4" />
+          {{ t('setCard.delete') }}
+        </button>
+      </Menu>
     </div>
 
     <div class="mt-4 flex flex-wrap gap-2">

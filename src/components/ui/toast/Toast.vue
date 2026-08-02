@@ -1,11 +1,19 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
+import { LAYERS } from '@/constants/layers'
+
+const props = withDefaults(defineProps<{
   message: string
   visible: boolean
+  actionLabel?: string
   class?: string
 }>(), {
+  actionLabel: '',
   class: '',
 })
+
+const emit = defineEmits<{
+  action: []
+}>()
 </script>
 
 <template>
@@ -22,10 +30,14 @@ withDefaults(defineProps<{
         v-if="visible"
         role="status"
         aria-live="polite"
-        class="fixed inset-x-0 bottom-8 z-[70] mx-auto w-fit max-w-sm rounded-[20px] bg-white/95 dark:bg-ink-100/95 text-ink-950 dark:text-ink-50 px-5 py-3 text-xs sm:text-sm font-semibold shadow-2xl border border-ink-200/40 dark:border-ink-200/10 flex items-center justify-center gap-2.5 backdrop-blur-xl"
+        class="fixed inset-x-0 bottom-8 mx-auto w-fit max-w-sm rounded-[20px] bg-white/95 dark:bg-ink-100/95 text-ink-950 dark:text-ink-50 px-5 py-3 text-xs sm:text-sm font-semibold shadow-2xl border border-ink-200/40 dark:border-ink-200/10 flex items-center justify-center gap-2.5 backdrop-blur-xl"
+        :style="{ zIndex: LAYERS.toast }"
       >
-        <span class="inline-block h-2 w-2 rounded-full bg-accent-primary animate-pulse" />
-        {{ message }}
+        <span class="inline-block h-2 w-2 shrink-0 rounded-full bg-accent-primary animate-pulse" />
+        <span>{{ message }}</span>
+        <button v-if="props.actionLabel" type="button" class="min-h-11 shrink-0 rounded-xl px-3 text-xs font-black text-accent-primary hover:bg-ink-100 dark:hover:bg-ink-800" @click="emit('action')">
+          {{ props.actionLabel }}
+        </button>
       </div>
     </Transition>
   </Teleport>

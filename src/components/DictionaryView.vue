@@ -98,7 +98,7 @@ function openAddDialog(entry: DictionaryEntry) {
         </Button>
       </form>
       <div v-if="localMatches.length" class="mt-4 flex flex-wrap gap-2">
-        <button v-for="word in localMatches" :key="word.wordKey" type="button" class="rounded-full bg-ink-100 px-3 py-1.5 text-xs font-semibold text-ink-600 transition-colors hover:bg-ink-200 dark:bg-ink-900 dark:text-ink-300" @click="selectLocalWord(word)">
+        <button v-for="word in localMatches" :key="word.wordKey" type="button" class="min-h-11 rounded-full bg-ink-100 px-3 py-1.5 text-xs font-semibold text-ink-600 transition-colors hover:bg-ink-200 dark:bg-ink-900 dark:text-ink-300" @click="selectLocalWord(word)">
           {{ $t('dictionary.localMatchSummary', { word: word.word, count: word.senses.length }) }}
         </button>
       </div>
@@ -200,6 +200,16 @@ function openAddDialog(entry: DictionaryEntry) {
         </div>
       </Card>
     </div>
+
+    <Card v-if="!entries.length && !selectedWord && !error && !loading" class="p-8 text-center">
+      <Search class="mx-auto h-8 w-8 text-accent-primary" />
+      <h2 class="mt-4 text-lg font-black">
+        {{ $t('dictionary.emptyTitle') }}
+      </h2>
+      <p class="mx-auto mt-2 max-w-md text-sm font-semibold leading-relaxed text-ink-500">
+        {{ $t('dictionary.emptyDescription') }}
+      </p>
+    </Card>
 
     <DictionaryAddDialog
       v-if="addEntry"

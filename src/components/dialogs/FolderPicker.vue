@@ -7,8 +7,8 @@ import { useFolderCreation } from '@/lib/use-folder-creation'
 import { useLibraryStore } from '@/stores/library'
 import FolderTree from '../FolderTree.vue'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import Input from '../ui/input/Input.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 
@@ -97,7 +97,8 @@ watch(() => props.modelValue, (value) => {
             {{ $t('library.folderCreateHint') }}
           </p>
         </div>
-
+      </div>
+      <template #footer>
         <DialogFooter>
           <Button variant="outline" @click="closeDialog">
             {{ $t('editor.cancel') }}
@@ -106,7 +107,7 @@ watch(() => props.modelValue, (value) => {
             {{ $t('library.folderSelectConfirm') }}
           </Button>
         </DialogFooter>
-      </div>
+      </template>
     </Dialog>
   </div>
 </template>

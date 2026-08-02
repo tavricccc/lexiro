@@ -1,5 +1,6 @@
+import type { DirtyFormController } from '@/lib/dirty-form'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, reactive, ref, shallowRef } from 'vue'
 import { UI_STORAGE_KEY } from '@/constants'
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
@@ -10,6 +11,8 @@ export const useUIStore = defineStore('ui', () => {
   const theme = ref<'light' | 'dark'>('light')
   const toastMessage = ref('')
   const toastVisible = ref(false)
+  const toastActionLabel = ref('')
+  const toastAction = shallowRef<(() => void) | null>(null)
   const confirmOpen = ref(false)
   const confirmTitle = ref('')
   const confirmMessage = ref('')
@@ -23,8 +26,12 @@ export const useUIStore = defineStore('ui', () => {
   const versionUpdatePending = ref(false)
   const versionUpdateReady = ref(false)
   const versionUpdateLoading = ref(false)
+  const versionUpdateError = ref('')
   const sidebarExpanded = ref(true)
   const questionCountPreference = ref(5)
+  const dirtyForms = reactive(new Map<string, DirtyFormController>())
+  const dirtyFormCount = computed(() => Array.from(dirtyForms.values()).filter(form => form.isDirty()).length)
+  const hasDirtyForms = computed(() => dirtyFormCount.value > 0)
   let themeMediaQuery: MediaQueryList | null = null
   let themeListener: ((event: MediaQueryListEvent) => void) | null = null
 
@@ -32,14 +39,53 @@ export const useUIStore = defineStore('ui', () => {
   let guestDataResolver: ((value: GuestDataDecision) => void) | null = null
   let toastTimer: ReturnType<typeof setTimeout> | null = null
 
-  function showToast(message: string) {
+  function showToast(message: string, options?: { actionLabel?: string, action?: () => void, duration?: number }) {
     toastMessage.value = message
     toastVisible.value = true
+    toastActionLabel.value = options?.actionLabel ?? ''
+    toastAction.value = options?.action ?? null
     if (toastTimer)
       clearTimeout(toastTimer)
     toastTimer = setTimeout(() => {
       toastVisible.value = false
-    }, 2200)
+      toastActionLabel.value = ''
+      toastAction.value = null
+    }, options?.duration ?? 2200)
+  }
+
+  function triggerToastAction() {
+    const action = toastAction.value
+    toastVisible.value = false
+    toastActionLabel.value = ''
+    toastAction.value = null
+    if (toastTimer)
+      clearTimeout(toastTimer)
+    if (action)
+      action()
+  }
+
+  function registerDirtyForm(controller: DirtyFormController): () => void {
+    dirtyForms.set(controller.id, controller)
+    return () => {
+      dirtyForms.delete(controller.id)
+    }
+  }
+
+  async function saveDirtyForms(): Promise<boolean> {
+    for (const form of dirtyForms.values()) {
+      if (!form.isDirty())
+        continue
+      if (!await form.save() || form.isDirty())
+        return false
+    }
+    return true
+  }
+
+  function discardDirtyForms() {
+    for (const form of dirtyForms.values()) {
+      if (form.isDirty())
+        form.discard()
+    }
   }
 
   function showConfirm(
@@ -139,6 +185,8 @@ export const useUIStore = defineStore('ui', () => {
 
   function setVersionUpdateAvailable(value: boolean) {
     versionUpdateAvailable.value = value
+    if (value)
+      versionUpdateError.value = ''
   }
 
   function setVersionUpdatePending(value: boolean) {
@@ -153,10 +201,15 @@ export const useUIStore = defineStore('ui', () => {
     versionUpdateLoading.value = value
   }
 
+  function setVersionUpdateError(value: string) {
+    versionUpdateError.value = value
+  }
+
   return {
     theme,
     toastMessage,
     toastVisible,
+    toastActionLabel,
     confirmOpen,
     confirmTitle,
     confirmMessage,
@@ -170,10 +223,17 @@ export const useUIStore = defineStore('ui', () => {
     versionUpdatePending,
     versionUpdateReady,
     versionUpdateLoading,
+    versionUpdateError,
     sidebarExpanded,
     questionCountPreference,
+    dirtyFormCount,
+    hasDirtyForms,
     loadState,
     showToast,
+    triggerToastAction,
+    registerDirtyForm,
+    saveDirtyForms,
+    discardDirtyForms,
     showConfirm,
     resolveConfirm,
     showGuestDataWarning,
@@ -187,5 +247,6 @@ export const useUIStore = defineStore('ui', () => {
     setVersionUpdatePending,
     setVersionUpdateReady,
     setVersionUpdateLoading,
+    setVersionUpdateError,
   }
 })

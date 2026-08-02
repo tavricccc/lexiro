@@ -43,9 +43,40 @@ const router = createRouter({
     },
     {
       path: '/set/:setId',
-      name: 'set-study',
-      component: () => import('@/components/SetStudyView.vue'),
+      redirect: to => ({ name: 'set-overview', params: { setId: to.params.setId } }),
+    },
+    {
+      path: '/set/:setId',
+      component: () => import('@/components/set/SetShell.vue'),
       props: true,
+      children: [
+        {
+          path: 'overview',
+          name: 'set-overview',
+          component: () => import('@/components/set/SetOverviewPanel.vue'),
+          props: true,
+        },
+        {
+          path: 'words',
+          name: 'set-words',
+          component: () => import('@/components/set/SetWordsPanel.vue'),
+          props: true,
+          children: [
+            {
+              path: ':wordKey',
+              name: 'set-word',
+              component: () => import('@/components/set/SetWordDetail.vue'),
+              props: true,
+            },
+          ],
+        },
+        {
+          path: 'questions',
+          name: 'set-questions',
+          component: () => import('@/components/set/SetQuestionsPanel.vue'),
+          props: true,
+        },
+      ],
     },
     {
       path: '/set/:setId/questions/generate',

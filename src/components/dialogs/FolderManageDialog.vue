@@ -8,8 +8,8 @@ import { ALL_FOLDER_ID } from '@/lib/folders'
 import { useLibraryStore } from '@/stores/library'
 import FolderTree from '../FolderTree.vue'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import Input from '../ui/input/Input.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 
@@ -83,6 +83,8 @@ async function remove() {
       <StatusMessage v-if="error" tone="error">
         {{ error }}
       </StatusMessage>
+    </div>
+    <template #footer>
       <DialogFooter>
         <Button variant="ghost" class="mr-auto text-red-500" @click="remove">
           {{ $t('library.folderDelete') }}
@@ -94,6 +96,6 @@ async function remove() {
           {{ $t('editor.save') }}
         </Button>
       </DialogFooter>
-    </div>
+    </template>
   </Dialog>
 </template>

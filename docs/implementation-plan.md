@@ -2,6 +2,7 @@
 
 > 這份文件是下一個實作視窗的工作說明。
 > 所有產品決策以 [product-decisions.md](./product-decisions.md) 為最高優先；本文件只把已確認的決策整理成實作順序。
+> UI／UX 的資訊架構、Dialog、overlay、響應式與驗收細節另見 [ui-ux-redesign-plan.md](./ui-ux-redesign-plan.md)。
 
 ## 1. 實作前提
 

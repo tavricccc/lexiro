@@ -40,7 +40,7 @@ const selected = computed(() => props.selectable && props.selectedId === props.f
       <button
         v-if="children.length"
         type="button"
-        class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-ink-400 hover:bg-white/80 dark:hover:bg-ink-700"
+        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-ink-400 hover:bg-white/80 dark:hover:bg-ink-700"
         :aria-label="expanded ? $t('library.folderCollapse') : $t('library.folderExpand')"
         :title="expanded ? $t('library.folderCollapse') : $t('library.folderExpand')"
         @click.stop="emit('toggle', folder.id)"
@@ -51,7 +51,7 @@ const selected = computed(() => props.selectable && props.selectedId === props.f
       <span v-else class="h-7 w-7 shrink-0" aria-hidden="true" />
       <button
         type="button"
-        class="flex min-w-0 flex-1 items-center gap-2 py-1.5 text-left text-sm font-medium disabled:cursor-not-allowed"
+        class="flex min-h-11 min-w-0 flex-1 items-center gap-2 py-1.5 text-left text-sm font-medium disabled:cursor-not-allowed"
         :disabled="!selectable"
         :title="selectable ? undefined : $t('library.folderCannotContainFolders')"
         @click="emit('select', folder.id)"
@@ -61,10 +61,10 @@ const selected = computed(() => props.selectable && props.selectedId === props.f
         <span class="truncate">{{ folder.name }}</span>
       </button>
       <div v-if="showActions && folder.id !== UNCATEGORIZED_FOLDER_ID" class="flex shrink-0 gap-0.5 opacity-100 transition-opacity">
-        <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-ink-400 hover:bg-white/80 hover:text-accent-primary dark:hover:bg-ink-700" :aria-label="$t('library.folderEdit')" :title="$t('library.folderEdit')" @click.stop="emit('edit', folder.id)">
+        <button type="button" class="flex h-11 w-11 items-center justify-center rounded-md text-ink-400 hover:bg-white/80 hover:text-accent-primary dark:hover:bg-ink-700" :aria-label="$t('library.folderEdit')" :title="$t('library.folderEdit')" @click.stop="emit('edit', folder.id)">
           <Pencil class="h-3.5 w-3.5" />
         </button>
-        <button type="button" class="flex h-7 w-7 items-center justify-center rounded-md text-ink-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-950/20" :aria-label="$t('library.folderDelete')" :title="$t('library.folderDelete')" @click.stop="emit('delete', folder.id)">
+        <button type="button" class="flex h-11 w-11 items-center justify-center rounded-md text-ink-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-950/20" :aria-label="$t('library.folderDelete')" :title="$t('library.folderDelete')" @click.stop="emit('delete', folder.id)">
           <Trash2 class="h-3.5 w-3.5" />
         </button>
       </div>

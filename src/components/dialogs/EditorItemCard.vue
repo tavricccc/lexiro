@@ -26,7 +26,7 @@ function updateItem(item: EditorItem, patch: Partial<EditorItem>) {
       <p class="text-sm font-extrabold text-ink-950 dark:text-ink-50">
         {{ $t('editor.word') }} {{ itemIndex + 1 }}
       </p>
-      <Button variant="ghost" size="icon" class="h-8 w-8 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20" :aria-label="$t('editor.removeWord')" @click="$emit('remove')">
+      <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20" :aria-label="$t('editor.removeWord')" @click="$emit('remove')">
         <Trash2 class="h-4 w-4" />
       </Button>
     </div>

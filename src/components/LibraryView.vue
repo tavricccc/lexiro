@@ -75,7 +75,7 @@ function openBackupImport() {
 }
 
 function handleStudy(setId: string) {
-  void router.push({ name: 'set-study', params: { setId } })
+  void router.push({ name: 'set-overview', params: { setId } })
 }
 
 function moveSet(setId: string, folderId: string) {
@@ -152,7 +152,7 @@ function handleFolderDeleted() {
                 {{ $t('library.folderTitle') }}
               </p>
             </div>
-            <Button variant="ghost" size="icon" class="h-8 w-8" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
+            <Button variant="ghost" size="icon" class="h-11 w-11" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
               <Plus class="h-4 w-4" />
             </Button>
           </div>

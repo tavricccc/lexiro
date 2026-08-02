@@ -25,14 +25,17 @@ describe('set card actions menu', () => {
       },
     })
 
-    expect(wrapper.find('[role="menu"]').exists()).toBe(false)
+    expect(document.body.querySelector('[role="menu"]')).toBeNull()
     await wrapper.find('button[aria-label="單字集操作"]').trigger('click')
-    expect(wrapper.find('[role="menu"]').text()).toContain('編輯單字集')
-    expect(wrapper.find('[role="menu"]').text()).toContain('移動到資料夾')
-    expect(wrapper.find('[role="menu"]').text()).toContain('刪除單字集')
+    const menu = document.body.querySelector('[role="menu"]')
+    expect(menu?.textContent).toContain('編輯單字集')
+    expect(menu?.textContent).toContain('移動到資料夾')
+    expect(menu?.textContent).toContain('刪除單字集')
 
-    const folderButton = wrapper.findAll('[role="menuitem"]').find(button => button.text().includes('學校'))
-    await folderButton?.trigger('click')
+    const folderButton = Array.from(document.body.querySelectorAll<HTMLElement>('[role="menuitem"]'))
+      .find(button => button.textContent?.includes('學校'))
+    folderButton?.click()
     expect(wrapper.emitted('move')?.[0]).toEqual(['set-1', 'folder-1'])
+    wrapper.unmount()
   })
 })

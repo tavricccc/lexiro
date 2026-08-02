@@ -9,6 +9,12 @@ export interface WordSense {
   examples: string[]
 }
 
+export interface SenseEditValue {
+  pos: string
+  meaningZh: string
+  examples: string[]
+}
+
 export interface WordEntry {
   wordKey: string
   word: string

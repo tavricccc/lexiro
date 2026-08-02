@@ -1,7 +1,8 @@
-import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, StudyWord, VocabFolder, WordEntry, WordSense } from '@/types'
+import type { DashboardStats, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, SetMembership, StudyWord, VocabFolder, WordEntry, WordSense } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { LIBRARY_STORAGE_KEY } from '@/constants'
+import { cloneJson } from '@/lib/clone'
 import { ALL_FOLDER_ID, createUncategorizedFolder, normalizeFolderParentId, sortFolders, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { stableHash } from '@/lib/hash'
 import { i18n } from '@/lib/i18n'
@@ -20,6 +21,18 @@ const t = i18n.global.t
 export interface LibraryMergeResult {
   addedSets: number
   addedQuestions: number
+}
+
+interface LearningUndoState {
+  progress: LearningProgress
+  stats: DashboardStats
+}
+
+export interface SenseRemovalUndoSnapshot {
+  libraryBefore: LibraryState
+  libraryAfter: LibraryState
+  learningBefore: LearningUndoState | null
+  learningAfter: LearningUndoState | null
 }
 
 function emptyState(): LibraryState {
@@ -489,6 +502,51 @@ export const useLibraryStore = defineStore('library', () => {
     return true
   }
 
+  function captureLearningUndoState(): LearningUndoState | null {
+    const learningStore = useLearningStore()
+    if (!learningStore.loaded)
+      return null
+    return {
+      progress: cloneJson(learningStore.progress),
+      stats: cloneJson(learningStore.stats),
+    }
+  }
+
+  function removeSenseFromSetWithUndo(setId: string, wordKey: string, senseId: string): SenseRemovalUndoSnapshot | null {
+    if (!getMembership(setId, wordKey)?.senseIds.includes(senseId))
+      return null
+    const libraryBefore = cloneJson(state.value)
+    const learningBefore = captureLearningUndoState()
+    if (!removeSenseFromSet(setId, wordKey, senseId))
+      return null
+    return {
+      libraryBefore,
+      libraryAfter: cloneJson(state.value),
+      learningBefore,
+      learningAfter: captureLearningUndoState(),
+    }
+  }
+
+  function restoreSenseRemoval(snapshot: SenseRemovalUndoSnapshot): boolean {
+    if (stableHash(state.value) !== stableHash(snapshot.libraryAfter))
+      return false
+
+    const learningStore = useLearningStore()
+    const currentLearning = captureLearningUndoState()
+    if (snapshot.learningAfter && (!currentLearning || stableHash(currentLearning) !== stableHash(snapshot.learningAfter)))
+      return false
+
+    state.value = cloneJson(snapshot.libraryBefore)
+    saveToStorage(LIBRARY_STORAGE_KEY, state.value)
+    if (snapshot.learningBefore) {
+      if (!learningStore.loaded)
+        return false
+      learningStore.replaceProgress(cloneJson(snapshot.learningBefore.progress))
+      learningStore.replaceStats(cloneJson(snapshot.learningBefore.stats))
+    }
+    return true
+  }
+
   function getQuestionSetIds(question: LibraryQuestion): string[] {
     return state.value.sets
       .filter((set) => {
@@ -747,6 +805,8 @@ export const useLibraryStore = defineStore('library', () => {
     getSenseSetNames,
     updateSense,
     removeSenseFromSet,
+    removeSenseFromSetWithUndo,
+    restoreSenseRemoval,
     getQuestionsFor,
     getQuestionSetIds,
     updateQuestion,

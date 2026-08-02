@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { MultipleChoiceQuestion, StudyWord } from '@/types'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, useId, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { canonicalizeQuestion, senseToStudyWord } from '@/lib/library'
 import { createAnswerOptions, createQuestionDifficultyOptions, createQuestionEditorTypeOptions } from '@/lib/question-options'
 import { parseAnswerIndex, parseQuestionDifficulty } from '@/lib/question-shape'
@@ -9,8 +10,8 @@ import { validateMultipleChoiceDraft } from '@/lib/question-validation'
 import { useLibraryStore } from '@/stores/library'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
-import DialogFooter from '../ui/dialog-footer/DialogFooter.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
+import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import Input from '../ui/input/Input.vue'
 import Select from '../ui/select/Select.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
@@ -32,6 +33,8 @@ const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
 const { t } = useI18n()
 const error = ref('')
+const initialDraftSnapshot = ref('')
+const dirtyFormId = `question-dialog-${useId().replace(/:/g, '-')}`
 
 const availableSenses = computed<StudyWord[]>(() => {
   const fromSet = props.setId
@@ -78,6 +81,7 @@ function createDraft(question: MultipleChoiceQuestion | null): MultipleChoiceQue
 function reset() {
   draft.value = createDraft(props.question)
   error.value = ''
+  initialDraftSnapshot.value = draftSnapshot()
 }
 
 watch([() => props.open, () => props.question], ([open]) => {
@@ -105,7 +109,13 @@ function setAnswer(value: string) {
     draft.value.answerIndex = answerIndex
 }
 
-async function save() {
+function draftSnapshot(): string {
+  return JSON.stringify(draft.value)
+}
+
+const draftDirty = computed(() => props.open && initialDraftSnapshot.value !== draftSnapshot())
+
+async function save(): Promise<boolean> {
   error.value = ''
   const prompt = draft.value.prompt.trim()
   const options = draft.value.options.map(option => option.trim())
@@ -117,19 +127,19 @@ async function save() {
   const validation = validateMultipleChoiceDraft(normalizedDraft)
   if (validation === 'englishOnly') {
     error.value = t('vocabulary.questionEnglishOnly')
-    return
+    return false
   }
   if (validation === 'fillBlankPrompt') {
     error.value = t('vocabulary.fillBlankPromptRequired')
-    return
+    return false
   }
   if (validation === 'standardPrompt') {
     error.value = t('vocabulary.standardPromptNoBlank')
-    return
+    return false
   }
   if (validation) {
     error.value = t('vocabulary.questionFieldsRequired')
-    return
+    return false
   }
 
   const normalized = canonicalizeQuestion({
@@ -147,21 +157,30 @@ async function save() {
         }),
       )
       if (!confirmed)
-        return
+        return false
     }
     if (!libraryStore.updateQuestion(normalized)) {
       error.value = t('vocabulary.questionSourceInvalid')
-      return
+      return false
     }
   }
   else if (!libraryStore.importQuestions([normalized])) {
     error.value = t('vocabulary.questionSourceInvalid')
-    return
+    return false
   }
 
+  initialDraftSnapshot.value = draftSnapshot()
   emit('saved')
   emit('close')
+  return true
 }
+
+useDirtyForm({
+  id: dirtyFormId,
+  isDirty: () => draftDirty.value,
+  save,
+  discard: () => emit('close'),
+})
 </script>
 
 <template>
@@ -204,6 +223,8 @@ async function save() {
         {{ $t('library.correctAnswer') }}
         <Select :model-value="String(draft.answerIndex)" :options="answerOptions" class="mt-2" @update:model-value="setAnswer" />
       </label>
+    </div>
+    <template #footer>
       <DialogFooter>
         <Button variant="outline" @click="emit('close')">
           {{ $t('editor.cancel') }}
@@ -212,6 +233,6 @@ async function save() {
           {{ $t('editor.save') }}
         </Button>
       </DialogFooter>
-    </div>
+    </template>
   </Dialog>
 </template>

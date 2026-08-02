@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Download, FileArchive, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+import { useDirtyForm } from '@/lib/dirty-form'
 import { useBackupStore } from '@/stores/backup'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
@@ -26,6 +28,23 @@ const {
   zipImportError,
 } = storeToRefs(backupStore)
 const { resetZipImportState, handleZipImportChange, applyZipImport, exportFullBackup } = backupStore
+const transferDirty = computed(() => transferOpen.value && Boolean(zipImportName.value || zipImportPreview.value || zipImportError.value || zipImportKind.value))
+
+function saveTransfer(): boolean {
+  return !transferDirty.value || applyZipImport()
+}
+
+function discardTransfer() {
+  resetZipImportState()
+  closeTransfer()
+}
+
+useDirtyForm({
+  id: 'backup-transfer',
+  isDirty: () => transferDirty.value,
+  save: saveTransfer,
+  discard: discardTransfer,
+})
 </script>
 
 <template>
