@@ -3,6 +3,10 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { assertFails, assertSucceeds, initializeTestEnvironment } from '@firebase/rules-unit-testing'
 import { afterAll, beforeAll, describe, it } from 'vitest'
+import { defaultAiSettings, getShareableAiSettings } from '@/lib/ai-provider'
+import { buildLibraryChunks, validateLibraryChunk } from '@/lib/cloud-sync-schema'
+import { prepareFirestoreData } from '@/lib/firestore-data'
+import { createDefaultStats } from '@/lib/learning-defaults'
 
 const rulesEnabled = Boolean(process.env.FIRESTORE_EMULATOR_HOST)
 const rulesDescribe = rulesEnabled ? describe : describe.skip
@@ -67,5 +71,51 @@ rulesDescribe('Firestore security rules', () => {
     await assertSucceeds(alice.doc('users/alice/library/words-001').set(payload))
     await assertFails(bob.doc('users/alice/library/words-001').get())
     await assertFails(alice.doc('users/alice/library/words-001').update({ schemaVersion: 2 }))
+  })
+
+  it('accepts every production chunk for a newly created local set', async () => {
+    const alice = testEnv.authenticatedContext('alice').firestore()
+    const timestamp = '2026-08-02T00:00:00.000Z'
+    const chunks = buildLibraryChunks('alice', {
+      version: 1,
+      words: {
+        apple: { wordKey: 'apple', word: 'apple', senses: [{ id: 'sense-1', pos: 'n.', meaningZh: '蘋果', examples: [] }], updatedAt: timestamp },
+      },
+      sets: [{ id: 'set-1', setName: 'Fresh set', folderId: '__uncategorized__', createdAt: timestamp, updatedAt: timestamp }],
+      memberships: { 'set-1': [{ wordKey: 'apple', senseIds: ['sense-1'] }] },
+      folders: [{ id: '__uncategorized__', name: '未分類', parentId: undefined, order: -1, createdAt: timestamp, updatedAt: timestamp }],
+      questions: [],
+      updatedAt: timestamp,
+    })
+
+    for (const chunk of chunks) {
+      const reference = alice.doc(`users/alice/library/${chunk.chunkId}`)
+      await assertSucceeds(reference.set(prepareFirestoreData(chunk)))
+      const snapshot = await assertSucceeds(reference.get())
+      validateLibraryChunk(snapshot.data(), 'alice', chunk.chunkId)
+    }
+  })
+
+  it('accepts production progress, stats, and shareable AI settings envelopes', async () => {
+    const alice = testEnv.authenticatedContext('alice').firestore()
+    const timestamp = '2026-08-02T00:00:00.000Z'
+    await assertSucceeds(alice.doc('users/alice/progress/global').set({
+      cards: {},
+      updatedAt: timestamp,
+      ownerId: 'alice',
+      schemaVersion: 3,
+    }))
+    await assertSucceeds(alice.doc('users/alice/stats/summary').set({
+      ...createDefaultStats(),
+      updatedAt: timestamp,
+      ownerId: 'alice',
+      schemaVersion: 3,
+    }))
+    await assertSucceeds(alice.doc('users/alice/settings/ai').set({
+      ...getShareableAiSettings(defaultAiSettings),
+      updatedAt: timestamp,
+      ownerId: 'alice',
+      schemaVersion: 3,
+    }))
   })
 })

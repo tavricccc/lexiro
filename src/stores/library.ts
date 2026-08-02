@@ -550,7 +550,7 @@ export const useLibraryStore = defineStore('library', () => {
     const folder: VocabFolder = {
       id: `folder-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
       name: normalizedName,
-      parentId: normalizedParentId,
+      ...(normalizedParentId ? { parentId: normalizedParentId } : {}),
       order: state.value.folders.filter(item => item.parentId === normalizedParentId).length,
       createdAt: now,
       updatedAt: now,
@@ -587,7 +587,12 @@ export const useLibraryStore = defineStore('library', () => {
       return false
     if (state.value.folders.some(item => item.id !== folderId && item.parentId === nextParentId && item.name.trim().toLocaleLowerCase() === normalizedName.toLocaleLowerCase()))
       return false
-    state.value.folders = state.value.folders.map(item => item.id === folderId ? { ...item, name: normalizedName, parentId: nextParentId, updatedAt: new Date().toISOString() } : item)
+    state.value.folders = state.value.folders.map((item) => {
+      if (item.id !== folderId)
+        return item
+      const { parentId: _parentId, ...withoutParent } = item
+      return { ...withoutParent, name: normalizedName, ...(nextParentId ? { parentId: nextParentId } : {}), updatedAt: new Date().toISOString() }
+    })
     touch()
     return true
   }
@@ -628,7 +633,9 @@ export const useLibraryStore = defineStore('library', () => {
     for (const folder of incoming.folders) {
       if (existingFolderIds.has(folder.id))
         continue
-      nextFolders.push({ ...folder, parentId: normalizeFolderParentId(folder.parentId) })
+      const parentId = normalizeFolderParentId(folder.parentId)
+      const { parentId: _parentId, ...withoutParent } = folder
+      nextFolders.push({ ...withoutParent, ...(parentId ? { parentId } : {}) })
       existingFolderIds.add(folder.id)
     }
 

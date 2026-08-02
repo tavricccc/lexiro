@@ -25,6 +25,7 @@ describe('firestore compare-and-set writes', () => {
     transaction.get.mockClear()
     transaction.set.mockClear()
     transaction.delete.mockClear()
+    runTransaction.mockClear()
     runTransaction.mockImplementation(async (...args: unknown[]) => {
       const update = args[1] as (value: typeof transaction) => Promise<unknown>
       return update(transaction)
@@ -36,6 +37,23 @@ describe('firestore compare-and-set writes', () => {
 
     expect(result).toEqual({ written: true })
     expect(transaction.set).toHaveBeenCalledWith(reference, { value: 2 })
+  })
+
+  it('omits undefined object properties before sending data to Firestore', async () => {
+    await setDocIfUnchanged(db, reference, hash(current), {
+      items: [{ id: 'root-folder', parentId: undefined }],
+    }, hash)
+
+    expect(transaction.set).toHaveBeenCalledWith(reference, {
+      items: [{ id: 'root-folder' }],
+    })
+  })
+
+  it('rejects undefined array items with a local path before opening a transaction', async () => {
+    await expect(setDocIfUnchanged(db, reference, hash(current), {
+      items: ['valid', undefined],
+    }, hash)).rejects.toThrow('document.items[1]')
+    expect(runTransaction).not.toHaveBeenCalled()
   })
 
   it('returns the current Cloud value without writing after a conflict', async () => {

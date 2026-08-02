@@ -121,12 +121,13 @@ function normalizeFolder(value: unknown, index: number): VocabFolder {
   const source = requiredObject(value, `folders[${index}]`)
   assertKnownKeys(source, ['id', 'name', 'parentId', 'order', 'createdAt', 'updatedAt'], `folders[${index}]`)
   const rawParentId = source.parentId === undefined ? undefined : requiredText(source.parentId, `folders[${index}].parentId`)
+  const parentId = normalizeFolderParentId(rawParentId)
   return {
     id: requiredText(source.id, `folders[${index}].id`),
     name: requiredText(source.name, `folders[${index}].name`),
     // Older local/cloud data could put folders below the uncategorized bucket.
     // Repair that shape while loading so those folders become root folders.
-    parentId: normalizeFolderParentId(rawParentId),
+    ...(parentId ? { parentId } : {}),
     order: requiredNumber(source.order, `folders[${index}].order`),
     createdAt: requiredText(source.createdAt, `folders[${index}].createdAt`),
     updatedAt: requiredText(source.updatedAt, `folders[${index}].updatedAt`),

@@ -1,7 +1,8 @@
 import type { Firestore } from 'firebase/firestore'
+import type { LibraryState } from '@/types'
 import { describe, expect, it, vi } from 'vitest'
 import { defaultAiSettings } from '@/lib/ai-provider'
-import { writeCloudAiSettings, writeCloudLearningState } from '@/lib/cloud-sync-remote'
+import { writeCloudAiSettings, writeCloudLearningState, writeCloudLibraryChunks } from '@/lib/cloud-sync-remote'
 import { createDefaultStats } from '@/lib/learning-defaults'
 
 const mockedCloud = vi.hoisted(() => ({
@@ -53,5 +54,28 @@ describe('cloud sync remote repository', () => {
     expect(mockedCloud.sets).toHaveLength(1)
     expect(mockedCloud.sets[0][1]).not.toHaveProperty('apiKey')
     expect(mockedCloud.sets[0][1]).toMatchObject({ model: 'cloud-model', ownerId: 'cloud-user', schemaVersion: 3 })
+  })
+
+  it('transports a fresh local set without undefined Firestore values', async () => {
+    setupSuccessfulTransaction()
+    const timestamp = '2026-08-02T00:00:00.000Z'
+    const library: LibraryState = {
+      version: 1,
+      words: {
+        apple: { wordKey: 'apple', word: 'apple', senses: [{ id: 'sense-1', pos: 'n.', meaningZh: '蘋果', examples: [] }], updatedAt: timestamp },
+      },
+      sets: [{ id: 'set-1', setName: 'Fresh set', folderId: '__uncategorized__', createdAt: timestamp, updatedAt: timestamp }],
+      memberships: { 'set-1': [{ wordKey: 'apple', senseIds: ['sense-1'] }] },
+      folders: [{ id: '__uncategorized__', name: '未分類', parentId: undefined, order: -1, createdAt: timestamp, updatedAt: timestamp }],
+      questions: [],
+      updatedAt: timestamp,
+    }
+
+    const result = await writeCloudLibraryChunks({} as Firestore, 'cloud-user', library, new Map())
+
+    expect(result.conflicted).toBe(false)
+    expect(mockedCloud.sets).toHaveLength(5)
+    for (const [, payload] of mockedCloud.sets)
+      expect(JSON.parse(JSON.stringify(payload))).toEqual(payload)
   })
 })

@@ -18,6 +18,7 @@ describe('cloud sync errors', () => {
     expect(syncErrorDetails({ code: 'permission-denied', message: 'Missing permissions' }).kind).toBe('permission')
     expect(syncErrorDetails(new Error('net::ERR_BLOCKED_BY_CLIENT')).kind).toBe('blocked-client')
     expect(syncErrorDetails({ code: 'unavailable', message: 'Network unavailable' }).kind).toBe('network')
+    expect(syncErrorDetails({ code: 'invalid-argument', message: 'Unsupported field value: undefined' }).kind).toBe('cloud-data')
   })
 
   it('only retries transient and unknown failures', () => {

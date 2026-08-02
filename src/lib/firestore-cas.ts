@@ -1,5 +1,6 @@
 import type { DocumentData, DocumentReference, Firestore } from 'firebase/firestore'
 import { runTransaction } from 'firebase/firestore'
+import { prepareFirestoreData } from './firestore-data'
 
 export type ConditionalWriteResult = (
   | { written: true }
@@ -9,12 +10,13 @@ export type ConditionalWriteResult = (
 type CloudHash = (value: unknown | null) => string
 
 export async function setDocIfUnchanged(db: Firestore, reference: DocumentReference<DocumentData>, expectedHash: string, payload: DocumentData, hash: CloudHash): Promise<ConditionalWriteResult> {
+  const firestorePayload = prepareFirestoreData(payload)
   return runTransaction(db, async (transaction) => {
     const snapshot = await transaction.get(reference)
     const current = snapshot.exists() ? snapshot.data() : null
     if (hash(current) !== expectedHash)
       return { written: false, current }
-    transaction.set(reference, payload)
+    transaction.set(reference, firestorePayload)
     return { written: true }
   })
 }

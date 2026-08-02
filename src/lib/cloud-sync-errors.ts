@@ -67,6 +67,8 @@ export function syncErrorDetails(error: unknown): SyncErrorDetails {
     return { code, kind: 'outbox', message }
   if (code === 'cloud/not-configured')
     return { code, kind: 'not-configured', message }
+  if (normalized.includes('invalid-argument') || normalized.includes('unsupported field value'))
+    return { code, kind: 'cloud-data', message }
   if (normalized.includes('err_blocked_by_client') || normalized.includes('blocked by client'))
     return { code, kind: 'blocked-client', message }
   if (normalized.includes('app check') || normalized.includes('appcheck') || normalized.includes('recaptcha') || normalized.includes('token is invalid'))

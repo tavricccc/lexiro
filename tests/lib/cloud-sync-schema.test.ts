@@ -1,5 +1,6 @@
 import type { LibraryState } from '@/types'
 import { describe, expect, it } from 'vitest'
+import { MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
 import { buildLibraryChunks, combineLibraryChunks, normalizeCloudAiSettings, validateLibraryChunk } from '@/lib/cloud-sync-schema'
 import { createUncategorizedFolder } from '@/lib/folders'
 
@@ -51,6 +52,22 @@ describe('cloud sync schema', () => {
       members: [{ wordKey: 'apple', senseIds: ['sense-1'] }],
     }])
     expect(combineLibraryChunks(chunks)).toEqual(populated)
+  })
+
+  it('rejects an individual record that cannot fit in a Cloud chunk', () => {
+    const oversized: LibraryState = {
+      ...library,
+      words: {
+        huge: {
+          wordKey: 'huge',
+          word: 'huge',
+          senses: [{ id: 'sense-1', pos: 'n.', meaningZh: '大', examples: ['x'.repeat(MAX_LIBRARY_CHUNK_BYTES)] }],
+          updatedAt: library.updatedAt,
+        },
+      },
+    }
+
+    expect(() => buildLibraryChunks('user-1', oversized)).toThrow('單筆資料超過大小限制')
   })
 
   it('normalizes Cloud AI settings without accepting a device key', () => {

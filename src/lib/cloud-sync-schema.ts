@@ -22,7 +22,10 @@ export function buildLibraryChunks(uid: string, library: LibraryState): Firestor
     let sectionIndex = 0
     for (const item of items) {
       const candidate = { ownerId: uid, schemaVersion: CLOUD_SCHEMA_VERSION, chunkId: '', updatedAt: library.updatedAt, checksum: '', section, items: [...current, item] } as FirestoreLibraryChunk
-      if (current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES) {
+      const candidateBytes = estimateJsonBytes(candidate)
+      if (!current.length && candidateBytes > MAX_LIBRARY_CHUNK_BYTES)
+        throw new CloudSyncError('cloud/data-invalid', `Cloud ${section} 單筆資料超過大小限制`)
+      if (current.length && candidateBytes > MAX_LIBRARY_CHUNK_BYTES) {
         chunks.push(candidateForSection(uid, library, section, current, sectionIndex))
         sectionIndex += 1
         current = []
