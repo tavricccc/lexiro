@@ -138,7 +138,7 @@ describe('store persistence', () => {
     await sessionStore.startRound('quiz', validSet.id)
     sessionStore.toggleReviewMark(0)
     sessionStore.handleQuizDraftChange(0, { selectedIndex: 0 })
-    sessionStore.submitCurrentRound()
+    await sessionStore.submitCurrentRound()
 
     expect(sessionStore.resultSummary?.markedCount).toBe(1)
     expect(sessionStore.currentSession?.markedForReview).toEqual([true])
