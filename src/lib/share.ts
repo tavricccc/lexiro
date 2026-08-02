@@ -1,6 +1,6 @@
 import type { DailyActivity, DashboardStats, FullBackupPayload, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, QuestionStatKey, QuestionStats, SetMembership, SetSharePayload, SharedSet, VocabFolder, WordEntry } from '@/types'
 import { normalizeShareableAiSettings } from './ai-provider'
-import { UNCATEGORIZED_FOLDER_ID } from './folders'
+import { normalizeFolderParentId, UNCATEGORIZED_FOLDER_ID } from './folders'
 import { QUESTION_STAT_KEYS } from './learning-defaults'
 import { normalizeWordKey } from './library'
 import { parseLibraryImportValue } from './library-import'
@@ -120,11 +120,13 @@ export function normalizeSharePayload(value: unknown): SetSharePayload {
 function normalizeFolder(value: unknown, index: number): VocabFolder {
   const source = requiredObject(value, `folders[${index}]`)
   assertKnownKeys(source, ['id', 'name', 'parentId', 'order', 'createdAt', 'updatedAt'], `folders[${index}]`)
-  const parentId = source.parentId === undefined ? undefined : requiredText(source.parentId, `folders[${index}].parentId`)
+  const rawParentId = source.parentId === undefined ? undefined : requiredText(source.parentId, `folders[${index}].parentId`)
   return {
     id: requiredText(source.id, `folders[${index}].id`),
     name: requiredText(source.name, `folders[${index}].name`),
-    parentId,
+    // Older local/cloud data could put folders below the uncategorized bucket.
+    // Repair that shape while loading so those folders become root folders.
+    parentId: normalizeFolderParentId(rawParentId),
     order: requiredNumber(source.order, `folders[${index}].order`),
     createdAt: requiredText(source.createdAt, `folders[${index}].createdAt`),
     updatedAt: requiredText(source.updatedAt, `folders[${index}].updatedAt`),

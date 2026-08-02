@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { buildFullBackupPayload, normalizeBackupPayload } from '@/lib/file'
 import { createUncategorizedFolder } from '@/lib/folders'
 import { buildSenseId } from '@/lib/library'
-import { normalizeFullBackupPayload } from '@/lib/share'
+import { normalizeFullBackupPayload, normalizeLibraryState } from '@/lib/share'
 
 const library: LibraryState = {
   version: 1,
@@ -55,6 +55,18 @@ const stats: DashboardStats = {
 }
 
 describe('full backup security', () => {
+  it('moves legacy folders out of the uncategorized bucket while loading', () => {
+    const normalized = normalizeLibraryState({
+      ...library,
+      folders: [
+        createUncategorizedFolder(),
+        { id: 'legacy-folder', name: 'Legacy', parentId: '__uncategorized__', order: 0, createdAt: '2026-08-01T00:00:00.000Z', updatedAt: '2026-08-01T00:00:00.000Z' },
+      ],
+    })
+
+    expect(normalized.folders.find(folder => folder.id === 'legacy-folder')?.parentId).toBeUndefined()
+  })
+
   it('accepts only the two canonical backup payload kinds', () => {
     expect(() => normalizeBackupPayload({ kind: 'unsupported-backup' })).toThrow('不支援的備份類型')
     expect(() => normalizeBackupPayload(null)).toThrow('備份內容格式錯誤')

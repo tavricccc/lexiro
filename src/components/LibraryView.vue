@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { VocabFolder } from '@/types'
-import { ClipboardPaste, FileQuestion, FolderOpen, Plus, Search, Upload } from 'lucide-vue-next'
+import { ChevronRight, ClipboardPaste, FileQuestion, Folder, FolderOpen, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ALL_FOLDER_ID } from '@/lib/folders'
+import { ALL_FOLDER_ID, getFolderChildren } from '@/lib/folders'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
@@ -41,6 +41,30 @@ const filteredSets = computed(() => {
   })
 })
 
+const currentFolder = computed(() => selectedFolderId.value === ALL_FOLDER_ID
+  ? null
+  : libraryStore.folders.find(folder => folder.id === selectedFolderId.value) ?? null)
+
+const currentFolderPath = computed(() => {
+  const byId = new Map(libraryStore.folders.map(folder => [folder.id, folder]))
+  const path: VocabFolder[] = []
+  let folder: VocabFolder | null = currentFolder.value
+  while (folder) {
+    path.unshift(folder)
+    folder = folder.parentId ? byId.get(folder.parentId) ?? null : null
+  }
+  return path
+})
+
+const visibleFolders = computed(() => getFolderChildren(
+  libraryStore.folders,
+  selectedFolderId.value === ALL_FOLDER_ID ? undefined : selectedFolderId.value,
+))
+
+function folderSetCount(folderId: string): number {
+  return sets.value.filter(set => set.folderId === folderId).length
+}
+
 function openAddSet() {
   void router.push({ name: 'set-create' })
 }
@@ -65,6 +89,14 @@ function openFolderManage(folderId: string) {
 function closeFolderManage() {
   folderManageOpen.value = false
   managedFolder.value = null
+}
+
+function openFolder(folderId: string) {
+  selectedFolderId.value = folderId
+}
+
+function handleFolderDeleted() {
+  selectedFolderId.value = ALL_FOLDER_ID
 }
 </script>
 
@@ -131,24 +163,47 @@ function closeFolderManage() {
               @delete="openFolderManage"
             />
           </div>
-          <Button variant="outline" class="mt-3 w-full justify-center gap-2" @click="folderCreateOpen = true">
-            <Plus class="h-4 w-4" />{{ $t('library.newFolder') }}
-          </Button>
         </aside>
 
         <div class="min-w-0">
           <Card class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p class="text-sm font-black">
-                {{ $t('library.collection') }}
+              <div class="flex flex-wrap items-center gap-1 text-sm font-black">
+                <button type="button" class="hover:text-accent-primary" @click="selectedFolderId = ALL_FOLDER_ID">
+                  {{ $t('library.allFolders') }}
+                </button>
+                <template v-for="folder in currentFolderPath" :key="folder.id">
+                  <ChevronRight class="h-3.5 w-3.5 text-ink-400" />
+                  <button type="button" class="hover:text-accent-primary" @click="openFolder(folder.id)">
+                    {{ folder.name }}
+                  </button>
+                </template>
+              </div>
+              <p class="mt-1 text-xs font-semibold text-ink-500">
+                {{ filteredSets.length }} {{ $t('library.setUnit') }} · {{ currentFolder?.name ?? $t('library.collection') }}
               </p><p class="mt-1 text-xs font-semibold text-ink-500">
-                {{ sets.length }} {{ $t('library.setUnit') }} · {{ totalWordCount }} {{ $t('home.wordUnit') }}
+                {{ totalWordCount }} {{ $t('home.wordUnit') }}
               </p>
             </div>
             <div class="relative w-full sm:max-w-sm">
               <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" /><Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
             </div>
           </Card>
+
+          <div v-if="!query.trim() && visibleFolders.length" class="mt-4 divide-y divide-ink-200/70 overflow-hidden rounded-2xl border border-ink-200/70 bg-white/70 dark:divide-ink-200/15 dark:border-ink-200/15 dark:bg-ink-900/40">
+            <button
+              v-for="folder in visibleFolders"
+              :key="folder.id"
+              type="button"
+              class="flex min-h-14 w-full items-center gap-3 px-4 text-left transition-colors hover:bg-ink-100/70 dark:hover:bg-ink-800/70"
+              @click="openFolder(folder.id)"
+            >
+              <Folder class="h-5 w-5 shrink-0 text-accent-primary" />
+              <span class="min-w-0 flex-1 truncate text-sm font-semibold text-ink-800 dark:text-ink-100">{{ folder.name }}</span>
+              <span class="text-xs font-semibold text-ink-400">{{ folderSetCount(folder.id) }} {{ $t('library.setUnit') }}</span>
+              <ChevronRight class="h-4 w-4 shrink-0 text-ink-400" />
+            </button>
+          </div>
 
           <div v-if="filteredSets.length" class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             <div v-for="(set, i) in filteredSets" :key="set.id" class="set-card-enter" :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }">
@@ -169,7 +224,7 @@ function closeFolderManage() {
         </div>
       </div>
       <FolderCreateDialog :open="folderCreateOpen" :parent-id="selectedFolderId" @close="folderCreateOpen = false" @created="selectedFolderId = $event" />
-      <FolderManageDialog :open="folderManageOpen" :folder="managedFolder" @close="closeFolderManage" @deleted="selectedFolderId = ALL_FOLDER_ID" />
+      <FolderManageDialog :open="folderManageOpen" :folder="managedFolder" @close="closeFolderManage" @deleted="handleFolderDeleted" />
     </template>
   </section>
 </template>

@@ -70,9 +70,15 @@ async function remove() {
   )
   if (!confirmed)
     return
+  const folderName = props.folder.name
   for (const setId of setIds)
     sessionStore.clearSessionsForSet(setId)
-  libraryStore.removeFolder(props.folder.id)
+  const removed = libraryStore.removeFolder(props.folder.id)
+  if (!removed.size) {
+    error.value = t('library.folderUpdateFailed')
+    return
+  }
+  uiStore.showToast(t('library.folderDeleted', { folder: folderName }))
   emit('deleted')
   close()
 }
@@ -90,7 +96,7 @@ async function remove() {
           {{ $t('library.folderParentLabel') }}
         </p>
         <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
-          <FolderTree v-model="parentId" :folders="folders" :include-root="true" :show-actions="false" />
+          <FolderTree v-model="parentId" :folders="folders" :include-root="true" :show-actions="false" :allow-uncategorized="false" />
         </div>
       </div>
       <StatusMessage v-if="error" tone="error">

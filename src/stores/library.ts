@@ -2,7 +2,7 @@ import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, StudyWor
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { LIBRARY_STORAGE_KEY } from '@/constants'
-import { ALL_FOLDER_ID, createUncategorizedFolder, sortFolders, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { ALL_FOLDER_ID, createUncategorizedFolder, normalizeFolderParentId, sortFolders, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { stableHash } from '@/lib/hash'
 import { i18n } from '@/lib/i18n'
 import { buildSenseId, canonicalizeQuestion, mergeUniqueStrings, mergeWord, normalizePartOfSpeech, normalizeWordKey, senseToStudyWord } from '@/lib/library'
@@ -539,7 +539,7 @@ export const useLibraryStore = defineStore('library', () => {
 
   function addFolder(name: string, parentId?: string): VocabFolder {
     const normalizedName = name.trim()
-    const normalizedParentId = parentId && parentId !== ALL_FOLDER_ID ? parentId : undefined
+    const normalizedParentId = normalizeFolderParentId(parentId)
     if (!normalizedName)
       throw new Error(t('library.folderNameRequired'))
     if (normalizedParentId && !state.value.folders.some(folder => folder.id === normalizedParentId))
@@ -582,7 +582,7 @@ export const useLibraryStore = defineStore('library', () => {
     const normalizedName = patch.name?.trim() ?? folder.name
     if (!normalizedName)
       return false
-    const nextParentId = patch.parentId && patch.parentId !== ALL_FOLDER_ID ? patch.parentId : undefined
+    const nextParentId = normalizeFolderParentId(patch.parentId)
     if (nextParentId && (!state.value.folders.some(item => item.id === nextParentId) || getFolderTreeIds(folderId).has(nextParentId)))
       return false
     if (state.value.folders.some(item => item.id !== folderId && item.parentId === nextParentId && item.name.trim().toLocaleLowerCase() === normalizedName.toLocaleLowerCase()))
@@ -628,7 +628,7 @@ export const useLibraryStore = defineStore('library', () => {
     for (const folder of incoming.folders) {
       if (existingFolderIds.has(folder.id))
         continue
-      nextFolders.push({ ...folder })
+      nextFolders.push({ ...folder, parentId: normalizeFolderParentId(folder.parentId) })
       existingFolderIds.add(folder.id)
     }
 

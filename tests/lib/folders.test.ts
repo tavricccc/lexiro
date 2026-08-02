@@ -28,6 +28,6 @@ describe('folder hierarchy helpers', () => {
 
     expect(options.find(option => option.id === UNCATEGORIZED_FOLDER_ID)).toMatchObject({ depth: 0, name: '未分類' })
     expect(folderParentIdFromSelection(ALL_FOLDER_ID)).toBeUndefined()
-    expect(folderParentIdFromSelection(UNCATEGORIZED_FOLDER_ID)).toBe(UNCATEGORIZED_FOLDER_ID)
+    expect(folderParentIdFromSelection(UNCATEGORIZED_FOLDER_ID)).toBeUndefined()
   })
 })

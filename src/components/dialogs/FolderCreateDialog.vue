@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { ALL_FOLDER_ID, folderParentIdFromSelection } from '@/lib/folders'
+import { ALL_FOLDER_ID, folderParentIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { useFolderCreation } from '@/lib/use-folder-creation'
 import { useLibraryStore } from '@/stores/library'
 import FolderTree from '../FolderTree.vue'
@@ -32,7 +32,9 @@ const { name, error, reset: resetCreation } = folderCreation
 
 function reset() {
   resetCreation()
-  selectedParentId.value = props.parentId && props.parentId !== ALL_FOLDER_ID ? props.parentId : ALL_FOLDER_ID
+  selectedParentId.value = props.parentId && props.parentId !== ALL_FOLDER_ID && props.parentId !== UNCATEGORIZED_FOLDER_ID
+    ? props.parentId
+    : ALL_FOLDER_ID
 }
 
 function createFolder() {
@@ -62,7 +64,7 @@ watch(() => props.open, (open) => {
           {{ $t('library.folderParentLabel') }}
         </p>
         <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
-          <FolderTree v-model="selectedParentId" :folders="libraryStore.folders" :include-root="true" :show-actions="false" />
+          <FolderTree v-model="selectedParentId" :folders="libraryStore.folders" :include-root="true" :show-actions="false" :allow-uncategorized="false" />
         </div>
       </div>
 

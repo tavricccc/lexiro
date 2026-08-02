@@ -14,12 +14,14 @@ const props = withDefaults(defineProps<{
   allLabel?: string
   rootLabel?: string
   showActions?: boolean
+  allowUncategorized?: boolean
 }>(), {
   includeAll: false,
   includeRoot: false,
   allLabel: '',
   rootLabel: '',
   showActions: true,
+  allowUncategorized: true,
 })
 
 const emit = defineEmits<{
@@ -108,6 +110,7 @@ watch(() => props.modelValue, ensureSelectedAncestors, { immediate: true })
       :selected-id="selectedId"
       :expanded-ids="expandedIds"
       :show-actions="showActions"
+      :selectable="allowUncategorized || folder.id !== UNCATEGORIZED_FOLDER_ID"
       @select="selectFolder"
       @toggle="toggleFolder"
       @edit="emit('edit', $event)"

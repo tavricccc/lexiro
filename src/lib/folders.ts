@@ -23,6 +23,17 @@ export function createUncategorizedFolder(): VocabFolder {
   }
 }
 
+/**
+ * The uncategorized bucket is a destination for sets, not a real parent
+ * folder. Treating it as a root selection keeps folder creation consistent
+ * with file-explorer semantics.
+ */
+export function normalizeFolderParentId(parentId?: string): string | undefined {
+  return parentId && parentId !== ALL_FOLDER_ID && parentId !== UNCATEGORIZED_FOLDER_ID
+    ? parentId
+    : undefined
+}
+
 export function sortFolders(folders: VocabFolder[]): VocabFolder[] {
   return [...folders].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name))
 }
@@ -61,5 +72,5 @@ export function folderIdFromSelection(value: string): string {
 }
 
 export function folderParentIdFromSelection(value: string): string | undefined {
-  return value && value !== ALL_FOLDER_ID ? value : undefined
+  return normalizeFolderParentId(value)
 }
