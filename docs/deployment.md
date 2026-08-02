@@ -1,10 +1,12 @@
 # GitHub Actions 部署
 
-lexiro 會在 `main` 分支 push 後自動執行 typecheck、lint、unit tests、Firestore Rules Emulator 測試與 production build。驗證成功後會同時：
+lexiro 會在 `main` 分支 push 後自動執行 typecheck、lint、unit tests、Firestore Rules Emulator 測試與 production build。驗證成功後依序：
 
 1. 在 GitHub Actions 內執行 `vercel build`，產生 prebuilt output。
-2. 將 prebuilt output 發布到 Vercel；Vercel 不會重新執行 build。
-3. 發布 `firestore.rules` 與 `firestore.indexes.json` 到 Firebase。
+2. 先發布 `firestore.rules` 與 `firestore.indexes.json` 到 Firebase。
+3. Rules 成功後才將 prebuilt output 發布到 Vercel；Vercel 不會重新執行 build。
+
+Rules 必須先於前端發布，避免新版 Cloud schema 已上線但 Firestore 仍使用舊規則。
 
 Workflow 位於 `.github/workflows/deploy.yml`。
 

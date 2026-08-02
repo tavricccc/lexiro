@@ -22,7 +22,7 @@ service cloud.firestore {
         ])
         && request.resource.data.cards is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 3;
+        && request.resource.data.schemaVersion == 4;
     }
 
     function validStats() {
@@ -55,7 +55,7 @@ service cloud.firestore {
         && request.resource.data.questionStatsBySense is map
         && request.resource.data.dailyHistory is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 3;
+        && request.resource.data.schemaVersion == 4;
     }
 
     function validSectionItems() {
@@ -70,7 +70,7 @@ service cloud.firestore {
         'ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items'
       ])
         && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 3
+        && request.resource.data.schemaVersion == 4
         && request.resource.data.chunkId == chunkId
         && request.resource.data.updatedAt is string
         && request.resource.data.checksum is string
@@ -79,9 +79,28 @@ service cloud.firestore {
         && validSectionItems();
     }
 
+    function validLibraryManifest() {
+      return request.resource.data.keys().hasOnly([
+        'ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks'
+      ])
+        && request.resource.data.ownerId is string
+        && request.resource.data.schemaVersion == 4
+        && request.resource.data.documentType == 'library-manifest'
+        && request.resource.data.updatedAt is string
+        && request.resource.data.revision is string
+        && request.resource.data.chunks is map;
+    }
+
     match /users/{uid} {
       allow read, delete: if signedIn(uid);
       allow create, update: if signedIn(uid) && request.resource.data.ownerId == uid;
+
+      match /library/manifest {
+        allow read: if signedIn(uid);
+        allow create: if ownerCreate(uid) && validLibraryManifest();
+        allow update: if ownerUpdate(uid) && validLibraryManifest();
+        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
+      }
 
       match /library/{chunkId} {
         allow read: if signedIn(uid);
@@ -116,7 +135,7 @@ service cloud.firestore {
           && request.resource.data.model is string
           && request.resource.data.batchSize is number
           && request.resource.data.updatedAt is string
-          && request.resource.data.schemaVersion == 3;
+          && request.resource.data.schemaVersion == 4;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 

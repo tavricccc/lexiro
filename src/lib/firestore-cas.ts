@@ -9,6 +9,46 @@ export type ConditionalWriteResult = (
 
 type CloudHash = (value: unknown | null) => string
 
+export interface AtomicDocumentWrite {
+  reference: DocumentReference<DocumentData>
+  expectedHash?: string
+  payload: DocumentData | null
+  hash?: CloudHash
+}
+
+export async function writeDocumentsIfUnchanged(db: Firestore, writes: AtomicDocumentWrite[]): Promise<boolean> {
+  const prepared = writes.map(write => ({
+    ...write,
+    payload: write.payload === null ? null : prepareFirestoreData(write.payload),
+  }))
+  return runTransaction(db, async (transaction) => {
+    const snapshots = await Promise.all(prepared.map(write => write.expectedHash === undefined ? null : transaction.get(write.reference)))
+    const matches = prepared.every((write, index) => {
+      const snapshot = snapshots[index]
+      if (write.expectedHash === undefined)
+        return true
+      if (!snapshot || !write.hash)
+        return false
+      if (write.payload === null && !snapshot.exists())
+        return true
+      const current = snapshot.exists() ? snapshot.data() : null
+      return write.hash(current) === write.expectedHash
+    })
+    if (!matches)
+      return false
+    for (const [index, write] of prepared.entries()) {
+      if (write.payload === null) {
+        if (!snapshots[index] || snapshots[index]?.exists())
+          transaction.delete(write.reference)
+      }
+      else {
+        transaction.set(write.reference, write.payload)
+      }
+    }
+    return true
+  })
+}
+
 export async function setDocIfUnchanged(db: Firestore, reference: DocumentReference<DocumentData>, expectedHash: string, payload: DocumentData, hash: CloudHash): Promise<ConditionalWriteResult> {
   const firestorePayload = prepareFirestoreData(payload)
   return runTransaction(db, async (transaction) => {

@@ -1,7 +1,7 @@
 import type { AiSettings, DashboardStats, LearningProgress, LibraryState } from '@/types'
 import { getShareableAiSettings } from './ai-provider'
 import { cloneJson } from './clone'
-import { stableHash } from './hash'
+import { canonicalHash } from './hash'
 
 export type SyncDomain = 'library' | 'learning' | 'settings'
 export type SyncRecords = Record<string, unknown>
@@ -22,27 +22,43 @@ function isObjectPayload(value: unknown): value is Record<string, unknown> {
 }
 
 function isMembershipPayload(value: unknown): value is LibraryState['memberships'][string] {
-  return Array.isArray(value) && value.every((membership) => {
+  return Array.isArray(value) && value.length > 0 && value.every((membership) => {
     if (!isObjectPayload(membership))
       return false
     return Object.keys(membership).every(key => key === 'wordKey' || key === 'senseIds')
       && typeof membership.wordKey === 'string'
+      && Boolean(membership.wordKey.trim())
       && Array.isArray(membership.senseIds)
-      && membership.senseIds.every(senseId => typeof senseId === 'string')
+      && membership.senseIds.length > 0
+      && membership.senseIds.every(senseId => typeof senseId === 'string' && Boolean(senseId.trim()))
   })
 }
 
+function hasRecordPrefix(recordKey: string, prefix: string): boolean {
+  return recordKey.startsWith(prefix) && Boolean(recordKey.slice(prefix.length).trim())
+}
+
+function isRecordKeyForDomain(domain: SyncDomain, recordKey: string): boolean {
+  if (domain === 'library')
+    return ['word:', 'set:', 'membership:', 'folder:', 'question:'].some(prefix => hasRecordPrefix(recordKey, prefix))
+  if (domain === 'learning')
+    return hasRecordPrefix(recordKey, 'card:') || recordKey === 'stats:summary'
+  return recordKey === 'settings:ai'
+}
+
 function isPayloadForRecord(domain: SyncDomain, recordKey: string, payload: unknown): boolean {
+  if (!isRecordKeyForDomain(domain, recordKey))
+    return false
   if (payload === null)
     return true
   if (domain === 'library') {
-    if (recordKey.startsWith('membership:'))
+    if (hasRecordPrefix(recordKey, 'membership:'))
       return isMembershipPayload(payload)
-    return ['word:', 'set:', 'folder:', 'question:'].some(prefix => recordKey.startsWith(prefix))
+    return ['word:', 'set:', 'folder:', 'question:'].some(prefix => hasRecordPrefix(recordKey, prefix))
       && isObjectPayload(payload)
   }
   if (domain === 'learning')
-    return (recordKey.startsWith('card:') || recordKey === 'stats:summary') && isObjectPayload(payload)
+    return (hasRecordPrefix(recordKey, 'card:') || recordKey === 'stats:summary') && isObjectPayload(payload)
   return recordKey === 'settings:ai' && isObjectPayload(payload)
 }
 
@@ -63,7 +79,7 @@ export function isSyncOutboxEntry(value: unknown): value is SyncOutboxEntry {
 }
 
 export function recordHash(value: unknown): string {
-  return stableHash(value ?? null)
+  return canonicalHash(value ?? null)
 }
 
 export function outboxEntriesForDomain(entries: SyncOutboxEntry[], domain: SyncDomain): SyncOutboxEntry[] {
@@ -113,17 +129,20 @@ export function settingsRecords(settings: AiSettings): SyncRecords {
 }
 
 export function queueRecordChanges(domain: SyncDomain, baseline: SyncRecords, previous: SyncRecords, current: SyncRecords, existing: SyncOutboxEntry[], now = new Date().toISOString()): SyncOutboxEntry[] {
-  const next = removeOutboxDomain(existing, domain).map(cloneJson)
-  const domainEntries = outboxEntriesForDomain(existing, domain)
+  const next = existing.map(cloneJson)
   const keys = new Set([...Object.keys(previous), ...Object.keys(current)])
   for (const recordKey of keys) {
     if (recordHash(previous[recordKey]) === recordHash(current[recordKey]))
       continue
     const payload = current[recordKey] ?? null
-    const existingEntry = domainEntries.find(entry => entry.recordKey === recordKey)
-    if (recordHash(payload) === recordHash(baseline[recordKey]))
+    const existingIndex = next.findIndex(entry => entry.domain === domain && entry.recordKey === recordKey)
+    const existingEntry = existingIndex >= 0 ? next[existingIndex] : undefined
+    if (recordHash(payload) === recordHash(baseline[recordKey])) {
+      if (existingIndex >= 0)
+        next.splice(existingIndex, 1)
       continue
-    next.push({
+    }
+    const queued: SyncOutboxEntry = {
       id: existingEntry?.id ?? `sync-${crypto.randomUUID()}`,
       domain,
       recordKey,
@@ -132,7 +151,11 @@ export function queueRecordChanges(domain: SyncDomain, baseline: SyncRecords, pr
       attempts: existingEntry?.attempts ?? 0,
       createdAt: existingEntry?.createdAt ?? now,
       updatedAt: now,
-    })
+    }
+    if (existingIndex >= 0)
+      next[existingIndex] = queued
+    else
+      next.push(queued)
   }
   return next
 }
@@ -144,7 +167,10 @@ export function rebaseQueuedRecords(remote: SyncRecords, entries: SyncOutboxEntr
   for (const entry of entries) {
     if (entry.domain !== domain)
       continue
-    if (recordHash(remote[entry.recordKey]) !== entry.baseHash) {
+    const remoteHash = recordHash(remote[entry.recordKey])
+    if (remoteHash !== entry.baseHash) {
+      if (remoteHash === recordHash(entry.payload))
+        continue
       conflicted.push(entry)
       continue
     }

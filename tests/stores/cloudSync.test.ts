@@ -4,7 +4,7 @@ import { nextTick, ref } from 'vue'
 import { AI_SETTINGS_KEY, LEARNING_STORAGE_KEY } from '@/constants'
 import { loadAiSettings } from '@/lib/ai-provider'
 import { loadCloudOutbox } from '@/lib/cloud-sync-outbox-storage'
-import { stableHash } from '@/lib/hash'
+import { canonicalHash } from '@/lib/hash'
 import { createDefaultStats } from '@/lib/learning-defaults'
 import { buildSenseId } from '@/lib/library'
 import { loadFromStorage, saveToStorage, setStorageNamespace } from '@/lib/persist'
@@ -17,6 +17,7 @@ const mockedCloud = vi.hoisted(() => ({
   remoteSettings: null as Record<string, unknown> | null,
   transactionSets: [] as unknown[],
   runTransaction: vi.fn(),
+  serverSnapshotsEnabled: true,
 }))
 
 vi.mock('@vueuse/core', () => ({
@@ -52,19 +53,32 @@ vi.mock('firebase/auth', () => ({
 vi.mock('firebase/firestore', () => ({
   collection: vi.fn((...segments: unknown[]) => ({ kind: 'collection', path: segments.join('/') })),
   doc: vi.fn((...segments: unknown[]) => ({ kind: 'document', path: segments.join('/') })),
-  getDocs: vi.fn(async () => ({ docs: [] })),
-  onSnapshot: vi.fn((reference, callback) => {
+  getDocsFromServer: vi.fn(async () => ({ docs: [] })),
+  onSnapshot: vi.fn((reference, optionsOrCallback, callbackOrError) => {
+    const callback = typeof optionsOrCallback === 'function' ? optionsOrCallback : callbackOrError
     if (reference.kind === 'collection') {
-      callback({ docs: [] })
-    }
-    else if (reference.path.endsWith('/settings/ai') && mockedCloud.remoteSettings) {
       callback({
-        exists: () => true,
-        data: () => mockedCloud.remoteSettings,
+        docs: [{ id: 'stale-cache-chunk', data: () => ({ schemaVersion: 1, checksum: 'stale' }) }],
+        metadata: { fromCache: true },
       })
+      if (mockedCloud.serverSnapshotsEnabled)
+        callback({ docs: [], metadata: { fromCache: false } })
     }
     else {
-      callback({ exists: () => false, data: () => undefined })
+      callback({ exists: () => true, data: () => ({ schemaVersion: 1 }), metadata: { fromCache: true } })
+      if (!mockedCloud.serverSnapshotsEnabled) {
+        // Remain on the local IndexedDB/cache view until the server is reachable.
+      }
+      else if (reference.path.endsWith('/settings/ai') && mockedCloud.remoteSettings) {
+        callback({
+          exists: () => true,
+          data: () => mockedCloud.remoteSettings,
+          metadata: { fromCache: false },
+        })
+      }
+      else {
+        callback({ exists: () => false, data: () => undefined, metadata: { fromCache: false } })
+      }
     }
     return vi.fn()
   }),
@@ -76,6 +90,7 @@ describe('cloud sync baseline rebase', () => {
     setActivePinia(createPinia())
     mockedCloud.authCallbacks.length = 0
     mockedCloud.transactionSets.length = 0
+    mockedCloud.serverSnapshotsEnabled = true
     mockedCloud.remoteSettings = {
       enabled: true,
       provider: 'openai',
@@ -83,7 +98,7 @@ describe('cloud sync baseline rebase', () => {
       model: 'cloud-model',
       batchSize: 10,
       ownerId: 'cloud-user',
-      schemaVersion: 3,
+      schemaVersion: 4,
     }
     mockedCloud.runTransaction.mockReset()
     mockedCloud.runTransaction.mockImplementation(async (_db: unknown, callback: (transaction: unknown) => Promise<unknown>) => {
@@ -102,7 +117,7 @@ describe('cloud sync baseline rebase', () => {
       id: 'pending-settings',
       domain: 'settings',
       recordKey: 'settings:ai',
-      baseHash: stableHash(remoteShareable),
+      baseHash: canonicalHash(remoteShareable),
       payload: { ...remoteShareable, model: 'local-model' },
       attempts: 0,
       createdAt: '2026-08-01T00:00:00.000Z',
@@ -153,6 +168,27 @@ describe('cloud sync baseline rebase', () => {
       recordKey: expect.stringMatching(/^membership:set-/),
       payload: [{ wordKey: 'apple', senseIds: [senseId] }],
     }))
+  })
+
+  it('queues offline account edits before a server baseline exists without flushing them', async () => {
+    mockedCloud.serverSnapshotsEnabled = false
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+
+    const libraryStore = useLibraryStore()
+    const senseId = buildSenseId('offline', 'adj.', '離線的')
+    libraryStore.createSetWithContent(
+      'Offline set',
+      undefined,
+      [{ wordKey: 'offline', word: 'offline', senses: [{ id: senseId, pos: 'adj.', meaningZh: '離線的', examples: [] }], updatedAt: '2026-08-02T00:00:00.000Z' }],
+      [{ wordKey: 'offline', senseIds: [senseId] }],
+    )
+    await nextTick()
+
+    expect((await loadCloudOutbox('cloud-user')).some(entry => entry.recordKey.startsWith('membership:set-'))).toBe(true)
+    expect(mockedCloud.runTransaction).not.toHaveBeenCalled()
+    expect(cloudStore.status).toBe('connecting')
   })
 
   it('treats missing Cloud learning documents as an empty authoritative baseline', async () => {

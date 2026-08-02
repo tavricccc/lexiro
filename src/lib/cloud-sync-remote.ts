@@ -1,15 +1,15 @@
 import type { DocumentData, Firestore, QuerySnapshot } from 'firebase/firestore'
-import type { ConditionalWriteResult } from './firestore-cas'
+import type { AtomicDocumentWrite, ConditionalWriteResult } from './firestore-cas'
 import type { AiSettings, DashboardStats, FirestoreAiSettingsDoc, FirestoreProgressDoc, FirestoreStatsDoc, LearningProgress, LibraryState } from '@/types'
-import { collection, doc, getDocs } from 'firebase/firestore'
+import { collection, doc, getDocsFromServer } from 'firebase/firestore'
 import { CLOUD_SCHEMA_VERSION } from '@/constants'
 import { getShareableAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
-import { buildLibraryChunks, cloudChunkHash, combineLibraryChunks, normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats, validateLibraryChunk } from './cloud-sync-schema'
+import { buildLibraryChunks, buildLibraryManifest, combineLibraryChunks, normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats, validateLibraryChunk, validateLibraryManifest } from './cloud-sync-schema'
 import { getFirebaseFirestore } from './firebase'
-import { deleteDocIfUnchanged, setDocIfUnchanged } from './firestore-cas'
+import { setDocIfUnchanged, writeDocumentsIfUnchanged } from './firestore-cas'
 import { createUncategorizedFolder } from './folders'
-import { stableHash } from './hash'
+import { canonicalHash } from './hash'
 import { createDefaultStats } from './learning-defaults'
 
 export function requireCloudFirestore(): Firestore {
@@ -39,43 +39,56 @@ export function emptyCloudStats(): DashboardStats {
   return createDefaultStats()
 }
 
-export function parseCloudLibrarySnapshot(snapshot: QuerySnapshot<DocumentData>, uid: string): { library: LibraryState, hashes: Map<string, string> } {
+export function parseCloudLibrarySnapshot(snapshot: QuerySnapshot<DocumentData>, uid: string): { library: LibraryState, hashes: Map<string, string>, revision: string } {
   if (!snapshot.docs.length)
-    return { library: emptyCloudLibrary(), hashes: new Map() }
-  const chunks = snapshot.docs.map(item => validateLibraryChunk(item.data(), uid, item.id))
+    return { library: emptyCloudLibrary(), hashes: new Map(), revision: '' }
+  const manifestDocument = snapshot.docs.find(item => item.id === 'manifest')
+  if (!manifestDocument)
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少 manifest')
+  const manifest = validateLibraryManifest(manifestDocument.data(), uid)
+  const chunkDocuments = snapshot.docs.filter(item => item.id !== 'manifest')
+  if (chunkDocuments.length !== Object.keys(manifest.chunks).length || chunkDocuments.some(item => !(item.id in manifest.chunks)))
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
+  const chunks = chunkDocuments.map(item => validateLibraryChunk(item.data(), uid, item.id))
+  if (chunks.some(chunk => manifest.chunks[chunk.chunkId] !== chunk.checksum || chunk.updatedAt !== manifest.updatedAt))
+    throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library chunk 不屬於目前 manifest')
   const hashes = new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum]))
-  return { library: combineLibraryChunks(chunks), hashes }
+  return { library: combineLibraryChunks(chunks), hashes, revision: manifest.revision }
 }
 
-export async function readCloudLibrary(db: Firestore, uid: string): Promise<{ library: LibraryState, hashes: Map<string, string> }> {
-  return parseCloudLibrarySnapshot(await getDocs(cloudCollection(db, uid, 'library')), uid)
+export async function readCloudLibrary(db: Firestore, uid: string): Promise<{ library: LibraryState, hashes: Map<string, string>, revision: string }> {
+  return parseCloudLibrarySnapshot(await getDocsFromServer(cloudCollection(db, uid, 'library')), uid)
 }
 
-export async function writeCloudLibraryChunks(db: Firestore, uid: string, library: LibraryState, knownHashes: ReadonlyMap<string, string>): Promise<{ conflicted: boolean, hashes: Map<string, string> }> {
+export async function writeCloudLibraryChunks(db: Firestore, uid: string, library: LibraryState, knownHashes: ReadonlyMap<string, string>, knownRevision = ''): Promise<{ conflicted: boolean, hashes: Map<string, string>, revision: string }> {
   const chunks = buildLibraryChunks(uid, library)
+  const manifest = buildLibraryManifest(uid, chunks, library.updatedAt)
   const nextHashes = new Map(knownHashes)
   const liveIds = new Set(chunks.map(chunk => chunk.chunkId))
-  const writes: Promise<ConditionalWriteResult>[] = chunks
-    .filter(chunk => knownHashes.get(chunk.chunkId) !== chunk.checksum)
-    .map(async (chunk) => {
-      const result = await setDocIfUnchanged(db, cloudDocument(db, uid, 'library', chunk.chunkId), knownHashes.get(chunk.chunkId) ?? '', chunk, cloudChunkHash)
-      if (result.written)
-        nextHashes.set(chunk.chunkId, chunk.checksum)
-      return result
-    })
+  const writes: AtomicDocumentWrite[] = chunks.map(chunk => ({
+    reference: cloudDocument(db, uid, 'library', chunk.chunkId),
+    payload: chunk,
+  }))
   for (const staleId of Array.from(knownHashes.keys())) {
-    if (!liveIds.has(staleId)) {
-      writes.push(deleteDocIfUnchanged(db, cloudDocument(db, uid, 'library', staleId), knownHashes.get(staleId) ?? '', cloudChunkHash).then((result) => {
-        if (result.written)
-          nextHashes.delete(staleId)
-        return result
-      }))
-    }
+    if (!liveIds.has(staleId))
+      writes.push({ reference: cloudDocument(db, uid, 'library', staleId), payload: null })
   }
-  if (!writes.length)
-    return { conflicted: false, hashes: nextHashes }
-  const results = await Promise.all(writes)
-  return { conflicted: results.some(result => !result.written), hashes: nextHashes }
+  writes.push({
+    reference: cloudDocument(db, uid, 'library', 'manifest'),
+    expectedHash: knownRevision,
+    payload: manifest,
+    hash: value => value === null ? '' : validateLibraryManifest(value, uid).revision,
+  })
+  const written = await writeDocumentsIfUnchanged(db, writes)
+  if (!written)
+    return { conflicted: true, hashes: nextHashes, revision: knownRevision }
+  for (const chunk of chunks)
+    nextHashes.set(chunk.chunkId, chunk.checksum)
+  for (const staleId of Array.from(knownHashes.keys())) {
+    if (!liveIds.has(staleId))
+      nextHashes.delete(staleId)
+  }
+  return { conflicted: false, hashes: nextHashes, revision: manifest.revision }
 }
 
 export interface CloudLearningWriteResult {
@@ -94,8 +107,8 @@ export async function writeCloudLearningState(
   stats: DashboardStats,
   knownHashes: { progress: string, stats: string },
 ): Promise<CloudLearningWriteResult> {
-  const progressHash = stableHash(progress)
-  const statsHash = stableHash(stats)
+  const progressHash = canonicalHash(progress)
+  const statsHash = canonicalHash(stats)
   const progressChanged = knownHashes.progress !== progressHash
   const statsChanged = knownHashes.stats !== statsHash
   const progressWrite = progressChanged
@@ -104,7 +117,7 @@ export async function writeCloudLearningState(
         cloudDocument(db, uid, 'progress', 'global'),
         knownHashes.progress,
         { ...progress, ownerId: uid, schemaVersion: CLOUD_SCHEMA_VERSION } satisfies FirestoreProgressDoc,
-        value => value === null ? '' : stableHash(normalizeCloudProgress(value, uid)),
+        value => value === null ? '' : canonicalHash(normalizeCloudProgress(value, uid)),
       )
     : Promise.resolve<ConditionalWriteResult>({ written: true })
   const statsWrite = statsChanged
@@ -113,7 +126,7 @@ export async function writeCloudLearningState(
         cloudDocument(db, uid, 'stats', 'summary'),
         knownHashes.stats,
         { ...stats, ownerId: uid, schemaVersion: CLOUD_SCHEMA_VERSION } satisfies FirestoreStatsDoc,
-        value => value === null ? '' : stableHash(normalizeCloudStats(value, uid)),
+        value => value === null ? '' : canonicalHash(normalizeCloudStats(value, uid)),
       )
     : Promise.resolve<ConditionalWriteResult>({ written: true })
   const [progressResult, statsResult] = await Promise.all([progressWrite, statsWrite])
@@ -128,7 +141,7 @@ export interface CloudAiSettingsWriteResult {
 
 export async function writeCloudAiSettings(db: Firestore, uid: string, settings: AiSettings, knownHash: string): Promise<CloudAiSettingsWriteResult> {
   const shareable = getShareableAiSettings(settings)
-  const hash = stableHash(shareable)
+  const hash = canonicalHash(shareable)
   if (knownHash === hash)
     return { result: { written: true }, hash, changed: false }
 
@@ -143,7 +156,7 @@ export async function writeCloudAiSettings(db: Firestore, uid: string, settings:
     cloudDocument(db, uid, 'settings', 'ai'),
     knownHash,
     payload,
-    value => value === null ? '' : stableHash(normalizeCloudAiSettings(value, uid)),
+    value => value === null ? '' : canonicalHash(normalizeCloudAiSettings(value, uid)),
   )
   return { result, hash, changed: true }
 }

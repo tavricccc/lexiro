@@ -1,12 +1,13 @@
 import type { SyncRecords } from './sync-outbox'
-import type { AiSettings, DashboardStats, FirestoreLibraryChunk, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
+import type { AiSettings, DashboardStats, FirestoreLibraryChunk, FirestoreLibraryManifest, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
 import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
 import { getShareableAiSettings, normalizeAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
-import { estimateJsonBytes, stableHash } from './hash'
+import { canonicalHash, estimateJsonBytes } from './hash'
 import { normalizeDashboardStats, normalizeLearningProgress } from './share'
 
 type LibrarySection = FirestoreLibraryChunk['section']
+const LIBRARY_SECTIONS: LibrarySection[] = ['words', 'sets', 'memberships', 'folders', 'questions']
 
 export function buildLibraryChunks(uid: string, library: LibraryState): FirestoreLibraryChunk[] {
   const sections: { section: LibrarySection, items: unknown[] }[] = [
@@ -38,12 +39,48 @@ export function buildLibraryChunks(uid: string, library: LibraryState): Firestor
   return chunks
 }
 
+export function buildLibraryManifest(uid: string, chunks: FirestoreLibraryChunk[], updatedAt: string): FirestoreLibraryManifest {
+  const checksums = Object.fromEntries(chunks.map(chunk => [chunk.chunkId, chunk.checksum]))
+  return {
+    ownerId: uid,
+    schemaVersion: CLOUD_SCHEMA_VERSION,
+    documentType: 'library-manifest',
+    updatedAt,
+    revision: canonicalHash({ checksums, updatedAt }),
+    chunks: checksums,
+  }
+}
+
+export function validateLibraryManifest(value: unknown, uid: string): FirestoreLibraryManifest {
+  if (!value || typeof value !== 'object' || Array.isArray(value))
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 格式錯誤')
+  const source = value as Record<string, unknown>
+  const allowed = ['ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks']
+  if (Object.keys(source).some(key => !allowed.includes(key))
+    || source.ownerId !== uid
+    || source.schemaVersion !== CLOUD_SCHEMA_VERSION
+    || source.documentType !== 'library-manifest'
+    || typeof source.updatedAt !== 'string'
+    || typeof source.revision !== 'string'
+    || !source.chunks
+    || typeof source.chunks !== 'object'
+    || Array.isArray(source.chunks)
+    || !Object.entries(source.chunks).every(([chunkId, checksum]) => chunkId !== 'manifest' && typeof checksum === 'string')) {
+    throw new CloudSyncError('cloud/schema-unsupported', 'Cloud library manifest schema 不受支援')
+  }
+  const manifest = source as unknown as FirestoreLibraryManifest
+  if (canonicalHash({ checksums: manifest.chunks, updatedAt: manifest.updatedAt }) !== manifest.revision)
+    throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library manifest checksum 不一致')
+  return manifest
+}
+
 function candidateForSection(uid: string, library: LibraryState, section: LibrarySection, items: unknown[], index: number): FirestoreLibraryChunk {
   const base = { ownerId: uid, schemaVersion: CLOUD_SCHEMA_VERSION, chunkId: `${section}-${String(index + 1).padStart(3, '0')}`, updatedAt: library.updatedAt, section, items } as FirestoreLibraryChunk
-  return { ...base, checksum: stableHash(base) }
+  return { ...base, checksum: canonicalHash(base) }
 }
 
 export function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibraryState {
+  validateLibraryChunkSet(chunks)
   const words: Record<string, WordEntry> = {}
   const sets: LibrarySet[] = []
   const memberships: Record<string, SetMembership[]> = {}
@@ -73,6 +110,26 @@ export function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibrarySt
   return { version: 1, words, sets, memberships, folders, questions, updatedAt: updatedAt || new Date().toISOString() }
 }
 
+export function validateLibraryChunkSet(chunks: FirestoreLibraryChunk[]): void {
+  if (!chunks.length)
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少必要 chunks')
+  const updatedAt = chunks[0].updatedAt
+  for (const section of LIBRARY_SECTIONS) {
+    const sectionChunks = chunks
+      .filter(chunk => chunk.section === section)
+      .sort((left, right) => left.chunkId.localeCompare(right.chunkId))
+    if (!sectionChunks.length)
+      throw new CloudSyncError('cloud/data-invalid', `Cloud library 缺少 ${section} chunk`)
+    for (const [index, chunk] of sectionChunks.entries()) {
+      const expectedId = `${section}-${String(index + 1).padStart(3, '0')}`
+      if (chunk.chunkId !== expectedId)
+        throw new CloudSyncError('cloud/data-invalid', `Cloud library ${section} chunks 不連續`)
+      if (chunk.updatedAt !== updatedAt)
+        throw new CloudSyncError('cloud/data-invalid', 'Cloud library chunks 不屬於同一次提交')
+    }
+  }
+}
+
 export function validateLibraryChunk(value: unknown, uid: string, documentId: string): FirestoreLibraryChunk {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library chunk 格式錯誤')
@@ -88,7 +145,7 @@ export function validateLibraryChunk(value: unknown, uid: string, documentId: st
     section: source.section,
     items: source.items,
   }
-  if (stableHash(base) !== source.checksum)
+  if (canonicalHash(base) !== source.checksum)
     throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library chunk checksum 不一致')
   return source as unknown as FirestoreLibraryChunk
 }

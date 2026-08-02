@@ -26,6 +26,15 @@ export interface FirestoreLibraryChunkBase {
   checksum: string
 }
 
+export interface FirestoreLibraryManifest {
+  ownerId: string
+  schemaVersion: number
+  documentType: 'library-manifest'
+  updatedAt: string
+  revision: string
+  chunks: Record<string, string>
+}
+
 export type FirestoreLibraryChunk = FirestoreLibraryChunkBase & (
   | { section: 'words', items: WordEntry[] }
   | { section: 'sets', items: LibrarySet[] }

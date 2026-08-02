@@ -115,7 +115,9 @@ jobs:
 
   deploy-vercel:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-    needs: verify
+    needs:
+      - verify
+      - deploy-firebase-rules
     runs-on: ubuntu-latest
     permissions:
       contents: read

@@ -1,6 +1,6 @@
 import type { DocumentData, DocumentReference, Firestore } from 'firebase/firestore'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { deleteDocIfUnchanged, setDocIfUnchanged } from '@/lib/firestore-cas'
+import { deleteDocIfUnchanged, setDocIfUnchanged, writeDocumentsIfUnchanged } from '@/lib/firestore-cas'
 import { stableHash } from '@/lib/hash'
 
 const runTransaction = vi.hoisted(() => vi.fn())
@@ -70,5 +70,27 @@ describe('firestore compare-and-set writes', () => {
 
     expect(result).toEqual({ written: true })
     expect(transaction.delete).not.toHaveBeenCalled()
+  })
+
+  it('checks the commit marker before applying an atomic document group', async () => {
+    current = { revision: 'current' }
+    const written = await writeDocumentsIfUnchanged(db, [
+      { reference, payload: { chunk: 1 } },
+      { reference, expectedHash: 'stale', payload: { revision: 'next' }, hash: value => String((value as { revision?: string } | null)?.revision ?? '') },
+    ])
+
+    expect(written).toBe(false)
+    expect(transaction.set).not.toHaveBeenCalled()
+  })
+
+  it('applies an atomic document group after its commit marker matches', async () => {
+    current = { revision: 'current' }
+    const written = await writeDocumentsIfUnchanged(db, [
+      { reference, payload: { chunk: 1 } },
+      { reference, expectedHash: 'current', payload: { revision: 'next' }, hash: value => String((value as { revision?: string } | null)?.revision ?? '') },
+    ])
+
+    expect(written).toBe(true)
+    expect(transaction.set).toHaveBeenCalledTimes(2)
   })
 })

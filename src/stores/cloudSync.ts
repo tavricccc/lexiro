@@ -15,7 +15,7 @@ import { cloudCollection, cloudDocument, emptyCloudProgress, emptyCloudStats, pa
 import { normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats } from '@/lib/cloud-sync-schema'
 import { configureFirebaseAuth, getFirebaseAuth, isFirebaseConfigured } from '@/lib/firebase'
 import { requestGoogleAccessToken } from '@/lib/googleIdentity'
-import { stableHash } from '@/lib/hash'
+import { canonicalHash } from '@/lib/hash'
 import { i18n } from '@/lib/i18n'
 import { setStorageNamespace } from '@/lib/persist'
 import { normalizeLibraryState } from '@/lib/share'
@@ -59,6 +59,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   let knownProgressHash = ''
   let knownStatsHash = ''
   const knownLibraryHashes = new Map<string, string>()
+  let knownLibraryRevision = ''
   let baselineLibraryRecords: SyncRecords = {}
   let observedLibraryRecords: SyncRecords = {}
   let baselineLearningRecords: SyncRecords = {}
@@ -234,7 +235,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   function reconcileLibraryRemote(remote: LibraryState) {
     const result = reconcileLibraryState(remote, outbox.value)
     const libraryStore = useLibraryStore()
-    if (stableHash(result.merged) !== stableHash(libraryStore.state)) {
+    if (canonicalHash(result.merged) !== canonicalHash(libraryStore.state)) {
       withRemoteApplication(() => {
         libraryStore.replaceState(result.merged)
       })
@@ -253,6 +254,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     knownLibraryHashes.clear()
     for (const [chunkId, checksum] of remote.hashes)
       knownLibraryHashes.set(chunkId, checksum)
+    knownLibraryRevision = remote.revision
   }
 
   function reconcileLearningRemote(progress: LearningProgress, stats: DashboardStats) {
@@ -260,12 +262,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       return
     const result = reconcileLearningState(progress, stats, outbox.value)
     const learningStore = useLearningStore()
-    if (stableHash(result.merged.progress) !== stableHash(learningStore.progress)) {
+    if (canonicalHash(result.merged.progress) !== canonicalHash(learningStore.progress)) {
       withRemoteApplication(() => {
         learningStore.replaceProgress(result.merged.progress)
       })
     }
-    if (stableHash(result.merged.stats) !== stableHash(learningStore.stats)) {
+    if (canonicalHash(result.merged.stats) !== canonicalHash(learningStore.stats)) {
       withRemoteApplication(() => {
         learningStore.replaceStats(result.merged.stats)
       })
@@ -283,14 +285,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       return
     const localSettings = loadAiSettings()
     const result = reconcileAiSettingsState(remote, localSettings, outbox.value)
-    if (stableHash(getShareableAiSettings(result.merged)) !== stableHash(getShareableAiSettings(localSettings))) {
+    if (canonicalHash(getShareableAiSettings(result.merged)) !== canonicalHash(getShareableAiSettings(localSettings))) {
       withRemoteApplication(() => {
         saveAiSettings(result.merged)
       })
     }
     baselineAiSettingsRecords = result.baselineRecords
     observedAiSettingsRecords = result.observedRecords
-    knownAiSettingsHash = stableHash(remote ?? null)
+    knownAiSettingsHash = canonicalHash(remote ?? null)
     replaceOutbox([...removeOutboxDomain(outbox.value, 'settings'), ...result.accepted])
     aiSettingsDirty = result.dirty
     if (aiSettingsDirty)
@@ -298,7 +300,9 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function applyRemoteLibraryChanges(uid: string) {
-    libraryUnsubscribe = onSnapshot(userCollection(uid, 'library'), (snapshot) => {
+    libraryUnsubscribe = onSnapshot(userCollection(uid, 'library'), { includeMetadataChanges: true }, (snapshot) => {
+      if (snapshot.metadata.fromCache)
+        return
       libraryBaselineReady = true
       try {
         const remote = parseCloudLibrarySnapshot(snapshot, uid)
@@ -306,6 +310,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownLibraryHashes.clear()
         for (const [chunkId, checksum] of remote.hashes)
           knownLibraryHashes.set(chunkId, checksum)
+        knownLibraryRevision = remote.revision
         markSynced()
       }
       catch (syncError) {
@@ -315,7 +320,9 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function applyRemoteLearningChanges(uid: string) {
-    progressUnsubscribe = onSnapshot(userDocument(uid, 'progress', 'global'), (snapshot) => {
+    progressUnsubscribe = onSnapshot(userDocument(uid, 'progress', 'global'), { includeMetadataChanges: true }, (snapshot) => {
+      if (snapshot.metadata.fromCache)
+        return
       progressBaselineReady = true
       if (snapshot.exists()) {
         try {
@@ -332,10 +339,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       if (remoteProgress && remoteStats)
         reconcileLearningRemote(remoteProgress, remoteStats)
       if (remoteProgress)
-        knownProgressHash = snapshot.exists() ? stableHash(remoteProgress) : ''
+        knownProgressHash = snapshot.exists() ? canonicalHash(remoteProgress) : ''
       markSynced()
     }, handleRealtimeError)
-    statsUnsubscribe = onSnapshot(userDocument(uid, 'stats', 'summary'), (snapshot) => {
+    statsUnsubscribe = onSnapshot(userDocument(uid, 'stats', 'summary'), { includeMetadataChanges: true }, (snapshot) => {
+      if (snapshot.metadata.fromCache)
+        return
       statsBaselineReady = true
       if (!snapshot.exists()) {
         remoteStats = emptyCloudStats()
@@ -355,13 +364,15 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       remoteStats = remoteStatsData
       if (remoteProgress)
         reconcileLearningRemote(remoteProgress, remoteStatsData)
-      knownStatsHash = stableHash(remoteStatsData)
+      knownStatsHash = canonicalHash(remoteStatsData)
       markSynced()
     }, handleRealtimeError)
   }
 
   function applyRemoteAiSettingsChanges(uid: string) {
-    aiSettingsUnsubscribe = onSnapshot(userDocument(uid, 'settings', 'ai'), (snapshot) => {
+    aiSettingsUnsubscribe = onSnapshot(userDocument(uid, 'settings', 'ai'), { includeMetadataChanges: true }, (snapshot) => {
+      if (snapshot.metadata.fromCache)
+        return
       aiSettingsBaselineReady = true
       if (!snapshot.exists()) {
         reconcileAiSettingsRemote(null)
@@ -371,7 +382,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       try {
         const normalized = normalizeCloudAiSettings(snapshot.data(), uid)
         reconcileAiSettingsRemote(normalized)
-        knownAiSettingsHash = stableHash(normalized)
+        knownAiSettingsHash = canonicalHash(normalized)
         markSynced()
       }
       catch (syncError) {
@@ -399,7 +410,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       if (!progressResult.written || !statsResult.written) {
         if (!progressResult.written) {
           remoteProgress = progressResult.current === null ? emptyCloudProgress() : normalizeCloudProgress(progressResult.current, uid)
-          knownProgressHash = progressResult.current === null ? '' : stableHash(remoteProgress)
+          knownProgressHash = progressResult.current === null ? '' : canonicalHash(remoteProgress)
         }
         else if (progressChanged) {
           remoteProgress = learningStore.progress
@@ -407,7 +418,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         }
         if (!statsResult.written) {
           remoteStats = statsResult.current === null ? emptyCloudStats() : normalizeCloudStats(statsResult.current, uid)
-          knownStatsHash = statsResult.current === null ? '' : stableHash(remoteStats)
+          knownStatsHash = statsResult.current === null ? '' : canonicalHash(remoteStats)
         }
         else if (statsChanged) {
           remoteStats = learningStore.stats
@@ -441,10 +452,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     setStatus('syncing')
     try {
       const uid = user.value.uid
-      const result = await writeCloudLibraryChunks(requireCloudFirestore(), uid, libraryStore.state, knownLibraryHashes)
+      const result = await writeCloudLibraryChunks(requireCloudFirestore(), uid, libraryStore.state, knownLibraryHashes, knownLibraryRevision)
       knownLibraryHashes.clear()
       for (const [chunkId, checksum] of result.hashes)
         knownLibraryHashes.set(chunkId, checksum)
+      knownLibraryRevision = result.revision
       if (result.conflicted) {
         await refreshLibraryRemote(uid)
         scheduleLibrarySync()
@@ -471,7 +483,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       const result = await writeCloudAiSettings(requireCloudFirestore(), uid, loadAiSettings(), knownAiSettingsHash)
       if (!result.result.written) {
         const remote = result.result.current === null ? null : normalizeCloudAiSettings(result.result.current, uid)
-        knownAiSettingsHash = remote ? stableHash(remote) : ''
+        knownAiSettingsHash = remote ? canonicalHash(remote) : ''
         reconcileAiSettingsRemote(remote)
         scheduleAiSettingsSync()
         markSynced()
@@ -532,6 +544,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     baselineLibraryRecords = {}
     observedLibraryRecords = {}
     knownLibraryHashes.clear()
+    knownLibraryRevision = ''
     knownProgressHash = ''
     knownStatsHash = ''
     baselineLearningRecords = {}
@@ -542,6 +555,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     baselineAiSettingsRecords = {}
     observedAiSettingsRecords = {}
     knownAiSettingsHash = ''
+    const libraryStore = useLibraryStore()
+    baselineLibraryRecords = libraryRecords(libraryStore.state)
+    observedLibraryRecords = baselineLibraryRecords
+    const learningStore = useLearningStore()
+    baselineLearningRecords = learningRecords(learningStore.progress, learningStore.stats)
+    observedLearningRecords = baselineLearningRecords
+    baselineAiSettingsRecords = settingsRecords(loadAiSettings())
+    observedAiSettingsRecords = baselineAiSettingsRecords
     realtimeUid = uid
     setStatus('connecting')
     try {
@@ -614,6 +635,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownProgressHash = ''
         knownStatsHash = ''
         knownLibraryHashes.clear()
+        knownLibraryRevision = ''
         aiSettingsBaselineReady = false
         aiSettingsDirty = false
         baselineAiSettingsRecords = {}
@@ -652,7 +674,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
     const libraryStore = useLibraryStore()
     const learningStore = useLearningStore()
-    const hasGuestAiSettings = stableHash(getShareableAiSettings(loadAiSettings())) !== stableHash(getShareableAiSettings(defaultAiSettings))
+    const hasGuestAiSettings = canonicalHash(getShareableAiSettings(loadAiSettings())) !== canonicalHash(getShareableAiSettings(defaultAiSettings))
     const hasGuestData = libraryStore.sets.length > 0
       || Object.keys(libraryStore.state.words).length > 0
       || libraryStore.folders.length > 1
@@ -686,36 +708,39 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
 
   const learningStore = useLearningStore()
   watch(() => [learningStore.progress, learningStore.stats], () => {
-    if (applyingRemote || !progressBaselineReady || !statsBaselineReady)
+    if (applyingRemote || !user.value)
       return
     const current = learningRecords(learningStore.progress, learningStore.stats)
     const next = queueRecordChanges('learning', baselineLearningRecords, observedLearningRecords, current, outbox.value)
     observedLearningRecords = current
     replaceOutbox(next)
     learningDirty = hasOutboxDomain(next, 'learning')
-    scheduleLearningSync()
+    if (progressBaselineReady && statsBaselineReady)
+      scheduleLearningSync()
   }, { deep: true })
   const libraryStore = useLibraryStore()
   watch(() => libraryStore.state, () => {
-    if (applyingRemote || !libraryBaselineReady)
+    if (applyingRemote || !user.value)
       return
     const current = libraryRecords(libraryStore.state)
     const next = queueRecordChanges('library', baselineLibraryRecords, observedLibraryRecords, current, outbox.value)
     observedLibraryRecords = current
     replaceOutbox(next)
     libraryDirty = hasOutboxDomain(next, 'library')
-    scheduleLibrarySync()
+    if (libraryBaselineReady)
+      scheduleLibrarySync()
   }, { deep: true })
 
   onAiSettingsChanged(() => {
-    if (applyingRemote || !aiSettingsBaselineReady)
+    if (applyingRemote || !user.value)
       return
     const current = settingsRecords(loadAiSettings())
     const next = queueRecordChanges('settings', baselineAiSettingsRecords, observedAiSettingsRecords, current, outbox.value)
     observedAiSettingsRecords = current
     replaceOutbox(next)
     aiSettingsDirty = hasOutboxDomain(next, 'settings')
-    scheduleAiSettingsSync()
+    if (aiSettingsBaselineReady)
+      scheduleAiSettingsSync()
   })
 
   return {

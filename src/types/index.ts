@@ -6,7 +6,7 @@ export type {
   SetSharePayload,
   SharedSet,
 } from './backup'
-export type { FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreProgressDoc, FirestoreStatsDoc } from './cloud'
+export type { FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreProgressDoc, FirestoreStatsDoc } from './cloud'
 export type { DictionaryDefinition, DictionaryEntry, DictionaryMeaning, DictionaryPhonetic } from './dictionary'
 export type {
   CardProgress,

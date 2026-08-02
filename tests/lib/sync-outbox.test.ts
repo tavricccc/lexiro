@@ -29,6 +29,36 @@ describe('sync outbox', () => {
     expect(entries.find(entry => entry.recordKey === 'word:new')?.payload).toEqual({ meaning: '新' })
   })
 
+  it('keeps earlier pending records when a later local mutation changes another record', () => {
+    const baseline = { 'word:a': { value: 1 }, 'word:b': { value: 1 } }
+    const afterFirst = { ...baseline, 'word:a': { value: 2 } }
+    const firstQueue = queueRecordChanges('library', baseline, baseline, afterFirst, [], '2026-08-01T00:00:00.000Z')
+    const afterSecond = { ...afterFirst, 'word:b': { value: 2 } }
+
+    const secondQueue = queueRecordChanges('library', baseline, afterFirst, afterSecond, firstQueue, '2026-08-01T00:01:00.000Z')
+
+    expect(secondQueue.map(entry => entry.recordKey).sort()).toEqual(['word:a', 'word:b'])
+  })
+
+  it('removes a pending record when a later edit restores its baseline value', () => {
+    const baseline = { 'word:a': { value: 1 } }
+    const changed = { 'word:a': { value: 2 } }
+    const queue = queueRecordChanges('library', baseline, baseline, changed, [])
+
+    expect(queueRecordChanges('library', baseline, changed, baseline, queue)).toEqual([])
+  })
+
+  it('resolves a queued write already present in Cloud without re-uploading it', () => {
+    const remote = { 'word:a': { value: 2 } }
+    const entries = queueRecordChanges('library', { 'word:a': { value: 1 } }, { 'word:a': { value: 1 } }, remote, [])
+
+    const result = rebaseQueuedRecords(remote, entries, 'library')
+
+    expect(result.accepted).toEqual([])
+    expect(result.conflicted).toEqual([])
+    expect(result.records).toEqual(remote)
+  })
+
   it('coalesces a queued record when local edits return to baseline', () => {
     const baseline = { 'set:a': { name: 'A' } }
     const queued = queueRecordChanges('library', baseline, baseline, { 'set:a': { name: 'B' } }, [])

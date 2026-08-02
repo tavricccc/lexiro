@@ -4,7 +4,8 @@ import { resolve } from 'node:path'
 import { assertFails, assertSucceeds, initializeTestEnvironment } from '@firebase/rules-unit-testing'
 import { afterAll, beforeAll, describe, it } from 'vitest'
 import { defaultAiSettings, getShareableAiSettings } from '@/lib/ai-provider'
-import { buildLibraryChunks, validateLibraryChunk } from '@/lib/cloud-sync-schema'
+import { parseCloudLibrarySnapshot } from '@/lib/cloud-sync-remote'
+import { buildLibraryChunks, buildLibraryManifest, validateLibraryChunk, validateLibraryManifest } from '@/lib/cloud-sync-schema'
 import { prepareFirestoreData } from '@/lib/firestore-data'
 import { createDefaultStats } from '@/lib/learning-defaults'
 
@@ -37,7 +38,7 @@ rulesDescribe('Firestore security rules', () => {
     const bob = testEnv.authenticatedContext('bob').firestore()
     const payload = {
       ownerId: 'alice',
-      schemaVersion: 3,
+      schemaVersion: 4,
       chunkId: 'sets-001',
       section: 'sets',
       items: [{ id: 'set-1', setName: 'Basics', folderId: 'folder-1', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }],
@@ -52,7 +53,7 @@ rulesDescribe('Firestore security rules', () => {
 
   it('rejects unknown fields on canonical library chunks', async () => {
     const alice = testEnv.authenticatedContext('alice').firestore()
-    await assertFails(alice.doc('users/alice/library/sets-002').set({ ownerId: 'alice', schemaVersion: 3, chunkId: 'sets-002', section: 'sets', items: [], unexpected: true }))
+    await assertFails(alice.doc('users/alice/library/sets-002').set({ ownerId: 'alice', schemaVersion: 4, chunkId: 'sets-002', section: 'sets', items: [], unexpected: true }))
   })
 
   it('allows the v3 library chunks and keeps them isolated', async () => {
@@ -60,7 +61,7 @@ rulesDescribe('Firestore security rules', () => {
     const bob = testEnv.authenticatedContext('bob').firestore()
     const payload = {
       ownerId: 'alice',
-      schemaVersion: 3,
+      schemaVersion: 4,
       chunkId: 'words-001',
       updatedAt: new Date().toISOString(),
       checksum: 'abc123',
@@ -88,12 +89,25 @@ rulesDescribe('Firestore security rules', () => {
       updatedAt: timestamp,
     })
 
+    const manifest = buildLibraryManifest('alice', chunks, timestamp)
+    await assertSucceeds(alice.runTransaction(async (transaction) => {
+      for (const chunk of chunks)
+        transaction.set(alice.doc(`users/alice/library/${chunk.chunkId}`), prepareFirestoreData(chunk))
+      transaction.set(alice.doc('users/alice/library/manifest'), manifest)
+    }))
+
     for (const chunk of chunks) {
       const reference = alice.doc(`users/alice/library/${chunk.chunkId}`)
-      await assertSucceeds(reference.set(prepareFirestoreData(chunk)))
       const snapshot = await assertSucceeds(reference.get())
       validateLibraryChunk(snapshot.data(), 'alice', chunk.chunkId)
     }
+    const manifestReference = alice.doc('users/alice/library/manifest')
+    const manifestSnapshot = await assertSucceeds(manifestReference.get())
+    validateLibraryManifest(manifestSnapshot.data(), 'alice')
+    const collectionSnapshot = await assertSucceeds(alice.collection('users/alice/library').get())
+    const parsed = parseCloudLibrarySnapshot(collectionSnapshot as never, 'alice')
+    if (parsed.library.folders[0].parentId !== undefined)
+      throw new Error('根資料夾不應包含 parentId')
   })
 
   it('accepts production progress, stats, and shareable AI settings envelopes', async () => {
@@ -103,19 +117,19 @@ rulesDescribe('Firestore security rules', () => {
       cards: {},
       updatedAt: timestamp,
       ownerId: 'alice',
-      schemaVersion: 3,
+      schemaVersion: 4,
     }))
     await assertSucceeds(alice.doc('users/alice/stats/summary').set({
       ...createDefaultStats(),
       updatedAt: timestamp,
       ownerId: 'alice',
-      schemaVersion: 3,
+      schemaVersion: 4,
     }))
     await assertSucceeds(alice.doc('users/alice/settings/ai').set({
       ...getShareableAiSettings(defaultAiSettings),
       updatedAt: timestamp,
       ownerId: 'alice',
-      schemaVersion: 3,
+      schemaVersion: 4,
     }))
   })
 })
