@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { TranslatedSelectOption } from '@/lib/question-options'
-import type { LibraryQuestion, VocabularyDifficultyFilter, VocabularyQuestionTypeFilter } from '@/types'
+import type { LibraryQuestion, QuestionCreateChoice, VocabularyDifficultyFilter, VocabularyQuestionTypeFilter } from '@/types'
 import { Pencil, Plus, Trash2 } from 'lucide-vue-next'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { questionTypeLabel } from '@/lib/question-options'
+import QuestionCreateDialog from './dialogs/QuestionCreateDialog.vue'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -29,6 +30,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const createOpen = ref(false)
 const questionTypeFilterModel = computed({
   get: () => props.questionTypeFilter,
   set: (value: string) => {
@@ -47,6 +49,14 @@ const difficultyFilterModel = computed({
 function questionLabel(question: LibraryQuestion): string {
   return question.kind === 'reading' ? question.title : question.prompt
 }
+
+function chooseCreateType(choice: QuestionCreateChoice) {
+  createOpen.value = false
+  if (choice === 'reading')
+    emit('add-reading')
+  else
+    emit('add-question')
+}
 </script>
 
 <template>
@@ -55,11 +65,8 @@ function questionLabel(question: LibraryQuestion): string {
   </div>
   <Card class="p-4 sm:p-5">
     <div class="mb-4 flex flex-wrap justify-end gap-2">
-      <Button variant="outline" class="gap-2" :disabled="!hasSenses" @click="emit('add-question')">
+      <Button variant="outline" class="gap-2" :disabled="!hasSenses" @click="createOpen = true">
         <Plus class="h-4 w-4" />{{ $t('vocabulary.addQuestion') }}
-      </Button>
-      <Button variant="outline" class="gap-2" :disabled="!hasSenses" @click="emit('add-reading')">
-        <Plus class="h-4 w-4" />{{ $t('vocabulary.addReading') }}
       </Button>
     </div>
     <div v-if="questions.length" class="space-y-3">
@@ -85,4 +92,5 @@ function questionLabel(question: LibraryQuestion): string {
       {{ $t('vocabulary.noQuestions') }}
     </p>
   </Card>
+  <QuestionCreateDialog :open="createOpen" @close="createOpen = false" @choose="chooseCreateType" />
 </template>

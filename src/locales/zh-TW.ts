@@ -18,6 +18,14 @@ export default {
     loadingPage: '正在載入頁面',
     loadingPageDetail: '正在準備畫面內容…',
   },
+  questionCreate: {
+    title: '新增題目',
+    description: '選擇要建立的題型。',
+    question: '選擇題',
+    questionHint: '四選一或填空',
+    reading: '閱讀題組',
+    readingHint: '文章＋多個子題',
+  },
   home: {
     title: '建立你的第一個單字集',
     addSet: '新增單字集',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LibraryQuestion, VocabularyDifficultyFilter, VocabularyQuestionTypeFilter } from '@/types'
+import type { LibraryQuestion, QuestionCreateChoice, VocabularyDifficultyFilter, VocabularyQuestionTypeFilter } from '@/types'
 import { Pencil, Plus, Search, Sparkles, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -8,6 +8,7 @@ import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { createVocabularyDifficultyOptions, createVocabularyQuestionTypeOptions, questionTypeLabel } from '@/lib/question-options'
 import { useLibraryStore } from '@/stores/library'
 import { useUIStore } from '@/stores/ui'
+import QuestionCreateDialog from '../dialogs/QuestionCreateDialog.vue'
 import Badge from '../ui/badge/Badge.vue'
 import Button from '../ui/button/Button.vue'
 import Card from '../ui/card/Card.vue'
@@ -25,6 +26,7 @@ const { t } = useI18n()
 const search = ref('')
 const questionTypeFilter = ref<VocabularyQuestionTypeFilter>('all')
 const difficultyFilter = ref<VocabularyDifficultyFilter>('all')
+const createOpen = ref(false)
 const questionTypeOptions = computed(() => createVocabularyQuestionTypeOptions(t))
 const difficultyOptions = computed(() => createVocabularyDifficultyOptions(t))
 const questions = computed(() => libraryStore.questions.filter(question => libraryStore.getQuestionSetIds(question).includes(props.setId)))
@@ -68,6 +70,14 @@ function openNewReading() {
   void router.push({ name: 'question-editor', params: { wordKey: firstStudyWord.value.wordKey }, query: { setId: props.setId } })
 }
 
+function chooseCreateType(choice: QuestionCreateChoice) {
+  createOpen.value = false
+  if (choice === 'reading')
+    openNewReading()
+  else
+    openNewQuestion()
+}
+
 function editQuestion(question: LibraryQuestion) {
   if (question.kind === 'reading') {
     void router.push({ name: 'question-editor', params: { wordKey: question.wordKeys[0] ?? '' }, query: { questionId: question.id, setId: props.setId } })
@@ -97,11 +107,8 @@ async function deleteQuestion(question: LibraryQuestion) {
         </p>
       </div>
       <div class="flex flex-wrap gap-2">
-        <Button variant="outline" class="gap-2" :disabled="!firstStudyWord" @click="openNewQuestion">
+        <Button variant="outline" class="gap-2" :disabled="!firstStudyWord" @click="createOpen = true">
           <Plus class="h-4 w-4" />{{ $t('set.addQuestion') }}
-        </Button>
-        <Button variant="outline" class="gap-2" :disabled="!firstStudyWord" @click="openNewReading">
-          <Plus class="h-4 w-4" />{{ $t('set.addReading') }}
         </Button>
         <Button class="gap-2" @click="router.push({ name: 'question-generation', params: { setId } })">
           <Sparkles class="h-4 w-4" />{{ $t('set.generateQuestions') }}
@@ -149,5 +156,6 @@ async function deleteQuestion(question: LibraryQuestion) {
     <Card v-else class="p-6 text-center text-sm font-semibold text-ink-400">
       {{ $t('set.noQuestions') }}
     </Card>
+    <QuestionCreateDialog :open="createOpen" @close="createOpen = false" @choose="chooseCreateType" />
   </section>
 </template>

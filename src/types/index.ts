@@ -29,6 +29,7 @@ export type {
   LibrarySetSummary,
   LibraryState,
   MultipleChoiceQuestion,
+  QuestionCreateChoice,
   QuestionDifficulty,
   ReadingChildQuestion,
   ReadingPack,

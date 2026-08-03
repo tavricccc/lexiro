@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { computed } from 'vue'
-import { STUDY_DISCUSSION_LOTTIE } from '@/constants/animations'
+import { BOOKS_STACK_LOTTIE } from '@/constants/animations'
 import { LAYERS } from '@/constants/layers'
 import { useReducedMotion } from '@/lib/use-reduced-motion'
 import Button from '../button/Button.vue'
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<{
   fullscreen: true,
   showMessage: true,
   showProgress: true,
-  lottieSrc: STUDY_DISCUSSION_LOTTIE,
+  lottieSrc: BOOKS_STACK_LOTTIE,
 })
 
 const emit = defineEmits<{
@@ -59,13 +59,13 @@ const showDetails = computed(() => props.showMessage && Boolean(props.message ||
         aria-atomic="true"
         aria-busy="true"
       >
-        <div class="flex min-h-[100dvh] items-center justify-center px-6 py-[calc(2.5rem+env(safe-area-inset-top))] pb-[calc(2.5rem+env(safe-area-inset-bottom))] sm:px-8">
+        <div class="flex h-[100dvh] items-center justify-center overflow-y-auto px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] sm:px-8">
           <section class="w-full max-w-md text-center">
             <DotLottieVue
               :src="lottieSrc"
               :autoplay="!reducedMotion"
               :loop="!reducedMotion"
-              :class="fullscreen ? 'mx-auto h-52 w-52 sm:h-60 sm:w-60' : 'mx-auto h-40 w-40 sm:h-44 sm:w-44'"
+              :class="fullscreen ? 'mx-auto h-72 w-48 sm:h-80 sm:w-56' : 'mx-auto h-48 w-32 sm:h-56 sm:w-36'"
               aria-hidden="true"
             />
 

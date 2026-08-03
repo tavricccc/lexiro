@@ -1,4 +1,5 @@
 export type QuestionDifficulty = 1 | 2 | 3
+export type QuestionCreateChoice = 'question' | 'reading'
 export type VocabularyQuestionTypeFilter = 'all' | 'standard' | 'fillBlank' | 'reading'
 export type VocabularyDifficultyFilter = 'all' | '1' | '2' | '3'
 
