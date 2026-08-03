@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { cloneJson } from '@/lib/clone'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/file'
 import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { i18n } from '@/lib/i18n'
@@ -314,8 +315,7 @@ export const useSetsStore = defineStore('sets', () => {
     if (activeSetId.value === setId)
       activeSetId.value = sets.value[0]?.id ?? null
     pendingDeleteId.value = null
-    const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
-    return syncAfterLocalCommit()
+    return (await syncAfterLocalCommit()).localPersisted
   }
 
   async function deleteActiveSet(): Promise<boolean> {

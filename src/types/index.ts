@@ -6,7 +6,7 @@ export type {
   SetSharePayload,
   SharedSet,
 } from './backup'
-export type { FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreProgressDoc, FirestoreStatsDoc, FirestoreSyncHeadDoc, SyncDirection, SyncProgressPhase, SyncProgressState } from './cloud'
+export type { FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreProgressDoc, FirestoreStatsDoc, FirestoreSyncHeadDoc, SyncAfterLocalCommitResult, SyncDirection, SyncPresentation, SyncProgressPhase, SyncProgressState } from './cloud'
 export type { DictionaryDefinition, DictionaryEntry, DictionaryMeaning, DictionaryPhonetic } from './dictionary'
 export type {
   CardProgress,
@@ -52,6 +52,8 @@ export type {
   ResultRow,
   ResultSummary,
   SessionEntry,
+  SessionHeaderModel,
   SessionStatus,
 } from './session'
 export type { EditorItem, EditorSenseDraft, PracticeDifficulty, PracticeQuestion, PracticeQuestionType, WordDraft } from './set'
+export type { FsrsStatusCounts, StatsMemorySummary, StatsQuestionRow, StatsSetRow } from './stats'

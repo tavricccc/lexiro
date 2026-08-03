@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { LoaderCircle } from 'lucide-vue-next'
 import { computed, useAttrs } from 'vue'
 import { cn } from '@/lib/cn'
 
@@ -24,12 +25,12 @@ const attrs = useAttrs()
 
 const classes = computed(() =>
   cn(
-    'inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap text-sm font-semibold rounded-[var(--radius-inner)] transition-all duration-200 active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/20 disabled:opacity-40 disabled:pointer-events-none disabled:cursor-not-allowed',
+    'relative inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap text-sm font-semibold rounded-[var(--radius-inner)] transition-[color,background-color,border-color,box-shadow,opacity] duration-200 outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/20 disabled:opacity-40 disabled:pointer-events-none disabled:cursor-not-allowed',
     {
       'button-primary': props.variant === 'default',
-      'surface-control text-ink-600 dark:text-ink-300 hover:-translate-y-px hover:shadow-floating': props.variant === 'outline' || props.variant === 'secondary',
+      'surface-control text-ink-600 dark:text-ink-300 hover:shadow-floating': props.variant === 'outline' || props.variant === 'secondary',
       'text-accent-primary hover:bg-ink-100 dark:hover:bg-ink-850': props.variant === 'ghost',
-      'text-accent-primary underline-offset-4 hover:underline active:scale-100': props.variant === 'link',
+      'text-accent-primary underline-offset-4 hover:underline': props.variant === 'link',
       'bg-red-50 dark:bg-red-950/15 text-red-600 dark:text-red-400 border border-red-100/80 dark:border-red-900/30 hover:bg-red-100/80 dark:hover:bg-red-950/30': props.variant === 'destructive',
 
       'px-4 py-2.5': props.size === 'default',
@@ -46,13 +47,11 @@ const classes = computed(() =>
   <button
     :type="type"
     :disabled="disabled || loading"
+    :aria-busy="loading"
     :title="title || (size === 'icon' ? String(attrs['aria-label'] ?? '') : undefined)"
     :class="classes"
   >
-    <svg v-if="loading" class="animate-spin h-4 w-4 text-current shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-    </svg>
-    <slot />
+    <LoaderCircle v-if="loading" class="absolute h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
+    <span class="inline-flex items-center justify-center gap-1.5" :class="{ 'opacity-0': loading }"><slot /></span>
   </button>
 </template>

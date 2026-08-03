@@ -2,7 +2,6 @@ import type { Firestore } from 'firebase/firestore'
 import type { CloudLibraryBatchProgress, CloudLibraryReadResult } from './cloud-sync-remote'
 import type { LibraryRemoteStagingBatch, LibraryRepositoryRecord } from './library-repository'
 import type { FirestoreLibraryChunk, FirestoreLibraryV5Chunk, LibraryQuestion, LibrarySet, SetMembership, VocabFolder, WordEntry } from '@/types'
-import { readCloudLibraryV5 } from './cloud-sync-remote'
 import { getLibraryRepository } from './library-repository'
 import { normalizeLibraryState } from './share'
 
@@ -39,6 +38,7 @@ export async function stageCloudLibrary(options: {
   manifestData?: unknown
   onProgress?: (progress: CloudLibraryBatchProgress) => void
 }): Promise<CloudLibraryReadResult & { stagingGeneration: string }> {
+  const { readCloudLibraryV5 } = await import('./cloud-sync-remote')
   const repository = getLibraryRepository()
   const cachedRemote = await repository.loadRemoteLibrarySyncState()
   const resumable = await repository.findResumableRemoteGeneration()

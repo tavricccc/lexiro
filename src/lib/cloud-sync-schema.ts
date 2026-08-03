@@ -254,18 +254,16 @@ export function validateV5LibraryChunkSet(chunks: FirestoreLibraryV5Chunk[]): vo
   }
 }
 
-export function combineV5LibraryChunks(chunks: FirestoreLibraryV5Chunk[]): LibraryState {
+export function combineV5LibraryChunks(chunks: FirestoreLibraryV5Chunk[], manifestUpdatedAt: string): LibraryState {
   validateV5LibraryChunkSet(chunks)
-  if (new Set(chunks.map(chunk => chunk.updatedAt)).size !== 1)
-    throw new CloudSyncError('cloud/data-invalid', 'Cloud library chunks 不屬於同一次提交')
+  if (!manifestUpdatedAt)
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 缺少提交時間')
   const words: Record<string, WordEntry> = {}
   const sets: LibrarySet[] = []
   const memberships: Record<string, SetMembership[]> = {}
   const folders: VocabFolder[] = []
   const questions: LibraryState['questions'] = []
-  let updatedAt = ''
   for (const chunk of chunks) {
-    updatedAt = chunk.updatedAt > updatedAt ? chunk.updatedAt : updatedAt
     if (chunk.section === 'words') {
       for (const word of chunk.items as WordEntry[])
         words[word.wordKey] = word
@@ -284,7 +282,7 @@ export function combineV5LibraryChunks(chunks: FirestoreLibraryV5Chunk[]): Libra
       questions.push(...chunk.items as LibraryState['questions'])
     }
   }
-  return { version: 1, words, sets, memberships, folders, questions, updatedAt: updatedAt || new Date().toISOString() }
+  return { version: 1, words, sets, memberships, folders, questions, updatedAt: manifestUpdatedAt }
 }
 
 function validateLibraryChunkShape(value: unknown, uid: string, documentId: string): FirestoreLibraryV5Chunk {

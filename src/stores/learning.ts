@@ -30,6 +30,7 @@ export const useLearningStore = defineStore('learning', () => {
   const dailyCardSeeds = ref<Record<string, CardProgress | null>>({})
   const loaded = ref(false)
   let persistencePromise: Promise<void> = Promise.resolve()
+  const mutationListeners = new Set<() => void>()
 
   const currentReviewEntry = computed(() => reviewEntries.value[reviewIndex.value] ?? null)
   const reviewTotal = computed(() => reviewEntries.value.length)
@@ -267,8 +268,15 @@ export const useLearningStore = defineStore('learning', () => {
     const write = saveToStorage(LEARNING_STORAGE_KEY, snapshot)
     const next = Promise.all([persistencePromise.catch(() => undefined), write]).then(() => undefined)
     persistencePromise = next
+    for (const listener of mutationListeners)
+      listener()
     void next.catch(() => undefined)
     return next
+  }
+
+  function onMutation(listener: () => void): () => void {
+    mutationListeners.add(listener)
+    return () => mutationListeners.delete(listener)
   }
 
   async function waitForPersistence(): Promise<void> {
@@ -604,6 +612,7 @@ export const useLearningStore = defineStore('learning', () => {
     loadState,
     resetForNamespace,
     saveState,
+    onMutation,
     waitForPersistence,
     replaceProgress,
     replaceStats,

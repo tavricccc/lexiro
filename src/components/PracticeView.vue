@@ -32,22 +32,24 @@ const quizDraft = computed<{ selectedIndex: number | null } | null>(() => {
       <CheckCircle2 class="h-3.5 w-3.5 text-emerald-500" />
       {{ $t('practice.autoSaved') }}
     </p>
-    <Transition name="practice-card" mode="out-in">
-      <div :key="`${currentView}-${currentIndex}`">
-        <QuizCard
-          v-if="currentEntry && ['quiz', 'fillBlank', 'reading'].includes(currentView)"
-          :entry="currentEntry"
-          :index="currentIndex"
-          :total="totalItems"
-          :review="currentSession?.review"
-          :draft="quizDraft"
-          :marked-for-review="currentSession?.markedForReview[currentIndex] ?? false"
-          @draft-change="(payload) => handleQuizDraftChange(currentIndex, payload)"
-          @toggle-review-mark="toggleReviewMark(currentIndex)"
-          @next="advanceToNext"
-        />
-      </div>
-    </Transition>
+    <div class="grid min-h-[32rem] items-start">
+      <Transition name="practice-card">
+        <div :key="`${currentView}-${currentIndex}`" class="[grid-area:1/1]">
+          <QuizCard
+            v-if="currentEntry && ['quiz', 'fillBlank', 'reading'].includes(currentView)"
+            :entry="currentEntry"
+            :index="currentIndex"
+            :total="totalItems"
+            :review="currentSession?.review"
+            :draft="quizDraft"
+            :marked-for-review="currentSession?.markedForReview[currentIndex] ?? false"
+            @draft-change="(payload) => handleQuizDraftChange(currentIndex, payload)"
+            @toggle-review-mark="toggleReviewMark(currentIndex)"
+            @next="advanceToNext"
+          />
+        </div>
+      </Transition>
+    </div>
   </section>
   <SessionUnavailable v-else />
 </template>

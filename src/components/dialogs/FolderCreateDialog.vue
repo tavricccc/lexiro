@@ -50,8 +50,8 @@ function reset() {
 
 async function createFolder(): Promise<boolean> {
   if (pendingFolderId.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     const createdId = pendingFolderId.value
     pendingFolderId.value = null
@@ -63,9 +63,9 @@ async function createFolder(): Promise<boolean> {
   if (!folder)
     return false
   pendingFolderId.value = folder.id
-  const synced = await syncAfterLocalCommit()
+  const { localPersisted } = await syncAfterLocalCommit()
   initialDraftSnapshot.value = draftSnapshot()
-  if (!synced)
+  if (!localPersisted)
     return false
   pendingFolderId.value = null
   emit('created', folder.id)
@@ -109,7 +109,7 @@ watch(() => props.open, (open) => {
         <Button variant="outline" @click="close">
           {{ $t('editor.cancel') }}
         </Button>
-        <Button variant="default" @click="createFolder">
+        <Button variant="default" :loading="pendingFolderId !== null" @click="createFolder">
           {{ $t('library.folderCreateConfirm') }}
         </Button>
       </DialogFooter>

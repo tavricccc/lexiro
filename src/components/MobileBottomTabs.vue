@@ -66,16 +66,12 @@ const activeIndex = computed(() => {
   color: var(--color-on-surface-variant);
   font-size: 0.6875rem;
   font-weight: 600;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mobile-bottom-tabs :deep(.mobile-bottom-tab--active) {
   color: var(--accent-primary);
   font-weight: 800;
-}
-
-.mobile-bottom-tabs :deep(.mobile-bottom-tab:active) {
-  transform: scale(1.05);
 }
 
 .mobile-bottom-tabs :deep(.mobile-bottom-tab:is(:active, .is-pressing):not([aria-disabled='true'])) {

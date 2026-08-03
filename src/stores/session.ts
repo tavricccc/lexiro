@@ -15,6 +15,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { SESSION_STORAGE_KEY } from '@/constants'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { buildDailyQuestionEntries as selectDailyQuestionEntries } from '@/lib/daily-question-selection'
 import { i18n } from '@/lib/i18n'
 import { normalizeWordKey, senseToStudyWord } from '@/lib/library'
@@ -555,13 +556,12 @@ export const useSessionStore = defineStore('session', () => {
       return false
     roundSyncing.value = true
     try {
-      const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
-      const synced = await syncAfterLocalCommit()
-      if (synced) {
+      const result = await syncAfterLocalCommit()
+      if (result.localPersisted) {
         pendingRoundSync.value = false
         finishRound()
       }
-      return synced
+      return result.localPersisted
     }
     finally {
       roundSyncing.value = false

@@ -76,11 +76,11 @@ onUnmounted(deactivate)
   <Teleport to="body">
     <Transition
       enter-active-class="transition duration-150 ease-out"
-      enter-from-class="scale-95 opacity-0 -translate-y-1"
-      enter-to-class="scale-100 opacity-100 translate-y-0"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
       leave-active-class="transition duration-100 ease-in"
-      leave-from-class="scale-100 opacity-100 translate-y-0"
-      leave-to-class="scale-95 opacity-0 -translate-y-1"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
     >
       <div
         v-if="open"

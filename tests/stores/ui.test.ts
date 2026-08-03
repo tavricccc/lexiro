@@ -52,4 +52,12 @@ describe('ui action dialogs', () => {
     uiStore.endPageLoading(secondToken)
     expect(uiStore.pageLoading).toBe(false)
   })
+
+  it('keeps the app covered until startup work releases the fixed splash', () => {
+    const uiStore = useUIStore()
+
+    expect(uiStore.appStarting).toBe(true)
+    uiStore.finishAppStartup()
+    expect(uiStore.appStarting).toBe(false)
+  })
 })

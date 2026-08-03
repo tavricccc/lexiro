@@ -209,7 +209,7 @@ onUnmounted(() => {
       :aria-activedescendant="isOpen ? activeOptionId : undefined"
       :class="
         cn(
-          'surface-control flex min-h-11 w-full items-center justify-between gap-2 px-4 py-2.5 text-sm font-bold text-ink-950 dark:text-ink-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-primary/20 disabled:cursor-not-allowed disabled:opacity-40',
+          'surface-control flex min-h-11 w-full items-center justify-between gap-2 px-4 py-2.5 text-sm font-bold text-ink-950 dark:text-ink-50 transition-[color,background-color,border-color,box-shadow,opacity] duration-200 focus:outline-none focus:ring-2 focus-visible:ring-accent-primary/20 disabled:cursor-not-allowed disabled:opacity-40',
           isOpen ? 'ring-2 ring-accent-primary/30 border-accent-primary' : '',
           props.class,
         )
@@ -226,11 +226,11 @@ onUnmounted(() => {
     <Teleport to="body">
       <Transition
         enter-active-class="transition duration-150 ease-out"
-        enter-from-class="scale-95 opacity-0 -translate-y-1"
-        enter-to-class="scale-100 opacity-100 translate-y-0"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
         leave-active-class="transition duration-100 ease-in"
-        leave-from-class="scale-100 opacity-100 translate-y-0"
-        leave-to-class="scale-95 opacity-0 -translate-y-1"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
       >
         <div
           v-if="isOpen"
@@ -247,7 +247,7 @@ onUnmounted(() => {
             role="option"
             :aria-selected="option.value === modelValue"
             :aria-disabled="option.disabled || undefined"
-            class="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all duration-150"
+            class="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-[color,background-color] duration-150"
             :class="[
               option.disabled
                 ? 'cursor-not-allowed opacity-40'

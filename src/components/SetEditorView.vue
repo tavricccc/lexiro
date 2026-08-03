@@ -75,8 +75,8 @@ function editorSnapshot(): string {
 const editorDirty = computed(() => pendingLocalCommit.value || initialEditorSnapshot.value !== editorSnapshot())
 
 async function finishCommittedSave(targetSetId: string): Promise<boolean> {
-  const synced = await syncAfterLocalCommit()
-  if (!synced)
+  const { localPersisted } = await syncAfterLocalCommit()
+  if (!localPersisted)
     return false
   pendingLocalCommit.value = false
   initialEditorSnapshot.value = editorSnapshot()
@@ -184,7 +184,7 @@ function close() {
       <Button variant="outline" @click="close">
         {{ $t('editor.cancel') }}
       </Button>
-      <Button @click="save">
+      <Button :loading="pendingLocalCommit" @click="save">
         {{ $t('editor.save') }}
       </Button>
     </div>

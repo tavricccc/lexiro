@@ -4,6 +4,15 @@ import type { PracticeQuestion } from './set'
 export type PracticeMode = 'quiz' | 'fillBlank' | 'reading'
 export type SessionStatus = 'in-progress' | 'completed'
 
+export interface SessionHeaderModel {
+  title: string
+  subtitle: string
+  current: number
+  total: number
+  progress: number
+  showProgress: boolean
+}
+
 export interface SessionEntry {
   item: StudyWord
   question?: PracticeQuestion

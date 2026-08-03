@@ -29,6 +29,7 @@ const otherExpanded = ref(false)
 const questionTypeFilter = ref<VocabularyQuestionTypeFilter>('all')
 const difficultyFilter = ref<VocabularyDifficultyFilter>('all')
 const questionDialogOpen = ref(false)
+const deletingQuestionId = ref<string | null>(null)
 const editingQuestion = ref<MultipleChoiceQuestion | null>(null)
 
 function senseSetNames(senseId: string): string {
@@ -86,10 +87,18 @@ const questions = computed(() => libraryStore.questions.filter((question) => {
     && (difficultyFilter.value === 'all' || String(question.difficulty) === difficultyFilter.value)
 }))
 async function removeQuestion(question: LibraryQuestion) {
+  if (deletingQuestionId.value)
+    return
   const names = libraryStore.getQuestionSetIds(question).map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、')
   if (await uiStore.showConfirm(t('vocabulary.deleteQuestionTitle'), t('vocabulary.deleteQuestionMessage', { sets: names }))) {
-    if (libraryStore.removeQuestion(question.id))
-      await syncAfterLocalCommit()
+    deletingQuestionId.value = question.id
+    try {
+      if (libraryStore.removeQuestion(question.id))
+        await syncAfterLocalCommit()
+    }
+    finally {
+      deletingQuestionId.value = null
+    }
   }
 }
 
@@ -205,6 +214,7 @@ watch([() => route.query.action, () => route.query.questionId, () => currentSens
         :question-type-filter="questionTypeFilter"
         :difficulty-filter="difficultyFilter"
         :has-senses="Boolean(currentSenses.length)"
+        :deleting-question-id="deletingQuestionId"
         @update:question-type-filter="questionTypeFilter = $event"
         @update:difficulty-filter="difficultyFilter = $event"
         @add-question="openQuestionEditor()"

@@ -76,7 +76,7 @@
   --panel-padding: 1.5rem;
   --control-height: 2.75rem;
   --tap-target: 2.75rem;
-  --app-header-height: 4rem;
+  --app-header-height: 4.75rem;
   --app-content-max-width: 80rem;
   --app-viewport-gutter: 1rem;
   --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -308,11 +308,10 @@ body {
   border: 0;
   border-radius: var(--radius-outer);
   box-shadow: var(--shadow-card);
-  transition: transform var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease;
+  transition: box-shadow var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease;
 }
 
 .surface-card--interactive:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-floating);
 }
 
@@ -378,7 +377,6 @@ body {
 .app-root--workspace {
   display: grid;
   grid-template-columns: var(--app-sidebar-width) 1fr;
-  transition: grid-template-columns 0.42s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .app-root--workspace .app-main-content {
@@ -433,7 +431,7 @@ body {
 }
 
 .app-header__inner {
-  min-height: var(--app-header-height);
+  min-height: 4rem;
 }
 
 @media (min-width: 640px) {
@@ -509,10 +507,24 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .loading-progress-indeterminate,
+  .feedback-correct,
+  .feedback-wrong,
+  .animate-celebration-pop,
+  .animate-pulse-ring,
+  .animate-perfect-in,
+  .set-card-enter {
+    animation: none !important;
+  }
+
+  .loading-overlay-enter-active,
+  .loading-overlay-leave-active,
+  .celebration-overlay-enter-active,
+  .celebration-overlay-leave-active,
+  .practice-card-enter-active,
+  .practice-card-leave-active,
+  .score-ring-progress {
+    transition: none !important;
   }
 }
 
@@ -610,17 +622,12 @@ textarea {
 /* Practice card swap */
 .practice-card-enter-active,
 .practice-card-leave-active {
-  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.practice-card-enter-from {
-  opacity: 0;
-  transform: translateY(8px);
-}
-
+.practice-card-enter-from,
 .practice-card-leave-to {
   opacity: 0;
-  transform: translateY(-8px);
 }
 
 /* Flashcard flip — dedicated styles (do NOT use .panel: it sets transform) */
@@ -792,12 +799,6 @@ textarea {
   transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-/* Score ring */
-.score-ring-progress {
-  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .animate-perfect-in {
   animation: set-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -816,11 +817,9 @@ html.motion-paused *::after {
 @keyframes set-card-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 

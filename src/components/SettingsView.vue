@@ -76,7 +76,7 @@ async function save(): Promise<boolean> {
     saveAiSettings(normalized)
     pendingAiSave.value = true
   }
-  if (!await syncAfterLocalCommit())
+  if (!(await syncAfterLocalCommit()).localPersisted)
     return false
   pendingAiSave.value = false
   initialSettingsSnapshot.value = settingsSnapshot()
@@ -106,7 +106,7 @@ async function saveDailyGoals(): Promise<boolean> {
     learningStore.setDailyGoals(Number(dailyWordGoalDraft.value), Number(dailyQuestionGoalDraft.value))
     pendingDailySave.value = true
   }
-  if (!await syncAfterLocalCommit())
+  if (!(await syncAfterLocalCommit()).localPersisted)
     return false
   pendingDailySave.value = false
   initialDailyTargetsSnapshot.value = `${dailyWordGoalDraft.value}:${dailyQuestionGoalDraft.value}`
@@ -228,7 +228,7 @@ async function signIn() {
         </div>
       </fieldset>
       <div class="mt-5 flex flex-wrap items-center gap-2">
-        <Button variant="default" class="gap-2" @click="save">
+        <Button variant="default" class="gap-2" :loading="pendingAiSave" @click="save">
           <Save class="h-4 w-4" />
           <span>{{ $t('settings.save') }}</span>
         </Button>
@@ -288,7 +288,7 @@ async function signIn() {
         </div>
       </fieldset>
       <div class="mt-5 flex flex-wrap items-center gap-2">
-        <Button variant="default" class="gap-2" :disabled="!dailyTargetsDirty && !pendingDailySave" @click="saveDailyGoals">
+        <Button variant="default" class="gap-2" :disabled="!dailyTargetsDirty && !pendingDailySave" :loading="pendingDailySave" @click="saveDailyGoals">
           <Save class="h-4 w-4" />{{ $t('settings.saveDailyTargets') }}
         </Button>
         <span v-if="dailySaved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600"><Check class="h-3.5 w-3.5" />{{ $t('settings.saved') }}</span>

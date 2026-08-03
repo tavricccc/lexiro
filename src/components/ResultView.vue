@@ -9,7 +9,6 @@ import { copyToClipboard } from '@/lib/clipboard'
 import { nextPracticeMode } from '@/lib/practice'
 import { buildAllWrongQuestionsPrompt, buildQuestionExplainPrompt } from '@/lib/resultPrompts'
 import { useSessionStore } from '@/stores/session'
-import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
@@ -18,10 +17,8 @@ import ConfettiAnimation from './ui/celebration/ConfettiAnimation.vue'
 import ScoreRing from './ui/score-ring/ScoreRing.vue'
 import StatusMessage from './ui/status-message/StatusMessage.vue'
 
-const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
 const uiStore = useUIStore()
-const { activeSet } = storeToRefs(setsStore)
 const { resultSummary, resultRows, currentSession } = storeToRefs(sessionStore)
 const {
   restartCurrentMode,
@@ -38,7 +35,6 @@ const aiLoading = ref<string | null>(null)
 const aiError = ref('')
 
 const wrongRows = computed(() => resultRows.value.filter(row => !row.record?.isCorrect))
-const displaySet = computed(() => activeSet.value ?? setsStore.sets[0] ?? null)
 const modeLabel = computed(() => {
   if (currentSession.value?.sourceSetId === 'daily')
     return t('practice.dailyQuestions')
@@ -147,9 +143,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section v-if="displaySet && resultSummary" class="space-y-5">
+  <section v-if="resultSummary" class="space-y-5">
     <ConfettiAnimation v-if="isPerfect" />
-    <Card id="completion-panel" class="p-4 sm:p-6 text-left transition-all duration-300 animate-celebration-pop">
+    <Card id="completion-panel" class="animate-celebration-pop p-4 text-left sm:p-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-ink-200/50 dark:border-ink-200/10">
         <div class="flex items-start gap-4">
           <span
@@ -178,7 +174,7 @@ onMounted(() => {
         </div>
 
         <div
-          class="flex items-center gap-4 self-start md:self-auto shrink-0 bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 rounded-2xl p-4 transition-all"
+          class="flex shrink-0 items-center gap-4 self-start rounded-2xl border border-ink-200/70 bg-ink-100/80 p-4 transition-[border-color,box-shadow] dark:border-ink-200/25 dark:bg-ink-900 md:self-auto"
           :class="{ 'ring-2 ring-accent-primary/30 shadow-lg': isHighScore }"
         >
           <ScoreRing :score="resultSummary.score" />
@@ -198,7 +194,7 @@ onMounted(() => {
             v-if="resultSummary.wrongCount"
             variant="default"
             size="lg"
-            class="gap-2 shadow-md hover:shadow-lg transition-all text-sm px-5 font-bold"
+            class="gap-2 px-5 text-sm font-bold shadow-md transition-shadow hover:shadow-lg"
             @click="reviewWrongAnswers"
           >
             <BookOpenText class="h-5 w-5" />
@@ -210,7 +206,7 @@ onMounted(() => {
             v-else
             variant="default"
             size="lg"
-            class="gap-2 shadow-md hover:shadow-lg transition-all text-sm px-5 font-bold"
+            class="gap-2 px-5 text-sm font-bold shadow-md transition-shadow hover:shadow-lg"
             @click="switchModeAfterResult"
           >
             <BookOpenText class="h-5 w-5" />

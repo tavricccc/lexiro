@@ -138,7 +138,7 @@ function importQuestions() {
     <p v-if="!canImport" class="mt-3 text-xs font-semibold text-red-600 dark:text-red-400">
       {{ t('library.previewInvalid') }}
     </p>
-    <Button class="mt-3" size="sm" variant="outline" :disabled="!canImport" @click="importQuestions">
+    <Button class="mt-3" size="sm" variant="outline" :disabled="!canImport" :loading="locked" @click="importQuestions">
       {{ t('library.importGenerated') }}
     </Button>
   </div>

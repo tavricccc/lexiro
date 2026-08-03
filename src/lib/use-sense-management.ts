@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLibraryStore } from '@/stores/library'
 import { useUIStore } from '@/stores/ui'
+import { syncAfterLocalCommit } from './commit-sync'
 import { calculateSenseRemovalImpact } from './sense-impact'
 
 interface SenseManagementOptions {
@@ -97,7 +98,6 @@ export function useSenseManagement(options: SenseManagementOptions) {
         action: () => {
           if (libraryStore.restoreSenseRemoval(snapshot)) {
             void (async () => {
-              const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
               await syncAfterLocalCommit()
               uiStore.showToast(t('vocabulary.senseRestored'))
             })()
@@ -111,7 +111,6 @@ export function useSenseManagement(options: SenseManagementOptions) {
     else {
       uiStore.showToast(t('vocabulary.senseRemoved', { meaning: sense.meaningZh }))
     }
-    const { syncAfterLocalCommit } = await import('@/lib/commit-sync')
     await syncAfterLocalCommit()
     await options.onRemoved?.()
   }

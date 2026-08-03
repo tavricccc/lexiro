@@ -42,7 +42,7 @@ async function exportGuestData() {
         <Button variant="ghost" @click="resolveGuestDataWarning('cancel')">
           {{ $t('sync.guestDataCancel') }}
         </Button>
-        <Button variant="outline" class="gap-2" :disabled="exporting" @click="exportGuestData">
+        <Button variant="outline" class="gap-2" :loading="exporting" @click="exportGuestData">
           <Download class="h-4 w-4" />
           {{ $t('sync.guestDataExport') }}
         </Button>

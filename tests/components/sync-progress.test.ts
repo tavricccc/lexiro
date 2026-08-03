@@ -12,6 +12,10 @@ describe('sync progress', () => {
       props: {
         allowCancel: true,
         state: {
+          presentation: 'background',
+          accountId: 'user-1',
+          epoch: 1,
+          operationId: 'user-1:1:test:1',
           phase: 'offline',
           direction: 'idle',
           completed: 0,
@@ -49,6 +53,10 @@ describe('sync progress', () => {
       props: {
         fullscreen: true,
         state: {
+          presentation: 'blocking',
+          accountId: 'user-1',
+          epoch: 1,
+          operationId: 'user-1:1:test:2',
           phase: 'downloading',
           direction: 'download',
           completed: 3,

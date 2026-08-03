@@ -22,8 +22,8 @@ const validSet: LibrarySet = {
   id: 'set-1',
   setName: 'Fruits',
   folderId: '__uncategorized__',
-  createdAt: '',
-  updatedAt: '',
+  createdAt: '2026-08-01T00:00:00.000Z',
+  updatedAt: '2026-08-01T00:00:00.000Z',
 }
 
 const validWord: WordEntry = {
@@ -35,7 +35,7 @@ const validWord: WordEntry = {
     meaningZh: '蘋果',
     examples: ['I eat an apple.'],
   }],
-  updatedAt: '',
+  updatedAt: '2026-08-01T00:00:00.000Z',
 }
 
 const validSession: PracticeSession = {

@@ -100,6 +100,7 @@ export const useLibraryStore = defineStore('library', () => {
   let repositoryPersistPromise: Promise<void> = Promise.resolve()
   let localTransactionDepth = 0
   let localTransactionDirty = false
+  const mutationListeners = new Set<() => void>()
 
   const words = computed(() => Object.values(state.value.words))
   const sets = computed(() => state.value.sets)
@@ -119,6 +120,13 @@ export const useLibraryStore = defineStore('library', () => {
     if (legacyMirrorEnabled.value)
       void saveToStorage(LIBRARY_STORAGE_KEY, state.value)
     queueRepositoryPersist(cloneJson(state.value))
+    for (const listener of mutationListeners)
+      listener()
+  }
+
+  function onMutation(listener: () => void): () => void {
+    mutationListeners.add(listener)
+    return () => mutationListeners.delete(listener)
   }
 
   /** Apply several explicit form changes as one local repository submission. */
@@ -1087,6 +1095,7 @@ export const useLibraryStore = defineStore('library', () => {
     hydratedSetIds,
     hydrationVersion,
     runLocalTransaction,
+    onMutation,
     hydrateSet,
     hydrateSets,
     loadAllContent,

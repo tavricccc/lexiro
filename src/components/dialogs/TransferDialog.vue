@@ -62,8 +62,8 @@ async function saveTransfer(): Promise<boolean> {
         return false
       appliedLocally.value = true
     }
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     appliedLocally.value = false
     transferFolderId.value = transferFolderDraft.value
@@ -210,7 +210,7 @@ async function requestTransferClose() {
             :key="zipImportInputKey"
             type="file"
             accept=".zip,.json"
-            class="block w-full text-sm text-ink-500 file:mr-4 file:rounded-xl file:border-0 file:bg-ink-950 file:px-4 file:py-2.5 file:text-xs file:font-semibold file:text-white file:transition-all hover:file:opacity-90 dark:file:bg-white dark:file:text-ink-950"
+            class="block w-full text-sm text-ink-500 file:mr-4 file:rounded-xl file:border-0 file:bg-ink-950 file:px-4 file:py-2.5 file:text-xs file:font-semibold file:text-white file:transition-opacity hover:file:opacity-90 dark:file:bg-white dark:file:text-ink-950"
             :disabled="saving || appliedLocally"
             @change="handleTransferFileChange"
           >

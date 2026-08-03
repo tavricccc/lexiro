@@ -71,8 +71,8 @@ function optionClass(index: number) {
   const isSelected = index === selectedIndex.value
 
   return cn(
-    'flex w-full items-start gap-3 rounded-2xl border px-4 py-3.5 text-left text-sm font-semibold transition-all duration-200 outline-none',
-    !answered.value && 'border-ink-200/80 dark:border-ink-200/30 bg-white dark:bg-ink-850 text-ink-700 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-accent-primary/20',
+    'flex w-full items-start gap-3 rounded-2xl border px-4 py-3.5 text-left text-sm font-semibold transition-[color,background-color,border-color,box-shadow,opacity] duration-200 outline-none',
+    !answered.value && 'border-ink-200/80 dark:border-ink-200/30 bg-white dark:bg-ink-850 text-ink-700 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 focus-visible:ring-2 focus-visible:ring-accent-primary/20',
     !answered.value && isSelected && 'border-accent-primary bg-accent-primary/5 text-accent-primary ring-1 ring-accent-primary/25',
     answered.value && 'cursor-default',
     answered.value && isCorrect && 'border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold',
@@ -173,7 +173,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 
     <div
       v-if="answered"
-      class="mt-5 rounded-2xl border border-ink-200/70 bg-white/80 p-4 text-left transition-all duration-300 dark:border-ink-200/25 dark:bg-ink-900"
+      class="mt-5 rounded-2xl border border-ink-200/70 bg-white/80 p-4 text-left transition-[color,background-color,border-color,opacity] duration-200 dark:border-ink-200/25 dark:bg-ink-900"
       role="status"
       aria-live="polite"
     >

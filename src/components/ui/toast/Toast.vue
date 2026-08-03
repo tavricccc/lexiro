@@ -20,11 +20,11 @@ const emit = defineEmits<{
   <Teleport to="body">
     <Transition
       enter-active-class="transition duration-350 ease-out"
-      enter-from-class="translate-y-6 scale-95 opacity-0"
-      enter-to-class="translate-y-0 scale-100 opacity-100"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
       leave-active-class="transition duration-200 ease-in"
-      leave-from-class="translate-y-0 scale-100 opacity-100"
-      leave-to-class="translate-y-6 scale-95 opacity-0"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
     >
       <div
         v-if="visible"

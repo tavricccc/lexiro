@@ -190,8 +190,8 @@ function parseManualResponse() {
 
 async function importPreview(questions: LibraryQuestion[] = preview.value): Promise<boolean> {
   if (pendingLocalCommit.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     pendingLocalCommit.value = false
     initialDraftSnapshot.value = draftSnapshot()
@@ -208,8 +208,8 @@ async function importPreview(questions: LibraryQuestion[] = preview.value): Prom
   }
   pendingLocalCommit.value = true
   pendingImportedCount.value = imported
-  const synced = await syncAfterLocalCommit()
-  if (!synced)
+  const { localPersisted } = await syncAfterLocalCommit()
+  if (!localPersisted)
     return false
   pendingLocalCommit.value = false
   initialDraftSnapshot.value = draftSnapshot()

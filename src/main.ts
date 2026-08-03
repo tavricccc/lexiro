@@ -18,25 +18,44 @@ app.use(pinia)
 app.use(router)
 app.use(i18n)
 
-preloadLottieAssets()
+function scheduleLottiePreload() {
+  const preload = () => preloadLottieAssets()
+  const idleWindow = window as Window & {
+    requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number
+  }
+  if (idleWindow.requestIdleCallback)
+    idleWindow.requestIdleCallback(preload, { timeout: 3000 })
+  else
+    window.setTimeout(preload, 0)
+}
 
 async function bootstrap() {
   const setsStore = useSetsStore(pinia)
   const sessionStore = useSessionStore(pinia)
   const uiStore = useUIStore(pinia)
   const learningStore = useLearningStore(pinia)
-  await setsStore.loadState()
-  await sessionStore.loadState()
-  await learningStore.loadState()
-  await uiStore.loadState()
-  await loadAiSettingsState()
-  uiStore.initTheme()
-  // Auth and Cloud sync start before the first frame. App.vue keeps the
-  // workspace behind a visible gate while an online account is reconciling.
-  await useCloudSyncStore(pinia).init()
-
-  await router.isReady()
-  app.mount('#app')
+  const minimumStartup = new Promise(resolve => window.setTimeout(resolve, 2000))
+  try {
+    await Promise.all([
+      setsStore.loadState(),
+      sessionStore.loadState(),
+      learningStore.loadState(),
+      uiStore.loadState(),
+      loadAiSettingsState(),
+      router.isReady(),
+    ])
+    uiStore.initTheme()
+    void useCloudSyncStore(pinia).init()
+  }
+  catch (error) {
+    console.error('Failed to initialize local app state:', error)
+  }
+  finally {
+    await minimumStartup
+    uiStore.finishAppStartup()
+  }
 }
 
-bootstrap()
+app.mount('#app')
+scheduleLottiePreload()
+void bootstrap()

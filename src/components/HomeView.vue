@@ -199,7 +199,7 @@ async function continueSet(setId: string) {
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">
-          <RouterLink v-for="set in recentSets" :key="set.id" :to="{ name: 'set-overview', params: { setId: set.id } }" class="group min-w-0 rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
+          <RouterLink v-for="set in recentSets" :key="set.id" :to="{ name: 'set-overview', params: { setId: set.id } }" class="group min-w-0 rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition-[border-color,box-shadow] hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
             <p class="truncate text-sm font-black group-hover:text-accent-primary">
               {{ set.setName }}
             </p>

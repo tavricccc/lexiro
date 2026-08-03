@@ -36,7 +36,7 @@ describe('cloud sync schema', () => {
 
     expect(chunks.map(chunk => chunk.section)).toEqual(['words', 'sets', 'memberships', 'folders', 'questions'])
     expect(chunks.every(chunk => chunk.schemaVersion === 5)).toBe(true)
-    expect(combineV5LibraryChunks(chunks)).toEqual(library)
+    expect(combineV5LibraryChunks(chunks, library.updatedAt)).toEqual(library)
   })
 
   it('validates chunk ownership and checksums before combining', () => {
@@ -103,8 +103,11 @@ describe('cloud sync schema', () => {
   it('rejects incomplete and mixed-commit chunk collections', () => {
     const chunks = buildV5LibraryChunks('user-1', library)
 
-    expect(() => combineV5LibraryChunks(chunks.filter(chunk => chunk.section !== 'memberships'))).toThrow('缺少 memberships')
-    expect(() => combineV5LibraryChunks(chunks.map((chunk, index) => index === 0 ? { ...chunk, updatedAt: 'later' } : chunk))).toThrow('不屬於同一次提交')
+    expect(() => combineV5LibraryChunks(chunks.filter(chunk => chunk.section !== 'memberships'), library.updatedAt)).toThrow('缺少 memberships')
+    expect(combineV5LibraryChunks(
+      chunks.map((chunk, index) => index === 0 ? { ...chunk, updatedAt: 'earlier-chunk-build' } : chunk),
+      '2026-08-03T00:00:00.000Z',
+    ).updatedAt).toBe('2026-08-03T00:00:00.000Z')
   })
 
   it('writes memberships to Firestore as set records containing member arrays', () => {
@@ -121,7 +124,7 @@ describe('cloud sync schema', () => {
       setId: 'set-1',
       members: [{ wordKey: 'apple', senseIds: ['sense-1'] }],
     }])
-    expect(combineV5LibraryChunks(chunks)).toEqual(populated)
+    expect(combineV5LibraryChunks(chunks, populated.updatedAt)).toEqual(populated)
   })
 
   it('rejects an individual record that cannot fit in a Cloud chunk', () => {

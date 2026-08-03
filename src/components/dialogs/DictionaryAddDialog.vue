@@ -170,8 +170,8 @@ const draftDirty = computed(() => props.open && (pendingLocalCommit.value || ini
 
 async function save(): Promise<boolean> {
   if (pendingLocalCommit.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     pendingLocalCommit.value = false
     initialDraftSnapshot.value = draftSnapshot()
@@ -204,8 +204,8 @@ async function save(): Promise<boolean> {
     return false
   }
   pendingLocalCommit.value = true
-  const synced = await syncAfterLocalCommit()
-  if (!synced)
+  const { localPersisted } = await syncAfterLocalCommit()
+  if (!localPersisted)
     return false
   pendingLocalCommit.value = false
   initialDraftSnapshot.value = draftSnapshot()
@@ -303,7 +303,7 @@ const dirtyForm = useDirtyForm({
         <Button v-if="step < 4" variant="default" :disabled="pendingLocalCommit" @click="next">
           {{ $t('dictionary.nextStep') }}
         </Button>
-        <Button v-else variant="default" @click="save">
+        <Button v-else variant="default" :loading="pendingLocalCommit" @click="save">
           {{ $t('dictionary.confirmAdd') }}
         </Button>
       </DialogFooter>

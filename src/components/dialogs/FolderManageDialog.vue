@@ -64,8 +64,8 @@ function discard() {
 
 async function save(): Promise<boolean> {
   if (pendingDelete.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     pendingDelete.value = false
     emit('deleted')
@@ -73,8 +73,8 @@ async function save(): Promise<boolean> {
     return true
   }
   if (pendingLocalCommit.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     pendingLocalCommit.value = false
     initialDraftSnapshot.value = draftSnapshot()
@@ -91,8 +91,8 @@ async function save(): Promise<boolean> {
     return false
   }
   pendingLocalCommit.value = true
-  const synced = await syncAfterLocalCommit()
-  if (!synced)
+  const { localPersisted } = await syncAfterLocalCommit()
+  if (!localPersisted)
     return false
   pendingLocalCommit.value = false
   initialDraftSnapshot.value = draftSnapshot()
@@ -110,8 +110,8 @@ async function remove() {
   }
   if (await confirmAndRemoveFolder(props.folder)) {
     pendingDelete.value = true
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return
     pendingDelete.value = false
     emit('deleted')
@@ -150,13 +150,13 @@ const dirtyForm = useDirtyForm({
     </fieldset>
     <template #footer>
       <DialogFooter>
-        <Button variant="ghost" class="mr-auto text-red-500" :disabled="pendingLocalCommit" @click="remove">
+        <Button variant="ghost" class="mr-auto text-red-500" :disabled="pendingLocalCommit" :loading="pendingDelete" @click="remove">
           {{ $t('library.folderDelete') }}
         </Button>
         <Button variant="outline" @click="close">
           {{ $t('editor.cancel') }}
         </Button>
-        <Button @click="save">
+        <Button :loading="pendingLocalCommit" @click="save">
           {{ $t('editor.save') }}
         </Button>
       </DialogFooter>

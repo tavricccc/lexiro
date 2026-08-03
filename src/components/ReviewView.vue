@@ -15,7 +15,6 @@ import { useUIStore } from '@/stores/ui'
 import SessionUnavailable from './SessionUnavailable.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
-import Progress from './ui/progress/Progress.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -25,7 +24,7 @@ const sessionStore = useSessionStore()
 const setsStore = useSetsStore()
 const uiStore = useUIStore()
 const { t } = useI18n()
-const { currentReviewEntry, reviewSetId, reviewIndex, reviewTotal, reviewProgress, reviewAnswered, reviewContext } = storeToRefs(learningStore)
+const { currentReviewEntry, reviewSetId, reviewIndex, reviewTotal, reviewAnswered, reviewContext } = storeToRefs(learningStore)
 const { answerCurrent, nextReview, startReview, startDailyReviewFromRepository, clearReview } = learningStore
 const { startDailyQuestionRound } = sessionStore
 const routeSetId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : null)
@@ -56,7 +55,7 @@ async function next() {
   if (nextReview())
     return
   clearReview()
-  if (!await syncAfterLocalCommit()) {
+  if (!(await syncAfterLocalCommit()).localPersisted) {
     uiStore.showToast(t('sync.error'))
     void router.push({ name: 'home' })
     return
@@ -115,21 +114,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
-  <section v-if="activeSet && currentReviewEntry" class="mx-auto max-w-2xl space-y-5">
-    <div class="flex items-center justify-between gap-3">
-      <div>
-        <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400">
-          {{ $t('learning.todayReview') }}
-        </p>
-        <p class="mt-1 text-sm font-bold text-ink-950 dark:text-ink-50">
-          {{ activeSet.setName }}
-        </p>
-      </div>
-      <span class="text-sm font-extrabold tabular-nums">{{ reviewIndex + 1 }}/{{ reviewTotal }}</span>
-    </div>
-    <Progress :model-value="reviewProgress" class="h-2" />
-
-    <motion.div :initial="{ opacity: 0, y: 12 }" :animate="{ opacity: 1, y: 0 }" :transition="{ type: 'spring', stiffness: 260, damping: 24 }">
+  <section v-if="activeSet && currentReviewEntry" class="mx-auto max-w-2xl">
+    <motion.div :key="currentReviewEntry.item.id" :initial="{ opacity: 0 }" :animate="{ opacity: 1 }" :transition="{ duration: 0.18 }">
       <Card class="p-5 text-center sm:p-6">
         <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400">
           {{ $t('learning.rememberPrompt') }}

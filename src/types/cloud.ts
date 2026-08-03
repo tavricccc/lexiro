@@ -76,8 +76,17 @@ export type FirestoreLibraryChunk = FirestoreLibraryChunkBase & (
 
 export type SyncProgressPhase = 'preparing' | 'downloading' | 'reconciling' | 'uploading' | 'retrying' | 'verifying' | 'synced' | 'offline' | 'error'
 export type SyncDirection = 'idle' | 'download' | 'upload'
+export type SyncPresentation = 'blocking' | 'background'
+
+export type SyncAfterLocalCommitResult
+  = | { status: 'cloud-synced', localPersisted: true, cloudSynced: true, pendingWrites: 0 }
+    | { status: 'queued', localPersisted: true, cloudSynced: false, pendingWrites: number }
 
 export interface SyncProgressState {
+  presentation: SyncPresentation
+  accountId: string
+  epoch: number
+  operationId: string
   phase: SyncProgressPhase
   direction: SyncDirection
   completed: number

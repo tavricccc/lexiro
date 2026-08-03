@@ -22,13 +22,21 @@ export type SyncErrorKind
     | 'timeout'
     | 'unknown'
 
+export interface CloudSyncErrorContext {
+  domain?: 'library' | 'learning' | 'settings' | 'auth' | 'listener' | 'persistence'
+  operation?: string
+  documentId?: string
+}
+
 export class CloudSyncError extends Error {
   readonly code: CloudSyncErrorCode
+  readonly context: Readonly<CloudSyncErrorContext>
 
-  constructor(code: CloudSyncErrorCode, message: string, options?: ErrorOptions) {
+  constructor(code: CloudSyncErrorCode, message: string, options?: ErrorOptions & { context?: CloudSyncErrorContext }) {
     super(message, options)
     this.name = 'CloudSyncError'
     this.code = code
+    this.context = Object.freeze({ ...options?.context })
   }
 }
 
@@ -36,6 +44,7 @@ export interface SyncErrorDetails {
   code: string
   kind: SyncErrorKind
   message: string
+  context: Readonly<CloudSyncErrorContext>
 }
 
 function errorMessage(error: unknown): string {
@@ -57,37 +66,39 @@ export function syncErrorDetails(error: unknown): SyncErrorDetails {
   const code = errorCode(error)
   const normalized = `${code} ${message}`.toLowerCase()
 
+  const context = error instanceof CloudSyncError ? error.context : {}
+  const details = (kind: SyncErrorKind): SyncErrorDetails => ({ code: code || 'unknown', kind, message, context })
   if (code === 'cloud/app-check-initialization')
-    return { code, kind: 'app-check', message }
+    return details('app-check')
   if (code === 'cloud/schema-unsupported')
-    return { code, kind: 'cloud-schema', message }
+    return details('cloud-schema')
   if (code === 'cloud/data-invalid' || code === 'cloud/checksum-mismatch')
-    return { code, kind: 'cloud-data', message }
+    return details('cloud-data')
   if (code === 'cloud/outbox-invalid')
-    return { code, kind: 'outbox', message }
+    return details('outbox')
   if (code === 'cloud/not-configured')
-    return { code, kind: 'not-configured', message }
+    return details('not-configured')
   if (normalized.includes('invalid-argument') || normalized.includes('unsupported field value'))
-    return { code, kind: 'cloud-data', message }
+    return details('cloud-data')
   if (normalized.includes('err_blocked_by_client') || normalized.includes('blocked by client'))
-    return { code, kind: 'blocked-client', message }
+    return details('blocked-client')
   if (normalized.includes('app check') || normalized.includes('appcheck') || normalized.includes('recaptcha') || normalized.includes('token is invalid'))
-    return { code, kind: 'app-check', message }
+    return details('app-check')
   if (normalized.includes('permission-denied') || normalized.includes('missing or insufficient permissions'))
-    return { code, kind: 'permission', message }
+    return details('permission')
   if (normalized.includes('unauthenticated') || normalized.includes('auth/'))
-    return { code, kind: 'auth', message }
+    return details('auth')
   if (normalized.includes('failed-precondition') || normalized.includes('indexeddb') || normalized.includes('persistence') || normalized.includes('multiple tab'))
-    return { code, kind: 'persistence', message }
+    return details('persistence')
   if (normalized.includes('deadline-exceeded') || normalized.includes('timeout'))
-    return { code, kind: 'timeout', message }
+    return details('timeout')
   if (normalized.includes('resource-exhausted'))
-    return { code, kind: 'resource', message }
+    return details('resource')
   if (normalized.includes('aborted'))
-    return { code, kind: 'aborted', message }
+    return details('aborted')
   if (normalized.includes('unavailable') || normalized.includes('network'))
-    return { code, kind: 'network', message }
-  return { code: code || 'unknown', kind: 'unknown', message }
+    return details('network')
+  return details('unknown')
 }
 
 export function isRetryableSyncError(error: unknown): boolean {

@@ -7,6 +7,7 @@ describe('cloud sync errors', () => {
 
     expect(syncErrorDetails(error)).toEqual({
       code: 'cloud/schema-unsupported',
+      context: {},
       kind: 'cloud-schema',
       message: 'Cloud library chunk schema 不受支援',
     })

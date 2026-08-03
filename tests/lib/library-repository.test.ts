@@ -33,6 +33,20 @@ function makeLibrary(setCount = 25): LibraryState {
 }
 
 describe('libraryRepository', () => {
+  it('notifies subscribers only after a committed mutation', async () => {
+    const repository = new LibraryRepository(`repo-events-${crypto.randomUUID()}`)
+    const versions: number[] = []
+    const stop = repository.onMutation(version => versions.push(version))
+
+    await repository.commitRecords(makeLibrary(1))
+    await repository.commitRecords(makeLibrary(1))
+    stop()
+    await repository.commitRecords(makeLibrary(2))
+
+    expect(versions).toEqual([1, 5])
+    expect(repository.currentMutationVersion()).toBeGreaterThan(versions.at(-1)!)
+  })
+
   it('migrates the legacy JSON once and keeps the active generation stable on restart', async () => {
     const namespace = `repo-migration-${crypto.randomUUID()}`
     const legacy = makeLibrary(3)

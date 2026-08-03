@@ -37,7 +37,7 @@ defineExpose({ focus, el })
     :disabled="disabled"
     :class="
       cn(
-        'surface-control min-h-11 w-full px-4 py-3 text-ink-950 dark:text-ink-50 text-sm placeholder-ink-400 dark:placeholder-ink-600 focus:outline-none focus:ring-2 focus:ring-accent-primary/20 disabled:cursor-not-allowed disabled:opacity-40 transition-all duration-200',
+        'surface-control min-h-11 w-full px-4 py-3 text-ink-950 dark:text-ink-50 text-sm placeholder-ink-400 dark:placeholder-ink-600 focus:outline-none focus:ring-2 focus:ring-accent-primary/20 disabled:cursor-not-allowed disabled:opacity-40 transition-[color,background-color,border-color,box-shadow,opacity] duration-200',
         $props.class,
       )
     "

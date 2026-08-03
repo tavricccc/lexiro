@@ -72,8 +72,8 @@ async function save(): Promise<boolean> {
   saving.value = true
   try {
     if (pendingLocalCommit.value) {
-      const synced = await syncAfterLocalCommit()
-      if (!synced)
+      const { localPersisted } = await syncAfterLocalCommit()
+      if (!localPersisted)
         return false
       pendingLocalCommit.value = false
       initialDraftSnapshot.value = draftSnapshot()
@@ -85,8 +85,8 @@ async function save(): Promise<boolean> {
       : (emit('save', value), true)
     if (saved) {
       pendingLocalCommit.value = true
-      const synced = await syncAfterLocalCommit()
-      if (!synced)
+      const { localPersisted } = await syncAfterLocalCommit()
+      if (!localPersisted)
         return false
       pendingLocalCommit.value = false
       initialDraftSnapshot.value = draftSnapshot()

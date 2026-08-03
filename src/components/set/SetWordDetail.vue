@@ -106,7 +106,7 @@ async function removeWord() {
         <Button variant="outline" size="icon" :aria-label="$t('vocabulary.editWord')" :disabled="deleting" @click="openVocabulary">
           <Pencil class="h-4 w-4" />
         </Button>
-        <Button variant="ghost" size="icon" class="text-red-500 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/20" :aria-label="$t('vocabulary.deleteWord')" :disabled="deleting" @click="removeWord">
+        <Button variant="ghost" size="icon" class="text-red-500 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/20" :aria-label="$t('vocabulary.deleteWord')" :loading="deleting" @click="removeWord">
           <Trash2 class="h-4 w-4" />
         </Button>
       </div>

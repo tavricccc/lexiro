@@ -68,8 +68,8 @@ function confirmFolder() {
 
 async function createFolder() {
   if (pendingFolderId.value) {
-    const synced = await syncAfterLocalCommit()
-    if (synced) {
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (localPersisted) {
       draftFolderId.value = pendingFolderId.value
       pendingFolderId.value = null
     }
@@ -80,8 +80,8 @@ async function createFolder() {
     return
   pendingFolderId.value = folder.id
   draftFolderId.value = folder.id
-  const synced = await syncAfterLocalCommit()
-  if (synced) {
+  const { localPersisted } = await syncAfterLocalCommit()
+  if (localPersisted) {
     draftFolderId.value = folder.id
     pendingFolderId.value = null
   }
@@ -118,7 +118,7 @@ watch(() => props.modelValue, (value) => {
             <fieldset :disabled="Boolean(pendingFolderId)" class="contents">
               <Input v-model="newFolderName" class="min-w-0 flex-1 rounded-xl" :placeholder="$t('library.newFolderPlaceholder')" />
             </fieldset>
-            <Button type="submit" size="sm" variant="outline">
+            <Button type="submit" size="sm" variant="outline" :loading="Boolean(pendingFolderId)">
               {{ $t('library.newFolderShort') }}
             </Button>
           </form>

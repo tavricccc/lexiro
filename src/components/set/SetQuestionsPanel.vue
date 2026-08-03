@@ -27,6 +27,7 @@ const search = ref('')
 const questionTypeFilter = ref<VocabularyQuestionTypeFilter>('all')
 const difficultyFilter = ref<VocabularyDifficultyFilter>('all')
 const createOpen = ref(false)
+const deletingQuestionId = ref<string | null>(null)
 const questionTypeOptions = computed(() => createVocabularyQuestionTypeOptions(t))
 const difficultyOptions = computed(() => createVocabularyDifficultyOptions(t))
 const questions = computed(() => libraryStore.questions.filter(question => libraryStore.getQuestionSetIds(question).includes(props.setId)))
@@ -87,10 +88,18 @@ function editQuestion(question: LibraryQuestion) {
 }
 
 async function deleteQuestion(question: LibraryQuestion) {
+  if (deletingQuestionId.value)
+    return
   const names = libraryStore.getQuestionSetIds(question).map(id => libraryStore.getSet(id)?.setName).filter(Boolean).join('、')
   if (await uiStore.showConfirm(t('vocabulary.deleteQuestionTitle'), t('vocabulary.deleteQuestionMessage', { sets: names }))) {
-    if (libraryStore.removeQuestion(question.id))
-      await syncAfterLocalCommit()
+    deletingQuestionId.value = question.id
+    try {
+      if (libraryStore.removeQuestion(question.id))
+        await syncAfterLocalCommit()
+    }
+    finally {
+      deletingQuestionId.value = null
+    }
   }
 }
 </script>
@@ -146,7 +155,7 @@ async function deleteQuestion(question: LibraryQuestion) {
             <Button variant="ghost" size="icon" class="h-11 w-11" :aria-label="$t('vocabulary.editQuestion')" @click="editQuestion(question)">
               <Pencil class="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('vocabulary.deleteQuestion')" @click="deleteQuestion(question)">
+            <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('vocabulary.deleteQuestion')" :loading="deletingQuestionId === question.id" @click="deleteQuestion(question)">
               <Trash2 class="h-4 w-4" />
             </Button>
           </div>

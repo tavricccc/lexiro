@@ -15,6 +15,7 @@ describe('loading overlay', () => {
         fullscreen: false,
         showMessage: false,
         showProgress: false,
+        revealDelay: 0,
       },
     })
 
@@ -32,6 +33,7 @@ describe('loading overlay', () => {
       props: {
         open: true,
         message: '正在同步',
+        revealDelay: 0,
       },
     })
 

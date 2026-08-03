@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
@@ -7,6 +8,13 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 const appVersion = Date.now().toString()
 const basePath = process.env.VITE_BASE_PATH || '/'
+const kib = 1024
+const bundleBudgets = { entry: 230 * kib, css: 100 * kib, async: 350 * kib, firebase: 750 * kib, precache: 3 * 1024 * kib }
+
+function assertBundleBudget(fileName: string, bytes: number, budget: number) {
+  if (bytes > budget)
+    throw new Error(`Bundle budget exceeded: ${fileName} is ${bytes} bytes (budget ${budget})`)
+}
 
 export default defineConfig({
   base: basePath,
@@ -19,6 +27,7 @@ export default defineConfig({
     },
   },
   build: {
+    chunkSizeWarningLimit: 750,
     rolldownOptions: {
       output: {
         codeSplitting: {
@@ -51,10 +60,25 @@ export default defineConfig({
         writeFileSync(resolve(distDir, 'version.json'), JSON.stringify({ version: appVersion }))
       },
     },
+    {
+      name: 'bundle-budget',
+      generateBundle(_, bundle) {
+        for (const item of Object.values(bundle)) {
+          const bytes = item.type === 'chunk' ? Buffer.byteLength(item.code) : Buffer.byteLength(typeof item.source === 'string' ? item.source : item.source)
+          if (item.fileName.endsWith('.css'))
+            assertBundleBudget(item.fileName, bytes, bundleBudgets.css)
+          else if (item.type === 'chunk' && item.isEntry)
+            assertBundleBudget(item.fileName, bytes, bundleBudgets.entry)
+          else if (item.type === 'chunk' && item.fileName.includes('firebase-'))
+            assertBundleBudget(item.fileName, bytes, bundleBudgets.firebase)
+          else if (item.type === 'chunk')
+            assertBundleBudget(item.fileName, bytes, bundleBudgets.async)
+        }
+      },
+    },
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['icons/lexiro.png', 'icons/apple-touch-icon.png'],
       manifest: {
         name: 'lexiro',
         short_name: 'lexiro',
@@ -79,6 +103,13 @@ export default defineConfig({
         navigateFallback: `${basePath}index.html`,
         navigateFallbackAllowlist: [/./],
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest}'],
+        globIgnores: ['**/firebase-*.js', 'icons/*.png'],
+        maximumFileSizeToCacheInBytes: bundleBudgets.async,
+        manifestTransforms: [async (entries) => {
+          const total = entries.reduce((sum, entry) => sum + (entry.size ?? 0), 0)
+          assertBundleBudget('PWA precache', total, bundleBudgets.precache)
+          return { manifest: entries, warnings: [] }
+        }],
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {

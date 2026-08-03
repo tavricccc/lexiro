@@ -126,7 +126,7 @@ function parseCloudV5Documents(documents: Array<{ id: string, data: () => Docume
   const chunks = chunkDocuments.map(item => validateV5LibraryChunk(item.data(), uid, item.id))
   if (chunks.some(chunk => chunkChecksums[chunk.chunkId] !== chunk.checksum))
     throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library v5 chunk 不屬於目前 manifest')
-  return { library: combineV5LibraryChunks(chunks), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision }
+  return { library: combineV5LibraryChunks(chunks, manifest.updatedAt), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision }
 }
 
 export async function readCloudLibrary(db: Firestore, uid: string): Promise<{ library: LibraryState, hashes: Map<string, string>, revision: string }> {
@@ -333,7 +333,7 @@ export async function readCloudLibraryV5(
     // generation.
     await onBatch?.({ chunks: batchChunks, newChunks, revision: manifest.revision, progress })
   }
-  return { library: combineV5LibraryChunks(chunks), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision }
+  return { library: combineV5LibraryChunks(chunks, manifest.updatedAt), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision }
 }
 
 async function readV5Chunk(db: Firestore, uid: string, id: string): Promise<FirestoreLibraryV5Chunk> {

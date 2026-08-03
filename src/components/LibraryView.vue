@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { LibrarySetSummary, VocabFolder } from '@/types'
-import { ArrowLeft, ChevronRight, FileQuestion, Folder, FolderPlus, LoaderCircle, Plus, Search, Upload } from 'lucide-vue-next'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { syncAfterLocalCommit } from '@/lib/commit-sync'
@@ -13,11 +12,8 @@ import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import FolderCreateDialog from './dialogs/FolderCreateDialog.vue'
 import FolderManageDialog from './dialogs/FolderManageDialog.vue'
-import FolderCard from './FolderCard.vue'
-import SetCard from './SetCard.vue'
-import Button from './ui/button/Button.vue'
-import EmptyState from './ui/empty-state/EmptyState.vue'
-import Input from './ui/input/Input.vue'
+import LibraryResults from './library/LibraryResults.vue'
+import LibraryToolbar from './library/LibraryToolbar.vue'
 
 const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
@@ -26,8 +22,7 @@ const router = useRouter()
 const route = useRoute()
 const repository = getLibraryRepository()
 const learningStore = useLearningStore()
-const { isSetInProgress, requestDelete, openSetEditor } = setsStore
-const { openTransfer } = uiStore
+const { requestDelete, openSetEditor } = setsStore
 
 const query = ref('')
 const folders = ref<VocabFolder[]>([])
@@ -41,8 +36,6 @@ const searchLoading = ref(false)
 const folderCreateOpen = ref(false)
 const folderManageOpen = ref(false)
 const managedFolder = ref<VocabFolder | null>(null)
-const loadMoreTarget = ref<HTMLElement | null>(null)
-let observer: IntersectionObserver | null = null
 let searchTimer: ReturnType<typeof setTimeout> | null = null
 let requestVersion = 0
 let payloadController: AbortController | null = null
@@ -66,6 +59,7 @@ const currentFolderPath = computed(() => {
 const isSearching = computed(() => Boolean(query.value.trim()))
 const hasLibrarySets = computed(() => setsStore.sets.length > 0 || totalSets.value > 0)
 const librarySetSignature = computed(() => libraryStore.sets.map(set => `${set.id}:${set.updatedAt}:${set.folderId}`).join('|'))
+const activeSetIds = computed(() => visibleSets.value.filter(set => setsStore.isSetInProgress(set.id)).map(set => set.id))
 const visibleSetMetrics = computed(() => {
   const metrics = new Map<string, { wordCount: number, dueCount: number, learnedCount: number, weakCount: number }>()
   for (const set of visibleSets.value) {
@@ -88,70 +82,44 @@ const visibleSetMetrics = computed(() => {
   return metrics
 })
 
-function openAddSet() {
-  void router.push({ name: 'set-create' })
-}
-
-function openBackupImport() {
-  openTransfer(selectedFolderId.value === ALL_FOLDER_ID ? undefined : selectedFolderId.value)
-}
-
 function openFolder(folderId: string) {
   void router.push(folderId === ALL_FOLDER_ID ? { name: 'library' } : { name: 'library', query: { folder: folderId } })
 }
-
 function goBack() {
-  if (currentFolder.value?.parentId)
-    openFolder(currentFolder.value.parentId)
-  else
-    openFolder(ALL_FOLDER_ID)
+  openFolder(currentFolder.value?.parentId ?? ALL_FOLDER_ID)
 }
-
+function hydrateAndRun(setId: string, action: () => void) {
+  payloadController?.abort()
+  payloadController = new AbortController()
+  void libraryStore.hydrateSet(setId, payloadController.signal).then(action).catch(() => undefined)
+}
 function handleStudy(setId: string) {
-  payloadController?.abort()
-  payloadController = new AbortController()
-  void libraryStore.hydrateSet(setId, payloadController.signal).then(() => router.push({ name: 'set-overview', params: { setId } })).catch(() => undefined)
+  hydrateAndRun(setId, () => void router.push({ name: 'set-overview', params: { setId } }))
 }
-
 function handleEdit(setId: string) {
-  payloadController?.abort()
-  payloadController = new AbortController()
-  void libraryStore.hydrateSet(setId, payloadController.signal).then(() => openSetEditor('edit', setsStore.sets.find(set => set.id === setId))).catch(() => undefined)
+  hydrateAndRun(setId, () => openSetEditor('edit', setsStore.sets.find(set => set.id === setId)))
 }
-
 async function handleDelete(setId: string) {
   await requestDelete(setId)
   await loadCurrentPage()
 }
-
 async function moveSet(setId: string, folderId: string) {
   setsStore.moveSetToFolder(setId, folderId || undefined)
   await libraryStore.waitForPersistence()
   await syncAfterLocalCommit()
   await loadCurrentPage()
 }
-
 function openFolderManage(folderId: string) {
   managedFolder.value = folders.value.find(folder => folder.id === folderId) ?? null
   folderManageOpen.value = Boolean(managedFolder.value)
 }
-
 function closeFolderManage() {
   folderManageOpen.value = false
   managedFolder.value = null
 }
-
 function handleFolderDeleted() {
   closeFolderManage()
-  if (selectedFolderId.value === ALL_FOLDER_ID)
-    void loadCurrentPage()
-  else
-    openFolder(ALL_FOLDER_ID)
-}
-
-function handleFolderUpdated() {
-  closeFolderManage()
-  void loadCurrentPage()
+  selectedFolderId.value === ALL_FOLDER_ID ? void loadCurrentPage() : openFolder(ALL_FOLDER_ID)
 }
 
 async function loadCurrentPage(append = false) {
@@ -202,7 +170,6 @@ function scheduleSearch() {
   }
   searchTimer = setTimeout(() => void loadCurrentPage(), 150)
 }
-
 function loadMore() {
   if (!loading.value && hasMore.value)
     void loadCurrentPage(true)
@@ -217,31 +184,10 @@ watch(librarySetSignature, () => {
   if (!isSearching.value)
     void loadCurrentPage()
 })
-watch(loadMoreTarget, (target, previous) => {
-  if (!observer)
-    return
-  if (previous)
-    observer.unobserve(previous)
-  if (target)
-    observer.observe(target)
-})
-
-onMounted(() => {
-  void loadCurrentPage()
-  if (typeof IntersectionObserver === 'undefined')
-    return
-  observer = new IntersectionObserver((entries) => {
-    if (entries.some(entry => entry.isIntersecting))
-      loadMore()
-  }, { rootMargin: '360px 0px' })
-  if (loadMoreTarget.value)
-    observer.observe(loadMoreTarget.value)
-})
-
+onMounted(() => void loadCurrentPage())
 onUnmounted(() => {
   payloadController?.abort()
   pageHydrationController?.abort()
-  observer?.disconnect()
   if (searchTimer)
     clearTimeout(searchTimer)
 })
@@ -249,115 +195,9 @@ onUnmounted(() => {
 
 <template>
   <section class="space-y-5 text-left">
-    <div class="flex flex-col gap-3 border-b border-ink-200/70 pb-4 dark:border-ink-200/15 lg:flex-row lg:items-center lg:justify-between sm:gap-4 sm:pb-5">
-      <div class="min-w-0">
-        <h1 class="text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
-          {{ $t('library.title') }}
-        </h1>
-        <div class="mt-1 min-w-0">
-          <div v-if="selectedFolderId !== ALL_FOLDER_ID" class="flex min-w-0 flex-wrap items-center gap-1.5 text-sm font-bold">
-            <Button variant="ghost" size="sm" class="-ml-2 gap-1.5 text-ink-600 dark:text-ink-300 hover:text-accent-primary" :aria-label="$t('library.back')" @click="goBack">
-              <ArrowLeft class="h-4 w-4" /><span>{{ $t('library.back') }}</span>
-            </Button>
-
-            <template v-for="(folder, idx) in currentFolderPath" :key="folder.id">
-              <ChevronRight class="h-3.5 w-3.5 text-ink-400" />
-              <button
-                type="button"
-                class="rounded-lg px-2 py-1 transition-colors hover:bg-ink-100 dark:hover:bg-ink-800"
-                :class="idx === currentFolderPath.length - 1 ? 'font-black text-accent-primary' : 'text-ink-600 dark:text-ink-300'"
-                @click="openFolder(folder.id)"
-              >
-                {{ folder.name }}
-              </button>
-            </template>
-          </div>
-          <p class="mt-1 text-xs font-semibold text-ink-500 dark:text-ink-400">
-            {{ isSearching ? $t('library.searchResultCount', { count: totalSets }) : $t('library.folderResultCount', { count: totalSets }) }}
-          </p>
-        </div>
-      </div>
-
-      <div class="flex w-full flex-col gap-2 sm:flex-row sm:items-center lg:w-auto">
-        <div class="relative min-w-0 w-full sm:w-72 lg:w-80">
-          <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" />
-          <Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
-          <LoaderCircle v-if="searchLoading" class="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-accent-primary" />
-        </div>
-        <div class="flex shrink-0 items-center gap-1 self-end rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70 sm:self-auto" role="toolbar" :aria-label="$t('library.actions')">
-          <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
-            <FolderPlus class="h-4.5 w-4.5 text-accent-primary" />
-          </Button>
-          <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('home.backupAndImport')" @click="openBackupImport">
-            <Upload class="h-4.5 w-4.5" />
-          </Button>
-          <Button variant="default" size="icon" class="h-10 w-10" :aria-label="$t('home.addSet')" @click="openAddSet">
-            <Plus class="h-4.5 w-4.5" />
-          </Button>
-        </div>
-      </div>
-    </div>
-
-    <EmptyState v-if="selectedFolderId === ALL_FOLDER_ID && !hasLibrarySets && !visibleFolders.length && totalSets === 0 && !loading && !isSearching" :title="$t('library.emptyTitle')">
-      <template #icon>
-        <FileQuestion class="h-7 w-7" />
-      </template>
-    </EmptyState>
-
-    <template v-else>
-      <!-- Folder Section with Cards matching SetCard dimensions -->
-      <div v-if="!isSearching && visibleFolders.length" class="space-y-3">
-        <h3 class="text-xs font-extrabold uppercase tracking-widest text-ink-400">
-          {{ $t('library.folderSectionTitle') || '資料夾' }} ({{ visibleFolders.length }})
-        </h3>
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <FolderCard
-            v-for="folder in visibleFolders"
-            :key="folder.id"
-            :folder="folder"
-            @open="openFolder"
-            @edit="openFolderManage"
-          />
-        </div>
-      </div>
-
-      <!-- Sets Section -->
-      <div v-if="visibleSets.length" class="space-y-3">
-        <h3 v-if="!isSearching && visibleFolders.length" class="text-xs font-extrabold uppercase tracking-widest text-ink-400">
-          {{ $t('library.setsSectionTitle') || '單字集' }} ({{ totalSets }})
-        </h3>
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <div
-            v-for="(set, index) in visibleSets"
-            :key="set.id"
-            class="set-card-enter"
-            :style="{ animationDelay: `${Math.min(index, 10) * 40}ms` }"
-          >
-            <SetCard
-              :set="set"
-              :summary="set"
-              :metrics="visibleSetMetrics.get(set.id)"
-              :folders="libraryStore.folders"
-              :active="isSetInProgress(set.id)"
-              @study="handleStudy"
-              @move="moveSet"
-              @delete="handleDelete"
-              @edit="handleEdit"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div v-else-if="!loading && !visibleFolders.length" class="rounded-2xl border border-dashed border-ink-200/80 py-16 text-center text-sm font-semibold text-ink-400 dark:border-ink-200/15">
-        <Folder class="mx-auto mb-3 h-7 w-7" />{{ isSearching ? $t('home.noSearchResults') : $t('library.folderEmpty') }}
-      </div>
-
-      <div ref="loadMoreTarget" class="flex min-h-12 items-center justify-center">
-        <LoaderCircle v-if="loading" class="h-5 w-5 animate-spin text-accent-primary" />
-      </div>
-    </template>
-
+    <LibraryToolbar v-model:query="query" :selected-folder-id="selectedFolderId" :folder-path="currentFolderPath" :total-sets="totalSets" :searching="isSearching" :search-loading="searchLoading" @back="goBack" @open-folder="openFolder" @create-folder="folderCreateOpen = true" @import="uiStore.openTransfer(selectedFolderId === ALL_FOLDER_ID ? undefined : selectedFolderId)" @add-set="router.push({ name: 'set-create' })" />
+    <LibraryResults :selected-folder-id="selectedFolderId" :has-library-sets="hasLibrarySets" :visible-folders="visibleFolders" :visible-sets="visibleSets" :total-sets="totalSets" :loading="loading" :searching="isSearching" :metrics="visibleSetMetrics" :folders="libraryStore.folders" :active-set-ids="activeSetIds" @open-folder="openFolder" @edit-folder="openFolderManage" @study="handleStudy" @move="moveSet" @delete="handleDelete" @edit="handleEdit" @load-more="loadMore" />
     <FolderCreateDialog :open="folderCreateOpen" :parent-id="selectedFolderId" @close="folderCreateOpen = false" @created="openFolder" />
-    <FolderManageDialog :open="folderManageOpen" :folder="managedFolder" @close="closeFolderManage" @updated="handleFolderUpdated" @deleted="handleFolderDeleted" />
+    <FolderManageDialog :open="folderManageOpen" :folder="managedFolder" @close="closeFolderManage" @updated="closeFolderManage(); loadCurrentPage()" @deleted="handleFolderDeleted" />
   </section>
 </template>

@@ -433,6 +433,7 @@ export default {
     delete: '刪除單字集',
   },
   practice: {
+    dailyPractice: '每日練習',
     title: '單字特訓中',
     quiz: '選擇題',
     fillBlank: '選擇題填空',

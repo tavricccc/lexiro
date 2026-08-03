@@ -118,8 +118,8 @@ async function applyImport(): Promise<boolean> {
       })
       localCommitApplied.value = true
     }
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     uiStore.showToast(t('import.libraryImported'))
     resetDraft()

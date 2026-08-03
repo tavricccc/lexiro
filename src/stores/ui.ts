@@ -31,6 +31,7 @@ export const useUIStore = defineStore('ui', () => {
   const versionUpdateError = ref('')
   const sidebarExpanded = ref(true)
   const pageLoading = ref(false)
+  const appStarting = ref(true)
   const questionCountPreference = ref(5)
   const dirtyForms = reactive(new Map<string, DirtyFormController>())
   const dirtyFormCount = computed(() => Array.from(dirtyForms.values()).filter(form => form.isDirty()).length)
@@ -43,6 +44,10 @@ export const useUIStore = defineStore('ui', () => {
   let dirtyFormResolver: ((value: DirtyFormDecision) => void) | null = null
   let toastTimer: ReturnType<typeof setTimeout> | null = null
   let pageLoadingToken = 0
+
+  function finishAppStartup() {
+    appStarting.value = false
+  }
 
   function showToast(message: string, options?: { actionLabel?: string, action?: () => void, duration?: number }) {
     toastMessage.value = message
@@ -263,6 +268,7 @@ export const useUIStore = defineStore('ui', () => {
     versionUpdateError,
     sidebarExpanded,
     pageLoading,
+    appStarting,
     questionCountPreference,
     dirtyFormCount,
     hasDirtyForms,
@@ -281,6 +287,7 @@ export const useUIStore = defineStore('ui', () => {
     toggleSidebar,
     beginPageLoading,
     endPageLoading,
+    finishAppStartup,
     setQuestionCountPreference,
     initTheme,
     openTransfer,

@@ -165,9 +165,9 @@ async function saveQuestion(question: ReadingPack): Promise<boolean> {
     return false
   }
   pendingLocalCommit.value = true
-  const synced = await syncAfterLocalCommit()
+  const { localPersisted } = await syncAfterLocalCommit()
   readingDraft.value = question
-  if (!synced)
+  if (!localPersisted)
     return false
   pendingLocalCommit.value = false
   initialReadingSnapshot.value = readingSnapshot()
@@ -183,8 +183,8 @@ const readingDirty = computed(() => pendingLocalCommit.value || initialReadingSn
 
 async function save(): Promise<boolean> {
   if (pendingLocalCommit.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     pendingLocalCommit.value = false
     initialReadingSnapshot.value = readingSnapshot()
@@ -289,7 +289,7 @@ function goBack() {
       <Button variant="outline" @click="goBack">
         {{ $t('editor.cancel') }}
       </Button>
-      <Button @click="save">
+      <Button :loading="pendingLocalCommit" @click="save">
         {{ $t('editor.save') }}
       </Button>
     </div>

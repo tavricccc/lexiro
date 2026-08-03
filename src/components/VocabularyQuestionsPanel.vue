@@ -18,6 +18,7 @@ const props = defineProps<{
   questionTypeFilter: VocabularyQuestionTypeFilter
   difficultyFilter: VocabularyDifficultyFilter
   hasSenses: boolean
+  deletingQuestionId?: string | null
 }>()
 
 const emit = defineEmits<{
@@ -83,7 +84,7 @@ function chooseCreateType(choice: QuestionCreateChoice) {
           <Button variant="ghost" size="icon" class="h-11 w-11" :aria-label="$t('vocabulary.editQuestion')" @click="emit('edit-question', question)">
             <Pencil class="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('vocabulary.deleteQuestion')" @click="emit('delete-question', question)">
+          <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('vocabulary.deleteQuestion')" :loading="deletingQuestionId === question.id" @click="emit('delete-question', question)">
             <Trash2 class="h-4 w-4" />
           </Button>
         </div>

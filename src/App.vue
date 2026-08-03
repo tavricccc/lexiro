@@ -14,28 +14,21 @@ import MobileBottomTabs from '@/components/MobileBottomTabs.vue'
 import LottieLoadingOverlay from '@/components/ui/loading-overlay/LottieLoadingOverlay.vue'
 import SyncProgress from '@/components/ui/sync-progress/SyncProgress.vue'
 import Toast from '@/components/ui/toast/Toast.vue'
-import { hasLocalWorkspaceData } from '@/lib/local-workspace'
 import { useCloudSyncStore } from '@/stores/cloudSync'
-import { useLearningStore } from '@/stores/learning'
-import { useLibraryStore } from '@/stores/library'
 import { useSessionStore } from '@/stores/session'
 import { useUIStore } from '@/stores/ui'
 
 const uiStore = useUIStore()
 const sessionStore = useSessionStore()
 const cloudStore = useCloudSyncStore()
-const libraryStore = useLibraryStore()
-const learningStore = useLearningStore()
 const router = useRouter()
 const route = useRoute()
-const { sidebarExpanded, hasDirtyForms, pageLoading } = storeToRefs(uiStore)
-const { appReady, configured, operationBlocked, progress, pendingWrites, isOnline } = storeToRefs(cloudStore)
+const { sidebarExpanded, hasDirtyForms, pageLoading, appStarting } = storeToRefs(uiStore)
+const { operationBlocked, progress, pendingWrites, isOnline } = storeToRefs(cloudStore)
 const { setVersionUpdateAvailable, setVersionUpdatePending, setVersionUpdateReady } = uiStore
 
 const isSessionRoute = computed(() => ['quiz', 'fillBlank', 'reading', 'review', 'result'].includes(String(route.name)))
-const hasLocalWorkspace = computed(() => hasLocalWorkspaceData(libraryStore.state, learningStore.progress, learningStore.stats))
-const showSyncGate = computed(() => configured.value && !appReady.value && !hasLocalWorkspace.value)
-const showInlineSync = computed(() => !showSyncGate.value && (operationBlocked.value || ['preparing', 'downloading', 'reconciling', 'uploading', 'retrying', 'verifying', 'offline', 'error'].includes(progress.value.phase)))
+const showInlineSync = computed(() => !appStarting.value && (operationBlocked.value || ['preparing', 'downloading', 'reconciling', 'uploading', 'retrying', 'verifying', 'offline', 'error'].includes(progress.value.phase)))
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
@@ -135,8 +128,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <SyncProgress v-if="showSyncGate" fullscreen :state="progress" :allow-cancel="!isOnline" @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
-  <div v-else class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']" :aria-busy="pageLoading">
+  <LottieLoadingOverlay
+    :open="appStarting"
+    fullscreen
+    :show-message="false"
+    :show-progress="false"
+    :reveal-delay="0"
+    :minimum-visible="2000"
+  />
+  <div v-show="!appStarting" class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']" :aria-busy="pageLoading || appStarting">
     <AppSidebar v-if="!isSessionRoute" />
     <MobileBottomTabs v-if="!isSessionRoute" />
     <AppHeader v-if="isSessionRoute" />
@@ -144,15 +144,17 @@ onUnmounted(() => {
     <main class="app-main-content viewport-frame">
       <div class="route-page-frame">
         <router-view v-slot="{ Component }">
-          <component :is="Component" :key="route.fullPath" />
+          <component :is="Component" />
         </router-view>
       </div>
 
       <LottieLoadingOverlay
-        :open="pageLoading && !showSyncGate"
+        :open="pageLoading"
         :fullscreen="false"
         :show-message="false"
         :show-progress="false"
+        :reveal-delay="180"
+        :minimum-visible="300"
       />
     </main>
 
@@ -164,7 +166,7 @@ onUnmounted(() => {
     <VersionUpdateDialog />
 
     <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" :action-label="uiStore.toastActionLabel" @action="uiStore.triggerToastAction" />
-    <SyncProgress v-if="showInlineSync" fullscreen :state="progress" :allow-cancel="!isOnline" @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
+    <SyncProgress v-if="showInlineSync" :state="progress" allow-cancel @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
 
     <div v-if="pendingWrites > 0 && !isOnline" class="fixed right-4 top-4 z-[80] rounded-full border border-amber-300/70 bg-amber-50/95 px-3 py-2 text-xs font-black text-amber-800 shadow-soft backdrop-blur dark:border-amber-700/60 dark:bg-amber-950/90 dark:text-amber-100" role="status">
       {{ $t('sync.pending', { count: pendingWrites }) }}

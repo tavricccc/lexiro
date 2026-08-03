@@ -214,10 +214,10 @@ describe('cloud sync baseline rebase', () => {
     await vi.advanceTimersByTimeAsync(1500)
 
     expect(mockedCloud.transactionSets).toHaveLength(0)
-    const sync = cloudStore.syncCommittedChange()
-    expect(cloudStore.operationBlocked).toBe(true)
-    await sync
-    expect(mockedCloud.transactionSets.length).toBeGreaterThan(0)
+    const result = await cloudStore.syncCommittedChange()
+    expect(result).toMatchObject({ status: 'queued', localPersisted: true, cloudSynced: false })
+    expect(cloudStore.operationBlocked).toBe(false)
+    await vi.waitFor(() => expect(mockedCloud.transactionSets.length).toBeGreaterThan(0))
     expect(cloudStore.operationBlocked).toBe(false)
   })
 
@@ -319,7 +319,7 @@ describe('cloud sync baseline rebase', () => {
     expect(mockedCloud.runTransaction).not.toHaveBeenCalled()
   })
 
-  it('keeps an offline commit blocked until the user cancels the sync dialog', async () => {
+  it('queues an offline commit without blocking the workspace', async () => {
     mockedCloud.online.value = false
     await saveToStorage('lexiro_sync_outbox:cloud-user', [])
     const cloudStore = useCloudSyncStore()
@@ -329,8 +329,8 @@ describe('cloud sync baseline rebase', () => {
     const learningStore = useLearningStore()
     learningStore.replaceStats({ ...learningStore.stats, xp: 5 })
     await nextTick()
-    expect(await cloudStore.syncCommittedChange()).toBe(true)
-    expect(cloudStore.operationBlocked).toBe(true)
+    expect(await cloudStore.syncCommittedChange()).toMatchObject({ status: 'queued', localPersisted: true, cloudSynced: false })
+    expect(cloudStore.operationBlocked).toBe(false)
     expect(cloudStore.status).toBe('offline')
 
     cloudStore.continueOffline()

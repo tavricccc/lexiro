@@ -121,8 +121,8 @@ const draftDirty = computed(() => props.open && (pendingLocalCommit.value || ini
 
 async function save(): Promise<boolean> {
   if (pendingLocalCommit.value) {
-    const synced = await syncAfterLocalCommit()
-    if (!synced)
+    const { localPersisted } = await syncAfterLocalCommit()
+    if (!localPersisted)
       return false
     pendingLocalCommit.value = false
     initialDraftSnapshot.value = draftSnapshot()
@@ -192,8 +192,8 @@ async function save(): Promise<boolean> {
   }
 
   pendingLocalCommit.value = true
-  const synced = await syncAfterLocalCommit()
-  if (!synced)
+  const { localPersisted } = await syncAfterLocalCommit()
+  if (!localPersisted)
     return false
   pendingLocalCommit.value = false
   initialDraftSnapshot.value = draftSnapshot()
@@ -262,7 +262,7 @@ async function close() {
         <Button variant="outline" @click="close">
           {{ $t('editor.cancel') }}
         </Button>
-        <Button @click="save">
+        <Button :loading="pendingLocalCommit" @click="save">
           {{ $t('editor.save') }}
         </Button>
       </DialogFooter>
