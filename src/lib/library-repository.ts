@@ -642,15 +642,17 @@ export class LibraryRepository {
 
   async listFolderPage(folderId = ALL_FOLDER_ID, page = 0, pageSize = LIBRARY_PAGE_SIZE): Promise<LibraryFolderPage> {
     const index = await this.loadIndex()
-    const parentId = folderId === ALL_FOLDER_ID ? undefined : folderId
+    const isRoot = folderId === ALL_FOLDER_ID || folderId === UNCATEGORIZED_FOLDER_ID
+    const targetFolderId = isRoot ? ALL_FOLDER_ID : folderId
+    const parentId = isRoot ? undefined : folderId
     const folders = index.folders
       .filter(folder => folder.id !== UNCATEGORIZED_FOLDER_ID && (folder.parentId ?? undefined) === parentId)
       .sort((left, right) => left.order - right.order || left.name.localeCompare(right.name))
     const sets = index.sets
-      .filter(set => folderId === ALL_FOLDER_ID ? set.folderId === UNCATEGORIZED_FOLDER_ID : set.folderId === folderId)
+      .filter(set => isRoot ? (set.folderId === ALL_FOLDER_ID || set.folderId === UNCATEGORIZED_FOLDER_ID || !set.folderId) : set.folderId === folderId)
       .sort((left, right) => left.setName.localeCompare(right.setName))
     const sliced = pageSlice(sets, page, pageSize)
-    return { folderId, folders, sets: sliced.items, page: Math.max(0, page), pageSize: Math.max(1, pageSize), hasMore: sliced.hasMore, totalSets: sets.length }
+    return { folderId: targetFolderId, folders, sets: sliced.items, page: Math.max(0, page), pageSize: Math.max(1, pageSize), hasMore: sliced.hasMore, totalSets: sets.length }
   }
 
   async searchSets(query: string, page = 0, pageSize = LIBRARY_PAGE_SIZE): Promise<LibrarySearchPage> {

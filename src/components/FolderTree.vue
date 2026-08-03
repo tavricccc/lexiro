@@ -34,7 +34,7 @@ const { t } = useI18n()
 const selectedId = computed(() => props.modelValue || (props.includeRoot ? ALL_FOLDER_ID : UNCATEGORIZED_FOLDER_ID))
 const allLabel = computed(() => props.allLabel || t('library.allFolders'))
 const rootLabel = computed(() => props.rootLabel || t('library.rootFolder'))
-const rootFolders = computed(() => getFolderChildren(props.folders))
+const rootFolders = computed(() => getFolderChildren(props.folders).filter(folder => folder.id !== UNCATEGORIZED_FOLDER_ID))
 const expandedIds = ref(new Set(rootFolders.value.map(folder => folder.id)))
 
 function ensureSelectedAncestors() {

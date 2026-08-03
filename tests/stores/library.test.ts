@@ -367,7 +367,7 @@ describe('library shared word membership', () => {
     expect(libraryStore.getSet(nestedSet.id)).toBeNull()
     expect(libraryStore.getSet(keptSet.id)).not.toBeNull()
     expect(libraryStore.getWord('cat')).not.toBeNull()
-    expect(libraryStore.folders.map(folder => folder.id)).toEqual(['__uncategorized__'])
+    expect(libraryStore.folders.map(folder => folder.id)).toEqual([])
   })
 
   it('uses the shared set-name policy when merging imported sets', () => {

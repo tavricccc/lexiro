@@ -103,7 +103,7 @@ export const useLibraryStore = defineStore('library', () => {
 
   const words = computed(() => Object.values(state.value.words))
   const sets = computed(() => state.value.sets)
-  const folders = computed(() => sortFolders(state.value.folders))
+  const folders = computed(() => sortFolders(state.value.folders.filter(folder => folder.id !== UNCATEGORIZED_FOLDER_ID)))
   const questions = computed(() => state.value.questions)
 
   function touch() {
