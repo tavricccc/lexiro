@@ -12,6 +12,7 @@ export const LAYERS = {
   nestedDialog: 60,
   nestedDialogContent: 61,
   toast: 70,
+  celebration: 90,
   syncGate: 100,
 } as const
 

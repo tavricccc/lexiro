@@ -15,6 +15,8 @@ export default {
     collapseSidebar: '收合側欄',
     localMode: '本機學習模式',
     account: '帳號',
+    loadingPage: '正在載入頁面',
+    loadingPageDetail: '正在準備畫面內容…',
   },
   home: {
     title: 'lexiro 尚未載入單字集',

@@ -1,4 +1,5 @@
 import { getActivePinia } from 'pinia'
+import { nextTick } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 import { useUIStore } from '@/stores/ui'
@@ -138,6 +139,8 @@ const router = createRouter({
   ],
 })
 
+let activePageLoadingToken: number | null = null
+
 router.beforeEach(async (to) => {
   const pinia = getActivePinia()
   if (pinia) {
@@ -153,14 +156,39 @@ router.beforeEach(async (to) => {
     }
   }
   if (!to.meta.requiresSession)
-    return true
+    return beginPageLoading(to)
   const sessionStore = useSessionStore()
   if (!sessionStore.hasValidSessionForRoute(to.name))
     return { name: 'home' }
+  return beginPageLoading(to)
+})
+
+function beginPageLoading(to: { fullPath: string }) {
+  const pinia = getActivePinia()
+  if (!pinia)
+    return true
+  const uiStore = useUIStore(pinia)
+  if (router.currentRoute.value.fullPath === to.fullPath)
+    return true
+  activePageLoadingToken = uiStore.beginPageLoading()
   return true
+}
+
+router.afterEach(() => {
+  const pinia = getActivePinia()
+  const token = activePageLoadingToken
+  activePageLoadingToken = null
+  if (!pinia)
+    return
+  void nextTick().then(() => useUIStore(pinia).endPageLoading(token ?? undefined))
 })
 
 router.onError((error) => {
+  const pinia = getActivePinia()
+  if (pinia) {
+    useUIStore(pinia).endPageLoading()
+    activePageLoadingToken = null
+  }
   const isChunkError = error.message.includes('Failed to fetch dynamically imported module')
     || error.message.includes('Importing a module script failed')
   if (isChunkError) {

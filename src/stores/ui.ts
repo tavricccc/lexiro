@@ -30,6 +30,7 @@ export const useUIStore = defineStore('ui', () => {
   const versionUpdateLoading = ref(false)
   const versionUpdateError = ref('')
   const sidebarExpanded = ref(true)
+  const pageLoading = ref(false)
   const questionCountPreference = ref(5)
   const dirtyForms = reactive(new Map<string, DirtyFormController>())
   const dirtyFormCount = computed(() => Array.from(dirtyForms.values()).filter(form => form.isDirty()).length)
@@ -41,6 +42,7 @@ export const useUIStore = defineStore('ui', () => {
   let guestDataResolver: ((value: GuestDataDecision) => void) | null = null
   let dirtyFormResolver: ((value: DirtyFormDecision) => void) | null = null
   let toastTimer: ReturnType<typeof setTimeout> | null = null
+  let pageLoadingToken = 0
 
   function showToast(message: string, options?: { actionLabel?: string, action?: () => void, duration?: number }) {
     toastMessage.value = message
@@ -158,6 +160,18 @@ export const useUIStore = defineStore('ui', () => {
     void saveToStorage(UI_STORAGE_KEY, { sidebarExpanded: sidebarExpanded.value })
   }
 
+  function beginPageLoading(): number {
+    pageLoadingToken += 1
+    pageLoading.value = true
+    return pageLoadingToken
+  }
+
+  function endPageLoading(token?: number) {
+    if (token !== undefined && token !== pageLoadingToken)
+      return
+    pageLoading.value = false
+  }
+
   async function loadState() {
     const stored = await loadFromStorage(UI_STORAGE_KEY)
     if (!stored.value)
@@ -248,6 +262,7 @@ export const useUIStore = defineStore('ui', () => {
     versionUpdateLoading,
     versionUpdateError,
     sidebarExpanded,
+    pageLoading,
     questionCountPreference,
     dirtyFormCount,
     hasDirtyForms,
@@ -264,6 +279,8 @@ export const useUIStore = defineStore('ui', () => {
     showGuestDataWarning,
     resolveGuestDataWarning,
     toggleSidebar,
+    beginPageLoading,
+    endPageLoading,
     setQuestionCountPreference,
     initTheme,
     openTransfer,

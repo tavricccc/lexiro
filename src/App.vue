@@ -11,6 +11,7 @@ import ImportDialog from '@/components/dialogs/ImportDialog.vue'
 import TransferDialog from '@/components/dialogs/TransferDialog.vue'
 import VersionUpdateDialog from '@/components/dialogs/VersionUpdateDialog.vue'
 import MobileBottomTabs from '@/components/MobileBottomTabs.vue'
+import LottieLoadingOverlay from '@/components/ui/loading-overlay/LottieLoadingOverlay.vue'
 import SyncProgress from '@/components/ui/sync-progress/SyncProgress.vue'
 import Toast from '@/components/ui/toast/Toast.vue'
 import { useCloudSyncStore } from '@/stores/cloudSync'
@@ -22,7 +23,7 @@ const sessionStore = useSessionStore()
 const cloudStore = useCloudSyncStore()
 const router = useRouter()
 const route = useRoute()
-const { sidebarExpanded, hasDirtyForms } = storeToRefs(uiStore)
+const { sidebarExpanded, hasDirtyForms, pageLoading } = storeToRefs(uiStore)
 const { appReady, configured, operationBlocked, progress, pendingWrites, isOnline } = storeToRefs(cloudStore)
 const { setVersionUpdateAvailable, setVersionUpdatePending, setVersionUpdateReady } = uiStore
 
@@ -129,7 +130,7 @@ onUnmounted(() => {
 
 <template>
   <SyncProgress v-if="showSyncGate" fullscreen :state="progress" :allow-cancel="!isOnline" @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
-  <div v-else class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']">
+  <div v-else class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']" :aria-busy="pageLoading">
     <AppSidebar v-if="!isSessionRoute" />
     <MobileBottomTabs v-if="!isSessionRoute" />
     <AppHeader v-if="isSessionRoute" />
@@ -137,12 +138,16 @@ onUnmounted(() => {
     <main class="app-main-content viewport-frame">
       <div class="route-page-frame">
         <router-view v-slot="{ Component }">
-          <Transition name="page" mode="out-in">
-            <component :is="Component" />
-          </Transition>
+          <component :is="Component" :key="route.fullPath" />
         </router-view>
       </div>
     </main>
+
+    <LottieLoadingOverlay
+      :open="pageLoading && !showSyncGate"
+      :message="$t('nav.loadingPage')"
+      :progress-label="$t('nav.loadingPageDetail')"
+    />
 
     <ImportDialog />
     <TransferDialog />

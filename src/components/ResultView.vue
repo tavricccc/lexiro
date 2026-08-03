@@ -14,6 +14,7 @@ import { useUIStore } from '@/stores/ui'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
+import ConfettiAnimation from './ui/celebration/ConfettiAnimation.vue'
 import ScoreRing from './ui/score-ring/ScoreRing.vue'
 import StatusMessage from './ui/status-message/StatusMessage.vue'
 
@@ -147,6 +148,7 @@ onMounted(() => {
 
 <template>
   <section v-if="displaySet && resultSummary" class="space-y-5">
+    <ConfettiAnimation v-if="isPerfect" />
     <Card id="completion-panel" class="p-4 sm:p-6 text-left transition-all duration-300 animate-celebration-pop">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-ink-200/50 dark:border-ink-200/10">
         <div class="flex items-start gap-4">
@@ -275,10 +277,9 @@ onMounted(() => {
 
     <div v-if="wrongRows.length" class="space-y-4">
       <Card
-        v-for="(row, i) in wrongRows"
+        v-for="row in wrongRows"
         :key="`${row.entry.item.id}-${row.index}`"
-        class="p-5 text-left result-row-enter"
-        :style="{ animationDelay: `${Math.min(i, 8) * 40}ms` }"
+        class="p-5 text-left"
       >
         <div class="flex flex-wrap items-start justify-between gap-4 pb-4 border-b border-ink-200/40 dark:border-ink-200/10">
           <div class="space-y-1">

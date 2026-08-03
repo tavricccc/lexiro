@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { SyncProgressState } from '@/types'
-import { LAYERS } from '@/constants/layers'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Card from '../card/Card.vue'
-import Dialog from '../dialog/Dialog.vue'
+import LottieLoadingOverlay from '../loading-overlay/LottieLoadingOverlay.vue'
 import SyncProgressContent from './SyncProgressContent.vue'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   state: SyncProgressState
   fullscreen?: boolean
   allowCancel?: boolean
@@ -18,21 +19,38 @@ const emit = defineEmits<{
   retry: []
   cancel: []
 }>()
+
+const { t } = useI18n()
+const progressLabel = computed(() => t('sync.progressCount', {
+  completed: props.state.completed,
+  total: props.state.total,
+}))
+const detail = computed(() => props.state.totalBatches > 0
+  ? t('sync.batchProgress', { current: props.state.currentBatch, total: props.state.totalBatches })
+  : '')
+const hint = computed(() => {
+  if (props.state.phase === 'error')
+    return t('sync.progressError')
+  if (props.state.phase === 'offline')
+    return t('sync.offlineContinueHint')
+  return ''
+})
 </script>
 
 <template>
-  <Dialog
+  <LottieLoadingOverlay
     v-if="fullscreen"
     open
-    presentation="center"
-    tone="mandatory"
-    close-policy="blocked"
-    :show-close="false"
-    :overlay-z-index="LAYERS.syncGate"
-    :title="state.message || $t('sync.progressTitle')"
-  >
-    <SyncProgressContent :state="state" :show-title="false" :allow-cancel="allowCancel" @retry="emit('retry')" @cancel="emit('cancel')" />
-  </Dialog>
+    :message="state.message || $t('sync.progressTitle')"
+    :detail="detail"
+    :percent="state.percent"
+    :progress-label="progressLabel"
+    :hint="hint"
+    :allow-cancel="allowCancel"
+    :retryable="state.retryable"
+    @retry="emit('retry')"
+    @cancel="emit('cancel')"
+  />
 
   <Card v-else class="sync-progress w-full overflow-hidden p-4 sm:p-5">
     <SyncProgressContent :state="state" :allow-cancel="allowCancel" @retry="emit('retry')" @cancel="emit('cancel')" />

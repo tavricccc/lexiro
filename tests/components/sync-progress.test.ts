@@ -37,7 +37,7 @@ describe('sync progress', () => {
     wrapper.unmount()
   })
 
-  it('uses a modal dialog with real chunk progress for blocking sync', () => {
+  it('uses a fullscreen status overlay with real chunk progress for blocking sync', () => {
     const wrapper = mount(SyncProgress, {
       attachTo: document.body,
       global: { plugins: [i18n] },
@@ -58,11 +58,12 @@ describe('sync progress', () => {
       },
     })
 
-    const dialog = document.body.querySelector('[role="dialog"]')
-    expect(dialog?.getAttribute('aria-modal')).toBe('true')
-    expect(dialog?.textContent).toContain('正在下載單字庫分片…')
-    expect(dialog?.textContent).toContain('3 / 10')
-    expect(dialog?.textContent).not.toContain('下載中')
+    const overlay = document.body.querySelector('[role="status"]')
+    expect(overlay?.getAttribute('aria-busy')).toBe('true')
+    expect(overlay?.textContent).toContain('正在下載單字庫分片…')
+    expect(overlay?.textContent).toContain('第 1 / 2 批')
+    expect(overlay?.textContent).toContain('3 / 10')
+    expect(overlay?.textContent).toContain('30%')
     wrapper.unmount()
   })
 })

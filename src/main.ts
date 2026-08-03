@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { loadAiSettingsState } from './lib/ai-provider'
 import { i18n } from './lib/i18n'
+import { preloadLottieAssets } from './lib/lottie'
 import router from './router'
 import { useCloudSyncStore } from './stores/cloudSync'
 import { useLearningStore } from './stores/learning'
@@ -16,6 +17,8 @@ const pinia = createPinia()
 app.use(pinia)
 app.use(router)
 app.use(i18n)
+
+preloadLottieAssets()
 
 async function bootstrap() {
   const setsStore = useSetsStore(pinia)

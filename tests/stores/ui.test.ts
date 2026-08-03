@@ -40,4 +40,16 @@ describe('ui action dialogs', () => {
     expect(uiStore.hasDirtyForms).toBe(false)
     unregister()
   })
+
+  it('keeps the newest page loading state active when navigations overlap', () => {
+    const uiStore = useUIStore()
+    const firstToken = uiStore.beginPageLoading()
+    const secondToken = uiStore.beginPageLoading()
+
+    uiStore.endPageLoading(firstToken)
+    expect(uiStore.pageLoading).toBe(true)
+
+    uiStore.endPageLoading(secondToken)
+    expect(uiStore.pageLoading).toBe(false)
+  })
 })

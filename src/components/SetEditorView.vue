@@ -130,7 +130,7 @@ function close() {
       </Button>
     </div>
 
-    <fieldset :disabled="pendingLocalCommit" class="contents">
+    <fieldset :disabled="pendingLocalCommit" class="min-w-0 space-y-5 border-0 p-0">
       <Card class="space-y-4 p-4 sm:p-5">
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="space-y-1.5">
