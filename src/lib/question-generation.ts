@@ -45,6 +45,8 @@ const READING_DIFFICULTY_GUIDANCE: Record<GeneratedQuestionDifficulty, string> =
   3: '文章約 6 至 8 句，問題需要整合線索、理解語氣或作合理推論。',
 }
 
+const JSON_OUTPUT_RULE = '只輸出一個 JSON code block。回覆必須以 ```json 開始、以 ``` 結束；code block 外不得有任何文字，code block 內只能有一個合法 JSON object。'
+
 export function getGenerationWords(words: WordEntry[], kind: GeneratedQuestionKind): WordEntry[] {
   return kind === 'reading' ? words.slice(0, QUESTION_BATCH_SIZE) : words
 }
@@ -111,9 +113,11 @@ export function buildQuestionGenerationPrompt(words: WordEntry[], kind: Generate
   if (kind === 'reading') {
     return `${common}
 
-只輸出一個合法 JSON object，不要 Markdown、\`\`\`、註解、說明或其他欄位。
+${JSON_OUTPUT_RULE}
 格式範例（只示意欄位，不要照抄內容）：
+\`\`\`json
 {"questions":[{"title":"A short story","passage":"The team adapted quickly to a new situation.","questions":[{"sourceRef":"source-1-1","prompt":"What did the team do?","options":["They adapted quickly.","They left early.","They stopped working.","They changed the subject."],"answerIndex":0}]}]}
+\`\`\`
 
 規則：
 - 只產生一個 reading pack；文章自然使用本批所有單字，並符合目標難度。
@@ -122,7 +126,7 @@ export function buildQuestionGenerationPrompt(words: WordEntry[], kind: Generate
 - 每個子題只能有 sourceRef、prompt、options、answerIndex 四個欄位。
 - options 恰好 4 個自然英文字串，只有一個正確答案；answerIndex 是從 0 開始的整數（只能是 0、1、2、3）。
 - 子題使用一般四選一，不要使用 \`_____\`、\`***\` 或其他填空符號。
-不要輸出任何 JSON 以外的內容。
+不要在 code block 外輸出任何內容。
 
 ${selfCheck}`
   }
@@ -130,9 +134,11 @@ ${selfCheck}`
     return `${common}
 
 每個 sense 恰好產生一題，共 ${senseCount} 題，順序與輸入相同。
-只輸出一個合法 JSON object，不要 Markdown、\`\`\`、註解、說明或其他欄位。
+${JSON_OUTPUT_RULE}
 格式範例（只示意欄位，不要照抄內容）：
+\`\`\`json
 {"questions":[{"sourceRef":"source-1-1","prompt":"Her outstanding _____ to solve complex problems won her the prize.","options":["ability","action","agreement","age"],"answerIndex":0}]}
+\`\`\`
 
 規則：
 - sourceRef 必須逐字複製輸入，不能新增、遺漏、重複或改順序。
@@ -142,16 +148,18 @@ ${selfCheck}`
 - 目標單字不可在同一題 prompt 的其他位置再次出現；填入正確選項後句子必須文法正確且語意自然。
 - options 恰好 4 個自然英文字串，不可重複；只有一個選項能填入空格，answerIndex 必須指向它，且 answerIndex 是從 0 開始的整數（只能是 0、1、2、3）。
 - 錯誤選項要與正確答案詞性或句型相容，但在該語境中確實不正確。
-不要輸出任何 JSON 以外的內容。
+不要在 code block 外輸出任何內容。
 
 ${selfCheck}`
   }
   return `${common}
 
 每個 sense 恰好產生一題，共 ${senseCount} 題，順序與輸入相同。
-只輸出一個合法 JSON object，不要 Markdown、\`\`\`、註解、說明或其他欄位。
+${JSON_OUTPUT_RULE}
 格式範例（只示意欄位，不要照抄內容）：
+\`\`\`json
 {"questions":[{"sourceRef":"source-1-1","prompt":"Which word means the ability to solve problems?","options":["ability","action","agreement","age"],"answerIndex":0}]}
+\`\`\`
 
 規則：
 - sourceRef 必須逐字複製輸入，不能新增、遺漏、重複或改順序。
@@ -160,7 +168,7 @@ ${selfCheck}`
 - 不要在 prompt 使用 \`_____\`、\`***\`、\`___\`、\`[blank]\`、\`<blank>\` 或任何填空符號。
 - options 恰好 4 個自然英文字串，不可重複；只有一個正確答案，answerIndex 必須指向它，且 answerIndex 是從 0 開始的整數（只能是 0、1、2、3）。
 - 錯誤選項要合理且具迷惑性，但在該語境中確實不正確，並盡量保持相同詞性或句型。
-不要輸出任何 JSON 以外的內容。
+不要在 code block 外輸出任何內容。
 
 ${selfCheck}`
 }

@@ -15,6 +15,8 @@ describe('buildImportPrompt', () => {
     expect(prompt).toContain('examples')
     expect(prompt).toContain('輸出前請在心中自我驗證')
     expect(prompt).toContain('不要輸出驗證或推理過程')
+    expect(prompt).toContain('只輸出一個 JSON code block')
+    expect(prompt).toContain('```json')
     expect(prompt).not.toContain('"word":"單字"')
     expect(prompt).not.toContain('question')
   })

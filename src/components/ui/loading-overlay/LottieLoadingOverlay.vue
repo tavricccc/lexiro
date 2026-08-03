@@ -69,24 +69,28 @@ const showDetails = computed(() => props.showMessage && Boolean(props.message ||
               aria-hidden="true"
             />
 
-            <div v-if="showDetails" class="mt-1 space-y-1">
-              <h1 class="text-xl font-black tracking-tight text-ink-950 dark:text-ink-50">
-                {{ message }}
-              </h1>
-              <p v-if="detail" class="text-sm font-semibold leading-relaxed text-ink-500 dark:text-ink-300">
-                {{ detail }}
-              </p>
-            </div>
-
             <div v-if="showProgress" class="mt-6">
-              <Progress v-if="hasProgress" :model-value="normalizedPercent" class="h-2" />
-              <div v-else class="relative h-2 overflow-hidden rounded-full bg-ink-200/80 dark:bg-ink-800" role="progressbar" :aria-label="$t('sync.progressTitle')">
+              <Progress v-if="hasProgress" :model-value="normalizedPercent" class="h-1" />
+              <div v-else class="relative h-1 overflow-hidden rounded-full bg-ink-200/80 dark:bg-ink-800" role="progressbar" :aria-label="$t('sync.progressTitle')">
                 <div class="loading-progress-indeterminate absolute inset-y-0 left-0 w-2/5 rounded-full bg-accent-primary" />
               </div>
-              <div class="mt-2 flex min-h-5 items-center justify-between gap-3 text-xs font-bold text-ink-400 dark:text-ink-500">
+              <div v-if="showDetails" class="mt-2 space-y-0.5 text-[0.625rem] font-medium leading-relaxed text-ink-400 dark:text-ink-500">
+                <p>{{ message }}</p>
+                <p v-if="detail" class="font-normal">
+                  {{ detail }}
+                </p>
+              </div>
+              <div class="mt-1 flex min-h-4 items-center justify-between gap-3 text-[0.625rem] font-medium leading-relaxed text-ink-400 dark:text-ink-500">
                 <span>{{ progressLabel }}</span>
                 <span v-if="hasProgress" class="tabular-nums">{{ normalizedPercent }}%</span>
               </div>
+            </div>
+
+            <div v-if="showDetails && !showProgress" class="mt-2 space-y-0.5 text-[0.625rem] font-medium leading-relaxed text-ink-400 dark:text-ink-500">
+              <p>{{ message }}</p>
+              <p v-if="detail" class="font-normal">
+                {{ detail }}
+              </p>
             </div>
 
             <p v-if="hint" class="mt-4 text-xs font-semibold leading-relaxed text-ink-400 dark:text-ink-500">

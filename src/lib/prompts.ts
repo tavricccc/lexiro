@@ -10,9 +10,11 @@ const PROMPTS = {
 - {{EXAMPLES_RULE}}
 - pos 只能使用：n.、v.、adj.、adv.、pron.、prep.、conj.、interj.、det.、aux.、modal v.、phr. v.、phr.。
 
-只輸出一個合法 JSON object，不要 Markdown、\`\`\`、註解、說明或其他欄位。
+只輸出一個 JSON code block。回覆必須以 \`\`\`json 開始、以 \`\`\` 結束；code block 外不得有任何文字，code block 內只能有一個合法 JSON object，不要加入註解、說明或其他欄位。
 輸出範例：
+\`\`\`json
 {{OUTPUT_EXAMPLE}}
+\`\`\`
 
 輸入資料：
 {{SOURCES}}
