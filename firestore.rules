@@ -22,7 +22,7 @@ service cloud.firestore {
         ])
         && request.resource.data.cards is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 4;
+        && request.resource.data.schemaVersion == 5;
     }
 
     function validStats() {
@@ -55,7 +55,7 @@ service cloud.firestore {
         && request.resource.data.questionStatsBySense is map
         && request.resource.data.dailyHistory is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 4;
+        && request.resource.data.schemaVersion == 5;
     }
 
     function validSectionItems() {
@@ -107,6 +107,20 @@ service cloud.firestore {
         && request.resource.data.chunks is map;
     }
 
+    function validSyncHead() {
+      return request.resource.data.keys().hasOnly([
+        'ownerId', 'schemaVersion', 'updatedAt', 'libraryRevision',
+        'progressHash', 'statsHash', 'settingsHash'
+      ])
+        && request.resource.data.ownerId is string
+        && request.resource.data.schemaVersion == 5
+        && request.resource.data.updatedAt is string
+        && request.resource.data.libraryRevision is string
+        && request.resource.data.progressHash is string
+        && request.resource.data.statsHash is string
+        && request.resource.data.settingsHash is string;
+    }
+
     function validLibraryDocument(documentId) {
       return validLibraryChunk(documentId) || validLibraryManifestPart(documentId);
     }
@@ -153,6 +167,12 @@ service cloud.firestore {
         allow delete: if signedIn(uid) && lockId == 'v5-write' && resource.data.ownerId == uid;
       }
 
+      match /sync/head {
+        allow read: if signedIn(uid);
+        allow create, update: if ownerCreate(uid) && validSyncHead();
+        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
+      }
+
       match /progress/global {
         allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid) && validProgress();
@@ -179,7 +199,7 @@ service cloud.firestore {
           && request.resource.data.model is string
           && request.resource.data.batchSize is number
           && request.resource.data.updatedAt is string
-          && request.resource.data.schemaVersion == 4;
+          && request.resource.data.schemaVersion == 5;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 

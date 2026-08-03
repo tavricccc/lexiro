@@ -59,7 +59,7 @@ const showDetails = computed(() => props.showMessage && Boolean(props.message ||
         aria-atomic="true"
         aria-busy="true"
       >
-        <div class="flex min-h-full items-center justify-center px-6 py-10 sm:px-8">
+        <div class="flex min-h-[100dvh] items-center justify-center px-6 py-[calc(2.5rem+env(safe-area-inset-top))] pb-[calc(2.5rem+env(safe-area-inset-bottom))] sm:px-8">
           <section class="w-full max-w-md text-center">
             <DotLottieVue
               :src="lottieSrc"

@@ -13,6 +13,8 @@ export interface SyncOutboxEntry {
   baseHash: string
   payload: unknown | null
   attempts: number
+  nextAttemptAt?: string
+  lastErrorCode?: string
   createdAt: string
   updatedAt: string
 }
@@ -74,6 +76,8 @@ export function isSyncOutboxEntry(value: unknown): value is SyncOutboxEntry {
     && typeof entry.attempts === 'number'
     && Number.isInteger(entry.attempts)
     && entry.attempts >= 0
+    && (entry.nextAttemptAt === undefined || typeof entry.nextAttemptAt === 'string')
+    && (entry.lastErrorCode === undefined || typeof entry.lastErrorCode === 'string')
     && typeof entry.createdAt === 'string'
     && typeof entry.updatedAt === 'string'
 }
@@ -94,10 +98,26 @@ export function hasOutboxDomain(entries: SyncOutboxEntry[], domain: SyncDomain):
   return entries.some(entry => entry.domain === domain)
 }
 
-export function incrementOutboxAttempts(entries: SyncOutboxEntry[], domain: SyncDomain, now = new Date().toISOString()): SyncOutboxEntry[] {
+export function incrementOutboxAttempts(entries: SyncOutboxEntry[], domain: SyncDomain, now = new Date().toISOString(), errorCode = 'sync/retryable'): SyncOutboxEntry[] {
+  const nowMs = Date.parse(now)
+  const retryBase = Number.isFinite(nowMs) ? nowMs : Date.now()
   return entries.map(entry => entry.domain === domain
-    ? { ...entry, attempts: entry.attempts + 1, updatedAt: now }
+    ? {
+        ...entry,
+        attempts: Math.min(entry.attempts + 1, 5),
+        nextAttemptAt: new Date(retryBase + [250, 500, 1000, 2000, 4000][Math.min(entry.attempts, 4)]).toISOString(),
+        lastErrorCode: errorCode,
+        updatedAt: now,
+      }
     : entry)
+}
+
+export function nextOutboxRetryAt(entries: readonly SyncOutboxEntry[], now = Date.now()): number | null {
+  const retryAt = entries
+    .filter(entry => entry.attempts < 5)
+    .map(entry => entry.nextAttemptAt ? Date.parse(entry.nextAttemptAt) : Number.NaN)
+    .filter(value => Number.isFinite(value) && value > now)
+  return retryAt.length ? Math.min(...retryAt) : null
 }
 
 export function libraryRecords(state: LibraryState): SyncRecords {
@@ -144,13 +164,16 @@ export function queueRecordChanges(domain: SyncDomain, baseline: SyncRecords, pr
         next.splice(existingIndex, 1)
       continue
     }
+    const payloadChanged = Boolean(existingEntry && recordHash(existingEntry.payload) !== recordHash(payload))
     const queued: SyncOutboxEntry = {
       id: existingEntry?.id ?? `sync-${crypto.randomUUID()}`,
       domain,
       recordKey,
       baseHash: existingEntry?.baseHash ?? recordHash(baseline[recordKey]),
       payload: cloneJson(payload),
-      attempts: existingEntry?.attempts ?? 0,
+      attempts: payloadChanged ? 0 : existingEntry?.attempts ?? 0,
+      ...(!payloadChanged && existingEntry?.nextAttemptAt ? { nextAttemptAt: existingEntry.nextAttemptAt } : {}),
+      ...(!payloadChanged && existingEntry?.lastErrorCode ? { lastErrorCode: existingEntry.lastErrorCode } : {}),
       createdAt: existingEntry?.createdAt ?? now,
       updatedAt: now,
     }
@@ -173,14 +196,9 @@ export function rebaseQueuedRecords(remote: SyncRecords, entries: SyncOutboxEntr
     if (remoteHash !== entry.baseHash) {
       if (remoteHash === recordHash(entry.payload))
         continue
-      // A local submission that has not reached Cloud yet remains the
-      // winning value for this record. Keep it queued so the next CAS upload
-      // can publish the merged snapshot without silently dropping the edit.
-      if (entry.payload === null)
-        delete records[entry.recordKey]
-      else
-        records[entry.recordKey] = cloneJson(entry.payload)
-      accepted.push(entry)
+      // Cloud is authoritative for a conflicting record. The caller removes
+      // the local outbox entry and applies this remote snapshot, so an old
+      // local request cannot resurrect a value that another device committed.
       conflicted.push(entry)
       continue
     }

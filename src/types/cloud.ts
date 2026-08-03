@@ -4,23 +4,33 @@ import type { LibraryQuestion, LibrarySet, SetMembership, VocabFolder, WordEntry
 
 export interface FirestoreProgressDoc extends LearningProgress {
   ownerId: string
-  schemaVersion: number
+  schemaVersion: 5
 }
 
 export interface FirestoreStatsDoc extends DashboardStats {
   ownerId: string
-  schemaVersion: number
+  schemaVersion: 5
 }
 
 export type FirestoreAiSettingsDoc = Omit<AiSettings, 'apiKey'> & {
   ownerId: string
-  schemaVersion: number
+  schemaVersion: 5
   updatedAt: string
+}
+
+export interface FirestoreSyncHeadDoc {
+  ownerId: string
+  schemaVersion: 5
+  updatedAt: string
+  libraryRevision: string
+  progressHash: string
+  statsHash: string
+  settingsHash: string
 }
 
 export interface FirestoreLibraryChunkBase {
   ownerId: string
-  schemaVersion: number
+  schemaVersion: 5
   chunkId: string
   updatedAt: string
   checksum: string
@@ -28,7 +38,7 @@ export interface FirestoreLibraryChunkBase {
 
 export interface FirestoreLibraryManifest {
   ownerId: string
-  schemaVersion: number
+  schemaVersion: 5
   documentType: 'library-manifest'
   updatedAt: string
   revision: string
@@ -64,7 +74,7 @@ export type FirestoreLibraryChunk = FirestoreLibraryChunkBase & (
   | { section: 'questions', items: LibraryQuestion[] }
 )
 
-export type SyncProgressPhase = 'preparing' | 'downloading' | 'reconciling' | 'uploading' | 'verifying' | 'synced' | 'offline' | 'error'
+export type SyncProgressPhase = 'preparing' | 'downloading' | 'reconciling' | 'uploading' | 'retrying' | 'verifying' | 'synced' | 'offline' | 'error'
 export type SyncDirection = 'idle' | 'download' | 'upload'
 
 export interface SyncProgressState {
@@ -78,4 +88,8 @@ export interface SyncProgressState {
   currentBatch: number
   totalBatches: number
   pendingWrites: number
+  stalled: boolean
+  retryAttempt: number
+  maxRetryAttempts: number
+  activeRequests: number
 }

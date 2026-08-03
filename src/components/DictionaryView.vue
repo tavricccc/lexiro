@@ -85,9 +85,6 @@ function openAddDialog(entry: DictionaryEntry) {
       <h1 class="text-2xl font-black tracking-tight">
         {{ $t('dictionary.title') }}
       </h1>
-      <p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500 dark:text-ink-400">
-        {{ $t('dictionary.featureLookup') }} · {{ $t('dictionary.featurePronunciation') }} · {{ $t('dictionary.featureSave') }}
-      </p>
     </div>
 
     <Card class="p-4 sm:p-5">

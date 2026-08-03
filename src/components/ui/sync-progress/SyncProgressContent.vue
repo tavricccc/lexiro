@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { SyncProgressState } from '@/types'
-import { LoaderCircle, RotateCcw, WifiOff, X } from 'lucide-vue-next'
+import { Check, LoaderCircle, RotateCcw, WifiOff, X } from 'lucide-vue-next'
 import { computed } from 'vue'
 import Button from '../button/Button.vue'
-import Progress from '../progress/Progress.vue'
 
 const props = withDefaults(defineProps<{
   state: SyncProgressState
@@ -24,39 +23,37 @@ const showActions = computed(() => ['offline', 'error'].includes(props.state.pha
 </script>
 
 <template>
-  <div class="min-w-0" role="status" aria-live="polite" aria-atomic="true">
-    <div class="flex items-start gap-4">
-      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary">
-        <WifiOff v-if="state.phase === 'offline'" class="h-6 w-6" aria-hidden="true" />
-        <RotateCcw v-else-if="state.phase === 'error'" class="h-6 w-6" aria-hidden="true" />
-        <LoaderCircle v-else class="h-6 w-6 motion-reduce:animate-none" :class="isWorking ? 'animate-spin' : ''" aria-hidden="true" />
-      </div>
-
-      <div class="min-w-0 flex-1">
-        <h2 v-if="showTitle" class="text-lg font-black tracking-tight text-ink-950 dark:text-ink-50">
-          {{ state.message || $t('sync.progressTitle') }}
-        </h2>
-        <p v-if="state.totalBatches > 0" class="mt-1 text-sm font-semibold text-ink-500 dark:text-ink-300">
-          {{ $t('sync.batchProgress', { current: state.currentBatch, total: state.totalBatches }) }}
-        </p>
-      </div>
-
-      <span class="shrink-0 text-xl font-black tabular-nums text-ink-900 dark:text-ink-50">
-        {{ state.percent }}%
-      </span>
+  <div class="flex min-w-0 flex-col items-center text-center" role="status" aria-live="polite" aria-atomic="true">
+    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary">
+      <WifiOff v-if="state.phase === 'offline'" class="h-6 w-6" aria-hidden="true" />
+      <RotateCcw v-else-if="state.phase === 'error'" class="h-6 w-6" aria-hidden="true" />
+      <Check v-else-if="state.phase === 'synced'" class="h-6 w-6 animate-[sync-ack_120ms_ease-out] motion-reduce:animate-none" aria-hidden="true" />
+      <LoaderCircle v-else class="h-6 w-6 motion-reduce:animate-none" :class="isWorking ? 'motion-safe:animate-spin' : ''" aria-hidden="true" />
     </div>
 
-    <Progress :model-value="state.percent" class="mt-5 h-2" />
-
-    <div class="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm font-semibold text-ink-500 dark:text-ink-300">
-      <span>{{ $t('sync.progressCount', { completed: state.completed, total: state.total }) }}</span>
-      <span v-if="state.pendingWrites > 0">{{ $t('sync.pending', { count: state.pendingWrites }) }}</span>
+    <div class="mt-3 min-w-0">
+      <p v-if="showTitle" class="text-xs font-semibold text-ink-500 dark:text-ink-400">
+        {{ state.message || $t('sync.progressTitle') }}
+      </p>
+      <p v-if="state.totalBatches > 0" class="mt-1 text-[11px] font-medium text-ink-400 dark:text-ink-500">
+        {{ $t('sync.batchProgress', { current: state.currentBatch, total: state.totalBatches }) }}
+      </p>
     </div>
 
-    <p v-if="state.phase === 'error'" class="mt-5 break-words rounded-2xl bg-red-50 p-4 text-sm font-semibold leading-relaxed text-red-700 dark:bg-red-950/25 dark:text-red-200">
+    <div v-if="state.pendingWrites > 0" class="mt-2 text-[11px] font-medium text-ink-400 dark:text-ink-500">
+      {{ $t('sync.pending', { count: state.pendingWrites }) }}
+    </div>
+
+    <p v-if="state.phase === 'error'" class="mt-3 max-w-sm break-words text-xs font-semibold leading-relaxed text-red-600 dark:text-red-300">
       {{ $t('sync.progressError') }}
     </p>
-    <p v-else-if="state.phase === 'offline'" class="mt-5 break-words rounded-2xl bg-amber-50 p-4 text-sm font-semibold leading-relaxed text-amber-800 dark:bg-amber-950/25 dark:text-amber-200">
+    <p v-else-if="state.stalled" class="mt-3 max-w-sm break-words text-xs font-medium leading-relaxed text-ink-400 dark:text-ink-500">
+      {{ $t('sync.stalled') }}
+    </p>
+    <p v-else-if="state.phase === 'retrying' && !state.message" class="mt-3 max-w-sm break-words text-xs font-medium leading-relaxed text-ink-400 dark:text-ink-500">
+      {{ $t('sync.retrying') }}
+    </p>
+    <p v-else-if="state.phase === 'offline'" class="mt-3 max-w-sm break-words text-xs font-medium leading-relaxed text-ink-400 dark:text-ink-500">
       {{ $t('sync.offlineContinueHint') }}
     </p>
 

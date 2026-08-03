@@ -1,19 +1,20 @@
 import type { Auth, User } from 'firebase/auth'
 import type { Unsubscribe } from 'firebase/firestore'
+import type { LibraryMutationChange } from '@/lib/library-repository'
 import type { SyncOutboxEntry, SyncRecords } from '@/lib/sync-outbox'
-import type { AiSettings, DashboardStats, LearningProgress, LibraryState, SyncProgressState, SyncStatus } from '@/types'
+import type { AiSettings, DashboardStats, FirestoreSyncHeadDoc, LearningProgress, LibraryState, SyncProgressState, SyncStatus } from '@/types'
 import { useDocumentVisibility, useOnline } from '@vueuse/core'
 import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signOut } from 'firebase/auth'
 import { getDocFromServer, onSnapshot } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 import { computed, nextTick, ref, watch } from 'vue'
-import { LIBRARY_SYNC_PENDING_STORAGE_KEY } from '@/constants'
+import { CLOUD_SCHEMA_VERSION, LIBRARY_SYNC_PENDING_STORAGE_KEY, SYNC_HEAD_STORAGE_KEY } from '@/constants'
 import { defaultAiSettings, getShareableAiSettings, loadAiSettings, loadAiSettingsState, onAiSettingsChanged, saveAiSettings, waitForAiSettingsPersistence } from '@/lib/ai-provider'
 import { CloudSyncError, isRetryableSyncError, syncErrorDetails } from '@/lib/cloud-sync-errors'
 import { loadCloudOutbox, saveCloudOutbox } from '@/lib/cloud-sync-outbox-storage'
 import { reconcileAiSettingsState, reconcileLearningState, reconcileLibraryState } from '@/lib/cloud-sync-reconcile'
-import { cloudDocument, emptyCloudLibrary, emptyCloudProgress, emptyCloudStats, requireCloudFirestore, writeCloudAiSettings, writeCloudLearningState, writeCloudLibraryChunksV5 } from '@/lib/cloud-sync-remote'
-import { normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats } from '@/lib/cloud-sync-schema'
+import { cloudDocument, emptyCloudProgress, emptyCloudStats, requireCloudFirestore, updateCloudSyncHead, writeCloudAiSettings, writeCloudLearningState, writeCloudLibraryChunksV5 } from '@/lib/cloud-sync-remote'
+import { libraryStateFromRecords, normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats, validateCloudSyncHead } from '@/lib/cloud-sync-schema'
 import { configureFirebaseAuth, getFirebaseAuth, isFirebaseConfigured } from '@/lib/firebase'
 import { requestGoogleAccessToken } from '@/lib/googleIdentity'
 import { canonicalHash } from '@/lib/hash'
@@ -21,9 +22,11 @@ import { i18n } from '@/lib/i18n'
 import { mergeLibraryStates } from '@/lib/library-merge'
 import { getLibraryRepository } from '@/lib/library-repository'
 import { stageCloudLibrary } from '@/lib/library-sync-staging'
+import { hasLocalWorkspaceData } from '@/lib/local-workspace'
 import { loadFromStorage, saveToStorage, setStorageNamespace } from '@/lib/persist'
 import { normalizeLibraryState } from '@/lib/share'
-import { hasOutboxDomain, incrementOutboxAttempts, learningRecords, libraryRecords, queueRecordChanges, removeOutboxDomain, settingsRecords } from '@/lib/sync-outbox'
+import { hasOutboxDomain, incrementOutboxAttempts, learningRecords, libraryRecords, nextOutboxRetryAt, queueRecordChanges, removeOutboxDomain, settingsRecords } from '@/lib/sync-outbox'
+import { runSyncWithRetry, SyncRetryPausedError } from '@/lib/sync-retry'
 import { withSyncTimeout } from '@/lib/sync-timeout'
 import { useAccountStore } from './account'
 import { useLearningStore } from './learning'
@@ -54,13 +57,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     currentBatch: 0,
     totalBatches: 0,
     pendingWrites: 0,
+    stalled: false,
+    retryAttempt: 0,
+    maxRetryAttempts: 5,
+    activeRequests: 0,
   })
   const appReady = ref(!configured.value)
 
-  let libraryUnsubscribe: Unsubscribe | null = null
-  let progressUnsubscribe: Unsubscribe | null = null
-  let statsUnsubscribe: Unsubscribe | null = null
-  let aiSettingsUnsubscribe: Unsubscribe | null = null
+  let syncHeadUnsubscribe: Unsubscribe | null = null
   let started = false
   let activeUid = ''
   let realtimeUid = ''
@@ -78,7 +82,6 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   let knownStatsHash = ''
   const knownLibraryHashes = new Map<string, string>()
   let knownLibraryRevision = ''
-  let libraryNeedsUpgrade = false
   let baselineLibraryRecords: SyncRecords = {}
   let observedLibraryRecords: SyncRecords = {}
   let observedLibraryHydrationVersion = 0
@@ -91,9 +94,13 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   let baselineAiSettingsRecords: SyncRecords = {}
   let observedAiSettingsRecords: SyncRecords = {}
   let knownAiSettingsHash = ''
+  let pendingSyncHead: FirestoreSyncHeadDoc | null = null
+  let cloudSyncHeadExists = false
+  let acknowledgedSyncHead: FirestoreSyncHeadDoc | null = null
   const isOnline = useOnline()
   const visibility = useDocumentVisibility()
   let initialSyncWork: Promise<void> | null = null
+  let baselineSyncWork: Promise<void> | null = null
   let automaticRemoteSync: Promise<boolean> | null = null
   let syncQueue: Promise<void> = Promise.resolve()
   let initialSnapshotObserved = false
@@ -105,8 +112,13 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   let outboxPersistencePromise: Promise<void> = Promise.resolve()
   let libraryRepositoryPending = false
   let libraryChangeQueue: Promise<void> = Promise.resolve()
+  let libraryMutationVersion = 0
   let authTransitionVersion = 0
   let namespaceSwitchQueue: Promise<void> = Promise.resolve()
+  let syncNowFlight: Promise<boolean> | null = null
+  let committedChangeFlight: Promise<boolean> | null = null
+  let syncHeadWriteFlight: Promise<void> | null = null
+  let lastSyncFailure: unknown = null
 
   const isSignedIn = computed(() => Boolean(user.value))
   const accountLabel = computed(() => user.value?.displayName || user.value?.email || '')
@@ -123,17 +135,20 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function scheduleRemoteSync() {
-    if (!remoteUpdateAvailable.value
+    const hasAutomaticRetry = outbox.value.some(entry => entry.attempts < 5 && Boolean(entry.nextAttemptAt || entry.lastErrorCode))
+    if ((!remoteUpdateAvailable.value && !hasAutomaticRetry)
       || automaticRemoteSync
       || !user.value
       || !isOnline.value
       || manualOfflineMode
+      || visibility.value !== 'visible'
       || !appReady.value
       || !allInitialBaselinesReady()) {
       return
     }
 
-    operationBlocked.value = true
+    if (!committedChangeFlight)
+      operationBlocked.value = false
     setProgressPhase('preparing', i18n.global.t('sync.autoUpdating'), { direction: 'download', retryable: false })
     const work = (async () => {
       try {
@@ -178,7 +193,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
 
   function setProgressPhase(phase: SyncProgressState['phase'], message: string, patch: Partial<SyncProgressState> = {}) {
     const reset = phase !== progress.value.phase
-      ? { completed: 0, total: 0, percent: 0, currentBatch: 0, totalBatches: 0 }
+      ? { completed: 0, total: 0, percent: 0, currentBatch: 0, totalBatches: 0, stalled: false, retryAttempt: 0, activeRequests: 0 }
       : {}
     updateProgress({ ...reset, phase, message, ...patch })
   }
@@ -187,8 +202,58 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     return libraryBaselineReady && progressBaselineReady && statsBaselineReady && aiSettingsBaselineReady
   }
 
+  function hasPendingLocalChanges(): boolean {
+    return pendingWrites.value > 0
+      || libraryRepositoryPending
+      || libraryDirty
+      || learningDirty
+      || aiSettingsDirty
+      || outbox.value.length > 0
+  }
+
+  async function ensureCloudSyncHead(uid: string, epoch: number): Promise<void> {
+    const headMatchesKnownState = Boolean(cloudSyncHeadExists && acknowledgedSyncHead
+      && acknowledgedSyncHead.libraryRevision === knownLibraryRevision
+      && acknowledgedSyncHead.progressHash === knownProgressHash
+      && acknowledgedSyncHead.statsHash === knownStatsHash
+      && acknowledgedSyncHead.settingsHash === knownAiSettingsHash)
+    if (!isCurrentSync(uid, epoch) || headMatchesKnownState || !allInitialBaselinesReady() || hasPendingLocalChanges())
+      return
+    if (syncHeadWriteFlight) {
+      try {
+        await syncHeadWriteFlight
+      }
+      catch {
+        // A superseded account/epoch may have failed independently. Recheck
+        // the current operation instead of leaking that failure into it.
+      }
+      return ensureCloudSyncHead(uid, epoch)
+    }
+    const work = (async () => {
+      const head = await updateCloudSyncHead(requireCloudFirestore(), uid, {
+        libraryRevision: knownLibraryRevision,
+        progressHash: knownProgressHash,
+        statsHash: knownStatsHash,
+        settingsHash: knownAiSettingsHash,
+      })
+      if (!isCurrentSync(uid, epoch))
+        return
+      cloudSyncHeadExists = true
+      acknowledgedSyncHead = head
+      pendingSyncHead = head
+      await persistSyncHead(head)
+      pendingSyncHead = null
+    })()
+    const trackedWork = work.finally(() => {
+      if (syncHeadWriteFlight === trackedWork)
+        syncHeadWriteFlight = null
+    })
+    syncHeadWriteFlight = trackedWork
+    await trackedWork
+  }
+
   async function maybeCompleteInitialSync() {
-    if (!user.value || !isOnline.value || appReady.value || !allInitialBaselinesReady() || initialSyncWork)
+    if (!user.value || !isOnline.value || !allInitialBaselinesReady() || initialSyncWork)
       return
     const syncUid = user.value.uid
     const syncEpoch = realtimeEpoch
@@ -206,18 +271,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       if (status.value === 'error')
         return
       setProgressPhase('verifying', i18n.global.t('sync.verifying'))
-      if (outbox.value.length > 0
-        || libraryRepositoryPending
-        || libraryDirty
-        || learningDirty
-        || aiSettingsDirty
+      if (hasPendingLocalChanges()
         || hasOutboxDomain(outbox.value, 'library')
         || hasOutboxDomain(outbox.value, 'learning')
         || hasOutboxDomain(outbox.value, 'settings')) {
-        setStatus('error')
-        setProgressPhase('error', i18n.global.t('sync.error'), { retryable: true })
+        // Local edits can arrive while the first head pass is still running.
+        // They are valid pending work, not an initialization failure; keep the
+        // workspace usable and let an explicit commit/retry flush them.
+        setStatus('synced')
+        setProgressPhase('synced', i18n.global.t('sync.synced'), { completed: 1, total: 1, direction: 'idle', retryable: true })
+        appReady.value = true
+        operationBlocked.value = false
         return
       }
+      await ensureCloudSyncHead(syncUid, syncEpoch)
+      if (syncEpoch !== realtimeEpoch || user.value?.uid !== syncUid)
+        return
       setStatus('synced')
       setProgressPhase('synced', i18n.global.t('sync.synced'), { completed: 1, total: 1, direction: 'idle', retryable: false })
       appReady.value = true
@@ -267,6 +336,37 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     return true
   }
 
+  async function loadLocalSyncHead(uid: string, isCurrent?: () => boolean): Promise<FirestoreSyncHeadDoc | null> {
+    const stored = await loadFromStorage(SYNC_HEAD_STORAGE_KEY)
+    if (isCurrent && !isCurrent())
+      return null
+    if (!stored.value)
+      return null
+    try {
+      const parsed = JSON.parse(stored.value)
+      if (!parsed || parsed.ownerId !== uid)
+        return null
+      return validateCloudSyncHead(parsed, uid)
+    }
+    catch {
+      return null
+    }
+  }
+
+  async function persistSyncHead(head: FirestoreSyncHeadDoc): Promise<void> {
+    await saveToStorage(SYNC_HEAD_STORAGE_KEY, head)
+  }
+
+  function localHeadMatches(remote: FirestoreSyncHeadDoc, local: FirestoreSyncHeadDoc | null, libraryRevision: string): boolean {
+    return Boolean(local
+      && local.ownerId === remote.ownerId
+      && local.libraryRevision === remote.libraryRevision
+      && local.libraryRevision === libraryRevision
+      && local.progressHash === remote.progressHash
+      && local.statsHash === remote.statsHash
+      && local.settingsHash === remote.settingsHash)
+  }
+
   async function startAccountSync(uid: string) {
     const transitionVersion = authTransitionVersion
     const isCurrentAccount = () => transitionVersion === authTransitionVersion && activeUid === uid && user.value?.uid === uid
@@ -274,11 +374,15 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       return
     try {
       manualOfflineMode = false
-      appReady.value = !isOnline.value
       if (isOnline.value)
         setProgressPhase('preparing', i18n.global.t('sync.connecting'), { direction: 'download', completed: 0, total: 0, retryable: false })
       if (!await loadOutbox(uid, isCurrentAccount) || !await loadLibraryRepositoryPending(isCurrentAccount) || !isCurrentAccount())
         return
+      const libraryStore = useLibraryStore()
+      const learningStore = useLearningStore()
+      appReady.value = hasLocalWorkspaceData(libraryStore.state, learningStore.progress, learningStore.stats)
+        || outbox.value.length > 0
+        || libraryRepositoryPending
       if (!isOnline.value) {
         clearListeners()
         setStatus('offline')
@@ -359,15 +463,13 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
 
   function clearListeners() {
     realtimeEpoch += 1
-    libraryUnsubscribe?.()
-    progressUnsubscribe?.()
-    statsUnsubscribe?.()
-    aiSettingsUnsubscribe?.()
-    libraryUnsubscribe = null
-    progressUnsubscribe = null
-    statsUnsubscribe = null
-    aiSettingsUnsubscribe = null
+    syncHeadUnsubscribe?.()
+    syncHeadUnsubscribe = null
+    baselineSyncWork = null
     realtimeUid = ''
+    pendingSyncHead = null
+    acknowledgedSyncHead = null
+    cloudSyncHeadExists = false
     pendingRemoteDomains.clear()
     remoteUpdateAvailable.value = false
   }
@@ -423,6 +525,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function setError(syncError: unknown) {
+    lastSyncFailure = syncError
     error.value = explainSyncError(syncError)
     status.value = 'error'
     setProgressPhase('error', error.value, { retryable: operationBlocked.value || isRetryableSyncError(syncError), direction: 'idle' })
@@ -437,7 +540,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       error: syncError,
     })
     setError(syncError)
-    clearListeners()
+    // Firestore listeners reconnect by themselves after transient failures.
+    // Keep the head listener alive so a later server snapshot can recover the
+    // background sync without making the whole app cold-start again.
+    if (!isRetryableSyncError(syncError) && !(syncError instanceof SyncRetryPausedError))
+      clearListeners()
   }
 
   async function settlesImmediately(work: Promise<void>, maxMicrotasks = 10_000): Promise<boolean> {
@@ -479,15 +586,30 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     const normalizedRemote = normalizeLibraryState(remote)
     const reconciled = reconcileLibraryState(normalizedRemote, outbox.value)
     let merged = reconciled.merged
+    let repositoryConflict = false
     if (libraryRepositoryPending) {
       const local = await getLibraryRepository().loadState()
       if (isCurrent && !isCurrent())
         return
-      // A repository-level import may have happened while offline, without
-      // creating one reactive outbox record per payload. Treat that complete
-      // local generation as the first input so local commits win while new
-      // remote records are still merged in.
-      merged = mergeLibraryStates(local, reconciled.merged).state
+      const localRecords = libraryRecords(local)
+      const remoteRecords = libraryRecords(reconciled.merged)
+      const localOnlyRecords: SyncRecords = {}
+      for (const [recordKey, payload] of Object.entries(localRecords)) {
+        if (!(recordKey in remoteRecords))
+          localOnlyRecords[recordKey] = payload
+        else if (canonicalHash(payload) !== canonicalHash(remoteRecords[recordKey]))
+          repositoryConflict = true
+      }
+      if (Object.keys(remoteRecords).some(recordKey => !(recordKey in localRecords)))
+        repositoryConflict = true
+      const rootFolderKey = 'folder:__uncategorized__'
+      if (remoteRecords[rootFolderKey])
+        localOnlyRecords[rootFolderKey] = remoteRecords[rootFolderKey]
+      // Repository imports do not materialize one outbox row per record. Keep
+      // genuinely new local records, but let Cloud win every same-key conflict
+      // (including a local deletion) before the pending generation is flushed.
+      const localOnlyState = libraryStateFromRecords(reconciled.merged, localOnlyRecords)
+      merged = mergeLibraryStates(reconciled.merged, localOnlyState).state
     }
     if (isCurrent && !isCurrent())
       return
@@ -515,18 +637,28 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     observedLibraryHydrationVersion = libraryStore.hydrationVersion
     baselineLibraryRecords = result.baselineRecords
     observedLibraryRecords = result.observedRecords
+    if (result.conflicted.length > 0 || repositoryConflict)
+      useUIStore().showToast(i18n.global.t('sync.conflictCloudWins'))
     replaceOutbox([...removeOutboxDomain(outbox.value, 'library'), ...result.accepted])
     libraryDirty = result.dirty
   }
 
-  async function refreshLibraryRemote(uid: string, isCurrent?: () => boolean) {
-    const remote = await stageCloudLibrary({ db: requireCloudFirestore(), uid })
+  async function refreshLibraryRemote(uid: string, isCurrent?: () => boolean, onProgress?: (batch: { currentBatch: number, totalBatches: number, completed: number, total: number, activeRequests?: number }) => void) {
+    const remote = await stageCloudLibrary({
+      db: requireCloudFirestore(),
+      uid,
+      onProgress: (batch) => {
+        if (isCurrent && !isCurrent())
+          return
+        updateProgress({ phase: 'downloading', message: i18n.global.t('sync.downloadingLibrary'), direction: 'download', completed: batch.completed, total: batch.total, currentBatch: batch.currentBatch, totalBatches: batch.totalBatches, activeRequests: batch.activeRequests ?? 0 })
+        onProgress?.(batch)
+      },
+    })
     if (isCurrent && !isCurrent())
       return
     await reconcileLibraryRemote(remote.library, remote.stagingGeneration, isCurrent)
     if (isCurrent && !isCurrent())
       return
-    libraryNeedsUpgrade = remote.legacy
     knownLibraryHashes.clear()
     for (const [chunkId, checksum] of remote.hashes)
       knownLibraryHashes.set(chunkId, checksum)
@@ -534,23 +666,46 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     markRemoteUpdate('library', false)
   }
 
-  async function refreshSecondaryRemote(uid: string, isCurrent?: () => boolean) {
+  async function refreshSecondaryRemote(uid: string, domains: { learning: boolean, settings: boolean } = { learning: true, settings: true }, isCurrent?: () => boolean) {
     const db = requireCloudFirestore()
     const [progressSnapshot, statsSnapshot, settingsSnapshot] = await Promise.all([
-      withSyncTimeout(getDocFromServer(cloudDocument(db, uid, 'progress', 'global')), 'Learning progress refresh'),
-      withSyncTimeout(getDocFromServer(cloudDocument(db, uid, 'stats', 'summary')), 'Learning stats refresh'),
-      withSyncTimeout(getDocFromServer(cloudDocument(db, uid, 'settings', 'ai')), 'AI settings refresh'),
+      domains.learning ? withSyncTimeout(getDocFromServer(cloudDocument(db, uid, 'progress', 'global')), 'Learning progress refresh') : Promise.resolve(null),
+      domains.learning ? withSyncTimeout(getDocFromServer(cloudDocument(db, uid, 'stats', 'summary')), 'Learning stats refresh') : Promise.resolve(null),
+      domains.settings ? withSyncTimeout(getDocFromServer(cloudDocument(db, uid, 'settings', 'ai')), 'AI settings refresh') : Promise.resolve(null),
     ])
     if (isCurrent && !isCurrent())
       return
-    remoteProgress = progressSnapshot.exists() ? normalizeCloudProgress(progressSnapshot.data(), uid) : emptyCloudProgress()
-    remoteStats = statsSnapshot.exists() ? normalizeCloudStats(statsSnapshot.data(), uid) : emptyCloudStats()
-    reconcileLearningRemote(remoteProgress, remoteStats)
-    knownProgressHash = progressSnapshot.exists() ? canonicalHash(remoteProgress) : ''
-    knownStatsHash = statsSnapshot.exists() ? canonicalHash(remoteStats) : ''
+    const learningStore = useLearningStore()
+    if (domains.learning) {
+      progressBaselineReady = true
+      statsBaselineReady = true
+      remoteProgress = progressSnapshot?.exists() ? normalizeCloudProgress(progressSnapshot.data(), uid) : emptyCloudProgress()
+      remoteStats = statsSnapshot?.exists() ? normalizeCloudStats(statsSnapshot.data(), uid) : emptyCloudStats()
+      reconcileLearningRemote(remoteProgress, remoteStats)
+      knownProgressHash = progressSnapshot?.exists() ? canonicalHash(remoteProgress) : ''
+      knownStatsHash = statsSnapshot?.exists() ? canonicalHash(remoteStats) : ''
+    }
+    else {
+      remoteProgress = learningStore.progress
+      remoteStats = learningStore.stats
+      baselineLearningRecords = learningRecords(remoteProgress, remoteStats)
+      observedLearningRecords = baselineLearningRecords
+      progressBaselineReady = true
+      statsBaselineReady = true
+    }
 
-    const remoteSettings = settingsSnapshot.exists() ? normalizeCloudAiSettings(settingsSnapshot.data(), uid) : null
-    reconcileAiSettingsRemote(remoteSettings)
+    if (domains.settings) {
+      aiSettingsBaselineReady = true
+      const remoteSettings = settingsSnapshot?.exists() ? normalizeCloudAiSettings(settingsSnapshot.data(), uid) : null
+      reconcileAiSettingsRemote(remoteSettings)
+      knownAiSettingsHash = remoteSettings ? canonicalHash(remoteSettings) : ''
+    }
+    else {
+      const localSettings = loadAiSettings()
+      baselineAiSettingsRecords = settingsRecords(localSettings)
+      observedAiSettingsRecords = baselineAiSettingsRecords
+      aiSettingsBaselineReady = true
+    }
     markRemoteUpdate('learning', false)
     markRemoteUpdate('settings', false)
   }
@@ -572,6 +727,8 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
     baselineLearningRecords = result.baselineRecords
     observedLearningRecords = result.observedRecords
+    if (result.conflicted.length > 0)
+      useUIStore().showToast(i18n.global.t('sync.conflictCloudWins'))
     replaceOutbox([...removeOutboxDomain(outbox.value, 'learning'), ...result.accepted])
     learningDirty = result.dirty
   }
@@ -588,14 +745,108 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
     baselineAiSettingsRecords = result.baselineRecords
     observedAiSettingsRecords = result.observedRecords
+    if (result.conflicted.length > 0)
+      useUIStore().showToast(i18n.global.t('sync.conflictCloudWins'))
     knownAiSettingsHash = canonicalHash(remote ?? null)
     replaceOutbox([...removeOutboxDomain(outbox.value, 'settings'), ...result.accepted])
     aiSettingsDirty = result.dirty
   }
+  function currentSyncHead(uid: string, updatedAt = new Date().toISOString()): FirestoreSyncHeadDoc {
+    return {
+      ownerId: uid,
+      schemaVersion: CLOUD_SCHEMA_VERSION,
+      updatedAt,
+      libraryRevision: knownLibraryRevision,
+      progressHash: knownProgressHash,
+      statsHash: knownStatsHash,
+      settingsHash: knownAiSettingsHash,
+    }
+  }
 
-  async function applyRemoteLibraryChanges(uid: string): Promise<void> {
+  async function activateCachedBaseline(remoteHead: FirestoreSyncHeadDoc, localHead: FirestoreSyncHeadDoc | null): Promise<boolean> {
+    if (outbox.value.length > 0 || libraryRepositoryPending || libraryDirty || learningDirty || aiSettingsDirty)
+      return false
+    const cachedRemote = await getLibraryRepository().loadRemoteLibrarySyncState()
+    if (!cachedRemote || !localHeadMatches(remoteHead, localHead, cachedRemote.revision))
+      return false
+    const libraryStore = useLibraryStore()
+    const learningStore = useLearningStore()
+    const localSettings = loadAiSettings()
+    knownLibraryHashes.clear()
+    for (const [chunkId, checksum] of Object.entries(cachedRemote.hashes))
+      knownLibraryHashes.set(chunkId, checksum)
+    knownLibraryRevision = cachedRemote.revision
+    knownProgressHash = remoteHead.progressHash
+    knownStatsHash = remoteHead.statsHash
+    knownAiSettingsHash = remoteHead.settingsHash
+    remoteProgress = learningStore.progress
+    remoteStats = learningStore.stats
+    libraryBaselineReady = true
+    progressBaselineReady = true
+    statsBaselineReady = true
+    aiSettingsBaselineReady = true
+    baselineLibraryRecords = libraryRecords(libraryStore.state)
+    observedLibraryRecords = baselineLibraryRecords
+    observedLibraryHydrationVersion = libraryStore.hydrationVersion
+    baselineLearningRecords = learningRecords(learningStore.progress, learningStore.stats)
+    observedLearningRecords = baselineLearningRecords
+    baselineAiSettingsRecords = settingsRecords(localSettings)
+    observedAiSettingsRecords = baselineAiSettingsRecords
+    await persistSyncHead(remoteHead)
+    pendingSyncHead = null
+    acknowledgedSyncHead = remoteHead
+    pendingRemoteDomains.clear()
+    remoteUpdateAvailable.value = false
+    updateProgress({ completed: 1, total: 1, currentBatch: 0, totalBatches: 0, direction: 'idle', stalled: false })
+    markSynced()
+    return true
+  }
+
+  async function hydrateFromSyncHead(uid: string, remoteHead: FirestoreSyncHeadDoc | null, epoch: number): Promise<void> {
+    const isCurrent = () => isCurrentSync(uid, epoch)
+    const localHead = await loadLocalSyncHead(uid, isCurrent)
+    if (!isCurrent())
+      return
+    if (remoteHead && await activateCachedBaseline(remoteHead, localHead))
+      return
+
+    setProgressPhase('downloading', i18n.global.t('sync.fetchingManifest'), { direction: 'download', retryable: false })
+    await refreshLibraryRemote(uid, isCurrent)
+    if (!isCurrent())
+      return
+    libraryBaselineReady = true
+    updateProgress({ completed: 1, total: 1, currentBatch: 0, totalBatches: 0, stalled: false })
+
+    const canReuseLearning = Boolean(remoteHead && localHead
+      && localHead.progressHash === remoteHead.progressHash
+      && localHead.statsHash === remoteHead.statsHash
+      && !outbox.value.some(entry => entry.domain === 'learning'))
+    const canReuseSettings = Boolean(remoteHead && localHead
+      && localHead.settingsHash === remoteHead.settingsHash
+      && !outbox.value.some(entry => entry.domain === 'settings'))
+    await refreshSecondaryRemote(uid, { learning: !canReuseLearning, settings: !canReuseSettings }, isCurrent)
+    if (!isCurrent())
+      return
+    if (remoteHead) {
+      if (canReuseLearning) {
+        knownProgressHash = remoteHead.progressHash
+        knownStatsHash = remoteHead.statsHash
+      }
+      if (canReuseSettings)
+        knownAiSettingsHash = remoteHead.settingsHash
+      await persistSyncHead(remoteHead)
+      pendingSyncHead = null
+      acknowledgedSyncHead = remoteHead
+    }
+    markRemoteUpdate('library', false)
+    markRemoteUpdate('learning', false)
+    markRemoteUpdate('settings', false)
+    markSynced()
+  }
+
+  async function startSyncHead(uid: string): Promise<void> {
     const epoch = realtimeEpoch
-    setProgressPhase('downloading', i18n.global.t('sync.fetchingManifest'), { direction: 'download' })
+    setProgressPhase('preparing', i18n.global.t('sync.connecting'), { direction: 'download', retryable: false })
     let initialSettled = false
     let resolveInitial: (() => void) | null = null
     let rejectInitial: ((error: unknown) => void) | null = null
@@ -619,304 +870,30 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         handleRealtimeError(syncError)
       }
     }
-    try {
-      libraryUnsubscribe = onSnapshot(userDocument(uid, 'library', 'manifest'), { includeMetadataChanges: true }, (snapshot) => {
-        if (epoch !== realtimeEpoch) {
-          finishInitial()
-          return
-        }
-        if (snapshot.metadata.fromCache)
-          return
-        initialSnapshotObserved = true
-        snapshotQueue = snapshotQueue.catch(() => undefined).then(async () => {
-          if (epoch !== realtimeEpoch) {
-            finishInitial()
-            return
-          }
-          try {
-            if (libraryBaselineReady) {
-              const remoteRevision = snapshot.exists() && typeof snapshot.data().revision === 'string'
-                ? snapshot.data().revision as string
-                : ''
-              markRemoteUpdate('library', remoteRevision !== knownLibraryRevision)
-              finishInitial()
-              return
-            }
-            if (!snapshot.exists()) {
-              await reconcileLibraryRemote(normalizeLibraryState(emptyCloudLibrary()), undefined, () => epoch === realtimeEpoch && user.value?.uid === uid)
-              if (epoch !== realtimeEpoch || user.value?.uid !== uid) {
-                finishInitial()
-                return
-              }
-              libraryBaselineReady = true
-              libraryNeedsUpgrade = false
-              knownLibraryHashes.clear()
-              knownLibraryRevision = ''
-              markRemoteUpdate('library', false)
-              updateProgress({ completed: 1, total: 1, currentBatch: 0, totalBatches: 0 })
-              markSynced()
-              finishInitial()
-              return
-            }
-            const remote = await stageCloudLibrary({
-              db: requireCloudFirestore(),
-              uid,
-              manifestData: snapshot.data(),
-              onProgress: (batch) => {
-                if (epoch !== realtimeEpoch)
-                  return
-                updateProgress({ phase: 'downloading', message: i18n.global.t('sync.downloadingLibrary'), direction: 'download', completed: batch.completed, total: batch.total, currentBatch: batch.currentBatch, totalBatches: batch.totalBatches })
-              },
-            })
-            if (epoch !== realtimeEpoch) {
-              finishInitial()
-              return
-            }
-            setProgressPhase('reconciling', i18n.global.t('sync.applyingLibrary'), { direction: 'download', completed: 0, total: 1 })
-            await reconcileLibraryRemote(remote.library, remote.stagingGeneration, () => epoch === realtimeEpoch && user.value?.uid === uid)
-            if (epoch !== realtimeEpoch || user.value?.uid !== uid) {
-              finishInitial()
-              return
-            }
-            libraryBaselineReady = true
-            updateProgress({ completed: 1, total: 1, currentBatch: 0, totalBatches: 0 })
-            knownLibraryHashes.clear()
-            for (const [chunkId, checksum] of remote.hashes)
-              knownLibraryHashes.set(chunkId, checksum)
-            knownLibraryRevision = remote.revision
-            libraryNeedsUpgrade = remote.legacy
-            markRemoteUpdate('library', false)
-            markSynced()
-            finishInitial()
-          }
-          catch (syncError) {
-            fail(syncError)
-          }
-        })
-        void snapshotQueue.catch(fail)
-      }, fail)
-    }
-    catch (syncError) {
-      fail(syncError)
-    }
-    await withSyncTimeout(initial, 'Library server snapshot')
-  }
-
-  async function applyRemoteLearningChanges(uid: string): Promise<void> {
-    const epoch = realtimeEpoch
-    setProgressPhase('downloading', i18n.global.t('sync.downloadingLearning'), { direction: 'download', completed: 0, total: 2 })
-    let progressInitialSettled = false
-    let resolveProgressInitial: (() => void) | null = null
-    let rejectProgressInitial: ((error: unknown) => void) | null = null
-    const progressInitial = new Promise<void>((resolve, reject) => {
-      resolveProgressInitial = resolve
-      rejectProgressInitial = reject
-    })
-    const finishProgressInitial = () => {
-      if (progressInitialSettled)
+    syncHeadUnsubscribe = onSnapshot(userDocument(uid, 'sync', 'head'), { includeMetadataChanges: true }, (snapshot) => {
+      if (epoch !== realtimeEpoch)
+        return finishInitial()
+      if (snapshot.metadata.fromCache)
         return
-      progressInitialSettled = true
-      resolveProgressInitial?.()
-    }
-    const failProgress = (syncError: unknown) => {
-      if (!progressInitialSettled) {
-        progressInitialSettled = true
-        rejectProgressInitial?.(syncError)
-      }
-      else {
-        handleRealtimeError(syncError)
-      }
-    }
-    try {
-      progressUnsubscribe = onSnapshot(userDocument(uid, 'progress', 'global'), { includeMetadataChanges: true }, (snapshot) => {
-        if (epoch !== realtimeEpoch) {
-          finishProgressInitial()
-          return
-        }
-        if (snapshot.metadata.fromCache)
-          return
-        if (progressBaselineReady) {
-          try {
-            const nextProgress = snapshot.exists() ? normalizeCloudProgress(snapshot.data(), uid) : emptyCloudProgress()
-            markRemoteUpdate('learning', (snapshot.exists() ? canonicalHash(nextProgress) : '') !== knownProgressHash)
-          }
-          catch (syncError) {
-            failProgress(syncError)
-          }
-          return
-        }
-        progressBaselineReady = true
-        updateProgress({ completed: 1, total: 2 })
-        if (snapshot.exists()) {
-          try {
-            remoteProgress = normalizeCloudProgress(snapshot.data(), uid)
-          }
-          catch (syncError) {
-            failProgress(syncError)
-            return
-          }
-        }
-        else {
-          remoteProgress = emptyCloudProgress()
-        }
-        if (remoteProgress && remoteStats)
-          reconcileLearningRemote(remoteProgress, remoteStats)
-        if (remoteProgress)
-          knownProgressHash = snapshot.exists() ? canonicalHash(remoteProgress) : ''
-        markRemoteUpdate('learning', false)
-        markSynced()
-        finishProgressInitial()
-      }, failProgress)
-    }
-    catch (syncError) {
-      failProgress(syncError)
-    }
-    await withSyncTimeout(progressInitial, 'Learning progress server snapshot')
-
-    let statsInitialSettled = false
-    let resolveStatsInitial: (() => void) | null = null
-    let rejectStatsInitial: ((error: unknown) => void) | null = null
-    const statsInitial = new Promise<void>((resolve, reject) => {
-      resolveStatsInitial = resolve
-      rejectStatsInitial = reject
-    })
-    const finishStatsInitial = () => {
-      if (statsInitialSettled)
-        return
-      statsInitialSettled = true
-      resolveStatsInitial?.()
-    }
-    const failStats = (syncError: unknown) => {
-      if (!statsInitialSettled) {
-        statsInitialSettled = true
-        rejectStatsInitial?.(syncError)
-      }
-      else {
-        handleRealtimeError(syncError)
-      }
-    }
-    try {
-      statsUnsubscribe = onSnapshot(userDocument(uid, 'stats', 'summary'), { includeMetadataChanges: true }, (snapshot) => {
-        if (epoch !== realtimeEpoch) {
-          finishStatsInitial()
-          return
-        }
-        if (snapshot.metadata.fromCache)
-          return
-        if (statsBaselineReady) {
-          try {
-            const nextStats = snapshot.exists() ? normalizeCloudStats(snapshot.data(), uid) : emptyCloudStats()
-            markRemoteUpdate('learning', (snapshot.exists() ? canonicalHash(nextStats) : '') !== knownStatsHash)
-          }
-          catch (syncError) {
-            failStats(syncError)
-          }
-          return
-        }
-        statsBaselineReady = true
-        updateProgress({ completed: 2, total: 2 })
-        if (!snapshot.exists()) {
-          remoteStats = emptyCloudStats()
-          knownStatsHash = ''
-          markRemoteUpdate('learning', false)
-          if (remoteProgress)
-            reconcileLearningRemote(remoteProgress, remoteStats)
-          markSynced()
-          finishStatsInitial()
-          return
-        }
-        let remoteStatsData: DashboardStats
-        try {
-          remoteStatsData = normalizeCloudStats(snapshot.data(), uid)
-        }
-        catch (syncError) {
-          failStats(syncError)
-          return
-        }
-        remoteStats = remoteStatsData
-        if (remoteProgress)
-          reconcileLearningRemote(remoteProgress, remoteStatsData)
-        knownStatsHash = canonicalHash(remoteStatsData)
-        markRemoteUpdate('learning', false)
-        markSynced()
-        finishStatsInitial()
-      }, failStats)
-    }
-    catch (syncError) {
-      failStats(syncError)
-    }
-    await withSyncTimeout(statsInitial, 'Learning stats server snapshot')
-  }
-
-  async function applyRemoteAiSettingsChanges(uid: string): Promise<void> {
-    const epoch = realtimeEpoch
-    setProgressPhase('downloading', i18n.global.t('sync.downloadingSettings'), { direction: 'download', completed: 0, total: 1 })
-    let initialSettled = false
-    let resolveInitial: (() => void) | null = null
-    let rejectInitial: ((error: unknown) => void) | null = null
-    const initial = new Promise<void>((resolve, reject) => {
-      resolveInitial = resolve
-      rejectInitial = reject
-    })
-    const finishInitial = () => {
-      if (initialSettled)
-        return
-      initialSettled = true
-      resolveInitial?.()
-    }
-    const fail = (syncError: unknown) => {
-      if (!initialSettled) {
-        initialSettled = true
-        rejectInitial?.(syncError)
-      }
-      else {
-        handleRealtimeError(syncError)
-      }
-    }
-    try {
-      aiSettingsUnsubscribe = onSnapshot(userDocument(uid, 'settings', 'ai'), { includeMetadataChanges: true }, (snapshot) => {
-        if (epoch !== realtimeEpoch) {
+      initialSnapshotObserved = true
+      snapshotQueue = snapshotQueue.catch(() => undefined).then(async () => {
+        if (epoch !== realtimeEpoch)
+          return finishInitial()
+        const nextHead = snapshot.exists() ? validateCloudSyncHead(snapshot.data(), uid) : null
+        pendingSyncHead = nextHead
+        cloudSyncHeadExists = Boolean(nextHead)
+        acknowledgedSyncHead = nextHead
+        if (!libraryBaselineReady) {
+          await hydrateFromSyncHead(uid, nextHead, epoch)
           finishInitial()
           return
         }
-        if (snapshot.metadata.fromCache)
-          return
-        if (aiSettingsBaselineReady) {
-          try {
-            const nextSettings = snapshot.exists() ? normalizeCloudAiSettings(snapshot.data(), uid) : null
-            markRemoteUpdate('settings', (nextSettings ? canonicalHash(nextSettings) : '') !== knownAiSettingsHash)
-          }
-          catch (syncError) {
-            fail(syncError)
-          }
-          return
-        }
-        aiSettingsBaselineReady = true
-        updateProgress({ completed: 1, total: 1 })
-        if (!snapshot.exists()) {
-          reconcileAiSettingsRemote(null)
-          markRemoteUpdate('settings', false)
-          markSynced()
-          finishInitial()
-          return
-        }
-        try {
-          const normalized = normalizeCloudAiSettings(snapshot.data(), uid)
-          reconcileAiSettingsRemote(normalized)
-          knownAiSettingsHash = canonicalHash(normalized)
-          markRemoteUpdate('settings', false)
-          markSynced()
-          finishInitial()
-        }
-        catch (syncError) {
-          fail(syncError)
-        }
-      }, fail)
-    }
-    catch (syncError) {
-      fail(syncError)
-    }
-    await withSyncTimeout(initial, 'AI settings server snapshot')
+        markRemoteUpdate('library', (nextHead?.libraryRevision ?? '') !== knownLibraryRevision)
+        markRemoteUpdate('learning', (nextHead?.progressHash ?? '') !== knownProgressHash || (nextHead?.statsHash ?? '') !== knownStatsHash)
+        markRemoteUpdate('settings', (nextHead?.settingsHash ?? '') !== knownAiSettingsHash)
+      }).catch(fail)
+    }, fail)
+    await withSyncTimeout(initial, 'Sync head server snapshot')
   }
 
   async function flushLearning() {
@@ -979,6 +956,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownProgressHash = progressHash
       if (statsChanged)
         knownStatsHash = statsHash
+      const committedHead = currentSyncHead(uid)
+      await persistSyncHead(committedHead)
+      cloudSyncHeadExists = true
+      acknowledgedSyncHead = committedHead
+      pendingSyncHead = null
       learningDirty = false
       replaceOutbox(removeOutboxDomain(outbox.value, 'learning'))
       markRemoteUpdate('learning', false)
@@ -987,15 +969,15 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     catch (syncError) {
       if (!isCurrentSync(uid, epoch))
         return
-      replaceOutbox(incrementOutboxAttempts(outbox.value, 'learning'))
+      replaceOutbox(incrementOutboxAttempts(outbox.value, 'learning', new Date().toISOString(), syncErrorDetails(syncError).code))
       handleSyncError(syncError)
     }
   }
 
   async function flushLibrary() {
-    if (!user.value || !isOnline.value || manualOfflineMode || applyingRemote || !libraryBaselineReady || (!libraryDirty && !libraryNeedsUpgrade && !libraryRepositoryPending))
+    if (!user.value || !isOnline.value || manualOfflineMode || applyingRemote || !libraryBaselineReady || (!libraryDirty && !libraryRepositoryPending))
       return
-    if (!libraryNeedsUpgrade && !libraryRepositoryPending && !hasOutboxDomain(outbox.value, 'library')) {
+    if (!libraryRepositoryPending && !hasOutboxDomain(outbox.value, 'library')) {
       libraryDirty = false
       return
     }
@@ -1018,7 +1000,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       const result = await writeCloudLibraryChunksV5(requireCloudFirestore(), uid, library, knownLibraryHashes, knownLibraryRevision, (batch) => {
         if (!isCurrentSync(uid, epoch))
           return
-        updateProgress({ phase: 'uploading', message: i18n.global.t('sync.uploadingLibrary'), direction: 'upload', completed: batch.completed, total: batch.total, currentBatch: batch.currentBatch, totalBatches: batch.totalBatches })
+        updateProgress({ phase: 'uploading', message: i18n.global.t('sync.uploadingLibrary'), direction: 'upload', completed: batch.completed, total: batch.total, currentBatch: batch.currentBatch, totalBatches: batch.totalBatches, activeRequests: batch.activeRequests ?? 0 })
       })
       if (!isCurrentSync(uid, epoch))
         return
@@ -1051,8 +1033,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         updatedAt: library.updatedAt,
         hashes: Object.fromEntries(result.hashes),
       })
+      const committedHead = currentSyncHead(uid)
+      await persistSyncHead(committedHead)
+      cloudSyncHeadExists = true
+      acknowledgedSyncHead = committedHead
+      pendingSyncHead = null
       libraryDirty = false
-      libraryNeedsUpgrade = false
       libraryRepositoryPending = false
       await saveToStorage(LIBRARY_SYNC_PENDING_STORAGE_KEY, '')
       replaceOutbox(removeOutboxDomain(outbox.value, 'library'))
@@ -1062,7 +1048,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     catch (syncError) {
       if (!isCurrentSync(uid, epoch))
         return
-      replaceOutbox(incrementOutboxAttempts(outbox.value, 'library'))
+      replaceOutbox(incrementOutboxAttempts(outbox.value, 'library', new Date().toISOString(), syncErrorDetails(syncError).code))
       handleSyncError(syncError)
     }
   }
@@ -1105,6 +1091,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       if (result.changed)
         knownAiSettingsHash = result.hash
+      const committedHead = currentSyncHead(uid)
+      await persistSyncHead(committedHead)
+      cloudSyncHeadExists = true
+      acknowledgedSyncHead = committedHead
+      pendingSyncHead = null
       aiSettingsDirty = false
       baselineAiSettingsRecords = settingsRecords(loadAiSettings())
       observedAiSettingsRecords = baselineAiSettingsRecords
@@ -1115,7 +1106,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     catch (syncError) {
       if (!isCurrentSync(uid, epoch))
         return
-      replaceOutbox(incrementOutboxAttempts(outbox.value, 'settings'))
+      replaceOutbox(incrementOutboxAttempts(outbox.value, 'settings', new Date().toISOString(), syncErrorDetails(syncError).code))
       handleSyncError(syncError)
     }
   }
@@ -1125,21 +1116,26 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       return
     const uid = user.value.uid
     const epoch = realtimeEpoch
-    // Domain writes are intentionally ordered. Library first establishes the
-    // vocabulary baseline used by learning, then settings are committed last.
+    const retryAt = nextOutboxRetryAt(outbox.value)
+    if (retryAt !== null) {
+      const delay = Math.max(0, retryAt - Date.now())
+      setStatus('retrying')
+      setProgressPhase('retrying', i18n.global.t('sync.retryingWithDelay', { delay }), { direction: 'upload', retryAttempt: 0, maxRetryAttempts: 5, activeRequests: 0, stalled: false, retryable: true })
+      while (Date.now() < retryAt) {
+        if (!isCurrentSync(uid, epoch) || !isOnline.value || manualOfflineMode || visibility.value !== 'visible')
+          return
+        await new Promise(resolve => setTimeout(resolve, Math.min(100, retryAt - Date.now())))
+      }
+    }
+    // Library first establishes the vocabulary baseline. Learning and settings
+    // are independent v5 documents and can commit in parallel.
     await flushLibrary()
     if (!isCurrentSync(uid, epoch))
       return
     const afterLibraryStatus = status.value
-    if (afterLibraryStatus === 'error' || libraryDirty || libraryRepositoryPending || libraryNeedsUpgrade || hasOutboxDomain(outbox.value, 'library'))
+    if (afterLibraryStatus === 'error' || libraryDirty || libraryRepositoryPending || hasOutboxDomain(outbox.value, 'library'))
       return
-    await flushLearning()
-    if (!isCurrentSync(uid, epoch))
-      return
-    const afterLearningStatus = status.value
-    if (afterLearningStatus === 'error' || learningDirty || hasOutboxDomain(outbox.value, 'learning'))
-      return
-    await flushAiSettings()
+    await Promise.all([flushLearning(), flushAiSettings()])
   }
 
   function enqueueSync(operation: () => Promise<void>): Promise<void> {
@@ -1165,6 +1161,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     observedLibraryRecords = current
     replaceOutbox(next)
     libraryDirty = hasOutboxDomain(next, 'library')
+  }
+
+  function libraryMutationRecordKey(change: LibraryMutationChange): string {
+    return `${change.kind}:${change.id}`
+  }
+
+  function applyLocalLibraryMutationChanges(changes: readonly LibraryMutationChange[]) {
+    const next = { ...observedLibraryRecords }
+    for (const change of changes) {
+      const recordKey = libraryMutationRecordKey(change)
+      if (change.value === null)
+        delete next[recordKey]
+      else
+        next[recordKey] = change.value
+    }
+    applyLocalLibraryRecords(next)
   }
 
   function applyLocalLearningRecords() {
@@ -1217,12 +1229,19 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         if (!isCurrentSync(uid, epoch))
           return
         const repository = getLibraryRepository()
-        const currentState = libraryStore.fullyHydrated
-          ? libraryStore.state
-          : await repository.loadState()
-        if (!isCurrentSync(uid, epoch))
-          return
-        applyLocalLibraryRecords(libraryRecords(currentState))
+        const journal = repository.consumeMutationJournal(libraryMutationVersion)
+        if (journal.complete && journal.changes.length > 0) {
+          applyLocalLibraryMutationChanges(journal.changes)
+        }
+        else if (!journal.complete) {
+          const currentState = libraryStore.fullyHydrated
+            ? libraryStore.state
+            : await repository.loadState()
+          if (!isCurrentSync(uid, epoch))
+            return
+          applyLocalLibraryRecords(libraryRecords(currentState))
+        }
+        libraryMutationVersion = journal.version
       })
     libraryChangeQueue = run
     void run.catch((syncError) => {
@@ -1249,9 +1268,10 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
   }
 
-  async function syncNow(): Promise<boolean> {
+  async function syncNowOnce(): Promise<boolean> {
     if (!user.value)
       return waitForLocalPersistence()
+    lastSyncFailure = null
     const syncUid = user.value.uid
     const syncEpoch = realtimeEpoch
     await loadLibraryRepositoryPending(() => isCurrentSync(syncUid, syncEpoch))
@@ -1276,8 +1296,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     await libraryChangeQueue.catch(() => undefined)
     if (!isCurrentSync(syncUid, syncEpoch))
       return false
-    if (!allInitialBaselinesReady())
-      return false
+    if (!allInitialBaselinesReady()) {
+      if (baselineSyncWork)
+        await baselineSyncWork
+      else if (realtimeUid !== syncUid || !syncHeadUnsubscribe)
+        await startRealtime(syncUid)
+      if (!isCurrentSync(syncUid, syncEpoch) || !allInitialBaselinesReady())
+        return false
+    }
     if (!await waitForLocalPersistence())
       return false
     if (!isCurrentSync(syncUid, syncEpoch))
@@ -1290,10 +1316,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       if (pendingRemoteDomains.has('learning') || pendingRemoteDomains.has('settings')) {
         setProgressPhase('downloading', i18n.global.t('sync.downloading'), { direction: 'download' })
-        await refreshSecondaryRemote(syncUid, () => isCurrentSync(syncUid, syncEpoch))
+        await refreshSecondaryRemote(syncUid, {
+          learning: pendingRemoteDomains.has('learning'),
+          settings: pendingRemoteDomains.has('settings'),
+        }, () => isCurrentSync(syncUid, syncEpoch))
       }
       await flushAll()
     })
+    if (!isCurrentSync(syncUid, syncEpoch))
+      return false
+    if (pendingSyncHead && pendingWrites.value === 0 && !libraryRepositoryPending && !libraryDirty && !learningDirty && !aiSettingsDirty && outbox.value.length === 0) {
+      const settledHead = pendingSyncHead
+      await persistSyncHead(settledHead)
+      acknowledgedSyncHead = settledHead
+      pendingSyncHead = null
+    }
+    await ensureCloudSyncHead(syncUid, syncEpoch)
     if (!isCurrentSync(syncUid, syncEpoch))
       return false
     if (status.value === 'error'
@@ -1314,20 +1352,73 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     return true
   }
 
-  async function syncCommittedChange(): Promise<boolean> {
-    if (!user.value)
-      return syncNow()
-    operationBlocked.value = true
-    const synced = await syncNow()
-    if (synced && status.value === 'synced')
-      operationBlocked.value = false
-    else if (!synced && status.value !== 'error' && status.value !== 'offline')
-      setError(new Error('Cloud synchronization did not complete'))
-    return synced
+  async function syncNow(): Promise<boolean> {
+    if (!user.value || !isOnline.value || manualOfflineMode)
+      return syncNowOnce()
+    if (syncNowFlight)
+      return syncNowFlight
+    const syncUid = user.value.uid
+    const syncEpoch = realtimeEpoch
+    const work = runSyncWithRetry(`cloud-sync:${syncUid}:${syncEpoch}`, async (attempt) => {
+      if (attempt > 1) {
+        setStatus('retrying')
+        setProgressPhase('retrying', i18n.global.t('sync.retrying'), { direction: 'upload', retryAttempt: attempt - 1, maxRetryAttempts: 5, stalled: false, activeRequests: 1, retryable: true })
+      }
+      const synced = await syncNowOnce()
+      if (!synced && lastSyncFailure && isRetryableSyncError(lastSyncFailure))
+        throw lastSyncFailure
+      return synced
+    }, {
+      maxAttempts: 6,
+      shouldContinue: () => {
+        const canContinue = isCurrentSync(syncUid, syncEpoch) && isOnline.value && !manualOfflineMode && visibility.value === 'visible'
+        return canContinue
+      },
+      onAttemptStart: attempt => updateProgress({ retryAttempt: Math.max(0, attempt - 1), maxRetryAttempts: 5, activeRequests: 1, stalled: false }),
+      onStalled: (attempt) => {
+        setStatus('retrying')
+        updateProgress({ phase: 'retrying', message: i18n.global.t('sync.stalled'), retryAttempt: Math.max(0, attempt - 1), maxRetryAttempts: 5, stalled: true, activeRequests: 1, retryable: true })
+      },
+      onRetry: (attempt, delayMs) => {
+        setStatus('retrying')
+        setProgressPhase('retrying', i18n.global.t('sync.retryingWithDelay', { delay: delayMs }), { direction: 'upload', retryAttempt: attempt, maxRetryAttempts: 5, stalled: false, activeRequests: 0, retryable: true })
+      },
+    }).catch((syncError) => {
+      if (syncError instanceof SyncRetryPausedError)
+        return false
+      throw syncError
+    })
+    syncNowFlight = work
+    void work.finally(() => {
+      if (syncNowFlight === work)
+        syncNowFlight = null
+    }).catch(() => undefined)
+    return work
+  }
+
+  function syncCommittedChange(): Promise<boolean> {
+    if (committedChangeFlight)
+      return committedChangeFlight
+    const work = (async () => {
+      if (user.value)
+        operationBlocked.value = true
+      const synced = await syncNow()
+      if (synced && status.value === 'synced')
+        operationBlocked.value = false
+      else if (!synced && status.value !== 'error' && status.value !== 'offline')
+        setError(new Error('Cloud synchronization did not complete'))
+      return synced
+    })()
+    committedChangeFlight = work
+    void work.finally(() => {
+      if (committedChangeFlight === work)
+        committedChangeFlight = null
+    }).catch(() => undefined)
+    return work
   }
 
   async function startRealtime(uid: string) {
-    if (realtimeUid === uid && libraryUnsubscribe && progressUnsubscribe && statsUnsubscribe && aiSettingsUnsubscribe)
+    if (realtimeUid === uid && syncHeadUnsubscribe && allInitialBaselinesReady())
       return
     clearListeners()
     libraryBaselineReady = false
@@ -1340,7 +1431,6 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     knownLibraryRevision = ''
     pendingRemoteDomains.clear()
     remoteUpdateAvailable.value = false
-    libraryNeedsUpgrade = false
     initialSnapshotObserved = false
     knownProgressHash = ''
     knownStatsHash = ''
@@ -1353,6 +1443,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     observedAiSettingsRecords = {}
     knownAiSettingsHash = ''
     const libraryStore = useLibraryStore()
+    libraryMutationVersion = getLibraryRepository().currentMutationVersion()
     baselineLibraryRecords = libraryRecords(libraryStore.state)
     observedLibraryRecords = baselineLibraryRecords
     observedLibraryHydrationVersion = libraryStore.hydrationVersion
@@ -1365,27 +1456,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     initialRealtimeLoading = true
     const epoch = realtimeEpoch
     setStatus('connecting')
-    setProgressPhase('downloading', i18n.global.t('sync.fetchingManifest'), { direction: 'download', retryable: false })
+    setProgressPhase('preparing', i18n.global.t('sync.connecting'), { direction: 'download', retryable: false })
+    const baselineWork = startSyncHead(uid)
+    baselineSyncWork = baselineWork
     try {
-      // Initial reads are deliberately ordered: the Library manifest and
-      // chunks establish the vocabulary baseline before learning and settings
-      // are reconciled. Each listener remains active for later updates.
-      await applyRemoteLibraryChanges(uid)
-      if (epoch !== realtimeEpoch)
-        return
-      // Learning and AI settings are independent remote domains. Start both
-      // listeners after the library baseline is ready so their first reads and
-      // reconciliation can overlap without changing the library-first rule.
-      await Promise.all([
-        applyRemoteLearningChanges(uid),
-        applyRemoteAiSettingsChanges(uid),
-      ])
+      // The head is the only realtime listener. Domain documents are fetched
+      // once when a head revision changes, so opening the app never re-reads
+      // an unchanged library.
+      await baselineWork
     }
     catch (syncError) {
       if (epoch === realtimeEpoch)
         handleSyncError(syncError)
     }
     finally {
+      if (baselineSyncWork === baselineWork)
+        baselineSyncWork = null
       if (epoch === realtimeEpoch)
         initialRealtimeLoading = false
     }
@@ -1406,7 +1492,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       await startAccountSync(user.value.uid)
       return
     }
-    if (operationBlocked.value) {
+    if (operationBlocked.value || status.value === 'error' || remoteUpdateAvailable.value || hasPendingLocalChanges()) {
       const synced = await syncNow()
       if (synced && status.value === 'synced')
         operationBlocked.value = false
@@ -1459,7 +1545,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       if (pageVisibility === 'visible' && realtimeUid !== user.value.uid)
         void startAccountSync(user.value.uid)
     })
-    watch([isOnline, appReady], () => scheduleRemoteSync())
+    watch([isOnline, appReady, visibility], () => scheduleRemoteSync())
   }
 
   async function applyAuthState(nextUser: User | null) {
@@ -1486,7 +1572,6 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownStatsHash = ''
         knownLibraryHashes.clear()
         knownLibraryRevision = ''
-        libraryNeedsUpgrade = false
         aiSettingsBaselineReady = false
         aiSettingsDirty = false
         baselineAiSettingsRecords = {}

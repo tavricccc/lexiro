@@ -79,7 +79,7 @@ describe('sync outbox', () => {
     expect(reverted).toEqual([])
   })
 
-  it('keeps unsynced local records ahead of conflicting Cloud values', () => {
+  it('lets Cloud win when a queued record conflicts', () => {
     const entries = queueRecordChanges(
       'library',
       { 'word:a': { value: 1 }, 'word:b': { value: 1 } },
@@ -94,8 +94,8 @@ describe('sync outbox', () => {
     )
 
     expect(result.records['word:a']).toEqual({ value: 2 })
-    expect(result.records['word:b']).toEqual({ value: 2 })
-    expect(result.accepted.map(entry => entry.recordKey)).toEqual(['word:a', 'word:b'])
+    expect(result.records['word:b']).toEqual({ value: 9 })
+    expect(result.accepted.map(entry => entry.recordKey)).toEqual(['word:a'])
     expect(result.conflicted.map(entry => entry.recordKey)).toEqual(['word:b'])
   })
 
@@ -120,6 +120,20 @@ describe('sync outbox', () => {
 
     expect(hasOutboxDomain(withLearning, 'learning')).toBe(true)
     expect(removeOutboxDomain(withLearning, 'library')).toHaveLength(1)
-    expect(incrementOutboxAttempts(withLearning, 'library', '2026-08-02T00:00:00.000Z')[0]).toMatchObject({ attempts: 1, updatedAt: '2026-08-02T00:00:00.000Z' })
+    expect(incrementOutboxAttempts(withLearning, 'library', '2026-08-02T00:00:00.000Z')[0]).toMatchObject({
+      attempts: 1,
+      updatedAt: '2026-08-02T00:00:00.000Z',
+      nextAttemptAt: '2026-08-02T00:00:00.250Z',
+    })
+  })
+
+  it('resets retry metadata when a pending record receives a newer local edit', () => {
+    const first = queueRecordChanges('library', { 'word:a': { value: 0 } }, { 'word:a': { value: 0 } }, { 'word:a': { value: 1 } }, [])
+    const failed = incrementOutboxAttempts(first, 'library', '2026-08-02T00:00:00.000Z', 'network')
+    const next = queueRecordChanges('library', { 'word:a': { value: 0 } }, { 'word:a': { value: 1 } }, { 'word:a': { value: 2 } }, failed)
+
+    expect(next[0]).toMatchObject({ attempts: 0 })
+    expect(next[0]).not.toHaveProperty('nextAttemptAt')
+    expect(next[0]).not.toHaveProperty('lastErrorCode')
   })
 })

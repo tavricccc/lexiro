@@ -56,7 +56,7 @@ rulesDescribe('Firestore security rules', () => {
     await assertFails(alice.doc('users/alice/library/chunk-1234abcd').set({ ownerId: 'alice', schemaVersion: 5, chunkId: 'chunk-1234abcd', section: 'sets', items: [], unexpected: true }))
   })
 
-  it('rejects legacy v4 library writes while allowing authenticated reads', async () => {
+  it('rejects non-v5 library writes', async () => {
     const alice = testEnv.authenticatedContext('alice').firestore()
     const payload = {
       ownerId: 'alice',
@@ -114,19 +114,35 @@ rulesDescribe('Firestore security rules', () => {
       cards: {},
       updatedAt: timestamp,
       ownerId: 'alice',
-      schemaVersion: 4,
+      schemaVersion: 5,
     }))
     await assertSucceeds(alice.doc('users/alice/stats/summary').set({
       ...createDefaultStats(),
       updatedAt: timestamp,
       ownerId: 'alice',
-      schemaVersion: 4,
+      schemaVersion: 5,
     }))
     await assertSucceeds(alice.doc('users/alice/settings/ai').set({
       ...getShareableAiSettings(defaultAiSettings),
       updatedAt: timestamp,
       ownerId: 'alice',
-      schemaVersion: 4,
+      schemaVersion: 5,
     }))
+  })
+
+  it('accepts a v5 sync head and rejects unknown fields', async () => {
+    const alice = testEnv.authenticatedContext('alice').firestore()
+    const payload = {
+      ownerId: 'alice',
+      schemaVersion: 5,
+      updatedAt: '2026-08-02T00:00:00.000Z',
+      libraryRevision: 'library-revision',
+      progressHash: 'progress-hash',
+      statsHash: 'stats-hash',
+      settingsHash: 'settings-hash',
+    }
+    await assertSucceeds(alice.doc('users/alice/sync/head').set(payload))
+    await assertFails(alice.doc('users/alice/sync/head').update({ schemaVersion: 4 }))
+    await assertFails(alice.doc('users/alice/sync/head').set({ ...payload, extra: true }))
   })
 })

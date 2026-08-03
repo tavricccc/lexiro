@@ -33,10 +33,13 @@ const transferDirty = computed(() => transferOpen.value && Boolean(zipImportName
 const appliedLocally = ref(false)
 const saving = ref(false)
 const transferFolderDraft = ref(transferFolderId.value)
+const activeMode = ref<'import' | 'export'>('import')
 
 watch(transferOpen, (open) => {
-  if (open)
+  if (open) {
     transferFolderDraft.value = transferFolderId.value
+    activeMode.value = 'import'
+  }
 })
 
 async function saveTransfer(): Promise<boolean> {
@@ -99,7 +102,32 @@ async function requestTransferClose() {
     @close="requestTransferClose"
   >
     <div class="space-y-4">
-      <SectionPanel>
+      <div class="grid grid-cols-2 gap-1 rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70" role="tablist" :aria-label="$t('backup.title')">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="activeMode === 'import'"
+          class="flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition-colors"
+          :class="activeMode === 'import' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
+          @click="activeMode = 'import'"
+        >
+          <Upload class="h-4 w-4" aria-hidden="true" />
+          {{ $t('backup.importZip') }}
+        </button>
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="activeMode === 'export'"
+          class="flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition-colors"
+          :class="activeMode === 'export' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
+          @click="activeMode = 'export'"
+        >
+          <Download class="h-4 w-4" aria-hidden="true" />
+          {{ $t('backup.exportSection') }}
+        </button>
+      </div>
+
+      <SectionPanel v-if="activeMode === 'import'" role="tabpanel">
         <div class="flex items-start justify-between gap-4">
           <div class="flex items-start gap-3">
             <FileArchive class="mt-0.5 h-5 w-5 text-accent-primary" />
@@ -146,7 +174,7 @@ async function requestTransferClose() {
         </div>
       </SectionPanel>
 
-      <SectionPanel>
+      <SectionPanel v-else role="tabpanel">
         <div class="flex items-start gap-3">
           <Download class="mt-0.5 h-5 w-5 text-accent-primary" />
           <div>

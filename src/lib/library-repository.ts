@@ -1,5 +1,5 @@
 import type { FirestoreLibraryChunk, FirestoreLibraryV5Chunk, LibraryIndex, LibraryQuestion, LibrarySearchEntry, LibrarySet, LibrarySetSummary, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
-import { del, get, keys, set, setMany } from 'idb-keyval'
+import { get, keys, set, setMany } from 'idb-keyval'
 import { LIBRARY_STORAGE_KEY } from '@/constants'
 import { cloneJson } from './clone'
 import { ALL_FOLDER_ID, createUncategorizedFolder, sortFolders, UNCATEGORIZED_FOLDER_ID } from './folders'
@@ -19,6 +19,18 @@ export interface LibraryRepositoryRecord {
   kind: LibraryRecordKind
   id: string
   value: VocabFolder | LibrarySet | SetMembership[] | WordEntry | LibraryQuestion
+}
+
+export interface LibraryMutationChange {
+  kind: LibraryRecordKind
+  id: string
+  value: LibraryRepositoryRecord['value'] | null
+}
+
+export interface LibraryMutationJournal {
+  version: number
+  complete: boolean
+  changes: LibraryMutationChange[]
 }
 
 export interface LibrarySetPayload {
@@ -315,6 +327,9 @@ export class LibraryRepository {
   private commitQueue: Promise<unknown> = Promise.resolve()
   private readonly payloadCache = new Map<string, LibrarySetPayload>()
   private readonly pendingLoads = new Map<string, { promise: Promise<LibrarySetPayload>, controller: AbortController, waiters: number }>()
+  private committedRecords: Map<string, LibraryRepositoryRecord['value']> | null = null
+  private mutationVersion = 0
+  private mutationJournal: Array<{ version: number, change: LibraryMutationChange }> = []
 
   constructor(namespace = getStorageNamespace()) {
     this.namespace = namespace.trim() || 'guest'
@@ -444,7 +459,7 @@ export class LibraryRepository {
    * that case the staging manifest and per-record checksums are enough to
    * rebuild the index without trusting the damaged index value.
    */
-  private async recoverLatestGeneration(preferredGeneration = ''): Promise<LibraryIndex | null> {
+  private async recoverLatestGeneration(preferredGeneration = '', preferredUpdatedAt = ''): Promise<LibraryIndex | null> {
     const keyPrefix = `${this.prefix}:`
     const indexSuffix = ':index'
     const stagingSuffix = ':staging'
@@ -495,7 +510,15 @@ export class LibraryRepository {
         // fallback until a generation is successfully activated.
       }
     }
-    valid.sort((left, right) => left.updatedAt.localeCompare(right.updatedAt) || left.generation.localeCompare(right.generation))
+    valid.sort((left, right) => {
+      const preferredGenerationRank = Number(left.generation === preferredGeneration) - Number(right.generation === preferredGeneration)
+      if (preferredGenerationRank)
+        return preferredGenerationRank
+      const preferredUpdatedAtRank = Number(left.updatedAt === preferredUpdatedAt) - Number(right.updatedAt === preferredUpdatedAt)
+      if (preferredUpdatedAtRank)
+        return preferredUpdatedAtRank
+      return left.updatedAt.localeCompare(right.updatedAt) || left.generation.localeCompare(right.generation)
+    })
     const recovered = valid.at(-1)
     if (!recovered)
       return null
@@ -524,7 +547,7 @@ export class LibraryRepository {
         return cloneJson(index)
       }
     }
-    const recovered = await this.recoverLatestGeneration(marker?.generation)
+    const recovered = await this.recoverLatestGeneration(marker?.generation, marker?.updatedAt)
     if (recovered) {
       this.activeIndex = recovered
       await this.clearLegacyStorage()
@@ -561,7 +584,60 @@ export class LibraryRepository {
           state.questions = [...state.questions.filter(question => question.id !== entry.id), cloneJson(entry.value as LibraryQuestion)]
       }
     }
-    return normalizeLibraryState(state)
+    const normalized = normalizeLibraryState(state)
+    this.committedRecords = new Map(recordEntries(normalizeCollections(normalized)).map(entry => [`${entry.kind}:${entry.id}`, cloneJson(entry.value)]))
+    return normalized
+  }
+
+  currentMutationVersion(): number {
+    return this.mutationVersion
+  }
+
+  consumeMutationJournal(sinceVersion: number): LibraryMutationJournal {
+    if (sinceVersion >= this.mutationVersion)
+      return { version: this.mutationVersion, complete: true, changes: [] }
+    const firstVersion = this.mutationJournal[0]?.version ?? this.mutationVersion + 1
+    if (sinceVersion < firstVersion - 1)
+      return { version: this.mutationVersion, complete: false, changes: [] }
+    return {
+      version: this.mutationVersion,
+      complete: true,
+      changes: this.mutationJournal.filter(entry => entry.version > sinceVersion).map(entry => cloneJson(entry.change)),
+    }
+  }
+
+  private recordMap(entries: readonly LibraryRepositoryRecord[]): Map<string, LibraryRepositoryRecord['value']> {
+    return new Map(entries.map(entry => [`${entry.kind}:${entry.id}`, cloneJson(entry.value)]))
+  }
+
+  private appendMutationJournal(previous: Map<string, LibraryRepositoryRecord['value']>, next: Map<string, LibraryRepositoryRecord['value']>): void {
+    const keys = new Set([...previous.keys(), ...next.keys()])
+    for (const key of keys) {
+      const previousValue = previous.get(key)
+      const nextValue = next.get(key)
+      if (canonicalHash(previousValue ?? null) === canonicalHash(nextValue ?? null))
+        continue
+      const separator = key.indexOf(':')
+      const change: LibraryMutationChange = {
+        kind: key.slice(0, separator) as LibraryRecordKind,
+        id: key.slice(separator + 1),
+        value: nextValue === undefined ? null : cloneJson(nextValue),
+      }
+      this.mutationVersion += 1
+      this.mutationJournal.push({ version: this.mutationVersion, change })
+    }
+    while (this.mutationJournal.length > 4096)
+      this.mutationJournal.shift()
+    this.committedRecords = next
+  }
+
+  private async ensureCommittedRecords(migrated: boolean): Promise<Map<string, LibraryRepositoryRecord['value']>> {
+    if (this.committedRecords)
+      return new Map(this.committedRecords)
+    if (migrated)
+      return new Map()
+    const state = await this.loadState()
+    return new Map(recordEntries(normalizeCollections(state)).map(entry => [`${entry.kind}:${entry.id}`, cloneJson(entry.value)]))
   }
 
   async listFolderPage(folderId = ALL_FOLDER_ID, page = 0, pageSize = LIBRARY_PAGE_SIZE): Promise<LibraryFolderPage> {
@@ -737,7 +813,10 @@ export class LibraryRepository {
     const next: RemoteLibrarySyncState = { schemaVersion: 1, ...cloneJson(state) }
     const staleIds = Object.keys(previous?.hashes ?? {}).filter(chunkId => !Object.hasOwn(next.hashes, chunkId))
     await set(this.remoteSyncStateKey(), next)
-    await Promise.all(staleIds.map(chunkId => del(this.remoteCacheChunkKey(chunkId))))
+    // Some browser adapters do not expose idb-keyval's optional `del` export.
+    // Tombstones are treated as cache misses and avoid turning cache eviction
+    // into a sync failure; the next write reuses the same key.
+    await Promise.all(staleIds.map(chunkId => set(this.remoteCacheChunkKey(chunkId), null)))
   }
 
   clearPayloadCache(): void {
@@ -873,6 +952,7 @@ export class LibraryRepository {
 
   private async commitRecordsInternal(records: LibraryCommitInput, migrated: boolean): Promise<LibraryCommitResult> {
     this.clearPayloadCache()
+    const previousRecords = await this.ensureCommittedRecords(migrated)
     let collections: LibraryCollections
     if (Array.isArray(records)) {
       collections = normalizeCollections(mergeRecordEntries(await this.loadCollections(), records))
@@ -918,6 +998,7 @@ export class LibraryRepository {
     const marker: ActiveGeneration = { schemaVersion: LIBRARY_REPOSITORY_SCHEMA_VERSION, generation, updatedAt: collections.updatedAt, indexChecksum: canonicalHash(index) }
     await set(this.activeKey(), marker)
     this.activeIndex = index
+    this.appendMutationJournal(previousRecords, this.recordMap(entries))
     return { ...cloneJson(index), migrated }
   }
 
@@ -1066,6 +1147,7 @@ export class LibraryRepository {
       [this.activeKey(), marker],
     ])
     this.activeIndex = nextIndex
+    this.committedRecords = this.recordMap(recordEntries(stagedCollections))
     this.clearPayloadCache()
     return cloneJson(nextIndex)
   }

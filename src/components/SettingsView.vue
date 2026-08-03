@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Check, Cloud, Download, KeyRound, LockKeyhole, LogIn, LogOut, Save, Upload, UserRound } from 'lucide-vue-next'
+import { Check, Cloud, Download, KeyRound, LockKeyhole, LogIn, LogOut, Save, Settings2, Upload, UserRound } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -12,6 +12,7 @@ import { useLearningStore } from '@/stores/learning'
 import { useUIStore } from '@/stores/ui'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
+import Dialog from './ui/dialog/Dialog.vue'
 import Input from './ui/input/Input.vue'
 import Select from './ui/select/Select.vue'
 import SyncProgress from './ui/sync-progress/SyncProgress.vue'
@@ -27,11 +28,11 @@ const statusLabel = computed(() => {
     return t('sync.notConfigured')
   if (status.value === 'signed-out')
     return t('sync.signedOut')
-  if (['preparing', 'downloading', 'reconciling', 'uploading', 'verifying'].includes(status.value))
+  if (['preparing', 'downloading', 'reconciling', 'uploading', 'retrying', 'verifying'].includes(status.value))
     return t(`sync.phase.${status.value}`)
   return t(`sync.${status.value}`)
 })
-const isSyncing = computed(() => ['connecting', 'preparing', 'downloading', 'reconciling', 'uploading', 'verifying', 'syncing'].includes(status.value))
+const isSyncing = computed(() => ['connecting', 'preparing', 'downloading', 'reconciling', 'uploading', 'retrying', 'verifying', 'syncing'].includes(status.value))
 const settings = reactive({ ...loadAiSettings() })
 const initialSettingsSnapshot = ref(JSON.stringify(settings))
 const saved = ref(false)
@@ -42,6 +43,7 @@ const initialDailyTargetsSnapshot = ref(`${dailyWordGoalDraft.value}:${dailyQues
 const dailySaved = ref(false)
 const pendingDailySave = ref(false)
 const aiImportInput = ref<HTMLInputElement | null>(null)
+const aiTransferOpen = ref(false)
 const dailyTargetsDirty = computed(() => `${dailyWordGoalDraft.value}:${dailyQuestionGoalDraft.value}` !== initialDailyTargetsSnapshot.value)
 const dailyWordGoalOptions = computed(() => DAILY_WORD_GOAL_OPTIONS.map(value => ({ value: String(value), label: t('settings.dailyWordOption', { value }) })))
 const dailyQuestionGoalOptions = computed(() => DAILY_QUESTION_GOAL_OPTIONS.map(value => ({ value: String(value), label: t('settings.dailyQuestionOption', { value }) })))
@@ -133,10 +135,12 @@ function updateBatchSize(value: string) {
 
 function exportAiSettings() {
   downloadAiSettings(JSON.parse(initialSettingsSnapshot.value))
+  aiTransferOpen.value = false
   uiStore.showToast(t('settings.aiExported'))
 }
 
 function openAiImport() {
+  aiTransferOpen.value = false
   aiImportInput.value?.click()
 }
 
@@ -231,13 +235,8 @@ async function signIn() {
         <Button variant="ghost" :disabled="pendingAiSave" @click="reset">
           {{ $t('settings.reset') }}
         </Button>
-        <Button variant="outline" class="gap-2" @click="exportAiSettings">
-          <Download class="h-4 w-4" />
-          <span>{{ $t('settings.aiExport') }}</span>
-        </Button>
-        <Button variant="outline" class="gap-2" :disabled="pendingAiSave" @click="openAiImport">
-          <Upload class="h-4 w-4" />
-          <span>{{ $t('settings.aiImport') }}</span>
+        <Button variant="outline" size="icon" :aria-label="$t('settings.aiTransfer')" @click="aiTransferOpen = true">
+          <Settings2 class="h-4 w-4" />
         </Button>
         <input ref="aiImportInput" type="file" accept="application/json,.json" class="hidden" :disabled="pendingAiSave" @change="importAiSettings">
         <span v-if="saved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600">
@@ -249,6 +248,18 @@ async function signIn() {
         <LockKeyhole class="mt-0.5 h-4 w-4 shrink-0" />
         <span>{{ $t('settings.keySafety') }}</span>
       </div>
+      <Dialog :open="aiTransferOpen" :title="$t('settings.aiTransferTitle')" :description="$t('settings.aiTransferDescription')" width-class="max-w-sm" @close="aiTransferOpen = false">
+        <div class="grid gap-2">
+          <Button variant="outline" class="w-full justify-start gap-3" @click="exportAiSettings">
+            <Download class="h-4 w-4 text-accent-primary" />
+            <span>{{ $t('settings.aiExport') }}</span>
+          </Button>
+          <Button variant="outline" class="w-full justify-start gap-3" :disabled="pendingAiSave" @click="openAiImport">
+            <Upload class="h-4 w-4 text-accent-primary" />
+            <span>{{ $t('settings.aiImport') }}</span>
+          </Button>
+        </div>
+      </Dialog>
     </Card>
     <Card class="p-4 sm:p-5">
       <div class="flex items-start gap-4">

@@ -1,7 +1,7 @@
 import type { FirestoreLibraryV5Chunk, LibraryState } from '@/types'
 import { describe, expect, it } from 'vitest'
 import { MAX_LIBRARY_CHUNK_BYTES, MAX_LIBRARY_MANIFEST_BYTES } from '@/constants/cloud'
-import { buildLibraryChunks, buildLibraryManifest, buildV5LibraryChunks, buildV5LibraryManifestDocuments, combineLibraryChunks, normalizeCloudAiSettings, validateLibraryChunk, validateLibraryManifest, validateV5LibraryManifest, validateV5LibraryManifestPart } from '@/lib/cloud-sync-schema'
+import { buildV5LibraryChunks, buildV5LibraryManifest, buildV5LibraryManifestDocuments, combineV5LibraryChunks, normalizeCloudAiSettings, validateCloudSyncHead, validateV5LibraryChunk, validateV5LibraryManifest, validateV5LibraryManifestPart } from '@/lib/cloud-sync-schema'
 import { createUncategorizedFolder } from '@/lib/folders'
 
 const library: LibraryState = {
@@ -15,34 +15,45 @@ const library: LibraryState = {
 }
 
 describe('cloud sync schema', () => {
-  it('round-trips the canonical library through empty-section chunks', () => {
-    const chunks = buildLibraryChunks('user-1', library)
+  it('accepts only exact v5 sync heads', () => {
+    const head = {
+      ownerId: 'user-1',
+      schemaVersion: 5,
+      updatedAt: library.updatedAt,
+      libraryRevision: 'library-revision',
+      progressHash: 'progress-hash',
+      statsHash: 'stats-hash',
+      settingsHash: 'settings-hash',
+    }
 
-    expect(chunks.map(chunk => chunk.chunkId)).toEqual([
-      'words-001',
-      'sets-001',
-      'memberships-001',
-      'folders-001',
-      'questions-001',
-    ])
-    expect(chunks.every(chunk => chunk.schemaVersion === 4)).toBe(true)
-    expect(combineLibraryChunks(chunks)).toEqual(library)
+    expect(validateCloudSyncHead(head, 'user-1')).toEqual(head)
+    expect(() => validateCloudSyncHead({ ...head, schemaVersion: 4 }, 'user-1')).toThrow('schema')
+    expect(() => validateCloudSyncHead({ ...head, unexpected: true }, 'user-1')).toThrow('schema')
+  })
+
+  it('round-trips the canonical library through empty-section chunks', () => {
+    const chunks = buildV5LibraryChunks('user-1', library)
+
+    expect(chunks.map(chunk => chunk.section)).toEqual(['words', 'sets', 'memberships', 'folders', 'questions'])
+    expect(chunks.every(chunk => chunk.schemaVersion === 5)).toBe(true)
+    expect(combineV5LibraryChunks(chunks)).toEqual(library)
   })
 
   it('validates chunk ownership and checksums before combining', () => {
-    const chunk = buildLibraryChunks('user-1', library)[0]
+    const chunk = buildV5LibraryChunks('user-1', library)[0]
 
-    expect(validateLibraryChunk(chunk, 'user-1', chunk.chunkId)).toEqual(chunk)
-    expect(() => validateLibraryChunk(chunk, 'other-user', chunk.chunkId)).toThrow('schema')
-    expect(() => validateLibraryChunk({ ...chunk, checksum: 'tampered' }, 'user-1', chunk.chunkId)).toThrow('checksum')
+    expect(validateV5LibraryChunk(chunk, 'user-1', chunk.chunkId)).toEqual(chunk)
+    expect(() => validateV5LibraryChunk(chunk, 'other-user', chunk.chunkId)).toThrow('schema')
+    expect(() => validateV5LibraryChunk({ ...chunk, checksum: 'tampered' }, 'user-1', chunk.chunkId)).toThrow('checksum')
   })
 
   it('binds the complete chunk checksum map to a manifest revision', () => {
-    const chunks = buildLibraryChunks('user-1', library)
-    const manifest = buildLibraryManifest('user-1', chunks, library.updatedAt)
+    const chunks = buildV5LibraryChunks('user-1', library)
+    const manifest = buildV5LibraryManifest('user-1', chunks, library.updatedAt)
 
-    expect(validateLibraryManifest(manifest, 'user-1')).toEqual(manifest)
-    expect(() => validateLibraryManifest({ ...manifest, chunks: { ...manifest.chunks, 'words-001': 'tampered' } }, 'user-1')).toThrow('checksum')
+    expect(validateV5LibraryManifest(manifest, 'user-1')).toEqual(manifest)
+    const firstChunkId = Object.keys(manifest.chunks)[0]
+    expect(() => validateV5LibraryManifest({ ...manifest, chunks: { ...manifest.chunks, [firstChunkId]: 'tampered' } }, 'user-1')).toThrow('checksum')
   })
 
   it('splits an oversized v5 manifest into independently validated parts', () => {
@@ -76,8 +87,8 @@ describe('cloud sync schema', () => {
       sets: [{ id: 'set-1', setName: 'Fresh set', folderId: '__uncategorized__', createdAt: library.updatedAt, updatedAt: library.updatedAt }],
       memberships: { 'set-1': [{ wordKey: 'apple', senseIds: ['sense-1'] }] },
     }
-    const chunk = buildLibraryChunks('user-1', populated).find(item => item.section === 'sets')!
-    const set = chunk.items[0]
+    const chunk = buildV5LibraryChunks('user-1', populated).find(item => item.section === 'sets')!
+    const set = chunk.items[0] as LibraryState['sets'][number]
     const reordered = {
       updatedAt: set.updatedAt,
       setName: set.setName,
@@ -86,14 +97,14 @@ describe('cloud sync schema', () => {
       createdAt: set.createdAt,
     }
 
-    expect(validateLibraryChunk({ ...chunk, items: [reordered] }, 'user-1', chunk.chunkId)).toEqual({ ...chunk, items: [reordered] })
+    expect(validateV5LibraryChunk({ ...chunk, items: [reordered] }, 'user-1', chunk.chunkId)).toEqual({ ...chunk, items: [reordered] })
   })
 
   it('rejects incomplete and mixed-commit chunk collections', () => {
-    const chunks = buildLibraryChunks('user-1', library)
+    const chunks = buildV5LibraryChunks('user-1', library)
 
-    expect(() => combineLibraryChunks(chunks.filter(chunk => chunk.section !== 'memberships'))).toThrow('缺少 memberships')
-    expect(() => combineLibraryChunks(chunks.map((chunk, index) => index === 0 ? { ...chunk, updatedAt: 'later' } : chunk))).toThrow('不屬於同一次提交')
+    expect(() => combineV5LibraryChunks(chunks.filter(chunk => chunk.section !== 'memberships'))).toThrow('缺少 memberships')
+    expect(() => combineV5LibraryChunks(chunks.map((chunk, index) => index === 0 ? { ...chunk, updatedAt: 'later' } : chunk))).toThrow('不屬於同一次提交')
   })
 
   it('writes memberships to Firestore as set records containing member arrays', () => {
@@ -103,14 +114,14 @@ describe('cloud sync schema', () => {
       memberships: { 'set-1': [{ wordKey: 'apple', senseIds: ['sense-1'] }] },
     }
 
-    const chunks = buildLibraryChunks('user-1', populated)
+    const chunks = buildV5LibraryChunks('user-1', populated)
     const membershipChunk = chunks.find(chunk => chunk.section === 'memberships')
 
     expect(membershipChunk?.items).toEqual([{
       setId: 'set-1',
       members: [{ wordKey: 'apple', senseIds: ['sense-1'] }],
     }])
-    expect(combineLibraryChunks(chunks)).toEqual(populated)
+    expect(combineV5LibraryChunks(chunks)).toEqual(populated)
   })
 
   it('rejects an individual record that cannot fit in a Cloud chunk', () => {
@@ -126,13 +137,13 @@ describe('cloud sync schema', () => {
       },
     }
 
-    expect(() => buildLibraryChunks('user-1', oversized)).toThrow('單筆資料超過大小限制')
+    expect(() => buildV5LibraryChunks('user-1', oversized)).toThrow('單筆資料超過大小限制')
   })
 
   it('normalizes Cloud AI settings without accepting a device key', () => {
     expect(normalizeCloudAiSettings({
       ownerId: 'user-1',
-      schemaVersion: 4,
+      schemaVersion: 5,
       enabled: true,
       provider: 'openai',
       baseUrl: '',

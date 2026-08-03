@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { LibrarySetSummary, VocabFolder } from '@/types'
-import { ArrowLeft, ChevronRight, ClipboardPaste, FileQuestion, Folder, FolderPlus, LoaderCircle, Plus, Search, Upload } from 'lucide-vue-next'
+import { ArrowLeft, ChevronRight, FileQuestion, Folder, FolderPlus, LoaderCircle, Plus, Search, Upload } from 'lucide-vue-next'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { syncAfterLocalCommit } from '@/lib/commit-sync'
@@ -250,49 +250,29 @@ onUnmounted(() => {
 
 <template>
   <section class="space-y-5 text-left">
-    <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+    <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
       <div>
         <h1 class="text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
           {{ $t('library.title') }}
         </h1>
-        <p class="mt-1 text-sm font-semibold text-ink-500">
-          {{ $t('library.fileExplorerHint') }}
-        </p>
       </div>
-      <div class="flex flex-wrap gap-2">
-        <Button variant="outline" class="gap-2" @click="folderCreateOpen = true">
-          <FolderPlus class="h-4 w-4 text-accent-primary" />
-          <span>{{ $t('library.newFolder') }}</span>
+      <div class="flex items-center gap-1 self-end rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70" role="toolbar" :aria-label="$t('library.actions')">
+        <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
+          <FolderPlus class="h-4.5 w-4.5 text-accent-primary" />
         </Button>
-        <Button variant="outline" class="gap-2" @click="openBackupImport">
-          <Upload class="h-4 w-4" />
-          <span>{{ $t('home.backupAndImport') }}</span>
+        <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('home.backupAndImport')" @click="openBackupImport">
+          <Upload class="h-4.5 w-4.5" />
         </Button>
-        <Button variant="default" class="gap-2" @click="openAddSet">
-          <Plus class="h-4 w-4" />
-          <span>{{ $t('home.addSet') }}</span>
+        <Button variant="default" size="icon" class="h-10 w-10" :aria-label="$t('home.addSet')" @click="openAddSet">
+          <Plus class="h-4.5 w-4.5" />
         </Button>
       </div>
     </div>
 
-    <EmptyState v-if="selectedFolderId === ALL_FOLDER_ID && !hasLibrarySets && !visibleFolders.length && totalSets === 0 && !loading && !isSearching" :title="$t('home.title')">
+    <EmptyState v-if="selectedFolderId === ALL_FOLDER_ID && !hasLibrarySets && !visibleFolders.length && totalSets === 0 && !loading && !isSearching" :title="$t('library.emptyTitle')">
       <template #icon>
         <FileQuestion class="h-7 w-7" />
       </template>
-      <template #actions>
-        <Button variant="default" size="lg" class="gap-2" @click="openAddSet">
-          <Plus class="h-4 w-4" />{{ $t('home.addSet') }}
-        </Button>
-        <Button variant="outline" size="lg" class="gap-2" @click="openBackupImport">
-          <Upload class="h-4 w-4" />{{ $t('home.backupAndImport') }}
-        </Button>
-      </template>
-      <div class="flex items-center gap-3 rounded-2xl bg-ink-100/70 p-4 text-left dark:bg-ink-900/70">
-        <ClipboardPaste class="h-5 w-5 text-ink-500" />
-        <p class="text-sm font-bold text-ink-600 dark:text-ink-300">
-          {{ $t('library.emptyHint') }}
-        </p>
-      </div>
     </EmptyState>
 
     <template v-else>

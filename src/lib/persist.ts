@@ -14,6 +14,7 @@ const NAMESPACE_SCOPED_KEYS = new Set([
   'lexiro_library_sync_pending',
   'lexiro_ai_settings',
   'lexiro_ui_data',
+  'lexiro_sync_head',
 ])
 
 export function setStorageNamespace(namespace: string): void {

@@ -283,8 +283,6 @@ body {
   border-radius: var(--radius-outer);
   box-shadow: var(--shadow-card);
   transition: transform var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease, box-shadow var(--motion-duration) ease;
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 .dark .panel {
@@ -538,6 +536,17 @@ textarea {
   }
   100% {
     transform: translateX(320%);
+  }
+}
+
+@keyframes sync-ack {
+  0% {
+    opacity: 0;
+    transform: scale(0.84);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

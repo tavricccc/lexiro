@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, BookOpen, Flame, Library, Plus, RotateCcw, Sparkles, Target } from 'lucide-vue-next'
+import { ArrowRight, BarChart3, BookOpen, Flame, Library, Plus, RotateCcw, Sparkles, Target } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -130,9 +130,8 @@ async function continueSet(setId: string) {
             <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
               {{ $t('home.snapshot') }}
             </p>
-            <RouterLink to="/stats" class="inline-flex items-center gap-1 text-xs font-black text-ink-500 hover:text-ink-950 dark:hover:text-white">
-              {{ $t('home.viewStats') }}
-              <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
+            <RouterLink to="/stats" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewStats')" :title="$t('home.viewStats')">
+              <BarChart3 class="h-4 w-4" aria-hidden="true" />
             </RouterLink>
           </div>
           <div class="mt-5 grid grid-cols-2 gap-3">
@@ -172,9 +171,8 @@ async function continueSet(setId: string) {
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.continueTitle') }}
-          </h2><RouterLink to="/library" class="inline-flex items-center gap-1 text-xs font-black text-ink-500">
-            {{ $t('home.viewAll') }}
-            <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
+          </h2><RouterLink to="/library" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewAll')" :title="$t('home.viewAll')">
+            <Library class="h-4 w-4" aria-hidden="true" />
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">
@@ -196,9 +194,8 @@ async function continueSet(setId: string) {
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.recentTitle') }}
-          </h2><RouterLink to="/library" class="inline-flex items-center gap-1 text-xs font-black text-ink-500">
-            {{ $t('home.viewLibrary') }}
-            <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
+          </h2><RouterLink to="/library" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewLibrary')" :title="$t('home.viewLibrary')">
+            <Library class="h-4 w-4" aria-hidden="true" />
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">

@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 
 import { mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import SyncProgress from '@/components/ui/sync-progress/SyncProgress.vue'
 import { i18n } from '@/lib/i18n'
 
@@ -22,6 +22,10 @@ describe('sync progress', () => {
           currentBatch: 0,
           totalBatches: 0,
           pendingWrites: 1,
+          stalled: false,
+          retryAttempt: 0,
+          maxRetryAttempts: 5,
+          activeRequests: 0,
         },
       },
     })
@@ -37,7 +41,8 @@ describe('sync progress', () => {
     wrapper.unmount()
   })
 
-  it('uses a fullscreen status overlay with real chunk progress for blocking sync', () => {
+  it('uses a centered fullscreen status overlay without a progress bar', async () => {
+    vi.useFakeTimers()
     const wrapper = mount(SyncProgress, {
       attachTo: document.body,
       global: { plugins: [i18n] },
@@ -54,16 +59,24 @@ describe('sync progress', () => {
           currentBatch: 1,
           totalBatches: 2,
           pendingWrites: 0,
+          stalled: false,
+          retryAttempt: 0,
+          maxRetryAttempts: 5,
+          activeRequests: 1,
         },
       },
     })
+    vi.advanceTimersByTime(300)
+    await wrapper.vm.$nextTick()
 
     const overlay = document.body.querySelector('[role="status"]')
     expect(overlay?.getAttribute('aria-busy')).toBe('true')
     expect(overlay?.textContent).toContain('正在下載單字庫分片…')
     expect(overlay?.textContent).toContain('第 1 / 2 批')
-    expect(overlay?.textContent).toContain('3 / 10')
-    expect(overlay?.textContent).toContain('30%')
+    expect(overlay?.textContent).not.toContain('3 / 10')
+    expect(overlay?.textContent).not.toContain('30%')
+    expect(overlay?.querySelector('[role="progressbar"]')).toBeNull()
     wrapper.unmount()
+    vi.useRealTimers()
   })
 })

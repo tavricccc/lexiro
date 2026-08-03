@@ -9,6 +9,7 @@ export interface DomainReconcileResult<T> {
   baselineRecords: SyncRecords
   observedRecords: SyncRecords
   accepted: SyncOutboxEntry[]
+  conflicted: SyncOutboxEntry[]
   dirty: boolean
 }
 
@@ -21,6 +22,7 @@ export function reconcileLibraryState(remote: LibraryState, queued: SyncOutboxEn
     baselineRecords,
     observedRecords: libraryRecords(merged),
     accepted: rebased.accepted,
+    conflicted: rebased.conflicted,
     dirty: rebased.accepted.length > 0,
   }
 }
@@ -34,6 +36,7 @@ export function reconcileLearningState(progress: LearningProgress, stats: Dashbo
     baselineRecords,
     observedRecords: learningRecords(merged.progress, merged.stats),
     accepted: rebased.accepted,
+    conflicted: rebased.conflicted,
     dirty: rebased.accepted.length > 0,
   }
 }
@@ -48,6 +51,7 @@ export function reconcileAiSettingsState(remote: Omit<AiSettings, 'apiKey'> | nu
     baselineRecords,
     observedRecords: settingsRecords(mergedSettings),
     accepted: rebased.accepted,
+    conflicted: rebased.conflicted,
     dirty: rebased.accepted.length > 0,
   }
 }

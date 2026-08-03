@@ -70,4 +70,4 @@ export interface ReviewEntry {
   progress: CardProgress | null
 }
 
-export type SyncStatus = 'disabled' | 'signed-out' | 'connecting' | 'preparing' | 'downloading' | 'reconciling' | 'uploading' | 'verifying' | 'syncing' | 'synced' | 'offline' | 'error'
+export type SyncStatus = 'disabled' | 'signed-out' | 'connecting' | 'preparing' | 'downloading' | 'reconciling' | 'uploading' | 'retrying' | 'verifying' | 'syncing' | 'synced' | 'offline' | 'error'

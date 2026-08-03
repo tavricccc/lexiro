@@ -57,7 +57,9 @@ vi.mock('firebase/firestore', () => ({
   collection: vi.fn((...segments: unknown[]) => ({ kind: 'collection', path: segments.join('/') })),
   doc: vi.fn((...segments: unknown[]) => ({ kind: 'document', path: segments.join('/') })),
   documentId: vi.fn(() => '__name__'),
-  getDocFromServer: vi.fn(async () => ({ exists: () => false, data: () => undefined })),
+  getDocFromServer: vi.fn(async (reference: { path?: string }) => reference.path?.endsWith('/settings/ai') && mockedCloud.remoteSettings
+    ? { exists: () => true, data: () => mockedCloud.remoteSettings }
+    : { exists: () => false, data: () => undefined }),
   getDocsFromServer: vi.fn(async () => ({ docs: [] })),
   limit: vi.fn((value: number) => ({ kind: 'limit', value })),
   onSnapshot: vi.fn((reference, optionsOrCallback, callbackOrError) => {
@@ -115,7 +117,7 @@ describe('cloud sync baseline rebase', () => {
       model: 'cloud-model',
       batchSize: 10,
       ownerId: 'cloud-user',
-      schemaVersion: 4,
+      schemaVersion: 5,
     }
     mockedCloud.runTransaction.mockReset()
     mockedCloud.runTransaction.mockImplementation(async (_db: unknown, callback: (transaction: unknown) => Promise<unknown>) => {
@@ -169,7 +171,7 @@ describe('cloud sync baseline rebase', () => {
 
     await vi.advanceTimersByTimeAsync(1200)
 
-    expect(mockedCloud.transactionSets).toHaveLength(1)
+    expect(mockedCloud.transactionSets).toHaveLength(2)
     expect(cloudStore.pendingWrites).toBe(0)
     expect(cloudStore.status).toBe('synced')
   })
@@ -229,7 +231,11 @@ describe('cloud sync baseline rebase', () => {
     mockedCloud.transactionSets.length = 0
     mockedCloud.libraryBatchCommits = 0
     expect(await cloudStore.syncNow()).toBe(true)
-    expect(mockedCloud.transactionSets).toHaveLength(0)
+    expect(mockedCloud.transactionSets).toHaveLength(1)
+    expect(mockedCloud.transactionSets[0]).toEqual([
+      expect.objectContaining({ path: expect.stringContaining('/sync/head') }),
+      expect.anything(),
+    ])
     expect(mockedCloud.libraryBatchCommits).toBe(0)
   })
 
@@ -300,6 +306,7 @@ describe('cloud sync baseline rebase', () => {
   })
 
   it('does not restart cloud writes after choosing to continue offline', async () => {
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
     const cloudStore = useCloudSyncStore()
     await cloudStore.init()
     await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
