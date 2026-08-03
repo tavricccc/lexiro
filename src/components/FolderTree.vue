@@ -31,7 +31,10 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
-const selectedId = computed(() => props.modelValue || (props.includeRoot ? ALL_FOLDER_ID : UNCATEGORIZED_FOLDER_ID))
+const selectedId = computed(() => {
+  const val = props.modelValue
+  return (!val || val === UNCATEGORIZED_FOLDER_ID || val === ALL_FOLDER_ID) ? ALL_FOLDER_ID : val
+})
 const allLabel = computed(() => props.allLabel || t('library.allFolders'))
 const rootLabel = computed(() => props.rootLabel || t('library.rootFolder'))
 const rootFolders = computed(() => getFolderChildren(props.folders).filter(folder => folder.id !== UNCATEGORIZED_FOLDER_ID))

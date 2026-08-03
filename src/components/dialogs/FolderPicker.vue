@@ -3,7 +3,7 @@ import { ChevronRight, Folder } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { syncAfterLocalCommit } from '@/lib/commit-sync'
-import { folderParentIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { ALL_FOLDER_ID, folderParentIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { useFolderCreation } from '@/lib/use-folder-creation'
 import { useLibraryStore } from '@/stores/library'
 import FolderTree from '../FolderTree.vue'
@@ -29,7 +29,7 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const libraryStore = useLibraryStore()
 const dialogOpen = ref(false)
-const draftFolderId = ref(UNCATEGORIZED_FOLDER_ID)
+const draftFolderId = ref(ALL_FOLDER_ID)
 const pendingFolderId = ref<string | null>(null)
 const folderCreation = useFolderCreation(
   name => libraryStore.addFolder(name, folderParentIdFromSelection(draftFolderId.value)),
@@ -38,13 +38,16 @@ const folderCreation = useFolderCreation(
 const { name: newFolderName, error: folderError, reset: resetFolderCreation } = folderCreation
 
 const selectedFolderName = computed(() => {
-  return libraryStore.folders.find(folder => folder.id === (props.modelValue || UNCATEGORIZED_FOLDER_ID))?.name ?? t('library.folderNone')
+  const value = props.modelValue
+  if (!value || value === ALL_FOLDER_ID || value === UNCATEGORIZED_FOLDER_ID)
+    return t('library.rootFolder')
+  return libraryStore.folders.find(folder => folder.id === value)?.name ?? t('library.rootFolder')
 })
 
 function openDialog() {
   if (props.disabled)
     return
-  draftFolderId.value = props.modelValue || UNCATEGORIZED_FOLDER_ID
+  draftFolderId.value = props.modelValue || ALL_FOLDER_ID
   pendingFolderId.value = null
   resetFolderCreation()
   dialogOpen.value = true
@@ -76,6 +79,7 @@ async function createFolder() {
   if (!folder)
     return
   pendingFolderId.value = folder.id
+  draftFolderId.value = folder.id
   const synced = await syncAfterLocalCommit()
   if (synced) {
     draftFolderId.value = folder.id
@@ -85,7 +89,7 @@ async function createFolder() {
 
 watch(() => props.modelValue, (value) => {
   if (!dialogOpen.value)
-    draftFolderId.value = value || UNCATEGORIZED_FOLDER_ID
+    draftFolderId.value = value || ALL_FOLDER_ID
 })
 </script>
 
@@ -102,7 +106,7 @@ watch(() => props.modelValue, (value) => {
       <div class="space-y-4">
         <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
           <fieldset :disabled="Boolean(pendingFolderId)" class="contents">
-            <FolderTree v-model="draftFolderId" :folders="libraryStore.folders" :show-actions="false" />
+            <FolderTree v-model="draftFolderId" :folders="libraryStore.folders" :include-root="true" :root-label="$t('library.rootFolder')" :show-actions="false" />
           </fieldset>
         </div>
 
