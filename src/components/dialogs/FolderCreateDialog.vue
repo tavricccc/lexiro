@@ -6,7 +6,6 @@ import { useDirtyForm } from '@/lib/dirty-form'
 import { ALL_FOLDER_ID, folderParentIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { useFolderCreation } from '@/lib/use-folder-creation'
 import { useLibraryStore } from '@/stores/library'
-import FolderTree from '../FolderTree.vue'
 import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
 import DialogFooter from '../ui/dialog/DialogFooter.vue'
@@ -98,15 +97,6 @@ watch(() => props.open, (open) => {
         <div class="space-y-1.5 text-left">
           <label class="text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('library.newFolderPlaceholder') }}</label>
           <Input v-model="name" autofocus :placeholder="$t('library.newFolderPlaceholder')" @keydown.enter.prevent="createFolder" />
-        </div>
-
-        <div class="space-y-2 text-left">
-          <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
-            {{ $t('library.folderParentLabel') }}
-          </p>
-          <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-2 dark:border-ink-200/15 dark:bg-ink-950/40">
-            <FolderTree v-model="selectedParentId" :folders="libraryStore.folders" :include-root="true" :show-actions="false" :allow-uncategorized="false" />
-          </div>
         </div>
 
         <StatusMessage v-if="error" tone="error">

@@ -16,7 +16,7 @@ defineEmits<{
 </script>
 
 <template>
-  <div class="flex shrink-0 items-start justify-between gap-3 px-5 pt-4 pb-3">
+  <div class="flex shrink-0 items-start justify-between gap-3 px-4 pt-3.5 pb-2.5 sm:px-5 sm:pt-4 sm:pb-3">
     <div class="space-y-1 text-left">
       <h2 v-if="title" :id="titleId" class="text-lg font-bold tracking-tight text-ink-950 dark:text-ink-50">
         {{ title }}

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { computed } from 'vue'
-import { BOOKS_STACK_LOTTIE } from '@/constants/animations'
+import { STUDY_DISCUSSION_LOTTIE } from '@/constants/animations'
 import { LAYERS } from '@/constants/layers'
 import { useReducedMotion } from '@/lib/use-reduced-motion'
 import Button from '../button/Button.vue'
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<{
   fullscreen: true,
   showMessage: true,
   showProgress: true,
-  lottieSrc: BOOKS_STACK_LOTTIE,
+  lottieSrc: STUDY_DISCUSSION_LOTTIE,
 })
 
 const emit = defineEmits<{

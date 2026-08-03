@@ -341,6 +341,11 @@ export default {
   },
   stats: {
     title: '統計',
+    tabOverview: '總覽',
+    tabMemory: '記憶與 FSRS',
+    tabQuestions: '題型表現',
+    tabSets: '單字集進度',
+    tabHistory: '學習歷程',
     level: '等級',
     bySet: '各字庫學習進度',
     allSets: '全部單字集（全域總覽）',

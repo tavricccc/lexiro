@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div :class="cn('dialog-scroll-region min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-5 pt-1 text-left', $props.class)">
+  <div :class="cn('dialog-scroll-region min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4 pt-1 sm:px-5 sm:pb-5 text-left', $props.class)">
     <slot />
   </div>
 </template>

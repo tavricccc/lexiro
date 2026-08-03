@@ -237,7 +237,7 @@ onUnmounted(() => {
             <slot />
           </DialogBody>
 
-          <div v-if="$slots.footer" class="shrink-0 px-5 pb-5 text-left">
+          <div v-if="$slots.footer" class="shrink-0 px-4 pb-4 pt-1 sm:px-5 sm:pb-5 text-left">
             <slot name="footer" />
           </div>
         </div>

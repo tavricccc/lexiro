@@ -255,14 +255,10 @@ onUnmounted(() => {
           {{ $t('library.title') }}
         </h1>
         <div class="mt-1 min-w-0">
-          <div class="flex min-w-0 flex-wrap items-center gap-1.5 text-sm font-bold">
-            <Button v-if="selectedFolderId !== ALL_FOLDER_ID" variant="ghost" size="sm" class="-ml-2 gap-1.5 text-ink-600 dark:text-ink-300 hover:text-accent-primary" :aria-label="$t('library.back')" @click="goBack">
+          <div v-if="selectedFolderId !== ALL_FOLDER_ID" class="flex min-w-0 flex-wrap items-center gap-1.5 text-sm font-bold">
+            <Button variant="ghost" size="sm" class="-ml-2 gap-1.5 text-ink-600 dark:text-ink-300 hover:text-accent-primary" :aria-label="$t('library.back')" @click="goBack">
               <ArrowLeft class="h-4 w-4" /><span>{{ $t('library.back') }}</span>
             </Button>
-            <ChevronRight v-if="selectedFolderId !== ALL_FOLDER_ID" class="h-3.5 w-3.5 text-ink-400" />
-            <button type="button" class="flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors hover:bg-ink-100 dark:hover:bg-ink-800" :class="selectedFolderId === ALL_FOLDER_ID ? 'font-black text-accent-primary' : 'text-ink-600 dark:text-ink-300'" @click="openFolder(ALL_FOLDER_ID)">
-              <Folder class="h-4 w-4" /><span>{{ $t('library.collection') }}</span>
-            </button>
 
             <template v-for="(folder, idx) in currentFolderPath" :key="folder.id">
               <ChevronRight class="h-3.5 w-3.5 text-ink-400" />

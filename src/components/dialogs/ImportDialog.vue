@@ -14,7 +14,6 @@ import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
 import DialogFooter from '../ui/dialog/DialogFooter.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
-import FolderPicker from './FolderPicker.vue'
 
 interface PendingWordFile {
   name: string
@@ -156,8 +155,6 @@ function close() {
 <template>
   <Dialog :open="importOpen" :title="$t('import.title')" :description="$t('import.description')" @close="close">
     <div class="space-y-5">
-      <FolderPicker v-model="draftFolderId" :title="$t('import.folderLabel')" :disabled="localCommitApplied" />
-
       <div class="surface-inset space-y-2 p-4 text-left">
         <p class="text-sm font-bold text-ink-900 dark:text-ink-100">
           {{ $t('import.outputFilesTitle') }}

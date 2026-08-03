@@ -164,13 +164,8 @@ onUnmounted(() => {
     <VersionUpdateDialog />
 
     <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" :action-label="uiStore.toastActionLabel" @action="uiStore.triggerToastAction" />
-    <Transition name="toast-slide">
-      <div v-if="showInlineSync" class="fixed inset-x-0 bottom-4 z-[80] flex justify-center px-4 pb-[env(safe-area-inset-bottom)]">
-        <div class="w-full max-w-xs">
-          <SyncProgress :state="progress" :allow-cancel="!isOnline" @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
-        </div>
-      </div>
-    </Transition>
+    <SyncProgress v-if="showInlineSync" fullscreen :state="progress" :allow-cancel="!isOnline" @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
+
     <div v-if="pendingWrites > 0 && !isOnline" class="fixed right-4 top-4 z-[80] rounded-full border border-amber-300/70 bg-amber-50/95 px-3 py-2 text-xs font-black text-amber-800 shadow-soft backdrop-blur dark:border-amber-700/60 dark:bg-amber-950/90 dark:text-amber-100" role="status">
       {{ $t('sync.pending', { count: pendingWrites }) }}
     </div>

@@ -33,6 +33,7 @@ const props = defineProps<{
   word: string
   entries: DictionaryEntry[]
   existingWord: WordEntry | null
+  defaultSetId?: string
 }>()
 
 const emit = defineEmits<{
@@ -102,7 +103,7 @@ function draftFromDefinition(definition: ApiDefinition, index: number): SenseDra
 
 function reset() {
   step.value = 1
-  targetSetIds.value = []
+  targetSetIds.value = props.defaultSetId && sets.value.some(s => s.id === props.defaultSetId) ? [props.defaultSetId] : []
   error.value = ''
   pendingLocalCommit.value = false
   const definitions = props.entries.flatMap(entry => dictionaryDefinitions(entry))

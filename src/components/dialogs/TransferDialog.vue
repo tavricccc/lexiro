@@ -1,23 +1,29 @@
 <script setup lang="ts">
-import { Download, FileArchive, Upload } from 'lucide-vue-next'
+import { Cloud, Download, FileArchive, LogIn, LogOut, RefreshCw, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import { useBackupStore } from '@/stores/backup'
+import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
 import SectionPanel from '../ui/section-panel/SectionPanel.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 import ExportSettings from './ExportSettings.vue'
-import FolderPicker from './FolderPicker.vue'
 import ImportSettings from './ImportSettings.vue'
+
+type TransferMode = 'cloud' | 'import' | 'export'
 
 const uiStore = useUIStore()
 const backupStore = useBackupStore()
+const cloudStore = useCloudSyncStore()
 const { transferOpen, transferFolderId } = storeToRefs(uiStore)
 const { closeTransfer } = uiStore
+const { configured, isSignedIn, accountLabel, status, progress } = storeToRefs(cloudStore)
+const { signIn: signInAccount, signOutAccount, retryConnection } = cloudStore
+
 const {
   zipImportInputKey,
   zipImportName,
@@ -29,16 +35,17 @@ const {
   zipImportError,
 } = storeToRefs(backupStore)
 const { resetZipImportState, handleZipImportChange, applyZipImport, exportFullBackup } = backupStore
+
 const transferDirty = computed(() => transferOpen.value && Boolean(zipImportName.value || zipImportPreview.value || zipImportError.value || zipImportKind.value))
 const appliedLocally = ref(false)
 const saving = ref(false)
 const transferFolderDraft = ref(transferFolderId.value)
-const activeMode = ref<'import' | 'export'>('import')
+const activeMode = ref<TransferMode>('cloud')
 
 watch(transferOpen, (open) => {
   if (open) {
     transferFolderDraft.value = transferFolderId.value
-    activeMode.value = 'import'
+    activeMode.value = 'cloud'
   }
 })
 
@@ -102,35 +109,88 @@ async function requestTransferClose() {
     @close="requestTransferClose"
   >
     <div class="space-y-4">
-      <div class="grid grid-cols-2 gap-1 rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70" role="tablist" :aria-label="$t('backup.title')">
+      <div class="grid grid-cols-3 gap-1 rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70" role="tablist" :aria-label="$t('backup.title')">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="activeMode === 'cloud'"
+          class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-2 py-1.5 text-xs font-bold transition-colors"
+          :class="activeMode === 'cloud' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
+          @click="activeMode = 'cloud'"
+        >
+          <Cloud class="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span class="truncate">{{ $t('settings.cloudTitle') || '雲端同步' }}</span>
+        </button>
         <button
           type="button"
           role="tab"
           :aria-selected="activeMode === 'import'"
-          class="flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition-colors"
+          class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-2 py-1.5 text-xs font-bold transition-colors"
           :class="activeMode === 'import' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
           @click="activeMode = 'import'"
         >
-          <Upload class="h-4 w-4" aria-hidden="true" />
-          {{ $t('backup.importZip') }}
+          <Upload class="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span class="truncate">{{ $t('backup.importZip') }}</span>
         </button>
         <button
           type="button"
           role="tab"
           :aria-selected="activeMode === 'export'"
-          class="flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition-colors"
+          class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-2 py-1.5 text-xs font-bold transition-colors"
           :class="activeMode === 'export' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
           @click="activeMode = 'export'"
         >
-          <Download class="h-4 w-4" aria-hidden="true" />
-          {{ $t('backup.exportSection') }}
+          <Download class="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span class="truncate">{{ $t('backup.exportSection') }}</span>
         </button>
       </div>
 
-      <SectionPanel v-if="activeMode === 'import'" role="tabpanel">
+      <!-- Cloud Sync Panel -->
+      <SectionPanel v-if="activeMode === 'cloud'" role="tabpanel" class="space-y-4">
         <div class="flex items-start justify-between gap-4">
           <div class="flex items-start gap-3">
-            <FileArchive class="mt-0.5 h-5 w-5 text-accent-primary" />
+            <Cloud class="mt-0.5 h-5 w-5 text-accent-primary shrink-0" />
+            <div>
+              <p class="text-sm font-bold text-ink-950 dark:text-ink-50">
+                {{ $t('settings.cloudTitle') || '雲端同步' }}
+              </p>
+              <p class="mt-1 text-xs text-ink-400 dark:text-ink-500">
+                {{ isSignedIn ? accountLabel : $t('settings.signInDescription') }}
+              </p>
+            </div>
+          </div>
+          <Button v-if="isSignedIn" variant="outline" size="sm" class="gap-1.5" @click="signOutAccount">
+            <LogOut class="h-4 w-4 text-red-500" />
+            {{ $t('settings.signOut') }}
+          </Button>
+          <Button v-else-if="configured" variant="default" size="sm" class="gap-1.5" @click="signInAccount">
+            <LogIn class="h-4 w-4" />
+            {{ $t('settings.signInWithGoogle') }}
+          </Button>
+        </div>
+
+        <div v-if="isSignedIn" class="rounded-xl surface-inset p-3 text-xs space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-ink-500">{{ $t('sync.status') || '同步狀態' }}:</span>
+            <span class="font-black text-accent-primary uppercase">{{ status }}</span>
+          </div>
+          <p v-if="progress.message" class="text-ink-400 font-semibold">
+            {{ progress.message }}
+          </p>
+          <div class="flex justify-end pt-2">
+            <Button variant="outline" size="sm" class="gap-1.5" @click="retryConnection">
+              <RefreshCw class="h-3.5 w-3.5" />
+              {{ $t('sync.retry') }}
+            </Button>
+          </div>
+        </div>
+      </SectionPanel>
+
+      <!-- Import Panel -->
+      <SectionPanel v-else-if="activeMode === 'import'" role="tabpanel">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-start gap-3">
+            <FileArchive class="mt-0.5 h-5 w-5 text-accent-primary shrink-0" />
             <div>
               <p class="text-sm font-bold text-ink-950 dark:text-ink-50">
                 {{ $t('backup.importZip') }}
@@ -146,12 +206,11 @@ async function requestTransferClose() {
         </div>
 
         <div class="mt-4 space-y-2">
-          <FolderPicker v-model="transferFolderDraft" :title="$t('backup.importFolderLabel')" :disabled="saving || appliedLocally" />
           <input
             :key="zipImportInputKey"
             type="file"
-            accept=".zip"
-            class="block w-full text-sm text-ink-500 file:mr-4 file:rounded-xl file:border-0 file:bg-ink-950 file:px-4 file:py-2.5 file:text-xs file:font-semibold file:text-white file:transition-all hover:file:opacity-90"
+            accept=".zip,.json"
+            class="block w-full text-sm text-ink-500 file:mr-4 file:rounded-xl file:border-0 file:bg-ink-950 file:px-4 file:py-2.5 file:text-xs file:font-semibold file:text-white file:transition-all hover:file:opacity-90 dark:file:bg-white dark:file:text-ink-950"
             :disabled="saving || appliedLocally"
             @change="handleTransferFileChange"
           >
@@ -174,9 +233,10 @@ async function requestTransferClose() {
         </div>
       </SectionPanel>
 
+      <!-- Export Panel -->
       <SectionPanel v-else role="tabpanel">
         <div class="flex items-start gap-3">
-          <Download class="mt-0.5 h-5 w-5 text-accent-primary" />
+          <Download class="mt-0.5 h-5 w-5 text-accent-primary shrink-0" />
           <div>
             <p class="text-sm font-bold text-ink-950 dark:text-ink-50">
               {{ $t('backup.exportSection') }}

@@ -14,6 +14,8 @@ import Select from '../ui/select/Select.vue'
 const props = defineProps<{
   open: boolean
   setId: string
+  initialMode?: PracticeMode
+  initialDifficulty?: PracticeDifficulty
 }>()
 
 const emit = defineEmits<{
@@ -23,8 +25,8 @@ const emit = defineEmits<{
 const router = useRouter()
 const sessionStore = useSessionStore()
 const { t } = useI18n()
-const selectedMode = ref<PracticeMode>('quiz')
-const selectedDifficulty = ref<PracticeDifficulty>('all')
+const selectedMode = ref<PracticeMode>(props.initialMode ?? 'quiz')
+const selectedDifficulty = ref<PracticeDifficulty>(props.initialDifficulty ?? 'all')
 const selectedCount = ref(0)
 const difficultyOptions = computed(() => createPracticeDifficultyOptions(t))
 const difficultyModel = computed({
@@ -51,6 +53,10 @@ const countOptions = computed(() => {
 const selectedCountIndex = computed(() => Math.max(0, countOptions.value.indexOf(Math.min(selectedCount.value, countOptions.value.at(-1) ?? 0))))
 
 function syncCount() {
+  if (props.initialMode)
+    selectedMode.value = props.initialMode
+  if (props.initialDifficulty)
+    selectedDifficulty.value = props.initialDifficulty
   selectedCount.value = sessionStore.getPracticeCount(availableCount.value)
 }
 
