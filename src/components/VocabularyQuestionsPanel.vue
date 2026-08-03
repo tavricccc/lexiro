@@ -53,7 +53,7 @@ function questionLabel(question: LibraryQuestion): string {
   <div class="grid gap-3 sm:grid-cols-2">
     <Select v-model="questionTypeFilterModel" :options="questionTypeOptions" /><Select v-model="difficultyFilterModel" :options="difficultyOptions" />
   </div>
-  <Card class="p-5">
+  <Card class="p-4 sm:p-5">
     <div class="mb-4 flex flex-wrap justify-end gap-2">
       <Button variant="outline" class="gap-2" :disabled="!hasSenses" @click="emit('add-question')">
         <Plus class="h-4 w-4" />{{ $t('vocabulary.addQuestion') }}

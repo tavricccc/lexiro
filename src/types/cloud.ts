@@ -37,6 +37,17 @@ export interface FirestoreLibraryManifest {
 
 export interface FirestoreLibraryV5Manifest extends FirestoreLibraryManifest {
   schemaVersion: 5
+  manifestParts?: Record<string, string>
+}
+
+export interface FirestoreLibraryManifestPart {
+  ownerId: string
+  schemaVersion: 5
+  documentType: 'library-manifest-part'
+  partId: string
+  updatedAt: string
+  checksum: string
+  chunks: Record<string, string>
 }
 
 export type FirestoreLibraryV5Chunk = FirestoreLibraryChunkBase & {

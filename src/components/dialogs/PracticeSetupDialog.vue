@@ -96,7 +96,7 @@ function openQuestions() {
             v-for="option in modeOptions"
             :key="option.value"
             type="button"
-            class="flex min-h-12 items-center gap-2 rounded-2xl border px-3 py-3 text-left text-sm font-bold transition-colors"
+            class="flex min-h-11 items-center gap-2 rounded-2xl border px-3 py-2.5 text-left text-sm font-bold transition-colors"
             :class="selectedMode === option.value ? 'border-accent-primary bg-accent-primary/10 text-accent-primary' : 'border-ink-200/70 hover:border-accent-primary/40 dark:border-ink-200/20'"
             @click="selectedMode = option.value"
           >

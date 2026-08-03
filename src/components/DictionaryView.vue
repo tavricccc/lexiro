@@ -80,9 +80,9 @@ function openAddDialog(entry: DictionaryEntry) {
 </script>
 
 <template>
-  <section class="space-y-6 text-left">
+  <section class="space-y-5 text-left">
     <div>
-      <h1 class="text-3xl font-black tracking-tight">
+      <h1 class="text-2xl font-black tracking-tight">
         {{ $t('dictionary.title') }}
       </h1>
       <p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500 dark:text-ink-400">
@@ -92,8 +92,8 @@ function openAddDialog(entry: DictionaryEntry) {
 
     <Card class="p-4 sm:p-5">
       <form class="flex gap-2" @submit.prevent="search">
-        <Input v-model="query" autofocus :placeholder="$t('dictionary.searchPlaceholder')" class="h-12 rounded-2xl text-base" />
-        <Button type="submit" variant="default" size="icon" class="h-12 w-12 shrink-0 rounded-2xl" :aria-label="$t('dictionary.search')">
+        <Input v-model="query" autofocus :placeholder="$t('dictionary.searchPlaceholder')" class="h-11 rounded-2xl text-sm" />
+        <Button type="submit" variant="default" size="icon" class="h-11 w-11 shrink-0 rounded-2xl" :aria-label="$t('dictionary.search')">
           <LoaderCircle v-if="loading" class="h-5 w-5 animate-spin" /><Search v-else class="h-5 w-5" />
         </Button>
       </form>
@@ -108,19 +108,19 @@ function openAddDialog(entry: DictionaryEntry) {
       {{ error }}
     </div>
 
-    <Card v-if="selectedWord" class="border border-accent-primary/15 p-5 sm:p-6">
+    <Card v-if="selectedWord" class="border border-accent-primary/15 p-4 sm:p-5">
       <div>
         <p class="text-xs font-semibold uppercase tracking-wider text-accent-primary">
           {{ $t('dictionary.savedTitle') }}
         </p>
-        <h2 class="mt-1 text-2xl font-bold tracking-tight">
+        <h2 class="mt-1 text-xl font-bold tracking-tight">
           {{ selectedWord.word }}
         </h2>
       </div>
       <div class="mt-5 space-y-3">
         <article v-for="sense in selectedWord.senses" :key="sense.id" class="surface-inset p-4">
           <div class="flex flex-wrap items-center gap-2">
-            <Badge v-if="sense.pos" variant="secondary" class="rounded-md text-[10px]">
+            <Badge v-if="sense.pos" variant="secondary" class="rounded-md text-[0.625rem]">
               {{ sense.pos }}
             </Badge>
             <p class="text-sm font-bold leading-relaxed">
@@ -129,7 +129,7 @@ function openAddDialog(entry: DictionaryEntry) {
           </div>
           <div v-if="senseSetNames(sense.id).length" class="mt-3 flex flex-wrap items-center gap-1.5 text-xs font-semibold text-ink-500">
             <span>{{ $t('dictionary.senseSets') }}</span>
-            <Badge v-for="name in senseSetNames(sense.id)" :key="name" variant="secondary" class="rounded-md text-[10px]">
+            <Badge v-for="name in senseSetNames(sense.id)" :key="name" variant="secondary" class="rounded-md text-[0.625rem]">
               {{ name }}
             </Badge>
           </div>
@@ -143,11 +143,11 @@ function openAddDialog(entry: DictionaryEntry) {
     </Card>
 
     <div v-for="entry in entries" :key="`${entry.word}-${entry.phonetic}`" class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <Card class="p-6 sm:p-8">
+      <Card class="p-5 sm:p-6">
         <div class="flex flex-wrap items-start justify-between gap-4">
           <div>
             <div class="flex flex-wrap items-center gap-2">
-              <h2 class="text-3xl font-black tracking-tight">
+              <h2 class="text-2xl font-black tracking-tight">
                 {{ entry.word }}
               </h2>
               <Badge v-if="entry.phonetic" variant="secondary" class="rounded-lg">
@@ -170,13 +170,13 @@ function openAddDialog(entry: DictionaryEntry) {
             </Button>
           </div>
         </div>
-        <div class="mt-8 space-y-6">
+        <div class="mt-6 space-y-4">
           <article v-for="(definition, index) in dictionaryDefinitions(entry)" :key="`${definition.definition}-${index}`" class="border-t border-ink-200/60 pt-5 dark:border-ink-800">
             <div class="flex items-start gap-3">
               <span class="mt-0.5 text-xs font-black text-ink-400">{{ index + 1 }}</span>
               <div class="min-w-0">
                 <div class="flex flex-wrap items-center gap-2">
-                  <Badge v-if="definition.partOfSpeech" variant="secondary" class="rounded-md text-[10px]">
+                  <Badge v-if="definition.partOfSpeech" variant="secondary" class="rounded-md text-[0.625rem]">
                     {{ definition.partOfSpeech }}
                   </Badge>
                   <p class="font-bold leading-relaxed">
@@ -201,7 +201,7 @@ function openAddDialog(entry: DictionaryEntry) {
       </Card>
     </div>
 
-    <Card v-if="!entries.length && !selectedWord && !error && !loading" class="p-8 text-center">
+    <Card v-if="!entries.length && !selectedWord && !error && !loading" class="p-6 text-center">
       <Search class="mx-auto h-8 w-8 text-accent-primary" />
       <h2 class="mt-4 text-lg font-black">
         {{ $t('dictionary.emptyTitle') }}

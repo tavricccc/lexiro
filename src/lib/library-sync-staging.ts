@@ -40,6 +40,7 @@ export async function stageCloudLibrary(options: {
   onProgress?: (progress: CloudLibraryBatchProgress) => void
 }): Promise<CloudLibraryReadResult & { stagingGeneration: string }> {
   const repository = getLibraryRepository()
+  const cachedRemote = await repository.loadRemoteLibrarySyncState()
   const resumable = await repository.findResumableRemoteGeneration()
   let stagingGeneration = resumable?.generation ?? `remote-${Date.now()}-${crypto.randomUUID()}`
   let stagedRevision = resumable?.revision ?? ''
@@ -59,6 +60,7 @@ export async function stageCloudLibrary(options: {
       }
       stagedRevision = revision
       const chunksToStage = stageAllVerifiedChunks ? chunks : newChunks
+      await repository.saveRemoteLibraryChunks(newChunks)
       if (!chunksToStage.length)
         return
       const batch: LibraryRemoteStagingBatch = {
@@ -69,9 +71,20 @@ export async function stageCloudLibrary(options: {
       }
       await repository.stageRemoteBatch(stagingGeneration, batch)
     },
-    { existingChunks, manifestData: options.manifestData },
+    {
+      existingChunks,
+      manifestData: options.manifestData,
+      cachedRevision: cachedRemote?.revision,
+      cachedHashes: cachedRemote ? new Map(Object.entries(cachedRemote.hashes)) : undefined,
+      loadExistingChunks: (chunkIds, checksums) => repository.loadRemoteLibraryChunks(chunkIds, checksums),
+    },
   )
 
   await repository.stageRemoteBatch(stagingGeneration, normalizeLibraryState(result.library))
+  await repository.commitRemoteLibrarySyncState({
+    revision: result.revision,
+    updatedAt: result.library.updatedAt,
+    hashes: Object.fromEntries(result.hashes),
+  })
   return { ...result, stagingGeneration }
 }

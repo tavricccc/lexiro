@@ -12,7 +12,7 @@ withDefaults(defineProps<{
     <div v-if="$slots.icon" class="icon-tile icon-tile--lg mb-5 text-accent-primary">
       <slot name="icon" />
     </div>
-    <h2 class="text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
+    <h2 class="text-xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
       {{ title }}
     </h2>
     <p v-if="description" class="mt-2 text-sm font-medium leading-relaxed text-ink-500 dark:text-ink-400">

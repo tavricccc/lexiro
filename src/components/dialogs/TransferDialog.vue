@@ -98,7 +98,7 @@ async function requestTransferClose() {
     :busy="saving"
     @close="requestTransferClose"
   >
-    <div class="space-y-6">
+    <div class="space-y-4">
       <SectionPanel>
         <div class="flex items-start justify-between gap-4">
           <div class="flex items-start gap-3">

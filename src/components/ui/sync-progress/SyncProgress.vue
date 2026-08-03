@@ -34,7 +34,7 @@ const emit = defineEmits<{
     <SyncProgressContent :state="state" :show-title="false" :allow-cancel="allowCancel" @retry="emit('retry')" @cancel="emit('cancel')" />
   </Dialog>
 
-  <Card v-else class="sync-progress w-full overflow-hidden p-5 sm:p-6">
+  <Card v-else class="sync-progress w-full overflow-hidden p-4 sm:p-5">
     <SyncProgressContent :state="state" :allow-cancel="allowCancel" @retry="emit('retry')" @cancel="emit('cancel')" />
   </Card>
 </template>

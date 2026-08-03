@@ -1,5 +1,5 @@
 import type { FirestoreLibraryChunk, FirestoreLibraryV5Chunk, LibraryIndex, LibraryQuestion, LibrarySearchEntry, LibrarySet, LibrarySetSummary, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
-import { get, keys, set, setMany } from 'idb-keyval'
+import { del, get, keys, set, setMany } from 'idb-keyval'
 import { LIBRARY_STORAGE_KEY } from '@/constants'
 import { cloneJson } from './clone'
 import { ALL_FOLDER_ID, createUncategorizedFolder, sortFolders, UNCATEGORIZED_FOLDER_ID } from './folders'
@@ -94,6 +94,19 @@ export interface ResumableRemoteGeneration {
   generation: string
   revision: string
   chunkIds: string[]
+}
+
+export interface RemoteLibrarySyncState {
+  schemaVersion: 1
+  revision: string
+  updatedAt: string
+  hashes: Record<string, string>
+}
+
+interface StoredRemoteLibraryChunk {
+  schemaVersion: 1
+  checksum: string
+  chunk: FirestoreLibraryChunk | FirestoreLibraryV5Chunk
 }
 
 interface StoredRecord {
@@ -322,6 +335,14 @@ export class LibraryRepository {
 
   private remoteChunkKey(generation: string, chunkId: string): string {
     return `${this.prefix}:${generation}:remote-chunk:${encodeURIComponent(chunkId)}`
+  }
+
+  private remoteSyncStateKey(): string {
+    return `${this.prefix}:remote-cache:state`
+  }
+
+  private remoteCacheChunkKey(chunkId: string): string {
+    return `${this.prefix}:remote-cache:chunk:${encodeURIComponent(chunkId)}`
   }
 
   private recordKey(generation: string, kind: LibraryRecordKind, id: string): string {
@@ -685,6 +706,38 @@ export class LibraryRepository {
         result.set(chunkId, cloneJson(chunk))
     }
     return result
+  }
+
+  async loadRemoteLibrarySyncState(): Promise<RemoteLibrarySyncState | null> {
+    const value = await get<RemoteLibrarySyncState>(this.remoteSyncStateKey())
+    if (!value || value.schemaVersion !== 1 || typeof value.revision !== 'string' || typeof value.updatedAt !== 'string' || !value.hashes || typeof value.hashes !== 'object' || Array.isArray(value.hashes) || !Object.values(value.hashes).every(checksum => typeof checksum === 'string'))
+      return null
+    return cloneJson(value)
+  }
+
+  async loadRemoteLibraryChunks(chunkIds: readonly string[], expectedHashes: ReadonlyMap<string, string> | Record<string, string>): Promise<Map<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>> {
+    const entries = await Promise.all(chunkIds.map(async (chunkId) => {
+      const cached = await get<StoredRemoteLibraryChunk>(this.remoteCacheChunkKey(chunkId))
+      const expected = expectedHashes instanceof Map ? expectedHashes.get(chunkId) : (expectedHashes as Record<string, string>)[chunkId]
+      if (!cached || cached.schemaVersion !== 1 || !expected || cached.checksum !== expected || cached.chunk.chunkId !== chunkId)
+        return null
+      return [chunkId, cloneJson(cached.chunk)] as const
+    }))
+    return new Map(entries.filter((entry): entry is readonly [string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk] => Boolean(entry)))
+  }
+
+  async saveRemoteLibraryChunks(chunks: readonly (FirestoreLibraryChunk | FirestoreLibraryV5Chunk)[]): Promise<void> {
+    if (!chunks.length)
+      return
+    await setMany(chunks.map(chunk => [this.remoteCacheChunkKey(chunk.chunkId), { schemaVersion: 1, checksum: chunk.checksum, chunk: cloneJson(chunk) } satisfies StoredRemoteLibraryChunk]))
+  }
+
+  async commitRemoteLibrarySyncState(state: Omit<RemoteLibrarySyncState, 'schemaVersion'>): Promise<void> {
+    const previous = await this.loadRemoteLibrarySyncState()
+    const next: RemoteLibrarySyncState = { schemaVersion: 1, ...cloneJson(state) }
+    const staleIds = Object.keys(previous?.hashes ?? {}).filter(chunkId => !Object.hasOwn(next.hashes, chunkId))
+    await set(this.remoteSyncStateKey(), next)
+    await Promise.all(staleIds.map(chunkId => del(this.remoteCacheChunkKey(chunkId))))
   }
 
   clearPayloadCache(): void {

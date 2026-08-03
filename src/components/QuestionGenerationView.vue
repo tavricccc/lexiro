@@ -231,12 +231,12 @@ function goBack() {
 </script>
 
 <template>
-  <section v-if="set" class="space-y-6 text-left">
+  <section v-if="set" class="space-y-5 text-left">
     <div>
       <Button variant="ghost" class="mb-3 -ml-3 gap-2" @click="goBack">
         <ArrowLeft class="h-4 w-4" />{{ $t('vocabulary.back') }}
       </Button>
-      <h1 class="text-3xl font-black tracking-tight">
+      <h1 class="text-2xl font-black tracking-tight">
         {{ $t('library.generateQuestions') }}
       </h1>
       <p class="mt-1 text-sm font-semibold text-ink-500">
@@ -245,7 +245,7 @@ function goBack() {
     </div>
 
     <fieldset :disabled="pendingLocalCommit" class="contents">
-      <Card class="p-5 sm:p-6">
+      <Card class="p-4 sm:p-5">
         <QuestionWordSelector
           v-model:kind="kind"
           v-model:difficulty="difficulty"
@@ -260,7 +260,7 @@ function goBack() {
       </Card>
     </fieldset>
 
-    <Card v-if="generationStep === 2" class="space-y-5 p-5 sm:p-6">
+    <Card v-if="generationStep === 2" class="space-y-4 p-4 sm:p-5">
       <fieldset :disabled="pendingLocalCommit" class="contents">
         <div class="rounded-2xl bg-accent-primary/10 p-4">
           <p class="text-sm font-bold text-accent-primary">

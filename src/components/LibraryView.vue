@@ -249,10 +249,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="space-y-6 text-left">
+  <section class="space-y-5 text-left">
     <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
       <div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
+        <h1 class="text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
           {{ $t('library.title') }}
         </h1>
         <p class="mt-1 text-sm font-semibold text-ink-500">

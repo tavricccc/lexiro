@@ -24,7 +24,7 @@ const attrs = useAttrs()
 
 const classes = computed(() =>
   cn(
-    'inline-flex min-h-11 items-center justify-center gap-2.5 whitespace-nowrap text-sm font-semibold rounded-[var(--radius-inner)] transition-all duration-200 active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/20 disabled:opacity-40 disabled:pointer-events-none disabled:cursor-not-allowed',
+    'inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap text-sm font-semibold rounded-[var(--radius-inner)] transition-all duration-200 active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/20 disabled:opacity-40 disabled:pointer-events-none disabled:cursor-not-allowed',
     {
       'button-primary': props.variant === 'default',
       'surface-control text-ink-600 dark:text-ink-300 hover:-translate-y-px hover:shadow-floating': props.variant === 'outline' || props.variant === 'secondary',
@@ -33,7 +33,7 @@ const classes = computed(() =>
       'bg-red-50 dark:bg-red-950/15 text-red-600 dark:text-red-400 border border-red-100/80 dark:border-red-900/30 hover:bg-red-100/80 dark:hover:bg-red-950/30': props.variant === 'destructive',
 
       'px-4 py-2.5': props.size === 'default',
-      'min-h-11 px-4 py-1.5 text-xs rounded-[calc(var(--radius-inner)-0.25rem)]': props.size === 'sm',
+      'min-h-8 px-3 py-1.5 text-xs rounded-[calc(var(--radius-inner)-0.25rem)]': props.size === 'sm',
       'h-11 w-11 min-h-11 p-0 rounded-[var(--radius-inner)]': props.size === 'icon',
       'min-h-11 px-6 py-2.5 text-sm': props.size === 'lg',
     },

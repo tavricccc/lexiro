@@ -82,7 +82,7 @@ function openGeneration() {
             <ArrowLeft class="h-4 w-4" />{{ $t('study.backToLibrary') }}
           </Button>
           <div class="flex flex-wrap items-center gap-2">
-            <h1 class="break-words text-3xl font-black tracking-tight">
+            <h1 class="break-words text-2xl font-black tracking-tight">
               {{ activeSet.setName }}
             </h1>
             <Badge variant="secondary" class="gap-1">
@@ -119,7 +119,7 @@ function openGeneration() {
       </div>
 
       <nav class="flex gap-1 overflow-x-auto border-b border-ink-200/70 dark:border-ink-200/15" :aria-label="$t('set.overviewTab')">
-        <RouterLink v-for="tab in tabs" :key="tab.name" :to="{ name: tab.name, params: { setId } }" class="min-h-12 shrink-0 border-b-2 border-transparent px-3 py-3 text-sm font-bold text-ink-500 transition-colors hover:text-ink-950 dark:hover:text-ink-50" active-class="border-accent-primary text-accent-primary">
+        <RouterLink v-for="tab in tabs" :key="tab.name" :to="{ name: tab.name, params: { setId } }" class="min-h-11 shrink-0 border-b-2 border-transparent px-3 py-2.5 text-sm font-bold text-ink-500 transition-colors hover:text-ink-950 dark:hover:text-ink-50" active-class="border-accent-primary text-accent-primary">
           {{ $t(tab.label) }}
         </RouterLink>
       </nav>
@@ -132,7 +132,7 @@ function openGeneration() {
     <PracticeSetupDialog :open="practiceOpen" :set-id="setId" @close="practiceOpen = false" />
   </section>
 
-  <Card v-else class="mx-auto max-w-xl space-y-3 p-8 text-center">
+  <Card v-else class="mx-auto max-w-xl space-y-3 p-6 text-center">
     <h1 class="text-xl font-black">
       {{ $t('set.invalidSetTitle') }}
     </h1>

@@ -65,7 +65,7 @@ function openVocabulary() {
           <ArrowLeft class="h-4 w-4" />{{ $t('set.backToWords') }}
         </Button>
         <div class="flex flex-wrap items-center gap-3">
-          <h2 class="break-words text-4xl font-black tracking-tight text-ink-950 dark:text-ink-50 sm:text-5xl">
+          <h2 class="break-words text-3xl font-black tracking-tight text-ink-950 dark:text-ink-50 sm:text-4xl">
             {{ word.word }}
           </h2>
           <Button v-if="canSpeak" variant="outline" size="icon" :aria-label="$t('dictionary.playAudio')" @click="speak">
@@ -96,7 +96,7 @@ function openVocabulary() {
     </div>
   </section>
 
-  <Card v-else class="space-y-3 p-8 text-center">
+  <Card v-else class="space-y-3 p-6 text-center">
     <h2 class="text-lg font-black">
       {{ $t('set.invalidWordTitle') }}
     </h2>

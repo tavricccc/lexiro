@@ -30,7 +30,7 @@ const isDetail = computed(() => route.name === 'set-word' || typeof route.params
     </div>
 
     <Card v-if="words.length" class="p-4 sm:p-5">
-      <div class="grid gap-6 lg:grid-cols-[minmax(13rem,18rem)_minmax(0,1fr)]">
+      <div class="grid gap-4 lg:grid-cols-[minmax(13rem,18rem)_minmax(0,1fr)]">
         <aside :class="isDetail ? 'hidden lg:block' : 'block'" class="min-w-0 lg:border-r lg:border-ink-200/60 lg:pr-5 lg:dark:border-ink-200/10">
           <SetWordList :set-id="setId" :words="words" :search="search" @update:search="search = $event" />
         </aside>
@@ -45,7 +45,7 @@ const isDetail = computed(() => route.name === 'set-word' || typeof route.params
         </section>
       </div>
     </Card>
-    <Card v-else class="p-8 text-center text-sm font-semibold text-ink-400">
+    <Card v-else class="p-6 text-center text-sm font-semibold text-ink-400">
       {{ $t('study.noWords') }}
     </Card>
   </section>

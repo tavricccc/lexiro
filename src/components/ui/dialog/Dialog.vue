@@ -61,13 +61,13 @@ const sizeClasses: Record<DialogSize, string> = {
 }
 const resolvedWidthClass = computed(() => props.widthClass || sizeClasses[props.size])
 const overlayClasses = computed(() => props.presentation === 'center'
-  ? 'items-center p-4 sm:p-6'
-  : 'items-end p-0 sm:items-center sm:p-6')
+  ? 'items-center p-4 sm:p-5'
+  : 'items-end p-0 sm:items-center sm:p-5')
 const panelClasses = computed(() => [
   resolvedWidthClass.value,
   props.presentation === 'center'
-    ? 'rounded-[22px]'
-    : 'rounded-t-[22px] sm:rounded-[22px]',
+    ? 'rounded-[var(--radius-outer)]'
+    : 'rounded-t-[var(--radius-outer)] sm:rounded-[var(--radius-outer)]',
   props.tone === 'destructive' ? 'border-red-300/70 dark:border-red-900/70' : '',
 ])
 let previousActive: HTMLElement | null = null
@@ -216,7 +216,7 @@ onUnmounted(() => {
           :aria-label="!title && !description ? undefined : title ? undefined : description"
           :aria-labelledby="title ? titleId : undefined"
           :aria-describedby="description ? descriptionId : undefined"
-          class="dialog-content-panel flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[22px] border border-ink-200/60 bg-white shadow-modal dark:border-ink-200/10 dark:bg-ink-800 sm:max-h-[calc(100dvh-3rem)] sm:rounded-[22px]"
+          class="dialog-content-panel flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[var(--radius-outer)] border border-ink-200/60 bg-white shadow-modal dark:border-ink-200/10 dark:bg-ink-800 sm:max-h-[calc(100dvh-3rem)] sm:rounded-[var(--radius-outer)]"
           :class="panelClasses"
         >
           <div class="w-12 h-1.5 rounded-full bg-ink-200 dark:bg-ink-300 mx-auto mt-3 shrink-0 sm:hidden" aria-hidden="true" />
@@ -237,7 +237,7 @@ onUnmounted(() => {
             <slot />
           </DialogBody>
 
-          <div v-if="$slots.footer" class="shrink-0 px-6 pb-6 text-left">
+          <div v-if="$slots.footer" class="shrink-0 px-5 pb-5 text-left">
             <slot name="footer" />
           </div>
         </div>

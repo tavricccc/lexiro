@@ -33,7 +33,7 @@ const showActions = computed(() => ['offline', 'error'].includes(props.state.pha
       </div>
 
       <div class="min-w-0 flex-1">
-        <h2 v-if="showTitle" class="text-xl font-black tracking-tight text-ink-950 dark:text-ink-50">
+        <h2 v-if="showTitle" class="text-lg font-black tracking-tight text-ink-950 dark:text-ink-50">
           {{ state.message || $t('sync.progressTitle') }}
         </h2>
         <p v-if="state.totalBatches > 0" class="mt-1 text-sm font-semibold text-ink-500 dark:text-ink-300">
@@ -41,12 +41,12 @@ const showActions = computed(() => ['offline', 'error'].includes(props.state.pha
         </p>
       </div>
 
-      <span class="shrink-0 text-2xl font-black tabular-nums text-ink-900 dark:text-ink-50">
+      <span class="shrink-0 text-xl font-black tabular-nums text-ink-900 dark:text-ink-50">
         {{ state.percent }}%
       </span>
     </div>
 
-    <Progress :model-value="state.percent" class="mt-7 h-2" />
+    <Progress :model-value="state.percent" class="mt-5 h-2" />
 
     <div class="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm font-semibold text-ink-500 dark:text-ink-300">
       <span>{{ $t('sync.progressCount', { completed: state.completed, total: state.total }) }}</span>

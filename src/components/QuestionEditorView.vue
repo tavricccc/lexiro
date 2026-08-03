@@ -227,13 +227,13 @@ function goBack() {
 </script>
 
 <template>
-  <section v-if="word && (!existingQuestion || existingReading)" class="space-y-6 text-left">
+  <section v-if="word && (!existingQuestion || existingReading)" class="space-y-5 text-left">
     <div>
       <Button variant="ghost" class="mb-3 -ml-3" @click="goBack">
         {{ $t('vocabulary.back') }}
       </Button>
       <div class="flex flex-wrap items-center gap-3">
-        <h1 class="text-3xl font-black tracking-tight">
+        <h1 class="text-2xl font-black tracking-tight">
           {{ existingReading ? $t('vocabulary.editReading') : $t('vocabulary.addReading') }}
         </h1>
         <Badge variant="secondary">
@@ -246,7 +246,7 @@ function goBack() {
     </div>
 
     <fieldset :disabled="pendingLocalCommit" class="contents">
-      <Card class="space-y-4 p-5 sm:p-6">
+      <Card class="space-y-4 p-4 sm:p-5">
         <div class="grid gap-3 sm:grid-cols-2">
           <Input v-model="readingDraft.title" :placeholder="$t('library.readingTitle')" />
           <Select :model-value="String(readingDraft.difficulty)" :options="difficultyOptions" :placeholder="$t('library.questionDifficulty')" @update:model-value="setQuestionDifficulty" />

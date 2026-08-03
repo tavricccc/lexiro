@@ -46,7 +46,7 @@ function senseCount(word: WordEntry): number {
         v-for="word in filteredWords"
         :key="word.wordKey"
         :to="{ name: 'set-word', params: { setId, wordKey: word.wordKey } }"
-        class="flex min-h-12 items-center justify-between gap-3 rounded-2xl px-3 py-2.5 text-left transition-colors"
+        class="flex min-h-11 items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left transition-colors"
         :class="route.params.wordKey === word.wordKey ? 'bg-accent-primary/10 text-accent-primary' : 'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800'"
       >
         <span class="min-w-0 truncate text-sm font-bold">{{ word.word }}</span>

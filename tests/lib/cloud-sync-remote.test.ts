@@ -291,6 +291,26 @@ describe('cloud sync remote repository', () => {
     expect(mockedCloud.sets.at(-1)?.[0]).toMatchObject({ path: expect.stringMatching(/\/library\/manifest$/) })
   })
 
+  it('does not re-upload unchanged content-addressed chunks', async () => {
+    const library = makeLargeLibrary(2)
+    const chunks = buildV5LibraryChunks('cloud-user', library)
+    const manifest = buildV5LibraryManifest('cloud-user', chunks, library.updatedAt)
+    setupSuccessfulTransaction(manifest)
+    mockedCloud.getDocsFromServer.mockResolvedValue({ docs: [] })
+
+    const result = await writeCloudLibraryChunksV5(
+      {} as Firestore,
+      'cloud-user',
+      library,
+      new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])),
+      manifest.revision,
+    )
+
+    expect(result.conflicted).toBe(false)
+    expect(mockedCloud.batchSets).toHaveLength(0)
+    expect(mockedCloud.sets.at(-1)?.[0]).toMatchObject({ path: expect.stringMatching(/\/library\/manifest$/) })
+  })
+
   it('reads and writes a large library in ordered groups of at most eight chunks', async () => {
     const library = makeLargeLibrary()
     const chunks = buildV5LibraryChunks('cloud-user', library)

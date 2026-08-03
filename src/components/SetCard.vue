@@ -57,7 +57,7 @@ function moveSet(folderId: string) {
 
 <template>
   <Card
-    class="relative overflow-visible p-5 text-left sm:p-6"
+    class="relative overflow-visible p-4 text-left sm:p-5"
     :class="active ? 'ring-2 ring-accent-primary/25 border-accent-primary/30' : ''"
   >
     <div class="flex items-start justify-between gap-4">
@@ -69,14 +69,14 @@ function moveSet(folderId: string) {
           <Badge
             v-if="active"
             variant="default"
-            class="rounded-lg px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider"
+            class="rounded-lg px-2 py-0.5 text-[0.625rem] font-extrabold uppercase tracking-wider"
           >
             {{ $t('home.inProgress') }}
           </Badge>
           <Badge
             v-if="dueCount > 0"
             variant="secondary"
-            class="rounded-lg px-2 py-0.5 text-[10px] font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
+            class="rounded-lg px-2 py-0.5 text-[0.625rem] font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
           >
             <Flame class="mr-1 inline h-3 w-3" />
             {{ dueCount }} {{ $t('learning.due') }}
@@ -108,7 +108,7 @@ function moveSet(folderId: string) {
         </button>
 
         <div class="my-1 border-t border-ink-200/70 dark:border-ink-700/70" />
-        <p class="px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-400 dark:text-ink-500">
+        <p class="px-3 py-1.5 text-[0.6875rem] font-extrabold uppercase tracking-wider text-ink-400 dark:text-ink-500">
           {{ t('setCard.moveFolder') }}
         </p>
         <button v-for="folder in folderOptions" :key="folder.id" type="button" class="flex min-h-11 w-full items-center gap-2 rounded-xl py-2.5 pr-3 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="set.folderId === folder.id ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" :style="{ paddingLeft: `${0.75 + folder.depth * 0.75}rem` }" role="menuitem" :disabled="set.folderId === folder.id" @click="moveSet(folder.id)">

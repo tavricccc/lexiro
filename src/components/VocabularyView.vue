@@ -154,13 +154,13 @@ watch([() => route.query.action, () => route.query.questionId, () => currentSens
 </script>
 
 <template>
-  <section v-if="word" class="space-y-6 text-left">
+  <section v-if="word" class="space-y-5 text-left">
     <div class="flex flex-wrap items-end justify-between gap-4">
       <div>
         <Button variant="ghost" class="mb-3 -ml-3" @click="router.back()">
           {{ $t('vocabulary.back') }}
         </Button>
-        <h1 class="text-3xl font-black tracking-tight">
+        <h1 class="text-2xl font-black tracking-tight">
           {{ word.word }}
         </h1>
         <p class="mt-1 text-sm font-semibold text-ink-500">

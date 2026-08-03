@@ -82,19 +82,43 @@ service cloud.firestore {
 
     function validLibraryManifest() {
       return request.resource.data.keys().hasOnly([
-        'ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks'
+        'ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks', 'manifestParts'
       ])
         && request.resource.data.ownerId is string
         && request.resource.data.schemaVersion == 5
         && request.resource.data.documentType == 'library-manifest'
         && request.resource.data.updatedAt is string
         && request.resource.data.revision is string
+        && request.resource.data.chunks is map
+        && (!request.resource.data.keys().hasAny(['manifestParts']) || request.resource.data.manifestParts is map);
+    }
+
+    function validLibraryManifestPart(partId) {
+      return request.resource.data.keys().hasOnly([
+        'ownerId', 'schemaVersion', 'documentType', 'partId', 'updatedAt', 'checksum', 'chunks'
+      ])
+        && request.resource.data.ownerId is string
+        && request.resource.data.schemaVersion == 5
+        && request.resource.data.documentType == 'library-manifest-part'
+        && request.resource.data.partId == partId
+        && request.resource.data.partId.matches('manifest-part-[0-9]{4}')
+        && request.resource.data.updatedAt is string
+        && request.resource.data.checksum is string
         && request.resource.data.chunks is map;
     }
 
-    function manifestDoesNotReference(uid, chunkId) {
+    function validLibraryDocument(documentId) {
+      return validLibraryChunk(documentId) || validLibraryManifestPart(documentId);
+    }
+
+    function manifestDoesNotReference(uid, documentId) {
       return !exists(/databases/$(database)/documents/users/$(uid)/library/manifest)
-        || !get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.chunks.keys().hasAny([chunkId]);
+        || (
+          (!get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.keys().hasAny(['chunks'])
+            || !get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.chunks.keys().hasAny([documentId]))
+          && (!get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.keys().hasAny(['manifestParts'])
+            || !get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.manifestParts.keys().hasAny([documentId]))
+        );
     }
 
     match /users/{uid} {
@@ -110,10 +134,10 @@ service cloud.firestore {
 
       match /library/{chunkId} {
         allow read: if signedIn(uid);
-        allow create: if ownerCreate(uid) && validLibraryChunk(chunkId);
-        // v5 chunks are content-addressed and immutable. Replaying an
-        // identical write is harmless, but changing a published chunk is not.
-        allow update: if ownerUpdate(uid) && validLibraryChunk(chunkId) && request.resource.data == resource.data;
+        allow create: if ownerCreate(uid) && validLibraryDocument(chunkId);
+        // v5 chunks and manifest parts are immutable. Replaying an identical
+        // write is harmless, but changing a published document is not.
+        allow update: if ownerUpdate(uid) && validLibraryDocument(chunkId) && request.resource.data == resource.data;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid && manifestDoesNotReference(uid, chunkId);
       }
 

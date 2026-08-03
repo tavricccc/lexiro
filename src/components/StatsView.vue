@@ -133,14 +133,14 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
 </script>
 
 <template>
-  <section class="space-y-6 text-left">
+  <section class="space-y-5 text-left">
     <div>
-      <h1 class="text-3xl font-black tracking-tight">
+      <h1 class="text-2xl font-black tracking-tight">
         {{ $t('stats.title') }}
       </h1>
     </div>
 
-    <Card v-if="!sets.length" class="mx-auto max-w-xl p-8 text-center">
+    <Card v-if="!sets.length" class="mx-auto max-w-xl p-6 text-center">
       <BarChart3 class="mx-auto h-8 w-8 text-accent-primary" />
       <h2 class="mt-4 text-xl font-black">
         {{ $t('stats.emptyTitle') }}
@@ -154,7 +154,7 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
     </Card>
 
     <template v-else-if="!studyIndexReady">
-      <Card class="mx-auto max-w-xl p-8 text-center" role="status" aria-live="polite">
+      <Card class="mx-auto max-w-xl p-6 text-center" role="status" aria-live="polite">
         <BarChart3 class="mx-auto h-8 w-8 text-accent-primary" />
         <h2 class="mt-4 text-xl font-black">
           {{ studyIndexError ? $t('stats.loadingFailed') : $t('stats.loading') }}
@@ -174,7 +174,7 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
       <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Card class="p-5">
           <Target class="h-5 w-5 text-ink-500" />
-          <p class="mt-4 text-3xl font-black">
+          <p class="mt-3 text-2xl font-black">
             {{ memoryStats.total }}
           </p>
           <p class="mt-1 text-xs font-bold text-ink-500">
@@ -183,7 +183,7 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
         </Card>
         <Card class="p-5">
           <TrendingUp class="h-5 w-5 text-ink-500" />
-          <p class="mt-4 text-3xl font-black">
+          <p class="mt-3 text-2xl font-black">
             {{ memoryStats.accuracy }}%
           </p>
           <p class="mt-1 text-xs font-bold text-ink-500">
@@ -192,7 +192,7 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
         </Card>
         <Card class="p-5">
           <Flame class="h-5 w-5 text-ink-500" />
-          <p class="mt-4 text-3xl font-black">
+          <p class="mt-3 text-2xl font-black">
             {{ stats.streakDays }}
           </p>
           <p class="mt-1 text-xs font-bold text-ink-500">
@@ -204,7 +204,7 @@ const questionStatRows = computed(() => Object.entries(scopedQuestionStats.value
         </Card>
         <Card class="p-5">
           <Gauge class="h-5 w-5 text-ink-500" />
-          <p class="mt-4 text-3xl font-black">
+          <p class="mt-3 text-2xl font-black">
             {{ stats.level }}
           </p>
           <p class="mt-1 text-xs font-bold text-ink-500">

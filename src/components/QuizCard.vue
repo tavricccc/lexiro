@@ -106,7 +106,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
-  <Card v-if="question" :class="cn('p-5 sm:p-8', feedbackClass)">
+  <Card v-if="question" :class="cn('p-4 sm:p-6', feedbackClass)">
     <div class="mb-4 flex justify-end">
       <Button
         variant="outline"
@@ -121,7 +121,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
         <span>{{ props.markedForReview ? $t('practice.markedForReview') : $t('practice.markForReview') }}</span>
       </Button>
     </div>
-    <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-5 text-left">
+    <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-4 text-left">
       <div v-if="entry.readingPassage" class="mb-5 rounded-xl border border-ink-200/60 bg-white/70 p-4 text-sm leading-relaxed text-ink-700 dark:border-ink-200/15 dark:bg-ink-950/30 dark:text-ink-200">
         <p class="mb-2 text-xs font-extrabold uppercase tracking-widest text-ink-400">
           {{ $t('practice.reading') }}
@@ -136,7 +136,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           {{ $t('practice.difficultyLabel', { difficulty: $t(`library.difficulty${question.difficulty}`) }) }}
         </span>
       </div>
-      <p class="mt-3 text-[15px] leading-relaxed text-ink-950 dark:text-ink-50 font-bold sm:text-base">
+      <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-950 dark:text-ink-50 font-bold sm:text-base">
         <template v-if="!answered && hasBlank">
           {{ promptParts[0] }}
           <span class="mx-1.5 inline-block w-16 border-b-2 border-ink-300 dark:border-ink-500 align-middle" />
@@ -173,7 +173,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 
     <div
       v-if="answered"
-      class="mt-6 rounded-2xl border border-ink-200/70 bg-white/80 p-5 text-left transition-all duration-300 dark:border-ink-200/25 dark:bg-ink-900"
+      class="mt-5 rounded-2xl border border-ink-200/70 bg-white/80 p-4 text-left transition-all duration-300 dark:border-ink-200/25 dark:bg-ink-900"
       role="status"
       aria-live="polite"
     >

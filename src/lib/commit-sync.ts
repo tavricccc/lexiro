@@ -3,9 +3,10 @@ import { useUIStore } from '@/stores/ui'
 import { i18n } from './i18n'
 
 /**
- * Business forms commit locally first. A cloud failure must not roll back the
- * local transaction; the outbox and pending indicator keep the change queued
- * for the next explicit sync attempt.
+ * Business forms commit locally first so a failed network request cannot lose
+ * the edit. While online, the caller remains blocked until the ordered cloud
+ * write succeeds; the outbox is only the recovery path for offline or failed
+ * requests.
  */
 export async function syncAfterLocalCommit(): Promise<boolean> {
   const cloudStore = useCloudSyncStore()

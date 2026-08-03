@@ -635,6 +635,7 @@ export default {
     accountMenu: '開啟帳號與備份選單',
     localMode: '本機學習模式',
     syncNow: '立即同步',
+    autoUpdating: '偵測到雲端更新，正在自動同步…',
     retry: '重新連線',
     cancel: '取消同步',
     cloudTitle: '雲端同步',

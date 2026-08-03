@@ -146,9 +146,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section v-if="displaySet && resultSummary" class="space-y-6">
-    <Card id="completion-panel" class="p-5 sm:p-8 text-left transition-all duration-300 animate-celebration-pop">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-ink-200/50 dark:border-ink-200/10">
+  <section v-if="displaySet && resultSummary" class="space-y-5">
+    <Card id="completion-panel" class="p-4 sm:p-6 text-left transition-all duration-300 animate-celebration-pop">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-ink-200/50 dark:border-ink-200/10">
         <div class="flex items-start gap-4">
           <span
             class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/20 shadow-sm"
@@ -161,7 +161,7 @@ onMounted(() => {
           </span>
           <div class="space-y-1">
             <div class="flex items-center gap-2 flex-wrap">
-              <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
+              <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
                 {{ resultSummary.review ? $t('result.reviewCompleted') : $t('result.completed') }}
               </h2>
               <Badge v-if="isPerfect" variant="success" class="gap-1 animate-celebration-pop">
@@ -189,14 +189,14 @@ onMounted(() => {
       </div>
 
       <!-- Action Area with Primary CTA vs Secondary Action Hierarchy -->
-      <div class="mt-6 space-y-4">
+      <div class="mt-5 space-y-3">
         <!-- Recommended Primary CTA -->
         <div class="flex flex-wrap items-center gap-3">
           <Button
             v-if="resultSummary.wrongCount"
             variant="default"
             size="lg"
-            class="gap-2 shadow-md hover:shadow-lg transition-all text-base px-6 font-bold"
+            class="gap-2 shadow-md hover:shadow-lg transition-all text-sm px-5 font-bold"
             @click="reviewWrongAnswers"
           >
             <BookOpenText class="h-5 w-5" />
@@ -208,7 +208,7 @@ onMounted(() => {
             v-else
             variant="default"
             size="lg"
-            class="gap-2 shadow-md hover:shadow-lg transition-all text-base px-6 font-bold"
+            class="gap-2 shadow-md hover:shadow-lg transition-all text-sm px-5 font-bold"
             @click="switchModeAfterResult"
           >
             <BookOpenText class="h-5 w-5" />
@@ -263,7 +263,7 @@ onMounted(() => {
         {{ aiError }}
       </StatusMessage>
 
-      <Card v-if="allAiResponse" class="mt-5 border-accent-primary/15 bg-accent-primary/5 p-5 text-left">
+      <Card v-if="allAiResponse" class="mt-4 border-accent-primary/15 bg-accent-primary/5 p-4 text-left">
         <p class="text-sm font-extrabold text-accent-primary">
           {{ $t('result.aiResponseTitle') }}
         </p>

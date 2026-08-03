@@ -170,12 +170,12 @@ async function signIn() {
   <section class="space-y-5 text-left">
     <div class="flex items-end justify-between gap-4">
       <div>
-        <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">
+        <h1 class="text-2xl font-bold tracking-tight">
           {{ $t('settings.title') }}
         </h1>
       </div>
     </div>
-    <Card class="p-5 sm:p-6">
+    <Card class="p-4 sm:p-5">
       <div class="flex items-start gap-4">
         <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-ink-100 dark:bg-ink-900">
           <KeyRound class="h-5 w-5" />
@@ -186,7 +186,7 @@ async function signIn() {
         </div>
       </div>
       <fieldset :disabled="pendingAiSave" class="contents">
-        <div class="mt-7">
+        <div class="mt-5">
           <p class="text-xs font-semibold text-ink-500">
             {{ $t('settings.aiMode') }}
           </p>
@@ -223,7 +223,7 @@ async function signIn() {
           </div>
         </div>
       </fieldset>
-      <div class="mt-6 flex flex-wrap items-center gap-2">
+      <div class="mt-5 flex flex-wrap items-center gap-2">
         <Button variant="default" class="gap-2" @click="save">
           <Save class="h-4 w-4" />
           <span>{{ $t('settings.save') }}</span>
@@ -250,7 +250,7 @@ async function signIn() {
         <span>{{ $t('settings.keySafety') }}</span>
       </div>
     </Card>
-    <Card class="p-5 sm:p-6">
+    <Card class="p-4 sm:p-5">
       <div class="flex items-start gap-4">
         <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-ink-100 dark:bg-ink-900">
           <Check class="h-5 w-5" />
@@ -265,7 +265,7 @@ async function signIn() {
         </div>
       </div>
       <fieldset :disabled="pendingDailySave" class="contents">
-        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
           <label class="text-xs font-black text-ink-500">
             {{ $t('settings.dailyWordGoalLabel') }}
             <Select v-model="dailyWordGoalDraft" :options="dailyWordGoalOptions" class="mt-2" />
@@ -283,7 +283,7 @@ async function signIn() {
         <span v-if="dailySaved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600"><Check class="h-3.5 w-3.5" />{{ $t('settings.saved') }}</span>
       </div>
     </Card>
-    <Card class="p-5 sm:p-6">
+    <Card class="p-4 sm:p-5">
       <div class="flex items-start gap-4">
         <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-ink-100 dark:bg-ink-900">
           <UserRound class="h-5 w-5" />

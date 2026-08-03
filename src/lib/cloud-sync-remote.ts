@@ -1,11 +1,11 @@
 import type { DocumentData, Firestore, QueryDocumentSnapshot, QuerySnapshot } from 'firebase/firestore'
 import type { AtomicDocumentWrite, ConditionalWriteResult } from './firestore-cas'
-import type { AiSettings, DashboardStats, FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreLibraryV5Chunk, FirestoreProgressDoc, FirestoreStatsDoc, LearningProgress, LibraryState } from '@/types'
+import type { AiSettings, DashboardStats, FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreProgressDoc, FirestoreStatsDoc, LearningProgress, LibraryState } from '@/types'
 import { collection, doc, documentId, getDocFromServer, getDocsFromServer, limit, orderBy, query, runTransaction, startAfter, writeBatch } from 'firebase/firestore'
 import { CLOUD_LIBRARY_BATCH_SIZE, CLOUD_SCHEMA_VERSION, LIBRARY_CLOUD_SCHEMA_VERSION } from '@/constants'
 import { getShareableAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
-import { buildLibraryChunks, buildLibraryManifest, buildV5LibraryChunks, buildV5LibraryManifest, combineLibraryChunks, combineV5LibraryChunks, normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats, validateLibraryChunk, validateLibraryManifest, validateV5LibraryChunk, validateV5LibraryManifest } from './cloud-sync-schema'
+import { buildLibraryChunks, buildLibraryManifest, buildV5LibraryChunks, buildV5LibraryManifestDocuments, combineLibraryChunks, combineV5LibraryChunks, normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats, validateLibraryChunk, validateLibraryManifest, validateV5LibraryChunk, validateV5LibraryManifest, validateV5LibraryManifestPart } from './cloud-sync-schema'
 import { getFirebaseFirestore } from './firebase'
 import { setDocIfUnchanged, writeDocumentsIfUnchanged } from './firestore-cas'
 import { prepareFirestoreData } from './firestore-data'
@@ -66,13 +66,32 @@ function parseCloudV5Documents(documents: Array<{ id: string, data: () => Docume
   if (!manifestDocument)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少 manifest')
   const manifest = validateV5LibraryManifest(manifestDocument.data(), uid)
+  const manifestParts = new Map<string, FirestoreLibraryManifestPart>()
+  for (const partId of Object.keys(manifest.manifestParts ?? {})) {
+    const partDocument = documents.find(item => item.id === partId)
+    if (!partDocument)
+      throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 缺少 manifest part')
+    const part = validateV5LibraryManifestPart(partDocument.data(), uid, partId)
+    if (manifest.manifestParts?.[partId] !== part.checksum || part.updatedAt !== manifest.updatedAt)
+      throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library manifest part 不屬於目前 manifest')
+    manifestParts.set(partId, part)
+  }
+  const resolvedChunks: Record<string, string> = {}
+  for (const part of manifestParts.values()) {
+    for (const [chunkId, checksum] of Object.entries(part.chunks)) {
+      if (resolvedChunks[chunkId] !== undefined)
+        throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest part 包含重複 chunk')
+      resolvedChunks[chunkId] = checksum
+    }
+  }
+  const chunkChecksums = Object.keys(manifest.manifestParts ?? {}).length ? resolvedChunks : manifest.chunks
   // Old generations may still be present while post-publication cleanup is
   // running. Only manifest-referenced v5 chunks belong to this read.
-  const chunkDocuments = documents.filter(item => item.id !== 'manifest' && item.id in manifest.chunks)
-  if (chunkDocuments.length !== Object.keys(manifest.chunks).length || chunkDocuments.some(item => !(item.id in manifest.chunks)))
+  const chunkDocuments = documents.filter(item => item.id !== 'manifest' && !manifestParts.has(item.id) && item.id in chunkChecksums)
+  if (chunkDocuments.length !== Object.keys(chunkChecksums).length || chunkDocuments.some(item => !(item.id in chunkChecksums)))
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
   const chunks = chunkDocuments.map(item => validateV5LibraryChunk(item.data(), uid, item.id))
-  if (chunks.some(chunk => manifest.chunks[chunk.chunkId] !== chunk.checksum || chunk.updatedAt !== manifest.updatedAt))
+  if (chunks.some(chunk => chunkChecksums[chunk.chunkId] !== chunk.checksum))
     throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library v5 chunk 不屬於目前 manifest')
   return { library: combineV5LibraryChunks(chunks), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision }
 }
@@ -106,7 +125,46 @@ export interface CloudLibraryBatch {
 
 export interface CloudLibraryReadOptions {
   existingChunks?: ReadonlyMap<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>
+  loadExistingChunks?: (chunkIds: readonly string[], checksums: ReadonlyMap<string, string>) => Promise<ReadonlyMap<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>>
+  cachedRevision?: string
+  cachedHashes?: ReadonlyMap<string, string>
   manifestData?: unknown
+}
+
+async function resolveV5Manifest(db: Firestore, uid: string, manifest: FirestoreLibraryV5Manifest): Promise<{ manifest: FirestoreLibraryV5Manifest, checksums: Record<string, string> }> {
+  if (!manifest.manifestParts || !Object.keys(manifest.manifestParts).length)
+    return { manifest, checksums: manifest.chunks }
+  const parts = await Promise.all(Object.keys(manifest.manifestParts).map(async (partId) => {
+    const snapshot = await withSyncTimeout(
+      getDocFromServer(cloudDocument(db, uid, 'library', partId)),
+      `Library manifest part ${partId} download`,
+    )
+    if (!snapshot.exists())
+      throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 缺少 manifest part')
+    const part = validateV5LibraryManifestPart(snapshot.data(), uid, partId)
+    if (manifest.manifestParts?.[partId] !== part.checksum || part.updatedAt !== manifest.updatedAt)
+      throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library manifest part 不屬於目前 manifest')
+    return part
+  }))
+  const checksums: Record<string, string> = {}
+  for (const part of parts) {
+    for (const [chunkId, checksum] of Object.entries(part.chunks)) {
+      if (checksums[chunkId] !== undefined)
+        throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest part 包含重複 chunk')
+      checksums[chunkId] = checksum
+    }
+  }
+  return { manifest: { ...manifest, chunks: checksums }, checksums }
+}
+
+async function loadExistingChunksForManifest(options: CloudLibraryReadOptions, checksums: Record<string, string>): Promise<ReadonlyMap<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>> {
+  const loaded = options.loadExistingChunks
+    ? await options.loadExistingChunks(Object.keys(checksums), new Map(Object.entries(checksums)))
+    : new Map<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>()
+  return new Map([
+    ...loaded.entries(),
+    ...(options.existingChunks ? options.existingChunks.entries() : []),
+  ])
 }
 
 const LIBRARY_WRITE_LOCK_ID = 'v5-write'
@@ -192,8 +250,15 @@ export async function readCloudLibraryV5(
     const manifest = validateLibraryManifest(data, uid)
     return readLegacyCloudLibraryInBatches(db, uid, manifest, onProgress, onBatch, options)
   }
-  const manifest = validateV5LibraryManifest(data, uid)
-  const ids = Object.keys(manifest.chunks)
+  const rootManifest = validateV5LibraryManifest(data, uid)
+  const cachedHashes = options.cachedRevision === rootManifest.revision && options.cachedHashes?.size
+    ? Object.fromEntries(options.cachedHashes)
+    : null
+  const { manifest, checksums } = cachedHashes
+    ? { manifest: { ...rootManifest, chunks: cachedHashes }, checksums: cachedHashes }
+    : await resolveV5Manifest(db, uid, rootManifest)
+  const ids = Object.keys(checksums)
+  const existingChunks = await loadExistingChunksForManifest(options, checksums)
   const totalBatches = Math.max(1, Math.ceil(ids.length / CLOUD_LIBRARY_BATCH_SIZE))
   onProgress?.({ currentBatch: 0, totalBatches, completed: 0, total: ids.length })
   const chunks: FirestoreLibraryV5Chunk[] = []
@@ -203,12 +268,12 @@ export async function readCloudLibraryV5(
     const batchChunks: FirestoreLibraryV5Chunk[] = []
     const newChunks: FirestoreLibraryV5Chunk[] = []
     for (const id of batchIds) {
-      const existing = options.existingChunks?.get(id)
+      const existing = existingChunks.get(id)
       let chunk: FirestoreLibraryV5Chunk
       if (existing) {
         try {
           const cached = validateV5LibraryChunk(existing, uid, id)
-          if (manifest.chunks[id] !== cached.checksum || cached.updatedAt !== manifest.updatedAt)
+          if (checksums[id] !== cached.checksum)
             throw new Error('staged chunk belongs to another manifest')
           chunk = cached
         }
@@ -221,7 +286,7 @@ export async function readCloudLibraryV5(
         chunk = await readV5Chunk(db, uid, id)
         newChunks.push(chunk)
       }
-      if (manifest.chunks[id] !== chunk.checksum || chunk.updatedAt !== manifest.updatedAt)
+      if (checksums[id] !== chunk.checksum)
         throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library v5 chunk 不屬於目前 manifest')
       batchChunks.push(chunk)
       chunks.push(chunk)
@@ -248,6 +313,7 @@ async function readLegacyCloudLibraryInBatches(
   if (!ids.length)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 缺少 chunks')
   const totalBatches = Math.ceil(ids.length / CLOUD_LIBRARY_BATCH_SIZE)
+  const existingChunks = await loadExistingChunksForManifest(options, manifest.chunks)
   onProgress?.({ currentBatch: 0, totalBatches, completed: 0, total: ids.length })
   const chunks: FirestoreLibraryChunk[] = []
   for (let offset = 0; offset < ids.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
@@ -256,7 +322,7 @@ async function readLegacyCloudLibraryInBatches(
     const batchChunks: FirestoreLibraryChunk[] = []
     const newChunks: FirestoreLibraryChunk[] = []
     for (const id of batchIds) {
-      const existing = options.existingChunks?.get(id)
+      const existing = existingChunks.get(id)
       let chunk: FirestoreLibraryChunk
       if (existing) {
         try {
@@ -349,22 +415,32 @@ export async function writeCloudLibraryChunksV5(
   knownHashes: ReadonlyMap<string, string>,
   knownRevision = '',
   onProgress?: (progress: CloudLibraryBatchProgress) => void,
-): Promise<{ conflicted: boolean, hashes: Map<string, string>, revision: string }> {
+): Promise<{ conflicted: boolean, hashes: Map<string, string>, revision: string, chunks: FirestoreLibraryV5Chunk[] }> {
   const chunks = buildV5LibraryChunks(uid, library)
-  const manifest = buildV5LibraryManifest(uid, chunks, library.updatedAt)
+  const manifestDocuments = buildV5LibraryManifestDocuments(uid, chunks, library.updatedAt)
+  const manifest = manifestDocuments.manifest
+  const changedChunks = chunks.filter(chunk => knownHashes.get(chunk.chunkId) !== chunk.checksum)
   const totalBatches = Math.max(1, Math.ceil(chunks.length / CLOUD_LIBRARY_BATCH_SIZE))
   onProgress?.({ currentBatch: 0, totalBatches, completed: 0, total: chunks.length })
   const lease = await acquireLibraryWriteLease(db, uid)
   try {
-    for (let offset = 0; offset < chunks.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
+    for (let offset = 0; offset < changedChunks.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
       await lease.refresh()
       const currentBatch = Math.floor(offset / CLOUD_LIBRARY_BATCH_SIZE) + 1
-      const batch = chunks.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE)
+      const batch = changedChunks.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE)
       const writeBatchOperation = writeBatch(db)
       for (const chunk of batch)
         writeBatchOperation.set(cloudDocument(db, uid, 'library', chunk.chunkId), prepareFirestoreData(chunk))
       await withSyncTimeout(writeBatchOperation.commit(), `Library upload batch ${currentBatch}`)
       onProgress?.({ currentBatch, totalBatches, completed: Math.min(offset + batch.length, chunks.length), total: chunks.length })
+    }
+    for (let offset = 0; offset < manifestDocuments.parts.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
+      await lease.refresh()
+      const batch = manifestDocuments.parts.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE)
+      const writeBatchOperation = writeBatch(db)
+      for (const part of batch)
+        writeBatchOperation.set(cloudDocument(db, uid, 'library', part.partId), prepareFirestoreData(part))
+      await withSyncTimeout(writeBatchOperation.commit(), `Library manifest part publish batch ${Math.floor(offset / CLOUD_LIBRARY_BATCH_SIZE) + 1}`)
     }
     await lease.refresh()
     const result = await setDocIfUnchanged(
@@ -384,11 +460,11 @@ export async function writeCloudLibraryChunksV5(
       },
     )
     if (!result.written)
-      return { conflicted: true, hashes: new Map(knownHashes), revision: knownRevision }
+      return { conflicted: true, hashes: new Map(knownHashes), revision: knownRevision, chunks }
     const liveIds = new Set(chunks.map(chunk => chunk.chunkId))
-    await cleanupUnreferencedV5Chunks(db, uid, liveIds, knownHashes, lease.refresh)
+    await cleanupUnreferencedV5Chunks(db, uid, liveIds, new Set(manifestDocuments.parts.map(part => part.partId)), knownHashes, lease.refresh)
     onProgress?.({ currentBatch: totalBatches, totalBatches, completed: chunks.length, total: chunks.length })
-    return { conflicted: false, hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision }
+    return { conflicted: false, hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision, chunks }
   }
   finally {
     await lease.release()
@@ -399,11 +475,12 @@ async function cleanupUnreferencedV5Chunks(
   db: Firestore,
   uid: string,
   liveIds: ReadonlySet<string>,
+  liveManifestPartIds: ReadonlySet<string>,
   knownHashes: ReadonlyMap<string, string>,
   refreshLease: () => Promise<void>,
 ): Promise<void> {
   try {
-    const knownStaleIds = Array.from(knownHashes.keys()).filter(id => !liveIds.has(id))
+    const knownStaleIds = Array.from(knownHashes.keys()).filter(id => id.startsWith('chunk-') && !liveIds.has(id))
     const scannedStaleIds: string[] = []
     const libraryReference = cloudCollection(db, uid, 'library')
     let cursor: QueryDocumentSnapshot<DocumentData> | null = null
@@ -416,8 +493,10 @@ async function cleanupUnreferencedV5Chunks(
         'Library cleanup scan',
       )
       for (const document of snapshot.docs) {
-        if (document.id !== 'manifest' && !liveIds.has(document.id))
+        if ((document.id.startsWith('chunk-') && !liveIds.has(document.id))
+          || (document.id.startsWith('manifest-part-') && !liveManifestPartIds.has(document.id))) {
           scannedStaleIds.push(document.id)
+        }
       }
       cursor = snapshot.docs.length === CLOUD_LIBRARY_BATCH_SIZE
         ? snapshot.docs.at(-1) ?? null

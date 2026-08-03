@@ -22,7 +22,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <Card class="p-5">
+  <Card class="p-4 sm:p-5">
     <h2 class="text-lg font-black">
       {{ $t('vocabulary.currentSenses') }}
     </h2>
@@ -44,8 +44,8 @@ const emit = defineEmits<{
     </p>
   </Card>
 
-  <Card v-if="otherSenses.length" class="p-5">
-    <button type="button" class="flex min-h-11 w-full items-center justify-between text-left text-lg font-black" :aria-expanded="otherExpanded" @click="emit('update:otherExpanded', !otherExpanded)">
+  <Card v-if="otherSenses.length" class="p-4 sm:p-5">
+    <button type="button" class="flex min-h-11 w-full items-center justify-between text-left text-base font-black" :aria-expanded="otherExpanded" @click="emit('update:otherExpanded', !otherExpanded)">
       <span>{{ $t('vocabulary.otherSenses') }}</span><ChevronDown v-if="otherExpanded" class="h-5 w-5 text-ink-400" /><ChevronRight v-else class="h-5 w-5 text-ink-400" />
     </button>
     <div v-if="otherExpanded" class="mt-4 space-y-3">

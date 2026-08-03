@@ -146,7 +146,7 @@ async function deleteQuestion(question: LibraryQuestion) {
         </div>
       </Card>
     </div>
-    <Card v-else class="p-8 text-center text-sm font-semibold text-ink-400">
+    <Card v-else class="p-6 text-center text-sm font-semibold text-ink-400">
       {{ $t('set.noQuestions') }}
     </Card>
   </section>

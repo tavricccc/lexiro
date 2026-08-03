@@ -130,12 +130,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
     <Progress :model-value="reviewProgress" class="h-2" />
 
     <motion.div :initial="{ opacity: 0, y: 12 }" :animate="{ opacity: 1, y: 0 }" :transition="{ type: 'spring', stiffness: 260, damping: 24 }">
-      <Card class="p-6 text-center sm:p-10">
+      <Card class="p-5 text-center sm:p-6">
         <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400">
           {{ $t('learning.rememberPrompt') }}
         </p>
         <div class="mt-5 flex items-center justify-center gap-3">
-          <h2 class="break-words text-4xl font-extrabold tracking-tight text-accent-primary sm:text-5xl">
+          <h2 class="break-words text-3xl font-extrabold tracking-tight text-accent-primary sm:text-4xl">
             {{ currentReviewEntry.item.word }}
           </h2>
           <Button variant="ghost" size="icon" :aria-label="$t('learning.speak')" @click="speak">
@@ -146,7 +146,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           {{ currentReviewEntry.item.pos }}
         </p>
 
-        <div v-if="reviewAnswered" class="mt-8 rounded-2xl bg-ink-100/80 p-5 text-left dark:bg-ink-900" role="status" aria-live="polite">
+        <div v-if="reviewAnswered" class="mt-6 rounded-2xl bg-ink-100/80 p-4 text-left dark:bg-ink-900" role="status" aria-live="polite">
           <p class="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">
             {{ $t('learning.answerRevealed') }}
           </p>
@@ -158,14 +158,14 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           </p>
         </div>
 
-        <div v-else class="mt-8 rounded-2xl border border-dashed border-ink-300 p-5 text-sm font-semibold text-ink-400 dark:border-ink-700">
+        <div v-else class="mt-6 rounded-2xl border border-dashed border-ink-300 p-4 text-sm font-semibold text-ink-400 dark:border-ink-700">
           {{ $t('learning.chooseRating') }}
         </div>
 
         <div v-if="!reviewAnswered" class="mt-6 grid grid-cols-2 gap-3">
-          <Button v-for="rating in ratingKeys" :key="rating" variant="outline" class="h-auto min-h-14 flex-col gap-1 rounded-2xl" @click="rate(rating)">
+          <Button v-for="rating in ratingKeys" :key="rating" variant="outline" class="h-auto min-h-12 flex-col gap-1 rounded-2xl" @click="rate(rating)">
             <span class="font-extrabold">{{ $t(`learning.rating.${rating}`) }}</span>
-            <span class="text-[11px] font-semibold text-ink-400">{{ $t(`learning.ratingHint.${rating}`) }}</span>
+            <span class="text-[0.6875rem] font-semibold text-ink-400">{{ $t(`learning.ratingHint.${rating}`) }}</span>
           </Button>
         </div>
         <Button v-else variant="default" class="mt-6 w-full gap-2 sm:w-auto" @click="next">
@@ -173,7 +173,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           <Check v-if="reviewIndex + 1 >= reviewTotal" class="h-4 w-4" />
           <ChevronRight v-else class="h-4 w-4" />
         </Button>
-        <p class="mt-5 text-[11px] font-semibold text-ink-400 keyboard-hint">
+        <p class="mt-5 text-[0.6875rem] font-semibold text-ink-400 keyboard-hint">
           {{ $t('learning.keyboardHint') }}
         </p>
       </Card>

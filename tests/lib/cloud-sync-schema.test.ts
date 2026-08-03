@@ -1,7 +1,7 @@
-import type { LibraryState } from '@/types'
+import type { FirestoreLibraryV5Chunk, LibraryState } from '@/types'
 import { describe, expect, it } from 'vitest'
-import { MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
-import { buildLibraryChunks, buildLibraryManifest, combineLibraryChunks, normalizeCloudAiSettings, validateLibraryChunk, validateLibraryManifest } from '@/lib/cloud-sync-schema'
+import { MAX_LIBRARY_CHUNK_BYTES, MAX_LIBRARY_MANIFEST_BYTES } from '@/constants/cloud'
+import { buildLibraryChunks, buildLibraryManifest, buildV5LibraryChunks, buildV5LibraryManifestDocuments, combineLibraryChunks, normalizeCloudAiSettings, validateLibraryChunk, validateLibraryManifest, validateV5LibraryManifest, validateV5LibraryManifestPart } from '@/lib/cloud-sync-schema'
 import { createUncategorizedFolder } from '@/lib/folders'
 
 const library: LibraryState = {
@@ -43,6 +43,31 @@ describe('cloud sync schema', () => {
 
     expect(validateLibraryManifest(manifest, 'user-1')).toEqual(manifest)
     expect(() => validateLibraryManifest({ ...manifest, chunks: { ...manifest.chunks, 'words-001': 'tampered' } }, 'user-1')).toThrow('checksum')
+  })
+
+  it('splits an oversized v5 manifest into independently validated parts', () => {
+    const chunks = Array.from({ length: 8_000 }, (_, index) => ({
+      chunkId: `chunk-${index.toString(16).padStart(8, '0')}`,
+      checksum: 'a'.repeat(64),
+    } as FirestoreLibraryV5Chunk))
+    const documents = buildV5LibraryManifestDocuments('user-1', chunks, library.updatedAt)
+
+    expect(documents.parts.length).toBeGreaterThan(1)
+    expect(documents.manifest.chunks).toEqual({})
+    expect(Object.keys(documents.manifest.manifestParts ?? {})).toHaveLength(documents.parts.length)
+    expect(JSON.stringify(documents.manifest).length).toBeLessThan(MAX_LIBRARY_MANIFEST_BYTES)
+    expect(validateV5LibraryManifest(documents.manifest, 'user-1')).toEqual(documents.manifest)
+    for (const part of documents.parts)
+      expect(validateV5LibraryManifestPart(part, 'user-1', part.partId)).toEqual(part)
+  })
+
+  it('keeps unchanged v5 content reusable when the library timestamp advances', () => {
+    const first = buildV5LibraryChunks('user-1', library)
+    const newer = buildV5LibraryChunks('user-1', { ...library, updatedAt: '2026-08-02T00:00:00.000Z' })
+
+    expect(first.map(chunk => chunk.chunkId)).toEqual(newer.map(chunk => chunk.chunkId))
+    expect(first.map(chunk => chunk.checksum)).toEqual(newer.map(chunk => chunk.checksum))
+    expect(first.map(chunk => chunk.updatedAt)).not.toEqual(newer.map(chunk => chunk.updatedAt))
   })
 
   it('accepts Firestore-reordered nested map keys with the original checksum', () => {

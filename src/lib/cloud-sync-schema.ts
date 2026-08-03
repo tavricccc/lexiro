@@ -1,6 +1,6 @@
 import type { SyncRecords } from './sync-outbox'
-import type { AiSettings, DashboardStats, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
-import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, LIBRARY_CLOUD_SCHEMA_VERSION, MAX_LIBRARY_CHUNK_BYTES } from '@/constants/cloud'
+import type { AiSettings, DashboardStats, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
+import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, LIBRARY_CLOUD_SCHEMA_VERSION, MAX_LIBRARY_CHUNK_BYTES, MAX_LIBRARY_MANIFEST_BYTES } from '@/constants/cloud'
 import { getShareableAiSettings, normalizeAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
 import { canonicalHash, estimateJsonBytes } from './hash'
@@ -54,17 +54,24 @@ export function buildLibraryManifest(uid: string, chunks: FirestoreLibraryChunk[
 }
 
 function v5ChunkForSection(uid: string, library: LibraryState, section: LibrarySection, items: unknown[]): FirestoreLibraryV5Chunk {
-  const contentHash = canonicalHash({ section, items, updatedAt: library.updatedAt })
+  const contentHash = canonicalHash({ section, items })
   const chunkId = `chunk-${contentHash}`
   const base = {
     ownerId: uid,
-    schemaVersion: LIBRARY_CLOUD_SCHEMA_VERSION,
+    schemaVersion: 5,
     chunkId,
     updatedAt: library.updatedAt,
     section,
     items,
   } satisfies Omit<FirestoreLibraryV5Chunk, 'checksum'>
-  return { ...base, checksum: canonicalHash(base) }
+  const integrityBase = {
+    ownerId: base.ownerId,
+    schemaVersion: base.schemaVersion,
+    chunkId: base.chunkId,
+    section: base.section,
+    items: base.items,
+  }
+  return { ...base, checksum: canonicalHash(integrityBase) }
 }
 
 /** Builds immutable, content-addressed v5 chunks. */
@@ -95,9 +102,48 @@ export function buildV5LibraryChunks(uid: string, library: LibraryState): Firest
   return chunks
 }
 
-export function buildV5LibraryManifest(uid: string, chunks: FirestoreLibraryV5Chunk[], updatedAt: string): FirestoreLibraryV5Manifest {
+export interface V5LibraryManifestDocuments {
+  manifest: FirestoreLibraryV5Manifest
+  parts: FirestoreLibraryManifestPart[]
+}
+
+function buildV5ManifestPart(uid: string, updatedAt: string, index: number, chunks: Record<string, string>): FirestoreLibraryManifestPart {
+  const base = {
+    ownerId: uid,
+    schemaVersion: 5 as const,
+    documentType: 'library-manifest-part' as const,
+    partId: `manifest-part-${String(index + 1).padStart(4, '0')}`,
+    updatedAt,
+    chunks,
+  }
+  return { ...base, checksum: canonicalHash(base) }
+}
+
+const jsonEncoder = new TextEncoder()
+
+function jsonByteLength(value: unknown): number {
+  return jsonEncoder.encode(JSON.stringify(value)).byteLength
+}
+
+function manifestPartFixedBytes(uid: string, updatedAt: string, index: number): number {
+  return jsonByteLength({
+    ownerId: uid,
+    schemaVersion: 5,
+    documentType: 'library-manifest-part',
+    partId: `manifest-part-${String(index + 1).padStart(4, '0')}`,
+    updatedAt,
+    checksum: '00000000',
+    chunks: {},
+  }) - 2
+}
+
+function manifestEntryBytes(chunkId: string, checksum: string): number {
+  return jsonEncoder.encode(`${JSON.stringify(chunkId)}:${JSON.stringify(checksum)}`).byteLength
+}
+
+export function buildV5LibraryManifestDocuments(uid: string, chunks: FirestoreLibraryV5Chunk[], updatedAt: string): V5LibraryManifestDocuments {
   const checksums = Object.fromEntries(chunks.map(chunk => [chunk.chunkId, chunk.checksum]))
-  return {
+  const flatManifest: FirestoreLibraryV5Manifest = {
     ownerId: uid,
     schemaVersion: LIBRARY_CLOUD_SCHEMA_VERSION,
     documentType: 'library-manifest',
@@ -105,6 +151,49 @@ export function buildV5LibraryManifest(uid: string, chunks: FirestoreLibraryV5Ch
     revision: canonicalHash({ checksums, updatedAt }),
     chunks: checksums,
   }
+  if (estimateJsonBytes(flatManifest) <= MAX_LIBRARY_MANIFEST_BYTES)
+    return { manifest: flatManifest, parts: [] }
+
+  const parts: FirestoreLibraryManifestPart[] = []
+  let current: Record<string, string> = {}
+  let currentBytes = 2
+  let currentCount = 0
+  for (const [chunkId, checksum] of Object.entries(checksums)) {
+    const entryBytes = manifestEntryBytes(chunkId, checksum)
+    const candidateBytes = currentBytes === 2 ? currentBytes + entryBytes : currentBytes + 1 + entryBytes
+    if (currentCount > 0 && manifestPartFixedBytes(uid, updatedAt, parts.length) + candidateBytes > MAX_LIBRARY_MANIFEST_BYTES) {
+      parts.push(buildV5ManifestPart(uid, updatedAt, parts.length, current))
+      current = {}
+      currentBytes = 2
+      currentCount = 0
+    }
+    const nextBytes = currentBytes === 2 ? currentBytes + entryBytes : currentBytes + 1 + entryBytes
+    if (manifestPartFixedBytes(uid, updatedAt, parts.length) + nextBytes > MAX_LIBRARY_MANIFEST_BYTES)
+      throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest part 單一項目超過大小限制')
+    current[chunkId] = checksum
+    currentBytes = nextBytes
+    currentCount += 1
+  }
+  if (Object.keys(current).length)
+    parts.push(buildV5ManifestPart(uid, updatedAt, parts.length, current))
+
+  const manifestParts = Object.fromEntries(parts.map(part => [part.partId, part.checksum]))
+  const manifest: FirestoreLibraryV5Manifest = {
+    ownerId: uid,
+    schemaVersion: LIBRARY_CLOUD_SCHEMA_VERSION,
+    documentType: 'library-manifest',
+    updatedAt,
+    revision: canonicalHash({ manifestParts, updatedAt }),
+    chunks: {},
+    manifestParts,
+  }
+  if (estimateJsonBytes(manifest) > MAX_LIBRARY_MANIFEST_BYTES)
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 分片索引仍然過大')
+  return { manifest, parts }
+}
+
+export function buildV5LibraryManifest(uid: string, chunks: FirestoreLibraryV5Chunk[], updatedAt: string): FirestoreLibraryV5Manifest {
+  return buildV5LibraryManifestDocuments(uid, chunks, updatedAt).manifest
 }
 
 export function validateV5LibraryManifest(value: unknown, uid: string): FirestoreLibraryV5Manifest {
@@ -125,23 +214,64 @@ function validateLibraryManifestShape(value: unknown, uid: string, schemaVersion
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 格式錯誤')
   const source = value as Record<string, unknown>
-  const allowed = ['ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks']
+  const allowed = ['ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks', 'manifestParts']
+  const rawChunks = source.chunks
+  const rawManifestParts = source.manifestParts
+  const hasValidChunks = Boolean(rawChunks && typeof rawChunks === 'object' && !Array.isArray(rawChunks) && Object.entries(rawChunks).every(([chunkId, checksum]) => chunkId !== 'manifest' && typeof checksum === 'string'))
+  const hasValidManifestParts = Boolean(rawManifestParts && typeof rawManifestParts === 'object' && !Array.isArray(rawManifestParts) && Object.entries(rawManifestParts).every(([partId, checksum]) => partId.startsWith('manifest-part-') && typeof checksum === 'string'))
+  const hasInlineChunks = hasValidChunks && Object.keys(rawChunks as Record<string, unknown>).length > 0
+  const hasManifestParts = hasValidManifestParts && Object.keys(rawManifestParts as Record<string, unknown>).length > 0
   if (Object.keys(source).some(key => !allowed.includes(key))
     || source.ownerId !== uid
     || source.schemaVersion !== schemaVersion
     || source.documentType !== 'library-manifest'
     || typeof source.updatedAt !== 'string'
     || typeof source.revision !== 'string'
-    || !source.chunks
-    || typeof source.chunks !== 'object'
-    || Array.isArray(source.chunks)
-    || !Object.entries(source.chunks).every(([chunkId, checksum]) => chunkId !== 'manifest' && typeof checksum === 'string')) {
+    || !hasValidChunks
+    || (schemaVersion === LIBRARY_CLOUD_SCHEMA_VERSION && hasInlineChunks === hasManifestParts)
+    || (schemaVersion !== LIBRARY_CLOUD_SCHEMA_VERSION && rawManifestParts !== undefined)) {
     throw new CloudSyncError('cloud/schema-unsupported', 'Cloud library manifest schema 不受支援')
   }
   const manifest = source as unknown as FirestoreLibraryManifest
-  if (canonicalHash({ checksums: manifest.chunks, updatedAt: manifest.updatedAt }) !== manifest.revision)
+  const v5Manifest = manifest as FirestoreLibraryV5Manifest
+  const expectedRevision = v5Manifest.manifestParts && Object.keys(v5Manifest.manifestParts).length
+    ? canonicalHash({ manifestParts: v5Manifest.manifestParts, updatedAt: manifest.updatedAt })
+    : canonicalHash({ checksums: manifest.chunks, updatedAt: manifest.updatedAt })
+  if (expectedRevision !== manifest.revision)
     throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library manifest checksum 不一致')
   return manifest
+}
+
+export function validateV5LibraryManifestPart(value: unknown, uid: string, documentId: string): FirestoreLibraryManifestPart {
+  if (!value || typeof value !== 'object' || Array.isArray(value))
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest part 格式錯誤')
+  const source = value as Record<string, unknown>
+  const chunks = source.chunks
+  if (Object.keys(source).some(key => !['ownerId', 'schemaVersion', 'documentType', 'partId', 'updatedAt', 'checksum', 'chunks'].includes(key))
+    || source.ownerId !== uid
+    || source.schemaVersion !== LIBRARY_CLOUD_SCHEMA_VERSION
+    || source.documentType !== 'library-manifest-part'
+    || source.partId !== documentId
+    || !documentId.startsWith('manifest-part-')
+    || typeof source.updatedAt !== 'string'
+    || typeof source.checksum !== 'string'
+    || !chunks
+    || typeof chunks !== 'object'
+    || Array.isArray(chunks)
+    || !Object.entries(chunks).every(([chunkId, checksum]) => chunkId.startsWith('chunk-') && typeof checksum === 'string')) {
+    throw new CloudSyncError('cloud/schema-unsupported', 'Cloud library manifest part schema 不受支援')
+  }
+  const base = {
+    ownerId: source.ownerId,
+    schemaVersion: source.schemaVersion,
+    documentType: source.documentType,
+    partId: source.partId,
+    updatedAt: source.updatedAt,
+    chunks: source.chunks,
+  }
+  if (canonicalHash(base) !== source.checksum)
+    throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library manifest part checksum 不一致')
+  return source as unknown as FirestoreLibraryManifestPart
 }
 
 function candidateForSection(uid: string, library: LibraryState, section: LibrarySection, items: unknown[], index: number): FirestoreLibraryChunk {
@@ -183,13 +313,12 @@ export function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibrarySt
 export function validateV5LibraryChunkSet(chunks: FirestoreLibraryV5Chunk[]): void {
   if (!chunks.length)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少必要 chunks')
-  const updatedAt = chunks[0].updatedAt
   for (const section of LIBRARY_SECTIONS) {
     const sectionChunks = chunks.filter(chunk => chunk.section === section)
     if (!sectionChunks.length)
       throw new CloudSyncError('cloud/data-invalid', `Cloud library 缺少 ${section} chunk`)
-    if (sectionChunks.some(chunk => chunk.updatedAt !== updatedAt || !chunk.chunkId.startsWith('chunk-')))
-      throw new CloudSyncError('cloud/data-invalid', 'Cloud library v5 chunks 不屬於同一次提交')
+    if (sectionChunks.some(chunk => !chunk.chunkId.startsWith('chunk-')))
+      throw new CloudSyncError('cloud/data-invalid', 'Cloud library v5 chunk ID 格式錯誤')
   }
 }
 
@@ -263,7 +392,12 @@ function validateLibraryChunkShape(value: unknown, uid: string, documentId: stri
     section: source.section,
     items: source.items,
   }
-  if (canonicalHash(base) !== source.checksum)
+  const integrityBase = schemaVersion === LIBRARY_CLOUD_SCHEMA_VERSION
+    ? { ownerId: base.ownerId, schemaVersion: base.schemaVersion, chunkId: base.chunkId, section: base.section, items: base.items }
+    : base
+  const checksumMatches = canonicalHash(integrityBase) === source.checksum
+    || (schemaVersion === LIBRARY_CLOUD_SCHEMA_VERSION && canonicalHash(base) === source.checksum)
+  if (!checksumMatches)
     throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library chunk checksum 不一致')
   return source as unknown as FirestoreLibraryChunk
 }

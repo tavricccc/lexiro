@@ -112,13 +112,13 @@ function close() {
 </script>
 
 <template>
-  <section v-if="isValidEditRoute" class="space-y-6 text-left">
+  <section v-if="isValidEditRoute" class="space-y-5 text-left">
     <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <Button variant="ghost" class="mb-3 -ml-3" @click="close">
           {{ $t('vocabulary.back') }}
         </Button>
-        <h1 class="text-3xl font-black tracking-tight">
+        <h1 class="text-2xl font-black tracking-tight">
           {{ mode === 'create' ? $t('editor.create') : $t('editor.edit') }}
         </h1>
         <p class="mt-1 text-sm font-semibold text-ink-500">
@@ -131,7 +131,7 @@ function close() {
     </div>
 
     <fieldset :disabled="pendingLocalCommit" class="contents">
-      <Card class="space-y-5 p-5 sm:p-6">
+      <Card class="space-y-4 p-4 sm:p-5">
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="space-y-1.5">
             <label class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.setName') }}</label>
@@ -141,7 +141,7 @@ function close() {
         </div>
       </Card>
 
-      <Card class="space-y-4 p-5 sm:p-6">
+      <Card class="space-y-4 p-4 sm:p-5">
         <div class="flex items-center justify-between gap-3">
           <div>
             <h2 class="text-lg font-black">

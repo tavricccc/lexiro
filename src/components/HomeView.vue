@@ -54,7 +54,7 @@ async function continueSet(setId: string) {
 </script>
 
 <template>
-  <section class="space-y-6 text-left">
+  <section class="space-y-5 text-left">
     <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
       <div>
         <h1 class="text-2xl font-semibold tracking-tight text-ink-950 dark:text-ink-50">
@@ -64,24 +64,24 @@ async function continueSet(setId: string) {
     </div>
 
     <div v-if="!hasSets" class="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-      <Card class="min-w-0 border-0 bg-ink-950 p-5 text-white dark:bg-white dark:text-ink-950 sm:p-6">
+      <Card class="min-w-0 border-0 bg-ink-950 p-4 text-white dark:bg-white dark:text-ink-950 sm:p-5">
         <Sparkles class="h-6 w-6" />
-        <h2 class="mt-10 text-2xl font-black tracking-tight">
+        <h2 class="mt-8 text-xl font-black tracking-tight">
           {{ $t('home.emptyTitle') }}
         </h2>
         <p class="mt-3 max-w-md text-sm font-semibold leading-relaxed opacity-70">
           {{ $t('home.emptyDescription') }}
         </p>
-        <Button variant="secondary" class="mt-6 gap-2" @click="router.push({ name: 'set-create' })">
+        <Button variant="secondary" class="mt-5 gap-2" @click="router.push({ name: 'set-create' })">
           <Plus class="h-4 w-4" />
           {{ $t('home.addSet') }}
         </Button>
       </Card>
-      <Card class="min-w-0 p-5 sm:p-6">
+      <Card class="min-w-0 p-4 sm:p-5">
         <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
           {{ $t('home.howItWorks') }}
         </p>
-        <div class="mt-6 space-y-5">
+        <div class="mt-5 space-y-4">
           <div v-for="(step, index) in [$t('home.emptyStepWords'), $t('home.emptyStepAi'), $t('home.emptyStepPaste')]" :key="step" class="flex gap-3">
             <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ink-100 text-xs font-black dark:bg-ink-800">{{ index + 1 }}</span>
             <p class="pt-1 text-sm font-bold text-ink-600 dark:text-ink-300">
@@ -94,14 +94,14 @@ async function continueSet(setId: string) {
 
     <template v-else>
       <div class="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <Card class="min-w-0 overflow-hidden border-0 bg-ink-950 p-5 text-white dark:bg-white dark:text-ink-950 sm:p-6">
-          <div class="flex items-start justify-between gap-5">
+        <Card class="min-w-0 overflow-hidden border-0 bg-ink-950 p-4 text-white dark:bg-white dark:text-ink-950 sm:p-5">
+          <div class="flex items-start justify-between gap-4">
             <div>
               <p class="text-xs font-black uppercase tracking-[0.18em] opacity-60">
                 {{ $t('learning.todayGoal') }}
               </p>
-              <p class="mt-3 text-4xl font-black tabular-nums">
-                {{ stats.todayMemoryReviews }}<span class="text-xl opacity-50">/{{ stats.dailyWordGoal }}</span>
+              <p class="mt-3 text-3xl font-black tabular-nums">
+                {{ stats.todayMemoryReviews }}<span class="text-lg opacity-50">/{{ stats.dailyWordGoal }}</span>
               </p>
               <p class="mt-2 text-sm font-semibold opacity-70">
                 {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : canStartDailyReview ? $t('home.reviewPreparing') : $t('learning.noDue') }}
@@ -110,22 +110,22 @@ async function continueSet(setId: string) {
                 {{ $t('learning.todayQuestions') }}：{{ stats.todayQuestionReviews }}/{{ stats.dailyQuestionGoal }}
               </p>
             </div>
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+            <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10">
               <Target class="h-6 w-6" />
             </div>
           </div>
-          <Progress :model-value="todayProgress" class="mt-7 bg-white/15 [&>div]:bg-white dark:bg-ink-200/30 dark:[&>div]:bg-ink-950" />
-          <Button v-if="canStartDailyReview" variant="secondary" class="mt-6 gap-2" :loading="reviewPreparing" @click="startReview">
+          <Progress :model-value="todayProgress" class="mt-5 bg-white/15 [&>div]:bg-white dark:bg-ink-200/30 dark:[&>div]:bg-ink-950" />
+          <Button v-if="canStartDailyReview" variant="secondary" class="mt-5 gap-2" :loading="reviewPreparing" @click="startReview">
             <RotateCcw class="h-4 w-4" />
             {{ dailyReviewCount ? $t('learning.startToday', { count: dailyReviewCount }) : $t('home.startReview') }}
             <ArrowRight class="h-4 w-4" />
           </Button>
-          <RouterLink v-else to="/library" class="mt-6 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">
+          <RouterLink v-else to="/library" class="mt-5 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">
             {{ $t('home.exploreStudy') }} <ArrowRight class="h-4 w-4" />
           </RouterLink>
         </Card>
 
-        <Card class="min-w-0 p-5 sm:p-6">
+        <Card class="min-w-0 p-4 sm:p-5">
           <div class="flex items-center justify-between">
             <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
               {{ $t('home.snapshot') }}
@@ -134,30 +134,30 @@ async function continueSet(setId: string) {
               {{ $t('home.viewStats') }}
             </RouterLink>
           </div>
-          <div class="mt-6 grid grid-cols-2 gap-3">
+          <div class="mt-5 grid grid-cols-2 gap-3">
             <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70">
-              <Library class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">
+              <Library class="h-4 w-4 text-ink-500" /><p class="mt-2 text-xl font-black">
                 {{ sets.length }}
               </p><p class="text-xs font-bold text-ink-500">
                 {{ $t('home.metricSets') }}
               </p>
             </div>
             <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70">
-              <BookOpen class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">
+              <BookOpen class="h-4 w-4 text-ink-500" /><p class="mt-2 text-xl font-black">
                 {{ totalWordCount }}
               </p><p class="text-xs font-bold text-ink-500">
                 {{ $t('home.metricWords') }}
               </p>
             </div>
             <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70">
-              <Flame class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">
+              <Flame class="h-4 w-4 text-ink-500" /><p class="mt-2 text-xl font-black">
                 {{ stats.streakDays }}
               </p><p class="text-xs font-bold text-ink-500">
                 {{ $t('learning.streak') }}
               </p>
             </div>
             <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70">
-              <Target class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">
+              <Target class="h-4 w-4 text-ink-500" /><p class="mt-2 text-xl font-black">
                 {{ memoryAccuracy }}%
               </p><p class="text-xs font-bold text-ink-500">
                 {{ $t('learning.accuracy') }}

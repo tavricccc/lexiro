@@ -19,12 +19,12 @@ const { t } = useI18n()
 
 <template>
   <Card
-    class="group relative overflow-visible p-5 sm:p-6 text-left transition-all duration-250 hover:-translate-y-1 hover:shadow-floating cursor-pointer"
+    class="group relative overflow-visible p-4 sm:p-5 text-left transition-all duration-250 hover:-translate-y-1 hover:shadow-floating cursor-pointer"
     @click="emit('open', folder.id)"
   >
     <div class="flex items-start justify-between gap-4">
       <div class="flex items-center gap-3.5 min-w-0">
-        <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/15 transition-transform duration-300 group-hover:scale-105">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/15 transition-transform duration-300 group-hover:scale-105">
           <FolderOpen class="h-6 w-6" />
         </span>
         <div class="min-w-0 space-y-0.5">
