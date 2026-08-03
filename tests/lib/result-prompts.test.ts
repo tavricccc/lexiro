@@ -43,8 +43,9 @@ describe('ai result prompts', () => {
     const prompt = buildQuestionExplainPrompt(entry(0), record(), '未作答')
 
     expect(prompt).toContain('閱讀理解／3')
-    expect(prompt).toContain('閱讀文章（若有）：The character adapts quickly')
+    expect(prompt).toContain('閱讀文章：The character adapts quickly')
     expect(prompt).toContain('正確答案：Adapt quickly.')
+    expect(prompt).toContain('回答前請在心中自我驗證')
   })
 
   it('does not repeat the same reading passage for every wrong child question', () => {
@@ -58,6 +59,7 @@ describe('ai result prompts', () => {
     expect(prompt).toContain('"passageRef": "reading-1"')
     expect(prompt).toContain('"type": "閱讀理解"')
     expect(prompt.match(/The character adapts quickly/g)).toHaveLength(1)
-    expect(prompt).toContain('最後歸納我的錯誤模式')
+    expect(prompt).toContain('錯誤模式：歸納重複出現的問題')
+    expect(prompt).toContain('回答前請在心中自我驗證')
   })
 })

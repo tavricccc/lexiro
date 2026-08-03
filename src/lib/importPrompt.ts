@@ -8,10 +8,14 @@ export function buildImportPrompt(rawInput: string, sources: WordGenerationSourc
     word,
     ...(raw.trim() !== word ? { input: raw } : {}),
   }))
+  const outputExample = generateExamples
+    ? JSON.stringify({ words: [{ sourceRef: 'source-1', senses: [{ pos: 'v.', meaningZh: '適應；使適應', examples: ['We adapt quickly.'] }] }] })
+    : JSON.stringify({ words: [{ sourceRef: 'source-1', senses: [{ pos: 'v.', meaningZh: '適應；使適應', examples: [] }] }] })
   return fillPrompt(prompts.generateWordSet, {
     '{{EXAMPLES_RULE}}': generateExamples
-      ? '- 使用者已選擇產生例句；每個 sense 必須提供一個自然、全英文的例句。'
-      : '- 使用者未選擇產生例句；每個 sense 的 examples 必須是空陣列。',
+      ? '每個 sense 的 examples 必須恰好包含一個自然英文例句。'
+      : '每個 sense 的 examples 必須是空陣列。',
+    '{{OUTPUT_EXAMPLE}}': outputExample,
     '{{SOURCES}}': JSON.stringify(promptSources, null, 2),
   })
 }

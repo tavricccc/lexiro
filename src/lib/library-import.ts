@@ -153,7 +153,7 @@ function normalizeMultipleChoice(value: Record<string, unknown>, index: number, 
     throw new Error(`第 ${index + 1} 題 questionStyle 必須是 ${expectedQuestionStyle}`)
   const promptIssue = questionPromptIssue(value.questionStyle, prompt)
   if (promptIssue === 'fillBlank')
-    throw new Error(`第 ${index + 1} 題填空題題幹必須包含 _____`)
+    throw new Error(`第 ${index + 1} 題填空題題幹必須且只能包含一個 _____`)
   if (promptIssue === 'standard')
     throw new Error(`第 ${index + 1} 題一般四選一題幹不可包含 _____`)
   assertEnglish(prompt, `第 ${index + 1} 題題幹`, requireEnglish)

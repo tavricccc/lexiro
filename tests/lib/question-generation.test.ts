@@ -44,12 +44,38 @@ describe('question generation selection rules', () => {
     const easyPrompt = buildQuestionGenerationPrompt([word('keep')], 'multipleChoice', 1)
     const hardPrompt = buildQuestionGenerationPrompt([word('keep')], 'multipleChoice', 3)
 
-    expect(easyPrompt).toContain('本次內容目標難度是 1')
+    expect(easyPrompt).toContain('目標難度是 1')
     expect(easyPrompt).toContain('短而直接')
-    expect(hardPrompt).toContain('本次內容目標難度是 3')
+    expect(hardPrompt).toContain('目標難度是 3')
     expect(hardPrompt).toContain('較長或更細緻')
-    expect(easyPrompt).toContain('回覆不要輸出 difficulty')
+    expect(easyPrompt).not.toContain('回覆不要輸出 difficulty')
+    expect(easyPrompt).not.toContain('程式會依題型補上')
     expect(hardPrompt).not.toBe(easyPrompt)
+  })
+
+  it('gives fill-blank responses an explicit placeholder contract', () => {
+    const prompt = buildQuestionGenerationPrompt([word('keep')], 'fillBlank')
+
+    expect(prompt).toContain('恰好包含一個五個 ASCII 底線的空格：`_____`')
+    expect(prompt).toContain('禁止使用 `***`、`___`、`[blank]`、`<blank>`')
+    expect(prompt).toContain('輸出前請在心中自我驗證')
+    expect(prompt).toContain('不要輸出驗證或推理過程')
+    expect(prompt).toContain('"prompt":"Her outstanding _____')
+  })
+
+  it('rejects non-standard fill-blank placeholders in the final parser', () => {
+    const normalized = normalizeQuestionGenerationJson(JSON.stringify({
+      questions: [{ sourceRef: 'source-1-1', prompt: '*** the plan.', options: ['keep', 'leave', 'lose', 'drop'], answerIndex: 0 }],
+    }), 'fillBlank', 2, [word('keep')])
+    const parsed = parseLibraryImport(normalized, {
+      questionSources: getQuestionSourceRefs([word('keep')]),
+      allowedDifficulty: 2,
+      expectedQuestionKind: 'multipleChoice',
+      expectedQuestionStyle: 'fillBlank',
+      requireEnglish: true,
+    })
+
+    expect(parsed).toMatchObject({ valid: false, error: '第 1 題填空題題幹必須且只能包含一個 _____' })
   })
 
   it('expands the compact response into the canonical parser contract', () => {

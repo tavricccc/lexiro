@@ -48,6 +48,9 @@ describe('question validation', () => {
     expect(parseQuestionDifficulty('3')).toBe(3)
     expect(parseQuestionDifficulty('all')).toBeNull()
     expect(questionPromptIssue('fillBlank', '_____ the plan.')).toBeNull()
+    expect(questionPromptIssue('fillBlank', '_____ the _____ plan.')).toBe('fillBlank')
+    expect(questionPromptIssue('fillBlank', '______ the plan.')).toBe('fillBlank')
+    expect(questionPromptIssue('fillBlank', '*** the plan.')).toBe('fillBlank')
     expect(questionPromptIssue('standard', '_____ the plan.')).toBe('standard')
   })
 

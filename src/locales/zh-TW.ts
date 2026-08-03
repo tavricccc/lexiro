@@ -234,7 +234,7 @@ export default {
     questionSourceInvalid: '題目沒有有效的 sense 關聯，請重新選擇。',
     questionFieldsRequired: '請補齊題幹、四個選項與正確答案。',
     saveFailed: '保存字義或例句失敗，請稍後再試。',
-    fillBlankPromptRequired: '填空題題幹必須包含 _____。',
+    fillBlankPromptRequired: '填空題題幹必須且只能包含一個 _____。',
     standardPromptNoBlank: '一般四選一題幹不可包含 _____，請改用填空題型。',
     addReading: '新增閱讀題組',
     editReading: '編輯閱讀題組',
