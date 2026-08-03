@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ArrowLeft, Volume2 } from 'lucide-vue-next'
-import { computed } from 'vue'
+import { ArrowLeft, Pencil, Trash2, Volume2 } from 'lucide-vue-next'
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
-import { useSenseManagement } from '@/lib/use-sense-management'
+import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useLibraryStore } from '@/stores/library'
-import SenseDeleteImpactDialog from '../dialogs/SenseDeleteImpactDialog.vue'
-import SenseEditorDialog from '../dialogs/SenseEditorDialog.vue'
+import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
 import Card from '../ui/card/Card.vue'
 import SenseCard from '../word/SenseCard.vue'
@@ -16,7 +16,10 @@ const props = defineProps<{
 }>()
 
 const router = useRouter()
+const { t } = useI18n()
 const libraryStore = useLibraryStore()
+const uiStore = useUIStore()
+const deleting = ref(false)
 const set = computed(() => libraryStore.getSet(props.setId))
 const word = computed(() => libraryStore.getWord(props.wordKey))
 const membership = computed(() => libraryStore.getMembership(props.setId, props.wordKey))
@@ -24,20 +27,6 @@ const senses = computed(() => {
   const allowed = new Set(membership.value?.senseIds ?? [])
   return word.value?.senses.filter(sense => allowed.has(sense.id)) ?? []
 })
-const senseManager = useSenseManagement({
-  getWordKey: () => props.wordKey,
-  getSetId: () => props.setId,
-  onRemoved: async () => {
-    if (!libraryStore.getMembership(props.setId, props.wordKey))
-      await router.push({ name: 'set-words', params: { setId: props.setId } })
-  },
-})
-const senseEditorOpen = senseManager.editorOpen
-const senseToEdit = senseManager.editingSense
-const senseEditorError = senseManager.editorError
-const senseDeleteImpactOpen = senseManager.deleteImpactOpen
-const senseOtherSetNames = senseManager.otherSetNames
-const senseImpact = senseManager.impact
 const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in window
 
 function speak() {
@@ -54,6 +43,43 @@ function openVocabulary() {
   if (!word.value)
     return
   void router.push({ name: 'vocabulary', params: { wordKey: word.value.wordKey }, query: { setId: props.setId } })
+}
+
+async function removeWord() {
+  if (!word.value || !set.value || deleting.value)
+    return
+  const otherSetNames = libraryStore.getWordSetIds(word.value.wordKey)
+    .filter(setId => setId !== props.setId)
+    .map(setId => libraryStore.getSet(setId)?.setName)
+    .filter((name): name is string => Boolean(name))
+  const confirmed = await uiStore.showConfirm(
+    t('vocabulary.deleteWordTitle'),
+    t('vocabulary.deleteWordMessage', {
+      word: word.value.word,
+      set: set.value.setName,
+      otherSets: otherSetNames.length ? otherSetNames.join('、') : t('vocabulary.noOtherSets'),
+    }),
+    { confirmLabel: t('vocabulary.confirmDeleteWord'), destructive: true },
+  )
+  if (!confirmed)
+    return
+
+  deleting.value = true
+  try {
+    await libraryStore.loadAllContent()
+    if (!libraryStore.removeWordFromSet(props.setId, props.wordKey))
+      return
+    await syncAfterLocalCommit()
+    await router.push(libraryStore.getSet(props.setId)
+      ? { name: 'set-words', params: { setId: props.setId } }
+      : { name: 'library' })
+  }
+  catch {
+    uiStore.showToast(t('vocabulary.deleteWordFailed'))
+  }
+  finally {
+    deleting.value = false
+  }
 }
 </script>
 
@@ -76,9 +102,14 @@ function openVocabulary() {
           {{ $t('set.senseCount', { count: senses.length }) }}
         </p>
       </div>
-      <Button variant="outline" class="min-h-11 gap-2" @click="openVocabulary">
-        {{ $t('vocabulary.openEditor') }}
-      </Button>
+      <div class="flex shrink-0 gap-1">
+        <Button variant="outline" size="icon" :aria-label="$t('vocabulary.editWord')" :disabled="deleting" @click="openVocabulary">
+          <Pencil class="h-4 w-4" />
+        </Button>
+        <Button variant="ghost" size="icon" class="text-red-500 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/20" :aria-label="$t('vocabulary.deleteWord')" :disabled="deleting" @click="removeWord">
+          <Trash2 class="h-4 w-4" />
+        </Button>
+      </div>
     </div>
 
     <div class="space-y-4">
@@ -86,12 +117,7 @@ function openVocabulary() {
         v-for="sense in senses"
         :key="sense.id"
         :sense="sense"
-        :editable="true"
-        @edit="senseManager.openEditor"
-        @delete="senseManager.requestRemove"
-        @edit-example="(sense) => senseManager.openEditor(sense)"
-        @add-example="senseManager.openEditor"
-        @delete-example="(sense) => senseManager.openEditor(sense)"
+        :editable="false"
       />
     </div>
   </section>
@@ -107,20 +133,4 @@ function openVocabulary() {
       {{ $t('set.backToWords') }}
     </RouterLink>
   </Card>
-
-  <SenseEditorDialog
-    :open="senseEditorOpen"
-    :sense="senseToEdit"
-    :error="senseEditorError"
-    :save-handler="senseManager.saveEditor"
-    @close="senseManager.closeEditor"
-  />
-  <SenseDeleteImpactDialog
-    :open="senseDeleteImpactOpen"
-    :set-name="set?.setName ?? ''"
-    :other-set-names="senseOtherSetNames"
-    :impact="senseImpact"
-    @cancel="senseManager.cancelRemove"
-    @confirm="senseManager.confirmRemove"
-  />
 </template>

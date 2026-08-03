@@ -269,6 +269,42 @@ describe('cloud sync remote repository', () => {
     expect(resumedLegacyCalls).toEqual(['manifest'])
   })
 
+  it('reuses cached v5 chunks and only downloads missing chunks', async () => {
+    const timestamp = '2026-08-02T00:00:00.000Z'
+    const library: LibraryState = {
+      version: 1,
+      words: {},
+      sets: [],
+      memberships: {},
+      folders: [{ id: '__uncategorized__', name: '未分類', order: -1, createdAt: timestamp, updatedAt: timestamp }],
+      questions: [],
+      updatedAt: timestamp,
+    }
+    const chunks = buildV5LibraryChunks('cloud-user', library)
+    const manifest = buildV5LibraryManifest('cloud-user', chunks, timestamp)
+    const calls: string[] = []
+    const downloaded: string[][] = []
+    setupSuccessfulTransaction()
+    mockedCloud.getDocFromServer.mockImplementation(async (reference: { path?: string }) => {
+      const id = reference.path?.split('/').at(-1) ?? ''
+      calls.push(id)
+      const data = id === 'manifest' ? manifest : chunks.find(chunk => chunk.chunkId === id)
+      return { exists: () => Boolean(data), data: () => data }
+    })
+
+    const result = await readCloudLibraryV5(
+      {} as Firestore,
+      'cloud-user',
+      undefined,
+      (batch) => { downloaded.push(batch.newChunks.map(chunk => chunk.chunkId)) },
+      { existingChunks: new Map([[chunks[0].chunkId, chunks[0]]]) },
+    )
+
+    expect(result.library).toEqual(library)
+    expect(calls).toEqual(['manifest', ...chunks.slice(1).map(chunk => chunk.chunkId)])
+    expect(downloaded.flat()).toEqual(chunks.slice(1).map(chunk => chunk.chunkId))
+  })
+
   it('publishes v5 chunks only after strict batches of at most eight', async () => {
     const timestamp = '2026-08-02T00:00:00.000Z'
     const library: LibraryState = {

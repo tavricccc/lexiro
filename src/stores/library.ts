@@ -515,6 +515,13 @@ export const useLibraryStore = defineStore('library', () => {
       .map(set => set.id)
   }
 
+  function getWordSetIds(wordKey: string): string[] {
+    const normalizedWordKey = normalizeWordKey(wordKey)
+    return state.value.sets
+      .filter(set => state.value.memberships[set.id]?.some(member => member.wordKey === normalizedWordKey))
+      .map(set => set.id)
+  }
+
   function getSenseSetNames(wordKey: string, senseId: string): string[] {
     return getSenseSetIds(wordKey, senseId)
       .map(setId => getSet(setId)?.setName)
@@ -590,6 +597,24 @@ export const useLibraryStore = defineStore('library', () => {
       state.value.sets = state.value.sets.filter(set => set.id !== setId)
       delete nextAllMemberships[setId]
     }
+    pruneOrphans()
+    touch()
+    return true
+  }
+
+  /** Removes one word membership and prunes only senses no longer shared by another set. */
+  function removeWordFromSet(setId: string, wordKey: string): boolean {
+    const normalizedWordKey = normalizeWordKey(wordKey)
+    if (!getMembership(setId, normalizedWordKey))
+      return false
+
+    const nextSetMembers = (state.value.memberships[setId] ?? []).filter(member => member.wordKey !== normalizedWordKey)
+    const nextMemberships = { ...state.value.memberships }
+    if (nextSetMembers.length)
+      nextMemberships[setId] = nextSetMembers
+    else
+      delete nextMemberships[setId]
+    state.value.memberships = nextMemberships
     pruneOrphans()
     touch()
     return true
@@ -1088,9 +1113,11 @@ export const useLibraryStore = defineStore('library', () => {
     replaceSetMemberships,
     getMembership,
     getSenseSetIds,
+    getWordSetIds,
     getSenseSetNames,
     updateSense,
     removeSenseFromSet,
+    removeWordFromSet,
     removeSenseFromSetWithUndo,
     restoreSenseRemoval,
     getQuestionsFor,

@@ -265,11 +265,10 @@ export async function readCloudLibraryV5(
   for (let offset = 0; offset < ids.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
     const currentBatch = Math.floor(offset / CLOUD_LIBRARY_BATCH_SIZE) + 1
     const batchIds = ids.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE)
-    const batchChunks: FirestoreLibraryV5Chunk[] = []
-    const newChunks: FirestoreLibraryV5Chunk[] = []
-    for (const id of batchIds) {
+    const resolvedBatch = await Promise.all(batchIds.map(async (id) => {
       const existing = existingChunks.get(id)
       let chunk: FirestoreLibraryV5Chunk
+      let isNew = false
       if (existing) {
         try {
           const cached = validateV5LibraryChunk(existing, uid, id)
@@ -279,19 +278,23 @@ export async function readCloudLibraryV5(
         }
         catch {
           chunk = await readV5Chunk(db, uid, id)
-          newChunks.push(chunk)
+          isNew = true
         }
       }
       else {
         chunk = await readV5Chunk(db, uid, id)
-        newChunks.push(chunk)
+        isNew = true
       }
       if (checksums[id] !== chunk.checksum)
         throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library v5 chunk 不屬於目前 manifest')
-      batchChunks.push(chunk)
-      chunks.push(chunk)
-      onProgress?.({ currentBatch, totalBatches, completed: offset + batchChunks.length, total: ids.length })
-    }
+      return { chunk, isNew }
+    }))
+    const batchChunks = resolvedBatch.map(({ chunk }) => chunk)
+    const newChunks = resolvedBatch.filter(({ isNew }) => isNew).map(({ chunk }) => chunk)
+    chunks.push(...batchChunks)
+    resolvedBatch.forEach((_, index) => {
+      onProgress?.({ currentBatch, totalBatches, completed: offset + index + 1, total: ids.length })
+    })
     const progress = { currentBatch, totalBatches, completed: Math.min(offset + batchIds.length, ids.length), total: ids.length }
     // A caller may persist this verified batch before the next network read.
     // This keeps a failed download resumable without ever changing the active
@@ -319,11 +322,10 @@ async function readLegacyCloudLibraryInBatches(
   for (let offset = 0; offset < ids.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
     const currentBatch = Math.floor(offset / CLOUD_LIBRARY_BATCH_SIZE) + 1
     const batchIds = ids.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE)
-    const batchChunks: FirestoreLibraryChunk[] = []
-    const newChunks: FirestoreLibraryChunk[] = []
-    for (const id of batchIds) {
+    const resolvedBatch = await Promise.all(batchIds.map(async (id) => {
       const existing = existingChunks.get(id)
       let chunk: FirestoreLibraryChunk
+      let isNew = false
       if (existing) {
         try {
           chunk = validateLibraryChunk(existing, uid, id)
@@ -338,7 +340,7 @@ async function readLegacyCloudLibraryInBatches(
           if (!snapshot.exists())
             throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
           chunk = validateLibraryChunk(snapshot.data(), uid, id)
-          newChunks.push(chunk)
+          isNew = true
         }
       }
       else {
@@ -349,14 +351,18 @@ async function readLegacyCloudLibraryInBatches(
         if (!snapshot.exists())
           throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
         chunk = validateLibraryChunk(snapshot.data(), uid, id)
-        newChunks.push(chunk)
+        isNew = true
       }
       if (manifest.chunks[id] !== chunk.checksum || chunk.updatedAt !== manifest.updatedAt)
         throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library chunk 不屬於目前 manifest')
-      batchChunks.push(chunk)
-      chunks.push(chunk)
-      onProgress?.({ currentBatch, totalBatches, completed: offset + batchChunks.length, total: ids.length })
-    }
+      return { chunk, isNew }
+    }))
+    const batchChunks = resolvedBatch.map(({ chunk }) => chunk)
+    const newChunks = resolvedBatch.filter(({ isNew }) => isNew).map(({ chunk }) => chunk)
+    chunks.push(...batchChunks)
+    resolvedBatch.forEach((_, index) => {
+      onProgress?.({ currentBatch, totalBatches, completed: offset + index + 1, total: ids.length })
+    })
     const progress = { currentBatch, totalBatches, completed: Math.min(offset + batchIds.length, ids.length), total: ids.length }
     await onBatch?.({ chunks: batchChunks, newChunks, revision: manifest.revision, progress })
   }
@@ -462,7 +468,9 @@ export async function writeCloudLibraryChunksV5(
     if (!result.written)
       return { conflicted: true, hashes: new Map(knownHashes), revision: knownRevision, chunks }
     const liveIds = new Set(chunks.map(chunk => chunk.chunkId))
-    await cleanupUnreferencedV5Chunks(db, uid, liveIds, new Set(manifestDocuments.parts.map(part => part.partId)), knownHashes, lease.refresh)
+    const knownStaleChunkIds = Array.from(knownHashes.keys()).filter(id => id.startsWith('chunk-') && !liveIds.has(id))
+    if (!knownHashes.size || knownStaleChunkIds.length)
+      await cleanupUnreferencedV5Chunks(db, uid, liveIds, new Set(manifestDocuments.parts.map(part => part.partId)), knownHashes, lease.refresh)
     onProgress?.({ currentBatch: totalBatches, totalBatches, completed: chunks.length, total: chunks.length })
     return { conflicted: false, hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision, chunks }
   }
@@ -481,6 +489,19 @@ async function cleanupUnreferencedV5Chunks(
 ): Promise<void> {
   try {
     const knownStaleIds = Array.from(knownHashes.keys()).filter(id => id.startsWith('chunk-') && !liveIds.has(id))
+    // The previous manifest gives us the exact stale content-addressed chunk
+    // ids after a normal edit. A full collection scan is only needed for the
+    // first v5 publication, when there is no local manifest index yet.
+    if (knownHashes.size) {
+      for (let offset = 0; offset < knownStaleIds.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
+        await refreshLease()
+        const batch = writeBatch(db)
+        for (const staleId of knownStaleIds.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE))
+          batch.delete(cloudDocument(db, uid, 'library', staleId))
+        await withSyncTimeout(batch.commit(), 'Library cleanup batch')
+      }
+      return
+    }
     const scannedStaleIds: string[] = []
     const libraryReference = cloudCollection(db, uid, 'library')
     let cursor: QueryDocumentSnapshot<DocumentData> | null = null

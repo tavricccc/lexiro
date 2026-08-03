@@ -141,13 +141,14 @@ onUnmounted(() => {
           <component :is="Component" :key="route.fullPath" />
         </router-view>
       </div>
-    </main>
 
-    <LottieLoadingOverlay
-      :open="pageLoading && !showSyncGate"
-      :message="$t('nav.loadingPage')"
-      :progress-label="$t('nav.loadingPageDetail')"
-    />
+      <LottieLoadingOverlay
+        :open="pageLoading && !showSyncGate"
+        :fullscreen="false"
+        :show-message="false"
+        :show-progress="false"
+      />
+    </main>
 
     <ImportDialog />
     <TransferDialog />

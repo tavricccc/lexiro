@@ -1373,10 +1373,13 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       await applyRemoteLibraryChanges(uid)
       if (epoch !== realtimeEpoch)
         return
-      await applyRemoteLearningChanges(uid)
-      if (epoch !== realtimeEpoch)
-        return
-      await applyRemoteAiSettingsChanges(uid)
+      // Learning and AI settings are independent remote domains. Start both
+      // listeners after the library baseline is ready so their first reads and
+      // reconciliation can overlap without changing the library-first rule.
+      await Promise.all([
+        applyRemoteLearningChanges(uid),
+        applyRemoteAiSettingsChanges(uid),
+      ])
     }
     catch (syncError) {
       if (epoch === realtimeEpoch)

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ReadingChildQuestion, ReadingPack, StudyWord } from '@/types'
+import { ArrowLeft } from 'lucide-vue-next'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
@@ -229,8 +230,8 @@ function goBack() {
 <template>
   <section v-if="word && (!existingQuestion || existingReading)" class="space-y-5 text-left">
     <div>
-      <Button variant="ghost" class="mb-3 -ml-3" @click="goBack">
-        {{ $t('vocabulary.back') }}
+      <Button variant="ghost" class="mb-3 -ml-3 gap-2" @click="goBack">
+        <ArrowLeft class="h-4 w-4" />{{ $t('vocabulary.back') }}
       </Button>
       <div class="flex flex-wrap items-center gap-3">
         <h1 class="text-2xl font-black tracking-tight">

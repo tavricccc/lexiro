@@ -130,8 +130,9 @@ async function continueSet(setId: string) {
             <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
               {{ $t('home.snapshot') }}
             </p>
-            <RouterLink to="/stats" class="text-xs font-black text-ink-500 hover:text-ink-950 dark:hover:text-white">
+            <RouterLink to="/stats" class="inline-flex items-center gap-1 text-xs font-black text-ink-500 hover:text-ink-950 dark:hover:text-white">
               {{ $t('home.viewStats') }}
+              <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
             </RouterLink>
           </div>
           <div class="mt-5 grid grid-cols-2 gap-3">
@@ -171,8 +172,9 @@ async function continueSet(setId: string) {
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.continueTitle') }}
-          </h2><RouterLink to="/library" class="text-xs font-black text-ink-500">
+          </h2><RouterLink to="/library" class="inline-flex items-center gap-1 text-xs font-black text-ink-500">
             {{ $t('home.viewAll') }}
+            <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">
@@ -194,8 +196,9 @@ async function continueSet(setId: string) {
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.recentTitle') }}
-          </h2><RouterLink to="/library" class="text-xs font-black text-ink-500">
+          </h2><RouterLink to="/library" class="inline-flex items-center gap-1 text-xs font-black text-ink-500">
             {{ $t('home.viewLibrary') }}
+            <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">

@@ -290,6 +290,47 @@ describe('library shared word membership', () => {
     expect(libraryStore.questions).toHaveLength(0)
   })
 
+  it('removes a word from one set while preserving shared senses and examples', () => {
+    const libraryStore = useLibraryStore()
+    const firstSenseId = buildSenseId('abandon', 'v.', '放棄')
+    const secondSenseId = buildSenseId('abandon', 'n.', '遺棄')
+    const firstSet = { ...baseSet, id: 'set-1' }
+    const secondSet: LibrarySet = { ...baseSet, id: 'set-2', setName: 'Shared words two' }
+    libraryStore.importWords([{
+      wordKey: 'abandon',
+      word: 'abandon',
+      senses: [
+        { id: firstSenseId, pos: 'v.', meaningZh: '放棄', examples: ['They abandoned the plan.'] },
+        { id: secondSenseId, pos: 'n.', meaningZh: '遺棄', examples: ['The building was abandoned.'] },
+      ],
+      updatedAt: '',
+    }])
+    seedSet(libraryStore, firstSet)
+    seedSet(libraryStore, secondSet)
+    libraryStore.replaceSetMemberships(firstSet.id, [{ wordKey: 'abandon', senseIds: [firstSenseId, secondSenseId] }])
+    libraryStore.replaceSetMemberships(secondSet.id, [{ wordKey: 'abandon', senseIds: [secondSenseId] }])
+    libraryStore.importQuestions([
+      { id: 'first-id', fingerprint: 'fp-first', kind: 'multipleChoice', questionStyle: 'standard', wordKey: 'abandon', senseId: firstSenseId, difficulty: 1, prompt: 'Q1', options: ['a', 'b', 'c', 'd'], answerIndex: 0, createdAt: '', updatedAt: '' },
+      { id: 'second-id', fingerprint: 'fp-second', kind: 'multipleChoice', questionStyle: 'standard', wordKey: 'abandon', senseId: secondSenseId, difficulty: 2, prompt: 'Q2', options: ['a', 'b', 'c', 'd'], answerIndex: 0, createdAt: '', updatedAt: '' },
+    ])
+
+    expect(libraryStore.removeWordFromSet(firstSet.id, 'abandon')).toBe(true)
+    expect(libraryStore.getSet(firstSet.id)).not.toBeNull()
+    expect(libraryStore.getMembership(firstSet.id, 'abandon')).toBeNull()
+    expect(libraryStore.getSet(secondSet.id)).not.toBeNull()
+    expect(libraryStore.getWord('abandon')?.senses).toEqual([{
+      id: secondSenseId,
+      pos: 'n.',
+      meaningZh: '遺棄',
+      examples: ['The building was abandoned.'],
+    }])
+    expect(libraryStore.questions.map(question => question.id)).toEqual(['second-id'])
+
+    expect(libraryStore.removeWordFromSet(secondSet.id, 'abandon')).toBe(true)
+    expect(libraryStore.getSet(secondSet.id)).not.toBeNull()
+    expect(libraryStore.getWord('abandon')).toBeNull()
+  })
+
   it('enforces folder hierarchy rules and removes a folder subtree atomically', () => {
     const libraryStore = useLibraryStore()
     const parent = libraryStore.addFolder('Animals')
