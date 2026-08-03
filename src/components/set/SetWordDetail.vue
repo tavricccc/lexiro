@@ -84,8 +84,8 @@ async function removeWord() {
 </script>
 
 <template>
-  <section v-if="set && word && senses.length" class="space-y-5 text-left">
-    <div class="flex flex-wrap items-start justify-between gap-4">
+  <section v-if="set && word && senses.length" class="space-y-4 text-left sm:space-y-5">
+    <div class="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
       <div class="min-w-0">
         <Button variant="ghost" class="mb-3 -ml-3 gap-2 lg:hidden" @click="router.push({ name: 'set-words', params: { setId } })">
           <ArrowLeft class="h-4 w-4" />{{ $t('set.backToWords') }}

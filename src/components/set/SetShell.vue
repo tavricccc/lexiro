@@ -74,11 +74,11 @@ function openGeneration() {
 </script>
 
 <template>
-  <section v-if="activeSet" class="space-y-5 text-left">
-    <header class="space-y-4">
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+  <section v-if="activeSet" class="space-y-4 text-left sm:space-y-5">
+    <header class="space-y-3 sm:space-y-4">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
         <div class="min-w-0">
-          <Button variant="ghost" class="mb-2 -ml-3 gap-2" @click="router.push({ name: 'library' })">
+          <Button variant="ghost" class="mb-1 -ml-3 gap-2 sm:mb-2" @click="router.push({ name: 'library' })">
             <ArrowLeft class="h-4 w-4" />{{ $t('study.backToLibrary') }}
           </Button>
           <div class="flex flex-wrap items-center gap-2">

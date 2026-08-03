@@ -322,7 +322,7 @@ export default {
     invalidSetDescription: '這個單字集可能已被刪除，或連結已經失效。',
     invalidWordTitle: '找不到這個單字',
     invalidWordDescription: '這個單字不屬於目前的單字集，請從單字列表重新選擇。',
-    backToWords: '返回單字列表',
+    backToWords: '返回單字',
     searchWords: '搜尋單字或字義…',
     noMatchingWords: '找不到符合的單字。',
     chooseWord: '選擇一個單字查看詳細內容。',

@@ -16,7 +16,6 @@ import FolderManageDialog from './dialogs/FolderManageDialog.vue'
 import FolderCard from './FolderCard.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
-import Card from './ui/card/Card.vue'
 import EmptyState from './ui/empty-state/EmptyState.vue'
 import Input from './ui/input/Input.vue'
 
@@ -250,22 +249,56 @@ onUnmounted(() => {
 
 <template>
   <section class="space-y-5 text-left">
-    <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
-      <div>
+    <div class="flex flex-col gap-3 border-b border-ink-200/70 pb-4 dark:border-ink-200/15 lg:flex-row lg:items-center lg:justify-between sm:gap-4 sm:pb-5">
+      <div class="min-w-0">
         <h1 class="text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
           {{ $t('library.title') }}
         </h1>
+        <div class="mt-1 min-w-0">
+          <div class="flex min-w-0 flex-wrap items-center gap-1.5 text-sm font-bold">
+            <Button v-if="selectedFolderId !== ALL_FOLDER_ID" variant="ghost" size="sm" class="-ml-2 gap-1.5 text-ink-600 dark:text-ink-300 hover:text-accent-primary" :aria-label="$t('library.back')" @click="goBack">
+              <ArrowLeft class="h-4 w-4" /><span>{{ $t('library.back') }}</span>
+            </Button>
+            <ChevronRight v-if="selectedFolderId !== ALL_FOLDER_ID" class="h-3.5 w-3.5 text-ink-400" />
+            <button type="button" class="flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors hover:bg-ink-100 dark:hover:bg-ink-800" :class="selectedFolderId === ALL_FOLDER_ID ? 'font-black text-accent-primary' : 'text-ink-600 dark:text-ink-300'" @click="openFolder(ALL_FOLDER_ID)">
+              <Folder class="h-4 w-4" /><span>{{ $t('library.collection') }}</span>
+            </button>
+
+            <template v-for="(folder, idx) in currentFolderPath" :key="folder.id">
+              <ChevronRight class="h-3.5 w-3.5 text-ink-400" />
+              <button
+                type="button"
+                class="rounded-lg px-2 py-1 transition-colors hover:bg-ink-100 dark:hover:bg-ink-800"
+                :class="idx === currentFolderPath.length - 1 ? 'font-black text-accent-primary' : 'text-ink-600 dark:text-ink-300'"
+                @click="openFolder(folder.id)"
+              >
+                {{ folder.name }}
+              </button>
+            </template>
+          </div>
+          <p class="mt-1 text-xs font-semibold text-ink-500 dark:text-ink-400">
+            {{ isSearching ? $t('library.searchResultCount', { count: totalSets }) : $t('library.folderResultCount', { count: totalSets }) }}
+          </p>
+        </div>
       </div>
-      <div class="flex items-center gap-1 self-end rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70" role="toolbar" :aria-label="$t('library.actions')">
-        <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
-          <FolderPlus class="h-4.5 w-4.5 text-accent-primary" />
-        </Button>
-        <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('home.backupAndImport')" @click="openBackupImport">
-          <Upload class="h-4.5 w-4.5" />
-        </Button>
-        <Button variant="default" size="icon" class="h-10 w-10" :aria-label="$t('home.addSet')" @click="openAddSet">
-          <Plus class="h-4.5 w-4.5" />
-        </Button>
+
+      <div class="flex w-full flex-col gap-2 sm:flex-row sm:items-center lg:w-auto">
+        <div class="relative min-w-0 w-full sm:w-72 lg:w-80">
+          <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" />
+          <Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
+          <LoaderCircle v-if="searchLoading" class="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-accent-primary" />
+        </div>
+        <div class="flex shrink-0 items-center gap-1 self-end rounded-2xl bg-ink-100/70 p-1 dark:bg-ink-900/70 sm:self-auto" role="toolbar" :aria-label="$t('library.actions')">
+          <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('library.newFolder')" @click="folderCreateOpen = true">
+            <FolderPlus class="h-4.5 w-4.5 text-accent-primary" />
+          </Button>
+          <Button variant="ghost" size="icon" class="h-10 w-10" :aria-label="$t('home.backupAndImport')" @click="openBackupImport">
+            <Upload class="h-4.5 w-4.5" />
+          </Button>
+          <Button variant="default" size="icon" class="h-10 w-10" :aria-label="$t('home.addSet')" @click="openAddSet">
+            <Plus class="h-4.5 w-4.5" />
+          </Button>
+        </div>
       </div>
     </div>
 
@@ -276,40 +309,6 @@ onUnmounted(() => {
     </EmptyState>
 
     <template v-else>
-      <Card class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
-        <div class="min-w-0">
-          <div class="flex flex-wrap items-center gap-1.5 text-sm font-bold">
-            <Button v-if="selectedFolderId !== ALL_FOLDER_ID" variant="ghost" size="sm" class="-ml-2 gap-1.5 text-ink-600 dark:text-ink-300 hover:text-accent-primary" :aria-label="$t('library.back')" @click="goBack">
-              <ArrowLeft class="h-4 w-4" /><span>{{ $t('library.back') }}</span>
-            </Button>
-            <ChevronRight v-if="selectedFolderId !== ALL_FOLDER_ID" class="h-3.5 w-3.5 text-ink-400" />
-            <button type="button" class="flex items-center gap-1.5 px-2 py-1 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors" :class="selectedFolderId === ALL_FOLDER_ID ? 'text-accent-primary font-black' : 'text-ink-600 dark:text-ink-300'" @click="openFolder(ALL_FOLDER_ID)">
-              <Folder class="h-4 w-4" /><span>{{ $t('library.collection') }}</span>
-            </button>
-
-            <template v-for="(folder, idx) in currentFolderPath" :key="folder.id">
-              <ChevronRight class="h-3.5 w-3.5 text-ink-400" />
-              <button
-                type="button"
-                class="px-2 py-1 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
-                :class="idx === currentFolderPath.length - 1 ? 'text-accent-primary font-black' : 'text-ink-600 dark:text-ink-300'"
-                @click="openFolder(folder.id)"
-              >
-                {{ folder.name }}
-              </button>
-            </template>
-          </div>
-          <p class="mt-1 text-xs font-semibold text-ink-500">
-            {{ isSearching ? $t('library.searchResultCount', { count: totalSets }) : $t('library.folderResultCount', { count: totalSets }) }}
-          </p>
-        </div>
-        <div class="relative w-full sm:max-w-sm">
-          <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" />
-          <Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
-          <LoaderCircle v-if="searchLoading" class="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-accent-primary" />
-        </div>
-      </Card>
-
       <!-- Folder Section with Cards matching SetCard dimensions -->
       <div v-if="!isSearching && visibleFolders.length" class="space-y-3">
         <h3 class="text-xs font-extrabold uppercase tracking-widest text-ink-400">

@@ -408,6 +408,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  html {
+    scrollbar-gutter: auto;
+  }
+
   .app-root--workspace {
     display: block;
     --app-sidebar-width: 0px;

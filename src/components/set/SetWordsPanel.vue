@@ -18,7 +18,7 @@ const isDetail = computed(() => route.name === 'set-word' || typeof route.params
 
 <template>
   <section class="space-y-4 text-left">
-    <div class="flex flex-wrap items-end justify-between gap-3">
+    <div class="flex flex-wrap items-end justify-between gap-3" :class="isDetail ? 'hidden lg:flex' : 'flex'">
       <div>
         <h2 class="text-xl font-black tracking-tight">
           {{ $t('set.wordsTab') }}
@@ -29,7 +29,7 @@ const isDetail = computed(() => route.name === 'set-word' || typeof route.params
       </div>
     </div>
 
-    <Card v-if="words.length" class="p-4 sm:p-5">
+    <Card v-if="words.length" class="p-3 sm:p-5">
       <div class="grid gap-4 lg:grid-cols-[minmax(13rem,18rem)_minmax(0,1fr)]">
         <aside :class="isDetail ? 'hidden lg:block' : 'block'" class="min-w-0 lg:border-r lg:border-ink-200/60 lg:pr-5 lg:dark:border-ink-200/10">
           <SetWordList :set-id="setId" :words="words" :search="search" @update:search="search = $event" />
