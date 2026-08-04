@@ -87,7 +87,7 @@ function openAddDialog(entry: DictionaryEntry) {
       </h1>
     </div>
 
-    <Card class="p-4 sm:p-5">
+    <div>
       <form class="flex gap-2" @submit.prevent="search">
         <Input v-model="query" autofocus :placeholder="$t('dictionary.searchPlaceholder')" class="h-11 rounded-2xl text-sm" />
         <Button type="submit" variant="default" size="icon" class="h-11 w-11 shrink-0 rounded-2xl" :aria-label="$t('dictionary.search')">
@@ -99,7 +99,7 @@ function openAddDialog(entry: DictionaryEntry) {
           {{ $t('dictionary.localMatchSummary', { word: word.word, count: word.senses.length }) }}
         </button>
       </div>
-    </Card>
+    </div>
 
     <div v-if="error" class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700 dark:border-red-900/50 dark:bg-red-950/20 dark:text-red-300">
       {{ error }}

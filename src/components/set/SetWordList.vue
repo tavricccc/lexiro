@@ -34,7 +34,7 @@ const filteredWords = computed(() => {
       <Input :model-value="search" :placeholder="$t('set.searchWords')" class="pl-9" :aria-label="$t('set.searchWords')" @update:model-value="emit('update:search', $event)" />
     </label>
 
-    <div v-if="filteredWords.length" class="space-y-1 lg:max-h-[calc(100dvh-22rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1">
+    <div v-if="filteredWords.length" class="space-y-1 p-1 lg:max-h-[calc(100dvh-22rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1">
       <RouterLink
         v-for="word in filteredWords"
         :key="word.wordKey"

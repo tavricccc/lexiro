@@ -28,7 +28,7 @@ const classes = computed(() =>
     'relative inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap text-sm font-semibold rounded-[var(--radius-inner)] transition-[color,background-color,border-color,box-shadow,opacity] duration-200 outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/20 disabled:opacity-40 disabled:pointer-events-none disabled:cursor-not-allowed',
     {
       'button-primary': props.variant === 'default',
-      'surface-control text-ink-600 dark:text-ink-300 hover:shadow-floating': props.variant === 'outline' || props.variant === 'secondary',
+      'surface-control text-ink-600 dark:text-ink-300 hover:border-ink-400': props.variant === 'outline' || props.variant === 'secondary',
       'text-accent-primary hover:bg-ink-100 dark:hover:bg-ink-850': props.variant === 'ghost',
       'text-accent-primary underline-offset-4 hover:underline': props.variant === 'link',
       'bg-red-50 dark:bg-red-950/15 text-red-600 dark:text-red-400 border border-red-100/80 dark:border-red-900/30 hover:bg-red-100/80 dark:hover:bg-red-950/30': props.variant === 'destructive',
