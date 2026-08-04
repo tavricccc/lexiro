@@ -97,6 +97,7 @@ async function removeWord() {
           <Button v-if="canSpeak" variant="outline" size="icon" :aria-label="$t('dictionary.playAudio')" @click="speak">
             <Volume2 class="h-4 w-4" />
           </Button>
+        </div>
       </div>
       <div class="flex shrink-0 gap-1">
         <Button variant="outline" size="icon" :aria-label="$t('vocabulary.editWord')" :disabled="deleting" @click="openVocabulary">
