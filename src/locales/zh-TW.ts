@@ -779,6 +779,8 @@ export default {
     saveAndUpdate: '保存並更新',
     discardAndUpdate: '放棄變更並更新',
     saveDirtyError: '尚未保存所有編輯內容，請修正表單錯誤後再試。',
+    updating: '更新中…',
+    updated: '版本已更新',
   },
   appHeader: {
     stats: '{setCount} 個單字集，共 {wordCount} 個單字',

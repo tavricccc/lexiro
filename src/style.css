@@ -494,9 +494,21 @@ textarea {
   font: inherit;
 }
 
-:where(button, a, input, textarea, select, [tabindex]):focus-visible {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 2px;
+@media (hover: hover) and (pointer: fine) {
+  :where(button, a, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+}
+
+@media (pointer: coarse), (hover: none) {
+  :where(button, a, input, textarea, select, [tabindex]):focus,
+  :where(button, a, input, textarea, select, [tabindex]):focus-visible,
+  :where(button, a, input, textarea, select, [tabindex]):active {
+    outline: none !important;
+    outline-offset: 0 !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
 }
 
 ::selection {

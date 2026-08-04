@@ -1,5 +1,4 @@
 import { Buffer } from 'node:buffer'
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
@@ -51,13 +50,20 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     {
-      name: 'generate-version',
-      closeBundle() {
-        const distDir = resolve(import.meta.dirname, 'dist')
-        if (!existsSync(distDir)) {
-          mkdirSync(distDir, { recursive: true })
-        }
-        writeFileSync(resolve(distDir, 'version.json'), JSON.stringify({ version: appVersion }))
+      name: 'app-version-file',
+      configureServer(server) {
+        server.middlewares.use('/version.json', (_request, response) => {
+          response.setHeader('Cache-Control', 'no-store')
+          response.setHeader('Content-Type', 'application/json; charset=utf-8')
+          response.end(JSON.stringify({ version: appVersion }))
+        })
+      },
+      generateBundle() {
+        this.emitFile({
+          fileName: 'version.json',
+          source: JSON.stringify({ version: appVersion }),
+          type: 'asset',
+        })
       },
     },
     {
