@@ -129,7 +129,7 @@ async function removeWord(word: WordEntry) {
           </div>
         </div>
 
-        <div class="space-y-3">
+        <div class="divide-y divide-ink-200/50 dark:divide-ink-800/50">
           <SenseCard
             v-for="sense in wordSenses(word)"
             :key="sense.id"

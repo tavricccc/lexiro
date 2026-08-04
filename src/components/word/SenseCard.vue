@@ -24,7 +24,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <article class="py-3 text-left border-b border-ink-200/50 last:border-b-0 dark:border-ink-800/50">
+  <article class="py-2.5 text-left border-b border-ink-200/50 last:border-b-0 dark:border-ink-800/50">
     <div class="flex items-start justify-between gap-3">
       <div class="min-w-0 flex-1">
         <div class="flex flex-wrap items-center gap-2">
@@ -35,10 +35,10 @@ const emit = defineEmits<{
             {{ sense.meaningZh }}
           </h3>
         </div>
-        <p v-if="props.setNames" class="mt-2 text-xs font-semibold text-ink-500">
+        <p v-if="props.setNames" class="mt-1 text-xs font-semibold text-ink-500">
           {{ props.setNames }} · {{ $t('vocabulary.readOnly') }}
         </p>
-        <div class="mt-3">
+        <div v-if="sense.examples.length || props.editable" class="mt-2">
           <ExampleList
             :examples="sense.examples"
             :editable="props.editable"
@@ -49,11 +49,11 @@ const emit = defineEmits<{
         </div>
       </div>
       <div v-if="props.editable" class="flex shrink-0 gap-1">
-        <Button variant="ghost" size="icon" class="h-11 w-11" :aria-label="$t('vocabulary.editSense')" @click="emit('edit', sense)">
-          <Pencil class="h-4 w-4" />
+        <Button variant="ghost" size="icon" class="h-8 w-8 min-h-8" :aria-label="$t('vocabulary.editSense')" @click="emit('edit', sense)">
+          <Pencil class="h-3.5 w-3.5" />
         </Button>
-        <Button variant="ghost" size="icon" class="h-11 w-11 text-red-500" :aria-label="$t('vocabulary.deleteSense')" @click="emit('delete', sense)">
-          <Trash2 class="h-4 w-4" />
+        <Button variant="ghost" size="icon" class="h-8 w-8 min-h-8 text-red-500" :aria-label="$t('vocabulary.deleteSense')" @click="emit('delete', sense)">
+          <Trash2 class="h-3.5 w-3.5" />
         </Button>
       </div>
     </div>
