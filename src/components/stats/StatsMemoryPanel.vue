@@ -8,13 +8,10 @@ defineProps<{ memory: StatsMemorySummary, statuses: FsrsStatusCounts, senseCount
 
 <template>
   <Card class="p-5">
-    <div class="flex items-center justify-between gap-3">
-      <div class="flex items-center gap-2">
-        <Brain class="h-5 w-5" /><h2 class="font-black">
-          {{ $t('stats.memoryTitle') }}
-        </h2>
-      </div>
-      <span class="text-xs font-bold text-ink-400">{{ $t('stats.senseCount', { count: senseCount }) }}</span>
+    <div class="flex items-center gap-2">
+      <Brain class="h-5 w-5" /><h2 class="font-black">
+        {{ $t('stats.memoryTitle') }}
+      </h2>
     </div>
     <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
       <div class="surface-inset p-3">

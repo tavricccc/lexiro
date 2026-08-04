@@ -12,7 +12,6 @@ import { useUIStore } from '@/stores/ui'
 import QuestionEditorDialog from './dialogs/QuestionEditorDialog.vue'
 import SenseDeleteImpactDialog from './dialogs/SenseDeleteImpactDialog.vue'
 import SenseEditorDialog from './dialogs/SenseEditorDialog.vue'
-import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import VocabularyQuestionsPanel from './VocabularyQuestionsPanel.vue'
 import VocabularySensesPanel from './VocabularySensesPanel.vue'
@@ -177,9 +176,6 @@ watch([() => route.query.action, () => route.query.questionId, () => currentSens
           {{ currentSet?.setName ?? $t('vocabulary.globalView') }}
         </p>
       </div>
-      <Badge variant="secondary">
-        {{ word.senses.length }} {{ $t('vocabulary.senses') }}
-      </Badge>
     </div>
 
     <div class="flex gap-2 border-b border-ink-200/70 dark:border-ink-200/15">

@@ -52,17 +52,19 @@ const metrics = computed(() => [
       </div>
     </Card>
 
-    <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-      <Card v-for="metric in metrics" :key="metric.label" class="p-4">
-        <div class="flex items-center justify-between gap-3">
-          <span class="text-xs font-black uppercase tracking-wider text-ink-400">{{ $t(metric.label) }}</span>
-          <component :is="metric.icon" class="h-4 w-4 text-accent-primary" />
+    <Card class="p-4 sm:p-5">
+      <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 divide-y divide-ink-200/50 sm:divide-y-0 xl:divide-x dark:divide-ink-800">
+        <div v-for="(metric, idx) in metrics" :key="metric.label" :class="idx > 0 ? 'xl:pl-5' : ''" class="pt-2 sm:pt-0">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-xs font-black uppercase tracking-wider text-ink-400">{{ $t(metric.label) }}</span>
+            <component :is="metric.icon" class="h-4 w-4 text-accent-primary" />
+          </div>
+          <p class="mt-2 text-xl font-black tabular-nums">
+            {{ metric.value }}
+          </p>
         </div>
-        <p class="mt-2 text-xl font-black tabular-nums">
-          {{ metric.value }}
-        </p>
-      </Card>
-    </div>
+      </div>
+    </Card>
 
     <Card class="p-4 sm:p-5">
       <div class="flex items-center justify-between gap-3">
@@ -78,7 +80,6 @@ const metrics = computed(() => [
       <div v-if="recentWords.length" class="mt-4 grid gap-2 sm:grid-cols-2">
         <RouterLink v-for="word in recentWords" :key="word.wordKey" :to="{ name: 'set-word', params: { setId, wordKey: word.wordKey } }" class="flex min-h-11 items-center justify-between gap-3 rounded-2xl border border-ink-200/60 px-4 py-2.5 text-sm font-bold transition-colors hover:border-accent-primary/40 hover:bg-accent-primary/5 dark:border-ink-200/15">
           <span class="truncate">{{ word.word }}</span>
-          <span class="shrink-0 text-xs font-semibold text-ink-400">{{ $t('set.senseCount', { count: word.senses.length }) }}</span>
         </RouterLink>
       </div>
       <p v-else class="mt-4 text-sm font-semibold text-ink-400">

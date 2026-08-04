@@ -279,16 +279,16 @@ body {
 .panel {
   position: relative;
   background-color: var(--color-surface);
-  border: 0;
+  border: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-outer);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease, box-shadow var(--motion-duration) ease;
+  box-shadow: none;
+  transition: transform var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease, border-color var(--motion-duration) ease;
 }
 
 .dark .panel {
   background-color: var(--color-surface);
-  border: 0;
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-outline-variant);
+  box-shadow: none;
 }
 
 .surface-control,
@@ -299,20 +299,20 @@ body {
 }
 
 .surface-control {
-  border: 0;
+  border: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-inner);
   box-shadow: var(--shadow-control);
 }
 
 .surface-card {
-  border: 0;
+  border: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-outer);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease;
+  box-shadow: none;
+  transition: border-color var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease;
 }
 
 .surface-card--interactive:hover {
-  box-shadow: var(--shadow-floating);
+  border-color: var(--color-outline);
 }
 
 .surface-floating {

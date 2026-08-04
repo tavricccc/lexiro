@@ -3,7 +3,6 @@ import type { WordEntry } from '@/types'
 import { Search } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useLibraryStore } from '@/stores/library'
 import Input from '../ui/input/Input.vue'
 
 const props = defineProps<{
@@ -17,7 +16,6 @@ const emit = defineEmits<{
 }>()
 
 const route = useRoute()
-const libraryStore = useLibraryStore()
 const filteredWords = computed(() => {
   const query = props.search.trim().toLocaleLowerCase()
   if (!query)
@@ -27,11 +25,6 @@ const filteredWords = computed(() => {
     return searchable.some(value => value.toLocaleLowerCase().includes(query))
   })
 })
-
-function senseCount(word: WordEntry): number {
-  const allowed = new Set(libraryStore.getMembership(props.setId, word.wordKey)?.senseIds ?? [])
-  return word.senses.filter(sense => allowed.has(sense.id)).length
-}
 </script>
 
 <template>
@@ -50,7 +43,6 @@ function senseCount(word: WordEntry): number {
         :class="route.params.wordKey === word.wordKey ? 'bg-accent-primary/10 text-accent-primary' : 'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800'"
       >
         <span class="min-w-0 truncate text-sm font-bold">{{ word.word }}</span>
-        <span class="shrink-0 text-xs font-semibold text-ink-400">{{ senseCount(word) }}</span>
       </RouterLink>
     </div>
     <p v-else class="rounded-2xl border border-dashed border-ink-200/70 px-4 py-8 text-center text-sm font-semibold text-ink-400 dark:border-ink-200/20">

@@ -174,7 +174,6 @@ function clearSelection() {
           <label class="flex cursor-pointer items-center gap-2 font-semibold">
             <input type="checkbox" :checked="word.senses.every(sense => selectedKeys.includes(generationSenseKey(word.wordKey, sense.id)))" :disabled="Boolean(selectionLimit && !word.senses.some(sense => !selectedKeys.includes(generationSenseKey(word.wordKey, sense.id))) && selectedKeys.length >= selectionLimit)" @change="toggleWord(word)">
             <span class="truncate">{{ word.word }}</span>
-            <span class="ml-auto text-xs text-ink-400">{{ $t('library.sensesCount', { count: word.senses.length }) }}</span>
           </label>
           <div class="mt-2 space-y-1 border-t border-ink-200/50 pt-2 dark:border-ink-800/70">
             <label v-for="sense in word.senses" :key="sense.id" class="flex cursor-pointer items-start gap-2 text-xs font-medium text-ink-600 dark:text-ink-300">

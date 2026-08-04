@@ -171,43 +171,49 @@ async function continueSet(setId: string) {
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.continueTitle') }}
-          </h2><RouterLink to="/library" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewAll')" :title="$t('home.viewAll')">
+          </h2>
+          <RouterLink to="/library" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewAll')" :title="$t('home.viewAll')">
             <Library class="h-4 w-4" aria-hidden="true" />
           </RouterLink>
         </div>
-        <div class="grid gap-3 md:grid-cols-3">
-          <Card v-for="set in activeSessions" :key="set.id" class="p-4">
-            <p class="truncate text-sm font-black">
-              {{ set.setName }}
-            </p>
-            <p class="mt-1 text-xs font-semibold text-ink-500">
-              {{ $t('home.inProgress') }} · {{ setsStore.getSetWordCount(set.id) }} {{ $t('home.wordUnit') }}
-            </p>
-            <button type="button" class="mt-4 inline-flex min-h-11 items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300" @click="continueSet(set.id)">
-              {{ $t('home.continue') }} <ArrowRight class="h-3.5 w-3.5" />
-            </button>
-          </Card>
-        </div>
+        <Card class="p-4 sm:p-5">
+          <div class="grid gap-4 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-200/60 dark:divide-ink-800">
+            <div v-for="(set, idx) in activeSessions" :key="set.id" :class="idx > 0 ? 'md:pl-4' : ''" class="pt-3 md:pt-0">
+              <p class="truncate text-sm font-black">
+                {{ set.setName }}
+              </p>
+              <p class="mt-1 text-xs font-semibold text-ink-500">
+                {{ $t('home.inProgress') }} · {{ setsStore.getSetWordCount(set.id) }} {{ $t('home.wordUnit') }}
+              </p>
+              <button type="button" class="mt-4 inline-flex min-h-11 items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300 hover:text-accent-primary" @click="continueSet(set.id)">
+                {{ $t('home.continue') }} <ArrowRight class="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        </Card>
       </div>
 
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.recentTitle') }}
-          </h2><RouterLink to="/library" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewLibrary')" :title="$t('home.viewLibrary')">
+          </h2>
+          <RouterLink to="/library" class="inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 hover:bg-ink-100 hover:text-ink-950 dark:hover:bg-ink-900 dark:hover:text-white" :aria-label="$t('home.viewLibrary')" :title="$t('home.viewLibrary')">
             <Library class="h-4 w-4" aria-hidden="true" />
           </RouterLink>
         </div>
-        <div class="grid gap-3 md:grid-cols-3">
-          <RouterLink v-for="set in recentSets" :key="set.id" :to="{ name: 'set-overview', params: { setId: set.id } }" class="group min-w-0 rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition-[border-color,box-shadow] hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
-            <p class="truncate text-sm font-black group-hover:text-accent-primary">
-              {{ set.setName }}
-            </p>
-            <p class="mt-1 text-xs font-semibold text-ink-500">
-              {{ setsStore.getSetWordCount(set.id) }} {{ $t('home.wordUnit') }}
-            </p>
-          </RouterLink>
-        </div>
+        <Card class="p-4 sm:p-5">
+          <div class="grid gap-4 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-200/60 dark:divide-ink-800">
+            <RouterLink v-for="(set, idx) in recentSets" :key="set.id" :to="{ name: 'set-overview', params: { setId: set.id } }" :class="idx > 0 ? 'md:pl-4' : ''" class="group min-w-0 pt-3 md:pt-0">
+              <p class="truncate text-sm font-black group-hover:text-accent-primary">
+                {{ set.setName }}
+              </p>
+              <p class="mt-1 text-xs font-semibold text-ink-500">
+                {{ setsStore.getSetWordCount(set.id) }} {{ $t('home.wordUnit') }}
+              </p>
+            </RouterLink>
+          </div>
+        </Card>
       </div>
     </template>
   </section>
