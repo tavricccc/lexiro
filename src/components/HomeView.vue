@@ -29,6 +29,8 @@ const canStartDailyReview = computed(() => dailyReviewCount.value > 0 || (!libra
 const activeSessions = computed(() => sets.value.filter(set => sessionStore.isSetInProgress(set.id)).slice(0, 3))
 const recentSets = computed(() => [...sets.value].sort((a, b) => (b.updatedAt ?? '').localeCompare(a.updatedAt ?? '')).slice(0, 3))
 
+const questionPreparing = ref(false)
+
 async function startReview() {
   reviewPreparing.value = true
   try {
@@ -40,6 +42,21 @@ async function startReview() {
   }
   finally {
     reviewPreparing.value = false
+  }
+}
+
+async function startDailyQuiz() {
+  questionPreparing.value = true
+  try {
+    const started = await sessionStore.startDailyQuestionRound()
+    if (!started)
+      uiStore.showToast(t('learning.noDailyQuestions'))
+  }
+  catch {
+    uiStore.showToast(t('sync.errorPersistence'))
+  }
+  finally {
+    questionPreparing.value = false
   }
 }
 
@@ -115,14 +132,16 @@ async function continueSet(setId: string) {
             </div>
           </div>
           <Progress :model-value="todayProgress" class="mt-5 bg-white/15 [&>div]:bg-white dark:bg-ink-200/30 dark:[&>div]:bg-ink-950" />
-          <Button v-if="canStartDailyReview" variant="secondary" class="mt-5 gap-2" :loading="reviewPreparing" @click="startReview">
-            <RotateCcw class="h-4 w-4" />
-            {{ dailyReviewCount ? $t('learning.startToday', { count: dailyReviewCount }) : $t('home.startReview') }}
-            <ArrowRight class="h-4 w-4" />
-          </Button>
-          <RouterLink v-else to="/library" class="mt-5 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">
-            {{ $t('home.exploreStudy') }} <ArrowRight class="h-4 w-4" />
-          </RouterLink>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <Button v-if="canStartDailyReview" variant="secondary" class="gap-2" :loading="reviewPreparing" @click="startReview">
+              <RotateCcw class="h-4 w-4" />
+              {{ dailyReviewCount ? $t('learning.startToday', { count: dailyReviewCount }) : $t('home.startReview') }}
+            </Button>
+            <Button variant="secondary" class="gap-2" :loading="questionPreparing" @click="startDailyQuiz">
+              <BookOpen class="h-4 w-4" />
+              {{ $t('learning.startDailyQuiz') }}
+            </Button>
+          </div>
         </Card>
 
         <Card class="min-w-0 p-4 sm:p-5">

@@ -45,12 +45,12 @@ export function buildDailyQuestionEntries(questions: LibraryQuestion[], words: M
       selected.push(...takeReadingGroups(readingGroups, remainingQuestions, usedQuestionIds, usedSenseIds, preferredSenseIds))
   }
   const blocks: SessionEntry[][] = []
-  for (const entry of selected) {
+  for (const entry of selected.slice(0, target)) {
     const previous = blocks.at(-1)
     if (entry.readingPackId && previous?.[0]?.readingPackId === entry.readingPackId)
       previous.push(entry)
     else
       blocks.push([entry])
   }
-  return shuffleEntries(blocks).flat()
+  return shuffleEntries(blocks).flat().slice(0, target)
 }

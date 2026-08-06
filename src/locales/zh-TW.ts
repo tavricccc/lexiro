@@ -743,6 +743,11 @@ export default {
     noDue: '目前沒有需要複習的單字',
     rating: { again: '再次', good: '良好' },
     ratingHint: { again: '很快再見', good: '幾週後' },
+    reviewFinishedTitle: '今日單字記憶已完成',
+    reviewFinishedDesc: '準備好進行題目鞏固練習了嗎？',
+    startQuizConsolidation: '開始題目鞏固',
+    startDailyQuiz: '開始題目練習',
+    returnHome: '返回首頁',
   },
   confirm: {
     deleteTitle: '刪除單字集',

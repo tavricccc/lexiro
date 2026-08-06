@@ -3,7 +3,7 @@ import type { ReviewRating } from '@/types'
 import { Check, ChevronRight, Volume2 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { syncAfterLocalCommit } from '@/lib/commit-sync'
@@ -35,6 +35,8 @@ const activeSet = computed(() => {
 
 const ratingKeys: ReviewRating[] = ['again', 'good']
 
+const completedMilestone = ref(false)
+
 function speak() {
   const word = currentReviewEntry.value?.item.word
   if (!word || !('speechSynthesis' in window))
@@ -54,24 +56,35 @@ async function next() {
   const wasDaily = reviewContext.value === 'daily'
   if (nextReview())
     return
-  clearReview()
   if (!(await syncAfterLocalCommit()).localPersisted) {
     uiStore.showToast(t('sync.error'))
+    clearReview()
     void router.push({ name: 'home' })
     return
   }
   if (wasDaily) {
-    void startDailyQuestionRound().then((started) => {
-      if (!started) {
-        uiStore.showToast(t('learning.noDailyQuestions'))
-        router.push({ name: 'home' })
-      }
-    }).catch(() => {
-      uiStore.showToast(t('sync.errorPersistence'))
-      void router.push({ name: 'home' })
-    })
+    completedMilestone.value = true
     return
   }
+  clearReview()
+  router.push({ name: 'home' })
+}
+
+async function startQuizConsolidation() {
+  clearReview()
+  void startDailyQuestionRound().then((started) => {
+    if (!started) {
+      uiStore.showToast(t('learning.noDailyQuestions'))
+      router.push({ name: 'home' })
+    }
+  }).catch(() => {
+    uiStore.showToast(t('sync.errorPersistence'))
+    void router.push({ name: 'home' })
+  })
+}
+
+function goHome() {
+  clearReview()
   router.push({ name: 'home' })
 }
 
@@ -85,7 +98,10 @@ function onKeydown(event: KeyboardEvent) {
   }
   else if (reviewAnswered.value && event.key === 'Enter') {
     event.preventDefault()
-    next()
+    if (completedMilestone.value)
+      void startQuizConsolidation()
+    else
+      void next()
   }
 }
 
@@ -114,7 +130,26 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
-  <section v-if="activeSet && currentReviewEntry" class="mx-auto max-w-2xl">
+  <section v-if="completedMilestone" class="mx-auto max-w-2xl text-center">
+    <Card class="p-6 sm:p-8 space-y-4">
+      <h2 class="text-2xl font-black tracking-tight text-ink-950 dark:text-ink-50">
+        {{ $t('learning.reviewFinishedTitle') }}
+      </h2>
+      <p class="text-sm font-semibold text-ink-500 leading-relaxed">
+        {{ $t('learning.reviewFinishedDesc') }}
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <Button variant="default" class="w-full sm:w-auto px-6 font-bold" @click="startQuizConsolidation">
+          {{ $t('learning.startQuizConsolidation') }}
+        </Button>
+        <Button variant="outline" class="w-full sm:w-auto px-6 font-bold" @click="goHome">
+          {{ $t('learning.returnHome') }}
+        </Button>
+      </div>
+    </Card>
+  </section>
+
+  <section v-else-if="activeSet && currentReviewEntry" class="mx-auto max-w-2xl">
     <motion.div :key="currentReviewEntry.item.id" :initial="{ opacity: 0 }" :animate="{ opacity: 1 }" :transition="{ duration: 0.18 }">
       <Card class="p-5 text-center sm:p-6">
         <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400">
