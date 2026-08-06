@@ -456,25 +456,27 @@ body {
 }
 
 .button-primary {
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
+  background-color: var(--color-on-surface);
+  color: var(--color-surface);
   border: 0;
-  box-shadow: var(--shadow-control);
+  box-shadow: none;
 }
 
 .dark .button-primary {
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
+  background-color: var(--color-on-surface);
+  color: var(--color-surface);
   border: 0;
-  box-shadow: var(--shadow-control);
+  box-shadow: none;
 }
 
 .button-primary:hover {
-  box-shadow: var(--shadow-floating);
+  box-shadow: none;
+  opacity: 0.9;
 }
 
 .button-primary:active {
-  box-shadow: var(--shadow-control);
+  box-shadow: none;
+  opacity: 1;
 }
 
 @layer utilities {

@@ -115,7 +115,7 @@ async function requestTransferClose() {
           role="tab"
           :aria-selected="activeMode === 'cloud'"
           class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-2 py-1.5 text-xs font-bold transition-colors"
-          :class="activeMode === 'cloud' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
+          :class="activeMode === 'cloud' ? 'bg-white text-accent-primary dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
           @click="activeMode = 'cloud'"
         >
           <Cloud class="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -126,7 +126,7 @@ async function requestTransferClose() {
           role="tab"
           :aria-selected="activeMode === 'import'"
           class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-2 py-1.5 text-xs font-bold transition-colors"
-          :class="activeMode === 'import' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
+          :class="activeMode === 'import' ? 'bg-white text-accent-primary dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
           @click="activeMode = 'import'"
         >
           <Upload class="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -137,7 +137,7 @@ async function requestTransferClose() {
           role="tab"
           :aria-selected="activeMode === 'export'"
           class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-2 py-1.5 text-xs font-bold transition-colors"
-          :class="activeMode === 'export' ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
+          :class="activeMode === 'export' ? 'bg-white text-accent-primary dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'"
           @click="activeMode = 'export'"
         >
           <Download class="h-4 w-4 shrink-0" aria-hidden="true" />

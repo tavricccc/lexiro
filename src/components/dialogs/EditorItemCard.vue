@@ -21,7 +21,7 @@ function updateItem(item: EditorItem, patch: Partial<EditorItem>) {
 </script>
 
 <template>
-  <div class="rounded-2xl border border-ink-200/80 bg-white/80 p-4 text-left shadow-sm dark:border-ink-200/25 dark:bg-ink-900/70 sm:p-5">
+  <div class="rounded-2xl border border-ink-200/80 bg-white/80 p-4 text-left dark:border-ink-200/25 dark:bg-ink-900/70 sm:p-5">
     <div class="flex items-center justify-between gap-4 border-b border-ink-200/70 pb-3 dark:border-ink-200/20">
       <p class="text-sm font-extrabold text-ink-950 dark:text-ink-50">
         {{ $t('editor.word') }} {{ itemIndex + 1 }}

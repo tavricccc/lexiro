@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import { BookOpenCheck, Brain, CircleHelp, Flame, Play } from 'lucide-vue-next'
+import { BookOpenCheck, Brain, CircleHelp, Flame } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useLearningStore } from '@/stores/learning'
 import { useLibraryStore } from '@/stores/library'
-import Button from '../ui/button/Button.vue'
 import Card from '../ui/card/Card.vue'
 
 const props = defineProps<{
   setId: string
-}>()
-
-defineEmits<{
-  'start-practice': []
 }>()
 
 const libraryStore = useLibraryStore()
@@ -32,26 +27,7 @@ const metrics = computed(() => [
 </script>
 
 <template>
-  <section v-if="set" class="space-y-5 text-left">
-    <Card class="overflow-hidden p-4 sm:p-5">
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div class="max-w-2xl">
-          <p class="text-xs font-black uppercase tracking-wider text-accent-primary">
-            {{ $t('set.overviewTab') }}
-          </p>
-          <h2 class="mt-2 text-xl font-black tracking-tight">
-            {{ set.setName }}
-          </h2>
-          <p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500">
-            {{ $t('set.overviewDescription') }}
-          </p>
-        </div>
-        <Button class="shrink-0 gap-2 px-4 font-black" @click="$emit('start-practice')">
-          <Play class="h-4 w-4" />{{ $t('set.startPractice') }}
-        </Button>
-      </div>
-    </Card>
-
+  <section v-if="set" class="space-y-4 text-left sm:space-y-5">
     <Card class="p-4 sm:p-5">
       <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 divide-y divide-ink-200/50 sm:divide-y-0 xl:divide-x dark:divide-ink-800">
         <div v-for="(metric, idx) in metrics" :key="metric.label" :class="idx > 0 ? 'xl:pl-5' : ''" class="pt-2 sm:pt-0">

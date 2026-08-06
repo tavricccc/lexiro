@@ -36,6 +36,12 @@ const menuOpen = ref(false)
 const practiceOpen = ref(false)
 let hydrationController: AbortController | null = null
 
+function isTabActive(tabName: string): boolean {
+  if (tabName === 'set-words')
+    return route.name === 'set-words' || route.name === 'set-word'
+  return route.name === tabName
+}
+
 watch(setId, (value) => {
   hydrationController?.abort()
   if (value) {
@@ -119,7 +125,15 @@ function openGeneration() {
       </div>
 
       <nav class="flex gap-1 overflow-x-auto border-b border-ink-200/70 dark:border-ink-200/15" :aria-label="$t('set.overviewTab')">
-        <RouterLink v-for="tab in tabs" :key="tab.name" :to="{ name: tab.name, params: { setId } }" class="min-h-11 shrink-0 border-b-2 border-transparent px-3 py-2.5 text-sm font-bold text-ink-500 transition-colors hover:text-ink-950 dark:hover:text-ink-50" active-class="border-accent-primary text-accent-primary">
+        <RouterLink
+          v-for="tab in tabs"
+          :key="tab.name"
+          :to="{ name: tab.name, params: { setId } }"
+          class="min-h-11 shrink-0 border-b-2 px-3 py-2.5 text-sm font-bold transition-colors"
+          :class="isTabActive(tab.name)
+            ? 'border-ink-950 text-ink-950 dark:border-ink-50 dark:text-ink-50'
+            : 'border-transparent text-ink-500 hover:text-ink-950 dark:hover:text-ink-50'"
+        >
           {{ $t(tab.label) }}
         </RouterLink>
       </nav>

@@ -106,23 +106,13 @@ async function deleteQuestion(question: LibraryQuestion) {
 
 <template>
   <section class="space-y-4 text-left">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h2 class="text-xl font-black tracking-tight">
-          {{ $t('set.questionsTab') }}
-        </h2>
-        <p class="mt-1 text-sm font-semibold text-ink-500">
-          {{ $t('set.questionsDescription') }}
-        </p>
-      </div>
-      <div class="flex flex-wrap gap-2">
-        <Button variant="outline" class="gap-2" :disabled="!firstStudyWord" @click="createOpen = true">
-          <Plus class="h-4 w-4" />{{ $t('set.addQuestion') }}
-        </Button>
-        <Button class="gap-2" @click="router.push({ name: 'question-generation', params: { setId } })">
-          <Sparkles class="h-4 w-4" />{{ $t('set.generateQuestions') }}
-        </Button>
-      </div>
+    <div class="flex justify-end gap-2">
+      <Button variant="outline" class="gap-2" :disabled="!firstStudyWord" @click="createOpen = true">
+        <Plus class="h-4 w-4" />{{ $t('set.addQuestion') }}
+      </Button>
+      <Button class="gap-2" @click="router.push({ name: 'question-generation', params: { setId } })">
+        <Sparkles class="h-4 w-4" />{{ $t('set.generateQuestions') }}
+      </Button>
     </div>
 
     <Card class="p-4 sm:p-5">

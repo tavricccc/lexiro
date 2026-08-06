@@ -18,18 +18,7 @@ const isDetail = computed(() => route.name === 'set-word' || typeof route.params
 </script>
 
 <template>
-  <section class="space-y-4 text-left">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h2 class="text-xl font-black tracking-tight">
-          {{ $t('set.wordsTab') }}
-        </h2>
-        <p class="mt-1 text-sm font-semibold text-ink-500">
-          {{ $t('set.wordCount', { count: words.length }) }}
-        </p>
-      </div>
-    </div>
-
+  <section class="text-left">
     <Card v-if="words.length" class="p-3 sm:p-5">
       <!-- Mobile View: Directly displays all words with senses -->
       <div class="lg:hidden">

@@ -149,7 +149,7 @@ onMounted(() => {
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-ink-200/50 dark:border-ink-200/10">
         <div class="flex items-start gap-4">
           <span
-            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/20 shadow-sm"
+            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
             :class="{ 'animate-pulse-ring': isHighScore }"
             aria-hidden="true"
           >
@@ -174,8 +174,8 @@ onMounted(() => {
         </div>
 
         <div
-          class="flex shrink-0 items-center gap-4 self-start rounded-2xl border border-ink-200/70 bg-ink-100/80 p-4 transition-[border-color,box-shadow] dark:border-ink-200/25 dark:bg-ink-900 md:self-auto"
-          :class="{ 'ring-2 ring-accent-primary/30 shadow-lg': isHighScore }"
+          class="flex shrink-0 items-center gap-4 self-start rounded-2xl border border-ink-200/70 bg-ink-100/80 p-4 transition-[border-color] dark:border-ink-200/25 dark:bg-ink-900 md:self-auto"
+          :class="{ 'ring-2 ring-accent-primary/30': isHighScore }"
         >
           <ScoreRing :score="resultSummary.score" />
           <div class="text-left">
@@ -194,7 +194,7 @@ onMounted(() => {
             v-if="resultSummary.wrongCount"
             variant="default"
             size="lg"
-            class="gap-2 px-5 text-sm font-bold shadow-md transition-shadow hover:shadow-lg"
+            class="gap-2 px-5 text-sm font-bold"
             @click="reviewWrongAnswers"
           >
             <BookOpenText class="h-5 w-5" />
@@ -206,7 +206,7 @@ onMounted(() => {
             v-else
             variant="default"
             size="lg"
-            class="gap-2 px-5 text-sm font-bold shadow-md transition-shadow hover:shadow-lg"
+            class="gap-2 px-5 text-sm font-bold"
             @click="switchModeAfterResult"
           >
             <BookOpenText class="h-5 w-5" />

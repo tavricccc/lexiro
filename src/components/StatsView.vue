@@ -162,7 +162,7 @@ const tabs: { key: StatsTab, labelKey: string }[] = [
     <template v-else>
       <StatsKpiGrid :memory="memoryStats" :stats="stats" />
       <nav class="flex overflow-x-auto rounded-2xl bg-ink-100/70 p-1 no-scrollbar dark:bg-ink-900/70" role="tablist" :aria-label="$t('stats.title')">
-        <button v-for="tab in tabs" :key="tab.key" type="button" role="tab" :aria-selected="activeTab === tab.key" class="flex min-h-10 shrink-0 items-center justify-center rounded-xl px-3.5 py-1.5 text-xs font-bold transition-[color,background-color]" :class="activeTab === tab.key ? 'bg-white text-accent-primary shadow-sm dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'" @click="activeTab = tab.key">
+        <button v-for="tab in tabs" :key="tab.key" type="button" role="tab" :aria-selected="activeTab === tab.key" class="flex min-h-10 shrink-0 items-center justify-center rounded-xl px-3.5 py-1.5 text-xs font-bold transition-[color,background-color]" :class="activeTab === tab.key ? 'bg-white text-accent-primary dark:bg-ink-800' : 'text-ink-500 hover:text-ink-900 dark:hover:text-ink-100'" @click="activeTab = tab.key">
           {{ $t(tab.labelKey) }}
         </button>
       </nav>
