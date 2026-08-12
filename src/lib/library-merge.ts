@@ -51,7 +51,7 @@ function pruneOrphans(state: Omit<LibraryState, 'updatedAt'>): Omit<LibraryState
   return { ...state, words, questions }
 }
 
-/** Merge a complete incoming Library without materializing it in Vue state. */
+/** Merge a complete incoming Library without materializing it in application state. */
 export function mergeLibraryStates(current: LibraryState, incoming: LibraryState): { state: LibraryState, result: LibraryMergeResult } {
   const base = normalizeLibraryState(current)
   const source = normalizeLibraryState(incoming)

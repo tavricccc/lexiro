@@ -1,17 +1,19 @@
-# lexiro Project Structure
+# Lexiro project structure
 
-lexiro is a Vue 3 + Pinia vocabulary practice app with a canonical word/sense library, Firestore sync, ZIP backup, and spaced repetition.
+Lexiro is a Next.js App Router vocabulary-learning PWA. The UI is React; the existing canonical vocabulary domain and Firebase backend live under `src/`.
 
-## Architecture
+```text
+app/             routes, layouts, manifest, service worker
+components/      feature components and shared React UI
+lib/             frontend helpers and Traditional Chinese copy
+stores/          Zustand application stores
+src/constants/   shared domain constants
+src/lib/         domain logic, persistence, Firebase, import/export
+src/types/       canonical domain types
+tests-next/      Vitest unit and integrity tests
+public/          Lexiro icons and Open Doodles illustration
+```
 
-- **Frontend**: Vue 3 `<script setup lang="ts">`, Vue Router, Tailwind CSS v4, lucide-vue-next.
-- **State**: Pinia setup stores for the canonical library, set workflows, sessions, learning/FSRS, backup, account, cloud sync, and UI.
-- **Domain model**: `library.words` stores one `WordEntry` per normalized word; senses, memberships, folders, and questions are shared records. Every saved word is reachable through a set membership.
-- **Persistence**: Application data uses the namespaced IndexedDB repository in `src/lib/persist.ts`; API keys remain device-local. Cloud sync uses a record-level outbox and Cloud-first reconciliation.
-- **Study modes**: Memory review uses FSRS `Again`/`Good`; formal questions are multiple choice, fill-blank, and reading comprehension. Sessions are local transient state and are not synced.
-- **Import/export**: Canonical word/question JSON flows through strict parsers; ZIP worker handles set sharing and complete backups without API keys or rebuildable caches.
-- **Seed preparation**: `scripts/prepare-library-data.mjs` is an offline one-way conversion from the external source into canonical `output/` bundles; it is not part of runtime import or compatibility handling.
-- **i18n**: `src/locales/zh-TW.ts`.
-- **Testing**: Vitest for lib + stores.
+The workspace shell is shared by desktop and mobile. Desktop uses a compact sidebar; mobile uses the same routes through a bottom navigation bar. Library folders use a drill-down model, similar to Windows File Explorer, instead of an always-expanded tree.
 
-Key domain modules: `src/lib/library.ts`, `src/lib/library-import.ts`, `src/lib/fsrs.ts`, `src/lib/sync-outbox.ts`, `src/lib/cloud-sync-remote.ts`, `src/lib/cloud-sync-reconcile.ts`, `src/lib/daily-question-selection.ts`, and `src/lib/share.ts`.
+The client persists local data through IndexedDB and can sync canonical records through Firebase. Memory review uses FSRS; question practice supports multiple choice, fill-in-the-blank, and reading comprehension.

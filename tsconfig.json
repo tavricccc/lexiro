@@ -1,30 +1,69 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "jsx": "preserve",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "ignoreDeprecations": "6.0",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "resolveJsonModule": true,
-    "types": ["vitest/globals", "node"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": false,
+    "skipLibCheck": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/types": [
+        "./src/types/index.ts"
+      ],
+      "@/constants": [
+        "./src/constants/index.ts"
+      ],
+      "@/constants/*": [
+        "./src/constants/*"
+      ],
+      "@/lib/*": [
+        "./lib/*",
+        "./src/lib/*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
+    "types": [
+      "@serwist/next/typings"
+    ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "env.d.ts"
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
+    "stores/**/*.ts",
+    "tests-next/**/*.ts",
+    "next.config.ts",
+    "vitest.next.config.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src",
+    "tests",
+    "dist",
+    "dev-dist"
   ]
 }

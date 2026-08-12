@@ -19,7 +19,7 @@ let authEmulatorConnected = false
 let firestoreEmulatorConnected = false
 
 function useEmulators(): boolean {
-  return !import.meta.env.PROD && config.emulatorEnabled === 'true'
+  return process.env.NODE_ENV !== 'production' && config.emulatorEnabled === 'true'
 }
 
 function emulatorHost(): string {
@@ -30,12 +30,12 @@ export function getFirebaseApp(): FirebaseApp | null {
   if (!isFirebaseConfigured())
     return null
   firebaseApp ??= getApps().length ? getApp() : initializeApp(config)
-  const hasDebugToken = Boolean(config.appCheckDebugToken?.trim() && !import.meta.env.PROD)
+  const hasDebugToken = Boolean(config.appCheckDebugToken?.trim() && process.env.NODE_ENV !== 'production')
   // A site key alone does not mean the Firebase Web App is registered with
   // App Check. Require an explicit switch so an incomplete console setup does
   // not break every Firestore request in production.
   const shouldUseAppCheck = shouldEnableAppCheck({
-    production: import.meta.env.PROD,
+    production: process.env.NODE_ENV === 'production',
     emulatorEnabled: useEmulators(),
     appCheckSiteKey: config.appCheckSiteKey,
     appCheckEnabled: config.appCheckEnabled,

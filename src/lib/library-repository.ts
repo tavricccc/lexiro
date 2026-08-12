@@ -724,7 +724,7 @@ export class LibraryRepository {
     return result
   }
 
-  /** Streams bounded groups of complete set payloads without touching Pinia. */
+  /** Streams bounded groups of complete set payloads without touching UI state. */
   async* streamSetPayloads(
     setIds: readonly string[],
     batchSize = LIBRARY_PAGE_SIZE,

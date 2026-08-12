@@ -1,71 +1,51 @@
-# lexiro Codebase Guidelines for AI Agents
+# Lexiro codebase guidelines for AI agents
 
-Welcome, Agent! To keep the lexiro application maintainable, scalable, and beautifully designed, you MUST strictly adhere to the rules and architectural standards detailed in this document.
+## Core constraints
 
----
+- Keep React components below 400 lines. Split feature sections or move reusable logic before a file approaches 350 lines.
+- Apply the rule of two: business logic, formatting helpers, and UI patterns used twice must become shared code.
+- Preserve strict TypeScript types. Avoid `any`; canonical domain types belong in `src/types/`.
+- Do not add legacy Vue/Vite compatibility paths or old-data compatibility layers. Changes to persisted structures require an explicit migration.
+- Keep Lexiro's name and icons.
 
-## 🚨 Core Strict Guidelines
+## Architecture
 
-### 1. Max 400 Lines per Vue Component
-- **STRICT CONSTRAINT**: No single `.vue` file is allowed to exceed **400 lines** (including `<script>`, `<template>`, and `<style>` blocks).
-- **Action**: If you are adding features and the file is approaching **350 lines**, you **MUST** proactively refactor and split it.
-  - Extract complex template blocks into dedicated sub-components.
-  - Move standalone calculations, state mappings, and helpers to helper files in `src/lib/` or composables.
-
-### 2. The Rule of Two (重複兩次即拆分)
-- **STRICT CONSTRAINT**: Any business logic, UI template block, formatting helper, or utility used **two times or more** across the application **MUST** be extracted and shared.
-- **Examples**:
-  - **Clipboard copy operations**: Do not write `navigator.clipboard.writeText` locally. Use `copyToClipboard` from `@/lib/clipboard`.
-  - **Import settings panels**: Extracted into a shared `ImportSettings.vue`.
-  - **Form elements**: Always use shared UI primitives in `src/components/ui/` (e.g. `Button.vue`, `Input.vue`, `Textarea.vue`, `Badge.vue`, `Card.vue`).
-
----
-
-## 📁 Codebase Directory Architecture
-
-Ensure new files are placed in their proper semantic location:
-```
-src/
-├── components/
-│   ├── dialogs/       # Specific overlays & modals (must be under 400 lines!)
-│   ├── ui/            # Reusable core visual primitives (Card, Button, Badge, etc.)
-│   └── *.vue          # Main layout or view components
-├── constants/         # Static configuration, storage keys, config strings
-├── lib/               # Shared logic, helpers, parsers, and custom composables
-├── locales/           # i18n localization translation key sheets
-├── router/            # Vue Router page mapping
-├── stores/            # Pinia setup stores (sets, session, backup, ui)
-├── types/             # Explicit TypeScript interface & type definitions
-└── workers/           # Background Web Workers (fflate compression etc.)
+```text
+app/             Next.js App Router routes, layouts, PWA files
+components/      React feature components and UI primitives
+lib/             frontend helpers and Traditional Chinese copy
+stores/          Zustand stores
+src/constants/   canonical domain constants
+src/lib/         domain logic, persistence, Firebase, import/export
+src/types/       canonical domain types
+tests-next/      Vitest tests
 ```
 
----
+- Use Server Components by default and add `"use client"` only where browser state or interaction requires it.
+- Use Zustand for local application state and TanStack Query for asynchronous server state.
+- Use shared primitives in `components/ui/` and `cn()` from `lib/cn.ts`.
+- Style with Tailwind CSS v4 and the design tokens in `app/globals.css`. Sizes must use relative units through Tailwind/rem-based values.
+- Desktop and mobile must expose the same capabilities. Their navigation shells may adapt, but neither platform is secondary.
+- Library folders use one-level-at-a-time drill-down navigation.
+- User-facing copy belongs in `lib/i18n.ts`; do not scatter duplicated strings through components.
 
-## 💻 Tech Stack & Coding Standards
+## Verification
 
-### 1. Vue 3 `<script setup>` with TypeScript
-- Always use `<script setup lang="ts">`.
-- Maintain strict typing. Avoid using `any` unless absolutely necessary; declare precise types in `src/types/`.
-- Leverage Pinia setup stores (`useSetsStore`, `useSessionStore`, `useBackupStore`, `useUIStore`) for global reactive states and action dispatching.
+Before finalizing changes, run:
 
-### 2. Styling (Tailwind CSS v4)
-- Use standard utility classes from Tailwind CSS v4.
-- Make extensive use of custom theme tokens (e.g. `.panel` utilities, `text-ink-950`, `bg-ink-100`, `dark:bg-ink-900`).
-- Use the `cn(...)` utility (from `@/lib/cn`) to safely join conditional classes and resolve Tailwind utility conflicts.
+```bash
+npm run typecheck
+npm run lint
+npm run test
+npm run build
+```
 
-### 3. Localization (i18n)
-- Do not hardcode user-facing strings.
-- Always use `$t(...)` in templates or `const { t } = useI18n()` in scripts.
-- Put the translation keys in `src/locales/zh-TW.ts`.
+<!-- BEGIN:nextjs-agent-rules -->
 
----
+# This is NOT the Next.js you know
 
-## 🧪 Testing & Verification
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
-Before finalizing any changes, you must ensure that all test suites pass perfectly.
-- **Test files location**: `tests/` directory (categorized by stores and library logic).
-- **Run Typechecking**: `npm run typecheck` to verify strict compilation.
-- **Run Linter**: `npm run lint` to check for style violations.
-- **Run Unit Tests**: `npm run test` (uses Vitest) to check for regressions.
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
-Thank you for keeping the lexiro codebase clean and elegant! ✨
+<!-- END:nextjs-agent-rules -->
