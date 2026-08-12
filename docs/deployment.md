@@ -30,6 +30,8 @@ Workflow 位於 `.github/workflows/deploy.yml`，所有 job 使用 GitHub 的 `P
 
 GitHub Secret 名稱暫時保留既有的 `VITE_*`，workflow 會把它們注入成 Next.js 使用的 `NEXT_PUBLIC_*` build variables；程式碼與本機 `.env.local` 不再支援 `VITE_*`。Firebase Web 設定會進入瀏覽器 bundle，真正的資料權限仍由 Authentication、App Check 與 Firestore Rules 控制。`FIREBASE_SERVICE_ACCOUNT` 不可提交到 repository。
 
+`vercel.json` 會把 Framework Preset 固定為 Next.js，並將 Output Directory 恢復為 framework 預設值。即使 Vercel Project Settings 還留著舊 Vite 專案的 `dist` override，repository 設定也會在 deployment 時覆蓋它。
+
 ## 平台設定
 
 1. Firebase Console 啟用 Google Authentication，並加入 Vercel production domain。
