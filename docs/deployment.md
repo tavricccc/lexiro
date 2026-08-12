@@ -2,9 +2,9 @@
 
 推送 `main` 後，Lexiro 會執行 typecheck、lint、unit tests 與 Next.js production build。驗證完成後：
 
-1. 產生 Vercel prebuilt artifact。
+1. 在同一個 runner 產生 Vercel prebuilt output。
 2. 發布 Firestore Rules 與 indexes。
-3. Rules 成功後把已驗證的 artifact 發布到 Vercel production。
+3. Rules 成功後直接把該 runner 的 prebuilt output 發布到 Vercel production。
 
 Workflow 位於 `.github/workflows/deploy.yml`，所有 job 使用 GitHub 的 `Production` Environment。
 
@@ -31,6 +31,8 @@ Workflow 位於 `.github/workflows/deploy.yml`，所有 job 使用 GitHub 的 `P
 GitHub Secret 名稱暫時保留既有的 `VITE_*`，workflow 會把它們注入成 Next.js 使用的 `NEXT_PUBLIC_*` build variables；程式碼與本機 `.env.local` 不再支援 `VITE_*`。Firebase Web 設定會進入瀏覽器 bundle，真正的資料權限仍由 Authentication、App Check 與 Firestore Rules 控制。`FIREBASE_SERVICE_ACCOUNT` 不可提交到 repository。
 
 `vercel.json` 會把 Framework Preset 固定為 Next.js，並將 Output Directory 恢復為 framework 預設值。即使 Vercel Project Settings 還留著舊 Vite 專案的 `dist` override，repository 設定也會在 deployment 時覆蓋它。
+
+Vercel build 與 deploy 必須留在同一個 job。Next.js 的 prebuilt deployment 仍會讀取同一工作區的 framework metadata；不要只把 `.vercel/output` 搬到另一個乾淨 job。
 
 ## 平台設定
 
