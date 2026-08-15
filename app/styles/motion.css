@@ -1,0 +1,1127 @@
+:root {
+  --motion-micro: 80ms;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-medium: 350ms;
+  --motion-slow: 400ms;
+  --motion-emphasis: 500ms;
+  --motion-stagger: 40ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-assertive: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --motion-blur-sm: 2px;
+  --motion-blur-md: 3px;
+  --motion-distance-xs: 4px;
+  --motion-distance-sm: 8px;
+  --motion-distance-md: 12px;
+  --motion-scale-soft: 0.98;
+  --motion-scale-overlay: 0.96;
+  --pulse-dur: 2200ms;
+  --pulse-count: 1;
+  --pulse-min: 0.6;
+  --reveal-dur: 400ms;
+  --reveal-blur: 2px;
+  --reveal-ease: ease-in-out;
+  --resize-dur: 300ms;
+  --resize-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tabs-dur: 250ms;
+  --tabs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tabs-text-muted: var(--muted-foreground);
+  --tabs-text-active: var(--foreground);
+  --tabs-bar-bg: var(--muted);
+  --tabs-pill-bg: var(--card);
+  --shimmer-base: #7c7c7c;
+  --shimmer-highlight: #0d0d0d;
+}
+
+.dark {
+  --shimmer-base: #797979;
+  --shimmer-highlight: #ededed;
+}
+
+/* Animate only the newly committed route node; no old-page snapshot or exit layer. */
+.t-route-enter {
+  animation:
+    t-route-enter-child var(--motion-medium) var(--ease-smooth-out) backwards,
+    t-route-blur var(--motion-quick) var(--ease-smooth-out) backwards;
+}
+
+@keyframes t-route-enter-child {
+  from {
+    opacity: 0.9;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.route-page.t-route-enter[data-route-direction="root"] {
+  animation: t-route-enter-root var(--motion-medium) var(--ease-smooth-out) backwards;
+}
+
+@keyframes t-route-enter-root {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes t-route-blur {
+  from { filter: blur(var(--motion-blur-sm)); }
+  to { filter: blur(0); }
+}
+
+.t-route-enter[data-route-direction="back"] {
+  animation-name: t-route-enter-back, t-route-blur;
+}
+
+@keyframes t-route-enter-back {
+  from {
+    opacity: 0.9;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.t-panel-reveal {
+  animation: t-panel-reveal var(--motion-slow) var(--ease-smooth-out) both;
+}
+
+@keyframes t-panel-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-distance-md));
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Dense lists stay fully painted ahead of the viewport. */
+.t-stagger-item { opacity: 1; }
+
+/* Transitions.dev — Card resize */
+.t-resize {
+  transition:
+    width var(--resize-dur) var(--resize-ease),
+    height var(--resize-dur) var(--resize-ease);
+  will-change: width, height;
+}
+
+/* Number updates */
+.t-digit-group {
+  display: inline-flex;
+  align-items: baseline;
+}
+.t-digit {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+.t-digit-group[data-animate="true"] .t-digit {
+  animation: t-digit-pop var(--motion-emphasis) var(--ease-emphasized) both;
+  animation-delay: calc(var(--digit-index, 0) * 32ms);
+}
+
+@keyframes t-digit-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Notification badge */
+.t-notification-badge {
+  transform-origin: center;
+  transition:
+    transform var(--motion-emphasis) var(--ease-emphasized),
+    opacity var(--motion-slow) var(--ease-emphasized),
+    filter var(--motion-emphasis) var(--ease-emphasized);
+}
+
+.t-notification-badge[data-open="false"] {
+  opacity: 0;
+  transform: translate(-8px, 12px) scale(0);
+  filter: blur(var(--motion-blur-sm));
+  transition-duration: var(--motion-quick);
+  transition-timing-function: var(--ease-standard);
+}
+
+/* Status text swap */
+.t-text-swap {
+  display: inline-block;
+  transition:
+    transform var(--motion-quick) ease-in-out,
+    opacity var(--motion-quick) ease-in-out,
+    filter var(--motion-quick) ease-in-out;
+}
+
+.t-text-swap[data-phase="exit"] {
+  opacity: 0;
+  transform: translateY(-4px);
+  filter: blur(var(--motion-blur-sm));
+}
+.t-text-swap[data-phase="enter"] {
+  animation: t-text-enter var(--motion-quick) ease-in-out both;
+}
+@keyframes t-text-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Radix dropdown, popover and select content */
+.t-dropdown[data-state="open"] {
+  animation: t-dropdown-in var(--motion-fast) var(--ease-smooth-out) both;
+}
+.t-dropdown[data-state="closed"] {
+  animation: t-dropdown-out var(--motion-quick) var(--ease-smooth-out) both;
+}
+@keyframes t-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes t-dropdown-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+}
+
+/* Dialog / sheet */
+.t-overlay[data-state="open"] {
+  animation: t-overlay-in var(--motion-fast) ease-out both;
+}
+.t-overlay[data-state="closed"] {
+  animation: t-overlay-out var(--motion-quick) ease-in both;
+}
+@keyframes t-overlay-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(3px);
+  }
+}
+@keyframes t-overlay-out {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(3px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+}
+
+.t-dialog[data-state="open"] {
+  animation: t-dialog-in var(--motion-fast) var(--ease-smooth-out) both;
+}
+.t-dialog[data-state="closed"] {
+  animation: t-dialog-out var(--motion-quick) var(--ease-smooth-out) both;
+}
+@keyframes t-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes t-dialog-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+.t-sheet[data-state="open"] {
+  animation: t-sheet-in var(--motion-slow) var(--ease-smooth-out) both;
+}
+.t-sheet[data-state="closed"] {
+  animation: t-sheet-out var(--motion-medium) var(--ease-smooth-out) both;
+}
+@keyframes t-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes t-sheet-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+.t-sheet[data-side="right"][data-state="open"] {
+  animation-name: t-sheet-right-in;
+}
+.t-sheet[data-side="right"][data-state="closed"] {
+  animation-name: t-sheet-right-out;
+}
+.t-sheet[data-side="left"][data-state="open"] {
+  animation-name: t-sheet-left-in;
+}
+.t-sheet[data-side="left"][data-state="closed"] {
+  animation-name: t-sheet-left-out;
+}
+.t-sheet[data-side="top"][data-state="open"] {
+  animation-name: t-sheet-top-in;
+}
+.t-sheet[data-side="top"][data-state="closed"] {
+  animation-name: t-sheet-top-out;
+}
+@keyframes t-sheet-right-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+@keyframes t-sheet-right-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+@keyframes t-sheet-left-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+@keyframes t-sheet-left-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+@keyframes t-sheet-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes t-sheet-top-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* Icon swap */
+.t-icon-swap {
+  display: inline-grid;
+}
+.t-icon-swap > * {
+  grid-area: 1 / 1;
+  transition:
+    opacity var(--motion-fast) ease-in-out,
+    transform var(--motion-fast) ease-in-out,
+    filter var(--motion-fast) ease-in-out;
+}
+.t-icon-swap [data-visible="false"] {
+  opacity: 0;
+  transform: scale(0.25);
+  filter: blur(var(--motion-blur-sm));
+}
+.t-icon-swap [data-visible="true"] {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Success and error */
+.t-success-check[data-state="in"] {
+  animation: t-success-in var(--motion-emphasis) var(--ease-emphasized) both;
+}
+.t-success-check[data-state="out"] {
+  opacity: 0;
+}
+.t-success-check path {
+  stroke-dasharray: var(--check-length, 24);
+  stroke-dashoffset: var(--check-length, 24);
+}
+.t-success-check[data-state="in"] path {
+  animation: t-success-draw var(--motion-emphasis) var(--ease-smooth-out)
+    var(--motion-micro) forwards;
+}
+@keyframes t-success-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotate(80deg);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+    filter: blur(0);
+  }
+}
+@keyframes t-success-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.t-shake[data-error="true"] {
+  animation: t-shake 280ms linear;
+}
+@keyframes t-shake {
+  0% {
+    transform: translateX(0);
+    animation-timing-function: var(--ease-smooth-out);
+  }
+  28.57% {
+    transform: translateX(6px);
+    animation-timing-function: var(--ease-smooth-out);
+  }
+  57.14% {
+    transform: translateX(-6px);
+    animation-timing-function: var(--ease-smooth-out);
+  }
+  78.57% {
+    transform: translateX(4px);
+    animation-timing-function: var(--ease-smooth-out);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Skeleton reveal and loading label */
+.t-skeleton {
+  position: relative;
+  overflow: hidden;
+  animation: t-skeleton-pulse var(--pulse-dur) ease-in-out infinite;
+}
+.t-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--shimmer-highlight) 12%, transparent) 50%,
+    transparent 100%
+  );
+  animation: t-skeleton-shimmer var(--pulse-dur) ease-in-out infinite;
+}
+@keyframes t-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: var(--pulse-min);
+  }
+}
+@keyframes t-skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+/* Transitions.dev — Skeleton loader and reveal */
+.t-skel {
+  position: relative;
+  display: inline-block;
+}
+.t-skel[data-block="true"] { display: block; }
+.t-skel-skeleton,
+.t-skel-content {
+  position: absolute;
+  inset: 0;
+}
+.t-skel-skeleton {
+  z-index: 1;
+  opacity: 1;
+  filter: blur(0);
+  pointer-events: none;
+  transition:
+    opacity var(--reveal-dur) var(--reveal-ease),
+    filter var(--reveal-dur) var(--reveal-ease);
+}
+.t-skel-content {
+  z-index: 2;
+  position: relative;
+  opacity: 0;
+  filter: blur(var(--reveal-blur));
+  transition:
+    opacity var(--reveal-dur) var(--reveal-ease),
+    filter var(--reveal-dur) var(--reveal-ease);
+}
+.t-skel.is-revealed .t-skel-skeleton {
+  opacity: 0;
+  filter: blur(var(--reveal-blur));
+}
+.t-skel.is-revealed .t-skel-content {
+  opacity: 1;
+  filter: blur(0);
+}
+@starting-style {
+  .t-skel.is-revealed .t-skel-skeleton {
+    opacity: 1;
+    filter: blur(0);
+  }
+  .t-skel.is-revealed .t-skel-content {
+    opacity: 0;
+    filter: blur(var(--reveal-blur));
+  }
+}
+.t-skel.is-resetting .t-skel-skeleton,
+.t-skel.is-resetting .t-skel-content {
+  transition: none !important;
+}
+
+.t-skel-skeleton.is-pulsing > * {
+  animation: t-skel-pulse var(--pulse-dur) ease-in-out var(--pulse-count);
+}
+@keyframes t-skel-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: var(--pulse-min); }
+}
+
+.t-shimmer {
+  position: relative;
+  display: inline-block;
+  color: var(--shimmer-base);
+}
+.t-shimmer::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0 40%,
+    var(--shimmer-highlight) 50%,
+    transparent 60% 100%
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: t-shimmer 2000ms linear infinite;
+}
+@keyframes t-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Transitions.dev — Tabs sliding */
+.t-tabs {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border-radius: 48px;
+  background: var(--tabs-bar-bg);
+}
+.t-tab {
+  position: relative;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  height: 30px;
+  padding: 4px 12px;
+  color: var(--tabs-text-muted);
+  cursor: pointer;
+  border-radius: 48px;
+  z-index: 1;
+  transition: color var(--tabs-dur) var(--tabs-ease);
+}
+.t-tab[aria-selected="true"],
+.t-tab[data-state="active"] {
+  color: var(--tabs-text-active);
+}
+@media (hover: hover) and (pointer: fine) {
+  .t-tab:not([aria-selected="true"]):hover {
+    color: var(--tabs-text-active);
+  }
+}
+
+.t-tabs-pill {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: calc(100% - 6px);
+  width: 0;
+  background: var(--tabs-pill-bg);
+  box-shadow: var(--shadow-control);
+  border-radius: 48px;
+  transform: translateX(0);
+  transition:
+    transform var(--tabs-dur) var(--tabs-ease),
+    width var(--tabs-dur) var(--tabs-ease);
+  will-change: transform, width;
+  z-index: 0;
+  pointer-events: none;
+}
+.t-tab-label {
+  transition: color var(--tabs-dur) var(--tabs-ease);
+}
+
+/* Tooltip */
+.t-tooltip[data-state="delayed-open"],
+.t-tooltip[data-state="instant-open"] {
+  animation: t-tooltip-in var(--motion-quick) ease-out both;
+}
+.t-tooltip[data-state="closed"] {
+  animation: t-tooltip-out 50ms ease-out both;
+}
+@keyframes t-tooltip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes t-tooltip-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+/* Accordion */
+.t-accordion[data-state="open"] {
+  animation: t-accordion-down var(--motion-fast) var(--ease-smooth-out);
+}
+.t-accordion[data-state="closed"] {
+  animation: t-accordion-up var(--motion-fast) var(--ease-smooth-out);
+}
+@keyframes t-accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes t-accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Transitions.dev — Toast open / close. Sonner owns stack position in --y;
+   this layer adds the recipe's 16px rise, cross-blur and 0.97 scale. */
+.t-toast[data-sonner-toast] {
+  --toast-open: 350ms;
+  --toast-close: 250ms;
+  --toast-distance: 16px;
+  --toast-blur: 2px;
+  --toast-scale: 0.97;
+  --toast-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  min-height: 46px;
+  border-radius: 52px !important;
+  padding: 12px 16px !important;
+  gap: 10px !important;
+  opacity: 0;
+  transform: var(--y) translateY(var(--toast-distance)) scale(var(--toast-scale));
+  filter: blur(var(--toast-blur));
+  will-change: transform, opacity, filter;
+  transition:
+    opacity var(--toast-close) var(--toast-ease),
+    transform var(--toast-close) var(--toast-ease),
+    filter var(--toast-close) var(--toast-ease),
+    height var(--toast-close) var(--toast-ease) !important;
+}
+.t-toast[data-sonner-toast][data-mounted="true"][data-removed="false"] {
+  opacity: 1;
+  transform: var(--y) translateY(0) scale(1);
+  filter: blur(0);
+  transition:
+    opacity var(--toast-open) var(--toast-ease),
+    transform var(--toast-open) var(--toast-ease),
+    filter var(--toast-open) var(--toast-ease),
+    height var(--toast-open) var(--toast-ease) !important;
+}
+.t-toast[data-sonner-toast][data-removed="true"][data-swipe-out="false"] {
+  opacity: 0;
+  filter: blur(var(--toast-blur));
+}
+
+/* Like / support celebration */
+.t-like {
+  position: relative;
+}
+.t-action-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 1rem;
+}
+.t-spinner {
+  animation: t-spinner 700ms linear infinite;
+}
+@keyframes t-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Startup and update progress stay bounded to one small compositor layer. */
+.t-loading-orbit {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--muted);
+  transform: translateZ(0);
+}
+
+.t-spinner-check {
+  position: relative;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: transparent;
+  transform: translateZ(0);
+}
+.t-spinner-check[data-surface="disc"] {
+  background: var(--muted);
+}
+.t-spinner-check[data-size="md"] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.t-spinner-check[data-size="sm"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.t-spinner-check-loader,
+.t-spinner-check-success {
+  grid-area: 1 / 1;
+  transition:
+    opacity var(--motion-quick) var(--ease-smooth-out),
+    transform var(--motion-fast) var(--ease-emphasized),
+    filter var(--motion-fast) var(--ease-smooth-out);
+}
+
+.t-spinner-check-success {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: rotate(-12deg) scale(0.65);
+  filter: blur(var(--motion-blur-sm));
+}
+
+.t-spinner-check-success path {
+  stroke-dasharray: 15;
+  stroke-dashoffset: 15;
+}
+
+.t-spinner-check[data-state="complete"] .t-spinner-check-loader {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.65);
+  filter: blur(var(--motion-blur-sm));
+}
+
+.t-spinner-check[data-state="complete"] .t-spinner-check-success {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+  filter: blur(0);
+}
+
+.t-spinner-check[data-state="complete"] .t-spinner-check-success path {
+  animation: t-success-draw var(--motion-fast) var(--ease-smooth-out) both;
+}
+
+.t-update-stage {
+  animation: t-update-stage-in var(--motion-slow) var(--ease-smooth-out) both;
+}
+
+@keyframes t-update-stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-distance-sm)) scale(var(--motion-scale-soft));
+    filter: blur(var(--motion-blur-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.t-progress-track {
+  width: 7.5rem;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.t-progress-track > span {
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--foreground);
+  animation: t-progress-sweep 1100ms var(--ease-smooth-out) infinite;
+  will-change: transform;
+}
+
+@keyframes t-progress-sweep {
+  from { transform: translateX(-125%); }
+  to { transform: translateX(300%); }
+}
+.t-like-icon {
+  display: grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  transition: color var(--motion-quick) var(--ease-smooth-out);
+}
+.t-reaction-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+.t-like[data-accent="heart"][data-liked="true"] .t-like-icon {
+  color: #f40051;
+}
+.t-like[data-accent="heart"][data-celebrating] .t-reaction-icon {
+  animation: t-like-pop var(--motion-medium) var(--ease-emphasized) both;
+}
+@keyframes t-like-pop {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+  75% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.t-like[data-accent="hand"][data-celebrating] .t-reaction-icon {
+  transform-origin: 50% 82%;
+  animation: t-hand-raise 460ms var(--ease-emphasized) both;
+}
+@keyframes t-hand-raise {
+  0% {
+    transform: translateY(2px) rotate(-4deg) scale(0.85);
+    filter: blur(1px);
+  }
+  42% {
+    transform: translateY(-4px) rotate(3deg) scale(1.12);
+    filter: blur(0);
+  }
+  72% {
+    transform: translateY(-1px) rotate(-1deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) rotate(0) scale(1);
+    filter: blur(0);
+  }
+}
+.t-like-particles {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.t-like-particles i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(3px * var(--psize));
+  height: calc(3px * var(--psize));
+  border-radius: 999px;
+  background: currentColor;
+  color: var(--foreground);
+  animation: t-like-burst var(--pdur) var(--ease-emphasized) var(--pdelay) both;
+}
+.t-like[data-accent="heart"] .t-like-particles i {
+  color: #f40051;
+}
+.t-like[data-accent="hand"] .t-like-particles {
+  transform: translate(1px, -5px);
+}
+.t-like[data-accent="hand"] .t-like-particles i {
+  width: calc(2.5px * var(--psize));
+  height: calc(2.5px * var(--psize));
+}
+@keyframes t-like-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--px)), calc(-50% + var(--py)))
+      scale(var(--p-end-scale));
+  }
+}
+
+/* Directional link arrow */
+.t-learn-arrow {
+  transition: transform var(--motion-medium) var(--ease-smooth-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .t-learn:hover .t-learn-arrow {
+    transform: translateX(2px) scaleX(1.08);
+  }
+}
+
+/* Checkbox and switch */
+.t-checkmark path {
+  stroke-dasharray: var(--check-length, 15);
+  stroke-dashoffset: var(--check-length, 15);
+  transition: stroke-dashoffset var(--motion-quick) var(--ease-smooth-out);
+}
+[data-state="checked"] .t-checkmark path {
+  stroke-dashoffset: 0;
+  transition-duration: var(--motion-medium);
+}
+
+.t-toggle-thumb {
+  translate: 0 0;
+  will-change: translate;
+}
+[data-state="checked"] .t-toggle-thumb {
+  translate: var(--toggle-travel) 0;
+}
+[data-state="checked"][data-touched="true"] .t-toggle-thumb {
+  animation: t-toggle-on var(--motion-medium) var(--ease-emphasized) both;
+}
+[data-state="unchecked"][data-touched="true"] .t-toggle-thumb {
+  animation: t-toggle-off var(--motion-medium) var(--ease-emphasized) both;
+}
+@keyframes t-toggle-on {
+  0% {
+    translate: 0 0;
+  }
+  55% {
+    translate: calc(var(--toggle-travel) + 1px) 0;
+  }
+  80%,
+  100% {
+    translate: var(--toggle-travel) 0;
+  }
+}
+@keyframes t-toggle-off {
+  0% {
+    translate: var(--toggle-travel) 0;
+  }
+  55% {
+    translate: -1px 0;
+  }
+  80%,
+  100% {
+    translate: 0 0;
+  }
+}
+
+/* Only explicitly interactive cards receive restrained surface feedback. */
+.t-card {
+  transform: translateZ(0);
+  transition:
+    background-color 200ms var(--ease-smooth-out),
+    border-color 200ms var(--ease-smooth-out),
+    transform 200ms var(--ease-smooth-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .t-card:hover {
+    background-color: color-mix(in srgb, var(--card) 99%, #000 1%);
+    border-color: color-mix(in srgb, var(--border) 60%, var(--foreground) 10%);
+    transform: translateY(-1px);
+  }
+  .dark .t-card:hover {
+    background-color: color-mix(in srgb, var(--card) 99.5%, #fff 0.5%);
+    border-color: color-mix(in srgb, var(--border) 60%, var(--foreground) 12%);
+    transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+  .t-route-enter,
+  .t-resize,
+  .t-panel-reveal,
+  .t-stagger-item,
+  .t-digit,
+  .t-success-check,
+  .t-success-check path,
+  .t-spinner,
+  .t-spinner-check-success path,
+  .t-update-stage,
+  .t-progress-track > span,
+  .t-shake,
+  .t-skeleton,
+  .t-shimmer::before,
+  .t-reaction-icon,
+  .t-like-particles i,
+  .t-toast,
+  .t-accordion,
+  .t-dialog,
+  .t-sheet,
+  .t-overlay,
+  .t-dropdown,
+  .t-tooltip {
+    animation: none !important;
+  }
+  .t-skel-skeleton,
+  .t-skel-content {
+    transition: none !important;
+  }
+  .t-skel-skeleton.is-pulsing > * {
+    animation: none !important;
+  }
+  .t-notification-badge,
+  .t-text-swap,
+  .t-icon-swap > *,
+  .t-spinner-check-loader,
+  .t-spinner-check-success,
+  .t-tabs-pill,
+  .t-tab-label,
+  .t-learn-arrow,
+  .t-checkmark,
+  .t-toast,
+  .t-resize,
+  .t-card {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

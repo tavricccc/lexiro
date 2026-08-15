@@ -1,13 +1,23 @@
 "use client";
 
-import { BarChart3, BookOpenText, ChevronLeft, ChevronRight, CircleUserRound, ClipboardCheck, LibraryBig, Settings2 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState, type ReactNode } from "react";
+import * as React from "react";
+import { usePathname } from "next/navigation";
+import {
+  BarChart3,
+  BookOpenText,
+  ClipboardCheck,
+  LibraryBig,
+  Settings2,
+} from "lucide-react";
 
-import { cn } from "@/lib/cn";
 import { t, type TranslationKey } from "@/lib/i18n";
+import {
+  commitRouteHistory,
+  consumeRouteDirection,
+  markPopstateRouteDirection,
+} from "@/lib/navigation-memory";
+import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
+import { BrandLockup } from "@/components/ui/brand";
 
 const destinations = [
   { href: "/", label: "nav.today", icon: ClipboardCheck },
@@ -17,70 +27,101 @@ const destinations = [
   { href: "/settings", label: "nav.settings", icon: Settings2 },
 ] satisfies { href: string; label: TranslationKey; icon: typeof ClipboardCheck }[];
 
-function isActivePath(pathname: string, href: string) { return href === "/" ? pathname === "/" : pathname.startsWith(href); }
-
-function DesktopNavLink({ destination, expanded, pathname }: { destination: (typeof destinations)[number]; expanded: boolean; pathname: string }) {
-  const active = isActivePath(pathname, destination.href);
-  const Icon = destination.icon;
-  const label = t(destination.label);
-  return <Link href={destination.href} title={expanded ? undefined : label} aria-current={active ? "page" : undefined} className={cn("flex h-12 items-center gap-3 overflow-hidden text-sm font-semibold transition-[width,background-color,color,padding] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand", expanded ? "w-full rounded-2xl px-3.5" : "w-12 justify-center rounded-full", active ? "bg-brand-soft text-ink shadow-[var(--shadow-control)]" : "text-ink-muted hover:bg-brand-soft hover:text-ink")}><Icon className="size-5 shrink-0 stroke-[1.9]" aria-hidden="true" />{expanded && <span className="truncate">{label}</span>}</Link>;
+function isSecondaryMobileRoute(pathname: string) {
+  if (pathname.startsWith("/sets/") || pathname === "/sets/new") return true;
+  if (pathname.startsWith("/dictionary")) return true;
+  if (pathname === "/practice") return true;
+  if (/^\/questions\/.+/.test(pathname)) return true;
+  return false;
 }
 
-function MobileNavLink({ destination, pathname }: { destination: (typeof destinations)[number]; pathname: string }) {
-  const active = isActivePath(pathname, destination.href);
-  const Icon = destination.icon;
-  return <Link href={destination.href} aria-current={active ? "page" : undefined} className={cn("relative flex h-12 min-w-0 flex-col items-center justify-center gap-0.5 rounded-full px-1 text-center transition-[background-color,color,box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand", active ? "bg-brand-soft text-ink shadow-[var(--shadow-control)]" : "text-ink-muted active:bg-brand-soft")}><Icon className="size-[1.125rem] stroke-[1.9]" aria-hidden="true" /><span className="max-w-full truncate text-[0.6875rem] font-bold leading-[1.1rem]">{t(destination.label)}</span></Link>;
-}
-
-export function AppShell({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  const router = useRouter();
-  const [expanded, setExpanded] = useState(false);
-  const mobileTitle = t(routeTitle(pathname));
-  const showBack = isNestedRoute(pathname);
-
+function RouteTransition({
+  children,
+  pathname,
+}: {
+  children: React.ReactNode;
+  pathname: string;
+}) {
+  const [direction] = React.useState(() => consumeRouteDirection(pathname));
   return (
-    <div className="min-h-dvh">
-      <aside className={cn("fixed inset-y-0 left-0 z-40 hidden flex-col bg-surface py-4 shadow-[var(--shadow-card)] transition-[width] duration-300 md:flex", expanded ? "w-[17.25rem]" : "w-20")} aria-label={t("common.primaryNavigation")}>
-        <div className="relative flex h-12 w-full items-center px-4">
-          <Link href="/" className="flex h-12 w-full min-w-0 items-center gap-3 rounded-2xl px-2 text-ink hover:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand" aria-label={t("app.name")}>
-            <Image src="/icons/lexiro.png" width={32} height={32} className="size-8 shrink-0 rounded-lg" alt="" priority />
-            {expanded && <span className="truncate text-sm font-semibold tracking-[0.015em]">{t("app.name")}</span>}
-          </Link>
-          <button type="button" onClick={() => setExpanded((value) => !value)} aria-expanded={expanded} aria-label={t(expanded ? "common.collapseSidebar" : "common.expandSidebar")} className="absolute right-0 top-1/2 grid size-7 -translate-y-1/2 translate-x-1/2 place-items-center rounded-full bg-surface text-ink-muted shadow-[var(--shadow-control)] hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">{expanded ? <ChevronLeft className="size-3.5" /> : <ChevronRight className="size-3.5" />}</button>
-        </div>
-        <nav className="mt-7 flex flex-1 flex-col gap-2 px-3" aria-label={t("common.primaryNavigation")}>{destinations.map((destination) => <DesktopNavLink key={destination.href} destination={destination} expanded={expanded} pathname={pathname} />)}</nav>
-        <div className="px-3"><Link href="/settings" title={expanded ? undefined : t("common.account")} className={cn("flex h-12 items-center gap-3 overflow-hidden rounded-2xl text-sm text-ink-muted hover:bg-brand-soft hover:text-ink", expanded ? "w-full px-3" : "w-12 justify-center")}><CircleUserRound className="size-5 shrink-0" />{expanded && <span className="truncate">{t("common.account")}</span>}</Link></div>
-      </aside>
-
-      <header className="fixed inset-x-0 top-0 z-30 bg-canvas pt-[env(safe-area-inset-top)] shadow-[0_0.0625rem_0_var(--line)] md:hidden">
-        <div className="flex h-11 min-w-0 items-center px-4">
-          <div className={cn("grid h-11 place-items-center overflow-hidden transition-[width,opacity,margin]", showBack ? "mr-2 w-11 opacity-100" : "w-0 opacity-0")} aria-hidden={!showBack || undefined}>
-            <button type="button" disabled={!showBack} tabIndex={showBack ? undefined : -1} onClick={() => router.push(parentRoute(pathname))} aria-label={t("common.back")} className="grid size-11 place-items-center rounded-full text-ink-muted active:bg-brand-soft"><ChevronLeft className="size-5" /></button>
-          </div>
-          <h1 className="truncate text-xl font-semibold tracking-[0.01em]">{mobileTitle}</h1>
-        </div>
-      </header>
-
-      <div className={cn("min-w-0 transition-[margin] duration-300 md:ml-20", expanded && "md:ml-[17.25rem]")}>
-        <main className="mx-auto w-full max-w-[80rem] px-4 pb-24 pt-[calc(3.75rem+env(safe-area-inset-top))] sm:px-6 md:px-6 md:pb-8 md:pt-6 lg:px-8">{children}</main>
-      </div>
-
-      <nav className="fixed bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-[max(1rem,env(safe-area-inset-left))] right-[max(1rem,env(safe-area-inset-right))] z-30 mx-auto grid max-w-md grid-cols-5 rounded-full bg-surface px-3 py-1.5 shadow-[var(--shadow-floating)] md:hidden" aria-label={t("common.primaryNavigation")}>
-        {destinations.map((destination) => <MobileNavLink key={destination.href} destination={destination} pathname={pathname} />)}
-      </nav>
+    <div className="route-page t-route-enter" data-route-direction={direction}>
+      {children}
     </div>
   );
 }
 
-function routeTitle(pathname: string): TranslationKey {
-  if (pathname.startsWith("/sets") || pathname.startsWith("/dictionary") || pathname.startsWith("/library")) return "nav.library";
-  if (pathname.startsWith("/questions")) return "nav.questions";
-  if (pathname.startsWith("/progress")) return "nav.progress";
-  if (pathname.startsWith("/settings")) return "nav.settings";
-  if (pathname.startsWith("/practice")) return "practice.title";
-  return "nav.today";
-}
+export function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = React.useState(false);
+  const showMobileNavigation = !isSecondaryMobileRoute(pathname);
 
-function isNestedRoute(pathname: string) { return pathname.startsWith("/sets/") || pathname === "/sets/new" || pathname.startsWith("/dictionary") || pathname === "/practice" || /^\/questions\/.+/.test(pathname); }
-function parentRoute(pathname: string) { if (pathname.startsWith("/sets") || pathname.startsWith("/dictionary")) return "/library"; if (pathname.startsWith("/questions/")) return "/questions"; return "/"; }
+  React.useEffect(() => commitRouteHistory(pathname), [pathname]);
+
+  React.useEffect(() => {
+    const updateScrolled = () => setScrolled(window.scrollY > 8);
+    updateScrolled();
+    window.addEventListener("scroll", updateScrolled, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrolled);
+  }, []);
+
+  React.useEffect(() => {
+    const markHistoryTraversal = (event: PopStateEvent) =>
+      markPopstateRouteDirection(event.state, window.location.pathname);
+    window.addEventListener("popstate", markHistoryTraversal);
+    return () => window.removeEventListener("popstate", markHistoryTraversal);
+  }, []);
+
+  const navItems = React.useMemo<LiquidNavItem[]>(
+    () =>
+      destinations.map((d) => ({
+        href: d.href,
+        icon: <d.icon className="size-[1.125rem]" />,
+        label: t(d.label),
+      })),
+    [],
+  );
+
+  return (
+    <div className="min-h-[100dvh] bg-[var(--surface-stage)] md:grid md:grid-cols-[15rem_minmax(0,1fr)]">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-background/92 p-3 backdrop-blur-xl md:flex">
+        <div className="px-2 pb-5 pt-2">
+          <BrandLockup href="/" />
+        </div>
+        <LiquidNav
+          className="flex-1 content-start"
+          items={navItems}
+          pathname={pathname}
+          vertical
+        />
+      </aside>
+
+      <div className="min-w-0 md:col-start-2">
+        <div aria-hidden className="app-top-blur" data-visible={scrolled} />
+        <main
+          className={`app-viewport pt-[max(1rem,var(--safe-top))] md:pb-12 md:pt-6 ${
+            showMobileNavigation
+              ? "pb-[calc(6.5rem+min(0.625rem,var(--safe-bottom)))]"
+              : "pb-[max(2rem,var(--safe-bottom))]"
+          }`}
+        >
+          <RouteTransition key={pathname} pathname={pathname}>
+            {children}
+          </RouteTransition>
+        </main>
+
+        <div
+          aria-hidden={!showMobileNavigation}
+          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full border bg-background/92 px-3 py-1.5 shadow-[var(--shadow-floating)] backdrop-blur-xl md:hidden"
+          data-visible={showMobileNavigation}
+          inert={!showMobileNavigation}
+        >
+          <LiquidNav
+            className="mx-auto h-12"
+            items={navItems}
+            pathname={pathname}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}

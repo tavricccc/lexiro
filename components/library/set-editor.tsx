@@ -94,10 +94,10 @@ export function SetEditor({ setId, initialFolderId }: { setId?: string; initialF
     <form onSubmit={submit}>
       <PageHeader title={t(setId ? "setEditor.editTitle" : "setEditor.createTitle")} actions={<Button asChild variant="ghost"><Link data-allow-discard="true" href={setId ? `/sets/${setId}` : initialFolderId ? `/library?folderId=${encodeURIComponent(initialFolderId)}` : "/library"}><ArrowLeft className="size-4" />{t("setEditor.cancel")}</Link></Button>} />
       <div className="mx-auto max-w-3xl">
-        <div className="grid gap-5 rounded-[1.75rem] bg-brand-soft p-5 sm:grid-cols-[1fr_220px] sm:p-7">
+        <div className="grid gap-5 rounded-xl bg-muted p-5 sm:grid-cols-[1fr_220px] sm:p-7">
           <Field label={t("setEditor.name")} error={form.formState.errors.setName?.message ?? (form.formState.errors.setName && t("setEditor.required"))}><Input {...form.register("setName")} placeholder={t("setEditor.namePlaceholder")} /></Field>
           <Field label={t("setEditor.folder")}>
-            <select {...form.register("folderId")} className="h-11 w-full rounded-xl border bg-surface px-3.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/15">
+            <select {...form.register("folderId")} className="h-11 w-full rounded-xl border bg-card px-3.5 text-sm outline-none focus-visible:border-ring focus:ring-2 focus-visible:ring-ring/40">
               <option value={UNCATEGORIZED_FOLDER_ID}>{t("library.uncategorized")}</option>
               {state.folders.filter((folder) => folder.id !== UNCATEGORIZED_FOLDER_ID).map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
             </select>
@@ -115,9 +115,9 @@ export function SetEditor({ setId, initialFolderId }: { setId?: string; initialF
               </div>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <Field label={t("setEditor.meaning")} error={form.formState.errors.words?.[index]?.meaningZh && t("setEditor.required")}><Input {...form.register(`words.${index}.meaningZh`)} placeholder={t("setEditor.meaningPlaceholder")} /></Field>
-                <Field label={`${t("setEditor.examples")} · ${t("setEditor.examplesHint")}`}><textarea {...form.register(`words.${index}.example`)} placeholder={t("setEditor.examplePlaceholder")} className="min-h-24 w-full resize-y rounded-xl border bg-surface px-3.5 py-3 text-sm outline-none placeholder:text-ink-muted/65 focus:border-brand focus:ring-2 focus:ring-brand/15" /></Field>
+                <Field label={`${t("setEditor.examples")} · ${t("setEditor.examplesHint")}`}><textarea {...form.register(`words.${index}.example`)} placeholder={t("setEditor.examplePlaceholder")} className="min-h-24 w-full resize-y rounded-xl border bg-card px-3.5 py-3 text-sm outline-none placeholder:text-muted-foreground/65 focus-visible:border-ring focus:ring-2 focus-visible:ring-ring/40" /></Field>
               </div>
-              <div className="mt-3 flex flex-wrap gap-3"><button type="button" onClick={() => fields.insert(index + 1, { ...emptyWord, word: form.getValues(`words.${index}.word`) })} className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-strong"><Plus className="size-3.5" />{t("setEditor.addSense")}</button>{fields.fields.length > 1 && <button type="button" onClick={() => fields.remove(index)} className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-muted hover:text-red-700"><Trash2 className="size-3.5" />{t("setEditor.removeWord")}</button>}</div>
+              <div className="mt-3 flex flex-wrap gap-3"><button type="button" onClick={() => fields.insert(index + 1, { ...emptyWord, word: form.getValues(`words.${index}.word`) })} className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground"><Plus className="size-3.5" />{t("setEditor.addSense")}</button>{fields.fields.length > 1 && <button type="button" onClick={() => fields.remove(index)} className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-red-700"><Trash2 className="size-3.5" />{t("setEditor.removeWord")}</button>}</div>
             </section>
           ))}
         </div>
@@ -129,5 +129,5 @@ export function SetEditor({ setId, initialFolderId }: { setId?: string; initialF
 }
 
 function Field({ label, error, children }: { label: string; error?: string | false; children: React.ReactNode }) {
-  return <label className="block"><span className="mb-2 block text-xs font-semibold text-ink-muted">{label}</span>{children}{error && <span className="mt-1.5 block text-xs text-red-700">{error}</span>}</label>;
+  return <label className="block"><span className="mb-2 block text-xs font-semibold text-muted-foreground">{label}</span>{children}{error && <span className="mt-1.5 block text-xs text-red-700">{error}</span>}</label>;
 }

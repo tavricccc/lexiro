@@ -20,16 +20,20 @@ export function ConfirmDialog({ open, onOpenChange, title, description, confirmL
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-ink/25 backdrop-blur-[2px] data-[state=closed]:animate-out data-[state=open]:animate-in" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-surface p-6 shadow-[0_22px_60px_rgb(18_40_34/0.24)] outline-none">
-          <div className="grid size-11 place-items-center rounded-xl bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300"><AlertTriangle className="size-5" /></div>
-          <Dialog.Title className="mt-4 text-xl font-semibold tracking-[-0.02em]">{title}</Dialog.Title>
-          <Dialog.Description className="mt-2 text-sm leading-6 text-ink-muted">{description}</Dialog.Description>
-          <div className="mt-6 flex justify-end gap-2">
-            <Dialog.Close asChild><Button type="button" variant="ghost" disabled={busy}>{t("common.cancel")}</Button></Dialog.Close>
-            <Button type="button" disabled={busy} className="bg-red-700 shadow-none hover:bg-red-800" onClick={() => void onConfirm()}>{confirmLabel}</Button>
-          </div>
-        </Dialog.Content>
+        <Dialog.Overlay className="t-overlay fixed inset-0 z-50 bg-[var(--backdrop)] backdrop-blur-[3px]" />
+        <div className="pointer-events-none fixed inset-0 z-50 grid place-items-center p-4">
+          <Dialog.Content className="t-dialog surface-floating pointer-events-auto relative grid w-full max-w-md gap-5 p-6 outline-none sm:p-7">
+            <div className="grid size-12 place-items-center rounded-md bg-muted"><AlertTriangle className="size-6 text-muted-foreground" /></div>
+            <div>
+              <Dialog.Title className="text-lg font-semibold">{title}</Dialog.Title>
+              <Dialog.Description className="mt-1.5 text-sm text-muted-foreground">{description}</Dialog.Description>
+            </div>
+            <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <Dialog.Close asChild><Button type="button" variant="outline" disabled={busy}>{t("common.cancel")}</Button></Dialog.Close>
+              <Button type="button" variant="destructive" disabled={busy} onClick={() => void onConfirm()}>{confirmLabel}</Button>
+            </div>
+          </Dialog.Content>
+        </div>
       </Dialog.Portal>
     </Dialog.Root>
   );

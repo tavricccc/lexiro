@@ -18,12 +18,12 @@ export function LearningRows() {
       {session && <section>
         <h2 className="text-lg font-semibold tracking-[-0.02em]">{t("home.resumeTitle")}</h2>
         <div className="mt-3 flex items-center gap-3 border-y py-4">
-          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand-strong"><Play className="size-[1.125rem] fill-current" /></span>
+          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-muted text-foreground"><Play className="size-[1.125rem] fill-current" /></span>
           <div className="min-w-0 flex-1">
             <div className="truncate font-semibold">{state.sets.find((entry) => entry.id === session.setId)?.setName ?? t("practice.allSets")}</div>
-            <div className="mt-1 text-sm text-ink-muted">{session.index} / {session.amount}</div>
+            <div className="mt-1 text-sm text-muted-foreground">{session.index} / {session.amount}</div>
           </div>
-          <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-line sm:block"><div className="h-full rounded-full bg-brand" style={{ width: `${Math.min(100, session.index / session.amount * 100)}%` }} /></div>
+          <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-line sm:block"><div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(100, session.index / session.amount * 100)}%` }} /></div>
           <Button asChild variant="ghost" size="sm"><Link href="/practice">{t("home.resumeAction")}<ArrowRight className="size-4" /></Link></Button>
         </div>
       </section>}
@@ -31,17 +31,17 @@ export function LearningRows() {
       <section>
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-lg font-semibold tracking-[-0.02em]">{t("home.recentTitle")}</h2>
-          <Link href="/library" className="text-sm font-medium text-brand hover:text-brand-strong">{t("home.viewAll")}</Link>
+          <Link href="/library" className="text-sm font-medium text-primary hover:text-foreground">{t("home.viewAll")}</Link>
         </div>
         <div className="mt-3 divide-y border-y">
           {recentSets.map((set) => (
-            <Link key={set.id} href={`/sets/${set.id}`} className="group flex items-center gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
-              <BookMarked className="size-5 text-brand" aria-hidden="true" />
+            <Link key={set.id} href={`/sets/${set.id}`} className="group flex items-center gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40">
+              <BookMarked className="size-5 text-primary" aria-hidden="true" />
               <div className="min-w-0 flex-1">
-                <div className="truncate text-sm font-semibold group-hover:text-brand-strong">{set.name}</div>
-                <div className="mt-0.5 text-xs text-ink-muted">{t("home.wordCount", { count: set.count })}</div>
+                <div className="truncate text-sm font-semibold group-hover:text-foreground">{set.name}</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">{t("home.wordCount", { count: set.count })}</div>
               </div>
-              {set.due > 0 && <span className="rounded-full bg-brand-soft px-2.5 py-1 text-xs font-medium text-brand-strong">{set.due} {t("home.dueToday")}</span>}
+              {set.due > 0 && <span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-foreground">{set.due} {t("home.dueToday")}</span>}
             </Link>
           ))}
         </div>

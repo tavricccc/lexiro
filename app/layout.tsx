@@ -1,9 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Roboto_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { Providers } from "@/components/providers";
 import { t } from "@/lib/i18n";
 import "./globals.css";
+
+const inter = Inter({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const robotoMono = Roboto_Mono({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+});
 
 export const metadata: Metadata = {
   title: { default: "Lexiro", template: "%s · Lexiro" },
@@ -16,28 +29,20 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F5F7F5",
-  colorScheme: "light",
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f9f9f9" },
+    { media: "(prefers-color-scheme: dark)", color: "#131313" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="zh-Hant" suppressHydrationWarning>
+    <html lang="zh-Hant" suppressHydrationWarning className={`${inter.variable} ${robotoMono.variable}`}>
       <body>
-        <script
-          id="impeccable-direction-contract"
-          type="application/json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              direction: "Focus Canvas",
-              composition: "quiet single learning canvas with borderless supporting rows",
-              visualLanguage: "soft personal SaaS, forest ink green, restrained Open Doodles and Highlights",
-              typography: "HarmonyOS Sans TC with Novae weight hierarchy and calm editorial spacing",
-              color: "#F5F7F5 #FCFDFC #26302D #6B7773 #3F7568 #315E54 #E0ECE7",
-              signature: "one recommended next action inside a generous pale-sage study canvas",
-            }),
-          }}
-        />
         <Providers>{children}</Providers>
       </body>
     </html>
