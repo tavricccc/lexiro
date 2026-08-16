@@ -47,18 +47,15 @@ export function LiquidNav({
       2_500,
     );
   }, [pathname]);
-  const activeIndex = Math.max(
-    0,
-    items.findIndex(
-      (item) =>
-        displayedPath === item.href ||
-        displayedPath.startsWith(`${item.href}/`) ||
-        Boolean(
-          item.activePathPrefix &&
-            (displayedPath === item.activePathPrefix ||
-              displayedPath.startsWith(`${item.activePathPrefix}/`)),
-        ),
-    ),
+  const activeIndex = items.findIndex(
+    (item) =>
+      displayedPath === item.href ||
+      displayedPath.startsWith(`${item.href}/`) ||
+      Boolean(
+        item.activePathPrefix &&
+          (displayedPath === item.activePathPrefix ||
+            displayedPath.startsWith(`${item.activePathPrefix}/`)),
+      ),
   );
 
   return (

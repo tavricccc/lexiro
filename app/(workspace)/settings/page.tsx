@@ -1,2 +1,5 @@
-import { SettingsPage } from "@/components/settings/settings-page";
-export default function Page() { return <SettingsPage />; }
+import { permanentRedirect } from "next/navigation";
+
+export default function Page() {
+  permanentRedirect("/me");
+}

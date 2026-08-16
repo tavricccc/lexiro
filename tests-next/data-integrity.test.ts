@@ -1,8 +1,10 @@
-import type { LibraryState } from "@/types";
+import type { AiSettings, LearningProgress, LibraryState } from "@/types";
 import { describe, expect, it } from "vitest";
 
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { buildSenseId } from "@/src/lib/library";
+import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
+import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { allocateDailyQuestionQuotas } from "@/src/lib/question-distribution";
 import { queueRecordChanges, rebaseQueuedRecords } from "@/src/lib/sync-outbox";
@@ -48,5 +50,56 @@ describe("data integrity", () => {
     const result = rebaseQueuedRecords({ "word:a": { value: 9 } }, queued, "library");
     expect(result.records["word:a"]).toEqual({ value: 9 });
     expect(result.conflicted).toHaveLength(1);
+  });
+
+  it("exports a canonical backup without the API key", () => {
+    const ai: AiSettings = {
+      enabled: true,
+      provider: "openai",
+      apiKey: "secret",
+      baseUrl: "",
+      model: "gpt-4o-mini",
+      batchSize: 8,
+    };
+    const progress: LearningProgress = { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" };
+    const backup = createFullBackup(
+      library("one", "adapt", "常用單字"),
+      progress,
+      createDefaultStats(),
+      ai,
+    );
+
+    expect(backup.kind).toBe("full-backup");
+    expect(backup.aiSettings).not.toHaveProperty("apiKey");
+    expect(backup.aiSettings.batchSize).toBe(8);
+  });
+
+  it("previews backup additions without replacing local activity", () => {
+    const current = library("one", "local", "本機");
+    const incoming = library("two", "remote", "匯入");
+    const localStats = { ...createDefaultStats(), xp: 20 };
+    const backup = createFullBackup(
+      incoming,
+      { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
+      createDefaultStats(),
+      {
+        enabled: false,
+        provider: "openai",
+        apiKey: "",
+        baseUrl: "",
+        model: "gpt-4o-mini",
+        batchSize: 8,
+      },
+    );
+    const prepared = prepareBackupImport(
+      backup,
+      current,
+      { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
+      localStats,
+    );
+
+    expect(prepared.sets).toBe(1);
+    expect(prepared.library.sets).toHaveLength(2);
+    expect(prepared.stats.xp).toBe(20);
   });
 });

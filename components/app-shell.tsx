@@ -1,11 +1,13 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Brain,
   ClipboardCheck,
   LibraryBig,
+  UserRound,
 } from "lucide-react";
 
 import { t, type TranslationKey } from "@/lib/i18n";
@@ -16,12 +18,23 @@ import {
 } from "@/lib/navigation-memory";
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
 import { BrandLockup } from "@/components/ui/brand";
+import { cn } from "@/lib/cn";
 
 const destinations = [
   { href: "/", label: "nav.study", icon: Brain },
   { href: "/library", label: "nav.library", icon: LibraryBig },
-  { href: "/practice?mode=questions", label: "nav.practice", icon: ClipboardCheck },
-] satisfies { href: string; label: TranslationKey; icon: typeof ClipboardCheck }[];
+  {
+    href: "/practice?mode=questions",
+    activePathPrefix: "/practice",
+    label: "nav.practice",
+    icon: ClipboardCheck,
+  },
+] satisfies {
+  href: string;
+  activePathPrefix?: string;
+  label: TranslationKey;
+  icon: typeof ClipboardCheck;
+}[];
 
 function isSecondaryMobileRoute(pathname: string) {
   if (pathname.startsWith("/sets/") || pathname === "/sets/new") return true;
@@ -69,6 +82,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     () =>
       destinations.map((d) => ({
         href: d.href,
+        activePathPrefix: d.activePathPrefix,
         icon: <d.icon className="size-[1.125rem]" />,
         label: t(d.label),
       })),
@@ -87,6 +101,18 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           pathname={pathname}
           vertical
         />
+        <Link
+          href="/me"
+          aria-current={pathname === "/me" ? "page" : undefined}
+          className={cn(
+            "flex min-h-10 items-center gap-3 rounded-[0.625rem] px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-[var(--surface-hover)] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
+            pathname === "/me" &&
+              "bg-secondary text-foreground shadow-[var(--shadow-control)]",
+          )}
+        >
+          <UserRound className="size-[1.125rem]" />
+          {t("nav.me")}
+        </Link>
       </aside>
 
       <div className="min-w-0 md:col-start-2">
@@ -98,6 +124,26 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               : "pb-[max(2rem,var(--safe-bottom))]"
           }`}
         >
+          {showMobileNavigation && (
+            <div className="mb-4 flex h-10 items-center justify-between md:hidden">
+              <BrandLockup
+                href="/"
+                markClassName="size-9 rounded-lg p-2"
+                className="gap-2"
+              />
+              <Link
+                href="/me"
+                aria-label={t("nav.me")}
+                aria-current={pathname === "/me" ? "page" : undefined}
+                className={cn(
+                  "grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
+                  pathname === "/me" && "bg-secondary text-foreground",
+                )}
+              >
+                <UserRound className="size-[1.125rem]" />
+              </Link>
+            </div>
+          )}
           <RouteTransition key={pathname} pathname={pathname}>
             {children}
           </RouteTransition>

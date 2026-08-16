@@ -13,7 +13,7 @@ const HISTORY_INDEX_KEY = "__lexiroHistoryIndex";
 export type RouteDirection = "back" | "child" | "root";
 
 function isRootRoute(pathname: string) {
-  return ["/", "/library", "/questions", "/progress", "/settings"].includes(
+  return ["/", "/library", "/practice", "/progress", "/me"].includes(
     pathname,
   );
 }
