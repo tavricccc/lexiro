@@ -3,11 +3,9 @@
 import * as React from "react";
 import { usePathname } from "next/navigation";
 import {
-  BarChart3,
-  BookOpenText,
+  Brain,
   ClipboardCheck,
   LibraryBig,
-  Settings2,
 } from "lucide-react";
 
 import { t, type TranslationKey } from "@/lib/i18n";
@@ -20,17 +18,13 @@ import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
 import { BrandLockup } from "@/components/ui/brand";
 
 const destinations = [
-  { href: "/", label: "nav.today", icon: ClipboardCheck },
+  { href: "/", label: "nav.study", icon: Brain },
   { href: "/library", label: "nav.library", icon: LibraryBig },
-  { href: "/questions", label: "nav.questions", icon: BookOpenText },
-  { href: "/progress", label: "nav.progress", icon: BarChart3 },
-  { href: "/settings", label: "nav.settings", icon: Settings2 },
+  { href: "/practice?mode=questions", label: "nav.practice", icon: ClipboardCheck },
 ] satisfies { href: string; label: TranslationKey; icon: typeof ClipboardCheck }[];
 
 function isSecondaryMobileRoute(pathname: string) {
   if (pathname.startsWith("/sets/") || pathname === "/sets/new") return true;
-  if (pathname.startsWith("/dictionary")) return true;
-  if (pathname === "/practice") return true;
   if (/^\/questions\/.+/.test(pathname)) return true;
   return false;
 }

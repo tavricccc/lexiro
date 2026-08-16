@@ -12,7 +12,7 @@ Lexiro primarily serves its owner as a personal English vocabulary and practice 
 
 ## Product Purpose
 
-Lexiro turns personally collected vocabulary senses and examples into an offline-capable study system. It supports organizing vocabulary, looking up and importing dictionary material, creating and editing practice questions, scheduled review, practice sessions, progress statistics, backup, and optional cloud sync. Success means the owner can capture material quickly, understand exactly what is being studied, and move into useful review without maintaining duplicate or ambiguous data.
+Lexiro turns personally collected vocabulary senses and examples into an offline-capable study system. Its three core jobs are studying vocabulary, reviewing saved words, and answering practice questions. It also supports AI-assisted capture and question generation, scheduled review, progress statistics, backup, and optional cloud sync. Success means the owner can capture material quickly and move into useful practice without maintaining duplicate or ambiguous data.
 
 ## Positioning
 
@@ -22,7 +22,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 
 - Vocabulary is collected and organized into folders and sets.
 - A word may contain multiple Chinese meanings, parts of speech, and shared examples.
-- Dictionary results are reviewed and edited before they enter personal data.
+- New vocabulary is entered manually or organized by AI, then reviewed before it enters personal data.
 - Questions may be authored manually or generated with AI, then reviewed before saving.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and FSRS review.
 - The application is expected to remain useful offline and synchronize later when signed in.

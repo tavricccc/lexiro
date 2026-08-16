@@ -3,6 +3,7 @@ import { mergeUniqueStrings, normalizePartOfSpeech, normalizeWordKey } from './l
 import { assertKnownKeys } from './schema'
 import { createSourceRef } from './source-ref'
 import { containsHan } from './validation'
+import { extractJsonText } from './ai-provider'
 
 export interface WordGenerationSource {
   sourceRef: string
@@ -25,7 +26,7 @@ export function buildWordGenerationSources(rawInput: string): WordGenerationSour
 }
 
 function parseJson(text: string): unknown {
-  return JSON.parse(text.trim()) as unknown
+  return JSON.parse(extractJsonText(text)) as unknown
 }
 
 function requireText(value: unknown, field: string): string {

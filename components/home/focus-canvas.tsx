@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BookOpenCheck, Brain } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Brain, LibraryBig } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,8 +14,8 @@ import { isDue } from "@/src/lib/fsrs";
 export function FocusCanvas() {
   const library = useLibraryStore((store) => store.state);
   const cards = useLearningStore((store) => store.progress.cards);
-  const reviewCount = Object.values(library.words).flatMap((word) => word.senses).filter((sense) => isDue(cards[sense.id] ?? null)).length;
-  const questionCount = library.questions.length;
+  const reviewCount = Object.values(library.words).flatMap((word) => word.senses).filter((sense) => !cards[sense.id] || isDue(cards[sense.id])).length;
+  const questionCount = library.questions.reduce((count, question) => count + (question.kind === "reading" ? question.questions.length : 1), 0);
   const hasContent = Object.keys(library.words).length > 0;
   return (
     <motion.section
@@ -43,8 +43,9 @@ export function FocusCanvas() {
 
         <p className="mt-4 text-sm font-medium text-foreground">{t(reviewCount ? "home.recommendation" : questionCount ? "home.questionRecommendation" : "home.emptyRecommendation")}</p>
         <div className="mt-3 flex flex-wrap gap-2.5">
-          <Button asChild><Link href={reviewCount ? "/practice?mode=review" : questionCount ? "/practice?mode=questions" : "/sets/new"}>{t(reviewCount ? "home.startReview" : questionCount ? "home.startQuestions" : "home.createFirstSet")}<ArrowRight className="size-4" /></Link></Button>
-          <Button asChild variant="secondary"><Link href={hasContent ? "/practice?mode=questions" : "/dictionary"}>{t(hasContent ? "home.startQuestions" : "home.openDictionary")}</Link></Button>
+          <Button asChild><Link href={hasContent ? "/practice?mode=review" : "/sets/new"}>{t(hasContent ? "home.startReview" : "home.createFirstSet")}<ArrowRight className="size-4" /></Link></Button>
+          <Button asChild variant="secondary"><Link href={questionCount ? "/practice?mode=questions" : hasContent ? "/questions/generate" : "/sets/new"}><BookOpenCheck className="size-4" />{t(questionCount ? "home.startQuestions" : hasContent ? "home.generateQuestions" : "home.createFirstSet")}</Link></Button>
+          <Button asChild variant="ghost"><Link href="/library"><LibraryBig className="size-4" />{t("home.openLibrary")}</Link></Button>
         </div>
       </div>
 

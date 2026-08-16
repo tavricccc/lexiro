@@ -16,6 +16,9 @@ export interface AiGenerationOptions {
   responseFormat?: 'json' | 'text'
 }
 
+const LEGACY_AI_SETTINGS_KEY = 'lexiro-next-ai-settings'
+const LEGACY_AI_API_KEY = 'lexiro-next-ai-api-key'
+
 const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
 let storedSettings: AiSettings = { ...defaultAiSettings }
 const settingsListeners = new Set<(settings: AiSettings) => void>()
@@ -81,14 +84,33 @@ export async function loadAiSettingsState(): Promise<AiSettings> {
     loadFromStorage(AI_API_KEY_STORAGE_KEY),
   ])
   let shareableSettings = defaultShareableAiSettings()
+  let apiKey = storedApiKey.value ?? ''
   try {
     if (stored.value)
       shareableSettings = normalizeShareableAiSettings(JSON.parse(stored.value))
+    else if (typeof localStorage !== 'undefined') {
+      const legacyRaw = localStorage.getItem(LEGACY_AI_SETTINGS_KEY)
+      const legacyKey = localStorage.getItem(LEGACY_AI_API_KEY) ?? ''
+      if (legacyRaw) {
+        const legacy = JSON.parse(legacyRaw) as Record<string, unknown>
+        shareableSettings = normalizeShareableAiSettings({
+          enabled: legacy.mode === 'api' || legacy.enabled === true,
+          provider: legacy.provider,
+          baseUrl: legacy.endpoint ?? legacy.baseUrl ?? '',
+          model: legacy.model,
+          batchSize: legacy.batchSize,
+        })
+        apiKey = legacyKey
+        await Promise.all([saveToStorage(AI_SETTINGS_KEY, shareableSettings), saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey)])
+        localStorage.removeItem(LEGACY_AI_SETTINGS_KEY)
+        localStorage.removeItem(LEGACY_AI_API_KEY)
+      }
+    }
   }
   catch {
     shareableSettings = defaultShareableAiSettings()
   }
-  storedSettings = { ...shareableSettings, apiKey: storedApiKey.value ?? '' }
+  storedSettings = { ...shareableSettings, apiKey }
   return loadAiSettings()
 }
 
@@ -184,13 +206,21 @@ export async function generateWithAi(settings: AiSettings, prompt: string, optio
     body = {
       model: settings.model,
       messages: [{ role: 'user', content: prompt }],
-      ...(responseFormat === 'json' ? { response_format: { type: 'json_object' } } : {}),
+      ...(responseFormat === 'json' && provider === 'openai' ? { response_format: { type: 'json_object' } } : {}),
     }
   }
 
   const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) })
-  if (!response.ok)
-    throw new Error(`AI 請求失敗（${response.status}）`)
+  if (!response.ok) {
+    let detail = ''
+    try {
+      const payload = await response.json() as Record<string, unknown>
+      const error = payload.error
+      detail = typeof error === 'string' ? error : error && typeof error === 'object' && typeof (error as Record<string, unknown>).message === 'string' ? String((error as Record<string, unknown>).message) : ''
+    }
+    catch { /* keep the status-only error */ }
+    throw new Error(`AI 請求失敗（${response.status}）${detail ? `：${detail}` : ''}`)
+  }
   const data = await response.json() as Record<string, unknown>
 
   if (provider === 'anthropic') {
@@ -204,18 +234,32 @@ export async function generateWithAi(settings: AiSettings, prompt: string, optio
   }
 
   const choices = Array.isArray(data.choices) ? data.choices : []
-  return normalizeText(((choices[0] as Record<string, unknown> | undefined)?.message as Record<string, unknown> | undefined)?.content)
+  const message = (choices[0] as Record<string, unknown> | undefined)?.message as Record<string, unknown> | undefined
+  if (typeof message?.content === 'string') return message.content
+  if (Array.isArray(message?.content)) return message.content.map(item => normalizeText((item as Record<string, unknown>).text ?? item)).join('')
+  if (typeof data.output_text === 'string') return data.output_text
+  return ''
+}
+
+export async function generateWithSavedAi(prompt: string, options: AiGenerationOptions = {}): Promise<string> {
+  const settings = await loadAiSettingsState()
+  return generateWithAi(settings, prompt, options)
 }
 
 export function extractJsonText(text: string): string {
-  const fenceStart = text.indexOf('```')
-  if (fenceStart >= 0) {
-    const contentStart = text.indexOf('\n', fenceStart)
-    const fenceEnd = contentStart >= 0 ? text.indexOf('```', contentStart + 1) : -1
-    if (contentStart >= 0 && fenceEnd > contentStart)
-      return text.slice(contentStart + 1, fenceEnd).trim()
-  }
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/iu)
+  if (fenced?.[1])
+    return fenced[1].trim()
+  const trimmed = text.trim()
+  if (trimmed.startsWith('{') || trimmed.startsWith('['))
+    return trimmed
   const objectStart = text.indexOf('{')
   const objectEnd = text.lastIndexOf('}')
-  return objectStart >= 0 && objectEnd > objectStart ? text.slice(objectStart, objectEnd + 1) : text.trim()
+  if (objectStart >= 0 && objectEnd > objectStart)
+    return text.slice(objectStart, objectEnd + 1)
+  const arrayStart = text.indexOf('[')
+  const arrayEnd = text.lastIndexOf(']')
+  if (arrayStart >= 0 && arrayEnd > arrayStart)
+    return text.slice(arrayStart, arrayEnd + 1)
+  return trimmed
 }

@@ -1,6 +1,5 @@
 export const SESSION_STORAGE_KEY = 'lexiro_session_data'
 export const LEARNING_STORAGE_KEY = 'lexiro_learning_data'
-export const DICTIONARY_CACHE_KEY = 'lexiro_dictionary_cache'
 export const AI_SETTINGS_KEY = 'lexiro_ai_settings'
 export const AI_API_KEY_STORAGE_KEY = 'lexiro_ai_api_key'
 export const LIBRARY_STORAGE_KEY = 'lexiro_library_data'

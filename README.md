@@ -1,6 +1,6 @@
 # Lexiro
 
-Lexiro is a personal vocabulary-learning PWA built around a calm focus canvas. It combines vocabulary sets, dictionary lookup, FSRS review, generated questions, progress tracking, local persistence, and optional Firebase sync in one consistent desktop and mobile experience.
+Lexiro is a personal vocabulary-learning PWA built around a calm focus canvas. It centers on studying vocabulary, reviewing saved words, and answering practice questions, with AI-assisted capture, FSRS scheduling, progress tracking, local persistence, and optional Firebase sync across desktop and mobile.
 
 ## Stack
 
