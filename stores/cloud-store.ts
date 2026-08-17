@@ -44,6 +44,7 @@ interface CloudStore {
 
 let initializationPromise: Promise<void> | null = null;
 let retryTimer: ReturnType<typeof setTimeout> | null = null;
+let syncDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 let retryAttempt = 0;
 let localChangeVersion = 0;
 
@@ -89,7 +90,12 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       const scheduleSync = () => {
         localChangeVersion += 1;
         set({ pending: true });
-        if (get().user) setTimeout(() => void get().sync(), 0);
+        if (!get().user) return;
+        if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
+        syncDebounceTimer = setTimeout(() => {
+          syncDebounceTimer = null;
+          void get().sync();
+        }, 350);
       };
       window.addEventListener(CLOUD_SYNC_PENDING_EVENT, scheduleSync);
       window.addEventListener("online", () => {
@@ -109,13 +115,17 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
         return;
       }
       runtime.onAuthStateChanged(auth, (user) => {
-        set({ user, ready: true, status: user ? "connecting" : "signed-out" });
-        if (user) {
-          void Promise.all([
-            useLibraryStore.getState().hydrate(),
-            useLearningStore.getState().hydrate(),
-          ]).then(() => get().sync());
+        if (!user) {
+          set({ user: null, ready: true, status: "signed-out" });
+          return;
         }
+        set({ user, ready: false, status: "connecting" });
+        void Promise.all([
+          useLibraryStore.getState().hydrate(),
+          useLearningStore.getState().hydrate(),
+        ]).then(() => get().sync()).catch((reason) => {
+          set({ ready: true, status: "error", error: reason instanceof Error ? reason.message : `${reason}` });
+        });
       });
     })();
     return initializationPromise;
@@ -126,7 +136,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     const auth = await configureFirebaseAuth();
     if (!auth) return;
     const result = await runtime.signInWithPopup(auth, new runtime.GoogleAuthProvider());
-    set({ user: result.user, status: "connecting" });
+    set({ user: result.user, ready: false, status: "connecting" });
     await Promise.all([
       useLibraryStore.getState().hydrate(),
       useLearningStore.getState().hydrate(),
@@ -138,18 +148,25 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     const runtime = await import("firebase/auth");
     const auth = await configureFirebaseAuth();
     if (auth) await runtime.signOut(auth);
+    if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
+    syncDebounceTimer = null;
     await useLibraryStore.getState().switchNamespace("guest");
     await useLearningStore.getState().reloadNamespace();
-    set({ user: null, status: "signed-out", pending: false, error: "" });
+    set({ user: null, ready: true, status: "signed-out", pending: false, error: "" });
   },
 
   sync: async () => {
     if (get().status === "syncing") return;
+    if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
+    syncDebounceTimer = null;
     const user = get().user;
     const db = getFirebaseFirestore();
-    if (!user || !db) return;
+    if (!user || !db) {
+      set({ ready: true });
+      return;
+    }
     if (typeof navigator !== "undefined" && !navigator.onLine) {
-      set({ status: "offline" });
+      set({ ready: true, status: "offline" });
       return;
     }
 
@@ -230,10 +247,10 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       retryAttempt = 0;
       if (retryTimer) clearTimeout(retryTimer);
       retryTimer = null;
-      set({ status: "synced", pending: changedDuringSync });
+      set({ ready: true, status: "synced", pending: changedDuringSync });
       if (changedDuringSync) setTimeout(() => void get().sync(), 0);
     } catch (reason) {
-      set({ status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : `${reason}` });
+      set({ ready: true, status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : `${reason}` });
       if (navigator.onLine && hasCloudSyncPending()) {
         retryAttempt += 1;
         if (retryTimer) clearTimeout(retryTimer);

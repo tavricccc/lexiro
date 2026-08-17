@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { parsePracticeSession } from '@/src/lib/practice-session'
+import { canRestorePracticeSession, parsePracticeSession } from '@/src/lib/practice-session'
 
 const validSession = {
   schemaVersion: 1,
@@ -34,5 +34,18 @@ describe('practice session persistence', () => {
 
   it('rejects corrupt JSON instead of throwing during hydration', () => {
     expect(parsePracticeSession('{not-json')).toBeNull()
+  })
+
+  it('restores a question session after refreshing the question practice route', () => {
+    const session = parsePracticeSession(JSON.stringify(validSession))
+    expect(session).not.toBeNull()
+    expect(canRestorePracticeSession(session!, 'questions', '')).toBe(true)
+  })
+
+  it('does not override an explicit set route with an unrelated session', () => {
+    const session = parsePracticeSession(JSON.stringify(validSession))
+    expect(session).not.toBeNull()
+    expect(canRestorePracticeSession(session!, 'review', 'set-1')).toBe(false)
+    expect(canRestorePracticeSession(session!, 'questions', 'set-2')).toBe(false)
   })
 })

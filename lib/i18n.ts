@@ -162,6 +162,8 @@ export const zhTW = {
     again: "再複習",
     good: "記得",
     next: "下一題",
+    viewResult: "查看結果",
+    recording: "正在記錄…",
     skip: "跳過",
     mark: "稍後複習",
     correct: "答對了",

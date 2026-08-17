@@ -86,3 +86,15 @@ export function parsePracticeSession(raw: string | null): PracticeSessionSnapsho
     retrying: value.retrying,
   }
 }
+
+export function canRestorePracticeSession(
+  snapshot: PracticeSessionSnapshot,
+  initialMode: WorkspacePracticeMode,
+  initialSet: string,
+): boolean {
+  if (initialSet)
+    return snapshot.setId === initialSet && snapshot.mode === initialMode
+  if (initialMode === 'questions')
+    return snapshot.mode === 'questions'
+  return true
+}
