@@ -68,3 +68,26 @@ export interface ResultRow {
   record: AnswerRecord | null
   index: number
 }
+
+export type WorkspacePracticeMode = 'review' | 'questions'
+export type WorkspaceQuestionType = 'all' | 'standard' | 'fillBlank' | 'reading'
+export type WorkspaceQuestionDifficulty = 'all' | '1' | '2' | '3'
+
+export interface PracticeSessionSnapshot {
+  schemaVersion: 1
+  mode: WorkspacePracticeMode
+  setId: string
+  amount: number
+  index: number
+  correct: number
+  wrong: number[]
+  skipped: number[]
+  marked: number[]
+  selected: number | null
+  revealed: boolean
+  questionType: WorkspaceQuestionType
+  difficulty: WorkspaceQuestionDifficulty
+  itemIds: string[]
+  failedSenseIds: string[]
+  retrying: boolean
+}

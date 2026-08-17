@@ -22,6 +22,7 @@ import {
   normalizeLibraryState,
 } from "@/src/lib/share";
 import { isRecord } from "@/src/lib/schema";
+import { localDateKey } from "@/src/lib/date";
 
 export interface PreparedBackupImport {
   aiSettings: Omit<AiSettings, "apiKey">;
@@ -58,7 +59,7 @@ export function downloadFullBackup(payload: FullBackupPayload): void {
   const url = URL.createObjectURL(new Blob([bytes], { type: "application/zip" }));
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = `${BACKUP_FILE_PREFIX}${new Date().toLocaleDateString("en-CA")}.zip`;
+  anchor.download = `${BACKUP_FILE_PREFIX}${localDateKey()}.zip`;
   anchor.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 0);
 }

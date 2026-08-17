@@ -4,9 +4,12 @@ import type { CardProgress, DashboardStats, LearningProgress, QuestionStatType, 
 import { create } from "zustand";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
+import { localDateKey } from "@/src/lib/date";
 import { reviewCard } from "@/src/lib/fsrs";
 import { createDefaultStats, emptyDailyActivity, emptyQuestionStats } from "@/src/lib/learning-defaults";
 import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
+import { normalizeDashboardStats, normalizeLearningProgress } from "@/src/lib/share";
+import { markCloudSyncPending } from "@/src/lib/sync-pending";
 
 interface LearningStore {
   progress: LearningProgress;
@@ -23,20 +26,20 @@ interface LearningStore {
   pruneToSenseIds: (senseIds: Set<string>) => Promise<void>;
 }
 
-const todayKey = () => new Date().toLocaleDateString("en-CA");
+const todayKey = () => localDateKey();
 const initialProgress = (): LearningProgress => ({ cards: {}, updatedAt: new Date().toISOString() });
 
 function statsForToday(stats: DashboardStats): DashboardStats {
   const today = todayKey();
   if (stats.lastStudyDate === today) return stats;
   const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-  const streakDays = stats.lastStudyDate === yesterday.toLocaleDateString("en-CA") ? stats.streakDays + 1 : 1;
+  const streakDays = stats.lastStudyDate === localDateKey(yesterday) ? stats.streakDays + 1 : 1;
   return { ...stats, streakDays, longestStreak: Math.max(stats.longestStreak, streakDays), lastStudyDate: today, todayMemoryReviews: 0, todayMemoryCorrectReviews: 0, todayQuestionReviews: 0, todayQuestionCorrectReviews: 0 };
 }
 
 async function persist(progress: LearningProgress, stats: DashboardStats, markPending = true) {
   await saveToStorage(LEARNING_STORAGE_KEY, { version: 1, progress, stats });
-  if (markPending && typeof localStorage !== "undefined") { localStorage.setItem("lexiro-sync-pending-v2", "1"); window.dispatchEvent(new Event("lexiro:sync-pending")); }
+  if (markPending) markCloudSyncPending();
 }
 
 export const useLearningStore = create<LearningStore>((set, get) => ({
@@ -46,8 +49,10 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     const stored = await loadFromStorage(LEARNING_STORAGE_KEY);
     if (stored.value) {
       try {
-        const value = JSON.parse(stored.value) as { progress?: LearningProgress; stats?: DashboardStats };
-        set({ progress: value.progress ?? initialProgress(), stats: value.stats ?? createDefaultStats(), loaded: true });
+        const value: unknown = JSON.parse(stored.value);
+        if (!value || typeof value !== "object" || Array.isArray(value) || !("progress" in value) || !("stats" in value) || !("version" in value) || value.version !== 1) throw new Error("invalid-learning-state");
+        const record = value as { progress: unknown; stats: unknown; version: 1 };
+        set({ progress: normalizeLearningProgress(record.progress), stats: normalizeDashboardStats(record.stats), loaded: true });
         return;
       } catch { /* use defaults */ }
     }

@@ -8,7 +8,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "lint": "oxlint app components lib stores tests-next",
+    "lint": "oxlint app components lib stores src tests-next",
     "test": "vitest run --config vitest.next.config.ts",
     "test:watch": "vitest --config vitest.next.config.ts"
   },

@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft, BookOpenCheck, Download, Pencil, Sparkles, Trash2 } from "lucide-react";
-import { strToU8, zipSync } from "fflate";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -14,6 +13,7 @@ import { useLibraryStore } from "@/stores/library-store";
 import { useLearningStore } from "@/stores/learning-store";
 import { isDue } from "@/src/lib/fsrs";
 import { questionBelongsToMemberships } from "@/src/lib/question-ownership";
+import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 
 export function SetDetail({ setId }: { setId: string }) {
   const router = useRouter();
@@ -45,11 +45,7 @@ export function SetDetail({ setId }: { setId: string }) {
     router.push("/library");
   };
   const share = () => {
-    const memberships = state.memberships[setId] ?? [];
-    const wordKeys = new Set(memberships.map((entry) => entry.wordKey));
-    const payload = { schemaVersion: 2, kind: "shared-set", exportedAt: new Date().toISOString(), set: current, memberships, words: Object.values(state.words).filter((word) => wordKeys.has(word.wordKey)), questions: state.questions.filter((question) => question.kind === "reading" ? question.questions.some((child) => wordKeys.has(child.wordKey)) : wordKeys.has(question.wordKey)) };
-    const bytes = zipSync({ "lexiro-set.json": strToU8(JSON.stringify(payload)) }) as Uint8Array<ArrayBuffer>;
-    const url = URL.createObjectURL(new Blob([bytes], { type: "application/zip" })); const anchor = document.createElement("a"); anchor.href = url; anchor.download = `${current.setName}.lexiro.zip`; anchor.click(); URL.revokeObjectURL(url);
+    downloadSetShare(createSetSharePayload(state, setId));
   };
 
   return (

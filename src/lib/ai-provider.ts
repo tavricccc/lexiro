@@ -2,6 +2,7 @@ import type { AiProvider, AiSettings } from '@/types'
 import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from '@/constants'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { isRecord } from './schema'
+import { markCloudSyncPending } from './sync-pending'
 
 export const defaultAiSettings: AiSettings = {
   enabled: false,
@@ -154,10 +155,8 @@ export function saveAiSettings(settings: AiSettings, options: { markPending?: bo
   void next.catch(() => undefined)
   for (const listener of settingsListeners)
     listener(loadAiSettings())
-  if (options.markPending !== false && typeof localStorage !== 'undefined') {
-    localStorage.setItem('lexiro-sync-pending-v2', '1')
-    window.dispatchEvent(new Event('lexiro:sync-pending'))
-  }
+  if (options.markPending !== false)
+    markCloudSyncPending()
 }
 
 function normalizeText(value: unknown): string {

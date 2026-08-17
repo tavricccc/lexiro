@@ -4,7 +4,7 @@ import type { DashboardStats, LearningProgress, SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
 import { create } from "zustand";
 
-import { SYNC_HEAD_STORAGE_KEY } from "@/constants";
+import { CLOUD_SYNC_PENDING_EVENT, SYNC_HEAD_STORAGE_KEY } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { canonicalHash } from "@/src/lib/hash";
@@ -20,8 +20,7 @@ import { normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats }
 import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
 import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
-
-const PENDING_KEY = "lexiro-sync-pending-v2";
+import { clearCloudSyncPending, hasCloudSyncPending } from "@/src/lib/sync-pending";
 
 interface LocalSyncHead {
   libraryRevision: string;
@@ -52,10 +51,6 @@ function hasLibraryContent(state: ReturnType<typeof useLibraryStore.getState>["s
   return Object.keys(state.words).length > 0 || state.sets.length > 0 || state.questions.length > 0;
 }
 
-function readPending(): boolean {
-  return typeof localStorage !== "undefined" && localStorage.getItem(PENDING_KEY) === "1";
-}
-
 function hasLearningActivity(progress: LearningProgress, stats: DashboardStats): boolean {
   return Object.keys(progress.cards).length > 0
     || stats.totalMemoryReviews > 0
@@ -79,14 +74,10 @@ async function saveLocalHead(head: LocalSyncHead): Promise<void> {
   await saveToStorage(SYNC_HEAD_STORAGE_KEY, head);
 }
 
-function clearPending(): void {
-  if (typeof localStorage !== "undefined") localStorage.removeItem(PENDING_KEY);
-}
-
 export const useCloudStore = create<CloudStore>((set, get) => ({
   configured: isFirebaseConfigured(),
   ready: false,
-  pending: readPending(),
+  pending: hasCloudSyncPending(),
   user: null,
   status: isFirebaseConfigured() ? "connecting" : "disabled",
   error: "",
@@ -94,13 +85,13 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
   initialize: async () => {
     if (initializationPromise) return initializationPromise;
     initializationPromise = (async () => {
-      set({ pending: readPending() });
+      set({ pending: hasCloudSyncPending() });
       const scheduleSync = () => {
         localChangeVersion += 1;
         set({ pending: true });
         if (get().user) setTimeout(() => void get().sync(), 0);
       };
-      window.addEventListener("lexiro:sync-pending", scheduleSync);
+      window.addEventListener(CLOUD_SYNC_PENDING_EVENT, scheduleSync);
       window.addEventListener("online", () => {
         if (get().user) void get().sync();
       });
@@ -182,7 +173,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       const remoteStatsHash = statsDoc.exists() ? canonicalHash(remoteStats) : "";
       const remoteAiSettings = settingsDoc.exists() ? normalizeCloudAiSettings(settingsDoc.data(), user.uid) : null;
       const remoteSettingsHash = remoteAiSettings ? canonicalHash(remoteAiSettings) : "";
-      const pending = readPending();
+      const pending = hasCloudSyncPending();
 
       let authoritativeLibrary = remoteLibrary.library;
       let libraryRevision = remoteLibrary.revision;
@@ -235,7 +226,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
         settingsHash: canonicalHash(authoritativeAiSettings),
       });
       const changedDuringSync = localChangeVersion !== changeVersionAtStart;
-      if (!changedDuringSync) clearPending();
+      if (!changedDuringSync) clearCloudSyncPending();
       retryAttempt = 0;
       if (retryTimer) clearTimeout(retryTimer);
       retryTimer = null;
@@ -243,7 +234,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       if (changedDuringSync) setTimeout(() => void get().sync(), 0);
     } catch (reason) {
       set({ status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : `${reason}` });
-      if (navigator.onLine && readPending()) {
+      if (navigator.onLine && hasCloudSyncPending()) {
         retryAttempt += 1;
         if (retryTimer) clearTimeout(retryTimer);
         retryTimer = setTimeout(() => void get().sync(), Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6)));

@@ -91,6 +91,9 @@ export const zhTW = {
     moveFolder: "移動資料夾",
     rootFolder: "最上層",
     importSet: "匯入單字集",
+    importing: "正在匯入…",
+    importDone: "已匯入 {count} 個單字集",
+    importFailed: "無法匯入分享檔：{message}",
     importedName: "{name}（匯入）",
   },
   questions: {

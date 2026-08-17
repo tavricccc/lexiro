@@ -54,6 +54,7 @@
     "lib/**/*.ts",
     "lib/**/*.tsx",
     "stores/**/*.ts",
+    "src/**/*.ts",
     "tests-next/**/*.ts",
     "next.config.ts",
     "vitest.next.config.ts",
@@ -61,7 +62,6 @@
   ],
   "exclude": [
     "node_modules",
-    "src",
     "tests",
     "dist",
     "dev-dist"
