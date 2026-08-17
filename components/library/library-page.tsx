@@ -1,10 +1,10 @@
 "use client";
 
-import type { LibraryQuestion, SetMembership, VocabFolder, WordEntry } from "@/types";
-import { strFromU8, unzipSync } from "fflate";
+import type { VocabFolder } from "@/types";
 import { BookMarked, ChevronLeft, ChevronRight, Folder, FolderOpen, Pencil, Plus, Search, Trash2, Upload } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,9 @@ import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { ALL_FOLDER_ID, buildFolderOptions, UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { isDue } from "@/src/lib/fsrs";
+import { buildQuestionId } from "@/src/lib/library";
+import { readSetShare } from "@/src/lib/set-share";
+import { createUniqueSetName } from "@/src/lib/set-name";
 
 export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   const { state, status, error } = useLibraryStore();
@@ -33,6 +36,7 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   const [deleteFolderId, setDeleteFolderId] = useState<string | null>(null);
   const [renaming, setRenaming] = useState(false);
   const [renameValue, setRenameValue] = useState("");
+  const [importing, setImporting] = useState(false);
 
   const currentFolder = state.folders.find((folder) => folder.id === currentFolderId && folder.id !== UNCATEGORIZED_FOLDER_ID);
   useEffect(() => { if (status === "ready" && currentFolderId !== ALL_FOLDER_ID && !currentFolder) setCurrentFolderId(ALL_FOLDER_ID); }, [currentFolder, currentFolderId, status]);
@@ -59,15 +63,37 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   }, [currentFolder, query, state]);
 
   const importSet = async (file: File) => {
-    const raw = unzipSync(new Uint8Array(await file.arrayBuffer()))["lexiro-set.json"];
-    if (!raw) return;
-    const payload = JSON.parse(strFromU8(raw)) as { set: { setName: string }; memberships: SetMembership[]; words: WordEntry[]; questions: LibraryQuestion[] };
-    const wordsByKey = new Map(payload.words.map((word) => [word.wordKey, word]));
-    const drafts = payload.memberships.flatMap((membership) => { const word = wordsByKey.get(membership.wordKey); return word ? membership.senseIds.flatMap((senseId) => { const sense = word.senses.find((entry) => entry.id === senseId); return sense ? [{ word: word.word, pos: sense.pos, meaningZh: sense.meaningZh, examples: sense.examples }] : []; }) : []; });
-    const uniqueName = state.sets.some((entry) => entry.setName === payload.set.setName) ? t("library.importedName", { name: payload.set.setName }) : payload.set.setName;
-    const imported = await saveSet({ setName: uniqueName, folderId: currentFolder?.id, words: drafts });
-    for (const question of payload.questions ?? []) await saveQuestion({ ...question, id: crypto.randomUUID() });
-    if (currentFolder) setCurrentFolderId(imported.folderId);
+    setImporting(true);
+    try {
+      const payload = await readSetShare(file);
+      const existingNames = new Set(state.sets.map(entry => entry.setName));
+      let lastFolderId = currentFolder?.id;
+      for (const sharedSet of payload.sets) {
+        const wordsByKey = new Map(sharedSet.words.map(word => [word.wordKey, word]));
+        const drafts = sharedSet.memberships.flatMap((membership) => {
+          const word = wordsByKey.get(membership.wordKey);
+          if (!word) return [];
+          return membership.senseIds.flatMap((senseId) => {
+            const sense = word.senses.find(entry => entry.id === senseId);
+            return sense ? [{ word: word.word, pos: sense.pos, meaningZh: sense.meaningZh, examples: sense.examples }] : [];
+          });
+        });
+        const setName = createUniqueSetName(sharedSet.setName, existingNames);
+        existingNames.add(setName);
+        const imported = await saveSet({ setName, folderId: currentFolder?.id, words: drafts });
+        lastFolderId = imported.folderId;
+        for (const question of sharedSet.questions) {
+          await saveQuestion({ ...question, id: buildQuestionId() });
+        }
+      }
+      if (currentFolder && lastFolderId) setCurrentFolderId(lastFolderId);
+      toast.success(t("library.importDone", { count: payload.sets.length }));
+    } catch (reason) {
+      const message = reason instanceof Error ? reason.message : String(reason);
+      toast.error(t("library.importFailed", { message }));
+    } finally {
+      setImporting(false);
+    }
   };
 
   const openFolder = (folderId: string) => { setCurrentFolderId(folderId); setQuery(""); setRenaming(false); setCreatingFolder(false); setFolderError(""); };
@@ -76,7 +102,7 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
 
   return (
     <div>
-      <PageHeader title={t("library.title")} description={t("library.description")} actions={<><Button asChild variant="ghost"><label className="cursor-pointer"><Upload className="size-4" />{t("library.importSet")}<input type="file" accept=".zip" className="sr-only" onChange={(event) => { const file = event.target.files?.[0]; if (file) void importSet(file); }} /></label></Button><Button asChild><Link href={currentFolder ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}` : "/sets/new"}><Plus className="size-4" />{t("library.newSet")}</Link></Button></>} />
+      <PageHeader title={t("library.title")} description={t("library.description")} actions={<><Button asChild variant="ghost"><label className={importing ? "cursor-wait opacity-60" : "cursor-pointer"} aria-disabled={importing}><Upload className="size-4" />{t(importing ? "library.importing" : "library.importSet")}<input type="file" accept=".zip" disabled={importing} className="sr-only" onChange={(event) => { const input = event.currentTarget; const file = input.files?.[0]; if (file) void importSet(file).finally(() => { input.value = ""; }); }} /></label></Button><Button asChild><Link href={currentFolder ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}` : "/sets/new"}><Plus className="size-4" />{t("library.newSet")}</Link></Button></>} />
 
       <section className="overflow-hidden rounded-2xl border bg-card">
         <div className="flex min-h-14 items-center gap-1 border-b px-3 sm:px-4">

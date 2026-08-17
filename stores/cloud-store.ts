@@ -4,6 +4,7 @@ import type { DashboardStats, LearningProgress, SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
 import { create } from "zustand";
 import { t } from "@/lib/i18n";
+import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
 
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
@@ -13,6 +14,7 @@ import { cloudDocument, readCloudLibraryV5, writeCloudLearningState, writeCloudL
 import { normalizeCloudProgress, normalizeCloudStats } from "@/src/lib/cloud-sync-schema";
 import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
+import { clearCloudSyncPending, hasCloudSyncPending } from "@/src/lib/sync-pending";
 
 interface CloudStore { configured: boolean; ready: boolean; pending: boolean; user: User | null; status: SyncStatus; error: string; initialize: () => Promise<void>; signIn: () => Promise<void>; signOut: () => Promise<void>; sync: () => Promise<void> }
 
@@ -34,13 +36,13 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
   initialize: async () => {
     if (initializationPromise) return initializationPromise;
     initializationPromise = (async () => {
-      set({ pending: Boolean(localStorage.getItem("lexiro-sync-pending-v2")) });
-      window.addEventListener("lexiro:sync-pending", () => set({ pending: true }));
+      set({ pending: hasCloudSyncPending() });
+      window.addEventListener(CLOUD_SYNC_PENDING_EVENT, () => set({ pending: true }));
       if (!get().configured) { set({ ready: true }); return; }
       const runtime = await import("firebase/auth"); const auth = await configureFirebaseAuth();
       if (!auth) { set({ ready: true, status: "disabled" }); return; }
       runtime.onAuthStateChanged(auth, (user) => { set({ user, ready: true, status: user ? "synced" : "signed-out" }); if (user) void get().sync(); });
-      window.addEventListener("online", () => { if (get().user && localStorage.getItem("lexiro-sync-pending-v2")) void get().sync(); });
+      window.addEventListener("online", () => { if (get().user && hasCloudSyncPending()) void get().sync(); });
     })();
     return initializationPromise;
   },
@@ -65,10 +67,10 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       const stats: DashboardStats = new Date(remoteStats.updatedAt) > new Date(localLearning.stats.updatedAt) ? remoteStats : localLearning.stats;
       await useLearningStore.getState().importState(progress, stats);
       await writeCloudLearningState(db, user.uid, progress, stats, { progress: progressDoc.exists() ? canonicalHash(remoteProgress) : "", stats: statsDoc.exists() ? canonicalHash(remoteStats) : "" });
-      localStorage.removeItem("lexiro-sync-pending-v2"); retryAttempt = 0; if (retryTimer) clearTimeout(retryTimer); retryTimer = null; set({ status: "synced", pending: false });
+      clearCloudSyncPending(); retryAttempt = 0; if (retryTimer) clearTimeout(retryTimer); retryTimer = null; set({ status: "synced", pending: false });
     } catch (reason) {
       set({ status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : String(reason) });
-      if (navigator.onLine && localStorage.getItem("lexiro-sync-pending-v2")) { retryAttempt += 1; if (retryTimer) clearTimeout(retryTimer); retryTimer = setTimeout(() => void get().sync(), Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6))); }
+      if (navigator.onLine && hasCloudSyncPending()) { retryAttempt += 1; if (retryTimer) clearTimeout(retryTimer); retryTimer = setTimeout(() => void get().sync(), Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6))); }
     }
   },
 }));

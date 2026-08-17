@@ -8,6 +8,7 @@ import { buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWor
 import { getLibraryRepository, resetLibraryRepositoryCache } from "@/src/lib/library-repository";
 import { setStorageNamespace } from "@/src/lib/persist";
 import { questionBelongsToAnyMemberships } from "@/src/lib/question-ownership";
+import { markCloudSyncPending } from "@/src/lib/sync-pending";
 
 export interface WordDraftInput {
   word: string;
@@ -42,7 +43,7 @@ function emptyState(): LibraryState {
 
 async function commit(state: LibraryState) {
   await getLibraryRepository().commitRecords(state);
-  if (typeof localStorage !== "undefined") { localStorage.setItem("lexiro-sync-pending-v2", "1"); window.dispatchEvent(new Event("lexiro:sync-pending")); }
+  markCloudSyncPending();
 }
 
 function folderDescendants(folders: VocabFolder[], rootId: string): Set<string> {

@@ -5,13 +5,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
+import { parsePracticeSession } from "@/src/lib/practice-session";
+import type { PracticeSessionSnapshot } from "@/types";
 
 export function LearningRows() {
   const state = useLibraryStore((store) => store.state);
-  const [session, setSession] = useState<{ setId: string; index: number; amount: number } | null>(null);
-  useEffect(() => { try { const raw = localStorage.getItem("lexiro-practice-session-v2"); setSession(raw ? JSON.parse(raw) as { setId: string; index: number; amount: number } : null); } catch { setSession(null); } }, []);
+  const [session, setSession] = useState<PracticeSessionSnapshot | null>(null);
+  useEffect(() => { setSession(parsePracticeSession(localStorage.getItem(PRACTICE_SESSION_STORAGE_KEY))); }, []);
   const recentSets = [...state.sets].sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)).slice(0,3).map((entry) => ({ id: entry.id, name: entry.setName, count: (state.memberships[entry.id] ?? []).reduce((sum, item) => sum + item.senseIds.length, 0), due: 0 }));
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(18.75rem,0.8fr)] lg:gap-10">
@@ -21,9 +24,9 @@ export function LearningRows() {
           <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-muted text-foreground"><Play className="size-[1.125rem] fill-current" /></span>
           <div className="min-w-0 flex-1">
             <div className="truncate font-semibold">{state.sets.find((entry) => entry.id === session.setId)?.setName ?? t("practice.allSets")}</div>
-            <div className="mt-1 text-sm text-muted-foreground">{session.index} / {session.amount}</div>
+            <div className="mt-1 text-sm text-muted-foreground">{session.index} / {session.itemIds.length}</div>
           </div>
-          <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-line sm:block"><div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(100, session.index / session.amount * 100)}%` }} /></div>
+          <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-line sm:block"><div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(100, session.index / session.itemIds.length * 100)}%` }} /></div>
           <Button asChild variant="ghost" size="sm"><Link href="/practice">{t("home.resumeAction")}<ArrowRight className="size-4" /></Link></Button>
         </div>
       </section>}

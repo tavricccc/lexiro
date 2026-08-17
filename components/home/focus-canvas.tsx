@@ -44,7 +44,7 @@ export function FocusCanvas() {
         <p className="mt-4 text-sm font-medium text-foreground">{t(reviewCount ? "home.recommendation" : questionCount ? "home.questionRecommendation" : "home.emptyRecommendation")}</p>
         <div className="mt-3 flex flex-wrap gap-2.5">
           <Button asChild><Link href={hasContent ? "/practice?mode=review" : "/sets/new"}>{t(hasContent ? "home.startReview" : "home.createFirstSet")}<ArrowRight className="size-4" /></Link></Button>
-          <Button asChild variant="secondary"><Link href={questionCount ? "/practice?mode=questions" : hasContent ? "/questions/generate" : "/sets/new"}><BookOpenCheck className="size-4" />{t(questionCount ? "home.startQuestions" : hasContent ? "home.generateQuestions" : "home.createFirstSet")}</Link></Button>
+          {hasContent && <Button asChild variant="secondary"><Link href={questionCount ? "/practice?mode=questions" : "/questions/generate"}><BookOpenCheck className="size-4" />{t(questionCount ? "home.startQuestions" : "home.generateQuestions")}</Link></Button>}
           <Button asChild variant="ghost"><Link href="/library"><LibraryBig className="size-4" />{t("home.openLibrary")}</Link></Button>
         </div>
       </div>
