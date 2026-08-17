@@ -9,12 +9,10 @@ import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
 
 export function CloudGate({ children }: { children: ReactNode }) {
-  const { configured, ready, user, status } = useCloudStore((store) => ({
-    configured: store.configured,
-    ready: store.ready,
-    user: store.user,
-    status: store.status,
-  }));
+  const configured = useCloudStore((store) => store.configured);
+  const ready = useCloudStore((store) => store.ready);
+  const user = useCloudStore((store) => store.user);
+  const status = useCloudStore((store) => store.status);
   const waitingForAuthoritativeData = !ready || (configured && Boolean(user) && ["connecting", "syncing"].includes(status));
 
   if (configured && user && status === "error") {

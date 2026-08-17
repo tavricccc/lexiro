@@ -17,13 +17,11 @@ function statusCopy(status: string): string {
 }
 
 export function SyncIndicator() {
-  const { configured, ready, status, pending, sync } = useCloudStore((store) => ({
-    configured: store.configured,
-    ready: store.ready,
-    status: store.status,
-    pending: store.pending,
-    sync: store.sync,
-  }));
+  const configured = useCloudStore((store) => store.configured);
+  const ready = useCloudStore((store) => store.ready);
+  const status = useCloudStore((store) => store.status);
+  const pending = useCloudStore((store) => store.pending);
+  const sync = useCloudStore((store) => store.sync);
   const isWorking = ["connecting", "syncing", "preparing", "downloading", "reconciling", "uploading", "retrying", "verifying"].includes(status);
   const Icon = !configured || status === "signed-out" ? CloudOff : status === "error" ? AlertCircle : isWorking ? LoaderCircle : status === "synced" && !pending ? Check : Cloud;
 
