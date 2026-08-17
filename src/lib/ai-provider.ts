@@ -143,7 +143,7 @@ export function downloadAiSettings(settings: AiSettings): void {
   window.setTimeout(() => URL.revokeObjectURL(url), 0)
 }
 
-export function saveAiSettings(settings: AiSettings) {
+export function saveAiSettings(settings: AiSettings, options: { markPending?: boolean } = {}) {
   storedSettings = normalizeAiSettings(settings)
   const shareableSettings = getShareableAiSettings(storedSettings)
   const apiKey = storedSettings.apiKey
@@ -154,6 +154,10 @@ export function saveAiSettings(settings: AiSettings) {
   void next.catch(() => undefined)
   for (const listener of settingsListeners)
     listener(loadAiSettings())
+  if (options.markPending !== false && typeof localStorage !== 'undefined') {
+    localStorage.setItem('lexiro-sync-pending-v2', '1')
+    window.dispatchEvent(new Event('lexiro:sync-pending'))
+  }
 }
 
 function normalizeText(value: unknown): string {

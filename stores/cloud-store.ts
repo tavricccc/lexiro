@@ -3,72 +3,251 @@
 import type { DashboardStats, LearningProgress, SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
 import { create } from "zustand";
-import { t } from "@/lib/i18n";
 
+import { SYNC_HEAD_STORAGE_KEY } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { canonicalHash } from "@/src/lib/hash";
-import { mergeLibraryStates } from "@/src/lib/library-merge";
-import { cloudDocument, readCloudLibraryV5, writeCloudLearningState, writeCloudLibraryChunksV5 } from "@/src/lib/cloud-sync-remote";
-import { normalizeCloudProgress, normalizeCloudStats } from "@/src/lib/cloud-sync-schema";
+import { getShareableAiSettings, loadAiSettingsState, saveAiSettings, waitForAiSettingsPersistence } from "@/src/lib/ai-provider";
+import {
+  cloudDocument,
+  readCloudLibraryV5,
+  writeCloudAiSettings,
+  writeCloudLearningState,
+  writeCloudLibraryChunksV5,
+} from "@/src/lib/cloud-sync-remote";
+import { normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats } from "@/src/lib/cloud-sync-schema";
 import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
+import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
 
-interface CloudStore { configured: boolean; ready: boolean; pending: boolean; user: User | null; status: SyncStatus; error: string; initialize: () => Promise<void>; signIn: () => Promise<void>; signOut: () => Promise<void>; sync: () => Promise<void> }
+const PENDING_KEY = "lexiro-sync-pending-v2";
+
+interface LocalSyncHead {
+  libraryRevision: string;
+  progressHash: string;
+  statsHash: string;
+  settingsHash: string;
+}
+
+interface CloudStore {
+  configured: boolean;
+  ready: boolean;
+  pending: boolean;
+  user: User | null;
+  status: SyncStatus;
+  error: string;
+  initialize: () => Promise<void>;
+  signIn: () => Promise<void>;
+  signOut: () => Promise<void>;
+  sync: () => Promise<void>;
+}
 
 let initializationPromise: Promise<void> | null = null;
 let retryTimer: ReturnType<typeof setTimeout> | null = null;
 let retryAttempt = 0;
+let localChangeVersion = 0;
 
-function mergeProgress(remote: LearningProgress, local: LearningProgress): LearningProgress {
-  const cards = { ...remote.cards };
-  for (const [id, card] of Object.entries(local.cards)) {
-    const current = cards[id];
-    if (!current || new Date(card.lastReview ?? 0) >= new Date(current.lastReview ?? 0)) cards[id] = card;
+function hasLibraryContent(state: ReturnType<typeof useLibraryStore.getState>["state"]): boolean {
+  return Object.keys(state.words).length > 0 || state.sets.length > 0 || state.questions.length > 0;
+}
+
+function readPending(): boolean {
+  return typeof localStorage !== "undefined" && localStorage.getItem(PENDING_KEY) === "1";
+}
+
+function hasLearningActivity(progress: LearningProgress, stats: DashboardStats): boolean {
+  return Object.keys(progress.cards).length > 0
+    || stats.totalMemoryReviews > 0
+    || stats.totalQuestionReviews > 0
+    || stats.xp > 0;
+}
+
+async function readLocalHead(): Promise<LocalSyncHead | null> {
+  const stored = await loadFromStorage(SYNC_HEAD_STORAGE_KEY);
+  if (!stored.value) return null;
+  try {
+    const value = JSON.parse(stored.value) as Partial<LocalSyncHead>;
+    if (typeof value.libraryRevision !== "string" || typeof value.progressHash !== "string" || typeof value.statsHash !== "string") return null;
+    return { ...value, settingsHash: typeof value.settingsHash === "string" ? value.settingsHash : "" } as LocalSyncHead;
+  } catch {
+    return null;
   }
-  return { cards, updatedAt: new Date().toISOString() };
+}
+
+async function saveLocalHead(head: LocalSyncHead): Promise<void> {
+  await saveToStorage(SYNC_HEAD_STORAGE_KEY, head);
+}
+
+function clearPending(): void {
+  if (typeof localStorage !== "undefined") localStorage.removeItem(PENDING_KEY);
 }
 
 export const useCloudStore = create<CloudStore>((set, get) => ({
-  configured: isFirebaseConfigured(), ready: false, pending: false, user: null, status: isFirebaseConfigured() ? "connecting" : "disabled", error: "",
+  configured: isFirebaseConfigured(),
+  ready: false,
+  pending: readPending(),
+  user: null,
+  status: isFirebaseConfigured() ? "connecting" : "disabled",
+  error: "",
+
   initialize: async () => {
     if (initializationPromise) return initializationPromise;
     initializationPromise = (async () => {
-      set({ pending: Boolean(localStorage.getItem("lexiro-sync-pending-v2")) });
-      window.addEventListener("lexiro:sync-pending", () => set({ pending: true }));
-      if (!get().configured) { set({ ready: true }); return; }
-      const runtime = await import("firebase/auth"); const auth = await configureFirebaseAuth();
-      if (!auth) { set({ ready: true, status: "disabled" }); return; }
-      runtime.onAuthStateChanged(auth, (user) => { set({ user, ready: true, status: user ? "synced" : "signed-out" }); if (user) void get().sync(); });
-      window.addEventListener("online", () => { if (get().user && localStorage.getItem("lexiro-sync-pending-v2")) void get().sync(); });
+      set({ pending: readPending() });
+      const scheduleSync = () => {
+        localChangeVersion += 1;
+        set({ pending: true });
+        if (get().user) setTimeout(() => void get().sync(), 0);
+      };
+      window.addEventListener("lexiro:sync-pending", scheduleSync);
+      window.addEventListener("online", () => {
+        if (get().user) void get().sync();
+      });
+      window.addEventListener("offline", () => {
+        if (get().user) set({ status: "offline" });
+      });
+      if (!get().configured) {
+        set({ ready: true });
+        return;
+      }
+      const runtime = await import("firebase/auth");
+      const auth = await configureFirebaseAuth();
+      if (!auth) {
+        set({ ready: true, status: "disabled" });
+        return;
+      }
+      runtime.onAuthStateChanged(auth, (user) => {
+        set({ user, ready: true, status: user ? "connecting" : "signed-out" });
+        if (user) {
+          void Promise.all([
+            useLibraryStore.getState().hydrate(),
+            useLearningStore.getState().hydrate(),
+          ]).then(() => get().sync());
+        }
+      });
     })();
     return initializationPromise;
   },
-  signIn: async () => { const runtime = await import("firebase/auth"); const auth = await configureFirebaseAuth(); if (!auth) return; const result = await runtime.signInWithPopup(auth, new runtime.GoogleAuthProvider()); set({ user: result.user, status: "synced" }); await get().sync(); },
-  signOut: async () => { const runtime = await import("firebase/auth"); const auth = await configureFirebaseAuth(); if (auth) await runtime.signOut(auth); await useLibraryStore.getState().switchNamespace("guest"); await useLearningStore.getState().reloadNamespace(); set({ user: null, status: "signed-out" }); },
+
+  signIn: async () => {
+    const runtime = await import("firebase/auth");
+    const auth = await configureFirebaseAuth();
+    if (!auth) return;
+    const result = await runtime.signInWithPopup(auth, new runtime.GoogleAuthProvider());
+    set({ user: result.user, status: "connecting" });
+    await Promise.all([
+      useLibraryStore.getState().hydrate(),
+      useLearningStore.getState().hydrate(),
+    ]);
+    await get().sync();
+  },
+
+  signOut: async () => {
+    const runtime = await import("firebase/auth");
+    const auth = await configureFirebaseAuth();
+    if (auth) await runtime.signOut(auth);
+    await useLibraryStore.getState().switchNamespace("guest");
+    await useLearningStore.getState().reloadNamespace();
+    set({ user: null, status: "signed-out", pending: false, error: "" });
+  },
+
   sync: async () => {
     if (get().status === "syncing") return;
-    const user = get().user; const db = getFirebaseFirestore(); if (!user || !db) return;
+    const user = get().user;
+    const db = getFirebaseFirestore();
+    if (!user || !db) return;
+    if (typeof navigator !== "undefined" && !navigator.onLine) {
+      set({ status: "offline" });
+      return;
+    }
+
     set({ status: "syncing", error: "" });
+    const changeVersionAtStart = localChangeVersion;
     try {
-      const remoteLibrary = await readCloudLibraryV5(db, user.uid);
-      const mergedLibrary = mergeLibraryStates(remoteLibrary.library, useLibraryStore.getState().state).state;
-      await useLibraryStore.getState().switchNamespace(user.uid, mergedLibrary);
-      const writeLibrary = await writeCloudLibraryChunksV5(db, user.uid, mergedLibrary, remoteLibrary.hashes, remoteLibrary.revision);
-      if (writeLibrary.conflicted) throw new Error(t("settings.syncConflict"));
-      const firestore = await import("firebase/firestore");
-      const [progressDoc, statsDoc] = await Promise.all([firestore.getDocFromServer(cloudDocument(db, user.uid, "progress", "global")), firestore.getDocFromServer(cloudDocument(db, user.uid, "stats", "summary"))]);
+      const localLibrary = useLibraryStore.getState().state;
       const localLearning = useLearningStore.getState();
+      const localAiSettings = await loadAiSettingsState();
+      const localHead = await readLocalHead();
+      const remoteLibrary = await readCloudLibraryV5(db, user.uid);
+      const firestore = await import("firebase/firestore");
+      const [progressDoc, statsDoc] = await Promise.all([
+        firestore.getDocFromServer(cloudDocument(db, user.uid, "progress", "global")),
+        firestore.getDocFromServer(cloudDocument(db, user.uid, "stats", "summary")),
+      ]);
+      const settingsDoc = await firestore.getDocFromServer(cloudDocument(db, user.uid, "settings", "ai"));
       const remoteProgress = progressDoc.exists() ? normalizeCloudProgress(progressDoc.data(), user.uid) : { cards: {}, updatedAt: "" };
       const remoteStats = statsDoc.exists() ? normalizeCloudStats(statsDoc.data(), user.uid) : localLearning.stats;
-      const progress = mergeProgress(remoteProgress, localLearning.progress);
-      const stats: DashboardStats = new Date(remoteStats.updatedAt) > new Date(localLearning.stats.updatedAt) ? remoteStats : localLearning.stats;
-      await useLearningStore.getState().importState(progress, stats);
-      await writeCloudLearningState(db, user.uid, progress, stats, { progress: progressDoc.exists() ? canonicalHash(remoteProgress) : "", stats: statsDoc.exists() ? canonicalHash(remoteStats) : "" });
-      localStorage.removeItem("lexiro-sync-pending-v2"); retryAttempt = 0; if (retryTimer) clearTimeout(retryTimer); retryTimer = null; set({ status: "synced", pending: false });
+      const remoteProgressHash = progressDoc.exists() ? canonicalHash(remoteProgress) : "";
+      const remoteStatsHash = statsDoc.exists() ? canonicalHash(remoteStats) : "";
+      const remoteAiSettings = settingsDoc.exists() ? normalizeCloudAiSettings(settingsDoc.data(), user.uid) : null;
+      const remoteSettingsHash = remoteAiSettings ? canonicalHash(remoteAiSettings) : "";
+      const pending = readPending();
+
+      let authoritativeLibrary = remoteLibrary.library;
+      let libraryRevision = remoteLibrary.revision;
+      const canPublishLocalLibrary = pending
+        && hasLibraryContent(localLibrary)
+        && (!remoteLibrary.revision || localHead?.libraryRevision === remoteLibrary.revision);
+      if (!remoteLibrary.revision || canPublishLocalLibrary) {
+        const published = await writeCloudLibraryChunksV5(db, user.uid, localLibrary, remoteLibrary.hashes, remoteLibrary.revision);
+        if (!published.conflicted) {
+          authoritativeLibrary = localLibrary;
+          libraryRevision = published.revision;
+        }
+      }
+
+      const canPublishLocalProgress = pending && (!progressDoc.exists() || localHead?.progressHash === remoteProgressHash);
+      const canPublishLocalStats = pending && (!statsDoc.exists() || localHead?.statsHash === remoteStatsHash);
+      let authoritativeProgress = remoteProgress;
+      let authoritativeStats = remoteStats;
+      const shouldBootstrapLearning = (!progressDoc.exists() || !statsDoc.exists()) && hasLearningActivity(localLearning.progress, localLearning.stats);
+      if (canPublishLocalProgress || canPublishLocalStats || shouldBootstrapLearning) {
+        const published = await writeCloudLearningState(
+          db,
+          user.uid,
+          canPublishLocalProgress || (!progressDoc.exists() && shouldBootstrapLearning) ? localLearning.progress : remoteProgress,
+          canPublishLocalStats || (!statsDoc.exists() && shouldBootstrapLearning) ? localLearning.stats : remoteStats,
+          { progress: remoteProgressHash, stats: remoteStatsHash },
+        );
+        if (published.progress.written && published.stats.written) {
+          authoritativeProgress = canPublishLocalProgress || (!progressDoc.exists() && shouldBootstrapLearning) ? localLearning.progress : remoteProgress;
+          authoritativeStats = canPublishLocalStats || (!statsDoc.exists() && shouldBootstrapLearning) ? localLearning.stats : remoteStats;
+        }
+      }
+
+      const localShareableAiSettings = getShareableAiSettings(localAiSettings);
+      const canPublishLocalSettings = pending && (!settingsDoc.exists() || localHead?.settingsHash === remoteSettingsHash);
+      let authoritativeAiSettings = remoteAiSettings ?? localShareableAiSettings;
+      if (canPublishLocalSettings || (!settingsDoc.exists() && pending)) {
+        const published = await writeCloudAiSettings(db, user.uid, localAiSettings, remoteSettingsHash);
+        if (published.result.written) authoritativeAiSettings = localShareableAiSettings;
+      }
+
+      await useLibraryStore.getState().switchNamespace(user.uid, authoritativeLibrary);
+      await useLearningStore.getState().importState(authoritativeProgress, authoritativeStats, { markPending: false });
+      saveAiSettings({ ...authoritativeAiSettings, apiKey: localAiSettings.apiKey }, { markPending: false });
+      await waitForAiSettingsPersistence();
+      await saveLocalHead({
+        libraryRevision,
+        progressHash: canonicalHash(authoritativeProgress),
+        statsHash: canonicalHash(authoritativeStats),
+        settingsHash: canonicalHash(authoritativeAiSettings),
+      });
+      const changedDuringSync = localChangeVersion !== changeVersionAtStart;
+      if (!changedDuringSync) clearPending();
+      retryAttempt = 0;
+      if (retryTimer) clearTimeout(retryTimer);
+      retryTimer = null;
+      set({ status: "synced", pending: changedDuringSync });
+      if (changedDuringSync) setTimeout(() => void get().sync(), 0);
     } catch (reason) {
-      set({ status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : String(reason) });
-      if (navigator.onLine && localStorage.getItem("lexiro-sync-pending-v2")) { retryAttempt += 1; if (retryTimer) clearTimeout(retryTimer); retryTimer = setTimeout(() => void get().sync(), Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6))); }
+      set({ status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : `${reason}` });
+      if (navigator.onLine && readPending()) {
+        retryAttempt += 1;
+        if (retryTimer) clearTimeout(retryTimer);
+        retryTimer = setTimeout(() => void get().sync(), Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6)));
+      }
     }
   },
 }));

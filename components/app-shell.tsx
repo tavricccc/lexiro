@@ -19,6 +19,7 @@ import {
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
 import { BrandLockup } from "@/components/ui/brand";
 import { cn } from "@/lib/cn";
+import { SyncIndicator } from "@/components/sync-indicator";
 
 const destinations = [
   { href: "/", label: "nav.study", icon: Brain },
@@ -92,8 +93,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-[100dvh] bg-[var(--surface-stage)] md:grid md:grid-cols-[15rem_minmax(0,1fr)]">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-background/92 p-3 backdrop-blur-xl md:flex">
-        <div className="px-2 pb-5 pt-2">
+        <div className="flex items-center justify-between px-2 pb-5 pt-2">
           <BrandLockup href="/" />
+          <SyncIndicator />
         </div>
         <LiquidNav
           className="flex-1 content-start"
@@ -131,17 +133,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 markClassName="size-9 rounded-lg p-2"
                 className="gap-2"
               />
-              <Link
-                href="/me"
-                aria-label={t("nav.me")}
-                aria-current={pathname === "/me" ? "page" : undefined}
-                className={cn(
-                  "grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
-                  pathname === "/me" && "bg-secondary text-foreground",
-                )}
-              >
-                <UserRound className="size-[1.125rem]" />
-              </Link>
+              <div className="flex items-center gap-1">
+                <Link
+                  href="/me"
+                  aria-label={t("nav.me")}
+                  aria-current={pathname === "/me" ? "page" : undefined}
+                  className={cn(
+                    "grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
+                    pathname === "/me" && "bg-secondary text-foreground",
+                  )}
+                >
+                  <UserRound className="size-[1.125rem]" />
+                </Link>
+                <SyncIndicator />
+              </div>
             </div>
           )}
           <RouteTransition key={pathname} pathname={pathname}>

@@ -5,6 +5,7 @@ import { MotionConfig } from "motion/react";
 import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { AppPreload } from "@/components/app-preload";
 import { useState, type ReactNode } from "react";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -22,6 +23,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <MotionConfig reducedMotion="user" transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}>
         <TooltipProvider>
           <QueryClientProvider client={queryClient}>
+            <AppPreload />
             {children}
             <Toaster position="bottom-center" />
           </QueryClientProvider>

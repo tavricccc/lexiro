@@ -17,7 +17,7 @@ interface LearningStore {
   scheduleSenseFromQuestion: (senseId: string, rating: ReviewRating) => Promise<void>;
   recordQuestion: (senseId: string, type: QuestionStatType, difficulty: 1 | 2 | 3, correct: boolean, retry?: boolean) => Promise<void>;
   setGoals: (words: number, questions: number) => Promise<void>;
-  importState: (progress: LearningProgress, stats: DashboardStats) => Promise<void>;
+  importState: (progress: LearningProgress, stats: DashboardStats, options?: { markPending?: boolean }) => Promise<void>;
   reloadNamespace: () => Promise<void>;
   remapSenses: (remaps: Array<{ oldSenseId: string; newSenseId: string }>) => Promise<void>;
   pruneToSenseIds: (senseIds: Set<string>) => Promise<void>;
@@ -34,9 +34,9 @@ function statsForToday(stats: DashboardStats): DashboardStats {
   return { ...stats, streakDays, longestStreak: Math.max(stats.longestStreak, streakDays), lastStudyDate: today, todayMemoryReviews: 0, todayMemoryCorrectReviews: 0, todayQuestionReviews: 0, todayQuestionCorrectReviews: 0 };
 }
 
-async function persist(progress: LearningProgress, stats: DashboardStats) {
+async function persist(progress: LearningProgress, stats: DashboardStats, markPending = true) {
   await saveToStorage(LEARNING_STORAGE_KEY, { version: 1, progress, stats });
-  if (typeof localStorage !== "undefined") { localStorage.setItem("lexiro-sync-pending-v2", "1"); window.dispatchEvent(new Event("lexiro:sync-pending")); }
+  if (markPending && typeof localStorage !== "undefined") { localStorage.setItem("lexiro-sync-pending-v2", "1"); window.dispatchEvent(new Event("lexiro:sync-pending")); }
 }
 
 export const useLearningStore = create<LearningStore>((set, get) => ({
@@ -88,7 +88,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     set({ stats }); await persist(get().progress, stats);
   },
   setGoals: async (words, questions) => { const stats = { ...get().stats, dailyWordGoal: words, dailyQuestionGoal: questions, updatedAt: new Date().toISOString() }; set({ stats }); await persist(get().progress, stats); },
-  importState: async (progress, stats) => { set({ progress, stats, loaded: true }); await persist(progress, stats); },
+  importState: async (progress, stats, options) => { set({ progress, stats, loaded: true }); await persist(progress, stats, options?.markPending ?? true); },
   reloadNamespace: async () => { set({ loaded: false, progress: initialProgress(), stats: createDefaultStats() }); await get().hydrate(); },
   remapSenses: async (remaps) => {
     const cards = { ...get().progress.cards }; const bySense = { ...get().stats.questionStatsBySense };

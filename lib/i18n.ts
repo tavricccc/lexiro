@@ -258,7 +258,7 @@ export const zhTW = {
     syncError: "同步失敗",
     syncConflict: "雲端在同步期間有新變更，請再同步一次。",
     syncPending: "有本機變更待同步",
-    guestDataWarning: "目前訪客空間已有資料。登入會把它與該帳號資料合併；若要多一份保障，請先取消並匯出完整備份。",
+    guestDataWarning: "目前訪客空間已有資料。登入後會先使用雲端資料；只有該帳號尚無雲端資料時，才會把這份本機資料作為首次內容上傳。建議先匯出完整備份。",
     continueSignIn: "繼續登入",
   },
   me: {
