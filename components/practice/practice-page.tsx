@@ -2,12 +2,14 @@
 
 import type { ReviewRating, StudyWord, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "sonner";
 
 import {
   buildQuestionGroups,
   buildWrongContent,
   type QuestionItem,
   selectQuestionItems,
+  shuffleSession,
 } from "@/components/practice/practice-content";
 import { ResultPanel } from "@/components/practice/result-panel";
 import { PracticeSessionView } from "@/components/practice/practice-session-view";
@@ -18,7 +20,7 @@ import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { isSameLocalDay } from "@/src/lib/date";
-import { isDue } from "@/src/lib/fsrs";
+import { isDue, isLeech } from "@/src/lib/fsrs";
 import { senseToStudyWord } from "@/src/lib/library";
 import { canRestorePracticeSession, parsePracticeSession } from "@/src/lib/practice-session";
 
@@ -40,6 +42,8 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
   const [amount, setAmount] = useState(10);
   const [questionType, setQuestionType] = useState<QuestionType>("all");
   const [difficulty, setDifficulty] = useState<Difficulty>("all");
+  const [leechOnly, setLeechOnly] = useState(false);
+  const [typingMode, setTypingMode] = useState(false);
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -52,6 +56,7 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
   const [sessionReviews, setSessionReviews] = useState<StudyWord[] | null>(null);
   const [retrying, setRetrying] = useState(false);
   const [questionFailedSenses, setQuestionFailedSenses] = useState<string[]>([]);
+  const [answerChoices, setAnswerChoices] = useState<Array<number | null>>([]);
   const [actionBusy, setActionBusy] = useState(false);
   const [animateNextCard, setAnimateNextCard] = useState(true);
   const restoreAttempted = useRef(false);
@@ -71,13 +76,14 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
     [state.words],
   );
   const reviewItems = useMemo(() => {
-    const due = studyItems
+    const pool = leechOnly ? studyItems.filter((item) => isLeech(progress.cards[item.id] ?? null)) : studyItems;
+    const due = pool
       .filter((item) => progress.cards[item.id] && isDue(progress.cards[item.id]))
       .sort((a, b) => new Date(progress.cards[a.id].due).getTime() - new Date(progress.cards[b.id].due).getTime());
-    const fresh = studyItems.filter((item) => !progress.cards[item.id]);
+    const fresh = pool.filter((item) => !progress.cards[item.id]);
     const freshLimit = due.length ? Math.ceil(amount / 3) : amount;
     return [...due.slice(0, amount - Math.min(freshLimit, fresh.length)), ...fresh.slice(0, freshLimit)].slice(0, amount);
-  }, [amount, progress.cards, studyItems]);
+  }, [amount, leechOnly, progress.cards, studyItems]);
   const allQuestionGroups = useMemo(() => buildQuestionGroups(state.questions, state.words), [state.questions, state.words]);
   const allQuestionItems = useMemo(() => allQuestionGroups.flat(), [allQuestionGroups]);
   const questionItems = useMemo(
@@ -92,7 +98,7 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
   const hasWords = Object.keys(state.words).length > 0;
   const completedSteps = mode === "questions" && selected !== null ? index + 1 : index;
   const progressRatio = total ? Math.min(1, completedSteps / total) : 0;
-  const wrongContent = buildWrongContent(mode, wrong, activeReviews, activeQuestions);
+  const wrongContent = buildWrongContent(mode, wrong, activeReviews, activeQuestions, answerChoices);
 
   useEffect(() => {
     if (restoreAttempted.current || libraryStatus !== "ready" || !learningLoaded) return;
@@ -128,6 +134,7 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
     setDifficulty(saved.difficulty);
     setRetrying(saved.retrying);
     setQuestionFailedSenses(saved.failedSenseIds);
+    setAnswerChoices(saved.answerChoices);
     if (saved.mode === "review") setSessionReviews(items as StudyWord[]);
     else setSessionQuestions(items as QuestionItem[]);
     setStarted(true);
@@ -141,11 +148,15 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
         amount?: number;
         questionType?: QuestionType;
         difficulty?: Difficulty;
+        leechOnly?: boolean;
+        typingMode?: boolean;
       };
       if (!initialSet && saved.setId) setSetId(saved.setId);
       if (saved.amount) setAmount(saved.amount);
       if (saved.questionType) setQuestionType(saved.questionType);
       if (saved.difficulty) setDifficulty(saved.difficulty);
+      if (typeof saved.leechOnly === "boolean") setLeechOnly(saved.leechOnly);
+      if (typeof saved.typingMode === "boolean") setTypingMode(saved.typingMode);
     } catch {
       // Defaults remain usable when preferences were corrupted.
     }
@@ -153,8 +164,8 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
 
   useEffect(() => {
     if (started) return;
-    localStorage.setItem(PRACTICE_PREFERENCES_STORAGE_KEY, JSON.stringify({ setId, amount, questionType, difficulty }));
-  }, [amount, difficulty, questionType, setId, started]);
+    localStorage.setItem(PRACTICE_PREFERENCES_STORAGE_KEY, JSON.stringify({ setId, amount, questionType, difficulty, leechOnly, typingMode }));
+  }, [amount, difficulty, leechOnly, questionType, setId, started, typingMode]);
 
   useEffect(() => {
     if (!started) return;
@@ -181,8 +192,9 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
       itemIds,
       failedSenseIds: questionFailedSenses,
       retrying,
+      answerChoices: mode === "questions" ? activeQuestions.map((_, position) => answerChoices[position] ?? null) : [],
     }));
-  }, [activeQuestions, activeReviews, amount, complete, correct, difficulty, index, marked, mode, questionFailedSenses, questionType, retrying, revealed, selected, setId, skipped, started, wrong]);
+  }, [activeQuestions, activeReviews, amount, answerChoices, complete, correct, difficulty, index, marked, mode, questionFailedSenses, questionType, retrying, revealed, selected, setId, skipped, started, wrong]);
 
   const resetAttempt = () => {
     actionPending.current = false;
@@ -194,6 +206,7 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
     setMarked([]);
     setSelected(null);
     setRevealed(false);
+    setAnswerChoices([]);
   };
   const advance = (fromKeyboard = false) => {
     setAnimateNextCard(!fromKeyboard);
@@ -215,6 +228,9 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
       if (rating === "good") setCorrect((value) => value + 1);
       else setWrong((value) => [...value, index]);
       advance(fromKeyboard);
+    } catch (reason) {
+      console.error(reason);
+      toast.error(t("practice.recordFailed"));
     } finally {
       actionPending.current = false;
       setActionBusy(false);
@@ -226,21 +242,36 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
     if (!item) return;
     actionPending.current = true;
     setActionBusy(true);
+    const isCorrect = choice === item.answerIndex;
+    setSelected(choice);
+    setRevealed(true);
+    setAnswerChoices((values) => {
+      const next = [...values];
+      while (next.length <= index) next.push(null);
+      next[index] = choice;
+      return next;
+    });
+    if (isCorrect) setCorrect((value) => value + 1);
+    else setWrong((value) => [...value, index]);
+    const addedFailedSense = !isCorrect && !questionFailedSenses.includes(item.senseId);
+    if (addedFailedSense) setQuestionFailedSenses((values) => [...values, item.senseId]);
     try {
-      const isCorrect = choice === item.answerIndex;
-      setSelected(choice);
-      setRevealed(true);
-      if (isCorrect) setCorrect((value) => value + 1);
-      else setWrong((value) => [...value, index]);
       const card = progress.cards[item.senseId];
       const reviewedToday = card?.lastReview ? isSameLocalDay(new Date(card.lastReview), new Date()) : false;
-      if (!isCorrect && !questionFailedSenses.includes(item.senseId)) {
-        setQuestionFailedSenses((values) => [...values, item.senseId]);
+      if (addedFailedSense) {
         await scheduleSenseFromQuestion(item.senseId, "again");
       } else if (isCorrect && !reviewedToday) {
         await scheduleSenseFromQuestion(item.senseId, "good");
       }
       await recordQuestion(item.senseId, item.type, item.difficulty, isCorrect, retrying);
+    } catch (reason) {
+      console.error(reason);
+      toast.error(t("practice.recordFailed"));
+      setSelected(null);
+      setRevealed(false);
+      if (isCorrect) setCorrect((value) => Math.max(0, value - 1));
+      else setWrong((value) => value.filter((value2) => value2 !== index));
+      if (addedFailedSense) setQuestionFailedSenses((values) => values.filter((id) => id !== item.senseId));
     } finally {
       actionPending.current = false;
       setActionBusy(false);
@@ -256,6 +287,11 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
       setWrong((values) => [...values, index]);
       await recordQuestion(item.senseId, item.type, item.difficulty, false, retrying);
       advance();
+    } catch (reason) {
+      console.error(reason);
+      toast.error(t("practice.recordFailed"));
+      setSkipped((values) => values.filter((value) => value !== index));
+      setWrong((values) => values.filter((value) => value !== index));
     } finally {
       actionPending.current = false;
       setActionBusy(false);
@@ -263,10 +299,10 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
   };
   const begin = () => {
     if (mode === "review") {
-      setSessionReviews(reviewItems);
+      setSessionReviews(shuffleSession(reviewItems));
       setSessionQuestions(null);
     } else {
-      setSessionQuestions(questionItems);
+      setSessionQuestions(shuffleSession(questionItems));
       setSessionReviews(null);
     }
     setRetrying(false);
@@ -317,6 +353,8 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
         amount={amount}
         questionType={questionType}
         difficulty={difficulty}
+        leechOnly={leechOnly}
+        typingMode={typingMode}
         sets={state.sets}
         availableCount={mode === "review" ? reviewItems.length : questionItems.length}
         hasWords={hasWords}
@@ -325,6 +363,8 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
         onAmountChange={setAmount}
         onQuestionTypeChange={setQuestionType}
         onDifficultyChange={setDifficulty}
+        onLeechOnlyChange={setLeechOnly}
+        onTypingModeChange={setTypingMode}
         onBegin={begin}
       />
     );
@@ -343,7 +383,7 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
         onContinueQuestions={mode === "review" && questionItems.length ? () => {
           setMode("questions");
           setSessionReviews(null);
-          setSessionQuestions(questionItems);
+          setSessionQuestions(shuffleSession(questionItems));
           setRetrying(false);
           setQuestionFailedSenses([]);
           setAnimateNextCard(true);
@@ -366,6 +406,7 @@ export function PracticePage({ initialMode = "review", initialSet = "" }: { init
       marked={marked.includes(index)}
       busy={actionBusy}
       animateCard={animateNextCard}
+      typing={mode === "review" && typingMode}
       onLeave={leave}
       onReveal={() => setRevealed(true)}
       onRate={(rating) => void rate(rating)}

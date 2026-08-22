@@ -32,11 +32,11 @@ export function FocusCanvas() {
 
         <div className="mt-5 grid max-w-lg grid-cols-2 gap-2.5 sm:gap-3">
           <div className="flex items-center gap-2.5 rounded-2xl bg-card/70 px-3 py-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-white"><Brain className="size-[1.125rem]" /></span>
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground"><Brain className="size-[1.125rem]" /></span>
             <div><div className="text-lg font-semibold tabular-nums leading-5">{reviewCount}</div><div className="mt-0.5 text-[0.6875rem] text-muted-foreground">{t("home.reviewLabel")}</div></div>
           </div>
           <div className="flex items-center gap-2.5 rounded-2xl bg-card/70 px-3 py-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-white"><BookOpenCheck className="size-[1.125rem]" /></span>
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground"><BookOpenCheck className="size-[1.125rem]" /></span>
             <div><div className="text-lg font-semibold tabular-nums leading-5">{questionCount}</div><div className="mt-0.5 text-[0.6875rem] text-muted-foreground">{t("home.questionLabel")}</div></div>
           </div>
         </div>

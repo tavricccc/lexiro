@@ -17,6 +17,8 @@ export interface AiGenerationOptions {
   responseFormat?: 'json' | 'text'
 }
 
+const AI_REQUEST_TIMEOUT_MS = 60_000
+
 const LEGACY_AI_SETTINGS_KEY = 'lexiro-next-ai-settings'
 const LEGACY_AI_API_KEY = 'lexiro-next-ai-api-key'
 
@@ -213,7 +215,20 @@ export async function generateWithAi(settings: AiSettings, prompt: string, optio
     }
   }
 
-  const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) })
+  const controller = new AbortController()
+  const timeout = window.setTimeout(() => controller.abort(new DOMException('AI 請求逾時（60 秒）', 'TimeoutError')), AI_REQUEST_TIMEOUT_MS)
+  let response: Response
+  try {
+    response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), signal: controller.signal })
+  }
+  catch (reason) {
+    if (controller.signal.aborted)
+      throw new Error('AI 請求逾時，請稍後再試或檢查網路連線。')
+    throw reason
+  }
+  finally {
+    window.clearTimeout(timeout)
+  }
   if (!response.ok) {
     let detail = ''
     try {

@@ -2,13 +2,15 @@
 
 import type { ReviewRating, StudyWord, WorkspacePracticeMode } from "@/types";
 import { Bookmark, Check, SkipForward, Volume2, X } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 import type { QuestionItem } from "@/components/practice/practice-content";
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/i18n";
 
 const practiceTransition = { duration: 0.16, ease: [0.22, 1, 0.36, 1] as const };
+const SWIPE_THRESHOLD = 72;
 
 export function PracticeSessionView({
   mode,
@@ -22,6 +24,7 @@ export function PracticeSessionView({
   marked,
   busy,
   animateCard,
+  typing,
   onLeave,
   onReveal,
   onRate,
@@ -41,6 +44,7 @@ export function PracticeSessionView({
   marked: boolean;
   busy: boolean;
   animateCard: boolean;
+  typing: boolean;
   onLeave: () => void;
   onReveal: () => void;
   onRate: (rating: ReviewRating) => void;
@@ -68,7 +72,7 @@ export function PracticeSessionView({
         transition={practiceTransition}
       >
         {mode === "review" && review ? (
-          <ReviewCard item={review} revealed={revealed} busy={busy} onReveal={onReveal} onRate={onRate} />
+          <ReviewCard item={review} revealed={revealed} busy={busy} typing={typing} onReveal={onReveal} onRate={onRate} />
         ) : question ? (
           <>
             <div className="mt-4 flex justify-end gap-1">
@@ -85,37 +89,151 @@ export function PracticeSessionView({
           </>
         ) : null}
       </motion.div>
+      <KeyboardHints mode={mode} revealed={revealed} answered={selected !== null} typing={typing} />
     </div>
   );
 }
 
-function ReviewCard({ item, revealed, busy, onReveal, onRate }: { item: StudyWord; revealed: boolean; busy: boolean; onReveal: () => void; onRate: (rating: ReviewRating) => void }) {
+function KeyboardHints({ mode, revealed, answered, typing }: { mode: WorkspacePracticeMode; revealed: boolean; answered: boolean; typing: boolean }) {
+  return (
+    <div aria-hidden className="mt-6 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground md:flex">
+      {mode === "review" && !typing && !revealed && <ShortcutHint keys="Enter" label={t("practice.reveal")} />}
+      {mode === "review" && !typing && revealed && <ShortcutHint keys="A" label={t("practice.again")} />}
+      {mode === "review" && !typing && revealed && <ShortcutHint keys="G" label={t("practice.good")} />}
+      {mode === "questions" && !answered && <ShortcutHint keys="1 – 4" label={t("practice.shortcutAnswer")} />}
+      {mode === "questions" && answered && <ShortcutHint keys="Enter" label={t("practice.next")} />}
+    </div>
+  );
+}
+
+function ShortcutHint({ keys, label }: { keys: string; label: string }) {
+  return (
+    <span className="flex items-center gap-1.5">
+      <kbd className="rounded-md border bg-card px-1.5 py-0.5 font-mono text-[0.6875rem] text-foreground">{keys}</kbd>
+      {label}
+    </span>
+  );
+}
+
+function ReviewCard({ item, revealed, busy, typing, onReveal, onRate }: { item: StudyWord; revealed: boolean; busy: boolean; typing: boolean; onReveal: () => void; onRate: (rating: ReviewRating) => void }) {
+  const reduceMotion = useReducedMotion();
+  const draggable = revealed && !busy && !reduceMotion;
+  const x = useMotionValue(0);
+  const againOpacity = useTransform(x, [-SWIPE_THRESHOLD, -16], [1, 0]);
+  const goodOpacity = useTransform(x, [16, SWIPE_THRESHOLD], [0, 1]);
+  const [typedValue, setTypedValue] = useState("");
+  const [typedResult, setTypedResult] = useState<"correct" | "incorrect" | null>(null);
+  const advanceTimer = useRef(0);
+  useEffect(() => () => window.clearTimeout(advanceTimer.current), []);
   const speak = () => {
     if (!("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(new SpeechSynthesisUtterance(item.word));
   };
+  const submitTyped = () => {
+    if (!typedValue.trim() || typedResult || busy) return;
+    const matches = typedValue.trim().toLocaleLowerCase() === item.word.trim().toLocaleLowerCase();
+    setTypedResult(matches ? "correct" : "incorrect");
+    if (matches) {
+      advanceTimer.current = window.setTimeout(() => onRate("good"), 450);
+      return;
+    }
+    onReveal();
+  };
+  const showWord = !typing || revealed;
   return (
-    <section className="mt-6 rounded-2xl bg-muted/70 px-5 py-9 text-center sm:px-8 sm:py-11">
-      <button type="button" aria-label={t("practice.speak")} onClick={speak} className="mx-auto mb-5 grid size-10 place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-control)] transition-transform duration-150 active:scale-[.94]">
-        <Volume2 className="size-4" />
-      </button>
-      <h1 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.word}</h1>
-      <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
-      {revealed ? (
-        <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={practiceTransition}>
-          <div className="mx-auto my-7 h-px max-w-sm bg-primary/10" />
-          <p className="text-lg font-semibold tracking-[-0.01em]">{item.meaning}</p>
-          {item.example && <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground">{item.example}</p>}
-          <div className="mx-auto mt-8 grid max-w-sm grid-cols-2 gap-2">
-            <Button variant="secondary" disabled={busy} onClick={() => onRate("again")}>{t("practice.again")}</Button>
-            <Button disabled={busy} onClick={() => onRate("good")}>{busy ? t("practice.recording") : t("practice.good")}</Button>
-          </div>
-        </motion.div>
-      ) : (
-        <Button className="mt-9" onClick={onReveal}>{t("practice.reveal")}</Button>
-      )}
-    </section>
+    <motion.div
+      className="relative mt-6"
+      style={draggable ? { x, cursor: "grab" } : undefined}
+      drag={draggable ? "x" : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.5}
+      dragMomentum={false}
+      onDragEnd={(_, info) => {
+        if (info.offset.x < -SWIPE_THRESHOLD) onRate("again");
+        else if (info.offset.x > SWIPE_THRESHOLD) onRate("good");
+      }}
+    >
+      <motion.span
+        aria-hidden
+        style={{ opacity: againOpacity }}
+        className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-destructive px-2.5 py-1 text-xs font-semibold text-white"
+      >
+        {t("practice.again")}
+      </motion.span>
+      <motion.span
+        aria-hidden
+        style={{ opacity: goodOpacity }}
+        className="pointer-events-none absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-success px-2.5 py-1 text-xs font-semibold text-white"
+      >
+        {t("practice.good")}
+      </motion.span>
+      <section className="rounded-2xl bg-muted/70 px-5 py-9 text-center sm:px-8 sm:py-11">
+        {showWord && (
+          <>
+            <button type="button" aria-label={t("practice.speak")} onClick={speak} className="mx-auto mb-5 grid size-10 place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-control)] transition-transform duration-150 active:scale-[.94]">
+              <Volume2 className="size-4" />
+            </button>
+            <h1 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.word}</h1>
+            <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
+          </>
+        )}
+        {typing && !revealed ? (
+          <>
+            <h1 className="text-xl font-semibold leading-7 sm:text-2xl">{item.meaning}</h1>
+            <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
+            <form
+              className="mx-auto mt-8 flex max-w-sm gap-2"
+              onSubmit={(event) => {
+                event.preventDefault();
+                submitTyped();
+              }}
+            >
+              <input
+                autoFocus
+                value={typedValue}
+                onChange={(event) => setTypedValue(event.target.value)}
+                placeholder={t("practice.typingPlaceholder")}
+                autoComplete="off"
+                autoCapitalize="none"
+                spellCheck={false}
+                disabled={busy}
+                aria-label={t("practice.typingPlaceholder")}
+                className="h-11 min-w-0 flex-1 rounded-xl border bg-card px-3.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+              />
+              <Button type="submit" disabled={busy || !typedValue.trim()}>{t("practice.begin")}</Button>
+            </form>
+            <button type="button" onClick={onReveal} className="mt-4 text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
+              {t("practice.typingShowAnswer")}
+            </button>
+          </>
+        ) : revealed ? (
+          <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={practiceTransition}>
+            {typing && typedResult && (
+              <p className={`mt-6 text-sm font-semibold ${typedResult === "correct" ? "text-success" : "text-destructive"}`} aria-live="polite">
+                {typedResult === "correct" ? `✓ ${t("practice.typingCorrect")}` : `${t("practice.typingIncorrect")} ${item.word}`}
+              </p>
+            )}
+            <div className={`mx-auto h-px max-w-sm bg-primary/10 ${typing ? "my-5" : "my-7"}`} />
+            {!showWord && (
+              <>
+                <h1 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.word}</h1>
+                <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
+              </>
+            )}
+            <p className="text-lg font-semibold tracking-[-0.01em]">{item.meaning}</p>
+            {item.example && <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground">{item.example}</p>}
+            <div className="mx-auto mt-8 grid max-w-sm grid-cols-2 gap-2">
+              <Button variant="secondary" disabled={busy} onClick={() => onRate("again")}>{t("practice.again")}</Button>
+              <Button disabled={busy} onClick={() => onRate("good")}>{busy ? t("practice.recording") : t("practice.good")}</Button>
+            </div>
+            {!reduceMotion && <p className="mt-3 text-xs text-muted-foreground">{t("practice.swipeHint")}</p>}
+          </motion.div>
+        ) : (
+          <Button className="mt-9" onClick={onReveal}>{t("practice.reveal")}</Button>
+        )}
+      </section>
+    </motion.div>
   );
 }
 

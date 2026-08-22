@@ -71,6 +71,12 @@ export function isDue(progress: CardProgress | null, now = new Date()): boolean 
   return !progress || new Date(progress.due).getTime() <= now.getTime()
 }
 
+const LEECH_LAPSE_THRESHOLD = 4
+
+export function isLeech(progress: CardProgress | null): boolean {
+  return (progress?.lapses ?? 0) >= LEECH_LAPSE_THRESHOLD
+}
+
 export function retrievability(progress: CardProgress | null, now = new Date()): number {
   if (!progress)
     return 0

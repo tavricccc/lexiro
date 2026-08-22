@@ -74,7 +74,7 @@ export type WorkspaceQuestionType = 'all' | 'standard' | 'fillBlank' | 'reading'
 export type WorkspaceQuestionDifficulty = 'all' | '1' | '2' | '3'
 
 export interface PracticeSessionSnapshot {
-  schemaVersion: 1
+  schemaVersion: 2
   mode: WorkspacePracticeMode
   setId: string
   amount: number
@@ -90,4 +90,5 @@ export interface PracticeSessionSnapshot {
   itemIds: string[]
   failedSenseIds: string[]
   retrying: boolean
+  answerChoices: Array<number | null>
 }

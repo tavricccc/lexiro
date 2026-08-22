@@ -28,6 +28,7 @@ export function usePracticeKeyboard({
     if (!enabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
       const target = event.target;
+      if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return;
       const nativeEnterControl = event.key === "Enter" && (target instanceof HTMLButtonElement || target instanceof HTMLAnchorElement);
       if (nativeEnterControl) return;
       if (mode === "review") {

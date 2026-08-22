@@ -27,7 +27,7 @@ export function parsePracticeSession(raw: string | null): PracticeSessionSnapsho
   catch {
     return null
   }
-  if (!isRecord(value) || value.schemaVersion !== 1)
+  if (!isRecord(value) || (value.schemaVersion !== 1 && value.schemaVersion !== 2))
     return null
 
   const itemIds = value.itemIds
@@ -67,8 +67,16 @@ export function parsePracticeSession(raw: string | null): PracticeSessionSnapsho
     return null
   }
 
+  const rawAnswerChoices = value.schemaVersion === 2 ? value.answerChoices : undefined
+  if (rawAnswerChoices !== undefined
+    && (!Array.isArray(rawAnswerChoices)
+      || rawAnswerChoices.length > itemIds.length
+      || rawAnswerChoices.some(item => item !== null && (!Number.isInteger(item) || item < 0 || item > 3)))) {
+    return null
+  }
+
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     mode: mode as WorkspacePracticeMode,
     setId: value.setId,
     amount: Number(value.amount),
@@ -84,6 +92,7 @@ export function parsePracticeSession(raw: string | null): PracticeSessionSnapsho
     itemIds,
     failedSenseIds: value.failedSenseIds,
     retrying: value.retrying,
+    answerChoices: itemIds.map((_, position) => Array.isArray(rawAnswerChoices) ? rawAnswerChoices[position] ?? null : null),
   }
 }
 

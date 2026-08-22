@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { t } from "@/lib/i18n";
 
 export function PracticeSetup({
@@ -15,6 +16,8 @@ export function PracticeSetup({
   amount,
   questionType,
   difficulty,
+  leechOnly,
+  typingMode,
   sets,
   availableCount,
   hasWords,
@@ -23,6 +26,8 @@ export function PracticeSetup({
   onAmountChange,
   onQuestionTypeChange,
   onDifficultyChange,
+  onLeechOnlyChange,
+  onTypingModeChange,
   onBegin,
 }: {
   mode: WorkspacePracticeMode;
@@ -30,6 +35,8 @@ export function PracticeSetup({
   amount: number;
   questionType: WorkspaceQuestionType;
   difficulty: WorkspaceQuestionDifficulty;
+  leechOnly: boolean;
+  typingMode: boolean;
   sets: LibrarySet[];
   availableCount: number;
   hasWords: boolean;
@@ -38,6 +45,8 @@ export function PracticeSetup({
   onAmountChange: (amount: number) => void;
   onQuestionTypeChange: (type: WorkspaceQuestionType) => void;
   onDifficultyChange: (difficulty: WorkspaceQuestionDifficulty) => void;
+  onLeechOnlyChange: (leechOnly: boolean) => void;
+  onTypingModeChange: (typingMode: boolean) => void;
   onBegin: () => void;
 }) {
   const emptyHref = !hasWords ? "/sets/new" : mode === "questions" ? "/questions/generate" : "/library";
@@ -90,6 +99,18 @@ export function PracticeSetup({
               {[5, 10, 20, 30].map((value) => <option key={value}>{value}</option>)}
             </select>
           </FieldLabel>
+          {mode === "review" && (
+            <>
+              <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border bg-card px-3.5 py-3">
+                <span className="text-sm font-medium">{t("practice.leechOnly")}</span>
+                <Switch size="sm" checked={leechOnly} onCheckedChange={onLeechOnlyChange} aria-label={t("practice.leechOnly")} />
+              </div>
+              <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border bg-card px-3.5 py-3">
+                <span className="text-sm font-medium">{t("practice.typingMode")}</span>
+                <Switch size="sm" checked={typingMode} onCheckedChange={onTypingModeChange} aria-label={t("practice.typingMode")} />
+              </div>
+            </>
+          )}
           <div className="mt-6 border-t pt-5">
             <p className="text-center text-sm text-muted-foreground">
               {availableCount ? t(mode === "review" ? "practice.availableWords" : "practice.available", { count: availableCount }) : t("practice.noContent")}

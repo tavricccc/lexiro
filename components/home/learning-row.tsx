@@ -26,7 +26,7 @@ export function LearningRows() {
             <div className="truncate font-semibold">{state.sets.find((entry) => entry.id === session.setId)?.setName ?? t("practice.allSets")}</div>
             <div className="mt-1 text-sm text-muted-foreground">{session.index} / {session.itemIds.length}</div>
           </div>
-          <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-line sm:block"><div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(100, session.index / session.itemIds.length * 100)}%` }} /></div>
+          <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-border sm:block"><div className="h-full rounded-full bg-primary" style={{ width: `${Math.min(100, session.index / session.itemIds.length * 100)}%` }} /></div>
           <Button asChild variant="ghost" size="sm"><Link href="/practice">{t("home.resumeAction")}<ArrowRight className="size-4" /></Link></Button>
         </div>
       </section>}
