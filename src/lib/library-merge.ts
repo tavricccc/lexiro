@@ -2,7 +2,7 @@ import type { LibraryState, SetMembership, WordEntry } from '@/types'
 import { UNCATEGORIZED_FOLDER_ID } from './folders'
 import { mergeWord, normalizeWordKey } from './library'
 import { sanitizeMemberships } from './library-membership'
-import { questionBelongsToAnyMemberships, questionUsesWords } from './question-ownership'
+import { questionUsesWords } from './question-ownership'
 import { createUniqueSetName } from './set-name'
 import { normalizeLibraryState } from './share'
 
@@ -43,11 +43,10 @@ function pruneOrphans(state: Omit<LibraryState, 'updatedAt'>): Omit<LibraryState
       const senseIds = senseReferences.get(wordKey)!
       return [wordKey, { ...word, senses: word.senses.filter(sense => senseIds.has(sense.id)) }]
     }))
-  const questions = state.questions.filter((question) => {
-    if (!questionUsesWords(question, words))
-      return false
-    return questionBelongsToAnyMemberships(question, Object.values(state.memberships))
-  })
+  // A question survives as long as every sense it asks about is still in the
+  // Library. Requiring one single set to hold all of them dropped reading packs
+  // whose senses had been split across sets.
+  const questions = state.questions.filter(question => questionUsesWords(question, words))
   return { ...state, words, questions }
 }
 

@@ -138,7 +138,11 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
       wordKeys: [...new Set(questions.map((child) => child.wordKey))],
     };
     try {
-      await saveQuestion(pack);
+      const result = await saveQuestion(pack);
+      if (result === "duplicate") {
+        setSaveError(t("questions.duplicate"));
+        return;
+      }
     } catch (reason) {
       setSaveError(reason instanceof Error ? reason.message : String(reason));
       return;

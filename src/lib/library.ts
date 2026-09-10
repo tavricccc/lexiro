@@ -1,5 +1,5 @@
 import type { EditorItem, LibraryQuestion, MultipleChoiceQuestion, ReadingPack, SetMembership, StudyWord, WordEntry, WordSense } from '@/types'
-import { stableHash } from './hash'
+import { canonicalHash } from './hash'
 import { randomUUID } from './id'
 
 const PART_OF_SPEECH_ALIASES: Record<string, string> = {
@@ -54,7 +54,7 @@ export function normalizePartOfSpeech(pos: string): string {
 }
 
 export function buildSenseId(wordKey: string, pos: string, meaningZh: string): string {
-  return `sense-${stableHash({ wordKey: normalizeWordKey(wordKey), pos: normalizePartOfSpeech(pos) || pos.trim().toLocaleLowerCase(), meaningZh: meaningZh.trim() })}`
+  return `sense-${canonicalHash({ wordKey: normalizeWordKey(wordKey), pos: normalizePartOfSpeech(pos) || pos.trim().toLocaleLowerCase(), meaningZh: meaningZh.trim() })}`
 }
 
 type QuestionContent = Omit<MultipleChoiceQuestion, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'> | Omit<ReadingPack, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'>
@@ -63,7 +63,7 @@ export function buildQuestionFingerprint(question: QuestionContent): string {
   const content = question.kind === 'reading'
     ? { ...question, questions: question.questions.map(({ id: _id, ...child }) => child) }
     : question
-  return `fingerprint-${stableHash(content)}`
+  return `fingerprint-${canonicalHash(content)}`
 }
 
 export function buildQuestionId(sourceId?: string): string {
@@ -108,7 +108,7 @@ export function mergeSense(existing: WordSense | undefined, incoming: WordSense)
   if (!existing)
     return incoming
   const nextExamples = mergeUniqueStrings(existing.examples, incoming.examples)
-  const changed = stableHash(nextExamples) !== stableHash(existing.examples)
+  const changed = canonicalHash(nextExamples) !== canonicalHash(existing.examples)
   if (!changed)
     return existing
   return {
@@ -138,7 +138,7 @@ export function mergeWord(existing: WordEntry | undefined, incoming: WordEntry):
     updatedAt: new Date().toISOString(),
   }
   const comparableNext = { ...next, updatedAt: existing.updatedAt }
-  if (stableHash(comparableNext) === stableHash(existing))
+  if (canonicalHash(comparableNext) === canonicalHash(existing))
     return existing
   return next
 }

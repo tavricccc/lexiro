@@ -191,9 +191,15 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   };
 
   const addAll = async () => {
-    for (const question of run.items) await saveQuestion(question);
+    let saved = 0;
+    for (const question of run.items) {
+      if ((await saveQuestion(question)) === "saved") saved += 1;
+    }
     setSaved(true);
-    toast.success(t("questions.savedCount", { count: run.items.length }));
+    const duplicates = run.items.length - saved;
+    toast.success(duplicates > 0
+      ? t("questions.savedCountWithDuplicates", { count: saved, duplicates })
+      : t("questions.savedCount", { count: saved }));
   };
 
   const senseCount = words.reduce((count, word) => count + word.senses.length, 0);

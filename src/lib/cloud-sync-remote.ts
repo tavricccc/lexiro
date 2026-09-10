@@ -2,7 +2,7 @@ import type { DocumentData, Firestore, QueryDocumentSnapshot, QuerySnapshot } fr
 import type { ConditionalWriteResult } from './firestore-cas'
 import type { AiSettings, DashboardStats, FirestoreAiSettingsDoc, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreProgressDoc, FirestoreStatsDoc, FirestoreSyncHeadDoc, LearningProgress, LibraryState } from '@/types'
 import { collection, doc, documentId, getDocFromServer, getDocsFromServer, limit, orderBy, query, runTransaction, startAfter, writeBatch } from 'firebase/firestore'
-import { CLOUD_LIBRARY_BATCH_SIZE, CLOUD_LIBRARY_DOWNLOAD_CONCURRENCY, CLOUD_LIBRARY_UPLOAD_CONCURRENCY, CLOUD_SCHEMA_VERSION } from '@/constants'
+import { CLOUD_LIBRARY_BATCH_SIZE, CLOUD_LIBRARY_DOWNLOAD_CONCURRENCY, CLOUD_LIBRARY_UPLOAD_CONCURRENCY, CLOUD_SCHEMA_VERSION, MAX_CLOUD_DOCUMENT_BYTES } from '@/constants'
 import { getShareableAiSettings } from './ai-provider'
 import { mapWithConcurrency } from './async-pool'
 import { CloudSyncError } from './cloud-sync-errors'
@@ -11,7 +11,7 @@ import { getFirebaseFirestore } from './firebase'
 import { setDocIfUnchanged } from './firestore-cas'
 import { prepareFirestoreData } from './firestore-data'
 import { createUncategorizedFolder } from './folders'
-import { canonicalHash } from './hash'
+import { canonicalHash, estimateJsonBytes } from './hash'
 import { createDefaultStats } from './learning-defaults'
 import { withSyncTimeout } from './sync-timeout'
 import { randomUUID } from './id'
@@ -515,6 +515,17 @@ async function cleanupUnreferencedV5Chunks(
   }
 }
 
+/**
+ * Progress and statistics are single Firestore documents, so their size is the
+ * ceiling on how much history can sync. Report it before the write instead of
+ * letting Firestore reject the document with a generic error.
+ */
+function assertCloudDocumentFits(value: unknown, label: string): void {
+  const bytes = estimateJsonBytes(value)
+  if (bytes > MAX_CLOUD_DOCUMENT_BYTES)
+    throw new CloudSyncError('cloud/data-invalid', `${label}資料過大（${Math.round(bytes / 1024)} KB），無法同步至雲端`)
+}
+
 export interface CloudLearningWriteResult {
   progress: ConditionalWriteResult
   stats: ConditionalWriteResult
@@ -532,6 +543,8 @@ export async function writeCloudLearningState(
   knownHashes: { progress: string, stats: string },
   onProgress?: (completed: number, total: number) => void,
 ): Promise<CloudLearningWriteResult> {
+  assertCloudDocumentFits(progress, '學習進度')
+  assertCloudDocumentFits(stats, '學習統計')
   const progressHash = canonicalHash(progress)
   const statsHash = canonicalHash(stats)
   const progressChanged = knownHashes.progress !== progressHash

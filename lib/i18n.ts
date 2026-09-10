@@ -165,6 +165,8 @@ export const zhTW = {
     invalidResponse: "回覆格式錯誤：{message}",
     generatedCount: "已產生 {count} 題",
     savedCount: "已加入 {count} 題",
+    savedCountWithDuplicates: "已加入 {count} 題，{duplicates} 題與現有題目重複",
+    duplicate: "題庫中已有內容完全相同的題目。",
     startGenerated: "開始做題",
     newReading: "新增閱讀題",
     readingTitle: "文章標題",

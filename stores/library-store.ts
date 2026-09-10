@@ -3,12 +3,12 @@
 import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from "@/types";
 import { create } from "zustand";
 
-import { createUncategorizedFolder, UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { randomUUID } from "@/src/lib/id";
 import { buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWordKey } from "@/src/lib/library";
-import { getLibraryRepository, resetLibraryRepositoryCache } from "@/src/lib/library-repository";
+import { emptyLibraryState, getLibraryRepository, resetLibraryRepositoryCache } from "@/src/lib/library-repository";
 import { setStorageNamespace } from "@/src/lib/persist";
-import { questionBelongsToAnyMemberships } from "@/src/lib/question-ownership";
+import { questionUsesWords } from "@/src/lib/question-ownership";
 import { markCloudSyncPending } from "@/src/lib/sync-pending";
 
 export interface WordDraftInput {
@@ -17,6 +17,8 @@ export interface WordDraftInput {
   meaningZh: string;
   examples: string[];
 }
+/** A question whose content already exists is reported, never silently dropped. */
+export type SaveQuestionResult = "saved" | "duplicate";
 export interface SenseRemap { oldWordKey: string; oldSenseId: string; newWordKey: string; newSenseId: string }
 
 interface LibraryStore {
@@ -30,7 +32,7 @@ interface LibraryStore {
   deleteFolder: (id: string) => Promise<void>;
   saveSet: (input: { id?: string; setName: string; folderId?: string; words: WordDraftInput[]; remaps?: SenseRemap[] }) => Promise<LibrarySet>;
   deleteSet: (id: string) => Promise<void>;
-  saveQuestion: (question: LibraryQuestion) => Promise<void>;
+  saveQuestion: (question: LibraryQuestion) => Promise<SaveQuestionResult>;
   deleteQuestion: (id: string) => Promise<void>;
   importState: (state: LibraryState) => Promise<void>;
   switchNamespace: (namespace: string, seed?: LibraryState) => Promise<void>;
@@ -38,12 +40,8 @@ interface LibraryStore {
 
 const now = () => new Date().toISOString();
 
-function emptyState(): LibraryState {
-  return { version: 1, words: {}, sets: [], memberships: {}, folders: [createUncategorizedFolder()], questions: [], updatedAt: now() };
-}
-
 async function commit(state: LibraryState) {
-  await getLibraryRepository().commitRecords(state);
+  await getLibraryRepository().commit(state);
   markCloudSyncPending();
 }
 
@@ -78,7 +76,7 @@ function pruneWordsToMemberships(words: Record<string, WordEntry>, memberships: 
 }
 
 export const useLibraryStore = create<LibraryStore>((set, get) => ({
-  state: emptyState(),
+  state: emptyLibraryState(),
   status: "idle",
   error: null,
 
@@ -140,7 +138,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       sets: get().state.sets.filter((entry) => !removedSetIds.has(entry.id)),
       memberships,
       words,
-      questions: get().state.questions.filter((question) => questionBelongsToAnyMemberships(question, Object.values(memberships))),
+      questions: get().state.questions.filter((question) => questionUsesWords(question, words)),
       updatedAt: timestamp,
     };
     await commit(state);
@@ -202,7 +200,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       questions: get().state.questions.map((question) => {
         if (question.kind === "reading") return { ...question, questions: question.questions.map((child) => { const remap = remapBySense.get(child.senseId); return remap ? { ...child, wordKey: remap.newWordKey, senseId: remap.newSenseId } : child; }), wordKeys: question.wordKeys.map((wordKey) => remaps.find((entry) => entry.oldWordKey === wordKey)?.newWordKey ?? wordKey) };
         const remap = remapBySense.get(question.senseId); return remap ? { ...question, wordKey: remap.newWordKey, senseId: remap.newSenseId } : question;
-      }).filter((question) => questionBelongsToAnyMemberships(question, Object.values(nextMemberships))),
+      }).filter((question) => questionUsesWords(question, prunedWords)),
       updatedAt: timestamp,
     };
     await commit(state);
@@ -215,7 +213,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     const memberships = { ...get().state.memberships };
     delete memberships[id];
     const words = pruneWordsToMemberships(get().state.words, memberships);
-    const state = { ...get().state, sets: get().state.sets.filter((entry) => entry.id !== id), memberships, words, questions: get().state.questions.filter((question) => questionBelongsToAnyMemberships(question, Object.values(memberships))), updatedAt: timestamp };
+    const state = { ...get().state, sets: get().state.sets.filter((entry) => entry.id !== id), memberships, words, questions: get().state.questions.filter((question) => questionUsesWords(question, words)), updatedAt: timestamp };
     await commit(state);
     set({ state });
     const { useLearningStore } = await import("@/stores/learning-store");
@@ -227,10 +225,11 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     const normalized = canonicalizeQuestion({ ...question, updatedAt: timestamp });
     const exists = get().state.questions.some((entry) => entry.id === normalized.id);
     const duplicate = get().state.questions.some((entry) => entry.id !== normalized.id && entry.fingerprint === normalized.fingerprint);
-    if (duplicate) return;
+    if (duplicate) return "duplicate";
     const state = { ...get().state, questions: exists ? get().state.questions.map((entry) => entry.id === normalized.id ? normalized : entry) : [...get().state.questions, normalized], updatedAt: timestamp };
     await commit(state);
     set({ state });
+    return "saved";
   },
 
   deleteQuestion: async (id) => {
@@ -241,7 +240,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
   importState: async (state) => { await commit(state); set({ state, status: "ready" }); },
   switchNamespace: async (namespace, seed) => {
     setStorageNamespace(namespace); resetLibraryRepositoryCache();
-    if (seed) { await getLibraryRepository().commitRecords(seed); set({ state: seed, status: "ready" }); return; }
+    if (seed) { await getLibraryRepository().commit(seed); set({ state: seed, status: "ready" }); return; }
     const state = await getLibraryRepository().loadState(); set({ state, status: "ready" });
   },
 }));

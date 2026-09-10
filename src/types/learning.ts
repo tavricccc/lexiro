@@ -13,6 +13,13 @@ export interface QuestionStats {
   retry: number
 }
 
+/**
+ * Sparse by design: a row appears only after that format and difficulty has
+ * been practised. The dense shape stored eighteen rows for every sense and
+ * every day, which dominated the size of the cloud stats document.
+ */
+export type QuestionStatTotals = Partial<Record<QuestionStatKey, QuestionStats>>
+
 export interface DailyActivity {
   date: string
   memoryAgain: number
@@ -22,7 +29,7 @@ export interface DailyActivity {
   questionRetry: number
   xpEarned: number
   completed: boolean
-  questionStats: Record<QuestionStatKey, QuestionStats>
+  questionStats: QuestionStatTotals
 }
 
 export interface CardProgress {
@@ -61,8 +68,8 @@ export interface DashboardStats {
   todayMemoryCorrectReviews: number
   todayQuestionReviews: number
   todayQuestionCorrectReviews: number
-  questionStats: Record<QuestionStatKey, QuestionStats>
-  questionStatsBySense: Record<string, Record<QuestionStatKey, QuestionStats>>
+  questionStats: QuestionStatTotals
+  questionStatsBySense: Record<string, QuestionStatTotals>
   dailyHistory: Record<string, DailyActivity>
   updatedAt: string
 }

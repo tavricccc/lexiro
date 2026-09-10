@@ -1,11 +1,8 @@
-import type { SyncRecords } from './sync-outbox'
 import type { AiSettings, DashboardStats, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreSyncHeadDoc, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
 import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, MAX_LIBRARY_CHUNK_BYTES, MAX_LIBRARY_MANIFEST_BYTES } from '@/constants/cloud'
 import { getShareableAiSettings, normalizeAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
 import { canonicalHash, estimateJsonBytes } from './hash'
-import { normalizeWordKey } from './library'
-import { questionBelongsToAnyMemberships, questionUsesWords } from './question-ownership'
 import { normalizeDashboardStats, normalizeLearningProgress } from './share'
 
 type LibrarySection = FirestoreLibraryV5Chunk['section']
@@ -32,7 +29,14 @@ function v5ChunkForSection(uid: string, library: LibraryState, section: LibraryS
   return { ...base, checksum: canonicalHash(integrityBase) }
 }
 
-/** Builds immutable, content-addressed v5 chunks. */
+/**
+ * Builds immutable, content-addressed v5 chunks.
+ *
+ * Chunk size is tracked by accumulating each item's own byte length rather than
+ * re-serializing the whole candidate chunk per item: the wrapper is a fixed
+ * size (the checksum and chunk id are fixed-length hashes), so the exact size
+ * of a chunk is its overhead plus its items and their separating commas.
+ */
 export function buildV5LibraryChunks(uid: string, library: LibraryState): FirestoreLibraryV5Chunk[] {
   const sections: { section: LibrarySection, items: unknown[] }[] = [
     { section: 'words', items: Object.values(library.words) },
@@ -43,14 +47,21 @@ export function buildV5LibraryChunks(uid: string, library: LibraryState): Firest
   ]
   const chunks: FirestoreLibraryV5Chunk[] = []
   for (const { section, items } of sections) {
+    const overheadBytes = estimateJsonBytes(v5ChunkForSection(uid, library, section, []))
     let current: unknown[] = []
+    let currentBytes = 0
     for (const item of items) {
-      const candidate = v5ChunkForSection(uid, library, section, [...current, item])
-      if (!current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES)
+      const itemBytes = estimateJsonBytes(item)
+      const addedBytes = current.length ? itemBytes + 1 : itemBytes
+      if (!current.length && overheadBytes + addedBytes > MAX_LIBRARY_CHUNK_BYTES)
         throw new CloudSyncError('cloud/data-invalid', `Cloud ${section} 單筆資料超過大小限制`)
-      if (current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES) {
+      if (current.length && overheadBytes + currentBytes + addedBytes > MAX_LIBRARY_CHUNK_BYTES) {
         chunks.push(v5ChunkForSection(uid, library, section, current))
         current = []
+        currentBytes = itemBytes
+      }
+      else {
+        currentBytes += addedBytes
       }
       current.push(item)
     }
@@ -150,10 +161,6 @@ export function buildV5LibraryManifestDocuments(uid: string, chunks: FirestoreLi
   return { manifest, parts }
 }
 
-export function buildV5LibraryManifest(uid: string, chunks: FirestoreLibraryV5Chunk[], updatedAt: string): FirestoreLibraryV5Manifest {
-  return buildV5LibraryManifestDocuments(uid, chunks, updatedAt).manifest
-}
-
 export function validateV5LibraryManifest(value: unknown, uid: string): FirestoreLibraryV5Manifest {
   const manifest = validateLibraryManifestShape(value, uid)
   return manifest as FirestoreLibraryV5Manifest
@@ -242,7 +249,7 @@ export function validateCloudSyncHead(value: unknown, uid: string): FirestoreSyn
   return source as unknown as FirestoreSyncHeadDoc
 }
 
-export function validateV5LibraryChunkSet(chunks: FirestoreLibraryV5Chunk[]): void {
+function validateV5LibraryChunkSet(chunks: FirestoreLibraryV5Chunk[]): void {
   if (!chunks.length)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library 缺少必要 chunks')
   for (const section of LIBRARY_SECTIONS) {
@@ -316,15 +323,6 @@ export function validateCloudEnvelope(value: unknown, uid: string, field: string
   return source
 }
 
-export function cloudChunkHash(value: unknown | null): string {
-  if (value === null)
-    return ''
-  if (!value || typeof value !== 'object' || Array.isArray(value))
-    return '#invalid'
-  const checksum = (value as Record<string, unknown>).checksum
-  return typeof checksum === 'string' ? checksum : '#invalid'
-}
-
 export function normalizeCloudProgress(value: unknown, uid: string): LearningProgress {
   const remote = validateCloudEnvelope(value, uid, 'Cloud progress', ['cards', 'updatedAt'])
   return normalizeLearningProgress({ cards: remote.cards, updatedAt: remote.updatedAt })
@@ -340,56 +338,4 @@ export function normalizeCloudAiSettings(value: unknown, uid: string): Omit<AiSe
   const remote = validateCloudEnvelope(value, uid, 'Cloud AI settings', ['enabled', 'provider', 'baseUrl', 'model', 'batchSize', 'updatedAt'])
   const { ownerId: _ownerId, schemaVersion: _schemaVersion, updatedAt: _updatedAt, ...settings } = remote
   return getShareableAiSettings(normalizeAiSettings({ ...settings, apiKey: '' }))
-}
-
-export function libraryStateFromRecords(base: LibraryState, records: SyncRecords): LibraryState {
-  const words: Record<string, WordEntry> = {}
-  const sets: LibrarySet[] = []
-  const memberships: Record<string, SetMembership[]> = {}
-  const folders: VocabFolder[] = []
-  const questions: LibraryState['questions'] = []
-  for (const [key, payload] of Object.entries(records)) {
-    if (key.startsWith('word:'))
-      words[key.slice(5)] = payload as WordEntry
-    else if (key.startsWith('set:'))
-      sets.push(payload as LibrarySet)
-    else if (key.startsWith('membership:'))
-      memberships[key.slice(11)] = payload as SetMembership[]
-    else if (key.startsWith('folder:'))
-      folders.push(payload as VocabFolder)
-    else if (key.startsWith('question:'))
-      questions.push(payload as LibraryState['questions'][number])
-  }
-  const liveFolderIds = new Set<string>()
-  let addedFolder = true
-  while (addedFolder) {
-    addedFolder = false
-    for (const folder of folders) {
-      if (liveFolderIds.has(folder.id) || (folder.parentId && !liveFolderIds.has(folder.parentId)))
-        continue
-      liveFolderIds.add(folder.id)
-      addedFolder = true
-    }
-  }
-  const liveFolders = folders.filter(folder => liveFolderIds.has(folder.id))
-  const liveSets = sets.filter(set => liveFolderIds.has(set.folderId))
-  const liveSetIds = new Set(liveSets.map(set => set.id))
-  const liveMembershipRecords = Object.fromEntries(Object.entries(memberships).filter(([setId]) => liveSetIds.has(setId)))
-  const referencedWordKeys = new Set(Object.values(liveMembershipRecords).flatMap(members => members.map(member => normalizeWordKey(member.wordKey))))
-  const liveWords = Object.fromEntries(Object.entries(words).filter(([wordKey]) => referencedWordKeys.has(wordKey)))
-  const liveMemberships = Object.values(liveMembershipRecords)
-  const liveQuestions = questions.filter(question => questionUsesWords(question, liveWords) && questionBelongsToAnyMemberships(question, liveMemberships))
-  return { ...base, words: liveWords, sets: liveSets, memberships: liveMembershipRecords, folders: liveFolders, questions: liveQuestions }
-}
-
-export function learningStateFromRecords(baseProgress: LearningProgress, baseStats: DashboardStats, records: SyncRecords): { progress: LearningProgress, stats: DashboardStats } {
-  const cards: LearningProgress['cards'] = {}
-  for (const [key, payload] of Object.entries(records)) {
-    if (key.startsWith('card:'))
-      cards[key.slice(5)] = payload as LearningProgress['cards'][string]
-  }
-  return {
-    progress: { ...baseProgress, cards },
-    stats: (records['stats:summary'] as DashboardStats | undefined) ?? baseStats,
-  }
 }

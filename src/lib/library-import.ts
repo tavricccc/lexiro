@@ -1,5 +1,5 @@
 import type { LibraryQuestion, MultipleChoiceQuestion, PassageFormat, QuestionDifficulty, QuestionStyle, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
-import { stableHash } from './hash'
+import { canonicalHash } from './hash'
 import { buildQuestionFingerprint, buildQuestionId, buildSenseId, normalizePartOfSpeech, normalizeWordKey } from './library'
 import { isValidAnswerIndex, passageBlankIssue, questionPromptIssue } from './question-shape'
 import { PASSAGE_FORMATS } from './question-formats'
@@ -51,7 +51,7 @@ function questionDifficulty(value: unknown, index: number, allowedDifficulty?: Q
 }
 
 function childQuestionId(question: Omit<ReadingChildQuestion, 'id'>): string {
-  return `child-${stableHash(question)}`
+  return `child-${canonicalHash(question)}`
 }
 
 function normalizeSense(value: unknown, wordKey: string, index: number): WordSense {

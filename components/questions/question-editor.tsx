@@ -98,7 +98,11 @@ export function QuestionEditor({ questionId }: { questionId?: string }) {
     // The store validates on save; without this the button silently did
     // nothing and the reason only appeared in the console.
     try {
-      await saveQuestion(question as LibraryQuestion);
+      const result = await saveQuestion(question as LibraryQuestion);
+      if (result === "duplicate") {
+        form.setError("root", { message: t("questions.duplicate") });
+        return;
+      }
     } catch (reason) {
       form.setError("root", {
         message: reason instanceof Error ? reason.message : String(reason),

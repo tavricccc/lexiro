@@ -29,11 +29,3 @@ export function questionBelongsToMemberships(question: LibraryQuestion, membersh
   const membership = membershipsByWordKey.get(normalizeWordKey(question.wordKey))
   return Boolean(membership?.senseIds.includes(question.senseId))
 }
-
-export function questionBelongsToAnyMemberships(question: LibraryQuestion, membershipGroups: Iterable<SetMembership[]>): boolean {
-  for (const memberships of membershipGroups) {
-    if (questionBelongsToMemberships(question, memberships))
-      return true
-  }
-  return false
-}

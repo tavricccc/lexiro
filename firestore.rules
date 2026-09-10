@@ -72,7 +72,7 @@ service cloud.firestore {
         && request.resource.data.ownerId is string
         && request.resource.data.schemaVersion == 5
         && request.resource.data.chunkId == chunkId
-        && request.resource.data.chunkId.matches('chunk-[a-f0-9]{8}')
+        && request.resource.data.chunkId.matches('chunk-[a-f0-9]{32}')
         && request.resource.data.updatedAt is string
         && request.resource.data.checksum is string
         && request.resource.data.section in ['words', 'sets', 'memberships', 'folders', 'questions']

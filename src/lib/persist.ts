@@ -1,4 +1,5 @@
 import { get, set } from 'idb-keyval'
+import { NAMESPACE_SCOPED_KEYS } from '@/constants'
 
 export interface StorageLoadResult {
   value: string | null
@@ -7,15 +8,7 @@ export interface StorageLoadResult {
 const pendingWrites = new Map<string, Promise<void>>()
 let storageNamespace = 'guest'
 
-const NAMESPACE_SCOPED_KEYS = new Set([
-  'lexiro_session_data',
-  'lexiro_learning_data',
-  'lexiro_library_data',
-  'lexiro_library_sync_pending',
-  'lexiro_ai_settings',
-  'lexiro_ui_data',
-  'lexiro_sync_head',
-])
+const scopedKeys = new Set(NAMESPACE_SCOPED_KEYS)
 
 export function setStorageNamespace(namespace: string): void {
   const normalized = namespace.trim()
@@ -27,7 +20,7 @@ export function getStorageNamespace(): string {
 }
 
 function resolveKey(key: string): string {
-  return NAMESPACE_SCOPED_KEYS.has(key) ? `${storageNamespace}:${key}` : key
+  return scopedKeys.has(key) ? `${storageNamespace}:${key}` : key
 }
 
 function enqueueWrite(key: string, write: () => Promise<void>): Promise<void> {

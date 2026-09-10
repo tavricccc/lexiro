@@ -1,5 +1,6 @@
 "use client";
 
+import type { QuestionStatKey, QuestionStatTotals } from "@/types";
 import { useMemo, useState } from "react";
 
 import { PageHeader } from "@/components/ui/page-header";
@@ -10,7 +11,7 @@ import { difficultyLabel, questionFormatLabel } from "@/lib/question-options";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { isDue } from "@/src/lib/fsrs";
-import { emptyQuestionStats } from "@/src/lib/learning-defaults";
+import { emptyQuestionStats, QUESTION_STAT_KEYS, questionStatRow } from "@/src/lib/learning-defaults";
 
 /**
  * The progress page is a ledger, not a dashboard: hairlines instead of cards,
@@ -53,13 +54,17 @@ export function ProgressPage() {
   );
   const questionStats = useMemo(() => {
     if (!setId) return stats.questionStats;
-    return senseIds.reduce((totals, senseId) => {
+    return senseIds.reduce<QuestionStatTotals>((totals, senseId) => {
       const row = stats.questionStatsBySense[senseId];
       if (!row) return totals;
-      for (const key of Object.keys(totals) as Array<keyof typeof totals>) {
-        totals[key].total += row[key].total;
-        totals[key].correct += row[key].correct;
-        totals[key].retry += row[key].retry;
+      for (const key of Object.keys(row) as QuestionStatKey[]) {
+        const before = questionStatRow(totals, key);
+        const incoming = questionStatRow(row, key);
+        totals[key] = {
+          total: before.total + incoming.total,
+          correct: before.correct + incoming.correct,
+          retry: before.retry + incoming.retry,
+        };
       }
       return totals;
     }, emptyQuestionStats());
@@ -198,7 +203,8 @@ export function ProgressPage() {
           />
         ) : (
         <ul className="mt-4 divide-y border-y">
-          {Object.entries(questionStats).map(([key, row]) => {
+          {QUESTION_STAT_KEYS.map((key) => {
+            const row = questionStatRow(questionStats, key);
             const [style, level] = key.split(":");
             const accuracy = percentage(row.correct, row.total);
             return (

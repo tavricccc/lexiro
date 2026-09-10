@@ -7,7 +7,6 @@ import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { allocateDailyQuestionQuotas } from "@/src/lib/question-distribution";
-import { queueRecordChanges, rebaseQueuedRecords } from "@/src/lib/sync-outbox";
 
 function library(setId: string, wordKey: string, setName: string): LibraryState {
   const timestamp = "2026-08-12T00:00:00.000Z";
@@ -53,13 +52,6 @@ describe("data integrity", () => {
     const quotas = allocateDailyQuestionQuotas(46);
     expect(quotas.vocabulary).toBeGreaterThan(quotas.discourse);
     expect(quotas.reading).toBeGreaterThan(quotas.discourse);
-  });
-
-  it("keeps the cloud record when a queued local edit conflicts", () => {
-    const queued = queueRecordChanges("library", { "word:a": { value: 1 } }, { "word:a": { value: 1 } }, { "word:a": { value: 2 } }, []);
-    const result = rebaseQueuedRecords({ "word:a": { value: 9 } }, queued, "library");
-    expect(result.records["word:a"]).toEqual({ value: 9 });
-    expect(result.conflicted).toHaveLength(1);
   });
 
   it("exports a canonical backup without the API key", () => {

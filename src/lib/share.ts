@@ -1,10 +1,10 @@
-import type { DailyActivity, DashboardStats, FullBackupPayload, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, QuestionStatKey, QuestionStats, SetMembership, SetSharePayload, SharedSet, VocabFolder, WordEntry } from '@/types'
+import type { DailyActivity, DashboardStats, FullBackupPayload, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, QuestionStats, QuestionStatTotals, SetMembership, SetSharePayload, SharedSet, VocabFolder, WordEntry } from '@/types'
 import { normalizeShareableAiSettings } from './ai-provider'
 import { normalizeFolderParentId, UNCATEGORIZED_FOLDER_ID } from './folders'
 import { QUESTION_STAT_KEYS } from './learning-defaults'
 import { normalizeWordKey } from './library'
 import { parseLibraryImportValue } from './library-import'
-import { questionBelongsToAnyMemberships, questionBelongsToMemberships, questionUsesWords } from './question-ownership'
+import { questionBelongsToMemberships, questionUsesWords } from './question-ownership'
 import { assertKnownKeys, requiredNumber, requiredObject, requiredText } from './schema'
 
 function optionalText(value: unknown, field: string): string {
@@ -221,8 +221,6 @@ export function normalizeLibraryState(value: unknown): LibraryState {
     throw new Error('library.questions 包含重複 id')
   if (new Set(questions.map(question => question.fingerprint)).size !== questions.length)
     throw new Error('library.questions 包含重複 fingerprint')
-  if (!questions.every(question => questionBelongsToAnyMemberships(question, Object.values(memberships))))
-    throw new Error('library.questions 包含沒有單字集關聯的題目')
   return {
     version: 1,
     words,
@@ -263,26 +261,40 @@ export function normalizeLearningProgress(value: unknown): LearningProgress {
   return { cards, updatedAt: requiredText(source.updatedAt, 'learning.updatedAt') }
 }
 
-function normalizeQuestionStats(value: unknown, field: string): Record<QuestionStatKey, QuestionStats> {
+/**
+ * Question stats are sparse: a format/difficulty row exists only once it has
+ * been practised. Storing all eighteen rows per sense and per day is what used
+ * to push the cloud stats document towards Firestore's one-megabyte limit.
+ */
+function normalizeQuestionStats(value: unknown, field: string): QuestionStatTotals {
   const source = requiredObject(value, field)
   assertKnownKeys(source, QUESTION_STAT_KEYS, field)
-  return Object.fromEntries(QUESTION_STAT_KEYS.map((key) => {
+  const totals: QuestionStatTotals = {}
+  for (const key of QUESTION_STAT_KEYS) {
+    if (source[key] === undefined)
+      continue
     const stat = requiredObject(source[key], `${field}.${key}`)
     assertKnownKeys(stat, ['total', 'correct', 'retry'], `${field}.${key}`)
-    return [key, {
+    const row: QuestionStats = {
       total: requiredNumber(stat.total, `${field}.${key}.total`),
       correct: requiredNumber(stat.correct, `${field}.${key}.correct`),
       retry: requiredNumber(stat.retry, `${field}.${key}.retry`),
-    }]
-  })) as Record<QuestionStatKey, QuestionStats>
+    }
+    if (row.total || row.correct || row.retry)
+      totals[key] = row
+  }
+  return totals
 }
 
 function normalizeQuestionStatsBySense(value: unknown, field: string): DashboardStats['questionStatsBySense'] {
   const source = requiredObject(value, field)
-  return Object.fromEntries(Object.entries(source).map(([senseId, stats]) => [
-    senseId,
-    normalizeQuestionStats(stats, `${field}.${senseId}`),
-  ]))
+  const bySense: DashboardStats['questionStatsBySense'] = {}
+  for (const [senseId, stats] of Object.entries(source)) {
+    const totals = normalizeQuestionStats(stats, `${field}.${senseId}`)
+    if (Object.keys(totals).length)
+      bySense[senseId] = totals
+  }
+  return bySense
 }
 
 function normalizeDailyActivity(value: unknown, field: string): DailyActivity {
