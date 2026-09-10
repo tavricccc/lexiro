@@ -1,34 +1,54 @@
-import type { QuestionSourceRefs } from './library-import'
-import type { GeneratedQuestionKind, LibraryQuestion, QuestionDifficulty, WordEntry, WordKey } from '@/types'
-import { senseKey } from './library'
-import { questionUsesWords } from './question-ownership'
-import { createSourceRef } from './source-ref'
-import { extractJsonText } from './ai-provider'
-import { assembleGeneratedQuestions } from './question-assembly'
-import { buildQuestionPrompt } from './question-prompts'
-import { isPassageKind, READING_MIN_QUESTIONS, sensesPerRequest } from './question-formats'
+import type { QuestionSourceRefs } from "./library-import";
+import type {
+  GeneratedQuestionKind,
+  LibraryQuestion,
+  QuestionDifficulty,
+  WordEntry,
+  WordKey,
+} from "@/types";
+import { senseKey } from "./library";
+import { questionUsesWords } from "./question-ownership";
+import { createSourceRef } from "./source-ref";
+import { extractJsonText } from "./ai-provider";
+import { assembleGeneratedQuestions } from "./question-assembly";
+import { buildQuestionPrompt } from "./question-prompts";
+import {
+  isPassageKind,
+  READING_MIN_QUESTIONS,
+  sensesPerRequest,
+} from "./question-formats";
 
-export type { GeneratedQuestionKind }
-export type GeneratedQuestionDifficulty = QuestionDifficulty
+export type { GeneratedQuestionKind };
+export type GeneratedQuestionDifficulty = QuestionDifficulty;
 
-export function getSelectedGenerationWords(words: WordEntry[], selectedSenseKeys: string[]): WordEntry[] {
-  const selected = new Set(selectedSenseKeys)
+export function getSelectedGenerationWords(
+  words: WordEntry[],
+  selectedSenseKeys: string[],
+): WordEntry[] {
+  const selected = new Set(selectedSenseKeys);
   return words
-    .map(word => ({
+    .map((word) => ({
       ...word,
-      senses: word.senses.filter(sense => selected.has(senseKey(word.wordKey, sense.id))),
+      senses: word.senses.filter((sense) =>
+        selected.has(senseKey(word.wordKey, sense.id)),
+      ),
     }))
-    .filter(word => word.senses.length > 0)
+    .filter((word) => word.senses.length > 0);
 }
 
 export function getQuestionSourceRefs(words: WordEntry[]): QuestionSourceRefs {
-  return Object.fromEntries(words.flatMap((word, wordIndex) => [
-    [createSourceRef(wordIndex), { wordKey: word.wordKey, senseId: word.senses[0].id }],
-    ...word.senses.map((sense, senseIndex) => [
-      createSourceRef(wordIndex, senseIndex),
-      { wordKey: word.wordKey, senseId: sense.id },
+  return Object.fromEntries(
+    words.flatMap((word, wordIndex) => [
+      [
+        createSourceRef(wordIndex),
+        { wordKey: word.wordKey, senseId: word.senses[0].id },
+      ],
+      ...word.senses.map((sense, senseIndex) => [
+        createSourceRef(wordIndex, senseIndex),
+        { wordKey: word.wordKey, senseId: sense.id },
+      ]),
     ]),
-  ]))
+  );
 }
 
 /**
@@ -38,53 +58,62 @@ export function getQuestionSourceRefs(words: WordEntry[]): QuestionSourceRefs {
  * 篇章結構 passage only needs four — so the size comes from the format table.
  */
 export function questionBatchSize(kind: GeneratedQuestionKind): number {
-  return sensesPerRequest(kind)
+  return sensesPerRequest(kind);
 }
 
-export function splitGenerationBatches(words: WordEntry[], kind: GeneratedQuestionKind): WordEntry[][] {
-  const size = questionBatchSize(kind)
+export function splitGenerationBatches(
+  words: WordEntry[],
+  kind: GeneratedQuestionKind,
+): WordEntry[][] {
+  const size = questionBatchSize(kind);
 
   if (isPassageKind(kind)) {
     // One passage per batch: a passage cannot be split across requests.
-    const packs: WordEntry[][] = []
+    const packs: WordEntry[][] = [];
     for (let index = 0; index < words.length; index += size)
-      packs.push(words.slice(index, index + size))
-    return packs
+      packs.push(words.slice(index, index + size));
+    return packs;
   }
 
-  const batches: WordEntry[][] = []
-  let batch: WordEntry[] = []
-  let senseCount = 0
+  const batches: WordEntry[][] = [];
+  let batch: WordEntry[] = [];
+  let senseCount = 0;
   for (const word of words) {
-    const wordSenseCount = word.senses.length
+    const wordSenseCount = word.senses.length;
     if (batch.length && senseCount + wordSenseCount > size) {
-      batches.push(batch)
-      batch = []
-      senseCount = 0
+      batches.push(batch);
+      batch = [];
+      senseCount = 0;
     }
     if (wordSenseCount > size) {
       for (let index = 0; index < word.senses.length; index += size) {
-        const senses = word.senses.slice(index, index + size)
+        const senses = word.senses.slice(index, index + size);
         if (batch.length) {
-          batches.push(batch)
-          batch = []
-          senseCount = 0
+          batches.push(batch);
+          batch = [];
+          senseCount = 0;
         }
-        batches.push([{ ...word, senses }])
+        batches.push([{ ...word, senses }]);
       }
-      continue
+      continue;
     }
-    batch.push(word)
-    senseCount += wordSenseCount
+    batch.push(word);
+    senseCount += wordSenseCount;
   }
-  if (batch.length)
-    batches.push(batch)
-  return batches
+  if (batch.length) batches.push(batch);
+  return batches;
 }
 
-export function filterQuestionsForWords(questions: LibraryQuestion[], words: WordEntry[]): LibraryQuestion[] {
-  const allowedWords: Record<WordKey, WordEntry> = Object.fromEntries(words.map(word => [word.wordKey, word]))
-  return questions.filter(question => questionUsesWords(question, allowedWords))
+export function filterQuestionsForWords(
+  questions: LibraryQuestion[],
+  words: WordEntry[],
+): LibraryQuestion[] {
+  const allowedWords: Record<WordKey, WordEntry> = Object.fromEntries(
+    words.map((word) => [word.wordKey, word]),
+  );
+  return questions.filter((question) =>
+    questionUsesWords(question, allowedWords),
+  );
 }
 
 export function buildQuestionGenerationPrompt(
@@ -93,7 +122,7 @@ export function buildQuestionGenerationPrompt(
   difficulty: GeneratedQuestionDifficulty = 2,
   options: { needDistractors?: boolean } = {},
 ): string {
-  return buildQuestionPrompt(kind, words, difficulty, options).text
+  return buildQuestionPrompt(kind, words, difficulty, options).text;
 }
 
 /**
@@ -111,35 +140,56 @@ export function normalizeQuestionGenerationJson(
   words: WordEntry[],
   pool: WordEntry[] = words,
 ): string {
-  let value: unknown
+  let value: unknown;
   try {
-    value = JSON.parse(extractJsonText(responseText)) as unknown
+    value = JSON.parse(extractJsonText(responseText)) as unknown;
+  } catch {
+    throw new Error("AI 題目回覆不是有效 JSON");
   }
-  catch {
-    throw new Error('AI 題目回覆不是有效 JSON')
-  }
-  return JSON.stringify(assembleGeneratedQuestions(value, kind, difficulty, words, pool).payload)
+  return JSON.stringify(
+    assembleGeneratedQuestions(value, kind, difficulty, words, pool).payload,
+  );
 }
 
-export function generatedQuestionCoverageIssue(questions: LibraryQuestion[], words: WordEntry[], kind: GeneratedQuestionKind): string | null {
+export function generatedQuestionCoverageIssue(
+  questions: LibraryQuestion[],
+  words: WordEntry[],
+  kind: GeneratedQuestionKind,
+): string | null {
   if (isPassageKind(kind)) {
-    if (questions.length !== 1 || questions[0]?.kind !== 'reading')
-      return '這個題型每批只能產生一個題組'
-    const pack = questions[0]
-    if (pack.format !== kind)
-      return '題組的格式與所選題型不符'
-    if (kind === 'reading' && pack.questions.length < READING_MIN_QUESTIONS)
-      return `閱讀測驗至少要有 ${READING_MIN_QUESTIONS} 個子題`
-    const expectedSenseKeys = new Set(words.flatMap(word => word.senses.map(sense => senseKey(word.wordKey, sense.id))))
-    const actualSenseKeys = pack.questions.map(question => senseKey(question.wordKey, question.senseId))
-    if (actualSenseKeys.some(key => !expectedSenseKeys.has(key)))
-      return '子題必須對應本批輸入的詞義'
-    return null
+    if (questions.length !== 1 || questions[0]?.kind !== "reading")
+      return "這個題型每批只能產生一個題組";
+    const pack = questions[0];
+    if (pack.format !== kind) return "題組的格式與所選題型不符";
+    if (kind === "reading" && pack.questions.length < READING_MIN_QUESTIONS)
+      return `閱讀測驗至少要有 ${READING_MIN_QUESTIONS} 個子題`;
+    const expectedSenseKeys = new Set(
+      words.flatMap((word) =>
+        word.senses.map((sense) => senseKey(word.wordKey, sense.id)),
+      ),
+    );
+    const actualSenseKeys = pack.questions.map((question) =>
+      senseKey(question.wordKey, question.senseId),
+    );
+    if (actualSenseKeys.some((key) => !expectedSenseKeys.has(key)))
+      return "子題必須對應本批輸入的詞義";
+    return null;
   }
 
-  const expectedSenseKeys = new Set(words.flatMap(word => word.senses.map(sense => senseKey(word.wordKey, sense.id))))
-  const actualSenseKeys = questions.flatMap(question => question.kind === 'reading' ? [] : [senseKey(question.wordKey, question.senseId)])
-  if (new Set(actualSenseKeys).size !== actualSenseKeys.length || actualSenseKeys.some(key => !expectedSenseKeys.has(key)))
-    return '每個詞義最多只能生成一題'
-  return null
+  const expectedSenseKeys = new Set(
+    words.flatMap((word) =>
+      word.senses.map((sense) => senseKey(word.wordKey, sense.id)),
+    ),
+  );
+  const actualSenseKeys = questions.flatMap((question) =>
+    question.kind === "reading"
+      ? []
+      : [senseKey(question.wordKey, question.senseId)],
+  );
+  if (
+    new Set(actualSenseKeys).size !== actualSenseKeys.length ||
+    actualSenseKeys.some((key) => !expectedSenseKeys.has(key))
+  )
+    return "每個詞義最多只能生成一題";
+  return null;
 }

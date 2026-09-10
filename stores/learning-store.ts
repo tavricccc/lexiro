@@ -1,15 +1,37 @@
 "use client";
 
-import type { CardProgress, DashboardStats, LearningProgress, QuestionStatKey, QuestionStatType, ReviewRating, SenseId } from "@/types";
+import type {
+  CardProgress,
+  DashboardStats,
+  LearningProgress,
+  QuestionStatKey,
+  QuestionStatType,
+  ReviewRating,
+  SenseId,
+} from "@/types";
 import { create } from "zustand";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
 import { localDateKey } from "@/src/lib/date";
 import { reviewCard } from "@/src/lib/fsrs";
-import { addQuestionAttempt, createDefaultStats, emptyDailyActivity, emptyQuestionStats, pruneDailyHistory, questionStatRow } from "@/src/lib/learning-defaults";
-import { createDebouncedSaver, loadFromStorage, saveToStorage } from "@/src/lib/persist";
+import {
+  addQuestionAttempt,
+  createDefaultStats,
+  emptyDailyActivity,
+  emptyQuestionStats,
+  pruneDailyHistory,
+  questionStatRow,
+} from "@/src/lib/learning-defaults";
+import {
+  createDebouncedSaver,
+  loadFromStorage,
+  saveToStorage,
+} from "@/src/lib/persist";
 import { entriesOf } from "@/src/lib/record";
-import { normalizeDashboardStats, normalizeLearningProgress } from "@/src/lib/share";
+import {
+  normalizeDashboardStats,
+  normalizeLearningProgress,
+} from "@/src/lib/share";
 import { markCloudSyncPending } from "@/src/lib/sync-pending";
 
 interface LearningStore {
@@ -18,24 +40,54 @@ interface LearningStore {
   loaded: boolean;
   hydrate: () => Promise<void>;
   rateSense: (senseId: SenseId, rating: ReviewRating) => Promise<void>;
-  scheduleSenseFromQuestion: (senseId: SenseId, rating: ReviewRating) => Promise<void>;
-  recordQuestion: (senseId: SenseId, type: QuestionStatType, difficulty: 1 | 2 | 3, correct: boolean, retry?: boolean) => Promise<void>;
+  scheduleSenseFromQuestion: (
+    senseId: SenseId,
+    rating: ReviewRating,
+  ) => Promise<void>;
+  recordQuestion: (
+    senseId: SenseId,
+    type: QuestionStatType,
+    difficulty: 1 | 2 | 3,
+    correct: boolean,
+    retry?: boolean,
+  ) => Promise<void>;
   setGoals: (words: number, questions: number) => Promise<void>;
-  importState: (progress: LearningProgress, stats: DashboardStats, options?: { markPending?: boolean }) => Promise<void>;
+  importState: (
+    progress: LearningProgress,
+    stats: DashboardStats,
+    options?: { markPending?: boolean },
+  ) => Promise<void>;
   reloadNamespace: () => Promise<void>;
-  remapSenses: (remaps: Array<{ oldSenseId: SenseId; newSenseId: SenseId }>) => Promise<void>;
+  remapSenses: (
+    remaps: Array<{ oldSenseId: SenseId; newSenseId: SenseId }>,
+  ) => Promise<void>;
   pruneToSenseIds: (senseIds: Set<SenseId>) => Promise<void>;
 }
 
 const todayKey = () => localDateKey();
-const initialProgress = (): LearningProgress => ({ cards: {}, updatedAt: new Date().toISOString() });
+const initialProgress = (): LearningProgress => ({
+  cards: {},
+  updatedAt: new Date().toISOString(),
+});
 
 function statsForToday(stats: DashboardStats): DashboardStats {
   const today = todayKey();
   if (stats.lastStudyDate === today) return stats;
-  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-  const streakDays = stats.lastStudyDate === localDateKey(yesterday) ? stats.streakDays + 1 : 1;
-  return { ...stats, streakDays, longestStreak: Math.max(stats.longestStreak, streakDays), lastStudyDate: today, todayMemoryReviews: 0, todayMemoryCorrectReviews: 0, todayQuestionReviews: 0, todayQuestionCorrectReviews: 0, dailyHistory: pruneDailyHistory(stats.dailyHistory, today) };
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const streakDays =
+    stats.lastStudyDate === localDateKey(yesterday) ? stats.streakDays + 1 : 1;
+  return {
+    ...stats,
+    streakDays,
+    longestStreak: Math.max(stats.longestStreak, streakDays),
+    lastStudyDate: today,
+    todayMemoryReviews: 0,
+    todayMemoryCorrectReviews: 0,
+    todayQuestionReviews: 0,
+    todayQuestionCorrectReviews: 0,
+    dailyHistory: pruneDailyHistory(stats.dailyHistory, today),
+  };
 }
 
 /**
@@ -44,19 +96,32 @@ function statsForToday(stats: DashboardStats): DashboardStats {
  * the UI could move on. Writes coalesce, and anything still pending is flushed
  * when the page is hidden or closed.
  */
-let pendingSnapshot: { progress: LearningProgress; stats: DashboardStats } | null = null;
+let pendingSnapshot: {
+  progress: LearningProgress;
+  stats: DashboardStats;
+} | null = null;
 
 const saver = createDebouncedSaver(() => {
   const snapshot = pendingSnapshot;
   if (!snapshot) return;
   pendingSnapshot = null;
-  void saveToStorage(LEARNING_STORAGE_KEY, { version: 1, progress: snapshot.progress, stats: snapshot.stats })
+  void saveToStorage(LEARNING_STORAGE_KEY, {
+    version: 1,
+    progress: snapshot.progress,
+    stats: snapshot.stats,
+  })
     // The write is no longer awaited by the action that triggered it, so a
     // failing IndexedDB would otherwise be invisible.
-    .catch((reason: unknown) => console.error("[Lexiro] 學習進度儲存失敗", reason));
+    .catch((reason: unknown) =>
+      console.error("[Lexiro] 學習進度儲存失敗", reason),
+    );
 }, 400);
 
-function persist(progress: LearningProgress, stats: DashboardStats, markPending = true) {
+function persist(
+  progress: LearningProgress,
+  stats: DashboardStats,
+  markPending = true,
+) {
   pendingSnapshot = { progress, stats };
   saver.schedule();
   if (markPending) markCloudSyncPending();
@@ -71,41 +136,93 @@ async function flushLearningState(): Promise<void> {
 if (typeof window !== "undefined") {
   const flush = () => saver.flush();
   window.addEventListener("pagehide", flush);
-  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flush(); });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flush();
+  });
 }
 
 export const useLearningStore = create<LearningStore>((set, get) => ({
-  progress: initialProgress(), stats: createDefaultStats(), loaded: false,
+  progress: initialProgress(),
+  stats: createDefaultStats(),
+  loaded: false,
   hydrate: async () => {
     if (get().loaded) return;
     const stored = await loadFromStorage(LEARNING_STORAGE_KEY);
     if (stored.value) {
       try {
         const value: unknown = JSON.parse(stored.value);
-        if (!value || typeof value !== "object" || Array.isArray(value) || !("progress" in value) || !("stats" in value) || !("version" in value) || value.version !== 1) throw new Error("invalid-learning-state");
-        const record = value as { progress: unknown; stats: unknown; version: 1 };
-        set({ progress: normalizeLearningProgress(record.progress), stats: normalizeDashboardStats(record.stats), loaded: true });
+        if (
+          !value ||
+          typeof value !== "object" ||
+          Array.isArray(value) ||
+          !("progress" in value) ||
+          !("stats" in value) ||
+          !("version" in value) ||
+          value.version !== 1
+        )
+          throw new Error("invalid-learning-state");
+        const record = value as {
+          progress: unknown;
+          stats: unknown;
+          version: 1;
+        };
+        set({
+          progress: normalizeLearningProgress(record.progress),
+          stats: normalizeDashboardStats(record.stats),
+          loaded: true,
+        });
         return;
-      } catch { /* use defaults */ }
+      } catch {
+        /* use defaults */
+      }
     }
     set({ loaded: true });
   },
   rateSense: async (senseId, rating) => {
     const timestamp = new Date().toISOString();
     const base = statsForToday(get().stats);
-    const card: CardProgress = reviewCard(get().progress.cards[senseId] ?? null, rating);
-    const progress = { cards: { ...get().progress.cards, [senseId]: card }, updatedAt: timestamp };
+    const card: CardProgress = reviewCard(
+      get().progress.cards[senseId] ?? null,
+      rating,
+    );
+    const progress = {
+      cards: { ...get().progress.cards, [senseId]: card },
+      updatedAt: timestamp,
+    };
     const date = todayKey();
-    const activity = { ...(base.dailyHistory[date] ?? emptyDailyActivity(date)) };
-    if (rating === "again") activity.memoryAgain += 1; else activity.memoryGood += 1;
+    const activity = {
+      ...(base.dailyHistory[date] ?? emptyDailyActivity(date)),
+    };
+    if (rating === "again") activity.memoryAgain += 1;
+    else activity.memoryGood += 1;
     activity.xpEarned += rating === "good" ? 5 : 2;
-    const stats = { ...base, totalMemoryReviews: base.totalMemoryReviews + 1, correctMemoryReviews: base.correctMemoryReviews + (rating === "good" ? 1 : 0), todayMemoryReviews: base.todayMemoryReviews + 1, todayMemoryCorrectReviews: base.todayMemoryCorrectReviews + (rating === "good" ? 1 : 0), xp: base.xp + (rating === "good" ? 5 : 2), dailyHistory: { ...base.dailyHistory, [date]: activity }, updatedAt: timestamp };
-    activity.completed = stats.todayMemoryReviews >= stats.dailyWordGoal && stats.todayQuestionReviews >= stats.dailyQuestionGoal;
+    const stats = {
+      ...base,
+      totalMemoryReviews: base.totalMemoryReviews + 1,
+      correctMemoryReviews:
+        base.correctMemoryReviews + (rating === "good" ? 1 : 0),
+      todayMemoryReviews: base.todayMemoryReviews + 1,
+      todayMemoryCorrectReviews:
+        base.todayMemoryCorrectReviews + (rating === "good" ? 1 : 0),
+      xp: base.xp + (rating === "good" ? 5 : 2),
+      dailyHistory: { ...base.dailyHistory, [date]: activity },
+      updatedAt: timestamp,
+    };
+    activity.completed =
+      stats.todayMemoryReviews >= stats.dailyWordGoal &&
+      stats.todayQuestionReviews >= stats.dailyQuestionGoal;
     stats.level = Math.floor(stats.xp / 100) + 1;
-    set({ progress, stats }); persist(progress, stats);
+    set({ progress, stats });
+    persist(progress, stats);
   },
   scheduleSenseFromQuestion: async (senseId, rating) => {
-    const progress = { cards: { ...get().progress.cards, [senseId]: reviewCard(get().progress.cards[senseId] ?? null, rating) }, updatedAt: new Date().toISOString() };
+    const progress = {
+      cards: {
+        ...get().progress.cards,
+        [senseId]: reviewCard(get().progress.cards[senseId] ?? null, rating),
+      },
+      updatedAt: new Date().toISOString(),
+    };
     set({ progress });
     persist(progress, get().stats);
   },
@@ -113,43 +230,134 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     const timestamp = new Date().toISOString();
     const base = statsForToday(get().stats);
     const key = `${type}:${difficulty}` as const;
-    const senseStats = base.questionStatsBySense[senseId] ?? emptyQuestionStats();
-    const date = todayKey(); const activity = { ...(base.dailyHistory[date] ?? emptyDailyActivity(date)) };
-    activity.questionTotal += 1; activity.questionCorrect += correct ? 1 : 0; activity.questionRetry += retry ? 1 : 0; activity.xpEarned += correct ? 10 : 3;
-    activity.questionStats = addQuestionAttempt(activity.questionStats, key, correct, retry);
-    const stats = { ...base, totalQuestionReviews: base.totalQuestionReviews + 1, correctQuestionReviews: base.correctQuestionReviews + (correct ? 1 : 0), todayQuestionReviews: base.todayQuestionReviews + 1, todayQuestionCorrectReviews: base.todayQuestionCorrectReviews + (correct ? 1 : 0), xp: base.xp + (correct ? 10 : 3), questionStats: addQuestionAttempt(base.questionStats, key, correct, retry), questionStatsBySense: { ...base.questionStatsBySense, [senseId]: addQuestionAttempt(senseStats, key, correct, retry) }, dailyHistory: { ...base.dailyHistory, [date]: activity }, updatedAt: timestamp };
-    activity.completed = stats.todayMemoryReviews >= stats.dailyWordGoal && stats.todayQuestionReviews >= stats.dailyQuestionGoal;
+    const senseStats =
+      base.questionStatsBySense[senseId] ?? emptyQuestionStats();
+    const date = todayKey();
+    const activity = {
+      ...(base.dailyHistory[date] ?? emptyDailyActivity(date)),
+    };
+    activity.questionTotal += 1;
+    activity.questionCorrect += correct ? 1 : 0;
+    activity.questionRetry += retry ? 1 : 0;
+    activity.xpEarned += correct ? 10 : 3;
+    activity.questionStats = addQuestionAttempt(
+      activity.questionStats,
+      key,
+      correct,
+      retry,
+    );
+    const stats = {
+      ...base,
+      totalQuestionReviews: base.totalQuestionReviews + 1,
+      correctQuestionReviews: base.correctQuestionReviews + (correct ? 1 : 0),
+      todayQuestionReviews: base.todayQuestionReviews + 1,
+      todayQuestionCorrectReviews:
+        base.todayQuestionCorrectReviews + (correct ? 1 : 0),
+      xp: base.xp + (correct ? 10 : 3),
+      questionStats: addQuestionAttempt(
+        base.questionStats,
+        key,
+        correct,
+        retry,
+      ),
+      questionStatsBySense: {
+        ...base.questionStatsBySense,
+        [senseId]: addQuestionAttempt(senseStats, key, correct, retry),
+      },
+      dailyHistory: { ...base.dailyHistory, [date]: activity },
+      updatedAt: timestamp,
+    };
+    activity.completed =
+      stats.todayMemoryReviews >= stats.dailyWordGoal &&
+      stats.todayQuestionReviews >= stats.dailyQuestionGoal;
     stats.level = Math.floor(stats.xp / 100) + 1;
-    set({ stats }); persist(get().progress, stats);
+    set({ stats });
+    persist(get().progress, stats);
   },
-  setGoals: async (words, questions) => { const stats = { ...get().stats, dailyWordGoal: words, dailyQuestionGoal: questions, updatedAt: new Date().toISOString() }; set({ stats }); persist(get().progress, stats); },
-  importState: async (progress, stats, options) => { set({ progress, stats, loaded: true }); persist(progress, stats, options?.markPending ?? true); await flushLearningState(); },
-  reloadNamespace: async () => { set({ loaded: false, progress: initialProgress(), stats: createDefaultStats() }); await get().hydrate(); },
+  setGoals: async (words, questions) => {
+    const stats = {
+      ...get().stats,
+      dailyWordGoal: words,
+      dailyQuestionGoal: questions,
+      updatedAt: new Date().toISOString(),
+    };
+    set({ stats });
+    persist(get().progress, stats);
+  },
+  importState: async (progress, stats, options) => {
+    set({ progress, stats, loaded: true });
+    persist(progress, stats, options?.markPending ?? true);
+    await flushLearningState();
+  },
+  reloadNamespace: async () => {
+    set({
+      loaded: false,
+      progress: initialProgress(),
+      stats: createDefaultStats(),
+    });
+    await get().hydrate();
+  },
   remapSenses: async (remaps) => {
-    const cards = { ...get().progress.cards }; const bySense = { ...get().stats.questionStatsBySense };
+    const cards = { ...get().progress.cards };
+    const bySense = { ...get().stats.questionStatsBySense };
     for (const remap of remaps) {
       const oldCard = cards[remap.oldSenseId];
       const newCard = cards[remap.newSenseId];
       if (oldCard) {
-        cards[remap.newSenseId] = !newCard || new Date(oldCard.lastReview ?? 0) >= new Date(newCard.lastReview ?? 0) ? oldCard : newCard;
+        cards[remap.newSenseId] =
+          !newCard ||
+          new Date(oldCard.lastReview ?? 0) >= new Date(newCard.lastReview ?? 0)
+            ? oldCard
+            : newCard;
         delete cards[remap.oldSenseId];
       }
       const oldStats = bySense[remap.oldSenseId];
       if (oldStats) {
         const current = bySense[remap.newSenseId];
-        bySense[remap.newSenseId] = Object.fromEntries((Object.keys(oldStats) as QuestionStatKey[]).map((key) => {
-          const before = questionStatRow(current ?? {}, key);
-          const incoming = questionStatRow(oldStats, key);
-          return [key, { total: before.total + incoming.total, correct: before.correct + incoming.correct, retry: before.retry + incoming.retry }];
-        }));
+        bySense[remap.newSenseId] = Object.fromEntries(
+          (Object.keys(oldStats) as QuestionStatKey[]).map((key) => {
+            const before = questionStatRow(current ?? {}, key);
+            const incoming = questionStatRow(oldStats, key);
+            return [
+              key,
+              {
+                total: before.total + incoming.total,
+                correct: before.correct + incoming.correct,
+                retry: before.retry + incoming.retry,
+              },
+            ];
+          }),
+        );
         delete bySense[remap.oldSenseId];
       }
     }
-    const progress = { cards, updatedAt: new Date().toISOString() }; const stats = { ...get().stats, questionStatsBySense: bySense, updatedAt: new Date().toISOString() }; set({ progress, stats }); persist(progress, stats);
+    const progress = { cards, updatedAt: new Date().toISOString() };
+    const stats = {
+      ...get().stats,
+      questionStatsBySense: bySense,
+      updatedAt: new Date().toISOString(),
+    };
+    set({ progress, stats });
+    persist(progress, stats);
   },
   pruneToSenseIds: async (senseIds) => {
-    const progress = { cards: Object.fromEntries(entriesOf(get().progress.cards).filter(([senseId]) => senseIds.has(senseId))), updatedAt: new Date().toISOString() };
-    const stats = { ...get().stats, questionStatsBySense: Object.fromEntries(entriesOf(get().stats.questionStatsBySense).filter(([senseId]) => senseIds.has(senseId))), updatedAt: new Date().toISOString() };
+    const progress = {
+      cards: Object.fromEntries(
+        entriesOf(get().progress.cards).filter(([senseId]) =>
+          senseIds.has(senseId),
+        ),
+      ),
+      updatedAt: new Date().toISOString(),
+    };
+    const stats = {
+      ...get().stats,
+      questionStatsBySense: Object.fromEntries(
+        entriesOf(get().stats.questionStatsBySense).filter(([senseId]) =>
+          senseIds.has(senseId),
+        ),
+      ),
+      updatedAt: new Date().toISOString(),
+    };
     set({ progress, stats });
     persist(progress, stats);
   },

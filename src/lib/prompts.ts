@@ -1,4 +1,5 @@
-const JSON_ONLY = '只輸出 JSON object：第一個字元是 {，最後一個字元是 }。不要 Markdown、註解、前言、結語或額外欄位。'
+const JSON_ONLY =
+  "只輸出 JSON object：第一個字元是 {，最後一個字元是 }。不要 Markdown、註解、前言、結語或額外欄位。";
 
 const PROMPTS = {
   generateWordSet: `任務：把每筆英文輸入整理成一個適合背誦的主要詞義。
@@ -56,15 +57,23 @@ const PROMPTS = {
 
 資料：
 {{WRONG_QUESTIONS}}`,
-}
+};
 
-export function fillPrompt(template: string, values: Record<string, string>): string {
-  return template.replace(/\{\{[A-Z_]+\}\}/gu, token => values[token] ?? token)
+export function fillPrompt(
+  template: string,
+  values: Record<string, string>,
+): string {
+  return template.replace(
+    /\{\{[A-Z_]+\}\}/gu,
+    (token) => values[token] ?? token,
+  );
 }
 
 export function buildMistakeExplanationPrompt(itemsJson: string): string {
-  return fillPrompt(PROMPTS.explainAllWrongQuestions, { '{{WRONG_QUESTIONS}}': itemsJson })
+  return fillPrompt(PROMPTS.explainAllWrongQuestions, {
+    "{{WRONG_QUESTIONS}}": itemsJson,
+  });
 }
 
-export { JSON_ONLY }
-export default PROMPTS
+export { JSON_ONLY };
+export default PROMPTS;

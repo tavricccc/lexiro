@@ -4,7 +4,7 @@
  */
 export async function copyToClipboard(text: string): Promise<void> {
   if (!navigator.clipboard?.writeText) {
-    throw new Error('clipboard unavailable')
+    throw new Error("clipboard unavailable");
   }
-  await navigator.clipboard.writeText(text)
+  await navigator.clipboard.writeText(text);
 }

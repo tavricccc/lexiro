@@ -1,37 +1,37 @@
-import { mapWithConcurrency } from './async-pool'
+import { mapWithConcurrency } from "./async-pool";
 
 /** How many AI requests may be in flight at once. Kept low to stay under provider rate limits. */
-export const AI_BATCH_CONCURRENCY = 3
+export const AI_BATCH_CONCURRENCY = 3;
 
 export interface AiBatchFailure {
-  index: number
-  message: string
+  index: number;
+  message: string;
 }
 
 export interface AiBatchProgress {
-  completed: number
-  failed: number
-  succeeded: number
-  total: number
+  completed: number;
+  failed: number;
+  succeeded: number;
+  total: number;
 }
 
 export interface AiBatchOutcome<TResult> {
-  aborted: boolean
-  failures: AiBatchFailure[]
-  results: { index: number, value: TResult }[]
+  aborted: boolean;
+  failures: AiBatchFailure[];
+  results: { index: number; value: TResult }[];
 }
 
 export interface RunAiBatchesOptions<TBatch, TResult> {
-  batches: readonly TBatch[]
-  concurrency?: number
-  onProgress?: (progress: AiBatchProgress) => void
-  retries?: number
-  run: (batch: TBatch, index: number, signal?: AbortSignal) => Promise<TResult>
-  signal?: AbortSignal
+  batches: readonly TBatch[];
+  concurrency?: number;
+  onProgress?: (progress: AiBatchProgress) => void;
+  retries?: number;
+  run: (batch: TBatch, index: number, signal?: AbortSignal) => Promise<TResult>;
+  signal?: AbortSignal;
 }
 
 function toMessage(reason: unknown): string {
-  return reason instanceof Error ? reason.message : String(reason)
+  return reason instanceof Error ? reason.message : String(reason);
 }
 
 /**
@@ -50,44 +50,41 @@ export async function runAiBatches<TBatch, TResult>({
   run,
   signal,
 }: RunAiBatchesOptions<TBatch, TResult>): Promise<AiBatchOutcome<TResult>> {
-  const results: { index: number, value: TResult }[] = []
-  const failures: AiBatchFailure[] = []
-  let completed = 0
+  const results: { index: number; value: TResult }[] = [];
+  const failures: AiBatchFailure[] = [];
+  let completed = 0;
 
-  const report = () => onProgress?.({
-    completed,
-    failed: failures.length,
-    succeeded: results.length,
-    total: batches.length,
-  })
+  const report = () =>
+    onProgress?.({
+      completed,
+      failed: failures.length,
+      succeeded: results.length,
+      total: batches.length,
+    });
 
-  report()
+  report();
 
   await mapWithConcurrency(batches, concurrency, async (batch, index) => {
-    if (signal?.aborted)
-      return
-    let lastError = ''
+    if (signal?.aborted) return;
+    let lastError = "";
     for (let attempt = 0; attempt <= retries; attempt++) {
-      if (signal?.aborted)
-        return
+      if (signal?.aborted) return;
       try {
-        results.push({ index, value: await run(batch, index, signal) })
-        completed++
-        report()
-        return
-      }
-      catch (reason) {
-        lastError = toMessage(reason)
-        if (signal?.aborted)
-          return
+        results.push({ index, value: await run(batch, index, signal) });
+        completed++;
+        report();
+        return;
+      } catch (reason) {
+        lastError = toMessage(reason);
+        if (signal?.aborted) return;
       }
     }
-    failures.push({ index, message: lastError })
-    completed++
-    report()
-  })
+    failures.push({ index, message: lastError });
+    completed++;
+    report();
+  });
 
-  results.sort((first, second) => first.index - second.index)
-  failures.sort((first, second) => first.index - second.index)
-  return { aborted: Boolean(signal?.aborted), failures, results }
+  results.sort((first, second) => first.index - second.index);
+  failures.sort((first, second) => first.index - second.index);
+  return { aborted: Boolean(signal?.aborted), failures, results };
 }

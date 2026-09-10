@@ -1,11 +1,11 @@
-export const SYNC_REQUEST_TIMEOUT_MS = 30_000
+export const SYNC_REQUEST_TIMEOUT_MS = 30_000;
 
 export class SyncTimeoutError extends Error {
-  readonly code = 'deadline-exceeded'
+  readonly code = "deadline-exceeded";
 
   constructor(label: string, timeoutMs: number) {
-    super(`${label} timeout after ${timeoutMs}ms`)
-    this.name = 'SyncTimeoutError'
+    super(`${label} timeout after ${timeoutMs}ms`);
+    this.name = "SyncTimeoutError";
   }
 }
 
@@ -19,15 +19,16 @@ export async function withSyncTimeout<T>(
   label: string,
   timeoutMs = SYNC_REQUEST_TIMEOUT_MS,
 ): Promise<T> {
-  let timer: ReturnType<typeof setTimeout> | undefined
+  let timer: ReturnType<typeof setTimeout> | undefined;
   const timeout = new Promise<never>((_resolve, reject) => {
-    timer = setTimeout(() => reject(new SyncTimeoutError(label, timeoutMs)), timeoutMs)
-  })
+    timer = setTimeout(
+      () => reject(new SyncTimeoutError(label, timeoutMs)),
+      timeoutMs,
+    );
+  });
   try {
-    return await Promise.race([operation, timeout])
-  }
-  finally {
-    if (timer)
-      clearTimeout(timer)
+    return await Promise.race([operation, timeout]);
+  } finally {
+    if (timer) clearTimeout(timer);
   }
 }

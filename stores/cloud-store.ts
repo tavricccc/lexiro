@@ -8,7 +8,12 @@ import { CLOUD_SYNC_PENDING_EVENT, SYNC_HEAD_STORAGE_KEY } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { canonicalHash } from "@/src/lib/hash";
-import { getShareableAiSettings, saveAiSettings, waitForAiSettingsPersistence, whenAiSettingsReady } from "@/src/lib/ai-provider";
+import {
+  getShareableAiSettings,
+  saveAiSettings,
+  waitForAiSettingsPersistence,
+  whenAiSettingsReady,
+} from "@/src/lib/ai-provider";
 import {
   cloudDocument,
   readCloudLibraryV5,
@@ -16,11 +21,21 @@ import {
   writeCloudLearningState,
   writeCloudLibraryChunksV5,
 } from "@/src/lib/cloud-sync-remote";
-import { normalizeCloudAiSettings, normalizeCloudProgress, normalizeCloudStats } from "@/src/lib/cloud-sync-schema";
-import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
+import {
+  normalizeCloudAiSettings,
+  normalizeCloudProgress,
+  normalizeCloudStats,
+} from "@/src/lib/cloud-sync-schema";
+import {
+  configureFirebaseAuth,
+  getFirebaseFirestore,
+} from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
 import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
-import { clearCloudSyncPending, hasCloudSyncPending } from "@/src/lib/sync-pending";
+import {
+  clearCloudSyncPending,
+  hasCloudSyncPending,
+} from "@/src/lib/sync-pending";
 
 interface LocalSyncHead {
   libraryRevision: string;
@@ -48,15 +63,26 @@ let syncDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 let retryAttempt = 0;
 let localChangeVersion = 0;
 
-function hasLibraryContent(state: ReturnType<typeof useLibraryStore.getState>["state"]): boolean {
-  return Object.keys(state.words).length > 0 || state.sets.length > 0 || state.questions.length > 0;
+function hasLibraryContent(
+  state: ReturnType<typeof useLibraryStore.getState>["state"],
+): boolean {
+  return (
+    Object.keys(state.words).length > 0 ||
+    state.sets.length > 0 ||
+    state.questions.length > 0
+  );
 }
 
-function hasLearningActivity(progress: LearningProgress, stats: DashboardStats): boolean {
-  return Object.keys(progress.cards).length > 0
-    || stats.totalMemoryReviews > 0
-    || stats.totalQuestionReviews > 0
-    || stats.xp > 0;
+function hasLearningActivity(
+  progress: LearningProgress,
+  stats: DashboardStats,
+): boolean {
+  return (
+    Object.keys(progress.cards).length > 0 ||
+    stats.totalMemoryReviews > 0 ||
+    stats.totalQuestionReviews > 0 ||
+    stats.xp > 0
+  );
 }
 
 async function readLocalHead(): Promise<LocalSyncHead | null> {
@@ -64,8 +90,17 @@ async function readLocalHead(): Promise<LocalSyncHead | null> {
   if (!stored.value) return null;
   try {
     const value = JSON.parse(stored.value) as Partial<LocalSyncHead>;
-    if (typeof value.libraryRevision !== "string" || typeof value.progressHash !== "string" || typeof value.statsHash !== "string") return null;
-    return { ...value, settingsHash: typeof value.settingsHash === "string" ? value.settingsHash : "" } as LocalSyncHead;
+    if (
+      typeof value.libraryRevision !== "string" ||
+      typeof value.progressHash !== "string" ||
+      typeof value.statsHash !== "string"
+    )
+      return null;
+    return {
+      ...value,
+      settingsHash:
+        typeof value.settingsHash === "string" ? value.settingsHash : "",
+    } as LocalSyncHead;
   } catch {
     return null;
   }
@@ -123,9 +158,15 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
         void Promise.all([
           useLibraryStore.getState().hydrate(),
           useLearningStore.getState().hydrate(),
-        ]).then(() => get().sync()).catch((reason) => {
-          set({ ready: true, status: "error", error: reason instanceof Error ? reason.message : `${reason}` });
-        });
+        ])
+          .then(() => get().sync())
+          .catch((reason) => {
+            set({
+              ready: true,
+              status: "error",
+              error: reason instanceof Error ? reason.message : `${reason}`,
+            });
+          });
       });
     })();
     return initializationPromise;
@@ -135,7 +176,10 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     const runtime = await import("firebase/auth");
     const auth = await configureFirebaseAuth();
     if (!auth) return;
-    const result = await runtime.signInWithPopup(auth, new runtime.GoogleAuthProvider());
+    const result = await runtime.signInWithPopup(
+      auth,
+      new runtime.GoogleAuthProvider(),
+    );
     set({ user: result.user, ready: false, status: "connecting" });
     await Promise.all([
       useLibraryStore.getState().hydrate(),
@@ -152,7 +196,13 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     syncDebounceTimer = null;
     await useLibraryStore.getState().switchNamespace("guest");
     await useLearningStore.getState().reloadNamespace();
-    set({ user: null, ready: true, status: "signed-out", pending: false, error: "" });
+    set({
+      user: null,
+      ready: true,
+      status: "signed-out",
+      pending: false,
+      error: "",
+    });
   },
 
   sync: async () => {
@@ -180,61 +230,131 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       const remoteLibrary = await readCloudLibraryV5(db, user.uid);
       const firestore = await import("firebase/firestore");
       const [progressDoc, statsDoc] = await Promise.all([
-        firestore.getDocFromServer(cloudDocument(db, user.uid, "progress", "global")),
-        firestore.getDocFromServer(cloudDocument(db, user.uid, "stats", "summary")),
+        firestore.getDocFromServer(
+          cloudDocument(db, user.uid, "progress", "global"),
+        ),
+        firestore.getDocFromServer(
+          cloudDocument(db, user.uid, "stats", "summary"),
+        ),
       ]);
-      const settingsDoc = await firestore.getDocFromServer(cloudDocument(db, user.uid, "settings", "ai"));
-      const remoteProgress = progressDoc.exists() ? normalizeCloudProgress(progressDoc.data(), user.uid) : { cards: {}, updatedAt: "" };
-      const remoteStats = statsDoc.exists() ? normalizeCloudStats(statsDoc.data(), user.uid) : localLearning.stats;
-      const remoteProgressHash = progressDoc.exists() ? canonicalHash(remoteProgress) : "";
-      const remoteStatsHash = statsDoc.exists() ? canonicalHash(remoteStats) : "";
-      const remoteAiSettings = settingsDoc.exists() ? normalizeCloudAiSettings(settingsDoc.data(), user.uid) : null;
-      const remoteSettingsHash = remoteAiSettings ? canonicalHash(remoteAiSettings) : "";
+      const settingsDoc = await firestore.getDocFromServer(
+        cloudDocument(db, user.uid, "settings", "ai"),
+      );
+      const remoteProgress = progressDoc.exists()
+        ? normalizeCloudProgress(progressDoc.data(), user.uid)
+        : { cards: {}, updatedAt: "" };
+      const remoteStats = statsDoc.exists()
+        ? normalizeCloudStats(statsDoc.data(), user.uid)
+        : localLearning.stats;
+      const remoteProgressHash = progressDoc.exists()
+        ? canonicalHash(remoteProgress)
+        : "";
+      const remoteStatsHash = statsDoc.exists()
+        ? canonicalHash(remoteStats)
+        : "";
+      const remoteAiSettings = settingsDoc.exists()
+        ? normalizeCloudAiSettings(settingsDoc.data(), user.uid)
+        : null;
+      const remoteSettingsHash = remoteAiSettings
+        ? canonicalHash(remoteAiSettings)
+        : "";
       const pending = hasCloudSyncPending();
 
       let authoritativeLibrary = remoteLibrary.library;
       let libraryRevision = remoteLibrary.revision;
-      const canPublishLocalLibrary = pending
-        && hasLibraryContent(localLibrary)
-        && (!remoteLibrary.revision || localHead?.libraryRevision === remoteLibrary.revision);
+      const canPublishLocalLibrary =
+        pending &&
+        hasLibraryContent(localLibrary) &&
+        (!remoteLibrary.revision ||
+          localHead?.libraryRevision === remoteLibrary.revision);
       if (!remoteLibrary.revision || canPublishLocalLibrary) {
-        const published = await writeCloudLibraryChunksV5(db, user.uid, localLibrary, remoteLibrary.hashes, remoteLibrary.revision);
+        const published = await writeCloudLibraryChunksV5(
+          db,
+          user.uid,
+          localLibrary,
+          remoteLibrary.hashes,
+          remoteLibrary.revision,
+        );
         if (!published.conflicted) {
           authoritativeLibrary = localLibrary;
           libraryRevision = published.revision;
         }
       }
 
-      const canPublishLocalProgress = pending && (!progressDoc.exists() || localHead?.progressHash === remoteProgressHash);
-      const canPublishLocalStats = pending && (!statsDoc.exists() || localHead?.statsHash === remoteStatsHash);
+      const canPublishLocalProgress =
+        pending &&
+        (!progressDoc.exists() ||
+          localHead?.progressHash === remoteProgressHash);
+      const canPublishLocalStats =
+        pending &&
+        (!statsDoc.exists() || localHead?.statsHash === remoteStatsHash);
       let authoritativeProgress = remoteProgress;
       let authoritativeStats = remoteStats;
-      const shouldBootstrapLearning = (!progressDoc.exists() || !statsDoc.exists()) && hasLearningActivity(localLearning.progress, localLearning.stats);
-      if (canPublishLocalProgress || canPublishLocalStats || shouldBootstrapLearning) {
+      const shouldBootstrapLearning =
+        (!progressDoc.exists() || !statsDoc.exists()) &&
+        hasLearningActivity(localLearning.progress, localLearning.stats);
+      if (
+        canPublishLocalProgress ||
+        canPublishLocalStats ||
+        shouldBootstrapLearning
+      ) {
         const published = await writeCloudLearningState(
           db,
           user.uid,
-          canPublishLocalProgress || (!progressDoc.exists() && shouldBootstrapLearning) ? localLearning.progress : remoteProgress,
-          canPublishLocalStats || (!statsDoc.exists() && shouldBootstrapLearning) ? localLearning.stats : remoteStats,
+          canPublishLocalProgress ||
+            (!progressDoc.exists() && shouldBootstrapLearning)
+            ? localLearning.progress
+            : remoteProgress,
+          canPublishLocalStats ||
+            (!statsDoc.exists() && shouldBootstrapLearning)
+            ? localLearning.stats
+            : remoteStats,
           { progress: remoteProgressHash, stats: remoteStatsHash },
         );
         if (published.progress.written && published.stats.written) {
-          authoritativeProgress = canPublishLocalProgress || (!progressDoc.exists() && shouldBootstrapLearning) ? localLearning.progress : remoteProgress;
-          authoritativeStats = canPublishLocalStats || (!statsDoc.exists() && shouldBootstrapLearning) ? localLearning.stats : remoteStats;
+          authoritativeProgress =
+            canPublishLocalProgress ||
+            (!progressDoc.exists() && shouldBootstrapLearning)
+              ? localLearning.progress
+              : remoteProgress;
+          authoritativeStats =
+            canPublishLocalStats ||
+            (!statsDoc.exists() && shouldBootstrapLearning)
+              ? localLearning.stats
+              : remoteStats;
         }
       }
 
       const localShareableAiSettings = getShareableAiSettings(localAiSettings);
-      const canPublishLocalSettings = pending && (!settingsDoc.exists() || localHead?.settingsHash === remoteSettingsHash);
-      let authoritativeAiSettings = remoteAiSettings ?? localShareableAiSettings;
+      const canPublishLocalSettings =
+        pending &&
+        (!settingsDoc.exists() ||
+          localHead?.settingsHash === remoteSettingsHash);
+      let authoritativeAiSettings =
+        remoteAiSettings ?? localShareableAiSettings;
       if (canPublishLocalSettings || (!settingsDoc.exists() && pending)) {
-        const published = await writeCloudAiSettings(db, user.uid, localAiSettings, remoteSettingsHash);
-        if (published.result.written) authoritativeAiSettings = localShareableAiSettings;
+        const published = await writeCloudAiSettings(
+          db,
+          user.uid,
+          localAiSettings,
+          remoteSettingsHash,
+        );
+        if (published.result.written)
+          authoritativeAiSettings = localShareableAiSettings;
       }
 
-      await useLibraryStore.getState().switchNamespace(user.uid, authoritativeLibrary);
-      await useLearningStore.getState().importState(authoritativeProgress, authoritativeStats, { markPending: false });
-      saveAiSettings({ ...authoritativeAiSettings, apiKey: localAiSettings.apiKey }, { markPending: false });
+      await useLibraryStore
+        .getState()
+        .switchNamespace(user.uid, authoritativeLibrary);
+      await useLearningStore
+        .getState()
+        .importState(authoritativeProgress, authoritativeStats, {
+          markPending: false,
+        });
+      saveAiSettings(
+        { ...authoritativeAiSettings, apiKey: localAiSettings.apiKey },
+        { markPending: false },
+      );
       await waitForAiSettingsPersistence();
       await saveLocalHead({
         libraryRevision,
@@ -250,11 +370,18 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       set({ ready: true, status: "synced", pending: changedDuringSync });
       if (changedDuringSync) setTimeout(() => void get().sync(), 0);
     } catch (reason) {
-      set({ ready: true, status: navigator.onLine ? "error" : "offline", error: reason instanceof Error ? reason.message : `${reason}` });
+      set({
+        ready: true,
+        status: navigator.onLine ? "error" : "offline",
+        error: reason instanceof Error ? reason.message : `${reason}`,
+      });
       if (navigator.onLine && hasCloudSyncPending()) {
         retryAttempt += 1;
         if (retryTimer) clearTimeout(retryTimer);
-        retryTimer = setTimeout(() => void get().sync(), Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6)));
+        retryTimer = setTimeout(
+          () => void get().sync(),
+          Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6)),
+        );
       }
     }
   },

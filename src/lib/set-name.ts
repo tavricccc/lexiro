@@ -1,11 +1,16 @@
-export function createUniqueSetName(baseName: string, existingNames: Iterable<string>): string {
-  const usedNames = new Set(Array.from(existingNames, name => name.trim().toLocaleLowerCase()))
-  const normalizedBaseName = baseName.trim()
+export function createUniqueSetName(
+  baseName: string,
+  existingNames: Iterable<string>,
+): string {
+  const usedNames = new Set(
+    Array.from(existingNames, (name) => name.trim().toLocaleLowerCase()),
+  );
+  const normalizedBaseName = baseName.trim();
   if (!usedNames.has(normalizedBaseName.toLocaleLowerCase()))
-    return normalizedBaseName
+    return normalizedBaseName;
 
-  let index = 2
+  let index = 2;
   while (usedNames.has(`${normalizedBaseName} (${index})`.toLocaleLowerCase()))
-    index += 1
-  return `${normalizedBaseName} (${index})`
+    index += 1;
+  return `${normalizedBaseName} (${index})`;
 }

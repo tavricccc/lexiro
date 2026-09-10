@@ -1,79 +1,80 @@
-import { get, set } from 'idb-keyval'
-import { NAMESPACE_SCOPED_KEYS } from '@/constants'
+import { get, set } from "idb-keyval";
+import { NAMESPACE_SCOPED_KEYS } from "@/constants";
 
 export interface StorageLoadResult {
-  value: string | null
+  value: string | null;
 }
 
-const pendingWrites = new Map<string, Promise<void>>()
-let storageNamespace = 'guest'
+const pendingWrites = new Map<string, Promise<void>>();
+let storageNamespace = "guest";
 
-const scopedKeys = new Set(NAMESPACE_SCOPED_KEYS)
+const scopedKeys = new Set(NAMESPACE_SCOPED_KEYS);
 
 export function setStorageNamespace(namespace: string): void {
-  const normalized = namespace.trim()
-  storageNamespace = normalized || 'guest'
+  const normalized = namespace.trim();
+  storageNamespace = normalized || "guest";
 }
 
 export function getStorageNamespace(): string {
-  return storageNamespace
+  return storageNamespace;
 }
 
 function resolveKey(key: string): string {
-  return scopedKeys.has(key) ? `${storageNamespace}:${key}` : key
+  return scopedKeys.has(key) ? `${storageNamespace}:${key}` : key;
 }
 
 function enqueueWrite(key: string, write: () => Promise<void>): Promise<void> {
-  const previous = pendingWrites.get(key) ?? Promise.resolve()
-  const next = previous.catch(() => undefined).then(write)
-  pendingWrites.set(key, next)
-  void next.then(() => {
-    if (pendingWrites.get(key) === next)
-      pendingWrites.delete(key)
-  }, () => {
-    if (pendingWrites.get(key) === next)
-      pendingWrites.delete(key)
-  })
-  return next
+  const previous = pendingWrites.get(key) ?? Promise.resolve();
+  const next = previous.catch(() => undefined).then(write);
+  pendingWrites.set(key, next);
+  void next.then(
+    () => {
+      if (pendingWrites.get(key) === next) pendingWrites.delete(key);
+    },
+    () => {
+      if (pendingWrites.get(key) === next) pendingWrites.delete(key);
+    },
+  );
+  return next;
 }
 
 export function saveToStorage(key: string, data: unknown): Promise<void> {
-  const serialized = typeof data === 'string' ? data : JSON.stringify(data)
-  const resolvedKey = resolveKey(key)
+  const serialized = typeof data === "string" ? data : JSON.stringify(data);
+  const resolvedKey = resolveKey(key);
   return enqueueWrite(resolvedKey, async () => {
-    await set(resolvedKey, serialized)
-  })
+    await set(resolvedKey, serialized);
+  });
 }
 
 export async function loadFromStorage(key: string): Promise<StorageLoadResult> {
-  const resolvedKey = resolveKey(key)
-  await pendingWrites.get(resolvedKey)
-  return { value: await get<string>(resolvedKey) ?? null }
+  const resolvedKey = resolveKey(key);
+  await pendingWrites.get(resolvedKey);
+  return { value: (await get<string>(resolvedKey)) ?? null };
 }
 
 /** Debounced save helper: schedule() coalesces writes; flush() writes immediately. */
 export function createDebouncedSaver(write: () => void, delayMs = 300) {
-  let timer: ReturnType<typeof setTimeout> | null = null
+  let timer: ReturnType<typeof setTimeout> | null = null;
 
   function cancel() {
     if (timer != null) {
-      clearTimeout(timer)
-      timer = null
+      clearTimeout(timer);
+      timer = null;
     }
   }
 
   function schedule() {
-    cancel()
+    cancel();
     timer = setTimeout(() => {
-      timer = null
-      write()
-    }, delayMs)
+      timer = null;
+      write();
+    }, delayMs);
   }
 
   function flush() {
-    cancel()
-    write()
+    cancel();
+    write();
   }
 
-  return { schedule, flush, cancel }
+  return { schedule, flush, cancel };
 }

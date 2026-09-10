@@ -3,77 +3,111 @@ import type {
   WorkspacePracticeMode,
   WorkspaceQuestionDifficulty,
   WorkspaceQuestionType,
-} from '@/types'
-import { asSenseId } from './library'
-import { isRecord } from './schema'
+} from "@/types";
+import { asSenseId } from "./library";
+import { isRecord } from "./schema";
 
-const MODES = new Set<WorkspacePracticeMode>(['review', 'questions'])
-const QUESTION_TYPES = new Set<WorkspaceQuestionType>(['all', 'vocabulary', 'grammar', 'cloze', 'wordBank', 'discourse', 'reading'])
-const DIFFICULTIES = new Set<WorkspaceQuestionDifficulty>(['all', '1', '2', '3'])
+const MODES = new Set<WorkspacePracticeMode>(["review", "questions"]);
+const QUESTION_TYPES = new Set<WorkspaceQuestionType>([
+  "all",
+  "vocabulary",
+  "grammar",
+  "cloze",
+  "wordBank",
+  "discourse",
+  "reading",
+]);
+const DIFFICULTIES = new Set<WorkspaceQuestionDifficulty>([
+  "all",
+  "1",
+  "2",
+  "3",
+]);
 
 function isIntegerArray(value: unknown, upperBound: number): value is number[] {
-  return Array.isArray(value)
-    && value.every(item => Number.isInteger(item) && item >= 0 && item < upperBound)
-    && new Set(value).size === value.length
+  return (
+    Array.isArray(value) &&
+    value.every(
+      (item) => Number.isInteger(item) && item >= 0 && item < upperBound,
+    ) &&
+    new Set(value).size === value.length
+  );
 }
 
-export function parsePracticeSession(raw: string | null): PracticeSessionSnapshot | null {
-  if (!raw)
-    return null
+export function parsePracticeSession(
+  raw: string | null,
+): PracticeSessionSnapshot | null {
+  if (!raw) return null;
 
-  let value: unknown
+  let value: unknown;
   try {
-    value = JSON.parse(raw)
+    value = JSON.parse(raw);
+  } catch {
+    return null;
   }
-  catch {
-    return null
-  }
-  if (!isRecord(value) || (value.schemaVersion !== 1 && value.schemaVersion !== 2))
-    return null
+  if (
+    !isRecord(value) ||
+    (value.schemaVersion !== 1 && value.schemaVersion !== 2)
+  )
+    return null;
 
-  const itemIds = value.itemIds
-  const mode = value.mode
-  const questionType = value.questionType
-  const difficulty = value.difficulty
-  if (!Array.isArray(itemIds)
-    || itemIds.length === 0
-    || itemIds.length > 100
-    || !itemIds.every(item => typeof item === 'string' && item.trim())
-    || new Set(itemIds).size !== itemIds.length
-    || typeof mode !== 'string'
-    || !MODES.has(mode as WorkspacePracticeMode)
-    || typeof questionType !== 'string'
-    || !QUESTION_TYPES.has(questionType as WorkspaceQuestionType)
-    || typeof difficulty !== 'string'
-    || !DIFFICULTIES.has(difficulty as WorkspaceQuestionDifficulty)
-    || typeof value.setId !== 'string'
-    || !Number.isInteger(value.amount)
-    || Number(value.amount) < 1
-    || Number(value.amount) > 100
-    || !Number.isInteger(value.index)
-    || Number(value.index) < 0
-    || Number(value.index) >= itemIds.length
-    || !Number.isInteger(value.correct)
-    || Number(value.correct) < 0
-    || Number(value.correct) > Number(value.index) + (value.selected === null ? 0 : 1)
-    || (value.selected !== null && (!Number.isInteger(value.selected) || Number(value.selected) < 0 || Number(value.selected) > 3))
-    || typeof value.revealed !== 'boolean'
-    || typeof value.retrying !== 'boolean'
-    || !Array.isArray(value.failedSenseIds)
-    || !value.failedSenseIds.every(item => typeof item === 'string' && item.trim())
-    || new Set(value.failedSenseIds).size !== value.failedSenseIds.length
-    || !isIntegerArray(value.wrong, itemIds.length)
-    || !isIntegerArray(value.skipped, itemIds.length)
-    || !isIntegerArray(value.marked, itemIds.length)) {
-    return null
+  const itemIds = value.itemIds;
+  const mode = value.mode;
+  const questionType = value.questionType;
+  const difficulty = value.difficulty;
+  if (
+    !Array.isArray(itemIds) ||
+    itemIds.length === 0 ||
+    itemIds.length > 100 ||
+    !itemIds.every((item) => typeof item === "string" && item.trim()) ||
+    new Set(itemIds).size !== itemIds.length ||
+    typeof mode !== "string" ||
+    !MODES.has(mode as WorkspacePracticeMode) ||
+    typeof questionType !== "string" ||
+    !QUESTION_TYPES.has(questionType as WorkspaceQuestionType) ||
+    typeof difficulty !== "string" ||
+    !DIFFICULTIES.has(difficulty as WorkspaceQuestionDifficulty) ||
+    typeof value.setId !== "string" ||
+    !Number.isInteger(value.amount) ||
+    Number(value.amount) < 1 ||
+    Number(value.amount) > 100 ||
+    !Number.isInteger(value.index) ||
+    Number(value.index) < 0 ||
+    Number(value.index) >= itemIds.length ||
+    !Number.isInteger(value.correct) ||
+    Number(value.correct) < 0 ||
+    Number(value.correct) >
+      Number(value.index) + (value.selected === null ? 0 : 1) ||
+    (value.selected !== null &&
+      (!Number.isInteger(value.selected) ||
+        Number(value.selected) < 0 ||
+        Number(value.selected) > 3)) ||
+    typeof value.revealed !== "boolean" ||
+    typeof value.retrying !== "boolean" ||
+    !Array.isArray(value.failedSenseIds) ||
+    !value.failedSenseIds.every(
+      (item) => typeof item === "string" && item.trim(),
+    ) ||
+    new Set(value.failedSenseIds).size !== value.failedSenseIds.length ||
+    !isIntegerArray(value.wrong, itemIds.length) ||
+    !isIntegerArray(value.skipped, itemIds.length) ||
+    !isIntegerArray(value.marked, itemIds.length)
+  ) {
+    return null;
   }
 
-  const rawAnswerChoices = value.schemaVersion === 2 ? value.answerChoices : undefined
-  if (rawAnswerChoices !== undefined
-    && (!Array.isArray(rawAnswerChoices)
-      || rawAnswerChoices.length > itemIds.length
-      || rawAnswerChoices.some(item => item !== null && (!Number.isInteger(item) || item < 0 || item > 3)))) {
-    return null
+  const rawAnswerChoices =
+    value.schemaVersion === 2 ? value.answerChoices : undefined;
+  if (
+    rawAnswerChoices !== undefined &&
+    (!Array.isArray(rawAnswerChoices) ||
+      rawAnswerChoices.length > itemIds.length ||
+      rawAnswerChoices.some(
+        (item) =>
+          item !== null && (!Number.isInteger(item) || item < 0 || item > 3),
+      ))
+  ) {
+    return null;
   }
 
   return {
@@ -93,8 +127,12 @@ export function parsePracticeSession(raw: string | null): PracticeSessionSnapsho
     itemIds,
     failedSenseIds: value.failedSenseIds.map(asSenseId),
     retrying: value.retrying,
-    answerChoices: itemIds.map((_, position) => Array.isArray(rawAnswerChoices) ? rawAnswerChoices[position] ?? null : null),
-  }
+    answerChoices: itemIds.map((_, position) =>
+      Array.isArray(rawAnswerChoices)
+        ? (rawAnswerChoices[position] ?? null)
+        : null,
+    ),
+  };
 }
 
 export function canRestorePracticeSession(
@@ -103,8 +141,7 @@ export function canRestorePracticeSession(
   initialSet: string,
 ): boolean {
   if (initialSet)
-    return snapshot.setId === initialSet && snapshot.mode === initialMode
-  if (initialMode === 'questions')
-    return snapshot.mode === 'questions'
-  return true
+    return snapshot.setId === initialSet && snapshot.mode === initialMode;
+  if (initialMode === "questions") return snapshot.mode === "questions";
+  return true;
 }

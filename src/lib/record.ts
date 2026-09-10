@@ -4,9 +4,9 @@
  * keep it, so iterating a record still produces ids rather than bare strings.
  */
 export function keysOf<K extends string, V>(record: Record<K, V>): K[] {
-  return Object.keys(record) as K[]
+  return Object.keys(record) as K[];
 }
 
 export function entriesOf<K extends string, V>(record: Record<K, V>): [K, V][] {
-  return Object.entries(record) as [K, V][]
+  return Object.entries(record) as [K, V][];
 }

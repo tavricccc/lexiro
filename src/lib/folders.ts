@@ -1,26 +1,26 @@
-import type { VocabFolder } from '@/types'
+import type { VocabFolder } from "@/types";
 
-export const ALL_FOLDER_ID = '__all__'
-export const UNCATEGORIZED_FOLDER_ID = '__uncategorized__'
-export const UNCATEGORIZED_FOLDER_NAME = '未分類'
+export const ALL_FOLDER_ID = "__all__";
+export const UNCATEGORIZED_FOLDER_ID = "__uncategorized__";
+export const UNCATEGORIZED_FOLDER_NAME = "未分類";
 
 export interface FolderOption {
-  id: string
-  label: string
-  name: string
-  depth: number
-  parentId?: string
+  id: string;
+  label: string;
+  name: string;
+  depth: number;
+  parentId?: string;
 }
 
 export function createUncategorizedFolder(): VocabFolder {
-  const timestamp = new Date(0).toISOString()
+  const timestamp = new Date(0).toISOString();
   return {
     id: UNCATEGORIZED_FOLDER_ID,
     name: UNCATEGORIZED_FOLDER_NAME,
     order: -1,
     createdAt: timestamp,
     updatedAt: timestamp,
-  }
+  };
 }
 
 /**
@@ -29,85 +29,109 @@ export function createUncategorizedFolder(): VocabFolder {
  * with file-explorer semantics.
  */
 export function normalizeFolderParentId(parentId?: string): string | undefined {
-  return parentId && parentId !== ALL_FOLDER_ID && parentId !== UNCATEGORIZED_FOLDER_ID
+  return parentId &&
+    parentId !== ALL_FOLDER_ID &&
+    parentId !== UNCATEGORIZED_FOLDER_ID
     ? parentId
-    : undefined
+    : undefined;
 }
 
 export function sortFolders(folders: VocabFolder[]): VocabFolder[] {
-  return [...folders].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name))
+  return [...folders].sort(
+    (a, b) => a.order - b.order || a.name.localeCompare(b.name),
+  );
 }
 
-export function getFolderChildren(folders: VocabFolder[], parentId?: string): VocabFolder[] {
-  return sortFolders(folders.filter(folder => folder.parentId === parentId))
+export function getFolderChildren(
+  folders: VocabFolder[],
+  parentId?: string,
+): VocabFolder[] {
+  return sortFolders(folders.filter((folder) => folder.parentId === parentId));
 }
 
 export function buildFolderOptions(folders: VocabFolder[]): FolderOption[] {
-  const byParent = new Map<string | undefined, VocabFolder[]>()
+  const byParent = new Map<string | undefined, VocabFolder[]>();
   for (const folder of folders) {
-    const siblings = byParent.get(folder.parentId) ?? []
-    siblings.push(folder)
-    byParent.set(folder.parentId, siblings)
+    const siblings = byParent.get(folder.parentId) ?? [];
+    siblings.push(folder);
+    byParent.set(folder.parentId, siblings);
   }
 
-  const options: FolderOption[] = []
-  const visited = new Set<string>()
+  const options: FolderOption[] = [];
+  const visited = new Set<string>();
 
   function visit(parentId: string | undefined, depth: number) {
     for (const folder of sortFolders(byParent.get(parentId) ?? [])) {
-      if (visited.has(folder.id))
-        continue
-      visited.add(folder.id)
-      options.push({ id: folder.id, label: `${'— '.repeat(depth)}${folder.name}`, name: folder.name, depth, parentId: folder.parentId })
-      visit(folder.id, depth + 1)
+      if (visited.has(folder.id)) continue;
+      visited.add(folder.id);
+      options.push({
+        id: folder.id,
+        label: `${"— ".repeat(depth)}${folder.name}`,
+        name: folder.name,
+        depth,
+        parentId: folder.parentId,
+      });
+      visit(folder.id, depth + 1);
     }
   }
 
-  visit(undefined, 0)
-  return options
+  visit(undefined, 0);
+  return options;
 }
 
 export function folderIdFromSelection(value: string): string {
-  return value && value !== ALL_FOLDER_ID ? value : UNCATEGORIZED_FOLDER_ID
+  return value && value !== ALL_FOLDER_ID ? value : UNCATEGORIZED_FOLDER_ID;
 }
 
 export function folderParentIdFromSelection(value: string): string | undefined {
-  return normalizeFolderParentId(value)
+  return normalizeFolderParentId(value);
 }
 
 /**
  * A folder and everything nested beneath it. Used both to scope a search to
  * the current location and to keep a folder from being moved into itself.
  */
-export function collectFolderIds(folders: Array<{ id: string, parentId?: string }>, rootId: string): Set<string> {
-  const ids = new Set([rootId])
-  let changed = true
+export function collectFolderIds(
+  folders: Array<{ id: string; parentId?: string }>,
+  rootId: string,
+): Set<string> {
+  const ids = new Set([rootId]);
+  let changed = true;
   while (changed) {
-    changed = false
+    changed = false;
     for (const folder of folders) {
       if (folder.parentId && ids.has(folder.parentId) && !ids.has(folder.id)) {
-        ids.add(folder.id)
-        changed = true
+        ids.add(folder.id);
+        changed = true;
       }
     }
   }
-  return ids
+  return ids;
 }
 
 /** The path from the library root down to `current`, root first. */
-export function buildFolderBreadcrumbs(folders: VocabFolder[], current?: VocabFolder): VocabFolder[] {
-  const byId = new Map(folders.map(folder => [folder.id, folder]))
-  const path: VocabFolder[] = []
-  let cursor = current
+export function buildFolderBreadcrumbs(
+  folders: VocabFolder[],
+  current?: VocabFolder,
+): VocabFolder[] {
+  const byId = new Map(folders.map((folder) => [folder.id, folder]));
+  const path: VocabFolder[] = [];
+  let cursor = current;
   while (cursor) {
-    path.unshift(cursor)
-    cursor = cursor.parentId ? byId.get(cursor.parentId) : undefined
+    path.unshift(cursor);
+    cursor = cursor.parentId ? byId.get(cursor.parentId) : undefined;
   }
-  return path
+  return path;
 }
 
 /** Direct children of a folder: sub-folders plus the sets filed in it. */
-export function countDirectItems(folders: VocabFolder[], sets: Array<{ folderId: string }>, folderId: string): number {
-  return folders.filter(folder => folder.parentId === folderId).length
-    + sets.filter(entry => entry.folderId === folderId).length
+export function countDirectItems(
+  folders: VocabFolder[],
+  sets: Array<{ folderId: string }>,
+  folderId: string,
+): number {
+  return (
+    folders.filter((folder) => folder.parentId === folderId).length +
+    sets.filter((entry) => entry.folderId === folderId).length
+  );
 }

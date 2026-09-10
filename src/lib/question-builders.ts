@@ -1,6 +1,16 @@
-import type { MultipleChoiceQuestion, QuestionDifficulty, QuestionStyle, WordEntry, WordSense } from '@/types'
-import { buildQuestionFingerprint, buildQuestionId, normalizePartOfSpeech } from './library'
-import { SENTENCE_BLANK } from './question-formats'
+import type {
+  MultipleChoiceQuestion,
+  QuestionDifficulty,
+  QuestionStyle,
+  WordEntry,
+  WordSense,
+} from "@/types";
+import {
+  buildQuestionFingerprint,
+  buildQuestionId,
+  normalizePartOfSpeech,
+} from "./library";
+import { SENTENCE_BLANK } from "./question-formats";
 
 /**
  * Question assembly that needs no model.
@@ -20,46 +30,50 @@ import { SENTENCE_BLANK } from './question-formats'
  */
 
 export interface SenseRef {
-  sense: WordSense
-  word: WordEntry
+  sense: WordSense;
+  word: WordEntry;
 }
 
 export function listSenses(words: WordEntry[]): SenseRef[] {
-  return words.flatMap(word => word.senses.map(sense => ({ sense, word })))
+  return words.flatMap((word) => word.senses.map((sense) => ({ sense, word })));
 }
 
 /** Deterministic per-seed shuffle, so a rebuilt question keeps its option order. */
 function seededOrder(length: number, seed: string): number[] {
-  let state = 2166136261
+  let state = 2166136261;
   for (let index = 0; index < seed.length; index += 1) {
-    state ^= seed.charCodeAt(index)
-    state = Math.imul(state, 16777619)
+    state ^= seed.charCodeAt(index);
+    state = Math.imul(state, 16777619);
   }
   const next = () => {
-    state = Math.imul(state ^ (state >>> 15), state | 1)
-    state ^= state + Math.imul(state ^ (state >>> 7), state | 61)
-    return ((state ^ (state >>> 14)) >>> 0) / 4294967296
-  }
-  const order = Array.from({ length }, (_, index) => index)
+    state = Math.imul(state ^ (state >>> 15), state | 1);
+    state ^= state + Math.imul(state ^ (state >>> 7), state | 61);
+    return ((state ^ (state >>> 14)) >>> 0) / 4294967296;
+  };
+  const order = Array.from({ length }, (_, index) => index);
   for (let index = order.length - 1; index > 0; index -= 1) {
-    const swap = Math.floor(next() * (index + 1))
-    ;[order[index], order[swap]] = [order[swap], order[index]]
+    const swap = Math.floor(next() * (index + 1));
+    [order[index], order[swap]] = [order[swap], order[index]];
   }
-  return order
+  return order;
 }
 
 /**
  * Places the answer among the distractors and reports where it landed. Callers
  * never pass an `answerIndex` in from outside, so it cannot be wrong.
  */
-export function placeAnswer(answer: string, distractors: string[], seed: string): { answerIndex: number, options: string[] } {
-  const pool = [answer, ...distractors]
-  const order = seededOrder(pool.length, seed)
-  const options = order.map(index => pool[index])
-  return { answerIndex: order.indexOf(0), options }
+export function placeAnswer(
+  answer: string,
+  distractors: string[],
+  seed: string,
+): { answerIndex: number; options: string[] } {
+  const pool = [answer, ...distractors];
+  const order = seededOrder(pool.length, seed);
+  const options = order.map((index) => pool[index]);
+  return { answerIndex: order.indexOf(0), options };
 }
 
-const WORD_BOUNDARY = /[A-Za-z]/
+const WORD_BOUNDARY = /[A-Za-z]/;
 
 /**
  * Replaces the first standalone occurrence of `word` with a blank.
@@ -72,27 +86,25 @@ const WORD_BOUNDARY = /[A-Za-z]/
  * caller falls back to asking the model for one.
  */
 export function blankOutWord(sentence: string, word: string): string | null {
-  const target = word.trim().toLocaleLowerCase()
-  if (!target)
-    return null
-  const haystack = sentence.toLocaleLowerCase()
-  let from = 0
+  const target = word.trim().toLocaleLowerCase();
+  if (!target) return null;
+  const haystack = sentence.toLocaleLowerCase();
+  let from = 0;
   while (from <= haystack.length - target.length) {
-    const at = haystack.indexOf(target, from)
-    if (at === -1)
-      return null
-    const before = at === 0 ? '' : sentence[at - 1]
-    const after = sentence[at + target.length] ?? ''
+    const at = haystack.indexOf(target, from);
+    if (at === -1) return null;
+    const before = at === 0 ? "" : sentence[at - 1];
+    const after = sentence[at + target.length] ?? "";
     if (!WORD_BOUNDARY.test(before) && !WORD_BOUNDARY.test(after))
-      return `${sentence.slice(0, at)}${SENTENCE_BLANK}${sentence.slice(at + target.length)}`
-    from = at + 1
+      return `${sentence.slice(0, at)}${SENTENCE_BLANK}${sentence.slice(at + target.length)}`;
+    from = at + 1;
   }
-  return null
+  return null;
 }
 
 /** True when the sentence can carry a blank for this word without help. */
 export function sentenceCarriesWord(sentence: string, word: string): boolean {
-  return blankOutWord(sentence, word) !== null
+  return blankOutWord(sentence, word) !== null;
 }
 
 /**
@@ -108,23 +120,32 @@ export function libraryDistractors(
   count: number,
   seed: string,
 ): string[] {
-  const wanted = normalizePartOfSpeech(pos) || pos.trim()
-  const targetKey = target.wordKey
+  const wanted = normalizePartOfSpeech(pos) || pos.trim();
+  const targetKey = target.wordKey;
   const candidates = pool
-    .filter(entry => entry.wordKey !== targetKey)
-    .filter(entry => entry.senses.some(sense => (normalizePartOfSpeech(sense.pos) || sense.pos.trim()) === wanted))
-    .map(entry => entry.word.trim())
-    .filter(word => word.length > 0 && word.toLocaleLowerCase() !== target.word.trim().toLocaleLowerCase())
-  const unique = [...new Set(candidates)]
+    .filter((entry) => entry.wordKey !== targetKey)
+    .filter((entry) =>
+      entry.senses.some(
+        (sense) =>
+          (normalizePartOfSpeech(sense.pos) || sense.pos.trim()) === wanted,
+      ),
+    )
+    .map((entry) => entry.word.trim())
+    .filter(
+      (word) =>
+        word.length > 0 &&
+        word.toLocaleLowerCase() !== target.word.trim().toLocaleLowerCase(),
+    );
+  const unique = [...new Set(candidates)];
   return seededOrder(unique.length, seed)
-    .map(index => unique[index])
-    .slice(0, count)
+    .map((index) => unique[index])
+    .slice(0, count);
 }
 
 export interface BuiltQuestion {
-  question: MultipleChoiceQuestion
+  question: MultipleChoiceQuestion;
   /** Why a sense produced nothing, for the caller to report or fall back on. */
-  skipped?: never
+  skipped?: never;
 }
 
 function assemble(
@@ -136,26 +157,29 @@ function assemble(
   difficulty: QuestionDifficulty,
   style: QuestionStyle,
 ): MultipleChoiceQuestion {
-  const seed = `${word.wordKey}:${sense.id}:${style}:${difficulty}`
-  const { answerIndex, options } = placeAnswer(answer, distractors, seed)
-  const content: Omit<MultipleChoiceQuestion, 'createdAt' | 'fingerprint' | 'id' | 'updatedAt'> = {
+  const seed = `${word.wordKey}:${sense.id}:${style}:${difficulty}`;
+  const { answerIndex, options } = placeAnswer(answer, distractors, seed);
+  const content: Omit<
+    MultipleChoiceQuestion,
+    "createdAt" | "fingerprint" | "id" | "updatedAt"
+  > = {
     answerIndex,
     difficulty,
-    kind: 'multipleChoice',
+    kind: "multipleChoice",
     options,
     prompt,
     questionStyle: style,
     senseId: sense.id,
     wordKey: word.wordKey,
-  }
-  const now = new Date().toISOString()
+  };
+  const now = new Date().toISOString();
   return {
     ...content,
     createdAt: now,
     fingerprint: buildQuestionFingerprint(content),
     id: buildQuestionId(),
     updatedAt: now,
-  }
+  };
 }
 
 /**
@@ -169,16 +193,29 @@ export function buildVocabularyFromLibrary(
   pool: WordEntry[],
   difficulty: QuestionDifficulty = 2,
 ): MultipleChoiceQuestion | null {
-  const source = sense.examples.find(example => sentenceCarriesWord(example, word.word))
-  if (!source)
-    return null
-  const prompt = blankOutWord(source, word.word)
-  if (!prompt)
-    return null
-  const distractors = libraryDistractors(word, sense.pos, pool, 3, `${sense.id}:distractors`)
-  if (distractors.length < 3)
-    return null
-  return assemble(word, sense, prompt, word.word.trim(), distractors, difficulty, 'vocabulary')
+  const source = sense.examples.find((example) =>
+    sentenceCarriesWord(example, word.word),
+  );
+  if (!source) return null;
+  const prompt = blankOutWord(source, word.word);
+  if (!prompt) return null;
+  const distractors = libraryDistractors(
+    word,
+    sense.pos,
+    pool,
+    3,
+    `${sense.id}:distractors`,
+  );
+  if (distractors.length < 3) return null;
+  return assemble(
+    word,
+    sense,
+    prompt,
+    word.word.trim(),
+    distractors,
+    difficulty,
+    "vocabulary",
+  );
 }
 
 /**
@@ -189,20 +226,22 @@ export function buildLibraryQuestions(
   words: WordEntry[],
   pool: WordEntry[],
   difficulty: QuestionDifficulty = 2,
-): { built: MultipleChoiceQuestion[], remaining: WordEntry[] } {
-  const built: MultipleChoiceQuestion[] = []
-  const remaining: WordEntry[] = []
+): { built: MultipleChoiceQuestion[]; remaining: WordEntry[] } {
+  const built: MultipleChoiceQuestion[] = [];
+  const remaining: WordEntry[] = [];
   for (const word of words) {
-    const unmet: WordSense[] = []
+    const unmet: WordSense[] = [];
     for (const sense of word.senses) {
-      const question = buildVocabularyFromLibrary(word, sense, pool, difficulty)
-      if (question)
-        built.push(question)
-      else
-        unmet.push(sense)
+      const question = buildVocabularyFromLibrary(
+        word,
+        sense,
+        pool,
+        difficulty,
+      );
+      if (question) built.push(question);
+      else unmet.push(sense);
     }
-    if (unmet.length)
-      remaining.push({ ...word, senses: unmet })
+    if (unmet.length) remaining.push({ ...word, senses: unmet });
   }
-  return { built, remaining }
+  return { built, remaining };
 }

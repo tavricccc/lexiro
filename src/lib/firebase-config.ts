@@ -1,9 +1,9 @@
 export interface AppCheckActivationOptions {
-  appCheckDebugToken?: string
-  appCheckEnabled?: string
-  appCheckSiteKey?: string
-  emulatorEnabled: boolean
-  production: boolean
+  appCheckDebugToken?: string;
+  appCheckEnabled?: string;
+  appCheckSiteKey?: string;
+  emulatorEnabled: boolean;
+  production: boolean;
 }
 
 export const firebaseEnvironment = {
@@ -19,16 +19,24 @@ export const firebaseEnvironment = {
   emulatorEnabled: process.env.NEXT_PUBLIC_FIREBASE_EMULATOR_ENABLED,
   emulatorHost: process.env.NEXT_PUBLIC_FIREBASE_EMULATOR_HOST,
   googleClientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-}
+};
 
 export function isFirebaseConfigured(): boolean {
-  const config = firebaseEnvironment
-  return Boolean(config.apiKey && config.authDomain && config.projectId && config.appId && config.googleClientId)
+  const config = firebaseEnvironment;
+  return Boolean(
+    config.apiKey &&
+    config.authDomain &&
+    config.projectId &&
+    config.appId &&
+    config.googleClientId,
+  );
 }
 
-export function shouldEnableAppCheck(options: AppCheckActivationOptions): boolean {
-  if (options.emulatorEnabled || !options.appCheckSiteKey?.trim())
-    return false
-  const debugEnabled = !options.production && Boolean(options.appCheckDebugToken?.trim())
-  return options.appCheckEnabled === 'true' || debugEnabled
+export function shouldEnableAppCheck(
+  options: AppCheckActivationOptions,
+): boolean {
+  if (options.emulatorEnabled || !options.appCheckSiteKey?.trim()) return false;
+  const debugEnabled =
+    !options.production && Boolean(options.appCheckDebugToken?.trim());
+  return options.appCheckEnabled === "true" || debugEnabled;
 }

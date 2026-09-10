@@ -1,4 +1,10 @@
-import type { CardProgress, LibraryState, SenseId, WordEntry, WordKey } from '@/types';
+import type {
+  CardProgress,
+  LibraryState,
+  SenseId,
+  WordEntry,
+  WordKey,
+} from "@/types";
 
 import { isDue } from "@/src/lib/fsrs";
 
@@ -41,7 +47,9 @@ export function buildLibrarySetMetrics(
 
   for (const set of state.sets) {
     const senseIds = new Set(
-      (state.memberships[set.id] ?? []).flatMap((membership) => membership.senseIds),
+      (state.memberships[set.id] ?? []).flatMap(
+        (membership) => membership.senseIds,
+      ),
     );
     let learned = 0;
     let due = 0;
@@ -65,12 +73,14 @@ export function buildLibrarySetMetrics(
   }
 
   for (const question of state.questions) {
-    const senseIds = question.kind === "reading"
-      ? question.questions.map((child) => child.senseId)
-      : [question.senseId];
+    const senseIds =
+      question.kind === "reading"
+        ? question.questions.map((child) => child.senseId)
+        : [question.senseId];
     const affectedSetIds = new Set<string>();
     for (const senseId of senseIds) {
-      for (const setId of setIdsBySense.get(senseId) ?? []) affectedSetIds.add(setId);
+      for (const setId of setIdsBySense.get(senseId) ?? [])
+        affectedSetIds.add(setId);
     }
     for (const setId of affectedSetIds) {
       const current = metrics.get(setId);

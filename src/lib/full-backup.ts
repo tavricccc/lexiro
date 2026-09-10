@@ -57,7 +57,9 @@ export function downloadFullBackup(payload: FullBackupPayload): void {
   const bytes = zipSync({
     [ZIP_INTERNAL_FILENAME]: strToU8(JSON.stringify(payload)),
   }) as Uint8Array<ArrayBuffer>;
-  const url = URL.createObjectURL(new Blob([bytes], { type: "application/zip" }));
+  const url = URL.createObjectURL(
+    new Blob([bytes], { type: "application/zip" }),
+  );
   const anchor = document.createElement("a");
   anchor.href = url;
   anchor.download = `${BACKUP_FILE_PREFIX}${localDateKey()}.zip`;

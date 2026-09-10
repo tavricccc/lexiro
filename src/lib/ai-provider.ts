@@ -1,21 +1,21 @@
-import type { AiProvider, AiSettings } from '@/types'
-import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from '@/constants'
-import { loadFromStorage, saveToStorage } from '@/lib/persist'
-import { isRecord } from './schema'
-import { markCloudSyncPending } from './sync-pending'
+import type { AiProvider, AiSettings } from "@/types";
+import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from "@/constants";
+import { loadFromStorage, saveToStorage } from "@/lib/persist";
+import { isRecord } from "./schema";
+import { markCloudSyncPending } from "./sync-pending";
 
 export const defaultAiSettings: AiSettings = {
   enabled: false,
-  provider: 'openai',
-  apiKey: '',
-  baseUrl: '',
-  model: 'gpt-4o-mini',
+  provider: "openai",
+  apiKey: "",
+  baseUrl: "",
+  model: "gpt-4o-mini",
   batchSize: 10,
-}
+};
 
 export interface AiGenerationOptions {
-  responseFormat?: 'json' | 'text'
-  signal?: AbortSignal
+  responseFormat?: "json" | "text";
+  signal?: AbortSignal;
 }
 
 /**
@@ -25,25 +25,27 @@ export interface AiGenerationOptions {
  */
 export class AiNotConfiguredError extends Error {
   constructor(message: string) {
-    super(message)
-    this.name = 'AiNotConfiguredError'
+    super(message);
+    this.name = "AiNotConfiguredError";
   }
 }
 
-export function isAiConfigured(settings: AiSettings = loadAiSettings()): boolean {
-  return settings.enabled && Boolean(settings.apiKey.trim())
+export function isAiConfigured(
+  settings: AiSettings = loadAiSettings(),
+): boolean {
+  return settings.enabled && Boolean(settings.apiKey.trim());
 }
 
-const AI_REQUEST_TIMEOUT_MS = 60_000
+const AI_REQUEST_TIMEOUT_MS = 60_000;
 
-const LEGACY_AI_SETTINGS_KEY = 'lexiro-next-ai-settings'
-const LEGACY_AI_API_KEY = 'lexiro-next-ai-api-key'
+const LEGACY_AI_SETTINGS_KEY = "lexiro-next-ai-settings";
+const LEGACY_AI_API_KEY = "lexiro-next-ai-api-key";
 
-const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
-let storedSettings: AiSettings = { ...defaultAiSettings }
-const settingsListeners = new Set<(settings: AiSettings) => void>()
-let settingsPersistencePromise: Promise<void> = Promise.resolve()
-let settingsHydration: Promise<AiSettings> | null = null
+const aiProviders: AiProvider[] = ["openai", "anthropic", "google", "custom"];
+let storedSettings: AiSettings = { ...defaultAiSettings };
+const settingsListeners = new Set<(settings: AiSettings) => void>();
+let settingsPersistencePromise: Promise<void> = Promise.resolve();
+let settingsHydration: Promise<AiSettings> | null = null;
 
 /**
  * Resolves once stored settings have been read from IndexedDB. `LibraryHydrator`
@@ -51,252 +53,336 @@ let settingsHydration: Promise<AiSettings> | null = null
  * between app start and the first generation.
  */
 export async function whenAiSettingsReady(): Promise<AiSettings> {
-  await loadAiSettingsState()
-  return loadAiSettings()
+  await loadAiSettingsState();
+  return loadAiSettings();
 }
 
-function assertKnownSettingsKeys(value: Record<string, unknown>, includeApiKey: boolean): void {
+function assertKnownSettingsKeys(
+  value: Record<string, unknown>,
+  includeApiKey: boolean,
+): void {
   const allowed = includeApiKey
-    ? ['enabled', 'provider', 'apiKey', 'baseUrl', 'model', 'batchSize']
-    : ['enabled', 'provider', 'baseUrl', 'model', 'batchSize']
-  const unknown = Object.keys(value).filter(key => !allowed.includes(key))
+    ? ["enabled", "provider", "apiKey", "baseUrl", "model", "batchSize"]
+    : ["enabled", "provider", "baseUrl", "model", "batchSize"];
+  const unknown = Object.keys(value).filter((key) => !allowed.includes(key));
   if (unknown.length)
-    throw new Error(`AI 設定包含不支援欄位：${unknown.join('、')}`)
+    throw new Error(`AI 設定包含不支援欄位：${unknown.join("、")}`);
 }
 
-export function normalizeShareableAiSettings(value: unknown): Omit<AiSettings, 'apiKey'> {
-  if (!isRecord(value))
-    throw new Error('AI 設定格式不正確')
-  assertKnownSettingsKeys(value, false)
-  if (typeof value.enabled !== 'boolean' || typeof value.provider !== 'string' || !aiProviders.includes(value.provider as AiProvider) || typeof value.baseUrl !== 'string' || typeof value.model !== 'string' || !value.model.trim() || typeof value.batchSize !== 'number' || !Number.isFinite(value.batchSize))
-    throw new Error('AI 設定欄位格式錯誤')
+export function normalizeShareableAiSettings(
+  value: unknown,
+): Omit<AiSettings, "apiKey"> {
+  if (!isRecord(value)) throw new Error("AI 設定格式不正確");
+  assertKnownSettingsKeys(value, false);
+  if (
+    typeof value.enabled !== "boolean" ||
+    typeof value.provider !== "string" ||
+    !aiProviders.includes(value.provider as AiProvider) ||
+    typeof value.baseUrl !== "string" ||
+    typeof value.model !== "string" ||
+    !value.model.trim() ||
+    typeof value.batchSize !== "number" ||
+    !Number.isFinite(value.batchSize)
+  )
+    throw new Error("AI 設定欄位格式錯誤");
   return {
     enabled: value.enabled,
     provider: value.provider as AiProvider,
     baseUrl: value.baseUrl,
     model: value.model.trim(),
     batchSize: Math.min(Math.max(Math.round(value.batchSize), 5), 20),
-  }
+  };
 }
 
 export function normalizeAiSettings(value: unknown): AiSettings {
-  if (!isRecord(value))
-    throw new Error('AI 設定格式不正確')
-  assertKnownSettingsKeys(value, true)
-  if (typeof value.apiKey !== 'string')
-    throw new Error('AI 設定欄位格式錯誤')
+  if (!isRecord(value)) throw new Error("AI 設定格式不正確");
+  assertKnownSettingsKeys(value, true);
+  if (typeof value.apiKey !== "string") throw new Error("AI 設定欄位格式錯誤");
   return {
-    ...normalizeShareableAiSettings(Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'apiKey'))),
+    ...normalizeShareableAiSettings(
+      Object.fromEntries(
+        Object.entries(value).filter(([key]) => key !== "apiKey"),
+      ),
+    ),
     apiKey: value.apiKey,
-  }
+  };
 }
 
 export function loadAiSettings(): AiSettings {
-  return { ...storedSettings }
+  return { ...storedSettings };
 }
 
-function defaultShareableAiSettings(): Omit<AiSettings, 'apiKey'> {
-  return getShareableAiSettings(defaultAiSettings)
+function defaultShareableAiSettings(): Omit<AiSettings, "apiKey"> {
+  return getShareableAiSettings(defaultAiSettings);
 }
 
-export function getShareableAiSettings(settings = loadAiSettings()): Omit<AiSettings, 'apiKey'> {
-  const { apiKey: _apiKey, ...shareable } = normalizeAiSettings(settings)
-  return shareable
+export function getShareableAiSettings(
+  settings = loadAiSettings(),
+): Omit<AiSettings, "apiKey"> {
+  const { apiKey: _apiKey, ...shareable } = normalizeAiSettings(settings);
+  return shareable;
 }
 
-export function onAiSettingsChanged(listener: (settings: AiSettings) => void): () => void {
-  settingsListeners.add(listener)
-  return () => settingsListeners.delete(listener)
+export function onAiSettingsChanged(
+  listener: (settings: AiSettings) => void,
+): () => void {
+  settingsListeners.add(listener);
+  return () => settingsListeners.delete(listener);
 }
 
 export function loadAiSettingsState(): Promise<AiSettings> {
-  settingsHydration ??= readAiSettingsState()
-  return settingsHydration
+  settingsHydration ??= readAiSettingsState();
+  return settingsHydration;
 }
 
 async function readAiSettingsState(): Promise<AiSettings> {
   const [stored, storedApiKey] = await Promise.all([
     loadFromStorage(AI_SETTINGS_KEY),
     loadFromStorage(AI_API_KEY_STORAGE_KEY),
-  ])
-  let shareableSettings = defaultShareableAiSettings()
-  let apiKey = storedApiKey.value ?? ''
+  ]);
+  let shareableSettings = defaultShareableAiSettings();
+  let apiKey = storedApiKey.value ?? "";
   try {
     if (stored.value)
-      shareableSettings = normalizeShareableAiSettings(JSON.parse(stored.value))
-    else if (typeof localStorage !== 'undefined') {
-      const legacyRaw = localStorage.getItem(LEGACY_AI_SETTINGS_KEY)
-      const legacyKey = localStorage.getItem(LEGACY_AI_API_KEY) ?? ''
+      shareableSettings = normalizeShareableAiSettings(
+        JSON.parse(stored.value),
+      );
+    else if (typeof localStorage !== "undefined") {
+      const legacyRaw = localStorage.getItem(LEGACY_AI_SETTINGS_KEY);
+      const legacyKey = localStorage.getItem(LEGACY_AI_API_KEY) ?? "";
       if (legacyRaw) {
-        const legacy = JSON.parse(legacyRaw) as Record<string, unknown>
+        const legacy = JSON.parse(legacyRaw) as Record<string, unknown>;
         shareableSettings = normalizeShareableAiSettings({
-          enabled: legacy.mode === 'api' || legacy.enabled === true,
+          enabled: legacy.mode === "api" || legacy.enabled === true,
           provider: legacy.provider,
-          baseUrl: legacy.endpoint ?? legacy.baseUrl ?? '',
+          baseUrl: legacy.endpoint ?? legacy.baseUrl ?? "",
           model: legacy.model,
           batchSize: legacy.batchSize,
-        })
-        apiKey = legacyKey
-        await Promise.all([saveToStorage(AI_SETTINGS_KEY, shareableSettings), saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey)])
-        localStorage.removeItem(LEGACY_AI_SETTINGS_KEY)
-        localStorage.removeItem(LEGACY_AI_API_KEY)
+        });
+        apiKey = legacyKey;
+        await Promise.all([
+          saveToStorage(AI_SETTINGS_KEY, shareableSettings),
+          saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey),
+        ]);
+        localStorage.removeItem(LEGACY_AI_SETTINGS_KEY);
+        localStorage.removeItem(LEGACY_AI_API_KEY);
       }
     }
+  } catch {
+    shareableSettings = defaultShareableAiSettings();
   }
-  catch {
-    shareableSettings = defaultShareableAiSettings()
-  }
-  storedSettings = { ...shareableSettings, apiKey }
-  return loadAiSettings()
+  storedSettings = { ...shareableSettings, apiKey };
+  return loadAiSettings();
 }
 
 export async function waitForAiSettingsPersistence(): Promise<void> {
-  await settingsPersistencePromise
+  await settingsPersistencePromise;
 }
 
 export function parseAiSettingsJson(raw: string): AiSettings {
-  const parsed: unknown = JSON.parse(raw)
-  if (!isRecord(parsed))
-    throw new Error('AI 設定必須是 object')
-  if (Object.keys(parsed).some(key => !['version', 'exportedAt', 'settings'].includes(key)) || parsed.version !== 1 || typeof parsed.exportedAt !== 'string' || !parsed.exportedAt.trim() || !isRecord(parsed.settings))
-    throw new Error('AI 設定匯出格式錯誤')
-  const payload = parsed.settings
-  return { ...normalizeShareableAiSettings(payload), apiKey: '' }
+  const parsed: unknown = JSON.parse(raw);
+  if (!isRecord(parsed)) throw new Error("AI 設定必須是 object");
+  if (
+    Object.keys(parsed).some(
+      (key) => !["version", "exportedAt", "settings"].includes(key),
+    ) ||
+    parsed.version !== 1 ||
+    typeof parsed.exportedAt !== "string" ||
+    !parsed.exportedAt.trim() ||
+    !isRecord(parsed.settings)
+  )
+    throw new Error("AI 設定匯出格式錯誤");
+  const payload = parsed.settings;
+  return { ...normalizeShareableAiSettings(payload), apiKey: "" };
 }
 
 export function downloadAiSettings(settings: AiSettings): void {
-  const shareableSettings = getShareableAiSettings(settings)
-  const payload = JSON.stringify({
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    settings: shareableSettings,
-  }, null, 2)
-  const url = URL.createObjectURL(new Blob([payload], { type: 'application/json' }))
-  const anchor = document.createElement('a')
-  anchor.href = url
-  anchor.download = 'lexiro-ai-settings.json'
-  anchor.click()
-  window.setTimeout(() => URL.revokeObjectURL(url), 0)
+  const shareableSettings = getShareableAiSettings(settings);
+  const payload = JSON.stringify(
+    {
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      settings: shareableSettings,
+    },
+    null,
+    2,
+  );
+  const url = URL.createObjectURL(
+    new Blob([payload], { type: "application/json" }),
+  );
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "lexiro-ai-settings.json";
+  anchor.click();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
-export function saveAiSettings(settings: AiSettings, options: { markPending?: boolean } = {}) {
-  storedSettings = normalizeAiSettings(settings)
-  const shareableSettings = getShareableAiSettings(storedSettings)
-  const apiKey = storedSettings.apiKey
-  const settingsWrite = saveToStorage(AI_SETTINGS_KEY, shareableSettings)
-  const apiKeyWrite = saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey)
-  const next = Promise.all([settingsPersistencePromise.catch(() => undefined), settingsWrite, apiKeyWrite]).then(() => undefined)
-  settingsPersistencePromise = next
-  void next.catch(() => undefined)
-  for (const listener of settingsListeners)
-    listener(loadAiSettings())
-  if (options.markPending !== false)
-    markCloudSyncPending()
+export function saveAiSettings(
+  settings: AiSettings,
+  options: { markPending?: boolean } = {},
+) {
+  storedSettings = normalizeAiSettings(settings);
+  const shareableSettings = getShareableAiSettings(storedSettings);
+  const apiKey = storedSettings.apiKey;
+  const settingsWrite = saveToStorage(AI_SETTINGS_KEY, shareableSettings);
+  const apiKeyWrite = saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey);
+  const next = Promise.all([
+    settingsPersistencePromise.catch(() => undefined),
+    settingsWrite,
+    apiKeyWrite,
+  ]).then(() => undefined);
+  settingsPersistencePromise = next;
+  void next.catch(() => undefined);
+  for (const listener of settingsListeners) listener(loadAiSettings());
+  if (options.markPending !== false) markCloudSyncPending();
 }
 
 function normalizeText(value: unknown): string {
-  return typeof value === 'string' ? value : ''
+  return typeof value === "string" ? value : "";
 }
 
 function openAiUrl(settings: AiSettings) {
-  return settings.baseUrl.trim() || 'https://api.openai.com/v1/chat/completions'
+  return (
+    settings.baseUrl.trim() || "https://api.openai.com/v1/chat/completions"
+  );
 }
 
 function googleUrl(settings: AiSettings) {
-  return settings.baseUrl.trim() || `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(settings.model)}:generateContent`
+  return (
+    settings.baseUrl.trim() ||
+    `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(settings.model)}:generateContent`
+  );
 }
 
-export async function generateWithAi(settings: AiSettings, prompt: string, options: AiGenerationOptions = {}): Promise<string> {
-  if (!settings.enabled)
-    throw new AiNotConfiguredError('尚未開啟直接呼叫 API')
+export async function generateWithAi(
+  settings: AiSettings,
+  prompt: string,
+  options: AiGenerationOptions = {},
+): Promise<string> {
+  if (!settings.enabled) throw new AiNotConfiguredError("尚未開啟直接呼叫 API");
   if (!settings.apiKey.trim())
-    throw new AiNotConfiguredError('尚未填入 API key')
+    throw new AiNotConfiguredError("尚未填入 API key");
 
-  const provider: AiProvider = settings.provider
-  const responseFormat = options.responseFormat ?? 'json'
-  let url = ''
-  let headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  let body: Record<string, unknown>
+  const provider: AiProvider = settings.provider;
+  const responseFormat = options.responseFormat ?? "json";
+  let url = "";
+  let headers: Record<string, string> = { "Content-Type": "application/json" };
+  let body: Record<string, unknown>;
 
-  if (provider === 'anthropic') {
-    url = settings.baseUrl.trim() || 'https://api.anthropic.com/v1/messages'
+  if (provider === "anthropic") {
+    url = settings.baseUrl.trim() || "https://api.anthropic.com/v1/messages";
     headers = {
       ...headers,
-      'x-api-key': settings.apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
-    }
+      "x-api-key": settings.apiKey,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+    };
     body = {
       model: settings.model,
       max_tokens: 4096,
-      messages: [{ role: 'user', content: prompt }],
-    }
-  }
-  else if (provider === 'google') {
-    url = googleUrl(settings)
-    headers = { ...headers, 'x-goog-api-key': settings.apiKey }
+      messages: [{ role: "user", content: prompt }],
+    };
+  } else if (provider === "google") {
+    url = googleUrl(settings);
+    headers = { ...headers, "x-goog-api-key": settings.apiKey };
     body = {
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      ...(responseFormat === 'json' ? { generationConfig: { responseMimeType: 'application/json' } } : {}),
-    }
-  }
-  else {
-    url = openAiUrl(settings)
-    headers = { ...headers, Authorization: `Bearer ${settings.apiKey}` }
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      ...(responseFormat === "json"
+        ? { generationConfig: { responseMimeType: "application/json" } }
+        : {}),
+    };
+  } else {
+    url = openAiUrl(settings);
+    headers = { ...headers, Authorization: `Bearer ${settings.apiKey}` };
     body = {
       model: settings.model,
-      messages: [{ role: 'user', content: prompt }],
-      ...(responseFormat === 'json' && provider === 'openai' ? { response_format: { type: 'json_object' } } : {}),
-    }
+      messages: [{ role: "user", content: prompt }],
+      ...(responseFormat === "json" && provider === "openai"
+        ? { response_format: { type: "json_object" } }
+        : {}),
+    };
   }
 
-  const controller = new AbortController()
-  const abortFromCaller = () => controller.abort(options.signal?.reason)
-  options.signal?.addEventListener('abort', abortFromCaller, { once: true })
-  const timeout = window.setTimeout(() => controller.abort(new DOMException('AI 請求逾時（60 秒）', 'TimeoutError')), AI_REQUEST_TIMEOUT_MS)
-  let response: Response
+  const controller = new AbortController();
+  const abortFromCaller = () => controller.abort(options.signal?.reason);
+  options.signal?.addEventListener("abort", abortFromCaller, { once: true });
+  const timeout = window.setTimeout(
+    () =>
+      controller.abort(
+        new DOMException("AI 請求逾時（60 秒）", "TimeoutError"),
+      ),
+    AI_REQUEST_TIMEOUT_MS,
+  );
+  let response: Response;
   try {
-    response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), signal: controller.signal })
-  }
-  catch (reason) {
-    if (options.signal?.aborted)
-      throw reason
+    response = await fetch(url, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+  } catch (reason) {
+    if (options.signal?.aborted) throw reason;
     if (controller.signal.aborted)
-      throw new Error('AI 請求逾時，請稍後再試或檢查網路連線。')
-    throw reason
-  }
-  finally {
-    window.clearTimeout(timeout)
-    options.signal?.removeEventListener('abort', abortFromCaller)
+      throw new Error("AI 請求逾時，請稍後再試或檢查網路連線。");
+    throw reason;
+  } finally {
+    window.clearTimeout(timeout);
+    options.signal?.removeEventListener("abort", abortFromCaller);
   }
   if (!response.ok) {
-    let detail = ''
+    let detail = "";
     try {
-      const payload = await response.json() as Record<string, unknown>
-      const error = payload.error
-      detail = typeof error === 'string' ? error : error && typeof error === 'object' && typeof (error as Record<string, unknown>).message === 'string' ? String((error as Record<string, unknown>).message) : ''
+      const payload = (await response.json()) as Record<string, unknown>;
+      const error = payload.error;
+      detail =
+        typeof error === "string"
+          ? error
+          : error &&
+              typeof error === "object" &&
+              typeof (error as Record<string, unknown>).message === "string"
+            ? String((error as Record<string, unknown>).message)
+            : "";
+    } catch {
+      /* keep the status-only error */
     }
-    catch { /* keep the status-only error */ }
-    throw new Error(`AI 請求失敗（${response.status}）${detail ? `：${detail}` : ''}`)
+    throw new Error(
+      `AI 請求失敗（${response.status}）${detail ? `：${detail}` : ""}`,
+    );
   }
-  const data = await response.json() as Record<string, unknown>
+  const data = (await response.json()) as Record<string, unknown>;
 
-  if (provider === 'anthropic') {
-    const content = Array.isArray(data.content) ? data.content : []
-    return content.map(item => normalizeText((item as Record<string, unknown>).text)).join('')
+  if (provider === "anthropic") {
+    const content = Array.isArray(data.content) ? data.content : [];
+    return content
+      .map((item) => normalizeText((item as Record<string, unknown>).text))
+      .join("");
   }
-  if (provider === 'google') {
-    const candidates = Array.isArray(data.candidates) ? data.candidates : []
-    const parts = ((candidates[0] as Record<string, unknown> | undefined)?.content as Record<string, unknown> | undefined)?.parts
-    return Array.isArray(parts) ? parts.map(item => normalizeText((item as Record<string, unknown>).text)).join('') : ''
+  if (provider === "google") {
+    const candidates = Array.isArray(data.candidates) ? data.candidates : [];
+    const parts = (
+      (candidates[0] as Record<string, unknown> | undefined)?.content as
+        Record<string, unknown> | undefined
+    )?.parts;
+    return Array.isArray(parts)
+      ? parts
+          .map((item) => normalizeText((item as Record<string, unknown>).text))
+          .join("")
+      : "";
   }
 
-  const choices = Array.isArray(data.choices) ? data.choices : []
-  const message = (choices[0] as Record<string, unknown> | undefined)?.message as Record<string, unknown> | undefined
-  if (typeof message?.content === 'string') return message.content
-  if (Array.isArray(message?.content)) return message.content.map(item => normalizeText((item as Record<string, unknown>).text ?? item)).join('')
-  if (typeof data.output_text === 'string') return data.output_text
-  return ''
+  const choices = Array.isArray(data.choices) ? data.choices : [];
+  const message = (choices[0] as Record<string, unknown> | undefined)
+    ?.message as Record<string, unknown> | undefined;
+  if (typeof message?.content === "string") return message.content;
+  if (Array.isArray(message?.content))
+    return message.content
+      .map((item) =>
+        normalizeText((item as Record<string, unknown>).text ?? item),
+      )
+      .join("");
+  if (typeof data.output_text === "string") return data.output_text;
+  return "";
 }
 
 /**
@@ -304,24 +390,25 @@ export async function generateWithAi(settings: AiSettings, prompt: string, optio
  * by `loadAiSettingsState()` at startup, so a run of twenty batched requests no
  * longer re-reads IndexedDB twenty times.
  */
-export async function generateWithSavedAi(prompt: string, options: AiGenerationOptions = {}): Promise<string> {
-  return generateWithAi(await whenAiSettingsReady(), prompt, options)
+export async function generateWithSavedAi(
+  prompt: string,
+  options: AiGenerationOptions = {},
+): Promise<string> {
+  return generateWithAi(await whenAiSettingsReady(), prompt, options);
 }
 
 export function extractJsonText(text: string): string {
-  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/iu)
-  if (fenced?.[1])
-    return fenced[1].trim()
-  const trimmed = text.trim()
-  if (trimmed.startsWith('{') || trimmed.startsWith('['))
-    return trimmed
-  const objectStart = text.indexOf('{')
-  const objectEnd = text.lastIndexOf('}')
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/iu);
+  if (fenced?.[1]) return fenced[1].trim();
+  const trimmed = text.trim();
+  if (trimmed.startsWith("{") || trimmed.startsWith("[")) return trimmed;
+  const objectStart = text.indexOf("{");
+  const objectEnd = text.lastIndexOf("}");
   if (objectStart >= 0 && objectEnd > objectStart)
-    return text.slice(objectStart, objectEnd + 1)
-  const arrayStart = text.indexOf('[')
-  const arrayEnd = text.lastIndexOf(']')
+    return text.slice(objectStart, objectEnd + 1);
+  const arrayStart = text.indexOf("[");
+  const arrayEnd = text.lastIndexOf("]");
   if (arrayStart >= 0 && arrayEnd > arrayStart)
-    return text.slice(arrayStart, arrayEnd + 1)
-  return trimmed
+    return text.slice(arrayStart, arrayEnd + 1);
+  return trimmed;
 }

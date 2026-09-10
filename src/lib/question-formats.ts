@@ -1,4 +1,8 @@
-import type { GeneratedQuestionKind, PassageFormat, QuestionStyle } from '@/types'
+import type {
+  GeneratedQuestionKind,
+  PassageFormat,
+  QuestionStyle,
+} from "@/types";
 
 /**
  * The shapes Lexiro generates, modelled on the papers a Taiwanese senior high
@@ -21,75 +25,112 @@ import type { GeneratedQuestionKind, PassageFormat, QuestionStyle } from '@/type
 
 export interface SentenceFormatSpec {
   /** Every sentence-level format is one sentence with a single blank. */
-  optionCount: 4
-  style: QuestionStyle
+  optionCount: 4;
+  style: QuestionStyle;
 }
 
 export interface PassageFormatSpec {
-  format: PassageFormat
+  format: PassageFormat;
   /** Blanks cut into the passage. `reading` asks about the passage instead. */
-  blanks: number
+  blanks: number;
   /** Options offered per blank, or the size of the shared bank. */
-  optionCount: number
+  optionCount: number;
   /**
    * A shared bank means one option list for the whole passage, each option
    * used at most once — 文意選填 and 篇章結構 work this way, 綜合測驗 does not.
    */
-  sharedBank: boolean
+  sharedBank: boolean;
   /** Whole sentences rather than words or phrases. */
-  sentenceOptions: boolean
+  sentenceOptions: boolean;
 }
 
-export const SENTENCE_FORMATS: Record<'vocabulary' | 'grammar', SentenceFormatSpec> = {
-  vocabulary: { optionCount: 4, style: 'vocabulary' },
-  grammar: { optionCount: 4, style: 'grammar' },
-}
+export const SENTENCE_FORMATS: Record<
+  "vocabulary" | "grammar",
+  SentenceFormatSpec
+> = {
+  vocabulary: { optionCount: 4, style: "vocabulary" },
+  grammar: { optionCount: 4, style: "grammar" },
+};
 
 export const PASSAGE_FORMATS: Record<PassageFormat, PassageFormatSpec> = {
-  reading: { format: 'reading', blanks: 0, optionCount: 4, sharedBank: false, sentenceOptions: false },
-  cloze: { format: 'cloze', blanks: 5, optionCount: 4, sharedBank: false, sentenceOptions: false },
-  wordBank: { format: 'wordBank', blanks: 8, optionCount: 10, sharedBank: true, sentenceOptions: false },
-  discourse: { format: 'discourse', blanks: 4, optionCount: 5, sharedBank: true, sentenceOptions: true },
-}
+  reading: {
+    format: "reading",
+    blanks: 0,
+    optionCount: 4,
+    sharedBank: false,
+    sentenceOptions: false,
+  },
+  cloze: {
+    format: "cloze",
+    blanks: 5,
+    optionCount: 4,
+    sharedBank: false,
+    sentenceOptions: false,
+  },
+  wordBank: {
+    format: "wordBank",
+    blanks: 8,
+    optionCount: 10,
+    sharedBank: true,
+    sentenceOptions: false,
+  },
+  discourse: {
+    format: "discourse",
+    blanks: 4,
+    optionCount: 5,
+    sharedBank: true,
+    sentenceOptions: true,
+  },
+};
 
 /** Reading packs ask between this many and `READING_MAX_QUESTIONS` questions. */
-export const READING_MIN_QUESTIONS = 3
-export const READING_MAX_QUESTIONS = 5
+export const READING_MIN_QUESTIONS = 3;
+export const READING_MAX_QUESTIONS = 5;
 
-export const PASSAGE_KINDS = ['cloze', 'wordBank', 'discourse', 'reading'] as const
-export const SENTENCE_KINDS = ['vocabulary', 'grammar'] as const
+export const PASSAGE_KINDS = [
+  "cloze",
+  "wordBank",
+  "discourse",
+  "reading",
+] as const;
+export const SENTENCE_KINDS = ["vocabulary", "grammar"] as const;
 
-export function isPassageKind(kind: GeneratedQuestionKind): kind is PassageFormat {
-  return (PASSAGE_KINDS as readonly string[]).includes(kind)
+export function isPassageKind(
+  kind: GeneratedQuestionKind,
+): kind is PassageFormat {
+  return (PASSAGE_KINDS as readonly string[]).includes(kind);
 }
 
-export function passageSpec(kind: GeneratedQuestionKind): PassageFormatSpec | null {
-  return isPassageKind(kind) ? PASSAGE_FORMATS[kind] : null
+export function passageSpec(
+  kind: GeneratedQuestionKind,
+): PassageFormatSpec | null {
+  return isPassageKind(kind) ? PASSAGE_FORMATS[kind] : null;
 }
 
 /** How many senses one request should cover, given what the format can absorb. */
 export function sensesPerRequest(kind: GeneratedQuestionKind): number {
-  const spec = passageSpec(kind)
-  if (!spec)
-    return 8
-  return spec.format === 'reading' ? READING_MAX_QUESTIONS : spec.blanks
+  const spec = passageSpec(kind);
+  if (!spec) return 8;
+  return spec.format === "reading" ? READING_MAX_QUESTIONS : spec.blanks;
 }
 
 /** The blank marker written into a passage: `__1__`, `__2__`, … */
 export function blankToken(index: number): string {
-  return `__${index + 1}__`
+  return `__${index + 1}__`;
 }
 
-export const BLANK_TOKEN_PATTERN = /__(\d+)__/g
+export const BLANK_TOKEN_PATTERN = /__(\d+)__/g;
 
 /** The single-sentence blank marker. Kept distinct from passage numbering. */
-export const SENTENCE_BLANK = '_____'
+export const SENTENCE_BLANK = "_____";
 
 export function countBlankTokens(passage: string): number {
-  return [...passage.matchAll(BLANK_TOKEN_PATTERN)].length
+  return [...passage.matchAll(BLANK_TOKEN_PATTERN)].length;
 }
 
 /** Blank numbers found in a passage, in the order they appear. */
 export function blankTokenNumbers(passage: string): number[] {
-  return [...passage.matchAll(BLANK_TOKEN_PATTERN)].map(match => Number(match[1]))
+  return [...passage.matchAll(BLANK_TOKEN_PATTERN)].map((match) =>
+    Number(match[1]),
+  );
 }
