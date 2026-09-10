@@ -1,8 +1,9 @@
-import type { LibraryState, SetMembership, WordEntry } from '@/types'
+import type { LibraryState, SenseId, SetMembership, WordEntry, WordKey } from '@/types'
 import { UNCATEGORIZED_FOLDER_ID } from './folders'
-import { mergeWord, normalizeWordKey } from './library'
+import { mergeWord } from './library'
 import { sanitizeMemberships } from './library-membership'
 import { questionUsesWords } from './question-ownership'
+import { entriesOf } from './record'
 import { createUniqueSetName } from './set-name'
 import { normalizeLibraryState } from './share'
 
@@ -11,10 +12,10 @@ export interface LibraryMergeResult {
   addedQuestions: number
 }
 
-function mergeWordEntries(base: Record<string, WordEntry>, entries: WordEntry[]): Record<string, WordEntry> {
+function mergeWordEntries(base: Record<WordKey, WordEntry>, entries: WordEntry[]): Record<WordKey, WordEntry> {
   const nextWords = { ...base }
   for (const word of entries) {
-    const wordKey = normalizeWordKey(word.wordKey)
+    const wordKey = word.wordKey
     nextWords[wordKey] = mergeWord(nextWords[wordKey], { ...word, wordKey })
   }
   return nextWords
@@ -22,14 +23,14 @@ function mergeWordEntries(base: Record<string, WordEntry>, entries: WordEntry[])
 
 function pruneOrphans(state: Omit<LibraryState, 'updatedAt'>): Omit<LibraryState, 'updatedAt'> {
   const memberships = Object.values(state.memberships).flat()
-  const referencedWordKeys = new Set(memberships.map(member => normalizeWordKey(member.wordKey)))
-  const senseReferences = new Map<string, Set<string>>()
+  const referencedWordKeys = new Set(memberships.map(member => member.wordKey))
+  const senseReferences = new Map<WordKey, Set<SenseId>>()
   for (const member of memberships) {
-    const wordKey = normalizeWordKey(member.wordKey)
+    const wordKey = member.wordKey
     const word = state.words[wordKey]
     if (!word)
       continue
-    const senseIds = senseReferences.get(wordKey) ?? new Set<string>()
+    const senseIds = senseReferences.get(wordKey) ?? new Set<SenseId>()
     for (const senseId of member.senseIds) {
       if (word.senses.some(sense => sense.id === senseId))
         senseIds.add(senseId)
@@ -37,7 +38,7 @@ function pruneOrphans(state: Omit<LibraryState, 'updatedAt'>): Omit<LibraryState
     senseReferences.set(wordKey, senseIds)
   }
 
-  const words = Object.fromEntries(Object.entries(state.words)
+  const words = Object.fromEntries(entriesOf(state.words)
     .filter(([wordKey]) => referencedWordKeys.has(wordKey) && (senseReferences.get(wordKey)?.size ?? 0) > 0)
     .map(([wordKey, word]) => {
       const senseIds = senseReferences.get(wordKey)!

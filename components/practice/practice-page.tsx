@@ -1,6 +1,6 @@
 "use client";
 
-import type { PracticeSessionSnapshot, StudyWord, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
+import type { PracticeSessionSnapshot, SenseId, StudyWord, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import {
@@ -51,7 +51,7 @@ export function PracticePage({ initialMode = "review", initialSet = "", initialA
   const [sessionQuestions, setSessionQuestions] = useState<QuestionItem[] | null>(null);
   const [sessionReviews, setSessionReviews] = useState<StudyWord[] | null>(null);
   const [retrying, setRetrying] = useState(false);
-  const [questionFailedSenses, setQuestionFailedSenses] = useState<string[]>([]);
+  const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>([]);
   const [answerChoices, setAnswerChoices] = useState<Array<number | null>>([]);
   const restoreAttempted = useRef(false);
   const sessionRestored = useRef(false);

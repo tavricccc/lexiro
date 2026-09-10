@@ -1,3 +1,19 @@
+import type { Brand } from './brand'
+
+/**
+ * A word after normalization: trimmed, lower-cased and single-spaced. Only
+ * `normalizeWordKey` produces one, so a value of this type is known to be in
+ * the form the Library indexes words by.
+ */
+export type WordKey = Brand<string, 'WordKey'>
+
+/**
+ * Identifies one meaning of one word. It keys FSRS scheduling and question
+ * statistics, so it must never be confused with a word key or with a composite
+ * key built from one.
+ */
+export type SenseId = Brand<string, 'SenseId'>
+
 export type QuestionDifficulty = 1 | 2 | 3
 export type QuestionCreateChoice = 'question' | 'reading'
 export type VocabularyDifficultyFilter = 'all' | '1' | '2' | '3'
@@ -21,7 +37,7 @@ export type GeneratedQuestionKind = QuestionStyle | PassageFormat
 export type VocabularyQuestionTypeFilter = 'all' | QuestionStyle | PassageFormat
 
 export interface WordSense {
-  id: string
+  id: SenseId
   pos: string
   meaningZh: string
   examples: string[]
@@ -34,15 +50,15 @@ export interface SenseEditValue {
 }
 
 export interface WordEntry {
-  wordKey: string
+  wordKey: WordKey
   word: string
   senses: WordSense[]
   updatedAt: string
 }
 
 export interface StudyWord {
-  id: string
-  wordKey: string
+  id: SenseId
+  wordKey: WordKey
   word: string
   pos: string
   meaning: string
@@ -59,8 +75,8 @@ export interface LibrarySet {
 }
 
 export interface SetMembership {
-  wordKey: string
-  senseIds: string[]
+  wordKey: WordKey
+  senseIds: SenseId[]
 }
 
 export interface VocabFolder {
@@ -84,8 +100,8 @@ export interface LibraryQuestionBase {
 export interface MultipleChoiceQuestion extends LibraryQuestionBase {
   kind: 'multipleChoice'
   questionStyle: QuestionStyle
-  wordKey: string
-  senseId: string
+  wordKey: WordKey
+  senseId: SenseId
   prompt: string
   options: string[]
   answerIndex: number
@@ -101,8 +117,8 @@ export interface ReadingChildQuestion {
   prompt: string
   options: string[]
   answerIndex: number
-  wordKey: string
-  senseId: string
+  wordKey: WordKey
+  senseId: SenseId
 }
 
 /**
@@ -117,7 +133,7 @@ export interface ReadingPack extends LibraryQuestionBase {
   format: PassageFormat
   title: string
   passage: string
-  wordKeys: string[]
+  wordKeys: WordKey[]
   questions: ReadingChildQuestion[]
   optionBank?: string[]
 }
@@ -126,7 +142,7 @@ export type LibraryQuestion = MultipleChoiceQuestion | ReadingPack
 
 export interface LibraryState {
   version: number
-  words: Record<string, WordEntry>
+  words: Record<WordKey, WordEntry>
   sets: LibrarySet[]
   memberships: Record<string, SetMembership[]>
   folders: VocabFolder[]

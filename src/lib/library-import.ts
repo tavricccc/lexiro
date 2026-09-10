@@ -1,14 +1,14 @@
-import type { LibraryQuestion, MultipleChoiceQuestion, PassageFormat, QuestionDifficulty, QuestionStyle, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
+import type { LibraryQuestion, MultipleChoiceQuestion, PassageFormat, QuestionDifficulty, QuestionStyle, ReadingChildQuestion, ReadingPack, SenseId, WordEntry, WordKey, WordSense } from '@/types'
 import { canonicalHash } from './hash'
-import { buildQuestionFingerprint, buildQuestionId, buildSenseId, normalizePartOfSpeech, normalizeWordKey } from './library'
+import { asSenseId, buildQuestionFingerprint, buildQuestionId, buildSenseId, normalizePartOfSpeech, normalizeWordKey } from './library'
 import { isValidAnswerIndex, passageBlankIssue, questionPromptIssue } from './question-shape'
 import { PASSAGE_FORMATS } from './question-formats'
 import { assertKnownKeys, requiredText } from './schema'
 import { containsHan } from './validation'
 
 export interface QuestionSourceRef {
-  wordKey: string
-  senseId: string
+  wordKey: WordKey
+  senseId: SenseId
 }
 
 export type QuestionSourceRefs = Record<string, QuestionSourceRef>
@@ -54,7 +54,7 @@ function childQuestionId(question: Omit<ReadingChildQuestion, 'id'>): string {
   return `child-${canonicalHash(question)}`
 }
 
-function normalizeSense(value: unknown, wordKey: string, index: number): WordSense {
+function normalizeSense(value: unknown, wordKey: WordKey, index: number): WordSense {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new Error(`第 ${index + 1} 個詞義格式錯誤`)
   const source = value as Record<string, unknown>
@@ -180,8 +180,8 @@ function normalizeMultipleChoice(value: Record<string, unknown>, index: number, 
   for (const [optionIndex, option] of options.entries())
     assertEnglish(option, `第 ${index + 1} 題選項 ${optionIndex + 1}`, requireEnglish)
   const resolvedSource = sourceRef(value, index, refs)
-  const wordKey = resolvedSource?.wordKey ?? (value.wordKey === undefined ? '' : normalizeWordKey(requiredText(value.wordKey, `questions[${index}].wordKey`)))
-  const senseId = resolvedSource?.senseId ?? (value.senseId === undefined ? '' : requiredText(value.senseId, `questions[${index}].senseId`))
+  const wordKey = resolvedSource?.wordKey ?? normalizeWordKey(value.wordKey === undefined ? '' : requiredText(value.wordKey, `questions[${index}].wordKey`))
+  const senseId = asSenseId(resolvedSource?.senseId ?? (value.senseId === undefined ? '' : requiredText(value.senseId, `questions[${index}].senseId`)))
   if (!wordKey || !senseId)
     throw new Error(`第 ${index + 1} 題必須綁定 wordKey 與 senseId`)
   const trap = optionalText(value.trap, `questions[${index}].trap`)
@@ -262,8 +262,8 @@ function normalizeReading(value: Record<string, unknown>, index: number, refs?: 
     for (const [optionIndex, option] of options.entries())
       assertEnglish(option, `閱讀題 ${childIndex + 1} 選項 ${optionIndex + 1}`, requireEnglish)
     const resolvedSource = sourceRef(child, childIndex, refs)
-    const wordKey = resolvedSource?.wordKey ?? (child.wordKey === undefined ? '' : normalizeWordKey(requiredText(child.wordKey, `reading.questions[${childIndex}].wordKey`)))
-    const senseId = resolvedSource?.senseId ?? (child.senseId === undefined ? '' : requiredText(child.senseId, `reading.questions[${childIndex}].senseId`))
+    const wordKey = resolvedSource?.wordKey ?? normalizeWordKey(child.wordKey === undefined ? '' : requiredText(child.wordKey, `reading.questions[${childIndex}].wordKey`))
+    const senseId = asSenseId(resolvedSource?.senseId ?? (child.senseId === undefined ? '' : requiredText(child.senseId, `reading.questions[${childIndex}].senseId`)))
     if (!wordKey || !senseId)
       throw new Error(`閱讀題 ${childIndex + 1} 必須綁定 wordKey 與 senseId`)
     const normalized: Omit<ReadingChildQuestion, 'id'> = {

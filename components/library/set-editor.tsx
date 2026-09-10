@@ -26,6 +26,7 @@ import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import {
+  asSenseId,
   buildSenseId,
   normalizePartOfSpeech,
   normalizeWordKey,
@@ -134,8 +135,10 @@ export function SetEditor({
         {
           newSenseId,
           newWordKey,
-          oldSenseId: word.originalSenseId,
-          oldWordKey: word.originalWordKey,
+          // Both came out of the Library through the form, which types every
+          // field as a plain string.
+          oldSenseId: asSenseId(word.originalSenseId),
+          oldWordKey: normalizeWordKey(word.originalWordKey),
         },
       ];
     });

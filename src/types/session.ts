@@ -1,4 +1,4 @@
-import type { StudyWord } from './library'
+import type { SenseId, StudyWord } from './library'
 import type { PracticeQuestion } from './set'
 
 import type { VocabularyQuestionTypeFilter } from './library'
@@ -91,8 +91,9 @@ export interface PracticeSessionSnapshot {
   revealed: boolean
   questionType: WorkspaceQuestionType
   difficulty: WorkspaceQuestionDifficulty
+  /** Composite practice item ids, not sense ids: see `QuestionItem.id`. */
   itemIds: string[]
-  failedSenseIds: string[]
+  failedSenseIds: SenseId[]
   retrying: boolean
   answerChoices: Array<number | null>
 }

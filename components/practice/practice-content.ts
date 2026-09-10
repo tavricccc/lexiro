@@ -1,4 +1,4 @@
-import type { GeneratedQuestionKind, LibraryQuestion, StudyWord, WordEntry, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
+import type { GeneratedQuestionKind, LibraryQuestion, SenseId, StudyWord, WordEntry, WordKey, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
 
 import { allocateDailyQuestionQuotas } from "@/src/lib/question-distribution";
 
@@ -8,7 +8,7 @@ export interface QuestionItem {
   prompt: string;
   options: string[];
   answerIndex: number;
-  senseId: string;
+  senseId: SenseId;
   type: GeneratedQuestionKind;
   /** Passage items carry the shared bank so the practice view can show it. */
   optionBank?: string[];
@@ -58,7 +58,7 @@ function applyOptionShuffle(item: QuestionItem): QuestionItem {
   return { ...item, options: shuffled.options, answerIndex: shuffled.answerIndex };
 }
 
-export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<string, WordEntry>): QuestionItem[][] {
+export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<WordKey, WordEntry>): QuestionItem[][] {
   const meaningBySense = new Map(
     Object.values(words).flatMap((word) => word.senses.map((sense) => [sense.id, sense.meaningZh] as const)),
   );
@@ -98,7 +98,7 @@ export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<
 
 export function selectQuestionItems(
   allQuestionGroups: QuestionItem[][],
-  allowedSenseIds: Set<string>,
+  allowedSenseIds: Set<SenseId>,
   amount: number,
   questionType: WorkspaceQuestionType,
   difficulty: WorkspaceQuestionDifficulty,
@@ -118,7 +118,7 @@ export function selectQuestionItems(
   }
 
   const result: QuestionItem[] = [];
-  const usedSenses = new Set<string>();
+  const usedSenses = new Set<SenseId>();
   const usedGroups = new Set<QuestionItem[]>();
   const take = (group: QuestionItem[], target = amount) => {
     if (usedGroups.has(group) || result.length >= target) return false;

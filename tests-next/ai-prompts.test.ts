@@ -7,12 +7,13 @@ import {
   questionBatchSize,
   splitGenerationBatches,
 } from "@/src/lib/question-generation";
+import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { buildWordGenerationSources, parseWordGenerationJson } from "@/src/lib/word-generation";
 
 const word: WordEntry = {
-  wordKey: "adapt",
+  wordKey: normalizeWordKey("adapt"),
   word: "adapt",
-  senses: [{ id: "adapt:v:1", pos: "v.", meaningZh: "適應", examples: ["We adapt quickly."] }],
+  senses: [{ id: asSenseId("adapt:v:1"), pos: "v.", meaningZh: "適應", examples: ["We adapt quickly."] }],
   updatedAt: "2026-08-16T00:00:00.000Z",
 };
 
@@ -74,9 +75,9 @@ describe("AI prompts", () => {
 describe("question batching", () => {
   const manySenses = (count: number): WordEntry[] =>
     Array.from({ length: count }, (_, index) => ({
-      wordKey: `word-${index}`,
+      wordKey: normalizeWordKey(`word-${index}`),
       word: `word-${index}`,
-      senses: [{ id: `word-${index}:v:1`, pos: "v.", meaningZh: "測試", examples: [] }],
+      senses: [{ id: asSenseId(`word-${index}:v:1`), pos: "v.", meaningZh: "測試", examples: [] }],
       updatedAt: "2026-08-16T00:00:00.000Z",
     }));
 

@@ -1,10 +1,9 @@
-import type { SetMembership, WordEntry } from '@/types'
-import { normalizeWordKey } from './library'
+import type { SetMembership, WordEntry, WordKey } from '@/types'
 
-export function sanitizeMemberships(memberships: SetMembership[], words: Record<string, WordEntry>): SetMembership[] {
-  const byWord = new Map<string, SetMembership>()
+export function sanitizeMemberships(memberships: SetMembership[], words: Record<WordKey, WordEntry>): SetMembership[] {
+  const byWord = new Map<WordKey, SetMembership>()
   for (const membership of memberships) {
-    const wordKey = normalizeWordKey(membership.wordKey)
+    const wordKey = membership.wordKey
     const word = words[wordKey]
     if (!word || !Array.isArray(word.senses) || !Array.isArray(membership.senseIds))
       continue
@@ -20,7 +19,7 @@ export function sanitizeMemberships(memberships: SetMembership[], words: Record<
 }
 
 export function membershipsCoverWords(words: WordEntry[], memberships: SetMembership[]): boolean {
-  const wordKeys = new Set(words.map(word => normalizeWordKey(word.wordKey)))
-  const membershipWordKeys = new Set(memberships.map(membership => normalizeWordKey(membership.wordKey)))
+  const wordKeys = new Set(words.map(word => word.wordKey))
+  const membershipWordKeys = new Set(memberships.map(membership => membership.wordKey))
   return Array.from(wordKeys).every(wordKey => membershipWordKeys.has(wordKey))
 }

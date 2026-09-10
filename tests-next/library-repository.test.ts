@@ -21,12 +21,13 @@ vi.mock('idb-keyval', () => ({
 
 const { LibraryRepository } = await import('@/src/lib/library-repository')
 const { createUncategorizedFolder } = await import('@/src/lib/folders')
-const { buildSenseId } = await import('@/src/lib/library')
+const { buildSenseId, normalizeWordKey } = await import('@/src/lib/library')
 const { canonicalHash } = await import('@/src/lib/hash')
 
 const TIMESTAMP = '2026-09-01T00:00:00.000Z'
 
-function libraryWith(wordKeys: string[], setName = '常用單字'): LibraryState {
+function libraryWith(rawWordKeys: string[], setName = '常用單字'): LibraryState {
+  const wordKeys = rawWordKeys.map(normalizeWordKey)
   const words = Object.fromEntries(wordKeys.map(wordKey => [wordKey, {
     wordKey,
     word: wordKey,

@@ -2,14 +2,15 @@ import type { AiSettings, LearningProgress, LibraryState } from "@/types";
 import { describe, expect, it } from "vitest";
 
 import { createUncategorizedFolder } from "@/src/lib/folders";
-import { buildSenseId } from "@/src/lib/library";
+import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { allocateDailyQuestionQuotas } from "@/src/lib/question-distribution";
 
-function library(setId: string, wordKey: string, setName: string): LibraryState {
+function library(setId: string, rawWordKey: string, setName: string): LibraryState {
   const timestamp = "2026-08-12T00:00:00.000Z";
+  const wordKey = normalizeWordKey(rawWordKey);
   const senseId = buildSenseId(wordKey, "n.", `${wordKey} 意思`);
   return {
     version: 1,

@@ -7,14 +7,15 @@ import {
   libraryDistractors,
   placeAnswer,
 } from "@/src/lib/question-builders";
+import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
 
 function word(name: string, pos = "v.", examples: string[] = []): WordEntry {
   return {
-    senses: [{ examples, id: `${name}:${pos}:1`, meaningZh: "測試", pos }],
+    senses: [{ examples, id: asSenseId(`${name}:${pos}:1`), meaningZh: "測試", pos }],
     updatedAt: "2026-08-16T00:00:00.000Z",
     word: name,
-    wordKey: name,
+    wordKey: normalizeWordKey(name),
   };
 }
 

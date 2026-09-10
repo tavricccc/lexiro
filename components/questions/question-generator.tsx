@@ -24,9 +24,9 @@ import {
 import { useLibraryStore } from "@/stores/library-store";
 import { generateWithSavedAi } from "@/src/lib/ai-provider";
 import { parseLibraryImport } from "@/src/lib/library-import";
+import { senseKey } from "@/src/lib/library";
 import {
   buildQuestionGenerationPrompt,
-  generationSenseKey,
   getQuestionSourceRefs,
   getSelectedGenerationWords,
   normalizeQuestionGenerationJson,
@@ -61,9 +61,9 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     for (const question of state.questions) {
       if (question.kind === "reading") {
         for (const child of question.questions)
-          covered.add(generationSenseKey(child.wordKey, child.senseId));
+          covered.add(senseKey(child.wordKey, child.senseId));
       } else {
-        covered.add(generationSenseKey(question.wordKey, question.senseId));
+        covered.add(senseKey(question.wordKey, question.senseId));
       }
     }
     return covered;
@@ -75,7 +75,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         word.senses
           .filter((sense) => !allowedSenseIds || allowedSenseIds.has(sense.id))
           .map((sense) => {
-            const key = generationSenseKey(word.wordKey, sense.id);
+            const key = senseKey(word.wordKey, sense.id);
             return {
               covered: coveredSenseKeys.has(key),
               key,

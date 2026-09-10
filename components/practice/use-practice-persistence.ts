@@ -15,6 +15,7 @@ import type {
   WorkspaceQuestionDifficulty,
   WorkspaceQuestionType,
   PracticeSessionSnapshot,
+  SenseId,
   SetMembership,
   StudyWord,
 } from "@/types";
@@ -154,7 +155,7 @@ export function usePersistPracticeSession({
   complete: boolean;
   correct: number;
   difficulty: WorkspaceQuestionDifficulty;
-  failedSenseIds: string[];
+  failedSenseIds: SenseId[];
   index: number;
   marked: number[];
   mode: WorkspacePracticeMode;

@@ -1,4 +1,5 @@
 export type { AiProvider, AiSettings } from './ai'
+export type { Brand } from './brand'
 export type {
   BackupPayload,
   FullBackupPayload,
@@ -34,12 +35,14 @@ export type {
   ReadingChildQuestion,
   ReadingPack,
   SenseEditValue,
+  SenseId,
   SetMembership,
   StudyWord,
   VocabFolder,
   VocabularyDifficultyFilter,
   VocabularyQuestionTypeFilter,
   WordEntry,
+  WordKey,
   WordSense,
 } from './library'
 export type {

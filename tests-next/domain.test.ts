@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWordKey } from "@/src/lib/library";
+import { asSenseId, buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWordKey } from "@/src/lib/library";
 import { createInitialProgress, isDue, reviewCard } from "@/src/lib/fsrs";
 
 describe("canonical vocabulary", () => {
   it("normalizes word and part of speech identity", () => {
     expect(normalizeWordKey("  Take   Off ")).toBe("take off");
     expect(normalizePartOfSpeech("Verb")).toBe("v.");
-    expect(buildSenseId("Word", "noun", "文字")).toBe(buildSenseId("word", "n.", "文字"));
+    expect(buildSenseId(normalizeWordKey("Word"), "noun", "文字")).toBe(buildSenseId(normalizeWordKey("word"), "n.", "文字"));
   });
 
   it("creates stable question fingerprints from content", () => {
@@ -17,8 +17,8 @@ describe("canonical vocabulary", () => {
       kind: "multipleChoice" as const,
       questionStyle: "vocabulary" as const,
       difficulty: 1 as const,
-      wordKey: "word",
-      senseId: "sense",
+      wordKey: normalizeWordKey("word"),
+      senseId: asSenseId("sense"),
       prompt: "The plan seemed _____ at first.",
       options: ["word", "bird", "tree", "road"],
       answerIndex: 0,

@@ -13,6 +13,7 @@ import { isSameLocalDay } from "@/src/lib/date";
 import type {
   CardProgress,
   ReviewRating,
+  SenseId,
   StudyWord,
   WorkspacePracticeMode,
 } from "@/types";
@@ -25,7 +26,7 @@ interface SessionSetters {
   setIndex: Setter<number>;
   setMarked: Setter<number[]>;
   setMode: Setter<WorkspacePracticeMode>;
-  setQuestionFailedSenses: Setter<string[]>;
+  setQuestionFailedSenses: Setter<SenseId[]>;
   setRetrying: Setter<boolean>;
   setRevealed: Setter<boolean>;
   setSelected: Setter<number | null>;
@@ -53,8 +54,8 @@ export function usePracticeSessionActions({
   activeReviews: StudyWord[];
   index: number;
   mode: WorkspacePracticeMode;
-  progressCards: Record<string, CardProgress>;
-  questionFailedSenses: string[];
+  progressCards: Record<SenseId, CardProgress>;
+  questionFailedSenses: SenseId[];
   questionItems: QuestionItem[];
   retrying: boolean;
   reviewItems: StudyWord[];

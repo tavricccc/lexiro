@@ -1,6 +1,7 @@
 import type { DashboardStats } from '@/types'
 import { describe, expect, it } from 'vitest'
 import { estimateJsonBytes } from '@/src/lib/hash'
+import { asSenseId } from '@/src/lib/library'
 import {
   addQuestionAttempt,
   createDefaultStats,
@@ -31,7 +32,7 @@ describe('sparse question stats', () => {
     const stats = normalizeDashboardStats({
       ...createDefaultStats(),
       questionStats: { 'cloze:1': { total: 3, correct: 2, retry: 0 }, 'reading:2': { total: 0, correct: 0, retry: 0 } },
-      questionStatsBySense: { 'sense-a': { 'cloze:1': { total: 3, correct: 2, retry: 0 } }, 'sense-b': {} },
+      questionStatsBySense: { [asSenseId('sense-a')]: { 'cloze:1': { total: 3, correct: 2, retry: 0 } }, [asSenseId('sense-b')]: {} },
     } satisfies DashboardStats)
     expect(Object.keys(stats.questionStats)).toEqual(['cloze:1'])
     expect(Object.keys(stats.questionStatsBySense)).toEqual(['sense-a'])

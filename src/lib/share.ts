@@ -1,8 +1,9 @@
-import type { DailyActivity, DashboardStats, FullBackupPayload, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, QuestionStats, QuestionStatTotals, SetMembership, SetSharePayload, SharedSet, VocabFolder, WordEntry } from '@/types'
+import type { DailyActivity, DashboardStats, FullBackupPayload, LearningProgress, LibraryQuestion, LibrarySet, LibraryState, QuestionStats, QuestionStatTotals, SetMembership, SetSharePayload, SharedSet, VocabFolder, WordEntry, WordKey } from '@/types'
 import { normalizeShareableAiSettings } from './ai-provider'
 import { normalizeFolderParentId, UNCATEGORIZED_FOLDER_ID } from './folders'
 import { QUESTION_STAT_KEYS } from './learning-defaults'
-import { normalizeWordKey } from './library'
+import { asSenseId, normalizeWordKey } from './library'
+import { keysOf } from './record'
 import { parseLibraryImportValue } from './library-import'
 import { questionBelongsToMemberships, questionUsesWords } from './question-ownership'
 import { assertKnownKeys, requiredNumber, requiredObject, requiredText } from './schema'
@@ -29,7 +30,7 @@ function normalizeQuestions(value: unknown, field: string): LibraryQuestion[] {
   return parsed.data.questions
 }
 
-function normalizeMemberships(value: unknown, words: Record<string, WordEntry>, field: string): SetMembership[] {
+function normalizeMemberships(value: unknown, words: Record<WordKey, WordEntry>, field: string): SetMembership[] {
   if (!Array.isArray(value) || !value.length)
     throw new Error(`${field} 至少需要一筆 membership`)
   const seen = new Set<string>()
@@ -45,7 +46,7 @@ function normalizeMemberships(value: unknown, words: Record<string, WordEntry>, 
       throw new Error(`${field}[${index}] 指向未知單字`)
     if (!Array.isArray(source.senseIds) || !source.senseIds.length || !source.senseIds.every(senseId => typeof senseId === 'string' && senseId.trim()))
       throw new Error(`${field}[${index}].senseIds 至少需要一個有效 senseId`)
-    const senseIds = source.senseIds.map(senseId => String(senseId).trim())
+    const senseIds = source.senseIds.map(senseId => asSenseId(String(senseId).trim()))
     if (new Set(senseIds).size !== senseIds.length)
       throw new Error(`${field}[${index}].senseIds 不可重複`)
     if (!senseIds.every(senseId => word.senses.some(sense => sense.id === senseId)))
@@ -54,7 +55,7 @@ function normalizeMemberships(value: unknown, words: Record<string, WordEntry>, 
   })
 }
 
-function normalizeQuestionsForWords(value: unknown, words: Record<string, WordEntry>, field: string): LibraryQuestion[] {
+function normalizeQuestionsForWords(value: unknown, words: Record<WordKey, WordEntry>, field: string): LibraryQuestion[] {
   const questions = normalizeQuestions(value, field)
   if (!questions.every(question => questionUsesWords(question, words)))
     throw new Error(`${field} 包含未收錄的 wordKey 或 senseId`)
@@ -68,7 +69,7 @@ export function normalizeSharedSet(value: unknown): SharedSet {
   if (!Array.isArray(rawWords) || !rawWords.length)
     throw new Error('單字集至少需要一個單字')
   const words = rawWords.map(normalizeWord)
-  const wordsByKey: Record<string, WordEntry> = {}
+  const wordsByKey: Record<WordKey, WordEntry> = {}
   for (const word of words) {
     if (wordsByKey[word.wordKey])
       throw new Error(`單字集包含重複 wordKey：${word.wordKey}`)
@@ -155,7 +156,7 @@ export function normalizeLibraryState(value: unknown): LibraryState {
   if (source.version !== 1)
     throw new Error('完整備份的 library version 不受支援')
   const rawWords = requiredObject(source.words, 'library.words')
-  const words: Record<string, WordEntry> = {}
+  const words: Record<WordKey, WordEntry> = {}
   for (const [index, [storedWordKey, word]] of Object.entries(rawWords).entries()) {
     const normalized = normalizeWord(word, index)
     if (storedWordKey !== normalized.wordKey)
@@ -214,7 +215,7 @@ export function normalizeLibraryState(value: unknown): LibraryState {
       throw new Error(`library.memberships 缺少 setId ${set.id}`)
   }
   const referencedWordKeys = new Set(Object.values(memberships).flatMap(membershipsForSet => membershipsForSet.map(membership => membership.wordKey)))
-  if (Object.keys(words).some(wordKey => !referencedWordKeys.has(wordKey)))
+  if (keysOf(words).some(wordKey => !referencedWordKeys.has(wordKey)))
     throw new Error('library.words 包含沒有 membership 的單字')
   const questions = normalizeQuestionsForWords(source.questions, words, 'library.questions')
   if (new Set(questions.map(question => question.id)).size !== questions.length)
@@ -257,7 +258,9 @@ export function normalizeLearningProgress(value: unknown): LearningProgress {
   const source = requiredObject(value, 'learning')
   assertKnownKeys(source, ['cards', 'updatedAt'], 'learning')
   const rawCards = requiredObject(source.cards, 'learning.cards')
-  const cards = Object.fromEntries(Object.entries(rawCards).map(([senseId, card]) => [senseId, normalizeCard(card, `learning.cards.${senseId}`)]))
+  const cards: LearningProgress['cards'] = {}
+  for (const [senseId, card] of Object.entries(rawCards))
+    cards[asSenseId(senseId)] = normalizeCard(card, `learning.cards.${senseId}`)
   return { cards, updatedAt: requiredText(source.updatedAt, 'learning.updatedAt') }
 }
 
@@ -292,7 +295,7 @@ function normalizeQuestionStatsBySense(value: unknown, field: string): Dashboard
   for (const [senseId, stats] of Object.entries(source)) {
     const totals = normalizeQuestionStats(stats, `${field}.${senseId}`)
     if (Object.keys(totals).length)
-      bySense[senseId] = totals
+      bySense[asSenseId(senseId)] = totals
   }
   return bySense
 }

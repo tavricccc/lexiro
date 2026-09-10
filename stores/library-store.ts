@@ -1,6 +1,6 @@
 "use client";
 
-import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from "@/types";
+import type { LibraryQuestion, LibrarySet, LibraryState, SenseId, SetMembership, VocabFolder, WordEntry, WordKey } from "@/types";
 import { create } from "zustand";
 
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -9,6 +9,7 @@ import { buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWor
 import { emptyLibraryState, getLibraryRepository, resetLibraryRepositoryCache } from "@/src/lib/library-repository";
 import { setStorageNamespace } from "@/src/lib/persist";
 import { questionUsesWords } from "@/src/lib/question-ownership";
+import { entriesOf } from "@/src/lib/record";
 import { markCloudSyncPending } from "@/src/lib/sync-pending";
 
 export interface WordDraftInput {
@@ -19,7 +20,7 @@ export interface WordDraftInput {
 }
 /** A question whose content already exists is reported, never silently dropped. */
 export type SaveQuestionResult = "saved" | "duplicate";
-export interface SenseRemap { oldWordKey: string; oldSenseId: string; newWordKey: string; newSenseId: string }
+export interface SenseRemap { oldWordKey: WordKey; oldSenseId: SenseId; newWordKey: WordKey; newSenseId: SenseId }
 
 interface LibraryStore {
   state: LibraryState;
@@ -60,19 +61,19 @@ function folderDescendants(folders: VocabFolder[], rootId: string): Set<string> 
   return ids;
 }
 
-function pruneWordsToMemberships(words: Record<string, WordEntry>, memberships: Record<string, SetMembership[]>): Record<string, WordEntry> {
-  const usedByWord = new Map<string, Set<string>>();
+function pruneWordsToMemberships(words: Record<WordKey, WordEntry>, memberships: Record<string, SetMembership[]>): Record<WordKey, WordEntry> {
+  const usedByWord = new Map<WordKey, Set<SenseId>>();
   for (const membership of Object.values(memberships).flat()) {
-    const ids = usedByWord.get(membership.wordKey) ?? new Set<string>();
+    const ids = usedByWord.get(membership.wordKey) ?? new Set<SenseId>();
     membership.senseIds.forEach((senseId) => ids.add(senseId));
     usedByWord.set(membership.wordKey, ids);
   }
-  return Object.fromEntries(Object.entries(words).flatMap(([wordKey, word]) => {
+  return Object.fromEntries(entriesOf(words).flatMap(([wordKey, word]) => {
     const ids = usedByWord.get(wordKey);
     if (!ids) return [];
     const senses = word.senses.filter((sense) => ids.has(sense.id));
     return senses.length ? [[wordKey, { ...word, senses }]] : [];
-  })) as Record<string, WordEntry>;
+  })) as Record<WordKey, WordEntry>;
 }
 
 export const useLibraryStore = create<LibraryStore>((set, get) => ({
@@ -153,7 +154,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     const previous = get().state.sets.find((entry) => entry.id === setId);
     const librarySet: LibrarySet = { id: setId, setName: setName.trim(), folderId: folderId || UNCATEGORIZED_FOLDER_ID, createdAt: previous?.createdAt ?? timestamp, updatedAt: timestamp };
     const words = { ...get().state.words };
-    const membershipMap = new Map<string, Set<string>>();
+    const membershipMap = new Map<WordKey, Set<SenseId>>();
     for (const draft of drafts) {
       const wordKey = normalizeWordKey(draft.word);
       const pos = normalizePartOfSpeech(draft.pos) || draft.pos.trim();
@@ -170,20 +171,20 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
           : [...entry.senses, { id: senseId, pos, meaningZh, examples: draft.examples.map((value) => value.trim()).filter(Boolean) }],
         updatedAt: timestamp,
       };
-      const senses = membershipMap.get(wordKey) ?? new Set<string>();
+      const senses = membershipMap.get(wordKey) ?? new Set<SenseId>();
       senses.add(senseId);
       membershipMap.set(wordKey, senses);
     }
     const memberships: SetMembership[] = [...membershipMap].map(([wordKey, senseIds]) => ({ wordKey, senseIds: [...senseIds] }));
     const remapBySense = new Map(remaps.map((entry) => [entry.oldSenseId, entry]));
-    const remappedMemberships = Object.fromEntries(Object.entries(get().state.memberships).map(([membershipSetId, entries]) => {
-      const grouped = new Map<string, Set<string>>();
+    const remappedMemberships: Record<string, SetMembership[]> = Object.fromEntries(Object.entries(get().state.memberships).map(([membershipSetId, entries]) => {
+      const grouped = new Map<WordKey, Set<SenseId>>();
       for (const entry of entries) {
         for (const senseId of entry.senseIds) {
           const remap = remapBySense.get(senseId);
           const targetWordKey = remap?.newWordKey ?? entry.wordKey;
           const targetSenseId = remap?.newSenseId ?? senseId;
-          const targetSenses = grouped.get(targetWordKey) ?? new Set<string>();
+          const targetSenses = grouped.get(targetWordKey) ?? new Set<SenseId>();
           targetSenses.add(targetSenseId);
           grouped.set(targetWordKey, targetSenses);
         }

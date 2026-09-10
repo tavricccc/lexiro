@@ -4,6 +4,7 @@ import type {
   WorkspaceQuestionDifficulty,
   WorkspaceQuestionType,
 } from '@/types'
+import { asSenseId } from './library'
 import { isRecord } from './schema'
 
 const MODES = new Set<WorkspacePracticeMode>(['review', 'questions'])
@@ -90,7 +91,7 @@ export function parsePracticeSession(raw: string | null): PracticeSessionSnapsho
     questionType: questionType as WorkspaceQuestionType,
     difficulty: difficulty as WorkspaceQuestionDifficulty,
     itemIds,
-    failedSenseIds: value.failedSenseIds,
+    failedSenseIds: value.failedSenseIds.map(asSenseId),
     retrying: value.retrying,
     answerChoices: itemIds.map((_, position) => Array.isArray(rawAnswerChoices) ? rawAnswerChoices[position] ?? null : null),
   }

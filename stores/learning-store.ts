@@ -1,6 +1,6 @@
 "use client";
 
-import type { CardProgress, DashboardStats, LearningProgress, QuestionStatKey, QuestionStatType, ReviewRating } from "@/types";
+import type { CardProgress, DashboardStats, LearningProgress, QuestionStatKey, QuestionStatType, ReviewRating, SenseId } from "@/types";
 import { create } from "zustand";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
@@ -8,6 +8,7 @@ import { localDateKey } from "@/src/lib/date";
 import { reviewCard } from "@/src/lib/fsrs";
 import { addQuestionAttempt, createDefaultStats, emptyDailyActivity, emptyQuestionStats, pruneDailyHistory, questionStatRow } from "@/src/lib/learning-defaults";
 import { createDebouncedSaver, loadFromStorage, saveToStorage } from "@/src/lib/persist";
+import { entriesOf } from "@/src/lib/record";
 import { normalizeDashboardStats, normalizeLearningProgress } from "@/src/lib/share";
 import { markCloudSyncPending } from "@/src/lib/sync-pending";
 
@@ -16,14 +17,14 @@ interface LearningStore {
   stats: DashboardStats;
   loaded: boolean;
   hydrate: () => Promise<void>;
-  rateSense: (senseId: string, rating: ReviewRating) => Promise<void>;
-  scheduleSenseFromQuestion: (senseId: string, rating: ReviewRating) => Promise<void>;
-  recordQuestion: (senseId: string, type: QuestionStatType, difficulty: 1 | 2 | 3, correct: boolean, retry?: boolean) => Promise<void>;
+  rateSense: (senseId: SenseId, rating: ReviewRating) => Promise<void>;
+  scheduleSenseFromQuestion: (senseId: SenseId, rating: ReviewRating) => Promise<void>;
+  recordQuestion: (senseId: SenseId, type: QuestionStatType, difficulty: 1 | 2 | 3, correct: boolean, retry?: boolean) => Promise<void>;
   setGoals: (words: number, questions: number) => Promise<void>;
   importState: (progress: LearningProgress, stats: DashboardStats, options?: { markPending?: boolean }) => Promise<void>;
   reloadNamespace: () => Promise<void>;
-  remapSenses: (remaps: Array<{ oldSenseId: string; newSenseId: string }>) => Promise<void>;
-  pruneToSenseIds: (senseIds: Set<string>) => Promise<void>;
+  remapSenses: (remaps: Array<{ oldSenseId: SenseId; newSenseId: SenseId }>) => Promise<void>;
+  pruneToSenseIds: (senseIds: Set<SenseId>) => Promise<void>;
 }
 
 const todayKey = () => localDateKey();
@@ -147,8 +148,8 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     const progress = { cards, updatedAt: new Date().toISOString() }; const stats = { ...get().stats, questionStatsBySense: bySense, updatedAt: new Date().toISOString() }; set({ progress, stats }); persist(progress, stats);
   },
   pruneToSenseIds: async (senseIds) => {
-    const progress = { cards: Object.fromEntries(Object.entries(get().progress.cards).filter(([senseId]) => senseIds.has(senseId))), updatedAt: new Date().toISOString() };
-    const stats = { ...get().stats, questionStatsBySense: Object.fromEntries(Object.entries(get().stats.questionStatsBySense).filter(([senseId]) => senseIds.has(senseId))), updatedAt: new Date().toISOString() };
+    const progress = { cards: Object.fromEntries(entriesOf(get().progress.cards).filter(([senseId]) => senseIds.has(senseId))), updatedAt: new Date().toISOString() };
+    const stats = { ...get().stats, questionStatsBySense: Object.fromEntries(entriesOf(get().stats.questionStatsBySense).filter(([senseId]) => senseIds.has(senseId))), updatedAt: new Date().toISOString() };
     set({ progress, stats });
     persist(progress, stats);
   },

@@ -1,16 +1,16 @@
-import type { LibraryQuestion, LibraryState, WordEntry } from '@/types'
+import type { LibraryQuestion, LibraryState, SenseId, WordEntry } from '@/types'
 import { describe, expect, it } from 'vitest'
 
 import { createUncategorizedFolder, UNCATEGORIZED_FOLDER_ID } from '@/src/lib/folders'
-import { buildSenseId, canonicalizeQuestion } from '@/src/lib/library'
+import { buildSenseId, canonicalizeQuestion, normalizeWordKey } from '@/src/lib/library'
 import { createSetSharePayload, parseSetShareValue } from '@/src/lib/set-share'
 
 const timestamp = '2026-08-17T00:00:00.000Z'
-const wordKey = 'adapt'
+const wordKey = normalizeWordKey('adapt')
 const includedSenseId = buildSenseId(wordKey, 'v.', '適應')
 const otherSenseId = buildSenseId(wordKey, 'v.', '改編')
 
-function question(id: string, senseId: string, clue: string): LibraryQuestion {
+function question(id: string, senseId: SenseId, clue: string): LibraryQuestion {
   return canonicalizeQuestion({
     id,
     fingerprint: 'pending',
@@ -63,7 +63,9 @@ describe('set sharing', () => {
   })
 
   it('rejects a share whose membership points to an unknown sense', () => {
-    const payload = createSetSharePayload(library(), 'set-1')
+    const payload = JSON.parse(JSON.stringify(createSetSharePayload(library(), 'set-1'))) as {
+      sets: Array<{ memberships: Array<{ senseIds: string[] }> }>
+    }
     payload.sets[0].memberships[0].senseIds = ['missing']
     expect(() => parseSetShareValue(payload)).toThrow(/senseId/u)
   })

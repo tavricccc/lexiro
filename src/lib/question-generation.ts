@@ -1,6 +1,6 @@
 import type { QuestionSourceRefs } from './library-import'
-import type { GeneratedQuestionKind, LibraryQuestion, QuestionDifficulty, WordEntry } from '@/types'
-import { normalizeWordKey } from './library'
+import type { GeneratedQuestionKind, LibraryQuestion, QuestionDifficulty, WordEntry, WordKey } from '@/types'
+import { senseKey } from './library'
 import { questionUsesWords } from './question-ownership'
 import { createSourceRef } from './source-ref'
 import { extractJsonText } from './ai-provider'
@@ -11,16 +11,12 @@ import { isPassageKind, READING_MIN_QUESTIONS, sensesPerRequest } from './questi
 export type { GeneratedQuestionKind }
 export type GeneratedQuestionDifficulty = QuestionDifficulty
 
-export function generationSenseKey(wordKey: string, senseId: string): string {
-  return `${normalizeWordKey(wordKey)}::${senseId}`
-}
-
 export function getSelectedGenerationWords(words: WordEntry[], selectedSenseKeys: string[]): WordEntry[] {
   const selected = new Set(selectedSenseKeys)
   return words
     .map(word => ({
       ...word,
-      senses: word.senses.filter(sense => selected.has(generationSenseKey(word.wordKey, sense.id))),
+      senses: word.senses.filter(sense => selected.has(senseKey(word.wordKey, sense.id))),
     }))
     .filter(word => word.senses.length > 0)
 }
@@ -87,7 +83,7 @@ export function splitGenerationBatches(words: WordEntry[], kind: GeneratedQuesti
 }
 
 export function filterQuestionsForWords(questions: LibraryQuestion[], words: WordEntry[]): LibraryQuestion[] {
-  const allowedWords: Record<string, WordEntry> = Object.fromEntries(words.map(word => [normalizeWordKey(word.wordKey), word]))
+  const allowedWords: Record<WordKey, WordEntry> = Object.fromEntries(words.map(word => [word.wordKey, word]))
   return questions.filter(question => questionUsesWords(question, allowedWords))
 }
 
@@ -134,15 +130,15 @@ export function generatedQuestionCoverageIssue(questions: LibraryQuestion[], wor
       return '題組的格式與所選題型不符'
     if (kind === 'reading' && pack.questions.length < READING_MIN_QUESTIONS)
       return `閱讀測驗至少要有 ${READING_MIN_QUESTIONS} 個子題`
-    const expectedSenseKeys = new Set(words.flatMap(word => word.senses.map(sense => generationSenseKey(word.wordKey, sense.id))))
-    const actualSenseKeys = pack.questions.map(question => generationSenseKey(question.wordKey, question.senseId))
+    const expectedSenseKeys = new Set(words.flatMap(word => word.senses.map(sense => senseKey(word.wordKey, sense.id))))
+    const actualSenseKeys = pack.questions.map(question => senseKey(question.wordKey, question.senseId))
     if (actualSenseKeys.some(key => !expectedSenseKeys.has(key)))
       return '子題必須對應本批輸入的詞義'
     return null
   }
 
-  const expectedSenseKeys = new Set(words.flatMap(word => word.senses.map(sense => generationSenseKey(word.wordKey, sense.id))))
-  const actualSenseKeys = questions.flatMap(question => question.kind === 'reading' ? [] : [generationSenseKey(question.wordKey, question.senseId)])
+  const expectedSenseKeys = new Set(words.flatMap(word => word.senses.map(sense => senseKey(word.wordKey, sense.id))))
+  const actualSenseKeys = questions.flatMap(question => question.kind === 'reading' ? [] : [senseKey(question.wordKey, question.senseId)])
   if (new Set(actualSenseKeys).size !== actualSenseKeys.length || actualSenseKeys.some(key => !expectedSenseKeys.has(key)))
     return '每個詞義最多只能生成一題'
   return null

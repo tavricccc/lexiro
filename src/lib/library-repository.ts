@@ -1,4 +1,4 @@
-import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
+import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry, WordKey } from '@/types'
 import { del, delMany, get, keys, set, setMany } from 'idb-keyval'
 import { cloneJson } from './clone'
 import { createUncategorizedFolder, sortFolders, UNCATEGORIZED_FOLDER_ID } from './folders'
@@ -147,7 +147,7 @@ export class LibraryRepository {
     const folders: VocabFolder[] = []
     const sets: LibrarySet[] = []
     const memberships: Record<string, SetMembership[]> = {}
-    const words: Record<string, WordEntry> = {}
+    const words: Record<WordKey, WordEntry> = {}
     const questions: LibraryQuestion[] = []
     for (const kind of RECORD_KINDS) {
       for (const [id, hash] of Object.entries(manifest.entries[kind])) {
@@ -159,7 +159,7 @@ export class LibraryRepository {
         else if (kind === 'membership')
           memberships[id] = value as SetMembership[]
         else if (kind === 'word')
-          words[id] = value as WordEntry
+          words[id as WordKey] = value as WordEntry
         else
           questions.push(value as LibraryQuestion)
       }

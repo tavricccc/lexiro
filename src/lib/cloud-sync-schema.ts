@@ -1,4 +1,4 @@
-import type { AiSettings, DashboardStats, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreSyncHeadDoc, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry } from '@/types'
+import type { AiSettings, DashboardStats, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreSyncHeadDoc, LearningProgress, LibrarySet, LibraryState, SetMembership, VocabFolder, WordEntry, WordKey } from '@/types'
 import { CLOUD_SCHEMA_VERSION, CLOUD_STATS_PAYLOAD_KEYS, MAX_LIBRARY_CHUNK_BYTES, MAX_LIBRARY_MANIFEST_BYTES } from '@/constants/cloud'
 import { getShareableAiSettings, normalizeAiSettings } from './ai-provider'
 import { CloudSyncError } from './cloud-sync-errors'
@@ -265,7 +265,7 @@ export function combineV5LibraryChunks(chunks: FirestoreLibraryV5Chunk[], manife
   validateV5LibraryChunkSet(chunks)
   if (!manifestUpdatedAt)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 缺少提交時間')
-  const words: Record<string, WordEntry> = {}
+  const words: Record<WordKey, WordEntry> = {}
   const sets: LibrarySet[] = []
   const memberships: Record<string, SetMembership[]> = {}
   const folders: VocabFolder[] = []

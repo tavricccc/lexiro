@@ -1,4 +1,4 @@
-import type { EditorItem, LibraryQuestion, MultipleChoiceQuestion, ReadingPack, SetMembership, StudyWord, WordEntry, WordSense } from '@/types'
+import type { EditorItem, LibraryQuestion, MultipleChoiceQuestion, ReadingPack, SenseId, SetMembership, StudyWord, WordEntry, WordKey, WordSense } from '@/types'
 import { canonicalHash } from './hash'
 import { randomUUID } from './id'
 
@@ -44,8 +44,18 @@ const PART_OF_SPEECH_ALIASES: Record<string, string> = {
   'phrase': 'phr.',
 }
 
-export function normalizeWordKey(word: string): string {
-  return word.trim().toLocaleLowerCase().replace(/\s+/g, ' ')
+/** The only way to produce a `WordKey`. Idempotent, so it is safe to re-apply. */
+export function normalizeWordKey(word: string): WordKey {
+  return word.trim().toLocaleLowerCase().replace(/\s+/g, ' ') as WordKey
+}
+
+/**
+ * Accepts a sense id that has already been checked against the senses it must
+ * belong to. Call this only where such a check has just happened — parsing an
+ * import file, reading a stored record — never to silence a type error.
+ */
+export function asSenseId(value: string): SenseId {
+  return value as SenseId
 }
 
 export function normalizePartOfSpeech(pos: string): string {
@@ -53,8 +63,8 @@ export function normalizePartOfSpeech(pos: string): string {
   return PART_OF_SPEECH_ALIASES[normalized] ?? ''
 }
 
-export function buildSenseId(wordKey: string, pos: string, meaningZh: string): string {
-  return `sense-${canonicalHash({ wordKey: normalizeWordKey(wordKey), pos: normalizePartOfSpeech(pos) || pos.trim().toLocaleLowerCase(), meaningZh: meaningZh.trim() })}`
+export function buildSenseId(wordKey: WordKey, pos: string, meaningZh: string): SenseId {
+  return `sense-${canonicalHash({ wordKey, pos: normalizePartOfSpeech(pos) || pos.trim().toLocaleLowerCase(), meaningZh: meaningZh.trim() })}` as SenseId
 }
 
 type QuestionContent = Omit<MultipleChoiceQuestion, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'> | Omit<ReadingPack, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'>
@@ -174,9 +184,34 @@ export function itemToMembership(item: Pick<EditorItem, 'word' | 'senses'>): Set
   return {
     wordKey,
     senseIds: item.senses
-      .map(sense => normalizePartOfSpeech(sense.pos) && sense.meaning.trim() ? buildSenseId(wordKey, sense.pos, sense.meaning) : '')
-      .filter(Boolean),
+      .filter(sense => normalizePartOfSpeech(sense.pos) && sense.meaning.trim())
+      .map(sense => buildSenseId(wordKey, sense.pos, sense.meaning)),
   }
+}
+
+/**
+ * A word key and a sense id joined into one value, for places that must carry
+ * the pair through a single string — a select option, a generation batch key.
+ */
+export function senseKey(wordKey: WordKey, senseId: SenseId): string {
+  return `${wordKey}::${senseId}`
+}
+
+/**
+ * Splits a sense key and checks the pair against the Library. Returning the
+ * branded ids only after that check is what keeps a composite key from being
+ * mistaken for a sense id.
+ */
+export function parseSenseKey(value: string, words: Record<WordKey, WordEntry>): { wordKey: WordKey, senseId: SenseId } | null {
+  const separator = value.indexOf('::')
+  if (separator < 0)
+    return null
+  const wordKey = normalizeWordKey(value.slice(0, separator))
+  const senseId = asSenseId(value.slice(separator + 2))
+  const word = words[wordKey]
+  if (!word || !word.senses.some(sense => sense.id === senseId))
+    return null
+  return { wordKey, senseId }
 }
 
 export function senseToStudyWord(word: WordEntry, sense: WordSense): StudyWord {

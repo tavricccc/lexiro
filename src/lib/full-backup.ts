@@ -21,6 +21,7 @@ import {
   normalizeLearningProgress,
   normalizeLibraryState,
 } from "@/src/lib/share";
+import { keysOf } from "@/src/lib/record";
 import { isRecord } from "@/src/lib/schema";
 import { localDateKey } from "@/src/lib/date";
 
@@ -98,7 +99,7 @@ export function prepareBackupImport(
     aiSettings: backup.aiSettings,
     sets: mergedLibrary.result.addedSets,
     questions: mergedLibrary.result.addedQuestions,
-    cards: Object.keys(backup.learning.cards).filter(
+    cards: keysOf(backup.learning.cards).filter(
       (senseId) => !currentProgress.cards[senseId],
     ).length,
   };

@@ -16,6 +16,7 @@ import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
 import { randomUUID } from "@/src/lib/id";
+import { parseSenseKey, senseKey } from "@/src/lib/library";
 import { difficultyOptions, sentenceStyleOptions } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 
@@ -40,7 +41,7 @@ export function QuestionEditor({ questionId }: { questionId?: string }) {
       Object.values(state.words).flatMap((word) =>
         word.senses.map((sense) => ({
           label: `${word.word} · ${sense.pos} ${sense.meaningZh}`,
-          value: `${word.wordKey}::${sense.id}`,
+          value: senseKey(word.wordKey, sense.id),
         })),
       ),
     [state.words],
@@ -68,7 +69,7 @@ export function QuestionEditor({ questionId }: { questionId?: string }) {
       options: [0, 1, 2, 3].map((index) => current.options[index] ?? ""),
       prompt: current.prompt,
       questionStyle: current.questionStyle,
-      source: `${current.wordKey}::${current.senseId}`,
+      source: senseKey(current.wordKey, current.senseId),
     });
   }, [current, form]);
 
@@ -78,7 +79,12 @@ export function QuestionEditor({ questionId }: { questionId?: string }) {
   }, [current, form, senses]);
 
   const submit = form.handleSubmit(async (values) => {
-    const [wordKey, senseId] = values.source.split("::");
+    const source = parseSenseKey(values.source, state.words);
+    if (!source) {
+      form.setError("source", { message: t("questions.unknownSense") });
+      return;
+    }
+    const { senseId, wordKey } = source;
     const timestamp = new Date().toISOString();
     const question: MultipleChoiceQuestion = {
       answerIndex: Number(values.answerIndex),

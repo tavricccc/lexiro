@@ -1,4 +1,4 @@
-import type { CardProgress, LibraryState, WordEntry } from "@/types";
+import type { CardProgress, LibraryState, SenseId, WordEntry, WordKey } from '@/types';
 
 import { isDue } from "@/src/lib/fsrs";
 
@@ -10,8 +10,8 @@ export interface LibrarySetMetrics {
 }
 
 export function countReviewableSenses(
-  words: Record<string, WordEntry>,
-  cards: Record<string, CardProgress>,
+  words: Record<WordKey, WordEntry>,
+  cards: Record<SenseId, CardProgress>,
   now = new Date(),
 ): number {
   let count = 0;
@@ -33,11 +33,11 @@ export function countQuestionItems(state: LibraryState): number {
 
 export function buildLibrarySetMetrics(
   state: LibraryState,
-  cards: Record<string, CardProgress>,
+  cards: Record<SenseId, CardProgress>,
   now = new Date(),
 ): Map<string, LibrarySetMetrics> {
   const metrics = new Map<string, LibrarySetMetrics>();
-  const setIdsBySense = new Map<string, Set<string>>();
+  const setIdsBySense = new Map<SenseId, Set<string>>();
 
   for (const set of state.sets) {
     const senseIds = new Set(

@@ -15,6 +15,7 @@ import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
 import { randomUUID } from "@/src/lib/id";
+import { parseSenseKey, senseKey } from "@/src/lib/library";
 import { difficultyOptions } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 
@@ -47,7 +48,7 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
       Object.values(state.words).flatMap((word) =>
         word.senses.map((sense) => ({
           label: `${word.word} · ${sense.meaningZh}`,
-          value: `${word.wordKey}::${sense.id}`,
+          value: senseKey(word.wordKey, sense.id),
         })),
       ),
     [state.words],
@@ -83,7 +84,7 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
         id: child.id,
         options: [...child.options],
         prompt: child.prompt,
-        source: `${child.wordKey}::${child.senseId}`,
+        source: senseKey(child.wordKey, child.senseId),
       })),
     );
   }, [current]);
@@ -112,8 +113,13 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
     setSaveError("");
     if (!valid) return;
     const timestamp = new Date().toISOString();
-    const questions = children.map((child) => {
-      const [wordKey, senseId] = child.source.split("::");
+    const sources = children.map((child) => parseSenseKey(child.source, state.words));
+    if (sources.some((source) => !source)) {
+      setSaveError(t("questions.unknownSense"));
+      return;
+    }
+    const questions = children.map((child, index) => {
+      const { senseId, wordKey } = sources[index]!;
       return {
         answerIndex: child.answerIndex,
         id: child.id ?? randomUUID(),

@@ -1,4 +1,4 @@
-import type { StudyWord } from './library'
+import type { SenseId, StudyWord } from './library'
 
 export type ReviewRating = 'again' | 'good'
 import type { GeneratedQuestionKind } from './library'
@@ -48,7 +48,7 @@ export interface CardProgress {
 }
 
 export interface LearningProgress {
-  cards: Record<string, CardProgress>
+  cards: Record<SenseId, CardProgress>
   updatedAt: string
 }
 
@@ -69,7 +69,7 @@ export interface DashboardStats {
   todayQuestionReviews: number
   todayQuestionCorrectReviews: number
   questionStats: QuestionStatTotals
-  questionStatsBySense: Record<string, QuestionStatTotals>
+  questionStatsBySense: Record<SenseId, QuestionStatTotals>
   dailyHistory: Record<string, DailyActivity>
   updatedAt: string
 }
