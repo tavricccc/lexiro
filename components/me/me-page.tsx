@@ -6,7 +6,7 @@ import { AccountSection } from "@/components/me/account-section";
 import { AiSettingsSection } from "@/components/me/ai-settings-section";
 import { DataSection } from "@/components/me/data-section";
 import { PreferencesSection } from "@/components/me/preferences-section";
-import { PageHeader } from "@/components/page-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
 import {
   defaultAiSettings,
@@ -16,9 +16,15 @@ import type { AiSettings } from "@/types";
 
 export function MePage() {
   const [aiSettings, setAiSettings] = useState<AiSettings>(defaultAiSettings);
+  // Autosave must not treat the jump from defaults to stored values as an edit,
+  // so the section is told when the real settings have landed.
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    void loadAiSettingsState().then(setAiSettings);
+    void loadAiSettingsState().then((settings) => {
+      setAiSettings(settings);
+      setHydrated(true);
+    });
   }, []);
 
   return (
@@ -26,7 +32,11 @@ export function MePage() {
       <PageHeader title={t("me.title")} description={t("me.description")} />
       <AccountSection />
       <PreferencesSection />
-      <AiSettingsSection settings={aiSettings} onChange={setAiSettings} />
+      <AiSettingsSection
+        hydrated={hydrated}
+        onChange={setAiSettings}
+        settings={aiSettings}
+      />
       <DataSection
         aiSettings={aiSettings}
         onAiSettingsChange={setAiSettings}

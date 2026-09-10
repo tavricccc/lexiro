@@ -1,6 +1,8 @@
 import type { StudyWord } from './library'
 import type { PracticeQuestion } from './set'
 
+import type { VocabularyQuestionTypeFilter } from './library'
+
 export type PracticeMode = 'quiz' | 'fillBlank' | 'reading'
 export type SessionStatus = 'in-progress' | 'completed'
 
@@ -70,7 +72,9 @@ export interface ResultRow {
 }
 
 export type WorkspacePracticeMode = 'review' | 'questions'
-export type WorkspaceQuestionType = 'all' | 'standard' | 'fillBlank' | 'reading'
+/** The question filter shares one union with the library so a new exam
+ * format shows up in the practice filter without a second edit. */
+export type WorkspaceQuestionType = VocabularyQuestionTypeFilter
 export type WorkspaceQuestionDifficulty = 'all' | '1' | '2' | '3'
 
 export interface PracticeSessionSnapshot {

@@ -9,6 +9,7 @@ import { normalizeWordKey } from './library'
 import { LibraryRepositoryRemoteCache } from './library-repository-remote-cache'
 import { getStorageNamespace, loadFromStorage } from './persist'
 import { normalizeLibraryState } from './share'
+import { randomUUID } from './id'
 
 /** IndexedDB schema for the large library. The active marker is the only pointer readers use. */
 export const LIBRARY_REPOSITORY_SCHEMA_VERSION = 1 as const
@@ -400,7 +401,7 @@ export class LibraryRepository {
   }
 
   private async quarantineLegacyStorage(raw: string): Promise<boolean> {
-    const key = `${this.namespace}:${LIBRARY_STORAGE_KEY}:quarantine:${Date.now()}-${crypto.randomUUID()}`
+    const key = `${this.namespace}:${LIBRARY_STORAGE_KEY}:quarantine:${Date.now()}-${randomUUID()}`
     try {
       await set(key, raw)
       return true
@@ -914,7 +915,7 @@ export class LibraryRepository {
       const current = await this.loadCollections()
       collections = normalizeCollections({ ...current, ...records })
     }
-    const generation = `generation-${Date.now()}-${crypto.randomUUID()}`
+    const generation = `generation-${Date.now()}-${randomUUID()}`
     const entries = recordEntries(collections)
     const staging = emptyStagingIds(generation, collections.updatedAt)
     staging.questionIdsBySet = questionIdsBySet(collections)

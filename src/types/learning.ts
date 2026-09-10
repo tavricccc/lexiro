@@ -1,7 +1,10 @@
 import type { StudyWord } from './library'
 
 export type ReviewRating = 'again' | 'good'
-export type QuestionStatType = 'standard' | 'fillBlank' | 'reading'
+import type { GeneratedQuestionKind } from './library'
+
+/** Stats are kept per exam format, so the progress page mirrors a real paper. */
+export type QuestionStatType = GeneratedQuestionKind
 export type QuestionStatKey = `${QuestionStatType}:${1 | 2 | 3}`
 
 export interface QuestionStats {

@@ -3,13 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Brain,
-  ClipboardCheck,
-  LibraryBig,
-  UserRound,
-} from "lucide-react";
-
 import { t, type TranslationKey } from "@/lib/i18n";
 import {
   commitRouteHistory,
@@ -18,24 +11,25 @@ import {
 } from "@/lib/navigation-memory";
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
 import { BrandLockup } from "@/components/ui/brand";
+import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 import { SyncIndicator } from "@/components/sync-indicator";
 import { useUIStore } from "@/stores/ui-store";
 
 const destinations = [
-  { href: "/", label: "nav.study", icon: Brain },
-  { href: "/library", label: "nav.library", icon: LibraryBig },
+  { href: "/", label: "nav.study", icon: Icons.review },
+  { href: "/library", label: "nav.library", icon: Icons.library },
   {
     href: "/practice",
     activePathPrefix: "/practice",
     label: "nav.practice",
-    icon: ClipboardCheck,
+    icon: Icons.practice,
   },
 ] satisfies {
   href: string;
   activePathPrefix?: string;
   label: TranslationKey;
-  icon: typeof ClipboardCheck;
+  icon: typeof Icons.practice;
 }[];
 
 function isSecondaryMobileRoute(pathname: string) {
@@ -100,7 +94,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       )}
       data-focus={practiceActive}
     >
-      {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-background/92 p-3 backdrop-blur-xl md:flex">
+      {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-[var(--surface-stage)]/92 p-3 backdrop-blur-xl md:flex">
         <div className="flex items-center justify-between px-2 pb-5 pt-2">
           <BrandLockup href="/" />
           <SyncIndicator />
@@ -117,10 +111,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           className={cn(
             "flex min-h-10 items-center gap-3 rounded-[0.625rem] px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-[var(--surface-hover)] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
             pathname === "/me" &&
-              "bg-secondary text-foreground shadow-[var(--shadow-control)]",
+              "bg-brand-100 text-brand-700 shadow-[var(--shadow-control)]",
           )}
         >
-          <UserRound className="size-[1.125rem]" />
+          <Icons.account className="size-[1.125rem]" />
           {t("nav.me")}
         </Link>
       </aside>}
@@ -138,8 +132,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <div className="app-mobile-header mb-4 flex h-10 items-center justify-between md:hidden">
               <BrandLockup
                 href="/"
-                markClassName="size-9 rounded-lg p-2"
-                className="gap-2"
+                className="gap-2.5"
               />
               <div className="flex items-center gap-1">
                 <Link
@@ -148,10 +141,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   aria-current={pathname === "/me" ? "page" : undefined}
                   className={cn(
                     "grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
-                    pathname === "/me" && "bg-secondary text-foreground",
+                    pathname === "/me" && "bg-brand-100 text-brand-700",
                   )}
                 >
-                  <UserRound className="size-[1.125rem]" />
+                  <Icons.account className="size-[1.125rem]" />
                 </Link>
                 <SyncIndicator />
               </div>

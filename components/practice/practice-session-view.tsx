@@ -1,12 +1,14 @@
 "use client";
 
 import type { ReviewRating, StudyWord, WorkspacePracticeMode } from "@/types";
-import { Bookmark, Check, SkipForward, Volume2, X } from "lucide-react";
 import { motion, useMotionValue, useReducedMotion, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 import type { QuestionItem } from "@/components/practice/practice-content";
 import { Button } from "@/components/ui/button";
+import { PassageView } from "@/components/practice/passage-view";
+import { Icons } from "@/components/ui/icons";
+import { questionFormatLabel } from "@/lib/question-options";
 import { t } from "@/lib/i18n";
 
 const practiceTransition = { duration: 0.16, ease: [0.22, 1, 0.36, 1] as const };
@@ -77,11 +79,11 @@ export function PracticeSessionView({
           <>
             <div className="mt-4 flex justify-end gap-1">
               <Button className="min-h-11 sm:min-h-9" size="sm" variant={marked ? "secondary" : "ghost"} onClick={onToggleMark}>
-                <Bookmark className="size-4" />{t("practice.mark")}
+                <Icons.mark />{t("practice.mark")}
               </Button>
               {selected === null && (
                 <Button className="min-h-11 sm:min-h-9" size="sm" variant="ghost" disabled={busy} onClick={onSkip}>
-                  <SkipForward className="size-4" />{t("practice.skip")}
+                  <Icons.skip />{t("practice.skip")}
                 </Button>
               )}
             </div>
@@ -89,18 +91,18 @@ export function PracticeSessionView({
           </>
         ) : null}
       </motion.div>
-      <KeyboardHints mode={mode} revealed={revealed} answered={selected !== null} typing={typing} />
+      <KeyboardHints mode={mode} optionCount={question?.options.length ?? 4} revealed={revealed} answered={selected !== null} typing={typing} />
     </div>
   );
 }
 
-function KeyboardHints({ mode, revealed, answered, typing }: { mode: WorkspacePracticeMode; revealed: boolean; answered: boolean; typing: boolean }) {
+function KeyboardHints({ mode, optionCount, revealed, answered, typing }: { mode: WorkspacePracticeMode; optionCount: number; revealed: boolean; answered: boolean; typing: boolean }) {
   return (
     <div aria-hidden className="mt-6 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground md:flex">
       {mode === "review" && !typing && !revealed && <ShortcutHint keys="Enter" label={t("practice.reveal")} />}
       {mode === "review" && !typing && revealed && <ShortcutHint keys="A" label={t("practice.again")} />}
       {mode === "review" && !typing && revealed && <ShortcutHint keys="G" label={t("practice.good")} />}
-      {mode === "questions" && !answered && <ShortcutHint keys="1 – 4" label={t("practice.shortcutAnswer")} />}
+      {mode === "questions" && !answered && <ShortcutHint keys={optionCount > 9 ? "A – J" : `1 – ${optionCount}`} label={t("practice.shortcutAnswer")} />}
       {mode === "questions" && answered && <ShortcutHint keys="Enter" label={t("practice.next")} />}
     </div>
   );
@@ -172,7 +174,7 @@ function ReviewCard({ item, revealed, busy, typing, onReveal, onRate }: { item: 
         {showWord && (
           <>
             <button type="button" aria-label={t("practice.speak")} onClick={speak} className="mx-auto mb-5 grid size-11 place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-control)] transition-transform duration-150 active:scale-[.94] focus-visible:ring-2 focus-visible:ring-ring/40">
-              <Volume2 className="size-4" />
+              <Icons.speak />
             </button>
             <h1 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.word}</h1>
             <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
@@ -243,11 +245,27 @@ function QuestionCard({ item, selected, busy, last, onAnswer, onNext }: { item: 
     <section className="mt-5 rounded-2xl bg-muted/70 p-5 sm:p-7">
       {item.question.kind === "reading" && (
         <div className="mb-6 border-b pb-6">
-          <p className="whitespace-pre-line text-sm leading-7 text-muted-foreground">{item.question.passage}</p>
+          <p className="mb-3 text-xs font-medium text-brand-600">
+            {questionFormatLabel(item.type)}
+          </p>
+          <PassageView activeBlank={item.blank} passage={item.question.passage} />
         </div>
       )}
-      <h1 className="max-w-2xl text-[1.0625rem] font-semibold leading-7 tracking-[-0.01em] sm:text-lg">{item.prompt}</h1>
-      <div className="mt-6 grid gap-2.5">
+      {/* A blank-format item has no question of its own -- the passage is the
+          question, so the heading just says which blank is being filled. */}
+      <h1 className="max-w-2xl text-[1.0625rem] font-semibold leading-7 tracking-[-0.01em] sm:text-lg">
+        {item.blank ? t("questions.blankLabel", { index: item.blank }) : item.prompt}
+      </h1>
+      {item.optionBank && (
+        <p className="mt-1.5 text-xs text-muted-foreground">
+          {t("practice.sharedBankHint")}
+        </p>
+      )}
+      {/* A 文意選填 bank runs to ten short words; ten full-width rows would push
+          the passage off screen, so a wide bank goes two-up. */}
+      <div
+        className={`mt-6 grid gap-2.5${item.options.length > 5 ? " sm:grid-cols-2" : ""}`}
+      >
         {item.options.map((option, optionIndex) => {
           const isCorrect = optionIndex === item.answerIndex;
           const isSelected = selected === optionIndex;
@@ -271,8 +289,8 @@ function QuestionCard({ item, selected, busy, last, onAnswer, onNext }: { item: 
             >
               <span className={`grid size-7 shrink-0 place-items-center rounded-lg text-xs font-semibold transition-colors duration-150 ${badgeClass}`}>{String.fromCharCode(65 + optionIndex)}</span>
               <span className="min-w-0 flex-1 leading-6">{option}</span>
-              {answered && isCorrect && <Check className="size-4 shrink-0 text-success" />}
-              {answered && isSelected && !isCorrect && <X className="size-4 shrink-0 text-destructive" />}
+              {answered && isCorrect && <Icons.success className="size-4 shrink-0 text-success" />}
+              {answered && isSelected && !isCorrect && <Icons.incorrect className="size-4 shrink-0 text-destructive" />}
             </button>
           );
         })}
@@ -280,7 +298,7 @@ function QuestionCard({ item, selected, busy, last, onAnswer, onNext }: { item: 
       {answered && (
         <motion.div className="mt-6 border-t pt-5" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={practiceTransition} aria-live="polite">
           <p className={`flex items-center gap-2 text-sm font-semibold ${selected === item.answerIndex ? "text-success" : "text-destructive"}`}>
-            {selected === item.answerIndex ? <Check className="size-4" /> : <X className="size-4" />}
+            {selected === item.answerIndex ? <Icons.success className="size-4" /> : <Icons.incorrect className="size-4" />}
             {selected === item.answerIndex ? t("practice.correct") : t("practice.incorrect")}
           </p>
           {selected !== item.answerIndex && <p className="mt-2 text-sm text-foreground">{t("practice.answer", { answer: item.options[item.answerIndex] ?? "" })}</p>}

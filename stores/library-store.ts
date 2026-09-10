@@ -4,6 +4,7 @@ import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, VocabFol
 import { create } from "zustand";
 
 import { createUncategorizedFolder, UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { randomUUID } from "@/src/lib/id";
 import { buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWordKey } from "@/src/lib/library";
 import { getLibraryRepository, resetLibraryRepositoryCache } from "@/src/lib/library-repository";
 import { setStorageNamespace } from "@/src/lib/persist";
@@ -96,7 +97,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     const timestamp = now();
     const normalizedName = name.trim().toLocaleLowerCase();
     if (!normalizedName || get().state.folders.some((folder) => folder.parentId === parentId && folder.name.trim().toLocaleLowerCase() === normalizedName)) throw new Error("folder-name-conflict");
-    const folder: VocabFolder = { id: crypto.randomUUID(), name: name.trim(), ...(parentId ? { parentId } : {}), order: get().state.folders.length, createdAt: timestamp, updatedAt: timestamp };
+    const folder: VocabFolder = { id: randomUUID(), name: name.trim(), ...(parentId ? { parentId } : {}), order: get().state.folders.length, createdAt: timestamp, updatedAt: timestamp };
     const state = { ...get().state, folders: [...get().state.folders, folder], updatedAt: timestamp };
     await commit(state);
     set({ state });
@@ -150,7 +151,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
 
   saveSet: async ({ id, setName, folderId, words: drafts, remaps = [] }) => {
     const timestamp = now();
-    const setId = id ?? crypto.randomUUID();
+    const setId = id ?? randomUUID();
     const previous = get().state.sets.find((entry) => entry.id === setId);
     const librarySet: LibrarySet = { id: setId, setName: setName.trim(), folderId: folderId || UNCATEGORIZED_FOLDER_ID, createdAt: previous?.createdAt ?? timestamp, updatedAt: timestamp };
     const words = { ...get().state.words };

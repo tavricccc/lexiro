@@ -1,50 +1,189 @@
 "use client";
 
-import type { LibraryQuestion, MultipleChoiceQuestion } from "@/types";
-import { ArrowLeft } from "lucide-react";
+import type { LibraryQuestion, MultipleChoiceQuestion, QuestionStyle } from "@/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 
-import { PageHeader } from "@/components/page-header";
+import { AnswerOptions } from "@/components/questions/answer-options";
 import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
+import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { PageHeader } from "@/components/ui/page-header";
+import { SelectField } from "@/components/ui/select-field";
+import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
+import { randomUUID } from "@/src/lib/id";
+import { difficultyOptions, sentenceStyleOptions } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 
-interface Values { questionStyle: "standard" | "fillBlank"; difficulty: 1 | 2 | 3; source: string; prompt: string; option0: string; option1: string; option2: string; option3: string; answerIndex: number; explanation: string }
+interface Values {
+  answerIndex: number;
+  difficulty: 1 | 2 | 3;
+  explanation: string;
+  options: string[];
+  prompt: string;
+  questionStyle: QuestionStyle;
+  source: string;
+}
 
 export function QuestionEditor({ questionId }: { questionId?: string }) {
   const router = useRouter();
   const { state, saveQuestion } = useLibraryStore();
-  const current = questionId ? state.questions.find((entry) => entry.id === questionId) : undefined;
+  const current = questionId
+    ? state.questions.find((entry) => entry.id === questionId)
+    : undefined;
   const senses = useMemo(
-    () => Object.values(state.words).flatMap((word) => word.senses.map((sense) => ({ value: `${word.wordKey}::${sense.id}`, label: `${word.word} · ${sense.pos} ${sense.meaningZh}` }))),
+    () =>
+      Object.values(state.words).flatMap((word) =>
+        word.senses.map((sense) => ({
+          label: `${word.word} · ${sense.pos} ${sense.meaningZh}`,
+          value: `${word.wordKey}::${sense.id}`,
+        })),
+      ),
     [state.words],
   );
-  const form = useForm<Values>({ defaultValues: { questionStyle: "standard", difficulty: 1, source: senses[0]?.value ?? "", prompt: "", option0: "", option1: "", option2: "", option3: "", answerIndex: 0, explanation: "" } });
+  const form = useForm<Values>({
+    defaultValues: {
+      answerIndex: 0,
+      difficulty: 1,
+      explanation: "",
+      options: ["", "", "", ""],
+      prompt: "",
+      questionStyle: "vocabulary",
+      source: senses[0]?.value ?? "",
+    },
+  });
+  const answerIndex = form.watch("answerIndex");
+  const options = form.watch("options");
 
   useEffect(() => {
     if (!current || current.kind === "reading") return;
-    form.reset({ questionStyle: current.questionStyle, difficulty: current.difficulty, source: `${current.wordKey}::${current.senseId}`, prompt: current.prompt, option0: current.options[0] ?? "", option1: current.options[1] ?? "", option2: current.options[2] ?? "", option3: current.options[3] ?? "", answerIndex: current.answerIndex, explanation: current.explanation ?? "" });
+    form.reset({
+      answerIndex: current.answerIndex,
+      difficulty: current.difficulty,
+      explanation: current.explanation ?? "",
+      options: [0, 1, 2, 3].map((index) => current.options[index] ?? ""),
+      prompt: current.prompt,
+      questionStyle: current.questionStyle,
+      source: `${current.wordKey}::${current.senseId}`,
+    });
   }, [current, form]);
+
   useEffect(() => {
-    if (!current && senses[0] && !form.getValues("source")) form.setValue("source", senses[0].value);
+    if (!current && senses[0] && !form.getValues("source"))
+      form.setValue("source", senses[0].value);
   }, [current, form, senses]);
 
   const submit = form.handleSubmit(async (values) => {
     const [wordKey, senseId] = values.source.split("::");
     const timestamp = new Date().toISOString();
-    const question: MultipleChoiceQuestion = { id: current?.id ?? crypto.randomUUID(), fingerprint: current?.fingerprint ?? "pending", kind: "multipleChoice", questionStyle: values.questionStyle, difficulty: Number(values.difficulty) as 1 | 2 | 3, wordKey, senseId, prompt: values.prompt.trim(), options: [values.option0, values.option1, values.option2, values.option3].map((value) => value.trim()), answerIndex: Number(values.answerIndex), explanation: values.explanation.trim() || undefined, createdAt: current?.createdAt ?? timestamp, updatedAt: timestamp };
-    await saveQuestion(question as LibraryQuestion);
+    const question: MultipleChoiceQuestion = {
+      answerIndex: Number(values.answerIndex),
+      createdAt: current?.createdAt ?? timestamp,
+      difficulty: Number(values.difficulty) as 1 | 2 | 3,
+      explanation: values.explanation.trim() || undefined,
+      fingerprint: current?.fingerprint ?? "pending",
+      id: current?.id ?? randomUUID(),
+      kind: "multipleChoice",
+      options: values.options.map((value) => value.trim()),
+      prompt: values.prompt.trim(),
+      questionStyle: values.questionStyle,
+      senseId,
+      updatedAt: timestamp,
+      wordKey,
+    };
+    // The store validates on save; without this the button silently did
+    // nothing and the reason only appeared in the console.
+    try {
+      await saveQuestion(question as LibraryQuestion);
+    } catch (reason) {
+      form.setError("root", {
+        message: reason instanceof Error ? reason.message : String(reason),
+      });
+      return;
+    }
     router.push("/questions");
   });
 
-  return <form onSubmit={submit} className="mx-auto max-w-3xl"><PageHeader title={questionId ? t("questions.edit") : t("questions.new")} actions={<Button asChild variant="ghost"><Link href="/questions"><ArrowLeft className="size-4" />{t("common.back")}</Link></Button>} />
-    <div className="grid gap-5 rounded-xl bg-muted p-6 sm:grid-cols-2"><Field label={t("questions.type")}><select {...form.register("questionStyle")} className="h-11 w-full rounded-xl border bg-card px-3"><option value="standard">{t("questions.standard")}</option><option value="fillBlank">{t("questions.fillBlank")}</option></select></Field><Field label={t("questions.linkedSense")}><select {...form.register("source", { required: true })} className="h-11 w-full rounded-xl border bg-card px-3">{senses.map((sense) => <option key={sense.value} value={sense.value}>{sense.label}</option>)}</select></Field><Field label={t("questions.difficulty", { level: "" })}><select {...form.register("difficulty", { valueAsNumber: true })} className="h-11 w-full rounded-xl border bg-card px-3"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></Field></div>
-    <div className="mt-7 grid gap-5"><Field label={t("questions.prompt")}><Input {...form.register("prompt", { required: true })} /></Field><div className="grid gap-4 sm:grid-cols-2">{[0,1,2,3].map((index) => <Field key={index} label={t("questions.optionLabel", { index: index + 1 })}><Input {...form.register(`option${index}` as keyof Values, { required: true })} /></Field>)}</div><Field label={t("questions.correct")}><select {...form.register("answerIndex", { valueAsNumber: true })} className="h-11 w-full rounded-xl border bg-card px-3">{[0,1,2,3].map((index) => <option key={index} value={index}>{index + 1}</option>)}</select></Field><Field label={t("questions.explanation")}><Input {...form.register("explanation")} /></Field></div><div className="mt-7 flex justify-end"><Button type="submit">{t("questions.save")}</Button></div>
-  </form>;
-}
+  return (
+    <form className="mx-auto max-w-3xl" onSubmit={submit}>
+      <PageHeader
+        back={
+          <Button asChild size="sm" variant="ghost">
+            <Link href="/questions">
+              <Icons.back />
+              {t("common.back")}
+            </Link>
+          </Button>
+        }
+        title={questionId ? t("questions.edit") : t("questions.new")}
+      />
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) { return <label className="block"><span className="mb-2 block text-xs font-semibold text-muted-foreground">{label}</span>{children}</label>; }
+      <div className="grid gap-4 border-y py-6 sm:grid-cols-2">
+        <SelectField
+          label={t("questions.type")}
+          onValueChange={(value) =>
+            form.setValue("questionStyle", value as Values["questionStyle"])
+          }
+          options={sentenceStyleOptions()}
+          value={form.watch("questionStyle")}
+        />
+        <SelectField
+          label={t("practice.difficulty")}
+          onValueChange={(value) =>
+            form.setValue("difficulty", Number(value) as Values["difficulty"])
+          }
+          options={difficultyOptions()}
+          value={String(form.watch("difficulty"))}
+        />
+        <SelectField
+          className="sm:col-span-2"
+          label={t("questions.linkedSense")}
+          onValueChange={(value) => form.setValue("source", value)}
+          options={senses}
+          placeholder={t("questions.selectSense")}
+          value={form.watch("source")}
+        />
+      </div>
+
+      <div className="mt-7 grid gap-5">
+        <Field label={t("questions.prompt")}>
+          <Input {...form.register("prompt", { required: true })} />
+        </Field>
+
+        <AnswerOptions
+          answerIndex={answerIndex}
+          name="answerIndex"
+          onAnswerChange={(index) => form.setValue("answerIndex", index)}
+          onOptionChange={(index, value) =>
+            form.setValue(
+              "options",
+              options.map((option, at) => (at === index ? value : option)),
+            )
+          }
+          options={options}
+        />
+
+        <Field label={t("questions.explanation")}>
+          <Textarea {...form.register("explanation")} className="min-h-20" />
+        </Field>
+      </div>
+
+      {form.formState.errors.root && (
+        <p className="mt-6 text-sm text-destructive" role="alert">
+          {form.formState.errors.root.message}
+        </p>
+      )}
+
+      <div className="mt-7 flex justify-end">
+        <Button size="lg" type="submit">
+          <Icons.success />
+          {t("questions.save")}
+        </Button>
+      </div>
+    </form>
+  );
+}

@@ -13,6 +13,7 @@ export function usePracticeKeyboard({
   onRate,
   onAnswer,
   onNext,
+  optionCount = 4,
 }: {
   enabled: boolean;
   mode: WorkspacePracticeMode;
@@ -23,6 +24,8 @@ export function usePracticeKeyboard({
   onRate: (rating: ReviewRating) => void;
   onAnswer: (choice: number) => void;
   onNext: () => void;
+  /** A 文意選填 bank can run to ten options, so the letter keys go past D. */
+  optionCount?: number;
 }) {
   useEffect(() => {
     if (!enabled) return;
@@ -44,11 +47,13 @@ export function usePracticeKeyboard({
         }
         return;
       }
-      const choices = ["1", "2", "3", "4", "a", "b", "c", "d"];
-      const choice = choices.indexOf(event.key.toLocaleLowerCase());
+      const key = event.key.toLocaleLowerCase();
+      const digits = Array.from({ length: Math.min(optionCount, 9) }, (_, index) => String(index + 1));
+      const letters = Array.from({ length: optionCount }, (_, index) => String.fromCharCode(97 + index));
+      const choice = digits.indexOf(key) >= 0 ? digits.indexOf(key) : letters.indexOf(key);
       if (selected === null && choice >= 0) {
         event.preventDefault();
-        onAnswer(choice % 4);
+        onAnswer(choice);
       } else if (selected !== null && !busy && event.key === "Enter") {
         event.preventDefault();
         onNext();
@@ -56,5 +61,5 @@ export function usePracticeKeyboard({
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [busy, enabled, mode, onAnswer, onNext, onRate, onReveal, revealed, selected]);
+  }, [busy, enabled, mode, onAnswer, onNext, onRate, onReveal, optionCount, revealed, selected]);
 }

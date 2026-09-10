@@ -29,57 +29,92 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
   --color-warning: var(--warning);
+  --color-brand: var(--brand-600);
+  --color-surface-canvas: var(--surface-canvas);
+  --color-surface-inset: var(--surface-inset);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
   --font-sans:
-    var(--font-inter), "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei",
-    ui-sans-serif, system-ui, sans-serif;
-  --font-mono:
-    var(--font-roboto-mono), ui-monospace, SFMono-Regular, Consolas, monospace;
-  --radius-xs: calc(var(--radius) * 0.5);
-  --radius-sm: calc(var(--radius) * 0.75);
-  --radius-md: calc(var(--radius) * 0.875);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.333);
-  --radius-2xl: calc(var(--radius) * 1.667);
-  --radius-3xl: calc(var(--radius) * 2);
+    "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif,
+    system-ui, sans-serif;
+  --font-lexical: var(--font-sans);
+
+  /* Radius encodes hierarchy: the further out the surface, the softer it is. */
+  --radius-control: 0.5rem; /* buttons, inputs, selects */
+  --radius-card: 0.875rem; /* entries, rows, panels */
+  --radius-stage: 1.5rem; /* the page-level canvas */
+  --radius-xs: 0.3125rem;
+  --radius-sm: 0.4375rem;
+  --radius-md: var(--radius-control);
+  --radius-lg: 0.75rem;
+  --radius-xl: var(--radius-card);
+  --radius-2xl: 1.125rem;
+  --radius-3xl: var(--radius-stage);
 }
 
 :root {
   color-scheme: light;
-  --background: #fdfdfd;
-  --foreground: #0d0d0d;
+  --brand-50: #e7f0ea;
+  --brand-100: #d2e4d9;
+  --brand-200: #b0cfbc;
+  --brand-300: #94b9a4;
+  --brand-400: #649879;
+  --brand-500: #427a5b;
+  --brand-600: #2f5d4a;
+  --brand-700: #26493b;
+  --brand-800: #1f3a30;
+  --brand-900: #172b24;
+  --background: #fbfcfb;
+  --foreground: #121a16;
   --card: #ffffff;
-  --card-foreground: #0d0d0d;
+  --card-foreground: #121a16;
   --popover: #ffffff;
-  --popover-foreground: #0d0d0d;
-  --primary: #171717;
-  --primary-foreground: #fafafa;
-  --secondary: #f2f2f2;
-  --secondary-foreground: #171717;
-  --muted: #f5f5f5;
-  --muted-foreground: #6c6c6c;
-  --accent: #eeeeee;
-  --accent-foreground: #171717;
-  --destructive: #c93434;
+  --popover-foreground: #121a16;
+  --primary: var(--brand-600);
+  --primary-foreground: #f6faf7;
+  --primary-hover: var(--brand-700);
+  --secondary: #dfebe3;
+  --secondary-foreground: var(--brand-800);
+  --secondary-hover: #d2e2d8;
+  --muted: #f1f5f2;
+  --muted-foreground: #5c6b63;
+  --accent: #e6ede8;
+  --accent-foreground: var(--brand-800);
+  --destructive: #c33b3b;
   --destructive-foreground: #ffffff;
-  --success: #23865a;
+  --success: #0e8a72;
+  --success-foreground: #ffffff;
   --warning: #9a6413;
-  --border: rgb(0 0 0 / 6%);
-  --input: rgb(0 0 0 / 9%);
-  --ring: rgb(13 13 13 / 34%);
-  --surface-stage: #f9f9f9;
-  --surface-inset: #f4f4f4;
-  --surface-hover: rgb(0 0 0 / 3%);
-  --surface-active: rgb(0 0 0 / 6%);
-  --backdrop: rgb(0 0 0 / 24%);
+  --border: rgb(31 58 48 / 9%);
+  --input: rgb(31 58 48 / 13%);
+  --ring: rgb(47 93 74 / 45%);
+  --surface-stage: #f4f8f5;
+  --surface-inset: #eaf0ec;
+  --surface-canvas: #e4eee8;
+  --surface-hover: rgb(31 58 48 / 4%);
+  --surface-active: rgb(31 58 48 / 7%);
+  --backdrop: rgb(18 26 22 / 26%);
   --radius: 0.875rem;
-  --shadow-control: 0 1px 1px rgb(0 0 0 / 4%), 0 0 0 1px rgb(0 0 0 / 5%);
-  --shadow-card: 0 1px 3px rgb(0 0 0 / 4%);
+  --shadow-control:
+    0 1px 1px rgb(23 43 36 / 5%), 0 0 0 1px rgb(23 43 36 / 6%);
+  --shadow-card: 0 1px 3px rgb(23 43 36 / 5%);
   --shadow-floating:
-    0 4px 42px rgb(0 0 0 / 6%), 0 2px 6px rgb(0 0 0 / 5%),
-    0 0 0 1px rgb(0 0 0 / 6%);
-  --content-max: 72rem;
+    0 4px 42px rgb(23 43 36 / 8%), 0 2px 6px rgb(23 43 36 / 6%),
+    0 0 0 1px rgb(23 43 36 / 7%);
+  --content-max: 64rem;
   --page-gutter: clamp(1rem, 2.5vw, 2rem);
+  --section-gap: 2.75rem;
+  --block-gap: 1.25rem;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -89,37 +124,52 @@
 
 .dark {
   color-scheme: dark;
-  --background: #121212;
-  --foreground: #f3f3f3;
-  --card: #181818;
-  --card-foreground: #f3f3f3;
-  --popover: #1b1b1b;
-  --popover-foreground: #f3f3f3;
-  --primary: #f1f1f1;
-  --primary-foreground: #141414;
-  --secondary: #242424;
-  --secondary-foreground: #f0f0f0;
-  --muted: #202020;
-  --muted-foreground: #a0a0a0;
-  --accent: #292929;
-  --accent-foreground: #f4f4f4;
-  --destructive: #e05a5a;
-  --destructive-foreground: #190707;
-  --success: #59b987;
+  --brand-50: #17291f;
+  --brand-100: #1e392e;
+  --brand-200: #27493a;
+  --brand-300: #2f5d4a;
+  --brand-400: #427a5b;
+  --brand-500: #649879;
+  --brand-600: #8ecdab;
+  --brand-700: #a9dbc1;
+  --brand-800: #c7e8d6;
+  --brand-900: #e4f4ec;
+  --background: #0f1512;
+  --foreground: #eaf1ec;
+  --card: #161d19;
+  --card-foreground: #eaf1ec;
+  --popover: #1a221e;
+  --popover-foreground: #eaf1ec;
+  --primary: var(--brand-600);
+  --primary-foreground: #0c1712;
+  --primary-hover: var(--brand-700);
+  --secondary: #212b26;
+  --secondary-foreground: #e2ece6;
+  --secondary-hover: #2a3630;
+  --muted: #1c2420;
+  --muted-foreground: #93a49b;
+  --accent: #26312b;
+  --accent-foreground: #eaf1ec;
+  --destructive: #e26a6a;
+  --destructive-foreground: #1a0a0a;
+  --success: #4fd0ae;
+  --success-foreground: #04211a;
   --warning: #d5a554;
-  --border: rgb(255 255 255 / 7%);
-  --input: rgb(255 255 255 / 11%);
-  --ring: rgb(255 255 255 / 34%);
-  --surface-stage: #131313;
-  --surface-inset: #1d1d1d;
-  --surface-hover: rgb(255 255 255 / 6%);
-  --surface-active: rgb(255 255 255 / 7%);
-  --backdrop: rgb(0 0 0 / 62%);
-  --shadow-control: 0 1px 1px rgb(0 0 0 / 22%), 0 0 0 1px rgb(255 255 255 / 6%);
-  --shadow-card: 0 1px 3px rgb(0 0 0 / 28%);
+  --border: rgb(190 230 210 / 9%);
+  --input: rgb(190 230 210 / 13%);
+  --ring: rgb(142 205 171 / 45%);
+  --surface-stage: #0d1310;
+  --surface-inset: #1a221e;
+  --surface-canvas: #16241d;
+  --surface-hover: rgb(190 230 210 / 6%);
+  --surface-active: rgb(190 230 210 / 9%);
+  --backdrop: rgb(4 10 7 / 66%);
+  --shadow-control:
+    0 1px 1px rgb(0 0 0 / 24%), 0 0 0 1px rgb(190 230 210 / 7%);
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 30%);
   --shadow-floating:
-    0 18px 48px rgb(0 0 0 / 38%), 0 3px 10px rgb(0 0 0 / 28%),
-    0 0 0 1px rgb(255 255 255 / 7%);
+    0 18px 48px rgb(0 0 0 / 42%), 0 3px 10px rgb(0 0 0 / 30%),
+    0 0 0 1px rgb(190 230 210 / 8%);
 }
 
 * {
@@ -157,9 +207,7 @@ body {
   overscroll-behavior: none;
   background: var(--surface-stage);
   color: var(--foreground);
-  font-family:
-    var(--font-inter), "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei",
-    ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -200,7 +248,69 @@ textarea {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--foreground) 14%, transparent);
+  background: color-mix(in srgb, var(--brand-500) 20%, transparent);
+}
+
+/* ── Dictionary entry ────────────────────────────────────────────────
+   The study material is set apart from the interface: a headword, its
+   part of speech, its meaning and its citation read as a lexicon entry,
+   never as another row of interface text. */
+
+.entry-headword {
+  font-family: var(--font-lexical);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+}
+
+.entry-pos {
+  color: var(--muted-foreground);
+  font-family: var(--font-lexical);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.entry-citation {
+  color: color-mix(in srgb, var(--foreground) 82%, transparent);
+  font-family: var(--font-lexical);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* Multiple senses of one word are a real sequence, so they are numbered. */
+.entry-senses {
+  counter-reset: sense;
+}
+
+.entry-sense::before {
+  content: counter(sense);
+  counter-increment: sense;
+  display: inline-block;
+  min-width: 1.25rem;
+  color: var(--brand-500);
+  font-family: var(--font-lexical);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  line-height: inherit;
+}
+
+.entry-senses:has(.entry-sense:only-child) .entry-sense::before {
+  content: none;
+  min-width: 0;
+}
+
+.section-gap {
+  margin-top: var(--section-gap);
+}
+
+.block-gap {
+  margin-top: var(--block-gap);
 }
 
 .app-viewport {
@@ -350,7 +460,7 @@ textarea {
   border-radius: var(--radius-xs);
   background: var(--muted);
   padding: 0.12rem 0.3rem;
-  font-family: var(--font-roboto-mono), ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.86em;
 }
 .markdown-body pre {
@@ -385,12 +495,40 @@ textarea {
   font-weight: 600;
 }
 
+/* Proportion bars grow from their leading edge; the daily chart grows upward
+   from the baseline. Both read as the record being drawn, not as decoration. */
 @keyframes dashboard-bar {
   from {
     transform: scaleX(0);
   }
   to {
-    transform: scaleX(var(--dashboard-bar));
+    transform: scaleX(var(--dashboard-bar, 1));
+  }
+}
+
+@keyframes dashboard-column {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.dashboard-bar {
+  transform-origin: left center;
+  animation: dashboard-bar var(--motion-emphasis) var(--ease-smooth-out) both;
+}
+
+.dashboard-column {
+  transform-origin: bottom center;
+  animation: dashboard-column var(--motion-slow) var(--ease-smooth-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-bar,
+  .dashboard-column {
+    animation: none;
   }
 }
 

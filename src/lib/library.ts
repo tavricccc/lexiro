@@ -1,5 +1,6 @@
 import type { EditorItem, LibraryQuestion, MultipleChoiceQuestion, ReadingPack, SetMembership, StudyWord, WordEntry, WordSense } from '@/types'
 import { stableHash } from './hash'
+import { randomUUID } from './id'
 
 const PART_OF_SPEECH_ALIASES: Record<string, string> = {
   'n': 'n.',
@@ -69,7 +70,7 @@ export function buildQuestionId(sourceId?: string): string {
   const normalized = sourceId?.trim()
   if (normalized)
     return normalized
-  return `question-${crypto.randomUUID()}`
+  return `question-${randomUUID()}`
 }
 
 export function canonicalizeQuestion(question: LibraryQuestion): LibraryQuestion {

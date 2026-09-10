@@ -1,4 +1,4 @@
-import type { LibraryQuestion, StudyWord, WordEntry, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
+import type { GeneratedQuestionKind, LibraryQuestion, StudyWord, WordEntry, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
 
 import { allocateDailyQuestionQuotas } from "@/src/lib/question-distribution";
 
@@ -9,7 +9,10 @@ export interface QuestionItem {
   options: string[];
   answerIndex: number;
   senseId: string;
-  type: "standard" | "fillBlank" | "reading";
+  type: GeneratedQuestionKind;
+  /** Passage items carry the shared bank so the practice view can show it. */
+  optionBank?: string[];
+  blank?: number;
   difficulty: 1 | 2 | 3;
   meaning: string;
 }
@@ -47,6 +50,9 @@ function shuffleOptions(options: string[], answerIndex: number, seed: string): {
 }
 
 function applyOptionShuffle(item: QuestionItem): QuestionItem {
+  // A shared bank is already a fixed, lettered list; reshuffling it per blank
+  // would break the "each option used once" contract the format depends on.
+  if (item.optionBank) return item;
   const shuffled = shuffleOptions(item.options, item.answerIndex, item.id);
   if (shuffled.answerIndex === item.answerIndex && shuffled.options.every((option, index) => option === item.options[index])) return item;
   return { ...item, options: shuffled.options, answerIndex: shuffled.answerIndex };
@@ -66,7 +72,9 @@ export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<
           options: child.options,
           answerIndex: child.answerIndex,
           senseId: child.senseId,
-          type: "reading",
+          type: question.format,
+          blank: child.blank,
+          optionBank: question.optionBank,
           difficulty: question.difficulty,
           meaning: meaningBySense.get(child.senseId) ?? "",
         };
@@ -132,10 +140,11 @@ export function selectQuestionItems(
   };
 
   if (questionType === "all") {
-    const [standard, fillBlank, reading] = allocateDailyQuestionQuotas(amount);
-    takeGroups(orderedGroups.filter((group) => group[0]?.type === "standard"), standard);
-    takeGroups(orderedGroups.filter((group) => group[0]?.type === "fillBlank"), fillBlank);
-    takeGroups(orderedGroups.filter((group) => group[0]?.type === "reading"), reading);
+    const quotas = allocateDailyQuestionQuotas(amount);
+    for (const [format, quota] of Object.entries(quotas)) {
+      if (quota > 0)
+        takeGroups(orderedGroups.filter((group) => group[0]?.type === format), quota);
+    }
     if (result.length < amount) takeGroups(orderedGroups, amount - result.length);
   } else {
     takeGroups(orderedGroups, amount);
@@ -171,7 +180,7 @@ export function buildWrongContent(
       const userAnswer = chosenIndex === null || chosenIndex === undefined ? "跳過，未作答" : item?.options[chosenIndex] ?? "未保存的選項";
       return {
         type: "question",
-        questionType: item?.type ?? "standard",
+        questionType: item?.type ?? "vocabulary",
         difficulty: item?.difficulty ?? 2,
         prompt: item?.prompt ?? "",
         options: item?.options ?? [],

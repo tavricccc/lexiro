@@ -40,9 +40,19 @@ describe("data integrity", () => {
     expect(merged.state.sets.map((set) => set.id)).toEqual(["one", "two"]);
   });
 
-  it("allocates the daily mix in a 40/40/20 ratio", () => {
-    expect(allocateDailyQuestionQuotas(10)).toEqual([4, 4, 2]);
-    expect(allocateDailyQuestionQuotas(3)).toEqual([1, 1, 1]);
+  it("splits a session across the exam formats and always sums to the target", () => {
+    for (const target of [0, 1, 3, 10, 25, 46]) {
+      const quotas = allocateDailyQuestionQuotas(target);
+      const total = Object.values(quotas).reduce((sum, quota) => sum + quota, 0);
+      expect(total, `target ${target}`).toBe(target);
+      expect(Object.values(quotas).every((quota) => quota >= 0)).toBe(true);
+    }
+  });
+
+  it("weights the mix towards the formats a 學測 paper weights", () => {
+    const quotas = allocateDailyQuestionQuotas(46);
+    expect(quotas.vocabulary).toBeGreaterThan(quotas.discourse);
+    expect(quotas.reading).toBeGreaterThan(quotas.discourse);
   });
 
   it("keeps the cloud record when a queued local edit conflicts", () => {

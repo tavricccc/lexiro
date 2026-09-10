@@ -1,7 +1,8 @@
-import type { LibraryQuestion, MultipleChoiceQuestion, QuestionDifficulty, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
+import type { LibraryQuestion, MultipleChoiceQuestion, PassageFormat, QuestionDifficulty, QuestionStyle, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
 import { stableHash } from './hash'
 import { buildQuestionFingerprint, buildQuestionId, buildSenseId, normalizePartOfSpeech, normalizeWordKey } from './library'
-import { isValidAnswerIndex, questionPromptIssue } from './question-shape'
+import { isValidAnswerIndex, passageBlankIssue, questionPromptIssue } from './question-shape'
+import { PASSAGE_FORMATS } from './question-formats'
 import { assertKnownKeys, requiredText } from './schema'
 import { containsHan } from './validation'
 
@@ -123,6 +124,29 @@ function assertEnglish(value: string, field: string, requireEnglish = false) {
     throw new Error(`${field} 必須使用英文`)
 }
 
+/**
+ * Reads a sentence format, migrating the two names this app used before it was
+ * modelled on Taiwanese papers. `standard` and `fillBlank` were the same shape
+ * as 詞彙題 and both become `vocabulary`; the mapping runs on read so stored
+ * questions keep working, and nothing downstream ever sees the old names.
+ */
+function readQuestionStyle(value: unknown, index: number): QuestionStyle {
+  if (value === 'vocabulary' || value === 'grammar')
+    return value
+  if (value === 'standard' || value === 'fillBlank')
+    return 'vocabulary'
+  throw new Error(`第 ${index + 1} 題缺少題型`)
+}
+
+/** Packs saved before the 學測 formats existed were all reading passages. */
+function readPassageFormat(value: unknown, index: number): PassageFormat {
+  if (value === undefined)
+    return 'reading'
+  if (value === 'reading' || value === 'cloze' || value === 'wordBank' || value === 'discourse')
+    return value
+  throw new Error(`第 ${index + 1} 題的題組格式無效`)
+}
+
 function assertGeneratedIdentity(value: Record<string, unknown>, index: number): void {
   const generatedOnlyKeys = ['id', 'fingerprint', 'createdAt', 'updatedAt', 'wordKey', 'senseId']
   const present = generatedOnlyKeys.filter(key => value[key] !== undefined)
@@ -138,7 +162,7 @@ function generatedTimestamp(value: unknown, generatedAt: string, refs?: Question
   return refs ? generatedAt : requiredText(value, 'question.timestamp')
 }
 
-function normalizeMultipleChoice(value: Record<string, unknown>, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, expectedQuestionStyle?: 'standard' | 'fillBlank', requireEnglish = false): MultipleChoiceQuestion {
+function normalizeMultipleChoice(value: Record<string, unknown>, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, expectedQuestionStyle?: QuestionStyle, requireEnglish = false): MultipleChoiceQuestion {
   assertKnownKeys(value, ['id', 'fingerprint', 'wordKey', 'senseId', 'sourceRef', 'difficulty', 'explanation', 'createdAt', 'updatedAt', 'kind', 'questionStyle', 'prompt', 'options', 'answerIndex', 'trap', 'whyWrong'], `questions[${index}]`)
   if (refs)
     assertGeneratedIdentity(value, index)
@@ -147,15 +171,11 @@ function normalizeMultipleChoice(value: Record<string, unknown>, index: number, 
   const answerIndex = typeof value.answerIndex === 'number' ? value.answerIndex : Number.NaN
   if (options.length !== 4 || !isValidAnswerIndex(options.length, answerIndex))
     throw new Error(`第 ${index + 1} 題選擇題資料不完整`)
-  if (value.questionStyle !== 'standard' && value.questionStyle !== 'fillBlank')
-    throw new Error(`第 ${index + 1} 題缺少 questionStyle`)
-  if (expectedQuestionStyle && value.questionStyle !== expectedQuestionStyle)
-    throw new Error(`第 ${index + 1} 題 questionStyle 必須是 ${expectedQuestionStyle}`)
-  const promptIssue = questionPromptIssue(value.questionStyle, prompt)
-  if (promptIssue === 'fillBlank')
-    throw new Error(`第 ${index + 1} 題填空題題幹必須且只能包含一個 _____`)
-  if (promptIssue === 'standard')
-    throw new Error(`第 ${index + 1} 題一般四選一題幹不可包含 _____`)
+  const questionStyle = readQuestionStyle(value.questionStyle, index)
+  if (expectedQuestionStyle && questionStyle !== expectedQuestionStyle)
+    throw new Error(`第 ${index + 1} 題題型必須是 ${expectedQuestionStyle}`)
+  if (questionPromptIssue(questionStyle, prompt))
+    throw new Error(`第 ${index + 1} 題題幹必須且只能包含一個 _____`)
   assertEnglish(prompt, `第 ${index + 1} 題題幹`, requireEnglish)
   for (const [optionIndex, option] of options.entries())
     assertEnglish(option, `第 ${index + 1} 題選項 ${optionIndex + 1}`, requireEnglish)
@@ -177,7 +197,7 @@ function normalizeMultipleChoice(value: Record<string, unknown>, index: number, 
     wordKey,
     senseId,
     difficulty: questionDifficulty(value.difficulty, index, allowedDifficulty),
-    questionStyle: value.questionStyle,
+    questionStyle,
     prompt,
     options,
     answerIndex,
@@ -191,9 +211,16 @@ function normalizeMultipleChoice(value: Record<string, unknown>, index: number, 
 }
 
 function normalizeReading(value: Record<string, unknown>, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, requireEnglish = false): ReadingPack {
-  assertKnownKeys(value, ['id', 'fingerprint', 'difficulty', 'explanation', 'createdAt', 'updatedAt', 'kind', 'title', 'passage', 'wordKeys', 'questions'], `questions[${index}]`)
+  assertKnownKeys(value, ['id', 'fingerprint', 'difficulty', 'explanation', 'createdAt', 'updatedAt', 'kind', 'format', 'title', 'passage', 'wordKeys', 'questions', 'optionBank'], `questions[${index}]`)
   if (refs)
     assertGeneratedIdentity(value, index)
+  const format = readPassageFormat(value.format, index)
+  const spec = PASSAGE_FORMATS[format]
+  const optionBank = value.optionBank === undefined ? undefined : stringList(value.optionBank, `questions[${index}].optionBank`)
+  if (spec.sharedBank && (!optionBank || optionBank.length !== spec.optionCount))
+    throw new Error(`第 ${index + 1} 題必須提供 ${spec.optionCount} 個共用選項`)
+  if (!spec.sharedBank && optionBank)
+    throw new Error(`第 ${index + 1} 題不該有共用選項`)
   const title = requiredText(value.title, `questions[${index}].title`)
   const passage = requiredText(value.passage, `questions[${index}].passage`)
   assertEnglish(title, `第 ${index + 1} 題標題`, requireEnglish)
@@ -219,7 +246,7 @@ function normalizeReading(value: Record<string, unknown>, index: number, refs?: 
     if (!item || typeof item !== 'object' || Array.isArray(item))
       throw new Error(`閱讀題 ${childIndex + 1} 格式錯誤`)
     const child = item as Record<string, unknown>
-    assertKnownKeys(child, ['id', 'kind', 'sourceRef', 'prompt', 'options', 'answerIndex', 'wordKey', 'senseId'], `reading.questions[${childIndex}]`)
+    assertKnownKeys(child, ['id', 'kind', 'blank', 'sourceRef', 'prompt', 'options', 'answerIndex', 'wordKey', 'senseId'], `reading.questions[${childIndex}]`)
     if (refs)
       assertGeneratedIdentity(child, childIndex)
     if (child.kind !== 'multipleChoice')
@@ -227,8 +254,10 @@ function normalizeReading(value: Record<string, unknown>, index: number, refs?: 
     const prompt = requiredText(child.prompt, `reading.questions[${childIndex}].prompt`)
     const options = stringList(child.options, `reading.questions[${childIndex}].options`)
     const answerIndex = typeof child.answerIndex === 'number' ? child.answerIndex : Number.NaN
-    if (options.length !== 4 || !isValidAnswerIndex(options.length, answerIndex))
-      throw new Error(`閱讀題 ${childIndex + 1} 選項資料不完整`)
+    if (options.length !== spec.optionCount || !isValidAnswerIndex(options.length, answerIndex))
+      throw new Error(`第 ${childIndex + 1} 小題選項資料不完整`)
+    if (spec.sharedBank && optionBank && options.some((option, at) => option !== optionBank[at]))
+      throw new Error(`第 ${childIndex + 1} 小題必須使用共用選項`)
     assertEnglish(prompt, `閱讀題 ${childIndex + 1} 題幹`, requireEnglish)
     for (const [optionIndex, option] of options.entries())
       assertEnglish(option, `閱讀題 ${childIndex + 1} 選項 ${optionIndex + 1}`, requireEnglish)
@@ -239,6 +268,7 @@ function normalizeReading(value: Record<string, unknown>, index: number, refs?: 
       throw new Error(`閱讀題 ${childIndex + 1} 必須綁定 wordKey 與 senseId`)
     const normalized: Omit<ReadingChildQuestion, 'id'> = {
       kind: 'multipleChoice',
+      ...(spec.blanks ? { blank: childIndex + 1 } : {}),
       prompt,
       options,
       answerIndex,
@@ -251,8 +281,18 @@ function normalizeReading(value: Record<string, unknown>, index: number, refs?: 
     childIds.add(id)
     return { ...normalized, id }
   })
+  const blankIssue = passageBlankIssue(format, passage, questions.length)
+  if (blankIssue)
+    throw new Error(`第 ${index + 1} 題${blankIssue}`)
+  if (spec.sharedBank) {
+    const answers = questions.map(child => child.answerIndex)
+    if (new Set(answers).size !== answers.length)
+      throw new Error(`第 ${index + 1} 題共用選項每個只能用一次`)
+  }
   const content: Omit<ReadingPack, 'id' | 'fingerprint' | 'createdAt' | 'updatedAt'> = {
     kind: 'reading',
+    format,
+    ...(optionBank ? { optionBank } : {}),
     difficulty: questionDifficulty(value.difficulty, index, allowedDifficulty),
     explanation: optionalText(value.explanation, `questions[${index}].explanation`),
     title,
@@ -265,7 +305,7 @@ function normalizeReading(value: Record<string, unknown>, index: number, refs?: 
   return { ...content, id: generatedQuestionId(value.id, refs), fingerprint, createdAt: generatedTimestamp(value.createdAt, now, refs), updatedAt: generatedTimestamp(value.updatedAt, now, refs) }
 }
 
-function normalizeQuestion(value: unknown, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, expectedQuestionKind?: 'multipleChoice' | 'reading', expectedQuestionStyle?: 'standard' | 'fillBlank', requireEnglish = false): LibraryQuestion {
+function normalizeQuestion(value: unknown, index: number, refs?: QuestionSourceRefs, allowedDifficulty?: QuestionDifficulty, expectedQuestionKind?: 'multipleChoice' | 'reading', expectedQuestionStyle?: QuestionStyle, requireEnglish = false): LibraryQuestion {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new Error(`第 ${index + 1} 題格式錯誤`)
   const source = value as Record<string, unknown>
@@ -284,7 +324,7 @@ export interface LibraryImportOptions {
   questionSources?: QuestionSourceRefs
   allowedDifficulty?: QuestionDifficulty
   expectedQuestionKind?: 'multipleChoice' | 'reading'
-  expectedQuestionStyle?: 'standard' | 'fillBlank'
+  expectedQuestionStyle?: QuestionStyle
   requireEnglish?: boolean
 }
 

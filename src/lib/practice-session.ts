@@ -7,7 +7,7 @@ import type {
 import { isRecord } from './schema'
 
 const MODES = new Set<WorkspacePracticeMode>(['review', 'questions'])
-const QUESTION_TYPES = new Set<WorkspaceQuestionType>(['all', 'standard', 'fillBlank', 'reading'])
+const QUESTION_TYPES = new Set<WorkspaceQuestionType>(['all', 'vocabulary', 'grammar', 'cloze', 'wordBank', 'discourse', 'reading'])
 const DIFFICULTIES = new Set<WorkspaceQuestionDifficulty>(['all', '1', '2', '3'])
 
 function isIntegerArray(value: unknown, upperBound: number): value is number[] {

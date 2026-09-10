@@ -1,67 +1,288 @@
 "use client";
 
-import type { LibraryQuestion } from "@/types";
-import { ArrowLeft, Check } from "lucide-react";
+import type { LibraryQuestion, WordEntry } from "@/types";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 
-import { AiActions } from "@/components/ai/ai-actions";
-import { PageHeader } from "@/components/page-header";
+import { AiRunPanel } from "@/components/ai/ai-run-panel";
+import { useAiGeneration } from "@/components/ai/use-ai-generation";
+import {
+  GenerationScopePicker,
+  type GenerationSense,
+} from "@/components/questions/generation-scope-picker";
+import { QuestionPreview } from "@/components/questions/question-preview";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
+import { PageHeader } from "@/components/ui/page-header";
+import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
+import {
+  difficultyOptions,
+  questionFormatOptions,
+} from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
+import { generateWithSavedAi } from "@/src/lib/ai-provider";
 import { parseLibraryImport } from "@/src/lib/library-import";
-import { buildQuestionGenerationPrompt, generationSenseKey, getQuestionSourceRefs, getSelectedGenerationWords, normalizeQuestionGenerationJson, QUESTION_BATCH_SIZE, type GeneratedQuestionKind } from "@/src/lib/question-generation";
+import {
+  buildQuestionGenerationPrompt,
+  generationSenseKey,
+  getQuestionSourceRefs,
+  getSelectedGenerationWords,
+  normalizeQuestionGenerationJson,
+  splitGenerationBatches,
+  type GeneratedQuestionDifficulty,
+  type GeneratedQuestionKind,
+} from "@/src/lib/question-generation";
+import { isPassageKind } from "@/src/lib/question-formats";
+import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
 export function QuestionGenerator({ setId }: { setId?: string }) {
   const { state, saveQuestion } = useLibraryStore();
-  const allowedSenseIds = useMemo(() => setId ? new Set((state.memberships[setId] ?? []).flatMap((entry) => entry.senseIds)) : null, [setId, state.memberships]);
-  const senses = useMemo(() => Object.values(state.words).flatMap((word) => word.senses.filter((sense) => !allowedSenseIds || allowedSenseIds.has(sense.id)).map((sense) => ({ key: generationSenseKey(word.wordKey, sense.id), word: word.word, pos: sense.pos, meaning: sense.meaningZh }))), [allowedSenseIds, state.words]);
   const [selected, setSelected] = useState<string[]>([]);
-  const [selectionReady, setSelectionReady] = useState(false);
-  const [kind, setKind] = useState<GeneratedQuestionKind>("multipleChoice");
-  const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
-  const [response, setResponse] = useState("");
-  const [preview, setPreview] = useState<LibraryQuestion[]>([]);
-  const [error, setError] = useState("");
+  const [scopeReady, setScopeReady] = useState(false);
+  const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
+  const [difficulty, setDifficulty] = useState<GeneratedQuestionDifficulty>(2);
   const [saved, setSaved] = useState(false);
-  const words = useMemo(() => getSelectedGenerationWords(Object.values(state.words), selected), [selected, state.words]);
-  const prompt = useMemo(() => buildQuestionGenerationPrompt(words, kind, difficulty), [difficulty, kind, words]);
+  const [manualError, setManualError] = useState("");
 
+  const allowedSenseIds = useMemo(
+    () =>
+      setId
+        ? new Set(
+            (state.memberships[setId] ?? []).flatMap((entry) => entry.senseIds),
+          )
+        : null,
+    [setId, state.memberships],
+  );
+
+  const coveredSenseKeys = useMemo(() => {
+    const covered = new Set<string>();
+    for (const question of state.questions) {
+      if (question.kind === "reading") {
+        for (const child of question.questions)
+          covered.add(generationSenseKey(child.wordKey, child.senseId));
+      } else {
+        covered.add(generationSenseKey(question.wordKey, question.senseId));
+      }
+    }
+    return covered;
+  }, [state.questions]);
+
+  const senses = useMemo<GenerationSense[]>(
+    () =>
+      Object.values(state.words).flatMap((word) =>
+        word.senses
+          .filter((sense) => !allowedSenseIds || allowedSenseIds.has(sense.id))
+          .map((sense) => {
+            const key = generationSenseKey(word.wordKey, sense.id);
+            return {
+              covered: coveredSenseKeys.has(key),
+              key,
+              meaning: sense.meaningZh,
+              pos: sense.pos,
+              word: word.word,
+            };
+          }),
+      ),
+    [allowedSenseIds, coveredSenseKeys, state.words],
+  );
+
+  // Everything in scope is selected the first time the list arrives, so the
+  // common case needs no ticking at all.
   useEffect(() => {
-    if (selectionReady || !senses.length) return;
-    setSelected(senses.slice(0, QUESTION_BATCH_SIZE).map((sense) => sense.key));
-    setSelectionReady(true);
-  }, [selectionReady, senses]);
+    if (scopeReady || !senses.length) return;
+    setSelected(senses.map((sense) => sense.key));
+    setScopeReady(true);
+  }, [scopeReady, senses]);
 
-  const validate = (value = response) => {
-    setError("");
-    setSaved(false);
-    try {
-      const normalized = normalizeQuestionGenerationJson(value, kind, difficulty, words);
-      const parsed = parseLibraryImport(normalized, { questionSources: getQuestionSourceRefs(words), allowedDifficulty: difficulty, expectedQuestionKind: kind === "reading" ? "reading" : "multipleChoice", expectedQuestionStyle: kind === "fillBlank" ? "fillBlank" : kind === "multipleChoice" ? "standard" : undefined, requireEnglish: true });
+  const words = useMemo(
+    () => getSelectedGenerationWords(Object.values(state.words), selected),
+    [selected, state.words],
+  );
+  const pool = useMemo(() => Object.values(state.words), [state.words]);
+
+  /**
+   * 詞彙題 that can be built from the learner's own example sentences are built
+   * here and never sent anywhere: the sentence is theirs, the answer is the word
+   * they chose, and the distractors are their own same-part-of-speech words.
+   * Only what is left over costs a request.
+   */
+  const prebuilt = useMemo(
+    () => (kind === "vocabulary" ? buildLibraryQuestions(words, pool, difficulty) : null),
+    [difficulty, kind, pool, words],
+  );
+  const aiWords = prebuilt ? prebuilt.remaining : words;
+
+  const batches = useMemo(
+    () => splitGenerationBatches(aiWords, kind),
+    [aiWords, kind],
+  );
+  const prompts = useMemo(
+    () =>
+      batches.map((batch) =>
+        buildQuestionGenerationPrompt(batch, kind, difficulty),
+      ),
+    [batches, difficulty, kind],
+  );
+
+  const parseBatch = useCallback(
+    (batch: WordEntry[], response: string): LibraryQuestion[] => {
+      // The whole library is the distractor pool: for a plain base-form answer
+      // the wrong options come from the learner's own same-part-of-speech
+      // words, the way a 段考 paper draws them from the same unit.
+      const normalized = normalizeQuestionGenerationJson(
+        response,
+        kind,
+        difficulty,
+        batch,
+        pool,
+      );
+      const parsed = parseLibraryImport(normalized, {
+        allowedDifficulty: difficulty,
+        expectedQuestionKind: isPassageKind(kind) ? "reading" : "multipleChoice",
+        expectedQuestionStyle: isPassageKind(kind) ? undefined : kind,
+        questionSources: getQuestionSourceRefs(batch),
+        requireEnglish: true,
+      });
       if (!parsed.valid) throw new Error(parsed.error);
       if (parsed.data.kind !== "questions") throw new Error("questions expected");
-      setPreview(parsed.data.questions);
+      return parsed.data.questions;
+    },
+    [difficulty, kind],
+  );
+
+  const generation = useAiGeneration<WordEntry[], LibraryQuestion>({
+    merge: (items) => {
+      const byId = new Map<string, LibraryQuestion>();
+      for (const item of items) byId.set(item.fingerprint || item.id, item);
+      return [...byId.values()];
+    },
+    run: async (batch, signal) =>
+      parseBatch(
+        batch,
+        await generateWithSavedAi(
+          buildQuestionGenerationPrompt(batch, kind, difficulty),
+          { signal },
+        ),
+      ),
+  });
+
+  const { reset, setItems, state: run } = generation;
+
+  useEffect(() => {
+    reset();
+    setSaved(false);
+    setManualError("");
+  }, [difficulty, kind, reset, selected]);
+
+  const applyManual = (response: string, batchIndex: number) => {
+    setManualError("");
+    try {
+      const produced = parseBatch(batches[batchIndex], response);
+      setItems([...run.items, ...produced]);
     } catch (reason) {
-      setPreview([]);
-      setError(t("questions.invalidResponse", { message: reason instanceof Error ? reason.message : String(reason) }));
+      setManualError(
+        t("questions.invalidResponse", {
+          message: reason instanceof Error ? reason.message : String(reason),
+        }),
+      );
     }
   };
 
   const addAll = async () => {
-    for (const question of preview) await saveQuestion(question);
+    for (const question of run.items) await saveQuestion(question);
     setSaved(true);
+    toast.success(t("questions.savedCount", { count: run.items.length }));
   };
 
-  const toggleSense = (key: string, checked: boolean) => {
-    setPreview([]);
-    setSaved(false);
-    if (checked) {
-      if (selected.length >= QUESTION_BATCH_SIZE) return;
-      setSelected([...selected, key]);
-    } else setSelected(selected.filter((value) => value !== key));
-  };
+  const senseCount = words.reduce((count, word) => count + word.senses.length, 0);
 
-  return <div><PageHeader title={t("questions.generateTitle")} description={t("questions.generateDescription")} actions={<Button asChild variant="ghost"><Link href="/questions"><ArrowLeft className="size-4" />{t("common.back")}</Link></Button>} /><div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]"><aside><div className="flex gap-2"><select value={kind} onChange={(event) => { setKind(event.target.value as GeneratedQuestionKind); setPreview([]); }} className="h-11 flex-1 rounded-xl border bg-card px-3 text-sm"><option value="multipleChoice">{t("questions.standard")}</option><option value="fillBlank">{t("questions.fillBlank")}</option><option value="reading">{t("questions.reading")}</option></select><select aria-label={t("practice.difficulty")} value={difficulty} onChange={(event) => { setDifficulty(Number(event.target.value) as 1 | 2 | 3); setPreview([]); }} className="h-11 rounded-xl border bg-card px-3">{[1,2,3].map((value) => <option key={value}>{value}</option>)}</select></div><div className="mt-5 flex items-center justify-between"><span className="text-xs font-semibold text-muted-foreground">{t("questions.selectedCount", { count: selected.length })}</span><div className="flex gap-2"><button type="button" onClick={() => { setSelected(senses.slice(0, QUESTION_BATCH_SIZE).map((sense) => sense.key)); setPreview([]); }} className="text-xs text-primary">{t("questions.selectAll")}</button><button type="button" onClick={() => { setSelected([]); setPreview([]); }} className="text-xs text-muted-foreground">{t("questions.clear")}</button></div></div><p className="mt-2 text-xs leading-5 text-muted-foreground">{t("questions.batchLimit", { count: QUESTION_BATCH_SIZE })}</p><div className="mt-3 max-h-[460px] overflow-y-auto border-y">{senses.map((sense) => <label key={sense.key} className="flex cursor-pointer gap-3 border-b py-3 last:border-0"><input type="checkbox" checked={selected.includes(sense.key)} disabled={!selected.includes(sense.key) && selected.length >= QUESTION_BATCH_SIZE} onChange={(event) => toggleSense(sense.key, event.target.checked)} className="mt-1 accent-primary" /><span><b className="text-sm">{sense.word}</b><span className="ml-2 text-xs text-foreground">{sense.pos}</span><span className="mt-1 block text-xs text-muted-foreground">{sense.meaning}</span></span></label>)}</div></aside><section><AiActions prompt={prompt} disabled={!selected.length} onError={setError} onResponse={(value) => { setResponse(value); validate(value); }} /><details className="mt-5"><summary className="cursor-pointer text-xs font-semibold text-muted-foreground">{t("ai.viewPrompt")}</summary><textarea readOnly value={prompt} className="mt-2 h-52 w-full resize-y rounded-2xl border bg-card p-4 text-xs leading-5 outline-none" /></details><label className="mt-6 block text-xs font-semibold text-muted-foreground">{t("ai.manualResponse")}</label><textarea value={response} onChange={(event) => { setResponse(event.target.value); setPreview([]); setSaved(false); }} className="mt-2 h-52 w-full resize-y rounded-2xl border bg-card p-4 text-xs leading-5 outline-none focus:border-primary" /><Button className="mt-4" variant="secondary" disabled={!response.trim()} onClick={() => validate()}>{t("ai.validate")}</Button>{error && <p role="alert" className="mt-4 rounded-xl bg-destructive/10 p-3 text-sm text-destructive dark:bg-red-950/35 dark:text-red-200">{error}</p>}{preview.length > 0 && <div className="mt-8"><div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-xl font-semibold">{t("questions.generatedCount", { count: preview.length })}</h2>{saved ? <Button asChild><Link href="/practice?mode=questions"><Check className="size-4" />{t("questions.startGenerated")}</Link></Button> : <Button onClick={() => void addAll()}><Check className="size-4" />{t("questions.addAll")}</Button>}</div>{saved && <p role="status" className="mt-3 text-sm text-foreground">{t("questions.saved")}</p>}<div className="mt-4 divide-y border-y">{preview.map((question) => <div key={question.id} className="py-4 text-sm font-medium">{question.kind === "reading" ? question.title : question.prompt}</div>)}</div></div>}</section></div></div>;
+  return (
+    <div>
+      <PageHeader
+        title={t("questions.generateTitle")}
+        description={t("questions.generateDescription")}
+        back={
+          <Button asChild variant="ghost" size="sm">
+            <Link href="/questions">
+              <Icons.back />
+              {t("questions.title")}
+            </Link>
+          </Button>
+        }
+      />
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-8">
+        <div className="grid content-start gap-4">
+          <SelectField
+            label={t("questions.type")}
+            onValueChange={(value) =>
+              setKind(value as GeneratedQuestionKind)
+            }
+            options={questionFormatOptions()}
+            value={kind}
+          />
+          <SelectField
+            label={t("practice.difficulty")}
+            onValueChange={(value) =>
+              setDifficulty(Number(value) as GeneratedQuestionDifficulty)
+            }
+            options={difficultyOptions()}
+            value={String(difficulty)}
+          />
+          <GenerationScopePicker
+            onSelectedChange={setSelected}
+            selected={selected}
+            senses={senses}
+          />
+        </div>
+
+        <div className="grid content-start gap-6">
+          <AiRunPanel
+            actionLabel={t("questions.generate")}
+            configured={generation.configured}
+            manualError={manualError}
+            onCancel={generation.cancel}
+            onManualResponse={applyManual}
+            onRetryFailed={generation.retryFailed}
+            onStart={() => generation.start(batches, prebuilt?.built ?? [])}
+            prompts={prompts}
+            localCount={prebuilt?.built.length ?? 0}
+            scopeSummary={t("questions.scopeSummary", { count: senseCount })}
+            state={run}
+          />
+
+          {run.items.length > 0 && (
+            <section>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h2 className="font-lexical text-xl font-medium">
+                  {t("questions.generatedCount", { count: run.items.length })}
+                </h2>
+                {saved ? (
+                  <Button asChild>
+                    <Link href="/practice?mode=questions&start=1">
+                      <Icons.start />
+                      {t("questions.startGenerated")}
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button onClick={() => void addAll()}>
+                    <Icons.success />
+                    {t("questions.addAll")}
+                  </Button>
+                )}
+              </div>
+              <ol className="mt-4 divide-y border-y">
+                {run.items.map((question) => (
+                  <li className="py-5" key={question.id}>
+                    <QuestionPreview question={question} />
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

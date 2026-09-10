@@ -74,3 +74,40 @@ export function folderIdFromSelection(value: string): string {
 export function folderParentIdFromSelection(value: string): string | undefined {
   return normalizeFolderParentId(value)
 }
+
+/**
+ * A folder and everything nested beneath it. Used both to scope a search to
+ * the current location and to keep a folder from being moved into itself.
+ */
+export function collectFolderIds(folders: Array<{ id: string, parentId?: string }>, rootId: string): Set<string> {
+  const ids = new Set([rootId])
+  let changed = true
+  while (changed) {
+    changed = false
+    for (const folder of folders) {
+      if (folder.parentId && ids.has(folder.parentId) && !ids.has(folder.id)) {
+        ids.add(folder.id)
+        changed = true
+      }
+    }
+  }
+  return ids
+}
+
+/** The path from the library root down to `current`, root first. */
+export function buildFolderBreadcrumbs(folders: VocabFolder[], current?: VocabFolder): VocabFolder[] {
+  const byId = new Map(folders.map(folder => [folder.id, folder]))
+  const path: VocabFolder[] = []
+  let cursor = current
+  while (cursor) {
+    path.unshift(cursor)
+    cursor = cursor.parentId ? byId.get(cursor.parentId) : undefined
+  }
+  return path
+}
+
+/** Direct children of a folder: sub-folders plus the sets filed in it. */
+export function countDirectItems(folders: VocabFolder[], sets: Array<{ folderId: string }>, folderId: string): number {
+  return folders.filter(folder => folder.parentId === folderId).length
+    + sets.filter(entry => entry.folderId === folderId).length
+}

@@ -12,10 +12,10 @@ import {
 import { ResultPanel } from "@/components/practice/result-panel";
 import { PracticeSessionView } from "@/components/practice/practice-session-view";
 import { PracticeSetup } from "@/components/practice/practice-setup";
+import { LoadingState } from "@/components/ui/page-state";
 import { usePracticeKeyboard } from "@/components/practice/use-practice-keyboard";
 import { usePersistPracticeSession, usePracticePreferences, useRestorePracticeSession } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
-import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
@@ -205,10 +205,11 @@ export function PracticePage({ initialMode = "review", initialSet = "", initialA
     onRate: (rating) => void actions.rate(rating, true),
     onAnswer: (choice) => void actions.answer(choice),
     onNext: () => actions.next(true),
+    optionCount: activeQuestions[index]?.options.length ?? 4,
   });
 
   if (libraryStatus !== "ready" || !learningLoaded) {
-    return <div className="py-20 text-center text-sm text-muted-foreground">{t("library.loading")}</div>;
+    return <LoadingState />;
   }
 
   if (!started) {

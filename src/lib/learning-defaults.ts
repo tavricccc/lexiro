@@ -1,17 +1,11 @@
-import type { DailyActivity, DashboardStats, QuestionStatKey, QuestionStats } from '@/types'
+import type { DailyActivity, DashboardStats, QuestionStatKey, QuestionStats, QuestionStatType } from '@/types'
 import { DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS } from '@/constants'
 
-export const QUESTION_STAT_KEYS: QuestionStatKey[] = [
-  'standard:1',
-  'standard:2',
-  'standard:3',
-  'fillBlank:1',
-  'fillBlank:2',
-  'fillBlank:3',
-  'reading:1',
-  'reading:2',
-  'reading:3',
-]
+const QUESTION_STAT_TYPES: QuestionStatType[] = ['vocabulary', 'grammar', 'cloze', 'wordBank', 'discourse', 'reading']
+
+export const QUESTION_STAT_KEYS: QuestionStatKey[] = QUESTION_STAT_TYPES.flatMap(
+  type => ([1, 2, 3] as const).map(level => `${type}:${level}` as QuestionStatKey),
+)
 
 export function emptyQuestionStats(): Record<QuestionStatKey, QuestionStats> {
   return Object.fromEntries(QUESTION_STAT_KEYS.map(key => [key, { total: 0, correct: 0, retry: 0 }])) as Record<QuestionStatKey, QuestionStats>

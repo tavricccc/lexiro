@@ -1,8 +1,8 @@
 "use client";
 
-import { AlertCircle, Check, Cloud, CloudOff, LoaderCircle, RefreshCw } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -24,7 +24,15 @@ export function SyncIndicator() {
   const sync = useCloudStore((store) => store.sync);
   const isWorking = ["connecting", "syncing", "preparing", "downloading", "reconciling", "uploading", "retrying", "verifying"].includes(status);
   const showPending = ready && pending;
-  const Icon = !configured || status === "signed-out" ? CloudOff : status === "error" ? AlertCircle : isWorking ? LoaderCircle : status === "synced" && !pending ? Check : Cloud;
+  const Icon = !configured || status === "signed-out"
+    ? Icons.syncOff
+    : status === "error"
+      ? Icons.error
+      : isWorking
+        ? Icons.loading
+        : status === "synced" && !pending
+          ? Icons.success
+          : Icons.sync;
 
   return (
     <Tooltip>
@@ -50,7 +58,7 @@ export function SyncRefreshButton() {
   const sync = useCloudStore((store) => store.sync);
   return (
     <Button aria-label={t("settings.syncNow")} onClick={() => void sync()} size="icon-sm" variant="ghost">
-      <RefreshCw />
+      <Icons.refresh />
     </Button>
   );
 }

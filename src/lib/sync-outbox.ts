@@ -2,6 +2,7 @@ import type { AiSettings, DashboardStats, LearningProgress, LibrarySetSummary, L
 import { getShareableAiSettings } from './ai-provider'
 import { cloneJson } from './clone'
 import { canonicalHash } from './hash'
+import { randomUUID } from './id'
 
 export type SyncDomain = 'library' | 'learning' | 'settings'
 export type SyncRecords = Record<string, unknown>
@@ -166,7 +167,7 @@ export function queueRecordChanges(domain: SyncDomain, baseline: SyncRecords, pr
     }
     const payloadChanged = Boolean(existingEntry && recordHash(existingEntry.payload) !== recordHash(payload))
     const queued: SyncOutboxEntry = {
-      id: existingEntry?.id ?? `sync-${crypto.randomUUID()}`,
+      id: existingEntry?.id ?? `sync-${randomUUID()}`,
       domain,
       recordKey,
       baseHash: existingEntry?.baseHash ?? recordHash(baseline[recordKey]),

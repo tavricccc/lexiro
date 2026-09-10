@@ -1,41 +1,280 @@
 "use client";
 
 import type { ReadingPack } from "@/types";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
-import { PageHeader } from "@/components/page-header";
+import { AnswerOptions } from "@/components/questions/answer-options";
 import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
+import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { PageHeader } from "@/components/ui/page-header";
+import { SelectField } from "@/components/ui/select-field";
+import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
+import { randomUUID } from "@/src/lib/id";
+import { difficultyOptions } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 
-interface ChildDraft { id?: string; source: string; prompt: string; options: string[]; answerIndex: number }
-const emptyChild = (): ChildDraft => ({ source: "", prompt: "", options: ["", "", "", ""], answerIndex: 0 });
+interface ChildDraft {
+  answerIndex: number;
+  id?: string;
+  options: string[];
+  prompt: string;
+  source: string;
+}
+
+interface ChildErrors {
+  options?: string;
+  prompt?: string;
+  source?: string;
+}
+
+const emptyChild = (): ChildDraft => ({
+  answerIndex: 0,
+  options: ["", "", "", ""],
+  prompt: "",
+  source: "",
+});
 
 export function ReadingEditor({ readingId }: { readingId?: string }) {
   const router = useRouter();
   const { state, saveQuestion } = useLibraryStore();
   const senses = useMemo(
-    () => Object.values(state.words).flatMap((word) => word.senses.map((sense) => ({ value: `${word.wordKey}::${sense.id}`, label: `${word.word} · ${sense.meaningZh}` }))),
+    () =>
+      Object.values(state.words).flatMap((word) =>
+        word.senses.map((sense) => ({
+          label: `${word.word} · ${sense.meaningZh}`,
+          value: `${word.wordKey}::${sense.id}`,
+        })),
+      ),
     [state.words],
   );
-  const [title, setTitle] = useState(""); const [passage, setPassage] = useState(""); const [difficulty, setDifficulty] = useState<1|2|3>(2);
-  const [children, setChildren] = useState<ChildDraft[]>([emptyChild(), emptyChild(), emptyChild()]);
-  const current = readingId ? state.questions.find((question) => question.id === readingId && question.kind === "reading") : undefined;
+
+  const [title, setTitle] = useState("");
+  const [passage, setPassage] = useState("");
+  const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
+  const [children, setChildren] = useState<ChildDraft[]>([
+    emptyChild(),
+    emptyChild(),
+    emptyChild(),
+  ]);
+  // Validation stays quiet until the first submit, so a half-filled form is
+  // not already shouting at someone who has just started typing.
+  const [submitted, setSubmitted] = useState(false);
+  const [saveError, setSaveError] = useState("");
+
+  const current = readingId
+    ? state.questions.find(
+        (question) => question.id === readingId && question.kind === "reading",
+      )
+    : undefined;
+
   useEffect(() => {
     if (!current || current.kind !== "reading") return;
-    setTitle(current.title); setPassage(current.passage); setDifficulty(current.difficulty);
-    setChildren(current.questions.map((child) => ({ id: child.id, source: `${child.wordKey}::${child.senseId}`, prompt: child.prompt, options: [...child.options], answerIndex: child.answerIndex })));
+    setTitle(current.title);
+    setPassage(current.passage);
+    setDifficulty(current.difficulty);
+    setChildren(
+      current.questions.map((child) => ({
+        answerIndex: child.answerIndex,
+        id: child.id,
+        options: [...child.options],
+        prompt: child.prompt,
+        source: `${child.wordKey}::${child.senseId}`,
+      })),
+    );
   }, [current]);
-  const update = (index: number, value: Partial<ChildDraft>) => setChildren((items) => items.map((item, itemIndex) => itemIndex === index ? { ...item, ...value } : item));
+
+  const update = (index: number, value: Partial<ChildDraft>) =>
+    setChildren((items) =>
+      items.map((item, at) => (at === index ? { ...item, ...value } : item)),
+    );
+
+  const childErrors: ChildErrors[] = children.map((child) => ({
+    options: child.options.some((option) => !option.trim())
+      ? t("questions.optionsRequired")
+      : undefined,
+    prompt: child.prompt.trim() ? undefined : t("setEditor.required"),
+    source: child.source ? undefined : t("questions.senseRequired"),
+  }));
+  const titleError = title.trim() ? undefined : t("setEditor.required");
+  const passageError = passage.trim() ? undefined : t("setEditor.required");
+  const valid =
+    !titleError &&
+    !passageError &&
+    childErrors.every((errors) => !errors.options && !errors.prompt && !errors.source);
+
   const submit = async () => {
+    setSubmitted(true);
+    setSaveError("");
+    if (!valid) return;
     const timestamp = new Date().toISOString();
-    const questions = children.map((child) => { const [wordKey, senseId] = child.source.split("::"); return { id: child.id ?? crypto.randomUUID(), kind: "multipleChoice" as const, prompt: child.prompt.trim(), options: child.options.map((option) => option.trim()), answerIndex: child.answerIndex, wordKey, senseId }; });
-    const pack: ReadingPack = { id: current?.id ?? crypto.randomUUID(), fingerprint: current?.fingerprint ?? "pending", kind: "reading", difficulty, title, passage, wordKeys: [...new Set(questions.map((child) => child.wordKey))], questions, createdAt: current?.createdAt ?? timestamp, updatedAt: timestamp };
-    await saveQuestion(pack); router.push("/questions");
+    const questions = children.map((child) => {
+      const [wordKey, senseId] = child.source.split("::");
+      return {
+        answerIndex: child.answerIndex,
+        id: child.id ?? randomUUID(),
+        kind: "multipleChoice" as const,
+        options: child.options.map((option) => option.trim()),
+        prompt: child.prompt.trim(),
+        senseId,
+        wordKey,
+      };
+    });
+    const pack: ReadingPack = {
+      createdAt: current?.createdAt ?? timestamp,
+      difficulty,
+      fingerprint: current?.fingerprint ?? "pending",
+      format: "reading",
+      id: current?.id ?? randomUUID(),
+      kind: "reading",
+      passage,
+      questions,
+      title,
+      updatedAt: timestamp,
+      wordKeys: [...new Set(questions.map((child) => child.wordKey))],
+    };
+    try {
+      await saveQuestion(pack);
+    } catch (reason) {
+      setSaveError(reason instanceof Error ? reason.message : String(reason));
+      return;
+    }
+    router.push("/questions");
   };
-  return <div className="mx-auto max-w-3xl"><PageHeader title={t("questions.newReading")} actions={<Button asChild variant="ghost"><Link href="/questions"><ArrowLeft className="size-4" />{t("common.back")}</Link></Button>} /><div className="grid gap-4"><Input aria-label={t("questions.readingTitle")} value={title} onChange={(event) => setTitle(event.target.value)} placeholder={t("questions.readingTitle")} /><textarea aria-label={t("questions.passage")} value={passage} onChange={(event) => setPassage(event.target.value)} placeholder={t("questions.passage")} className="h-48 rounded-2xl border bg-card p-4 text-sm leading-7 outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40" /><select aria-label={t("questions.difficulty", { level: "" })} value={difficulty} onChange={(event) => setDifficulty(Number(event.target.value) as 1|2|3)} className="h-11 rounded-xl border bg-card px-3">{[1,2,3].map((value) => <option key={value}>{value}</option>)}</select></div><div className="mt-8 divide-y border-y">{children.map((child, index) => <section key={index} className="py-6"><h2 className="font-semibold">{t("questions.childPrompt", { index: index + 1 })}</h2><div className="mt-4 grid gap-3"><select aria-label={`${t("questions.childPrompt", { index: index + 1 })} · ${t("questions.selectSense")}`} value={child.source} onChange={(event) => update(index, { source: event.target.value })} className="h-11 rounded-xl border bg-card px-3"><option value="">{t("questions.selectSense")}</option>{senses.map((sense) => <option key={sense.value} value={sense.value}>{sense.label}</option>)}</select><Input aria-label={`${t("questions.childPrompt", { index: index + 1 })} · ${t("questions.prompt")}`} value={child.prompt} onChange={(event) => update(index, { prompt: event.target.value })} placeholder={t("questions.prompt")} /><div className="grid gap-2 sm:grid-cols-2">{child.options.map((option, optionIndex) => <Input aria-label={`${t("questions.childPrompt", { index: index + 1 })} · ${t("questions.optionLabel", { index: optionIndex + 1 })}`} key={optionIndex} value={option} onChange={(event) => update(index, { options: child.options.map((value, valueIndex) => valueIndex === optionIndex ? event.target.value : value) })} placeholder={t("questions.optionLabel", { index: optionIndex + 1 })} />)}</div><select aria-label={`${t("questions.childPrompt", { index: index + 1 })} · ${t("questions.correct")}`} value={child.answerIndex} onChange={(event) => update(index, { answerIndex: Number(event.target.value) })} className="h-11 rounded-xl border bg-card px-3">{[0,1,2,3].map((value) => <option key={value} value={value}>{t("questions.correct")} {value + 1}</option>)}</select></div></section>)}</div><div className="mt-7 flex justify-end"><Button onClick={() => void submit()} disabled={!title || !passage || children.some((child) => !child.source || !child.prompt || child.options.some((option) => !option))}>{t("questions.save")}</Button></div></div>;
+
+  return (
+    <div className="mx-auto max-w-3xl">
+      <PageHeader
+        back={
+          <Button asChild size="sm" variant="ghost">
+            <Link href="/questions">
+              <Icons.back />
+              {t("common.back")}
+            </Link>
+          </Button>
+        }
+        title={t("questions.newReading")}
+      />
+
+      <div className="grid gap-4">
+        <Field
+          error={submitted && titleError}
+          label={t("questions.readingTitle")}
+        >
+          <Input
+            onChange={(event) => setTitle(event.target.value)}
+            placeholder={t("questions.readingTitle")}
+            value={title}
+          />
+        </Field>
+        <Field error={submitted && passageError} label={t("questions.passage")}>
+          <Textarea
+            className="min-h-52 font-lexical text-[1.0625rem] leading-[1.75]"
+            onChange={(event) => setPassage(event.target.value)}
+            placeholder={t("questions.passage")}
+            value={passage}
+          />
+        </Field>
+        <SelectField
+          className="sm:max-w-56"
+          label={t("practice.difficulty")}
+          onValueChange={(value) => setDifficulty(Number(value) as 1 | 2 | 3)}
+          options={difficultyOptions()}
+          value={String(difficulty)}
+        />
+      </div>
+
+      <div className="section-gap divide-y border-y">
+        {children.map((child, index) => (
+          <section className="py-6" key={child.id ?? index}>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="font-lexical text-lg font-medium">
+                {t("questions.childPrompt", { index: index + 1 })}
+              </h2>
+              {children.length > 1 && (
+                <Button
+                  aria-label={t("questions.removeChild", { index: index + 1 })}
+                  onClick={() =>
+                    setChildren((items) => items.filter((_, at) => at !== index))
+                  }
+                  size="icon"
+                  type="button"
+                  variant="ghost"
+                >
+                  <Icons.delete />
+                </Button>
+              )}
+            </div>
+
+            <div className="mt-4 grid gap-4">
+              <SelectField
+                description={t("questions.linkedSense")}
+                onValueChange={(value) => update(index, { source: value })}
+                options={senses}
+                placeholder={t("questions.selectSense")}
+                value={child.source}
+              />
+              {submitted && childErrors[index].source && (
+                <p className="-mt-2 text-xs text-destructive" role="alert">
+                  {childErrors[index].source}
+                </p>
+              )}
+              <Field
+                error={submitted && childErrors[index].prompt}
+                label={t("questions.prompt")}
+              >
+                <Input
+                  onChange={(event) =>
+                    update(index, { prompt: event.target.value })
+                  }
+                  placeholder={t("questions.prompt")}
+                  value={child.prompt}
+                />
+              </Field>
+              <AnswerOptions
+                answerIndex={child.answerIndex}
+                error={submitted && childErrors[index].options}
+                labelPrefix={`${t("questions.childPrompt", { index: index + 1 })} · `}
+                name={`reading-answer-${index}`}
+                onAnswerChange={(answerIndex) => update(index, { answerIndex })}
+                onOptionChange={(optionIndex, value) =>
+                  update(index, {
+                    options: child.options.map((option, at) =>
+                      at === optionIndex ? value : option,
+                    ),
+                  })
+                }
+                options={child.options}
+              />
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+        <Button
+          onClick={() => setChildren((items) => [...items, emptyChild()])}
+          size="sm"
+          type="button"
+          variant="secondary"
+        >
+          <Icons.create />
+          {t("questions.addChild")}
+        </Button>
+        <Button onClick={() => void submit()} size="lg" type="button">
+          <Icons.success />
+          {t("questions.save")}
+        </Button>
+      </div>
+      {(saveError || (submitted && !valid)) && (
+        <p className="mt-3 text-right text-xs text-destructive" role="alert">
+          {saveError || t("questions.fixErrors")}
+        </p>
+      )}
+    </div>
+  );
 }

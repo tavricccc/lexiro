@@ -1,14 +1,27 @@
 "use client";
 
-import type { LibrarySet, WorkspacePracticeMode, WorkspaceQuestionDifficulty, WorkspaceQuestionType } from "@/types";
-import { ListChecks, Plus, Sparkles } from "lucide-react";
+import type {
+  LibrarySet,
+  WorkspacePracticeMode,
+  WorkspaceQuestionDifficulty,
+  WorkspaceQuestionType,
+} from "@/types";
 import Link from "next/link";
-import type { ReactNode } from "react";
 
-import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
+import { Icons } from "@/components/ui/icons";
+import { LiquidTabs } from "@/components/ui/liquid-tabs";
+import { PageHeader } from "@/components/ui/page-header";
+import { SelectField } from "@/components/ui/select-field";
 import { Switch } from "@/components/ui/switch";
 import { t } from "@/lib/i18n";
+import {
+  difficultyOptions,
+  questionFormatOptions,
+} from "@/lib/question-options";
+
+const AMOUNTS = [5, 10, 20, 30];
 
 export function PracticeSetup({
   mode,
@@ -49,99 +62,178 @@ export function PracticeSetup({
   onTypingModeChange: (typingMode: boolean) => void;
   onBegin: () => void;
 }) {
-  const emptyHref = !hasWords ? "/sets/new" : mode === "questions" ? "/questions/generate" : "/library";
-  const emptyLabel = !hasWords ? t("practice.addWordsFirst") : mode === "questions" ? t("practice.generateFirst") : t("home.openLibrary");
+  const emptyHref = !hasWords
+    ? "/sets/new"
+    : mode === "questions"
+      ? "/questions/generate"
+      : "/library";
+  const EmptyIcon = !hasWords
+    ? Icons.create
+    : mode === "questions"
+      ? Icons.generate
+      : Icons.library;
+  const emptyLabel = !hasWords
+    ? t("practice.addWordsFirst")
+    : mode === "questions"
+      ? t("practice.generateFirst")
+      : t("home.openLibrary");
 
   return (
-    <div>
+    <div className="mx-auto max-w-xl">
       <PageHeader
         title={t(mode === "review" ? "practice.review" : "practice.questions")}
         description={t("practice.description")}
-        actions={mode === "questions" ? (
-          <>
-            <Button asChild variant="ghost"><Link href="/questions"><ListChecks className="size-4" />{t("practice.manageQuestions")}</Link></Button>
-            <Button asChild variant="secondary"><Link href="/questions/generate"><Sparkles className="size-4" />{t("questions.generate")}</Link></Button>
-          </>
-        ) : undefined}
+        actions={
+          mode === "questions" ? (
+            <>
+              <Button asChild variant="ghost">
+                <Link href="/questions">
+                  <Icons.question />
+                  {t("practice.manageQuestions")}
+                </Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/questions/generate">
+                  <Icons.generate />
+                  {t("questions.generate")}
+                </Link>
+              </Button>
+            </>
+          ) : undefined
+        }
       />
-      <div className="mx-auto max-w-xl">
-        <section className="rounded-2xl bg-muted/70 p-5 sm:p-6">
-          <div className="grid grid-cols-2 gap-1 rounded-xl bg-card/70 p-1">
-            <Choice active={mode === "review"} onClick={() => onModeChange("review")} label={t("practice.review")} />
-            <Choice active={mode === "questions"} onClick={() => onModeChange("questions")} label={t("practice.questions")} />
-          </div>
-          <FieldLabel label={t("practice.set")} className="mt-6">
-            <select value={setId} onChange={(event) => onSetChange(event.target.value)} className="h-11 w-full rounded-xl border bg-card px-3 text-sm">
-              <option value="">{t("practice.allSets")}</option>
-              {sets.map((entry) => <option key={entry.id} value={entry.id}>{entry.setName}</option>)}
-            </select>
-          </FieldLabel>
+
+      <div>
+        <LiquidTabs
+          ariaLabel={t("practice.title")}
+          value={mode}
+          onValueChange={(value) =>
+            onModeChange(value as WorkspacePracticeMode)
+          }
+          options={[
+            { value: "review", label: t("practice.review") },
+            { value: "questions", label: t("practice.questions") },
+          ]}
+        />
+
+        <div className="mt-5 grid gap-4">
+          <SelectField
+            label={t("practice.set")}
+            onValueChange={(value) => onSetChange(value === "all" ? "" : value)}
+            options={[
+              { label: t("practice.allSets"), value: "all" },
+              ...sets.map((entry) => ({
+                label: entry.setName,
+                value: entry.id,
+              })),
+            ]}
+            value={setId || "all"}
+          />
+
           {mode === "questions" && (
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <FieldLabel label={t("practice.questionType")}>
-                <select value={questionType} onChange={(event) => onQuestionTypeChange(event.target.value as WorkspaceQuestionType)} className="h-11 w-full rounded-xl border bg-card px-3 text-sm">
-                  <option value="all">{t("practice.allQuestionTypes")}</option>
-                  <option value="standard">{t("questions.standard")}</option>
-                  <option value="fillBlank">{t("questions.fillBlank")}</option>
-                  <option value="reading">{t("questions.reading")}</option>
-                </select>
-              </FieldLabel>
-              <FieldLabel label={t("practice.difficulty")}>
-                <select value={difficulty} onChange={(event) => onDifficultyChange(event.target.value as WorkspaceQuestionDifficulty)} className="h-11 w-full rounded-xl border bg-card px-3 text-sm">
-                  <option value="all">{t("practice.allDifficulties")}</option>
-                  {[1, 2, 3].map((value) => <option key={value} value={value}>{t("questions.difficulty", { level: value })}</option>)}
-                </select>
-              </FieldLabel>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <SelectField
+                label={t("practice.questionType")}
+                onValueChange={(value) =>
+                  onQuestionTypeChange(value as WorkspaceQuestionType)
+                }
+                options={questionFormatOptions(
+                  t("practice.allQuestionTypes"),
+                )}
+                value={questionType}
+              />
+              <SelectField
+                label={t("practice.difficulty")}
+                onValueChange={(value) =>
+                  onDifficultyChange(value as WorkspaceQuestionDifficulty)
+                }
+                options={difficultyOptions(
+                  t("practice.allDifficulties"),
+                )}
+                value={String(difficulty)}
+              />
             </div>
           )}
-          <FieldLabel label={t("practice.amount")} className="mt-4">
-            <select value={amount} onChange={(event) => onAmountChange(Number(event.target.value))} className="h-11 w-full rounded-xl border bg-card px-3 text-sm">
-              {[5, 10, 20, 30].map((value) => <option key={value}>{value}</option>)}
-            </select>
-          </FieldLabel>
+
+          <SelectField
+            label={t("practice.amount")}
+            onValueChange={(value) => onAmountChange(Number(value))}
+            options={AMOUNTS.map((value) => ({
+              label: String(value),
+              value: String(value),
+            }))}
+            value={String(amount)}
+          />
+
           {mode === "review" && (
-            <>
-              <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border bg-card px-3.5 py-3">
-                <span className="text-sm font-medium">{t("practice.leechOnly")}</span>
-                <Switch size="sm" checked={leechOnly} onCheckedChange={onLeechOnlyChange} aria-label={t("practice.leechOnly")} />
-              </div>
-              <div className="mt-2 flex items-center justify-between gap-3 rounded-xl border bg-card px-3.5 py-3">
-                <span className="text-sm font-medium">{t("practice.typingMode")}</span>
-                <Switch size="sm" checked={typingMode} onCheckedChange={onTypingModeChange} aria-label={t("practice.typingMode")} />
-              </div>
-            </>
+            <div className="grid gap-2">
+              <Toggle
+                checked={leechOnly}
+                label={t("practice.leechOnly")}
+                onCheckedChange={onLeechOnlyChange}
+              />
+              <Toggle
+                checked={typingMode}
+                label={t("practice.typingMode")}
+                onCheckedChange={onTypingModeChange}
+              />
+            </div>
           )}
-          <div className="mt-6 border-t pt-5">
-            <p className="text-center text-sm text-muted-foreground">
-              {availableCount ? t(mode === "review" ? "practice.availableWords" : "practice.available", { count: availableCount }) : t("practice.noContent")}
-            </p>
-            {availableCount ? (
-              <Button className="mt-3 h-10 w-full" onClick={onBegin}>{t("practice.begin")}</Button>
-            ) : (
-              <Button asChild className="mt-3 h-10 w-full">
-                <Link href={emptyHref}>{!hasWords && <Plus className="size-4" />}{mode === "questions" && hasWords && <Sparkles className="size-4" />}{emptyLabel}</Link>
-              </Button>
-            )}
-          </div>
-        </section>
+        </div>
+
+        <div className="mt-7 border-t pt-6">
+          <p className="text-center text-sm text-muted-foreground">
+            {availableCount
+              ? t(
+                  mode === "review"
+                    ? "practice.availableWords"
+                    : "practice.available",
+                  { count: availableCount },
+                )
+              : t("practice.noContent")}
+          </p>
+          {availableCount ? (
+            <Button className="mt-4 w-full" size="lg" onClick={onBegin}>
+              <Icons.start />
+              {t("practice.begin")}
+            </Button>
+          ) : (
+            <Button asChild className="mt-4 w-full" size="lg">
+              <Link href={emptyHref}>
+                <EmptyIcon />
+                {emptyLabel}
+              </Link>
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
-function FieldLabel({ label, className = "", children }: { label: string; className?: string; children: ReactNode }) {
-  return <label className={`block ${className}`}><span className="mb-2 block text-xs font-semibold text-muted-foreground">{label}</span>{children}</label>;
-}
-
-function Choice({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
+function Toggle({
+  checked,
+  label,
+  onCheckedChange,
+}: {
+  checked: boolean;
+  label: string;
+  onCheckedChange: (checked: boolean) => void;
+}) {
   return (
-    <button
-      type="button"
-      aria-pressed={active}
-      onClick={onClick}
-      className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition-[background-color,color,box-shadow,transform] duration-150 active:scale-[.98] ${active ? "bg-card text-foreground shadow-[var(--shadow-control)]" : "text-muted-foreground hover:text-foreground"}`}
+    <Field
+      className="rounded-[var(--radius-card)] border bg-card px-4 py-3"
+      layout="row"
+      label={label}
     >
-      {label}
-    </button>
+      <span className="flex sm:justify-end">
+        <Switch
+          size="sm"
+          checked={checked}
+          onCheckedChange={onCheckedChange}
+          aria-label={label}
+        />
+      </span>
+    </Field>
   );
 }

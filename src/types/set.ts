@@ -1,6 +1,6 @@
-import type { QuestionDifficulty } from './library'
+import type { GeneratedQuestionKind, QuestionDifficulty } from './library'
 
-export type PracticeQuestionType = 'standard' | 'fillBlank' | 'reading'
+export type PracticeQuestionType = GeneratedQuestionKind
 export type PracticeDifficulty = QuestionDifficulty | 'all'
 
 export interface PracticeQuestion {

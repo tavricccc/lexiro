@@ -1,38 +1,205 @@
 "use client";
 
-import { Check, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import type { WordDraft } from "@/types";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { AiActions } from "@/components/ai/ai-actions";
+import { AiRunPanel } from "@/components/ai/ai-run-panel";
+import { useAiGeneration } from "@/components/ai/use-ai-generation";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Field } from "@/components/ui/field";
+import { Icons } from "@/components/ui/icons";
+import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
 import { loadAiSettings } from "@/src/lib/ai-provider";
+import { generateWithSavedAi } from "@/src/lib/ai-provider";
 import { buildImportPrompt } from "@/src/lib/importPrompt";
-import { buildWordGenerationSources, parseWordGenerationJson } from "@/src/lib/word-generation";
+import {
+  buildWordGenerationSources,
+  mergeWordDrafts,
+  parseWordGenerationJson,
+  type WordGenerationSource,
+} from "@/src/lib/word-generation";
 
-export interface AssistedWordRow { word: string; pos: string; meaningZh: string; example: string }
+export interface AssistedWordRow {
+  example: string;
+  meaningZh: string;
+  pos: string;
+  word: string;
+}
 
-export function WordAssistant({ onApply, onClose }: { onApply: (rows: AssistedWordRow[]) => void; onClose: () => void }) {
+function chunk<T>(items: T[], size: number): T[][] {
+  const batches: T[][] = [];
+  for (let index = 0; index < items.length; index += size)
+    batches.push(items.slice(index, index + size));
+  return batches;
+}
+
+function toRows(drafts: WordDraft[]): AssistedWordRow[] {
+  return drafts.flatMap((draft) =>
+    draft.senses.map((sense) => ({
+      example: sense.examples.join("\n"),
+      meaningZh: sense.meaning,
+      pos: sense.pos,
+      word: draft.word,
+    })),
+  );
+}
+
+export function WordAssistant({
+  onApply,
+  onClose,
+}: {
+  onApply: (rows: AssistedWordRow[]) => void;
+  onClose: () => void;
+}) {
   const [raw, setRaw] = useState("");
   const [examples, setExamples] = useState(false);
-  const [response, setResponse] = useState("");
-  const [preview, setPreview] = useState<AssistedWordRow[]>([]);
-  const [error, setError] = useState("");
-  const batchSize = loadAiSettings().batchSize;
+  const [manualError, setManualError] = useState("");
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
-  const exceedsBatchSize = sources.length > batchSize;
-  const prompt = useMemo(() => buildImportPrompt(raw, sources, examples), [examples, raw, sources]);
 
-  const validate = (value = response) => {
-    setError("");
+  // Long lists are split into as many requests as the configured batch size
+  // needs, instead of being refused.
+  const batches = useMemo(
+    () => chunk(sources, Math.max(1, loadAiSettings().batchSize)),
+    [sources],
+  );
+  const prompts = useMemo(
+    () => batches.map((batch) => buildImportPrompt(raw, batch, examples)),
+    [batches, examples, raw],
+  );
+
+  const parseBatch = useCallback(
+    (batch: WordGenerationSource[], response: string) =>
+      parseWordGenerationJson(response, batch, examples),
+    [examples],
+  );
+
+  const generation = useAiGeneration<WordGenerationSource[], WordDraft>({
+    merge: mergeWordDrafts,
+    run: async (batch, signal) =>
+      parseBatch(
+        batch,
+        await generateWithSavedAi(buildImportPrompt(raw, batch, examples), {
+          signal,
+        }),
+      ),
+  });
+
+  const { reset, setItems, state: run } = generation;
+
+  useEffect(() => {
+    reset();
+    setManualError("");
+  }, [examples, raw, reset]);
+
+  const applyManual = (response: string, batchIndex: number) => {
+    setManualError("");
     try {
-      const rows = parseWordGenerationJson(value, sources, examples).flatMap((word) => word.senses.map((sense) => ({ word: word.word, pos: sense.pos, meaningZh: sense.meaning, example: sense.examples.join("\n") })));
-      setPreview(rows);
+      setItems(
+        mergeWordDrafts([...run.items, ...parseBatch(batches[batchIndex], response)]),
+      );
     } catch (reason) {
-      setPreview([]);
-      setError(t("setEditor.invalidAiResponse", { message: reason instanceof Error ? reason.message : String(reason) }));
+      setManualError(
+        t("setEditor.invalidAiResponse", {
+          message: reason instanceof Error ? reason.message : String(reason),
+        }),
+      );
     }
   };
 
-  return <section className="mt-6 rounded-2xl bg-muted p-5 sm:p-6"><div className="flex items-start gap-4"><div className="min-w-0 flex-1"><h2 className="font-semibold">{t("setEditor.aiAssist")}</h2><p className="mt-1 text-sm leading-6 text-muted-foreground">{t("setEditor.aiAssistDescription")}</p></div><Button type="button" variant="ghost" size="icon" className="size-9 min-h-9" onClick={onClose}><X className="size-4" /><span className="sr-only">{t("common.cancel")}</span></Button></div><label className="mt-5 block"><span className="mb-2 block text-xs font-semibold text-muted-foreground">{t("setEditor.rawWords")}</span><textarea value={raw} onChange={(event) => { setRaw(event.target.value); setPreview([]); }} placeholder={t("setEditor.rawWordsPlaceholder")} className="min-h-32 w-full rounded-xl border bg-card px-3.5 py-3 text-sm leading-6 outline-none focus:border-primary" /></label>{exceedsBatchSize && <p className="mt-2 text-sm text-destructive" role="alert">{t("setEditor.aiBatchLimit", { count: batchSize })}</p>}<label className="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" checked={examples} onChange={(event) => { setExamples(event.target.checked); setPreview([]); }} className="accent-primary" />{t("setEditor.generateExamples")}</label><div className="mt-4"><AiActions prompt={prompt} disabled={!sources.length || exceedsBatchSize} onError={setError} onResponse={(value) => { setResponse(value); validate(value); }} /></div>{sources.length > 0 && !exceedsBatchSize && <details className="mt-4"><summary className="cursor-pointer text-xs font-semibold text-muted-foreground">{t("ai.viewPrompt")}</summary><textarea readOnly value={prompt} className="mt-2 h-36 w-full resize-y rounded-xl border bg-card p-3 text-xs leading-5" /></details>}<label className="mt-4 block"><span className="mb-2 block text-xs font-semibold text-muted-foreground">{t("ai.manualResponse")}</span><textarea value={response} onChange={(event) => { setResponse(event.target.value); setPreview([]); }} className="h-36 w-full resize-y rounded-xl border bg-card p-3 text-xs leading-5 outline-none focus:border-primary" /></label><Button type="button" className="mt-3" variant="secondary" disabled={!response.trim() || exceedsBatchSize} onClick={() => validate()}>{t("ai.validate")}</Button>{error && <p role="alert" className="mt-3 text-sm text-destructive">{error}</p>}{preview.length > 0 && <div className="mt-5 border-y py-4"><p className="flex items-center gap-2 text-sm font-semibold text-foreground"><Check className="size-4" />{t("ai.readyCount", { count: preview.length })}</p><div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">{preview.slice(0, 8).map((row, index) => <span key={`${row.word}-${row.pos}-${index}`}>{row.word} · {row.meaningZh}</span>)}</div><Button type="button" className="mt-4" onClick={() => { onApply(preview); onClose(); }}>{t("setEditor.applyPreview", { count: preview.length })}</Button></div>}</section>;
+  const rows = toRows(run.items);
+
+  return (
+    <section className="mt-4 rounded-[var(--radius-card)] border bg-[var(--surface-inset)] p-4 sm:p-5">
+      <div className="flex items-start gap-4">
+        <div className="min-w-0 flex-1">
+          <h2 className="font-medium">{t("setEditor.aiAssist")}</h2>
+          <p className="mt-1 text-sm leading-6 text-muted-foreground">
+            {t("setEditor.aiAssistDescription")}
+          </p>
+        </div>
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-sm"
+          aria-label={t("common.cancel")}
+          onClick={onClose}
+        >
+          <Icons.cancel />
+        </Button>
+      </div>
+
+      <Field
+        className="mt-4"
+        label={t("setEditor.rawWords")}
+        hint={
+          sources.length ? t("setEditor.wordsFound", { count: sources.length }) : undefined
+        }
+      >
+        <Textarea
+          className="min-h-28"
+          placeholder={t("setEditor.rawWordsPlaceholder")}
+          value={raw}
+          onChange={(event) => setRaw(event.target.value)}
+        />
+      </Field>
+
+      <label className="mt-3 flex cursor-pointer items-center gap-2.5 text-sm">
+        <Checkbox
+          checked={examples}
+          onCheckedChange={(checked) => setExamples(checked === true)}
+        />
+        {t("setEditor.generateExamples")}
+      </label>
+
+      <div className="mt-4">
+        <AiRunPanel
+          actionLabel={t("setEditor.organizeWords")}
+          configured={generation.configured}
+          manualError={manualError}
+          onCancel={generation.cancel}
+          onManualResponse={applyManual}
+          onRetryFailed={generation.retryFailed}
+          onStart={() => generation.start(batches)}
+          prompts={prompts}
+          scopeSummary={t("setEditor.wordsFound", { count: sources.length })}
+          state={run}
+        />
+      </div>
+
+      {rows.length > 0 && (
+        <div className="mt-4 border-t pt-4">
+          <p className="text-sm font-medium">
+            {t("ai.readyCount", { count: rows.length })}
+          </p>
+          <ul className="entry-senses mt-3 grid gap-1.5">
+            {rows.slice(0, 8).map((row, index) => (
+              <li
+                className="flex items-baseline gap-2 text-sm"
+                key={`${row.word}-${row.pos}-${index}`}
+              >
+                <span className="font-lexical font-medium">{row.word}</span>
+                <span className="entry-pos text-xs">{row.pos}</span>
+                <span className="truncate text-muted-foreground">
+                  {row.meaningZh}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <Button
+            type="button"
+            className="mt-4"
+            onClick={() => {
+              onApply(rows);
+              onClose();
+            }}
+          >
+            <Icons.success />
+            {t("setEditor.applyPreview", { count: rows.length })}
+          </Button>
+        </div>
+      )}
+    </section>
+  );
 }

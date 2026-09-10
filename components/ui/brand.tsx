@@ -12,17 +12,17 @@ export function BrandMark({
   return (
     <span
       aria-hidden
+      // The mark is a full-bleed asset, so it is clipped rather than padded
+      // inside a plate, and never colour-inverted -- inverting turns the brand
+      // mark into a different mark.
       className={cn(
-        "grid size-12 aspect-square shrink-0 place-items-center overflow-hidden rounded-xl bg-white p-2.5 shadow-[var(--shadow-control)] dark:bg-black",
+        "block size-9 aspect-square shrink-0 overflow-hidden rounded-[0.625rem] shadow-[var(--shadow-control)]",
         className,
       )}
     >
       <img
         alt=""
-        className={cn(
-          "block size-full aspect-square object-contain dark:invert",
-          imageClassName,
-        )}
+        className={cn("block size-full aspect-square object-cover", imageClassName)}
         src="/icons/lexiro.png"
       />
     </span>
@@ -41,7 +41,9 @@ export function BrandLockup({
   const content = (
     <>
       <BrandMark className={markClassName} />
-      <span className="text-base font-semibold">Lexiro</span>
+      <span className="font-lexical text-lg font-medium tracking-[-0.01em]">
+        Lexiro
+      </span>
     </>
   );
 

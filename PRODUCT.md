@@ -57,6 +57,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 ## Evidence on Hand
 
 - Confirmed product and data decisions: `docs/product-decisions.md`.
+- Brand, typography, component and icon rules: `docs/design-system.md`.
 - Current implementation and tests document the working capability set.
 - Current icon assets: `public/icons/lexiro.png` and `public/icons/apple-touch-icon.png`.
 - Existing generated vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.

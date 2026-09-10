@@ -112,80 +112,6 @@
   will-change: width, height;
 }
 
-/* Number updates */
-.t-digit-group {
-  display: inline-flex;
-  align-items: baseline;
-}
-.t-digit {
-  display: inline-block;
-  will-change: transform, opacity, filter;
-}
-.t-digit-group[data-animate="true"] .t-digit {
-  animation: t-digit-pop var(--motion-emphasis) var(--ease-emphasized) both;
-  animation-delay: calc(var(--digit-index, 0) * 32ms);
-}
-
-@keyframes t-digit-pop {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-    filter: blur(var(--motion-blur-sm));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-/* Notification badge */
-.t-notification-badge {
-  transform-origin: center;
-  transition:
-    transform var(--motion-emphasis) var(--ease-emphasized),
-    opacity var(--motion-slow) var(--ease-emphasized),
-    filter var(--motion-emphasis) var(--ease-emphasized);
-}
-
-.t-notification-badge[data-open="false"] {
-  opacity: 0;
-  transform: translate(-8px, 12px) scale(0);
-  filter: blur(var(--motion-blur-sm));
-  transition-duration: var(--motion-quick);
-  transition-timing-function: var(--ease-standard);
-}
-
-/* Status text swap */
-.t-text-swap {
-  display: inline-block;
-  transition:
-    transform var(--motion-quick) ease-in-out,
-    opacity var(--motion-quick) ease-in-out,
-    filter var(--motion-quick) ease-in-out;
-}
-
-.t-text-swap[data-phase="exit"] {
-  opacity: 0;
-  transform: translateY(-4px);
-  filter: blur(var(--motion-blur-sm));
-}
-.t-text-swap[data-phase="enter"] {
-  animation: t-text-enter var(--motion-quick) ease-in-out both;
-}
-@keyframes t-text-enter {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-    filter: blur(var(--motion-blur-sm));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
 /* Radix dropdown, popover and select content */
 .t-dropdown[data-state="open"] {
   animation: t-dropdown-in var(--motion-fast) var(--ease-smooth-out) both;
@@ -382,28 +308,6 @@
     opacity: 0;
     transform: translateY(-100%);
   }
-}
-
-/* Icon swap */
-.t-icon-swap {
-  display: inline-grid;
-}
-.t-icon-swap > * {
-  grid-area: 1 / 1;
-  transition:
-    opacity var(--motion-fast) ease-in-out,
-    transform var(--motion-fast) ease-in-out,
-    filter var(--motion-fast) ease-in-out;
-}
-.t-icon-swap [data-visible="false"] {
-  opacity: 0;
-  transform: scale(0.25);
-  filter: blur(var(--motion-blur-sm));
-}
-.t-icon-swap [data-visible="true"] {
-  opacity: 1;
-  transform: scale(1);
-  filter: blur(0);
 }
 
 /* Success and error */
@@ -750,18 +654,6 @@
   opacity: 0;
   filter: blur(var(--toast-blur));
 }
-
-/* Like / support celebration */
-.t-like {
-  position: relative;
-}
-.t-action-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 1rem;
-  height: 1rem;
-  flex: 0 0 1rem;
-}
 .t-spinner {
   animation: t-spinner 700ms linear infinite;
 }
@@ -769,17 +661,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Startup and update progress stay bounded to one small compositor layer. */
-.t-loading-orbit {
-  display: grid;
-  width: 2rem;
-  height: 2rem;
-  place-items: center;
-  border-radius: 999px;
-  background: var(--muted);
-  transform: translateZ(0);
 }
 
 .t-spinner-check {
@@ -847,145 +728,6 @@
   animation: t-success-draw var(--motion-fast) var(--ease-smooth-out) both;
 }
 
-.t-update-stage {
-  animation: t-update-stage-in var(--motion-slow) var(--ease-smooth-out) both;
-}
-
-@keyframes t-update-stage-in {
-  from {
-    opacity: 0;
-    transform: translateY(var(--motion-distance-sm)) scale(var(--motion-scale-soft));
-    filter: blur(var(--motion-blur-sm));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-.t-progress-track {
-  width: 7.5rem;
-  height: 2px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: var(--muted);
-}
-
-.t-progress-track > span {
-  display: block;
-  width: 45%;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--foreground);
-  animation: t-progress-sweep 1100ms var(--ease-smooth-out) infinite;
-  will-change: transform;
-}
-
-@keyframes t-progress-sweep {
-  from { transform: translateX(-125%); }
-  to { transform: translateX(300%); }
-}
-.t-like-icon {
-  display: grid;
-  place-items: center;
-  width: 1rem;
-  height: 1rem;
-  transition: color var(--motion-quick) var(--ease-smooth-out);
-}
-.t-reaction-icon {
-  display: block;
-  width: 1rem;
-  height: 1rem;
-}
-.t-like[data-accent="heart"][data-liked="true"] .t-like-icon {
-  color: #f40051;
-}
-.t-like[data-accent="heart"][data-celebrating] .t-reaction-icon {
-  animation: t-like-pop var(--motion-medium) var(--ease-emphasized) both;
-}
-@keyframes t-like-pop {
-  0% {
-    transform: scale(0.8);
-  }
-  50% {
-    transform: scale(1.18);
-  }
-  75% {
-    transform: scale(0.96);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.t-like[data-accent="hand"][data-celebrating] .t-reaction-icon {
-  transform-origin: 50% 82%;
-  animation: t-hand-raise 460ms var(--ease-emphasized) both;
-}
-@keyframes t-hand-raise {
-  0% {
-    transform: translateY(2px) rotate(-4deg) scale(0.85);
-    filter: blur(1px);
-  }
-  42% {
-    transform: translateY(-4px) rotate(3deg) scale(1.12);
-    filter: blur(0);
-  }
-  72% {
-    transform: translateY(-1px) rotate(-1deg) scale(1.02);
-  }
-  100% {
-    transform: translateY(0) rotate(0) scale(1);
-    filter: blur(0);
-  }
-}
-.t-like-particles {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-.t-like-particles i {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: calc(3px * var(--psize));
-  height: calc(3px * var(--psize));
-  border-radius: 999px;
-  background: currentColor;
-  color: var(--foreground);
-  animation: t-like-burst var(--pdur) var(--ease-emphasized) var(--pdelay) both;
-}
-.t-like[data-accent="heart"] .t-like-particles i {
-  color: #f40051;
-}
-.t-like[data-accent="hand"] .t-like-particles {
-  transform: translate(1px, -5px);
-}
-.t-like[data-accent="hand"] .t-like-particles i {
-  width: calc(2.5px * var(--psize));
-  height: calc(2.5px * var(--psize));
-}
-@keyframes t-like-burst {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2);
-  }
-  18% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(-50% + var(--px)), calc(-50% + var(--py)))
-      scale(var(--p-end-scale));
-  }
-}
-
-/* Directional link arrow */
-.t-learn-arrow {
-  transition: transform var(--motion-medium) var(--ease-smooth-out);
-}
 @media (hover: hover) and (pointer: fine) {
   .t-learn:hover .t-learn-arrow {
     transform: translateX(2px) scaleX(1.08);
@@ -1039,15 +781,6 @@
   100% {
     translate: 0 0;
   }
-}
-
-/* Only explicitly interactive cards receive restrained surface feedback. */
-.t-card {
-  transform: translateZ(0);
-  transition:
-    background-color 200ms var(--ease-smooth-out),
-    border-color 200ms var(--ease-smooth-out),
-    transform 200ms var(--ease-smooth-out);
 }
 @media (hover: hover) and (pointer: fine) {
   .t-card:hover {

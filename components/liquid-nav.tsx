@@ -78,7 +78,7 @@ export function LiquidNav({
               vertical
                 ? "gap-3 px-3"
                 : "flex-1 flex-col justify-center gap-1 px-1 py-1.5 text-[0.6875rem]",
-              active && "bg-secondary text-foreground shadow-[var(--shadow-control)]",
+              active && "bg-brand-100 text-brand-700 shadow-[var(--shadow-control)]",
             )}
             data-liquid-nav-index={index}
             data-active={active}

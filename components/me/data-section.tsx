@@ -1,11 +1,11 @@
 "use client";
 
-import { DatabaseBackup, Download, Upload } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { MeSection } from "@/components/me/me-section";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
@@ -80,18 +80,18 @@ export function DataSection({
   return (
     <>
       <MeSection
-        icon={DatabaseBackup}
+        icon={Icons.backup}
         title={t("settings.data")}
         description={t("me.dataDescription")}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button onClick={exportBackup}>
-            <Download className="size-4" />
+            <Icons.export />
             {t("settings.export")}
           </Button>
           <Button asChild variant="secondary">
             <label className="cursor-pointer">
-              <Upload className="size-4" />
+              <Icons.import />
               {t("settings.import")}
               <input
                 type="file"
@@ -127,6 +127,7 @@ export function DataSection({
             : ""
         }
         confirmLabel={t("settings.import")}
+        tone="default"
         onConfirm={confirmImport}
       />
     </>

@@ -1,16 +1,15 @@
 "use client";
 
-import { Bookmark, Check, RotateCcw } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { AiActions } from "@/components/ai/ai-actions";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
+import { Markdown } from "@/components/ui/markdown";
 import { t } from "@/lib/i18n";
+import { generateWithSavedAi, isAiConfigured } from "@/src/lib/ai-provider";
 import { buildMistakeExplanationPrompt } from "@/src/lib/prompts";
-
-const resultTransition = { duration: 0.2, ease: [0.22, 1, 0.36, 1] as const };
 
 export function ResultPanel({
   correct,
@@ -33,58 +32,106 @@ export function ResultPanel({
 }) {
   const [explanation, setExplanation] = useState("");
   const [error, setError] = useState("");
-  const prompt = buildMistakeExplanationPrompt(wrongContent);
+  const [busy, setBusy] = useState(false);
+
+  const explain = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      setExplanation(
+        await generateWithSavedAi(buildMistakeExplanationPrompt(wrongContent), {
+          responseFormat: "text",
+        }),
+      );
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
+    } finally {
+      setBusy(false);
+    }
+  };
 
   return (
     <motion.div
-      className="mx-auto max-w-xl py-10 text-center sm:py-14"
+      className="mx-auto max-w-xl py-10 sm:py-14"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={resultTransition}
+      transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="mx-auto grid size-12 place-items-center rounded-full bg-success/10 text-success">
-        <Check className="size-5" />
+      <div className="text-center">
+        <p className="font-lexical text-[3.5rem] font-medium leading-none tabular-nums">
+          {correct}
+          <span className="text-muted-foreground">/{total}</span>
+        </p>
+        <h1 className="mt-4 text-lg font-medium">{t("practice.resultTitle")}</h1>
+        <dl className="mt-4 flex justify-center gap-8 text-sm">
+          <div>
+            <dt className="text-muted-foreground">{t("practice.skippedLabel")}</dt>
+            <dd className="mt-0.5 font-medium tabular-nums">{skipped}</dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">{t("practice.markedLabel")}</dt>
+            <dd className="mt-0.5 font-medium tabular-nums">{marked}</dd>
+          </div>
+        </dl>
       </div>
-      <h1 className="mt-5 text-2xl font-semibold tracking-[-0.025em]">{t("practice.resultTitle")}</h1>
-      <p className="mt-3 text-base font-semibold tabular-nums">{t("practice.score", { correct, total })}</p>
-      <p className="mt-1.5 text-sm text-muted-foreground">
-        {t("practice.skipped", { count: skipped })} · {t("practice.marked", { count: marked })}
-      </p>
 
-      <div className="mx-auto mt-7 flex max-w-md flex-col justify-center gap-2 sm:flex-row sm:flex-wrap">
+      <div className="section-gap flex flex-col justify-center gap-2 sm:flex-row sm:flex-wrap">
         {onContinueQuestions ? (
-          <Button onClick={onContinueQuestions}>{t("practice.continueQuestions")}</Button>
+          <Button onClick={onContinueQuestions}>
+            <Icons.start />
+            {t("practice.continueQuestions")}
+          </Button>
         ) : (
-          <Button asChild><Link href="/">{t("practice.backHome")}</Link></Button>
+          <Button asChild>
+            <Link href="/">
+              <Icons.review />
+              {t("practice.backHome")}
+            </Link>
+          </Button>
         )}
         {wrongContent && (
           <Button variant="secondary" onClick={onRetry}>
-            <RotateCcw className="size-4" />{t("practice.retryWrong")}
+            <Icons.retry />
+            {t("practice.retryWrong")}
           </Button>
         )}
         {onRetryMarked && (
           <Button variant="secondary" onClick={onRetryMarked}>
-            <Bookmark className="size-4" />{t("practice.retryMarked")}
+            <Icons.mark />
+            {t("practice.retryMarked")}
           </Button>
         )}
       </div>
 
-      {wrongContent && (
-        <div className="mt-5 flex justify-center">
-          <AiActions prompt={prompt} responseFormat="text" onError={setError} onResponse={setExplanation} />
+      {wrongContent && !explanation && (
+        <div className="mt-6 flex justify-center">
+          {isAiConfigured() ? (
+            <Button variant="ghost" disabled={busy} onClick={() => void explain()}>
+              <Icons.generate />
+              {t(busy ? "practice.explaining" : "practice.explainWrong")}
+            </Button>
+          ) : (
+            <Button asChild variant="ghost">
+              <Link href="/me">
+                <Icons.ai />
+                {t("ai.setUp")}
+              </Link>
+            </Button>
+          )}
         </div>
       )}
-      {error && <p role="alert" className="mt-4 text-sm text-destructive">{error}</p>}
+      {error && (
+        <p role="alert" className="mt-4 text-center text-sm text-destructive">
+          {error}
+        </p>
+      )}
       {explanation && (
-        <motion.section
-          className="mt-8 rounded-2xl bg-muted/70 p-5 text-left sm:p-6"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={resultTransition}
-        >
-          <h2 className="font-semibold">{t("practice.explanationTitle")}</h2>
-          <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-muted-foreground">{explanation}</p>
-        </motion.section>
+        <section className="section-gap border-t pt-6">
+          <h2 className="font-lexical text-xl font-medium">
+            {t("practice.explanationTitle")}
+          </h2>
+          <Markdown className="mt-4 text-sm" content={explanation} />
+        </section>
       )}
     </motion.div>
   );

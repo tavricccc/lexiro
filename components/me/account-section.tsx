@@ -1,6 +1,5 @@
 "use client";
 
-import { BarChart3, Cloud, LogIn, LogOut, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -94,7 +94,7 @@ export function AccountSection() {
           </Badge>
           <Button asChild variant="ghost" size="sm">
             <Link href="/progress">
-              <BarChart3 className="size-4" />
+              <Icons.stats />
               {t("me.viewProgress")}
             </Link>
           </Button>
@@ -102,25 +102,25 @@ export function AccountSection() {
       </div>
 
       <MeSection
-        icon={Cloud}
+        icon={Icons.sync}
         title={t("settings.account")}
         description={t("me.accountDescription")}
       >
         <div className="flex flex-wrap gap-2">
           {cloud.configured && !cloud.user && (
             <Button onClick={requestSignIn} disabled={!cloud.ready || isWorking}>
-              <LogIn className="size-4" />
+              <Icons.signIn />
               {t("settings.signIn")}
             </Button>
           )}
           {cloud.user && (
             <>
               <Button onClick={() => void sync()} disabled={isWorking}>
-                <RefreshCw className={isWorking ? "size-4 animate-spin" : "size-4"} />
+                <Icons.refresh className={isWorking ? "animate-spin" : undefined} />
                 {t("settings.syncNow")}
               </Button>
               <Button variant="secondary" onClick={() => void signOut()}>
-                <LogOut className="size-4" />
+                <Icons.signOut />
                 {t("settings.signOut")}
               </Button>
             </>
@@ -147,6 +147,7 @@ export function AccountSection() {
         title={t("settings.signIn")}
         description={t("settings.guestDataWarning")}
         confirmLabel={t("settings.continueSignIn")}
+        tone="default"
         onConfirm={async () => {
           setConfirmSignIn(false);
           await signIn();

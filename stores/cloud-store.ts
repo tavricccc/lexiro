@@ -8,7 +8,7 @@ import { CLOUD_SYNC_PENDING_EVENT, SYNC_HEAD_STORAGE_KEY } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { canonicalHash } from "@/src/lib/hash";
-import { getShareableAiSettings, loadAiSettingsState, saveAiSettings, waitForAiSettingsPersistence } from "@/src/lib/ai-provider";
+import { getShareableAiSettings, saveAiSettings, waitForAiSettingsPersistence, whenAiSettingsReady } from "@/src/lib/ai-provider";
 import {
   cloudDocument,
   readCloudLibraryV5,
@@ -175,7 +175,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     try {
       const localLibrary = useLibraryStore.getState().state;
       const localLearning = useLearningStore.getState();
-      const localAiSettings = await loadAiSettingsState();
+      const localAiSettings = await whenAiSettingsReady();
       const localHead = await readLocalHead();
       const remoteLibrary = await readCloudLibraryV5(db, user.uid);
       const firestore = await import("firebase/firestore");

@@ -1,12 +1,13 @@
 import type { EditorItem, EditorSenseDraft, PracticeQuestion, PracticeSession, QuizRecord, SessionEntry, StudyWord, WordDraft } from '@/types'
 import { hasOnlyKeys, isRecord } from './schema'
+import { randomUUID } from './id'
 
 function generateEditorId(): string {
-  return `editor-${crypto.randomUUID()}`
+  return `editor-${randomUUID()}`
 }
 
 export function createBlankSenseDraft(): EditorSenseDraft {
-  return { id: `sense-editor-${crypto.randomUUID()}`, pos: '', meaning: '', examples: [] }
+  return { id: `sense-editor-${randomUUID()}`, pos: '', meaning: '', examples: [] }
 }
 
 export function containsHan(value: string): boolean {

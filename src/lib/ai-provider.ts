@@ -15,6 +15,23 @@ export const defaultAiSettings: AiSettings = {
 
 export interface AiGenerationOptions {
   responseFormat?: 'json' | 'text'
+  signal?: AbortSignal
+}
+
+/**
+ * Thrown when the app cannot call the AI because it has not been set up, as
+ * opposed to a request that was attempted and failed. The UI uses this to send
+ * the user to settings instead of showing a request error.
+ */
+export class AiNotConfiguredError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'AiNotConfiguredError'
+  }
+}
+
+export function isAiConfigured(settings: AiSettings = loadAiSettings()): boolean {
+  return settings.enabled && Boolean(settings.apiKey.trim())
 }
 
 const AI_REQUEST_TIMEOUT_MS = 60_000
@@ -26,6 +43,17 @@ const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
 let storedSettings: AiSettings = { ...defaultAiSettings }
 const settingsListeners = new Set<(settings: AiSettings) => void>()
 let settingsPersistencePromise: Promise<void> = Promise.resolve()
+let settingsHydration: Promise<AiSettings> | null = null
+
+/**
+ * Resolves once stored settings have been read from IndexedDB. `LibraryHydrator`
+ * starts that read for every workspace route, so this only ever waits out a race
+ * between app start and the first generation.
+ */
+export async function whenAiSettingsReady(): Promise<AiSettings> {
+  await loadAiSettingsState()
+  return loadAiSettings()
+}
 
 function assertKnownSettingsKeys(value: Record<string, unknown>, includeApiKey: boolean): void {
   const allowed = includeApiKey
@@ -81,7 +109,12 @@ export function onAiSettingsChanged(listener: (settings: AiSettings) => void): (
   return () => settingsListeners.delete(listener)
 }
 
-export async function loadAiSettingsState(): Promise<AiSettings> {
+export function loadAiSettingsState(): Promise<AiSettings> {
+  settingsHydration ??= readAiSettingsState()
+  return settingsHydration
+}
+
+async function readAiSettingsState(): Promise<AiSettings> {
   const [stored, storedApiKey] = await Promise.all([
     loadFromStorage(AI_SETTINGS_KEY),
     loadFromStorage(AI_API_KEY_STORAGE_KEY),
@@ -174,8 +207,10 @@ function googleUrl(settings: AiSettings) {
 }
 
 export async function generateWithAi(settings: AiSettings, prompt: string, options: AiGenerationOptions = {}): Promise<string> {
+  if (!settings.enabled)
+    throw new AiNotConfiguredError('尚未開啟直接呼叫 API')
   if (!settings.apiKey.trim())
-    throw new Error('請先在設定中填入 API key')
+    throw new AiNotConfiguredError('尚未填入 API key')
 
   const provider: AiProvider = settings.provider
   const responseFormat = options.responseFormat ?? 'json'
@@ -216,18 +251,23 @@ export async function generateWithAi(settings: AiSettings, prompt: string, optio
   }
 
   const controller = new AbortController()
+  const abortFromCaller = () => controller.abort(options.signal?.reason)
+  options.signal?.addEventListener('abort', abortFromCaller, { once: true })
   const timeout = window.setTimeout(() => controller.abort(new DOMException('AI 請求逾時（60 秒）', 'TimeoutError')), AI_REQUEST_TIMEOUT_MS)
   let response: Response
   try {
     response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), signal: controller.signal })
   }
   catch (reason) {
+    if (options.signal?.aborted)
+      throw reason
     if (controller.signal.aborted)
       throw new Error('AI 請求逾時，請稍後再試或檢查網路連線。')
     throw reason
   }
   finally {
     window.clearTimeout(timeout)
+    options.signal?.removeEventListener('abort', abortFromCaller)
   }
   if (!response.ok) {
     let detail = ''
@@ -259,9 +299,13 @@ export async function generateWithAi(settings: AiSettings, prompt: string, optio
   return ''
 }
 
+/**
+ * Calls the AI with the settings already in memory. Settings are hydrated once
+ * by `loadAiSettingsState()` at startup, so a run of twenty batched requests no
+ * longer re-reads IndexedDB twenty times.
+ */
 export async function generateWithSavedAi(prompt: string, options: AiGenerationOptions = {}): Promise<string> {
-  const settings = await loadAiSettingsState()
-  return generateWithAi(settings, prompt, options)
+  return generateWithAi(await whenAiSettingsReady(), prompt, options)
 }
 
 export function extractJsonText(text: string): string {

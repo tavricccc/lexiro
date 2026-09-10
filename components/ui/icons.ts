@@ -1,0 +1,105 @@
+import {
+  AlertCircle,
+  ArrowLeft,
+  BarChart3,
+  Bookmark,
+  BookMarked,
+  BookOpenText,
+  Bot,
+  Brain,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  CircleHelp,
+  Clipboard,
+  ClipboardCheck,
+  Cloud,
+  CloudOff,
+  Database,
+  DatabaseBackup,
+  Download,
+  Eye,
+  EyeOff,
+  Flame,
+  Folder,
+  FolderOpen,
+  LoaderCircle,
+  LogIn,
+  LogOut,
+  Pencil,
+  Play,
+  Plus,
+  RefreshCw,
+  RotateCcw,
+  Search,
+  SkipForward,
+  SlidersHorizontal,
+  Sparkles,
+  Trash2,
+  Trophy,
+  Upload,
+  UserRound,
+  Volume2,
+  X,
+} from "lucide-react";
+
+/**
+ * One icon per concept, for the whole app.
+ *
+ * Rules that go with this map:
+ *  - A concept keeps the same glyph everywhere. Before reaching for a lucide
+ *    import in a feature component, add the concept here instead.
+ *  - Every action button carries its icon. Buttons that sit side by side must
+ *    either all have icons or all have none — a mixed row reads as an accident.
+ *  - Icon-only buttons are allowed for secondary and destructive actions inside
+ *    list rows and toolbars only, and always need an `aria-label`.
+ *  - Icons inherit their colour from the text beside them. Do not tint one
+ *    instance of a concept differently from another.
+ */
+export const Icons = {
+  account: UserRound,
+  ai: Bot,
+  back: ArrowLeft,
+  backup: DatabaseBackup,
+  cancel: X,
+  copy: Clipboard,
+  create: Plus,
+  data: Database,
+  delete: Trash2,
+  edit: Pencil,
+  error: AlertCircle,
+  export: Download,
+  folder: Folder,
+  folderEmpty: FolderOpen,
+  generate: Sparkles,
+  hide: EyeOff,
+  import: Upload,
+  incorrect: X,
+  levelUp: Trophy,
+  library: BookMarked,
+  loading: LoaderCircle,
+  mark: Bookmark,
+  open: ChevronRight,
+  practice: ClipboardCheck,
+  question: CircleHelp,
+  reading: BookOpenText,
+  refresh: RefreshCw,
+  retry: RotateCcw,
+  reveal: Eye,
+  review: Brain,
+  search: Search,
+  settings: SlidersHorizontal,
+  signIn: LogIn,
+  signOut: LogOut,
+  skip: SkipForward,
+  speak: Volume2,
+  start: Play,
+  stats: BarChart3,
+  streak: Flame,
+  success: Check,
+  sync: Cloud,
+  syncOff: CloudOff,
+  up: ChevronLeft,
+} as const;
+
+export type IconName = keyof typeof Icons;

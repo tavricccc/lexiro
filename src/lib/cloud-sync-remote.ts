@@ -14,6 +14,7 @@ import { createUncategorizedFolder } from './folders'
 import { canonicalHash } from './hash'
 import { createDefaultStats } from './learning-defaults'
 import { withSyncTimeout } from './sync-timeout'
+import { randomUUID } from './id'
 
 export function requireCloudFirestore(): Firestore {
   const db = getFirebaseFirestore()
@@ -209,7 +210,7 @@ interface LibraryWriteLease {
 }
 
 async function acquireLibraryWriteLease(db: Firestore, uid: string): Promise<LibraryWriteLease> {
-  const token = crypto.randomUUID()
+  const token = randomUUID()
   const reference = cloudDocument(db, uid, 'libraryLocks', LIBRARY_WRITE_LOCK_ID)
 
   await withSyncTimeout(runTransaction(db, async (transaction) => {

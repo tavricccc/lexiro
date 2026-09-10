@@ -1,19 +1,16 @@
 "use client";
 
-import { Bot, Download, Eye, EyeOff, Upload } from "lucide-react";
+import type { AiProvider, AiSettings } from "@/types";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { MeField, MeSection } from "@/components/me/me-section";
+import { MeSection } from "@/components/me/me-section";
+import { useAutosave } from "@/components/me/use-autosave";
 import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
+import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { SelectField } from "@/components/ui/select-field";
 import { Switch } from "@/components/ui/switch";
 import { t } from "@/lib/i18n";
 import {
@@ -22,19 +19,20 @@ import {
   saveAiSettings,
   waitForAiSettingsPersistence,
 } from "@/src/lib/ai-provider";
-import type { AiProvider, AiSettings } from "@/types";
 
-const providers: { label: string; value: AiProvider }[] = [
-  { value: "openai", label: "OpenAI" },
-  { value: "anthropic", label: "Anthropic" },
-  { value: "google", label: "Google" },
-  { value: "custom", label: "OpenAI compatible" },
+const PROVIDERS: { label: string; value: AiProvider }[] = [
+  { label: "OpenAI", value: "openai" },
+  { label: "Anthropic", value: "anthropic" },
+  { label: "Google", value: "google" },
+  { label: "OpenAI compatible", value: "custom" },
 ];
 
 export function AiSettingsSection({
+  hydrated,
   settings,
   onChange,
 }: {
+  hydrated: boolean;
   settings: AiSettings;
   onChange: (settings: AiSettings) => void;
 }) {
@@ -42,15 +40,18 @@ export function AiSettingsSection({
   const update = (patch: Partial<AiSettings>) =>
     onChange({ ...settings, ...patch });
 
-  const save = async () => {
-    if (settings.enabled && !settings.apiKey.trim()) {
-      toast.error(t("me.apiKeyRequired"));
-      return;
-    }
-    saveAiSettings(settings);
-    await waitForAiSettingsPersistence();
-    toast.success(t("settings.aiSaved"));
-  };
+  const missingKey = settings.enabled && !settings.apiKey.trim();
+  const status = useAutosave(
+    settings,
+    async (value) => {
+      saveAiSettings(value);
+      await waitForAiSettingsPersistence();
+    },
+    // Not before the stored settings have loaded, and not while the
+    // configuration is incomplete -- a half-typed key would be written as a
+    // broken configuration.
+    { ready: hydrated && !missingKey },
+  );
 
   const importSettings = async (file: File) => {
     try {
@@ -71,12 +72,13 @@ export function AiSettingsSection({
 
   return (
     <MeSection
-      icon={Bot}
-      title={t("settings.ai")}
       description={t("settings.aiDescription")}
+      icon={Icons.ai}
+      status={status}
+      title={t("settings.ai")}
     >
       <div className="grid gap-5">
-        <div className="flex items-center justify-between gap-4 rounded-xl bg-muted px-4 py-3.5">
+        <div className="flex items-center justify-between gap-4 rounded-[var(--radius-card)] bg-[var(--surface-inset)] px-4 py-3.5">
           <div>
             <p className="text-sm font-medium">{t("me.directApi")}</p>
             <p className="mt-1 text-xs leading-5 text-muted-foreground">
@@ -84,100 +86,96 @@ export function AiSettingsSection({
             </p>
           </div>
           <Switch
+            aria-label={t("me.directApi")}
             checked={settings.enabled}
             onCheckedChange={(enabled) => update({ enabled })}
-            aria-label={t("me.directApi")}
           />
         </div>
 
         {settings.enabled && (
           <div className="t-panel-reveal grid gap-5">
-            <MeField label={t("settings.provider")}>
-              <Select
-                value={settings.provider}
-                onValueChange={(provider) =>
-                  update({ provider: provider as AiProvider })
-                }
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {providers.map((provider) => (
-                    <SelectItem key={provider.value} value={provider.value}>
-                      {provider.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </MeField>
-            <MeField label={t("settings.model")}>
+            <SelectField
+              label={t("settings.provider")}
+              layout="row"
+              onValueChange={(provider) =>
+                update({ provider: provider as AiProvider })
+              }
+              options={PROVIDERS}
+              value={settings.provider}
+            />
+            <Field label={t("settings.model")} layout="row">
               <Input
-                value={settings.model}
                 onChange={(event) => update({ model: event.target.value })}
+                value={settings.model}
               />
-            </MeField>
-            <MeField
-              label={t("settings.endpoint")}
+            </Field>
+            <Field
               description={t("me.endpointHint")}
+              label={t("settings.endpoint")}
+              layout="row"
             >
               <Input
                 inputMode="url"
-                value={settings.baseUrl}
-                placeholder={t("me.endpointPlaceholder")}
                 onChange={(event) => update({ baseUrl: event.target.value })}
+                placeholder={t("me.endpointPlaceholder")}
+                value={settings.baseUrl}
               />
-            </MeField>
-            <MeField label={t("settings.apiKey")}>
-              <div className="relative">
+            </Field>
+            <Field
+              error={missingKey && t("me.apiKeyRequired")}
+              label={t("settings.apiKey")}
+              layout="row"
+            >
+              <span className="relative block">
                 <Input
-                  className="pr-12"
-                  type={showApiKey ? "text" : "password"}
                   autoComplete="off"
-                  value={settings.apiKey}
+                  className="pr-12"
                   onChange={(event) => update({ apiKey: event.target.value })}
+                  type={showApiKey ? "text" : "password"}
+                  value={settings.apiKey}
                 />
                 <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 grid w-11 place-items-center rounded-r-xl text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40"
                   aria-label={t(showApiKey ? "me.hideApiKey" : "me.showApiKey")}
+                  className="absolute inset-y-0 right-0 grid w-11 place-items-center rounded-r-md text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40"
                   onClick={() => setShowApiKey((visible) => !visible)}
+                  type="button"
                 >
-                  {showApiKey ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                  {showApiKey ? (
+                    <Icons.hide className="size-4" />
+                  ) : (
+                    <Icons.reveal className="size-4" />
+                  )}
                 </button>
-              </div>
-            </MeField>
-            <MeField
-              label={t("settings.batchSize")}
+              </span>
+            </Field>
+            <Field
               description={t("me.batchSizeHint")}
+              label={t("settings.batchSize")}
+              layout="row"
             >
               <Input
-                type="number"
-                min={5}
                 max={20}
-                value={settings.batchSize}
+                min={5}
                 onChange={(event) =>
                   update({ batchSize: Number(event.target.value) })
                 }
+                type="number"
+                value={settings.batchSize}
               />
-            </MeField>
+            </Field>
           </div>
         )}
 
         <div className="flex flex-wrap justify-end gap-2">
-          <Button
-            variant="ghost"
-            onClick={() => downloadAiSettings(settings)}
-          >
-            <Download className="size-4" />
+          <Button onClick={() => downloadAiSettings(settings)} variant="ghost">
+            <Icons.export />
             {t("settings.exportAi")}
           </Button>
           <Button asChild variant="ghost">
             <label className="cursor-pointer">
-              <Upload className="size-4" />
+              <Icons.import />
               {t("settings.importAi")}
               <input
-                type="file"
                 accept=".json,application/json"
                 className="sr-only"
                 onChange={(event) => {
@@ -185,10 +183,10 @@ export function AiSettingsSection({
                   if (file) void importSettings(file);
                   event.target.value = "";
                 }}
+                type="file"
               />
             </label>
           </Button>
-          <Button onClick={() => void save()}>{t("settings.saveAi")}</Button>
         </div>
       </div>
     </MeSection>

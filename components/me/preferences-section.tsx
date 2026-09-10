@@ -1,20 +1,14 @@
 "use client";
 
-import { SlidersHorizontal } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useEffect, useMemo, useState } from "react";
 
-import { MeField, MeSection } from "@/components/me/me-section";
-import { Button } from "@/components/ui/button";
+import { MeSection } from "@/components/me/me-section";
+import { useAutosave } from "@/components/me/use-autosave";
+import { Field } from "@/components/ui/field";
+import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 
@@ -36,53 +30,54 @@ export function PreferencesSection() {
     learning.stats.dailyWordGoal,
   ]);
 
-  const saveGoals = async () => {
-    await learning.setGoals(clampGoal(wordGoal), clampGoal(questionGoal));
-    toast.success(t("me.preferencesSaved"));
-  };
+  const goals = useMemo(
+    () => ({ questionGoal, wordGoal }),
+    [questionGoal, wordGoal],
+  );
+  const status = useAutosave(
+    goals,
+    (value) =>
+      learning.setGoals(clampGoal(value.wordGoal), clampGoal(value.questionGoal)),
+    { ready: learning.loaded },
+  );
 
   return (
     <MeSection
-      icon={SlidersHorizontal}
-      title={t("me.preferences")}
       description={t("me.preferencesDescription")}
+      icon={Icons.settings}
+      status={status}
+      title={t("me.preferences")}
     >
       <div className="grid gap-5">
-        <MeField label={t("settings.theme")}>
-          <Select value={theme ?? "system"} onValueChange={setTheme}>
-            <SelectTrigger className="w-full">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="system">{t("settings.system")}</SelectItem>
-              <SelectItem value="light">{t("settings.light")}</SelectItem>
-              <SelectItem value="dark">{t("settings.dark")}</SelectItem>
-            </SelectContent>
-          </Select>
-        </MeField>
-        <MeField label={t("settings.dailyWords")}>
+        <SelectField
+          label={t("settings.theme")}
+          layout="row"
+          onValueChange={setTheme}
+          options={[
+            { label: t("settings.system"), value: "system" },
+            { label: t("settings.light"), value: "light" },
+            { label: t("settings.dark"), value: "dark" },
+          ]}
+          value={theme ?? "system"}
+        />
+        <Field label={t("settings.dailyWords")} layout="row">
           <Input
-            type="number"
-            min={1}
             max={100}
-            value={wordGoal}
+            min={1}
             onChange={(event) => setWordGoal(Number(event.target.value))}
-          />
-        </MeField>
-        <MeField label={t("settings.dailyQuestions")}>
-          <Input
             type="number"
-            min={1}
-            max={100}
-            value={questionGoal}
-            onChange={(event) => setQuestionGoal(Number(event.target.value))}
+            value={wordGoal}
           />
-        </MeField>
-        <div className="flex justify-end">
-          <Button onClick={() => void saveGoals()}>
-            {t("settings.saveGoals")}
-          </Button>
-        </div>
+        </Field>
+        <Field label={t("settings.dailyQuestions")} layout="row">
+          <Input
+            max={100}
+            min={1}
+            onChange={(event) => setQuestionGoal(Number(event.target.value))}
+            type="number"
+            value={questionGoal}
+          />
+        </Field>
       </div>
     </MeSection>
   );
