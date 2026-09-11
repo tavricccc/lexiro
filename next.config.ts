@@ -25,6 +25,16 @@ const nextConfig: NextConfig = {
       destination: "/library?tab=questions",
       permanent: true,
     },
+    // Writing a question from scratch is gone; questions come from the words
+    // you already have. Editing the ones you have has not moved.
+    { source: "/questions/new", destination: "/questions/generate", permanent: true },
+    {
+      source: "/questions/reading/new",
+      destination: "/questions/generate",
+      permanent: true,
+    },
+    // A set is one page now, and it is editable.
+    { source: "/sets/:setId/edit", destination: "/sets/:setId", permanent: true },
   ],
 };
 

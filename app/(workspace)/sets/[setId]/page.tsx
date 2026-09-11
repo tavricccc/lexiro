@@ -1,6 +1,6 @@
-import { SetDetail } from "@/components/library/set-detail";
+import { SetEditor } from "@/components/library/set-editor";
 
 export default async function Page({ params }: { params: Promise<{ setId: string }> }) {
   const { setId } = await params;
-  return <SetDetail setId={setId} />;
+  return <SetEditor setId={setId} />;
 }

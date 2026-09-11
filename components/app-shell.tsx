@@ -16,15 +16,17 @@ import { cn } from "@/lib/cn";
 import { SyncIndicator } from "@/components/sync-indicator";
 import { useUIStore } from "@/stores/ui-store";
 
+// 今天 opens both kinds of practice with a count beside each, so 練習 is a screen
+// you arrive at rather than a place you go: it keeps its route for every link
+// that starts a session, but not a slot in the navigation.
 const destinations = [
-  { href: "/", label: "nav.study", icon: Icons.today },
-  { href: "/library", label: "nav.library", icon: Icons.library },
   {
-    href: "/practice",
+    href: "/",
     activePathPrefix: "/practice",
-    label: "nav.practice",
-    icon: Icons.practice,
+    label: "nav.study",
+    icon: Icons.today,
   },
+  { href: "/library", label: "nav.library", icon: Icons.library },
   { href: "/progress", label: "nav.progress", icon: Icons.stats },
 ] satisfies {
   href: string;

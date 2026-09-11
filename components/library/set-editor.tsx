@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -13,6 +13,7 @@ import {
   type SetFormValues,
 } from "@/components/library/set-form";
 import { SetWordFields } from "@/components/library/set-word-fields";
+import { questionEditHref } from "@/components/questions/question-list";
 import {
   WordAssistant,
   type AssistedWordRow,
@@ -23,12 +24,17 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Field, FieldRow } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
+import { EmptyState } from "@/components/ui/page-state";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { isDue } from "@/src/lib/fsrs";
+import { questionBelongsToMemberships } from "@/src/lib/question-ownership";
+import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 import {
   asSenseId,
   buildSenseId,
@@ -36,6 +42,15 @@ import {
   normalizeWordKey,
 } from "@/src/lib/library";
 
+/**
+ * A set is one page, and that page is editable.
+ *
+ * There used to be two: a detail page you read and an edit page you typed into,
+ * for the same twenty words. Everything the detail page carried that the form
+ * did not — how far through the set you are, what it has been made into — sits
+ * around the fields here instead, so seeing a set and fixing a typo in it are
+ * no longer two different addresses.
+ */
 export function SetEditor({
   setId,
   initialFolderId,
@@ -44,7 +59,10 @@ export function SetEditor({
   initialFolderId?: string;
 }) {
   const router = useRouter();
-  const { state, status, saveSet } = useLibraryStore();
+  const { state, status, saveSet, deleteSet } = useLibraryStore();
+  const cards = useLearningStore((store) => store.progress.cards);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const current = setId
     ? state.sets.find((entry) => entry.id === setId)
     : undefined;
@@ -175,6 +193,47 @@ export function SetEditor({
     router.push(`/sets/${saved.id}`);
   });
 
+  // A set opened from a folder goes back to that folder, and so does deleting it.
+  const homeFolderId = current?.folderId ?? initialFolderId;
+  const libraryHref =
+    homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
+      ? `/library?folderId=${encodeURIComponent(homeFolderId)}`
+      : "/library";
+
+  const senseIds = useMemo(
+    () =>
+      setId
+        ? (state.memberships[setId] ?? []).flatMap(
+            (membership) => membership.senseIds,
+          )
+        : [],
+    [setId, state.memberships],
+  );
+  const learned = senseIds.filter((id) => cards[id]).length;
+  const due = senseIds.filter((id) => {
+    const card = cards[id];
+    return card && isDue(card);
+  }).length;
+  const questions = useMemo(
+    () =>
+      setId
+        ? state.questions.filter((question) =>
+            questionBelongsToMemberships(
+              question,
+              state.memberships[setId] ?? [],
+            ),
+          )
+        : [],
+    [setId, state.memberships, state.questions],
+  );
+
+  const removeSet = async () => {
+    if (!setId) return;
+    setDeleting(true);
+    await deleteSet(setId);
+    router.push(libraryHref);
+  };
+
   const metadataFields = (
     <FieldRow className="sm:grid-cols-[minmax(0,1fr)_14rem]">
       <Field
@@ -206,18 +265,9 @@ export function SetEditor({
 
   const backLink = (
     <Button asChild size="sm" variant="ghost">
-      <Link
-        data-allow-discard="true"
-        href={
-          setId
-            ? `/sets/${setId}`
-            : initialFolderId
-              ? `/library?folderId=${encodeURIComponent(initialFolderId)}`
-              : "/library"
-        }
-      >
+      <Link data-allow-discard="true" href={libraryHref}>
         <Icons.back />
-        {t("setEditor.cancel")}
+        {t(setId ? "setDetail.back" : "setEditor.cancel")}
       </Link>
     </Button>
   );
@@ -302,10 +352,47 @@ export function SetEditor({
   return (
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
       <PageHeader
+        actions={
+          setId && current ? (
+            <>
+              <Button asChild>
+                <Link href={`/practice?mode=review&set=${setId}&start=1`}>
+                  <Icons.start />
+                  {t("setDetail.start")}
+                </Link>
+              </Button>
+              <Menu
+                actions={[
+                  {
+                    icon: Icons.export,
+                    label: t("setDetail.share"),
+                    onSelect: () =>
+                      downloadSetShare(createSetSharePayload(state, setId)),
+                  },
+                  {
+                    icon: Icons.delete,
+                    label: t("setDetail.delete"),
+                    onSelect: () => setConfirmDelete(true),
+                    tone: "destructive",
+                  },
+                ]}
+              />
+            </>
+          ) : undefined
+        }
         back={backLink}
         description={setId ? undefined : t("setEditor.quickDescription")}
-        title={t(setId ? "setEditor.editTitle" : "setEditor.createTitle")}
+        title={current ? current.setName : t("setEditor.createTitle")}
       />
+
+      {setId && current && (
+        <dl className="mb-7 grid max-w-lg grid-cols-2 gap-x-10 gap-y-4 sm:grid-cols-4">
+          <Stat label={t("setDetail.senses")} value={senseIds.length} />
+          <Stat label={t("setDetail.learned")} value={learned} />
+          <Stat label={t("setDetail.due")} value={due} />
+          <Stat label={t("setDetail.questions")} value={questions.length} />
+        </dl>
+      )}
 
       <div>
         {setId ? (
@@ -376,6 +463,52 @@ export function SetEditor({
           </p>
         )}
 
+        {setId && current && (
+          <section className="section-gap">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="type-section">{t("setDetail.questions")}</h2>
+              <div className="flex flex-wrap gap-2">
+                <Button asChild variant="ghost" size="sm">
+                  <Link href={`/questions/generate?set=${setId}`}>
+                    <Icons.generate />
+                    {t("setDetail.generateQuestions")}
+                  </Link>
+                </Button>
+                {questions.length > 0 && (
+                  <Button asChild variant="secondary" size="sm">
+                    <Link href={`/practice?mode=questions&set=${setId}&start=1`}>
+                      <Icons.start />
+                      {t("setDetail.startQuestions")}
+                    </Link>
+                  </Button>
+                )}
+              </div>
+            </div>
+            {questions.length ? (
+              <ul className="mt-4 rule-card rule-list">
+                {questions.map((question) => (
+                  <li key={question.id}>
+                    <Link
+                      className="t-row block py-4 text-sm leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                      href={questionEditHref(question)}
+                    >
+                      {question.kind === "reading"
+                        ? question.title
+                        : question.prompt}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <EmptyState
+                variant="filtered"
+                title={t("questions.empty")}
+                description={t("setDetail.noQuestionsDescription")}
+              />
+            )}
+          </section>
+        )}
+
         <div className="sticky bottom-[max(0.75rem,var(--safe-bottom))] z-20 -mx-2 mt-7 flex justify-end rounded-[var(--radius-stage)] bg-background/88 p-2 shadow-[var(--shadow-floating)] backdrop-blur-xl sm:mx-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none">
           <Button
             className="w-full sm:w-auto"
@@ -390,6 +523,18 @@ export function SetEditor({
           </Button>
         </div>
       </div>
+
+      <ConfirmDialog
+        busy={deleting}
+        confirmLabel={t("setDetail.delete")}
+        description={t("setDetail.deleteConfirm", {
+          name: current?.setName ?? "",
+        })}
+        onConfirm={removeSet}
+        onOpenChange={setConfirmDelete}
+        open={confirmDelete}
+        title={t("setDetail.delete")}
+      />
 
       <ConfirmDialog
         confirmLabel={t("setEditor.discard")}
@@ -407,5 +552,14 @@ export function SetEditor({
         tone="default"
       />
     </form>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: number }) {
+  return (
+    <div>
+      <dt className="text-xs text-muted-foreground">{label}</dt>
+      <dd className="mt-1 text-2xl font-medium tabular-nums">{value}</dd>
+    </div>
   );
 }

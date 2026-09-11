@@ -17,7 +17,6 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
-import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
 import {
   EmptyState,
@@ -25,7 +24,6 @@ import {
   LoadingState,
 } from "@/components/ui/page-state";
 import { t } from "@/lib/i18n";
-import { useRouter } from "next/navigation";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import {
@@ -57,7 +55,6 @@ export function LibraryPage({
   initialFolderId?: string;
   initialTab?: LibraryTab;
 }) {
-  const router = useRouter();
   const [tab, setTab] = useState<LibraryTab>(initialTab);
   const { state, status, error } = useLibraryStore();
   const createFolder = useLibraryStore((store) => store.createFolder);
@@ -243,29 +240,12 @@ export function LibraryPage({
               </Link>
             </Button>
           ) : (
-            <>
-              <Button asChild>
-                <Link href="/questions/generate">
-                  <Icons.generate />
-                  {t("questions.generate")}
-                </Link>
-              </Button>
-              <Menu
-                actions={[
-                  {
-                    icon: Icons.create,
-                    label: t("questions.manualAddSingle"),
-                    onSelect: () => router.push("/questions/new"),
-                  },
-                  {
-                    icon: Icons.reading,
-                    label: t("questions.manualAddReading"),
-                    onSelect: () => router.push("/questions/reading/new"),
-                  },
-                ]}
-                label={t("questions.manualAdd")}
-              />
-            </>
+            <Button asChild>
+              <Link href="/questions/generate">
+                <Icons.generate />
+                {t("questions.generate")}
+              </Link>
+            </Button>
           )
         }
       />

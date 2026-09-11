@@ -13,7 +13,7 @@ const HISTORY_INDEX_KEY = "__lexiroHistoryIndex";
 export type RouteDirection = "back" | "child" | "root";
 
 function isRootRoute(pathname: string) {
-  return ["/", "/library", "/practice", "/progress", "/me"].includes(pathname);
+  return ["/", "/library", "/progress", "/me"].includes(pathname);
 }
 
 // The library owns the set routes and the study screen owns practice even
@@ -22,6 +22,7 @@ function isRootRoute(pathname: string) {
 const ADOPTED_PARENTS: ReadonlyArray<
   readonly [prefix: string, parent: string]
 > = [
+  ["/practice", "/"],
   ["/sets", "/library"],
   ["/questions", "/library"],
 ];

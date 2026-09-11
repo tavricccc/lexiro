@@ -41,7 +41,7 @@ const emptyChild = (): ChildDraft => ({
   source: "",
 });
 
-export function ReadingEditor({ readingId }: { readingId?: string }) {
+export function ReadingEditor({ readingId }: { readingId: string }) {
   const router = useRouter();
   const { state, saveQuestion } = useLibraryStore();
   const senses = useMemo(
@@ -168,7 +168,7 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
             </Link>
           </Button>
         }
-        title={t("questions.newReading")}
+        title={t("questions.editReading")}
       />
 
       <div className="grid gap-4">

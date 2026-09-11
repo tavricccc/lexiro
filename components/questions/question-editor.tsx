@@ -31,12 +31,10 @@ interface Values {
   source: string;
 }
 
-export function QuestionEditor({ questionId }: { questionId?: string }) {
+export function QuestionEditor({ questionId }: { questionId: string }) {
   const router = useRouter();
   const { state, saveQuestion } = useLibraryStore();
-  const current = questionId
-    ? state.questions.find((entry) => entry.id === questionId)
-    : undefined;
+  const current = state.questions.find((entry) => entry.id === questionId);
   const senses = useMemo(
     () =>
       Object.values(state.words).flatMap((word) =>
@@ -130,7 +128,7 @@ export function QuestionEditor({ questionId }: { questionId?: string }) {
             </Link>
           </Button>
         }
-        title={questionId ? t("questions.edit") : t("questions.new")}
+        title={t("questions.edit")}
       />
 
       <div className="rule-card grid gap-4 py-6 sm:grid-cols-2">
