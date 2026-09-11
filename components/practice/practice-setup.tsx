@@ -16,6 +16,7 @@ import { SelectField } from "@/components/ui/select-field";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { Switch } from "@/components/ui/switch";
 import { t } from "@/lib/i18n";
+import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import {
   difficultyOptions,
   questionFormatOptions,
@@ -150,7 +151,7 @@ export function PracticeSetup({
               <p className="mt-4 text-center">
                 <Link
                   className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-                  href="/questions"
+                  href={LIBRARY_QUESTIONS_HREF}
                 >
                   {t("practice.manageQuestions")}
                 </Link>

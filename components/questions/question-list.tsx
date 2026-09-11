@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
@@ -9,8 +8,6 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { Menu } from "@/components/ui/menu";
-import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState, LoadingState } from "@/components/ui/page-state";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
@@ -21,8 +18,20 @@ import {
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 
-export function QuestionsPage() {
-  const router = useRouter();
+export function questionEditHref(question: { id: string; kind: string }) {
+  return question.kind === "reading"
+    ? `/questions/reading/${question.id}/edit`
+    : `/questions/${question.id}/edit`;
+}
+
+/**
+ * The question bank, as a section of 我的單字 rather than a page of its own.
+ *
+ * Questions are made of the learner's own words and only make sense beside
+ * them, so they are a second view of the same library instead of a fifth
+ * destination competing for a slot in the navigation.
+ */
+export function QuestionList() {
   const { state, status, deleteQuestion } = useLibraryStore();
   const [query, setQuery] = useState("");
   const [kind, setKind] = useState("all");
@@ -55,36 +64,6 @@ export function QuestionsPage() {
 
   return (
     <div>
-      <PageHeader
-        title={t("questions.title")}
-        description={t("questions.description")}
-        actions={
-          <>
-            <Button asChild>
-              <Link href="/questions/generate">
-                <Icons.generate />
-                {t("questions.generate")}
-              </Link>
-            </Button>
-            <Menu
-              actions={[
-                {
-                  icon: Icons.create,
-                  label: t("questions.manualAddSingle"),
-                  onSelect: () => router.push("/questions/new"),
-                },
-                {
-                  icon: Icons.reading,
-                  label: t("questions.manualAddReading"),
-                  onSelect: () => router.push("/questions/reading/new"),
-                },
-              ]}
-              label={t("questions.manualAdd")}
-            />
-          </>
-        }
-      />
-
       {state.questions.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
           <label className="relative block">
@@ -114,7 +93,7 @@ export function QuestionsPage() {
         </div>
       )}
 
-      <div className="mt-6">
+      <div className="mt-5">
         {status === "loading" && <LoadingState />}
         {status === "ready" &&
           questions.length === 0 &&
@@ -171,11 +150,7 @@ export function QuestionsPage() {
                     </p>
                     <Link
                       className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                      href={
-                        question.kind === "reading"
-                          ? `/questions/reading/${question.id}/edit`
-                          : `/questions/${question.id}/edit`
-                      }
+                      href={questionEditHref(question)}
                     >
                       {question.kind === "reading"
                         ? question.title

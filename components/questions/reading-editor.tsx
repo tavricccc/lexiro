@@ -14,6 +14,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
+import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { randomUUID } from "@/src/lib/id";
 import { parseSenseKey, senseKey } from "@/src/lib/library";
 import { difficultyOptions } from "@/lib/question-options";
@@ -153,7 +154,7 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
       setSaveError(reason instanceof Error ? reason.message : String(reason));
       return;
     }
-    router.push("/questions");
+    router.push(LIBRARY_QUESTIONS_HREF);
   };
 
   return (
@@ -161,7 +162,7 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
       <PageHeader
         back={
           <Button asChild size="sm" variant="ghost">
-            <Link href="/questions">
+            <Link href={LIBRARY_QUESTIONS_HREF}>
               <Icons.back />
               {t("common.back")}
             </Link>

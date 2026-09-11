@@ -15,6 +15,7 @@ import { t } from "@/lib/i18n";
  * not need is not rendered — a step with three questions on it is not a step.
  */
 export function StepFrame({
+  back,
   children,
   current,
   description,
@@ -25,6 +26,8 @@ export function StepFrame({
   total,
   width = "narrow",
 }: {
+  /** Leaving the flow entirely, when there is no earlier step to go back to. */
+  back?: ReactNode;
   children: ReactNode;
   current: number;
   description?: string;
@@ -47,7 +50,9 @@ export function StepFrame({
               <Icons.back />
               {t("common.back")}
             </Button>
-          ) : undefined
+          ) : (
+            back
+          )
         }
         className="mb-5 md:mb-6"
         description={description}

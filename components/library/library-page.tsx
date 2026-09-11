@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { FolderToolbar } from "@/components/library/folder-toolbar";
+import { QuestionList } from "@/components/questions/question-list";
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import {
   ContentTransition,
@@ -15,6 +16,8 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { LiquidTabs } from "@/components/ui/liquid-tabs";
+import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
 import {
   EmptyState,
@@ -22,6 +25,7 @@ import {
   LoadingState,
 } from "@/components/ui/page-state";
 import { t } from "@/lib/i18n";
+import { useRouter } from "next/navigation";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import {
@@ -38,7 +42,23 @@ import { readSetShare } from "@/src/lib/set-share";
 
 const NO_METRICS = { due: 0, learned: 0, questionCount: 0, senseCount: 0 };
 
-export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
+export type LibraryTab = "sets" | "questions";
+
+/**
+ * 我的單字 holds both halves of the material: the words themselves and the
+ * questions built from them. They are two views of one library, so they are two
+ * tabs here rather than two destinations — the question bank used to be a page
+ * that nothing in the navigation pointed at.
+ */
+export function LibraryPage({
+  initialFolderId,
+  initialTab = "sets",
+}: {
+  initialFolderId?: string;
+  initialTab?: LibraryTab;
+}) {
+  const router = useRouter();
+  const [tab, setTab] = useState<LibraryTab>(initialTab);
   const { state, status, error } = useLibraryStore();
   const createFolder = useLibraryStore((store) => store.createFolder);
   const renameFolder = useLibraryStore((store) => store.renameFolder);
@@ -179,13 +199,15 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   // the URL, so opening a set and coming back does not dump you at the root.
   useEffect(() => {
     if (status !== "ready") return;
-    const target =
-      currentFolderId === ALL_FOLDER_ID
-        ? "/library"
-        : `/library?folderId=${encodeURIComponent(currentFolderId)}`;
+    const params = new URLSearchParams();
+    if (tab !== "sets") params.set("tab", tab);
+    if (tab === "sets" && currentFolderId !== ALL_FOLDER_ID)
+      params.set("folderId", currentFolderId);
+    const query = params.toString();
+    const target = query ? `/library?${query}` : "/library";
     if (`${window.location.pathname}${window.location.search}` !== target)
       window.history.replaceState(null, "", target);
-  }, [currentFolderId, status]);
+  }, [currentFolderId, status, tab]);
   const createHref = currentFolder
     ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
     : "/sets/new";
@@ -213,133 +235,181 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
         title={t("library.title")}
         description={t("library.description")}
         actions={
-          <Button asChild>
-            <Link href={createHref}>
-              <Icons.create />
-              {t("library.newSet")}
-            </Link>
-          </Button>
+          tab === "sets" ? (
+            <Button asChild>
+              <Link href={createHref}>
+                <Icons.create />
+                {t("library.newSet")}
+              </Link>
+            </Button>
+          ) : (
+            <>
+              <Button asChild>
+                <Link href="/questions/generate">
+                  <Icons.generate />
+                  {t("questions.generate")}
+                </Link>
+              </Button>
+              <Menu
+                actions={[
+                  {
+                    icon: Icons.create,
+                    label: t("questions.manualAddSingle"),
+                    onSelect: () => router.push("/questions/new"),
+                  },
+                  {
+                    icon: Icons.reading,
+                    label: t("questions.manualAddReading"),
+                    onSelect: () => router.push("/questions/reading/new"),
+                  },
+                ]}
+                label={t("questions.manualAdd")}
+              />
+            </>
+          )
         }
       />
 
-      <input
-        accept=".zip"
-        className="sr-only"
-        onChange={(event) => {
-          const input = event.currentTarget;
-          const file = input.files?.[0];
-          if (file)
-            void importSet(file).finally(() => {
-              input.value = "";
-            });
-        }}
-        ref={importInput}
-        type="file"
-      />
-
-      <FolderToolbar
-        actions={[
+      <LiquidTabs
+        ariaLabel={t("library.title")}
+        className="mb-5"
+        onValueChange={(value) => setTab(value as LibraryTab)}
+        options={[
+          { label: t("library.setsTab"), value: "sets" },
           {
-            disabled: importing,
-            icon: Icons.import,
-            label: t(importing ? "library.importing" : "library.importSet"),
-            onSelect: () => importInput.current?.click(),
+            label: state.questions.length
+              ? `${t("library.questionsTab")} ${state.questions.length}`
+              : t("library.questionsTab"),
+            value: "questions",
           },
         ]}
-        breadcrumbs={breadcrumbs}
-        currentFolder={currentFolder}
-        folders={state.folders}
-        onCreate={(name) => createFolder(name, currentFolder?.id)}
-        onDelete={() => setDeleteFolderId(currentFolder?.id ?? null)}
-        onMove={(parentId) => moveFolder(currentFolderId, parentId)}
-        onOpen={openFolder}
-        onRename={(name) => renameFolder(currentFolderId, name)}
+        value={tab}
       />
 
-      <label className="relative mt-4 block">
-        <Icons.search
-          aria-hidden
-          className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-        />
-        <Input
-          className="pl-10"
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder={t("library.searchHere")}
-          value={query}
-        />
-      </label>
+      {tab === "questions" && <QuestionList />}
 
-      {/* Loading, empty, filtered-empty and the listing itself all occupy the
-          same frame, so one hands over to the next in place instead of the
-          page jumping to whichever arrived. */}
-      <StateTransition className="mt-5" identity={listingState}>
-        <ContentTransition identity={listingState}>
-          {status === "loading" && <LoadingState />}
-          {status === "error" && (
-            <ErrorState
-              error={t("library.migrationError", { message: error ?? "" })}
-            />
-          )}
-          {status === "ready" && !listEmpty && (
-            <StaggerList className="rule-card rule-list" data-resize-motion="">
-              {!searching &&
-                childFolders.map((folder) => (
-                  <StaggerItem key={folder.id}>
-                    <FolderRow
-                      itemCount={countDirectItems(
-                        state.folders,
-                        state.sets,
-                        folder.id,
-                      )}
-                      name={folder.name}
-                      onOpen={() => openFolder(folder.id)}
+      {tab === "sets" && (
+        <>
+        <input
+          accept=".zip"
+          className="sr-only"
+          onChange={(event) => {
+            const input = event.currentTarget;
+            const file = input.files?.[0];
+            if (file)
+              void importSet(file).finally(() => {
+                input.value = "";
+              });
+          }}
+          ref={importInput}
+          type="file"
+        />
+
+        <FolderToolbar
+          actions={[
+            {
+              disabled: importing,
+              icon: Icons.import,
+              label: t(importing ? "library.importing" : "library.importSet"),
+              onSelect: () => importInput.current?.click(),
+            },
+          ]}
+          breadcrumbs={breadcrumbs}
+          currentFolder={currentFolder}
+          folders={state.folders}
+          onCreate={(name) => createFolder(name, currentFolder?.id)}
+          onDelete={() => setDeleteFolderId(currentFolder?.id ?? null)}
+          onMove={(parentId) => moveFolder(currentFolderId, parentId)}
+          onOpen={openFolder}
+          onRename={(name) => renameFolder(currentFolderId, name)}
+        />
+
+        <label className="relative mt-4 block">
+          <Icons.search
+            aria-hidden
+            className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+          />
+          <Input
+            className="pl-10"
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={t("library.searchHere")}
+            value={query}
+          />
+        </label>
+
+        {/* Loading, empty, filtered-empty and the listing itself all occupy the
+            same frame, so one hands over to the next in place instead of the
+            page jumping to whichever arrived. */}
+        <StateTransition className="mt-5" identity={listingState}>
+          <ContentTransition identity={listingState}>
+            {status === "loading" && <LoadingState />}
+            {status === "error" && (
+              <ErrorState
+                error={t("library.migrationError", { message: error ?? "" })}
+              />
+            )}
+            {status === "ready" && !listEmpty && (
+              <StaggerList className="rule-card rule-list" data-resize-motion="">
+                {!searching &&
+                  childFolders.map((folder) => (
+                    <StaggerItem key={folder.id}>
+                      <FolderRow
+                        itemCount={countDirectItems(
+                          state.folders,
+                          state.sets,
+                          folder.id,
+                        )}
+                        name={folder.name}
+                        onOpen={() => openFolder(folder.id)}
+                      />
+                    </StaggerItem>
+                  ))}
+                {sets.map((entry) => (
+                  <StaggerItem key={entry.id}>
+                    <SetRow
+                      id={entry.id}
+                      name={entry.setName}
+                      {...(setMetrics.get(entry.id) ?? NO_METRICS)}
                     />
                   </StaggerItem>
                 ))}
-              {sets.map((entry) => (
-                <StaggerItem key={entry.id}>
-                  <SetRow
-                    id={entry.id}
-                    name={entry.setName}
-                    {...(setMetrics.get(entry.id) ?? NO_METRICS)}
-                  />
-                </StaggerItem>
-              ))}
-            </StaggerList>
-          )}
-          {status === "ready" && listEmpty && searching && (
-            <EmptyState
-              description={t("library.searchHint")}
-              title={t("library.noResults")}
-              variant="filtered"
-            />
-          )}
-          {status === "ready" && listEmpty && !searching && (
-            <EmptyState
-              action={
-                <Button asChild>
-                  <Link href={createHref}>
-                    <Icons.create />
-                    {t("library.newSet")}
-                  </Link>
-                </Button>
-              }
-              description={t(
-                currentFolder
-                  ? "library.emptyFolderDescription"
-                  : "library.emptyDescription",
-              )}
-              headword="lexicon"
-              pos="n."
-              title={t(
-                currentFolder
-                  ? "library.emptyFolderTitle"
-                  : "library.emptyTitle",
-              )}
-            />
-          )}
-        </ContentTransition>
-      </StateTransition>
+              </StaggerList>
+            )}
+            {status === "ready" && listEmpty && searching && (
+              <EmptyState
+                description={t("library.searchHint")}
+                title={t("library.noResults")}
+                variant="filtered"
+              />
+            )}
+            {status === "ready" && listEmpty && !searching && (
+              <EmptyState
+                action={
+                  <Button asChild>
+                    <Link href={createHref}>
+                      <Icons.create />
+                      {t("library.newSet")}
+                    </Link>
+                  </Button>
+                }
+                description={t(
+                  currentFolder
+                    ? "library.emptyFolderDescription"
+                    : "library.emptyDescription",
+                )}
+                headword="lexicon"
+                pos="n."
+                title={t(
+                  currentFolder
+                    ? "library.emptyFolderTitle"
+                    : "library.emptyTitle",
+                )}
+              />
+            )}
+          </ContentTransition>
+        </StateTransition>
+        </>
+      )}
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}

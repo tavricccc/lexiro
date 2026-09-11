@@ -2,7 +2,7 @@
 
 import type { LibraryQuestion, WordEntry } from "@/types";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
@@ -18,6 +18,7 @@ import { Icons } from "@/components/ui/icons";
 import { SelectField } from "@/components/ui/select-field";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
+import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import {
   difficultyLabel,
   difficultyOptions,
@@ -210,24 +211,42 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     }
   };
 
-  const addAll = async () => {
+  /**
+   * Generated questions are written to the bank as soon as they validate.
+   * Asking the user to press 加入 on a list they cannot edit here was a
+   * confirmation that decided nothing: a question that reads badly is fixed —
+   * or deleted — in 我的單字 → 題目, whether it was saved a second earlier or not.
+   */
+  const storeAll = useCallback(async (questions: LibraryQuestion[]) => {
     let stored = 0;
-    for (const question of run.items) {
+    for (const question of questions) {
       if ((await saveQuestion(question)) === "saved") stored += 1;
     }
     setSaved(true);
-    const duplicates = run.items.length - stored;
+    const duplicates = questions.length - stored;
     toast.success(duplicates > 0
       ? t("questions.savedCountWithDuplicates", { count: stored, duplicates })
       : t("questions.savedCount", { count: stored }));
-  };
+  }, [saveQuestion]);
+
+  const storeRef = useRef(storeAll);
+  storeRef.current = storeAll;
+  const requested = useRef(false);
+  if (run.status === "running") requested.current = true;
+  const settled = run.status === "done" || run.status === "partial";
+
+  useEffect(() => {
+    if (!settled || !requested.current || !run.items.length) return;
+    requested.current = false;
+    void storeRef.current(run.items);
+  }, [run.items, settled]);
 
   const senseCount = words.reduce((count, word) => count + word.senses.length, 0);
   const back = (
     <Button asChild size="sm" variant="ghost">
-      <Link href="/questions">
+      <Link href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}>
         <Icons.back />
-        {t("questions.title")}
+        {t("common.back")}
       </Link>
     </Button>
   );
@@ -235,6 +254,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   if (step === "format") {
     return (
       <StepFrame
+        back={back}
         current={1}
         description={t("questions.stepFormatHint")}
         title={t("questions.stepFormat")}
@@ -252,7 +272,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             value: format,
           }))}
         />
-        <p className="mt-6 text-center">{back}</p>
       </StepFrame>
     );
   }
@@ -340,17 +359,12 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             <h2 className="type-section">
               {t("questions.generatedCount", { count: run.items.length })}
             </h2>
-            {saved ? (
+            {saved && (
               <Button asChild>
                 <Link href="/practice?mode=questions&start=1">
                   <Icons.start />
                   {t("questions.startGenerated")}
                 </Link>
-              </Button>
-            ) : (
-              <Button onClick={() => void addAll()}>
-                <Icons.success />
-                {t("questions.addAll")}
               </Button>
             )}
           </div>

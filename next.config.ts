@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "motion", "radix-ui"],
   },
+  // Addresses that used to be pages. Keeping them as redirects costs nothing
+  // and keeps an installed app's history and any saved link working, without
+  // keeping the pages themselves around.
+  redirects: async () => [
+    { source: "/settings", destination: "/me", permanent: true },
+    {
+      source: "/questions",
+      destination: "/library?tab=questions",
+      permanent: true,
+    },
+  ],
 };
 
 export default withSerwist(nextConfig);

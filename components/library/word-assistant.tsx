@@ -1,14 +1,12 @@
 "use client";
 
 import type { WordDraft } from "@/types";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import { useAiGeneration } from "@/components/ai/use-ai-generation";
-import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field } from "@/components/ui/field";
-import { Icons } from "@/components/ui/icons";
 import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
 import { generateWithSavedAi } from "@/src/lib/ai-provider";
@@ -45,6 +43,15 @@ function toRows(drafts: WordDraft[]): AssistedWordRow[] {
   );
 }
 
+/**
+ * Turning a pasted list into senses is one press, not three.
+ *
+ * Whatever the AI returns is validated and then handed straight to the editor,
+ * where every field is editable and nothing is saved until the user saves. The
+ * preview that used to sit here asked the user to approve rows they could not
+ * change, which is a confirmation that buys nothing: anything wrong with them
+ * is fixed in the editor either way.
+ */
 export function WordAssistant({
   onApply,
 }: {
@@ -93,12 +100,31 @@ export function WordAssistant({
     setManualError("");
   }, [examples, raw, reset]);
 
+  const applyRef = useRef(onApply);
+  applyRef.current = onApply;
+  // Only a finished request hands itself over. The manual path sets items one
+  // pasted batch at a time, and must not leave for the editor while the user
+  // still has segments to paste.
+  const requested = useRef(false);
+  if (run.status === "running") requested.current = true;
+  const settled = run.status === "done" || run.status === "partial";
+
+  useEffect(() => {
+    if (!settled || !requested.current || !run.items.length) return;
+    requested.current = false;
+    applyRef.current(toRows(run.items));
+  }, [run.items, settled]);
+
   const applyManual = (response: string, batchIndex: number) => {
     setManualError("");
     try {
-      setItems(
-        mergeWordDrafts([...run.items, ...parseBatch(batches[batchIndex], response)]),
-      );
+      const merged = mergeWordDrafts([
+        ...run.items,
+        ...parseBatch(batches[batchIndex], response),
+      ]);
+      setItems(merged);
+      // The last segment is the whole answer, so it goes to the editor too.
+      if (batchIndex === batches.length - 1) applyRef.current(toRows(merged));
     } catch (reason) {
       setManualError(
         t("setEditor.invalidAiResponse", {
@@ -107,8 +133,6 @@ export function WordAssistant({
       );
     }
   };
-
-  const rows = toRows(run.items);
 
   return (
     <section>
@@ -149,36 +173,6 @@ export function WordAssistant({
         />
       </div>
 
-      {rows.length > 0 && (
-        <div className="mt-4 rule-t pt-4">
-          <p className="text-sm font-medium">
-            {t("ai.readyCount", { count: rows.length })}
-          </p>
-          <ul className="entry-senses mt-3 grid gap-1.5">
-            {rows.slice(0, 8).map((row, index) => (
-              <li
-                className="flex items-baseline gap-2 text-sm"
-                key={`${row.word}-${row.pos}-${index}`}
-              >
-                <span className="font-medium">{row.word}</span>
-                <span className="entry-pos text-xs">{row.pos}</span>
-                <span className="truncate text-muted-foreground">
-                  {row.meaningZh}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <Button
-            className="mt-4"
-            onClick={() => onApply(rows)}
-            size="lg"
-            type="button"
-          >
-            <Icons.success />
-            {t("setEditor.applyPreview", { count: rows.length })}
-          </Button>
-        </div>
-      )}
     </section>
   );
 }

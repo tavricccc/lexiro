@@ -23,7 +23,7 @@ const ADOPTED_PARENTS: ReadonlyArray<
   readonly [prefix: string, parent: string]
 > = [
   ["/sets", "/library"],
-  ["/questions", "/"],
+  ["/questions", "/library"],
 ];
 
 function adoptedParent(pathname: string) {
