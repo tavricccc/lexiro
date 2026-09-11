@@ -121,7 +121,10 @@ export function SetView({ setId }: { setId: string }) {
         actions={
           <>
             <Button asChild>
-              <Link href={`/practice?track=fsrs&set=${setId}`}>
+              {/* The same two-way choice the home canvas offers, with this set
+                  already filled in as the range. Starting from a set says which
+                  material, not which kind of session. */}
+              <Link href={`/practice?set=${setId}`}>
                 <Icons.start />
                 {t("setDetail.start")}
               </Link>

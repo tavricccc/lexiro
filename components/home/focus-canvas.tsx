@@ -167,19 +167,6 @@ export function FocusCanvas() {
           )}
         </div>
 
-        {hasContent && (
-          // Both buttons above start straight away, which is what 今天 is for.
-          // Choosing a set, a length or only the words you keep forgetting is
-          // the rarer intent, so it is one line rather than its own destination.
-          <p className="mt-5">
-            <Link
-              className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-              href="/practice"
-            >
-              {t("practice.tune")}
-            </Link>
-          </p>
-        )}
       </div>
     </motion.section>
   );
