@@ -33,8 +33,6 @@ const nextConfig: NextConfig = {
       destination: "/questions/generate",
       permanent: true,
     },
-    // A set is one page now, and it is editable.
-    { source: "/sets/:setId/edit", destination: "/sets/:setId", permanent: true },
   ],
 };
 

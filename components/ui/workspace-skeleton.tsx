@@ -257,6 +257,17 @@ export function PracticePageSkeleton() {
   );
 }
 
+function SetViewPageSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-3xl">
+      <HeaderSkeleton action back description={false} title="w-56" />
+      <div className="mb-7 grid grid-cols-2 gap-x-10 gap-y-4 sm:grid-cols-4">{Array.from({ length: 4 }, (_, index) => <div className="space-y-2" key={index}><Skeleton className="h-3 w-14 rounded" /><Skeleton className="h-8 w-12 rounded" /></div>)}</div>
+      <TabsSkeleton />
+      <div className="rule-card rule-list">{Array.from({ length: 4 }, (_, index) => <RowSkeleton key={index} />)}</div>
+    </div>
+  );
+}
+
 function SetEditorPageSkeleton({ newSet }: { newSet: boolean }) {
   return (
     <div className="mx-auto w-full max-w-3xl">
@@ -319,7 +330,9 @@ function WorkspaceSkeletonContent({ location }: { location: string }) {
   if (pathname === "/practice") return <PracticePageSkeleton />;
   if (pathname === "/me") return <MePageSkeleton />;
   if (pathname === "/sets/new") return <SetEditorPageSkeleton newSet />;
-  if (pathname.startsWith("/sets/")) return <SetEditorPageSkeleton newSet={false} />;
+  if (pathname.endsWith("/edit") && pathname.startsWith("/sets/"))
+    return <SetEditorPageSkeleton newSet={false} />;
+  if (pathname.startsWith("/sets/")) return <SetViewPageSkeleton />;
   if (pathname === "/questions/generate") return <QuestionGeneratorPageSkeleton />;
   if (pathname.startsWith("/questions/reading/")) return <QuestionEditorPageSkeleton reading />;
   if (pathname.startsWith("/questions/")) return <QuestionEditorPageSkeleton reading={false} />;

@@ -388,6 +388,7 @@ export const zhTW = {
   },
   setEditor: {
     createTitle: "新增單字",
+    backToSet: "回到單字集",
     howTitle: "要怎麼加單字？",
     howHint: "選一種開始，之後隨時可以再加。",
     manualWay: "自己輸入",
@@ -437,6 +438,13 @@ export const zhTW = {
   },
   setDetail: {
     back: "回到詞庫",
+    edit: "編輯",
+    wordsTab: "單字",
+    missingTitle: "找不到這個單字集",
+    missingDescription: "它可能已經被刪除，或是在另一台裝置上還沒同步過來。",
+    noWords: "這個單字集還沒有字",
+    noWordsDescription: "按「編輯」加入第一個單字。",
+    dueBadge: "待複習",
     delete: "刪除",
     start: "開始背這組字",
     startQuestions: "做這組字的題目",

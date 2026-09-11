@@ -1,6 +1,6 @@
-import { SetView } from "@/components/library/set-view";
+import { SetEditor } from "@/components/library/set-editor";
 
 export default async function Page({ params }: { params: Promise<{ setId: string }> }) {
   const { setId } = await params;
-  return <SetView setId={setId} />;
+  return <SetEditor setId={setId} />;
 }
