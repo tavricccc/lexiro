@@ -11,20 +11,18 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { ChoiceChecklist } from "@/components/ui/choice-checklist";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import { SelectField } from "@/components/ui/select-field";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { Switch } from "@/components/ui/switch";
-import {
-  PRACTICE_CARD_TASKS,
-  PRACTICE_QUESTION_TASKS,
-} from "@/constants";
+import { PRACTICE_CARD_TASKS, PRACTICE_QUESTION_TASKS } from "@/constants";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { practiceTaskHint, practiceTaskLabel } from "@/lib/practice-tasks";
 import { difficultyOptions } from "@/lib/question-options";
+import { isPassageKind } from "@/src/lib/question-formats";
 
 const AMOUNTS = [5, 10, 20, 30];
 
@@ -43,13 +41,15 @@ function tasksOfStyle(style: CardStyle): PracticeCardTask[] {
 }
 
 /**
- * Starting a session is two questions.
+ * Starting a session is a short questionnaire, one question per screen.
  *
- * Step one is the branch — the words FSRS has scheduled, or the question bank —
- * because the two draw on different material and mixing them in one queue would
- * make "how many" mean two things at once. Step two opens with the range and
- * the length, which both branches share, and then asks only what its own branch
- * needs: how a card should be asked, or which formats to include.
+ * First the track — the words FSRS has scheduled, or the question bank — since
+ * the two draw on different material. Then the range and the length, which both
+ * tracks share and neither used to ask up front. 每日複習 ends there, with how a
+ * due word should be asked folded into the same screen because it is one
+ * three-way choice. 做題目 takes one more screen for the formats, which is a
+ * list of six that only makes sense once the range has decided how many of each
+ * there are.
  */
 export function PracticeSetup({
   amount,
@@ -91,10 +91,20 @@ export function PracticeSetup({
   trackPreset?: PracticeTrack;
 }) {
   const [track, setTrack] = useState<PracticeTrack | null>(trackPreset ?? null);
+  const [step, setStep] = useState<"scope" | "formats">("scope");
   const questionCount = PRACTICE_QUESTION_TASKS.reduce(
     (total, task) => total + counts[task],
     0,
   );
+  // A format nothing in range was written in is not a choice, so it is not
+  // offered; the range step above is what changes this list.
+  const availableFormats = PRACTICE_QUESTION_TASKS.filter(
+    (task) => counts[task] > 0,
+  );
+
+  const trackSteps = track === "questions" ? 2 : 1;
+  const total = (trackPreset ? 0 : 1) + trackSteps;
+  const current = (trackPreset ? 0 : 1) + (step === "formats" ? 2 : 1);
 
   if (!track) {
     return (
@@ -108,12 +118,11 @@ export function PracticeSetup({
           onSelect={(value) => {
             const chosen = value as PracticeTrack;
             setTrack(chosen);
+            setStep("scope");
             onTasksChange(
               chosen === "fsrs"
                 ? tasksOfStyle(styleOfTasks(tasks))
-                : PRACTICE_QUESTION_TASKS.filter(
-                    (task) => tasks.includes(task) || tasks.length === 0,
-                  ),
+                : PRACTICE_QUESTION_TASKS.filter((task) => tasks.includes(task)),
             );
           }}
           options={[
@@ -145,81 +154,168 @@ export function PracticeSetup({
 
   const fsrs = track === "fsrs";
   const availableCount = fsrs ? cardCount : questionCount;
-  const emptyHref = !hasWords ? "/sets/new" : fsrs ? "/library" : "/questions/generate";
-  const EmptyIcon = !hasWords ? Icons.create : fsrs ? Icons.library : Icons.generate;
+  const empty = !availableCount;
+  const emptyHref = !hasWords
+    ? "/sets/new"
+    : fsrs
+      ? "/library"
+      : "/questions/generate";
+  const EmptyIcon = !hasWords
+    ? Icons.create
+    : fsrs
+      ? Icons.library
+      : Icons.generate;
   const emptyLabel = !hasWords
     ? t("practice.addWordsFirst")
     : fsrs
       ? t("home.openLibrary")
       : t("practice.generateFirst");
 
-  const toggleQuestionTask = (task: PracticeTask, checked: boolean) => {
-    const next = PRACTICE_QUESTION_TASKS.filter((entry) =>
-      entry === task ? checked : tasks.includes(entry),
-    );
-    onTasksChange(next);
+  const goBack = () => {
+    if (step === "formats") return setStep("scope");
+    if (!trackPreset) return setTrack(null);
+    return undefined;
   };
+
+  const recap = (
+    <StepRecap
+      items={[
+        availableCount
+          ? t(fsrs ? "practice.readyReview" : "practice.readyQuestions", {
+              count: availableCount,
+            })
+          : t("practice.noContent"),
+        ...(step === "formats"
+          ? [
+              t("practice.scopeChosen", {
+                name:
+                  sets.find((entry) => entry.id === setId)?.setName ??
+                  t("practice.allSets"),
+                count: amount,
+              }),
+            ]
+          : []),
+      ]}
+      onEdit={
+        step === "formats"
+          ? () => setStep("scope")
+          : trackPreset
+            ? undefined
+            : () => setTrack(null)
+      }
+    />
+  );
+
+  const emptyFooter = (
+    <Button asChild className="w-full" size="lg">
+      <Link href={emptyHref}>
+        <EmptyIcon />
+        {emptyLabel}
+      </Link>
+    </Button>
+  );
+
+  const beginFooter = (
+    <>
+      <Button
+        className="w-full"
+        disabled={!queueLength}
+        onClick={onBegin}
+        size="lg"
+      >
+        <Icons.start />
+        {queueLength
+          ? t("practice.beginCount", { count: queueLength })
+          : t("practice.noSelection")}
+      </Button>
+      {!fsrs && (
+        <p className="mt-4 text-center">
+          <Link
+            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            href={LIBRARY_QUESTIONS_HREF}
+          >
+            {t("practice.manageQuestions")}
+          </Link>
+        </p>
+      )}
+    </>
+  );
+
+  if (!fsrs && step === "formats") {
+    return (
+      <StepFrame
+        current={current}
+        description={t("practice.formatsHint")}
+        footer={empty ? emptyFooter : beginFooter}
+        onBack={goBack}
+        recap={recap}
+        title={t("practice.formatsTitle")}
+        total={total}
+      >
+        <ChoiceChecklist
+          onToggle={(value, checked) =>
+            onTasksChange(
+              PRACTICE_QUESTION_TASKS.filter((entry) =>
+                entry === value ? checked : tasks.includes(entry),
+              ),
+            )
+          }
+          options={availableFormats.map((task) => ({
+            description: practiceTaskHint(task),
+            icon: isPassageKind(task) ? Icons.reading : Icons.question,
+            label: practiceTaskLabel(task),
+            meta: t("practice.formatReady", { count: counts[task] }),
+            value: task,
+          }))}
+          selected={tasks}
+        />
+
+        <div className="mt-5">
+          <SelectField
+            label={t("practice.difficulty")}
+            onValueChange={(value) =>
+              onDifficultyChange(value as WorkspaceQuestionDifficulty)
+            }
+            options={difficultyOptions(t("practice.allDifficulties"))}
+            value={String(difficulty)}
+          />
+        </div>
+      </StepFrame>
+    );
+  }
 
   return (
     <StepFrame
-      current={2}
+      current={current}
       footer={
-        availableCount ? (
-          <>
-            <Button
-              className="w-full"
-              disabled={!queueLength}
-              onClick={onBegin}
-              size="lg"
-            >
-              <Icons.start />
-              {queueLength
-                ? t("practice.beginCount", { count: queueLength })
-                : t("practice.noSelection")}
-            </Button>
-            {!fsrs && (
-              <p className="mt-4 text-center">
-                <Link
-                  className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-                  href={LIBRARY_QUESTIONS_HREF}
-                >
-                  {t("practice.manageQuestions")}
-                </Link>
-              </p>
-            )}
-          </>
+        empty ? (
+          emptyFooter
+        ) : fsrs ? (
+          beginFooter
         ) : (
-          <Button asChild className="w-full" size="lg">
-            <Link href={emptyHref}>
-              <EmptyIcon />
-              {emptyLabel}
-            </Link>
+          <Button
+            className="w-full"
+            onClick={() => setStep("formats")}
+            size="lg"
+          >
+            <Icons.next />
+            {t("questions.next")}
           </Button>
         )
       }
-      onBack={trackPreset ? undefined : () => setTrack(null)}
-      recap={
-        <StepRecap
-          items={[
-            availableCount
-              ? t(fsrs ? "practice.readyReview" : "practice.readyQuestions", {
-                  count: availableCount,
-                })
-              : t("practice.noContent"),
-          ]}
-          onEdit={trackPreset ? undefined : () => setTrack(null)}
-        />
-      }
-      title={t(fsrs ? "practice.review" : "practice.questions")}
-      total={2}
+      onBack={trackPreset ? undefined : goBack}
+      recap={recap}
+      title={t("practice.scopeTitle")}
+      total={total}
     >
       <div className="grid gap-6">
         <section className="rule-card py-4">
-          <h2 className="type-subsection">{t("practice.scopeTitle")}</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             <SelectField
               label={t("practice.set")}
-              onValueChange={(value) => onSetChange(value === "all" ? "" : value)}
+              onValueChange={(value) =>
+                onSetChange(value === "all" ? "" : value)
+              }
               options={[
                 { label: t("practice.allSets"), value: "all" },
                 ...sets.map((entry) => ({
@@ -241,7 +337,7 @@ export function PracticeSetup({
           </div>
         </section>
 
-        {fsrs ? (
+        {fsrs && (
           <section className="rule-card py-4">
             <h2 className="type-subsection">{t("practice.cardStyleTitle")}</h2>
             <p className="mt-1 text-xs leading-5 text-muted-foreground">
@@ -292,69 +388,6 @@ export function PracticeSetup({
                 size="sm"
               />
             </label>
-          </section>
-        ) : (
-          <section className="rule-card py-4">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h2 className="type-subsection">{t("practice.formatsTitle")}</h2>
-              <button
-                className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-                onClick={() =>
-                  onTasksChange(
-                    tasks.length === PRACTICE_QUESTION_TASKS.length
-                      ? []
-                      : [...PRACTICE_QUESTION_TASKS],
-                  )
-                }
-                type="button"
-              >
-                {t(
-                  tasks.length === PRACTICE_QUESTION_TASKS.length
-                    ? "practice.clearFormats"
-                    : "practice.allFormats",
-                )}
-              </button>
-            </div>
-            <div className="mt-3 rule-list">
-              {PRACTICE_QUESTION_TASKS.map((task) => (
-                <label
-                  className="flex cursor-pointer items-start gap-3 py-3"
-                  key={task}
-                >
-                  <Checkbox
-                    checked={tasks.includes(task)}
-                    className="mt-0.5"
-                    disabled={!counts[task]}
-                    onCheckedChange={(checked) =>
-                      toggleQuestionTask(task, checked === true)
-                    }
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="flex items-baseline justify-between gap-3">
-                      <span className="text-sm font-medium">
-                        {practiceTaskLabel(task)}
-                      </span>
-                      <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-                        {counts[task]}
-                      </span>
-                    </span>
-                    <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">
-                      {practiceTaskHint(task)}
-                    </span>
-                  </span>
-                </label>
-              ))}
-            </div>
-            <div className="mt-1 rule-t pt-4">
-              <SelectField
-                label={t("practice.difficulty")}
-                onValueChange={(value) =>
-                  onDifficultyChange(value as WorkspaceQuestionDifficulty)
-                }
-                options={difficultyOptions(t("practice.allDifficulties"))}
-                value={String(difficulty)}
-              />
-            </div>
           </section>
         )}
       </div>

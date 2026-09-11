@@ -22,8 +22,8 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 
 - Vocabulary is collected and organized into folders and sets.
 - A word may contain multiple Chinese meanings, parts of speech, and shared examples.
-- New vocabulary is entered manually or organized by AI, then reviewed before it enters personal data.
-- Questions may be authored manually or generated with AI, then reviewed before saving.
+- New vocabulary is entered manually or organized by AI; AI-organized words are saved as soon as they validate and edited afterwards rather than confirmed beforehand.
+- Questions may be authored manually or generated with AI; generated questions are saved as soon as they validate and edited or deleted afterwards.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and FSRS review.
 - The application is expected to remain useful offline and synchronize later when signed in.
 

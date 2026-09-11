@@ -13,11 +13,8 @@ import {
   type SetFormValues,
 } from "@/components/library/set-form";
 import { SetWordFields } from "@/components/library/set-word-fields";
+import { WordCapture } from "@/components/library/word-capture";
 import { useUnsavedGuard } from "@/components/library/use-unsaved-guard";
-import {
-  WordAssistant,
-  type AssistedWordRow,
-} from "@/components/library/word-assistant";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
@@ -202,22 +199,6 @@ export function SetEditor({
     </Button>
   );
 
-  const applyAssisted = (rows: AssistedWordRow[]) => {
-    const currentRows = form.getValues("words");
-    const firstIsEmpty =
-      currentRows.length === 1 &&
-      !currentRows[0].word &&
-      !currentRows[0].meaningZh;
-    const normalized = rows.map((row) => ({
-      ...row,
-      originalSenseId: "",
-      originalWordKey: "",
-    }));
-    if (firstIsEmpty) fields.replace(normalized);
-    else fields.append(normalized);
-    setEntry("manual");
-  };
-
   if (entry === "ask") {
     return (
       <div className="mx-auto max-w-xl">
@@ -249,33 +230,22 @@ export function SetEditor({
 
   if (entry === "assist") {
     return (
-      <div className="mx-auto max-w-3xl">
-        <PageHeader
-          back={
-            <Button
-              onClick={() => setEntry(setId ? "manual" : "ask")}
-              size="sm"
-              type="button"
-              variant="ghost"
-            >
-              <Icons.back />
-              {t("common.back")}
-            </Button>
-          }
-          description={t("setEditor.aiAssistDescription")}
-          title={t("setEditor.aiAssist")}
-        />
-        <WordAssistant onApply={applyAssisted} />
-        <p className="mt-6">
-          <button
-            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            onClick={() => setEntry("manual")}
+      <WordCapture
+        back={
+          <Button
+            onClick={() => setEntry(setId ? "manual" : "ask")}
+            size="sm"
             type="button"
+            variant="ghost"
           >
-            {t("setEditor.switchToManual")}
-          </button>
-        </p>
-      </div>
+            <Icons.back />
+            {t("common.back")}
+          </Button>
+        }
+        initialFolderId={initialFolderId}
+        onSwitchToManual={() => setEntry("manual")}
+        setId={setId}
+      />
     );
   }
 
@@ -356,7 +326,7 @@ export function SetEditor({
           </p>
         )}
 
-        <div className="sticky bottom-[max(0.75rem,var(--safe-bottom))] z-20 -mx-2 mt-7 flex justify-end rounded-[var(--radius-stage)] bg-background/88 p-2 shadow-[var(--shadow-floating)] backdrop-blur-xl sm:mx-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none">
+        <div className="mt-7 flex justify-end">
           <Button
             className="w-full sm:w-auto"
             disabled={form.formState.isSubmitting || status !== "ready"}

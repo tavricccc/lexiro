@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import { Button } from "@/components/ui/button";
@@ -60,6 +60,23 @@ export function QuestionList() {
     [difficulty, kind, query, state.questions],
   );
 
+  // Only the formats the bank actually holds are worth offering: a filter that
+  // can only ever return nothing is not a choice.
+  const presentFormats = useMemo(
+    () =>
+      new Set<string>(
+        state.questions.map((question) =>
+          question.kind === "reading"
+            ? question.format
+            : question.questionStyle,
+        ),
+      ),
+    [state.questions],
+  );
+  useEffect(() => {
+    if (kind !== "all" && !presentFormats.has(kind)) setKind("all");
+  }, [kind, presentFormats]);
+
   const filtering =
     Boolean(query.trim()) || kind !== "all" || difficulty !== "all";
 
@@ -82,7 +99,7 @@ export function QuestionList() {
           <SelectField
             ariaLabel={t("questions.type")}
             onValueChange={setKind}
-            options={questionFormatOptions(t("questions.allTypes"))}
+            options={questionFormatOptions(t("questions.allTypes"), presentFormats)}
             value={kind}
           />
           <SelectField

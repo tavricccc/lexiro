@@ -135,12 +135,6 @@ export function SetView({ setId }: { setId: string }) {
             <Menu
               actions={[
                 {
-                  icon: Icons.generate,
-                  label: t("setDetail.generateQuestions"),
-                  onSelect: () =>
-                    router.push(`/questions/generate?set=${setId}`),
-                },
-                {
                   icon: Icons.export,
                   label: t("setDetail.share"),
                   onSelect: () =>
@@ -204,62 +198,61 @@ export function SetView({ setId }: { setId: string }) {
             description={t("setDetail.noWordsDescription")}
           />
         )
-      ) : questions.length ? (
-        <StaggerList as="ul" className="rule-card rule-list">
-          {questions.map((question) => (
-            <StaggerItem as="li" className="py-5" key={question.id}>
-              <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">
-                  {questionFormatLabel(
-                    question.kind === "reading"
-                      ? question.format
-                      : question.questionStyle,
-                  )}
-                </span>
-                <span>
-                  {t("questions.difficulty", { level: question.difficulty })}
-                </span>
-              </p>
-              <Link
-                className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                href={questionEditHref(question)}
-              >
-                {question.kind === "reading" ? question.title : question.prompt}
-              </Link>
-            </StaggerItem>
-          ))}
-        </StaggerList>
       ) : (
-        <EmptyState
-          variant="filtered"
-          title={t("questions.empty")}
-          description={t("setDetail.noQuestionsDescription")}
-          action={
-            <Button asChild>
+        <>
+          {/* Making questions is what you come to this tab to do when it is
+              empty and the obvious next step when it is not, so it is a control
+              on the tab rather than a line in the page's overflow menu. */}
+          <div className="mb-4 flex flex-wrap gap-2">
+            <Button asChild size="sm" variant={questions.length ? "secondary" : "default"}>
               <Link href={`/questions/generate?set=${setId}`}>
                 <Icons.generate />
                 {t("setDetail.generateQuestions")}
               </Link>
             </Button>
-          }
-        />
-      )}
+            {questions.length > 0 && (
+              <Button asChild size="sm" variant="ghost">
+                <Link href={`/practice?track=questions&set=${setId}`}>
+                  <Icons.start />
+                  {t("setDetail.startQuestions")}
+                </Link>
+              </Button>
+            )}
+          </div>
 
-      {tab === "questions" && questions.length > 0 && (
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Button asChild size="sm" variant="secondary">
-            <Link href={`/practice?track=questions&set=${setId}`}>
-              <Icons.start />
-              {t("setDetail.startQuestions")}
-            </Link>
-          </Button>
-          <Button asChild size="sm" variant="ghost">
-            <Link href={`/questions/generate?set=${setId}`}>
-              <Icons.generate />
-              {t("setDetail.generateQuestions")}
-            </Link>
-          </Button>
-        </div>
+          {questions.length ? (
+            <StaggerList as="ul" className="rule-card rule-list">
+              {questions.map((question) => (
+                <StaggerItem as="li" className="py-5" key={question.id}>
+                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                    <span className="font-medium text-foreground">
+                      {questionFormatLabel(
+                        question.kind === "reading"
+                          ? question.format
+                          : question.questionStyle,
+                      )}
+                    </span>
+                    <span>
+                      {t("questions.difficulty", { level: question.difficulty })}
+                    </span>
+                  </p>
+                  <Link
+                    className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                    href={questionEditHref(question)}
+                  >
+                    {question.kind === "reading" ? question.title : question.prompt}
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerList>
+          ) : (
+            <EmptyState
+              variant="filtered"
+              title={t("questions.empty")}
+              description={t("setDetail.noQuestionsDescription")}
+            />
+          )}
+        </>
       )}
 
       <ConfirmDialog

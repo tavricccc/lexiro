@@ -73,12 +73,23 @@ function formatOptions(values: readonly GeneratedQuestionKind[]): LabelledOption
   }));
 }
 
-/** Every format, for filters and for the generator. */
-export function questionFormatOptions(allLabel?: string): LabelledOption[] {
-  const options = formatOptions([
-    ...SENTENCE_STYLES,
-    ...PASSAGE_FORMAT_VALUES,
-  ]);
+/**
+ * The formats worth offering as a filter.
+ *
+ * A filter is a way of narrowing what is in front of you, so a format nothing
+ * in range was written in is not a choice — it is a dead end that always
+ * returns nothing. `present` is the set of formats actually held by whatever is
+ * being filtered; omit it to list every format, which is what the generator
+ * needs, since it is creating the material rather than narrowing it.
+ */
+export function questionFormatOptions(
+  allLabel?: string,
+  present?: ReadonlySet<string>,
+): LabelledOption[] {
+  const values = [...SENTENCE_STYLES, ...PASSAGE_FORMAT_VALUES].filter(
+    (format) => !present || present.has(format),
+  );
+  const options = formatOptions(values);
   return allLabel ? [{ label: allLabel, value: "all" }, ...options] : options;
 }
 
