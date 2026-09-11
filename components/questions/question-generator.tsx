@@ -255,7 +255,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       <StepFrame
         back={back}
         current={1}
-        description={t("questions.stepFormatHint")}
         title={t("questions.stepFormat")}
         total={3}
       >
@@ -292,7 +291,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     return (
       <StepFrame
         current={2}
-        description={t("questions.stepScopeHint")}
         footer={
           <Button
             className="w-full"
@@ -341,7 +339,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   if (step === "done") {
     return (
       <FinishPanel
-        description={t("questions.generatedDescription")}
         finishHref={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}
         moreIcon={Icons.generate}
         moreLabel={t("questions.generateMore")}
@@ -359,7 +356,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   return (
     <StepFrame
       current={3}
-      description={t("questions.stepRunHint")}
       onBack={() => setStep("scope")}
       recap={recap}
       title={t("questions.stepRun")}

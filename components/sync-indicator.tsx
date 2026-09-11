@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import type { SyncStatus } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
@@ -28,10 +30,8 @@ function statusIcon(status: SyncStatus, pending: number) {
 }
 
 export function SyncIndicator() {
-  const configured = useCloudStore((store) => store.configured);
   const status = useCloudStore((store) => store.status);
   const pending = useCloudStore((store) => store.pending);
-  const sync = useCloudStore((store) => store.sync);
   const working = status === "connecting" || status === "syncing";
   const Icon = statusIcon(status, pending);
   // The count is the honest version of the old dot: "there are eleven things
@@ -43,35 +43,16 @@ export function SyncIndicator() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button
-          aria-label={label}
-          className="relative text-muted-foreground"
-          disabled={!configured || working}
-          onClick={() => void sync()}
-          size="icon-sm"
-          variant="ghost"
-        >
-          <Icon className={working ? "animate-spin" : undefined} />
-          {pending > 0 && (
-            <span className="absolute right-1 top-1 size-1.5 rounded-full bg-warning" />
-          )}
+        <Button asChild className="relative text-muted-foreground" size="icon-sm" variant="ghost">
+          <Link aria-label={label} href="/sync">
+            <Icon className={working ? "animate-spin" : undefined} />
+            {pending > 0 && (
+              <span className="absolute right-1 top-1 size-1.5 rounded-full bg-warning" />
+            )}
+          </Link>
         </Button>
       </TooltipTrigger>
       <TooltipContent>{label}</TooltipContent>
     </Tooltip>
-  );
-}
-
-export function SyncRefreshButton() {
-  const sync = useCloudStore((store) => store.sync);
-  return (
-    <Button
-      aria-label={t("settings.syncNow")}
-      onClick={() => void sync()}
-      size="icon-sm"
-      variant="ghost"
-    >
-      <Icons.refresh />
-    </Button>
   );
 }

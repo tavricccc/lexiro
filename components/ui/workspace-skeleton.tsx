@@ -28,22 +28,16 @@ function LoadingFrame({
 function HeaderSkeleton({
   action = false,
   back = false,
-  description = true,
-  title = "w-48",
 }: {
   action?: boolean;
   back?: boolean;
-  description?: boolean;
-  title?: string;
 }) {
+  if (!action && !back) return null;
+
   return (
     <header className="mb-7 md:mb-9">
-      {back && <Skeleton className="mb-4 h-8 w-16 rounded-lg" />}
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-8">
-        <div className="min-w-0 flex-1 space-y-3">
-          <Skeleton className={`h-9 max-w-full ${title} rounded-lg`} />
-          {description && <Skeleton className="h-4 w-[min(32rem,85%)] rounded-md" />}
-        </div>
+      <div className="flex items-center justify-between gap-3">
+        {back ? <Skeleton className="h-8 w-16 rounded-lg" /> : <span />}
         {action && <Skeleton className="h-10 w-32 shrink-0 rounded-lg" />}
       </div>
     </header>
@@ -116,7 +110,7 @@ export function QuestionListSkeleton() {
 function LibraryPageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <HeaderSkeleton action title="w-40" />
+      <HeaderSkeleton action />
       <TabsSkeleton />
       <div className="rule-b pb-4">
         <div className="flex items-center justify-between gap-3">
@@ -135,7 +129,7 @@ function LibraryPageSkeleton() {
 function QuestionsPageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <HeaderSkeleton action title="w-40" />
+      <HeaderSkeleton action />
       <TabsSkeleton />
       <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
         <Skeleton className="h-11 rounded-lg" />
@@ -188,7 +182,7 @@ function HomePageSkeleton() {
 export function ProgressPageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <HeaderSkeleton action title="w-40" />
+      <HeaderSkeleton action />
       <section className="rule-card grid gap-x-14 gap-y-8 py-8 sm:grid-cols-[auto_auto]">
         <div className="space-y-2"><Skeleton className="h-14 w-20 rounded-lg" /><Skeleton className="h-4 w-28 rounded" /></div>
         <div className="grid grid-cols-2 gap-x-10 gap-y-6 sm:grid-cols-4">
@@ -233,9 +227,7 @@ function ProgressSectionSkeleton({
 function MePageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-4xl">
-      <HeaderSkeleton title="w-28" />
-      <div className="mb-8 flex items-center gap-4 rounded-xl bg-muted p-5 sm:p-7"><Skeleton className="size-12 shrink-0 rounded-full" /><div className="flex-1 space-y-2"><Skeleton className="h-6 w-36 rounded" /><Skeleton className="h-4 w-48 rounded" /></div><Skeleton className="h-6 w-20 rounded-full" /></div>
-      {Array.from({ length: 4 }, (_, index) => (
+      {Array.from({ length: 3 }, (_, index) => (
         <section className="rule-t py-7 first:pt-0 sm:py-9" key={index}>
           <div className="grid gap-5 sm:grid-cols-[13.5rem_minmax(0,1fr)] sm:gap-8"><div className="space-y-3"><Skeleton className="h-5 w-28 rounded" /><Skeleton className="h-4 w-full max-w-xs rounded" /></div><div className="space-y-4"><Skeleton className="h-11 w-full rounded-lg" /><Skeleton className="h-11 w-full rounded-lg" /></div></div>
         </section>
@@ -244,10 +236,21 @@ function MePageSkeleton() {
   );
 }
 
+function SyncPageSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-4xl">
+      <div className="mb-8 flex items-center gap-4 rounded-xl bg-muted p-5 sm:p-7"><Skeleton className="size-12 shrink-0 rounded-full" /><div className="flex-1 space-y-2"><Skeleton className="h-6 w-36 rounded" /><Skeleton className="h-4 w-48 rounded" /></div><Skeleton className="h-6 w-20 rounded-full" /></div>
+      <section className="rule-t py-7 first:pt-0 sm:py-9">
+        <div className="grid gap-5 sm:grid-cols-[13.5rem_minmax(0,1fr)] sm:gap-8"><div className="space-y-3"><Skeleton className="h-5 w-28 rounded" /><Skeleton className="h-4 w-full max-w-xs rounded" /></div><Skeleton className="h-10 w-32 rounded-lg" /></div>
+      </section>
+    </div>
+  );
+}
+
 export function PracticePageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-xl">
-      <HeaderSkeleton back title="w-40" />
+      <HeaderSkeleton back />
       <Skeleton className="mb-5 h-3 w-20 rounded" />
       <div className="rule-card rule-list">
         <RowSkeleton kind="question" />
@@ -260,7 +263,7 @@ export function PracticePageSkeleton() {
 function SetViewPageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <HeaderSkeleton action back description={false} title="w-56" />
+      <HeaderSkeleton action back />
       <div className="mb-7 grid grid-cols-2 gap-x-10 gap-y-4 sm:grid-cols-4">{Array.from({ length: 4 }, (_, index) => <div className="space-y-2" key={index}><Skeleton className="h-3 w-14 rounded" /><Skeleton className="h-8 w-12 rounded" /></div>)}</div>
       <TabsSkeleton />
       <div className="rule-card rule-list">{Array.from({ length: 4 }, (_, index) => <RowSkeleton key={index} />)}</div>
@@ -271,7 +274,7 @@ function SetViewPageSkeleton() {
 function SetEditorPageSkeleton({ newSet }: { newSet: boolean }) {
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <HeaderSkeleton back action={!newSet} title={newSet ? "w-44" : "w-56"} />
+      <HeaderSkeleton back action={!newSet} />
       {newSet ? (
         <div className="rule-card rule-list"><RowSkeleton kind="question" /><RowSkeleton kind="question" /></div>
       ) : (
@@ -289,7 +292,7 @@ function SetEditorPageSkeleton({ newSet }: { newSet: boolean }) {
 function QuestionGeneratorPageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-xl">
-      <HeaderSkeleton back title="w-52" />
+      <HeaderSkeleton back />
       <Skeleton className="mb-5 h-3 w-20 rounded" />
       <div className="rule-card rule-list"><RowSkeleton kind="question" /><RowSkeleton kind="question" /><RowSkeleton kind="question" /></div>
     </div>
@@ -299,7 +302,7 @@ function QuestionGeneratorPageSkeleton() {
 function QuestionEditorPageSkeleton({ reading }: { reading: boolean }) {
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <HeaderSkeleton back title="w-40" />
+      <HeaderSkeleton back />
       {reading ? (
         <>
           <div className="grid gap-4"><Skeleton className="h-11 rounded-lg" /><Skeleton className="h-52 rounded-lg" /><Skeleton className="h-11 w-56 rounded-lg" /></div>
@@ -329,6 +332,7 @@ function WorkspaceSkeletonContent({ location }: { location: string }) {
   if (pathname === "/progress") return <ProgressPageSkeleton />;
   if (pathname === "/practice") return <PracticePageSkeleton />;
   if (pathname === "/me") return <MePageSkeleton />;
+  if (pathname === "/sync") return <SyncPageSkeleton />;
   if (pathname === "/sets/new") return <SetEditorPageSkeleton newSet />;
   if (pathname.endsWith("/edit") && pathname.startsWith("/sets/"))
     return <SetEditorPageSkeleton newSet={false} />;

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { AccountSection } from "@/components/me/account-section";
 import { AiSettingsSection } from "@/components/me/ai-settings-section";
 import { DataSection } from "@/components/me/data-section";
 import { PreferencesSection } from "@/components/me/preferences-section";
@@ -33,8 +32,7 @@ export function MePage() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <PageHeader title={t("me.title")} description={t("me.description")} />
-      <AccountSection />
+      <PageHeader title={t("me.title")} />
       <PreferencesSection />
       <AiSettingsSection
         hydrated={hydrated}

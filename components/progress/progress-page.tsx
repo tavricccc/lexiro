@@ -91,7 +91,6 @@ export function ProgressPage() {
     <div>
       <PageHeader
         title={t("progress.title")}
-        description={t("progress.description")}
         actions={
           <SelectField
             ariaLabel={t("practice.set")}

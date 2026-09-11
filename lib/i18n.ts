@@ -12,6 +12,9 @@ export const zhTW = {
     progress: "進度",
     settings: "設定",
   },
+  sync: {
+    title: "雲端同步",
+  },
   ai: {
     applyStep: "收下第 {step} 段",
     batchPlan: "分 {count} 次送出",

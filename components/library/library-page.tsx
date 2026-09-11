@@ -230,7 +230,6 @@ export function LibraryPage({
     <div>
       <PageHeader
         title={t("library.title")}
-        description={t("library.description")}
         actions={
           tab === "sets" ? (
             <Button asChild>

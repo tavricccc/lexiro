@@ -1,38 +1,38 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useEffect, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/cn";
+import { useUIStore } from "@/stores/ui-store";
 
 /**
- * The single page header for every route. The title and the sentence under it
- * are one block on the shared type scale, so every screen opens at the same
- * rank and in the same editorial voice as the study material.
+ * Registers the route title with the shared shell and keeps route-level actions
+ * and back navigation at the top of the page content.
  */
 export function PageHeader({
   actions,
   back,
   className,
-  description,
   title,
 }: {
   actions?: ReactNode;
   back?: ReactNode;
   className?: string;
-  description?: string;
   title: string;
 }) {
+  const pathname = usePathname();
+  const setPageTitle = useUIStore((store) => store.setPageTitle);
+
+  useEffect(() => setPageTitle(pathname, title), [pathname, setPageTitle, title]);
+
+  if (!actions && !back) return null;
+
   return (
     <header className={cn("mb-7 md:mb-9", className)}>
-      {back && <div className="mb-3 -ml-2">{back}</div>}
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-8">
-        <div className="min-w-0">
-          <h1 className="type-page">{title}</h1>
-          {description && <p className="type-lead">{description}</p>}
-        </div>
-        {actions && (
-          <div className="flex shrink-0 flex-wrap items-center gap-2 md:justify-end">
-            {actions}
-          </div>
-        )}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        {back ? <div className="-ml-2">{back}</div> : <span />}
+        {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
       </div>
     </header>
   );

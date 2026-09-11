@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { t, type TranslationKey } from "@/lib/i18n";
 import {
@@ -28,6 +27,7 @@ const destinations = [
   },
   { href: "/library", label: "nav.library", icon: Icons.library },
   { href: "/progress", label: "nav.progress", icon: Icons.stats },
+  { href: "/me", label: "nav.me", icon: Icons.account },
 ] satisfies {
   href: string;
   activePathPrefix?: string;
@@ -41,11 +41,32 @@ function isSecondaryMobileRoute(pathname: string) {
   return false;
 }
 
+function fallbackPageTitle(pathname: string) {
+  if (pathname === "/library") return t("library.title");
+  if (pathname === "/progress") return t("progress.title");
+  if (pathname === "/me") return t("me.title");
+  if (pathname === "/sync") return t("sync.title");
+  if (pathname === "/practice") return t("practice.title");
+  if (pathname === "/sets/new") return t("setEditor.createTitle");
+  if (pathname === "/questions/generate") return t("questions.generateTitle");
+  if (pathname.startsWith("/questions/reading/")) return t("questions.editReading");
+  if (pathname.startsWith("/questions/")) return t("questions.edit");
+  if (pathname.startsWith("/sets/")) return t("library.title");
+  return t("app.name");
+}
+
+function ShellIdentity({ pathname, title }: { pathname: string; title: string }) {
+  if (pathname === "/") return <BrandLockup href="/" />;
+  return <h1 className="truncate text-lg font-medium leading-none tracking-[-0.01em]">{title}</h1>;
+}
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const practiceActive = useUIStore((store) => store.practiceActive);
+  const pageTitle = useUIStore((store) => store.pageTitle);
   const showMobileNavigation = !practiceActive && !isSecondaryMobileRoute(pathname);
+  const shellTitle = pageTitle?.pathname === pathname ? pageTitle.title : fallbackPageTitle(pathname);
 
   React.useEffect(() => commitRouteHistory(pathname), [pathname]);
 
@@ -84,7 +105,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     >
       {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-[var(--surface-stage)]/92 p-3 backdrop-blur-xl md:flex">
         <div className="flex items-center justify-between px-2 pb-5 pt-2">
-          <BrandLockup href="/" />
+          <ShellIdentity pathname={pathname} title={shellTitle} />
           <SyncIndicator />
         </div>
         <LiquidNav
@@ -93,18 +114,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           pathname={pathname}
           vertical
         />
-        <Link
-          href="/me"
-          aria-current={pathname === "/me" ? "page" : undefined}
-          className={cn(
-            "flex min-h-10 items-center gap-3 rounded-[0.625rem] px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-[var(--surface-hover)] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
-            pathname === "/me" &&
-              "bg-brand-100 text-brand-700 shadow-[var(--shadow-control)]",
-          )}
-        >
-          <Icons.account className="size-[1.125rem]" />
-          {t("nav.me")}
-        </Link>
       </aside>}
 
       <div className={cn("min-w-0", !practiceActive && "md:col-start-2")}>
@@ -118,22 +127,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         >
           {showMobileNavigation && (
             <div className="app-mobile-header mb-4 flex h-10 items-center justify-between md:hidden">
-              <BrandLockup
-                href="/"
-                className="gap-2.5"
-              />
+              <ShellIdentity pathname={pathname} title={shellTitle} />
               <div className="flex items-center gap-1">
-                <Link
-                  href="/me"
-                  aria-label={t("nav.me")}
-                  aria-current={pathname === "/me" ? "page" : undefined}
-                  className={cn(
-                    "grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
-                    pathname === "/me" && "bg-brand-100 text-brand-700",
-                  )}
-                >
-                  <Icons.account className="size-[1.125rem]" />
-                </Link>
                 <SyncIndicator />
               </div>
             </div>

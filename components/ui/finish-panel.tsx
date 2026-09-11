@@ -19,7 +19,6 @@ import { t } from "@/lib/i18n";
  */
 export function FinishPanel({
   children,
-  description,
   finishHref,
   moreIcon: MoreIcon,
   moreLabel,
@@ -28,7 +27,6 @@ export function FinishPanel({
 }: {
   /** What was produced, shown under the two ways onward. */
   children?: ReactNode;
-  description: string;
   finishHref: string;
   moreIcon: LucideIcon;
   moreLabel: string;
@@ -37,7 +35,7 @@ export function FinishPanel({
 }) {
   return (
     <div className="mx-auto max-w-3xl">
-      <PageHeader description={description} title={title} />
+      <PageHeader title={title} />
       <div className="flex flex-col gap-2.5 sm:flex-row">
         <Button asChild className="sm:flex-1" size="lg">
           <Link href={finishHref}>

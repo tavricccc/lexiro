@@ -24,7 +24,7 @@ describe("cloud sync UI", () => {
 
   it("renders the sync indicator without an unstable external-store snapshot loop", () => {
     expect(() => renderSyncIndicator()).not.toThrow();
-    expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/sync");
   });
 
   it("renders the cloud gate without an unstable external-store snapshot loop", () => {
@@ -40,7 +40,7 @@ describe("cloud sync UI", () => {
   it("says how much is waiting rather than only that something is", () => {
     useCloudStore.setState({ configured: true, ready: true, status: "synced", pending: 11 });
     renderSyncIndicator();
-    expect(screen.getByRole("button").getAttribute("aria-label")).toContain("11");
+    expect(screen.getByRole("link").getAttribute("aria-label")).toContain("11");
   });
 
   it("keeps local work available when cloud sync fails", () => {

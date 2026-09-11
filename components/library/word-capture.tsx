@@ -100,7 +100,6 @@ export function WordCapture({
   if (done) {
     return (
       <FinishPanel
-        description={t("setEditor.capturedDescription", { name })}
         finishHref={savedId ? `/sets/${savedId}` : "/library"}
         moreIcon={Icons.create}
         moreLabel={t("setEditor.addMore")}
@@ -117,7 +116,6 @@ export function WordCapture({
     <div className="mx-auto max-w-3xl">
       <PageHeader
         back={back}
-        description={t("setEditor.aiAssistDescription")}
         title={t("setEditor.aiAssist")}
       />
 

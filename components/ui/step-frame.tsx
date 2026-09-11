@@ -18,7 +18,6 @@ export function StepFrame({
   back,
   children,
   current,
-  description,
   footer,
   onBack,
   recap,
@@ -30,7 +29,6 @@ export function StepFrame({
   back?: ReactNode;
   children: ReactNode;
   current: number;
-  description?: string;
   /** The single action that advances or completes the flow. */
   footer?: ReactNode;
   onBack?: () => void;
@@ -55,7 +53,6 @@ export function StepFrame({
           )
         }
         className="mb-5 md:mb-6"
-        description={description}
         title={title}
       />
 

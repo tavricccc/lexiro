@@ -204,7 +204,6 @@ export function SetEditor({
       <div className="mx-auto max-w-xl">
         <PageHeader
           back={backLink}
-          description={t("setEditor.howHint")}
           title={t("setEditor.howTitle")}
         />
         <ChoiceList
@@ -253,7 +252,6 @@ export function SetEditor({
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
       <PageHeader
         back={backLink}
-        description={setId ? undefined : t("setEditor.quickDescription")}
         title={current ? current.setName : t("setEditor.createTitle")}
       />
 

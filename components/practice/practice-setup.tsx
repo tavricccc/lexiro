@@ -110,7 +110,6 @@ export function PracticeSetup({
     return (
       <StepFrame
         current={1}
-        description={t("practice.chooseDescription")}
         title={t("practice.chooseTitle")}
         total={2}
       >
@@ -245,7 +244,6 @@ export function PracticeSetup({
     return (
       <StepFrame
         current={current}
-        description={t("practice.formatsHint")}
         footer={empty ? emptyFooter : beginFooter}
         onBack={goBack}
         recap={recap}
