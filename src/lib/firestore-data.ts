@@ -1,4 +1,5 @@
 import type { DocumentData } from "firebase/firestore";
+import { FieldValue } from "firebase/firestore";
 import { CloudSyncError } from "./cloud-sync-errors";
 
 function invalidValue(path: string, detail: string): never {
@@ -29,6 +30,11 @@ function normalizeValue(
     );
   if (typeof value !== "object")
     invalidValue(path, `包含不支援的 ${typeof value}`);
+
+  // A sentinel such as `serverTimestamp()` is not data to be checked; it is an
+  // instruction for the server to fill the field in. It has to reach Firestore
+  // exactly as it was made, so it passes through untouched.
+  if (value instanceof FieldValue) return value;
 
   const prototype = Object.getPrototypeOf(value);
   if (prototype !== Object.prototype && prototype !== null)

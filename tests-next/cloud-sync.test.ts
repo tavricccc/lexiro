@@ -2,6 +2,8 @@ import type { CardProgress, LearningProgress, LibraryState } from "@/types";
 import type { SyncJournal } from "@/src/lib/sync-journal";
 import { describe, expect, it } from "vitest";
 
+import { serverTimestamp } from "firebase/firestore";
+
 import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { applyCloudRecords, cloudRecordId } from "@/src/lib/cloud-records";
 import { normalizeCloudProgress } from "@/src/lib/cloud-sync-schema";
@@ -9,6 +11,7 @@ import { mergeProgress } from "@/src/lib/cloud-account";
 import { pendingRecords } from "@/src/lib/cloud-sync";
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
+import { prepareFirestoreData } from "@/src/lib/firestore-data";
 import { repairLibraryState } from "@/src/lib/library-repair";
 
 const EARLIER = "2026-09-01T00:00:00.000Z";
@@ -316,5 +319,26 @@ describe("normalizeCloudProgress", () => {
     expect(() =>
       normalizeCloudProgress({ ...document, schemaVersion: 5 }, UID),
     ).toThrow();
+  });
+});
+
+describe("prepareFirestoreData", () => {
+  it("lets a server timestamp through instead of inspecting it", () => {
+    // The regression: every record write carries `writtenAt: serverTimestamp()`,
+    // and the guard rejected the sentinel as "必須是一般物件" before the request
+    // was ever sent, so nothing could be pushed at all.
+    const sentinel = serverTimestamp();
+    const prepared = prepareFirestoreData({
+      ownerId: "user-1",
+      deleted: false,
+      writtenAt: sentinel,
+    });
+    expect(prepared.writtenAt).toBe(sentinel);
+  });
+
+  it("still refuses a value Firestore cannot store", () => {
+    expect(() => prepareFirestoreData({ when: new Date() })).toThrow(
+      /一般物件/u,
+    );
   });
 });
