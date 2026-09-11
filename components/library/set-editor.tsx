@@ -356,7 +356,7 @@ export function SetEditor({
           setId && current ? (
             <>
               <Button asChild>
-                <Link href={`/practice?mode=review&set=${setId}&start=1`}>
+                <Link href={`/practice?track=fsrs&set=${setId}`}>
                   <Icons.start />
                   {t("setDetail.start")}
                 </Link>
@@ -476,7 +476,7 @@ export function SetEditor({
                 </Button>
                 {questions.length > 0 && (
                   <Button asChild variant="secondary" size="sm">
-                    <Link href={`/practice?mode=questions&set=${setId}&start=1`}>
+                    <Link href={`/practice?track=questions&set=${setId}`}>
                       <Icons.start />
                       {t("setDetail.startQuestions")}
                     </Link>

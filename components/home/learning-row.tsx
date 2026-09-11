@@ -39,7 +39,7 @@ export function LearningRows() {
   );
 
   const done = session ? session.index : 0;
-  const total = session?.itemIds.length ?? 0;
+  const total = session?.entryIds.length ?? 0;
   // A library with nothing in it is already explained by the canvas above, so
   // this row stays away rather than repeating the invitation.
   const showRecent = status !== "ready" || recentSets.length > 0;

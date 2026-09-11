@@ -57,10 +57,11 @@ export type {
   SessionEntry,
   SessionHeaderModel,
   SessionStatus,
+  PracticeCardTask,
   PracticeSessionSnapshot,
-  WorkspacePracticeMode,
+  PracticeTask,
+  PracticeTrack,
   WorkspaceQuestionDifficulty,
-  WorkspaceQuestionType,
 } from './session'
 export type { EditorItem, EditorSenseDraft, PracticeDifficulty, PracticeQuestion, PracticeQuestionType, WordDraft } from './set'
 export type { FsrsStatusCounts, StatsMemorySummary, StatsQuestionRow, StatsSetRow } from './stats'

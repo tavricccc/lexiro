@@ -4,61 +4,51 @@ import type { Dispatch, SetStateAction } from "react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
-import type { QuestionItem } from "@/components/practice/practice-content";
-import { shuffleSession } from "@/components/practice/practice-content";
+import type { PracticeEntry } from "@/components/practice/practice-queue";
 import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { isSameLocalDay } from "@/src/lib/date";
-import type {
-  CardProgress,
-  ReviewRating,
-  SenseId,
-  StudyWord,
-  WorkspacePracticeMode,
-} from "@/types";
+import type { CardProgress, ReviewRating, SenseId } from "@/types";
 
 type Setter<T> = Dispatch<SetStateAction<T>>;
 
 interface SessionSetters {
   setAnswerChoices: Setter<Array<number | null>>;
   setCorrect: Setter<number>;
+  setEntries: Setter<PracticeEntry[] | null>;
   setIndex: Setter<number>;
   setMarked: Setter<number[]>;
-  setMode: Setter<WorkspacePracticeMode>;
   setQuestionFailedSenses: Setter<SenseId[]>;
   setRetrying: Setter<boolean>;
   setRevealed: Setter<boolean>;
   setSelected: Setter<number | null>;
-  setSessionQuestions: Setter<QuestionItem[] | null>;
-  setSessionReviews: Setter<StudyWord[] | null>;
   setSkipped: Setter<number[]>;
   setStarted: Setter<boolean>;
   setWrong: Setter<number[]>;
 }
 
+/**
+ * Every action reads the entry at the cursor rather than a session-wide mode:
+ * rating belongs to a card, answering and skipping belong to a question, and a
+ * mixed queue moves between the two from one index to the next.
+ */
 export function usePracticeSessionActions({
-  activeQuestions,
-  activeReviews,
+  activeEntries,
   index,
-  mode,
   progressCards,
+  queue,
   questionFailedSenses,
-  questionItems,
   retrying,
-  reviewItems,
   selected,
   setters,
 }: {
-  activeQuestions: QuestionItem[];
-  activeReviews: StudyWord[];
+  activeEntries: PracticeEntry[];
   index: number;
-  mode: WorkspacePracticeMode;
   progressCards: Record<SenseId, CardProgress>;
+  queue: PracticeEntry[];
   questionFailedSenses: SenseId[];
-  questionItems: QuestionItem[];
   retrying: boolean;
-  reviewItems: StudyWord[];
   selected: number | null;
   setters: SessionSetters;
 }) {
@@ -66,8 +56,19 @@ export function usePracticeSessionActions({
   const [animateNextCard, setAnimateNextCard] = useState(true);
   const actionPending = useRef(false);
   const rateSense = useLearningStore((store) => store.rateSense);
-  const scheduleSenseFromQuestion = useLearningStore((store) => store.scheduleSenseFromQuestion);
+  const scheduleSenseFromQuestion = useLearningStore(
+    (store) => store.scheduleSenseFromQuestion,
+  );
   const recordQuestion = useLearningStore((store) => store.recordQuestion);
+
+  const cardAt = (position: number) => {
+    const entry = activeEntries[position];
+    return entry?.kind === "card" ? entry : null;
+  };
+  const questionAt = (position: number) => {
+    const entry = activeEntries[position];
+    return entry?.kind === "question" ? entry.item : null;
+  };
 
   const resetAttempt = () => {
     actionPending.current = false;
@@ -94,12 +95,12 @@ export function usePracticeSessionActions({
   };
 
   const rate = async (rating: ReviewRating, fromKeyboard = false) => {
-    const item = activeReviews[index];
-    if (!item || actionPending.current) return;
+    const entry = cardAt(index);
+    if (!entry || actionPending.current) return;
     actionPending.current = true;
     setActionBusy(true);
     try {
-      await rateSense(item.id, rating);
+      await rateSense(entry.word.id, rating);
       if (rating === "good") setters.setCorrect((value) => value + 1);
       else setters.setWrong((value) => [...value, index]);
       advance(fromKeyboard);
@@ -114,7 +115,7 @@ export function usePracticeSessionActions({
 
   const answer = async (choice: number) => {
     if (selected !== null || actionPending.current) return;
-    const item = activeQuestions[index];
+    const item = questionAt(index);
     if (!item) return;
     actionPending.current = true;
     setActionBusy(true);
@@ -129,14 +130,26 @@ export function usePracticeSessionActions({
     });
     if (isCorrect) setters.setCorrect((value) => value + 1);
     else setters.setWrong((value) => [...value, index]);
-    const addedFailedSense = !isCorrect && !questionFailedSenses.includes(item.senseId);
-    if (addedFailedSense) setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
+    const addedFailedSense =
+      !isCorrect && !questionFailedSenses.includes(item.senseId);
+    if (addedFailedSense)
+      setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
     try {
       const card = progressCards[item.senseId];
-      const reviewedToday = card?.lastReview ? isSameLocalDay(new Date(card.lastReview), new Date()) : false;
-      if (addedFailedSense) await scheduleSenseFromQuestion(item.senseId, "again");
-      else if (isCorrect && !reviewedToday) await scheduleSenseFromQuestion(item.senseId, "good");
-      await recordQuestion(item.senseId, item.type, item.difficulty, isCorrect, retrying);
+      const reviewedToday = card?.lastReview
+        ? isSameLocalDay(new Date(card.lastReview), new Date())
+        : false;
+      if (addedFailedSense)
+        await scheduleSenseFromQuestion(item.senseId, "again");
+      else if (isCorrect && !reviewedToday)
+        await scheduleSenseFromQuestion(item.senseId, "good");
+      await recordQuestion(
+        item.senseId,
+        item.type,
+        item.difficulty,
+        isCorrect,
+        retrying,
+      );
     } catch (reason) {
       console.error(reason);
       toast.error(t("practice.recordFailed"));
@@ -144,7 +157,10 @@ export function usePracticeSessionActions({
       setters.setRevealed(false);
       if (isCorrect) setters.setCorrect((value) => Math.max(0, value - 1));
       else setters.setWrong((values) => values.filter((value) => value !== index));
-      if (addedFailedSense) setters.setQuestionFailedSenses((values) => values.filter((id) => id !== item.senseId));
+      if (addedFailedSense)
+        setters.setQuestionFailedSenses((values) =>
+          values.filter((id) => id !== item.senseId),
+        );
     } finally {
       actionPending.current = false;
       setActionBusy(false);
@@ -152,14 +168,20 @@ export function usePracticeSessionActions({
   };
 
   const skip = async () => {
-    const item = activeQuestions[index];
+    const item = questionAt(index);
     if (!item || selected !== null || actionPending.current) return;
     actionPending.current = true;
     setActionBusy(true);
     try {
       setters.setSkipped((values) => [...values, index]);
       setters.setWrong((values) => [...values, index]);
-      await recordQuestion(item.senseId, item.type, item.difficulty, false, retrying);
+      await recordQuestion(
+        item.senseId,
+        item.type,
+        item.difficulty,
+        false,
+        retrying,
+      );
       advance();
     } catch (reason) {
       console.error(reason);
@@ -173,8 +195,7 @@ export function usePracticeSessionActions({
   };
 
   const begin = () => {
-    setters.setSessionReviews(mode === "review" ? shuffleSession(reviewItems) : null);
-    setters.setSessionQuestions(mode === "questions" ? shuffleSession(questionItems) : null);
+    setters.setEntries(queue);
     setters.setRetrying(false);
     setters.setQuestionFailedSenses([]);
     setAnimateNextCard(true);
@@ -185,27 +206,17 @@ export function usePracticeSessionActions({
   const leave = () => {
     localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
     setters.setStarted(false);
-    setters.setSessionReviews(null);
-    setters.setSessionQuestions(null);
+    setters.setEntries(null);
     setters.setRetrying(false);
     setters.setQuestionFailedSenses([]);
     resetAttempt();
   };
 
   const retry = (indices: number[]) => {
-    setters.setSessionReviews(mode === "review" ? indices.map((value) => activeReviews[value]).filter(Boolean) : null);
-    setters.setSessionQuestions(mode === "questions" ? indices.map((value) => activeQuestions[value]).filter(Boolean) : null);
+    setters.setEntries(
+      indices.map((value) => activeEntries[value]).filter(Boolean),
+    );
     setters.setRetrying(true);
-    setters.setQuestionFailedSenses([]);
-    setAnimateNextCard(true);
-    resetAttempt();
-  };
-
-  const continueQuestions = () => {
-    setters.setMode("questions");
-    setters.setSessionReviews(null);
-    setters.setSessionQuestions(shuffleSession(questionItems));
-    setters.setRetrying(false);
     setters.setQuestionFailedSenses([]);
     setAnimateNextCard(true);
     resetAttempt();
@@ -216,7 +227,6 @@ export function usePracticeSessionActions({
     animateNextCard,
     answer,
     begin,
-    continueQuestions,
     leave,
     next,
     rate,

@@ -1,28 +1,21 @@
 import type {
   PracticeSessionSnapshot,
-  WorkspacePracticeMode,
+  PracticeTask,
   WorkspaceQuestionDifficulty,
-  WorkspaceQuestionType,
 } from "@/types";
+import { isPracticeTask, orderPracticeTasks } from "../constants/practice";
 import { asSenseId } from "./library";
 import { isRecord } from "./schema";
 
-const MODES = new Set<WorkspacePracticeMode>(["review", "questions"]);
-const QUESTION_TYPES = new Set<WorkspaceQuestionType>([
-  "all",
-  "vocabulary",
-  "grammar",
-  "cloze",
-  "wordBank",
-  "discourse",
-  "reading",
-]);
 const DIFFICULTIES = new Set<WorkspaceQuestionDifficulty>([
   "all",
   "1",
   "2",
   "3",
 ]);
+
+/** A 文意選填 bank runs to ten options, so a stored choice can reach index 9. */
+const MAX_OPTION_INDEX = 9;
 
 function isIntegerArray(value: unknown, upperBound: number): value is number[] {
   return (
@@ -34,6 +27,14 @@ function isIntegerArray(value: unknown, upperBound: number): value is number[] {
   );
 }
 
+/**
+ * Reads back an interrupted session.
+ *
+ * Only version 3 is accepted. Earlier snapshots described a session as a single
+ * mode with one kind of item in it, which the mixed queue has no faithful
+ * translation for; the cost of dropping one is re-picking a session, and no
+ * learning data lives here.
+ */
 export function parsePracticeSession(
   raw: string | null,
 ): PracticeSessionSnapshot | null {
@@ -45,26 +46,20 @@ export function parsePracticeSession(
   } catch {
     return null;
   }
-  if (
-    !isRecord(value) ||
-    (value.schemaVersion !== 1 && value.schemaVersion !== 2)
-  )
-    return null;
+  if (!isRecord(value) || value.schemaVersion !== 3) return null;
 
-  const itemIds = value.itemIds;
-  const mode = value.mode;
-  const questionType = value.questionType;
+  const entryIds = value.entryIds;
+  const rawTasks = value.tasks;
   const difficulty = value.difficulty;
   if (
-    !Array.isArray(itemIds) ||
-    itemIds.length === 0 ||
-    itemIds.length > 100 ||
-    !itemIds.every((item) => typeof item === "string" && item.trim()) ||
-    new Set(itemIds).size !== itemIds.length ||
-    typeof mode !== "string" ||
-    !MODES.has(mode as WorkspacePracticeMode) ||
-    typeof questionType !== "string" ||
-    !QUESTION_TYPES.has(questionType as WorkspaceQuestionType) ||
+    !Array.isArray(entryIds) ||
+    entryIds.length === 0 ||
+    entryIds.length > 100 ||
+    !entryIds.every((item) => typeof item === "string" && item.trim()) ||
+    new Set(entryIds).size !== entryIds.length ||
+    !Array.isArray(rawTasks) ||
+    rawTasks.length === 0 ||
+    !rawTasks.every(isPracticeTask) ||
     typeof difficulty !== "string" ||
     !DIFFICULTIES.has(difficulty as WorkspaceQuestionDifficulty) ||
     typeof value.setId !== "string" ||
@@ -73,7 +68,7 @@ export function parsePracticeSession(
     Number(value.amount) > 100 ||
     !Number.isInteger(value.index) ||
     Number(value.index) < 0 ||
-    Number(value.index) >= itemIds.length ||
+    Number(value.index) >= entryIds.length ||
     !Number.isInteger(value.correct) ||
     Number(value.correct) < 0 ||
     Number(value.correct) >
@@ -81,7 +76,7 @@ export function parsePracticeSession(
     (value.selected !== null &&
       (!Number.isInteger(value.selected) ||
         Number(value.selected) < 0 ||
-        Number(value.selected) > 3)) ||
+        Number(value.selected) > MAX_OPTION_INDEX)) ||
     typeof value.revealed !== "boolean" ||
     typeof value.retrying !== "boolean" ||
     !Array.isArray(value.failedSenseIds) ||
@@ -89,30 +84,30 @@ export function parsePracticeSession(
       (item) => typeof item === "string" && item.trim(),
     ) ||
     new Set(value.failedSenseIds).size !== value.failedSenseIds.length ||
-    !isIntegerArray(value.wrong, itemIds.length) ||
-    !isIntegerArray(value.skipped, itemIds.length) ||
-    !isIntegerArray(value.marked, itemIds.length)
+    !isIntegerArray(value.wrong, entryIds.length) ||
+    !isIntegerArray(value.skipped, entryIds.length) ||
+    !isIntegerArray(value.marked, entryIds.length)
   ) {
     return null;
   }
 
-  const rawAnswerChoices =
-    value.schemaVersion === 2 ? value.answerChoices : undefined;
+  const rawAnswerChoices = value.answerChoices;
   if (
     rawAnswerChoices !== undefined &&
     (!Array.isArray(rawAnswerChoices) ||
-      rawAnswerChoices.length > itemIds.length ||
+      rawAnswerChoices.length > entryIds.length ||
       rawAnswerChoices.some(
         (item) =>
-          item !== null && (!Number.isInteger(item) || item < 0 || item > 3),
+          item !== null &&
+          (!Number.isInteger(item) || item < 0 || item > MAX_OPTION_INDEX),
       ))
   ) {
     return null;
   }
 
   return {
-    schemaVersion: 2,
-    mode: mode as WorkspacePracticeMode,
+    schemaVersion: 3,
+    tasks: orderPracticeTasks(rawTasks as PracticeTask[]),
     setId: value.setId,
     amount: Number(value.amount),
     index: Number(value.index),
@@ -122,12 +117,11 @@ export function parsePracticeSession(
     marked: value.marked,
     selected: value.selected === null ? null : Number(value.selected),
     revealed: value.revealed,
-    questionType: questionType as WorkspaceQuestionType,
     difficulty: difficulty as WorkspaceQuestionDifficulty,
-    itemIds,
+    entryIds,
     failedSenseIds: value.failedSenseIds.map(asSenseId),
     retrying: value.retrying,
-    answerChoices: itemIds.map((_, position) =>
+    answerChoices: entryIds.map((_, position) =>
       Array.isArray(rawAnswerChoices)
         ? (rawAnswerChoices[position] ?? null)
         : null,
@@ -135,13 +129,13 @@ export function parsePracticeSession(
   };
 }
 
+/**
+ * A session started inside one set is only offered back on that set's route,
+ * so opening a different set does not resume somebody else's queue.
+ */
 export function canRestorePracticeSession(
   snapshot: PracticeSessionSnapshot,
-  initialMode: WorkspacePracticeMode,
   initialSet: string,
 ): boolean {
-  if (initialSet)
-    return snapshot.setId === initialSet && snapshot.mode === initialMode;
-  if (initialMode === "questions") return snapshot.mode === "questions";
-  return true;
+  return initialSet ? snapshot.setId === initialSet : true;
 }

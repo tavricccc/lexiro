@@ -361,7 +361,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             </h2>
             {saved && (
               <Button asChild>
-                <Link href="/practice?mode=questions&start=1">
+                <Link href="/practice?track=questions">
                   <Icons.start />
                   {t("questions.startGenerated")}
                 </Link>

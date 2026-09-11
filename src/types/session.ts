@@ -1,7 +1,5 @@
-import type { SenseId, StudyWord } from './library'
+import type { GeneratedQuestionKind, SenseId, StudyWord } from './library'
 import type { PracticeQuestion } from './set'
-
-import type { VocabularyQuestionTypeFilter } from './library'
 
 export type PracticeMode = 'quiz' | 'fillBlank' | 'reading'
 export type SessionStatus = 'in-progress' | 'completed'
@@ -71,15 +69,21 @@ export interface ResultRow {
   index: number
 }
 
-export type WorkspacePracticeMode = 'review' | 'questions'
-/** The question filter shares one union with the library so a new exam
- * format shows up in the practice filter without a second edit. */
-export type WorkspaceQuestionType = VocabularyQuestionTypeFilter
+/**
+ * A session belongs to one track, and within it asks for one or more tasks.
+ * 每日複習 asks the words FSRS has scheduled, as cards or as spelling or as a
+ * mix of both; 做題目 asks any combination of the exam formats.
+ */
+export type PracticeTrack = 'fsrs' | 'questions'
+export type PracticeCardTask = 'flashcard' | 'spelling'
+export type PracticeTask = PracticeCardTask | GeneratedQuestionKind
+
 export type WorkspaceQuestionDifficulty = 'all' | '1' | '2' | '3'
 
 export interface PracticeSessionSnapshot {
-  schemaVersion: 2
-  mode: WorkspacePracticeMode
+  schemaVersion: 3
+  /** Homogeneous: every task in a session belongs to the same track. */
+  tasks: PracticeTask[]
   setId: string
   amount: number
   index: number
@@ -89,10 +93,9 @@ export interface PracticeSessionSnapshot {
   marked: number[]
   selected: number | null
   revealed: boolean
-  questionType: WorkspaceQuestionType
   difficulty: WorkspaceQuestionDifficulty
-  /** Composite practice item ids, not sense ids: see `QuestionItem.id`. */
-  itemIds: string[]
+  /** Composite entry ids, not sense ids: see `practiceEntryId`. */
+  entryIds: string[]
   failedSenseIds: SenseId[]
   retrying: boolean
   answerChoices: Array<number | null>

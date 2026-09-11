@@ -2,84 +2,101 @@
 
 import type {
   LibrarySet,
-  WorkspacePracticeMode,
+  PracticeCardTask,
+  PracticeTask,
+  PracticeTrack,
   WorkspaceQuestionDifficulty,
-  WorkspaceQuestionType,
 } from "@/types";
 import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import { SelectField } from "@/components/ui/select-field";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { Switch } from "@/components/ui/switch";
+import {
+  PRACTICE_CARD_TASKS,
+  PRACTICE_QUESTION_TASKS,
+} from "@/constants";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
-import {
-  difficultyOptions,
-  questionFormatOptions,
-} from "@/lib/question-options";
+import { practiceTaskHint, practiceTaskLabel } from "@/lib/practice-tasks";
+import { difficultyOptions } from "@/lib/question-options";
 
 const AMOUNTS = [5, 10, 20, 30];
 
+/** 隨機混合 is both card tasks at once, so it needs no separate stored value. */
+const CARD_STYLES = ["flashcard", "spelling", "mixed"] as const;
+type CardStyle = (typeof CARD_STYLES)[number];
+
+function styleOfTasks(tasks: PracticeTask[]): CardStyle {
+  const chosen = PRACTICE_CARD_TASKS.filter((task) => tasks.includes(task));
+  if (chosen.length > 1) return "mixed";
+  return (chosen[0] ?? "flashcard") as CardStyle;
+}
+
+function tasksOfStyle(style: CardStyle): PracticeCardTask[] {
+  return style === "mixed" ? [...PRACTICE_CARD_TASKS] : [style];
+}
+
 /**
- * Starting a session is two questions, asked one at a time.
+ * Starting a session is two questions.
  *
- * Step one is the branch: 背單字 or 做題目, each with what it is and how much is
- * waiting. Step two shows only what that branch needs, behind one press —
- * because the answer for almost every session is "yes, start", and the settings
- * exist for the sessions where it is not.
+ * Step one is the branch — the words FSRS has scheduled, or the question bank —
+ * because the two draw on different material and mixing them in one queue would
+ * make "how many" mean two things at once. Step two opens with the range and
+ * the length, which both branches share, and then asks only what its own branch
+ * needs: how a card should be asked, or which formats to include.
  */
 export function PracticeSetup({
   amount,
+  cardCount,
+  counts,
   difficulty,
   hasWords,
   leechOnly,
-  mode,
-  modePreset,
   onAmountChange,
   onBegin,
   onDifficultyChange,
   onLeechOnlyChange,
-  onModeChange,
-  onQuestionTypeChange,
   onSetChange,
-  onTypingModeChange,
-  questionCount,
-  questionType,
-  reviewCount,
+  onTasksChange,
+  queueLength,
   setId,
   sets,
-  typingMode,
+  tasks,
+  trackPreset,
 }: {
   amount: number;
+  /** Everything FSRS has scheduled in range, however it ends up being asked. */
+  cardCount: number;
+  counts: Record<PracticeTask, number>;
   difficulty: WorkspaceQuestionDifficulty;
   hasWords: boolean;
   leechOnly: boolean;
-  mode: WorkspacePracticeMode;
-  /** The mode arrived in the link, so the branch step is already answered. */
-  modePreset: boolean;
   onAmountChange: (amount: number) => void;
   onBegin: () => void;
   onDifficultyChange: (difficulty: WorkspaceQuestionDifficulty) => void;
   onLeechOnlyChange: (leechOnly: boolean) => void;
-  onModeChange: (mode: WorkspacePracticeMode) => void;
-  onQuestionTypeChange: (type: WorkspaceQuestionType) => void;
   onSetChange: (setId: string) => void;
-  onTypingModeChange: (typingMode: boolean) => void;
-  questionCount: number;
-  questionType: WorkspaceQuestionType;
-  reviewCount: number;
+  onTasksChange: (tasks: PracticeTask[]) => void;
+  queueLength: number;
   setId: string;
   sets: LibrarySet[];
-  typingMode: boolean;
+  tasks: PracticeTask[];
+  /** The track arrived in the link, so the branch step is already answered. */
+  trackPreset?: PracticeTrack;
 }) {
-  const [chosen, setChosen] = useState(modePreset);
-  const [tuning, setTuning] = useState(false);
+  const [track, setTrack] = useState<PracticeTrack | null>(trackPreset ?? null);
+  const questionCount = PRACTICE_QUESTION_TASKS.reduce(
+    (total, task) => total + counts[task],
+    0,
+  );
 
-  if (!chosen) {
+  if (!track) {
     return (
       <StepFrame
         current={1}
@@ -89,19 +106,26 @@ export function PracticeSetup({
       >
         <ChoiceList
           onSelect={(value) => {
-            onModeChange(value as WorkspacePracticeMode);
-            setChosen(true);
+            const chosen = value as PracticeTrack;
+            setTrack(chosen);
+            onTasksChange(
+              chosen === "fsrs"
+                ? tasksOfStyle(styleOfTasks(tasks))
+                : PRACTICE_QUESTION_TASKS.filter(
+                    (task) => tasks.includes(task) || tasks.length === 0,
+                  ),
+            );
           }}
           options={[
             {
               description: t("practice.reviewSummary"),
               icon: Icons.review,
               label: t("practice.review"),
-              meta: reviewCount
-                ? t("practice.reviewReady", { count: reviewCount })
+              meta: cardCount
+                ? t("practice.reviewReady", { count: cardCount })
                 : t("practice.reviewNone"),
-              metaEmpty: !reviewCount,
-              value: "review",
+              metaEmpty: !cardCount,
+              value: "fsrs",
             },
             {
               description: t("practice.questionsSummary"),
@@ -119,23 +143,22 @@ export function PracticeSetup({
     );
   }
 
-  const review = mode === "review";
-  const availableCount = review ? reviewCount : questionCount;
-  const emptyHref = !hasWords
-    ? "/sets/new"
-    : review
-      ? "/library"
-      : "/questions/generate";
-  const EmptyIcon = !hasWords
-    ? Icons.create
-    : review
-      ? Icons.library
-      : Icons.generate;
+  const fsrs = track === "fsrs";
+  const availableCount = fsrs ? cardCount : questionCount;
+  const emptyHref = !hasWords ? "/sets/new" : fsrs ? "/library" : "/questions/generate";
+  const EmptyIcon = !hasWords ? Icons.create : fsrs ? Icons.library : Icons.generate;
   const emptyLabel = !hasWords
     ? t("practice.addWordsFirst")
-    : review
+    : fsrs
       ? t("home.openLibrary")
       : t("practice.generateFirst");
+
+  const toggleQuestionTask = (task: PracticeTask, checked: boolean) => {
+    const next = PRACTICE_QUESTION_TASKS.filter((entry) =>
+      entry === task ? checked : tasks.includes(entry),
+    );
+    onTasksChange(next);
+  };
 
   return (
     <StepFrame
@@ -143,11 +166,18 @@ export function PracticeSetup({
       footer={
         availableCount ? (
           <>
-            <Button className="w-full" onClick={onBegin} size="lg">
+            <Button
+              className="w-full"
+              disabled={!queueLength}
+              onClick={onBegin}
+              size="lg"
+            >
               <Icons.start />
-              {t(review ? "practice.beginReview" : "practice.beginQuestions")}
+              {queueLength
+                ? t("practice.beginCount", { count: queueLength })
+                : t("practice.noSelection")}
             </Button>
-            {!review && (
+            {!fsrs && (
               <p className="mt-4 text-center">
                 <Link
                   className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
@@ -167,87 +197,155 @@ export function PracticeSetup({
           </Button>
         )
       }
-      onBack={modePreset ? undefined : () => setChosen(false)}
+      onBack={trackPreset ? undefined : () => setTrack(null)}
       recap={
         <StepRecap
           items={[
             availableCount
-              ? t(review ? "practice.readyReview" : "practice.readyQuestions", {
+              ? t(fsrs ? "practice.readyReview" : "practice.readyQuestions", {
                   count: availableCount,
                 })
               : t("practice.noContent"),
           ]}
-          onEdit={() => setChosen(false)}
+          onEdit={trackPreset ? undefined : () => setTrack(null)}
         />
       }
-      title={t(review ? "practice.review" : "practice.questions")}
+      title={t(fsrs ? "practice.review" : "practice.questions")}
       total={2}
     >
-      <details
-        className="group rounded-[var(--radius-card)] border px-4 py-3.5 open:bg-[var(--surface-inset)] sm:px-5"
-        onToggle={(event) => setTuning(event.currentTarget.open)}
-        open={tuning}
-      >
-        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-medium marker:content-none">
-          {t("practice.tune")}
-          <span className="text-xs font-normal text-muted-foreground group-open:hidden">
-            {t("practice.tuneHint")}
-          </span>
-          <Icons.open
-            aria-hidden
-            className="size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-control)] group-open:rotate-90"
-          />
-        </summary>
+      <div className="grid gap-6">
+        <section className="rule-card py-4">
+          <h2 className="type-subsection">{t("practice.scopeTitle")}</h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <SelectField
+              label={t("practice.set")}
+              onValueChange={(value) => onSetChange(value === "all" ? "" : value)}
+              options={[
+                { label: t("practice.allSets"), value: "all" },
+                ...sets.map((entry) => ({
+                  label: entry.setName,
+                  value: entry.id,
+                })),
+              ]}
+              value={setId || "all"}
+            />
+            <SelectField
+              label={t("practice.amount")}
+              onValueChange={(value) => onAmountChange(Number(value))}
+              options={AMOUNTS.map((value) => ({
+                label: String(value),
+                value: String(value),
+              }))}
+              value={String(amount)}
+            />
+          </div>
+        </section>
 
-        <div className="mt-5 grid gap-4 rule-t pt-5">
-          <SelectField
-            label={t("practice.set")}
-            onValueChange={(value) => onSetChange(value === "all" ? "" : value)}
-            options={[
-              { label: t("practice.allSets"), value: "all" },
-              ...sets.map((entry) => ({
-                label: entry.setName,
-                value: entry.id,
-              })),
-            ]}
-            value={setId || "all"}
-          />
-
-          <SelectField
-            label={t("practice.amount")}
-            onValueChange={(value) => onAmountChange(Number(value))}
-            options={AMOUNTS.map((value) => ({
-              label: String(value),
-              value: String(value),
-            }))}
-            value={String(amount)}
-          />
-
-          {review ? (
-            <div className="grid gap-2">
-              <Toggle
-                checked={leechOnly}
-                description={t("practice.leechOnlyHint")}
-                label={t("practice.leechOnly")}
-                onCheckedChange={onLeechOnlyChange}
-              />
-              <Toggle
-                checked={typingMode}
-                description={t("practice.typingModeHint")}
-                label={t("practice.typingMode")}
-                onCheckedChange={onTypingModeChange}
-              />
+        {fsrs ? (
+          <section className="rule-card py-4">
+            <h2 className="type-subsection">{t("practice.cardStyleTitle")}</h2>
+            <p className="mt-1 text-xs leading-5 text-muted-foreground">
+              {t("practice.cardStyleHint")}
+            </p>
+            <div className="mt-4 rule-list">
+              {CARD_STYLES.map((style) => (
+                <label
+                  className="flex cursor-pointer items-start gap-3 py-3"
+                  key={style}
+                >
+                  <input
+                    checked={styleOfTasks(tasks) === style}
+                    className="mt-0.5 size-4 shrink-0 accent-brand-600"
+                    name="card-style"
+                    onChange={() => onTasksChange(tasksOfStyle(style))}
+                    type="radio"
+                  />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-medium">
+                      {style === "mixed"
+                        ? t("practice.cardStyleMixed")
+                        : practiceTaskLabel(style)}
+                    </span>
+                    <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">
+                      {style === "mixed"
+                        ? t("practice.cardStyleMixedHint")
+                        : practiceTaskHint(style)}
+                    </span>
+                  </span>
+                </label>
+              ))}
             </div>
-          ) : (
-            <div className="grid gap-4 sm:grid-cols-2">
-              <SelectField
-                label={t("practice.questionType")}
-                onValueChange={(value) =>
-                  onQuestionTypeChange(value as WorkspaceQuestionType)
-                }
-                options={questionFormatOptions(t("practice.allQuestionTypes"))}
-                value={questionType}
+            <label className="mt-1 flex cursor-pointer items-start justify-between gap-5 rule-t pt-4">
+              <span className="min-w-0">
+                <span className="block text-sm font-medium">
+                  {t("practice.leechOnly")}
+                </span>
+                <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">
+                  {t("practice.leechOnlyHint")}
+                </span>
+              </span>
+              <Switch
+                aria-label={t("practice.leechOnly")}
+                checked={leechOnly}
+                className="mt-0.5 shrink-0"
+                onCheckedChange={onLeechOnlyChange}
+                size="sm"
               />
+            </label>
+          </section>
+        ) : (
+          <section className="rule-card py-4">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h2 className="type-subsection">{t("practice.formatsTitle")}</h2>
+              <button
+                className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                onClick={() =>
+                  onTasksChange(
+                    tasks.length === PRACTICE_QUESTION_TASKS.length
+                      ? []
+                      : [...PRACTICE_QUESTION_TASKS],
+                  )
+                }
+                type="button"
+              >
+                {t(
+                  tasks.length === PRACTICE_QUESTION_TASKS.length
+                    ? "practice.clearFormats"
+                    : "practice.allFormats",
+                )}
+              </button>
+            </div>
+            <div className="mt-3 rule-list">
+              {PRACTICE_QUESTION_TASKS.map((task) => (
+                <label
+                  className="flex cursor-pointer items-start gap-3 py-3"
+                  key={task}
+                >
+                  <Checkbox
+                    checked={tasks.includes(task)}
+                    className="mt-0.5"
+                    disabled={!counts[task]}
+                    onCheckedChange={(checked) =>
+                      toggleQuestionTask(task, checked === true)
+                    }
+                  />
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-baseline justify-between gap-3">
+                      <span className="text-sm font-medium">
+                        {practiceTaskLabel(task)}
+                      </span>
+                      <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                        {counts[task]}
+                      </span>
+                    </span>
+                    <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">
+                      {practiceTaskHint(task)}
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+            <div className="mt-1 rule-t pt-4">
               <SelectField
                 label={t("practice.difficulty")}
                 onValueChange={(value) =>
@@ -257,39 +355,9 @@ export function PracticeSetup({
                 value={String(difficulty)}
               />
             </div>
-          )}
-        </div>
-      </details>
+          </section>
+        )}
+      </div>
     </StepFrame>
-  );
-}
-
-function Toggle({
-  checked,
-  description,
-  label,
-  onCheckedChange,
-}: {
-  checked: boolean;
-  description: string;
-  label: string;
-  onCheckedChange: (checked: boolean) => void;
-}) {
-  return (
-    <label className="flex cursor-pointer items-start justify-between gap-5 rounded-[var(--radius-card)] border bg-card px-4 py-3.5">
-      <span className="min-w-0">
-        <span className="block text-sm font-medium">{label}</span>
-        <span className="mt-1 block text-xs leading-5 text-muted-foreground">
-          {description}
-        </span>
-      </span>
-      <Switch
-        aria-label={label}
-        checked={checked}
-        className="mt-0.5 shrink-0"
-        onCheckedChange={onCheckedChange}
-        size="sm"
-      />
-    </label>
   );
 }

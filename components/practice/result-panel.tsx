@@ -19,7 +19,6 @@ export function ResultPanel({
   wrongContent,
   onRetry,
   onRetryMarked,
-  onContinueQuestions,
 }: {
   correct: number;
   total: number;
@@ -28,7 +27,6 @@ export function ResultPanel({
   wrongContent: string;
   onRetry: () => void;
   onRetryMarked?: () => void;
-  onContinueQuestions?: () => void;
 }) {
   const [explanation, setExplanation] = useState("");
   const [error, setError] = useState("");
@@ -85,19 +83,12 @@ export function ResultPanel({
       </div>
 
       <div className="section-gap flex flex-col justify-center gap-2 sm:flex-row sm:flex-wrap">
-        {onContinueQuestions ? (
-          <Button onClick={onContinueQuestions}>
-            <Icons.start />
-            {t("practice.continueQuestions")}
-          </Button>
-        ) : (
-          <Button asChild>
-            <Link href="/">
-              <Icons.review />
-              {t("practice.backHome")}
-            </Link>
-          </Button>
-        )}
+        <Button asChild>
+          <Link href="/">
+            <Icons.review />
+            {t("practice.backHome")}
+          </Link>
+        </Button>
         {wrongContent && (
           <Button variant="secondary" onClick={onRetry}>
             <Icons.retry />

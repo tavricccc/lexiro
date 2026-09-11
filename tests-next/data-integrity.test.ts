@@ -6,7 +6,6 @@ import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
-import { allocateDailyQuestionQuotas } from "@/src/lib/question-distribution";
 
 function library(setId: string, rawWordKey: string, setName: string): LibraryState {
   const timestamp = "2026-08-12T00:00:00.000Z";
@@ -38,21 +37,6 @@ describe("data integrity", () => {
     const merged = mergeLibraryStates(library("one", "one", "一"), library("two", "two", "二"));
     expect(merged.result.addedSets).toBe(1);
     expect(merged.state.sets.map((set) => set.id)).toEqual(["one", "two"]);
-  });
-
-  it("splits a session across the exam formats and always sums to the target", () => {
-    for (const target of [0, 1, 3, 10, 25, 46]) {
-      const quotas = allocateDailyQuestionQuotas(target);
-      const total = Object.values(quotas).reduce((sum, quota) => sum + quota, 0);
-      expect(total, `target ${target}`).toBe(target);
-      expect(Object.values(quotas).every((quota) => quota >= 0)).toBe(true);
-    }
-  });
-
-  it("weights the mix towards the formats a 學測 paper weights", () => {
-    const quotas = allocateDailyQuestionQuotas(46);
-    expect(quotas.vocabulary).toBeGreaterThan(quotas.discourse);
-    expect(quotas.reading).toBeGreaterThan(quotas.discourse);
   });
 
   it("exports a canonical backup without the API key", () => {

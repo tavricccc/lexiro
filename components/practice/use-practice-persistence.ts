@@ -1,32 +1,34 @@
 "use client";
 
-import type {
-  Dispatch,
-  SetStateAction,
-} from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useEffect } from "react";
 
 import {
+  orderPracticeTasks,
   PRACTICE_PREFERENCES_STORAGE_KEY,
   PRACTICE_SESSION_STORAGE_KEY,
+  isPracticeTask,
 } from "@/constants";
 import type {
-  WorkspacePracticeMode,
-  WorkspaceQuestionDifficulty,
-  WorkspaceQuestionType,
   PracticeSessionSnapshot,
+  PracticeTask,
   SenseId,
   SetMembership,
   StudyWord,
+  WorkspaceQuestionDifficulty,
 } from "@/types";
 import type { QuestionItem } from "@/components/practice/practice-content";
-import { canRestorePracticeSession, parsePracticeSession } from "@/src/lib/practice-session";
+import type { PracticeEntry } from "@/components/practice/practice-queue";
+import { entriesFromIds } from "@/components/practice/practice-queue";
+import {
+  canRestorePracticeSession,
+  parsePracticeSession,
+} from "@/src/lib/practice-session";
 
 export function useRestorePracticeSession({
   allQuestionItems,
   allStudyItems,
   enabled,
-  initialMode,
   initialSet,
   memberships,
   restoreAttempted,
@@ -37,13 +39,15 @@ export function useRestorePracticeSession({
   allQuestionItems: QuestionItem[];
   allStudyItems: StudyWord[];
   enabled: boolean;
-  initialMode: WorkspacePracticeMode;
   initialSet: string;
   memberships: Record<string, SetMembership[]>;
   restoreAttempted: { current: boolean };
   sessionRestored: { current: boolean };
   setIds: Set<string>;
-  onRestore: (snapshot: PracticeSessionSnapshot, items: Array<QuestionItem | StudyWord>) => void;
+  onRestore: (
+    snapshot: PracticeSessionSnapshot,
+    entries: PracticeEntry[],
+  ) => void;
 }) {
   useEffect(() => {
     if (restoreAttempted.current || !enabled) return;
@@ -54,32 +58,51 @@ export function useRestorePracticeSession({
       if (raw) localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
       return;
     }
-    if (!canRestorePracticeSession(saved, initialMode, initialSet)) return;
+    if (!canRestorePracticeSession(saved, initialSet)) return;
 
     const allowed = new Set(
-      (saved.setId ? memberships[saved.setId] ?? [] : Object.values(memberships).flat())
-        .flatMap((entry) => entry.senseIds),
+      (saved.setId
+        ? (memberships[saved.setId] ?? [])
+        : Object.values(memberships).flat()
+      ).flatMap((entry) => entry.senseIds),
     );
-    const sourceItems = saved.mode === "review" ? allStudyItems : allQuestionItems;
-    const itemsById = new Map(sourceItems.map((item) => [item.id, item]));
-    const items = saved.itemIds.map((id) => itemsById.get(id));
-    const invalidItems = items.some((item) => !item || !allowed.has(saved.mode === "review" ? (item as StudyWord).id : (item as QuestionItem).senseId));
-    if ((saved.setId && !setIds.has(saved.setId)) || invalidItems) {
+    const entries = entriesFromIds(
+      saved.entryIds,
+      saved.tasks,
+      allStudyItems,
+      allQuestionItems,
+    );
+    const outOfScope = entries?.some(
+      (entry) =>
+        !allowed.has(
+          entry.kind === "card" ? entry.word.id : entry.item.senseId,
+        ),
+    );
+    if (!entries || outOfScope || (saved.setId && !setIds.has(saved.setId))) {
       localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
       return;
     }
     sessionRestored.current = true;
-    onRestore(saved, items as Array<QuestionItem | StudyWord>);
-  }, [allQuestionItems, allStudyItems, enabled, initialMode, initialSet, memberships, onRestore, restoreAttempted, sessionRestored, setIds]);
+    onRestore(saved, entries);
+  }, [
+    allQuestionItems,
+    allStudyItems,
+    enabled,
+    initialSet,
+    memberships,
+    onRestore,
+    restoreAttempted,
+    sessionRestored,
+    setIds,
+  ]);
 }
 
 interface PreferenceValues {
   amount: number;
   difficulty: WorkspaceQuestionDifficulty;
   leechOnly: boolean;
-  questionType: WorkspaceQuestionType;
   setId: string;
-  typingMode: boolean;
+  tasks: PracticeTask[];
 }
 
 type ValueSetter<T> = Dispatch<SetStateAction<T>>;
@@ -92,9 +115,8 @@ export function usePracticePreferences({
   setAmount,
   setDifficulty,
   setLeechOnly,
-  setQuestionType,
   setSetId,
-  setTypingMode,
+  setTasks,
 }: {
   initialSet: string;
   learningLoaded: boolean;
@@ -103,69 +125,82 @@ export function usePracticePreferences({
   setAmount: ValueSetter<number>;
   setDifficulty: ValueSetter<WorkspaceQuestionDifficulty>;
   setLeechOnly: ValueSetter<boolean>;
-  setQuestionType: ValueSetter<WorkspaceQuestionType>;
   setSetId: ValueSetter<string>;
-  setTypingMode: ValueSetter<boolean>;
+  setTasks: ValueSetter<PracticeTask[]>;
 }) {
-  const { amount, difficulty, leechOnly, questionType, setId, typingMode } = values;
+  const { amount, difficulty, leechOnly, setId, tasks } = values;
   useEffect(() => {
     if (!learningLoaded || started) return;
     try {
-      const saved = JSON.parse(localStorage.getItem(PRACTICE_PREFERENCES_STORAGE_KEY) ?? "{}") as Partial<PreferenceValues>;
+      const saved = JSON.parse(
+        localStorage.getItem(PRACTICE_PREFERENCES_STORAGE_KEY) ?? "{}",
+      ) as Partial<PreferenceValues>;
       if (!initialSet && saved.setId) setSetId(saved.setId);
       if (saved.amount) setAmount(saved.amount);
-      if (saved.questionType) setQuestionType(saved.questionType);
       if (saved.difficulty) setDifficulty(saved.difficulty);
       if (typeof saved.leechOnly === "boolean") setLeechOnly(saved.leechOnly);
-      if (typeof saved.typingMode === "boolean") setTypingMode(saved.typingMode);
+      const savedTasks = Array.isArray(saved.tasks)
+        ? orderPracticeTasks(saved.tasks.filter(isPracticeTask))
+        : [];
+      if (savedTasks.length) setTasks(savedTasks);
     } catch {
       // Corrupted preferences should never block practice.
     }
-  }, [initialSet, learningLoaded, setAmount, setDifficulty, setLeechOnly, setQuestionType, setSetId, setTypingMode, started]);
+  }, [
+    initialSet,
+    learningLoaded,
+    setAmount,
+    setDifficulty,
+    setLeechOnly,
+    setSetId,
+    setTasks,
+    started,
+  ]);
 
   useEffect(() => {
     if (started) return;
-    localStorage.setItem(PRACTICE_PREFERENCES_STORAGE_KEY, JSON.stringify({ setId, amount, questionType, difficulty, leechOnly, typingMode }));
-  }, [amount, difficulty, leechOnly, questionType, setId, started, typingMode]);
+    localStorage.setItem(
+      PRACTICE_PREFERENCES_STORAGE_KEY,
+      JSON.stringify({ amount, difficulty, leechOnly, setId, tasks }),
+    );
+  }, [amount, difficulty, leechOnly, setId, started, tasks]);
 }
 
 export function usePersistPracticeSession({
-  activeItems,
   amount,
   answerChoices,
   complete,
   correct,
   difficulty,
+  entries,
   failedSenseIds,
   index,
   marked,
-  mode,
-  questionType,
   retrying,
   revealed,
   selected,
   setId,
   skipped,
   started,
+  tasks,
   wrong,
 }: {
-  activeItems: Array<{ id: string }>;
   amount: number;
   answerChoices: Array<number | null>;
   complete: boolean;
   correct: number;
   difficulty: WorkspaceQuestionDifficulty;
+  entries: readonly PracticeEntry[];
   failedSenseIds: SenseId[];
   index: number;
   marked: number[];
-  mode: WorkspacePracticeMode;
-  questionType: WorkspaceQuestionType;
   retrying: boolean;
   revealed: boolean;
   selected: number | null;
   setId: string;
   skipped: number[];
   started: boolean;
+  tasks: PracticeTask[];
   wrong: number[];
 }) {
   useEffect(() => {
@@ -174,11 +209,11 @@ export function usePersistPracticeSession({
       localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
       return;
     }
-    const itemIds = activeItems.map((item) => item.id);
-    if (!itemIds.length) return;
-    localStorage.setItem(PRACTICE_SESSION_STORAGE_KEY, JSON.stringify({
-      schemaVersion: 2,
-      mode,
+    const entryIds = entries.map((entry) => entry.id);
+    if (!entryIds.length) return;
+    const snapshot: PracticeSessionSnapshot = {
+      schemaVersion: 3,
+      tasks,
       setId,
       amount,
       index,
@@ -188,12 +223,35 @@ export function usePersistPracticeSession({
       marked,
       selected,
       revealed,
-      questionType,
       difficulty,
-      itemIds,
+      entryIds,
       failedSenseIds,
       retrying,
-      answerChoices: mode === "questions" ? activeItems.map((_, position) => answerChoices[position] ?? null) : [],
-    }));
-  }, [activeItems, amount, answerChoices, complete, correct, difficulty, failedSenseIds, index, marked, mode, questionType, retrying, revealed, selected, setId, skipped, started, wrong]);
+      answerChoices: entries.map(
+        (_, position) => answerChoices[position] ?? null,
+      ),
+    };
+    localStorage.setItem(
+      PRACTICE_SESSION_STORAGE_KEY,
+      JSON.stringify(snapshot),
+    );
+  }, [
+    amount,
+    answerChoices,
+    complete,
+    correct,
+    difficulty,
+    entries,
+    failedSenseIds,
+    index,
+    marked,
+    retrying,
+    revealed,
+    selected,
+    setId,
+    skipped,
+    started,
+    tasks,
+    wrong,
+  ]);
 }

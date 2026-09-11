@@ -1,11 +1,16 @@
 "use client";
 
-import type { ReviewRating, WorkspacePracticeMode } from "@/types";
+import type { ReviewRating } from "@/types";
 import { useEffect } from "react";
 
+/**
+ * Which shortcuts are live follows the entry under the cursor, not the session:
+ * a card answers to Enter/A/G and a question to the option keys, and a mixed
+ * queue swaps between them as it advances.
+ */
 export function usePracticeKeyboard({
   enabled,
-  mode,
+  kind,
   revealed,
   selected,
   busy,
@@ -16,7 +21,7 @@ export function usePracticeKeyboard({
   optionCount = 4,
 }: {
   enabled: boolean;
-  mode: WorkspacePracticeMode;
+  kind: "card" | "question";
   revealed: boolean;
   selected: number | null;
   busy: boolean;
@@ -31,10 +36,17 @@ export function usePracticeKeyboard({
     if (!enabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
       const target = event.target;
-      if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return;
-      const nativeEnterControl = event.key === "Enter" && (target instanceof HTMLButtonElement || target instanceof HTMLAnchorElement);
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement
+      )
+        return;
+      const nativeEnterControl =
+        event.key === "Enter" &&
+        (target instanceof HTMLButtonElement ||
+          target instanceof HTMLAnchorElement);
       if (nativeEnterControl) return;
-      if (mode === "review") {
+      if (kind === "card") {
         if (!revealed && event.key === "Enter") {
           event.preventDefault();
           onReveal();
@@ -48,9 +60,14 @@ export function usePracticeKeyboard({
         return;
       }
       const key = event.key.toLocaleLowerCase();
-      const digits = Array.from({ length: Math.min(optionCount, 9) }, (_, index) => String(index + 1));
-      const letters = Array.from({ length: optionCount }, (_, index) => String.fromCharCode(97 + index));
-      const choice = digits.indexOf(key) >= 0 ? digits.indexOf(key) : letters.indexOf(key);
+      const digits = Array.from({ length: Math.min(optionCount, 9) }, (_, index) =>
+        String(index + 1),
+      );
+      const letters = Array.from({ length: optionCount }, (_, index) =>
+        String.fromCharCode(97 + index),
+      );
+      const choice =
+        digits.indexOf(key) >= 0 ? digits.indexOf(key) : letters.indexOf(key);
       if (selected === null && choice >= 0) {
         event.preventDefault();
         onAnswer(choice);
@@ -61,5 +78,16 @@ export function usePracticeKeyboard({
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [busy, enabled, mode, onAnswer, onNext, onRate, onReveal, optionCount, revealed, selected]);
+  }, [
+    busy,
+    enabled,
+    kind,
+    onAnswer,
+    onNext,
+    onRate,
+    onReveal,
+    optionCount,
+    revealed,
+    selected,
+  ]);
 }

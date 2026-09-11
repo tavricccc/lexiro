@@ -12,7 +12,7 @@ describe("practice keyboard shortcuts", () => {
     const onNext = vi.fn();
     renderHook(() => usePracticeKeyboard({
       enabled: true,
-      mode: "questions",
+      kind: "question",
       revealed: true,
       selected: 1,
       busy: false,
@@ -32,7 +32,7 @@ describe("practice keyboard shortcuts", () => {
     const onNext = vi.fn();
     renderHook(() => usePracticeKeyboard({
       enabled: true,
-      mode: "questions",
+      kind: "question",
       revealed: true,
       selected: 1,
       busy: false,

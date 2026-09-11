@@ -116,13 +116,13 @@ export function FocusCanvas() {
           ) : reviewCount ? (
             <>
               <Action
-                href="/practice?mode=review&start=1"
+                href="/practice?track=fsrs"
                 icon={Icons.review}
                 label={t("home.startReview")}
               />
               {questionCount ? (
                 <Action
-                  href="/practice?mode=questions&start=1"
+                  href="/practice?track=questions"
                   icon={Icons.practice}
                   label={t("home.startQuestions")}
                   variant="secondary"
@@ -139,7 +139,7 @@ export function FocusCanvas() {
           ) : questionCount ? (
             <>
               <Action
-                href="/practice?mode=questions&start=1"
+                href="/practice?track=questions"
                 icon={Icons.practice}
                 label={t("home.startQuestions")}
               />
