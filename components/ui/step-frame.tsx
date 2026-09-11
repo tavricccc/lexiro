@@ -62,7 +62,7 @@ export function StepFrame({
 
       {children}
 
-      {footer && <div className="mt-7 border-t pt-6">{footer}</div>}
+      {footer && <div className="mt-7 rule-t pt-6">{footer}</div>}
     </div>
   );
 }

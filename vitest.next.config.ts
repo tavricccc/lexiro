@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 export default defineConfig({
   resolve: {
     alias: [
+      { find: "@/generated", replacement: fileURLToPath(new URL("./src/generated", import.meta.url)) },
       { find: "@/constants", replacement: fileURLToPath(new URL("./src/constants", import.meta.url)) },
       { find: "@/lib/persist", replacement: fileURLToPath(new URL("./src/lib/persist.ts", import.meta.url)) },
       { find: "@/types", replacement: fileURLToPath(new URL("./src/types", import.meta.url)) },

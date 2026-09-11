@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Dev server binds to 0.0.0.0, so allow requests from LAN/VPN addresses.
   allowedDevOrigins: ["192.168.1.*", "100.*.*.*", "*.local"],
+  experimental: {
+    optimizePackageImports: ["lucide-react", "motion", "radix-ui"],
+  },
 };
 
 export default withSerwist(nextConfig);

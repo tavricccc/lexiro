@@ -42,14 +42,14 @@ export function ChoiceList({
   value?: string;
 }) {
   return (
-    <div className="divide-y border-y">
+    <div className="rule-card rule-list">
       {options.map((option) => {
         const active = option.value === value;
         return (
           <button
             aria-current={active ? "true" : undefined}
             className={cn(
-              "group flex w-full items-start gap-4 py-5 text-left transition-colors duration-[var(--motion-quick)] ease-[var(--ease-smooth-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45",
+              "t-row group flex w-full items-start gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45",
               active && "bg-brand-50",
             )}
             disabled={option.disabled}
@@ -65,7 +65,7 @@ export function ChoiceList({
             )}
             <span className="min-w-0 flex-1">
               <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="font-lexical text-lg font-medium leading-snug group-hover:text-primary">
+                <span className="type-subsection group-hover:text-primary">
                   {option.label}
                 </span>
                 {option.meta && (
@@ -81,13 +81,13 @@ export function ChoiceList({
                   </span>
                 )}
               </span>
-              <span className="mt-1 block max-w-[58ch] text-sm leading-6 text-muted-foreground">
+              <span className="mt-1 block max-w-[58ch] type-lead">
                 {option.description}
               </span>
             </span>
             <Icons.next
               aria-hidden
-              className="mt-1.5 size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-quick)] group-hover:translate-x-0.5"
+              className="mt-1.5 size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-control)] group-hover:translate-x-0.5"
             />
           </button>
         );

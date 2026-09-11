@@ -5,13 +5,22 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { FolderToolbar } from "@/components/library/folder-toolbar";
+import { StaggerItem, StaggerList } from "@/components/motion/stagger";
+import {
+  ContentTransition,
+  StateTransition,
+} from "@/components/motion/state-transition";
 import { FolderRow, SetRow } from "@/components/library/library-rows";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
-import { EmptyState, ErrorState, LoadingState } from "@/components/ui/page-state";
+import {
+  EmptyState,
+  ErrorState,
+  LoadingState,
+} from "@/components/ui/page-state";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
@@ -56,7 +65,11 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
       folder.id === currentFolderId && folder.id !== UNCATEGORIZED_FOLDER_ID,
   );
   useEffect(() => {
-    if (status === "ready" && currentFolderId !== ALL_FOLDER_ID && !currentFolder)
+    if (
+      status === "ready" &&
+      currentFolderId !== ALL_FOLDER_ID &&
+      !currentFolder
+    )
       setCurrentFolderId(ALL_FOLDER_ID);
   }, [currentFolder, currentFolderId, status]);
 
@@ -177,7 +190,19 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
     ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
     : "/sets/new";
   const searching = Boolean(query.trim());
-  const listEmpty = sets.length === 0 && (searching || childFolders.length === 0);
+  const listEmpty =
+    sets.length === 0 && (searching || childFolders.length === 0);
+  // The identity the listing frame crossfades on. The listing itself is one
+  // identity however its rows change: rows are handed over by the list, not by
+  // the frame around it.
+  const listingState =
+    status === "ready"
+      ? listEmpty
+        ? searching
+          ? "no-results"
+          : "empty"
+        : "listing"
+      : status;
   const deleteTarget = state.folders.find(
     (entry) => entry.id === deleteFolderId,
   );
@@ -244,64 +269,77 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
         />
       </label>
 
-      <div className="mt-5">
-        {status === "loading" && <LoadingState />}
-        {status === "error" && <ErrorState error={t("library.migrationError", { message: error ?? "" })} />}
-        {status === "ready" && !listEmpty && (
-          <div className="divide-y border-y">
-            {!searching &&
-              childFolders.map((folder) => (
-                <FolderRow
-                  itemCount={countDirectItems(
-                    state.folders,
-                    state.sets,
-                    folder.id,
-                  )}
-                  key={folder.id}
-                  name={folder.name}
-                  onOpen={() => openFolder(folder.id)}
-                />
+      {/* Loading, empty, filtered-empty and the listing itself all occupy the
+          same frame, so one hands over to the next in place instead of the
+          page jumping to whichever arrived. */}
+      <StateTransition className="mt-5" identity={listingState}>
+        <ContentTransition identity={listingState}>
+          {status === "loading" && <LoadingState />}
+          {status === "error" && (
+            <ErrorState
+              error={t("library.migrationError", { message: error ?? "" })}
+            />
+          )}
+          {status === "ready" && !listEmpty && (
+            <StaggerList className="rule-card rule-list" data-resize-motion="">
+              {!searching &&
+                childFolders.map((folder) => (
+                  <StaggerItem key={folder.id}>
+                    <FolderRow
+                      itemCount={countDirectItems(
+                        state.folders,
+                        state.sets,
+                        folder.id,
+                      )}
+                      name={folder.name}
+                      onOpen={() => openFolder(folder.id)}
+                    />
+                  </StaggerItem>
+                ))}
+              {sets.map((entry) => (
+                <StaggerItem key={entry.id}>
+                  <SetRow
+                    id={entry.id}
+                    name={entry.setName}
+                    {...(setMetrics.get(entry.id) ?? NO_METRICS)}
+                  />
+                </StaggerItem>
               ))}
-            {sets.map((entry) => (
-              <SetRow
-                key={entry.id}
-                id={entry.id}
-                name={entry.setName}
-                {...(setMetrics.get(entry.id) ?? NO_METRICS)}
-              />
-            ))}
-          </div>
-        )}
-        {status === "ready" && listEmpty && searching && (
-          <EmptyState
-            description={t("library.searchHint")}
-            title={t("library.noResults")}
-            variant="filtered"
-          />
-        )}
-        {status === "ready" && listEmpty && !searching && (
-          <EmptyState
-            action={
-              <Button asChild>
-                <Link href={createHref}>
-                  <Icons.create />
-                  {t("library.newSet")}
-                </Link>
-              </Button>
-            }
-            description={t(
-              currentFolder
-                ? "library.emptyFolderDescription"
-                : "library.emptyDescription",
-            )}
-            headword="lexicon"
-            pos="n."
-            title={t(
-              currentFolder ? "library.emptyFolderTitle" : "library.emptyTitle",
-            )}
-          />
-        )}
-      </div>
+            </StaggerList>
+          )}
+          {status === "ready" && listEmpty && searching && (
+            <EmptyState
+              description={t("library.searchHint")}
+              title={t("library.noResults")}
+              variant="filtered"
+            />
+          )}
+          {status === "ready" && listEmpty && !searching && (
+            <EmptyState
+              action={
+                <Button asChild>
+                  <Link href={createHref}>
+                    <Icons.create />
+                    {t("library.newSet")}
+                  </Link>
+                </Button>
+              }
+              description={t(
+                currentFolder
+                  ? "library.emptyFolderDescription"
+                  : "library.emptyDescription",
+              )}
+              headword="lexicon"
+              pos="n."
+              title={t(
+                currentFolder
+                  ? "library.emptyFolderTitle"
+                  : "library.emptyTitle",
+              )}
+            />
+          )}
+        </ContentTransition>
+      </StateTransition>
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}

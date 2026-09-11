@@ -33,7 +33,7 @@ export function SetWordFields({
     <section className="grid gap-x-4 py-6 sm:grid-cols-[1.75rem_minmax(0,1fr)]">
       <span
         aria-hidden
-        className="hidden pt-8 font-lexical text-sm tabular-nums text-brand-500 sm:block"
+        className="hidden pt-8 text-sm tabular-nums text-brand-500 sm:block"
       >
         {index + 1}
       </span>

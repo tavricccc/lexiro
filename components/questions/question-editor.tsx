@@ -132,7 +132,7 @@ export function QuestionEditor({ questionId }: { questionId?: string }) {
         title={questionId ? t("questions.edit") : t("questions.new")}
       />
 
-      <div className="grid gap-4 border-y py-6 sm:grid-cols-2">
+      <div className="rule-card grid gap-4 py-6 sm:grid-cols-2">
         <SelectField
           label={t("questions.type")}
           onValueChange={(value) =>

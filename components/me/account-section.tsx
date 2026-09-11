@@ -79,9 +79,7 @@ export function AccountSection() {
             </AvatarFallback>
           </Avatar>
           <div className="min-w-0">
-            <h1 className="truncate text-xl font-semibold sm:text-2xl">
-              {displayName}
-            </h1>
+            <h2 className="type-section truncate">{displayName}</h2>
             <p className="mt-1 truncate text-sm text-muted-foreground">
               {email}
             </p>
@@ -118,7 +116,7 @@ export function AccountSection() {
           )}
         </div>
         {!cloud.configured && (
-          <p className="text-sm leading-6 text-muted-foreground">
+          <p className="type-lead">
             {t("settings.notConfigured")}
           </p>
         )}

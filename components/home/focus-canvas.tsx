@@ -62,7 +62,7 @@ export function FocusCanvas() {
       />
 
       <div className="relative z-10 max-w-2xl">
-        <h1 className="max-w-xl text-balance font-lexical text-[clamp(1.75rem,2.6vw,2.375rem)] font-medium leading-[1.15] tracking-[-0.01em]">
+        <h1 className="type-page max-w-xl">
           {t(hasContent ? "home.greeting" : "home.guideTitle")}
         </h1>
 
@@ -79,13 +79,13 @@ export function FocusCanvas() {
               <li className="flex gap-3.5" key={label}>
                 <span
                   aria-hidden
-                  className="mt-0.5 font-lexical text-sm tabular-nums text-brand-600"
+                  className="mt-0.5 text-sm tabular-nums text-brand-600"
                 >
                   {index + 1}
                 </span>
                 <span className="min-w-0">
                   <span className="block font-medium">{t(label)}</span>
-                  <span className="mt-0.5 block max-w-[44ch] text-sm leading-6 text-muted-foreground">
+                  <span className="mt-0.5 block max-w-[44ch] type-lead">
                     {t(hint)}
                   </span>
                 </span>
@@ -95,7 +95,7 @@ export function FocusCanvas() {
         )}
 
         {hasContent && (
-          <p className="mt-6 max-w-[46ch] text-sm leading-6 text-muted-foreground">
+          <p className="mt-6 max-w-[46ch] type-lead">
             {t(
               reviewCount
                 ? "home.recommendation"
@@ -196,7 +196,7 @@ function Figure({ label, value }: { label: string; value: number }) {
   return (
     <div>
       <dt className="text-sm text-muted-foreground">{label}</dt>
-      <dd className="mt-1 font-lexical text-[2.5rem] font-medium leading-none tabular-nums">
+      <dd className="mt-1 text-[2.5rem] font-medium leading-none tabular-nums">
         {value}
       </dd>
     </div>

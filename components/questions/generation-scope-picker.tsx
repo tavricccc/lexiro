@@ -61,13 +61,13 @@ export function GenerationScopePicker({
         </span>
         <Icons.open
           aria-hidden
-          className={`size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-quick)] ${open ? "rotate-90" : ""}`}
+          className={`size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-control)] ${open ? "rotate-90" : ""}`}
         />
       </button>
 
       {open && (
-        <div className="t-panel-reveal border-t">
-          <div className="flex flex-wrap items-center gap-2 border-b px-4 py-3 sm:px-5">
+        <div className="t-panel-reveal rule-t">
+          <div className="flex flex-wrap items-center gap-2 rule-b px-4 py-3 sm:px-5">
             <Button
               type="button"
               size="sm"
@@ -96,7 +96,7 @@ export function GenerationScopePicker({
               {t("questions.clear")}
             </Button>
           </div>
-          <ul className="max-h-[26rem] divide-y overflow-y-auto">
+          <ul className="max-h-[26rem] rule-list overflow-y-auto">
             {senses.map((sense) => (
               <li key={sense.key}>
                 <label className="flex cursor-pointer items-start gap-3 px-4 py-3 hover:bg-[var(--surface-hover)] sm:px-5">
@@ -109,7 +109,7 @@ export function GenerationScopePicker({
                   />
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline gap-2">
-                      <span className="font-lexical text-base font-medium">
+                      <span className="text-base font-medium">
                         {sense.word}
                       </span>
                       <span className="entry-pos text-sm">{sense.pos}</span>

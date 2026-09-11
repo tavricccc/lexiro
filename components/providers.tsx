@@ -6,6 +6,9 @@ import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { AppPreload } from "@/components/app-preload";
+import { NavigationFeedback } from "@/components/motion/navigation-feedback";
+import { ResizeMotion } from "@/components/motion/resize-motion";
+import { timing } from "@/lib/motion-timing";
 import { useState, type ReactNode } from "react";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -20,11 +23,13 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <MotionConfig reducedMotion="user" transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}>
+      <MotionConfig reducedMotion="user" transition={timing("control")}>
         <TooltipProvider>
           <QueryClientProvider client={queryClient}>
             <AppPreload />
             {children}
+            <NavigationFeedback />
+            <ResizeMotion />
             <Toaster position="bottom-center" />
           </QueryClientProvider>
         </TooltipProvider>

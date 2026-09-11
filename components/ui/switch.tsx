@@ -21,7 +21,7 @@ function Switch({
       data-size={size}
       data-touched={touched}
       className={cn(
-        "t-toggle peer group/switch inline-flex shrink-0 items-center rounded-full border border-transparent shadow-[var(--shadow-control)] outline-none transition-[background-color,border-color,box-shadow] duration-150 [--toggle-travel:14px] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-5 data-[size=default]:w-8 data-[size=sm]:h-4 data-[size=sm]:w-6 data-[size=sm]:[--toggle-travel:10px] data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
+        "t-toggle peer group/switch inline-flex shrink-0 items-center rounded-full border border-transparent shadow-[var(--shadow-control)] outline-none transition-[background-color,border-color,box-shadow] duration-[var(--motion-control)] ease-[var(--ease-move)] [--toggle-travel:14px] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-5 data-[size=default]:w-8 data-[size=sm]:h-4 data-[size=sm]:w-6 data-[size=sm]:[--toggle-travel:10px] data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
         className,
       )}
       onPointerDown={(event) => {

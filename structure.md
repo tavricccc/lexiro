@@ -5,6 +5,10 @@ Lexiro is a Next.js App Router vocabulary-learning PWA. The UI is React; the exi
 ```text
 app/             routes, layouts, manifest, service worker
 components/      feature components and shared React UI
+components/motion/ the route surface and the shared motion behaviours
+config/          generator input: the motion ladder
+scripts/         code generators (`npm run generate:motion`)
+src/generated/   generated output; never edited by hand
 lib/             frontend helpers and Traditional Chinese copy
 stores/          Zustand application stores
 src/constants/   shared domain constants
@@ -22,7 +26,9 @@ concept map. Feature components compose these rather than hand-rolling labels,
 native `<select>` elements or their own empty states, and they take icons from
 `Icons` rather than importing from `lucide-react`. Design tokens and the brand
 ramp live in `app/globals.css`; the rules that go with them are in
-`docs/design-system.md`.
+`docs/design-system.md`. Every duration and easing in the product comes from one
+ladder in `config/motion.config.json`, generated into `src/generated/` for both
+CSS and JavaScript, so nothing states a literal duration of its own.
 
 The workspace shell is shared by desktop and mobile. Desktop uses a compact sidebar; mobile uses the same routes through a bottom navigation bar. Library folders use a drill-down model, similar to Windows File Explorer, instead of an always-expanded tree.
 

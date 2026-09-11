@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
+import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
@@ -32,7 +33,9 @@ export function QuestionsPage() {
     () =>
       state.questions.filter((question) => {
         const type =
-          question.kind === "reading" ? question.format : question.questionStyle;
+          question.kind === "reading"
+            ? question.format
+            : question.questionStyle;
         if (kind !== "all" && type !== kind) return false;
         if (difficulty !== "all" && question.difficulty !== Number(difficulty))
           return false;
@@ -47,7 +50,8 @@ export function QuestionsPage() {
     [difficulty, kind, query, state.questions],
   );
 
-  const filtering = Boolean(query.trim()) || kind !== "all" || difficulty !== "all";
+  const filtering =
+    Boolean(query.trim()) || kind !== "all" || difficulty !== "all";
 
   return (
     <div>
@@ -82,38 +86,39 @@ export function QuestionsPage() {
       />
 
       {state.questions.length > 0 && (
-      <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
-        <label className="relative block">
-          <Icons.search
-            aria-hidden
-            className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+        <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
+          <label className="relative block">
+            <Icons.search
+              aria-hidden
+              className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+            />
+            <Input
+              className="pl-10"
+              placeholder={t("questions.search")}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </label>
+          <SelectField
+            ariaLabel={t("questions.type")}
+            onValueChange={setKind}
+            options={questionFormatOptions(t("questions.allTypes"))}
+            value={kind}
           />
-          <Input
-            className="pl-10"
-            placeholder={t("questions.search")}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
+          <SelectField
+            ariaLabel={t("practice.difficulty")}
+            onValueChange={setDifficulty}
+            options={difficultyOptions(t("practice.allDifficulties"))}
+            value={difficulty}
           />
-        </label>
-        <SelectField
-          ariaLabel={t("questions.type")}
-          onValueChange={setKind}
-          options={questionFormatOptions(t("questions.allTypes"))}
-          value={kind}
-        />
-        <SelectField
-          ariaLabel={t("practice.difficulty")}
-          onValueChange={setDifficulty}
-          options={difficultyOptions(t("practice.allDifficulties"))}
-          value={difficulty}
-        />
-      </div>
+        </div>
       )}
 
       <div className="mt-6">
         {status === "loading" && <LoadingState />}
-        {status === "ready" && questions.length === 0 && (
-          filtering ? (
+        {status === "ready" &&
+          questions.length === 0 &&
+          (filtering ? (
             <EmptyState
               variant="filtered"
               title={t("questions.noResults")}
@@ -134,10 +139,13 @@ export function QuestionsPage() {
                 </Button>
               }
             />
-          )
-        )}
+          ))}
         {questions.length > 0 && (
-          <ul className="divide-y border-y">
+          <StaggerList
+            as="ul"
+            className="rule-card rule-list"
+            data-resize-motion=""
+          >
             {questions.map((question) => {
               const type = questionFormatLabel(
                 question.kind === "reading"
@@ -145,10 +153,16 @@ export function QuestionsPage() {
                   : question.questionStyle,
               );
               return (
-                <li className="flex items-start gap-4 py-5" key={question.id}>
+                <StaggerItem
+                  as="li"
+                  className="flex items-start gap-4 py-5"
+                  key={question.id}
+                >
                   <div className="min-w-0 flex-1">
                     <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                      <span className="font-medium text-foreground">{type}</span>
+                      <span className="font-medium text-foreground">
+                        {type}
+                      </span>
                       <span>
                         {t("questions.difficulty", {
                           level: question.difficulty,
@@ -177,10 +191,10 @@ export function QuestionsPage() {
                   >
                     <Icons.delete />
                   </Button>
-                </li>
+                </StaggerItem>
               );
             })}
-          </ul>
+          </StaggerList>
         )}
       </div>
 

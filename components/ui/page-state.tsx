@@ -12,7 +12,7 @@ import { t } from "@/lib/i18n";
 export function LoadingState({ rows = 4 }: { rows?: number }) {
   return (
     <div
-      className="divide-y border-y"
+      className="rule-card rule-list"
       aria-busy="true"
       aria-label={t("common.loading")}
     >
@@ -54,17 +54,15 @@ export function EmptyState({
 }) {
   if (variant === "filtered") {
     return (
-      <div className="border-y px-4 py-12 text-center">
+      <div className="rule-card py-12 text-center">
         <p className="font-medium">{title}</p>
-        <p className="mx-auto mt-1.5 max-w-[42ch] text-sm leading-6 text-muted-foreground">
-          {description}
-        </p>
+        <p className="mx-auto mt-1.5 max-w-[42ch] type-lead">{description}</p>
       </div>
     );
   }
 
   return (
-    <div className="border-y px-4 py-14 text-center sm:py-16">
+    <div className="rule-card py-14 text-center sm:py-16">
       {headword && (
         <div
           aria-hidden
@@ -77,11 +75,9 @@ export function EmptyState({
           <p className="mt-1.5 text-sm text-muted-foreground">{description}</p>
         </div>
       )}
-      <h2 className="font-lexical text-xl font-medium">{title}</h2>
+      <h2 className="type-section">{title}</h2>
       {!headword && (
-        <p className="mx-auto mt-2 max-w-[46ch] text-sm leading-6 text-muted-foreground">
-          {description}
-        </p>
+        <p className="mx-auto mt-2 max-w-[46ch] type-lead">{description}</p>
       )}
       {(action || secondaryAction) && (
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
@@ -101,16 +97,12 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="t-shake border-y px-4 py-12 text-center" data-error="true">
+    <div className="t-shake rule-card py-12 text-center" data-error="true">
       <div className="mx-auto grid size-10 place-items-center rounded-full bg-destructive/10 text-destructive">
         <Icons.error className="size-5" />
       </div>
-      <h2 className="mt-4 font-lexical text-xl font-medium">
-        {t("common.loadFailed")}
-      </h2>
-      <p className="mx-auto mt-2 max-w-[52ch] text-sm leading-6 text-muted-foreground">
-        {error}
-      </p>
+      <h2 className="mt-4 type-section">{t("common.loadFailed")}</h2>
+      <p className="mx-auto mt-2 max-w-[52ch] type-lead">{error}</p>
       {onRetry && (
         <Button variant="outline" className="mt-6" onClick={onRetry}>
           <Icons.retry />

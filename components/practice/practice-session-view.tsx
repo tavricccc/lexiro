@@ -173,16 +173,16 @@ function ReviewCard({ item, revealed, busy, typing, onReveal, onRate }: { item: 
       <section className="rounded-2xl bg-muted/70 px-5 py-9 text-center sm:px-8 sm:py-11">
         {showWord && (
           <>
-            <button type="button" aria-label={t("practice.speak")} onClick={speak} className="mx-auto mb-5 grid size-11 place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-control)] transition-transform duration-150 active:scale-[.94] focus-visible:ring-2 focus-visible:ring-ring/40">
+            <button type="button" aria-label={t("practice.speak")} onClick={speak} className="mx-auto mb-5 grid size-11 place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-control)] focus-visible:ring-2 focus-visible:ring-ring/40">
               <Icons.speak />
             </button>
-            <h1 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.word}</h1>
+            <h1 className="type-page">{item.word}</h1>
             <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
           </>
         )}
         {typing && !revealed ? (
           <>
-            <h1 className="text-xl font-semibold leading-7 sm:text-2xl">{item.meaning}</h1>
+            <h1 className="type-page">{item.meaning}</h1>
             <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
             <form
               className="mx-auto mt-8 flex max-w-sm gap-2"
@@ -219,12 +219,12 @@ function ReviewCard({ item, revealed, busy, typing, onReveal, onRate }: { item: 
             <div className={`mx-auto h-px max-w-sm bg-primary/10 ${typing ? "my-5" : "my-7"}`} />
             {!showWord && (
               <>
-                <h1 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.word}</h1>
+                <h1 className="type-page">{item.word}</h1>
                 <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
               </>
             )}
             <p className="text-lg font-semibold tracking-[-0.01em]">{item.meaning}</p>
-            {item.example && <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground">{item.example}</p>}
+            {item.example && <p className="mx-auto mt-4 max-w-xl type-lead">{item.example}</p>}
             <div className="mx-auto mt-8 grid max-w-sm grid-cols-2 gap-2">
               <Button size="lg" variant="secondary" disabled={busy} onClick={() => onRate("again")}>{t("practice.again")}</Button>
               <Button size="lg" disabled={busy} onClick={() => onRate("good")}>{busy ? t("practice.recording") : t("practice.good")}</Button>
@@ -244,7 +244,7 @@ function QuestionCard({ item, selected, busy, last, onAnswer, onNext }: { item: 
   return (
     <section className="mt-5 rounded-2xl bg-muted/70 p-5 sm:p-7">
       {item.question.kind === "reading" && (
-        <div className="mb-6 border-b pb-6">
+        <div className="mb-6 rule-b pb-6">
           <p className="mb-3 text-xs font-medium text-brand-600">
             {questionFormatLabel(item.type)}
           </p>
@@ -285,9 +285,9 @@ function QuestionCard({ item, selected, busy, last, onAnswer, onNext }: { item: 
               type="button"
               disabled={answered || busy}
               onClick={() => onAnswer(optionIndex)}
-              className={`flex min-h-14 w-full items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-[background-color,border-color,transform] duration-150 active:scale-[.99] disabled:cursor-default disabled:opacity-100 ${stateClass}`}
+              className={`flex min-h-14 w-full items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-[background-color,border-color] duration-[var(--motion-control)] ease-[var(--ease-move)] disabled:cursor-default disabled:opacity-100 ${stateClass}`}
             >
-              <span className={`grid size-7 shrink-0 place-items-center rounded-lg text-xs font-semibold transition-colors duration-150 ${badgeClass}`}>{String.fromCharCode(65 + optionIndex)}</span>
+              <span className={`grid size-7 shrink-0 place-items-center rounded-lg text-xs font-semibold transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] ${badgeClass}`}>{String.fromCharCode(65 + optionIndex)}</span>
               <span className="min-w-0 flex-1 leading-6">{option}</span>
               {answered && isCorrect && <Icons.success className="size-4 shrink-0 text-success" />}
               {answered && isSelected && !isCorrect && <Icons.incorrect className="size-4 shrink-0 text-destructive" />}
@@ -296,13 +296,13 @@ function QuestionCard({ item, selected, busy, last, onAnswer, onNext }: { item: 
         })}
       </div>
       {answered && (
-        <motion.div className="mt-6 border-t pt-5" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={practiceTransition} aria-live="polite">
+        <motion.div className="mt-6 rule-t pt-5" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={practiceTransition} aria-live="polite">
           <p className={`flex items-center gap-2 text-sm font-semibold ${selected === item.answerIndex ? "text-success" : "text-destructive"}`}>
             {selected === item.answerIndex ? <Icons.success className="size-4" /> : <Icons.incorrect className="size-4" />}
             {selected === item.answerIndex ? t("practice.correct") : t("practice.incorrect")}
           </p>
           {selected !== item.answerIndex && <p className="mt-2 text-sm text-foreground">{t("practice.answer", { answer: item.options[item.answerIndex] ?? "" })}</p>}
-          {item.meaning && <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.meaning}</p>}
+          {item.meaning && <p className="mt-2 type-lead">{item.meaning}</p>}
           <div className="mt-5 flex justify-end">
             <Button className="w-full sm:w-auto" size="lg" disabled={busy} onClick={onNext}>
               {busy ? t("practice.recording") : t(last ? "practice.viewResult" : "practice.next")}

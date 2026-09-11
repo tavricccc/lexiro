@@ -50,10 +50,10 @@ export function LearningRows() {
     <div className="section-gap grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
       {session && (
         <section>
-          <h2 className="font-lexical text-xl font-medium">
+          <h2 className="type-section">
             {t("home.resumeTitle")}
           </h2>
-          <div className="mt-3 flex items-center gap-4 border-y py-4">
+          <div className="rule-card mt-3 flex items-center gap-4 py-4">
             <div className="min-w-0 flex-1">
               <p className="truncate font-medium">
                 {state.sets.find((entry) => entry.id === session.setId)
@@ -89,7 +89,7 @@ export function LearningRows() {
       {showRecent && (
         <section>
           <div className="flex items-center justify-between gap-4">
-            <h2 className="font-lexical text-xl font-medium">
+            <h2 className="type-section">
               {t("home.recentTitle")}
             </h2>
             {recentSets.length > 0 && (
@@ -101,11 +101,11 @@ export function LearningRows() {
               </Link>
             )}
           </div>
-          <ul className="mt-3 divide-y border-y">
+          <ul className="mt-3 rule-card rule-list">
             {recentSets.map((set) => (
               <li key={set.id}>
                 <Link
-                  className="group flex items-center gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                  className="t-row group flex items-center gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
                   href={`/sets/${set.id}`}
                 >
                   <Icons.library

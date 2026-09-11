@@ -194,11 +194,11 @@ export function PracticeSetup({
           </span>
           <Icons.open
             aria-hidden
-            className="size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-quick)] group-open:rotate-90"
+            className="size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-control)] group-open:rotate-90"
           />
         </summary>
 
-        <div className="mt-5 grid gap-4 border-t pt-5">
+        <div className="mt-5 grid gap-4 rule-t pt-5">
           <SelectField
             label={t("practice.set")}
             onValueChange={(value) => onSetChange(value === "all" ? "" : value)}

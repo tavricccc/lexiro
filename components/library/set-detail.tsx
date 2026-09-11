@@ -152,7 +152,7 @@ export function SetDetail({ setId }: { setId: string }) {
         }
       />
 
-      <dl className="grid max-w-lg grid-cols-2 gap-x-10 gap-y-4 border-y py-5 sm:grid-cols-4">
+      <dl className="rule-card grid max-w-lg grid-cols-2 gap-x-10 gap-y-4 py-5 sm:grid-cols-4">
         <Stat label={t("setDetail.senses")} value={allSenses.length} />
         <Stat label={t("setDetail.learned")} value={learned} />
         <Stat label={t("setDetail.due")} value={due} />
@@ -198,7 +198,7 @@ export function SetDetail({ setId }: { setId: string }) {
               description={t("setDetail.filterEmptyDescription")}
             />
           ) : (
-            <div className="divide-y border-y">
+            <div className="rule-card rule-list">
               {filtered.map((entry) => (
                 <WordEntry
                   headword={entry.headword}
@@ -213,7 +213,7 @@ export function SetDetail({ setId }: { setId: string }) {
 
       <section className="section-gap">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="font-lexical text-xl font-medium">
+          <h2 className="type-section">
             {t("setDetail.questions")}
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -234,11 +234,11 @@ export function SetDetail({ setId }: { setId: string }) {
           </div>
         </div>
         {questions.length ? (
-          <ul className="mt-4 divide-y border-y">
+          <ul className="mt-4 rule-card rule-list">
             {questions.map((question) => (
               <li key={question.id}>
                 <Link
-                  className="block py-4 text-sm leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                  className="t-row block py-4 text-sm leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
                   href={
                     question.kind === "reading"
                       ? `/questions/reading/${question.id}/edit`
@@ -278,7 +278,7 @@ function Stat({ label, value }: { label: string; value: number }) {
   return (
     <div>
       <dt className="text-xs text-muted-foreground">{label}</dt>
-      <dd className="mt-1 font-lexical text-2xl font-medium tabular-nums">
+      <dd className="mt-1 text-2xl font-medium tabular-nums">
         {value}
       </dd>
     </div>

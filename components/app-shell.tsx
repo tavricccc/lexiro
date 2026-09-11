@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { t, type TranslationKey } from "@/lib/i18n";
 import {
   commitRouteHistory,
-  consumeRouteDirection,
   markPopstateRouteDirection,
 } from "@/lib/navigation-memory";
+import { RouteSurface } from "@/components/motion/route-surface";
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
 import { BrandLockup } from "@/components/ui/brand";
 import { Icons } from "@/components/ui/icons";
@@ -37,21 +37,6 @@ function isSecondaryMobileRoute(pathname: string) {
   if (pathname.startsWith("/sets/") || pathname === "/sets/new") return true;
   if (/^\/questions\/.+/.test(pathname)) return true;
   return false;
-}
-
-function RouteTransition({
-  children,
-  pathname,
-}: {
-  children: React.ReactNode;
-  pathname: string;
-}) {
-  const [direction] = React.useState(() => consumeRouteDirection(pathname));
-  return (
-    <div className="route-page t-route-enter" data-route-direction={direction}>
-      {children}
-    </div>
-  );
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -151,9 +136,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
           )}
-          <RouteTransition key={pathname} pathname={pathname}>
-            {children}
-          </RouteTransition>
+          <RouteSurface>{children}</RouteSurface>
         </main>
 
         <div

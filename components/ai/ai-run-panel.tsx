@@ -125,7 +125,7 @@ export function AiRunPanel<TItem>({
       )}
 
       {running && (
-        <div className="border-t px-4 py-4 sm:px-5">
+        <div className="rule-t px-4 py-4 sm:px-5">
           <div
             aria-label={t("ai.progressLabel")}
             aria-valuemax={state.total}
@@ -135,7 +135,7 @@ export function AiRunPanel<TItem>({
             role="progressbar"
           >
             <div
-              className="h-full rounded-full bg-primary transition-[width] duration-500 ease-[var(--ease-smooth-out)]"
+              className="h-full rounded-full bg-primary transition-[width] duration-[var(--motion-control)] ease-[var(--ease-arrive)]"
               style={{
                 width: `${state.total ? (state.completed / state.total) * 100 : 0}%`,
               }}
@@ -151,7 +151,7 @@ export function AiRunPanel<TItem>({
       )}
 
       {!running && state.failures.length > 0 && (
-        <div className="border-t px-4 py-4 text-sm sm:px-5">
+        <div className="rule-t px-4 py-4 text-sm sm:px-5">
           <p className="font-medium text-destructive">
             {t("ai.someBatchesFailed", { count: state.failures.length })}
           </p>
@@ -172,14 +172,14 @@ export function AiRunPanel<TItem>({
       )}
 
       {!running && state.status === "cancelled" && (
-        <p className="border-t px-4 py-4 text-sm text-muted-foreground sm:px-5">
+        <p className="rule-t px-4 py-4 text-sm text-muted-foreground sm:px-5">
           {t("ai.stopped")}
         </p>
       )}
 
       {manualOpen && needsAi && (
-        <div className="t-panel-reveal border-t px-4 py-5 sm:px-5">
-          <p className="text-sm leading-6 text-muted-foreground">
+        <div className="t-panel-reveal rule-t px-4 py-5 sm:px-5">
+          <p className="type-lead">
             {t("ai.manualDescription")}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -228,7 +228,7 @@ export function AiRunPanel<TItem>({
         </div>
       )}
 
-      {results && <div className="border-t px-4 py-5 sm:px-5">{results}</div>}
+      {results && <div className="rule-t px-4 py-5 sm:px-5">{results}</div>}
     </section>
   );
 }

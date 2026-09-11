@@ -52,23 +52,40 @@ never `text-red-700`.
 
 ## Typography
 
-Two faces, with a strict division of labour:
+One face. **HarmonyOS Sans TC** (`--font-sans`, bundled locally) sets the whole
+product: labels, buttons, navigation, body copy, headings, headwords, example
+sentences and every large figure.
 
-- **HarmonyOS Sans TC** (`--font-sans`, bundled locally) is the interface: labels,
-  buttons, navigation, body copy, everything chrome.
-- **Newsreader** (`--font-lexical`, via `next/font` as `--font-newsreader`) is the
-  lexical voice: page titles, section headings, headwords, parts of speech,
-  example sentences, and every large figure.
-
-The serif is what makes a screen feel like a dictionary rather than an app, so it
-is applied to page-level `h1`/`h2` and to numerals that are meant to be read as
-results (`font-lexical … tabular-nums`), not sprinkled on body text.
+There used to be a second, lexical face on `--font-lexical`, meant to make a
+screen read as a dictionary rather than as an app. It never actually loaded a
+second family — the token pointed back at `--font-sans` — so `font-lexical`
+marked some text as special while rendering it identically to everything around
+it. What separates the study material from the interface is size, weight,
+measure and the entry classes below, not a face that was never there.
 
 Dictionary entries have their own classes in `globals.css`: `.entry-headword`,
 `.entry-pos`, `.entry-citation`, and `.entry-senses` / `.entry-sense`, whose CSS
 counter numbers senses — and, via `:has(.entry-sense:only-child)`, suppresses the
 number when there is only one sense. A single-sense word should never be labelled
 "1".
+
+## The type scale
+
+Every heading in the product is on one scale, defined in `globals.css`:
+`.type-page` for a page title, `.type-section` and `.type-subsection` beneath it,
+`.type-lead` for the measured sentence that explains a heading, `.type-hint` for
+a quieter aside, and `.type-label` for a control label. The gap between a
+heading and the sentence under it belongs to the pairing and is set by the
+scale, so no caller guesses it.
+
+Tracking is negative only where the type is large enough for the default spacing
+to look loose, and never enough to crowd Chinese, which is set on a square body
+and has no side bearings to give back. The classes live in `@layer components`,
+so a caller that narrows a lead's measure with a utility still wins.
+
+Screens do not invent a weight, tracking or leading for a rank of heading they
+already have. That drift — five pages each styling the same rank differently —
+is what made titles stop reading as titles.
 
 ## Radius encodes hierarchy
 
@@ -83,6 +100,34 @@ The further out a surface sits, the softer it is:
 Tailwind's `rounded-md` / `rounded-xl` / `rounded-3xl` are mapped onto these, so
 existing utilities keep working while the scale stays deliberate.
 
+## Separation
+
+Three ways to separate, and only three: a **card** groups the things that sit at
+the same level, a **hairline** divides the rows inside one card, and **space**
+divides the sections of a page. Nothing is separated twice, which is why a card
+has no outer rules and a divided row has no border of its own.
+
+- `.rule-card` is the surface: a hairline border, the card radius, the card
+  background, the card shadow, and the row gutter. Anything that is a set of
+  peers — a listing, a stat strip, an empty state standing in for a list —
+  is one card.
+- `.rule-list` adds the rules between its children. A card only takes it when
+  its children really are a stack of rows: a card holding a grid of figures is
+  one block, not four.
+- `.rule-t` / `.rule-b` divide two halves of the same page or panel, where a
+  card would wrongly claim the halves are two separate things.
+
+A hairline is the thinnest line the display can draw, not a whole CSS pixel:
+`--hairline` is `1px` and drops to `0.5px` above 1.5dppx. A 1px rule is two
+device pixels on a 2x screen, and that weight is what makes a divided list read
+as an unstyled table.
+
+The gutter (`--row-gutter`) belongs to the card, not to each row, so every row
+in every list lines up on the same two edges whatever it is made of. The rules
+are inset by that gutter and the press tint from `.t-row` is not: the tint is
+the row being touched, so it reaches the card's edges, while a rule that ran
+into the card's own border would draw the same corner twice.
+
 ## Spacing
 
 `--section-gap` (2.75rem) and `--block-gap` (1.25rem) back the `.section-gap` and
@@ -92,17 +137,69 @@ old pages drifted is that every screen invented its own rhythm.
 
 ## Motion
 
-One orchestrated entrance per screen at most. The home focus canvas animates in;
-everything else stays still, because a page where each section fades and slides
-up in sequence reads as a template rather than as a considered arrangement.
+Every duration and curve in the product is a rung of one ladder, generated from
+`config/motion.config.json` into `src/generated/motion-ladder.css` (custom
+properties) and `src/generated/motion-tokens.ts` (the same rungs in seconds, for
+animations driven from JavaScript). Regenerate with `npm run generate:motion`;
+never edit the generated files, and never write a literal duration or
+`cubic-bezier` anywhere else. A recipe picks a rung by what the motion *means*,
+not by feel — if an interaction does not fit a rung, the ladder is wrong.
 
-Data visuals animate once on mount: `.dashboard-bar` grows a proportion bar from
-its leading edge (`--dashboard-bar` carries the ratio), `.dashboard-column` grows
-a chart column up from the baseline. Both are disabled under
-`prefers-reduced-motion`.
+The pacing is iOS's. A touch is acknowledged in `--motion-touch` (100ms), a
+control settles in `--motion-control` (250ms), moving to another place takes
+`--motion-nav` (350ms), and a layer presented over the current place takes
+`--motion-sheet` (450ms) because it travels furthest. Leaving is always quicker
+than arriving, which is what `--motion-control-exit` and `--motion-sheet-exit`
+are for. Arrivals decelerate (`--ease-arrive`), dismissals accelerate
+(`--ease-depart`), travel between two known positions is symmetric
+(`--ease-move`), routes use the iOS navigation curve (`--ease-nav` and its
+mirror), and exactly one curve is allowed to overshoot (`--ease-bounce`).
 
-Durations and easings come from `app/styles/motion.css` (`--motion-quick`,
-`--ease-smooth-out`, …), never from literal values.
+JavaScript reaches the ladder through `timing(rung, curve)` in
+`lib/motion-timing.ts`, which is also what `MotionConfig` is given, so Motion and
+CSS cannot drift apart.
+
+**Route transitions.** `RouteSurface` wraps every route in a `<ViewTransition>`.
+Going deeper pushes the child in from the trailing edge while the parent
+parallaxes away; coming back plays the same two animations reversed, so pop is
+push read backwards rather than a second recipe. Only the phone layout gets the
+push: on a desktop layout a child route is a replacement, not a place, and an
+unrelated route is a crossfade at every width. Direction is derived in
+`lib/navigation-memory.ts` — an explicit `markRouteDirection` wins, otherwise it
+is inferred from where the two URLs sit in the hierarchy — and published on the
+document as `data-nav-direction`, which is what the recipes in `motion.css` key
+off.
+
+**Press.** One press vocabulary, applied by the stylesheet to every interactive
+role at once: the surface sinks a pixel and gives up two percent. Components do
+not add their own `active:` scale. A card takes a smaller share (`.t-card`), and
+a row in a divided list answers with a rounded tint that bleeds past the row
+rather than travelling (`.t-row`), because a row that moved would tear the
+hairlines it shares with its neighbours.
+
+**Navigation feedback.** `NavigationFeedback` answers a tap on a destination
+before the destination commits: the control that was tapped wears
+`data-navigating`, and a progress line crawls at the top of the window. It is
+reserved for navigation — an ordinary button is already answered by the press
+state, and echoing it doubles the feedback without adding meaning.
+
+**Entrances.** Furniture that arrived with its route does not animate; the route
+transition already delivered it. `.t-panel-reveal` is for a panel that is
+genuinely new on a screen the user is already looking at. Lists hand over
+through `StaggerList` / `StaggerItem`, which never animate the rows they were
+born with and never delay a row by its index. A container whose state changes
+in place uses `StateTransition` + `ContentTransition`; it holds its own height,
+so the container grows into the change instead of jumping to it.
+
+Height animation is opt-in: `ResizeMotion` only observes elements marked
+`data-resize-motion`, because observing every card makes viewport reflow look
+like content motion.
+
+Data visuals still animate once on mount: `.dashboard-bar` grows a proportion bar
+from its leading edge (`--dashboard-bar` carries the ratio), `.dashboard-column`
+grows a chart column up from the baseline.
+
+Everything above is disabled under `prefers-reduced-motion`.
 
 ## Components
 

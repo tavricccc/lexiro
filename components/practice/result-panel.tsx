@@ -58,7 +58,7 @@ export function ResultPanel({
       transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="text-center">
-        <p className="font-lexical text-[3.5rem] font-medium leading-none tabular-nums">
+        <p className="text-[3.5rem] font-medium leading-none tabular-nums">
           {correct}
           <span className="text-muted-foreground">/{total}</span>
         </p>
@@ -126,8 +126,8 @@ export function ResultPanel({
         </p>
       )}
       {explanation && (
-        <section className="section-gap border-t pt-6">
-          <h2 className="font-lexical text-xl font-medium">
+        <section className="section-gap rule-t pt-6">
+          <h2 className="type-section">
             {t("practice.explanationTitle")}
           </h2>
           <Markdown className="mt-4 text-sm" content={explanation} />

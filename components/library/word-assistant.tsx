@@ -148,7 +148,7 @@ export function WordAssistant({
       </div>
 
       {rows.length > 0 && (
-        <div className="mt-4 border-t pt-4">
+        <div className="mt-4 rule-t pt-4">
           <p className="text-sm font-medium">
             {t("ai.readyCount", { count: rows.length })}
           </p>
@@ -158,7 +158,7 @@ export function WordAssistant({
                 className="flex items-baseline gap-2 text-sm"
                 key={`${row.word}-${row.pos}-${index}`}
               >
-                <span className="font-lexical font-medium">{row.word}</span>
+                <span className="font-medium">{row.word}</span>
                 <span className="entry-pos text-xs">{row.pos}</span>
                 <span className="truncate text-muted-foreground">
                   {row.meaningZh}

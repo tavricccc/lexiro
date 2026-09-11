@@ -113,7 +113,7 @@ export function FolderToolbar({
   ];
 
   return (
-    <div className="border-b pb-4">
+    <div className="rule-b pb-4">
       <div className="flex items-center gap-2">
         <nav
           aria-label={t("library.folderPath")}

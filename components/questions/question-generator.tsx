@@ -337,7 +337,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       {run.items.length > 0 && (
         <section className="section-gap">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-lexical text-xl font-medium">
+            <h2 className="type-section">
               {t("questions.generatedCount", { count: run.items.length })}
             </h2>
             {saved ? (
@@ -354,7 +354,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
               </Button>
             )}
           </div>
-          <ol className="mt-4 divide-y border-y">
+          <ol className="mt-4 rule-card rule-list">
             {run.items.map((question) => (
               <li className="py-5" key={question.id}>
                 <QuestionPreview question={question} />

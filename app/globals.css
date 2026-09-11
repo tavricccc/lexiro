@@ -4,6 +4,7 @@
 @import "../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Bold.css";
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../src/generated/motion-ladder.css";
 @import "./styles/motion.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -47,7 +48,6 @@
   --font-sans:
     "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif,
     system-ui, sans-serif;
-  --font-lexical: var(--font-sans);
 
   /* Radius encodes hierarchy: the further out the surface, the softer it is. */
   --radius-control: 0.5rem; /* buttons, inputs, selects */
@@ -96,6 +96,7 @@
   --success-foreground: #ffffff;
   --warning: #9a6413;
   --border: rgb(31 58 48 / 9%);
+  --rule: rgb(31 58 48 / 15%);
   --input: rgb(31 58 48 / 13%);
   --ring: rgb(47 93 74 / 45%);
   --surface-stage: #f4f8f5;
@@ -119,6 +120,8 @@
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --control-label-size: 0.75rem;
+  --hairline: 1px;
+  --row-gutter: 1.125rem;
   --safe-left: env(safe-area-inset-left, 0px);
 }
 
@@ -156,6 +159,7 @@
   --success-foreground: #04211a;
   --warning: #d5a554;
   --border: rgb(190 230 210 / 9%);
+  --rule: rgb(190 230 210 / 16%);
   --input: rgb(190 230 210 / 13%);
   --ring: rgb(142 205 171 / 45%);
   --surface-stage: #0d1310;
@@ -257,7 +261,6 @@ textarea {
    never as another row of interface text. */
 
 .entry-headword {
-  font-family: var(--font-lexical);
   font-size: 1.375rem;
   font-weight: 500;
   line-height: 1.2;
@@ -266,7 +269,6 @@ textarea {
 
 .entry-pos {
   color: var(--muted-foreground);
-  font-family: var(--font-lexical);
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.4;
@@ -276,7 +278,6 @@ textarea {
 
 .entry-citation {
   color: color-mix(in srgb, var(--foreground) 82%, transparent);
-  font-family: var(--font-lexical);
   font-size: 1.0625rem;
   font-weight: 400;
   line-height: 1.65;
@@ -294,7 +295,6 @@ textarea {
   display: inline-block;
   min-width: 1.25rem;
   color: var(--brand-500);
-  font-family: var(--font-lexical);
   font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
   line-height: inherit;
@@ -303,6 +303,124 @@ textarea {
 .entry-senses:has(.entry-sense:only-child) .entry-sense::before {
   content: none;
   min-width: 0;
+}
+
+@layer components {
+  /* ── Type ────────────────────────────────────────────────────────────
+     One scale, and every heading on the product is on it. The sizes were
+     not the problem: five pages each inventing their own weight, tracking
+     and leading for the same rank of heading was, because a title that
+     changes shape from screen to screen stops reading as a title.
+
+     Tracking is negative only where the type is large enough for the
+     default spacing to look loose, and never enough to crowd Chinese, which
+     is set on a square body and has no side bearings to give back. The line
+     under a heading belongs to the heading: it is set here, so no caller
+     has to guess it. */
+  .type-page {
+    font-size: clamp(1.625rem, 1.2rem + 1.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .type-section {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .type-subsection {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-wrap: balance;
+  }
+
+  /* The sentence that explains a heading. It is measured, not wrapped by the
+     container: a description that runs the full width of a desktop layout is
+     read as a paragraph of body copy rather than as a caption. */
+  .type-lead {
+    max-width: 56ch;
+    color: var(--muted-foreground);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .type-hint {
+    max-width: 60ch;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .type-label {
+    color: var(--muted-foreground);
+    font-size: var(--control-label-size);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  /* A heading and the sentence under it are one block, so the gap between
+     them is a property of the pairing rather than of either side. */
+  .type-page + .type-lead,
+  .type-section + .type-lead,
+  .type-subsection + .type-lead {
+    margin-top: 0.5rem;
+  }
+
+  .type-section + .type-hint,
+  .type-subsection + .type-hint {
+    margin-top: 0.375rem;
+  }
+
+  /* ── Separation ──────────────────────────────────────────────────────
+     Three ways to separate, and only three: a card groups things that sit at
+     the same level, a hairline divides the rows inside one card, and space
+     divides the sections of a page. Nothing is ever separated twice.
+
+     A hairline is the thinnest line the display can actually draw, not a whole
+     CSS pixel. On a 2x screen a 1px rule is two device pixels, which is exactly
+     what makes a divided list read as an unstyled table instead of a list. */
+  .rule-card {
+    --row-bleed: var(--row-gutter);
+    --row-radius: 0;
+    overflow: clip;
+    border: var(--hairline) solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--card);
+    padding-inline: var(--row-gutter);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* The gutter belongs to the card, not to each row, so every row in every list
+     lines up on the same two edges whatever it is made of. The rules are inset
+     by that gutter and the press tint is not: the tint is the row being
+     touched, so it reaches the card's edges, while a rule that ran into the
+     card's own border would draw the same corner twice. */
+  .rule-list > * + * {
+    border-top: var(--hairline) solid var(--rule);
+  }
+
+  /* A section of a page, divided from the next by a line rather than by a card,
+     because both halves are the same page rather than two things. */
+  .rule-t {
+    border-top: var(--hairline) solid var(--rule);
+  }
+
+  .rule-b {
+    border-bottom: var(--hairline) solid var(--rule);
+  }
+
+  .rule-t:first-child {
+    border-top: 0;
+  }
 }
 
 .section-gap {
@@ -314,13 +432,10 @@ textarea {
 }
 
 .app-viewport {
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;
   padding-inline: max(var(--page-gutter), var(--safe-left), var(--safe-right));
-}
-
-.route-page {
-  width: min(100%, var(--content-max));
-  margin-inline: auto;
 }
 
 .app-top-blur {
@@ -336,7 +451,7 @@ textarea {
   backdrop-filter: blur(12px);
   -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent);
   mask-image: linear-gradient(to bottom, black 45%, transparent);
-  transition: opacity var(--motion-quick) var(--ease-smooth-out);
+  transition: opacity var(--motion-control) var(--ease-move);
 }
 
 .app-top-blur[data-visible="true"] {
@@ -352,9 +467,9 @@ textarea {
   transform: translateY(1.125rem) scale(0.96);
   visibility: hidden;
   transition:
-    opacity var(--motion-quick) var(--ease-smooth-out),
-    transform var(--motion-fast) var(--ease-smooth-out),
-    visibility 0s linear var(--motion-fast);
+    opacity var(--motion-control) var(--ease-move),
+    transform var(--motion-control) var(--ease-arrive),
+    visibility 0s linear var(--motion-control);
 }
 
 .app-mobile-nav[data-visible="true"] {
@@ -517,12 +632,12 @@ textarea {
 
 .dashboard-bar {
   transform-origin: left center;
-  animation: dashboard-bar var(--motion-emphasis) var(--ease-smooth-out) both;
+  animation: dashboard-bar var(--motion-sheet) var(--ease-arrive) both;
 }
 
 .dashboard-column {
   transform-origin: bottom center;
-  animation: dashboard-column var(--motion-slow) var(--ease-smooth-out) both;
+  animation: dashboard-column var(--motion-sheet) var(--ease-arrive) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -532,9 +647,26 @@ textarea {
   }
 }
 
+@media (min-resolution: 1.5dppx) {
+  :root {
+    --hairline: 0.5px;
+  }
+}
+
 @media (max-width: 47.99rem) {
   :root {
     --page-gutter: 1rem;
+    --row-gutter: 0.9375rem;
+  }
+  /* The page gutter belongs to the route surface on a phone: a pushed page has
+     to reach both screen edges, or the page it replaces stays visible beside it
+     for the whole transition. */
+  .app-viewport {
+    padding-inline: 0;
+  }
+  .app-viewport > .route-page,
+  .app-viewport > .app-mobile-header {
+    padding-inline: max(var(--page-gutter), var(--safe-left), var(--safe-right));
   }
   .surface-stage {
     border-radius: var(--radius-2xl);

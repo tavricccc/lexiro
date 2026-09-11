@@ -52,10 +52,10 @@ export function ConfirmDialog({
               <Glyph aria-hidden className="size-5" />
             </div>
             <div>
-              <Dialog.Title className="font-lexical text-xl font-medium">
+              <Dialog.Title className="type-section">
                 {title}
               </Dialog.Title>
-              <Dialog.Description className="mt-2 text-sm leading-6 text-muted-foreground">
+              <Dialog.Description className="mt-2 type-lead">
                 {description}
               </Dialog.Description>
             </div>

@@ -94,20 +94,23 @@ export function LiquidTabs({
       <TabsPrimitive.List
         aria-label={ariaLabel}
         aria-disabled={disabled}
+        // The rail has no height of its own: it is as tall as the tabs inside
+        // it plus its own padding. A fixed height here is what let the tabs
+        // outgrow it and made the rail reserve a scrollbar for the difference.
         className={cn(
-          "t-tabs relative isolate inline-flex h-8 max-w-full items-center gap-0.5 overflow-x-auto rounded-full bg-muted p-[3px]",
+          "t-tabs relative isolate inline-flex max-w-full items-center gap-0.5 overflow-x-auto overscroll-x-contain rounded-full bg-[var(--tabs-bar-bg)] p-[3px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           className,
         )}
       >
         <span
           aria-hidden="true"
-          className="t-tabs-pill"
+          className="t-tabs-pill absolute inset-y-[3px] left-0 z-0 w-0 rounded-full bg-[var(--tabs-pill-bg)] shadow-[var(--shadow-control)]"
           ref={pillRef}
         />
         {options.map((option) => {
           return (
             <TabsPrimitive.Trigger
-              className="t-tab t-tab-label relative z-10 isolate inline-flex h-[1.625rem] shrink-0 items-center justify-center gap-1 rounded-full px-3 font-medium leading-3.5 text-muted-foreground outline-none transition-colors duration-[var(--tabs-dur)] ease-[var(--tabs-ease)] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40 data-[state=active]:text-foreground"
+              className="t-tab t-tab-label relative z-10 isolate inline-flex h-[1.75rem] shrink-0 cursor-pointer appearance-none items-center justify-center gap-1 rounded-full border-0 bg-transparent px-3 font-medium leading-none text-[var(--tabs-text-muted)] outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
               data-control-label=""
               data-liquid-tab={option.value}
               disabled={disabled}

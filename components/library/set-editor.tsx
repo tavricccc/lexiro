@@ -325,12 +325,12 @@ export function SetEditor({
                 </span>
               </span>
             </summary>
-            <div className="mt-5 border-t pt-5">{metadataFields}</div>
+            <div className="mt-5 rule-t pt-5">{metadataFields}</div>
           </details>
         )}
 
         <div className="section-gap flex flex-wrap items-center justify-between gap-3">
-          <h2 className="font-lexical text-xl font-medium">
+          <h2 className="type-section">
             {t("setEditor.words")}
           </h2>
           <Button
@@ -344,7 +344,7 @@ export function SetEditor({
           </Button>
         </div>
 
-        <div className="mt-4 divide-y border-y">
+        <div className="mt-4 rule-card rule-list">
           {fields.fields.map((field, index) => (
             <SetWordFields
               autoFocus={!setId && index === 0}

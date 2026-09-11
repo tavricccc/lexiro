@@ -108,13 +108,13 @@ export function ProgressPage() {
         }
       />
 
-      <section className="grid gap-x-14 gap-y-8 border-y py-8 sm:grid-cols-[auto_auto] sm:items-center sm:justify-start">
+      <section className="rule-card grid gap-x-14 gap-y-8 py-8 sm:grid-cols-[auto_auto] sm:items-center sm:justify-start">
         <p>
           <span className="flex items-baseline gap-1.5">
-            <span className="font-lexical text-[clamp(3.25rem,7vw,4rem)] font-medium leading-[0.9] tabular-nums text-brand-600">
+            <span className="text-[clamp(3.25rem,7vw,4rem)] font-medium leading-[0.9] tabular-nums text-brand-600">
               {stats.streakDays}
             </span>
-            <span className="font-lexical text-lg text-brand-500">
+            <span className="text-lg text-brand-500">
               {t("progress.streakUnit")}
             </span>
           </span>
@@ -138,7 +138,7 @@ export function ProgressPage() {
       </section>
 
       <section className="section-gap">
-        <h2 className="font-lexical text-xl font-medium">
+        <h2 className="type-section">
           {t("progress.coverage")}
         </h2>
         {senseIds.length === 0 ? (
@@ -146,10 +146,10 @@ export function ProgressPage() {
             {t("progress.coverageEmpty")}
           </p>
         ) : (
-          <>
+          <div className="rule-card mt-4 py-5">
             <div
               aria-hidden
-              className="mt-4 h-2 overflow-hidden rounded-full bg-brand-100"
+              className="h-2 overflow-hidden rounded-full bg-brand-100"
             >
               <div
                 className="dashboard-bar h-full w-full rounded-full bg-brand-600"
@@ -163,12 +163,12 @@ export function ProgressPage() {
               })}
               {due > 0 && ` · ${t("progress.dueDetail", { count: due })}`}
             </p>
-          </>
+          </div>
         )}
       </section>
 
       <section className="section-gap">
-        <h2 className="font-lexical text-xl font-medium">
+        <h2 className="type-section">
           {t("progress.history")}
         </h2>
         {history.length === 0 ? (
@@ -178,7 +178,7 @@ export function ProgressPage() {
             variant="filtered"
           />
         ) : (
-          <>
+          <div className="rule-card mt-4 py-5">
             <HistoryChart history={history} />
             <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
               <LegendKey className="bg-brand-300" label={t("progress.memory")} />
@@ -187,12 +187,12 @@ export function ProgressPage() {
                 label={t("progress.questions")}
               />
             </p>
-          </>
+          </div>
         )}
       </section>
 
       <section className="section-gap">
-        <h2 className="font-lexical text-xl font-medium">
+        <h2 className="type-section">
           {t("progress.questionBreakdown")}
         </h2>
         {attempted === 0 ? (
@@ -202,7 +202,7 @@ export function ProgressPage() {
             variant="filtered"
           />
         ) : (
-        <ul className="mt-4 divide-y border-y">
+        <ul className="mt-4 rule-card rule-list">
           {QUESTION_STAT_KEYS.map((key) => {
             const row = questionStatRow(questionStats, key);
             const [style, level] = key.split(":");
@@ -327,7 +327,7 @@ function HistoryChart({
 function Figure({ label, value }: { label: string; value: string | number }) {
   return (
     <div>
-      <dd className="font-lexical text-[1.75rem] font-medium leading-none tabular-nums">
+      <dd className="text-[1.75rem] font-medium leading-none tabular-nums">
         {value}
       </dd>
       <dt className="mt-2 text-xs text-muted-foreground">{label}</dt>

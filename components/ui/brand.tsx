@@ -41,7 +41,7 @@ export function BrandLockup({
   const content = (
     <>
       <BrandMark className={markClassName} />
-      <span className="font-lexical text-lg font-medium tracking-[-0.01em]">
+      <span className="text-lg font-medium leading-none tracking-[-0.01em]">
         Lexiro
       </span>
     </>

@@ -32,6 +32,9 @@
       "@/constants/*": [
         "./src/constants/*"
       ],
+      "@/generated/*": [
+        "./src/generated/*"
+      ],
       "@/lib/*": [
         "./lib/*",
         "./src/lib/*"

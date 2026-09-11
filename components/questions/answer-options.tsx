@@ -51,7 +51,7 @@ export function AnswerOptions({
             />
             <span
               aria-hidden
-              className="w-4 shrink-0 font-lexical text-sm text-muted-foreground"
+              className="w-4 shrink-0 text-sm text-muted-foreground"
             >
               {index + 1}
             </span>

@@ -31,7 +31,7 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
   return (
     <div>
       <Header format={question.format} />
-      <p className="mt-1.5 font-lexical text-lg font-medium">{question.title}</p>
+      <p className="mt-1.5 type-subsection">{question.title}</p>
       <div className="mt-2.5">
         <PassageView passage={question.passage} />
       </div>
@@ -90,7 +90,7 @@ function OptionList({
             }
             key={index}
           >
-            <span className="mr-1.5 font-lexical text-xs">
+            <span className="mr-1.5 text-xs">
               {String.fromCharCode(65 + index)}
             </span>
             {option}

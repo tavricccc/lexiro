@@ -141,10 +141,10 @@ export function AiSettingsSection({
                 {t("me.advanced")}
                 <Icons.open
                   aria-hidden
-                  className="size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-quick)] group-open:rotate-90"
+                  className="size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-control)] group-open:rotate-90"
                 />
               </summary>
-              <div className="mt-5 grid gap-5 border-t pt-5">
+              <div className="mt-5 grid gap-5 rule-t pt-5">
                 <Field
                   description={t("me.endpointHint")}
                   label={t("settings.endpoint")}

@@ -183,7 +183,7 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
         </Field>
         <Field error={submitted && passageError} label={t("questions.passage")}>
           <Textarea
-            className="min-h-52 font-lexical text-[1.0625rem] leading-[1.75]"
+            className="min-h-52 text-[1.0625rem] leading-[1.75]"
             onChange={(event) => setPassage(event.target.value)}
             placeholder={t("questions.passage")}
             value={passage}
@@ -198,11 +198,11 @@ export function ReadingEditor({ readingId }: { readingId?: string }) {
         />
       </div>
 
-      <div className="section-gap divide-y border-y">
+      <div className="section-gap rule-card rule-list">
         {children.map((child, index) => (
           <section className="py-6" key={child.id ?? index}>
             <div className="flex items-center justify-between gap-3">
-              <h2 className="font-lexical text-lg font-medium">
+              <h2 className="type-subsection">
                 {t("questions.childPrompt", { index: index + 1 })}
               </h2>
               {children.length > 1 && (
