@@ -124,3 +124,19 @@ the same destinations, capabilities, labels and task order.
 
 Structure is carried by hairlines, margins and typographic hierarchy rather than
 by nested cards; at most one orchestrated entrance animation per screen.
+
+**Starting a session asks for a track, then for shape.** Practice used to be a
+choice between 背單字 and 做題目, where each branch carried its own hidden filter
+row. It is now two steps: 每日複習 or 做題目, then the range and the length —
+which both branches share — followed by only what that branch needs. 每日複習
+asks how the words FSRS has scheduled should come at you (單字卡, 拼字, or both
+mixed); 做題目 asks which of the six exam formats to include, as checkboxes with
+counts, because choosing three of six was never something one dropdown could
+say. A session is a queue of entries rather than a mode, so the entry under the
+cursor decides what the screen asks and a passage keeps its items together.
+
+**A saved set is read before it is edited.** `/sets/[setId]` shows the set;
+`/sets/[setId]/edit` changes it. An earlier decision merged the two to remove a
+duplicate address, which made every visit to a set an encounter with input
+fields. The questions built from a set live in a tab beside its words rather
+than in a section below them.
