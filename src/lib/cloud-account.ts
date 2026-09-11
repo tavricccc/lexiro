@@ -1,20 +1,16 @@
 import type { Firestore } from "firebase/firestore";
 import type {
-  AiSettings,
   CardProgress,
   DashboardStats,
-  FirestoreAiSettingsDoc,
   FirestoreProgressDoc,
   FirestoreStatsDoc,
   LearningProgress,
 } from "@/types";
 import { getDoc, setDoc } from "firebase/firestore";
 import { CLOUD_SCHEMA_VERSION, MAX_CLOUD_DOCUMENT_BYTES } from "@/constants";
-import { getShareableAiSettings } from "./ai-provider";
 import { cloudDocument, withDeadline } from "./cloud-sync";
 import { CloudSyncError } from "./cloud-sync-errors";
 import {
-  normalizeCloudAiSettings,
   normalizeCloudProgress,
   normalizeCloudStats,
 } from "./cloud-sync-schema";
@@ -22,14 +18,17 @@ import { prepareFirestoreData } from "./firestore-data";
 import { estimateJsonBytes } from "./hash";
 
 /**
- * The three documents that are not records: review schedules, statistics and
- * AI settings.
+ * The two documents that are not records: review schedules and statistics.
  *
  * Each is small, read and written whole, and belongs to exactly one account, so
  * splitting them into records would buy nothing. What they do need is a merge.
  * Taking one side wholesale is what loses a day of reviews when the same word
  * was answered on a phone and a laptop, so each document is reconciled field by
  * field on the way in and only then written back.
+ *
+ * AI settings are deliberately not here. Where a user points the app and which
+ * model they pay for is device-local configuration, and dropping the API key
+ * from it would not make the rest worth uploading.
  */
 
 function assertFits(value: unknown, label: string): void {
@@ -130,11 +129,10 @@ export function mergeStats(
 export interface CloudBlobs {
   progress: LearningProgress | null;
   stats: DashboardStats | null;
-  settings: Omit<AiSettings, "apiKey"> | null;
 }
 
 /**
- * The three whole documents, read together.
+ * Both whole documents, read together.
  *
  * `getDoc` is deliberate where the old code forced `getDocFromServer`: the
  * SDK's persistent cache answers instantly when nothing has changed and still
@@ -146,11 +144,10 @@ export async function readCloudBlobs(
   uid: string,
   signal?: AbortSignal,
 ): Promise<CloudBlobs> {
-  const [progress, stats, settings] = await withDeadline(
+  const [progress, stats] = await withDeadline(
     Promise.all([
       getDoc(cloudDocument(db, uid, "progress", "global")),
       getDoc(cloudDocument(db, uid, "stats", "summary")),
-      getDoc(cloudDocument(db, uid, "settings", "ai")),
     ]),
     "Account documents download",
     signal,
@@ -160,9 +157,6 @@ export async function readCloudBlobs(
       ? normalizeCloudProgress(progress.data(), uid)
       : null,
     stats: stats.exists() ? normalizeCloudStats(stats.data(), uid) : null,
-    settings: settings.exists()
-      ? normalizeCloudAiSettings(settings.data(), uid)
-      : null,
   };
 }
 
@@ -204,27 +198,6 @@ export async function writeCloudStats(
       } satisfies FirestoreStatsDoc),
     ),
     "Stats upload",
-    signal,
-  );
-}
-
-export async function writeCloudAiSettings(
-  db: Firestore,
-  uid: string,
-  settings: AiSettings,
-  signal?: AbortSignal,
-): Promise<void> {
-  await withDeadline(
-    setDoc(
-      cloudDocument(db, uid, "settings", "ai"),
-      prepareFirestoreData({
-        ...getShareableAiSettings(settings),
-        ownerId: uid,
-        schemaVersion: CLOUD_SCHEMA_VERSION,
-        updatedAt: new Date().toISOString(),
-      } satisfies FirestoreAiSettingsDoc),
-    ),
-    "AI settings upload",
     signal,
   );
 }

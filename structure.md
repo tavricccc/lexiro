@@ -71,9 +71,13 @@ writes what changed in batches. A deleted record keeps its document and sets
 `deleted`, so a deletion is a fact the cloud states rather than an absence the
 next device has to interpret.
 
-`src/lib/cloud-account.ts` holds the three documents that are not records —
-review schedules, statistics and AI settings — and merges each field by field,
-so answering the same word on two devices does not cost one of them its history.
+`src/lib/cloud-account.ts` holds the two documents that are not records —
+review schedules and statistics — and merges each field by field, so answering
+the same word on two devices does not cost one of them its history. AI settings
+are not synchronized at all: which endpoint and model a user points the app at
+stays on the device, and dropping the API key from it would not make the rest
+worth uploading. They still travel in a full backup, which the user exports
+deliberately.
 
 `src/lib/sync-journal.ts` holds what this device has changed and not yet sent.
 It is a sidecar: domain records carry no synchronization fields. The list of

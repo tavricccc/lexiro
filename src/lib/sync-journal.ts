@@ -24,7 +24,7 @@ import { getStorageNamespace, loadFromStorage, saveToStorage } from "./persist";
  * `dirty` and `tombstones` are mutually exclusive per record: recreating a
  * deleted record clears its tombstone, deleting a dirty record replaces it.
  */
-export type SyncBlobKind = "progress" | "stats" | "settings";
+export type SyncBlobKind = "progress" | "stats";
 
 export interface SyncDirtyEntry extends LibraryRecordRef {
   version: number;
@@ -75,7 +75,7 @@ function emptyJournal(): SyncJournal {
     version: 0,
     dirty: {},
     tombstones: {},
-    blobs: { progress: 0, stats: 0, settings: 0 },
+    blobs: { progress: 0, stats: 0 },
   };
 }
 

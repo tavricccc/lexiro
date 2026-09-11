@@ -164,6 +164,13 @@ the account permanently unable to sync with nothing the user could do about it,
 so `repairLibraryState` resolves every conflict to something: a duplicate name
 gets a suffix, a reference to something that is gone is dropped.
 
+**AI settings never leave the device.** The provider, model, endpoint and API
+key are device-local configuration. Syncing them with the key stripped out was
+briefly the design and was wrong: where someone points the app and which model
+they pay for is their business, and the convenience was not worth putting it in
+a database. They still travel inside a full backup, because that is a file the
+user exports and holds themselves.
+
 **The workspace opens on local data.** Startup waited for the first cloud
 reconciliation before showing anything, which put a network round trip — and
 every retry of it — in front of the app. The data on the device is the data the

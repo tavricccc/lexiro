@@ -2,7 +2,6 @@ import type { AiProvider, AiSettings } from "@/types";
 import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from "@/constants";
 import { loadFromStorage, saveToStorage } from "@/lib/persist";
 import { isRecord } from "./schema";
-import { markBlobDirty } from "./sync-journal";
 
 export const defaultAiSettings: AiSettings = {
   enabled: false,
@@ -245,10 +244,7 @@ export function downloadAiSettings(settings: AiSettings): void {
   window.setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
-export function saveAiSettings(
-  settings: AiSettings,
-  options: { markPending?: boolean } = {},
-) {
+export function saveAiSettings(settings: AiSettings) {
   storedSettings = normalizeAiSettings(settings);
   const shareableSettings = getShareableAiSettings(storedSettings);
   const apiKey = storedSettings.apiKey;
@@ -262,7 +258,6 @@ export function saveAiSettings(
   settingsPersistencePromise = next;
   void next.catch(() => undefined);
   for (const listener of settingsListeners) listener(loadAiSettings());
-  if (options.markPending !== false) void markBlobDirty("settings");
 }
 
 function normalizeText(value: unknown): string {

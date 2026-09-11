@@ -73,7 +73,7 @@ function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
     version: 5,
     dirty: {},
     tombstones: {},
-    blobs: { progress: 0, stats: 0, settings: 0 },
+    blobs: { progress: 0, stats: 0 },
     ...patch,
   };
 }

@@ -111,23 +111,6 @@ service cloud.firestore {
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
-      match /settings/ai {
-        allow read: if signedIn(uid);
-        allow create, update: if signedIn(uid)
-          && request.resource.data.keys().hasOnly([
-            'enabled', 'provider', 'baseUrl', 'model', 'batchSize',
-            'updatedAt', 'ownerId', 'schemaVersion'
-          ])
-          && request.resource.data.ownerId == uid
-          && request.resource.data.enabled is bool
-          && request.resource.data.provider in ['openai', 'anthropic', 'google', 'custom']
-          && request.resource.data.baseUrl is string
-          && request.resource.data.model is string
-          && request.resource.data.batchSize is number
-          && request.resource.data.updatedAt is string
-          && request.resource.data.schemaVersion == 6;
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
-      }
 
     }
   }

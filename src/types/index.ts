@@ -9,7 +9,6 @@ export type {
 } from './backup'
 export type {
   CloudRecordType,
-  FirestoreAiSettingsDoc,
   FirestoreLibraryMetaDoc,
   FirestoreProgressDoc,
   FirestoreRecordDoc,

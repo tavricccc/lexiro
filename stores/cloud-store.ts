@@ -7,19 +7,13 @@ import { create } from "zustand";
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
-import {
-  getShareableAiSettings,
-  saveAiSettings,
-  waitForAiSettingsPersistence,
-  whenAiSettingsReady,
-} from "@/src/lib/ai-provider";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
+import { canonicalHash } from "@/src/lib/hash";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
 import {
   mergeProgress,
   mergeStats,
   readCloudBlobs,
-  writeCloudAiSettings,
   writeCloudProgress,
   writeCloudStats,
 } from "@/src/lib/cloud-account";
@@ -275,17 +269,14 @@ async function runSync(
     const learning = useLearningStore.getState();
     const progress = mergeProgress(learning.progress, blobs.progress);
     const stats = mergeStats(learning.stats, blobs.stats);
-    const localSettings = await whenAiSettingsReady();
-    const settings = blobs.settings ?? getShareableAiSettings(localSettings);
 
-    await learning.importState(progress, stats, { markPending: false });
-    if (blobs.settings) {
-      saveAiSettings(
-        { ...blobs.settings, apiKey: localSettings.apiKey },
-        { markPending: false },
-      );
-      await waitForAiSettingsPersistence();
-    }
+    // Writing an identical value back would still rewrite IndexedDB and wake
+    // every listener on every sync, so it is only applied when it differs.
+    if (
+      canonicalHash({ progress, stats }) !==
+      canonicalHash({ progress: learning.progress, stats: learning.stats })
+    )
+      await learning.importState(progress, stats, { markPending: false });
 
     // Push after the merge, so what goes up is the reconciled value rather than
     // the copy this device happened to be holding.
@@ -295,20 +286,12 @@ async function runSync(
     const sentBlobs = [
       { kind: "progress" as const, version: dirtyBlobs.progress },
       { kind: "stats" as const, version: dirtyBlobs.stats },
-      { kind: "settings" as const, version: dirtyBlobs.settings },
     ];
     const blobWork: Promise<unknown>[] = [];
     if (dirtyBlobs.progress || !blobs.progress)
       blobWork.push(writeCloudProgress(db, user.uid, progress));
     if (dirtyBlobs.stats || !blobs.stats)
       blobWork.push(writeCloudStats(db, user.uid, stats));
-    if (dirtyBlobs.settings || !blobs.settings)
-      blobWork.push(
-        writeCloudAiSettings(db, user.uid, {
-          ...settings,
-          apiKey: localSettings.apiKey,
-        }),
-      );
     await Promise.all(blobWork);
     await clearPushedRecords(work.clear);
     await clearBlobDirty(sentBlobs);
