@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { Menu, type MenuAction } from "@/components/ui/menu";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import {
@@ -14,17 +15,20 @@ import {
   UNCATEGORIZED_FOLDER_ID,
 } from "@/src/lib/folders";
 
-type Panel = "none" | "create" | "rename";
+type Panel = "none" | "create" | "rename" | "move";
 
 /** Radix rejects an empty option value, so the library root gets a sentinel. */
 const ROOT_VALUE = "__root__";
 
 /**
- * The path line doubles as the folder toolbar. Creating, renaming, moving and
- * deleting all happen where the path is shown, so there is one place to look
- * for "what can I do with this folder" instead of a menu somewhere else.
+ * The path line says where you are; one menu beside it says what you can do
+ * here. Folder chores are not why anyone opens this screen, so creating,
+ * renaming, moving and deleting are all one press away rather than four buttons
+ * wide — which also stops a destructive action from sitting permanently next to
+ * a harmless one.
  */
 export function FolderToolbar({
+  actions: extraActions = [],
   breadcrumbs,
   currentFolder,
   folders,
@@ -34,6 +38,8 @@ export function FolderToolbar({
   onOpen,
   onRename,
 }: {
+  /** Page-level actions that act on the folder you are standing in. */
+  actions?: MenuAction[];
   breadcrumbs: VocabFolder[];
   currentFolder?: VocabFolder;
   folders: VocabFolder[];
@@ -77,6 +83,35 @@ export function FolderToolbar({
       ]
     : [];
 
+  const actions: MenuAction[] = [
+    {
+      icon: Icons.create,
+      label: t("library.newFolder"),
+      onSelect: () => open("create"),
+    },
+    ...(currentFolder
+      ? ([
+          {
+            icon: Icons.edit,
+            label: t("library.renameFolder"),
+            onSelect: () => open("rename"),
+          },
+          {
+            icon: Icons.folder,
+            label: t("library.moveFolder"),
+            onSelect: () => open("move"),
+          },
+          {
+            icon: Icons.delete,
+            label: t("library.deleteFolder"),
+            onSelect: onDelete,
+            tone: "destructive",
+          },
+        ] satisfies MenuAction[])
+      : []),
+    ...extraActions,
+  ];
+
   return (
     <div className="border-b pb-4">
       <div className="flex items-center gap-2">
@@ -104,82 +139,60 @@ export function FolderToolbar({
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-1">
-          {currentFolder && (
-            <>
-              <Button
-                aria-label={t("library.renameFolder")}
-                onClick={() => open(panel === "rename" ? "none" : "rename")}
-                size="icon"
-                type="button"
-                variant="ghost"
-              >
-                <Icons.edit />
-              </Button>
-              <Button
-                aria-label={t("library.deleteFolder")}
-                onClick={onDelete}
-                size="icon"
-                type="button"
-                variant="ghost"
-              >
-                <Icons.delete />
-              </Button>
-            </>
-          )}
-          <Button
-            onClick={() => open(panel === "create" ? "none" : "create")}
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            <Icons.create />
-            <span className="hidden sm:inline">{t("library.newFolder")}</span>
-          </Button>
-        </div>
+        <Menu actions={actions} />
       </div>
 
       {panel !== "none" && (
-        <div className="mt-3 rounded-[var(--radius-card)] bg-[var(--surface-inset)] p-3">
-          <form
-            className="flex max-w-md gap-2"
-            onSubmit={(event) => {
-              event.preventDefault();
-              void submit();
-            }}
-          >
-            <Input
-              autoFocus
-              onChange={(event) => setValue(event.target.value)}
-              placeholder={t("library.folderName")}
-              value={value}
-            />
-            <Button size="sm" type="submit">
-              <Icons.success />
-              {t(panel === "rename" ? "common.confirm" : "library.create")}
-            </Button>
-            <Button
-              onClick={() => setPanel("none")}
-              size="sm"
-              type="button"
-              variant="ghost"
-            >
-              {t("common.cancel")}
-            </Button>
-          </form>
-
-          {panel === "rename" && currentFolder && (
-            <SelectField
-              className="mt-3 max-w-md"
-              label={t("library.moveFolder")}
-              onValueChange={(next) => {
-                void onMove(next === ROOT_VALUE ? undefined : next).catch(() =>
-                  setError(t("library.folderNameConflict")),
-                );
+        <div className="t-panel-reveal mt-3 rounded-[var(--radius-card)] bg-[var(--surface-inset)] p-3">
+          {panel === "move" && currentFolder ? (
+            <div className="flex max-w-md flex-wrap items-end gap-2">
+              <SelectField
+                className="min-w-0 flex-1"
+                label={t("library.moveFolder")}
+                onValueChange={(next) => {
+                  void onMove(next === ROOT_VALUE ? undefined : next)
+                    .then(() => setPanel("none"))
+                    .catch(() => setError(t("library.folderNameConflict")));
+                }}
+                options={moveOptions}
+                value={currentFolder.parentId ?? ROOT_VALUE}
+              />
+              <Button
+                onClick={() => setPanel("none")}
+                size="sm"
+                type="button"
+                variant="ghost"
+              >
+                {t("common.cancel")}
+              </Button>
+            </div>
+          ) : (
+            <form
+              className="flex max-w-md gap-2"
+              onSubmit={(event) => {
+                event.preventDefault();
+                void submit();
               }}
-              options={moveOptions}
-              value={currentFolder.parentId ?? ROOT_VALUE}
-            />
+            >
+              <Input
+                autoFocus
+                onChange={(event) => setValue(event.target.value)}
+                placeholder={t("library.folderName")}
+                value={value}
+              />
+              <Button size="sm" type="submit">
+                <Icons.success />
+                {t(panel === "rename" ? "common.confirm" : "library.create")}
+              </Button>
+              <Button
+                onClick={() => setPanel("none")}
+                size="sm"
+                type="button"
+                variant="ghost"
+              >
+                {t("common.cancel")}
+              </Button>
+            </form>
           )}
 
           {error && (

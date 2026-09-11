@@ -26,7 +26,7 @@ type Mode = WorkspacePracticeMode;
 type QuestionType = WorkspaceQuestionType;
 type Difficulty = WorkspaceQuestionDifficulty;
 
-export function PracticePage({ initialMode = "review", initialSet = "", initialAutoStart = false }: { initialMode?: Mode; initialSet?: string; initialAutoStart?: boolean }) {
+export function PracticePage({ initialMode = "review", initialModePreset = false, initialSet = "", initialAutoStart = false }: { initialMode?: Mode; initialModePreset?: boolean; initialSet?: string; initialAutoStart?: boolean }) {
   const state = useLibraryStore((store) => store.state);
   const libraryStatus = useLibraryStore((store) => store.status);
   const progress = useLearningStore((store) => store.progress);
@@ -215,24 +215,26 @@ export function PracticePage({ initialMode = "review", initialSet = "", initialA
   if (!started) {
     return (
       <PracticeSetup
-        mode={mode}
-        setId={setId}
         amount={amount}
-        questionType={questionType}
         difficulty={difficulty}
-        leechOnly={leechOnly}
-        typingMode={typingMode}
-        sets={state.sets}
-        availableCount={mode === "review" ? reviewItems.length : questionItems.length}
         hasWords={hasWords}
-        onModeChange={setMode}
-        onSetChange={setSetId}
+        leechOnly={leechOnly}
+        mode={mode}
+        modePreset={initialModePreset}
         onAmountChange={setAmount}
-        onQuestionTypeChange={setQuestionType}
+        onBegin={actions.begin}
         onDifficultyChange={setDifficulty}
         onLeechOnlyChange={setLeechOnly}
+        onModeChange={setMode}
+        onQuestionTypeChange={setQuestionType}
+        onSetChange={setSetId}
         onTypingModeChange={setTypingMode}
-        onBegin={actions.begin}
+        questionCount={questionItems.length}
+        questionType={questionType}
+        reviewCount={reviewItems.length}
+        setId={setId}
+        sets={state.sets}
+        typingMode={typingMode}
       />
     );
   }

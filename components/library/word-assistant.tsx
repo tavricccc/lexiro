@@ -48,10 +48,8 @@ function toRows(drafts: WordDraft[]): AssistedWordRow[] {
 
 export function WordAssistant({
   onApply,
-  onClose,
 }: {
   onApply: (rows: AssistedWordRow[]) => void;
-  onClose: () => void;
 }) {
   const [raw, setRaw] = useState("");
   const [examples, setExamples] = useState(false);
@@ -111,27 +109,8 @@ export function WordAssistant({
   const rows = toRows(run.items);
 
   return (
-    <section className="mt-4 rounded-[var(--radius-card)] border bg-[var(--surface-inset)] p-4 sm:p-5">
-      <div className="flex items-start gap-4">
-        <div className="min-w-0 flex-1">
-          <h2 className="font-medium">{t("setEditor.aiAssist")}</h2>
-          <p className="mt-1 text-sm leading-6 text-muted-foreground">
-            {t("setEditor.aiAssistDescription")}
-          </p>
-        </div>
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon-sm"
-          aria-label={t("common.cancel")}
-          onClick={onClose}
-        >
-          <Icons.cancel />
-        </Button>
-      </div>
-
+    <section>
       <Field
-        className="mt-4"
         label={t("setEditor.rawWords")}
         hint={
           sources.length ? t("setEditor.wordsFound", { count: sources.length }) : undefined
@@ -188,12 +167,10 @@ export function WordAssistant({
             ))}
           </ul>
           <Button
-            type="button"
             className="mt-4"
-            onClick={() => {
-              onApply(rows);
-              onClose();
-            }}
+            onClick={() => onApply(rows)}
+            size="lg"
+            type="button"
           >
             <Icons.success />
             {t("setEditor.applyPreview", { count: rows.length })}

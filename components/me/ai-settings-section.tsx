@@ -110,18 +110,6 @@ export function AiSettingsSection({
               />
             </Field>
             <Field
-              description={t("me.endpointHint")}
-              label={t("settings.endpoint")}
-              layout="row"
-            >
-              <Input
-                inputMode="url"
-                onChange={(event) => update({ baseUrl: event.target.value })}
-                placeholder={t("me.endpointPlaceholder")}
-                value={settings.baseUrl}
-              />
-            </Field>
-            <Field
               error={missingKey && t("me.apiKeyRequired")}
               label={t("settings.apiKey")}
               layout="row"
@@ -148,46 +136,72 @@ export function AiSettingsSection({
                 </button>
               </span>
             </Field>
-            <Field
-              description={t("me.batchSizeHint")}
-              label={t("settings.batchSize")}
-              layout="row"
-            >
-              <Input
-                max={20}
-                min={5}
-                onChange={(event) =>
-                  update({ batchSize: Number(event.target.value) })
-                }
-                type="number"
-                value={settings.batchSize}
-              />
-            </Field>
+            <details className="group rounded-[var(--radius-card)] border px-4 py-3.5 open:bg-[var(--surface-inset)]">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-medium marker:content-none">
+                {t("me.advanced")}
+                <Icons.open
+                  aria-hidden
+                  className="size-4 shrink-0 text-muted-foreground transition-transform duration-[var(--motion-quick)] group-open:rotate-90"
+                />
+              </summary>
+              <div className="mt-5 grid gap-5 border-t pt-5">
+                <Field
+                  description={t("me.endpointHint")}
+                  label={t("settings.endpoint")}
+                  layout="row"
+                >
+                  <Input
+                    inputMode="url"
+                    onChange={(event) => update({ baseUrl: event.target.value })}
+                    placeholder={t("me.endpointPlaceholder")}
+                    value={settings.baseUrl}
+                  />
+                </Field>
+                <Field
+                  description={t("me.batchSizeHint")}
+                  label={t("settings.batchSize")}
+                  layout="row"
+                >
+                  <Input
+                    max={20}
+                    min={5}
+                    onChange={(event) =>
+                      update({ batchSize: Number(event.target.value) })
+                    }
+                    type="number"
+                    value={settings.batchSize}
+                  />
+                </Field>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    onClick={() => downloadAiSettings(settings)}
+                    size="sm"
+                    variant="ghost"
+                  >
+                    <Icons.export />
+                    {t("settings.exportAi")}
+                  </Button>
+                  <Button asChild size="sm" variant="ghost">
+                    <label className="cursor-pointer">
+                      <Icons.import />
+                      {t("settings.importAi")}
+                      <input
+                        accept=".json,application/json"
+                        className="sr-only"
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          if (file) void importSettings(file);
+                          event.target.value = "";
+                        }}
+                        type="file"
+                      />
+                    </label>
+                  </Button>
+                </div>
+              </div>
+            </details>
           </div>
         )}
-
-        <div className="flex flex-wrap justify-end gap-2">
-          <Button onClick={() => downloadAiSettings(settings)} variant="ghost">
-            <Icons.export />
-            {t("settings.exportAi")}
-          </Button>
-          <Button asChild variant="ghost">
-            <label className="cursor-pointer">
-              <Icons.import />
-              {t("settings.importAi")}
-              <input
-                accept=".json,application/json"
-                className="sr-only"
-                onChange={(event) => {
-                  const file = event.target.files?.[0];
-                  if (file) void importSettings(file);
-                  event.target.value = "";
-                }}
-                type="file"
-              />
-            </label>
-          </Button>
-        </div>
       </div>
     </MeSection>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { FolderToolbar } from "@/components/library/folder-toolbar";
@@ -45,6 +45,7 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   );
   const [deleteFolderId, setDeleteFolderId] = useState<string | null>(null);
   const [importing, setImporting] = useState(false);
+  const importInput = useRef<HTMLInputElement>(null);
 
   const setMetrics = useMemo(
     () => buildLibrarySetMetrics(state, cards),
@@ -160,6 +161,18 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
     setCurrentFolderId(folderId ?? ALL_FOLDER_ID);
     setQuery("");
   };
+
+  // Drilling into a folder is a location, not a scroll position: it belongs in
+  // the URL, so opening a set and coming back does not dump you at the root.
+  useEffect(() => {
+    if (status !== "ready") return;
+    const target =
+      currentFolderId === ALL_FOLDER_ID
+        ? "/library"
+        : `/library?folderId=${encodeURIComponent(currentFolderId)}`;
+    if (`${window.location.pathname}${window.location.search}` !== target)
+      window.history.replaceState(null, "", target);
+  }, [currentFolderId, status]);
   const createHref = currentFolder
     ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
     : "/sets/new";
@@ -175,41 +188,39 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
         title={t("library.title")}
         description={t("library.description")}
         actions={
-          <>
-            <Button asChild variant="ghost">
-              <label
-                aria-disabled={importing}
-                className={importing ? "cursor-wait opacity-60" : "cursor-pointer"}
-              >
-                <Icons.import />
-                {t(importing ? "library.importing" : "library.importSet")}
-                <input
-                  accept=".zip"
-                  className="sr-only"
-                  disabled={importing}
-                  onChange={(event) => {
-                    const input = event.currentTarget;
-                    const file = input.files?.[0];
-                    if (file)
-                      void importSet(file).finally(() => {
-                        input.value = "";
-                      });
-                  }}
-                  type="file"
-                />
-              </label>
-            </Button>
-            <Button asChild>
-              <Link href={createHref}>
-                <Icons.create />
-                {t("library.newSet")}
-              </Link>
-            </Button>
-          </>
+          <Button asChild>
+            <Link href={createHref}>
+              <Icons.create />
+              {t("library.newSet")}
+            </Link>
+          </Button>
         }
       />
 
+      <input
+        accept=".zip"
+        className="sr-only"
+        onChange={(event) => {
+          const input = event.currentTarget;
+          const file = input.files?.[0];
+          if (file)
+            void importSet(file).finally(() => {
+              input.value = "";
+            });
+        }}
+        ref={importInput}
+        type="file"
+      />
+
       <FolderToolbar
+        actions={[
+          {
+            disabled: importing,
+            icon: Icons.import,
+            label: t(importing ? "library.importing" : "library.importSet"),
+            onSelect: () => importInput.current?.click(),
+          },
+        ]}
         breadcrumbs={breadcrumbs}
         currentFolder={currentFolder}
         folders={state.folders}

@@ -13,8 +13,12 @@ import {
   type SetFormValues,
 } from "@/components/library/set-form";
 import { SetWordFields } from "@/components/library/set-word-fields";
-import { WordAssistant } from "@/components/library/word-assistant";
+import {
+  WordAssistant,
+  type AssistedWordRow,
+} from "@/components/library/word-assistant";
 import { Button } from "@/components/ui/button";
+import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Field, FieldRow } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
@@ -53,7 +57,11 @@ export function SetEditor({
     resolver: zodResolver(setFormSchema),
   });
   const fields = useFieldArray({ control: form.control, name: "words" });
-  const [showAssistant, setShowAssistant] = useState(false);
+  // A new set asks how you want to add words before showing either surface, so
+  // the typing form and the paste-a-list assistant are never both on screen.
+  const [entry, setEntry] = useState<"ask" | "manual" | "assist">(
+    setId ? "manual" : "ask",
+  );
   const [pendingHref, setPendingHref] = useState("");
   const setName = form.watch("setName");
   const folderId = form.watch("folderId");
@@ -196,26 +204,105 @@ export function SetEditor({
     </FieldRow>
   );
 
+  const backLink = (
+    <Button asChild size="sm" variant="ghost">
+      <Link
+        data-allow-discard="true"
+        href={
+          setId
+            ? `/sets/${setId}`
+            : initialFolderId
+              ? `/library?folderId=${encodeURIComponent(initialFolderId)}`
+              : "/library"
+        }
+      >
+        <Icons.back />
+        {t("setEditor.cancel")}
+      </Link>
+    </Button>
+  );
+
+  const applyAssisted = (rows: AssistedWordRow[]) => {
+    const currentRows = form.getValues("words");
+    const firstIsEmpty =
+      currentRows.length === 1 &&
+      !currentRows[0].word &&
+      !currentRows[0].meaningZh;
+    const normalized = rows.map((row) => ({
+      ...row,
+      originalSenseId: "",
+      originalWordKey: "",
+    }));
+    if (firstIsEmpty) fields.replace(normalized);
+    else fields.append(normalized);
+    setEntry("manual");
+  };
+
+  if (entry === "ask") {
+    return (
+      <div className="mx-auto max-w-xl">
+        <PageHeader
+          back={backLink}
+          description={t("setEditor.howHint")}
+          title={t("setEditor.howTitle")}
+        />
+        <ChoiceList
+          onSelect={(value) => setEntry(value as "manual" | "assist")}
+          options={[
+            {
+              description: t("setEditor.manualWayHint"),
+              icon: Icons.edit,
+              label: t("setEditor.manualWay"),
+              value: "manual",
+            },
+            {
+              description: t("setEditor.assistWayHint"),
+              icon: Icons.generate,
+              label: t("setEditor.assistWay"),
+              value: "assist",
+            },
+          ]}
+        />
+      </div>
+    );
+  }
+
+  if (entry === "assist") {
+    return (
+      <div className="mx-auto max-w-3xl">
+        <PageHeader
+          back={
+            <Button
+              onClick={() => setEntry(setId ? "manual" : "ask")}
+              size="sm"
+              type="button"
+              variant="ghost"
+            >
+              <Icons.back />
+              {t("common.back")}
+            </Button>
+          }
+          description={t("setEditor.aiAssistDescription")}
+          title={t("setEditor.aiAssist")}
+        />
+        <WordAssistant onApply={applyAssisted} />
+        <p className="mt-6">
+          <button
+            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+            onClick={() => setEntry("manual")}
+            type="button"
+          >
+            {t("setEditor.switchToManual")}
+          </button>
+        </p>
+      </div>
+    );
+  }
+
   return (
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
       <PageHeader
-        back={
-          <Button asChild size="sm" variant="ghost">
-            <Link
-              data-allow-discard="true"
-              href={
-                setId
-                  ? `/sets/${setId}`
-                  : initialFolderId
-                    ? `/library?folderId=${encodeURIComponent(initialFolderId)}`
-                    : "/library"
-              }
-            >
-              <Icons.back />
-              {t("setEditor.cancel")}
-            </Link>
-          </Button>
-        }
+        back={backLink}
         description={setId ? undefined : t("setEditor.quickDescription")}
         title={t(setId ? "setEditor.editTitle" : "setEditor.createTitle")}
       />
@@ -246,47 +333,16 @@ export function SetEditor({
           <h2 className="font-lexical text-xl font-medium">
             {t("setEditor.words")}
           </h2>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              onClick={() => setShowAssistant((value) => !value)}
-              size="sm"
-              type="button"
-              variant="ghost"
-            >
-              <Icons.generate />
-              {t("setEditor.aiAssist")}
-            </Button>
-            <Button
-              onClick={() => fields.append(emptyWord)}
-              size="sm"
-              type="button"
-              variant="secondary"
-            >
-              <Icons.create />
-              {t("setEditor.addWord")}
-            </Button>
-          </div>
+          <Button
+            onClick={() => fields.append(emptyWord)}
+            size="sm"
+            type="button"
+            variant="secondary"
+          >
+            <Icons.create />
+            {t("setEditor.addWord")}
+          </Button>
         </div>
-
-        {showAssistant && (
-          <WordAssistant
-            onApply={(rows) => {
-              const currentRows = form.getValues("words");
-              const firstIsEmpty =
-                currentRows.length === 1 &&
-                !currentRows[0].word &&
-                !currentRows[0].meaningZh;
-              const normalized = rows.map((row) => ({
-                ...row,
-                originalSenseId: "",
-                originalWordKey: "",
-              }));
-              if (firstIsEmpty) fields.replace(normalized);
-              else fields.append(normalized);
-            }}
-            onClose={() => setShowAssistant(false)}
-          />
-        )}
 
         <div className="mt-4 divide-y border-y">
           {fields.fields.map((field, index) => (
@@ -307,6 +363,18 @@ export function SetEditor({
             />
           ))}
         </div>
+
+        {!setId && (
+          <p className="mt-4">
+            <button
+              className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+              onClick={() => setEntry("assist")}
+              type="button"
+            >
+              {t("setEditor.switchToAssist")}
+            </button>
+          </p>
+        )}
 
         <div className="sticky bottom-[max(0.75rem,var(--safe-bottom))] z-20 -mx-2 mt-7 flex justify-end rounded-[var(--radius-stage)] bg-background/88 p-2 shadow-[var(--shadow-floating)] backdrop-blur-xl sm:mx-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none">
           <Button

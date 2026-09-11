@@ -17,7 +17,7 @@ import { SyncIndicator } from "@/components/sync-indicator";
 import { useUIStore } from "@/stores/ui-store";
 
 const destinations = [
-  { href: "/", label: "nav.study", icon: Icons.review },
+  { href: "/", label: "nav.study", icon: Icons.today },
   { href: "/library", label: "nav.library", icon: Icons.library },
   {
     href: "/practice",
@@ -25,6 +25,7 @@ const destinations = [
     label: "nav.practice",
     icon: Icons.practice,
   },
+  { href: "/progress", label: "nav.progress", icon: Icons.stats },
 ] satisfies {
   href: string;
   activePathPrefix?: string;

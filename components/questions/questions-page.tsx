@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState, LoadingState } from "@/components/ui/page-state";
 import { SelectField } from "@/components/ui/select-field";
@@ -19,6 +21,7 @@ import {
 import { useLibraryStore } from "@/stores/library-store";
 
 export function QuestionsPage() {
+  const router = useRouter();
   const { state, status, deleteQuestion } = useLibraryStore();
   const [query, setQuery] = useState("");
   const [kind, setKind] = useState("all");
@@ -53,28 +56,32 @@ export function QuestionsPage() {
         description={t("questions.description")}
         actions={
           <>
-            <Button asChild variant="ghost">
-              <Link href="/questions/reading/new">
-                <Icons.reading />
-                {t("questions.newReading")}
-              </Link>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/questions/new">
-                <Icons.create />
-                {t("questions.new")}
-              </Link>
-            </Button>
             <Button asChild>
               <Link href="/questions/generate">
                 <Icons.generate />
                 {t("questions.generate")}
               </Link>
             </Button>
+            <Menu
+              actions={[
+                {
+                  icon: Icons.create,
+                  label: t("questions.manualAddSingle"),
+                  onSelect: () => router.push("/questions/new"),
+                },
+                {
+                  icon: Icons.reading,
+                  label: t("questions.manualAddReading"),
+                  onSelect: () => router.push("/questions/reading/new"),
+                },
+              ]}
+              label={t("questions.manualAdd")}
+            />
           </>
         }
       />
 
+      {state.questions.length > 0 && (
       <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
         <label className="relative block">
           <Icons.search
@@ -101,6 +108,7 @@ export function QuestionsPage() {
           value={difficulty}
         />
       </div>
+      )}
 
       <div className="mt-6">
         {status === "loading" && <LoadingState />}

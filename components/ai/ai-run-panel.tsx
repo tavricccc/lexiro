@@ -15,9 +15,10 @@ import { copyToClipboard } from "@/src/lib/clipboard";
  * The single surface for running an AI generation.
  *
  * Calling the API is the primary path: one button, batched automatically, with
- * progress and partial results. The manual path stays available for anyone
- * without an API key — it steps through the same batches one prompt at a time,
- * so a large selection works there too.
+ * progress and partial results. The manual path is never removed, but it is not
+ * a second button beside the first — it is one line of small text, so the panel
+ * asks for a press rather than for a decision. Without a key configured it
+ * opens by itself, because then it is the only path there is.
  */
 export function AiRunPanel<TItem>({
   actionLabel,
@@ -95,7 +96,7 @@ export function AiRunPanel<TItem>({
                 : t("ai.singleRequest")}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex shrink-0 flex-wrap items-center gap-2">
           {running ? (
             <Button type="button" variant="outline" onClick={onCancel}>
               <Icons.cancel />
@@ -114,19 +115,14 @@ export function AiRunPanel<TItem>({
               </Link>
             </Button>
           )}
-          {needsAi && (
-            <Button
-              type="button"
-              variant="ghost"
-              aria-expanded={manualOpen}
-              onClick={() => setManualOpen((open) => !open)}
-            >
-              <Icons.copy />
-              {t("ai.manualPath")}
-            </Button>
-          )}
         </div>
       </div>
+
+      {needsAi && !running && !manualOpen && (
+        <div className="px-4 pb-4 sm:px-5">
+          <ManualToggle onClick={() => setManualOpen(true)} open={false} />
+        </div>
+      )}
 
       {running && (
         <div className="border-t px-4 py-4 sm:px-5">
@@ -226,10 +222,32 @@ export function AiRunPanel<TItem>({
               {manualError}
             </p>
           )}
+          <p className="mt-5">
+            <ManualToggle onClick={() => setManualOpen(false)} open />
+          </p>
         </div>
       )}
 
       {results && <div className="border-t px-4 py-5 sm:px-5">{results}</div>}
     </section>
+  );
+}
+
+function ManualToggle({
+  onClick,
+  open,
+}: {
+  onClick: () => void;
+  open: boolean;
+}) {
+  return (
+    <button
+      aria-expanded={open}
+      className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      onClick={onClick}
+      type="button"
+    >
+      {t(open ? "ai.manualClose" : "ai.manualPath")}
+    </button>
   );
 }

@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import { EmptyState } from "@/components/ui/page-state";
 import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
@@ -41,6 +40,11 @@ export function LearningRows() {
 
   const done = session ? session.index : 0;
   const total = session?.itemIds.length ?? 0;
+  // A library with nothing in it is already explained by the canvas above, so
+  // this row stays away rather than repeating the invitation.
+  const showRecent = status !== "ready" || recentSets.length > 0;
+
+  if (!session && !showRecent) return null;
 
   return (
     <div className="section-gap grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
@@ -82,27 +86,21 @@ export function LearningRows() {
         </section>
       )}
 
-      <section>
-        <div className="flex items-center justify-between gap-4">
-          <h2 className="font-lexical text-xl font-medium">
-            {t("home.recentTitle")}
-          </h2>
-          {recentSets.length > 0 && (
-            <Link
-              className="text-sm font-medium text-primary hover:underline"
-              href="/library"
-            >
-              {t("home.viewAll")}
-            </Link>
-          )}
-        </div>
-        {status === "ready" && recentSets.length === 0 ? (
-          <EmptyState
-            variant="filtered"
-            title={t("home.noSetsTitle")}
-            description={t("home.noSetsDescription")}
-          />
-        ) : (
+      {showRecent && (
+        <section>
+          <div className="flex items-center justify-between gap-4">
+            <h2 className="font-lexical text-xl font-medium">
+              {t("home.recentTitle")}
+            </h2>
+            {recentSets.length > 0 && (
+              <Link
+                className="text-sm font-medium text-primary hover:underline"
+                href="/library"
+              >
+                {t("home.viewAll")}
+              </Link>
+            )}
+          </div>
           <ul className="mt-3 divide-y border-y">
             {recentSets.map((set) => (
               <li key={set.id}>
@@ -130,8 +128,8 @@ export function LearningRows() {
               </li>
             ))}
           </ul>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -88,17 +87,9 @@ export function AccountSection() {
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant={cloud.status === "error" ? "destructive" : "secondary"}>
-            {syncStatusLabel(cloud.status)}
-          </Badge>
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/progress">
-              <Icons.stats />
-              {t("me.viewProgress")}
-            </Link>
-          </Button>
-        </div>
+        <Badge variant={cloud.status === "error" ? "destructive" : "secondary"}>
+          {syncStatusLabel(cloud.status)}
+        </Badge>
       </div>
 
       <MeSection

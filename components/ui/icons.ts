@@ -26,6 +26,7 @@ import {
   LoaderCircle,
   LogIn,
   LogOut,
+  MoreHorizontal,
   Pencil,
   Play,
   Plus,
@@ -35,6 +36,7 @@ import {
   SkipForward,
   SlidersHorizontal,
   Sparkles,
+  Sunrise,
   Trash2,
   Trophy,
   Upload,
@@ -79,6 +81,8 @@ export const Icons = {
   library: BookMarked,
   loading: LoaderCircle,
   mark: Bookmark,
+  more: MoreHorizontal,
+  next: ChevronRight,
   open: ChevronRight,
   practice: ClipboardCheck,
   question: CircleHelp,
@@ -99,6 +103,7 @@ export const Icons = {
   success: Check,
   sync: Cloud,
   syncOff: CloudOff,
+  today: Sunrise,
   up: ChevronLeft,
 } as const;
 

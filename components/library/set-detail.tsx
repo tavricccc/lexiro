@@ -9,11 +9,13 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
+import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState, LoadingState } from "@/components/ui/page-state";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { useLearningStore } from "@/stores/learning-store";
+import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { isDue, isLeech } from "@/src/lib/fsrs";
 import { questionBelongsToMemberships } from "@/src/lib/question-ownership";
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
@@ -76,6 +78,11 @@ export function SetDetail({ setId }: { setId: string }) {
     }))
     .filter((entry) => entry.senses.length > 0);
 
+  const libraryHref =
+    current?.folderId && current.folderId !== UNCATEGORIZED_FOLDER_ID
+      ? `/library?folderId=${encodeURIComponent(current.folderId)}`
+      : "/library";
+
   if (status === "loading") return <LoadingState />;
   if (!current)
     return (
@@ -84,7 +91,7 @@ export function SetDetail({ setId }: { setId: string }) {
         description={t("setDetail.notFoundDescription")}
         action={
           <Button asChild>
-            <Link href="/library">
+            <Link href={libraryHref}>
               <Icons.back />
               {t("setDetail.back")}
             </Link>
@@ -96,7 +103,7 @@ export function SetDetail({ setId }: { setId: string }) {
   const remove = async () => {
     setDeleting(true);
     await deleteSet(setId);
-    router.push("/library");
+    router.push(libraryHref);
   };
 
   return (
@@ -105,7 +112,7 @@ export function SetDetail({ setId }: { setId: string }) {
         title={current.setName}
         back={
           <Button asChild variant="ghost" size="sm">
-            <Link href="/library">
+            <Link href={libraryHref}>
               <Icons.back />
               {t("setDetail.back")}
             </Link>
@@ -114,7 +121,7 @@ export function SetDetail({ setId }: { setId: string }) {
         actions={
           <>
             <Button asChild>
-              <Link href={`/practice?set=${setId}&start=1`}>
+              <Link href={`/practice?mode=review&set=${setId}&start=1`}>
                 <Icons.start />
                 {t("setDetail.start")}
               </Link>
@@ -125,25 +132,22 @@ export function SetDetail({ setId }: { setId: string }) {
                 {t("setDetail.edit")}
               </Link>
             </Button>
-            <span aria-hidden className="mx-1 h-5 w-px bg-border" />
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              aria-label={t("setDetail.share")}
-              onClick={() => downloadSetShare(createSetSharePayload(state, setId))}
-            >
-              <Icons.export />
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              aria-label={t("setDetail.delete")}
-              onClick={() => setConfirmDelete(true)}
-            >
-              <Icons.delete />
-            </Button>
+            <Menu
+              actions={[
+                {
+                  icon: Icons.export,
+                  label: t("setDetail.share"),
+                  onSelect: () =>
+                    downloadSetShare(createSetSharePayload(state, setId)),
+                },
+                {
+                  icon: Icons.delete,
+                  label: t("setDetail.delete"),
+                  onSelect: () => setConfirmDelete(true),
+                  tone: "destructive",
+                },
+              ]}
+            />
           </>
         }
       />
@@ -223,7 +227,7 @@ export function SetDetail({ setId }: { setId: string }) {
               <Button asChild variant="secondary" size="sm">
                 <Link href={`/practice?mode=questions&set=${setId}&start=1`}>
                   <Icons.start />
-                  {t("setDetail.start")}
+                  {t("setDetail.startQuestions")}
                 </Link>
               </Button>
             )}

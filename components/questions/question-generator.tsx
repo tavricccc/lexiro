@@ -13,13 +13,18 @@ import {
 } from "@/components/questions/generation-scope-picker";
 import { QuestionPreview } from "@/components/questions/question-preview";
 import { Button } from "@/components/ui/button";
+import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
-import { PageHeader } from "@/components/ui/page-header";
 import { SelectField } from "@/components/ui/select-field";
+import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
 import {
+  difficultyLabel,
   difficultyOptions,
-  questionFormatOptions,
+  questionFormatHint,
+  questionFormatLabel,
+  PASSAGE_FORMAT_VALUES,
+  SENTENCE_STYLES,
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { generateWithSavedAi } from "@/src/lib/ai-provider";
@@ -37,8 +42,23 @@ import {
 import { isPassageKind } from "@/src/lib/question-formats";
 import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
+type Step = "format" | "scope" | "run";
+
+const FORMATS: GeneratedQuestionKind[] = [
+  ...SENTENCE_STYLES,
+  ...PASSAGE_FORMAT_VALUES,
+];
+
+/**
+ * Generating a batch of questions is three decisions, and they are asked in the
+ * order they constrain each other: what kind of paper, which words, then run it.
+ * Putting the format picker beside the run panel — as this screen used to —
+ * meant the first press a newcomer made was as likely to be the last step as
+ * the first.
+ */
 export function QuestionGenerator({ setId }: { setId?: string }) {
   const { state, saveQuestion } = useLibraryStore();
+  const [step, setStep] = useState<Step>("format");
   const [selected, setSelected] = useState<string[]>([]);
   const [scopeReady, setScopeReady] = useState(false);
   const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
@@ -149,7 +169,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       if (parsed.data.kind !== "questions") throw new Error("questions expected");
       return parsed.data.questions;
     },
-    [difficulty, kind],
+    [difficulty, kind, pool],
   );
 
   const generation = useAiGeneration<WordEntry[], LibraryQuestion>({
@@ -191,43 +211,87 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   };
 
   const addAll = async () => {
-    let saved = 0;
+    let stored = 0;
     for (const question of run.items) {
-      if ((await saveQuestion(question)) === "saved") saved += 1;
+      if ((await saveQuestion(question)) === "saved") stored += 1;
     }
     setSaved(true);
-    const duplicates = run.items.length - saved;
+    const duplicates = run.items.length - stored;
     toast.success(duplicates > 0
-      ? t("questions.savedCountWithDuplicates", { count: saved, duplicates })
-      : t("questions.savedCount", { count: saved }));
+      ? t("questions.savedCountWithDuplicates", { count: stored, duplicates })
+      : t("questions.savedCount", { count: stored }));
   };
 
   const senseCount = words.reduce((count, word) => count + word.senses.length, 0);
+  const back = (
+    <Button asChild size="sm" variant="ghost">
+      <Link href="/questions">
+        <Icons.back />
+        {t("questions.title")}
+      </Link>
+    </Button>
+  );
 
-  return (
-    <div>
-      <PageHeader
-        title={t("questions.generateTitle")}
-        description={t("questions.generateDescription")}
-        back={
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/questions">
-              <Icons.back />
-              {t("questions.title")}
-            </Link>
+  if (step === "format") {
+    return (
+      <StepFrame
+        current={1}
+        description={t("questions.stepFormatHint")}
+        title={t("questions.stepFormat")}
+        total={3}
+      >
+        <ChoiceList
+          onSelect={(value) => {
+            setKind(value as GeneratedQuestionKind);
+            setStep("scope");
+          }}
+          options={FORMATS.map((format) => ({
+            description: questionFormatHint(format),
+            icon: isPassageKind(format) ? Icons.reading : Icons.question,
+            label: questionFormatLabel(format),
+            value: format,
+          }))}
+        />
+        <p className="mt-6 text-center">{back}</p>
+      </StepFrame>
+    );
+  }
+
+  const recap = (
+    <StepRecap
+      items={[
+        t("questions.formatChosen", { name: questionFormatLabel(kind) }),
+        t("questions.difficultyChosen", { name: difficultyLabel(difficulty) }),
+        ...(step === "run"
+          ? [t("questions.scopeChosen", { count: senseCount })]
+          : []),
+      ]}
+      onEdit={() => setStep("format")}
+    />
+  );
+
+  if (step === "scope") {
+    return (
+      <StepFrame
+        current={2}
+        description={t("questions.stepScopeHint")}
+        footer={
+          <Button
+            className="w-full"
+            disabled={!senseCount}
+            onClick={() => setStep("run")}
+            size="lg"
+          >
+            <Icons.next />
+            {t("questions.next")}
           </Button>
         }
-      />
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-8">
-        <div className="grid content-start gap-4">
-          <SelectField
-            label={t("questions.type")}
-            onValueChange={(value) =>
-              setKind(value as GeneratedQuestionKind)
-            }
-            options={questionFormatOptions()}
-            value={kind}
-          />
+        onBack={() => setStep("format")}
+        recap={recap}
+        title={t("questions.stepScope")}
+        total={3}
+      >
+        <div className="grid gap-4">
           <SelectField
             label={t("practice.difficulty")}
             onValueChange={(value) =>
@@ -242,53 +306,63 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             senses={senses}
           />
         </div>
+      </StepFrame>
+    );
+  }
 
-        <div className="grid content-start gap-6">
-          <AiRunPanel
-            actionLabel={t("questions.generate")}
-            configured={generation.configured}
-            manualError={manualError}
-            onCancel={generation.cancel}
-            onManualResponse={applyManual}
-            onRetryFailed={generation.retryFailed}
-            onStart={() => generation.start(batches, prebuilt?.built ?? [])}
-            prompts={prompts}
-            localCount={prebuilt?.built.length ?? 0}
-            scopeSummary={t("questions.scopeSummary", { count: senseCount })}
-            state={run}
-          />
+  return (
+    <StepFrame
+      current={3}
+      description={t("questions.stepRunHint")}
+      onBack={() => setStep("scope")}
+      recap={recap}
+      title={t("questions.stepRun")}
+      total={3}
+      width="wide"
+    >
+      <AiRunPanel
+        actionLabel={t("questions.generate")}
+        configured={generation.configured}
+        localCount={prebuilt?.built.length ?? 0}
+        manualError={manualError}
+        onCancel={generation.cancel}
+        onManualResponse={applyManual}
+        onRetryFailed={generation.retryFailed}
+        onStart={() => generation.start(batches, prebuilt?.built ?? [])}
+        prompts={prompts}
+        scopeSummary={t("questions.scopeSummary", { count: senseCount })}
+        state={run}
+      />
 
-          {run.items.length > 0 && (
-            <section>
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-lexical text-xl font-medium">
-                  {t("questions.generatedCount", { count: run.items.length })}
-                </h2>
-                {saved ? (
-                  <Button asChild>
-                    <Link href="/practice?mode=questions&start=1">
-                      <Icons.start />
-                      {t("questions.startGenerated")}
-                    </Link>
-                  </Button>
-                ) : (
-                  <Button onClick={() => void addAll()}>
-                    <Icons.success />
-                    {t("questions.addAll")}
-                  </Button>
-                )}
-              </div>
-              <ol className="mt-4 divide-y border-y">
-                {run.items.map((question) => (
-                  <li className="py-5" key={question.id}>
-                    <QuestionPreview question={question} />
-                  </li>
-                ))}
-              </ol>
-            </section>
-          )}
-        </div>
-      </div>
-    </div>
+      {run.items.length > 0 && (
+        <section className="section-gap">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="font-lexical text-xl font-medium">
+              {t("questions.generatedCount", { count: run.items.length })}
+            </h2>
+            {saved ? (
+              <Button asChild>
+                <Link href="/practice?mode=questions&start=1">
+                  <Icons.start />
+                  {t("questions.startGenerated")}
+                </Link>
+              </Button>
+            ) : (
+              <Button onClick={() => void addAll()}>
+                <Icons.success />
+                {t("questions.addAll")}
+              </Button>
+            )}
+          </div>
+          <ol className="mt-4 divide-y border-y">
+            {run.items.map((question) => (
+              <li className="py-5" key={question.id}>
+                <QuestionPreview question={question} />
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+    </StepFrame>
   );
 }
