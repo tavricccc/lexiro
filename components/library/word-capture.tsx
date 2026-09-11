@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -9,8 +8,8 @@ import {
   WordAssistant,
   type AssistedWordRow,
 } from "@/components/library/word-assistant";
-import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
+import { FinishPanel } from "@/components/ui/finish-panel";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
@@ -100,32 +99,17 @@ export function WordCapture({
 
   if (done) {
     return (
-      <div className="mx-auto max-w-xl">
-        <PageHeader
-          description={t("setEditor.capturedDescription", { name })}
-          title={t("setEditor.capturedTitle", { count: added })}
-        />
-        <div className="flex flex-col gap-2.5 sm:flex-row">
-          <Button asChild className="sm:flex-1" size="lg">
-            <Link href={savedId ? `/sets/${savedId}` : "/library"}>
-              <Icons.success />
-              {t("setEditor.finish")}
-            </Link>
-          </Button>
-          <Button
-            className="sm:flex-1"
-            onClick={() => {
-              setRound((value) => value + 1);
-              setDone(false);
-            }}
-            size="lg"
-            variant="secondary"
-          >
-            <Icons.create />
-            {t("setEditor.addMore")}
-          </Button>
-        </div>
-      </div>
+      <FinishPanel
+        description={t("setEditor.capturedDescription", { name })}
+        finishHref={savedId ? `/sets/${savedId}` : "/library"}
+        moreIcon={Icons.create}
+        moreLabel={t("setEditor.addMore")}
+        onMore={() => {
+          setRound((value) => value + 1);
+          setDone(false);
+        }}
+        title={t("setEditor.capturedTitle", { count: added })}
+      />
     );
   }
 

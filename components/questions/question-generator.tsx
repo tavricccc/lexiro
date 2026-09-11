@@ -15,6 +15,7 @@ import { QuestionPreview } from "@/components/questions/question-preview";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
+import { FinishPanel } from "@/components/ui/finish-panel";
 import { SelectField } from "@/components/ui/select-field";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
@@ -43,7 +44,7 @@ import {
 import { isPassageKind } from "@/src/lib/question-formats";
 import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
-type Step = "format" | "scope" | "run";
+type Step = "format" | "scope" | "run" | "done";
 
 const FORMATS: GeneratedQuestionKind[] = [
   ...SENTENCE_STYLES,
@@ -64,7 +65,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   const [scopeReady, setScopeReady] = useState(false);
   const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
   const [difficulty, setDifficulty] = useState<GeneratedQuestionDifficulty>(2);
-  const [saved, setSaved] = useState(false);
   const [manualError, setManualError] = useState("");
 
   const allowedSenseIds = useMemo(
@@ -193,7 +193,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
 
   useEffect(() => {
     reset();
-    setSaved(false);
     setManualError("");
   }, [difficulty, kind, reset, selected]);
 
@@ -222,7 +221,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     for (const question of questions) {
       if ((await saveQuestion(question)) === "saved") stored += 1;
     }
-    setSaved(true);
+    setStep("done");
     const duplicates = questions.length - stored;
     toast.success(duplicates > 0
       ? t("questions.savedCountWithDuplicates", { count: stored, duplicates })
@@ -329,6 +328,34 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     );
   }
 
+  const generated = (
+    <ol className="mt-4 rule-card rule-list">
+      {run.items.map((question) => (
+        <li className="py-5" key={question.id}>
+          <QuestionPreview question={question} />
+        </li>
+      ))}
+    </ol>
+  );
+
+  if (step === "done") {
+    return (
+      <FinishPanel
+        description={t("questions.generatedDescription")}
+        finishHref={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}
+        moreIcon={Icons.generate}
+        moreLabel={t("questions.generateMore")}
+        onMore={() => {
+          reset();
+          setStep("format");
+        }}
+        title={t("questions.generatedCount", { count: run.items.length })}
+      >
+        {run.items.length > 0 ? generated : null}
+      </FinishPanel>
+    );
+  }
+
   return (
     <StepFrame
       current={3}
@@ -355,26 +382,10 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
 
       {run.items.length > 0 && (
         <section className="section-gap">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="type-section">
-              {t("questions.generatedCount", { count: run.items.length })}
-            </h2>
-            {saved && (
-              <Button asChild>
-                <Link href="/practice?track=questions">
-                  <Icons.start />
-                  {t("questions.startGenerated")}
-                </Link>
-              </Button>
-            )}
-          </div>
-          <ol className="mt-4 rule-card rule-list">
-            {run.items.map((question) => (
-              <li className="py-5" key={question.id}>
-                <QuestionPreview question={question} />
-              </li>
-            ))}
-          </ol>
+          <h2 className="type-section">
+            {t("questions.generatedCount", { count: run.items.length })}
+          </h2>
+          {generated}
         </section>
       )}
     </StepFrame>
