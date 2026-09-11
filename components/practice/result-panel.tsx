@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
@@ -33,20 +33,29 @@ export function ResultPanel({
   const [explanation, setExplanation] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const requestRef = useRef<AbortController | null>(null);
+
+  // Leaving the result screen drops the request instead of letting it run to its
+  // timeout and then write into a component that is gone.
+  useEffect(() => () => requestRef.current?.abort(), []);
 
   const explain = async () => {
+    const controller = new AbortController();
+    requestRef.current?.abort();
+    requestRef.current = controller;
     setBusy(true);
     setError("");
     try {
-      setExplanation(
-        await generateWithSavedAi(buildMistakeExplanationPrompt(wrongContent), {
-          responseFormat: "text",
-        }),
+      const text = await generateWithSavedAi(
+        buildMistakeExplanationPrompt(wrongContent),
+        { responseFormat: "text", signal: controller.signal },
       );
+      if (!controller.signal.aborted) setExplanation(text);
     } catch (reason) {
+      if (controller.signal.aborted) return;
       setError(reason instanceof Error ? reason.message : String(reason));
     } finally {
-      setBusy(false);
+      if (!controller.signal.aborted) setBusy(false);
     }
   };
 

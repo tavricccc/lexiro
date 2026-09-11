@@ -14,11 +14,10 @@ import { copyToClipboard } from "@/src/lib/clipboard";
 /**
  * The single surface for running an AI generation.
  *
- * Calling the API is the primary path: one button, batched automatically, with
- * progress and partial results. The manual path is never removed, but it is not
- * a second button beside the first — it is one line of small text, so the panel
- * asks for a press rather than for a decision. Without a key configured it
- * opens by itself, because then it is the only path there is.
+ * There is exactly one path on screen at a time, and 設定 chooses it: with 直接
+ * 呼叫 API on, this is a button that sends; with it off, it is a prompt to copy
+ * and a box to paste the reply back into. The panel used to show both at once,
+ * which asked the user to make a decision they had already made in settings.
  */
 export function AiRunPanel<TItem>({
   actionLabel,
@@ -48,16 +47,16 @@ export function AiRunPanel<TItem>({
   scopeSummary: string;
   state: AiRunState<TItem>;
 }) {
-  const [manualOpen, setManualOpen] = useState(!configured);
   const [manualIndex, setManualIndex] = useState(0);
   const [manualResponse, setManualResponse] = useState("");
   const [copied, setCopied] = useState(false);
 
   const batchCount = prompts.length;
   const running = state.status === "running";
-  // When everything was built locally there is nothing to send, so the AI
-  // set-up prompt and the manual paste box would both be asking for nothing.
+  // When everything was built locally there is nothing to send, so neither path
+  // has anything to ask for.
   const needsAi = batchCount > 0;
+  const manual = !configured;
   const step = Math.min(manualIndex, Math.max(batchCount - 1, 0));
 
   useEffect(() => {
@@ -82,6 +81,21 @@ export function AiRunPanel<TItem>({
     if (step < batchCount - 1) setManualIndex(step + 1);
   };
 
+  const progressParts = [
+    t("ai.progress", { completed: state.completed, total: state.total }),
+    state.inFlight > 0 && t("ai.progressInFlight", { count: state.inFlight }),
+    state.retrying > 0 && t("ai.progressRetrying", { count: state.retrying }),
+    state.failed > 0 && t("ai.progressFailed", { count: state.failed }),
+  ].filter((part): part is string => Boolean(part));
+
+  // The reply itself is never shown half-written — it means nothing until it
+  // parses — but the character count climbing is what tells the user the
+  // request is alive rather than hung.
+  const characters = state.characters.toLocaleString("en-US");
+
+  const share = (count: number) =>
+    state.total ? `${(count / state.total) * 100}%` : "0%";
+
   return (
     <section className="rounded-[var(--radius-card)] border bg-card">
       <div className="flex flex-wrap items-center justify-between gap-3 p-4 sm:p-5">
@@ -102,27 +116,20 @@ export function AiRunPanel<TItem>({
               <Icons.cancel />
               {t("ai.stop")}
             </Button>
-          ) : configured || !needsAi ? (
-            <Button type="button" disabled={!batchCount && !localCount} onClick={onStart}>
-              <Icons.generate />
-              {actionLabel}
-            </Button>
           ) : (
-            <Button asChild>
-              <Link href="/me">
-                <Icons.ai />
-                {t("ai.setUp")}
-              </Link>
-            </Button>
+            (!manual || !needsAi) && (
+              <Button
+                type="button"
+                disabled={!batchCount && !localCount}
+                onClick={onStart}
+              >
+                <Icons.generate />
+                {actionLabel}
+              </Button>
+            )
           )}
         </div>
       </div>
-
-      {needsAi && !running && !manualOpen && (
-        <div className="px-4 pb-4 sm:px-5">
-          <ManualToggle onClick={() => setManualOpen(true)} open={false} />
-        </div>
-      )}
 
       {running && (
         <div className="rule-t px-4 py-4 sm:px-5">
@@ -131,29 +138,38 @@ export function AiRunPanel<TItem>({
             aria-valuemax={state.total}
             aria-valuemin={0}
             aria-valuenow={state.completed}
-            className="h-1 overflow-hidden rounded-full bg-[var(--surface-inset)]"
+            className="flex h-1 overflow-hidden rounded-full bg-[var(--surface-inset)]"
             role="progressbar"
           >
             <div
-              className="h-full rounded-full bg-primary transition-[width] duration-[var(--motion-control)] ease-[var(--ease-arrive)]"
-              style={{
-                width: `${state.total ? (state.completed / state.total) * 100 : 0}%`,
-              }}
+              className="h-full bg-primary transition-[width] duration-[var(--motion-control)] ease-[var(--ease-arrive)]"
+              style={{ width: share(state.succeeded) }}
+            />
+            <div
+              className="h-full bg-destructive transition-[width] duration-[var(--motion-control)] ease-[var(--ease-arrive)]"
+              style={{ width: share(state.failed) }}
             />
           </div>
-          <p className="mt-2.5 text-xs tabular-nums text-muted-foreground">
-            {t("ai.progress", {
-              completed: state.completed,
-              total: state.total,
-            })}
-          </p>
+          <div className="mt-2.5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs tabular-nums text-muted-foreground">
+            <p>{progressParts.join(" · ")}</p>
+            {state.characters > 0 && (
+              <p aria-live="polite">
+                {t("ai.progressCharacters", { count: characters })}
+              </p>
+            )}
+          </div>
         </div>
       )}
 
       {!running && state.failures.length > 0 && (
         <div className="rule-t px-4 py-4 text-sm sm:px-5">
           <p className="font-medium text-destructive">
-            {t("ai.someBatchesFailed", { count: state.failures.length })}
+            {state.failedSteps.length > 1
+              ? t("ai.failedSteps", {
+                  count: state.failedSteps.length,
+                  steps: state.failedSteps.join("、"),
+                })
+              : t("ai.someBatchesFailed", { count: state.failures.length })}
           </p>
           <p className="mt-1 text-xs leading-5 text-muted-foreground">
             {state.failures[0]?.message}
@@ -171,17 +187,21 @@ export function AiRunPanel<TItem>({
         </div>
       )}
 
+      {!running && !state.failures.length && state.status === "error" && state.error && (
+        <p className="rule-t px-4 py-4 text-sm text-destructive sm:px-5" role="alert">
+          {state.error}
+        </p>
+      )}
+
       {!running && state.status === "cancelled" && (
         <p className="rule-t px-4 py-4 text-sm text-muted-foreground sm:px-5">
           {t("ai.stopped")}
         </p>
       )}
 
-      {manualOpen && needsAi && (
-        <div className="t-panel-reveal rule-t px-4 py-5 sm:px-5">
-          <p className="type-lead">
-            {t("ai.manualDescription")}
-          </p>
+      {manual && needsAi && (
+        <div className="rule-t px-4 py-5 sm:px-5">
+          <p className="type-lead">{t("ai.manualDescription")}</p>
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <Button type="button" variant="secondary" onClick={() => void copyPrompt()}>
               {copied ? <Icons.success /> : <Icons.copy />}
@@ -222,32 +242,18 @@ export function AiRunPanel<TItem>({
               {manualError}
             </p>
           )}
-          <p className="mt-5">
-            <ManualToggle onClick={() => setManualOpen(false)} open />
+          <p className="mt-5 text-xs text-muted-foreground">
+            <Link
+              className="underline-offset-4 hover:text-foreground hover:underline"
+              href="/me"
+            >
+              {t("ai.switchToApi")}
+            </Link>
           </p>
         </div>
       )}
 
       {results && <div className="rule-t px-4 py-5 sm:px-5">{results}</div>}
     </section>
-  );
-}
-
-function ManualToggle({
-  onClick,
-  open,
-}: {
-  onClick: () => void;
-  open: boolean;
-}) {
-  return (
-    <button
-      aria-expanded={open}
-      className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-      onClick={onClick}
-      type="button"
-    >
-      {t(open ? "ai.manualClose" : "ai.manualPath")}
-    </button>
   );
 }

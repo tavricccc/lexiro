@@ -11,7 +11,6 @@ import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
-import { loadAiSettings } from "@/src/lib/ai-provider";
 import { generateWithSavedAi } from "@/src/lib/ai-provider";
 import { buildImportPrompt } from "@/src/lib/importPrompt";
 import {
@@ -56,17 +55,6 @@ export function WordAssistant({
   const [manualError, setManualError] = useState("");
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
 
-  // Long lists are split into as many requests as the configured batch size
-  // needs, instead of being refused.
-  const batches = useMemo(
-    () => chunk(sources, Math.max(1, loadAiSettings().batchSize)),
-    [sources],
-  );
-  const prompts = useMemo(
-    () => batches.map((batch) => buildImportPrompt(raw, batch, examples)),
-    [batches, examples, raw],
-  );
-
   const parseBatch = useCallback(
     (batch: WordGenerationSource[], response: string) =>
       parseWordGenerationJson(response, batch, examples),
@@ -75,14 +63,28 @@ export function WordAssistant({
 
   const generation = useAiGeneration<WordGenerationSource[], WordDraft>({
     merge: mergeWordDrafts,
-    run: async (batch, signal) =>
+    run: async (batch, context) =>
       parseBatch(
         batch,
         await generateWithSavedAi(buildImportPrompt(raw, batch, examples), {
-          signal,
+          onCharacters: context.onCharacters,
+          signal: context.signal,
         }),
       ),
   });
+
+  // Long lists are split into as many requests as the configured batch size
+  // needs, instead of being refused. The size comes from the hook rather than a
+  // synchronous read, which used to fall back to the default whenever this
+  // screen rendered before stored settings had loaded.
+  const batches = useMemo(
+    () => chunk(sources, Math.max(1, generation.batchSize)),
+    [generation.batchSize, sources],
+  );
+  const prompts = useMemo(
+    () => batches.map((batch) => buildImportPrompt(raw, batch, examples)),
+    [batches, examples, raw],
+  );
 
   const { reset, setItems, state: run } = generation;
 

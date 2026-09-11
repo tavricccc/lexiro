@@ -178,12 +178,12 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       for (const item of items) byId.set(item.fingerprint || item.id, item);
       return [...byId.values()];
     },
-    run: async (batch, signal) =>
+    run: async (batch, context) =>
       parseBatch(
         batch,
         await generateWithSavedAi(
           buildQuestionGenerationPrompt(batch, kind, difficulty),
-          { signal },
+          { onCharacters: context.onCharacters, signal: context.signal },
         ),
       ),
   });

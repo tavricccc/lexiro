@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { runAiBatches } from "@/src/lib/ai-batch";
+import { AiNotConfiguredError, AiRequestError } from "@/src/lib/ai-provider";
+
+/** Backoff is real time in production and wasted time in a test. */
+const wait = async () => {};
 
 describe("runAiBatches", () => {
   it("returns every result in batch order", async () => {
@@ -35,6 +39,7 @@ describe("runAiBatches", () => {
     const outcome = await runAiBatches({
       batches: ["only"],
       retries: 2,
+      wait,
       run: async () => {
         attempts++;
         if (attempts < 3) throw new Error("flaky");
@@ -58,14 +63,31 @@ describe("runAiBatches", () => {
     });
 
     expect(onProgress).toHaveBeenCalledWith({
+      characters: 0,
       completed: 0,
       failed: 0,
+      inFlight: 0,
+      retrying: 0,
+      succeeded: 0,
+      total: 2,
+    });
+    // The first request counts as in flight before any reply arrives, so the
+    // panel can say something moved.
+    expect(onProgress).toHaveBeenCalledWith({
+      characters: 0,
+      completed: 0,
+      failed: 0,
+      inFlight: 1,
+      retrying: 0,
       succeeded: 0,
       total: 2,
     });
     expect(onProgress).toHaveBeenLastCalledWith({
+      characters: 0,
       completed: 2,
       failed: 0,
+      inFlight: 0,
+      retrying: 0,
       succeeded: 2,
       total: 2,
     });
@@ -89,5 +111,64 @@ describe("runAiBatches", () => {
     expect(outcome.aborted).toBe(true);
     expect(run).toHaveBeenCalledTimes(1);
     expect(outcome.results.map((entry) => entry.value)).toEqual([1]);
+  });
+
+  it("does not spend a retry on an error that cannot get better", async () => {
+    const run = vi.fn(async () => {
+      throw new AiRequestError("AI 請求失敗（401）：invalid key", {
+        retryable: false,
+        status: 401,
+      });
+    });
+
+    const outcome = await runAiBatches({
+      batches: ["only"],
+      retries: 3,
+      run,
+      wait,
+    });
+
+    expect(run).toHaveBeenCalledTimes(1);
+    expect(outcome.failures[0].message).toContain("401");
+  });
+
+  it("retries an error the provider says is worth retrying", async () => {
+    let attempts = 0;
+    const outcome = await runAiBatches({
+      batches: ["only"],
+      retries: 1,
+      run: async () => {
+        attempts++;
+        if (attempts === 1)
+          throw new AiRequestError("AI 請求失敗（429）", {
+            retryAfterMs: 5,
+            retryable: true,
+            status: 429,
+          });
+        return "recovered";
+      },
+      wait,
+    });
+
+    expect(attempts).toBe(2);
+    expect(outcome.results[0].value).toBe("recovered");
+  });
+
+  it("stops the whole run when the AI is not configured", async () => {
+    const run = vi.fn(async () => {
+      throw new AiNotConfiguredError("尚未填入 API key");
+    });
+
+    const outcome = await runAiBatches({
+      batches: [1, 2, 3, 4],
+      concurrency: 1,
+      retries: 2,
+      run,
+      wait,
+    });
+
+    expect(run).toHaveBeenCalledTimes(1);
+    expect(outcome.fatal).toBe("尚未填入 API key");
+    expect(outcome.failures).toEqual([{ index: 0, message: "尚未填入 API key" }]);
   });
 });
