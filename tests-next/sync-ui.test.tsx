@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { CloudGate } from "@/components/cloud-gate";
@@ -17,7 +17,10 @@ function renderSyncIndicator() {
 }
 
 describe("cloud sync UI", () => {
-  afterEach(() => useCloudStore.setState(initialCloudState, true));
+  afterEach(() => {
+    cleanup();
+    useCloudStore.setState(initialCloudState, true);
+  });
 
   it("renders the sync indicator without an unstable external-store snapshot loop", () => {
     expect(() => renderSyncIndicator()).not.toThrow();
@@ -32,6 +35,12 @@ describe("cloud sync UI", () => {
     useCloudStore.setState({ configured: true, ready: true, user: { uid: "test-user" } as never, status: "syncing" });
     render(<CloudGate><div>active practice</div></CloudGate>);
     expect(screen.getByText("active practice")).toBeInTheDocument();
+  });
+
+  it("says how much is waiting rather than only that something is", () => {
+    useCloudStore.setState({ configured: true, ready: true, status: "synced", pending: 11 });
+    renderSyncIndicator();
+    expect(screen.getByRole("button").getAttribute("aria-label")).toContain("11");
   });
 
   it("keeps local work available when cloud sync fails", () => {

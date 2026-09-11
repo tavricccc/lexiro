@@ -1,53 +1,70 @@
 "use client";
 
-import type { DashboardStats, LearningProgress, SyncStatus } from "@/types";
+import type { SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
 import { create } from "zustand";
 
-import { CLOUD_SYNC_PENDING_EVENT, SYNC_HEAD_STORAGE_KEY } from "@/constants";
+import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
-import { canonicalHash } from "@/src/lib/hash";
 import {
   getShareableAiSettings,
   saveAiSettings,
   waitForAiSettingsPersistence,
   whenAiSettingsReady,
 } from "@/src/lib/ai-provider";
+import { applyCloudRecords } from "@/src/lib/cloud-records";
+import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
 import {
-  cloudDocument,
-  readCloudLibraryV5,
+  mergeProgress,
+  mergeStats,
+  readCloudBlobs,
   writeCloudAiSettings,
-  writeCloudLearningState,
-  writeCloudLibraryChunksV5,
-} from "@/src/lib/cloud-sync-remote";
+  writeCloudProgress,
+  writeCloudStats,
+} from "@/src/lib/cloud-account";
 import {
-  normalizeCloudAiSettings,
-  resolveRemoteProgress,
-  normalizeCloudStats,
-} from "@/src/lib/cloud-sync-schema";
-import {
-  configureFirebaseAuth,
-  getFirebaseFirestore,
-} from "@/src/lib/firebase";
+  pendingRecords,
+  pullRecords,
+  pushRecords,
+  watchCloudChanges,
+} from "@/src/lib/cloud-sync";
+import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
-import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
+import { setStorageNamespace } from "@/src/lib/persist";
 import {
-  clearCloudSyncPending,
-  hasCloudSyncPending,
-} from "@/src/lib/sync-pending";
+  clearBlobDirty,
+  clearPushedRecords,
+  loadSyncJournal,
+  markSeeded,
+  pendingCountOf,
+  resetSyncJournalCache,
+  setSyncCursor,
+} from "@/src/lib/sync-journal";
 
-interface LocalSyncHead {
-  libraryRevision: string;
-  progressHash: string;
-  statsHash: string;
-  settingsHash: string;
-}
+/**
+ * Cloud sync, from the application's side.
+ *
+ * Two rules decide the shape of this store, and both come from bugs the
+ * previous one had.
+ *
+ * The account's storage namespace is chosen *before* anything is loaded. It
+ * used to be set at the very end of a sync, so every page load read the guest
+ * Library, compared it against the signed-in account's cloud copy, concluded
+ * the local side had nothing worth keeping, and committed the cloud copy over
+ * the top. Anything deleted late in a session came back on the next reload,
+ * which is why deleting something could take several attempts.
+ *
+ * And the local Library is shown immediately, never behind the network. Sync
+ * runs underneath it: a pull merges record by record, a push sends what this
+ * device changed. Neither one blocks the user from working.
+ */
 
 interface CloudStore {
   configured: boolean;
+  /** Local data is loaded and the workspace can be shown. Never waits on network. */
   ready: boolean;
-  pending: boolean;
+  pending: number;
   user: User | null;
   status: SyncStatus;
   error: string;
@@ -57,63 +74,49 @@ interface CloudStore {
   sync: () => Promise<void>;
 }
 
+const SYNC_DEBOUNCE_MS = 600;
+/** How long the workspace waits on auth before opening on local data anyway. */
+const AUTH_WAIT_MS = 1_500;
+const MAX_RETRY_ATTEMPTS = 3;
+
 let initializationPromise: Promise<void> | null = null;
+let running: Promise<void> | null = null;
+/** Set when a change lands mid-sync, so the run repeats instead of being dropped. */
+let rerun = false;
+let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 let retryTimer: ReturnType<typeof setTimeout> | null = null;
-let syncDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 let retryAttempt = 0;
-let localChangeVersion = 0;
+let unwatch: (() => void) | null = null;
 
-function hasLibraryContent(
-  state: ReturnType<typeof useLibraryStore.getState>["state"],
-): boolean {
-  return (
-    Object.keys(state.words).length > 0 ||
-    state.sets.length > 0 ||
-    state.questions.length > 0
-  );
+function errorMessage(reason: unknown): string {
+  return reason instanceof Error ? reason.message : String(reason);
 }
 
-function hasLearningActivity(
-  progress: LearningProgress,
-  stats: DashboardStats,
-): boolean {
-  return (
-    Object.keys(progress.cards).length > 0 ||
-    stats.totalMemoryReviews > 0 ||
-    stats.totalQuestionReviews > 0 ||
-    stats.xp > 0
-  );
+function online(): boolean {
+  return typeof navigator === "undefined" || navigator.onLine;
 }
 
-async function readLocalHead(): Promise<LocalSyncHead | null> {
-  const stored = await loadFromStorage(SYNC_HEAD_STORAGE_KEY);
-  if (!stored.value) return null;
-  try {
-    const value = JSON.parse(stored.value) as Partial<LocalSyncHead>;
-    if (
-      typeof value.libraryRevision !== "string" ||
-      typeof value.progressHash !== "string" ||
-      typeof value.statsHash !== "string"
-    )
-      return null;
-    return {
-      ...value,
-      settingsHash:
-        typeof value.settingsHash === "string" ? value.settingsHash : "",
-    } as LocalSyncHead;
-  } catch {
-    return null;
-  }
+/** Loads this namespace's local data. The namespace must already be set. */
+async function hydrateLocal(): Promise<void> {
+  await Promise.all([
+    useLibraryStore.getState().hydrate(),
+    useLearningStore.getState().hydrate(),
+  ]);
 }
 
-async function saveLocalHead(head: LocalSyncHead): Promise<void> {
-  await saveToStorage(SYNC_HEAD_STORAGE_KEY, head);
+async function enterNamespace(namespace: string): Promise<void> {
+  setStorageNamespace(namespace);
+  resetSyncJournalCache();
+  await Promise.all([
+    useLibraryStore.getState().reloadNamespace(),
+    useLearningStore.getState().reloadNamespace(),
+  ]);
 }
 
 export const useCloudStore = create<CloudStore>((set, get) => ({
   configured: isFirebaseConfigured(),
   ready: false,
-  pending: hasCloudSyncPending(),
+  pending: 0,
   user: null,
   status: isFirebaseConfigured() ? "connecting" : "disabled",
   error: "",
@@ -121,52 +124,69 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
   initialize: async () => {
     if (initializationPromise) return initializationPromise;
     initializationPromise = (async () => {
-      set({ pending: hasCloudSyncPending() });
       const scheduleSync = () => {
-        localChangeVersion += 1;
-        set({ pending: true });
+        void refreshPending(set);
         if (!get().user) return;
-        if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
-        syncDebounceTimer = setTimeout(() => {
-          syncDebounceTimer = null;
+        if (debounceTimer) clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          debounceTimer = null;
           void get().sync();
-        }, 350);
+        }, SYNC_DEBOUNCE_MS);
       };
-      window.addEventListener(CLOUD_SYNC_PENDING_EVENT, scheduleSync);
-      window.addEventListener("online", () => {
-        if (get().user) void get().sync();
-      });
-      window.addEventListener("offline", () => {
-        if (get().user) set({ status: "offline" });
-      });
-      if (!get().configured) {
-        set({ ready: true });
-        return;
+      if (typeof window !== "undefined") {
+        window.addEventListener(CLOUD_SYNC_PENDING_EVENT, scheduleSync);
+        window.addEventListener("online", () => {
+          if (get().user) void get().sync();
+        });
+        window.addEventListener("offline", () => {
+          if (get().user) set({ status: "offline" });
+        });
       }
-      const runtime = await import("firebase/auth");
-      const auth = await configureFirebaseAuth();
-      if (!auth) {
+
+      if (!get().configured) {
+        await hydrateLocal();
         set({ ready: true, status: "disabled" });
         return;
       }
+
+      const runtime = await import("firebase/auth");
+      const auth = await configureFirebaseAuth();
+      if (!auth) {
+        await hydrateLocal();
+        set({ ready: true, status: "disabled" });
+        return;
+      }
+
+      // Auth normally resolves from its own storage in a few milliseconds, but
+      // it can also never resolve at all — a blocked request, a dead network.
+      // The workspace is not held hostage to that: after a short wait the guest
+      // Library opens, and signing in swaps the namespace when it arrives.
+      const guestFallback = setTimeout(() => {
+        if (get().ready) return;
+        void hydrateLocal().then(() => set({ ready: true }));
+      }, AUTH_WAIT_MS);
+
       runtime.onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          set({ user: null, ready: true, status: "signed-out" });
-          return;
-        }
-        set({ user, ready: false, status: "connecting" });
-        void Promise.all([
-          useLibraryStore.getState().hydrate(),
-          useLearningStore.getState().hydrate(),
-        ])
-          .then(() => get().sync())
-          .catch((reason) => {
-            set({
-              ready: true,
-              status: "error",
-              error: reason instanceof Error ? reason.message : `${reason}`,
+        clearTimeout(guestFallback);
+        unwatch?.();
+        unwatch = null;
+        void (async () => {
+          // The namespace comes first, always. Everything read before this
+          // point would belong to the wrong account.
+          await enterNamespace(user ? user.uid : "guest");
+          await refreshPending(set);
+          if (!user) {
+            set({ user: null, ready: true, status: "signed-out", error: "" });
+            return;
+          }
+          set({ user, ready: true, status: "syncing", error: "" });
+          const db = getFirebaseFirestore();
+          if (db)
+            unwatch = watchCloudChanges(db, user.uid, () => {
+              void get().sync();
             });
-          });
+          await get().sync();
+        })();
       });
     })();
     return initializationPromise;
@@ -176,215 +196,146 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     const runtime = await import("firebase/auth");
     const auth = await configureFirebaseAuth();
     if (!auth) return;
-    const result = await runtime.signInWithPopup(
-      auth,
-      new runtime.GoogleAuthProvider(),
-    );
-    set({ user: result.user, ready: false, status: "connecting" });
-    await Promise.all([
-      useLibraryStore.getState().hydrate(),
-      useLearningStore.getState().hydrate(),
-    ]);
-    await get().sync();
+    // `onAuthStateChanged` does the rest: namespace, reload, watch, sync.
+    await runtime.signInWithPopup(auth, new runtime.GoogleAuthProvider());
   },
 
   signOut: async () => {
     const runtime = await import("firebase/auth");
     const auth = await configureFirebaseAuth();
     if (auth) await runtime.signOut(auth);
-    if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
-    syncDebounceTimer = null;
-    await useLibraryStore.getState().switchNamespace("guest");
-    await useLearningStore.getState().reloadNamespace();
-    set({
-      user: null,
-      ready: true,
-      status: "signed-out",
-      pending: false,
-      error: "",
-    });
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = null;
+    unwatch?.();
+    unwatch = null;
+    await enterNamespace("guest");
+    set({ user: null, ready: true, status: "signed-out", pending: 0, error: "" });
   },
 
   sync: async () => {
-    if (get().status === "syncing") return;
-    if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
-    syncDebounceTimer = null;
-    const user = get().user;
-    const db = getFirebaseFirestore();
-    if (!user || !db) {
-      set({ ready: true });
-      return;
+    if (running) {
+      rerun = true;
+      return running;
     }
-    if (typeof navigator !== "undefined" && !navigator.onLine) {
-      set({ ready: true, status: "offline" });
-      return;
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = null;
+    const run = runSync(set, get).finally(() => {
+      running = null;
+      if (rerun) {
+        rerun = false;
+        void get().sync();
+      }
+    });
+    running = run;
+    return run;
+  },
+}));
+
+type SetState = (partial: Partial<CloudStore>) => void;
+
+async function refreshPending(set: SetState): Promise<void> {
+  set({ pending: pendingCountOf(await loadSyncJournal()) });
+}
+
+async function runSync(
+  set: SetState,
+  get: () => CloudStore,
+): Promise<void> {
+  const user = get().user;
+  const db = getFirebaseFirestore();
+  if (!user || !db) return;
+  if (!online()) {
+    set({ status: "offline" });
+    await refreshPending(set);
+    return;
+  }
+
+  set({ status: "syncing", error: "" });
+  try {
+    const journal = await loadSyncJournal();
+    // Captured before any request goes out: the journal is live, and an edit
+    // made while a write is in flight must stay queued rather than be cleared
+    // along with the older value that actually went up.
+    const dirtyBlobs = { ...journal.blobs };
+
+    // Pull first. Merging before pushing means a record this device changed is
+    // compared against the cloud copy while it is still marked dirty, so the
+    // newer of the two survives and the loser is simply not sent.
+    const pulled = await pullRecords(db, user.uid, journal.cursor);
+    if (pulled.records.length) {
+      const merged = applyCloudRecords(
+        useLibraryStore.getState().state,
+        pulled.records,
+      );
+      await useLibraryStore.getState().applyRemoteState(merged);
     }
+    if (pulled.cursor !== journal.cursor) await setSyncCursor(pulled.cursor);
 
-    set({ status: "syncing", error: "" });
-    const changeVersionAtStart = localChangeVersion;
-    try {
-      const localLibrary = useLibraryStore.getState().state;
-      const localLearning = useLearningStore.getState();
-      const localAiSettings = await whenAiSettingsReady();
-      const localHead = await readLocalHead();
-      const remoteLibrary = await readCloudLibraryV5(db, user.uid);
-      const firestore = await import("firebase/firestore");
-      const [progressDoc, statsDoc] = await Promise.all([
-        firestore.getDocFromServer(
-          cloudDocument(db, user.uid, "progress", "global"),
-        ),
-        firestore.getDocFromServer(
-          cloudDocument(db, user.uid, "stats", "summary"),
-        ),
-      ]);
-      const settingsDoc = await firestore.getDocFromServer(
-        cloudDocument(db, user.uid, "settings", "ai"),
-      );
-      const remoteProgress = resolveRemoteProgress(
-        progressDoc.exists() ? progressDoc.data() : null,
-        user.uid,
-        localLearning.progress,
-      );
-      const remoteStats = statsDoc.exists()
-        ? normalizeCloudStats(statsDoc.data(), user.uid)
-        : localLearning.stats;
-      const remoteProgressHash = progressDoc.exists()
-        ? canonicalHash(remoteProgress)
-        : "";
-      const remoteStatsHash = statsDoc.exists()
-        ? canonicalHash(remoteStats)
-        : "";
-      const remoteAiSettings = settingsDoc.exists()
-        ? normalizeCloudAiSettings(settingsDoc.data(), user.uid)
-        : null;
-      const remoteSettingsHash = remoteAiSettings
-        ? canonicalHash(remoteAiSettings)
-        : "";
-      const pending = hasCloudSyncPending();
+    const blobs = await readCloudBlobs(db, user.uid);
+    const learning = useLearningStore.getState();
+    const progress = mergeProgress(learning.progress, blobs.progress);
+    const stats = mergeStats(learning.stats, blobs.stats);
+    const localSettings = await whenAiSettingsReady();
+    const settings = blobs.settings ?? getShareableAiSettings(localSettings);
 
-      let authoritativeLibrary = remoteLibrary.library;
-      let libraryRevision = remoteLibrary.revision;
-      const canPublishLocalLibrary =
-        pending &&
-        hasLibraryContent(localLibrary) &&
-        (!remoteLibrary.revision ||
-          localHead?.libraryRevision === remoteLibrary.revision);
-      if (!remoteLibrary.revision || canPublishLocalLibrary) {
-        const published = await writeCloudLibraryChunksV5(
-          db,
-          user.uid,
-          localLibrary,
-          remoteLibrary.hashes,
-          remoteLibrary.revision,
-        );
-        if (!published.conflicted) {
-          authoritativeLibrary = localLibrary;
-          libraryRevision = published.revision;
-        }
-      }
-
-      const canPublishLocalProgress =
-        pending &&
-        (!progressDoc.exists() ||
-          localHead?.progressHash === remoteProgressHash);
-      const canPublishLocalStats =
-        pending &&
-        (!statsDoc.exists() || localHead?.statsHash === remoteStatsHash);
-      let authoritativeProgress = remoteProgress;
-      let authoritativeStats = remoteStats;
-      const shouldBootstrapLearning =
-        (!progressDoc.exists() || !statsDoc.exists()) &&
-        hasLearningActivity(localLearning.progress, localLearning.stats);
-      if (
-        canPublishLocalProgress ||
-        canPublishLocalStats ||
-        shouldBootstrapLearning
-      ) {
-        const published = await writeCloudLearningState(
-          db,
-          user.uid,
-          canPublishLocalProgress ||
-            (!progressDoc.exists() && shouldBootstrapLearning)
-            ? localLearning.progress
-            : remoteProgress,
-          canPublishLocalStats ||
-            (!statsDoc.exists() && shouldBootstrapLearning)
-            ? localLearning.stats
-            : remoteStats,
-          { progress: remoteProgressHash, stats: remoteStatsHash },
-        );
-        if (published.progress.written && published.stats.written) {
-          authoritativeProgress =
-            canPublishLocalProgress ||
-            (!progressDoc.exists() && shouldBootstrapLearning)
-              ? localLearning.progress
-              : remoteProgress;
-          authoritativeStats =
-            canPublishLocalStats ||
-            (!statsDoc.exists() && shouldBootstrapLearning)
-              ? localLearning.stats
-              : remoteStats;
-        }
-      }
-
-      const localShareableAiSettings = getShareableAiSettings(localAiSettings);
-      const canPublishLocalSettings =
-        pending &&
-        (!settingsDoc.exists() ||
-          localHead?.settingsHash === remoteSettingsHash);
-      let authoritativeAiSettings =
-        remoteAiSettings ?? localShareableAiSettings;
-      if (canPublishLocalSettings || (!settingsDoc.exists() && pending)) {
-        const published = await writeCloudAiSettings(
-          db,
-          user.uid,
-          localAiSettings,
-          remoteSettingsHash,
-        );
-        if (published.result.written)
-          authoritativeAiSettings = localShareableAiSettings;
-      }
-
-      await useLibraryStore
-        .getState()
-        .switchNamespace(user.uid, authoritativeLibrary);
-      await useLearningStore
-        .getState()
-        .importState(authoritativeProgress, authoritativeStats, {
-          markPending: false,
-        });
+    await learning.importState(progress, stats, { markPending: false });
+    if (blobs.settings) {
       saveAiSettings(
-        { ...authoritativeAiSettings, apiKey: localAiSettings.apiKey },
+        { ...blobs.settings, apiKey: localSettings.apiKey },
         { markPending: false },
       );
       await waitForAiSettingsPersistence();
-      await saveLocalHead({
-        libraryRevision,
-        progressHash: canonicalHash(authoritativeProgress),
-        statsHash: canonicalHash(authoritativeStats),
-        settingsHash: canonicalHash(authoritativeAiSettings),
-      });
-      const changedDuringSync = localChangeVersion !== changeVersionAtStart;
-      if (!changedDuringSync) clearCloudSyncPending();
-      retryAttempt = 0;
-      if (retryTimer) clearTimeout(retryTimer);
-      retryTimer = null;
-      set({ ready: true, status: "synced", pending: changedDuringSync });
-      if (changedDuringSync) setTimeout(() => void get().sync(), 0);
-    } catch (reason) {
-      set({
-        ready: true,
-        status: navigator.onLine ? "error" : "offline",
-        error: reason instanceof Error ? reason.message : `${reason}`,
-      });
-      if (navigator.onLine && hasCloudSyncPending()) {
-        retryAttempt += 1;
-        if (retryTimer) clearTimeout(retryTimer);
-        retryTimer = setTimeout(
-          () => void get().sync(),
-          Math.min(30_000, 500 * 2 ** Math.min(retryAttempt, 6)),
-        );
-      }
     }
-  },
-}));
+
+    // Push after the merge, so what goes up is the reconciled value rather than
+    // the copy this device happened to be holding.
+    const work = pendingRecords(useLibraryStore.getState().state, journal);
+    if (work.records.length) await pushRecords(db, user.uid, work.records);
+
+    const sentBlobs = [
+      { kind: "progress" as const, version: dirtyBlobs.progress },
+      { kind: "stats" as const, version: dirtyBlobs.stats },
+      { kind: "settings" as const, version: dirtyBlobs.settings },
+    ];
+    const blobWork: Promise<unknown>[] = [];
+    if (dirtyBlobs.progress || !blobs.progress)
+      blobWork.push(writeCloudProgress(db, user.uid, progress));
+    if (dirtyBlobs.stats || !blobs.stats)
+      blobWork.push(writeCloudStats(db, user.uid, stats));
+    if (dirtyBlobs.settings || !blobs.settings)
+      blobWork.push(
+        writeCloudAiSettings(db, user.uid, {
+          ...settings,
+          apiKey: localSettings.apiKey,
+        }),
+      );
+    await Promise.all(blobWork);
+    await clearPushedRecords(work.clear);
+    await clearBlobDirty(sentBlobs);
+    await markSeeded();
+
+    retryAttempt = 0;
+    if (retryTimer) clearTimeout(retryTimer);
+    retryTimer = null;
+    await refreshPending(set);
+    set({ ready: true, status: "synced", error: "" });
+  } catch (reason) {
+    await refreshPending(set);
+    set({
+      ready: true,
+      status: online() ? "error" : "offline",
+      error: errorMessage(reason),
+    });
+    // Retrying a schema or permission problem just produces the same error on a
+    // timer, so only the transient kinds come back on their own. Everything
+    // else waits for the user to press 同步.
+    if (online() && isRetryableSyncError(reason) && retryAttempt < MAX_RETRY_ATTEMPTS) {
+      retryAttempt += 1;
+      if (retryTimer) clearTimeout(retryTimer);
+      retryTimer = setTimeout(
+        () => void useCloudStore.getState().sync(),
+        Math.min(20_000, 1_000 * 2 ** retryAttempt),
+      );
+    }
+  }
+}

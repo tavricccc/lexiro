@@ -2,7 +2,7 @@ import type { AiProvider, AiSettings } from "@/types";
 import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from "@/constants";
 import { loadFromStorage, saveToStorage } from "@/lib/persist";
 import { isRecord } from "./schema";
-import { markCloudSyncPending } from "./sync-pending";
+import { markBlobDirty } from "./sync-journal";
 
 export const defaultAiSettings: AiSettings = {
   enabled: false,
@@ -81,15 +81,14 @@ export function isAiConfigured(
 const AI_MIN_TIMEOUT_MS = 30_000;
 const AI_MAX_TIMEOUT_MS = 180_000;
 /**
- * A streamed reply is judged on silence rather than on total length: as long as
- * characters keep arriving the request is alive, however long the batch takes,
- * and a connection that goes quiet is dead well before a whole-request deadline
- * would have noticed.
+ * A streamed reply is judged on silence rather than on total length, and the two
+ * silences mean different things. Before the first token the model is reading
+ * the prompt, which legitimately takes tens of seconds; after it, the reply is
+ * being written a token at a time, so several seconds of nothing means the
+ * connection died rather than that the model is thinking.
  */
-const AI_STREAM_IDLE_TIMEOUT_MS = 45_000;
-
-const LEGACY_AI_SETTINGS_KEY = "lexiro-next-ai-settings";
-const LEGACY_AI_API_KEY = "lexiro-next-ai-api-key";
+const AI_FIRST_TOKEN_TIMEOUT_MS = 30_000;
+const AI_STREAM_IDLE_TIMEOUT_MS = 5_000;
 
 const aiProviders: AiProvider[] = ["openai", "anthropic", "google", "custom"];
 let storedSettings: AiSettings = { ...defaultAiSettings };
@@ -191,33 +190,12 @@ async function readAiSettingsState(): Promise<AiSettings> {
     loadFromStorage(AI_API_KEY_STORAGE_KEY),
   ]);
   let shareableSettings = defaultShareableAiSettings();
-  let apiKey = storedApiKey.value ?? "";
+  const apiKey = storedApiKey.value ?? "";
   try {
     if (stored.value)
       shareableSettings = normalizeShareableAiSettings(
         JSON.parse(stored.value),
       );
-    else if (typeof localStorage !== "undefined") {
-      const legacyRaw = localStorage.getItem(LEGACY_AI_SETTINGS_KEY);
-      const legacyKey = localStorage.getItem(LEGACY_AI_API_KEY) ?? "";
-      if (legacyRaw) {
-        const legacy = JSON.parse(legacyRaw) as Record<string, unknown>;
-        shareableSettings = normalizeShareableAiSettings({
-          enabled: legacy.mode === "api" || legacy.enabled === true,
-          provider: legacy.provider,
-          baseUrl: legacy.endpoint ?? legacy.baseUrl ?? "",
-          model: legacy.model,
-          batchSize: legacy.batchSize,
-        });
-        apiKey = legacyKey;
-        await Promise.all([
-          saveToStorage(AI_SETTINGS_KEY, shareableSettings),
-          saveToStorage(AI_API_KEY_STORAGE_KEY, apiKey),
-        ]);
-        localStorage.removeItem(LEGACY_AI_SETTINGS_KEY);
-        localStorage.removeItem(LEGACY_AI_API_KEY);
-      }
-    }
   } catch {
     shareableSettings = defaultShareableAiSettings();
   }
@@ -284,7 +262,7 @@ export function saveAiSettings(
   settingsPersistencePromise = next;
   void next.catch(() => undefined);
   for (const listener of settingsListeners) listener(loadAiSettings());
-  if (options.markPending !== false) markCloudSyncPending();
+  if (options.markPending !== false) void markBlobDirty("settings");
 }
 
 function normalizeText(value: unknown): string {
@@ -529,9 +507,10 @@ function readStreamPayload(
 
 /**
  * Reads a server-sent-events reply, handing the running character count back as
- * it goes. Every chunk also resets the idle deadline, so a batch that genuinely
+ * it goes. Arriving text resets the idle deadline, so a batch that genuinely
  * takes three minutes is never cut off while it is still producing, and one that
- * quietly dies is noticed in well under one.
+ * quietly dies is noticed a few seconds later. Only text counts: a gateway's
+ * keep-alive comment proves the socket is open, not that the model is answering.
  */
 async function readAiStream(
   provider: AiProvider,
@@ -564,6 +543,7 @@ async function readAiStream(
     const chunk = readStreamPayload(provider, payload);
     if (chunk.text) {
       text += chunk.text;
+      options.bump();
       options.onCharacters?.(text.length);
     }
     if (chunk.stopReason) stopReason = chunk.stopReason;
@@ -573,7 +553,6 @@ async function readAiStream(
   for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
-    options.bump();
     buffer += decoder.decode(value, { stream: true });
     const lines = buffer.split("\n");
     buffer = lines.pop() ?? "";
@@ -642,6 +621,24 @@ function readWholeReply(
   };
 }
 
+/**
+ * Which silence ran out. The three cases are genuinely different problems, and
+ * a run of twenty batches is much easier to diagnose when the message says
+ * whether the model never started, stopped halfway, or never replied at all.
+ */
+function streamTimeoutMessage(
+  streaming: boolean,
+  streamedCharacters: number,
+  requestTimeoutMs: number,
+): string {
+  const seconds = (ms: number) => Math.round(ms / 1_000);
+  if (!streaming)
+    return `AI 請求逾時（${seconds(requestTimeoutMs)} 秒），請稍後再試，或到設定調小每批數量。`;
+  if (streamedCharacters === 0)
+    return `AI 等了 ${seconds(AI_FIRST_TOKEN_TIMEOUT_MS)} 秒仍未開始回覆，請再試一次。`;
+  return `AI 回覆停了 ${seconds(AI_STREAM_IDLE_TIMEOUT_MS)} 秒沒有新內容，請再試一次。`;
+}
+
 async function sendAiRequest(
   request: AiRequest,
   options: {
@@ -666,6 +663,7 @@ async function sendAiRequest(
   };
   arm(options.timeoutMs);
   let streaming = false;
+  let streamedCharacters = 0;
 
   try {
     const response = await fetch(request.url, {
@@ -693,10 +691,16 @@ async function sendAiRequest(
       (response.headers.get("content-type") ?? "").includes("text/event-stream");
 
     if (streaming) {
-      arm(AI_STREAM_IDLE_TIMEOUT_MS);
+      // Reading the prompt is not the same as having stopped: the model gets a
+      // generous budget to produce its first token and a short one between
+      // tokens after that.
+      arm(AI_FIRST_TOKEN_TIMEOUT_MS);
       const reply = await readAiStream(options.provider, response.body!, {
         bump: () => arm(AI_STREAM_IDLE_TIMEOUT_MS),
-        onCharacters: options.onCharacters,
+        onCharacters: (characters) => {
+          streamedCharacters = characters;
+          options.onCharacters?.(characters);
+        },
       });
       // The socket closed without the provider ever saying it was finished, so
       // whatever arrived is half a reply — worth sending again rather than
@@ -722,12 +726,9 @@ async function sendAiRequest(
   } catch (reason) {
     if (options.signal?.aborted) throw reason;
     if (timedOut)
-      throw new AiRequestError(
-        streaming
-          ? `AI 回覆停了 ${Math.round(AI_STREAM_IDLE_TIMEOUT_MS / 1_000)} 秒沒有新內容，請再試一次。`
-          : `AI 請求逾時（${Math.round(options.timeoutMs / 1_000)} 秒），請稍後再試，或到設定調小每批數量。`,
-        { retryable: true },
-      );
+      throw new AiRequestError(streamTimeoutMessage(streaming, streamedCharacters, options.timeoutMs), {
+        retryable: true,
+      });
     if (reason instanceof AiRequestError) throw reason;
     if (reason instanceof SyntaxError)
       throw new AiRequestError("AI 回覆不是有效的 JSON。", { retryable: true });

@@ -20,15 +20,14 @@ import {
   normalizePartOfSpeech,
   normalizeWordKey,
 } from "@/src/lib/library";
+import { pruneWordsToMemberships } from "@/src/lib/library-repair";
 import {
   emptyLibraryState,
   getLibraryRepository,
   resetLibraryRepositoryCache,
 } from "@/src/lib/library-repository";
-import { setStorageNamespace } from "@/src/lib/persist";
 import { questionUsesWords } from "@/src/lib/question-ownership";
-import { entriesOf } from "@/src/lib/record";
-import { markCloudSyncPending } from "@/src/lib/sync-pending";
+import { recordLocalChanges, untrackChanges } from "@/src/lib/sync-journal";
 
 export interface WordDraftInput {
   word: string;
@@ -65,14 +64,26 @@ interface LibraryStore {
   saveQuestion: (question: LibraryQuestion) => Promise<SaveQuestionResult>;
   deleteQuestion: (id: string) => Promise<void>;
   importState: (state: LibraryState) => Promise<void>;
-  switchNamespace: (namespace: string, seed?: LibraryState) => Promise<void>;
+  /** Writes a state that came from the cloud, without queuing it to go back. */
+  applyRemoteState: (state: LibraryState) => Promise<void>;
+  /** Re-reads the Library after the active account changed. */
+  reloadNamespace: () => Promise<void>;
 }
 
 const now = () => new Date().toISOString();
 
+/**
+ * Writes the Library and notes what changed for sync.
+ *
+ * The repository already diffs this commit against the previous generation, so
+ * the record-level list of what was written and what disappeared comes back
+ * from the write itself. That is what lets every mutation below stay ignorant
+ * of synchronization: deleting a folder does not have to remember to say that
+ * eleven words went with it.
+ */
 async function commit(state: LibraryState) {
-  await getLibraryRepository().commit(state);
-  markCloudSyncPending();
+  const stats = await getLibraryRepository().commit(state);
+  await recordLocalChanges(stats.changed, stats.removed);
 }
 
 function folderDescendants(
@@ -91,26 +102,6 @@ function folderDescendants(
     }
   }
   return ids;
-}
-
-function pruneWordsToMemberships(
-  words: Record<WordKey, WordEntry>,
-  memberships: Record<string, SetMembership[]>,
-): Record<WordKey, WordEntry> {
-  const usedByWord = new Map<WordKey, Set<SenseId>>();
-  for (const membership of Object.values(memberships).flat()) {
-    const ids = usedByWord.get(membership.wordKey) ?? new Set<SenseId>();
-    membership.senseIds.forEach((senseId) => ids.add(senseId));
-    usedByWord.set(membership.wordKey, ids);
-  }
-  return Object.fromEntries(
-    entriesOf(words).flatMap(([wordKey, word]) => {
-      const ids = usedByWord.get(wordKey);
-      if (!ids) return [];
-      const senses = word.senses.filter((sense) => ids.has(sense.id));
-      return senses.length ? [[wordKey, { ...word, senses }]] : [];
-    }),
-  ) as Record<WordKey, WordEntry>;
 }
 
 export const useLibraryStore = create<LibraryStore>((set, get) => ({
@@ -477,15 +468,27 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     await commit(state);
     set({ state, status: "ready" });
   },
-  switchNamespace: async (namespace, seed) => {
-    setStorageNamespace(namespace);
-    resetLibraryRepositoryCache();
-    if (seed) {
-      await getLibraryRepository().commit(seed);
-      set({ state: seed, status: "ready" });
-      return;
-    }
-    const state = await getLibraryRepository().loadState();
+
+  applyRemoteState: async (state) => {
+    const stats = await getLibraryRepository().commit(state);
+    // These records arrived from the cloud. Pushing them straight back would
+    // be a round trip that changes nothing, and a record dropped here because
+    // a tombstone arrived must not become a tombstone of this device's own.
+    await untrackChanges(stats.changed, stats.removed);
     set({ state, status: "ready" });
+  },
+
+  reloadNamespace: async () => {
+    resetLibraryRepositoryCache();
+    set({ status: "loading", error: null });
+    try {
+      const state = await getLibraryRepository().loadState();
+      set({ state, status: "ready" });
+    } catch (error) {
+      set({
+        status: "error",
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
   },
 }));

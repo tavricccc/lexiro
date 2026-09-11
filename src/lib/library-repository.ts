@@ -36,9 +36,16 @@ import { normalizeLibraryState } from "./share";
  */
 export const LIBRARY_REPOSITORY_SCHEMA_VERSION = 2 as const;
 
-type LibraryRecordKind = "folder" | "set" | "membership" | "word" | "question";
+export type LibraryRecordKind =
+  "folder" | "set" | "membership" | "word" | "question";
 type LibraryRecordValue =
   VocabFolder | LibrarySet | SetMembership[] | WordEntry | LibraryQuestion;
+
+/** One record in the Library, named the way both the store and sync name it. */
+export interface LibraryRecordRef {
+  kind: LibraryRecordKind;
+  id: string;
+}
 
 const RECORD_KINDS: LibraryRecordKind[] = [
   "folder",
@@ -82,6 +89,14 @@ export interface LibraryCommitStats {
   writtenBlobs: number;
   totalRecords: number;
   collectedKeys: number;
+  /**
+   * What this commit did to the Library, record by record. The manifest of the
+   * previous generation already says the hash of every record, so the diff is
+   * free here and saves every caller from working out what it changed. Cloud
+   * sync uses it as its list of what to push.
+   */
+  changed: LibraryRecordRef[];
+  removed: LibraryRecordRef[];
 }
 
 function emptyEntries(): LibraryManifest["entries"] {
@@ -143,6 +158,23 @@ function recordsOf(state: LibraryState): LibraryRecord[] {
       value,
     })),
   ];
+}
+
+function diffManifests(
+  previous: LibraryManifest | null,
+  next: LibraryManifest,
+): { changed: LibraryRecordRef[]; removed: LibraryRecordRef[] } {
+  const changed: LibraryRecordRef[] = [];
+  const removed: LibraryRecordRef[] = [];
+  for (const kind of RECORD_KINDS) {
+    const before = previous?.entries[kind] ?? {};
+    const after = next.entries[kind];
+    for (const [id, hash] of Object.entries(after))
+      if (before[id] !== hash) changed.push({ kind, id });
+    for (const id of Object.keys(before))
+      if (!(id in after)) removed.push({ kind, id });
+  }
+  return { changed, removed };
 }
 
 function manifestChecksum(manifest: LibraryManifest): string {
@@ -383,6 +415,7 @@ export class LibraryRepository {
         0,
       ),
       collectedKeys,
+      ...diffManifests(previousManifest, manifest),
     };
   }
 

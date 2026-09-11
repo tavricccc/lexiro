@@ -44,6 +44,7 @@ export interface RunAiBatchesOptions<TBatch, TResult> {
   batches: readonly TBatch[];
   concurrency?: number;
   onProgress?: (progress: AiBatchProgress) => void;
+  /** In-run retries per batch. Defaults to none: a failed batch is skipped. */
   retries?: number;
   run: (
     batch: TBatch,
@@ -107,6 +108,12 @@ function sleep(ms: number, signal?: AbortSignal): Promise<void> {
  * the output of requests one to three plus a list of what to retry. Callers
  * feed `failures[].index` back as a smaller `batches` array to retry.
  *
+ * Nothing is retried inside the run by default. A failed batch used to sit out
+ * a backoff and go again while the user watched a bar that had stopped moving,
+ * which turned one dead request into three timeouts' worth of waiting. Failing
+ * immediately gets the other batches finished and hands the user a short list
+ * to retry deliberately, which is both faster and easier to understand.
+ *
  * The exception is a failure no retry can fix — the AI is not configured at all
  * — which stops the run instead of marching through every remaining batch to
  * collect the same error twenty times.
@@ -115,7 +122,7 @@ export async function runAiBatches<TBatch, TResult>({
   batches,
   concurrency = AI_BATCH_CONCURRENCY,
   onProgress,
-  retries = 1,
+  retries = 0,
   run,
   signal,
   wait = sleep,

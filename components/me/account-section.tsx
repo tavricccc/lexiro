@@ -120,8 +120,10 @@ export function AccountSection() {
             {t("settings.notConfigured")}
           </p>
         )}
-        {cloud.pending && (
-          <p className="mt-3 text-sm text-warning">{t("settings.syncPending")}</p>
+        {cloud.pending > 0 && (
+          <p className="mt-3 text-sm text-warning">
+            {t("settings.syncPendingCount", { count: cloud.pending })}
+          </p>
         )}
         {cloud.error && (
           <p className="mt-3 text-sm text-destructive" role="alert">

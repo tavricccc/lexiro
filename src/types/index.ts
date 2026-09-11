@@ -7,7 +7,14 @@ export type {
   SetSharePayload,
   SharedSet,
 } from './backup'
-export type { FirestoreAiSettingsDoc, FirestoreLibraryChunk, FirestoreLibraryManifest, FirestoreLibraryManifestPart, FirestoreLibraryV5Chunk, FirestoreLibraryV5Manifest, FirestoreProgressDoc, FirestoreStatsDoc, FirestoreSyncHeadDoc, SyncAfterLocalCommitResult, SyncDirection, SyncPresentation, SyncProgressPhase, SyncProgressState } from './cloud'
+export type {
+  CloudRecordType,
+  FirestoreAiSettingsDoc,
+  FirestoreLibraryMetaDoc,
+  FirestoreProgressDoc,
+  FirestoreRecordDoc,
+  FirestoreStatsDoc,
+} from './cloud'
 export type {
   CardProgress,
   DailyActivity,

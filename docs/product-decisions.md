@@ -98,9 +98,7 @@ are written down. It follows the 115 學年度 學測 paper:
 篇章結構 is five-options-for-four-blanks, which is the 115 學年度 change from the
 previous four-for-four; getting one wrong no longer forces a second one wrong.
 
-The two names this app used before — `standard` and `fillBlank` — were the same
-shape as 詞彙題 and are migrated to `vocabulary` when a stored question is read.
-Both sentence formats now require exactly one blank, because a 詞彙題 without a
+Both sentence formats require exactly one blank, because a 詞彙題 without a
 blank is not a 詞彙題.
 
 Free-response 中譯英 and 英文作文 are deliberately out of scope: they cannot be
@@ -140,3 +138,33 @@ cursor decides what the screen asks and a passage keeps its items together.
 duplicate address, which made every visit to a set an encounter with input
 fields. The questions built from a set live in a tab beside its words rather
 than in a section below them.
+
+## Cloud sync
+
+**A deletion is something the cloud says, not something it fails to mention.**
+Sync used to publish the Library as one packed snapshot and decide, per sync,
+whether the local or the cloud copy won. That model has no way to express "this
+was deleted": an absent record is indistinguishable from one the other device
+has not seen yet, so the cloud copy came back on the next sync and deleting
+something took several attempts. Each record now has its own document, and
+deleting one writes a tombstone rather than removing it.
+
+**Records sync one at a time.** Two devices that touch different words no longer
+conflict at all, and a device that renamed one set sends one document instead of
+the whole Library. Reads are a change feed ordered by the server's timestamp, so
+a sync costs a query for what changed rather than a download of everything. The
+packed model needed a write lock to keep its manifest consistent; that lock had
+a five minute lease, and a tab closed mid-publish wedged every other device
+until it expired. Independent records need no lock, so there is none.
+
+**A merge repairs, it never refuses.** Two devices can each make a change that
+is valid alone and invalid together — the same new folder name on both, or a
+question whose set the other device deleted. Rejecting such a pair would leave
+the account permanently unable to sync with nothing the user could do about it,
+so `repairLibraryState` resolves every conflict to something: a duplicate name
+gets a suffix, a reference to something that is gone is dropped.
+
+**The workspace opens on local data.** Startup waited for the first cloud
+reconciliation before showing anything, which put a network round trip — and
+every retry of it — in front of the app. The data on the device is the data the
+user was working with; sync catches it up underneath.

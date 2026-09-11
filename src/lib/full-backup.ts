@@ -15,14 +15,8 @@ import {
 } from "@/constants";
 import { getShareableAiSettings } from "@/src/lib/ai-provider";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
-import {
-  normalizeDashboardStats,
-  normalizeFullBackupPayload,
-  normalizeLearningProgress,
-  normalizeLibraryState,
-} from "@/src/lib/share";
+import { normalizeFullBackupPayload } from "@/src/lib/share";
 import { keysOf } from "@/src/lib/record";
-import { isRecord } from "@/src/lib/schema";
 import { localDateKey } from "@/src/lib/date";
 
 export interface PreparedBackupImport {
@@ -71,10 +65,7 @@ export async function readFullBackup(file: File): Promise<FullBackupPayload> {
   const archive = unzipSync(new Uint8Array(await file.arrayBuffer()));
   const raw = archive[ZIP_INTERNAL_FILENAME];
   if (!raw) throw new Error(`${ZIP_INTERNAL_FILENAME} missing`);
-  const value: unknown = JSON.parse(strFromU8(raw));
-  return isSettingsBackupV2(value)
-    ? migrateSettingsBackupV2(value)
-    : normalizeFullBackupPayload(value);
+  return normalizeFullBackupPayload(JSON.parse(strFromU8(raw)));
 }
 
 export function prepareBackupImport(
@@ -107,53 +98,3 @@ export function prepareBackupImport(
   };
 }
 
-interface SettingsBackupV2 {
-  ai?: unknown;
-  exportedAt: string;
-  library: unknown;
-  progress: unknown;
-  schemaVersion: 2;
-  stats: unknown;
-}
-
-function isSettingsBackupV2(value: unknown): value is SettingsBackupV2 {
-  return (
-    isRecord(value) &&
-    value.schemaVersion === 2 &&
-    typeof value.exportedAt === "string"
-  );
-}
-
-function migrateSettingsBackupV2(value: SettingsBackupV2): FullBackupPayload {
-  const ai = isRecord(value.ai) ? value.ai : {};
-  const provider =
-    ai.provider === "anthropic" ||
-    ai.provider === "google" ||
-    ai.provider === "custom"
-      ? ai.provider
-      : "openai";
-  const batchSize =
-    typeof ai.batchSize === "number" && Number.isFinite(ai.batchSize)
-      ? Math.min(20, Math.max(5, Math.round(ai.batchSize)))
-      : 10;
-
-  return {
-    version: EXPORT_VERSION,
-    exportedAt: value.exportedAt,
-    appName: APP_NAME,
-    kind: "full-backup",
-    library: normalizeLibraryState(value.library),
-    learning: normalizeLearningProgress(value.progress),
-    stats: normalizeDashboardStats(value.stats),
-    aiSettings: {
-      enabled: ai.mode === "api",
-      provider,
-      baseUrl: typeof ai.endpoint === "string" ? ai.endpoint : "",
-      model:
-        typeof ai.model === "string" && ai.model.trim()
-          ? ai.model.trim()
-          : "gpt-4o-mini",
-      batchSize,
-    },
-  };
-}

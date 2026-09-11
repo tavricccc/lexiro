@@ -182,21 +182,13 @@ function assertEnglish(value: string, field: string, requireEnglish = false) {
     throw new Error(`${field} 必須使用英文`);
 }
 
-/**
- * Reads a sentence format, migrating the two names this app used before it was
- * modelled on Taiwanese papers. `standard` and `fillBlank` were the same shape
- * as 詞彙題 and both become `vocabulary`; the mapping runs on read so stored
- * questions keep working, and nothing downstream ever sees the old names.
- */
+/** The two single-sentence formats: 詞彙題 and 文法題. */
 function readQuestionStyle(value: unknown, index: number): QuestionStyle {
   if (value === "vocabulary" || value === "grammar") return value;
-  if (value === "standard" || value === "fillBlank") return "vocabulary";
   throw new Error(`第 ${index + 1} 題缺少題型`);
 }
 
-/** Packs saved before the 學測 formats existed were all reading passages. */
 function readPassageFormat(value: unknown, index: number): PassageFormat {
-  if (value === undefined) return "reading";
   if (
     value === "reading" ||
     value === "cloze" ||

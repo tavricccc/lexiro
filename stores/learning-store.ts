@@ -32,7 +32,7 @@ import {
   normalizeDashboardStats,
   normalizeLearningProgress,
 } from "@/src/lib/share";
-import { markCloudSyncPending } from "@/src/lib/sync-pending";
+import { markBlobDirty } from "@/src/lib/sync-journal";
 
 interface LearningStore {
   progress: LearningProgress;
@@ -124,7 +124,7 @@ function persist(
 ) {
   pendingSnapshot = { progress, stats };
   saver.schedule();
-  if (markPending) markCloudSyncPending();
+  if (markPending) void markBlobDirty("progress", "stats");
 }
 
 /** Writes any pending learning state immediately and waits for it to land. */

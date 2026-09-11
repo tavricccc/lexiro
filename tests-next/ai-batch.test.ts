@@ -34,6 +34,22 @@ describe("runAiBatches", () => {
     expect(outcome.failures).toEqual([{ index: 1, message: "429 rate limited" }]);
   });
 
+  it("sends a failing batch exactly once by default", async () => {
+    const run = vi.fn(async (batch: string) => {
+      if (batch === "b") throw new Error("connection reset");
+      return batch.toUpperCase();
+    });
+
+    const outcome = await runAiBatches({ batches: ["a", "b", "c"], run, wait });
+
+    // Ten batches with two dead ones must cost two failures, not six timeouts.
+    expect(run).toHaveBeenCalledTimes(3);
+    expect(outcome.results.map((entry) => entry.value)).toEqual(["A", "C"]);
+    expect(outcome.failures).toEqual([
+      { index: 1, message: "connection reset" },
+    ]);
+  });
+
   it("retries a failing batch up to the retry budget", async () => {
     let attempts = 0;
     const outcome = await runAiBatches({

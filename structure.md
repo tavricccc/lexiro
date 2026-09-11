@@ -57,9 +57,38 @@ and hands a complete state back on every mutation; the repository works out the
 difference.
 
 Identity and integrity both come from `canonicalHash` in `src/lib/hash.ts`:
-SHA-256 truncated to 128 bits. Sense ids, question fingerprints, cloud chunk
-ids and every stored checksum use it, so `firestore.rules` expects chunk ids of
-the form `chunk-` followed by 32 hex characters.
+SHA-256 truncated to 128 bits. Sense ids, question fingerprints, cloud record
+ids and every stored checksum use it, so `firestore.rules` expects a record id
+of the form `<type>-` followed by 32 hex characters.
+
+## Cloud sync
+
+The unit of synchronization is the record, not the Library. `src/lib/cloud-records.ts`
+turns the Library into one document per folder, set, membership, word and
+question and back again; `src/lib/cloud-sync.ts` reads the account's change feed
+(`where('writtenAt', '>', cursor)`, ordered by the server's own timestamp) and
+writes what changed in batches. A deleted record keeps its document and sets
+`deleted`, so a deletion is a fact the cloud states rather than an absence the
+next device has to interpret.
+
+`src/lib/cloud-account.ts` holds the three documents that are not records —
+review schedules, statistics and AI settings — and merges each field by field,
+so answering the same word on two devices does not cost one of them its history.
+
+`src/lib/sync-journal.ts` holds what this device has changed and not yet sent.
+It is a sidecar: domain records carry no synchronization fields. The list of
+dirty records comes free from `LibraryRepository.commit`, which already diffs
+each commit against the previous generation, so no mutation in
+`stores/library-store.ts` has to know that sync exists. Every entry is stamped
+with a local version and a push clears only the version it sent, so an edit made
+while a request was in flight stays queued.
+
+Merging happens per record, newest `updatedAt` wins, and the result goes through
+`repairLibraryState` in `src/lib/library-repair.ts` rather than through
+validation: two devices can each make a legal change that is illegal together —
+the same set name, a question whose set the other device deleted — and a merge
+that could fail would strand the account. Learning progress merges card by card
+so neither device's reviews are lost.
 
 Learning progress and statistics are one debounced blob per account, flushed
 when the page is hidden. Question statistics are sparse — a format/difficulty
@@ -72,6 +101,7 @@ Persisted schema versions, all independent of one another:
 | Data | Version | Defined in |
 | --- | --- | --- |
 | Library repository (IndexedDB) | 2 | `src/lib/library-repository.ts` |
-| Cloud documents (Firestore) | 5 | `src/constants/cloud.ts` |
+| Sync journal (IndexedDB) | 1 | `src/lib/sync-journal.ts` |
+| Cloud documents (Firestore) | 6 | `src/constants/cloud.ts` |
 | Practice session snapshot | 2 | `src/types/session.ts` |
 | Backup and share files | 1 | `src/types/backup.ts` |

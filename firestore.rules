@@ -10,19 +10,13 @@ service cloud.firestore {
       return signedIn(uid) && request.resource.data.ownerId == uid;
     }
 
-    function ownerUpdate(uid) {
-      return signedIn(uid)
-        && resource.data.ownerId == uid
-        && request.resource.data.ownerId == uid;
-    }
-
     function validProgress() {
       return request.resource.data.keys().hasOnly([
         'cards', 'updatedAt', 'ownerId', 'schemaVersion'
         ])
         && request.resource.data.cards is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 5;
+        && request.resource.data.schemaVersion == 6;
     }
 
     function validStats() {
@@ -55,83 +49,34 @@ service cloud.firestore {
         && request.resource.data.questionStatsBySense is map
         && request.resource.data.dailyHistory is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 5;
+        && request.resource.data.schemaVersion == 6;
     }
 
-    function validSectionItems() {
-      // Firestore Rules cannot iterate through maps nested in arbitrary lists.
-      // Canonical item schemas are validated before writes by the client parser.
-      return request.resource.data.section in ['words', 'sets', 'memberships', 'folders', 'questions']
-        && request.resource.data.items is list;
-    }
-
-    function validLibraryChunk(chunkId) {
+    // One Library record. The document id is the record's type and the hash of
+    // its Library id, which is what lets a word key hold any character a user
+    // can type while every document still has a legal, checkable name.
+    //
+    // A deleted record keeps its document and sets `deleted`. That is the point
+    // of the design: the cloud states that something was thrown away, instead
+    // of leaving its absence to be guessed at by whichever device asks next.
+    function validRecord(uid, recordId) {
       return request.resource.data.keys().hasOnly([
-        'ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items'
+        'ownerId', 'schemaVersion', 'type', 'recordKey', 'deleted',
+        'updatedAt', 'payload', 'writtenAt'
       ])
-        && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 5
-        && request.resource.data.chunkId == chunkId
-        && request.resource.data.chunkId.matches('chunk-[a-f0-9]{32}')
+        && request.resource.data.ownerId == uid
+        && request.resource.data.schemaVersion == 6
+        && request.resource.data.type in ['folder', 'set', 'membership', 'word', 'question']
+        && request.resource.data.recordKey is string
+        && request.resource.data.recordKey.size() > 0
+        && request.resource.data.deleted is bool
         && request.resource.data.updatedAt is string
-        && request.resource.data.checksum is string
-        && request.resource.data.section in ['words', 'sets', 'memberships', 'folders', 'questions']
-        && request.resource.data.items is list
-        && validSectionItems();
-    }
-
-    function validLibraryManifest() {
-      return request.resource.data.keys().hasOnly([
-        'ownerId', 'schemaVersion', 'documentType', 'updatedAt', 'revision', 'chunks', 'manifestParts'
-      ])
-        && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 5
-        && request.resource.data.documentType == 'library-manifest'
-        && request.resource.data.updatedAt is string
-        && request.resource.data.revision is string
-        && request.resource.data.chunks is map
-        && (!request.resource.data.keys().hasAny(['manifestParts']) || request.resource.data.manifestParts is map);
-    }
-
-    function validLibraryManifestPart(partId) {
-      return request.resource.data.keys().hasOnly([
-        'ownerId', 'schemaVersion', 'documentType', 'partId', 'updatedAt', 'checksum', 'chunks'
-      ])
-        && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 5
-        && request.resource.data.documentType == 'library-manifest-part'
-        && request.resource.data.partId == partId
-        && request.resource.data.partId.matches('manifest-part-[0-9]{4}')
-        && request.resource.data.updatedAt is string
-        && request.resource.data.checksum is string
-        && request.resource.data.chunks is map;
-    }
-
-    function validSyncHead() {
-      return request.resource.data.keys().hasOnly([
-        'ownerId', 'schemaVersion', 'updatedAt', 'libraryRevision',
-        'progressHash', 'statsHash', 'settingsHash'
-      ])
-        && request.resource.data.ownerId is string
-        && request.resource.data.schemaVersion == 5
-        && request.resource.data.updatedAt is string
-        && request.resource.data.libraryRevision is string
-        && request.resource.data.progressHash is string
-        && request.resource.data.statsHash is string
-        && request.resource.data.settingsHash is string;
-    }
-
-    function validLibraryDocument(documentId) {
-      return validLibraryChunk(documentId) || validLibraryManifestPart(documentId);
-    }
-
-    function manifestDoesNotReference(uid, documentId) {
-      return !exists(/databases/$(database)/documents/users/$(uid)/library/manifest)
-        || (
-          (!get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.keys().hasAny(['chunks'])
-            || !get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.chunks.keys().hasAny([documentId]))
-          && (!get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.keys().hasAny(['manifestParts'])
-            || !get(/databases/$(database)/documents/users/$(uid)/library/manifest).data.manifestParts.keys().hasAny([documentId]))
+        && recordId.matches('(folder|set|membership|word|question)-[a-f0-9]{32}')
+        && request.resource.data.writtenAt == request.time
+        && (
+          request.resource.data.deleted
+            ? !request.resource.data.keys().hasAny(['payload'])
+            : request.resource.data.payload is map
         );
     }
 
@@ -139,37 +84,18 @@ service cloud.firestore {
       allow read, delete: if signedIn(uid);
       allow create, update: if signedIn(uid) && request.resource.data.ownerId == uid;
 
-      match /library/manifest {
+      match /records/{recordId} {
         allow read: if signedIn(uid);
-        allow create: if ownerCreate(uid) && validLibraryManifest();
-        allow update: if ownerUpdate(uid) && validLibraryManifest();
+        allow create, update: if signedIn(uid) && validRecord(uid, recordId);
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
-      match /library/{chunkId} {
+      // Bumped on every push so other devices learn there is something to pull.
+      match /meta/{documentId} {
         allow read: if signedIn(uid);
-        allow create: if ownerCreate(uid) && validLibraryDocument(chunkId);
-        // v5 chunks and manifest parts are immutable. Replaying an identical
-        // write is harmless, but changing a published document is not.
-        allow update: if ownerUpdate(uid) && validLibraryDocument(chunkId) && request.resource.data == resource.data;
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid && manifestDoesNotReference(uid, chunkId);
-      }
-
-      match /libraryLocks/{lockId} {
-        allow read: if signedIn(uid);
-        allow create, update: if signedIn(uid)
-          && lockId == 'v5-write'
-          && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'token', 'expiresAt'])
-          && request.resource.data.ownerId == uid
-          && request.resource.data.schemaVersion == 5
-          && request.resource.data.token is string
-          && request.resource.data.expiresAt is number;
-        allow delete: if signedIn(uid) && lockId == 'v5-write' && resource.data.ownerId == uid;
-      }
-
-      match /sync/head {
-        allow read: if signedIn(uid);
-        allow create, update: if ownerCreate(uid) && validSyncHead();
+        allow create, update: if ownerCreate(uid)
+          && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'changedAt'])
+          && request.resource.data.schemaVersion == 6;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
@@ -199,7 +125,7 @@ service cloud.firestore {
           && request.resource.data.model is string
           && request.resource.data.batchSize is number
           && request.resource.data.updatedAt is string
-          && request.resource.data.schemaVersion == 5;
+          && request.resource.data.schemaVersion == 6;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
