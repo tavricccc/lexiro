@@ -23,7 +23,7 @@ import {
 } from "@/src/lib/cloud-sync-remote";
 import {
   normalizeCloudAiSettings,
-  normalizeCloudProgress,
+  resolveRemoteProgress,
   normalizeCloudStats,
 } from "@/src/lib/cloud-sync-schema";
 import {
@@ -240,9 +240,11 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       const settingsDoc = await firestore.getDocFromServer(
         cloudDocument(db, user.uid, "settings", "ai"),
       );
-      const remoteProgress = progressDoc.exists()
-        ? normalizeCloudProgress(progressDoc.data(), user.uid)
-        : { cards: {}, updatedAt: "" };
+      const remoteProgress = resolveRemoteProgress(
+        progressDoc.exists() ? progressDoc.data() : null,
+        user.uid,
+        localLearning.progress,
+      );
       const remoteStats = statsDoc.exists()
         ? normalizeCloudStats(statsDoc.data(), user.uid)
         : localLearning.stats;

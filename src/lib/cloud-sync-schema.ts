@@ -601,6 +601,29 @@ export function normalizeCloudProgress(
   });
 }
 
+/**
+ * What the cloud holds for learning progress, or the local copy when it holds
+ * nothing yet.
+ *
+ * A missing document means the cloud has nothing to say — not that progress is
+ * empty. The stand-in this used to fall back to, `{ cards: {}, updatedAt: "" }`,
+ * is not a valid `LearningProgress`: it fails the same `updatedAt` check every
+ * other reader applies. Whenever it survived as far as the learning store —
+ * a first sync on an account with no cloud progress and nothing pending, or a
+ * write that lost its compare-and-set — the sync ended in
+ * "缺少 learning.updatedAt". Local stays authoritative until the cloud has a
+ * copy, which is how remote stats already behaved.
+ */
+export function resolveRemoteProgress(
+  remote: unknown,
+  uid: string,
+  local: LearningProgress,
+): LearningProgress {
+  return remote === null || remote === undefined
+    ? local
+    : normalizeCloudProgress(remote, uid);
+}
+
 export function normalizeCloudStats(
   value: unknown,
   uid: string,
