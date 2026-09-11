@@ -21,8 +21,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import {
   EmptyState,
   ErrorState,
-  LoadingState,
 } from "@/components/ui/page-state";
+import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
@@ -322,7 +322,7 @@ export function LibraryPage({
             page jumping to whichever arrived. */}
         <StateTransition className="mt-5" identity={listingState}>
           <ContentTransition identity={listingState}>
-            {status === "loading" && <LoadingState />}
+            {status === "loading" && <LibraryListSkeleton />}
             {status === "error" && (
               <ErrorState
                 error={t("library.migrationError", { message: error ?? "" })}

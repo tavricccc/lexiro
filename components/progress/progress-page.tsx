@@ -4,7 +4,8 @@ import type { QuestionStatKey, QuestionStatTotals } from "@/types";
 import { useMemo, useState } from "react";
 
 import { PageHeader } from "@/components/ui/page-header";
-import { EmptyState, LoadingState } from "@/components/ui/page-state";
+import { EmptyState } from "@/components/ui/page-state";
+import { ProgressPageSkeleton } from "@/components/ui/workspace-skeleton";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import { difficultyLabel, questionFormatLabel } from "@/lib/question-options";
@@ -70,7 +71,7 @@ export function ProgressPage() {
     }, emptyQuestionStats());
   }, [senseIds, setId, stats.questionStats, stats.questionStatsBySense]);
 
-  if (!loaded || libraryStatus !== "ready") return <LoadingState />;
+  if (!loaded || libraryStatus !== "ready") return <ProgressPageSkeleton />;
 
   const memoryAccuracy = percentage(
     stats.correctMemoryReviews,

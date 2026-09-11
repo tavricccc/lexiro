@@ -5,28 +5,12 @@ import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { ActionFeedbackIcon } from "@/components/ui/action-feedback-icon";
 import { Icons } from "@/components/ui/icons";
-import { Skeleton } from "@/components/ui/skeleton";
+import { ListSkeleton } from "@/components/ui/workspace-skeleton";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
 
 export function LoadingState({ rows = 4 }: { rows?: number }) {
-  return (
-    <div
-      className="rule-card rule-list"
-      aria-busy="true"
-      aria-label={t("common.loading")}
-    >
-      {Array.from({ length: rows }, (_, index) => (
-        <div className="t-skeleton flex items-center gap-4 py-5" key={index}>
-          <Skeleton className="size-5 shrink-0 rounded-md" />
-          <div className="min-w-0 flex-1 space-y-2">
-            <Skeleton className="h-4 w-[38%]" />
-            <Skeleton className="h-3 w-[22%]" />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  return <ListSkeleton rows={rows} />;
 }
 
 /**

@@ -12,7 +12,7 @@ import {
 import { ResultPanel } from "@/components/practice/result-panel";
 import { PracticeSessionView } from "@/components/practice/practice-session-view";
 import { PracticeSetup } from "@/components/practice/practice-setup";
-import { LoadingState } from "@/components/ui/page-state";
+import { PracticePageSkeleton } from "@/components/ui/workspace-skeleton";
 import { usePracticeKeyboard } from "@/components/practice/use-practice-keyboard";
 import { usePersistPracticeSession, usePracticePreferences, useRestorePracticeSession } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
@@ -209,7 +209,7 @@ export function PracticePage({ initialMode = "review", initialModePreset = false
   });
 
   if (libraryStatus !== "ready" || !learningLoaded) {
-    return <LoadingState />;
+    return <PracticePageSkeleton />;
   }
 
   if (!started) {

@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { EmptyState, LoadingState } from "@/components/ui/page-state";
+import { EmptyState } from "@/components/ui/page-state";
+import { QuestionListSkeleton } from "@/components/ui/workspace-skeleton";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import {
@@ -94,7 +95,7 @@ export function QuestionList() {
       )}
 
       <div className="mt-5">
-        {status === "loading" && <LoadingState />}
+        {status === "loading" && <QuestionListSkeleton />}
         {status === "ready" &&
           questions.length === 0 &&
           (filtering ? (

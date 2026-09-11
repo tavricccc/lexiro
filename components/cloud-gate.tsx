@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import { WorkspaceSkeleton } from "@/components/ui/workspace-skeleton";
 import { useCloudStore } from "@/stores/cloud-store";
 
 export function CloudGate({ children }: { children: ReactNode }) {
@@ -12,14 +12,5 @@ export function CloudGate({ children }: { children: ReactNode }) {
   const waitingForAuthoritativeData = !ready;
 
   if (!waitingForAuthoritativeData) return children;
-  return (
-    <div aria-busy="true" className="mx-auto w-full max-w-3xl space-y-4 py-8">
-      <Skeleton className="h-8 w-40 rounded-lg" />
-      <Skeleton className="h-24 w-full rounded-2xl" />
-      <div className="grid gap-3 sm:grid-cols-2">
-        <Skeleton className="h-28 rounded-2xl" />
-        <Skeleton className="h-28 rounded-2xl" />
-      </div>
-    </div>
-  );
+  return <WorkspaceSkeleton />;
 }
