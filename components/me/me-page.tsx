@@ -10,7 +10,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
 import {
   defaultAiSettings,
-  loadAiSettingsState,
+  whenAiSettingsReady,
 } from "@/src/lib/ai-provider";
 import type { AiSettings } from "@/types";
 
@@ -20,8 +20,12 @@ export function MePage() {
   // so the section is told when the real settings have landed.
   const [hydrated, setHydrated] = useState(false);
 
+  // `whenAiSettingsReady` reads the settings as they are now. The hydration
+  // promise resolves once, with the values from app start, so reopening this
+  // screen after a change used to show the old ones — and then autosave wrote
+  // those stale values straight back over the new ones.
   useEffect(() => {
-    void loadAiSettingsState().then((settings) => {
+    void whenAiSettingsReady().then((settings) => {
       setAiSettings(settings);
       setHydrated(true);
     });
