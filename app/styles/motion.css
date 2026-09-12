@@ -170,7 +170,7 @@
   [role="tab"],
   [role="switch"],
   [data-slot="select-trigger"]
-):not(:disabled, [aria-disabled="true"], [data-disabled]):active {
+):not(:disabled, [aria-disabled="true"], [data-disabled], .t-primary-nav-link):active {
   transform: translateY(1px) scale(var(--motion-press-scale));
   transition-duration: var(--motion-touch);
 }
@@ -252,7 +252,9 @@
 }
 
 /* Selection follows the committed route. Pending feedback belongs to the last
-   requested Link; the moving selection and icon settle without overshoot. */
+   requested Link; the moving selection and icon settle without overshoot. A
+   primary navigation link is excluded from the press rung above: the dock is
+   furniture, so the press belongs to the icon rather than to the whole slab. */
 .t-nav-selection,
 .t-nav-pending {
   pointer-events: none;
@@ -265,9 +267,6 @@
 .t-nav-pending[data-pending="true"] {
   opacity: 1;
   transition-delay: var(--motion-touch);
-}
-.t-primary-nav-link[data-liquid-nav-index]:active {
-  transform: none;
 }
 .t-primary-nav-link [data-nav-icon] {
   transition: transform var(--motion-nav) var(--ease-nav);
