@@ -31,7 +31,7 @@
 | 設計 token、版面 | `app/globals.css` | 顏色／圓角／陰影一律用 token，不寫死色碼；尺寸用 rem |
 | 動畫 recipe | `app/styles/motion.css` | 時長與曲線一律用 ladder token，不寫死；`:hover` 必須包在 `@media (hover: hover)` 內 |
 | 動畫時長與曲線本身 | `config/motion.config.json` | 唯一來源，CSS 與 JS 都從這裡產生；JS 動畫一律透過 `lib/motion-timing.ts` 的 `timing()` 取用 |
-| 圖示 | `components/ui/icons.ts` | 元件從 `Icons` 取用，不直接 import `lucide-react` |
+| 圖示 | `components/ui/icons.ts` | 功能元件一律從 `Icons` 這張概念對照表取用，不直接 import `lucide-react` 的圖示；`components/ui/` 的控制項自己的符號（勾、箭頭）和 `LucideIcon` 型別不在此限 |
 
 ### 設定改了要重跑產生器
 
