@@ -1,0 +1,13 @@
+{
+  "id": "word-pos-boundaries",
+  "kind": "words",
+  "raw": "give up 放棄\nin fact 事實上\nhave aux. 構成完成式\nhave v. 擁有\ncan modal v. 能夠\ncan n. 罐子\nlook after 照顧\non time 準時",
+  "batchSize": 8,
+  "review": [
+    "give up and look after must be phr. v.; in fact and on time must be phr.",
+    "Known posHint values must return null in the wire result and remain unchanged after parsing.",
+    "The have auxiliary example must actually use a perfect construction, while the lexical have example must show possession.",
+    "The modal can example must show ability and the noun can example must show a container.",
+    "Every generated example must be a complete English sentence demonstrating only the selected meaning."
+  ]
+}

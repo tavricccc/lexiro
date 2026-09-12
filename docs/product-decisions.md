@@ -43,15 +43,23 @@
 
 ### 進行中：D1／HTTP 整合與前端 managed 切換
 
-2026-09-12 本輪檢查：後端 typecheck、lint（0 warnings）、55 個測試及 build 全數通過；D1／HTTP 已實作的核心可作為一個本地提交階段。整理端點、完整 UI 與正式環境仍未完成。
+2026-09-12 本輪檢查：後端 typecheck、lint（0 warnings）、55 個測試及 build 全數通過；D1／HTTP 核心已本地提交 `c6aecc8`，未 push。整理端點、完整 UI 與正式環境仍未完成。
+
+### 已完成本地驗證：managed 前端切換與逐字編輯
+
+- 前端 typecheck、lint（0 warnings）、146 個測試、production build、diff whitespace 檢查全數通過。涵蓋 token 刷新／帳號隔離、serial runner、backup/journal migration、例句刪除、單字 remap 與共用編輯器行為。尚未做真實部署或瀏覽器端到端驗收。
+- 舊 provider、設定同步、手動 prompt、用量元件與對應文案已刪除。private prompt、schema、評測腳本與案例移到後端；歷史 artifacts 移到後端本地 ignored 目錄。
+- 下一段為文字／照片整理確認、多義輸出、管理員 UI。前述完成標記不包含這些尚未實作的功能。
 
 文件隨每個實作段落更新；完成標記須附驗證範圍，不能只因程式碼已寫就標為完成。臨時中止時保留工作樹並從本節續做。
 
-- 最近變更：`stores/cloud-store.ts` 已移除 AI 設定的載入、同步讀寫與 dirty blob 分支；相關型別、持久化 migration、備份及其餘舊呼叫仍待清理，尚未驗證此段。
+- 最近變更：已移除 AI 設定的同步讀寫、舊 provider／transport／用量與設定元件；完整備份 v2 與 journal v3 migration 已寫，方案點數畫面與固定 5 點錯題解析已接 managed client。正在更新測試並清理公開 prompt／評測檔案，此前端段落尚未通過完整驗證。
+- 本輪驗證更新：前端 managed 切換已通過 typecheck、lint、143 tests、production build；最後的 migration 持久化錯誤處理整理後須補跑檢查才提交。private 評測搬移後後端 70 tests 與其餘三項檢查通過；15 份已存 Luna/low 回覆用目前解析器重驗全部通過，沒有新增模型呼叫。
+- 逐字編輯進度：共用 `word-editor.tsx` 已接 set view 與 AI preview；`word-edit.ts` 在保存時讀最新 Library、只替換目標字並計算 remaps。set-tools 保留名稱／資料夾修改與手動／AI 加字。SetEditor 已改為只新建，既有 edit URL 導回 view。`saveSet` 例句寫入改成採用提交內容，修正刪掉例句仍因舊 union 邏輯復活的問題。本段尚待行為測試及完整四項檢查。
 
 - 規格優先順序：使用者最新指示 → 本檔補充決策 → `backend-blueprint.html` 原始藍圖。原始藍圖不覆寫，所有差異記在本檔。
 - 前端工作區：`C:/Users/tavri/Documents/projects/lexiro`；後端工作區：`C:/Users/tavri/Documents/projects/lexiro-worker`，兩者 main，保留現有未提交變更，不重置。
-- 已推送的後端提交只有 `0a9c95c`、`66ad083`、`c8c052f`，均早於「完整做完前不 push」指示。其後工作尚未提交，不要誤認遠端已有 D1 或 managed 前端。
+- 已推送的後端提交只有 `0a9c95c`、`66ad083`、`c8c052f`，均早於「完整做完前不 push」指示。D1／HTTP 的 `c6aecc8` 只在本地，不要誤認遠端已有 D1 或 managed 前端。
 - Prompt 階段已完成 Luna/low 實測：原基準 13/14，修改後加詞性邊界案例共 15/15；只是當時單義版本的測試，不能代替後續多義與照片驗收。原始回覆保存於 repo 外 `C:/Users/tavri/Documents/projects/lexiro-prompt-eval-private`。
 - 後端已有 D1 migration、原子扣款／退款、來源冪等、cursor 歸屬、HTTP/CORS、管理 API、續期 Cron 與 Responses 轉接。已分別通過 37 個 auth/stream、10 個 D1、8 個 HTTP 整合測試；最新修改後仍須重跑完整四項檢查。
 - 前端 managed client、session/runner/task 與檔位／點數控制已改寫，但切換尚未收尾。舊 AI 設定、同步、備份與錯題解析仍有舊型別引用，當前工作樹不能視為可編譯的交付版本。
