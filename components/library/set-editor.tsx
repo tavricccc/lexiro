@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -15,6 +14,7 @@ import {
 import { SetWordFields } from "@/components/library/set-word-fields";
 import { WordCapture } from "@/components/library/word-capture";
 import { useUnsavedGuard } from "@/components/library/use-unsaved-guard";
+import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
@@ -191,12 +191,11 @@ export function SetEditor({
   );
 
   const backLink = (
-    <Button asChild size="sm" variant="ghost">
-      <Link data-allow-discard="true" href={cancelHref}>
-        <Icons.back />
-        {t(setId ? "setEditor.backToSet" : "setEditor.cancel")}
-      </Link>
-    </Button>
+    <BackControl
+      allowDiscard
+      href={cancelHref}
+      label={t(setId ? "setEditor.backToSet" : "setEditor.cancel")}
+    />
   );
 
   if (entry === "ask") {
@@ -230,17 +229,7 @@ export function SetEditor({
   if (entry === "assist") {
     return (
       <WordCapture
-        back={
-          <Button
-            onClick={() => setEntry(setId ? "manual" : "ask")}
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            <Icons.back />
-            {t("common.back")}
-          </Button>
-        }
+        back={<BackControl onClick={() => setEntry(setId ? "manual" : "ask")} />}
         initialFolderId={initialFolderId}
         onSwitchToManual={() => setEntry("manual")}
         setId={setId}

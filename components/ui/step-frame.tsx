@@ -2,8 +2,8 @@
 
 import type { ReactNode } from "react";
 
+import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
 
@@ -43,14 +43,7 @@ export function StepFrame({
     <div className={width === "wide" ? "mx-auto max-w-3xl" : "mx-auto max-w-xl"}>
       <PageHeader
         back={
-          onBack ? (
-            <Button onClick={onBack} size="sm" type="button" variant="ghost">
-              <Icons.back />
-              {t("common.back")}
-            </Button>
-          ) : (
-            back
-          )
+          onBack ? <BackControl onClick={onBack} /> : back
         }
         className="mb-5 md:mb-6"
         title={title}

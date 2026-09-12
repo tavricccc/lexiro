@@ -1,11 +1,11 @@
 "use client";
 
 import type { ReadingPack } from "@/types";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { AnswerOptions } from "@/components/questions/answer-options";
+import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
@@ -160,14 +160,7 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader
-        back={
-          <Button asChild size="sm" variant="ghost">
-            <Link href={LIBRARY_QUESTIONS_HREF}>
-              <Icons.back />
-              {t("common.back")}
-            </Link>
-          </Button>
-        }
+        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
         title={t("questions.editReading")}
       />
 

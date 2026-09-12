@@ -1,12 +1,12 @@
 "use client";
 
 import type { LibraryQuestion, MultipleChoiceQuestion, QuestionStyle } from "@/types";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 
 import { AnswerOptions } from "@/components/questions/answer-options";
+import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
@@ -120,14 +120,7 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
   return (
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
       <PageHeader
-        back={
-          <Button asChild size="sm" variant="ghost">
-            <Link href={LIBRARY_QUESTIONS_HREF}>
-              <Icons.back />
-              {t("common.back")}
-            </Link>
-          </Button>
-        }
+        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
         title={t("questions.edit")}
       />
 

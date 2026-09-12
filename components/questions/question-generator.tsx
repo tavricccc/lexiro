@@ -1,7 +1,6 @@
 "use client";
 
 import type { LibraryQuestion } from "@/types";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
@@ -12,6 +11,7 @@ import {
 } from "@/components/questions/generation-scope-picker";
 import { GeneratedQuestionResults } from "./generated-question-results";
 import { useSaveGeneratedQuestions } from "./use-save-generated-questions";
+import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
@@ -187,12 +187,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     0,
   );
   const back = (
-    <Button asChild size="sm" variant="ghost">
-      <Link href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}>
-        <Icons.back />
-        {t("common.back")}
-      </Link>
-    </Button>
+    <BackControl href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
   );
 
   if (step === "format") {

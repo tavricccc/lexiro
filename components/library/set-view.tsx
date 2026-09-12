@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 
 import { questionEditHref } from "@/components/questions/question-list";
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
+import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
@@ -99,7 +100,10 @@ export function SetView({ setId }: { setId: string }) {
   if (!current) {
     return (
       <div className="mx-auto max-w-3xl">
-        <PageHeader back={<BackLink href={libraryHref} />} title={t("setDetail.missingTitle")} />
+        <PageHeader
+          back={<BackControl href={libraryHref} label={t("setDetail.back")} />}
+          title={t("setDetail.missingTitle")}
+        />
         <EmptyState
           variant="filtered"
           title={t("setDetail.missingTitle")}
@@ -153,7 +157,7 @@ export function SetView({ setId }: { setId: string }) {
             />
           </>
         }
-        back={<BackLink href={libraryHref} />}
+        back={<BackControl href={libraryHref} label={t("setDetail.back")} />}
         title={current.setName}
       />
 
@@ -268,17 +272,6 @@ export function SetView({ setId }: { setId: string }) {
         title={t("setDetail.delete")}
       />
     </div>
-  );
-}
-
-function BackLink({ href }: { href: string }) {
-  return (
-    <Button asChild size="sm" variant="ghost">
-      <Link href={href}>
-        <Icons.back />
-        {t("setDetail.back")}
-      </Link>
-    </Button>
   );
 }
 
