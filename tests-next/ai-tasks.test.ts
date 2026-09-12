@@ -20,16 +20,23 @@ const word = (value: string): WordEntry => ({
   updatedAt: "2026-09-12",
 });
 const generated = () => ({
-  pos: "n.",
-  meaningZh: "測試字義",
-  example: "This is a test.",
+  senses: [
+    {
+      pos: "n.",
+      meaningZh: "測試字義",
+      example: "This is a test.",
+    },
+  ],
 });
 describe("AI task boundaries", () => {
   it("places all sources in the first context and targets only the next stable references", () => {
     const sources = buildWordGenerationSources("apple, banana, cherry");
     const task = wordTask("", sources, 2);
     expect(task.context).toContain("cherry");
-    expect(JSON.parse(task.steps[1].prompt)).toEqual({ kind: "words", raw: "cherry" });
+    expect(JSON.parse(task.steps[1].prompt)).toEqual({
+      kind: "words",
+      raw: "cherry",
+    });
   });
   it("keeps valid words from a partly invalid segment and requests only missing sources", async () => {
     const sources = buildWordGenerationSources("apple, banana");

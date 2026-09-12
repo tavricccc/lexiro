@@ -9,9 +9,7 @@ const wordSchema = z.object({
   word: z.string().trim().min(1),
   pos: z.string().trim().min(1),
   meaningZh: z.string().trim().min(1),
-  example: z.string(),
-  originalWordKey: z.string().optional(),
-  originalSenseId: z.string().optional(),
+  examples: z.array(z.string()),
 });
 
 export const setFormSchema = z.object({
@@ -23,10 +21,8 @@ export const setFormSchema = z.object({
 export type SetFormValues = z.infer<typeof setFormSchema>;
 
 export const emptyWord = {
-  example: "",
+  examples: [""],
   meaningZh: "",
-  originalSenseId: "",
-  originalWordKey: "",
   pos: "",
   word: "",
 };
@@ -44,10 +40,8 @@ export function getSetWords(
       return sense
         ? [
             {
-              example: sense.examples.join("\n"),
+              examples: sense.examples,
               meaningZh: sense.meaningZh,
-              originalSenseId: sense.id,
-              originalWordKey: word.wordKey,
               pos: sense.pos,
               word: word.word,
             },

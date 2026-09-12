@@ -42,11 +42,16 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/library/set-tools.tsx` — set metadata and manual/AI additions on the existing set page; `set-editor.tsx` now only creates new sets. The old edit URL redirects to the set view.
 - `src/lib/word-edit.ts` — builds one-word edits from the latest library, preserving other rows and calculating only changed sense remaps.
 - `tests-next/word-edit.test.tsx` — latest-state replacement, sense remaps, actual example deletion and shared editor behavior.
+- `components/library/example-fields.tsx` — independently editable, wrapping example rows shared by inline editing and new-set creation. Form drafts use arrays, not newline-delimited text.
+- `tests-next/input-organizer.test.tsx` — no generation before confirmation; corrected review text is what proceeds to generation.
+- `components/library/input-organizer.tsx`, `lib/word-photo.ts` — shared typed/photo cleanup and editable confirmation; browser WebP resizing/encoding before upload.
 - `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache.
 - `components/me/plan-section.tsx` — account point balance and renewal date, replacing the removed BYO-key settings and connection-test components.
+- `components/me/admin-panel.tsx` — Worker-authorized account creation, point/monthly adjustments, notes, trial settings and pagination.
 - `src/lib/ai/session.ts`, `runner.ts`, `tasks.ts` — managed session identity, serial generation/recovery and data-only request assembly. The old provider facade, catalog, request/reply/transport modules, settings persistence and usage component have been removed.
 - `tests-next/managed-client.test.ts`, `tests-next/managed-migration.test.ts` — token refresh, account isolation, streamed text and explicit settings retirement without losing queued edits.
 - Private prompts, schemas, prefix/schema tests, prompt evaluation scripts and fixtures have moved to the separate `lexiro-worker` repository; historical model artifacts are kept outside this public tree.
+- `scripts/check-client-boundary.mjs` — postbuild scan of client string literals against hashed private instruction fingerprints, including escaped Unicode. The scanner contains no prompt text and does not prohibit model IDs.
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
 is the catalogue; the private backend asks a model for prose and answer

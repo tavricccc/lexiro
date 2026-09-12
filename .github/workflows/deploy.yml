@@ -27,6 +27,7 @@ jobs:
       NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY: ${{ secrets.VITE_FIREBASE_APPCHECK_SITE_KEY }}
       NEXT_PUBLIC_FIREBASE_APPCHECK_ENABLED: ${{ secrets.VITE_FIREBASE_APPCHECK_ENABLED }}
       NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+      NEXT_PUBLIC_AI_WORKER_URL: ${{ vars.NEXT_PUBLIC_AI_WORKER_URL }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -64,6 +65,10 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
+          if [[ "$NEXT_PUBLIC_AI_WORKER_URL" != https://* ]]; then
+            echo "::error title=Missing Worker configuration::Set NEXT_PUBLIC_AI_WORKER_URL to the deployed HTTPS Worker origin in the Production environment variables."
+            exit 1
+          fi
           if [ -z "$VERCEL_TOKEN" ]; then
             echo "::error title=Missing GitHub Secret::Add VERCEL_TOKEN in Settings > Secrets and variables > Actions > Production."
             exit 1

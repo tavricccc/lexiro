@@ -50,10 +50,11 @@ describe("generation lifecycle", () => {
     await act(async () => release(response("discard late b")));
     await waitFor(() => expect(result.current.state.status).toBe("cancelled"));
     expect(result.current.state.items).toEqual(["a"]);
+    act(() => result.current.setItems(["edited a"]));
     mocks.send.mockResolvedValueOnce(response("b"));
     act(() => result.current.resume());
     await waitFor(() => expect(result.current.state.status).toBe("done"));
-    expect(result.current.state.items).toEqual(["a", "b"]);
+    expect(result.current.state.items).toEqual(["edited a", "b"]);
     mocks.send
       .mockResolvedValueOnce(response("new a"))
       .mockResolvedValueOnce(response("new b"));

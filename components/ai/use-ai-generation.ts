@@ -58,6 +58,9 @@ export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = 
   }, [execute, tier]);
   const cancel = useCallback(() => abortRef.current?.abort(), []);
   const reset = useCallback(() => { generationId.current++; abortRef.current?.abort(); abortRef.current = null; runRef.current = null; setState(initialState<T>()); }, []);
-  const setItems = useCallback((items: T[]) => setState((s) => ({ ...s, items })), []);
+  const setItems = useCallback((items: T[]) => {
+    if (runRef.current) runRef.current.items = [...items];
+    setState((s) => ({ ...s, items }));
+  }, []);
   return { state, ready, configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL), batchSize: 20, tier, setTier, start, resume, append, cancel, reset, setItems };
 }

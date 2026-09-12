@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldRow } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { ExampleFields } from "@/components/library/example-fields";
 import { t } from "@/lib/i18n";
 
 /**
@@ -71,13 +71,14 @@ export function SetWordFields({
               placeholder={t("setEditor.meaningPlaceholder")}
             />
           </Field>
-          <Field hint={t("setEditor.examplesHint")} label={t("setEditor.examples")}>
-            <Textarea
-              {...form.register(`words.${index}.example`)}
-              className="min-h-24"
-              placeholder={t("setEditor.examplePlaceholder")}
-            />
-          </Field>
+          <ExampleFields
+            values={form.watch(`words.${index}.examples`)}
+            onChange={(examples) =>
+              form.setValue(`words.${index}.examples`, examples, {
+                shouldDirty: true,
+              })
+            }
+          />
         </FieldRow>
 
         <div className="mt-3 flex flex-wrap gap-2">

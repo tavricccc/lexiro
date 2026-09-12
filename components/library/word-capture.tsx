@@ -18,10 +18,7 @@ import { useLibraryStore } from "@/stores/library-store";
 
 function toDrafts(rows: AssistedWordRow[]) {
   return rows.map((row) => ({
-    examples: row.example
-      .split(/\r?\n/)
-      .map((value) => value.trim())
-      .filter(Boolean),
+    examples: row.examples.map((value) => value.trim()).filter(Boolean),
     meaningZh: row.meaningZh,
     pos: row.pos,
     word: row.word,
@@ -67,12 +64,14 @@ export function WordCapture({
     const drafts = toDrafts(rows);
     if (!drafts.length) return;
     try {
+      const latest = useLibraryStore.getState().state;
+      const current = latest.sets.find((entry) => entry.id === savedId);
       // Adding more to a set that already exists means saving it whole, so the
       // rows already in it are read back and carried along.
       const previous = savedId
         ? toDrafts(
-            getSetWords(state, savedId).map((row) => ({
-              example: row.example,
+            getSetWords(latest, savedId).map((row) => ({
+              examples: row.examples,
               meaningZh: row.meaningZh,
               pos: row.pos,
               word: row.word,
@@ -80,9 +79,9 @@ export function WordCapture({
           )
         : [];
       const saved = await saveSet({
-        folderId: existing?.folderId ?? initialFolderId,
+        folderId: current?.folderId ?? initialFolderId,
         id: savedId || undefined,
-        setName: savedId ? (existing?.setName ?? name) : name,
+        setName: current?.setName ?? name,
         words: [...previous, ...drafts],
       });
       setSavedId(saved.id);
@@ -115,10 +114,7 @@ export function WordCapture({
 
   return (
     <div className="mx-auto max-w-3xl">
-      <PageHeader
-        back={back}
-        title={t("setEditor.aiAssist")}
-      />
+      <PageHeader back={back} title={t("setEditor.aiAssist")} />
 
       {!savedId && (
         <div className="mb-5">
@@ -134,7 +130,7 @@ export function WordCapture({
 
       {/* A new round is a new request with a new paste, so the panel starts
           over rather than showing the previous run's progress. */}
-      <WordAssistant key={round} onApply={(rows) => void store(rows)} />
+      <WordAssistant key={round} onApply={store} />
 
       <p className="mt-6">
         <button

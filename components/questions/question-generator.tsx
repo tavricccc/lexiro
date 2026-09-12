@@ -157,7 +157,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     reset();
   }, [difficulty, kind, reset, selected]);
 
-
   const senseCount = words.reduce(
     (count, word) => count + word.senses.length,
     0,
@@ -295,6 +294,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
           onStart={() => generation.start(task, prebuilt?.built ?? [])}
           kind={task.kind}
           billableCount={task.billableCount}
+          appendBillableCount={moreTask.billableCount}
           tier={generation.tier}
           onTierChange={generation.setTier}
           scopeSummary={t("questions.scopeSummary", { count: senseCount })}

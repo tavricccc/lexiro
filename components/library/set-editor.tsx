@@ -35,11 +35,7 @@ import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
  * the view at `/sets/[setId]`. Editing is the state you step into from there,
  * so this screen holds the fields and the one button that commits them.
  */
-export function SetEditor({
-  initialFolderId,
-}: {
-  initialFolderId?: string;
-}) {
+export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
   const router = useRouter();
   const { state, status, saveSet } = useLibraryStore();
   const form = useForm<SetFormValues>({
@@ -53,22 +49,18 @@ export function SetEditor({
   const fields = useFieldArray({ control: form.control, name: "words" });
   // A new set asks how you want to add words before showing either surface, so
   // the typing form and the paste-a-list assistant are never both on screen.
-  const [entry, setEntry] = useState<"ask" | "manual" | "assist">(
-    "ask",
-  );
+  const [entry, setEntry] = useState<"ask" | "manual" | "assist">("ask");
   const { clearPending, pendingHref } = useUnsavedGuard(form.formState.isDirty);
   const setName = form.watch("setName");
   const folderId = form.watch("folderId");
   const errors = form.formState.errors;
-
 
   const submit = form.handleSubmit(async (values) => {
     const defaultName = t("setEditor.defaultSetName").toLocaleLowerCase();
     const defaultSet =
       values.setName.trim().toLocaleLowerCase() === defaultName
         ? state.sets.find(
-            (entry) =>
-              entry.setName.trim().toLocaleLowerCase() === defaultName,
+            (entry) => entry.setName.trim().toLocaleLowerCase() === defaultName,
           )
         : undefined;
     const targetSetId = defaultSet?.id;
@@ -95,10 +87,7 @@ export function SetEditor({
       id: targetSetId,
       setName: values.setName,
       words: words.map((word) => ({
-        examples: word.example
-          .split(/\r?\n/)
-          .map((value) => value.trim())
-          .filter(Boolean),
+        examples: word.examples.map((value) => value.trim()).filter(Boolean),
         meaningZh: word.meaningZh,
         pos: word.pos,
         word: word.word,
@@ -111,7 +100,8 @@ export function SetEditor({
   // returns there. A new set has no page yet, so it returns to the folder it
   // was started from.
   const homeFolderId = initialFolderId;
-  const cancelHref = homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
+  const cancelHref =
+    homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
       ? `/library?folderId=${encodeURIComponent(homeFolderId)}`
       : "/library";
 
@@ -145,20 +135,13 @@ export function SetEditor({
   );
 
   const backLink = (
-    <BackControl
-      allowDiscard
-      href={cancelHref}
-      label={t("setEditor.cancel")}
-    />
+    <BackControl allowDiscard href={cancelHref} label={t("setEditor.cancel")} />
   );
 
   if (entry === "ask") {
     return (
       <div className="mx-auto max-w-xl">
-        <PageHeader
-          back={backLink}
-          title={t("setEditor.howTitle")}
-        />
+        <PageHeader back={backLink} title={t("setEditor.howTitle")} />
         <ChoiceList
           onSelect={(value) => setEntry(value as "manual" | "assist")}
           options={[
@@ -192,32 +175,27 @@ export function SetEditor({
 
   return (
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
-      <PageHeader
-        back={backLink}
-        title={t("setEditor.createTitle")}
-      />
+      <PageHeader back={backLink} title={t("setEditor.createTitle")} />
 
       <div>
-          <details className="group rounded-[var(--radius-card)] border px-4 py-3.5 open:bg-[var(--surface-inset)] sm:px-5">
-            <summary className="cursor-pointer list-none text-sm font-medium marker:content-none">
-              <span className="flex items-center justify-between gap-3">
-                <span>
-                  {t("setEditor.organizationSummary", {
-                    name: setName || t("setEditor.defaultSetName"),
-                  })}
-                </span>
-                <span className="text-xs text-muted-foreground group-open:hidden">
-                  {t("setEditor.organize")}
-                </span>
+        <details className="group rounded-[var(--radius-card)] border px-4 py-3.5 open:bg-[var(--surface-inset)] sm:px-5">
+          <summary className="cursor-pointer list-none text-sm font-medium marker:content-none">
+            <span className="flex items-center justify-between gap-3">
+              <span>
+                {t("setEditor.organizationSummary", {
+                  name: setName || t("setEditor.defaultSetName"),
+                })}
               </span>
-            </summary>
-            <div className="mt-5 rule-t pt-5">{metadataFields}</div>
-          </details>
+              <span className="text-xs text-muted-foreground group-open:hidden">
+                {t("setEditor.organize")}
+              </span>
+            </span>
+          </summary>
+          <div className="mt-5 rule-t pt-5">{metadataFields}</div>
+        </details>
 
         <div className="section-gap flex flex-wrap items-center justify-between gap-3">
-          <h2 className="type-section">
-            {t("setEditor.words")}
-          </h2>
+          <h2 className="type-section">{t("setEditor.words")}</h2>
           <Button
             onClick={() => fields.append(emptyWord)}
             size="sm"
@@ -243,21 +221,23 @@ export function SetEditor({
                 })
               }
               onRemove={
-                fields.fields.length > 1 ? () => fields.remove(index) : undefined
+                fields.fields.length > 1
+                  ? () => fields.remove(index)
+                  : undefined
               }
             />
           ))}
         </div>
 
-          <p className="mt-4">
-            <button
-              className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-              onClick={() => setEntry("assist")}
-              type="button"
-            >
-              {t("setEditor.switchToAssist")}
-            </button>
-          </p>
+        <p className="mt-4">
+          <button
+            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+            onClick={() => setEntry("assist")}
+            type="button"
+          >
+            {t("setEditor.switchToAssist")}
+          </button>
+        </p>
 
         <div className="mt-7 flex justify-end">
           <Button

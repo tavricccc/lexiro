@@ -36,6 +36,8 @@ Vercel build 與 deploy 必須留在同一個 job。Next.js 的 prebuilt deploym
 
 ## 平台設定
 
+Managed AI 另外需要在 GitHub `Production` Environment variables 設定 `NEXT_PUBLIC_AI_WORKER_URL`，值為已部署 Worker 的 HTTPS origin。這是公開網址，不是 API key；沒有設定時 AI 功能不可用，正式部署檢查也會停止發布。Worker 的 D1、Firebase project、允許 origin、管理員 email 與供應商 secret 由 private `lexiro-worker` 專案管理，不能放進前端環境變數。
+
 1. Firebase Console 啟用 Google Authentication，並加入 Vercel production domain。
 2. 若使用 App Check，先註冊 Web App、設定 reCAPTCHA Enterprise domain，再啟用 enforcement。
 3. Google Cloud Console 的 OAuth Web client 必須包含 Vercel domain 的 Authorized JavaScript origin。

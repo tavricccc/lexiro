@@ -284,6 +284,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       const sense = entry.senses.find((item) => item.id === senseId);
       words[wordKey] = {
         ...entry,
+        word: draft.word.trim(),
         senses: sense
           ? entry.senses.map((item) =>
               item.id === senseId

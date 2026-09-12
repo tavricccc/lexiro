@@ -47,27 +47,23 @@ distractor, a coherent passage — and the rest is built in code. In practice:
   distractors and reports where it landed.
 - The model never returns ids, fingerprints, timestamps, or the link back to the
   source sense. Those are minted from the request.
-- Where the learner's own library holds three same-part-of-speech words, the
-  distractors come from there rather than from the model — which is also how a
-  段考 paper draws them, from the same unit.
+- Locally built questions use same-part-of-speech library distractors. Generated
+  questions retain the model's context-specific distractors after validation.
 - A 詞彙題 whose sense already has an example sentence containing the base form
   is built with **no request at all**: their sentence, their word, their
   distractors.
 - An item the model got wrong is dropped and reported, not saved; a batch with
   nothing usable fails so it can be retried.
 
-**Automatic batching is the primary path; the manual path is never removed.**
+**AI uses the managed Worker and runs serially.** Learners sign in, choose Lite,
+Thinking or Pro, and see point estimates before generation. Provider settings,
+credentials and prompts belong to the private backend. The previous manual
+copy/paste prompt workflow and BYO-key settings have been removed.
 
-Not every user has an API key. The interface therefore offers both:
-
-- With AI configured, the primary button generates in one press. Everything in
-  scope is selected by default — there is no selection cap and no round of
-  ticking boxes before the common case works. The selection is split into
-  batches by `splitGenerationBatches` and sent with bounded concurrency by
-  `runAiBatches`.
-- Without AI configured, the primary button becomes "設定 AI" and the manual
-  section — copy prompt, paste the model's response, validate — starts open.
-  It remains available, folded away, when AI is configured.
+Typed lists and photos first pass through fixed-price AI organization. The
+learner edits and confirms the resulting list before paying for generation.
+Generated words preserve supplied meanings, may add at most one common meaning,
+and include an example for each meaning. Preview edits are saved only when applied.
 
 Batch size comes from the format table (`questionBatchSize`), not from one global
 constant: a 文意選填 passage absorbs eight words, a 篇章結構 passage four. It is the
@@ -107,13 +103,8 @@ thing.
 
 ## Settings
 
-**Settings save themselves.** The settings page previously mixed three
-behaviours — theme applied instantly, daily goals needed a "save goals" button,
-AI settings needed another — so whether a change had stuck depended on which row
-it was in. Every setting now commits shortly after the last edit and reports it
-in one place per section. AI settings are held back only while the configuration
-is incomplete (enabled with no API key), which is surfaced as an inline field
-error rather than a toast.
+Learning preferences save automatically. The account page shows managed point
+balance and renewal; authorized administrators manage account allowances there.
 
 ## Interface
 
@@ -133,11 +124,11 @@ counts, because choosing three of six was never something one dropdown could
 say. A session is a queue of entries rather than a mode, so the entry under the
 cursor decides what the screen asks and a passage keeps its items together.
 
-**A saved set is read before it is edited.** `/sets/[setId]` shows the set;
-`/sets/[setId]/edit` changes it. An earlier decision merged the two to remove a
-duplicate address, which made every visit to a set an encounter with input
-fields. The questions built from a set live in a tab beside its words rather
-than in a section below them.
+Saved sets open in read mode at `/sets/[setId]`; a selected word expands inline.
+The same word editor serves AI previews, with separate example rows. Saving
+reads the latest library and replaces only that word. The old edit URL redirects
+to the view, and `/sets/new` retains new-set creation. Questions remain in the
+neighboring tab.
 
 ## Cloud sync
 
@@ -164,19 +155,9 @@ the account permanently unable to sync with nothing the user could do about it,
 so `repairLibraryState` resolves every conflict to something: a duplicate name
 gets a suffix, a reference to something that is gone is dropped.
 
-**The AI setup syncs; the API key never does.** Provider, endpoint, model,
-protocol and every generation limit are configuration a user got right once and
-should not have to get right again on their next device, so they travel with the
-account like everything else. The API key does not: it is a credential, and the
-Firestore rule for the settings document lists the fields it will accept without
-it, so a client that tried to upload one would be refused rather than trusted.
-A device that already holds a key for the endpoint that arrived keeps it, and
-one whose key belongs to somewhere else drops it — the same judgement an
-imported backup goes through.
-
-Nothing about the setup is merged. Half of one setup and half of another is not
-a setup any request could be made with, so the device holding unsent changes
-wins whole and every other device takes the account's copy whole.
+AI configuration is no longer browser data. Journal v3 retires the AI dirty flag
+and local credentials while preserving queued library work. Full backup v2
+imports v1 library and learning data but discards its retired AI settings.
 
 **The workspace opens on local data.** Startup waited for the first cloud
 reconciliation before showing anything, which put a network round trip — and

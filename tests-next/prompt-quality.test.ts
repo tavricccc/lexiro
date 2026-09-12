@@ -50,18 +50,31 @@ describe("issues found in real Luna prompt trials", () => {
       JSON.stringify({
         items: [
           {
-            pos: "v.",
-            meaningZh: "適應",
-            example: "Children adapt quickly to change.",
+            senses: [
+              {
+                pos: "v.",
+                meaningZh: "適應",
+                example: "Children adapt quickly to change.",
+              },
+            ],
           },
           {
-            pos: "phr. v.",
-            meaningZh: "偶然遇見",
-            example: "I ran into an old friend yesterday.",
+            senses: [
+              {
+                pos: "phr. v.",
+                meaningZh: "偶然遇見",
+                example: "I ran into an old friend yesterday.",
+              },
+            ],
           },
           {
-            meaningZh: "微妙的",
-            example: "There is a subtle difference between them.",
+            senses: [
+              {
+                pos: null,
+                meaningZh: "微妙的",
+                example: "There is a subtle difference between them.",
+              },
+            ],
           },
         ],
       }),

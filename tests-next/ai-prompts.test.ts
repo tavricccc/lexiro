@@ -11,16 +11,12 @@ import {
   parseWordGenerationJson,
 } from "@/src/lib/word-generation";
 
-
 describe("AI prompts", () => {
-
   it("accepts fenced JSON from less compliant models", () => {
     const sources = buildWordGenerationSources("adapt");
     const response =
-      '```json\n{"items":[{"pos":"v.","meaningZh":"適應","example":"Children adapt quickly."}]}\n```';
-    expect(parseWordGenerationJson(response, sources)[0]?.word).toBe(
-      "adapt",
-    );
+      '```json\n{"items":[{"senses":[{"pos":"v.","meaningZh":"適應","example":"Children adapt quickly."}]}]}\n```';
+    expect(parseWordGenerationJson(response, sources)[0]?.word).toBe("adapt");
   });
 
   it("parses an explicit part of speech in code and sends it separately", () => {
@@ -43,9 +39,6 @@ describe("AI prompts", () => {
       hint: "跑步",
     });
   });
-
-
-
 });
 
 describe("question batching", () => {

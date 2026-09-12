@@ -10,7 +10,26 @@ import { extractJsonText } from "./ai/json";
 
 export { buildWordGenerationSources } from "@lexiro/ai-contract";
 import type { WordGenerationSource } from "@lexiro/ai-contract";
+import { LIMITS } from "@lexiro/ai-contract";
 export type { WordGenerationSource } from "@lexiro/ai-contract";
+
+export function parseOrganizedWordInput(text: string): string[] {
+  const data = JSON.parse(text);
+  if (
+    !data ||
+    typeof data !== "object" ||
+    !Array.isArray(data.lines) ||
+    data.lines.some(
+      (line: unknown) =>
+        typeof line !== "string" || !line.trim() || line.length > LIMITS.source,
+    )
+  )
+    throw new Error("整理結果格式錯誤");
+  assertKnownKeys(data, ["lines"], "整理結果");
+  if (data.lines.join("\n").length > LIMITS.input)
+    throw new Error("整理結果超過輸入上限");
+  return data.lines;
+}
 
 function parseJson(text: string): unknown {
   return JSON.parse(extractJsonText(text)) as unknown;
@@ -25,6 +44,7 @@ function requireText(value: unknown, field: string): string {
 function normalizeGeneratedSense(
   value: unknown,
   wordIndex: number,
+  senseIndex: number,
   posHint?: string,
 ): EditorSenseDraft {
   if (!value || typeof value !== "object" || Array.isArray(value))
@@ -36,8 +56,11 @@ function normalizeGeneratedSense(
     `items[${wordIndex}]`,
   );
   const pos =
-    posHint ??
-    normalizePartOfSpeech(requireText(source.pos, `items[${wordIndex}].pos`));
+    source.pos === null && posHint
+      ? posHint
+      : normalizePartOfSpeech(
+          requireText(source.pos, `items[${wordIndex}].pos`),
+        );
   const meaning = requireText(
     source.meaningZh,
     `items[${wordIndex}].meaningZh`,
@@ -49,7 +72,7 @@ function normalizeGeneratedSense(
   if (examples.some((example) => containsHan(example)))
     throw new Error(`第 ${wordIndex + 1} 筆例句必須使用英文`);
   return {
-    id: `sense-draft-${wordIndex + 1}-1`,
+    id: `sense-draft-${wordIndex + 1}-${senseIndex + 1}`,
     pos,
     meaning,
     examples,
@@ -84,8 +107,6 @@ export function mergeWordDrafts(drafts: WordDraft[]): WordDraft[] {
         existing.senses.push({ ...sense, examples: [...sense.examples] });
       }
     }
-    if (existing.senses.length > 3)
-      throw new Error(`單字「${existing.word}」最多只能保留三個常見字義`);
   }
   return Array.from(grouped.values()).sort((first, second) =>
     normalizeWordKey(first.word).localeCompare(normalizeWordKey(second.word)),
@@ -115,14 +136,28 @@ export function parseWordGenerationJson(
     if (!value || typeof value !== "object" || Array.isArray(value))
       throw new Error(`第 ${wordIndex + 1} 個單字格式錯誤`);
     const item = value as Record<string, unknown>;
+    assertKnownKeys(item, ["senses"], `items[${wordIndex}]`);
     const expected = sources[wordIndex];
     if (!expected) throw new Error(`第 ${wordIndex + 1} 筆沒有對應來源`);
     const word = expected.word;
     if (containsHan(word))
       throw new Error(`第 ${wordIndex + 1} 個單字必須使用英文`);
+    const maximum =
+      Math.max(
+        1,
+        expected.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
+      ) + 1;
+    if (
+      !Array.isArray(item.senses) ||
+      !item.senses.length ||
+      item.senses.length > maximum
+    )
+      throw new Error(`第 ${wordIndex + 1} 個單字詞義數量不正確`);
     return {
       word,
-      senses: [normalizeGeneratedSense(item, wordIndex, expected.posHint)],
+      senses: item.senses.map((sense, index) =>
+        normalizeGeneratedSense(sense, wordIndex, index, expected.posHint),
+      ),
     };
   });
   return mergeWordDrafts(drafts);
