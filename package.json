@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "oxlint src tests-next scripts",
     "test": "vitest run",
-    "build": "esbuild src/response-stream.ts --bundle --platform=browser --format=esm --outdir=dist",
+    "build": "esbuild src/response-stream.ts src/auth.ts --bundle --platform=browser --format=esm --outdir=dist",
     "benchmark:stream": "node scripts/benchmark-stream.mjs"
   },
   "devDependencies": {
@@ -16,5 +16,8 @@
     "oxlint": "^1.41.0",
     "typescript": "^7.0.2",
     "vitest": "^4.1.11"
+  },
+  "dependencies": {
+    "jose": "^6.2.12"
   }
 }

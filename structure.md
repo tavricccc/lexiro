@@ -1,10 +1,12 @@
 # Lexiro Worker 檔案地圖
 
-獨立後端工作區。目前建立串流隱私邊界，尚未接上 HTTP handler、Firebase 驗證、D1 計費或正式部署；前端仍使用原有路徑。
+獨立後端工作區。目前有串流隱私邊界與 Firebase JWT 驗證模組，尚未接上 HTTP handler、D1 計費或正式部署；前端仍使用原有路徑。
 
 | 路徑 | 責任 |
 | --- | --- |
 | `src/response-stream.ts` | 保留 Responses SSE 協定，只移除上下文回顯並中和錯誤；文字事件不解析 JSON，內部完成通知保留伺服器結算需要的原始回覆 |
+| `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
+| `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
