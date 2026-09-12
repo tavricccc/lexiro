@@ -47,7 +47,7 @@ npm run generate:motion
 
 - Library 只由 `src/lib/library-repository.ts` 寫入，內容定址 + manifest + head pointer，細節見 `structure.md`。
 - 同步的單位是 record，不是整個 Library。刪除是雲端陳述的事實（`deleted` 旗標），不是下一台裝置要自己推斷的缺席。
-- AI 設定不同步，只跟著使用者主動匯出的備份走。
+- AI 設定跟著帳號同步，但 API key 不上傳：`firestore.rules` 列出設定文件允許的欄位，key 不在其中。
 - Firestore 規則與索引在 `firestore.rules`、`firestore.indexes.json`，隨部署發布。
 
 ### 文件

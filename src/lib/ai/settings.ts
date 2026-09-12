@@ -1,6 +1,7 @@
 import type { AiProvider, AiSettings } from "@/types";
 import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from "@/constants";
 import { loadFromStorage, saveToStorage } from "@/lib/persist";
+import { markBlobDirty } from "../sync-journal";
 import { isRecord } from "../schema";
 import {
   AI_MODELS,
@@ -155,10 +156,24 @@ async function readSettings(): Promise<AiSettings> {
       await saveToStorage(AI_SETTINGS_KEY, settings);
   }
   storedSettings = { ...settings, apiKey: key.value ?? "" };
+  for (const listener of listeners) listener(loadAiSettings());
   return loadAiSettings();
 }
+/**
+ * Reads the settings of whichever account is now signed in.
+ *
+ * Settings belong to an account, so they cannot be read until the storage
+ * namespace has been chosen. `stores/cloud-store.ts` owns that decision and
+ * calls this once it has made it; reading in parallel with it, as the app used
+ * to, read the guest namespace on every start, showed the defaults, and then
+ * let autosave write them over what the account had actually saved.
+ */
 export function loadAiSettingsState() {
   return (hydration ??= readSettings());
+}
+/** Re-reads them after the signed-in account, and therefore the namespace, changed. */
+export function reloadAiSettings() {
+  return (hydration = readSettings());
 }
 export async function whenAiSettingsReady() {
   await loadAiSettingsState();
@@ -167,8 +182,13 @@ export async function whenAiSettingsReady() {
 export function waitForAiSettingsPersistence() {
   return persistence;
 }
-export function saveAiSettings(settings: AiSettings) {
-  storedSettings = normalizeAiSettings(settings);
+function commit(next: AiSettings, markPending: boolean) {
+  // Autosave re-offers the value the settings screen is already holding every
+  // time something hands it one — a reload, a pull from the cloud — and an
+  // identical write would still cost two IndexedDB writes and, worse, a push
+  // that tells every other device to take what it just sent.
+  if (JSON.stringify(next) === JSON.stringify(storedSettings)) return;
+  storedSettings = next;
   const snapshot = loadAiSettings();
   persistence = persistence
     .catch(() => undefined)
@@ -179,7 +199,25 @@ export function saveAiSettings(settings: AiSettings) {
       ]);
     });
   void persistence.catch(() => undefined);
+  if (markPending) void markBlobDirty("aiSettings");
   for (const listener of listeners) listener(loadAiSettings());
+}
+
+export function saveAiSettings(settings: AiSettings) {
+  commit(normalizeAiSettings(settings), true);
+}
+
+/**
+ * Takes the setup another device pushed.
+ *
+ * The cloud never carries the API key, so the local one is kept when it still
+ * belongs to the endpoint that arrived and dropped when it does not — the same
+ * judgement `restoreAiSettings` makes for an imported backup. Nothing is marked
+ * pending: this value came from the cloud, and sending it back would be a round
+ * trip that changes nothing.
+ */
+export function applyRemoteAiSettings(shareable: Omit<AiSettings, "apiKey">) {
+  commit(restoreAiSettings(shareable, loadAiSettings()), false);
 }
 export function parseAiSettingsJson(raw: string): AiSettings {
   const parsed: unknown = JSON.parse(raw);

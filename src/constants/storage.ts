@@ -14,5 +14,6 @@ export const PRACTICE_PREFERENCES_STORAGE_KEY = 'lexiro-practice-preferences-v2'
 export const NAMESPACE_SCOPED_KEYS: readonly string[] = [
   LEARNING_STORAGE_KEY,
   AI_SETTINGS_KEY,
+  AI_API_KEY_STORAGE_KEY,
   SYNC_JOURNAL_STORAGE_KEY,
 ]

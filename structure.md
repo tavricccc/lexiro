@@ -34,8 +34,9 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 
 - `components/liquid-nav.tsx` — committed-path selection and Next Link pending feedback with a shared moving selection; the dock is live throughout a navigation — nothing is captured, so it never leaves the hit-test tree — and it animates nothing of its own: it belongs to the route, and the route change already covers it or uncovers it.
 - `components/ui/liquid-tabs.tsx` — controlled segmented selection with the same shared-layout motion, without pointerdown speculation, measurement loops or reset timers.
-- `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon.
+- `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon. Direction, where nothing marked one, is depth against depth: a set is a push whether it was opened from the Library that owns it or from 今天.
 - `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
+- `tests-next/ai-settings-persistence.test.ts` — that the AI setup and its API key belong to the signed-in account, and what a pulled setup does to the key already on the device.
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
 is the catalogue; `question-prompts.ts` asks a model only for prose and answer
@@ -76,13 +77,19 @@ writes what changed in batches. A deleted record keeps its document and sets
 `deleted`, so a deletion is a fact the cloud states rather than an absence the
 next device has to interpret.
 
-`src/lib/cloud-account.ts` holds the two documents that are not records —
-review schedules and statistics — and merges each field by field, so answering
-the same word on two devices does not cost one of them its history. AI settings
-are not synchronized at all: which endpoint and model a user points the app at
-stays on the device, and dropping the API key from it would not make the rest
-worth uploading. They still travel in a full backup, which the user exports
-deliberately.
+`src/lib/cloud-account.ts` holds the three documents that are not records —
+review schedules, statistics, and the AI setup. Progress and statistics merge
+field by field, so answering the same word on two devices does not cost one of
+them its history. The AI setup does not merge: the device with unsent changes
+sends them whole and every other device takes the account's copy whole, because
+a model belongs to a provider and a protocol to an endpoint. The API key is not
+part of what is sent — `firestore.rules` lists the fields the settings document
+accepts and the key is not among them — so each browser keeps the key it was
+given, and drops it when the setup that arrived points somewhere else.
+
+`src/lib/ai/settings.ts` is read only once the signed-in account, and therefore
+the storage namespace, has been decided; `stores/cloud-store.ts` owns that
+moment for the Library, learning progress and the AI setup alike.
 
 `src/lib/sync-journal.ts` holds what this device has changed and not yet sent.
 It is a sidecar: domain records carry no synchronization fields. The list of
@@ -110,7 +117,7 @@ Persisted schema versions, all independent of one another:
 | Data | Version | Defined in |
 | --- | --- | --- |
 | Library repository (IndexedDB) | 2 | `src/lib/library-repository.ts` |
-| Sync journal (IndexedDB) | 1 | `src/lib/sync-journal.ts` |
+| Sync journal (IndexedDB) | 2 | `src/lib/sync-journal.ts` |
 | Cloud documents (Firestore) | 6 | `src/constants/cloud.ts` |
 | Practice session snapshot | 2 | `src/types/session.ts` |
 | Backup and share files | 1 | `src/types/backup.ts` |

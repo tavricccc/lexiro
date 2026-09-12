@@ -67,13 +67,13 @@ function emptyLibrary(): LibraryState {
 
 function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     cursor: "1757000000.000000000|set-0123456789abcdef0123456789abcdef",
     seeded: true,
     version: 5,
     dirty: {},
     tombstones: {},
-    blobs: { progress: 0, stats: 0 },
+    blobs: { aiSettings: 0, progress: 0, stats: 0 },
     ...patch,
   };
 }

@@ -9,8 +9,10 @@ import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
 import {
   defaultAiSettings,
-  whenAiSettingsReady,
+  loadAiSettings,
+  onAiSettingsChanged,
 } from "@/src/lib/ai-provider";
+import { useCloudStore } from "@/stores/cloud-store";
 import type { AiSettings } from "@/types";
 
 export function MePage() {
@@ -18,17 +20,20 @@ export function MePage() {
   // Autosave must not treat the jump from defaults to stored values as an edit,
   // so the section is told when the real settings have landed.
   const [hydrated, setHydrated] = useState(false);
+  // Settings belong to an account, and the cloud store is what decides which
+  // account that is. `ready` is the moment it has decided and read this one's.
+  const ready = useCloudStore((store) => store.ready);
 
-  // `whenAiSettingsReady` reads the settings as they are now. The hydration
-  // promise resolves once, with the values from app start, so reopening this
-  // screen after a change used to show the old ones — and then autosave wrote
-  // those stale values straight back over the new ones.
+  // Then stay subscribed. The settings can change underneath this screen twice
+  // over — signing in swaps the account, and a sync brings down what another
+  // device configured — and reading them once left both showing the old values
+  // until the page was reopened.
   useEffect(() => {
-    void whenAiSettingsReady().then((settings) => {
-      setAiSettings(settings);
-      setHydrated(true);
-    });
-  }, []);
+    if (!ready) return;
+    setAiSettings(loadAiSettings());
+    setHydrated(true);
+    return onAiSettingsChanged(setAiSettings);
+  }, [ready]);
 
   return (
     <div className="mx-auto max-w-4xl">

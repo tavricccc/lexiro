@@ -14,6 +14,7 @@ import {
   mergeProgress,
   mergeStats,
   readCloudBlobs,
+  writeCloudAiSettings,
   writeCloudProgress,
   writeCloudStats,
 } from "@/src/lib/cloud-account";
@@ -23,6 +24,12 @@ import {
   pushRecords,
   watchCloudChanges,
 } from "@/src/lib/cloud-sync";
+import {
+  applyRemoteAiSettings,
+  getShareableAiSettings,
+  loadAiSettingsState,
+  reloadAiSettings,
+} from "@/src/lib/ai/settings";
 import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
 import { setStorageNamespace } from "@/src/lib/persist";
@@ -95,6 +102,7 @@ async function hydrateLocal(): Promise<void> {
   await Promise.all([
     useLibraryStore.getState().hydrate(),
     useLearningStore.getState().hydrate(),
+    loadAiSettingsState(),
   ]);
 }
 
@@ -104,6 +112,7 @@ async function enterNamespace(namespace: string): Promise<void> {
   await Promise.all([
     useLibraryStore.getState().reloadNamespace(),
     useLearningStore.getState().reloadNamespace(),
+    reloadAiSettings(),
   ]);
 }
 
@@ -283,11 +292,23 @@ async function runSync(
     const work = pendingRecords(useLibraryStore.getState().state, journal);
     if (work.records.length) await pushRecords(db, user.uid, work.records);
 
+    // The AI setup is taken whole from one side or the other, so the choice is
+    // the dirty flag itself: a device with unsent changes sends them, and one
+    // with none takes what the account already says. Half of one setup and half
+    // of another is not a setup any request could be made with.
+    if (!dirtyBlobs.aiSettings && blobs.aiSettings)
+      applyRemoteAiSettings(blobs.aiSettings);
+
     const sentBlobs = [
+      { kind: "aiSettings" as const, version: dirtyBlobs.aiSettings },
       { kind: "progress" as const, version: dirtyBlobs.progress },
       { kind: "stats" as const, version: dirtyBlobs.stats },
     ];
     const blobWork: Promise<unknown>[] = [];
+    if (dirtyBlobs.aiSettings || !blobs.aiSettings)
+      blobWork.push(
+        writeCloudAiSettings(db, user.uid, getShareableAiSettings()),
+      );
     if (dirtyBlobs.progress || !blobs.progress)
       blobWork.push(writeCloudProgress(db, user.uid, progress));
     if (dirtyBlobs.stats || !blobs.stats)

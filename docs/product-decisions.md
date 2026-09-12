@@ -164,12 +164,19 @@ the account permanently unable to sync with nothing the user could do about it,
 so `repairLibraryState` resolves every conflict to something: a duplicate name
 gets a suffix, a reference to something that is gone is dropped.
 
-**AI settings never leave the device.** The provider, model, endpoint and API
-key are device-local configuration. Syncing them with the key stripped out was
-briefly the design and was wrong: where someone points the app and which model
-they pay for is their business, and the convenience was not worth putting it in
-a database. They still travel inside a full backup, because that is a file the
-user exports and holds themselves.
+**The AI setup syncs; the API key never does.** Provider, endpoint, model,
+protocol and every generation limit are configuration a user got right once and
+should not have to get right again on their next device, so they travel with the
+account like everything else. The API key does not: it is a credential, and the
+Firestore rule for the settings document lists the fields it will accept without
+it, so a client that tried to upload one would be refused rather than trusted.
+A device that already holds a key for the endpoint that arrived keeps it, and
+one whose key belongs to somewhere else drops it — the same judgement an
+imported backup goes through.
+
+Nothing about the setup is merged. Half of one setup and half of another is not
+a setup any request could be made with, so the device holding unsent changes
+wins whole and every other device takes the account's copy whole.
 
 **The workspace opens on local data.** Startup waited for the first cloud
 reconciliation before showing anything, which put a network round trip — and

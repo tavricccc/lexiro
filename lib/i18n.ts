@@ -113,7 +113,8 @@ export const zhTW = {
     contextLimitHint: "0 表示使用內建能力；未知模型採 32,768 的保守估計。",
     outputLimit: "每段輸出上限（tokens）",
     outputLimitHint: "包含模型思考所需的額度；截斷時可提高。",
-    localKeyHint: "API key 只保存在這個瀏覽器，不會放進匯出檔。",
+    localKeyHint:
+      "其餘設定會跟著帳號同步；API key 只保存在這個瀏覽器，不會上傳，也不會放進匯出檔。",
     nativeContextHint: "逐段接續會使用供應商保存的對話。",
     testConnection: "測試連線",
     testing: "測試中…",

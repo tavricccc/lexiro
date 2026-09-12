@@ -10,6 +10,21 @@ export const CLOUD_RECORD_PAGE_SIZE = 400
 /** Firestore accepts 500 writes per batch; the margin leaves room for the change marker. */
 export const CLOUD_WRITE_BATCH_SIZE = 400
 
+/** Everything the AI setup is made of except the API key, which stays on the device. */
+export const CLOUD_AI_SETTINGS_PAYLOAD_KEYS = [
+  'version',
+  'enabled',
+  'provider',
+  'baseUrl',
+  'model',
+  'protocol',
+  'structuredOutput',
+  'batchSize',
+  'contextTokens',
+  'maxOutputTokens',
+  'reasoningEffort',
+] as const
+
 export const CLOUD_STATS_PAYLOAD_KEYS = [
   'totalMemoryReviews',
   'correctMemoryReviews',

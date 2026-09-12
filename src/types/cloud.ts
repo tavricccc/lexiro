@@ -1,11 +1,12 @@
+import type { AiSettings } from './ai'
 import type { DashboardStats, LearningProgress } from './learning'
 
 /**
  * What the cloud stores.
  *
  * The Library is a collection of records — one document per folder, set,
- * membership, word or question — plus two small whole documents for review
- * schedules and statistics. There is no manifest and no generation: a record is written
+ * membership, word or question — plus three small whole documents: review
+ * schedules, statistics, and the AI setup. There is no manifest and no generation: a record is written
  * on its own and read back through a change feed ordered by `writtenAt`, which
  * the server stamps so no device can move another device's cursor.
  */
@@ -38,6 +39,12 @@ export interface FirestoreProgressDoc extends LearningProgress {
 }
 
 export interface FirestoreStatsDoc extends DashboardStats {
+  ownerId: string
+  schemaVersion: 6
+}
+
+/** Everything about the AI setup except the API key, which never leaves the device. */
+export interface FirestoreAiSettingsDoc extends Omit<AiSettings, 'apiKey'> {
   ownerId: string
   schemaVersion: 6
 }
