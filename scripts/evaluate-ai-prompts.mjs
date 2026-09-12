@@ -18,7 +18,9 @@ if (
   process.exit(0);
 }
 const root = resolve(import.meta.dirname, "..");
-const frontend = resolve(process.env.LEXIRO_FRONTEND_PATH || join(root, "../lexiro"));
+const frontend = resolve(
+  process.env.LEXIRO_FRONTEND_PATH || join(root, "../lexiro"),
+);
 const fixtureRoot = join(root, "tests-next/fixtures/prompt-eval");
 const outputRoot = join(resolve(root, "../lexiro-prompt-eval-private"), phase);
 const archiveRoot = join(
@@ -50,15 +52,20 @@ const vite = await createServer({
   server: { watch: { ignored: ["**/*"] } },
   logLevel: "error",
 });
-const backend = await createServer({ root, configFile: false, server: { watch: { ignored: ["**/*"] } }, logLevel: "error" });
+const backend = await createServer({
+  root,
+  configFile: false,
+  server: { watch: { ignored: ["**/*"] } },
+  logLevel: "error",
+});
 try {
-  const { prepareGeneration } = await backend.ssrLoadModule("/src/generation.ts");
+  const { prepareGeneration } =
+    await backend.ssrLoadModule("/src/generation.ts");
   const { wordTask, questionTask } = await vite.ssrLoadModule(
     "/src/lib/ai/tasks.ts",
   );
-  const { buildWordGenerationSources } = await vite.ssrLoadModule(
-    "/src/lib/word-generation.ts",
-  );
+  const { buildWordGenerationSources, parseOrganizedWordInput } =
+    await vite.ssrLoadModule("/src/lib/word-generation.ts");
   const trials = [];
   for (const directory of [
     "baseline",
@@ -73,18 +80,30 @@ try {
       );
       if (process.argv[4] && !trial.id.includes(process.argv[4])) continue;
       const task =
-        trial.kind === "words"
-          ? wordTask(
-              trial.raw,
-              buildWordGenerationSources(trial.raw),
-              trial.batchSize ?? 10,
-            )
-          : questionTask(
-              trial.words,
-              trial.words,
-              trial.kind,
-              trial.difficulty,
-            );
+        trial.kind === "organizeText"
+          ? {
+              steps: [
+                {
+                  prompt: JSON.stringify({
+                    kind: "organizeText",
+                    raw: trial.raw,
+                  }),
+                  parse: parseOrganizedWordInput,
+                },
+              ],
+            }
+          : trial.kind === "words"
+            ? wordTask(
+                trial.raw,
+                buildWordGenerationSources(trial.raw),
+                trial.batchSize ?? 10,
+              )
+            : questionTask(
+                trial.words,
+                trial.words,
+                trial.kind,
+                trial.difficulty,
+              );
       if (phase === "baseline" && !trial.turns)
         throw new Error(
           `No historical baseline exists for ${trial.id}; run final instead.`,
@@ -97,11 +116,31 @@ try {
                 : turn.prompt,
               parse: task.steps[i]?.parse,
             }))
-          : await Promise.all(task.steps.map(async (step) => {
-              const prepared = await prepareGeneration({ ...JSON.parse(step.prompt), session: crypto.randomUUID(), tier: "lite" }, "prompt-eval");
-              return { prompt: `${prepared.instructions}\n\n${prepared.input}`, parse: step.parse, schema: prepared.schema };
-            }));
-      const prepared = await prepareGeneration({ ...JSON.parse(task.steps[0].prompt), session: crypto.randomUUID(), tier: "lite" }, "prompt-eval");
+          : await Promise.all(
+              task.steps.map(async (step) => {
+                const prepared = await prepareGeneration(
+                  {
+                    ...JSON.parse(step.prompt),
+                    session: crypto.randomUUID(),
+                    tier: "lite",
+                  },
+                  "prompt-eval",
+                );
+                return {
+                  prompt: `${prepared.instructions}\n\n${prepared.input}`,
+                  parse: step.parse,
+                  schema: prepared.schema,
+                };
+              }),
+            );
+      const prepared = await prepareGeneration(
+        {
+          ...JSON.parse(task.steps[0].prompt),
+          session: crypto.randomUUID(),
+          tier: "lite",
+        },
+        "prompt-eval",
+      );
       trials.push({ trial, schema: prepared.schema, turns });
     }
   }
@@ -145,6 +184,7 @@ try {
             scratch,
             "--model",
             "gpt-5.6-luna",
+            ...(trial.image ? ["--image", join(fixtureRoot, trial.image)] : []),
             "-c",
             'model_reasoning_effort="low"',
             "--color",

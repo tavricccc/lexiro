@@ -19,9 +19,9 @@ export const wordOutput = () =>
   z.object({
     items: z.array(
       z.object({
-        pos: text.nullable(),
-        meaningZh: text,
-        example: text,
+        senses: z.array(
+          z.object({ pos: text.nullable(), meaningZh: text, example: text }),
+        ),
       }),
     ),
   });

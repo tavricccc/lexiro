@@ -1,6 +1,6 @@
 # Lexiro Worker 檔案地圖
 
-獨立後端工作區。已有串流隱私邊界、Firebase JWT、HTTP handler、D1 計費與管理 API 的本地實作；前端 managed 切換進行中，整理端點與正式部署尚未完成。接手狀態與規格差異見 `docs/product-decisions.md`。
+獨立後端工作區。串流隱私邊界、Firebase JWT、HTTP handler、D1 計費、文字／照片整理與管理 API 已完成本地實作和測試；正式設定、部署及生產驗收尚未執行。接手狀態與規格差異見 `docs/product-decisions.md`。
 
 | 路徑 | 責任 |
 | --- | --- |
@@ -8,11 +8,12 @@
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `src/billing.ts` | D1 原子扣款、整數進位分配、每來源冪等、一次性退款、cursor 擁有權與個別到期續期 |
-| `migrations/0001_billing.sql` | 計費初始 schema 與索引 |
+| `migrations/0001_billing.sql`、`0002_attempt_limits.sql` | 計費初始 schema、來源/session 重試次數與到期索引 |
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/admin.ts` | 帳號、點數、月額度與免費試用管理端點 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算 |
+| `src/organize.ts` | 文字／照片共用整理 prompt、WebP 輸入檢查與照片計費來源；圖片不落地 |
 | `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
@@ -22,7 +23,9 @@
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
 | `tests-next/fixtures/prompt-eval/`、`docs/prompt-evaluation.md` | 從公開前端移入的歷史合成案例與評測方法；歷史 medium artifacts 另存本地 ignored artifacts/historical-medium |
 | `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema 與固定前綴跨輸入一致性、最低 tokenizer 長度驗證 |
+| `tests-next/organize.test.ts` | 整理固定價格／前綴、WebP 輸入拒絕與串流圖片 envelope |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
+| `.github/workflows/verify.yml`、`docs/deployment.md` | 只驗證的 CI，以及正式部署設定與尚未執行的驗收 |
 | `docs/backend-blueprint.html` | 完整原始藍圖，移除平台執行腳本與登入包裝後的本地版本 |
 | `docs/product-decisions.md` | 使用者補充、矛盾處理與階段驗收；優先於原始藍圖 |
 
@@ -34,4 +37,4 @@
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |
-| D1 計費 | 1 | `migrations/0001_billing.sql` |
+| D1 計費 | 2 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增來源/session 重試次數與期限，不改既有餘額 |

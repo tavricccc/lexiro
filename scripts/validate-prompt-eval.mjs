@@ -3,7 +3,9 @@ import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { createServer } from "vite";
 const root = resolve(import.meta.dirname, "..");
-const frontend = resolve(process.env.LEXIRO_FRONTEND_PATH || join(root, "../lexiro"));
+const frontend = resolve(
+  process.env.LEXIRO_FRONTEND_PATH || join(root, "../lexiro"),
+);
 const fixtures = join(root, "tests-next/fixtures/prompt-eval");
 const artifacts = resolve(root, "../lexiro-prompt-eval-private");
 const vite = await createServer({
@@ -16,9 +18,8 @@ try {
   const { wordTask, questionTask } = await vite.ssrLoadModule(
     "/src/lib/ai/tasks.ts",
   );
-  const { buildWordGenerationSources } = await vite.ssrLoadModule(
-    "/src/lib/word-generation.ts",
-  );
+  const { buildWordGenerationSources, parseOrganizedWordInput } =
+    await vite.ssrLoadModule("/src/lib/word-generation.ts");
   const cases = new Map();
   for (const directory of [
     "baseline",
@@ -51,13 +52,20 @@ try {
   for (const { reply, file } of latest.values()) {
     const trial = cases.get(reply.id);
     const task =
-      trial.kind === "words"
-        ? wordTask(
-            trial.raw,
-            buildWordGenerationSources(trial.raw),
-            trial.batchSize ?? 10,
-          )
-        : questionTask(trial.words, trial.words, trial.kind, trial.difficulty);
+      trial.kind === "organizeText"
+        ? { steps: [{ parse: parseOrganizedWordInput }] }
+        : trial.kind === "words"
+          ? wordTask(
+              trial.raw,
+              buildWordGenerationSources(trial.raw),
+              trial.batchSize ?? 10,
+            )
+          : questionTask(
+              trial.words,
+              trial.words,
+              trial.kind,
+              trial.difficulty,
+            );
     let error = "",
       parsedCount = 0;
     try {
@@ -83,6 +91,8 @@ try {
     JSON.stringify(report, null, 2),
   );
   process.stdout.write(JSON.stringify(report, null, 2));
+  if (results.some((result) => result.error) || !results.length)
+    process.exitCode = 1;
 } finally {
   await vite.close();
 }

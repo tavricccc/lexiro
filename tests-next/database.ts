@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { Miniflare } from "miniflare";
 export async function testDatabase() {
   const runtime = new Miniflare({ workers: [{ config: {
@@ -7,8 +7,10 @@ export async function testDatabase() {
     env: { DB: { type: "d1" } },
   } }] });
   const db = await runtime.getD1Database("DB");
-  const migration = await readFile(new URL("../migrations/0001_billing.sql", import.meta.url), "utf8");
-  await db.batch(migration.split(";").map((sql) => sql.trim()).filter(Boolean).map((sql) => db.prepare(sql)));
+  for (const file of (await readdir(new URL("../migrations/", import.meta.url))).filter((file) => file.endsWith(".sql")).sort()) {
+    const migration = await readFile(new URL(`../migrations/${file}`, import.meta.url), "utf8");
+    await db.batch(migration.split(";").map((sql) => sql.trim()).filter(Boolean).map((sql) => db.prepare(sql)));
+  }
   await db.prepare("INSERT INTO accounts(uid,email,points,monthly,renews_at,updated_at) VALUES('u','u@example.test',100,1000,?,'now')").bind(Math.floor(Date.now()/1000)+86400).run();
   return { runtime, db };
 }

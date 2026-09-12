@@ -1,3 +1,13 @@
+# 2026-09-12 managed／多義與整理版本
+
+目前使用 private `src/generation.ts` 的 instructions/schema 與 sibling frontend 的實際 parser。執行 `node scripts/evaluate-ai-prompts.mjs --run optimized <case>` 會使用已登入 Codex 的 Luna/low 額度；`node scripts/validate-prompt-eval.mjs` 只讀已存回覆。`LEXIRO_FRONTEND_PATH` 可指定前端 checkout。
+
+最新 18 個回覆重驗通過 18/18，包含單義階段保留的題型案例、新多義回覆及文字／合成照片整理。多義人工檢查確認兩個指定義均保留、詞性與例句對應、沒有強行增加罕見義。原模糊片語案例曾漏義，修正提示後已重測，歷次失敗留在 runs 快照。
+
+照片案例是本地生成的印刷清單，以 CLI `--image` 附加，不是正式 HTTP 圖片管線或任意手寫辨識驗收。所有模型評測結果都不能代替 Cloudflare CPU、正式 Firebase／D1 與部署驗收。
+
+以下保留前期評測方法與歷史結果；舊 public frontend 路徑、medium 結果或單義 schema 不是目前介接方式。
+
 # 出題提示詞與實測
 
 2026-09-12。保留詞彙、文法、綜合測驗、文意選填、篇章結構、閱讀六種題型；一個單字／詞義一題仍是輕量練習的核心。以下校準參考真實試卷，不代表產生完整模擬考，也不宣稱符合每所學校的進度。

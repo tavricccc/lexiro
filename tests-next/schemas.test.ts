@@ -65,11 +65,21 @@ describe("structured output schemas", () => {
     expect(
       items.parse({
         items: [
-          { pos: null, meaningZh: "拒絕", example: "She turned it down." },
+          {
+            senses: [
+              { pos: null, meaningZh: "拒絕", example: "She turned it down." },
+            ],
+          },
         ],
       }),
     ).toEqual({
-      items: [{ pos: null, meaningZh: "拒絕", example: "She turned it down." }],
+      items: [
+        {
+          senses: [
+            { pos: null, meaningZh: "拒絕", example: "She turned it down." },
+          ],
+        },
+      ],
     });
     expect(() => items.parse({ items: [{ meaningZh: "拒絕" }] })).toThrow();
     expect(() =>
