@@ -1,9 +1,9 @@
 "use client";
 
-import { ViewTransition, useLayoutEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
-import { consumeRouteDirection, isRootRoute } from "@/lib/navigation-memory";
+import { consumeRouteDirection } from "@/lib/navigation-memory";
 import { cn } from "@/lib/cn";
 
 const DIRECTIONS = {
@@ -13,14 +13,18 @@ const DIRECTIONS = {
 } as const;
 
 /**
- * The surface every route is painted on, and the participant in the push and
- * pop recipes in the stylesheet.
+ * The surface every route is painted on.
  *
- * The direction is published on the document rather than passed to
- * <ViewTransition> because the surface that leaves keeps the props it last
- * rendered with, which predate this navigation. React runs layout effects
- * inside the view transition's update callback, so the attribute is in place
- * before the browser captures the new snapshot and starts the animations.
+ * Only the page that arrives animates, and it animates in the live document.
+ * Capturing the document instead — a view transition — buys the page being left
+ * a parallax, and costs a full rasterisation of both pages at the moment the
+ * browser is already fetching, rendering and hydrating the route that was asked
+ * for. It also suspends hit testing for the length of the animation, which is
+ * what used to swallow a tap on the dock.
+ *
+ * The direction is written onto the page that arrives rather than onto the
+ * document, because it is that page's own animation: published on an ancestor
+ * it would retune an animation that had already begun.
  */
 export function RouteSurface({
   children,
@@ -36,14 +40,15 @@ export function RouteSurface({
   useLayoutEffect(() => {
     if (previous.current === pathname) return;
     const direction = DIRECTIONS[consumeRouteDirection(pathname)];
-    document.documentElement.dataset.navDirection = direction;
-    if (surface.current && previous.current && direction === "none") {
-      surface.current.dataset.routeEntry = "replace";
+    // The first page of a session arrived with the document; animating it would
+    // make the app look like it was still assembling itself.
+    if (surface.current && previous.current) {
+      surface.current.dataset.routeDirection = direction;
     }
     previous.current = pathname;
   }, [pathname]);
 
-  const content = (
+  return (
     <div
       ref={surface}
       key={pathname}
@@ -52,20 +57,5 @@ export function RouteSurface({
     >
       {children}
     </div>
-  );
-
-  // Keep primary pages outside the document snapshot lifecycle so even its
-  // capture phase cannot swallow the next navigation gesture.
-  if (isRootRoute(pathname)) return content;
-
-  return (
-    <ViewTransition
-      default="none"
-      enter="t-route-in"
-      exit="t-route-out"
-      key={pathname}
-    >
-      {content}
-    </ViewTransition>
   );
 }

@@ -152,25 +152,26 @@ control settles in `--motion-control` (250ms), moving to another place takes
 than arriving, which is what `--motion-control-exit` and `--motion-sheet-exit`
 are for. Arrivals decelerate (`--ease-arrive`), dismissals accelerate
 (`--ease-depart`), travel between two known positions is symmetric
-(`--ease-move`), routes use the iOS navigation curve (`--ease-nav` and its
-mirror), and exactly one curve is allowed to overshoot (`--ease-bounce`).
+(`--ease-move`), routes use the iOS navigation curve (`--ease-nav`),
+and exactly one curve is allowed to overshoot (`--ease-bounce`).
 
 JavaScript reaches the ladder through `timing(rung, curve)` in
 `lib/motion-timing.ts`, which is also what `MotionConfig` is given, so Motion and
 CSS cannot drift apart.
 
-**Route transitions.** Primary links reveal the committed page in place without
-a document snapshot. The dock stays unnamed and interactive throughout rapid
-navigation. Nested routes use `RouteSurface`'s `<ViewTransition>`.
-Going deeper pushes the child in from the trailing edge while the parent
-parallaxes away; coming back plays the same two animations reversed, so pop is
-push read backwards rather than a second recipe. Only the phone layout gets the
-push: on a desktop layout a child route is a replacement, not a place, and an
-unrelated route is a crossfade at every width. Direction is derived in
-`lib/navigation-memory.ts` — an explicit `markRouteDirection` wins, otherwise it
-is inferred from where the two URLs sit in the hierarchy — and published on the
-document as `data-nav-direction`, which is what the recipes in `motion.css` key
-off.
+**Route reveals.** A route change animates one thing: the page that arrives, in
+the live document. Capturing the document instead — a view transition — buys the
+page being left a parallax, and costs a full rasterisation of both pages at the
+moment the browser is already fetching, parsing and rendering the route that was
+asked for; it also suspends hit testing for the length of the animation, which
+is what swallowed taps on the dock. The page that leaves is simply gone, so a
+full-width slide would uncover nothing but the shell: the travel is short
+(`--motion-route-travel`) and the fade carries the rest. A child arrives from
+the trailing edge, its parent from the leading one, and a route that is neither
+simply appears. Direction is derived in `lib/navigation-memory.ts` — an explicit
+`markRouteDirection` wins, otherwise it is inferred from where the two URLs sit
+in the hierarchy — and written onto the arriving page as `data-route-direction`,
+which is what the recipe in `motion.css` keys off.
 
 **Press.** One press vocabulary, applied by the stylesheet to every interactive
 role at once: the surface sinks a pixel and gives up two percent. Components do
