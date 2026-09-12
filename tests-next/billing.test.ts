@@ -12,6 +12,7 @@ import {
   scheduledMaintenance,
   settle,
 } from "../src/billing";
+import { creditsFromUsage } from "../src/credits";
 
 let mf: Miniflare, db: D1Database;
 beforeEach(async () => {
@@ -25,6 +26,24 @@ afterEach(async () => {
 const balance = async () => (await account(db, "u"))!.points;
 
 describe("D1 atomic credit ledger", () => {
+  it("converts provider usage to whole credits with exact upward rounding", () => {
+    expect(
+      creditsFromUsage({
+        model: "gpt-5.6-luna",
+        input: 1_000,
+        cached: 500,
+        output: 100,
+      }),
+    ).toBe(2);
+    expect(
+      creditsFromUsage({
+        model: "gpt-5.6-terra",
+        input: 100,
+        output: 20,
+      }),
+    ).toBe(4);
+    expect(creditsFromUsage({ model: "unknown", input: 100 })).toBeNull();
+  });
   it("bounds retries even when failures refund and remove their charge records", async () => {
     for (let attempt = 0; attempt < 6; attempt++) {
       const reservation = await reserve(db, "u", ["same-source"], 2, 300);
@@ -65,6 +84,47 @@ describe("D1 atomic credit ledger", () => {
     await settle(db, retry, [], { model: "test" });
     expect(await ownsCursor(db, "u", "resp_first")).toBe(true);
     expect(await ownsCursor(db, "other", "resp_first")).toBe(false);
+  });
+  it("replaces the reservation with the actual credit cost exactly once", async () => {
+    const reservation = await reserve(db, "u", ["a", "b", "c"], 3, 300);
+    expect(await balance()).toBe(95);
+    await settle(
+      db,
+      reservation,
+      [],
+      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      undefined,
+      2,
+    );
+    await settle(
+      db,
+      reservation,
+      [],
+      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      undefined,
+      2,
+    );
+    expect(await balance()).toBe(98);
+    expect(
+      await db
+        .prepare("SELECT points,credits FROM usage_log WHERE id=?")
+        .bind(reservation.attempt)
+        .first(),
+    ).toEqual({ points: 2, credits: 2 });
+  });
+  it("charges reported usage while leaving invalid units available to retry", async () => {
+    const reservation = await reserve(db, "u", ["invalid"], 10, 300);
+    await settle(
+      db,
+      reservation,
+      reservation.charges,
+      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      undefined,
+      2,
+    );
+    expect(await balance()).toBe(98);
+    const retry = await reserve(db, "u", ["invalid"], 10, 300);
+    expect(retry.charges).toHaveLength(1);
   });
   it("charges the rounded cost of new units when the request mixes old and new units", async () => {
     const first = await reserve(db, "u", ["a", "b"], 3, 300);
@@ -128,8 +188,11 @@ describe("D1 atomic credit ledger", () => {
     await db
       .prepare("UPDATE settings SET value='true' WHERE key='free_trial'")
       .run();
+    await db
+      .prepare("UPDATE settings SET value='1500' WHERE key='trial_points'")
+      .run();
     await ensureTrial(db, "new", "new@example.test");
-    expect(await account(db, "new")).toMatchObject({ points: 500, monthly: 0 });
+    expect(await account(db, "new")).toMatchObject({ points: 1500, monthly: 0 });
     await db.prepare("UPDATE accounts SET points=0 WHERE uid='new'").run();
     await ensureTrial(db, "new", "new@example.test");
     expect((await account(db, "new"))!.points).toBe(0);

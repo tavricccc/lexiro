@@ -16,13 +16,13 @@
 | 模型、reasoning、tokens | 使用者只要求 UI 不顯示；程式碼及網路回應可存在，不做模型 ID 混淆或 bundle 隱藏 |
 | Prompt／API key | 仍由 private 後端持有；保留 Responses 協定與原文字，移除 instructions/input/prompt 回顯並中和錯誤 |
 | 透支 | 使用者原話「明顯透支很多再拒絕」；`MAX_OVERDRAFT_POINTS=300` 是可調暫定值，不是使用者指定的數字 |
-| 錯題解析 | 使用者已確認保留，固定 Lite 每次 5 點，單次文字最多 5,000 字元 |
-| 整理價格 | 原稿照片表格 20 點與正文矛盾，依正文採照片 6 點、文字 5 點，固定 Lite、不隨檔位加倍 |
-| 扣款 SQL | 只扣新插入的來源，拒絕時整筆回滾；不能在 INSERT OR IGNORE 後無條件重扣 |
+| 實際計費 | 2026-09-13 起，固定點數只作開始前預估與預留；完成後依供應商回報的 input、cached input、output usage 與該模型價格，以 private 換算基準整數進位為 credit。公開前端沒有換算公式 |
+| 模式倍率 | 開始前預估延續 Lite 1×、Thinking 2×、Pro 8×；實際扣除由各模式真正使用的模型、推理輸出與 token 價格決定，不再另外重複乘倍率 |
+| 扣款 SQL | 只為新插入的來源預留，拒絕時整筆回滾；結算原子退回預留差額或補扣實際差額，重複結算不再變動餘額 |
 | 重試限制 | 同來源/session 最多 6 次嘗試，30 分鐘到期；成功重試不重扣，失败退款也保留嘗試次數，防止無限免扣點重用。新一輪用新 session 並重新計費 |
 | 照片主體 | 前端縮圖及 WebP 編碼；Worker 有上限地讀取、驗證、雜湊以檢查輸入和計費身份，再串流接合小 JSON envelope 與 base64，不對整張圖 JSON.stringify。這是對「完全不碰 2MB」的工程修正，仍須量測真實 CPU |
 | 舊編輯 URL | `/sets/[setId]/edit` 保留 URL 並導回 view；新建仍在原本 `/sets/new`，不改既有路由名 |
-| 共用內容 | 無秘密的來源解析、型別、費率在 public `packages/ai-contract`；private repo 保存版本化 tgz，可獨立安裝 |
+| 共用內容 | 無秘密的來源解析、型別、模型牌價與前端預估在 public `packages/ai-contract`；實際 credit 換算只在 private Worker。private repo 保存版本化 tgz，可獨立安裝 |
 
 Firestore rules 仍是使用者資料權限邊界；Worker 是身分、管理員、額度與供應商憑證的邊界。管理員只看 Worker `ADMIN_EMAILS` secret 與已驗證 email，沒有前端 admin 欄位或授權 API。
 
@@ -30,9 +30,9 @@ Firestore rules 仍是使用者資料權限邊界；Worker 是身分、管理員
 
 - Firebase JWT 簽章／project／uid／時間驗證、Google 公鑰快取、管理員 email 驗證。
 - Responses 串流、上下文回顯移除、文字與 UTF-8 分塊保留、取消及背壓、終止前結算。
-- D1 原子計費、來源冪等、失敗與差額退款、並發鎖、逾時退款復原、重試次數、cursor 歸屬／到期重建、每帳號續期 Cron。
-- managed 前端、Lite／Thinking／Pro 與點數預估、追加輪次價格、方案餘額／續期、固定 5 點錯題解析。
-- 管理員介面：建立帳號額度、增減點數、每期額度、備註、試用開關與分頁。每期設為 0 停止續期並保留現有點數。
+- D1 原子預留與實際成本結算、來源冪等、並發鎖、逾時預留復原、重試次數、cursor 歸屬／到期重建、每帳號續期 Cron。
+- managed 前端、Lite／Thinking／Pro 點數預估、追加輪次預估、方案餘額／續期；完成後才用實際 provider usage 換算整數 credit。
+- 管理員介面：建立帳號額度、增減點數、每期額度、備註、試用開關、試用點數與新帳號預設月額度。每期設為 0 停止續期並保留現有點數。
 - 移除舊 BYO-key、供應商／協定、AI 設定同步／備份、手動 prompt、用量元件與文案；prompts、schemas、評測工具及案例移到 private repo。
 - journal v3 migration 保留待同步 records、tombstones、cursor，移除舊 AI 設定與本機 key；完整備份 v2 匯入 v1 時保留使用者資料、捨棄 AI 設定。Firestore 剩餘資料 shape 維持 v6。
 - 共用逐字編輯器用於 set view 與 AI preview；例句逐則增刪與換行，新建也共用。保存時讀最新 Library，只替換目標字並計算 remaps；刪掉例句不再因合併邏輯復活。暫停時修改預覽，繼續後仍保留修改。
@@ -43,7 +43,7 @@ Firestore rules 仍是使用者資料權限邊界；Worker 是身分、管理員
 ## 驗證紀錄與限制
 
 - 前端：安全修補升級後 typecheck、lint（0 warnings）、147 tests、Next.js 16.3.5 production build 全數通過。新增 postbuild prompt 邊界掃描也通過 71 個 client assets；掃描器只保存私有提示句的 SHA-256 指紋，不把提示原文寫回 public repo，也不阻擋已允許的模型 ID。
-- 後端：typecheck、lint（0 warnings）、78 tests、build 通過。測試使用真正 Miniflare D1／SQLite、注入的合成 provider；不是正式部署的通過證明。
+- 後端：typecheck、lint（0 warnings）、82 tests、build 通過。測試使用真正 Miniflare D1／SQLite、注入的合成 provider；不是正式部署的通過證明。
 - 初始 Luna/low 基準為 13/14；固定前綴及詞性修改後曾達 15/15。加入多義與整理後，目前保存的 18 個回覆由現行前端 parser 重驗，18/18 通過。
 - 人工檢視：bank 銀行／河岸、current 形容詞／名詞保留；apple 與 serendipity 沒有硬加罕見義。原模糊片語案例初次漏義，加入「或／並可指」及忽略來源操作命令的規則後重測，run into 保留遇見／撞上、break down 保留三個指定義。
 - 文字與合成印刷照片各辨識出相同三列，排除標題、例句、頁碼與注入指令。照片使用 Codex CLI 圖片附件；不等於真實 HTTP 圖片計價、手寫辨識或 Cloudflare CPU 驗收。

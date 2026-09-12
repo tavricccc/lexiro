@@ -47,7 +47,8 @@ export async function ensureTrial(db: D1Database, uid: string, email: string) {
   await db
     .prepare(
       `INSERT OR IGNORE INTO accounts(uid,email,points,monthly,renews_at,updated_at)
-    SELECT ?,?,500,0,?,? WHERE EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')`,
+    SELECT ?,?,CAST((SELECT value FROM settings WHERE key='trial_points') AS INTEGER),0,?,?
+    WHERE EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')`,
     )
     .bind(uid, email, nextRenewal(now), new Date().toISOString())
     .run();
@@ -151,48 +152,73 @@ export async function settle(
   refunds: { id: string; points: number }[],
   usage: Usage,
   cursor?: string,
+  actualCredits?: number,
 ) {
   const { uid, attempt } = reservation;
-  const statements = [];
+  const refunded = new Set(refunds.map((refund) => refund.id));
+  const successful = reservation.charges.filter(
+    (charge) => !refunded.has(charge.id),
+  );
+  const reserved = reservation.charges.reduce(
+    (total, charge) => total + charge.points,
+    0,
+  );
+  const settledCredits =
+    actualCredits ??
+    Math.max(
+      0,
+      reserved - refunds.reduce((total, refund) => total + refund.points, 0),
+    );
+  const chargedCredits = reservation.charges.length ? settledCredits : 0;
+  const statements = [
+    db
+      .prepare(
+        `UPDATE accounts SET points=points+
+        (SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)-?,updated_at=?
+        WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`,
+      )
+      .bind(
+        attempt,
+        chargedCredits,
+        new Date().toISOString(),
+        uid,
+        attempt,
+      ),
+  ];
   for (const refund of refunds) {
     statements.push(
       db
-        .prepare(
-          `UPDATE accounts SET points=points+COALESCE(
-      (SELECT MIN(points,?) FROM charges WHERE id=? AND attempt_id=?),0) WHERE uid=?`,
-        )
-        .bind(refund.points, refund.id, attempt, uid),
-    );
-    statements.push(
-      db
-        .prepare(
-          "UPDATE charges SET points=MAX(0,points-?) WHERE id=? AND attempt_id=?",
-        )
-        .bind(refund.points, refund.id, attempt),
+        .prepare("DELETE FROM charges WHERE id=? AND attempt_id=?")
+        .bind(refund.id, attempt),
     );
   }
+  successful.forEach((charge, index) => {
+    const points =
+      Math.ceil(((index + 1) * chargedCredits) / successful.length) -
+      Math.ceil((index * chargedCredits) / successful.length);
+    statements.push(
+      db
+        .prepare("UPDATE charges SET points=? WHERE id=? AND attempt_id=?")
+        .bind(points, charge.id, attempt),
+    );
+  });
   statements.push(
     db
       .prepare(
-        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at)
-    SELECT ?,?,COALESCE(SUM(points),0),?,?,?,?,? FROM charges WHERE attempt_id=?`,
+        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at,credits)
+    VALUES(?,?,?,?,?,?,?,?,?)`,
       )
       .bind(
         attempt,
         uid,
+        chargedCredits,
         usage.model,
         usage.input ?? null,
         usage.cached ?? null,
         usage.output ?? null,
         nowSeconds(),
-        attempt,
+        settledCredits,
       ),
-  );
-  // Zero-cost failed units are removed so a later repair pays only if it produces them.
-  statements.push(
-    db
-      .prepare("DELETE FROM charges WHERE attempt_id=? AND points=0")
-      .bind(attempt),
   );
   // Mark successful units as settled so repeated settlement cannot refund them again.
   statements.push(

@@ -8,6 +8,7 @@ import type { D1Database } from "@cloudflare/workers-types";
 import { settle, type Reservation, type Usage } from "./billing";
 import type { PreparedGeneration } from "./generation";
 import type { StreamTerminal } from "./response-stream";
+import { creditsFromUsage } from "./credits";
 import { wordOutput, questionOutput } from "./schemas";
 
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -132,5 +133,12 @@ export async function settleGeneration(
     }
     return [];
   });
-  await settle(db, reservation, refunds, usage, terminal.cursor);
+  await settle(
+    db,
+    reservation,
+    refunds,
+    usage,
+    terminal.cursor,
+    creditsFromUsage(usage) ?? 0,
+  );
 }

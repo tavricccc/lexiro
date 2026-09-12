@@ -101,7 +101,7 @@ const generation = () => ({
 });
 
 describe("Worker HTTP boundary", () => {
-  it("accepts one bounded WebP at the same organize endpoint and charges six points", async () => {
+  it("accepts one bounded WebP and settles its actual provider cost", async () => {
     const bytes = new Uint8Array(30),
       view = new DataView(bytes.buffer);
     bytes.set(new TextEncoder().encode("RIFF"));
@@ -124,7 +124,7 @@ describe("Worker HTTP boundary", () => {
       provider({ lines: ["apple 蘋果"] }),
     );
     expect(result.response.status).toBe(200);
-    expect((await account(env.DB, "u"))!.points).toBe(94);
+    expect((await account(env.DB, "u"))!.points).toBe(99);
   });
   it("rebuilds an owned but provider-expired cursor without charging twice", async () => {
     await env.DB.prepare("INSERT INTO cursors VALUES(?,?,?)")
@@ -149,9 +149,9 @@ describe("Worker HTTP boundary", () => {
     expect(upstream).toHaveBeenCalledTimes(2);
     expect(result.response.headers.get("x-context-rebuilt")).toBe("1");
     expect(result.text).not.toContain("private diagnostic");
-    expect((await account(env.DB, "u"))!.points).toBe(98);
+    expect((await account(env.DB, "u"))!.points).toBe(99);
   });
-  it("organizes text at a fixed five points even when Pro is requested", async () => {
+  it("forces text organization to Lite and settles its actual provider cost", async () => {
     const result = await call(
       req("/organize", {
         kind: "organizeText",
@@ -163,7 +163,7 @@ describe("Worker HTTP boundary", () => {
     );
     expect(result.response.status).toBe(200);
     expect(result.text).toContain("apple 蘋果");
-    expect((await account(env.DB, "u"))!.points).toBe(95);
+    expect((await account(env.DB, "u"))!.points).toBe(99);
   });
   it("returns account points and tiers without keys or model configuration", async () => {
     const result = await call(req("/me"));
@@ -214,7 +214,7 @@ describe("Worker HTTP boundary", () => {
     ).toBe(200);
     expect(
       JSON.parse((await call(req("/admin/settings", undefined, "admin"))).text),
-    ).toEqual({ freeTrial: true });
+    ).toEqual({ freeTrial: true, trialPoints: 500, defaultMonthly: 1000 });
     expect(
       (await call(req("/admin/accounts/u", { admin: true }, "admin", "PATCH")))
         .response.status,
@@ -227,10 +227,10 @@ describe("Worker HTTP boundary", () => {
     expect(result.text).toContain("The apple is red.");
     expect(result.text).not.toContain("資料邊界");
     expect(result.text).not.toContain("private-test-key");
-    expect((await account(env.DB, "u"))!.points).toBe(98);
+    expect((await account(env.DB, "u"))!.points).toBe(99);
     const again = await call(req("/generate", body));
     expect(again.response.status).toBe(200);
-    expect((await account(env.DB, "u"))!.points).toBe(98);
+    expect((await account(env.DB, "u"))!.points).toBe(99);
   });
   it("never charges an administrator but still records the tokens spent", async () => {
     const result = await call(req("/generate", generation(), "admin"));
@@ -238,8 +238,8 @@ describe("Worker HTTP boundary", () => {
     expect((await account(env.DB, "u"))!.points).toBe(100);
     const usage = await call(req("/admin/usage", undefined, "admin"));
     expect(JSON.parse(usage.text)).toMatchObject({
-      entries: [{ uid: "u", model: "gpt-5.6-luna", points: 0, input: 100, output: 20 }],
-      models: [{ model: "gpt-5.6-luna", runs: 1, input: 100, output: 20 }],
+      entries: [{ uid: "u", model: "gpt-5.6-luna", points: 0, credits: 1, input: 100, output: 20 }],
+      models: [{ model: "gpt-5.6-luna", runs: 1, credits: 1, input: 100, output: 20 }],
     });
   });
   it("rebuilds a foreign cursor and refuses client model/prompt overrides", async () => {
