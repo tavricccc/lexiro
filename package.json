@@ -1,0 +1,20 @@
+{
+  "name": "lexiro-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src tests-next scripts",
+    "test": "vitest run",
+    "build": "esbuild src/response-stream.ts --bundle --platform=browser --format=esm --outdir=dist",
+    "benchmark:stream": "node scripts/benchmark-stream.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "esbuild": "^0.28.2",
+    "oxlint": "^1.41.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
+  }
+}

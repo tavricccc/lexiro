@@ -1,0 +1,168 @@
+export interface StreamTerminal {
+  cursor?: string;
+  status: "complete" | "truncated" | "failed" | "cancelled";
+  /** Original server-side response for settlement, before public redaction. */
+  response?: Record<string, unknown>;
+}
+export interface StreamOptions {
+  onTerminal: (result: StreamTerminal) => Promise<void>;
+}
+
+const encoder = new TextEncoder();
+const MAX_EVENT_CHARACTERS = 1_048_576;
+const record = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value);
+const encodeEvent = (event: string, value: Record<string, unknown>) =>
+  encoder.encode(`event: ${event}\ndata: ${JSON.stringify(value)}\n\n`);
+const failure = () => encodeEvent("error", { type: "error", code: "upstream_unavailable" });
+const TEXT_EVENTS = new Set(["response.output_text.delta", "response.output_text.done"]);
+const RESPONSE_EVENTS = new Set([
+  "response.created", "response.in_progress", "response.completed",
+  "response.incomplete", "response.failed",
+]);
+
+interface Frame { event: string; data: string; raw: string }
+
+/** Keep UTF-8/text frames intact; parse JSON only for Response metadata events. */
+async function* frames(reader: ReadableStreamDefaultReader<Uint8Array>): AsyncGenerator<Frame> {
+  const decoder = new TextDecoder("utf-8", { fatal: true });
+  let pieces: string[] = [], lines: string[] = [], data: string[] = [];
+  let event = "", size = 0;
+  const line = (raw: string): Frame | undefined => {
+    lines.push(raw);
+    const text = raw.endsWith("\r") ? raw.slice(0, -1) : raw;
+    if (text === "") {
+      const result = data.length ? { event, data: data.join("\n"), raw: `${lines.join("\n")}\n` } : undefined;
+      lines = []; data = []; event = ""; size = 0;
+      return result;
+    }
+    if (text.startsWith("data:")) {
+      const value = text.slice(5);
+      data.push(value.startsWith(" ") ? value.slice(1) : value);
+    } else if (text.startsWith("event:")) event = text.slice(6).trim();
+  };
+  for (;;) {
+    const { value, done } = await reader.read();
+    const text = decoder.decode(value, { stream: !done });
+    let offset = 0, end: number;
+    while ((end = text.indexOf("\n", offset)) !== -1) {
+      const part = text.slice(offset, end);
+      size += part.length;
+      if (size > MAX_EVENT_CHARACTERS) throw new Error("Event exceeds limit");
+      pieces.push(part);
+      const result = line(pieces.join(""));
+      pieces = [];
+      if (result) yield result;
+      offset = end + 1;
+    }
+    if (offset < text.length) {
+      const part = text.slice(offset);
+      size += part.length;
+      if (size > MAX_EVENT_CHARACTERS) throw new Error("Event exceeds limit");
+      pieces.push(part);
+    }
+    if (done) {
+      if (pieces.length || data.length) throw new Error("Truncated SSE frame");
+      return;
+    }
+  }
+}
+
+/**
+ * Keep the Responses wire protocol and generated text, but remove prompt echoes.
+ * Model/usage/schema metadata are intentionally visible; none are credentials.
+ */
+export function sanitizeResponseStream(
+  upstream: ReadableStream<Uint8Array>,
+  options: StreamOptions,
+): ReadableStream<Uint8Array> {
+  const reader = upstream.getReader();
+  let cursor: string | undefined, cancelled = false, notified = false;
+  const finish = async (result: StreamTerminal) => {
+    if (notified) return;
+    notified = true;
+    await options.onTerminal(result);
+  };
+  async function* events(): AsyncGenerator<Uint8Array> {
+    try {
+      for await (const frame of frames(reader)) {
+        if (cancelled) return;
+        if (TEXT_EVENTS.has(frame.event)) {
+          if (!cursor) throw new Error("Text arrived before response identity");
+          yield encoder.encode(frame.raw);
+          continue;
+        }
+        if (frame.event === "error") {
+          await finish({ cursor, status: "failed" });
+          if (!cancelled) yield failure();
+          return;
+        }
+        // Only known events are forwarded; unexpected metadata cannot bypass redaction.
+        if (!RESPONSE_EVENTS.has(frame.event)) continue;
+        const event: unknown = JSON.parse(frame.data);
+        if (!record(event) || event.type !== frame.event || !record(event.response))
+          throw new Error("Invalid Response event");
+        const response = event.response;
+        if (typeof response.id !== "string" || !/^resp_[A-Za-z0-9_-]{1,200}$/.test(response.id))
+          throw new Error("Invalid response identity");
+        if (frame.event === "response.created") {
+          if (cursor) throw new Error("Duplicate response identity");
+          cursor = response.id;
+        } else if (cursor !== response.id) throw new Error("Response identity changed");
+
+        const terminal = ["response.completed", "response.incomplete", "response.failed"].includes(frame.event);
+        if (terminal) {
+          const truncated = frame.event === "response.incomplete" && record(response.incomplete_details) &&
+            response.incomplete_details.reason === "max_output_tokens";
+          await finish({
+            cursor,
+            status: frame.event === "response.completed" ? "complete" : truncated ? "truncated" : "failed",
+            response,
+          });
+          if (cancelled) return;
+        }
+
+        // Never mutate the private response retained by the settlement callback.
+        const clean = { ...response };
+        delete clean.instructions;
+        delete clean.input;
+        delete clean.prompt;
+        if (clean.error !== null && clean.error !== undefined)
+          clean.error = { code: "upstream_unavailable", message: "Generation failed." };
+        // Project envelope fields too: a new top-level echo must not expose a prompt.
+        yield encodeEvent(frame.event, {
+          type: frame.event,
+          ...(typeof event.sequence_number === "number" ? { sequence_number: event.sequence_number } : {}),
+          response: clean,
+        });
+        if (terminal) return;
+      }
+      if (!cancelled) throw new Error("Stream ended before terminal event");
+    } catch {
+      try { await finish({ cursor, status: cancelled ? "cancelled" : "failed" }); }
+      catch { /* Settlement errors must not become public provider details. */ }
+      if (!cancelled) yield failure();
+    } finally {
+      try { await reader.cancel(); } finally { reader.releaseLock(); }
+    }
+  }
+  const iterator = events();
+  return new ReadableStream<Uint8Array>({
+    async pull(controller) {
+      const next = await iterator.next();
+      if (cancelled) return;
+      if (next.done) controller.close();
+      else controller.enqueue(next.value);
+    },
+    async cancel() {
+      cancelled = true;
+      try {
+        await reader.cancel();
+        await iterator.return(undefined);
+      } finally {
+        reader.releaseLock();
+        await finish({ cursor, status: "cancelled" });
+      }
+    },
+  }, { highWaterMark: 0 });
+}
