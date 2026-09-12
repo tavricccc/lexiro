@@ -1,4 +1,4 @@
-import type { JobKind, Tier } from "@lexiro/ai-contract";
+import type { JobKind, TokenUsage, Tier } from "@lexiro/ai-contract";
 export type AiPhase = "connecting" | "thinking" | "generating" | "validating" | "retrying" | "rebuilding";
 export interface AiSession {
   tier: Tier;
@@ -7,8 +7,10 @@ export interface AiSession {
   cursor?: string;
   append?: boolean;
   notices: string[];
+  /** Every turn of this run added together, for the administrator's readout. */
+  usage: TokenUsage;
 }
-export interface AiTurnResult { text: string; id?: string; stopReason: "complete" | "truncated" | "blocked" | "unknown"; complete: boolean }
+export interface AiTurnResult { text: string; id?: string; stopReason: "complete" | "truncated" | "blocked" | "unknown"; complete: boolean; usage?: TokenUsage }
 export interface AiTurnOptions { signal?: AbortSignal; repair?: string; onCharacters?: (count: number) => void; onPhase?: (phase: AiPhase) => void }
 export interface AiTask<T> { id: string; kind: JobKind; billableCount: number; context: string; steps: AiTaskStep<T>[]; key?: (item: T) => string }
 export interface AiTaskStep<T> {

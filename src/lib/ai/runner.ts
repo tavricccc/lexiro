@@ -1,3 +1,4 @@
+import type { TokenUsage } from "@lexiro/ai-contract";
 import type {
   AiPhase,
   AiSession,
@@ -26,6 +27,7 @@ export interface AiRunUpdate<T> {
   total: number;
   segments: number;
   notices: string[];
+  usage: TokenUsage;
 }
 export function waitForRetry(ms: number, signal?: AbortSignal): Promise<void> {
   signal?.throwIfAborted();
@@ -64,6 +66,7 @@ export async function runTask<T>(
       total: run.total,
       segments: run.segments,
       notices: [...run.session.notices],
+      usage: { ...run.session.usage },
     });
   report();
   while (run.pending.length) {

@@ -37,7 +37,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/ui/liquid-tabs.tsx` — controlled segmented selection with the same shared-layout motion, without pointerdown speculation, measurement loops or reset timers.
 - `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon. Direction, where nothing marked one, is depth against depth: a set is a push whether it was opened from the Library that owns it or from 今天.
 - `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
-- `lib/managed-client.ts` — Firebase-authenticated Worker requests, one forced token refresh on 401, Responses text streaming and balance refresh events.
+- `lib/managed-client.ts` — Firebase-authenticated Worker requests, one forced token refresh on 401, Responses text streaming, per-turn token usage accumulated onto the session, and balance refresh events.
 - `components/library/word-editor.tsx` — shared single-word editor with separate sense and example rows; used by `set-word-row.tsx` and `word-preview.tsx`.
 - `components/library/set-tools.tsx` — set metadata and manual/AI additions on the existing set page; `set-editor.tsx` now only creates new sets. The old edit URL redirects to the set view.
 - `src/lib/word-edit.ts` — builds one-word edits from the latest library, preserving other rows and calculating only changed sense remaps.
@@ -45,9 +45,10 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/library/example-fields.tsx` — independently editable, wrapping example rows shared by inline editing and new-set creation. Form drafts use arrays, not newline-delimited text.
 - `tests-next/input-organizer.test.tsx` — no generation before confirmation; corrected review text is what proceeds to generation.
 - `components/library/input-organizer.tsx`, `lib/word-photo.ts` — shared typed/photo cleanup and editable confirmation; browser WebP resizing/encoding before upload.
-- `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache.
-- `components/me/plan-section.tsx` — account point balance and renewal date, replacing the removed BYO-key settings and connection-test components.
-- `components/me/admin-panel.tsx` — Worker-authorized account creation, point/monthly adjustments, notes, trial settings and pagination.
+- `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache. An administrator sees 無限額度 in place of the estimate and balance.
+- `components/ai/ai-usage.tsx` — administrator-only readout of a run's input/cached/output/reasoning tokens and the provider cost estimated from `MODEL_PRICES`.
+- `components/me/plan-section.tsx` — account point balance and renewal date; an administrator sees 無限額度 instead.
+- `components/me/admin-panel.tsx` — a three-row menu (帳號與額度 / 用量與成本 / 全站設定) that opens one task at a time: account list → one account's adjustments or creation, the 30-day token and cost report from `/admin/usage`, and the trial switch. Nothing is expanded until it is chosen.
 - `src/lib/ai/session.ts`, `runner.ts`, `tasks.ts` — managed session identity, serial generation/recovery and data-only request assembly. The old provider facade, catalog, request/reply/transport modules, settings persistence and usage component have been removed.
 - `tests-next/managed-client.test.ts`, `tests-next/managed-migration.test.ts` — token refresh, account isolation, streamed text and explicit settings retirement without losing queued edits.
 - Private prompts, schemas, prefix/schema tests, prompt evaluation scripts and fixtures have moved to the separate `lexiro-worker` repository; historical model artifacts are kept outside this public tree.

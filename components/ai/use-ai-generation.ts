@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Tier } from "@lexiro/ai-contract";
+import type { Tier, TokenUsage } from "@lexiro/ai-contract";
 import type { AiTask, AiPhase } from "@/src/types/ai";
 import { createAiSession, resetConversation } from "@/src/lib/ai/session";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
@@ -11,9 +11,9 @@ export type AiRunStatus = "idle" | "running" | "done" | "error" | "cancelled";
 export interface AiRunState<T> {
   status: AiRunStatus; phase: AiPhase; characters: number; completed: number; total: number;
   segments: number; error: string; items: T[]; notices: string[]; startedAt: number | null;
-  elapsedMs: number; remaining: number;
+  elapsedMs: number; remaining: number; usage: TokenUsage;
 }
-const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecting", characters: 0, completed: 0, total: 0, segments: 0, error: "", items: [], notices: [], startedAt: null, elapsedMs: 0, remaining: 0 });
+const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecting", characters: 0, completed: 0, total: 0, segments: 0, error: "", items: [], notices: [], startedAt: null, elapsedMs: 0, remaining: 0, usage: {} });
 
 export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = {}) {
   const [state, setState] = useState<AiRunState<T>>(initialState<T>);

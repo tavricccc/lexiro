@@ -32,16 +32,16 @@ describe("managed AI boundary", () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ error: { code: "upstream", message: "private prompt" } }), { status: 500 })));
     await expect(managedFetch("/generate")).rejects.not.toThrow("private prompt");
   });
-  it("reads UTF-8 SSE in byte-sized chunks and ignores model and usage", async () => {
+  it("reads UTF-8 SSE in byte-sized chunks and keeps model and usage", async () => {
     const events = [
       { type: "response.created", response: { id: "resp_test", model: "internal" } },
       { type: "response.output_text.delta", delta: "中文 🌲" },
-      { type: "response.completed", response: { usage: { output_tokens: 12 } } },
+      { type: "response.completed", response: { usage: { input_tokens: 40, output_tokens: 12, input_tokens_details: { cached_tokens: 32 } } } },
     ].map((e) => `data: ${JSON.stringify(e)}\r\n\r\n`).join("");
     const bytes = new TextEncoder().encode(events);
     const stream = new ReadableStream<Uint8Array>({ start(c) { for (const byte of bytes) c.enqueue(new Uint8Array([byte])); c.close(); } });
     const result = await readManagedStream(new Response(stream), {});
-    expect(result).toEqual({ text: "中文 🌲", id: "resp_test", complete: true, stopReason: "complete" });
+    expect(result).toEqual({ text: "中文 🌲", id: "resp_test", complete: true, stopReason: "complete", usage: { model: "internal", input: 40, cached: 32, output: 12 } });
   });
   it("does not accept a disconnected stream as completed content", async () => {
     await expect(readManagedStream(new Response('data: {"type":"response.output_text.delta","delta":"partial"}\n\n'), {})).rejects.toMatchObject({ streamBroken: true });

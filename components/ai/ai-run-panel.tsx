@@ -4,6 +4,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import { estimatePoints, type JobKind, type Tier } from "@lexiro/ai-contract";
 import type { AiRunState } from "./use-ai-generation";
 import { GenerationControls } from "./generation-controls";
+import { AiUsage } from "./ai-usage";
+import { useManagedAccount } from "./use-managed-account";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
@@ -46,6 +48,8 @@ export function AiRunPanel<T>({
   onTierChange: (tier: Tier) => void;
 }) {
   const [now, setNow] = useState(0);
+  const account = useManagedAccount();
+  const admin = account.data?.admin === true;
   const running = state.status === "running",
     started = state.status !== "idle",
     done = state.status === "done";
@@ -191,12 +195,14 @@ export function AiRunPanel<T>({
               {done && onAppend && configured && (
                 <Button type="button" variant="secondary" onClick={onAppend}>
                   <Icons.create />
-                  {t("managed.appendCost", {
-                    points:
-                      appendCost.min === appendCost.max
-                        ? appendCost.max
-                        : `${appendCost.min}–${appendCost.max}`,
-                  })}
+                  {admin
+                    ? t("ai.append")
+                    : t("managed.appendCost", {
+                        points:
+                          appendCost.min === appendCost.max
+                            ? appendCost.max
+                            : `${appendCost.min}–${appendCost.max}`,
+                      })}
                 </Button>
               )}
             </>
@@ -213,6 +219,7 @@ export function AiRunPanel<T>({
           </p>
         ))}
       </div>
+      {admin && started && <AiUsage usage={state.usage} />}
       {results && <div className="rule-t p-4 sm:p-5">{results}</div>}
     </section>
   );

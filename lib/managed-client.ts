@@ -1,7 +1,7 @@
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { AiRequestError } from "@/src/lib/ai/errors";
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
-import type { AccountInfo, GenerationInput } from "@lexiro/ai-contract";
+import type { AccountInfo, GenerationInput, TokenUsage } from "@lexiro/ai-contract";
 import { t, type TranslationKey } from "./i18n";
 
 export const MANAGED_ACCOUNT_CHANGED = "lexiro:managed-account-changed";
@@ -138,9 +138,12 @@ export async function readManagedStream(
     text = "",
     id: string | undefined,
     complete = false;
-  const terminal: { stopReason: AiTurnResult["stopReason"] } = {
-    stopReason: "unknown",
-  };
+  const terminal: { stopReason: AiTurnResult["stopReason"]; usage: TokenUsage } =
+    { stopReason: "unknown", usage: {} };
+  const count = (value: unknown) =>
+    typeof value === "number" && Number.isFinite(value) && value >= 0
+      ? value
+      : undefined;
   const consume = (frame: string) => {
     const dataText = frame
       .split(/\r?\n/)
@@ -150,6 +153,20 @@ export async function readManagedStream(
     if (!dataText || dataText === "[DONE]") return;
     const data = JSON.parse(dataText);
     if (data.type === "response.created") id = data.response.id;
+    if (typeof data.response?.model === "string")
+      terminal.usage.model = data.response.model;
+    if (data.response?.usage) {
+      const usage = data.response.usage;
+      const reported: TokenUsage = {
+        input: count(usage.input_tokens),
+        output: count(usage.output_tokens),
+        cached: count(usage.input_tokens_details?.cached_tokens),
+        reasoning: count(usage.output_tokens_details?.reasoning_tokens),
+      };
+      for (const [field, value] of Object.entries(reported))
+        if (value !== undefined)
+          terminal.usage[field as keyof TokenUsage] = value as never;
+    }
     if (data.type === "response.output_text.delta") {
       text += data.delta;
       options.onCharacters?.(text.length);
@@ -204,7 +221,7 @@ export async function readManagedStream(
     });
   if (!text.trim())
     throw new AiRequestError(t("ai.emptyReply"), { retryable: false });
-  return { text, id, complete, stopReason };
+  return { text, id, complete, stopReason, usage: terminal.usage };
 }
 
 export async function managedTurn(
@@ -237,5 +254,17 @@ export async function managedTurn(
     session.cursor = undefined;
     session.notices.push(t("ai.contextRebuilt"));
   }
-  return readManagedStream(response, { ...options, signal });
+  const result = await readManagedStream(response, { ...options, signal });
+  addUsage(session.usage, result.usage);
+  return result;
+}
+
+/** A run is many turns; the readout is about the run, so the turns add up. */
+export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
+  if (!turn) return total;
+  if (turn.model) total.model = turn.model;
+  for (const field of ["input", "cached", "output", "reasoning"] as const)
+    if (turn[field] !== undefined)
+      total[field] = (total[field] ?? 0) + turn[field]!;
+  return total;
 }

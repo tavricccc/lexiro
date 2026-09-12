@@ -38,7 +38,17 @@ export function PlanSection() {
                 </Button>
               </div>
             )}
-            {account.data && (
+            {/* An administrator has no balance to read, so they are told what
+                they have instead of a number that would mean nothing. */}
+            {account.data?.admin && (
+              <>
+                <p className="text-xl font-medium">{t("admin.unlimited")}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t("admin.unlimitedHint")}
+                </p>
+              </>
+            )}
+            {account.data && !account.data.admin && (
               <>
                 <p className="text-xl font-medium tabular-nums">
                   {t("managed.balance", { points: account.data.points })}

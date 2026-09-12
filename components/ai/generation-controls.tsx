@@ -8,13 +8,17 @@ import { useManagedAccount } from "./use-managed-account";
 export function GenerationControls({ kind, count, tier, onTierChange, disabled = false }: { kind: JobKind; count: number; tier: Tier; onTierChange: (tier: Tier) => void; disabled?: boolean }) {
   const account = useManagedAccount();
   const estimate = estimatePoints(kind, count, tier);
+  // An administrator is not spending points, so the line that would quote a
+  // price says what is true instead; the tokens arrive once the run has run.
+  const admin = account.data?.admin === true;
   return <div className="grid gap-3">
     <SelectField label={t("managed.tier")} value={tier} disabled={disabled} onValueChange={(value) => onTierChange(value as Tier)} options={TIERS.map((value) => ({ value, label: t(`managed.${value}`) }))} />
     <p className="text-xs text-muted-foreground">{t(`managed.${tier}Hint`)}</p>
-    <div className="flex flex-wrap justify-between gap-2 text-sm tabular-nums" aria-live="polite">
+    {!admin && <div className="flex flex-wrap justify-between gap-2 text-sm tabular-nums" aria-live="polite">
       <span>{estimate.min === estimate.max ? t("managed.estimate", { points: estimate.max }) : t("managed.estimateRange", estimate)}</span>
       {account.data && <span>{t("managed.balance", { points: account.data.points })}</span>}
-    </div>
+    </div>}
+    {admin && <p className="text-sm text-muted-foreground">{t("admin.unlimited")}</p>}
     {account.error && <div role="alert" className="text-sm text-destructive">{account.error.message}<Button type="button" variant="ghost" size="sm" onClick={() => void account.refetch()}>{t("common.reload")}</Button></div>}
   </div>;
 }
