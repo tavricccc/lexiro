@@ -44,7 +44,7 @@ export function WordAssistant({
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
   const generation = useAiGeneration<WordDraft>({ merge: mergeWordDrafts });
   const { state, reset } = generation;
-  const size = Math.min(50, Math.max(1, generation.batchSize));
+  const size = generation.batchSize;
   const batches = useMemo(() => chunks(sources, size), [sources, size]);
   const task = useMemo(
     () => wordTask(raw, sources, examples, size),

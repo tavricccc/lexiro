@@ -106,7 +106,7 @@ export const zhTW = {
     advancedTitle: "進階連線與生成設定",
     segmentSize: "每段單字數",
     segmentHint:
-      "較少能更快看到第一段；較多可減少往返。題目依題型安排，文章不拆開。",
+      "15–30。每段都會重播前面的對話，所以段數越多、送出的內容越多；較少能更快看到第一段。題目依題型安排，文章不拆開。",
     schemaLabel: "結構化 JSON 輸出",
     schemaHint: "支援時讓模型依格式回覆；不論開關，都會檢查內容。",
     contextLimit: "上下文容量（tokens）",

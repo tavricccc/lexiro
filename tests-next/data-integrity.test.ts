@@ -77,7 +77,7 @@ describe("data integrity", () => {
       apiKey: "secret",
       baseUrl: "",
       model: "gpt-4o-mini",
-      batchSize: 8,
+      batchSize: 24,
     };
     const progress: LearningProgress = {
       cards: {},
@@ -92,7 +92,7 @@ describe("data integrity", () => {
 
     expect(backup.kind).toBe("full-backup");
     expect(backup.aiSettings).not.toHaveProperty("apiKey");
-    expect(backup.aiSettings.batchSize).toBe(8);
+    expect(backup.aiSettings.batchSize).toBe(24);
   });
 
   it("previews backup additions without replacing local activity", () => {
@@ -110,7 +110,7 @@ describe("data integrity", () => {
         apiKey: "",
         baseUrl: "",
         model: "gpt-4o-mini",
-        batchSize: 8,
+        batchSize: 24,
       },
     );
     const prepared = prepareBackupImport(

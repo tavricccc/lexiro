@@ -288,8 +288,16 @@ describe("settings migration", () => {
     provider: "openai",
     baseUrl: "https://proxy.example/v1/chat/completions",
     model: "my-model",
-    batchSize: 8,
+    batchSize: 24,
   };
+  it("pulls a segment size from outside the supported range into it", () => {
+    expect(
+      normalizeShareableAiSettings({ ...legacy, batchSize: 8 }).batchSize,
+    ).toBe(15);
+    expect(
+      normalizeShareableAiSettings({ ...legacy, batchSize: 50 }).batchSize,
+    ).toBe(30);
+  });
   it("explicitly migrates v1 while retaining custom model, endpoint and segment size", () => {
     expect(normalizeShareableAiSettings(legacy)).toMatchObject({
       ...legacy,

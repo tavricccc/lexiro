@@ -6,6 +6,7 @@ import { isRecord } from "../schema";
 import {
   AI_MODELS,
   AI_PROTOCOLS,
+  SEGMENT_SIZE,
   defaultAiSettings,
   defaultProtocol,
 } from "./catalog";
@@ -103,7 +104,10 @@ export function normalizeShareableAiSettings(
     model: value.model.trim(),
     protocol: value.protocol as AiSettings["protocol"],
     structuredOutput: value.structuredOutput,
-    batchSize: Math.min(50, Math.max(1, Math.round(value.batchSize as number))),
+    batchSize: Math.min(
+      SEGMENT_SIZE.max,
+      Math.max(SEGMENT_SIZE.min, Math.round(value.batchSize as number)),
+    ),
     contextTokens: Math.max(0, Math.round(value.contextTokens as number)),
     maxOutputTokens: Math.max(256, Math.round(value.maxOutputTokens as number)),
     reasoningEffort: value.reasoningEffort.trim(),

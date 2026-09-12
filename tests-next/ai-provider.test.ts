@@ -12,7 +12,7 @@ const settings = (patch: Partial<AiSettings> = {}): AiSettings => ({
   protocol: "chat",
   apiKey: "key",
   baseUrl: "",
-  batchSize: 10,
+  batchSize: 20,
   enabled: true,
   model: "gpt-4o-mini",
   provider: "openai",

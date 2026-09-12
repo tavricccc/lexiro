@@ -66,10 +66,10 @@ describe("AI settings persistence", () => {
     applyRemoteAiSettings({
       ...getShareableAiSettings(defaultAiSettings),
       enabled: true,
-      batchSize: 12,
+      batchSize: 24,
     });
     await waitForAiSettingsPersistence();
-    expect(loadAiSettings().batchSize).toBe(12);
+    expect(loadAiSettings().batchSize).toBe(24);
     expect((await loadSyncJournal()).blobs.aiSettings).toBe(0);
   });
 

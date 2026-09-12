@@ -48,6 +48,15 @@ is not uniform:
   supports no explicit cache. Stable content already comes first, which is the
   only lever available.
 
+Segment size is the larger lever and it is bounded because of that: a segment
+replays every segment before it, so ten words per segment sends roughly twice
+the input of twenty for the same run, and the difference is larger than
+everything caching recovers. `SEGMENT_SIZE` in `catalog.ts` holds the range,
+15 to 30 with a default of 20 — below fifteen a run pays for its own history,
+above thirty a single reply is long enough to be truncated often. A truncated
+segment is still halved by the runner, which is a reduction of one turn rather
+than a setting.
+
 Across runs and across features the shared prefix is the prompt template alone,
 a few hundred tokens — under every threshold above. Padding it to reach one
 would cost those tokens on every request forever, so nothing tries to. Two runs

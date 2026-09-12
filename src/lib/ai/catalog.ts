@@ -73,6 +73,17 @@ export const AI_MODELS: AiModelPreset[] = [
           : ["minimal", "low", "medium", "high"],
   })),
 ];
+/**
+ * How many words one segment covers.
+ *
+ * Every segment replays the conversation before it, so halving the segment
+ * size does not halve the cost of a run — it roughly doubles the input it
+ * sends. Twenty is where a run stops paying for its own history without
+ * making any single reply long enough to be truncated often; the runner still
+ * splits a segment in half on its own when one is.
+ */
+export const SEGMENT_SIZE = { min: 15, max: 30, default: 20 } as const;
+
 export const AI_PROTOCOLS: AiProtocol[] = [
   "responses",
   "chat",
@@ -108,7 +119,7 @@ export const defaultAiSettings: AiSettings = {
   baseUrl: "",
   model: "gpt-5.6-luna",
   protocol: "responses",
-  batchSize: 10,
+  batchSize: SEGMENT_SIZE.default,
   structuredOutput: true,
   contextTokens: 0,
   maxOutputTokens: 8192,

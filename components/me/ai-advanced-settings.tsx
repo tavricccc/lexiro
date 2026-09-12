@@ -4,7 +4,12 @@ import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { SelectField } from "@/components/ui/select-field";
 import { Switch } from "@/components/ui/switch";
-import { AI_PROTOCOLS, endpoint, PROTOCOL_LABELS } from "@/src/lib/ai/catalog";
+import {
+  AI_PROTOCOLS,
+  endpoint,
+  PROTOCOL_LABELS,
+  SEGMENT_SIZE,
+} from "@/src/lib/ai/catalog";
 import { t } from "@/lib/i18n";
 
 export function AiAdvancedSettings({
@@ -52,8 +57,8 @@ export function AiAdvancedSettings({
         </div>
         <Field label={t("ai.segmentSize")} description={t("ai.segmentHint")}>
           <Input
-            min={1}
-            max={50}
+            min={SEGMENT_SIZE.min}
+            max={SEGMENT_SIZE.max}
             type="number"
             value={settings.batchSize}
             onChange={(e) => update({ batchSize: Number(e.target.value) })}
