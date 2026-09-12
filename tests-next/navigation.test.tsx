@@ -97,6 +97,7 @@ describe("navigation selection", () => {
     expect(consumeRouteDirection("/sets/example")).toBe("child");
     expect(adoptedParent("/sets/example")).toBe("/library");
     expect(adoptedParent("/sync")).toBe("/me");
+    expect(adoptedParent("/me/preferences")).toBe("/me");
   });
   it("pushes into a page the destination it was opened from does not own", () => {
     // A set reached from 今天 is filed under the Library, and reading that as a
@@ -108,6 +109,8 @@ describe("navigation selection", () => {
     expect(consumeRouteDirection("/me")).toBe("back");
     rememberRoutePath("/me");
     expect(consumeRouteDirection("/sync")).toBe("child");
+    rememberRoutePath("/me/admin");
+    expect(consumeRouteDirection("/me/admin/usage")).toBe("child");
   });
   it("names the destinations primary navigation points at", () => {
     for (const destination of ["/", "/library", "/progress", "/me"]) {

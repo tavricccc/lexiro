@@ -29,8 +29,8 @@ export interface AccountInfo {
   admin: boolean;
 }
 export interface AdminAccount { uid: string; email: string; points: number; monthly: number; renews_at: number; note: string | null }
-export interface TokenUsage { model?: string; input?: number; cached?: number; output?: number; reasoning?: number }
-export interface AdminUsageEntry { id: string; uid: string; email: string | null; model: string; points: number; input: number | null; cached: number | null; output: number | null; created_at: number }
+export interface TokenUsage { model?: string; input?: number; cached?: number; output?: number; reasoning?: number; credits?: number }
+export interface AdminUsageEntry { id: string; uid: string; email: string | null; model: string; points: number; credits: number | null; input: number | null; cached: number | null; output: number | null; created_at: number }
 export interface AdminUsageTotals { runs: number; input: number; cached: number; output: number; cost: number }
 
 /**

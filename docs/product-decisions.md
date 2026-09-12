@@ -136,6 +136,16 @@ The 我的 destination is a menu, not the settings form itself. Account, learnin
 preferences, plan, backup and administrator tasks each use a separate route so
 only the chosen task is revealed and browser Back returns to the menu.
 
+Administration follows the same rule. Account listing, account creation or
+editing, usage, and global settings live at distinct `/me/admin/...` routes.
+Trial points and the initial and monthly defaults for accounts are changed there;
+they are not literals chosen by the public account form.
+
+Credit labels use the credit icon as the unit and put `預計` beside estimates.
+The public client contains no money-to-credit conversion rule. Administrators
+receive the already-settled credit equivalent from the private Worker beside
+token and dollar usage, both for one run and for the 30-day report.
+
 ## Cloud sync
 
 **A deletion is something the cloud says, not something it fails to mention.**

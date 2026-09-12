@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { CreditBadge } from "@/components/ai/credit-badge";
 import { Icons } from "@/components/ui/icons";
 import { Markdown } from "@/components/ui/markdown";
 import { t } from "@/lib/i18n";
@@ -115,11 +116,14 @@ export function ResultPanel({
 
       {wrongContent && !explanation && (
         <div className="mt-6 flex flex-col items-center gap-2">
-          <p className="text-xs text-muted-foreground">{t("managed.explainCost")}</p>
           {uid ? (
             <Button variant="ghost" disabled={busy} onClick={() => void explain()}>
               <Icons.generate />
               {t(busy ? "practice.explaining" : "practice.explainWrong")}
+              <CreditBadge
+                label={t("managed.expectedPoints", { points: 5 })}
+                value={t("managed.expectedShort", { points: 5 })}
+              />
             </Button>
           ) : (
             <Button asChild variant="ghost">

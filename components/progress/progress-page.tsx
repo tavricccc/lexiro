@@ -326,7 +326,7 @@ function HistoryChart({
 
 function Figure({ label, value }: { label: string; value: string | number }) {
   return (
-    <div className="flex min-h-11 items-center justify-between gap-4 py-2.5">
+    <div className="flex min-h-[3.25rem] items-center justify-between gap-4 py-[var(--row-padding-block)]">
       <dt className="type-row">{label}</dt>
       <dd className="type-row tabular-nums">{value}</dd>
     </div>

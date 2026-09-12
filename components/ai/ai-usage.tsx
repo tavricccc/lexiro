@@ -1,4 +1,5 @@
 import { estimateCost, type TokenUsage } from "@lexiro/ai-contract";
+import { CreditBadge } from "./credit-badge";
 import { t } from "@/lib/i18n";
 
 /** Four decimals, because a Lite run costs less than a tenth of a cent. */
@@ -34,7 +35,15 @@ export function AiUsage({ usage }: { usage: TokenUsage }) {
     <div className="rule-card py-4">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <p className="text-sm font-medium">{t("admin.runUsage")}</p>
-        <p className="text-sm font-medium tabular-nums">{formatCost(cost)}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-medium tabular-nums">{formatCost(cost)}</p>
+          {usage.credits !== undefined && (
+            <CreditBadge
+              label={t("admin.creditEquivalent", { credits: usage.credits })}
+              value={usage.credits}
+            />
+          )}
+        </div>
       </div>
       <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {usageFigures(usage).map(([key, value]) => (

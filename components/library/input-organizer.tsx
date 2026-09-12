@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LIMITS, buildWordGenerationSources } from "@lexiro/ai-contract";
 import { Button } from "@/components/ui/button";
+import { CreditBadge } from "@/components/ai/credit-badge";
 import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/ui/icons";
@@ -92,7 +93,6 @@ export function InputOrganizer({
     <div className="space-y-4">
       <Field
         label={t("setEditor.rawWords")}
-        hint={t("managed.organizeTextCost")}
       >
         <Textarea
           value={input}
@@ -108,12 +108,17 @@ export function InputOrganizer({
       </Field>
       <div className="flex flex-wrap items-center gap-2">
         <Button
+          aria-label={t("managed.organize")}
           type="button"
           disabled={disabled || busy || !input.trim() || !uid}
           onClick={() => void organize()}
         >
           <Icons.generate />
           {t("managed.organize")}
+          <CreditBadge
+            label={t("managed.expectedPoints", { points: 5 })}
+            value={t("managed.expectedShort", { points: 5 })}
+          />
         </Button>
         <Button
           asChild
@@ -124,6 +129,10 @@ export function InputOrganizer({
           <label>
             <Icons.import />
             {t("managed.photo")}
+            <CreditBadge
+              label={t("managed.expectedPoints", { points: 6 })}
+              value={t("managed.expectedShort", { points: 6 })}
+            />
             <input
               type="file"
               accept="image/*"
@@ -137,9 +146,6 @@ export function InputOrganizer({
             />
           </label>
         </Button>
-        <span className="text-xs text-muted-foreground">
-          {t("managed.organizeImageCost")}
-        </span>
         {busy && (
           <Button
             type="button"

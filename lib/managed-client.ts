@@ -167,6 +167,8 @@ export async function readManagedStream(
         if (value !== undefined)
           terminal.usage[field as keyof TokenUsage] = value as never;
     }
+    const credits = count(data.response?.lexiro?.credits);
+    if (credits !== undefined) terminal.usage.credits = credits;
     if (data.type === "response.output_text.delta") {
       text += data.delta;
       options.onCharacters?.(text.length);
@@ -263,7 +265,7 @@ export async function managedTurn(
 export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   if (!turn) return total;
   if (turn.model) total.model = turn.model;
-  for (const field of ["input", "cached", "output", "reasoning"] as const)
+  for (const field of ["input", "cached", "output", "reasoning", "credits"] as const)
     if (turn[field] !== undefined)
       total[field] = (total[field] ?? 0) + turn[field]!;
   return total;
