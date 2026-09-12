@@ -1,12 +1,22 @@
 # Lexiro Worker 檔案地圖
 
-獨立後端工作區。目前有串流隱私邊界與 Firebase JWT 驗證模組，尚未接上 HTTP handler、D1 計費或正式部署；前端仍使用原有路徑。
+獨立後端工作區。已有串流隱私邊界、Firebase JWT、HTTP handler、D1 計費與管理 API 的本地實作；前端 managed 切換進行中，整理端點與正式部署尚未完成。接手狀態與規格差異見 `docs/product-decisions.md`。
 
 | 路徑 | 責任 |
 | --- | --- |
 | `src/response-stream.ts` | 保留 Responses SSE 協定，只移除上下文回顯並中和錯誤；文字事件不解析 JSON，內部完成通知保留伺服器結算需要的原始回覆 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
+| `src/billing.ts` | D1 原子扣款、整數進位分配、每來源冪等、一次性退款、cursor 擁有權與個別到期續期 |
+| `migrations/0001_billing.sql` | 計費初始 schema 與索引 |
+| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定 |
+| `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
+| `src/admin.ts` | 帳號、點數、月額度與免費試用管理端點 |
+| `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算 |
+| `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
+| `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
+| `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
+| `vendor/lexiro-ai-contract-1.0.0.tgz` | 來自 public frontend packages/ai-contract 的版本化無祕密共用套件，讓 private repo 可獨立安裝 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
@@ -15,8 +25,10 @@
 
 公開串流保留 `response.created`、`response.in_progress`、`response.completed`、`response.incomplete`、`response.failed` 及文字增量／完成事件。只有 Response 元資料事件解析 JSON 並刪掉 `instructions`、`input`、`prompt`。模型、用量與 schema 可存在於網路回應，使用者只要求介面不顯示；不為了隱藏程式碼或這些欄位增添复杂度。API key 始終只用於後端供應商請求標頭。上游錯誤文字不直接回傳。
 
-`onTerminal` 在終止事件送給前端之前完成，之後接入結算與 cursor 寫入，避免前端看到完成立刻送下一段時碰上尚未釋放的鎖。取消也會發出一次內部終止通知。此處只保護協定層的上下文回顯，不改寫模型產生的內容。
+`onTerminal` 在終止事件送給前端之前完成結算與 cursor 寫入，避免前端看到完成立刻送下一段時碰上尚未釋放的鎖。取消也會發出一次內部終止通知。此處只保護協定層的上下文回顯，不改寫模型產生的內容。
 
 ## 持久化版本
 
-尚未新增持久化資料表或 migration。
+| 資料 | 版本 | Migration |
+| --- | --- | --- |
+| D1 計費 | 1 | `migrations/0001_billing.sql` |
