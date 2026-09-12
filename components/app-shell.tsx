@@ -6,6 +6,7 @@ import { t, type TranslationKey } from "@/lib/i18n";
 import {
   commitRouteHistory,
   markPopstateRouteDirection,
+  adoptedParent,
 } from "@/lib/navigation-memory";
 import { RouteSurface } from "@/components/motion/route-surface";
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
@@ -41,32 +42,12 @@ function isSecondaryMobileRoute(pathname: string) {
   return false;
 }
 
-function fallbackPageTitle(pathname: string) {
-  if (pathname === "/library") return t("library.title");
-  if (pathname === "/progress") return t("progress.title");
-  if (pathname === "/me") return t("me.title");
-  if (pathname === "/sync") return t("sync.title");
-  if (pathname === "/practice") return t("practice.title");
-  if (pathname === "/sets/new") return t("setEditor.createTitle");
-  if (pathname === "/questions/generate") return t("questions.generateTitle");
-  if (pathname.startsWith("/questions/reading/")) return t("questions.editReading");
-  if (pathname.startsWith("/questions/")) return t("questions.edit");
-  if (pathname.startsWith("/sets/")) return t("library.title");
-  return t("app.name");
-}
-
-function ShellIdentity({ pathname, title }: { pathname: string; title: string }) {
-  if (pathname === "/") return <BrandLockup href="/" />;
-  return <h1 className="truncate text-lg font-medium leading-none tracking-[-0.01em]">{title}</h1>;
-}
-
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const practiceActive = useUIStore((store) => store.practiceActive);
-  const pageTitle = useUIStore((store) => store.pageTitle);
   const showMobileNavigation = !practiceActive && !isSecondaryMobileRoute(pathname);
-  const shellTitle = pageTitle?.pathname === pathname ? pageTitle.title : fallbackPageTitle(pathname);
+  const navigationPathname = adoptedParent(pathname) ?? pathname;
 
   React.useEffect(() => commitRouteHistory(pathname), [pathname]);
 
@@ -103,15 +84,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       )}
       data-focus={practiceActive}
     >
-      {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-[var(--surface-stage)]/92 p-3 backdrop-blur-xl md:flex">
-        <div className="flex items-center justify-between px-2 pb-5 pt-2">
-          <ShellIdentity pathname={pathname} title={shellTitle} />
+      {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-card p-3 md:flex">
+        <div className="mb-4 flex items-center justify-between border-b px-3 pb-5 pt-3">
+          <BrandLockup href="/" />
           <SyncIndicator />
         </div>
         <LiquidNav
           className="flex-1 content-start"
           items={navItems}
-          pathname={pathname}
+          pathname={navigationPathname}
           vertical
         />
       </aside>}
@@ -127,7 +108,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         >
           {showMobileNavigation && (
             <div className="app-mobile-header mb-4 flex h-10 items-center justify-between md:hidden">
-              <ShellIdentity pathname={pathname} title={shellTitle} />
+              <BrandLockup href="/" />
               <div className="flex items-center gap-1">
                 <SyncIndicator />
               </div>
@@ -138,14 +119,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         <div
           aria-hidden={!showMobileNavigation}
-          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full border bg-background/92 px-3 py-1.5 shadow-[var(--shadow-floating)] backdrop-blur-xl md:hidden"
+          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full border bg-card px-3 py-1.5 shadow-[var(--shadow-floating)] md:hidden"
           data-visible={showMobileNavigation}
           inert={!showMobileNavigation}
         >
           <LiquidNav
             className="mx-auto h-12"
             items={navItems}
-            pathname={pathname}
+            pathname={navigationPathname}
           />
         </div>
       </div>

@@ -82,7 +82,7 @@ export function NavigationFeedback() {
         return;
       }
       const target = interactiveTarget(event.target);
-      if (!target || !internalAnchor(target)) return;
+      if (!target || target.closest("[data-primary-navigation]") || !internalAnchor(target)) return;
       if (
         target.matches(":disabled, [aria-disabled='true'], [data-disabled]") ||
         target.closest(":disabled, [aria-disabled='true'], [data-disabled]")

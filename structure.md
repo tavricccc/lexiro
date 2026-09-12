@@ -30,7 +30,12 @@ ramp live in `app/globals.css`; the rules that go with them are in
 ladder in `config/motion.config.json`, generated into `src/generated/` for both
 CSS and JavaScript, so nothing states a literal duration of its own.
 
-The workspace shell is shared by desktop and mobile. Desktop uses a compact sidebar; mobile uses the same routes through a bottom navigation bar. Library folders use a drill-down model, similar to Windows File Explorer, instead of an always-expanded tree.
+The workspace shell is shared by desktop and mobile. Desktop uses a compact sidebar; mobile uses the same routes through a bottom navigation bar. Brand identity stays in the shell, while `components/ui/page-header.tsx` owns each page's title, actions and back control. Library folders use a drill-down model, similar to Windows File Explorer, instead of an always-expanded tree.
+
+- `components/liquid-nav.tsx` — committed-path selection and Next Link pending feedback with a shared moving selection; the dock stays outside named transition snapshots so rapid clicks remain available.
+- `components/ui/liquid-tabs.tsx` — controlled segmented selection with the same shared-layout motion, without pointerdown speculation, measurement loops or reset timers.
+- `lib/navigation-memory.ts` — route/history direction and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination.
+- `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
 is the catalogue; `question-prompts.ts` asks a model only for prose and answer

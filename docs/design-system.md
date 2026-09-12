@@ -130,7 +130,7 @@ into the card's own border would draw the same corner twice.
 
 ## Spacing
 
-`--section-gap` (2.75rem) and `--block-gap` (1.25rem) back the `.section-gap` and
+`--section-gap` (2rem) and `--block-gap` (1.25rem) back the `.section-gap` and
 `.block-gap` utilities. Use `.section-gap` between the major sections of a page
 instead of picking a fresh `mt-8` / `mt-10` / `mt-12` each time — the reason the
 old pages drifted is that every screen invented its own rhythm.
@@ -147,8 +147,8 @@ not by feel — if an interaction does not fit a rung, the ladder is wrong.
 
 The pacing is iOS's. A touch is acknowledged in `--motion-touch` (100ms), a
 control settles in `--motion-control` (250ms), moving to another place takes
-`--motion-nav` (350ms), and a layer presented over the current place takes
-`--motion-sheet` (450ms) because it travels furthest. Leaving is always quicker
+`--motion-nav` (460ms), and a layer presented over the current place takes
+`--motion-sheet` (560ms) because it travels furthest. Leaving is always quicker
 than arriving, which is what `--motion-control-exit` and `--motion-sheet-exit`
 are for. Arrivals decelerate (`--ease-arrive`), dismissals accelerate
 (`--ease-depart`), travel between two known positions is symmetric
@@ -159,7 +159,9 @@ JavaScript reaches the ladder through `timing(rung, curve)` in
 `lib/motion-timing.ts`, which is also what `MotionConfig` is given, so Motion and
 CSS cannot drift apart.
 
-**Route transitions.** `RouteSurface` wraps every route in a `<ViewTransition>`.
+**Route transitions.** Primary links reveal the committed page in place without
+a document snapshot. The dock stays unnamed and interactive throughout rapid
+navigation. Nested routes use `RouteSurface`'s `<ViewTransition>`.
 Going deeper pushes the child in from the trailing edge while the parent
 parallaxes away; coming back plays the same two animations reversed, so pop is
 push read backwards rather than a second recipe. Only the phone layout gets the
@@ -177,7 +179,11 @@ a row in a divided list answers with a rounded tint that bleeds past the row
 rather than travelling (`.t-row`), because a row that moved would tear the
 hairlines it shares with its neighbours.
 
-**Navigation feedback.** `NavigationFeedback` answers a tap on a destination
+**Navigation feedback.** Primary navigation reads Next Link's pending state and
+keeps the current route selected until the new page commits. Segmented controls
+likewise follow their controlled value; cancelled touches cannot move either
+selection. Both share a moving selection surface. `NavigationFeedback` answers
+other taps on a destination
 before the destination commits: the control that was tapped wears
 `data-navigating`, and a progress line crawls at the top of the window. It is
 reserved for navigation — an ordinary button is already answered by the press
@@ -212,8 +218,8 @@ markup is defined:
   `options: {label, value}[]`; nobody hand-rolls a trigger and content, and
   nobody writes a native `<select>`. Radix rejects an empty option value, so a
   "none" choice needs a sentinel (see `ROOT_VALUE` in the folder toolbar).
-- **`PageHeader`** — the single page header, with optional `back` and `actions`
-  slots. Titles render in the lexical serif.
+- **`PageHeader`** — the single content header, with optional `back` and `actions`
+  slots and a HarmonyOS Sans TC page title. The shell keeps stable brand identity.
 - **`LoadingState` / `EmptyState` / `ErrorState`** — no page writes its own. The
   `empty` variant of `EmptyState` can show a ghost dictionary entry via
   `headword` / `pos`, so an empty screen shows the shape of what belongs there;

@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import Link, { useLinkStatus } from "next/link";
 import { useRouter } from "next/navigation";
 import * as React from "react";
+import { LayoutGroup, motion, useReducedMotion } from "motion/react";
+import { timing } from "@/lib/motion-timing";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
-import { markRouteDirection } from "@/lib/navigation-memory";
 
 export interface LiquidNavItem {
   activePathPrefix?: string;
@@ -13,6 +14,48 @@ export interface LiquidNavItem {
   href: string;
   icon: React.ReactNode;
   label: string;
+}
+
+function NavigationContents({
+  item,
+  active,
+  vertical,
+}: {
+  item: LiquidNavItem;
+  active: boolean;
+  vertical: boolean;
+}) {
+  const { pending } = useLinkStatus();
+  const reduceMotion = useReducedMotion();
+  return (
+    <>
+      {active && (
+        <motion.span
+          aria-hidden
+          className="t-nav-selection absolute inset-0 z-0 rounded-[inherit] bg-brand-100 shadow-[var(--shadow-control)]"
+          layoutId={reduceMotion ? undefined : "selection"}
+          transition={timing("nav", "nav")}
+        />
+      )}
+      <span
+        aria-hidden
+        className="t-nav-pending absolute inset-0 rounded-[inherit]"
+        data-pending={pending}
+      />
+      <span className="relative z-10 shrink-0" data-nav-icon>
+        {item.icon}
+        {item.badge}
+      </span>
+      <span
+        className={cn(
+          "relative z-10 w-full min-w-0 truncate",
+          vertical ? "text-left" : "text-center",
+        )}
+      >
+        {item.label}
+      </span>
+    </>
+  );
 }
 
 export function LiquidNav({
@@ -27,86 +70,57 @@ export function LiquidNav({
   vertical?: boolean;
 }) {
   const router = useRouter();
-  const [pendingRoute, setPendingRoute] = React.useState<{
-    fromPath: string;
-    href: string;
-  } | null>(null);
-  const pendingResetRef = React.useRef(0);
-  const displayedPath =
-    pendingRoute?.fromPath === pathname ? pendingRoute.href : pathname;
-
-  React.useEffect(
-    () => () => window.clearTimeout(pendingResetRef.current),
-    [],
-  );
-
-  const acknowledgeNavigation = React.useCallback((href: string) => {
-    setPendingRoute({ fromPath: pathname, href });
-    window.clearTimeout(pendingResetRef.current);
-    pendingResetRef.current = window.setTimeout(
-      () => setPendingRoute(null),
-      2_500,
-    );
-  }, [pathname]);
+  const groupId = React.useId();
   const activeIndex = items.findIndex(
     (item) =>
-      displayedPath === item.href ||
-      displayedPath.startsWith(`${item.href}/`) ||
+      pathname === item.href ||
+      pathname.startsWith(`${item.href}/`) ||
       Boolean(
         item.activePathPrefix &&
-          (displayedPath === item.activePathPrefix ||
-            displayedPath.startsWith(`${item.activePathPrefix}/`)),
+        (pathname === item.activePathPrefix ||
+          pathname.startsWith(`${item.activePathPrefix}/`)),
       ),
   );
 
   return (
-    <nav
-      aria-label={t("common.primaryNavigation")}
-      className={cn(
-        "relative isolate",
-        vertical ? "grid gap-1" : "flex items-stretch",
-        className,
-      )}
-    >
-      {items.map((item, index) => {
-        const active = index === activeIndex;
-        return (
-          <Link
-            aria-current={active ? "page" : undefined}
-            className={cn(
-              "t-primary-nav-link relative z-10 flex min-h-10 min-w-0 items-center overflow-hidden rounded-[0.625rem] text-sm font-medium text-muted-foreground outline-none transition-[color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-[var(--surface-hover)] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
-              vertical
-                ? "gap-3 px-3"
-                : "flex-1 flex-col justify-center gap-1 px-1 py-1.5 text-[0.6875rem]",
-              active && "bg-brand-100 text-brand-700 shadow-[var(--shadow-control)]",
-            )}
-            data-liquid-nav-index={index}
-            data-active={active}
-            href={item.href}
-            key={item.href}
-            onClick={() => {
-              if (item.href !== pathname) markRouteDirection("root");
-              acknowledgeNavigation(item.href);
-            }}
-            onFocus={() => router.prefetch(item.href)}
-            onPointerDown={() => acknowledgeNavigation(item.href)}
-            onPointerEnter={() => router.prefetch(item.href)}
-          >
-            <span className="relative shrink-0">
-              {item.icon}
-              {item.badge}
-            </span>
-            <span
+    <LayoutGroup id={groupId}>
+      <nav
+        aria-label={t("common.primaryNavigation")}
+        data-primary-navigation
+        className={cn(
+          "relative isolate",
+          vertical ? "grid gap-1" : "flex items-stretch",
+          className,
+        )}
+      >
+        {items.map((item, index) => {
+          const active = index === activeIndex;
+          return (
+            <Link
+              aria-current={active ? "page" : undefined}
               className={cn(
-                "w-full min-w-0 truncate",
-                vertical ? "text-left" : "text-center",
+                "t-primary-nav-link relative flex min-h-10 min-w-0 items-center rounded-[0.625rem] text-sm font-medium text-muted-foreground outline-none transition-[color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-[var(--surface-hover)] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
+                vertical
+                  ? "gap-3 px-3"
+                  : "flex-1 flex-col justify-center gap-1 px-1 py-1.5 text-[0.6875rem]",
+                active && "text-brand-700",
               )}
+              data-liquid-nav-index={index}
+              data-active={active}
+              href={item.href}
+              key={item.href}
+              onFocus={() => router.prefetch(item.href)}
+              onPointerEnter={() => router.prefetch(item.href)}
             >
-              {item.label}
-            </span>
-          </Link>
-        );
-      })}
-    </nav>
+              <NavigationContents
+                item={item}
+                active={active}
+                vertical={vertical}
+              />
+            </Link>
+          );
+        })}
+      </nav>
+    </LayoutGroup>
   );
 }

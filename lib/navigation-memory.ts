@@ -12,7 +12,7 @@ const HISTORY_INDEX_KEY = "__lexiroHistoryIndex";
 
 export type RouteDirection = "back" | "child" | "root";
 
-function isRootRoute(pathname: string) {
+export function isRootRoute(pathname: string) {
   return ["/", "/library", "/progress", "/me"].includes(pathname);
 }
 
@@ -25,9 +25,10 @@ const ADOPTED_PARENTS: ReadonlyArray<
   ["/practice", "/"],
   ["/sets", "/library"],
   ["/questions", "/library"],
+  ["/sync", "/me"],
 ];
 
-function adoptedParent(pathname: string) {
+export function adoptedParent(pathname: string) {
   for (const [prefix, parent] of ADOPTED_PARENTS) {
     if (pathname === prefix || pathname.startsWith(`${prefix}/`)) return parent;
   }
@@ -36,7 +37,7 @@ function adoptedParent(pathname: string) {
 
 function hierarchy(pathname: string): string[] {
   const parent = adoptedParent(pathname);
-  const segments = pathname.split("/").filter(Boolean);
+  const segments = pathname === "/" ? ["home"] : pathname.split("/").filter(Boolean);
   return parent && parent !== pathname
     ? [...hierarchy(parent), ...segments]
     : segments;
