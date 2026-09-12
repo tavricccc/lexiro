@@ -9,9 +9,9 @@
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `src/billing.ts` | D1 原子扣款、整數進位分配、每來源冪等、一次性退款、cursor 擁有權與個別到期續期 |
 | `migrations/0001_billing.sql`、`0002_attempt_limits.sql` | 計費初始 schema、來源/session 重試次數與到期索引 |
-| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定 |
+| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
-| `src/admin.ts` | 帳號、點數、月額度與免費試用管理端點 |
+| `src/admin.ts` | 帳號、點數、月額度與免費試用管理端點；`/admin/usage` 回傳最近的 `usage_log` 紀錄與近 30 天依模型分組的 token 總量，成本由前端依公開牌價換算 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算 |
 | `src/organize.ts` | 文字／照片共用整理 prompt、WebP 輸入檢查與照片計費來源；圖片不落地 |
 | `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |

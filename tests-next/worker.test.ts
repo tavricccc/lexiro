@@ -232,6 +232,16 @@ describe("Worker HTTP boundary", () => {
     expect(again.response.status).toBe(200);
     expect((await account(env.DB, "u"))!.points).toBe(98);
   });
+  it("never charges an administrator but still records the tokens spent", async () => {
+    const result = await call(req("/generate", generation(), "admin"));
+    expect(result.response.status).toBe(200);
+    expect((await account(env.DB, "u"))!.points).toBe(100);
+    const usage = await call(req("/admin/usage", undefined, "admin"));
+    expect(JSON.parse(usage.text)).toMatchObject({
+      entries: [{ uid: "u", model: "gpt-5.6-luna", points: 0, input: 100, output: 20 }],
+      models: [{ model: "gpt-5.6-luna", runs: 1, input: 100, output: 20 }],
+    });
+  });
   it("rebuilds a foreign cursor and refuses client model/prompt overrides", async () => {
     const body = { ...generation(), cursor: "resp_someone_else" };
     const upstream = provider();

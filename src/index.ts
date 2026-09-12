@@ -120,13 +120,17 @@ export function createWorker(
         const debt = Number(env.MAX_OVERDRAFT_POINTS);
         if (!Number.isSafeInteger(debt) || debt < 0)
           throw new HttpError(500, "server_configuration");
-        const reservation = await reserve(
-          env.DB,
-          identity.uid,
-          prepared.units.map((unit) => unit.id),
-          prepared.halfRate,
-          debt,
-        );
+        // An administrator holds no balance, no lock and no retry budget: the
+        // run still settles so its cursor and token usage are recorded.
+        const reservation = admin
+          ? { uid: identity.uid, attempt: crypto.randomUUID(), charges: [] }
+          : await reserve(
+              env.DB,
+              identity.uid,
+              prepared.units.map((unit) => unit.id),
+              prepared.halfRate,
+              debt,
+            );
         const model = MODELS[prepared.request.tier].model;
         try {
           let cursor =

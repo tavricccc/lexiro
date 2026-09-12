@@ -34,6 +34,24 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     if (!result.meta.changes) throw new HttpError(404, "not_found");
     return Response.json(await account(env.DB, uid));
   }
+  if (path === "/admin/usage" && request.method === "GET") {
+    const url = new URL(request.url), offset = Number(url.searchParams.get("offset") ?? 0);
+    if (!Number.isSafeInteger(offset) || offset < 0) throw new HttpError(400, "invalid_input");
+    const [entries, totals] = await Promise.all([
+      env.DB.prepare(`SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.output,u.created_at
+        FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid ORDER BY u.created_at DESC,u.id LIMIT 51 OFFSET ?`).bind(offset).all(),
+      // Money is per model, so the running totals stay split by model and the
+      // client applies the published rate for each one.
+      env.DB.prepare(`SELECT model,COUNT(*) AS runs,COALESCE(SUM(input),0) AS input,
+        COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(output),0) AS output
+        FROM usage_log WHERE created_at>? GROUP BY model ORDER BY model`).bind(nowSeconds() - 2_592_000).all(),
+    ]);
+    return Response.json({
+      entries: entries.results.slice(0, 50),
+      nextOffset: entries.results.length > 50 ? offset + 50 : null,
+      models: totals.results,
+    });
+  }
   if (path === "/admin/settings" && request.method === "GET") {
     const trial = await env.DB.prepare("SELECT value FROM settings WHERE key='free_trial'").first<string>("value");
     return Response.json({ freeTrial: trial === "true" });
