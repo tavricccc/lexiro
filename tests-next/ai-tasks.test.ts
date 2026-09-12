@@ -20,10 +20,7 @@ const word = (value: string): WordEntry => ({
   ],
   updatedAt: "2026-09-12",
 });
-const generated = (ref: string) => ({
-  sourceRef: ref,
-  senses: [{ pos: "n.", meaningZh: "測試字義", examples: [] }],
-});
+const generated = () => ({ pos: "n.", meaningZh: "測試字義" });
 describe("AI task boundaries", () => {
   it("places all sources in the first context and targets only the next stable references", () => {
     const sources = buildWordGenerationSources("apple, banana, cherry");
@@ -53,7 +50,7 @@ describe("AI task boundaries", () => {
         return {
           id: String(prompts.length),
           text: JSON.stringify({
-            words: [generated(prompts.length === 1 ? "source-1" : "source-2")],
+            items: [generated()],
           }),
           complete: true,
           stopReason: "complete",
@@ -67,7 +64,7 @@ describe("AI task boundaries", () => {
     expect(run.items.map((i) => i.word)).toEqual(["apple", "banana"]);
     expect(run.completed).toBe(2);
   });
-  it("maps global question references back to the correct source in later segments", () => {
+  it("maps later-segment questions by position instead of model-echoed refs", () => {
     const words = [
       "adapt",
       "apply",
@@ -97,20 +94,22 @@ describe("AI task boundaries", () => {
       wordKey: "close",
       senseId: "close-sense",
     });
-    expect(() =>
-      task.steps[1].parse(
-        JSON.stringify({
-          items: [
-            {
-              ref: "s1",
-              sentence: "Please close the door.",
-              answer: "close",
-              distractors: ["watch", "bring", "carry"],
-            },
-          ],
-        }),
-      ),
-    ).toThrow();
+    const withWrongEcho = task.steps[1].parse(
+      JSON.stringify({
+        items: [
+          {
+            ref: "s1",
+            sentence: "Please close the door.",
+            answer: "close",
+            distractors: ["watch", "bring", "carry"],
+          },
+        ],
+      }),
+    );
+    expect(withWrongEcho[0]).toMatchObject({
+      wordKey: "close",
+      senseId: "close-sense",
+    });
   });
   it("keeps a passage indivisible and adjusts a short final word-bank's extra options", () => {
     const words = [

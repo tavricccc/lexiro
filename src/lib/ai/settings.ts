@@ -2,7 +2,12 @@ import type { AiProvider, AiSettings } from "@/types";
 import { AI_API_KEY_STORAGE_KEY, AI_SETTINGS_KEY } from "@/constants";
 import { loadFromStorage, saveToStorage } from "@/lib/persist";
 import { isRecord } from "../schema";
-import { AI_PROTOCOLS, defaultAiSettings, defaultProtocol } from "./catalog";
+import {
+  AI_MODELS,
+  AI_PROTOCOLS,
+  defaultAiSettings,
+  defaultProtocol,
+} from "./catalog";
 import { t } from "@/lib/i18n";
 
 export { defaultAiSettings } from "./catalog";
@@ -12,7 +17,7 @@ const listeners = new Set<(settings: AiSettings) => void>();
 let persistence: Promise<void> = Promise.resolve();
 let hydration: Promise<AiSettings> | null = null;
 const oldKeys = ["enabled", "provider", "baseUrl", "model", "batchSize"];
-const newKeys = [
+const v2Keys = [
   ...oldKeys,
   "version",
   "protocol",
@@ -20,6 +25,7 @@ const newKeys = [
   "contextTokens",
   "maxOutputTokens",
 ];
+const v3Keys = [...v2Keys, "reasoningEffort"];
 
 /** Explicit one-way migration for the previous, unversioned persisted settings. */
 export function migrateAiSettingsV1(
@@ -45,20 +51,40 @@ export function migrateAiSettingsV1(
     maxOutputTokens: 8192,
   };
 }
+/** Adds provider-neutral reasoning control without guessing custom model support. */
+export function migrateAiSettingsV2(
+  value: Record<string, unknown>,
+): Record<string, unknown> {
+  if (
+    value.version !== 2 ||
+    Object.keys(value).some((key) => !v2Keys.includes(key))
+  )
+    throw new Error(t("ai.invalidSettings"));
+  const preset = AI_MODELS.find(
+    (entry) => entry.provider === value.provider && entry.id === value.model,
+  );
+  return {
+    ...value,
+    version: 3,
+    reasoningEffort: preset?.reasoningEffort ?? "",
+  };
+}
 export function normalizeShareableAiSettings(
   raw: unknown,
 ): Omit<AiSettings, "apiKey"> {
   if (!isRecord(raw)) throw new Error(t("ai.invalidSettings"));
-  const value = raw.version === undefined ? migrateAiSettingsV1(raw) : raw;
+  const v2 = raw.version === undefined ? migrateAiSettingsV1(raw) : raw;
+  const value = v2.version === 2 ? migrateAiSettingsV2(v2) : v2;
   if (
-    Object.keys(value).some((key) => !newKeys.includes(key)) ||
-    value.version !== 2 ||
+    Object.keys(value).some((key) => !v3Keys.includes(key)) ||
+    value.version !== 3 ||
     typeof value.enabled !== "boolean" ||
     !providers.includes(value.provider as AiProvider) ||
     typeof value.baseUrl !== "string" ||
     typeof value.model !== "string" ||
     !AI_PROTOCOLS.includes(value.protocol as AiSettings["protocol"]) ||
-    typeof value.structuredOutput !== "boolean"
+    typeof value.structuredOutput !== "boolean" ||
+    typeof value.reasoningEffort !== "string"
   )
     throw new Error(t("ai.invalidSettings"));
   for (const field of [
@@ -69,7 +95,7 @@ export function normalizeShareableAiSettings(
     if (typeof value[field] !== "number" || !Number.isFinite(value[field]))
       throw new Error(t("ai.invalidSettings"));
   return {
-    version: 2,
+    version: 3,
     enabled: value.enabled,
     provider: value.provider as AiProvider,
     baseUrl: value.baseUrl.trim(),
@@ -79,6 +105,7 @@ export function normalizeShareableAiSettings(
     batchSize: Math.min(50, Math.max(1, Math.round(value.batchSize as number))),
     contextTokens: Math.max(0, Math.round(value.contextTokens as number)),
     maxOutputTokens: Math.max(256, Math.round(value.maxOutputTokens as number)),
+    reasoningEffort: value.reasoningEffort.trim(),
   };
 }
 export function normalizeAiSettings(value: unknown): AiSettings {
@@ -124,7 +151,7 @@ async function readSettings(): Promise<AiSettings> {
   if (stored.value) {
     const parsed: unknown = JSON.parse(stored.value);
     settings = normalizeShareableAiSettings(parsed);
-    if (isRecord(parsed) && parsed.version === undefined)
+    if (isRecord(parsed) && parsed.version !== 3)
       await saveToStorage(AI_SETTINGS_KEY, settings);
   }
   storedSettings = { ...settings, apiKey: key.value ?? "" };
@@ -158,7 +185,7 @@ export function parseAiSettingsJson(raw: string): AiSettings {
   const parsed: unknown = JSON.parse(raw);
   if (
     !isRecord(parsed) ||
-    ![1, 2].includes(parsed.version as number) ||
+    ![1, 2, 3].includes(parsed.version as number) ||
     typeof parsed.exportedAt !== "string" ||
     !parsed.exportedAt.trim() ||
     !isRecord(parsed.settings) ||
@@ -167,14 +194,17 @@ export function parseAiSettingsJson(raw: string): AiSettings {
     )
   )
     throw new Error(t("ai.invalidSettings"));
-  if (parsed.version === 2 && parsed.settings.version !== 2)
+  if (
+    (parsed.version === 2 && parsed.settings.version !== 2) ||
+    (parsed.version === 3 && parsed.settings.version !== 3)
+  )
     throw new Error(t("ai.invalidSettings"));
   return { ...normalizeShareableAiSettings(parsed.settings), apiKey: "" };
 }
 export function downloadAiSettings(settings: AiSettings) {
   const payload = JSON.stringify(
     {
-      version: 2,
+      version: 3,
       exportedAt: new Date().toISOString(),
       settings: getShareableAiSettings(settings),
     },

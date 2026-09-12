@@ -8,13 +8,12 @@ const PROMPTS = {
 輸出：{{OUTPUT_EXAMPLE}}
 
 規格：
-1. 輸入是完整來源資料庫；若本輪有指定 activeRefs，words 只涵蓋該清單並保持相同順序，每個 sourceRef 恰好一次。未指定 activeRefs 時才處理全部輸入。
-2. 每筆只回傳 1 個最常見、最符合 input 提示的 sense。
-3. sense 只能有 pos、meaningZh、examples。
-4. pos 只能是 n.、v.、adj.、adv.、pron.、prep.、conj.、interj.、det.、aux.、modal v.、phr. v.、phr.。
-5. meaningZh 使用精簡繁體中文，只說本次選定的同一個詞義，不要用分號混入不相干義項。優先依 input 的詞性、中文提示或例句消歧；提示仍有多義時選最直接符合提示的一義，不捏造上下文。片語視為完整單位，不拆成個別單字。
+1. 輸入是完整來源資料庫；本輪只處理 activeRefs。items 依 activeRefs 順序，每筆來源恰好一項。
+2. 每項只回傳最常見、最符合 hint 的一個詞義。
+3. 每項只能有 meaningZh{{EXAMPLE_FIELD}}，以及必要時的 pos。
+4. 來源有 posHint 時不要輸出 pos，程式會直接使用；否則必須輸出 pos，且只能是 n.、v.、adj.、adv.、pron.、prep.、conj.、interj.、det.、aux.、modal v.、phr. v.、phr.。
+5. posHint 是指定詞性，不可改猜。meaningZh 用精簡繁體中文，只保留 hint 指定的同一詞義；未消歧時選最常見義。片語視為完整單位。
 6. {{EXAMPLES_RULE}}
-   即使 input 自己列了兩義，也只選一義，不把兩義壓進同一個 sense。例如 run into 未消歧時可選「偶然遇見」，不要附加「撞上某物」；選義不是替輸入增補情節。
 7. {{JSON_ONLY}}
 
 輸入：

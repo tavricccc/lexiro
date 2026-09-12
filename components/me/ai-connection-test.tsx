@@ -33,6 +33,7 @@ export function AiConnectionTest({ settings }: { settings: AiSettings }) {
     settings.apiKey,
     settings.baseUrl,
     settings.protocol,
+    settings.reasoningEffort,
     reset,
   ]);
   return (

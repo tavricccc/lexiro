@@ -7,38 +7,30 @@ export function buildImportPrompt(
   sources: WordGenerationSource[] = buildWordGenerationSources(rawInput),
   generateExamples = false,
 ): string {
-  const promptSources = sources.map(({ sourceRef, word, raw }) => ({
-    sourceRef,
+  const promptSources = sources.map(({ sourceRef, word, posHint, hint }) => ({
+    ref: sourceRef,
     word,
-    ...(raw.trim() !== word ? { input: raw } : {}),
+    ...(posHint ? { posHint } : {}),
+    ...(hint ? { hint } : {}),
   }));
   const outputExample = generateExamples
     ? JSON.stringify({
-        words: [
+        items: [
           {
-            sourceRef: "source-1",
-            senses: [
-              {
-                pos: "v.",
-                meaningZh: "適應；使適應",
-                examples: ["We adapt quickly."],
-              },
-            ],
+            pos: "v.",
+            meaningZh: "適應",
+            example: "We adapt quickly.",
           },
         ],
       })
     : JSON.stringify({
-        words: [
-          {
-            sourceRef: "source-1",
-            senses: [{ pos: "v.", meaningZh: "適應；使適應", examples: [] }],
-          },
-        ],
+        items: [{ pos: "v.", meaningZh: "適應" }],
       });
   return fillPrompt(prompts.generateWordSet, {
+    "{{EXAMPLE_FIELD}}": generateExamples ? "、example" : "",
     "{{EXAMPLES_RULE}}": generateExamples
-      ? "examples 恰好 1 個自然、簡短的英文例句。"
-      : "examples 必須是空陣列。",
+      ? "example 是一個自然、簡短、只示範該詞義的英文句子。"
+      : "不要輸出例句欄位；程式會填入空陣列。",
     "{{OUTPUT_EXAMPLE}}": outputExample,
     "{{JSON_ONLY}}": JSON_ONLY,
     "{{SOURCES}}": JSON.stringify(promptSources),

@@ -281,6 +281,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   if (step === "done") {
     return (
       <FinishPanel
+        description={t("questions.generatedDescription")}
         finishHref={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}
         moreIcon={Icons.generate}
         moreLabel={t("questions.generateMore")}
@@ -289,9 +290,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
           setStep("format");
         }}
         title={t("questions.generatedCount", { count: run.items.length })}
-      >
-        {run.items.length > 0 ? generated : null}
-      </FinishPanel>
+      />
     );
   }
 
@@ -336,9 +335,8 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       {run.items.length > 0 && (
         <section className="section-gap">
           <h2 className="type-section">
-            {t("questions.generatedCount", { count: run.items.length })}
+            {t("questions.previewCount", { count: run.items.length })}
           </h2>
-          {generated}
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <Button
               type="button"
@@ -350,6 +348,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             </Button>
             <p className="text-xs text-muted-foreground">{t("ai.savedHint")}</p>
           </div>
+          {generated}
         </section>
       )}
     </StepFrame>

@@ -115,14 +115,19 @@ export function AiSettingsSection({
               label={t("settings.provider")}
               onValueChange={(value) => {
                 const provider = value as AiProvider;
+                const model = defaultModel(provider);
+                const preset = AI_MODELS.find(
+                  (entry) => entry.provider === provider && entry.id === model,
+                );
                 setCustom(provider === "custom");
                 update({
                   provider,
-                  model: defaultModel(provider),
+                  model,
                   protocol: defaultProtocol(provider),
                   baseUrl: "",
                   apiKey: "",
                   contextTokens: 0,
+                  reasoningEffort: preset?.reasoningEffort ?? "",
                 });
               }}
               options={PROVIDERS}
@@ -133,13 +138,16 @@ export function AiSettingsSection({
               onValueChange={(id) => {
                 if (id === "custom") {
                   setCustom(true);
+                  update({ model: "", reasoningEffort: "" });
                   return;
                 }
                 setCustom(false);
+                const preset = presets.find((m) => m.id === id)!;
                 update({
                   model: id,
-                  protocol: presets.find((m) => m.id === id)!.protocol,
+                  protocol: preset.protocol,
                   contextTokens: 0,
+                  reasoningEffort: preset.reasoningEffort,
                 });
               }}
               options={[
@@ -159,6 +167,36 @@ export function AiSettingsSection({
                   onChange={(e) => update({ model: e.target.value })}
                 />
               </Field>
+            )}
+            {customSelected ? (
+              <Field
+                label={t("ai.reasoningEffort")}
+                description={t("ai.customReasoningHint")}
+              >
+                <Input
+                  autoComplete="off"
+                  placeholder={t("ai.reasoningPlaceholder")}
+                  value={settings.reasoningEffort}
+                  onChange={(event) =>
+                    update({ reasoningEffort: event.target.value })
+                  }
+                />
+              </Field>
+            ) : known?.reasoningOptions ? (
+              <SelectField
+                label={t("ai.reasoningEffort")}
+                description={t("ai.reasoningHint")}
+                options={known.reasoningOptions.map((value) => ({
+                  label: t(`ai.reasoning.${value}` as Parameters<typeof t>[0]),
+                  value,
+                }))}
+                value={settings.reasoningEffort}
+                onValueChange={(reasoningEffort) => update({ reasoningEffort })}
+              />
+            ) : (
+              <p className="text-xs leading-5 text-muted-foreground">
+                {t("ai.reasoningUnavailable")}
+              </p>
             )}
             <Field
               error={missingKey && t("me.apiKeyRequired")}

@@ -100,6 +100,7 @@ export function WordCapture({
   if (done) {
     return (
       <FinishPanel
+        description={t("setEditor.capturedDescription", { name })}
         finishHref={savedId ? `/sets/${savedId}` : "/library"}
         moreIcon={Icons.create}
         moreLabel={t("setEditor.addMore")}

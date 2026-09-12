@@ -20,8 +20,11 @@ export const AI_MODELS: AiModelPreset[] = [
     contextTokens: 1_050_000,
     maxOutputTokens: 128_000,
     structuredOutput: true,
-      cache: "openai",
-      reasoningEffort: id === "gpt-5.6-luna" ? "medium" : "low",
+    cache: "openai",
+    reasoningEffort: "low",
+    reasoningOptions: id.startsWith("gpt-5.6")
+      ? ["none", "low", "medium", "high", "xhigh", "max"]
+      : ["low", "medium", "high", "xhigh", "max", "ultra"],
   })),
   ...[
     ["claude-sonnet-5", "Claude Sonnet 5"],
@@ -37,10 +40,15 @@ export const AI_MODELS: AiModelPreset[] = [
     maxOutputTokens: id.includes("haiku") ? 64_000 : 128_000,
     structuredOutput: true,
     cache: "anthropic",
+    reasoningEffort: id.includes("haiku") ? "" : "low",
+    ...(id.includes("haiku")
+      ? {}
+      : { reasoningOptions: ["low", "medium", "high", "xhigh", "max"] }),
   })),
   ...[
-    ["gemini-3.8-flash", "Gemini 3.8 Flash"],
     ["gemini-3.5-flash-lite", "Gemini 3.5 Flash-Lite"],
+    ["gemini-3.8-flash", "Gemini 3.8 Flash"],
+    ["gemini-3.1-flash-lite", "Gemini 3.1 Flash-Lite"],
     ["gemini-3.1-pro-preview", "Gemini 3.1 Pro Preview"],
   ].map(([id, label]): AiModelPreset => ({
     id,
@@ -51,6 +59,18 @@ export const AI_MODELS: AiModelPreset[] = [
     maxOutputTokens: 65_536,
     structuredOutput: true,
     cache: "implicit",
+    reasoningEffort:
+      id === "gemini-3.5-flash-lite"
+        ? "medium"
+        : id === "gemini-3.1-flash-lite"
+          ? "minimal"
+          : "low",
+    reasoningOptions:
+      id === "gemini-3.8-flash"
+        ? ["low", "medium", "high"]
+        : id === "gemini-3.1-pro-preview"
+          ? ["low", "medium", "high"]
+          : ["minimal", "low", "medium", "high"],
   })),
 ];
 export const AI_PROTOCOLS: AiProtocol[] = [
@@ -81,7 +101,7 @@ export const modelPreset = (settings: Pick<AiSettings, "provider" | "model">) =>
     (m) => m.provider === settings.provider && m.id === settings.model,
   );
 export const defaultAiSettings: AiSettings = {
-  version: 2,
+  version: 3,
   enabled: false,
   provider: "openai",
   apiKey: "",
@@ -92,6 +112,7 @@ export const defaultAiSettings: AiSettings = {
   structuredOutput: true,
   contextTokens: 0,
   maxOutputTokens: 8192,
+  reasoningEffort: "low",
 };
 export function contextLimit(settings: AiSettings) {
   return (

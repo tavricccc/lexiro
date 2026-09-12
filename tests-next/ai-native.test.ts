@@ -13,6 +13,7 @@ import { buildRequest } from "@/src/lib/ai/request";
 import { consumeEvent, emptyReply } from "@/src/lib/ai/reply";
 import { readSse } from "@/src/lib/ai/transport";
 import type { AiSettings } from "@/types";
+import { defaultModel, modelPreset } from "@/src/lib/ai/catalog";
 
 const settings = (patch: Partial<AiSettings> = {}): AiSettings => ({
   ...defaultAiSettings,
@@ -40,6 +41,13 @@ afterEach(() => {
 });
 
 describe("native AI protocols", () => {
+  it("defaults Gemini to 3.5 Flash-Lite at medium reasoning", () => {
+    const model = defaultModel("google");
+    expect(model).toBe("gemini-3.5-flash-lite");
+    expect(modelPreset({ provider: "google", model })?.reasoningEffort).toBe(
+      "medium",
+    );
+  });
   it("uses Responses and chains only committed replies while preserving schema and usage", async () => {
     const fetch = vi
       .fn()
@@ -97,6 +105,7 @@ describe("native AI protocols", () => {
         provider: "anthropic",
         protocol: "messages",
         model: "claude-sonnet-5",
+        reasoningEffort: "low",
       }),
       "context",
     );
@@ -115,7 +124,10 @@ describe("native AI protocols", () => {
         cache_control: { type: "ephemeral", ttl: "5m" },
       },
     ]);
-    expect(request.body.output_config).toHaveProperty("format");
+    expect(request.body.output_config).toMatchObject({
+      effort: "low",
+      format: { type: "json_schema" },
+    });
     expect(request.headers["anthropic-dangerous-direct-browser-access"]).toBe(
       "true",
     );
@@ -126,6 +138,7 @@ describe("native AI protocols", () => {
         provider: "google",
         protocol: "interactions",
         model: "gemini-3.8-flash",
+        reasoningEffort: "low",
       }),
       "context",
     );
@@ -141,7 +154,7 @@ describe("native AI protocols", () => {
       input: "next",
       system_instruction: "context",
       response_format: { mime_type: "application/json" },
-      generation_config: { max_output_tokens: 8192 },
+      generation_config: { max_output_tokens: 8192, thinking_level: "low" },
     });
   });
   it("parses thought events, initial Gemini text, terminal status and usage separately", () => {
@@ -197,12 +210,14 @@ describe("native AI protocols", () => {
         model: "mine",
         protocol: "responses",
         baseUrl: "https://gateway.example/proxy/responses?route=a",
+        reasoningEffort: "vendor-fast",
       }),
       "context",
     );
     const request = buildRequest(session, "next", {});
     expect(request.url).toBe(session.settings.baseUrl);
     expect(request.body.model).toBe("mine");
+    expect(request.body.reasoning).toEqual({ effort: "vendor-fast" });
     expect(request.body.prompt_cache_options).toBeUndefined();
   });
   it("handles CRLF framing, UTF-8 chunk splits and multiline SSE data", async () => {
@@ -244,8 +259,9 @@ describe("settings migration", () => {
   it("explicitly migrates v1 while retaining custom model, endpoint and segment size", () => {
     expect(normalizeShareableAiSettings(legacy)).toMatchObject({
       ...legacy,
-      version: 2,
+      version: 3,
       protocol: "chat",
+      reasoningEffort: "",
     });
     const imported = parseAiSettingsJson(
       JSON.stringify({

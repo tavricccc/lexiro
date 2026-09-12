@@ -109,17 +109,19 @@ function buildSlots(words: WordEntry[]): SenseSlot[] {
 }
 
 /**
- * Resolves an item's `ref`. When the model echoes a ref we know, that wins;
- * when it does not but returned the expected number of items in order, the
- * position is used instead. Repairing beats failing a whole batch over a typo
- * in a field the model only had to copy.
+ * Source ownership is positional and assigned here rather than echoed by the
+ * model. Reading can contain more questions than source senses, so it cycles
+ * through the supplied slots; other formats already require one item per slot.
  */
 function resolveSlot(
   slots: SenseSlot[],
   ref: string,
   position: number,
 ): SenseSlot | null {
-  return slots.find((slot) => slot.ref === ref) ?? slots[position] ?? null;
+  if (!slots.length) return null;
+  return (
+    slots.find((slot) => slot.ref === ref) ?? slots[position % slots.length]
+  );
 }
 
 function multipleChoiceItem(

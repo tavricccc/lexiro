@@ -9,6 +9,10 @@ import { questionTask } from "@/src/lib/ai/tasks";
 import { buildRequest } from "@/src/lib/ai/request";
 import { createAiSession } from "@/src/lib/ai/session";
 import { defaultAiSettings } from "@/src/lib/ai/catalog";
+import {
+  buildWordGenerationSources,
+  parseWordGenerationJson,
+} from "@/src/lib/word-generation";
 
 const word = (value: string, meanings = ["測試"], pos = "v."): WordEntry => ({
   word: value,
@@ -41,7 +45,77 @@ const assemble = (
     prompt: string;
   }[];
 
-describe("issues found in real Luna medium prompt trials", () => {
+describe("issues found in real Luna prompt trials", () => {
+  it("accepts the compact Luna low word result and keeps program-parsed words", () => {
+    const sources = buildWordGenerationSources(
+      "adapt 適應\nrun into 偶然遇見\nsubtle adj. 微妙的",
+    );
+    const result = parseWordGenerationJson(
+      JSON.stringify({
+        items: [
+          {
+            pos: "v.",
+            meaningZh: "適應",
+            example: "Children adapt quickly to change.",
+          },
+          {
+            pos: "phr. v.",
+            meaningZh: "偶然遇見",
+            example: "I ran into an old friend yesterday.",
+          },
+          {
+            meaningZh: "微妙的",
+            example: "There is a subtle difference between them.",
+          },
+        ],
+      }),
+      sources,
+      true,
+    );
+    expect(result.map((entry) => entry.word)).toEqual([
+      "adapt",
+      "run into",
+      "subtle",
+    ]);
+  });
+
+  it("accepts the compact no-ref Luna low vocabulary result", () => {
+    const words = [
+      word("detect", ["察覺；發現"]),
+      word("reluctant", ["不情願的"], "adj."),
+      word("consequence", ["後果"], "n."),
+    ];
+    const [step] = questionTask(words, words, "vocabulary", 2).steps;
+    const questions = step.parse(
+      JSON.stringify({
+        items: [
+          {
+            sentence: "A sensor can detect a gas leak before anyone smells it.",
+            answer: "detect",
+            distractors: ["prevent", "repair", "announce"],
+          },
+          {
+            sentence:
+              "Although Mia was reluctant to speak at first, she shared her idea after her classmates encouraged her.",
+            answer: "reluctant",
+            distractors: ["eager", "proud", "ready"],
+          },
+          {
+            sentence:
+              "One consequence of leaving the freezer door open was that all the food spoiled overnight.",
+            answer: "consequence",
+            distractors: ["benefit", "symptom", "decision"],
+          },
+        ],
+      }),
+    );
+    expect(questions).toHaveLength(3);
+    expect(
+      questions.map((question) =>
+        question.kind === "reading" ? "" : question.wordKey,
+      ),
+    ).toEqual(["detect", "reluctant", "consequence"]);
+  });
   it.each([
     ["go", "went"],
     ["take", "took"],
@@ -160,12 +234,12 @@ describe("issues found in real Luna medium prompt trials", () => {
     ).toBe(true);
     expect(packs.flat().flatMap((w) => w.senses)).toHaveLength(7);
   });
-  it("matches the tested medium effort for the built-in Luna preset", () => {
+  it("uses the tested low effort for the built-in Luna preset", () => {
     const request = buildRequest(
       createAiSession(defaultAiSettings, "context"),
       "next",
       {},
     );
-    expect(request.body.reasoning).toEqual({ effort: "medium" });
+    expect(request.body.reasoning).toEqual({ effort: "low" });
   });
 });

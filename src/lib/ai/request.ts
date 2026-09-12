@@ -8,6 +8,7 @@ export function buildRequest(
 ) {
   const { settings, context, history, cursor } = session;
   const { protocol, model, apiKey } = settings;
+  const reasoningEffort = settings.reasoningEffort.trim();
   const schema = session.structuredOutput ? options.schema : undefined;
   const json = session.structuredOutput && options.responseFormat !== "text";
   const max = Math.min(
@@ -45,9 +46,9 @@ export function buildRequest(
             },
           }
         : {}),
+      ...(reasoningEffort ? { reasoning: { effort: reasoningEffort } } : {}),
       ...(known?.cache === "openai"
         ? {
-              reasoning: { effort: known.reasoningEffort ?? "low" },
             prompt_cache_options: {
               mode: session.cache ? "implicit" : "explicit",
               ttl: "30m",
@@ -73,8 +74,13 @@ export function buildRequest(
             : {}),
         },
       ],
-      ...(schema
-        ? { output_config: { format: { type: "json_schema", schema } } }
+      ...(schema || reasoningEffort
+        ? {
+            output_config: {
+              ...(schema ? { format: { type: "json_schema", schema } } : {}),
+              ...(reasoningEffort ? { effort: reasoningEffort } : {}),
+            },
+          }
         : {}),
     };
   } else if (protocol === "interactions") {
@@ -93,7 +99,7 @@ export function buildRequest(
           })),
       generation_config: {
         max_output_tokens: max,
-        ...(known?.id === "gemini-3.8-flash" ? { thinking_level: "low" } : {}),
+        ...(reasoningEffort ? { thinking_level: reasoningEffort } : {}),
       },
       ...(json
         ? {
@@ -122,6 +128,9 @@ export function buildRequest(
       })),
       generationConfig: {
         maxOutputTokens: max,
+        ...(reasoningEffort
+          ? { thinkingConfig: { thinkingLevel: reasoningEffort } }
+          : {}),
         ...(json
           ? {
               responseMimeType: "application/json",
@@ -140,6 +149,7 @@ export function buildRequest(
       ],
       stream: session.stream,
       max_tokens: max,
+      ...(reasoningEffort ? { reasoning_effort: reasoningEffort } : {}),
       ...(json
         ? {
             response_format: schema

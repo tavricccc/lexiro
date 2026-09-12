@@ -36,7 +36,7 @@ export function chunks<T>(items: T[], size: number): T[][] {
   );
 }
 const instruction = (refs: string[]) =>
-  `本輪 activeRefs：${JSON.stringify(refs)}。words 恰好 ${refs.length} 筆，每個指定 sourceRef 恰好一次，保持清單順序。只回覆本輪完整 JSON。`;
+  `本輪 activeRefs：${JSON.stringify(refs)}。items 恰好 ${refs.length} 筆，依 activeRefs 順序。只回覆本輪完整 JSON。`;
 const questionContext = (prompt: QuestionPrompt) =>
   `${prompt.instructions}\n\n完整來源資料：${prompt.sources}`;
 
@@ -52,21 +52,20 @@ export function wordTask(
     context: buildImportPrompt(raw, batch, examples),
     prompt: instruction(batch.map((s) => s.sourceRef)),
     parse: (text) => {
-      wordOutput.parse(JSON.parse(extractJsonText(text)));
+      wordOutput(examples).parse(JSON.parse(extractJsonText(text)));
       return parseWordGenerationJson(text, batch, examples);
     },
     recover: (text) => {
       const data: unknown = JSON.parse(extractJsonText(text));
-      if (!isRecord(data) || !Array.isArray(data.words)) return null;
+      if (!isRecord(data) || !Array.isArray(data.items)) return null;
+      const rawItems = data.items;
       const items: WordDraft[] = [],
         remaining: WordGenerationSource[] = [];
-      for (const source of batch) {
-        const matches = data.words.filter(
-          (w) => isRecord(w) && w.sourceRef === source.sourceRef,
-        );
+      batch.forEach((source, index) => {
         try {
-          if (matches.length !== 1) throw new Error();
-          const single = wordOutput.parse({ words: matches });
+          const item = rawItems[index];
+          if (!item) throw new Error();
+          const single = wordOutput(examples).parse({ items: [item] });
           items.push(
             ...parseWordGenerationJson(
               JSON.stringify(single),
@@ -77,7 +76,7 @@ export function wordTask(
         } catch {
           remaining.push(source);
         }
-      }
+      });
       return items.length && remaining.length
         ? {
             items,
@@ -93,7 +92,7 @@ export function wordTask(
   return {
     id: "words",
     context: buildImportPrompt(raw, sources, examples),
-    schema: jsonSchema(wordOutput),
+    schema: jsonSchema(wordOutput(examples)),
     steps: chunks(sources, size).map(make),
   };
 }
@@ -115,18 +114,6 @@ export function questionTask(
       w.senses.map((s) => globalRefs.get(senseKey(w.wordKey, s.id))!),
     );
     const passage = isPassageKind(kind);
-    const mapRefs = (value: unknown): unknown => {
-      if (Array.isArray(value)) return value.map(mapRefs);
-      if (!value || typeof value !== "object") return value;
-      return Object.fromEntries(
-        Object.entries(value).map(([key, v]) => {
-          if (key !== "ref") return [key, mapRefs(v)];
-          const index = refs.indexOf(String(v));
-          if (index < 0) throw new Error(t("ai.unknownSource"));
-          return [key, `s${index + 1}`];
-        }),
-      );
-    };
     const step: AiTaskStep<LibraryQuestion> = {
       id: refs.join(","),
       count: passage ? 1 : refs.length,
@@ -137,7 +124,7 @@ export function questionTask(
       parse: (text) => {
         const data = schema.parse(JSON.parse(extractJsonText(text)));
         const normalized = normalizeQuestionGenerationJson(
-          JSON.stringify(mapRefs(data)),
+          JSON.stringify(data),
           kind,
           difficulty,
           batch,
@@ -181,13 +168,11 @@ export function questionTask(
         const items: LibraryQuestion[] = [],
           remaining: WordEntry[] = [];
         units.forEach((unit, i) => {
-          const matches = rawItems.filter(
-            (item) => isRecord(item) && item.ref === refs[i],
-          );
           try {
-            if (matches.length !== 1) throw new Error();
+            const item = rawItems[i];
+            if (!isRecord(item)) throw new Error();
             items.push(
-              ...make([unit]).parse(JSON.stringify({ items: matches })),
+              ...make([unit]).parse(JSON.stringify({ items: [item] })),
             );
           } catch {
             remaining.push(unit);

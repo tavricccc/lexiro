@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
@@ -35,7 +35,13 @@ export function ResultPanel({
 
   // Leaving the result screen drops the request instead of letting it run to its
   // timeout and then write into a component that is gone.
-  useEffect(() => () => requestRef.current?.abort(), []);
+  useLayoutEffect(() => {
+    window.scrollTo({ left: 0, top: 0 });
+  }, []);
+
+  useEffect(() => {
+    return () => requestRef.current?.abort();
+  }, []);
 
   const explain = async () => {
     const controller = new AbortController();
@@ -59,7 +65,7 @@ export function ResultPanel({
 
   return (
     <motion.div
-      className="mx-auto max-w-xl py-10 sm:py-14"
+      className="mx-auto flex min-h-[70dvh] max-w-xl flex-col justify-center py-10 sm:py-14"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}

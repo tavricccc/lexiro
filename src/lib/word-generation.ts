@@ -12,14 +12,96 @@ import { extractJsonText } from "./ai-provider";
 export interface WordGenerationSource {
   sourceRef: string;
   word: string;
+  posHint?: string;
+  hint?: string;
   raw: string;
 }
 
-function extractEnglishWord(segment: string): string {
-  const match = segment.match(
+const POS_HINTS: ReadonlyArray<[RegExp, string]> = [
+  [/\b(?:phrasal\s+verb|phr\.?\s+v\.?)\b/iu, "phr. v."],
+  [/\b(?:modal\s+verb|modal\s+v\.?)\b/iu, "modal v."],
+  [/\b(?:adjective|adj\.?)\b/iu, "adj."],
+  [/\b(?:adverb|adv\.?)\b/iu, "adv."],
+  [/\b(?:pronoun|pron\.?)\b/iu, "pron."],
+  [/\b(?:preposition|prep\.?)\b/iu, "prep."],
+  [/\b(?:conjunction|conj\.?)\b/iu, "conj."],
+  [/\b(?:interjection|interj\.?)\b/iu, "interj."],
+  [/\b(?:determiner|det\.?)\b/iu, "det."],
+  [/\b(?:auxiliary|aux\.?)\b/iu, "aux."],
+  [/\b(?:noun|n\.?)\b/iu, "n."],
+  [/\b(?:verb|v\.?)\b/iu, "v."],
+  [/\b(?:phrase|phr\.?)\b/iu, "phr."],
+  [/(?:片語動詞|動詞片語)/u, "phr. v."],
+  [/(?:情態動詞)/u, "modal v."],
+  [/(?:形容詞)/u, "adj."],
+  [/(?:副詞)/u, "adv."],
+  [/(?:代名詞|代詞)/u, "pron."],
+  [/(?:介系詞|介詞)/u, "prep."],
+  [/(?:連接詞|連詞)/u, "conj."],
+  [/(?:感嘆詞)/u, "interj."],
+  [/(?:限定詞)/u, "det."],
+  [/(?:助動詞)/u, "aux."],
+  [/(?:名詞)/u, "n."],
+  [/(?:動詞)/u, "v."],
+  [/(?:片語|詞組)/u, "phr."],
+];
+
+function extractSource(
+  segment: string,
+): Omit<WordGenerationSource, "sourceRef"> {
+  const marker = POS_HINTS.map(([pattern, pos]) => {
+    const match = pattern.exec(segment);
+    return match?.index === undefined
+      ? null
+      : { index: match.index, pos, text: match[0] };
+  })
+    .filter((value): value is { index: number; pos: string; text: string } =>
+      Boolean(value),
+    )
+    .sort((a, b) => a.index - b.index)[0];
+  const wordRegion = marker ? segment.slice(0, marker.index) : segment;
+  const match = wordRegion.match(
     /[A-Za-z][A-Za-z'’-]*(?:\s+[A-Za-z][A-Za-z'’-]*)*/u,
   );
-  return match?.[0].trim() ?? "";
+  if (!match || match.index === undefined)
+    return { word: "", raw: segment, hint: segment };
+
+  const english = match[0].trim();
+  const tokens = english.split(/\s+/u);
+  let word = english;
+  let posHint = marker?.pos ?? "";
+  for (const length of [2, 1]) {
+    if (tokens.length <= length) continue;
+    const candidate = tokens.slice(-length).join(" ");
+    const normalized = normalizePartOfSpeech(candidate);
+    if (normalized) {
+      word = tokens.slice(0, -length).join(" ");
+      posHint = normalized;
+      break;
+    }
+  }
+  const before = segment.slice(0, match.index);
+  const afterWord = segment.slice(match.index + word.length);
+  let hint = `${before}${afterWord}`.replace(/^[\s.:：—–-]+/u, "").trim();
+  if (posHint)
+    hint = hint
+      .replace(marker?.text ?? "", "")
+      .replace(
+        /^(?:(?:phrasal|modal)\s+verb|noun|verb|adjective|adverb|pronoun|preposition|conjunction|interjection|determiner|auxiliary|phr(?:ase)?|modal\s+v|phr(?:\.?\s+)?v|n|v|adj|adv|pron|prep|conj|interj|det|aux)\.?\s*/iu,
+        "",
+      )
+      .replace(
+        /^(?:片語動詞|動詞片語|情態動詞|形容詞|副詞|代名詞|代詞|介系詞|介詞|連接詞|連詞|感嘆詞|限定詞|助動詞|名詞|動詞|片語|詞組)\s*/u,
+        "",
+      )
+      .replace(/^[\s.:：—–-]+/u, "")
+      .trim();
+  return {
+    word,
+    raw: segment,
+    ...(posHint ? { posHint } : {}),
+    ...(hint ? { hint } : {}),
+  };
 }
 
 export function buildWordGenerationSources(
@@ -31,8 +113,7 @@ export function buildWordGenerationSources(
     .filter(Boolean)
     .map((raw, index) => ({
       sourceRef: createSourceRef(index),
-      word: extractEnglishWord(raw),
-      raw,
+      ...extractSource(raw),
     }))
     .filter((source) => Boolean(source.word));
 }
@@ -50,58 +131,34 @@ function requireText(value: unknown, field: string): string {
 function normalizeGeneratedSense(
   value: unknown,
   wordIndex: number,
-  senseIndex: number,
   generateExamples: boolean,
+  posHint?: string,
 ): EditorSenseDraft {
   if (!value || typeof value !== "object" || Array.isArray(value))
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個 sense 格式錯誤`,
-    );
+    throw new Error(`第 ${wordIndex + 1} 筆格式錯誤`);
   const source = value as Record<string, unknown>;
   assertKnownKeys(
     source,
-    ["pos", "meaningZh", "examples"],
-    `words[${wordIndex}].senses[${senseIndex}]`,
+    generateExamples ? ["pos", "meaningZh", "example"] : ["pos", "meaningZh"],
+    `items[${wordIndex}]`,
   );
-  const pos = normalizePartOfSpeech(
-    requireText(source.pos, `words[${wordIndex}].senses[${senseIndex}].pos`),
-  );
+  const pos =
+    posHint ??
+    normalizePartOfSpeech(requireText(source.pos, `items[${wordIndex}].pos`));
   const meaning = requireText(
     source.meaningZh,
-    `words[${wordIndex}].senses[${senseIndex}].meaningZh`,
+    `items[${wordIndex}].meaningZh`,
   );
-  if (!pos)
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個 sense 詞性不受支援`,
-    );
+  if (!pos) throw new Error(`第 ${wordIndex + 1} 筆詞性不受支援`);
   if (!containsHan(meaning))
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個 sense meaningZh 必須包含繁體中文`,
-    );
-  if (
-    !Array.isArray(source.examples) ||
-    !source.examples.every(
-      (example) => typeof example === "string" && example.trim(),
-    )
-  )
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個 sense examples 格式錯誤`,
-    );
-  const examples = source.examples.map((example) => (example as string).trim());
-  if (generateExamples && examples.length !== 1)
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個 sense 必須提供一個例句`,
-    );
-  if (!generateExamples && examples.length)
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個 sense 不應包含例句`,
-    );
+    throw new Error(`第 ${wordIndex + 1} 筆 meaningZh 必須包含繁體中文`);
+  const examples = generateExamples
+    ? [requireText(source.example, `items[${wordIndex}].example`)]
+    : [];
   if (examples.some((example) => containsHan(example)))
-    throw new Error(
-      `第 ${wordIndex + 1} 個單字的第 ${senseIndex + 1} 個例句必須使用英文`,
-    );
+    throw new Error(`第 ${wordIndex + 1} 筆例句必須使用英文`);
   return {
-    id: `sense-draft-${wordIndex + 1}-${senseIndex + 1}`,
+    id: `sense-draft-${wordIndex + 1}-1`,
     pos,
     meaning,
     examples,
@@ -158,50 +215,32 @@ export function parseWordGenerationJson(
   if (!data || typeof data !== "object" || Array.isArray(data))
     throw new Error("JSON 必須是 object");
   const source = data as Record<string, unknown>;
-  assertKnownKeys(source, ["words"], "AI 單字資料");
-  if (!Array.isArray(source.words) || !source.words.length)
-    throw new Error("缺少有效的 words 陣列");
-  if (source.words.length !== sources.length)
-    throw new Error(`AI 回覆必須逐一對應 ${sources.length} 個 sourceRef`);
+  assertKnownKeys(source, ["items"], "AI 單字資料");
+  if (!Array.isArray(source.items) || !source.items.length)
+    throw new Error("缺少有效的 items 陣列");
+  if (source.items.length !== sources.length)
+    throw new Error(`AI 回覆必須依序提供 ${sources.length} 筆`);
 
-  const sourcesByRef = new Map(sources.map((item) => [item.sourceRef, item]));
-  const usedRefs = new Set<string>();
-  const drafts = source.words.map((value, wordIndex): WordDraft => {
+  const drafts = source.items.map((value, wordIndex): WordDraft => {
     if (!value || typeof value !== "object" || Array.isArray(value))
       throw new Error(`第 ${wordIndex + 1} 個單字格式錯誤`);
     const item = value as Record<string, unknown>;
-    assertKnownKeys(item, ["sourceRef", "senses"], `words[${wordIndex}]`);
-    const sourceRef = requireText(
-      item.sourceRef,
-      `words[${wordIndex}].sourceRef`,
-    );
-    const expected = sourcesByRef.get(sourceRef);
-    if (!expected)
-      throw new Error(`第 ${wordIndex + 1} 個單字包含未知 sourceRef`);
-    if (usedRefs.has(sourceRef))
-      throw new Error(`sourceRef ${sourceRef} 不可重複`);
-    usedRefs.add(sourceRef);
+    const expected = sources[wordIndex];
+    if (!expected) throw new Error(`第 ${wordIndex + 1} 筆沒有對應來源`);
     const word = expected.word;
     if (containsHan(word))
       throw new Error(`第 ${wordIndex + 1} 個單字必須使用英文`);
-    if (normalizeWordKey(word) !== normalizeWordKey(expected.word))
-      throw new Error(
-        `第 ${wordIndex + 1} 個單字必須對應 sourceRef ${sourceRef}`,
-      );
-    if (
-      !Array.isArray(item.senses) ||
-      !item.senses.length ||
-      item.senses.length > 3
-    )
-      throw new Error(`第 ${wordIndex + 1} 個單字必須包含一至三個 senses`);
     return {
       word,
-      senses: item.senses.map((sense, senseIndex) =>
-        normalizeGeneratedSense(sense, wordIndex, senseIndex, generateExamples),
-      ),
+      senses: [
+        normalizeGeneratedSense(
+          item,
+          wordIndex,
+          generateExamples,
+          expected.posHint,
+        ),
+      ],
     };
   });
-  if (usedRefs.size !== sourcesByRef.size)
-    throw new Error("AI 回覆遺漏 sourceRef");
   return mergeWordDrafts(drafts);
 }

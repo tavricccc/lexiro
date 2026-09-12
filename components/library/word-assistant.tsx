@@ -123,6 +123,19 @@ export function WordAssistant({
           results={
             state.items.length > 0 ? (
               <>
+                <div className="mb-4 flex flex-wrap items-center gap-3">
+                  <Button
+                    type="button"
+                    disabled={running}
+                    onClick={() => onApply(toRows(state.items))}
+                  >
+                    <Icons.success />
+                    {t("ai.applyWords")}
+                  </Button>
+                  <p className="text-xs text-muted-foreground">
+                    {t("ai.applyHint")}
+                  </p>
+                </div>
                 <ul className="max-h-80 space-y-3 overflow-y-auto overscroll-contain pr-1">
                   {state.items.map((word) => (
                     <li
@@ -151,19 +164,6 @@ export function WordAssistant({
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 flex flex-wrap items-center gap-3">
-                  <Button
-                    type="button"
-                    disabled={running}
-                    onClick={() => onApply(toRows(state.items))}
-                  >
-                    <Icons.success />
-                    {t("ai.applyWords")}
-                  </Button>
-                  <p className="text-xs text-muted-foreground">
-                    {t("ai.applyHint")}
-                  </p>
-                </div>
               </>
             ) : undefined
           }

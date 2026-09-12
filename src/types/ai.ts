@@ -2,7 +2,7 @@ export type AiProvider = "openai" | "anthropic" | "google" | "custom";
 export type AiProtocol =
   "responses" | "chat" | "messages" | "interactions" | "generateContent";
 export interface AiSettings {
-  version: 2;
+  version: 3;
   enabled: boolean;
   provider: AiProvider;
   apiKey: string;
@@ -13,6 +13,7 @@ export interface AiSettings {
   structuredOutput: boolean;
   contextTokens: number;
   maxOutputTokens: number;
+  reasoningEffort: string;
 }
 export interface AiProviderCapabilities {
   contextTokens: number;
@@ -21,7 +22,8 @@ export interface AiProviderCapabilities {
   cache: "openai" | "anthropic" | "implicit" | "unknown";
 }
 export interface AiModelPreset extends AiProviderCapabilities {
-  reasoningEffort?: "low" | "medium";
+  reasoningEffort: string;
+  reasoningOptions?: readonly string[];
   id: string;
   label: string;
   provider: AiProvider;
@@ -85,9 +87,7 @@ export interface AiTaskStep<TItem> {
   prompt: string;
   count: number;
   parse: (text: string) => TItem[];
-  recover?: (
-    text: string,
-  ) => {
+  recover?: (text: string) => {
     items: TItem[];
     completed: number;
     remaining: AiTaskStep<TItem>;

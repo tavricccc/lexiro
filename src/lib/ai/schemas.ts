@@ -3,18 +3,18 @@ import type { GeneratedQuestionKind } from "@/types";
 
 const text = z.string();
 const texts = z.array(text);
-const blank = z.object({ ref: text, answer: text });
-const choices = z.object({ ref: text, answer: text, distractors: texts });
-export const wordOutput = z.object({
-  words: z.array(
-    z.object({
-      sourceRef: text,
-      senses: z.array(
-        z.object({ pos: text, meaningZh: text, examples: texts }),
-      ),
-    }),
-  ),
-});
+const blank = z.object({ answer: text });
+const choices = z.object({ answer: text, distractors: texts });
+export const wordOutput = (generateExamples: boolean) =>
+  z.object({
+    items: z.array(
+      z.object({
+        pos: text.optional(),
+        meaningZh: text,
+        ...(generateExamples ? { example: text } : {}),
+      }),
+    ),
+  });
 export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary" || kind === "grammar")
     return z.object({ items: z.array(choices.extend({ sentence: text })) });
