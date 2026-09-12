@@ -133,12 +133,14 @@ export async function settleGeneration(
     }
     return [];
   });
+  const credits = creditsFromUsage(usage) ?? 0;
   await settle(
     db,
     reservation,
     refunds,
     usage,
     terminal.cursor,
-    creditsFromUsage(usage) ?? 0,
+    credits,
   );
+  return credits;
 }

@@ -186,7 +186,7 @@ export function createWorker(
           const body = sanitizeResponseStream(response.body, {
             onTerminal: async (terminal) => {
               try {
-                await settleGeneration(
+                const credits = await settleGeneration(
                   env.DB,
                   reservation,
                   prepared,
@@ -194,6 +194,7 @@ export function createWorker(
                   model,
                 );
                 finished.resolve();
+                return admin ? { credits } : undefined;
               } catch (reason) {
                 finished.reject(reason);
                 throw reason;

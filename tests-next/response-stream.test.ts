@@ -28,7 +28,10 @@ function stream(text: string, chunkSize = 37) {
 async function read(text: string, chunkSize?: number) {
   const outcomes: StreamTerminal[] = [];
   const body = sanitizeResponseStream(stream(text, chunkSize), {
-    onTerminal: async (result) => { outcomes.push(result); },
+    onTerminal: async (result) => {
+      outcomes.push(result);
+      return undefined;
+    },
   });
   return { text: await new Response(body).text(), outcomes };
 }
@@ -98,7 +101,10 @@ describe("Responses prompt redaction", () => {
   it("waits for settlement before publishing completion", async () => {
     let release!: () => void;
     const gate = new Promise<void>((resolve) => { release = resolve; });
-    const onTerminal = vi.fn(async () => gate);
+    const onTerminal = vi.fn(async () => {
+      await gate;
+      return { credits: 3 };
+    });
     const reader = sanitizeResponseStream(stream(start + end, 65_536), { onTerminal }).getReader();
     await reader.read();
     let completed = false;
@@ -108,11 +114,14 @@ describe("Responses prompt redaction", () => {
     release();
     const result = await pending;
     expect(new TextDecoder().decode(result.value)).toContain("response.completed");
+    expect(new TextDecoder().decode(result.value)).toContain(
+      '"lexiro":{"credits":3}',
+    );
     await reader.read();
   });
 
   it("honors backpressure and cancels upstream exactly once before any read", async () => {
-    const pull = vi.fn(), cancel = vi.fn(), onTerminal = vi.fn(async () => {});
+    const pull = vi.fn(), cancel = vi.fn(), onTerminal = vi.fn(async () => undefined);
     const upstream = new ReadableStream<Uint8Array>({ pull, cancel }, { highWaterMark: 0 });
     const output = sanitizeResponseStream(upstream, { onTerminal });
     await Promise.resolve();
@@ -124,7 +133,7 @@ describe("Responses prompt redaction", () => {
   });
 
   it("cancels a pending read without treating user cancellation as an upstream failure", async () => {
-    const cancel = vi.fn(), onTerminal = vi.fn(async () => {});
+    const cancel = vi.fn(), onTerminal = vi.fn(async () => undefined);
     const upstream = new ReadableStream<Uint8Array>({ cancel }, { highWaterMark: 0 });
     const reader = sanitizeResponseStream(upstream, { onTerminal }).getReader();
     const pending = reader.read();

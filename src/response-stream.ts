@@ -5,7 +5,9 @@ export interface StreamTerminal {
   response?: Record<string, unknown>;
 }
 export interface StreamOptions {
-  onTerminal: (result: StreamTerminal) => Promise<void>;
+  onTerminal: (
+    result: StreamTerminal,
+  ) => Promise<Record<string, unknown> | undefined>;
 }
 
 const encoder = new TextEncoder();
@@ -77,11 +79,15 @@ export function sanitizeResponseStream(
   options: StreamOptions,
 ): ReadableStream<Uint8Array> {
   const reader = upstream.getReader();
-  let cursor: string | undefined, cancelled = false, notified = false;
+  let cursor: string | undefined,
+    cancelled = false,
+    notified = false,
+    terminalMetadata: Record<string, unknown> | undefined;
   const finish = async (result: StreamTerminal) => {
-    if (notified) return;
+    if (notified) return terminalMetadata;
     notified = true;
-    await options.onTerminal(result);
+    terminalMetadata = await options.onTerminal(result);
+    return terminalMetadata;
   };
   async function* events(): AsyncGenerator<Uint8Array> {
     try {
@@ -111,10 +117,11 @@ export function sanitizeResponseStream(
         } else if (cursor !== response.id) throw new Error("Response identity changed");
 
         const terminal = ["response.completed", "response.incomplete", "response.failed"].includes(frame.event);
+        let metadata: Record<string, unknown> | undefined;
         if (terminal) {
           const truncated = frame.event === "response.incomplete" && record(response.incomplete_details) &&
             response.incomplete_details.reason === "max_output_tokens";
-          await finish({
+          metadata = await finish({
             cursor,
             status: frame.event === "response.completed" ? "complete" : truncated ? "truncated" : "failed",
             response,
@@ -124,6 +131,7 @@ export function sanitizeResponseStream(
 
         // Never mutate the private response retained by the settlement callback.
         const clean = { ...response };
+        if (metadata) clean.lexiro = metadata;
         delete clean.instructions;
         delete clean.input;
         delete clean.prompt;
