@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
+import { ListNavRow, ListSection } from "@/components/ui/list";
 import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/page-state";
@@ -151,12 +152,16 @@ export function SetView({ setId }: { setId: string }) {
         title={current.setName}
       />
 
-      <dl className="mb-7 grid max-w-lg grid-cols-2 gap-x-10 gap-y-4 sm:grid-cols-4">
-        <Stat label={t("setDetail.senses")} value={senseIds.length} />
-        <Stat label={t("setDetail.learned")} value={learned} />
-        <Stat label={t("setDetail.due")} value={due} />
-        <Stat label={t("setDetail.questions")} value={questions.length} />
-      </dl>
+      {/* Four big numbers were a dashboard on top of a word list. They are the
+          page's subtitle, so they read as one line of it. */}
+      <p className="-mt-2 mb-6 text-sm tabular-nums text-muted-foreground">
+        {t("setDetail.summary", {
+          senses: senseIds.length,
+          learned,
+          due,
+          questions: questions.length,
+        })}
+      </p>
 
       <LiquidTabs
         ariaLabel={current.setName}
@@ -180,42 +185,44 @@ export function SetView({ setId }: { setId: string }) {
       />
 
       {tab === "words" ? (
-        <><SetTools setId={setId} />{words.length ? (
-          <StaggerList as="ul" className="rule-card rule-list">
-            {words.map((entry) => (
-              <StaggerItem as="li" className="py-5" key={entry.wordKey}>
-                <SetWordRow cards={cards} entry={entry} setId={setId} />
-              </StaggerItem>
-            ))}
-          </StaggerList>
-        ) : (
-          <EmptyState
-            variant="filtered"
-            title={t("setDetail.noWords")}
-            description={t("setDetail.noWordsDescription")}
-          />
-        )}</>
+        <div className="space-y-7">
+          {words.length ? (
+            <StaggerList as="ul" className="rule-card rule-list">
+              {words.map((entry) => (
+                <StaggerItem as="li" className="py-5" key={entry.wordKey}>
+                  <SetWordRow cards={cards} entry={entry} setId={setId} />
+                </StaggerItem>
+              ))}
+            </StaggerList>
+          ) : (
+            <EmptyState
+              variant="filtered"
+              title={t("setDetail.noWords")}
+              description={t("setDetail.noWordsDescription")}
+            />
+          )}
+          <SetTools setId={setId} />
+        </div>
       ) : (
         <>
           {/* Making questions is what you come to this tab to do when it is
               empty and the obvious next step when it is not, so it is a control
               on the tab rather than a line in the page's overflow menu. */}
-          <div className="mb-4 flex flex-wrap gap-2">
-            <Button asChild size="sm" variant={questions.length ? "secondary" : "default"}>
-              <Link href={`/questions/generate?set=${setId}`}>
-                <Icons.generate />
-                {t("setDetail.generateQuestions")}
-              </Link>
-            </Button>
+          <ListSection className="mb-5">
             {questions.length > 0 && (
-              <Button asChild size="sm" variant="ghost">
-                <Link href={`/practice?track=questions&set=${setId}`}>
-                  <Icons.start />
-                  {t("setDetail.startQuestions")}
-                </Link>
-              </Button>
+              <ListNavRow
+                href={`/practice?track=questions&set=${setId}`}
+                icon={Icons.start}
+                label={t("setDetail.startQuestions")}
+                value={t("home.questionCount", { count: questions.length })}
+              />
             )}
-          </div>
+            <ListNavRow
+              href={`/questions/generate?set=${setId}`}
+              icon={Icons.generate}
+              label={t("setDetail.generateQuestions")}
+            />
+          </ListSection>
 
           {questions.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
@@ -261,15 +268,6 @@ export function SetView({ setId }: { setId: string }) {
         open={confirmDelete}
         title={t("setDetail.delete")}
       />
-    </div>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: number }) {
-  return (
-    <div>
-      <dt className="text-xs text-muted-foreground">{label}</dt>
-      <dd className="mt-1 text-2xl font-medium tabular-nums">{value}</dd>
     </div>
   );
 }

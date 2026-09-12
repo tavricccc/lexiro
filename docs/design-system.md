@@ -100,6 +100,34 @@ The further out a surface sits, the softer it is:
 Tailwind's `rounded-md` / `rounded-xl` / `rounded-3xl` are mapped onto these, so
 existing utilities keep working while the scale stays deliberate.
 
+## The grouped list
+
+A phone reads a setting, a choice, or a fact as one line: what it is on the
+left, what it is set to on the right. `components/ui/list.tsx` is that shape and
+every screen that asks for something uses it.
+
+- `ListSection` is a group: a quiet header above it, the rows in a `.rule-card
+  .rule-list`, and a footer sentence below explaining what changing the group
+  does. The footer is where explanation goes, never a paragraph between rows.
+- `ListRow` reports, `ListNavRow` leads somewhere (chevron, or a rotated one
+  when it opens its options in place), `ListChoiceRow` is one option with a
+  check, `ListSwitchRow` is on/off, `ListStepperRow` is a small whole number,
+  `ListInputRow` is a value you type on the line that names it, and
+  `ListActionRow` is a centred, tinted row that does something now.
+- Rows are at least 44px tall and the whole row is the target, never the
+  chevron or the label alone.
+
+**A choice between options is a list, never a row of buttons.** Two buttons
+side by side mean 取消 and 確認 — a decision and its escape — so that shape
+tells the reader the wrong thing about a choice. A row also has room for the
+number that decides it: what the tier costs, how much is due, how many
+questions are waiting. A screen that asks for one thing ends in one full-width
+primary button; everything else it can do is a `ListActionRow` under it.
+
+Type for rows is set by `.type-row` (17px, the platform's reading size),
+`.type-row-detail`, `.type-row-value`, `.type-list-header` and
+`.type-list-footer`.
+
 ## Separation
 
 Three ways to separate, and only three: a **card** groups the things that sit at

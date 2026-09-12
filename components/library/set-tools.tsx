@@ -7,6 +7,7 @@ import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { SelectField } from "@/components/ui/select-field";
 import { Icons } from "@/components/ui/icons";
+import { ListNavRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -27,72 +28,65 @@ export function SetTools({ setId }: { setId: string }) {
     });
     setPanel(null);
   };
+  const rows = [
+    { icon: Icons.create, key: "manual", label: t("setEditor.addWord") },
+    { icon: Icons.generate, key: "ai", label: t("setEditor.aiAssist") },
+    { icon: Icons.edit, key: "metadata", label: t("wordEdit.metadata") },
+  ] as const;
+  // What you can do to a set lives under the set, as rows rather than as a bag
+  // of chips above the words: the material is what you came to read.
   return (
-    <div className="mb-5 space-y-4">
-      <div className="flex flex-wrap gap-2">
-        <Button
-          size="sm"
-          variant="secondary"
-          onClick={() => {
-            setError("");
-            setPanel(panel === "metadata" ? null : "metadata");
-          }}
-        >
-          <Icons.edit />
-          {t("wordEdit.metadata")}
-        </Button>
-        <Button
-          size="sm"
-          variant="secondary"
-          onClick={() => {
-            setError("");
-            setPanel(panel === "manual" ? null : "manual");
-          }}
-        >
-          <Icons.create />
-          {t("setEditor.addWord")}
-        </Button>
-        <Button
-          size="sm"
-          variant="secondary"
-          onClick={() => {
-            setError("");
-            setPanel(panel === "ai" ? null : "ai");
-          }}
-        >
-          <Icons.generate />
-          {t("setEditor.aiAssist")}
-        </Button>
-      </div>
-      {panel === "metadata" && (
-        <SetMetadata setId={setId} onDone={() => setPanel(null)} />
-      )}
-      {panel === "manual" && (
-        <WordEditor
-          value={{
-            word: "",
-            senses: [{ id: "new", pos: "", meaning: "", examples: [""] }],
-          }}
-          onCancel={() => setPanel(null)}
-          onSave={(draft) =>
-            add(
-              draft.senses.map((sense) => ({
-                word: draft.word,
-                pos: sense.pos,
-                meaningZh: sense.meaning,
-                examples: sense.examples,
-              })),
-            )
-          }
-        />
-      )}
-      {panel === "ai" && (
-        <WordAssistant
-          onApply={(rows) =>
-            add(rows).catch(() => setError(t("wordEdit.saveFailed")))
-          }
-        />
-      )}
+    <div className="space-y-4">
+      <ListSection header={t("setDetail.toolsHeader")}>
+        {rows.map((row) => (
+          <div key={row.key}>
+            <ListNavRow
+              expanded={panel === row.key}
+              icon={row.icon}
+              label={row.label}
+              onClick={() => {
+                setError("");
+                setPanel(panel === row.key ? null : row.key);
+              }}
+            />
+            {panel === row.key && (
+              <div className="pb-4 pt-1">
+                {row.key === "metadata" && (
+                  <SetMetadata onDone={() => setPanel(null)} setId={setId} />
+                )}
+                {row.key === "manual" && (
+                  <WordEditor
+                    onCancel={() => setPanel(null)}
+                    onSave={(draft) =>
+                      add(
+                        draft.senses.map((sense) => ({
+                          word: draft.word,
+                          pos: sense.pos,
+                          meaningZh: sense.meaning,
+                          examples: sense.examples,
+                        })),
+                      )
+                    }
+                    value={{
+                      word: "",
+                      senses: [
+                        { id: "new", pos: "", meaning: "", examples: [""] },
+                      ],
+                    }}
+                  />
+                )}
+                {row.key === "ai" && (
+                  <WordAssistant
+                    onApply={(rows) =>
+                      add(rows).catch(() => setError(t("wordEdit.saveFailed")))
+                    }
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </ListSection>
       {error && (
         <p role="alert" className="text-sm text-destructive">
           {error}

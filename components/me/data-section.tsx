@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { MeSection } from "@/components/me/me-section";
-import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
+import { ListActionRow, ListSection } from "@/components/ui/list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
@@ -63,37 +61,29 @@ export function DataSection() {
 
   return (
     <>
-      <MeSection
-        icon={Icons.backup}
-        title={t("settings.data")}
-        description={t("me.dataDescription")}
+      <ListSection
+        footer={`${t("me.dataDescription")} ${t("me.backupHint")}`}
+        header={t("settings.data")}
       >
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <Button onClick={exportBackup}>
-            <Icons.export />
-            {t("settings.export")}
-          </Button>
-          <Button asChild variant="secondary">
-            <label className="cursor-pointer">
-              <Icons.import />
-              {t("settings.import")}
-              <input
-                type="file"
-                accept=".zip,application/zip"
-                className="sr-only"
-                onChange={(event) => {
-                  const file = event.target.files?.[0];
-                  if (file) void importBackup(file);
-                  event.target.value = "";
-                }}
-              />
-            </label>
-          </Button>
-        </div>
-        <p className="mt-3 text-xs leading-5 text-muted-foreground">
-          {t("me.backupHint")}
-        </p>
-      </MeSection>
+        <ListActionRow onClick={exportBackup}>
+          {t("settings.export")}
+        </ListActionRow>
+        {/* Reading a file needs a real input; the row is its label so the
+            whole row opens the picker, the way every other row works. */}
+        <label className="t-row flex min-h-11 w-full cursor-pointer items-center justify-center py-2.5 text-center type-row text-primary">
+          {t("settings.import")}
+          <input
+            accept=".zip,application/zip"
+            className="sr-only"
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) void importBackup(file);
+              event.target.value = "";
+            }}
+            type="file"
+          />
+        </label>
+      </ListSection>
 
       <ConfirmDialog
         open={Boolean(pending)}

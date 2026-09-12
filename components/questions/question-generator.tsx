@@ -297,7 +297,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
           appendBillableCount={moreTask.billableCount}
           tier={generation.tier}
           onTierChange={generation.setTier}
-          scopeSummary={t("questions.scopeSummary", { count: senseCount })}
           state={run}
           unit={t(isPassageKind(kind) ? "ai.packsUnit" : "ai.questionsUnit")}
         />

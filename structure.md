@@ -45,8 +45,10 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/library/example-fields.tsx` — independently editable, wrapping example rows shared by inline editing and new-set creation. Form drafts use arrays, not newline-delimited text.
 - `tests-next/input-organizer.test.tsx` — no generation before confirmation; corrected review text is what proceeds to generation.
 - `components/library/input-organizer.tsx`, `lib/word-photo.ts` — shared typed/photo cleanup and editable confirmation; browser WebP resizing/encoding before upload.
+- `components/ui/list.tsx` — the grouped list: section, reporting row, navigation row, checkmark choice, switch, stepper, inline input and action row. Every settings-shaped screen and every choice between options is built from it; see `docs/design-system.md`.
 - `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache. An administrator sees 無限額度 in place of the estimate and balance.
 - `components/ai/ai-usage.tsx` — administrator-only readout of a run's input/cached/output/reasoning tokens and the provider cost estimated from `MODEL_PRICES`.
+- `components/me/me-page.tsx`, `components/me/account-row.tsx`, `components/me/save-status.tsx` — 我的 as one narrow column of grouped lists, opened by the signed-in account row that leads to `/sync`.
 - `components/me/plan-section.tsx` — account point balance and renewal date; an administrator sees 無限額度 instead.
 - `components/me/admin-panel.tsx` — a three-row menu (帳號與額度 / 用量與成本 / 全站設定) that opens one task at a time: account list → one account's adjustments or creation, the 30-day token and cost report from `/admin/usage`, and the trial switch. Nothing is expanded until it is chosen.
 - `src/lib/ai/session.ts`, `runner.ts`, `tasks.ts` — managed session identity, serial generation/recovery and data-only request assembly. The old provider facade, catalog, request/reply/transport modules, settings persistence and usage component have been removed.

@@ -1,24 +1,73 @@
 "use client";
-import { estimatePoints, TIERS, type JobKind, type Tier } from "@lexiro/ai-contract";
-import { SelectField } from "@/components/ui/select-field";
-import { Button } from "@/components/ui/button";
+import {
+  estimatePoints,
+  TIERS,
+  type JobKind,
+  type Tier,
+} from "@lexiro/ai-contract";
+import { ListChoiceRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { useManagedAccount } from "./use-managed-account";
 
-export function GenerationControls({ kind, count, tier, onTierChange, disabled = false }: { kind: JobKind; count: number; tier: Tier; onTierChange: (tier: Tier) => void; disabled?: boolean }) {
+/**
+ * Choosing how hard the model should think.
+ *
+ * This was a dropdown with the price on a line underneath it, which meant the
+ * one number that decides the choice was never next to the thing it was the
+ * price of. Three options are a list: each row says what the tier is for and
+ * what this particular run will cost on it, and the balance sits under the
+ * group as the sentence that limits all three.
+ */
+export function GenerationControls({
+  count,
+  disabled = false,
+  kind,
+  onTierChange,
+  tier,
+}: {
+  count: number;
+  disabled?: boolean;
+  kind: JobKind;
+  onTierChange: (tier: Tier) => void;
+  tier: Tier;
+}) {
   const account = useManagedAccount();
-  const estimate = estimatePoints(kind, count, tier);
-  // An administrator is not spending points, so the line that would quote a
-  // price says what is true instead; the tokens arrive once the run has run.
+  // An administrator is not spending points, so the rows say what the tier is
+  // for and nothing else; the tokens arrive once the run has run.
   const admin = account.data?.admin === true;
-  return <div className="grid gap-3">
-    <SelectField label={t("managed.tier")} value={tier} disabled={disabled} onValueChange={(value) => onTierChange(value as Tier)} options={TIERS.map((value) => ({ value, label: t(`managed.${value}`) }))} />
-    <p className="text-xs text-muted-foreground">{t(`managed.${tier}Hint`)}</p>
-    {!admin && <div className="flex flex-wrap justify-between gap-2 text-sm tabular-nums" aria-live="polite">
-      <span>{estimate.min === estimate.max ? t("managed.estimate", { points: estimate.max }) : t("managed.estimateRange", estimate)}</span>
-      {account.data && <span>{t("managed.balance", { points: account.data.points })}</span>}
-    </div>}
-    {admin && <p className="text-sm text-muted-foreground">{t("admin.unlimited")}</p>}
-    {account.error && <div role="alert" className="text-sm text-destructive">{account.error.message}<Button type="button" variant="ghost" size="sm" onClick={() => void account.refetch()}>{t("common.reload")}</Button></div>}
-  </div>;
+  return (
+    <ListSection
+      footer={
+        account.error
+          ? account.error.message
+          : admin
+            ? t("admin.unlimited")
+            : account.data
+              ? t("managed.balance", { points: account.data.points })
+              : undefined
+      }
+      header={t("managed.tier")}
+    >
+      {TIERS.map((value) => {
+        const estimate = estimatePoints(kind, count, value);
+        return (
+          <ListChoiceRow
+            detail={t(`managed.${value}Hint`)}
+            disabled={disabled}
+            key={value}
+            label={t(`managed.${value}`)}
+            onSelect={() => onTierChange(value)}
+            selected={tier === value}
+            value={
+              admin || !count
+                ? undefined
+                : estimate.min === estimate.max
+                  ? t("managed.points", { points: estimate.max })
+                  : t("managed.pointsRange", estimate)
+            }
+          />
+        );
+      })}
+    </ListSection>
+  );
 }

@@ -31,7 +31,7 @@ export function AiUsage({ usage }: { usage: TokenUsage }) {
   const cached = usage.cached ?? 0;
   const cost = estimateCost(usage);
   return (
-    <div className="rule-t px-4 py-4 sm:px-5">
+    <div className="rule-card py-4">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <p className="text-sm font-medium">{t("admin.runUsage")}</p>
         <p className="text-sm font-medium tabular-nums">{formatCost(cost)}</p>

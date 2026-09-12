@@ -3,21 +3,20 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { MeSection } from "@/components/me/me-section";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
+import { ListActionRow, ListRow, ListSection } from "@/components/ui/list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
+import { syncStatusLabel } from "@/lib/sync-status";
 import { useCloudStore } from "@/stores/cloud-store";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 
+/**
+ * The account screen: what the cloud knows, then the two things you can do
+ * about it. Each action is its own row, because 立即同步 and 登出 are not a
+ * decision and its escape — they are two separate errands that happen to live
+ * on the same screen.
+ */
 export function AccountSection() {
   const cloud = useCloudStore();
   const library = useLibraryStore((store) => store.state);
@@ -26,7 +25,6 @@ export function AccountSection() {
   const isWorking = cloud.status === "syncing" || cloud.status === "connecting";
   const displayName = cloud.user?.displayName || t("me.guestName");
   const email = cloud.user?.email || t("settings.offlineReady");
-  const initials = displayName.trim().slice(0, 1).toLocaleUpperCase() || "L";
 
   const signIn = async () => {
     try {
@@ -67,95 +65,64 @@ export function AccountSection() {
   };
 
   return (
-    <>
-      <div className="mb-8 flex flex-col gap-5 rounded-xl bg-muted p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
-        <div className="flex min-w-0 items-center gap-4">
-          <Avatar size="lg" className="size-12 ring-1 ring-border">
-            {cloud.user?.photoURL && (
-              <AvatarImage src={cloud.user.photoURL} alt="" />
-            )}
-            <AvatarFallback className="text-base font-semibold">
-              {initials}
-            </AvatarFallback>
-          </Avatar>
-          <div className="min-w-0">
-            <h2 className="type-section truncate">{displayName}</h2>
-            <p className="mt-1 truncate text-sm text-muted-foreground">
-              {email}
-            </p>
-          </div>
-        </div>
-        <Badge variant={cloud.status === "error" ? "destructive" : "secondary"}>
-          {syncStatusLabel(cloud.status)}
-        </Badge>
-      </div>
-
-      <MeSection
-        icon={Icons.sync}
-        title={t("settings.account")}
-        description={t("me.accountDescription")}
+    <div className="space-y-7">
+      <ListSection
+        footer={
+          cloud.configured
+            ? t("me.accountDescription")
+            : t("settings.notConfigured")
+        }
+        header={t("settings.account")}
       >
-        <div className="flex flex-wrap gap-2">
-          {cloud.configured && !cloud.user && (
-            <Button onClick={requestSignIn} disabled={!cloud.ready || isWorking}>
-              <Icons.signIn />
-              {t("settings.signIn")}
-            </Button>
-          )}
-          {cloud.user && (
-            <>
-              <Button onClick={() => void sync()} disabled={isWorking}>
-                <Icons.refresh className={isWorking ? "animate-spin" : undefined} />
-                {t("settings.syncNow")}
-              </Button>
-              <Button variant="secondary" onClick={() => void signOut()}>
-                <Icons.signOut />
-                {t("settings.signOut")}
-              </Button>
-            </>
-          )}
-        </div>
-        {!cloud.configured && (
-          <p className="type-lead">
-            {t("settings.notConfigured")}
-          </p>
-        )}
+        <ListRow label={displayName} value={email} />
+        <ListRow
+          label={t("sync.statusLabel")}
+          value={syncStatusLabel(cloud.status)}
+        />
         {cloud.pending > 0 && (
-          <p className="mt-3 text-sm text-warning">
-            {t("settings.syncPendingCount", { count: cloud.pending })}
-          </p>
+          <ListRow
+            label={t("sync.pendingLabel")}
+            value={t("settings.syncPendingCount", { count: cloud.pending })}
+          />
         )}
-        {cloud.error && (
-          <p className="mt-3 text-sm text-destructive" role="alert">
-            {cloud.error}
-          </p>
+        {cloud.error && <ListRow label={cloud.error} tone="destructive" />}
+      </ListSection>
+
+      <ListSection>
+        {cloud.configured && !cloud.user && (
+          <ListActionRow
+            disabled={!cloud.ready || isWorking}
+            onClick={requestSignIn}
+          >
+            {t("settings.signIn")}
+          </ListActionRow>
         )}
-      </MeSection>
+        {cloud.user && (
+          <>
+            <ListActionRow disabled={isWorking} onClick={() => void sync()}>
+              {t("settings.syncNow")}
+            </ListActionRow>
+            <ListActionRow onClick={() => void signOut()} tone="destructive">
+              {t("settings.signOut")}
+            </ListActionRow>
+          </>
+        )}
+      </ListSection>
 
       <ConfirmDialog
-        open={confirmSignIn}
-        onOpenChange={setConfirmSignIn}
-        title={t("settings.signIn")}
-        description={t("settings.guestDataWarning")}
         confirmLabel={t("settings.continueSignIn")}
-        tone="default"
+        description={t("settings.guestDataWarning")}
         onConfirm={async () => {
           setConfirmSignIn(false);
           await signIn();
         }}
+        onOpenChange={setConfirmSignIn}
+        open={confirmSignIn}
+        title={t("settings.signIn")}
+        tone="default"
       />
-    </>
+    </div>
   );
-}
-
-function syncStatusLabel(status: string) {
-  if (status === "disabled") return t("settings.syncDisabled");
-  if (status === "signed-out") return t("settings.syncSignedOut");
-  if (status === "synced") return t("settings.syncSynced");
-  if (status === "offline") return t("settings.syncOffline");
-  if (status === "error") return t("settings.syncError");
-  if (status === "connecting") return t("settings.syncConnecting");
-  return t("settings.syncWorking");
 }
 
 function errorMessage(reason: unknown): string {

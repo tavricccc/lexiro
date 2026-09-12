@@ -108,34 +108,34 @@ export function ProgressPage() {
         }
       />
 
-      <section className="rule-card grid gap-x-14 gap-y-8 py-8 sm:grid-cols-[auto_auto] sm:items-center sm:justify-start">
-        <p>
-          <span className="flex items-baseline gap-1.5">
-            <span className="text-[clamp(3.25rem,7vw,4rem)] font-medium leading-[0.9] tabular-nums text-brand-600">
-              {stats.streakDays}
-            </span>
-            <span className="text-lg text-brand-500">
-              {t("progress.streakUnit")}
-            </span>
+      {/* The streak is the one figure worth a headline; the rest are values you
+          look up, so they are read as rows rather than as a wall of zeroes. */}
+      <section className="rule-card py-6">
+        <p className="flex items-baseline gap-1.5">
+          <span className="text-[clamp(3.25rem,7vw,4rem)] font-medium leading-[0.9] tabular-nums text-brand-600">
+            {stats.streakDays}
           </span>
-          <span className="mt-1.5 block text-sm text-muted-foreground">
-            {t("progress.streakLead")}
+          <span className="text-lg text-brand-500">
+            {t("progress.streakUnit")}
           </span>
         </p>
-
-        <dl className="grid max-w-md grid-cols-2 gap-x-10 gap-y-6 sm:grid-cols-4">
-          <Figure label={t("progress.level")} value={stats.level} />
-          <Figure label={t("progress.xp")} value={stats.xp} />
-          <Figure
-            label={t("progress.memoryAccuracy")}
-            value={`${memoryAccuracy}%`}
-          />
-          <Figure
-            label={t("progress.questionAccuracy")}
-            value={`${questionAccuracy}%`}
-          />
-        </dl>
+        <p className="mt-1.5 text-sm text-muted-foreground">
+          {t("progress.streakLead")}
+        </p>
       </section>
+
+      <dl className="rule-card rule-list mt-4">
+        <Figure label={t("progress.level")} value={stats.level} />
+        <Figure label={t("progress.xp")} value={stats.xp} />
+        <Figure
+          label={t("progress.memoryAccuracy")}
+          value={`${memoryAccuracy}%`}
+        />
+        <Figure
+          label={t("progress.questionAccuracy")}
+          value={`${questionAccuracy}%`}
+        />
+      </dl>
 
       <section className="section-gap">
         <h2 className="type-section">
@@ -326,11 +326,9 @@ function HistoryChart({
 
 function Figure({ label, value }: { label: string; value: string | number }) {
   return (
-    <div>
-      <dd className="text-[1.75rem] font-medium leading-none tabular-nums">
-        {value}
-      </dd>
-      <dt className="mt-2 text-xs text-muted-foreground">{label}</dt>
+    <div className="flex min-h-11 items-center justify-between gap-4 py-2.5">
+      <dt className="type-row">{label}</dt>
+      <dd className="type-row tabular-nums">{value}</dd>
     </div>
   );
 }

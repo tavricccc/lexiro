@@ -70,9 +70,6 @@ export function WordAssistant({
               billableCount={task.billableCount}
               tier={generation.tier}
               onTierChange={generation.setTier}
-              scopeSummary={t("setEditor.wordsFound", {
-                count: sources.length,
-              })}
               state={state}
               unit={t("ai.wordsUnit")}
               results={

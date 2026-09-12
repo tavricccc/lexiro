@@ -3,14 +3,23 @@
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
 
-import { MeSection } from "@/components/me/me-section";
+import { SaveStatus } from "@/components/me/save-status";
 import { useAutosave } from "@/components/me/use-autosave";
-import { Field } from "@/components/ui/field";
-import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
-import { SelectField } from "@/components/ui/select-field";
+import {
+  ListChoiceRow,
+  ListNavRow,
+  ListSection,
+  ListStepperRow,
+} from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
+
+const THEMES = ["system", "light", "dark"] as const;
+const THEME_LABEL = {
+  system: "settings.system",
+  light: "settings.light",
+  dark: "settings.dark",
+} as const;
 
 export function PreferencesSection() {
   const learning = useLearningStore();
@@ -19,6 +28,9 @@ export function PreferencesSection() {
   const [questionGoal, setQuestionGoal] = useState(
     learning.stats.dailyQuestionGoal,
   );
+  // The theme's options open under their own row instead of in a dropdown: a
+  // list of three that is already on screen beats a menu that covers it.
+  const [themeOpen, setThemeOpen] = useState(false);
 
   useEffect(() => {
     if (!learning.loaded) return;
@@ -37,49 +49,55 @@ export function PreferencesSection() {
   const status = useAutosave(
     goals,
     (value) =>
-      learning.setGoals(clampGoal(value.wordGoal), clampGoal(value.questionGoal)),
+      learning.setGoals(
+        clampGoal(value.wordGoal),
+        clampGoal(value.questionGoal),
+      ),
     { ready: learning.loaded },
   );
+  const current = (THEMES as readonly string[]).includes(theme ?? "")
+    ? (theme as (typeof THEMES)[number])
+    : "system";
 
   return (
-    <MeSection
-      description={t("me.preferencesDescription")}
-      icon={Icons.settings}
-      status={status}
-      title={t("me.preferences")}
+    <ListSection
+      footer={t("me.preferencesDescription")}
+      header={t("me.preferences")}
+      headerAction={<SaveStatus status={status} />}
     >
-      <div className="grid gap-5">
-        <SelectField
-          label={t("settings.theme")}
-          layout="row"
-          onValueChange={setTheme}
-          options={[
-            { label: t("settings.system"), value: "system" },
-            { label: t("settings.light"), value: "light" },
-            { label: t("settings.dark"), value: "dark" },
-          ]}
-          value={theme ?? "system"}
-        />
-        <Field label={t("settings.dailyWords")} layout="row">
-          <Input
-            max={100}
-            min={1}
-            onChange={(event) => setWordGoal(Number(event.target.value))}
-            type="number"
-            value={wordGoal}
+      <ListNavRow
+        expanded={themeOpen}
+        label={t("settings.theme")}
+        onClick={() => setThemeOpen(!themeOpen)}
+        value={t(THEME_LABEL[current])}
+      />
+      {themeOpen &&
+        THEMES.map((value) => (
+          <ListChoiceRow
+            key={value}
+            label={t(THEME_LABEL[value])}
+            onSelect={() => {
+              setTheme(value);
+              setThemeOpen(false);
+            }}
+            selected={current === value}
           />
-        </Field>
-        <Field label={t("settings.dailyQuestions")} layout="row">
-          <Input
-            max={100}
-            min={1}
-            onChange={(event) => setQuestionGoal(Number(event.target.value))}
-            type="number"
-            value={questionGoal}
-          />
-        </Field>
-      </div>
-    </MeSection>
+        ))}
+      <ListStepperRow
+        label={t("settings.dailyWords")}
+        max={100}
+        min={1}
+        onChange={setWordGoal}
+        value={wordGoal}
+      />
+      <ListStepperRow
+        label={t("settings.dailyQuestions")}
+        max={100}
+        min={1}
+        onChange={setQuestionGoal}
+        value={questionGoal}
+      />
+    </ListSection>
   );
 }
 

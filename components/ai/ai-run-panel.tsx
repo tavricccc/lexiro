@@ -3,49 +3,56 @@ import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 import { estimatePoints, type JobKind, type Tier } from "@lexiro/ai-contract";
 import type { AiRunState } from "./use-ai-generation";
-import { GenerationControls } from "./generation-controls";
 import { AiUsage } from "./ai-usage";
+import { GenerationControls } from "./generation-controls";
 import { useManagedAccount } from "./use-managed-account";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { ListActionRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 
+/**
+ * The screen a generation runs on.
+ *
+ * The tier is a list, the one action is one button, and everything else is a
+ * quiet text row underneath it. What was here before put 重新生成 and 再多生成
+ * 一輪 side by side as equals, which reads as a decision and its escape; they
+ * are neither, and neither is what you came to press.
+ */
 export function AiRunPanel<T>({
   actionLabel,
+  appendBillableCount,
+  billableCount,
   configured,
-  ready,
+  kind,
   localCount = 0,
+  onAppend,
   onCancel,
   onResume,
   onStart,
-  onAppend,
-  results,
-  scopeSummary,
-  state,
-  unit,
-  kind,
-  billableCount,
-  appendBillableCount,
-  tier,
   onTierChange,
+  ready,
+  results,
+  state,
+  tier,
+  unit,
 }: {
   actionLabel: string;
+  appendBillableCount?: number;
+  billableCount: number;
   configured: boolean;
-  ready: boolean;
+  kind: JobKind;
   localCount?: number;
+  onAppend?: () => void;
   onCancel: () => void;
   onResume: () => void;
   onStart: () => void;
-  onAppend?: () => void;
-  results?: ReactNode;
-  scopeSummary: string;
-  state: AiRunState<T>;
-  unit: string;
-  kind: JobKind;
-  billableCount: number;
-  appendBillableCount?: number;
-  tier: Tier;
   onTierChange: (tier: Tier) => void;
+  ready: boolean;
+  results?: ReactNode;
+  state: AiRunState<T>;
+  tier: Tier;
+  unit: string;
 }) {
   const [now, setNow] = useState(0);
   const account = useManagedAccount();
@@ -88,139 +95,150 @@ export function AiRunPanel<T>({
       ? 100
       : 0;
   return (
-    <section className="overflow-hidden rounded-[var(--radius-card)] border bg-card">
-      <div className="p-4 sm:p-5">
-        <p className="text-xs text-muted-foreground">{scopeSummary}</p>
-        <h3 className="mt-1 text-base font-semibold" aria-live="polite">
-          {ready ? title : t("common.loading")}
-        </h3>
-        <div className="mt-4">
-          <GenerationControls
-            kind={kind}
-            count={billableCount}
-            tier={tier}
-            onTierChange={onTierChange}
-            disabled={running}
-          />
-        </div>
-        {started && (
-          <div className="mt-5">
-            <div className="flex flex-wrap justify-between gap-2 text-sm tabular-nums">
-              <span aria-live="polite">
-                {t("ai.completedItems", {
-                  completed: state.completed,
-                  total: state.total,
-                  unit,
+    <div className="space-y-7">
+      <GenerationControls
+        count={billableCount}
+        disabled={running}
+        kind={kind}
+        onTierChange={onTierChange}
+        tier={tier}
+      />
+
+      {started && (
+        <section className="rule-card py-4">
+          <h2 aria-live="polite" className="type-subsection mb-3">
+            {ready ? title : t("common.loading")}
+          </h2>
+          <div className="flex flex-wrap justify-between gap-2 text-sm tabular-nums">
+            <span aria-live="polite">
+              {t("ai.completedItems", {
+                completed: state.completed,
+                total: state.total,
+                unit,
+              })}
+            </span>
+            <span className="text-muted-foreground">
+              {t("ai.elapsed", { seconds })}
+            </span>
+          </div>
+          <div
+            aria-label={t("ai.progressLabel")}
+            aria-valuemax={Math.max(1, state.total)}
+            aria-valuemin={0}
+            aria-valuenow={state.completed}
+            className="mt-3 h-1.5 overflow-hidden rounded-full bg-[var(--surface-inset)]"
+            role="progressbar"
+          >
+            <div
+              className="h-full rounded-full bg-primary transition-[width] duration-[var(--motion-control)] ease-[var(--ease-move)]"
+              style={{ width: `${percent}%` }}
+            />
+          </div>
+          <div className="mt-2 flex justify-between gap-3 text-xs text-muted-foreground">
+            <span>{t("ai.completedSegments", { count: state.segments })}</span>
+            {running && (
+              <span className="tabular-nums">
+                {t("ai.progressCharacters", {
+                  count: state.characters.toLocaleString(),
                 })}
               </span>
-              <span>{t("ai.elapsed", { seconds })}</span>
-            </div>
-            <div
-              role="progressbar"
-              aria-label={t("ai.progressLabel")}
-              aria-valuemin={0}
-              aria-valuemax={Math.max(1, state.total)}
-              aria-valuenow={state.completed}
-              className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--surface-inset)]"
-            >
-              <div
-                className="h-full rounded-full bg-primary"
-                style={{ width: `${percent}%` }}
-              />
-            </div>
-            <div className="mt-2 flex justify-between text-xs text-muted-foreground">
-              <span>
-                {t("ai.completedSegments", { count: state.segments })}
-              </span>
-              {running && (
-                <span>
-                  {t("ai.progressCharacters", {
-                    count: state.characters.toLocaleString(),
-                  })}
-                </span>
-              )}
-            </div>
+            )}
           </div>
+        </section>
+      )}
+
+      {state.error && (
+        <p
+          className="rounded-[var(--radius-card)] bg-destructive/10 px-4 py-3 text-sm text-destructive"
+          role="alert"
+        >
+          {state.error}
+        </p>
+      )}
+
+      {ready && !configured && billableCount > 0 && (
+        <p className="type-hint">
+          {t(
+            process.env.NEXT_PUBLIC_AI_WORKER_URL
+              ? "managed.signInRequired"
+              : "managed.unavailable",
+          )}{" "}
+          <Link className="text-primary underline" href="/me">
+            {t("common.account")}
+          </Link>
+        </p>
+      )}
+
+      {/* One thing to press. Everything else this screen can do is a quiet row
+          under it, in the order you would reach for them. */}
+      <div className="space-y-4">
+        {running ? (
+          <Button
+            className="w-full"
+            onClick={onCancel}
+            size="lg"
+            type="button"
+            variant="outline"
+          >
+            <Icons.cancel />
+            {t("ai.stop")}
+          </Button>
+        ) : (
+          <>
+            <Button
+              className="w-full"
+              disabled={!canRun}
+              onClick={state.remaining > 0 && canRun ? onResume : onStart}
+              size="lg"
+              type="button"
+            >
+              <Icons.generate />
+              {state.remaining > 0 && canRun
+                ? t(state.status === "error" ? "ai.retryCurrent" : "ai.resume")
+                : started
+                  ? t("ai.regenerate")
+                  : actionLabel}
+            </Button>
+            {(state.remaining > 0 || (done && onAppend && configured)) && (
+              <ListSection>
+                {state.remaining > 0 && canRun && (
+                  <ListActionRow onClick={onStart}>
+                    {t("ai.regenerate")}
+                  </ListActionRow>
+                )}
+                {done && onAppend && configured && (
+                  <ListActionRow onClick={onAppend}>
+                    {admin
+                      ? t("ai.append")
+                      : t("managed.appendCost", {
+                          points:
+                            appendCost.min === appendCost.max
+                              ? appendCost.max
+                              : `${appendCost.min}–${appendCost.max}`,
+                        })}
+                  </ListActionRow>
+                )}
+              </ListSection>
+            )}
+          </>
         )}
         {localCount > 0 && (
-          <p className="mt-3 text-xs text-muted-foreground">
-            {t("ai.builtLocally", { count: localCount })}
-          </p>
+          <p className="type-hint">{t("ai.builtLocally", { count: localCount })}</p>
         )}
-        {state.error && (
-          <p
-            role="alert"
-            className="mt-4 rounded-lg bg-destructive/10 p-3 text-sm text-destructive"
-          >
-            {state.error}
-          </p>
-        )}
-        {ready && !configured && billableCount > 0 && (
-          <p className="mt-4 text-sm text-muted-foreground">
-            {t(
-              process.env.NEXT_PUBLIC_AI_WORKER_URL
-                ? "managed.signInRequired"
-                : "managed.unavailable",
-            )}{" "}
-            <Link href="/me" className="text-primary underline">
-              {t("common.account")}
-            </Link>
-          </p>
-        )}
-        <div className="mt-5 flex flex-wrap gap-2">
-          {running ? (
-            <Button type="button" variant="outline" onClick={onCancel}>
-              <Icons.cancel />
-              {t("ai.stop")}
-            </Button>
-          ) : (
-            <>
-              {state.remaining > 0 && canRun && (
-                <Button type="button" onClick={onResume}>
-                  <Icons.retry />
-                  {t(
-                    state.status === "error" ? "ai.retryCurrent" : "ai.resume",
-                  )}
-                </Button>
-              )}
-              <Button
-                type="button"
-                variant={started ? "outline" : "default"}
-                disabled={!canRun}
-                onClick={onStart}
-              >
-                <Icons.generate />
-                {started ? t("ai.regenerate") : actionLabel}
-              </Button>
-              {done && onAppend && configured && (
-                <Button type="button" variant="secondary" onClick={onAppend}>
-                  <Icons.create />
-                  {admin
-                    ? t("ai.append")
-                    : t("managed.appendCost", {
-                        points:
-                          appendCost.min === appendCost.max
-                            ? appendCost.max
-                            : `${appendCost.min}–${appendCost.max}`,
-                      })}
-                </Button>
-              )}
-            </>
-          )}
-        </div>
         {started && (
-          <p className="mt-3 text-xs text-muted-foreground">
+          <p className="type-hint">
             {t(running ? "ai.keepWorking" : "ai.keptResults")}
           </p>
         )}
         {Array.from(new Set(state.notices)).map((notice) => (
-          <p key={notice} className="mt-2 text-xs text-muted-foreground">
+          <p className="type-hint" key={notice}>
             {notice}
           </p>
         ))}
       </div>
+
       {admin && started && <AiUsage usage={state.usage} />}
-      {results && <div className="rule-t p-4 sm:p-5">{results}</div>}
-    </section>
+      {results}
+    </div>
   );
 }

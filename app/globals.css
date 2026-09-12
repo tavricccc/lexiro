@@ -359,6 +359,48 @@ textarea {
     text-wrap: pretty;
   }
 
+  /* ── Grouped list ────────────────────────────────────────────────────
+     A phone reads a setting as one line: what it is on the left, what it is
+     set to on the right. The label is the 17px reading size the platform uses
+     for a row's own text, and the value beside it is the same size in the
+     muted colour, so the pair reads as one sentence rather than as a caption
+     stuck to a control. */
+  .type-row {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .type-row-detail {
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .type-row-value {
+    color: var(--muted-foreground);
+    font-size: 1.0625rem;
+    line-height: 1.45;
+  }
+
+  /* The line above a group names it; the line below explains what the group
+     does. Both are quiet: they are the page talking, not the content. */
+  .type-list-header {
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .type-list-footer {
+    max-width: 60ch;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
   .type-label {
     color: var(--muted-foreground);
     font-size: var(--control-label-size);
@@ -459,6 +501,12 @@ textarea {
 }
 
 .app-mobile-nav {
+  /* The dock floats over the page, so it is a material rather than a panel:
+     what scrolls under it stays legible through it instead of disappearing at
+     a hard white edge. */
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   right: max(1rem, var(--safe-right));
   bottom: max(0.9375rem, min(1.5625rem, calc(var(--safe-bottom) + 0.9375rem)));
   left: max(1rem, var(--safe-left));
