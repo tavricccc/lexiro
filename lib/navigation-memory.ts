@@ -12,8 +12,35 @@ const HISTORY_INDEX_KEY = "__lexiroHistoryIndex";
 
 export type RouteDirection = "back" | "child" | "root";
 
+/**
+ * The places primary navigation points at, in the order it shows them.
+ *
+ * Everything else the shell renders sits beneath one of these, so this one
+ * table answers every question about a route the shell has to ask: which
+ * destination a page belongs to, whether it reveals in place, and whether the
+ * floating bar belongs on it. The shell supplies the label and the icon for
+ * each entry and nothing else.
+ */
+export const PRIMARY_DESTINATIONS = [
+  // 今天 opens both kinds of practice with a count beside each, so 練習 is a
+  // screen you arrive at rather than a place you go: it keeps its route for
+  // every link that starts a session, but not a slot of its own.
+  { activePathPrefix: "/practice", href: "/" },
+  { href: "/library" },
+  { href: "/progress" },
+  { href: "/me" },
+] as const satisfies ReadonlyArray<{
+  activePathPrefix?: string;
+  href: string;
+}>;
+
+export type PrimaryDestination = (typeof PRIMARY_DESTINATIONS)[number]["href"];
+
+/** A destination primary navigation points at. */
 export function isRootRoute(pathname: string) {
-  return ["/", "/library", "/progress", "/me"].includes(pathname);
+  return PRIMARY_DESTINATIONS.some(
+    (destination) => destination.href === pathname,
+  );
 }
 
 // The library owns the set routes and the study screen owns practice even

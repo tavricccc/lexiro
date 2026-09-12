@@ -34,7 +34,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 
 - `components/liquid-nav.tsx` — committed-path selection and Next Link pending feedback with a shared moving selection; the dock stays outside named transition snapshots so rapid clicks remain available.
 - `components/ui/liquid-tabs.tsx` — controlled segmented selection with the same shared-layout motion, without pointerdown speculation, measurement loops or reset timers.
-- `lib/navigation-memory.ts` — route/history direction and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination.
+- `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon.
 - `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`

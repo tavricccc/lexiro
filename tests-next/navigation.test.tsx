@@ -6,6 +6,7 @@ import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import {
   adoptedParent,
   consumeRouteDirection,
+  isRootRoute,
   rememberRoutePath,
 } from "@/lib/navigation-memory";
 
@@ -96,5 +97,16 @@ describe("navigation selection", () => {
     expect(consumeRouteDirection("/sets/example")).toBe("child");
     expect(adoptedParent("/sets/example")).toBe("/library");
     expect(adoptedParent("/sync")).toBe("/me");
+  });
+  it("names the destinations primary navigation points at", () => {
+    for (const destination of ["/", "/library", "/progress", "/me"]) {
+      expect(isRootRoute(destination)).toBe(true);
+    }
+    // A screen you arrive at from a destination is not one of them, however
+    // shallow its URL looks.
+    expect(isRootRoute("/practice")).toBe(false);
+    expect(isRootRoute("/sync")).toBe(false);
+    expect(isRootRoute("/sets/example")).toBe(false);
+    expect(isRootRoute("/questions/generate")).toBe(false);
   });
 });

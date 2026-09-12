@@ -7,6 +7,9 @@ import {
   commitRouteHistory,
   markPopstateRouteDirection,
   adoptedParent,
+  isRootRoute,
+  PRIMARY_DESTINATIONS,
+  type PrimaryDestination,
 } from "@/lib/navigation-memory";
 import { RouteSurface } from "@/components/motion/route-surface";
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
@@ -16,37 +19,23 @@ import { cn } from "@/lib/cn";
 import { SyncIndicator } from "@/components/sync-indicator";
 import { useUIStore } from "@/stores/ui-store";
 
-// 今天 opens both kinds of practice with a count beside each, so 練習 is a screen
-// you arrive at rather than a place you go: it keeps its route for every link
-// that starts a session, but not a slot in the navigation.
-const destinations = [
-  {
-    href: "/",
-    activePathPrefix: "/practice",
-    label: "nav.study",
-    icon: Icons.today,
-  },
-  { href: "/library", label: "nav.library", icon: Icons.library },
-  { href: "/progress", label: "nav.progress", icon: Icons.stats },
-  { href: "/me", label: "nav.me", icon: Icons.account },
-] satisfies {
-  href: string;
-  activePathPrefix?: string;
-  label: TranslationKey;
-  icon: typeof Icons.practice;
-}[];
-
-function isSecondaryMobileRoute(pathname: string) {
-  if (pathname.startsWith("/sets/") || pathname === "/sets/new") return true;
-  if (/^\/questions\/.+/.test(pathname)) return true;
-  return false;
-}
+// The order and the routes belong to navigation-memory; this is only how each
+// destination is spelled and drawn.
+const presentation: Record<
+  PrimaryDestination,
+  { icon: typeof Icons.practice; label: TranslationKey }
+> = {
+  "/": { icon: Icons.today, label: "nav.study" },
+  "/library": { icon: Icons.library, label: "nav.library" },
+  "/progress": { icon: Icons.stats, label: "nav.progress" },
+  "/me": { icon: Icons.account, label: "nav.me" },
+};
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const practiceActive = useUIStore((store) => store.practiceActive);
-  const showMobileNavigation = !practiceActive && !isSecondaryMobileRoute(pathname);
+  const showMobileNavigation = !practiceActive && isRootRoute(pathname);
   const navigationPathname = adoptedParent(pathname) ?? pathname;
 
   React.useEffect(() => commitRouteHistory(pathname), [pathname]);
@@ -67,12 +56,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   const navItems = React.useMemo<LiquidNavItem[]>(
     () =>
-      destinations.map((d) => ({
-        href: d.href,
-        activePathPrefix: d.activePathPrefix,
-        icon: <d.icon className="size-[1.125rem]" />,
-        label: t(d.label),
-      })),
+      PRIMARY_DESTINATIONS.map((destination) => {
+        const { icon: Icon, label } = presentation[destination.href];
+        return {
+          ...destination,
+          icon: <Icon className="size-[1.125rem]" />,
+          label: t(label),
+        };
+      }),
     [],
   );
 
