@@ -462,22 +462,18 @@ textarea {
   right: max(1rem, var(--safe-right));
   bottom: max(0.9375rem, min(1.5625rem, calc(var(--safe-bottom) + 0.9375rem)));
   left: max(1rem, var(--safe-left));
+  /* The dock is present or it is not. It belongs to the route, and a route
+     change is already an animation: the page arriving covers it, the page
+     being dismissed slides off it. */
   opacity: 0;
   pointer-events: none;
-  transform: translateY(1.125rem) scale(0.96);
   visibility: hidden;
-  transition:
-    opacity var(--motion-control) var(--ease-move),
-    transform var(--motion-control) var(--ease-arrive),
-    visibility 0s linear var(--motion-control);
 }
 
 .app-mobile-nav[data-visible="true"] {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0) scale(1);
   visibility: visible;
-  transition-delay: 0s;
 }
 
 .app-mobile-nav [data-liquid-nav-index] {
