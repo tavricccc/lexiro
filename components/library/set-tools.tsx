@@ -1,177 +1,27 @@
 "use client";
-import { useState } from "react";
-import { WordEditor } from "@/components/library/word-editor";
-import { WordAssistant } from "@/components/library/word-assistant";
-import { Button } from "@/components/ui/button";
-import { Field } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+
 import { Icons } from "@/components/ui/icons";
-import {
-  ListNavRow,
-  ListPicker,
-  ListSection,
-} from "@/components/ui/list";
+import { ListNavRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
-import { setWordDrafts } from "@/src/lib/word-edit";
-import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
-import { useLibraryStore, type WordDraftInput } from "@/stores/library-store";
 
 export function SetTools({ setId }: { setId: string }) {
-  const [panel, setPanel] = useState<"metadata" | "manual" | "ai" | null>(null);
-  const [error, setError] = useState("");
-  const add = async (words: WordDraftInput[]) => {
-    const store = useLibraryStore.getState();
-    const current = store.state.sets.find((entry) => entry.id === setId);
-    if (!current) throw new Error("missing-set");
-    await store.saveSet({
-      id: setId,
-      setName: current.setName,
-      folderId: current.folderId,
-      words: [...setWordDrafts(store.state, setId), ...words],
-    });
-    setPanel(null);
-  };
-  const rows = [
-    { icon: Icons.create, key: "manual", label: t("setEditor.addWord") },
-    { icon: Icons.generate, key: "ai", label: t("setEditor.aiAssist") },
-    { icon: Icons.edit, key: "metadata", label: t("wordEdit.metadata") },
-  ] as const;
-  // What you can do to a set lives under the set, as rows rather than as a bag
-  // of chips above the words: the material is what you came to read.
   return (
-    <div className="space-y-4">
-      <ListSection header={t("setDetail.toolsHeader")}>
-        {rows.map((row) => (
-          <div key={row.key}>
-            <ListNavRow
-              expanded={panel === row.key}
-              icon={row.icon}
-              label={row.label}
-              onClick={() => {
-                setError("");
-                setPanel(panel === row.key ? null : row.key);
-              }}
-            />
-            {panel === row.key && (
-              <div className="pb-4 pt-1">
-                {row.key === "metadata" && (
-                  <SetMetadata onDone={() => setPanel(null)} setId={setId} />
-                )}
-                {row.key === "manual" && (
-                  <WordEditor
-                    onCancel={() => setPanel(null)}
-                    onSave={(draft) =>
-                      add(
-                        draft.senses.map((sense) => ({
-                          word: draft.word,
-                          pos: sense.pos,
-                          meaningZh: sense.meaning,
-                          examples: sense.examples,
-                        })),
-                      )
-                    }
-                    value={{
-                      word: "",
-                      senses: [
-                        { id: "new", pos: "", meaning: "", examples: [""] },
-                      ],
-                    }}
-                  />
-                )}
-                {row.key === "ai" && (
-                  <WordAssistant
-                    onApply={(rows) =>
-                      add(rows).catch(() => setError(t("wordEdit.saveFailed")))
-                    }
-                  />
-                )}
-              </div>
-            )}
-          </div>
-        ))}
-      </ListSection>
-      {error && (
-        <p role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function SetMetadata({ setId, onDone }: { setId: string; onDone: () => void }) {
-  const state = useLibraryStore((store) => store.state);
-  const current = state.sets.find((entry) => entry.id === setId)!;
-  const [name, setName] = useState(current.setName);
-  const [folder, setFolder] = useState(
-    current.folderId || UNCATEGORIZED_FOLDER_ID,
-  );
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-  const save = async () => {
-    const store = useLibraryStore.getState();
-    if (!name.trim()) {
-      setError(t("setEditor.required"));
-      return;
-    }
-    if (
-      store.state.sets.some(
-        (entry) =>
-          entry.id !== setId &&
-          entry.setName.toLocaleLowerCase() === name.trim().toLocaleLowerCase(),
-      )
-    ) {
-      setError(t("setEditor.duplicateName"));
-      return;
-    }
-    setBusy(true);
-    try {
-      await store.saveSet({
-        id: setId,
-        setName: name,
-        folderId: folder,
-        words: setWordDrafts(store.state, setId),
-      });
-      onDone();
-    } catch {
-      setError(t("wordEdit.saveFailed"));
-    } finally {
-      setBusy(false);
-    }
-  };
-  return (
-    <div className="space-y-3">
-      <Field label={t("setEditor.name")}>
-        <Input
-          value={name}
-          disabled={busy}
-          onChange={(event) => setName(event.target.value)}
-        />
-      </Field>
-      <ListSection>
-        <ListPicker
-          label={t("setEditor.folder")}
-          onChange={setFolder}
-          options={state.folders.map((entry) => ({
-            label: entry.name,
-            value: entry.id,
-          }))}
-          value={folder}
-        />
-      </ListSection>
-      {error && (
-        <p role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
-      )}
-      <div className="flex gap-2">
-        <Button disabled={busy} onClick={() => void save()}>
-          {t("setEditor.save")}
-        </Button>
-        <Button variant="ghost" disabled={busy} onClick={onDone}>
-          {t("setEditor.cancel")}
-        </Button>
-      </div>
-    </div>
+    <ListSection header={t("setDetail.toolsHeader")}>
+      <ListNavRow
+        href={`/sets/${setId}/add`}
+        icon={Icons.create}
+        label={t("setEditor.addWord")}
+      />
+      <ListNavRow
+        href={`/sets/${setId}/generate-words`}
+        icon={Icons.generate}
+        label={t("setEditor.aiAssist")}
+      />
+      <ListNavRow
+        href={`/sets/${setId}/settings`}
+        icon={Icons.edit}
+        label={t("wordEdit.metadata")}
+      />
+    </ListSection>
   );
 }

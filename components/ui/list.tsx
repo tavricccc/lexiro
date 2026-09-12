@@ -98,7 +98,7 @@ function RowInner({
 }
 
 const rowClass =
-  "t-row flex w-full min-h-11 items-center gap-3 py-2.5 text-left";
+  "t-row flex w-full min-h-[3.25rem] items-center gap-3 py-[var(--row-padding-block)] text-left";
 
 /** A row that only reports: a label, and what it is set to. */
 export function ListRow({ className, ...content }: RowContent & { className?: string }) {
@@ -291,6 +291,7 @@ export function ListSwitchRow({
  * 15 into 16.
  */
 export function ListStepperRow({
+  disabled,
   max,
   min,
   onChange,
@@ -300,13 +301,14 @@ export function ListStepperRow({
 }: Omit<RowContent, "value"> & {
   max: number;
   min: number;
+  disabled?: boolean;
   onChange: (value: number) => void;
   step?: number;
   value: number;
 }) {
   const set = (next: number) => onChange(Math.min(max, Math.max(min, next)));
   return (
-    <div className={rowClass}>
+    <div className={cn(rowClass, disabled && "opacity-45")}>
       <RowInner
         {...content}
         trailing={
@@ -316,14 +318,14 @@ export function ListStepperRow({
             </span>
             <span className="flex items-center overflow-clip rounded-[var(--radius-control)] bg-[var(--surface-inset)]">
               <StepperButton
-                disabled={value <= min}
+                disabled={disabled || value <= min}
                 label={t("common.decrease")}
                 onClick={() => set(value - step)}
                 symbol="−"
               />
               <span aria-hidden className="h-5 w-px bg-[var(--rule)]" />
               <StepperButton
-                disabled={value >= max}
+                disabled={disabled || value >= max}
                 label={t("common.increase")}
                 onClick={() => set(value + step)}
                 symbol="+"
@@ -382,7 +384,7 @@ export function ListActionRow({
   return (
     <button
       className={cn(
-        "t-row flex min-h-11 w-full items-center justify-center py-2.5 text-center type-row",
+        "t-row flex min-h-[3.25rem] w-full items-center justify-center py-[var(--row-padding-block)] text-center type-row",
         tone === "destructive" ? "text-destructive" : "text-primary",
         disabled && "pointer-events-none opacity-45",
       )}
@@ -455,7 +457,7 @@ export function ListInputRow({
   );
   if (block)
     return (
-      <div className="flex items-end gap-3 py-2.5">
+      <div className="flex min-h-[3.25rem] items-end gap-3 py-[var(--row-padding-block)]">
         <label className="min-w-0 flex-1">
           <span className="type-row-detail block">{label}</span>
           <span className="mt-0.5 flex">{field}</span>
@@ -464,7 +466,7 @@ export function ListInputRow({
       </div>
     );
   return (
-    <div className="flex min-h-11 items-center gap-4 py-2">
+    <div className="flex min-h-[3.25rem] items-center gap-4 py-[var(--row-padding-block)]">
       <label className="flex min-w-0 flex-1 items-center gap-4">
         <span className="type-row shrink-0">{label}</span>
         {field}
@@ -482,5 +484,9 @@ export function ListCustomRow({
   children: ReactNode;
   className?: string;
 }) {
-  return <div className={cn("py-3", className)}>{children}</div>;
+  return (
+    <div className={cn("min-h-[3.25rem] py-[var(--row-padding-block)]", className)}>
+      {children}
+    </div>
+  );
 }

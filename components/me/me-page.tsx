@@ -1,9 +1,9 @@
 "use client";
 
 import { AccountRow } from "@/components/me/account-row";
-import { DataSection } from "@/components/me/data-section";
-import { PlanSection } from "@/components/me/plan-section";
-import { PreferencesSection } from "@/components/me/preferences-section";
+import { useManagedAccount } from "@/components/ai/use-managed-account";
+import { Icons } from "@/components/ui/icons";
+import { ListNavRow, ListSection } from "@/components/ui/list";
 import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
 
@@ -17,13 +17,42 @@ import { t } from "@/lib/i18n";
  * longer one line of reading.
  */
 export function MePage() {
+  const account = useManagedAccount();
   return (
-    <div className="mx-auto max-w-xl space-y-7 pb-4">
-      <PageHeader className="mb-0" title={t("me.title")} />
+    <div className="mx-auto max-w-2xl space-y-9 pb-4">
+      <PageHeader title={t("me.title")} />
       <AccountRow />
-      <PreferencesSection />
-      <PlanSection />
-      <DataSection />
+      <ListSection>
+        <ListNavRow
+          href="/me/preferences"
+          icon={Icons.settings}
+          label={t("me.preferences")}
+        />
+        <ListNavRow
+          href="/me/plan"
+          icon={Icons.credit}
+          label={t("managed.planTitle")}
+          value={
+            account.data?.admin
+              ? t("admin.unlimited")
+              : account.data
+                ? t("managed.points", { points: account.data.points })
+                : undefined
+          }
+        />
+        <ListNavRow
+          href="/me/data"
+          icon={Icons.backup}
+          label={t("settings.data")}
+        />
+        {account.data?.admin && (
+          <ListNavRow
+            href="/me/admin"
+            icon={Icons.admin}
+            label={t("managed.admin")}
+          />
+        )}
+      </ListSection>
     </div>
   );
 }

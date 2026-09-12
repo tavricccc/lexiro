@@ -19,7 +19,7 @@ export function PageHeader({
   title: string;
 }) {
   return (
-    <header className={cn("mb-5 space-y-3 md:mb-6", className)}>
+    <header className={cn("page-header mb-6 space-y-3 md:mb-8", className)}>
       {back && <div className="-ml-2">{back}</div>}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="type-page min-w-0">{title}</h1>

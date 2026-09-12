@@ -7,6 +7,7 @@ import {
 } from "@lexiro/ai-contract";
 import { ListChoiceRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
+import { CreditBadge } from "./credit-badge";
 import { useManagedAccount } from "./use-managed-account";
 
 /**
@@ -61,9 +62,18 @@ export function GenerationControls({
             value={
               admin || !count
                 ? undefined
-                : estimate.min === estimate.max
-                  ? t("managed.points", { points: estimate.max })
-                  : t("managed.pointsRange", estimate)
+                : <CreditBadge
+                    label={
+                      estimate.min === estimate.max
+                        ? t("managed.expectedPoints", { points: estimate.max })
+                        : t("managed.expectedPointsRange", estimate)
+                    }
+                    value={
+                      estimate.min === estimate.max
+                        ? t("managed.expectedShort", { points: estimate.max })
+                        : t("managed.expectedRangeShort", estimate)
+                    }
+                  />
             }
           />
         );

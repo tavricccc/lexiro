@@ -53,7 +53,7 @@
      The whole scale is deliberately generous — a tight corner reads as a form
      control drawn by a browser, and this product is meant to feel like
      something made for a phone. When a corner is in doubt, round it more. */
-  --radius-control: 0.75rem; /* buttons, inputs, selects */
+  --radius-control: 0.875rem; /* buttons, inputs, selects */
   --radius-card: 1.25rem; /* entries, rows, panels */
   --radius-stage: 1.875rem; /* the page-level canvas */
   --radius-xs: 0.4375rem;
@@ -117,14 +117,15 @@
     0 0 0 1px rgb(23 43 36 / 7%);
   --content-max: 72rem;
   --page-gutter: clamp(1rem, 2vw, 1.5rem);
-  --section-gap: 2rem;
-  --block-gap: 1.25rem;
+  --section-gap: 2.25rem;
+  --block-gap: 1.5rem;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --control-label-size: 0.8125rem;
   --hairline: 1px;
-  --row-gutter: 1.125rem;
+  --row-gutter: 1.25rem;
+  --row-padding-block: 0.875rem;
   --safe-left: env(safe-area-inset-left, 0px);
 }
 
@@ -483,24 +484,37 @@ textarea {
   padding-inline: max(var(--page-gutter), var(--safe-left), var(--safe-right));
 }
 
-.app-top-blur {
-  position: fixed;
+.page-header {
+  position: sticky;
+  isolation: isolate;
   z-index: 20;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: calc(var(--safe-top) + 1.25rem);
-  pointer-events: none;
-  opacity: 0;
-  background: color-mix(in srgb, var(--surface-stage) 82%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent);
-  mask-image: linear-gradient(to bottom, black 45%, transparent);
-  transition: opacity var(--motion-control) var(--ease-move);
+  top: var(--safe-top);
+  padding-block: 0.5rem 1rem;
 }
 
-.app-top-blur[data-visible="true"] {
-  opacity: 1;
+.page-header::before {
+  position: absolute;
+  z-index: -1;
+  top: calc(0px - var(--safe-top));
+  right: 50%;
+  bottom: -1.25rem;
+  width: 100vw;
+  content: "";
+  pointer-events: none;
+  background: color-mix(in srgb, var(--surface-stage) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateX(50%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 1.25rem),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 1.25rem),
+    transparent
+  );
 }
 
 .app-mobile-nav {
@@ -698,7 +712,7 @@ textarea {
 @media (max-width: 47.99rem) {
   :root {
     --page-gutter: 1rem;
-    --row-gutter: 0.9375rem;
+    --row-gutter: 1rem;
   }
   /* The page gutter belongs to the route surface on a phone: a pushed page has
      to reach both screen edges, or the page it replaces stays visible beside it
@@ -712,15 +726,6 @@ textarea {
   }
   .surface-stage {
     border-radius: var(--radius-2xl);
-  }
-}
-
-@media (min-width: 48rem) {
-  .app-top-blur {
-    left: 15rem;
-  }
-  .app-shell[data-focus="true"] .app-top-blur {
-    left: 0;
   }
 }
 

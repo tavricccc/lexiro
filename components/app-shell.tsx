@@ -33,19 +33,11 @@ const presentation: Record<
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = React.useState(false);
   const practiceActive = useUIStore((store) => store.practiceActive);
   const showMobileNavigation = !practiceActive && isRootRoute(pathname);
   const navigationPathname = adoptedParent(pathname) ?? pathname;
 
   React.useEffect(() => commitRouteHistory(pathname), [pathname]);
-
-  React.useEffect(() => {
-    const updateScrolled = () => setScrolled(window.scrollY > 8);
-    updateScrolled();
-    window.addEventListener("scroll", updateScrolled, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrolled);
-  }, []);
 
   React.useEffect(() => {
     const markHistoryTraversal = (event: PopStateEvent) =>
@@ -89,7 +81,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </aside>}
 
       <div className={cn("min-w-0", !practiceActive && "md:col-start-2")}>
-        <div aria-hidden className="app-top-blur" data-visible={scrolled} />
         <main
           className={`app-viewport pt-[max(1rem,var(--safe-top))] md:pb-12 md:pt-6 ${
             showMobileNavigation

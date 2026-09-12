@@ -18,6 +18,7 @@ const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecti
 export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = {}) {
   const [state, setState] = useState<AiRunState<T>>(initialState<T>);
   const [tier, setTier] = useState<Tier>("lite");
+  const [batchSize, setBatchSize] = useState(20);
   const ready = useCloudStore((store) => store.ready);
   const uid = useCloudStore((store) => store.user?.uid);
   const abortRef = useRef<AbortController | null>(null), runRef = useRef<AiRun<T> | null>(null), generationId = useRef(0);
@@ -62,5 +63,5 @@ export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = 
     if (runRef.current) runRef.current.items = [...items];
     setState((s) => ({ ...s, items }));
   }, []);
-  return { state, ready, configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL), batchSize: 20, tier, setTier, start, resume, append, cancel, reset, setItems };
+  return { state, ready, configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL), batchSize, setBatchSize, tier, setTier, start, resume, append, cancel, reset, setItems };
 }

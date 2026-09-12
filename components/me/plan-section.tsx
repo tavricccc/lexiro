@@ -1,7 +1,6 @@
 "use client";
 
 import { useManagedAccount } from "@/components/ai/use-managed-account";
-import { AdminPanel } from "@/components/me/admin-panel";
 import {
   ListActionRow,
   ListNavRow,
@@ -16,17 +15,7 @@ export function PlanSection() {
   const account = useManagedAccount();
   const admin = account.data?.admin === true;
   return (
-    <>
-      <ListSection
-        footer={
-          admin
-            ? t("admin.unlimitedHint")
-            : user
-              ? t("managed.planDescription")
-              : t("managed.signInHint")
-        }
-        header={t("managed.planTitle")}
-      >
+      <ListSection footer={!user ? t("managed.signInHint") : undefined}>
         {!user && (
           <ListNavRow href="/sync" label={t("settings.signIn")} />
         )}
@@ -74,7 +63,5 @@ export function PlanSection() {
           </>
         )}
       </ListSection>
-      {admin && <AdminPanel />}
-    </>
   );
 }

@@ -61,16 +61,13 @@ export function DataSection() {
 
   return (
     <>
-      <ListSection
-        footer={`${t("me.dataDescription")} ${t("me.backupHint")}`}
-        header={t("settings.data")}
-      >
+      <ListSection>
         <ListActionRow onClick={exportBackup}>
           {t("settings.export")}
         </ListActionRow>
         {/* Reading a file needs a real input; the row is its label so the
             whole row opens the picker, the way every other row works. */}
-        <label className="t-row flex min-h-11 w-full cursor-pointer items-center justify-center py-2.5 text-center type-row text-primary">
+        <label className="t-row flex min-h-[3.25rem] w-full cursor-pointer items-center justify-center py-[var(--row-padding-block)] text-center type-row text-primary">
           {t("settings.import")}
           <input
             accept=".zip,application/zip"

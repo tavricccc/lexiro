@@ -53,6 +53,7 @@ const ADOPTED_PARENTS: ReadonlyArray<
   ["/sets", "/library"],
   ["/questions", "/library"],
   ["/sync", "/me"],
+  ["/me", "/me"],
 ];
 
 export function adoptedParent(pathname: string) {

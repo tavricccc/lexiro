@@ -55,35 +55,38 @@ export function PreferencesSection() {
     : "system";
 
   return (
-    <ListSection
-      footer={t("me.preferencesDescription")}
-      header={t("me.preferences")}
-      headerAction={<SaveStatus status={status} />}
-    >
-      <ListPicker
-        label={t("settings.theme")}
-        onChange={setTheme}
-        options={THEMES.map((value) => ({
-          label: t(THEME_LABEL[value]),
-          value,
-        }))}
-        value={current}
-      />
-      <ListStepperRow
-        label={t("settings.dailyWords")}
-        max={100}
-        min={1}
-        onChange={setWordGoal}
-        value={wordGoal}
-      />
-      <ListStepperRow
-        label={t("settings.dailyQuestions")}
-        max={100}
-        min={1}
-        onChange={setQuestionGoal}
-        value={questionGoal}
-      />
-    </ListSection>
+    <div className="space-y-9">
+      <ListSection header={t("settings.appearance")}>
+        <ListPicker
+          label={t("settings.theme")}
+          onChange={setTheme}
+          options={THEMES.map((value) => ({
+            label: t(THEME_LABEL[value]),
+            value,
+          }))}
+          value={current}
+        />
+      </ListSection>
+      <ListSection
+        header={t("settings.learning")}
+        headerAction={<SaveStatus status={status} />}
+      >
+        <ListStepperRow
+          label={t("settings.dailyWords")}
+          max={100}
+          min={1}
+          onChange={setWordGoal}
+          value={wordGoal}
+        />
+        <ListStepperRow
+          label={t("settings.dailyQuestions")}
+          max={100}
+          min={1}
+          onChange={setQuestionGoal}
+          value={questionGoal}
+        />
+      </ListSection>
+    </div>
   );
 }
 

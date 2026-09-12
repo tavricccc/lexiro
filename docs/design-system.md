@@ -93,7 +93,7 @@ The further out a surface sits, the softer it is:
 
 | Token             | Value     | Used for                            |
 | ----------------- | --------- | ----------------------------------- |
-| `--radius-control`| 0.75rem   | buttons, inputs, selects            |
+| `--radius-control`| 0.875rem  | buttons, inputs, selects            |
 | `--radius-card`   | 1.25rem   | panels, inline forms, list surfaces |
 | `--radius-stage`  | 1.875rem  | the focus canvas, sticky action bars|
 
@@ -128,7 +128,7 @@ every screen that asks for something uses it.
   a full-height column with its action at the bottom, where a thumb already is.
   The action is in the flow at the end of the column, never a bar floating over
   the page.
-- Rows are at least 44px tall and the whole row is the target, never the
+- Rows are at least 52px tall and the whole row is the target, never the
   chevron or the label alone.
 
 **A choice between options is a list, never a row of buttons.** Two buttons
@@ -172,7 +172,7 @@ into the card's own border would draw the same corner twice.
 
 ## Spacing
 
-`--section-gap` (2rem) and `--block-gap` (1.25rem) back the `.section-gap` and
+`--section-gap` (2.25rem) and `--block-gap` (1.5rem) back the `.section-gap` and
 `.block-gap` utilities. Use `.section-gap` between the major sections of a page
 instead of picking a fresh `mt-8` / `mt-10` / `mt-12` each time — the reason the
 old pages drifted is that every screen invented its own rhythm.
@@ -249,6 +249,10 @@ from its leading edge (`--dashboard-bar` carries the ratio), `.dashboard-column`
 grows a chart column up from the baseline.
 
 Everything above is disabled under `prefers-reduced-motion`.
+
+`PageHeader` owns the sticky top material. Its pseudo-element extends to the
+viewport edges and fades a bounded backdrop blur into the page while the title
+and actions remain sharp; the shell does not draw a second blur layer above it.
 
 ## Components
 
