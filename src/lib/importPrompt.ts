@@ -13,18 +13,20 @@ export function buildImportPrompt(
     ...(posHint ? { posHint } : {}),
     ...(hint ? { hint } : {}),
   }));
+  // Two items, because the only way to show that `pos` is null when the source
+  // already states one is to show both cases side by side.
   const outputExample = generateExamples
     ? JSON.stringify({
         items: [
-          {
-            pos: "v.",
-            meaningZh: "適應",
-            example: "We adapt quickly.",
-          },
+          { pos: "v.", meaningZh: "適應", example: "We adapt quickly." },
+          { pos: null, meaningZh: "拒絕", example: "She turned it down." },
         ],
       })
     : JSON.stringify({
-        items: [{ pos: "v.", meaningZh: "適應" }],
+        items: [
+          { pos: "v.", meaningZh: "適應" },
+          { pos: null, meaningZh: "拒絕" },
+        ],
       });
   return fillPrompt(prompts.generateWordSet, {
     "{{EXAMPLE_FIELD}}": generateExamples ? "、example" : "",

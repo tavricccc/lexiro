@@ -17,10 +17,8 @@ export function AiUsage({
     ["ai.cacheWrite", usage.cacheWriteTokens],
   ] as const;
   return (
-    <details className="rule-t px-4 py-3 sm:px-5">
-      <summary className="cursor-pointer text-xs text-muted-foreground">
-        {t("ai.usageTitle")}
-      </summary>
+    <section className="rule-t px-4 py-3 sm:px-5">
+      <h3 className="text-xs text-muted-foreground">{t("ai.usageTitle")}</h3>
       <p className="mt-3 break-all text-xs font-medium">{model}</p>
       <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {entries.map(([key, value]) => (
@@ -42,6 +40,6 @@ export function AiUsage({
           {notice}
         </p>
       ))}
-    </details>
+    </section>
   );
 }

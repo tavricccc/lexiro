@@ -5,11 +5,21 @@ const text = z.string();
 const texts = z.array(text);
 const blank = z.object({ answer: text });
 const choices = z.object({ answer: text, distractors: texts });
+/**
+ * A word's meaning, and its part of speech when the source did not already
+ * state one.
+ *
+ * `pos` is null rather than absent in that case. A field that may be omitted
+ * cannot be expressed in the schema subset OpenAI accepts — strict mode
+ * requires every property to be listed as required — and asking for one was
+ * rejected outright, so the whole batch failed before a single word was
+ * generated. Null says the same thing and is a value the schema can hold.
+ */
 export const wordOutput = (generateExamples: boolean) =>
   z.object({
     items: z.array(
       z.object({
-        pos: text.optional(),
+        pos: text.nullable(),
         meaningZh: text,
         ...(generateExamples ? { example: text } : {}),
       }),

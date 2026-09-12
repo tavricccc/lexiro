@@ -11,7 +11,7 @@ const PROMPTS = {
 1. 輸入是完整來源資料庫；本輪只處理 activeRefs。items 依 activeRefs 順序，每筆來源恰好一項。
 2. 每項只回傳最常見、最符合 hint 的一個詞義。
 3. 每項只能有 meaningZh{{EXAMPLE_FIELD}}，以及必要時的 pos。
-4. 來源有 posHint 時不要輸出 pos，程式會直接使用；否則必須輸出 pos，且只能是 n.、v.、adj.、adv.、pron.、prep.、conj.、interj.、det.、aux.、modal v.、phr. v.、phr.。
+4. 每項都要有 pos 欄位。來源有 posHint 時 pos 填 null，程式會直接使用 posHint；否則 pos 必須是 n.、v.、adj.、adv.、pron.、prep.、conj.、interj.、det.、aux.、modal v.、phr. v.、phr. 其中之一。
 5. posHint 是指定詞性，不可改猜。meaningZh 用精簡繁體中文，只保留 hint 指定的同一詞義；未消歧時選最常見義。片語視為完整單位。
 6. {{EXAMPLES_RULE}}
 7. {{JSON_ONLY}}

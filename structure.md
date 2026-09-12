@@ -37,6 +37,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon. Direction, where nothing marked one, is depth against depth: a set is a push whether it was opened from the Library that owns it or from 今天.
 - `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
 - `tests-next/ai-settings-persistence.test.ts` — that the AI setup and its API key belong to the signed-in account, and what a pulled setup does to the key already on the device.
+- `tests-next/ai-schemas.test.ts` — that every structured-output schema stays inside the subset `strict: true` accepts: every property required, every object closed.
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
 is the catalogue; `question-prompts.ts` asks a model only for prose and answer
