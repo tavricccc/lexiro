@@ -214,7 +214,12 @@ describe("Worker HTTP boundary", () => {
     ).toBe(200);
     expect(
       JSON.parse((await call(req("/admin/settings", undefined, "admin"))).text),
-    ).toEqual({ freeTrial: true, trialPoints: 500, defaultMonthly: 1000 });
+    ).toEqual({
+      freeTrial: true,
+      trialPoints: 500,
+      defaultInitial: 1000,
+      defaultMonthly: 1000,
+    });
     expect(
       (await call(req("/admin/accounts/u", { admin: true }, "admin", "PATCH")))
         .response.status,

@@ -8,7 +8,7 @@
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `src/billing.ts`、`src/credits.ts` | D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker |
-| `migrations/0001_billing.sql`、`0002_attempt_limits.sql`、`0003_actual_credits.sql` | 計費初始 schema、來源/session 重試限制，以及實際 credit 紀錄與可調試用／新帳號方案預設 |
+| `migrations/0001_billing.sql`～`0004_plan_defaults.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄，以及可調試用／新帳號方案預設 |
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；`/admin/usage` 回傳最近紀錄及近 30 天的 token、成本與實際 credit 等值 |
@@ -37,4 +37,4 @@
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |
-| D1 計費 | 3 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 欄位與方案預設，不改既有餘額 |
+| D1 計費 | 4 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額 |

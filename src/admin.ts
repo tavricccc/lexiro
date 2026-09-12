@@ -9,6 +9,7 @@ const siteSettings = z
   .strictObject({
     freeTrial: z.boolean().optional(),
     trialPoints: z.number().int().min(0).max(1_000_000).optional(),
+    defaultInitial: z.number().int().min(0).max(1_000_000).optional(),
     defaultMonthly: z.number().int().min(0).max(1_000_000).optional(),
   })
   .refine((value) => Object.keys(value).length > 0);
@@ -57,7 +58,7 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
       // client applies the published rate for each one.
       env.DB.prepare(`SELECT model,COUNT(*) AS runs,COALESCE(SUM(input),0) AS input,
         COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(output),0) AS output,
-        COALESCE(SUM(credits),0) AS credits
+        SUM(credits) AS credits
         FROM usage_log WHERE created_at>? GROUP BY model ORDER BY model`).bind(nowSeconds() - 2_592_000).all(),
     ]);
     return Response.json({
@@ -69,7 +70,7 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
   if (path === "/admin/settings" && request.method === "GET") {
     const rows = await env.DB
       .prepare(
-        "SELECT key,value FROM settings WHERE key IN ('free_trial','trial_points','default_monthly')",
+        "SELECT key,value FROM settings WHERE key IN ('free_trial','trial_points','default_initial','default_monthly')",
       )
       .all<{ key: string; value: string }>();
     const values = Object.fromEntries(
@@ -78,6 +79,7 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     return Response.json({
       freeTrial: values.free_trial === "true",
       trialPoints: Number(values.trial_points),
+      defaultInitial: Number(values.default_initial),
       defaultMonthly: Number(values.default_monthly),
     });
   }
@@ -91,6 +93,8 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
       entries.push(["free_trial", parsed.data.freeTrial]);
     if (parsed.data.trialPoints !== undefined)
       entries.push(["trial_points", parsed.data.trialPoints]);
+    if (parsed.data.defaultInitial !== undefined)
+      entries.push(["default_initial", parsed.data.defaultInitial]);
     if (parsed.data.defaultMonthly !== undefined)
       entries.push(["default_monthly", parsed.data.defaultMonthly]);
     await env.DB.batch(
