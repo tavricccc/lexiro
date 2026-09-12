@@ -49,7 +49,7 @@ export function ChoiceList({
           <button
             aria-current={active ? "true" : undefined}
             className={cn(
-              "t-row group flex w-full items-start gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45",
+              "t-row group flex min-h-[3.25rem] w-full items-start gap-4 py-[var(--row-padding-block)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45",
               active && "bg-brand-50",
             )}
             disabled={option.disabled}

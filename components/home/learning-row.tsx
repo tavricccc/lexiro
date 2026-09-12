@@ -105,7 +105,7 @@ export function LearningRows() {
             {recentSets.map((set) => (
               <li key={set.id}>
                 <Link
-                  className="t-row group flex items-center gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                  className="t-row group flex min-h-[3.25rem] items-center gap-3 py-[var(--row-padding-block)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
                   href={`/sets/${set.id}`}
                 >
                   <Icons.library

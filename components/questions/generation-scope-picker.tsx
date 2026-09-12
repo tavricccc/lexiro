@@ -99,7 +99,7 @@ export function GenerationScopePicker({
           <ul className="max-h-[26rem] rule-list overflow-y-auto">
             {senses.map((sense) => (
               <li key={sense.key}>
-                <label className="flex cursor-pointer items-start gap-3 px-4 py-3 hover:bg-[var(--surface-hover)] sm:px-5">
+                <label className="flex min-h-[3.25rem] cursor-pointer items-start gap-3 px-4 py-[var(--row-padding-block)] hover:bg-[var(--surface-hover)] sm:px-5">
                   <Checkbox
                     checked={chosen.has(sense.key)}
                     className="mt-1"

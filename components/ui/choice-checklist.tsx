@@ -39,7 +39,7 @@ export function ChoiceChecklist({
         return (
           <label
             className={cn(
-              "t-row group flex w-full cursor-pointer items-start gap-4 py-5 text-left",
+              "t-row group flex min-h-[3.25rem] w-full cursor-pointer items-start gap-4 py-[var(--row-padding-block)] text-left",
               checked && "bg-brand-50",
             )}
             key={option.value}

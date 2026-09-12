@@ -59,7 +59,7 @@ function RowSkeleton({
   kind?: "library" | "question" | "recent";
 }) {
   return (
-    <div className="flex items-start gap-3.5 py-4">
+    <div className="flex min-h-[3.25rem] items-start gap-3.5 py-[var(--row-padding-block)]">
       <Skeleton className="mt-0.5 size-5 shrink-0 rounded-md" />
       <div className="min-w-0 flex-1 space-y-2">
         <Skeleton className={`h-4 rounded-md ${kind === "question" ? "w-[78%]" : "w-[48%]"}`} />

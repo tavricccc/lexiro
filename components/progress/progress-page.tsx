@@ -209,7 +209,7 @@ export function ProgressPage() {
             const accuracy = percentage(row.correct, row.total);
             return (
               <li
-                className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 py-3.5 sm:grid-cols-[12rem_minmax(0,1fr)_auto]"
+                className="grid min-h-[3.25rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 py-[var(--row-padding-block)] sm:grid-cols-[12rem_minmax(0,1fr)_auto]"
                 key={key}
               >
                 <span className="text-sm font-medium">

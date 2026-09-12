@@ -152,7 +152,7 @@ export function QuestionList() {
               return (
                 <StaggerItem
                   as="li"
-                  className="flex items-start gap-4 py-5"
+                  className="flex items-start gap-4 py-[var(--row-padding-block)]"
                   key={question.id}
                 >
                   <div className="min-w-0 flex-1">

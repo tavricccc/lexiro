@@ -29,7 +29,7 @@ export function FolderRow({
   return (
     <button
       aria-label={t("library.openFolder", { name })}
-      className="t-row group flex w-full items-center gap-3.5 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row group flex min-h-[3.25rem] w-full items-center gap-3.5 py-[var(--row-padding-block)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       onClick={onOpen}
       type="button"
     >
@@ -67,7 +67,7 @@ export function SetRow({
 
   return (
     <Link
-      className="t-row group flex items-center gap-3.5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row group flex min-h-[3.25rem] items-center gap-3.5 py-[var(--row-padding-block)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       href={`/sets/${id}`}
     >
       <Icons.library

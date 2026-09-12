@@ -189,7 +189,7 @@ export function SetView({ setId }: { setId: string }) {
           {words.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
               {words.map((entry) => (
-                <StaggerItem as="li" className="py-5" key={entry.wordKey}>
+                <StaggerItem as="li" className="py-[var(--row-padding-block)]" key={entry.wordKey}>
                   <SetWordRow cards={cards} entry={entry} setId={setId} />
                 </StaggerItem>
               ))}
@@ -227,7 +227,7 @@ export function SetView({ setId }: { setId: string }) {
           {questions.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
               {questions.map((question) => (
-                <StaggerItem as="li" className="py-5" key={question.id}>
+                <StaggerItem as="li" className="py-[var(--row-padding-block)]" key={question.id}>
                   <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                     <span className="font-medium text-foreground">
                       {questionFormatLabel(
