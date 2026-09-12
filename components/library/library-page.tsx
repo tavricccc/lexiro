@@ -231,18 +231,31 @@ export function LibraryPage({
       <PageHeader
         title={t("library.title")}
         actions={
+          // The one action a title bar carries is a glyph, not a filled block
+          // of colour competing with the title beside it.
           tab === "sets" ? (
-            <Button asChild>
-              <Link href={createHref}>
-                <Icons.create />
-                {t("library.newSet")}
+            <Button
+              asChild
+              className="text-primary"
+              size="icon"
+              variant="ghost"
+            >
+              <Link aria-label={t("library.newSet")} href={createHref}>
+                <Icons.create className="size-5" />
               </Link>
             </Button>
           ) : (
-            <Button asChild>
-              <Link href="/questions/generate">
-                <Icons.generate />
-                {t("questions.generate")}
+            <Button
+              asChild
+              className="text-primary"
+              size="icon"
+              variant="ghost"
+            >
+              <Link
+                aria-label={t("questions.generate")}
+                href="/questions/generate"
+              >
+                <Icons.generate className="size-5" />
               </Link>
             </Button>
           )

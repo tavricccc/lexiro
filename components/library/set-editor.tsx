@@ -18,11 +18,13 @@ import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
-import { Field, FieldRow } from "@/components/ui/field";
+import {
+  ListInputRow,
+  ListPicker,
+  ListSection,
+} from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
-import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -106,21 +108,23 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
       : "/library";
 
   const metadataFields = (
-    <FieldRow className="sm:grid-cols-[minmax(0,1fr)_14rem]">
-      <Field
-        error={
-          errors.setName?.message ?? (errors.setName && t("setEditor.required"))
-        }
+    <ListSection
+      footer={
+        errors.setName?.message ??
+        (errors.setName ? t("setEditor.required") : undefined)
+      }
+    >
+      <ListInputRow
         label={t("setEditor.name")}
-      >
-        <Input
-          {...form.register("setName")}
-          placeholder={t("setEditor.namePlaceholder")}
-        />
-      </Field>
-      <SelectField
+        onChange={(value) =>
+          form.setValue("setName", value, { shouldDirty: true })
+        }
+        placeholder={t("setEditor.namePlaceholder")}
+        value={setName}
+      />
+      <ListPicker
         label={t("setEditor.folder")}
-        onValueChange={(value) =>
+        onChange={(value) =>
           form.setValue("folderId", value, { shouldDirty: true })
         }
         options={[
@@ -131,7 +135,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         ]}
         value={folderId}
       />
-    </FieldRow>
+    </ListSection>
   );
 
   const backLink = (
@@ -207,7 +211,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
           </Button>
         </div>
 
-        <div className="mt-4 rule-card rule-list">
+        <div className="mt-4 space-y-7">
           {fields.fields.map((field, index) => (
             <SetWordFields
               autoFocus={index === 0}

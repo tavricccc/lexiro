@@ -49,16 +49,19 @@
     "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif,
     system-ui, sans-serif;
 
-  /* Radius encodes hierarchy: the further out the surface, the softer it is. */
-  --radius-control: 0.5rem; /* buttons, inputs, selects */
-  --radius-card: 0.875rem; /* entries, rows, panels */
-  --radius-stage: 1.5rem; /* the page-level canvas */
-  --radius-xs: 0.3125rem;
-  --radius-sm: 0.4375rem;
+  /* Radius encodes hierarchy: the further out the surface, the softer it is.
+     The whole scale is deliberately generous — a tight corner reads as a form
+     control drawn by a browser, and this product is meant to feel like
+     something made for a phone. When a corner is in doubt, round it more. */
+  --radius-control: 0.75rem; /* buttons, inputs, selects */
+  --radius-card: 1.25rem; /* entries, rows, panels */
+  --radius-stage: 1.875rem; /* the page-level canvas */
+  --radius-xs: 0.4375rem;
+  --radius-sm: 0.625rem;
   --radius-md: var(--radius-control);
-  --radius-lg: 0.75rem;
+  --radius-lg: 1rem;
   --radius-xl: var(--radius-card);
-  --radius-2xl: 1.125rem;
+  --radius-2xl: 1.5rem;
   --radius-3xl: var(--radius-stage);
 }
 
@@ -105,7 +108,7 @@
   --surface-hover: rgb(31 58 48 / 4%);
   --surface-active: rgb(31 58 48 / 7%);
   --backdrop: rgb(18 26 22 / 26%);
-  --radius: 0.875rem;
+  --radius: var(--radius-card);
   --shadow-control:
     0 1px 1px rgb(23 43 36 / 5%), 0 0 0 1px rgb(23 43 36 / 6%);
   --shadow-card: 0 1px 3px rgb(23 43 36 / 5%);

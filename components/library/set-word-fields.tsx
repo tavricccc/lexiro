@@ -3,16 +3,22 @@
 import type { UseFormReturn } from "react-hook-form";
 
 import type { SetFormValues } from "@/components/library/set-form";
-import { Button } from "@/components/ui/button";
-import { Field, FieldRow } from "@/components/ui/field";
-import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
+import {
+  ListActionRow,
+  ListInputRow,
+  ListSection,
+} from "@/components/ui/list";
 import { ExampleFields } from "@/components/library/example-fields";
 import { t } from "@/lib/i18n";
 
 /**
- * One word row of the set editor. The margin numeral echoes the sense counter
- * in a dictionary entry, so the editor and the finished entry read the same way.
+ * One word of the set being written, as its own group.
+ *
+ * It used to be a two-column grid of labelled boxes, which on a phone became a
+ * column of boxes with captions — a web form. A word is a handful of short
+ * values, so each one is a line: what it is on the left, what you typed on the
+ * right, and the sentences under their own labels because a sentence needs the
+ * width.
  */
 export function SetWordFields({
   autoFocus,
@@ -28,78 +34,50 @@ export function SetWordFields({
   onRemove?: () => void;
 }) {
   const errors = form.formState.errors.words?.[index];
+  const set = (field: "word" | "pos" | "meaningZh", value: string) =>
+    form.setValue(`words.${index}.${field}`, value, { shouldDirty: true });
+  const missing = errors?.word || errors?.pos || errors?.meaningZh;
 
   return (
-    <section className="grid gap-x-4 py-6 sm:grid-cols-[1.75rem_minmax(0,1fr)]">
-      <span
-        aria-hidden
-        className="hidden pt-8 text-sm tabular-nums text-brand-500 sm:block"
-      >
-        {index + 1}
-      </span>
-
-      <div>
-        <FieldRow className="sm:grid-cols-[minmax(0,22rem)_9rem]">
-          <Field
-            error={errors?.word && t("setEditor.required")}
-            label={t("setEditor.word")}
-          >
-            <Input
-              autoFocus={autoFocus}
-              {...form.register(`words.${index}.word`)}
-              placeholder={t("setEditor.wordPlaceholder")}
-            />
-          </Field>
-          <Field
-            error={errors?.pos && t("setEditor.required")}
-            label={t("setEditor.pos")}
-          >
-            <Input
-              {...form.register(`words.${index}.pos`)}
-              placeholder={t("setEditor.posPlaceholder")}
-            />
-          </Field>
-        </FieldRow>
-
-        <FieldRow className="mt-4">
-          <Field
-            error={errors?.meaningZh && t("setEditor.required")}
-            label={t("setEditor.meaning")}
-          >
-            <Input
-              {...form.register(`words.${index}.meaningZh`)}
-              placeholder={t("setEditor.meaningPlaceholder")}
-            />
-          </Field>
-          <ExampleFields
-            values={form.watch(`words.${index}.examples`)}
-            onChange={(examples) =>
-              form.setValue(`words.${index}.examples`, examples, {
-                shouldDirty: true,
-              })
-            }
-          />
-        </FieldRow>
-
-        <div className="mt-3 flex flex-wrap gap-2">
-          <Button onClick={onAddSense} size="sm" type="button" variant="ghost">
-            <Icons.create />
-            {t("setEditor.addSense")}
-          </Button>
-          {onRemove && (
-            <Button
-              className="text-muted-foreground hover:text-destructive"
-              onClick={onRemove}
-              size="sm"
-              type="button"
-              variant="ghost"
-            >
-              <Icons.delete />
-              {t("setEditor.removeWord")}
-            </Button>
-          )}
-        </div>
-      </div>
-    </section>
+    <ListSection
+      footer={missing ? t("setEditor.required") : undefined}
+      header={t("setEditor.wordNumber", { count: index + 1 })}
+    >
+      <ListInputRow
+        autoFocus={autoFocus}
+        label={t("setEditor.word")}
+        onChange={(value) => set("word", value)}
+        placeholder={t("setEditor.wordPlaceholder")}
+        value={form.watch(`words.${index}.word`)}
+      />
+      <ListInputRow
+        label={t("setEditor.pos")}
+        onChange={(value) => set("pos", value)}
+        placeholder={t("setEditor.posPlaceholder")}
+        value={form.watch(`words.${index}.pos`)}
+      />
+      <ListInputRow
+        label={t("setEditor.meaning")}
+        onChange={(value) => set("meaningZh", value)}
+        placeholder={t("setEditor.meaningPlaceholder")}
+        value={form.watch(`words.${index}.meaningZh`)}
+      />
+      <ExampleFields
+        onChange={(examples) =>
+          form.setValue(`words.${index}.examples`, examples, {
+            shouldDirty: true,
+          })
+        }
+        values={form.watch(`words.${index}.examples`)}
+      />
+      <ListActionRow onClick={onAddSense}>
+        {t("setEditor.addSense")}
+      </ListActionRow>
+      {onRemove && (
+        <ListActionRow onClick={onRemove} tone="destructive">
+          {t("setEditor.removeWord")}
+        </ListActionRow>
+      )}
+    </ListSection>
   );
 }

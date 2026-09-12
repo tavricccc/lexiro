@@ -5,9 +5,12 @@ import { WordAssistant } from "@/components/library/word-assistant";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { SelectField } from "@/components/ui/select-field";
 import { Icons } from "@/components/ui/icons";
-import { ListNavRow, ListSection } from "@/components/ui/list";
+import {
+  ListNavRow,
+  ListPicker,
+  ListSection,
+} from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -145,15 +148,17 @@ function SetMetadata({ setId, onDone }: { setId: string; onDone: () => void }) {
           onChange={(event) => setName(event.target.value)}
         />
       </Field>
-      <SelectField
-        label={t("setEditor.folder")}
-        value={folder}
-        onValueChange={setFolder}
-        options={state.folders.map((entry) => ({
-          label: entry.name,
-          value: entry.id,
-        }))}
-      />
+      <ListSection>
+        <ListPicker
+          label={t("setEditor.folder")}
+          onChange={setFolder}
+          options={state.folders.map((entry) => ({
+            label: entry.name,
+            value: entry.id,
+          }))}
+          value={folder}
+        />
+      </ListSection>
       {error && (
         <p role="alert" className="text-sm text-destructive">
           {error}

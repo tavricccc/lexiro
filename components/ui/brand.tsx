@@ -16,7 +16,7 @@ export function BrandMark({
       // inside a plate, and never colour-inverted -- inverting turns the brand
       // mark into a different mark.
       className={cn(
-        "block size-9 aspect-square shrink-0 overflow-hidden rounded-[0.625rem] shadow-[var(--shadow-control)]",
+        "block size-9 aspect-square shrink-0 overflow-hidden rounded-[var(--radius-control)] shadow-[var(--shadow-control)]",
         className,
       )}
     >

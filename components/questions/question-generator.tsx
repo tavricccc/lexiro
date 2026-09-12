@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import { FinishPanel } from "@/components/ui/finish-panel";
-import { SelectField } from "@/components/ui/select-field";
+import { ListPicker, ListSection } from "@/components/ui/list";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
@@ -227,15 +227,17 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         title={t("questions.stepScope")}
         total={3}
       >
-        <div className="grid gap-4">
-          <SelectField
-            label={t("practice.difficulty")}
-            onValueChange={(value) =>
-              setDifficulty(Number(value) as GeneratedQuestionDifficulty)
-            }
-            options={difficultyOptions()}
-            value={String(difficulty)}
-          />
+        <div className="grid gap-7">
+          <ListSection>
+            <ListPicker
+              label={t("practice.difficulty")}
+              onChange={(value) =>
+                setDifficulty(Number(value) as GeneratedQuestionDifficulty)
+              }
+              options={difficultyOptions()}
+              value={String(difficulty)}
+            />
+          </ListSection>
           <GenerationScopePicker
             onSelectedChange={setSelected}
             selected={selected}

@@ -6,8 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SaveStatus } from "@/components/me/save-status";
 import { useAutosave } from "@/components/me/use-autosave";
 import {
-  ListChoiceRow,
-  ListNavRow,
+  ListPicker,
   ListSection,
   ListStepperRow,
 } from "@/components/ui/list";
@@ -28,10 +27,6 @@ export function PreferencesSection() {
   const [questionGoal, setQuestionGoal] = useState(
     learning.stats.dailyQuestionGoal,
   );
-  // The theme's options open under their own row instead of in a dropdown: a
-  // list of three that is already on screen beats a menu that covers it.
-  const [themeOpen, setThemeOpen] = useState(false);
-
   useEffect(() => {
     if (!learning.loaded) return;
     setWordGoal(learning.stats.dailyWordGoal);
@@ -65,24 +60,15 @@ export function PreferencesSection() {
       header={t("me.preferences")}
       headerAction={<SaveStatus status={status} />}
     >
-      <ListNavRow
-        expanded={themeOpen}
+      <ListPicker
         label={t("settings.theme")}
-        onClick={() => setThemeOpen(!themeOpen)}
-        value={t(THEME_LABEL[current])}
+        onChange={setTheme}
+        options={THEMES.map((value) => ({
+          label: t(THEME_LABEL[value]),
+          value,
+        }))}
+        value={current}
       />
-      {themeOpen &&
-        THEMES.map((value) => (
-          <ListChoiceRow
-            key={value}
-            label={t(THEME_LABEL[value])}
-            onSelect={() => {
-              setTheme(value);
-              setThemeOpen(false);
-            }}
-            selected={current === value}
-          />
-        ))}
       <ListStepperRow
         label={t("settings.dailyWords")}
         max={100}

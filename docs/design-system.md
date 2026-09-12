@@ -93,9 +93,14 @@ The further out a surface sits, the softer it is:
 
 | Token             | Value     | Used for                            |
 | ----------------- | --------- | ----------------------------------- |
-| `--radius-control`| 0.5rem    | buttons, inputs, selects            |
-| `--radius-card`   | 0.875rem  | panels, inline forms, list surfaces |
-| `--radius-stage`  | 1.5rem    | the focus canvas, sticky action bars|
+| `--radius-control`| 0.75rem   | buttons, inputs, selects            |
+| `--radius-card`   | 1.25rem   | panels, inline forms, list surfaces |
+| `--radius-stage`  | 1.875rem  | the focus canvas, sticky action bars|
+
+The scale is deliberately generous. A tight corner reads as a form control a
+browser drew, and this product is meant to feel like something made for a
+phone; when a corner is in doubt, round it more. Nothing hard-codes a radius —
+every surface takes one of these three, or the Tailwind utility mapped onto it.
 
 Tailwind's `rounded-md` / `rounded-xl` / `rounded-3xl` are mapped onto these, so
 existing utilities keep working while the scale stays deliberate.
@@ -111,9 +116,18 @@ every screen that asks for something uses it.
   does. The footer is where explanation goes, never a paragraph between rows.
 - `ListRow` reports, `ListNavRow` leads somewhere (chevron, or a rotated one
   when it opens its options in place), `ListChoiceRow` is one option with a
-  check, `ListSwitchRow` is on/off, `ListStepperRow` is a small whole number,
-  `ListInputRow` is a value you type on the line that names it, and
-  `ListActionRow` is a centred, tinted row that does something now.
+  check, `ListPicker` is a row that unfolds its options underneath instead of
+  opening a dropdown, `ListSwitchRow` is on/off, `ListStepperRow` is a small
+  whole number, `ListInputRow` is a value you type on the line that names it
+  (`block` puts the label above for a sentence), and `ListActionRow` is a
+  centred, tinted row that does something now.
+- A dropdown belongs in a toolbar, where it filters what is on screen. Inside a
+  form or a settings group it is a `ListPicker`: a menu that covers the screen
+  you are choosing for is the wrong shape on a phone.
+- A screen the reader is working through — a study card, a step of a flow — is
+  a full-height column with its action at the bottom, where a thumb already is.
+  The action is in the flow at the end of the column, never a bar floating over
+  the page.
 - Rows are at least 44px tall and the whole row is the target, never the
   chevron or the label alone.
 

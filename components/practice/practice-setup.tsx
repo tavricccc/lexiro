@@ -14,9 +14,13 @@ import { Button } from "@/components/ui/button";
 import { ChoiceChecklist } from "@/components/ui/choice-checklist";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
-import { SelectField } from "@/components/ui/select-field";
+import {
+  ListChoiceRow,
+  ListPicker,
+  ListSection,
+  ListSwitchRow,
+} from "@/components/ui/list";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
-import { Switch } from "@/components/ui/switch";
 import { PRACTICE_CARD_TASKS, PRACTICE_QUESTION_TASKS } from "@/constants";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
@@ -268,16 +272,16 @@ export function PracticeSetup({
           selected={tasks}
         />
 
-        <div className="mt-5">
-          <SelectField
+        <ListSection className="mt-5">
+          <ListPicker
             label={t("practice.difficulty")}
-            onValueChange={(value) =>
+            onChange={(value) =>
               onDifficultyChange(value as WorkspaceQuestionDifficulty)
             }
             options={difficultyOptions(t("practice.allDifficulties"))}
             value={String(difficulty)}
           />
-        </div>
+        </ListSection>
       </StepFrame>
     );
   }
@@ -306,87 +310,60 @@ export function PracticeSetup({
       title={t("practice.scopeTitle")}
       total={total}
     >
-      <div className="grid gap-6">
-        <section className="rule-card py-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <SelectField
-              label={t("practice.set")}
-              onValueChange={(value) =>
-                onSetChange(value === "all" ? "" : value)
-              }
-              options={[
-                { label: t("practice.allSets"), value: "all" },
-                ...sets.map((entry) => ({
-                  label: entry.setName,
-                  value: entry.id,
-                })),
-              ]}
-              value={setId || "all"}
-            />
-            <SelectField
-              label={t("practice.amount")}
-              onValueChange={(value) => onAmountChange(Number(value))}
-              options={AMOUNTS.map((value) => ({
-                label: String(value),
-                value: String(value),
-              }))}
-              value={String(amount)}
-            />
-          </div>
-        </section>
+      <div className="space-y-7">
+        <ListSection header={t("practice.scopeHeader")}>
+          <ListPicker
+            label={t("practice.set")}
+            onChange={(value) => onSetChange(value === "all" ? "" : value)}
+            options={[
+              { label: t("practice.allSets"), value: "all" },
+              ...sets.map((entry) => ({
+                label: entry.setName,
+                value: entry.id,
+              })),
+            ]}
+            value={setId || "all"}
+          />
+          <ListPicker
+            label={t("practice.amount")}
+            onChange={(value) => onAmountChange(Number(value))}
+            options={AMOUNTS.map((value) => ({
+              label: String(value),
+              value: String(value),
+            }))}
+            value={String(amount)}
+          />
+        </ListSection>
 
         {fsrs && (
-          <section className="rule-card py-4">
-            <h2 className="type-subsection">{t("practice.cardStyleTitle")}</h2>
-            <p className="mt-1 text-xs leading-5 text-muted-foreground">
-              {t("practice.cardStyleHint")}
-            </p>
-            <div className="mt-4 rule-list">
-              {CARD_STYLES.map((style) => (
-                <label
-                  className="flex cursor-pointer items-start gap-3 py-3"
-                  key={style}
-                >
-                  <input
-                    checked={styleOfTasks(tasks) === style}
-                    className="mt-0.5 size-4 shrink-0 accent-brand-600"
-                    name="card-style"
-                    onChange={() => onTasksChange(tasksOfStyle(style))}
-                    type="radio"
-                  />
-                  <span className="min-w-0">
-                    <span className="block text-sm font-medium">
-                      {style === "mixed"
-                        ? t("practice.cardStyleMixed")
-                        : practiceTaskLabel(style)}
-                    </span>
-                    <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">
-                      {style === "mixed"
-                        ? t("practice.cardStyleMixedHint")
-                        : practiceTaskHint(style)}
-                    </span>
-                  </span>
-                </label>
-              ))}
-            </div>
-            <label className="mt-1 flex cursor-pointer items-start justify-between gap-5 rule-t pt-4">
-              <span className="min-w-0">
-                <span className="block text-sm font-medium">
-                  {t("practice.leechOnly")}
-                </span>
-                <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">
-                  {t("practice.leechOnlyHint")}
-                </span>
-              </span>
-              <Switch
-                aria-label={t("practice.leechOnly")}
-                checked={leechOnly}
-                className="mt-0.5 shrink-0"
-                onCheckedChange={onLeechOnlyChange}
-                size="sm"
+          <ListSection
+            footer={t("practice.cardStyleHint")}
+            header={t("practice.cardStyleTitle")}
+          >
+            {CARD_STYLES.map((style) => (
+              <ListChoiceRow
+                detail={
+                  style === "mixed"
+                    ? t("practice.cardStyleMixedHint")
+                    : practiceTaskHint(style)
+                }
+                key={style}
+                label={
+                  style === "mixed"
+                    ? t("practice.cardStyleMixed")
+                    : practiceTaskLabel(style)
+                }
+                onSelect={() => onTasksChange(tasksOfStyle(style))}
+                selected={styleOfTasks(tasks) === style}
               />
-            </label>
-          </section>
+            ))}
+            <ListSwitchRow
+              checked={leechOnly}
+              detail={t("practice.leechOnlyHint")}
+              label={t("practice.leechOnly")}
+              onCheckedChange={onLeechOnlyChange}
+            />
+          </ListSection>
         )}
       </div>
     </StepFrame>

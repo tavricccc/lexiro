@@ -45,7 +45,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/library/example-fields.tsx` — independently editable, wrapping example rows shared by inline editing and new-set creation. Form drafts use arrays, not newline-delimited text.
 - `tests-next/input-organizer.test.tsx` — no generation before confirmation; corrected review text is what proceeds to generation.
 - `components/library/input-organizer.tsx`, `lib/word-photo.ts` — shared typed/photo cleanup and editable confirmation; browser WebP resizing/encoding before upload.
-- `components/ui/list.tsx` — the grouped list: section, reporting row, navigation row, checkmark choice, switch, stepper, inline input and action row. Every settings-shaped screen and every choice between options is built from it; see `docs/design-system.md`.
+- `components/ui/list.tsx` — the grouped list: section, reporting row, navigation row, checkmark choice, in-place picker, switch, stepper, inline input and action row. Every settings-shaped screen and every choice between options is built from it; see `docs/design-system.md`.
 - `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache. An administrator sees 無限額度 in place of the estimate and balance.
 - `components/ai/ai-usage.tsx` — administrator-only readout of a run's input/cached/output/reasoning tokens and the provider cost estimated from `MODEL_PRICES`.
 - `components/me/me-page.tsx`, `components/me/account-row.tsx`, `components/me/save-status.tsx` — 我的 as one narrow column of grouped lists, opened by the signed-in account row that leads to `/sync`.

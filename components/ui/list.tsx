@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import { Icons } from "@/components/ui/icons";
 import { Switch } from "@/components/ui/switch";
@@ -206,6 +206,56 @@ export function ListChoiceRow({
   );
 }
 
+/**
+ * A value chosen from a handful of options, opened in place.
+ *
+ * The row says what it is set to; tapping it unfolds the options under it as a
+ * checkmark list and folding it back leaves the answer on the line. A dropdown
+ * would cover the screen you are choosing for, and on a phone it also hands the
+ * choice to a control the page has no say over.
+ */
+export function ListPicker({
+  disabled,
+  label,
+  onChange,
+  options,
+  value,
+}: {
+  disabled?: boolean;
+  label: string;
+  onChange: (value: string) => void;
+  options: { detail?: ReactNode; label: string; value: string; meta?: ReactNode }[];
+  value: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const current = options.find((option) => option.value === value);
+  return (
+    <>
+      <ListNavRow
+        disabled={disabled}
+        expanded={open}
+        label={label}
+        onClick={() => setOpen(!open)}
+        value={current?.label}
+      />
+      {open &&
+        options.map((option) => (
+          <ListChoiceRow
+            detail={option.detail}
+            key={option.value}
+            label={option.label}
+            onSelect={() => {
+              onChange(option.value);
+              setOpen(false);
+            }}
+            selected={option.value === value}
+            value={option.meta}
+          />
+        ))}
+    </>
+  );
+}
+
 /** A setting that is on or off. The whole row toggles it. */
 export function ListSwitchRow({
   checked,
@@ -353,6 +403,9 @@ export function ListActionRow({
  * turns a list back into the web form this replaced.
  */
 export function ListInputRow({
+  autoFocus,
+  block,
+  disabled,
   inputMode,
   label,
   max,
@@ -361,9 +414,14 @@ export function ListInputRow({
   onChange,
   placeholder,
   required,
+  trailing,
   type = "text",
   value,
 }: {
+  autoFocus?: boolean;
+  /** A sentence needs the width of the row, so its label sits above it. */
+  block?: boolean;
+  disabled?: boolean;
   inputMode?: "numeric" | "email" | "text";
   label: string;
   max?: number;
@@ -372,25 +430,47 @@ export function ListInputRow({
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
+  trailing?: ReactNode;
   type?: "text" | "email" | "number";
   value: string;
 }) {
+  const field = (
+    <input
+      className={cn(
+        "type-row min-w-0 flex-1 border-0 bg-transparent p-0 outline-none placeholder:text-muted-foreground/60 disabled:opacity-45",
+        block ? "w-full" : "text-right",
+      )}
+      autoFocus={autoFocus}
+      disabled={disabled}
+      inputMode={inputMode}
+      max={max}
+      maxLength={maxLength}
+      min={min}
+      onChange={(event) => onChange(event.target.value)}
+      placeholder={placeholder}
+      required={required}
+      type={type}
+      value={value}
+    />
+  );
+  if (block)
+    return (
+      <div className="flex items-end gap-3 py-2.5">
+        <label className="min-w-0 flex-1">
+          <span className="type-row-detail block">{label}</span>
+          <span className="mt-0.5 flex">{field}</span>
+        </label>
+        {trailing}
+      </div>
+    );
   return (
-    <label className="flex min-h-11 items-center gap-4 py-2">
-      <span className="type-row shrink-0">{label}</span>
-      <input
-        className="type-row min-w-0 flex-1 border-0 bg-transparent p-0 text-right outline-none placeholder:text-muted-foreground/60"
-        inputMode={inputMode}
-        max={max}
-        maxLength={maxLength}
-        min={min}
-        onChange={(event) => onChange(event.target.value)}
-        placeholder={placeholder}
-        required={required}
-        type={type}
-        value={value}
-      />
-    </label>
+    <div className="flex min-h-11 items-center gap-4 py-2">
+      <label className="flex min-w-0 flex-1 items-center gap-4">
+        <span className="type-row shrink-0">{label}</span>
+        {field}
+      </label>
+      {trailing}
+    </div>
   );
 }
 

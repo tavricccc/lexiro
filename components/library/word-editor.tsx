@@ -3,11 +3,21 @@ import { useState } from "react";
 import type { WordDraft } from "@/types";
 import { ExampleFields } from "@/components/library/example-fields";
 import { Button } from "@/components/ui/button";
-import { Field } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Icons } from "@/components/ui/icons";
+import {
+  ListActionRow,
+  ListInputRow,
+  ListSection,
+} from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 
+/**
+ * One word, as a grouped list rather than a form.
+ *
+ * The headword is a group, each sense is a group, and what you can do to a
+ * sense — add an example, remove it — are rows of that group instead of a strip
+ * of small buttons under it. Saving is the one full-width button at the end;
+ * cancelling is the quiet row under it, not its equal beside it.
+ */
 export function WordEditor({
   value,
   onSave,
@@ -50,98 +60,97 @@ export function WordEditor({
     }
   };
   return (
-    <div className="space-y-4">
-      <Field label={t("setEditor.word")}>
-        <Input
+    <div className="space-y-7">
+      <ListSection>
+        <ListInputRow
+          disabled={busy}
+          label={t("setEditor.word")}
+          onChange={(word) => setDraft({ ...draft, word })}
           value={draft.word}
-          disabled={busy}
-          onChange={(event) => setDraft({ ...draft, word: event.target.value })}
         />
-      </Field>
+      </ListSection>
+
       {draft.senses.map((sense, index) => (
-        <fieldset
+        <ListSection
+          header={t("wordEdit.sense", { count: index + 1 })}
           key={sense.id}
-          disabled={busy}
-          className="space-y-3 rounded-xl bg-[var(--surface-inset)] p-3"
         >
-          <legend className="text-xs text-muted-foreground">
-            {t("wordEdit.sense", { count: index + 1 })}
-          </legend>
-          <div className="grid grid-cols-[6rem_minmax(0,1fr)] gap-3">
-            <Field label={t("setEditor.pos")}>
-              <Input
-                value={sense.pos}
-                onChange={(event) =>
-                  updateSense(index, { pos: event.target.value })
-                }
-              />
-            </Field>
-            <Field label={t("setEditor.meaning")}>
-              <Input
-                value={sense.meaning}
-                onChange={(event) =>
-                  updateSense(index, { meaning: event.target.value })
-                }
-              />
-            </Field>
-          </div>
-          <ExampleFields
-            values={sense.examples}
-            onChange={(examples) => updateSense(index, { examples })}
+          <ListInputRow
+            disabled={busy}
+            label={t("setEditor.pos")}
+            onChange={(pos) => updateSense(index, { pos })}
+            value={sense.pos}
           />
-          <div className="flex flex-wrap gap-2">
-            <Button
-              type="button"
-              size="sm"
-              variant="ghost"
-              disabled={draft.senses.length === 1}
+          <ListInputRow
+            disabled={busy}
+            label={t("setEditor.meaning")}
+            onChange={(meaning) => updateSense(index, { meaning })}
+            value={sense.meaning}
+          />
+          <ExampleFields
+            onChange={(examples) => updateSense(index, { examples })}
+            values={sense.examples}
+          />
+          {draft.senses.length > 1 && (
+            <ListActionRow
+              disabled={busy}
               onClick={() =>
                 setDraft({
                   ...draft,
                   senses: draft.senses.filter((_, i) => i !== index),
                 })
               }
+              tone="destructive"
             >
               {t("wordEdit.removeSense")}
-            </Button>
-          </div>
-        </fieldset>
+            </ListActionRow>
+          )}
+        </ListSection>
       ))}
-      <Button
-        type="button"
-        variant="ghost"
-        size="sm"
-        disabled={busy}
-        onClick={() =>
-          setDraft({
-            ...draft,
-            senses: [
-              ...draft.senses,
-              { id: crypto.randomUUID(), pos: "", meaning: "", examples: [""] },
-            ],
-          })
-        }
-      >
-        <Icons.create />
-        {t("wordEdit.addSense")}
-      </Button>
+
+      <ListSection>
+        <ListActionRow
+          disabled={busy}
+          onClick={() =>
+            setDraft({
+              ...draft,
+              senses: [
+                ...draft.senses,
+                {
+                  id: crypto.randomUUID(),
+                  pos: "",
+                  meaning: "",
+                  examples: [""],
+                },
+              ],
+            })
+          }
+        >
+          {t("wordEdit.addSense")}
+        </ListActionRow>
+      </ListSection>
+
       {error && (
-        <p role="alert" className="text-sm text-destructive">
+        <p className="text-sm text-destructive" role="alert">
           {error}
         </p>
       )}
-      <div className="flex gap-2">
-        <Button type="button" disabled={busy} onClick={() => void save()}>
+
+      <div className="space-y-4">
+        <Button
+          className="w-full"
+          disabled={busy}
+          onClick={() => void save()}
+          size="lg"
+          type="button"
+        >
           {t("wordEdit.save")}
         </Button>
-        <Button
-          type="button"
-          disabled={busy}
-          variant="ghost"
-          onClick={onCancel}
-        >
-          {t("setEditor.cancel")}
-        </Button>
+        <ListSection>
+          <ListActionRow disabled={busy} onClick={onCancel}>
+            {t("setEditor.cancel")}
+          </ListActionRow>
+        </ListSection>
       </div>
     </div>
   );
