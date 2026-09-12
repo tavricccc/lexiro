@@ -3,7 +3,7 @@ import {
   CLOUD_SYNC_PENDING_EVENT,
   SYNC_JOURNAL_STORAGE_KEY,
 } from "@/constants";
-import { getStorageNamespace, loadFromStorage, saveToStorage } from "./persist";
+import { getStorageNamespace, loadFromStorage, removeRetiredAiSettings, saveToStorage } from "./persist";
 
 /**
  * What this device has changed and not yet pushed.
@@ -24,7 +24,7 @@ import { getStorageNamespace, loadFromStorage, saveToStorage } from "./persist";
  * `dirty` and `tombstones` are mutually exclusive per record: recreating a
  * deleted record clears its tombstone, deleting a dirty record replaces it.
  */
-export type SyncBlobKind = "aiSettings" | "progress" | "stats";
+export type SyncBlobKind = "progress" | "stats";
 
 export interface SyncDirtyEntry extends LibraryRecordRef {
   version: number;
@@ -37,7 +37,7 @@ export interface SyncTombstone extends LibraryRecordRef {
 }
 
 export interface SyncJournal {
-  schemaVersion: 2;
+  schemaVersion: 3;
   /** How far this device has read the cloud's change feed. Empty means never. */
   cursor: string;
   /**
@@ -61,7 +61,7 @@ export interface SyncClearRef {
   version: number;
 }
 
-const SYNC_JOURNAL_SCHEMA_VERSION = 2 as const;
+const SYNC_JOURNAL_SCHEMA_VERSION = 3 as const;
 
 export function refKey(ref: LibraryRecordRef): string {
   return `${ref.kind}:${ref.id}`;
@@ -75,7 +75,7 @@ function emptyJournal(): SyncJournal {
     version: 0,
     dirty: {},
     tombstones: {},
-    blobs: { aiSettings: 0, progress: 0, stats: 0 },
+    blobs: { progress: 0, stats: 0 },
   };
 }
 
@@ -102,15 +102,26 @@ async function readJournal(): Promise<SyncJournal> {
   if (cached) return cached;
   const stored = await loadFromStorage(SYNC_JOURNAL_STORAGE_KEY);
   let journal = emptyJournal();
+  let migrated = !stored.value;
   try {
     if (stored.value) {
-      const parsed: unknown = JSON.parse(stored.value);
+      let parsed: unknown = JSON.parse(stored.value);
+      if (parsed && typeof parsed === "object" && "schemaVersion" in parsed && parsed.schemaVersion === 2) {
+        const previous = parsed as Omit<SyncJournal, "schemaVersion"> & { schemaVersion: 2 };
+        parsed = { ...previous, schemaVersion: 3, blobs: { progress: previous.blobs.progress, stats: previous.blobs.stats } };
+        migrated = isJournal(parsed);
+      }
       if (isJournal(parsed)) journal = parsed;
     }
   } catch {
     // A damaged journal costs one extra full push, never data: `seeded` goes
     // with it, and a device that has not synced sends the whole Library.
     journal = emptyJournal();
+    migrated = true;
+  }
+  if (migrated) {
+    await removeRetiredAiSettings();
+    await saveToStorage(SYNC_JOURNAL_STORAGE_KEY, journal);
   }
   journals.set(namespace, journal);
   return journal;

@@ -52,28 +52,6 @@ service cloud.firestore {
         && request.resource.data.schemaVersion == 6;
     }
 
-    // The AI setup. `hasOnly` is what keeps the API key on the device that
-    // typed it: the key is not in this list, so a client that tried to upload
-    // one would be refused rather than trusted not to.
-    function validAiSettings() {
-      return request.resource.data.keys().hasOnly([
-        'version', 'enabled', 'provider', 'baseUrl', 'model', 'protocol',
-        'structuredOutput', 'batchSize', 'contextTokens', 'maxOutputTokens',
-        'reasoningEffort', 'ownerId', 'schemaVersion'
-      ])
-        && request.resource.data.version == 3
-        && request.resource.data.enabled is bool
-        && request.resource.data.provider in ['openai', 'anthropic', 'google', 'custom']
-        && request.resource.data.baseUrl is string
-        && request.resource.data.model is string
-        && request.resource.data.protocol is string
-        && request.resource.data.structuredOutput is bool
-        && request.resource.data.batchSize is number
-        && request.resource.data.contextTokens is number
-        && request.resource.data.maxOutputTokens is number
-        && request.resource.data.reasoningEffort is string
-        && request.resource.data.schemaVersion == 6;
-    }
 
     // One Library record. The document id is the record's type and the hash of
     // its Library id, which is what lets a word key hold any character a user
@@ -134,11 +112,6 @@ service cloud.firestore {
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
-      match /settings/ai {
-        allow read: if signedIn(uid);
-        allow create, update: if ownerCreate(uid) && validAiSettings();
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
-      }
 
 
     }

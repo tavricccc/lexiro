@@ -20,18 +20,14 @@ import { questionFormatLabel } from "@/lib/question-options";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
-import { isDue, isLeech } from "@/src/lib/fsrs";
+import { isDue } from "@/src/lib/fsrs";
 import { questionBelongsToMemberships } from "@/src/lib/question-ownership";
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
-import type { CardProgress, SenseId, WordSense } from "@/types";
+import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
+import { SetTools } from "@/components/library/set-tools";
 
 type SetTab = "words" | "questions";
 
-interface ViewWord {
-  wordKey: string;
-  word: string;
-  senses: WordSense[];
-}
 
 /**
  * A saved set is something you read before it is something you change.
@@ -133,12 +129,6 @@ export function SetView({ setId }: { setId: string }) {
                 {t("setDetail.start")}
               </Link>
             </Button>
-            <Button asChild variant="secondary">
-              <Link href={`/sets/${setId}/edit`}>
-                <Icons.edit />
-                {t("setDetail.edit")}
-              </Link>
-            </Button>
             <Menu
               actions={[
                 {
@@ -190,11 +180,11 @@ export function SetView({ setId }: { setId: string }) {
       />
 
       {tab === "words" ? (
-        words.length ? (
+        <><SetTools setId={setId} />{words.length ? (
           <StaggerList as="ul" className="rule-card rule-list">
             {words.map((entry) => (
               <StaggerItem as="li" className="py-5" key={entry.wordKey}>
-                <WordBlock cards={cards} entry={entry} />
+                <SetWordRow cards={cards} entry={entry} setId={setId} />
               </StaggerItem>
             ))}
           </StaggerList>
@@ -204,7 +194,7 @@ export function SetView({ setId }: { setId: string }) {
             title={t("setDetail.noWords")}
             description={t("setDetail.noWordsDescription")}
           />
-        )
+        )}</>
       ) : (
         <>
           {/* Making questions is what you come to this tab to do when it is
@@ -271,57 +261,6 @@ export function SetView({ setId }: { setId: string }) {
         open={confirmDelete}
         title={t("setDetail.delete")}
       />
-    </div>
-  );
-}
-
-/**
- * One word, with every sense the set carries for it. Grouping by word is what
- * the form cannot do — it edits flat rows — and it is how the material is
- * actually shaped: one spelling, several meanings.
- */
-function WordBlock({
-  cards,
-  entry,
-}: {
-  cards: Record<SenseId, CardProgress>;
-  entry: ViewWord;
-}) {
-  return (
-    <div>
-      <h3 className="text-base font-medium">{entry.word}</h3>
-      <dl className="mt-2 grid gap-3">
-        {entry.senses.map((sense) => {
-          const card = cards[sense.id] ?? null;
-          return (
-            <div key={sense.id}>
-              <dt className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-sm">
-                <span className="text-muted-foreground">{sense.pos}</span>
-                <span className="font-medium">{sense.meaningZh}</span>
-                {card && isDue(card) && (
-                  <span className="text-xs text-brand-600">
-                    {t("setDetail.dueBadge")}
-                  </span>
-                )}
-                {isLeech(card) && (
-                  <span className="text-xs text-destructive">
-                    {t("setDetail.leechBadge")}
-                  </span>
-                )}
-              </dt>
-              {sense.examples.length > 0 && (
-                <dd className="mt-1.5 grid gap-1">
-                  {sense.examples.map((example) => (
-                    <p className="type-lead" key={example}>
-                      {example}
-                    </p>
-                  ))}
-                </dd>
-              )}
-            </div>
-          );
-        })}
-      </dl>
     </div>
   );
 }

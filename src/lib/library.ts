@@ -13,47 +13,8 @@ import type {
 import { canonicalHash } from "./hash";
 import { randomUUID } from "./id";
 
-const PART_OF_SPEECH_ALIASES: Record<string, string> = {
-  n: "n.",
-  "n.": "n.",
-  noun: "n.",
-  v: "v.",
-  "v.": "v.",
-  verb: "v.",
-  adj: "adj.",
-  "adj.": "adj.",
-  adjective: "adj.",
-  adv: "adv.",
-  "adv.": "adv.",
-  adverb: "adv.",
-  pron: "pron.",
-  "pron.": "pron.",
-  pronoun: "pron.",
-  prep: "prep.",
-  "prep.": "prep.",
-  preposition: "prep.",
-  conj: "conj.",
-  "conj.": "conj.",
-  conjunction: "conj.",
-  interj: "interj.",
-  "interj.": "interj.",
-  interjection: "interj.",
-  det: "det.",
-  "det.": "det.",
-  determiner: "det.",
-  aux: "aux.",
-  "aux.": "aux.",
-  auxiliary: "aux.",
-  "modal v": "modal v.",
-  "modal v.": "modal v.",
-  "modal verb": "modal v.",
-  "phr v": "phr. v.",
-  "phr. v.": "phr. v.",
-  "phrasal verb": "phr. v.",
-  phr: "phr.",
-  "phr.": "phr.",
-  phrase: "phr.",
-};
+import { normalizePartOfSpeech } from "@lexiro/ai-contract";
+export { normalizePartOfSpeech } from "@lexiro/ai-contract";
 
 /** The only way to produce a `WordKey`. Idempotent, so it is safe to re-apply. */
 export function normalizeWordKey(word: string): WordKey {
@@ -67,11 +28,6 @@ export function normalizeWordKey(word: string): WordKey {
  */
 export function asSenseId(value: string): SenseId {
   return value as SenseId;
-}
-
-export function normalizePartOfSpeech(pos: string): string {
-  const normalized = pos.trim().toLocaleLowerCase().replace(/\s+/g, " ");
-  return PART_OF_SPEECH_ALIASES[normalized] ?? "";
 }
 
 export function buildSenseId(

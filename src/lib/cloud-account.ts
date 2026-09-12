@@ -1,9 +1,7 @@
 import type { Firestore } from "firebase/firestore";
 import type {
-  AiSettings,
   CardProgress,
   DashboardStats,
-  FirestoreAiSettingsDoc,
   FirestoreProgressDoc,
   FirestoreStatsDoc,
   LearningProgress,
@@ -13,30 +11,13 @@ import { CLOUD_SCHEMA_VERSION, MAX_CLOUD_DOCUMENT_BYTES } from "@/constants";
 import { cloudDocument, withDeadline } from "./cloud-sync";
 import { CloudSyncError } from "./cloud-sync-errors";
 import {
-  normalizeCloudAiSettings,
   normalizeCloudProgress,
   normalizeCloudStats,
 } from "./cloud-sync-schema";
 import { prepareFirestoreData } from "./firestore-data";
 import { estimateJsonBytes } from "./hash";
 
-/**
- * The three documents that are not records: review schedules, statistics, and
- * the AI setup.
- *
- * Each is small, read and written whole, and belongs to exactly one account, so
- * splitting them into records would buy nothing. Progress and statistics need a
- * merge: taking one side wholesale is what loses a day of reviews when the same
- * word was answered on a phone and a laptop, so each is reconciled field by
- * field on the way in and only then written back.
- *
- * The AI setup is not merged, because half of one setup and half of another is
- * not a setup a request can be made with — a model belongs to a provider, a
- * protocol to an endpoint. The device with unsent changes wins whole, and every
- * other device takes the account's copy whole. The API key is never part of
- * either: it stays in the browser that typed it, which is also what the
- * Firestore rule for this document enforces.
- */
+/** Account-wide review schedules and statistics merge field by field before upload. */
 
 function assertFits(value: unknown, label: string): void {
   const bytes = estimateJsonBytes(value);
@@ -134,7 +115,6 @@ export function mergeStats(
 }
 
 export interface CloudBlobs {
-  aiSettings: Omit<AiSettings, "apiKey"> | null;
   progress: LearningProgress | null;
   stats: DashboardStats | null;
 }
@@ -152,19 +132,15 @@ export async function readCloudBlobs(
   uid: string,
   signal?: AbortSignal,
 ): Promise<CloudBlobs> {
-  const [progress, stats, aiSettings] = await withDeadline(
+  const [progress, stats] = await withDeadline(
     Promise.all([
       getDoc(cloudDocument(db, uid, "progress", "global")),
       getDoc(cloudDocument(db, uid, "stats", "summary")),
-      getDoc(cloudDocument(db, uid, "settings", "ai")),
     ]),
     "Account documents download",
     signal,
   );
   return {
-    aiSettings: aiSettings.exists()
-      ? normalizeCloudAiSettings(aiSettings.data(), uid)
-      : null,
     progress: progress.exists()
       ? normalizeCloudProgress(progress.data(), uid)
       : null,
@@ -210,26 +186,6 @@ export async function writeCloudStats(
       } satisfies FirestoreStatsDoc),
     ),
     "Stats upload",
-    signal,
-  );
-}
-
-export async function writeCloudAiSettings(
-  db: Firestore,
-  uid: string,
-  settings: Omit<AiSettings, "apiKey">,
-  signal?: AbortSignal,
-): Promise<void> {
-  await withDeadline(
-    setDoc(
-      cloudDocument(db, uid, "settings", "ai"),
-      prepareFirestoreData({
-        ...settings,
-        ownerId: uid,
-        schemaVersion: CLOUD_SCHEMA_VERSION,
-      } satisfies FirestoreAiSettingsDoc),
-    ),
-    "AI settings upload",
     signal,
   );
 }

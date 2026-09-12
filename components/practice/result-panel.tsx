@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Markdown } from "@/components/ui/markdown";
 import { t } from "@/lib/i18n";
-import { generateWithSavedAi, isAiConfigured } from "@/src/lib/ai-provider";
-import { buildMistakeExplanationPrompt } from "@/src/lib/prompts";
+import { managedTurn } from "@/lib/managed-client";
+import { createAiSession } from "@/src/lib/ai/session";
+import { useCloudStore } from "@/stores/cloud-store";
+import { timing } from "@/lib/motion-timing";
 
 export function ResultPanel({
   correct,
@@ -32,6 +34,7 @@ export function ResultPanel({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const requestRef = useRef<AbortController | null>(null);
+  const uid = useCloudStore((store) => store.user?.uid);
 
   // Leaving the result screen drops the request instead of letting it run to its
   // timeout and then write into a component that is gone.
@@ -41,7 +44,7 @@ export function ResultPanel({
 
   useEffect(() => {
     return () => requestRef.current?.abort();
-  }, []);
+  }, [uid]);
 
   const explain = async () => {
     const controller = new AbortController();
@@ -50,11 +53,12 @@ export function ResultPanel({
     setBusy(true);
     setError("");
     try {
-      const text = await generateWithSavedAi(
-        buildMistakeExplanationPrompt(wrongContent),
-        { responseFormat: "text", signal: controller.signal },
+      const result = await managedTurn(
+        createAiSession("lite", wrongContent),
+        { kind: "explain", raw: wrongContent },
+        { signal: controller.signal },
       );
-      if (!controller.signal.aborted) setExplanation(text);
+      if (!controller.signal.aborted) setExplanation(result.text);
     } catch (reason) {
       if (controller.signal.aborted) return;
       setError(reason instanceof Error ? reason.message : String(reason));
@@ -68,7 +72,7 @@ export function ResultPanel({
       className="mx-auto flex min-h-[70dvh] max-w-xl flex-col justify-center py-10 sm:py-14"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+      transition={timing("nav")}
     >
       <div className="text-center">
         <p className="text-[3.5rem] font-medium leading-none tabular-nums">
@@ -110,8 +114,9 @@ export function ResultPanel({
       </div>
 
       {wrongContent && !explanation && (
-        <div className="mt-6 flex justify-center">
-          {isAiConfigured() ? (
+        <div className="mt-6 flex flex-col items-center gap-2">
+          <p className="text-xs text-muted-foreground">{t("managed.explainCost")}</p>
+          {uid ? (
             <Button variant="ghost" disabled={busy} onClick={() => void explain()}>
               <Icons.generate />
               {t(busy ? "practice.explaining" : "practice.explainWrong")}
@@ -120,7 +125,7 @@ export function ResultPanel({
             <Button asChild variant="ghost">
               <Link href="/me">
                 <Icons.ai />
-                {t("ai.setUp")}
+                {t("managed.signInRequired")}
               </Link>
             </Button>
           )}

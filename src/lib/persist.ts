@@ -1,4 +1,4 @@
-import { get, set } from "idb-keyval";
+import { del, get, set } from "idb-keyval";
 import { NAMESPACE_SCOPED_KEYS } from "@/constants";
 
 export interface StorageLoadResult {
@@ -50,6 +50,19 @@ export async function loadFromStorage(key: string): Promise<StorageLoadResult> {
   const resolvedKey = resolveKey(key);
   await pendingWrites.get(resolvedKey);
   return { value: (await get<string>(resolvedKey)) ?? null };
+}
+
+/** One-way managed-AI migration; captures the namespace before asynchronous deletion. */
+export async function removeRetiredAiSettings(): Promise<void> {
+  const namespace = storageNamespace;
+  await Promise.all(["lexiro_ai_settings", "lexiro_ai_api_key"].flatMap((key) =>
+    [`${namespace}:${key}`, ...(namespace === "guest" ? [key] : [])].map((resolved) =>
+      enqueueWrite(resolved, async () => {
+        await del(resolved);
+        if (typeof localStorage !== "undefined") localStorage.removeItem(resolved);
+      }),
+    ),
+  ));
 }
 
 /** Debounced save helper: schedule() coalesces writes; flush() writes immediately. */

@@ -11,26 +11,14 @@ import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import {
-  restoreAiSettings,
-  saveAiSettings,
-  waitForAiSettingsPersistence,
-} from "@/src/lib/ai-provider";
-import {
   createFullBackup,
   downloadFullBackup,
   prepareBackupImport,
   readFullBackup,
   type PreparedBackupImport,
 } from "@/src/lib/full-backup";
-import type { AiSettings } from "@/types";
 
-export function DataSection({
-  aiSettings,
-  onAiSettingsChange,
-}: {
-  aiSettings: AiSettings;
-  onAiSettingsChange: (settings: AiSettings) => void;
-}) {
+export function DataSection() {
   const library = useLibraryStore();
   const learning = useLearningStore();
   const [pending, setPending] = useState<PreparedBackupImport | null>(null);
@@ -40,7 +28,6 @@ export function DataSection({
       library.state,
       learning.progress,
       learning.stats,
-      aiSettings,
     );
     downloadFullBackup(backup);
     toast.success(t("me.backupExported"));
@@ -70,10 +57,6 @@ export function DataSection({
     if (!pending) return;
     await library.importState(pending.library);
     await learning.importState(pending.progress, pending.stats);
-    const nextAiSettings = restoreAiSettings(pending.aiSettings, aiSettings);
-    onAiSettingsChange(nextAiSettings);
-    saveAiSettings(nextAiSettings);
-    await waitForAiSettingsPersistence();
     setPending(null);
     toast.success(t("settings.importDone"));
   };

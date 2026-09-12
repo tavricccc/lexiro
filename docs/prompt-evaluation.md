@@ -1,42 +1,5 @@
-# 出題提示詞與實測
+# Prompt evaluation
 
-2026-09-12。保留詞彙、文法、綜合測驗、文意選填、篇章結構、閱讀六種題型；一個單字／詞義一題仍是輕量練習的核心。以下校準參考真實試卷，不代表產生完整模擬考，也不宣稱符合每所學校的進度。
+Prompt sources, schemas, synthetic input fixtures and evaluation scripts are maintained in the private `lexiro-worker` repository. Public frontend tests cover parsing, assembly, serial execution, partial recovery and request boundaries.
 
-## 考卷依據
-
-- [大考中心 115 學測英文原卷](https://www.ceec.edu.tw/files/file_pool/1/0q054532302653501476/02-115%E5%AD%B8%E6%B8%AC%E8%8B%B1%E6%96%87%E8%A9%A6%E5%8D%B7.pdf)：直接閱讀原卷及檢查版面。詞彙為獨立四選一；綜合測驗每篇五格，涵蓋詞彙、時態、片語與連接語；文意選填十格十選項；篇章結構四格五整句選項；閱讀每篇四題。
-- [大考中心 115 英文試題特色](https://www.ceec.edu.tw/xcepaper/cont?qperoid=0Q105359543716106563&sid=0Q105583094870257539&xsmsid=0J066588036013658199)：以常見高中詞彙與語法考閱讀、分析及推論。詞彙題目標以參考詞彙表第 1–5 級為範圍，大多在第 4 級以下。
-- [立人高中 114-1 英文試題公告](https://www.lzsh.tc.edu.tw/p/405-1000-4857,c110.php?Lang=zh-tw)：下載高一、高二原卷並逐頁檢查。兩份都有詞彙、綜合測驗、閱讀及混合題；高二另有十格文意選填、四格五選項篇章結構。文法融入綜合測驗、字形與翻譯。這是單一學校樣本，不能代表全台段考。
-
-## 採用的調整
-
-- 詞彙題保留一詞義一題；句型多樣化，干擾選項保留模型依語境設計的內容。要求同詞性、合理字形、相近語意領域，並有可排除的線索。
-- 文法題考競爭形式，可接受不規則動詞及多字片語；目標詞仍須出現在句中，但可挖相關介系詞，例如 interested **in**。
-- 綜合測驗同篇混合語意、文法及篇章線索；選項可為片語。
-- 文意選填仍採適合短練習的最多八格、十選項；這是有意縮短的版本，並非學測原卷十格格式。進階避免在空格後直接給同義詞定義。
-- 篇章結構四格五選項，要求前後指涉及邏輯都成立，不移除相鄰句，不僅靠 First／Next 等標記。
-- 閱讀涵蓋主旨、細節、指涉、字義及推論；正解需要文本支持，干擾選項需要可排除的依據。
-- 難度依線索距離及資訊整合調整。文章長度採練習用途的設計範圍：閱讀基礎 150–200、中等 220–300、進階 320–400 字；這不是大考中心規定的字數。
-- 多義詞分配到不同篇章，避免同一拼字造成重複空格；保持全域來源 ref，續跑只處理指定來源，追加輪可再次使用同一來源出新題。
-
-## 方法與限制
-
-使用已登入的 Codex CLI 實際執行 `gpt-5.6-luna`、`model_reasoning_effort="medium"`，檢查執行回條中的模型與 effort。測試使用合成單字及情境，沒有將整份考卷餵給模型或複製進專案。原始 prompts、回覆與解析結果存於 `artifacts/prompt-eval/`。
-
-這些請求以完整歷史重播測試提示詞和程式解析，並非瀏覽器直接呼叫各家公開 API 的測試；不能據此推估快取命中、帳單或延遲。每案例少量抽樣也不是統計品質保證。JSON 與資料驗證通過，不等於題目必然沒有多解，因此另做內容檢查。
-
-重跑：`node scripts/evaluate-ai-prompts.mjs --run final`。可追加案例 ID 子字串縮小範圍；會消耗帳號用量。`baseline` 使用保存的原提示，其他階段使用當下的正式提示。
-
-## 實測結果
-
-初始 14 輪有 12 輪通過當時的程式驗證；失敗為文意選填重複答案，以及不規則動詞／文法題的驗證限制。經多輪調整，最新各案例合計 14 份回覆，以最終解析器重驗為 **14/14 通過**，包含 9 題詞彙、5 題文法、3 筆詞義與 10 個文章題組。詳見 `artifacts/prompt-eval/validation.json`；這是提示詞與解析器共同改善後的結果，不是固定解析器下的純提示詞 A/B 分數。
-
-其中詞彙題的 `searched for` 片語干擾選項最初被程式錯誤過濾；保留原始失敗紀錄，修正後直接重驗同一份模型回覆，沒有假稱重新生成成功。`final-tuned` 是內容審查後的針對性重測，其他案例沿用 `final`。規劃 agents 寫入 fixtures 的示例不計入實測。
-
-內容抽查確認：詞彙句型不再整批以 Although 起頭；`run into` 從混合「遇見／撞上」改為單一「偶然遇見」；文意選填答案不再重複，進階線索由直接同義詞改為行為及結果；文法能保留合法時態與片語選項。也要求排除 staff has／have 這類英美皆可接受的文法差異。
-
-另由 agent 檢查四份篇章結構的四個實際空格與五個選項，未發現第二種合理完整排列；四份閱讀未發現多個正解，`current` 的「水流／目前的」義項及來源 ref 已區分。進階閱讀的雨後水流比較、人力不足導致精簡菜單都有跨句文本依據。主旨題對單一詞義的關聯仍可能較寬，這不等同每道閱讀題都在測指定單字。
-
-仍需預覽的部分：某些中等題仍偏直接，篇章的局部表述與場景連續性偶有生硬處，詞義、答案唯一性和實際難度無法由 JSON 檢查保證。此輪未把少量生成樣本當作正式試題品質認證。
-
-程式檢查：157 個測試通過，TypeScript、lint 與 production build 通過。`node scripts/validate-prompt-eval.mjs` 可不消耗模型用量地重驗已保存回覆。
+The private evaluator uses the production frontend parsers through a local frontend checkout. Its real-model runs consume Codex account usage. Revalidating saved responses does not call a model. A successful parser result is not a complete educational-quality or production API test.

@@ -3,12 +3,8 @@ import type { WordEntry } from "@/types";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { isWordForm, sentenceContainsWordForm } from "@/src/lib/word-forms";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
-import { buildQuestionPrompt } from "@/src/lib/question-prompts";
 import { splitGenerationBatches } from "@/src/lib/question-generation";
 import { questionTask } from "@/src/lib/ai/tasks";
-import { buildRequest } from "@/src/lib/ai/request";
-import { createAiSession } from "@/src/lib/ai/session";
-import { defaultAiSettings } from "@/src/lib/ai/catalog";
 import {
   buildWordGenerationSources,
   parseWordGenerationJson,
@@ -70,7 +66,6 @@ describe("issues found in real Luna prompt trials", () => {
         ],
       }),
       sources,
-      true,
     );
     expect(result.map((entry) => entry.word)).toEqual([
       "adapt",
@@ -204,17 +199,10 @@ describe("issues found in real Luna prompt trials", () => {
       "close",
     ].map((w) => word(w));
     const task = questionTask(words, words, "vocabulary", 2);
-    expect(task.context).not.toContain("共 8 筆");
-    expect(task.context).toContain("同一個 ref 可在追加新題時再次指定");
-    expect(task.steps[1].prompt).toContain("items 恰好 1 筆");
-    expect(task.steps[1].prompt).toContain('"s9"');
-    expect(task.steps[1].prompt).not.toContain("不要重複先前已完成的來源");
-  });
-  it("has a single coherent discourse length at medium difficulty", () => {
-    const prompt = buildQuestionPrompt("discourse", [word("observe")], 2).text;
-    expect(prompt).toContain("至少 10 句");
-    expect(prompt).not.toContain("6 至 8");
-    expect(prompt).toContain("不得移除相鄰句");
+    const request = JSON.parse(task.steps[1].prompt);
+    expect(request.sources).toHaveLength(1);
+    expect(request.sources[0].ref).toBe("s9");
+    expect(request).not.toHaveProperty("instructions");
   });
   it("separates repeated spellings without adding unnecessary passages", () => {
     const words = [
@@ -233,13 +221,5 @@ describe("issues found in real Luna prompt trials", () => {
       ),
     ).toBe(true);
     expect(packs.flat().flatMap((w) => w.senses)).toHaveLength(7);
-  });
-  it("uses the tested low effort for the built-in Luna preset", () => {
-    const request = buildRequest(
-      createAiSession(defaultAiSettings, "context"),
-      "next",
-      {},
-    );
-    expect(request.body.reasoning).toEqual({ effort: "low" });
   });
 });

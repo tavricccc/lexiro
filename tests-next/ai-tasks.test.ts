@@ -4,7 +4,6 @@ import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { wordTask, questionTask } from "@/src/lib/ai/tasks";
 import { buildWordGenerationSources } from "@/src/lib/word-generation";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
-import { defaultAiSettings } from "@/src/lib/ai/catalog";
 import { createAiSession } from "@/src/lib/ai/session";
 
 const word = (value: string): WordEntry => ({
@@ -20,21 +19,24 @@ const word = (value: string): WordEntry => ({
   ],
   updatedAt: "2026-09-12",
 });
-const generated = () => ({ pos: "n.", meaningZh: "測試字義" });
+const generated = () => ({
+  pos: "n.",
+  meaningZh: "測試字義",
+  example: "This is a test.",
+});
 describe("AI task boundaries", () => {
   it("places all sources in the first context and targets only the next stable references", () => {
     const sources = buildWordGenerationSources("apple, banana, cherry");
-    const task = wordTask("", sources, false, 2);
+    const task = wordTask("", sources, 2);
     expect(task.context).toContain("cherry");
-    expect(task.steps[1].prompt).toContain("source-3");
-    expect(task.steps[1].prompt).not.toContain("source-1");
+    expect(JSON.parse(task.steps[1].prompt)).toEqual({ kind: "words", raw: "cherry" });
   });
   it("keeps valid words from a partly invalid segment and requests only missing sources", async () => {
     const sources = buildWordGenerationSources("apple, banana");
-    const task = wordTask("", sources, false, 2);
+    const task = wordTask("", sources, 2);
     const run: AiRun<WordDraft> = {
       task,
-      session: createAiSession(defaultAiSettings, task.context),
+      session: createAiSession("lite", task.context),
       pending: [...task.steps],
       items: [],
       completed: 0,
@@ -54,13 +56,11 @@ describe("AI task boundaries", () => {
           }),
           complete: true,
           stopReason: "complete",
-          usage: {},
         };
       },
     });
     expect(prompts).toHaveLength(2);
-    expect(prompts[1]).toContain("source-2");
-    expect(prompts[1]).not.toContain("source-1");
+    expect(JSON.parse(prompts[1])).toEqual({ kind: "words", raw: "banana" });
     expect(run.items.map((i) => i.word)).toEqual(["apple", "banana"]);
     expect(run.completed).toBe(2);
   });
@@ -127,7 +127,7 @@ describe("AI task boundaries", () => {
     ].map(word);
     const task = questionTask(words, words, "wordBank", 2);
     expect(task.steps).toHaveLength(2);
-    expect(task.steps[1].prompt).toContain("extraOptions 恰好 7 個");
+    expect(JSON.parse(task.steps[1].prompt).sources).toHaveLength(3);
     expect(task.steps.every((s) => !s.split && s.count === 1)).toBe(true);
   });
 });

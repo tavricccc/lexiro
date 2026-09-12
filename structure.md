@@ -17,6 +17,7 @@ src/types/       canonical domain types
 tests-next/      Vitest unit and integrity tests
 docs/            design system, product decisions, deployment
 public/          Lexiro icons and Open Doodles illustration
+packages/ai-contract/ public AI input types, source parser and integer pricing arithmetic; contains no prompts or credentials
 ```
 
 Shared UI primitives live in `components/ui/` and are the only definition of a
@@ -36,11 +37,19 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/ui/liquid-tabs.tsx` — controlled segmented selection with the same shared-layout motion, without pointerdown speculation, measurement loops or reset timers.
 - `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon. Direction, where nothing marked one, is depth against depth: a set is a push whether it was opened from the Library that owns it or from 今天.
 - `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
-- `tests-next/ai-settings-persistence.test.ts` — that the AI setup and its API key belong to the signed-in account, and what a pulled setup does to the key already on the device.
-- `tests-next/ai-schemas.test.ts` — that every structured-output schema stays inside the subset `strict: true` accepts: every property required, every object closed.
+- `lib/managed-client.ts` — Firebase-authenticated Worker requests, one forced token refresh on 401, Responses text streaming and balance refresh events.
+- `components/library/word-editor.tsx` — shared single-word editor with separate sense and example rows; used by `set-word-row.tsx` and `word-preview.tsx`.
+- `components/library/set-tools.tsx` — set metadata and manual/AI additions on the existing set page; `set-editor.tsx` now only creates new sets. The old edit URL redirects to the set view.
+- `src/lib/word-edit.ts` — builds one-word edits from the latest library, preserving other rows and calculating only changed sense remaps.
+- `tests-next/word-edit.test.tsx` — latest-state replacement, sense remaps, actual example deletion and shared editor behavior.
+- `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache.
+- `components/me/plan-section.tsx` — account point balance and renewal date, replacing the removed BYO-key settings and connection-test components.
+- `src/lib/ai/session.ts`, `runner.ts`, `tasks.ts` — managed session identity, serial generation/recovery and data-only request assembly. The old provider facade, catalog, request/reply/transport modules, settings persistence and usage component have been removed.
+- `tests-next/managed-client.test.ts`, `tests-next/managed-migration.test.ts` — token refresh, account isolation, streamed text and explicit settings retirement without losing queued edits.
+- Private prompts, schemas, prefix/schema tests, prompt evaluation scripts and fixtures have moved to the separate `lexiro-worker` repository; historical model artifacts are kept outside this public tree.
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
-is the catalogue; `question-prompts.ts` asks a model only for prose and answer
+is the catalogue; the private backend asks a model for prose and answer
 spans; `question-assembly.ts` cuts the blanks, orders the options and links each
 item back to its sense; and `question-builders.ts` builds what needs no model at
 all. `docs/product-decisions.md` explains why the split falls there.
@@ -78,19 +87,10 @@ writes what changed in batches. A deleted record keeps its document and sets
 `deleted`, so a deletion is a fact the cloud states rather than an absence the
 next device has to interpret.
 
-`src/lib/cloud-account.ts` holds the three documents that are not records —
-review schedules, statistics, and the AI setup. Progress and statistics merge
-field by field, so answering the same word on two devices does not cost one of
-them its history. The AI setup does not merge: the device with unsent changes
-sends them whole and every other device takes the account's copy whole, because
-a model belongs to a provider and a protocol to an endpoint. The API key is not
-part of what is sent — `firestore.rules` lists the fields the settings document
-accepts and the key is not among them — so each browser keeps the key it was
-given, and drops it when the setup that arrived points somewhere else.
-
-`src/lib/ai/settings.ts` is read only once the signed-in account, and therefore
-the storage namespace, has been decided; `stores/cloud-store.ts` owns that
-moment for the Library, learning progress and the AI setup alike.
+`src/lib/cloud-account.ts` holds review schedules and statistics, merging them
+field by field. AI credentials and configuration belong to the managed Worker;
+the retired Firestore settings route is no longer read or writable.
+`stores/cloud-store.ts` selects the account namespace before loading local data.
 
 `src/lib/sync-journal.ts` holds what this device has changed and not yet sent.
 It is a sidecar: domain records carry no synchronization fields. The list of
@@ -118,7 +118,8 @@ Persisted schema versions, all independent of one another:
 | Data | Version | Defined in |
 | --- | --- | --- |
 | Library repository (IndexedDB) | 2 | `src/lib/library-repository.ts` |
-| Sync journal (IndexedDB) | 2 | `src/lib/sync-journal.ts` |
+| Sync journal (IndexedDB) | 3 | `src/lib/sync-journal.ts`: v2 removes the AI dirty blob and retired account settings/key via `persist.ts`, preserving queued records and cursor |
 | Cloud documents (Firestore) | 6 | `src/constants/cloud.ts` |
 | Practice session snapshot | 2 | `src/types/session.ts` |
-| Backup and share files | 1 | `src/types/backup.ts` |
+| Full backup files | 2 | `src/constants/backup.ts`, `src/lib/share.ts`: explicit v1 migration removes AI settings, preserves library and learning data |
+| Set share files | 1 | `src/types/backup.ts` |

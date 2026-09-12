@@ -1,7 +1,6 @@
 import { strFromU8, strToU8, unzipSync, zipSync } from "fflate";
 
 import type {
-  AiSettings,
   DashboardStats,
   FullBackupPayload,
   LearningProgress,
@@ -10,17 +9,15 @@ import type {
 import {
   APP_NAME,
   BACKUP_FILE_PREFIX,
-  EXPORT_VERSION,
+  FULL_BACKUP_VERSION,
   ZIP_INTERNAL_FILENAME,
 } from "@/constants";
-import { getShareableAiSettings } from "@/src/lib/ai-provider";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { normalizeFullBackupPayload } from "@/src/lib/share";
 import { keysOf } from "@/src/lib/record";
 import { localDateKey } from "@/src/lib/date";
 
 export interface PreparedBackupImport {
-  aiSettings: Omit<AiSettings, "apiKey">;
   cards: number;
   library: LibraryState;
   progress: LearningProgress;
@@ -33,17 +30,15 @@ export function createFullBackup(
   library: LibraryState,
   progress: LearningProgress,
   stats: DashboardStats,
-  aiSettings: AiSettings,
 ): FullBackupPayload {
   return {
-    version: EXPORT_VERSION,
+    version: FULL_BACKUP_VERSION,
     exportedAt: new Date().toISOString(),
     appName: APP_NAME,
     kind: "full-backup",
     library,
     learning: progress,
     stats,
-    aiSettings: getShareableAiSettings(aiSettings),
   };
 }
 
@@ -89,7 +84,6 @@ export function prepareBackupImport(
     library: mergedLibrary.state,
     progress,
     stats: hasLocalActivity ? currentStats : backup.stats,
-    aiSettings: backup.aiSettings,
     sets: mergedLibrary.result.addedSets,
     questions: mergedLibrary.result.addedQuestions,
     cards: keysOf(backup.learning.cards).filter(

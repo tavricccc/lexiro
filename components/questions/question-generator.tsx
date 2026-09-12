@@ -60,7 +60,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   const [scopeReady, setScopeReady] = useState(false);
   const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
   const [difficulty, setDifficulty] = useState<GeneratedQuestionDifficulty>(2);
-  const [manualError, setManualError] = useState("");
   const { saving, save: storeAll } = useSaveGeneratedQuestions(() =>
     setStep("done"),
   );
@@ -144,10 +143,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     () => questionTask(words, pool, kind, difficulty),
     [words, pool, kind, difficulty],
   );
-  const prompts = useMemo(
-    () => task.steps.map((part) => `${task.context}\n\n${part.prompt}`),
-    [task],
-  );
   const generation = useAiGeneration<LibraryQuestion>({
     merge: (items) => {
       const byId = new Map<string, LibraryQuestion>();
@@ -156,31 +151,12 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     },
   });
 
-  const { reset, setItems, state: run } = generation;
+  const { reset, state: run } = generation;
 
   useEffect(() => {
     reset();
-    setManualError("");
   }, [difficulty, kind, reset, selected]);
 
-  const applyManual = (response: string, batchIndex: number) => {
-    setManualError("");
-    try {
-      const produced = task.steps[batchIndex].parse(response);
-      setItems(
-        [...run.items, ...produced],
-        task.steps.reduce((total, part) => total + part.count, 0),
-      );
-      return true;
-    } catch (reason) {
-      setManualError(
-        t("questions.invalidResponse", {
-          message: reason instanceof Error ? reason.message : String(reason),
-        }),
-      );
-      return false;
-    }
-  };
 
   const senseCount = words.reduce(
     (count, word) => count + word.senses.length,
@@ -307,12 +283,9 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         <AiRunPanel
           actionLabel={t("questions.generate")}
           configured={generation.configured}
-          enabled={generation.enabled}
           ready={generation.ready}
           localCount={prebuilt?.built.length ?? 0}
-          manualError={manualError}
           onCancel={generation.cancel}
-          onManualResponse={applyManual}
           onResume={generation.resume}
           onAppend={
             moreTask.steps.length
@@ -320,7 +293,10 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
               : undefined
           }
           onStart={() => generation.start(task, prebuilt?.built ?? [])}
-          prompts={prompts}
+          kind={task.kind}
+          billableCount={task.billableCount}
+          tier={generation.tier}
+          onTierChange={generation.setTier}
           scopeSummary={t("questions.scopeSummary", { count: senseCount })}
           state={run}
           unit={t(isPassageKind(kind) ? "ai.packsUnit" : "ai.questionsUnit")}

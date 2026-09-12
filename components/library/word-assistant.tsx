@@ -3,18 +3,16 @@ import type { WordDraft } from "@/types";
 import { useEffect, useMemo, useState } from "react";
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import { useAiGeneration } from "@/components/ai/use-ai-generation";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { t } from "@/lib/i18n";
-import { buildImportPrompt } from "@/src/lib/importPrompt";
-import { chunks, wordTask } from "@/src/lib/ai/tasks";
+import { wordTask } from "@/src/lib/ai/tasks";
+import { WordPreview } from "@/components/library/word-preview";
 import {
   buildWordGenerationSources,
   mergeWordDrafts,
-  parseWordGenerationJson,
 } from "@/src/lib/word-generation";
 
 export interface AssistedWordRow {
@@ -38,46 +36,18 @@ export function WordAssistant({
 }: {
   onApply: (rows: AssistedWordRow[]) => void;
 }) {
-  const [raw, setRaw] = useState(""),
-    [examples, setExamples] = useState(false),
-    [manualError, setManualError] = useState("");
+  const [raw, setRaw] = useState("");
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
   const generation = useAiGeneration<WordDraft>({ merge: mergeWordDrafts });
   const { state, reset } = generation;
   const size = generation.batchSize;
-  const batches = useMemo(() => chunks(sources, size), [sources, size]);
   const task = useMemo(
-    () => wordTask(raw, sources, examples, size),
-    [raw, sources, examples, size],
-  );
-  const prompts = useMemo(
-    () => batches.map((batch) => buildImportPrompt(raw, batch, examples)),
-    [batches, examples, raw],
+    () => wordTask(raw, sources, size),
+    [raw, sources, size],
   );
   useEffect(() => {
     reset();
-    setManualError("");
-  }, [examples, raw, reset]);
-  const applyManual = (response: string, index: number) => {
-    try {
-      generation.setItems(
-        mergeWordDrafts([
-          ...state.items,
-          ...parseWordGenerationJson(response, batches[index], examples),
-        ]),
-        sources.length,
-      );
-      setManualError("");
-      return true;
-    } catch (reason) {
-      setManualError(
-        t("setEditor.invalidAiResponse", {
-          message: reason instanceof Error ? reason.message : String(reason),
-        }),
-      );
-      return false;
-    }
-  };
+  }, [raw, reset]);
   const running = state.status === "running";
   return (
     <section>
@@ -97,26 +67,18 @@ export function WordAssistant({
           onChange={(e) => setRaw(e.target.value)}
         />
       </Field>
-      <label className="mt-3 flex cursor-pointer items-center gap-2.5 text-sm">
-        <Checkbox
-          checked={examples}
-          disabled={running}
-          onCheckedChange={(checked) => setExamples(checked === true)}
-        />
-        {t("setEditor.generateExamples")}
-      </label>
       <div className="mt-4">
         <AiRunPanel
           actionLabel={t("setEditor.organizeWords")}
           configured={generation.configured}
-          enabled={generation.enabled}
           ready={generation.ready}
-          manualError={manualError}
           onCancel={generation.cancel}
-          onManualResponse={applyManual}
           onResume={generation.resume}
           onStart={() => generation.start(task)}
-          prompts={prompts}
+          kind={task.kind}
+          billableCount={task.billableCount}
+          tier={generation.tier}
+          onTierChange={generation.setTier}
           scopeSummary={t("setEditor.wordsFound", { count: sources.length })}
           state={state}
           unit={t("ai.wordsUnit")}
@@ -142,25 +104,7 @@ export function WordAssistant({
                       key={word.word}
                       className="rounded-xl bg-[var(--surface-inset)] p-3.5"
                     >
-                      <p className="font-semibold">{word.word}</p>
-                      {word.senses.map((sense, index) => (
-                        <div key={index} className="mt-1.5">
-                          <p className="text-sm">
-                            <span className="mr-2 text-xs text-muted-foreground">
-                              {sense.pos}
-                            </span>
-                            {sense.meaning}
-                          </p>
-                          {sense.examples.map((example) => (
-                            <p
-                              key={example}
-                              className="mt-1 text-xs leading-5 text-muted-foreground"
-                            >
-                              {example}
-                            </p>
-                          ))}
-                        </div>
-                      ))}
+                      <WordPreview word={word} disabled={running} onSave={(draft) => generation.setItems(state.items.map((entry) => entry === word ? draft : entry))} />
                     </li>
                   ))}
                 </ul>

@@ -4,18 +4,9 @@ import { useAiGeneration } from "@/components/ai/use-ai-generation";
 import type { AiTask, AiTurnResult } from "@/src/types/ai";
 
 const mocks = vi.hoisted(() => ({ send: vi.fn() }));
-vi.mock("@/src/lib/ai-provider", async (original) => {
-  const module = await original<typeof import("@/src/lib/ai-provider")>();
-  return {
-    ...module,
-    whenAiSettingsReady: async () => ({
-      ...module.defaultAiSettings,
-      enabled: true,
-      apiKey: "fixture",
-    }),
-    onAiSettingsChanged: () => () => {},
-  };
-});
+vi.mock("@/stores/cloud-store", () => ({
+  useCloudStore: (select: (state: { ready: boolean; user: { uid: string } }) => unknown) => select({ ready: true, user: { uid: "fixture" } }),
+}));
 vi.mock("@/src/lib/ai/session", async (original) => ({
   ...(await original<typeof import("@/src/lib/ai/session")>()),
   generateTurn: mocks.send,
@@ -25,12 +16,12 @@ const response = (text: string): AiTurnResult => ({
   text,
   complete: true,
   stopReason: "complete",
-  usage: {},
 });
 const task = (ids = ["a", "b"]): AiTask<string> => ({
   id: "test",
   context: "all sources",
-  schema: {},
+  kind: "words",
+  billableCount: ids.length,
   steps: ids.map((id) => ({
     id,
     context: "sources",

@@ -6,7 +6,6 @@ import type {
   QuestionDifficulty,
 } from "@/types";
 import type { AiTask, AiTaskStep } from "@/src/types/ai";
-import { buildImportPrompt } from "../importPrompt";
 import {
   parseWordGenerationJson,
   type WordGenerationSource,
@@ -19,14 +18,8 @@ import {
 } from "../question-generation";
 import { parseLibraryImport } from "../library-import";
 import { isPassageKind } from "../question-formats";
-import {
-  buildQuestionPrompt,
-  questionTurnInstruction,
-  type QuestionPrompt,
-} from "../question-prompts";
 import { senseKey } from "../library";
 import { extractJsonText } from "./json";
-import { wordOutput, questionOutput, jsonSchema } from "./schemas";
 import { t } from "@/lib/i18n";
 import { isRecord } from "../schema";
 
@@ -35,25 +28,20 @@ export function chunks<T>(items: T[], size: number): T[][] {
     items.slice(i * size, (i + 1) * size),
   );
 }
-const instruction = (refs: string[]) =>
-  `本輪 activeRefs：${JSON.stringify(refs)}。items 恰好 ${refs.length} 筆，依 activeRefs 順序。只回覆本輪完整 JSON。`;
-const questionContext = (prompt: QuestionPrompt) =>
-  `${prompt.instructions}\n\n完整來源資料：${prompt.sources}`;
+const wordInput = (sources: WordGenerationSource[]) => JSON.stringify({ kind: "words", raw: sources.map((source) => source.raw).join("\n") });
 
 export function wordTask(
-  raw: string,
+  _raw: string,
   sources: WordGenerationSource[],
-  examples: boolean,
   size: number,
 ): AiTask<WordDraft> {
   const make = (batch: WordGenerationSource[]): AiTaskStep<WordDraft> => ({
     id: batch.map((s) => s.sourceRef).join(","),
     count: batch.length,
-    context: buildImportPrompt(raw, batch, examples),
-    prompt: instruction(batch.map((s) => s.sourceRef)),
+    context: wordInput(batch),
+    prompt: wordInput(batch),
     parse: (text) => {
-      wordOutput(examples).parse(JSON.parse(extractJsonText(text)));
-      return parseWordGenerationJson(text, batch, examples);
+      return parseWordGenerationJson(text, batch);
     },
     recover: (text) => {
       const data: unknown = JSON.parse(extractJsonText(text));
@@ -65,13 +53,9 @@ export function wordTask(
         try {
           const item = rawItems[index];
           if (!item) throw new Error();
-          const single = wordOutput(examples).parse({ items: [item] });
+          const single = { items: [item] };
           items.push(
-            ...parseWordGenerationJson(
-              JSON.stringify(single),
-              [source],
-              examples,
-            ),
+            ...parseWordGenerationJson(JSON.stringify(single), [source]),
           );
         } catch {
           remaining.push(source);
@@ -91,8 +75,9 @@ export function wordTask(
   });
   return {
     id: "words",
-    context: buildImportPrompt(raw, sources, examples),
-    schema: jsonSchema(wordOutput(examples)),
+    kind: "words",
+    billableCount: sources.length,
+    context: wordInput(sources),
     steps: chunks(sources, size).map(make),
   };
 }
@@ -108,7 +93,7 @@ export function questionTask(
       .flatMap((w) => w.senses.map((s) => senseKey(w.wordKey, s.id)))
       .map((key, i) => [key, `s${i + 1}`]),
   );
-  const schema = questionOutput(kind);
+  const input = (batch: WordEntry[]) => JSON.stringify({ kind, difficulty, sources: batch.flatMap((word) => word.senses.map((sense) => ({ ref: globalRefs.get(senseKey(word.wordKey, sense.id))!, word: word.word, pos: sense.pos, meaningZh: sense.meaningZh, ...(sense.examples.length ? { knownExample: sense.examples[0] } : {}) }))) });
   const make = (batch: WordEntry[]): AiTaskStep<LibraryQuestion> => {
     const refs = batch.flatMap((w) =>
       w.senses.map((s) => globalRefs.get(senseKey(w.wordKey, s.id))!),
@@ -117,12 +102,10 @@ export function questionTask(
     const step: AiTaskStep<LibraryQuestion> = {
       id: refs.join(","),
       count: passage ? 1 : refs.length,
-      context: questionContext(
-        buildQuestionPrompt(kind, batch, difficulty, { refs }),
-      ),
-      prompt: questionTurnInstruction(refs, kind),
+      context: input(batch),
+      prompt: input(batch),
       parse: (text) => {
-        const data = schema.parse(JSON.parse(extractJsonText(text)));
+        const data: unknown = JSON.parse(extractJsonText(text));
         const normalized = normalizeQuestionGenerationJson(
           JSON.stringify(data),
           kind,
@@ -189,11 +172,12 @@ export function questionTask(
     return step;
   };
   const batches = splitGenerationBatches(words, kind);
-  const context = questionContext(buildQuestionPrompt(kind, words, difficulty));
+  const context = input(words);
   return {
     id: `questions-${kind}`,
+    kind,
+    billableCount: kind === "discourse" || kind === "reading" ? batches.length : globalRefs.size,
     context,
-    schema: jsonSchema(schema),
     steps: batches.map(make),
     key: (q) => q.fingerprint || q.id,
   };

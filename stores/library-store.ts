@@ -267,6 +267,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     const words = { ...get().state.words };
     const membershipMap = new Map<WordKey, Set<SenseId>>();
+    const writtenSenses = new Set<SenseId>();
     for (const draft of drafts) {
       const wordKey = normalizeWordKey(draft.word);
       const pos = normalizePartOfSpeech(draft.pos) || draft.pos.trim();
@@ -290,7 +291,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
                     ...item,
                     examples: [
                       ...new Set([
-                        ...item.examples,
+                        ...(writtenSenses.has(senseId) ? item.examples : []),
                         ...draft.examples
                           .map((value) => value.trim())
                           .filter(Boolean),
@@ -313,6 +314,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
         updatedAt: timestamp,
       };
       const senses = membershipMap.get(wordKey) ?? new Set<SenseId>();
+      writtenSenses.add(senseId);
       senses.add(senseId);
       membershipMap.set(wordKey, senses);
     }

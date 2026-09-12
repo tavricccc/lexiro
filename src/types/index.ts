@@ -1,4 +1,3 @@
-export type { AiProvider, AiSettings } from './ai'
 export type { Brand } from './brand'
 export type {
   BackupPayload,
@@ -9,7 +8,6 @@ export type {
 } from './backup'
 export type {
   CloudRecordType,
-  FirestoreAiSettingsDoc,
   FirestoreLibraryMetaDoc,
   FirestoreProgressDoc,
   FirestoreRecordDoc,

@@ -1,5 +1,4 @@
 import { describe, expect, it, vi } from "vitest";
-import { defaultAiSettings } from "@/src/lib/ai/catalog";
 import { createAiSession } from "@/src/lib/ai/session";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
 import { AiRequestError } from "@/src/lib/ai/errors";
@@ -9,7 +8,6 @@ const reply = (text: string, id = text): AiTurnResult => ({
   text,
   complete: true,
   stopReason: "complete",
-  usage: {},
 });
 function createRun(steps?: AiTaskStep<string>[]): AiRun<string> {
   const parts =
@@ -21,11 +19,11 @@ function createRun(steps?: AiTaskStep<string>[]): AiRun<string> {
       count: 1,
       parse: (text: string) => [text],
     }));
-  const task = { id: "test", context: "all sources", schema: {}, steps: parts };
+  const task = { id: "test", kind: "words" as const, billableCount: parts.length, context: "all sources", steps: parts };
   return {
     task,
     session: createAiSession(
-      { ...defaultAiSettings, enabled: true, apiKey: "test" },
+      "lite",
       task.context,
     ),
     pending: [...parts],
@@ -42,7 +40,7 @@ describe("serial task generation", () => {
       peak = 0;
     const send = vi.fn(async (session, prompt) => {
       peak = Math.max(peak, ++active);
-      expect(session.history.length).toBe(run.completed * 2);
+      expect(session.cursor).toBe(run.completed ? run.items.at(-1) : undefined);
       await Promise.resolve();
       active--;
       return reply(prompt);

@@ -1,97 +1,23 @@
-export type AiProvider = "openai" | "anthropic" | "google" | "custom";
-export type AiProtocol =
-  "responses" | "chat" | "messages" | "interactions" | "generateContent";
-export interface AiSettings {
-  version: 3;
-  enabled: boolean;
-  provider: AiProvider;
-  apiKey: string;
-  baseUrl: string;
-  model: string;
-  protocol: AiProtocol;
-  batchSize: number;
-  structuredOutput: boolean;
-  contextTokens: number;
-  maxOutputTokens: number;
-  reasoningEffort: string;
-}
-export interface AiProviderCapabilities {
-  contextTokens: number;
-  maxOutputTokens: number;
-  structuredOutput: boolean;
-  cache: "openai" | "anthropic" | "implicit" | "unknown";
-}
-export interface AiModelPreset extends AiProviderCapabilities {
-  reasoningEffort: string;
-  reasoningOptions?: readonly string[];
-  id: string;
-  label: string;
-  provider: AiProvider;
-  protocol: AiProtocol;
-}
-export interface AiUsage {
-  inputTokens?: number;
-  outputTokens?: number;
-  cacheReadTokens?: number;
-  cacheWriteTokens?: number;
-}
-export type AiPhase =
-  | "connecting"
-  | "thinking"
-  | "generating"
-  | "validating"
-  | "retrying"
-  | "rebuilding";
-export interface AiMessage {
-  role: "user" | "assistant";
-  content: string;
-}
+import type { JobKind, Tier } from "@lexiro/ai-contract";
+export type AiPhase = "connecting" | "thinking" | "generating" | "validating" | "retrying" | "rebuilding";
 export interface AiSession {
-  settings: AiSettings;
+  tier: Tier;
+  sessionId: string;
   context: string;
-  history: AiMessage[];
   cursor?: string;
-  usage: AiUsage;
+  append?: boolean;
   notices: string[];
-  stream: boolean;
-  structuredOutput: boolean;
-  cache: boolean;
 }
-export interface AiTurnResult {
-  text: string;
-  id?: string;
-  requestId?: string;
-  usage: AiUsage;
-  stopReason: "complete" | "truncated" | "blocked" | "unknown";
-  complete: boolean;
-}
-export interface AiTurnOptions {
-  signal?: AbortSignal;
-  schema?: Record<string, unknown>;
-  responseFormat?: "json" | "text";
-  maxOutputTokens?: number;
-  onCharacters?: (count: number) => void;
-  onPhase?: (phase: AiPhase) => void;
-  onUsage?: (usage: AiUsage) => void;
-}
-export interface AiTask<TItem> {
+export interface AiTurnResult { text: string; id?: string; stopReason: "complete" | "truncated" | "blocked" | "unknown"; complete: boolean }
+export interface AiTurnOptions { signal?: AbortSignal; repair?: string; onCharacters?: (count: number) => void; onPhase?: (phase: AiPhase) => void }
+export interface AiTask<T> { id: string; kind: JobKind; billableCount: number; context: string; steps: AiTaskStep<T>[]; key?: (item: T) => string }
+export interface AiTaskStep<T> {
   id: string;
   context: string;
-  steps: AiTaskStep<TItem>[];
-  schema: Record<string, unknown>;
-  key?: (item: TItem) => string;
-}
-export interface AiTaskStep<TItem> {
-  id: string;
-  context: string;
+  /** Serialized generation data, never a system prompt. */
   prompt: string;
   count: number;
-  parse: (text: string) => TItem[];
-  recover?: (text: string) => {
-    items: TItem[];
-    completed: number;
-    remaining: AiTaskStep<TItem>;
-  } | null;
-  /** Independent units, used to reduce a truncated turn without splitting a passage. */
-  split?: () => AiTaskStep<TItem>[];
+  parse: (text: string) => T[];
+  recover?: (text: string) => { items: T[]; completed: number; remaining: AiTaskStep<T> } | null;
+  split?: () => AiTaskStep<T>[];
 }

@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -24,15 +24,8 @@ import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
-import {
-  asSenseId,
-  buildSenseId,
-  normalizePartOfSpeech,
-  normalizeWordKey,
-} from "@/src/lib/library";
 
 /**
  * The form, and only the form.
@@ -43,21 +36,16 @@ import {
  * so this screen holds the fields and the one button that commits them.
  */
 export function SetEditor({
-  setId,
   initialFolderId,
 }: {
-  setId?: string;
   initialFolderId?: string;
 }) {
   const router = useRouter();
   const { state, status, saveSet } = useLibraryStore();
-  const current = setId
-    ? state.sets.find((entry) => entry.id === setId)
-    : undefined;
   const form = useForm<SetFormValues>({
     defaultValues: {
       folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
-      setName: setId ? "" : t("setEditor.defaultSetName"),
+      setName: t("setEditor.defaultSetName"),
       words: [emptyWord],
     },
     resolver: zodResolver(setFormSchema),
@@ -66,33 +54,24 @@ export function SetEditor({
   // A new set asks how you want to add words before showing either surface, so
   // the typing form and the paste-a-list assistant are never both on screen.
   const [entry, setEntry] = useState<"ask" | "manual" | "assist">(
-    setId ? "manual" : "ask",
+    "ask",
   );
   const { clearPending, pendingHref } = useUnsavedGuard(form.formState.isDirty);
   const setName = form.watch("setName");
   const folderId = form.watch("folderId");
   const errors = form.formState.errors;
 
-  useEffect(() => {
-    if (!current) return;
-    const words = getSetWords(state, current.id);
-    form.reset({
-      folderId: current.folderId,
-      setName: current.setName,
-      words: words.length ? words : [emptyWord],
-    });
-  }, [current, form, state.memberships, state.words]);
 
   const submit = form.handleSubmit(async (values) => {
     const defaultName = t("setEditor.defaultSetName").toLocaleLowerCase();
     const defaultSet =
-      !setId && values.setName.trim().toLocaleLowerCase() === defaultName
+      values.setName.trim().toLocaleLowerCase() === defaultName
         ? state.sets.find(
             (entry) =>
               entry.setName.trim().toLocaleLowerCase() === defaultName,
           )
         : undefined;
-    const targetSetId = setId ?? defaultSet?.id;
+    const targetSetId = defaultSet?.id;
     if (
       state.sets.some(
         (entry) =>
@@ -105,27 +84,6 @@ export function SetEditor({
       return;
     }
 
-    const remaps = values.words.flatMap((word) => {
-      if (!word.originalWordKey || !word.originalSenseId) return [];
-      const newWordKey = normalizeWordKey(word.word);
-      const pos = normalizePartOfSpeech(word.pos) || word.pos.trim();
-      const newSenseId = buildSenseId(newWordKey, pos, word.meaningZh.trim());
-      if (
-        word.originalWordKey === newWordKey &&
-        word.originalSenseId === newSenseId
-      )
-        return [];
-      return [
-        {
-          newSenseId,
-          newWordKey,
-          // Both came out of the Library through the form, which types every
-          // field as a plain string.
-          oldSenseId: asSenseId(word.originalSenseId),
-          oldWordKey: normalizeWordKey(word.originalWordKey),
-        },
-      ];
-    });
     const words = defaultSet
       ? [...getSetWords(state, defaultSet.id), ...values.words]
       : values.words;
@@ -135,7 +93,6 @@ export function SetEditor({
           ? defaultSet.folderId
           : values.folderId,
       id: targetSetId,
-      remaps,
       setName: values.setName,
       words: words.map((word) => ({
         examples: word.example
@@ -147,17 +104,14 @@ export function SetEditor({
         word: word.word,
       })),
     });
-    if (remaps.length) await useLearningStore.getState().remapSenses(remaps);
     router.push(`/sets/${saved.id}`);
   });
 
   // Editing is a state you stepped into from the set's own page, so leaving it
   // returns there. A new set has no page yet, so it returns to the folder it
   // was started from.
-  const homeFolderId = current?.folderId ?? initialFolderId;
-  const cancelHref = setId
-    ? `/sets/${setId}`
-    : homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
+  const homeFolderId = initialFolderId;
+  const cancelHref = homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
       ? `/library?folderId=${encodeURIComponent(homeFolderId)}`
       : "/library";
 
@@ -194,7 +148,7 @@ export function SetEditor({
     <BackControl
       allowDiscard
       href={cancelHref}
-      label={t(setId ? "setEditor.backToSet" : "setEditor.cancel")}
+      label={t("setEditor.cancel")}
     />
   );
 
@@ -229,10 +183,9 @@ export function SetEditor({
   if (entry === "assist") {
     return (
       <WordCapture
-        back={<BackControl onClick={() => setEntry(setId ? "manual" : "ask")} />}
+        back={<BackControl onClick={() => setEntry("ask")} />}
         initialFolderId={initialFolderId}
         onSwitchToManual={() => setEntry("manual")}
-        setId={setId}
       />
     );
   }
@@ -241,14 +194,10 @@ export function SetEditor({
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
       <PageHeader
         back={backLink}
-        title={current ? current.setName : t("setEditor.createTitle")}
+        title={t("setEditor.createTitle")}
       />
 
       <div>
-        {setId ? (
-          metadataFields
-        ) : (
-          // A first set only needs a word; naming and filing stay folded away.
           <details className="group rounded-[var(--radius-card)] border px-4 py-3.5 open:bg-[var(--surface-inset)] sm:px-5">
             <summary className="cursor-pointer list-none text-sm font-medium marker:content-none">
               <span className="flex items-center justify-between gap-3">
@@ -264,7 +213,6 @@ export function SetEditor({
             </summary>
             <div className="mt-5 rule-t pt-5">{metadataFields}</div>
           </details>
-        )}
 
         <div className="section-gap flex flex-wrap items-center justify-between gap-3">
           <h2 className="type-section">
@@ -284,7 +232,7 @@ export function SetEditor({
         <div className="mt-4 rule-card rule-list">
           {fields.fields.map((field, index) => (
             <SetWordFields
-              autoFocus={!setId && index === 0}
+              autoFocus={index === 0}
               form={form}
               index={index}
               key={field.id}
@@ -301,7 +249,6 @@ export function SetEditor({
           ))}
         </div>
 
-        {!setId && (
           <p className="mt-4">
             <button
               className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
@@ -311,7 +258,6 @@ export function SetEditor({
               {t("setEditor.switchToAssist")}
             </button>
           </p>
-        )}
 
         <div className="mt-7 flex justify-end">
           <Button
@@ -323,7 +269,7 @@ export function SetEditor({
             <Icons.success />
             {form.formState.isSubmitting
               ? t("setEditor.saving")
-              : t(setId ? "setEditor.save" : "setEditor.saveWord")}
+              : t("setEditor.saveWord")}
           </Button>
         </div>
       </div>

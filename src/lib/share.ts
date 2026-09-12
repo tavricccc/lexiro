@@ -15,7 +15,7 @@ import type {
   WordEntry,
   WordKey,
 } from "@/types";
-import { normalizeShareableAiSettings } from "./ai-provider";
+import { FULL_BACKUP_VERSION } from "@/constants";
 import { normalizeFolderParentId, UNCATEGORIZED_FOLDER_ID } from "./folders";
 import { QUESTION_STAT_KEYS } from "./learning-defaults";
 import { asSenseId, normalizeWordKey } from "./library";
@@ -626,7 +626,14 @@ export function normalizeDashboardStats(value: unknown): DashboardStats {
 }
 
 export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
-  const source = requiredObject(value, "完整備份");
+  const original = requiredObject(value, "完整備份");
+  // Version 1 included device AI settings. The managed service has no such settings.
+  const source: Record<string, unknown> = original.version === 1
+    ? (() => {
+        const { aiSettings: _removed, ...data } = original;
+        return { ...data, version: FULL_BACKUP_VERSION };
+      })()
+    : original;
   assertKnownKeys(
     source,
     [
@@ -637,13 +644,12 @@ export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
       "library",
       "learning",
       "stats",
-      "aiSettings",
     ],
     "完整備份",
   );
   if (source.kind !== "full-backup") throw new Error("不是有效的完整備份檔");
-  if (requiredNumber(source.version, "version") !== 1)
-    throw new Error("只支援完整備份 version 1");
+  if (requiredNumber(source.version, "version") !== FULL_BACKUP_VERSION)
+    throw new Error("不支援此完整備份版本");
   return {
     version: requiredNumber(source.version, "version"),
     exportedAt: requiredText(source.exportedAt, "exportedAt"),
@@ -652,6 +658,5 @@ export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
     library: normalizeLibraryState(source.library),
     learning: normalizeLearningProgress(source.learning),
     stats: normalizeDashboardStats(source.stats),
-    aiSettings: normalizeShareableAiSettings(source.aiSettings),
   };
 }

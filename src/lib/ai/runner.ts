@@ -4,7 +4,6 @@ import type {
   AiTask,
   AiTaskStep,
   AiTurnResult,
-  AiUsage,
 } from "@/src/types/ai";
 import { t } from "@/lib/i18n";
 import { AiRequestError } from "./errors";
@@ -26,7 +25,6 @@ export interface AiRunUpdate<T> {
   completed: number;
   total: number;
   segments: number;
-  usage: AiUsage;
   notices: string[];
 }
 export function waitForRetry(ms: number, signal?: AbortSignal): Promise<void> {
@@ -65,7 +63,6 @@ export async function runTask<T>(
       completed: run.completed,
       total: run.total,
       segments: run.segments,
-      usage: { ...run.session.usage },
       notices: [...run.session.notices],
     });
   report();
@@ -81,13 +78,13 @@ export async function runTask<T>(
       repair = "",
       parsed: T[] | undefined;
     for (let validation = 0; validation < 2; validation++) {
-      const prompt = step.prompt + repair;
+      const prompt = step.prompt;
       for (let attempt = 0; attempt < 3; attempt++) {
         characters = 0;
         try {
           reply = await send(run.session, prompt, {
             signal: options.signal,
-            schema: run.task.schema,
+            repair,
             onPhase: (next) => {
               phase = next;
               report();
@@ -96,7 +93,6 @@ export async function runTask<T>(
               characters = count;
               report();
             },
-            onUsage: () => report(),
           });
           break;
         } catch (reason) {
@@ -175,7 +171,7 @@ export async function runTask<T>(
           break;
         }
         if (validation === 1) throw reason;
-        repair = `\n上一次本段回覆未通過檢查：${reason instanceof Error ? reason.message : String(reason)}。請重新產生本段，修正以上問題。`;
+        repair = reason instanceof Error ? reason.message : String(reason);
         reply = undefined;
         continue;
       }

@@ -1,4 +1,3 @@
-import type { AiSettings } from './ai'
 import type { DashboardStats, LearningProgress } from './learning'
 import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, WordEntry } from './library'
 
@@ -24,7 +23,6 @@ export interface FullBackupPayload {
   library: LibraryState
   learning: LearningProgress
   stats: DashboardStats
-  aiSettings: Omit<AiSettings, 'apiKey'>
 }
 
 export type BackupPayload = SetSharePayload | FullBackupPayload

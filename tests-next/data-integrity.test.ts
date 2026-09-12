@@ -1,4 +1,4 @@
-import type { AiSettings, LearningProgress, LibraryState } from "@/types";
+import type { LearningProgress, LibraryState } from "@/types";
 import { describe, expect, it } from "vitest";
 
 import { createUncategorizedFolder } from "@/src/lib/folders";
@@ -6,7 +6,7 @@ import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
-import { defaultAiSettings } from "@/src/lib/ai-provider";
+import { normalizeFullBackupPayload } from "@/src/lib/share";
 
 function library(
   setId: string,
@@ -70,15 +70,6 @@ describe("data integrity", () => {
   });
 
   it("exports a canonical backup without the API key", () => {
-    const ai: AiSettings = {
-      ...defaultAiSettings,
-      enabled: true,
-      provider: "openai",
-      apiKey: "secret",
-      baseUrl: "",
-      model: "gpt-4o-mini",
-      batchSize: 24,
-    };
     const progress: LearningProgress = {
       cards: {},
       updatedAt: "2026-08-16T00:00:00.000Z",
@@ -87,12 +78,13 @@ describe("data integrity", () => {
       library("one", "adapt", "常用單字"),
       progress,
       createDefaultStats(),
-      ai,
     );
 
     expect(backup.kind).toBe("full-backup");
-    expect(backup.aiSettings).not.toHaveProperty("apiKey");
-    expect(backup.aiSettings.batchSize).toBe(24);
+    expect(backup.version).toBe(2);
+    expect(backup).not.toHaveProperty("aiSettings");
+    const migrated = normalizeFullBackupPayload({ ...backup, version: 1, aiSettings: { model: "retired", apiKey: "secret" } });
+    expect(migrated).toEqual(backup);
   });
 
   it("previews backup additions without replacing local activity", () => {
@@ -103,15 +95,6 @@ describe("data integrity", () => {
       incoming,
       { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
       createDefaultStats(),
-      {
-        ...defaultAiSettings,
-        enabled: false,
-        provider: "openai",
-        apiKey: "",
-        baseUrl: "",
-        model: "gpt-4o-mini",
-        batchSize: 24,
-      },
     );
     const prepared = prepareBackupImport(
       backup,

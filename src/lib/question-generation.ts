@@ -9,9 +9,8 @@ import type {
 import { senseKey } from "./library";
 import { questionUsesWords } from "./question-ownership";
 import { createSourceRef } from "./source-ref";
-import { extractJsonText } from "./ai-provider";
+import { extractJsonText } from "./ai/json";
 import { assembleGeneratedQuestions } from "./question-assembly";
-import { buildQuestionPrompt } from "./question-prompts";
 import {
   isPassageKind,
   READING_MIN_QUESTIONS,
@@ -159,14 +158,6 @@ export function filterQuestionsForWords(
   );
 }
 
-export function buildQuestionGenerationPrompt(
-  words: WordEntry[],
-  kind: GeneratedQuestionKind,
-  difficulty: GeneratedQuestionDifficulty = 2,
-  options: { needDistractors?: boolean } = {},
-): string {
-  return buildQuestionPrompt(kind, words, difficulty, options).text;
-}
 
 /**
  * Parses the model's reply and assembles finished questions from it.

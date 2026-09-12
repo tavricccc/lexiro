@@ -1,6 +1,6 @@
-import { SetEditor } from "@/components/library/set-editor";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: Promise<{ setId: string }> }) {
   const { setId } = await params;
-  return <SetEditor setId={setId} />;
+  redirect(`/sets/${encodeURIComponent(setId)}`);
 }

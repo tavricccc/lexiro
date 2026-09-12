@@ -10,6 +10,7 @@ const withSerwist = withSerwistInit({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  transpilePackages: ["@lexiro/ai-contract"],
   // Dev server binds to 0.0.0.0, so allow requests from LAN/VPN addresses.
   allowedDevOrigins: ["192.168.1.*", "100.*.*.*", "*.local"],
   experimental: {
