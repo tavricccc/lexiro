@@ -1,0 +1,57 @@
+{
+  "id": "baseline-wordbank-eight-targets-two-extras",
+  "kind": "wordBank",
+  "turn": 1,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 24800,
+  "promptCharacters": 1913,
+  "outputCharacters": 1366,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Wetland Recovery Project",
+    "passage": "Our school science club began studying a wetland near town after frogs became harder to find. The students learned that the frogs’ habitat had grown smaller as nearby building work filled shallow pools. During a dry month, water was scarce, so the club asked families to conserve water at home. At the wetland, they used simple markers to monitor the water level each week. They also marked off a section where fragile frog eggs rested among the reeds. After learning which pools dried first, the students worked with park staff to restore one damaged area. The staff showed them how to remove litter without disturbing the eggs. To decide whether the work helped, the club needed reliable records rather than guesses. They took photos from the same spots and wrote down each week’s water level. This evidence showed that the restored pool held water longer and that more frogs appeared by summer. The students shared their results at school and reminded others that small actions can protect local wildlife.",
+    "blanks": [
+      {
+        "ref": "s1",
+        "answer": "fragile"
+      },
+      {
+        "ref": "s2",
+        "answer": "conserve"
+      },
+      {
+        "ref": "s3",
+        "answer": "scarce"
+      },
+      {
+        "ref": "s4",
+        "answer": "habitat"
+      },
+      {
+        "ref": "s5",
+        "answer": "monitor"
+      },
+      {
+        "ref": "s6",
+        "answer": "restore"
+      },
+      {
+        "ref": "s7",
+        "answer": "reliable"
+      },
+      {
+        "ref": "s8",
+        "answer": "evidence"
+      }
+    ],
+    "extraOptions": [
+      "abundant",
+      "pollute"
+    ]
+  }
+}

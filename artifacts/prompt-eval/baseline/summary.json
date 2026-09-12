@@ -1,0 +1,728 @@
+{
+  "phase": "baseline",
+  "method": "CLI subagent with full transcript replay; not a browser HTTP or cache benchmark",
+  "requestedModel": "gpt-5.6-luna",
+  "requestedEffort": "medium",
+  "turns": 14,
+  "passed": 12,
+  "failed": 2,
+  "results": [
+    {
+      "id": "baseline-vocabulary-two-turn-global-refs",
+      "kind": "vocabulary",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 28637,
+      "promptCharacters": 2024,
+      "outputCharacters": 1678,
+      "parsedCount": 8,
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "ref": "s1",
+            "answer": "bark",
+            "distractors": [
+              "shell",
+              "feather",
+              "scale"
+            ],
+            "sentence": "Although the storm had stripped away several layers, the tree's bark still protected its trunk from insects."
+          },
+          {
+            "ref": "s2",
+            "answer": "bark",
+            "distractors": [
+              "blink",
+              "kneel",
+              "yawn"
+            ],
+            "sentence": "Although the dog usually stayed quiet, it began to bark when unfamiliar footsteps approached the gate."
+          },
+          {
+            "ref": "s3",
+            "answer": "rescue",
+            "distractors": [
+              "entertain",
+              "question",
+              "decorate"
+            ],
+            "sentence": "Although the waves forced the smaller boats to turn back, the coast guard managed to rescue two sailors before dark."
+          },
+          {
+            "ref": "s4",
+            "answer": "detect",
+            "distractors": [
+              "decorate",
+              "divide",
+              "replace"
+            ],
+            "sentence": "Although the crack was too small to see, the sensors could detect a change in pressure before the machine failed."
+          },
+          {
+            "ref": "s5",
+            "answer": "contamination",
+            "distractors": [
+              "freshness",
+              "sweetness",
+              "pressure"
+            ],
+            "sentence": "Although the bottles had been sealed, inspectors rejected the batch after tests revealed contamination inside several of them."
+          },
+          {
+            "ref": "s6",
+            "answer": "isolate",
+            "distractors": [
+              "examine",
+              "comfort",
+              "release"
+            ],
+            "sentence": "Although the patient felt well, doctors chose to isolate him until further tests ruled out an infectious disease."
+          },
+          {
+            "ref": "s7",
+            "answer": "cautious",
+            "distractors": [
+              "cheerful",
+              "impatient",
+              "curious"
+            ],
+            "sentence": "Although the shortcut looked empty, Mina was cautious as she crossed the icy bridge, testing each step before moving on."
+          },
+          {
+            "ref": "s8",
+            "answer": "estimate",
+            "distractors": [
+              "decorate",
+              "cancel",
+              "borrow"
+            ],
+            "sentence": "Although the builders had not yet opened the walls, they could estimate the repair cost from the visible damage and similar projects."
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-vocabulary-two-turn-global-refs",
+      "kind": "vocabulary",
+      "turn": 2,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 13041,
+      "promptCharacters": 5506,
+      "outputCharacters": 236,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "ref": "s9",
+            "answer": "recover",
+            "distractors": [
+              "suffer",
+              "escape",
+              "prevent"
+            ],
+            "sentence": "Although the fever had passed, Mei still felt weak and needed another week to recover from the flu before she could return to practice."
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-word-import-ambiguous-injection",
+      "kind": "words",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 10648,
+      "promptCharacters": 1135,
+      "outputCharacters": 278,
+      "parsedCount": 3,
+      "error": "",
+      "response": {
+        "words": [
+          {
+            "sourceRef": "source-1",
+            "senses": [
+              {
+                "pos": "phr. v.",
+                "meaningZh": "偶然遇見；撞上",
+                "examples": []
+              }
+            ]
+          },
+          {
+            "sourceRef": "source-2",
+            "senses": [
+              {
+                "pos": "phr. v.",
+                "meaningZh": "尊敬；敬仰",
+                "examples": []
+              }
+            ]
+          },
+          {
+            "sourceRef": "source-3",
+            "senses": [
+              {
+                "pos": "phr. v.",
+                "meaningZh": "（機器）故障",
+                "examples": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-wordbank-eight-targets-two-extras",
+      "kind": "wordBank",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 18543,
+      "promptCharacters": 1646,
+      "outputCharacters": 1428,
+      "parsedCount": 0,
+      "error": "Error: 第 1 題必須提供 10 個共用選項",
+      "response": {
+        "title": "A Wetland’s Slow Recovery",
+        "passage": "After years of construction, a wetland near the town had become a fragile place for wildlife. The remaining pools were shallow, and clean water was scarce during the dry season. Local students joined a project to conserve the wetland before more plants disappeared. They first mapped the habitat, noting which areas still offered food and shelter to birds. Each week, volunteers monitor water levels and record changes in the number of visiting species. Because their notes come from the same locations, the data are reliable enough to guide the next steps. The team removed trash and blocked small drains that had been carrying water away. These actions helped restore parts of the wetland, although the work took longer than expected. In spring, several bird species returned to the pools. Their presence offered evidence that the habitat was improving. The students shared their results at a town meeting, where residents suggested ways to reduce water use nearby. The project showed that even a small community can help a damaged place recover when it acts with patience.",
+        "blanks": [
+          {
+            "ref": "s1",
+            "answer": "fragile"
+          },
+          {
+            "ref": "s2",
+            "answer": "conserve"
+          },
+          {
+            "ref": "s3",
+            "answer": "scarce"
+          },
+          {
+            "ref": "s4",
+            "answer": "habitat"
+          },
+          {
+            "ref": "s5",
+            "answer": "monitor"
+          },
+          {
+            "ref": "s6",
+            "answer": "restore"
+          },
+          {
+            "ref": "s7",
+            "answer": "reliable"
+          },
+          {
+            "ref": "s8",
+            "answer": "evidence"
+          }
+        ],
+        "extraOptions": [
+          "protect",
+          "sign"
+        ]
+      }
+    },
+    {
+      "id": "cloze-irregular-multiword-v1",
+      "kind": "cloze",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 20756,
+      "promptCharacters": 1222,
+      "outputCharacters": 1292,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "A Garden for the Neighborhood",
+        "passage": "When a storm damaged the community garden, our class decided to help repair it. We planned to go to the garden after school on Friday. The teacher asked each student to take one useful item, such as gloves or a small shovel. Maya agreed to look after the young plants while the rest of us cleared broken branches. Before planting new seeds, we needed to carry out a simple soil test. Only students interested in learning about gardening signed up for the extra workshop. On Friday, dark clouds gathered, but the forecast said the rain would stop by noon. We packed our tools carefully so that nothing would be lost on the bus. At the garden, a local farmer showed us how to prepare the soil. By the end of the afternoon, the beds were ready for new plants. We left tired, but pleased that our work had given the neighborhood a fresh start.",
+        "blanks": [
+          {
+            "ref": "s1",
+            "answer": "go",
+            "distractors": [
+              "come",
+              "stay",
+              "leave"
+            ]
+          },
+          {
+            "ref": "s2",
+            "answer": "take",
+            "distractors": [
+              "bring",
+              "borrow",
+              "send"
+            ]
+          },
+          {
+            "ref": "s3",
+            "answer": "look after",
+            "distractors": [
+              "look for",
+              "look at",
+              "look into"
+            ]
+          },
+          {
+            "ref": "s4",
+            "answer": "carry out",
+            "distractors": [
+              "carry on",
+              "carry off",
+              "carry through"
+            ]
+          },
+          {
+            "ref": "s5",
+            "answer": "interested",
+            "distractors": [
+              "bored",
+              "worried",
+              "surprised"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "grammar-irregular-multiword-v1",
+      "kind": "grammar",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 42667,
+      "promptCharacters": 1665,
+      "outputCharacters": 1181,
+      "parsedCount": 0,
+      "error": "Error: 這段有遺漏或無效的題目，請補齊。",
+      "response": {
+        "items": [
+          {
+            "ref": "s1",
+            "answer": "went",
+            "distractors": [
+              "became",
+              "remained",
+              "turned"
+            ],
+            "sentence": "Although the shop had attracted more customers each month, it went bankrupt after its largest supplier suddenly doubled its prices."
+          },
+          {
+            "ref": "s2",
+            "answer": "took",
+            "distractors": [
+              "paid",
+              "made",
+              "gave"
+            ],
+            "sentence": "The long delay took a toll on the crew's patience, even though everyone had expected the ferry to arrive late."
+          },
+          {
+            "ref": "s3",
+            "answer": "looked after",
+            "distractors": [
+              "looked for",
+              "looked into",
+              "looked over"
+            ],
+            "sentence": "While the parents attended the evening course, their teenage son looked after his little sister, who was still too young to stay home alone."
+          },
+          {
+            "ref": "s4",
+            "answer": "carried out",
+            "distractors": [
+              "carried on",
+              "carried over",
+              "carried through"
+            ],
+            "sentence": "Although the first trial produced unclear results, the researchers carried out a second test under stricter conditions before drawing any conclusions."
+          },
+          {
+            "ref": "s5",
+            "answer": "interested",
+            "distractors": [
+              "bored",
+              "confused",
+              "worried"
+            ],
+            "sentence": "Although the lecture moved quickly through several unfamiliar theories, Nina stayed interested because each one helped explain a mystery from her childhood."
+          }
+        ]
+      }
+    },
+    {
+      "id": "discourse-difficulty-2",
+      "kind": "discourse",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 29286,
+      "promptCharacters": 1645,
+      "outputCharacters": 1625,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "A Safer Riverside Cleanup",
+        "passage": "The town's riverside park had hosted a student cleanup every spring. This year, however, the event nearly stopped because the organizers faced a shortage of gloves and bags. Instead of giving up, the students asked nearby shops to help. Their science teacher suggested that they first observe the river's current before choosing where to work. A few students stood on the bank and watched how quickly leaves moved downstream. From those observations, they learned that the water near the bridge was moving faster than it was near the reeds. The team then marked the bridge area as unsafe for collecting floating litter. To cover the safer sections, the students split into groups and agreed to cooperate. Each group received only a small set of tools, so the leader kept some bags in reserve. The shops' donations arrived just before the cleanup began, easing the shortage. Because the students shared the extra supplies carefully, every group could finish its section. By noon, they had removed most of the litter without anyone entering the fast current.",
+        "removals": [
+          "Their science teacher suggested that they first observe the river's current before choosing where to work.",
+          "From those observations, they learned that the water near the bridge was moving faster than it was near the reeds.",
+          "To cover the safer sections, the students split into groups and agreed to cooperate.",
+          "Each group received only a small set of tools, so the leader kept some bags in reserve."
+        ],
+        "extraOption": "Since the cleanup had been canceled, the students stayed home and never saw the river."
+      }
+    },
+    {
+      "id": "discourse-difficulty-2",
+      "kind": "discourse",
+      "turn": 2,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 20837,
+      "promptCharacters": 4725,
+      "outputCharacters": 1461,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "Watching the Creek Rise",
+        "passage": "After a night of heavy rain, students at Brookside School worried that the nearby creek might overflow. Their science club had placed a simple gauge beside the bank to track changes in water level. On Saturday, they went to observe the creek and record how far the water had risen. They also checked the current weather report from a reliable local service. It predicted more rain that afternoon, so the students knew they had little time to act. However, the gauge had shifted in the soft mud, making its latest reading uncertain. They compared it with marks on a bridge post that they had photographed the previous week. That comparison suggested the water was rising faster than the gauge showed. For that reason, the club sent a warning to the school office and nearby families. When the rain finally stopped, the water began to fall before reaching the path. The students later used their notes to make the gauge more reliable for future observations.",
+        "removals": [
+          "On Saturday, they went to observe the creek and record how far the water had risen.",
+          "It predicted more rain that afternoon, so the students knew they had little time to act.",
+          "They compared it with marks on a bridge post that they had photographed the previous week.",
+          "For that reason, the club sent a warning to the school office and nearby families."
+        ],
+        "extraOption": "The students concluded that the dry creek had never contained any water."
+      }
+    },
+    {
+      "id": "discourse-difficulty-3",
+      "kind": "discourse",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 34727,
+      "promptCharacters": 1656,
+      "outputCharacters": 1737,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "A Better Plan for the River",
+        "passage": "Each spring, our school cleans a stretch of the river near town. The event usually focuses on collecting litter, but this year our teacher wanted us to understand the river before we acted. Before making a plan, she asked us to observe the river for an hour. That careful look revealed plastic caught among the reeds and a muddy patch where runoff entered the water. We also discovered a shortage of sturdy gloves, so some students worried they would have to sit out. To address both problems, we agreed to cooperate with a neighborhood shop and change our cleanup plan. Its owner promised to reserve a box of gloves for our group. Because of that promise, students who had none could still join. On Saturday morning, we divided into teams and began clearing litter from the reeds while another group marked the muddy area for the town staff. By noon, we had filled several bags and sent the staff a clear report about the runoff. The river was not perfectly clean, but our work had become more useful because we had listened before acting. I used to think a cleanup was successful only when the water looked clear; now I believe careful observation and shared effort matter just as much.",
+        "removals": [
+          "Before making a plan, she asked us to observe the river for an hour.",
+          "We also discovered a shortage of sturdy gloves, so some students worried they would have to sit out.",
+          "Its owner promised to reserve a box of gloves for our group.",
+          "On Saturday morning, we divided into teams and began clearing litter from the reeds while another group marked the muddy area for the town staff."
+        ],
+        "extraOption": "The school had canceled the cleanup before spring began, so no students took part."
+      }
+    },
+    {
+      "id": "discourse-difficulty-3",
+      "kind": "discourse",
+      "turn": 2,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 19619,
+      "promptCharacters": 4859,
+      "outputCharacters": 1377,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "A Gauge Worth Trusting",
+        "passage": "Each month, volunteers check the river gauge near our town. The current project is testing whether an automatic sensor can make those checks easier. At first, most residents trusted the device because its display looked precise. To verify it, volunteer Lina visited the riverbank after a night of rain. She noticed leaves packed around the sensor's intake. The sensor stood beside a narrow bend, where the current often carried debris toward it. Lina cleared the leaves, but the readings remained unexpectedly low. She then compared the current readings with flood marks on the bridge. Those marks showed that the water had risen, suggesting the gauge was not reliable. Instead of dismissing the sensor, Lina asked an engineer to inspect it. He found a loose cable and repaired it that afternoon. Since then, the gauge's readings have matched the bridge marks, and residents have a stronger reason to trust the device.",
+        "removals": [
+          "To verify it, volunteer Lina visited the riverbank after a night of rain.",
+          "The sensor stood beside a narrow bend, where the current often carried debris toward it.",
+          "She then compared the current readings with flood marks on the bridge.",
+          "Instead of dismissing the sensor, Lina asked an engineer to inspect it."
+        ],
+        "extraOption": "The river had dried up completely, so there was no water to measure."
+      }
+    },
+    {
+      "id": "reading-difficulty-2",
+      "kind": "reading",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 17970,
+      "promptCharacters": 1541,
+      "outputCharacters": 2241,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "A Plan for the Community Garden",
+        "passage": "When a dry spring caused a shortage of water at the community garden, the volunteers met to make a plan. They agreed to cooperate by taking turns carrying water from a nearby well. Each team would reserve one bucket for the youngest plants, which needed extra care. Before watering, volunteers would observe the soil to see which beds were driest. They chose Maya to record the amount used because her notes had always been reliable. By sharing the work and checking the soil first, the group hoped to keep every plant alive until the rain returned.",
+        "items": [
+          {
+            "ref": "s4",
+            "answer": "The garden had too little water, so volunteers planned how to use it carefully.",
+            "distractors": [
+              "The garden had too many plants, so volunteers planned to remove some.",
+              "The volunteers could not find a well, so they decided to stop gardening.",
+              "The rain returned early, so the volunteers canceled their meeting."
+            ],
+            "question": "What is the main problem the volunteers are trying to solve?"
+          },
+          {
+            "ref": "s1",
+            "answer": "They take turns carrying water from the well.",
+            "distractors": [
+              "They each water only the plants they brought from home.",
+              "They ask Maya to carry all the water by herself.",
+              "They wait for the rain before doing any work."
+            ],
+            "question": "How do the volunteers cooperate?"
+          },
+          {
+            "ref": "s2",
+            "answer": "They keep one bucket of water for the youngest plants.",
+            "distractors": [
+              "They keep one bucket empty for the next meeting.",
+              "They use every bucket on the driest garden bed.",
+              "They save the well water for the volunteers to drink."
+            ],
+            "question": "What does each team reserve?"
+          },
+          {
+            "ref": "s3",
+            "answer": "They check the soil to find out which beds are driest.",
+            "distractors": [
+              "They watch the well to see when the rain will begin.",
+              "They count the volunteers before choosing a team leader.",
+              "They inspect the youngest plants to decide which ones to remove."
+            ],
+            "question": "What do the volunteers observe before watering?"
+          },
+          {
+            "ref": "s5",
+            "answer": "Maya has kept trustworthy notes in the past.",
+            "distractors": [
+              "Maya has the most experience carrying water.",
+              "Maya has grown the youngest plants herself.",
+              "Maya has promised that rain will come soon."
+            ],
+            "question": "Why do the volunteers choose Maya to record the water use?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reading-difficulty-2",
+      "kind": "reading",
+      "turn": 2,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 14303,
+      "promptCharacters": 5123,
+      "outputCharacters": 1665,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "Watching the Stream",
+        "passage": "A science class visited a stream to learn how water moves. They noticed that a strong current carried fallen leaves past a row of rocks. The students placed small markers beside the bank and watched how quickly the leaves passed them. Their teacher asked them to compare these observations with the current measurements from the previous visit. Those earlier records showed that the water had moved more slowly after several dry days. Since the leaves now passed the markers faster, the class concluded that the stream was moving more quickly than before.",
+        "items": [
+          {
+            "ref": "s6",
+            "answer": "A strong movement of water carried the leaves downstream.",
+            "distractors": [
+              "A row of rocks carried the leaves toward the bank.",
+              "The students' markers pulled the leaves out of the stream.",
+              "The earlier records pushed the leaves past the students."
+            ],
+            "question": "What does the word \"current\" refer to in the second sentence?"
+          },
+          {
+            "ref": "s7",
+            "answer": "The measurements collected during the class's present visit.",
+            "distractors": [
+              "The measurements planned for the next class visit.",
+              "The measurements recorded during the previous visit.",
+              "The measurements collected after several dry days."
+            ],
+            "question": "Which measurements are described as current?"
+          },
+          {
+            "ref": "s6",
+            "answer": "The stream was moving faster than it had during the previous visit.",
+            "distractors": [
+              "The stream was moving more slowly than during the previous visit.",
+              "The stream had stopped moving since the previous visit.",
+              "The stream was moving at the same speed as during the previous visit."
+            ],
+            "question": "What can the class infer from the leaves passing the markers faster?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reading-difficulty-3",
+      "kind": "reading",
+      "turn": 1,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 18591,
+      "promptCharacters": 1552,
+      "outputCharacters": 2986,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "The Shared Seed Shelf",
+        "passage": "When the town library opened a small seed shelf, its organizers hoped neighbors would cooperate to grow more vegetables. Each family could reserve a few packets for spring planting, but no one was required to return seeds. At first, the shelf looked successful because it emptied quickly. Then the organizers observed that several families had taken many packets while others found none. A shortage of seeds followed, and some volunteers blamed people who had taken more than they needed. Lin, the librarian, thought the problem came partly from the shelf’s unclear rules. She suggested keeping a reliable count of packets and asking visitors to take only what they planned to plant. The volunteers tried the new system and added a notebook where borrowers could record what they took. By summer, fewer packets went missing, and more families had a chance to plant. Lin did not claim that a notebook could solve every problem, but she believed clear, shared rules made cooperation easier.",
+        "items": [
+          {
+            "ref": "s1",
+            "answer": "The library improved its seed shelf by combining shared rules with cooperation.",
+            "distractors": [
+              "The library succeeded by allowing families to take as many seeds as they wanted.",
+              "The library solved its seed shortage by asking volunteers to stop helping.",
+              "The library decided that seed sharing could not work in a town."
+            ],
+            "question": "What is the main idea of the passage?"
+          },
+          {
+            "ref": "s2",
+            "answer": "Families could set aside a few seed packets for spring planting.",
+            "distractors": [
+              "Families had to return every packet after the harvest.",
+              "Families could reserve packets only after the shelf was empty.",
+              "Families were required to give the library a notebook in return."
+            ],
+            "question": "What could each family do with the seed packets?"
+          },
+          {
+            "ref": "s3",
+            "answer": "Several families had taken many packets, leaving none for some visitors.",
+            "distractors": [
+              "Most visitors had returned more seeds than they had borrowed.",
+              "The volunteers had stored the packets where visitors could not see them.",
+              "Lin had observed that the seeds were unsuitable for spring planting."
+            ],
+            "question": "What did the organizers notice before changing the rules?"
+          },
+          {
+            "ref": "s4",
+            "answer": "Some visitors could not get seeds because the shelf had too few packets.",
+            "distractors": [
+              "The library lacked enough volunteers to open the seed shelf.",
+              "The town had too few families interested in planting vegetables.",
+              "The notebook ran out of space for recording borrowed packets."
+            ],
+            "question": "What does the passage suggest about the shortage?"
+          },
+          {
+            "ref": "s5",
+            "answer": "Lin believed that clear rules could make sharing work better, though they would not fix everything.",
+            "distractors": [
+              "Lin believed a notebook would prevent every problem from happening.",
+              "Lin believed families should no longer share seeds with neighbors.",
+              "Lin believed the volunteers should decide who deserved to plant."
+            ],
+            "question": "What can be inferred about Lin’s attitude toward the new system?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reading-difficulty-3",
+      "kind": "reading",
+      "turn": 2,
+      "phase": "baseline",
+      "method": "codex-cli-subagent",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "configurationVerified": true,
+      "durationMs": 15267,
+      "promptCharacters": 5890,
+      "outputCharacters": 2056,
+      "parsedCount": 1,
+      "error": "",
+      "response": {
+        "title": "A River Walk in Spring",
+        "passage": "The town council is considering a new walking path beside the river. At a meeting, Mira asked residents to observe how the water current changed after heavy rain. She worried that a path placed too close to the bank might be unsafe. The current plan would put benches near the old footbridge, where the river bends sharply. Some council members favored building quickly so the town could open the path this summer. Mira suggested waiting for volunteers to record the water level for several weeks. Their notes showed that the current was usually gentle but rose quickly after storms. The council moved the benches farther from the bank and agreed to review the path after the next rainy season. Mira welcomed the change, though she said careful observation should continue before the town adds more facilities.",
+        "items": [
+          {
+            "ref": "s6",
+            "answer": "The river’s flow was usually gentle but could rise quickly after storms.",
+            "distractors": [
+              "The river’s flow stayed dangerously high throughout the summer.",
+              "The river’s flow was strongest near the old footbridge every day.",
+              "The river’s flow became gentle only after the benches were moved."
+            ],
+            "question": "What did the volunteers’ notes show about the water current?"
+          },
+          {
+            "ref": "s7",
+            "answer": "The plan at that time placed benches near the old footbridge.",
+            "distractors": [
+              "The plan at that time required the path to open before summer.",
+              "The plan at that time kept all benches far from the riverbank.",
+              "The plan at that time called for volunteers to build a second bridge."
+            ],
+            "question": "What does the phrase “the current plan” refer to in the passage?"
+          },
+          {
+            "ref": "s6",
+            "answer": "Mira believed the town should use observations to guide decisions about the path.",
+            "distractors": [
+              "Mira believed the town should finish the path as quickly as possible.",
+              "Mira believed the river was too dangerous for any walking path.",
+              "Mira believed moving the benches meant no further review was needed."
+            ],
+            "question": "What can be inferred about Mira’s attitude toward the council’s decision?"
+          }
+        ]
+      }
+    }
+  ]
+}

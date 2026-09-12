@@ -1,0 +1,57 @@
+{
+  "id": "baseline-wordbank-eight-targets-two-extras",
+  "kind": "wordBank",
+  "turn": 1,
+  "phase": "final-tuned",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 29368,
+  "promptCharacters": 2003,
+  "outputCharacters": 1417,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Pond Comes Back to Life",
+    "passage": "When our school began caring for a nearby pond, the class first learned why it mattered. The pond was a habitat for frogs and insects that had disappeared from other parts of the neighborhood. After two dry months, water became scarce, and the muddy edges began to crack. Young plants around the pond were fragile, so students marked off a path to keep visitors from stepping on them. To conserve water, the class used a bucket instead of a running hose when cleaning the pond's edge. They also set up a small device to monitor the water level, and it sent an alert whenever the level changed suddenly. Over the next few weeks, students removed litter and planted native reeds to restore the pond. A reliable sensor kept sending readings even during heavy rain, giving the class a steady record of changes. By the end of the term, the water level had risen, and frogs were calling again at dusk. Their return was evidence that the pond was becoming healthier. The students shared their results at an assembly and invited other classes to help care for the site.",
+    "blanks": [
+      {
+        "ref": "s1",
+        "answer": "fragile"
+      },
+      {
+        "ref": "s2",
+        "answer": "conserve"
+      },
+      {
+        "ref": "s3",
+        "answer": "scarce"
+      },
+      {
+        "ref": "s4",
+        "answer": "habitat"
+      },
+      {
+        "ref": "s5",
+        "answer": "monitor"
+      },
+      {
+        "ref": "s6",
+        "answer": "restore"
+      },
+      {
+        "ref": "s7",
+        "answer": "reliable"
+      },
+      {
+        "ref": "s8",
+        "answer": "evidence"
+      }
+    ],
+    "extraOptions": [
+      "inspect",
+      "collect"
+    ]
+  }
+}

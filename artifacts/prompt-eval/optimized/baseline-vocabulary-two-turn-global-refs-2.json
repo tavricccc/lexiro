@@ -1,0 +1,29 @@
+{
+  "id": "baseline-vocabulary-two-turn-global-refs",
+  "kind": "vocabulary",
+  "turn": 2,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 15014,
+  "promptCharacters": 5433,
+  "outputCharacters": 231,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "items": [
+      {
+        "ref": "s9",
+        "answer": "recovered",
+        "distractors": [
+          "celebrated",
+          "recorded",
+          "delivered"
+        ],
+        "sentence": "After a month of treatment for a serious infection, Hana recovered, and her doctor confirmed that she was healthy again."
+      }
+    ]
+  }
+}

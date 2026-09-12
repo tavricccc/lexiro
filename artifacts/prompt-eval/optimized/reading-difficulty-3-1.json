@@ -1,0 +1,61 @@
+{
+  "id": "reading-difficulty-3",
+  "kind": "reading",
+  "turn": 1,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 28048,
+  "promptCharacters": 2064,
+  "outputCharacters": 2676,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Careful Plan for the Garden",
+    "passage": "After two weeks without rain, the school garden faced a shortage of water. The science club had planted young bean plants, and several leaves were beginning to curl. Rather than water every bed equally, club members agreed to cooperate on a plan. They would use the small tank beside the greenhouse only for the youngest plants. They would reserve the water collected in two covered barrels for days when the tap was turned off. Each morning, one student would observe the soil near the roots and record whether it felt dry. Ms. Chen, who checked the records, said the notes were reliable because different students made the same observations on several mornings. On Friday, the students found that the older plants still had firm leaves, while the youngest ones were dry. They used water from the tank on the young plants and left the barrel water untouched. By the next week, the younger plants had recovered, and the club kept its daily checks in place.",
+    "items": [
+      {
+        "ref": "s4",
+        "answer": "The club combined regular checks with a plan to direct limited water to the plants that needed it most.",
+        "distractors": [
+          "The club gave every garden bed the same amount of water to avoid making choices.",
+          "The club stopped checking the garden once it found enough water in the barrels.",
+          "The club used all its stored water at once so that no plants would remain dry."
+        ],
+        "question": "What is the main idea of the passage?"
+      },
+      {
+        "ref": "s2",
+        "answer": "The club kept the barrel water for days when the tap was turned off.",
+        "distractors": [
+          "The club kept the tank water for days when the tap was turned off.",
+          "The club used the barrel water on the youngest plants that Friday.",
+          "The club saved the barrel water for the older plants with firm leaves."
+        ],
+        "question": "Why did the club reserve the water in the covered barrels?"
+      },
+      {
+        "ref": "s3",
+        "answer": "The youngest plants needed water more urgently than the older plants did.",
+        "distractors": [
+          "The older plants needed water more urgently than the youngest plants did.",
+          "Both groups of plants were equally dry and needed the same treatment.",
+          "The youngest plants had recovered before the students checked them on Friday."
+        ],
+        "question": "Based on the students’ checks and what they found on Friday, which conclusion is best supported?"
+      },
+      {
+        "ref": "s5",
+        "answer": "Different students recorded the same results over several mornings.",
+        "distractors": [
+          "Ms. Chen watered the plants herself every morning before class.",
+          "The students checked only the youngest plants once on Friday.",
+          "The club members all used the same watering can each morning."
+        ],
+        "question": "Why did Ms. Chen consider the students’ notes reliable?"
+      }
+    ]
+  }
+}

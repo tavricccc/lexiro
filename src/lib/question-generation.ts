@@ -15,6 +15,8 @@ import { buildQuestionPrompt } from "./question-prompts";
 import {
   isPassageKind,
   READING_MIN_QUESTIONS,
+  READING_MAX_QUESTIONS,
+  PASSAGE_FORMATS,
   sensesPerRequest,
 } from "./question-formats";
 
@@ -68,11 +70,52 @@ export function splitGenerationBatches(
   const size = questionBatchSize(kind);
 
   if (isPassageKind(kind)) {
-    // One passage per batch: a passage cannot be split across requests.
-    const packs: WordEntry[][] = [];
-    for (let index = 0; index < words.length; index += size)
-      packs.push(words.slice(index, index + size));
-    return packs;
+    // A passage has one occurrence per target. Put different senses of the
+    // same spelling into separate packs, and count senses rather than entries.
+    if (words.every((word) => word.senses.length === 1)) {
+      const packs: WordEntry[][] = [];
+      for (let index = 0; index < words.length; index += size)
+        packs.push(words.slice(index, index + size));
+      return packs;
+    }
+    const count = words.reduce((sum, word) => sum + word.senses.length, 0);
+    const packCount = Math.max(
+      Math.ceil(count / size),
+      ...words.map((word) => word.senses.length),
+      0,
+    );
+    const packs: WordEntry[][] = Array.from({ length: packCount }, () => []);
+    const ordered = [...words].sort(
+      (a, b) => b.senses.length - a.senses.length,
+    );
+    for (const word of ordered)
+      for (const sense of word.senses) {
+        const pack = packs
+          .filter(
+            (candidate) =>
+              candidate.length < size &&
+              candidate.every((entry) => entry.wordKey !== word.wordKey),
+          )
+          .sort((a, b) => a.length - b.length)[0];
+        if (!pack) throw new Error("無法安排不重複詞義的題組");
+        pack.push({ ...word, senses: [sense] });
+      }
+    const sourceOrder = new Map(
+      words
+        .flatMap((word) =>
+          word.senses.map((sense) => senseKey(word.wordKey, sense.id)),
+        )
+        .map((key, index) => [key, index]),
+    );
+    return packs
+      .filter((pack) => pack.length)
+      .map((pack) =>
+        pack.sort(
+          (a, b) =>
+            sourceOrder.get(senseKey(a.wordKey, a.senses[0].id))! -
+            sourceOrder.get(senseKey(b.wordKey, b.senses[0].id))!,
+        ),
+      );
   }
 
   const batches: WordEntry[][] = [];
@@ -128,10 +171,8 @@ export function buildQuestionGenerationPrompt(
 /**
  * Parses the model's reply and assembles finished questions from it.
  *
- * `pool` is the learner's whole library: when the answer is a plain base form,
- * the distractors are taken from their own words of the same part of speech
- * rather than from the model, which is both how a 段考 paper is written and one
- * fewer thing for the model to get wrong.
+ * Preserve context-specific model distractors. The learner's `pool` is only a
+ * fallback for vocabulary replies that omit distractors explicitly.
  */
 export function normalizeQuestionGenerationJson(
   responseText: string,
@@ -146,9 +187,15 @@ export function normalizeQuestionGenerationJson(
   } catch {
     throw new Error("AI 題目回覆不是有效 JSON");
   }
-  return JSON.stringify(
-    assembleGeneratedQuestions(value, kind, difficulty, words, pool).payload,
+  const assembled = assembleGeneratedQuestions(
+    value,
+    kind,
+    difficulty,
+    words,
+    pool,
   );
+  if (assembled.dropped.length) throw new Error(assembled.dropped.join("；"));
+  return JSON.stringify(assembled.payload);
 }
 
 export function generatedQuestionCoverageIssue(
@@ -163,6 +210,13 @@ export function generatedQuestionCoverageIssue(
     if (pack.format !== kind) return "題組的格式與所選題型不符";
     if (kind === "reading" && pack.questions.length < READING_MIN_QUESTIONS)
       return `閱讀測驗至少要有 ${READING_MIN_QUESTIONS} 個子題`;
+    if (kind === "reading" && pack.questions.length > READING_MAX_QUESTIONS)
+      return `閱讀測驗最多 ${READING_MAX_QUESTIONS} 個子題`;
+    if (
+      kind === "discourse" &&
+      pack.questions.length !== PASSAGE_FORMATS.discourse.blanks
+    )
+      return `篇章結構必須有 ${PASSAGE_FORMATS.discourse.blanks} 個空格`;
     const expectedSenseKeys = new Set(
       words.flatMap((word) =>
         word.senses.map((sense) => senseKey(word.wordKey, sense.id)),
@@ -173,6 +227,12 @@ export function generatedQuestionCoverageIssue(
     );
     if (actualSenseKeys.some((key) => !expectedSenseKeys.has(key)))
       return "子題必須對應本批輸入的詞義";
+    if (
+      (kind === "cloze" || kind === "wordBank") &&
+      (actualSenseKeys.length !== expectedSenseKeys.size ||
+        new Set(actualSenseKeys).size !== expectedSenseKeys.size)
+    )
+      return "每個指定詞義都必須對應一個空格，不可遺漏或重複";
     return null;
   }
 

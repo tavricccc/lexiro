@@ -1,0 +1,29 @@
+{
+  "id": "baseline-vocabulary-two-turn-global-refs",
+  "kind": "vocabulary",
+  "turn": 2,
+  "phase": "final-tuned",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 13966,
+  "promptCharacters": 5476,
+  "outputCharacters": 226,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "items": [
+      {
+        "ref": "s9",
+        "answer": "recovered",
+        "distractors": [
+          "suffered",
+          "escaped",
+          "returned"
+        ],
+        "sentence": "After a week of rest, Leo had recovered from the flu; his fever was gone, and he had enough energy to return to school."
+      }
+    ]
+  }
+}

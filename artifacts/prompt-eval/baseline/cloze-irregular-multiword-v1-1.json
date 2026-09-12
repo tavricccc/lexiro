@@ -1,0 +1,66 @@
+{
+  "id": "cloze-irregular-multiword-v1",
+  "kind": "cloze",
+  "turn": 1,
+  "phase": "baseline",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 20756,
+  "promptCharacters": 1222,
+  "outputCharacters": 1292,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Garden for the Neighborhood",
+    "passage": "When a storm damaged the community garden, our class decided to help repair it. We planned to go to the garden after school on Friday. The teacher asked each student to take one useful item, such as gloves or a small shovel. Maya agreed to look after the young plants while the rest of us cleared broken branches. Before planting new seeds, we needed to carry out a simple soil test. Only students interested in learning about gardening signed up for the extra workshop. On Friday, dark clouds gathered, but the forecast said the rain would stop by noon. We packed our tools carefully so that nothing would be lost on the bus. At the garden, a local farmer showed us how to prepare the soil. By the end of the afternoon, the beds were ready for new plants. We left tired, but pleased that our work had given the neighborhood a fresh start.",
+    "blanks": [
+      {
+        "ref": "s1",
+        "answer": "go",
+        "distractors": [
+          "come",
+          "stay",
+          "leave"
+        ]
+      },
+      {
+        "ref": "s2",
+        "answer": "take",
+        "distractors": [
+          "bring",
+          "borrow",
+          "send"
+        ]
+      },
+      {
+        "ref": "s3",
+        "answer": "look after",
+        "distractors": [
+          "look for",
+          "look at",
+          "look into"
+        ]
+      },
+      {
+        "ref": "s4",
+        "answer": "carry out",
+        "distractors": [
+          "carry on",
+          "carry off",
+          "carry through"
+        ]
+      },
+      {
+        "ref": "s5",
+        "answer": "interested",
+        "distractors": [
+          "bored",
+          "worried",
+          "surprised"
+        ]
+      }
+    ]
+  }
+}

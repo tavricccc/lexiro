@@ -10,7 +10,11 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
-import { saveAiSettings, waitForAiSettingsPersistence } from "@/src/lib/ai-provider";
+import {
+  restoreAiSettings,
+  saveAiSettings,
+  waitForAiSettingsPersistence,
+} from "@/src/lib/ai-provider";
 import {
   createFullBackup,
   downloadFullBackup,
@@ -66,10 +70,7 @@ export function DataSection({
     if (!pending) return;
     await library.importState(pending.library);
     await learning.importState(pending.progress, pending.stats);
-    const nextAiSettings = {
-      ...pending.aiSettings,
-      apiKey: aiSettings.apiKey,
-    };
+    const nextAiSettings = restoreAiSettings(pending.aiSettings, aiSettings);
     onAiSettingsChange(nextAiSettings);
     saveAiSettings(nextAiSettings);
     await waitForAiSettingsPersistence();

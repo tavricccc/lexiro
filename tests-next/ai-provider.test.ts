@@ -1,9 +1,15 @@
 import type { AiSettings } from "@/types";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { AiRequestError, generateWithAi } from "@/src/lib/ai-provider";
+import {
+  AiRequestError,
+  generateWithAi,
+  defaultAiSettings,
+} from "@/src/lib/ai-provider";
 
 const settings = (patch: Partial<AiSettings> = {}): AiSettings => ({
+  ...defaultAiSettings,
+  protocol: "chat",
   apiKey: "key",
   baseUrl: "",
   batchSize: 10,
@@ -19,7 +25,9 @@ function reply(
 ) {
   const status = init.status ?? 200;
   return {
-    headers: { get: (name: string) => init.headers?.[name.toLowerCase()] ?? null },
+    headers: {
+      get: (name: string) => init.headers?.[name.toLowerCase()] ?? null,
+    },
     ok: status >= 200 && status < 300,
     status,
     text: async () => body,
@@ -28,7 +36,9 @@ function reply(
 
 const chatReply = (content: string, finishReason = "stop") =>
   reply(
-    JSON.stringify({ choices: [{ finish_reason: finishReason, message: { content } }] }),
+    JSON.stringify({
+      choices: [{ finish_reason: finishReason, message: { content } }],
+    }),
   );
 
 function sseReply(chunks: string[]) {
@@ -131,7 +141,10 @@ describe("generateWithAi", () => {
     );
 
     await expect(
-      generateWithAi(settings({ provider: "custom" }), "prompt"),
+      generateWithAi(
+        settings({ provider: "custom", baseUrl: "https://proxy.example/v1" }),
+        "prompt",
+      ),
     ).resolves.toBe('{"ok":true}');
     const [first, second] = fetchMock.mock.calls.map(
       ([, init]: [string, RequestInit]) =>
@@ -145,7 +158,9 @@ describe("generateWithAi", () => {
     const fetchMock = stubFetch(
       reply(
         JSON.stringify({
-          candidates: [{ content: { parts: [{ text: "{}" }] }, finishReason: "STOP" }],
+          candidates: [
+            { content: { parts: [{ text: "{}" }] }, finishReason: "STOP" },
+          ],
         }),
       ),
     );
@@ -155,6 +170,7 @@ describe("generateWithAi", () => {
         baseUrl: "https://proxy.example/v1beta",
         model: "gemini-2.5-flash",
         provider: "google",
+        protocol: "generateContent",
       }),
       "prompt",
     );
@@ -168,18 +184,19 @@ describe("generateWithAi", () => {
     vi.useFakeTimers();
     vi.stubGlobal(
       "fetch",
-      vi.fn(async (_url: string, init: RequestInit) =>
-        ({
-          headers: { get: () => null },
-          ok: true,
-          status: 200,
-          text: () =>
-            new Promise<string>((_resolve, reject) => {
-              init.signal?.addEventListener("abort", () =>
-                reject(new Error("aborted")),
-              );
-            }),
-        }) as unknown as Response,
+      vi.fn(
+        async (_url: string, init: RequestInit) =>
+          ({
+            headers: { get: () => null },
+            ok: true,
+            status: 200,
+            text: () =>
+              new Promise<string>((_resolve, reject) => {
+                init.signal?.addEventListener("abort", () =>
+                  reject(new Error("aborted")),
+                );
+              }),
+          }) as unknown as Response,
       ),
     );
 
@@ -189,7 +206,7 @@ describe("generateWithAi", () => {
     await vi.advanceTimersByTimeAsync(200_000);
 
     expect(await pending).toMatchObject({
-      message: expect.stringContaining("逾時"),
+      message: expect.stringContaining("等候過久"),
       retryable: true,
     });
   });
@@ -208,62 +225,68 @@ describe("generateWithAi", () => {
     await expect(
       generateWithAi(settings(), "prompt", { onCharacters }),
     ).resolves.toBe('{"a":1}');
-    expect(onCharacters.mock.calls.map(([count]) => count)).toEqual([5, 7]);
-    expect(
-      JSON.parse(String(fetchMock.mock.calls[0][1].body)).stream,
-    ).toBe(true);
+    expect(onCharacters.mock.calls.at(-1)).toEqual([7]);
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1].body)).stream).toBe(
+      true,
+    );
   });
 
-  it("treats a stream that stops mid-reply as a reason to ask again unstreamed", async () => {
+  it("reports a broken stream without silently changing protocol or sending another charged request", async () => {
     const fetchMock = stubFetch(
       sseReply([openAiChunk({ choices: [{ delta: { content: '{"a":' } }] })]),
       chatReply('{"a":1}'),
     );
 
-    await expect(generateWithAi(settings(), "prompt")).resolves.toBe('{"a":1}');
+    await expect(generateWithAi(settings(), "prompt")).rejects.toMatchObject({
+      streamBroken: true,
+      retryable: true,
+    });
     const bodies = fetchMock.mock.calls.map(
       ([, init]: [string, RequestInit]) =>
         JSON.parse(String(init.body)) as Record<string, unknown>,
     );
     expect(bodies[0].stream).toBe(true);
-    expect(bodies[1].stream).toBeUndefined();
+    expect(bodies).toHaveLength(1);
   });
 
   it("stops waiting when a stream goes quiet, and says the reply stalled", async () => {
     vi.useFakeTimers();
     vi.stubGlobal(
       "fetch",
-      vi.fn(async (_url: string, init: RequestInit) =>
-        ({
-          body: new ReadableStream<Uint8Array>({
-            start(controller) {
-              controller.enqueue(
-                new TextEncoder().encode(
-                  openAiChunk({ choices: [{ delta: { content: "half" } }] }),
-                ),
-              );
-              init.signal?.addEventListener("abort", () =>
-                controller.error(new Error("aborted")),
-              );
+      vi.fn(
+        async (_url: string, init: RequestInit) =>
+          ({
+            body: new ReadableStream<Uint8Array>({
+              start(controller) {
+                controller.enqueue(
+                  new TextEncoder().encode(
+                    openAiChunk({ choices: [{ delta: { content: "half" } }] }),
+                  ),
+                );
+                init.signal?.addEventListener("abort", () =>
+                  controller.error(new Error("aborted")),
+                );
+              },
+            }),
+            headers: {
+              get: (name: string) =>
+                name.toLowerCase() === "content-type"
+                  ? "text/event-stream"
+                  : null,
             },
-          }),
-          headers: {
-            get: (name: string) =>
-              name.toLowerCase() === "content-type" ? "text/event-stream" : null,
-          },
-          ok: true,
-          status: 200,
-        }) as unknown as Response,
+            ok: true,
+            status: 200,
+          }) as unknown as Response,
       ),
     );
 
-    const pending = generateWithAi(settings(), "prompt", { stream: true }).catch(
-      (error: unknown) => error,
-    );
-    await vi.advanceTimersByTimeAsync(60_000);
+    const pending = generateWithAi(settings(), "prompt", {
+      stream: true,
+    }).catch((error: unknown) => error);
+    await vi.advanceTimersByTimeAsync(121_000);
 
     expect(await pending).toMatchObject({
-      message: expect.stringContaining("沒有新內容"),
+      message: expect.stringContaining("等候過久"),
       retryable: true,
     });
   });

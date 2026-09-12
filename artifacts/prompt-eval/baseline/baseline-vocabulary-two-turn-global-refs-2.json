@@ -1,0 +1,29 @@
+{
+  "id": "baseline-vocabulary-two-turn-global-refs",
+  "kind": "vocabulary",
+  "turn": 2,
+  "phase": "baseline",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 13041,
+  "promptCharacters": 5506,
+  "outputCharacters": 236,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "items": [
+      {
+        "ref": "s9",
+        "answer": "recover",
+        "distractors": [
+          "suffer",
+          "escape",
+          "prevent"
+        ],
+        "sentence": "Although the fever had passed, Mei still felt weak and needed another week to recover from the flu before she could return to practice."
+      }
+    ]
+  }
+}

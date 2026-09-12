@@ -1,0 +1,99 @@
+{
+  "id": "baseline-vocabulary-two-turn-global-refs",
+  "kind": "vocabulary",
+  "turn": 1,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 43091,
+  "promptCharacters": 1983,
+  "outputCharacters": 1687,
+  "parsedCount": 8,
+  "error": "",
+  "response": {
+    "items": [
+      {
+        "ref": "s1",
+        "answer": "bark",
+        "distractors": [
+          "leaves",
+          "roots",
+          "seeds"
+        ],
+        "sentence": "A tree’s outer covering, which protects the wood from insects and weather, is called its bark."
+      },
+      {
+        "ref": "s2",
+        "answer": "bark",
+        "distractors": [
+          "purr",
+          "bleat",
+          "crow"
+        ],
+        "sentence": "At midnight, the dog began to bark whenever a stranger stepped onto the porch, alerting the family."
+      },
+      {
+        "ref": "s3",
+        "answer": "rescued",
+        "distractors": [
+          "photographed",
+          "questioned",
+          "congratulated"
+        ],
+        "sentence": "Firefighters rescued the hikers after a storm left them stranded on a narrow ledge with no safe route down."
+      },
+      {
+        "ref": "s4",
+        "answer": "detect",
+        "distractors": [
+          "produce",
+          "store",
+          "release"
+        ],
+        "sentence": "A sensor in the lab can detect carbon monoxide in the air, triggering an alarm as soon as the gas is present."
+      },
+      {
+        "ref": "s5",
+        "answer": "contamination",
+        "distractors": [
+          "celebration",
+          "permission",
+          "decision"
+        ],
+        "sentence": "The contamination made the drinking water unsafe: tests found cleaning chemicals in a tank that should have contained only fresh water."
+      },
+      {
+        "ref": "s6",
+        "answer": "isolated",
+        "distractors": [
+          "welcomed",
+          "photographed",
+          "questioned"
+        ],
+        "sentence": "To prevent the infection from spreading through the school, nurses isolated the sick students in a separate room until their test results arrived."
+      },
+      {
+        "ref": "s7",
+        "answer": "cautious",
+        "distractors": [
+          "cheerful",
+          "curious",
+          "generous"
+        ],
+        "sentence": "Because the footbridge was wet and several boards were loose, Maya was cautious and tested each step before crossing."
+      },
+      {
+        "ref": "s8",
+        "answer": "estimated",
+        "distractors": [
+          "weighed",
+          "counted",
+          "decorated"
+        ],
+        "sentence": "Without a scale, the baker estimated the amount of flour by eye and wrote “about two cups” on the recipe card."
+      }
+    ]
+  }
+}

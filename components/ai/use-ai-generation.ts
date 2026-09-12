@@ -1,242 +1,231 @@
 "use client";
 
-import type { AiSettings } from "@/types";
 import { useCallback, useEffect, useRef, useState } from "react";
-
+import type { AiSettings, AiTask, AiPhase, AiUsage } from "@/src/types/ai";
 import {
   defaultAiSettings,
   isAiConfigured,
   onAiSettingsChanged,
   whenAiSettingsReady,
 } from "@/src/lib/ai-provider";
-import {
-  runAiBatches,
-  type AiBatchContext,
-  type AiBatchFailure,
-} from "@/src/lib/ai-batch";
+import { createAiSession, resetConversation } from "@/src/lib/ai/session";
+import { runTask, type AiRun } from "@/src/lib/ai/runner";
+import { t } from "@/lib/i18n";
 
-export type AiRunStatus =
-  | "idle"
-  | "running"
-  | "done"
-  | "partial"
-  | "error"
-  | "cancelled";
-
-export interface AiRunState<TItem> {
-  /** Characters received so far, the one sign of life a long batch gives off. */
-  characters: number;
-  /** Requests that came back, whether they were usable or not. */
-  completed: number;
-  error: string;
-  failed: number;
-  failures: AiBatchFailure[];
-  /** Which requests of the original run failed, numbered as the user sees them. */
-  failedSteps: number[];
-  /** Requests sent and still waiting for a reply. */
-  inFlight: number;
-  items: TItem[];
-  retrying: number;
+export type AiRunStatus = "idle" | "running" | "done" | "error" | "cancelled";
+export interface AiRunState<T> {
   status: AiRunStatus;
-  succeeded: number;
+  phase: AiPhase;
+  characters: number;
+  completed: number;
   total: number;
+  segments: number;
+  error: string;
+  items: T[];
+  usage: AiUsage;
+  notices: string[];
+  model: string;
+  startedAt: number | null;
+  elapsedMs: number;
+  remaining: number;
 }
-
-const initialState = <TItem,>(): AiRunState<TItem> => ({
+const initialState = <T>(): AiRunState<T> => ({
+  status: "idle",
+  phase: "connecting",
   characters: 0,
   completed: 0,
-  error: "",
-  failed: 0,
-  failedSteps: [],
-  failures: [],
-  inFlight: 0,
-  items: [],
-  retrying: 0,
-  status: "idle",
-  succeeded: 0,
   total: 0,
+  segments: 0,
+  error: "",
+  items: [],
+  usage: {},
+  notices: [],
+  model: "",
+  startedAt: null,
+  elapsedMs: 0,
+  remaining: 0,
 });
 
-/**
- * Drives a batched AI generation: splits the work, runs several requests at a
- * time, reports progress, and keeps whatever succeeded when some batches fail.
- *
- * `run` produces the items for one batch. `merge` gets every item from every
- * successful batch and returns the final list, which is where callers dedupe.
- */
-export function useAiGeneration<TBatch, TItem>({
+export function useAiGeneration<T>({
   merge,
-  run,
-}: {
-  merge?: (items: TItem[]) => TItem[];
-  run: (batch: TBatch, context: AiBatchContext) => Promise<TItem[]>;
-}) {
-  const [state, setState] = useState<AiRunState<TItem>>(initialState<TItem>);
+}: { merge?: (items: T[]) => T[] } = {}) {
+  const [state, setState] = useState<AiRunState<T>>(initialState<T>);
   const [settings, setSettings] = useState<AiSettings>(defaultAiSettings);
+  const [ready, setReady] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
-  const pendingRef = useRef<TBatch[]>([]);
-  // Step numbers as first shown to the user. A retry run only holds the batches
-  // that failed, so without carrying these the second attempt would renumber
-  // them and the panel would say 第 1 段 for what the user knows as 第 4 段.
-  const pendingStepsRef = useRef<number[]>([]);
-  const runRef = useRef(run);
+  const runRef = useRef<AiRun<T> | null>(null);
+  const generationId = useRef(0);
   const mergeRef = useRef(merge);
-  runRef.current = run;
   mergeRef.current = merge;
 
   useEffect(() => {
     let active = true;
-    void whenAiSettingsReady().then((stored) => {
-      if (active) setSettings(stored);
+    void whenAiSettingsReady()
+      .then((value) => {
+        if (active) {
+          setSettings(value);
+          setReady(true);
+        }
+      })
+      .catch((reason: unknown) => {
+        if (active)
+          setState((s) => ({
+            ...s,
+            status: "error",
+            error:
+              reason instanceof Error
+                ? reason.message
+                : t("ai.invalidSettings"),
+          }));
+      });
+    const off = onAiSettingsChanged((value) => {
+      setSettings(value);
+      setReady(true);
     });
-    const unsubscribe = onAiSettingsChanged(setSettings);
     return () => {
       active = false;
-      unsubscribe();
+      off();
+      generationId.current++;
+      abortRef.current?.abort();
     };
   }, []);
 
-  useEffect(() => () => abortRef.current?.abort(), []);
-
-  const execute = useCallback(async (
-    batches: TBatch[],
-    previous: TItem[],
-    steps: number[],
-  ) => {
-    if (!batches.length) return;
-    const controller = new AbortController();
+  const execute = useCallback(async (run: AiRun<T>) => {
     abortRef.current?.abort();
+    const controller = new AbortController(),
+      id = ++generationId.current,
+      start = Date.now();
     abortRef.current = controller;
-    setState({
-      ...initialState<TItem>(),
-      items: previous,
+    setState((s) => ({
+      ...s,
       status: "running",
-      total: batches.length,
-    });
-
-    const outcome = await runAiBatches<TBatch, TItem[]>({
-      batches,
-      onProgress: (progress) =>
-        setState((current) =>
-          current.status === "running"
-            ? {
-                ...current,
-                characters: progress.characters,
-                completed: progress.completed,
-                failed: progress.failed,
-                inFlight: progress.inFlight,
-                retrying: progress.retrying,
-                succeeded: progress.succeeded,
-                total: progress.total,
-              }
-            : current,
-        ),
-      run: (batch, _index, context) => runRef.current(batch, context),
-      signal: controller.signal,
-    });
-
-    if (controller.signal.aborted) {
-      // Stopping means stopping: whatever came back mid-run is dropped rather
-      // than half-applied, so the preview always matches one whole press.
-      setState((current) => ({
-        ...current,
-        inFlight: 0,
-        items: previous,
-        retrying: 0,
-        status: "cancelled",
-      }));
-      return;
+      error: "",
+      startedAt: start,
+      model: run.session.settings.model,
+      items: [...run.items],
+      completed: run.completed,
+      total: run.total,
+      remaining: run.pending.length,
+      usage: { ...run.session.usage },
+    }));
+    try {
+      await runTask(run, {
+        signal: controller.signal,
+        merge: mergeRef.current,
+        onUpdate: (update) => {
+          if (id === generationId.current)
+            setState((s) => ({
+              ...s,
+              ...update,
+              remaining: run.pending.length,
+            }));
+        },
+      });
+      if (id === generationId.current)
+        setState((s) => ({
+          ...s,
+          status: "done",
+          startedAt: null,
+          elapsedMs: s.elapsedMs + Date.now() - start,
+          remaining: 0,
+        }));
+    } catch (reason) {
+      if (id === generationId.current)
+        setState((s) => ({
+          ...s,
+          status: controller.signal.aborted ? "cancelled" : "error",
+          startedAt: null,
+          elapsedMs: s.elapsedMs + Date.now() - start,
+          remaining: run.pending.length,
+          error: controller.signal.aborted
+            ? ""
+            : reason instanceof Error
+              ? reason.message
+              : t("ai.invalidReply"),
+        }));
+    } finally {
+      if (id === generationId.current) abortRef.current = null;
     }
-
-    const produced = outcome.results.flatMap((result) => result.value);
-    const combined = [...previous, ...produced];
-    const items = mergeRef.current ? mergeRef.current(combined) : combined;
-    pendingRef.current = outcome.failures.map((failure) => batches[failure.index]);
-    pendingStepsRef.current = outcome.failures.map(
-      (failure) => steps[failure.index],
-    );
-
-    setState({
-      characters: 0,
-      failedSteps: pendingStepsRef.current,
-      completed: outcome.results.length + outcome.failures.length,
-      error:
-        outcome.fatal || (items.length ? "" : (outcome.failures[0]?.message ?? "")),
-      failed: outcome.failures.length,
-      failures: outcome.failures,
-      inFlight: 0,
-      items,
-      retrying: 0,
-      status: outcome.fatal
-        ? "error"
-        : !outcome.failures.length
-          ? "done"
-          : items.length
-            ? "partial"
-            : "error",
-      succeeded: outcome.results.length,
-      total: batches.length,
-    });
   }, []);
 
-  /**
-   * `seed` is for items the caller already built without a request — they show
-   * up alongside the generated ones and survive a failed batch.
-   */
   const start = useCallback(
-    (batches: TBatch[], seed: TItem[] = []) => {
-      pendingRef.current = [];
-      pendingStepsRef.current = [];
-      if (!batches.length) {
-        setState({ ...initialState<TItem>(), items: seed, status: "done" });
-        return;
+    (task: AiTask<T>, seed: T[] = []) => {
+      if (!ready) return;
+      const run: AiRun<T> = {
+        task,
+        session: createAiSession(settings, task.context, task.steps.length > 1),
+        pending: [...task.steps],
+        items: [...seed],
+        completed: seed.length,
+        total: seed.length + task.steps.reduce((n, s) => n + s.count, 0),
+        segments: 0,
+      };
+      runRef.current = run;
+      setState(initialState<T>());
+      void execute(run);
+    },
+    [execute, ready, settings],
+  );
+  const resume = useCallback(() => {
+    if (!abortRef.current && runRef.current?.pending.length)
+      void execute(runRef.current);
+  }, [execute]);
+  const append = useCallback(
+    (task?: AiTask<T>) => {
+      const run = runRef.current;
+      if (!run || abortRef.current || run.pending.length) return;
+      if (task) {
+        run.task = task;
+        if (run.session.context !== task.context) {
+          run.session.context = task.context;
+          resetConversation(run.session);
+        }
       }
-      void execute(
-        batches,
-        seed,
-        batches.map((_batch, index) => index + 1),
-      );
+      run.session.cache = true;
+      const round = run.segments + 1;
+      run.pending = run.task.steps.map((step) => ({
+        ...step,
+        id: `${step.id}-round-${round}`,
+        prompt: `${step.prompt}\n這次是追加新的一版：使用不同語境，不可重複先前生成的句子、文章或題目。`,
+      }));
+      run.total += run.pending.reduce((n, s) => n + s.count, 0);
+      void execute(run);
     },
     [execute],
   );
-
-  const retryFailed = useCallback(() => {
-    const batches = pendingRef.current;
-    if (batches.length)
-      void execute(batches, state.items, pendingStepsRef.current);
-  }, [execute, state.items]);
-
   const cancel = useCallback(() => abortRef.current?.abort(), []);
-
   const reset = useCallback(() => {
+    generationId.current++;
     abortRef.current?.abort();
-    pendingRef.current = [];
-    setState(initialState<TItem>());
+    abortRef.current = null;
+    runRef.current = null;
+    setState(initialState<T>());
   }, []);
-
-  const setItems = useCallback((items: TItem[]) => {
-    setState((current) => ({
-      ...current,
-      error: "",
-      items,
-      status: items.length ? "done" : current.status,
-    }));
-  }, []);
-
-  const setError = useCallback((error: string) => {
-    setState((current) => ({ ...current, error, items: [], status: "error" }));
-  }, []);
-
+  const setItems = useCallback(
+    (items: T[], total = items.length) =>
+      setState((s) => ({
+        ...s,
+        items,
+        status: "done",
+        error: "",
+        completed: items.length,
+        total,
+        segments: s.segments + 1,
+      })),
+    [],
+  );
   return {
-    /** The configured batch size, once settings have been read from storage. */
-    batchSize: settings.batchSize,
-    cancel,
-    configured: isAiConfigured(settings),
-    reset,
-    retryFailed,
-    setError,
-    setItems,
-    start,
     state,
+    settings,
+    ready,
+    enabled: settings.enabled,
+    configured: isAiConfigured(settings),
+    batchSize: settings.batchSize,
+    start,
+    resume,
+    append,
+    cancel,
+    reset,
+    setItems,
   };
 }

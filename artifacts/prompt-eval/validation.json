@@ -1,0 +1,91 @@
+{
+  "method": "Latest saved real CLI response per case and turn, revalidated with current parser; not a new model request or semantic quality score",
+  "turns": 14,
+  "passed": 14,
+  "results": [
+    {
+      "file": "final-tuned/baseline-vocabulary-two-turn-global-refs-1.json",
+      "parsedCount": 8,
+      "error": "",
+      "originalError": "Error: rescue：干擾選項不足或重複"
+    },
+    {
+      "file": "final-tuned/baseline-vocabulary-two-turn-global-refs-2.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final-tuned/baseline-word-import-ambiguous-injection-1.json",
+      "parsedCount": 3,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final-tuned/baseline-wordbank-eight-targets-two-extras-1.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final-tuned/cloze-irregular-multiword-v1-1.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/discourse-difficulty-2-1.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/discourse-difficulty-2-2.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/discourse-difficulty-3-1.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/discourse-difficulty-3-2.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final-tuned/grammar-irregular-multiword-v1-1.json",
+      "parsedCount": 5,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/reading-difficulty-2-1.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/reading-difficulty-2-2.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/reading-difficulty-3-1.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    },
+    {
+      "file": "final/reading-difficulty-3-2.json",
+      "parsedCount": 1,
+      "error": "",
+      "originalError": ""
+    }
+  ]
+}

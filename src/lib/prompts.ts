@@ -8,12 +8,13 @@ const PROMPTS = {
 輸出：{{OUTPUT_EXAMPLE}}
 
 規格：
-1. words 數量、順序、sourceRef 必須與輸入完全一致。
+1. 輸入是完整來源資料庫；若本輪有指定 activeRefs，words 只涵蓋該清單並保持相同順序，每個 sourceRef 恰好一次。未指定 activeRefs 時才處理全部輸入。
 2. 每筆只回傳 1 個最常見、最符合 input 提示的 sense。
 3. sense 只能有 pos、meaningZh、examples。
 4. pos 只能是 n.、v.、adj.、adv.、pron.、prep.、conj.、interj.、det.、aux.、modal v.、phr. v.、phr.。
-5. meaningZh 使用精簡繁體中文，不要解釋或列冷門義項。
+5. meaningZh 使用精簡繁體中文，只說本次選定的同一個詞義，不要用分號混入不相干義項。優先依 input 的詞性、中文提示或例句消歧；提示仍有多義時選最直接符合提示的一義，不捏造上下文。片語視為完整單位，不拆成個別單字。
 6. {{EXAMPLES_RULE}}
+   即使 input 自己列了兩義，也只選一義，不把兩義壓進同一個 sense。例如 run into 未消歧時可選「偶然遇見」，不要附加「撞上某物」；選義不是替輸入增補情節。
 7. {{JSON_ONLY}}
 
 輸入：

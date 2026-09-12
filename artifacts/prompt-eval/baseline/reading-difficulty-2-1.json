@@ -1,0 +1,71 @@
+{
+  "id": "reading-difficulty-2",
+  "kind": "reading",
+  "turn": 1,
+  "phase": "baseline",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 17970,
+  "promptCharacters": 1541,
+  "outputCharacters": 2241,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Plan for the Community Garden",
+    "passage": "When a dry spring caused a shortage of water at the community garden, the volunteers met to make a plan. They agreed to cooperate by taking turns carrying water from a nearby well. Each team would reserve one bucket for the youngest plants, which needed extra care. Before watering, volunteers would observe the soil to see which beds were driest. They chose Maya to record the amount used because her notes had always been reliable. By sharing the work and checking the soil first, the group hoped to keep every plant alive until the rain returned.",
+    "items": [
+      {
+        "ref": "s4",
+        "answer": "The garden had too little water, so volunteers planned how to use it carefully.",
+        "distractors": [
+          "The garden had too many plants, so volunteers planned to remove some.",
+          "The volunteers could not find a well, so they decided to stop gardening.",
+          "The rain returned early, so the volunteers canceled their meeting."
+        ],
+        "question": "What is the main problem the volunteers are trying to solve?"
+      },
+      {
+        "ref": "s1",
+        "answer": "They take turns carrying water from the well.",
+        "distractors": [
+          "They each water only the plants they brought from home.",
+          "They ask Maya to carry all the water by herself.",
+          "They wait for the rain before doing any work."
+        ],
+        "question": "How do the volunteers cooperate?"
+      },
+      {
+        "ref": "s2",
+        "answer": "They keep one bucket of water for the youngest plants.",
+        "distractors": [
+          "They keep one bucket empty for the next meeting.",
+          "They use every bucket on the driest garden bed.",
+          "They save the well water for the volunteers to drink."
+        ],
+        "question": "What does each team reserve?"
+      },
+      {
+        "ref": "s3",
+        "answer": "They check the soil to find out which beds are driest.",
+        "distractors": [
+          "They watch the well to see when the rain will begin.",
+          "They count the volunteers before choosing a team leader.",
+          "They inspect the youngest plants to decide which ones to remove."
+        ],
+        "question": "What do the volunteers observe before watering?"
+      },
+      {
+        "ref": "s5",
+        "answer": "Maya has kept trustworthy notes in the past.",
+        "distractors": [
+          "Maya has the most experience carrying water.",
+          "Maya has grown the youngest plants herself.",
+          "Maya has promised that rain will come soon."
+        ],
+        "question": "Why do the volunteers choose Maya to record the water use?"
+      }
+    ]
+  }
+}

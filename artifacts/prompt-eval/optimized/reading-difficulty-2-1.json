@@ -1,0 +1,61 @@
+{
+  "id": "reading-difficulty-2",
+  "kind": "reading",
+  "turn": 1,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 39477,
+  "promptCharacters": 2044,
+  "outputCharacters": 2639,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Garden Through the Dry Weeks",
+    "passage": "At the start of May, the science club planned a small garden behind the school. Because the water tank was old, the members worried there might be a shortage during the dry weeks. They agreed to cooperate: two students checked the soil each morning, while others collected rainwater. The caretaker was reliable; whenever the club needed tools, he arrived with the shed key. Before planting, Mei asked the club to reserve half the collected water for seedlings that had not sprouted. For three days, Ben observed the garden at lunch and wrote down which beds dried fastest. His notes showed that the sunny bed lost water sooner, so the club moved its new pots beside the wall. When a brief shower came, they filled the tank but kept the saved half for the seedlings as planned. By June, the seedlings were healthy, and the club chose the same plan for its next garden.",
+    "items": [
+      {
+        "ref": "s1",
+        "answer": "The members worked together and adjusted their water use, which helped the seedlings grow.",
+        "distractors": [
+          "The members stopped planting because the old tank could not hold any water.",
+          "The members used all the collected rainwater on the sunny bed as soon as they gathered it.",
+          "The members let the caretaker choose the plan without checking how the garden was doing."
+        ],
+        "question": "What is the passage mainly about?"
+      },
+      {
+        "ref": "s2",
+        "answer": "They kept half of the collected rainwater for seedlings that had not sprouted.",
+        "distractors": [
+          "They kept half of the collected rainwater for the sunny bed after the seedlings had grown.",
+          "They saved all the collected rainwater for the next garden and planted nothing in May.",
+          "They set aside half of the collected rainwater for the caretaker to use on the shed."
+        ],
+        "question": "What did Mei ask the club to reserve before planting?"
+      },
+      {
+        "ref": "s3",
+        "answer": "The sunny bed dried faster, so the club moved its new pots beside the wall.",
+        "distractors": [
+          "The beds dried at the same speed, so the club left every new pot where it was.",
+          "The bed beside the wall dried fastest, so the club moved its new pots into the sun.",
+          "The sunny bed stayed damp longer, so the club placed all its new pots there."
+        ],
+        "question": "What did the club conclude from Ben’s notes?"
+      },
+      {
+        "ref": "s5",
+        "answer": "He arrived with the shed key whenever the club needed tools.",
+        "distractors": [
+          "He checked the soil each morning while the club members collected rainwater.",
+          "He wrote down which beds dried fastest during his lunch breaks in the garden.",
+          "He moved the new pots beside the wall after reading Ben’s notes."
+        ],
+        "question": "Which detail shows that the caretaker was reliable?"
+      }
+    ]
+  }
+}

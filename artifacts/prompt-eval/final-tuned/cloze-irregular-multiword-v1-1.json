@@ -1,0 +1,66 @@
+{
+  "id": "cloze-irregular-multiword-v1",
+  "kind": "cloze",
+  "turn": 1,
+  "phase": "final-tuned",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 52165,
+  "promptCharacters": 1808,
+  "outputCharacters": 1635,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Garden for the Neighborhood",
+    "passage": "Last spring, our school began a small garden beside the library. The science teacher explained that the vegetables would be donated to a nearby community kitchen, so students quickly saw why the project mattered. To learn what people wanted to grow, our class agreed to carry out a short survey. We asked forty students the same question and recorded their answers. Most chose tomatoes and herbs.\n\nThe teacher placed labeled tools on a table. She told us to take them from the classroom to the garden shed, rather than leave them behind. Before planting, she showed us how to prepare the soil and asked us to follow the steps in order. After school, students must go to the community center to water the seedlings on weekends; the bus stops nearby, so the trip is easy. Two volunteers will look after the young plants, checking the soil and watering them if it feels dry.\n\nWhen students learned that they could eat some of the vegetables they grew, more than half became interested in joining the garden team. Eighteen signed up that week. By June, the first herbs were ready to share, and the class had turned a quiet corner into a useful place for the whole neighborhood.",
+    "blanks": [
+      {
+        "ref": "s1",
+        "answer": "go",
+        "distractors": [
+          "goes",
+          "going",
+          "went"
+        ]
+      },
+      {
+        "ref": "s2",
+        "answer": "take",
+        "distractors": [
+          "leave",
+          "lend",
+          "return"
+        ]
+      },
+      {
+        "ref": "s3",
+        "answer": "look after",
+        "distractors": [
+          "look for",
+          "look at",
+          "look into"
+        ]
+      },
+      {
+        "ref": "s4",
+        "answer": "carry out",
+        "distractors": [
+          "put off",
+          "give up",
+          "take apart"
+        ]
+      },
+      {
+        "ref": "s5",
+        "answer": "interested",
+        "distractors": [
+          "interest",
+          "interesting",
+          "interestingly"
+        ]
+      }
+    ]
+  }
+}

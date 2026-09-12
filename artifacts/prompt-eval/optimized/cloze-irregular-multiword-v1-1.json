@@ -1,0 +1,66 @@
+{
+  "id": "cloze-irregular-multiword-v1",
+  "kind": "cloze",
+  "turn": 1,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 73082,
+  "promptCharacters": 1632,
+  "outputCharacters": 1620,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Garden for the School Fair",
+    "passage": "Our environmental club started a small herb garden behind the school in early spring. The goal was to create a display for families visiting the school fair. At eight on Saturday, our class would go to the community garden together, since the bus was booked and a gardening session was ready for us. Before touching the soil, each student had to take a pair of gloves from the supply table and put them on. Mia offered to look after the seedlings for the weekend. She planned to water them each morning and check that their pots stayed damp, rather than search for them or simply glance at them once. The rest of the club would return on Monday to finish the display. That day, our team would carry out a short survey by asking visitors to identify herbs by smell. We would record their answers first and compare them later, so this was the data-gathering step. Several classmates were interested in the project; they signed up for extra shifts and asked to plant more herbs because they wanted to learn about them. On fair day, families could touch the leaves and compare their scents. By the end, the club had a garden display and a clear record of what visitors had learned.",
+    "blanks": [
+      {
+        "ref": "s1",
+        "answer": "go",
+        "distractors": [
+          "sleep",
+          "dance",
+          "swim"
+        ]
+      },
+      {
+        "ref": "s2",
+        "answer": "take",
+        "distractors": [
+          "leave",
+          "sell",
+          "discard"
+        ]
+      },
+      {
+        "ref": "s3",
+        "answer": "look after",
+        "distractors": [
+          "look for",
+          "look at",
+          "look into"
+        ]
+      },
+      {
+        "ref": "s4",
+        "answer": "carry out",
+        "distractors": [
+          "put off",
+          "give up",
+          "sum up"
+        ]
+      },
+      {
+        "ref": "s5",
+        "answer": "interested",
+        "distractors": [
+          "bored",
+          "confused",
+          "annoyed"
+        ]
+      }
+    ]
+  }
+}

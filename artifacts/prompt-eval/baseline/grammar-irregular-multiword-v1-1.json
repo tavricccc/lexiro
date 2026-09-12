@@ -1,0 +1,69 @@
+{
+  "id": "grammar-irregular-multiword-v1",
+  "kind": "grammar",
+  "turn": 1,
+  "phase": "baseline",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 42667,
+  "promptCharacters": 1665,
+  "outputCharacters": 1181,
+  "parsedCount": 0,
+  "error": "Error: 這段有遺漏或無效的題目，請補齊。",
+  "response": {
+    "items": [
+      {
+        "ref": "s1",
+        "answer": "went",
+        "distractors": [
+          "became",
+          "remained",
+          "turned"
+        ],
+        "sentence": "Although the shop had attracted more customers each month, it went bankrupt after its largest supplier suddenly doubled its prices."
+      },
+      {
+        "ref": "s2",
+        "answer": "took",
+        "distractors": [
+          "paid",
+          "made",
+          "gave"
+        ],
+        "sentence": "The long delay took a toll on the crew's patience, even though everyone had expected the ferry to arrive late."
+      },
+      {
+        "ref": "s3",
+        "answer": "looked after",
+        "distractors": [
+          "looked for",
+          "looked into",
+          "looked over"
+        ],
+        "sentence": "While the parents attended the evening course, their teenage son looked after his little sister, who was still too young to stay home alone."
+      },
+      {
+        "ref": "s4",
+        "answer": "carried out",
+        "distractors": [
+          "carried on",
+          "carried over",
+          "carried through"
+        ],
+        "sentence": "Although the first trial produced unclear results, the researchers carried out a second test under stricter conditions before drawing any conclusions."
+      },
+      {
+        "ref": "s5",
+        "answer": "interested",
+        "distractors": [
+          "bored",
+          "confused",
+          "worried"
+        ],
+        "sentence": "Although the lecture moved quickly through several unfamiliar theories, Nina stayed interested because each one helped explain a mystery from her childhood."
+      }
+    ]
+  }
+}

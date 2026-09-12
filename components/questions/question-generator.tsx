@@ -1,9 +1,8 @@
 "use client";
 
-import type { LibraryQuestion, WordEntry } from "@/types";
+import type { LibraryQuestion } from "@/types";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { toast } from "sonner";
+import { useEffect, useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import { useAiGeneration } from "@/components/ai/use-ai-generation";
@@ -11,7 +10,8 @@ import {
   GenerationScopePicker,
   type GenerationSense,
 } from "@/components/questions/generation-scope-picker";
-import { QuestionPreview } from "@/components/questions/question-preview";
+import { GeneratedQuestionResults } from "./generated-question-results";
+import { useSaveGeneratedQuestions } from "./use-save-generated-questions";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
@@ -29,15 +29,10 @@ import {
   SENTENCE_STYLES,
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
-import { generateWithSavedAi } from "@/src/lib/ai-provider";
-import { parseLibraryImport } from "@/src/lib/library-import";
+import { questionTask } from "@/src/lib/ai/tasks";
 import { senseKey } from "@/src/lib/library";
 import {
-  buildQuestionGenerationPrompt,
-  getQuestionSourceRefs,
   getSelectedGenerationWords,
-  normalizeQuestionGenerationJson,
-  splitGenerationBatches,
   type GeneratedQuestionDifficulty,
   type GeneratedQuestionKind,
 } from "@/src/lib/question-generation";
@@ -59,13 +54,16 @@ const FORMATS: GeneratedQuestionKind[] = [
  * the first.
  */
 export function QuestionGenerator({ setId }: { setId?: string }) {
-  const { state, saveQuestion } = useLibraryStore();
+  const { state } = useLibraryStore();
   const [step, setStep] = useState<Step>("format");
   const [selected, setSelected] = useState<string[]>([]);
   const [scopeReady, setScopeReady] = useState(false);
   const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
   const [difficulty, setDifficulty] = useState<GeneratedQuestionDifficulty>(2);
   const [manualError, setManualError] = useState("");
+  const { saving, save: storeAll } = useSaveGeneratedQuestions(() =>
+    setStep("done"),
+  );
 
   const allowedSenseIds = useMemo(
     () =>
@@ -130,63 +128,32 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
    * Only what is left over costs a request.
    */
   const prebuilt = useMemo(
-    () => (kind === "vocabulary" ? buildLibraryQuestions(words, pool, difficulty) : null),
+    () =>
+      kind === "vocabulary"
+        ? buildLibraryQuestions(words, pool, difficulty)
+        : null,
     [difficulty, kind, pool, words],
   );
   const aiWords = prebuilt ? prebuilt.remaining : words;
 
-  const batches = useMemo(
-    () => splitGenerationBatches(aiWords, kind),
-    [aiWords, kind],
+  const task = useMemo(
+    () => questionTask(aiWords, pool, kind, difficulty),
+    [aiWords, pool, kind, difficulty],
+  );
+  const moreTask = useMemo(
+    () => questionTask(words, pool, kind, difficulty),
+    [words, pool, kind, difficulty],
   );
   const prompts = useMemo(
-    () =>
-      batches.map((batch) =>
-        buildQuestionGenerationPrompt(batch, kind, difficulty),
-      ),
-    [batches, difficulty, kind],
+    () => task.steps.map((part) => `${task.context}\n\n${part.prompt}`),
+    [task],
   );
-
-  const parseBatch = useCallback(
-    (batch: WordEntry[], response: string): LibraryQuestion[] => {
-      // The whole library is the distractor pool: for a plain base-form answer
-      // the wrong options come from the learner's own same-part-of-speech
-      // words, the way a 段考 paper draws them from the same unit.
-      const normalized = normalizeQuestionGenerationJson(
-        response,
-        kind,
-        difficulty,
-        batch,
-        pool,
-      );
-      const parsed = parseLibraryImport(normalized, {
-        allowedDifficulty: difficulty,
-        expectedQuestionKind: isPassageKind(kind) ? "reading" : "multipleChoice",
-        expectedQuestionStyle: isPassageKind(kind) ? undefined : kind,
-        questionSources: getQuestionSourceRefs(batch),
-        requireEnglish: true,
-      });
-      if (!parsed.valid) throw new Error(parsed.error);
-      if (parsed.data.kind !== "questions") throw new Error("questions expected");
-      return parsed.data.questions;
-    },
-    [difficulty, kind, pool],
-  );
-
-  const generation = useAiGeneration<WordEntry[], LibraryQuestion>({
+  const generation = useAiGeneration<LibraryQuestion>({
     merge: (items) => {
       const byId = new Map<string, LibraryQuestion>();
       for (const item of items) byId.set(item.fingerprint || item.id, item);
       return [...byId.values()];
     },
-    run: async (batch, context) =>
-      parseBatch(
-        batch,
-        await generateWithSavedAi(
-          buildQuestionGenerationPrompt(batch, kind, difficulty),
-          { onCharacters: context.onCharacters, signal: context.signal },
-        ),
-      ),
   });
 
   const { reset, setItems, state: run } = generation;
@@ -199,48 +166,26 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   const applyManual = (response: string, batchIndex: number) => {
     setManualError("");
     try {
-      const produced = parseBatch(batches[batchIndex], response);
-      setItems([...run.items, ...produced]);
+      const produced = task.steps[batchIndex].parse(response);
+      setItems(
+        [...run.items, ...produced],
+        task.steps.reduce((total, part) => total + part.count, 0),
+      );
+      return true;
     } catch (reason) {
       setManualError(
         t("questions.invalidResponse", {
           message: reason instanceof Error ? reason.message : String(reason),
         }),
       );
+      return false;
     }
   };
 
-  /**
-   * Generated questions are written to the bank as soon as they validate.
-   * Asking the user to press 加入 on a list they cannot edit here was a
-   * confirmation that decided nothing: a question that reads badly is fixed —
-   * or deleted — in 我的單字 → 題目, whether it was saved a second earlier or not.
-   */
-  const storeAll = useCallback(async (questions: LibraryQuestion[]) => {
-    let stored = 0;
-    for (const question of questions) {
-      if ((await saveQuestion(question)) === "saved") stored += 1;
-    }
-    setStep("done");
-    const duplicates = questions.length - stored;
-    toast.success(duplicates > 0
-      ? t("questions.savedCountWithDuplicates", { count: stored, duplicates })
-      : t("questions.savedCount", { count: stored }));
-  }, [saveQuestion]);
-
-  const storeRef = useRef(storeAll);
-  storeRef.current = storeAll;
-  const requested = useRef(false);
-  if (run.status === "running") requested.current = true;
-  const settled = run.status === "done" || run.status === "partial";
-
-  useEffect(() => {
-    if (!settled || !requested.current || !run.items.length) return;
-    requested.current = false;
-    void storeRef.current(run.items);
-  }, [run.items, settled]);
-
-  const senseCount = words.reduce((count, word) => count + word.senses.length, 0);
+  const senseCount = words.reduce(
+    (count, word) => count + word.senses.length,
+    0,
+  );
   const back = (
     <Button asChild size="sm" variant="ghost">
       <Link href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}>
@@ -283,7 +228,12 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
           ? [t("questions.scopeChosen", { count: senseCount })]
           : []),
       ]}
-      onEdit={() => setStep("format")}
+      onEdit={() => {
+        if (!saving) {
+          generation.cancel();
+          setStep("format");
+        }
+      }}
     />
   );
 
@@ -326,15 +276,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     );
   }
 
-  const generated = (
-    <ol className="mt-4 rule-card rule-list">
-      {run.items.map((question) => (
-        <li className="py-5" key={question.id}>
-          <QuestionPreview question={question} />
-        </li>
-      ))}
-    </ol>
-  );
+  const generated = <GeneratedQuestionResults items={run.items} />;
 
   if (step === "done") {
     return (
@@ -356,25 +298,40 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   return (
     <StepFrame
       current={3}
-      onBack={() => setStep("scope")}
+      onBack={() => {
+        if (!saving) {
+          generation.cancel();
+          setStep("scope");
+        }
+      }}
       recap={recap}
       title={t("questions.stepRun")}
       total={3}
       width="wide"
     >
-      <AiRunPanel
-        actionLabel={t("questions.generate")}
-        configured={generation.configured}
-        localCount={prebuilt?.built.length ?? 0}
-        manualError={manualError}
-        onCancel={generation.cancel}
-        onManualResponse={applyManual}
-        onRetryFailed={generation.retryFailed}
-        onStart={() => generation.start(batches, prebuilt?.built ?? [])}
-        prompts={prompts}
-        scopeSummary={t("questions.scopeSummary", { count: senseCount })}
-        state={run}
-      />
+      <fieldset disabled={saving} className="min-w-0">
+        <AiRunPanel
+          actionLabel={t("questions.generate")}
+          configured={generation.configured}
+          enabled={generation.enabled}
+          ready={generation.ready}
+          localCount={prebuilt?.built.length ?? 0}
+          manualError={manualError}
+          onCancel={generation.cancel}
+          onManualResponse={applyManual}
+          onResume={generation.resume}
+          onAppend={
+            moreTask.steps.length
+              ? () => generation.append(moreTask)
+              : undefined
+          }
+          onStart={() => generation.start(task, prebuilt?.built ?? [])}
+          prompts={prompts}
+          scopeSummary={t("questions.scopeSummary", { count: senseCount })}
+          state={run}
+          unit={t(isPassageKind(kind) ? "ai.packsUnit" : "ai.questionsUnit")}
+        />
+      </fieldset>
 
       {run.items.length > 0 && (
         <section className="section-gap">
@@ -382,6 +339,17 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             {t("questions.generatedCount", { count: run.items.length })}
           </h2>
           {generated}
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <Button
+              type="button"
+              disabled={run.status === "running" || saving}
+              onClick={() => void storeAll(run.items)}
+            >
+              <Icons.success />
+              {t("ai.applyQuestions")}
+            </Button>
+            <p className="text-xs text-muted-foreground">{t("ai.savedHint")}</p>
+          </div>
         </section>
       )}
     </StepFrame>

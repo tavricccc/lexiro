@@ -6,15 +6,42 @@ import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
+import { defaultAiSettings } from "@/src/lib/ai-provider";
 
-function library(setId: string, rawWordKey: string, setName: string): LibraryState {
+function library(
+  setId: string,
+  rawWordKey: string,
+  setName: string,
+): LibraryState {
   const timestamp = "2026-08-12T00:00:00.000Z";
   const wordKey = normalizeWordKey(rawWordKey);
   const senseId = buildSenseId(wordKey, "n.", `${wordKey} 意思`);
   return {
     version: 1,
-    words: { [wordKey]: { wordKey, word: wordKey, senses: [{ id: senseId, pos: "n.", meaningZh: `${wordKey} 意思`, examples: [] }], updatedAt: timestamp } },
-    sets: [{ id: setId, setName, folderId: "__uncategorized__", createdAt: timestamp, updatedAt: timestamp }],
+    words: {
+      [wordKey]: {
+        wordKey,
+        word: wordKey,
+        senses: [
+          {
+            id: senseId,
+            pos: "n.",
+            meaningZh: `${wordKey} 意思`,
+            examples: [],
+          },
+        ],
+        updatedAt: timestamp,
+      },
+    },
+    sets: [
+      {
+        id: setId,
+        setName,
+        folderId: "__uncategorized__",
+        createdAt: timestamp,
+        updatedAt: timestamp,
+      },
+    ],
     memberships: { [setId]: [{ wordKey, senseIds: [senseId] }] },
     folders: [createUncategorizedFolder()],
     questions: [],
@@ -34,13 +61,17 @@ describe("data integrity", () => {
   });
 
   it("adds non-conflicting backup sets", () => {
-    const merged = mergeLibraryStates(library("one", "one", "一"), library("two", "two", "二"));
+    const merged = mergeLibraryStates(
+      library("one", "one", "一"),
+      library("two", "two", "二"),
+    );
     expect(merged.result.addedSets).toBe(1);
     expect(merged.state.sets.map((set) => set.id)).toEqual(["one", "two"]);
   });
 
   it("exports a canonical backup without the API key", () => {
     const ai: AiSettings = {
+      ...defaultAiSettings,
       enabled: true,
       provider: "openai",
       apiKey: "secret",
@@ -48,7 +79,10 @@ describe("data integrity", () => {
       model: "gpt-4o-mini",
       batchSize: 8,
     };
-    const progress: LearningProgress = { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" };
+    const progress: LearningProgress = {
+      cards: {},
+      updatedAt: "2026-08-16T00:00:00.000Z",
+    };
     const backup = createFullBackup(
       library("one", "adapt", "常用單字"),
       progress,
@@ -70,6 +104,7 @@ describe("data integrity", () => {
       { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
       createDefaultStats(),
       {
+        ...defaultAiSettings,
         enabled: false,
         provider: "openai",
         apiKey: "",

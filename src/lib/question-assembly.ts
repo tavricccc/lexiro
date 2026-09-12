@@ -8,6 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { libraryDistractors, placeAnswer } from "./question-builders";
+import { isWordForm, sentenceContainsWordForm } from "./word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -65,6 +66,7 @@ function usableDistractors(
   answer: string,
   candidates: string[],
   count: number,
+  allowPhrases = false,
 ): string[] | null {
   const answerKey = answer.toLocaleLowerCase();
   const singleToken = !/\s/.test(answer);
@@ -73,7 +75,7 @@ function usableDistractors(
   for (const candidate of candidates) {
     const key = candidate.toLocaleLowerCase();
     if (seen.has(key)) continue;
-    if (singleToken && /\s/.test(candidate)) continue;
+    if (!allowPhrases && singleToken && /\s/.test(candidate)) continue;
     seen.add(key);
     kept.push(candidate);
     if (kept.length === count) return kept;
@@ -178,11 +180,24 @@ function assembleSentences(
 
     // The answer has to be a form of the word we asked about, or the item is
     // testing something else entirely.
-    const stem = slot.word.word.trim().toLocaleLowerCase().slice(0, 4);
-    if (stem && !answer.toLocaleLowerCase().startsWith(stem))
+    if (
+      kind === "vocabulary" &&
+      !isWordForm(answer, slot.word.word, slot.word.senses[slot.senseIndex].pos)
+    )
       return dropped.push(`${slot.word.word}：答案與目標單字不符`);
+    if (
+      kind === "grammar" &&
+      !sentenceContainsWordForm(
+        sentence,
+        slot.word.word,
+        slot.word.senses[slot.senseIndex].pos,
+      )
+    )
+      return dropped.push(`${slot.word.word}：文法題句子沒有使用目標單字`);
 
     const fromLibrary =
+      kind === "vocabulary" &&
+      raw.distractors === undefined &&
       answer.toLocaleLowerCase() === slot.word.word.trim().toLocaleLowerCase()
         ? libraryDistractors(
             slot.word,
@@ -194,8 +209,11 @@ function assembleSentences(
         : [];
     const distractors = usableDistractors(
       answer,
-      fromLibrary.length >= 3 ? fromLibrary : stringArray(raw.distractors),
+      raw.distractors === undefined
+        ? fromLibrary
+        : stringArray(raw.distractors),
       3,
+      true,
     );
     if (!distractors)
       return dropped.push(`${slot.word.word}：干擾選項不足或重複`);
@@ -385,6 +403,7 @@ function assemblePassage(
       child.answer,
       stringArray(source?.distractors),
       3,
+      true,
     );
     if (!distractors) {
       dropped.push(`第 ${index + 1} 格干擾選項不足`);

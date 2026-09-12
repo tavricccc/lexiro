@@ -60,8 +60,8 @@ describe("AI prompts", () => {
       buildQuestionGenerationPrompt([word], "vocabulary", level),
     );
     expect(new Set([easy, medium, hard]).size).toBe(3);
-    expect(easy).toContain("4500");
-    expect(hard).toContain("7000");
+    expect(easy).toContain("線索直接且充分");
+    expect(hard).toContain("跨句資訊整合");
   });
 
   it("drops the distractor request when the library can supply them", () => {

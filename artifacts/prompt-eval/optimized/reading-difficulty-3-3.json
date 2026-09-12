@@ -1,0 +1,61 @@
+{
+  "id": "reading-difficulty-3",
+  "kind": "reading",
+  "turn": 3,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 27928,
+  "promptCharacters": 10717,
+  "outputCharacters": 2867,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Campaign Still in Progress",
+    "passage": "At the start of April, the student council launched a four-week campaign to reduce disposable cups. Its current goal is to encourage students to bring reusable bottles, not to ban the cafeteria’s paper cups. A poster left from last year still says that all drinks will be served in personal cups. Because the old poster is beside the entrance, several students ask whether the rule has already changed. Council members replace it with a notice that gives the campaign dates and explains that paper cups remain available. During lunch, they count how many students use reusable bottles and record the number each day. The count rises from 38 on Monday to 61 on Friday. However, a rainy-day announcement moves Friday’s lunch period indoors, so the council decides not to compare that day’s count with the earlier ones. Instead, they plan another count next week under the usual lunch arrangement. The council will use several comparable counts to decide whether the campaign is changing habits before considering a stricter proposal.",
+    "items": [
+      {
+        "ref": "s7",
+        "answer": "The council is testing a cup-reduction campaign and plans to judge its results using comparable counts.",
+        "distractors": [
+          "The council has banned paper cups and is checking whether students follow the new rule.",
+          "The council is ending the campaign because its daily counts show that habits have not changed.",
+          "The council is comparing last year’s poster with this year’s cafeteria menu."
+        ],
+        "question": "What is the passage mainly about?"
+      },
+      {
+        "ref": "s7",
+        "answer": "It refers to the goal the council is pursuing during the campaign now underway.",
+        "distractors": [
+          "It refers to a goal the council completed before this campaign began.",
+          "It refers to a goal the council may consider only after the campaign ends.",
+          "It refers to a goal that applied only during last year’s campaign."
+        ],
+        "question": "What does “current” mean in the second sentence?"
+      },
+      {
+        "ref": "s7",
+        "answer": "The council thinks Friday’s different lunch arrangement could make its count a poor basis for comparison.",
+        "distractors": [
+          "The council thinks Friday’s count is too low because fewer students brought bottles indoors.",
+          "The council thinks the indoor lunch proves that students no longer want to use paper cups.",
+          "The council thinks Monday’s count cannot be used because the old poster was still at the entrance."
+        ],
+        "question": "Why did the council decide not to compare Friday’s count with the earlier ones?"
+      },
+      {
+        "ref": "s7",
+        "answer": "They will count bottle use again next week under the usual lunch arrangement.",
+        "distractors": [
+          "They will remove all paper cups before the next lunch period begins.",
+          "They will decide on a stricter rule using Friday’s count alone.",
+          "They will repeat last year’s campaign and serve every drink in a personal cup."
+        ],
+        "question": "What does the council plan to do next?"
+      }
+    ]
+  }
+}

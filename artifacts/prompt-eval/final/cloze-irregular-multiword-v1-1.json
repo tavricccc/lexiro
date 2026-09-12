@@ -1,0 +1,66 @@
+{
+  "id": "cloze-irregular-multiword-v1",
+  "kind": "cloze",
+  "turn": 1,
+  "phase": "final",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 37925,
+  "promptCharacters": 1710,
+  "outputCharacters": 1419,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "A Garden That Teaches",
+    "passage": "Our school science club started a small garden beside the gym. We wanted to learn why some plants grew well while others did not. Every Wednesday, we go to the garden before class and check the leaves and soil. Each student can take a small jar of soil back to the science room. There, we compare samples from sunny and shady spots, using the same amount of water for each plant.\n\nOur teacher suggested that we carry out a simple test for the first time this term. We will place two similar seedlings in different amounts of sunlight and record their growth in a table. Mina is especially interested in how light changes the color of leaves, so she has offered to keep the records. During the summer break, two club members will look after the seedlings. They will water them on schedule and tell the teacher if any leaves begin to turn yellow. By sharing the work and writing down what we see, we hope to understand the garden better and make it healthier.",
+    "blanks": [
+      {
+        "ref": "s1",
+        "answer": "go",
+        "distractors": [
+          "goes",
+          "went",
+          "going"
+        ]
+      },
+      {
+        "ref": "s2",
+        "answer": "take",
+        "distractors": [
+          "takes",
+          "took",
+          "taking"
+        ]
+      },
+      {
+        "ref": "s3",
+        "answer": "look after",
+        "distractors": [
+          "look for",
+          "look at",
+          "look into"
+        ]
+      },
+      {
+        "ref": "s4",
+        "answer": "carry out",
+        "distractors": [
+          "carry on",
+          "carry over",
+          "carry off"
+        ]
+      },
+      {
+        "ref": "s5",
+        "answer": "interested in",
+        "distractors": [
+          "proud of",
+          "worried about",
+          "responsible for"
+        ]
+      }
+    ]
+  }
+}

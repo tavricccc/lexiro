@@ -1,259 +1,250 @@
 "use client";
-
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
-
-import type { AiRunState } from "@/components/ai/use-ai-generation";
+import type { AiRunState } from "./use-ai-generation";
+import { AiManualPanel } from "./ai-manual-panel";
+import { AiUsage } from "./ai-usage";
 import { Button } from "@/components/ui/button";
-import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
-import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
-import { copyToClipboard } from "@/src/lib/clipboard";
 
-/**
- * The single surface for running an AI generation.
- *
- * There is exactly one path on screen at a time, and 設定 chooses it: with 直接
- * 呼叫 API on, this is a button that sends; with it off, it is a prompt to copy
- * and a box to paste the reply back into. The panel used to show both at once,
- * which asked the user to make a decision they had already made in settings.
- */
-export function AiRunPanel<TItem>({
+export function AiRunPanel<T>({
   actionLabel,
   configured,
+  enabled,
+  ready,
   localCount = 0,
   manualError,
   onCancel,
   onManualResponse,
-  onRetryFailed,
+  onResume,
   onStart,
+  onAppend,
   prompts,
   results,
   scopeSummary,
   state,
+  unit,
 }: {
   actionLabel: string;
   configured: boolean;
-  /** Items the caller already built locally, so no request covers them. */
+  enabled: boolean;
+  ready: boolean;
   localCount?: number;
   manualError?: string;
   onCancel: () => void;
-  onManualResponse: (response: string, batchIndex: number) => void;
-  onRetryFailed: () => void;
+  onManualResponse: (response: string, index: number) => boolean;
+  onResume: () => void;
   onStart: () => void;
+  onAppend?: () => void;
   prompts: string[];
   results?: ReactNode;
   scopeSummary: string;
-  state: AiRunState<TItem>;
+  state: AiRunState<T>;
+  unit: string;
 }) {
-  const [manualIndex, setManualIndex] = useState(0);
-  const [manualResponse, setManualResponse] = useState("");
-  const [copied, setCopied] = useState(false);
-
-  const batchCount = prompts.length;
-  const running = state.status === "running";
-  // When everything was built locally there is nothing to send, so neither path
-  // has anything to ask for.
-  const needsAi = batchCount > 0;
-  const manual = !configured;
-  const step = Math.min(manualIndex, Math.max(batchCount - 1, 0));
-
+  const [now, setNow] = useState(0);
+  const running = state.status === "running",
+    started = state.status !== "idle",
+    done = state.status === "done";
+  const manual = ready && !enabled,
+    canRun = ready && (configured || !prompts.length);
   useEffect(() => {
-    setManualIndex(0);
-    setManualResponse("");
-  }, [batchCount]);
-
-  useEffect(() => {
-    if (!copied) return;
-    const timer = window.setTimeout(() => setCopied(false), 1600);
-    return () => window.clearTimeout(timer);
-  }, [copied]);
-
-  const copyPrompt = async () => {
-    await copyToClipboard(prompts[step] ?? "");
-    setCopied(true);
-  };
-
-  const submitManual = () => {
-    onManualResponse(manualResponse, step);
-    setManualResponse("");
-    if (step < batchCount - 1) setManualIndex(step + 1);
-  };
-
-  const progressParts = [
-    t("ai.progress", { completed: state.completed, total: state.total }),
-    state.inFlight > 0 && t("ai.progressInFlight", { count: state.inFlight }),
-    state.retrying > 0 && t("ai.progressRetrying", { count: state.retrying }),
-    state.failed > 0 && t("ai.progressFailed", { count: state.failed }),
-  ].filter((part): part is string => Boolean(part));
-
-  // The reply itself is never shown half-written — it means nothing until it
-  // parses — but the character count climbing is what tells the user the
-  // request is alive rather than hung.
-  const characters = state.characters.toLocaleString("en-US");
-
-  const share = (count: number) =>
-    state.total ? `${(count / state.total) * 100}%` : "0%";
-
+    if (!running) return;
+    setNow(Date.now());
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [running]);
+  const seconds = Math.floor(
+    (state.elapsedMs +
+      (state.startedAt ? Math.max(0, now - state.startedAt) : 0)) /
+      1000,
+  );
+  const title =
+    manual && started && state.completed < state.total
+      ? t("ai.awaitingManual")
+      : running
+        ? t(`ai.${state.phase}`)
+        : done
+          ? t("ai.done")
+          : state.status === "cancelled"
+            ? t("ai.paused")
+            : state.status === "error"
+              ? t("ai.needsAttention")
+              : t("ai.ready");
+  const percent = state.total
+    ? Math.min(100, (state.completed / state.total) * 100)
+    : done
+      ? 100
+      : 0;
   return (
-    <section className="rounded-[var(--radius-card)] border bg-card">
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 sm:p-5">
-        <div className="min-w-0">
-          <p className="text-sm font-medium">{scopeSummary}</p>
-          <p className="mt-1 text-xs text-muted-foreground">
-            {localCount > 0 && `${t("ai.builtLocally", { count: localCount })} · `}
-            {batchCount === 0
-              ? t("ai.noRequestNeeded")
-              : batchCount > 1
-                ? t("ai.batchPlan", { count: batchCount })
-                : t("ai.singleRequest")}
-          </p>
+    <section className="overflow-hidden rounded-[var(--radius-card)] border bg-card">
+      <div className="p-4 sm:p-5">
+        <div className="flex items-start gap-3">
+          <span
+            className={cn(
+              "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+              state.status === "error" && "bg-destructive/10 text-destructive",
+            )}
+          >
+            {done ? (
+              <Icons.success className="size-5" />
+            ) : (
+              <Icons.ai
+                className={cn("size-5", running && "motion-safe:animate-pulse")}
+              />
+            )}
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs text-muted-foreground">{scopeSummary}</p>
+            <h3
+              className="mt-1 text-base font-semibold"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {!ready ? t("ai.loadingSettings") : title}
+            </h3>
+            <p className="mt-1 text-xs leading-5 text-muted-foreground">
+              {manual
+                ? t("ai.manualDescription")
+                : started
+                  ? t("ai.contextHint")
+                  : t("ai.readyDescription")}
+            </p>
+          </div>
         </div>
-        <div className="flex shrink-0 flex-wrap items-center gap-2">
+        {started && (
+          <div className="mt-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <p
+                className="text-sm font-medium tabular-nums"
+                aria-live="polite"
+              >
+                {t("ai.completedItems", {
+                  completed: state.completed,
+                  total: state.total,
+                  unit,
+                })}
+              </p>
+              <span className="text-xs tabular-nums text-muted-foreground">
+                {t("ai.elapsed", { seconds })}
+              </span>
+            </div>
+            <div
+              role="progressbar"
+              aria-label={t("ai.progressLabel")}
+              aria-valuemin={0}
+              aria-valuemax={Math.max(1, state.total)}
+              aria-valuenow={state.completed}
+              className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--surface-inset)]"
+            >
+              <div
+                className="h-full rounded-full bg-primary transition-[width] duration-500 motion-reduce:transition-none"
+                style={{ width: `${percent}%` }}
+              />
+            </div>
+            <div className="mt-2 flex flex-wrap justify-between gap-2 text-xs text-muted-foreground">
+              <span>
+                {t("ai.completedSegments", { count: state.segments })}
+              </span>
+              {running && state.characters > 0 && (
+                <span className="tabular-nums">
+                  {t("ai.progressCharacters", {
+                    count: state.characters.toLocaleString(),
+                  })}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+        {localCount > 0 && (
+          <p className="mt-3 text-xs text-muted-foreground">
+            {t("ai.builtLocally", { count: localCount })}
+          </p>
+        )}
+        {state.error && (
+          <p
+            role="alert"
+            className="mt-4 rounded-lg bg-destructive/10 p-3 text-sm leading-6 text-destructive"
+          >
+            {state.error}
+          </p>
+        )}
+        {ready && enabled && !configured && (
+          <p className="mt-4 text-sm text-muted-foreground">
+            {t("ai.incompleteSetup")}{" "}
+            <Link
+              href="/me"
+              className="text-primary underline underline-offset-4"
+            >
+              {t("ai.setup")}
+            </Link>
+          </p>
+        )}
+        <div className="mt-5 flex flex-wrap gap-2">
           {running ? (
             <Button type="button" variant="outline" onClick={onCancel}>
               <Icons.cancel />
               {t("ai.stop")}
             </Button>
           ) : (
-            (!manual || !needsAi) && (
-              <Button
-                type="button"
-                disabled={!batchCount && !localCount}
-                onClick={onStart}
-              >
-                <Icons.generate />
-                {actionLabel}
-              </Button>
-            )
+            <>
+              {state.remaining > 0 && canRun && (
+                <Button type="button" onClick={onResume}>
+                  <Icons.retry />
+                  {t(
+                    state.status === "error" ? "ai.retryCurrent" : "ai.resume",
+                  )}
+                </Button>
+              )}
+              {(!manual || !prompts.length) && (
+                <Button
+                  type="button"
+                  variant={started ? "outline" : "default"}
+                  disabled={!canRun || (!prompts.length && !localCount)}
+                  onClick={onStart}
+                >
+                  <Icons.generate />
+                  {started ? t("ai.regenerate") : actionLabel}
+                </Button>
+              )}
+              {done && onAppend && configured && (
+                <Button type="button" variant="secondary" onClick={onAppend}>
+                  <Icons.create />
+                  {t("ai.append")}
+                </Button>
+              )}
+            </>
           )}
         </div>
-      </div>
-
-      {running && (
-        <div className="rule-t px-4 py-4 sm:px-5">
-          <div
-            aria-label={t("ai.progressLabel")}
-            aria-valuemax={state.total}
-            aria-valuemin={0}
-            aria-valuenow={state.completed}
-            className="flex h-1 overflow-hidden rounded-full bg-[var(--surface-inset)]"
-            role="progressbar"
-          >
-            <div
-              className="h-full bg-primary transition-[width] duration-[var(--motion-control)] ease-[var(--ease-arrive)]"
-              style={{ width: share(state.succeeded) }}
-            />
-            <div
-              className="h-full bg-destructive transition-[width] duration-[var(--motion-control)] ease-[var(--ease-arrive)]"
-              style={{ width: share(state.failed) }}
-            />
-          </div>
-          <div className="mt-2.5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs tabular-nums text-muted-foreground">
-            <p>{progressParts.join(" · ")}</p>
-            {state.characters > 0 && (
-              <p aria-live="polite">
-                {t("ai.progressCharacters", { count: characters })}
-              </p>
-            )}
-          </div>
-        </div>
-      )}
-
-      {!running && state.failures.length > 0 && (
-        <div className="rule-t px-4 py-4 text-sm sm:px-5">
-          <p className="font-medium text-destructive">
-            {state.failedSteps.length > 1
-              ? t("ai.failedSteps", {
-                  count: state.failedSteps.length,
-                  steps: state.failedSteps.join("、"),
-                })
-              : t("ai.someBatchesFailed", { count: state.failures.length })}
+        {started && (
+          <p className="mt-3 text-xs leading-5 text-muted-foreground">
+            {running ? t("ai.keepWorking") : t("ai.keptResults")}
           </p>
+        )}
+        {started && !running && !manual && (
           <p className="mt-1 text-xs leading-5 text-muted-foreground">
-            {state.failures[0]?.message}
+            {t("ai.regenerateHint")}
+            {done && onAppend ? ` ${t("ai.appendHint")}` : ""}
           </p>
-          <Button
-            type="button"
-            className="mt-3"
-            size="sm"
-            variant="outline"
-            onClick={onRetryFailed}
-          >
-            <Icons.retry />
-            {t("ai.retryFailed", { count: state.failures.length })}
-          </Button>
-        </div>
+        )}
+      </div>
+      {manual && prompts.length > 0 && (
+        <AiManualPanel
+          prompts={prompts}
+          onResponse={onManualResponse}
+          error={manualError}
+        />
       )}
-
-      {!running && !state.failures.length && state.status === "error" && state.error && (
-        <p className="rule-t px-4 py-4 text-sm text-destructive sm:px-5" role="alert">
-          {state.error}
-        </p>
+      {started && state.model && (
+        <AiUsage
+          usage={state.usage}
+          model={state.model}
+          notices={state.notices}
+        />
       )}
-
-      {!running && state.status === "cancelled" && (
-        <p className="rule-t px-4 py-4 text-sm text-muted-foreground sm:px-5">
-          {t("ai.stopped")}
-        </p>
-      )}
-
-      {manual && needsAi && (
-        <div className="rule-t px-4 py-5 sm:px-5">
-          <p className="type-lead">{t("ai.manualDescription")}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            <Button type="button" variant="secondary" onClick={() => void copyPrompt()}>
-              {copied ? <Icons.success /> : <Icons.copy />}
-              {batchCount > 1
-                ? t(copied ? "ai.copiedStep" : "ai.copyStep", {
-                    step: step + 1,
-                    total: batchCount,
-                  })
-                : t(copied ? "ai.copied" : "ai.copyPrompt")}
-            </Button>
-            {batchCount > 1 && (
-              <span className="text-xs tabular-nums text-muted-foreground">
-                {t("ai.stepPosition", { step: step + 1, total: batchCount })}
-              </span>
-            )}
-          </div>
-          <Field className="mt-4" label={t("ai.manualResponse")}>
-            <Textarea
-              className="min-h-36 font-mono text-xs leading-5"
-              value={manualResponse}
-              onChange={(event) => setManualResponse(event.target.value)}
-            />
-          </Field>
-          <Button
-            type="button"
-            className="mt-3"
-            variant="secondary"
-            disabled={!manualResponse.trim()}
-            onClick={submitManual}
-          >
-            <Icons.success />
-            {batchCount > 1
-              ? t("ai.applyStep", { step: step + 1 })
-              : t("ai.validate")}
-          </Button>
-          {manualError && (
-            <p className="mt-3 text-sm text-destructive" role="alert">
-              {manualError}
-            </p>
-          )}
-          <p className="mt-5 text-xs text-muted-foreground">
-            <Link
-              className="underline-offset-4 hover:text-foreground hover:underline"
-              href="/me"
-            >
-              {t("ai.switchToApi")}
-            </Link>
-          </p>
-        </div>
-      )}
-
-      {results && <div className="rule-t px-4 py-5 sm:px-5">{results}</div>}
+      {results && <div className="rule-t p-4 sm:p-5">{results}</div>}
     </section>
   );
 }

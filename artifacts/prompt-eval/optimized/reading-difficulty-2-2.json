@@ -1,0 +1,51 @@
+{
+  "id": "reading-difficulty-2",
+  "kind": "reading",
+  "turn": 2,
+  "phase": "optimized",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 25070,
+  "promptCharacters": 6522,
+  "outputCharacters": 1864,
+  "parsedCount": 1,
+  "error": "",
+  "response": {
+    "title": "Following the River’s Flow",
+    "passage": "The environmental club visited a local river for a science project. Since the banks were slippery, their teacher marked a viewing area on the dry path and told them not to enter the water. At an upstream marker, the students placed three small sticks in the river, one after another. A steady current carried each stick downstream past a lower marker in seconds. To check the direction, they released corks from the same spot and watched from the bank. All the corks moved toward a bend, and none traveled back toward the starting point. The students noted the markers’ positions and drew arrows on a map to show the water’s movement. Before leaving, they compared their maps, which all showed the flow heading toward the bend.",
+    "items": [
+      {
+        "ref": "s6",
+        "answer": "It carried each test stick downstream past the lower marker.",
+        "distractors": [
+          "It carried each test stick upstream past the higher marker.",
+          "It kept each test stick beside the starting marker.",
+          "It pushed each test stick back onto the dry path."
+        ],
+        "question": "What did the steady current do to the test sticks?"
+      },
+      {
+        "ref": "s6",
+        "answer": "The river water was flowing toward the bend.",
+        "distractors": [
+          "The river water was flowing back toward the starting point.",
+          "The river water was standing still near the bend.",
+          "The river water was flowing away from the lower marker."
+        ],
+        "question": "What can the students infer from the way the corks moved?"
+      },
+      {
+        "ref": "s6",
+        "answer": "The club watched objects move in the river and recorded the direction of the flow.",
+        "distractors": [
+          "The club entered the river to measure how deep it was at each marker.",
+          "The club tested whether sticks and corks could float upstream by themselves.",
+          "The club mapped the slippery banks so other students could avoid the path."
+        ],
+        "question": "Which statement best describes the club’s project?"
+      }
+    ]
+  }
+}

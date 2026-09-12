@@ -1,0 +1,99 @@
+{
+  "id": "baseline-vocabulary-two-turn-global-refs",
+  "kind": "vocabulary",
+  "turn": 1,
+  "phase": "final",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 41696,
+  "promptCharacters": 1994,
+  "outputCharacters": 1704,
+  "parsedCount": 8,
+  "error": "",
+  "response": {
+    "items": [
+      {
+        "ref": "s1",
+        "answer": "bark",
+        "distractors": [
+          "branch",
+          "root",
+          "seed"
+        ],
+        "sentence": "The guide told us not to peel the bark from the young trees because this outer layer protects them from insects."
+      },
+      {
+        "ref": "s2",
+        "answer": "bark",
+        "distractors": [
+          "purr",
+          "whisper",
+          "sneeze"
+        ],
+        "sentence": "When a stranger approached the gate, our dog would bark loudly to warn us."
+      },
+      {
+        "ref": "s3",
+        "answer": "rescue",
+        "distractors": [
+          "decorate",
+          "interview",
+          "praise"
+        ],
+        "sentence": "The firefighters managed to rescue the hikers from the rising floodwater before it covered the trail."
+      },
+      {
+        "ref": "s4",
+        "answer": "detect",
+        "distractors": [
+          "repair",
+          "paint",
+          "hide"
+        ],
+        "sentence": "A small alarm can detect smoke before anyone sees it because its sensor reacts to particles in the air."
+      },
+      {
+        "ref": "s5",
+        "answer": "contamination",
+        "distractors": [
+          "celebration",
+          "instruction",
+          "agreement"
+        ],
+        "sentence": "After the lab found contamination in the water sample, the school closed the drinking fountain until the pipes could be cleaned."
+      },
+      {
+        "ref": "s6",
+        "answer": "isolate",
+        "distractors": [
+          "examine",
+          "treat",
+          "interview"
+        ],
+        "sentence": "To stop the illness from spreading, the clinic decided to isolate patients who had tested positive in a separate room, where they would have no contact with other patients."
+      },
+      {
+        "ref": "s7",
+        "answer": "cautious",
+        "distractors": [
+          "careless",
+          "reckless",
+          "thoughtless"
+        ],
+        "sentence": "Because the ice was thin near the shore, Maya was cautious and tested each step before walking farther onto the pond."
+      },
+      {
+        "ref": "s8",
+        "answer": "estimate",
+        "distractors": [
+          "decorate",
+          "spill",
+          "store"
+        ],
+        "sentence": "Since the wall was uneven and he had no measuring tape, Leo had to estimate how much paint it would take, then bought an extra can in case he was wrong."
+      }
+    ]
+  }
+}

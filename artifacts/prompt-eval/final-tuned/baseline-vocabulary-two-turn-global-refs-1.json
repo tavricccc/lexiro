@@ -1,0 +1,99 @@
+{
+  "id": "baseline-vocabulary-two-turn-global-refs",
+  "kind": "vocabulary",
+  "turn": 1,
+  "phase": "final-tuned",
+  "method": "codex-cli-subagent",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "medium",
+  "configurationVerified": true,
+  "durationMs": 45380,
+  "promptCharacters": 2040,
+  "outputCharacters": 1616,
+  "parsedCount": 0,
+  "error": "Error: rescue：干擾選項不足或重複",
+  "response": {
+    "items": [
+      {
+        "ref": "s1",
+        "answer": "bark",
+        "distractors": [
+          "leaves",
+          "branches",
+          "roots"
+        ],
+        "sentence": "The tree’s thick outer bark protected its trunk from insects and harsh weather."
+      },
+      {
+        "ref": "s2",
+        "answer": "barked",
+        "distractors": [
+          "howled",
+          "growled",
+          "purred"
+        ],
+        "sentence": "When the doorbell rang, the small dog barked twice, making two short, sharp sounds instead of a long call."
+      },
+      {
+        "ref": "s3",
+        "answer": "rescued",
+        "distractors": [
+          "followed",
+          "approached",
+          "searched for"
+        ],
+        "sentence": "Firefighters rescued the climber by lifting the fallen tree off his leg and carrying him to safety."
+      },
+      {
+        "ref": "s4",
+        "answer": "detected",
+        "distractors": [
+          "measured",
+          "filtered",
+          "released"
+        ],
+        "sentence": "The alarm detected a tiny gas leak and began ringing before anyone could smell the gas."
+      },
+      {
+        "ref": "s5",
+        "answer": "contamination",
+        "distractors": [
+          "sediment",
+          "evaporation",
+          "shortage"
+        ],
+        "sentence": "The lab found contamination in the well water: bacteria had entered through a crack, so residents were told not to drink it."
+      },
+      {
+        "ref": "s6",
+        "answer": "isolated",
+        "distractors": [
+          "examined",
+          "treated",
+          "discharged"
+        ],
+        "sentence": "The nurse isolated the patient in a separate room until tests showed he was no longer contagious, keeping him away from others."
+      },
+      {
+        "ref": "s7",
+        "answer": "cautious",
+        "distractors": [
+          "curious",
+          "impatient",
+          "careless"
+        ],
+        "sentence": "She was cautious while crossing the old bridge, testing each board first because some were loose."
+      },
+      {
+        "ref": "s8",
+        "answer": "estimated",
+        "distractors": [
+          "charged",
+          "paid",
+          "saved"
+        ],
+        "sentence": "Before opening the damaged wall, the builder estimated the repair cost at about $800 because the exact total was still unknown."
+      }
+    ]
+  }
+}
