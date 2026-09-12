@@ -1,6 +1,6 @@
 # AI generation
 
-Lexiro calls providers directly from the browser using the learner's local API key. Settings and exports use version 2; the explicit v1 migration retains existing models, custom URLs and segment sizes. Keys are never exported.
+Lexiro calls providers directly from the browser using the learner's local API key. Settings and exports use version 3; the explicit v1 and v2 migrations retain existing models, custom URLs, segment sizes and reasoning effort. Keys are never exported.
 
 ## Flow
 
@@ -15,10 +15,44 @@ Known models use documented limits; unknown models can override the protocol, sc
 Official documentation checked September 12, 2026:
 
 - [OpenAI models](https://developers.openai.com/api/docs/models), [conversation state](https://developers.openai.com/api/docs/guides/conversation-state), [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching), [structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs). Responses uses `previous_response_id`, `text.format`, and model-specific caching. GPT-5.6+ single-turn requests use explicit caching without breakpoints to avoid cache writes.
-- [Claude models](https://platform.claude.com/docs/en/models/overview), [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). Messages replays client-managed history, marks a stable system prefix with `cache_control`, and uses `output_config.format`.
+- [Claude models](https://platform.claude.com/docs/en/models/overview), [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). Messages replays client-managed history, marks a stable system prefix and the last block with `cache_control`, and uses `output_config.format`.
 - [Gemini Interactions](https://ai.google.dev/gemini-api/docs/interactions-overview), [REST reference](https://ai.google.dev/api/interactions-api), [caching](https://ai.google.dev/gemini-api/docs/caching), [structured output](https://ai.google.dev/gemini-api/docs/structured-output). Interactions uses `previous_interaction_id`, `response_format`, and implicit caching. generateContent remains an explicitly selectable custom protocol.
 
 Native continuation enables provider-side response storage; it does not make previous input free or guarantee cache hits. UI usage includes all reported attempts, including truncated replies. Network failures without provider usage cannot be counted.
+
+## Caching
+
+A task's instructions are the whole source list and never change between its
+segments, so the prefix a run repeats is long and identical. What each provider
+does with that differs, and the differences are the reason the request builder
+is not uniform:
+
+- **OpenAI.** Nothing below 1,024 rendered input tokens is cached at all. A
+  write costs 1.25x and a read 0.1x, so caching pays for itself on the second
+  request sharing a prefix and loses 25% on a prefix used once — which is why a
+  session with nothing to reuse asks for explicit breakpoints and gives none.
+  `previous_response_id` keeps the history on the server, so a turn never
+  resends it. `prompt_cache_key` names the run's prefix and routes its turns to
+  the node holding it.
+- **Anthropic.** The minimum is per model — 512 on Opus 5 and Fable 5.1, 1,024
+  on Sonnet 5, and 4,096 on Haiku 4.5, which the instructions alone rarely
+  reach. The whole conversation is replayed on every turn, so the breakpoint on
+  the system prefix is not enough: a second one on the last block lets each turn
+  read everything before it and write only what it added. Both stay at the
+  default five minutes; the hour-long TTL doubles the write and a run's segments
+  are seconds apart. The cached order is tools, then system, then messages, and
+  changing the reasoning effort invalidates the message-level cache.
+- **Gemini.** Caching is implicit and needs 4,096 tokens on every model the
+  catalogue lists, which a typical run does not reach, so cache reads of zero
+  there are the provider's floor rather than a defect. The Interactions API
+  supports no explicit cache. Stable content already comes first, which is the
+  only lever available.
+
+Across runs and across features the shared prefix is the prompt template alone,
+a few hundred tokens — under every threshold above. Padding it to reach one
+would cost those tokens on every request forever, so nothing tries to. Two runs
+over the same sources do share a prefix, and that is what regenerating and
+adding another round hit.
 
 ## Verification
 

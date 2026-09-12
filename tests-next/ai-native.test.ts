@@ -82,6 +82,19 @@ describe("native AI protocols", () => {
       mode: "explicit",
     });
   });
+  it("names one run's prefix so every turn of it asks the same cache", () => {
+    const first = buildRequest(createAiSession(settings(), "context"), "a", {});
+    const second = buildRequest(createAiSession(settings(), "context"), "b", {});
+    const other = buildRequest(createAiSession(settings(), "other"), "a", {});
+    expect(first.body.prompt_cache_key).toBe(second.body.prompt_cache_key);
+    expect(other.body.prompt_cache_key).not.toBe(first.body.prompt_cache_key);
+    // A one-shot call carries no instructions of its own, so there is no
+    // prefix worth routing and no key to name it by.
+    expect(
+      buildRequest(createAiSession(settings(), "", false), "a", {}).body
+        .prompt_cache_key,
+    ).toBeUndefined();
+  });
   it("rebuilds an expired native ID with the original context and complete history reset", async () => {
     const fetch = vi
       .fn()
@@ -124,6 +137,27 @@ describe("native AI protocols", () => {
         cache_control: { type: "ephemeral", ttl: "5m" },
       },
     ]);
+    // The history is replayed in full every turn, so the breakpoint has to
+    // move with it: everything up to the previous turn is read from cache and
+    // only what this turn added is written.
+    const messages = request.body.messages as {
+      role: string;
+      content: unknown;
+    }[];
+    expect(messages.slice(0, 2)).toEqual([
+      { role: "user", content: "first" },
+      { role: "assistant", content: "result" },
+    ]);
+    expect(messages[2]).toEqual({
+      role: "user",
+      content: [
+        {
+          type: "text",
+          text: "second",
+          cache_control: { type: "ephemeral" },
+        },
+      ],
+    });
     expect(request.body.output_config).toMatchObject({
       effort: "low",
       format: { type: "json_schema" },

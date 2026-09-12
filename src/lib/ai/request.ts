@@ -1,6 +1,23 @@
 import type { AiSession, AiTurnOptions } from "@/src/types/ai";
 import { endpoint, modelPreset, outputLimit } from "./catalog";
 
+/**
+ * A stable name for one run's prompt prefix.
+ *
+ * OpenAI routes requests carrying the same key to the backend that already
+ * holds their prefix, so every turn of a run — and a later run over the same
+ * sources, which builds the same instructions — asks the node that can answer
+ * from cache. FNV-1a because this names a cache, it does not protect anything.
+ */
+function cacheKey(context: string): string {
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < context.length; index += 1) {
+    hash ^= context.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return `lexiro-${(hash >>> 0).toString(36)}`;
+}
+
 export function buildRequest(
   session: AiSession,
   prompt: string,
@@ -49,14 +66,19 @@ export function buildRequest(
       ...(reasoningEffort ? { reasoning: { effort: reasoningEffort } } : {}),
       ...(known?.cache === "openai"
         ? {
+            // A cache write costs 1.25x on these models, so a turn with
+            // nothing to reuse asks for explicit breakpoints and supplies
+            // none, which caches nothing and writes nothing.
             prompt_cache_options: {
               mode: session.cache ? "implicit" : "explicit",
               ttl: "30m",
             },
+            ...(context ? { prompt_cache_key: cacheKey(context) } : {}),
           }
         : {}),
     };
   } else if (protocol === "messages") {
+    const caching = session.cache && known?.cache === "anthropic";
     headers["x-api-key"] = apiKey;
     headers["anthropic-version"] = "2023-06-01";
     headers["anthropic-dangerous-direct-browser-access"] = "true";
@@ -64,12 +86,34 @@ export function buildRequest(
       model,
       stream: session.stream,
       max_tokens: max,
-      messages,
+      // Anthropic replays the whole conversation on every turn, so a
+      // breakpoint on the system prefix alone left each turn paying full
+      // price for every reply that came before it. A second one on the last
+      // block extends the cache to the history as the run grows: each turn
+      // reads everything up to the previous one and writes only what it
+      // added. Both are ephemeral at the default five minutes, which is far
+      // longer than the gap between a run's segments.
+      messages: caching
+        ? messages.map((message, index) =>
+            index === messages.length - 1
+              ? {
+                  role: message.role,
+                  content: [
+                    {
+                      type: "text",
+                      text: message.content,
+                      cache_control: { type: "ephemeral" },
+                    },
+                  ],
+                }
+              : message,
+          )
+        : messages,
       system: [
         {
           type: "text",
           text: context || "Return the requested result.",
-          ...(session.cache && known?.cache === "anthropic"
+          ...(caching
             ? { cache_control: { type: "ephemeral", ttl: "5m" } }
             : {}),
         },

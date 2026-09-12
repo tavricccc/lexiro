@@ -153,7 +153,11 @@ export function useAiGeneration<T>({
       if (!ready) return;
       const run: AiRun<T> = {
         task,
-        session: createAiSession(settings, task.context, task.steps.length > 1),
+        // Always cached, however few segments the task has. A cache write
+        // pays for itself on the second request sharing the prefix, and a
+        // task reaches that from a validation repair, a retry, another round
+        // or a regenerate — all of which keep the same instructions.
+        session: createAiSession(settings, task.context),
         pending: [...task.steps],
         items: [...seed],
         completed: seed.length,
