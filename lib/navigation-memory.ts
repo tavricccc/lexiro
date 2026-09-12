@@ -72,23 +72,25 @@ function hierarchy(pathname: string): string[] {
 
 /**
  * How `to` sits relative to `from` in the information hierarchy, for a
- * navigation nobody marked a direction on. Only a move along one branch is a
- * push or a pop; switching branches, or swapping one sibling for another, is a
- * replacement, which is what "root" means here.
+ * navigation nobody marked a direction on. Depth decides it: a page with more
+ * ancestors than the one it replaced is a push, one with fewer is a pop, and
+ * one with the same number is a replacement, which is what "root" means here.
+ *
+ * Depth on its own, not depth along a shared branch. A set belongs to the
+ * Library wherever it was opened from, so requiring a shared branch made the
+ * first set opened from 今天 a replacement with no animation, and the same set
+ * opened again after a back — from the Library this time — a push. One tap,
+ * two behaviours, decided by where the session happened to start.
  *
  * Without this, every back control would have to remember to mark itself, and
  * the one that forgot would send the user backwards on the forward animation.
  */
 function inferRouteDirection(from: string, to: string): RouteDirection {
   if (!from || from === to) return isRootRoute(to) ? "root" : "child";
-  const before = hierarchy(from);
-  const after = hierarchy(to);
-  const shared = Math.min(before.length, after.length);
-  for (let index = 0; index < shared; index += 1) {
-    if (before[index] !== after[index]) return "root";
-  }
-  if (after.length > before.length) return "child";
-  if (before.length > after.length) return "back";
+  const before = hierarchy(from).length;
+  const after = hierarchy(to).length;
+  if (after > before) return "child";
+  if (before > after) return "back";
   return "root";
 }
 

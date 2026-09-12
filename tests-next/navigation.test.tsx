@@ -98,6 +98,17 @@ describe("navigation selection", () => {
     expect(adoptedParent("/sets/example")).toBe("/library");
     expect(adoptedParent("/sync")).toBe("/me");
   });
+  it("pushes into a page the destination it was opened from does not own", () => {
+    // A set reached from 今天 is filed under the Library, and reading that as a
+    // branch switch left the first set of a session with no animation while
+    // every one opened afterwards — from the Library, after a back — had one.
+    rememberRoutePath("/");
+    expect(consumeRouteDirection("/sets/example")).toBe("child");
+    rememberRoutePath("/sets/example");
+    expect(consumeRouteDirection("/me")).toBe("back");
+    rememberRoutePath("/me");
+    expect(consumeRouteDirection("/sync")).toBe("child");
+  });
   it("names the destinations primary navigation points at", () => {
     for (const destination of ["/", "/library", "/progress", "/me"]) {
       expect(isRootRoute(destination)).toBe(true);
