@@ -111,17 +111,21 @@ describe("applyCloudRecords", () => {
     expect(merged.words).toEqual({});
   });
 
-  it("keeps a local record that was edited after the deletion", () => {
+  it("keeps a local edit that is still waiting to be pushed", () => {
     const local = library("one", "adapt", "改過的名字", LATER);
-    const merged = applyCloudRecords(local, [
-      {
-        type: "set",
-        recordKey: "one",
-        deleted: true,
-        updatedAt: EARLIER,
-        payload: null,
-      },
-    ]);
+    const merged = applyCloudRecords(
+      local,
+      [
+        {
+          type: "set",
+          recordKey: "one",
+          deleted: true,
+          updatedAt: EARLIER,
+          payload: null,
+        },
+      ],
+      new Set(["set:one"]),
+    );
     expect(merged.sets.map((entry) => entry.setName)).toEqual(["改過的名字"]);
   });
 
@@ -155,7 +159,10 @@ describe("applyCloudRecords", () => {
     expect(Object.keys(merged.words).sort()).toEqual(["adapt", "revise"]);
   });
 
-  it("ignores a remote copy older than the local one", () => {
+  it("takes the cloud copy even when the device that wrote it has a slow clock", () => {
+    // Order is the server's `writtenAt`, which is what the pull is sorted by.
+    // A device whose own clock reads earlier — or years ahead — no longer wins
+    // or loses conflicts on the strength of that clock alone.
     const local = library("one", "adapt", "新名字", LATER);
     const merged = applyCloudRecords(local, [
       {
@@ -163,10 +170,31 @@ describe("applyCloudRecords", () => {
         recordKey: "one",
         deleted: false,
         updatedAt: EARLIER,
-        payload: { ...local.sets[0], setName: "舊名字" },
+        payload: { ...local.sets[0], setName: "後寫入的名字" },
       },
     ]);
-    expect(merged.sets[0].setName).toBe("新名字");
+    expect(merged.sets[0].setName).toBe("後寫入的名字");
+  });
+
+  it("applies records in the order they arrive, last write winning", () => {
+    const local = library("one", "adapt", "原名");
+    const merged = applyCloudRecords(local, [
+      {
+        type: "set",
+        recordKey: "one",
+        deleted: false,
+        updatedAt: LATER,
+        payload: { ...local.sets[0], setName: "中間" },
+      },
+      {
+        type: "set",
+        recordKey: "one",
+        deleted: false,
+        updatedAt: EARLIER,
+        payload: { ...local.sets[0], setName: "最後" },
+      },
+    ]);
+    expect(merged.sets[0].setName).toBe("最後");
   });
 });
 

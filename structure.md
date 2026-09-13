@@ -94,7 +94,15 @@ question and back again; `src/lib/cloud-sync.ts` reads the account's change feed
 (`where('writtenAt', '>', cursor)`, ordered by the server's own timestamp) and
 writes what changed in batches. A deleted record keeps its document and sets
 `deleted`, so a deletion is a fact the cloud states rather than an absence the
-next device has to interpret.
+next device has to interpret — and `firestore.rules` refuses to delete a record
+document at all, so that fact cannot be erased into an absence.
+
+Conflicts are settled by the server's `writtenAt`, which is also the order the
+pull walks: last write wins. A record this device has changed but not yet pushed
+is held out of the merge instead, because the push that follows will send it.
+The `updatedAt` a device writes into the document is displayed, never used to
+decide a conflict; a phone with a wrong clock would otherwise win every conflict
+for as long as its clock stayed wrong.
 
 `src/lib/cloud-account.ts` holds review schedules and statistics, merging them
 field by field. AI credentials and configuration belong to the managed Worker;

@@ -253,13 +253,15 @@ async function runSync(
     const dirtyBlobs = { ...journal.blobs };
 
     // Pull first. Merging before pushing means a record this device changed is
-    // compared against the cloud copy while it is still marked dirty, so the
-    // newer of the two survives and the loser is simply not sent.
+    // still marked dirty when the cloud copy arrives, so the local edit is held
+    // back from the merge and then pushed, rather than being overwritten by an
+    // older copy that merely reached the server first.
     const pulled = await pullRecords(db, user.uid, journal.cursor);
     if (pulled.records.length) {
       const merged = applyCloudRecords(
         useLibraryStore.getState().state,
         pulled.records,
+        new Set(Object.keys(journal.dirty)),
       );
       await useLibraryStore.getState().applyRemoteState(merged);
     }

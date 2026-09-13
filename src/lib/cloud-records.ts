@@ -8,7 +8,7 @@ import type {
   WordKey,
 } from "@/types";
 import type { LibraryRecordKind, LibraryRecordRef } from "./library-repository";
-import type { SyncTombstone } from "./sync-journal";
+import { refKey, type SyncTombstone } from "./sync-journal";
 import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { CloudSyncError } from "./cloud-sync-errors";
 import { hashText } from "./hash";
@@ -160,15 +160,19 @@ export function validateCloudRecord(
   return { type: kind, recordKey, deleted, updatedAt, payload: value.payload };
 }
 
-function isNewer(incoming: string, current: string | undefined): boolean {
-  if (current === undefined) return true;
-  // Remote wins a tie. The two sides agree on the result either way, and a real
-  // local edit always carries a later timestamp than the copy it replaced.
-  return incoming >= current;
-}
-
 /**
- * Folds pulled records into the Library, one record at a time, newest wins.
+ * Folds pulled records into the Library, one record at a time, in the order the
+ * server wrote them.
+ *
+ * Order comes from `writtenAt`, which Firestore stamps and its rules require,
+ * rather than from the `updatedAt` a device wrote into the document. A phone
+ * whose clock reads 2030 would otherwise win every conflict for years, and the
+ * device that lost would keep losing with no way to state a newer edit.
+ *
+ * A record this device has changed but not yet pushed is held back instead:
+ * `dirty` names those, the push that follows this merge sends them, and they
+ * come home stamped. So the rule is the server's order, with the local edit
+ * that has not had its turn yet still waiting for one.
  *
  * The result is repaired rather than validated: two devices can each make a
  * legal change that is illegal together, and a merge that could fail would
@@ -177,6 +181,7 @@ function isNewer(incoming: string, current: string | undefined): boolean {
 export function applyCloudRecords(
   state: LibraryState,
   records: readonly CloudRecord[],
+  dirty: ReadonlySet<string> = new Set(),
   now = new Date().toISOString(),
 ): LibraryState {
   const folders = new Map(state.folders.map((entry) => [entry.id, entry]));
@@ -187,36 +192,32 @@ export function applyCloudRecords(
     ...state.memberships,
   };
 
-  const membershipUpdatedAt = (setId: string): string | undefined =>
-    memberships[setId] ? (sets.get(setId)?.updatedAt ?? "") : undefined;
+  const held = (record: CloudRecord) =>
+    dirty.has(refKey({ kind: record.type, id: record.recordKey }));
 
   for (const record of records) {
     const key = record.recordKey;
+    if (held(record)) continue;
     if (record.type === "folder") {
-      if (!isNewer(record.updatedAt, folders.get(key)?.updatedAt)) continue;
       if (record.deleted) folders.delete(key);
       else folders.set(key, record.payload as unknown as VocabFolder);
       continue;
     }
     if (record.type === "set") {
-      if (!isNewer(record.updatedAt, sets.get(key)?.updatedAt)) continue;
       if (record.deleted) sets.delete(key);
       else sets.set(key, record.payload as unknown as LibrarySet);
       continue;
     }
     if (record.type === "question") {
-      if (!isNewer(record.updatedAt, questions.get(key)?.updatedAt)) continue;
       if (record.deleted) questions.delete(key);
       else questions.set(key, record.payload as unknown as LibraryQuestion);
       continue;
     }
     if (record.type === "word") {
-      if (!isNewer(record.updatedAt, words[key]?.updatedAt)) continue;
       if (record.deleted) delete words[key];
       else words[key] = record.payload as unknown as WordEntry;
       continue;
     }
-    if (!isNewer(record.updatedAt, membershipUpdatedAt(key))) continue;
     if (record.deleted) delete memberships[key];
     else {
       const members = record.payload?.members;
