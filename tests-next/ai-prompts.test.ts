@@ -68,6 +68,52 @@ describe("AI prompts", () => {
   });
 });
 
+// The ceiling on how many senses may come back is the only thing standing
+// between a source and a model that pads. It is asserted here because a reply
+// that quietly gains a meaning looks exactly like a good one.
+describe("how many senses a source may come back with", () => {
+  const reply = (...meanings: string[]) =>
+    JSON.stringify({
+      items: [
+        {
+          senses: meanings.map((meaningZh) => ({
+            pos: "n.",
+            meaningZh,
+            example: "The example says what it means.",
+          })),
+        },
+      ],
+    });
+
+  it("refuses a meaning the source never asked for", () => {
+    const sources = buildWordGenerationSources("apple n. 蘋果");
+    expect(parseWordGenerationJson(reply("蘋果"), sources)[0]?.senses).toHaveLength(1);
+    expect(() => parseWordGenerationJson(reply("蘋果", "眼珠"), sources)).toThrow(
+      /詞義數量不正確/,
+    );
+  });
+
+  it("counts the meanings a hint names, however they are joined", () => {
+    const both = buildWordGenerationSources("bank n. 銀行與河岸");
+    expect(parseWordGenerationJson(reply("銀行", "河岸"), both)[0]?.senses).toHaveLength(2);
+    expect(() =>
+      parseWordGenerationJson(reply("銀行", "河岸", "銀行業"), both),
+    ).toThrow(/詞義數量不正確/);
+    const three = buildWordGenerationSources("break v. 故障並可指崩潰或分解");
+    expect(
+      parseWordGenerationJson(reply("故障", "崩潰", "分解"), three)[0]?.senses,
+    ).toHaveLength(3);
+  });
+
+  it("allows one meaning for a source that names none", () => {
+    const bare = buildWordGenerationSources("apple n.");
+    expect(parseWordGenerationJson(reply("蘋果"), bare)[0]?.senses).toHaveLength(1);
+    expect(() => parseWordGenerationJson(reply("蘋果", "眼珠"), bare)).toThrow(
+      /詞義數量不正確/,
+    );
+  });
+});
+
 describe("question batching", () => {
   const manySenses = (count: number): WordEntry[] =>
     Array.from({ length: count }, (_, index) => ({

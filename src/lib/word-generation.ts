@@ -113,6 +113,21 @@ export function mergeWordDrafts(drafts: WordDraft[]): WordDraft[] {
   );
 }
 
+/**
+ * How many senses one source may come back with.
+ *
+ * It is the number of meanings the source itself named, and nothing more: a
+ * hint of 「銀行與河岸」 asks for two, a bare word asks for one. Generation used
+ * to allow one extra on top, which is how apple acquired 眼珠. Supplementing a
+ * word with meanings it does not yet have is now a separate, asked-for job.
+ */
+function senseAllowance(source: WordGenerationSource): number {
+  return Math.max(
+    1,
+    source.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
+  );
+}
+
 export function parseWordGenerationJson(
   text: string,
   sources: WordGenerationSource[],
@@ -142,11 +157,7 @@ export function parseWordGenerationJson(
     const word = expected.word;
     if (containsHan(word))
       throw new Error(`第 ${wordIndex + 1} 個單字必須使用英文`);
-    const maximum =
-      Math.max(
-        1,
-        expected.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
-      ) + 1;
+    const maximum = senseAllowance(expected);
     if (
       !Array.isArray(item.senses) ||
       !item.senses.length ||
