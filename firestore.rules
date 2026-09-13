@@ -2,6 +2,13 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    // The one place the rules state which document shape they accept. It used
+    // to be written out at each of the four documents, so a version bump could
+    // leave one behind and lock the account out of writing anything at all.
+    function currentSchemaVersion() {
+      return 8;
+    }
+
     function signedIn(uid) {
       return request.auth != null && request.auth.uid == uid;
     }
@@ -16,7 +23,7 @@ service cloud.firestore {
         ])
         && request.resource.data.cards is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 7;
+        && request.resource.data.schemaVersion == currentSchemaVersion();
     }
 
     function validStats() {
@@ -47,7 +54,7 @@ service cloud.firestore {
         && request.resource.data.questionStatsBySense is map
         && request.resource.data.dailyHistory is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 7;
+        && request.resource.data.schemaVersion == currentSchemaVersion();
     }
 
 
@@ -64,7 +71,7 @@ service cloud.firestore {
         'updatedAt', 'payload', 'writtenAt'
       ])
         && request.resource.data.ownerId == uid
-        && request.resource.data.schemaVersion == 7
+        && request.resource.data.schemaVersion == currentSchemaVersion()
         && request.resource.data.type in ['folder', 'set', 'membership', 'word', 'question']
         && request.resource.data.recordKey is string
         && request.resource.data.recordKey.size() > 0
@@ -99,7 +106,7 @@ service cloud.firestore {
         allow create, update: if ownerCreate(uid)
           && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'changedAt', 'changedBy'])
           && request.resource.data.changedBy is string
-          && request.resource.data.schemaVersion == 7;
+          && request.resource.data.schemaVersion == currentSchemaVersion();
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
