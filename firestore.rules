@@ -94,10 +94,13 @@ service cloud.firestore {
       }
 
       // Bumped on every push so other devices learn there is something to pull.
+      // `changedBy` names the tab that pushed, so its own listener can tell the
+      // server's confirmation of its own write from somebody else's change.
       match /meta/{documentId} {
         allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid)
-          && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'changedAt'])
+          && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'changedAt', 'changedBy'])
+          && request.resource.data.changedBy is string
           && request.resource.data.schemaVersion == 6;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }

@@ -30,6 +30,8 @@ export interface FirestoreLibraryMetaDoc {
   ownerId: string
   schemaVersion: 6
   changedAt: unknown
+  /** Which tab moved the marker, so a listener can ignore its own push. */
+  changedBy: string
 }
 
 export interface FirestoreProgressDoc extends LearningProgress {

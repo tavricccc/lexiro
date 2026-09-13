@@ -40,6 +40,7 @@ import {
   validateCloudRecord,
 } from "./cloud-records";
 import { prepareFirestoreData } from "./firestore-data";
+import { randomUUID } from "./id";
 import { refKey } from "./sync-journal";
 
 /**
@@ -71,6 +72,22 @@ export function cloudDocument(
 ) {
   return doc(db, "users", uid, collectionName, id);
 }
+
+/**
+ * Who wrote the change marker. One id per tab, made once when the module loads.
+ *
+ * A push finishes by stamping `meta/library` with a server timestamp, and
+ * Firestore delivers that document twice: once holding the local estimate, then
+ * again when the server resolves the real value. Only the first is marked as a
+ * pending write, so the second read as another device's change and bought a
+ * whole extra sync — a records query and both account documents — after every
+ * single edit. Stamping who caused the change is what tells the two apart.
+ *
+ * Per tab rather than per device on purpose: a second tab of the same browser
+ * has its own Library state to reconcile, so its push should still wake this
+ * one.
+ */
+export const SYNC_ORIGIN_ID = randomUUID();
 
 /** Per-request ceiling. Short on purpose: a retry beats a spinner that never ends. */
 export const CLOUD_REQUEST_TIMEOUT_MS = 10_000;
@@ -292,6 +309,7 @@ export async function pushRecords(
         ownerId: uid,
         schemaVersion: CLOUD_SCHEMA_VERSION,
         changedAt: serverTimestamp(),
+        changedBy: SYNC_ORIGIN_ID,
       } satisfies FirestoreLibraryMetaDoc),
     ),
     "Library change marker",
@@ -303,17 +321,37 @@ export async function pushRecords(
  * Watches one document so another device's push wakes this one up. One listener
  * for the whole account, rather than a live query that has to be torn down and
  * re-established every time the cursor moves.
+ *
+ * Three of the notifications it receives are not news, and each one used to
+ * cost a full sync. The first snapshot only says what the marker already held
+ * when the listener attached, and the caller syncs the moment it attaches. The
+ * cached copy and the server copy of an unchanged marker arrive as two separate
+ * snapshots. And this tab's own push comes back stamped with its own id. So the
+ * marker has to actually move forward, and it has to have been moved by
+ * somebody else, before this counts as a change.
  */
 export function watchCloudChanges(
   db: Firestore,
   uid: string,
   onChange: () => void,
 ): () => void {
+  let seen: Timestamp | null = null;
+  let started = false;
   return onSnapshot(
     cloudDocument(db, uid, "meta", "library"),
     (snapshot) => {
-      if (snapshot.metadata.hasPendingWrites) return;
-      if (snapshot.exists()) onChange();
+      if (snapshot.metadata.hasPendingWrites || !snapshot.exists()) return;
+      const changedAt: unknown = snapshot.get("changedAt");
+      if (!(changedAt instanceof Timestamp)) return;
+      const advanced = !seen || changedAt.toMillis() > seen.toMillis();
+      seen = changedAt;
+      if (!started) {
+        started = true;
+        return;
+      }
+      if (!advanced) return;
+      if (snapshot.get("changedBy") === SYNC_ORIGIN_ID) return;
+      onChange();
     },
     () => {
       // A dropped listener is not a failed sync. The next manual or scheduled
