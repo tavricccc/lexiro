@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { ListNavRow, ListSection } from "@/components/ui/list";
 import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
@@ -49,17 +49,13 @@ export function LearningRows() {
   return (
     <div className="section-gap grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
       {session && (
-        <section>
-          <h2 className="type-section">
-            {t("home.resumeTitle")}
-          </h2>
-          <div className="rule-card mt-3 flex items-center gap-4 py-4">
-            <div className="min-w-0 flex-1">
-              <p className="truncate font-medium">
-                {state.sets.find((entry) => entry.id === session.setId)
-                  ?.setName ?? t("practice.allSets")}
-              </p>
-              <p className="mt-1.5 flex items-center gap-2.5 text-sm text-muted-foreground">
+        // Resuming is going somewhere, so it is a row that leads there rather
+        // than a card with a button parked in it. The progress it was carrying
+        // is what a row's second line is for.
+        <ListSection header={t("home.resumeTitle")}>
+          <ListNavRow
+            detail={
+              <span className="flex items-center gap-2.5">
                 <span className="tabular-nums">
                   {t("practice.progress", { current: done, total })}
                 </span>
@@ -74,61 +70,45 @@ export function LearningRows() {
                     }}
                   />
                 </span>
-              </p>
-            </div>
-            <Button asChild size="sm" variant="secondary">
-              <Link href="/practice">
-                <Icons.start />
-                {t("home.resumeAction")}
-              </Link>
-            </Button>
-          </div>
-        </section>
+              </span>
+            }
+            href="/practice"
+            icon={Icons.start}
+            label={
+              state.sets.find((entry) => entry.id === session.setId)?.setName ??
+              t("practice.allSets")
+            }
+          />
+        </ListSection>
       )}
 
       {showRecent && (
-        <section>
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="type-section">
-              {t("home.recentTitle")}
-            </h2>
-            {recentSets.length > 0 && (
+        // The grouped list, not a hand-made copy of it. The copy answered a tap
+        // by recolouring its own label, where every other row in the product
+        // tints the row, so the same gesture felt like a different control.
+        <ListSection
+          header={t("home.recentTitle")}
+          headerAction={
+            recentSets.length > 0 && (
               <Link
                 className="text-sm font-medium text-primary hover:underline"
                 href="/library"
               >
                 {t("home.viewAll")}
               </Link>
-            )}
-          </div>
-          <ul className="mt-3 rule-card rule-list">
-            {recentSets.map((set) => (
-              <li key={set.id}>
-                <Link
-                  className="t-row group flex min-h-[3.25rem] items-center gap-3 py-[var(--row-padding-block)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                  href={`/sets/${set.id}`}
-                >
-                  <Icons.library
-                    aria-hidden
-                    className="size-5 shrink-0 text-muted-foreground"
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-medium group-hover:text-primary">
-                      {set.name}
-                    </span>
-                    <span className="mt-0.5 block text-xs text-muted-foreground">
-                      {t("library.senseCount", { count: set.count })}
-                    </span>
-                  </span>
-                  <Icons.open
-                    aria-hidden
-                    className="size-4 shrink-0 text-muted-foreground"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+            )
+          }
+        >
+          {recentSets.map((set) => (
+            <ListNavRow
+              detail={t("library.senseCount", { count: set.count })}
+              href={`/sets/${set.id}`}
+              icon={Icons.library}
+              key={set.id}
+              label={set.name}
+            />
+          ))}
+        </ListSection>
       )}
     </div>
   );

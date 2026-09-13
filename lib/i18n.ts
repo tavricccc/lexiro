@@ -82,7 +82,6 @@ export const zhTW = {
     generateQuestions: "用 AI 出題",
     openLibrary: "我的單字",
     resumeTitle: "接續上次練習",
-    resumeAction: "繼續",
     recentTitle: "最近的單字集",
     noSetsTitle: "還沒有單字集",
     noSetsDescription: "建立第一組，或用 AI 把一串單字整理成詞義。",
