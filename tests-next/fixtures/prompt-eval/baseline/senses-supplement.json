@@ -1,0 +1,19 @@
+{
+  "id": "senses-supplement",
+  "kind": "senses",
+  "limit": 2,
+  "sources": [
+    { "ref": "s1", "word": "bank", "pos": "n.", "meaningZh": "銀行" },
+    { "ref": "s2", "word": "apple", "pos": "n.", "meaningZh": "蘋果" },
+    { "ref": "s3", "word": "current", "pos": "adj.", "meaningZh": "目前的" },
+    { "ref": "s4", "word": "run into", "pos": "phr. v.", "meaningZh": "偶然遇見" }
+  ],
+  "review": [
+    "no returned sense repeats or rewords a meaning the source already had",
+    "apple returns an empty senses array rather than 眼珠 or the company",
+    "bank gains 河岸 with an example showing a river, not a second banking sentence",
+    "current gains at most one common sense; 電流 is a physics term and does not count",
+    "no source exceeds the requested limit of two, and fewer is accepted everywhere",
+    "every returned sense states its own part of speech and carries one English example"
+  ]
+}

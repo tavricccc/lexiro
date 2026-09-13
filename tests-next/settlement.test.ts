@@ -1,0 +1,106 @@
+import { beforeEach, afterEach, describe, expect, it } from "vitest";
+import type { Miniflare } from "miniflare";
+import type { D1Database } from "@cloudflare/workers-types";
+import { testDatabase } from "./database";
+import { account, reserve, settle } from "../src/billing";
+import { prepareGeneration } from "../src/generation";
+import { settleGeneration } from "../src/settlement";
+import type { StreamTerminal } from "../src/response-stream";
+
+let mf: Miniflare, db: D1Database;
+beforeEach(async () => {
+  const fixture = await testDatabase();
+  mf = fixture.runtime;
+  db = fixture.db;
+});
+afterEach(async () => {
+  await mf.dispose();
+});
+
+const senses = (...items: { pos: string; meaningZh: string; example: string }[][]) =>
+  JSON.stringify({ items: items.map((entry) => ({ senses: entry })) });
+
+const terminal = (text: string): StreamTerminal => ({
+  status: "complete",
+  cursor: "resp_test",
+  response: {
+    id: "resp_test",
+    usage: { input_tokens: 900, output_tokens: 60 },
+    output: [{ content: [{ type: "output_text", text }] }],
+  },
+});
+
+/**
+ * Settles one supplement run over bank and current.
+ *
+ * What a refund changes is not this run's debit — that is what the provider
+ * actually cost — but whether the word has to be paid for again: a kept unit
+ * leaves its charge behind, so reserving it a second time is free.
+ */
+async function settleSupplement(text: string, limit: 1 | 2 | 3) {
+  const session = crypto.randomUUID();
+  const request = {
+    kind: "senses",
+    tier: "lite",
+    session,
+    limit,
+    sources: [
+      { ref: "s1", word: "bank", pos: "n.", meaningZh: "銀行" },
+      { ref: "s2", word: "current", pos: "adj.", meaningZh: "目前的" },
+    ],
+  } as const;
+  const prepared = await prepareGeneration(request, "u");
+  const before = (await account(db, "u"))!.points;
+  const reservation = await reserve(db, "u", prepared.units, prepared.halfRate);
+  await settleGeneration(
+    db,
+    reservation,
+    prepared,
+    terminal(text),
+    "gpt-5.6-luna",
+  );
+  const after = (await account(db, "u"))!.points;
+  const again = await reserve(
+    db,
+    "u",
+    (await prepareGeneration(request, "u")).units,
+    prepared.halfRate,
+  );
+  const payAgain = again.charges.reduce(
+    (total, charge) => total + charge.points,
+    0,
+  );
+  // The probe held the account; give every point back and release it.
+  await settle(db, again, again.charges, { model: "gpt-5.6-luna" }, { charged: 0, cost: 0 });
+  return { debit: before - after, payAgain };
+}
+
+describe("settling a supplement run", () => {
+  const river = { pos: "n.", meaningZh: "河岸", example: "We sat on the bank of the river." };
+  const flow = { pos: "n.", meaningZh: "水流", example: "The current pulled the boat downstream." };
+
+  it("keeps a word that honestly had nothing to add", async () => {
+    const { debit, payAgain } = await settleSupplement(senses([], []), 2);
+    expect(debit).toBeGreaterThan(0);
+    expect(payAgain).toBe(0);
+  });
+
+  it("charges the same whether one meaning came back or two", async () => {
+    const one = await settleSupplement(senses([river], []), 2);
+    const two = await settleSupplement(senses([river, flow], [flow]), 2);
+    expect(one.debit).toBe(two.debit);
+    expect(one.payAgain).toBe(0);
+    expect(two.payAgain).toBe(0);
+  });
+
+  it("does not keep a word that came back with more meanings than were asked for", async () => {
+    const { payAgain } = await settleSupplement(senses([river, flow], []), 1);
+    expect(payAgain).toBeGreaterThan(0);
+  });
+
+  it("does not keep a meaning written in the wrong language", async () => {
+    const chinese = { pos: "n.", meaningZh: "河岸", example: "河邊的岸。" };
+    const { payAgain } = await settleSupplement(senses([chinese], []), 2);
+    expect(payAgain).toBeGreaterThan(0);
+  });
+});

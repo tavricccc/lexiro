@@ -12,7 +12,7 @@
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
-| `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限 |
+| `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限。`cacheKey` 跟著用到的那段 prompt 走而不是 job kind：`senses`（補充多義）逐字沿用 `generateWordSet`，因此與 `words` 共用 `WORD_CACHE_KEY`，由建立單字集的流量把前綴暖著。補充以「字」為計費單位，回傳 0 個詞義照樣算完成 |
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、WebP 輸入檢查與照片計費來源；圖片不落地。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
 | `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
@@ -22,7 +22,8 @@
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
 | `tests-next/fixtures/prompt-eval/`、`docs/prompt-evaluation.md` | 從公開前端移入的歷史合成案例與評測方法；歷史 medium artifacts 另存本地 ignored artifacts/historical-medium |
-| `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema 與固定前綴跨輸入一致性、最低 tokenizer 長度驗證 |
+| `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema 與固定前綴跨輸入一致性、最低 tokenizer 長度驗證，以及補充多義與單字共用同一前綴及快取鍵 |
+| `tests-next/settlement.test.ts` | 補充多義的結算：空詞義仍算完成、回傳一個或兩個收費相同、超過上限或語言錯誤的字不列入已完成 |
 | `tests-next/organize.test.ts` | 整理固定價格／前綴、WebP 輸入拒絕與串流圖片 envelope |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
 | `.github/workflows/deploy.yml`、`docs/deployment.md` | main push 先完整驗證，再套用 D1 migrations、同步 secrets、部署 Worker 並做 CORS health check；以及正式設定與上線驗收清單 |

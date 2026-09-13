@@ -6,7 +6,7 @@ import {
 } from "@lexiro/ai-contract";
 import type { D1Database } from "@cloudflare/workers-types";
 import { settle, type Reservation, type Usage } from "./billing";
-import type { PreparedGeneration } from "./generation";
+import { supplementWords, type PreparedGeneration } from "./generation";
 import type { StreamTerminal } from "./response-stream";
 import { creditsFromUsage } from "./credits";
 import { wordOutput, questionOutput } from "./schemas";
@@ -17,6 +17,22 @@ const count = (value: unknown) =>
   typeof value === "number" && Number.isFinite(value) && value >= 0
     ? value
     : undefined;
+
+/**
+ * Whether one returned sense is something the Library could hold: a part of
+ * speech it knows, a Chinese meaning, and an English example.
+ */
+function usableSense(
+  sense: { pos: string | null; meaningZh: string; example: string },
+  posHint?: string,
+): boolean {
+  return Boolean(
+    normalizePartOfSpeech(sense.pos ?? posHint ?? "") &&
+      /\p{Script=Han}/u.test(sense.meaningZh) &&
+      sense.example.trim() &&
+      !/\p{Script=Han}/u.test(sense.example),
+  );
+}
 
 export function outputText(response: Record<string, unknown>): string {
   if (!Array.isArray(response.output)) return "";
@@ -86,21 +102,31 @@ export async function settleGeneration(
             const source = sources[index];
             if (!parsed.success || !source) return;
             const senses = parsed.data.items[0].senses;
-            const maximum =
-              Math.max(
-                1,
-                source.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
-              ) + 1;
+            const maximum = Math.max(
+              1,
+              source.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
+            );
             if (
               senses.length &&
               senses.length <= maximum &&
-              senses.every(
-                (sense) =>
-                  normalizePartOfSpeech(sense.pos ?? source.posHint ?? "") &&
-                  /\p{Script=Han}/u.test(sense.meaningZh) &&
-                  sense.example.trim() &&
-                  !/\p{Script=Han}/u.test(sense.example),
+              senses.every((sense) =>
+                usableSense(sense, source.posHint),
               )
+            )
+              valid.add(index);
+          });
+        } else if (kind === "senses" && Array.isArray(data.items)) {
+          // Nothing worth adding is the honest answer for most words, so an
+          // empty list settles as work done. The word was charged for being
+          // looked at, not for coming back with something.
+          const words = supplementWords(prepared.request.sources ?? []);
+          data.items.forEach((item, index) => {
+            const parsed = wordOutput().safeParse({ items: [item] });
+            if (!parsed.success || !words[index]) return;
+            const senses = parsed.data.items[0].senses;
+            if (
+              senses.length <= (prepared.request.limit ?? 0) &&
+              senses.every((sense) => usableSense(sense))
             )
               valid.add(index);
           });
@@ -117,7 +143,7 @@ export async function settleGeneration(
             data.lines.join("\n").length <= LIMITS.input
           )
             valid.add(0);
-        } else if (kind !== "words") {
+        } else if (kind !== "words" && kind !== "senses") {
           const schema = questionOutput(kind);
           if (kind === "vocabulary" || kind === "grammar") {
             if (Array.isArray(data.items))

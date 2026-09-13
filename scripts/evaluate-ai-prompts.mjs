@@ -61,7 +61,7 @@ const backend = await createServer({
 try {
   const { prepareGeneration } =
     await backend.ssrLoadModule("/src/generation.ts");
-  const { wordTask, questionTask } = await vite.ssrLoadModule(
+  const { wordTask, questionTask, supplementTask } = await vite.ssrLoadModule(
     "/src/lib/ai/tasks.ts",
   );
   const { buildWordGenerationSources, parseOrganizedWordInput } =
@@ -92,13 +92,11 @@ try {
                 },
               ],
             }
-          : trial.kind === "words"
-            ? wordTask(
-                trial.raw,
-                buildWordGenerationSources(trial.raw),
-                trial.batchSize ?? 10,
-              )
-            : questionTask(
+          : trial.kind === "senses"
+            ? supplementTask(trial.sources, trial.limit)
+            : trial.kind === "words"
+              ? wordTask(buildWordGenerationSources(trial.raw))
+              : questionTask(
                 trial.words,
                 trial.words,
                 trial.kind,

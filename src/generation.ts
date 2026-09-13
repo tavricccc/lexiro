@@ -8,7 +8,11 @@ import {
   type GenerationRequest,
   type Tier,
 } from "@lexiro/ai-contract";
-import prompts, { buildMistakeExplanationPrompt } from "./prompts";
+import prompts, {
+  buildMistakeExplanationPrompt,
+  EXPLAIN_CACHE_KEY,
+  WORD_CACHE_KEY,
+} from "./prompts";
 import { questionPrompt } from "./question-prompts";
 import { jsonSchema, questionOutput, wordOutput } from "./schemas";
 import type { ChargeUnit } from "./billing";
@@ -26,7 +30,7 @@ export const MODELS: Record<Tier, { model: string; effort: "low" | "medium" }> =
     pro: { model: "gpt-5.6-terra", effort: "low" },
   };
 const inputSchema = z.strictObject({
-  kind: z.enum(["words", "organizeText", "explain", ...QUESTION_KINDS]),
+  kind: z.enum(["words", "senses", "organizeText", "explain", ...QUESTION_KINDS]),
   raw: z.string().optional(),
   sources: z
     .array(
@@ -40,6 +44,7 @@ const inputSchema = z.strictObject({
     )
     .optional(),
   difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
+  limit: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
   session: z.string().uuid(),
   tier: z.enum(TIERS),
   cursor: z
@@ -73,6 +78,7 @@ export async function prepareGeneration(
     throw new HttpError(413, "input_limit", "sources");
   let instructions: string,
     input: string,
+    cacheKey: string,
     schema: Record<string, unknown> | undefined,
     rawUnits: string[];
   if (request.kind === "words") {
@@ -85,21 +91,47 @@ export async function prepareGeneration(
     if (sources.some((source) => source.raw.length > LIMITS.source))
       throw new HttpError(413, "input_limit", "source");
     instructions = prompts.generateWordSet;
+    cacheKey = WORD_CACHE_KEY;
     input = `來源資料：${JSON.stringify(sources.map(({ sourceRef, word, posHint, hint }) => ({ ref: sourceRef, word, posHint, hint })))}\n本輪 activeRefs：${JSON.stringify(sources.map((source) => source.sourceRef))}。只輸出本輪完整 JSON。`;
     schema = jsonSchema(wordOutput());
     rawUnits = sources.map(({ word, posHint, hint }) =>
       JSON.stringify({ word, posHint, hint }),
     );
+  } else if (request.kind === "senses") {
+    // Supplementing sends the word instructions byte for byte and puts what
+    // makes it different in the input, so it rides the same warm prefix every
+    // set creation keeps alive rather than paying cold start on its own.
+    const sources = request.sources;
+    if (!sources?.length || request.raw || !request.limit)
+      throw new HttpError(400, "invalid_input");
+    const words = supplementWords(sources);
+    if (words.length > LIMITS.sources)
+      throw new HttpError(413, "input_limit", "sources");
+    if (
+      words.some(
+        (entry) =>
+          `${entry.word} ${entry.existing.map((sense) => `${sense.pos} ${sense.meaningZh}`).join(" ")}`
+            .length > LIMITS.source,
+      )
+    )
+      throw new HttpError(413, "input_limit", "source");
+    instructions = prompts.generateWordSet;
+    cacheKey = WORD_CACHE_KEY;
+    input = SUPPLEMENT_INPUT(words, request.limit);
+    schema = jsonSchema(wordOutput());
+    rawUnits = words.map(({ word }) => JSON.stringify({ word }));
   } else if (request.kind === "explain") {
     if (!request.raw || request.sources)
       throw new HttpError(400, "invalid_input");
     instructions = buildMistakeExplanationPrompt("");
+    cacheKey = EXPLAIN_CACHE_KEY;
     input = request.raw;
     rawUnits = [request.raw];
   } else if (request.kind === "organizeText") {
     if (!request.raw?.trim() || request.sources)
       throw new HttpError(400, "invalid_input");
     instructions = organizeInstructions;
+    cacheKey = ORGANIZE_CACHE_KEY;
     input = request.raw;
     schema = jsonSchema(organizeOutput);
     rawUnits = [request.raw];
@@ -117,6 +149,7 @@ export async function prepareGeneration(
       throw new HttpError(413, "input_limit", "source");
     const built = questionPrompt(request.kind, sources, request.difficulty);
     instructions = built.instructions;
+    cacheKey = built.cacheKey;
     input = built.input;
     schema = jsonSchema(questionOutput(request.kind));
     rawUnits = sources.map(({ word, pos, meaningZh }) =>
@@ -152,12 +185,42 @@ export async function prepareGeneration(
       })),
     ),
     halfRate: rate(request.kind, tier),
-    cacheKey:
-      request.kind === "organizeText"
-        ? ORGANIZE_CACHE_KEY
-        : `lexiro-${request.kind}-20260912-${request.kind === "words" ? "v2" : "v1"}`,
+    cacheKey,
   };
 }
+
+export type SupplementWord = {
+  ref: string;
+  word: string;
+  existing: { pos: string; meaningZh: string }[];
+};
+
+/**
+ * The existing senses of one word, gathered from the flat source rows.
+ *
+ * Supplementing is charged by the word, however many meanings it already has
+ * and however many come back, so the unit has to be the word: every row naming
+ * the same word is one source carrying one ref.
+ */
+export function supplementWords(
+  sources: NonNullable<GenerationRequest["sources"]>,
+): SupplementWord[] {
+  const words = new Map<string, SupplementWord>();
+  for (const source of sources) {
+    const key = source.word.trim().toLocaleLowerCase();
+    const entry = words.get(key) ?? {
+      ref: `source-${words.size + 1}`,
+      word: source.word.trim(),
+      existing: [],
+    };
+    entry.existing.push({ pos: source.pos, meaningZh: source.meaningZh });
+    words.set(key, entry);
+  }
+  return [...words.values()];
+}
+
+const SUPPLEMENT_INPUT = (words: SupplementWord[], limit: number) =>
+  `來源資料：${JSON.stringify(words.map(({ ref, word, existing }) => ({ ref, word, existing })))}\n本輪 activeRefs：${JSON.stringify(words.map((entry) => entry.ref))}。本輪是補充模式：每筆只補 existing 沒有的詞義，最多 ${limit} 個，沒有值得補的就回傳空的 senses 陣列。只輸出本輪完整 JSON。`;
 
 export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
   const model = MODELS[prepared.request.tier];
