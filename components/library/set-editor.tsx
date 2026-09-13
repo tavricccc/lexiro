@@ -170,21 +170,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
       <PageHeader back={backLink} title={t("setEditor.createTitle")} />
 
       <div>
-        <details className="group rounded-[var(--radius-card)] border px-4 py-3.5 open:bg-[var(--surface-inset)] sm:px-5">
-          <summary className="cursor-pointer list-none text-sm font-medium marker:content-none">
-            <span className="flex items-center justify-between gap-3">
-              <span>
-                {t("setEditor.organizationSummary", {
-                  name: setName || t("setEditor.defaultSetName"),
-                })}
-              </span>
-              <span className="text-xs text-muted-foreground group-open:hidden">
-                {t("setEditor.organize")}
-              </span>
-            </span>
-          </summary>
-          <div className="mt-5 rule-t pt-5">{metadataFields}</div>
-        </details>
+        {metadataFields}
 
         <div className="section-gap flex flex-wrap items-center justify-between gap-3">
           <h2 className="type-section">{t("setEditor.words")}</h2>

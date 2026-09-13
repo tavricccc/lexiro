@@ -407,7 +407,6 @@ export const zhTW = {
       "輸入單字、詞性和意思就能儲存到「我的單字」；整理位置可以之後再調整。",
     defaultSetName: "我的單字",
     organize: "儲存位置與整理",
-    organizationSummary: "儲存到「{name}」",
     name: "單字集名稱",
     namePlaceholder: "例如：旅行前要記的字",
     folder: "資料夾",
