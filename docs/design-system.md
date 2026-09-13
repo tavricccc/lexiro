@@ -114,16 +114,16 @@ every screen that asks for something uses it.
 - `ListSection` is a group: a quiet header above it, the rows in a `.rule-card
   .rule-list`, and a footer sentence below explaining what changing the group
   does. The footer is where explanation goes, never a paragraph between rows.
-- `ListRow` reports, `ListNavRow` leads somewhere (chevron, or a rotated one
-  when it opens its options in place), `ListChoiceRow` is one option with a
-  check, `ListPicker` is a row that unfolds its options underneath instead of
-  opening a dropdown, `ListSwitchRow` is on/off, `ListStepperRow` is a small
+- `ListRow` reports, `ListNavRow` leads somewhere (chevron), `ListChoiceRow` is
+  one option with a check, `ListPicker` uses the shared select popover instead
+  of unfolding options into the current page, `ListSwitchRow` is on/off,
+  `ListStepperRow` is a small
   whole number, `ListInputRow` is a value you type on the line that names it
   (`block` puts the label above for a sentence), and `ListActionRow` is a
   centred, tinted row that does something now.
-- A dropdown belongs in a toolbar, where it filters what is on screen. Inside a
-  form or a settings group it is a `ListPicker`: a menu that covers the screen
-  you are choosing for is the wrong shape on a phone.
+- A choice within a form or settings group uses `ListPicker`, whose shared select
+  popover keeps the page layout stable. A task with its own consequence or more
+  than a handful of choices belongs on its own page.
 - A screen the reader is working through — a study card, a step of a flow — is
   a full-height column with its action at the bottom, where a thumb already is.
   The action is in the flow at the end of the column, never a bar floating over

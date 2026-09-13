@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { Icons } from "@/components/ui/icons";
+import { SelectField } from "@/components/ui/select-field";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
@@ -207,12 +208,10 @@ export function ListChoiceRow({
 }
 
 /**
- * A value chosen from a handful of options, opened in place.
+ * A value chosen from a handful of options.
  *
- * The row says what it is set to; tapping it unfolds the options under it as a
- * checkmark list and folding it back leaves the answer on the line. A dropdown
- * would cover the screen you are choosing for, and on a phone it also hands the
- * choice to a control the page has no say over.
+ * Choices live in the select popover rather than expanding the current page.
+ * Opening one must never push unrelated rows and the primary action downward.
  */
 export function ListPicker({
   disabled,
@@ -227,32 +226,16 @@ export function ListPicker({
   options: { detail?: ReactNode; label: string; value: string; meta?: ReactNode }[];
   value: string;
 }) {
-  const [open, setOpen] = useState(false);
-  const current = options.find((option) => option.value === value);
   return (
-    <>
-      <ListNavRow
-        disabled={disabled}
-        expanded={open}
-        label={label}
-        onClick={() => setOpen(!open)}
-        value={current?.label}
-      />
-      {open &&
-        options.map((option) => (
-          <ListChoiceRow
-            detail={option.detail}
-            key={option.value}
-            label={option.label}
-            onSelect={() => {
-              onChange(option.value);
-              setOpen(false);
-            }}
-            selected={option.value === value}
-            value={option.meta}
-          />
-        ))}
-    </>
+    <SelectField
+      ariaLabel={label}
+      disabled={disabled}
+      label={label}
+      layout="row"
+      onValueChange={onChange}
+      options={options}
+      value={value}
+    />
   );
 }
 
