@@ -17,6 +17,7 @@ export interface AssistedWordRow {
   examples: string[];
   meaningZh: string;
   pos: string;
+  supplementary: boolean;
   word: string;
 }
 function toRows(drafts: WordDraft[]): AssistedWordRow[] {
@@ -25,6 +26,7 @@ function toRows(drafts: WordDraft[]): AssistedWordRow[] {
       examples: sense.examples,
       meaningZh: sense.meaning,
       pos: sense.pos,
+      supplementary: sense.supplementary,
       word: draft.word,
     })),
   );

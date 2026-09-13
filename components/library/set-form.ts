@@ -10,6 +10,7 @@ const wordSchema = z.object({
   pos: z.string().trim().min(1),
   meaningZh: z.string().trim().min(1),
   examples: z.array(z.string()),
+  supplementary: z.boolean(),
 });
 
 export const setFormSchema = z.object({
@@ -24,6 +25,7 @@ export const emptyWord = {
   examples: [""],
   meaningZh: "",
   pos: "",
+  supplementary: false,
   word: "",
 };
 
@@ -43,6 +45,7 @@ export function getSetWords(
               examples: sense.examples,
               meaningZh: sense.meaningZh,
               pos: sense.pos,
+              supplementary: sense.supplementary,
               word: word.word,
             },
           ]

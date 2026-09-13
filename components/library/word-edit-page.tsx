@@ -56,6 +56,7 @@ export function WordEditPage({
           pos: sense.pos,
           meaning: sense.meaningZh,
           examples: sense.examples,
+          supplementary: sense.supplementary,
         })),
       }}
     />

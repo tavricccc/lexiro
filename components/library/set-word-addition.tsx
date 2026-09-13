@@ -46,12 +46,21 @@ export function SetWordAddition({
                 pos: sense.pos,
                 meaningZh: sense.meaning,
                 examples: sense.examples,
+                supplementary: sense.supplementary,
               })),
             ).catch(() => setError(t("wordEdit.saveFailed")))
           }
           value={{
             word: "",
-            senses: [{ id: "new", pos: "", meaning: "", examples: [""] }],
+            senses: [
+              {
+                id: "new",
+                pos: "",
+                meaning: "",
+                examples: [""],
+                supplementary: false,
+              },
+            ],
           }}
         />
       ) : sources ? (

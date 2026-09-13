@@ -12,7 +12,7 @@ import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
 
 function word(name: string, pos = "v.", examples: string[] = []): WordEntry {
   return {
-    senses: [{ examples, id: asSenseId(`${name}:${pos}:1`), meaningZh: "測試", pos }],
+    senses: [{ examples, id: asSenseId(`${name}:${pos}:1`), meaningZh: "測試", pos, supplementary: false }],
     updatedAt: "2026-08-16T00:00:00.000Z",
     word: name,
     wordKey: normalizeWordKey(name),

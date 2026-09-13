@@ -21,6 +21,7 @@ export function createBlankSenseDraft(): EditorSenseDraft {
     pos: "",
     meaning: "",
     examples: [],
+    supplementary: false,
   };
 }
 
@@ -290,6 +291,7 @@ export function createEditorItem(
               pos: item.pos,
               meaning: item.meaning,
               examples: [...item.examples],
+              supplementary: item.supplementary,
             },
           ]
         : [createBlankSenseDraft()];

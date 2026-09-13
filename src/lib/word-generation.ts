@@ -45,7 +45,7 @@ function normalizeGeneratedSense(
   value: unknown,
   wordIndex: number,
   senseIndex: number,
-  posHint?: string,
+  { posHint, supplementary }: { posHint?: string; supplementary: boolean },
 ): EditorSenseDraft {
   if (!value || typeof value !== "object" || Array.isArray(value))
     throw new Error(`第 ${wordIndex + 1} 筆格式錯誤`);
@@ -76,6 +76,7 @@ function normalizeGeneratedSense(
     pos,
     meaning,
     examples,
+    supplementary,
   };
 }
 
@@ -167,7 +168,10 @@ export function parseWordGenerationJson(
     return {
       word,
       senses: item.senses.map((sense, index) =>
-        normalizeGeneratedSense(sense, wordIndex, index, expected.posHint),
+        normalizeGeneratedSense(sense, wordIndex, index, {
+          posHint: expected.posHint,
+          supplementary: false,
+        }),
       ),
     };
   });

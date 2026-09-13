@@ -32,7 +32,7 @@ function library(
         wordKey,
         word: wordKey,
         senses: [
-          { id: senseId, pos: "n.", meaningZh: `${wordKey} 意思`, examples: [] },
+          { id: senseId, pos: "n.", meaningZh: `${wordKey} 意思`, examples: [], supplementary: false },
         ],
         updatedAt: timestamp,
       },

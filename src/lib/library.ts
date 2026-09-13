@@ -161,6 +161,7 @@ export function itemToWordEntry(
         pos,
         meaningZh,
         examples: mergeUniqueStrings(sense.examples),
+        supplementary: sense.supplementary,
       };
     })
     .filter((sense): sense is WordSense => Boolean(sense));
@@ -225,5 +226,6 @@ export function senseToStudyWord(word: WordEntry, sense: WordSense): StudyWord {
     meaning: sense.meaningZh,
     examples: [...sense.examples],
     example: sense.examples[0] ?? "",
+    supplementary: sense.supplementary,
   };
 }

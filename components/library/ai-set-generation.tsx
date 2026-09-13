@@ -44,6 +44,7 @@ export function AiSetGeneration() {
         examples: row.examples.map((value) => value.trim()).filter(Boolean),
         meaningZh: row.meaningZh,
         pos: row.pos,
+        supplementary: row.supplementary,
         word: row.word,
       })),
     });

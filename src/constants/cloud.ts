@@ -1,4 +1,4 @@
-export const CLOUD_SCHEMA_VERSION = 7 as const
+export const CLOUD_SCHEMA_VERSION = 8 as const
 /**
  * Firestore refuses a document larger than one mebibyte. The learning progress
  * and statistics documents are each a single document, so they are checked

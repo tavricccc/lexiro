@@ -165,7 +165,7 @@ Persisted schema versions, all independent of one another:
 | --- | --- | --- |
 | Library repository (IndexedDB) | 2 | `src/lib/library-repository.ts` |
 | Sync journal (IndexedDB) | 3 | `src/lib/sync-journal.ts`: v2 removes the AI dirty blob and retired account settings/key via `persist.ts`, preserving queued records and cursor |
-| Cloud documents (Firestore) | 7 | `src/constants/cloud.ts`: v7 drops `xp`, `level` and the derivable `questionStats` from the statistics document, trims `dailyHistory` rows to what the chart draws, and adds `streakFreezes` |
+| Cloud documents (Firestore) | 8 | `src/constants/cloud.ts`: v8 states on every sense whether it was supplemented; v7 dropped `xp`, `level` and the derivable `questionStats` from the statistics document, trimmed `dailyHistory` rows to what the chart draws, and added `streakFreezes` |
 | Practice session snapshot | 2 | `src/types/session.ts` |
-| Full backup files | 3 | `src/constants/backup.ts`, `src/lib/share.ts`: v3 carries the v7 statistics shape; older files are refused rather than migrated |
+| Full backup files | 4 | `src/constants/backup.ts`, `src/lib/share.ts`: v4 carries the v8 word shape; older files are refused rather than migrated |
 | Set share files | 1 | `src/types/backup.ts` |

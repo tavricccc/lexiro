@@ -123,6 +123,7 @@ describe("question batching", () => {
         {
           id: asSenseId(`word-${index}:v:1`),
           pos: "v.",
+          supplementary: false,
           meaningZh: "測試",
           examples: [],
         },

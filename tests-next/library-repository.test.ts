@@ -31,7 +31,7 @@ function libraryWith(rawWordKeys: string[], setName = '常用單字'): LibrarySt
   const words = Object.fromEntries(wordKeys.map(wordKey => [wordKey, {
     wordKey,
     word: wordKey,
-    senses: [{ id: buildSenseId(wordKey, 'n.', `${wordKey} 意思`), pos: 'n.', meaningZh: `${wordKey} 意思`, examples: [] }],
+    senses: [{ id: buildSenseId(wordKey, 'n.', `${wordKey} 意思`), pos: 'n.', meaningZh: `${wordKey} 意思`, examples: [], supplementary: false }],
     updatedAt: TIMESTAMP,
   }]))
   return {

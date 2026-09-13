@@ -12,6 +12,7 @@ function word(index: number): StudyWord {
     word: `word${index}`,
     pos: 'n.',
     meaning: `意思 ${index}`,
+    supplementary: false,
     examples: [],
     example: '',
   }

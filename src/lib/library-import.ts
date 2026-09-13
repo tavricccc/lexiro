@@ -103,7 +103,7 @@ function normalizeSense(
   const source = value as Record<string, unknown>;
   assertKnownKeys(
     source,
-    ["id", "pos", "meaningZh", "examples"],
+    ["id", "pos", "meaningZh", "examples", "supplementary"],
     `senses[${index}]`,
   );
   const rawPos = requiredText(source.pos, `senses[${index}].pos`);
@@ -118,6 +118,8 @@ function normalizeSense(
     throw new Error(`senses[${index}].examples 格式錯誤`);
   if (!examples.every((example) => typeof example === "string"))
     throw new Error(`senses[${index}].examples 格式錯誤`);
+  if (typeof source.supplementary !== "boolean")
+    throw new Error(`senses[${index}].supplementary 格式錯誤`);
   const id = requiredText(source.id, `senses[${index}].id`);
   const expectedId = buildSenseId(wordKey, pos, meaningZh);
   if (id !== expectedId)
@@ -127,6 +129,7 @@ function normalizeSense(
     pos,
     meaningZh,
     examples: examples.map((example) => example.trim()).filter(Boolean),
+    supplementary: source.supplementary,
   };
 }
 

@@ -41,6 +41,13 @@ export interface WordSense {
   pos: string
   meaningZh: string
   examples: string[]
+  /**
+   * Whether this meaning came from 補充多義 rather than from the source the word
+   * was created from. It is what lets the interface say so, and it is stated on
+   * every sense: a meaning whose origin is unrecorded would read as original,
+   * which is the more confident of the two claims.
+   */
+  supplementary: boolean
 }
 
 export interface SenseEditValue {
@@ -64,6 +71,7 @@ export interface StudyWord {
   meaning: string
   examples: string[]
   example: string
+  supplementary: boolean
 }
 
 export interface LibrarySet {

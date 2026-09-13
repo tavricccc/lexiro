@@ -32,8 +32,8 @@ function library(): LibraryState {
     wordKey,
     word: 'adapt',
     senses: [
-      { id: includedSenseId, pos: 'v.', meaningZh: '適應', examples: ['We adapt quickly.'] },
-      { id: otherSenseId, pos: 'v.', meaningZh: '改編', examples: ['They adapted the novel.'] },
+      { id: includedSenseId, pos: 'v.', meaningZh: '適應', examples: ['We adapt quickly.'], supplementary: true },
+      { id: otherSenseId, pos: 'v.', meaningZh: '改編', examples: ['They adapted the novel.'], supplementary: false },
     ],
     updatedAt: timestamp,
   }
@@ -60,6 +60,17 @@ describe('set sharing', () => {
     const parsed = parseSetShareValue(payload)
     expect(parsed.kind).toBe('set-share')
     expect(parsed.sets).toHaveLength(1)
+  })
+
+  it('carries which senses were supplemented, and refuses a file that does not say', () => {
+    const payload = createSetSharePayload(library(), 'set-1')
+    expect(payload.sets[0].words[0].senses[0].supplementary).toBe(true)
+    expect(parseSetShareValue(payload).sets[0].words[0].senses[0].supplementary).toBe(true)
+    const stripped = JSON.parse(JSON.stringify(payload)) as {
+      sets: Array<{ words: Array<{ senses: Array<Record<string, unknown>> }> }>
+    }
+    delete stripped.sets[0].words[0].senses[0].supplementary
+    expect(() => parseSetShareValue(stripped)).toThrow(/supplementary/u)
   })
 
   it('rejects a share whose membership points to an unknown sense', () => {

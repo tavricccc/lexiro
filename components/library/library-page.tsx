@@ -148,6 +148,7 @@ export function LibraryPage({
                     examples: sense.examples,
                     meaningZh: sense.meaningZh,
                     pos: sense.pos,
+                    supplementary: sense.supplementary,
                     word: word.word,
                   },
                 ]

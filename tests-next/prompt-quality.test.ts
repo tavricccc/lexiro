@@ -19,6 +19,7 @@ const word = (value: string, meanings = ["測試"], pos = "v."): WordEntry => ({
     pos,
     meaningZh,
     examples: [],
+    supplementary: false,
   })),
 });
 const assemble = (

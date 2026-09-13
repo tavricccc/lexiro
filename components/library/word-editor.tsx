@@ -121,6 +121,7 @@ export function WordEditor({
                   pos: "",
                   meaning: "",
                   examples: [""],
+                  supplementary: false,
                 },
               ],
             })

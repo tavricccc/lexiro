@@ -20,8 +20,8 @@ function library(): LibraryState {
         wordKey: CALM,
         word: 'calm',
         senses: [
-          { id: CALM_ADJECTIVE, pos: 'adj.', meaningZh: '平靜的', examples: [] },
-          { id: CALM_VERB, pos: 'v.', meaningZh: '使平靜', examples: [] },
+          { id: CALM_ADJECTIVE, pos: 'adj.', meaningZh: '平靜的', examples: [], supplementary: false },
+          { id: CALM_VERB, pos: 'v.', meaningZh: '使平靜', examples: [], supplementary: false },
         ],
         updatedAt: timestamp,
       },

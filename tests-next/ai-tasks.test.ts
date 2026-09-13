@@ -15,6 +15,7 @@ const word = (value: string): WordEntry => ({
       pos: "v.",
       meaningZh: "測試",
       examples: [],
+      supplementary: false,
     },
   ],
   updatedAt: "2026-09-12",

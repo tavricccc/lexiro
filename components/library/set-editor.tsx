@@ -87,6 +87,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         examples: word.examples.map((value) => value.trim()).filter(Boolean),
         meaningZh: word.meaningZh,
         pos: word.pos,
+        supplementary: word.supplementary,
         word: word.word,
       })),
     });

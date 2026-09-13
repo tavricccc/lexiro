@@ -11,13 +11,21 @@ export type Tier = typeof TIERS[number];
 export const MULTIPLIER: Record<Tier, number> = { lite: 1, thinking: 2, pro: 10 };
 export const QUESTION_KINDS = ["vocabulary", "grammar", "cloze", "wordBank", "discourse", "reading"] as const;
 export type QuestionKind = typeof QUESTION_KINDS[number];
-export type JobKind = QuestionKind | "words" | "organizeText" | "organizeImage" | "explain";
+/**
+ * `senses` supplements a word that is already in the Library with meanings it
+ * does not have yet. It is priced per word rather than per meaning returned:
+ * paying by the meaning would pay a model to pad, which is the one thing the
+ * job must not do — returning nothing is a correct answer for most words.
+ */
+export type JobKind = QuestionKind | "words" | "senses" | "organizeText" | "organizeImage" | "explain";
 export interface QuestionSource { ref: string; word: string; pos: string; meaningZh: string; knownExample?: string }
 export interface GenerationInput {
   kind: JobKind;
   raw?: string;
   sources?: QuestionSource[];
   difficulty?: 1 | 2 | 3;
+  /** For `senses`, the most meanings one word may gain. Fewer is a valid answer. */
+  limit?: 1 | 2 | 3;
 }
 export interface GenerationRequest extends GenerationInput {
   session: string;
@@ -79,7 +87,7 @@ export const LIMITS = { input: 5000, source: 200, sources: 30, outputTokens: 819
 export function rate(kind: JobKind, tier: Tier): number {
   if (kind === "organizeImage") return 12;
   if (kind === "organizeText" || kind === "explain") return 10;
-  return ({ words: 2, vocabulary: 1, grammar: 2, wordBank: 2, cloze: 3, discourse: 24, reading: 30 }[kind]) * MULTIPLIER[tier];
+  return ({ words: 2, senses: 2, vocabulary: 1, grammar: 2, wordBank: 2, cloze: 3, discourse: 24, reading: 30 }[kind]) * MULTIPLIER[tier];
 }
 export function estimatePoints(kind: JobKind, count: number, tier: Tier): { min: number; max: number } {
   const max = Math.ceil(rate(kind, tier) * count / 2);

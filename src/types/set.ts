@@ -23,6 +23,8 @@ export interface EditorSenseDraft {
   pos: string
   meaning: string
   examples: string[]
+  /** Carried through every edit so a supplemented meaning stays marked as one. */
+  supplementary: boolean
 }
 
 export interface WordDraft {

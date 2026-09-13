@@ -34,6 +34,7 @@ export interface WordDraftInput {
   pos: string;
   meaningZh: string;
   examples: string[];
+  supplementary: boolean;
 }
 /** A question whose content already exists is reported, never silently dropped. */
 export type SaveQuestionResult = "saved" | "duplicate";
@@ -310,6 +311,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
                 examples: draft.examples
                   .map((value) => value.trim())
                   .filter(Boolean),
+                supplementary: draft.supplementary,
               },
             ],
         updatedAt: timestamp,

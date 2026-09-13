@@ -28,6 +28,7 @@ function library(
             pos: "n.",
             meaningZh: `${wordKey} 意思`,
             examples: [],
+            supplementary: false,
           },
         ],
         updatedAt: timestamp,
@@ -81,7 +82,7 @@ describe("data integrity", () => {
     );
 
     expect(backup.kind).toBe("full-backup");
-    expect(backup.version).toBe(3);
+    expect(backup.version).toBe(4);
     expect(backup).not.toHaveProperty("aiSettings");
     expect(normalizeFullBackupPayload(backup)).toEqual(backup);
   });
