@@ -75,7 +75,16 @@ interface CloudStore {
   sync: (options?: { reconcileAccount?: boolean }) => Promise<void>;
 }
 
-const SYNC_DEBOUNCE_MS = 600;
+/**
+ * How long a change waits for the next one before it is worth a sync.
+ *
+ * Six hundred milliseconds was shorter than the pause between two reviews, so a
+ * practice session sent a round trip per answer. A ceiling keeps the coalescing
+ * honest: continuous typing or reviewing still reaches the cloud, it just does
+ * it a few times a minute instead of a few times a second.
+ */
+const SYNC_DEBOUNCE_MS = 3_000;
+const SYNC_MAX_DELAY_MS = 15_000;
 /**
  * The account whose progress and statistics documents this session has read.
  *
@@ -97,9 +106,17 @@ let running: Promise<void> | null = null;
 let rerun = false;
 let rerunReconcile = false;
 let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+/** When the oldest change still waiting in the debounce arrived. */
+let debounceOpenedAt = 0;
 let retryTimer: ReturnType<typeof setTimeout> | null = null;
 let retryAttempt = 0;
 let unwatch: (() => void) | null = null;
+
+function clearDebounce(): void {
+  if (debounceTimer) clearTimeout(debounceTimer);
+  debounceTimer = null;
+  debounceOpenedAt = 0;
+}
 
 function errorMessage(reason: unknown): string {
   return reason instanceof Error ? reason.message : String(reason);
@@ -141,14 +158,38 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       const scheduleSync = () => {
         void refreshPending(set);
         if (!get().user) return;
+        const now = Date.now();
+        if (!debounceTimer) debounceOpenedAt = now;
         if (debounceTimer) clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          debounceTimer = null;
-          void get().sync();
-        }, SYNC_DEBOUNCE_MS);
+        debounceTimer = setTimeout(
+          () => {
+            debounceTimer = null;
+            debounceOpenedAt = 0;
+            void get().sync();
+          },
+          Math.max(
+            0,
+            Math.min(
+              SYNC_DEBOUNCE_MS,
+              debounceOpenedAt + SYNC_MAX_DELAY_MS - now,
+            ),
+          ),
+        );
+      };
+      // Leaving the page must not leave work sitting in the debounce. The
+      // learning store flushes its own IndexedDB write on the same events; this
+      // sends what that write has already marked as pending.
+      const flushSync = () => {
+        if (!debounceTimer || !get().user) return;
+        clearDebounce();
+        void get().sync();
       };
       if (typeof window !== "undefined") {
         window.addEventListener(CLOUD_SYNC_PENDING_EVENT, scheduleSync);
+        window.addEventListener("pagehide", flushSync);
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "hidden") flushSync();
+        });
         window.addEventListener("online", () => {
           if (get().user) void get().sync();
         });
@@ -218,8 +259,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     const runtime = await import("firebase/auth");
     const auth = await configureFirebaseAuth();
     if (auth) await runtime.signOut(auth);
-    if (debounceTimer) clearTimeout(debounceTimer);
-    debounceTimer = null;
+    clearDebounce();
     unwatch?.();
     unwatch = null;
     await enterNamespace("guest");
@@ -233,8 +273,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       rerunReconcile ||= reconcileAccount;
       return running;
     }
-    if (debounceTimer) clearTimeout(debounceTimer);
-    debounceTimer = null;
+    clearDebounce();
     const run = runSync(set, get, reconcileAccount).finally(() => {
       running = null;
       if (rerun) {
