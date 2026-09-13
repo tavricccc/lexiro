@@ -85,10 +85,12 @@ service cloud.firestore {
       allow read, delete: if signedIn(uid);
       allow create, update: if signedIn(uid) && request.resource.data.ownerId == uid;
 
+      // No delete. A record leaves the Library by being rewritten with
+      // `deleted`, and a document that could simply vanish would let one device
+      // resurrect on the next pull what another device threw away.
       match /records/{recordId} {
         allow read: if signedIn(uid);
         allow create, update: if signedIn(uid) && validRecord(uid, recordId);
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
       // Bumped on every push so other devices learn there is something to pull.
