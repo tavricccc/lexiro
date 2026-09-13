@@ -126,7 +126,7 @@ ${SINGLE_ANSWER}`;
 
 export function questionPrompt(kind: GeneratedQuestionKind, sources: QuestionSource[], difficulty: QuestionDifficulty) {
  const instructions = [TASK_RULES, DIFFICULTY[difficulty], kind === "vocabulary" || kind === "grammar" ? sentenceRules(kind, true) : passageRules(kind, difficulty), JSON_ONLY].join("\n\n");
- return {instructions, input: "來源資料：" + JSON.stringify(sources) + "\n" + questionTurnInstruction(sources.map(s=>s.ref),kind)};
+ return {instructions, cacheKey: `lexiro-${kind}-20260912-v1`, input: "來源資料：" + JSON.stringify(sources) + "\n" + questionTurnInstruction(sources.map(s=>s.ref),kind)};
 }
 export function questionTurnInstruction(
   refs: string[],
