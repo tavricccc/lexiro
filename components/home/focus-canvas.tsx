@@ -28,10 +28,17 @@ const GUIDE = [
  * each other are a decision and its way out; these are two errands, and each
  * one has a number that decides whether you want it today — how much is due,
  * how many questions are waiting. A row has somewhere to put that number.
+ *
+ * The two headline figures are what is due and how long the streak is. The
+ * second used to be the size of the question bank, which is inventory rather
+ * than an errand: it does not move when you practise, and the row below already
+ * says it. The streak belongs on the screen opened every day, not behind a tap
+ * on 進度.
  */
 export function FocusCanvas() {
   const library = useLibraryStore((store) => store.state);
   const cards = useLearningStore((store) => store.progress.cards);
+  const stats = useLearningStore((store) => store.stats);
   const reviewCount = useMemo(
     () => countReviewableSenses(library.words, cards),
     [cards, library.words],
@@ -39,6 +46,9 @@ export function FocusCanvas() {
   const questionCount = useMemo(() => countQuestionItems(library), [library]);
   const senseCount = Object.keys(library.words).length;
   const hasContent = senseCount > 0;
+  const goalMet =
+    stats.todayMemoryReviews >= stats.dailyWordGoal &&
+    stats.todayQuestionReviews >= stats.dailyQuestionGoal;
 
   return (
     <motion.section
@@ -70,16 +80,20 @@ export function FocusCanvas() {
             <>
               <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-5">
                 <Figure label={t("home.reviewLabel")} value={reviewCount} />
-                <Figure label={t("home.questionLabel")} value={questionCount} />
+                <Figure
+                  label={t("home.streakLabel")}
+                  value={stats.streakDays}
+                />
               </dl>
               <p className="mt-6 max-w-[46ch] type-lead">
-                {t(
-                  reviewCount
-                    ? "home.recommendation"
-                    : questionCount
-                      ? "home.questionRecommendation"
-                      : "home.emptyRecommendation",
-                )}
+                {goalMet
+                  ? t("home.todayDone")
+                  : t("home.todayProgress", {
+                      questionGoal: stats.dailyQuestionGoal,
+                      questions: stats.todayQuestionReviews,
+                      wordGoal: stats.dailyWordGoal,
+                      words: stats.todayMemoryReviews,
+                    })}
               </p>
             </>
           ) : (

@@ -64,7 +64,9 @@ export function mergeProgress(
  * Counters only ever go up, so the larger value is the one that has seen more
  * work. Daily history is per day, and the day with more answers in it is the
  * one that was actually recorded; goals are a setting, so the more recent edit
- * wins instead.
+ * wins instead. Days back are spent as well as earned, so they come from the
+ * more recent side with everything else — taking the larger would hand back a
+ * day the other device had already spent repairing the streak.
  */
 export function mergeStats(
   local: DashboardStats,
@@ -105,8 +107,6 @@ export function mergeStats(
       remote.correctQuestionReviews,
     ),
     longestStreak: Math.max(local.longestStreak, remote.longestStreak),
-    xp: Math.max(local.xp, remote.xp),
-    level: Math.max(local.level, remote.level),
     lastStudyDate: laterOf(local.lastStudyDate, remote.lastStudyDate),
     questionStatsBySense,
     dailyHistory,

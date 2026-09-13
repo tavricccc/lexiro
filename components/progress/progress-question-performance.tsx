@@ -1,6 +1,5 @@
 "use client";
 
-import type { QuestionStatKey, QuestionStatTotals } from "@/types";
 import { useMemo, useState } from "react";
 
 import { ProgressSubpage } from "@/components/progress/progress-subpage";
@@ -15,6 +14,7 @@ import {
   emptyQuestionStats,
   QUESTION_STAT_KEYS,
   questionStatRow,
+  sumQuestionStats,
 } from "@/src/lib/learning-defaults";
 
 export function ProgressQuestionPerformance() {
@@ -29,23 +29,20 @@ export function ProgressQuestionPerformance() {
         : [],
     [library.memberships, setId],
   );
-  const questionStats = useMemo(() => {
-    if (!setId) return stats.questionStats;
-    return senseIds.reduce<QuestionStatTotals>((totals, senseId) => {
-      const row = stats.questionStatsBySense[senseId];
-      if (!row) return totals;
-      for (const key of Object.keys(row) as QuestionStatKey[]) {
-        const before = questionStatRow(totals, key);
-        const incoming = questionStatRow(row, key);
-        totals[key] = {
-          total: before.total + incoming.total,
-          correct: before.correct + incoming.correct,
-          retry: before.retry + incoming.retry,
-        };
-      }
-      return totals;
-    }, emptyQuestionStats());
-  }, [senseIds, setId, stats.questionStats, stats.questionStatsBySense]);
+  // The account-wide breakdown is the per-sense one summed, so it is derived
+  // here rather than stored a second time and kept in step.
+  const questionStats = useMemo(
+    () =>
+      sumQuestionStats(
+        setId
+          ? senseIds.map(
+              (senseId) =>
+                stats.questionStatsBySense[senseId] ?? emptyQuestionStats(),
+            )
+          : Object.values(stats.questionStatsBySense),
+      ),
+    [senseIds, setId, stats.questionStatsBySense],
+  );
   const attempted = Object.values(questionStats).reduce(
     (sum, row) => sum + row.total,
     0,

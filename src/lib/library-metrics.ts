@@ -6,6 +6,7 @@ import type {
   WordKey,
 } from "@/types";
 
+import { MASTERED_STABILITY_DAYS } from "@/constants";
 import { isDue } from "@/src/lib/fsrs";
 
 export interface LibrarySetMetrics {
@@ -89,4 +90,40 @@ export function buildLibrarySetMetrics(
   }
 
   return metrics;
+}
+
+export interface MasteryCounts {
+  mastered: number;
+  learning: number;
+  untouched: number;
+  total: number;
+}
+
+/**
+ * How much of the Library is actually known, read straight off the schedule.
+ *
+ * FSRS already holds the answer: a card's stability is how many days it is
+ * expected to stay remembered. A sense the scheduler will not ask about for
+ * three weeks is one you know, and that is worth far more than a count of how
+ * many times you have tapped a button.
+ */
+export function countMastery(
+  words: Record<WordKey, WordEntry>,
+  cards: Record<SenseId, CardProgress>,
+): MasteryCounts {
+  const counts: MasteryCounts = {
+    mastered: 0,
+    learning: 0,
+    untouched: 0,
+    total: 0,
+  };
+  for (const word of Object.values(words))
+    for (const sense of word.senses) {
+      counts.total += 1;
+      const card = cards[sense.id];
+      if (!card) counts.untouched += 1;
+      else if (card.stability >= MASTERED_STABILITY_DAYS) counts.mastered += 1;
+      else counts.learning += 1;
+    }
+  return counts;
 }

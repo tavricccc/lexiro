@@ -487,21 +487,9 @@ function normalizeDailyActivity(value: unknown, field: string): DailyActivity {
   const source = requiredObject(value, field);
   assertKnownKeys(
     source,
-    [
-      "date",
-      "memoryAgain",
-      "memoryGood",
-      "questionTotal",
-      "questionCorrect",
-      "questionRetry",
-      "xpEarned",
-      "completed",
-      "questionStats",
-    ],
+    ["date", "memoryAgain", "memoryGood", "questionTotal"],
     field,
   );
-  if (typeof source.completed !== "boolean")
-    throw new Error(`${field}.completed 格式錯誤`);
   return {
     date: requiredText(source.date, `${field}.date`),
     memoryAgain: requiredNumber(source.memoryAgain, `${field}.memoryAgain`),
@@ -509,20 +497,6 @@ function normalizeDailyActivity(value: unknown, field: string): DailyActivity {
     questionTotal: requiredNumber(
       source.questionTotal,
       `${field}.questionTotal`,
-    ),
-    questionCorrect: requiredNumber(
-      source.questionCorrect,
-      `${field}.questionCorrect`,
-    ),
-    questionRetry: requiredNumber(
-      source.questionRetry,
-      `${field}.questionRetry`,
-    ),
-    xpEarned: requiredNumber(source.xpEarned, `${field}.xpEarned`),
-    completed: source.completed,
-    questionStats: normalizeQuestionStats(
-      source.questionStats,
-      `${field}.questionStats`,
     ),
   };
 }
@@ -538,8 +512,7 @@ export function normalizeDashboardStats(value: unknown): DashboardStats {
       "correctQuestionReviews",
       "streakDays",
       "longestStreak",
-      "xp",
-      "level",
+      "streakFreezes",
       "lastStudyDate",
       "dailyWordGoal",
       "dailyQuestionGoal",
@@ -547,7 +520,6 @@ export function normalizeDashboardStats(value: unknown): DashboardStats {
       "todayMemoryCorrectReviews",
       "todayQuestionReviews",
       "todayQuestionCorrectReviews",
-      "questionStats",
       "questionStatsBySense",
       "dailyHistory",
       "updatedAt",
@@ -588,8 +560,7 @@ export function normalizeDashboardStats(value: unknown): DashboardStats {
     ),
     streakDays: requiredNumber(source.streakDays, "stats.streakDays"),
     longestStreak: requiredNumber(source.longestStreak, "stats.longestStreak"),
-    xp: requiredNumber(source.xp, "stats.xp"),
-    level: requiredNumber(source.level, "stats.level"),
+    streakFreezes: requiredNumber(source.streakFreezes, "stats.streakFreezes"),
     lastStudyDate: optionalText(source.lastStudyDate, "stats.lastStudyDate"),
     dailyWordGoal: requiredNumber(source.dailyWordGoal, "stats.dailyWordGoal"),
     dailyQuestionGoal: requiredNumber(
@@ -612,10 +583,6 @@ export function normalizeDashboardStats(value: unknown): DashboardStats {
       source.todayQuestionCorrectReviews,
       "stats.todayQuestionCorrectReviews",
     ),
-    questionStats: normalizeQuestionStats(
-      source.questionStats,
-      "stats.questionStats",
-    ),
     questionStatsBySense: normalizeQuestionStatsBySense(
       source.questionStatsBySense,
       "stats.questionStatsBySense",
@@ -626,14 +593,7 @@ export function normalizeDashboardStats(value: unknown): DashboardStats {
 }
 
 export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
-  const original = requiredObject(value, "完整備份");
-  // Version 1 included device AI settings. The managed service has no such settings.
-  const source: Record<string, unknown> = original.version === 1
-    ? (() => {
-        const { aiSettings: _removed, ...data } = original;
-        return { ...data, version: FULL_BACKUP_VERSION };
-      })()
-    : original;
+  const source = requiredObject(value, "完整備份");
   assertKnownKeys(
     source,
     [

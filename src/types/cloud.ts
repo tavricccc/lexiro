@@ -13,7 +13,7 @@ export type CloudRecordType = 'folder' | 'set' | 'membership' | 'word' | 'questi
 
 export interface FirestoreRecordDoc {
   ownerId: string
-  schemaVersion: 6
+  schemaVersion: 7
   type: CloudRecordType
   /** The Library's own id for this record: a word key, set id, folder id or question id. */
   recordKey: string
@@ -28,7 +28,7 @@ export interface FirestoreRecordDoc {
 /** Bumped on every push, so other devices learn there is something to pull. */
 export interface FirestoreLibraryMetaDoc {
   ownerId: string
-  schemaVersion: 6
+  schemaVersion: 7
   changedAt: unknown
   /** Which tab moved the marker, so a listener can ignore its own push. */
   changedBy: string
@@ -36,10 +36,10 @@ export interface FirestoreLibraryMetaDoc {
 
 export interface FirestoreProgressDoc extends LearningProgress {
   ownerId: string
-  schemaVersion: 6
+  schemaVersion: 7
 }
 
 export interface FirestoreStatsDoc extends DashboardStats {
   ownerId: string
-  schemaVersion: 6
+  schemaVersion: 7
 }

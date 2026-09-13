@@ -1,4 +1,4 @@
-export const CLOUD_SCHEMA_VERSION = 6 as const
+export const CLOUD_SCHEMA_VERSION = 7 as const
 /**
  * Firestore refuses a document larger than one mebibyte. The learning progress
  * and statistics documents are each a single document, so they are checked
@@ -17,8 +17,7 @@ export const CLOUD_STATS_PAYLOAD_KEYS = [
   'correctQuestionReviews',
   'streakDays',
   'longestStreak',
-  'xp',
-  'level',
+  'streakFreezes',
   'lastStudyDate',
   'dailyWordGoal',
   'dailyQuestionGoal',
@@ -26,7 +25,6 @@ export const CLOUD_STATS_PAYLOAD_KEYS = [
   'todayMemoryCorrectReviews',
   'todayQuestionReviews',
   'todayQuestionCorrectReviews',
-  'questionStats',
   'questionStatsBySense',
   'dailyHistory',
   'updatedAt',

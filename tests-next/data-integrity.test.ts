@@ -81,16 +81,28 @@ describe("data integrity", () => {
     );
 
     expect(backup.kind).toBe("full-backup");
-    expect(backup.version).toBe(2);
+    expect(backup.version).toBe(3);
     expect(backup).not.toHaveProperty("aiSettings");
-    const migrated = normalizeFullBackupPayload({ ...backup, version: 1, aiSettings: { model: "retired", apiKey: "secret" } });
-    expect(migrated).toEqual(backup);
+    expect(normalizeFullBackupPayload(backup)).toEqual(backup);
+  });
+
+  it("refuses a backup written against an older statistics shape", () => {
+    expect(() =>
+      normalizeFullBackupPayload({
+        ...createFullBackup(
+          library("one", "adapt", "常用單字"),
+          { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
+          createDefaultStats(),
+        ),
+        version: 2,
+      }),
+    ).toThrow();
   });
 
   it("previews backup additions without replacing local activity", () => {
     const current = library("one", "local", "本機");
     const incoming = library("two", "remote", "匯入");
-    const localStats = { ...createDefaultStats(), xp: 20 };
+    const localStats = { ...createDefaultStats(), totalMemoryReviews: 20 };
     const backup = createFullBackup(
       incoming,
       { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
@@ -105,6 +117,6 @@ describe("data integrity", () => {
 
     expect(prepared.sets).toBe(1);
     expect(prepared.library.sets).toHaveLength(2);
-    expect(prepared.stats.xp).toBe(20);
+    expect(prepared.stats.totalMemoryReviews).toBe(20);
   });
 });

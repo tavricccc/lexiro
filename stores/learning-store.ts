@@ -19,8 +19,8 @@ import {
   createDefaultStats,
   emptyDailyActivity,
   emptyQuestionStats,
-  pruneDailyHistory,
   questionStatRow,
+  rollStatsToToday,
 } from "@/src/lib/learning-defaults";
 import {
   createDebouncedSaver,
@@ -70,25 +70,8 @@ const initialProgress = (): LearningProgress => ({
   updatedAt: new Date().toISOString(),
 });
 
-function statsForToday(stats: DashboardStats): DashboardStats {
-  const today = todayKey();
-  if (stats.lastStudyDate === today) return stats;
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  const streakDays =
-    stats.lastStudyDate === localDateKey(yesterday) ? stats.streakDays + 1 : 1;
-  return {
-    ...stats,
-    streakDays,
-    longestStreak: Math.max(stats.longestStreak, streakDays),
-    lastStudyDate: today,
-    todayMemoryReviews: 0,
-    todayMemoryCorrectReviews: 0,
-    todayQuestionReviews: 0,
-    todayQuestionCorrectReviews: 0,
-    dailyHistory: pruneDailyHistory(stats.dailyHistory, today),
-  };
-}
+const statsForToday = (stats: DashboardStats) =>
+  rollStatsToToday(stats, new Date());
 
 /**
  * Persistence is debounced: one review rewrites the whole learning blob, so
@@ -195,7 +178,6 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     };
     if (rating === "again") activity.memoryAgain += 1;
     else activity.memoryGood += 1;
-    activity.xpEarned += rating === "good" ? 5 : 2;
     const stats = {
       ...base,
       totalMemoryReviews: base.totalMemoryReviews + 1,
@@ -204,14 +186,9 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       todayMemoryReviews: base.todayMemoryReviews + 1,
       todayMemoryCorrectReviews:
         base.todayMemoryCorrectReviews + (rating === "good" ? 1 : 0),
-      xp: base.xp + (rating === "good" ? 5 : 2),
       dailyHistory: { ...base.dailyHistory, [date]: activity },
       updatedAt: timestamp,
     };
-    activity.completed =
-      stats.todayMemoryReviews >= stats.dailyWordGoal &&
-      stats.todayQuestionReviews >= stats.dailyQuestionGoal;
-    stats.level = Math.floor(stats.xp / 100) + 1;
     set({ progress, stats });
     persist(progress, stats);
   },
@@ -237,15 +214,6 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       ...(base.dailyHistory[date] ?? emptyDailyActivity(date)),
     };
     activity.questionTotal += 1;
-    activity.questionCorrect += correct ? 1 : 0;
-    activity.questionRetry += retry ? 1 : 0;
-    activity.xpEarned += correct ? 10 : 3;
-    activity.questionStats = addQuestionAttempt(
-      activity.questionStats,
-      key,
-      correct,
-      retry,
-    );
     const stats = {
       ...base,
       totalQuestionReviews: base.totalQuestionReviews + 1,
@@ -253,13 +221,6 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       todayQuestionReviews: base.todayQuestionReviews + 1,
       todayQuestionCorrectReviews:
         base.todayQuestionCorrectReviews + (correct ? 1 : 0),
-      xp: base.xp + (correct ? 10 : 3),
-      questionStats: addQuestionAttempt(
-        base.questionStats,
-        key,
-        correct,
-        retry,
-      ),
       questionStatsBySense: {
         ...base.questionStatsBySense,
         [senseId]: addQuestionAttempt(senseStats, key, correct, retry),
@@ -267,10 +228,6 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       dailyHistory: { ...base.dailyHistory, [date]: activity },
       updatedAt: timestamp,
     };
-    activity.completed =
-      stats.todayMemoryReviews >= stats.dailyWordGoal &&
-      stats.todayQuestionReviews >= stats.dailyQuestionGoal;
-    stats.level = Math.floor(stats.xp / 100) + 1;
     set({ stats });
     persist(get().progress, stats);
   },

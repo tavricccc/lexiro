@@ -77,7 +77,6 @@ export function prepareBackupImport(
   const hasLocalActivity =
     currentStats.totalMemoryReviews > 0 ||
     currentStats.totalQuestionReviews > 0 ||
-    currentStats.xp > 0 ||
     Object.keys(currentStats.dailyHistory).length > 0;
 
   return {

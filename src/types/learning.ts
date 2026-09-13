@@ -20,16 +20,19 @@ export interface QuestionStats {
  */
 export type QuestionStatTotals = Partial<Record<QuestionStatKey, QuestionStats>>
 
+/**
+ * One day on the activity chart, and nothing else.
+ *
+ * It used to carry a correct count, a retry count, an experience total, a
+ * completion flag and its own sparse question breakdown — up to eighteen more
+ * rows — none of which anything read. Every running total it duplicated already
+ * lives on the statistics themselves.
+ */
 export interface DailyActivity {
   date: string
   memoryAgain: number
   memoryGood: number
   questionTotal: number
-  questionCorrect: number
-  questionRetry: number
-  xpEarned: number
-  completed: boolean
-  questionStats: QuestionStatTotals
 }
 
 export interface CardProgress {
@@ -59,8 +62,13 @@ export interface DashboardStats {
   correctQuestionReviews: number
   streakDays: number
   longestStreak: number
-  xp: number
-  level: number
+  /**
+   * Days back the streak can spend to survive one missed day. A week of
+   * unbroken practice earns one, so the streak is protected by the behaviour it
+   * is there to encourage — and a single bad day stops being a reason to give
+   * up on it altogether.
+   */
+  streakFreezes: number
   lastStudyDate: string
   dailyWordGoal: number
   dailyQuestionGoal: number
@@ -68,7 +76,6 @@ export interface DashboardStats {
   todayMemoryCorrectReviews: number
   todayQuestionReviews: number
   todayQuestionCorrectReviews: number
-  questionStats: QuestionStatTotals
   questionStatsBySense: Record<SenseId, QuestionStatTotals>
   dailyHistory: Record<string, DailyActivity>
   updatedAt: string

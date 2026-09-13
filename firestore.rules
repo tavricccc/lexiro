@@ -16,16 +16,16 @@ service cloud.firestore {
         ])
         && request.resource.data.cards is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 6;
+        && request.resource.data.schemaVersion == 7;
     }
 
     function validStats() {
       return request.resource.data.keys().hasOnly([
         'totalMemoryReviews', 'correctMemoryReviews', 'totalQuestionReviews',
-        'correctQuestionReviews', 'streakDays', 'longestStreak', 'xp', 'level',
+        'correctQuestionReviews', 'streakDays', 'longestStreak', 'streakFreezes',
         'lastStudyDate', 'dailyWordGoal', 'dailyQuestionGoal',
         'todayMemoryReviews', 'todayMemoryCorrectReviews',
-        'todayQuestionReviews', 'todayQuestionCorrectReviews', 'questionStats',
+        'todayQuestionReviews', 'todayQuestionCorrectReviews',
         'questionStatsBySense',
         'dailyHistory',
         'updatedAt', 'ownerId', 'schemaVersion'
@@ -36,8 +36,7 @@ service cloud.firestore {
         && request.resource.data.correctQuestionReviews is number
         && request.resource.data.streakDays is number
         && request.resource.data.longestStreak is number
-        && request.resource.data.xp is number
-        && request.resource.data.level is number
+        && request.resource.data.streakFreezes is number
         && request.resource.data.lastStudyDate is string
         && request.resource.data.dailyWordGoal is number
         && request.resource.data.dailyQuestionGoal is number
@@ -45,11 +44,10 @@ service cloud.firestore {
         && request.resource.data.todayMemoryCorrectReviews is number
         && request.resource.data.todayQuestionReviews is number
         && request.resource.data.todayQuestionCorrectReviews is number
-        && request.resource.data.questionStats is map
         && request.resource.data.questionStatsBySense is map
         && request.resource.data.dailyHistory is map
         && request.resource.data.updatedAt is string
-        && request.resource.data.schemaVersion == 6;
+        && request.resource.data.schemaVersion == 7;
     }
 
 
@@ -66,7 +64,7 @@ service cloud.firestore {
         'updatedAt', 'payload', 'writtenAt'
       ])
         && request.resource.data.ownerId == uid
-        && request.resource.data.schemaVersion == 6
+        && request.resource.data.schemaVersion == 7
         && request.resource.data.type in ['folder', 'set', 'membership', 'word', 'question']
         && request.resource.data.recordKey is string
         && request.resource.data.recordKey.size() > 0
@@ -101,7 +99,7 @@ service cloud.firestore {
         allow create, update: if ownerCreate(uid)
           && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'changedAt', 'changedBy'])
           && request.resource.data.changedBy is string
-          && request.resource.data.schemaVersion == 6;
+          && request.resource.data.schemaVersion == 7;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 

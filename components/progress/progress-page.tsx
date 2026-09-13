@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { ListNavRow, ListRow, ListSection } from "@/components/ui/list";
 import { PageHeader } from "@/components/ui/page-header";
 import { ProgressPageSkeleton } from "@/components/ui/workspace-skeleton";
@@ -7,11 +9,32 @@ import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
+import { countActiveDays } from "@/src/lib/learning-defaults";
+import { countMastery } from "@/src/lib/library-metrics";
 
-/** A compact progress overview; every analysis opens as its own task. */
+const WEEK_DAYS = 7;
+
+/**
+ * A compact progress overview; every analysis opens as its own task.
+ *
+ * Every figure here is a reading of where the learning actually stands — what
+ * is known, what today asked for, how much of the week was practised. The two
+ * rows this replaced were an experience total and that total divided by a
+ * hundred, which measured how many times a button had been pressed and nothing
+ * else.
+ */
 export function ProgressPage() {
-  const { stats, loaded } = useLearningStore();
+  const { progress, stats, loaded } = useLearningStore();
+  const library = useLibraryStore((store) => store.state);
   const libraryStatus = useLibraryStore((store) => store.status);
+  const mastery = useMemo(
+    () => countMastery(library.words, progress.cards),
+    [library.words, progress.cards],
+  );
+  const activeDays = useMemo(
+    () => countActiveDays(stats.dailyHistory, WEEK_DAYS),
+    [stats.dailyHistory],
+  );
 
   if (!loaded || libraryStatus !== "ready") return <ProgressPageSkeleton />;
 
@@ -28,13 +51,38 @@ export function ProgressPage() {
           </span>
         </p>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          {t("progress.streakLead")}
+          {stats.streakFreezes > 0
+            ? t("progress.streakProtected", { count: stats.streakFreezes })
+            : t("progress.streakLead")}
         </p>
       </section>
 
       <ListSection className="section-gap">
-        <ListRow label={t("progress.level")} value={stats.level} />
-        <ListRow label={t("progress.xp")} value={stats.xp} />
+        <ListRow
+          label={t("progress.mastered")}
+          value={t("progress.masteredValue", {
+            mastered: mastery.mastered,
+            total: mastery.total,
+          })}
+        />
+        <ListRow
+          label={t("progress.todayWords")}
+          value={t("progress.goalValue", {
+            done: stats.todayMemoryReviews,
+            goal: stats.dailyWordGoal,
+          })}
+        />
+        <ListRow
+          label={t("progress.todayQuestions")}
+          value={t("progress.goalValue", {
+            done: stats.todayQuestionReviews,
+            goal: stats.dailyQuestionGoal,
+          })}
+        />
+        <ListRow
+          label={t("progress.weekActive")}
+          value={t("progress.weekActiveValue", { days: activeDays })}
+        />
         <ListNavRow
           href="/progress/coverage"
           icon={Icons.library}

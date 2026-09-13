@@ -50,7 +50,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache. An administrator sees 無限額度 in place of the estimate and balance.
 - `components/ai/ai-usage.tsx` — administrator-only readout of a run's input/cached/output/reasoning tokens, provider cost, and the credit equivalent returned by the private Worker.
 - `components/me/me-page.tsx`, `components/me/me-subpage.tsx`, `components/me/account-row.tsx`, `components/me/save-status.tsx` — 我的 is a one-column destination menu. Account, preferences, plan, data and administrator work each have their own route and browser history entry.
-- `components/progress/progress-page.tsx`, `progress-coverage.tsx`, `progress-history.tsx`, `progress-question-performance.tsx`, `progress-subpage.tsx` — 進度 starts with a concise overview; coverage, 14-day activity and question performance are separate drill-down routes so one screen does one analysis.
+- `components/progress/progress-page.tsx`, `progress-coverage.tsx`, `progress-history.tsx`, `progress-question-performance.tsx`, `progress-subpage.tsx` — 進度 starts with a concise overview — the streak, how much is known, what today asked for and how much of the week was practised; coverage, 14-day activity and question performance are separate drill-down routes so one screen does one analysis. Every figure is a reading of where the learning stands, never a running total of taps: the experience points and the level derived from them are gone.
 - `components/questions/question-bank-page.tsx` — 題庫 is a dedicated child route, rather than a tab competing with word-set browsing in 我的單字.
 - `components/me/plan-section.tsx` — account point balance and renewal date; an administrator sees 無限額度 instead.
 - `components/me/admin-panel.tsx`, `admin-accounts.tsx`, `admin-usage.tsx`, `admin-settings.tsx` — `/me/admin` is a three-row menu. Accounts, one account, the 30-day usage report, and global plan defaults each have their own nested route; none are simulated with component-local view state. An account exists because someone signed in, so the list is everyone who has signed in and the only thing to edit is what they are given. The usage report totals provider cost across models, then per kind of work against what that kind is quoted at, then per account, and marks a run that did not complete.
@@ -150,13 +150,22 @@ row exists only once it has been practised — and `dailyHistory` is pruned to
 `DAILY_HISTORY_RETENTION_DAYS`, because progress and stats are each a single
 Firestore document and Firestore rejects anything past one mebibyte.
 
+Nothing is stored that can be read off what is already there. A day in
+`dailyHistory` holds only what the chart draws; the account-wide question
+breakdown is `questionStatsBySense` summed by `sumQuestionStats`; and how much
+is known comes from `countMastery` in `src/lib/library-metrics.ts`, which reads
+FSRS stability rather than a counter of its own. The one number that is kept
+because it cannot be derived is `streakFreezes`: `rollStatsToToday` spends one
+to carry a streak across a single missed day and earns one back every full
+week, up to `MAX_STREAK_FREEZES`.
+
 Persisted schema versions, all independent of one another:
 
 | Data | Version | Defined in |
 | --- | --- | --- |
 | Library repository (IndexedDB) | 2 | `src/lib/library-repository.ts` |
 | Sync journal (IndexedDB) | 3 | `src/lib/sync-journal.ts`: v2 removes the AI dirty blob and retired account settings/key via `persist.ts`, preserving queued records and cursor |
-| Cloud documents (Firestore) | 6 | `src/constants/cloud.ts` |
+| Cloud documents (Firestore) | 7 | `src/constants/cloud.ts`: v7 drops `xp`, `level` and the derivable `questionStats` from the statistics document, trims `dailyHistory` rows to what the chart draws, and adds `streakFreezes` |
 | Practice session snapshot | 2 | `src/types/session.ts` |
-| Full backup files | 2 | `src/constants/backup.ts`, `src/lib/share.ts`: explicit v1 migration removes AI settings, preserves library and learning data |
+| Full backup files | 3 | `src/constants/backup.ts`, `src/lib/share.ts`: v3 carries the v7 statistics shape; older files are refused rather than migrated |
 | Set share files | 1 | `src/types/backup.ts` |
