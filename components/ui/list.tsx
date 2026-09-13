@@ -369,12 +369,15 @@ function StepperButton({
  * something now" as opposed to "this row is a value you can change".
  */
 export function ListActionRow({
+  busy,
   children,
   disabled,
   onClick,
   tone = "brand",
   type = "button",
 }: {
+  /** The work this row started is still running, and it says so itself. */
+  busy?: boolean;
   children: ReactNode;
   disabled?: boolean;
   onClick?: () => void;
@@ -383,15 +386,20 @@ export function ListActionRow({
 }) {
   return (
     <button
+      aria-busy={busy}
       className={cn(
-        "t-row flex min-h-[3.25rem] w-full items-center justify-center py-[var(--row-padding-block)] text-center type-row",
+        "t-row flex min-h-[3.25rem] w-full items-center justify-center gap-2 py-[var(--row-padding-block)] text-center type-row",
         tone === "destructive" ? "text-destructive" : "text-primary",
-        disabled && "pointer-events-none opacity-45",
+        (disabled || busy) && "pointer-events-none",
+        disabled && !busy && "opacity-45",
       )}
-      disabled={disabled}
+      disabled={disabled || busy}
       onClick={onClick}
       type={type}
     >
+      {busy && (
+        <Icons.loading aria-hidden className="size-4 shrink-0 animate-spin" />
+      )}
       {children}
     </button>
   );
