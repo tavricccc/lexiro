@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const report = {
@@ -29,11 +29,18 @@ function show() {
   );
 }
 
+async function showKindReport() {
+  show();
+  fireEvent.click(
+    await screen.findByRole("tab", { name: "每種工作的單位成本" }),
+  );
+}
+
 afterEach(cleanup);
 
 describe("the administrator's per-kind cost report", () => {
   it("prices one billable unit against what that unit is quoted at", async () => {
-    show();
+    await showKindReport();
     // 40 credits over 40 units is 1.00 each; vocabulary at lite is quoted at
     // half a point, so the quote is half what the work costs.
     expect(await screen.findByText("1.00 點")).toBeTruthy();
@@ -41,7 +48,7 @@ describe("the administrator's per-kind cost report", () => {
   });
 
   it("names the work and the tier, and reads a quote that is too high", async () => {
-    show();
+    await showKindReport();
     // Reading at pro is quoted at 150 points a passage; 120 is what it cost.
     expect(await screen.findByText("閱讀測驗 · Pro")).toBeTruthy();
     expect(screen.getByText("120.00 點")).toBeTruthy();
@@ -49,7 +56,7 @@ describe("the administrator's per-kind cost report", () => {
   });
 
   it("orders the widest gap first, because that is the one to act on", async () => {
-    show();
+    await showKindReport();
     const rows = await screen.findAllByText(/^(詞彙題|閱讀測驗) · /);
     expect(rows.map((row) => row.textContent)).toEqual([
       "詞彙題 · Lite",
