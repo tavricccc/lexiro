@@ -101,6 +101,11 @@ writes what changed in batches. A deleted record keeps its document and sets
 next device has to interpret — and `firestore.rules` refuses to delete a record
 document at all, so that fact cannot be erased into an absence.
 
+Only `writtenAt` is worth an index on a record. A record is never queried by its
+contents, so `firestore.indexes.json` exempts `payload` from single-field
+indexing; subfields inherit a parent's exemption, so the one entry covers the
+whole tree, including the article text, options and examples a question carries.
+
 Conflicts are settled by the server's `writtenAt`, which is also the order the
 pull walks: last write wins. A record this device has changed but not yet pushed
 is held out of the merge instead, because the push that follows will send it.
@@ -108,8 +113,19 @@ The `updatedAt` a device writes into the document is displayed, never used to
 decide a conflict; a phone with a wrong clock would otherwise win every conflict
 for as long as its clock stayed wrong.
 
+`meta/library` is the change marker, and it names the tab that moved it. A push
+stamps it with a server timestamp, which Firestore delivers twice — the local
+estimate, then the resolved value — so without a writer to compare against, a
+device's own push woke its own listener and bought a second, empty sync. The
+listener in `src/lib/cloud-sync.ts` therefore waits for the marker to move
+forward and to have been moved by somebody else, and ignores the first snapshot
+altogether because the caller syncs the moment it attaches.
+
 `src/lib/cloud-account.ts` holds review schedules and statistics, merging them
-field by field. AI credentials and configuration belong to the managed Worker;
+field by field. They are read only when this session has not seen them, when
+this device holds an unsent copy, or when the user presses 同步: nothing writes
+them through the change marker, so a record notification never meant they had
+moved. AI credentials and configuration belong to the managed Worker;
 the retired Firestore settings route is no longer read or writable.
 `stores/cloud-store.ts` selects the account namespace before loading local data.
 
