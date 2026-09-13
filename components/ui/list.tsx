@@ -88,7 +88,9 @@ function RowInner({
       )}
       <span className="min-w-0 flex-1">
         <span className={cn("type-row block", toneClass[tone])}>{label}</span>
-        {detail && <span className="type-row-detail mt-0.5 block">{detail}</span>}
+        {detail && (
+          <span className="type-row-detail mt-0.5 block">{detail}</span>
+        )}
       </span>
       {value !== undefined && value !== null && value !== "" && (
         <span className="type-row-value shrink-0 text-right">{value}</span>
@@ -102,7 +104,10 @@ const rowClass =
   "t-row flex w-full min-h-[3.25rem] items-center gap-3 py-[var(--row-padding-block)] text-left";
 
 /** A row that only reports: a label, and what it is set to. */
-export function ListRow({ className, ...content }: RowContent & { className?: string }) {
+export function ListRow({
+  className,
+  ...content
+}: RowContent & { className?: string }) {
   return (
     <div className={cn(rowClass, className)}>
       <RowInner {...content} />
@@ -118,14 +123,11 @@ export function ListRow({ className, ...content }: RowContent & { className?: st
  */
 export function ListNavRow({
   disabled,
-  expanded,
   href,
   onClick,
   ...content
 }: RowContent & {
   disabled?: boolean;
-  /** Set when the row opens its options in place rather than leading away. */
-  expanded?: boolean;
   href?: string;
   onClick?: () => void;
 }) {
@@ -137,7 +139,6 @@ export function ListNavRow({
           aria-hidden
           className={cn(
             "size-4 shrink-0 text-muted-foreground/70 transition-transform duration-[var(--motion-control)] ease-[var(--ease-move)]",
-            expanded && "rotate-90",
           )}
         />
       }
@@ -152,7 +153,6 @@ export function ListNavRow({
     );
   return (
     <button
-      aria-expanded={expanded}
       className={shared}
       disabled={disabled}
       onClick={onClick}
@@ -223,7 +223,12 @@ export function ListPicker({
   disabled?: boolean;
   label: string;
   onChange: (value: string) => void;
-  options: { detail?: ReactNode; label: string; value: string; meta?: ReactNode }[];
+  options: {
+    detail?: ReactNode;
+    label: string;
+    value: string;
+    meta?: ReactNode;
+  }[];
   value: string;
 }) {
   return (
@@ -476,7 +481,9 @@ export function ListCustomRow({
   className?: string;
 }) {
   return (
-    <div className={cn("min-h-[3.25rem] py-[var(--row-padding-block)]", className)}>
+    <div
+      className={cn("min-h-[3.25rem] py-[var(--row-padding-block)]", className)}
+    >
       {children}
     </div>
   );
