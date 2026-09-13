@@ -31,9 +31,11 @@ function show() {
 
 async function showKindReport() {
   show();
-  fireEvent.click(
-    await screen.findByRole("tab", { name: "每種工作的單位成本" }),
-  );
+  const tab = await screen.findByRole("tab", {
+    name: "每種工作的單位成本",
+  });
+  fireEvent.mouseDown(tab);
+  fireEvent.click(tab);
 }
 
 afterEach(cleanup);
