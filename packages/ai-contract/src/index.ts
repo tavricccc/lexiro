@@ -3,7 +3,12 @@ export * from "./formats";
 
 export const TIERS = ["lite", "thinking", "pro"] as const;
 export type Tier = typeof TIERS[number];
-export const MULTIPLIER: Record<Tier, number> = { lite: 1, thinking: 2, pro: 8 };
+/**
+ * What a tier costs relative to lite. Pro is the provider's own ratio: terra
+ * lists at exactly ten times luna on both input and output, so eight was
+ * charging 80% of what the tier costs to run.
+ */
+export const MULTIPLIER: Record<Tier, number> = { lite: 1, thinking: 2, pro: 10 };
 export const QUESTION_KINDS = ["vocabulary", "grammar", "cloze", "wordBank", "discourse", "reading"] as const;
 export type QuestionKind = typeof QUESTION_KINDS[number];
 export type JobKind = QuestionKind | "words" | "organizeText" | "organizeImage" | "explain";
@@ -54,11 +59,19 @@ export function estimateCost(usage: TokenUsage): number | null {
 }
 export const LIMITS = { input: 5000, source: 200, sources: 30, outputTokens: 8192, imageBytes: 1_500_000, imageEdge: 1800, bodyBytes: 2_200_000 } as const;
 
-/** Rates are half-points so all intermediate arithmetic stays integral. */
+/**
+ * Rates are half-points so all intermediate arithmetic stays integral.
+ *
+ * Calibrated against measured runs, one unit being one source word except for
+ * discourse and reading, which are one document however many words went in.
+ * The measurement is an upper bound — it prices the whole prompt as uncached
+ * and assumes medium reasoning, where lite runs low — so a rate at or below it
+ * is charging no more than the run costs.
+ */
 export function rate(kind: JobKind, tier: Tier): number {
   if (kind === "organizeImage") return 12;
   if (kind === "organizeText" || kind === "explain") return 10;
-  return ({ words: 3, vocabulary: 2, grammar: 2, wordBank: 2, cloze: 4, discourse: 24, reading: 30 }[kind]) * MULTIPLIER[tier];
+  return ({ words: 2, vocabulary: 1, grammar: 2, wordBank: 2, cloze: 3, discourse: 24, reading: 30 }[kind]) * MULTIPLIER[tier];
 }
 export function estimatePoints(kind: JobKind, count: number, tier: Tier): { min: number; max: number } {
   const max = Math.ceil(rate(kind, tier) * count / 2);
