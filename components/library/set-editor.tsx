@@ -12,17 +12,12 @@ import {
   type SetFormValues,
 } from "@/components/library/set-form";
 import { SetWordFields } from "@/components/library/set-word-fields";
-import { WordCapture } from "@/components/library/word-capture";
 import { useUnsavedGuard } from "@/components/library/use-unsaved-guard";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
-import {
-  ListInputRow,
-  ListPicker,
-  ListSection,
-} from "@/components/ui/list";
+import { ListInputRow, ListPicker, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
@@ -51,7 +46,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
   const fields = useFieldArray({ control: form.control, name: "words" });
   // A new set asks how you want to add words before showing either surface, so
   // the typing form and the paste-a-list assistant are never both on screen.
-  const [entry, setEntry] = useState<"ask" | "manual" | "assist">("ask");
+  const [entry, setEntry] = useState<"ask" | "manual">("ask");
   const { clearPending, pendingHref } = useUnsavedGuard(form.formState.isDirty);
   const setName = form.watch("setName");
   const folderId = form.watch("folderId");
@@ -147,7 +142,10 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
       <div className="mx-auto max-w-xl">
         <PageHeader back={backLink} title={t("setEditor.howTitle")} />
         <ChoiceList
-          onSelect={(value) => setEntry(value as "manual" | "assist")}
+          onSelect={(value) => {
+            if (value === "assist") router.push("/sets/new/organize");
+            else setEntry("manual");
+          }}
           options={[
             {
               description: t("setEditor.manualWayHint"),
@@ -164,16 +162,6 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
           ]}
         />
       </div>
-    );
-  }
-
-  if (entry === "assist") {
-    return (
-      <WordCapture
-        back={<BackControl onClick={() => setEntry("ask")} />}
-        initialFolderId={initialFolderId}
-        onSwitchToManual={() => setEntry("manual")}
-      />
     );
   }
 
@@ -236,7 +224,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         <p className="mt-4">
           <button
             className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            onClick={() => setEntry("assist")}
+            onClick={() => router.push("/sets/new/organize")}
             type="button"
           >
             {t("setEditor.switchToAssist")}

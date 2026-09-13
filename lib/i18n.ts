@@ -437,6 +437,8 @@ export const zhTW = {
     finish: "完成",
     addMore: "再增加更多單字",
     aiAssist: "AI 整理單字",
+    aiGenerateTitle: "產生詞性與例句",
+    aiDraftMissing: "請先整理並確認單字清單。",
     aiAssistDescription:
       "貼上自由格式的單字、詞性或中文提示，結果會先驗證再存進你的單字集。",
     wordsFound: "{count} 個單字",
