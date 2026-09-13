@@ -3,5 +3,5 @@
   "kind": "organizeText",
   "raw": "整理附上的照片中的英文學習清單。",
   "image": "organize-photo.png",
-  "review": ["Read the attached image, preserving three vocabulary lines and both bank meanings", "Exclude header, full example, page number and hostile instruction", "Synthetic printed image is not proof of arbitrary handwritten-photo accuracy"]
+  "review": ["Read the attached image, preserving three vocabulary lines and both bank meanings", "Every line carries a part of speech, inferred where the source omitted one", "Exclude header, full example, page number and hostile instruction", "Synthetic printed image is not proof of arbitrary handwritten-photo accuracy"]
 }

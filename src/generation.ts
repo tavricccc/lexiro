@@ -13,7 +13,11 @@ import { questionPrompt } from "./question-prompts";
 import { jsonSchema, questionOutput, wordOutput } from "./schemas";
 import type { ChargeUnit } from "./billing";
 import { fingerprint, HttpError } from "./http";
-import { organizeInstructions, organizeOutput } from "./organize";
+import {
+  ORGANIZE_CACHE_KEY,
+  organizeInstructions,
+  organizeOutput,
+} from "./organize";
 
 export const MODELS: Record<Tier, { model: string; effort: "low" | "medium" }> =
   {
@@ -150,7 +154,7 @@ export async function prepareGeneration(
     halfRate: rate(request.kind, tier),
     cacheKey:
       request.kind === "organizeText"
-        ? "lexiro-organize-20260912-v1"
+        ? ORGANIZE_CACHE_KEY
         : `lexiro-${request.kind}-20260912-${request.kind === "words" ? "v2" : "v1"}`,
   };
 }

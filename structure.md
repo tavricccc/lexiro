@@ -13,7 +13,7 @@
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限 |
-| `src/organize.ts` | 文字／照片共用整理 prompt、WebP 輸入檢查與照片計費來源；圖片不落地 |
+| `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、WebP 輸入檢查與照片計費來源；圖片不落地。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
 | `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
