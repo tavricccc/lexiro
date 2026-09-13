@@ -4,8 +4,15 @@ import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { type ReactNode } from "react";
 
+import { Checkbox } from "@/components/ui/checkbox";
 import { Icons } from "@/components/ui/icons";
-import { SelectField } from "@/components/ui/select-field";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
@@ -208,6 +215,49 @@ export function ListChoiceRow({
 }
 
 /**
+ * One of several rows that can each be on or off.
+ *
+ * It is `ListChoiceRow` with a checkbox where the check is, because choosing
+ * several of a list and choosing one of a list are the same reading task and
+ * should not be drawn two different ways — which they were, on opposite edges
+ * of the row and against different alignment baselines.
+ *
+ * The selected tint is painted by the row's own bleeding layer rather than by a
+ * background on the row, so it reaches the card's edges and its rounded corners
+ * the way the pressed tint already did. A background set on the row itself
+ * stops at the card's gutter, leaving the corners looking unselected.
+ */
+export function ListCheckRow({
+  checked,
+  disabled,
+  onCheckedChange,
+  ...content
+}: RowContent & {
+  checked: boolean;
+  disabled?: boolean;
+  onCheckedChange: (checked: boolean) => void;
+}) {
+  return (
+    <label
+      className={cn(rowClass, "cursor-pointer", disabled && "opacity-45")}
+      data-selected={checked}
+    >
+      <RowInner
+        {...content}
+        trailing={
+          <Checkbox
+            checked={checked}
+            className="shrink-0"
+            disabled={disabled}
+            onCheckedChange={(next) => onCheckedChange(next === true)}
+          />
+        }
+      />
+    </label>
+  );
+}
+
+/**
  * A value chosen from a handful of options.
  *
  * Choices live in the select popover rather than expanding the current page.
@@ -232,15 +282,30 @@ export function ListPicker({
   value: string;
 }) {
   return (
-    <SelectField
-      ariaLabel={label}
-      disabled={disabled}
-      label={label}
-      layout="row"
-      onValueChange={onChange}
-      options={options}
-      value={value}
-    />
+    <Select disabled={disabled} onValueChange={onChange} value={value}>
+      {/* The trigger is the row, rather than a bordered control sitting inside
+          one. A field's box says "type here"; a list row says "this is what it
+          is set to", and drawing the second as the first put a shadowed white
+          card inside a card whose own clipping then cut the bottom row off. */}
+      <SelectTrigger
+        aria-label={label}
+        className={cn(
+          rowClass,
+          "h-auto rounded-none border-0 bg-transparent px-0 shadow-none hover:border-transparent focus-visible:border-transparent focus-visible:ring-0",
+          disabled && "opacity-45",
+        )}
+      >
+        <span className="type-row min-w-0 flex-1 text-left">{label}</span>
+        <SelectValue className="type-row-value" />
+      </SelectTrigger>
+      <SelectContent>
+        {options.map((option) => (
+          <SelectItem key={option.value} value={option.value}>
+            {option.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 }
 

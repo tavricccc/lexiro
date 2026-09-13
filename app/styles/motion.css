@@ -171,6 +171,13 @@
   background: var(--surface-active);
   transition-duration: var(--motion-touch);
 }
+/* A selected row is tinted through the same bleeding layer as a pressed one, so
+   it reaches the card's edges and its rounded corners. Painted as the row's own
+   background it stopped at the card's gutter, and the corners read as
+   unselected while the middle of the row read as selected. */
+.t-row[data-selected="true"]::before {
+  background: var(--surface-selected);
+}
 
 .t-input {
   transition:

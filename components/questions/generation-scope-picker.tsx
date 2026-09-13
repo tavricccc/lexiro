@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { ListCheckRow } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 
 export interface GenerationSense {
@@ -71,35 +71,21 @@ export function GenerationScopePicker({
               total: senses.length,
             })}
       </p>
-      <ul>
-        {senses.map((sense) => (
-          <li key={sense.key}>
-            <label className="flex min-h-[3.25rem] cursor-pointer items-start gap-3 px-4 py-[var(--row-padding-block)] hover:bg-[var(--surface-hover)] sm:px-5">
-              <Checkbox
-                checked={chosen.has(sense.key)}
-                className="mt-1"
-                onCheckedChange={(checked) =>
-                  toggle(sense.key, checked === true)
-                }
-              />
-              <span className="min-w-0 flex-1">
-                <span className="flex items-baseline gap-2">
-                  <span className="text-base font-medium">{sense.word}</span>
-                  <span className="entry-pos text-sm">{sense.pos}</span>
-                  {sense.covered && (
-                    <span className="ml-auto shrink-0 text-xs text-muted-foreground">
-                      {t("questions.alreadyCovered")}
-                    </span>
-                  )}
-                </span>
-                <span className="mt-0.5 block truncate text-sm text-muted-foreground">
-                  {sense.meaning}
-                </span>
-              </span>
-            </label>
-          </li>
-        ))}
-      </ul>
+      {senses.map((sense) => (
+        <ListCheckRow
+          checked={chosen.has(sense.key)}
+          detail={sense.meaning}
+          key={sense.key}
+          label={
+            <span className="flex items-baseline gap-2">
+              <span className="truncate">{sense.word}</span>
+              <span className="entry-pos text-sm">{sense.pos}</span>
+            </span>
+          }
+          onCheckedChange={(checked) => toggle(sense.key, checked)}
+          value={sense.covered ? t("questions.alreadyCovered") : undefined}
+        />
+      ))}
     </section>
   );
 }

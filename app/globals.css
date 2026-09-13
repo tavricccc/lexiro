@@ -107,6 +107,8 @@
   --surface-canvas: #e4eee8;
   --surface-hover: rgb(31 58 48 / 4%);
   --surface-active: rgb(31 58 48 / 7%);
+  /* A row that is on, rather than one being touched. Opaque, because it stays. */
+  --surface-selected: var(--brand-50);
   --backdrop: rgb(18 26 22 / 26%);
   --radius: var(--radius-card);
   --shadow-control:
@@ -171,6 +173,7 @@
   --surface-canvas: #16241d;
   --surface-hover: rgb(190 230 210 / 6%);
   --surface-active: rgb(190 230 210 / 9%);
+  --surface-selected: var(--brand-50);
   --backdrop: rgb(4 10 7 / 66%);
   --shadow-control:
     0 1px 1px rgb(0 0 0 / 24%), 0 0 0 1px rgb(190 230 210 / 7%);
