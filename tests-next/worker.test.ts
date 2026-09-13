@@ -249,6 +249,8 @@ describe("Worker HTTP boundary", () => {
       models: [{ model: "gpt-5.6-luna", runs: 1, credits: 1, input: 100, output: 20 }],
       // What that one account cost, separately from what it was charged.
       users: [{ uid: "admin", email: "admin@example.test", model: "gpt-5.6-luna", runs: 1, credits: 1, points: 0 }],
+      // Cost against billable units, which is what the point rates are set from.
+      kinds: [{ kind: "words", tier: "lite", runs: 1, units: 1, credits: 1 }],
     });
   });
   it("runs a batch the balance cannot cover and leaves the account at zero", async () => {

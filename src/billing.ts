@@ -29,6 +29,10 @@ export interface Settlement {
   /** What the provider actually cost, recorded even when nothing was charged. */
   cost?: number;
   status?: string;
+  /** What the run was, so cost per unit can be read back off the ledger. */
+  kind?: string;
+  tier?: string;
+  units?: number;
 }
 export const nowSeconds = () => Math.floor(Date.now() / 1000);
 
@@ -250,8 +254,8 @@ export async function settle(
   statements.push(
     db
       .prepare(
-        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at,credits,status)
-    VALUES(?,?,?,?,?,?,?,?,?,?)`,
+        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at,credits,status,kind,tier,units)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       )
       .bind(
         attempt,
@@ -264,6 +268,9 @@ export async function settle(
         nowSeconds(),
         cost,
         status ?? "complete",
+        settlement.kind ?? "",
+        settlement.tier ?? "",
+        settlement.units ?? 0,
       ),
   );
   // Mark successful units as settled so repeated settlement cannot refund them again.

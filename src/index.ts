@@ -232,6 +232,9 @@ export function createWorker(
             charged: 0,
             cost: 0,
             status: "failed",
+            kind: prepared.request.kind,
+            tier: prepared.request.tier,
+            units: prepared.units.length,
           });
           throw reason;
         }

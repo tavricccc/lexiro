@@ -154,6 +154,9 @@ export async function settleGeneration(
     charged,
     cost,
     status: terminal.status,
+    kind,
+    tier: prepared.request.tier,
+    units: prepared.units.length,
   });
   return charged;
 }

@@ -41,7 +41,7 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     const url = new URL(request.url), offset = Number(url.searchParams.get("offset") ?? 0);
     if (!Number.isSafeInteger(offset) || offset < 0) throw new HttpError(400, "invalid_input");
     const since = nowSeconds() - 2_592_000;
-    const [entries, totals, users] = await Promise.all([
+    const [entries, totals, users, kinds] = await Promise.all([
       env.DB.prepare(`SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.output,u.created_at,u.credits,u.status
         FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid ORDER BY u.created_at DESC,u.id LIMIT 51 OFFSET ?`).bind(offset).all(),
       // Money is per model, so the running totals stay split by model and the
@@ -58,12 +58,22 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
         COALESCE(SUM(u.points),0) AS points
         FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid
         WHERE u.created_at>? GROUP BY u.uid,u.model ORDER BY credits DESC,u.uid LIMIT 200`).bind(since).all(),
+      // Cost per billable unit, which is the quantity the point rates are set
+      // against. Split by tier because the rate is multiplied by it, and a run
+      // that billed nothing would divide into a per-unit cost of infinity.
+      env.DB.prepare(`SELECT kind,tier,COUNT(*) AS runs,COALESCE(SUM(units),0) AS units,
+        COALESCE(SUM(input),0) AS input,COALESCE(SUM(cached),0) AS cached,
+        COALESCE(SUM(output),0) AS output,COALESCE(SUM(credits),0) AS credits,
+        COALESCE(SUM(points),0) AS points
+        FROM usage_log WHERE created_at>? AND kind<>'' AND units>0
+        GROUP BY kind,tier ORDER BY kind,tier`).bind(since).all(),
     ]);
     return Response.json({
       entries: entries.results.slice(0, 50),
       nextOffset: entries.results.length > 50 ? offset + 50 : null,
       models: totals.results,
       users: users.results,
+      kinds: kinds.results,
     });
   }
   if (path === "/admin/settings" && request.method === "GET") {
