@@ -36,7 +36,9 @@ export function GenerationScopePicker({
 
   return (
     <section className="rule-card rule-list">
-      <div className="flex flex-wrap items-center gap-2 rule-b px-4 py-3 sm:px-5">
+      {/* The card owns the gutter, so this row must not add one of its own:
+          padding here started the buttons further in than the words below. */}
+      <div className="-mx-2 flex flex-wrap items-center gap-1 py-2">
         <Button
           type="button"
           size="sm"
@@ -63,14 +65,6 @@ export function GenerationScopePicker({
           {t("questions.clear")}
         </Button>
       </div>
-      <p className="px-4 py-3 text-sm text-muted-foreground sm:px-5">
-        {selected.length === senses.length
-          ? t("questions.scopeAll", { count: senses.length })
-          : t("questions.scopeSome", {
-              count: selected.length,
-              total: senses.length,
-            })}
-      </p>
       {senses.map((sense) => (
         <ListCheckRow
           checked={chosen.has(sense.key)}

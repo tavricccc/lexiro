@@ -201,8 +201,6 @@ export const zhTW = {
     clear: "清除",
     alreadyCovered: "已有題目",
     scopeTitle: "出題範圍",
-    scopeAll: "{count} 個詞義全部納入",
-    scopeSome: "已選 {count} 個，共 {total} 個",
     scopeSummary: "{count} 個詞義",
     difficultyEasy: "簡單",
     difficultyMedium: "中等",
