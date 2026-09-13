@@ -51,20 +51,30 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
   if (path === "/admin/usage" && request.method === "GET") {
     const url = new URL(request.url), offset = Number(url.searchParams.get("offset") ?? 0);
     if (!Number.isSafeInteger(offset) || offset < 0) throw new HttpError(400, "invalid_input");
-    const [entries, totals] = await Promise.all([
-      env.DB.prepare(`SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.output,u.created_at,u.credits
+    const since = nowSeconds() - 2_592_000;
+    const [entries, totals, users] = await Promise.all([
+      env.DB.prepare(`SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.output,u.created_at,u.credits,u.status
         FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid ORDER BY u.created_at DESC,u.id LIMIT 51 OFFSET ?`).bind(offset).all(),
       // Money is per model, so the running totals stay split by model and the
       // client applies the published rate for each one.
       env.DB.prepare(`SELECT model,COUNT(*) AS runs,COALESCE(SUM(input),0) AS input,
         COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(output),0) AS output,
         SUM(credits) AS credits
-        FROM usage_log WHERE created_at>? GROUP BY model ORDER BY model`).bind(nowSeconds() - 2_592_000).all(),
+        FROM usage_log WHERE created_at>? GROUP BY model ORDER BY model`).bind(since).all(),
+      // Per person, still split by model: cost is a model rate times tokens, and
+      // one account's runs are usually spread across more than one model.
+      env.DB.prepare(`SELECT u.uid,a.email,u.model,COUNT(*) AS runs,
+        COALESCE(SUM(u.input),0) AS input,COALESCE(SUM(u.cached),0) AS cached,
+        COALESCE(SUM(u.output),0) AS output,COALESCE(SUM(u.credits),0) AS credits,
+        COALESCE(SUM(u.points),0) AS points
+        FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid
+        WHERE u.created_at>? GROUP BY u.uid,u.model ORDER BY credits DESC,u.uid LIMIT 200`).bind(since).all(),
     ]);
     return Response.json({
       entries: entries.results.slice(0, 50),
       nextOffset: entries.results.length > 50 ? offset + 50 : null,
       models: totals.results,
+      users: users.results,
     });
   }
   if (path === "/admin/settings" && request.method === "GET") {

@@ -7,17 +7,17 @@
 | `src/response-stream.ts` | 保留 Responses SSE 協定；公開的 `response` 物件以白名單重建（`id`、`model`、`status`、`usage`、`incomplete_details.reason`、中和過的 `error`），供應商日後新增的欄位一律不轉發。文字事件不解析 JSON，內部完成通知保留伺服器結算需要的原始回覆，並只為管理員附上已結算 credit 等值 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
-| `src/billing.ts`、`src/credits.ts` | D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker |
-| `migrations/0001_billing.sql`～`0004_plan_defaults.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄，以及可調試用／新帳號方案預設 |
-| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
+| `src/billing.ts`、`src/credits.ts` | D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker。餘額大於 0 就能開始一批，預估超過餘額也照跑，結算以 0 為下限，帳戶不會變負數 |
+| `migrations/0001_billing.sql`～`0005_usage_status.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、可調試用／新帳號方案預設，以及每筆 usage 的結束狀態與 uid 索引 |
+| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
-| `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；`/admin/usage` 回傳最近紀錄及近 30 天的 token、成本與實際 credit 等值 |
-| `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算 |
+| `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本，以及每個帳號分模型的成本與已扣點數 |
+| `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限 |
 | `src/organize.ts` | 文字／照片共用整理 prompt、WebP 輸入檢查與照片計費來源；圖片不落地 |
 | `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
-| `vendor/lexiro-ai-contract-1.0.2.tgz` | 來自 public frontend packages/ai-contract 的版本化無祕密共用套件，讓 private repo 可獨立安裝 |
+| `vendor/lexiro-ai-contract-1.1.0.tgz` | 來自 public frontend packages/ai-contract 的版本化無祕密共用套件，讓 private repo 可獨立安裝 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
@@ -37,4 +37,4 @@
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |
-| D1 計費 | 4 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額 |
+| D1 計費 | 5 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額；`0005_usage_status.sql` 記錄每筆 usage 的結束狀態並加上 uid 索引 |

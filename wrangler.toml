@@ -5,9 +5,9 @@ account_id = "3a6b9f53daa83fc24242d05bc590a2ee"
 
 [vars]
 FIREBASE_PROJECT_ID = "replace-with-firebase-project-id"
+# Complete comma-separated list. Add a development origin in .dev.vars only.
 ALLOWED_ORIGIN = "https://lexiro.vercel.app"
 OPENAI_BASE_URL = "https://api.openai.com/v1"
-MAX_OVERDRAFT_POINTS = "300"
 
 [[d1_databases]]
 binding = "DB"

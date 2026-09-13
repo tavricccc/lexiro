@@ -11,6 +11,7 @@ import {
 import prompts, { buildMistakeExplanationPrompt } from "./prompts";
 import { questionPrompt } from "./question-prompts";
 import { jsonSchema, questionOutput, wordOutput } from "./schemas";
+import type { ChargeUnit } from "./billing";
 import { fingerprint, HttpError } from "./http";
 import { organizeInstructions, organizeOutput } from "./organize";
 
@@ -50,7 +51,7 @@ export interface PreparedGeneration {
   input: string;
   image?: string;
   schema?: Record<string, unknown>;
-  units: { id: string; index: number }[];
+  units: (ChargeUnit & { index: number })[];
   halfRate: number;
   cacheKey: string;
 }
@@ -137,6 +138,11 @@ export async function prepareGeneration(
       rawUnits.map(async (unit, index) => ({
         id: await fingerprint(
           JSON.stringify([uid, request.session, request.kind, tier, unit]),
+        ),
+        // The retry ceiling deliberately excludes the session: it is a client
+        // value, and a new uuid per attempt would otherwise reset the ceiling.
+        limitId: await fingerprint(
+          JSON.stringify([uid, request.kind, tier, unit]),
         ),
         index,
       })),

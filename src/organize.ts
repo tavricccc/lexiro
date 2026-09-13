@@ -110,6 +110,9 @@ export async function prepareImage(
             await fingerprint(base64),
           ]),
         ),
+        limitId: await fingerprint(
+          JSON.stringify([uid, "organizeImage", await fingerprint(base64)]),
+        ),
         index: 0,
       },
     ],

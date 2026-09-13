@@ -2,7 +2,7 @@ import type {
   ExecutionContext,
   ScheduledController,
 } from "@cloudflare/workers-types";
-import { LIMITS, TIERS } from "@lexiro/ai-contract";
+import { LIMITS } from "@lexiro/ai-contract";
 import {
   AuthenticationError,
   isAdministrator,
@@ -25,17 +25,18 @@ import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
 import type { Env } from "./env";
 
-export function allowedOrigin(origin: string, production: string): boolean {
-  if (origin === production && origin !== "") return true;
-  try {
-    const url = new URL(origin);
-    return (
-      ["http:", "https:"].includes(url.protocol) &&
-      ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname)
-    );
-  } catch {
-    return false;
-  }
+/**
+ * `ALLOWED_ORIGIN` is the complete list, comma separated. A development origin
+ * is one entry a developer adds to their own configuration, not a permanent
+ * hole that ships to production because localhost is convenient.
+ */
+export function allowedOrigin(origin: string, allowed: string): boolean {
+  if (!origin) return false;
+  return allowed
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .includes(origin);
 }
 
 export function createWorker(
@@ -89,7 +90,6 @@ export function createWorker(
               points: Math.max(0, user?.points ?? 0),
               monthly: user?.monthly ?? 0,
               renews_at: user?.monthly ? user.renews_at : null,
-              tiers: TIERS,
               admin,
             }),
           );
@@ -117,9 +117,6 @@ export function createWorker(
           ["organizeText", "organizeImage"].includes(prepared.request.kind)
         )
           throw new HttpError(400, "invalid_input");
-        const debt = Number(env.MAX_OVERDRAFT_POINTS);
-        if (!Number.isSafeInteger(debt) || debt < 0)
-          throw new HttpError(500, "server_configuration");
         // An administrator holds no balance, no lock and no retry budget: the
         // run still settles so its cursor and token usage are recorded.
         const reservation = admin
@@ -127,9 +124,8 @@ export function createWorker(
           : await reserve(
               env.DB,
               identity.uid,
-              prepared.units.map((unit) => unit.id),
+              prepared.units,
               prepared.halfRate,
-              debt,
             );
         const model = MODELS[prepared.request.tier].model;
         try {
@@ -183,6 +179,25 @@ export function createWorker(
           }
           const finished = Promise.withResolvers<void>();
           ctx.waitUntil(finished.promise);
+          // A run that never reached a terminal event still cost tokens. The
+          // stored response is the only remaining record of how many.
+          const recoverUsage = async (id: string) => {
+            const stored = await fetcher(
+              `${env.OPENAI_BASE_URL}/responses/${encodeURIComponent(id)}`,
+              {
+                headers: { authorization: `Bearer ${env.OPENAI_API_KEY}` },
+                signal: AbortSignal.timeout(10_000),
+              },
+            );
+            if (!stored.ok) {
+              await stored.body?.cancel();
+              return undefined;
+            }
+            const detail: unknown = await stored.json();
+            return detail && typeof detail === "object"
+              ? (detail as Record<string, unknown>)
+              : undefined;
+          };
           const body = sanitizeResponseStream(response.body, {
             onTerminal: async (terminal) => {
               try {
@@ -192,6 +207,7 @@ export function createWorker(
                   prepared,
                   terminal,
                   model,
+                  recoverUsage,
                 );
                 finished.resolve();
                 return admin ? { credits } : undefined;
@@ -212,7 +228,11 @@ export function createWorker(
             }),
           );
         } catch (reason) {
-          await settle(env.DB, reservation, reservation.charges, { model });
+          await settle(env.DB, reservation, reservation.charges, { model }, {
+            charged: 0,
+            cost: 0,
+            status: "failed",
+          });
           throw reason;
         }
       } catch (reason) {

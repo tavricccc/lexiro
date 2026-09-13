@@ -32,15 +32,29 @@ export function outputText(response: Record<string, unknown>): string {
     .join("");
 }
 
+/**
+ * Settles one run and writes it to the ledger.
+ *
+ * A run that ends without a terminal event — the client hung up, the 110 second
+ * ceiling hit, the stream broke — has already cost real tokens upstream. When a
+ * response id exists, `recoverUsage` fetches the stored response so that cost is
+ * recorded instead of silently counted as nothing. The user is not charged for
+ * it; only the administrator's ledger learns about it.
+ */
 export async function settleGeneration(
   db: D1Database,
   reservation: Reservation,
   prepared: PreparedGeneration,
   terminal: StreamTerminal,
   model: string,
+  recoverUsage?: (cursor: string) => Promise<Record<string, unknown> | undefined>,
 ) {
   const usage: Usage = { model };
-  const upstream = terminal.response;
+  const upstream =
+    terminal.response ??
+    (terminal.cursor && recoverUsage
+      ? await recoverUsage(terminal.cursor).catch(() => undefined)
+      : undefined);
   if (upstream && record(upstream.usage)) {
     usage.input = count(upstream.usage.input_tokens);
     usage.output = count(upstream.usage.output_tokens);
@@ -51,10 +65,9 @@ export async function settleGeneration(
   const kind = prepared.request.kind;
   const valid = new Set<number>();
   let readingCount = 0;
-  if (
-    upstream &&
-    (terminal.status === "complete" || terminal.status === "truncated")
-  ) {
+  const produced =
+    terminal.status === "complete" || terminal.status === "truncated";
+  if (upstream && produced && terminal.response) {
     const text = outputText(upstream);
     if (kind === "explain") {
       if (text.trim()) valid.add(0);
@@ -133,14 +146,14 @@ export async function settleGeneration(
     }
     return [];
   });
-  const credits = creditsFromUsage(usage) ?? 0;
-  await settle(
-    db,
-    reservation,
-    refunds,
-    usage,
-    terminal.cursor,
-    credits,
-  );
-  return credits;
+  const cost = creditsFromUsage(usage) ?? 0;
+  // Nothing usable came back, so nothing is charged; the cost is still logged.
+  const charged = produced ? cost : 0;
+  await settle(db, reservation, refunds, usage, {
+    cursor: terminal.cursor,
+    charged,
+    cost,
+    status: terminal.status,
+  });
+  return charged;
 }

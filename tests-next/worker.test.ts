@@ -15,8 +15,7 @@ beforeEach(async () => {
     ADMIN_EMAILS: "admin@example.test",
     OPENAI_API_KEY: "private-test-key",
     OPENAI_BASE_URL: "https://provider.test/v1",
-    ALLOWED_ORIGIN: "https://lexiro.test",
-    MAX_OVERDRAFT_POINTS: "300",
+    ALLOWED_ORIGIN: "https://lexiro.test,http://localhost:3000",
   };
 });
 afterEach(async () => {
@@ -165,16 +164,13 @@ describe("Worker HTTP boundary", () => {
     expect(result.text).toContain("apple 蘋果");
     expect((await account(env.DB, "u"))!.points).toBe(99);
   });
-  it("returns account points and tiers without keys or model configuration", async () => {
+  it("returns account points without keys or model configuration", async () => {
     const result = await call(req("/me"));
-    expect(JSON.parse(result.text)).toMatchObject({
-      points: 100,
-      tiers: ["lite", "thinking", "pro"],
-      admin: false,
-    });
+    expect(JSON.parse(result.text)).toMatchObject({ points: 100, admin: false });
     expect(result.text).not.toContain("private-test-key");
+    expect(result.text).not.toContain("tiers");
   });
-  it("forbids unrelated browser origins and permits local preflight", async () => {
+  it("forbids every origin outside the configured list", async () => {
     const denied = await call(
       new Request("https://worker.test/me", {
         headers: { origin: "https://attacker.test" },
@@ -184,6 +180,12 @@ describe("Worker HTTP boundary", () => {
     expect(denied.response.headers.has("access-control-allow-origin")).toBe(
       false,
     );
+    const unlisted = await call(
+      new Request("https://worker.test/me", {
+        headers: { origin: "http://localhost:9999" },
+      }),
+    );
+    expect(unlisted.response.status).toBe(403);
     const allowed = await call(
       new Request("https://worker.test/me", {
         method: "OPTIONS",
@@ -243,9 +245,21 @@ describe("Worker HTTP boundary", () => {
     expect((await account(env.DB, "u"))!.points).toBe(100);
     const usage = await call(req("/admin/usage", undefined, "admin"));
     expect(JSON.parse(usage.text)).toMatchObject({
-      entries: [{ uid: "u", model: "gpt-5.6-luna", points: 0, credits: 1, input: 100, output: 20 }],
+      entries: [{ uid: "u", model: "gpt-5.6-luna", points: 0, credits: 1, input: 100, output: 20, status: "complete" }],
       models: [{ model: "gpt-5.6-luna", runs: 1, credits: 1, input: 100, output: 20 }],
+      // What that one account cost, separately from what it was charged.
+      users: [{ uid: "u", email: "u@example.test", model: "gpt-5.6-luna", runs: 1, credits: 1, points: 0 }],
     });
+  });
+  it("runs a batch the balance cannot cover and leaves the account at zero", async () => {
+    await env.DB.prepare("UPDATE accounts SET points=1 WHERE uid='u'").run();
+    const result = await call(req("/generate", generation()));
+    expect(result.response.status).toBe(200);
+    expect(result.text).toContain("The apple is red.");
+    expect((await account(env.DB, "u"))!.points).toBe(0);
+    const refused = await call(req("/generate", generation()));
+    expect(refused.response.status).toBe(402);
+    expect(JSON.parse(refused.text).error.code).toBe("insufficient_points");
   });
   it("rebuilds a foreign cursor and refuses client model/prompt overrides", async () => {
     const body = { ...generation(), cursor: "resp_someone_else" };

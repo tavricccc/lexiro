@@ -4,7 +4,6 @@ import { testDatabase } from "./database";
 import type { D1Database } from "@cloudflare/workers-types";
 import {
   account,
-  BillingError,
   ensureTrial,
   nextRenewal,
   ownsCursor,
@@ -24,6 +23,8 @@ afterEach(async () => {
   await mf.dispose();
 });
 const balance = async () => (await account(db, "u"))!.points;
+/** One billable unit per id, charged and rate-limited under the same name. */
+const units = (ids: string[]) => ids.map((id) => ({ id, limitId: id }));
 
 describe("D1 atomic credit ledger", () => {
   it("converts provider usage to whole credits with exact upward rounding", () => {
@@ -46,16 +47,16 @@ describe("D1 atomic credit ledger", () => {
   });
   it("bounds retries even when failures refund and remove their charge records", async () => {
     for (let attempt = 0; attempt < 6; attempt++) {
-      const reservation = await reserve(db, "u", ["same-source"], 2, 300);
+      const reservation = await reserve(db, "u", units(["same-source"]), 2);
       await settle(db, reservation, reservation.charges, { model: "test" });
     }
-    await expect(reserve(db, "u", ["same-source"], 2, 300)).rejects.toMatchObject({ status: 429, message: "retry_limit" });
+    await expect(reserve(db, "u", units(["same-source"]), 2)).rejects.toMatchObject({ status: 429, message: "retry_limit" });
     expect(await balance()).toBe(100);
-    const fresh = await reserve(db, "u", ["new-session-source"], 2, 300);
+    const fresh = await reserve(db, "u", units(["new-session-source"]), 2);
     expect(fresh.charges).toHaveLength(1);
   });
   it("refunds an abandoned attempt before reclaiming its expired lock", async () => {
-    const abandoned = await reserve(db, "u", ["a"], 2, 300);
+    const abandoned = await reserve(db, "u", units(["a"]), 2);
     const expired = Math.floor(Date.now() / 1000) - 121;
     await db.batch([
       db
@@ -63,22 +64,22 @@ describe("D1 atomic credit ledger", () => {
         .bind(expired),
       db.prepare("UPDATE charges SET created_at=? WHERE uid='u'").bind(expired),
     ]);
-    const retry = await reserve(db, "u", ["a"], 2, 300);
+    const retry = await reserve(db, "u", units(["a"]), 2);
     expect(retry.charges).toHaveLength(1);
     expect(await balance()).toBe(99);
     await settle(db, abandoned, abandoned.charges, { model: "test" });
     expect(await balance()).toBe(99);
-    await expect(reserve(db, "u", ["b"], 2, 300)).rejects.toMatchObject({
+    await expect(reserve(db, "u", units(["b"]), 2)).rejects.toMatchObject({
       status: 409,
     });
     await settle(db, retry, retry.charges, { model: "test" });
     expect(await balance()).toBe(100);
   });
   it("rounds the total and leaves retries free, including a split retry", async () => {
-    const first = await reserve(db, "u", ["a", "b", "c"], 3, 300);
+    const first = await reserve(db, "u", units(["a", "b", "c"]), 3);
     expect(await balance()).toBe(95);
-    await settle(db, first, [], { model: "test" }, "resp_first");
-    const retry = await reserve(db, "u", ["b", "c"], 3, 300);
+    await settle(db, first, [], { model: "test" }, { cursor: "resp_first" });
+    const retry = await reserve(db, "u", units(["b", "c"]), 3);
     expect(retry.charges).toEqual([]);
     expect(await balance()).toBe(95);
     await settle(db, retry, [], { model: "test" });
@@ -86,23 +87,21 @@ describe("D1 atomic credit ledger", () => {
     expect(await ownsCursor(db, "other", "resp_first")).toBe(false);
   });
   it("replaces the reservation with the actual credit cost exactly once", async () => {
-    const reservation = await reserve(db, "u", ["a", "b", "c"], 3, 300);
+    const reservation = await reserve(db, "u", units(["a", "b", "c"]), 3);
     expect(await balance()).toBe(95);
     await settle(
       db,
       reservation,
       [],
       { model: "gpt-5.6-luna", input: 1_000, output: 100 },
-      undefined,
-      2,
+      { charged: 2, cost: 2 },
     );
     await settle(
       db,
       reservation,
       [],
       { model: "gpt-5.6-luna", input: 1_000, output: 100 },
-      undefined,
-      2,
+      { charged: 2, cost: 2 },
     );
     expect(await balance()).toBe(98);
     expect(
@@ -113,50 +112,75 @@ describe("D1 atomic credit ledger", () => {
     ).toEqual({ points: 2, credits: 2 });
   });
   it("charges reported usage while leaving invalid units available to retry", async () => {
-    const reservation = await reserve(db, "u", ["invalid"], 10, 300);
+    const reservation = await reserve(db, "u", units(["invalid"]), 10);
     await settle(
       db,
       reservation,
       reservation.charges,
       { model: "gpt-5.6-luna", input: 1_000, output: 100 },
-      undefined,
-      2,
+      { charged: 2, cost: 2 },
     );
     expect(await balance()).toBe(98);
-    const retry = await reserve(db, "u", ["invalid"], 10, 300);
+    const retry = await reserve(db, "u", units(["invalid"]), 10);
     expect(retry.charges).toHaveLength(1);
   });
   it("charges the rounded cost of new units when the request mixes old and new units", async () => {
-    const first = await reserve(db, "u", ["a", "b"], 3, 300);
+    const first = await reserve(db, "u", units(["a", "b"]), 3);
     await settle(db, first, [], { model: "test" });
-    const next = await reserve(db, "u", ["b", "c"], 3, 300);
+    const next = await reserve(db, "u", units(["b", "c"]), 3);
     expect(next.charges).toEqual([{ id: "c", points: 2 }]);
     expect(await balance()).toBe(95);
   });
-  it("rolls all inserts back when a request exceeds the overdraft boundary", async () => {
+  it("runs a batch the balance cannot cover and settles it at exactly zero", async () => {
+    const first = await reserve(db, "u", units(["expensive"]), 1000);
+    expect(first.charges).toHaveLength(1);
+    await settle(db, first, [], { model: "test" }, { charged: 4_000, cost: 4_000 });
+    expect(await balance()).toBe(0);
     await expect(
-      reserve(db, "u", ["expensive"], 1000, 300),
+      reserve(db, "u", units(["one-more"]), 2),
     ).rejects.toMatchObject({ status: 402 });
+    expect(await balance()).toBe(0);
+  });
+  it("returns the whole hold when an unaffordable batch fails", async () => {
+    const first = await reserve(db, "u", units(["expensive"]), 1000);
+    await settle(db, first, first.charges, { model: "test" }, { charged: 0, cost: 0 });
+    expect(await balance()).toBe(100);
+  });
+  it("records provider cost for a run nobody was charged for", async () => {
+    const reservation = await reserve(db, "u", units(["a"]), 2);
+    await settle(
+      db,
+      reservation,
+      reservation.charges,
+      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      { charged: 0, cost: 2, status: "cancelled" },
+    );
     expect(await balance()).toBe(100);
     expect(
-      await db.prepare("SELECT COUNT(*) AS n FROM charges").first("n"),
-    ).toBe(0);
-    const retry = await reserve(db, "u", ["affordable"], 2, 300);
-    expect(retry.charges).toHaveLength(1);
+      await db
+        .prepare("SELECT points,credits,status FROM usage_log WHERE id=?")
+        .bind(reservation.attempt)
+        .first(),
+    ).toEqual({ points: 0, credits: 2, status: "cancelled" });
   });
-  it("allows bounded debt and rejects the next debit at its boundary", async () => {
-    const first = await reserve(db, "u", ["large"], 800, 300);
-    await settle(db, first, [], { model: "test" });
-    expect(await balance()).toBe(-300);
-    await expect(reserve(db, "u", ["one-more"], 2, 300)).rejects.toBeInstanceOf(
-      BillingError,
-    );
-    expect(await balance()).toBe(-300);
+  it("keeps the retry ceiling when the client rotates its session", async () => {
+    for (let attempt = 0; attempt < 6; attempt++) {
+      const reservation = await reserve(
+        db,
+        "u",
+        [{ id: `session-${attempt}`, limitId: "one-source" }],
+        2,
+      );
+      await settle(db, reservation, reservation.charges, { model: "test" });
+    }
+    await expect(
+      reserve(db, "u", [{ id: "session-6", limitId: "one-source" }], 2),
+    ).rejects.toMatchObject({ status: 429 });
   });
   it("has one winner for concurrent requests from the same account", async () => {
     const results = await Promise.allSettled([
-      reserve(db, "u", ["a"], 2, 300),
-      reserve(db, "u", ["b"], 2, 300),
+      reserve(db, "u", units(["a"]), 2),
+      reserve(db, "u", units(["b"]), 2),
     ]);
     expect(
       results.filter((result) => result.status === "fulfilled"),
@@ -166,19 +190,19 @@ describe("D1 atomic credit ledger", () => {
     expect(await balance()).toBe(99);
   });
   it("refunds missing units once and charges them again only on repair", async () => {
-    const first = await reserve(db, "u", ["a", "b"], 2, 300);
+    const first = await reserve(db, "u", units(["a", "b"]), 2);
     const refunds = first.charges.filter((charge) => charge.id === "b");
     await settle(db, first, refunds, { model: "test", input: 100, output: 20 });
     await settle(db, first, refunds, { model: "test" });
     expect(await balance()).toBe(99);
-    const repair = await reserve(db, "u", ["a", "b"], 2, 300);
+    const repair = await reserve(db, "u", units(["a", "b"]), 2);
     expect(repair.charges.map((charge) => charge.id)).toEqual(["b"]);
     expect(await balance()).toBe(98);
   });
   it("does not refund previous successes when a retry fails", async () => {
-    const first = await reserve(db, "u", ["a"], 2, 300);
+    const first = await reserve(db, "u", units(["a"]), 2);
     await settle(db, first, [], { model: "test" });
-    const retry = await reserve(db, "u", ["a", "b"], 2, 300);
+    const retry = await reserve(db, "u", units(["a", "b"]), 2);
     await settle(db, retry, retry.charges, { model: "test" });
     expect(await balance()).toBe(99);
   });

@@ -2,7 +2,7 @@
 
 正式 D1 已建立為 `lexiro-billing`（APAC），`0001_billing.sql` 與 `0002_attempt_limits.sql` 已套用。Worker 的 Firebase project 與供應商／管理員 secret 仍未設定，因此尚未部署 Worker。
 
-一般設定：`FIREBASE_PROJECT_ID` 必須和前端 Firebase project 相同；`ALLOWED_ORIGIN` 為前端 HTTPS origin；`OPENAI_BASE_URL` 為供應商 Responses API 根網址；`MAX_OVERDRAFT_POINTS` 是可接受負餘額的絕對值，目前暫設 300，並非使用者指定。
+一般設定：`FIREBASE_PROJECT_ID` 必須和前端 Firebase project 相同；`ALLOWED_ORIGIN` 為允許呼叫的 origin 完整清單，逗號分隔，正式環境只放前端 HTTPS origin，開發用的 localhost 只寫在本機 `.dev.vars`；`OPENAI_BASE_URL` 為供應商 Responses API 根網址。餘額不會透支，不需要額外設定。
 
 Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號或換行分隔的管理員 email。只接受已驗證 email 的 Firebase identity，沒有授權管理員的前端欄位或 API。不要把這些值寫入 repo。
 

@@ -5,6 +5,6 @@ export interface Env {
   ADMIN_EMAILS: string;
   OPENAI_API_KEY: string;
   OPENAI_BASE_URL: string;
+  /** Comma-separated list of origins allowed to call this Worker. */
   ALLOWED_ORIGIN: string;
-  MAX_OVERDRAFT_POINTS: string;
 }

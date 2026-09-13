@@ -11,11 +11,24 @@ export interface Reservation {
   attempt: string;
   charges: { id: string; points: number }[];
 }
+/** A billable unit: `id` makes a retry free, `limitId` bounds how often it may run. */
+export interface ChargeUnit {
+  id: string;
+  limitId: string;
+}
 export interface Usage {
   model: string;
   input?: number;
   cached?: number;
   output?: number;
+}
+export interface Settlement {
+  cursor?: string;
+  /** Points taken from the balance. Zero when the run produced nothing. */
+  charged?: number;
+  /** What the provider actually cost, recorded even when nothing was charged. */
+  cost?: number;
+  status?: string;
 }
 export const nowSeconds = () => Math.floor(Date.now() / 1000);
 
@@ -54,16 +67,24 @@ export async function ensureTrial(db: D1Database, uid: string, email: string) {
     .run();
 }
 
-/** One lock owner, then one atomic D1 batch for fresh per-source charges and debit. */
+/**
+ * One lock owner, then one atomic D1 batch for fresh per-source charges and debit.
+ *
+ * A balance may never end a run below zero, but a batch whose estimate is larger
+ * than what is left still runs: any balance above zero opens the door, the hold
+ * may take the account below zero for the length of the run, and `settle` floors
+ * the result at zero. The next batch is the one that is refused.
+ */
 export async function reserve(
   db: D1Database,
   uid: string,
-  ids: string[],
+  units: ChargeUnit[],
   halfRate: number,
-  overdraft: number,
 ): Promise<Reservation> {
   const attempt = crypto.randomUUID(),
     now = nowSeconds();
+  const ids = units.map((unit) => unit.id);
+  const limitIds = units.map((unit) => unit.limitId);
   const results = await db.batch([
     db
       .prepare(
@@ -81,10 +102,18 @@ export async function reserve(
         `UPDATE accounts SET inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)`,
       )
       .bind(now, attempt, uid, now - 120),
+    db.prepare("SELECT points FROM accounts WHERE uid=?").bind(uid),
   ]);
   const lock = results[2];
-  if (!lock.meta.changes)
-    throw new BillingError((await account(db, uid)) ? 409 : 402);
+  const balance = (results[3].results as { points: number }[])[0];
+  if (!lock.meta.changes) throw new BillingError(balance ? 409 : 402);
+  // An account with nothing left does not start another batch. The balance is
+  // read after the stale-charge reclaim above, so an abandoned hold cannot
+  // masquerade as an empty account.
+  if (balance.points <= 0) {
+    await release(db, uid, attempt);
+    throw new BillingError(402);
+  }
   try {
     await db.batch([
       db.prepare(`INSERT INTO attempt_limits(id,attempts,expires_at)
@@ -92,7 +121,7 @@ export async function reserve(
         ON CONFLICT(id) DO UPDATE SET
           attempts=CASE WHEN expires_at<=? THEN 1 WHEN attempts<6 THEN attempts+1 ELSE NULL END,
           expires_at=CASE WHEN expires_at<=? THEN excluded.expires_at ELSE expires_at END`)
-        .bind(now + 1800, JSON.stringify(ids), now, now),
+        .bind(now + 1800, JSON.stringify(limitIds), now, now),
       db
         .prepare(
           `WITH fresh AS (
@@ -105,19 +134,11 @@ export async function reserve(
       // NULL deliberately violates NOT NULL: D1 rolls the inserts back as well.
       db
         .prepare(
-          `UPDATE accounts SET points=CASE
-        WHEN inflight_id=? AND points-(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)>=-?
+          `UPDATE accounts SET points=CASE WHEN inflight_id=?
         THEN points-(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?) ELSE NULL END,
         updated_at=? WHERE uid=?`,
         )
-        .bind(
-          attempt,
-          attempt,
-          overdraft,
-          attempt,
-          new Date().toISOString(),
-          uid,
-        ),
+        .bind(attempt, attempt, new Date().toISOString(), uid),
     ]);
     const rows = await db
       .prepare("SELECT id,points FROM charges WHERE attempt_id=?")
@@ -131,7 +152,7 @@ export async function reserve(
       reason instanceof Error &&
       reason.message.includes("NOT NULL constraint failed: accounts.points")
     )
-      throw new BillingError(402);
+      throw new BillingError(409);
     throw reason;
   }
 }
@@ -145,16 +166,23 @@ export async function release(db: D1Database, uid: string, attempt: string) {
     .run();
 }
 
-/** Refund only this attempt's new charges; an idempotent retry cannot refund earlier success. */
+/**
+ * Refund only this attempt's new charges; an idempotent retry cannot refund
+ * earlier success.
+ *
+ * Releasing the hold and taking the real cost is one expression, and it is
+ * floored at zero: a batch may cost more than the account had, and the account
+ * lands on empty rather than in debt.
+ */
 export async function settle(
   db: D1Database,
   reservation: Reservation,
   refunds: { id: string; points: number }[],
   usage: Usage,
-  cursor?: string,
-  actualCredits?: number,
+  settlement: Settlement = {},
 ) {
   const { uid, attempt } = reservation;
+  const { cursor, status } = settlement;
   const refunded = new Set(refunds.map((refund) => refund.id));
   const successful = reservation.charges.filter(
     (charge) => !refunded.has(charge.id),
@@ -163,18 +191,21 @@ export async function settle(
     (total, charge) => total + charge.points,
     0,
   );
-  const settledCredits =
-    actualCredits ??
+  const charged =
+    settlement.charged ??
     Math.max(
       0,
       reserved - refunds.reduce((total, refund) => total + refund.points, 0),
     );
-  const chargedCredits = reservation.charges.length ? settledCredits : 0;
+  // Provider cost is recorded whether or not the user paid for it, so an
+  // administrator sees what a failed or refunded run actually burned.
+  const cost = settlement.cost ?? charged;
+  const chargedCredits = reservation.charges.length ? charged : 0;
   const statements = [
     db
       .prepare(
-        `UPDATE accounts SET points=points+
-        (SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)-?,updated_at=?
+        `UPDATE accounts SET points=MAX(0,points+
+        (SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)-?),updated_at=?
         WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`,
       )
       .bind(
@@ -205,8 +236,8 @@ export async function settle(
   statements.push(
     db
       .prepare(
-        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at,credits)
-    VALUES(?,?,?,?,?,?,?,?,?)`,
+        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at,credits,status)
+    VALUES(?,?,?,?,?,?,?,?,?,?)`,
       )
       .bind(
         attempt,
@@ -217,7 +248,8 @@ export async function settle(
         usage.cached ?? null,
         usage.output ?? null,
         nowSeconds(),
-        settledCredits,
+        cost,
+        status ?? "complete",
       ),
   );
   // Mark successful units as settled so repeated settlement cannot refund them again.
