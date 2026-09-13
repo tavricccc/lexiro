@@ -2,6 +2,7 @@
 
 import type { SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
+import type { Firestore } from "firebase/firestore";
 import { create } from "zustand";
 
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
@@ -65,10 +66,27 @@ interface CloudStore {
   initialize: () => Promise<void>;
   signIn: () => Promise<void>;
   signOut: () => Promise<void>;
-  sync: () => Promise<void>;
+  /**
+   * `reconcileAccount` also reads the account's progress and statistics
+   * documents. Pressing 同步 means "make sure I have everything", so it asks
+   * for them; a background run decides for itself whether they are worth two
+   * reads.
+   */
+  sync: (options?: { reconcileAccount?: boolean }) => Promise<void>;
 }
 
 const SYNC_DEBOUNCE_MS = 600;
+/**
+ * The account whose progress and statistics documents this session has read.
+ *
+ * Every sync used to read both, which meant two documents for every notification
+ * — and most notifications are somebody else's word edit. Writing progress or
+ * statistics does not touch the change marker at all, so a record notification
+ * never implied they had moved. They are read when this device has not seen
+ * them yet, when it holds an unsent copy that has to be merged before it
+ * overwrites the cloud's, and whenever the user asks for a sync by hand.
+ */
+let accountDocumentsRead = "";
 /** How long the workspace waits on auth before opening on local data anyway. */
 const AUTH_WAIT_MS = 1_500;
 const MAX_RETRY_ATTEMPTS = 3;
@@ -77,6 +95,7 @@ let initializationPromise: Promise<void> | null = null;
 let running: Promise<void> | null = null;
 /** Set when a change lands mid-sync, so the run repeats instead of being dropped. */
 let rerun = false;
+let rerunReconcile = false;
 let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 let retryTimer: ReturnType<typeof setTimeout> | null = null;
 let retryAttempt = 0;
@@ -100,6 +119,7 @@ async function hydrateLocal(): Promise<void> {
 
 async function enterNamespace(namespace: string): Promise<void> {
   setStorageNamespace(namespace);
+  accountDocumentsRead = "";
   resetSyncJournalCache();
   await Promise.all([
     useLibraryStore.getState().reloadNamespace(),
@@ -206,18 +226,22 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     set({ user: null, ready: true, status: "signed-out", pending: 0, error: "" });
   },
 
-  sync: async () => {
+  sync: async (options) => {
+    const reconcileAccount = options?.reconcileAccount ?? false;
     if (running) {
       rerun = true;
+      rerunReconcile ||= reconcileAccount;
       return running;
     }
     if (debounceTimer) clearTimeout(debounceTimer);
     debounceTimer = null;
-    const run = runSync(set, get).finally(() => {
+    const run = runSync(set, get, reconcileAccount).finally(() => {
       running = null;
       if (rerun) {
         rerun = false;
-        void get().sync();
+        const carried = rerunReconcile;
+        rerunReconcile = false;
+        void get().sync({ reconcileAccount: carried });
       }
     });
     running = run;
@@ -231,9 +255,45 @@ async function refreshPending(set: SetState): Promise<void> {
   set({ pending: pendingCountOf(await loadSyncJournal()) });
 }
 
+/**
+ * Merges the account's progress and statistics with the cloud's copy, then
+ * writes back whichever side this device owes.
+ */
+async function reconcileAccountDocuments(
+  db: Firestore,
+  uid: string,
+  dirtyBlobs: { progress: number; stats: number },
+): Promise<void> {
+  const blobs = await readCloudBlobs(db, uid);
+  accountDocumentsRead = uid;
+  const learning = useLearningStore.getState();
+  const progress = mergeProgress(learning.progress, blobs.progress);
+  const stats = mergeStats(learning.stats, blobs.stats);
+
+  // Writing an identical value back would still rewrite IndexedDB and wake
+  // every listener on every sync, so it is only applied when it differs.
+  if (
+    canonicalHash({ progress, stats }) !==
+    canonicalHash({ progress: learning.progress, stats: learning.stats })
+  )
+    await learning.importState(progress, stats, { markPending: false });
+
+  const work: Promise<unknown>[] = [];
+  if (dirtyBlobs.progress > 0 || !blobs.progress)
+    work.push(writeCloudProgress(db, uid, progress));
+  if (dirtyBlobs.stats > 0 || !blobs.stats)
+    work.push(writeCloudStats(db, uid, stats));
+  await Promise.all(work);
+  await clearBlobDirty([
+    { kind: "progress", version: dirtyBlobs.progress },
+    { kind: "stats", version: dirtyBlobs.stats },
+  ]);
+}
+
 async function runSync(
   set: SetState,
   get: () => CloudStore,
+  reconcileAccount: boolean,
 ): Promise<void> {
   const user = get().user;
   const db = getFirebaseFirestore();
@@ -267,36 +327,20 @@ async function runSync(
     }
     if (pulled.cursor !== journal.cursor) await setSyncCursor(pulled.cursor);
 
-    const blobs = await readCloudBlobs(db, user.uid);
-    const learning = useLearningStore.getState();
-    const progress = mergeProgress(learning.progress, blobs.progress);
-    const stats = mergeStats(learning.stats, blobs.stats);
-
-    // Writing an identical value back would still rewrite IndexedDB and wake
-    // every listener on every sync, so it is only applied when it differs.
     if (
-      canonicalHash({ progress, stats }) !==
-      canonicalHash({ progress: learning.progress, stats: learning.stats })
+      reconcileAccount ||
+      accountDocumentsRead !== user.uid ||
+      dirtyBlobs.progress > 0 ||
+      dirtyBlobs.stats > 0
     )
-      await learning.importState(progress, stats, { markPending: false });
+      await reconcileAccountDocuments(db, user.uid, dirtyBlobs);
 
     // Push after the merge, so what goes up is the reconciled value rather than
     // the copy this device happened to be holding.
     const work = pendingRecords(useLibraryStore.getState().state, journal);
     if (work.records.length) await pushRecords(db, user.uid, work.records);
 
-    const sentBlobs = [
-      { kind: "progress" as const, version: dirtyBlobs.progress },
-      { kind: "stats" as const, version: dirtyBlobs.stats },
-    ];
-    const blobWork: Promise<unknown>[] = [];
-    if (dirtyBlobs.progress || !blobs.progress)
-      blobWork.push(writeCloudProgress(db, user.uid, progress));
-    if (dirtyBlobs.stats || !blobs.stats)
-      blobWork.push(writeCloudStats(db, user.uid, stats));
-    await Promise.all(blobWork);
     await clearPushedRecords(work.clear);
-    await clearBlobDirty(sentBlobs);
     await markSeeded();
 
     retryAttempt = 0;

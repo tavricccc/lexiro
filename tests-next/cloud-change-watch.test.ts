@@ -48,11 +48,11 @@ function marker({
 }
 
 describe("watchCloudChanges", () => {
-  let onChange: ReturnType<typeof vi.fn>;
+  let onChange: ReturnType<typeof vi.fn<() => void>>;
 
   beforeEach(() => {
     deliver = null;
-    onChange = vi.fn();
+    onChange = vi.fn<() => void>();
     watchCloudChanges(null as unknown as Firestore, "uid", onChange);
   });
 

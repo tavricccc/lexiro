@@ -59,7 +59,7 @@ export function AccountSection() {
   const signIn = () =>
     run("in", () => cloud.signIn(), () => t("me.signedIn"));
   const sync = () =>
-    run("sync", () => cloud.sync(), () =>
+    run("sync", () => cloud.sync({ reconcileAccount: true }), () =>
       useCloudStore.getState().status === "synced" ? t("me.syncComplete") : null,
     );
   const signOut = () =>
