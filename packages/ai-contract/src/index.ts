@@ -35,6 +35,14 @@ export interface AccountInfo {
 export interface AdminAccount { uid: string; email: string; points: number; monthly: number; renews_at: number; note: string | null }
 export interface TokenUsage { model?: string; input?: number; cached?: number; output?: number; reasoning?: number; credits?: number }
 export interface AdminUsageEntry { id: string; uid: string; email: string | null; model: string; points: number; credits: number | null; input: number | null; cached: number | null; output: number | null; created_at: number; status: string }
+/**
+ * One kind of work at one tier, over a month of runs.
+ *
+ * `credits / units` is cost per billable unit, which is the quantity `rate`
+ * names in half-points — so `rate(kind, tier) / 2` beside it says whether the
+ * price is above or below what the work costs.
+ */
+export interface AdminKindUsage { kind: JobKind; tier: Tier; runs: number; units: number; input: number; cached: number; output: number; credits: number; points: number }
 /** One account's month of runs on one model: provider cost and points charged. */
 export interface AdminUserUsage { uid: string; email: string | null; model: string; runs: number; input: number; cached: number; output: number; credits: number; points: number }
 export interface AdminUsageTotals { runs: number; input: number; cached: number; output: number; cost: number }

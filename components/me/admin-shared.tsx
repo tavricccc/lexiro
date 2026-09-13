@@ -23,6 +23,8 @@ export interface UsageReport {
   }[];
   /** One row per account per model, so cost stays a model rate times tokens. */
   users: import("@lexiro/ai-contract").AdminUserUsage[];
+  /** One row per kind per tier, for reading cost per unit off real runs. */
+  kinds: import("@lexiro/ai-contract").AdminKindUsage[];
 }
 
 export function AdminIssue({

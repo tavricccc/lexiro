@@ -1,6 +1,13 @@
 "use client";
 
-import { estimateCost, type AdminUserUsage } from "@lexiro/ai-contract";
+import {
+  estimateCost,
+  rate,
+  type AdminKindUsage,
+  type AdminUserUsage,
+  type JobKind,
+  type Tier,
+} from "@lexiro/ai-contract";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -8,6 +15,7 @@ import { formatCost } from "@/components/ai/ai-usage";
 import { CreditBadge } from "@/components/ai/credit-badge";
 import { AdminIssue, AdminPager, type UsageReport } from "./admin-shared";
 import { ListRow, ListSection } from "@/components/ui/list";
+import { jobKindLabel } from "@/lib/question-options";
 import { managedJson } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -56,6 +64,47 @@ function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
   return [...spend.values()].sort((left, right) => right.cost - left.cost);
 }
 
+/**
+ * What one billable unit of a kind of work actually cost, against its price.
+ *
+ * `rate` is in half-points per unit, so halving it gives the quoted price for
+ * the same thing the ledger measured. A positive gap means the quote is under
+ * what the work costs, which is the direction worth acting on.
+ */
+interface KindCost {
+  key: string;
+  kind: JobKind;
+  tier: Tier;
+  runs: number;
+  units: number;
+  actual: number;
+  quoted: number;
+  gap: number;
+}
+
+function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
+  return rows
+    .filter((row) => row.units > 0)
+    .map((row) => {
+      const actual = row.credits / row.units;
+      const quoted = rate(row.kind, row.tier) / 2;
+      return {
+        key: `${row.kind}-${row.tier}`,
+        kind: row.kind,
+        tier: row.tier,
+        runs: row.runs,
+        units: row.units,
+        actual,
+        quoted,
+        gap: quoted > 0 ? (actual - quoted) / quoted : 0,
+      };
+    })
+    .sort((left, right) => Math.abs(right.gap) - Math.abs(left.gap));
+}
+
+const percent = (value: number) =>
+  `${value > 0 ? "+" : value < 0 ? "−" : ""}${Math.round(Math.abs(value) * 100)}%`;
+
 export function AdminUsage() {
   const uid = useCloudStore((store) => store.user?.uid);
   const [offset, setOffset] = useState(0);
@@ -73,6 +122,7 @@ export function AdminUsage() {
     );
   const models = usage.data?.models ?? [];
   const accounts = byAccount(usage.data?.users ?? []);
+  const kinds = byKind(usage.data?.kinds ?? []);
   const total = models.reduce(
     (sum, model) =>
       sum +
@@ -124,6 +174,25 @@ export function AdminUsage() {
         )}
         {!usage.isPending && models.length === 0 && (
           <ListRow label={t("admin.noUsage")} />
+        )}
+      </ListSection>
+      <ListSection footer={t("admin.byKindFooter")} header={t("admin.byKind")}>
+        {usage.isPending && <ListRow label={t("common.loading")} />}
+        {kinds.map((entry) => (
+          <ListRow
+            detail={t("admin.kindTotals", {
+              delta: percent(entry.gap),
+              quoted: entry.quoted.toFixed(1),
+              runs: entry.runs,
+              units: entry.units.toLocaleString(),
+            })}
+            key={entry.key}
+            label={`${jobKindLabel(entry.kind)} · ${t(`managed.${entry.tier}`)}`}
+            value={t("admin.kindCost", { cost: entry.actual.toFixed(2) })}
+          />
+        ))}
+        {!usage.isPending && kinds.length === 0 && (
+          <ListRow label={t("admin.noKindUsage")} />
         )}
       </ListSection>
       <ListSection footer={t("admin.byUserFooter")} header={t("admin.byUser")}>
