@@ -57,6 +57,26 @@ export function questionFormatHint(format: GeneratedQuestionKind): string {
   return t(FORMAT_KEYS[format][1]);
 }
 
+/** The work the AI does that is not a question format, named the same way. */
+const JOB_KEYS = {
+  words: "jobs.words",
+  organizeText: "jobs.organizeText",
+  organizeImage: "jobs.organizeImage",
+  explain: "jobs.explain",
+} as const satisfies Record<string, TranslationKey>;
+
+/**
+ * Every kind of billable AI work under one name, questions included.
+ *
+ * The administrator's cost report lists question formats beside word
+ * generation and list tidying, and they should read as the same kind of thing
+ * there, because to the ledger they are.
+ */
+export function jobKindLabel(kind: string): string {
+  const job = JOB_KEYS[kind as keyof typeof JOB_KEYS];
+  return job ? t(job) : questionFormatLabel(kind);
+}
+
 export function difficultyOptions(allLabel?: string): LabelledOption[] {
   const options = DIFFICULTY_KEYS.map((key, index) => ({
     label: t(key),
