@@ -1,6 +1,6 @@
 "use client";
 
-import { estimateCost } from "@lexiro/ai-contract";
+import { estimateCost, type AdminUserUsage } from "@lexiro/ai-contract";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -11,6 +11,50 @@ import { ListRow, ListSection } from "@/components/ui/list";
 import { managedJson } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
+
+/**
+ * One account's month, folded across the models it used.
+ *
+ * Cost is a rate per model, so the report arrives split that way and is only
+ * added up here, once each model's own tokens have been priced.
+ */
+interface AccountSpend {
+  uid: string;
+  email: string | null;
+  runs: number;
+  tokens: number;
+  points: number;
+  cost: number;
+  credits: number;
+}
+
+function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
+  const spend = new Map<string, AccountSpend>();
+  for (const row of rows) {
+    const current = spend.get(row.uid) ?? {
+      uid: row.uid,
+      email: row.email,
+      runs: 0,
+      tokens: 0,
+      points: 0,
+      cost: 0,
+      credits: 0,
+    };
+    current.runs += row.runs;
+    current.tokens += row.input + row.output;
+    current.points += row.points;
+    current.credits += row.credits;
+    current.cost +=
+      estimateCost({
+        model: row.model,
+        input: row.input,
+        cached: row.cached,
+        output: row.output,
+      }) ?? 0;
+    spend.set(row.uid, current);
+  }
+  return [...spend.values()].sort((left, right) => right.cost - left.cost);
+}
 
 export function AdminUsage() {
   const uid = useCloudStore((store) => store.user?.uid);
@@ -27,11 +71,31 @@ export function AdminUsage() {
         onRetry={() => void usage.refetch()}
       />
     );
+  const models = usage.data?.models ?? [];
+  const accounts = byAccount(usage.data?.users ?? []);
+  const total = models.reduce(
+    (sum, model) =>
+      sum +
+      (estimateCost({
+        model: model.model,
+        input: model.input,
+        cached: model.cached,
+        output: model.output,
+      }) ?? 0),
+    0,
+  );
+  const totalCredits = models.reduce(
+    (sum, model) => sum + (model.credits ?? 0),
+    0,
+  );
   return (
     <div className="space-y-7">
-      <ListSection footer={t("admin.spentWindow")} header={t("admin.lastThirtyDays")}>
+      <ListSection
+        footer={t("admin.spentWindow")}
+        header={t("admin.lastThirtyDays")}
+      >
         {usage.isPending && <ListRow label={t("common.loading")} />}
-        {usage.data?.models.map((model) => (
+        {models.map((model) => (
           <ListRow
             detail={t("admin.modelTotals", {
               runs: model.runs,
@@ -52,8 +116,34 @@ export function AdminUsage() {
             }
           />
         ))}
-        {usage.data?.models.length === 0 && (
+        {models.length > 0 && (
+          <ListRow
+            label={t("admin.totalCost")}
+            value={<UsageValue cost={total} credits={totalCredits} />}
+          />
+        )}
+        {!usage.isPending && models.length === 0 && (
           <ListRow label={t("admin.noUsage")} />
+        )}
+      </ListSection>
+      <ListSection footer={t("admin.byUserFooter")} header={t("admin.byUser")}>
+        {usage.isPending && <ListRow label={t("common.loading")} />}
+        {accounts.map((account) => (
+          <ListRow
+            detail={t("admin.userTotals", {
+              points: account.points.toLocaleString(),
+              runs: account.runs,
+              tokens: account.tokens.toLocaleString(),
+            })}
+            key={account.uid}
+            label={account.email ?? account.uid}
+            value={
+              <UsageValue cost={account.cost} credits={account.credits} />
+            }
+          />
+        ))}
+        {!usage.isPending && accounts.length === 0 && (
+          <ListRow label={t("admin.noUserUsage")} />
         )}
       </ListSection>
       {usage.data && usage.data.entries.length > 0 && (
@@ -66,7 +156,11 @@ export function AdminUsage() {
                 output: (entry.output ?? 0).toLocaleString(),
               })}
               key={entry.id}
-              label={entry.email ?? entry.uid}
+              label={
+                entry.status === "complete"
+                  ? (entry.email ?? entry.uid)
+                  : `${entry.email ?? entry.uid} · ${t("admin.runFailed")}`
+              }
               value={
                 <UsageValue
                   cost={estimateCost({

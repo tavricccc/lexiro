@@ -21,6 +21,8 @@ export interface UsageReport {
     output: number;
     credits: number | null;
   }[];
+  /** One row per account per model, so cost stays a model rate times tokens. */
+  users: import("@lexiro/ai-contract").AdminUserUsage[];
 }
 
 export function AdminIssue({
