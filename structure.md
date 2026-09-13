@@ -25,7 +25,7 @@
 | `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema 與固定前綴跨輸入一致性、最低 tokenizer 長度驗證 |
 | `tests-next/organize.test.ts` | 整理固定價格／前綴、WebP 輸入拒絕與串流圖片 envelope |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
-| `.github/workflows/verify.yml`、`docs/deployment.md` | 只驗證的 CI，以及正式部署設定與尚未執行的驗收 |
+| `.github/workflows/deploy.yml`、`docs/deployment.md` | main push 先完整驗證，再套用 D1 migrations、同步 secrets、部署 Worker 並做 CORS health check；以及正式設定與上線驗收清單 |
 | `docs/backend-blueprint.html` | 完整原始藍圖，移除平台執行腳本與登入包裝後的本地版本 |
 | `docs/product-decisions.md` | 使用者補充、矛盾處理與階段驗收；優先於原始藍圖 |
 
