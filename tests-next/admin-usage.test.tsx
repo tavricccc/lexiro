@@ -1,5 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const report = {
@@ -28,6 +28,8 @@ function show() {
     </QueryClientProvider>,
   );
 }
+
+afterEach(cleanup);
 
 describe("the administrator's per-kind cost report", () => {
   it("prices one billable unit against what that unit is quoted at", async () => {

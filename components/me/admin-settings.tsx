@@ -2,6 +2,7 @@
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 import { AdminIssue, type AdminSettingsValue } from "./admin-shared";
 import { ListActionRow, ListInputRow, ListRow, ListSection, ListSwitchRow } from "@/components/ui/list";
@@ -19,8 +20,6 @@ export function AdminSettings() {
   });
   const [draft, setDraft] = useState<AdminSettingsValue | null>(null);
   const [busy, setBusy] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (settings.data) setDraft(settings.data);
@@ -46,18 +45,18 @@ export function AdminSettings() {
       onSubmit={(event) => {
         event.preventDefault();
         setBusy(true);
-        setSaved(false);
-        setError("");
         void managedJson<AdminSettingsValue>("/admin/settings", {
           method: "PATCH",
           body: JSON.stringify(draft),
         })
           .then(async () => {
             await client.invalidateQueries({ queryKey: ["admin-settings", uid] });
-            setSaved(true);
+            toast.success(t("admin.settingsSaved"));
           })
           .catch((reason: unknown) =>
-            setError(reason instanceof Error ? reason.message : t("managed.failed")),
+            toast.error(
+              reason instanceof Error ? reason.message : t("managed.failed"),
+            ),
           )
           .finally(() => setBusy(false));
       }}
@@ -97,10 +96,9 @@ export function AdminSettings() {
           value={String(draft.defaultMonthly)}
         />
       </ListSection>
-      {error && <p className="text-sm text-destructive" role="alert">{error}</p>}
-      <ListSection footer={saved ? t("me.saved") : undefined}>
-        <ListActionRow disabled={busy} type="submit">
-          {t("admin.saveSettings")}
+      <ListSection>
+        <ListActionRow busy={busy} type="submit">
+          {t(busy ? "admin.saving" : "admin.saveSettings")}
         </ListActionRow>
       </ListSection>
     </form>
