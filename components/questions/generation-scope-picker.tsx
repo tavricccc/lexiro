@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 
 export interface GenerationSense {
