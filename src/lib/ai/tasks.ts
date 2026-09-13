@@ -7,7 +7,9 @@ import type {
 } from "@/types";
 import type { AiTask, AiTaskStep } from "@/src/types/ai";
 import {
+  parseSupplementaryJson,
   parseWordGenerationJson,
+  type SupplementSource,
   type WordGenerationSource,
 } from "../word-generation";
 import {
@@ -78,6 +80,51 @@ export function wordTask(
     billableCount: sources.length,
     context: wordInput(sources),
     steps: chunks(sources, WORD_BATCH_SIZE).map(make),
+  };
+}
+
+const SUPPLEMENT_BATCH_SIZE = 10;
+
+/**
+ * Asking for the meanings a word does not have yet.
+ *
+ * The unit is the word, not the meaning: a word is asked about once and paid
+ * for once, and coming back with nothing is a complete answer rather than a
+ * failed one.
+ */
+export function supplementTask(
+  sources: SupplementSource[],
+  limit: 1 | 2 | 3,
+): AiTask<WordDraft> {
+  const input = (batch: SupplementSource[]) =>
+    JSON.stringify({
+      kind: "senses",
+      limit,
+      sources: batch.flatMap((entry, index) =>
+        entry.existing.map((sense) => ({
+          ref: `s${index + 1}`,
+          word: entry.word,
+          pos: sense.pos,
+          meaningZh: sense.meaningZh,
+        })),
+      ),
+    });
+  const make = (batch: SupplementSource[]): AiTaskStep<WordDraft> => ({
+    id: batch.map((entry) => entry.word).join(","),
+    count: batch.length,
+    context: input(batch),
+    prompt: input(batch),
+    parse: (text) => parseSupplementaryJson(text, batch, limit),
+    ...(batch.length > 1
+      ? { split: () => chunks(batch, Math.ceil(batch.length / 2)).map(make) }
+      : {}),
+  });
+  return {
+    id: "senses",
+    kind: "senses",
+    billableCount: sources.length,
+    context: input(sources),
+    steps: chunks(sources, SUPPLEMENT_BATCH_SIZE).map(make),
   };
 }
 

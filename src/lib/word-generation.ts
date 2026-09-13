@@ -177,3 +177,68 @@ export function parseWordGenerationJson(
   });
   return mergeWordDrafts(drafts);
 }
+
+/** One word being supplemented, with every meaning it already has. */
+export interface SupplementSource {
+  word: string;
+  existing: { pos: string; meaningZh: string }[];
+}
+
+/**
+ * Reads a supplement reply: the meanings each word did not already have.
+ *
+ * An empty list is a valid answer and the common one — most words have no
+ * second meaning worth learning — so unlike word generation this refuses a
+ * word that came back with nothing only when it came back with too much, or
+ * with a meaning the word already had under another wording of the same pair.
+ */
+export function parseSupplementaryJson(
+  text: string,
+  sources: SupplementSource[],
+  limit: number,
+): WordDraft[] {
+  let data: unknown;
+  try {
+    data = parseJson(text);
+  } catch {
+    throw new Error("JSON 格式錯誤");
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data))
+    throw new Error("JSON 必須是 object");
+  const source = data as Record<string, unknown>;
+  assertKnownKeys(source, ["items"], "AI 補充詞義資料");
+  if (!Array.isArray(source.items))
+    throw new Error("缺少有效的 items 陣列");
+  if (source.items.length !== sources.length)
+    throw new Error(`AI 回覆必須依序提供 ${sources.length} 筆`);
+
+  return source.items.map((value, wordIndex): WordDraft => {
+    if (!value || typeof value !== "object" || Array.isArray(value))
+      throw new Error(`第 ${wordIndex + 1} 個單字格式錯誤`);
+    const item = value as Record<string, unknown>;
+    assertKnownKeys(item, ["senses"], `items[${wordIndex}]`);
+    const expected = sources[wordIndex];
+    if (!Array.isArray(item.senses) || item.senses.length > limit)
+      throw new Error(`第 ${wordIndex + 1} 個單字詞義數量不正確`);
+    const taken = new Set(
+      expected.existing.map((sense) => senseSignature(sense.pos, sense.meaningZh)),
+    );
+    return {
+      word: expected.word,
+      senses: item.senses.map((sense, index) => {
+        const draft = normalizeGeneratedSense(sense, wordIndex, index, {
+          supplementary: true,
+        });
+        const signature = senseSignature(draft.pos, draft.meaning);
+        if (taken.has(signature))
+          throw new Error(`第 ${wordIndex + 1} 個單字補充了已經有的詞義`);
+        taken.add(signature);
+        return draft;
+      }),
+    };
+  });
+}
+
+function senseSignature(pos: string, meaning: string): string {
+  return `${normalizePartOfSpeech(pos) || pos.trim()}\u0000${meaning.trim()}`;
+}

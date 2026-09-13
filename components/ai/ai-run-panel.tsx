@@ -24,6 +24,7 @@ export function AiRunPanel<T>({
   appendBillableCount,
   billableCount,
   configured,
+  doneHint,
   kind,
   localCount = 0,
   onAppend,
@@ -41,6 +42,8 @@ export function AiRunPanel<T>({
   appendBillableCount?: number;
   billableCount: number;
   configured: boolean;
+  /** What became of the results, for a run that writes them itself. */
+  doneHint?: string;
   kind: JobKind;
   localCount?: number;
   onAppend?: () => void;
@@ -227,7 +230,9 @@ export function AiRunPanel<T>({
         )}
         {started && (
           <p className="type-hint">
-            {t(running ? "ai.keepWorking" : "ai.keptResults")}
+            {running
+              ? t("ai.keepWorking")
+              : (doneHint ?? t("ai.keptResults"))}
           </p>
         )}
         {Array.from(new Set(state.notices)).map((notice) => (

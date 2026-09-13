@@ -72,6 +72,7 @@ export function WordEditor({
 
       {draft.senses.map((sense, index) => (
         <ListSection
+          footer={sense.supplementary ? t("wordEdit.supplementaryHint") : undefined}
           header={t("wordEdit.sense", { count: index + 1 })}
           key={sense.id}
         >
