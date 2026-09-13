@@ -4,8 +4,8 @@ import { ListActionRow, ListRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 
 export interface AdminSettingsValue {
+  /** Whether a brand new account is handed the defaults below, or nothing. */
   freeTrial: boolean;
-  trialPoints: number;
   defaultInitial: number;
   defaultMonthly: number;
 }

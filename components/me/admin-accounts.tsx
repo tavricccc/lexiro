@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import type { AdminAccount } from "@lexiro/ai-contract";
 import { useState } from "react";
 
-import { AdminIssue, AdminPager, type AdminSettingsValue } from "./admin-shared";
+import { AdminIssue, AdminPager } from "./admin-shared";
 import { ListActionRow, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
 import { managedJson, notifyManagedAccountChanged } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
@@ -48,9 +48,6 @@ export function AdminAccountList() {
           <ListRow label={t("admin.noAccounts")} />
         )}
       </ListSection>
-      <ListSection>
-        <ListNavRow href="/me/admin/accounts/new" label={t("admin.create")} />
-      </ListSection>
       <AdminPager
         hasNext={accounts.data?.nextOffset != null}
         hasPrevious={offset > 0}
@@ -61,65 +58,39 @@ export function AdminAccountList() {
   );
 }
 
-export function AdminAccountEditor({ accountUid }: { accountUid?: string }) {
+/** An account exists because someone signed in, so this only ever edits one. */
+export function AdminAccountEditor({ accountUid }: { accountUid: string }) {
   const uid = useCloudStore((store) => store.user?.uid);
   const account = useQuery({
-    enabled: Boolean(accountUid),
     queryKey: ["admin-account", uid, accountUid],
     queryFn: () =>
       managedJson<AdminAccount>(
-        `/admin/accounts/${encodeURIComponent(accountUid!)}`,
+        `/admin/accounts/${encodeURIComponent(accountUid)}`,
       ),
     retry: false,
   });
-  const settings = useQuery({
-    queryKey: ["admin-settings", uid],
-    queryFn: () => managedJson<AdminSettingsValue>("/admin/settings"),
-    retry: false,
-  });
-  const issue = account.error?.message || settings.error?.message;
-  if (issue)
+  if (account.error)
     return (
       <AdminIssue
-        message={issue}
-        onRetry={() => {
-          void account.refetch();
-          void settings.refetch();
-        }}
+        message={account.error.message}
+        onRetry={() => void account.refetch()}
       />
     );
-  if (settings.isPending || (accountUid && account.isPending))
+  if (account.isPending)
     return (
       <ListSection>
         <ListRow label={t("common.loading")} />
       </ListSection>
     );
-  return (
-    <AccountForm
-      account={account.data}
-      defaults={settings.data!}
-    />
-  );
+  return <AccountForm account={account.data} />;
 }
 
-function AccountForm({
-  account,
-  defaults,
-}: {
-  account?: AdminAccount;
-  defaults: AdminSettingsValue;
-}) {
+function AccountForm({ account }: { account: AdminAccount }) {
   const client = useQueryClient();
   const cloudUid = useCloudStore((store) => store.user?.uid);
-  const [uid, setUid] = useState("");
-  const [email, setEmail] = useState("");
-  const [points, setPoints] = useState(
-    String(account ? 0 : defaults.defaultInitial),
-  );
-  const [monthly, setMonthly] = useState(
-    String(account?.monthly ?? defaults.defaultMonthly),
-  );
-  const [note, setNote] = useState(account?.note ?? "");
+  const [points, setPoints] = useState("0");
+  const [monthly, setMonthly] = useState(String(account.monthly));
+  const [note, setNote] = useState(account.note ?? "");
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -132,29 +103,20 @@ function AccountForm({
         setBusy(true);
         setSaved(false);
         setError("");
-        const values = { monthly: Number(monthly), note };
-        const path = account
-          ? `/admin/accounts/${encodeURIComponent(account.uid)}`
-          : "/admin/accounts";
-        void managedJson(path, {
-          method: account ? "PATCH" : "POST",
-          body: JSON.stringify(
-            account
-              ? { ...values, addPoints: Number(points) }
-              : {
-                  ...values,
-                  uid: uid.trim(),
-                  email: email.trim(),
-                  points: Number(points),
-                },
-          ),
+        void managedJson(`/admin/accounts/${encodeURIComponent(account.uid)}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            addPoints: Number(points),
+            monthly: Number(monthly),
+            note,
+          }),
         })
           .then(async () => {
             await client.invalidateQueries({ queryKey: ["admin-accounts", cloudUid] });
             await client.invalidateQueries({ queryKey: ["admin-account", cloudUid] });
             notifyManagedAccountChanged();
             setSaved(true);
-            if (account) setPoints("0");
+            setPoints("0");
           })
           .catch((reason: unknown) =>
             setError(reason instanceof Error ? reason.message : t("managed.failed")),
@@ -162,27 +124,19 @@ function AccountForm({
           .finally(() => setBusy(false));
       }}
     >
-      {account && (
-        <ListSection>
-          <ListRow label={t("admin.email")} value={account.email} />
-          <ListRow label={t("managed.pointsLabel")} value={String(account.points)} />
-        </ListSection>
-      )}
+      <ListSection>
+        <ListRow label={t("admin.email")} value={account.email} />
+        <ListRow label={t("managed.pointsLabel")} value={String(account.points)} />
+      </ListSection>
       <ListSection footer={t("admin.monthlyHint")}>
-        {!account && (
-          <>
-            <ListInputRow label={t("managed.accountId")} maxLength={128} onChange={setUid} required value={uid} />
-            <ListInputRow inputMode="email" label={t("admin.email")} onChange={setEmail} required type="email" value={email} />
-          </>
-        )}
-        <ListInputRow inputMode="numeric" label={t(account ? "admin.adjust" : "admin.initialPoints")} max={1_000_000} min={account ? -1_000_000 : 0} onChange={setPoints} required type="number" value={points} />
+        <ListInputRow inputMode="numeric" label={t("admin.adjust")} max={1_000_000} min={-1_000_000} onChange={setPoints} required type="number" value={points} />
         <ListInputRow inputMode="numeric" label={t("admin.monthly")} max={1_000_000} min={0} onChange={setMonthly} required type="number" value={monthly} />
         <ListInputRow label={t("admin.note")} maxLength={500} onChange={setNote} value={note} />
       </ListSection>
       {error && <p className="text-sm text-destructive" role="alert">{error}</p>}
       <ListSection footer={saved ? t("me.saved") : undefined}>
         <ListActionRow disabled={busy} type="submit">
-          {t(account ? "admin.save" : "admin.create")}
+          {t("admin.save")}
         </ListActionRow>
       </ListSection>
     </form>

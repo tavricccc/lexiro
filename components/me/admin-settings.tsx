@@ -62,26 +62,18 @@ export function AdminSettings() {
           .finally(() => setBusy(false));
       }}
     >
-      <ListSection>
+      <ListSection footer={t("admin.trialHint")}>
         <ListSwitchRow
           checked={draft.freeTrial}
           disabled={busy}
           label={t("admin.trial")}
           onCheckedChange={(freeTrial) => setDraft({ ...draft, freeTrial })}
         />
-        <ListInputRow
-          disabled={busy}
-          inputMode="numeric"
-          label={t("admin.trialPoints")}
-          max={1_000_000}
-          min={0}
-          onChange={(value) => setDraft({ ...draft, trialPoints: Number(value) })}
-          required
-          type="number"
-          value={String(draft.trialPoints)}
-        />
       </ListSection>
-      <ListSection header={t("admin.newAccountDefaults")}>
+      <ListSection
+        footer={t("admin.newAccountHint")}
+        header={t("admin.newAccountDefaults")}
+      >
         <ListInputRow
           disabled={busy}
           inputMode="numeric"
