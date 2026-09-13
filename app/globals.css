@@ -720,8 +720,7 @@ textarea {
   .app-viewport {
     padding-inline: 0;
   }
-  .app-viewport > .route-page,
-  .app-viewport > .app-mobile-header {
+  .app-viewport > .route-page {
     padding-inline: max(var(--page-gutter), var(--safe-left), var(--safe-right));
   }
   .surface-stage {

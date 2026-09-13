@@ -4,7 +4,7 @@ import { AccountRow } from "@/components/me/account-row";
 import { useManagedAccount } from "@/components/ai/use-managed-account";
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
-import { PageHeader } from "@/components/ui/page-header";
+import { RootPageHeader } from "@/components/root-page-header";
 import { t } from "@/lib/i18n";
 
 /**
@@ -20,7 +20,7 @@ export function MePage() {
   const account = useManagedAccount();
   return (
     <div className="mx-auto max-w-2xl space-y-9 pb-4">
-      <PageHeader title={t("me.title")} />
+      <RootPageHeader title={t("me.title")} />
       <AccountRow />
       <ListSection>
         <ListNavRow

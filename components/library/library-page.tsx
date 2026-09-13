@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { PageHeader } from "@/components/ui/page-header";
+import { RootPageHeader } from "@/components/root-page-header";
 import {
   EmptyState,
   ErrorState,
@@ -215,7 +215,7 @@ export function LibraryPage({
 
   return (
     <div>
-      <PageHeader
+      <RootPageHeader
         title={t("library.title")}
         actions={
           // The one action a title bar carries is a glyph, not a filled block

@@ -88,14 +88,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               : "pb-[max(2rem,var(--safe-bottom))]"
           }`}
         >
-          {showMobileNavigation && (
-            <div className="app-mobile-header mb-4 flex h-10 items-center justify-between md:hidden">
-              <BrandLockup href="/" />
-              <div className="flex items-center gap-1">
-                <SyncIndicator />
-              </div>
-            </div>
-          )}
+          {/* No brand row on a phone: each destination's own title bar carries
+              the mark and the sync status, in the row that holds its title. */}
           <RouteSurface>{children}</RouteSurface>
         </main>
 

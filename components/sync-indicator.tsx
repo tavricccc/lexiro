@@ -10,6 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
 
@@ -29,7 +30,7 @@ function statusIcon(status: SyncStatus, pending: number) {
   return status === "synced" && !pending ? Icons.success : Icons.sync;
 }
 
-export function SyncIndicator() {
+export function SyncIndicator({ className }: { className?: string }) {
   const status = useCloudStore((store) => store.status);
   const pending = useCloudStore((store) => store.pending);
   const working = status === "connecting" || status === "syncing";
@@ -43,7 +44,12 @@ export function SyncIndicator() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button asChild className="relative text-muted-foreground" size="icon-sm" variant="ghost">
+        <Button
+          asChild
+          className={cn("relative text-muted-foreground", className)}
+          size="icon-sm"
+          variant="ghost"
+        >
           <Link aria-label={label} href="/sync">
             <Icon className={working ? "animate-spin" : undefined} />
             {pending > 0 && (

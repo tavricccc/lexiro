@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 
 import { ListNavRow, ListRow, ListSection } from "@/components/ui/list";
-import { PageHeader } from "@/components/ui/page-header";
+import { RootPageHeader } from "@/components/root-page-header";
 import { ProgressPageSkeleton } from "@/components/ui/workspace-skeleton";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
@@ -40,7 +40,7 @@ export function ProgressPage() {
 
   return (
     <div className="mx-auto max-w-2xl pb-4">
-      <PageHeader title={t("progress.title")} />
+      <RootPageHeader title={t("progress.title")} />
       <section className="rule-card py-6">
         <p className="flex items-baseline gap-1.5">
           <span className="text-[4rem] font-medium leading-[0.9] tabular-nums text-brand-600">
