@@ -3,12 +3,10 @@ import type { Env } from "./env";
 import { account, nextRenewal, nowSeconds } from "./billing";
 import { HttpError, readBody } from "./http";
 
-const creation = z.strictObject({ uid: z.string().min(1).max(128), email: z.email(), points: z.number().int().min(0).max(1_000_000), monthly: z.number().int().min(0).max(1_000_000), note: z.string().max(500).default("") });
 const adjustment = z.strictObject({ addPoints: z.number().int().min(-1_000_000).max(1_000_000).optional(), monthly: z.number().int().min(0).max(1_000_000).optional(), note: z.string().max(500).optional() }).refine((value) => Object.keys(value).length > 0);
 const siteSettings = z
   .strictObject({
     freeTrial: z.boolean().optional(),
-    trialPoints: z.number().int().min(0).max(1_000_000).optional(),
     defaultInitial: z.number().int().min(0).max(1_000_000).optional(),
     defaultMonthly: z.number().int().min(0).max(1_000_000).optional(),
   })
@@ -20,15 +18,6 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     if (!Number.isSafeInteger(offset) || offset < 0) throw new HttpError(400, "invalid_input");
     const rows = await env.DB.prepare("SELECT uid,email,points,monthly,renews_at,note FROM accounts ORDER BY email,uid LIMIT 101 OFFSET ?").bind(offset).all();
     return Response.json({ accounts: rows.results.slice(0,100), nextOffset: rows.results.length > 100 ? offset + 100 : null });
-  }
-  if (path === "/admin/accounts" && request.method === "POST") {
-    const parsed = creation.safeParse(JSON.parse(await readBody(request, 10_000)));
-    if (!parsed.success) throw new HttpError(400, "invalid_input");
-    const value = parsed.data;
-    const result = await env.DB.prepare("INSERT OR IGNORE INTO accounts(uid,email,points,monthly,renews_at,note,updated_at) VALUES(?,?,?,?,?,?,?)")
-      .bind(value.uid, value.email, value.points, value.monthly, nextRenewal(nowSeconds()), value.note, new Date().toISOString()).run();
-    if (!result.meta.changes) throw new HttpError(409, "account_exists");
-    return Response.json(await account(env.DB, value.uid), { status: 201 });
   }
   if (path.startsWith("/admin/accounts/") && request.method === "GET") {
     const uid = decodeURIComponent(path.slice("/admin/accounts/".length));
@@ -80,7 +69,7 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
   if (path === "/admin/settings" && request.method === "GET") {
     const rows = await env.DB
       .prepare(
-        "SELECT key,value FROM settings WHERE key IN ('free_trial','trial_points','default_initial','default_monthly')",
+        "SELECT key,value FROM settings WHERE key IN ('free_trial','default_initial','default_monthly')",
       )
       .all<{ key: string; value: string }>();
     const values = Object.fromEntries(
@@ -88,7 +77,6 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     );
     return Response.json({
       freeTrial: values.free_trial === "true",
-      trialPoints: Number(values.trial_points),
       defaultInitial: Number(values.default_initial),
       defaultMonthly: Number(values.default_monthly),
     });
@@ -101,8 +89,6 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     const entries: [string, boolean | number][] = [];
     if (parsed.data.freeTrial !== undefined)
       entries.push(["free_trial", parsed.data.freeTrial]);
-    if (parsed.data.trialPoints !== undefined)
-      entries.push(["trial_points", parsed.data.trialPoints]);
     if (parsed.data.defaultInitial !== undefined)
       entries.push(["default_initial", parsed.data.defaultInitial]);
     if (parsed.data.defaultMonthly !== undefined)

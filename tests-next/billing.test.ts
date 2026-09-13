@@ -4,7 +4,7 @@ import { testDatabase } from "./database";
 import type { D1Database } from "@cloudflare/workers-types";
 import {
   account,
-  ensureTrial,
+  ensureAccount,
   nextRenewal,
   ownsCursor,
   reserve,
@@ -206,20 +206,31 @@ describe("D1 atomic credit ledger", () => {
     await settle(db, retry, retry.charges, { model: "test" });
     expect(await balance()).toBe(99);
   });
-  it("trial registration is off by default and never refills an existing trial", async () => {
-    await ensureTrial(db, "new", "new@example.test");
-    expect(await account(db, "new")).toBeNull();
-    await db
-      .prepare("UPDATE settings SET value='true' WHERE key='free_trial'")
-      .run();
-    await db
-      .prepare("UPDATE settings SET value='1500' WHERE key='trial_points'")
-      .run();
-    await ensureTrial(db, "new", "new@example.test");
-    expect(await account(db, "new")).toMatchObject({ points: 1500, monthly: 0 });
+  it("gives everyone who signs in an account row, empty when the trial is off", async () => {
+    await ensureAccount(db, "new", "new@example.test");
+    // The row exists so an administrator can see the person and grant them
+    // something, even though the trial gave them nothing.
+    expect(await account(db, "new")).toMatchObject({
+      email: "new@example.test",
+      points: 0,
+      monthly: 0,
+    });
+  });
+  it("hands a new account the configured defaults while the trial is on", async () => {
+    await db.batch([
+      db.prepare("UPDATE settings SET value='true' WHERE key='free_trial'"),
+      db.prepare("UPDATE settings SET value='1500' WHERE key='default_initial'"),
+      db.prepare("UPDATE settings SET value='250' WHERE key='default_monthly'"),
+    ]);
+    await ensureAccount(db, "new", "new@example.test");
+    expect(await account(db, "new")).toMatchObject({ points: 1500, monthly: 250 });
+    // Signing in again is not a refill, and it does keep the address current.
     await db.prepare("UPDATE accounts SET points=0 WHERE uid='new'").run();
-    await ensureTrial(db, "new", "new@example.test");
-    expect((await account(db, "new"))!.points).toBe(0);
+    await ensureAccount(db, "new", "renamed@example.test");
+    expect(await account(db, "new")).toMatchObject({
+      points: 0,
+      email: "renamed@example.test",
+    });
   });
   it("renews each paid account separately and preserves one-time credits for monthly=0", async () => {
     const now = Math.floor(Date.now() / 1000);

@@ -55,13 +55,27 @@ export async function account(
     .bind(uid)
     .first<AdminAccount>();
 }
-export async function ensureTrial(db: D1Database, uid: string, email: string) {
+/**
+ * Every signed-in person has an account row from their first request.
+ *
+ * Signing in with Google is the only way in, so there is nobody for an
+ * administrator to create by hand: the row has to exist before anyone can be
+ * given points, and it has to exist even when there is nothing to give, or the
+ * administrator cannot see that the person is there at all.
+ *
+ * What a brand new account starts with is the `free_trial` switch and the two
+ * new-account defaults beside it. Off means the row is created empty.
+ */
+export async function ensureAccount(db: D1Database, uid: string, email: string) {
   const now = nowSeconds();
   await db
     .prepare(
-      `INSERT OR IGNORE INTO accounts(uid,email,points,monthly,renews_at,updated_at)
-    SELECT ?,?,CAST((SELECT value FROM settings WHERE key='trial_points') AS INTEGER),0,?,?
-    WHERE EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')`,
+      `INSERT INTO accounts(uid,email,points,monthly,renews_at,updated_at)
+    SELECT ?,?,
+      COALESCE((SELECT CAST(value AS INTEGER) FROM settings WHERE key='default_initial' AND EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')),0),
+      COALESCE((SELECT CAST(value AS INTEGER) FROM settings WHERE key='default_monthly' AND EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')),0),
+      ?,?
+    ON CONFLICT(uid) DO UPDATE SET email=excluded.email WHERE accounts.email<>excluded.email`,
     )
     .bind(uid, email, nextRenewal(now), new Date().toISOString())
     .run();

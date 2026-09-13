@@ -11,7 +11,7 @@ import {
 import {
   account,
   BillingError,
-  ensureTrial,
+  ensureAccount,
   ownsCursor,
   reserve,
   scheduledMaintenance,
@@ -82,7 +82,7 @@ export function createWorker(
           if (!admin) throw new HttpError(404, "not_found");
           return decorate(await adminRequest(request, env, path));
         }
-        await ensureTrial(env.DB, identity.uid, identity.email);
+        await ensureAccount(env.DB, identity.uid, identity.email);
         if (path === "/me" && request.method === "GET") {
           const user = await account(env.DB, identity.uid);
           return decorate(

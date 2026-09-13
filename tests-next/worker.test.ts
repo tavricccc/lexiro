@@ -24,9 +24,10 @@ afterEach(async () => {
 const verify = vi.fn(async (request: Request) => {
   const token = request.headers.get("authorization");
   if (!token) throw new AuthenticationError();
+  const admin = token === "Bearer admin";
   return {
-    uid: "u",
-    email: token === "Bearer admin" ? "admin@example.test" : "u@example.test",
+    uid: admin ? "admin" : "u",
+    email: admin ? "admin@example.test" : "u@example.test",
     emailVerified: token !== "Bearer unverified",
   };
 });
@@ -218,7 +219,6 @@ describe("Worker HTTP boundary", () => {
       JSON.parse((await call(req("/admin/settings", undefined, "admin"))).text),
     ).toEqual({
       freeTrial: true,
-      trialPoints: 500,
       defaultInitial: 1000,
       defaultMonthly: 1000,
     });
@@ -245,10 +245,10 @@ describe("Worker HTTP boundary", () => {
     expect((await account(env.DB, "u"))!.points).toBe(100);
     const usage = await call(req("/admin/usage", undefined, "admin"));
     expect(JSON.parse(usage.text)).toMatchObject({
-      entries: [{ uid: "u", model: "gpt-5.6-luna", points: 0, credits: 1, input: 100, output: 20, status: "complete" }],
+      entries: [{ uid: "admin", model: "gpt-5.6-luna", points: 0, credits: 1, input: 100, output: 20, status: "complete" }],
       models: [{ model: "gpt-5.6-luna", runs: 1, credits: 1, input: 100, output: 20 }],
       // What that one account cost, separately from what it was charged.
-      users: [{ uid: "u", email: "u@example.test", model: "gpt-5.6-luna", runs: 1, credits: 1, points: 0 }],
+      users: [{ uid: "admin", email: "admin@example.test", model: "gpt-5.6-luna", runs: 1, credits: 1, points: 0 }],
     });
   });
   it("runs a batch the balance cannot cover and leaves the account at zero", async () => {
