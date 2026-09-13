@@ -5,7 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { FolderToolbar } from "@/components/library/folder-toolbar";
-import { QuestionList } from "@/components/questions/question-list";
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import {
   ContentTransition,
@@ -16,7 +15,6 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { PageHeader } from "@/components/ui/page-header";
 import {
   EmptyState,
@@ -40,22 +38,12 @@ import { readSetShare } from "@/src/lib/set-share";
 
 const NO_METRICS = { due: 0, learned: 0, questionCount: 0, senseCount: 0 };
 
-export type LibraryTab = "sets" | "questions";
-
-/**
- * 我的單字 holds both halves of the material: the words themselves and the
- * questions built from them. They are two views of one library, so they are two
- * tabs here rather than two destinations — the question bank used to be a page
- * that nothing in the navigation pointed at.
- */
+/** The Library is one place for browsing and organising saved word sets. */
 export function LibraryPage({
   initialFolderId,
-  initialTab = "sets",
 }: {
   initialFolderId?: string;
-  initialTab?: LibraryTab;
 }) {
-  const [tab, setTab] = useState<LibraryTab>(initialTab);
   const { state, status, error } = useLibraryStore();
   const createFolder = useLibraryStore((store) => store.createFolder);
   const renameFolder = useLibraryStore((store) => store.renameFolder);
@@ -197,14 +185,13 @@ export function LibraryPage({
   useEffect(() => {
     if (status !== "ready") return;
     const params = new URLSearchParams();
-    if (tab !== "sets") params.set("tab", tab);
-    if (tab === "sets" && currentFolderId !== ALL_FOLDER_ID)
+    if (currentFolderId !== ALL_FOLDER_ID)
       params.set("folderId", currentFolderId);
     const query = params.toString();
     const target = query ? `/library?${query}` : "/library";
     if (`${window.location.pathname}${window.location.search}` !== target)
       window.history.replaceState(null, "", target);
-  }, [currentFolderId, status, tab]);
+  }, [currentFolderId, status]);
   const createHref = currentFolder
     ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
     : "/sets/new";
@@ -233,55 +220,20 @@ export function LibraryPage({
         actions={
           // The one action a title bar carries is a glyph, not a filled block
           // of colour competing with the title beside it.
-          tab === "sets" ? (
-            <Button
-              asChild
-              className="text-primary"
-              size="icon"
-              variant="ghost"
-            >
-              <Link aria-label={t("library.newSet")} href={createHref}>
-                <Icons.create className="size-5" />
-              </Link>
-            </Button>
-          ) : (
-            <Button
-              asChild
-              className="text-primary"
-              size="icon"
-              variant="ghost"
-            >
-              <Link
-                aria-label={t("questions.generate")}
-                href="/questions/generate"
-              >
-                <Icons.generate className="size-5" />
-              </Link>
-            </Button>
-          )
+          <Button
+            asChild
+            className="text-primary"
+            size="icon"
+            variant="ghost"
+          >
+            <Link aria-label={t("library.newSet")} href={createHref}>
+              <Icons.create className="size-5" />
+            </Link>
+          </Button>
         }
       />
 
-      <LiquidTabs
-        ariaLabel={t("library.title")}
-        className="mb-5"
-        onValueChange={(value) => setTab(value as LibraryTab)}
-        options={[
-          { label: t("library.setsTab"), value: "sets" },
-          {
-            label: state.questions.length
-              ? `${t("library.questionsTab")} ${state.questions.length}`
-              : t("library.questionsTab"),
-            value: "questions",
-          },
-        ]}
-        value={tab}
-      />
-
-      {tab === "questions" && <QuestionList />}
-
-      {tab === "sets" && (
-        <>
+      <>
         <input
           accept=".zip"
           className="sr-only"
@@ -400,8 +352,7 @@ export function LibraryPage({
             )}
           </ContentTransition>
         </StateTransition>
-        </>
-      )}
+      </>
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}

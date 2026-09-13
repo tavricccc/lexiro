@@ -144,6 +144,7 @@ export const zhTW = {
     importedName: "{name}（匯入）",
   },
   questions: {
+    title: "題庫",
     generate: "AI 產生",
     search: "搜尋題目",
     allTypes: "全部題型",

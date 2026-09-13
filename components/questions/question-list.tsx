@@ -25,13 +25,7 @@ export function questionEditHref(question: { id: string; kind: string }) {
     : `/questions/${question.id}/edit`;
 }
 
-/**
- * The question bank, as a section of 我的單字 rather than a page of its own.
- *
- * Questions are made of the learner's own words and only make sense beside
- * them, so they are a second view of the same library instead of a fifth
- * destination competing for a slot in the navigation.
- */
+/** A searchable, editable question bank. */
 export function QuestionList() {
   const { state, status, deleteQuestion } = useLibraryStore();
   const [query, setQuery] = useState("");

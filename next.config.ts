@@ -21,11 +21,6 @@ const nextConfig: NextConfig = {
   // keeping the pages themselves around.
   redirects: async () => [
     { source: "/settings", destination: "/me", permanent: true },
-    {
-      source: "/questions",
-      destination: "/library?tab=questions",
-      permanent: true,
-    },
     // Writing a question from scratch is gone; questions come from the words
     // you already have. Editing the ones you have has not moved.
     { source: "/questions/new", destination: "/questions/generate", permanent: true },
