@@ -14,6 +14,7 @@ import { useState } from "react";
 import { formatCost } from "@/components/ai/ai-usage";
 import { CreditBadge } from "@/components/ai/credit-badge";
 import { AdminIssue, AdminPager, type UsageReport } from "./admin-shared";
+import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { ListRow, ListSection } from "@/components/ui/list";
 import { jobKindLabel } from "@/lib/question-options";
 import { managedJson } from "@/lib/managed-client";
@@ -108,6 +109,9 @@ const percent = (value: number) =>
 export function AdminUsage() {
   const uid = useCloudStore((store) => store.user?.uid);
   const [offset, setOffset] = useState(0);
+  const [view, setView] = useState<"models" | "kinds" | "accounts" | "runs">(
+    "models",
+  );
   const usage = useQuery({
     queryKey: ["admin-usage", uid, offset],
     queryFn: () => managedJson<UsageReport>(`/admin/usage?offset=${offset}`),
@@ -140,84 +144,108 @@ export function AdminUsage() {
   );
   return (
     <div className="space-y-7">
-      <ListSection
-        footer={t("admin.spentWindow")}
-        header={t("admin.lastThirtyDays")}
-      >
-        {usage.isPending && <ListRow label={t("common.loading")} />}
-        {models.map((model) => (
-          <ListRow
-            detail={t("admin.modelTotals", {
-              runs: model.runs,
-              tokens: (model.input + model.output).toLocaleString(),
-            })}
-            key={model.model}
-            label={model.model}
-            value={
-              <UsageValue
-                cost={estimateCost({
-                  model: model.model,
-                  input: model.input,
-                  cached: model.cached,
-                  output: model.output,
-                })}
-                credits={model.credits}
-              />
-            }
-          />
-        ))}
-        {models.length > 0 && (
-          <ListRow
-            label={t("admin.totalCost")}
-            value={<UsageValue cost={total} credits={totalCredits} />}
-          />
-        )}
-        {!usage.isPending && models.length === 0 && (
-          <ListRow label={t("admin.noUsage")} />
-        )}
-      </ListSection>
-      <ListSection footer={t("admin.byKindFooter")} header={t("admin.byKind")}>
-        {usage.isPending && <ListRow label={t("common.loading")} />}
-        {kinds.map((entry) => (
-          <ListRow
-            detail={t("admin.kindTotals", {
-              delta: percent(entry.gap),
-              quoted: entry.quoted.toFixed(1),
-              runs: entry.runs,
-              units: entry.units.toLocaleString(),
-            })}
-            key={entry.key}
-            label={`${jobKindLabel(entry.kind)} · ${t(`managed.${entry.tier}`)}`}
-            value={t("admin.kindCost", { cost: entry.actual.toFixed(2) })}
-          />
-        ))}
-        {!usage.isPending && kinds.length === 0 && (
-          <ListRow label={t("admin.noKindUsage")} />
-        )}
-      </ListSection>
-      <ListSection footer={t("admin.byUserFooter")} header={t("admin.byUser")}>
-        {usage.isPending && <ListRow label={t("common.loading")} />}
-        {accounts.map((account) => (
-          <ListRow
-            detail={t("admin.userTotals", {
-              points: account.points.toLocaleString(),
-              runs: account.runs,
-              tokens: account.tokens.toLocaleString(),
-            })}
-            key={account.uid}
-            label={account.email ?? account.uid}
-            value={
-              <UsageValue cost={account.cost} credits={account.credits} />
-            }
-          />
-        ))}
-        {!usage.isPending && accounts.length === 0 && (
-          <ListRow label={t("admin.noUserUsage")} />
-        )}
-      </ListSection>
-      {usage.data && usage.data.entries.length > 0 && (
+      <LiquidTabs
+        ariaLabel={t("admin.usage")}
+        onValueChange={(value) => setView(value as typeof view)}
+        options={[
+          { label: t("admin.models"), value: "models" },
+          { label: t("admin.byKind"), value: "kinds" },
+          { label: t("admin.byUser"), value: "accounts" },
+          { label: t("admin.recentRuns"), value: "runs" },
+        ]}
+        value={view}
+      />
+      {view === "models" && (
+        <ListSection
+          footer={t("admin.spentWindow")}
+          header={t("admin.lastThirtyDays")}
+        >
+          {usage.isPending && <ListRow label={t("common.loading")} />}
+          {models.map((model) => (
+            <ListRow
+              detail={t("admin.modelTotals", {
+                runs: model.runs,
+                tokens: (model.input + model.output).toLocaleString(),
+              })}
+              key={model.model}
+              label={model.model}
+              value={
+                <UsageValue
+                  cost={estimateCost({
+                    model: model.model,
+                    input: model.input,
+                    cached: model.cached,
+                    output: model.output,
+                  })}
+                  credits={model.credits}
+                />
+              }
+            />
+          ))}
+          {models.length > 0 && (
+            <ListRow
+              label={t("admin.totalCost")}
+              value={<UsageValue cost={total} credits={totalCredits} />}
+            />
+          )}
+          {!usage.isPending && models.length === 0 && (
+            <ListRow label={t("admin.noUsage")} />
+          )}
+        </ListSection>
+      )}
+      {view === "kinds" && (
+        <ListSection
+          footer={t("admin.byKindFooter")}
+          header={t("admin.byKind")}
+        >
+          {usage.isPending && <ListRow label={t("common.loading")} />}
+          {kinds.map((entry) => (
+            <ListRow
+              detail={t("admin.kindTotals", {
+                delta: percent(entry.gap),
+                quoted: entry.quoted.toFixed(1),
+                runs: entry.runs,
+                units: entry.units.toLocaleString(),
+              })}
+              key={entry.key}
+              label={`${jobKindLabel(entry.kind)} · ${t(`managed.${entry.tier}`)}`}
+              value={t("admin.kindCost", { cost: entry.actual.toFixed(2) })}
+            />
+          ))}
+          {!usage.isPending && kinds.length === 0 && (
+            <ListRow label={t("admin.noKindUsage")} />
+          )}
+        </ListSection>
+      )}
+      {view === "accounts" && (
+        <ListSection
+          footer={t("admin.byUserFooter")}
+          header={t("admin.byUser")}
+        >
+          {usage.isPending && <ListRow label={t("common.loading")} />}
+          {accounts.map((account) => (
+            <ListRow
+              detail={t("admin.userTotals", {
+                points: account.points.toLocaleString(),
+                runs: account.runs,
+                tokens: account.tokens.toLocaleString(),
+              })}
+              key={account.uid}
+              label={account.email ?? account.uid}
+              value={
+                <UsageValue cost={account.cost} credits={account.credits} />
+              }
+            />
+          ))}
+          {!usage.isPending && accounts.length === 0 && (
+            <ListRow label={t("admin.noUserUsage")} />
+          )}
+        </ListSection>
+      )}
+      {view === "runs" && (
         <ListSection header={t("admin.recentRuns")}>
-          {usage.data.entries.map((entry) => (
+          {usage.isPending && <ListRow label={t("common.loading")} />}
+          {usage.data?.entries.map((entry) => (
             <ListRow
               detail={t("admin.runTotals", {
                 input: (entry.input ?? 0).toLocaleString(),
@@ -243,6 +271,9 @@ export function AdminUsage() {
               }
             />
           ))}
+          {!usage.isPending && usage.data?.entries.length === 0 && (
+            <ListRow label={t("admin.noUsage")} />
+          )}
         </ListSection>
       )}
       <AdminPager

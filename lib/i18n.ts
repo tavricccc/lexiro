@@ -464,7 +464,8 @@ export const zhTW = {
     start: "開始練這組字",
     startQuestions: "做這組字的題目",
     questions: "題目",
-    summary: "{senses} 個詞義 · {learned} 個已學習 · {due} 個待複習 · {questions} 題",
+    summary:
+      "{senses} 個詞義 · {learned} 個已學習 · {due} 個待複習 · {questions} 題",
     toolsHeader: "這組字的整理",
     deleteConfirm: "確定刪除「{name}」嗎？這不會刪除仍被其他單字集使用的詞義。",
     share: "匯出分享檔",
@@ -476,7 +477,8 @@ export const zhTW = {
     dueLabel: "待複習",
   },
   managed: {
-    retryLimit: "這個來源已達本輪重試上限。已完成的內容仍保留，可重新生成開啟新一輪。",
+    retryLimit:
+      "這個來源已達本輪重試上限。已完成的內容仍保留，可重新生成開啟新一輪。",
     accountExists: "此帳號已有額度紀錄，請直接調整現有帳號。",
     appendCost: "再多生成一輪 · {points} 點",
     noWordsRecognized: "沒有辨識到可用單字，請調整內容或照片後再試。",
@@ -529,7 +531,8 @@ export const zhTW = {
   },
   admin: {
     trial: "新帳號免費試用",
-    trialHint: "關閉時，新註冊的人仍然會出現在名單上，只是從 0 點開始，由你決定要給多少。",
+    trialHint:
+      "關閉時，新註冊的人仍然會出現在名單上，只是從 0 點開始，由你決定要給多少。",
     newAccountDefaults: "新帳號預設",
     newAccountHint: "免費試用開啟時，每個第一次登入的人拿到的點數與每期額度。",
     defaultInitial: "初始點數",
@@ -560,6 +563,7 @@ export const zhTW = {
     trialOn: "試用已開啟",
     trialOff: "試用已關閉",
     usage: "用量與成本",
+    models: "模型",
     lastThirtyDays: "近 30 天",
     spentWindow: "實際供應商成本與等值點數。",
     modelTotals: "{runs} 次 · {tokens} tokens",
