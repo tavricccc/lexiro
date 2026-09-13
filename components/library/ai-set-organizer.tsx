@@ -3,7 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { InputOrganizer } from "@/components/library/input-organizer";
+import {
+  InputOrganizer,
+  type OrganizerPhase,
+} from "@/components/library/input-organizer";
 import { BackControl } from "@/components/ui/back-control";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -15,29 +18,39 @@ import { writeAiSetDraft } from "@/lib/ai-set-draft";
 export function AiSetOrganizer() {
   const router = useRouter();
   const [name, setName] = useState(t("setEditor.defaultSetName"));
+  const [phase, setPhase] = useState<OrganizerPhase>("input");
+  const reviewing = phase === "review";
   return (
     <StepFrame
-      back={<BackControl href="/sets/new" label={t("setEditor.cancel")} />}
-      current={1}
-      title={t("setEditor.aiAssist")}
-      total={2}
+      {...(reviewing
+        ? { onBack: () => setPhase("input") }
+        : {
+            back: (
+              <BackControl href="/sets/new" label={t("setEditor.cancel")} />
+            ),
+          })}
+      current={reviewing ? 2 : 1}
+      title={t(reviewing ? "setEditor.aiListTitle" : "setEditor.aiAssist")}
+      total={4}
       width="wide"
     >
-      <Field label={t("setEditor.name")}>
-        <Input
-          onChange={(event) => setName(event.target.value)}
-          placeholder={t("setEditor.namePlaceholder")}
-          value={name}
-        />
-      </Field>
-      <div className="section-gap">
+      {!reviewing && (
+        <Field label={t("setEditor.name")}>
+          <Input
+            onChange={(event) => setName(event.target.value)}
+            placeholder={t("setEditor.namePlaceholder")}
+            value={name}
+          />
+        </Field>
+      )}
+      <div className={reviewing ? undefined : "section-gap"}>
         <InputOrganizer
-          disabled={false}
           onConfirm={(sources) => {
             writeAiSetDraft({ name, sources });
             router.push("/sets/new/generate");
           }}
-          onInvalidate={() => undefined}
+          onPhase={setPhase}
+          phase={phase}
         />
       </div>
     </StepFrame>

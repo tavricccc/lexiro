@@ -1,9 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
-import { useAiGeneration } from "@/components/ai/use-ai-generation";
+import {
+  useAiGeneration,
+  useReviewHandoff,
+} from "@/components/ai/use-ai-generation";
+import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import {
   ListActionRow,
@@ -27,16 +32,18 @@ type Limit = (typeof LIMITS)[number];
  * The number is a ceiling rather than a quota, and the screen says so in both
  * directions: the picker reads 最多, and a word that comes back with nothing
  * reports that it has no other meaning worth learning instead of looking like
- * a failure. What does come back is written into the set as it arrives, the
- * way every other generation in Lexiro lands.
+ * a failure. Reading what came back is its own step, with the two ways onward
+ * a reviewer actually wants: run it again, or keep it.
  */
 export function SetSenseSupplement({ setId }: { setId: string }) {
+  const router = useRouter();
   const state = useLibraryStore((store) => store.state);
   const [chosen, setChosen] = useState<WordKey[]>([]);
   const [limit, setLimit] = useState<Limit>(1);
   const [error, setError] = useState("");
+  const [phase, setPhase] = useState<"run" | "review">("run");
+  const [saving, setSaving] = useState(false);
   const generation = useAiGeneration<WordDraft>();
-  const written = useRef("");
 
   const words = useMemo(
     () =>
@@ -72,8 +79,9 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
   );
 
   const { items, status } = generation.state;
-  useEffect(() => {
-    if (status !== "done") return;
+  useReviewHandoff(status, () => setPhase("review"));
+
+  const save = async () => {
     const rows = items.flatMap((draft) =>
       draft.senses.map((sense) => ({
         word: draft.word,
@@ -83,21 +91,24 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         supplementary: true,
       })),
     );
-    const signature = JSON.stringify(rows);
-    if (!rows.length || written.current === signature) return;
-    written.current = signature;
     const store = useLibraryStore.getState();
     const current = store.state.sets.find((entry) => entry.id === setId);
     if (!current) return;
-    store
-      .saveSet({
+    setSaving(true);
+    try {
+      await store.saveSet({
         id: setId,
         setName: current.setName,
         folderId: current.folderId,
         words: [...setWordDrafts(store.state, setId), ...rows],
-      })
-      .catch(() => setError(t("supplement.saveFailed")));
-  }, [items, setId, status]);
+      });
+      router.push(`/sets/${setId}`);
+    } catch {
+      setError(t("supplement.saveFailed"));
+    } finally {
+      setSaving(false);
+    }
+  };
 
   if (!words.length)
     return (
@@ -110,6 +121,42 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
 
   const running = status === "running";
   const allChosen = chosen.length === words.length;
+
+  if (phase === "review")
+    return (
+      <fieldset disabled={saving} className="min-w-0 space-y-7">
+        <ListSection header={t("supplement.resultsHeader")}>
+          {items.map((draft) => (
+            <SupplementResult draft={draft} key={draft.word} />
+          ))}
+        </ListSection>
+
+        {error && (
+          <p className="text-sm text-destructive" role="alert">
+            {error}
+          </p>
+        )}
+
+        <div className="space-y-4">
+          <Button
+            className="w-full"
+            disabled={saving || !items.some((draft) => draft.senses.length)}
+            onClick={() => void save()}
+            size="lg"
+            type="button"
+          >
+            <Icons.success />
+            {t("supplement.apply")}
+          </Button>
+          <p className="type-hint">{t("supplement.applyHint")}</p>
+          <ListSection>
+            <ListActionRow disabled={saving} onClick={() => setPhase("run")}>
+              {t("ai.reviewBack")}
+            </ListActionRow>
+          </ListSection>
+        </div>
+      </fieldset>
+    );
 
   return (
     <div className="space-y-7">
@@ -165,12 +212,13 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         actionLabel={t("supplement.action")}
         billableCount={sources.length}
         configured={generation.configured}
-        doneHint={t("supplement.written")}
         kind="senses"
         onCancel={generation.cancel}
         onResume={generation.resume}
+        onReview={
+          items.length && !running ? () => setPhase("review") : undefined
+        }
         onStart={() => {
-          written.current = "";
           setError("");
           generation.start(task);
         }}
@@ -179,15 +227,6 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         state={generation.state}
         tier={generation.tier}
         unit={t("supplement.unit")}
-        results={
-          items.length ? (
-            <ListSection header={t("supplement.resultsHeader")}>
-              {items.map((draft) => (
-                <SupplementResult draft={draft} key={draft.word} />
-              ))}
-            </ListSection>
-          ) : undefined
-        }
       />
     </div>
   );

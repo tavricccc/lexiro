@@ -6,6 +6,7 @@ import { CreditBadge } from "@/components/ai/credit-badge";
 import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/ui/icons";
+import { ListActionRow, ListSection } from "@/components/ui/list";
 import {
   managedFetch,
   managedTurn,
@@ -17,17 +18,26 @@ import { parseOrganizedWordInput } from "@/src/lib/word-generation";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
 
+export type OrganizerPhase = "input" | "review";
+
+/**
+ * Turning what was pasted or photographed into a list of words.
+ *
+ * What comes back is read on its own step rather than in a box under the
+ * textarea that produced it: the list is the thing being corrected, and it is
+ * long. The phase belongs to the caller so the page can say which step this is.
+ */
 export function InputOrganizer({
   onConfirm,
-  onInvalidate,
-  disabled,
+  onPhase,
+  phase,
 }: {
   onConfirm: (text: string) => void;
-  onInvalidate: () => void;
-  disabled: boolean;
+  onPhase: (phase: OrganizerPhase) => void;
+  phase: OrganizerPhase;
 }) {
   const [input, setInput] = useState("");
-  const [review, setReview] = useState<string | null>(null);
+  const [review, setReview] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const controller = useRef<AbortController | null>(null);
@@ -39,7 +49,6 @@ export function InputOrganizer({
     controller.current = current;
     setBusy(true);
     setError("");
-    onInvalidate();
     try {
       let text: string;
       if (file) {
@@ -69,6 +78,7 @@ export function InputOrganizer({
       const cleaned = parseOrganizedWordInput(text).join("\n");
       if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
       setReview(cleaned);
+      onPhase("review");
     } catch (reason) {
       if (!current.signal.aborted)
         setError(
@@ -79,7 +89,7 @@ export function InputOrganizer({
     }
   };
   const confirm = () => {
-    const sources = buildWordGenerationSources(review || "");
+    const sources = buildWordGenerationSources(review);
     if (
       !sources.length ||
       sources.some((source) => source.raw.length > LIMITS.source)
@@ -87,30 +97,61 @@ export function InputOrganizer({
       setError(t("managed.inputLimit"));
       return;
     }
-    onConfirm(review!);
+    onConfirm(review);
   };
+
+  if (phase === "review")
+    return (
+      <div className="space-y-7">
+        <Field label={t("managed.reviewLines")} hint={t("managed.reviewHint")}>
+          <Textarea
+            className="min-h-64"
+            maxLength={LIMITS.input}
+            onChange={(event) => setReview(event.target.value)}
+            value={review}
+          />
+        </Field>
+        {error && (
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+        )}
+        <div className="space-y-4">
+          <Button
+            className="w-full"
+            disabled={!review.trim()}
+            onClick={confirm}
+            size="lg"
+            type="button"
+          >
+            <Icons.next />
+            {t("managed.confirmList")}
+          </Button>
+          <ListSection>
+            <ListActionRow onClick={() => onPhase("input")}>
+              {t("managed.reorganize")}
+            </ListActionRow>
+          </ListSection>
+        </div>
+      </div>
+    );
+
   return (
     <div className="space-y-4">
-      <Field
-        label={t("setEditor.rawWords")}
-      >
+      <Field label={t("setEditor.rawWords")}>
         <Textarea
           value={input}
           maxLength={LIMITS.input}
-          disabled={disabled || busy}
+          disabled={busy}
           placeholder={t("setEditor.rawWordsPlaceholder")}
-          onChange={(event) => {
-            setInput(event.target.value);
-            setReview(null);
-            onInvalidate();
-          }}
+          onChange={(event) => setInput(event.target.value)}
         />
       </Field>
       <div className="flex flex-wrap items-center gap-2">
         <Button
           aria-label={t("managed.organize")}
           type="button"
-          disabled={disabled || busy || !input.trim() || !uid}
+          disabled={busy || !input.trim() || !uid}
           onClick={() => void organize()}
         >
           <Icons.generate />
@@ -120,12 +161,7 @@ export function InputOrganizer({
             value={t("managed.expectedShort", { points: 5 })}
           />
         </Button>
-        <Button
-          asChild
-          type="button"
-          variant="secondary"
-          disabled={disabled || busy || !uid}
-        >
+        <Button asChild type="button" variant="secondary" disabled={busy || !uid}>
           <label>
             <Icons.import />
             {t("managed.photo")}
@@ -137,7 +173,7 @@ export function InputOrganizer({
               type="file"
               accept="image/*"
               className="sr-only"
-              disabled={disabled || busy || !uid}
+              disabled={busy || !uid}
               onChange={(event) => {
                 const file = event.target.files?.[0];
                 event.target.value = "";
@@ -171,31 +207,12 @@ export function InputOrganizer({
           {error}
         </p>
       )}
-      {review !== null && (
-        <div className="space-y-3 rounded-xl border p-4">
-          <Field
-            label={t("managed.reviewLines")}
-            hint={t("managed.reviewHint")}
-          >
-            <Textarea
-              value={review}
-              maxLength={LIMITS.input}
-              disabled={disabled || busy}
-              onChange={(event) => {
-                setReview(event.target.value);
-                onInvalidate();
-              }}
-              className="min-h-40"
-            />
-          </Field>
-          <Button
-            type="button"
-            disabled={disabled || busy || !review.trim()}
-            onClick={confirm}
-          >
-            {t("managed.confirmList")}
-          </Button>
-        </div>
+      {review && (
+        <ListSection>
+          <ListActionRow onClick={() => onPhase("review")}>
+            {t("ai.viewResults")}
+          </ListActionRow>
+        </ListSection>
       )}
     </div>
   );

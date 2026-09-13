@@ -8,6 +8,26 @@ import { useCloudStore } from "@/stores/cloud-store";
 import { t } from "@/lib/i18n";
 
 export type AiRunStatus = "idle" | "running" | "done" | "error" | "cancelled";
+
+/**
+ * Hands a finished run to the step that reviews it, once per run.
+ *
+ * Watching the status alone is not enough: coming back from the review step to
+ * change a tier leaves the status at "done", and the flow would bounce forward
+ * again before the user could press anything. Each new run re-arms the handover.
+ */
+export function useReviewHandoff(status: AiRunStatus, onDone: () => void) {
+  const handed = useRef(false);
+  const latest = useRef(onDone);
+  latest.current = onDone;
+  useEffect(() => {
+    if (status === "running") handed.current = false;
+    else if (status === "done" && !handed.current) {
+      handed.current = true;
+      latest.current();
+    }
+  }, [status]);
+}
 export interface AiRunState<T> {
   status: AiRunStatus; phase: AiPhase; characters: number; completed: number; total: number;
   segments: number; error: string; items: T[]; notices: string[]; startedAt: number | null;

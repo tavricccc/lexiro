@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import {
   WordAssistant,
+  type AssistantPhase,
   type AssistedWordRow,
 } from "@/components/library/word-assistant";
 import { BackControl } from "@/components/ui/back-control";
@@ -23,6 +24,7 @@ export function AiSetGeneration() {
   const router = useRouter();
   const saveSet = useLibraryStore((store) => store.saveSet);
   const [draft, setDraft] = useState<AiSetDraft | null | undefined>(undefined);
+  const [phase, setPhase] = useState<AssistantPhase>("run");
   useEffect(() => setDraft(readAiSetDraft()), []);
 
   if (draft === undefined) return null;
@@ -54,13 +56,22 @@ export function AiSetGeneration() {
 
   return (
     <StepFrame
-      back={<BackControl href="/sets/new/organize" />}
-      current={2}
-      title={t("setEditor.aiGenerateTitle")}
-      total={2}
+      {...(phase === "review"
+        ? { onBack: () => setPhase("run") }
+        : { back: <BackControl href="/sets/new/organize" /> })}
+      current={phase === "review" ? 4 : 3}
+      title={t(
+        phase === "review" ? "setEditor.aiReviewTitle" : "setEditor.aiGenerateTitle",
+      )}
+      total={4}
       width="wide"
     >
-      <WordAssistant onApply={save} sources={draft.sources} />
+      <WordAssistant
+        onApply={save}
+        onPhase={setPhase}
+        phase={phase}
+        sources={draft.sources}
+      />
     </StepFrame>
   );
 }

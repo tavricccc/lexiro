@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { estimatePoints, type JobKind, type Tier } from "@lexiro/ai-contract";
 import type { AiRunState } from "./use-ai-generation";
 import { AiUsage } from "./ai-usage";
@@ -24,16 +24,15 @@ export function AiRunPanel<T>({
   appendBillableCount,
   billableCount,
   configured,
-  doneHint,
   kind,
   localCount = 0,
   onAppend,
   onCancel,
   onResume,
+  onReview,
   onStart,
   onTierChange,
   ready,
-  results,
   state,
   tier,
   unit,
@@ -42,17 +41,16 @@ export function AiRunPanel<T>({
   appendBillableCount?: number;
   billableCount: number;
   configured: boolean;
-  /** What became of the results, for a run that writes them itself. */
-  doneHint?: string;
   kind: JobKind;
   localCount?: number;
   onAppend?: () => void;
   onCancel: () => void;
   onResume: () => void;
+  /** Going on to the step that reviews what came back. */
+  onReview?: () => void;
   onStart: () => void;
   onTierChange: (tier: Tier) => void;
   ready: boolean;
-  results?: ReactNode;
   state: AiRunState<T>;
   tier: Tier;
   unit: string;
@@ -202,11 +200,17 @@ export function AiRunPanel<T>({
                   ? t("ai.regenerate")
                   : actionLabel}
             </Button>
-            {(state.remaining > 0 || (done && onAppend && configured)) && (
+            {(state.remaining > 0 ||
+              (done && (onReview || (onAppend && configured)))) && (
               <ListSection>
                 {state.remaining > 0 && canRun && (
                   <ListActionRow onClick={onStart}>
                     {t("ai.regenerate")}
+                  </ListActionRow>
+                )}
+                {done && onReview && (
+                  <ListActionRow onClick={onReview}>
+                    {t("ai.viewResults")}
                   </ListActionRow>
                 )}
                 {done && onAppend && configured && (
@@ -230,9 +234,7 @@ export function AiRunPanel<T>({
         )}
         {started && (
           <p className="type-hint">
-            {running
-              ? t("ai.keepWorking")
-              : (doneHint ?? t("ai.keptResults"))}
+            {t(running ? "ai.keepWorking" : "ai.keptResults")}
           </p>
         )}
         {Array.from(new Set(state.notices)).map((notice) => (
@@ -243,7 +245,6 @@ export function AiRunPanel<T>({
       </div>
 
       {admin && started && <AiUsage usage={state.usage} />}
-      {results}
     </div>
   );
 }

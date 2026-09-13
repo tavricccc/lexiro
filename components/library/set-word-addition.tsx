@@ -3,10 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { WordAssistant } from "@/components/library/word-assistant";
+import {
+  WordAssistant,
+  type AssistantPhase,
+} from "@/components/library/word-assistant";
 import { WordEditor } from "@/components/library/word-editor";
-import { InputOrganizer } from "@/components/library/input-organizer";
-import { Button } from "@/components/ui/button";
+import {
+  InputOrganizer,
+  type OrganizerPhase,
+} from "@/components/library/input-organizer";
+import { ListActionRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { useLibraryStore, type WordDraftInput } from "@/stores/library-store";
@@ -21,6 +27,8 @@ export function SetWordAddition({
   const router = useRouter();
   const [error, setError] = useState("");
   const [sources, setSources] = useState("");
+  const [phase, setPhase] = useState<AssistantPhase>("run");
+  const [organizerPhase, setOrganizerPhase] = useState<OrganizerPhase>("input");
   const add = async (words: WordDraftInput[]) => {
     const store = useLibraryStore.getState();
     const current = store.state.sets.find((entry) => entry.id === setId);
@@ -65,21 +73,27 @@ export function SetWordAddition({
         />
       ) : sources ? (
         <>
-          <Button onClick={() => setSources("")} type="button" variant="ghost">
-            {t("common.back")}
-          </Button>
           <WordAssistant
             onApply={(rows) =>
               add(rows).catch(() => setError(t("wordEdit.saveFailed")))
             }
+            onPhase={setPhase}
+            phase={phase}
             sources={sources}
           />
+          {phase === "run" && (
+            <ListSection>
+              <ListActionRow onClick={() => setSources("")}>
+                {t("setEditor.backToSources")}
+              </ListActionRow>
+            </ListSection>
+          )}
         </>
       ) : (
         <InputOrganizer
-          disabled={false}
           onConfirm={setSources}
-          onInvalidate={() => undefined}
+          onPhase={setOrganizerPhase}
+          phase={organizerPhase}
         />
       )}
       {error && (

@@ -2,9 +2,13 @@
 import type { WordDraft } from "@/types";
 import { useEffect, useMemo, useState } from "react";
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
-import { useAiGeneration } from "@/components/ai/use-ai-generation";
+import {
+  useAiGeneration,
+  useReviewHandoff,
+} from "@/components/ai/use-ai-generation";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { ListActionRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { wordTask } from "@/src/lib/ai/tasks";
 import { WordPreview } from "@/components/library/word-preview";
@@ -12,6 +16,8 @@ import {
   buildWordGenerationSources,
   mergeWordDrafts,
 } from "@/src/lib/word-generation";
+
+export type AssistantPhase = "run" | "review";
 
 export interface AssistedWordRow {
   examples: string[];
@@ -31,11 +37,25 @@ function toRows(drafts: WordDraft[]): AssistedWordRow[] {
     })),
   );
 }
+
+/**
+ * Generating a word list, then reading it.
+ *
+ * The run and its output are two steps, because they are two different jobs:
+ * one is a decision about how much to spend and a progress bar, the other is
+ * forty-two words that have to be read at a comfortable size. The phase is the
+ * caller's, so the page around it can say which step this is and where back
+ * goes.
+ */
 export function WordAssistant({
   onApply,
+  onPhase,
+  phase,
   sources: raw,
 }: {
   onApply: (rows: AssistedWordRow[]) => void | Promise<void>;
+  onPhase: (phase: AssistantPhase) => void;
+  phase: AssistantPhase;
   sources: string;
 }) {
   const [applying, setApplying] = useState(false);
@@ -46,73 +66,78 @@ export function WordAssistant({
   useEffect(() => {
     reset();
   }, [raw, reset]);
+  useReviewHandoff(state.status, () => onPhase("review"));
   const running = state.status === "running";
-  return (
-    <section>
-      <fieldset disabled={applying} className="min-w-0">
-        <div className="space-y-7">
-          <AiRunPanel
-            actionLabel={t("managed.confirmGenerate")}
-            configured={generation.configured}
-            ready={generation.ready}
-            onCancel={generation.cancel}
-            onResume={generation.resume}
-            onStart={() => generation.start(task)}
-            kind={task.kind}
-            billableCount={task.billableCount}
-            tier={generation.tier}
-            onTierChange={generation.setTier}
-            state={state}
-            unit={t("ai.wordsUnit")}
-            results={
-              state.items.length > 0 ? (
-                <>
-                  <div className="mb-4 flex flex-wrap items-center gap-3">
-                    <Button
-                      type="button"
-                      disabled={running || applying}
-                      onClick={async () => {
-                        setApplying(true);
-                        try {
-                          await onApply(toRows(state.items));
-                        } finally {
-                          setApplying(false);
-                        }
-                      }}
-                    >
-                      <Icons.success />
-                      {t("ai.applyWords")}
-                    </Button>
-                    <p className="text-xs text-muted-foreground">
-                      {t("ai.applyHint")}
-                    </p>
-                  </div>
-                  <ul className="max-h-80 space-y-3 overflow-y-auto overscroll-contain pr-1">
-                    {state.items.map((word) => (
-                      <li
-                        key={word.word}
-                        className="rounded-xl bg-[var(--surface-inset)] p-3.5"
-                      >
-                        <WordPreview
-                          word={word}
-                          disabled={running || applying}
-                          onSave={(draft) =>
-                            generation.setItems(
-                              state.items.map((entry) =>
-                                entry === word ? draft : entry,
-                              ),
-                            )
-                          }
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : undefined
-            }
-          />
+
+  if (phase === "review")
+    return (
+      <fieldset disabled={applying} className="min-w-0 space-y-7">
+        <ul className="space-y-3">
+          {state.items.map((word) => (
+            <li
+              key={word.word}
+              className="rounded-xl bg-[var(--surface-inset)] p-3.5"
+            >
+              <WordPreview
+                word={word}
+                disabled={applying}
+                onSave={(draft) =>
+                  generation.setItems(
+                    state.items.map((entry) =>
+                      entry === word ? draft : entry,
+                    ),
+                  )
+                }
+              />
+            </li>
+          ))}
+        </ul>
+
+        <div className="space-y-4">
+          <Button
+            className="w-full"
+            disabled={applying || !state.items.length}
+            onClick={async () => {
+              setApplying(true);
+              try {
+                await onApply(toRows(state.items));
+              } finally {
+                setApplying(false);
+              }
+            }}
+            size="lg"
+            type="button"
+          >
+            <Icons.success />
+            {t("ai.applyWords")}
+          </Button>
+          <p className="type-hint">{t("ai.applyHint")}</p>
+          <ListSection>
+            <ListActionRow disabled={applying} onClick={() => onPhase("run")}>
+              {t("ai.reviewBack")}
+            </ListActionRow>
+          </ListSection>
         </div>
       </fieldset>
-    </section>
+    );
+
+  return (
+    <AiRunPanel
+      actionLabel={t("managed.confirmGenerate")}
+      billableCount={task.billableCount}
+      configured={generation.configured}
+      kind={task.kind}
+      onCancel={generation.cancel}
+      onResume={generation.resume}
+      onReview={
+        state.items.length && !running ? () => onPhase("review") : undefined
+      }
+      onStart={() => generation.start(task)}
+      onTierChange={generation.setTier}
+      ready={generation.ready}
+      state={state}
+      tier={generation.tier}
+      unit={t("ai.wordsUnit")}
+    />
   );
 }

@@ -4,7 +4,10 @@ import type { LibraryQuestion } from "@/types";
 import { useEffect, useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
-import { useAiGeneration } from "@/components/ai/use-ai-generation";
+import {
+  useAiGeneration,
+  useReviewHandoff,
+} from "@/components/ai/use-ai-generation";
 import {
   GenerationScopePicker,
   type GenerationSense,
@@ -16,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import { FinishPanel } from "@/components/ui/finish-panel";
-import { ListPicker, ListSection } from "@/components/ui/list";
+import { ListActionRow, ListPicker, ListSection } from "@/components/ui/list";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
@@ -39,7 +42,7 @@ import {
 import { isPassageKind } from "@/src/lib/question-formats";
 import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
-type Step = "format" | "scope" | "run" | "done";
+type Step = "format" | "scope" | "run" | "review" | "done";
 
 const FORMATS: GeneratedQuestionKind[] = [
   ...SENTENCE_STYLES,
@@ -52,6 +55,10 @@ const FORMATS: GeneratedQuestionKind[] = [
  * Putting the format picker beside the run panel — as this screen used to —
  * meant the first press a newcomer made was as likely to be the last step as
  * the first.
+ *
+ * What comes back is a fourth step. A finished batch is a dozen questions to be
+ * read, and reading them underneath the tier list and the progress bar that
+ * produced them is not reading them.
  */
 export function QuestionGenerator({ setId }: { setId?: string }) {
   const { state } = useLibraryStore();
@@ -152,6 +159,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   });
 
   const { reset, state: run } = generation;
+  useReviewHandoff(run.status, () => setStep("review"));
 
   useEffect(() => {
     reset();
@@ -171,7 +179,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         back={back}
         current={1}
         title={t("questions.stepFormat")}
-        total={3}
+        total={4}
       >
         <ChoiceList
           onSelect={(value) => {
@@ -225,7 +233,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         onBack={() => setStep("format")}
         recap={recap}
         title={t("questions.stepScope")}
-        total={3}
+        total={4}
       >
         <div className="grid gap-7">
           <ListSection>
@@ -248,7 +256,42 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     );
   }
 
-  const generated = <GeneratedQuestionResults items={run.items} />;
+  if (step === "review") {
+    return (
+      <StepFrame
+        current={4}
+        onBack={() => {
+          if (!saving) setStep("run");
+        }}
+        recap={recap}
+        title={t("questions.stepReview")}
+        total={4}
+        width="wide"
+      >
+        <fieldset disabled={saving} className="min-w-0 space-y-7">
+          <GeneratedQuestionResults items={run.items} />
+          <div className="space-y-4">
+            <Button
+              className="w-full"
+              disabled={saving || !run.items.length}
+              onClick={() => void storeAll(run.items)}
+              size="lg"
+              type="button"
+            >
+              <Icons.success />
+              {t("ai.applyQuestions")}
+            </Button>
+            <p className="type-hint">{t("ai.savedHint")}</p>
+            <ListSection>
+              <ListActionRow disabled={saving} onClick={() => setStep("run")}>
+                {t("ai.reviewBack")}
+              </ListActionRow>
+            </ListSection>
+          </div>
+        </fieldset>
+      </StepFrame>
+    );
+  }
 
   if (step === "done") {
     return (
@@ -277,7 +320,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       }}
       recap={recap}
       title={t("questions.stepRun")}
-      total={3}
+      total={4}
       width="wide"
     >
       <fieldset disabled={saving} className="min-w-0">
@@ -293,6 +336,11 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
               ? () => generation.append(moreTask)
               : undefined
           }
+          onReview={
+            run.items.length && run.status !== "running"
+              ? () => setStep("review")
+              : undefined
+          }
           onStart={() => generation.start(task, prebuilt?.built ?? [])}
           kind={task.kind}
           billableCount={task.billableCount}
@@ -303,26 +351,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
           unit={t(isPassageKind(kind) ? "ai.packsUnit" : "ai.questionsUnit")}
         />
       </fieldset>
-
-      {run.items.length > 0 && (
-        <section className="section-gap">
-          <h2 className="type-section">
-            {t("questions.previewCount", { count: run.items.length })}
-          </h2>
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <Button
-              type="button"
-              disabled={run.status === "running" || saving}
-              onClick={() => void storeAll(run.items)}
-            >
-              <Icons.success />
-              {t("ai.applyQuestions")}
-            </Button>
-            <p className="text-xs text-muted-foreground">{t("ai.savedHint")}</p>
-          </div>
-          {generated}
-        </section>
-      )}
     </StepFrame>
   );
 }
