@@ -4,7 +4,6 @@ import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { type ReactNode } from "react";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import { Icons } from "@/components/ui/icons";
 import {
   Select,
@@ -198,18 +197,7 @@ export function ListChoiceRow({
       role="radio"
       type="button"
     >
-      <RowInner
-        {...content}
-        trailing={
-          <Icons.success
-            aria-hidden
-            className={cn(
-              "size-[1.125rem] shrink-0 text-primary transition-opacity duration-[var(--motion-control)]",
-              !selected && "opacity-0",
-            )}
-          />
-        }
-      />
+      <RowInner {...content} trailing={<RowCheck checked={selected} />} />
     </button>
   );
 }
@@ -217,10 +205,11 @@ export function ListChoiceRow({
 /**
  * One of several rows that can each be on or off.
  *
- * It is `ListChoiceRow` with a checkbox where the check is, because choosing
- * several of a list and choosing one of a list are the same reading task and
- * should not be drawn two different ways — which they were, on opposite edges
- * of the row and against different alignment baselines.
+ * It is `ListChoiceRow` in every respect but its semantics: the same check, in
+ * the same place, fading in and out the same way. A row that is on is marked by
+ * a check, not by a box — a box belongs to a form, where you are filling
+ * something in, and putting one here made multi-select look like a different
+ * kind of screen from single-select when it is the same reading task.
  *
  * The selected tint is painted by the row's own bleeding layer rather than by a
  * background on the row, so it reaches the card's edges and its rounded corners
@@ -238,22 +227,30 @@ export function ListCheckRow({
   onCheckedChange: (checked: boolean) => void;
 }) {
   return (
-    <label
-      className={cn(rowClass, "cursor-pointer", disabled && "opacity-45")}
+    <button
+      aria-checked={checked}
+      className={cn(rowClass, disabled && "pointer-events-none opacity-45")}
       data-selected={checked}
+      disabled={disabled}
+      onClick={() => onCheckedChange(!checked)}
+      role="checkbox"
+      type="button"
     >
-      <RowInner
-        {...content}
-        trailing={
-          <Checkbox
-            checked={checked}
-            className="shrink-0"
-            disabled={disabled}
-            onCheckedChange={(next) => onCheckedChange(next === true)}
-          />
-        }
-      />
-    </label>
+      <RowInner {...content} trailing={<RowCheck checked={checked} />} />
+    </button>
+  );
+}
+
+/** The mark a chosen row carries, whether one of many or several of many. */
+function RowCheck({ checked }: { checked: boolean }) {
+  return (
+    <Icons.success
+      aria-hidden
+      className={cn(
+        "size-[1.125rem] shrink-0 text-primary transition-opacity duration-[var(--motion-control)]",
+        !checked && "opacity-0",
+      )}
+    />
   );
 }
 

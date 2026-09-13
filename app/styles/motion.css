@@ -472,16 +472,6 @@
 }
 
 /* A checkbox draws its mark rather than swapping one in. */
-.t-checkmark path {
-  stroke-dasharray: var(--check-length, 15);
-  stroke-dashoffset: var(--check-length, 15);
-  transition: stroke-dashoffset var(--motion-control-exit) var(--ease-move);
-}
-[data-state="checked"] .t-checkmark path {
-  stroke-dashoffset: 0;
-  transition-duration: var(--motion-control);
-}
-
 .t-icon-swap {
   display: inline-grid;
 }
@@ -812,7 +802,6 @@
   }
   .t-icon-swap > *,
   .t-toggle-thumb,
-  .t-checkmark path,
   .t-spinner-check-loader,
   .t-spinner-check-success,
   .t-tabs-pill,
