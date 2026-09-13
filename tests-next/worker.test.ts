@@ -203,6 +203,25 @@ describe("Worker HTTP boundary", () => {
     const result = await call(req("/admin/accounts", undefined, "admin"));
     expect(JSON.parse(result.text).accounts).toHaveLength(1);
   });
+  it("hands over the first period when an allowance is granted", async () => {
+    await env.DB.prepare("UPDATE accounts SET points=40,monthly=0 WHERE uid='u'").run();
+    const granted = await call(
+      req("/admin/accounts/u", { monthly: 500 }, "admin", "PATCH"),
+    );
+    // Not 40 and a wait until the nightly renewal: the plan starts now.
+    expect(JSON.parse(granted.text)).toMatchObject({ points: 500, monthly: 500 });
+    // Saving the same allowance again is not another month's points.
+    const resaved = await call(
+      req("/admin/accounts/u", { monthly: 500, addPoints: -100 }, "admin", "PATCH"),
+    );
+    expect(JSON.parse(resaved.text)).toMatchObject({ points: 400 });
+  });
+  it("takes points away without letting the balance go below zero", async () => {
+    const emptied = await call(
+      req("/admin/accounts/u", { addPoints: -1000 }, "admin", "PATCH"),
+    );
+    expect(JSON.parse(emptied.text)).toMatchObject({ points: 0 });
+  });
   it("allows verified admins to update points and the trial switch", async () => {
     const changed = await call(
       req("/admin/accounts/u", { addPoints: 20, monthly: 0 }, "admin", "PATCH"),

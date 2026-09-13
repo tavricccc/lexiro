@@ -30,10 +30,20 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     const parsed = adjustment.safeParse(JSON.parse(await readBody(request, 10_000)));
     if (!parsed.success) throw new HttpError(400, "invalid_input");
     const value = parsed.data;
-    const result = await env.DB.prepare(`UPDATE accounts SET points=points+?,
-      renews_at=CASE WHEN monthly=0 AND ?>0 THEN ? ELSE renews_at END,
+    // Setting an allowance hands over this period's points there and then.
+    // Waiting for the nightly renewal would mean granting a plan and watching
+    // nothing happen. Every right-hand side reads the row as it was, so the
+    // comparison against `monthly` is against the value being replaced.
+    const result = await env.DB.prepare(`UPDATE accounts SET
+      points=MAX(MAX(0,points+?),CASE WHEN ? IS NOT NULL AND ?>0 AND ?<>monthly THEN ? ELSE 0 END),
+      renews_at=CASE WHEN ? IS NOT NULL AND ?>0 AND ?<>monthly THEN ? ELSE renews_at END,
       monthly=COALESCE(?,monthly),note=COALESCE(?,note),updated_at=? WHERE uid=?`)
-      .bind(value.addPoints ?? 0, value.monthly ?? null, nextRenewal(nowSeconds()), value.monthly ?? null, value.note ?? null, new Date().toISOString(), uid).run();
+      .bind(
+        value.addPoints ?? 0,
+        value.monthly ?? null, value.monthly ?? 0, value.monthly ?? 0, value.monthly ?? 0,
+        value.monthly ?? null, value.monthly ?? 0, value.monthly ?? 0, nextRenewal(nowSeconds()),
+        value.monthly ?? null, value.note ?? null, new Date().toISOString(), uid,
+      ).run();
     if (!result.meta.changes) throw new HttpError(404, "not_found");
     return Response.json(await account(env.DB, uid));
   }
