@@ -39,6 +39,33 @@ describe("AI prompts", () => {
       hint: "跑步",
     });
   });
+
+  // Organization now puts a part of speech on every line it returns, so these
+  // are the shapes the generation step is handed in practice.
+  it("splits every shape the organizer emits into word, part of speech and hint", () => {
+    expect(buildWordGenerationSources("adapt v. 適應")[0]).toMatchObject({
+      word: "adapt",
+      posHint: "v.",
+      hint: "適應",
+    });
+    expect(
+      buildWordGenerationSources("in spite of phr. 不管與雖然")[0],
+    ).toMatchObject({
+      word: "in spite of",
+      posHint: "phr.",
+      hint: "不管與雖然",
+    });
+    expect(buildWordGenerationSources("can modal v. 能夠")[0]).toMatchObject({
+      word: "can",
+      posHint: "modal v.",
+      hint: "能夠",
+    });
+    // A source with no Chinese of its own stays that way: the generation step
+    // chooses the meaning, and inventing one here would pre-empt it.
+    const [bare] = buildWordGenerationSources("apple n.");
+    expect(bare).toMatchObject({ word: "apple", posHint: "n." });
+    expect(bare?.hint).toBeUndefined();
+  });
 });
 
 describe("question batching", () => {

@@ -525,7 +525,7 @@ export const zhTW = {
     organize: "整理輸入",
     photo: "選擇或拍攝照片",
     reviewLines: "確認整理結果",
-    reviewHint: "可以先修正內容，確認後才會扣點生成單字與例句。",
+    reviewHint: "每列是「單字 詞性 中文」，詞性沒標的會補上。可以先修正內容，確認後才會扣點生成單字與例句。",
     confirmGenerate: "確認並生成",
     organizeAgain: "重新整理",
     imageInvalid: "無法讀取這張照片，請改用其他圖片。",
