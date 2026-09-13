@@ -28,12 +28,11 @@ export function chunks<T>(items: T[], size: number): T[][] {
     items.slice(i * size, (i + 1) * size),
   );
 }
+const WORD_BATCH_SIZE = 25;
 const wordInput = (sources: WordGenerationSource[]) => JSON.stringify({ kind: "words", raw: sources.map((source) => source.raw).join("\n") });
 
 export function wordTask(
-  _raw: string,
   sources: WordGenerationSource[],
-  size: number,
 ): AiTask<WordDraft> {
   const make = (batch: WordGenerationSource[]): AiTaskStep<WordDraft> => ({
     id: batch.map((s) => s.sourceRef).join(","),
@@ -78,7 +77,7 @@ export function wordTask(
     kind: "words",
     billableCount: sources.length,
     context: wordInput(sources),
-    steps: chunks(sources, size).map(make),
+    steps: chunks(sources, WORD_BATCH_SIZE).map(make),
   };
 }
 

@@ -495,8 +495,6 @@ export const zhTW = {
     expectedPointsRange: "預計 {min}–{max} 點",
     expectedShort: "預計 {points}",
     expectedRangeShort: "預計 {min}–{max}",
-    generationSettings: "生成設定",
-    batchSize: "每批單字",
     tier: "生成檔位",
     lite: "Lite",
     thinking: "Thinking",

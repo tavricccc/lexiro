@@ -57,7 +57,9 @@ describe("question batching", () => {
       updatedAt: "2026-08-16T00:00:00.000Z",
     }));
 
-  it("sizes a batch from the format rather than one global constant", () => {
+  it("uses 15 independent questions per batch while passage groups follow their format", () => {
+    expect(questionBatchSize("vocabulary")).toBe(15);
+    expect(questionBatchSize("grammar")).toBe(15);
     expect(questionBatchSize("wordBank")).toBeGreaterThan(
       questionBatchSize("discourse"),
     );

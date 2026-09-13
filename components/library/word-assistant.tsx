@@ -5,7 +5,6 @@ import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import { useAiGeneration } from "@/components/ai/use-ai-generation";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import { ListSection, ListStepperRow } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { wordTask } from "@/src/lib/ai/tasks";
 import { WordPreview } from "@/components/library/word-preview";
@@ -41,10 +40,9 @@ export function WordAssistant({
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
   const generation = useAiGeneration<WordDraft>({ merge: mergeWordDrafts });
   const { state, reset } = generation;
-  const size = generation.batchSize;
   const task = useMemo(
-    () => wordTask(raw, sources, size),
-    [raw, sources, size],
+    () => wordTask(sources),
+    [sources],
   );
   useEffect(() => {
     reset();
@@ -60,17 +58,6 @@ export function WordAssistant({
         />
         {raw && (
           <div className="mt-6 space-y-7">
-            <ListSection header={t("managed.generationSettings")}>
-              <ListStepperRow
-                disabled={running || applying}
-                label={t("managed.batchSize")}
-                max={30}
-                min={5}
-                onChange={generation.setBatchSize}
-                step={5}
-                value={size}
-              />
-            </ListSection>
             <AiRunPanel
               actionLabel={t("managed.confirmGenerate")}
               configured={generation.configured}

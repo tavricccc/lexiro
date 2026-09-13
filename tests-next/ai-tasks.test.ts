@@ -30,17 +30,20 @@ const generated = () => ({
 });
 describe("AI task boundaries", () => {
   it("places all sources in the first context and targets only the next stable references", () => {
-    const sources = buildWordGenerationSources("apple, banana, cherry");
-    const task = wordTask("", sources, 2);
-    expect(task.context).toContain("cherry");
+    const sources = buildWordGenerationSources(
+      Array.from({ length: 26 }, (_, index) => `word-${index + 1}`).join(", "),
+    );
+    const task = wordTask(sources);
+    expect(task.steps.map((step) => step.count)).toEqual([25, 1]);
+    expect(task.context).toContain("word-26");
     expect(JSON.parse(task.steps[1].prompt)).toEqual({
       kind: "words",
-      raw: "cherry",
+      raw: "word-26",
     });
   });
   it("keeps valid words from a partly invalid segment and requests only missing sources", async () => {
     const sources = buildWordGenerationSources("apple, banana");
-    const task = wordTask("", sources, 2);
+    const task = wordTask(sources);
     const run: AiRun<WordDraft> = {
       task,
       session: createAiSession("lite", task.context),
@@ -81,15 +84,22 @@ describe("AI task boundaries", () => {
       "build",
       "carry",
       "choose",
+      "create",
+      "cross",
+      "dance",
+      "decide",
+      "develop",
+      "discover",
+      "draw",
       "close",
     ].map(word);
     const task = questionTask(words, words, "vocabulary", 2);
-    expect(task.steps[1].prompt).toContain("s9");
+    expect(task.steps[1].prompt).toContain("s16");
     const parsed = task.steps[1].parse(
       JSON.stringify({
         items: [
           {
-            ref: "s9",
+            ref: "s16",
             sentence: "Please close the door before we leave.",
             answer: "close",
             distractors: ["watch", "bring", "carry"],

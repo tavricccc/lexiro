@@ -22,6 +22,8 @@ import {
 export type { GeneratedQuestionKind };
 export type GeneratedQuestionDifficulty = QuestionDifficulty;
 
+const QUESTION_BATCH_SIZE = 15;
+
 export function getSelectedGenerationWords(
   words: WordEntry[],
   selectedSenseKeys: string[],
@@ -53,13 +55,12 @@ export function getQuestionSourceRefs(words: WordEntry[]): QuestionSourceRefs {
 }
 
 /**
- * Senses per AI request. This is the size of one batch, not a limit on what the
- * user may select: anything larger is split across several requests. Each
- * format absorbs a different amount — a 文意選填 passage wants eight words, a
- * 篇章結構 passage only needs four — so the size comes from the format table.
+ * The target size for independent questions is 15. Passage formats generate a
+ * complete, indivisible question group per request, so their group size remains
+ * defined by the format (for example, five cloze blanks or one reading passage).
  */
 export function questionBatchSize(kind: GeneratedQuestionKind): number {
-  return sensesPerRequest(kind);
+  return isPassageKind(kind) ? sensesPerRequest(kind) : QUESTION_BATCH_SIZE;
 }
 
 export function splitGenerationBatches(

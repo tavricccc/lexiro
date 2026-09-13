@@ -209,12 +209,19 @@ describe("issues found in real Luna prompt trials", () => {
       "build",
       "carry",
       "choose",
+      "create",
+      "cross",
+      "dance",
+      "decide",
+      "develop",
+      "discover",
+      "draw",
       "close",
     ].map((w) => word(w));
     const task = questionTask(words, words, "vocabulary", 2);
     const request = JSON.parse(task.steps[1].prompt);
     expect(request.sources).toHaveLength(1);
-    expect(request.sources[0].ref).toBe("s9");
+    expect(request.sources[0].ref).toBe("s16");
     expect(request).not.toHaveProperty("instructions");
   });
   it("separates repeated spellings without adding unnecessary passages", () => {
