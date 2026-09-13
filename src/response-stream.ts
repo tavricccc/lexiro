@@ -70,9 +70,42 @@ async function* frames(reader: ReadableStreamDefaultReader<Uint8Array>): AsyncGe
   }
 }
 
+const USAGE_FIELDS = ["input_tokens", "output_tokens", "total_tokens"] as const;
+
 /**
- * Keep the Responses wire protocol and generated text, but remove prompt echoes.
- * Model/usage/schema metadata are intentionally visible; none are credentials.
+ * Rebuilds the public `response` object out of the few fields the client reads.
+ *
+ * An allowlist rather than a denylist: the provider may add a field that echoes
+ * the prompt at any time, and a forwarder that only knows the names it must
+ * remove would pass that straight through to the browser.
+ */
+function publicResponse(response: Record<string, unknown>): Record<string, unknown> {
+  const clean: Record<string, unknown> = { id: response.id };
+  if (typeof response.model === "string") clean.model = response.model;
+  if (typeof response.status === "string") clean.status = response.status;
+  if (record(response.usage)) {
+    const usage: Record<string, unknown> = {};
+    for (const field of USAGE_FIELDS)
+      if (typeof response.usage[field] === "number") usage[field] = response.usage[field];
+    const input = response.usage.input_tokens_details;
+    if (record(input) && typeof input.cached_tokens === "number")
+      usage.input_tokens_details = { cached_tokens: input.cached_tokens };
+    const output = response.usage.output_tokens_details;
+    if (record(output) && typeof output.reasoning_tokens === "number")
+      usage.output_tokens_details = { reasoning_tokens: output.reasoning_tokens };
+    clean.usage = usage;
+  }
+  // Only the reason survives: the provider's explanation can quote the prompt.
+  if (record(response.incomplete_details) && typeof response.incomplete_details.reason === "string")
+    clean.incomplete_details = { reason: response.incomplete_details.reason };
+  if (response.error !== null && response.error !== undefined)
+    clean.error = { code: "upstream_unavailable", message: "Generation failed." };
+  return clean;
+}
+
+/**
+ * Keep the Responses wire protocol and generated text, but rebuild every
+ * metadata event from an allowlist so no prompt echo can ride along.
  */
 export function sanitizeResponseStream(
   upstream: ReadableStream<Uint8Array>,
@@ -130,13 +163,8 @@ export function sanitizeResponseStream(
         }
 
         // Never mutate the private response retained by the settlement callback.
-        const clean = { ...response };
+        const clean = publicResponse(response);
         if (metadata) clean.lexiro = metadata;
-        delete clean.instructions;
-        delete clean.input;
-        delete clean.prompt;
-        if (clean.error !== null && clean.error !== undefined)
-          clean.error = { code: "upstream_unavailable", message: "Generation failed." };
         // Project envelope fields too: a new top-level echo must not expose a prompt.
         yield encodeEvent(frame.event, {
           type: frame.event,

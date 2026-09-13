@@ -40,14 +40,23 @@ function payloads(text: string): Record<string, unknown>[] {
 }
 
 describe("Responses prompt redaction", () => {
-  it("removes prompt echoes but preserves model, usage, output and the private settlement response", async () => {
+  it("rebuilds the public response from an allowlist and keeps the private one whole", async () => {
     const delta = event("response.output_text.delta", { delta: "測試結果" });
     const result = await read(start + delta + event("response.in_progress", { response }) + end);
     expect(result.text).not.toContain("PRIVATE_");
     const publicResponse = payloads(result.text).at(-1)?.response;
-    expect(publicResponse).toEqual({ id: response.id, model: response.model, usage: response.usage, output: response.output });
+    // `output` is deliberately absent: the client reads the deltas, and the
+    // generated text is the one thing an echo could hide behind.
+    expect(publicResponse).toEqual({ id: response.id, model: response.model, usage: response.usage });
     expect(result.outcomes).toEqual([{ cursor: response.id, status: "complete", response }]);
     expect(result.text).toContain(delta);
+  });
+
+  it("drops a field the provider adds later, without being told its name", async () => {
+    const leaky = { ...response, developer_prompt: "PRIVATE_SYSTEM_RULES", reasoning: { summary: "PRIVATE_" } };
+    const result = await read(start + event("response.completed", { response: leaky }));
+    expect(result.text).not.toContain("PRIVATE_");
+    expect(payloads(result.text).at(-1)?.response).not.toHaveProperty("developer_prompt");
   });
 
   it.each([1, 2, 7, 65_536])("preserves escaped text and split Unicode with %i-byte chunks", async (size) => {
