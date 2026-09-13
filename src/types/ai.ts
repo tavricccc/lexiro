@@ -5,6 +5,11 @@ export interface AiSession {
   sessionId: string;
   context: string;
   cursor?: string;
+  /**
+   * This round is an extra version of work already generated, so the model is
+   * asked for different wording. A round owns its session, so a new run always
+   * starts without it.
+   */
   append?: boolean;
   notices: string[];
   /** Every turn of this run added together, for the administrator's readout. */

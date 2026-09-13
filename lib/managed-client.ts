@@ -248,7 +248,11 @@ export async function managedTurn(
         tier: session.tier,
         cursor: session.cursor,
         repair: options.repair,
-        newVersion: session.append,
+        // `append` belongs to the round, so every segment of it asks for fresh
+        // wording — but never a repair turn. Telling the model to rewrite
+        // everything differently while it is fixing a validation error is two
+        // instructions pulling against each other.
+        newVersion: session.append && !options.repair,
       }),
     },
   );
