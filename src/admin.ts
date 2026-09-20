@@ -3,7 +3,13 @@ import type { Env } from "./env";
 import { account, nextRenewal, nowSeconds } from "./billing";
 import { HttpError, readBody } from "./http";
 
-const adjustment = z.strictObject({ addPoints: z.number().int().min(-1_000_000).max(1_000_000).optional(), monthly: z.number().int().min(0).max(1_000_000).optional(), note: z.string().max(500).optional() }).refine((value) => Object.keys(value).length > 0);
+const adjustment = z
+  .strictObject({
+    addPoints: z.number().int().min(-1_000_000).max(1_000_000).optional(),
+    monthly: z.number().int().min(0).max(1_000_000).optional(),
+    note: z.string().max(500).optional(),
+  })
+  .refine((value) => Object.keys(value).length > 0);
 const siteSettings = z
   .strictObject({
     freeTrial: z.boolean().optional(),
@@ -12,12 +18,25 @@ const siteSettings = z
   })
   .refine((value) => Object.keys(value).length > 0);
 
-export async function adminRequest(request: Request, env: Env, path: string): Promise<Response> {
+export async function adminRequest(
+  request: Request,
+  env: Env,
+  path: string,
+): Promise<Response> {
   if (path === "/admin/accounts" && request.method === "GET") {
-    const url = new URL(request.url), offset = Number(url.searchParams.get("offset") ?? 0);
-    if (!Number.isSafeInteger(offset) || offset < 0) throw new HttpError(400, "invalid_input");
-    const rows = await env.DB.prepare("SELECT uid,email,points,monthly,renews_at,note FROM accounts ORDER BY email,uid LIMIT 101 OFFSET ?").bind(offset).all();
-    return Response.json({ accounts: rows.results.slice(0,100), nextOffset: rows.results.length > 100 ? offset + 100 : null });
+    const url = new URL(request.url),
+      offset = Number(url.searchParams.get("offset") ?? 0);
+    if (!Number.isSafeInteger(offset) || offset < 0)
+      throw new HttpError(400, "invalid_input");
+    const rows = await env.DB.prepare(
+      "SELECT uid,email,points,monthly,renews_at,note FROM accounts ORDER BY email,uid LIMIT 101 OFFSET ?",
+    )
+      .bind(offset)
+      .all();
+    return Response.json({
+      accounts: rows.results.slice(0, 100),
+      nextOffset: rows.results.length > 100 ? offset + 100 : null,
+    });
   }
   if (path.startsWith("/admin/accounts/") && request.method === "GET") {
     const uid = decodeURIComponent(path.slice("/admin/accounts/".length));
@@ -27,56 +46,88 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
   }
   if (path.startsWith("/admin/accounts/") && request.method === "PATCH") {
     const uid = decodeURIComponent(path.slice("/admin/accounts/".length));
-    const parsed = adjustment.safeParse(JSON.parse(await readBody(request, 10_000)));
+    const parsed = adjustment.safeParse(
+      JSON.parse(await readBody(request, 10_000)),
+    );
     if (!parsed.success) throw new HttpError(400, "invalid_input");
     const value = parsed.data;
     // Setting an allowance hands over this period's points there and then.
     // Waiting for the nightly renewal would mean granting a plan and watching
     // nothing happen. Every right-hand side reads the row as it was, so the
     // comparison against `monthly` is against the value being replaced.
-    const result = await env.DB.prepare(`UPDATE accounts SET
+    const result = await env.DB.prepare(
+      `UPDATE accounts SET
       points=MAX(MAX(0,points+?),CASE WHEN ? IS NOT NULL AND ?>0 AND ?<>monthly THEN ? ELSE 0 END),
       renews_at=CASE WHEN ? IS NOT NULL AND ?>0 AND ?<>monthly THEN ? ELSE renews_at END,
-      monthly=COALESCE(?,monthly),note=COALESCE(?,note),updated_at=? WHERE uid=?`)
+      monthly=COALESCE(?,monthly),note=COALESCE(?,note),updated_at=? WHERE uid=?`,
+    )
       .bind(
         value.addPoints ?? 0,
-        value.monthly ?? null, value.monthly ?? 0, value.monthly ?? 0, value.monthly ?? 0,
-        value.monthly ?? null, value.monthly ?? 0, value.monthly ?? 0, nextRenewal(nowSeconds()),
-        value.monthly ?? null, value.note ?? null, new Date().toISOString(), uid,
-      ).run();
+        value.monthly ?? null,
+        value.monthly ?? 0,
+        value.monthly ?? 0,
+        value.monthly ?? 0,
+        value.monthly ?? null,
+        value.monthly ?? 0,
+        value.monthly ?? 0,
+        nextRenewal(nowSeconds()),
+        value.monthly ?? null,
+        value.note ?? null,
+        new Date().toISOString(),
+        uid,
+      )
+      .run();
     if (!result.meta.changes) throw new HttpError(404, "not_found");
     return Response.json(await account(env.DB, uid));
   }
   if (path === "/admin/usage" && request.method === "GET") {
-    const url = new URL(request.url), offset = Number(url.searchParams.get("offset") ?? 0);
-    if (!Number.isSafeInteger(offset) || offset < 0) throw new HttpError(400, "invalid_input");
+    const url = new URL(request.url),
+      offset = Number(url.searchParams.get("offset") ?? 0);
+    if (!Number.isSafeInteger(offset) || offset < 0)
+      throw new HttpError(400, "invalid_input");
     const since = nowSeconds() - 2_592_000;
     const [entries, totals, users, kinds] = await Promise.all([
-      env.DB.prepare(`SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.output,u.created_at,u.credits,u.status
-        FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid ORDER BY u.created_at DESC,u.id LIMIT 51 OFFSET ?`).bind(offset).all(),
+      env.DB.prepare(
+        `SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.cache_write AS cacheWrite,u.output,u.created_at,u.credits,u.status
+        FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid ORDER BY u.created_at DESC,u.id LIMIT 51 OFFSET ?`,
+      )
+        .bind(offset)
+        .all(),
       // Money is per model, so the running totals stay split by model and the
       // client applies the published rate for each one.
-      env.DB.prepare(`SELECT model,COUNT(*) AS runs,COALESCE(SUM(input),0) AS input,
-        COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(output),0) AS output,
+      env.DB.prepare(
+        `SELECT model,COUNT(*) AS runs,COALESCE(SUM(input),0) AS input,
+        COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(cache_write),0) AS cacheWrite,COALESCE(SUM(output),0) AS output,
         SUM(credits) AS credits
-        FROM usage_log WHERE created_at>? GROUP BY model ORDER BY model`).bind(since).all(),
+        FROM usage_log WHERE created_at>? GROUP BY model ORDER BY model`,
+      )
+        .bind(since)
+        .all(),
       // Per person, still split by model: cost is a model rate times tokens, and
       // one account's runs are usually spread across more than one model.
-      env.DB.prepare(`SELECT u.uid,a.email,u.model,COUNT(*) AS runs,
-        COALESCE(SUM(u.input),0) AS input,COALESCE(SUM(u.cached),0) AS cached,
+      env.DB.prepare(
+        `SELECT u.uid,a.email,u.model,COUNT(*) AS runs,
+        COALESCE(SUM(u.input),0) AS input,COALESCE(SUM(u.cached),0) AS cached,COALESCE(SUM(u.cache_write),0) AS cacheWrite,
         COALESCE(SUM(u.output),0) AS output,COALESCE(SUM(u.credits),0) AS credits,
         COALESCE(SUM(u.points),0) AS points
         FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid
-        WHERE u.created_at>? GROUP BY u.uid,u.model ORDER BY credits DESC,u.uid LIMIT 200`).bind(since).all(),
+        WHERE u.created_at>? GROUP BY u.uid,u.model ORDER BY credits DESC,u.uid LIMIT 200`,
+      )
+        .bind(since)
+        .all(),
       // Cost per billable unit, which is the quantity the point rates are set
       // against. Split by tier because the rate is multiplied by it, and a run
       // that billed nothing would divide into a per-unit cost of infinity.
-      env.DB.prepare(`SELECT kind,tier,COUNT(*) AS runs,COALESCE(SUM(units),0) AS units,
-        COALESCE(SUM(input),0) AS input,COALESCE(SUM(cached),0) AS cached,
+      env.DB.prepare(
+        `SELECT kind,tier,COUNT(*) AS runs,COALESCE(SUM(units),0) AS units,
+        COALESCE(SUM(input),0) AS input,COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(cache_write),0) AS cacheWrite,
         COALESCE(SUM(output),0) AS output,COALESCE(SUM(credits),0) AS credits,
         COALESCE(SUM(points),0) AS points
         FROM usage_log WHERE created_at>? AND kind<>'' AND units>0
-        GROUP BY kind,tier ORDER BY kind,tier`).bind(since).all(),
+        GROUP BY kind,tier ORDER BY kind,tier`,
+      )
+        .bind(since)
+        .all(),
     ]);
     return Response.json({
       entries: entries.results.slice(0, 50),
@@ -87,11 +138,9 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
     });
   }
   if (path === "/admin/settings" && request.method === "GET") {
-    const rows = await env.DB
-      .prepare(
-        "SELECT key,value FROM settings WHERE key IN ('free_trial','default_initial','default_monthly')",
-      )
-      .all<{ key: string; value: string }>();
+    const rows = await env.DB.prepare(
+      "SELECT key,value FROM settings WHERE key IN ('free_trial','default_initial','default_monthly')",
+    ).all<{ key: string; value: string }>();
     const values = Object.fromEntries(
       rows.results.map((entry) => [entry.key, entry.value]),
     );
@@ -115,9 +164,10 @@ export async function adminRequest(request: Request, env: Env, path: string): Pr
       entries.push(["default_monthly", parsed.data.defaultMonthly]);
     await env.DB.batch(
       entries.map(([key, value]) =>
-        env.DB
-          .prepare("UPDATE settings SET value=? WHERE key=?")
-          .bind(String(value), key),
+        env.DB.prepare("UPDATE settings SET value=? WHERE key=?").bind(
+          String(value),
+          key,
+        ),
       ),
     );
     return Response.json(parsed.data);

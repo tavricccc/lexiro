@@ -11,17 +11,24 @@ export function creditsFromUsage(usage: TokenUsage): number | null {
   if (!price) return null;
   const input = tokenCount(usage.input);
   const cached = tokenCount(usage.cached);
+  const cacheWrite = tokenCount(usage.cacheWrite);
   const output = tokenCount(usage.output);
-  if (input === null || cached === null || output === null) return null;
-  const fresh = input > cached ? input - cached : 0n;
+  if (
+    input === null ||
+    cached === null ||
+    cacheWrite === null ||
+    output === null
+  )
+    return null;
+  const accounted = cached + cacheWrite;
+  const fresh = input > accounted ? input - accounted : 0n;
   const scaledCost =
     fresh * scaledPrice(price.input) +
     cached * scaledPrice(price.cached) +
+    cacheWrite * scaledPrice(price.cacheWrite) +
     output * scaledPrice(price.output);
   const divisor = PRICE_SCALE * TOKENS_PER_MILLION;
-  return Number(
-    (scaledCost * CREDITS_PER_US_DOLLAR + divisor - 1n) / divisor,
-  );
+  return Number((scaledCost * CREDITS_PER_US_DOLLAR + divisor - 1n) / divisor);
 }
 
 function tokenCount(value: number | undefined): bigint | null {

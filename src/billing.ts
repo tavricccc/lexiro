@@ -3,7 +3,13 @@ import type { AdminAccount } from "@lexiro/ai-contract";
 
 export class BillingError extends Error {
   constructor(public status: 402 | 409 | 429) {
-    super(status === 402 ? "insufficient_points" : status === 429 ? "retry_limit" : "generation_in_progress");
+    super(
+      status === 402
+        ? "insufficient_points"
+        : status === 429
+          ? "retry_limit"
+          : "generation_in_progress",
+    );
   }
 }
 export interface Reservation {
@@ -20,6 +26,7 @@ export interface Usage {
   model: string;
   input?: number;
   cached?: number;
+  cacheWrite?: number;
   output?: number;
 }
 export interface Settlement {
@@ -70,7 +77,11 @@ export async function account(
  * What a brand new account starts with is the `free_trial` switch and the two
  * new-account defaults beside it. Off means the row is created empty.
  */
-export async function ensureAccount(db: D1Database, uid: string, email: string) {
+export async function ensureAccount(
+  db: D1Database,
+  uid: string,
+  email: string,
+) {
   const now = nowSeconds();
   await db
     .prepare(
@@ -134,11 +145,14 @@ export async function reserve(
   }
   try {
     await db.batch([
-      db.prepare(`INSERT INTO attempt_limits(id,attempts,expires_at)
+      db
+        .prepare(
+          `INSERT INTO attempt_limits(id,attempts,expires_at)
         SELECT DISTINCT value,1,? FROM json_each(?) WHERE true
         ON CONFLICT(id) DO UPDATE SET
           attempts=CASE WHEN expires_at<=? THEN 1 WHEN attempts<6 THEN attempts+1 ELSE NULL END,
-          expires_at=CASE WHEN expires_at<=? THEN excluded.expires_at ELSE expires_at END`)
+          expires_at=CASE WHEN expires_at<=? THEN excluded.expires_at ELSE expires_at END`,
+        )
         .bind(now + 1800, JSON.stringify(limitIds), now, now),
       db
         .prepare(
@@ -165,7 +179,13 @@ export async function reserve(
     return { uid, attempt, charges: rows.results };
   } catch (reason) {
     await release(db, uid, attempt);
-    if (reason instanceof Error && reason.message.includes("NOT NULL constraint failed: attempt_limits.attempts")) throw new BillingError(429);
+    if (
+      reason instanceof Error &&
+      reason.message.includes(
+        "NOT NULL constraint failed: attempt_limits.attempts",
+      )
+    )
+      throw new BillingError(429);
     if (
       reason instanceof Error &&
       reason.message.includes("NOT NULL constraint failed: accounts.points")
@@ -226,13 +246,7 @@ export async function settle(
         (SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)-?),updated_at=?
         WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`,
       )
-      .bind(
-        attempt,
-        chargedCredits,
-        new Date().toISOString(),
-        uid,
-        attempt,
-      ),
+      .bind(attempt, chargedCredits, new Date().toISOString(), uid, attempt),
   ];
   for (const refund of refunds) {
     statements.push(
@@ -254,8 +268,8 @@ export async function settle(
   statements.push(
     db
       .prepare(
-        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,output,created_at,credits,status,kind,tier,units)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       )
       .bind(
         attempt,
@@ -264,6 +278,7 @@ export async function settle(
         usage.model,
         usage.input ?? null,
         usage.cached ?? null,
+        usage.cacheWrite ?? null,
         usage.output ?? null,
         nowSeconds(),
         cost,

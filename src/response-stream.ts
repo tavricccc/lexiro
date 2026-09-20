@@ -16,26 +16,47 @@ const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 const encodeEvent = (event: string, value: Record<string, unknown>) =>
   encoder.encode(`event: ${event}\ndata: ${JSON.stringify(value)}\n\n`);
-const failure = () => encodeEvent("error", { type: "error", code: "upstream_unavailable" });
-const TEXT_EVENTS = new Set(["response.output_text.delta", "response.output_text.done"]);
+const failure = () =>
+  encodeEvent("error", { type: "error", code: "upstream_unavailable" });
+const TEXT_EVENTS = new Set([
+  "response.output_text.delta",
+  "response.output_text.done",
+]);
 const RESPONSE_EVENTS = new Set([
-  "response.created", "response.in_progress", "response.completed",
-  "response.incomplete", "response.failed",
+  "response.created",
+  "response.in_progress",
+  "response.completed",
+  "response.incomplete",
+  "response.failed",
 ]);
 
-interface Frame { event: string; data: string; raw: string }
+interface Frame {
+  event: string;
+  data: string;
+  raw: string;
+}
 
 /** Keep UTF-8/text frames intact; parse JSON only for Response metadata events. */
-async function* frames(reader: ReadableStreamDefaultReader<Uint8Array>): AsyncGenerator<Frame> {
+async function* frames(
+  reader: ReadableStreamDefaultReader<Uint8Array>,
+): AsyncGenerator<Frame> {
   const decoder = new TextDecoder("utf-8", { fatal: true });
-  let pieces: string[] = [], lines: string[] = [], data: string[] = [];
-  let event = "", size = 0;
+  let pieces: string[] = [],
+    lines: string[] = [],
+    data: string[] = [];
+  let event = "",
+    size = 0;
   const line = (raw: string): Frame | undefined => {
     lines.push(raw);
     const text = raw.endsWith("\r") ? raw.slice(0, -1) : raw;
     if (text === "") {
-      const result = data.length ? { event, data: data.join("\n"), raw: `${lines.join("\n")}\n` } : undefined;
-      lines = []; data = []; event = ""; size = 0;
+      const result = data.length
+        ? { event, data: data.join("\n"), raw: `${lines.join("\n")}\n` }
+        : undefined;
+      lines = [];
+      data = [];
+      event = "";
+      size = 0;
       return result;
     }
     if (text.startsWith("data:")) {
@@ -46,7 +67,8 @@ async function* frames(reader: ReadableStreamDefaultReader<Uint8Array>): AsyncGe
   for (;;) {
     const { value, done } = await reader.read();
     const text = decoder.decode(value, { stream: !done });
-    let offset = 0, end: number;
+    let offset = 0,
+      end: number;
     while ((end = text.indexOf("\n", offset)) !== -1) {
       const part = text.slice(offset, end);
       size += part.length;
@@ -79,27 +101,44 @@ const USAGE_FIELDS = ["input_tokens", "output_tokens", "total_tokens"] as const;
  * the prompt at any time, and a forwarder that only knows the names it must
  * remove would pass that straight through to the browser.
  */
-function publicResponse(response: Record<string, unknown>): Record<string, unknown> {
+function publicResponse(
+  response: Record<string, unknown>,
+): Record<string, unknown> {
   const clean: Record<string, unknown> = { id: response.id };
   if (typeof response.model === "string") clean.model = response.model;
   if (typeof response.status === "string") clean.status = response.status;
   if (record(response.usage)) {
     const usage: Record<string, unknown> = {};
     for (const field of USAGE_FIELDS)
-      if (typeof response.usage[field] === "number") usage[field] = response.usage[field];
+      if (typeof response.usage[field] === "number")
+        usage[field] = response.usage[field];
     const input = response.usage.input_tokens_details;
-    if (record(input) && typeof input.cached_tokens === "number")
-      usage.input_tokens_details = { cached_tokens: input.cached_tokens };
+    if (record(input)) {
+      const details: Record<string, number> = {};
+      if (typeof input.cached_tokens === "number")
+        details.cached_tokens = input.cached_tokens;
+      if (typeof input.cache_write_tokens === "number")
+        details.cache_write_tokens = input.cache_write_tokens;
+      if (Object.keys(details).length) usage.input_tokens_details = details;
+    }
     const output = response.usage.output_tokens_details;
     if (record(output) && typeof output.reasoning_tokens === "number")
-      usage.output_tokens_details = { reasoning_tokens: output.reasoning_tokens };
+      usage.output_tokens_details = {
+        reasoning_tokens: output.reasoning_tokens,
+      };
     clean.usage = usage;
   }
   // Only the reason survives: the provider's explanation can quote the prompt.
-  if (record(response.incomplete_details) && typeof response.incomplete_details.reason === "string")
+  if (
+    record(response.incomplete_details) &&
+    typeof response.incomplete_details.reason === "string"
+  )
     clean.incomplete_details = { reason: response.incomplete_details.reason };
   if (response.error !== null && response.error !== undefined)
-    clean.error = { code: "upstream_unavailable", message: "Generation failed." };
+    clean.error = {
+      code: "upstream_unavailable",
+      message: "Generation failed.",
+    };
   return clean;
 }
 
@@ -139,24 +178,43 @@ export function sanitizeResponseStream(
         // Only known events are forwarded; unexpected metadata cannot bypass redaction.
         if (!RESPONSE_EVENTS.has(frame.event)) continue;
         const event: unknown = JSON.parse(frame.data);
-        if (!record(event) || event.type !== frame.event || !record(event.response))
+        if (
+          !record(event) ||
+          event.type !== frame.event ||
+          !record(event.response)
+        )
           throw new Error("Invalid Response event");
         const response = event.response;
-        if (typeof response.id !== "string" || !/^resp_[A-Za-z0-9_-]{1,200}$/.test(response.id))
+        if (
+          typeof response.id !== "string" ||
+          !/^resp_[A-Za-z0-9_-]{1,200}$/.test(response.id)
+        )
           throw new Error("Invalid response identity");
         if (frame.event === "response.created") {
           if (cursor) throw new Error("Duplicate response identity");
           cursor = response.id;
-        } else if (cursor !== response.id) throw new Error("Response identity changed");
+        } else if (cursor !== response.id)
+          throw new Error("Response identity changed");
 
-        const terminal = ["response.completed", "response.incomplete", "response.failed"].includes(frame.event);
+        const terminal = [
+          "response.completed",
+          "response.incomplete",
+          "response.failed",
+        ].includes(frame.event);
         let metadata: Record<string, unknown> | undefined;
         if (terminal) {
-          const truncated = frame.event === "response.incomplete" && record(response.incomplete_details) &&
+          const truncated =
+            frame.event === "response.incomplete" &&
+            record(response.incomplete_details) &&
             response.incomplete_details.reason === "max_output_tokens";
           metadata = await finish({
             cursor,
-            status: frame.event === "response.completed" ? "complete" : truncated ? "truncated" : "failed",
+            status:
+              frame.event === "response.completed"
+                ? "complete"
+                : truncated
+                  ? "truncated"
+                  : "failed",
             response,
           });
           if (cancelled) return;
@@ -168,37 +226,49 @@ export function sanitizeResponseStream(
         // Project envelope fields too: a new top-level echo must not expose a prompt.
         yield encodeEvent(frame.event, {
           type: frame.event,
-          ...(typeof event.sequence_number === "number" ? { sequence_number: event.sequence_number } : {}),
+          ...(typeof event.sequence_number === "number"
+            ? { sequence_number: event.sequence_number }
+            : {}),
           response: clean,
         });
         if (terminal) return;
       }
       if (!cancelled) throw new Error("Stream ended before terminal event");
     } catch {
-      try { await finish({ cursor, status: cancelled ? "cancelled" : "failed" }); }
-      catch { /* Settlement errors must not become public provider details. */ }
+      try {
+        await finish({ cursor, status: cancelled ? "cancelled" : "failed" });
+      } catch {
+        /* Settlement errors must not become public provider details. */
+      }
       if (!cancelled) yield failure();
     } finally {
-      try { await reader.cancel(); } finally { reader.releaseLock(); }
+      try {
+        await reader.cancel();
+      } finally {
+        reader.releaseLock();
+      }
     }
   }
   const iterator = events();
-  return new ReadableStream<Uint8Array>({
-    async pull(controller) {
-      const next = await iterator.next();
-      if (cancelled) return;
-      if (next.done) controller.close();
-      else controller.enqueue(next.value);
+  return new ReadableStream<Uint8Array>(
+    {
+      async pull(controller) {
+        const next = await iterator.next();
+        if (cancelled) return;
+        if (next.done) controller.close();
+        else controller.enqueue(next.value);
+      },
+      async cancel() {
+        cancelled = true;
+        try {
+          await reader.cancel();
+          await iterator.return(undefined);
+        } finally {
+          reader.releaseLock();
+          await finish({ cursor, status: "cancelled" });
+        }
+      },
     },
-    async cancel() {
-      cancelled = true;
-      try {
-        await reader.cancel();
-        await iterator.return(undefined);
-      } finally {
-        reader.releaseLock();
-        await finish({ cursor, status: "cancelled" });
-      }
-    },
-  }, { highWaterMark: 0 });
+    { highWaterMark: 0 },
+  );
 }

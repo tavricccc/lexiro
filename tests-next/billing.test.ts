@@ -43,6 +43,13 @@ describe("D1 atomic credit ledger", () => {
         output: 20,
       }),
     ).toBe(4);
+    expect(
+      creditsFromUsage({
+        model: "gpt-5.6-luna",
+        input: 4_000,
+        cacheWrite: 4_000,
+      }),
+    ).toBe(8);
     expect(creditsFromUsage({ model: "unknown", input: 100 })).toBeNull();
   });
   it("bounds retries even when failures refund and remove their charge records", async () => {
@@ -50,7 +57,9 @@ describe("D1 atomic credit ledger", () => {
       const reservation = await reserve(db, "u", units(["same-source"]), 2);
       await settle(db, reservation, reservation.charges, { model: "test" });
     }
-    await expect(reserve(db, "u", units(["same-source"]), 2)).rejects.toMatchObject({ status: 429, message: "retry_limit" });
+    await expect(
+      reserve(db, "u", units(["same-source"]), 2),
+    ).rejects.toMatchObject({ status: 429, message: "retry_limit" });
     expect(await balance()).toBe(100);
     const fresh = await reserve(db, "u", units(["new-session-source"]), 2);
     expect(fresh.charges).toHaveLength(1);
@@ -134,7 +143,13 @@ describe("D1 atomic credit ledger", () => {
   it("runs a batch the balance cannot cover and settles it at exactly zero", async () => {
     const first = await reserve(db, "u", units(["expensive"]), 1000);
     expect(first.charges).toHaveLength(1);
-    await settle(db, first, [], { model: "test" }, { charged: 4_000, cost: 4_000 });
+    await settle(
+      db,
+      first,
+      [],
+      { model: "test" },
+      { charged: 4_000, cost: 4_000 },
+    );
     expect(await balance()).toBe(0);
     await expect(
       reserve(db, "u", units(["one-more"]), 2),
@@ -143,7 +158,13 @@ describe("D1 atomic credit ledger", () => {
   });
   it("returns the whole hold when an unaffordable batch fails", async () => {
     const first = await reserve(db, "u", units(["expensive"]), 1000);
-    await settle(db, first, first.charges, { model: "test" }, { charged: 0, cost: 0 });
+    await settle(
+      db,
+      first,
+      first.charges,
+      { model: "test" },
+      { charged: 0, cost: 0 },
+    );
     expect(await balance()).toBe(100);
   });
   it("records provider cost for a run nobody was charged for", async () => {
@@ -219,11 +240,16 @@ describe("D1 atomic credit ledger", () => {
   it("hands a new account the configured defaults while the trial is on", async () => {
     await db.batch([
       db.prepare("UPDATE settings SET value='true' WHERE key='free_trial'"),
-      db.prepare("UPDATE settings SET value='1500' WHERE key='default_initial'"),
+      db.prepare(
+        "UPDATE settings SET value='1500' WHERE key='default_initial'",
+      ),
       db.prepare("UPDATE settings SET value='250' WHERE key='default_monthly'"),
     ]);
     await ensureAccount(db, "new", "new@example.test");
-    expect(await account(db, "new")).toMatchObject({ points: 1500, monthly: 250 });
+    expect(await account(db, "new")).toMatchObject({
+      points: 1500,
+      monthly: 250,
+    });
     // Signing in again is not a refill, and it does keep the address current.
     await db.prepare("UPDATE accounts SET points=0 WHERE uid='new'").run();
     await ensureAccount(db, "new", "renamed@example.test");
