@@ -114,21 +114,6 @@ export function mergeWordDrafts(drafts: WordDraft[]): WordDraft[] {
   );
 }
 
-/**
- * How many senses one source may come back with.
- *
- * It is the number of meanings the source itself named, and nothing more: a
- * hint of 「銀行與河岸」 asks for two, a bare word asks for one. Generation used
- * to allow one extra on top, which is how apple acquired 眼珠. Supplementing a
- * word with meanings it does not yet have is now a separate, asked-for job.
- */
-function senseAllowance(source: WordGenerationSource): number {
-  return Math.max(
-    1,
-    source.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
-  );
-}
-
 export function parseWordGenerationJson(
   text: string,
   sources: WordGenerationSource[],
@@ -158,12 +143,7 @@ export function parseWordGenerationJson(
     const word = expected.word;
     if (containsHan(word))
       throw new Error(`第 ${wordIndex + 1} 個單字必須使用英文`);
-    const maximum = senseAllowance(expected);
-    if (
-      !Array.isArray(item.senses) ||
-      !item.senses.length ||
-      item.senses.length > maximum
-    )
+    if (!Array.isArray(item.senses) || item.senses.length !== 1)
       throw new Error(`第 ${wordIndex + 1} 個單字詞義數量不正確`);
     return {
       word,
@@ -207,8 +187,7 @@ export function parseSupplementaryJson(
     throw new Error("JSON 必須是 object");
   const source = data as Record<string, unknown>;
   assertKnownKeys(source, ["items"], "AI 補充詞義資料");
-  if (!Array.isArray(source.items))
-    throw new Error("缺少有效的 items 陣列");
+  if (!Array.isArray(source.items)) throw new Error("缺少有效的 items 陣列");
   if (source.items.length !== sources.length)
     throw new Error(`AI 回覆必須依序提供 ${sources.length} 筆`);
 
@@ -221,7 +200,9 @@ export function parseSupplementaryJson(
     if (!Array.isArray(item.senses) || item.senses.length > limit)
       throw new Error(`第 ${wordIndex + 1} 個單字詞義數量不正確`);
     const taken = new Set(
-      expected.existing.map((sense) => senseSignature(sense.pos, sense.meaningZh)),
+      expected.existing.map((sense) =>
+        senseSignature(sense.pos, sense.meaningZh),
+      ),
     );
     return {
       word: expected.word,
