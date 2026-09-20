@@ -3,11 +3,9 @@ import { useState } from "react";
 import type { WordDraft } from "@/types";
 import { ExampleFields } from "@/components/library/example-fields";
 import { Button } from "@/components/ui/button";
-import {
-  ListActionRow,
-  ListInputRow,
-  ListSection,
-} from "@/components/ui/list";
+import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
+import { ListActionRow, ListInputRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 
 /**
@@ -15,8 +13,8 @@ import { t } from "@/lib/i18n";
  *
  * The headword is a group, each sense is a group, and what you can do to a
  * sense — add an example, remove it — are rows of that group instead of a strip
- * of small buttons under it. Saving is the one full-width button at the end;
- * cancelling is the quiet row under it, not its equal beside it.
+ * of small buttons under it. Saving and cancelling stay on the shared bottom
+ * action surface, so a long list of senses never hides the way forward.
  */
 export function WordEditor({
   value,
@@ -72,7 +70,9 @@ export function WordEditor({
 
       {draft.senses.map((sense, index) => (
         <ListSection
-          footer={sense.supplementary ? t("wordEdit.supplementaryHint") : undefined}
+          footer={
+            sense.supplementary ? t("wordEdit.supplementaryHint") : undefined
+          }
           header={t("wordEdit.sense", { count: index + 1 })}
           key={sense.id}
         >
@@ -138,7 +138,7 @@ export function WordEditor({
         </p>
       )}
 
-      <div className="space-y-4">
+      <StepActions>
         <Button
           className="w-full"
           disabled={busy}
@@ -146,14 +146,19 @@ export function WordEditor({
           size="lg"
           type="button"
         >
+          <Icons.success />
           {t("wordEdit.save")}
         </Button>
-        <ListSection>
-          <ListActionRow disabled={busy} onClick={onCancel}>
-            {t("setEditor.cancel")}
-          </ListActionRow>
-        </ListSection>
-      </div>
+        <Button
+          disabled={busy}
+          onClick={onCancel}
+          type="button"
+          variant="ghost"
+        >
+          <Icons.cancel />
+          {t("setEditor.cancel")}
+        </Button>
+      </StepActions>
     </div>
   );
 }

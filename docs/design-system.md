@@ -124,10 +124,11 @@ every screen that asks for something uses it.
 - A choice within a form or settings group uses `ListPicker`, whose shared select
   popover keeps the page layout stable. A task with its own consequence or more
   than a handful of choices belongs on its own page.
-- A screen the reader is working through — a study card, a step of a flow — is
-  a full-height column with its action at the bottom, where a thumb already is.
-  The action is in the flow at the end of the column, never a bar floating over
-  the page.
+- A screen the reader is working through — a study card or a step of a flow —
+  keeps its advancing action on the shared `StepActions` surface at the safe
+  bottom edge. The document reserves matching space, so content is never hidden
+  behind the controls and the learner never has to scroll to the end just to
+  continue.
 - Rows are at least 52px tall and the whole row is the target, never the
   chevron or the label alone.
 

@@ -8,7 +8,7 @@ import {
 } from "@/components/ai/use-ai-generation";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import { ListActionRow, ListSection } from "@/components/ui/list";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { wordTask } from "@/src/lib/ai/tasks";
 import { WordPreview } from "@/components/library/word-preview";
@@ -93,7 +93,8 @@ export function WordAssistant({
           ))}
         </ul>
 
-        <div className="space-y-4">
+        <p className="type-hint">{t("ai.applyHint")}</p>
+        <StepActions width="wide">
           <Button
             className="w-full"
             disabled={applying || !state.items.length}
@@ -111,13 +112,16 @@ export function WordAssistant({
             <Icons.success />
             {t("ai.applyWords")}
           </Button>
-          <p className="type-hint">{t("ai.applyHint")}</p>
-          <ListSection>
-            <ListActionRow disabled={applying} onClick={() => onPhase("run")}>
-              {t("ai.reviewBack")}
-            </ListActionRow>
-          </ListSection>
-        </div>
+          <Button
+            disabled={applying}
+            onClick={() => onPhase("run")}
+            type="button"
+            variant="ghost"
+          >
+            <Icons.back />
+            {t("ai.reviewBack")}
+          </Button>
+        </StepActions>
       </fieldset>
     );
 

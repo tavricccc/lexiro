@@ -8,7 +8,7 @@ import { GenerationControls } from "./generation-controls";
 import { useManagedAccount } from "./use-managed-account";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import { ListActionRow, ListSection } from "@/components/ui/list";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 
 /**
@@ -170,9 +170,23 @@ export function AiRunPanel<T>({
         </p>
       )}
 
-      {/* One thing to press. Everything else this screen can do is a quiet row
-          under it, in the order you would reach for them. */}
-      <div className="space-y-4">
+      {localCount > 0 && (
+        <p className="type-hint">
+          {t("ai.builtLocally", { count: localCount })}
+        </p>
+      )}
+      {started && (
+        <p className="type-hint">
+          {t(running ? "ai.keepWorking" : "ai.keptResults")}
+        </p>
+      )}
+      {Array.from(new Set(state.notices)).map((notice) => (
+        <p className="type-hint" key={notice}>
+          {notice}
+        </p>
+      ))}
+
+      <StepActions width="wide">
         {running ? (
           <Button
             className="w-full"
@@ -188,61 +202,52 @@ export function AiRunPanel<T>({
           <>
             <Button
               className="w-full"
-              disabled={!canRun}
-              onClick={state.remaining > 0 && canRun ? onResume : onStart}
+              disabled={done && onReview ? false : !canRun}
+              onClick={
+                done && onReview
+                  ? onReview
+                  : state.remaining > 0 && canRun
+                    ? onResume
+                    : onStart
+              }
               size="lg"
               type="button"
             >
-              <Icons.generate />
-              {state.remaining > 0 && canRun
-                ? t(state.status === "error" ? "ai.retryCurrent" : "ai.resume")
-                : started
-                  ? t("ai.regenerate")
-                  : actionLabel}
+              {done && onReview ? <Icons.next /> : <Icons.generate />}
+              {done && onReview
+                ? t("ai.viewResults")
+                : state.remaining > 0 && canRun
+                  ? t(
+                      state.status === "error"
+                        ? "ai.retryCurrent"
+                        : "ai.resume",
+                    )
+                  : started
+                    ? t("ai.regenerate")
+                    : actionLabel}
             </Button>
-            {(state.remaining > 0 ||
-              (done && (onReview || (onAppend && configured)))) && (
-              <ListSection>
-                {state.remaining > 0 && canRun && (
-                  <ListActionRow onClick={onStart}>
-                    {t("ai.regenerate")}
-                  </ListActionRow>
-                )}
-                {done && onReview && (
-                  <ListActionRow onClick={onReview}>
-                    {t("ai.viewResults")}
-                  </ListActionRow>
-                )}
-                {done && onAppend && configured && (
-                  <ListActionRow onClick={onAppend}>
-                    {admin
-                      ? t("ai.append")
-                      : t("managed.appendCost", {
-                          points:
-                            appendCost.min === appendCost.max
-                              ? appendCost.max
-                              : `${appendCost.min}–${appendCost.max}`,
-                        })}
-                  </ListActionRow>
-                )}
-              </ListSection>
+            {(state.remaining > 0 || (done && onReview)) && canRun && (
+              <Button onClick={onStart} type="button" variant="ghost">
+                <Icons.generate />
+                {t("ai.regenerate")}
+              </Button>
+            )}
+            {done && onAppend && configured && (
+              <Button onClick={onAppend} type="button" variant="ghost">
+                <Icons.generate />
+                {admin
+                  ? t("ai.append")
+                  : t("managed.appendCost", {
+                      points:
+                        appendCost.min === appendCost.max
+                          ? appendCost.max
+                          : `${appendCost.min}–${appendCost.max}`,
+                    })}
+              </Button>
             )}
           </>
         )}
-        {localCount > 0 && (
-          <p className="type-hint">{t("ai.builtLocally", { count: localCount })}</p>
-        )}
-        {started && (
-          <p className="type-hint">
-            {t(running ? "ai.keepWorking" : "ai.keptResults")}
-          </p>
-        )}
-        {Array.from(new Set(state.notices)).map((notice) => (
-          <p className="type-hint" key={notice}>
-            {notice}
-          </p>
-        ))}
-      </div>
+      </StepActions>
 
       {admin && started && <AiUsage usage={state.usage} />}
     </div>

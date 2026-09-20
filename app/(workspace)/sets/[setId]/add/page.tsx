@@ -10,7 +10,7 @@ export default async function AddWordPage({
   const { setId } = await params;
   return (
     <SetToolPage setId={setId} title={t("setEditor.addWord")}>
-      <SetWordAddition mode="manual" setId={setId} />
+      <SetWordAddition setId={setId} />
     </SetToolPage>
   );
 }

@@ -17,6 +17,7 @@ import {
   ListSection,
 } from "@/components/ui/list";
 import { EmptyState } from "@/components/ui/page-state";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { supplementTask } from "@/src/lib/ai/tasks";
 import { setWordDrafts } from "@/src/lib/word-edit";
@@ -73,10 +74,7 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         })),
     [chosen, words],
   );
-  const task = useMemo(
-    () => supplementTask(sources, limit),
-    [limit, sources],
-  );
+  const task = useMemo(() => supplementTask(sources, limit), [limit, sources]);
 
   const { items, status } = generation.state;
   useReviewHandoff(status, () => setPhase("review"));
@@ -137,7 +135,8 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
           </p>
         )}
 
-        <div className="space-y-4">
+        <p className="type-hint">{t("supplement.applyHint")}</p>
+        <StepActions>
           <Button
             className="w-full"
             disabled={saving || !items.some((draft) => draft.senses.length)}
@@ -148,13 +147,16 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
             <Icons.success />
             {t("supplement.apply")}
           </Button>
-          <p className="type-hint">{t("supplement.applyHint")}</p>
-          <ListSection>
-            <ListActionRow disabled={saving} onClick={() => setPhase("run")}>
-              {t("ai.reviewBack")}
-            </ListActionRow>
-          </ListSection>
-        </div>
+          <Button
+            disabled={saving}
+            onClick={() => setPhase("run")}
+            type="button"
+            variant="ghost"
+          >
+            <Icons.back />
+            {t("ai.reviewBack")}
+          </Button>
+        </StepActions>
       </fieldset>
     );
 

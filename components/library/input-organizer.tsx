@@ -6,6 +6,7 @@ import { CreditBadge } from "@/components/ai/credit-badge";
 import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
 import { ListActionRow, ListSection } from "@/components/ui/list";
 import {
   managedFetch,
@@ -116,7 +117,7 @@ export function InputOrganizer({
             {error}
           </p>
         )}
-        <div className="space-y-4">
+        <StepActions width="wide">
           <Button
             className="w-full"
             disabled={!review.trim()}
@@ -127,12 +128,15 @@ export function InputOrganizer({
             <Icons.next />
             {t("managed.confirmList")}
           </Button>
-          <ListSection>
-            <ListActionRow onClick={() => onPhase("input")}>
-              {t("managed.reorganize")}
-            </ListActionRow>
-          </ListSection>
-        </div>
+          <Button
+            onClick={() => onPhase("input")}
+            type="button"
+            variant="ghost"
+          >
+            <Icons.back />
+            {t("managed.reorganize")}
+          </Button>
+        </StepActions>
       </div>
     );
 
@@ -161,7 +165,12 @@ export function InputOrganizer({
             value={t("managed.expectedShort", { points: 5 })}
           />
         </Button>
-        <Button asChild type="button" variant="secondary" disabled={busy || !uid}>
+        <Button
+          asChild
+          type="button"
+          variant="secondary"
+          disabled={busy || !uid}
+        >
           <label>
             <Icons.import />
             {t("managed.photo")}

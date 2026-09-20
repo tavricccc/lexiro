@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 
 /**
@@ -40,11 +41,11 @@ export function StepFrame({
   width?: "narrow" | "wide";
 }) {
   return (
-    <div className={width === "wide" ? "mx-auto max-w-3xl" : "mx-auto max-w-xl"}>
+    <div
+      className={width === "wide" ? "mx-auto max-w-3xl" : "mx-auto max-w-xl"}
+    >
       <PageHeader
-        back={
-          onBack ? <BackControl onClick={onBack} /> : back
-        }
+        back={onBack ? <BackControl onClick={onBack} /> : back}
         className="mb-5 md:mb-6"
         title={title}
       />
@@ -57,7 +58,7 @@ export function StepFrame({
 
       {children}
 
-      {footer && <div className="mt-7 rule-t pt-6">{footer}</div>}
+      {footer && <StepActions width={width}>{footer}</StepActions>}
     </div>
   );
 }

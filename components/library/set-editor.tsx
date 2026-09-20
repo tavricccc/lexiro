@@ -20,6 +20,7 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { ListInputRow, ListPicker, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -218,9 +219,8 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
           </button>
         </p>
 
-        <div className="mt-7 flex justify-end">
+        <StepActions width="wide">
           <Button
-            className="w-full sm:w-auto"
             disabled={form.formState.isSubmitting || status !== "ready"}
             size="lg"
             type="submit"
@@ -230,7 +230,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
               ? t("setEditor.saving")
               : t("setEditor.saveWord")}
           </Button>
-        </div>
+        </StepActions>
       </div>
 
       <ConfirmDialog

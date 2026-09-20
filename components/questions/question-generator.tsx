@@ -19,7 +19,8 @@ import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import { FinishPanel } from "@/components/ui/finish-panel";
-import { ListActionRow, ListPicker, ListSection } from "@/components/ui/list";
+import { ListPicker, ListSection } from "@/components/ui/list";
+import { StepActions } from "@/components/ui/step-actions";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
@@ -270,7 +271,8 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       >
         <fieldset disabled={saving} className="min-w-0 space-y-7">
           <GeneratedQuestionResults items={run.items} />
-          <div className="space-y-4">
+          <p className="type-hint">{t("ai.savedHint")}</p>
+          <StepActions width="wide">
             <Button
               className="w-full"
               disabled={saving || !run.items.length}
@@ -281,13 +283,16 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
               <Icons.success />
               {t("ai.applyQuestions")}
             </Button>
-            <p className="type-hint">{t("ai.savedHint")}</p>
-            <ListSection>
-              <ListActionRow disabled={saving} onClick={() => setStep("run")}>
-                {t("ai.reviewBack")}
-              </ListActionRow>
-            </ListSection>
-          </div>
+            <Button
+              disabled={saving}
+              onClick={() => setStep("run")}
+              type="button"
+              variant="ghost"
+            >
+              <Icons.back />
+              {t("ai.reviewBack")}
+            </Button>
+          </StepActions>
         </fieldset>
       </StepFrame>
     );

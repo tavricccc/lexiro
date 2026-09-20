@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { ListPicker, ListSection } from "@/components/ui/list";
+import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { setWordDrafts } from "@/src/lib/word-edit";
@@ -82,14 +84,12 @@ export function SetMetadata({ setId }: { setId: string }) {
           {error}
         </p>
       )}
-      <Button
-        className="w-full"
-        disabled={busy}
-        onClick={() => void save()}
-        size="lg"
-      >
-        {t("setEditor.save")}
-      </Button>
+      <StepActions>
+        <Button disabled={busy} onClick={() => void save()} size="lg">
+          <Icons.success />
+          {t("setEditor.save")}
+        </Button>
+      </StepActions>
     </div>
   );
 }

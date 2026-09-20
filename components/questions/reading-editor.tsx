@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
 import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { randomUUID } from "@/src/lib/id";
@@ -107,14 +108,18 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
   const valid =
     !titleError &&
     !passageError &&
-    childErrors.every((errors) => !errors.options && !errors.prompt && !errors.source);
+    childErrors.every(
+      (errors) => !errors.options && !errors.prompt && !errors.source,
+    );
 
   const submit = async () => {
     setSubmitted(true);
     setSaveError("");
     if (!valid) return;
     const timestamp = new Date().toISOString();
-    const sources = children.map((child) => parseSenseKey(child.source, state.words));
+    const sources = children.map((child) =>
+      parseSenseKey(child.source, state.words),
+    );
     if (sources.some((source) => !source)) {
       setSaveError(t("questions.unknownSense"));
       return;
@@ -203,7 +208,9 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
                 <Button
                   aria-label={t("questions.removeChild", { index: index + 1 })}
                   onClick={() =>
-                    setChildren((items) => items.filter((_, at) => at !== index))
+                    setChildren((items) =>
+                      items.filter((_, at) => at !== index),
+                    )
                   }
                   size="icon"
                   type="button"
@@ -259,21 +266,22 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
         ))}
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-        <Button
-          onClick={() => setChildren((items) => [...items, emptyChild()])}
-          size="sm"
-          type="button"
-          variant="secondary"
-        >
-          <Icons.create />
-          {t("questions.addChild")}
-        </Button>
+      <Button
+        className="mt-6"
+        onClick={() => setChildren((items) => [...items, emptyChild()])}
+        size="sm"
+        type="button"
+        variant="secondary"
+      >
+        <Icons.create />
+        {t("questions.addChild")}
+      </Button>
+      <StepActions width="wide">
         <Button onClick={() => void submit()} size="lg" type="button">
           <Icons.success />
           {t("questions.save")}
         </Button>
-      </div>
+      </StepActions>
       {(saveError || (submitted && !valid)) && (
         <p className="mt-3 text-right text-xs text-destructive" role="alert">
           {saveError || t("questions.fixErrors")}
