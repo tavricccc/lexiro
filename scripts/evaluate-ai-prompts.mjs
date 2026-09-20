@@ -37,12 +37,8 @@ async function saveArtifact(name, content) {
 const suffix = process.argv[4]
   ? `-${process.argv[4].replace(/[^a-z0-9-]/gi, "_")}`
   : "";
-const cli =
-  process.env.CODEX_PROMPT_EVAL_CLI ||
-  join(
-    process.env.APPDATA ?? "",
-    "npm/node_modules/@openai/codex/bin/codex.js",
-  );
+const cli = process.env.CODEX_PROMPT_EVAL_CLI || "codex";
+const cliIsNodeScript = cli.endsWith(".js");
 const scratch = await mkdtemp(join(tmpdir(), "lexiro-prompt-eval-"));
 await mkdir(outputRoot, { recursive: true });
 await mkdir(archiveRoot, { recursive: true });
@@ -97,11 +93,11 @@ try {
             : trial.kind === "words"
               ? wordTask(buildWordGenerationSources(trial.raw))
               : questionTask(
-                trial.words,
-                trial.words,
-                trial.kind,
-                trial.difficulty,
-              );
+                  trial.words,
+                  trial.words,
+                  trial.kind,
+                  trial.difficulty,
+                );
       if (phase === "baseline" && !trial.turns)
         throw new Error(
           `No historical baseline exists for ${trial.id}; run final instead.`,
@@ -169,9 +165,9 @@ try {
       const start = Date.now();
       const capture = await new Promise((resolveCall, reject) => {
         const child = spawn(
-          process.execPath,
+          cliIsNodeScript ? process.execPath : cli,
           [
-            cli,
+            ...(cliIsNodeScript ? [cli] : []),
             "exec",
             "--ignore-user-config",
             "--ephemeral",
@@ -215,6 +211,8 @@ try {
         /model:\s*gpt-5\.6-luna\b/.test(capture.transcript) &&
         /reasoning effort:\s*low\b/.test(capture.transcript);
       let parsedCount = 0,
+        responseItemCount = 0,
+        responseSenseCount = 0,
         error = "",
         response;
       try {
@@ -223,6 +221,16 @@ try {
             `CLI failed or model configuration unverified (exit ${capture.code}).`,
           );
         response = JSON.parse(raw);
+        responseItemCount = Array.isArray(response.items)
+          ? response.items.length
+          : 0;
+        responseSenseCount = Array.isArray(response.items)
+          ? response.items.reduce(
+              (total, item) =>
+                total + (Array.isArray(item?.senses) ? item.senses.length : 0),
+              0,
+            )
+          : 0;
         if (!turns[index].parse)
           throw new Error("No matching application step parser.");
         parsedCount = turns[index].parse(raw).length;
@@ -242,6 +250,8 @@ try {
         promptCharacters: prompt.length,
         outputCharacters: raw.length,
         parsedCount,
+        responseItemCount,
+        responseSenseCount,
         error,
         response: response ?? raw,
       };

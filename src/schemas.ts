@@ -15,13 +15,16 @@ const choices = z.object({ answer: text, distractors: texts });
  * rejected outright, so the whole batch failed before a single word was
  * generated. Null says the same thing and is a value the schema can hold.
  */
-export const wordOutput = () =>
+export const wordOutput = ({ min, max }: { min: number; max: number }) =>
   z.object({
     items: z.array(
       z.object({
-        senses: z.array(
-          z.object({ pos: text.nullable(), meaningZh: text, example: text }),
-        ),
+        senses: z
+          .array(
+            z.object({ pos: text.nullable(), meaningZh: text, example: text }),
+          )
+          .min(min)
+          .max(max),
       }),
     ),
   });

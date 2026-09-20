@@ -28,9 +28,9 @@ function usableSense(
 ): boolean {
   return Boolean(
     normalizePartOfSpeech(sense.pos ?? posHint ?? "") &&
-      /\p{Script=Han}/u.test(sense.meaningZh) &&
-      sense.example.trim() &&
-      !/\p{Script=Han}/u.test(sense.example),
+    /\p{Script=Han}/u.test(sense.meaningZh) &&
+    sense.example.trim() &&
+    !/\p{Script=Han}/u.test(sense.example),
   );
 }
 
@@ -63,7 +63,9 @@ export async function settleGeneration(
   prepared: PreparedGeneration,
   terminal: StreamTerminal,
   model: string,
-  recoverUsage?: (cursor: string) => Promise<Record<string, unknown> | undefined>,
+  recoverUsage?: (
+    cursor: string,
+  ) => Promise<Record<string, unknown> | undefined>,
 ) {
   const usage: Usage = { model };
   const upstream =
@@ -76,6 +78,9 @@ export async function settleGeneration(
     usage.output = count(upstream.usage.output_tokens);
     usage.cached = record(upstream.usage.input_tokens_details)
       ? count(upstream.usage.input_tokens_details.cached_tokens)
+      : undefined;
+    usage.cacheWrite = record(upstream.usage.input_tokens_details)
+      ? count(upstream.usage.input_tokens_details.cache_write_tokens)
       : undefined;
   }
   const kind = prepared.request.kind;
@@ -98,21 +103,13 @@ export async function settleGeneration(
         if (kind === "words" && Array.isArray(data.items)) {
           const sources = buildWordGenerationSources(prepared.request.raw!);
           data.items.forEach((item, index) => {
-            const parsed = wordOutput().safeParse({ items: [item] });
+            const parsed = wordOutput({ min: 1, max: 1 }).safeParse({
+              items: [item],
+            });
             const source = sources[index];
             if (!parsed.success || !source) return;
             const senses = parsed.data.items[0].senses;
-            const maximum = Math.max(
-              1,
-              source.hint?.split(/與|或|並可指/).filter(Boolean).length ?? 0,
-            );
-            if (
-              senses.length &&
-              senses.length <= maximum &&
-              senses.every((sense) =>
-                usableSense(sense, source.posHint),
-              )
-            )
+            if (senses.every((sense) => usableSense(sense, source.posHint)))
               valid.add(index);
           });
         } else if (kind === "senses" && Array.isArray(data.items)) {
@@ -121,7 +118,10 @@ export async function settleGeneration(
           // looked at, not for coming back with something.
           const words = supplementWords(prepared.request.sources ?? []);
           data.items.forEach((item, index) => {
-            const parsed = wordOutput().safeParse({ items: [item] });
+            const parsed = wordOutput({
+              min: 0,
+              max: prepared.request.limit ?? 0,
+            }).safeParse({ items: [item] });
             if (!parsed.success || !words[index]) return;
             const senses = parsed.data.items[0].senses;
             if (

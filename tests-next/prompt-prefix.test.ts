@@ -2,15 +2,84 @@ import { describe, expect, it } from "vitest";
 import { encode } from "gpt-tokenizer";
 import { prepareGeneration, upstreamRequest } from "../src/generation";
 import { QUESTION_KINDS } from "@lexiro/ai-contract";
+import { QUESTION_CACHE_KEY, TASK_RULES } from "../src/question-prompts";
 
 describe("private generation prompts", () => {
-  it.each(["words", ...QUESTION_KINDS] as const)("keeps %s instructions stable across different sources", async (kind) => {
-    const prepared = await Promise.all(["apple", "river"].map((word) => prepareGeneration({ kind, tier: "lite", session: crypto.randomUUID(), ...(kind === "words" ? { raw: word } : { sources: [{ ref: "s1", word, pos: "n.", meaningZh: "測試" }], difficulty: 2 }) }, word)));
-    expect(prepared[0].instructions).toBe(prepared[1].instructions);
-    expect(prepared[0].input).not.toBe(prepared[1].input);
-    expect(encode(prepared[0].instructions).length).toBeGreaterThanOrEqual(1024);
-    expect(prepared[0].cacheKey).toBe(prepared[1].cacheKey);
-    expect(upstreamRequest(prepared[0]).reasoning).toEqual({ effort: "low" });
+  it.each(["words", ...QUESTION_KINDS] as const)(
+    "keeps %s instructions stable across different sources",
+    async (kind) => {
+      const prepared = await Promise.all(
+        ["apple", "river"].map((word) =>
+          prepareGeneration(
+            {
+              kind,
+              tier: "lite",
+              session: crypto.randomUUID(),
+              ...(kind === "words"
+                ? { raw: word }
+                : {
+                    sources: [
+                      { ref: "s1", word, pos: "n.", meaningZh: "測試" },
+                    ],
+                    difficulty: 2,
+                  }),
+            },
+            word,
+          ),
+        ),
+      );
+      expect(prepared[0].instructions).toBe(prepared[1].instructions);
+      expect(prepared[0].input).not.toBe(prepared[1].input);
+      expect(encode(prepared[0].instructions).length).toBeGreaterThanOrEqual(
+        1024,
+      );
+      expect(prepared[0].cacheKey).toBe(prepared[1].cacheKey);
+      const upstream = upstreamRequest(prepared[0]);
+      expect(upstream.reasoning).toEqual({ effort: "low" });
+      expect(upstream.prompt_cache_options).toEqual({
+        mode: "explicit",
+        ttl: "30m",
+      });
+      expect(upstream.input[0]).toEqual({
+        role: "developer",
+        content: [
+          {
+            type: "input_text",
+            text: prepared[0].cachePrefix ?? prepared[0].instructions,
+            prompt_cache_breakpoint: { mode: "explicit" },
+          },
+        ],
+      });
+    },
+  );
+
+  it("shares one cacheable question core across formats and difficulties", async () => {
+    const prepared = await Promise.all(
+      (["vocabulary", "reading"] as const).flatMap((kind) =>
+        ([1, 3] as const).map((difficulty) =>
+          prepareGeneration(
+            {
+              kind,
+              tier: "lite",
+              session: crypto.randomUUID(),
+              sources: [
+                { ref: "s1", word: "bank", pos: "n.", meaningZh: "銀行" },
+              ],
+              difficulty,
+            },
+            "uid",
+          ),
+        ),
+      ),
+    );
+    expect(encode(TASK_RULES).length).toBeGreaterThanOrEqual(1024);
+    expect(new Set(prepared.map((entry) => entry.cachePrefix))).toEqual(
+      new Set([TASK_RULES]),
+    );
+    expect(new Set(prepared.map((entry) => entry.cacheKey))).toEqual(
+      new Set([QUESTION_CACHE_KEY]),
+    );
+    expect(new Set(prepared.map((entry) => entry.instructions)).size).toBe(4);
   });
 
   // Supplementing is a rare press. Sharing the word prefix byte for byte is

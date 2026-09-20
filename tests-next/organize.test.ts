@@ -43,7 +43,12 @@ describe("input organization", () => {
     const body = upstreamBody(prepared);
     expect(body).toBeInstanceOf(ReadableStream);
     const request = await new Response(body).json();
-    expect(request.input[0].content[1]).toEqual({
+    expect(request.input[0].content[0]).toEqual({
+      type: "input_text",
+      text: organizeInstructions,
+      prompt_cache_breakpoint: { mode: "explicit" },
+    });
+    expect(request.input[1].content[1]).toEqual({
       type: "input_image",
       image_url: `data:image/webp;base64,${image}`,
       detail: "high",

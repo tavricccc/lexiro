@@ -1,7 +1,7 @@
 {
   "id": "word-multiple-senses",
   "kind": "words",
-  "raw": "bank n. 銀行與河岸\napple n. 蘋果\ncurrent 目前的與水流\nserendipity 意外的幸運發現",
+  "raw": "bank n. 銀行\nbank n. 河岸\napple n. 蘋果\ncurrent adj. 目前的\ncurrent n. 水流\nserendipity n. 意外的幸運發現",
   "batchSize": 10,
-  "review": ["bank must preserve both supplied meanings with matching examples", "current must preserve adjective and noun senses with correct POS", "apple and serendipity should not invent rare extra senses", "at most one additional common sense per source"]
+  "review": ["Each source row must produce exactly one sense and one matching example", "The repeated bank and current rows must stay separate and preserve their specified meanings", "apple and serendipity must not invent extra senses", "The output item count and order must exactly match the six source rows"]
 }

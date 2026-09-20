@@ -36,7 +36,7 @@ function objectsIn(
 
 describe("structured output schemas", () => {
   const schemas = {
-    "words with required examples": jsonSchema(wordOutput()),
+    "words with required examples": jsonSchema(wordOutput({ min: 1, max: 1 })),
     ...Object.fromEntries(
       KINDS.map((kind) => [kind, jsonSchema(questionOutput(kind))]),
     ),
@@ -61,7 +61,7 @@ describe("structured output schemas", () => {
   }
 
   it("asks for a part of speech every time, and takes null for one already known", () => {
-    const items = wordOutput();
+    const items = wordOutput({ min: 1, max: 1 });
     expect(
       items.parse({
         items: [
@@ -84,6 +84,19 @@ describe("structured output schemas", () => {
     expect(() => items.parse({ items: [{ meaningZh: "拒絕" }] })).toThrow();
     expect(() =>
       items.parse({ items: [{ pos: null, meaningZh: "拒絕" }] }),
+    ).toThrow();
+    expect(() => items.parse({ items: [{ senses: [] }] })).toThrow();
+    expect(() =>
+      items.parse({
+        items: [
+          {
+            senses: [
+              { pos: "n.", meaningZh: "銀行", example: "I went to the bank." },
+              { pos: "n.", meaningZh: "河岸", example: "We sat by the bank." },
+            ],
+          },
+        ],
+      }),
     ).toThrow();
   });
 });

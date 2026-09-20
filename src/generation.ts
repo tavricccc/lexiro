@@ -30,7 +30,13 @@ export const MODELS: Record<Tier, { model: string; effort: "low" | "medium" }> =
     pro: { model: "gpt-5.6-terra", effort: "low" },
   };
 const inputSchema = z.strictObject({
-  kind: z.enum(["words", "senses", "organizeText", "explain", ...QUESTION_KINDS]),
+  kind: z.enum([
+    "words",
+    "senses",
+    "organizeText",
+    "explain",
+    ...QUESTION_KINDS,
+  ]),
   raw: z.string().optional(),
   sources: z
     .array(
@@ -57,6 +63,8 @@ const inputSchema = z.strictObject({
 export interface PreparedGeneration {
   request: GenerationRequest;
   instructions: string;
+  /** A first reusable block shared by several specialized prompts. */
+  cachePrefix?: string;
   input: string;
   image?: string;
   schema?: Record<string, unknown>;
@@ -79,6 +87,7 @@ export async function prepareGeneration(
   let instructions: string,
     input: string,
     cacheKey: string,
+    cachePrefix: string | undefined,
     schema: Record<string, unknown> | undefined,
     rawUnits: string[];
   if (request.kind === "words") {
@@ -93,7 +102,7 @@ export async function prepareGeneration(
     instructions = prompts.generateWordSet;
     cacheKey = WORD_CACHE_KEY;
     input = `來源資料：${JSON.stringify(sources.map(({ sourceRef, word, posHint, hint }) => ({ ref: sourceRef, word, posHint, hint })))}\n本輪 activeRefs：${JSON.stringify(sources.map((source) => source.sourceRef))}。只輸出本輪完整 JSON。`;
-    schema = jsonSchema(wordOutput());
+    schema = jsonSchema(wordOutput({ min: 1, max: 1 }));
     rawUnits = sources.map(({ word, posHint, hint }) =>
       JSON.stringify({ word, posHint, hint }),
     );
@@ -118,7 +127,7 @@ export async function prepareGeneration(
     instructions = prompts.generateWordSet;
     cacheKey = WORD_CACHE_KEY;
     input = SUPPLEMENT_INPUT(words, request.limit);
-    schema = jsonSchema(wordOutput());
+    schema = jsonSchema(wordOutput({ min: 0, max: request.limit }));
     rawUnits = words.map(({ word }) => JSON.stringify({ word }));
   } else if (request.kind === "explain") {
     if (!request.raw || request.sources)
@@ -149,6 +158,7 @@ export async function prepareGeneration(
       throw new HttpError(413, "input_limit", "source");
     const built = questionPrompt(request.kind, sources, request.difficulty);
     instructions = built.instructions;
+    cachePrefix = built.cachePrefix;
     cacheKey = built.cacheKey;
     input = built.input;
     schema = jsonSchema(questionOutput(request.kind));
@@ -169,6 +179,7 @@ export async function prepareGeneration(
   return {
     request: { ...request, tier },
     instructions,
+    ...(cachePrefix ? { cachePrefix } : {}),
     input,
     schema,
     units: await Promise.all(
@@ -222,6 +233,25 @@ export function supplementWords(
 const SUPPLEMENT_INPUT = (words: SupplementWord[], limit: number) =>
   `來源資料：${JSON.stringify(words.map(({ ref, word, existing }) => ({ ref, word, existing })))}\n本輪 activeRefs：${JSON.stringify(words.map((entry) => entry.ref))}。本輪是補充模式：每筆只補 existing 沒有的詞義，最多 ${limit} 個，沒有值得補的就回傳空的 senses 陣列。只輸出本輪完整 JSON。`;
 
+function cachedInstructionInput(prepared: PreparedGeneration) {
+  const blocks = prepared.cachePrefix
+    ? [
+        prepared.cachePrefix,
+        prepared.instructions.slice(prepared.cachePrefix.length).trimStart(),
+      ]
+    : [prepared.instructions];
+  return blocks.map((text) => ({
+    role: "developer" as const,
+    content: [
+      {
+        type: "input_text" as const,
+        text,
+        prompt_cache_breakpoint: { mode: "explicit" as const },
+      },
+    ],
+  }));
+}
+
 export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
   const model = MODELS[prepared.request.tier];
   return {
@@ -229,11 +259,14 @@ export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
     reasoning: { effort: model.effort },
     stream: true,
     store: true,
-    instructions: prepared.instructions,
-    input: [{ role: "user", content: prepared.input }],
+    input: [
+      ...cachedInstructionInput(prepared),
+      { role: "user" as const, content: prepared.input },
+    ],
     ...(cursor ? { previous_response_id: cursor } : {}),
     max_output_tokens: LIMITS.outputTokens,
     prompt_cache_key: prepared.cacheKey,
+    prompt_cache_options: { mode: "explicit" as const, ttl: "30m" as const },
     ...(prepared.schema
       ? {
           text: {
@@ -260,6 +293,7 @@ export function upstreamBody(
   const imageBody = {
     ...body,
     input: [
+      ...body.input.slice(0, -1),
       {
         role: "user",
         content: [
