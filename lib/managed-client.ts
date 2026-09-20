@@ -1,7 +1,11 @@
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { AiRequestError } from "@/src/lib/ai/errors";
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
-import type { AccountInfo, GenerationInput, TokenUsage } from "@lexiro/ai-contract";
+import type {
+  AccountInfo,
+  GenerationInput,
+  TokenUsage,
+} from "@lexiro/ai-contract";
 import { t, type TranslationKey } from "./i18n";
 
 export const MANAGED_ACCOUNT_CHANGED = "lexiro:managed-account-changed";
@@ -94,7 +98,9 @@ export async function managedFetch(
         t(
           code === "account_exists"
             ? "managed.accountExists"
-            : code === "retry_limit" ? "managed.retryLimit" : (messages[response.status] ?? "managed.failed"),
+            : code === "retry_limit"
+              ? "managed.retryLimit"
+              : (messages[response.status] ?? "managed.failed"),
         ),
         {
           status: response.status,
@@ -102,7 +108,9 @@ export async function managedFetch(
           retryAfterMs: Number.isFinite(retryAfterMs)
             ? retryAfterMs
             : undefined,
-          retryable: code !== "retry_limit" && (response.status === 429 || response.status >= 500),
+          retryable:
+            code !== "retry_limit" &&
+            (response.status === 429 || response.status >= 500),
         },
       );
     }
@@ -138,8 +146,10 @@ export async function readManagedStream(
     text = "",
     id: string | undefined,
     complete = false;
-  const terminal: { stopReason: AiTurnResult["stopReason"]; usage: TokenUsage } =
-    { stopReason: "unknown", usage: {} };
+  const terminal: {
+    stopReason: AiTurnResult["stopReason"];
+    usage: TokenUsage;
+  } = { stopReason: "unknown", usage: {} };
   const count = (value: unknown) =>
     typeof value === "number" && Number.isFinite(value) && value >= 0
       ? value
@@ -161,6 +171,7 @@ export async function readManagedStream(
         input: count(usage.input_tokens),
         output: count(usage.output_tokens),
         cached: count(usage.input_tokens_details?.cached_tokens),
+        cacheWrite: count(usage.input_tokens_details?.cache_write_tokens),
         reasoning: count(usage.output_tokens_details?.reasoning_tokens),
       };
       for (const [field, value] of Object.entries(reported))
@@ -269,7 +280,13 @@ export async function managedTurn(
 export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   if (!turn) return total;
   if (turn.model) total.model = turn.model;
-  for (const field of ["input", "cached", "output", "reasoning", "credits"] as const)
+  for (const field of [
+    "input",
+    "cached",
+    "output",
+    "reasoning",
+    "credits",
+  ] as const)
     if (turn[field] !== undefined)
       total[field] = (total[field] ?? 0) + turn[field]!;
   return total;

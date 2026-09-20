@@ -101,7 +101,7 @@ export function AdminPanel() {
 }
 
 function totalCost(
-  models: { model: string; input: number; cached: number; output: number }[],
+  models: { model: string; input: number; cached: number; cacheWrite: number; output: number }[],
 ): number | null {
   if (!models.length) return 0;
   let total = 0;

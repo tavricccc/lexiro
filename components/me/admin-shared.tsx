@@ -18,6 +18,7 @@ export interface UsageReport {
     runs: number;
     input: number;
     cached: number;
+    cacheWrite: number;
     output: number;
     credits: number | null;
   }[];

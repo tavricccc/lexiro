@@ -58,6 +58,7 @@ function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
         model: row.model,
         input: row.input,
         cached: row.cached,
+        cacheWrite: row.cacheWrite,
         output: row.output,
       }) ?? 0;
     spend.set(row.uid, current);
@@ -134,6 +135,7 @@ export function AdminUsage() {
         model: model.model,
         input: model.input,
         cached: model.cached,
+        cacheWrite: model.cacheWrite,
         output: model.output,
       }) ?? 0),
     0,
@@ -175,6 +177,7 @@ export function AdminUsage() {
                     model: model.model,
                     input: model.input,
                     cached: model.cached,
+                    cacheWrite: model.cacheWrite,
                     output: model.output,
                   })}
                   credits={model.credits}
@@ -264,6 +267,7 @@ export function AdminUsage() {
                     model: entry.model,
                     input: entry.input ?? 0,
                     cached: entry.cached ?? 0,
+                    cacheWrite: entry.cacheWrite ?? 0,
                     output: entry.output ?? 0,
                   })}
                   credits={entry.credits}
