@@ -21,6 +21,43 @@ import { useCloudStore } from "@/stores/cloud-store";
 
 export type OrganizerPhase = "input" | "review";
 
+const MAX_PHOTOS_PER_SELECTION = 10;
+
+function PhotoInputButton({
+  disabled,
+  label,
+  onFiles,
+}: {
+  disabled: boolean;
+  label: string;
+  onFiles: (files: File[]) => void;
+}) {
+  return (
+    <Button asChild type="button" variant="secondary" disabled={disabled}>
+      <label>
+        <Icons.import />
+        {label}
+        <CreditBadge
+          label={t("managed.photoPoints")}
+          value={t("managed.photoPointsShort")}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          className="sr-only"
+          disabled={disabled}
+          multiple
+          onChange={(event) => {
+            const files = Array.from(event.target.files ?? []);
+            event.target.value = "";
+            if (files.length) onFiles(files);
+          }}
+        />
+      </label>
+    </Button>
+  );
+}
+
 /**
  * Turning what was pasted or photographed into a list of words.
  *
@@ -41,40 +78,34 @@ export function InputOrganizer({
   const [review, setReview] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [addingPhotos, setAddingPhotos] = useState(false);
+  const [photoProgress, setPhotoProgress] = useState<{
+    current: number;
+    total: number;
+  } | null>(null);
   const controller = useRef<AbortController | null>(null);
   const uid = useCloudStore((store) => store.user?.uid);
   useEffect(() => () => controller.current?.abort(), [uid]);
-  const organize = async (file?: File) => {
+
+  const startRun = () => {
     const current = new AbortController();
     controller.current?.abort();
     controller.current = current;
     setBusy(true);
     setError("");
+    return current;
+  };
+
+  const organizeText = async () => {
+    const current = startRun();
     try {
-      let text: string;
-      if (file) {
-        const base64 = await encodeWordPhoto(file);
-        current.signal.throwIfAborted();
-        const response = await managedFetch("/organize", {
-          method: "POST",
-          headers: {
-            "content-type": "text/plain",
-            "x-session-id": crypto.randomUUID(),
-          },
-          body: base64,
-          signal: current.signal,
-        });
-        text = (await readManagedStream(response, { signal: current.signal }))
-          .text;
-      } else {
-        text = (
-          await managedTurn(
-            createAiSession("lite", input),
-            { kind: "organizeText", raw: input },
-            { signal: current.signal },
-          )
-        ).text;
-      }
+      const text = (
+        await managedTurn(
+          createAiSession("lite", input),
+          { kind: "organizeText", raw: input },
+          { signal: current.signal },
+        )
+      ).text;
       current.signal.throwIfAborted();
       const cleaned = parseOrganizedWordInput(text).join("\n");
       if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
@@ -89,10 +120,63 @@ export function InputOrganizer({
       if (controller.current === current) setBusy(false);
     }
   };
+
+  const organizePhotos = async (files: File[]) => {
+    if (files.length > MAX_PHOTOS_PER_SELECTION) {
+      setError(t("managed.photoLimit"));
+      return;
+    }
+    const current = startRun();
+    const organized: string[] = [];
+    let failure: unknown;
+    try {
+      for (const [index, file] of files.entries()) {
+        setPhotoProgress({ current: index + 1, total: files.length });
+        const base64 = await encodeWordPhoto(file);
+        current.signal.throwIfAborted();
+        const response = await managedFetch("/organize", {
+          method: "POST",
+          headers: {
+            "content-type": "text/plain",
+            "x-session-id": crypto.randomUUID(),
+          },
+          body: base64,
+          signal: current.signal,
+        });
+        const text = (
+          await readManagedStream(response, { signal: current.signal })
+        ).text;
+        current.signal.throwIfAborted();
+        const cleaned = parseOrganizedWordInput(text).join("\n");
+        if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
+        organized.push(cleaned);
+      }
+    } catch (reason) {
+      failure = reason;
+    } finally {
+      if (organized.length) {
+        setReview((currentReview) =>
+          [currentReview, ...organized].filter(Boolean).join("\n"),
+        );
+        setAddingPhotos(true);
+      }
+      if (failure && !current.signal.aborted)
+        setError(
+          failure instanceof Error ? failure.message : t("managed.failed"),
+        );
+      if (controller.current === current) {
+        setBusy(false);
+        setPhotoProgress(null);
+      }
+    }
+  };
+
   const confirm = () => {
     const sources = buildWordGenerationSources(review);
     if (
       !sources.length ||
+      review.length > LIMITS.input ||
+      sources.length > LIMITS.sources ||
       sources.some((source) => source.raw.length > LIMITS.source)
     ) {
       setError(t("managed.inputLimit"));
@@ -134,7 +218,7 @@ export function InputOrganizer({
             variant="ghost"
           >
             <Icons.back />
-            {t("managed.reorganize")}
+            {t(addingPhotos ? "managed.backToPhotos" : "managed.reorganize")}
           </Button>
         </StepActions>
       </div>
@@ -142,65 +226,70 @@ export function InputOrganizer({
 
   return (
     <div className="space-y-4">
-      <Field label={t("setEditor.rawWords")}>
-        <Textarea
-          value={input}
-          maxLength={LIMITS.input}
-          disabled={busy}
-          placeholder={t("setEditor.rawWordsPlaceholder")}
-          onChange={(event) => setInput(event.target.value)}
-        />
-      </Field>
-      <div className="flex flex-wrap items-center gap-2">
-        <Button
-          aria-label={t("managed.organize")}
-          type="button"
-          disabled={busy || !input.trim() || !uid}
-          onClick={() => void organize()}
-        >
-          <Icons.generate />
-          {t("managed.organize")}
-          <CreditBadge
-            label={t("managed.expectedPoints", { points: 5 })}
-            value={t("managed.expectedShort", { points: 5 })}
-          />
-        </Button>
-        <Button
-          asChild
-          type="button"
-          variant="secondary"
-          disabled={busy || !uid}
-        >
-          <label>
-            <Icons.import />
-            {t("managed.photo")}
-            <CreditBadge
-              label={t("managed.expectedPoints", { points: 6 })}
-              value={t("managed.expectedShort", { points: 6 })}
-            />
-            <input
-              type="file"
-              accept="image/*"
-              className="sr-only"
+      {addingPhotos ? (
+        <div className="space-y-3">
+          <p className="font-medium">{t("managed.morePhotosQuestion")}</p>
+          <p className="text-sm text-muted-foreground">
+            {t("managed.morePhotosHint")}
+          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <PhotoInputButton
               disabled={busy || !uid}
-              onChange={(event) => {
-                const file = event.target.files?.[0];
-                event.target.value = "";
-                if (file) void organize(file);
-              }}
+              label={t("managed.addPhotos")}
+              onFiles={(files) => void organizePhotos(files)}
             />
-          </label>
+            <Button
+              disabled={busy}
+              onClick={() => onPhase("review")}
+              type="button"
+            >
+              <Icons.next />
+              {t("managed.noMorePhotos")}
+            </Button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <Field label={t("setEditor.rawWords")}>
+            <Textarea
+              value={input}
+              maxLength={LIMITS.input}
+              disabled={busy}
+              placeholder={t("setEditor.rawWordsPlaceholder")}
+              onChange={(event) => setInput(event.target.value)}
+            />
+          </Field>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              aria-label={t("managed.organize")}
+              type="button"
+              disabled={busy || !input.trim() || !uid}
+              onClick={() => void organizeText()}
+            >
+              <Icons.generate />
+              {t("managed.organize")}
+              <CreditBadge
+                label={t("managed.expectedPoints", { points: 5 })}
+                value={t("managed.expectedShort", { points: 5 })}
+              />
+            </Button>
+            <PhotoInputButton
+              disabled={busy || !uid}
+              label={t("managed.photo")}
+              onFiles={(files) => void organizePhotos(files)}
+            />
+          </div>
+        </>
+      )}
+      {busy && (
+        <Button
+          type="button"
+          variant="ghost"
+          onClick={() => controller.current?.abort()}
+        >
+          {t("ai.stop")}
         </Button>
-        {busy && (
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={() => controller.current?.abort()}
-          >
-            {t("ai.stop")}
-          </Button>
-        )}
-      </div>
+      )}
       {!uid && (
         <p className="text-sm text-muted-foreground">
           {t("managed.signInRequired")}
@@ -208,7 +297,9 @@ export function InputOrganizer({
       )}
       {busy && (
         <p role="status" className="text-sm text-muted-foreground">
-          {t("ai.generating")}
+          {photoProgress
+            ? t("managed.photoProgress", photoProgress)
+            : t("ai.generating")}
         </p>
       )}
       {error && (
@@ -216,7 +307,7 @@ export function InputOrganizer({
           {error}
         </p>
       )}
-      {review && (
+      {!addingPhotos && review && (
         <ListSection>
           <ListActionRow onClick={() => onPhase("review")}>
             {t("ai.viewResults")}
