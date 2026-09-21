@@ -96,7 +96,8 @@ describe("organize before generating", () => {
     expect(input).toHaveAttribute("multiple");
     const files = Array.from(
       { length: 10 },
-      (_, index) => new File([String(index)], `${index}.jpg`, { type: "image/jpeg" }),
+      (_, index) =>
+        new File([String(index)], `${index}.jpg`, { type: "image/jpeg" }),
     );
     fireEvent.change(input, { target: { files } });
     await waitFor(() =>
@@ -104,9 +105,7 @@ describe("organize before generating", () => {
     );
     expect(encodeWordPhoto).toHaveBeenCalledTimes(10);
     expect(managedFetch).toHaveBeenCalledTimes(10);
-    fireEvent.click(
-      screen.getByRole("button", { name: "沒有了，檢查結果" }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: "沒有了，檢查結果" }));
     expect(screen.getByRole("textbox")).toHaveValue(
       Array(10).fill("bank n. 銀行").join("\n"),
     );
@@ -129,23 +128,21 @@ describe("organize before generating", () => {
   });
 
   it("shows the selected file and direct browser error for debugging", async () => {
-    encodeWordPhoto.mockRejectedValue(new Error("WebP encoding exploded"));
+    encodeWordPhoto.mockRejectedValue(new Error("JPEG encoding exploded"));
     render(<Host onConfirm={vi.fn()} />);
     fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
       target: {
-        files: [
-          new File(["photo"], "problem.heic", { type: "image/heic" }),
-        ],
+        files: [new File(["photo"], "problem.heic", { type: "image/heic" })],
       },
     });
     const alert = await screen.findByRole("alert");
     expect(alert).toHaveTextContent("problem.heic");
-    expect(alert).toHaveTextContent("Error: WebP encoding exploded");
+    expect(alert).toHaveTextContent("Error: JPEG encoding exploded");
   });
 });
 
 describe("photo encoding", () => {
-  it("decodes Safari photos through an image element before WebP encoding", async () => {
+  it("decodes Safari photos through an image element before JPEG encoding", async () => {
     const image = {
       naturalHeight: 1000,
       naturalWidth: 2000,
@@ -164,9 +161,8 @@ describe("photo encoding", () => {
       height: 0,
       width: 0,
       getContext: vi.fn(() => context),
-      toBlob: vi.fn(
-        (callback: BlobCallback, type: string) =>
-          callback(new Blob(["jpeg"], { type })),
+      toBlob: vi.fn((callback: BlobCallback, type: string) =>
+        callback(new Blob(["jpeg"], { type })),
       ),
     };
     const originalCreateElement = document.createElement.bind(document);
@@ -182,9 +178,10 @@ describe("photo encoding", () => {
       },
       revokeObjectURL: { configurable: true, value: vi.fn() },
     });
-    const { encodeWordPhoto: encode } = await vi.importActual<
-      typeof import("@/lib/word-photo")
-    >("@/lib/word-photo");
+    const { encodeWordPhoto: encode } =
+      await vi.importActual<typeof import("@/lib/word-photo")>(
+        "@/lib/word-photo",
+      );
 
     await expect(
       encode(new File(["photo"], "photo.heic", { type: "image/heic" })),
@@ -193,7 +190,7 @@ describe("photo encoding", () => {
     expect(canvas.height).toBe(900);
     expect(canvas.toBlob).toHaveBeenCalledWith(
       expect.any(Function),
-      "image/webp",
+      "image/jpeg",
       0.85,
     );
   });

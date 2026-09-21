@@ -50,9 +50,9 @@ export async function encodeWordPhoto(file: File): Promise<string> {
   context.drawImage(image, 0, 0, canvas.width, canvas.height);
   for (const quality of [0.85, 0.7, 0.55, 0.4]) {
     const blob = await new Promise<Blob | null>((resolve) =>
-      canvas.toBlob(resolve, "image/webp", quality),
+      canvas.toBlob(resolve, "image/jpeg", quality),
     );
-    if (!blob || blob.type !== "image/webp")
+    if (!blob || blob.type !== "image/jpeg")
       throw new Error(t("managed.imageInvalid"));
     if (blob.size <= LIMITS.imageBytes) return readBlob(blob);
   }
