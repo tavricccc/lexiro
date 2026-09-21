@@ -541,6 +541,7 @@ export const zhTW = {
     organizeAgain: "重新整理",
     imageInvalid: "無法讀取這張照片，請改用其他圖片。",
     imageTooLarge: "這張照片壓縮後仍超過 1.5 MB，請裁切後再試。",
+    photoError: "{file}：{detail}",
   },
   jobs: {
     words: "單字與例句",

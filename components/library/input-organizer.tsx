@@ -14,6 +14,7 @@ import {
   readManagedStream,
 } from "@/lib/managed-client";
 import { encodeWordPhoto } from "@/lib/word-photo";
+import { AiRequestError } from "@/src/lib/ai/errors";
 import { createAiSession } from "@/src/lib/ai/session";
 import { parseOrganizedWordInput } from "@/src/lib/word-generation";
 import { t } from "@/lib/i18n";
@@ -22,6 +23,16 @@ import { useCloudStore } from "@/stores/cloud-store";
 export type OrganizerPhase = "input" | "review";
 
 const MAX_PHOTOS_PER_SELECTION = 10;
+
+function formatPhotoError(file: File, reason: unknown) {
+  const detail =
+    reason instanceof AiRequestError && reason.debugMessage
+      ? reason.debugMessage
+      : reason instanceof Error
+        ? (reason.stack ?? reason.message)
+        : String(reason);
+  return t("managed.photoError", { file: file.name, detail });
+}
 
 function PhotoInputButton({
   disabled,
@@ -128,31 +139,34 @@ export function InputOrganizer({
     }
     const current = startRun();
     const organized: string[] = [];
-    let failure: unknown;
     try {
       for (const [index, file] of files.entries()) {
-        setPhotoProgress({ current: index + 1, total: files.length });
-        const base64 = await encodeWordPhoto(file);
-        current.signal.throwIfAborted();
-        const response = await managedFetch("/organize", {
-          method: "POST",
-          headers: {
-            "content-type": "text/plain",
-            "x-session-id": crypto.randomUUID(),
-          },
-          body: base64,
-          signal: current.signal,
-        });
-        const text = (
-          await readManagedStream(response, { signal: current.signal })
-        ).text;
-        current.signal.throwIfAborted();
-        const cleaned = parseOrganizedWordInput(text).join("\n");
-        if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
-        organized.push(cleaned);
+        try {
+          setPhotoProgress({ current: index + 1, total: files.length });
+          const base64 = await encodeWordPhoto(file);
+          current.signal.throwIfAborted();
+          const response = await managedFetch("/organize", {
+            method: "POST",
+            headers: {
+              "content-type": "text/plain",
+              "x-session-id": crypto.randomUUID(),
+            },
+            body: base64,
+            signal: current.signal,
+          });
+          const text = (
+            await readManagedStream(response, { signal: current.signal })
+          ).text;
+          current.signal.throwIfAborted();
+          const cleaned = parseOrganizedWordInput(text).join("\n");
+          if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
+          organized.push(cleaned);
+        } catch (reason) {
+          if (!current.signal.aborted)
+            setError(formatPhotoError(file, reason));
+          break;
+        }
       }
-    } catch (reason) {
-      failure = reason;
     } finally {
       if (organized.length) {
         setReview((currentReview) =>
@@ -160,10 +174,6 @@ export function InputOrganizer({
         );
         setAddingPhotos(true);
       }
-      if (failure && !current.signal.aborted)
-        setError(
-          failure instanceof Error ? failure.message : t("managed.failed"),
-        );
       if (controller.current === current) {
         setBusy(false);
         setPhotoProgress(null);
@@ -303,7 +313,10 @@ export function InputOrganizer({
         </p>
       )}
       {error && (
-        <p role="alert" className="text-sm text-destructive">
+        <p
+          role="alert"
+          className="whitespace-pre-wrap break-words text-sm text-destructive"
+        >
           {error}
         </p>
       )}

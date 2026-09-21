@@ -10,6 +10,7 @@ export class AiRequestError extends Error {
   readonly status?: number;
   readonly streamBroken: boolean;
   readonly code?: string;
+  readonly debugMessage?: string;
   constructor(
     message: string,
     options: {
@@ -18,6 +19,7 @@ export class AiRequestError extends Error {
       status?: number;
       streamBroken?: boolean;
       code?: string;
+      debugMessage?: string;
     },
   ) {
     super(message);
@@ -27,5 +29,6 @@ export class AiRequestError extends Error {
     this.status = options.status;
     this.streamBroken = options.streamBroken ?? false;
     this.code = options.code;
+    this.debugMessage = options.debugMessage;
   }
 }

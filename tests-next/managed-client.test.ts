@@ -28,9 +28,13 @@ describe("managed AI boundary", () => {
     vi.stubGlobal("fetch", vi.fn(async () => { auth.currentUser.uid = "b"; return new Response("{}"); }));
     await expect(managedFetch("/me")).rejects.toMatchObject({ name: "AbortError" });
   });
-  it("never displays upstream error text", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ error: { code: "upstream", message: "private prompt" } }), { status: 500 })));
-    await expect(managedFetch("/generate")).rejects.not.toThrow("private prompt");
+  it("keeps upstream error text out of the public message but exposes it for photo debugging", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ error: { code: "upstream", message: "provider image failure" } }), { status: 500 })));
+    const request = managedFetch("/generate");
+    await expect(request).rejects.not.toThrow("provider image failure");
+    await expect(request).rejects.toMatchObject({
+      debugMessage: "provider image failure",
+    });
   });
   it("reads UTF-8 SSE in byte-sized chunks and keeps model and usage", async () => {
     const events = [

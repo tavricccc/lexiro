@@ -127,6 +127,21 @@ describe("organize before generating", () => {
     ).toBeInTheDocument();
     expect(encodeWordPhoto).not.toHaveBeenCalled();
   });
+
+  it("shows the selected file and direct browser error for debugging", async () => {
+    encodeWordPhoto.mockRejectedValue(new Error("WebP encoding exploded"));
+    render(<Host onConfirm={vi.fn()} />);
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
+      target: {
+        files: [
+          new File(["photo"], "problem.heic", { type: "image/heic" }),
+        ],
+      },
+    });
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("problem.heic");
+    expect(alert).toHaveTextContent("Error: WebP encoding exploded");
+  });
 });
 
 describe("photo encoding", () => {

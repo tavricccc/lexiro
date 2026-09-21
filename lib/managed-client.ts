@@ -78,13 +78,17 @@ export async function managedFetch(
       continue;
     }
     if (!response.ok) {
+      const responseText = await response.text();
       let code: string | undefined;
+      let debugMessage = responseText;
       try {
-        const body = await response.json();
+        const body = JSON.parse(responseText);
         code =
           typeof body?.error?.code === "string" ? body.error.code : undefined;
+        if (typeof body?.error?.message === "string")
+          debugMessage = body.error.message;
       } catch {
-        /* Public errors never display upstream text. */
+        /* Keep the response text so the photo flow can expose it for debugging. */
       }
       const retryAfter = response.headers.get("retry-after");
       const seconds = retryAfter === null ? NaN : Number(retryAfter);
@@ -105,6 +109,7 @@ export async function managedFetch(
         {
           status: response.status,
           code,
+          debugMessage,
           retryAfterMs: Number.isFinite(retryAfterMs)
             ? retryAfterMs
             : undefined,
