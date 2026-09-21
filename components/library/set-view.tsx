@@ -24,6 +24,7 @@ import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { isDue } from "@/src/lib/fsrs";
 import { questionBelongsToMemberships } from "@/src/lib/question-ownership";
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
+import { SetMoveDialog } from "@/components/library/set-move-dialog";
 import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
 import { SetTools } from "@/components/library/set-tools";
 
@@ -44,10 +45,11 @@ type SetTab = "words" | "questions";
  */
 export function SetView({ setId }: { setId: string }) {
   const router = useRouter();
-  const { state, status, deleteSet } = useLibraryStore();
+  const { state, status, deleteSet, moveSet } = useLibraryStore();
   const cards = useLearningStore((store) => store.progress.cards);
   const [tab, setTab] = useState<SetTab>("words");
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [moveOpen, setMoveOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
   const current = state.sets.find((entry) => entry.id === setId);
@@ -132,6 +134,11 @@ export function SetView({ setId }: { setId: string }) {
             </Button>
             <Menu
               actions={[
+                {
+                  icon: Icons.folder,
+                  label: t("library.moveSet"),
+                  onSelect: () => setMoveOpen(true),
+                },
                 {
                   icon: Icons.export,
                   label: t("setDetail.share"),
@@ -258,6 +265,15 @@ export function SetView({ setId }: { setId: string }) {
           )}
         </>
       )}
+
+      <SetMoveDialog
+        currentFolderId={current.folderId}
+        folders={state.folders}
+        onMove={(folderId) => moveSet(setId, folderId)}
+        onOpenChange={setMoveOpen}
+        open={moveOpen}
+        setName={current.setName}
+      />
 
       <ConfirmDialog
         busy={deleting}

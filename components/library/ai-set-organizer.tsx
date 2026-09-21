@@ -7,26 +7,40 @@ import {
   InputOrganizer,
   type OrganizerPhase,
 } from "@/components/library/input-organizer";
+import { SetFolderPicker } from "@/components/library/set-folder-picker";
 import { BackControl } from "@/components/ui/back-control";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { StepFrame } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
+import { useLibraryStore } from "@/stores/library-store";
+import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { writeAiSetDraft } from "@/lib/ai-set-draft";
 
 /** First AI capture page: name the set and confirm a cleaned source list. */
-export function AiSetOrganizer() {
+export function AiSetOrganizer({
+  initialFolderId,
+}: {
+  initialFolderId?: string;
+}) {
   const router = useRouter();
+  const folders = useLibraryStore((store) => store.state.folders);
   const [name, setName] = useState(t("setEditor.defaultSetName"));
+  const [folderId, setFolderId] = useState(
+    initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+  );
   const [phase, setPhase] = useState<OrganizerPhase>("input");
   const reviewing = phase === "review";
+  const newSetHref = initialFolderId
+    ? `/sets/new?folderId=${encodeURIComponent(initialFolderId)}`
+    : "/sets/new";
   return (
     <StepFrame
       {...(reviewing
         ? { onBack: () => setPhase("input") }
         : {
             back: (
-              <BackControl href="/sets/new" label={t("setEditor.cancel")} />
+              <BackControl href={newSetHref} label={t("setEditor.cancel")} />
             ),
           })}
       current={reviewing ? 2 : 1}
@@ -35,18 +49,25 @@ export function AiSetOrganizer() {
       width="wide"
     >
       {!reviewing && (
-        <Field label={t("setEditor.name")}>
-          <Input
-            onChange={(event) => setName(event.target.value)}
-            placeholder={t("setEditor.namePlaceholder")}
-            value={name}
+        <div className="space-y-4">
+          <Field label={t("setEditor.name")}>
+            <Input
+              onChange={(event) => setName(event.target.value)}
+              placeholder={t("setEditor.namePlaceholder")}
+              value={name}
+            />
+          </Field>
+          <SetFolderPicker
+            folders={folders}
+            onChange={setFolderId}
+            value={folderId}
           />
-        </Field>
+        </div>
       )}
       <div className={reviewing ? undefined : "section-gap"}>
         <InputOrganizer
           onConfirm={(sources) => {
-            writeAiSetDraft({ name, sources });
+            writeAiSetDraft({ folderId, name, sources });
             router.push("/sets/new/generate");
           }}
           onPhase={setPhase}

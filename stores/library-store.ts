@@ -54,6 +54,7 @@ interface LibraryStore {
   renameFolder: (id: string, name: string) => Promise<void>;
   moveFolder: (id: string, parentId?: string) => Promise<void>;
   deleteFolder: (id: string) => Promise<void>;
+  moveSet: (id: string, folderId: string) => Promise<void>;
   saveSet: (input: {
     id?: string;
     setName: string;
@@ -253,6 +254,25 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
           ),
         ),
       );
+  },
+
+  moveSet: async (id, folderId) => {
+    const current = get().state.sets.find((entry) => entry.id === id);
+    const destinationExists =
+      folderId === UNCATEGORIZED_FOLDER_ID ||
+      get().state.folders.some((folder) => folder.id === folderId);
+    if (!current || current.folderId === folderId) return;
+    if (!destinationExists) throw new Error("folder-not-found");
+    const timestamp = now();
+    const state = {
+      ...get().state,
+      sets: get().state.sets.map((entry) =>
+        entry.id === id ? { ...entry, folderId, updatedAt: timestamp } : entry,
+      ),
+      updatedAt: timestamp,
+    };
+    await commit(state);
+    set({ state });
   },
 
   saveSet: async ({ id, setName, folderId, words: drafts, remaps = [] }) => {

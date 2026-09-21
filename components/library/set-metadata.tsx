@@ -3,10 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { SetFolderPicker } from "@/components/library/set-folder-picker";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { ListPicker, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
@@ -67,18 +67,12 @@ export function SetMetadata({ setId }: { setId: string }) {
           value={name}
         />
       </Field>
-      <ListSection>
-        <ListPicker
-          disabled={busy}
-          label={t("setEditor.folder")}
-          onChange={setFolder}
-          options={state.folders.map((entry) => ({
-            label: entry.name,
-            value: entry.id,
-          }))}
-          value={folder}
-        />
-      </ListSection>
+      <SetFolderPicker
+        disabled={busy}
+        folders={state.folders}
+        onChange={setFolder}
+        value={folder}
+      />
       {error && (
         <p className="text-sm text-destructive" role="alert">
           {error}

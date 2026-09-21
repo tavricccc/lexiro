@@ -11,13 +11,14 @@ import {
   setFormSchema,
   type SetFormValues,
 } from "@/components/library/set-form";
+import { SetFolderPicker } from "@/components/library/set-folder-picker";
 import { SetWordFields } from "@/components/library/set-word-fields";
 import { useUnsavedGuard } from "@/components/library/use-unsaved-guard";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
-import { ListInputRow, ListPicker, ListSection } from "@/components/ui/list";
+import { ListInputRow, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { StepActions } from "@/components/ui/step-actions";
@@ -103,36 +104,35 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
     homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
       ? `/library?folderId=${encodeURIComponent(homeFolderId)}`
       : "/library";
+  const organizeHref = homeFolderId
+    ? `/sets/new/organize?folderId=${encodeURIComponent(homeFolderId)}`
+    : "/sets/new/organize";
 
   const metadataFields = (
-    <ListSection
-      footer={
-        errors.setName?.message ??
-        (errors.setName ? t("setEditor.required") : undefined)
-      }
-    >
-      <ListInputRow
-        label={t("setEditor.name")}
-        onChange={(value) =>
-          form.setValue("setName", value, { shouldDirty: true })
+    <div className="space-y-4">
+      <ListSection
+        footer={
+          errors.setName?.message ??
+          (errors.setName ? t("setEditor.required") : undefined)
         }
-        placeholder={t("setEditor.namePlaceholder")}
-        value={setName}
-      />
-      <ListPicker
-        label={t("setEditor.folder")}
+      >
+        <ListInputRow
+          label={t("setEditor.name")}
+          onChange={(value) =>
+            form.setValue("setName", value, { shouldDirty: true })
+          }
+          placeholder={t("setEditor.namePlaceholder")}
+          value={setName}
+        />
+      </ListSection>
+      <SetFolderPicker
+        folders={state.folders}
         onChange={(value) =>
           form.setValue("folderId", value, { shouldDirty: true })
         }
-        options={[
-          { label: t("library.uncategorized"), value: UNCATEGORIZED_FOLDER_ID },
-          ...state.folders
-            .filter((folder) => folder.id !== UNCATEGORIZED_FOLDER_ID)
-            .map((folder) => ({ label: folder.name, value: folder.id })),
-        ]}
         value={folderId}
       />
-    </ListSection>
+    </div>
   );
 
   const backLink = (
@@ -145,7 +145,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         <PageHeader back={backLink} title={t("setEditor.howTitle")} />
         <ChoiceList
           onSelect={(value) => {
-            if (value === "assist") router.push("/sets/new/organize");
+            if (value === "assist") router.push(organizeHref);
             else setEntry("manual");
           }}
           options={[
@@ -212,7 +212,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         <p className="mt-4">
           <button
             className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            onClick={() => router.push("/sets/new/organize")}
+            onClick={() => router.push(organizeHref)}
             type="button"
           >
             {t("setEditor.switchToAssist")}

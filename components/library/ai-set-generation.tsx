@@ -39,8 +39,11 @@ export function AiSetGeneration() {
       </div>
     );
 
+  const organizeHref = `/sets/new/organize?folderId=${encodeURIComponent(draft.folderId)}`;
+
   const save = async (rows: AssistedWordRow[]) => {
     const saved = await saveSet({
+      folderId: draft.folderId,
       setName: draft.name,
       words: rows.map((row) => ({
         examples: row.examples.map((value) => value.trim()).filter(Boolean),
@@ -58,7 +61,7 @@ export function AiSetGeneration() {
     <StepFrame
       {...(phase === "review"
         ? { onBack: () => setPhase("run") }
-        : { back: <BackControl href="/sets/new/organize" /> })}
+        : { back: <BackControl href={organizeHref} /> })}
       current={phase === "review" ? 4 : 3}
       title={t(
         phase === "review" ? "setEditor.aiReviewTitle" : "setEditor.aiGenerateTitle",
