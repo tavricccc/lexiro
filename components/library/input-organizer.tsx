@@ -22,7 +22,7 @@ import { useCloudStore } from "@/stores/cloud-store";
 
 export type OrganizerPhase = "input" | "review";
 
-const MAX_PHOTOS_PER_SELECTION = 10;
+const PHOTO_BATCH_SIZE = 10;
 
 function formatPhotoError(file: File, reason: unknown) {
   const detail =
@@ -133,38 +133,45 @@ export function InputOrganizer({
   };
 
   const organizePhotos = async (files: File[]) => {
-    if (files.length > MAX_PHOTOS_PER_SELECTION) {
-      setError(t("managed.photoLimit"));
-      return;
-    }
     const current = startRun();
     const organized: string[] = [];
     try {
-      for (const [index, file] of files.entries()) {
-        try {
-          setPhotoProgress({ current: index + 1, total: files.length });
-          const base64 = await encodeWordPhoto(file);
-          current.signal.throwIfAborted();
-          const response = await managedFetch("/organize", {
-            method: "POST",
-            headers: {
-              "content-type": "text/plain",
-              "x-session-id": crypto.randomUUID(),
-            },
-            body: base64,
-            signal: current.signal,
-          });
-          const text = (
-            await readManagedStream(response, { signal: current.signal })
-          ).text;
-          current.signal.throwIfAborted();
-          const cleaned = parseOrganizedWordInput(text).join("\n");
-          if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
-          organized.push(cleaned);
-        } catch (reason) {
-          if (!current.signal.aborted)
-            setError(formatPhotoError(file, reason));
-          break;
+      for (
+        let batchStart = 0;
+        batchStart < files.length;
+        batchStart += PHOTO_BATCH_SIZE
+      ) {
+        const batch = files.slice(batchStart, batchStart + PHOTO_BATCH_SIZE);
+        for (const [batchIndex, file] of batch.entries()) {
+          try {
+            setPhotoProgress({
+              current: batchStart + batchIndex + 1,
+              total: files.length,
+            });
+            const base64 = await encodeWordPhoto(file);
+            current.signal.throwIfAborted();
+            const response = await managedFetch("/organize", {
+              method: "POST",
+              headers: {
+                "content-type": "text/plain",
+                "x-session-id": crypto.randomUUID(),
+              },
+              body: base64,
+              signal: current.signal,
+            });
+            const text = (
+              await readManagedStream(response, { signal: current.signal })
+            ).text;
+            current.signal.throwIfAborted();
+            const cleaned = parseOrganizedWordInput(text).join("\n");
+            if (!cleaned.trim())
+              throw new Error(t("managed.noWordsRecognized"));
+            organized.push(cleaned);
+          } catch (reason) {
+            if (!current.signal.aborted)
+              setError(formatPhotoError(file, reason));
+            return;
+          }
         }
       }
     } finally {

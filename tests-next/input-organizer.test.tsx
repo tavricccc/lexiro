@@ -111,7 +111,10 @@ describe("organize before generating", () => {
     );
   });
 
-  it("rejects more than ten photos in one selection", async () => {
+  it("organizes selections larger than ten in consecutive batches", async () => {
+    readManagedStream.mockResolvedValue({
+      text: '{"lines":["bank n. 銀行"]}',
+    });
     render(<Host onConfirm={vi.fn()} />);
     const files = Array.from(
       { length: 11 },
@@ -121,14 +124,13 @@ describe("organize before generating", () => {
     fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
       target: { files },
     });
-    expect(
-      await screen.findByText("一次最多選擇 10 張照片，請減少後再試。"),
-    ).toBeInTheDocument();
-    expect(encodeWordPhoto).not.toHaveBeenCalled();
+    await waitFor(() => expect(managedFetch).toHaveBeenCalledTimes(11));
+    expect(encodeWordPhoto).toHaveBeenCalledTimes(11);
+    expect(screen.getByText("還有其他照片嗎？")).toBeInTheDocument();
   });
 
   it("shows the selected file and direct browser error for debugging", async () => {
-    encodeWordPhoto.mockRejectedValue(new Error("JPEG encoding exploded"));
+    encodeWordPhoto.mockRejectedValue(new Error("WebP encoding exploded"));
     render(<Host onConfirm={vi.fn()} />);
     fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
       target: {
@@ -137,12 +139,12 @@ describe("organize before generating", () => {
     });
     const alert = await screen.findByRole("alert");
     expect(alert).toHaveTextContent("problem.heic");
-    expect(alert).toHaveTextContent("Error: JPEG encoding exploded");
+    expect(alert).toHaveTextContent("Error: WebP encoding exploded");
   });
 });
 
 describe("photo encoding", () => {
-  it("decodes Safari photos through an image element before JPEG encoding", async () => {
+  it("keeps Safari's object URL alive through WebP encoding", async () => {
     const image = {
       naturalHeight: 1000,
       naturalWidth: 2000,
@@ -190,8 +192,9 @@ describe("photo encoding", () => {
     expect(canvas.height).toBe(900);
     expect(canvas.toBlob).toHaveBeenCalledWith(
       expect.any(Function),
-      "image/jpeg",
+      "image/webp",
       0.85,
     );
+    expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:photo");
   });
 });

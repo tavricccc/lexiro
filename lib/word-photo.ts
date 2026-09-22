@@ -1,21 +1,22 @@
 import { LIMITS } from "@lexiro/ai-contract";
 import { t } from "./i18n";
 
-function loadPhoto(file: File): Promise<HTMLImageElement> {
+function loadPhoto(
+  file: File,
+): Promise<{ image: HTMLImageElement; url: string }> {
   return new Promise((resolve, reject) => {
     const image = document.createElement("img");
     const url = URL.createObjectURL(file);
-    const finish = () => URL.revokeObjectURL(url);
     image.onload = () => {
-      finish();
       if (!image.naturalWidth || !image.naturalHeight) {
+        URL.revokeObjectURL(url);
         reject(new Error(t("managed.imageInvalid")));
         return;
       }
-      resolve(image);
+      resolve({ image, url });
     };
     image.onerror = () => {
-      finish();
+      URL.revokeObjectURL(url);
       reject(new Error(t("managed.imageInvalid")));
     };
     image.src = url;
@@ -35,26 +36,30 @@ function readBlob(blob: Blob): Promise<string> {
 export async function encodeWordPhoto(file: File): Promise<string> {
   if (!file.type.startsWith("image/"))
     throw new Error(t("managed.imageInvalid"));
-  const image = await loadPhoto(file);
-  const scale = Math.min(
-    1,
-    LIMITS.imageEdge / Math.max(image.naturalWidth, image.naturalHeight),
-  );
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
-  canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
-  const context = canvas.getContext("2d");
-  if (!context) throw new Error(t("managed.imageInvalid"));
-  context.fillStyle = "#fff";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(image, 0, 0, canvas.width, canvas.height);
-  for (const quality of [0.85, 0.7, 0.55, 0.4]) {
-    const blob = await new Promise<Blob | null>((resolve) =>
-      canvas.toBlob(resolve, "image/jpeg", quality),
+  const { image, url } = await loadPhoto(file);
+  try {
+    const scale = Math.min(
+      1,
+      LIMITS.imageEdge / Math.max(image.naturalWidth, image.naturalHeight),
     );
-    if (!blob || blob.type !== "image/jpeg")
-      throw new Error(t("managed.imageInvalid"));
-    if (blob.size <= LIMITS.imageBytes) return readBlob(blob);
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+    canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error(t("managed.imageInvalid"));
+    context.fillStyle = "#fff";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    for (const quality of [0.85, 0.7, 0.55, 0.4]) {
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, "image/webp", quality),
+      );
+      if (!blob || blob.type !== "image/webp")
+        throw new Error(t("managed.imageInvalid"));
+      if (blob.size <= LIMITS.imageBytes) return readBlob(blob);
+    }
+    throw new Error(t("managed.imageTooLarge"));
+  } finally {
+    URL.revokeObjectURL(url);
   }
-  throw new Error(t("managed.imageTooLarge"));
 }

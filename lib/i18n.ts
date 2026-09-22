@@ -70,7 +70,8 @@ export const zhTW = {
     streakLabel: "連續天數",
     questionLabel: "今日練習",
     questionUnit: "道題目",
-    todayProgress: "今天已完成 {words}／{wordGoal} 個詞義、{questions}／{questionGoal} 題。",
+    todayProgress:
+      "今天已完成 {words}／{wordGoal} 個詞義、{questions}／{questionGoal} 題。",
     todayDone: "今天的目標都完成了，接下來做的都是多的。",
     emptyRecommendation: "先加入想記住的單字，之後每天打開就能直接開始。",
     createFirstSet: "新增第一組單字",
@@ -532,14 +533,15 @@ export const zhTW = {
     noMorePhotos: "沒有了，檢查結果",
     backToPhotos: "返回加入照片",
     morePhotosQuestion: "還有其他照片嗎？",
-    morePhotosHint: "可以繼續加入，每次最多選擇 10 張；目前結果會一起保留。",
-    photoLimit: "一次最多選擇 10 張照片，請減少後再試。",
+    morePhotosHint:
+      "可以繼續加入；超過 10 張會自動分批整理，目前結果會一起保留。",
     photoProgress: "正在整理第 {current} 張，共 {total} 張",
     photoPoints: "每張預計 6 點",
     photoPointsShort: "每張 6",
     reorganize: "重新整理",
     reviewLines: "確認整理結果",
-    reviewHint: "每列是「單字 詞性 中文」，詞性沒標的會補上。可以先修正內容，確認後才會扣點生成單字與例句。",
+    reviewHint:
+      "每列是「單字 詞性 中文」，詞性沒標的會補上。可以先修正內容，確認後才會扣點生成單字與例句。",
     confirmGenerate: "確認並生成",
     organizeAgain: "重新整理",
     imageInvalid: "無法讀取這張照片，請改用其他圖片。",
@@ -646,7 +648,8 @@ export const zhTW = {
     existing: "已有 {count} 個詞義",
     limitHeader: "每個字最多補幾個",
     limitOption: "最多 {count} 個",
-    limitFooter: "這是上限，不是目標。冷門、專業或跟現有意思重複的詞義都不會補。",
+    limitFooter:
+      "這是上限，不是目標。冷門、專業或跟現有意思重複的詞義都不會補。",
     action: "開始補充",
     unit: "個單字",
     resultsHeader: "補充結果",
