@@ -1,6 +1,6 @@
 # Lexiro Worker 檔案地圖
 
-獨立後端工作區。串流隱私邊界、Firebase JWT、HTTP handler、D1 計費、文字／照片整理與管理 API 已完成本地實作和測試；正式設定、部署及生產驗收尚未執行。接手狀態與規格差異見 `docs/product-decisions.md`。
+獨立 private 後端工作區。main push 由 GitHub Actions 驗證後自動套用 migrations 並部署；本地測試不代表正式生成、計費 CPU 或 Cron 已驗收。現行決策見 `docs/product-decisions.md`，部署與 secrets 見 `docs/deployment.md`。
 
 | 路徑 | 責任 |
 | --- | --- |
@@ -9,16 +9,17 @@
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `src/billing.ts`、`src/credits.ts` | 任何登入者第一次請求就建立 accounts 列（`ensureAccount`），免費試用開啟時帶入新帳號預設點數與每期額度、關閉時為 0；D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker。餘額大於 0 就能開始一批，預估超過餘額也照跑，結算以 0 為下限，帳戶不會變負數 |
-| `migrations/0001_billing.sql`～`0010_pending_usage.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、可調試用／新帳號方案預設，以及每筆 usage 的結束狀態與 uid 索引 |
+| `migrations/0001_billing.sql`～`0011_report_indexes.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、可調試用／新帳號方案預設，以及每筆 usage 的結束狀態與 uid 索引 |
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
+| `src/admin-usage.ts`、`src/pagination.ts`、`tests-next/admin-report.test.ts` | 近 30 天報表、未知成本／歷史未核實扣款計數、版本化游標分頁及行為測試。usage 按時間／id 遞減，帳戶按 email／uid 遞增；`cursor`／`nextCursor` 取代 offset，沒有舊參數相容分支 |
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限。`cacheKey` 跟著用到的那段 prompt 走而不是 job kind：`senses`（補充多義）逐字沿用 `generateWordSet`，因此與 `words` 共用 `WORD_CACHE_KEY`，由建立單字集的流量把前綴暖著。補充以「字」為計費單位，回傳 0 個詞義照樣算完成 |
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、WebP 輸入檢查與照片計費來源；圖片不落地。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
 | `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
-| `vendor/lexiro-ai-contract-1.5.0.tgz` | 來自 public frontend packages/ai-contract 的版本化無祕密共用套件，讓 private repo 可獨立安裝；token usage 分開記錄 cache read 與 GPT-5.6 cache write，實際成本按兩者不同費率計算 |
+| `vendor/lexiro-ai-contract-1.6.0.tgz` | 來自 public frontend packages/ai-contract 的版本化無祕密共用套件，讓 private repo 可獨立安裝；token usage 分開記錄 cache read 與 GPT-5.6 cache write，實際成本按兩者不同費率計算；管理報表共用游標分頁與用量核對狀態型別 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
@@ -33,12 +34,12 @@
 
 公開串流保留 `response.created`、`response.in_progress`、`response.completed`、`response.incomplete`、`response.failed` 及文字增量／完成事件。只有 Response 元資料事件解析 JSON 並刪掉 `instructions`、`input`、`prompt`。模型、用量與 schema 可存在於網路回應，使用者只要求介面不顯示；不為了隱藏程式碼或這些欄位增添复杂度。API key 始終只用於後端供應商請求標頭。上游錯誤文字不直接回傳。
 
-`onTerminal` 在終止事件送給前端之前完成結算與 cursor 寫入，避免前端看到完成立刻送下一段時碰上尚未釋放的鎖。取消也會發出一次內部終止通知。此處只保護協定層的上下文回顯，不改寫模型產生的內容。
+`onTerminal` 在終止事件送給前端之前完成結算或持久化待核對項目，並寫入 cursor。用量齊全時立即釋放鎖，缺少 usage 的有產出項目則保留預留等待補查。取消也會發出一次內部終止通知。此處只保護協定層的上下文回顯，不改寫模型產生的內容。
 
-帳戶的負餘額只表示生成中的預留。管理員可更新備註，但額度調整必須等結算完成，不能把預留餘額歸零。閱讀測驗完成 3–5 題都保留來源成功紀錄，同一 session 重試不再次扣款。`usage_log.credits` 是供應商成本，`assessed_points` 是套用餘額上限前的應收點數，`points` 是實際扣款；`debit_verified=0` 表示無法重建實扣的歷史紀錄。
+帳戶的負餘額只表示生成中的預留。管理員可更新備註，但額度調整必須等結算完成，不能把預留餘額歸零。閱讀測驗完成 3–5 題都保留來源成功紀錄，同一 session 重試不再次扣款。`usage_log.credits` 是供應商成本，`assessed_points` 是套用餘額上限前的應收點數，`points` 是實際扣款；`debit_verified=0` 表示尚未核實的扣款，包括歷史紀錄與待核對項目。
 
 ## 持久化版本
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |
-| D1 計費 | 10 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額；`0005_usage_status.sql` 記錄每筆 usage 的結束狀態並加上 uid 索引；`0006_registered_accounts.sql` 移除與 `default_initial` 重複的 `trial_points`；`0007_usage_kind.sql` 記錄工作種類、檔位與計費單位數；`0008_cache_write_usage.sql` 分開記錄 GPT-5.6 cache write token，讓首次暖快取的 1.25 倍費率不會被低估；`0009_verified_debits.sql` 新增 `assessed_points` 與 `debit_verified`，新 usage 的 `points` 記錄實扣而非扣款前成本，歷史資料不臆測回填；`0010_pending_usage.sql` 新增 `usage_state` 與可恢復的 `pending_usage`，未知成本保留 NULL，不列為零成本完成 |
+| D1 計費 | 11 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額；`0005_usage_status.sql` 記錄每筆 usage 的結束狀態並加上 uid 索引；`0006_registered_accounts.sql` 移除與 `default_initial` 重複的 `trial_points`；`0007_usage_kind.sql` 記錄工作種類、檔位與計費單位數；`0008_cache_write_usage.sql` 分開記錄 GPT-5.6 cache write token，讓首次暖快取的 1.25 倍費率不會被低估；`0009_verified_debits.sql` 新增 `assessed_points` 與 `debit_verified`，新 usage 的 `points` 記錄實扣而非扣款前成本，歷史資料不臆測回填；`0010_pending_usage.sql` 新增 `usage_state` 與可恢復的 `pending_usage`，未知成本保留 NULL，不列為零成本完成；`0011_report_indexes.sql` 建立全站時間／id 與帳戶 email／uid 索引，支援報表時間範圍與游標分頁 |
