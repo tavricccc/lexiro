@@ -4,7 +4,7 @@ import { testDatabase } from "./database";
 import { createWorker } from "../src/index";
 import { AuthenticationError } from "../src/auth";
 import type { Env } from "../src/env";
-import { account } from "../src/billing";
+import { account, reserve, settle } from "../src/billing";
 
 let database: Awaited<ReturnType<typeof testDatabase>>, env: Env;
 beforeEach(async () => {
@@ -101,6 +101,29 @@ const generation = () => ({
 });
 
 describe("Worker HTTP boundary", () => {
+  it("preserves a reservation when an administrator saves only a note", async () => {
+    const hold = await reserve(env.DB, "u", [{ id: "held", limitId: "held" }], 1000);
+    for (const patch of [{ note: "note only" }, { note: "form save", addPoints: 0, monthly: 1000 }]) {
+      const result = await call(req("/admin/accounts/u", patch, "admin", "PATCH"));
+      expect(result.response.status).toBe(200);
+      expect(JSON.parse(result.text)).toMatchObject({ points: -400, note: patch.note });
+    }
+    await settle(env.DB, hold, [], { model: "test" }, { charged: 2, cost: 2 });
+    expect((await account(env.DB, "u"))!.points).toBe(98);
+  });
+  it("rejects financial changes during generation without modifying the account", async () => {
+    const hold = await reserve(env.DB, "u", [{ id: "held", limitId: "held" }], 1000);
+    for (const patch of [{ addPoints: 10 }, { addPoints: -10 }, { monthly: 200 }, { monthly: 0 }]) {
+      const result = await call(req("/admin/accounts/u", patch, "admin", "PATCH"));
+      expect(result.response.status).toBe(409);
+      expect((await account(env.DB, "u"))!.points).toBe(-400);
+      expect((await account(env.DB, "u"))!.monthly).toBe(1000);
+    }
+    await settle(env.DB, hold, hold.charges, { model: "test" });
+    expect((await call(req("/admin/accounts/u", { addPoints: 10 }, "admin", "PATCH"))).response.status).toBe(200);
+    expect((await account(env.DB, "u"))!.points).toBe(110);
+  });
+
   it("accepts one bounded WebP and settles its actual provider cost", async () => {
     const bytes = new Uint8Array(30),
       view = new DataView(bytes.buffer);

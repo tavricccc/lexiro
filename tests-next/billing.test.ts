@@ -151,6 +151,11 @@ describe("D1 atomic credit ledger", () => {
       { charged: 4_000, cost: 4_000 },
     );
     expect(await balance()).toBe(0);
+    expect(await db.prepare("SELECT points,assessed_points,debit_verified,credits FROM usage_log WHERE id=?")
+      .bind(first.attempt).first()).toEqual({ points: 100, assessed_points: 4000, debit_verified: 1, credits: 4000 });
+    await settle(db, first, [], { model: "test" }, { charged: 4000, cost: 4000 });
+    expect(await balance()).toBe(0);
+    expect(await db.prepare("SELECT points FROM usage_log WHERE id=?").bind(first.attempt).first()).toEqual({ points: 100 });
     await expect(
       reserve(db, "u", units(["one-more"]), 2),
     ).rejects.toMatchObject({ status: 402 });

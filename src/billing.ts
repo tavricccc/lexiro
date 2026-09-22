@@ -31,7 +31,7 @@ export interface Usage {
 }
 export interface Settlement {
   cursor?: string;
-  /** Points taken from the balance. Zero when the run produced nothing. */
+  /** Assessed points before the balance cap; distinct from the actual debit. */
   charged?: number;
   /** What the provider actually cost, recorded even when nothing was charged. */
   cost?: number;
@@ -240,6 +240,21 @@ export async function settle(
   const cost = settlement.cost ?? charged;
   const chargedCredits = reservation.charges.length ? charged : 0;
   const statements = [
+    db.prepare(
+      `INSERT OR IGNORE INTO usage_log
+       (id,uid,points,assessed_points,debit_verified,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units)
+       SELECT ?1,?2,
+         CASE WHEN EXISTS(SELECT 1 FROM charges WHERE attempt_id=?1)
+           THEN MIN(?3,MAX(0,points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?1)))
+           ELSE 0 END,
+         ?3,1,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14
+       FROM accounts WHERE uid=?2`,
+    ).bind(
+      attempt, uid, chargedCredits, usage.model,
+      usage.input ?? null, usage.cached ?? null, usage.cacheWrite ?? null,
+      usage.output ?? null, nowSeconds(), cost, status ?? "complete",
+      settlement.kind ?? "", settlement.tier ?? "", settlement.units ?? 0,
+    ),
     db
       .prepare(
         `UPDATE accounts SET points=MAX(0,points+
@@ -265,29 +280,6 @@ export async function settle(
         .bind(points, charge.id, attempt),
     );
   });
-  statements.push(
-    db
-      .prepare(
-        `INSERT OR IGNORE INTO usage_log(id,uid,points,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-      )
-      .bind(
-        attempt,
-        uid,
-        chargedCredits,
-        usage.model,
-        usage.input ?? null,
-        usage.cached ?? null,
-        usage.cacheWrite ?? null,
-        usage.output ?? null,
-        nowSeconds(),
-        cost,
-        status ?? "complete",
-        settlement.kind ?? "",
-        settlement.tier ?? "",
-        settlement.units ?? 0,
-      ),
-  );
   // Mark successful units as settled so repeated settlement cannot refund them again.
   statements.push(
     db

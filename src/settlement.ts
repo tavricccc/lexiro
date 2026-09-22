@@ -1,7 +1,6 @@
 import {
   buildWordGenerationSources,
   LIMITS,
-  MULTIPLIER,
   normalizePartOfSpeech,
 } from "@lexiro/ai-contract";
 import type { D1Database } from "@cloudflare/workers-types";
@@ -85,7 +84,6 @@ export async function settleGeneration(
   }
   const kind = prepared.request.kind;
   const valid = new Set<number>();
-  let readingCount = 0;
   const produced =
     terminal.status === "complete" || terminal.status === "truncated";
   if (upstream && produced && terminal.response) {
@@ -153,8 +151,6 @@ export async function settleGeneration(
               });
           } else if (schema.safeParse(data).success) {
             prepared.units.forEach((unit) => valid.add(unit.index));
-            if (kind === "reading" && Array.isArray(data.items))
-              readingCount = Math.min(5, data.items.length);
           }
         }
       }
@@ -163,13 +159,6 @@ export async function settleGeneration(
   const refunds = reservation.charges.flatMap((charge) => {
     const units = prepared.units.filter((unit) => unit.id === charge.id);
     if (!units.some((unit) => valid.has(unit.index))) return [charge];
-    if (kind === "reading") {
-      const points = Math.min(
-        charge.points,
-        (5 - readingCount) * 3 * MULTIPLIER[prepared.request.tier],
-      );
-      return points ? [{ id: charge.id, points }] : [];
-    }
     return [];
   });
   const cost = creditsFromUsage(usage) ?? 0;

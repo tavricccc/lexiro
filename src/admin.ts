@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Env } from "./env";
-import { account, nextRenewal, nowSeconds } from "./billing";
+import { account, BillingError, nextRenewal, nowSeconds } from "./billing";
 import { HttpError, readBody } from "./http";
 
 const adjustment = z
@@ -51,33 +51,29 @@ export async function adminRequest(
     );
     if (!parsed.success) throw new HttpError(400, "invalid_input");
     const value = parsed.data;
-    // Setting an allowance hands over this period's points there and then.
-    // Waiting for the nightly renewal would mean granting a plan and watching
-    // nothing happen. Every right-hand side reads the row as it was, so the
-    // comparison against `monthly` is against the value being replaced.
+    // A note-only save must preserve even a negative reservation balance.
+    // Financial changes wait for settlement; the guard and update are atomic.
     const result = await env.DB.prepare(
       `UPDATE accounts SET
-      points=MAX(MAX(0,points+?),CASE WHEN ? IS NOT NULL AND ?>0 AND ?<>monthly THEN ? ELSE 0 END),
-      renews_at=CASE WHEN ? IS NOT NULL AND ?>0 AND ?<>monthly THEN ? ELSE renews_at END,
-      monthly=COALESCE(?,monthly),note=COALESCE(?,note),updated_at=? WHERE uid=?`,
+      points=CASE WHEN ?1=0 AND (?2 IS NULL OR ?2=monthly) THEN points
+        ELSE MAX(MAX(0,points+?1),CASE WHEN ?2>0 AND ?2<>monthly THEN ?2 ELSE 0 END) END,
+      renews_at=CASE WHEN ?2>0 AND ?2<>monthly THEN ?4 ELSE renews_at END,
+      monthly=COALESCE(?2,monthly),note=COALESCE(?3,note),updated_at=?5
+      WHERE uid=?6 AND (inflight_id IS NULL OR (?1=0 AND (?2 IS NULL OR ?2=monthly)))`,
     )
       .bind(
         value.addPoints ?? 0,
         value.monthly ?? null,
-        value.monthly ?? 0,
-        value.monthly ?? 0,
-        value.monthly ?? 0,
-        value.monthly ?? null,
-        value.monthly ?? 0,
-        value.monthly ?? 0,
-        nextRenewal(nowSeconds()),
-        value.monthly ?? null,
         value.note ?? null,
+        nextRenewal(nowSeconds()),
         new Date().toISOString(),
         uid,
       )
       .run();
-    if (!result.meta.changes) throw new HttpError(404, "not_found");
+    if (!result.meta.changes) {
+      if (await account(env.DB, uid)) throw new BillingError(409);
+      throw new HttpError(404, "not_found");
+    }
     return Response.json(await account(env.DB, uid));
   }
   if (path === "/admin/usage" && request.method === "GET") {

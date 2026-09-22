@@ -75,6 +75,31 @@ async function settleSupplement(text: string, limit: 1 | 2 | 3) {
   return { debit: before - after, payAgain };
 }
 
+describe("reading retry identity", () => {
+  it.each([3, 4, 5])("keeps a completed %i-question article free to retry in the same session", async (count) => {
+    const request = {
+      kind: "reading", tier: "lite", session: crypto.randomUUID(), difficulty: 2,
+      sources: [{ ref: "s1", word: "apple", pos: "n.", meaningZh: "蘋果" }],
+    } as const;
+    const prepared = await prepareGeneration(request, "u");
+    const hold = await reserve(db, "u", prepared.units, prepared.halfRate);
+    const result = terminal(JSON.stringify({
+      title: "A market visit", passage: "Mina bought apples and shared them with her friends.",
+      items: Array.from({ length: count }, (_, index) => ({
+        question: `Question ${index + 1}`, answer: "Apples", distractors: ["Bread", "Milk", "Rice"],
+      })),
+    }));
+    await settleGeneration(db, hold, prepared, result, "gpt-5.6-luna");
+    const balance = (await account(db, "u"))!.points;
+    const retry = await reserve(db, "u", prepared.units, prepared.halfRate);
+    expect(retry.charges).toEqual([]);
+    await settleGeneration(db, retry, prepared, result, "gpt-5.6-luna");
+    expect((await account(db, "u"))!.points).toBe(balance);
+    const fresh = await prepareGeneration({ ...request, session: crypto.randomUUID() }, "u");
+    expect((await reserve(db, "u", fresh.units, fresh.halfRate)).charges).toHaveLength(1);
+  });
+});
+
 describe("settling a supplement run", () => {
   const river = { pos: "n.", meaningZh: "河岸", example: "We sat on the bank of the river." };
   const flow = { pos: "n.", meaningZh: "水流", example: "The current pulled the boat downstream." };
