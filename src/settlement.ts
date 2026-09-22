@@ -4,7 +4,8 @@ import {
   normalizePartOfSpeech,
 } from "@lexiro/ai-contract";
 import type { D1Database } from "@cloudflare/workers-types";
-import { settle, type Reservation, type Usage } from "./billing";
+import { settle, type Reservation } from "./billing";
+import { deferUsage, reportedUsage, type UsageRecovery } from "./usage-recovery";
 import { supplementWords, type PreparedGeneration } from "./generation";
 import type { StreamTerminal } from "./response-stream";
 import { creditsFromUsage } from "./credits";
@@ -12,10 +13,6 @@ import { wordOutput, questionOutput } from "./schemas";
 
 const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
-const count = (value: unknown) =>
-  typeof value === "number" && Number.isFinite(value) && value >= 0
-    ? value
-    : undefined;
 
 /**
  * Whether one returned sense is something the Library could hold: a part of
@@ -62,26 +59,9 @@ export async function settleGeneration(
   prepared: PreparedGeneration,
   terminal: StreamTerminal,
   model: string,
-  recoverUsage?: (
-    cursor: string,
-  ) => Promise<Record<string, unknown> | undefined>,
+  recoverUsage?: UsageRecovery,
 ) {
-  const usage: Usage = { model };
-  const upstream =
-    terminal.response ??
-    (terminal.cursor && recoverUsage
-      ? await recoverUsage(terminal.cursor).catch(() => undefined)
-      : undefined);
-  if (upstream && record(upstream.usage)) {
-    usage.input = count(upstream.usage.input_tokens);
-    usage.output = count(upstream.usage.output_tokens);
-    usage.cached = record(upstream.usage.input_tokens_details)
-      ? count(upstream.usage.input_tokens_details.cached_tokens)
-      : undefined;
-    usage.cacheWrite = record(upstream.usage.input_tokens_details)
-      ? count(upstream.usage.input_tokens_details.cache_write_tokens)
-      : undefined;
-  }
+  const upstream = terminal.response;
   const kind = prepared.request.kind;
   const valid = new Set<number>();
   const produced =
@@ -161,17 +141,23 @@ export async function settleGeneration(
     if (!units.some((unit) => valid.has(unit.index))) return [charge];
     return [];
   });
-  const cost = creditsFromUsage(usage) ?? 0;
-  // Nothing usable came back, so nothing is charged; the cost is still logged.
+  let usage = reportedUsage(upstream, model);
+  if (!usage && terminal.cursor && recoverUsage) {
+    usage = reportedUsage(await recoverUsage(terminal.cursor).catch(() => undefined), model);
+  }
+  const cost = usage ? creditsFromUsage(usage) : null;
+  const metadata = {
+    cursor: terminal.cursor, status: terminal.status,
+    kind, tier: prepared.request.tier, units: prepared.units.length,
+  };
+  if (!usage || cost === null) {
+    const refunded = new Set(refunds.map((refund) => refund.id));
+    await deferUsage(db, reservation, reservation.charges.filter((charge) => !refunded.has(charge.id)).map((charge) => charge.id),
+      model, produced, metadata);
+    return;
+  }
+  // Completed runs pay for reported tokens; failed/cancelled runs only log cost.
   const charged = produced ? cost : 0;
-  await settle(db, reservation, refunds, usage, {
-    cursor: terminal.cursor,
-    charged,
-    cost,
-    status: terminal.status,
-    kind,
-    tier: prepared.request.tier,
-    units: prepared.units.length,
-  });
+  await settle(db, reservation, refunds, usage, { ...metadata, charged, cost });
   return charged;
 }

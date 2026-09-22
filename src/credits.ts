@@ -21,14 +21,16 @@ export function creditsFromUsage(usage: TokenUsage): number | null {
   )
     return null;
   const accounted = cached + cacheWrite;
-  const fresh = input > accounted ? input - accounted : 0n;
+  if (accounted > input) return null;
+  const fresh = input - accounted;
   const scaledCost =
     fresh * scaledPrice(price.input) +
     cached * scaledPrice(price.cached) +
     cacheWrite * scaledPrice(price.cacheWrite) +
     output * scaledPrice(price.output);
   const divisor = PRICE_SCALE * TOKENS_PER_MILLION;
-  return Number((scaledCost * CREDITS_PER_US_DOLLAR + divisor - 1n) / divisor);
+  const credits = Number((scaledCost * CREDITS_PER_US_DOLLAR + divisor - 1n) / divisor);
+  return Number.isSafeInteger(credits) ? credits : null;
 }
 
 function tokenCount(value: number | undefined): bigint | null {

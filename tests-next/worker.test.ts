@@ -101,6 +101,22 @@ const generation = () => ({
 });
 
 describe("Worker HTTP boundary", () => {
+  it("persists missing usage and reconciles it on the next account request", async () => {
+    const output = JSON.stringify({ items: [{ senses: [{ pos: "n.", meaningZh: "蘋果", example: "I ate an apple." }] }] });
+    const response = { id: "resp_pending", status: "completed", output: [{ content: [{ type: "output_text", text: output }] }] };
+    const upstream = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(new Response(frame("response.created", { response }) + frame("response.output_text.delta", { delta: output }) + frame("response.completed", { response })))
+      .mockResolvedValueOnce(new Response(null, { status: 503 }));
+    const first = await call(req("/generate", generation()), upstream);
+    expect(first.response.status).toBe(200);
+    expect(upstream).toHaveBeenCalledTimes(2);
+    expect(await env.DB.prepare("SELECT credits,usage_state FROM usage_log").first()).toEqual({ credits: null, usage_state: "pending" });
+    const recovered = vi.fn<typeof fetch>(async () => Response.json({ ...response, usage: { input_tokens: 900, output_tokens: 60 } }));
+    const me = await call(req("/me"), recovered);
+    expect(JSON.parse(me.text).points).toBe(98);
+    expect(await env.DB.prepare("SELECT credits,points,usage_state FROM usage_log").first()).toEqual({ credits: 2, points: 2, usage_state: "reported" });
+    expect(recovered).toHaveBeenCalledOnce();
+  });
   it("preserves a reservation when an administrator saves only a note", async () => {
     const hold = await reserve(env.DB, "u", [{ id: "held", limitId: "held" }], 1000);
     for (const patch of [{ note: "note only" }, { note: "form save", addPoints: 0, monthly: 1000 }]) {

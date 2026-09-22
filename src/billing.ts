@@ -34,7 +34,8 @@ export interface Settlement {
   /** Assessed points before the balance cap; distinct from the actual debit. */
   charged?: number;
   /** What the provider actually cost, recorded even when nothing was charged. */
-  cost?: number;
+  cost?: number | null;
+  usageState?: "reported" | "unavailable";
   status?: string;
   /** What the run was, so cost per unit can be read back off the ledger. */
   kind?: string;
@@ -117,18 +118,19 @@ export async function reserve(
   const results = await db.batch([
     db
       .prepare(
-        `UPDATE accounts SET points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%')
-      WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%')`,
+        `UPDATE accounts SET points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))
+      WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
       .bind(uid, now - 120, uid, uid, now - 120),
     db
       .prepare(
-        "DELETE FROM charges WHERE uid=? AND ((created_at<=? AND attempt_id NOT LIKE 'settled:%') OR (created_at<=? AND attempt_id LIKE 'settled:%'))",
+        "DELETE FROM charges WHERE uid=? AND ((created_at<=? AND attempt_id NOT LIKE 'settled:%') OR (created_at<=? AND attempt_id LIKE 'settled:%')) AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
       .bind(uid, now - 120, now - 1800),
     db
       .prepare(
-        `UPDATE accounts SET inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)`,
+        `UPDATE accounts SET inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)
+         AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)`,
       )
       .bind(now, attempt, uid, now - 120),
     db.prepare("SELECT points FROM accounts WHERE uid=?").bind(uid),
@@ -237,23 +239,29 @@ export async function settle(
     );
   // Provider cost is recorded whether or not the user paid for it, so an
   // administrator sees what a failed or refunded run actually burned.
-  const cost = settlement.cost ?? charged;
+  const cost = settlement.cost === undefined ? charged : settlement.cost;
   const chargedCredits = reservation.charges.length ? charged : 0;
   const statements = [
     db.prepare(
-      `INSERT OR IGNORE INTO usage_log
-       (id,uid,points,assessed_points,debit_verified,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units)
+      `INSERT INTO usage_log
+       (id,uid,points,assessed_points,debit_verified,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units,usage_state)
        SELECT ?1,?2,
          CASE WHEN EXISTS(SELECT 1 FROM charges WHERE attempt_id=?1)
            THEN MIN(?3,MAX(0,points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?1)))
            ELSE 0 END,
-         ?3,1,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14
-       FROM accounts WHERE uid=?2`,
+         ?3,1,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15
+       FROM accounts WHERE uid=?2
+       ON CONFLICT(id) DO UPDATE SET
+         points=excluded.points,assessed_points=excluded.assessed_points,debit_verified=1,
+         input=excluded.input,cached=excluded.cached,cache_write=excluded.cache_write,output=excluded.output,
+         credits=excluded.credits,status=excluded.status,usage_state=excluded.usage_state
+       WHERE usage_log.usage_state='pending'`,
     ).bind(
       attempt, uid, chargedCredits, usage.model,
       usage.input ?? null, usage.cached ?? null, usage.cacheWrite ?? null,
       usage.output ?? null, nowSeconds(), cost, status ?? "complete",
       settlement.kind ?? "", settlement.tier ?? "", settlement.units ?? 0,
+      settlement.usageState ?? "reported",
     ),
     db
       .prepare(
@@ -301,6 +309,7 @@ export async function settle(
       )
       .bind(uid, attempt),
   );
+  statements.push(db.prepare("DELETE FROM pending_usage WHERE attempt_id=?").bind(attempt));
   await db.batch(statements);
 }
 
@@ -324,18 +333,20 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
     db
       .prepare(
         `UPDATE accounts SET points=points+COALESCE((SELECT SUM(points) FROM charges
-      WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'),0)
-      WHERE EXISTS(SELECT 1 FROM charges WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%')`,
+      WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'
+        AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)),0)
+      WHERE EXISTS(SELECT 1 FROM charges WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'
+        AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
       .bind(now - 120, now - 120),
     db
       .prepare(
-        "DELETE FROM charges WHERE created_at<=? AND attempt_id NOT LIKE 'settled:%'",
+        "DELETE FROM charges WHERE created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
       .bind(now - 120),
     db
       .prepare(
-        "UPDATE accounts SET inflight_at=NULL,inflight_id=NULL WHERE inflight_at<=?",
+        "UPDATE accounts SET inflight_at=NULL,inflight_id=NULL WHERE inflight_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=accounts.inflight_id)",
       )
       .bind(now - 120),
   ]);

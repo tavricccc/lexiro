@@ -23,6 +23,7 @@ import { MODELS, prepareGeneration, upstreamBody } from "./generation";
 import { prepareImage } from "./organize";
 import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
+import { createUsageRecovery, reconcileUsage } from "./usage-recovery";
 import type { Env } from "./env";
 
 /**
@@ -83,6 +84,8 @@ export function createWorker(
           return decorate(await adminRequest(request, env, path));
         }
         await ensureAccount(env.DB, identity.uid, identity.email);
+        const recoverUsage = createUsageRecovery(env, fetcher);
+        await reconcileUsage(env.DB, recoverUsage, identity.uid);
         if (path === "/me" && request.method === "GET") {
           const user = await account(env.DB, identity.uid);
           return decorate(
@@ -179,25 +182,6 @@ export function createWorker(
           }
           const finished = Promise.withResolvers<void>();
           ctx.waitUntil(finished.promise);
-          // A run that never reached a terminal event still cost tokens. The
-          // stored response is the only remaining record of how many.
-          const recoverUsage = async (id: string) => {
-            const stored = await fetcher(
-              `${env.OPENAI_BASE_URL}/responses/${encodeURIComponent(id)}`,
-              {
-                headers: { authorization: `Bearer ${env.OPENAI_API_KEY}` },
-                signal: AbortSignal.timeout(10_000),
-              },
-            );
-            if (!stored.ok) {
-              await stored.body?.cancel();
-              return undefined;
-            }
-            const detail: unknown = await stored.json();
-            return detail && typeof detail === "object"
-              ? (detail as Record<string, unknown>)
-              : undefined;
-          };
           const body = sanitizeResponseStream(response.body, {
             onTerminal: async (terminal) => {
               try {
@@ -210,7 +194,7 @@ export function createWorker(
                   recoverUsage,
                 );
                 finished.resolve();
-                return admin ? { credits } : undefined;
+                return admin && credits !== undefined ? { credits } : undefined;
               } catch (reason) {
                 finished.reject(reason);
                 throw reason;
@@ -272,7 +256,10 @@ export function createWorker(
       env: Env,
       ctx: ExecutionContext,
     ) {
-      ctx.waitUntil(scheduledMaintenance(env.DB));
+      ctx.waitUntil((async () => {
+        await reconcileUsage(env.DB, createUsageRecovery(env, fetcher));
+        await scheduledMaintenance(env.DB);
+      })());
     },
   };
 }
