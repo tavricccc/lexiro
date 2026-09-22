@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const DURATIONS = ['touch', 'control', 'nav', 'sheet', 'controlExit', 'sheetExit'];
-const EASINGS = ['arrive', 'depart', 'move', 'nav', 'bounce'];
+const EASINGS = ['arrive', 'depart', 'move', 'nav'];
 const TRAVEL = ['lift', 'rise', 'pressScale', 'cardPressScale', 'surfaceScale', 'routeTravel'];
 const LOOPS = ['spin', 'sweep', 'pulse'];
 
@@ -86,8 +86,7 @@ function renderStylesheet(config) {
   lines.push(
     '',
     '  /* Arrivals decelerate, dismissals accelerate, travel between two known',
-    '     positions is symmetric, routes use the iOS navigation curve, and exactly',
-    '     one curve is allowed to overshoot. */',
+    '     positions are symmetric, and routes use the iOS navigation curve. */',
   );
   for (const name of EASINGS)
     lines.push(`  --ease-${kebab(name)}: ${bezier(config.easings[name])};`);

@@ -6,10 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { timing } from "@/lib/motion-timing";
 import { cn } from "@/lib/cn";
 
-/**
- * The frame a state change happens inside. It holds its own height so the
- * container can grow or shrink with the change instead of jumping to it.
- */
+/** The stable frame a state change happens inside. */
 export function StateTransition({
   children,
   className,
@@ -23,7 +20,6 @@ export function StateTransition({
   return (
     <div
       className={cn("t-state-transition", className)}
-      data-resize-motion=""
       data-state-transition={identity}
       {...props}
     >

@@ -266,16 +266,6 @@
   transform-origin: center top;
 }
 
-/* Only explicit state containers animate their intrinsic height. */
-[data-resize-motion] {
-  align-content: start;
-  transition: height var(--motion-control) var(--ease-move);
-}
-[data-resize-motion][data-resizing="true"] {
-  overflow: clip;
-  will-change: height;
-}
-
 @keyframes t-fade-in {
   from {
     opacity: 0;
@@ -692,7 +682,7 @@
   justify-self: center;
   transition:
     opacity var(--motion-control) var(--ease-move),
-    transform var(--motion-control) var(--ease-bounce);
+    transform var(--motion-control) var(--ease-arrive);
 }
 .t-spinner-check-success {
   width: 1.25rem;
@@ -721,7 +711,7 @@
 }
 
 .t-success-check[data-state="in"] {
-  animation: t-success-in var(--motion-control) var(--ease-bounce) both;
+  animation: t-success-in var(--motion-control) var(--ease-arrive) both;
 }
 .t-success-check[data-state="out"] {
   opacity: 0;
@@ -808,8 +798,7 @@
   .t-tab-label,
   .t-toast,
   .t-row,
-  .t-card,
-  [data-resize-motion] {
+  .t-card {
     transition: none !important;
     transform: none !important;
   }

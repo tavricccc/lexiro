@@ -294,7 +294,7 @@ export function LibraryPage({
               />
             )}
             {status === "ready" && !listEmpty && (
-              <StaggerList className="rule-card rule-list" data-resize-motion="">
+              <StaggerList className="rule-card rule-list">
                 {!searching &&
                   childFolders.map((folder) => (
                     <StaggerItem key={folder.id}>

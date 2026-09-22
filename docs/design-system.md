@@ -196,7 +196,7 @@ than arriving, which is what `--motion-control-exit` and `--motion-sheet-exit`
 are for. Arrivals decelerate (`--ease-arrive`), dismissals accelerate
 (`--ease-depart`), travel between two known positions is symmetric
 (`--ease-move`), routes use the iOS navigation curve (`--ease-nav`),
-and exactly one curve is allowed to overshoot (`--ease-bounce`).
+and success feedback uses the same settled arrival curve rather than overshooting.
 
 JavaScript reaches the ladder through `timing(rung, curve)` in
 `lib/motion-timing.ts`, which is also what `MotionConfig` is given, so Motion and
@@ -238,12 +238,8 @@ transition already delivered it. `.t-panel-reveal` is for a panel that is
 genuinely new on a screen the user is already looking at. Lists hand over
 through `StaggerList` / `StaggerItem`, which never animate the rows they were
 born with and never delay a row by its index. A container whose state changes
-in place uses `StateTransition` + `ContentTransition`; it holds its own height,
-so the container grows into the change instead of jumping to it.
-
-Height animation is opt-in: `ResizeMotion` only observes elements marked
-`data-resize-motion`, because observing every card makes viewport reflow look
-like content motion.
+in place uses `StateTransition` + `ContentTransition`; the content crossfades
+without animating layout properties or observing the document for reflow.
 
 Data visuals still animate once on mount: `.dashboard-bar` grows a proportion bar
 from its leading edge (`--dashboard-bar` carries the ratio), `.dashboard-column`

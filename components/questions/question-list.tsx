@@ -132,11 +132,7 @@ export function QuestionList() {
             />
           ))}
         {questions.length > 0 && (
-          <StaggerList
-            as="ul"
-            className="rule-card rule-list"
-            data-resize-motion=""
-          >
+          <StaggerList as="ul" className="rule-card rule-list">
             {questions.map((question) => {
               const type = questionFormatLabel(
                 question.kind === "reading"
