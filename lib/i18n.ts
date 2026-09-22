@@ -535,7 +535,8 @@ export const zhTW = {
     morePhotosQuestion: "還有其他照片嗎？",
     morePhotosHint:
       "可以繼續加入；超過 10 張會自動分批整理，目前結果會一起保留。",
-    photoProgress: "正在整理第 {current} 張，共 {total} 張",
+    photoProgress: "正在整理第 {current} 批，共 {total} 批（每批最多 10 張）",
+    photoBatch: "第 {start}–{end} 張照片",
     photoPoints: "每張預計 6 點",
     photoPointsShort: "每張 6",
     reorganize: "重新整理",

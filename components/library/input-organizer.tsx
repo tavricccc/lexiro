@@ -22,16 +22,14 @@ import { useCloudStore } from "@/stores/cloud-store";
 
 export type OrganizerPhase = "input" | "review";
 
-const PHOTO_BATCH_SIZE = 10;
-
-function formatPhotoError(file: File, reason: unknown) {
+function formatPhotoError(name: string, reason: unknown) {
   const detail =
     reason instanceof AiRequestError && reason.code === "invalid_image"
       ? t("managed.imageRejected")
       : reason instanceof Error
         ? reason.message
         : t("managed.imageInvalid");
-  return t("managed.photoError", { file: file.name, detail });
+  return t("managed.photoError", { file: name, detail });
 }
 
 function PhotoInputButton({
@@ -139,49 +137,52 @@ export function InputOrganizer({
       for (
         let batchStart = 0;
         batchStart < files.length;
-        batchStart += PHOTO_BATCH_SIZE
+        batchStart += LIMITS.images
       ) {
-        const batch = files.slice(batchStart, batchStart + PHOTO_BATCH_SIZE);
-        for (const [batchIndex, file] of batch.entries()) {
+        const batch = files.slice(batchStart, batchStart + LIMITS.images);
+        const images: string[] = [];
+        setPhotoProgress({
+          current: batchStart / LIMITS.images + 1,
+          total: Math.ceil(files.length / LIMITS.images),
+        });
+        for (const file of batch) {
           try {
-            setPhotoProgress({
-              current: batchStart + batchIndex + 1,
-              total: files.length,
-            });
-            const base64 = await encodeWordPhoto(file);
             current.signal.throwIfAborted();
-            const response = await managedFetch("/organize", {
-              method: "POST",
-              headers: {
-                "content-type": "text/plain",
-                "x-session-id": crypto.randomUUID(),
-              },
-              body: base64,
-              signal: current.signal,
-            });
-            const text = (
-              await readManagedStream(response, { signal: current.signal })
-            ).text;
+            images.push(await encodeWordPhoto(file));
             current.signal.throwIfAborted();
-            const cleaned = parseOrganizedWordInput(text).join("\n");
-            if (!cleaned.trim())
-              throw new Error(t("managed.noWordsRecognized"));
-            organized.push(cleaned);
           } catch (reason) {
-            if (!current.signal.aborted)
-              setError(formatPhotoError(file, reason));
+            if (!current.signal.aborted) setError(formatPhotoError(file.name, reason));
             return;
           }
         }
+        try {
+          const response = await managedFetch("/organize", {
+            method: "POST",
+            headers: {
+              "content-type": "text/plain",
+              "x-session-id": crypto.randomUUID(),
+            },
+            body: images.join("\n"),
+            signal: current.signal,
+          });
+          const text = (await readManagedStream(response, { signal: current.signal })).text;
+          current.signal.throwIfAborted();
+          const cleaned = parseOrganizedWordInput(text).join("\n");
+          if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
+          organized.push(cleaned);
+        } catch (reason) {
+          if (!current.signal.aborted) setError(formatPhotoError(
+            t("managed.photoBatch", { start: batchStart + 1, end: batchStart + batch.length }), reason,
+          ));
+          return;
+        }
       }
     } finally {
-      if (organized.length) {
-        setReview((currentReview) =>
-          [currentReview, ...organized].filter(Boolean).join("\n"),
-        );
-        setAddingPhotos(true);
-      }
       if (controller.current === current) {
+        if (organized.length) {
+          setReview((currentReview) => [currentReview, ...organized].filter(Boolean).join("\n"));
+          setAddingPhotos(true);
+        }
         setBusy(false);
         setPhotoProgress(null);
       }

@@ -29,7 +29,7 @@ vi.mock("@/lib/managed-client", () => ({
 vi.mock("@/lib/word-photo", () => ({ encodeWordPhoto }));
 vi.mock("@jsquash/webp", () => ({ encode: encodeWebp }));
 beforeEach(() => {
-  vi.clearAllMocks();
+  vi.resetAllMocks();
   managedFetch.mockResolvedValue({});
   encodeWordPhoto.mockResolvedValue("encoded-photo");
   encodeWebp.mockResolvedValue(
@@ -110,10 +110,11 @@ describe("organize before generating", () => {
       expect(screen.getByText("還有其他照片嗎？")).toBeInTheDocument(),
     );
     expect(encodeWordPhoto).toHaveBeenCalledTimes(10);
-    expect(managedFetch).toHaveBeenCalledTimes(10);
+    expect(managedFetch).toHaveBeenCalledTimes(1);
+    expect(managedFetch.mock.calls[0][1].body.split("\n")).toHaveLength(10);
     fireEvent.click(screen.getByRole("button", { name: "沒有了，檢查結果" }));
     expect(screen.getByRole("textbox")).toHaveValue(
-      Array(10).fill("bank n. 銀行").join("\n"),
+      "bank n. 銀行",
     );
   });
 
@@ -130,9 +131,71 @@ describe("organize before generating", () => {
     fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
       target: { files },
     });
-    await waitFor(() => expect(managedFetch).toHaveBeenCalledTimes(11));
+    await waitFor(() => expect(managedFetch).toHaveBeenCalledTimes(2));
+    expect(managedFetch.mock.calls.map(([, init]) => init.body.split("\n").length)).toEqual([10, 1]);
     expect(encodeWordPhoto).toHaveBeenCalledTimes(11);
     expect(screen.getByText("還有其他照片嗎？")).toBeInTheDocument();
+  });
+
+  it("waits for one batch before preparing the next and preserves upload order", async () => {
+    const first = Promise.withResolvers<{ text: string }>();
+    readManagedStream.mockReturnValueOnce(first.promise).mockResolvedValue({ text: '{"lines":["river n. 河流"]}' });
+    encodeWordPhoto.mockImplementation(async (file: File) => file.name);
+    render(<Host onConfirm={vi.fn()} />);
+    const files = Array.from({ length: 11 }, (_, index) => new File(["photo"], `${index}.jpg`));
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), { target: { files } });
+    await waitFor(() => expect(managedFetch).toHaveBeenCalledTimes(1));
+    expect(encodeWordPhoto).toHaveBeenCalledTimes(10);
+    expect(managedFetch.mock.calls[0][1].body.split("\n")).toEqual(files.slice(0, 10).map((file) => file.name));
+    first.resolve({ text: '{"lines":["bank n. 銀行"]}' });
+    await screen.findByText("還有其他照片嗎？");
+    expect(managedFetch).toHaveBeenCalledTimes(2);
+    expect(managedFetch.mock.calls[1][1].body).toBe("10.jpg");
+    fireEvent.click(screen.getByRole("button", { name: "沒有了，檢查結果" }));
+    expect(screen.getByRole("textbox")).toHaveValue("bank n. 銀行\nriver n. 河流");
+  });
+
+  it("keeps completed batches when a later batch fails", async () => {
+    readManagedStream.mockResolvedValue({ text: '{"lines":["bank n. 銀行"]}' });
+    managedFetch.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error("Upload failed"));
+    render(<Host onConfirm={vi.fn()} />);
+    const files = Array.from({ length: 21 }, (_, index) => new File(["photo"], `${index}.jpg`));
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), { target: { files } });
+    expect(await screen.findByRole("alert")).toHaveTextContent("第 11–20 張照片：Upload failed");
+    expect(managedFetch).toHaveBeenCalledTimes(2);
+    expect(encodeWordPhoto).toHaveBeenCalledTimes(20);
+    fireEvent.click(screen.getByRole("button", { name: "沒有了，檢查結果" }));
+    expect(screen.getByRole("textbox")).toHaveValue("bank n. 銀行");
+  });
+
+  it("stops before upload when cancelled during encoding", async () => {
+    const encoding = Promise.withResolvers<string>();
+    encodeWordPhoto.mockReturnValueOnce(encoding.promise);
+    render(<Host onConfirm={vi.fn()} />);
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), { target: { files: [new File(["a"], "a.jpg"), new File(["b"], "b.jpg")] } });
+    fireEvent.click(screen.getByRole("button", { name: "停止" }));
+    encoding.resolve("encoded-photo");
+    await waitFor(() => expect(screen.queryByRole("status")).toBeNull());
+    expect(encodeWordPhoto).toHaveBeenCalledTimes(1);
+    expect(managedFetch).not.toHaveBeenCalled();
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("keeps the first batch when the second stream is cancelled", async () => {
+    readManagedStream.mockResolvedValueOnce({ text: '{"lines":["bank n. 銀行"]}' })
+      .mockImplementationOnce((_response: unknown, { signal }: { signal: AbortSignal }) => new Promise((_resolve, reject) => {
+        signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+      }));
+    render(<Host onConfirm={vi.fn()} />);
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), { target: { files: Array.from({ length: 21 }, (_, index) => new File(["photo"], `${index}.jpg`)) } });
+    await waitFor(() => expect(readManagedStream).toHaveBeenCalledTimes(2));
+    fireEvent.click(screen.getByRole("button", { name: "停止" }));
+    await screen.findByText("還有其他照片嗎？");
+    expect(managedFetch.mock.calls[1][1].signal.aborted).toBe(true);
+    expect(managedFetch).toHaveBeenCalledTimes(2);
+    expect(screen.queryByRole("alert")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "沒有了，檢查結果" }));
+    expect(screen.getByRole("textbox")).toHaveValue("bank n. 銀行");
   });
 
   it("shows the selected file and direct browser error for debugging", async () => {

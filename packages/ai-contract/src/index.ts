@@ -194,7 +194,9 @@ export const LIMITS = {
   outputTokens: 8192,
   imageBytes: 1_500_000,
   imageEdge: 1800,
-  bodyBytes: 2_200_000,
+  images: 10,
+  // Ten base64-encoded 1.5 MB images, separated by nine newlines.
+  bodyBytes: 20_000_009,
 } as const;
 
 /**
