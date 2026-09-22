@@ -1,4 +1,5 @@
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
+import { LIMITS } from "@lexiro/ai-contract";
 import type { ExecutionContext } from "@cloudflare/workers-types";
 import { testDatabase } from "./database";
 import { createWorker } from "../src/index";
@@ -33,9 +34,10 @@ const verify = vi.fn(async (request: Request) => {
 });
 const frame = (type: string, value: object) =>
   `event: ${type}\ndata: ${JSON.stringify({ type, ...value })}\n\n`;
-function provider(result?: object) {
+function provider(result?: object, capture?: (request: unknown) => void) {
   return vi.fn<typeof fetch>(async (_url, options) => {
     const body = await new Response(options!.body as BodyInit).json();
+    capture?.(body);
     const output = JSON.stringify(
       result ?? {
         items: [
@@ -140,7 +142,22 @@ describe("Worker HTTP boundary", () => {
     expect((await account(env.DB, "u"))!.points).toBe(110);
   });
 
-  it("accepts one bounded WebP and settles its actual provider cost", async () => {
+  it.each(["count", "bytes"] as const)("rejects oversized photo %s before reserving points or contacting the provider", async (limit) => {
+    const result = await call(new Request("https://worker.test/organize", {
+      method: "POST",
+      headers: {
+        authorization: "Bearer user", "content-type": "text/plain", "x-session-id": crypto.randomUUID(),
+        ...(limit === "bytes" ? { "content-length": String(LIMITS.bodyBytes + 1) } : {}),
+      },
+      body: limit === "count" ? Array(11).fill("AAAA").join("\n") : "AAAA",
+    }));
+    expect(result.response.status).toBe(413);
+    expect(result.upstream).not.toHaveBeenCalled();
+    expect((await account(env.DB, "u"))!.points).toBe(100);
+    expect((await env.DB.prepare("SELECT * FROM charges").all()).results).toEqual([]);
+  });
+
+  it.each([1, 10])("accepts %i photos in one provider request and keeps every successful charge identity", async (count) => {
     const bytes = new Uint8Array(30),
       view = new DataView(bytes.buffer);
     bytes.set(new TextEncoder().encode("RIFF"));
@@ -150,19 +167,31 @@ describe("Worker HTTP boundary", () => {
     bytes.set([0x9d, 1, 0x2a], 23);
     view.setUint16(26, 100, true);
     view.setUint16(28, 100, true);
-    const result = await call(
-      new Request("https://worker.test/organize", {
-        method: "POST",
-        headers: {
-          authorization: "Bearer user",
-          "content-type": "text/plain",
-          "x-session-id": crypto.randomUUID(),
-        },
-        body: btoa(String.fromCharCode(...bytes)),
-      }),
-      provider({ lines: ["apple 蘋果"] }),
-    );
+    const images = Array.from({ length: count }, (_, index) => {
+      view.setUint16(26, 100 + index, true);
+      return btoa(String.fromCharCode(...bytes));
+    });
+    const session = crypto.randomUUID();
+    const request = () => new Request("https://worker.test/organize", {
+      method: "POST",
+      headers: { authorization: "Bearer user", "content-type": "text/plain", "x-session-id": session },
+      body: images.join("\n"),
+    });
+    const capture = vi.fn();
+    const upstream = provider({ lines: ["apple 蘋果"] }, capture);
+    const result = await call(request(), upstream);
     expect(result.response.status).toBe(200);
+    expect(upstream).toHaveBeenCalledTimes(1);
+    expect(capture).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({
+      input: [expect.anything(), { role: "user", content: [
+        expect.objectContaining({ type: "input_text" }),
+        ...images.map((image) => ({ type: "input_image", image_url: `data:image/webp;base64,${image}`, detail: "high" })),
+      ] }],
+    }));
+    expect((await account(env.DB, "u"))!.points).toBe(99);
+    expect(await env.DB.prepare("SELECT points,units FROM usage_log").first()).toEqual({ points: 1, units: count });
+    expect((await env.DB.prepare("SELECT id FROM charges WHERE attempt_id LIKE 'settled:%'").all()).results).toHaveLength(count);
+    expect((await call(request(), provider({ lines: ["apple 蘋果"] }))).response.status).toBe(200);
     expect((await account(env.DB, "u"))!.points).toBe(99);
   });
   it("rebuilds an owned but provider-expired cursor without charging twice", async () => {

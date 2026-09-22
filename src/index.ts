@@ -20,7 +20,7 @@ import {
 import { adminRequest } from "./admin";
 import { HttpError, readBody } from "./http";
 import { MODELS, prepareGeneration, upstreamBody } from "./generation";
-import { prepareImage } from "./organize";
+import { prepareImages } from "./organize";
 import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
 import { createUsageRecovery, reconcileUsage } from "./usage-recovery";
@@ -106,7 +106,7 @@ export function createWorker(
           path === "/organize" &&
           request.headers.get("content-type")?.split(";")[0] === "text/plain";
         const prepared = image
-          ? await prepareImage(
+          ? await prepareImages(
               await readBody(request, LIMITS.bodyBytes),
               request.headers.get("x-session-id"),
               identity.uid,

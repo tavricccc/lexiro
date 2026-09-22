@@ -66,7 +66,7 @@ export interface PreparedGeneration {
   /** A first reusable block shared by several specialized prompts. */
   cachePrefix?: string;
   input: string;
-  image?: string;
+  images?: string[];
   schema?: Record<string, unknown>;
   units: (ChargeUnit & { index: number })[];
   halfRate: number;
@@ -288,7 +288,7 @@ export function upstreamBody(
   cursor?: string,
 ): string | ReadableStream<Uint8Array> {
   const body = upstreamRequest(prepared, cursor);
-  if (!prepared.image) return JSON.stringify(body);
+  if (!prepared.images) return JSON.stringify(body);
   const marker = "LEXIRO_IMAGE_BODY";
   const imageBody = {
     ...body,
@@ -298,18 +298,19 @@ export function upstreamBody(
         role: "user",
         content: [
           { type: "input_text", text: prepared.input },
-          {
+          ...prepared.images.map(() => ({
             type: "input_image",
             image_url: `data:image/webp;base64,${marker}`,
             detail: "high",
-          },
+          })),
         ],
       },
     ],
   };
-  const [prefix, suffix] = JSON.stringify(imageBody).split(marker);
+  const envelope = JSON.stringify(imageBody).split(marker);
   const encoder = new TextEncoder();
-  const chunks = [prefix, prepared.image, suffix];
+  const chunks = prepared.images.flatMap((image, index) => [envelope[index], image]);
+  chunks.push(envelope[prepared.images.length]);
   return new ReadableStream<Uint8Array>({
     pull(controller) {
       const chunk = chunks.shift();

@@ -12,6 +12,12 @@ Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號�
 
 GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CLOUDFLARE_API_TOKEN`、`OPENAI_API_KEY`、`ADMIN_EMAILS`。Cloudflare token 限定為 Tavric account，權限需包含 Workers Scripts:Edit 與 D1:Edit。Workflow 仍不執行消耗帳號用量的 prompt 評測。
 
+## 照片批次介面（共用合約 1.7.0）
+
+`POST /organize` 的 `text/plain` body 以換行分隔 1–10 張 WebP base64，`x-session-id` 識別同批 session。每張最多 1.5 MB／長邊 1800，整批 body 上限 20,000,009 bytes。Worker 在預留前驗證每張圖片，一次上游請求含整批 `input_image`，不逐張呼叫供應商；預留仍按每張 6 點，實扣按整次回報 usage。成功時保留每張來源的冪等識別，失敗或取消釋放整批預留。沒有新增 D1 schema 或 migration。
+
+先發布 Worker，再發布使用批次上傳的前端；發布後重新載入頁面。批次共用既有整理輸出長度與生成來源數限制，不代表可無限制輸入文字。CPU 與真實多圖辨識品質仍需正式量測，本地驗證只使用合成圖片與 provider。
+
 ## v0.2.0 升級
 
 - 部署流程會依序套用 `0009_verified_debits.sql`、`0010_pending_usage.sql`、`0011_report_indexes.sql`。本地測試仍只用 `npm run db:migrate`，不要另外手動操作 remote。

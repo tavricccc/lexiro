@@ -120,7 +120,7 @@ export async function settleGeneration(
             ) &&
             data.lines.join("\n").length <= LIMITS.input
           )
-            valid.add(0);
+            prepared.units.forEach((unit) => valid.add(unit.index));
         } else if (kind !== "words" && kind !== "senses") {
           const schema = questionOutput(kind);
           if (kind === "vocabulary" || kind === "grammar") {
