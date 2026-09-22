@@ -95,7 +95,7 @@
   --accent-foreground: var(--brand-800);
   --destructive: #c33b3b;
   --destructive-foreground: #ffffff;
-  --success: #0e8a72;
+  --success: #087661;
   --success-foreground: #ffffff;
   --warning: #9a6413;
   --border: rgb(31 58 48 / 9%);
@@ -254,8 +254,26 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--primary);
+  outline-offset: 0.125rem;
+}
+
+/* Inset focus stays visible inside the grouped list's clipped surface. */
+.rule-card :focus-visible {
+  outline: 0.125rem solid var(--primary);
+  outline-offset: -0.125rem;
+}
+
+input,
+textarea {
+  caret-color: var(--primary);
+}
+
+@media (pointer: coarse) {
+  [data-slot="button"] {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
 }
 
 ::selection {
@@ -520,6 +538,12 @@ textarea {
   );
 }
 
+@media (min-width: 48rem) {
+  .page-header::before {
+    width: calc(100% + 2 * var(--page-gutter));
+  }
+}
+
 .app-mobile-nav {
   /* The dock floats over the page, so it is a material rather than a panel:
      what scrolls under it stays legible through it instead of disappearing at
@@ -690,6 +714,7 @@ textarea {
 }
 
 .dashboard-bar {
+  transform: scaleX(var(--dashboard-bar, 1));
   transform-origin: left center;
   animation: dashboard-bar var(--motion-sheet) var(--ease-arrive) both;
 }

@@ -54,7 +54,7 @@ export function LiquidTabs({
           {options.map((option) => {
             return (
               <TabsPrimitive.Trigger
-                className="t-tab t-tab-label relative z-10 isolate inline-flex h-[1.75rem] shrink-0 cursor-pointer appearance-none items-center justify-center gap-1 rounded-full border-0 bg-transparent px-3 font-medium leading-none text-[var(--tabs-text-muted)] outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                className="t-tab t-tab-label relative z-10 isolate inline-flex min-h-11 shrink-0 cursor-pointer appearance-none items-center justify-center gap-1 rounded-full border-0 bg-transparent px-3 font-medium leading-none text-[var(--tabs-text-muted)] outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
                 data-control-label=""
                 data-liquid-tab={option.value}
                 data-displayed-active={option.value === value}

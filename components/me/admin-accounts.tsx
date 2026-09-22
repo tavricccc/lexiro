@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 import { AdminIssue, AdminPager } from "./admin-shared";
 import { Icons } from "@/components/ui/icons";
-import { ListActionRow, ListChoiceRow, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
+import { ListActionRow, ListChoiceGroup, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
 import { managedJson, notifyManagedAccountChanged } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -161,17 +161,15 @@ function AccountForm({ account }: { account: AdminAccount }) {
       </ListSection>
 
       <ListSection header={t("admin.adjust")}>
-        <ListChoiceRow
+        <ListChoiceGroup
           disabled={busy}
-          label={t("admin.addPoints")}
-          onSelect={() => setDirection("add")}
-          selected={direction === "add"}
-        />
-        <ListChoiceRow
-          disabled={busy}
-          label={t("admin.subtractPoints")}
-          onSelect={() => setDirection("subtract")}
-          selected={direction === "subtract"}
+          label={t("admin.adjust")}
+          onSelect={setDirection}
+          value={direction}
+          options={[
+            { id: "add", label: t("admin.addPoints") },
+            { id: "subtract", label: t("admin.subtractPoints") },
+          ]}
         />
         <ListInputRow
           disabled={busy}

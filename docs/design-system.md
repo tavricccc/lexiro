@@ -114,8 +114,8 @@ every screen that asks for something uses it.
 - `ListSection` is a group: a quiet header above it, the rows in a `.rule-card
   .rule-list`, and a footer sentence below explaining what changing the group
   does. The footer is where explanation goes, never a paragraph between rows.
-- `ListRow` reports, `ListNavRow` leads somewhere (chevron), `ListChoiceRow` is
-  one option with a check, `ListPicker` uses the shared select popover instead
+- `ListRow` reports, `ListNavRow` leads somewhere (chevron), `ListChoiceGroup` is
+  a labelled Radix radio group with checkmarked rows and arrow-key navigation, `ListPicker` uses the shared select popover instead
   of unfolding options into the current page, `ListSwitchRow` is on/off,
   `ListStepperRow` is a small
   whole number, `ListInputRow` is a value you type on the line that names it
@@ -245,7 +245,10 @@ Data visuals still animate once on mount: `.dashboard-bar` grows a proportion ba
 from its leading edge (`--dashboard-bar` carries the ratio), `.dashboard-column`
 grows a chart column up from the baseline.
 
-Everything above is disabled under `prefers-reduced-motion`.
+Everything above is disabled under `prefers-reduced-motion`. Proportion bars
+retain their final scale without animation, so reduced motion never changes the
+reported value. Keyboard focus uses the primary colour and an inset outline in
+clipped list surfaces. Touch controls have a minimum 2.75rem target.
 
 `PageHeader` owns the sticky top material. Its pseudo-element extends to the
 viewport edges and fades a bounded backdrop blur into the page while the title

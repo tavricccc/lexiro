@@ -5,7 +5,7 @@ import {
   type JobKind,
   type Tier,
 } from "@lexiro/ai-contract";
-import { ListChoiceRow, ListSection } from "@/components/ui/list";
+import { ListChoiceGroup, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { CreditBadge } from "./credit-badge";
 import { useManagedAccount } from "./use-managed-account";
@@ -49,35 +49,30 @@ export function GenerationControls({
       }
       header={t("managed.tier")}
     >
-      {TIERS.map((value) => {
-        const estimate = estimatePoints(kind, count, value);
-        return (
-          <ListChoiceRow
-            detail={t(`managed.${value}Hint`)}
-            disabled={disabled}
-            key={value}
-            label={t(`managed.${value}`)}
-            onSelect={() => onTierChange(value)}
-            selected={tier === value}
-            value={
-              admin || !count
-                ? undefined
-                : <CreditBadge
-                    label={
-                      estimate.min === estimate.max
-                        ? t("managed.expectedPoints", { points: estimate.max })
-                        : t("managed.expectedPointsRange", estimate)
-                    }
-                    value={
-                      estimate.min === estimate.max
-                        ? t("managed.expectedShort", { points: estimate.max })
-                        : t("managed.expectedRangeShort", estimate)
-                    }
-                  />
-            }
-          />
-        );
-      })}
+      <ListChoiceGroup
+        disabled={disabled}
+        label={t("managed.tier")}
+        onSelect={onTierChange}
+        value={tier}
+        options={TIERS.map((value) => {
+          const estimate = estimatePoints(kind, count, value);
+          return {
+            id: value,
+            detail: t(`managed.${value}Hint`),
+            label: t(`managed.${value}`),
+            value: admin || !count ? undefined : (
+              <CreditBadge
+                label={estimate.min === estimate.max
+                  ? t("managed.expectedPoints", { points: estimate.max })
+                  : t("managed.expectedPointsRange", estimate)}
+                value={estimate.min === estimate.max
+                  ? t("managed.expectedShort", { points: estimate.max })
+                  : t("managed.expectedRangeShort", estimate)}
+              />
+            ),
+          };
+        })}
+      />
     </ListSection>
   );
 }

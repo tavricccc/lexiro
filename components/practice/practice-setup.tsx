@@ -15,7 +15,7 @@ import { ChoiceChecklist } from "@/components/ui/choice-checklist";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import {
-  ListChoiceRow,
+  ListChoiceGroup,
   ListPicker,
   ListSection,
   ListSwitchRow,
@@ -340,23 +340,18 @@ export function PracticeSetup({
             footer={t("practice.cardStyleHint")}
             header={t("practice.cardStyleTitle")}
           >
-            {CARD_STYLES.map((style) => (
-              <ListChoiceRow
-                detail={
-                  style === "mixed"
-                    ? t("practice.cardStyleMixedHint")
-                    : practiceTaskHint(style)
-                }
-                key={style}
-                label={
-                  style === "mixed"
-                    ? t("practice.cardStyleMixed")
-                    : practiceTaskLabel(style)
-                }
-                onSelect={() => onTasksChange(tasksOfStyle(style))}
-                selected={styleOfTasks(tasks) === style}
-              />
-            ))}
+            <ListChoiceGroup
+              label={t("practice.cardStyleTitle")}
+              onSelect={(style) => onTasksChange(tasksOfStyle(style))}
+              value={styleOfTasks(tasks)}
+              options={CARD_STYLES.map((style) => ({
+                id: style,
+                detail: style === "mixed"
+                  ? t("practice.cardStyleMixedHint") : practiceTaskHint(style),
+                label: style === "mixed"
+                  ? t("practice.cardStyleMixed") : practiceTaskLabel(style),
+              }))}
+            />
             <ListSwitchRow
               checked={leechOnly}
               detail={t("practice.leechOnlyHint")}

@@ -237,7 +237,8 @@ export function LibraryPage({
       <>
         <input
           accept=".zip"
-          className="sr-only"
+          aria-label={t("library.importSet")}
+          hidden
           onChange={(event) => {
             const input = event.currentTarget;
             const file = input.files?.[0];
@@ -275,6 +276,7 @@ export function LibraryPage({
             className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
           />
           <Input
+            aria-label={t("library.searchHere")}
             className="pl-10"
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("library.searchHere")}

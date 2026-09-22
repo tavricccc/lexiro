@@ -63,15 +63,17 @@ function HistoryChart({
   );
   return (
     <div className="flex h-40 items-end gap-1 sm:gap-1.5">
-      {history.map((day, index) => {
+      {history.map((day) => {
         const memory = day.memoryAgain + day.memoryGood;
         const total = memory + day.questionTotal;
         return (
           <div
-            className="flex min-w-0 flex-1 flex-col items-center gap-2"
+            aria-label={t("progress.dayTotal", { count: total, date: day.date })}
+            className="flex h-full min-w-0 flex-1 flex-col items-center gap-2"
             key={day.date}
+            role="img"
           >
-            <div className="flex w-full flex-1 items-end justify-center">
+            <div className="flex min-h-0 w-full flex-1 items-end justify-center">
               {total === 0 ? (
                 <span
                   className="h-px w-full max-w-9 bg-border"
@@ -79,9 +81,8 @@ function HistoryChart({
                 />
               ) : (
                 <span
-                  className="dashboard-column flex w-full max-w-9 flex-col overflow-hidden rounded-t-[3px]"
+                  className="dashboard-column flex w-full max-w-9 flex-col overflow-hidden rounded-t-xs"
                   style={{
-                    animationDelay: `${index * 25}ms`,
                     height: `${Math.max(4, (total / busiest) * 100)}%`,
                   }}
                   title={t("progress.dayTotal", {
@@ -113,7 +114,7 @@ function HistoryChart({
 function LegendKey({ className, label }: { className: string; label: string }) {
   return (
     <span className="flex items-center gap-2">
-      <span aria-hidden className={`size-2 rounded-[2px] ${className}`} />
+      <span aria-hidden className={`size-2 rounded-xs ${className}`} />
       {label}
     </span>
   );

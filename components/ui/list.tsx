@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { type ReactNode } from "react";
+import { RadioGroup } from "radix-ui";
 
 import { Icons } from "@/components/ui/icons";
 import {
@@ -93,13 +94,13 @@ function RowInner({
         />
       )}
       <span className="min-w-0 flex-1">
-        <span className={cn("type-row block", toneClass[tone])}>{label}</span>
+        <span className={cn("type-row block [overflow-wrap:anywhere]", toneClass[tone])}>{label}</span>
         {detail && (
           <span className="type-row-detail mt-0.5 block">{detail}</span>
         )}
       </span>
       {value !== undefined && value !== null && value !== "" && (
-        <span className="type-row-value shrink-0 text-right">{value}</span>
+        <span className="type-row-value min-w-0 max-w-[55%] text-right [overflow-wrap:anywhere]">{value}</span>
       )}
       {trailing}
     </>
@@ -151,6 +152,8 @@ export function ListNavRow({
     />
   );
   const shared = cn(rowClass, disabled && "pointer-events-none opacity-45");
+  if (href && disabled)
+    return <span aria-disabled="true" className={shared} role="link">{inner}</span>;
   if (href)
     return (
       <Link className={shared} href={href}>
@@ -178,34 +181,46 @@ export function ListNavRow({
  * thing about what they are looking at. A row also has somewhere to put what
  * the option costs, which is exactly what the reader needs to choose.
  */
-export function ListChoiceRow({
+export function ListChoiceGroup<Value extends string>({
   disabled,
+  label,
   onSelect,
-  selected,
-  ...content
-}: RowContent & {
+  options,
+  value,
+}: {
   disabled?: boolean;
-  onSelect: () => void;
-  selected: boolean;
+  label: string;
+  onSelect: (value: Value) => void;
+  options: (RowContent & { id: Value; disabled?: boolean })[];
+  value: Value;
 }) {
   return (
-    <button
-      aria-checked={selected}
-      className={cn(rowClass, disabled && "pointer-events-none opacity-45")}
+    <RadioGroup.Root
+      aria-label={label}
+      className="rule-list"
       disabled={disabled}
-      onClick={onSelect}
-      role="radio"
-      type="button"
+      onValueChange={(next) => onSelect(next as Value)}
+      value={value}
     >
-      <RowInner {...content} trailing={<RowCheck checked={selected} />} />
-    </button>
+      {options.map(({ id, disabled: optionDisabled, ...content }) => (
+        <RadioGroup.Item
+          className={cn(rowClass, "disabled:pointer-events-none disabled:opacity-45")}
+          data-selected={id === value}
+          disabled={optionDisabled}
+          key={id}
+          value={id}
+        >
+          <RowInner {...content} trailing={<RowCheck checked={id === value} />} />
+        </RadioGroup.Item>
+      ))}
+    </RadioGroup.Root>
   );
 }
 
 /**
  * One of several rows that can each be on or off.
  *
- * It is `ListChoiceRow` in every respect but its semantics: the same check, in
+ * It shares the single-choice group's check, in
  * the same place, fading in and out the same way. A row that is on is marked by
  * a check, not by a box — a box belongs to a form, where you are filling
  * something in, and putting one here made multi-select look like a different
@@ -402,7 +417,7 @@ function StepperButton({
   return (
     <button
       aria-label={label}
-      className="flex h-9 w-11 items-center justify-center text-base leading-none transition-[background-color,opacity] duration-[var(--motion-control)] active:bg-[var(--surface-active)] disabled:opacity-35"
+      className="flex h-11 w-11 items-center justify-center text-base leading-none transition-[background-color,opacity] duration-[var(--motion-control)] active:bg-[var(--surface-active)] disabled:opacity-35"
       disabled={disabled}
       onClick={onClick}
       type="button"

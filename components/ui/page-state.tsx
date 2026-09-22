@@ -38,7 +38,7 @@ export function EmptyState({
 }) {
   if (variant === "filtered") {
     return (
-      <div className="rule-card py-12 text-center">
+      <div className="rule-card py-12 text-center" role="status">
         <p className="font-medium">{title}</p>
         <p className="mx-auto mt-1.5 max-w-[42ch] type-lead">{description}</p>
       </div>
@@ -50,19 +50,16 @@ export function EmptyState({
       {headword && (
         <div
           aria-hidden
-          className="mx-auto mb-9 w-fit max-w-full select-none border-y border-dashed px-6 py-5 text-left opacity-55"
+          className="mx-auto mb-9 w-fit max-w-full select-none border-y border-dashed px-6 py-5 text-left text-muted-foreground"
         >
           <div className="flex items-baseline gap-3">
             <span className="entry-headword">{headword}</span>
             {pos && <span className="entry-pos">{pos}</span>}
           </div>
-          <p className="mt-1.5 text-sm text-muted-foreground">{description}</p>
         </div>
       )}
       <h2 className="type-section">{title}</h2>
-      {!headword && (
-        <p className="mx-auto mt-2 max-w-[46ch] type-lead">{description}</p>
-      )}
+      <p className="mx-auto mt-2 max-w-[46ch] type-lead">{description}</p>
       {(action || secondaryAction) && (
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
           {action}
@@ -81,7 +78,7 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="t-shake rule-card py-12 text-center" data-error="true">
+    <div className="t-shake rule-card py-12 text-center" data-error="true" role="alert">
       <div className="mx-auto grid size-10 place-items-center rounded-full bg-destructive/10 text-destructive">
         <Icons.error className="size-5" />
       </div>
