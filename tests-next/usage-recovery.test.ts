@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { testDatabase } from "./database";
 import { account, nowSeconds, reserve, scheduledMaintenance, settle } from "../src/billing";
@@ -26,6 +27,23 @@ const ledger = (id: string) => fixture.db.prepare(
 ).bind(id).first();
 
 describe("unknown provider usage", () => {
+  it("marks old missing usage as unavailable without inventing historical charges", async () => {
+    const legacy = await testDatabase("0009_verified_debits.sql");
+    try {
+      await legacy.db.batch([
+        legacy.db.prepare("INSERT INTO usage_log(id,uid,points,model,created_at,credits,input,output) VALUES('unknown','u',0,'test',1,0,NULL,NULL)"),
+        legacy.db.prepare("INSERT INTO usage_log(id,uid,points,model,created_at,credits,input,output) VALUES('known','u',7,'test',1,7,900,60)"),
+      ]);
+      const sql = await readFile(new URL("../migrations/0010_pending_usage.sql", import.meta.url), "utf8");
+      await legacy.db.batch(sql.split(";").map((statement) => statement.trim()).filter(Boolean).map((statement) => legacy.db.prepare(statement)));
+      expect((await legacy.db.prepare("SELECT id,points,credits,usage_state,debit_verified FROM usage_log ORDER BY id").all()).results).toEqual([
+        { id: "known", points: 7, credits: 7, usage_state: "reported", debit_verified: 0 },
+        { id: "unknown", points: 0, credits: 0, usage_state: "unavailable", debit_verified: 0 },
+      ]);
+      expect((await account(legacy.db, "u"))!.points).toBe(100);
+    } finally { await legacy.runtime.dispose(); }
+  });
+
   it("recovers usage even when the terminal response object exists", async () => {
     const { prepared, hold } = await start();
     const recover = vi.fn(async () => ({ ...complete(), usage }));

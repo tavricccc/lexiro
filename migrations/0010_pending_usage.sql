@@ -1,6 +1,8 @@
 ALTER TABLE usage_log ADD COLUMN usage_state TEXT NOT NULL DEFAULT 'reported'
   CHECK(usage_state IN ('reported','pending','unavailable'));
-UPDATE usage_log SET usage_state='unavailable' WHERE credits IS NULL;
+-- Preserve historical numeric values, but do not report missing token counts as free usage.
+UPDATE usage_log SET usage_state='unavailable'
+  WHERE credits IS NULL OR input IS NULL OR output IS NULL;
 
 -- Only billing metadata is retained: never prompts, generated text, or images.
 CREATE TABLE pending_usage (
