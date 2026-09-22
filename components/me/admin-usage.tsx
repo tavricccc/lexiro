@@ -5,6 +5,7 @@ import {
   rate,
   type AdminKindUsage,
   type AdminUserUsage,
+  type AdminUsageReport,
   type JobKind,
   type Tier,
 } from "@lexiro/ai-contract";
@@ -13,7 +14,8 @@ import { useState } from "react";
 
 import { formatCost } from "@/components/ai/ai-usage";
 import { CreditBadge } from "@/components/ai/credit-badge";
-import { AdminIssue, AdminPager, type UsageReport } from "./admin-shared";
+import { AdminIssue, AdminPager } from "./admin-shared";
+import { useAdminPagination } from "./use-admin-pagination";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { ListRow, ListSection } from "@/components/ui/list";
 import { jobKindLabel } from "@/lib/question-options";
@@ -109,13 +111,13 @@ const percent = (value: number) =>
 
 export function AdminUsage() {
   const uid = useCloudStore((store) => store.user?.uid);
-  const [offset, setOffset] = useState(0);
+  const pages = useAdminPagination();
   const [view, setView] = useState<"models" | "kinds" | "accounts" | "runs">(
     "models",
   );
   const usage = useQuery({
-    queryKey: ["admin-usage", uid, offset],
-    queryFn: () => managedJson<UsageReport>(`/admin/usage?offset=${offset}`),
+    queryKey: ["admin-usage", uid, pages.cursor],
+    queryFn: () => managedJson<AdminUsageReport>(`/admin/usage${pages.cursor ? `?cursor=${encodeURIComponent(pages.cursor)}` : ""}`),
     retry: false,
   });
   if (usage.error)
@@ -157,6 +159,13 @@ export function AdminUsage() {
         ]}
         value={view}
       />
+      {usage.data && (usage.data.pendingUsage > 0 || usage.data.unavailableUsage > 0 || usage.data.unverifiedDebits > 0) && (
+        <ListSection footer={t("admin.knownUsageOnly")}>
+          {usage.data.pendingUsage > 0 && <ListRow label={t("admin.pendingUsage", { count: usage.data.pendingUsage })} />}
+          {usage.data.unavailableUsage > 0 && <ListRow label={t("admin.unavailableUsage", { count: usage.data.unavailableUsage })} />}
+          {usage.data.unverifiedDebits > 0 && <ListRow label={t("admin.unverifiedDebits", { count: usage.data.unverifiedDebits })} />}
+        </ListSection>
+      )}
       {view === "models" && (
         <ListSection
           footer={t("admin.spentWindow")}
@@ -250,18 +259,20 @@ export function AdminUsage() {
           {usage.isPending && <ListRow label={t("common.loading")} />}
           {usage.data?.entries.map((entry) => (
             <ListRow
-              detail={t("admin.runTotals", {
+              detail={entry.usageState === "reported" ? t("admin.runTotals", {
                 input: (entry.input ?? 0).toLocaleString(),
                 cached: (entry.cached ?? 0).toLocaleString(),
                 output: (entry.output ?? 0).toLocaleString(),
-              })}
+              }) : entry.model}
               key={entry.id}
               label={
-                entry.status === "complete"
-                  ? (entry.email ?? entry.uid)
-                  : `${entry.email ?? entry.uid} · ${t("admin.runFailed")}`
+                entry.usageState !== "reported"
+                  ? `${entry.email ?? entry.uid} · ${t(entry.usageState === "pending" ? "admin.pendingCost" : "admin.unavailableCost")}`
+                  : entry.status === "complete"
+                    ? (entry.email ?? entry.uid)
+                    : `${entry.email ?? entry.uid} · ${t("admin.runFailed")}`
               }
-              value={
+              value={entry.usageState !== "reported" ? t("admin.costUnknown") : (
                 <UsageValue
                   cost={estimateCost({
                     model: entry.model,
@@ -272,7 +283,7 @@ export function AdminUsage() {
                   })}
                   credits={entry.credits}
                 />
-              }
+              )}
             />
           ))}
           {!usage.isPending && usage.data?.entries.length === 0 && (
@@ -281,10 +292,10 @@ export function AdminUsage() {
         </ListSection>
       )}
       <AdminPager
-        hasNext={usage.data?.nextOffset != null}
-        hasPrevious={offset > 0}
-        onNext={() => setOffset(usage.data!.nextOffset!)}
-        onPrevious={() => setOffset(Math.max(0, offset - 50))}
+        hasNext={usage.data?.nextCursor != null}
+        hasPrevious={pages.hasPrevious}
+        onNext={() => pages.next(usage.data!.nextCursor!)}
+        onPrevious={pages.previous}
       />
     </div>
   );

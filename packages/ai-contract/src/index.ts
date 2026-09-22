@@ -93,6 +93,9 @@ export interface AdminUsageEntry {
   output: number | null;
   created_at: number;
   status: string;
+  usageState: "reported" | "pending" | "unavailable";
+  assessedPoints: number | null;
+  debitVerified: 0 | 1;
 }
 /**
  * One kind of work at one tier, over a month of runs.
@@ -125,6 +128,28 @@ export interface AdminUserUsage {
   output: number;
   credits: number;
   points: number;
+}
+export interface AdminAccountsPage {
+  accounts: AdminAccount[];
+  nextCursor: string | null;
+}
+export interface AdminUsageReport {
+  entries: AdminUsageEntry[];
+  nextCursor: string | null;
+  pendingUsage: number;
+  unavailableUsage: number;
+  unverifiedDebits: number;
+  models: {
+    model: string;
+    runs: number;
+    input: number;
+    cached: number;
+    cacheWrite: number;
+    output: number;
+    credits: number | null;
+  }[];
+  users: AdminUserUsage[];
+  kinds: AdminKindUsage[];
 }
 export interface AdminUsageTotals {
   runs: number;

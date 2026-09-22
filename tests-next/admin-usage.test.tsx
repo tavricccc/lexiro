@@ -1,10 +1,16 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { AdminUsageReport as UsageReport } from "@lexiro/ai-contract";
+
+const { managed } = vi.hoisted(() => ({ managed: vi.fn() }));
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const report = {
+const report: UsageReport = {
   entries: [],
-  nextOffset: null,
+  nextCursor: null,
+  pendingUsage: 0,
+  unavailableUsage: 0,
+  unverifiedDebits: 0,
   models: [],
   users: [],
   kinds: [
@@ -35,7 +41,7 @@ const report = {
   ],
 };
 vi.mock("@/lib/managed-client", () => ({
-  managedJson: () => Promise.resolve(report),
+  managedJson: managed,
   notifyManagedAccountChanged: () => undefined,
 }));
 
@@ -62,9 +68,28 @@ async function showKindReport() {
   fireEvent.click(tab);
 }
 
+beforeEach(() => { managed.mockReset(); managed.mockResolvedValue(report); });
 afterEach(cleanup);
 
 describe("the administrator's per-kind cost report", () => {
+  it("shows pending costs as unknown rather than free", async () => {
+    managed.mockResolvedValue({ ...report, pendingUsage: 1, unverifiedDebits: 2, entries: [{
+      id: "pending", uid: "u", email: "u@example.test", model: "gpt-5.6-luna", points: 0,
+      input: null, cached: null, cacheWrite: null, output: null, credits: null,
+      created_at: 1, status: "complete", usageState: "pending", assessedPoints: null, debitVerified: 0,
+    }] } satisfies UsageReport);
+    show();
+    expect(await screen.findByText("1 筆用量待核對")).toBeTruthy();
+    expect(screen.getByText("2 筆歷史扣款無法核實")).toBeTruthy();
+    const tab = screen.getByRole("tab", { name: "最近的生成" });
+    fireEvent.mouseDown(tab);
+    fireEvent.click(tab);
+    expect(screen.getByText("u@example.test · 成本待核對")).toBeTruthy();
+    expect(screen.getByText("未知")).toBeTruthy();
+    expect(screen.queryByText(/US\$/)).toBeNull();
+    expect(screen.queryByText(/輸入 0/)).toBeNull();
+  });
+
   it("prices one billable unit against what that unit is quoted at", async () => {
     await showKindReport();
     // 40 credits over 40 units is 1.00 each; vocabulary at lite is quoted at

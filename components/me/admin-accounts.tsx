@@ -1,12 +1,13 @@
 "use client";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import type { AdminAccount } from "@lexiro/ai-contract";
+import type { AdminAccount, AdminAccountsPage } from "@lexiro/ai-contract";
 import { useState } from "react";
 
 import { toast } from "sonner";
 
 import { AdminIssue, AdminPager } from "./admin-shared";
+import { useAdminPagination } from "./use-admin-pagination";
 import { Icons } from "@/components/ui/icons";
 import { ListActionRow, ListChoiceGroup, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
 import { managedJson, notifyManagedAccountChanged } from "@/lib/managed-client";
@@ -15,12 +16,12 @@ import { useCloudStore } from "@/stores/cloud-store";
 
 export function AdminAccountList() {
   const uid = useCloudStore((store) => store.user?.uid);
-  const [offset, setOffset] = useState(0);
+  const pages = useAdminPagination();
   const accounts = useQuery({
-    queryKey: ["admin-accounts", uid, offset],
+    queryKey: ["admin-accounts", uid, pages.cursor],
     queryFn: () =>
-      managedJson<{ accounts: AdminAccount[]; nextOffset: number | null }>(
-        `/admin/accounts?offset=${offset}`,
+      managedJson<AdminAccountsPage>(
+        `/admin/accounts${pages.cursor ? `?cursor=${encodeURIComponent(pages.cursor)}` : ""}`,
       ),
     retry: false,
   });
@@ -52,10 +53,10 @@ export function AdminAccountList() {
         )}
       </ListSection>
       <AdminPager
-        hasNext={accounts.data?.nextOffset != null}
-        hasPrevious={offset > 0}
-        onNext={() => setOffset(accounts.data!.nextOffset!)}
-        onPrevious={() => setOffset(Math.max(0, offset - 100))}
+        hasNext={accounts.data?.nextCursor != null}
+        hasPrevious={pages.hasPrevious}
+        onNext={() => pages.next(accounts.data!.nextCursor!)}
+        onPrevious={pages.previous}
       />
     </div>
   );

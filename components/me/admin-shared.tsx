@@ -10,23 +10,6 @@ export interface AdminSettingsValue {
   defaultMonthly: number;
 }
 
-export interface UsageReport {
-  entries: import("@lexiro/ai-contract").AdminUsageEntry[];
-  nextOffset: number | null;
-  models: {
-    model: string;
-    runs: number;
-    input: number;
-    cached: number;
-    cacheWrite: number;
-    output: number;
-    credits: number | null;
-  }[];
-  /** One row per account per model, so cost stays a model rate times tokens. */
-  users: import("@lexiro/ai-contract").AdminUserUsage[];
-  /** One row per kind per tier, for reading cost per unit off real runs. */
-  kinds: import("@lexiro/ai-contract").AdminKindUsage[];
-}
 
 export function AdminIssue({
   message,
