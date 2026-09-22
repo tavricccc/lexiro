@@ -350,6 +350,8 @@ describe("Worker HTTP boundary", () => {
       error: { code: "upstream_unavailable" },
     });
     expect((await account(env.DB, "u"))!.points).toBe(100);
+    expect(await env.DB.prepare("SELECT credits,points,usage_state,status FROM usage_log").first())
+      .toEqual({ credits: null, points: 0, usage_state: "unavailable", status: "failed" });
   });
   it("enforces input/source limits before charging or calling the provider", async () => {
     for (const raw of [

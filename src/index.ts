@@ -214,7 +214,8 @@ export function createWorker(
         } catch (reason) {
           await settle(env.DB, reservation, reservation.charges, { model }, {
             charged: 0,
-            cost: 0,
+            cost: null,
+            usageState: "unavailable",
             status: "failed",
             kind: prepared.request.kind,
             tier: prepared.request.tier,

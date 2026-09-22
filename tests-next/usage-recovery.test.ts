@@ -39,8 +39,9 @@ describe("unknown provider usage", () => {
     const { prepared, hold } = await start();
     await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-5.6-luna", async () => undefined);
     expect(await ledger(hold.attempt)).toMatchObject({ credits: null, points: 0, usage_state: "pending", debit_verified: 0 });
-    await fixture.db.prepare("UPDATE charges SET created_at=? WHERE attempt_id=?").bind(nowSeconds() - 200, hold.attempt).run();
-    await fixture.db.prepare("UPDATE accounts SET inflight_at=? WHERE uid='u'").bind(nowSeconds() - 200).run();
+    await fixture.db.prepare("UPDATE charges SET created_at=? WHERE attempt_id=?").bind(nowSeconds() - 2000, hold.attempt).run();
+    await fixture.db.prepare("UPDATE accounts SET inflight_at=? WHERE uid='u'").bind(nowSeconds() - 2000).run();
+    await fixture.db.prepare("UPDATE accounts SET monthly=1000,renews_at=? WHERE uid='u'").bind(nowSeconds() - 1).run();
     await scheduledMaintenance(fixture.db);
     expect((await account(fixture.db, "u"))!.points).toBe(99);
     await expect(reserve(fixture.db, "u", prepared.units, prepared.halfRate)).rejects.toMatchObject({ status: 409 });
@@ -52,6 +53,16 @@ describe("unknown provider usage", () => {
     const retry = await reserve(fixture.db, "u", prepared.units, prepared.halfRate);
     expect(retry.charges).toEqual([]);
     await settle(fixture.db, retry, [], { model: "test" });
+  });
+
+  it("caps a delayed debit at the original balance even when the estimate exceeded it", async () => {
+    const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", tier: "lite", session: crypto.randomUUID() }, "u");
+    const hold = await reserve(fixture.db, "u", prepared.units, 1000);
+    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-5.6-luna");
+    expect((await account(fixture.db, "u"))!.points).toBe(-400);
+    await reconcileUsage(fixture.db, async () => ({ ...complete(), usage: { input_tokens: 1_000_000, output_tokens: 100_000 } }), "u");
+    expect((await account(fixture.db, "u"))!.points).toBe(0);
+    expect(await ledger(hold.attempt)).toMatchObject({ points: 100, debit_verified: 1, usage_state: "reported" });
   });
 
   it("releases cancelled holds without claiming that provider cost was zero", async () => {

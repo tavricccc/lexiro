@@ -217,7 +217,7 @@ export async function release(db: D1Database, uid: string, attempt: string) {
 export async function settle(
   db: D1Database,
   reservation: Reservation,
-  refunds: { id: string; points: number }[],
+  refunds: ReadonlyArray<{ id: string }>,
   usage: Usage,
   settlement: Settlement = {},
 ) {
@@ -227,16 +227,7 @@ export async function settle(
   const successful = reservation.charges.filter(
     (charge) => !refunded.has(charge.id),
   );
-  const reserved = reservation.charges.reduce(
-    (total, charge) => total + charge.points,
-    0,
-  );
-  const charged =
-    settlement.charged ??
-    Math.max(
-      0,
-      reserved - refunds.reduce((total, refund) => total + refund.points, 0),
-    );
+  const charged = settlement.charged ?? successful.reduce((total, charge) => total + charge.points, 0);
   // Provider cost is recorded whether or not the user paid for it, so an
   // administrator sees what a failed or refunded run actually burned.
   const cost = settlement.cost === undefined ? charged : settlement.cost;
@@ -291,8 +282,8 @@ export async function settle(
   // Mark successful units as settled so repeated settlement cannot refund them again.
   statements.push(
     db
-      .prepare("UPDATE charges SET attempt_id=? WHERE attempt_id=?")
-      .bind(`settled:${attempt}`, attempt),
+      .prepare("UPDATE charges SET attempt_id=?,created_at=? WHERE attempt_id=?")
+      .bind(`settled:${attempt}`, nowSeconds(), attempt),
   );
   if (cursor)
     statements.push(
