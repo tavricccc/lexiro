@@ -26,11 +26,11 @@ const PHOTO_BATCH_SIZE = 10;
 
 function formatPhotoError(file: File, reason: unknown) {
   const detail =
-    reason instanceof AiRequestError && reason.debugMessage
-      ? reason.debugMessage
+    reason instanceof AiRequestError && reason.code === "invalid_image"
+      ? t("managed.imageRejected")
       : reason instanceof Error
-        ? (reason.stack ?? reason.message)
-        : String(reason);
+        ? reason.message
+        : t("managed.imageInvalid");
   return t("managed.photoError", { file: file.name, detail });
 }
 

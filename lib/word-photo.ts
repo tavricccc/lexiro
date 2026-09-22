@@ -23,6 +23,33 @@ function loadPhoto(
   });
 }
 
+async function isWebp(blob: Blob) {
+  const bytes = new Uint8Array(await blob.slice(0, 12).arrayBuffer());
+  return (
+    bytes.length === 12 &&
+    String.fromCharCode(...bytes.slice(0, 4)) === "RIFF" &&
+    String.fromCharCode(...bytes.slice(8, 12)) === "WEBP"
+  );
+}
+
+async function encodeWebp(
+  context: CanvasRenderingContext2D,
+  canvas: HTMLCanvasElement,
+  quality: number,
+) {
+  const native = await new Promise<Blob | null>((resolve) =>
+    canvas.toBlob(resolve, "image/webp", quality),
+  );
+  if (native?.type === "image/webp" && (await isWebp(native))) return native;
+
+  const { encode } = await import("@jsquash/webp");
+  const buffer = await encode(
+    context.getImageData(0, 0, canvas.width, canvas.height),
+    { quality: Math.round(quality * 100) },
+  );
+  return new Blob([buffer], { type: "image/webp" });
+}
+
 function readBlob(blob: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -51,11 +78,7 @@ export async function encodeWordPhoto(file: File): Promise<string> {
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
     for (const quality of [0.85, 0.7, 0.55, 0.4]) {
-      const blob = await new Promise<Blob | null>((resolve) =>
-        canvas.toBlob(resolve, "image/webp", quality),
-      );
-      if (!blob || blob.type !== "image/webp")
-        throw new Error(t("managed.imageInvalid"));
+      const blob = await encodeWebp(context, canvas, quality);
       if (blob.size <= LIMITS.imageBytes) return readBlob(blob);
     }
     throw new Error(t("managed.imageTooLarge"));

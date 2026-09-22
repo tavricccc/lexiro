@@ -545,6 +545,8 @@ export const zhTW = {
     confirmGenerate: "確認並生成",
     organizeAgain: "重新整理",
     imageInvalid: "無法讀取這張照片，請改用其他圖片。",
+    imageRejected:
+      "圖片編碼失敗。請重新選取；若仍失敗，先在「照片」中編輯並儲存副本。",
     imageTooLarge: "這張照片壓縮後仍超過 1.5 MB，請裁切後再試。",
     photoError: "{file}：{detail}",
   },

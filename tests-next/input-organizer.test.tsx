@@ -11,10 +11,12 @@ import {
   InputOrganizer,
   type OrganizerPhase,
 } from "@/components/library/input-organizer";
+import { AiRequestError } from "@/src/lib/ai/errors";
 const send = vi.hoisted(() => vi.fn());
 const managedFetch = vi.hoisted(() => vi.fn());
 const readManagedStream = vi.hoisted(() => vi.fn());
 const encodeWordPhoto = vi.hoisted(() => vi.fn());
+const encodeWebp = vi.hoisted(() => vi.fn());
 vi.mock("@/stores/cloud-store", () => ({
   useCloudStore: (select: (value: { user: { uid: string } }) => unknown) =>
     select({ user: { uid: "user" } }),
@@ -25,10 +27,14 @@ vi.mock("@/lib/managed-client", () => ({
   readManagedStream,
 }));
 vi.mock("@/lib/word-photo", () => ({ encodeWordPhoto }));
+vi.mock("@jsquash/webp", () => ({ encode: encodeWebp }));
 beforeEach(() => {
   vi.clearAllMocks();
   managedFetch.mockResolvedValue({});
   encodeWordPhoto.mockResolvedValue("encoded-photo");
+  encodeWebp.mockResolvedValue(
+    new TextEncoder().encode("RIFFxxxxWEBPencoded").buffer,
+  );
 });
 afterEach(() => {
   cleanup();
@@ -139,12 +145,30 @@ describe("organize before generating", () => {
     });
     const alert = await screen.findByRole("alert");
     expect(alert).toHaveTextContent("problem.heic");
-    expect(alert).toHaveTextContent("Error: WebP encoding exploded");
+    expect(alert).toHaveTextContent("WebP encoding exploded");
+  });
+
+  it("turns an invalid-image response into an actionable message", async () => {
+    encodeWordPhoto.mockRejectedValue(
+      new AiRequestError("整理失敗", {
+        code: "invalid_image",
+        retryable: false,
+      }),
+    );
+    render(<Host onConfirm={vi.fn()} />);
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
+      target: {
+        files: [new File(["photo"], "IMG_0252.jpeg", { type: "image/jpeg" })],
+      },
+    });
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "IMG_0252.jpeg：圖片編碼失敗。請重新選取；若仍失敗，先在「照片」中編輯並儲存副本。",
+    );
   });
 });
 
 describe("photo encoding", () => {
-  it("keeps Safari's object URL alive through WebP encoding", async () => {
+  it("falls back to the WebP codec when Safari returns invalid bytes", async () => {
     const image = {
       naturalHeight: 1000,
       naturalWidth: 2000,
@@ -154,17 +178,23 @@ describe("photo encoding", () => {
         queueMicrotask(() => this.onload?.());
       },
     };
+    const imageData = {
+      data: new Uint8ClampedArray(),
+      height: 900,
+      width: 1800,
+    };
     const context = {
       drawImage: vi.fn(),
       fillRect: vi.fn(),
       fillStyle: "",
+      getImageData: vi.fn(() => imageData),
     };
     const canvas = {
       height: 0,
       width: 0,
       getContext: vi.fn(() => context),
       toBlob: vi.fn((callback: BlobCallback, type: string) =>
-        callback(new Blob(["jpeg"], { type })),
+        callback(new Blob(["not-webp"], { type })),
       ),
     };
     const originalCreateElement = document.createElement.bind(document);
@@ -195,6 +225,7 @@ describe("photo encoding", () => {
       "image/webp",
       0.85,
     );
+    expect(encodeWebp).toHaveBeenCalledWith(imageData, { quality: 85 });
     expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:photo");
   });
 });
