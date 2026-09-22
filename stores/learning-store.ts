@@ -74,10 +74,8 @@ const statsForToday = (stats: DashboardStats) =>
   rollStatsToToday(stats, new Date());
 
 /**
- * Persistence is debounced: one review rewrites the whole learning blob, so
- * answering a question used to serialize every card and every statistic before
- * the UI could move on. Writes coalesce, and anything still pending is flushed
- * when the page is hidden or closed.
+ * Background edits coalesce. A completed answer explicitly flushes and awaits
+ * IndexedDB before advancing; pagehide cannot guarantee an async write lands.
  */
 let pendingSnapshot: {
   progress: LearningProgress;
@@ -191,6 +189,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     };
     set({ progress, stats });
     persist(progress, stats);
+    await flushLearningState();
   },
   scheduleSenseFromQuestion: async (senseId, rating) => {
     const progress = {
@@ -230,6 +229,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     };
     set({ stats });
     persist(get().progress, stats);
+    await flushLearningState();
   },
   setGoals: async (words, questions) => {
     const stats = {

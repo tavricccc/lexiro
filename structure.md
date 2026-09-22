@@ -152,8 +152,12 @@ the same set name, a question whose set the other device deleted — and a merge
 that could fail would strand the account. Learning progress merges card by card
 so neither device's reviews are lost.
 
-Learning progress and statistics are one debounced blob per account, flushed
-when the page is hidden. Question statistics are sparse — a format/difficulty
+Learning progress and statistics share one blob per account. Background edits
+are debounced and flushed when the page is hidden; recording a card rating or
+question answer explicitly waits for IndexedDB before the practice UI advances,
+because a pagehide callback cannot guarantee an asynchronous write survives a
+reload. `tests-next/learning-persistence.test.ts` verifies that completion waits
+for storage and that a fresh hydration retains the answer. Question statistics are sparse — a format/difficulty
 row exists only once it has been practised — and `dailyHistory` is pruned to
 `DAILY_HISTORY_RETENTION_DAYS`, because progress and stats are each a single
 Firestore document and Firestore rejects anything past one mebibyte.
