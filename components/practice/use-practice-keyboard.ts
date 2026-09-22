@@ -35,12 +35,15 @@ export function usePracticeKeyboard({
   useEffect(() => {
     if (!enabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
+      if (
+        busy || event.defaultPrevented || event.repeat || event.isComposing ||
+        event.ctrlKey || event.metaKey || event.altKey || event.shiftKey
+      ) return;
       const target = event.target;
       if (
-        target instanceof HTMLInputElement ||
-        target instanceof HTMLTextAreaElement
-      )
-        return;
+        target instanceof Element &&
+        target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="dialog"], [role="combobox"], [role="listbox"], [role="menu"]')
+      ) return;
       const nativeEnterControl =
         event.key === "Enter" &&
         (target instanceof HTMLButtonElement ||
