@@ -74,7 +74,7 @@ afterEach(cleanup);
 describe("the administrator's per-kind cost report", () => {
   it("shows pending costs as unknown rather than free", async () => {
     managed.mockResolvedValue({ ...report, pendingUsage: 1, unverifiedDebits: 2, entries: [{
-      id: "pending", uid: "u", email: "u@example.test", model: "gpt-5.6-luna", points: 0,
+      id: "pending", uid: "u", email: "u@example.test", model: "gpt-6-luna", points: 0,
       input: null, cached: null, cacheWrite: null, output: null, credits: null,
       created_at: 1, status: "complete", usageState: "pending", assessedPoints: null, debitVerified: 0,
     }] } satisfies UsageReport);

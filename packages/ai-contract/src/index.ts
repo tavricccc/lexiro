@@ -161,8 +161,8 @@ export interface AdminUsageTotals {
 }
 
 /**
- * Published provider list prices in USD per million tokens, as of the 2026-07-30
- * reduction. Cached reads cost 0.1x and GPT-5.6 cache writes cost 1.25x the
+ * Published provider Standard prices in USD per million tokens. Cached reads
+ * cost 0.1x and cache writes cost 1.25x the
  * uncached input rate. Only an administrator sees money, so this is an
  * operating estimate rather than a price anyone is quoted.
  */
@@ -170,7 +170,7 @@ export const MODEL_PRICES: Record<
   string,
   { input: number; cached: number; cacheWrite: number; output: number }
 > = {
-  "gpt-5.6-luna": { input: 0.2, cached: 0.02, cacheWrite: 0.25, output: 1.2 },
+  "gpt-6-luna": { input: 0.1, cached: 0.01, cacheWrite: 0.125, output: 0.5 },
   "gpt-5.6-terra": { input: 2, cached: 0.2, cacheWrite: 2.5, output: 12 },
 };
 export function estimateCost(usage: TokenUsage): number | null {
