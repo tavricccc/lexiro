@@ -77,6 +77,27 @@ describe("organize before generating", () => {
     expect(send.mock.calls[0][1].kind).toBe("organizeText");
   });
 
+  it("confirms more than 30 recognized words for batched generation", async () => {
+    const lines = Array.from({ length: 31 }, (_, index) =>
+      `word${String.fromCharCode(97 + Math.floor(index / 26))}${String.fromCharCode(97 + (index % 26))} n. 單字`,
+    );
+    readManagedStream.mockResolvedValue({ text: JSON.stringify({ lines }) });
+    const confirm = vi.fn();
+    render(<Host onConfirm={confirm} />);
+    fireEvent.change(screen.getByLabelText(/選擇或拍攝照片/), {
+      target: {
+        files: [new File(["photo"], "words.jpg", { type: "image/jpeg" })],
+      },
+    });
+    await screen.findByText("還有其他照片嗎？");
+    fireEvent.click(screen.getByRole("button", { name: "沒有了，檢查結果" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "確認清單，選擇生成檔位" }),
+    );
+    expect(confirm).toHaveBeenCalledWith(lines.join("\n"));
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
   it("goes back to the input without losing what was organized", async () => {
     send.mockResolvedValue({ text: '{"lines":["bank n. 銀行"]}' });
     render(<Host onConfirm={vi.fn()} />);

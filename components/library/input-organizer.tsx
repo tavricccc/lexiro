@@ -194,10 +194,9 @@ export function InputOrganizer({
     if (
       !sources.length ||
       review.length > LIMITS.input ||
-      sources.length > LIMITS.sources ||
       sources.some((source) => source.raw.length > LIMITS.source)
     ) {
-      setError(t("managed.inputLimit"));
+      setError(t("managed.reviewLimit"));
       return;
     }
     onConfirm(review);
