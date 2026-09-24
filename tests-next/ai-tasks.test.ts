@@ -96,6 +96,7 @@ describe("AI task boundaries", () => {
             ref: "s9",
             sentence: "Please close the door before we leave.",
             answer: "close",
+            usage: "close",
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -112,6 +113,7 @@ describe("AI task boundaries", () => {
             ref: "s1",
             sentence: "Please close the door.",
             answer: "close",
+            usage: "close",
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -137,11 +139,13 @@ describe("AI task boundaries", () => {
     const valid = {
       sentence: "They adapt quickly to change.",
       answer: "adapt",
+      usage: "adapt",
       distractors: ["sleep", "wait", "leave"],
     };
     const invalid = {
       sentence: "The method helps us solve it.",
       answer: "method",
+      usage: "method",
       distractors: ["plan", "rule", "formula"],
     };
     const replies = [

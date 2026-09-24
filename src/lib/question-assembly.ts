@@ -8,7 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { libraryDistractors, placeAnswer } from "./question-builders";
-import { matchingWordFormOccurrences, sentenceContainsWordForm } from "./word-forms";
+import { sourceUsageAnswer } from "./word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -168,27 +168,26 @@ function assembleSentences(
     if (!slot) return dropped.push(`第 ${position + 1} 筆對不到輸入詞義`);
 
     const sentence = text(raw.sentence);
-    let answer = text(raw.answer);
-    if (!sentence || !answer)
-      return dropped.push(`${slot.word.word}：缺少句子或答案`);
-    let hits = occurrences(sentence, answer);
+    const answer = text(raw.answer);
+    const usage = text(raw.usage);
+    if (!sentence || !answer || !usage)
+      return dropped.push(`${slot.word.word}：缺少句子、目標用法或答案`);
+    const usageHits = occurrences(sentence, usage);
+    if (usageHits.length !== 1)
+      return dropped.push(`${slot.word.word}：目標用法必須在句中恰好出現一次`);
+    const sourceAnswer = sourceUsageAnswer(
+      usage,
+      slot.word.word,
+      slot.word.senses[slot.senseIndex].pos,
+    );
+    if (!sourceAnswer)
+      return dropped.push(`${slot.word.word}：目標用法與來源單字或片語不符`);
+    const hits = occurrences(sentence, answer);
 
     if (kind === "vocabulary") {
-      const matches = matchingWordFormOccurrences(
-        sentence,
-        slot.word.word,
-        slot.word.senses[slot.senseIndex].pos,
-      );
-      const named = matches.filter(
-        (match) =>
-          match.form.toLocaleLowerCase() === answer.toLocaleLowerCase() &&
-          hits.includes(match.at),
-      );
-      const chosen = named.length === 1 ? named[0] : matches.length === 1 ? matches[0] : null;
-      if (!chosen)
+      if (sourceAnswer.toLocaleLowerCase() !== answer.toLocaleLowerCase() ||
+        hits[0] !== usageHits[0])
         return dropped.push(`${slot.word.word}：答案與目標單字不符`);
-      answer = chosen.form;
-      hits = [chosen.at];
     }
 
     // The blank is cut here, never typed by the model.
@@ -197,16 +196,6 @@ function assembleSentences(
         `${slot.word.word}：答案在句中出現 ${hits.length} 次，必須恰好一次`,
       );
     const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
-
-    if (
-      kind === "grammar" &&
-      !sentenceContainsWordForm(
-        sentence,
-        slot.word.word,
-        slot.word.senses[slot.senseIndex].pos,
-      )
-    )
-      return dropped.push(`${slot.word.word}：文法題句子沒有使用目標單字`);
 
     const fromLibrary =
       kind === "vocabulary" &&

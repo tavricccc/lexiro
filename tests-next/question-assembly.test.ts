@@ -95,7 +95,7 @@ describe("assembling the model's reply", () => {
 
   it("cuts the blank itself instead of trusting the model to type one", () => {
     const payload = assembleGeneratedQuestions(
-      { items: [{ answer: "wandered", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They wandered for hours." }] },
+      { items: [{ answer: "wandered", usage: "wandered", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They wandered for hours." }] },
       "vocabulary",
       2,
       target,
@@ -111,8 +111,8 @@ describe("assembling the model's reply", () => {
     const result = assembleGeneratedQuestions(
       {
         items: [
-          { answer: "wander", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They wander for hours." },
-          { answer: "lingered", distractors: ["ran", "sat", "grew"], ref: "s2", sentence: "Nobody stayed behind." },
+          { answer: "wander", usage: "wander", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They wander for hours." },
+          { answer: "lingered", usage: "lingered", distractors: ["ran", "sat", "grew"], ref: "s2", sentence: "Nobody stayed behind." },
         ],
       },
       "vocabulary",
@@ -129,7 +129,7 @@ describe("assembling the model's reply", () => {
     // silently saving a question about a word the learner never chose.
     expect(() =>
       assembleGeneratedQuestions(
-        { items: [{ answer: "sprinted", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They sprinted home." }] },
+        { items: [{ answer: "sprinted", usage: "sprinted", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They sprinted home." }] },
         "vocabulary",
         2,
         target,
@@ -138,22 +138,14 @@ describe("assembling the model's reply", () => {
     ).toThrow(/wander/);
   });
 
-  it("blanks the sole target word when the model names another answer", () => {
-    const result = assembleGeneratedQuestions(
-      { items: [{ answer: "helps", distractors: ["method", "recipe", "plan"], ref: "s1", sentence: "The formula helps us solve it." }] },
+  it("rejects a vocabulary answer outside the named target usage", () => {
+    expect(() => assembleGeneratedQuestions(
+      { items: [{ answer: "helps", usage: "formula", distractors: ["method", "recipe", "plan"], ref: "s1", sentence: "The formula helps us solve it." }] },
       "vocabulary",
       2,
       [word("formula", "n.")],
       [word("formula", "n.")],
-    );
-    const [question] = result.payload.questions as Array<{
-      answerIndex: number;
-      options: string[];
-      prompt: string;
-    }>;
-    expect(question.prompt).toBe("The _____ helps us solve it.");
-    expect(question.options[question.answerIndex]).toBe("formula");
-    expect(result.dropped).toEqual([]);
+    )).toThrow(/formula/);
   });
 
   it("treats sb and sth as phrase slots while keeping the fixed preposition", () => {
@@ -166,11 +158,13 @@ describe("assembling the model's reply", () => {
         items: [
           {
             answer: "convinced",
+            usage: "convinced him of its strength",
             distractors: ["informed", "warned", "reminded"],
             sentence: "Seeing the engineers repeat the test convinced him of its strength.",
           },
           {
             answer: "convinced",
+            usage: "convinced the players to attend practice",
             distractors: ["invited", "ordered", "reminded"],
             sentence: "The coach convinced the players to attend practice.",
           },
@@ -201,6 +195,7 @@ describe("assembling the model's reply", () => {
     expect(() => assembleGeneratedQuestions(
       { items: [{
         answer: "convinced",
+        usage: "convinced him that the bridge was safe",
         distractors: ["informed", "warned", "reminded"],
         sentence: "The report convinced him that the bridge was safe.",
       }] },
@@ -211,9 +206,78 @@ describe("assembling the model's reply", () => {
     )).toThrow(/convince sb of sth/);
   });
 
+  it("lets the model fill a phrase slot with a long clause and punctuation", () => {
+    const usage = "convinced the committee members, who had carefully reviewed every previous report and interviewed several engineers over many weeks, of its safety";
+    const result = assembleGeneratedQuestions(
+      { items: [{
+        answer: "convinced",
+        usage,
+        distractors: ["informed", "warned", "reminded"],
+        sentence: `The repeated trials ${usage}.`,
+      }] },
+      "vocabulary",
+      2,
+      [word("convince sb of sth", "phr.")],
+      pool,
+    );
+    const [question] = result.payload.questions as Array<{ prompt: string }>;
+    expect(question.prompt).toBe(`The repeated trials _____${usage.slice("convinced".length)}.`);
+    expect(result.dropped).toEqual([]);
+  });
+
+  it("allows natural modifiers between a phrase's ordered fixed words", () => {
+    const usage = "gave the tired student a much-needed hand";
+    const result = assembleGeneratedQuestions(
+      { items: [{
+        answer: "gave",
+        usage,
+        distractors: ["sent", "offered", "brought"],
+        sentence: `Her teacher ${usage} with the project.`,
+      }] },
+      "vocabulary",
+      2,
+      [word("give sb a hand", "phr.")],
+      pool,
+    );
+    expect((result.payload.questions as unknown[])).toHaveLength(1);
+    expect(result.dropped).toEqual([]);
+  });
+
+  it("accepts a separable phrasal verb filled by the model", () => {
+    const result = assembleGeneratedQuestions(
+      { items: [{
+        answer: "turned",
+        usage: "turned the offer down",
+        distractors: ["sent", "wrote", "kept"],
+        sentence: "She turned the offer down after reading the details.",
+      }] },
+      "vocabulary",
+      2,
+      [word("turn down", "phr. v.")],
+      pool,
+    );
+    const [question] = result.payload.questions as Array<{ prompt: string }>;
+    expect(question.prompt).toBe("She _____ the offer down after reading the details.");
+  });
+
+  it("rejects a model-named usage that is absent from the sentence", () => {
+    expect(() => assembleGeneratedQuestions(
+      { items: [{
+        answer: "convinced",
+        usage: "convinced the committee of its safety",
+        distractors: ["informed", "warned", "reminded"],
+        sentence: "The report convinced the committee of the result.",
+      }] },
+      "vocabulary",
+      2,
+      [word("convince sb of sth", "phr.")],
+      pool,
+    )).toThrow(/目標用法/);
+  });
+
   it("falls back to positional matching when the model mangles a ref", () => {
     const payload = assembleGeneratedQuestions(
-      { items: [{ answer: "wander", distractors: ["ran", "sat", "grew"], ref: "source-1-1", sentence: "They wander far." }] },
+      { items: [{ answer: "wander", usage: "wander", distractors: ["ran", "sat", "grew"], ref: "source-1-1", sentence: "They wander far." }] },
       "vocabulary",
       2,
       target,

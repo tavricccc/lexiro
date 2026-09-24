@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { WordEntry } from "@/types";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
-import { isWordForm, sentenceContainsWordForm } from "@/src/lib/word-forms";
+import { isWordForm, sourceUsageAnswer } from "@/src/lib/word-forms";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
 import { splitGenerationBatches } from "@/src/lib/question-generation";
 import { questionTask } from "@/src/lib/ai/tasks";
@@ -29,9 +29,10 @@ const assemble = (
   distractors: string[],
   kind: "vocabulary" | "grammar",
   pool: WordEntry[] = [],
+  usage = answer,
 ) =>
   assembleGeneratedQuestions(
-    { items: [{ ref: "s1", answer, sentence, distractors }] },
+    { items: [{ ref: "s1", answer, usage, sentence, distractors }] },
     kind,
     2,
     [source],
@@ -101,18 +102,21 @@ describe("issues found in real Luna prompt trials", () => {
           {
             sentence: "A sensor can detect a gas leak before anyone smells it.",
             answer: "detect",
+            usage: "detect",
             distractors: ["prevent", "repair", "announce"],
           },
           {
             sentence:
               "Although Mia was reluctant to speak at first, she shared her idea after her classmates encouraged her.",
             answer: "reluctant",
+            usage: "reluctant",
             distractors: ["eager", "proud", "ready"],
           },
           {
             sentence:
               "One consequence of leaving the freezer door open was that all the food spoiled overnight.",
             answer: "consequence",
+            usage: "consequence",
             distractors: ["benefit", "symptom", "decision"],
           },
         ],
@@ -139,10 +143,8 @@ describe("issues found in real Luna prompt trials", () => {
   it("does not confuse a shared prefix with a form of the target word", () => {
     expect(isWordForm("wanderer", "wander")).toBe(false);
     expect(isWordForm("gold", "go")).toBe(false);
-    expect(sentenceContainsWordForm("They went home.", "go")).toBe(true);
-    expect(
-      sentenceContainsWordForm("The golden statue stood outside.", "go"),
-    ).toBe(false);
+    expect(sourceUsageAnswer("went", "go")).toBe("went");
+    expect(sourceUsageAnswer("golden", "go")).toBeNull();
   });
   it("preserves grammar forms supplied by the model rather than replacing them with library verbs", () => {
     const questions = assemble(
@@ -164,6 +166,8 @@ describe("issues found in real Luna prompt trials", () => {
       "Mia is interested in studying ancient maps.",
       ["on", "at", "to"],
       "grammar",
+      [],
+      "interested",
     );
     expect(question.prompt).toBe(
       "Mia is interested _____ studying ancient maps.",
@@ -175,6 +179,8 @@ describe("issues found in real Luna prompt trials", () => {
         "Mia lives in Taipei.",
         ["on", "at", "to"],
         "grammar",
+        [],
+        "interested",
       ),
     ).toThrow();
   });

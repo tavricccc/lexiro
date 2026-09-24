@@ -15,16 +15,29 @@ function phraseTemplate(word: string) {
     : { head: tokens.slice(0, firstSlot).join(" "), tail: tokens.slice(firstSlot) };
 }
 
-function fitsTemplate(sentence: string, at: number, form: string, word: string) {
-  const template = phraseTemplate(word);
-  if (!template) return true;
-  const tail = template.tail.map((token) =>
-    slot(token)
-      ? "(?:\\s+[A-Za-z][A-Za-z'’-]*){1,12}"
-      : `\\s+${escapeRegex(token)}`,
-  ).join("");
-  return new RegExp(`^${escapeRegex(form).replace(/ /gu, "\\s+")}${tail}(?=$|[^A-Za-z0-9])`, "iu")
-    .test(sentence.slice(at));
+const words = (value: string) =>
+  normalize(value).match(/[a-z]+(?:['-][a-z]+)*/gu) ?? [];
+
+function fitsTemplate(tokens: string[], tail: string[]): boolean {
+  const memo = new Map<string, boolean>();
+  const fits = (position: number, index: number): boolean => {
+    if (index === tail.length)
+      return position === tokens.length || !slot(tail.at(-1) ?? "");
+    const key = `${position}:${index}`;
+    const known = memo.get(key);
+    if (known !== undefined) return known;
+    let found = false;
+    if (!slot(tail[index])) {
+      for (let next = position; next < tokens.length && !found; next++)
+        if (tokens[next] === tail[index])
+          found = fits(next + 1, index + 1);
+    } else
+      for (let next = position + 1; next <= tokens.length && !found; next++)
+        found = fits(next, index + 1);
+    memo.set(key, found);
+    return found;
+  };
+  return fits(0, 0);
 }
 function tokenForms(token: string, pos: string): string[] {
   if (IRREGULAR_WORD_FORMS[token])
@@ -85,28 +98,22 @@ export function wordForms(word: string, pos = "v."): string[] {
 }
 export const isWordForm = (answer: string, word: string, pos = "v.") =>
   wordForms(word, pos).includes(normalize(answer));
-export function matchingWordFormOccurrences(
-  sentence: string,
+/** Validate a model-named, sentence-exact realization of a source phrase. */
+export function sourceUsageAnswer(
+  usage: string,
   word: string,
   pos = "v.",
-): Array<{ at: number; form: string }> {
-  return wordForms(word, pos).flatMap((form) => {
-    const pattern = new RegExp(
-      `(?:^|[^A-Za-z0-9])(${escapeRegex(form).replace(/ /gu, "\\s+")})(?=$|[^A-Za-z0-9])`,
-      "giu",
-    );
-    return [...sentence.matchAll(pattern)].flatMap((match) => {
-      const at = match.index + match[0].length - match[1].length;
-      return fitsTemplate(sentence, at, match[1], word)
-        ? [{ at, form: match[1] }]
-        : [];
-    });
-  });
-}
-export function sentenceContainsWordForm(
-  sentence: string,
-  word: string,
-  pos = "v.",
-): boolean {
-  return matchingWordFormOccurrences(sentence, word, pos).length > 0;
+): string | null {
+  const tokens = normalize(word).split(" ");
+  const forms = tokens.length === 1 ? wordForms(word, pos) : tokenForms(tokens[0], pos);
+  const tail = tokens.slice(1);
+  for (const form of forms) {
+    const match = new RegExp(`^${escapeRegex(form).replace(/ /gu, "\\s+")}(?=$|[^A-Za-z0-9])`, "iu")
+      .exec(usage);
+    if (!match) continue;
+    if (!tail.length && normalize(usage) === normalize(match[0])) return match[0];
+    if (tail.length && fitsTemplate(words(usage.slice(match[0].length)), tail))
+      return match[0];
+  }
+  return null;
 }
