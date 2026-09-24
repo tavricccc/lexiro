@@ -19,6 +19,10 @@ export const zhTW = {
   },
   ai: {
     invalidReply: "回覆格式不正確，已保留先前的成果。請重試本段。",
+    adminDiagnostic: "管理員診斷資訊",
+    adminRequest: "本段指定來源",
+    adminResponse: "模型實際回覆",
+    adminResponseId: "回覆 ID：{id}",
     streamFailed: "回覆在完成前中斷，已保留先前的成果。",
     truncated: "這段回覆被截斷，請減少來源後再試。",
     blocked: "無法產生這段內容，請調整輸入後再試。",
@@ -46,6 +50,7 @@ export const zhTW = {
     keepWorking: "你可以先看已完成的內容；後續結果會接著出現。",
     keptResults: "已完成的內容都保留著。",
     viewResults: "查看結果",
+    viewCompletedResults: "查看已完成結果",
     resume: "繼續剩下的",
     retryCurrent: "重試並繼續",
     regenerate: "重新生成",

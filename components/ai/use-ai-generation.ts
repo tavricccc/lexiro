@@ -4,6 +4,7 @@ import type { Tier, TokenUsage } from "@lexiro/ai-contract";
 import type { AiTask, AiPhase } from "@/src/types/ai";
 import { createAiSession, resetConversation } from "@/src/lib/ai/session";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
+import { AiRequestError, AiValidationError } from "@/src/lib/ai/errors";
 import { useCloudStore } from "@/stores/cloud-store";
 import { t } from "@/lib/i18n";
 
@@ -32,8 +33,9 @@ export interface AiRunState<T> {
   status: AiRunStatus; phase: AiPhase; characters: number; completed: number; total: number;
   segments: number; error: string; items: T[]; notices: string[]; startedAt: number | null;
   elapsedMs: number; remaining: number; usage: TokenUsage;
+  diagnostic: { request?: string; response: string; responseId?: string } | null;
 }
-const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecting", characters: 0, completed: 0, total: 0, segments: 0, error: "", items: [], notices: [], startedAt: null, elapsedMs: 0, remaining: 0, usage: {} });
+const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecting", characters: 0, completed: 0, total: 0, segments: 0, error: "", items: [], notices: [], startedAt: null, elapsedMs: 0, remaining: 0, usage: {}, diagnostic: null });
 
 export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = {}) {
   const [state, setState] = useState<AiRunState<T>>(initialState<T>);
@@ -50,14 +52,39 @@ export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = 
     abortRef.current?.abort();
     const controller = new AbortController(), id = ++generationId.current, start = Date.now();
     abortRef.current = controller;
-    setState((s) => ({ ...s, status: "running", error: "", startedAt: start, items: [...run.items], completed: run.completed, total: run.total, remaining: run.pending.length }));
+    setState((s) => ({ ...s, status: "running", error: "", diagnostic: null, startedAt: start, items: [...run.items], completed: run.completed, total: run.total, remaining: run.pending.length }));
     try {
       await runTask(run, { signal: controller.signal, merge: mergeRef.current, onUpdate: (update) => {
         if (id === generationId.current) setState((s) => ({ ...s, ...update, remaining: run.pending.length }));
       } });
       if (id === generationId.current) setState((s) => ({ ...s, status: "done", startedAt: null, elapsedMs: s.elapsedMs + Date.now() - start, remaining: 0 }));
     } catch (reason) {
-      if (id === generationId.current) setState((s) => ({ ...s, status: controller.signal.aborted ? "cancelled" : "error", startedAt: null, elapsedMs: s.elapsedMs + Date.now() - start, remaining: run.pending.length, error: controller.signal.aborted ? "" : reason instanceof Error ? reason.message : t("ai.invalidReply") }));
+      if (id === generationId.current) {
+        const diagnostic = controller.signal.aborted
+          ? null
+          : reason instanceof AiValidationError
+            ? {
+                request: reason.request,
+                response: reason.response,
+                responseId: reason.responseId,
+              }
+            : reason instanceof AiRequestError && reason.debugMessage
+              ? { response: reason.debugMessage }
+              : null;
+        setState((s) => ({
+          ...s,
+          status: controller.signal.aborted ? "cancelled" : "error",
+          startedAt: null,
+          elapsedMs: s.elapsedMs + Date.now() - start,
+          remaining: run.pending.length,
+          error: controller.signal.aborted
+            ? ""
+            : reason instanceof Error
+              ? reason.message
+              : t("ai.invalidReply"),
+          diagnostic,
+        }));
+      }
     } finally { if (id === generationId.current) abortRef.current = null; }
   }, []);
   const start = useCallback((task: AiTask<T>, seed: T[] = []) => {

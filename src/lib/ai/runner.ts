@@ -7,7 +7,7 @@ import type {
   AiTurnResult,
 } from "@/src/types/ai";
 import { t } from "@/lib/i18n";
-import { AiRequestError } from "./errors";
+import { AiRequestError, AiValidationError } from "./errors";
 import { commitTurn, generateTurn, resetConversation } from "./session";
 
 export interface AiRun<T> {
@@ -18,6 +18,7 @@ export interface AiRun<T> {
   completed: number;
   total: number;
   segments: number;
+  repair?: { stepId: string; feedback: string };
 }
 export interface AiRunUpdate<T> {
   phase: AiPhase;
@@ -78,7 +79,7 @@ export async function runTask<T>(
     }
     let reducedContext = false;
     let reply: AiTurnResult | undefined,
-      repair = "",
+      repair = run.repair?.stepId === step.id ? run.repair.feedback : "",
       parsed: T[] | undefined;
     for (let validation = 0; validation < 2; validation++) {
       const prompt = step.prompt;
@@ -169,12 +170,24 @@ export async function runTask<T>(
           run.items = options.merge ? options.merge(combined) : combined;
           run.completed += recovered.completed;
           run.pending.splice(0, 1, recovered.remaining);
+          run.repair = undefined;
           run.session.notices.push(t("ai.partialRecovered"));
           report();
           break;
         }
-        if (validation === 1) throw reason;
-        repair = reason instanceof Error ? reason.message : String(reason);
+        const feedback = JSON.stringify({
+          error: reason instanceof Error ? reason.message : String(reason),
+          previousReply: reply.text,
+        }).slice(0, 1000);
+        run.repair = { stepId: step.id, feedback };
+        if (validation === 1)
+          throw new AiValidationError(
+            reason instanceof Error ? reason.message : String(reason),
+            step.prompt,
+            reply.text,
+            reply.id,
+          );
+        repair = feedback;
         reply = undefined;
         continue;
       }
@@ -183,6 +196,7 @@ export async function runTask<T>(
       run.items = options.merge ? options.merge(combined) : combined;
       commitTurn(run.session, prompt, reply);
       run.pending.shift();
+      run.repair = undefined;
       run.completed += step.count;
       run.segments++;
       report();

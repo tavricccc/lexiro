@@ -11,6 +11,15 @@ import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 
+function formatDiagnostic(value: string): string {
+  try {
+    const parsed: unknown = JSON.parse(value);
+    return JSON.stringify(parsed, null, 2);
+  } catch {
+    return value;
+  }
+}
+
 /**
  * The screen a generation runs on.
  *
@@ -157,6 +166,35 @@ export function AiRunPanel<T>({
         </p>
       )}
 
+      {admin && state.error && state.diagnostic && (
+        <details open className="border-t pt-3 text-sm">
+          <summary className="cursor-pointer font-medium">
+            {t("ai.adminDiagnostic")}
+          </summary>
+          {state.diagnostic.responseId && (
+            <p className="mt-3 break-all text-xs text-muted-foreground">
+              {t("ai.adminResponseId", {
+                id: state.diagnostic.responseId,
+              })}
+            </p>
+          )}
+          {state.diagnostic.request && (
+            <div className="mt-3">
+              <p className="mb-1 font-medium">{t("ai.adminRequest")}</p>
+              <pre className="max-h-64 overflow-auto whitespace-pre-wrap break-all rounded-lg bg-[var(--surface-inset)] p-3 text-xs">
+                {formatDiagnostic(state.diagnostic.request)}
+              </pre>
+            </div>
+          )}
+          <div className="mt-3">
+            <p className="mb-1 font-medium">{t("ai.adminResponse")}</p>
+            <pre className="max-h-64 overflow-auto whitespace-pre-wrap break-all rounded-lg bg-[var(--surface-inset)] p-3 text-xs">
+              {formatDiagnostic(state.diagnostic.response)}
+            </pre>
+          </div>
+        </details>
+      )}
+
       {ready && !configured && billableCount > 0 && (
         <p className="type-hint">
           {t(
@@ -232,6 +270,12 @@ export function AiRunPanel<T>({
               <Button onClick={onStart} type="button" variant="ghost">
                 <Icons.generate />
                 {t("ai.regenerate")}
+              </Button>
+            )}
+            {state.remaining > 0 && state.items.length > 0 && onReview && (
+              <Button onClick={onReview} type="button" variant="ghost">
+                <Icons.next />
+                {t("ai.viewCompletedResults")}
               </Button>
             )}
             {done && onAppend && configured && (

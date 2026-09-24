@@ -32,3 +32,22 @@ export class AiRequestError extends Error {
     this.debugMessage = options.debugMessage;
   }
 }
+
+export class AiValidationError extends Error {
+  readonly request: string;
+  readonly response: string;
+  readonly responseId?: string;
+
+  constructor(
+    message: string,
+    request: string,
+    response: string,
+    responseId?: string,
+  ) {
+    super(message);
+    this.name = "AiValidationError";
+    this.request = request;
+    this.response = response;
+    this.responseId = responseId;
+  }
+}

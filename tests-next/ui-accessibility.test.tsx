@@ -4,13 +4,72 @@ import { EmptyState, ErrorState } from "@/components/ui/page-state";
 import { useState } from "react";
 import { ListChoiceGroup, ListNavRow } from "@/components/ui/list";
 import { StepActions } from "@/components/ui/step-actions";
+import { AiRunPanel } from "@/components/ai/ai-run-panel";
+import type { AiRunState } from "@/components/ai/use-ai-generation";
+
+const account = vi.hoisted(() => ({ admin: true }));
+vi.mock("@/components/ai/use-managed-account", () => ({
+  useManagedAccount: () => ({ data: { admin: account.admin } }),
+}));
 
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+  account.admin = true;
 });
 
 describe("shared accessible states", () => {
+  it("shows failed source and reply only to administrators while keeping valid results available", () => {
+    const state: AiRunState<string> = {
+      status: "error",
+      phase: "validating",
+      characters: 0,
+      completed: 99,
+      total: 104,
+      segments: 1,
+      error: "formula：答案與目標單字不符",
+      items: ["已完成的題目"],
+      notices: [],
+      startedAt: null,
+      elapsedMs: 32000,
+      remaining: 1,
+      usage: {},
+      diagnostic: {
+        request: JSON.stringify({ sources: [{ word: "formula" }] }),
+        response: JSON.stringify({ items: [{ sentence: "The method works.", answer: "method" }] }),
+        responseId: "resp_test",
+      },
+    };
+    const review = vi.fn();
+    const props = {
+      actionLabel: "產生題目",
+      billableCount: 1,
+      configured: true,
+      kind: "vocabulary" as const,
+      onCancel: vi.fn(),
+      onResume: vi.fn(),
+      onReview: review,
+      onStart: vi.fn(),
+      onTierChange: vi.fn(),
+      ready: true,
+      state,
+      tier: "lite" as const,
+      unit: "題",
+    };
+    render(<AiRunPanel {...props} />);
+    expect(screen.getByText("管理員診斷資訊")).toBeInTheDocument();
+    expect(screen.getByText(/The method works/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "查看已完成結果" }));
+    expect(review).toHaveBeenCalledOnce();
+
+    cleanup();
+    account.admin = false;
+    render(<AiRunPanel {...props} />);
+    expect(screen.queryByText("管理員診斷資訊")).toBeNull();
+    expect(screen.queryByText(/The method works/)).toBeNull();
+    expect(screen.getByRole("button", { name: "查看已完成結果" })).toBeInTheDocument();
+  });
+
   it("reserves the full height of a fixed action panel", () => {
     vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
       height: 224,

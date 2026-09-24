@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { WordEntry, WordDraft } from "@/types";
+import type { LibraryQuestion, WordEntry, WordDraft } from "@/types";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { wordTask, questionTask } from "@/src/lib/ai/tasks";
 import { buildWordGenerationSources } from "@/src/lib/word-generation";
@@ -128,6 +128,51 @@ describe("AI task boundaries", () => {
       wordKey: "close",
       senseId: "close-sense",
     });
+  });
+  it("keeps a valid question when another question in the same reply fails", async () => {
+    const words = [word("adapt"), word("formula")];
+    const task = questionTask(words, words, "vocabulary", 2);
+    const run: AiRun<LibraryQuestion> = {
+      task,
+      session: createAiSession("lite", task.context),
+      pending: [...task.steps],
+      items: [],
+      completed: 0,
+      total: 2,
+      segments: 0,
+    };
+    const valid = {
+      sentence: "They adapt quickly to change.",
+      answer: "adapt",
+      distractors: ["sleep", "wait", "leave"],
+    };
+    const invalid = {
+      sentence: "The method helps us solve it.",
+      answer: "method",
+      distractors: ["plan", "rule", "formula"],
+    };
+    const replies = [
+      { items: [valid, invalid] },
+      { items: [invalid] },
+      { items: [invalid] },
+    ];
+    let sent = 0;
+    await expect(
+      runTask(run, {
+        signal: new AbortController().signal,
+        onUpdate: () => {},
+        send: async () => ({
+          id: String(sent),
+          text: JSON.stringify(replies[sent++]),
+          complete: true,
+          stopReason: "complete",
+        }),
+      }),
+    ).rejects.toThrow("formula");
+    expect(run.items).toHaveLength(1);
+    expect(run.items[0]).toMatchObject({ wordKey: "adapt" });
+    expect(run.completed).toBe(1);
+    expect(run.pending).toHaveLength(1);
   });
   it("keeps a passage indivisible and adjusts a short final word-bank's extra options", () => {
     const words = [

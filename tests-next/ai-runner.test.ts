@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { createAiSession } from "@/src/lib/ai/session";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
-import { AiRequestError } from "@/src/lib/ai/errors";
+import { AiRequestError, AiValidationError } from "@/src/lib/ai/errors";
 import type { AiTaskStep, AiTurnResult } from "@/src/types/ai";
 const reply = (text: string, id = text): AiTurnResult => ({
   id,
@@ -131,22 +131,41 @@ describe("serial task generation", () => {
         context: "context",
         count: 1,
         prompt: "bad",
-        parse: () => {
-          throw new Error("missing source");
+        parse: (text) => {
+          if (text === "invalid") throw new Error("missing source");
+          return [text];
         },
       },
     ]);
-    const send = vi.fn(async () => reply("invalid"));
-    await expect(
-      runTask(run, {
-        signal: new AbortController().signal,
-        send,
-        onUpdate: () => {},
-      }),
-    ).rejects.toThrow("missing source");
+    const send = vi.fn(
+      async (_session: unknown, _prompt: string, _options?: { repair?: string }) =>
+        reply("invalid"),
+    );
+    const failure = await runTask(run, {
+      signal: new AbortController().signal,
+      send,
+      onUpdate: () => {},
+    }).catch((reason: unknown) => reason);
+    expect(failure).toBeInstanceOf(AiValidationError);
+    expect(failure).toMatchObject({
+      message: "missing source",
+      request: "bad",
+      response: "invalid",
+    });
+    expect(send.mock.calls[1][2]?.repair).toContain("missing source");
+    expect(send.mock.calls[1][2]?.repair).toContain("invalid");
     expect(send).toHaveBeenCalledTimes(2);
     expect(run.pending).toHaveLength(1);
     expect(run.completed).toBe(0);
+
+    send.mockResolvedValueOnce(reply("valid"));
+    await runTask(run, {
+      signal: new AbortController().signal,
+      send,
+      onUpdate: () => {},
+    });
+    expect(send.mock.calls[2][2]?.repair).toContain("missing source");
+    expect(run.items).toEqual(["valid"]);
   });
   it("splits only independent units after truncation", async () => {
     const children = ["a", "b"].map((id) => ({
