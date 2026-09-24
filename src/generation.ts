@@ -256,6 +256,7 @@ export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
   const model = MODELS[prepared.request.tier];
   return {
     model: model.model,
+    service_tier: "default" as const,
     reasoning: { effort: model.effort },
     stream: true,
     store: true,

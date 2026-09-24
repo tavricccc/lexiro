@@ -1,14 +1,35 @@
 import type { D1Database } from "@cloudflare/workers-types";
-import type { AdminUsageEntry } from "@lexiro/ai-contract";
+import { LONG_CONTEXT_INPUT_THRESHOLD, MODEL_PRICES, type AdminUsageEntry } from "@lexiro/ai-contract";
 import { nowSeconds } from "./billing";
 import { encodeCursor, readCursor, usageCursor } from "./pagination";
+
+/** Price each stored response before grouping; a month's total is not one context. */
+function costSql(alias: string) {
+  const input = `${alias}.input`;
+  const cached = `${alias}.cached`;
+  const writes = `${alias}.cache_write`;
+  const output = `${alias}.output`;
+  const rates = Object.entries(MODEL_PRICES).map(([model, price]) => {
+    const inputCost = `(${input}-${cached}-${writes})*${price.input}+${cached}*${price.cached}+${writes}*${price.cacheWrite}`;
+    const outputCost = `${output}*${price.output}`;
+    const ordinary = `(${inputCost}+${outputCost})/1000000.0`;
+    const cost = model === "gpt-6-luna"
+      ? `CASE WHEN ${input}>${LONG_CONTEXT_INPUT_THRESHOLD} THEN (2*(${inputCost})+1.5*(${outputCost}))/1000000.0 ELSE ${ordinary} END`
+      : ordinary;
+    return `WHEN '${model}' THEN ${cost}`;
+  });
+  return `CASE WHEN ${alias}.usage_state='reported' AND ${input} IS NOT NULL AND ${cached} IS NOT NULL AND ${writes} IS NOT NULL AND ${output} IS NOT NULL
+    THEN CASE ${alias}.model ${rates.join(" ")} ELSE NULL END ELSE NULL END`;
+}
 
 /** Keyset pages and indexed 30-day aggregates; unknown costs remain separate. */
 export async function adminUsage(request: Request, db: D1Database): Promise<Response> {
   const cursor = readCursor(request, usageCursor);
   const since = nowSeconds() - 2_592_000;
+  const rowCost = costSql("u");
+  const groupedCost = `CASE WHEN COUNT(*)=COUNT(${rowCost}) THEN SUM(${rowCost}) ELSE NULL END`;
   const entries = db.prepare(`SELECT u.id,u.uid,a.email,u.model,u.points,u.input,u.cached,u.cache_write AS cacheWrite,
-    u.output,u.created_at,u.credits,u.status,u.assessed_points AS assessedPoints,
+    u.output,u.created_at,u.credits,u.status,${rowCost} AS costUsd,u.assessed_points AS assessedPoints,
     u.debit_verified AS debitVerified,u.usage_state AS usageState
     FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid
     ${cursor ? "WHERE (u.created_at,u.id)<(?,?)" : ""}
@@ -17,13 +38,13 @@ export async function adminUsage(request: Request, db: D1Database): Promise<Resp
     cursor ? entries.bind(cursor.createdAt, cursor.id) : entries,
     db.prepare(`SELECT model,COUNT(*) AS runs,COALESCE(SUM(input),0) AS input,
       COALESCE(SUM(cached),0) AS cached,COALESCE(SUM(cache_write),0) AS cacheWrite,
-      COALESCE(SUM(output),0) AS output,SUM(credits) AS credits
-      FROM usage_log WHERE created_at>? AND usage_state='reported'
+      COALESCE(SUM(output),0) AS output,SUM(credits) AS credits,${groupedCost} AS costUsd
+      FROM usage_log u WHERE created_at>? AND usage_state='reported'
       GROUP BY model ORDER BY model`).bind(since),
     db.prepare(`SELECT u.uid,a.email,u.model,COUNT(*) AS runs,
       COALESCE(SUM(u.input),0) AS input,COALESCE(SUM(u.cached),0) AS cached,
       COALESCE(SUM(u.cache_write),0) AS cacheWrite,COALESCE(SUM(u.output),0) AS output,
-      COALESCE(SUM(u.credits),0) AS credits,
+      COALESCE(SUM(u.credits),0) AS credits,${groupedCost} AS costUsd,
       COALESCE(SUM(CASE WHEN u.debit_verified=1 THEN u.points ELSE 0 END),0) AS points
       FROM usage_log u LEFT JOIN accounts a ON a.uid=u.uid
       WHERE u.created_at>? AND u.usage_state='reported'
@@ -31,9 +52,9 @@ export async function adminUsage(request: Request, db: D1Database): Promise<Resp
     db.prepare(`SELECT kind,tier,COUNT(*) AS runs,COALESCE(SUM(units),0) AS units,
       COALESCE(SUM(input),0) AS input,COALESCE(SUM(cached),0) AS cached,
       COALESCE(SUM(cache_write),0) AS cacheWrite,COALESCE(SUM(output),0) AS output,
-      COALESCE(SUM(credits),0) AS credits,
+      COALESCE(SUM(credits),0) AS credits,${groupedCost} AS costUsd,
       COALESCE(SUM(CASE WHEN debit_verified=1 THEN points ELSE 0 END),0) AS points
-      FROM usage_log WHERE created_at>? AND usage_state='reported' AND kind<>'' AND units>0
+      FROM usage_log u WHERE created_at>? AND usage_state='reported' AND kind<>'' AND units>0
       GROUP BY kind,tier ORDER BY kind,tier`).bind(since),
     db.prepare(`SELECT
       COALESCE(SUM(CASE WHEN usage_state='pending' THEN 1 ELSE 0 END),0) AS pendingUsage,

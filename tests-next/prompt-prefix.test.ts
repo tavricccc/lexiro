@@ -42,6 +42,7 @@ describe("private generation prompts", () => {
       );
       expect(prepared[0].cacheKey).toBe(prepared[1].cacheKey);
       const upstream = upstreamRequest(prepared[0]);
+      expect(upstream.service_tier).toBe("default");
       expect(upstream.reasoning).toEqual({ effort: "low" });
       expect(upstream.prompt_cache_options).toEqual({
         mode: "explicit",

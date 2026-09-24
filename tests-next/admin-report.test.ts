@@ -15,8 +15,8 @@ async function request(path: string) {
 interface Report {
   entries: (AdminUsageEntry & { usageState: string; assessedPoints: number | null; debitVerified: number })[];
   nextCursor: string | null;
-  models: { credits: number; runs: number }[];
-  users: { points: number }[];
+  models: { credits: number; runs: number; costUsd: number | null }[];
+  users: { points: number; costUsd: number | null }[];
   pendingUsage: number;
   unavailableUsage: number;
   unverifiedDebits: number;
@@ -68,10 +68,29 @@ describe("indexed admin reports", () => {
       run("old", now - 2_592_001, "pending", 0),
     ]);
     const report = await (await request("/admin/usage")).json() as Report;
-    expect(report.models).toMatchObject([{ credits: 4, runs: 2 }]);
+    expect(report.models).toMatchObject([{ credits: 4, runs: 2, costUsd: null }]);
     expect(report.users).toMatchObject([{ points: 7 }]);
     expect(report).toMatchObject({ pendingUsage: 1, unavailableUsage: 1, unverifiedDebits: 1 });
     expect(report.entries.find((row) => row.id === "pending")).toMatchObject({ credits: null, usageState: "pending" });
+  });
+
+  it("prices each response before grouping and applies the long-context tier per response", async () => {
+    const now = nowSeconds();
+    await fixture.db.prepare(`INSERT INTO usage_log
+      (id,uid,points,model,created_at,credits,status,usage_state,debit_verified,kind,tier,units,input,cached,cache_write,output)
+      VALUES
+      ('short-1','u',1,'gpt-6-luna',?,1,'complete','reported',1,'vocabulary','lite',1,200000,100000,20000,1000),
+      ('short-2','u',1,'gpt-6-luna',?,1,'complete','reported',1,'vocabulary','lite',1,200000,100000,20000,1000),
+      ('long','u',1,'gpt-6-luna',?,1,'complete','reported',1,'vocabulary','lite',1,300000,200000,20000,1000)`)
+      .bind(now, now, now).run();
+    const report = await (await request("/admin/usage")).json() as Report & {
+      kinds: { costUsd: number | null }[];
+    };
+    expect(report.entries.find((row) => row.id === "short-1")?.costUsd).toBeCloseTo(0.012);
+    expect(report.entries.find((row) => row.id === "long")?.costUsd).toBeCloseTo(0.02575);
+    expect(report.models[0].costUsd).toBeCloseTo(0.04975);
+    expect(report.users[0].costUsd).toBeCloseTo(0.04975);
+    expect(report.kinds[0].costUsd).toBeCloseTo(0.04975);
   });
 
   it.each(["cursor=garbage", "cursor=", "offset=50"])("rejects invalid or retired paging parameters: %s", async (query) => {

@@ -1,4 +1,4 @@
-import { MODEL_PRICES, type TokenUsage } from "@lexiro/ai-contract";
+import { LONG_CONTEXT_INPUT_THRESHOLD, MODEL_PRICES, type TokenUsage } from "@lexiro/ai-contract";
 
 // Private billing basis. The public client receives only estimated or settled
 // credit amounts; it does not receive this conversion rule.
@@ -23,13 +23,18 @@ export function creditsFromUsage(usage: TokenUsage): number | null {
   const accounted = cached + cacheWrite;
   if (accounted > input) return null;
   const fresh = input - accounted;
-  const scaledCost =
+  const scaledInput =
     fresh * scaledPrice(price.input) +
     cached * scaledPrice(price.cached) +
-    cacheWrite * scaledPrice(price.cacheWrite) +
-    output * scaledPrice(price.output);
-  const divisor = PRICE_SCALE * TOKENS_PER_MILLION;
-  const credits = Number((scaledCost * CREDITS_PER_US_DOLLAR + divisor - 1n) / divisor);
+    cacheWrite * scaledPrice(price.cacheWrite);
+  const scaledOutput = output * scaledPrice(price.output);
+  const longContext =
+    usage.model === "gpt-6-luna" && input > BigInt(LONG_CONTEXT_INPUT_THRESHOLD);
+  const scaledCostTwice =
+    scaledInput * (longContext ? 4n : 2n) +
+    scaledOutput * (longContext ? 3n : 2n);
+  const divisor = 2n * PRICE_SCALE * TOKENS_PER_MILLION;
+  const credits = Number((scaledCostTwice * CREDITS_PER_US_DOLLAR + divisor - 1n) / divisor);
   return Number.isSafeInteger(credits) ? credits : null;
 }
 

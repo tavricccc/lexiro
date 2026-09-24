@@ -52,10 +52,16 @@ describe("D1 atomic credit ledger", () => {
     ).toBe(4);
     expect(
       creditsFromUsage({ model: "gpt-6-luna", input: 1_000_000, cached: 1_000_000 }),
-    ).toBe(75);
+    ).toBe(150);
     expect(
       creditsFromUsage({ model: "gpt-6-luna", input: 1_000_000, cacheWrite: 1_000_000 }),
-    ).toBe(938);
+    ).toBe(1875);
+    expect(
+      creditsFromUsage({ model: "gpt-6-luna", input: 272_000, cached: 272_000 }),
+    ).toBe(21);
+    expect(
+      creditsFromUsage({ model: "gpt-6-luna", input: 300_000, output: 100_000 }),
+    ).toBe(1013);
     expect(creditsFromUsage({ model: "unknown", input: 100 })).toBeNull();
   });
   it("bounds retries even when failures refund and remove their charge records", async () => {
