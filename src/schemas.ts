@@ -30,7 +30,7 @@ export const wordOutput = ({ min, max }: { min: number; max: number }) =>
   });
 export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary" || kind === "grammar")
-    return z.object({ items: z.array(choices.extend({ sentence: text })) });
+    return z.object({ items: z.array(choices.extend({ sentence: text, usage: text })) });
   if (kind === "cloze")
     return z.object({ title: text, passage: text, blanks: z.array(choices) });
   if (kind === "wordBank")

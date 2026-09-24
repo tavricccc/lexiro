@@ -1,0 +1,25 @@
+{
+  "id": "phrase-usage-realizations",
+  "kind": "vocabulary",
+  "difficulty": 2,
+  "words": [
+    {
+      "wordKey": "convince sb of sth",
+      "word": "convince sb of sth",
+      "updatedAt": "2026-09-24T00:00:00.000Z",
+      "senses": [{ "id": "convince-of", "pos": "phr. v.", "meaningZh": "使某人相信某事", "examples": [] }]
+    },
+    {
+      "wordKey": "turn down",
+      "word": "turn down",
+      "updatedAt": "2026-09-24T00:00:00.000Z",
+      "senses": [{ "id": "turn-down", "pos": "phr. v.", "meaningZh": "拒絕", "examples": [] }]
+    },
+    {
+      "wordKey": "give sb a hand",
+      "word": "give sb a hand",
+      "updatedAt": "2026-09-24T00:00:00.000Z",
+      "senses": [{ "id": "give-hand", "pos": "phr. v.", "meaningZh": "幫某人一把", "examples": [] }]
+    }
+  ]
+}

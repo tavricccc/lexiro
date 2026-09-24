@@ -60,6 +60,20 @@ describe("structured output schemas", () => {
     });
   }
 
+  it("requires an exact source usage span for sentence questions", () => {
+    const item = {
+      sentence: "The report convinced the committee of its safety.",
+      usage: "convinced the committee of its safety",
+      answer: "convinced",
+      distractors: ["informed", "warned", "reminded"],
+    };
+    for (const kind of ["vocabulary", "grammar"] as const) {
+      expect(questionOutput(kind).parse({ items: [item] })).toEqual({ items: [item] });
+      const { usage: _unused, ...withoutUsage } = item;
+      expect(() => questionOutput(kind).parse({ items: [withoutUsage] })).toThrow();
+    }
+  });
+
   it("asks for a part of speech every time, and takes null for one already known", () => {
     const items = wordOutput({ min: 1, max: 1 });
     expect(

@@ -2,6 +2,10 @@
 
 ## 2026-09-24 快取與成本基準
 
+獨立詞彙／文法題的 structured output 現在要求 `sentence`、`usage`、`answer`、`distractors`。`usage` 是模型自己填好片語佔位詞後，從句子逐字摘出的連續片段；`answer` 是單獨要挖空的連續片段。程式驗證 `usage` 在句中恰好一次，並用來源模板的固定詞順序核對，沒有「佔位詞最多幾字」的限制。文法題可以考 `usage` 之外的相關文法詞，詞彙題的 `answer` 必須是 `usage` 的目標字形。規則寫在共用前綴，題型差異留在穩定的題型區段，來源及修復訊息仍在後段。
+
+以已登入 Codex CLI 的 `gpt-6-luna`/low 實跑 `phrase-usage-realizations`：三個來源 `convince sb of sth`、`turn down`、`give sb a hand` 都回傳含具體填入內容的 `usage`，前端組題解析通過 3/3。既有 `vocabulary-two-turn` 案例的新格式亦通過 8/8 加 1/1。這些是少量合成案例，證明回覆格式與解析可銜接；不是正式 Responses API 的快取命中或教學品質統計。
+
 Responses 請求把所有使用者共用的規則放在 developer 訊息前段，最後才放來源、activeRefs、修復錯誤與追加要求。題目共用的 `TASK_RULES` 超過 1,024 tokens，並在固定前段結尾放 explicit breakpoint；題型專屬規則接在其後。`prompt_cache_key` 隨提示詞版號更新，ttl 為 30 分鐘。`service_tier: default` 固定 Standard 費率。這個安排避免動態來源佔據快取寫入段；依 [OpenAI prompt caching 文件](https://developers.openai.com/api/docs/guides/prompt-caching)，只有逐字相同的前綴可能命中，寫入成本為一般輸入的 1.25 倍，讀取為 0.1 倍。structured-output schema 與模型設定也可能讓前綴分流，因此僅憑本地 token 數不能宣稱生產命中率。管理員應觀察 Responses 回傳的 cache read／write tokens 與每次成本，再調整共用規則；不把一次性來源移入明確寫入段。
 
 USD 報表逐筆按 [GPT-6 Luna Standard 費率](https://developers.openai.com/api/docs/models/gpt-6-luna) 計算，先將 input 拆成 fresh、cached、cache write，再加 output；輸入超過 272,000 tokens 的同一回覆改用長上下文倍率。每筆計算後才依模型、帳戶與題型加總，避免把整月用量誤認為單次長上下文。未知 usage 仍標記待核對。供應商價格估算不含其他基礎設施費用。
