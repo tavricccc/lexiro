@@ -138,6 +138,24 @@ describe("assembling the model's reply", () => {
     ).toThrow(/wander/);
   });
 
+  it("blanks the sole target word when the model names another answer", () => {
+    const result = assembleGeneratedQuestions(
+      { items: [{ answer: "helps", distractors: ["method", "recipe", "plan"], ref: "s1", sentence: "The formula helps us solve it." }] },
+      "vocabulary",
+      2,
+      [word("formula", "n.")],
+      [word("formula", "n.")],
+    );
+    const [question] = result.payload.questions as Array<{
+      answerIndex: number;
+      options: string[];
+      prompt: string;
+    }>;
+    expect(question.prompt).toBe("The _____ helps us solve it.");
+    expect(question.options[question.answerIndex]).toBe("formula");
+    expect(result.dropped).toEqual([]);
+  });
+
   it("falls back to positional matching when the model mangles a ref", () => {
     const payload = assembleGeneratedQuestions(
       { items: [{ answer: "wander", distractors: ["ran", "sat", "grew"], ref: "source-1-1", sentence: "They wander far." }] },

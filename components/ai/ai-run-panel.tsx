@@ -186,6 +186,8 @@ export function AiRunPanel<T>({
         </p>
       ))}
 
+      {admin && started && <AiUsage usage={state.usage} />}
+
       <StepActions width="wide">
         {running ? (
           <Button
@@ -249,7 +251,6 @@ export function AiRunPanel<T>({
         )}
       </StepActions>
 
-      {admin && started && <AiUsage usage={state.usage} />}
     </div>
   );
 }

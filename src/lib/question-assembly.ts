@@ -8,7 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { libraryDistractors, placeAnswer } from "./question-builders";
-import { isWordForm, sentenceContainsWordForm } from "./word-forms";
+import { isWordForm, sentenceContainsWordForm, wordForms } from "./word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -168,25 +168,36 @@ function assembleSentences(
     if (!slot) return dropped.push(`第 ${position + 1} 筆對不到輸入詞義`);
 
     const sentence = text(raw.sentence);
-    const answer = text(raw.answer);
+    let answer = text(raw.answer);
     if (!sentence || !answer)
       return dropped.push(`${slot.word.word}：缺少句子或答案`);
+    let hits = occurrences(sentence, answer);
+
+    if (
+      kind === "vocabulary" &&
+      (!isWordForm(answer, slot.word.word, slot.word.senses[slot.senseIndex].pos) ||
+        hits.length !== 1)
+    ) {
+      const forms = wordForms(
+        slot.word.word,
+        slot.word.senses[slot.senseIndex].pos,
+      );
+      const matches = forms.flatMap((form) =>
+        occurrences(sentence, form).map((at) => ({ at, form })),
+      );
+      if (matches.length !== 1)
+        return dropped.push(`${slot.word.word}：答案與目標單字不符`);
+      answer = sentence.slice(matches[0].at, matches[0].at + matches[0].form.length);
+      hits = [matches[0].at];
+    }
 
     // The blank is cut here, never typed by the model.
-    const hits = occurrences(sentence, answer);
     if (hits.length !== 1)
       return dropped.push(
         `${slot.word.word}：答案在句中出現 ${hits.length} 次，必須恰好一次`,
       );
     const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
 
-    // The answer has to be a form of the word we asked about, or the item is
-    // testing something else entirely.
-    if (
-      kind === "vocabulary" &&
-      !isWordForm(answer, slot.word.word, slot.word.senses[slot.senseIndex].pos)
-    )
-      return dropped.push(`${slot.word.word}：答案與目標單字不符`);
     if (
       kind === "grammar" &&
       !sentenceContainsWordForm(

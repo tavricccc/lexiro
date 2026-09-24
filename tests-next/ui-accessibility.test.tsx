@@ -3,10 +3,29 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { EmptyState, ErrorState } from "@/components/ui/page-state";
 import { useState } from "react";
 import { ListChoiceGroup, ListNavRow } from "@/components/ui/list";
+import { StepActions } from "@/components/ui/step-actions";
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+});
 
 describe("shared accessible states", () => {
+  it("reserves the full height of a fixed action panel", () => {
+    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
+      height: 224,
+    } as DOMRect);
+    const { container } = render(
+      <StepActions>
+        <button type="button">繼續</button>
+        <button type="button">重試</button>
+      </StepActions>,
+    );
+    expect(container.querySelector("[data-step-actions-space]")).toHaveStyle({
+      minHeight: "224px",
+    });
+  });
+
   it("moves a single selection with arrow keys and skips disabled options", async () => {
     function Choices() {
       const [value, setValue] = useState("first");

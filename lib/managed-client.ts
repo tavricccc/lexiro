@@ -288,6 +288,7 @@ export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   for (const field of [
     "input",
     "cached",
+    "cacheWrite",
     "output",
     "reasoning",
     "credits",
