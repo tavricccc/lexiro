@@ -1,10 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { encode } from "gpt-tokenizer";
-import { prepareGeneration, upstreamRequest } from "../src/generation";
+import { MODELS, prepareGeneration, upstreamRequest } from "../src/generation";
 import { QUESTION_KINDS } from "@lexiro/ai-contract";
 import { QUESTION_CACHE_KEY, TASK_RULES } from "../src/question-prompts";
 
 describe("private generation prompts", () => {
+  it("uses GPT-6 Luna for every tier with increasing reasoning effort", () => {
+    expect(MODELS).toEqual({
+      lite: { model: "gpt-6-luna", effort: "low" },
+      thinking: { model: "gpt-6-luna", effort: "medium" },
+      pro: { model: "gpt-6-luna", effort: "high" },
+    });
+  });
   it.each(["words", ...QUESTION_KINDS] as const)(
     "keeps %s instructions stable across different sources",
     async (kind) => {

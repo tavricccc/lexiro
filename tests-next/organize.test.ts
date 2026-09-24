@@ -29,11 +29,11 @@ describe("input organization", () => {
       expect((await account(fixture.db, "u"))!.points).toBe(40);
       await settleGeneration(fixture.db, hold, prepared, {
         status, response: { usage: { input_tokens: 900, output_tokens: 60 } },
-      }, "gpt-5.6-luna");
+      }, "gpt-6-luna");
       expect((await account(fixture.db, "u"))!.points).toBe(100);
       expect((await fixture.db.prepare("SELECT * FROM charges").all()).results).toEqual([]);
       expect(await fixture.db.prepare("SELECT points,credits,units FROM usage_log").first())
-        .toEqual({ points: 0, credits: 2, units: 10 });
+        .toEqual({ points: 0, credits: 1, units: 10 });
     } finally { await fixture.runtime.dispose(); }
   });
 

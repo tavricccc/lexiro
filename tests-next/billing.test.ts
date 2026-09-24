@@ -30,12 +30,12 @@ describe("D1 atomic credit ledger", () => {
   it("converts provider usage to whole credits with exact upward rounding", () => {
     expect(
       creditsFromUsage({
-        model: "gpt-5.6-luna",
+        model: "gpt-6-luna",
         input: 1_000,
         cached: 500,
         output: 100,
       }),
-    ).toBe(2);
+    ).toBe(1);
     expect(
       creditsFromUsage({
         model: "gpt-5.6-terra",
@@ -45,11 +45,17 @@ describe("D1 atomic credit ledger", () => {
     ).toBe(4);
     expect(
       creditsFromUsage({
-        model: "gpt-5.6-luna",
+        model: "gpt-6-luna",
         input: 4_000,
         cacheWrite: 4_000,
       }),
-    ).toBe(8);
+    ).toBe(4);
+    expect(
+      creditsFromUsage({ model: "gpt-6-luna", input: 1_000_000, cached: 1_000_000 }),
+    ).toBe(75);
+    expect(
+      creditsFromUsage({ model: "gpt-6-luna", input: 1_000_000, cacheWrite: 1_000_000 }),
+    ).toBe(938);
     expect(creditsFromUsage({ model: "unknown", input: 100 })).toBeNull();
   });
   it("bounds retries even when failures refund and remove their charge records", async () => {
@@ -102,14 +108,14 @@ describe("D1 atomic credit ledger", () => {
       db,
       reservation,
       [],
-      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      { model: "gpt-6-luna", input: 1_000, output: 100 },
       { charged: 2, cost: 2 },
     );
     await settle(
       db,
       reservation,
       [],
-      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      { model: "gpt-6-luna", input: 1_000, output: 100 },
       { charged: 2, cost: 2 },
     );
     expect(await balance()).toBe(98);
@@ -126,7 +132,7 @@ describe("D1 atomic credit ledger", () => {
       db,
       reservation,
       reservation.charges,
-      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      { model: "gpt-6-luna", input: 1_000, output: 100 },
       { charged: 2, cost: 2 },
     );
     expect(await balance()).toBe(98);
@@ -178,7 +184,7 @@ describe("D1 atomic credit ledger", () => {
       db,
       reservation,
       reservation.charges,
-      { model: "gpt-5.6-luna", input: 1_000, output: 100 },
+      { model: "gpt-6-luna", input: 1_000, output: 100 },
       { charged: 0, cost: 2, status: "cancelled" },
     );
     expect(await balance()).toBe(100);

@@ -23,7 +23,7 @@ interface Report {
 }
 const run = (id: string, at: number, state = "reported", verified = 1) => fixture.db.prepare(
   `INSERT INTO usage_log(id,uid,points,model,created_at,credits,status,usage_state,debit_verified)
-   VALUES(?,'u',7,'gpt-5.6-luna',?,?,'complete',?,?)`,
+   VALUES(?,'u',7,'gpt-6-luna',?,?,'complete',?,?)`,
 ).bind(id, at, state === "reported" ? 2 : null, state, verified);
 
 describe("indexed admin reports", () => {
@@ -45,7 +45,7 @@ describe("indexed admin reports", () => {
     const now = nowSeconds();
     await fixture.db.prepare(`WITH RECURSIVE n(value) AS (SELECT 0 UNION ALL SELECT value+1 FROM n WHERE value<124)
       INSERT INTO usage_log(id,uid,points,model,created_at,credits,status,usage_state,debit_verified)
-      SELECT printf('run-%03d',value),'u',7,'gpt-5.6-luna',?,2,'complete','reported',1 FROM n`).bind(now).run();
+      SELECT printf('run-%03d',value),'u',7,'gpt-6-luna',?,2,'complete','reported',1 FROM n`).bind(now).run();
     const ids: string[] = [];
     let cursor: string | null = null;
     do {

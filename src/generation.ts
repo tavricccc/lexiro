@@ -23,11 +23,11 @@ import {
   organizeOutput,
 } from "./organize";
 
-export const MODELS: Record<Tier, { model: string; effort: "low" | "medium" }> =
+export const MODELS: Record<Tier, { model: string; effort: "low" | "medium" | "high" }> =
   {
-    lite: { model: "gpt-5.6-luna", effort: "low" },
-    thinking: { model: "gpt-5.6-luna", effort: "medium" },
-    pro: { model: "gpt-5.6-terra", effort: "low" },
+    lite: { model: "gpt-6-luna", effort: "low" },
+    thinking: { model: "gpt-6-luna", effort: "medium" },
+    pro: { model: "gpt-6-luna", effort: "high" },
   };
 const inputSchema = z.strictObject({
   kind: z.enum([

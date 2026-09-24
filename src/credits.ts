@@ -3,7 +3,7 @@ import { MODEL_PRICES, type TokenUsage } from "@lexiro/ai-contract";
 // Private billing basis. The public client receives only estimated or settled
 // credit amounts; it does not receive this conversion rule.
 const CREDITS_PER_US_DOLLAR = 7_500n;
-const PRICE_SCALE = 100n;
+const PRICE_SCALE = 10_000n;
 const TOKENS_PER_MILLION = 1_000_000n;
 
 export function creditsFromUsage(usage: TokenUsage): number | null {

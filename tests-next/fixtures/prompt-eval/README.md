@@ -5,7 +5,7 @@ and `review` fields were drafted by planning agents whose runtime model identity
 was not verified. They are design examples, **not** evidence of Luna performance.
 
 `node scripts/evaluate-ai-prompts.mjs --run final` makes actual requests through
-the installed, authenticated Codex CLI with `gpt-5.6-luna` and medium reasoning.
+the installed, authenticated Codex CLI with `gpt-6-luna` and low reasoning.
 It verifies those settings in the CLI receipt, applies the current app parser,
 and saves requests, responses and results under `artifacts/prompt-eval/`.
 The CLI entry point can be supplied with `CODEX_PROMPT_EVAL_CLI`.

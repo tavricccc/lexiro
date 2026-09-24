@@ -57,7 +57,7 @@ async function settleSupplement(text: string, limit: 1 | 2 | 3) {
     reservation,
     prepared,
     terminal(text),
-    "gpt-5.6-luna",
+    "gpt-6-luna",
   );
   const after = (await account(db, "u"))!.points;
   const again = await reserve(
@@ -71,7 +71,7 @@ async function settleSupplement(text: string, limit: 1 | 2 | 3) {
     0,
   );
   // The probe held the account; give every point back and release it.
-  await settle(db, again, again.charges, { model: "gpt-5.6-luna" }, { charged: 0, cost: 0 });
+  await settle(db, again, again.charges, { model: "gpt-6-luna" }, { charged: 0, cost: 0 });
   return { debit: before - after, payAgain };
 }
 
@@ -89,11 +89,11 @@ describe("reading retry identity", () => {
         question: `Question ${index + 1}`, answer: "Apples", distractors: ["Bread", "Milk", "Rice"],
       })),
     }));
-    await settleGeneration(db, hold, prepared, result, "gpt-5.6-luna");
+    await settleGeneration(db, hold, prepared, result, "gpt-6-luna");
     const balance = (await account(db, "u"))!.points;
     const retry = await reserve(db, "u", prepared.units, prepared.halfRate);
     expect(retry.charges).toEqual([]);
-    await settleGeneration(db, retry, prepared, result, "gpt-5.6-luna");
+    await settleGeneration(db, retry, prepared, result, "gpt-6-luna");
     expect((await account(db, "u"))!.points).toBe(balance);
     const fresh = await prepareGeneration({ ...request, session: crypto.randomUUID() }, "u");
     expect((await reserve(db, "u", fresh.units, fresh.halfRate)).charges).toHaveLength(1);

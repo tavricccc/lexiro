@@ -177,7 +177,7 @@ try {
             "--cd",
             scratch,
             "--model",
-            "gpt-5.6-luna",
+            "gpt-6-luna",
             ...(trial.image ? ["--image", join(fixtureRoot, trial.image)] : []),
             "-c",
             'model_reasoning_effort="low"',
@@ -208,7 +208,7 @@ try {
       });
       const raw = await readFile(answerPath, "utf8");
       const verified =
-        /model:\s*gpt-5\.6-luna\b/.test(capture.transcript) &&
+        /model:\s*gpt-6-luna\b/.test(capture.transcript) &&
         /reasoning effort:\s*low\b/.test(capture.transcript);
       let parsedCount = 0,
         responseItemCount = 0,
@@ -243,7 +243,7 @@ try {
         turn: index + 1,
         phase,
         method: "codex-cli-subagent",
-        model: "gpt-5.6-luna",
+        model: "gpt-6-luna",
         reasoningEffort: "low",
         configurationVerified: verified,
         durationMs: Date.now() - start,
@@ -276,7 +276,7 @@ try {
         phase,
         method:
           "CLI subagent with full transcript replay; not a browser HTTP or cache benchmark",
-        requestedModel: "gpt-5.6-luna",
+        requestedModel: "gpt-6-luna",
         requestedEffort: "low",
         turns: results.length,
         passed: results.filter((r) => !r.error).length,

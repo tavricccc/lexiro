@@ -115,8 +115,8 @@ describe("Worker HTTP boundary", () => {
     expect(await env.DB.prepare("SELECT credits,usage_state FROM usage_log").first()).toEqual({ credits: null, usage_state: "pending" });
     const recovered = vi.fn<typeof fetch>(async () => Response.json({ ...response, usage: { input_tokens: 900, output_tokens: 60 } }));
     const me = await call(req("/me"), recovered);
-    expect(JSON.parse(me.text).points).toBe(98);
-    expect(await env.DB.prepare("SELECT credits,points,usage_state FROM usage_log").first()).toEqual({ credits: 2, points: 2, usage_state: "reported" });
+    expect(JSON.parse(me.text).points).toBe(99);
+    expect(await env.DB.prepare("SELECT credits,points,usage_state FROM usage_log").first()).toEqual({ credits: 1, points: 1, usage_state: "reported" });
     expect(recovered).toHaveBeenCalledOnce();
   });
   it("preserves a reservation when an administrator saves only a note", async () => {
@@ -332,10 +332,10 @@ describe("Worker HTTP boundary", () => {
     expect((await account(env.DB, "u"))!.points).toBe(100);
     const usage = await call(req("/admin/usage", undefined, "admin"));
     expect(JSON.parse(usage.text)).toMatchObject({
-      entries: [{ uid: "admin", model: "gpt-5.6-luna", points: 0, credits: 1, input: 100, output: 20, status: "complete" }],
-      models: [{ model: "gpt-5.6-luna", runs: 1, credits: 1, input: 100, output: 20 }],
+      entries: [{ uid: "admin", model: "gpt-6-luna", points: 0, credits: 1, input: 100, output: 20, status: "complete" }],
+      models: [{ model: "gpt-6-luna", runs: 1, credits: 1, input: 100, output: 20 }],
       // What that one account cost, separately from what it was charged.
-      users: [{ uid: "admin", email: "admin@example.test", model: "gpt-5.6-luna", runs: 1, credits: 1, points: 0 }],
+      users: [{ uid: "admin", email: "admin@example.test", model: "gpt-6-luna", runs: 1, credits: 1, points: 0 }],
       // Cost against billable units, which is what the point rates are set from.
       kinds: [{ kind: "words", tier: "lite", runs: 1, units: 1, credits: 1 }],
     });

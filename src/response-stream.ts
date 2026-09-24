@@ -5,6 +5,7 @@ export interface StreamTerminal {
   response?: Record<string, unknown>;
 }
 export interface StreamOptions {
+  model: string;
   onTerminal: (
     result: StreamTerminal,
   ) => Promise<Record<string, unknown> | undefined>;
@@ -103,9 +104,9 @@ const USAGE_FIELDS = ["input_tokens", "output_tokens", "total_tokens"] as const;
  */
 function publicResponse(
   response: Record<string, unknown>,
+  model: string,
 ): Record<string, unknown> {
-  const clean: Record<string, unknown> = { id: response.id };
-  if (typeof response.model === "string") clean.model = response.model;
+  const clean: Record<string, unknown> = { id: response.id, model };
   if (typeof response.status === "string") clean.status = response.status;
   if (record(response.usage)) {
     const usage: Record<string, unknown> = {};
@@ -221,7 +222,7 @@ export function sanitizeResponseStream(
         }
 
         // Never mutate the private response retained by the settlement callback.
-        const clean = publicResponse(response);
+        const clean = publicResponse(response, options.model);
         if (metadata) clean.lexiro = metadata;
         // Project envelope fields too: a new top-level echo must not expose a prompt.
         yield encodeEvent(frame.event, {

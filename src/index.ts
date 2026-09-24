@@ -183,6 +183,7 @@ export function createWorker(
           const finished = Promise.withResolvers<void>();
           ctx.waitUntil(finished.promise);
           const body = sanitizeResponseStream(response.body, {
+            model,
             onTerminal: async (terminal) => {
               try {
                 const credits = await settleGeneration(

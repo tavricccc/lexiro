@@ -28,6 +28,7 @@ function stream(text: string, chunkSize = 37) {
 async function read(text: string, chunkSize?: number) {
   const outcomes: StreamTerminal[] = [];
   const body = sanitizeResponseStream(stream(text, chunkSize), {
+    model: "gpt-6-luna",
     onTerminal: async (result) => {
       outcomes.push(result);
       return undefined;
@@ -47,7 +48,7 @@ describe("Responses prompt redaction", () => {
     const publicResponse = payloads(result.text).at(-1)?.response;
     // `output` is deliberately absent: the client reads the deltas, and the
     // generated text is the one thing an echo could hide behind.
-    expect(publicResponse).toEqual({ id: response.id, model: response.model, usage: response.usage });
+    expect(publicResponse).toEqual({ id: response.id, model: "gpt-6-luna", usage: response.usage });
     expect(result.outcomes).toEqual([{ cursor: response.id, status: "complete", response }]);
     expect(result.text).toContain(delta);
   });
@@ -114,7 +115,7 @@ describe("Responses prompt redaction", () => {
       await gate;
       return { credits: 3 };
     });
-    const reader = sanitizeResponseStream(stream(start + end, 65_536), { onTerminal }).getReader();
+    const reader = sanitizeResponseStream(stream(start + end, 65_536), { model: "gpt-6-luna", onTerminal }).getReader();
     await reader.read();
     let completed = false;
     const pending = reader.read().then((result) => { completed = true; return result; });
@@ -132,7 +133,7 @@ describe("Responses prompt redaction", () => {
   it("honors backpressure and cancels upstream exactly once before any read", async () => {
     const pull = vi.fn(), cancel = vi.fn(), onTerminal = vi.fn(async () => undefined);
     const upstream = new ReadableStream<Uint8Array>({ pull, cancel }, { highWaterMark: 0 });
-    const output = sanitizeResponseStream(upstream, { onTerminal });
+    const output = sanitizeResponseStream(upstream, { model: "gpt-6-luna", onTerminal });
     await Promise.resolve();
     expect(pull).not.toHaveBeenCalled();
     await output.cancel();
@@ -144,7 +145,7 @@ describe("Responses prompt redaction", () => {
   it("cancels a pending read without treating user cancellation as an upstream failure", async () => {
     const cancel = vi.fn(), onTerminal = vi.fn(async () => undefined);
     const upstream = new ReadableStream<Uint8Array>({ cancel }, { highWaterMark: 0 });
-    const reader = sanitizeResponseStream(upstream, { onTerminal }).getReader();
+    const reader = sanitizeResponseStream(upstream, { model: "gpt-6-luna", onTerminal }).getReader();
     const pending = reader.read();
     await reader.cancel();
     expect((await pending).done).toBe(true);

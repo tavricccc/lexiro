@@ -47,15 +47,15 @@ describe("unknown provider usage", () => {
   it("recovers usage even when the terminal response object exists", async () => {
     const { prepared, hold } = await start();
     const recover = vi.fn(async () => ({ ...complete(), usage }));
-    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-5.6-luna", recover);
+    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-6-luna", recover);
     expect(recover).toHaveBeenCalledExactlyOnceWith("resp_pending");
-    expect(await ledger(hold.attempt)).toMatchObject({ credits: 2, points: 2, usage_state: "reported" });
-    expect((await account(fixture.db, "u"))!.points).toBe(98);
+    expect(await ledger(hold.attempt)).toMatchObject({ credits: 1, points: 1, usage_state: "reported" });
+    expect((await account(fixture.db, "u"))!.points).toBe(99);
   });
 
   it("retains unknown charges through maintenance, then reconciles exactly once", async () => {
     const { prepared, hold } = await start();
-    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-5.6-luna", async () => undefined);
+    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-6-luna", async () => undefined);
     expect(await ledger(hold.attempt)).toMatchObject({ credits: null, points: 0, usage_state: "pending", debit_verified: 0 });
     await fixture.db.prepare("UPDATE charges SET created_at=? WHERE attempt_id=?").bind(nowSeconds() - 2000, hold.attempt).run();
     await fixture.db.prepare("UPDATE accounts SET inflight_at=? WHERE uid='u'").bind(nowSeconds() - 2000).run();
@@ -65,8 +65,8 @@ describe("unknown provider usage", () => {
     await expect(reserve(fixture.db, "u", prepared.units, prepared.halfRate)).rejects.toMatchObject({ status: 409 });
     const recover = async () => ({ ...complete(), usage });
     await Promise.all([reconcileUsage(fixture.db, recover, "u"), reconcileUsage(fixture.db, recover, "u")]);
-    expect((await account(fixture.db, "u"))!.points).toBe(98);
-    expect(await ledger(hold.attempt)).toMatchObject({ points: 2, credits: 2, debit_verified: 1, usage_state: "reported" });
+    expect((await account(fixture.db, "u"))!.points).toBe(99);
+    expect(await ledger(hold.attempt)).toMatchObject({ points: 1, credits: 1, debit_verified: 1, usage_state: "reported" });
     expect((await fixture.db.prepare("SELECT * FROM pending_usage").all()).results).toEqual([]);
     const retry = await reserve(fixture.db, "u", prepared.units, prepared.halfRate);
     expect(retry.charges).toEqual([]);
@@ -76,7 +76,7 @@ describe("unknown provider usage", () => {
   it("caps a delayed debit at the original balance even when the estimate exceeded it", async () => {
     const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", tier: "lite", session: crypto.randomUUID() }, "u");
     const hold = await reserve(fixture.db, "u", prepared.units, 1000);
-    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-5.6-luna");
+    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-6-luna");
     expect((await account(fixture.db, "u"))!.points).toBe(-400);
     await reconcileUsage(fixture.db, async () => ({ ...complete(), usage: { input_tokens: 1_000_000, output_tokens: 100_000 } }), "u");
     expect((await account(fixture.db, "u"))!.points).toBe(0);
@@ -85,19 +85,19 @@ describe("unknown provider usage", () => {
 
   it("releases cancelled holds without claiming that provider cost was zero", async () => {
     const { prepared, hold } = await start();
-    await settleGeneration(fixture.db, hold, prepared, { status: "cancelled", cursor: "resp_pending" }, "gpt-5.6-luna", async () => undefined);
+    await settleGeneration(fixture.db, hold, prepared, { status: "cancelled", cursor: "resp_pending" }, "gpt-6-luna", async () => undefined);
     expect((await account(fixture.db, "u"))!.points).toBe(100);
     expect(await ledger(hold.attempt)).toMatchObject({ points: 0, credits: null, usage_state: "pending", status: "cancelled" });
     const next = await reserve(fixture.db, "u", [{ id: "next", limitId: "next" }], 2);
     await reconcileUsage(fixture.db, async () => ({ ...complete(), usage }), "u");
     expect((await account(fixture.db, "u"))!.points).toBe(99);
-    expect(await ledger(hold.attempt)).toMatchObject({ points: 0, credits: 2, usage_state: "reported" });
+    expect(await ledger(hold.attempt)).toMatchObject({ points: 0, credits: 1, usage_state: "reported" });
     await settle(fixture.db, next, next.charges, { model: "test" });
   });
 
   it("records unavailable cost when no response identity exists", async () => {
     const { prepared, hold } = await start();
-    await settleGeneration(fixture.db, hold, prepared, { status: "failed" }, "gpt-5.6-luna");
+    await settleGeneration(fixture.db, hold, prepared, { status: "failed" }, "gpt-6-luna");
     expect(await ledger(hold.attempt)).toMatchObject({ credits: null, points: 0, usage_state: "unavailable" });
     expect((await account(fixture.db, "u"))!.points).toBe(100);
     expect((await fixture.db.prepare("SELECT * FROM pending_usage").all()).results).toEqual([]);
@@ -105,7 +105,7 @@ describe("unknown provider usage", () => {
 
   it("accepts explicit zero usage rather than confusing it with missing usage", async () => {
     const { prepared, hold } = await start();
-    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: { ...complete(), usage: { input_tokens: 0, output_tokens: 0 } } }, "gpt-5.6-luna");
+    await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: { ...complete(), usage: { input_tokens: 0, output_tokens: 0 } } }, "gpt-6-luna");
     expect(await ledger(hold.attempt)).toMatchObject({ credits: 0, usage_state: "reported", debit_verified: 1 });
   });
 
@@ -113,7 +113,7 @@ describe("unknown provider usage", () => {
     for (const invalid of [{}, { input_tokens: 1 }, { input_tokens: -1, output_tokens: 1 },
       { input_tokens: 1.5, output_tokens: 1 }, { input_tokens: 2, output_tokens: 1, input_tokens_details: { cached_tokens: 3 } },
       { input_tokens: 2, output_tokens: 1, input_tokens_details: { cached_tokens: "1" } }]) {
-      expect(reportedUsage({ usage: invalid }, "gpt-5.6-luna")).toBeUndefined();
+      expect(reportedUsage({ usage: invalid }, "gpt-6-luna")).toBeUndefined();
     }
   });
 

@@ -1,6 +1,6 @@
 # 2026-09-12 managed／多義與整理版本
 
-目前使用 private `src/generation.ts` 的 instructions/schema 與 sibling frontend 的實際 parser。執行 `node scripts/evaluate-ai-prompts.mjs --run optimized <case>` 會使用已登入 Codex 的 Luna/low 額度；`node scripts/validate-prompt-eval.mjs` 只讀已存回覆。`LEXIRO_FRONTEND_PATH` 可指定前端 checkout。
+目前使用 private `src/generation.ts` 的 instructions/schema 與 sibling frontend 的實際 parser。執行 `node scripts/evaluate-ai-prompts.mjs --run optimized <case>` 會使用已登入 Codex 的 `gpt-6-luna`/low 額度；`node scripts/validate-prompt-eval.mjs` 只讀已存回覆。`LEXIRO_FRONTEND_PATH` 可指定前端 checkout。
 
 最新 18 個回覆重驗通過 18/18，包含單義階段保留的題型案例、新多義回覆及文字／合成照片整理。多義人工檢查確認兩個指定義均保留、詞性與例句對應、沒有強行增加罕見義。原模糊片語案例曾漏義，修正提示後已重測，歷次失敗留在 runs 快照。
 
