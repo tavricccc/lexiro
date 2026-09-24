@@ -8,7 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { libraryDistractors, placeAnswer } from "./question-builders";
-import { isWordForm, sentenceContainsWordForm, wordForms } from "./word-forms";
+import { matchingWordFormOccurrences, sentenceContainsWordForm } from "./word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -173,22 +173,22 @@ function assembleSentences(
       return dropped.push(`${slot.word.word}：缺少句子或答案`);
     let hits = occurrences(sentence, answer);
 
-    if (
-      kind === "vocabulary" &&
-      (!isWordForm(answer, slot.word.word, slot.word.senses[slot.senseIndex].pos) ||
-        hits.length !== 1)
-    ) {
-      const forms = wordForms(
+    if (kind === "vocabulary") {
+      const matches = matchingWordFormOccurrences(
+        sentence,
         slot.word.word,
         slot.word.senses[slot.senseIndex].pos,
       );
-      const matches = forms.flatMap((form) =>
-        occurrences(sentence, form).map((at) => ({ at, form })),
+      const named = matches.filter(
+        (match) =>
+          match.form.toLocaleLowerCase() === answer.toLocaleLowerCase() &&
+          hits.includes(match.at),
       );
-      if (matches.length !== 1)
+      const chosen = named.length === 1 ? named[0] : matches.length === 1 ? matches[0] : null;
+      if (!chosen)
         return dropped.push(`${slot.word.word}：答案與目標單字不符`);
-      answer = sentence.slice(matches[0].at, matches[0].at + matches[0].form.length);
-      hits = [matches[0].at];
+      answer = chosen.form;
+      hits = [chosen.at];
     }
 
     // The blank is cut here, never typed by the model.

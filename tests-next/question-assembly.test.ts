@@ -156,6 +156,61 @@ describe("assembling the model's reply", () => {
     expect(result.dropped).toEqual([]);
   });
 
+  it("treats sb and sth as phrase slots while keeping the fixed preposition", () => {
+    const targets = [
+      word("convince sb of sth", "phr."),
+      word("convince sb to", "v."),
+    ];
+    const result = assembleGeneratedQuestions(
+      {
+        items: [
+          {
+            answer: "convinced",
+            distractors: ["informed", "warned", "reminded"],
+            sentence: "Seeing the engineers repeat the test convinced him of its strength.",
+          },
+          {
+            answer: "convinced",
+            distractors: ["invited", "ordered", "reminded"],
+            sentence: "The coach convinced the players to attend practice.",
+          },
+        ],
+      },
+      "vocabulary",
+      2,
+      targets,
+      targets,
+    );
+    const questions = result.payload.questions as Array<{
+      answerIndex: number;
+      options: string[];
+      prompt: string;
+    }>;
+    expect(result.dropped).toEqual([]);
+    expect(questions.map((question) => question.prompt)).toEqual([
+      "Seeing the engineers repeat the test _____ him of its strength.",
+      "The coach _____ the players to attend practice.",
+    ]);
+    expect(questions.map((question) => question.options[question.answerIndex])).toEqual([
+      "convinced",
+      "convinced",
+    ]);
+  });
+
+  it("does not accept the phrase head without its required words", () => {
+    expect(() => assembleGeneratedQuestions(
+      { items: [{
+        answer: "convinced",
+        distractors: ["informed", "warned", "reminded"],
+        sentence: "The report convinced him that the bridge was safe.",
+      }] },
+      "vocabulary",
+      2,
+      [word("convince sb of sth", "phr.")],
+      pool,
+    )).toThrow(/convince sb of sth/);
+  });
+
   it("falls back to positional matching when the model mangles a ref", () => {
     const payload = assembleGeneratedQuestions(
       { items: [{ answer: "wander", distractors: ["ran", "sat", "grew"], ref: "source-1-1", sentence: "They wander far." }] },

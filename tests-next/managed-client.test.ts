@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { addUsage, managedFetch, readManagedStream } from "@/lib/managed-client";
+import { addUsage, managedFetch, managedTurn, readManagedStream } from "@/lib/managed-client";
+import { responseCost } from "@lexiro/ai-contract";
+import type { AiSession } from "@/src/types/ai";
 
 const auth = vi.hoisted(() => ({ currentUser: { uid: "a", getIdToken: vi.fn() }, authStateReady: vi.fn(async () => {}) }));
 vi.mock("@/src/lib/firebase", () => ({ getFirebaseAuth: () => auth }));
@@ -59,6 +61,47 @@ describe("managed AI boundary", () => {
       cacheWrite: 25,
       output: 12,
     });
+  });
+  it("adds each response's real token cost, including cache writes and net savings", () => {
+    const usage = addUsage(
+      addUsage({}, {
+        model: "gpt-6-luna", input: 10_000, cacheWrite: 2_000, output: 1_000,
+      }),
+      { model: "gpt-6-luna", input: 10_000, cached: 6_000, output: 1_000 },
+    );
+    expect(usage).toMatchObject({
+      input: 20_000,
+      cached: 6_000,
+      cacheWrite: 2_000,
+    });
+    expect(usage.costUsd).toBeCloseTo(0.00251);
+    expect(usage.uncachedCostUsd).toBeCloseTo(0.003);
+    expect(responseCost({
+      model: "gpt-6-luna", input: 300_000, output: 100_000,
+    })).toBeCloseTo(0.135);
+  });
+  it("keeps reported cost when a response is truncated", async () => {
+    const frames = [
+      { type: "response.created", response: { id: "resp_truncated", model: "gpt-6-luna" } },
+      { type: "response.incomplete", response: {
+        incomplete_details: { reason: "max_output_tokens" },
+        usage: { input_tokens: 10_000, output_tokens: 1_000,
+          input_tokens_details: { cached_tokens: 6_000, cache_write_tokens: 2_000 } },
+      } },
+    ].map((event) => `data: ${JSON.stringify(event)}\n\n`).join("");
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(frames)));
+    const session: AiSession = {
+      tier: "lite",
+      context: "",
+      sessionId: crypto.randomUUID(),
+      notices: [],
+      usage: {},
+    };
+    await expect(managedTurn(session, { kind: "explain", raw: "test" })).rejects.toMatchObject({
+      code: "truncated",
+    });
+    expect(session.usage).toMatchObject({ input: 10_000, cached: 6_000, cacheWrite: 2_000 });
+    expect(session.usage.costUsd).toBeCloseTo(0.00101);
   });
   it("does not accept a disconnected stream as completed content", async () => {
     await expect(readManagedStream(new Response('data: {"type":"response.output_text.delta","delta":"partial"}\n\n'), {})).rejects.toMatchObject({ streamBroken: true });

@@ -1,6 +1,7 @@
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { AiRequestError } from "@/src/lib/ai/errors";
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
+import { responseCost } from "@lexiro/ai-contract";
 import type {
   AccountInfo,
   GenerationInput,
@@ -191,7 +192,10 @@ export async function readManagedStream(
       options.onPhase?.("generating");
     }
     if (data.type === "error" || data.type === "response.failed")
-      throw new AiRequestError(t("managed.failed"), { retryable: true });
+      throw new AiRequestError(t("managed.failed"), {
+        retryable: true,
+        usage: { ...terminal.usage },
+      });
     if (data.type === "response.completed") {
       complete = true;
       terminal.stopReason = "complete";
@@ -225,20 +229,26 @@ export async function readManagedStream(
     throw new AiRequestError(t("ai.streamFailed"), {
       retryable: true,
       streamBroken: true,
+      usage: { ...terminal.usage },
     });
   const { stopReason } = terminal;
   if (stopReason === "truncated")
     throw new AiRequestError(t("ai.truncated"), {
       code: "truncated",
       retryable: false,
+      usage: { ...terminal.usage },
     });
   if (stopReason === "blocked")
     throw new AiRequestError(t("ai.blocked"), {
       code: "blocked",
       retryable: false,
+      usage: { ...terminal.usage },
     });
   if (!text.trim())
-    throw new AiRequestError(t("ai.emptyReply"), { retryable: false });
+    throw new AiRequestError(t("ai.emptyReply"), {
+      retryable: false,
+      usage: { ...terminal.usage },
+    });
   return { text, id, complete, stopReason, usage: terminal.usage };
 }
 
@@ -276,7 +286,14 @@ export async function managedTurn(
     session.cursor = undefined;
     session.notices.push(t("ai.contextRebuilt"));
   }
-  const result = await readManagedStream(response, { ...options, signal });
+  let result: AiTurnResult;
+  try {
+    result = await readManagedStream(response, { ...options, signal });
+  } catch (reason) {
+    if (reason instanceof AiRequestError)
+      addUsage(session.usage, reason.usage);
+    throw reason;
+  }
   addUsage(session.usage, result.usage);
   return result;
 }
@@ -284,6 +301,12 @@ export async function managedTurn(
 /** A run is many turns; the readout is about the run, so the turns add up. */
 export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   if (!turn) return total;
+  const cost = responseCost(turn);
+  const uncachedCost = responseCost({ ...turn, cached: 0, cacheWrite: 0 });
+  if (cost !== null && uncachedCost !== null) {
+    total.costUsd = (total.costUsd ?? 0) + cost;
+    total.uncachedCostUsd = (total.uncachedCostUsd ?? 0) + uncachedCost;
+  }
   if (turn.model) total.model = turn.model;
   for (const field of [
     "input",

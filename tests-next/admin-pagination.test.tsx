@@ -33,7 +33,7 @@ describe("admin cursor navigation", () => {
       return {
         accounts: [{ uid: email, email, points: 10, monthly: 0, renews_at: 0, note: null }],
         entries: [{ id: email, uid: email, email, model: "gpt-6-luna", points: 1,
-          input: 1, cached: 0, cacheWrite: 0, output: 1, credits: 1, created_at: 1,
+          input: 1, cached: 0, cacheWrite: 0, output: 1, credits: 1, costUsd: 0.0000006, created_at: 1,
           status: "complete", usageState: "reported", assessedPoints: 1, debitVerified: 1 }],
         nextCursor: next ? null : "opaque-next",
         models: [], users: [], kinds: [], pendingUsage: 0, unavailableUsage: 0, unverifiedDebits: 0,

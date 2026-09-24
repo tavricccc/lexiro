@@ -24,6 +24,7 @@ const report: UsageReport = {
       cacheWrite: 0,
       output: 0,
       credits: 40,
+      costUsd: 0.005,
       points: 20,
     },
     {
@@ -36,6 +37,7 @@ const report: UsageReport = {
       cacheWrite: 0,
       output: 0,
       credits: 240,
+      costUsd: 0.03,
       points: 300,
     },
   ],
@@ -75,7 +77,7 @@ describe("the administrator's per-kind cost report", () => {
   it("shows pending costs as unknown rather than free", async () => {
     managed.mockResolvedValue({ ...report, pendingUsage: 1, unverifiedDebits: 2, entries: [{
       id: "pending", uid: "u", email: "u@example.test", model: "gpt-6-luna", points: 0,
-      input: null, cached: null, cacheWrite: null, output: null, credits: null,
+      input: null, cached: null, cacheWrite: null, output: null, credits: null, costUsd: null,
       created_at: 1, status: "complete", usageState: "pending", assessedPoints: null, debitVerified: 0,
     }] } satisfies UsageReport);
     show();
@@ -98,6 +100,7 @@ describe("the administrator's per-kind cost report", () => {
     expect(
       screen.getByText(/報價 0.5 點 · 4 次 · 40 單位 · 差 \+100%/),
     ).toBeTruthy();
+    expect(screen.getByText(/總成本 US\$0\.005000/)).toBeTruthy();
   });
 
   it("names the work and the tier, and reads a quote that is too high", async () => {

@@ -1,3 +1,5 @@
+import type { TokenUsage } from "@lexiro/ai-contract";
+
 export class AiNotConfiguredError extends Error {
   constructor(message: string) {
     super(message);
@@ -11,6 +13,7 @@ export class AiRequestError extends Error {
   readonly streamBroken: boolean;
   readonly code?: string;
   readonly debugMessage?: string;
+  readonly usage?: TokenUsage;
   constructor(
     message: string,
     options: {
@@ -20,6 +23,7 @@ export class AiRequestError extends Error {
       streamBroken?: boolean;
       code?: string;
       debugMessage?: string;
+      usage?: TokenUsage;
     },
   ) {
     super(message);
@@ -30,6 +34,7 @@ export class AiRequestError extends Error {
     this.streamBroken = options.streamBroken ?? false;
     this.code = options.code;
     this.debugMessage = options.debugMessage;
+    this.usage = options.usage;
   }
 }
 

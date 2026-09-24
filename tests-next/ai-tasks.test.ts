@@ -85,22 +85,15 @@ describe("AI task boundaries", () => {
       "build",
       "carry",
       "choose",
-      "create",
-      "cross",
-      "dance",
-      "decide",
-      "develop",
-      "discover",
-      "draw",
       "close",
     ].map(word);
     const task = questionTask(words, words, "vocabulary", 2);
-    expect(task.steps[1].prompt).toContain("s16");
+    expect(task.steps[1].prompt).toContain("s9");
     const parsed = task.steps[1].parse(
       JSON.stringify({
         items: [
           {
-            ref: "s16",
+            ref: "s9",
             sentence: "Please close the door before we leave.",
             answer: "close",
             distractors: ["watch", "bring", "carry"],

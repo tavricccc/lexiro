@@ -77,6 +77,7 @@ export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = 
           startedAt: null,
           elapsedMs: s.elapsedMs + Date.now() - start,
           remaining: run.pending.length,
+          usage: { ...run.session.usage },
           error: controller.signal.aborted
             ? ""
             : reason instanceof Error

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  estimateCost,
   rate,
   type AdminKindUsage,
   type AdminUserUsage,
@@ -26,8 +25,7 @@ import { useCloudStore } from "@/stores/cloud-store";
 /**
  * One account's month, folded across the models it used.
  *
- * Cost is a rate per model, so the report arrives split that way and is only
- * added up here, once each model's own tokens have been priced.
+ * Each response was priced before the report was grouped by model.
  */
 interface AccountSpend {
   uid: string;
@@ -35,7 +33,7 @@ interface AccountSpend {
   runs: number;
   tokens: number;
   points: number;
-  cost: number;
+  cost: number | null;
   credits: number;
 }
 
@@ -55,17 +53,12 @@ function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
     current.tokens += row.input + row.output;
     current.points += row.points;
     current.credits += row.credits;
-    current.cost +=
-      estimateCost({
-        model: row.model,
-        input: row.input,
-        cached: row.cached,
-        cacheWrite: row.cacheWrite,
-        output: row.output,
-      }) ?? 0;
+    current.cost = current.cost === null || row.costUsd === null
+      ? null
+      : current.cost + row.costUsd;
     spend.set(row.uid, current);
   }
-  return [...spend.values()].sort((left, right) => right.cost - left.cost);
+  return [...spend.values()].sort((left, right) => (right.cost ?? -1) - (left.cost ?? -1));
 }
 
 /**
@@ -81,6 +74,7 @@ interface KindCost {
   tier: Tier;
   runs: number;
   units: number;
+  costUsd: number | null;
   actual: number;
   quoted: number;
   gap: number;
@@ -98,6 +92,7 @@ function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
         tier: row.tier,
         runs: row.runs,
         units: row.units,
+        costUsd: row.costUsd,
         actual,
         quoted,
         gap: quoted > 0 ? (actual - quoted) / quoted : 0,
@@ -130,18 +125,9 @@ export function AdminUsage() {
   const models = usage.data?.models ?? [];
   const accounts = byAccount(usage.data?.users ?? []);
   const kinds = byKind(usage.data?.kinds ?? []);
-  const total = models.reduce(
-    (sum, model) =>
-      sum +
-      (estimateCost({
-        model: model.model,
-        input: model.input,
-        cached: model.cached,
-        cacheWrite: model.cacheWrite,
-        output: model.output,
-      }) ?? 0),
-    0,
-  );
+  const total = models.some((model) => model.costUsd === null)
+    ? null
+    : models.reduce((sum, model) => sum + model.costUsd!, 0);
   const totalCredits = models.reduce(
     (sum, model) => sum + (model.credits ?? 0),
     0,
@@ -177,18 +163,14 @@ export function AdminUsage() {
               detail={t("admin.modelTotals", {
                 runs: model.runs,
                 tokens: (model.input + model.output).toLocaleString(),
+                cached: model.input > 0 ? Math.round(model.cached / model.input * 100) : 0,
+                writes: model.cacheWrite.toLocaleString(),
               })}
               key={model.model}
               label={model.model}
               value={
                 <UsageValue
-                  cost={estimateCost({
-                    model: model.model,
-                    input: model.input,
-                    cached: model.cached,
-                    cacheWrite: model.cacheWrite,
-                    output: model.output,
-                  })}
+                  cost={model.costUsd}
                   credits={model.credits}
                 />
               }
@@ -213,12 +195,15 @@ export function AdminUsage() {
           {usage.isPending && <ListRow label={t("common.loading")} />}
           {kinds.map((entry) => (
             <ListRow
-              detail={t("admin.kindTotals", {
-                delta: percent(entry.gap),
-                quoted: entry.quoted.toFixed(1),
-                runs: entry.runs,
-                units: entry.units.toLocaleString(),
-              })}
+              detail={<>
+                {t("admin.kindTotals", {
+                  delta: percent(entry.gap),
+                  quoted: entry.quoted.toFixed(1),
+                  runs: entry.runs,
+                  units: entry.units.toLocaleString(),
+                })}
+                {" · "}{t("admin.kindTotalCost", { cost: formatCost(entry.costUsd) })}
+              </>}
               key={entry.key}
               label={`${jobKindLabel(entry.kind)} · ${t(`managed.${entry.tier}`)}`}
               value={t("admin.kindCost", { cost: entry.actual.toFixed(2) })}
@@ -262,6 +247,7 @@ export function AdminUsage() {
               detail={entry.usageState === "reported" ? t("admin.runTotals", {
                 input: (entry.input ?? 0).toLocaleString(),
                 cached: (entry.cached ?? 0).toLocaleString(),
+                writes: (entry.cacheWrite ?? 0).toLocaleString(),
                 output: (entry.output ?? 0).toLocaleString(),
               }) : entry.model}
               key={entry.id}
@@ -274,13 +260,7 @@ export function AdminUsage() {
               }
               value={entry.usageState !== "reported" ? t("admin.costUnknown") : (
                 <UsageValue
-                  cost={estimateCost({
-                    model: entry.model,
-                    input: entry.input ?? 0,
-                    cached: entry.cached ?? 0,
-                    cacheWrite: entry.cacheWrite ?? 0,
-                    output: entry.output ?? 0,
-                  })}
+                  cost={entry.costUsd}
                   credits={entry.credits}
                 />
               )}

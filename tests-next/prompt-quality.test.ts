@@ -132,6 +132,7 @@ describe("issues found in real Luna prompt trials", () => {
     ["look after", "looked after"],
     ["carry out", "carried out"],
     ["run", "running"],
+    ["convince sb of sth", "convinced"],
   ])("accepts the legitimate %s → %s form", (base, form) =>
     expect(isWordForm(form, base)).toBe(true),
   );
@@ -210,19 +211,12 @@ describe("issues found in real Luna prompt trials", () => {
       "build",
       "carry",
       "choose",
-      "create",
-      "cross",
-      "dance",
-      "decide",
-      "develop",
-      "discover",
-      "draw",
       "close",
     ].map((w) => word(w));
     const task = questionTask(words, words, "vocabulary", 2);
     const request = JSON.parse(task.steps[1].prompt);
     expect(request.sources).toHaveLength(1);
-    expect(request.sources[0].ref).toBe("s16");
+    expect(request.sources[0].ref).toBe("s9");
     expect(request).not.toHaveProperty("instructions");
   });
   it("separates repeated spellings without adding unnecessary passages", () => {

@@ -1,18 +1,20 @@
-import { estimateCost, type TokenUsage } from "@lexiro/ai-contract";
+import type { TokenUsage } from "@lexiro/ai-contract";
 import { CreditBadge } from "./credit-badge";
 import { t } from "@/lib/i18n";
 
-/** Four decimals, because a Lite run costs less than a tenth of a cent. */
+/** Small runs still show their calculated cost below one cent. */
 export function formatCost(cost: number | null): string {
   if (cost === null) return t("admin.noPrice");
-  return `US$${cost < 0.01 ? cost.toFixed(4) : cost.toFixed(2)}`;
+  return `US$${cost.toFixed(6)}`;
 }
 
 export function usageFigures(usage: TokenUsage) {
   const cached = usage.cached ?? 0;
+  const cacheWrite = usage.cacheWrite ?? 0;
   const input = usage.input ?? 0;
   return [
-    ["admin.inputTokens", Math.max(0, input - cached)],
+    ["admin.inputTokens", Math.max(0, input - cached - cacheWrite)],
+    ["admin.cacheWriteTokens", cacheWrite],
     ["admin.cachedTokens", cached],
     ["admin.outputTokens", usage.output ?? 0],
     ["admin.reasoningTokens", usage.reasoning ?? 0],
@@ -30,7 +32,11 @@ export function usageFigures(usage: TokenUsage) {
 export function AiUsage({ usage }: { usage: TokenUsage }) {
   const input = usage.input ?? 0;
   const cached = usage.cached ?? 0;
-  const cost = estimateCost(usage);
+  const cost = usage.costUsd ?? null;
+  const cacheSavings =
+    cost === null || usage.uncachedCostUsd === undefined
+      ? null
+      : usage.uncachedCostUsd - cost;
   return (
     <div className="rule-card py-4">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -45,7 +51,7 @@ export function AiUsage({ usage }: { usage: TokenUsage }) {
           )}
         </div>
       </div>
-      <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5">
         {usageFigures(usage).map(([key, value]) => (
           <div className="rounded-lg bg-[var(--surface-inset)] p-3" key={key}>
             <dt className="text-xs text-muted-foreground">{t(key)}</dt>
@@ -55,6 +61,14 @@ export function AiUsage({ usage }: { usage: TokenUsage }) {
           </div>
         ))}
       </dl>
+      {cacheSavings !== null && (
+        <p className="mt-3 text-xs tabular-nums text-muted-foreground">
+          {t(
+            cacheSavings >= 0 ? "admin.cacheSavings" : "admin.cacheWritePremium",
+            { cost: formatCost(Math.abs(cacheSavings)) },
+          )}
+        </p>
+      )}
       <p className="mt-3 text-xs text-muted-foreground">
         {usage.model ?? t("admin.noModel")}
         {input > 0 &&

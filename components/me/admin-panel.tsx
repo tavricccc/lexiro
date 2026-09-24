@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { estimateCost, type AdminAccountsPage, type AdminUsageReport } from "@lexiro/ai-contract";
+import { type AdminAccountsPage, type AdminUsageReport } from "@lexiro/ai-contract";
 
 import { formatCost } from "@/components/ai/ai-usage";
 import { CreditBadge } from "@/components/ai/credit-badge";
@@ -101,13 +101,11 @@ export function AdminPanel() {
   );
 }
 
-function totalCost(
-  models: { model: string; input: number; cached: number; cacheWrite: number; output: number }[],
-): number | null {
+function totalCost(models: { costUsd: number | null }[]): number | null {
   if (!models.length) return 0;
   let total = 0;
   for (const model of models) {
-    const cost = estimateCost(model);
+    const cost = model.costUsd;
     if (cost === null) return null;
     total += cost;
   }

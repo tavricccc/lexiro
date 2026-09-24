@@ -2,6 +2,30 @@ import { IRREGULAR_WORD_FORMS } from "@/constants/word-forms";
 
 const normalize = (value: string) =>
   value.toLocaleLowerCase().replace(/’/gu, "'").replace(/\s+/gu, " ").trim();
+const SLOT_WORDS = new Set(["sb", "sth", "someone", "somebody", "something", "one's", "oneself"]);
+const slot = (token: string) => SLOT_WORDS.has(token.replace(/\.$/u, ""));
+const escapeRegex = (value: string) =>
+  value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+
+function phraseTemplate(word: string) {
+  const tokens = normalize(word).split(" ");
+  const firstSlot = tokens.findIndex(slot);
+  return firstSlot < 0
+    ? null
+    : { head: tokens.slice(0, firstSlot).join(" "), tail: tokens.slice(firstSlot) };
+}
+
+function fitsTemplate(sentence: string, at: number, form: string, word: string) {
+  const template = phraseTemplate(word);
+  if (!template) return true;
+  const tail = template.tail.map((token) =>
+    slot(token)
+      ? "(?:\\s+[A-Za-z][A-Za-z'’-]*){1,12}"
+      : `\\s+${escapeRegex(token)}`,
+  ).join("");
+  return new RegExp(`^${escapeRegex(form).replace(/ /gu, "\\s+")}${tail}(?=$|[^A-Za-z0-9])`, "iu")
+    .test(sentence.slice(at));
+}
 function tokenForms(token: string, pos: string): string[] {
   if (IRREGULAR_WORD_FORMS[token])
     return [token, ...IRREGULAR_WORD_FORMS[token].split(" ")];
@@ -49,7 +73,8 @@ function tokenForms(token: string, pos: string): string[] {
 }
 /** Recognizes common forms without accepting arbitrary shared word prefixes. */
 export function wordForms(word: string, pos = "v."): string[] {
-  const tokens = normalize(word).split(" ");
+  const tokens = normalize(phraseTemplate(word)?.head ?? word).split(" ");
+  if (!tokens[0]) return [];
   const forms = tokenForms(tokens[0], pos).map((first) =>
     [first, ...tokens.slice(1)].join(" "),
   );
@@ -60,16 +85,28 @@ export function wordForms(word: string, pos = "v."): string[] {
 }
 export const isWordForm = (answer: string, word: string, pos = "v.") =>
   wordForms(word, pos).includes(normalize(answer));
+export function matchingWordFormOccurrences(
+  sentence: string,
+  word: string,
+  pos = "v.",
+): Array<{ at: number; form: string }> {
+  return wordForms(word, pos).flatMap((form) => {
+    const pattern = new RegExp(
+      `(?:^|[^A-Za-z0-9])(${escapeRegex(form).replace(/ /gu, "\\s+")})(?=$|[^A-Za-z0-9])`,
+      "giu",
+    );
+    return [...sentence.matchAll(pattern)].flatMap((match) => {
+      const at = match.index + match[0].length - match[1].length;
+      return fitsTemplate(sentence, at, match[1], word)
+        ? [{ at, form: match[1] }]
+        : [];
+    });
+  });
+}
 export function sentenceContainsWordForm(
   sentence: string,
   word: string,
   pos = "v.",
 ): boolean {
-  const normalized = normalize(sentence);
-  return wordForms(word, pos).some((form) => {
-    const escaped = form.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
-    return new RegExp(`(?:^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`, "u").test(
-      normalized,
-    );
-  });
+  return matchingWordFormOccurrences(sentence, word, pos).length > 0;
 }

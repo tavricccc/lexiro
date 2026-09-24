@@ -79,6 +79,8 @@ export interface TokenUsage {
   output?: number;
   reasoning?: number;
   credits?: number;
+  costUsd?: number;
+  uncachedCostUsd?: number;
 }
 export interface AdminUsageEntry {
   id: string;
@@ -87,6 +89,7 @@ export interface AdminUsageEntry {
   model: string;
   points: number;
   credits: number | null;
+  costUsd: number | null;
   input: number | null;
   cached: number | null;
   cacheWrite: number | null;
@@ -114,6 +117,7 @@ export interface AdminKindUsage {
   cacheWrite: number;
   output: number;
   credits: number;
+  costUsd: number | null;
   points: number;
 }
 /** One account's month of runs on one model: provider cost and points charged. */
@@ -127,6 +131,7 @@ export interface AdminUserUsage {
   cacheWrite: number;
   output: number;
   credits: number;
+  costUsd: number | null;
   points: number;
 }
 export interface AdminAccountsPage {
@@ -147,6 +152,7 @@ export interface AdminUsageReport {
     cacheWrite: number;
     output: number;
     credits: number | null;
+    costUsd: number | null;
   }[];
   users: AdminUserUsage[];
   kinds: AdminKindUsage[];
@@ -173,19 +179,36 @@ export const MODEL_PRICES: Record<
   "gpt-6-luna": { input: 0.1, cached: 0.01, cacheWrite: 0.125, output: 0.5 },
   "gpt-5.6-terra": { input: 2, cached: 0.2, cacheWrite: 2.5, output: 12 },
 };
+export const LONG_CONTEXT_INPUT_THRESHOLD = 272_000;
 export function estimateCost(usage: TokenUsage): number | null {
   const price = usage.model ? MODEL_PRICES[usage.model] : undefined;
-  if (!price) return null;
+  if (!price || usage.input === undefined || usage.output === undefined) return null;
   const cached = usage.cached ?? 0;
   const cacheWrite = usage.cacheWrite ?? 0;
-  const fresh = Math.max(0, (usage.input ?? 0) - cached - cacheWrite);
+  if (cached + cacheWrite > usage.input) return null;
+  const fresh = usage.input - cached - cacheWrite;
   return (
     (fresh * price.input +
       cached * price.cached +
       cacheWrite * price.cacheWrite +
-      (usage.output ?? 0) * price.output) /
+      usage.output * price.output) /
     1_000_000
   );
+}
+/** Price one provider response, including GPT-6 Luna's long-context tier. */
+export function responseCost(usage: TokenUsage): number | null {
+  const ordinary = estimateCost(usage);
+  const input = usage.input;
+  const output = usage.output;
+  if (
+    ordinary === null ||
+    input === undefined ||
+    output === undefined ||
+    usage.model !== "gpt-6-luna" ||
+    input <= LONG_CONTEXT_INPUT_THRESHOLD
+  ) return ordinary;
+  const outputCost = (output * MODEL_PRICES[usage.model].output) / 1_000_000;
+  return 2 * (ordinary - outputCost) + 1.5 * outputCost;
 }
 export const LIMITS = {
   input: 5000,
