@@ -2,13 +2,15 @@
 
 import type { LibraryQuestion } from "@/types";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import {
   useAiGeneration,
   useReviewHandoff,
+  type AiGenerationSnapshot,
 } from "@/components/ai/use-ai-generation";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { GeneratedQuestionResults } from "./generated-question-results";
 import { useSaveGeneratedQuestions } from "./use-save-generated-questions";
 import { BackControl } from "@/components/ui/back-control";
@@ -16,6 +18,8 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { FinishPanel } from "@/components/ui/finish-panel";
 import { EmptyState } from "@/components/ui/page-state";
+import { LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import {
   ListChoiceGroup,
   ListPicker,
@@ -35,6 +39,7 @@ import {
   SENTENCE_STYLES,
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
 import { questionTask } from "@/src/lib/ai/tasks";
 import {
   getSetGenerationWords,
@@ -45,6 +50,13 @@ import { isPassageKind } from "@/src/lib/question-formats";
 import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
 type Step = "configure" | "run" | "review" | "done";
+interface QuestionDraft {
+  step: Step;
+  chosenSetId: string;
+  kind: GeneratedQuestionKind;
+  difficulty: GeneratedQuestionDifficulty;
+  run?: AiGenerationSnapshot<LibraryQuestion>;
+}
 const FORMATS: GeneratedQuestionKind[] = [
   ...SENTENCE_STYLES,
   ...PASSAGE_FORMAT_VALUES,
@@ -52,14 +64,48 @@ const FORMATS: GeneratedQuestionKind[] = [
 
 /** Generate from every sense in one set, without individual word selection. */
 export function QuestionGenerator({ setId }: { setId?: string }) {
-  const { state } = useLibraryStore();
-  const [step, setStep] = useState<Step>("configure");
-  const [chosenSetId, setChosenSetId] = useState("");
-  const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
-  const [difficulty, setDifficulty] = useState<GeneratedQuestionDifficulty>(2);
-  const { saving, save: storeAll } = useSaveGeneratedQuestions(() =>
-    setStep("done"),
+  const uid = useCloudStore((store) => store.user?.uid);
+  const saved = useResumableDraft<QuestionDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:questions:${setId ?? "all"}`,
+    {
+      step: "configure",
+      chosenSetId: "",
+      kind: "vocabulary",
+      difficulty: 2,
+    },
   );
+  const back = <BackControl href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />;
+  if (saved.status === "checking") return <LoadingState />;
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        back={back}
+        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.questionDescription")}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
+    );
+  return <QuestionGeneratorFlow setId={setId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+}
+
+function QuestionGeneratorFlow({
+  setId,
+  draft,
+  update,
+  clear,
+}: {
+  setId?: string;
+  draft: QuestionDraft;
+  update: (patch: Partial<QuestionDraft>) => void;
+  clear: () => void;
+}) {
+  const { state } = useLibraryStore();
+  const { step, chosenSetId, kind, difficulty } = draft;
+  const { saving, save: storeAll } = useSaveGeneratedQuestions(() => {
+    update({ step: "done", run: undefined });
+    clear();
+  });
 
   const defaultSetId =
     state.sets.find((entry) =>
@@ -97,6 +143,8 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     [words, pool, kind, difficulty],
   );
   const generation = useAiGeneration<LibraryQuestion>({
+    initialSnapshot: draft.run,
+    onSnapshotChange: (run) => update({ run }),
     merge: (items) => {
       const byId = new Map<string, LibraryQuestion>();
       for (const item of items) byId.set(item.fingerprint || item.id, item);
@@ -104,10 +152,14 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     },
   });
   const { reset, state: run } = generation;
-  useReviewHandoff(run.status, () => setStep("review"));
+  useReviewHandoff(run.status, () => update({ step: "review" }));
+  const configKey = `${selectedSetId}:${kind}:${difficulty}`;
+  const previousConfig = useRef(configKey);
   useEffect(() => {
+    if (previousConfig.current === configKey) return;
+    previousConfig.current = configKey;
     reset();
-  }, [difficulty, kind, reset, selectedSetId]);
+  }, [configKey, reset]);
 
   const back = (
     <BackControl href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
@@ -123,7 +175,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       onEdit={() => {
         if (!saving) {
           generation.cancel();
-          setStep("configure");
+          update({ step: "configure" });
         }
       }}
     />
@@ -138,7 +190,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         title={t("questions.generateTitle")}
         footer={
           senseCount ? (
-            <Button className="w-full" onClick={() => setStep("run")} size="lg">
+            <Button className="w-full" onClick={() => update({ step: "run" })} size="lg">
               <Icons.next />
               {t("questions.next")}
             </Button>
@@ -167,7 +219,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
               ) : (
                 <ListPicker
                   label={t("practice.set")}
-                  onChange={setChosenSetId}
+                  onChange={(chosenSetId) => update({ chosenSetId })}
                   options={state.sets.map((entry) => ({
                     label: entry.setName,
                     value: entry.id,
@@ -199,7 +251,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
               <ListSection header={t("questions.stepFormat")}>
                 <ListChoiceGroup
                   label={t("questions.stepFormat")}
-                  onSelect={setKind}
+                  onSelect={(kind) => update({ kind })}
                   options={FORMATS.map((format) => ({
                     detail: questionFormatHint(format),
                     id: format,
@@ -212,7 +264,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
                 <ListPicker
                   label={t("practice.difficulty")}
                   onChange={(value) =>
-                    setDifficulty(Number(value) as GeneratedQuestionDifficulty)
+                    update({ difficulty: Number(value) as GeneratedQuestionDifficulty })
                   }
                   options={difficultyOptions()}
                   value={String(difficulty)}
@@ -232,7 +284,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         title={t("questions.stepReview")}
         width="wide"
         onBack={() => {
-          if (!saving) setStep("run");
+          if (!saving) update({ step: "run" });
         }}
         recap={recap}
       >
@@ -252,7 +304,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             </Button>
             <Button
               disabled={saving}
-              onClick={() => setStep("run")}
+              onClick={() => update({ step: "run" })}
               type="button"
               variant="ghost"
             >
@@ -273,7 +325,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         moreLabel={t("questions.generateMore")}
         onMore={() => {
           reset();
-          setStep("configure");
+          update({ step: "configure", run: undefined });
         }}
         title={t("questions.generatedCount", { count: run.items.length })}
       />
@@ -288,7 +340,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       onBack={() => {
         if (!saving) {
           generation.cancel();
-          setStep("configure");
+          update({ step: "configure" });
         }
       }}
       recap={recap}
@@ -308,7 +360,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
           }
           onReview={
             run.items.length && run.status !== "running"
-              ? () => setStep("review")
+              ? () => update({ step: "review" })
               : undefined
           }
           onStart={() => generation.start(task, prebuilt?.built ?? [])}

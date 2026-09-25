@@ -21,11 +21,8 @@ type Panel = "none" | "create" | "rename" | "move";
 const ROOT_VALUE = "__root__";
 
 /**
- * The path line says where you are; one menu beside it says what you can do
- * here. Folder chores are not why anyone opens this screen, so creating,
- * renaming, moving and deleting are all one press away rather than four buttons
- * wide — which also stops a destructive action from sitting permanently next to
- * a harmless one.
+ * The path line says where you are. Creating a folder is a direct action;
+ * renaming, moving and deleting the current folder remain in its menu.
  */
 export function FolderToolbar({
   actions: extraActions = [],
@@ -84,11 +81,6 @@ export function FolderToolbar({
     : [];
 
   const actions: MenuAction[] = [
-    {
-      icon: Icons.create,
-      label: t("library.newFolder"),
-      onSelect: () => open("create"),
-    },
     ...(currentFolder
       ? ([
           {
@@ -139,6 +131,16 @@ export function FolderToolbar({
           ))}
         </nav>
 
+        <Button
+          className="shrink-0"
+          onClick={() => open("create")}
+          size="sm"
+          type="button"
+          variant="secondary"
+        >
+          <Icons.create />
+          {t("library.newFolder")}
+        </Button>
         <Menu actions={actions} />
       </div>
 

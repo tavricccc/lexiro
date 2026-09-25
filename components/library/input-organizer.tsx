@@ -7,7 +7,6 @@ import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
-import { ListActionRow, ListSection } from "@/components/ui/list";
 import {
   managedFetch,
   managedTurn,
@@ -21,6 +20,11 @@ import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
 
 export type OrganizerPhase = "input" | "review";
+export interface InputOrganizerDraft {
+  input: string;
+  review: string;
+  addingPhotos: boolean;
+}
 
 function formatPhotoError(name: string, reason: unknown) {
   const detail =
@@ -75,24 +79,38 @@ function PhotoInputButton({
  * long. The phase belongs to the caller so the page can say which step this is.
  */
 export function InputOrganizer({
+  initialDraft,
+  onDraftChange,
   onConfirm,
   onPhase,
   phase,
 }: {
+  initialDraft?: InputOrganizerDraft;
+  onDraftChange?: (draft: InputOrganizerDraft) => void;
   onConfirm: (text: string) => void;
   onPhase: (phase: OrganizerPhase) => void;
   phase: OrganizerPhase;
 }) {
-  const [input, setInput] = useState("");
-  const [review, setReview] = useState("");
+  const [input, setInput] = useState(initialDraft?.input ?? "");
+  const [review, setReview] = useState(initialDraft?.review ?? "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [addingPhotos, setAddingPhotos] = useState(false);
+  const [addingPhotos, setAddingPhotos] = useState(initialDraft?.addingPhotos ?? false);
   const [photoProgress, setPhotoProgress] = useState<{
     current: number;
     total: number;
   } | null>(null);
   const controller = useRef<AbortController | null>(null);
+  const onDraftRef = useRef(onDraftChange);
+  onDraftRef.current = onDraftChange;
+  const firstDraft = useRef(true);
+  useEffect(() => {
+    if (firstDraft.current) {
+      firstDraft.current = false;
+      return;
+    }
+    onDraftRef.current?.({ input, review, addingPhotos });
+  }, [input, review, addingPhotos]);
   const uid = useCloudStore((store) => store.user?.uid);
   useEffect(() => () => controller.current?.abort(), [uid]);
 
@@ -132,7 +150,6 @@ export function InputOrganizer({
 
   const organizePhotos = async (files: File[]) => {
     const current = startRun();
-    const organized: string[] = [];
     try {
       for (
         let batchStart = 0;
@@ -169,7 +186,8 @@ export function InputOrganizer({
           current.signal.throwIfAborted();
           const cleaned = parseOrganizedWordInput(text).join("\n");
           if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
-          organized.push(cleaned);
+          setReview((currentReview) => [currentReview, cleaned].filter(Boolean).join("\n"));
+          setAddingPhotos(true);
         } catch (reason) {
           if (!current.signal.aborted) setError(formatPhotoError(
             t("managed.photoBatch", { start: batchStart + 1, end: batchStart + batch.length }), reason,
@@ -179,10 +197,6 @@ export function InputOrganizer({
       }
     } finally {
       if (controller.current === current) {
-        if (organized.length) {
-          setReview((currentReview) => [currentReview, ...organized].filter(Boolean).join("\n"));
-          setAddingPhotos(true);
-        }
         setBusy(false);
         setPhotoProgress(null);
       }
@@ -249,91 +263,56 @@ export function InputOrganizer({
           <p className="text-sm text-muted-foreground">
             {t("managed.morePhotosHint")}
           </p>
-          <div className="flex flex-wrap items-center gap-2">
-            <PhotoInputButton
-              disabled={busy || !uid}
-              label={t("managed.addPhotos")}
-              onFiles={(files) => void organizePhotos(files)}
-            />
-            <Button
-              disabled={busy}
-              onClick={() => onPhase("review")}
-              type="button"
-            >
+        </div>
+      ) : (
+        <Field label={t("setEditor.rawWords")}>
+          <Textarea
+            value={input}
+            maxLength={LIMITS.input}
+            disabled={busy}
+            placeholder={t("setEditor.rawWordsPlaceholder")}
+            onChange={(event) => setInput(event.target.value)}
+          />
+        </Field>
+      )}
+      <StepActions width="wide">
+        {!uid && <p className="text-sm text-muted-foreground">{t("managed.signInRequired")}</p>}
+        {busy && (
+          <p role="status" className="text-sm text-muted-foreground">
+            {photoProgress ? t("managed.photoProgress", photoProgress) : t("ai.generating")}
+          </p>
+        )}
+        {error && <p role="alert" className="whitespace-pre-wrap break-words text-sm text-destructive">{error}</p>}
+        {busy ? (
+          <Button className="w-full" type="button" variant="outline" onClick={() => controller.current?.abort()}>
+            {t("ai.stop")}
+          </Button>
+        ) : addingPhotos ? (
+          <>
+            <Button className="w-full" onClick={() => onPhase("review")} type="button" size="lg">
               <Icons.next />
               {t("managed.noMorePhotos")}
             </Button>
-          </div>
-        </div>
-      ) : (
-        <>
-          <Field label={t("setEditor.rawWords")}>
-            <Textarea
-              value={input}
-              maxLength={LIMITS.input}
-              disabled={busy}
-              placeholder={t("setEditor.rawWordsPlaceholder")}
-              onChange={(event) => setInput(event.target.value)}
-            />
-          </Field>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button
-              aria-label={t("managed.organize")}
-              type="button"
-              disabled={busy || !input.trim() || !uid}
-              onClick={() => void organizeText()}
-            >
+            <PhotoInputButton disabled={!uid} label={t("managed.addPhotos")} onFiles={(files) => void organizePhotos(files)} />
+          </>
+        ) : (
+          <>
+            <Button className="w-full" aria-label={t("managed.organize")} type="button"
+              disabled={!input.trim() || !uid} onClick={() => void organizeText()} size="lg">
               <Icons.generate />
               {t("managed.organize")}
-              <CreditBadge
-                label={t("managed.expectedPoints", { points: 5 })}
-                value={t("managed.expectedShort", { points: 5 })}
-              />
+              <CreditBadge label={t("managed.expectedPoints", { points: 5 })}
+                value={t("managed.expectedShort", { points: 5 })} />
             </Button>
-            <PhotoInputButton
-              disabled={busy || !uid}
-              label={t("managed.photo")}
-              onFiles={(files) => void organizePhotos(files)}
-            />
-          </div>
-        </>
-      )}
-      {busy && (
-        <Button
-          type="button"
-          variant="ghost"
-          onClick={() => controller.current?.abort()}
-        >
-          {t("ai.stop")}
-        </Button>
-      )}
-      {!uid && (
-        <p className="text-sm text-muted-foreground">
-          {t("managed.signInRequired")}
-        </p>
-      )}
-      {busy && (
-        <p role="status" className="text-sm text-muted-foreground">
-          {photoProgress
-            ? t("managed.photoProgress", photoProgress)
-            : t("ai.generating")}
-        </p>
-      )}
-      {error && (
-        <p
-          role="alert"
-          className="whitespace-pre-wrap break-words text-sm text-destructive"
-        >
-          {error}
-        </p>
-      )}
-      {!addingPhotos && review && (
-        <ListSection>
-          <ListActionRow onClick={() => onPhase("review")}>
-            {t("ai.viewResults")}
-          </ListActionRow>
-        </ListSection>
-      )}
+            <PhotoInputButton disabled={!uid} label={t("managed.photo")} onFiles={(files) => void organizePhotos(files)} />
+            {review && (
+              <Button onClick={() => onPhase("review")} type="button" variant="ghost">
+                {t("ai.viewResults")}
+              </Button>
+            )}
+          </>
+        )}
+      </StepActions>
     </div>
   );
 }

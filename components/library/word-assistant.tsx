@@ -1,10 +1,11 @@
 "use client";
 import type { WordDraft } from "@/types";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import {
   useAiGeneration,
   useReviewHandoff,
+  type AiGenerationSnapshot,
 } from "@/components/ai/use-ai-generation";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
@@ -48,24 +49,30 @@ function toRows(drafts: WordDraft[]): AssistedWordRow[] {
  * goes.
  */
 export function WordAssistant({
+  initialRun,
   onApply,
   onPhase,
+  onRunChange,
   phase,
   sources: raw,
 }: {
+  initialRun?: AiGenerationSnapshot<WordDraft>;
   onApply: (rows: AssistedWordRow[]) => void | Promise<void>;
   onPhase: (phase: AssistantPhase) => void;
+  onRunChange?: (snapshot: AiGenerationSnapshot<WordDraft>) => void;
   phase: AssistantPhase;
   sources: string;
 }) {
   const [applying, setApplying] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
-  const generation = useAiGeneration<WordDraft>({ merge: mergeWordDrafts });
-  const { state, reset } = generation;
+  const generation = useAiGeneration<WordDraft>({
+    initialSnapshot: initialRun,
+    merge: mergeWordDrafts,
+    onSnapshotChange: onRunChange,
+  });
+  const { state } = generation;
   const task = useMemo(() => wordTask(sources), [sources]);
-  useEffect(() => {
-    reset();
-  }, [raw, reset]);
   useReviewHandoff(state.status, () => onPhase("review"));
   const running = state.status === "running";
 
@@ -95,13 +102,25 @@ export function WordAssistant({
 
         <p className="type-hint">{t("ai.applyHint")}</p>
         <StepActions width="wide">
+          {saveError && (
+            <p role="alert" className="text-sm text-destructive">
+              {saveError}
+            </p>
+          )}
           <Button
             className="w-full"
             disabled={applying || !state.items.length}
             onClick={async () => {
               setApplying(true);
+              setSaveError("");
               try {
                 await onApply(toRows(state.items));
+              } catch (reason) {
+                setSaveError(
+                  t("ai.applyFailed", {
+                    message: reason instanceof Error ? reason.message : String(reason),
+                  }),
+                );
               } finally {
                 setApplying(false);
               }

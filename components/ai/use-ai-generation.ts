@@ -35,19 +35,56 @@ export interface AiRunState<T> {
   elapsedMs: number; remaining: number; usage: TokenUsage;
   diagnostic: { request?: string; response: string; responseId?: string } | null;
 }
+export interface AiGenerationSnapshot<T> {
+  state: AiRunState<T>;
+  tier: Tier;
+}
 const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecting", characters: 0, completed: 0, total: 0, segments: 0, error: "", items: [], notices: [], startedAt: null, elapsedMs: 0, remaining: 0, usage: {}, diagnostic: null });
 
-export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = {}) {
-  const [state, setState] = useState<AiRunState<T>>(initialState<T>);
-  const [tier, setTier] = useState<Tier>("lite");
+function restoredState<T>(snapshot?: AiGenerationSnapshot<T>): AiRunState<T> {
+  if (!snapshot) return initialState<T>();
+  const previous = snapshot.state;
+  return previous.items.length
+    ? { ...previous, status: "done", startedAt: null, remaining: 0, total: previous.completed, diagnostic: null }
+    : initialState<T>();
+}
+
+export function useAiGeneration<T>({
+  initialSnapshot,
+  merge,
+  onSnapshotChange,
+}: {
+  initialSnapshot?: AiGenerationSnapshot<T>;
+  merge?: (items: T[]) => T[];
+  onSnapshotChange?: (snapshot: AiGenerationSnapshot<T>) => void;
+} = {}) {
+  const [state, setState] = useState<AiRunState<T>>(() => restoredState(initialSnapshot));
+  const [tier, setTier] = useState<Tier>(initialSnapshot?.tier ?? "lite");
+  const [itemsRevision, setItemsRevision] = useState(0);
   const ready = useCloudStore((store) => store.ready);
   const uid = useCloudStore((store) => store.user?.uid);
   const abortRef = useRef<AbortController | null>(null), runRef = useRef<AiRun<T> | null>(null), generationId = useRef(0);
   const mergeRef = useRef(merge); mergeRef.current = merge;
+  const onSnapshotRef = useRef(onSnapshotChange); onSnapshotRef.current = onSnapshotChange;
+  const firstSnapshot = useRef(true);
   useEffect(() => {
+    if (firstSnapshot.current) {
+      firstSnapshot.current = false;
+      return;
+    }
+    onSnapshotRef.current?.({
+      state: { ...state, diagnostic: null, startedAt: null },
+      tier,
+    });
+  }, [state.status, state.completed, state.segments, tier, itemsRevision]);
+  const previousUid = useRef(uid);
+  useEffect(() => {
+    if (previousUid.current === uid) return;
+    previousUid.current = uid;
     runRef.current = null; setState(initialState<T>());
     return () => { generationId.current++; abortRef.current?.abort(); abortRef.current = null; };
   }, [uid]);
+  useEffect(() => () => { generationId.current++; abortRef.current?.abort(); }, []);
   const execute = useCallback(async (run: AiRun<T>) => {
     abortRef.current?.abort();
     const controller = new AbortController(), id = ++generationId.current, start = Date.now();
@@ -109,6 +146,7 @@ export function useAiGeneration<T>({ merge }: { merge?: (items: T[]) => T[] } = 
   const setItems = useCallback((items: T[]) => {
     if (runRef.current) runRef.current.items = [...items];
     setState((s) => ({ ...s, items }));
+    setItemsRevision((value) => value + 1);
   }, []);
   return { state, ready, configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL), tier, setTier, start, resume, append, cancel, reset, setItems };
 }

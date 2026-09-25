@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { WordDraft } from "@/types";
 import { ExampleFields } from "@/components/library/example-fields";
 import { Button } from "@/components/ui/button";
@@ -18,14 +18,28 @@ import { t } from "@/lib/i18n";
  */
 export function WordEditor({
   value,
+  initialDraft,
+  onDraftChange,
   onSave,
   onCancel,
 }: {
   value: WordDraft;
+  initialDraft?: WordDraft;
+  onDraftChange?: (draft: WordDraft) => void;
   onSave: (value: WordDraft) => void | Promise<void>;
   onCancel: () => void;
 }) {
-  const [draft, setDraft] = useState(() => structuredClone(value));
+  const [draft, setDraft] = useState(() => structuredClone(initialDraft ?? value));
+  const onDraftRef = useRef(onDraftChange);
+  onDraftRef.current = onDraftChange;
+  const firstDraft = useRef(true);
+  useEffect(() => {
+    if (firstDraft.current) {
+      firstDraft.current = false;
+      return;
+    }
+    onDraftRef.current?.(draft);
+  }, [draft]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const updateSense = (
@@ -132,13 +146,12 @@ export function WordEditor({
         </ListActionRow>
       </ListSection>
 
-      {error && (
-        <p className="text-sm text-destructive" role="alert">
-          {error}
-        </p>
-      )}
-
       <StepActions>
+        {error && (
+          <p className="text-sm text-destructive" role="alert">
+            {error}
+          </p>
+        )}
         <Button
           className="w-full"
           disabled={busy}

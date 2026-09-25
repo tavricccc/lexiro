@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { EmptyState, ErrorState } from "@/components/ui/page-state";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { ListChoiceGroup, ListNavRow } from "@/components/ui/list";
 import { StepActions } from "@/components/ui/step-actions";
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
@@ -83,6 +83,19 @@ describe("shared accessible states", () => {
     expect(container.querySelector("[data-step-actions-space]")).toHaveStyle({
       minHeight: "224px",
     });
+  });
+
+  it("keeps a portaled submit action connected to its form", () => {
+    const submit = vi.fn((event: FormEvent) => event.preventDefault());
+    render(
+      <form id="fixed-action-form" onSubmit={submit}>
+        <StepActions>
+          <button form="fixed-action-form" type="submit">儲存</button>
+        </StepActions>
+      </form>,
+    );
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    expect(submit).toHaveBeenCalledOnce();
   });
 
   it("moves a single selection with arrow keys and skips disabled options", async () => {

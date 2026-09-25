@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { cn } from "@/lib/cn";
 
@@ -23,7 +24,10 @@ export function StepActions({
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
+  const [host, setHost] = useState<HTMLElement | null>(null);
+  useLayoutEffect(() => setHost(document.body), []);
   useLayoutEffect(() => {
+    if (!host) return;
     const panel = panelRef.current!;
     const observer = new ResizeObserver(() =>
       setHeight(panel.getBoundingClientRect().height),
@@ -31,14 +35,14 @@ export function StepActions({
     observer.observe(panel);
     setHeight(panel.getBoundingClientRect().height);
     return () => observer.disconnect();
-  }, []);
+  }, [host]);
   return (
     <div
       className="mt-7 min-h-[7.5rem]"
       data-step-actions-space
       style={{ minHeight: height || undefined }}
     >
-      <div
+      {host && createPortal(<div
         ref={panelRef}
         className={cn(
           "fixed inset-x-0 bottom-0 z-40 border-t bg-[color-mix(in_srgb,var(--surface-stage)_90%,transparent)] px-[max(var(--page-gutter),var(--safe-left),var(--safe-right))] pb-[max(1rem,var(--safe-bottom))] pt-3 backdrop-blur-xl md:left-60",
@@ -53,7 +57,7 @@ export function StepActions({
         >
           {children}
         </div>
-      </div>
+      </div>, host)}
     </div>
   );
 }

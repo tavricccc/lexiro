@@ -6,6 +6,7 @@ import { useLayoutEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 
 /**
@@ -46,15 +47,15 @@ export function FinishPanel({
           {description}
         </p>
       )}
-      <div className="mt-7 flex w-full flex-col gap-2.5 sm:flex-row">
-        <Button asChild className="sm:flex-1" size="lg">
+      <StepActions>
+        <Button asChild className="w-full" size="lg">
           <Link href={finishHref}>
             <Icons.success />
             {t("setEditor.finish")}
           </Link>
         </Button>
         <Button
-          className="sm:flex-1"
+          className="w-full"
           onClick={onMore}
           size="lg"
           variant="secondary"
@@ -62,7 +63,7 @@ export function FinishPanel({
           <MoreIcon />
           {moreLabel}
         </Button>
-      </div>
+      </StepActions>
     </div>
   );
 }

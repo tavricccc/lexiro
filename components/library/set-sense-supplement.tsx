@@ -7,7 +7,9 @@ import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import {
   useAiGeneration,
   useReviewHandoff,
+  type AiGenerationSnapshot,
 } from "@/components/ai/use-ai-generation";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import {
@@ -16,16 +18,24 @@ import {
   ListPicker,
   ListSection,
 } from "@/components/ui/list";
-import { EmptyState } from "@/components/ui/page-state";
+import { EmptyState, LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { supplementTask } from "@/src/lib/ai/tasks";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { useLibraryStore } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
 import type { WordDraft, WordKey } from "@/types";
 
 const LIMITS = [1, 2, 3] as const;
 type Limit = (typeof LIMITS)[number];
+interface SupplementDraft {
+  chosen: WordKey[];
+  limit: Limit;
+  phase: "run" | "review";
+  run?: AiGenerationSnapshot<WordDraft>;
+}
 
 /**
  * Asking for the meanings a set's words do not have yet.
@@ -37,14 +47,45 @@ type Limit = (typeof LIMITS)[number];
  * a reviewer actually wants: run it again, or keep it.
  */
 export function SetSenseSupplement({ setId }: { setId: string }) {
+  const uid = useCloudStore((store) => store.user?.uid);
+  const saved = useResumableDraft<SupplementDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:supplement:${setId}`,
+    { chosen: [], limit: 1, phase: "run" },
+  );
+  if (saved.status === "checking") return <LoadingState />;
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.supplementDescription")}
+        header={false}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
+    );
+  return <SupplementFlow setId={setId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+}
+
+function SupplementFlow({
+  setId,
+  draft,
+  update,
+  clear,
+}: {
+  setId: string;
+  draft: SupplementDraft;
+  update: (patch: Partial<SupplementDraft>) => void;
+  clear: () => void;
+}) {
   const router = useRouter();
   const state = useLibraryStore((store) => store.state);
-  const [chosen, setChosen] = useState<WordKey[]>([]);
-  const [limit, setLimit] = useState<Limit>(1);
+  const { chosen, limit, phase } = draft;
   const [error, setError] = useState("");
-  const [phase, setPhase] = useState<"run" | "review">("run");
   const [saving, setSaving] = useState(false);
-  const generation = useAiGeneration<WordDraft>();
+  const generation = useAiGeneration<WordDraft>({
+    initialSnapshot: draft.run,
+    onSnapshotChange: (run) => update({ run }),
+  });
 
   const words = useMemo(
     () =>
@@ -77,7 +118,7 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
   const task = useMemo(() => supplementTask(sources, limit), [limit, sources]);
 
   const { items, status } = generation.state;
-  useReviewHandoff(status, () => setPhase("review"));
+  useReviewHandoff(status, () => update({ phase: "review" }));
 
   const save = async () => {
     const rows = items.flatMap((draft) =>
@@ -100,6 +141,7 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         folderId: current.folderId,
         words: [...setWordDrafts(store.state, setId), ...rows],
       });
+      clear();
       router.push(`/sets/${setId}`);
     } catch {
       setError(t("supplement.saveFailed"));
@@ -129,14 +171,13 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
           ))}
         </ListSection>
 
-        {error && (
-          <p className="text-sm text-destructive" role="alert">
-            {error}
-          </p>
-        )}
-
         <p className="type-hint">{t("supplement.applyHint")}</p>
         <StepActions>
+          {error && (
+            <p className="text-sm text-destructive" role="alert">
+              {error}
+            </p>
+          )}
           <Button
             className="w-full"
             disabled={saving || !items.some((draft) => draft.senses.length)}
@@ -149,7 +190,7 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
           </Button>
           <Button
             disabled={saving}
-            onClick={() => setPhase("run")}
+            onClick={() => update({ phase: "run" })}
             type="button"
             variant="ghost"
           >
@@ -173,18 +214,18 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
             key={entry.wordKey}
             label={entry.word}
             onCheckedChange={(checked) =>
-              setChosen((current) =>
-                checked
-                  ? [...current, entry.wordKey]
-                  : current.filter((key) => key !== entry.wordKey),
-              )
+              update({
+                chosen: checked
+                  ? [...chosen, entry.wordKey]
+                  : chosen.filter((key) => key !== entry.wordKey),
+              })
             }
           />
         ))}
         <ListActionRow
           disabled={running}
           onClick={() =>
-            setChosen(allChosen ? [] : words.map((entry) => entry.wordKey))
+            update({ chosen: allChosen ? [] : words.map((entry) => entry.wordKey) })
           }
         >
           {t(allChosen ? "supplement.clearAll" : "supplement.selectAll")}
@@ -195,7 +236,7 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         <ListPicker
           disabled={running}
           label={t("supplement.limitHeader")}
-          onChange={(value) => setLimit(Number(value) as Limit)}
+          onChange={(value) => update({ limit: Number(value) as Limit })}
           options={LIMITS.map((value) => ({
             label: t("supplement.limitOption", { count: value }),
             value: String(value),
@@ -218,7 +259,7 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         onCancel={generation.cancel}
         onResume={generation.resume}
         onReview={
-          items.length && !running ? () => setPhase("review") : undefined
+          items.length && !running ? () => update({ phase: "review" }) : undefined
         }
         onStart={() => {
           setError("");

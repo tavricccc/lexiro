@@ -1,8 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import type { WordDraft } from "@/types";
 
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import type { AiGenerationSnapshot } from "@/components/ai/use-ai-generation";
 import {
   WordAssistant,
   type AssistantPhase,
@@ -10,22 +12,72 @@ import {
 import { WordEditor } from "@/components/library/word-editor";
 import {
   InputOrganizer,
+  type InputOrganizerDraft,
   type OrganizerPhase,
 } from "@/components/library/input-organizer";
 import { ListActionRow, ListSection } from "@/components/ui/list";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { t } from "@/lib/i18n";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { useLibraryStore, type WordDraftInput } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
+
+interface AddWordsDraft {
+  mode: "ai" | "manual";
+  sources: string;
+  phase: AssistantPhase;
+  organizerPhase: OrganizerPhase;
+  input: InputOrganizerDraft;
+  manual: WordDraft;
+  run?: AiGenerationSnapshot<WordDraft>;
+}
 
 export function SetWordAddition({ setId }: { setId: string }) {
+  const uid = useCloudStore((store) => store.user?.uid);
+  const saved = useResumableDraft<AddWordsDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:add-words:${setId}`,
+    {
+      mode: "manual",
+      sources: "",
+      phase: "run",
+      organizerPhase: "input",
+      input: { input: "", review: "", addingPhotos: false },
+      manual: {
+        word: "",
+        senses: [{ id: "new", pos: "", meaning: "", examples: [""], supplementary: false }],
+      },
+    },
+  );
+  if (saved.status === "checking") return <LoadingState />;
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        header={false}
+        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.addWordsDescription")}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
+    );
+  return <AddWordsFlow setId={setId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+}
+
+function AddWordsFlow({
+  setId,
+  draft,
+  update,
+  clear,
+}: {
+  setId: string;
+  draft: AddWordsDraft;
+  update: (patch: Partial<AddWordsDraft>) => void;
+  clear: () => void;
+}) {
   const router = useRouter();
-  const [mode, setMode] = useState<"ai" | "manual">("manual");
-  const [error, setError] = useState("");
-  const [sources, setSources] = useState("");
-  const [phase, setPhase] = useState<AssistantPhase>("run");
-  const [organizerPhase, setOrganizerPhase] = useState<OrganizerPhase>("input");
+  const { mode, sources, phase, organizerPhase } = draft;
   const add = async (words: WordDraftInput[]) => {
     const store = useLibraryStore.getState();
     const current = store.state.sets.find((entry) => entry.id === setId);
@@ -36,6 +88,7 @@ export function SetWordAddition({ setId }: { setId: string }) {
       folderId: current.folderId,
       words: [...setWordDrafts(store.state, setId), ...words],
     });
+    clear();
     router.push(`/sets/${setId}`);
   };
 
@@ -43,13 +96,18 @@ export function SetWordAddition({ setId }: { setId: string }) {
     <div className="space-y-4">
       <div hidden={mode !== "manual"}>
         <div className="flex justify-end">
-          <Button onClick={() => setMode("ai")} type="button" variant="outline">
+          <Button onClick={() => update({ mode: "ai" })} type="button" variant="outline">
             <Icons.generate />
             {t("setEditor.aiOrganize")}
           </Button>
         </div>
         <WordEditor
-          onCancel={() => router.push(`/sets/${setId}`)}
+          initialDraft={draft.manual}
+          onDraftChange={(manual) => update({ manual })}
+          onCancel={() => {
+            clear();
+            router.push(`/sets/${setId}`);
+          }}
           onSave={(draft) =>
             add(
               draft.senses.map((sense) => ({
@@ -59,7 +117,7 @@ export function SetWordAddition({ setId }: { setId: string }) {
                 examples: sense.examples,
                 supplementary: sense.supplementary,
               })),
-            ).catch(() => setError(t("wordEdit.saveFailed")))
+            )
           }
           value={{
             word: "",
@@ -78,17 +136,17 @@ export function SetWordAddition({ setId }: { setId: string }) {
       {mode === "ai" &&
         (sources ? (
           <>
-            <WordAssistant
-              onApply={(rows) =>
-                add(rows).catch(() => setError(t("wordEdit.saveFailed")))
-              }
-              onPhase={setPhase}
+          <WordAssistant
+              initialRun={draft.run}
+              onApply={add}
+              onPhase={(phase) => update({ phase })}
+              onRunChange={(run) => update({ run })}
               phase={phase}
               sources={sources}
             />
             {phase === "run" && (
               <ListSection>
-                <ListActionRow onClick={() => setSources("")}>
+                <ListActionRow onClick={() => update({ sources: "" })}>
                   {t("setEditor.backToSources")}
                 </ListActionRow>
               </ListSection>
@@ -97,24 +155,21 @@ export function SetWordAddition({ setId }: { setId: string }) {
         ) : (
           <>
             <InputOrganizer
-              onConfirm={setSources}
-              onPhase={setOrganizerPhase}
+              initialDraft={draft.input}
+              onDraftChange={(input) => update({ input })}
+              onConfirm={(sources) => update({ sources })}
+              onPhase={(organizerPhase) => update({ organizerPhase })}
               phase={organizerPhase}
             />
             {organizerPhase === "input" && (
               <ListSection>
-                <ListActionRow onClick={() => setMode("manual")}>
+                <ListActionRow onClick={() => update({ mode: "manual" })}>
                   {t("setEditor.manualWay")}
                 </ListActionRow>
               </ListSection>
             )}
           </>
         ))}
-      {error && (
-        <p className="text-sm text-destructive" role="alert">
-          {error}
-        </p>
-      )}
     </div>
   );
 }

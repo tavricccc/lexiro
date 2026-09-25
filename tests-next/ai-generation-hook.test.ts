@@ -34,6 +34,32 @@ beforeEach(() => mocks.send.mockReset());
 afterEach(() => cleanup());
 
 describe("generation lifecycle", () => {
+  it("restores completed output without making another paid request", () => {
+    const { result } = renderHook(() => useAiGeneration<string>({
+      initialSnapshot: {
+        tier: "lite",
+        state: {
+          status: "done",
+          phase: "validating",
+          characters: 0,
+          completed: 1,
+          total: 1,
+          segments: 1,
+          error: "",
+          items: ["saved word"],
+          notices: [],
+          startedAt: null,
+          elapsedMs: 250,
+          remaining: 0,
+          usage: {},
+          diagnostic: null,
+        },
+      },
+    }));
+    expect(result.current.state.items).toEqual(["saved word"]);
+    expect(result.current.state.status).toBe("done");
+    expect(mocks.send).not.toHaveBeenCalled();
+  });
   it("retains results on pause, resumes pending work, and appends a new round", async () => {
     let release: (r: AiTurnResult) => void = () => {};
     mocks.send.mockResolvedValueOnce(response("a")).mockImplementationOnce(

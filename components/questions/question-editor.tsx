@@ -126,7 +126,7 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
   });
 
   return (
-    <form className="mx-auto max-w-3xl" onSubmit={submit}>
+    <form className="mx-auto max-w-3xl" id="question-editor-form" onSubmit={submit}>
       <PageHeader
         back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
         title={t("questions.edit")}
@@ -189,7 +189,7 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
       )}
 
       <StepActions width="wide">
-        <Button size="lg" type="submit">
+        <Button form="question-editor-form" size="lg" type="submit">
           <Icons.success />
           {t("questions.save")}
         </Button>

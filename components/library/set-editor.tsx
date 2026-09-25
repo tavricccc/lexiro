@@ -3,89 +3,113 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
   emptyWord,
-  getSetWords,
   setFormSchema,
   type SetFormValues,
 } from "@/components/library/set-form";
-import { SetFolderPicker } from "@/components/library/set-folder-picker";
 import { SetWordFields } from "@/components/library/set-word-fields";
-import { useUnsavedGuard } from "@/components/library/use-unsaved-guard";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
-import { ConfirmDialog } from "@/components/ui/confirm-dialog";
+import { ChoiceList } from "@/components/ui/choice-list";
+import { LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { ListInputRow, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { createUniqueSetName } from "@/src/lib/set-name";
 
-/** New sets open on the manual form; AI organization is one header action away. */
+interface SetEditorDraft {
+  entry: "ask" | "manual";
+  form: SetFormValues;
+}
+
+/** Choose manual entry or AI generation before opening either workflow. */
 export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
+  const uid = useCloudStore((store) => store.user?.uid);
+  const saved = useResumableDraft<SetEditorDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:manual-set:${initialFolderId ?? UNCATEGORIZED_FOLDER_ID}`,
+    {
+      entry: "ask",
+      form: { setName: t("setEditor.defaultSetName"), words: [emptyWord] },
+    },
+  );
+  const cancelHref = initialFolderId && initialFolderId !== UNCATEGORIZED_FOLDER_ID
+    ? `/library?folderId=${encodeURIComponent(initialFolderId)}`
+    : "/library";
+  if (saved.status === "checking") return <LoadingState />;
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        back={<BackControl href={cancelHref} />}
+        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.manualSetDescription")}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
+    );
+  return <SetEditorFlow initialFolderId={initialFolderId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+}
+
+function SetEditorFlow({
+  initialFolderId,
+  draft,
+  update,
+  clear,
+}: {
+  initialFolderId?: string;
+  draft: SetEditorDraft;
+  update: (patch: Partial<SetEditorDraft>) => void;
+  clear: () => void;
+}) {
   const router = useRouter();
   const { state, status, saveSet } = useLibraryStore();
+  const entry = draft.entry;
   const form = useForm<SetFormValues>({
-    defaultValues: {
-      folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
-      setName: t("setEditor.defaultSetName"),
-      words: [emptyWord],
-    },
+    defaultValues: draft.form,
     resolver: zodResolver(setFormSchema),
   });
   const fields = useFieldArray({ control: form.control, name: "words" });
-  const { clearPending, pendingHref } = useUnsavedGuard(form.formState.isDirty);
+  useEffect(() => {
+    const subscription = form.watch(() => update({ form: form.getValues() }));
+    return () => subscription.unsubscribe();
+  }, [form, update]);
   const setName = form.watch("setName");
-  const folderId = form.watch("folderId");
   const errors = form.formState.errors;
 
   const submit = form.handleSubmit(async (values) => {
-    const defaultName = t("setEditor.defaultSetName").toLocaleLowerCase();
-    const defaultSet =
-      values.setName.trim().toLocaleLowerCase() === defaultName
-        ? state.sets.find(
-            (entry) => entry.setName.trim().toLocaleLowerCase() === defaultName,
-          )
-        : undefined;
-    const targetSetId = defaultSet?.id;
-    if (
-      state.sets.some(
-        (entry) =>
-          entry.id !== targetSetId &&
-          entry.setName.trim().toLocaleLowerCase() ===
-            values.setName.trim().toLocaleLowerCase(),
-      )
-    ) {
-      form.setError("setName", { message: t("setEditor.duplicateName") });
-      return;
+    try {
+      const saved = await saveSet({
+        folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+        setName: createUniqueSetName(values.setName, state.sets.map((entry) => entry.setName)),
+        words: values.words.map((word) => ({
+          examples: word.examples.map((value) => value.trim()).filter(Boolean),
+          meaningZh: word.meaningZh,
+          pos: word.pos,
+          supplementary: word.supplementary,
+          word: word.word,
+        })),
+      });
+      clear();
+      router.push(`/sets/${saved.id}`);
+    } catch (reason) {
+      form.setError("root", {
+        message: t("setEditor.saveFailed", {
+          message: reason instanceof Error ? reason.message : String(reason),
+        }),
+      });
     }
-
-    const words = defaultSet
-      ? [...getSetWords(state, defaultSet.id), ...values.words]
-      : values.words;
-    const saved = await saveSet({
-      folderId:
-        defaultSet && values.folderId === UNCATEGORIZED_FOLDER_ID
-          ? defaultSet.folderId
-          : values.folderId,
-      id: targetSetId,
-      setName: values.setName,
-      words: words.map((word) => ({
-        examples: word.examples.map((value) => value.trim()).filter(Boolean),
-        meaningZh: word.meaningZh,
-        pos: word.pos,
-        supplementary: word.supplementary,
-        word: word.word,
-      })),
-    });
-    router.push(`/sets/${saved.id}`);
   });
 
-  // A new set has no page yet, so leaving returns to its starting folder.
   const homeFolderId = initialFolderId;
   const cancelHref =
     homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
@@ -112,22 +136,41 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
           value={setName}
         />
       </ListSection>
-      <SetFolderPicker
-        folders={state.folders}
-        onChange={(value) =>
-          form.setValue("folderId", value, { shouldDirty: true })
-        }
-        value={folderId}
-      />
     </div>
   );
 
-  const backLink = (
-    <BackControl allowDiscard href={cancelHref} label={t("setEditor.cancel")} />
-  );
+  const backLink = <BackControl href={cancelHref} label={t("setEditor.cancel")} />;
+
+  if (entry === "ask") {
+    return (
+      <div className="mx-auto max-w-xl">
+        <PageHeader back={<BackControl href={cancelHref} />} title={t("setEditor.howTitle")} />
+        <ChoiceList
+          onSelect={(value) => {
+            if (value === "ai") router.push(organizeHref);
+            else update({ entry: "manual" });
+          }}
+          options={[
+            {
+              description: t("setEditor.manualWayHint"),
+              icon: Icons.edit,
+              label: t("setEditor.manualWay"),
+              value: "manual",
+            },
+            {
+              description: t("setEditor.aiWayHint"),
+              icon: Icons.generate,
+              label: t("setEditor.aiWay"),
+              value: "ai",
+            },
+          ]}
+        />
+      </div>
+    );
+  }
 
   return (
-    <form className="mx-auto max-w-3xl" onSubmit={submit}>
+    <form className="mx-auto max-w-3xl" id="new-set-form" onSubmit={submit}>
       <PageHeader
         actions={
           <Button asChild variant="outline">
@@ -180,8 +223,14 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         </div>
 
         <StepActions width="wide">
+          {errors.root?.message && (
+            <p role="alert" className="text-sm text-destructive">
+              {errors.root.message}
+            </p>
+          )}
           <Button
             disabled={form.formState.isSubmitting || status !== "ready"}
+            form="new-set-form"
             size="lg"
             type="submit"
           >
@@ -193,21 +242,6 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         </StepActions>
       </div>
 
-      <ConfirmDialog
-        confirmLabel={t("setEditor.discard")}
-        description={t("setEditor.unsavedDescription")}
-        onConfirm={() => {
-          const href = pendingHref;
-          clearPending();
-          router.push(href);
-        }}
-        onOpenChange={(open) => {
-          if (!open) clearPending();
-        }}
-        open={Boolean(pendingHref)}
-        title={t("setEditor.unsavedTitle")}
-        tone="default"
-      />
     </form>
   );
 }

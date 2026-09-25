@@ -1,10 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import type { WordDraft } from "@/types";
 
 import {
   InputOrganizer,
+  type InputOrganizerDraft,
   type OrganizerPhase,
 } from "@/components/library/input-organizer";
 import {
@@ -12,16 +13,28 @@ import {
   type AssistantPhase,
   type AssistedWordRow,
 } from "@/components/library/word-assistant";
-import { SetFolderPicker } from "@/components/library/set-folder-picker";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import type { AiGenerationSnapshot } from "@/components/ai/use-ai-generation";
 import { BackControl } from "@/components/ui/back-control";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { StepFrame } from "@/components/ui/step-frame";
+import { LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { createUniqueSetName } from "@/src/lib/set-name";
 
 type AiSetPhase = OrganizerPhase | AssistantPhase;
+interface AiSetDraft {
+  name: string;
+  sources: string;
+  phase: AiSetPhase;
+  input: InputOrganizerDraft;
+  run?: AiGenerationSnapshot<WordDraft>;
+}
 
 /** The complete AI set flow, kept on one route so moving between steps is immediate. */
 export function AiSetOrganizer({
@@ -29,15 +42,50 @@ export function AiSetOrganizer({
 }: {
   initialFolderId?: string;
 }) {
-  const router = useRouter();
-  const folders = useLibraryStore((store) => store.state.folders);
-  const saveSet = useLibraryStore((store) => store.saveSet);
-  const [name, setName] = useState(t("setEditor.defaultSetName"));
-  const [folderId, setFolderId] = useState(
-    initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+  const uid = useCloudStore((store) => store.user?.uid);
+  const draft = useResumableDraft<AiSetDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:new-set:${initialFolderId ?? UNCATEGORIZED_FOLDER_ID}`,
+    {
+      name: t("setEditor.defaultSetName"),
+      sources: "",
+      phase: "input",
+      input: { input: "", review: "", addingPhotos: false },
+    },
   );
-  const [sources, setSources] = useState("");
-  const [phase, setPhase] = useState<AiSetPhase>("input");
+  const newSetHref = initialFolderId
+    ? `/sets/new?folderId=${encodeURIComponent(initialFolderId)}`
+    : "/sets/new";
+  if (draft.status === "checking") return <LoadingState />;
+  if (draft.status === "offer" || draft.status === "invalid")
+    return (
+      <ResumeChoice
+        back={<BackControl href={newSetHref} />}
+        description={t(draft.status === "invalid" ? "draft.invalidDescription" : "draft.aiSetDescription")}
+        invalid={draft.status === "invalid"}
+        onRestart={draft.restart}
+        onResume={draft.resume}
+      />
+    );
+  return (
+    <AiSetFlow initialFolderId={initialFolderId} draft={draft.draft} update={draft.update} clear={draft.clear} />
+  );
+}
+
+function AiSetFlow({
+  initialFolderId,
+  draft,
+  update,
+  clear,
+}: {
+  initialFolderId?: string;
+  draft: AiSetDraft;
+  update: (patch: Partial<AiSetDraft>) => void;
+  clear: () => void;
+}) {
+  const router = useRouter();
+  const sets = useLibraryStore((store) => store.state.sets);
+  const saveSet = useLibraryStore((store) => store.saveSet);
+  const { name, sources, phase } = draft;
   const current =
     phase === "input"
       ? 1
@@ -52,8 +100,8 @@ export function AiSetOrganizer({
 
   const save = async (rows: AssistedWordRow[]) => {
     const saved = await saveSet({
-      folderId,
-      setName: name,
+      folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+      setName: createUniqueSetName(name, sets.map((entry) => entry.setName)),
       words: rows.map((row) => ({
         examples: row.examples.map((value) => value.trim()).filter(Boolean),
         meaningZh: row.meaningZh,
@@ -62,6 +110,7 @@ export function AiSetOrganizer({
         word: row.word,
       })),
     });
+    clear();
     router.push(`/sets/${saved.id}`);
   };
 
@@ -84,15 +133,14 @@ export function AiSetOrganizer({
             ),
           }
         : current === 2
-          ? { onBack: () => setPhase("input") }
+          ? { onBack: () => update({ phase: "input" }) }
           : current === 3
             ? {
                 onBack: () => {
-                  setSources("");
-                  setPhase("review");
+                  update({ sources: "", phase: "review" });
                 },
               }
-            : { onBack: () => setPhase("run") })}
+            : { onBack: () => update({ phase: "run" }) })}
       current={current}
       title={title}
       total={4}
@@ -104,33 +152,31 @@ export function AiSetOrganizer({
             <div className="space-y-4">
               <Field label={t("setEditor.name")}>
                 <Input
-                  onChange={(event) => setName(event.target.value)}
+                  onChange={(event) => update({ name: event.target.value })}
                   placeholder={t("setEditor.namePlaceholder")}
                   value={name}
                 />
               </Field>
-              <SetFolderPicker
-                folders={folders}
-                onChange={setFolderId}
-                value={folderId}
-              />
             </div>
           )}
           <div className={phase === "review" ? undefined : "section-gap"}>
             <InputOrganizer
+              initialDraft={draft.input}
+              onDraftChange={(input) => update({ input })}
               onConfirm={(value) => {
-                setSources(value);
-                setPhase("run");
+                update({ sources: value, phase: "run" });
               }}
-              onPhase={setPhase}
+              onPhase={(next) => update({ phase: next })}
               phase={phase}
             />
           </div>
         </>
       ) : (
         <WordAssistant
+          initialRun={draft.run}
           onApply={save}
-          onPhase={setPhase}
+          onPhase={(next) => update({ phase: next })}
+          onRunChange={(run) => update({ run })}
           phase={phase as AssistantPhase}
           sources={sources}
         />

@@ -15,7 +15,6 @@ const wordSchema = z.object({
 
 export const setFormSchema = z.object({
   setName: z.string().trim().min(1),
-  folderId: z.string(),
   words: z.array(wordSchema).min(1),
 });
 
