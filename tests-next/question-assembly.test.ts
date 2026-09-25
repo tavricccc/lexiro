@@ -9,6 +9,7 @@ import {
 } from "@/src/lib/question-builders";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
+import { getSetGenerationWords } from "@/src/lib/question-generation";
 
 function word(name: string, pos = "v.", examples: string[] = []): WordEntry {
   return {
@@ -26,6 +27,20 @@ const pool = [
   word("roam"),
   word("subtle", "adj."),
 ];
+
+describe("whole-set generation scope", () => {
+  it("includes every sense in the set and excludes other sets", () => {
+    const first = word("wander");
+    const secondSense = { ...first.senses[0], id: asSenseId("wander:v.:2"), meaningZh: "漫遊" };
+    const multiSense = { ...first, senses: [...first.senses, secondSense] };
+    const outsider = word("linger");
+    const selected = getSetGenerationWords(
+      [multiSense, outsider],
+      [{ wordKey: multiSense.wordKey, senseIds: multiSense.senses.map((sense) => sense.id) }],
+    );
+    expect(selected).toEqual([multiSense]);
+  });
+});
 
 describe("blanking out a word", () => {
   it("replaces a whole-word occurrence", () => {

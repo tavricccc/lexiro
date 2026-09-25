@@ -1,6 +1,7 @@
 "use client";
 
 import type { LibraryQuestion } from "@/types";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
@@ -8,18 +9,19 @@ import {
   useAiGeneration,
   useReviewHandoff,
 } from "@/components/ai/use-ai-generation";
-import {
-  GenerationScopePicker,
-  type GenerationSense,
-} from "@/components/questions/generation-scope-picker";
 import { GeneratedQuestionResults } from "./generated-question-results";
 import { useSaveGeneratedQuestions } from "./use-save-generated-questions";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
-import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
 import { FinishPanel } from "@/components/ui/finish-panel";
-import { ListPicker, ListSection } from "@/components/ui/list";
+import { EmptyState } from "@/components/ui/page-state";
+import {
+  ListChoiceGroup,
+  ListPicker,
+  ListRow,
+  ListSection,
+} from "@/components/ui/list";
 import { StepActions } from "@/components/ui/step-actions";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
@@ -34,106 +36,50 @@ import {
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { questionTask } from "@/src/lib/ai/tasks";
-import { senseKey } from "@/src/lib/library";
 import {
-  getSelectedGenerationWords,
+  getSetGenerationWords,
   type GeneratedQuestionDifficulty,
   type GeneratedQuestionKind,
 } from "@/src/lib/question-generation";
 import { isPassageKind } from "@/src/lib/question-formats";
 import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
-type Step = "format" | "scope" | "run" | "review" | "done";
-
+type Step = "configure" | "run" | "review" | "done";
 const FORMATS: GeneratedQuestionKind[] = [
   ...SENTENCE_STYLES,
   ...PASSAGE_FORMAT_VALUES,
 ];
 
-/**
- * Generating a batch of questions is three decisions, and they are asked in the
- * order they constrain each other: what kind of paper, which words, then run it.
- * Putting the format picker beside the run panel — as this screen used to —
- * meant the first press a newcomer made was as likely to be the last step as
- * the first.
- *
- * What comes back is a fourth step. A finished batch is a dozen questions to be
- * read, and reading them underneath the tier list and the progress bar that
- * produced them is not reading them.
- */
+/** Generate from every sense in one set, without individual word selection. */
 export function QuestionGenerator({ setId }: { setId?: string }) {
   const { state } = useLibraryStore();
-  const [step, setStep] = useState<Step>("format");
-  const [selected, setSelected] = useState<string[]>([]);
-  const [scopeReady, setScopeReady] = useState(false);
+  const [step, setStep] = useState<Step>("configure");
+  const [chosenSetId, setChosenSetId] = useState("");
   const [kind, setKind] = useState<GeneratedQuestionKind>("vocabulary");
   const [difficulty, setDifficulty] = useState<GeneratedQuestionDifficulty>(2);
   const { saving, save: storeAll } = useSaveGeneratedQuestions(() =>
     setStep("done"),
   );
 
-  const allowedSenseIds = useMemo(
-    () =>
-      setId
-        ? new Set(
-            (state.memberships[setId] ?? []).flatMap((entry) => entry.senseIds),
-          )
-        : null,
-    [setId, state.memberships],
-  );
-
-  const coveredSenseKeys = useMemo(() => {
-    const covered = new Set<string>();
-    for (const question of state.questions) {
-      if (question.kind === "reading") {
-        for (const child of question.questions)
-          covered.add(senseKey(child.wordKey, child.senseId));
-      } else {
-        covered.add(senseKey(question.wordKey, question.senseId));
-      }
-    }
-    return covered;
-  }, [state.questions]);
-
-  const senses = useMemo<GenerationSense[]>(
-    () =>
-      Object.values(state.words).flatMap((word) =>
-        word.senses
-          .filter((sense) => !allowedSenseIds || allowedSenseIds.has(sense.id))
-          .map((sense) => {
-            const key = senseKey(word.wordKey, sense.id);
-            return {
-              covered: coveredSenseKeys.has(key),
-              key,
-              meaning: sense.meaningZh,
-              pos: sense.pos,
-              word: word.word,
-            };
-          }),
+  const defaultSetId =
+    state.sets.find((entry) =>
+      (state.memberships[entry.id] ?? []).some(
+        (membership) => membership.senseIds.length > 0,
       ),
-    [allowedSenseIds, coveredSenseKeys, state.words],
-  );
-
-  // Everything in scope is selected the first time the list arrives, so the
-  // common case needs no ticking at all.
-  useEffect(() => {
-    if (scopeReady || !senses.length) return;
-    setSelected(senses.map((sense) => sense.key));
-    setScopeReady(true);
-  }, [scopeReady, senses]);
-
-  const words = useMemo(
-    () => getSelectedGenerationWords(Object.values(state.words), selected),
-    [selected, state.words],
-  );
+    )?.id ??
+    state.sets[0]?.id ??
+    "";
+  const selectedSetId = setId ?? (chosenSetId || defaultSetId);
+  const selectedSet = state.sets.find((entry) => entry.id === selectedSetId);
   const pool = useMemo(() => Object.values(state.words), [state.words]);
-
-  /**
-   * 詞彙題 that can be built from the learner's own example sentences are built
-   * here and never sent anywhere: the sentence is theirs, the answer is the word
-   * they chose, and the distractors are their own same-part-of-speech words.
-   * Only what is left over costs a request.
-   */
+  const words = useMemo(
+    () => getSetGenerationWords(pool, state.memberships[selectedSetId] ?? []),
+    [pool, selectedSetId, state.memberships],
+  );
+  const senseCount = words.reduce(
+    (count, word) => count + word.senses.length,
+    0,
+  );
   const prebuilt = useMemo(
     () =>
       kind === "vocabulary"
@@ -142,7 +88,6 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
     [difficulty, kind, pool, words],
   );
   const aiWords = prebuilt ? prebuilt.remaining : words;
-
   const task = useMemo(
     () => questionTask(aiWords, pool, kind, difficulty),
     [aiWords, pool, kind, difficulty],
@@ -158,116 +103,138 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       return [...byId.values()];
     },
   });
-
   const { reset, state: run } = generation;
   useReviewHandoff(run.status, () => setStep("review"));
-
   useEffect(() => {
     reset();
-  }, [difficulty, kind, reset, selected]);
+  }, [difficulty, kind, reset, selectedSetId]);
 
-  const senseCount = words.reduce(
-    (count, word) => count + word.senses.length,
-    0,
-  );
   const back = (
     <BackControl href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
   );
-
-  if (step === "format") {
-    return (
-      <StepFrame
-        back={back}
-        current={1}
-        title={t("questions.stepFormat")}
-        total={4}
-      >
-        <ChoiceList
-          onSelect={(value) => {
-            setKind(value as GeneratedQuestionKind);
-            setStep("scope");
-          }}
-          options={FORMATS.map((format) => ({
-            description: questionFormatHint(format),
-            icon: isPassageKind(format) ? Icons.reading : Icons.question,
-            label: questionFormatLabel(format),
-            value: format,
-          }))}
-        />
-      </StepFrame>
-    );
-  }
-
   const recap = (
     <StepRecap
       items={[
+        selectedSet?.setName ?? "",
+        t("questions.scopeChosen", { count: senseCount }),
         t("questions.formatChosen", { name: questionFormatLabel(kind) }),
         t("questions.difficultyChosen", { name: difficultyLabel(difficulty) }),
-        ...(step === "run"
-          ? [t("questions.scopeChosen", { count: senseCount })]
-          : []),
       ]}
       onEdit={() => {
         if (!saving) {
           generation.cancel();
-          setStep("format");
+          setStep("configure");
         }
       }}
     />
   );
 
-  if (step === "scope") {
+  if (step === "configure")
     return (
       <StepFrame
-        current={2}
+        back={back}
+        current={1}
+        total={3}
+        title={t("questions.generateTitle")}
         footer={
-          <Button
-            className="w-full"
-            disabled={!senseCount}
-            onClick={() => setStep("run")}
-            size="lg"
-          >
-            <Icons.next />
-            {t("questions.next")}
-          </Button>
+          senseCount ? (
+            <Button className="w-full" onClick={() => setStep("run")} size="lg">
+              <Icons.next />
+              {t("questions.next")}
+            </Button>
+          ) : (
+            <Button asChild className="w-full" size="lg">
+              <Link href={selectedSet ? `/sets/${selectedSetId}` : "/sets/new"}>
+                <Icons.create />
+                {t(
+                  selectedSet
+                    ? "questions.addWordsFirst"
+                    : "practice.addWordsFirst",
+                )}
+              </Link>
+            </Button>
+          )
         }
-        onBack={() => setStep("format")}
-        recap={recap}
-        title={t("questions.stepScope")}
-        total={4}
       >
-        <div className="grid gap-7">
-          <ListSection>
-            <ListPicker
-              label={t("practice.difficulty")}
-              onChange={(value) =>
-                setDifficulty(Number(value) as GeneratedQuestionDifficulty)
-              }
-              options={difficultyOptions()}
-              value={String(difficulty)}
+        <div className="space-y-6">
+          {selectedSet && (
+            <ListSection>
+              {setId ? (
+                <ListRow
+                  label={t("practice.set")}
+                  value={selectedSet.setName}
+                />
+              ) : (
+                <ListPicker
+                  label={t("practice.set")}
+                  onChange={setChosenSetId}
+                  options={state.sets.map((entry) => ({
+                    label: entry.setName,
+                    value: entry.id,
+                  }))}
+                  value={selectedSetId}
+                />
+              )}
+              <ListRow
+                label={t("questions.scopeTitle")}
+                value={t("questions.scopeSummary", { count: senseCount })}
+              />
+            </ListSection>
+          )}
+          {!senseCount && (
+            <EmptyState
+              variant="filtered"
+              title={t(
+                selectedSet ? "questions.noSetWords" : "questions.noSets",
+              )}
+              description={t(
+                selectedSet
+                  ? "questions.noSetWordsHint"
+                  : "questions.noSetsHint",
+              )}
             />
-          </ListSection>
-          <GenerationScopePicker
-            onSelectedChange={setSelected}
-            selected={selected}
-            senses={senses}
-          />
+          )}
+          {senseCount > 0 && (
+            <>
+              <ListSection header={t("questions.stepFormat")}>
+                <ListChoiceGroup
+                  label={t("questions.stepFormat")}
+                  onSelect={setKind}
+                  options={FORMATS.map((format) => ({
+                    detail: questionFormatHint(format),
+                    id: format,
+                    label: questionFormatLabel(format),
+                  }))}
+                  value={kind}
+                />
+              </ListSection>
+              <ListSection>
+                <ListPicker
+                  label={t("practice.difficulty")}
+                  onChange={(value) =>
+                    setDifficulty(Number(value) as GeneratedQuestionDifficulty)
+                  }
+                  options={difficultyOptions()}
+                  value={String(difficulty)}
+                />
+              </ListSection>
+            </>
+          )}
         </div>
       </StepFrame>
     );
-  }
 
-  if (step === "review") {
+  if (step === "review")
     return (
       <StepFrame
-        current={4}
+        current={3}
+        total={3}
+        title={t("questions.stepReview")}
+        width="wide"
         onBack={() => {
           if (!saving) setStep("run");
         }}
         recap={recap}
-        title={t("questions.stepReview")}
-        total={4}
-        width="wide"
       >
         <fieldset disabled={saving} className="min-w-0 space-y-7">
           <GeneratedQuestionResults items={run.items} />
@@ -296,9 +263,8 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         </fieldset>
       </StepFrame>
     );
-  }
 
-  if (step === "done") {
+  if (step === "done")
     return (
       <FinishPanel
         description={t("questions.generatedDescription")}
@@ -307,26 +273,25 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         moreLabel={t("questions.generateMore")}
         onMore={() => {
           reset();
-          setStep("format");
+          setStep("configure");
         }}
         title={t("questions.generatedCount", { count: run.items.length })}
       />
     );
-  }
 
   return (
     <StepFrame
-      current={3}
+      current={2}
+      total={3}
+      title={t("questions.stepRun")}
+      width="wide"
       onBack={() => {
         if (!saving) {
           generation.cancel();
-          setStep("scope");
+          setStep("configure");
         }
       }}
       recap={recap}
-      title={t("questions.stepRun")}
-      total={4}
-      width="wide"
     >
       <fieldset disabled={saving} className="min-w-0">
         <AiRunPanel

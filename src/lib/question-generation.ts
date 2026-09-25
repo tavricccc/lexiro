@@ -3,6 +3,7 @@ import type {
   GeneratedQuestionKind,
   LibraryQuestion,
   QuestionDifficulty,
+  SetMembership,
   WordEntry,
   WordKey,
 } from "@/types";
@@ -24,16 +25,18 @@ export type GeneratedQuestionDifficulty = QuestionDifficulty;
 
 const QUESTION_BATCH_SIZE = 8;
 
-export function getSelectedGenerationWords(
+export function getSetGenerationWords(
   words: WordEntry[],
-  selectedSenseKeys: string[],
+  memberships: SetMembership[],
 ): WordEntry[] {
-  const selected = new Set(selectedSenseKeys);
+  const selected = new Map(
+    memberships.map((entry) => [entry.wordKey, new Set(entry.senseIds)]),
+  );
   return words
     .map((word) => ({
       ...word,
       senses: word.senses.filter((sense) =>
-        selected.has(senseKey(word.wordKey, sense.id)),
+        selected.get(word.wordKey)?.has(sense.id),
       ),
     }))
     .filter((word) => word.senses.length > 0);
