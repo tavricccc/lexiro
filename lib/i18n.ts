@@ -403,19 +403,10 @@ export const zhTW = {
     actionFailed: "操作失敗：{message}",
   },
   setEditor: {
-    createTitle: "新增單字",
+    createTitle: "建立單字集",
     backToSet: "回到單字集",
-    howTitle: "要怎麼加單字？",
-    howHint: "選一種開始，之後隨時可以再加。",
     manualWay: "自己輸入",
-    manualWayHint: "一次一個字，填英文、詞性和中文意思。",
-    assistWay: "貼一串字，讓 AI 整理",
-    assistWayHint:
-      "把課本或筆記上的單字整串貼上，AI 會拆成詞義，你確認後再加入。",
-    switchToAssist: "改成貼一串字讓 AI 整理",
-    switchToManual: "改成自己輸入",
-    quickDescription:
-      "輸入單字、詞性和意思就能儲存到「我的單字」；整理位置可以之後再調整。",
+    aiOrganize: "用 AI 整理",
     defaultSetName: "我的單字",
     organize: "儲存位置與整理",
     name: "單字集名稱",

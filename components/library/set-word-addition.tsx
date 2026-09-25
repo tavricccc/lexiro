@@ -13,7 +13,7 @@ import {
   type OrganizerPhase,
 } from "@/components/library/input-organizer";
 import { ListActionRow, ListSection } from "@/components/ui/list";
-import { ChoiceList } from "@/components/ui/choice-list";
+import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { setWordDrafts } from "@/src/lib/word-edit";
@@ -21,7 +21,7 @@ import { useLibraryStore, type WordDraftInput } from "@/stores/library-store";
 
 export function SetWordAddition({ setId }: { setId: string }) {
   const router = useRouter();
-  const [mode, setMode] = useState<"choose" | "ai" | "manual">("choose");
+  const [mode, setMode] = useState<"ai" | "manual">("manual");
   const [error, setError] = useState("");
   const [sources, setSources] = useState("");
   const [phase, setPhase] = useState<AssistantPhase>("run");
@@ -39,32 +39,17 @@ export function SetWordAddition({ setId }: { setId: string }) {
     router.push(`/sets/${setId}`);
   };
 
-  if (mode === "choose")
-    return (
-      <ChoiceList
-        onSelect={(value) => setMode(value as "ai" | "manual")}
-        options={[
-          {
-            description: t("setEditor.manualWayHint"),
-            icon: Icons.edit,
-            label: t("setEditor.manualWay"),
-            value: "manual",
-          },
-          {
-            description: t("setEditor.assistWayHint"),
-            icon: Icons.generate,
-            label: t("setEditor.assistWay"),
-            value: "ai",
-          },
-        ]}
-      />
-    );
-
   return (
     <div className="space-y-4">
-      {mode === "manual" ? (
+      <div hidden={mode !== "manual"}>
+        <div className="flex justify-end">
+          <Button onClick={() => setMode("ai")} type="button" variant="outline">
+            <Icons.generate />
+            {t("setEditor.aiOrganize")}
+          </Button>
+        </div>
         <WordEditor
-          onCancel={() => setMode("choose")}
+          onCancel={() => router.push(`/sets/${setId}`)}
           onSave={(draft) =>
             add(
               draft.senses.map((sense) => ({
@@ -89,42 +74,42 @@ export function SetWordAddition({ setId }: { setId: string }) {
             ],
           }}
         />
-      ) : sources ? (
-        <>
-          <WordAssistant
-            onApply={(rows) =>
-              add(rows).catch(() => setError(t("wordEdit.saveFailed")))
-            }
-            onPhase={setPhase}
-            phase={phase}
-            sources={sources}
-          />
-          {phase === "run" && (
-            <ListSection>
-              <ListActionRow
-                onClick={() => setSources("")}
-              >
-                {t("setEditor.backToSources")}
-              </ListActionRow>
-            </ListSection>
-          )}
-        </>
-      ) : (
-        <>
-          <InputOrganizer
-            onConfirm={setSources}
-            onPhase={setOrganizerPhase}
-            phase={organizerPhase}
-          />
-          {organizerPhase === "input" && (
-            <ListSection>
-              <ListActionRow onClick={() => setMode("choose")}>
-                {t("setEditor.cancel")}
-              </ListActionRow>
-            </ListSection>
-          )}
-        </>
-      )}
+      </div>
+      {mode === "ai" &&
+        (sources ? (
+          <>
+            <WordAssistant
+              onApply={(rows) =>
+                add(rows).catch(() => setError(t("wordEdit.saveFailed")))
+              }
+              onPhase={setPhase}
+              phase={phase}
+              sources={sources}
+            />
+            {phase === "run" && (
+              <ListSection>
+                <ListActionRow onClick={() => setSources("")}>
+                  {t("setEditor.backToSources")}
+                </ListActionRow>
+              </ListSection>
+            )}
+          </>
+        ) : (
+          <>
+            <InputOrganizer
+              onConfirm={setSources}
+              onPhase={setOrganizerPhase}
+              phase={organizerPhase}
+            />
+            {organizerPhase === "input" && (
+              <ListSection>
+                <ListActionRow onClick={() => setMode("manual")}>
+                  {t("setEditor.manualWay")}
+                </ListActionRow>
+              </ListSection>
+            )}
+          </>
+        ))}
       {error && (
         <p className="text-sm text-destructive" role="alert">
           {error}

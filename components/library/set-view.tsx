@@ -193,6 +193,7 @@ export function SetView({ setId }: { setId: string }) {
 
       {tab === "words" ? (
         <div className="space-y-7">
+          <SetTools setId={setId} />
           {words.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
               {words.map((entry) => (
@@ -208,7 +209,6 @@ export function SetView({ setId }: { setId: string }) {
               description={t("setDetail.noWordsDescription")}
             />
           )}
-          <SetTools setId={setId} />
         </div>
       ) : (
         <>

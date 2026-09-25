@@ -1,8 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -16,7 +16,6 @@ import { SetWordFields } from "@/components/library/set-word-fields";
 import { useUnsavedGuard } from "@/components/library/use-unsaved-guard";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
-import { ChoiceList } from "@/components/ui/choice-list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { ListInputRow, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
@@ -26,14 +25,7 @@ import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 
-/**
- * The form, and only the form.
- *
- * Everything a set is worth looking at — how far through it you are, the
- * questions built from it, what it can be exported or deleted into — belongs to
- * the view at `/sets/[setId]`. Editing is the state you step into from there,
- * so this screen holds the fields and the one button that commits them.
- */
+/** New sets open on the manual form; AI organization is one header action away. */
 export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
   const router = useRouter();
   const { state, status, saveSet } = useLibraryStore();
@@ -46,9 +38,6 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
     resolver: zodResolver(setFormSchema),
   });
   const fields = useFieldArray({ control: form.control, name: "words" });
-  // A new set asks how you want to add words before showing either surface, so
-  // the typing form and the paste-a-list assistant are never both on screen.
-  const [entry, setEntry] = useState<"ask" | "manual">("ask");
   const { clearPending, pendingHref } = useUnsavedGuard(form.formState.isDirty);
   const setName = form.watch("setName");
   const folderId = form.watch("folderId");
@@ -96,9 +85,7 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
     router.push(`/sets/${saved.id}`);
   });
 
-  // Editing is a state you stepped into from the set's own page, so leaving it
-  // returns there. A new set has no page yet, so it returns to the folder it
-  // was started from.
+  // A new set has no page yet, so leaving returns to its starting folder.
   const homeFolderId = initialFolderId;
   const cancelHref =
     homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
@@ -139,37 +126,20 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
     <BackControl allowDiscard href={cancelHref} label={t("setEditor.cancel")} />
   );
 
-  if (entry === "ask") {
-    return (
-      <div className="mx-auto max-w-xl">
-        <PageHeader back={backLink} title={t("setEditor.howTitle")} />
-        <ChoiceList
-          onSelect={(value) => {
-            if (value === "assist") router.push(organizeHref);
-            else setEntry("manual");
-          }}
-          options={[
-            {
-              description: t("setEditor.manualWayHint"),
-              icon: Icons.edit,
-              label: t("setEditor.manualWay"),
-              value: "manual",
-            },
-            {
-              description: t("setEditor.assistWayHint"),
-              icon: Icons.generate,
-              label: t("setEditor.assistWay"),
-              value: "assist",
-            },
-          ]}
-        />
-      </div>
-    );
-  }
-
   return (
     <form className="mx-auto max-w-3xl" onSubmit={submit}>
-      <PageHeader back={backLink} title={t("setEditor.createTitle")} />
+      <PageHeader
+        actions={
+          <Button asChild variant="outline">
+            <Link href={organizeHref}>
+              <Icons.generate />
+              {t("setEditor.aiOrganize")}
+            </Link>
+          </Button>
+        }
+        back={backLink}
+        title={t("setEditor.createTitle")}
+      />
 
       <div>
         {metadataFields}
@@ -208,16 +178,6 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
             />
           ))}
         </div>
-
-        <p className="mt-4">
-          <button
-            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            onClick={() => router.push(organizeHref)}
-            type="button"
-          >
-            {t("setEditor.switchToAssist")}
-          </button>
-        </p>
 
         <StepActions width="wide">
           <Button
