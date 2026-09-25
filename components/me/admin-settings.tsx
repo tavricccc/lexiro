@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 import { AdminIssue, type AdminSettingsValue } from "./admin-shared";
-import { ListActionRow, ListInputRow, ListRow, ListSection, ListSwitchRow } from "@/components/ui/list";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
+import { ListInputRow, ListRow, ListSection, ListSwitchRow } from "@/components/ui/list";
 import { managedJson } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -42,6 +45,7 @@ export function AdminSettings() {
   return (
     <form
       className="space-y-7"
+      id="admin-settings-form"
       onSubmit={(event) => {
         event.preventDefault();
         setBusy(true);
@@ -96,11 +100,12 @@ export function AdminSettings() {
           value={String(draft.defaultMonthly)}
         />
       </ListSection>
-      <ListSection>
-        <ListActionRow busy={busy} type="submit">
+      <StepActions>
+        <Button className="w-full" disabled={busy} form="admin-settings-form" size="lg" type="submit">
+          <Icons.success />
           {t(busy ? "admin.saving" : "admin.saveSettings")}
-        </ListActionRow>
-      </ListSection>
+        </Button>
+      </StepActions>
     </form>
   );
 }

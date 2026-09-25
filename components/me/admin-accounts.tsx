@@ -9,7 +9,9 @@ import { toast } from "sonner";
 import { AdminIssue, AdminPager } from "./admin-shared";
 import { useAdminPagination } from "./use-admin-pagination";
 import { Icons } from "@/components/ui/icons";
-import { ListActionRow, ListChoiceGroup, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
+import { Button } from "@/components/ui/button";
+import { StepActions } from "@/components/ui/step-actions";
+import { ListChoiceGroup, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
 import { managedJson, notifyManagedAccountChanged } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -121,6 +123,7 @@ function AccountForm({ account }: { account: AdminAccount }) {
   return (
     <form
       className="space-y-7"
+      id="admin-account-form"
       onSubmit={(event) => {
         event.preventDefault();
         setBusy(true);
@@ -211,11 +214,12 @@ function AccountForm({ account }: { account: AdminAccount }) {
         />
       </ListSection>
 
-      <ListSection>
-        <ListActionRow busy={busy} type="submit">
+      <StepActions>
+        <Button className="w-full" disabled={busy} form="admin-account-form" size="lg" type="submit">
+          <Icons.success />
           {t(busy ? "admin.saving" : "admin.save")}
-        </ListActionRow>
-      </ListSection>
+        </Button>
+      </StepActions>
     </form>
   );
 }
