@@ -82,8 +82,8 @@ export function PracticeSessionView({
       <motion.div
         className="flex flex-1 flex-col"
         key={entry.id}
-        initial={animateCard ? { opacity: 0.72, y: 7 } : false}
-        animate={{ opacity: 1, y: 0 }}
+        initial={animateCard ? { opacity: 0.72 } : false}
+        animate={{ opacity: 1 }}
         transition={practiceTransition}
       >
         {entry.kind === "card" ? (

@@ -126,6 +126,32 @@ describe('practice queue', () => {
     expect(positions[2] - positions[0]).toBe(2)
   })
 
+  it('honors an exact question count even when a passage has more items', () => {
+    const questionGroups = buildQuestionGroups([readingQuestion([1, 2, 3])], {})
+    const queue = buildPracticeQueue({
+      ...base,
+      amount: 1,
+      questionGroups,
+      tasks: ['reading'],
+    })
+    expect(queue).toHaveLength(1)
+    expect(queue[0].kind).toBe('question')
+  })
+
+  it('can include every saved question even when several test one sense', () => {
+    const questionGroups = buildQuestionGroups(
+      [vocabularyQuestion(1), { ...vocabularyQuestion(1), id: 'q-1-b', fingerprint: 'fp-1-b' }],
+      {},
+    )
+    const queue = buildPracticeQueue({
+      ...base,
+      amount: 2,
+      questionGroups,
+      tasks: ['vocabulary'],
+    })
+    expect(queue.map((entry) => entry.id).sort()).toEqual(['question:q-1', 'question:q-1-b'])
+  })
+
   it('counts what each task could contribute on its own', () => {
     const counts = countTaskAvailability({
       ...base,

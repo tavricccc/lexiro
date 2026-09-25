@@ -5,6 +5,7 @@ import { motion, useMotionValue, useReducedMotion, useTransform } from "motion/r
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { timing } from "@/lib/motion-timing";
 import { PracticeTaskLabel } from "@/components/practice/practice-task-label";
@@ -195,7 +196,7 @@ export function ReviewCard({
           ) : null}
         </section>
       </motion.div>
-      <div className="mt-auto pt-7">{actions}</div>
+      <StepActions width="wide">{actions}</StepActions>
     </div>
   );
 }

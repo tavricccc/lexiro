@@ -269,6 +269,19 @@ textarea {
   caret-color: var(--primary);
 }
 
+.practice-amount-slider {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.practice-amount-slider:focus-visible {
+  outline: 0.125rem solid var(--primary);
+  outline-offset: 0.125rem;
+}
+
 @media (pointer: coarse) {
   [data-slot="button"] {
     min-height: 2.75rem;

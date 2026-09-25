@@ -5,13 +5,17 @@ import { useEffect } from "react";
 
 import {
   orderPracticeTasks,
+  DEFAULT_CARD_TASKS,
+  DEFAULT_QUESTION_TASKS,
   PRACTICE_PREFERENCES_STORAGE_KEY,
   PRACTICE_SESSION_STORAGE_KEY,
+  isCardTask,
   isPracticeTask,
 } from "@/constants";
 import type {
   PracticeSessionSnapshot,
   PracticeTask,
+  PracticeTrack,
   SenseId,
   SetMembership,
   StudyWord,
@@ -109,6 +113,7 @@ type ValueSetter<T> = Dispatch<SetStateAction<T>>;
 
 export function usePracticePreferences({
   initialSet,
+  initialTrack,
   learningLoaded,
   started,
   values,
@@ -119,6 +124,7 @@ export function usePracticePreferences({
   setTasks,
 }: {
   initialSet: string;
+  initialTrack?: PracticeTrack;
   learningLoaded: boolean;
   started: boolean;
   values: PreferenceValues;
@@ -142,12 +148,25 @@ export function usePracticePreferences({
       const savedTasks = Array.isArray(saved.tasks)
         ? orderPracticeTasks(saved.tasks.filter(isPracticeTask))
         : [];
-      if (savedTasks.length) setTasks(savedTasks);
+      const trackTasks = initialTrack === "questions"
+        ? savedTasks.filter((task) => !isCardTask(task))
+        : initialTrack === "fsrs"
+          ? savedTasks.filter(isCardTask)
+          : savedTasks;
+      if (savedTasks.length || initialTrack)
+        setTasks(
+          trackTasks.length
+            ? trackTasks
+            : initialTrack === "questions"
+              ? [...DEFAULT_QUESTION_TASKS]
+              : [...DEFAULT_CARD_TASKS],
+        );
     } catch {
       // Corrupted preferences should never block practice.
     }
   }, [
     initialSet,
+    initialTrack,
     learningLoaded,
     setAmount,
     setDifficulty,

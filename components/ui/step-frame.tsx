@@ -50,9 +50,11 @@ export function StepFrame({
         title={title}
       />
 
-      <p className="mb-5 text-xs tabular-nums text-muted-foreground">
-        {t("common.stepOf", { current, total })}
-      </p>
+      {total > 1 && (
+        <p className="mb-5 text-xs tabular-nums text-muted-foreground">
+          {t("common.stepOf", { current, total })}
+        </p>
+      )}
 
       {recap && <div className="mb-5">{recap}</div>}
 

@@ -11,9 +11,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { BackControl } from "@/components/ui/back-control";
 import { ChoiceChecklist } from "@/components/ui/choice-checklist";
 import { ChoiceList } from "@/components/ui/choice-list";
 import { Icons } from "@/components/ui/icons";
+import { EmptyState } from "@/components/ui/page-state";
 import {
   ListChoiceGroup,
   ListPicker,
@@ -27,8 +29,6 @@ import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { practiceTaskHint, practiceTaskLabel } from "@/lib/practice-tasks";
 import { difficultyOptions } from "@/lib/question-options";
 import { isPassageKind } from "@/src/lib/question-formats";
-
-const AMOUNTS = [5, 10, 20, 30];
 
 /** 隨機混合 is both card tasks at once, so it needs no separate stored value. */
 const CARD_STYLES = ["flashcard", "spelling", "mixed"] as const;
@@ -47,20 +47,17 @@ function tasksOfStyle(style: CardStyle): PracticeCardTask[] {
 /**
  * Starting a session is a short questionnaire, one question per screen.
  *
- * First the track — the words FSRS has scheduled, or the question bank — since
- * the two draw on different material. Then the range and the length, which both
- * tracks share and neither used to ask up front. 每日複習 ends there, with how a
- * due word should be asked folded into the same screen because it is one
- * three-way choice. 做題目 takes one more screen for the formats, which is a
- * list of six that only makes sense once the range has decided how many of each
- * there are.
+ * Choose a track, then set its range and start. Formats stay on the same screen
+ * as the question count, with all available formats chosen by default.
  */
 export function PracticeSetup({
   amount,
+  backHref,
   cardCount,
   counts,
   difficulty,
   hasWords,
+  hasQuestionContent,
   leechOnly,
   onAmountChange,
   onBegin,
@@ -75,11 +72,13 @@ export function PracticeSetup({
   trackPreset,
 }: {
   amount: number;
+  backHref: string;
   /** Everything FSRS has scheduled in range, however it ends up being asked. */
   cardCount: number;
   counts: Record<PracticeTask, number>;
   difficulty: WorkspaceQuestionDifficulty;
   hasWords: boolean;
+  hasQuestionContent: boolean;
   leechOnly: boolean;
   onAmountChange: (amount: number) => void;
   onBegin: () => void;
@@ -95,7 +94,6 @@ export function PracticeSetup({
   trackPreset?: PracticeTrack;
 }) {
   const [track, setTrack] = useState<PracticeTrack | null>(trackPreset ?? null);
-  const [step, setStep] = useState<"scope" | "formats">("scope");
   const questionCount = PRACTICE_QUESTION_TASKS.reduce(
     (total, task) => total + counts[task],
     0,
@@ -106,26 +104,25 @@ export function PracticeSetup({
     (task) => counts[task] > 0,
   );
 
-  const trackSteps = track === "questions" ? 2 : 1;
-  const total = (trackPreset ? 0 : 1) + trackSteps;
-  const current = (trackPreset ? 0 : 1) + (step === "formats" ? 2 : 1);
+  const total = trackPreset ? 1 : 2;
+  const current = total;
 
   if (!track) {
     return (
       <StepFrame
+        back={<BackControl href={backHref} />}
         current={1}
         title={t("practice.chooseTitle")}
-        total={2}
+        total={total}
       >
         <ChoiceList
           onSelect={(value) => {
             const chosen = value as PracticeTrack;
             setTrack(chosen);
-            setStep("scope");
             onTasksChange(
               chosen === "fsrs"
                 ? tasksOfStyle(styleOfTasks(tasks))
-                : PRACTICE_QUESTION_TASKS.filter((task) => tasks.includes(task)),
+                : PRACTICE_QUESTION_TASKS.filter((task) => counts[task] > 0),
             );
           }}
           options={[
@@ -156,8 +153,14 @@ export function PracticeSetup({
   }
 
   const fsrs = track === "fsrs";
-  const availableCount = fsrs ? cardCount : questionCount;
-  const empty = !availableCount;
+  const selectedQuestionCount = PRACTICE_QUESTION_TASKS.reduce(
+    (total, task) => total + (tasks.includes(task) ? counts[task] : 0),
+    0,
+  );
+  const availableCount = fsrs ? cardCount : selectedQuestionCount;
+  const shownAmount = Math.min(amount, Math.max(1, availableCount));
+  const empty = fsrs ? !cardCount : !questionCount;
+  const needsContent = fsrs ? !hasWords : !hasQuestionContent;
   const emptyHref = !hasWords
     ? "/sets/new"
     : fsrs
@@ -174,12 +177,6 @@ export function PracticeSetup({
       ? t("home.openLibrary")
       : t("practice.generateFirst");
 
-  const goBack = () => {
-    if (step === "formats") return setStep("scope");
-    if (!trackPreset) return setTrack(null);
-    return undefined;
-  };
-
   const recap = (
     <StepRecap
       items={[
@@ -188,24 +185,8 @@ export function PracticeSetup({
               count: availableCount,
             })
           : t("practice.noContent"),
-        ...(step === "formats"
-          ? [
-              t("practice.scopeChosen", {
-                name:
-                  sets.find((entry) => entry.id === setId)?.setName ??
-                  t("practice.allSets"),
-                count: amount,
-              }),
-            ]
-          : []),
       ]}
-      onEdit={
-        step === "formats"
-          ? () => setStep("scope")
-          : trackPreset
-            ? undefined
-            : () => setTrack(null)
-      }
+      onEdit={trackPreset ? undefined : () => setTrack(null)}
     />
   );
 
@@ -244,123 +225,142 @@ export function PracticeSetup({
     </>
   );
 
-  if (!fsrs && step === "formats") {
-    return (
-      <StepFrame
-        current={current}
-        footer={empty ? emptyFooter : beginFooter}
-        onBack={goBack}
-        recap={recap}
-        title={t("practice.formatsTitle")}
-        total={total}
-      >
-        <ChoiceChecklist
-          onToggle={(value, checked) =>
-            onTasksChange(
-              PRACTICE_QUESTION_TASKS.filter((entry) =>
-                entry === value ? checked : tasks.includes(entry),
-              ),
-            )
-          }
-          options={availableFormats.map((task) => ({
-            description: practiceTaskHint(task),
-            icon: isPassageKind(task) ? Icons.reading : Icons.question,
-            label: practiceTaskLabel(task),
-            meta: t("practice.formatReady", { count: counts[task] }),
-            value: task,
-          }))}
-          selected={tasks}
-        />
-
-        <ListSection className="mt-5">
-          <ListPicker
-            label={t("practice.difficulty")}
-            onChange={(value) =>
-              onDifficultyChange(value as WorkspaceQuestionDifficulty)
-            }
-            options={difficultyOptions(t("practice.allDifficulties"))}
-            value={String(difficulty)}
-          />
-        </ListSection>
-      </StepFrame>
-    );
-  }
-
   return (
     <StepFrame
+      back={<BackControl href={backHref} />}
       current={current}
-      footer={
-        empty ? (
-          emptyFooter
-        ) : fsrs ? (
-          beginFooter
-        ) : (
-          <Button
-            className="w-full"
-            onClick={() => setStep("formats")}
-            size="lg"
-          >
-            <Icons.next />
-            {t("questions.next")}
-          </Button>
-        )
-      }
-      onBack={trackPreset ? undefined : goBack}
-      recap={recap}
+      footer={needsContent || (fsrs && empty) ? emptyFooter : beginFooter}
+      onBack={trackPreset ? undefined : () => setTrack(null)}
+      recap={needsContent ? undefined : recap}
       title={t("practice.scopeTitle")}
       total={total}
     >
-      <div className="space-y-7">
-        <ListSection header={t("practice.scopeHeader")}>
-          <ListPicker
-            label={t("practice.set")}
-            onChange={(value) => onSetChange(value === "all" ? "" : value)}
-            options={[
-              { label: t("practice.allSets"), value: "all" },
-              ...sets.map((entry) => ({
-                label: entry.setName,
-                value: entry.id,
-              })),
-            ]}
-            value={setId || "all"}
-          />
-          <ListPicker
-            label={t("practice.amount")}
-            onChange={(value) => onAmountChange(Number(value))}
-            options={AMOUNTS.map((value) => ({
-              label: String(value),
-              value: String(value),
-            }))}
-            value={String(amount)}
-          />
-        </ListSection>
-
-        {fsrs && (
-          <ListSection
-            footer={t("practice.cardStyleHint")}
-            header={t("practice.cardStyleTitle")}
-          >
-            <ListChoiceGroup
-              label={t("practice.cardStyleTitle")}
-              onSelect={(style) => onTasksChange(tasksOfStyle(style))}
-              value={styleOfTasks(tasks)}
-              options={CARD_STYLES.map((style) => ({
-                id: style,
-                detail: style === "mixed"
-                  ? t("practice.cardStyleMixedHint") : practiceTaskHint(style),
-                label: style === "mixed"
-                  ? t("practice.cardStyleMixed") : practiceTaskLabel(style),
-              }))}
+      {needsContent && (
+        <EmptyState
+          variant="filtered"
+          title={t("practice.noContent")}
+          description={t(
+            fsrs || !hasWords ? "practice.addWordsHint" : "practice.generateHint",
+          )}
+        />
+      )}
+      {!needsContent && (
+        <div className="space-y-7">
+          <ListSection header={t("practice.scopeHeader")}>
+            <ListPicker
+              label={t("practice.set")}
+              onChange={(value) => {
+                onSetChange(value === "all" ? "" : value);
+                if (!fsrs) onTasksChange([...PRACTICE_QUESTION_TASKS]);
+              }}
+              options={[
+                { label: t("practice.allSets"), value: "all" },
+                ...sets.map((entry) => ({
+                  label: entry.setName,
+                  value: entry.id,
+                })),
+              ]}
+              value={setId || "all"}
             />
-            <ListSwitchRow
-              checked={leechOnly}
-              detail={t("practice.leechOnlyHint")}
-              label={t("practice.leechOnly")}
-              onCheckedChange={onLeechOnlyChange}
-            />
+            {availableCount > 0 && (
+              <div className="py-4">
+                <div className="mb-2 flex items-baseline justify-between gap-3">
+                  <label className="type-row" htmlFor="practice-amount">
+                    {t("practice.amount")}
+                  </label>
+                  <strong className="text-lg tabular-nums">
+                    {t("practice.amountValue", { count: shownAmount })}
+                  </strong>
+                </div>
+                <input
+                  className="practice-amount-slider"
+                  id="practice-amount"
+                  max={availableCount}
+                  min={1}
+                  onChange={(event) =>
+                    onAmountChange(Number(event.target.value))
+                  }
+                  type="range"
+                  value={shownAmount}
+                />
+                <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
+                  <span>1</span>
+                  <span>
+                    {t("practice.amountMax", { count: availableCount })}
+                  </span>
+                </div>
+              </div>
+            )}
           </ListSection>
-        )}
-      </div>
+
+          {fsrs && (
+            <ListSection
+              footer={t("practice.cardStyleHint")}
+              header={t("practice.cardStyleTitle")}
+            >
+              <ListChoiceGroup
+                label={t("practice.cardStyleTitle")}
+                onSelect={(style) => onTasksChange(tasksOfStyle(style))}
+                value={styleOfTasks(tasks)}
+                options={CARD_STYLES.map((style) => ({
+                  id: style,
+                  detail:
+                    style === "mixed"
+                      ? t("practice.cardStyleMixedHint")
+                      : practiceTaskHint(style),
+                  label:
+                    style === "mixed"
+                      ? t("practice.cardStyleMixed")
+                      : practiceTaskLabel(style),
+                }))}
+              />
+              <ListSwitchRow
+                checked={leechOnly}
+                detail={t("practice.leechOnlyHint")}
+                label={t("practice.leechOnly")}
+                onCheckedChange={onLeechOnlyChange}
+              />
+            </ListSection>
+          )}
+          {!fsrs && availableFormats.length > 0 && (
+            <section>
+              <h2 className="type-list-header mb-2 px-1">
+                {t("practice.formatsTitle")}
+              </h2>
+              <ChoiceChecklist
+                onToggle={(value, checked) =>
+                  onTasksChange(
+                    PRACTICE_QUESTION_TASKS.filter((entry) =>
+                      entry === value ? checked : tasks.includes(entry),
+                    ),
+                  )
+                }
+                options={availableFormats.map((task) => ({
+                  description: practiceTaskHint(task),
+                  icon: isPassageKind(task) ? Icons.reading : Icons.question,
+                  label: practiceTaskLabel(task),
+                  meta: t("practice.formatReady", { count: counts[task] }),
+                  value: task,
+                }))}
+                selected={tasks}
+              />
+            </section>
+          )}
+          {!fsrs && (
+            <ListSection>
+              <ListPicker
+                label={t("practice.difficulty")}
+                onChange={(value) => {
+                  onDifficultyChange(value as WorkspaceQuestionDifficulty);
+                  onTasksChange([...PRACTICE_QUESTION_TASKS]);
+                }}
+                options={difficultyOptions(t("practice.allDifficulties"))}
+                value={String(difficulty)}
+              />
+            </ListSection>
+          )}
+        </div>
+      )}
     </StepFrame>
   );
 }

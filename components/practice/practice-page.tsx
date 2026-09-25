@@ -28,7 +28,7 @@ import {
   useRestorePracticeSession,
 } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
-import { DEFAULT_CARD_TASKS } from "@/constants";
+import { DEFAULT_CARD_TASKS, DEFAULT_QUESTION_TASKS } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
@@ -52,7 +52,9 @@ export function PracticePage({
   const learningLoaded = useLearningStore((store) => store.loaded);
   const setPracticeActive = useUIStore((store) => store.setPracticeActive);
 
-  const [tasks, setTasks] = useState<PracticeTask[]>([...DEFAULT_CARD_TASKS]);
+  const [tasks, setTasks] = useState<PracticeTask[]>(
+    initialTrack === "questions" ? [...DEFAULT_QUESTION_TASKS] : [...DEFAULT_CARD_TASKS],
+  );
   const [setId, setSetId] = useState(initialSet);
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] = useState<WorkspaceQuestionDifficulty>("all");
@@ -123,6 +125,7 @@ export function PracticePage({
     () => countTaskAvailability(poolInput),
     [allowedSenseIds, difficulty, leechOnly, progress.cards, questionGroups, studyItems],
   );
+  const hasQuestionContent = state.questions.length > 0;
   const queue = useMemo(
     () => buildPracticeQueue({ ...poolInput, amount, tasks }),
     [
@@ -188,6 +191,7 @@ export function PracticePage({
 
   usePracticePreferences({
     initialSet,
+    initialTrack,
     learningLoaded,
     started: started || sessionRestored.current,
     values: { amount, difficulty, leechOnly, setId, tasks },
@@ -263,10 +267,12 @@ export function PracticePage({
     return (
       <PracticeSetup
         amount={amount}
+        backHref={initialSet ? `/sets/${initialSet}` : "/"}
         cardCount={counts.flashcard}
         counts={counts}
         difficulty={difficulty}
         hasWords={hasWords}
+        hasQuestionContent={hasQuestionContent}
         leechOnly={leechOnly}
         onAmountChange={setAmount}
         onBegin={actions.begin}

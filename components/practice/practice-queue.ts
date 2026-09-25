@@ -120,9 +120,8 @@ function cardPool({ cards, leechOnly, studyItems }: PoolInput): StudyWord[] {
 }
 
 /**
- * Questions stay grouped: a 閱讀測驗 passage carries several items that only
- * make sense next to each other, so a group is the unit that gets drawn, and
- * its items stay contiguous once the queue is shuffled.
+ * Questions stay grouped: a 閱讀測驗 passage carries several items that
+ * share context. Items from one passage stay contiguous when drawn.
  */
 function questionPool(
   task: GeneratedQuestionKind,
@@ -170,11 +169,12 @@ export function countTaskAvailability(
  * every task gets a share of a short session and a task that runs dry hands its
  * slots to the others instead of leaving the session short.
  *
- * A sense is claimed once per session whichever task took it: meeting the same
- * word as a card and again as a question inside ten items reads as a bug.
+ * Card practice sees each sense once. Question practice can include different
+ * saved questions for the same sense, so its full bank stays available.
  */
 export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
   const { amount, tasks } = input;
+  const mixedWithCards = tasks.some(isCardTask);
   // Both card tasks share one cursor position into one pool, so 隨機混合 asks
   // each due word once and only varies how it is asked.
   const scheduled = tasks.some(isCardTask) ? cardPool(input) : [];
@@ -214,8 +214,8 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
     while (cursor.at < cursor.pool.length) {
       const group = cursor.pool[cursor.at];
       cursor.at += 1;
-      if (group.some((item) => usedSenses.has(item.senseId))) continue;
-      group.forEach((item) => usedSenses.add(item.senseId));
+      if (mixedWithCards && group.some((item) => usedSenses.has(item.senseId))) continue;
+      if (mixedWithCards) group.forEach((item) => usedSenses.add(item.senseId));
       return group.map(
         (item): PracticeEntry => ({
           id: item.id,
@@ -235,8 +235,9 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
       if (taken >= amount) break;
       const unit = nextUnit(task);
       if (!unit) continue;
-      units.push(unit);
-      taken += unit.length;
+      const remaining = unit.slice(0, amount - taken);
+      units.push(remaining);
+      taken += remaining.length;
       advanced = true;
     }
   }
