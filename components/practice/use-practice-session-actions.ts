@@ -5,7 +5,6 @@ import { useRef, useState } from "react";
 import { toast } from "sonner";
 
 import type { PracticeEntry } from "@/components/practice/practice-queue";
-import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { isSameLocalDay } from "@/src/lib/date";
@@ -204,7 +203,6 @@ export function usePracticeSessionActions({
   };
 
   const leave = () => {
-    localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
     setters.setStarted(false);
     setters.setEntries(null);
     setters.setRetrying(false);

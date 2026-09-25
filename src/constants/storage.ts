@@ -2,7 +2,6 @@ export const LEARNING_STORAGE_KEY = 'lexiro_learning_data'
 export const SYNC_JOURNAL_STORAGE_KEY = 'lexiro_sync_journal'
 export const CLOUD_SYNC_PENDING_EVENT = 'lexiro:sync-pending'
 export const PRACTICE_SESSION_STORAGE_KEY = 'lexiro-practice-session-v3'
-export const PRACTICE_PREFERENCES_STORAGE_KEY = 'lexiro-practice-preferences-v2'
 
 /**
  * Keys whose value belongs to one signed-in account. They are read through

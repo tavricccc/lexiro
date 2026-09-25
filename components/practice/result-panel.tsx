@@ -7,6 +7,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CreditBadge } from "@/components/ai/credit-badge";
 import { Icons } from "@/components/ui/icons";
+import { StepActions } from "@/components/ui/step-actions";
 import { Markdown } from "@/components/ui/markdown";
 import { t } from "@/lib/i18n";
 import { managedTurn } from "@/lib/managed-client";
@@ -93,26 +94,26 @@ export function ResultPanel({
         </dl>
       </div>
 
-      <div className="section-gap flex flex-col justify-center gap-2 sm:flex-row sm:flex-wrap">
-        <Button asChild>
+      <StepActions>
+        <Button asChild className="w-full" size="lg">
           <Link href="/">
             <Icons.review />
             {t("practice.backHome")}
           </Link>
         </Button>
         {wrongContent && (
-          <Button variant="secondary" onClick={onRetry}>
+          <Button className="w-full" variant="secondary" onClick={onRetry}>
             <Icons.retry />
             {t("practice.retryWrong")}
           </Button>
         )}
         {onRetryMarked && (
-          <Button variant="secondary" onClick={onRetryMarked}>
+          <Button className="w-full" variant="secondary" onClick={onRetryMarked}>
             <Icons.mark />
             {t("practice.retryMarked")}
           </Button>
         )}
-      </div>
+      </StepActions>
 
       {wrongContent && !explanation && (
         <div className="mt-6 flex flex-col items-center gap-2">

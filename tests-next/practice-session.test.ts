@@ -46,6 +46,16 @@ describe('practice session persistence', () => {
     expect(parsePracticeSession(JSON.stringify(session))?.selected).toBe(9)
   })
 
+  it('restores a session with more than one hundred questions', () => {
+    const session = {
+      ...validSession,
+      amount: 120,
+      entryIds: Array.from({ length: 120 }, (_, index) => `question:${index}`),
+      answerChoices: Array.from({ length: 120 }, () => null),
+    }
+    expect(parsePracticeSession(JSON.stringify(session))?.amount).toBe(120)
+  })
+
   it('rejects invalid answer choices', () => {
     expect(parsePracticeSession(JSON.stringify({ ...validSession, answerChoices: [0, 12] }))).toBeNull()
     expect(parsePracticeSession(JSON.stringify({ ...validSession, answerChoices: ['yes'] }))).toBeNull()

@@ -54,7 +54,6 @@ export function parsePracticeSession(
   if (
     !Array.isArray(entryIds) ||
     entryIds.length === 0 ||
-    entryIds.length > 100 ||
     !entryIds.every((item) => typeof item === "string" && item.trim()) ||
     new Set(entryIds).size !== entryIds.length ||
     !Array.isArray(rawTasks) ||
@@ -65,7 +64,6 @@ export function parsePracticeSession(
     typeof value.setId !== "string" ||
     !Number.isInteger(value.amount) ||
     Number(value.amount) < 1 ||
-    Number(value.amount) > 100 ||
     !Number.isInteger(value.index) ||
     Number(value.index) < 0 ||
     Number(value.index) >= entryIds.length ||

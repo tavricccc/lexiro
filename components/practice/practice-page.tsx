@@ -2,10 +2,8 @@
 
 import type {
   PracticeSessionSnapshot,
-  PracticeTask,
   PracticeTrack,
   SenseId,
-  WorkspaceQuestionDifficulty,
 } from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
@@ -15,20 +13,24 @@ import type { PracticeEntry } from "@/components/practice/practice-queue";
 import {
   buildPracticeQueue,
   buildWrongContent,
+  countQuestionAvailability,
   countTaskAvailability,
 } from "@/components/practice/practice-queue";
 import { ResultPanel } from "@/components/practice/result-panel";
 import { PracticeSessionView } from "@/components/practice/practice-session-view";
 import { PracticeSetup } from "@/components/practice/practice-setup";
+import { BackControl } from "@/components/ui/back-control";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { PracticePageSkeleton } from "@/components/ui/workspace-skeleton";
 import { usePracticeKeyboard } from "@/components/practice/use-practice-keyboard";
 import {
   usePersistPracticeSession,
-  usePracticePreferences,
   useRestorePracticeSession,
 } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
-import { DEFAULT_CARD_TASKS, DEFAULT_QUESTION_TASKS } from "@/constants";
+import { usePracticeSetupChoices } from "@/components/practice/use-practice-setup-choices";
+import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
+import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
@@ -51,14 +53,8 @@ export function PracticePage({
   const progress = useLearningStore((store) => store.progress);
   const learningLoaded = useLearningStore((store) => store.loaded);
   const setPracticeActive = useUIStore((store) => store.setPracticeActive);
-
-  const [tasks, setTasks] = useState<PracticeTask[]>(
-    initialTrack === "questions" ? [...DEFAULT_QUESTION_TASKS] : [...DEFAULT_CARD_TASKS],
-  );
-  const [setId, setSetId] = useState(initialSet);
-  const [amount, setAmount] = useState(10);
-  const [difficulty, setDifficulty] = useState<WorkspaceQuestionDifficulty>("all");
-  const [leechOnly, setLeechOnly] = useState(false);
+  const setup = usePracticeSetupChoices(initialSet, initialTrack);
+  const { amount, difficulty, leechOnly, oneSensePerWord, setId, tasks } = setup;
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -68,12 +64,15 @@ export function PracticePage({
   const [skipped, setSkipped] = useState<number[]>([]);
   const [marked, setMarked] = useState<number[]>([]);
   const [entries, setEntries] = useState<PracticeEntry[] | null>(null);
+  const [pendingSession, setPendingSession] = useState<{
+    snapshot: PracticeSessionSnapshot;
+    entries: PracticeEntry[];
+  } | null>(null);
+  const [resumeChecked, setResumeChecked] = useState(false);
   const [retrying, setRetrying] = useState(false);
   const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>([]);
   const [answerChoices, setAnswerChoices] = useState<Array<number | null>>([]);
   const restoreAttempted = useRef(false);
-  const sessionRestored = useRef(false);
-
   const allowedSenseIds = useMemo(
     () =>
       new Set(
@@ -126,13 +125,24 @@ export function PracticePage({
     [allowedSenseIds, difficulty, leechOnly, progress.cards, questionGroups, studyItems],
   );
   const hasQuestionContent = state.questions.length > 0;
+  const availableQuestionCount = useMemo(
+    () => countQuestionAvailability({
+      allowedSenseIds,
+      difficulty,
+      questionGroups,
+      tasks,
+      oneSensePerWord,
+    }),
+    [allowedSenseIds, difficulty, oneSensePerWord, questionGroups, tasks],
+  );
   const queue = useMemo(
-    () => buildPracticeQueue({ ...poolInput, amount, tasks }),
+    () => buildPracticeQueue({ ...poolInput, amount, oneSensePerWord, tasks }),
     [
       allowedSenseIds,
       amount,
       difficulty,
       leechOnly,
+      oneSensePerWord,
       progress.cards,
       questionGroups,
       studyItems,
@@ -157,9 +167,7 @@ export function PracticePage({
 
   const restoreSession = useCallback(
     (saved: PracticeSessionSnapshot, savedEntries: PracticeEntry[]) => {
-      setTasks(saved.tasks);
-      setSetId(saved.setId);
-      setAmount(saved.amount);
+      setup.restoreSessionChoices(saved);
       setIndex(saved.index);
       setCorrect(saved.correct);
       setWrong(saved.wrong);
@@ -167,14 +175,13 @@ export function PracticePage({
       setMarked(saved.marked);
       setSelected(saved.selected);
       setRevealed(saved.revealed);
-      setDifficulty(saved.difficulty);
       setRetrying(saved.retrying);
       setQuestionFailedSenses(saved.failedSenseIds);
       setAnswerChoices(saved.answerChoices);
       setEntries(savedEntries);
       setStarted(true);
     },
-    [],
+    [setup],
   );
 
   useRestorePracticeSession({
@@ -184,23 +191,14 @@ export function PracticePage({
     initialSet,
     memberships: state.memberships,
     restoreAttempted,
-    sessionRestored,
     setIds,
-    onRestore: restoreSession,
+    onOffer: useCallback((snapshot, entries) => {
+      setPendingSession({ snapshot, entries });
+      setResumeChecked(true);
+    }, []),
+    onChecked: useCallback(() => setResumeChecked(true), []),
   });
 
-  usePracticePreferences({
-    initialSet,
-    initialTrack,
-    learningLoaded,
-    started: started || sessionRestored.current,
-    values: { amount, difficulty, leechOnly, setId, tasks },
-    setAmount,
-    setDifficulty,
-    setLeechOnly,
-    setSetId,
-    setTasks,
-  });
   usePersistPracticeSession({
     amount,
     answerChoices,
@@ -262,11 +260,42 @@ export function PracticePage({
   if (libraryStatus !== "ready" || !learningLoaded) {
     return <PracticePageSkeleton />;
   }
+  if (!resumeChecked) return <PracticePageSkeleton />;
+  if (pendingSession) {
+    return (
+      <ResumeChoice
+        back={<BackControl href={initialSet ? `/sets/${initialSet}` : "/"} />}
+        description={t("draft.practiceDescription")}
+        onResume={() => {
+          restoreSession(pendingSession.snapshot, pendingSession.entries);
+          setPendingSession(null);
+        }}
+        onRestart={() => {
+          localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+          setup.restart();
+          setPendingSession(null);
+        }}
+      />
+    );
+  }
+  if (!started && setup.saved.status === "checking") return <PracticePageSkeleton />;
+  if (!started && (setup.saved.status === "offer" || setup.saved.status === "invalid")) {
+    return (
+      <ResumeChoice
+        back={<BackControl href={initialSet ? `/sets/${initialSet}` : "/"} />}
+        description={t(setup.saved.status === "invalid" ? "draft.invalidDescription" : "draft.practiceDescription")}
+        invalid={setup.saved.status === "invalid"}
+        onResume={setup.resume}
+        onRestart={setup.restart}
+      />
+    );
+  }
 
   if (!started) {
     return (
       <PracticeSetup
         amount={amount}
+        availableQuestionCount={availableQuestionCount}
         backHref={initialSet ? `/sets/${initialSet}` : "/"}
         cardCount={counts.flashcard}
         counts={counts}
@@ -274,16 +303,20 @@ export function PracticePage({
         hasWords={hasWords}
         hasQuestionContent={hasQuestionContent}
         leechOnly={leechOnly}
-        onAmountChange={setAmount}
-        onBegin={actions.begin}
-        onDifficultyChange={setDifficulty}
-        onLeechOnlyChange={setLeechOnly}
-        onSetChange={setSetId}
-        onTasksChange={setTasks}
+        oneSensePerWord={oneSensePerWord}
+        onAmountChange={setup.changeAmount}
+        onBegin={() => { setup.clear(); actions.begin(); }}
+        onDifficultyChange={setup.changeDifficulty}
+        onLeechOnlyChange={setup.changeLeechOnly}
+        onOneSenseChange={setup.changeOneSense}
+        onSetChange={setup.changeSet}
+        onTasksChange={setup.changeTasks}
+        onTrackChange={setup.changeTrack}
         queueLength={queue.length}
         setId={setId}
         sets={state.sets}
         tasks={tasks}
+        track={setup.track}
         trackPreset={initialTrack}
       />
     );

@@ -6,6 +6,7 @@ export interface QuestionItem {
   prompt: string;
   options: string[];
   answerIndex: number;
+  wordKey: WordKey;
   senseId: SenseId;
   type: GeneratedQuestionKind;
   /** Passage items carry the shared bank so the practice view can show it. */
@@ -69,6 +70,7 @@ export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<
           prompt: child.prompt,
           options: child.options,
           answerIndex: child.answerIndex,
+          wordKey: child.wordKey,
           senseId: child.senseId,
           type: question.format,
           blank: child.blank,
@@ -85,6 +87,7 @@ export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<
       prompt: question.prompt,
       options: question.options,
       answerIndex: question.answerIndex,
+      wordKey: question.wordKey,
       senseId: question.senseId,
       type: question.questionStyle,
       difficulty: question.difficulty,

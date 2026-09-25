@@ -1,21 +1,13 @@
 "use client";
 
-import type { Dispatch, SetStateAction } from "react";
 import { useEffect } from "react";
 
 import {
-  orderPracticeTasks,
-  DEFAULT_CARD_TASKS,
-  DEFAULT_QUESTION_TASKS,
-  PRACTICE_PREFERENCES_STORAGE_KEY,
   PRACTICE_SESSION_STORAGE_KEY,
-  isCardTask,
-  isPracticeTask,
 } from "@/constants";
 import type {
   PracticeSessionSnapshot,
   PracticeTask,
-  PracticeTrack,
   SenseId,
   SetMembership,
   StudyWord,
@@ -36,9 +28,9 @@ export function useRestorePracticeSession({
   initialSet,
   memberships,
   restoreAttempted,
-  sessionRestored,
   setIds,
-  onRestore,
+  onOffer,
+  onChecked,
 }: {
   allQuestionItems: QuestionItem[];
   allStudyItems: StudyWord[];
@@ -46,12 +38,12 @@ export function useRestorePracticeSession({
   initialSet: string;
   memberships: Record<string, SetMembership[]>;
   restoreAttempted: { current: boolean };
-  sessionRestored: { current: boolean };
   setIds: Set<string>;
-  onRestore: (
+  onOffer: (
     snapshot: PracticeSessionSnapshot,
     entries: PracticeEntry[],
   ) => void;
+  onChecked: () => void;
 }) {
   useEffect(() => {
     if (restoreAttempted.current || !enabled) return;
@@ -60,9 +52,13 @@ export function useRestorePracticeSession({
     const saved = parsePracticeSession(raw);
     if (!saved) {
       if (raw) localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+      onChecked();
       return;
     }
-    if (!canRestorePracticeSession(saved, initialSet)) return;
+    if (!canRestorePracticeSession(saved, initialSet)) {
+      onChecked();
+      return;
+    }
 
     const allowed = new Set(
       (saved.setId
@@ -84,105 +80,21 @@ export function useRestorePracticeSession({
     );
     if (!entries || outOfScope || (saved.setId && !setIds.has(saved.setId))) {
       localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+      onChecked();
       return;
     }
-    sessionRestored.current = true;
-    onRestore(saved, entries);
+    onOffer(saved, entries);
   }, [
     allQuestionItems,
     allStudyItems,
     enabled,
     initialSet,
     memberships,
-    onRestore,
+    onOffer,
+    onChecked,
     restoreAttempted,
-    sessionRestored,
     setIds,
   ]);
-}
-
-interface PreferenceValues {
-  amount: number;
-  difficulty: WorkspaceQuestionDifficulty;
-  leechOnly: boolean;
-  setId: string;
-  tasks: PracticeTask[];
-}
-
-type ValueSetter<T> = Dispatch<SetStateAction<T>>;
-
-export function usePracticePreferences({
-  initialSet,
-  initialTrack,
-  learningLoaded,
-  started,
-  values,
-  setAmount,
-  setDifficulty,
-  setLeechOnly,
-  setSetId,
-  setTasks,
-}: {
-  initialSet: string;
-  initialTrack?: PracticeTrack;
-  learningLoaded: boolean;
-  started: boolean;
-  values: PreferenceValues;
-  setAmount: ValueSetter<number>;
-  setDifficulty: ValueSetter<WorkspaceQuestionDifficulty>;
-  setLeechOnly: ValueSetter<boolean>;
-  setSetId: ValueSetter<string>;
-  setTasks: ValueSetter<PracticeTask[]>;
-}) {
-  const { amount, difficulty, leechOnly, setId, tasks } = values;
-  useEffect(() => {
-    if (!learningLoaded || started) return;
-    try {
-      const saved = JSON.parse(
-        localStorage.getItem(PRACTICE_PREFERENCES_STORAGE_KEY) ?? "{}",
-      ) as Partial<PreferenceValues>;
-      if (!initialSet && saved.setId) setSetId(saved.setId);
-      if (saved.amount) setAmount(saved.amount);
-      if (saved.difficulty) setDifficulty(saved.difficulty);
-      if (typeof saved.leechOnly === "boolean") setLeechOnly(saved.leechOnly);
-      const savedTasks = Array.isArray(saved.tasks)
-        ? orderPracticeTasks(saved.tasks.filter(isPracticeTask))
-        : [];
-      const trackTasks = initialTrack === "questions"
-        ? savedTasks.filter((task) => !isCardTask(task))
-        : initialTrack === "fsrs"
-          ? savedTasks.filter(isCardTask)
-          : savedTasks;
-      if (savedTasks.length || initialTrack)
-        setTasks(
-          trackTasks.length
-            ? trackTasks
-            : initialTrack === "questions"
-              ? [...DEFAULT_QUESTION_TASKS]
-              : [...DEFAULT_CARD_TASKS],
-        );
-    } catch {
-      // Corrupted preferences should never block practice.
-    }
-  }, [
-    initialSet,
-    initialTrack,
-    learningLoaded,
-    setAmount,
-    setDifficulty,
-    setLeechOnly,
-    setSetId,
-    setTasks,
-    started,
-  ]);
-
-  useEffect(() => {
-    if (started) return;
-    localStorage.setItem(
-      PRACTICE_PREFERENCES_STORAGE_KEY,
-      JSON.stringify({ amount, difficulty, leechOnly, setId, tasks }),
-    );
-  }, [amount, difficulty, leechOnly, setId, started, tasks]);
 }
 
 export function usePersistPracticeSession({

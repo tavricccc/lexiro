@@ -2,7 +2,7 @@ import type { CardProgress, LibraryQuestion, SenseId, StudyWord, WordKey } from 
 import { describe, expect, it } from 'vitest'
 
 import { buildQuestionGroups } from '@/components/practice/practice-content'
-import { buildPracticeQueue, countTaskAvailability } from '@/components/practice/practice-queue'
+import { buildPracticeQueue, countQuestionAvailability, countTaskAvailability } from '@/components/practice/practice-queue'
 
 function word(index: number): StudyWord {
   const id = `sense-${index}` as SenseId
@@ -88,6 +88,7 @@ const base = {
   cards,
   difficulty: 'all' as const,
   leechOnly: false,
+  oneSensePerWord: false,
   questionGroups: [],
   studyItems,
 }
@@ -150,6 +151,31 @@ describe('practice queue', () => {
       tasks: ['vocabulary'],
     })
     expect(queue.map((entry) => entry.id).sort()).toEqual(['question:q-1', 'question:q-1-b'])
+  })
+
+  it('draws one question per word when the shorter session is on', () => {
+    const secondSense = {
+      ...vocabularyQuestion(1),
+      id: 'q-1-sense-b',
+      fingerprint: 'fp-1-sense-b',
+      senseId: 'sense-1-b' as SenseId,
+    }
+    const questionGroups = buildQuestionGroups(
+      [vocabularyQuestion(1), secondSense, vocabularyQuestion(2)],
+      {},
+    )
+    const input = {
+      ...base,
+      allowedSenseIds: new Set([...allowedSenseIds, secondSense.senseId]),
+      questionGroups,
+      tasks: ['vocabulary' as const],
+      oneSensePerWord: true,
+    }
+    expect(countQuestionAvailability(input)).toBe(2)
+    const queue = buildPracticeQueue({ ...input, amount: 3 })
+    expect(queue).toHaveLength(2)
+    expect(new Set(queue.map((entry) => entry.kind === 'question' ? entry.item.wordKey : '')).size).toBe(2)
+    expect(countQuestionAvailability({ ...input, oneSensePerWord: false })).toBe(3)
   })
 
   it('counts what each task could contribute on its own', () => {

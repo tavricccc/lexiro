@@ -5,6 +5,7 @@ import type {
   PracticeTask,
   SenseId,
   StudyWord,
+  WordKey,
   WorkspaceQuestionDifficulty,
 } from "@/types";
 
@@ -84,6 +85,7 @@ export function shuffleSession<T>(items: T[]): T[] {
 export interface QueueInput {
   allowedSenseIds: Set<SenseId>;
   amount: number;
+  oneSensePerWord: boolean;
   cards: Record<SenseId, CardProgress>;
   difficulty: WorkspaceQuestionDifficulty;
   leechOnly: boolean;
@@ -164,6 +166,18 @@ export function countTaskAvailability(
   return counts;
 }
 
+/** The slider counts the questions the current choice can actually draw. */
+export function countQuestionAvailability(
+  input: GroupInput & Pick<QueueInput, "oneSensePerWord" | "tasks">,
+): number {
+  const items = input.tasks
+    .filter((task): task is GeneratedQuestionKind => !isCardTask(task))
+    .flatMap((task) => questionPool(task, input).flat());
+  return input.oneSensePerWord
+    ? new Set(items.map((item) => item.wordKey)).size
+    : items.length;
+}
+
 /**
  * Fills the session one unit at a time, round-robin across the chosen tasks, so
  * every task gets a share of a short session and a task that runs dry hands its
@@ -173,7 +187,7 @@ export function countTaskAvailability(
  * saved questions for the same sense, so its full bank stays available.
  */
 export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
-  const { amount, tasks } = input;
+  const { amount, oneSensePerWord, tasks } = input;
   const mixedWithCards = tasks.some(isCardTask);
   // Both card tasks share one cursor position into one pool, so 隨機混合 asks
   // each due word once and only varies how it is asked.
@@ -193,6 +207,7 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
   }
 
   const usedSenses = new Set<SenseId>();
+  const usedWords = new Set<WordKey>();
   const units: PracticeEntry[][] = [];
   let taken = 0;
 
@@ -214,9 +229,20 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
     while (cursor.at < cursor.pool.length) {
       const group = cursor.pool[cursor.at];
       cursor.at += 1;
-      if (mixedWithCards && group.some((item) => usedSenses.has(item.senseId))) continue;
-      if (mixedWithCards) group.forEach((item) => usedSenses.add(item.senseId));
-      return group.map(
+      const withinGroup = new Set<WordKey>();
+      const eligible = oneSensePerWord
+        ? group.filter((item) => {
+            if (usedWords.has(item.wordKey) || withinGroup.has(item.wordKey))
+              return false;
+            withinGroup.add(item.wordKey);
+            return true;
+          })
+        : group;
+      if (!eligible.length) continue;
+      if (mixedWithCards && eligible.some((item) => usedSenses.has(item.senseId))) continue;
+      if (mixedWithCards) eligible.forEach((item) => usedSenses.add(item.senseId));
+      if (oneSensePerWord) eligible.forEach((item) => usedWords.add(item.wordKey));
+      return eligible.map(
         (item): PracticeEntry => ({
           id: item.id,
           kind: "question",

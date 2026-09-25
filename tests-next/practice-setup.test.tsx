@@ -21,6 +21,7 @@ describe("practice setup", () => {
     render(
       <PracticeSetup
         amount={10}
+        availableQuestionCount={0}
         backHref="/"
         cardCount={0}
         counts={counts(0)}
@@ -28,16 +29,20 @@ describe("practice setup", () => {
         hasWords
         hasQuestionContent={false}
         leechOnly={false}
+        oneSensePerWord
         onAmountChange={vi.fn()}
         onBegin={vi.fn()}
         onDifficultyChange={vi.fn()}
         onLeechOnlyChange={vi.fn()}
+        onOneSenseChange={vi.fn()}
         onSetChange={vi.fn()}
         onTasksChange={vi.fn()}
+        onTrackChange={vi.fn()}
         queueLength={0}
         setId=""
         sets={[]}
         tasks={["vocabulary"]}
+        track="questions"
         trackPreset="questions"
       />,
     );
@@ -52,6 +57,7 @@ describe("practice setup", () => {
     const onAmountChange = vi.fn();
     const props = {
       amount: 10,
+      availableQuestionCount: 47,
       backHref: "/",
       cardCount: 0,
       counts: counts(47),
@@ -59,16 +65,20 @@ describe("practice setup", () => {
       hasWords: true,
       hasQuestionContent: true,
       leechOnly: false,
+      oneSensePerWord: true,
       onAmountChange,
       onBegin: vi.fn(),
       onDifficultyChange: vi.fn(),
       onLeechOnlyChange: vi.fn(),
+      onOneSenseChange: vi.fn(),
       onSetChange: vi.fn(),
       onTasksChange: vi.fn(),
+      onTrackChange: vi.fn(),
       queueLength: 10,
       setId: "",
       sets: [],
       tasks: ["vocabulary" as const],
+      track: "questions" as const,
       trackPreset: "questions" as const,
     };
     const { rerender } = render(<PracticeSetup {...props} />);
@@ -84,6 +94,7 @@ describe("practice setup", () => {
       <PracticeSetup
         {...props}
         amount={46}
+        availableQuestionCount={3}
         counts={counts(3)}
         queueLength={3}
       />,

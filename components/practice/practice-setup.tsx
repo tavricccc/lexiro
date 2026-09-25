@@ -8,7 +8,6 @@ import type {
   WorkspaceQuestionDifficulty,
 } from "@/types";
 import Link from "next/link";
-import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { BackControl } from "@/components/ui/back-control";
@@ -52,6 +51,7 @@ function tasksOfStyle(style: CardStyle): PracticeCardTask[] {
  */
 export function PracticeSetup({
   amount,
+  availableQuestionCount,
   backHref,
   cardCount,
   counts,
@@ -59,19 +59,24 @@ export function PracticeSetup({
   hasWords,
   hasQuestionContent,
   leechOnly,
+  oneSensePerWord,
   onAmountChange,
   onBegin,
   onDifficultyChange,
   onLeechOnlyChange,
+  onOneSenseChange,
   onSetChange,
   onTasksChange,
+  onTrackChange,
   queueLength,
   setId,
   sets,
   tasks,
+  track,
   trackPreset,
 }: {
   amount: number;
+  availableQuestionCount: number;
   backHref: string;
   /** Everything FSRS has scheduled in range, however it ends up being asked. */
   cardCount: number;
@@ -80,20 +85,23 @@ export function PracticeSetup({
   hasWords: boolean;
   hasQuestionContent: boolean;
   leechOnly: boolean;
+  oneSensePerWord: boolean;
   onAmountChange: (amount: number) => void;
   onBegin: () => void;
   onDifficultyChange: (difficulty: WorkspaceQuestionDifficulty) => void;
   onLeechOnlyChange: (leechOnly: boolean) => void;
+  onOneSenseChange: (oneSensePerWord: boolean) => void;
   onSetChange: (setId: string) => void;
   onTasksChange: (tasks: PracticeTask[]) => void;
+  onTrackChange: (track: PracticeTrack | null) => void;
   queueLength: number;
   setId: string;
   sets: LibrarySet[];
   tasks: PracticeTask[];
+  track: PracticeTrack | null;
   /** The track arrived in the link, so the branch step is already answered. */
   trackPreset?: PracticeTrack;
 }) {
-  const [track, setTrack] = useState<PracticeTrack | null>(trackPreset ?? null);
   const questionCount = PRACTICE_QUESTION_TASKS.reduce(
     (total, task) => total + counts[task],
     0,
@@ -118,7 +126,7 @@ export function PracticeSetup({
         <ChoiceList
           onSelect={(value) => {
             const chosen = value as PracticeTrack;
-            setTrack(chosen);
+            onTrackChange(chosen);
             onTasksChange(
               chosen === "fsrs"
                 ? tasksOfStyle(styleOfTasks(tasks))
@@ -153,11 +161,7 @@ export function PracticeSetup({
   }
 
   const fsrs = track === "fsrs";
-  const selectedQuestionCount = PRACTICE_QUESTION_TASKS.reduce(
-    (total, task) => total + (tasks.includes(task) ? counts[task] : 0),
-    0,
-  );
-  const availableCount = fsrs ? cardCount : selectedQuestionCount;
+  const availableCount = fsrs ? cardCount : availableQuestionCount;
   const shownAmount = Math.min(amount, Math.max(1, availableCount));
   const empty = fsrs ? !cardCount : !questionCount;
   const needsContent = fsrs ? !hasWords : !hasQuestionContent;
@@ -186,7 +190,7 @@ export function PracticeSetup({
             })
           : t("practice.noContent"),
       ]}
-      onEdit={trackPreset ? undefined : () => setTrack(null)}
+      onEdit={trackPreset ? undefined : () => onTrackChange(null)}
     />
   );
 
@@ -230,7 +234,7 @@ export function PracticeSetup({
       back={<BackControl href={backHref} />}
       current={current}
       footer={needsContent || (fsrs && empty) ? emptyFooter : beginFooter}
-      onBack={trackPreset ? undefined : () => setTrack(null)}
+      onBack={trackPreset ? undefined : () => onTrackChange(null)}
       recap={needsContent ? undefined : recap}
       title={t("practice.scopeTitle")}
       total={total}
@@ -319,6 +323,16 @@ export function PracticeSetup({
                 detail={t("practice.leechOnlyHint")}
                 label={t("practice.leechOnly")}
                 onCheckedChange={onLeechOnlyChange}
+              />
+            </ListSection>
+          )}
+          {!fsrs && (
+            <ListSection>
+              <ListSwitchRow
+                checked={oneSensePerWord}
+                detail={t("practice.oneSenseHint")}
+                label={t("practice.oneSensePerWord")}
+                onCheckedChange={onOneSenseChange}
               />
             </ListSection>
           )}
