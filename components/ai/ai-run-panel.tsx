@@ -9,6 +9,7 @@ import { useManagedAccount } from "./use-managed-account";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
+import { TaskProgress } from "@/components/ui/task-progress";
 import { t } from "@/lib/i18n";
 
 function formatDiagnostic(value: string): string {
@@ -99,11 +100,6 @@ export function AiRunPanel<T>({
         : state.status === "error"
           ? t("ai.needsAttention")
           : t("ai.ready");
-  const percent = state.total
-    ? Math.min(100, (state.completed / state.total) * 100)
-    : done
-      ? 100
-      : 0;
   return (
     <div className="space-y-7">
       <GenerationControls
@@ -115,46 +111,27 @@ export function AiRunPanel<T>({
       />
 
       {started && (
-        <section className="rule-card py-4">
-          <h2 aria-live="polite" className="type-subsection mb-3">
-            {ready ? title : t("common.loading")}
-          </h2>
-          <div className="flex flex-wrap justify-between gap-2 text-sm tabular-nums">
-            <span aria-live="polite">
-              {t("ai.completedItems", {
-                completed: state.completed,
-                total: state.total,
-                unit,
+        <TaskProgress
+          elapsed={t("ai.elapsed", { seconds })}
+          label={t("ai.progressLabel")}
+          max={state.total}
+          summary={t("ai.completedItems", {
+            completed: state.completed,
+            total: state.total,
+            unit,
+          })}
+          title={ready ? title : t("common.loading")}
+          value={state.total ? state.completed : done ? 1 : 0}
+        >
+          <span>{t("ai.completedSegments", { count: state.segments })}</span>
+          {running && (
+            <span className="tabular-nums">
+              {t("ai.progressCharacters", {
+                count: state.characters.toLocaleString(),
               })}
             </span>
-            <span className="text-muted-foreground">
-              {t("ai.elapsed", { seconds })}
-            </span>
-          </div>
-          <div
-            aria-label={t("ai.progressLabel")}
-            aria-valuemax={Math.max(1, state.total)}
-            aria-valuemin={0}
-            aria-valuenow={state.completed}
-            className="mt-3 h-1.5 overflow-hidden rounded-full bg-[var(--surface-inset)]"
-            role="progressbar"
-          >
-            <div
-              className="h-full rounded-full bg-primary transition-[width] duration-[var(--motion-control)] ease-[var(--ease-move)]"
-              style={{ width: `${percent}%` }}
-            />
-          </div>
-          <div className="mt-2 flex justify-between gap-3 text-xs text-muted-foreground">
-            <span>{t("ai.completedSegments", { count: state.segments })}</span>
-            {running && (
-              <span className="tabular-nums">
-                {t("ai.progressCharacters", {
-                  count: state.characters.toLocaleString(),
-                })}
-              </span>
-            )}
-          </div>
-        </section>
+          )}
+        </TaskProgress>
       )}
 
       {state.error && (
@@ -294,7 +271,6 @@ export function AiRunPanel<T>({
           </>
         )}
       </StepActions>
-
     </div>
   );
 }
