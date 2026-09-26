@@ -3,6 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { LIMITS, buildWordGenerationSources } from "@lexiro/ai-contract";
 import { Button } from "@/components/ui/button";
 import { CreditBadge } from "@/components/ai/credit-badge";
+import {
+  PhotoInputButton,
+  PhotoRunProgress,
+  PhotoSelection,
+  type PhotoProgressState,
+} from "@/components/library/photo-organization-ui";
 import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/ui/icons";
@@ -36,41 +42,6 @@ function formatPhotoError(name: string, reason: unknown) {
   return t("managed.photoError", { file: name, detail });
 }
 
-function PhotoInputButton({
-  disabled,
-  label,
-  onFiles,
-}: {
-  disabled: boolean;
-  label: string;
-  onFiles: (files: File[]) => void;
-}) {
-  return (
-    <Button asChild type="button" variant="secondary" disabled={disabled}>
-      <label>
-        <Icons.import />
-        {label}
-        <CreditBadge
-          label={t("managed.photoPoints")}
-          value={t("managed.photoPointsShort")}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          className="sr-only"
-          disabled={disabled}
-          multiple
-          onChange={(event) => {
-            const files = Array.from(event.target.files ?? []);
-            event.target.value = "";
-            if (files.length) onFiles(files);
-          }}
-        />
-      </label>
-    </Button>
-  );
-}
-
 /**
  * Turning what was pasted or photographed into a list of words.
  *
@@ -95,11 +66,15 @@ export function InputOrganizer({
   const [review, setReview] = useState(initialDraft?.review ?? "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [addingPhotos, setAddingPhotos] = useState(initialDraft?.addingPhotos ?? false);
-  const [photoProgress, setPhotoProgress] = useState<{
-    current: number;
-    total: number;
-  } | null>(null);
+  const [addingPhotos, setAddingPhotos] = useState(
+    initialDraft?.addingPhotos ?? false,
+  );
+  const [pendingPhotos, setPendingPhotos] = useState<File[] | null>(null);
+  const [nextBatchStart, setNextBatchStart] = useState(0);
+  const [photoProgress, setPhotoProgress] = useState<PhotoProgressState | null>(
+    null,
+  );
+  const [now, setNow] = useState(0);
   const controller = useRef<AbortController | null>(null);
   const onDraftRef = useRef(onDraftChange);
   onDraftRef.current = onDraftChange;
@@ -113,6 +88,12 @@ export function InputOrganizer({
   }, [input, review, addingPhotos]);
   const uid = useCloudStore((store) => store.user?.uid);
   useEffect(() => () => controller.current?.abort(), [uid]);
+  useEffect(() => {
+    if (!photoProgress || !busy) return;
+    setNow(Date.now());
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [busy, photoProgress?.startedAt]);
 
   const startRun = () => {
     const current = new AbortController();
@@ -148,31 +129,71 @@ export function InputOrganizer({
     }
   };
 
-  const organizePhotos = async (files: File[]) => {
+  const selectPhotos = (files: File[]) => {
+    setPendingPhotos(files);
+    setNextBatchStart(0);
+    setError("");
+  };
+
+  const cancelPhotoSelection = () => {
+    setPendingPhotos(null);
+    setNextBatchStart(0);
+    setError("");
+  };
+
+  const removePhoto = (index: number) => {
+    if (!pendingPhotos) return;
+    if (pendingPhotos.length - nextBatchStart === 1) {
+      cancelPhotoSelection();
+      return;
+    }
+    setPendingPhotos(pendingPhotos.filter((_, at) => at !== index));
+    setError("");
+  };
+
+  const organizePhotos = async () => {
+    const files = pendingPhotos;
+    if (!files || busy) return;
     const current = startRun();
+    const totalBatches = Math.ceil(files.length / LIMITS.images);
+    const startedAt = Date.now();
     try {
       for (
-        let batchStart = 0;
+        let batchStart = nextBatchStart;
         batchStart < files.length;
         batchStart += LIMITS.images
       ) {
         const batch = files.slice(batchStart, batchStart + LIMITS.images);
         const images: string[] = [];
         setPhotoProgress({
-          current: batchStart / LIMITS.images + 1,
-          total: Math.ceil(files.length / LIMITS.images),
+          phase: "preparing",
+          completed: Math.floor(batchStart / LIMITS.images),
+          total: totalBatches,
+          currentBatch: Math.floor(batchStart / LIMITS.images) + 1,
+          prepared: 0,
+          batchSize: batch.length,
+          characters: 0,
+          startedAt,
         });
         for (const file of batch) {
           try {
             current.signal.throwIfAborted();
             images.push(await encodeWordPhoto(file));
             current.signal.throwIfAborted();
+            setPhotoProgress(
+              (progress) =>
+                progress && { ...progress, prepared: images.length },
+            );
           } catch (reason) {
-            if (!current.signal.aborted) setError(formatPhotoError(file.name, reason));
+            if (!current.signal.aborted)
+              setError(formatPhotoError(file.name, reason));
             return;
           }
         }
         try {
+          setPhotoProgress(
+            (progress) => progress && { ...progress, phase: "organizing" },
+          );
           const response = await managedFetch("/organize", {
             method: "POST",
             headers: {
@@ -182,19 +203,48 @@ export function InputOrganizer({
             body: images.join("\n"),
             signal: current.signal,
           });
-          const text = (await readManagedStream(response, { signal: current.signal })).text;
+          const text = (
+            await readManagedStream(response, {
+              signal: current.signal,
+              onCharacters: (characters) =>
+                setPhotoProgress((progress) =>
+                  controller.current === current && progress
+                    ? { ...progress, characters }
+                    : progress,
+                ),
+            })
+          ).text;
           current.signal.throwIfAborted();
           const cleaned = parseOrganizedWordInput(text).join("\n");
           if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
-          setReview((currentReview) => [currentReview, cleaned].filter(Boolean).join("\n"));
+          setReview((currentReview) =>
+            [currentReview, cleaned].filter(Boolean).join("\n"),
+          );
           setAddingPhotos(true);
+          setNextBatchStart(batchStart + batch.length);
+          setPhotoProgress(
+            (progress) =>
+              progress && {
+                ...progress,
+                completed: Math.floor(batchStart / LIMITS.images) + 1,
+              },
+          );
         } catch (reason) {
-          if (!current.signal.aborted) setError(formatPhotoError(
-            t("managed.photoBatch", { start: batchStart + 1, end: batchStart + batch.length }), reason,
-          ));
+          if (!current.signal.aborted)
+            setError(
+              formatPhotoError(
+                t("managed.photoBatch", {
+                  start: batchStart + 1,
+                  end: batchStart + batch.length,
+                }),
+                reason,
+              ),
+            );
           return;
         }
       }
+      setPendingPhotos(null);
+      setNextBatchStart(0);
     } finally {
       if (controller.current === current) {
         setBusy(false);
@@ -255,6 +305,43 @@ export function InputOrganizer({
       </div>
     );
 
+  if (pendingPhotos && !busy)
+    return (
+      <PhotoSelection
+        error={error}
+        files={pendingPhotos}
+        onCancel={cancelPhotoSelection}
+        onConfirm={() => void organizePhotos()}
+        onRemove={removePhoto}
+        onReplace={selectPhotos}
+        processed={nextBatchStart}
+      />
+    );
+
+  if (photoProgress && busy)
+    return (
+      <div className="space-y-7">
+        <PhotoRunProgress
+          progress={photoProgress}
+          seconds={Math.max(
+            0,
+            Math.floor((now - photoProgress.startedAt) / 1000),
+          )}
+        />
+        <StepActions width="wide">
+          <Button
+            className="w-full"
+            onClick={() => controller.current?.abort()}
+            type="button"
+            variant="outline"
+          >
+            <Icons.cancel />
+            {t("ai.stop")}
+          </Button>
+        </StepActions>
+      </div>
+    );
+
   return (
     <div className="space-y-4">
       {addingPhotos ? (
@@ -276,37 +363,78 @@ export function InputOrganizer({
         </Field>
       )}
       <StepActions width="wide">
-        {!uid && <p className="text-sm text-muted-foreground">{t("managed.signInRequired")}</p>}
-        {busy && (
-          <p role="status" className="text-sm text-muted-foreground">
-            {photoProgress ? t("managed.photoProgress", photoProgress) : t("ai.generating")}
+        {!uid && (
+          <p className="text-sm text-muted-foreground">
+            {t("managed.signInRequired")}
           </p>
         )}
-        {error && <p role="alert" className="whitespace-pre-wrap break-words text-sm text-destructive">{error}</p>}
+        {busy && (
+          <p role="status" className="text-sm text-muted-foreground">
+            {t("ai.generating")}
+          </p>
+        )}
+        {error && (
+          <p
+            role="alert"
+            className="whitespace-pre-wrap break-words text-sm text-destructive"
+          >
+            {error}
+          </p>
+        )}
         {busy ? (
-          <Button className="w-full" type="button" variant="outline" onClick={() => controller.current?.abort()}>
+          <Button
+            className="w-full"
+            type="button"
+            variant="outline"
+            onClick={() => controller.current?.abort()}
+          >
             {t("ai.stop")}
           </Button>
         ) : addingPhotos ? (
           <>
-            <Button className="w-full" onClick={() => onPhase("review")} type="button" size="lg">
+            <Button
+              className="w-full"
+              onClick={() => onPhase("review")}
+              type="button"
+              size="lg"
+            >
               <Icons.next />
               {t("managed.noMorePhotos")}
             </Button>
-            <PhotoInputButton disabled={!uid} label={t("managed.addPhotos")} onFiles={(files) => void organizePhotos(files)} />
+            <PhotoInputButton
+              disabled={!uid}
+              label={t("managed.addPhotos")}
+              onFiles={selectPhotos}
+            />
           </>
         ) : (
           <>
-            <Button className="w-full" aria-label={t("managed.organize")} type="button"
-              disabled={!input.trim() || !uid} onClick={() => void organizeText()} size="lg">
+            <Button
+              className="w-full"
+              aria-label={t("managed.organize")}
+              type="button"
+              disabled={!input.trim() || !uid}
+              onClick={() => void organizeText()}
+              size="lg"
+            >
               <Icons.generate />
               {t("managed.organize")}
-              <CreditBadge label={t("managed.expectedPoints", { points: 5 })}
-                value={t("managed.expectedShort", { points: 5 })} />
+              <CreditBadge
+                label={t("managed.expectedPoints", { points: 5 })}
+                value={t("managed.expectedShort", { points: 5 })}
+              />
             </Button>
-            <PhotoInputButton disabled={!uid} label={t("managed.photo")} onFiles={(files) => void organizePhotos(files)} />
+            <PhotoInputButton
+              disabled={!uid}
+              label={t("managed.photo")}
+              onFiles={selectPhotos}
+            />
             {review && (
-              <Button onClick={() => onPhase("review")} type="button" variant="ghost">
+              <Button
+                onClick={() => onPhase("review")}
+                type="button"
+                variant="ghost"
+              >
                 {t("ai.viewResults")}
               </Button>
             )}
