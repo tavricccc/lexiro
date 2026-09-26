@@ -11,6 +11,7 @@ import {
 } from "@/components/ai/use-ai-generation";
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
 import {
   ListActionRow,
@@ -22,6 +23,7 @@ import { EmptyState, LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { supplementTask } from "@/src/lib/ai/tasks";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { useLibraryStore } from "@/stores/library-store";
@@ -63,17 +65,27 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         onResume={saved.resume}
       />
     );
-  return <SupplementFlow setId={setId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+  return (
+    <SupplementFlow
+      setId={setId}
+      draft={saved.draft}
+      persistence={saved.persistence}
+      update={saved.update}
+      clear={saved.clear}
+    />
+  );
 }
 
 function SupplementFlow({
   setId,
   draft,
+  persistence,
   update,
   clear,
 }: {
   setId: string;
   draft: SupplementDraft;
+  persistence: DraftPersistence;
   update: (patch: Partial<SupplementDraft>) => void;
   clear: () => void;
 }) {
@@ -165,6 +177,7 @@ function SupplementFlow({
   if (phase === "review")
     return (
       <fieldset disabled={saving} className="min-w-0 space-y-7">
+        <DraftSaveStatus status={persistence} />
         <ListSection header={t("supplement.resultsHeader")}>
           {items.map((draft) => (
             <SupplementResult draft={draft} key={draft.word} />
@@ -203,6 +216,7 @@ function SupplementFlow({
 
   return (
     <div className="space-y-7">
+      <DraftSaveStatus status={persistence} />
       <p className="type-hint">{t("supplement.intro")}</p>
 
       <ListSection header={t("supplement.wordsHeader")}>

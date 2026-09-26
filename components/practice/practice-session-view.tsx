@@ -7,8 +7,10 @@ import { ReviewCard } from "@/components/practice/review-card";
 import { QuestionCard } from "@/components/practice/question-card";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { timing } from "@/lib/motion-timing";
 
 const practiceTransition = timing("control", "arrive");
@@ -23,6 +25,7 @@ export function PracticeSessionView({
   index,
   total,
   progressRatio,
+  persistence,
   revealed,
   selected,
   marked,
@@ -40,6 +43,7 @@ export function PracticeSessionView({
   index: number;
   total: number;
   progressRatio: number;
+  persistence: DraftPersistence;
   revealed: boolean;
   selected: number | null;
   marked: boolean;
@@ -59,25 +63,37 @@ export function PracticeSessionView({
     // the room it needs and the controls end up where a thumb already is,
     // instead of floating in the middle of a half-empty page.
     <div className="mx-auto flex min-h-[calc(100dvh-6rem)] max-w-3xl flex-col">
-      <div className="mb-4 flex items-center justify-between text-sm text-muted-foreground">
-        <button
-          type="button"
-          onClick={onLeave}
-          className="-my-2 inline-flex min-h-11 items-center rounded-lg px-2 transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40"
+      <div className="sticky top-[var(--safe-top)] z-20 bg-[var(--surface-stage)] pb-3 pt-1">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 text-sm text-muted-foreground">
+          <button
+            type="button"
+            onClick={onLeave}
+            className="-my-2 inline-flex min-h-11 items-center rounded-lg px-2 transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40"
+          >
+            {t("common.back")}
+          </button>
+          <span className="tabular-nums">
+            {t("practice.progress", { current: index + 1, total })}
+          </span>
+        </div>
+        <div
+          aria-label={t("practice.progressLabel")}
+          aria-valuemin={0}
+          aria-valuemax={total}
+          aria-valuenow={Math.round(progressRatio * total)}
+          className="mt-1 h-1 overflow-hidden rounded-full bg-border"
+          role="progressbar"
         >
-          {t("common.back")}
-        </button>
-        <span className="tabular-nums">
-          {t("practice.progress", { current: index + 1, total })}
-        </span>
-      </div>
-      <div className="h-1 overflow-hidden rounded-full bg-border" aria-hidden>
-        <motion.div
-          className="h-full origin-left rounded-full bg-primary"
-          initial={false}
-          animate={{ scaleX: progressRatio }}
-          transition={practiceTransition}
-        />
+          <motion.div
+            className="h-full origin-left rounded-full bg-primary"
+            initial={false}
+            animate={{ scaleX: progressRatio }}
+            transition={practiceTransition}
+          />
+        </div>
+        <div className="mt-1 text-right">
+          <DraftSaveStatus status={persistence} />
+        </div>
       </div>
       <motion.div
         className="flex flex-1 flex-col"

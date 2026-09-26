@@ -17,10 +17,12 @@ import {
 } from "@/components/library/input-organizer";
 import { ListActionRow, ListSection } from "@/components/ui/list";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { setWordDrafts } from "@/src/lib/word-edit";
 import { useLibraryStore, type WordDraftInput } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -62,17 +64,27 @@ export function SetWordAddition({ setId }: { setId: string }) {
         onResume={saved.resume}
       />
     );
-  return <AddWordsFlow setId={setId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+  return (
+    <AddWordsFlow
+      setId={setId}
+      draft={saved.draft}
+      persistence={saved.persistence}
+      update={saved.update}
+      clear={saved.clear}
+    />
+  );
 }
 
 function AddWordsFlow({
   setId,
   draft,
+  persistence,
   update,
   clear,
 }: {
   setId: string;
   draft: AddWordsDraft;
+  persistence: DraftPersistence;
   update: (patch: Partial<AddWordsDraft>) => void;
   clear: () => void;
 }) {
@@ -94,6 +106,7 @@ function AddWordsFlow({
 
   return (
     <div className="space-y-4">
+      <DraftSaveStatus status={persistence} />
       <div hidden={mode !== "manual"}>
         <div className="flex justify-end">
           <Button onClick={() => update({ mode: "ai" })} type="button" variant="outline">

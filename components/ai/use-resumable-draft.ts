@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 
 type DraftStatus = "checking" | "offer" | "invalid" | "active";
 
@@ -12,13 +13,22 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
   const [draft, setDraft] = useState(initial);
   const [pending, setPending] = useState<T | null>(null);
   const [status, setStatus] = useState<DraftStatus>("checking");
+  const [persistence, setPersistence] = useState<DraftPersistence>("idle");
 
   useEffect(() => {
     setStatus("checking");
     draftRef.current = initialRef.current;
     setDraft(initialRef.current);
     setPending(null);
-    const raw = localStorage.getItem(key);
+    setPersistence("idle");
+    let raw: string | null;
+    try {
+      raw = localStorage.getItem(key);
+    } catch {
+      setPersistence("error");
+      setStatus("active");
+      return;
+    }
     if (!raw) {
       setStatus("active");
       return;
@@ -46,9 +56,14 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
 
   const update = useCallback((patch: Partial<T>) => {
     const next = { ...draftRef.current, ...patch };
-    localStorage.setItem(key, JSON.stringify({ schemaVersion: 1, value: next }));
     draftRef.current = next;
     setDraft(next);
+    try {
+      localStorage.setItem(key, JSON.stringify({ schemaVersion: 1, value: next }));
+      setPersistence("saved");
+    } catch {
+      setPersistence("error");
+    }
   }, [key]);
 
   const resume = useCallback(() => {
@@ -56,18 +71,31 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
     draftRef.current = saved;
     setDraft(saved);
     setPending(null);
+    setPersistence("saved");
     setStatus("active");
   }, [pending]);
 
   const restart = useCallback(() => {
-    localStorage.removeItem(key);
+    try {
+      localStorage.removeItem(key);
+      setPersistence("idle");
+    } catch {
+      setPersistence("error");
+    }
     draftRef.current = initialRef.current;
     setDraft(initialRef.current);
     setPending(null);
     setStatus("active");
   }, [key]);
 
-  const clear = useCallback(() => localStorage.removeItem(key), [key]);
+  const clear = useCallback(() => {
+    try {
+      localStorage.removeItem(key);
+      setPersistence("idle");
+    } catch {
+      setPersistence("error");
+    }
+  }, [key]);
 
-  return { draft, pending, status, update, resume, restart, clear };
+  return { draft, pending, status, persistence, update, resume, restart, clear };
 }

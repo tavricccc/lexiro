@@ -22,6 +22,7 @@ export function StepFrame({
   footer,
   onBack,
   recap,
+  status,
   title,
   total,
   width = "narrow",
@@ -35,6 +36,7 @@ export function StepFrame({
   onBack?: () => void;
   /** What earlier steps settled, so the choice stays visible without editing. */
   recap?: ReactNode;
+  status?: ReactNode;
   title: string;
   total: number;
   /** A step that reviews produced content needs more room than one that asks. */
@@ -47,14 +49,31 @@ export function StepFrame({
       <PageHeader
         back={onBack ? <BackControl onClick={onBack} /> : back}
         className="mb-5 md:mb-6"
+        actions={status}
+        footer={
+          total > 1 ? (
+            <div className="flex items-center gap-3">
+              <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                {t("common.stepOf", { current, total })}
+              </span>
+              <div
+                aria-label={t("common.flowProgress")}
+                aria-valuemin={0}
+                aria-valuemax={total}
+                aria-valuenow={current - 1}
+                className="h-1 min-w-0 flex-1 overflow-hidden rounded-full bg-border"
+                role="progressbar"
+              >
+                <div
+                  className="h-full rounded-full bg-primary"
+                  style={{ width: `${((current - 1) / total) * 100}%` }}
+                />
+              </div>
+            </div>
+          ) : undefined
+        }
         title={title}
       />
-
-      {total > 1 && (
-        <p className="mb-5 text-xs tabular-nums text-muted-foreground">
-          {t("common.stepOf", { current, total })}
-        </p>
-      )}
 
       {recap && <div className="mb-5">{recap}</div>}
 

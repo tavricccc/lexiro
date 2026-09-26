@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { BackControl } from "@/components/ui/back-control";
 import { ChoiceChecklist } from "@/components/ui/choice-checklist";
 import { ChoiceList } from "@/components/ui/choice-list";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
 import { EmptyState } from "@/components/ui/page-state";
 import {
@@ -24,6 +25,7 @@ import {
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { PRACTICE_CARD_TASKS, PRACTICE_QUESTION_TASKS } from "@/constants";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { practiceTaskHint, practiceTaskLabel } from "@/lib/practice-tasks";
 import { difficultyOptions } from "@/lib/question-options";
@@ -56,6 +58,7 @@ export function PracticeSetup({
   cardCount,
   counts,
   difficulty,
+  draftPersistence = "idle",
   hasWords,
   hasQuestionContent,
   leechOnly,
@@ -82,6 +85,7 @@ export function PracticeSetup({
   cardCount: number;
   counts: Record<PracticeTask, number>;
   difficulty: WorkspaceQuestionDifficulty;
+  draftPersistence?: DraftPersistence;
   hasWords: boolean;
   hasQuestionContent: boolean;
   leechOnly: boolean;
@@ -114,12 +118,14 @@ export function PracticeSetup({
 
   const total = trackPreset ? 1 : 2;
   const current = total;
+  const draftStatus = <DraftSaveStatus status={draftPersistence} />;
 
   if (!track) {
     return (
       <StepFrame
         back={<BackControl href={backHref} />}
         current={1}
+        status={draftStatus}
         title={t("practice.chooseTitle")}
         total={total}
       >
@@ -233,6 +239,7 @@ export function PracticeSetup({
     <StepFrame
       back={<BackControl href={backHref} />}
       current={current}
+      status={draftStatus}
       footer={needsContent || (fsrs && empty) ? emptyFooter : beginFooter}
       onBack={trackPreset ? undefined : () => onTrackChange(null)}
       recap={needsContent ? undefined : recap}

@@ -16,6 +16,7 @@ import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ChoiceList } from "@/components/ui/choice-list";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
 import { ListInputRow, ListSection } from "@/components/ui/list";
@@ -23,6 +24,7 @@ import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -57,17 +59,27 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
         onResume={saved.resume}
       />
     );
-  return <SetEditorFlow initialFolderId={initialFolderId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+  return (
+    <SetEditorFlow
+      initialFolderId={initialFolderId}
+      draft={saved.draft}
+      persistence={saved.persistence}
+      update={saved.update}
+      clear={saved.clear}
+    />
+  );
 }
 
 function SetEditorFlow({
   initialFolderId,
   draft,
+  persistence,
   update,
   clear,
 }: {
   initialFolderId?: string;
   draft: SetEditorDraft;
+  persistence: DraftPersistence;
   update: (patch: Partial<SetEditorDraft>) => void;
   clear: () => void;
 }) {
@@ -193,12 +205,15 @@ function SetEditorFlow({
     <form className="mx-auto max-w-3xl" id="new-set-form" onSubmit={submit} ref={formRef}>
       <PageHeader
         actions={
-          <Button asChild variant="outline">
-            <Link href={organizeHref}>
-              <Icons.generate />
-              {t("setEditor.aiOrganize")}
-            </Link>
-          </Button>
+          <>
+            <DraftSaveStatus status={persistence} />
+            <Button asChild variant="outline">
+              <Link href={organizeHref}>
+                <Icons.generate />
+                {t("setEditor.aiOrganize")}
+              </Link>
+            </Button>
+          </>
         }
         back={backLink}
         title={t("setEditor.createTitle")}

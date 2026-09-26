@@ -199,7 +199,7 @@ export function PracticePage({
     onChecked: useCallback(() => setResumeChecked(true), []),
   });
 
-  usePersistPracticeSession({
+  const sessionPersistence = usePersistPracticeSession({
     amount,
     answerChoices,
     complete,
@@ -318,6 +318,7 @@ export function PracticePage({
         tasks={tasks}
         track={setup.track}
         trackPreset={initialTrack}
+        draftPersistence={setup.saved.persistence}
       />
     );
   }
@@ -344,6 +345,7 @@ export function PracticePage({
       index={index}
       total={total}
       progressRatio={progressRatio}
+      persistence={sessionPersistence}
       revealed={revealed}
       selected={selected}
       marked={marked.includes(index)}

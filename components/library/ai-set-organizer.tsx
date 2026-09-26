@@ -16,12 +16,14 @@ import {
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import type { AiGenerationSnapshot } from "@/components/ai/use-ai-generation";
 import { BackControl } from "@/components/ui/back-control";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { StepFrame } from "@/components/ui/step-frame";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -67,18 +69,26 @@ export function AiSetOrganizer({
       />
     );
   return (
-    <AiSetFlow initialFolderId={initialFolderId} draft={draft.draft} update={draft.update} clear={draft.clear} />
+    <AiSetFlow
+      initialFolderId={initialFolderId}
+      draft={draft.draft}
+      persistence={draft.persistence}
+      update={draft.update}
+      clear={draft.clear}
+    />
   );
 }
 
 function AiSetFlow({
   initialFolderId,
   draft,
+  persistence,
   update,
   clear,
 }: {
   initialFolderId?: string;
   draft: AiSetDraft;
+  persistence: DraftPersistence;
   update: (patch: Partial<AiSetDraft>) => void;
   clear: () => void;
 }) {
@@ -142,6 +152,7 @@ function AiSetFlow({
               }
             : { onBack: () => update({ phase: "run" }) })}
       current={current}
+      status={<DraftSaveStatus status={persistence} />}
       title={title}
       total={4}
       width="wide"

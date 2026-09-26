@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
   PRACTICE_SESSION_STORAGE_KEY,
@@ -15,6 +15,7 @@ import type {
 } from "@/types";
 import type { QuestionItem } from "@/components/practice/practice-content";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { entriesFromIds } from "@/components/practice/practice-queue";
 import {
   canRestorePracticeSession,
@@ -48,7 +49,13 @@ export function useRestorePracticeSession({
   useEffect(() => {
     if (restoreAttempted.current || !enabled) return;
     restoreAttempted.current = true;
-    const raw = localStorage.getItem(PRACTICE_SESSION_STORAGE_KEY);
+    let raw: string | null;
+    try {
+      raw = localStorage.getItem(PRACTICE_SESSION_STORAGE_KEY);
+    } catch {
+      onChecked();
+      return;
+    }
     const saved = parsePracticeSession(raw);
     if (!saved) {
       if (raw) localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
@@ -134,10 +141,16 @@ export function usePersistPracticeSession({
   tasks: PracticeTask[];
   wrong: number[];
 }) {
+  const [persistence, setPersistence] = useState<DraftPersistence>("idle");
   useEffect(() => {
     if (!started) return;
     if (complete) {
-      localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+      try {
+        localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+        setPersistence("idle");
+      } catch {
+        setPersistence("error");
+      }
       return;
     }
     const entryIds = entries.map((entry) => entry.id);
@@ -162,10 +175,12 @@ export function usePersistPracticeSession({
         (_, position) => answerChoices[position] ?? null,
       ),
     };
-    localStorage.setItem(
-      PRACTICE_SESSION_STORAGE_KEY,
-      JSON.stringify(snapshot),
-    );
+    try {
+      localStorage.setItem(PRACTICE_SESSION_STORAGE_KEY, JSON.stringify(snapshot));
+      setPersistence("saved");
+    } catch {
+      setPersistence("error");
+    }
   }, [
     amount,
     answerChoices,
@@ -185,4 +200,5 @@ export function usePersistPracticeSession({
     tasks,
     wrong,
   ]);
+  return persistence;
 }

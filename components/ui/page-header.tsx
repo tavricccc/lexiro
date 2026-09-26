@@ -14,12 +14,14 @@ export function PageHeader({
   actions,
   back,
   className,
+  footer,
   lead,
   title,
 }: {
   actions?: ReactNode;
   back?: ReactNode;
   className?: string;
+  footer?: ReactNode;
   lead?: ReactNode;
   title: string;
 }) {
@@ -35,6 +37,7 @@ export function PageHeader({
           <div className="flex flex-wrap items-center gap-2">{actions}</div>
         )}
       </div>
+      {footer}
     </header>
   );
 }

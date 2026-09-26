@@ -27,8 +27,10 @@ import {
   ListSection,
 } from "@/components/ui/list";
 import { StepActions } from "@/components/ui/step-actions";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { t } from "@/lib/i18n";
+import type { DraftPersistence } from "@/lib/draft-persistence";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import {
   difficultyLabel,
@@ -86,17 +88,27 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         onResume={saved.resume}
       />
     );
-  return <QuestionGeneratorFlow setId={setId} draft={saved.draft} update={saved.update} clear={saved.clear} />;
+  return (
+    <QuestionGeneratorFlow
+      setId={setId}
+      draft={saved.draft}
+      persistence={saved.persistence}
+      update={saved.update}
+      clear={saved.clear}
+    />
+  );
 }
 
 function QuestionGeneratorFlow({
   setId,
   draft,
+  persistence,
   update,
   clear,
 }: {
   setId?: string;
   draft: QuestionDraft;
+  persistence: DraftPersistence;
   update: (patch: Partial<QuestionDraft>) => void;
   clear: () => void;
 }) {
@@ -164,6 +176,7 @@ function QuestionGeneratorFlow({
   const back = (
     <BackControl href={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
   );
+  const draftStatus = <DraftSaveStatus status={persistence} />;
   const recap = (
     <StepRecap
       items={[
@@ -186,6 +199,7 @@ function QuestionGeneratorFlow({
       <StepFrame
         back={back}
         current={1}
+        status={draftStatus}
         total={3}
         title={t("questions.generateTitle")}
         footer={
@@ -280,6 +294,7 @@ function QuestionGeneratorFlow({
     return (
       <StepFrame
         current={3}
+        status={draftStatus}
         total={3}
         title={t("questions.stepReview")}
         width="wide"
@@ -334,6 +349,7 @@ function QuestionGeneratorFlow({
   return (
     <StepFrame
       current={2}
+      status={draftStatus}
       total={3}
       title={t("questions.stepRun")}
       width="wide"
