@@ -35,7 +35,10 @@ export function SetWordFields({
 }) {
   const errors = form.formState.errors.words?.[index];
   const set = (field: "word" | "pos" | "meaningZh", value: string) =>
-    form.setValue(`words.${index}.${field}`, value, { shouldDirty: true });
+    form.setValue(`words.${index}.${field}`, value, {
+      shouldDirty: true,
+      shouldValidate: form.formState.isSubmitted,
+    });
   const missing = errors?.word || errors?.pos || errors?.meaningZh;
 
   return (
@@ -46,18 +49,24 @@ export function SetWordFields({
       <ListInputRow
         autoFocus={autoFocus}
         label={t("setEditor.word")}
+        name={`words.${index}.word`}
+        invalid={Boolean(errors?.word)}
         onChange={(value) => set("word", value)}
         placeholder={t("setEditor.wordPlaceholder")}
         value={form.watch(`words.${index}.word`)}
       />
       <ListInputRow
         label={t("setEditor.pos")}
+        name={`words.${index}.pos`}
+        invalid={Boolean(errors?.pos)}
         onChange={(value) => set("pos", value)}
         placeholder={t("setEditor.posPlaceholder")}
         value={form.watch(`words.${index}.pos`)}
       />
       <ListInputRow
         label={t("setEditor.meaning")}
+        name={`words.${index}.meaningZh`}
+        invalid={Boolean(errors?.meaningZh)}
         onChange={(value) => set("meaningZh", value)}
         placeholder={t("setEditor.meaningPlaceholder")}
         value={form.watch(`words.${index}.meaningZh`)}

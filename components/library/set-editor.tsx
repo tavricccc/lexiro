@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -72,6 +72,7 @@ function SetEditorFlow({
   clear: () => void;
 }) {
   const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
   const { state, status, saveSet } = useLibraryStore();
   const entry = draft.entry;
   const form = useForm<SetFormValues>({
@@ -108,6 +109,20 @@ function SetEditorFlow({
         }),
       });
     }
+  }, (invalid) => {
+    const wordErrors = Array.isArray(invalid.words) ? invalid.words : [];
+    const fieldName = invalid.setName
+      ? "setName"
+      : wordErrors.flatMap((word, index) =>
+          (["word", "pos", "meaningZh"] as const)
+            .filter((key) => word?.[key])
+            .map((key) => `words.${index}.${key}`),
+        )[0];
+    const field = fieldName && formRef.current?.elements.namedItem(fieldName);
+    if (field instanceof HTMLElement) {
+      field.focus({ preventScroll: true });
+      field.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
   });
 
   const homeFolderId = initialFolderId;
@@ -130,9 +145,14 @@ function SetEditorFlow({
         <ListInputRow
           label={t("setEditor.name")}
           onChange={(value) =>
-            form.setValue("setName", value, { shouldDirty: true })
+            form.setValue("setName", value, {
+              shouldDirty: true,
+              shouldValidate: form.formState.isSubmitted,
+            })
           }
           placeholder={t("setEditor.namePlaceholder")}
+          name="setName"
+          invalid={Boolean(errors.setName)}
           value={setName}
         />
       </ListSection>
@@ -170,7 +190,7 @@ function SetEditorFlow({
   }
 
   return (
-    <form className="mx-auto max-w-3xl" id="new-set-form" onSubmit={submit}>
+    <form className="mx-auto max-w-3xl" id="new-set-form" onSubmit={submit} ref={formRef}>
       <PageHeader
         actions={
           <Button asChild variant="outline">
@@ -223,6 +243,11 @@ function SetEditorFlow({
         </div>
 
         <StepActions width="wide">
+          {form.formState.isSubmitted && (errors.setName || errors.words) && (
+            <p role="alert" className="text-sm text-destructive">
+              {t("setEditor.fixErrors")}
+            </p>
+          )}
           {errors.root?.message && (
             <p role="alert" className="text-sm text-destructive">
               {errors.root.message}

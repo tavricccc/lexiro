@@ -481,11 +481,13 @@ export function ListInputRow({
   autoFocus,
   block,
   disabled,
+  invalid,
   inputMode,
   label,
   max,
   maxLength,
   min,
+  name,
   onChange,
   placeholder,
   required,
@@ -497,11 +499,13 @@ export function ListInputRow({
   /** A sentence needs the width of the row, so its label sits above it. */
   block?: boolean;
   disabled?: boolean;
+  invalid?: boolean;
   inputMode?: "numeric" | "email" | "text";
   label: string;
   max?: number;
   maxLength?: number;
   min?: number;
+  name?: string;
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
@@ -511,6 +515,7 @@ export function ListInputRow({
 }) {
   const field = (
     <input
+      aria-invalid={invalid || undefined}
       className={cn(
         "type-row min-w-0 flex-1 border-0 bg-transparent p-0 outline-none placeholder:text-muted-foreground/60 disabled:opacity-45",
         block ? "w-full" : "text-right",
@@ -521,6 +526,7 @@ export function ListInputRow({
       max={max}
       maxLength={maxLength}
       min={min}
+      name={name}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
       required={required}

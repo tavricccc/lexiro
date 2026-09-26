@@ -12,6 +12,8 @@ export const zhTW = {
     addWordsDescription: "上次新增單字的內容還留著，可以接著完成。",
     supplementDescription: "上次補充詞義的結果還留著，可以繼續檢查。",
     invalidDescription: "這份草稿無法開啟。你可以明確選擇重新開始。",
+    saved: "草稿已儲存，離開後可接續",
+    saveFailed: "草稿無法儲存，離開後可能無法接續。請檢查瀏覽器儲存空間。",
   },
   app: {
     name: "Lexiro",
@@ -505,6 +507,7 @@ export const zhTW = {
     saving: "正在儲存…",
     cancel: "取消",
     required: "請填寫這個欄位",
+    fixErrors: "還有欄位沒填完，已帶你到第一個需要補齊的位置。",
     duplicateName: "已有同名單字集",
     saved: "已儲存",
     capturedTitle: "已加入 {count} 個詞義",
