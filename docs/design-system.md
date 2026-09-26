@@ -178,10 +178,14 @@ into the card's own border would draw the same corner twice.
 
 ## Spacing
 
-`--section-gap` (2.25rem) and `--block-gap` (1.5rem) back the `.section-gap` and
-`.block-gap` utilities. Use `.section-gap` between the major sections of a page
-instead of picking a fresh `mt-8` / `mt-10` / `mt-12` each time — the reason the
-old pages drifted is that every screen invented its own rhythm.
+The mobile rhythm is intentionally compact: `--page-header-gap` is 0.5rem
+between the back row, title row and optional progress row;
+`--page-content-gap` is 1.25rem from that header to the first task;
+`--section-gap` is 1.5rem between major sections; `--block-gap` is 1rem inside
+one task. From tablet width, those values grow to 0.75rem, 1.5rem, 2rem and
+1.5rem respectively. `PageHeader` owns the first two; `.section-gap` and
+`.block-gap` cover the others. Keep the safe-area inset in the app shell so
+phone content starts below the status bar without an extra page-level offset.
 
 ## Motion
 

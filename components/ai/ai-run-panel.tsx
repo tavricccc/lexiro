@@ -101,7 +101,7 @@ export function AiRunPanel<T>({
           ? t("ai.needsAttention")
           : t("ai.ready");
   return (
-    <div className="space-y-7">
+    <div className="space-y-[var(--section-gap)]">
       <GenerationControls
         count={billableCount}
         disabled={running}

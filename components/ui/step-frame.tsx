@@ -48,7 +48,6 @@ export function StepFrame({
     >
       <PageHeader
         back={onBack ? <BackControl onClick={onBack} /> : back}
-        className="mb-5 md:mb-6"
         actions={status}
         footer={
           total > 1 ? (

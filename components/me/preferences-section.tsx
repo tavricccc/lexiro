@@ -55,7 +55,7 @@ export function PreferencesSection() {
     : "system";
 
   return (
-    <div className="space-y-9">
+    <div className="space-y-[var(--section-gap)]">
       <ListSection header={t("settings.appearance")}>
         <ListPicker
           label={t("settings.theme")}

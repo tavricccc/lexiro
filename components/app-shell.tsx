@@ -82,7 +82,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       <div className={cn("min-w-0", !practiceActive && "md:col-start-2")}>
         <main
-          className={`app-viewport pt-[max(1rem,var(--safe-top))] md:pb-12 md:pt-6 ${
+          className={`app-viewport pt-[max(0.75rem,var(--safe-top))] md:pb-12 md:pt-6 ${
             showMobileNavigation
               ? "pb-[calc(6.5rem+min(0.625rem,var(--safe-bottom)))]"
               : "pb-[max(2rem,var(--safe-bottom))]"

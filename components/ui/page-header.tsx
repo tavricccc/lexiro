@@ -26,7 +26,7 @@ export function PageHeader({
   title: string;
 }) {
   return (
-    <header className={cn("page-header mb-6 space-y-3 md:mb-8", className)}>
+    <header className={cn("page-header mb-[var(--page-content-gap)] space-y-[var(--page-header-gap)]", className)}>
       {back && <div className="-ml-2">{back}</div>}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2.5">

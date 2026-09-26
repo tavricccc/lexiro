@@ -19,10 +19,10 @@ import { t } from "@/lib/i18n";
 export function MePage() {
   const account = useManagedAccount();
   return (
-    <div className="mx-auto max-w-2xl space-y-9 pb-4">
+    <div className="mx-auto max-w-2xl pb-4">
       <RootPageHeader title={t("me.title")} />
       <AccountRow />
-      <ListSection>
+      <ListSection className="section-gap">
         <ListNavRow
           href="/app/me/preferences"
           icon={Icons.settings}
