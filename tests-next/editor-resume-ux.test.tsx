@@ -10,9 +10,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { WordEditPage } from "@/components/library/word-edit-page";
 import { WordEditor } from "@/components/library/word-editor";
+import { SetMetadata } from "@/components/library/set-metadata";
 import { QuestionEditor } from "@/components/questions/question-editor";
 import { ReadingEditor } from "@/components/questions/reading-editor";
 import { emptyLibraryState } from "@/src/lib/library-repository";
+import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { useLibraryStore } from "@/stores/library-store";
 import type { ReadingPack } from "@/types";
@@ -49,6 +51,31 @@ afterEach(() => {
 });
 
 describe("interrupted manual edits", () => {
+  it("restores an unsaved set name after leaving metadata settings", async () => {
+    const state = emptyLibraryState();
+    state.sets = [
+      {
+        id: "set",
+        setName: "Original",
+        folderId: UNCATEGORIZED_FOLDER_ID,
+        createdAt: "2026-09-26",
+        updatedAt: "2026-09-26",
+      },
+    ];
+    useLibraryStore.setState({ state });
+
+    const first = render(<SetMetadata setId="set" />);
+    const name = await screen.findByRole("textbox", { name: "單字集名稱" });
+    fireEvent.change(name, { target: { value: "Renamed draft" } });
+    first.unmount();
+
+    render(<SetMetadata setId="set" />);
+    fireEvent.click(await screen.findByRole("button", { name: "接續上次" }));
+    expect(screen.getByRole("textbox", { name: "單字集名稱" })).toHaveValue(
+      "Renamed draft",
+    );
+  });
+
   it("focuses the first incomplete sense from the fixed word save action", () => {
     render(
       <WordEditor

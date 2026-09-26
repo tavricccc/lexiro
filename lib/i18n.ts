@@ -9,6 +9,7 @@ export const zhTW = {
     wordEditDescription: "這個單字還有未儲存的修改，可以從上次停下的位置繼續。",
     readingEditDescription: "閱讀題還有未儲存的修改，可以從上次停下的位置繼續。",
     questionEditDescription: "題目還有未儲存的修改，可以從上次停下的位置繼續。",
+    setMetadataDescription: "單字集名稱或位置還有未儲存的修改，可以接著完成。",
     leave: "稍後繼續",
     questionDescription: "上次的出題設定和已生成題目都留著，可以繼續校對。",
     practiceDescription:
