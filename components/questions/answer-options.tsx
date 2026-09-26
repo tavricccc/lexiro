@@ -58,6 +58,7 @@ export function AnswerOptions({
             <Input
               aria-label={`${labelPrefix}${t("questions.optionLabel", { index: index + 1 })}`}
               className="bg-card"
+              name={`${name}-option-${index}`}
               onChange={(event) => onOptionChange(index, event.target.value)}
               placeholder={t("questions.optionLabel", { index: index + 1 })}
               value={option}

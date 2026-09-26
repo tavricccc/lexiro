@@ -9,13 +9,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { AnswerOptions } from "@/components/questions/answer-options";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
+import { LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
@@ -28,6 +32,7 @@ import {
   sentenceStyleOptions,
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
 
 interface Values {
   answerIndex: number;
@@ -40,8 +45,7 @@ interface Values {
 }
 
 export function QuestionEditor({ questionId }: { questionId: string }) {
-  const router = useRouter();
-  const { state, saveQuestion } = useLibraryStore();
+  const state = useLibraryStore((store) => store.state);
   const current = state.questions.find((entry) => entry.id === questionId);
   const senses = useMemo(
     () =>
@@ -53,39 +57,78 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
       ),
     [state.words],
   );
+  return (
+    <QuestionEditorForm
+      key={`${questionId}:${current?.updatedAt ?? senses[0]?.value ?? "new"}`}
+      questionId={questionId}
+      current={current}
+      senses={senses}
+    />
+  );
+}
+
+function QuestionEditorForm({
+  questionId,
+  current,
+  senses,
+}: {
+  questionId: string;
+  current: LibraryQuestion | undefined;
+  senses: { label: string; value: string }[];
+}) {
+  const router = useRouter();
+  const uid = useCloudStore((store) => store.user?.uid);
+  const { state, saveQuestion } = useLibraryStore();
+  const initial: Values =
+    current && current.kind !== "reading"
+      ? {
+          answerIndex: current.answerIndex,
+          difficulty: current.difficulty,
+          explanation: current.explanation ?? "",
+          options: [0, 1, 2, 3].map((index) => current.options[index] ?? ""),
+          prompt: current.prompt,
+          questionStyle: current.questionStyle,
+          source: senseKey(current.wordKey, current.senseId),
+        }
+      : {
+          answerIndex: 0,
+          difficulty: 1,
+          explanation: "",
+          options: ["", "", "", ""],
+          prompt: "",
+          questionStyle: "vocabulary",
+          source: senses[0]?.value ?? "",
+        };
+  const saved = useResumableDraft<Values>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:edit-question:${questionId}:${current?.updatedAt ?? "new"}`,
+    initial,
+  );
   const form = useForm<Values>({
-    defaultValues: {
-      answerIndex: 0,
-      difficulty: 1,
-      explanation: "",
-      options: ["", "", "", ""],
-      prompt: "",
-      questionStyle: "vocabulary",
-      source: senses[0]?.value ?? "",
-    },
+    defaultValues: initial,
   });
   const answerIndex = form.watch("answerIndex");
   const options = form.watch("options");
 
   useEffect(() => {
-    if (!current || current.kind === "reading") return;
-    form.reset({
-      answerIndex: current.answerIndex,
-      difficulty: current.difficulty,
-      explanation: current.explanation ?? "",
-      options: [0, 1, 2, 3].map((index) => current.options[index] ?? ""),
-      prompt: current.prompt,
-      questionStyle: current.questionStyle,
-      source: senseKey(current.wordKey, current.senseId),
+    if (saved.status !== "active") return;
+    const subscription = form.watch(() => {
+      form.clearErrors("root");
+      saved.update(form.getValues());
     });
-  }, [current, form]);
-
-  useEffect(() => {
-    if (!current && senses[0] && !form.getValues("source"))
-      form.setValue("source", senses[0].value);
-  }, [current, form, senses]);
+    return () => subscription.unsubscribe();
+  }, [form, saved.status, saved.update]);
 
   const submit = form.handleSubmit(async (values) => {
+    const missingOption = values.options.findIndex((option) => !option.trim());
+    if (missingOption >= 0) {
+      form.setError("root", { message: t("questions.optionsRequired") });
+      document
+        .querySelector<HTMLInputElement>(
+          `input[name="answerIndex-option-${missingOption}"]`,
+        )
+        ?.focus();
+      return;
+    }
     const source = parseSenseKey(values.source, state.words);
     if (!source) {
       form.setError("source", { message: t("questions.unknownSense") });
@@ -122,12 +165,40 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
       });
       return;
     }
+    saved.clear();
     router.push(LIBRARY_QUESTIONS_HREF);
   });
 
+  if (saved.status === "checking") return <LoadingState />;
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.questionEditDescription",
+        )}
+        invalid={saved.status === "invalid"}
+        onRestart={() => {
+          saved.restart();
+          form.reset(initial);
+        }}
+        onResume={() => {
+          form.reset(saved.pending!);
+          saved.resume();
+        }}
+      />
+    );
+
   return (
-    <form className="mx-auto max-w-3xl" id="question-editor-form" onSubmit={submit}>
+    <form
+      className="mx-auto max-w-3xl"
+      id="question-editor-form"
+      onSubmit={submit}
+    >
       <PageHeader
+        actions={<DraftSaveStatus status={saved.persistence} />}
         back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
         title={t("questions.edit")}
       />
@@ -182,16 +253,26 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
         </Field>
       </div>
 
-      {form.formState.errors.root && (
-        <p className="mt-6 text-sm text-destructive" role="alert">
-          {form.formState.errors.root.message}
-        </p>
-      )}
-
       <StepActions width="wide">
-        <Button form="question-editor-form" size="lg" type="submit">
+        {(form.formState.errors.root ||
+          form.formState.errors.source ||
+          form.formState.errors.prompt) && (
+          <p className="text-sm text-destructive" role="alert">
+            {form.formState.errors.root?.message ??
+              form.formState.errors.source?.message ??
+              t("questions.fixErrors")}
+          </p>
+        )}
+        <Button
+          disabled={form.formState.isSubmitting}
+          form="question-editor-form"
+          size="lg"
+          type="submit"
+        >
           <Icons.success />
-          {t("questions.save")}
+          {t(
+            form.formState.isSubmitting ? "setEditor.saving" : "questions.save",
+          )}
         </Button>
       </StepActions>
     </form>

@@ -2,15 +2,23 @@
 
 import type { ReadingPack } from "@/types";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-import { AnswerOptions } from "@/components/questions/answer-options";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import {
+  ReadingChildEditor,
+  type ReadingChildDraft,
+  type ReadingChildErrors,
+} from "@/components/questions/reading-child-editor";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
+import { LoadingState } from "@/components/ui/page-state";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
@@ -20,22 +28,16 @@ import { randomUUID } from "@/src/lib/id";
 import { parseSenseKey, senseKey } from "@/src/lib/library";
 import { difficultyOptions } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
+import { useCloudStore } from "@/stores/cloud-store";
 
-interface ChildDraft {
-  answerIndex: number;
-  id?: string;
-  options: string[];
-  prompt: string;
-  source: string;
+interface ReadingFormDraft {
+  title: string;
+  passage: string;
+  difficulty: 1 | 2 | 3;
+  children: ReadingChildDraft[];
 }
 
-interface ChildErrors {
-  options?: string;
-  prompt?: string;
-  source?: string;
-}
-
-const emptyChild = (): ChildDraft => ({
+const emptyChild = (): ReadingChildDraft => ({
   answerIndex: 0,
   options: ["", "", "", ""],
   prompt: "",
@@ -44,6 +46,7 @@ const emptyChild = (): ChildDraft => ({
 
 export function ReadingEditor({ readingId }: { readingId: string }) {
   const router = useRouter();
+  const uid = useCloudStore((store) => store.user?.uid);
   const { state, saveQuestion } = useLibraryStore();
   const senses = useMemo(
     () =>
@@ -56,47 +59,54 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
     [state.words],
   );
 
-  const [title, setTitle] = useState("");
-  const [passage, setPassage] = useState("");
-  const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
-  const [children, setChildren] = useState<ChildDraft[]>([
-    emptyChild(),
-    emptyChild(),
-    emptyChild(),
-  ]);
-  // Validation stays quiet until the first submit, so a half-filled form is
-  // not already shouting at someone who has just started typing.
-  const [submitted, setSubmitted] = useState(false);
-  const [saveError, setSaveError] = useState("");
-
   const current = readingId
     ? state.questions.find(
         (question) => question.id === readingId && question.kind === "reading",
       )
     : undefined;
-
+  const saved = useResumableDraft<ReadingFormDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:edit-reading:${readingId}:${current?.updatedAt ?? "new"}`,
+    {
+      title: current?.kind === "reading" ? current.title : "",
+      passage: current?.kind === "reading" ? current.passage : "",
+      difficulty: current?.kind === "reading" ? current.difficulty : 2,
+      children:
+        current?.kind === "reading"
+          ? current.questions.map((child) => ({
+              answerIndex: child.answerIndex,
+              id: child.id,
+              options: [...child.options],
+              prompt: child.prompt,
+              source: senseKey(child.wordKey, child.senseId),
+            }))
+          : [emptyChild(), emptyChild(), emptyChild()],
+    },
+  );
+  const { title, passage, difficulty, children } = saved.draft;
+  const titleRef = useRef<HTMLInputElement>(null);
+  const passageRef = useRef<HTMLTextAreaElement>(null);
+  const childrenRef = useRef<HTMLDivElement>(null);
+  // Validation stays quiet until the first submit, so a half-filled form is
+  // not already shouting at someone who has just started typing.
+  const [submitted, setSubmitted] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saving, setSaving] = useState(false);
+  const savePending = useRef(false);
+  const previousDraft = useRef(saved.draft);
   useEffect(() => {
-    if (!current || current.kind !== "reading") return;
-    setTitle(current.title);
-    setPassage(current.passage);
-    setDifficulty(current.difficulty);
-    setChildren(
-      current.questions.map((child) => ({
-        answerIndex: child.answerIndex,
-        id: child.id,
-        options: [...child.options],
-        prompt: child.prompt,
-        source: senseKey(child.wordKey, child.senseId),
-      })),
-    );
-  }, [current]);
+    if (previousDraft.current === saved.draft) return;
+    previousDraft.current = saved.draft;
+    setSaveError("");
+  }, [saved.draft]);
 
-  const update = (index: number, value: Partial<ChildDraft>) =>
-    setChildren((items) =>
-      items.map((item, at) => (at === index ? { ...item, ...value } : item)),
-    );
+  const update = (index: number, value: Partial<ReadingChildDraft>) =>
+    saved.update({
+      children: children.map((item, at) =>
+        at === index ? { ...item, ...value } : item,
+      ),
+    });
 
-  const childErrors: ChildErrors[] = children.map((child) => ({
+  const childErrors: ReadingChildErrors[] = children.map((child) => ({
     options: child.options.some((option) => !option.trim())
       ? t("questions.optionsRequired")
       : undefined,
@@ -113,9 +123,31 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
     );
 
   const submit = async () => {
+    if (savePending.current) return;
     setSubmitted(true);
     setSaveError("");
-    if (!valid) return;
+    if (!valid) {
+      const firstChild = childErrors.findIndex(
+        (errors) => errors.source || errors.prompt || errors.options,
+      );
+      const section = childrenRef.current?.querySelectorAll(
+        "[data-reading-child]",
+      )[firstChild];
+      const target = titleError
+        ? titleRef.current
+        : passageError
+          ? passageRef.current
+          : childErrors[firstChild]?.source
+            ? section?.querySelector<HTMLElement>("[role=combobox]")
+            : childErrors[firstChild]?.prompt
+              ? section?.querySelector<HTMLElement>(
+                  "input[name^=reading-prompt]",
+                )
+              : section?.querySelector<HTMLElement>("input[name$=option-0]");
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({ block: "center", behavior: "smooth" });
+      return;
+    }
     const timestamp = new Date().toISOString();
     const sources = children.map((child) =>
       parseSenseKey(child.source, state.words),
@@ -149,144 +181,137 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
       updatedAt: timestamp,
       wordKeys: [...new Set(questions.map((child) => child.wordKey))],
     };
+    savePending.current = true;
+    setSaving(true);
     try {
       const result = await saveQuestion(pack);
       if (result === "duplicate") {
         setSaveError(t("questions.duplicate"));
         return;
       }
+      saved.clear();
+      router.push(LIBRARY_QUESTIONS_HREF);
     } catch (reason) {
       setSaveError(reason instanceof Error ? reason.message : String(reason));
-      return;
+    } finally {
+      savePending.current = false;
+      setSaving(false);
     }
-    router.push(LIBRARY_QUESTIONS_HREF);
   };
+
+  if (saved.status === "checking") return <LoadingState />;
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.readingEditDescription",
+        )}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
+    );
 
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader
+        actions={<DraftSaveStatus status={saved.persistence} />}
         back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
         title={t("questions.editReading")}
       />
 
-      <div className="grid gap-4">
-        <Field
-          error={submitted && titleError}
-          label={t("questions.readingTitle")}
+      <fieldset className="min-w-0 border-0 p-0" disabled={saving}>
+        <div className="grid gap-4">
+          <Field
+            error={submitted && titleError}
+            label={t("questions.readingTitle")}
+          >
+            <Input
+              onChange={(event) => saved.update({ title: event.target.value })}
+              placeholder={t("questions.readingTitle")}
+              ref={titleRef}
+              value={title}
+            />
+          </Field>
+          <Field
+            error={submitted && passageError}
+            label={t("questions.passage")}
+          >
+            <Textarea
+              className="min-h-52 text-[1.0625rem] leading-[1.75]"
+              onChange={(event) =>
+                saved.update({ passage: event.target.value })
+              }
+              placeholder={t("questions.passage")}
+              ref={passageRef}
+              value={passage}
+            />
+          </Field>
+          <SelectField
+            className="sm:max-w-56"
+            label={t("practice.difficulty")}
+            onValueChange={(value) =>
+              saved.update({ difficulty: Number(value) as 1 | 2 | 3 })
+            }
+            options={difficultyOptions()}
+            value={String(difficulty)}
+          />
+        </div>
+
+        <div className="section-gap rule-card rule-list" ref={childrenRef}>
+          {children.map((child, index) => (
+            <ReadingChildEditor
+              child={child}
+              errors={childErrors[index]}
+              index={index}
+              key={child.id ?? index}
+              onRemove={
+                children.length > 1
+                  ? () =>
+                      saved.update({
+                        children: children.filter((_, at) => at !== index),
+                      })
+                  : undefined
+              }
+              onUpdate={(patch) => update(index, patch)}
+              senses={senses}
+              submitted={submitted}
+            />
+          ))}
+        </div>
+
+        <Button
+          className="mt-6"
+          onClick={() =>
+            saved.update({ children: [...children, emptyChild()] })
+          }
+          size="sm"
+          type="button"
+          variant="secondary"
         >
-          <Input
-            onChange={(event) => setTitle(event.target.value)}
-            placeholder={t("questions.readingTitle")}
-            value={title}
-          />
-        </Field>
-        <Field error={submitted && passageError} label={t("questions.passage")}>
-          <Textarea
-            className="min-h-52 text-[1.0625rem] leading-[1.75]"
-            onChange={(event) => setPassage(event.target.value)}
-            placeholder={t("questions.passage")}
-            value={passage}
-          />
-        </Field>
-        <SelectField
-          className="sm:max-w-56"
-          label={t("practice.difficulty")}
-          onValueChange={(value) => setDifficulty(Number(value) as 1 | 2 | 3)}
-          options={difficultyOptions()}
-          value={String(difficulty)}
-        />
-      </div>
-
-      <div className="section-gap rule-card rule-list">
-        {children.map((child, index) => (
-          <section className="py-6" key={child.id ?? index}>
-            <div className="flex items-center justify-between gap-3">
-              <h2 className="type-subsection">
-                {t("questions.childPrompt", { index: index + 1 })}
-              </h2>
-              {children.length > 1 && (
-                <Button
-                  aria-label={t("questions.removeChild", { index: index + 1 })}
-                  onClick={() =>
-                    setChildren((items) =>
-                      items.filter((_, at) => at !== index),
-                    )
-                  }
-                  size="icon"
-                  type="button"
-                  variant="ghost"
-                >
-                  <Icons.delete />
-                </Button>
-              )}
-            </div>
-
-            <div className="mt-4 grid gap-4">
-              <SelectField
-                description={t("questions.linkedSense")}
-                onValueChange={(value) => update(index, { source: value })}
-                options={senses}
-                placeholder={t("questions.selectSense")}
-                value={child.source}
-              />
-              {submitted && childErrors[index].source && (
-                <p className="-mt-2 text-xs text-destructive" role="alert">
-                  {childErrors[index].source}
-                </p>
-              )}
-              <Field
-                error={submitted && childErrors[index].prompt}
-                label={t("questions.prompt")}
-              >
-                <Input
-                  onChange={(event) =>
-                    update(index, { prompt: event.target.value })
-                  }
-                  placeholder={t("questions.prompt")}
-                  value={child.prompt}
-                />
-              </Field>
-              <AnswerOptions
-                answerIndex={child.answerIndex}
-                error={submitted && childErrors[index].options}
-                labelPrefix={`${t("questions.childPrompt", { index: index + 1 })} · `}
-                name={`reading-answer-${index}`}
-                onAnswerChange={(answerIndex) => update(index, { answerIndex })}
-                onOptionChange={(optionIndex, value) =>
-                  update(index, {
-                    options: child.options.map((option, at) =>
-                      at === optionIndex ? value : option,
-                    ),
-                  })
-                }
-                options={child.options}
-              />
-            </div>
-          </section>
-        ))}
-      </div>
-
-      <Button
-        className="mt-6"
-        onClick={() => setChildren((items) => [...items, emptyChild()])}
-        size="sm"
-        type="button"
-        variant="secondary"
-      >
-        <Icons.create />
-        {t("questions.addChild")}
-      </Button>
+          <Icons.create />
+          {t("questions.addChild")}
+        </Button>
+      </fieldset>
       <StepActions width="wide">
-        <Button onClick={() => void submit()} size="lg" type="button">
+        {(saveError || (submitted && !valid)) && (
+          <p className="text-sm text-destructive" role="alert">
+            {saveError || t("questions.fixErrors")}
+          </p>
+        )}
+        <Button
+          disabled={saving}
+          onClick={() => void submit()}
+          size="lg"
+          type="button"
+        >
           <Icons.success />
-          {t("questions.save")}
+          {t(saving ? "setEditor.saving" : "questions.save")}
         </Button>
       </StepActions>
-      {(saveError || (submitted && !valid)) && (
-        <p className="mt-3 text-right text-xs text-destructive" role="alert">
-          {saveError || t("questions.fixErrors")}
-        </p>
-      )}
     </div>
   );
 }

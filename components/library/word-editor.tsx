@@ -19,17 +19,21 @@ import { t } from "@/lib/i18n";
 export function WordEditor({
   value,
   initialDraft,
+  cancelLabel,
   onDraftChange,
   onSave,
   onCancel,
 }: {
   value: WordDraft;
   initialDraft?: WordDraft;
+  cancelLabel?: string;
   onDraftChange?: (draft: WordDraft) => void;
   onSave: (value: WordDraft) => void | Promise<void>;
   onCancel: () => void;
 }) {
-  const [draft, setDraft] = useState(() => structuredClone(initialDraft ?? value));
+  const [draft, setDraft] = useState(() =>
+    structuredClone(initialDraft ?? value),
+  );
   const onDraftRef = useRef(onDraftChange);
   onDraftRef.current = onDraftChange;
   const firstDraft = useRef(true);
@@ -38,10 +42,22 @@ export function WordEditor({
       firstDraft.current = false;
       return;
     }
+    setError("");
     onDraftRef.current?.(draft);
   }, [draft]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const firstMissing = !draft.word.trim()
+    ? "word"
+    : draft.senses.length === 0
+      ? null
+      : (draft.senses.flatMap((sense, index) => [
+          ...(!sense.pos.trim() ? [`senses.${index}.pos`] : []),
+          ...(!sense.meaning.trim() ? [`senses.${index}.meaning`] : []),
+        ])[0] ?? null);
+  const incomplete = Boolean(firstMissing || !draft.senses.length);
   const updateSense = (
     index: number,
     patch: Partial<WordDraft["senses"][number]>,
@@ -53,12 +69,15 @@ export function WordEditor({
       ),
     }));
   const save = async () => {
-    if (
-      !draft.word.trim() ||
-      !draft.senses.length ||
-      draft.senses.some((sense) => !sense.pos.trim() || !sense.meaning.trim())
-    ) {
-      setError(t("setEditor.required"));
+    setSubmitted(true);
+    if (incomplete) {
+      const field = firstMissing
+        ? contentRef.current?.querySelector<HTMLInputElement>(
+            `input[name="${firstMissing}"]`,
+          )
+        : null;
+      field?.focus({ preventScroll: true });
+      field?.scrollIntoView({ block: "center", behavior: "smooth" });
       return;
     }
     setBusy(true);
@@ -72,11 +91,13 @@ export function WordEditor({
     }
   };
   return (
-    <div className="space-y-7">
+    <div className="space-y-7" ref={contentRef}>
       <ListSection>
         <ListInputRow
           disabled={busy}
+          invalid={submitted && !draft.word.trim()}
           label={t("setEditor.word")}
+          name="word"
           onChange={(word) => setDraft({ ...draft, word })}
           value={draft.word}
         />
@@ -92,13 +113,17 @@ export function WordEditor({
         >
           <ListInputRow
             disabled={busy}
+            invalid={submitted && !sense.pos.trim()}
             label={t("setEditor.pos")}
+            name={`senses.${index}.pos`}
             onChange={(pos) => updateSense(index, { pos })}
             value={sense.pos}
           />
           <ListInputRow
             disabled={busy}
+            invalid={submitted && !sense.meaning.trim()}
             label={t("setEditor.meaning")}
+            name={`senses.${index}.meaning`}
             onChange={(meaning) => updateSense(index, { meaning })}
             value={sense.meaning}
           />
@@ -147,6 +172,11 @@ export function WordEditor({
       </ListSection>
 
       <StepActions>
+        {submitted && incomplete && (
+          <p className="text-sm text-destructive" role="alert">
+            {t("wordEdit.fixErrors")}
+          </p>
+        )}
         {error && (
           <p className="text-sm text-destructive" role="alert">
             {error}
@@ -169,7 +199,7 @@ export function WordEditor({
           variant="ghost"
         >
           <Icons.cancel />
-          {t("setEditor.cancel")}
+          {cancelLabel ?? t("setEditor.cancel")}
         </Button>
       </StepActions>
     </div>

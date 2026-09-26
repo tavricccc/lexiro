@@ -58,15 +58,15 @@ export function StepFrame({
               </span>
               <div
                 aria-label={t("common.flowProgress")}
-                aria-valuemin={0}
+                aria-valuemin={1}
                 aria-valuemax={total}
-                aria-valuenow={current - 1}
+                aria-valuenow={current}
                 className="h-1 min-w-0 flex-1 overflow-hidden rounded-full bg-border"
                 role="progressbar"
               >
                 <div
                   className="h-full rounded-full bg-primary"
-                  style={{ width: `${((current - 1) / total) * 100}%` }}
+                  style={{ width: `${(current / total) * 100}%` }}
                 />
               </div>
             </div>
