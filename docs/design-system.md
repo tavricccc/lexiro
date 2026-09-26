@@ -10,6 +10,11 @@ and typographic hierarchy carry the structure instead.
 
 The palette is forest ink green on mist-white neutrals, per `PRODUCT.md`.
 
+Text inputs, textareas and boxed selects share one focused border and a soft
+outer halo. Grouped list inputs highlight their row and underline the value;
+they do not draw the global outline around the inline text area. Invalid
+focused controls use the destructive token. Keyboard focus remains visible.
+
 `app/globals.css` defines a nine-step brand ramp as `--brand-50` … `--brand-900`
 and registers it in `@theme inline`, so `bg-brand-50`, `text-brand-600` and the
 rest are real Tailwind utilities.

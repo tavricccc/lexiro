@@ -262,6 +262,36 @@ textarea {
   outline-offset: -0.125rem;
 }
 
+/* Text controls use one border and a quiet outer halo. The global keyboard
+   outline otherwise stacks with their focus ring and shadow. */
+.t-input:focus-visible,
+[data-slot="select-trigger"]:not([data-focus-surface="row"]):focus-visible {
+  outline: none;
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--brand-600) 16%, transparent);
+}
+
+.t-input[aria-invalid="true"]:focus-visible,
+[data-slot="select-trigger"][aria-invalid="true"]:focus-visible {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--destructive) 16%, transparent);
+}
+
+/* In a grouped list, the row is the control's frame. Keep the keyboard cue on
+   that row instead of drawing a clipped rectangle around the short text box. */
+.list-input-row:focus-within {
+  background: var(--surface-hover);
+}
+
+.list-input-row input:focus-visible {
+  outline: none;
+  box-shadow: inset 0 -0.125rem 0 var(--brand-600);
+}
+
+.list-input-row input[aria-invalid="true"]:focus-visible {
+  box-shadow: inset 0 -0.125rem 0 var(--destructive);
+}
+
 input,
 textarea {
   caret-color: var(--primary);

@@ -301,6 +301,7 @@ export function ListPicker({
           card inside a card whose own clipping then cut the bottom row off. */}
       <SelectTrigger
         aria-label={label}
+        data-focus-surface="row"
         className={cn(
           rowClass,
           "h-auto rounded-none border-0 bg-transparent px-0 shadow-none hover:border-transparent focus-visible:border-transparent focus-visible:ring-0",
@@ -536,7 +537,7 @@ export function ListInputRow({
   );
   if (block)
     return (
-      <div className="flex min-h-[3.25rem] items-end gap-3 py-[var(--row-padding-block)]">
+      <div className="list-input-row flex min-h-[3.25rem] items-end gap-3 py-[var(--row-padding-block)]">
         <label className="min-w-0 flex-1">
           <span className="type-row-detail block">{label}</span>
           <span className="mt-0.5 flex">{field}</span>
@@ -545,7 +546,7 @@ export function ListInputRow({
       </div>
     );
   return (
-    <div className="flex min-h-[3.25rem] items-center gap-4 py-[var(--row-padding-block)]">
+    <div className="list-input-row flex min-h-[3.25rem] items-center gap-4 py-[var(--row-padding-block)]">
       <label className="flex min-w-0 flex-1 items-center gap-4">
         <span className="type-row shrink-0">{label}</span>
         {field}
