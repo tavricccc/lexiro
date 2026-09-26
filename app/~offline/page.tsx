@@ -12,7 +12,7 @@ export default function OfflinePage() {
         <h1 className="type-page">{t("offline.title")}</h1>
         <p className="mt-3 text-ink-muted">{t("offline.description")}</p>
         <Button asChild className="mt-7">
-          <Link href="/">{t("offline.action")}</Link>
+          <Link href="/app">{t("offline.action")}</Link>
         </Button>
       </section>
     </main>

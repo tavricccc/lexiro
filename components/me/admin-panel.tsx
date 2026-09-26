@@ -54,7 +54,7 @@ export function AdminPanel() {
       )}
       <ListSection>
         <ListNavRow
-          href="/me/admin/accounts"
+          href="/app/me/admin/accounts"
           icon={Icons.account}
           label={t("admin.accounts")}
           value={
@@ -66,7 +66,7 @@ export function AdminPanel() {
           }
         />
         <ListNavRow
-          href="/me/admin/usage"
+          href="/app/me/admin/usage"
           icon={Icons.stats}
           label={t("admin.usage")}
           detail={usage.data && (usage.data.pendingUsage > 0 || usage.data.unavailableUsage > 0) ? t("admin.usageIncomplete") : undefined}
@@ -87,7 +87,7 @@ export function AdminPanel() {
           }
         />
         <ListNavRow
-          href="/me/admin/settings"
+          href="/app/me/admin/settings"
           icon={Icons.settings}
           label={t("admin.settings")}
           value={

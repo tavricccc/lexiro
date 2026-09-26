@@ -18,7 +18,7 @@ export function SetToolPage({
       <PageHeader
         back={
           <BackControl
-            href={`/sets/${setId}`}
+            href={`/app/sets/${setId}`}
             label={t("setEditor.backToSet")}
           />
         }

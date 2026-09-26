@@ -16,19 +16,33 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "motion", "radix-ui"],
   },
-  // Addresses that used to be pages. Keeping them as redirects costs nothing
-  // and keeps an installed app's history and any saved link working, without
-  // keeping the pages themselves around.
+  // Keep old workspace deep links working after the public site takes /.
   redirects: async () => [
-    { source: "/settings", destination: "/me", permanent: true },
-    // Writing a question from scratch is gone; questions come from the words
-    // you already have. Editing the ones you have has not moved.
-    { source: "/questions/new", destination: "/questions/generate", permanent: true },
+    { source: "/about", destination: "/", permanent: true },
+    { source: "/settings", destination: "/app/me", permanent: true },
     {
-      source: "/questions/reading/new",
-      destination: "/questions/generate",
+      source: "/questions/new",
+      destination: "/app/questions/generate",
       permanent: true,
     },
+    {
+      source: "/questions/reading/new",
+      destination: "/app/questions/generate",
+      permanent: true,
+    },
+    ...[
+      "library",
+      "progress",
+      "me",
+      "practice",
+      "sets",
+      "questions",
+      "sync",
+    ].map((segment) => ({
+      source: `/${segment}/:path*`,
+      destination: `/app/${segment}/:path*`,
+      permanent: true,
+    })),
   ],
 };
 

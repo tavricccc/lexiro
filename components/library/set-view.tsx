@@ -91,8 +91,8 @@ export function SetView({ setId }: { setId: string }) {
   const homeFolderId = current?.folderId;
   const libraryHref =
     homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
-      ? `/library?folderId=${encodeURIComponent(homeFolderId)}`
-      : "/library";
+      ? `/app/library?folderId=${encodeURIComponent(homeFolderId)}`
+      : "/app/library";
 
   if (status !== "ready") return <LibraryListSkeleton />;
 
@@ -127,7 +127,7 @@ export function SetView({ setId }: { setId: string }) {
               {/* The same two-way choice the home canvas offers, with this set
                   already filled in as the range. Starting from a set says which
                   material, not which kind of session. */}
-              <Link href={`/practice?set=${setId}`}>
+              <Link href={`/app/practice?set=${setId}`}>
                 <Icons.start />
                 {t("setDetail.start")}
               </Link>
@@ -218,14 +218,14 @@ export function SetView({ setId }: { setId: string }) {
           <ListSection className="mb-5">
             {questions.length > 0 && (
               <ListNavRow
-                href={`/practice?track=questions&set=${setId}`}
+                href={`/app/practice?track=questions&set=${setId}`}
                 icon={Icons.start}
                 label={t("setDetail.startQuestions")}
                 value={t("home.questionCount", { count: questions.length })}
               />
             )}
             <ListNavRow
-              href={`/questions/generate?set=${setId}`}
+              href={`/app/questions/generate?set=${setId}`}
               icon={Icons.generate}
               label={t("setDetail.generateQuestions")}
             />

@@ -142,7 +142,7 @@ function SupplementFlow({
         words: [...setWordDrafts(store.state, setId), ...rows],
       });
       clear();
-      router.push(`/sets/${setId}`);
+      router.push(`/app/sets/${setId}`);
     } catch {
       setError(t("supplement.saveFailed"));
     } finally {

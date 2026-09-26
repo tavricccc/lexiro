@@ -25,10 +25,10 @@ const presentation: Record<
   PrimaryDestination,
   { icon: typeof Icons.practice; label: TranslationKey }
 > = {
-  "/": { icon: Icons.today, label: "nav.study" },
-  "/library": { icon: Icons.library, label: "nav.library" },
-  "/progress": { icon: Icons.stats, label: "nav.progress" },
-  "/me": { icon: Icons.account, label: "nav.me" },
+  "/app": { icon: Icons.today, label: "nav.study" },
+  "/app/library": { icon: Icons.library, label: "nav.library" },
+  "/app/progress": { icon: Icons.stats, label: "nav.progress" },
+  "/app/me": { icon: Icons.account, label: "nav.me" },
 };
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -69,7 +69,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     >
       {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-card p-3 md:flex">
         <div className="mb-4 flex items-center justify-between border-b px-3 pb-5 pt-3">
-          <BrandLockup href="/" />
+          <BrandLockup href="/app" />
           <SyncIndicator />
         </div>
         <LiquidNav

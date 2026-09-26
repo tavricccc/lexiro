@@ -96,7 +96,7 @@ export function ResultPanel({
 
       <StepActions>
         <Button asChild className="w-full" size="lg">
-          <Link href="/">
+          <Link href="/app">
             <Icons.review />
             {t("practice.backHome")}
           </Link>
@@ -128,7 +128,7 @@ export function ResultPanel({
             </Button>
           ) : (
             <Button asChild variant="ghost">
-              <Link href="/me">
+              <Link href="/app/me">
                 <Icons.ai />
                 {t("managed.signInRequired")}
               </Link>

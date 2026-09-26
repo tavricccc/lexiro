@@ -17,7 +17,7 @@ export function PlanSection() {
   return (
       <ListSection footer={!user ? t("managed.signInHint") : undefined}>
         {!user && (
-          <ListNavRow href="/sync" label={t("settings.signIn")} />
+          <ListNavRow href="/app/sync" label={t("settings.signIn")} />
         )}
         {user && account.isPending && (
           <ListRow label={t("common.loading")} />

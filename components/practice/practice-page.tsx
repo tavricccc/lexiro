@@ -264,7 +264,7 @@ export function PracticePage({
   if (pendingSession) {
     return (
       <ResumeChoice
-        back={<BackControl href={initialSet ? `/sets/${initialSet}` : "/"} />}
+        back={<BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />}
         description={t("draft.practiceDescription")}
         onResume={() => {
           restoreSession(pendingSession.snapshot, pendingSession.entries);
@@ -282,7 +282,7 @@ export function PracticePage({
   if (!started && (setup.saved.status === "offer" || setup.saved.status === "invalid")) {
     return (
       <ResumeChoice
-        back={<BackControl href={initialSet ? `/sets/${initialSet}` : "/"} />}
+        back={<BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />}
         description={t(setup.saved.status === "invalid" ? "draft.invalidDescription" : "draft.practiceDescription")}
         invalid={setup.saved.status === "invalid"}
         onResume={setup.resume}
@@ -296,7 +296,7 @@ export function PracticePage({
       <PracticeSetup
         amount={amount}
         availableQuestionCount={availableQuestionCount}
-        backHref={initialSet ? `/sets/${initialSet}` : "/"}
+        backHref={initialSet ? `/app/sets/${initialSet}` : "/app"}
         cardCount={counts.flashcard}
         counts={counts}
         difficulty={difficulty}

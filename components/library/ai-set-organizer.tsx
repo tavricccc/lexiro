@@ -53,8 +53,8 @@ export function AiSetOrganizer({
     },
   );
   const newSetHref = initialFolderId
-    ? `/sets/new?folderId=${encodeURIComponent(initialFolderId)}`
-    : "/sets/new";
+    ? `/app/sets/new?folderId=${encodeURIComponent(initialFolderId)}`
+    : "/app/sets/new";
   if (draft.status === "checking") return <LoadingState />;
   if (draft.status === "offer" || draft.status === "invalid")
     return (
@@ -95,8 +95,8 @@ function AiSetFlow({
           ? 3
           : 4;
   const newSetHref = initialFolderId
-    ? `/sets/new?folderId=${encodeURIComponent(initialFolderId)}`
-    : "/sets/new";
+    ? `/app/sets/new?folderId=${encodeURIComponent(initialFolderId)}`
+    : "/app/sets/new";
 
   const save = async (rows: AssistedWordRow[]) => {
     const saved = await saveSet({
@@ -111,7 +111,7 @@ function AiSetFlow({
       })),
     });
     clear();
-    router.push(`/sets/${saved.id}`);
+    router.push(`/app/sets/${saved.id}`);
   };
 
   const inputPhase = phase === "input" || (phase === "review" && !sources);

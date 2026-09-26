@@ -22,7 +22,7 @@ export function AccountRow() {
   const initials = displayName.trim().slice(0, 1).toLocaleUpperCase() || "L";
   return (
     <section className="rule-card rule-list">
-      <Link className="t-row flex min-h-20 items-center gap-4 py-4" href="/sync">
+      <Link className="t-row flex min-h-20 items-center gap-4 py-4" href="/app/sync">
         <Avatar className="size-12 shrink-0 ring-1 ring-border">
           {cloud.user?.photoURL && (
             <AvatarImage alt="" src={cloud.user.photoURL} />

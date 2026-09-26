@@ -44,7 +44,7 @@ export function AdminAccountList() {
                 ? t("managed.monthly", { points: entry.monthly })
                 : t("managed.oneTime")
             }
-            href={`/me/admin/accounts/${encodeURIComponent(entry.uid)}`}
+            href={`/app/me/admin/accounts/${encodeURIComponent(entry.uid)}`}
             key={entry.uid}
             label={entry.email}
             value={String(entry.points)}

@@ -71,16 +71,20 @@ export function LiquidNav({
 }) {
   const router = useRouter();
   const groupId = React.useId();
-  const activeIndex = items.findIndex(
-    (item) =>
-      pathname === item.href ||
-      pathname.startsWith(`${item.href}/`) ||
-      Boolean(
-        item.activePathPrefix &&
-        (pathname === item.activePathPrefix ||
-          pathname.startsWith(`${item.activePathPrefix}/`)),
-      ),
-  );
+  let activeIndex = -1;
+  let activeLength = -1;
+  items.forEach((item, index) => {
+    for (const prefix of [item.href, item.activePathPrefix]) {
+      if (
+        prefix &&
+        (pathname === prefix || pathname.startsWith(`${prefix}/`)) &&
+        prefix.length > activeLength
+      ) {
+        activeIndex = index;
+        activeLength = prefix.length;
+      }
+    }
+  });
 
   return (
     <LayoutGroup id={groupId}>

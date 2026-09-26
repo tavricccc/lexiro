@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const CORE_ROUTES = ["/", "/practice", "/library", "/questions/generate"];
+const CORE_ROUTES = ["/app", "/app/practice", "/app/library", "/app/questions/generate"];
 
 export function AppPreload() {
   const router = useRouter();

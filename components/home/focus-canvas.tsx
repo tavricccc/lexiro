@@ -124,14 +124,14 @@ export function FocusCanvas() {
       <ListSection className="mt-5" header={t("home.startHeader")}>
         {!hasContent ? (
           <ListNavRow
-            href="/sets/new"
+            href="/app/sets/new"
             icon={Icons.create}
             label={t("home.createFirstSet")}
           />
         ) : (
           <>
             <ListNavRow
-              href="/practice?track=fsrs"
+              href="/app/practice?track=fsrs"
               icon={Icons.review}
               label={t("home.startReview")}
               value={
@@ -142,14 +142,14 @@ export function FocusCanvas() {
             />
             {questionCount > 0 && (
               <ListNavRow
-                href="/practice?track=questions"
+                href="/app/practice?track=questions"
                 icon={Icons.practice}
                 label={t("home.startQuestions")}
                 value={t("home.questionCount", { count: questionCount })}
               />
             )}
             <ListNavRow
-              href="/questions/generate"
+              href="/app/questions/generate"
               icon={Icons.generate}
               label={t("home.generateQuestions")}
               value={t("home.senseCount", { count: senseCount })}

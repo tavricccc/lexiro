@@ -21,8 +21,8 @@ import { useLibraryStore } from "@/stores/library-store";
 
 export function questionEditHref(question: { id: string; kind: string }) {
   return question.kind === "reading"
-    ? `/questions/reading/${question.id}/edit`
-    : `/questions/${question.id}/edit`;
+    ? `/app/questions/reading/${question.id}/edit`
+    : `/app/questions/${question.id}/edit`;
 }
 
 /** A searchable, editable question bank. */
@@ -123,7 +123,7 @@ export function QuestionList() {
               description={t("questions.emptyDescription")}
               action={
                 <Button asChild>
-                  <Link href="/questions/generate">
+                  <Link href="/app/questions/generate">
                     <Icons.generate />
                     {t("questions.generate")}
                   </Link>

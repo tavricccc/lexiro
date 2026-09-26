@@ -26,12 +26,12 @@ afterEach(cleanup);
 
 describe("navigation selection", () => {
   const items = [
-    { href: "/", icon: null, label: "Home" },
-    { href: "/library", icon: null, label: "Library" },
-    { href: "/me", icon: null, label: "Account" },
+    { href: "/app", icon: null, label: "Home" },
+    { href: "/app/library", icon: null, label: "Library" },
+    { href: "/app/me", icon: null, label: "Account" },
   ];
   it("keeps the actual page selected through cancelled touches and modified clicks", () => {
-    const screen = render(<LiquidNav items={items} pathname="/" />);
+    const screen = render(<LiquidNav items={items} pathname="/app" />);
     fireEvent.pointerDown(screen.getByText("Library"), {
       pointerType: "touch",
     });
@@ -46,12 +46,12 @@ describe("navigation selection", () => {
     expect(screen.getByText("Library").closest("a")).not.toHaveAttribute(
       "aria-current",
     );
-    screen.rerender(<LiquidNav items={items} pathname="/library" />);
+    screen.rerender(<LiquidNav items={items} pathname="/app/library" />);
     expect(screen.getByText("Library").closest("a")).toHaveAttribute(
       "aria-current",
       "page",
     );
-    screen.rerender(<LiquidNav items={items} pathname="/" />);
+    screen.rerender(<LiquidNav items={items} pathname="/app" />);
     expect(screen.getByText("Home").closest("a")).toHaveAttribute(
       "aria-current",
       "page",
@@ -85,42 +85,42 @@ describe("navigation selection", () => {
     );
   });
   it("treats the four primary destinations as peers and retains their child ownership", () => {
-    for (const from of ["/", "/library", "/progress", "/me"]) {
+    for (const from of ["/app", "/app/library", "/app/progress", "/app/me"]) {
       rememberRoutePath(from);
-      for (const to of ["/", "/library", "/progress", "/me"]) {
+      for (const to of ["/app", "/app/library", "/app/progress", "/app/me"]) {
         expect(consumeRouteDirection(to)).toBe("root");
       }
     }
-    rememberRoutePath("/");
-    expect(consumeRouteDirection("/practice")).toBe("child");
-    rememberRoutePath("/library");
-    expect(consumeRouteDirection("/sets/example")).toBe("child");
-    expect(adoptedParent("/sets/example")).toBe("/library");
-    expect(adoptedParent("/sync")).toBe("/me");
-    expect(adoptedParent("/me/preferences")).toBe("/me");
+    rememberRoutePath("/app");
+    expect(consumeRouteDirection("/app/practice")).toBe("child");
+    rememberRoutePath("/app/library");
+    expect(consumeRouteDirection("/app/sets/example")).toBe("child");
+    expect(adoptedParent("/app/sets/example")).toBe("/app/library");
+    expect(adoptedParent("/app/sync")).toBe("/app/me");
+    expect(adoptedParent("/app/me/preferences")).toBe("/app/me");
   });
   it("pushes into a page the destination it was opened from does not own", () => {
     // A set reached from 今天 is filed under the Library, and reading that as a
     // branch switch left the first set of a session with no animation while
     // every one opened afterwards — from the Library, after a back — had one.
-    rememberRoutePath("/");
-    expect(consumeRouteDirection("/sets/example")).toBe("child");
-    rememberRoutePath("/sets/example");
-    expect(consumeRouteDirection("/me")).toBe("back");
-    rememberRoutePath("/me");
-    expect(consumeRouteDirection("/sync")).toBe("child");
-    rememberRoutePath("/me/admin");
-    expect(consumeRouteDirection("/me/admin/usage")).toBe("child");
+    rememberRoutePath("/app");
+    expect(consumeRouteDirection("/app/sets/example")).toBe("child");
+    rememberRoutePath("/app/sets/example");
+    expect(consumeRouteDirection("/app/me")).toBe("back");
+    rememberRoutePath("/app/me");
+    expect(consumeRouteDirection("/app/sync")).toBe("child");
+    rememberRoutePath("/app/me/admin");
+    expect(consumeRouteDirection("/app/me/admin/usage")).toBe("child");
   });
   it("names the destinations primary navigation points at", () => {
-    for (const destination of ["/", "/library", "/progress", "/me"]) {
+    for (const destination of ["/app", "/app/library", "/app/progress", "/app/me"]) {
       expect(isRootRoute(destination)).toBe(true);
     }
     // A screen you arrive at from a destination is not one of them, however
     // shallow its URL looks.
-    expect(isRootRoute("/practice")).toBe(false);
-    expect(isRootRoute("/sync")).toBe(false);
-    expect(isRootRoute("/sets/example")).toBe(false);
-    expect(isRootRoute("/questions/generate")).toBe(false);
+    expect(isRootRoute("/app/practice")).toBe(false);
+    expect(isRootRoute("/app/sync")).toBe(false);
+    expect(isRootRoute("/app/sets/example")).toBe(false);
+    expect(isRootRoute("/app/questions/generate")).toBe(false);
   });
 });

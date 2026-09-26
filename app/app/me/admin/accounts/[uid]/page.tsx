@@ -9,7 +9,7 @@ export default async function AdminAccountPage({
 }) {
   const { uid } = await params;
   return (
-    <MeSubpage parentHref="/me/admin/accounts" parentLabel={t("admin.accounts")} title={t("admin.editAccount")}>
+    <MeSubpage parentHref="/app/me/admin/accounts" parentLabel={t("admin.accounts")} title={t("admin.editAccount")}>
       <AdminAccountEditor accountUid={uid} />
     </MeSubpage>
   );

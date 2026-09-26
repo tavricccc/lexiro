@@ -4,7 +4,7 @@ import { t } from "@/lib/i18n";
 
 export default function AdminSettingsPage() {
   return (
-    <MeSubpage parentHref="/me/admin" parentLabel={t("managed.admin")} title={t("admin.settings")}>
+    <MeSubpage parentHref="/app/me/admin" parentLabel={t("managed.admin")} title={t("admin.settings")}>
       <AdminSettings />
     </MeSubpage>
   );

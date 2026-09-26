@@ -202,7 +202,7 @@ export function AiRunPanel<T>({
               ? "managed.signInRequired"
               : "managed.unavailable",
           )}{" "}
-          <Link className="text-primary underline" href="/me">
+          <Link className="text-primary underline" href="/app/me">
             {t("common.account")}
           </Link>
         </p>

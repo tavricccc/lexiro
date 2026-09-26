@@ -14,7 +14,7 @@ export function ProgressSubpage({
   return (
     <div className="mx-auto max-w-2xl pb-4">
       <PageHeader
-        back={<BackControl href="/progress" label={t("progress.title")} />}
+        back={<BackControl href="/app/progress" label={t("progress.title")} />}
         title={title}
       />
       {children}

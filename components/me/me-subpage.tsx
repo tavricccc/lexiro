@@ -6,7 +6,7 @@ import { t } from "@/lib/i18n";
 
 export function MeSubpage({
   children,
-  parentHref = "/me",
+  parentHref = "/app/me",
   parentLabel = t("me.title"),
   title,
 }: {

@@ -6,7 +6,12 @@ import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GoogleMark } from "@/components/ui/google-mark";
 import { Icons } from "@/components/ui/icons";
-import { ListActionRow, ListRow, ListSection } from "@/components/ui/list";
+import {
+  ListActionRow,
+  ListNavRow,
+  ListRow,
+  ListSection,
+} from "@/components/ui/list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { syncStatusLabel } from "@/lib/sync-status";
@@ -57,13 +62,26 @@ export function AccountSection() {
   };
 
   const signIn = () =>
-    run("in", () => cloud.signIn(), () => t("me.signedIn"));
+    run(
+      "in",
+      () => cloud.signIn(),
+      () => t("me.signedIn"),
+    );
   const sync = () =>
-    run("sync", () => cloud.sync({ reconcileAccount: true }), () =>
-      useCloudStore.getState().status === "synced" ? t("me.syncComplete") : null,
+    run(
+      "sync",
+      () => cloud.sync({ reconcileAccount: true }),
+      () =>
+        useCloudStore.getState().status === "synced"
+          ? t("me.syncComplete")
+          : null,
     );
   const signOut = () =>
-    run("out", () => cloud.signOut(), () => t("me.signedOut"));
+    run(
+      "out",
+      () => cloud.signOut(),
+      () => t("me.signedOut"),
+    );
 
   const requestSignIn = () => {
     const hasGuestData =
@@ -117,6 +135,11 @@ export function AccountSection() {
       </ListSection>
 
       <ListSection>
+        <ListNavRow
+          href="/"
+          icon={Icons.reading}
+          label={t("about.accountLink")}
+        />
         {cloud.configured && !cloud.user && (
           <ListActionRow
             busy={working === "in"}

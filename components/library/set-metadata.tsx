@@ -51,7 +51,7 @@ export function SetMetadata({ setId }: { setId: string }) {
         folderId: folder,
         words: setWordDrafts(store.state, setId),
       });
-      router.push(`/sets/${setId}`);
+      router.push(`/app/sets/${setId}`);
     } catch {
       setError(t("wordEdit.saveFailed"));
       setBusy(false);

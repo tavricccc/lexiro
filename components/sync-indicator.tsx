@@ -50,7 +50,7 @@ export function SyncIndicator({ className }: { className?: string }) {
           size="icon-sm"
           variant="ghost"
         >
-          <Link aria-label={label} href="/sync">
+          <Link aria-label={label} href="/app/sync">
             <Icon className={working ? "animate-spin" : undefined} />
             {pending > 0 && (
               <span className="absolute right-1 top-1 size-1.5 rounded-full bg-warning" />

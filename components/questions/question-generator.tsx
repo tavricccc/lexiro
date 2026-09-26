@@ -74,7 +74,7 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       difficulty: 2,
     },
   );
-  const back = <BackControl href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />;
+  const back = <BackControl href={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />;
   if (saved.status === "checking") return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
@@ -162,7 +162,7 @@ function QuestionGeneratorFlow({
   }, [configKey, reset]);
 
   const back = (
-    <BackControl href={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
+    <BackControl href={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
   );
   const recap = (
     <StepRecap
@@ -196,7 +196,7 @@ function QuestionGeneratorFlow({
             </Button>
           ) : (
             <Button asChild className="w-full" size="lg">
-              <Link href={selectedSet ? `/sets/${selectedSetId}` : "/sets/new"}>
+              <Link href={selectedSet ? `/app/sets/${selectedSetId}` : "/app/sets/new"}>
                 <Icons.create />
                 {t(
                   selectedSet
@@ -320,7 +320,7 @@ function QuestionGeneratorFlow({
     return (
       <FinishPanel
         description={t("questions.generatedDescription")}
-        finishHref={setId ? `/sets/${setId}` : LIBRARY_QUESTIONS_HREF}
+        finishHref={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF}
         moreIcon={Icons.generate}
         moreLabel={t("questions.generateMore")}
         onMore={() => {

@@ -40,14 +40,14 @@ export function WordEditPage({
 
   return (
     <WordEditor
-      onCancel={() => router.push(`/sets/${setId}`)}
+      onCancel={() => router.push(`/app/sets/${setId}`)}
       onSave={async (draft) => {
         const store = useLibraryStore.getState();
         const input = prepareWordEdit(store.state, setId, key, draft);
         await store.saveSet(input);
         if (input.remaps.length)
           await useLearningStore.getState().remapSenses(input.remaps);
-        router.push(`/sets/${setId}`);
+        router.push(`/app/sets/${setId}`);
       }}
       value={{
         word: word.word,

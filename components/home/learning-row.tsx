@@ -72,7 +72,7 @@ export function LearningRows() {
                 </span>
               </span>
             }
-            href="/practice"
+            href="/app/practice"
             icon={Icons.start}
             label={
               state.sets.find((entry) => entry.id === session.setId)?.setName ??
@@ -92,7 +92,7 @@ export function LearningRows() {
             recentSets.length > 0 && (
               <Link
                 className="text-sm font-medium text-primary hover:underline"
-                href="/library"
+                href="/app/library"
               >
                 {t("home.viewAll")}
               </Link>
@@ -102,7 +102,7 @@ export function LearningRows() {
           {recentSets.map((set) => (
             <ListNavRow
               detail={t("library.senseCount", { count: set.count })}
-              href={`/sets/${set.id}`}
+              href={`/app/sets/${set.id}`}
               icon={Icons.library}
               key={set.id}
               label={set.name}

@@ -18,13 +18,13 @@ export function QuestionBankPage() {
           <Button asChild className="text-primary" size="icon" variant="ghost">
             <Link
               aria-label={t("questions.generate")}
-              href="/questions/generate"
+              href="/app/questions/generate"
             >
               <Icons.generate className="size-5" />
             </Link>
           </Button>
         }
-        back={<BackControl href="/library" label={t("library.title")} />}
+        back={<BackControl href="/app/library" label={t("library.title")} />}
         title={t("questions.title")}
       />
       <QuestionList />

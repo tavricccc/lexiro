@@ -22,7 +22,7 @@ describe("practice setup", () => {
       <PracticeSetup
         amount={10}
         availableQuestionCount={0}
-        backHref="/"
+        backHref="/app"
         cardCount={0}
         counts={counts(0)}
         difficulty="all"
@@ -48,7 +48,7 @@ describe("practice setup", () => {
     );
     expect(
       screen.getByRole("link", { name: "用 AI 產生題目" }),
-    ).toHaveAttribute("href", "/questions/generate");
+    ).toHaveAttribute("href", "/app/questions/generate");
     expect(screen.queryByRole("combobox")).toBeNull();
     expect(screen.queryByText("步驟 1 / 1")).toBeNull();
   });
@@ -58,7 +58,7 @@ describe("practice setup", () => {
     const props = {
       amount: 10,
       availableQuestionCount: 47,
-      backHref: "/",
+      backHref: "/app",
       cardCount: 0,
       counts: counts(47),
       difficulty: "all" as const,

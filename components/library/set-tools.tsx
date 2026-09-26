@@ -8,17 +8,17 @@ export function SetTools({ setId }: { setId: string }) {
   return (
     <ListSection header={t("setDetail.toolsHeader")}>
       <ListNavRow
-        href={`/sets/${setId}/add`}
+        href={`/app/sets/${setId}/add`}
         icon={Icons.create}
         label={t("setEditor.addWord")}
       />
       <ListNavRow
-        href={`/sets/${setId}/supplement`}
+        href={`/app/sets/${setId}/supplement`}
         icon={Icons.ai}
         label={t("supplement.title")}
       />
       <ListNavRow
-        href={`/sets/${setId}/settings`}
+        href={`/app/sets/${setId}/settings`}
         icon={Icons.edit}
         label={t("wordEdit.metadata")}
       />

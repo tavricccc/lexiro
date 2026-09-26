@@ -166,10 +166,10 @@ export function PracticeSetup({
   const empty = fsrs ? !cardCount : !questionCount;
   const needsContent = fsrs ? !hasWords : !hasQuestionContent;
   const emptyHref = !hasWords
-    ? "/sets/new"
+    ? "/app/sets/new"
     : fsrs
-      ? "/library"
-      : "/questions/generate";
+      ? "/app/library"
+      : "/app/questions/generate";
   const EmptyIcon = !hasWords
     ? Icons.create
     : fsrs

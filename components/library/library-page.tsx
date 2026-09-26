@@ -189,13 +189,13 @@ export function LibraryPage({
     if (currentFolderId !== ALL_FOLDER_ID)
       params.set("folderId", currentFolderId);
     const query = params.toString();
-    const target = query ? `/library?${query}` : "/library";
+    const target = query ? `/app/library?${query}` : "/app/library";
     if (`${window.location.pathname}${window.location.search}` !== target)
       window.history.replaceState(null, "", target);
   }, [currentFolderId, status]);
   const createHref = currentFolder
-    ? `/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
-    : "/sets/new";
+    ? `/app/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
+    : "/app/sets/new";
   const searching = Boolean(query.trim());
   const listEmpty =
     sets.length === 0 && (searching || childFolders.length === 0);

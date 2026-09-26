@@ -89,7 +89,7 @@ function AddWordsFlow({
       words: [...setWordDrafts(store.state, setId), ...words],
     });
     clear();
-    router.push(`/sets/${setId}`);
+    router.push(`/app/sets/${setId}`);
   };
 
   return (
@@ -106,7 +106,7 @@ function AddWordsFlow({
           onDraftChange={(manual) => update({ manual })}
           onCancel={() => {
             clear();
-            router.push(`/sets/${setId}`);
+            router.push(`/app/sets/${setId}`);
           }}
           onSave={(draft) =>
             add(

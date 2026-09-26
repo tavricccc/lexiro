@@ -84,17 +84,17 @@ export function ProgressPage() {
           value={t("progress.weekActiveValue", { days: activeDays })}
         />
         <ListNavRow
-          href="/progress/coverage"
+          href="/app/progress/coverage"
           icon={Icons.library}
           label={t("progress.coverage")}
         />
         <ListNavRow
-          href="/progress/history"
+          href="/app/progress/history"
           icon={Icons.stats}
           label={t("progress.history")}
         />
         <ListNavRow
-          href="/progress/questions"
+          href="/app/progress/questions"
           icon={Icons.practice}
           label={t("progress.questionBreakdown")}
         />

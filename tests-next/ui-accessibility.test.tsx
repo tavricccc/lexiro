@@ -132,7 +132,7 @@ describe("shared accessible states", () => {
   });
 
   it("does not leave a disabled destination keyboard-navigable", () => {
-    render(<ListNavRow disabled href="/library" label="單字" />);
+    render(<ListNavRow disabled href="/app/library" label="單字" />);
     expect(screen.getByRole("link")).toHaveAttribute("aria-disabled", "true");
     expect(screen.getByRole("link")).not.toHaveAttribute("href");
     expect(screen.getByRole("link").tabIndex).toBe(-1);

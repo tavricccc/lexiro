@@ -322,24 +322,24 @@ function WorkspaceSkeletonContent({ location }: { location: string }) {
   const [pathname, search = ""] = location.split("?");
   const searchParams = new URLSearchParams(search);
 
-  if (pathname === "/") return <HomePageSkeleton />;
-  if (pathname === "/library")
+  if (pathname === "/app") return <HomePageSkeleton />;
+  if (pathname === "/app/library")
     return searchParams.get("tab") === "questions" ? (
       <QuestionsPageSkeleton />
     ) : (
       <LibraryPageSkeleton />
     );
-  if (pathname === "/progress") return <ProgressPageSkeleton />;
-  if (pathname === "/practice") return <PracticePageSkeleton />;
-  if (pathname === "/me") return <MePageSkeleton />;
-  if (pathname === "/sync") return <SyncPageSkeleton />;
-  if (pathname === "/sets/new") return <SetEditorPageSkeleton newSet />;
-  if (pathname.endsWith("/edit") && pathname.startsWith("/sets/"))
+  if (pathname === "/app/progress") return <ProgressPageSkeleton />;
+  if (pathname === "/app/practice") return <PracticePageSkeleton />;
+  if (pathname === "/app/me") return <MePageSkeleton />;
+  if (pathname === "/app/sync") return <SyncPageSkeleton />;
+  if (pathname === "/app/sets/new") return <SetEditorPageSkeleton newSet />;
+  if (pathname.endsWith("/edit") && pathname.startsWith("/app/sets/"))
     return <SetEditorPageSkeleton newSet={false} />;
-  if (pathname.startsWith("/sets/")) return <SetViewPageSkeleton />;
-  if (pathname === "/questions/generate") return <QuestionGeneratorPageSkeleton />;
-  if (pathname.startsWith("/questions/reading/")) return <QuestionEditorPageSkeleton reading />;
-  if (pathname.startsWith("/questions/")) return <QuestionEditorPageSkeleton reading={false} />;
+  if (pathname.startsWith("/app/sets/")) return <SetViewPageSkeleton />;
+  if (pathname === "/app/questions/generate") return <QuestionGeneratorPageSkeleton />;
+  if (pathname.startsWith("/app/questions/reading/")) return <QuestionEditorPageSkeleton reading />;
+  if (pathname.startsWith("/app/questions/")) return <QuestionEditorPageSkeleton reading={false} />;
   return <ListSkeleton />;
 }
 
@@ -350,7 +350,7 @@ export function WorkspaceSkeleton() {
       return () => window.removeEventListener("popstate", onStoreChange);
     },
     () => `${window.location.pathname}${window.location.search}`,
-    () => "/",
+    () => "/app",
   );
   return <WorkspaceSkeletonContent location={location} />;
 }

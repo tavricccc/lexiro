@@ -44,8 +44,8 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
     },
   );
   const cancelHref = initialFolderId && initialFolderId !== UNCATEGORIZED_FOLDER_ID
-    ? `/library?folderId=${encodeURIComponent(initialFolderId)}`
-    : "/library";
+    ? `/app/library?folderId=${encodeURIComponent(initialFolderId)}`
+    : "/app/library";
   if (saved.status === "checking") return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
@@ -100,7 +100,7 @@ function SetEditorFlow({
         })),
       });
       clear();
-      router.push(`/sets/${saved.id}`);
+      router.push(`/app/sets/${saved.id}`);
     } catch (reason) {
       form.setError("root", {
         message: t("setEditor.saveFailed", {
@@ -113,11 +113,11 @@ function SetEditorFlow({
   const homeFolderId = initialFolderId;
   const cancelHref =
     homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
-      ? `/library?folderId=${encodeURIComponent(homeFolderId)}`
-      : "/library";
+      ? `/app/library?folderId=${encodeURIComponent(homeFolderId)}`
+      : "/app/library";
   const organizeHref = homeFolderId
-    ? `/sets/new/organize?folderId=${encodeURIComponent(homeFolderId)}`
-    : "/sets/new/organize";
+    ? `/app/sets/new/organize?folderId=${encodeURIComponent(homeFolderId)}`
+    : "/app/sets/new/organize";
 
   const metadataFields = (
     <div className="space-y-4">

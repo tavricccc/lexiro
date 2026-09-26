@@ -24,7 +24,7 @@ describe("cloud sync UI", () => {
 
   it("renders the sync indicator without an unstable external-store snapshot loop", () => {
     expect(() => renderSyncIndicator()).not.toThrow();
-    expect(screen.getByRole("link")).toHaveAttribute("href", "/sync");
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/app/sync");
   });
 
   it("renders the cloud gate without an unstable external-store snapshot loop", () => {

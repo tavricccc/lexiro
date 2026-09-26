@@ -24,12 +24,12 @@ export function MePage() {
       <AccountRow />
       <ListSection>
         <ListNavRow
-          href="/me/preferences"
+          href="/app/me/preferences"
           icon={Icons.settings}
           label={t("me.preferences")}
         />
         <ListNavRow
-          href="/me/plan"
+          href="/app/me/plan"
           icon={Icons.credit}
           label={t("managed.planTitle")}
           value={
@@ -41,13 +41,13 @@ export function MePage() {
           }
         />
         <ListNavRow
-          href="/me/data"
+          href="/app/me/data"
           icon={Icons.backup}
           label={t("settings.data")}
         />
         {account.data?.admin && (
           <ListNavRow
-            href="/me/admin"
+            href="/app/me/admin"
             icon={Icons.admin}
             label={t("managed.admin")}
           />

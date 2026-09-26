@@ -20,6 +20,12 @@ public/          Lexiro icons and Open Doodles illustration
 packages/ai-contract/ public AI input types, source parser and integer pricing arithmetic; contains no prompts or credentials
 ```
 
+`app/page.tsx` is Lexiro's public introduction at `/`, outside the workspace
+layout. `app/app/` contains the full learning workspace at `/app` and its child
+routes. `components/marketing/landing-practice.tsx` owns the public page's
+interactive sample question. `next.config.ts` redirects old workspace deep links
+to their `/app` locations; the account screen links back to the public page.
+
 Shared UI primitives live in `components/ui/` and are the only definition of a
 control's markup: `Field`/`FieldRow`, `SelectField`, `PageHeader`, the
 `LoadingState`/`EmptyState`/`ErrorState` trio, `Markdown`, and the `Icons`
@@ -43,7 +49,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `tests-next/ui-accessibility.test.tsx` — accessible empty/error instructions, retry and disabled navigation behavior.
 - `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
 - `lib/managed-client.ts` — Firebase-authenticated Worker requests, one forced token refresh on 401, Responses text streaming, per-turn token usage and administrator-only settled credit equivalents accumulated onto the session, and balance refresh events.
-- `components/library/word-editor.tsx`, `word-edit-page.tsx` — shared single-word editor with separate sense and example rows; the word label is inert and its edit control opens `/sets/[setId]/words/[wordKey]/edit`.
+- `components/library/word-editor.tsx`, `word-edit-page.tsx` — shared single-word editor with separate sense and example rows; the word label is inert and its edit control opens `/app/sets/[setId]/words/[wordKey]/edit`.
 - `components/library/set-tools.tsx`, `set-tool-page.tsx`, `set-word-addition.tsx`, `set-sense-supplement.tsx`, `set-metadata.tsx` — the saved set puts its add and maintenance actions before the word list. The add route opens manual input with an AI organization action; switching preserves both drafts. Supplement and metadata remain separate tasks. `set-editor.tsx` asks 手動輸入 or AI 生成 before opening the chosen flow. A new set uses the folder already selected by the user; it does not ask again.
 - `components/library/folder-toolbar.tsx` — exposes 新增資料夾 beside the folder path, with rename, move, delete and import in the overflow menu.
 - `components/library/set-folder-picker.tsx`, `set-move-dialog.tsx` — the hierarchical destination list for moving an existing set or editing its metadata; nested folders keep their visible path depth and 未分類 remains an explicit destination.
@@ -65,7 +71,7 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 - `components/progress/progress-page.tsx`, `progress-coverage.tsx`, `progress-history.tsx`, `progress-question-performance.tsx`, `progress-subpage.tsx` — 進度 starts with a concise overview — the streak, how much is known, what today asked for and how much of the week was practised; coverage, 14-day activity and question performance are separate drill-down routes so one screen does one analysis. Every figure is a reading of where the learning stands, never a running total of taps: the experience points and the level derived from them are gone.
 - `components/questions/question-bank-page.tsx` — 題庫 is a dedicated child route, rather than a tab competing with word-set browsing in 我的單字.
 - `components/me/plan-section.tsx` — account point balance and renewal date; an administrator sees 無限額度 instead.
-- `components/me/admin-panel.tsx`, `admin-accounts.tsx`, `admin-usage.tsx`, `admin-settings.tsx` — `/me/admin` is a three-row menu. Accounts, one account, the 30-day usage report, and global plan defaults each have their own nested route; none are simulated with component-local view state. An account exists because someone signed in, so the list is everyone who has signed in and the only thing to edit is what they are given. The usage report totals provider cost across models, then per kind of work against what that kind is quoted at, then per account, and marks a run that did not complete.
+- `components/me/admin-panel.tsx`, `admin-accounts.tsx`, `admin-usage.tsx`, `admin-settings.tsx` — `/app/me/admin` is a three-row menu. Accounts, one account, the 30-day usage report, and global plan defaults each have their own nested route; none are simulated with component-local view state. An account exists because someone signed in, so the list is everyone who has signed in and the only thing to edit is what they are given. The usage report totals provider cost across models, then per kind of work against what that kind is quoted at, then per account, and marks a run that did not complete.
 - `src/lib/ai/session.ts`, `runner.ts`, `tasks.ts` — managed session identity, serial generation/recovery and data-only request assembly. The old provider facade, catalog, request/reply/transport modules, settings persistence and usage component have been removed.
 - `tests-next/admin-account-form.test.tsx` — taking points away, the zero floor in the preview, and the allowance landing at once.
 - `packages/ai-contract` v1.9.0 — shared account/usage page types, opaque next cursors, usage states, per-response GPT-6 Luna Standard and long-context pricing, and photo batch limits (10 images, 1.5 MB per image, 20,000,009-byte base64 body); no private billing formula.

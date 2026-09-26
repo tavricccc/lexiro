@@ -124,12 +124,12 @@ counts, because choosing three of six was never something one dropdown could
 say. A session is a queue of entries rather than a mode, so the entry under the
 cursor decides what the screen asks and a passage keeps its items together.
 
-Saved sets open in read mode at `/sets/[setId]`; headwords are not controls.
+Saved sets open in read mode at `/app/sets/[setId]`; headwords are not controls.
 The explicit edit button opens a word-edit subpage, while adding manually,
 adding with AI and changing set metadata each open their own subpage. The same
 word editor serves AI previews, with separate example rows. Saving reads the
 latest library and replaces only that word. The old set edit URL redirects to
-the view, and `/sets/new` retains new-set creation. Questions remain in the
+the view, and `/app/sets/new` retains new-set creation. Questions remain in the
 neighboring tab.
 
 The 我的 destination is a menu, not the settings form itself. Account, learning
@@ -137,7 +137,7 @@ preferences, plan, backup and administrator tasks each use a separate route so
 only the chosen task is revealed and browser Back returns to the menu.
 
 Administration follows the same rule. Account listing, account creation or
-editing, usage, and global settings live at distinct `/me/admin/...` routes.
+editing, usage, and global settings live at distinct `/app/me/admin/...` routes.
 Trial points and the initial and monthly defaults for accounts are changed there;
 they are not literals chosen by the public account form.
 

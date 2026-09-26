@@ -25,10 +25,10 @@ export const PRIMARY_DESTINATIONS = [
   // 今天 opens both kinds of practice with a count beside each, so 練習 is a
   // screen you arrive at rather than a place you go: it keeps its route for
   // every link that starts a session, but not a slot of its own.
-  { activePathPrefix: "/practice", href: "/" },
-  { href: "/library" },
-  { href: "/progress" },
-  { href: "/me" },
+  { activePathPrefix: "/app/practice", href: "/app" },
+  { href: "/app/library" },
+  { href: "/app/progress" },
+  { href: "/app/me" },
 ] as const satisfies ReadonlyArray<{
   activePathPrefix?: string;
   href: string;
@@ -49,11 +49,11 @@ export function isRootRoute(pathname: string) {
 const ADOPTED_PARENTS: ReadonlyArray<
   readonly [prefix: string, parent: string]
 > = [
-  ["/practice", "/"],
-  ["/sets", "/library"],
-  ["/questions", "/library"],
-  ["/sync", "/me"],
-  ["/me", "/me"],
+  ["/app/practice", "/app"],
+  ["/app/sets", "/app/library"],
+  ["/app/questions", "/app/library"],
+  ["/app/sync", "/app/me"],
+  ["/app/me", "/app/me"],
 ];
 
 export function adoptedParent(pathname: string) {
@@ -65,7 +65,14 @@ export function adoptedParent(pathname: string) {
 
 function hierarchy(pathname: string): string[] {
   const parent = adoptedParent(pathname);
-  const segments = pathname === "/" ? ["home"] : pathname.split("/").filter(Boolean);
+  const pathWithinApp = pathname.startsWith("/app/")
+    ? pathname.slice("/app/".length)
+    : pathname === "/app"
+      ? ""
+      : pathname;
+  const segments = pathWithinApp
+    ? pathWithinApp.split("/").filter(Boolean)
+    : ["home"];
   return parent && parent !== pathname
     ? [...hierarchy(parent), ...segments]
     : segments;

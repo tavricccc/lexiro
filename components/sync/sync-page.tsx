@@ -8,7 +8,7 @@ import { t } from "@/lib/i18n";
 export function SyncPage() {
   return (
     <div className="mx-auto max-w-4xl">
-      <PageHeader back={<BackControl href="/me" />} title={t("sync.title")} />
+      <PageHeader back={<BackControl href="/app/me" />} title={t("sync.title")} />
       <AccountSection />
     </div>
   );
