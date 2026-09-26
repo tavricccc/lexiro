@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { WordEntry } from "@/types";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
-import { isWordForm, sourceUsageAnswer } from "@/src/lib/word-forms";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
 import { splitGenerationBatches } from "@/src/lib/question-generation";
 import { questionTask } from "@/src/lib/ai/tasks";
@@ -128,23 +127,6 @@ describe("issues found in real Luna prompt trials", () => {
         question.kind === "reading" ? "" : question.wordKey,
       ),
     ).toEqual(["detect", "reluctant", "consequence"]);
-  });
-  it.each([
-    ["go", "went"],
-    ["take", "took"],
-    ["take", "taken"],
-    ["look after", "looked after"],
-    ["carry out", "carried out"],
-    ["run", "running"],
-    ["convince sb of sth", "convinced"],
-  ])("accepts the legitimate %s → %s form", (base, form) =>
-    expect(isWordForm(form, base)).toBe(true),
-  );
-  it("does not confuse a shared prefix with a form of the target word", () => {
-    expect(isWordForm("wanderer", "wander")).toBe(false);
-    expect(isWordForm("gold", "go")).toBe(false);
-    expect(sourceUsageAnswer("went", "go")).toBe("went");
-    expect(sourceUsageAnswer("golden", "go")).toBeNull();
   });
   it("preserves grammar forms supplied by the model rather than replacing them with library verbs", () => {
     const questions = assemble(

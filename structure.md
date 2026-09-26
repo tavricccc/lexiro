@@ -94,8 +94,8 @@ The workspace shell is shared by desktop and mobile. Desktop uses a compact side
 
 Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
 is the catalogue; the private backend asks a model for prose and answer
-spans; `question-assembly.ts` cuts the blanks, orders the options and links each
-item back to its sense; and `question-builders.ts` builds what needs no model at
+spans; `question-assembly.ts` checks exact sentence spans, cuts the blanks, orders the options and links each
+item back to its sense without a fixed English morphology gate; `generated-question-results.tsx` shows the target word and meaning during review; and `question-builders.ts` builds what needs no model at
 all. `docs/product-decisions.md` explains why the split falls there.
 
 The client persists local data through IndexedDB and can sync canonical records

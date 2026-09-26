@@ -239,6 +239,7 @@ export const zhTW = {
     allTypes: "全部題型",
     vocabulary: "詞彙題",
     vocabularyHint: "一句四選一，考搭配與語意（學測第一部分）",
+    targetWord: "目標：{word}",
     grammar: "文法題",
     grammarHint: "一句四選一，考時態、語態與連接詞（段考常見）",
     cloze: "綜合測驗",

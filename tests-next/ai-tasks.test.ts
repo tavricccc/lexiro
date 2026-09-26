@@ -124,6 +124,71 @@ describe("AI task boundaries", () => {
       senseId: "close-sense",
     });
   });
+  it("accepts a full phrase answer alongside two inflected senses of commit", () => {
+    const phrase = word("be found in possession of");
+    phrase.senses[0].pos = "phr. v.";
+    phrase.senses[0].meaningZh = "被發現擁有……";
+    phrase.senses[0].examples = [
+      "He was found in possession of a stolen phone.",
+    ];
+    const commit = word("commit");
+    commit.senses = [
+      {
+        ...commit.senses[0],
+        id: asSenseId("commit-crime"),
+        meaningZh: "犯（罪）",
+      },
+      {
+        ...commit.senses[0],
+        id: asSenseId("commit-dedicate"),
+        meaningZh: "奉獻",
+      },
+    ];
+    const [step] = questionTask(
+      [phrase, commit],
+      [phrase, commit],
+      "vocabulary",
+      2,
+    ).steps;
+    const questions = step.parse(
+      JSON.stringify({
+        items: [
+          {
+            answer: "was found in possession of",
+            distractors: [
+              "was accused of",
+              "was charged with",
+              "was suspected of",
+            ],
+            sentence:
+              "During the school trip, a student was found in possession of a key that had gone missing from the science lab.",
+            usage:
+              "was found in possession of a key that had gone missing from the science lab",
+          },
+          {
+            answer: "committed",
+            distractors: ["witnessed", "prevented", "reported"],
+            sentence:
+              "The shop’s security video showed that the thief committed the crime by breaking a window and taking several laptops.",
+            usage: "committed",
+          },
+          {
+            answer: "committed",
+            distractors: ["limited", "postponed", "considered"],
+            sentence:
+              "After volunteering at the animal shelter for a month, Leo committed himself to caring for abandoned pets every weekend.",
+            usage: "committed",
+          },
+        ],
+      }),
+    );
+    expect(questions).toHaveLength(3);
+    expect(questions.map((question) => question.kind === "reading" ? null : question.senseId)).toEqual([
+      phrase.senses[0].id,
+      commit.senses[0].id,
+      commit.senses[1].id,
+    ]);
+  });
   it("keeps a valid question when another question in the same reply fails", async () => {
     const words = [word("adapt"), word("formula")];
     const task = questionTask(words, words, "vocabulary", 2);
@@ -145,7 +210,7 @@ describe("AI task boundaries", () => {
     const invalid = {
       sentence: "The method helps us solve it.",
       answer: "method",
-      usage: "method",
+      usage: "formula",
       distractors: ["plan", "rule", "formula"],
     };
     const replies = [

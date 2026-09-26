@@ -304,7 +304,7 @@ function QuestionGeneratorFlow({
         recap={recap}
       >
         <fieldset disabled={saving} className="min-w-0 space-y-7">
-          <GeneratedQuestionResults items={run.items} />
+          <GeneratedQuestionResults items={run.items} words={words} />
           <p className="type-hint">{t("ai.savedHint")}</p>
           <StepActions width="wide">
             <Button

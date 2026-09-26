@@ -160,18 +160,18 @@ describe("assembling the model's reply", () => {
     expect(result.dropped).toHaveLength(1);
   });
 
-  it("rejects an answer that belongs to a different word", () => {
-    // Nothing survives, so the batch fails and can be retried rather than
-    // silently saving a question about a word the learner never chose.
-    expect(() =>
-      assembleGeneratedQuestions(
-        { items: [{ answer: "sprinted", usage: "sprinted", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They sprinted home." }] },
-        "vocabulary",
-        2,
-        target,
-        pool,
-      ),
-    ).toThrow(/wander/);
+  it("keeps a structurally valid answer for the review step", () => {
+    const result = assembleGeneratedQuestions(
+      { items: [{ answer: "sprinted", usage: "sprinted", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They sprinted home." }] },
+      "vocabulary",
+      2,
+      target,
+      pool,
+    );
+    const [question] = result.payload.questions as Array<{ options: string[]; answerIndex: number; sourceRef: string }>;
+    expect(result.dropped).toEqual([]);
+    expect(question.options[question.answerIndex]).toBe("sprinted");
+    expect(question.sourceRef).toBe("source-1-1");
   });
 
   it("rejects a vocabulary answer outside the named target usage", () => {
@@ -184,7 +184,17 @@ describe("assembling the model's reply", () => {
     )).toThrow(/formula/);
   });
 
-  it("treats sb and sth as phrase slots while keeping the fixed preposition", () => {
+  it("rejects an answer that extends beyond its named usage", () => {
+    expect(() => assembleGeneratedQuestions(
+      { items: [{ answer: "formula helps", usage: "formula", distractors: ["method helps", "recipe helps", "plan helps"], ref: "s1", sentence: "The formula helps us solve it." }] },
+      "vocabulary",
+      2,
+      [word("formula", "n.")],
+      pool,
+    )).toThrow(/答案必須位於目標用法開頭且不超出範圍/);
+  });
+
+  it("blanks the model's verb in two placeholder phrase usages", () => {
     const targets = [
       word("convince sb of sth", "phr."),
       word("convince sb to", "v."),
@@ -227,8 +237,8 @@ describe("assembling the model's reply", () => {
     ]);
   });
 
-  it("does not accept the phrase head without its required words", () => {
-    expect(() => assembleGeneratedQuestions(
+  it("keeps unusual phrase wording for review", () => {
+    const result = assembleGeneratedQuestions(
       { items: [{
         answer: "convinced",
         usage: "convinced him that the bridge was safe",
@@ -239,10 +249,11 @@ describe("assembling the model's reply", () => {
       2,
       [word("convince sb of sth", "phr.")],
       pool,
-    )).toThrow(/convince sb of sth/);
+    );
+    expect((result.payload.questions as unknown[])).toHaveLength(1);
   });
 
-  it("lets the model fill a phrase slot with a long clause and punctuation", () => {
+  it("blanks a verb beside a long clause and punctuation", () => {
     const usage = "convinced the committee members, who had carefully reviewed every previous report and interviewed several engineers over many weeks, of its safety";
     const result = assembleGeneratedQuestions(
       { items: [{
@@ -261,7 +272,7 @@ describe("assembling the model's reply", () => {
     expect(result.dropped).toEqual([]);
   });
 
-  it("allows natural modifiers between a phrase's ordered fixed words", () => {
+  it("blanks a verb beside natural modifiers in a phrase", () => {
     const usage = "gave the tired student a much-needed hand";
     const result = assembleGeneratedQuestions(
       { items: [{

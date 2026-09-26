@@ -8,7 +8,6 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { libraryDistractors, placeAnswer } from "./question-builders";
-import { isWordForm, sourceUsageAnswer } from "./word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -16,9 +15,8 @@ import { isWordForm, sourceUsageAnswer } from "./word-forms";
  * The model is asked for complete sentences and the spans that are the answers.
  * Everything else is decided here: where the blank goes, how the blanks are
  * numbered, which option is correct and at what index, and which source sense
- * each item belongs to. A model can therefore be wrong about English — which is
- * recoverable, the item is dropped — but it cannot be wrong about the shape of
- * the data.
+ * each item belongs to. Structural errors are dropped here; semantic quality
+ * stays visible for review before the user saves the questions.
  */
 
 export interface AssemblyResult {
@@ -88,7 +86,6 @@ interface SenseSlot {
   sourceRef: string;
   word: WordEntry;
   senseIndex: number;
-  wordIndex: number;
 }
 
 /** Maps the short refs handed to the model back onto the input senses. */
@@ -101,7 +98,6 @@ function buildSlots(words: WordEntry[]): SenseSlot[] {
         senseIndex,
         sourceRef: createSourceRef(wordIndex, senseIndex),
         word,
-        wordIndex,
       });
     });
   });
@@ -175,28 +171,18 @@ function assembleSentences(
     const usageHits = occurrences(sentence, usage);
     if (usageHits.length !== 1)
       return dropped.push(`${slot.word.word}：目標用法必須在句中恰好出現一次`);
-    const pos = slot.word.senses[slot.senseIndex].pos;
-    const sourceAnswer = sourceUsageAnswer(usage, slot.word.word, pos);
-    if (!sourceAnswer)
-      return dropped.push(`${slot.word.word}：目標用法與來源單字或片語不符`);
     const hits = occurrences(sentence, answer);
-
-    if (kind === "vocabulary") {
-      // A phrase can blank its inflected head or the complete fixed phrase.
-      // Keep the source-form check so extra sentence words cannot enter the answer.
-      if (
-        (sourceAnswer.toLocaleLowerCase() !== answer.toLocaleLowerCase() &&
-          !isWordForm(answer, slot.word.word, pos)) ||
-        hits[0] !== usageHits[0]
-      )
-        return dropped.push(`${slot.word.word}：答案與目標單字不符`);
-    }
-
     // The blank is cut here, never typed by the model.
     if (hits.length !== 1)
       return dropped.push(
         `${slot.word.word}：答案在句中出現 ${hits.length} 次，必須恰好一次`,
       );
+    if (
+      kind === "vocabulary" &&
+      (hits[0] !== usageHits[0] ||
+        !usage.toLocaleLowerCase().startsWith(answer.toLocaleLowerCase()))
+    )
+      return dropped.push(`${slot.word.word}：答案必須位於目標用法開頭且不超出範圍`);
     const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
 
     const fromLibrary =
