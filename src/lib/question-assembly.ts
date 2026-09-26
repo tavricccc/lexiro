@@ -8,7 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { libraryDistractors, placeAnswer } from "./question-builders";
-import { sourceUsageAnswer } from "./word-forms";
+import { isWordForm, sourceUsageAnswer } from "./word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -175,18 +175,20 @@ function assembleSentences(
     const usageHits = occurrences(sentence, usage);
     if (usageHits.length !== 1)
       return dropped.push(`${slot.word.word}：目標用法必須在句中恰好出現一次`);
-    const sourceAnswer = sourceUsageAnswer(
-      usage,
-      slot.word.word,
-      slot.word.senses[slot.senseIndex].pos,
-    );
+    const pos = slot.word.senses[slot.senseIndex].pos;
+    const sourceAnswer = sourceUsageAnswer(usage, slot.word.word, pos);
     if (!sourceAnswer)
       return dropped.push(`${slot.word.word}：目標用法與來源單字或片語不符`);
     const hits = occurrences(sentence, answer);
 
     if (kind === "vocabulary") {
-      if (sourceAnswer.toLocaleLowerCase() !== answer.toLocaleLowerCase() ||
-        hits[0] !== usageHits[0])
+      // A phrase can blank its inflected head or the complete fixed phrase.
+      // Keep the source-form check so extra sentence words cannot enter the answer.
+      if (
+        (sourceAnswer.toLocaleLowerCase() !== answer.toLocaleLowerCase() &&
+          !isWordForm(answer, slot.word.word, pos)) ||
+        hits[0] !== usageHits[0]
+      )
         return dropped.push(`${slot.word.word}：答案與目標單字不符`);
     }
 

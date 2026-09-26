@@ -121,6 +121,27 @@ describe("assembling the model's reply", () => {
     expect(question.options[question.answerIndex]).toBe("wandered");
   });
 
+  it("accepts the complete inflected form of a fixed multiword phrase", () => {
+    const phrase = "was found in possession of";
+    const sentence = "During the school trip, a student was found in possession of a key that had gone missing from the science lab.";
+    const result = assembleGeneratedQuestions(
+      { items: [{
+        answer: phrase,
+        distractors: ["was accused of", "was charged with", "was suspected of"],
+        sentence,
+        usage: `${phrase} a key that had gone missing from the science lab`,
+      }] },
+      "vocabulary",
+      2,
+      [word("be found in possession of", "phr. v.")],
+      pool,
+    );
+    const [question] = result.payload.questions as Array<{ answerIndex: number; options: string[]; prompt: string }>;
+    expect(result.dropped).toEqual([]);
+    expect(question.options[question.answerIndex]).toBe(phrase);
+    expect(question.prompt).toBe("During the school trip, a student _____ a key that had gone missing from the science lab.");
+  });
+
   it("drops an item whose answer is not in its sentence, keeping the rest", () => {
     const two = [word("wander", "v."), word("linger", "v.")];
     const result = assembleGeneratedQuestions(
