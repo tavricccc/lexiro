@@ -1,33 +1,39 @@
 "use client";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 import { AdminIssue, type AdminSettingsValue } from "./admin-shared";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { StepActions } from "@/components/ui/step-actions";
-import { ListInputRow, ListRow, ListSection, ListSwitchRow } from "@/components/ui/list";
+import {
+  ListInputRow,
+  ListRow,
+  ListSection,
+  ListSwitchRow,
+} from "@/components/ui/list";
 import { managedJson } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
 
+interface AdminSettingsDraft {
+  freeTrial: boolean;
+  defaultInitial: string;
+  defaultMonthly: string;
+}
+
 export function AdminSettings() {
   const uid = useCloudStore((store) => store.user?.uid);
-  const client = useQueryClient();
   const settings = useQuery({
     queryKey: ["admin-settings", uid],
     queryFn: () => managedJson<AdminSettingsValue>("/admin/settings"),
     retry: false,
   });
-  const [draft, setDraft] = useState<AdminSettingsValue | null>(null);
-  const [busy, setBusy] = useState(false);
-
-  useEffect(() => {
-    if (settings.data) setDraft(settings.data);
-  }, [settings.data]);
-
   if (settings.error)
     return (
       <AdminIssue
@@ -35,11 +41,63 @@ export function AdminSettings() {
         onRetry={() => void settings.refetch()}
       />
     );
-  if (!draft)
+  if (!settings.data)
     return (
       <ListSection>
         <ListRow label={t("common.loading")} />
       </ListSection>
+    );
+
+  const revision = `${settings.data.freeTrial}:${settings.data.defaultInitial}:${settings.data.defaultMonthly}`;
+  return (
+    <AdminSettingsForm
+      key={`${uid}:${revision}`}
+      uid={uid}
+      revision={revision}
+      initial={settings.data}
+    />
+  );
+}
+
+function AdminSettingsForm({
+  uid,
+  revision,
+  initial,
+}: {
+  uid: string | undefined;
+  revision: string;
+  initial: AdminSettingsValue;
+}) {
+  const client = useQueryClient();
+  const saved = useResumableDraft<AdminSettingsDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:admin-settings:${revision}`,
+    {
+      freeTrial: initial.freeTrial,
+      defaultInitial: String(initial.defaultInitial),
+      defaultMonthly: String(initial.defaultMonthly),
+    },
+  );
+  const draft = saved.draft;
+  const [busy, setBusy] = useState(false);
+  if (saved.status === "checking")
+    return (
+      <ListSection>
+        <ListRow label={t("common.loading")} />
+      </ListSection>
+    );
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.adminSettingsDescription",
+        )}
+        header={false}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
     );
 
   return (
@@ -51,10 +109,17 @@ export function AdminSettings() {
         setBusy(true);
         void managedJson<AdminSettingsValue>("/admin/settings", {
           method: "PATCH",
-          body: JSON.stringify(draft),
+          body: JSON.stringify({
+            freeTrial: draft.freeTrial,
+            defaultInitial: Number(draft.defaultInitial),
+            defaultMonthly: Number(draft.defaultMonthly),
+          } satisfies AdminSettingsValue),
         })
           .then(async () => {
-            await client.invalidateQueries({ queryKey: ["admin-settings", uid] });
+            saved.clear();
+            await client.invalidateQueries({
+              queryKey: ["admin-settings", uid],
+            });
             toast.success(t("admin.settingsSaved"));
           })
           .catch((reason: unknown) =>
@@ -65,12 +130,13 @@ export function AdminSettings() {
           .finally(() => setBusy(false));
       }}
     >
+      <DraftSaveStatus status={saved.persistence} />
       <ListSection footer={t("admin.trialHint")}>
         <ListSwitchRow
           checked={draft.freeTrial}
           disabled={busy}
           label={t("admin.trial")}
-          onCheckedChange={(freeTrial) => setDraft({ ...draft, freeTrial })}
+          onCheckedChange={(freeTrial) => saved.update({ freeTrial })}
         />
       </ListSection>
       <ListSection
@@ -83,10 +149,10 @@ export function AdminSettings() {
           label={t("admin.defaultInitial")}
           max={1_000_000}
           min={0}
-          onChange={(value) => setDraft({ ...draft, defaultInitial: Number(value) })}
+          onChange={(defaultInitial) => saved.update({ defaultInitial })}
           required
           type="number"
-          value={String(draft.defaultInitial)}
+          value={draft.defaultInitial}
         />
         <ListInputRow
           disabled={busy}
@@ -94,14 +160,20 @@ export function AdminSettings() {
           label={t("admin.defaultMonthly")}
           max={1_000_000}
           min={0}
-          onChange={(value) => setDraft({ ...draft, defaultMonthly: Number(value) })}
+          onChange={(defaultMonthly) => saved.update({ defaultMonthly })}
           required
           type="number"
-          value={String(draft.defaultMonthly)}
+          value={draft.defaultMonthly}
         />
       </ListSection>
       <StepActions>
-        <Button className="w-full" disabled={busy} form="admin-settings-form" size="lg" type="submit">
+        <Button
+          className="w-full"
+          disabled={busy}
+          form="admin-settings-form"
+          size="lg"
+          type="submit"
+        >
           <Icons.success />
           {t(busy ? "admin.saving" : "admin.saveSettings")}
         </Button>

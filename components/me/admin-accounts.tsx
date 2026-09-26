@@ -8,12 +8,22 @@ import { toast } from "sonner";
 
 import { AdminIssue, AdminPager } from "./admin-shared";
 import { useAdminPagination } from "./use-admin-pagination";
+import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
+import { DraftSaveStatus } from "@/components/ui/draft-save-status";
+import { ResumeChoice } from "@/components/ui/resume-choice";
 import { StepActions } from "@/components/ui/step-actions";
-import { ListChoiceGroup, ListInputRow, ListNavRow, ListRow, ListSection } from "@/components/ui/list";
+import {
+  ListChoiceGroup,
+  ListInputRow,
+  ListNavRow,
+  ListRow,
+  ListSection,
+} from "@/components/ui/list";
 import { managedJson, notifyManagedAccountChanged } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
+import { canonicalHash } from "@/src/lib/hash";
 import { useCloudStore } from "@/stores/cloud-store";
 
 export function AdminAccountList() {
@@ -88,7 +98,19 @@ export function AdminAccountEditor({ accountUid }: { accountUid: string }) {
         <ListRow label={t("common.loading")} />
       </ListSection>
     );
-  return <AccountForm account={account.data} />;
+  const revision = canonicalHash({
+    points: account.data.points,
+    monthly: account.data.monthly,
+    renewsAt: account.data.renews_at,
+    note: account.data.note,
+  });
+  return (
+    <AccountForm
+      account={account.data}
+      key={`${account.data.uid}:${revision}`}
+      revision={revision}
+    />
+  );
 }
 
 /**
@@ -100,13 +122,25 @@ export function AdminAccountEditor({ accountUid }: { accountUid: string }) {
  * row underneath says what the balance will become, because the question being
  * asked is "what will they have", not "what am I typing".
  */
-function AccountForm({ account }: { account: AdminAccount }) {
+function AccountForm({
+  account,
+  revision,
+}: {
+  account: AdminAccount;
+  revision: string;
+}) {
   const client = useQueryClient();
   const cloudUid = useCloudStore((store) => store.user?.uid);
-  const [direction, setDirection] = useState<"add" | "subtract">("add");
-  const [amount, setAmount] = useState("0");
-  const [monthly, setMonthly] = useState(String(account.monthly));
-  const [note, setNote] = useState(account.note ?? "");
+  const saved = useResumableDraft(
+    `lexiro:flow-draft:v1:${cloudUid ?? "local"}:admin-account:${account.uid}:${revision}`,
+    {
+      direction: "add" as "add" | "subtract",
+      amount: "0",
+      monthly: String(account.monthly),
+      note: account.note ?? "",
+    },
+  );
+  const { direction, amount, monthly, note } = saved.draft;
   const [busy, setBusy] = useState(false);
 
   const magnitude = Math.max(0, Math.floor(Number(amount) || 0));
@@ -120,6 +154,27 @@ function AccountForm({ account }: { account: AdminAccount }) {
       ? Math.max(adjusted, allowance)
       : adjusted;
 
+  if (saved.status === "checking")
+    return (
+      <ListSection>
+        <ListRow label={t("common.loading")} />
+      </ListSection>
+    );
+  if (saved.status === "offer" || saved.status === "invalid")
+    return (
+      <ResumeChoice
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.adminAccountDescription",
+        )}
+        header={false}
+        invalid={saved.status === "invalid"}
+        onRestart={saved.restart}
+        onResume={saved.resume}
+      />
+    );
+
   return (
     <form
       className="space-y-7"
@@ -132,11 +187,15 @@ function AccountForm({ account }: { account: AdminAccount }) {
           body: JSON.stringify({ addPoints, monthly: allowance, note }),
         })
           .then(async () => {
-            await client.invalidateQueries({ queryKey: ["admin-accounts", cloudUid] });
-            await client.invalidateQueries({ queryKey: ["admin-account", cloudUid] });
+            await client.invalidateQueries({
+              queryKey: ["admin-accounts", cloudUid],
+            });
+            await client.invalidateQueries({
+              queryKey: ["admin-account", cloudUid],
+            });
             notifyManagedAccountChanged();
             toast.success(t("admin.accountSaved", { points: resulting }));
-            setAmount("0");
+            saved.restart();
           })
           .catch((reason: unknown) =>
             toast.error(
@@ -146,6 +205,7 @@ function AccountForm({ account }: { account: AdminAccount }) {
           .finally(() => setBusy(false));
       }}
     >
+      <DraftSaveStatus status={saved.persistence} />
       <ListSection>
         <ListRow icon={Icons.account} label={account.email} />
         <ListRow
@@ -168,7 +228,7 @@ function AccountForm({ account }: { account: AdminAccount }) {
         <ListChoiceGroup
           disabled={busy}
           label={t("admin.adjust")}
-          onSelect={setDirection}
+          onSelect={(direction) => saved.update({ direction })}
           value={direction}
           options={[
             { id: "add", label: t("admin.addPoints") },
@@ -181,7 +241,7 @@ function AccountForm({ account }: { account: AdminAccount }) {
           label={t("admin.amount")}
           max={1_000_000}
           min={0}
-          onChange={setAmount}
+          onChange={(amount) => saved.update({ amount })}
           required
           type="number"
           value={amount}
@@ -200,7 +260,7 @@ function AccountForm({ account }: { account: AdminAccount }) {
           label={t("admin.monthly")}
           max={1_000_000}
           min={0}
-          onChange={setMonthly}
+          onChange={(monthly) => saved.update({ monthly })}
           required
           type="number"
           value={monthly}
@@ -209,13 +269,19 @@ function AccountForm({ account }: { account: AdminAccount }) {
           disabled={busy}
           label={t("admin.note")}
           maxLength={500}
-          onChange={setNote}
+          onChange={(note) => saved.update({ note })}
           value={note}
         />
       </ListSection>
 
       <StepActions>
-        <Button className="w-full" disabled={busy} form="admin-account-form" size="lg" type="submit">
+        <Button
+          className="w-full"
+          disabled={busy}
+          form="admin-account-form"
+          size="lg"
+          type="submit"
+        >
           <Icons.success />
           {t(busy ? "admin.saving" : "admin.save")}
         </Button>

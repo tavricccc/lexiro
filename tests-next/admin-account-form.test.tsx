@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -24,7 +24,9 @@ const { AdminAccountEditor } = await import("@/components/me/admin-accounts");
 async function open() {
   render(
     <QueryClientProvider
-      client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+      client={
+        new QueryClient({ defaultOptions: { queries: { retry: false } } })
+      }
     >
       <AdminAccountEditor accountUid="u" />
     </QueryClientProvider>,
@@ -37,9 +39,32 @@ async function open() {
 const balance = () =>
   screen.getByText("調整後餘額").parentElement?.parentElement?.textContent;
 
+beforeEach(() => localStorage.clear());
 afterEach(cleanup);
 
 describe("adjusting an account's points", () => {
+  it("offers to resume an interrupted adjustment", async () => {
+    const client = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    const first = render(
+      <QueryClientProvider client={client}>
+        <AdminAccountEditor accountUid="u" />
+      </QueryClientProvider>,
+    );
+    const [amount] = await screen.findAllByRole("spinbutton");
+    fireEvent.change(amount, { target: { value: "42" } });
+    first.unmount();
+
+    render(
+      <QueryClientProvider client={client}>
+        <AdminAccountEditor accountUid="u" />
+      </QueryClientProvider>,
+    );
+    fireEvent.click(await screen.findByRole("button", { name: "接續上次" }));
+    expect(screen.getAllByRole("spinbutton")[0]).toHaveValue(42);
+  });
+
   it("takes points away, which a signed number field on a keypad could not", async () => {
     const amount = await open();
     fireEvent.click(screen.getByText("扣除點數"));
