@@ -1,10 +1,10 @@
 # Lexiro design system
 
-Lexiro is a dictionary you study from. Every visual decision below follows from
-that: the interface should feel like well-set reference material, not like a
-productivity dashboard. Cards, drop shadows and coloured status chips are the
-default look of the latter, so they are used sparingly here; hairlines, margins
-and typographic hierarchy carry the structure instead.
+Lexiro 是帶有個性與玩心的個人單字學習空間。學習入口用深墨綠、春綠行動按鈕
+與 Open Doodles 閱讀插畫發出邀請；真正閱讀、整理與作答的區域保留安靜的字級、
+留白與細線。不要把它做成永久側欄配一排統計卡的 SaaS 儀表板。
+
+`DESIGN.md` 記錄可重用的視覺 token 與規範；本文件補充元件、互動和實作規則。
 
 ## Colour
 
@@ -25,17 +25,14 @@ is the palest tint in light mode and the deepest green in dark mode, and
 `text-brand-600` therefore works in both themes with no `dark:` variant. Reach
 for `dark:` only where the ramp genuinely cannot express the intent.
 
-The pale end of the light ramp is deliberately a real sage (`--brand-50`
-`#e7f0ea`) rather than an off-white. An earlier draft sat within two percent of
-the page ground, which meant the "pale sage learning canvas" the product
-promises rendered as grey and the app carried no visible brand at all. Anything
-that is meant to read as branded — the focus canvas, an active navigation item,
-the track behind a progress bar — must be checked against the page ground in a
-browser, not just picked from the ramp.
+The pale end of the light ramp remains a visible sage (`--brand-50`), used for
+selected surfaces. Check selected navigation and progress tracks against the
+page ground in both themes.
 
-The frame recedes and the content comes forward: the sidebar and the app frame
-share `--surface-stage`, page content sits on `--background`, and
-`--surface-canvas` is the one hero tint, used by the focus canvas.
+學習邀請與完成區使用 `--study-ink`、`--study-paper`、`--study-soft`；主要學習
+按鈕與閱讀插畫使用 `--study-lime`。這組顏色在深色模式保留相同值。
+一般工作區與水平導覽使用 `--surface-stage`，內容與群組維持中性色層次；
+`--surface-canvas` 不再是首頁邀請區的背景。
 
 Semantic tokens (`--primary`, `--muted`, `--border`, `--destructive`, …) all
 resolve to the ramp or to green-tinted neutrals; borders are green-tinted
@@ -98,14 +95,14 @@ The further out a surface sits, the softer it is:
 
 | Token             | Value     | Used for                            |
 | ----------------- | --------- | ----------------------------------- |
-| `--radius-control`| 0.875rem  | buttons, inputs, selects            |
-| `--radius-card`   | 1.25rem   | panels, inline forms, list surfaces |
-| `--radius-stage`  | 1.875rem  | the focus canvas, sticky action bars|
+| `--radius-control`| 0.625rem  | buttons, inputs, selects            |
+| `--radius-card`   | 0.875rem  | panels, inline forms, list surfaces |
+| `--radius-stage`  | 1.25rem   | shared stage surfaces              |
 
-The scale is deliberately generous. A tight corner reads as a form control a
-browser drew, and this product is meant to feel like something made for a
-phone; when a corner is in doubt, round it more. Nothing hard-codes a radius —
-every surface takes one of these three, or the Tailwind utility mapped onto it.
+控制項與群組使用上述緊湊尺度，避免一層層大圓角容器。學習邀請與完成區是刻意的
+例外：`1rem 1rem 3rem 1rem` 的不對稱外形；手機邀請區的右下角縮為 `2rem`。
+學習 CTA 使用 `0.75rem` 圓角。這些造型屬於 `app/styles/study.css` 的學習元件，
+不要擴散到每一個表單或資料列。
 
 Tailwind's `rounded-md` / `rounded-xl` / `rounded-3xl` are mapped onto these, so
 existing utilities keep working while the scale stays deliberate.
@@ -156,7 +153,7 @@ divides the sections of a page. Nothing is separated twice, which is why a card
 has no outer rules and a divided row has no border of its own.
 
 - `.rule-card` is the surface: a hairline border, the card radius, the card
-  background, the card shadow, and the row gutter. Anything that is a set of
+  background, no shadow, and the row gutter. Anything that is a set of
   peers — a listing, a stat strip, an empty state standing in for a list —
   is one card.
 - `.rule-list` adds the rules between its children. A card only takes it when
@@ -193,8 +190,9 @@ Every duration and curve in the product is a rung of one ladder, generated from
 `config/motion.config.json` into `src/generated/motion-ladder.css` (custom
 properties) and `src/generated/motion-tokens.ts` (the same rungs in seconds, for
 animations driven from JavaScript). Regenerate with `npm run generate:motion`;
-never edit the generated files, and never write a literal duration or
-`cubic-bezier` anywhere else. A recipe picks a rung by what the motion *means*,
+never edit the generated files. Except for the study-surface interactions
+documented below, use this ladder rather than literal durations or curves.
+A recipe picks a rung by what the motion *means*,
 not by feel — if an interaction does not fit a rung, the ladder is wrong.
 
 The pacing is iOS's. A touch is acknowledged in `--motion-touch` (100ms), a
@@ -263,6 +261,25 @@ clipped list surfaces. Touch controls have a minimum 2.75rem target.
 viewport edges and fades a bounded backdrop blur into the page while the title
 and actions remain sharp; the shell does not draw a second blur layer above it.
 
+本輪學習介面的局部例外保留在 `app/styles/study.css`：學習 CTA 的背景色與位移
+使用 160ms transition，按下時下移 2px；進度條 transform 使用 180ms transition。
+兩者在 `prefers-reduced-motion` 下停用 transition。這不是新的全域 motion ladder。
+
+## Workspace navigation and learning feedback
+
+桌機從 `48rem` 起使用水平導覽，導覽與內容共用 `--content-max` 的寬度基準。
+手機在主要頁面顯示底部導覽；進入子頁或專注練習時依現有路由規則收起。
+桌機專注練習也收起導覽。殼層不固定重複放置 logo，頁面標題直接說明目前任務。
+
+首頁邀請區桌機為文字與閱讀插畫兩欄；手機把小插畫放在標題旁，說明與主按鈕
+跨滿寬度。已有教材時，下方顯示單字與題目的每日進度；尚無教材時顯示三步引導。
+進度以數字、進度條與提示文字共同表達，達標才把播放圖示換成勾選。
+完成畫面必須等學習紀錄儲存成功才呈現；儲存失敗要保留可重試的工作。
+
+閱讀插畫沿用 `public/illustrations/open-doodles-reading.svg`，以 CSS mask 套用
+春綠。保留原 SVG 來源紀錄；這次沒有新增 raster 素材。插畫是輔助內容，使用
+`aria-hidden`，不能取代操作標籤或狀態文字。
+
 ## Components
 
 Shared primitives live in `components/ui/` and are the only place a control's
@@ -275,7 +292,8 @@ markup is defined:
   nobody writes a native `<select>`. Radix rejects an empty option value, so a
   "none" choice needs a sentinel (see `ROOT_VALUE` in the folder toolbar).
 - **`PageHeader`** — the single content header, with optional `back` and `actions`
-  slots and a HarmonyOS Sans TC page title. The shell keeps stable brand identity.
+  slots and a HarmonyOS Sans TC page title. Brand identity comes from the shared
+  typography, green palette, and illustration rather than a repeated shell logo.
 - **`LoadingState` / `EmptyState` / `ErrorState`** — no page writes its own. The
   `empty` variant of `EmptyState` can show a ghost dictionary entry via
   `headword` / `pos`, so an empty screen shows the shape of what belongs there;

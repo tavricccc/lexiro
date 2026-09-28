@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T14:38:27.2164462+08:00",
+  "title": "Design System: Lexiro",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "森林綠"
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "深色模式主綠"
+      },
+      "study-ink": {
+        "role": "primary",
+        "displayName": "學習墨綠"
+      },
+      "study-lime": {
+        "role": "primary",
+        "displayName": "春綠行動"
+      },
+      "study-paper": {
+        "role": "neutral",
+        "displayName": "學習區亮文字"
+      },
+      "study-soft": {
+        "role": "neutral",
+        "displayName": "學習區柔綠文字"
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "霧白頁面"
+      },
+      "surface-stage": {
+        "role": "neutral",
+        "displayName": "工作區底色"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "學習邀請",
+        "purpose": "桌機邀請標題；手機縮為 1.875rem。全站沿用相同字體堆疊。"
+      },
+      "page": {
+        "displayName": "頁面標題",
+        "purpose": "PageHeader 與同層頁面標題。"
+      },
+      "section": {
+        "displayName": "區段標題",
+        "purpose": "頁面內的主要段落。"
+      },
+      "lead": {
+        "displayName": "說明文字",
+        "purpose": "標題下說明，最大行長 56ch。"
+      },
+      "row": {
+        "displayName": "資料列",
+        "purpose": "分組列表的主要內容。"
+      },
+      "hint": {
+        "displayName": "輔助說明",
+        "purpose": "較安靜的提示，最大行長 60ch。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-control",
+        "value": "0 1px 1px rgb(23 43 36 / 5%), 0 0 0 1px rgb(23 43 36 / 6%)",
+        "purpose": "亮色模式控制項。"
+      },
+      {
+        "name": "shadow-card",
+        "value": "0 1px 3px rgb(23 43 36 / 5%)",
+        "purpose": "普通浮起表面；rule-card 分組列表不使用陰影。"
+      },
+      {
+        "name": "shadow-floating",
+        "value": "0 4px 42px rgb(23 43 36 / 8%), 0 2px 6px rgb(23 43 36 / 6%), 0 0 0 1px rgb(23 43 36 / 7%)",
+        "purpose": "亮色模式彈出層。"
+      },
+      {
+        "name": "shadow-control-dark",
+        "value": "0 1px 1px rgb(0 0 0 / 24%), 0 0 0 1px rgb(190 230 210 / 7%)",
+        "purpose": "深色模式控制項。"
+      },
+      {
+        "name": "shadow-card-dark",
+        "value": "0 1px 3px rgb(0 0 0 / 30%)",
+        "purpose": "深色模式普通浮起表面。"
+      },
+      {
+        "name": "shadow-floating-dark",
+        "value": "0 18px 48px rgb(0 0 0 / 42%), 0 3px 10px rgb(0 0 0 / 30%), 0 0 0 1px rgb(190 230 210 / 8%)",
+        "purpose": "深色模式彈出層。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "motion-touch",
+        "value": "100ms",
+        "purpose": "共用觸碰回饋。"
+      },
+      {
+        "name": "motion-control",
+        "value": "250ms",
+        "purpose": "共用控制項狀態轉換。"
+      },
+      {
+        "name": "motion-nav",
+        "value": "460ms",
+        "purpose": "路由移動。"
+      },
+      {
+        "name": "motion-sheet",
+        "value": "560ms",
+        "purpose": "上層面板進場。"
+      },
+      {
+        "name": "ease-arrive",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "共用到達與完成曲線。"
+      },
+      {
+        "name": "study-action-transition",
+        "value": "160ms",
+        "purpose": "study.css 局部例外：CTA 背景與位移，不新增全域 token。"
+      },
+      {
+        "name": "study-progress-transition",
+        "value": "180ms",
+        "purpose": "study.css 局部例外：進度條 transform，不新增全域 token。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "workspace-desktop",
+        "value": "48rem"
+      },
+      {
+        "name": "study-guide-columns",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "春綠學習行動",
+      "kind": "button",
+      "refersTo": "study-action",
+      "description": "墨綠邀請中的主要行動；手機跨滿可用寬度。",
+      "html": "<button class=\"ds-study-action\">開始複習<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></button>",
+      "css": ".ds-study-action { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: space-between; gap: 2rem; padding: .8rem 1.25rem; border: 0; border-radius: .75rem; background: var(--study-lime); color: var(--study-ink); font-family: var(--font-sans); font-size: 1rem; font-weight: 700; cursor: pointer; transition: background-color 160ms, transform 160ms; } .ds-study-action:hover { background: var(--study-paper); } .ds-study-action:active { transform: translateY(2px); } .ds-study-action:focus-visible { outline: 3px solid var(--study-paper); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-study-action { transition: none; } }"
+    },
+    {
+      "name": "學習完成表面",
+      "kind": "custom",
+      "refersTo": "study-surface",
+      "description": "儲存成功後，使用墨綠表面、春綠勾選與真實完成數量。",
+      "html": "<section class=\"ds-study-finish\" aria-label=\"完成狀態示意\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg><h2>本次學習已完成</h2><p class=\"ds-study-total\">完成數量依已儲存的紀錄顯示</p></section>",
+      "css": ".ds-study-finish { border-radius: 1rem 1rem 3rem 1rem; background: var(--study-ink); color: var(--study-paper); padding: 2rem 1.5rem; font-family: var(--font-sans); } .ds-study-finish > svg { color: var(--study-lime); } .ds-study-total { color: var(--study-soft); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "個人的單字遊樂場",
+    "overview": "延續 HarmonyOS Sans TC、墨綠與 Open Doodles，讓學習入口有個性且讓人願意回來。深色邀請、明亮行動與手繪人物提供活力；閱讀、設定與整理教材以清楚的文字與留白為主。工作區以實際任務建立辨識。",
+    "keyCharacteristics": [
+      "墨綠學習表面與春綠行動形成清楚主次。",
+      "安靜的分組資料列，搭配少量不對稱學習容器。",
+      "進度與完成回饋對應已儲存的學習成果。"
+    ],
+    "rules": [
+      {
+        "name": "語意色共用",
+        "body": "元件使用 CSS 變數，由亮暗主題覆寫；study 色組維持相同值。",
+        "section": "colors"
+      },
+      {
+        "name": "單一字體",
+        "body": "所有介面、教材與數字共用 HarmonyOS Sans TC 字體堆疊。",
+        "section": "typography"
+      },
+      {
+        "name": "安靜分層",
+        "body": "分組列表沒有陰影，以留白、色面與細線呈現結構。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "使用既有 token、共用字級與元件。",
+      "用文字、數值與圖示共同表達進度和錯誤。",
+      "確認手機、桌機、深色模式、鍵盤焦點與減少動態效果。"
+    ],
+    "donts": [
+      "不要回到永久 SaaS 側欄或每頁重複 logo。",
+      "不要把學習邀請的特殊輪廓與強色套滿密集表單。",
+      "不要在資料尚未儲存成功前呈現完成回饋。"
+    ]
+  }
+}

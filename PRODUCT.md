@@ -44,20 +44,23 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - Preserve the current Lexiro icon assets under `public/icons/`.
 - Use Open Doodles as the character illustration family and Highlights as the supporting hand-drawn mark family; both may be recolored and adapted to Lexiro.
 - Brand color direction: forest ink green on mist-white neutral surfaces. Decorative illustration and highlight marks remain monochromatic within this green family; additional colors are reserved for semantic states.
+- Keep HarmonyOS Sans TC as the shared interface and learning-content typeface. A spring-green accent may brighten learning actions and Open Doodles within the green family.
 - No existing layout, color palette, component style, navigation pattern, or interaction habit is binding.
 
 ## Interface Direction
 
 - The selected composition is **Focus Canvas / 專注畫布**.
-- Today opens with one generous pale-sage learning canvas that combines due review and daily questions, presents one recommended next action, and keeps the alternate action nearby.
+- Today opens with a forest-ink learning invitation, a spring-green primary action, and the existing Open Doodles reading illustration. It presents one recommended next action, followed by daily review and question progress when material exists, or a three-step introduction when it does not.
 - Resumable work and recent sets appear below as calm, borderless rows rather than nested dashboard cards.
-- Desktop uses a persistent side navigation and mobile uses a bottom navigation, with the same destinations, capabilities, labels, and task order on both.
-- Open Doodles belongs only in unused space, loading, empty, and completion states. Highlights uses the same forest-green family for semantic emphasis; neither may compete with learning content.
+- Desktop uses compact horizontal navigation and mobile uses bottom navigation, with the same destinations, capabilities, labels, and task order on both. The workspace does not repeat the logo in a permanent corner; identity comes from typography, color, and illustration. Focused practice hides the workspace navigation.
+- The workspace feels personal and playful without resembling a SaaS dashboard. Quiet forms use compact control corners and grouped rows; the learning invitation and completion surface carry the expressive shape and color.
+- Progress pairs counts and bars with text; reaching a goal changes the play mark to a check. Completion feedback must follow successful storage rather than an optimistic visual result.
+- Open Doodles may accompany the learning invitation, loading, empty, and completion states without competing with learning content. Highlights uses the same forest-green family for semantic emphasis. This revision retains the committed SVG assets and adds no raster artwork.
 
 ## Evidence on Hand
 
 - Confirmed product and data decisions: `docs/product-decisions.md`.
-- Brand, typography, component and icon rules: `docs/design-system.md`.
+- Visual tokens and reusable visual rules: `DESIGN.md`; component and icon implementation rules: `docs/design-system.md`.
 - Current implementation and tests document the working capability set.
 - Current icon assets: `public/icons/lexiro.png` and `public/icons/apple-touch-icon.png`.
 - Existing generated vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.
