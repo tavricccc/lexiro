@@ -33,13 +33,16 @@ function statusIcon(status: SyncStatus, pending: number) {
 export function SyncIndicator({ className }: { className?: string }) {
   const status = useCloudStore((store) => store.status);
   const pending = useCloudStore((store) => store.pending);
+  const localOnly = status === "disabled" || status === "signed-out";
   const working = status === "connecting" || status === "syncing";
   const Icon = statusIcon(status, pending);
   // The count is the honest version of the old dot: "there are eleven things
   // still to send" is actionable in a way that "something is pending" is not.
-  const label = pending
-    ? `${statusCopy(status)} · ${t("settings.syncPendingCount", { count: pending })}`
-    : statusCopy(status);
+  const label = localOnly
+    ? t("settings.localOnly")
+    : pending
+      ? `${statusCopy(status)} · ${t("settings.syncPendingCount", { count: pending })}`
+      : statusCopy(status);
 
   return (
     <Tooltip>
@@ -52,7 +55,7 @@ export function SyncIndicator({ className }: { className?: string }) {
         >
           <Link aria-label={label} href="/app/sync">
             <Icon className={working ? "animate-spin" : undefined} />
-            {pending > 0 && (
+            {pending > 0 && !localOnly && (
               <span className="absolute right-1 top-1 size-1.5 rounded-full bg-warning" />
             )}
           </Link>

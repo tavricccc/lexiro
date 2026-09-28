@@ -14,6 +14,7 @@ import { managedTurn } from "@/lib/managed-client";
 import { createAiSession } from "@/src/lib/ai/session";
 import { useCloudStore } from "@/stores/cloud-store";
 import { timing } from "@/lib/motion-timing";
+import { estimatePoints } from "@lexiro/ai-contract";
 
 export function ResultPanel({
   correct,
@@ -37,6 +38,7 @@ export function ResultPanel({
   const [busy, setBusy] = useState(false);
   const requestRef = useRef<AbortController | null>(null);
   const uid = useCloudStore((store) => store.user?.uid);
+  const explanationCost = estimatePoints("explain", 1, "lite").max;
 
   // Leaving the result screen drops the request instead of letting it run to its
   // timeout and then write into a component that is gone.
@@ -49,8 +51,8 @@ export function ResultPanel({
   }, [uid]);
 
   const explain = async () => {
+    if (requestRef.current) return;
     const controller = new AbortController();
-    requestRef.current?.abort();
     requestRef.current = controller;
     setBusy(true);
     setError("");
@@ -65,7 +67,10 @@ export function ResultPanel({
       if (controller.signal.aborted) return;
       setError(reason instanceof Error ? reason.message : String(reason));
     } finally {
-      if (!controller.signal.aborted) setBusy(false);
+      if (requestRef.current === controller) {
+        requestRef.current = null;
+        setBusy(false);
+      }
     }
   };
 
@@ -76,19 +81,21 @@ export function ResultPanel({
       animate={{ opacity: 1, y: 0 }}
       transition={timing("nav")}
     >
-      <div className="text-center">
+      <div className="study-finish text-center">
+        <Icons.success className="mx-auto mb-6 size-10" aria-hidden />
+        <h1 className="mb-5 type-page">{t("practice.resultTitle")}</h1>
         <p className="text-[3.5rem] font-medium leading-none tabular-nums">
           {correct}
-          <span className="text-muted-foreground">/{total}</span>
+          <span className="study-finish-total">/{total}</span>
         </p>
-        <h1 className="mt-4 text-lg font-medium">{t("practice.resultTitle")}</h1>
+        <p className="mt-3 text-sm">{t("practice.resultHint")}</p>
         <dl className="mt-4 flex justify-center gap-8 text-sm">
           <div>
-            <dt className="text-muted-foreground">{t("practice.skippedLabel")}</dt>
+            <dt>{t("practice.skippedLabel")}</dt>
             <dd className="mt-0.5 font-medium tabular-nums">{skipped}</dd>
           </div>
           <div>
-            <dt className="text-muted-foreground">{t("practice.markedLabel")}</dt>
+            <dt>{t("practice.markedLabel")}</dt>
             <dd className="mt-0.5 font-medium tabular-nums">{marked}</dd>
           </div>
         </dl>
@@ -108,7 +115,11 @@ export function ResultPanel({
           </Button>
         )}
         {onRetryMarked && (
-          <Button className="w-full" variant="secondary" onClick={onRetryMarked}>
+          <Button
+            className="w-full"
+            variant="secondary"
+            onClick={onRetryMarked}
+          >
             <Icons.mark />
             {t("practice.retryMarked")}
           </Button>
@@ -118,12 +129,16 @@ export function ResultPanel({
       {wrongContent && !explanation && (
         <div className="mt-6 flex flex-col items-center gap-2">
           {uid ? (
-            <Button variant="ghost" disabled={busy} onClick={() => void explain()}>
+            <Button
+              variant="ghost"
+              disabled={busy}
+              onClick={() => void explain()}
+            >
               <Icons.generate />
               {t(busy ? "practice.explaining" : "practice.explainWrong")}
               <CreditBadge
-                label={t("managed.expectedPoints", { points: 5 })}
-                value={t("managed.expectedShort", { points: 5 })}
+                label={t("managed.expectedPoints", { points: explanationCost })}
+                value={t("managed.expectedShort", { points: explanationCost })}
               />
             </Button>
           ) : (
@@ -143,9 +158,7 @@ export function ResultPanel({
       )}
       {explanation && (
         <section className="section-gap rule-t pt-6">
-          <h2 className="type-section">
-            {t("practice.explanationTitle")}
-          </h2>
+          <h2 className="type-section">{t("practice.explanationTitle")}</h2>
           <Markdown className="mt-4 text-sm" content={explanation} />
         </section>
       )}

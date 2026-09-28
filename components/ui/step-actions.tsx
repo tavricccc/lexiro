@@ -42,22 +42,26 @@ export function StepActions({
       data-step-actions-space
       style={{ minHeight: height || undefined }}
     >
-      {host && createPortal(<div
-        ref={panelRef}
-        className={cn(
-          "fixed inset-x-0 bottom-0 z-40 border-t bg-[color-mix(in_srgb,var(--surface-stage)_90%,transparent)] px-[max(var(--page-gutter),var(--safe-left),var(--safe-right))] pb-[max(1rem,var(--safe-bottom))] pt-3 backdrop-blur-xl md:left-60",
-          className,
+      {host &&
+        createPortal(
+          <div
+            ref={panelRef}
+            className={cn(
+              "fixed inset-x-0 bottom-0 z-40 border-t bg-[var(--surface-stage)] px-[max(var(--page-gutter),var(--safe-left),var(--safe-right))] pb-[max(1rem,var(--safe-bottom))] pt-3",
+              className,
+            )}
+          >
+            <div
+              className={cn(
+                "mx-auto grid gap-2",
+                width === "wide" ? "max-w-3xl" : "max-w-xl",
+              )}
+            >
+              {children}
+            </div>
+          </div>,
+          host,
         )}
-      >
-        <div
-          className={cn(
-            "mx-auto grid gap-2",
-            width === "wide" ? "max-w-3xl" : "max-w-xl",
-          )}
-        >
-          {children}
-        </div>
-      </div>, host)}
     </div>
   );
 }

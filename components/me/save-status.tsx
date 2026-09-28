@@ -9,7 +9,24 @@ import { t } from "@/lib/i18n";
  * then gets out of the way, which is why it never occupies layout space it
  * would have to give back.
  */
-export function SaveStatus({ status }: { status: AutosaveStatus }) {
+export function SaveStatus({
+  status,
+  onRetry,
+}: {
+  status: AutosaveStatus;
+  onRetry: () => void;
+}) {
+  if (status === "error")
+    return (
+      <button
+        type="button"
+        onClick={onRetry}
+        className="inline-flex min-h-11 items-center gap-1.5 text-sm text-destructive underline underline-offset-4"
+      >
+        <Icons.retry className="size-4" />
+        {t("me.saveFailedRetry")}
+      </button>
+    );
   return (
     <p
       aria-live="polite"
@@ -19,7 +36,9 @@ export function SaveStatus({ status }: { status: AutosaveStatus }) {
       {status === "saved" && (
         <Icons.success aria-hidden className="size-3.5 text-success" />
       )}
-      {status === "idle" ? "" : t(status === "saved" ? "me.saved" : "me.saving")}
+      {status === "idle"
+        ? ""
+        : t(status === "saved" ? "me.saved" : "me.saving")}
     </p>
   );
 }

@@ -1,15 +1,11 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { SaveStatus } from "@/components/me/save-status";
 import { useAutosave } from "@/components/me/use-autosave";
-import {
-  ListPicker,
-  ListSection,
-  ListStepperRow,
-} from "@/components/ui/list";
+import { ListPicker, ListSection, ListStepperRow } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 
@@ -27,21 +23,11 @@ export function PreferencesSection() {
   const [questionGoal, setQuestionGoal] = useState(
     learning.stats.dailyQuestionGoal,
   );
-  useEffect(() => {
-    if (!learning.loaded) return;
-    setWordGoal(learning.stats.dailyWordGoal);
-    setQuestionGoal(learning.stats.dailyQuestionGoal);
-  }, [
-    learning.loaded,
-    learning.stats.dailyQuestionGoal,
-    learning.stats.dailyWordGoal,
-  ]);
-
   const goals = useMemo(
     () => ({ questionGoal, wordGoal }),
     [questionGoal, wordGoal],
   );
-  const status = useAutosave(
+  const autosave = useAutosave(
     goals,
     (value) =>
       learning.setGoals(
@@ -69,7 +55,9 @@ export function PreferencesSection() {
       </ListSection>
       <ListSection
         header={t("settings.learning")}
-        headerAction={<SaveStatus status={status} />}
+        headerAction={
+          <SaveStatus status={autosave.status} onRetry={autosave.retry} />
+        }
       >
         <ListStepperRow
           label={t("settings.dailyWords")}

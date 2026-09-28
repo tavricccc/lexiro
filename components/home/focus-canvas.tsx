@@ -1,9 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import Link from "next/link";
 import { useMemo } from "react";
-
-import { ListNavRow, ListSection } from "@/components/ui/list";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
@@ -12,6 +10,8 @@ import {
   countQuestionItems,
   countReviewableSenses,
 } from "@/src/lib/library-metrics";
+import { localDateKey } from "@/src/lib/date";
+import { StudyProgress } from "./study-progress";
 
 const GUIDE = [
   ["home.guideStepOne", "home.guideStepOneHint"],
@@ -19,22 +19,6 @@ const GUIDE = [
   ["home.guideStepThree", "home.guideStepThreeHint"],
 ] as const;
 
-/**
- * The one orchestrated entrance in the app. Every other surface stays still, so
- * the canvas reads as the start of the session rather than as another animated
- * card in a stack of them.
- *
- * The ways into a session are a list, not a row of buttons. Two buttons beside
- * each other are a decision and its way out; these are two errands, and each
- * one has a number that decides whether you want it today — how much is due,
- * how many questions are waiting. A row has somewhere to put that number.
- *
- * The two headline figures are what is due and how long the streak is. The
- * second used to be the size of the question bank, which is inventory rather
- * than an errand: it does not move when you practise, and the row below already
- * says it. The streak belongs on the screen opened every day, not behind a tap
- * on 進度.
- */
 export function FocusCanvas() {
   const library = useLibraryStore((store) => store.state);
   const cards = useLearningStore((store) => store.progress.cards);
@@ -44,130 +28,113 @@ export function FocusCanvas() {
     [cards, library.words],
   );
   const questionCount = useMemo(() => countQuestionItems(library), [library]);
-  const senseCount = Object.keys(library.words).length;
-  const hasContent = senseCount > 0;
+  const hasContent = Object.keys(library.words).length > 0;
+  const activity = stats.dailyHistory[localDateKey()];
+  const wordsToday = activity ? activity.memoryAgain + activity.memoryGood : 0;
+  const questionsToday =
+    stats.lastStudyDate === localDateKey() ? stats.todayQuestionReviews : 0;
   const goalMet =
-    stats.todayMemoryReviews >= stats.dailyWordGoal &&
-    stats.todayQuestionReviews >= stats.dailyQuestionGoal;
+    wordsToday >= stats.dailyWordGoal &&
+    questionsToday >= stats.dailyQuestionGoal;
+  const primaryHref = !hasContent
+    ? "/app/sets/new"
+    : reviewCount > 0
+      ? "/app/practice?track=fsrs"
+      : questionCount > 0
+        ? "/app/practice?track=questions"
+        : "/app/sets/new";
+  const primaryLabel = !hasContent
+    ? "home.createFirstSet"
+    : reviewCount > 0
+      ? "home.startReview"
+      : questionCount > 0
+        ? "home.startQuestions"
+        : "library.newSet";
 
   return (
-    <motion.section
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 10 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="relative overflow-hidden rounded-[var(--radius-stage)] bg-surface-canvas px-6 py-8 sm:px-9 sm:py-10">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-6 right-0 hidden aspect-[4/3] w-[26%] max-w-[17rem] bg-brand-600 opacity-[0.18] lg:block"
-          style={{
-            maskImage: "url(/illustrations/open-doodles-reading.svg)",
-            maskPosition: "center",
-            maskRepeat: "no-repeat",
-            maskSize: "contain",
-            WebkitMaskImage: "url(/illustrations/open-doodles-reading.svg)",
-            WebkitMaskPosition: "center",
-            WebkitMaskRepeat: "no-repeat",
-            WebkitMaskSize: "contain",
-          }}
-        />
-        <div className="relative z-10 max-w-2xl">
-          <h1 className="type-page max-w-xl">
-            {t(hasContent ? "home.greeting" : "home.guideTitle")}
-          </h1>
-
-          {hasContent ? (
-            <>
-              <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-5">
-                <Figure label={t("home.reviewLabel")} value={reviewCount} />
-                <Figure
-                  label={t("home.streakLabel")}
-                  value={stats.streakDays}
-                />
-              </dl>
-              <p className="mt-6 max-w-[46ch] type-lead">
-                {goalMet
-                  ? t("home.todayDone")
-                  : t("home.todayProgress", {
-                      questionGoal: stats.dailyQuestionGoal,
-                      questions: stats.todayQuestionReviews,
-                      wordGoal: stats.dailyWordGoal,
-                      words: stats.todayMemoryReviews,
-                    })}
-              </p>
-            </>
-          ) : (
-            // A new library has nothing worth counting, so the canvas explains
-            // the loop instead of showing two zeroes.
-            <ol className="mt-7 grid gap-4">
-              {GUIDE.map(([label, hint], index) => (
-                <li className="flex gap-3.5" key={label}>
-                  <span
-                    aria-hidden
-                    className="mt-0.5 text-sm tabular-nums text-brand-600"
-                  >
-                    {index + 1}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block font-medium">{t(label)}</span>
-                    <span className="mt-0.5 block max-w-[44ch] type-lead">
-                      {t(hint)}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ol>
+    <section className="study-home">
+      <div className="study-invitation">
+        <div className="study-invitation-copy">
+          <h2>
+            {t(
+              !hasContent
+                ? "home.welcomeTitle"
+                : goalMet
+                  ? "home.finishedTitle"
+                  : "home.greeting",
+            )}
+          </h2>
+          <p>
+            {t(
+              !hasContent
+                ? "home.welcomeHint"
+                : goalMet
+                  ? "home.todayDone"
+                  : "home.studyHint",
+            )}
+          </p>
+          <Link className="study-start" href={primaryHref}>
+            {t(primaryLabel)}
+            <Icons.next aria-hidden className="size-5" />
+          </Link>
+          {hasContent && (
+            <span className="study-available">
+              {t("home.available", { count: reviewCount })}
+            </span>
           )}
         </div>
+        <div className="study-illustration" aria-hidden="true" />
       </div>
 
-      <ListSection className="mt-5" header={t("home.startHeader")}>
-        {!hasContent ? (
-          <ListNavRow
-            href="/app/sets/new"
-            icon={Icons.create}
-            label={t("home.createFirstSet")}
-          />
-        ) : (
-          <>
-            <ListNavRow
+      {hasContent ? (
+        <>
+          <div className="study-checklist">
+            <StudyProgress
               href="/app/practice?track=fsrs"
-              icon={Icons.review}
-              label={t("home.startReview")}
-              value={
-                reviewCount
-                  ? t("home.dueCount", { count: reviewCount })
-                  : t("home.nothingDue")
-              }
+              label={t("home.wordsToday")}
+              value={wordsToday}
+              goal={stats.dailyWordGoal}
+              disabled={reviewCount === 0}
+              emptyHint={t("home.nothingDue")}
             />
-            {questionCount > 0 && (
-              <ListNavRow
-                href="/app/practice?track=questions"
-                icon={Icons.practice}
-                label={t("home.startQuestions")}
-                value={t("home.questionCount", { count: questionCount })}
-              />
+            <StudyProgress
+              href="/app/practice?track=questions"
+              label={t("home.questionsToday")}
+              value={questionsToday}
+              goal={stats.dailyQuestionGoal}
+              disabled={questionCount === 0}
+            />
+          </div>
+          <div className="study-tools">
+            <Link href="/app/questions/generate">
+              <Icons.generate aria-hidden className="size-4" />
+              {t("home.generateQuestions")}
+              <Icons.next aria-hidden className="size-4" />
+            </Link>
+            {primaryHref !== "/app/sets/new" && (
+              <Link href="/app/sets/new">
+                <Icons.create aria-hidden className="size-4" />
+                {t("library.newSet")}
+                <Icons.next aria-hidden className="size-4" />
+              </Link>
             )}
-            <ListNavRow
-              href="/app/questions/generate"
-              icon={Icons.generate}
-              label={t("home.generateQuestions")}
-              value={t("home.senseCount", { count: senseCount })}
-            />
-          </>
-        )}
-      </ListSection>
-    </motion.section>
-  );
-}
-
-function Figure({ label, value }: { label: string; value: number }) {
-  return (
-    <div>
-      <dt className="text-sm text-muted-foreground">{label}</dt>
-      <dd className="mt-1 text-[2.5rem] font-medium leading-none tabular-nums">
-        {value}
-      </dd>
-    </div>
+          </div>
+        </>
+      ) : (
+        <ol className="study-guide">
+          {GUIDE.map(([label, hint], index) => (
+            <li key={label}>
+              <span className="study-guide-step" aria-hidden="true">
+                {index + 1}
+              </span>
+              <div>
+                <h3>{t(label)}</h3>
+                <p>{t(hint)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+    </section>
   );
 }

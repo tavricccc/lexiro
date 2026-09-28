@@ -49,13 +49,14 @@ function HeaderSkeleton({
       )}
       <div className="flex min-h-9 items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          {root && <Skeleton className="size-8 rounded-lg md:hidden" />}
           <Skeleton className="h-7 w-32 rounded-md" />
         </div>
         {(action || root) && (
           <div className="flex items-center gap-2">
             {action && <Skeleton className="size-9 shrink-0 rounded-lg" />}
-            {root && <Skeleton className="size-9 shrink-0 rounded-lg md:hidden" />}
+            {root && (
+              <Skeleton className="size-9 shrink-0 rounded-lg md:hidden" />
+            )}
           </div>
         )}
       </div>
@@ -171,26 +172,18 @@ function QuestionsPageSkeleton() {
 function HomePageSkeleton() {
   return (
     <div>
-      <HeaderSkeleton className="md:hidden" root />
-      <section className="relative overflow-hidden rounded-[var(--radius-stage)] bg-surface-canvas px-6 py-8 sm:px-9 sm:py-10">
-        <div className="max-w-2xl space-y-3">
-          <Skeleton className="h-10 w-[min(27rem,90%)] rounded-lg" />
-          <div className="mt-7 flex gap-10">
-            <div className="space-y-2">
-              <Skeleton className="h-3 w-16 rounded" />
-              <Skeleton className="h-10 w-12 rounded" />
-            </div>
-            <div className="space-y-2">
-              <Skeleton className="h-3 w-20 rounded" />
-              <Skeleton className="h-10 w-12 rounded" />
-            </div>
-          </div>
-          <Skeleton className="mt-5 h-4 w-[min(32rem,90%)] rounded-md" />
+      <HeaderSkeleton root />
+      <section className="study-invitation min-h-72">
+        <div className="space-y-5">
+          <Skeleton className="h-10 w-3/4 bg-white/15" />
+          <Skeleton className="h-6 w-full bg-white/15" />
+          <Skeleton className="h-12 w-52 max-w-full bg-white/15" />
         </div>
+        <Skeleton className="aspect-square w-full bg-white/10" />
       </section>
-      <div className="mt-5">
-        <Skeleton className="mb-2 h-4 w-24 rounded" />
-        <ListSkeleton rows={3} />
+      <div className="study-checklist">
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
       </div>
       <div className="section-gap grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
         <section>

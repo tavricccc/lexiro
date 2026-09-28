@@ -13,9 +13,7 @@ import {
 } from "@/lib/navigation-memory";
 import { RouteSurface } from "@/components/motion/route-surface";
 import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
-import { BrandLockup } from "@/components/ui/brand";
 import { Icons } from "@/components/ui/icons";
-import { cn } from "@/lib/cn";
 import { SyncIndicator } from "@/components/sync-indicator";
 import { useUIStore } from "@/stores/ui-store";
 
@@ -61,26 +59,21 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={cn(
-        "app-shell min-h-[100dvh] bg-[var(--surface-stage)]",
-        !practiceActive && "md:grid md:grid-cols-[15rem_minmax(0,1fr)]",
-      )}
+      className="app-shell min-h-[100dvh] bg-[var(--surface-stage)]"
       data-focus={practiceActive}
     >
-      {!practiceActive && <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r bg-card p-3 md:flex">
-        <div className="mb-4 flex items-center justify-between border-b px-3 pb-5 pt-3">
-          <BrandLockup href="/app" />
+      {!practiceActive && (
+        <header className="workspace-navigation hidden md:flex">
+          <LiquidNav
+            className="workspace-navigation-links"
+            items={navItems}
+            pathname={navigationPathname}
+          />
           <SyncIndicator />
-        </div>
-        <LiquidNav
-          className="flex-1 content-start"
-          items={navItems}
-          pathname={navigationPathname}
-          vertical
-        />
-      </aside>}
+        </header>
+      )}
 
-      <div className={cn("min-w-0", !practiceActive && "md:col-start-2")}>
+      <div className="min-w-0">
         <main
           className={`app-viewport pt-[max(0.75rem,var(--safe-top))] md:pb-12 md:pt-6 ${
             showMobileNavigation
@@ -88,14 +81,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               : "pb-[max(2rem,var(--safe-bottom))]"
           }`}
         >
-          {/* No brand row on a phone: each destination's own title bar carries
-              the mark and the sync status, in the row that holds its title. */}
           <RouteSurface>{children}</RouteSurface>
         </main>
 
         <div
           aria-hidden={!showMobileNavigation}
-          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full border px-3 py-1.5 shadow-[var(--shadow-floating)] md:hidden"
+          className="app-mobile-nav fixed z-30 px-3 py-1.5 md:hidden"
           data-visible={showMobileNavigation}
           inert={!showMobileNavigation}
         >

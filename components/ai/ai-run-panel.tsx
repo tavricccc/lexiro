@@ -80,6 +80,10 @@ export function AiRunPanel<T>({
     appendBillableCount ?? billableCount,
     tier,
   );
+  const startCost = estimatePoints(kind, billableCount, tier);
+  const insufficientPoints =
+    !admin && account.data !== undefined && account.data.points < startCost.min;
+  const canStart = canRun && !insufficientPoints;
   useEffect(() => {
     if (!running) return;
     setNow(Date.now());
@@ -190,6 +194,11 @@ export function AiRunPanel<T>({
           {t("ai.builtLocally", { count: localCount })}
         </p>
       )}
+      {!running && insufficientPoints && state.remaining === 0 && !done && (
+        <p className="text-sm text-destructive" role="status">
+          {t("managed.noPoints")}
+        </p>
+      )}
       {started && (
         <p className="type-hint">
           {t(running ? "ai.keepWorking" : "ai.keptResults")}
@@ -219,7 +228,13 @@ export function AiRunPanel<T>({
           <>
             <Button
               className="w-full"
-              disabled={done && onReview ? false : !canRun}
+              disabled={
+                done && onReview
+                  ? false
+                  : state.remaining > 0
+                    ? !canRun
+                    : !canStart
+              }
               onClick={
                 done && onReview
                   ? onReview
@@ -243,7 +258,7 @@ export function AiRunPanel<T>({
                     ? t("ai.regenerate")
                     : actionLabel}
             </Button>
-            {(state.remaining > 0 || (done && onReview)) && canRun && (
+            {(state.remaining > 0 || (done && onReview)) && canStart && (
               <Button onClick={onStart} type="button" variant="ghost">
                 <Icons.generate />
                 {t("ai.regenerate")}
@@ -256,7 +271,16 @@ export function AiRunPanel<T>({
               </Button>
             )}
             {done && onAppend && configured && (
-              <Button onClick={onAppend} type="button" variant="ghost">
+              <Button
+                onClick={onAppend}
+                type="button"
+                variant="ghost"
+                disabled={
+                  !admin &&
+                  account.data !== undefined &&
+                  account.data.points < appendCost.min
+                }
+              >
                 <Icons.generate />
                 {admin
                   ? t("ai.append")
