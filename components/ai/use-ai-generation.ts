@@ -30,22 +30,58 @@ export function useReviewHandoff(status: AiRunStatus, onDone: () => void) {
   }, [status]);
 }
 export interface AiRunState<T> {
-  status: AiRunStatus; phase: AiPhase; characters: number; completed: number; total: number;
-  segments: number; error: string; items: T[]; notices: string[]; startedAt: number | null;
-  elapsedMs: number; remaining: number; usage: TokenUsage;
-  diagnostic: { request?: string; response: string; responseId?: string } | null;
+  status: AiRunStatus;
+  phase: AiPhase;
+  characters: number;
+  completed: number;
+  total: number;
+  segments: number;
+  error: string;
+  items: T[];
+  notices: string[];
+  startedAt: number | null;
+  elapsedMs: number;
+  remaining: number;
+  usage: TokenUsage;
+  diagnostic: {
+    request?: string;
+    response: string;
+    responseId?: string;
+  } | null;
 }
 export interface AiGenerationSnapshot<T> {
   state: AiRunState<T>;
   tier: Tier;
 }
-const initialState = <T>(): AiRunState<T> => ({ status: "idle", phase: "connecting", characters: 0, completed: 0, total: 0, segments: 0, error: "", items: [], notices: [], startedAt: null, elapsedMs: 0, remaining: 0, usage: {}, diagnostic: null });
+const initialState = <T>(): AiRunState<T> => ({
+  status: "idle",
+  phase: "connecting",
+  characters: 0,
+  completed: 0,
+  total: 0,
+  segments: 0,
+  error: "",
+  items: [],
+  notices: [],
+  startedAt: null,
+  elapsedMs: 0,
+  remaining: 0,
+  usage: {},
+  diagnostic: null,
+});
 
 function restoredState<T>(snapshot?: AiGenerationSnapshot<T>): AiRunState<T> {
   if (!snapshot) return initialState<T>();
   const previous = snapshot.state;
   return previous.items.length
-    ? { ...previous, status: "done", startedAt: null, remaining: 0, total: previous.completed, diagnostic: null }
+    ? {
+        ...previous,
+        status: "done",
+        startedAt: null,
+        remaining: 0,
+        total: previous.completed,
+        diagnostic: null,
+      }
     : initialState<T>();
 }
 
@@ -58,14 +94,20 @@ export function useAiGeneration<T>({
   merge?: (items: T[]) => T[];
   onSnapshotChange?: (snapshot: AiGenerationSnapshot<T>) => void;
 } = {}) {
-  const [state, setState] = useState<AiRunState<T>>(() => restoredState(initialSnapshot));
+  const [state, setState] = useState<AiRunState<T>>(() =>
+    restoredState(initialSnapshot),
+  );
   const [tier, setTier] = useState<Tier>(initialSnapshot?.tier ?? "lite");
   const [itemsRevision, setItemsRevision] = useState(0);
   const ready = useCloudStore((store) => store.ready);
   const uid = useCloudStore((store) => store.user?.uid);
-  const abortRef = useRef<AbortController | null>(null), runRef = useRef<AiRun<T> | null>(null), generationId = useRef(0);
-  const mergeRef = useRef(merge); mergeRef.current = merge;
-  const onSnapshotRef = useRef(onSnapshotChange); onSnapshotRef.current = onSnapshotChange;
+  const abortRef = useRef<AbortController | null>(null),
+    runRef = useRef<AiRun<T> | null>(null),
+    generationId = useRef(0);
+  const mergeRef = useRef(merge);
+  mergeRef.current = merge;
+  const onSnapshotRef = useRef(onSnapshotChange);
+  onSnapshotRef.current = onSnapshotChange;
   const firstSnapshot = useRef(true);
   useEffect(() => {
     if (firstSnapshot.current) {
@@ -81,20 +123,57 @@ export function useAiGeneration<T>({
   useEffect(() => {
     if (previousUid.current === uid) return;
     previousUid.current = uid;
-    runRef.current = null; setState(initialState<T>());
-    return () => { generationId.current++; abortRef.current?.abort(); abortRef.current = null; };
+    generationId.current++;
+    abortRef.current?.abort();
+    abortRef.current = null;
+    runRef.current = null;
+    setState(initialState<T>());
   }, [uid]);
-  useEffect(() => () => { generationId.current++; abortRef.current?.abort(); }, []);
+  useEffect(
+    () => () => {
+      generationId.current++;
+      abortRef.current?.abort();
+    },
+    [],
+  );
   const execute = useCallback(async (run: AiRun<T>) => {
     abortRef.current?.abort();
-    const controller = new AbortController(), id = ++generationId.current, start = Date.now();
+    const controller = new AbortController(),
+      id = ++generationId.current,
+      start = Date.now();
     abortRef.current = controller;
-    setState((s) => ({ ...s, status: "running", error: "", diagnostic: null, startedAt: start, items: [...run.items], completed: run.completed, total: run.total, remaining: run.pending.length }));
+    setState((s) => ({
+      ...s,
+      status: "running",
+      error: "",
+      diagnostic: null,
+      startedAt: start,
+      items: [...run.items],
+      completed: run.completed,
+      total: run.total,
+      remaining: run.pending.length,
+    }));
     try {
-      await runTask(run, { signal: controller.signal, merge: mergeRef.current, onUpdate: (update) => {
-        if (id === generationId.current) setState((s) => ({ ...s, ...update, remaining: run.pending.length }));
-      } });
-      if (id === generationId.current) setState((s) => ({ ...s, status: "done", startedAt: null, elapsedMs: s.elapsedMs + Date.now() - start, remaining: 0 }));
+      await runTask(run, {
+        signal: controller.signal,
+        merge: mergeRef.current,
+        onUpdate: (update) => {
+          if (id === generationId.current)
+            setState((s) => ({
+              ...s,
+              ...update,
+              remaining: run.pending.length,
+            }));
+        },
+      });
+      if (id === generationId.current)
+        setState((s) => ({
+          ...s,
+          status: "done",
+          startedAt: null,
+          elapsedMs: s.elapsedMs + Date.now() - start,
+          remaining: 0,
+        }));
     } catch (reason) {
       if (id === generationId.current) {
         const diagnostic = controller.signal.aborted
@@ -123,30 +202,81 @@ export function useAiGeneration<T>({
           diagnostic,
         }));
       }
-    } finally { if (id === generationId.current) abortRef.current = null; }
+    } finally {
+      if (id === generationId.current) abortRef.current = null;
+    }
   }, []);
-  const start = useCallback((task: AiTask<T>, seed: T[] = []) => {
-    if (!ready || (task.steps.length && !uid)) { setState((s) => ({ ...s, status: "error", error: t("managed.signInRequired") })); return; }
-    const run: AiRun<T> = { task, session: createAiSession(tier, task.context), pending: [...task.steps], items: [...seed], completed: seed.length, total: seed.length + task.steps.reduce((n,s) => n+s.count,0), segments: 0 };
-    runRef.current = run; setState(initialState<T>()); void execute(run);
-  }, [execute, ready, uid, tier]);
-  const resume = useCallback(() => { if (!abortRef.current && runRef.current?.pending.length) void execute(runRef.current); }, [execute]);
-  const append = useCallback((task?: AiTask<T>) => {
-    const run = runRef.current;
-    if (!run || abortRef.current || run.pending.length) return;
-    if (task) run.task = task;
-    if (run.session.context !== run.task.context || run.session.tier !== tier) resetConversation(run.session);
-    run.session.context = run.task.context; run.session.tier = tier;
-    run.session.sessionId = crypto.randomUUID(); run.session.append = true;
-    run.pending = [...run.task.steps]; run.total += run.pending.reduce((n,s) => n+s.count,0);
-    void execute(run);
-  }, [execute, tier]);
+  const start = useCallback(
+    (task: AiTask<T>, seed: T[] = []) => {
+      if (abortRef.current) return;
+      if (!ready || (task.steps.length && !uid)) {
+        setState((s) => ({
+          ...s,
+          status: "error",
+          error: t("managed.signInRequired"),
+        }));
+        return;
+      }
+      const run: AiRun<T> = {
+        task,
+        session: createAiSession(tier, task.context),
+        pending: [...task.steps],
+        items: [...seed],
+        completed: seed.length,
+        total: seed.length + task.steps.reduce((n, s) => n + s.count, 0),
+        segments: 0,
+      };
+      runRef.current = run;
+      setState(initialState<T>());
+      void execute(run);
+    },
+    [execute, ready, uid, tier],
+  );
+  const resume = useCallback(() => {
+    if (!abortRef.current && runRef.current?.pending.length)
+      void execute(runRef.current);
+  }, [execute]);
+  const append = useCallback(
+    (task?: AiTask<T>) => {
+      const run = runRef.current;
+      if (!run || abortRef.current || run.pending.length) return;
+      if (task) run.task = task;
+      if (run.session.context !== run.task.context || run.session.tier !== tier)
+        resetConversation(run.session);
+      run.session.context = run.task.context;
+      run.session.tier = tier;
+      run.session.sessionId = crypto.randomUUID();
+      run.session.append = true;
+      run.pending = [...run.task.steps];
+      run.total += run.pending.reduce((n, s) => n + s.count, 0);
+      void execute(run);
+    },
+    [execute, tier],
+  );
   const cancel = useCallback(() => abortRef.current?.abort(), []);
-  const reset = useCallback(() => { generationId.current++; abortRef.current?.abort(); abortRef.current = null; runRef.current = null; setState(initialState<T>()); }, []);
+  const reset = useCallback(() => {
+    generationId.current++;
+    abortRef.current?.abort();
+    abortRef.current = null;
+    runRef.current = null;
+    setState(initialState<T>());
+  }, []);
   const setItems = useCallback((items: T[]) => {
     if (runRef.current) runRef.current.items = [...items];
     setState((s) => ({ ...s, items }));
     setItemsRevision((value) => value + 1);
   }, []);
-  return { state, ready, configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL), tier, setTier, start, resume, append, cancel, reset, setItems };
+  return {
+    state,
+    ready,
+    configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL),
+    tier,
+    setTier,
+    start,
+    resume,
+    append,
+    cancel,
+    reset,
+    setItems,
+  };
 }

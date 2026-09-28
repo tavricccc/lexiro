@@ -7,7 +7,7 @@ import { create } from "zustand";
 
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
-import { useLibraryStore } from "@/stores/library-store";
+import { flushLibraryMutations, useLibraryStore } from "@/stores/library-store";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
 import { canonicalHash } from "@/src/lib/hash";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
@@ -24,7 +24,10 @@ import {
   pushRecords,
   watchCloudChanges,
 } from "@/src/lib/cloud-sync";
-import { configureFirebaseAuth, getFirebaseFirestore } from "@/src/lib/firebase";
+import {
+  configureFirebaseAuth,
+  getFirebaseFirestore,
+} from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
 import { setStorageNamespace } from "@/src/lib/persist";
 import {
@@ -135,6 +138,7 @@ async function hydrateLocal(): Promise<void> {
 }
 
 async function enterNamespace(namespace: string): Promise<void> {
+  await flushLibraryMutations();
   setStorageNamespace(namespace);
   accountDocumentsRead = "";
   resetSyncJournalCache();
@@ -263,7 +267,13 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     unwatch?.();
     unwatch = null;
     await enterNamespace("guest");
-    set({ user: null, ready: true, status: "signed-out", pending: 0, error: "" });
+    set({
+      user: null,
+      ready: true,
+      status: "signed-out",
+      pending: 0,
+      error: "",
+    });
   },
 
   sync: async (options) => {
@@ -397,7 +407,11 @@ async function runSync(
     // Retrying a schema or permission problem just produces the same error on a
     // timer, so only the transient kinds come back on their own. Everything
     // else waits for the user to press 同步.
-    if (online() && isRetryableSyncError(reason) && retryAttempt < MAX_RETRY_ATTEMPTS) {
+    if (
+      online() &&
+      isRetryableSyncError(reason) &&
+      retryAttempt < MAX_RETRY_ATTEMPTS
+    ) {
       retryAttempt += 1;
       if (retryTimer) clearTimeout(retryTimer);
       retryTimer = setTimeout(

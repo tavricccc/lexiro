@@ -74,6 +74,23 @@ interface LibraryStore {
 
 const now = () => new Date().toISOString();
 
+let mutationQueue: Promise<unknown> = Promise.resolve();
+
+// Queue the whole read-modify-write operation, not just the disk write.
+function serial<Args extends unknown[], Result>(
+  action: (...args: Args) => Promise<Result>,
+) {
+  return (...args: Args): Promise<Result> => {
+    const next = mutationQueue.then(() => action(...args));
+    mutationQueue = next.catch(() => undefined);
+    return next;
+  };
+}
+
+export async function flushLibraryMutations(): Promise<void> {
+  await mutationQueue;
+}
+
 /**
  * Writes the Library and notes what changed for sync.
  *
@@ -111,7 +128,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
   status: "idle",
   error: null,
 
-  hydrate: async () => {
+  hydrate: serial(async () => {
     if (get().status === "loading" || get().status === "ready") return;
     set({ status: "loading", error: null });
     try {
@@ -123,9 +140,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
         error: error instanceof Error ? error.message : String(error),
       });
     }
-  },
+  }),
 
-  createFolder: async (name, parentId) => {
+  createFolder: serial(async (name, parentId) => {
     const timestamp = now();
     const normalizedName = name.trim().toLocaleLowerCase();
     if (
@@ -153,9 +170,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     await commit(state);
     set({ state });
     return folder;
-  },
+  }),
 
-  renameFolder: async (id, name) => {
+  renameFolder: serial(async (id, name) => {
     const timestamp = now();
     const current = get().state.folders.find((folder) => folder.id === id);
     if (!current) return;
@@ -181,9 +198,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     await commit(state);
     set({ state });
-  },
+  }),
 
-  moveFolder: async (id, parentId) => {
+  moveFolder: serial(async (id, parentId) => {
     const current = get().state.folders.find((folder) => folder.id === id);
     if (!current || id === UNCATEGORIZED_FOLDER_ID || id === parentId) return;
     const descendants = folderDescendants(get().state.folders, id);
@@ -214,9 +231,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     await commit(state);
     set({ state });
-  },
+  }),
 
-  deleteFolder: async (id) => {
+  deleteFolder: serial(async (id) => {
     if (id === UNCATEGORIZED_FOLDER_ID) return;
     const timestamp = now();
     const removed = folderDescendants(get().state.folders, id);
@@ -254,9 +271,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
           ),
         ),
       );
-  },
+  }),
 
-  moveSet: async (id, folderId) => {
+  moveSet: serial(async (id, folderId) => {
     const current = get().state.sets.find((entry) => entry.id === id);
     const destinationExists =
       folderId === UNCATEGORIZED_FOLDER_ID ||
@@ -273,156 +290,158 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     await commit(state);
     set({ state });
-  },
+  }),
 
-  saveSet: async ({ id, setName, folderId, words: drafts, remaps = [] }) => {
-    const timestamp = now();
-    const setId = id ?? randomUUID();
-    const previous = get().state.sets.find((entry) => entry.id === setId);
-    const librarySet: LibrarySet = {
-      id: setId,
-      setName: setName.trim(),
-      folderId: folderId || UNCATEGORIZED_FOLDER_ID,
-      createdAt: previous?.createdAt ?? timestamp,
-      updatedAt: timestamp,
-    };
-    const words = { ...get().state.words };
-    const membershipMap = new Map<WordKey, Set<SenseId>>();
-    const writtenSenses = new Set<SenseId>();
-    for (const draft of drafts) {
-      const wordKey = normalizeWordKey(draft.word);
-      const pos = normalizePartOfSpeech(draft.pos) || draft.pos.trim();
-      const meaningZh = draft.meaningZh.trim();
-      if (!wordKey || !pos || !meaningZh) continue;
-      const senseId = buildSenseId(wordKey, pos, meaningZh);
-      const current = words[wordKey];
-      const entry: WordEntry = current ?? {
-        wordKey,
-        word: draft.word.trim(),
-        senses: [],
+  saveSet: serial(
+    async ({ id, setName, folderId, words: drafts, remaps = [] }) => {
+      const timestamp = now();
+      const setId = id ?? randomUUID();
+      const previous = get().state.sets.find((entry) => entry.id === setId);
+      const librarySet: LibrarySet = {
+        id: setId,
+        setName: setName.trim(),
+        folderId: folderId || UNCATEGORIZED_FOLDER_ID,
+        createdAt: previous?.createdAt ?? timestamp,
         updatedAt: timestamp,
       };
-      const sense = entry.senses.find((item) => item.id === senseId);
-      words[wordKey] = {
-        ...entry,
-        word: draft.word.trim(),
-        senses: sense
-          ? entry.senses.map((item) =>
-              item.id === senseId
-                ? {
-                    ...item,
-                    examples: [
-                      ...new Set([
-                        ...(writtenSenses.has(senseId) ? item.examples : []),
-                        ...draft.examples
-                          .map((value) => value.trim())
-                          .filter(Boolean),
-                      ]),
-                    ],
-                  }
-                : item,
-            )
-          : [
-              ...entry.senses,
-              {
-                id: senseId,
-                pos,
-                meaningZh,
-                examples: draft.examples
-                  .map((value) => value.trim())
-                  .filter(Boolean),
-                supplementary: draft.supplementary,
-              },
-            ],
-        updatedAt: timestamp,
-      };
-      const senses = membershipMap.get(wordKey) ?? new Set<SenseId>();
-      writtenSenses.add(senseId);
-      senses.add(senseId);
-      membershipMap.set(wordKey, senses);
-    }
-    const memberships: SetMembership[] = [...membershipMap].map(
-      ([wordKey, senseIds]) => ({ wordKey, senseIds: [...senseIds] }),
-    );
-    const remapBySense = new Map(
-      remaps.map((entry) => [entry.oldSenseId, entry]),
-    );
-    const remappedMemberships: Record<string, SetMembership[]> =
-      Object.fromEntries(
-        Object.entries(get().state.memberships).map(
-          ([membershipSetId, entries]) => {
-            const grouped = new Map<WordKey, Set<SenseId>>();
-            for (const entry of entries) {
-              for (const senseId of entry.senseIds) {
-                const remap = remapBySense.get(senseId);
-                const targetWordKey = remap?.newWordKey ?? entry.wordKey;
-                const targetSenseId = remap?.newSenseId ?? senseId;
-                const targetSenses =
-                  grouped.get(targetWordKey) ?? new Set<SenseId>();
-                targetSenses.add(targetSenseId);
-                grouped.set(targetWordKey, targetSenses);
-              }
-            }
-            return [
-              membershipSetId,
-              [...grouped].map(([wordKey, senseIds]) => ({
-                wordKey,
-                senseIds: [...senseIds],
-              })),
-            ];
-          },
-        ),
-      );
-    const nextMemberships = { ...remappedMemberships, [setId]: memberships };
-    const prunedWords = pruneWordsToMemberships(words, nextMemberships);
-    const state: LibraryState = {
-      ...get().state,
-      words: prunedWords,
-      sets: previous
-        ? get().state.sets.map((entry) =>
-            entry.id === setId ? librarySet : entry,
-          )
-        : [...get().state.sets, librarySet],
-      memberships: nextMemberships,
-      questions: get()
-        .state.questions.map((question) => {
-          if (question.kind === "reading")
-            return {
-              ...question,
-              questions: question.questions.map((child) => {
-                const remap = remapBySense.get(child.senseId);
-                return remap
+      const words = { ...get().state.words };
+      const membershipMap = new Map<WordKey, Set<SenseId>>();
+      const writtenSenses = new Set<SenseId>();
+      for (const draft of drafts) {
+        const wordKey = normalizeWordKey(draft.word);
+        const pos = normalizePartOfSpeech(draft.pos) || draft.pos.trim();
+        const meaningZh = draft.meaningZh.trim();
+        if (!wordKey || !pos || !meaningZh) continue;
+        const senseId = buildSenseId(wordKey, pos, meaningZh);
+        const current = words[wordKey];
+        const entry: WordEntry = current ?? {
+          wordKey,
+          word: draft.word.trim(),
+          senses: [],
+          updatedAt: timestamp,
+        };
+        const sense = entry.senses.find((item) => item.id === senseId);
+        words[wordKey] = {
+          ...entry,
+          word: draft.word.trim(),
+          senses: sense
+            ? entry.senses.map((item) =>
+                item.id === senseId
                   ? {
-                      ...child,
-                      wordKey: remap.newWordKey,
-                      senseId: remap.newSenseId,
+                      ...item,
+                      examples: [
+                        ...new Set([
+                          ...(writtenSenses.has(senseId) ? item.examples : []),
+                          ...draft.examples
+                            .map((value) => value.trim())
+                            .filter(Boolean),
+                        ]),
+                      ],
                     }
-                  : child;
-              }),
-              wordKeys: question.wordKeys.map(
-                (wordKey) =>
-                  remaps.find((entry) => entry.oldWordKey === wordKey)
-                    ?.newWordKey ?? wordKey,
-              ),
-            };
-          const remap = remapBySense.get(question.senseId);
-          return remap
-            ? {
-                ...question,
-                wordKey: remap.newWordKey,
-                senseId: remap.newSenseId,
+                  : item,
+              )
+            : [
+                ...entry.senses,
+                {
+                  id: senseId,
+                  pos,
+                  meaningZh,
+                  examples: draft.examples
+                    .map((value) => value.trim())
+                    .filter(Boolean),
+                  supplementary: draft.supplementary,
+                },
+              ],
+          updatedAt: timestamp,
+        };
+        const senses = membershipMap.get(wordKey) ?? new Set<SenseId>();
+        writtenSenses.add(senseId);
+        senses.add(senseId);
+        membershipMap.set(wordKey, senses);
+      }
+      const memberships: SetMembership[] = [...membershipMap].map(
+        ([wordKey, senseIds]) => ({ wordKey, senseIds: [...senseIds] }),
+      );
+      const remapBySense = new Map(
+        remaps.map((entry) => [entry.oldSenseId, entry]),
+      );
+      const remappedMemberships: Record<string, SetMembership[]> =
+        Object.fromEntries(
+          Object.entries(get().state.memberships).map(
+            ([membershipSetId, entries]) => {
+              const grouped = new Map<WordKey, Set<SenseId>>();
+              for (const entry of entries) {
+                for (const senseId of entry.senseIds) {
+                  const remap = remapBySense.get(senseId);
+                  const targetWordKey = remap?.newWordKey ?? entry.wordKey;
+                  const targetSenseId = remap?.newSenseId ?? senseId;
+                  const targetSenses =
+                    grouped.get(targetWordKey) ?? new Set<SenseId>();
+                  targetSenses.add(targetSenseId);
+                  grouped.set(targetWordKey, targetSenses);
+                }
               }
-            : question;
-        })
-        .filter((question) => questionUsesWords(question, prunedWords)),
-      updatedAt: timestamp,
-    };
-    await commit(state);
-    set({ state });
-    return librarySet;
-  },
+              return [
+                membershipSetId,
+                [...grouped].map(([wordKey, senseIds]) => ({
+                  wordKey,
+                  senseIds: [...senseIds],
+                })),
+              ];
+            },
+          ),
+        );
+      const nextMemberships = { ...remappedMemberships, [setId]: memberships };
+      const prunedWords = pruneWordsToMemberships(words, nextMemberships);
+      const state: LibraryState = {
+        ...get().state,
+        words: prunedWords,
+        sets: previous
+          ? get().state.sets.map((entry) =>
+              entry.id === setId ? librarySet : entry,
+            )
+          : [...get().state.sets, librarySet],
+        memberships: nextMemberships,
+        questions: get()
+          .state.questions.map((question) => {
+            if (question.kind === "reading")
+              return {
+                ...question,
+                questions: question.questions.map((child) => {
+                  const remap = remapBySense.get(child.senseId);
+                  return remap
+                    ? {
+                        ...child,
+                        wordKey: remap.newWordKey,
+                        senseId: remap.newSenseId,
+                      }
+                    : child;
+                }),
+                wordKeys: question.wordKeys.map(
+                  (wordKey) =>
+                    remaps.find((entry) => entry.oldWordKey === wordKey)
+                      ?.newWordKey ?? wordKey,
+                ),
+              };
+            const remap = remapBySense.get(question.senseId);
+            return remap
+              ? {
+                  ...question,
+                  wordKey: remap.newWordKey,
+                  senseId: remap.newSenseId,
+                }
+              : question;
+          })
+          .filter((question) => questionUsesWords(question, prunedWords)),
+        updatedAt: timestamp,
+      };
+      await commit(state);
+      set({ state });
+      return librarySet;
+    },
+  ),
 
-  deleteSet: async (id) => {
+  deleteSet: serial(async (id) => {
     const timestamp = now();
     const memberships = { ...get().state.memberships };
     delete memberships[id];
@@ -449,9 +468,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
           ),
         ),
       );
-  },
+  }),
 
-  saveQuestion: async (question) => {
+  saveQuestion: serial(async (question) => {
     const timestamp = now();
     const normalized = canonicalizeQuestion({
       ...question,
@@ -478,9 +497,9 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     await commit(state);
     set({ state });
     return "saved";
-  },
+  }),
 
-  deleteQuestion: async (id) => {
+  deleteQuestion: serial(async (id) => {
     const state = {
       ...get().state,
       questions: get().state.questions.filter((entry) => entry.id !== id),
@@ -488,22 +507,23 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     await commit(state);
     set({ state });
-  },
-  importState: async (state) => {
+  }),
+
+  importState: serial(async (state) => {
     await commit(state);
     set({ state, status: "ready" });
-  },
+  }),
 
-  applyRemoteState: async (state) => {
+  applyRemoteState: serial(async (state) => {
     const stats = await getLibraryRepository().commit(state);
     // These records arrived from the cloud. Pushing them straight back would
     // be a round trip that changes nothing, and a record dropped here because
     // a tombstone arrived must not become a tombstone of this device's own.
     await untrackChanges(stats.changed, stats.removed);
     set({ state, status: "ready" });
-  },
+  }),
 
-  reloadNamespace: async () => {
+  reloadNamespace: serial(async () => {
     resetLibraryRepositoryCache();
     set({ status: "loading", error: null });
     try {
@@ -515,5 +535,5 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
         error: error instanceof Error ? error.message : String(error),
       });
     }
-  },
+  }),
 }));
