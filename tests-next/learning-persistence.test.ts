@@ -11,9 +11,13 @@ const storage = vi.hoisted(() => ({
 vi.mock("idb-keyval", () => ({
   get: async (key: string) => storage.values.get(key),
   set: (key: string, value: string) => storage.write(key, value),
-  del: async (key: string) => { storage.values.delete(key); },
+  del: async (key: string) => {
+    storage.values.delete(key);
+  },
 }));
-vi.mock("@/src/lib/sync-journal", () => ({ markBlobDirty: vi.fn(async () => {}) }));
+vi.mock("@/src/lib/sync-journal", () => ({
+  markBlobDirty: vi.fn(async () => {}),
+}));
 
 beforeEach(() => {
   storage.values.clear();
@@ -28,27 +32,81 @@ beforeEach(() => {
 });
 
 describe("durable practice completion", () => {
-  it.each(["card", "question"] as const)("waits for the %s write before reporting completion", async (kind) => {
-    let finishWrite!: () => void;
-    storage.write.mockImplementationOnce((key, value) => new Promise<void>((resolve) => {
-      finishWrite = () => { storage.values.set(key, value); resolve(); };
-    }));
-    let completed = false;
-    const action = kind === "card"
-      ? useLearningStore.getState().rateSense(asSenseId("sense-a"), "good")
-      : useLearningStore.getState().recordQuestion(asSenseId("sense-a"), "vocabulary", 2, true);
-    const result = action.then(() => { completed = true; });
-    await vi.waitFor(() => expect(storage.write).toHaveBeenCalled());
-    expect(completed).toBe(false);
-    finishWrite();
-    await result;
-    const saved = JSON.parse(storage.values.get(`guest:${LEARNING_STORAGE_KEY}`)!) as {
-      stats: { totalMemoryReviews: number; totalQuestionReviews: number };
-    };
-    expect(kind === "card" ? saved.stats.totalMemoryReviews : saved.stats.totalQuestionReviews).toBe(1);
-    useLearningStore.setState({ loaded: false, stats: createDefaultStats() });
-    await useLearningStore.getState().hydrate();
-    const stats = useLearningStore.getState().stats;
-    expect(kind === "card" ? stats.totalMemoryReviews : stats.totalQuestionReviews).toBe(1);
+  it("keeps counters unchanged when saving an answer fails", async () => {
+    storage.write.mockRejectedValueOnce(new Error("disk full"));
+    await expect(
+      useLearningStore.getState().rateSense(asSenseId("a"), "good"),
+    ).rejects.toThrow("disk full");
+    expect(useLearningStore.getState().stats.totalMemoryReviews).toBe(0);
+    expect(useLearningStore.getState().progress.cards).toEqual({});
   });
+
+  it("keeps concurrent answers without losing a counter", async () => {
+    await Promise.all([
+      useLearningStore.getState().rateSense(asSenseId("a"), "good"),
+      useLearningStore.getState().rateSense(asSenseId("b"), "again"),
+    ]);
+    expect(useLearningStore.getState().stats.totalMemoryReviews).toBe(2);
+    expect(
+      Object.keys(useLearningStore.getState().progress.cards),
+    ).toHaveLength(2);
+  });
+
+  it("refuses unreadable learning data without replacing it with defaults", async () => {
+    storage.values.set(`guest:${LEARNING_STORAGE_KEY}`, "broken data");
+    useLearningStore.setState({ loaded: false });
+    await expect(useLearningStore.getState().hydrate()).rejects.toThrow(
+      "原始資料已保留",
+    );
+    expect(useLearningStore.getState().loaded).toBe(false);
+    expect(storage.values.get(`guest:${LEARNING_STORAGE_KEY}`)).toBe(
+      "broken data",
+    );
+    expect(storage.write).not.toHaveBeenCalled();
+  });
+  it.each(["card", "question"] as const)(
+    "waits for the %s write before reporting completion",
+    async (kind) => {
+      let finishWrite!: () => void;
+      storage.write.mockImplementationOnce(
+        (key, value) =>
+          new Promise<void>((resolve) => {
+            finishWrite = () => {
+              storage.values.set(key, value);
+              resolve();
+            };
+          }),
+      );
+      let completed = false;
+      const action =
+        kind === "card"
+          ? useLearningStore.getState().rateSense(asSenseId("sense-a"), "good")
+          : useLearningStore
+              .getState()
+              .recordQuestion(asSenseId("sense-a"), "vocabulary", 2, true);
+      const result = action.then(() => {
+        completed = true;
+      });
+      await vi.waitFor(() => expect(storage.write).toHaveBeenCalled());
+      expect(completed).toBe(false);
+      finishWrite();
+      await result;
+      const saved = JSON.parse(
+        storage.values.get(`guest:${LEARNING_STORAGE_KEY}`)!,
+      ) as {
+        stats: { totalMemoryReviews: number; totalQuestionReviews: number };
+      };
+      expect(
+        kind === "card"
+          ? saved.stats.totalMemoryReviews
+          : saved.stats.totalQuestionReviews,
+      ).toBe(1);
+      useLearningStore.setState({ loaded: false, stats: createDefaultStats() });
+      await useLearningStore.getState().hydrate();
+      const stats = useLearningStore.getState().stats;
+      expect(
+        kind === "card" ? stats.totalMemoryReviews : stats.totalQuestionReviews,
+      ).toBe(1);
+    },
+  );
 });

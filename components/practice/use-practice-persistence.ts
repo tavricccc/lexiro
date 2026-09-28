@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 import {
-  PRACTICE_SESSION_STORAGE_KEY,
-} from "@/constants";
+  practiceStorageKey,
+  readPracticeDraft,
+} from "@/src/lib/practice-storage";
 import type {
   PracticeSessionSnapshot,
   PracticeTask,
@@ -51,14 +52,14 @@ export function useRestorePracticeSession({
     restoreAttempted.current = true;
     let raw: string | null;
     try {
-      raw = localStorage.getItem(PRACTICE_SESSION_STORAGE_KEY);
+      raw = readPracticeDraft();
     } catch {
       onChecked();
       return;
     }
     const saved = parsePracticeSession(raw);
     if (!saved) {
-      if (raw) localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+      if (raw) localStorage.removeItem(practiceStorageKey());
       onChecked();
       return;
     }
@@ -86,7 +87,7 @@ export function useRestorePracticeSession({
         ),
     );
     if (!entries || outOfScope || (saved.setId && !setIds.has(saved.setId))) {
-      localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+      localStorage.removeItem(practiceStorageKey());
       onChecked();
       return;
     }
@@ -146,7 +147,7 @@ export function usePersistPracticeSession({
     if (!started) return;
     if (complete) {
       try {
-        localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+        localStorage.removeItem(practiceStorageKey());
         setPersistence("idle");
       } catch {
         setPersistence("error");
@@ -176,7 +177,7 @@ export function usePersistPracticeSession({
       ),
     };
     try {
-      localStorage.setItem(PRACTICE_SESSION_STORAGE_KEY, JSON.stringify(snapshot));
+      localStorage.setItem(practiceStorageKey(), JSON.stringify(snapshot));
       setPersistence("saved");
     } catch {
       setPersistence("error");

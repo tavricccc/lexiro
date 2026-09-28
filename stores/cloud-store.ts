@@ -6,7 +6,10 @@ import type { Firestore } from "firebase/firestore";
 import { create } from "zustand";
 
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
-import { useLearningStore } from "@/stores/learning-store";
+import {
+  flushLearningMutations,
+  useLearningStore,
+} from "@/stores/learning-store";
 import { flushLibraryMutations, useLibraryStore } from "@/stores/library-store";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
 import { canonicalHash } from "@/src/lib/hash";
@@ -135,10 +138,13 @@ async function hydrateLocal(): Promise<void> {
     useLibraryStore.getState().hydrate(),
     useLearningStore.getState().hydrate(),
   ]);
+  const libraryError = useLibraryStore.getState().error;
+  if (libraryError) throw new Error(libraryError);
 }
 
 async function enterNamespace(namespace: string): Promise<void> {
   await flushLibraryMutations();
+  await flushLearningMutations();
   setStorageNamespace(namespace);
   accountDocumentsRead = "";
   resetSyncJournalCache();
@@ -146,6 +152,8 @@ async function enterNamespace(namespace: string): Promise<void> {
     useLibraryStore.getState().reloadNamespace(),
     useLearningStore.getState().reloadNamespace(),
   ]);
+  const libraryError = useLibraryStore.getState().error;
+  if (libraryError) throw new Error(libraryError);
 }
 
 export const useCloudStore = create<CloudStore>((set, get) => ({
@@ -159,6 +167,12 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
   initialize: async () => {
     if (initializationPromise) return initializationPromise;
     initializationPromise = (async () => {
+      const loadFailed = (reason: unknown) =>
+        set({
+          ready: false,
+          status: "error",
+          error: reason instanceof Error ? reason.message : String(reason),
+        });
       const scheduleSync = () => {
         void refreshPending(set);
         if (!get().user) return;
@@ -222,11 +236,14 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
       // Library opens, and signing in swaps the namespace when it arrives.
       const guestFallback = setTimeout(() => {
         if (get().ready) return;
-        void hydrateLocal().then(() => set({ ready: true }));
+        void hydrateLocal()
+          .then(() => set({ ready: true }))
+          .catch(loadFailed);
       }, AUTH_WAIT_MS);
 
       runtime.onAuthStateChanged(auth, (user) => {
         clearTimeout(guestFallback);
+        set({ ready: false, user, error: "" });
         unwatch?.();
         unwatch = null;
         void (async () => {
@@ -245,9 +262,15 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
               void get().sync();
             });
           await get().sync();
-        })();
+        })().catch(loadFailed);
       });
-    })();
+    })().catch((reason: unknown) => {
+      set({
+        ready: false,
+        status: "error",
+        error: reason instanceof Error ? reason.message : String(reason),
+      });
+    });
     return initializationPromise;
   },
 

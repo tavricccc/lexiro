@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { WorkspaceSkeleton } from "@/components/ui/workspace-skeleton";
 import { useCloudStore } from "@/stores/cloud-store";
+import { ErrorState } from "@/components/ui/page-state";
 
 /**
  * Holds the workspace back until the *local* Library is loaded, and not one
@@ -15,6 +16,11 @@ import { useCloudStore } from "@/stores/cloud-store";
  */
 export function CloudGate({ children }: { children: ReactNode }) {
   const ready = useCloudStore((store) => store.ready);
+  const error = useCloudStore((store) => store.error);
   if (ready) return children;
+  if (error)
+    return (
+      <ErrorState error={error} onRetry={() => window.location.reload()} />
+    );
   return <WorkspaceSkeleton />;
 }

@@ -10,6 +10,8 @@ import type {
   SenseId,
 } from "@/types";
 import { create } from "zustand";
+import { createMutationQueue } from "@/src/lib/mutation-queue";
+import { t } from "@/lib/i18n";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
 import { localDateKey } from "@/src/lib/date";
@@ -22,11 +24,7 @@ import {
   questionStatRow,
   rollStatsToToday,
 } from "@/src/lib/learning-defaults";
-import {
-  createDebouncedSaver,
-  loadFromStorage,
-  saveToStorage,
-} from "@/src/lib/persist";
+import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
 import { entriesOf } from "@/src/lib/record";
 import {
   normalizeDashboardStats,
@@ -40,16 +38,13 @@ interface LearningStore {
   loaded: boolean;
   hydrate: () => Promise<void>;
   rateSense: (senseId: SenseId, rating: ReviewRating) => Promise<void>;
-  scheduleSenseFromQuestion: (
-    senseId: SenseId,
-    rating: ReviewRating,
-  ) => Promise<void>;
   recordQuestion: (
     senseId: SenseId,
     type: QuestionStatType,
     difficulty: 1 | 2 | 3,
     correct: boolean,
     retry?: boolean,
+    rating?: ReviewRating,
   ) => Promise<void>;
   setGoals: (words: number, questions: number) => Promise<void>;
   importState: (
@@ -73,53 +68,16 @@ const initialProgress = (): LearningProgress => ({
 const statsForToday = (stats: DashboardStats) =>
   rollStatsToToday(stats, new Date());
 
-/**
- * Background edits coalesce. A completed answer explicitly flushes and awaits
- * IndexedDB before advancing; pagehide cannot guarantee an async write lands.
- */
-let pendingSnapshot: {
-  progress: LearningProgress;
-  stats: DashboardStats;
-} | null = null;
+const { serial, flush: flushLearningMutations } = createMutationQueue();
+export { flushLearningMutations };
 
-const saver = createDebouncedSaver(() => {
-  const snapshot = pendingSnapshot;
-  if (!snapshot) return;
-  pendingSnapshot = null;
-  void saveToStorage(LEARNING_STORAGE_KEY, {
-    version: 1,
-    progress: snapshot.progress,
-    stats: snapshot.stats,
-  })
-    // The write is no longer awaited by the action that triggered it, so a
-    // failing IndexedDB would otherwise be invisible.
-    .catch((reason: unknown) =>
-      console.error("[Lexiro] 學習進度儲存失敗", reason),
-    );
-}, 400);
-
-function persist(
+async function persist(
   progress: LearningProgress,
   stats: DashboardStats,
   markPending = true,
 ) {
-  pendingSnapshot = { progress, stats };
-  saver.schedule();
-  if (markPending) void markBlobDirty("progress", "stats");
-}
-
-/** Writes any pending learning state immediately and waits for it to land. */
-async function flushLearningState(): Promise<void> {
-  saver.flush();
-  await loadFromStorage(LEARNING_STORAGE_KEY);
-}
-
-if (typeof window !== "undefined") {
-  const flush = () => saver.flush();
-  window.addEventListener("pagehide", flush);
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") flush();
-  });
+  await saveToStorage(LEARNING_STORAGE_KEY, { version: 1, progress, stats });
+  if (markPending) await markBlobDirty("progress", "stats");
 }
 
 export const useLearningStore = create<LearningStore>((set, get) => ({
@@ -154,12 +112,12 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
         });
         return;
       } catch {
-        /* use defaults */
+        throw new Error(t("common.learningDataUnreadable"));
       }
     }
     set({ loaded: true });
   },
-  rateSense: async (senseId, rating) => {
+  rateSense: serial(async (senseId, rating) => {
     const timestamp = new Date().toISOString();
     const base = statsForToday(get().stats);
     const card: CardProgress = reviewCard(
@@ -187,65 +145,66 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       dailyHistory: { ...base.dailyHistory, [date]: activity },
       updatedAt: timestamp,
     };
+    await persist(progress, stats);
     set({ progress, stats });
-    persist(progress, stats);
-    await flushLearningState();
-  },
-  scheduleSenseFromQuestion: async (senseId, rating) => {
-    const progress = {
-      cards: {
-        ...get().progress.cards,
-        [senseId]: reviewCard(get().progress.cards[senseId] ?? null, rating),
-      },
-      updatedAt: new Date().toISOString(),
-    };
-    set({ progress });
-    persist(progress, get().stats);
-  },
-  recordQuestion: async (senseId, type, difficulty, correct, retry = false) => {
-    const timestamp = new Date().toISOString();
-    const base = statsForToday(get().stats);
-    const key = `${type}:${difficulty}` as const;
-    const senseStats =
-      base.questionStatsBySense[senseId] ?? emptyQuestionStats();
-    const date = todayKey();
-    const activity = {
-      ...(base.dailyHistory[date] ?? emptyDailyActivity(date)),
-    };
-    activity.questionTotal += 1;
-    const stats = {
-      ...base,
-      totalQuestionReviews: base.totalQuestionReviews + 1,
-      correctQuestionReviews: base.correctQuestionReviews + (correct ? 1 : 0),
-      todayQuestionReviews: base.todayQuestionReviews + 1,
-      todayQuestionCorrectReviews:
-        base.todayQuestionCorrectReviews + (correct ? 1 : 0),
-      questionStatsBySense: {
-        ...base.questionStatsBySense,
-        [senseId]: addQuestionAttempt(senseStats, key, correct, retry),
-      },
-      dailyHistory: { ...base.dailyHistory, [date]: activity },
-      updatedAt: timestamp,
-    };
-    set({ stats });
-    persist(get().progress, stats);
-    await flushLearningState();
-  },
-  setGoals: async (words, questions) => {
+  }),
+  recordQuestion: serial(
+    async (senseId, type, difficulty, correct, retry = false, rating) => {
+      const timestamp = new Date().toISOString();
+      const base = statsForToday(get().stats);
+      const key = `${type}:${difficulty}` as const;
+      const senseStats =
+        base.questionStatsBySense[senseId] ?? emptyQuestionStats();
+      const date = todayKey();
+      const activity = {
+        ...(base.dailyHistory[date] ?? emptyDailyActivity(date)),
+      };
+      activity.questionTotal += 1;
+      const stats = {
+        ...base,
+        totalQuestionReviews: base.totalQuestionReviews + 1,
+        correctQuestionReviews: base.correctQuestionReviews + (correct ? 1 : 0),
+        todayQuestionReviews: base.todayQuestionReviews + 1,
+        todayQuestionCorrectReviews:
+          base.todayQuestionCorrectReviews + (correct ? 1 : 0),
+        questionStatsBySense: {
+          ...base.questionStatsBySense,
+          [senseId]: addQuestionAttempt(senseStats, key, correct, retry),
+        },
+        dailyHistory: { ...base.dailyHistory, [date]: activity },
+        updatedAt: timestamp,
+      };
+      const currentProgress = get().progress;
+      const progress = rating
+        ? {
+            cards: {
+              ...currentProgress.cards,
+              [senseId]: reviewCard(
+                currentProgress.cards[senseId] ?? null,
+                rating,
+              ),
+            },
+            updatedAt: timestamp,
+          }
+        : currentProgress;
+      await persist(progress, stats);
+      set({ progress, stats });
+    },
+  ),
+  setGoals: serial(async (words, questions) => {
     const stats = {
       ...get().stats,
       dailyWordGoal: words,
       dailyQuestionGoal: questions,
       updatedAt: new Date().toISOString(),
     };
+    await persist(get().progress, stats);
     set({ stats });
-    persist(get().progress, stats);
-  },
-  importState: async (progress, stats, options) => {
+  }),
+  importState: serial(async (progress, stats, options) => {
+    await persist(progress, stats, options?.markPending ?? true);
     set({ progress, stats, loaded: true });
-    persist(progress, stats, options?.markPending ?? true);
-    await flushLearningState();
-  },
+  }),
   reloadNamespace: async () => {
     set({
       loaded: false,
@@ -254,7 +213,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     });
     await get().hydrate();
   },
-  remapSenses: async (remaps) => {
+  remapSenses: serial(async (remaps) => {
     const cards = { ...get().progress.cards };
     const bySense = { ...get().stats.questionStatsBySense };
     for (const remap of remaps) {
@@ -294,10 +253,10 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       questionStatsBySense: bySense,
       updatedAt: new Date().toISOString(),
     };
+    await persist(progress, stats);
     set({ progress, stats });
-    persist(progress, stats);
-  },
-  pruneToSenseIds: async (senseIds) => {
+  }),
+  pruneToSenseIds: serial(async (senseIds) => {
     const progress = {
       cards: Object.fromEntries(
         entriesOf(get().progress.cards).filter(([senseId]) =>
@@ -315,7 +274,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       ),
       updatedAt: new Date().toISOString(),
     };
+    await persist(progress, stats);
     set({ progress, stats });
-    persist(progress, stats);
-  },
+  }),
 }));

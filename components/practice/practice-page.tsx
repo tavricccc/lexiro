@@ -1,10 +1,6 @@
 "use client";
 
-import type {
-  PracticeSessionSnapshot,
-  PracticeTrack,
-  SenseId,
-} from "@/types";
+import type { PracticeSessionSnapshot, PracticeTrack, SenseId } from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
 
@@ -29,7 +25,7 @@ import {
 } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
 import { usePracticeSetupChoices } from "@/components/practice/use-practice-setup-choices";
-import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
+import { practiceStorageKey } from "@/src/lib/practice-storage";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
@@ -54,7 +50,8 @@ export function PracticePage({
   const learningLoaded = useLearningStore((store) => store.loaded);
   const setPracticeActive = useUIStore((store) => store.setPracticeActive);
   const setup = usePracticeSetupChoices(initialSet, initialTrack);
-  const { amount, difficulty, leechOnly, oneSensePerWord, setId, tasks } = setup;
+  const { amount, difficulty, leechOnly, oneSensePerWord, setId, tasks } =
+    setup;
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -70,7 +67,9 @@ export function PracticePage({
   } | null>(null);
   const [resumeChecked, setResumeChecked] = useState(false);
   const [retrying, setRetrying] = useState(false);
-  const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>([]);
+  const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>(
+    [],
+  );
   const [answerChoices, setAnswerChoices] = useState<Array<number | null>>([]);
   const restoreAttempted = useRef(false);
   const allowedSenseIds = useMemo(
@@ -122,17 +121,25 @@ export function PracticePage({
   };
   const counts = useMemo(
     () => countTaskAvailability(poolInput),
-    [allowedSenseIds, difficulty, leechOnly, progress.cards, questionGroups, studyItems],
+    [
+      allowedSenseIds,
+      difficulty,
+      leechOnly,
+      progress.cards,
+      questionGroups,
+      studyItems,
+    ],
   );
   const hasQuestionContent = state.questions.length > 0;
   const availableQuestionCount = useMemo(
-    () => countQuestionAvailability({
-      allowedSenseIds,
-      difficulty,
-      questionGroups,
-      tasks,
-      oneSensePerWord,
-    }),
+    () =>
+      countQuestionAvailability({
+        allowedSenseIds,
+        difficulty,
+        questionGroups,
+        tasks,
+        oneSensePerWord,
+      }),
     [allowedSenseIds, difficulty, oneSensePerWord, questionGroups, tasks],
   );
   const queue = useMemo(
@@ -253,8 +260,7 @@ export function PracticePage({
     onRate: (rating) => void actions.rate(rating, true),
     onAnswer: (choice) => void actions.answer(choice),
     onNext: () => actions.next(true),
-    optionCount:
-      current?.kind === "question" ? current.item.options.length : 4,
+    optionCount: current?.kind === "question" ? current.item.options.length : 4,
   });
 
   if (libraryStatus !== "ready" || !learningLoaded) {
@@ -264,26 +270,38 @@ export function PracticePage({
   if (pendingSession) {
     return (
       <ResumeChoice
-        back={<BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />}
+        back={
+          <BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />
+        }
         description={t("draft.practiceDescription")}
         onResume={() => {
           restoreSession(pendingSession.snapshot, pendingSession.entries);
           setPendingSession(null);
         }}
         onRestart={() => {
-          localStorage.removeItem(PRACTICE_SESSION_STORAGE_KEY);
+          localStorage.removeItem(practiceStorageKey());
           setup.restart();
           setPendingSession(null);
         }}
       />
     );
   }
-  if (!started && setup.saved.status === "checking") return <PracticePageSkeleton />;
-  if (!started && (setup.saved.status === "offer" || setup.saved.status === "invalid")) {
+  if (!started && setup.saved.status === "checking")
+    return <PracticePageSkeleton />;
+  if (
+    !started &&
+    (setup.saved.status === "offer" || setup.saved.status === "invalid")
+  ) {
     return (
       <ResumeChoice
-        back={<BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />}
-        description={t(setup.saved.status === "invalid" ? "draft.invalidDescription" : "draft.practiceDescription")}
+        back={
+          <BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />
+        }
+        description={t(
+          setup.saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.practiceDescription",
+        )}
         invalid={setup.saved.status === "invalid"}
         onResume={setup.resume}
         onRestart={setup.restart}
@@ -305,7 +323,10 @@ export function PracticePage({
         leechOnly={leechOnly}
         oneSensePerWord={oneSensePerWord}
         onAmountChange={setup.changeAmount}
-        onBegin={() => { setup.clear(); actions.begin(); }}
+        onBegin={() => {
+          setup.clear();
+          actions.begin();
+        }}
         onDifficultyChange={setup.changeDifficulty}
         onLeechOnlyChange={setup.changeLeechOnly}
         onOneSenseChange={setup.changeOneSense}

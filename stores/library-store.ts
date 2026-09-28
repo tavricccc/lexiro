@@ -11,6 +11,7 @@ import type {
   WordKey,
 } from "@/types";
 import { create } from "zustand";
+import { createMutationQueue } from "@/src/lib/mutation-queue";
 
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { randomUUID } from "@/src/lib/id";
@@ -74,22 +75,8 @@ interface LibraryStore {
 
 const now = () => new Date().toISOString();
 
-let mutationQueue: Promise<unknown> = Promise.resolve();
-
-// Queue the whole read-modify-write operation, not just the disk write.
-function serial<Args extends unknown[], Result>(
-  action: (...args: Args) => Promise<Result>,
-) {
-  return (...args: Args): Promise<Result> => {
-    const next = mutationQueue.then(() => action(...args));
-    mutationQueue = next.catch(() => undefined);
-    return next;
-  };
-}
-
-export async function flushLibraryMutations(): Promise<void> {
-  await mutationQueue;
-}
+const { serial, flush: flushLibraryMutations } = createMutationQueue();
+export { flushLibraryMutations };
 
 /**
  * Writes the Library and notes what changed for sync.

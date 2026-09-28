@@ -55,9 +55,6 @@ export function usePracticeSessionActions({
   const [animateNextCard, setAnimateNextCard] = useState(true);
   const actionPending = useRef(false);
   const rateSense = useLearningStore((store) => store.rateSense);
-  const scheduleSenseFromQuestion = useLearningStore(
-    (store) => store.scheduleSenseFromQuestion,
-  );
   const recordQuestion = useLearningStore((store) => store.recordQuestion);
 
   const cardAt = (position: number) => {
@@ -138,24 +135,30 @@ export function usePracticeSessionActions({
       const reviewedToday = card?.lastReview
         ? isSameLocalDay(new Date(card.lastReview), new Date())
         : false;
-      if (addedFailedSense)
-        await scheduleSenseFromQuestion(item.senseId, "again");
-      else if (isCorrect && !reviewedToday)
-        await scheduleSenseFromQuestion(item.senseId, "good");
+      const rating = addedFailedSense
+        ? "again"
+        : isCorrect && !reviewedToday
+          ? "good"
+          : undefined;
       await recordQuestion(
         item.senseId,
         item.type,
         item.difficulty,
         isCorrect,
         retrying,
+        rating,
       );
     } catch (reason) {
       console.error(reason);
       toast.error(t("practice.recordFailed"));
       setters.setSelected(null);
       setters.setRevealed(false);
+      setters.setAnswerChoices((values) =>
+        values.map((value, position) => (position === index ? null : value)),
+      );
       if (isCorrect) setters.setCorrect((value) => Math.max(0, value - 1));
-      else setters.setWrong((values) => values.filter((value) => value !== index));
+      else
+        setters.setWrong((values) => values.filter((value) => value !== index));
       if (addedFailedSense)
         setters.setQuestionFailedSenses((values) =>
           values.filter((id) => id !== item.senseId),

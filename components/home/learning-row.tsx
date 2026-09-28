@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
-import { PRACTICE_SESSION_STORAGE_KEY } from "@/constants";
+import { readPracticeDraft } from "@/src/lib/practice-storage";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { parsePracticeSession } from "@/src/lib/practice-session";
@@ -17,9 +17,11 @@ export function LearningRows() {
   const [session, setSession] = useState<PracticeSessionSnapshot | null>(null);
 
   useEffect(() => {
-    setSession(
-      parsePracticeSession(localStorage.getItem(PRACTICE_SESSION_STORAGE_KEY)),
-    );
+    try {
+      setSession(parsePracticeSession(readPracticeDraft()));
+    } catch {
+      setSession(null);
+    }
   }, []);
 
   const recentSets = useMemo(
