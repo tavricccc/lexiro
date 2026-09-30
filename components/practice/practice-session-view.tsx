@@ -8,6 +8,7 @@ import { QuestionCard } from "@/components/practice/question-card";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import { Button } from "@/components/ui/button";
 import { BackControl } from "@/components/ui/back-control";
+import { HeaderBackdrop } from "@/components/ui/header-backdrop";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
@@ -67,7 +68,8 @@ export function PracticeSessionView({
       data-motion-view="practice-session"
       className="mx-auto flex min-h-[calc(100dvh-6rem)] max-w-3xl flex-col"
     >
-      <div className="sticky top-[var(--safe-top)] z-20 bg-[var(--surface-stage)] pb-3 pt-1">
+      <div className="page-header pb-3 pt-1">
+        <HeaderBackdrop />
         <div className="flex flex-wrap items-center justify-between gap-x-3 text-sm text-muted-foreground">
           <BackControl onClick={onLeave} />
           <span className="tabular-nums">

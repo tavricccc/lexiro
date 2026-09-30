@@ -8,6 +8,7 @@
 @import "./styles/motion.css";
 @import "./styles/study.css";
 @import "./styles/workspace.css";
+@import "./styles/header.css";
 
 @custom-variant dark (&:is(.dark *));
 

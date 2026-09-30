@@ -3,6 +3,7 @@
 import { type ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
+import { HeaderBackdrop } from "@/components/ui/header-backdrop";
 
 /**
  * Keeps the title, route actions and back navigation in the same content header.
@@ -33,6 +34,7 @@ export function PageHeader({
         className,
       )}
     >
+      <HeaderBackdrop />
       <div className="page-title-row flex items-center justify-between gap-3">
         <div className="flex min-w-0 flex-1 items-center gap-2.5">
           {back && <div className="-ml-2 shrink-0">{back}</div>}
