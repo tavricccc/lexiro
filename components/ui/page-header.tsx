@@ -27,14 +27,14 @@ export function PageHeader({
 }) {
   return (
     <header className={cn("page-header mb-[var(--page-content-gap)] space-y-[var(--page-header-gap)]", className)}>
-      {back && <div className="-ml-2">{back}</div>}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-2.5">
+      <div className="page-title-row flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-1 items-center gap-2.5">
+          {back && <div className="-ml-2 shrink-0">{back}</div>}
           {lead}
-          <h1 className="type-page min-w-0">{title}</h1>
+          <h1 className="type-page min-w-0 truncate">{title}</h1>
         </div>
         {actions && (
-          <div className="flex flex-wrap items-center gap-2">{actions}</div>
+          <div className="flex shrink-0 items-center gap-2">{actions}</div>
         )}
       </div>
       {footer}

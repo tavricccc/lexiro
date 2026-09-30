@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
-import { ListNavRow, ListSection } from "@/components/ui/list";
 import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/page-state";
@@ -27,8 +26,9 @@ import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 import { SetMoveDialog } from "@/components/library/set-move-dialog";
 import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
 import { SetTools } from "@/components/library/set-tools";
+import { StepActions } from "@/components/ui/step-actions";
 
-type SetTab = "words" | "questions";
+type SetTab = "words" | "questions" | "tools";
 
 
 /**
@@ -119,19 +119,10 @@ export function SetView({ setId }: { setId: string }) {
   };
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="set-workspace mx-auto max-w-3xl">
       <PageHeader
         actions={
           <>
-            <Button asChild>
-              {/* The same two-way choice the home canvas offers, with this set
-                  already filled in as the range. Starting from a set says which
-                  material, not which kind of session. */}
-              <Link href={`/app/practice?set=${setId}`}>
-                <Icons.start />
-                {t("setDetail.start")}
-              </Link>
-            </Button>
             <Menu
               actions={[
                 {
@@ -172,7 +163,7 @@ export function SetView({ setId }: { setId: string }) {
 
       <LiquidTabs
         ariaLabel={current.setName}
-        className="mb-5"
+        className="workspace-tabs mb-4"
         onValueChange={(value) => setTab(value as SetTab)}
         options={[
           {
@@ -187,13 +178,13 @@ export function SetView({ setId }: { setId: string }) {
               : t("library.questionsTab"),
             value: "questions",
           },
+          { label: t("workspace.toolsTab"), value: "tools" },
         ]}
         value={tab}
       />
 
       {tab === "words" ? (
         <div className="space-y-7">
-          <SetTools setId={setId} />
           {words.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
               {words.map((entry) => (
@@ -210,26 +201,11 @@ export function SetView({ setId }: { setId: string }) {
             />
           )}
         </div>
-      ) : (
+      ) : tab === "tools" ? <SetTools setId={setId} /> : (
         <>
           {/* Making questions is what you come to this tab to do when it is
               empty and the obvious next step when it is not, so it is a control
               on the tab rather than a line in the page's overflow menu. */}
-          <ListSection className="mb-5">
-            {questions.length > 0 && (
-              <ListNavRow
-                href={`/app/practice?track=questions&set=${setId}`}
-                icon={Icons.start}
-                label={t("setDetail.startQuestions")}
-                value={t("home.questionCount", { count: questions.length })}
-              />
-            )}
-            <ListNavRow
-              href={`/app/questions/generate?set=${setId}`}
-              icon={Icons.generate}
-              label={t("setDetail.generateQuestions")}
-            />
-          </ListSection>
 
           {questions.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
@@ -265,6 +241,22 @@ export function SetView({ setId }: { setId: string }) {
           )}
         </>
       )}
+
+      <StepActions width="wide">
+        <div className="workspace-actions">
+          <Button asChild size="lg" variant="outline">
+            <Link href={tab === "questions" ? `/app/questions/generate?set=${setId}` : `/app/sets/${setId}/add`}>
+              {tab === "questions" ? <Icons.generate /> : <Icons.create />}
+              {t(tab === "questions" ? "home.generateQuestions" : "setEditor.addWord")}
+            </Link>
+          </Button>
+          <Button asChild size="lg">
+            <Link href={`/app/practice?set=${setId}${tab === "questions" ? "&track=questions" : "&track=fsrs"}`}>
+              <Icons.start />{t("setDetail.start")}
+            </Link>
+          </Button>
+        </div>
+      </StepActions>
 
       <SetMoveDialog
         currentFolderId={current.folderId}

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
+import { EmptyState } from "@/components/ui/page-state";
 import { readPracticeDraft } from "@/src/lib/practice-storage";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
@@ -46,10 +47,10 @@ export function LearningRows() {
   // this row stays away rather than repeating the invitation.
   const showRecent = status !== "ready" || recentSets.length > 0;
 
-  if (!session && !showRecent) return null;
+  if (!session && !showRecent) return <EmptyState variant="filtered" title={t("home.noRecent")} description={t("home.noRecentHint")} />;
 
   return (
-    <div className="section-gap grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
+    <div className="learning-history grid gap-5">
       {session && (
         // Resuming is going somewhere, so it is a row that leads there rather
         // than a card with a button parked in it. The progress it was carrying

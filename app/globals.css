@@ -7,6 +7,7 @@
 @import "../src/generated/motion-ladder.css";
 @import "./styles/motion.css";
 @import "./styles/study.css";
+@import "./styles/workspace.css";
 
 @custom-variant dark (&:is(.dark *));
 

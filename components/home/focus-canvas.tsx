@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { LiquidTabs } from "@/components/ui/liquid-tabs";
+import { StepActions } from "@/components/ui/step-actions";
+import { LearningRows } from "./learning-row";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
@@ -20,6 +24,7 @@ const GUIDE = [
 ] as const;
 
 export function FocusCanvas() {
+  const [tab, setTab] = useState("today");
   const library = useLibraryStore((store) => store.state);
   const cards = useLearningStore((store) => store.progress.cards);
   const stats = useLearningStore((store) => store.stats);
@@ -53,37 +58,44 @@ export function FocusCanvas() {
 
   return (
     <section className="study-home">
-      <div className="study-invitation">
+      <LiquidTabs
+        ariaLabel={t("nav.study")}
+        className="workspace-tabs"
+        onValueChange={setTab}
+        options={[
+          { value: "today", label: t("home.tasksTab") },
+          { value: "recent", label: t("home.recentTab") },
+        ]}
+        value={tab}
+      />
+      {tab === "recent" ? <LearningRows /> : <>
+      <div className="study-invitation" data-empty={!hasContent}>
         <div className="study-invitation-copy">
           <h2>
             {t(
               !hasContent
-                ? "home.welcomeTitle"
+                ? "home.appWelcomeTitle"
                 : goalMet
                   ? "home.finishedTitle"
-                  : "home.greeting",
+                  : "home.appStudyTitle",
             )}
           </h2>
           <p>
             {t(
               !hasContent
-                ? "home.welcomeHint"
+                ? "home.appWelcomeHint"
                 : goalMet
                   ? "home.todayDone"
-                  : "home.studyHint",
+                  : "home.appStudyHint",
             )}
           </p>
-          <Link className="study-start" href={primaryHref}>
-            {t(primaryLabel)}
-            <Icons.next aria-hidden className="size-5" />
-          </Link>
           {hasContent && (
             <span className="study-available">
               {t("home.available", { count: reviewCount })}
             </span>
           )}
         </div>
-        <div className="study-illustration" aria-hidden="true" />
+        {!hasContent && <div className="study-illustration" aria-hidden="true" />}
       </div>
 
       {hasContent ? (
@@ -111,13 +123,6 @@ export function FocusCanvas() {
               {t("home.generateQuestions")}
               <Icons.next aria-hidden className="size-4" />
             </Link>
-            {primaryHref !== "/app/sets/new" && (
-              <Link href="/app/sets/new">
-                <Icons.create aria-hidden className="size-4" />
-                {t("library.newSet")}
-                <Icons.next aria-hidden className="size-4" />
-              </Link>
-            )}
           </div>
         </>
       ) : (
@@ -135,6 +140,20 @@ export function FocusCanvas() {
           ))}
         </ol>
       )}
+      </>}
+      <StepActions aboveNavigation width="wide">
+        <div className="workspace-actions">
+          <Button asChild size="lg" variant="outline">
+            <Link href={hasContent ? "/app/sets/new" : "/app/library"}>
+              {hasContent ? <Icons.create /> : <Icons.library />}
+              {t(hasContent ? "library.newSet" : "home.openLibrary")}
+            </Link>
+          </Button>
+          <Button asChild size="lg">
+            <Link href={primaryHref}><Icons.start />{t(primaryLabel)}</Link>
+          </Button>
+        </div>
+      </StepActions>
     </section>
   );
 }

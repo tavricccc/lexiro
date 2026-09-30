@@ -73,11 +73,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </header>
       )}
 
-      <div className="min-w-0">
+      <div className="workspace-body min-w-0">
         <main
-          className={`app-viewport pt-[max(0.75rem,var(--safe-top))] md:pb-12 md:pt-6 ${
+          className={`app-viewport pt-[max(0.75rem,var(--safe-top))] md:pb-6 md:pt-4 ${
             showMobileNavigation
-              ? "pb-[calc(6.5rem+min(0.625rem,var(--safe-bottom)))]"
+              ? "pb-[calc(var(--mobile-nav-height)+var(--mobile-nav-bottom-gap)+1.5rem)]"
               : "pb-[max(2rem,var(--safe-bottom))]"
           }`}
         >
@@ -86,7 +86,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         <div
           aria-hidden={!showMobileNavigation}
-          className="app-mobile-nav fixed z-30 px-3 py-1.5 md:hidden"
+          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full bg-card px-3 py-1.5 shadow-[var(--shadow-floating)] md:hidden"
           data-visible={showMobileNavigation}
           inert={!showMobileNavigation}
         >

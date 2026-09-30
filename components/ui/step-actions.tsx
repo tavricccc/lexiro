@@ -17,10 +17,12 @@ export function StepActions({
   children,
   className,
   width = "narrow",
+  aboveNavigation = false,
 }: {
   children: ReactNode;
   className?: string;
   width?: "narrow" | "wide";
+  aboveNavigation?: boolean;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -38,7 +40,7 @@ export function StepActions({
   }, [host]);
   return (
     <div
-      className="mt-7 min-h-[7.5rem]"
+      className="action-space mt-4 min-h-[5.5rem]"
       data-step-actions-space
       style={{ minHeight: height || undefined }}
     >
@@ -47,9 +49,10 @@ export function StepActions({
           <div
             ref={panelRef}
             className={cn(
-              "fixed inset-x-0 bottom-0 z-40 border-t bg-[var(--surface-stage)] px-[max(var(--page-gutter),var(--safe-left),var(--safe-right))] pb-[max(1rem,var(--safe-bottom))] pt-3",
+              "app-action-bar fixed inset-x-0 bottom-0 z-40 border-t bg-card px-[max(var(--page-gutter),var(--safe-left),var(--safe-right))] pb-[max(0.75rem,var(--safe-bottom))] pt-3",
               className,
             )}
+            data-above-navigation={aboveNavigation}
           >
             <div
               className={cn(

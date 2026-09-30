@@ -1,4 +1,7 @@
 export const zhTW = {
+  workspace: {
+    toolsTab: "工具",
+  },
   draft: {
     title: "接續上次進度？",
     invalidTitle: "草稿無法讀取",
@@ -146,6 +149,14 @@ export const zhTW = {
     stop: "停止",
   },
   home: {
+    tasksTab: "今日任務",
+    recentTab: "最近教材",
+    appWelcomeTitle: "先加入一組單字",
+    appWelcomeHint: "手動輸入或交給 AI 整理，儲存後就能開始練習。",
+    appStudyTitle: "準備好，練一回。",
+    appStudyHint: "複習單字或做題目，選一項就能開始。",
+    noRecent: "還沒有最近教材",
+    noRecentHint: "新增的單字集和未完成的練習會出現在這裡。",
     greeting: "跟單字，再熟一點。",
     welcomeTitle: "把遇見的字，\n變成你的。",
     welcomeHint: "從課本、歌詞到生活，收集你真的想記住的英文。",

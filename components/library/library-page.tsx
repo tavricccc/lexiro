@@ -16,6 +16,7 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { RootPageHeader } from "@/components/root-page-header";
+import { StepActions } from "@/components/ui/step-actions";
 import {
   EmptyState,
   ErrorState,
@@ -215,24 +216,8 @@ export function LibraryPage({
   );
 
   return (
-    <div>
-      <RootPageHeader
-        title={t("library.title")}
-        actions={
-          // The one action a title bar carries is a glyph, not a filled block
-          // of colour competing with the title beside it.
-          <Button
-            asChild
-            className="text-primary"
-            size="icon"
-            variant="ghost"
-          >
-            <Link aria-label={t("library.newSet")} href={createHref}>
-              <Icons.create className="size-5" />
-            </Link>
-          </Button>
-        }
-      />
+    <div className="library-workspace">
+      <RootPageHeader title={t("library.title")} />
 
       <>
         <input
@@ -251,15 +236,8 @@ export function LibraryPage({
           type="file"
         />
 
+        <div className="library-toolbar">
         <FolderToolbar
-          actions={[
-            {
-              disabled: importing,
-              icon: Icons.import,
-              label: t(importing ? "library.importing" : "library.importSet"),
-              onSelect: () => importInput.current?.click(),
-            },
-          ]}
           breadcrumbs={breadcrumbs}
           currentFolder={currentFolder}
           folders={state.folders}
@@ -283,6 +261,7 @@ export function LibraryPage({
             value={query}
           />
         </label>
+        </div>
 
         {/* Loading, empty, filtered-empty and the listing itself all occupy the
             same frame, so one hands over to the next in place instead of the
@@ -331,14 +310,6 @@ export function LibraryPage({
             )}
             {status === "ready" && listEmpty && !searching && (
               <EmptyState
-                action={
-                  <Button asChild>
-                    <Link href={createHref}>
-                      <Icons.create />
-                      {t("library.newSet")}
-                    </Link>
-                  </Button>
-                }
                 description={t(
                   currentFolder
                     ? "library.emptyFolderDescription"
@@ -356,6 +327,15 @@ export function LibraryPage({
           </ContentTransition>
         </StateTransition>
       </>
+
+      <StepActions aboveNavigation width="wide">
+        <div className="workspace-actions">
+          <Button size="lg" variant="outline" disabled={importing} onClick={() => importInput.current?.click()}>
+            <Icons.import />{t(importing ? "library.importing" : "library.importSet")}
+          </Button>
+          <Button asChild size="lg"><Link href={createHref}><Icons.create />{t("library.newSet")}</Link></Button>
+        </div>
+      </StepActions>
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}
