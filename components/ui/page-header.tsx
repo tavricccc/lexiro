@@ -26,7 +26,12 @@ export function PageHeader({
   title: string;
 }) {
   return (
-    <header className={cn("page-header mb-[var(--page-content-gap)] space-y-[var(--page-header-gap)]", className)}>
+    <header
+      className={cn(
+        "page-header mb-[var(--page-content-gap)] space-y-[var(--page-header-gap)]",
+        className,
+      )}
+    >
       <div className="page-title-row flex items-center justify-between gap-3">
         <div className="flex min-w-0 flex-1 items-center gap-2.5">
           {back && <div className="-ml-2 shrink-0">{back}</div>}

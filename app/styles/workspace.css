@@ -168,7 +168,8 @@
   width: 5rem;
   height: 5rem;
   background: var(--primary);
-  mask: url("/illustrations/open-doodles-reading.svg") center / contain no-repeat;
+  mask: url("/illustrations/open-doodles-reading.svg") center / contain
+    no-repeat;
 }
 .study-home .study-checklist {
   gap: 0;
@@ -204,7 +205,10 @@
   color: var(--primary);
   font-weight: 600;
 }
-.study-guide h3 { font-weight: 600; line-height: 1.5; }
+.study-guide h3 {
+  font-weight: 600;
+  line-height: 1.5;
+}
 .study-home .study-guide p {
   margin-top: 0.125rem;
   font-size: 0.8125rem;
@@ -225,14 +229,22 @@
   font-size: 0.9375rem;
   font-weight: 500;
 }
-.study-tools > a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.study-tools > a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.study-tools > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.study-tools > a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
 .study-home .learning-history {
   margin-top: 0.25rem;
 }
 @media (max-width: 47.99rem) {
   .app-action-bar[data-above-navigation="true"] {
-    bottom: calc(var(--mobile-nav-height) + var(--mobile-nav-bottom-gap) + 0.75rem);
+    bottom: calc(
+      var(--mobile-nav-height) + var(--mobile-nav-bottom-gap) + 0.75rem
+    );
     left: max(1rem, var(--safe-left));
     right: max(1rem, var(--safe-right));
     max-width: 28rem;
@@ -246,17 +258,28 @@
   .library-workspace .action-space {
     min-height: 6rem !important;
   }
-  .workspace-actions { gap: 0.5rem; }
+  .workspace-actions {
+    gap: 0.5rem;
+  }
   .app-action-bar .workspace-actions > a,
-  .app-action-bar .workspace-actions > button { padding-inline: 0.75rem; font-size: 0.875rem; }
-  .app-shell .workspace-body { scrollbar-gutter: auto; }
-  .app-shell .app-viewport { padding-top: max(0.5rem, var(--safe-top)); }
-  body:has(input:focus, textarea:focus, [contenteditable="true"]:focus) .app-mobile-nav {
+  .app-action-bar .workspace-actions > button {
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+  }
+  .app-shell .workspace-body {
+    scrollbar-gutter: auto;
+  }
+  .app-shell .app-viewport {
+    padding-top: max(0.5rem, var(--safe-top));
+  }
+  body:has(input:focus, textarea:focus, [contenteditable="true"]:focus)
+    .app-mobile-nav {
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
   }
-  body:has(input:focus, textarea:focus, [contenteditable="true"]:focus) .app-action-bar[data-above-navigation="true"] {
+  body:has(input:focus, textarea:focus, [contenteditable="true"]:focus)
+    .app-action-bar[data-above-navigation="true"] {
     visibility: hidden;
   }
 }

@@ -17,10 +17,7 @@ import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { RootPageHeader } from "@/components/root-page-header";
 import { StepActions } from "@/components/ui/step-actions";
-import {
-  EmptyState,
-  ErrorState,
-} from "@/components/ui/page-state";
+import { EmptyState, ErrorState } from "@/components/ui/page-state";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
@@ -40,11 +37,7 @@ import { readSetShare } from "@/src/lib/set-share";
 const NO_METRICS = { due: 0, learned: 0, questionCount: 0, senseCount: 0 };
 
 /** The Library is one place for browsing and organising saved word sets. */
-export function LibraryPage({
-  initialFolderId,
-}: {
-  initialFolderId?: string;
-}) {
+export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   const { state, status, error } = useLibraryStore();
   const createFolder = useLibraryStore((store) => store.createFolder);
   const renameFolder = useLibraryStore((store) => store.renameFolder);
@@ -237,30 +230,30 @@ export function LibraryPage({
         />
 
         <div className="library-toolbar">
-        <FolderToolbar
-          breadcrumbs={breadcrumbs}
-          currentFolder={currentFolder}
-          folders={state.folders}
-          onCreate={(name) => createFolder(name, currentFolder?.id)}
-          onDelete={() => setDeleteFolderId(currentFolder?.id ?? null)}
-          onMove={(parentId) => moveFolder(currentFolderId, parentId)}
-          onOpen={openFolder}
-          onRename={(name) => renameFolder(currentFolderId, name)}
-        />
+          <FolderToolbar
+            breadcrumbs={breadcrumbs}
+            currentFolder={currentFolder}
+            folders={state.folders}
+            onCreate={(name) => createFolder(name, currentFolder?.id)}
+            onDelete={() => setDeleteFolderId(currentFolder?.id ?? null)}
+            onMove={(parentId) => moveFolder(currentFolderId, parentId)}
+            onOpen={openFolder}
+            onRename={(name) => renameFolder(currentFolderId, name)}
+          />
 
-        <label className="relative mt-4 block">
-          <Icons.search
-            aria-hidden
-            className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-          />
-          <Input
-            aria-label={t("library.searchHere")}
-            className="pl-10"
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t("library.searchHere")}
-            value={query}
-          />
-        </label>
+          <label className="relative mt-4 block">
+            <Icons.search
+              aria-hidden
+              className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+            />
+            <Input
+              aria-label={t("library.searchHere")}
+              className="pl-10"
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={t("library.searchHere")}
+              value={query}
+            />
+          </label>
         </div>
 
         {/* Loading, empty, filtered-empty and the listing itself all occupy the
@@ -330,10 +323,21 @@ export function LibraryPage({
 
       <StepActions aboveNavigation width="wide">
         <div className="workspace-actions">
-          <Button size="lg" variant="outline" disabled={importing} onClick={() => importInput.current?.click()}>
-            <Icons.import />{t(importing ? "library.importing" : "library.importSet")}
+          <Button
+            size="lg"
+            variant="outline"
+            disabled={importing}
+            onClick={() => importInput.current?.click()}
+          >
+            <Icons.import />
+            {t(importing ? "library.importing" : "library.importSet")}
           </Button>
-          <Button asChild size="lg"><Link href={createHref}><Icons.create />{t("library.newSet")}</Link></Button>
+          <Button asChild size="lg">
+            <Link href={createHref}>
+              <Icons.create />
+              {t("library.newSet")}
+            </Link>
+          </Button>
         </div>
       </StepActions>
 

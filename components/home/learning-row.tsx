@@ -47,7 +47,14 @@ export function LearningRows() {
   // this row stays away rather than repeating the invitation.
   const showRecent = status !== "ready" || recentSets.length > 0;
 
-  if (!session && !showRecent) return <EmptyState variant="filtered" title={t("home.noRecent")} description={t("home.noRecentHint")} />;
+  if (!session && !showRecent)
+    return (
+      <EmptyState
+        variant="filtered"
+        title={t("home.noRecent")}
+        description={t("home.noRecentHint")}
+      />
+    );
 
   return (
     <div className="learning-history grid gap-5">

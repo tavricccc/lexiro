@@ -7,7 +7,7 @@ import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 
 type BackControlProps = {
-  /** Overrides the plain 返回 where the destination is worth naming. */
+  /** Accessible name for the icon-only return control. */
   label?: string;
 } & (
   | {
@@ -30,27 +30,29 @@ type BackControlProps = {
  * left the reader with no way back but the browser.
  */
 export function BackControl({ label, ...props }: BackControlProps) {
-  const content = (
-    <>
-      <Icons.back />
-      {label ?? t("common.back")}
-    </>
-  );
+  const accessibleLabel = label ?? t("common.back");
   if (props.href) {
     return (
-      <Button asChild size="sm" variant="ghost">
+      <Button asChild size="icon" variant="ghost">
         <Link
+          aria-label={accessibleLabel}
           data-allow-discard={props.allowDiscard ? "true" : undefined}
           href={props.href}
         >
-          {content}
+          <Icons.back aria-hidden className="size-5" />
         </Link>
       </Button>
     );
   }
   return (
-    <Button onClick={props.onClick} size="sm" type="button" variant="ghost">
-      {content}
+    <Button
+      aria-label={accessibleLabel}
+      onClick={props.onClick}
+      size="icon"
+      type="button"
+      variant="ghost"
+    >
+      <Icons.back aria-hidden className="size-5" />
     </Button>
   );
 }

@@ -30,7 +30,6 @@ import { StepActions } from "@/components/ui/step-actions";
 
 type SetTab = "words" | "questions" | "tools";
 
-
 /**
  * A saved set is something you read before it is something you change.
  *
@@ -188,7 +187,11 @@ export function SetView({ setId }: { setId: string }) {
           {words.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
               {words.map((entry) => (
-                <StaggerItem as="li" className="py-[var(--row-padding-block)]" key={entry.wordKey}>
+                <StaggerItem
+                  as="li"
+                  className="py-[var(--row-padding-block)]"
+                  key={entry.wordKey}
+                >
                   <SetWordRow cards={cards} entry={entry} setId={setId} />
                 </StaggerItem>
               ))}
@@ -201,7 +204,9 @@ export function SetView({ setId }: { setId: string }) {
             />
           )}
         </div>
-      ) : tab === "tools" ? <SetTools setId={setId} /> : (
+      ) : tab === "tools" ? (
+        <SetTools setId={setId} />
+      ) : (
         <>
           {/* Making questions is what you come to this tab to do when it is
               empty and the obvious next step when it is not, so it is a control
@@ -210,7 +215,11 @@ export function SetView({ setId }: { setId: string }) {
           {questions.length ? (
             <StaggerList as="ul" className="rule-card rule-list">
               {questions.map((question) => (
-                <StaggerItem as="li" className="py-[var(--row-padding-block)]" key={question.id}>
+                <StaggerItem
+                  as="li"
+                  className="py-[var(--row-padding-block)]"
+                  key={question.id}
+                >
                   <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                     <span className="font-medium text-foreground">
                       {questionFormatLabel(
@@ -220,14 +229,18 @@ export function SetView({ setId }: { setId: string }) {
                       )}
                     </span>
                     <span>
-                      {t("questions.difficulty", { level: question.difficulty })}
+                      {t("questions.difficulty", {
+                        level: question.difficulty,
+                      })}
                     </span>
                   </p>
                   <Link
                     className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
                     href={questionEditHref(question)}
                   >
-                    {question.kind === "reading" ? question.title : question.prompt}
+                    {question.kind === "reading"
+                      ? question.title
+                      : question.prompt}
                   </Link>
                 </StaggerItem>
               ))}
@@ -245,16 +258,38 @@ export function SetView({ setId }: { setId: string }) {
       <StepActions width="wide">
         <div className="workspace-actions">
           <Button asChild size="lg" variant="outline">
-            <Link href={tab === "questions" ? `/app/questions/generate?set=${setId}` : `/app/sets/${setId}/add`}>
+            <Link
+              href={
+                tab === "questions"
+                  ? `/app/questions/generate?set=${setId}`
+                  : `/app/sets/${setId}/add`
+              }
+            >
               {tab === "questions" ? <Icons.generate /> : <Icons.create />}
-              {t(tab === "questions" ? "home.generateQuestions" : "setEditor.addWord")}
+              {t(
+                tab === "questions"
+                  ? "home.generateQuestions"
+                  : "setEditor.addWord",
+              )}
             </Link>
           </Button>
-          {(tab === "questions" ? questions.length > 0 : senseIds.length > 0) ? <Button asChild size="lg">
-            <Link href={`/app/practice?set=${setId}${tab === "questions" ? "&track=questions" : "&track=fsrs"}`}>
-              <Icons.start />{t("setDetail.start")}
-            </Link>
-          </Button> : <Button size="lg" disabled><Icons.start />{t("setDetail.start")}</Button>}
+          {(
+            tab === "questions" ? questions.length > 0 : senseIds.length > 0
+          ) ? (
+            <Button asChild size="lg">
+              <Link
+                href={`/app/practice?set=${setId}${tab === "questions" ? "&track=questions" : "&track=fsrs"}`}
+              >
+                <Icons.start />
+                {t("setDetail.start")}
+              </Link>
+            </Button>
+          ) : (
+            <Button size="lg" disabled>
+              <Icons.start />
+              {t("setDetail.start")}
+            </Button>
+          )}
         </div>
       </StepActions>
 
