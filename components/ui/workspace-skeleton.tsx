@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { useSyncExternalStore } from "react";
-import { usePathname } from "next/navigation";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { t } from "@/lib/i18n";
@@ -434,6 +433,3 @@ export function WorkspaceSkeleton() {
   return <WorkspaceSkeletonContent location={location} />;
 }
 
-export function RouteWorkspaceSkeleton() {
-  return <WorkspaceSkeletonContent location={usePathname()} />;
-}

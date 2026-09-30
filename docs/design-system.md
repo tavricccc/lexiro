@@ -208,9 +208,11 @@ JavaScript reaches the ladder through `timing(rung, curve)` in
 `lib/motion-timing.ts`, which is also what `MotionConfig` is given, so Motion and
 CSS cannot drift apart.
 
-**Route reveals.** `RouteSurface` waits for the actual screen's `data-motion-view`
-marker before playing its reveal, so a loading placeholder cannot spend the
-animation before content arrives. Forward navigation travels 56px from the
+**Route reveals.** Navigation retains the current page while the server prepares
+the destination; there is no route-wide instant skeleton boundary. `RouteSurface`
+starts its reveal when the destination commits, including any remaining local
+loading state. Ready content fades within the surface at 180ms instead of replaying
+the entire slide. Forward navigation travels 56px from the
 trailing edge; returning travels from the leading edge. Peer destinations fade
 and rise 12px. These reveals use the Web Animations API at 320ms with the arrival
 curve, and respect reduced motion. They animate only the incoming live surface;

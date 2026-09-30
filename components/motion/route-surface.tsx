@@ -26,6 +26,7 @@ export function RouteSurface({
   const pathname = usePathname();
   const previous = useRef("");
   const surface = useRef<HTMLDivElement>(null);
+  const content = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const node = surface.current!;
@@ -37,17 +38,10 @@ export function RouteSurface({
     consumeViewDirection();
     let identity: string | null = null;
     let animation: Animation | undefined;
-    const reveal = () => {
-      const view = node.querySelector("[data-motion-view], [role='alert']");
-      if (!view) return;
-      const nextIdentity =
-        view.getAttribute("data-motion-view") ?? view.textContent;
-      if (nextIdentity === identity) return;
-      const firstContent = identity === null;
-      identity = nextIdentity;
-      const direction = firstContent ? routeDirection : consumeViewDirection();
+    let contentAnimation: Animation | undefined;
+    let waiting = !node.querySelector("[data-motion-view], [role='alert']");
+    const slide = (direction: keyof typeof DIRECTIONS) => {
       node.dataset.routeDirection = DIRECTIONS[direction];
-      if (firstContent && !navigation) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       animation?.cancel();
       const transform =
@@ -62,8 +56,34 @@ export function RouteSurface({
         { duration: 320, easing: "cubic-bezier(0.16, 1, 0.3, 1)" },
       );
     };
-    // Loading placeholders have no view marker. Reveal the actual screen once
-    // it arrives, and repeat for in-place flow steps and their return controls.
+    if (navigation) slide(routeDirection);
+    const reveal = () => {
+      const view = node.querySelector("[data-motion-view], [role='alert']");
+      if (!view) {
+        waiting = true;
+        return;
+      }
+      const nextIdentity =
+        view.getAttribute("data-motion-view") ?? view.textContent;
+      if (waiting) {
+        waiting = false;
+        identity = nextIdentity;
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          contentAnimation?.cancel();
+          contentAnimation = content.current!.animate(
+            [{ opacity: 0 }, { opacity: 1 }],
+            { duration: 180, easing: "ease-out" },
+          );
+        }
+        return;
+      }
+      if (nextIdentity === identity) return;
+      const firstContent = identity === null;
+      identity = nextIdentity;
+      if (!firstContent) slide(consumeViewDirection());
+    };
+    // The route moves once, including any local loading phase. Loaded content
+    // fades within that surface instead of restarting the whole-page slide.
     const observer = new MutationObserver(reveal);
     observer.observe(node, {
       childList: true,
@@ -74,6 +94,7 @@ export function RouteSurface({
     return () => {
       observer.disconnect();
       animation?.cancel();
+      contentAnimation?.cancel();
     };
   }, [pathname]);
 
@@ -84,7 +105,9 @@ export function RouteSurface({
       className={cn("route-page", className)}
       data-route-path={pathname}
     >
-      {children}
+      <div ref={content} className="route-content">
+        {children}
+      </div>
     </div>
   );
 }

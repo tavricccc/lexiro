@@ -26,7 +26,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-it("waits for actual practice content instead of spending the transition on its skeleton", async () => {
+it("moves the loading phase with the route and fades ready content without a second slide", async () => {
   const screen = render(
     <RouteSurface>
       <header data-motion-view="Today" />
@@ -38,14 +38,15 @@ it("waits for actual practice content instead of spending the transition on its 
       <div aria-busy="true">Loading</div>
     </RouteSurface>,
   );
-  expect(animate).not.toHaveBeenCalled();
+  expect(animate).toHaveBeenCalledTimes(1);
+  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(56px)");
   screen.rerender(
     <RouteSurface>
       <header data-motion-view="Practice setup" />
     </RouteSurface>,
   );
-  await waitFor(() => expect(animate).toHaveBeenCalledTimes(1));
-  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(56px)");
+  await waitFor(() => expect(animate).toHaveBeenCalledTimes(2));
+  expect(animate.mock.calls[1][0]).toEqual([{ opacity: 0 }, { opacity: 1 }]);
 });
 
 it("animates both an in-place return and a return to the parent route backwards", async () => {
