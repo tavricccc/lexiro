@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-30T05:50:34.813Z",
+  "generatedAt": "2026-09-30T06:41:08.750Z",
   "title": "Design System: Lexiro",
   "extensions": {
     "colorMeta": {
@@ -121,11 +121,6 @@
         "name": "shadow-floating-dark",
         "value": "0 18px 48px rgb(0 0 0 / 42%), 0 3px 10px rgb(0 0 0 / 30%), 0 0 0 1px rgb(190 230 210 / 8%)",
         "purpose": "深色模式彈出層。"
-      },
-      {
-        "name": "workspace-action-strip",
-        "value": "0 -4px 20px rgb(23 43 36 / 3%)",
-        "purpose": "桌機底部操作列；手機根頁 dock 使用共用 floating 陰影。"
       }
     ],
     "motion": [
@@ -164,33 +159,37 @@
       {
         "name": "workspace-desktop",
         "value": "48rem"
+      },
+      {
+        "name": "saved-set-columns",
+        "value": "80rem"
       }
     ]
   },
   "components": [
     {
-      "name": "底部主要操作",
+      "name": "手機主要操作",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "固定操作區右側，至少48px；使用一般品牌主綠。",
+      "description": "手機底部44px操作；桌機改為黏附頁首36px操作。",
       "html": "<button class=\"ds-primary\">開始背單字</button>",
-      "css": ".ds-primary{min-height:3rem;border-radius:var(--radius-control);padding:0 .75rem;font-size:.875rem;font-family:var(--font-sans);font-weight:500;transition:background-color var(--motion-control),transform var(--motion-control);border:0;background:var(--primary);color:var(--primary-foreground);box-shadow:var(--shadow-control)}.ds-primary:hover{background:var(--primary-hover)}.ds-primary:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-primary:active{transform:translateY(1px) scale(.98)}.ds-primary:disabled{opacity:.45;box-shadow:none}"
+      "css": ".ds-primary{height:2.75rem;min-height:2.75rem;border-radius:var(--radius-control);padding:0 .75rem;font-size:.875rem;font-family:var(--font-sans);font-weight:500;transition:background-color var(--motion-control),transform var(--motion-control);border:0;background:var(--primary);color:var(--primary-foreground);box-shadow:var(--shadow-control)}.ds-primary:hover{background:var(--primary-hover)}.ds-primary:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-primary:active{transform:translateY(1px) scale(.98)}.ds-primary:disabled{opacity:.45;box-shadow:none}"
     },
     {
-      "name": "底部次要操作",
+      "name": "手機次要操作",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "固定操作區左側，outline表面。",
+      "description": "手機底部44px操作；桌機改為黏附頁首36px操作。",
       "html": "<button class=\"ds-secondary\">新增單字</button>",
-      "css": ".ds-secondary{min-height:3rem;border-radius:var(--radius-control);padding:0 .75rem;font-size:.875rem;font-family:var(--font-sans);font-weight:500;transition:background-color var(--motion-control),transform var(--motion-control);border:1px solid var(--input);background:var(--card);color:var(--foreground);box-shadow:var(--shadow-control)}.ds-secondary:hover{background:var(--accent);color:var(--accent-foreground)}.ds-secondary:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-secondary:active{transform:translateY(1px) scale(.98)}"
+      "css": ".ds-secondary{height:2.75rem;min-height:2.75rem;border-radius:var(--radius-control);padding:0 .75rem;font-size:.875rem;font-family:var(--font-sans);font-weight:500;transition:background-color var(--motion-control),transform var(--motion-control);border:1px solid var(--input);background:var(--card);color:var(--foreground);box-shadow:var(--shadow-control)}.ds-secondary:hover{background:var(--accent);color:var(--accent-foreground)}.ds-secondary:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-secondary:active{transform:translateY(1px) scale(.98)}"
     },
     {
       "name": "工作區分頁",
       "kind": "custom",
       "refersTo": "workspace-tab",
-      "description": "全寬等分48px分頁，24px外軌與21px內選取面。",
+      "description": "44px等分分頁，手機全寬、桌機最大25rem；大圓角保持24px外軌／21px內面。",
       "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"教材\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">單字</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">題目</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">工具</button></div>",
-      "css": ".ds-tabs{display:flex;gap:2px;padding:3px;border-radius:var(--radius-control);background:var(--surface-inset)}.ds-tab{flex:1;min-width:0;min-height:3rem;border:0;border-radius:var(--radius-segment);background:transparent;color:var(--muted-foreground);font-size:.9375rem;font-family:var(--font-sans);font-weight:500;}.ds-tab[aria-selected=\"true\"]{background:var(--card);color:var(--foreground);box-shadow:var(--shadow-control)}.ds-tab:hover{color:var(--foreground)}.ds-tab:focus-visible{outline:2px solid var(--primary);outline-offset:2px}"
+      "css": ".ds-tabs{display:flex;gap:2px;padding:3px;border-radius:var(--radius-control);background:var(--surface-inset)}.ds-tab{flex:1;min-width:0;min-height:2.75rem;border:0;border-radius:var(--radius-segment);background:transparent;color:var(--muted-foreground);font-size:.875rem;font-family:var(--font-sans);font-weight:500;}.ds-tab[aria-selected=\"true\"]{background:var(--card);color:var(--foreground);box-shadow:var(--shadow-control)}.ds-tab:hover{color:var(--foreground)}.ds-tab:focus-visible{outline:2px solid var(--primary);outline-offset:2px}"
     },
     {
       "name": "手機膠囊導覽",
@@ -221,21 +220,36 @@
       "description": "儲存成功後呈現墨綠表面與真實完成數量；對稱36px圓角。",
       "html": "<section class=\"ds-finish\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg><h2>本次學習已完成</h2><p>完成數量依已儲存的紀錄顯示</p></section>",
       "css": ".ds-finish{border-radius:var(--radius-stage);background:var(--study-ink);color:var(--study-paper);padding:2rem 1.5rem;font-family:var(--font-sans)}.ds-finish>svg{color:var(--study-lime)}.ds-finish>p{color:var(--study-soft)}"
+    },
+    {
+      "name": "桌機側欄",
+      "kind": "nav",
+      "description": "208px常駐側欄，練習時保留；頁面內容獨立捲動。",
+      "html": "<aside class=\"ds-sidebar\"><strong>Lexiro</strong><nav aria-label=\"主要導覽\"><a href=\"#today\" aria-current=\"page\">今天</a><a href=\"#library\">我的單字</a><a href=\"#progress\">進度</a><a href=\"#me\">我的</a></nav></aside>",
+      "css": ".ds-sidebar{width:13rem;min-height:20rem;padding:1.25rem .75rem;background:var(--card);border-right:1px solid var(--rule);font-family:var(--font-sans)}.ds-sidebar strong{display:block;padding:0 .75rem 1rem;font-size:1.125rem;color:var(--primary)}.ds-sidebar nav{display:grid;gap:.25rem}.ds-sidebar a{display:flex;align-items:center;min-height:2.625rem;padding:0 .75rem;border-radius:var(--radius-control);font-size:.875rem;color:var(--muted-foreground);text-decoration:none}.ds-sidebar a[aria-current]{background:var(--brand-100);color:var(--brand-700)}.ds-sidebar a:hover{background:var(--surface-hover)}.ds-sidebar a:focus-visible{outline:2px solid var(--primary);outline-offset:2px}"
+    },
+    {
+      "name": "桌機頁首操作",
+      "kind": "button",
+      "refersTo": "button-desktop",
+      "description": "黏附頁首右側的36px操作；桌機沒有底部操作列與佔位。",
+      "html": "<button class=\"ds-header-action\">開始背單字</button>",
+      "css": ".ds-header-action{height:2.25rem;padding:0 .875rem;border:0;border-radius:var(--radius-control);background:var(--primary);color:var(--primary-foreground);font-family:var(--font-sans);font-size:.8125rem;font-weight:500;box-shadow:var(--shadow-control)}.ds-header-action:hover{background:var(--primary-hover)}.ds-header-action:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-header-action:active{transform:translateY(1px) scale(.98)}"
     }
   ],
   "narrative": {
     "northStar": "固定操作的學習工作區",
-    "overview": "延續 HarmonyOS Sans TC、森林綠與既有插畫，讓教材、分頁與主要操作直接可見。\n霧白內容、大圓角、精簡標題與固定底部操作承載日常學習；內容可以捲動，導覽與前進操作保持位置。\n工作區以實際任務建立辨識，不靠永久側欄或每頁左上角重複 logo。",
+    "overview": "延續 HarmonyOS Sans TC、森林綠與既有插畫，讓教材、分頁與主要操作直接可見。\n霧白內容、大圓角與緊湊控制承載日常學習。桌機側欄保留導覽，主要操作位於黏附頁首右側；手機保留底部導覽與操作。\n內容獨立捲動，分頁切換任務，桌機側欄以 Lexiro 名稱辨識工作區。",
     "keyCharacteristics": [
       "森林綠標示選取與主要操作，中性色承載教材。",
-      "大分頁切換內容，主要操作固定在右、次要操作在左。",
+      "緊湊分頁切換內容，主要操作在右、次要操作在左。",
       "安靜的分組資料列，插畫只輔助空狀態與既有回饋。",
       "進度與完成回饋對應已儲存的學習成果。"
     ],
     "rules": [
       {
         "name": "穩定操作",
-        "body": "用分頁切換工作內容；底部主要操作在右、次要操作在左，切換分頁只更新操作內容，保留操作區位置。StepActions 預留對應空間，不遮住末尾內容。",
+        "body": "用分頁切換工作內容；主要操作在右、次要操作在左。桌機操作跟隨黏附頁首，手機操作保持底部位置；StepActions 只在手機預留底部空間。",
         "section": "layout"
       }
     ],
@@ -245,7 +259,7 @@
       "**Do** 在手機、桌機和深色模式確認主要行動與狀態可讀。"
     ],
     "donts": [
-      "**Don't** 回到永久 SaaS 側欄或每頁重複 logo 的版型。",
+      "**Don't** 把桌機主要操作放回底部固定列。",
       "**Don't** 把完成區的強色套滿密集表單。",
       "**Don't** 把前進操作塞到捲動內容末尾或在分頁間搬動操作區。",
       "**Don't** 在資料尚未儲存成功前播放完成回饋。"

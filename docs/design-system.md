@@ -1,8 +1,8 @@
 # Lexiro design system
 
 Lexiro 是固定操作的個人單字學習工作區。森林綠標示主要行動與選取，中性色承載
-閱讀、整理與作答；大分頁切換內容，底部操作保留位置。插畫輔助空狀態，完成回饋
-保留墨綠與春綠。不要把它做成永久側欄配一排統計卡的 SaaS 儀表板。
+閱讀、整理與作答；緊湊分頁切換內容，桌機操作位於黏附頁首，手機操作保留底部
+位置。插畫輔助空狀態，完成回饋保留墨綠與春綠。
 
 `DESIGN.md` 記錄可重用的視覺 token 與規範；本文件補充元件、互動和實作規則。
 
@@ -31,7 +31,7 @@ page ground in both themes.
 
 完成區使用 `--study-ink`、`--study-paper`、`--study-soft` 與 `--study-lime` 勾選；
 這組顏色在深色模式保留相同值。首頁任務表面使用 `--card`，空狀態閱讀插畫與
-主要行動使用 `--primary`。工作區使用 `--surface-stage`，水平導覽使用 `--card`。
+主要行動使用 `--primary`。工作區使用 `--surface-stage`，桌機側欄使用 `--card`。
 
 Semantic tokens (`--primary`, `--muted`, `--border`, `--destructive`, …) all
 resolve to the ramp or to green-tinted neutrals; borders are green-tinted
@@ -79,8 +79,9 @@ a quieter aside, and `.type-label` for a control label. The gap between a
 heading and the sentence under it belongs to the pairing and is set by the
 scale, so no caller guesses it.
 
-工作區在 `workspace.css` 收斂字級：頁面標題為 1.375rem、行高 1.35；首頁任務
-標題為 1.25rem、行高 1.4；首頁說明為 0.875rem、行高 1.65、行長最多 45ch。
+工作區在 `workspace.css` 收斂字級：頁面標題為 1.25rem、行高 1.35；首頁任務
+標題為 1.125rem、行高 1.4；首頁說明為 0.8125rem、行高 1.65、行長最多 45ch。
+任務資料列標籤 14px，勾選圖示表面 32px。
 共用分組與教材資料列繼續沿用既有 scale，不把首頁說明字級套到單字內容。
 
 Tracking is negative only where the type is large enough for the default spacing
@@ -129,11 +130,9 @@ every screen that asks for something uses it.
 - A choice within a form or settings group uses `ListPicker`, whose shared select
   popover keeps the page layout stable. A task with its own consequence or more
   than a handful of choices belongs on its own page.
-- A screen the reader is working through — a study card or a step of a flow —
-  keeps its advancing action on the shared `StepActions` surface at the safe
-  bottom edge. The document reserves matching space, so content is never hidden
-  behind the controls and the learner never has to scroll to the end just to
-  continue.
+- A study card or flow step keeps its advancing action on shared `StepActions`:
+  desktop uses the sticky page header; mobile uses the safe bottom edge and
+  reserves matching space. The learner need not scroll to the end to continue.
 - Rows are at least 52px tall and the whole row is the target, never the
   chevron or the label alone.
 
@@ -270,30 +269,38 @@ clipped list surfaces. Touch controls have a minimum 2.75rem target.
 ## Workspace navigation and learning feedback
 
 殼層高 `100dvh`、不捲動；`workspace-body` 是獨立內容捲動區。桌機從 `48rem`
-起使用高 `4rem` 的水平導覽，導覽與內容共用 `--content-max` 的寬度基準。
+起使用寬 `13rem` 的側欄，包含練習時也保留；內容使用剩餘寬度。
 手機主要頁面使用 Novae 同型的膠囊底部導覽，高 `3.875rem`，底距為
-`max(1.125rem, var(--safe-bottom))`。子頁與專注練習收起手機導覽，桌機專注練習也
-收起導覽。殼層不固定重複放置 logo，頁面標題直接說明目前任務。
+`max(1.125rem, var(--safe-bottom))`。子頁與專注練習收起手機導覽。
+桌機側欄顯示 Lexiro 名稱；頁面標題直接說明目前任務。
 
-工作區 LiquidTabs 橫跨可用寬度、等分且至少高 `3rem`，並在標題下方保持位置。
+工作區 LiquidTabs 等分且高 `2.75rem`，手機橫跨可用寬度，桌機最大寬度 `25rem`。
 首頁切換今日任務與最近教材；教材頁切換單字、題目與工具。已有教材時顯示單字
 與題目的每日進度；尚無教材時顯示三步引導與小型閱讀插畫。
 進度以數字、進度條與提示文字共同表達，達標才把播放圖示換成勾選。
 完成畫面必須等學習紀錄儲存成功才呈現；儲存失敗要保留可重試的工作。
 
-StepActions 將操作列 portal 到 body，量測高度並在內容中預留空間。底部操作至少
-高 `3rem`，主要在右、次要在左；桌機兩欄比例 `1:1.3`、間距 `0.75rem`，手機
-間距 `0.5rem`。手機根頁操作列位於導覽上方 `0.75rem`，子頁位於安全底邊。
+StepActions 在桌機將操作 portal 到 PageHeader 右側的 `data-page-actions-host`，
+頁首 sticky `top:0`。桌機操作高 `2.25rem`、字級 `0.8125rem`，依內容寬度排列，
+沒有底部固定列與佔位。手機將操作 portal 到 body，量測高度並預留底部空間，操作
+高 `2.75rem`、兩欄比例 `1:1.3`；主要在右、次要在左，間距 `0.5rem`。
+手機根頁操作列位於導覽上方 `0.75rem`，子頁位於安全底邊。
 輸入聚焦時隱藏手機導覽與其上方操作列，避免與軟鍵盤競爭。
 
-返回控制是 44px 箭頭按鈕，只顯示圖示，保留 `aria-label` 提供完整返回目的地。
+首頁桌機任務內容左右兩欄，保存的單字與題目列表從 `80rem` 起使用兩欄；手機一欄。
+桌機今日任務下方在有內容時直接呈現既有 LearningRows 的最近教材與未完練習，
+兩欄排列；手機維持最近分頁，不建立虛構教材或練習。
+
+返回控制是手機 44px、桌機 36px 箭頭按鈕，只顯示圖示，保留 `aria-label` 提供完整返回目的地。
 
 閱讀插畫沿用 `public/illustrations/open-doodles-reading.svg`，以 CSS mask 套用
 主綠。保留原 SVG 來源紀錄；這次沒有新增 raster 素材。插畫是輔助內容，使用
 `aria-hidden`，不能取代操作標籤或狀態文字。
 
 本機驗證範圍涵蓋新增與儲存教材、分頁切換、進入練習，以及手機／桌機／手機深色
-畫面。既有 263 tests 通過；真實 Firebase 同步與付費 AI 執行不在本機驗證範圍。
+畫面。266 tests、lint、typecheck、build 通過；當前精簡殼層圖為
+`.impeccable/review/compact-desktop.png` 與 `compact-mobile.png`。
+真實 Firebase 同步與付費 AI 執行不在本機驗證範圍。
 
 ## Components
 

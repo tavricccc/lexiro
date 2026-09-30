@@ -49,10 +49,11 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 
 ## Interface Direction
 
-- The selected direction is **固定操作的學習工作區**: fewer scrolling steps, large controls, and tabs that change content while task actions keep their place.
+- The selected direction is **固定操作的學習工作區**: fewer scrolling steps, compact controls, and tabs that change content while task actions remain reachable.
 - Today separates daily tasks and recent material into tabs. A compact neutral task surface presents the next study action and daily review/question progress; an empty library presents the three-step introduction with the existing Open Doodles reading illustration.
-- Saved sets separate words, questions, and tools into full-width tabs. Main task controls stay at the bottom, with the primary action on the right and the secondary action on the left.
-- Desktop uses a 64px horizontal navigation, an independently scrolling content region, and a bottom action strip. Mobile uses the Novae-style 62px bottom navigation capsule and a separate action surface above it. Both keep the same destinations, capabilities, labels, and task order. The workspace does not repeat the logo in a permanent corner. Focused practice hides navigation; mobile child pages hide the bottom navigation.
+- Saved sets separate words, questions, and tools into tabs. Desktop task controls stay in the sticky page header; mobile controls stay at the bottom, with the primary action on the right and the secondary action on the left.
+- Desktop uses a 208px sidebar, an independently scrolling content region, and compact 36px controls at the right of the sticky page header. The sidebar remains during practice. Mobile uses the Novae-style 62px bottom navigation capsule, 44px actions and tabs, and a separate action surface above navigation. Both keep the same destinations, capabilities, labels, and task order. Mobile child pages and focused practice hide bottom navigation.
+- Desktop Today uses two task columns and shows existing recent material and unfinished practice below when available; mobile keeps these in the recent tab. Saved word and question lists use two columns from 1280px viewport width. Mobile remains one column. Page titles are 20px; Today task headings are 18px and descriptions are 13px.
 - Forest-green selection and action controls, mist-white content, compact title bars, and generous shared corners keep the workspace personal and directly operable. Buttons, tabs, forms, lists, and overlays share the larger radius scale. Ink-green and spring-green surfaces remain in completion feedback.
 - Back controls show only an arrow; their accessible labels retain the return destination.
 - Progress pairs counts and bars with text; reaching a goal changes the play mark to a check. Completion feedback must follow successful storage rather than an optimistic visual result.
@@ -63,8 +64,8 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - Confirmed product and data decisions: `docs/product-decisions.md`.
 - Visual tokens and reusable visual rules: `DESIGN.md`; component and icon implementation rules: `docs/design-system.md`.
 - Current implementation and tests document the working capability set.
-- Local verification covers creating and saving material, switching tabs, and entering practice. The existing 263 tests pass; real Firebase synchronization and paid AI execution were not verified.
-- Final local screenshots cover populated mobile and desktop Today, mobile Library, mobile saved set, and dark mobile Today under `.impeccable/review/`.
+- Local verification covers creating and saving material, switching tabs, and entering practice. 266 tests, lint, typecheck, and build pass; real Firebase synchronization and paid AI execution were not verified.
+- Current compact desktop and mobile Today screenshots are `.impeccable/review/compact-desktop.png` and `compact-mobile.png`; earlier Library, saved set, and dark Today captures remain as supporting evidence for those states.
 - Current icon assets: `public/icons/lexiro.png` and `public/icons/apple-touch-icon.png`.
 - Existing generated vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.
 - No testimonials, public customer claims, pricing, or benchmark evidence is available and none may be fabricated.

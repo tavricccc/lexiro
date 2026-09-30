@@ -6,13 +6,7 @@ import { createPortal } from "react-dom";
 
 import { cn } from "@/lib/cn";
 
-/**
- * The always-reachable action surface for a single-step screen.
- *
- * It reserves its own space in the document, then pins the actual controls to
- * the safe bottom edge. Long review lists can scroll without hiding the one
- * action that advances the flow.
- */
+/** Mobile actions use the safe bottom edge; desktop actions join the sticky page header. */
 export function StepActions({
   children,
   className,

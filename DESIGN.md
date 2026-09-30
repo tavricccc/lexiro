@@ -25,12 +25,12 @@ colors:
 typography:
   page:
     fontFamily: '"HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
-    fontSize: "1.375rem"
+    fontSize: "1.25rem"
     fontWeight: 700
     lineHeight: 1.35
     letterSpacing: "-0.01em"
   section:
-    fontSize: "1.25rem"
+    fontSize: "1.125rem"
     fontWeight: 700
     lineHeight: 1.4
     letterSpacing: "-0.01em"
@@ -40,7 +40,7 @@ typography:
     lineHeight: 1.45
     letterSpacing: "-0.005em"
   body:
-    fontSize: "0.875rem"
+    fontSize: "0.8125rem"
     lineHeight: 1.65
   lead:
     fontSize: "0.9375rem"
@@ -74,16 +74,19 @@ components:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.primary-foreground}"
     rounded: "{rounded.control}"
-    height: "3rem"
+    height: "2.75rem"
   button-secondary:
     backgroundColor: "{colors.card}"
     textColor: "{colors.foreground}"
     rounded: "{rounded.control}"
-    height: "3rem"
+    height: "2.75rem"
   workspace-tab:
     backgroundColor: "{colors.card}"
     rounded: "{rounded.tab}"
-    height: "3rem"
+    height: "2.75rem"
+  button-desktop:
+    rounded: "{rounded.control}"
+    height: "2.25rem"
   mobile-navigation:
     backgroundColor: "{colors.card}"
     rounded: "{rounded.navigation}"
@@ -101,13 +104,13 @@ components:
 **Creative North Star: "固定操作的學習工作區"**
 
 延續 HarmonyOS Sans TC、森林綠與既有插畫，讓教材、分頁與主要操作直接可見。
-霧白內容、大圓角、精簡標題與固定底部操作承載日常學習；內容可以捲動，導覽與前進操作保持位置。
-工作區以實際任務建立辨識，不靠永久側欄或每頁左上角重複 logo。
+霧白內容、大圓角與緊湊控制承載日常學習。桌機側欄保留導覽，主要操作位於黏附頁首右側；手機保留底部導覽與操作。
+內容獨立捲動，分頁切換任務，桌機側欄以 Lexiro 名稱辨識工作區。
 
 **Key Characteristics:**
 
 - 森林綠標示選取與主要操作，中性色承載教材。
-- 大分頁切換內容，主要操作固定在右、次要操作在左。
+- 緊湊分頁切換內容，主要操作在右、次要操作在左。
 - 安靜的分組資料列，插畫只輔助空狀態與既有回饋。
 - 進度與完成回饋對應已儲存的學習成果。
 
@@ -139,16 +142,18 @@ page 對應工作區頁面標題，section 是首頁任務標題，group 保留�
 
 ## Layout
 
-內容寬度基準為 `--content-max`（64rem）。殼層高 100dvh，內容區單獨垂直捲動。
-桌機從 48rem 起使用高 64px 的水平導覽與底部操作列。手機主要頁面使用高 62px
+殼層高 100dvh，內容區單獨垂直捲動。桌機從 48rem 起使用 13rem 側欄，包含
+練習時也保留；內容使用剩餘寬度，主要操作置於 top:0 的黏附頁首右側。
+首頁桌機任務分成左右兩欄；保存的單字與題目列表從 80rem 起使用兩欄。手機主要頁面使用高 62px
 的底部膠囊導覽，距底為 18px 與安全區的較大值；操作列在導覽上方相隔 12px。
-子頁收起手機導覽，專注練習收起兩種導覽。各尺寸保留相同目的地與順序。
+子頁與專注練習收起手機導覽。各尺寸保留相同目的地與順序。
+桌機今日任務下方有內容時直接顯示最近教材與未完練習，兩欄排列；手機維持最近分頁。
 
 frontmatter 的間距是手機基準；48rem 起，標題、內容、區段與內部區塊間距依序為
 0.75rem、1.5rem、2rem、1.5rem。手機頁邊與資料列 gutter 為 1rem。
 
-**The 穩定操作 Rule.** 用分頁切換工作內容；底部主要操作在右、次要操作在左，
-切換分頁只更新操作內容，保留操作區位置。StepActions 預留對應空間，不遮住末尾內容。
+**The 穩定操作 Rule.** 用分頁切換工作內容；主要操作在右、次要操作在左。
+桌機操作跟隨黏附頁首，手機操作保持底部位置；StepActions 只在手機預留底部空間。
 首頁與教材頁的具體內容依 `.impeccable/surfaces/app-workspace.md` 維護。
 
 ## Elevation & Depth
@@ -168,8 +173,8 @@ control，內選取面使用 tab，兩者差值對應 3px 內距；手機導覽�
 
 ### Buttons
 
-底部行動使用共用 Button 的大尺寸，至少高 48px；主要使用 primary，次要使用
-outline。桌機操作兩欄比例為 1:1.3，欄距 12px；手機欄距 8px，文字可換行。
+手機操作高 44px；桌機頁首操作高 36px、字級 13px，依內容寬度排列。主要使用
+primary，次要使用 outline。操作間距 8px；手機兩欄比例為 1:1.3，文字可換行。
 Hover、停用與鍵盤焦點沿用共用語意 token 與元件。
 
 ### Lists and Fields
@@ -180,13 +185,13 @@ Hover、停用與鍵盤焦點沿用共用語意 token 與元件。
 
 ### Navigation
 
-水平及底部導覽共用 LiquidNav 的選取表面與目的地；新頁提交後才切換目前項目。
+桌機側欄及手機底部導覽共用 LiquidNav 的選取表面與目的地；新頁提交後才切換目前項目。
 手機子頁與專注練習的顯示規則依 AppShell，不另造常駐導航。
-返回控制使用 44px 箭頭按鈕，只顯示圖示，返回標籤保留在 aria-label。
+返回控制使用手機 44px、桌機 36px 箭頭按鈕，只顯示圖示，返回標籤保留在 aria-label。
 
 ### Tabs
 
-工作區分頁橫跨可用寬度、等分且至少高 48px，選取面用 card，底軌用 surface-inset。
+工作區分頁等分且高 44px，手機橫跨可用寬度，桌機最大寬度 25rem；選取面用 card，底軌用 surface-inset。
 首頁切換今日任務與最近教材；教材頁切換單字、題目與工具，避免把工具堆在內容下方。
 
 ### Learning feedback
@@ -211,7 +216,7 @@ Hover、停用與鍵盤焦點沿用共用語意 token 與元件。
 
 ### Don't:
 
-- **Don't** 回到永久 SaaS 側欄或每頁重複 logo 的版型。
+- **Don't** 把桌機主要操作放回底部固定列。
 - **Don't** 把完成區的強色套滿密集表單。
 - **Don't** 把前進操作塞到捲動內容末尾或在分頁間搬動操作區。
 - **Don't** 在資料尚未儲存成功前播放完成回饋。
