@@ -6,6 +6,7 @@ interface ClientRouter {
 let currentPath = "";
 let previousPath = "";
 let pendingRouteDirection: RouteDirection | null = null;
+let pendingViewDirection: RouteDirection = "child";
 let currentHistoryIndex: number | null = null;
 let pendingHistoryIndex: number | null = null;
 const HISTORY_INDEX_KEY = "__lexiroHistoryIndex";
@@ -104,6 +105,16 @@ function inferRouteDirection(from: string, to: string): RouteDirection {
 
 export function markRouteDirection(direction: RouteDirection) {
   pendingRouteDirection = direction;
+}
+
+export function markViewDirection(direction: RouteDirection) {
+  pendingViewDirection = direction;
+}
+
+export function consumeViewDirection() {
+  const direction = pendingViewDirection;
+  pendingViewDirection = "child";
+  return direction;
 }
 
 export function consumeRouteDirection(pathname: string) {

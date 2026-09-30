@@ -63,7 +63,10 @@ export function PracticeSessionView({
     // A session owns the whole screen, so it is a column: the material takes
     // the room it needs and the controls end up where a thumb already is,
     // instead of floating in the middle of a half-empty page.
-    <div className="mx-auto flex min-h-[calc(100dvh-6rem)] max-w-3xl flex-col">
+    <div
+      data-motion-view="practice-session"
+      className="mx-auto flex min-h-[calc(100dvh-6rem)] max-w-3xl flex-col"
+    >
       <div className="sticky top-[var(--safe-top)] z-20 bg-[var(--surface-stage)] pb-3 pt-1">
         <div className="flex flex-wrap items-center justify-between gap-x-3 text-sm text-muted-foreground">
           <BackControl onClick={onLeave} />

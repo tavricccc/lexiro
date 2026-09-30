@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { StepActions } from "@/components/ui/step-actions";
 import { LearningRows } from "./learning-row";
+import { ContentTransition } from "@/components/motion/state-transition";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
@@ -68,85 +69,87 @@ export function FocusCanvas() {
         ]}
         value={tab}
       />
-      {tab === "recent" ? (
-        <LearningRows />
-      ) : (
-        <>
-          <div className="study-invitation" data-empty={!hasContent}>
-            <div className="study-invitation-copy">
-              <h2>
-                {t(
-                  !hasContent
-                    ? "home.appWelcomeTitle"
-                    : goalMet
-                      ? "home.finishedTitle"
-                      : "home.appStudyTitle",
+      <ContentTransition identity={tab}>
+        {tab === "recent" ? (
+          <LearningRows />
+        ) : (
+          <>
+            <div className="study-invitation" data-empty={!hasContent}>
+              <div className="study-invitation-copy">
+                <h2>
+                  {t(
+                    !hasContent
+                      ? "home.appWelcomeTitle"
+                      : goalMet
+                        ? "home.finishedTitle"
+                        : "home.appStudyTitle",
+                  )}
+                </h2>
+                <p>
+                  {t(
+                    !hasContent
+                      ? "home.appWelcomeHint"
+                      : goalMet
+                        ? "home.todayDone"
+                        : "home.appStudyHint",
+                  )}
+                </p>
+                {hasContent && (
+                  <span className="study-available">
+                    {t("home.available", { count: reviewCount })}
+                  </span>
                 )}
-              </h2>
-              <p>
-                {t(
-                  !hasContent
-                    ? "home.appWelcomeHint"
-                    : goalMet
-                      ? "home.todayDone"
-                      : "home.appStudyHint",
-                )}
-              </p>
-              {hasContent && (
-                <span className="study-available">
-                  {t("home.available", { count: reviewCount })}
-                </span>
+              </div>
+              {!hasContent && (
+                <div className="study-illustration" aria-hidden="true" />
               )}
             </div>
-            {!hasContent && (
-              <div className="study-illustration" aria-hidden="true" />
-            )}
-          </div>
 
-          {hasContent ? (
-            <>
-              <div className="study-checklist">
-                <StudyProgress
-                  href="/app/practice?track=fsrs"
-                  label={t("home.wordsToday")}
-                  value={wordsToday}
-                  goal={stats.dailyWordGoal}
-                  disabled={reviewCount === 0}
-                  emptyHint={t("home.nothingDue")}
-                />
-                <StudyProgress
-                  href="/app/practice?track=questions"
-                  label={t("home.questionsToday")}
-                  value={questionsToday}
-                  goal={stats.dailyQuestionGoal}
-                  disabled={questionCount === 0}
-                />
-              </div>
-              <div className="study-tools">
-                <Link href="/app/questions/generate">
-                  <Icons.generate aria-hidden className="size-4" />
-                  {t("home.generateQuestions")}
-                  <Icons.next aria-hidden className="size-4" />
-                </Link>
-              </div>
-            </>
-          ) : (
-            <ol className="study-guide">
-              {GUIDE.map(([label, hint], index) => (
-                <li key={label}>
-                  <span className="study-guide-step" aria-hidden="true">
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3>{t(label)}</h3>
-                    <p>{t(hint)}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          )}
-        </>
-      )}
+            {hasContent ? (
+              <>
+                <div className="study-checklist">
+                  <StudyProgress
+                    href="/app/practice?track=fsrs"
+                    label={t("home.wordsToday")}
+                    value={wordsToday}
+                    goal={stats.dailyWordGoal}
+                    disabled={reviewCount === 0}
+                    emptyHint={t("home.nothingDue")}
+                  />
+                  <StudyProgress
+                    href="/app/practice?track=questions"
+                    label={t("home.questionsToday")}
+                    value={questionsToday}
+                    goal={stats.dailyQuestionGoal}
+                    disabled={questionCount === 0}
+                  />
+                </div>
+                <div className="study-tools">
+                  <Link href="/app/questions/generate">
+                    <Icons.generate aria-hidden className="size-4" />
+                    {t("home.generateQuestions")}
+                    <Icons.next aria-hidden className="size-4" />
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <ol className="study-guide">
+                {GUIDE.map(([label, hint], index) => (
+                  <li key={label}>
+                    <span className="study-guide-step" aria-hidden="true">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h3>{t(label)}</h3>
+                      <p>{t(hint)}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </>
+        )}
+      </ContentTransition>
       <StepActions aboveNavigation width="wide">
         <div className="workspace-actions">
           <Button asChild size="lg" variant="outline">

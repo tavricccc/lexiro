@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
+import { markRouteDirection, markViewDirection } from "@/lib/navigation-memory";
 
 type BackControlProps = {
   /** Accessible name for the icon-only return control. */
@@ -38,6 +39,7 @@ export function BackControl({ label, ...props }: BackControlProps) {
           aria-label={accessibleLabel}
           data-allow-discard={props.allowDiscard ? "true" : undefined}
           href={props.href}
+          onNavigate={() => markRouteDirection("back")}
         >
           <Icons.back aria-hidden className="size-5" />
         </Link>
@@ -47,7 +49,10 @@ export function BackControl({ label, ...props }: BackControlProps) {
   return (
     <Button
       aria-label={accessibleLabel}
-      onClick={props.onClick}
+      onClick={() => {
+        markViewDirection("back");
+        props.onClick?.();
+      }}
       size="icon"
       type="button"
       variant="ghost"

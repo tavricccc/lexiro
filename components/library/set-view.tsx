@@ -27,6 +27,7 @@ import { SetMoveDialog } from "@/components/library/set-move-dialog";
 import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
 import { SetTools } from "@/components/library/set-tools";
 import { StepActions } from "@/components/ui/step-actions";
+import { ContentTransition } from "@/components/motion/state-transition";
 
 type SetTab = "words" | "questions" | "tools";
 
@@ -182,79 +183,80 @@ export function SetView({ setId }: { setId: string }) {
         value={tab}
       />
 
-      {tab === "words" ? (
-        <div className="space-y-7">
-          {words.length ? (
-            <StaggerList as="ul" className="rule-card rule-list">
-              {words.map((entry) => (
-                <StaggerItem
-                  as="li"
-                  className="py-[var(--row-padding-block)]"
-                  key={entry.wordKey}
-                >
-                  <SetWordRow cards={cards} entry={entry} setId={setId} />
-                </StaggerItem>
-              ))}
-            </StaggerList>
-          ) : (
-            <EmptyState
-              variant="filtered"
-              title={t("setDetail.noWords")}
-              description={t("setDetail.noWordsDescription")}
-            />
-          )}
-        </div>
-      ) : tab === "tools" ? (
-        <SetTools setId={setId} />
-      ) : (
-        <>
-          {/* Making questions is what you come to this tab to do when it is
+      <ContentTransition identity={tab}>
+        {tab === "words" ? (
+          <div className="space-y-7">
+            {words.length ? (
+              <StaggerList as="ul" className="rule-card rule-list">
+                {words.map((entry) => (
+                  <StaggerItem
+                    as="li"
+                    className="py-[var(--row-padding-block)]"
+                    key={entry.wordKey}
+                  >
+                    <SetWordRow cards={cards} entry={entry} setId={setId} />
+                  </StaggerItem>
+                ))}
+              </StaggerList>
+            ) : (
+              <EmptyState
+                variant="filtered"
+                title={t("setDetail.noWords")}
+                description={t("setDetail.noWordsDescription")}
+              />
+            )}
+          </div>
+        ) : tab === "tools" ? (
+          <SetTools setId={setId} />
+        ) : (
+          <>
+            {/* Making questions is what you come to this tab to do when it is
               empty and the obvious next step when it is not, so it is a control
               on the tab rather than a line in the page's overflow menu. */}
 
-          {questions.length ? (
-            <StaggerList as="ul" className="rule-card rule-list">
-              {questions.map((question) => (
-                <StaggerItem
-                  as="li"
-                  className="py-[var(--row-padding-block)]"
-                  key={question.id}
-                >
-                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                    <span className="font-medium text-foreground">
-                      {questionFormatLabel(
-                        question.kind === "reading"
-                          ? question.format
-                          : question.questionStyle,
-                      )}
-                    </span>
-                    <span>
-                      {t("questions.difficulty", {
-                        level: question.difficulty,
-                      })}
-                    </span>
-                  </p>
-                  <Link
-                    className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                    href={questionEditHref(question)}
+            {questions.length ? (
+              <StaggerList as="ul" className="rule-card rule-list">
+                {questions.map((question) => (
+                  <StaggerItem
+                    as="li"
+                    className="py-[var(--row-padding-block)]"
+                    key={question.id}
                   >
-                    {question.kind === "reading"
-                      ? question.title
-                      : question.prompt}
-                  </Link>
-                </StaggerItem>
-              ))}
-            </StaggerList>
-          ) : (
-            <EmptyState
-              variant="filtered"
-              title={t("questions.empty")}
-              description={t("setDetail.noQuestionsDescription")}
-            />
-          )}
-        </>
-      )}
-
+                    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                      <span className="font-medium text-foreground">
+                        {questionFormatLabel(
+                          question.kind === "reading"
+                            ? question.format
+                            : question.questionStyle,
+                        )}
+                      </span>
+                      <span>
+                        {t("questions.difficulty", {
+                          level: question.difficulty,
+                        })}
+                      </span>
+                    </p>
+                    <Link
+                      className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+                      href={questionEditHref(question)}
+                    >
+                      {question.kind === "reading"
+                        ? question.title
+                        : question.prompt}
+                    </Link>
+                  </StaggerItem>
+                ))}
+              </StaggerList>
+            ) : (
+              <EmptyState
+                variant="filtered"
+                title={t("questions.empty")}
+                description={t("setDetail.noQuestionsDescription")}
+              />
+            )}
+          </>
+        )}
+      </ContentTransition>
       <StepActions width="wide">
         <div className="workspace-actions">
           <Button asChild size="lg" variant="outline">

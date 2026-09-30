@@ -44,36 +44,7 @@
   background: var(--surface-stage);
 }
 
-/* A route reveal is one animation, on the page that arrives, in the live
-   document.
-   Capturing the document instead buys the page being left a parallax, and costs
-   a full rasterisation of both pages at the moment the browser is already
-   fetching, rendering and hydrating the route that was asked for. That was the
-   stutter. It also put two full-viewport images on screen at once, which is why
-   anything the arriving page did not cover showed the one underneath.
-   Nothing is underneath now, so the travel is short and the fade carries the
-   rest: a page sliding the full width would only uncover an empty background.
-   The direction still reads — a child arrives from the trailing edge, its
-   parent from the leading one — and a route that is neither simply appears. */
-.route-page[data-route-direction] {
-  animation: t-route-enter var(--motion-control) var(--ease-arrive) both;
-}
-.route-page[data-route-direction="push"] {
-  --route-entry-travel: var(--motion-route-travel);
-}
-.route-page[data-route-direction="pop"] {
-  --route-entry-travel: calc(-1 * var(--motion-route-travel));
-}
-@keyframes t-route-enter {
-  from {
-    opacity: 0;
-    transform: translateX(var(--route-entry-travel, 0));
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
+/* RouteSurface reveals ready content through the Web Animations API. */
 
 /* Press ------------------------------------------------------------------ */
 
@@ -124,7 +95,7 @@
   [role="tab"],
   [role="switch"],
   [data-slot="select-trigger"]
-):not(:disabled, [aria-disabled="true"], [data-disabled], .t-primary-nav-link):active {
+):not(:disabled, [aria-disabled="true"], [data-disabled]):active {
   transform: translateY(1px) scale(var(--motion-press-scale));
   transition-duration: var(--motion-touch);
 }

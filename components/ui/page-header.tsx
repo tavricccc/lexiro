@@ -27,6 +27,7 @@ export function PageHeader({
 }) {
   return (
     <header
+      data-motion-view={title}
       className={cn(
         "page-header mb-[var(--page-content-gap)] space-y-[var(--page-header-gap)]",
         className,

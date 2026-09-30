@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
@@ -13,7 +12,6 @@ import { t } from "@/lib/i18n";
 import { managedTurn } from "@/lib/managed-client";
 import { createAiSession } from "@/src/lib/ai/session";
 import { useCloudStore } from "@/stores/cloud-store";
-import { timing } from "@/lib/motion-timing";
 import { estimatePoints } from "@lexiro/ai-contract";
 
 export function ResultPanel({
@@ -75,11 +73,9 @@ export function ResultPanel({
   };
 
   return (
-    <motion.div
+    <div
+      data-motion-view="practice-result"
       className="mx-auto flex min-h-[70dvh] max-w-xl flex-col justify-center py-10 sm:py-14"
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={timing("nav")}
     >
       <div className="study-finish text-center">
         <Icons.success className="mx-auto mb-6 size-10" aria-hidden />
@@ -162,6 +158,6 @@ export function ResultPanel({
           <Markdown className="mt-4 text-sm" content={explanation} />
         </section>
       )}
-    </motion.div>
+    </div>
   );
 }

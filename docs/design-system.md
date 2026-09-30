@@ -209,19 +209,23 @@ JavaScript reaches the ladder through `timing(rung, curve)` in
 `lib/motion-timing.ts`, which is also what `MotionConfig` is given, so Motion and
 CSS cannot drift apart.
 
-**Route reveals.** A route change animates one thing: the page that arrives, in
-the live document. Capturing the document instead — a view transition — buys the
-page being left a parallax, and costs a full rasterisation of both pages at the
-moment the browser is already fetching, parsing and rendering the route that was
-asked for; it also suspends hit testing for the length of the animation, which
-is what swallowed taps on the dock. The page that leaves is simply gone, so a
-full-width slide would uncover nothing but the shell: the travel is short
-(`--motion-route-travel`) and the fade carries the rest. A child arrives from
-the trailing edge, its parent from the leading one, and a route that is neither
-simply appears. Direction is derived in `lib/navigation-memory.ts` — an explicit
-`markRouteDirection` wins, otherwise it is inferred from where the two URLs sit
-in the hierarchy — and written onto the arriving page as `data-route-direction`,
-which is what the recipe in `motion.css` keys off.
+**Route reveals.** `RouteSurface` waits for the actual screen's `data-motion-view`
+marker before playing its reveal, so a loading placeholder cannot spend the
+animation before content arrives. Forward navigation travels 56px from the
+trailing edge; returning travels from the leading edge. Peer destinations fade
+and rise 12px. These reveals use the Web Animations API at 320ms with the arrival
+curve, and respect reduced motion. They animate only the incoming live surface;
+navigation and pinned actions remain usable.
+
+`lib/navigation-memory.ts` derives route direction from the hierarchy and browser
+history. Back links explicitly mark a return, including practice-to-set links
+whose URL depth increases. An in-place back control marks `markViewDirection("back")`; changing the
+screen marker replays the return reveal even when the URL stays the same. Page
+headers and practice session/result surfaces share this mechanism. Home and set
+tabs crossfade their content through `ContentTransition`, retaining fixed actions.
+
+Grouped study tasks draw their separator on an independent straight pseudo-element,
+so large control corners cannot bend the divider into an arc.
 
 **Press.** One press vocabulary, applied by the stylesheet to every interactive
 role at once: the surface sinks a pixel and gives up two percent. Components do
