@@ -1,6 +1,6 @@
 /* Learning surfaces: forest ink, open space, and one inviting place to start. */
 .study-finish {
-  border-radius: 1rem 1rem 3rem 1rem;
+  border-radius: var(--radius-stage);
   background: var(--study-ink);
   color: var(--study-paper);
   padding: 2rem 1.5rem;
@@ -17,7 +17,7 @@
   align-items: center;
   gap: 0.8rem;
   padding: 0.8rem 0;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-control);
 }
 .study-task[href]:hover .study-task-label {
   color: var(--primary);

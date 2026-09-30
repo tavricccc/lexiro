@@ -51,16 +51,17 @@
     "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif,
     system-ui, sans-serif;
 
-  /* Compact controls, clear content groups, a softer learning canvas. */
-  --radius-control: 0.625rem;
-  --radius-card: 0.875rem;
-  --radius-stage: 1.25rem;
-  --radius-xs: 0.4375rem;
-  --radius-sm: 0.625rem;
+  /* Generous continuous corners: controls, grouped content, then sheets. */
+  --radius-control: 1.5rem;
+  --radius-card: 1.75rem;
+  --radius-stage: 2.25rem;
+  --radius-segment: 1.3125rem;
+  --radius-xs: 0.5rem;
+  --radius-sm: 1rem;
   --radius-md: var(--radius-control);
-  --radius-lg: 1rem;
+  --radius-lg: 1.5rem;
   --radius-xl: var(--radius-card);
-  --radius-2xl: 1.5rem;
+  --radius-2xl: 2rem;
   --radius-3xl: var(--radius-stage);
 }
 
@@ -544,7 +545,7 @@ textarea {
   width: 1.35rem;
   height: 1.35rem;
   flex: 0 0 auto;
-  border-radius: 0.35rem;
+  border-radius: 999px;
   background: var(--muted);
   color: var(--muted-foreground);
   font-size: 0.75rem;
@@ -1234,7 +1235,7 @@ textarea {
 }
 
 .app-mobile-nav [data-liquid-nav-index] {
-  border-radius: 0.75rem;
+  border-radius: 999px;
 }
 
 .app-mobile-nav [data-liquid-nav-index] > span:last-child {

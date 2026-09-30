@@ -81,11 +81,11 @@
   flex: 1;
   min-width: 0;
   min-height: 3rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-segment);
   font-size: 0.9375rem;
 }
 .workspace-tabs .t-tabs-pill {
-  border-radius: 0.5rem;
+  border-radius: var(--radius-segment);
   background: var(--card);
 }
 .workspace-actions {
@@ -251,7 +251,7 @@
     margin-inline: auto;
     padding: 0.625rem;
     border: 0;
-    border-radius: var(--radius-card);
+    border-radius: calc(var(--radius-control) + 0.625rem);
     box-shadow: var(--shadow-floating);
   }
   .app-shell .study-home .action-space,
