@@ -73,6 +73,7 @@ export function PracticeSessionView({
           <span className="tabular-nums">
             {t("practice.progress", { current: index + 1, total })}
           </span>
+          <div className="page-action-host hidden md:flex" data-page-actions-host />
         </div>
         <div
           aria-label={t("practice.progressLabel")}

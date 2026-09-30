@@ -147,6 +147,11 @@ export function FocusCanvas() {
                 ))}
               </ol>
             )}
+            {hasContent && (
+              <div className="desktop-recent hidden md:block">
+                <LearningRows />
+              </div>
+            )}
           </>
         )}
       </ContentTransition>

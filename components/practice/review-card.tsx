@@ -83,7 +83,7 @@ export function ReviewCard({
           </Button>
         </div>
         {!reduceMotion && (
-          <p className="mt-3 text-center text-xs text-muted-foreground">
+          <p className="practice-swipe-hint mt-3 text-center text-xs text-muted-foreground">
             {t("practice.swipeHint")}
           </p>
         )}

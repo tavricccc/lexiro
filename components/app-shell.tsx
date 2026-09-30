@@ -62,16 +62,18 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="app-shell min-h-[100dvh] bg-[var(--surface-stage)]"
       data-focus={practiceActive}
     >
-      {!practiceActive && (
-        <header className="workspace-navigation hidden md:flex">
-          <LiquidNav
-            className="workspace-navigation-links"
-            items={navItems}
-            pathname={navigationPathname}
-          />
+      <aside className="workspace-sidebar hidden md:flex">
+        <div className="workspace-brand">{t("app.name")}</div>
+        <LiquidNav
+          className="workspace-sidebar-links"
+          items={navItems}
+          pathname={navigationPathname}
+          vertical
+        />
+        <div className="workspace-sidebar-status">
           <SyncIndicator />
-        </header>
-      )}
+        </div>
+      </aside>
 
       <div className="workspace-body min-w-0">
         <main

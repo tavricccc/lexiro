@@ -42,6 +42,7 @@ export function PageHeader({
         {actions && (
           <div className="flex shrink-0 items-center gap-2">{actions}</div>
         )}
+        <div className="page-action-host hidden md:flex" data-page-actions-host />
       </div>
       {footer}
     </header>

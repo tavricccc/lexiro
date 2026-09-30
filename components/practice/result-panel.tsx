@@ -77,9 +77,17 @@ export function ResultPanel({
       data-motion-view="practice-result"
       className="mx-auto flex min-h-[70dvh] max-w-xl flex-col justify-center py-10 sm:py-14"
     >
+      <header className="page-header mb-4 hidden md:block">
+        <div className="page-title-row flex items-center gap-3">
+          <h1 className="type-page flex-1">{t("practice.resultTitle")}</h1>
+          <div className="page-action-host flex" data-page-actions-host />
+        </div>
+      </header>
       <div className="study-finish text-center">
         <Icons.success className="mx-auto mb-6 size-10" aria-hidden />
-        <h1 className="mb-5 type-page">{t("practice.resultTitle")}</h1>
+        <h1 className="mb-5 type-page md:hidden">
+          {t("practice.resultTitle")}
+        </h1>
         <p className="text-[3.5rem] font-medium leading-none tabular-nums">
           {correct}
           <span className="study-finish-total">/{total}</span>
