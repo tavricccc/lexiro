@@ -180,7 +180,15 @@
   border-radius: var(--radius-card);
 }
 .study-home .study-task + .study-task {
+  position: relative;
+}
+.study-home .study-task + .study-task::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
   border-top: 1px solid var(--rule);
+  pointer-events: none;
 }
 .study-home .study-guide {
   margin-block: 1rem 0;
