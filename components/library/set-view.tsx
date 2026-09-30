@@ -250,11 +250,11 @@ export function SetView({ setId }: { setId: string }) {
               {t(tab === "questions" ? "home.generateQuestions" : "setEditor.addWord")}
             </Link>
           </Button>
-          <Button asChild size="lg">
+          {(tab === "questions" ? questions.length > 0 : senseIds.length > 0) ? <Button asChild size="lg">
             <Link href={`/app/practice?set=${setId}${tab === "questions" ? "&track=questions" : "&track=fsrs"}`}>
               <Icons.start />{t("setDetail.start")}
             </Link>
-          </Button>
+          </Button> : <Button size="lg" disabled><Icons.start />{t("setDetail.start")}</Button>}
         </div>
       </StepActions>
 

@@ -591,7 +591,7 @@ export const zhTW = {
     dueCount: "{count} 個待複習",
     learnedCount: "{count} 個已開始學習",
     leechBadge: "難詞",
-    noQuestionsDescription: "用上面的「為這組字產生題目」建立第一批。",
+    noQuestionsDescription: "用下方的「用 AI 出題」建立第一批題目。",
     dueLabel: "待複習",
   },
   managed: {

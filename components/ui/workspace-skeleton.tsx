@@ -173,37 +173,14 @@ function HomePageSkeleton() {
   return (
     <div>
       <HeaderSkeleton root />
-      <section className="study-invitation min-h-72">
-        <div className="space-y-5">
-          <Skeleton className="h-10 w-3/4 bg-white/15" />
-          <Skeleton className="h-6 w-full bg-white/15" />
-          <Skeleton className="h-12 w-52 max-w-full bg-white/15" />
-        </div>
-        <Skeleton className="aspect-square w-full bg-white/10" />
+      <Skeleton className="mb-3 h-14 w-full rounded-lg" />
+      <section className="rounded-[var(--radius-card)] bg-card p-5 space-y-3">
+        <Skeleton className="h-6 w-48 max-w-full" />
+        <Skeleton className="h-4 w-3/4" />
       </section>
-      <div className="study-checklist">
+      <div className="mt-3 grid gap-2">
         <Skeleton className="h-20 w-full" />
         <Skeleton className="h-20 w-full" />
-      </div>
-      <div className="section-gap grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
-        <section>
-          <Skeleton className="h-6 w-28 rounded-md" />
-          <div className="rule-card mt-3 flex items-center gap-4 py-4">
-            <div className="min-w-0 flex-1 space-y-2">
-              <Skeleton className="h-4 w-2/5 rounded" />
-              <Skeleton className="h-3 w-1/3 rounded" />
-            </div>
-            <Skeleton className="h-9 w-20 rounded-lg" />
-          </div>
-        </section>
-        <section>
-          <Skeleton className="h-6 w-28 rounded-md" />
-          <div className="mt-3 rule-card rule-list">
-            {Array.from({ length: 3 }, (_, index) => (
-              <RowSkeleton kind="recent" key={index} />
-            ))}
-          </div>
-        </section>
       </div>
     </div>
   );
