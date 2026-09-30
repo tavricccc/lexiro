@@ -1,8 +1,8 @@
 # Lexiro design system
 
-Lexiro 是帶有個性與玩心的個人單字學習空間。學習入口用深墨綠、春綠行動按鈕
-與 Open Doodles 閱讀插畫發出邀請；真正閱讀、整理與作答的區域保留安靜的字級、
-留白與細線。不要把它做成永久側欄配一排統計卡的 SaaS 儀表板。
+Lexiro 是固定操作的個人單字學習工作區。森林綠標示主要行動與選取，中性色承載
+閱讀、整理與作答；大分頁切換內容，底部操作保留位置。插畫輔助空狀態，完成回饋
+保留墨綠與春綠。不要把它做成永久側欄配一排統計卡的 SaaS 儀表板。
 
 `DESIGN.md` 記錄可重用的視覺 token 與規範；本文件補充元件、互動和實作規則。
 
@@ -29,10 +29,9 @@ The pale end of the light ramp remains a visible sage (`--brand-50`), used for
 selected surfaces. Check selected navigation and progress tracks against the
 page ground in both themes.
 
-學習邀請與完成區使用 `--study-ink`、`--study-paper`、`--study-soft`；主要學習
-按鈕與閱讀插畫使用 `--study-lime`。這組顏色在深色模式保留相同值。
-一般工作區與水平導覽使用 `--surface-stage`，內容與群組維持中性色層次；
-`--surface-canvas` 不再是首頁邀請區的背景。
+完成區使用 `--study-ink`、`--study-paper`、`--study-soft` 與 `--study-lime` 勾選；
+這組顏色在深色模式保留相同值。首頁任務表面使用 `--card`，空狀態閱讀插畫與
+主要行動使用 `--primary`。工作區使用 `--surface-stage`，水平導覽使用 `--card`。
 
 Semantic tokens (`--primary`, `--muted`, `--border`, `--destructive`, …) all
 resolve to the ramp or to green-tinted neutrals; borders are green-tinted
@@ -80,6 +79,10 @@ a quieter aside, and `.type-label` for a control label. The gap between a
 heading and the sentence under it belongs to the pairing and is set by the
 scale, so no caller guesses it.
 
+工作區在 `workspace.css` 收斂字級：頁面標題為 1.375rem、行高 1.35；首頁任務
+標題為 1.25rem、行高 1.4；首頁說明為 0.875rem、行高 1.65、行長最多 45ch。
+共用分組與教材資料列繼續沿用既有 scale，不把首頁說明字級套到單字內容。
+
 Tracking is negative only where the type is large enough for the default spacing
 to look loose, and never enough to crowd Chinese, which is set on a square body
 and has no side bearings to give back. The classes live in `@layer components`,
@@ -91,18 +94,18 @@ is what made titles stop reading as titles.
 
 ## Radius encodes hierarchy
 
-The further out a surface sits, the softer it is:
+全站以大圓角保持一致：控制項、內容群組、外層表面依序放大。
 
 | Token             | Value     | Used for                            |
 | ----------------- | --------- | ----------------------------------- |
-| `--radius-control`| 0.625rem  | buttons, inputs, selects            |
-| `--radius-card`   | 0.875rem  | panels, inline forms, list surfaces |
-| `--radius-stage`  | 1.25rem   | shared stage surfaces              |
+| `--radius-control`| 1.5rem    | buttons, inputs, selects, tab rails |
+| `--radius-card`   | 1.75rem   | panels, inline forms, list surfaces |
+| `--radius-stage`  | 2.25rem   | sheets and completion surfaces     |
+| `--radius-segment`| 1.3125rem | tab selection inside a 3px rail     |
 
-控制項與群組使用上述緊湊尺度，避免一層層大圓角容器。學習邀請與完成區是刻意的
-例外：`1rem 1rem 3rem 1rem` 的不對稱外形；手機邀請區的右下角縮為 `2rem`。
-學習 CTA 使用 `0.75rem` 圓角。這些造型屬於 `app/styles/study.css` 的學習元件，
-不要擴散到每一個表單或資料列。
+按鈕、分頁、表單、列表與彈出層共用語意尺度，不另造小圓角。手機根頁操作 dock
+外角為 `calc(var(--radius-control) + 0.625rem)`（34px），對應 10px 內距與內部
+24px 按鈕。完成區使用對稱 stage 圓角；手機導覽維持膠囊。
 
 Tailwind's `rounded-md` / `rounded-xl` / `rounded-3xl` are mapped onto these, so
 existing utilities keep working while the scale stays deliberate.
@@ -134,12 +137,9 @@ every screen that asks for something uses it.
 - Rows are at least 52px tall and the whole row is the target, never the
   chevron or the label alone.
 
-**A choice between options is a list, never a row of buttons.** Two buttons
-side by side mean 取消 and 確認 — a decision and its escape — so that shape
-tells the reader the wrong thing about a choice. A row also has room for the
-number that decides it: what the tier costs, how much is due, how many
-questions are waiting. A screen that asks for one thing ends in one full-width
-primary button; everything else it can do is a `ListActionRow` under it.
+表單選項使用列表或 ListPicker；工作內容切換使用 LiquidTabs。底部雙欄按鈕是
+任務操作，不充當選項：次要在左、主要在右。只需一個操作的流程可使用全寬主要
+按鈕，其餘同層選項維持分組資料列。
 
 Type for rows is set by `.type-row` (17px, the platform's reading size),
 `.type-row-detail`, `.type-row-value`, `.type-list-header` and
@@ -257,28 +257,39 @@ retain their final scale without animation, so reduced motion never changes the
 reported value. Keyboard focus uses the primary colour and an inset outline in
 clipped list surfaces. Touch controls have a minimum 2.75rem target.
 
-`PageHeader` owns the sticky top material. Its pseudo-element extends to the
-viewport edges and fades a bounded backdrop blur into the page while the title
-and actions remain sharp; the shell does not draw a second blur layer above it.
+`PageHeader` owns the sticky top material. 工作區標題與分頁使用不透明的
+`--surface-stage`，關閉共用 header 的 backdrop blur，避免疊加模糊層。
 
-本輪學習介面的局部例外保留在 `app/styles/study.css`：學習 CTA 的背景色與位移
-使用 160ms transition，按下時下移 2px；進度條 transform 使用 180ms transition。
-兩者在 `prefers-reduced-motion` 下停用 transition。這不是新的全域 motion ladder。
+`app/styles/study.css` 的進度條 transform 使用 180ms transition，在
+`prefers-reduced-motion` 下停用。這不是新的全域 motion ladder；底部按鈕沿用共用動態。
 
 ## Workspace navigation and learning feedback
 
-桌機從 `48rem` 起使用水平導覽，導覽與內容共用 `--content-max` 的寬度基準。
-手機在主要頁面顯示底部導覽；進入子頁或專注練習時依現有路由規則收起。
-桌機專注練習也收起導覽。殼層不固定重複放置 logo，頁面標題直接說明目前任務。
+殼層高 `100dvh`、不捲動；`workspace-body` 是獨立內容捲動區。桌機從 `48rem`
+起使用高 `4rem` 的水平導覽，導覽與內容共用 `--content-max` 的寬度基準。
+手機主要頁面使用 Novae 同型的膠囊底部導覽，高 `3.875rem`，底距為
+`max(1.125rem, var(--safe-bottom))`。子頁與專注練習收起手機導覽，桌機專注練習也
+收起導覽。殼層不固定重複放置 logo，頁面標題直接說明目前任務。
 
-首頁邀請區桌機為文字與閱讀插畫兩欄；手機把小插畫放在標題旁，說明與主按鈕
-跨滿寬度。已有教材時，下方顯示單字與題目的每日進度；尚無教材時顯示三步引導。
+工作區 LiquidTabs 橫跨可用寬度、等分且至少高 `3rem`，並在標題下方保持位置。
+首頁切換今日任務與最近教材；教材頁切換單字、題目與工具。已有教材時顯示單字
+與題目的每日進度；尚無教材時顯示三步引導與小型閱讀插畫。
 進度以數字、進度條與提示文字共同表達，達標才把播放圖示換成勾選。
 完成畫面必須等學習紀錄儲存成功才呈現；儲存失敗要保留可重試的工作。
 
+StepActions 將操作列 portal 到 body，量測高度並在內容中預留空間。底部操作至少
+高 `3rem`，主要在右、次要在左；桌機兩欄比例 `1:1.3`、間距 `0.75rem`，手機
+間距 `0.5rem`。手機根頁操作列位於導覽上方 `0.75rem`，子頁位於安全底邊。
+輸入聚焦時隱藏手機導覽與其上方操作列，避免與軟鍵盤競爭。
+
+返回控制是 44px 箭頭按鈕，只顯示圖示，保留 `aria-label` 提供完整返回目的地。
+
 閱讀插畫沿用 `public/illustrations/open-doodles-reading.svg`，以 CSS mask 套用
-春綠。保留原 SVG 來源紀錄；這次沒有新增 raster 素材。插畫是輔助內容，使用
+主綠。保留原 SVG 來源紀錄；這次沒有新增 raster 素材。插畫是輔助內容，使用
 `aria-hidden`，不能取代操作標籤或狀態文字。
+
+本機驗證範圍涵蓋新增與儲存教材、分頁切換、進入練習，以及手機／桌機／手機深色
+畫面。既有 263 tests 通過；真實 Firebase 同步與付費 AI 執行不在本機驗證範圍。
 
 ## Components
 

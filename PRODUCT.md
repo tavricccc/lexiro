@@ -49,19 +49,22 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 
 ## Interface Direction
 
-- The selected composition is **Focus Canvas / 專注畫布**.
-- Today opens with a forest-ink learning invitation, a spring-green primary action, and the existing Open Doodles reading illustration. It presents one recommended next action, followed by daily review and question progress when material exists, or a three-step introduction when it does not.
-- Resumable work and recent sets appear below as calm, borderless rows rather than nested dashboard cards.
-- Desktop uses compact horizontal navigation and mobile uses bottom navigation, with the same destinations, capabilities, labels, and task order on both. The workspace does not repeat the logo in a permanent corner; identity comes from typography, color, and illustration. Focused practice hides the workspace navigation.
-- The workspace feels personal and playful without resembling a SaaS dashboard. Quiet forms use compact control corners and grouped rows; the learning invitation and completion surface carry the expressive shape and color.
+- The selected direction is **固定操作的學習工作區**: fewer scrolling steps, large controls, and tabs that change content while task actions keep their place.
+- Today separates daily tasks and recent material into tabs. A compact neutral task surface presents the next study action and daily review/question progress; an empty library presents the three-step introduction with the existing Open Doodles reading illustration.
+- Saved sets separate words, questions, and tools into full-width tabs. Main task controls stay at the bottom, with the primary action on the right and the secondary action on the left.
+- Desktop uses a 64px horizontal navigation, an independently scrolling content region, and a bottom action strip. Mobile uses the Novae-style 62px bottom navigation capsule and a separate action surface above it. Both keep the same destinations, capabilities, labels, and task order. The workspace does not repeat the logo in a permanent corner. Focused practice hides navigation; mobile child pages hide the bottom navigation.
+- Forest-green selection and action controls, mist-white content, compact title bars, and generous shared corners keep the workspace personal and directly operable. Buttons, tabs, forms, lists, and overlays share the larger radius scale. Ink-green and spring-green surfaces remain in completion feedback.
+- Back controls show only an arrow; their accessible labels retain the return destination.
 - Progress pairs counts and bars with text; reaching a goal changes the play mark to a check. Completion feedback must follow successful storage rather than an optimistic visual result.
-- Open Doodles may accompany the learning invitation, loading, empty, and completion states without competing with learning content. Highlights uses the same forest-green family for semantic emphasis. This revision retains the committed SVG assets and adds no raster artwork.
+- Open Doodles may accompany empty, loading, and completion states without competing with learning content. Highlights uses the same forest-green family for semantic emphasis. This revision retains the committed SVG assets and adds no raster artwork.
 
 ## Evidence on Hand
 
 - Confirmed product and data decisions: `docs/product-decisions.md`.
 - Visual tokens and reusable visual rules: `DESIGN.md`; component and icon implementation rules: `docs/design-system.md`.
 - Current implementation and tests document the working capability set.
+- Local verification covers creating and saving material, switching tabs, and entering practice. The existing 263 tests pass; real Firebase synchronization and paid AI execution were not verified.
+- Final local screenshots cover populated mobile and desktop Today, mobile Library, mobile saved set, and dark mobile Today under `.impeccable/review/`.
 - Current icon assets: `public/icons/lexiro.png` and `public/icons/apple-touch-icon.png`.
 - Existing generated vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.
 - No testimonials, public customer claims, pricing, or benchmark evidence is available and none may be fabricated.

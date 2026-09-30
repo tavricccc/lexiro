@@ -1,9 +1,11 @@
 ---
 name: Lexiro
-description: 帶有個性與玩心的個人單字學習空間
+description: 導覽與操作位置穩定的個人單字學習工作區
 colors:
   primary: "#2f5d4a"
   primary-dark: "#8ecdab"
+  primary-foreground: "#f6faf7"
+  primary-foreground-dark: "#0c1712"
   background: "#fbfcfb"
   background-dark: "#0f1512"
   foreground: "#121a16"
@@ -21,22 +23,25 @@ colors:
   study-soft: "#c6dfd1"
   study-lime: "#ccf3a9"
 typography:
-  display:
-    fontFamily: '"HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
-    fontSize: "2.5rem"
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: "-0.025em"
   page:
-    fontSize: "1.75rem"
+    fontFamily: '"HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "1.375rem"
     fontWeight: 700
-    lineHeight: 1.2
+    lineHeight: 1.35
     letterSpacing: "-0.01em"
   section:
+    fontSize: "1.25rem"
+    fontWeight: 700
+    lineHeight: 1.4
+    letterSpacing: "-0.01em"
+  group:
     fontSize: "1.125rem"
     fontWeight: 500
     lineHeight: 1.45
     letterSpacing: "-0.005em"
+  body:
+    fontSize: "0.875rem"
+    lineHeight: 1.65
   lead:
     fontSize: "0.9375rem"
     lineHeight: 1.65
@@ -48,11 +53,13 @@ typography:
     fontSize: "0.8125rem"
     lineHeight: 1.6
 rounded:
-  control: "0.625rem"
-  card: "0.875rem"
-  stage: "1.25rem"
-  study-action: "0.75rem"
-  study-surface: "1rem 1rem 3rem 1rem"
+  control: "1.5rem"
+  card: "1.75rem"
+  stage: "2.25rem"
+  tab: "1.3125rem"
+  navigation: "9999px"
+  study-surface: "2.25rem"
+  action-dock: "2.125rem"
 spacing:
   page-gutter: "clamp(1rem, 2vw, 1.5rem)"
   page-header-gap: "0.5rem"
@@ -60,15 +67,27 @@ spacing:
   section-gap: "1.5rem"
   block-gap: "1rem"
   row-gutter: "1.25rem"
+  action-gap: "0.75rem"
+  navigation-bottom: "max(1.125rem, var(--safe-bottom))"
 components:
-  study-action:
-    backgroundColor: "{colors.study-lime}"
-    textColor: "{colors.study-ink}"
-    rounded: "{rounded.study-action}"
-    padding: "0.8rem 1.25rem"
-  study-action-hover:
-    backgroundColor: "{colors.study-paper}"
-    textColor: "{colors.study-ink}"
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.primary-foreground}"
+    rounded: "{rounded.control}"
+    height: "3rem"
+  button-secondary:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.control}"
+    height: "3rem"
+  workspace-tab:
+    backgroundColor: "{colors.card}"
+    rounded: "{rounded.tab}"
+    height: "3rem"
+  mobile-navigation:
+    backgroundColor: "{colors.card}"
+    rounded: "{rounded.navigation}"
+    height: "3.875rem"
   study-surface:
     backgroundColor: "{colors.study-ink}"
     textColor: "{colors.study-paper}"
@@ -79,26 +98,27 @@ components:
 
 ## Overview
 
-**Creative North Star:「個人的單字遊樂場」**
+**Creative North Star: "固定操作的學習工作區"**
 
-延續 HarmonyOS Sans TC、墨綠與 Open Doodles，把學習入口做得有個性、願意讓人回來。
-深色邀請、明亮行動與手繪人物提供活力；閱讀、設定與整理教材仍以清楚的文字與留白為主。
+延續 HarmonyOS Sans TC、森林綠與既有插畫，讓教材、分頁與主要操作直接可見。
+霧白內容、大圓角、精簡標題與固定底部操作承載日常學習；內容可以捲動，導覽與前進操作保持位置。
 工作區以實際任務建立辨識，不靠永久側欄或每頁左上角重複 logo。
 
 **Key Characteristics:**
 
-- 墨綠學習表面與春綠行動形成清楚主次。
-- 安靜的分組資料列，搭配少量有表情的不對稱學習容器。
+- 森林綠標示選取與主要操作，中性色承載教材。
+- 大分頁切換內容，主要操作固定在右、次要操作在左。
+- 安靜的分組資料列，插畫只輔助空狀態與既有回饋。
 - 進度與完成回饋對應已儲存的學習成果。
 
 ## Colors
 
-主色來自帶灰的森林綠；中性色略帶綠，學習區用更深的墨綠與春綠呈現精神。
+主色來自帶灰的森林綠；中性色略帶綠，完成回饋延續墨綠與春綠。
 
 ### Primary
 
-`primary` 用於一般行動、選取與進度；`study-ink` 是學習邀請與完成區的底色，
-`study-lime` 用於其主要行動與 Open Doodles 閱讀插畫。學習區文字分為
+`primary` 用於主要行動、選取、進度與首頁空狀態插畫；`study-ink` 是完成區的底色，
+`study-lime` 用於完成區勾選。完成區文字分為
 `study-paper` 與較安靜的 `study-soft`。
 
 ### Neutral
@@ -112,24 +132,24 @@ components:
 
 ## Typography
 
-所有介面、中英文教材與數字共用 display 中的字體堆疊，以字級、字重和行長分工。
-page 對應頁面標題，section 是段落標題，lead 為說明，row 為列表內容，hint 為輔助文字。
-lead 行長最多 56ch；不要為同一層標題另造字級。
-
-display 用於學習邀請；手機改為 1.875rem，保留相同字重和行高。首頁的特殊標題
-尺度不應套在密集表單。中文字距只輕微收緊，避免擠壓字形。
+所有介面、中英文教材與數字共用 page 中的字體堆疊，以字級、字重和行長分工。
+page 對應工作區頁面標題，section 是首頁任務標題，group 保留既有分組標題；body
+是首頁說明，lead 為共用標題說明，row 為列表內容，hint 為輔助文字。
+首頁說明行長最多 45ch，共用 lead 最多 56ch。中文字距只輕微收緊，避免擠壓字形。
 
 ## Layout
 
-內容寬度基準為 `--content-max`（64rem）。桌機從 48rem 起使用水平導覽；手機在
-主要頁面使用底部導覽，並預留安全區及內容底部空間。專注練習收起導覽。各尺寸保留
-相同目的地與順序，殼層不重複放 logo。
+內容寬度基準為 `--content-max`（64rem）。殼層高 100dvh，內容區單獨垂直捲動。
+桌機從 48rem 起使用高 64px 的水平導覽與底部操作列。手機主要頁面使用高 62px
+的底部膠囊導覽，距底為 18px 與安全區的較大值；操作列在導覽上方相隔 12px。
+子頁收起手機導覽，專注練習收起兩種導覽。各尺寸保留相同目的地與順序。
 
 frontmatter 的間距是手機基準；48rem 起，標題、內容、區段與內部區塊間距依序為
 0.75rem、1.5rem、2rem、1.5rem。手機頁邊與資料列 gutter 為 1rem。
 
-首頁的雙欄邀請、手機標題旁小插畫與全寬行動，以及下方進度或三步引導，依
-`.impeccable/surfaces/components-home-focus-canvas-tsx.md` 維護，毋須套到所有頁面。
+**The 穩定操作 Rule.** 用分頁切換工作內容；底部主要操作在右、次要操作在左，
+切換分頁只更新操作內容，保留操作區位置。StepActions 預留對應空間，不遮住末尾內容。
+首頁與教材頁的具體內容依 `.impeccable/surfaces/app-workspace.md` 維護。
 
 ## Elevation & Depth
 
@@ -139,16 +159,18 @@ floating 陰影，完整值收在 sidecar。細線由 `--hairline` 控制，高�
 
 ## Shapes
 
-控制項、群組、外層表面使用 control、card、stage 尺度。學習邀請與完成區使用
-study-surface 的不對稱輪廓；手機邀請區的右下角為 2rem。study-action 專供春綠
-學習按鈕。這些特殊形狀不擴散到每個設定列。
+控制項、群組、外層表面使用 control、card、stage 的大圓角尺度。分頁外軌使用
+control，內選取面使用 tab，兩者差值對應 3px 內距；手機導覽使用 navigation
+膠囊。根頁操作 dock 使用 action-dock，與內部 control 按鈕差值對應 10px 內距。
+首頁任務與列表使用 card，完成區使用對稱的 study-surface。
 
 ## Components
 
 ### Buttons
 
-一般按鈕使用共用元件與語意色。春綠學習行動至少高 3.25rem，文字與前進圖示分居
-兩側；hover 轉為 study-paper，鍵盤焦點以清楚外框呈現。手機橫跨邀請區可用寬度。
+底部行動使用共用 Button 的大尺寸，至少高 48px；主要使用 primary，次要使用
+outline。桌機操作兩欄比例為 1:1.3，欄距 12px；手機欄距 8px，文字可換行。
+Hover、停用與鍵盤焦點沿用共用語意 token 與元件。
 
 ### Lists and Fields
 
@@ -160,6 +182,12 @@ study-surface 的不對稱輪廓；手機邀請區的右下角為 2rem。study-a
 
 水平及底部導覽共用 LiquidNav 的選取表面與目的地；新頁提交後才切換目前項目。
 手機子頁與專注練習的顯示規則依 AppShell，不另造常駐導航。
+返回控制使用 44px 箭頭按鈕，只顯示圖示，返回標籤保留在 aria-label。
+
+### Tabs
+
+工作區分頁橫跨可用寬度、等分且至少高 48px，選取面用 card，底軌用 surface-inset。
+首頁切換今日任務與最近教材；教材頁切換單字、題目與工具，避免把工具堆在內容下方。
 
 ### Learning feedback
 
@@ -167,8 +195,8 @@ study-surface 的不對稱輪廓；手機邀請區的右下角為 2rem。study-a
 完成區延續墨綠與春綠，只有儲存成功才能宣布完成。動畫輔助狀態辨識，沒有裝飾性
 入場等待；減少動態效果設定保留最終數值與狀態。
 
-共用動態使用 generated motion ladder；學習 CTA 的 160ms 與進度條的 180ms
-是本輪局部例外，詳見 `docs/design-system.md` 與 sidecar，不作為新的全域尺度。
+共用動態使用 generated motion ladder；進度條的 180ms 是局部例外，詳見
+`docs/design-system.md` 與 sidecar，不作為新的全域尺度。
 
 插畫沿用既有 Open Doodles SVG 與來源紀錄；閱讀人物以 CSS mask 套色並隱藏於
 輔助技術。這次沒有新增點陣圖片。Highlights 維持同一綠色系，不能妨礙閱讀或作答。
@@ -184,5 +212,6 @@ study-surface 的不對稱輪廓；手機邀請區的右下角為 2rem。study-a
 ### Don't:
 
 - **Don't** 回到永久 SaaS 側欄或每頁重複 logo 的版型。
-- **Don't** 把學習邀請的特殊輪廓與強色套滿密集表單。
+- **Don't** 把完成區的強色套滿密集表單。
+- **Don't** 把前進操作塞到捲動內容末尾或在分頁間搬動操作區。
 - **Don't** 在資料尚未儲存成功前播放完成回饋。

@@ -1,16 +1,40 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-28T14:38:27.2164462+08:00",
+  "generatedAt": "2026-09-30T05:50:34.813Z",
   "title": "Design System: Lexiro",
   "extensions": {
     "colorMeta": {
       "primary": {
         "role": "primary",
-        "displayName": "森林綠"
+        "displayName": "森林綠",
+        "tonalRamp": [
+          "#172b24",
+          "#1f3a30",
+          "#26493b",
+          "#2f5d4a",
+          "#427a5b",
+          "#649879",
+          "#94b9a4",
+          "#b0cfbc",
+          "#d2e4d9",
+          "#e7f0ea"
+        ]
       },
       "primary-dark": {
         "role": "primary",
-        "displayName": "深色模式主綠"
+        "displayName": "深色模式主綠",
+        "tonalRamp": [
+          "#17291f",
+          "#1e392e",
+          "#27493a",
+          "#2f5d4a",
+          "#427a5b",
+          "#649879",
+          "#8ecdab",
+          "#a9dbc1",
+          "#c7e8d6",
+          "#e4f4ec"
+        ]
       },
       "study-ink": {
         "role": "primary",
@@ -38,29 +62,33 @@
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "學習邀請",
-        "purpose": "桌機邀請標題；手機縮為 1.875rem。全站沿用相同字體堆疊。"
-      },
       "page": {
-        "displayName": "頁面標題",
-        "purpose": "PageHeader 與同層頁面標題。"
+        "displayName": "工作區頁面標題",
+        "purpose": "AppShell 內的 PageHeader；所有介面與教材共用其字體堆疊。"
       },
       "section": {
-        "displayName": "區段標題",
-        "purpose": "頁面內的主要段落。"
+        "displayName": "首頁任務標題",
+        "purpose": "首頁精簡任務表面。"
+      },
+      "group": {
+        "displayName": "分組標題",
+        "purpose": "既有共用 type-section。"
+      },
+      "body": {
+        "displayName": "首頁說明",
+        "purpose": "最大行長 45ch。"
       },
       "lead": {
-        "displayName": "說明文字",
-        "purpose": "標題下說明，最大行長 56ch。"
+        "displayName": "共用說明",
+        "purpose": "共用標題下說明，最大行長 56ch。"
       },
       "row": {
         "displayName": "資料列",
-        "purpose": "分組列表的主要內容。"
+        "purpose": "分組列表主要內容。"
       },
       "hint": {
         "displayName": "輔助說明",
-        "purpose": "較安靜的提示，最大行長 60ch。"
+        "purpose": "較安靜的提示。"
       }
     },
     "shadows": [
@@ -93,6 +121,11 @@
         "name": "shadow-floating-dark",
         "value": "0 18px 48px rgb(0 0 0 / 42%), 0 3px 10px rgb(0 0 0 / 30%), 0 0 0 1px rgb(190 230 210 / 8%)",
         "purpose": "深色模式彈出層。"
+      },
+      {
+        "name": "workspace-action-strip",
+        "value": "0 -4px 20px rgb(23 43 36 / 3%)",
+        "purpose": "桌機底部操作列；手機根頁 dock 使用共用 floating 陰影。"
       }
     ],
     "motion": [
@@ -122,11 +155,6 @@
         "purpose": "共用到達與完成曲線。"
       },
       {
-        "name": "study-action-transition",
-        "value": "160ms",
-        "purpose": "study.css 局部例外：CTA 背景與位移，不新增全域 token。"
-      },
-      {
         "name": "study-progress-transition",
         "value": "180ms",
         "purpose": "study.css 局部例外：進度條 transform，不新增全域 token。"
@@ -136,65 +164,91 @@
       {
         "name": "workspace-desktop",
         "value": "48rem"
-      },
-      {
-        "name": "study-guide-columns",
-        "value": "64rem"
       }
     ]
   },
   "components": [
     {
-      "name": "春綠學習行動",
+      "name": "底部主要操作",
       "kind": "button",
-      "refersTo": "study-action",
-      "description": "墨綠邀請中的主要行動；手機跨滿可用寬度。",
-      "html": "<button class=\"ds-study-action\">開始複習<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></button>",
-      "css": ".ds-study-action { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: space-between; gap: 2rem; padding: .8rem 1.25rem; border: 0; border-radius: .75rem; background: var(--study-lime); color: var(--study-ink); font-family: var(--font-sans); font-size: 1rem; font-weight: 700; cursor: pointer; transition: background-color 160ms, transform 160ms; } .ds-study-action:hover { background: var(--study-paper); } .ds-study-action:active { transform: translateY(2px); } .ds-study-action:focus-visible { outline: 3px solid var(--study-paper); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-study-action { transition: none; } }"
+      "refersTo": "button-primary",
+      "description": "固定操作區右側，至少48px；使用一般品牌主綠。",
+      "html": "<button class=\"ds-primary\">開始背單字</button>",
+      "css": ".ds-primary{min-height:3rem;border-radius:var(--radius-control);padding:0 .75rem;font-size:.875rem;font-family:var(--font-sans);font-weight:500;transition:background-color var(--motion-control),transform var(--motion-control);border:0;background:var(--primary);color:var(--primary-foreground);box-shadow:var(--shadow-control)}.ds-primary:hover{background:var(--primary-hover)}.ds-primary:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-primary:active{transform:translateY(1px) scale(.98)}.ds-primary:disabled{opacity:.45;box-shadow:none}"
+    },
+    {
+      "name": "底部次要操作",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "固定操作區左側，outline表面。",
+      "html": "<button class=\"ds-secondary\">新增單字</button>",
+      "css": ".ds-secondary{min-height:3rem;border-radius:var(--radius-control);padding:0 .75rem;font-size:.875rem;font-family:var(--font-sans);font-weight:500;transition:background-color var(--motion-control),transform var(--motion-control);border:1px solid var(--input);background:var(--card);color:var(--foreground);box-shadow:var(--shadow-control)}.ds-secondary:hover{background:var(--accent);color:var(--accent-foreground)}.ds-secondary:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-secondary:active{transform:translateY(1px) scale(.98)}"
+    },
+    {
+      "name": "工作區分頁",
+      "kind": "custom",
+      "refersTo": "workspace-tab",
+      "description": "全寬等分48px分頁，24px外軌與21px內選取面。",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"教材\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">單字</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">題目</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">工具</button></div>",
+      "css": ".ds-tabs{display:flex;gap:2px;padding:3px;border-radius:var(--radius-control);background:var(--surface-inset)}.ds-tab{flex:1;min-width:0;min-height:3rem;border:0;border-radius:var(--radius-segment);background:transparent;color:var(--muted-foreground);font-size:.9375rem;font-family:var(--font-sans);font-weight:500;}.ds-tab[aria-selected=\"true\"]{background:var(--card);color:var(--foreground);box-shadow:var(--shadow-control)}.ds-tab:hover{color:var(--foreground)}.ds-tab:focus-visible{outline:2px solid var(--primary);outline-offset:2px}"
+    },
+    {
+      "name": "手機膠囊導覽",
+      "kind": "nav",
+      "refersTo": "mobile-navigation",
+      "description": "62px膠囊，底距18px與safe-area較大值；此示意只展示選取。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"主要導覽\"><a href=\"#today\" aria-current=\"page\">今天</a><a href=\"#library\">我的單字</a><a href=\"#progress\">進度</a><a href=\"#me\">我的</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;height:3.875rem;padding:0 .75rem;border-radius:9999px;background:var(--card);box-shadow:var(--shadow-floating);font-family:var(--font-sans);font-weight:500;}.ds-nav a{display:flex;flex:1;align-items:center;justify-content:center;min-height:3rem;border-radius:9999px;font-size:.6875rem;color:var(--muted-foreground);text-decoration:none}.ds-nav a[aria-current]{background:var(--brand-100);color:var(--brand-700);box-shadow:var(--shadow-control)}.ds-nav a:hover{background:var(--surface-hover);color:var(--foreground)}.ds-nav a:focus-visible{outline:2px solid var(--primary);outline-offset:2px}"
+    },
+    {
+      "name": "文字欄位",
+      "kind": "input",
+      "description": "共用大圓角、聚焦邊線與柔和外光。",
+      "html": "<label class=\"ds-field\">搜尋目前位置<input aria-label=\"搜尋目前位置\" placeholder=\"搜尋目前位置\"></label>",
+      "css": ".ds-field{display:grid;gap:.5rem;color:var(--muted-foreground);font-size:.875rem;font-family:var(--font-sans);font-weight:500;}.ds-field input{min-height:2.75rem;border:1px solid var(--input);border-radius:var(--radius-control);background:var(--card);color:var(--foreground);padding:0 1rem;font-family:var(--font-sans)}.ds-field input:hover{border-color:var(--primary)}.ds-field input:focus-visible{outline:none;border-color:var(--brand-600);box-shadow:0 0 0 .1875rem color-mix(in srgb,var(--brand-600) 16%,transparent)}"
+    },
+    {
+      "name": "分組資料列",
+      "kind": "card",
+      "description": "28px外角、細線內分隔、無陰影。",
+      "html": "<section class=\"ds-card\"><div>日常英文</div><div>1 個詞義</div></section>",
+      "css": ".ds-card{border:var(--hairline) solid var(--rule);border-radius:var(--radius-card);background:var(--card);color:var(--foreground);padding-inline:var(--row-gutter);font-family:var(--font-sans)}.ds-card>div{display:flex;align-items:center;min-height:52px}.ds-card>div+div{border-top:var(--hairline) solid var(--rule)}"
     },
     {
       "name": "學習完成表面",
       "kind": "custom",
       "refersTo": "study-surface",
-      "description": "儲存成功後，使用墨綠表面、春綠勾選與真實完成數量。",
-      "html": "<section class=\"ds-study-finish\" aria-label=\"完成狀態示意\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg><h2>本次學習已完成</h2><p class=\"ds-study-total\">完成數量依已儲存的紀錄顯示</p></section>",
-      "css": ".ds-study-finish { border-radius: 1rem 1rem 3rem 1rem; background: var(--study-ink); color: var(--study-paper); padding: 2rem 1.5rem; font-family: var(--font-sans); } .ds-study-finish > svg { color: var(--study-lime); } .ds-study-total { color: var(--study-soft); }"
+      "description": "儲存成功後呈現墨綠表面與真實完成數量；對稱36px圓角。",
+      "html": "<section class=\"ds-finish\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg><h2>本次學習已完成</h2><p>完成數量依已儲存的紀錄顯示</p></section>",
+      "css": ".ds-finish{border-radius:var(--radius-stage);background:var(--study-ink);color:var(--study-paper);padding:2rem 1.5rem;font-family:var(--font-sans)}.ds-finish>svg{color:var(--study-lime)}.ds-finish>p{color:var(--study-soft)}"
     }
   ],
   "narrative": {
-    "northStar": "個人的單字遊樂場",
-    "overview": "延續 HarmonyOS Sans TC、墨綠與 Open Doodles，讓學習入口有個性且讓人願意回來。深色邀請、明亮行動與手繪人物提供活力；閱讀、設定與整理教材以清楚的文字與留白為主。工作區以實際任務建立辨識。",
+    "northStar": "固定操作的學習工作區",
+    "overview": "延續 HarmonyOS Sans TC、森林綠與既有插畫，讓教材、分頁與主要操作直接可見。\n霧白內容、大圓角、精簡標題與固定底部操作承載日常學習；內容可以捲動，導覽與前進操作保持位置。\n工作區以實際任務建立辨識，不靠永久側欄或每頁左上角重複 logo。",
     "keyCharacteristics": [
-      "墨綠學習表面與春綠行動形成清楚主次。",
-      "安靜的分組資料列，搭配少量不對稱學習容器。",
+      "森林綠標示選取與主要操作，中性色承載教材。",
+      "大分頁切換內容，主要操作固定在右、次要操作在左。",
+      "安靜的分組資料列，插畫只輔助空狀態與既有回饋。",
       "進度與完成回饋對應已儲存的學習成果。"
     ],
     "rules": [
       {
-        "name": "語意色共用",
-        "body": "元件使用 CSS 變數，由亮暗主題覆寫；study 色組維持相同值。",
-        "section": "colors"
-      },
-      {
-        "name": "單一字體",
-        "body": "所有介面、教材與數字共用 HarmonyOS Sans TC 字體堆疊。",
-        "section": "typography"
-      },
-      {
-        "name": "安靜分層",
-        "body": "分組列表沒有陰影，以留白、色面與細線呈現結構。",
-        "section": "elevation"
+        "name": "穩定操作",
+        "body": "用分頁切換工作內容；底部主要操作在右、次要操作在左，切換分頁只更新操作內容，保留操作區位置。StepActions 預留對應空間，不遮住末尾內容。",
+        "section": "layout"
       }
     ],
     "dos": [
-      "使用既有 token、共用字級與元件。",
-      "用文字、數值與圖示共同表達進度和錯誤。",
-      "確認手機、桌機、深色模式、鍵盤焦點與減少動態效果。"
+      "**Do** 用既有 token、共用字級與元件保持一致，讓學習內容成為畫面主角。",
+      "**Do** 用文字、數值與圖示共同表達進度和錯誤，保留鍵盤焦點與減少動態效果。",
+      "**Do** 在手機、桌機和深色模式確認主要行動與狀態可讀。"
     ],
     "donts": [
-      "不要回到永久 SaaS 側欄或每頁重複 logo。",
-      "不要把學習邀請的特殊輪廓與強色套滿密集表單。",
-      "不要在資料尚未儲存成功前呈現完成回饋。"
+      "**Don't** 回到永久 SaaS 側欄或每頁重複 logo 的版型。",
+      "**Don't** 把完成區的強色套滿密集表單。",
+      "**Don't** 把前進操作塞到捲動內容末尾或在分頁間搬動操作區。",
+      "**Don't** 在資料尚未儲存成功前播放完成回饋。"
     ]
   }
 }
