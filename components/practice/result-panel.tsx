@@ -20,6 +20,7 @@ export function ResultPanel({
   skipped,
   marked,
   wrongContent,
+  mode,
   onRetry,
   onRetryMarked,
 }: {
@@ -28,6 +29,7 @@ export function ResultPanel({
   skipped: number;
   marked: number;
   wrongContent: string;
+  mode: "cards" | "questions" | "mixed";
   onRetry: () => void;
   onRetryMarked?: () => void;
 }) {
@@ -75,7 +77,7 @@ export function ResultPanel({
   return (
     <div
       data-motion-view="practice-result"
-      className="mx-auto flex min-h-[70dvh] max-w-xl flex-col justify-center py-10 sm:py-14"
+      className="mx-auto flex w-full max-w-xl flex-col py-6 sm:py-8"
     >
       <header className="page-header mb-4 hidden md:block">
         <div className="page-title-row flex items-center gap-3">
@@ -105,31 +107,6 @@ export function ResultPanel({
         </dl>
       </div>
 
-      <StepActions>
-        <Button asChild className="w-full" size="lg">
-          <Link href="/app">
-            <Icons.review />
-            {t("practice.backHome")}
-          </Link>
-        </Button>
-        {wrongContent && (
-          <Button className="w-full" variant="secondary" onClick={onRetry}>
-            <Icons.retry />
-            {t("practice.retryWrong")}
-          </Button>
-        )}
-        {onRetryMarked && (
-          <Button
-            className="w-full"
-            variant="secondary"
-            onClick={onRetryMarked}
-          >
-            <Icons.mark />
-            {t("practice.retryMarked")}
-          </Button>
-        )}
-      </StepActions>
-
       {wrongContent && !explanation && (
         <div className="mt-6 flex flex-col items-center gap-2">
           {uid ? (
@@ -139,7 +116,15 @@ export function ResultPanel({
               onClick={() => void explain()}
             >
               <Icons.generate />
-              {t(busy ? "practice.explaining" : "practice.explainWrong")}
+              {t(
+                busy
+                  ? "practice.explaining"
+                  : mode === "cards"
+                    ? "practice.introduceWords"
+                    : mode === "mixed"
+                      ? "practice.explainLearning"
+                      : "practice.explainWrong",
+              )}
               <CreditBadge
                 label={t("managed.expectedPoints", { points: explanationCost })}
                 value={t("managed.expectedShort", { points: explanationCost })}
@@ -162,10 +147,49 @@ export function ResultPanel({
       )}
       {explanation && (
         <section className="section-gap rule-t pt-6">
-          <h2 className="type-section">{t("practice.explanationTitle")}</h2>
+          <h2 className="type-section">
+            {t(
+              mode === "cards"
+                ? "practice.wordIntroductionTitle"
+                : mode === "mixed"
+                  ? "practice.learningExplanationTitle"
+                  : "practice.explanationTitle",
+            )}
+          </h2>
           <Markdown className="mt-4 text-sm" content={explanation} />
         </section>
       )}
+
+      <StepActions>
+        <Button asChild className="w-full" size="lg">
+          <Link href="/app">
+            <Icons.review />
+            {t("practice.backHome")}
+          </Link>
+        </Button>
+        {wrongContent && (
+          <Button className="w-full" variant="secondary" onClick={onRetry}>
+            <Icons.retry />
+            {t(
+              mode === "cards"
+                ? "practice.retryWords"
+                : mode === "mixed"
+                  ? "practice.retryLearning"
+                  : "practice.retryWrong",
+            )}
+          </Button>
+        )}
+        {onRetryMarked && (
+          <Button
+            className="w-full"
+            variant="secondary"
+            onClick={onRetryMarked}
+          >
+            <Icons.mark />
+            {t("practice.retryMarked")}
+          </Button>
+        )}
+      </StepActions>
     </div>
   );
 }

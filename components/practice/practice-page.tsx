@@ -352,6 +352,13 @@ export function PracticePage({
         skipped={skipped.length}
         marked={marked.length}
         wrongContent={wrongContent}
+        mode={
+          activeEntries.every((entry) => entry.kind === "card")
+            ? "cards"
+            : activeEntries.every((entry) => entry.kind === "question")
+              ? "questions"
+              : "mixed"
+        }
         onRetry={() => actions.retry(wrong)}
         onRetryMarked={marked.length ? () => actions.retry(marked) : undefined}
       />
