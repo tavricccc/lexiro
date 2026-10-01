@@ -358,6 +358,11 @@ export const zhTW = {
     formatReady: "{count} 題",
     taskFlashcard: "單字卡",
     taskFlashcardHint: "看英文想中文，翻開後自己評分。",
+    taskMeaning: "英選中",
+    taskMeaningHint:
+      "看英文，從四個中文意思選出正解。直接使用你的單字，不需 AI。",
+    meaningPoolHint:
+      "英選中需要至少四個可區分的中文意思；其他選項會從你的單字庫挑選。",
     taskSpelling: "拼字",
     taskSpellingHint: "看中文把英文拼出來，記得更牢。",
     leechOnlyHint: "只挑你錯過很多次的字。",

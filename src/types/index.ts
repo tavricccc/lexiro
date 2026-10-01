@@ -1,18 +1,18 @@
-export type { Brand } from './brand'
+export type { Brand } from "./brand";
 export type {
   BackupPayload,
   FullBackupPayload,
   ImportResult,
   SetSharePayload,
   SharedSet,
-} from './backup'
+} from "./backup";
 export type {
   CloudRecordType,
   FirestoreLibraryMetaDoc,
   FirestoreProgressDoc,
   FirestoreRecordDoc,
   FirestoreStatsDoc,
-} from './cloud'
+} from "./cloud";
 export type {
   CardProgress,
   DailyActivity,
@@ -25,7 +25,7 @@ export type {
   ReviewEntry,
   ReviewRating,
   SyncStatus,
-} from './learning'
+} from "./learning";
 export type {
   LibraryQuestion,
   LibraryQuestionBase,
@@ -49,7 +49,7 @@ export type {
   WordEntry,
   WordKey,
   WordSense,
-} from './library'
+} from "./library";
 export type {
   AnswerRecord,
   Draft,
@@ -63,10 +63,23 @@ export type {
   SessionHeaderModel,
   SessionStatus,
   PracticeCardTask,
+  PracticeQuestionTask,
   PracticeSessionSnapshot,
   PracticeTask,
   PracticeTrack,
   WorkspaceQuestionDifficulty,
-} from './session'
-export type { EditorItem, EditorSenseDraft, PracticeDifficulty, PracticeQuestion, PracticeQuestionType, WordDraft } from './set'
-export type { FsrsStatusCounts, StatsMemorySummary, StatsQuestionRow, StatsSetRow } from './stats'
+} from "./session";
+export type {
+  EditorItem,
+  EditorSenseDraft,
+  PracticeDifficulty,
+  PracticeQuestion,
+  PracticeQuestionType,
+  WordDraft,
+} from "./set";
+export type {
+  FsrsStatusCounts,
+  StatsMemorySummary,
+  StatsQuestionRow,
+  StatsSetRow,
+} from "./stats";

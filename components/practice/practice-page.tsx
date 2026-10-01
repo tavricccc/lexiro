@@ -31,6 +31,8 @@ import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
 import { senseToStudyWord } from "@/src/lib/library";
+import { buildMeaningQuestionGroups } from "./meaning-questions";
+import { isLeech } from "@/src/lib/fsrs";
 
 /**
  * The session is one queue of entries built from the tasks the setup screen
@@ -99,8 +101,11 @@ export function PracticePage({
     [state.words],
   );
   const questionGroups = useMemo(
-    () => buildQuestionGroups(state.questions, state.words),
-    [state.questions, state.words],
+    () => [
+      ...buildMeaningQuestionGroups(allStudyItems),
+      ...buildQuestionGroups(state.questions, state.words),
+    ],
+    [allStudyItems, state.questions, state.words],
   );
   const allQuestionItems = useMemo(
     () => questionGroups.flat(),
@@ -112,7 +117,13 @@ export function PracticePage({
   );
 
   const poolInput = {
-    allowedSenseIds,
+    allowedSenseIds: leechOnly
+      ? new Set(
+          [...allowedSenseIds].filter((id) =>
+            isLeech(progress.cards[id] ?? null),
+          ),
+        )
+      : allowedSenseIds,
     cards: progress.cards,
     difficulty,
     leechOnly,
@@ -134,13 +145,20 @@ export function PracticePage({
   const availableQuestionCount = useMemo(
     () =>
       countQuestionAvailability({
-        allowedSenseIds,
-        difficulty,
-        questionGroups,
+        ...poolInput,
         tasks,
         oneSensePerWord,
       }),
-    [allowedSenseIds, difficulty, oneSensePerWord, questionGroups, tasks],
+    [
+      allowedSenseIds,
+      difficulty,
+      leechOnly,
+      progress.cards,
+      studyItems,
+      oneSensePerWord,
+      questionGroups,
+      tasks,
+    ],
   );
   const queue = useMemo(
     () => buildPracticeQueue({ ...poolInput, amount, oneSensePerWord, tasks }),
@@ -315,7 +333,6 @@ export function PracticePage({
         amount={amount}
         availableQuestionCount={availableQuestionCount}
         backHref={initialSet ? `/app/sets/${initialSet}` : "/app"}
-        cardCount={counts.flashcard}
         counts={counts}
         difficulty={difficulty}
         hasWords={hasWords}
@@ -332,13 +349,10 @@ export function PracticePage({
         onOneSenseChange={setup.changeOneSense}
         onSetChange={setup.changeSet}
         onTasksChange={setup.changeTasks}
-        onTrackChange={setup.changeTrack}
         queueLength={queue.length}
         setId={setId}
         sets={state.sets}
         tasks={tasks}
-        track={setup.track}
-        trackPreset={initialTrack}
         draftPersistence={setup.saved.persistence}
       />
     );

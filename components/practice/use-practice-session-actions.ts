@@ -8,6 +8,7 @@ import type { PracticeEntry } from "@/components/practice/practice-queue";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { isSameLocalDay } from "@/src/lib/date";
+import { isCorrectChoice } from "./meaning-questions";
 import type { CardProgress, ReviewRating, SenseId } from "@/types";
 
 type Setter<T> = Dispatch<SetStateAction<T>>;
@@ -115,7 +116,7 @@ export function usePracticeSessionActions({
     if (!item) return;
     actionPending.current = true;
     setActionBusy(true);
-    const isCorrect = choice === item.answerIndex;
+    const isCorrect = isCorrectChoice(item, choice);
     setters.setSelected(choice);
     setters.setRevealed(true);
     setters.setAnswerChoices((values) => {

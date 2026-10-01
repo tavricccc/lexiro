@@ -160,8 +160,19 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
         ...(base.dailyHistory[date] ?? emptyDailyActivity(date)),
       };
       activity.questionTotal += 1;
+      const wordAttempt = type === "meaning";
+      if (wordAttempt) {
+        if (correct) activity.memoryGood += 1;
+        else activity.memoryAgain += 1;
+      }
       const stats = {
         ...base,
+        totalMemoryReviews: base.totalMemoryReviews + (wordAttempt ? 1 : 0),
+        correctMemoryReviews:
+          base.correctMemoryReviews + (wordAttempt && correct ? 1 : 0),
+        todayMemoryReviews: base.todayMemoryReviews + (wordAttempt ? 1 : 0),
+        todayMemoryCorrectReviews:
+          base.todayMemoryCorrectReviews + (wordAttempt && correct ? 1 : 0),
         totalQuestionReviews: base.totalQuestionReviews + 1,
         correctQuestionReviews: base.correctQuestionReviews + (correct ? 1 : 0),
         todayQuestionReviews: base.todayQuestionReviews + 1,

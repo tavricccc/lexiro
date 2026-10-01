@@ -75,7 +75,10 @@ export function PracticeSessionView({
           <span className="tabular-nums">
             {t("practice.progress", { current: index + 1, total })}
           </span>
-          <div className="page-action-host hidden md:flex" data-page-actions-host />
+          <div
+            className="page-action-host hidden md:flex"
+            data-page-actions-host
+          />
         </div>
         <div
           aria-label={t("practice.progressLabel")}
@@ -114,8 +117,8 @@ export function PracticeSessionView({
             onRate={onRate}
           />
         ) : (
-          <>
-            <div className="mt-4 flex justify-end gap-1">
+          <div className="my-auto py-5" data-practice-question-group>
+            <div className="mb-3 flex justify-end gap-1">
               <Button
                 className="min-h-11 sm:min-h-9"
                 size="sm"
@@ -146,7 +149,7 @@ export function PracticeSessionView({
               onAnswer={onAnswer}
               onNext={onNext}
             />
-          </>
+          </div>
         )}
       </motion.div>
       <KeyboardHints

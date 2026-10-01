@@ -9,6 +9,7 @@ import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { timing } from "@/lib/motion-timing";
 import { PracticeTaskLabel } from "@/components/practice/practice-task-label";
+import { isCorrectChoice } from "./meaning-questions";
 
 const practiceTransition = timing("control", "arrive");
 
@@ -28,10 +29,11 @@ export function QuestionCard({
   onNext: () => void;
 }) {
   const answered = selected !== null;
+  const correct = answered && isCorrectChoice(item, selected);
   return (
     <>
-      <section className="mt-5 rounded-2xl bg-muted/70 p-5 sm:p-7">
-        {item.question.kind === "reading" ? (
+      <section className="rounded-2xl bg-muted/70 p-5 sm:p-7">
+        {item.question?.kind === "reading" ? (
           <div className="mb-6 rule-b pb-6">
             <PracticeTaskLabel task={item.type} />
             <PassageView
@@ -44,7 +46,13 @@ export function QuestionCard({
         )}
         {/* A blank-format item has no question of its own -- the passage is the
           question, so the heading just says which blank is being filled. */}
-        <h1 className="max-w-2xl text-[1.0625rem] font-semibold leading-7 tracking-[-0.01em] sm:text-lg">
+        <h1
+          className={
+            item.type === "meaning"
+              ? "type-page text-center"
+              : "max-w-2xl text-[1.0625rem] font-semibold leading-7 tracking-[-0.01em] sm:text-lg"
+          }
+        >
           {item.blank
             ? t("questions.blankLabel", { index: item.blank })
             : item.prompt}
@@ -60,7 +68,7 @@ export function QuestionCard({
           className={`mt-6 grid gap-2.5${item.options.length > 5 ? " sm:grid-cols-2" : ""}`}
         >
           {item.options.map((option, optionIndex) => {
-            const isCorrect = optionIndex === item.answerIndex;
+            const isCorrect = isCorrectChoice(item, optionIndex);
             const isSelected = selected === optionIndex;
             const stateClass =
               answered && isCorrect
@@ -107,18 +115,16 @@ export function QuestionCard({
             aria-live="polite"
           >
             <p
-              className={`flex items-center gap-2 text-sm font-semibold ${selected === item.answerIndex ? "text-success" : "text-destructive"}`}
+              className={`flex items-center gap-2 text-sm font-semibold ${correct ? "text-success" : "text-destructive"}`}
             >
-              {selected === item.answerIndex ? (
+              {correct ? (
                 <Icons.success className="size-4" />
               ) : (
                 <Icons.incorrect className="size-4" />
               )}
-              {selected === item.answerIndex
-                ? t("practice.correct")
-                : t("practice.incorrect")}
+              {correct ? t("practice.correct") : t("practice.incorrect")}
             </p>
-            {selected !== item.answerIndex && (
+            {!correct && (
               <p className="mt-2 text-sm text-foreground">
                 {t("practice.answer", {
                   answer: item.options[item.answerIndex] ?? "",

@@ -15,6 +15,7 @@ import {
 import { localDateKey } from "./date";
 
 const QUESTION_STAT_TYPES: QuestionStatType[] = [
+  "meaning",
   "vocabulary",
   "grammar",
   "cloze",

@@ -46,7 +46,30 @@ export function parsePracticeSession(
   } catch {
     return null;
   }
-  if (!isRecord(value) || value.schemaVersion !== 3) return null;
+  if (!isRecord(value)) return null;
+  if (
+    value.schemaVersion === 3 &&
+    Array.isArray(value.tasks) &&
+    Array.isArray(value.entryIds)
+  ) {
+    const wasCard =
+      typeof value.entryIds[Number(value.index)] === "string" &&
+      value.entryIds[Number(value.index)].startsWith("card:flashcard:");
+    Object.assign(value, {
+      schemaVersion: 4,
+      tasks: value.tasks.map((task) =>
+        task === "flashcard" ? "meaning" : task,
+      ),
+      entryIds: value.entryIds.map((id) =>
+        typeof id === "string"
+          ? id.replace(/^card:flashcard:/, "meaning:")
+          : id,
+      ),
+      meaningChoices: {},
+      ...(wasCard ? { selected: null, revealed: false } : {}),
+    });
+  }
+  if (value.schemaVersion !== 4) return null;
 
   const entryIds = value.entryIds;
   const rawTasks = value.tasks;
@@ -103,8 +126,27 @@ export function parsePracticeSession(
     return null;
   }
 
+  const meaningChoices = value.meaningChoices;
+  if (
+    !isRecord(meaningChoices) ||
+    Object.entries(meaningChoices).some(
+      ([id, choices]) =>
+        !entryIds.includes(id) ||
+        !isRecord(choices) ||
+        !Array.isArray(choices.options) ||
+        choices.options.length !== 4 ||
+        !choices.options.every(
+          (option) => typeof option === "string" && option.trim(),
+        ) ||
+        !Number.isInteger(choices.answerIndex) ||
+        Number(choices.answerIndex) < 0 ||
+        Number(choices.answerIndex) > 3,
+    )
+  )
+    return null;
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
+    meaningChoices: meaningChoices as PracticeSessionSnapshot["meaningChoices"],
     tasks: orderPracticeTasks(rawTasks as PracticeTask[]),
     setId: value.setId,
     amount: Number(value.amount),

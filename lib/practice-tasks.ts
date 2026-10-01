@@ -13,7 +13,6 @@ import {
  * one pair of functions without knowing which half it came from.
  */
 const CARD_TASK_KEYS = {
-  flashcard: ["practice.taskFlashcard", "practice.taskFlashcardHint"],
   spelling: ["practice.taskSpelling", "practice.taskSpellingHint"],
 } as const satisfies Record<
   PracticeCardTask,
@@ -21,12 +20,14 @@ const CARD_TASK_KEYS = {
 >;
 
 export function practiceTaskLabel(task: PracticeTask): string {
+  if (task === "meaning") return t("practice.taskMeaning");
   return isCardTask(task)
     ? t(CARD_TASK_KEYS[task][0])
     : questionFormatLabel(task);
 }
 
 export function practiceTaskHint(task: PracticeTask): string {
+  if (task === "meaning") return t("practice.taskMeaningHint");
   return isCardTask(task)
     ? t(CARD_TASK_KEYS[task][1])
     : questionFormatHint(task);

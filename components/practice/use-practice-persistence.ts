@@ -79,6 +79,7 @@ export function useRestorePracticeSession({
       saved.tasks,
       allStudyItems,
       allQuestionItems,
+      saved.meaningChoices,
     );
     const outOfScope = entries?.some(
       (entry) =>
@@ -157,7 +158,22 @@ export function usePersistPracticeSession({
     const entryIds = entries.map((entry) => entry.id);
     if (!entryIds.length) return;
     const snapshot: PracticeSessionSnapshot = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      meaningChoices: Object.fromEntries(
+        entries.flatMap((entry) =>
+          entry.kind === "question" && entry.task === "meaning"
+            ? [
+                [
+                  entry.id,
+                  {
+                    options: entry.item.options,
+                    answerIndex: entry.item.answerIndex,
+                  },
+                ],
+              ]
+            : [],
+        ),
+      ),
       tasks,
       setId,
       amount,

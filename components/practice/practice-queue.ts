@@ -1,6 +1,6 @@
 import type {
   CardProgress,
-  GeneratedQuestionKind,
+  PracticeQuestionTask,
   PracticeCardTask,
   PracticeTask,
   SenseId,
@@ -16,6 +16,7 @@ import {
   PRACTICE_QUESTION_TASKS,
 } from "@/constants";
 import { isDue, isLeech } from "@/src/lib/fsrs";
+import { buildMeaningQuestionGroups } from "./meaning-questions";
 
 /**
  * One thing on screen at a time. A session is a list of these, mixed from every
@@ -27,7 +28,7 @@ export type PracticeEntry =
   | {
       id: string;
       kind: "question";
-      task: GeneratedQuestionKind;
+      task: PracticeQuestionTask;
       item: QuestionItem;
     };
 
@@ -41,7 +42,7 @@ export function parseCardEntryId(
 ): { task: PracticeCardTask; senseId: string } | null {
   const [prefix, task, ...rest] = id.split(":");
   if (prefix !== "card" || !rest.length) return null;
-  if (task !== "flashcard" && task !== "spelling") return null;
+  if (task !== "spelling") return null;
   return { task, senseId: rest.join(":") };
 }
 
@@ -54,9 +55,17 @@ export function entriesFromIds(
   tasks: readonly PracticeTask[],
   studyItems: readonly StudyWord[],
   questionItems: readonly QuestionItem[],
+  meaningChoices: Record<
+    string,
+    { options: string[]; answerIndex: number }
+  > = {},
 ): PracticeEntry[] | null {
   const wordsById = new Map(studyItems.map((word) => [String(word.id), word]));
-  const questionsById = new Map(questionItems.map((item) => [item.id, item]));
+  const questionsById = new Map(
+    [...questionItems, ...buildMeaningQuestionGroups(studyItems).flat()].map(
+      (item) => [item.id, item],
+    ),
+  );
   const entries: PracticeEntry[] = [];
   for (const id of ids) {
     const card = parseCardEntryId(id);
@@ -68,7 +77,15 @@ export function entriesFromIds(
     }
     const item = questionsById.get(id);
     if (!item || !tasks.includes(item.type)) return null;
-    entries.push({ id, kind: "question", task: item.type, item });
+    entries.push({
+      id,
+      kind: "question",
+      task: item.type,
+      item:
+        item.type === "meaning" && meaningChoices[id]
+          ? { ...item, ...meaningChoices[id] }
+          : item,
+    });
   }
   return entries;
 }
@@ -126,7 +143,7 @@ function cardPool({ cards, leechOnly, studyItems }: PoolInput): StudyWord[] {
  * share context. Items from one passage stay contiguous when drawn.
  */
 function questionPool(
-  task: GeneratedQuestionKind,
+  task: PracticeQuestionTask,
   { allowedSenseIds, difficulty, questionGroups }: GroupInput,
 ): QuestionItem[][] {
   const groups = questionGroups
@@ -135,7 +152,9 @@ function questionPool(
       (group) =>
         group.length > 0 &&
         group[0]?.type === task &&
-        (difficulty === "all" || group[0]?.difficulty === Number(difficulty)),
+        (task === "meaning" ||
+          difficulty === "all" ||
+          group[0]?.difficulty === Number(difficulty)),
     );
   // Easy, medium and hard alternate so a short session is not all one level.
   const buckets = [1, 2, 3].map((level) =>
@@ -156,26 +175,61 @@ export function countTaskAvailability(
   input: PoolInput & GroupInput,
 ): Record<PracticeTask, number> {
   const counts = {} as Record<PracticeTask, number>;
+  const groups = withMeaningQuestions(input);
   const scheduled = cardPool(input).length;
   for (const task of PRACTICE_CARD_TASKS) counts[task] = scheduled;
   for (const task of PRACTICE_QUESTION_TASKS)
-    counts[task] = questionPool(task, input).reduce(
-      (total, group) => total + group.length,
-      0,
-    );
+    counts[task] =
+      task === "meaning"
+        ? new Set(
+            questionPool(task, groups)
+              .flat()
+              .map((item) => item.wordKey),
+          ).size
+        : questionPool(task, groups).reduce(
+            (total, group) => total + group.length,
+            0,
+          );
   return counts;
 }
 
 /** The slider counts the questions the current choice can actually draw. */
 export function countQuestionAvailability(
-  input: GroupInput & Pick<QueueInput, "oneSensePerWord" | "tasks">,
+  input: GroupInput & PoolInput & Pick<QueueInput, "oneSensePerWord" | "tasks">,
 ): number {
+  const groups = withMeaningQuestions(input);
   const items = input.tasks
-    .filter((task): task is GeneratedQuestionKind => !isCardTask(task))
-    .flatMap((task) => questionPool(task, input).flat());
-  return input.oneSensePerWord
-    ? new Set(items.map((item) => item.wordKey)).size
-    : items.length;
+    .filter((task): task is PracticeQuestionTask => !isCardTask(task))
+    .flatMap((task) => questionPool(task, groups).flat());
+  const spelling = input.tasks.includes("spelling") ? cardPool(input) : [];
+  if (input.oneSensePerWord)
+    return new Set([
+      ...items.map((item) => item.wordKey),
+      ...spelling.map((word) => word.wordKey),
+    ]).size;
+  return (
+    items.filter((item) => item.type !== "meaning").length +
+    new Set(
+      items
+        .filter((item) => item.type === "meaning")
+        .map((item) => item.wordKey),
+    ).size +
+    spelling.length
+  );
+}
+
+function withMeaningQuestions<
+  T extends GroupInput & { studyItems: StudyWord[] },
+>(input: T): T {
+  return input.questionGroups.some((group) => group[0]?.type === "meaning")
+    ? input
+    : {
+        ...input,
+        questionGroups: [
+          ...buildMeaningQuestionGroups(input.studyItems),
+          ...input.questionGroups,
+        ],
+      };
 }
 
 /**
@@ -197,13 +251,16 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
     { pool: StudyWord[]; at: number }
   >();
   const questionCursors = new Map<
-    GeneratedQuestionKind,
+    PracticeQuestionTask,
     { pool: QuestionItem[][]; at: number }
   >();
   for (const task of tasks) {
-    if (isCardTask(task))
-      cardCursors.set(task, { pool: scheduled, at: 0 });
-    else questionCursors.set(task, { pool: questionPool(task, input), at: 0 });
+    if (isCardTask(task)) cardCursors.set(task, { pool: scheduled, at: 0 });
+    else
+      questionCursors.set(task, {
+        pool: questionPool(task, withMeaningQuestions(input)),
+        at: 0,
+      });
   }
 
   const usedSenses = new Set<SenseId>();
@@ -219,7 +276,9 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
         const word = cursor.pool[cursor.at];
         cursor.at += 1;
         if (usedSenses.has(word.id)) continue;
+        if (oneSensePerWord && usedWords.has(word.wordKey)) continue;
         usedSenses.add(word.id);
+        if (oneSensePerWord) usedWords.add(word.wordKey);
         return [{ id: cardEntryId(task, word.id), kind: "card", task, word }];
       }
       return null;
@@ -230,26 +289,31 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
       const group = cursor.pool[cursor.at];
       cursor.at += 1;
       const withinGroup = new Set<WordKey>();
-      const eligible = oneSensePerWord
-        ? group.filter((item) => {
-            if (usedWords.has(item.wordKey) || withinGroup.has(item.wordKey))
-              return false;
-            withinGroup.add(item.wordKey);
-            return true;
-          })
-        : group;
+      const eligible =
+        oneSensePerWord || task === "meaning"
+          ? group.filter((item) => {
+              if (usedWords.has(item.wordKey) || withinGroup.has(item.wordKey))
+                return false;
+              withinGroup.add(item.wordKey);
+              return true;
+            })
+          : group;
       if (!eligible.length) continue;
-      if (mixedWithCards && eligible.some((item) => usedSenses.has(item.senseId))) continue;
-      if (mixedWithCards) eligible.forEach((item) => usedSenses.add(item.senseId));
-      if (oneSensePerWord) eligible.forEach((item) => usedWords.add(item.wordKey));
-      return eligible.map(
-        (item): PracticeEntry => ({
-          id: item.id,
-          kind: "question",
-          task,
-          item,
-        }),
-      );
+      if (
+        mixedWithCards &&
+        eligible.some((item) => usedSenses.has(item.senseId))
+      )
+        continue;
+      if (mixedWithCards)
+        eligible.forEach((item) => usedSenses.add(item.senseId));
+      if (oneSensePerWord || task === "meaning")
+        eligible.forEach((item) => usedWords.add(item.wordKey));
+      return eligible.map((item): PracticeEntry => ({
+        id: item.id,
+        kind: "question",
+        task,
+        item,
+      }));
     }
     return null;
   };
@@ -307,7 +371,7 @@ export function buildWrongContent(
           userAnswer,
           correctAnswer: item.options[item.answerIndex] ?? "",
           meaning: item.meaning,
-          ...(item.question.kind === "reading"
+          ...(item.question?.kind === "reading"
             ? { passage: item.question.passage }
             : {}),
         };

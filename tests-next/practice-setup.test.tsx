@@ -9,7 +9,7 @@ afterEach(cleanup);
 
 function counts(questions: number): Record<PracticeTask, number> {
   return Object.fromEntries(
-    ["flashcard", "spelling", ...PRACTICE_QUESTION_TASKS].map((task) => [
+    ["spelling", ...PRACTICE_QUESTION_TASKS].map((task) => [
       task,
       task === "vocabulary" ? questions : 0,
     ]),
@@ -17,14 +17,13 @@ function counts(questions: number): Record<PracticeTask, number> {
 }
 
 describe("practice setup", () => {
-  it("shows a single useful action when no questions exist", () => {
+  it("offers local meaning questions without an AI question bank or a separate track", () => {
     render(
       <PracticeSetup
         amount={10}
-        availableQuestionCount={0}
+        availableQuestionCount={4}
         backHref="/app"
-        cardCount={0}
-        counts={counts(0)}
+        counts={{ ...counts(0), meaning: 4 }}
         difficulty="all"
         hasWords
         hasQuestionContent={false}
@@ -37,19 +36,15 @@ describe("practice setup", () => {
         onOneSenseChange={vi.fn()}
         onSetChange={vi.fn()}
         onTasksChange={vi.fn()}
-        onTrackChange={vi.fn()}
-        queueLength={0}
+        queueLength={4}
         setId=""
         sets={[]}
-        tasks={["vocabulary"]}
-        track="questions"
-        trackPreset="questions"
+        tasks={["meaning"]}
       />,
     );
-    expect(
-      screen.getByRole("link", { name: "用 AI 產生題目" }),
-    ).toHaveAttribute("href", "/app/questions/generate");
-    expect(screen.queryByRole("combobox")).toBeNull();
+    expect(screen.getByRole("checkbox", { name: /英選中/ })).toBeChecked();
+    expect(screen.getByRole("button", { name: "開始這 4 題" })).toBeVisible();
+    expect(screen.queryByText("今天想做哪一種？")).toBeNull();
     expect(screen.queryByText("步驟 1 / 1")).toBeNull();
   });
 

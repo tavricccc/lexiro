@@ -1,14 +1,21 @@
-import type { GeneratedQuestionKind, LibraryQuestion, SenseId, WordEntry, WordKey } from "@/types";
+import type {
+  PracticeQuestionTask,
+  LibraryQuestion,
+  SenseId,
+  WordEntry,
+  WordKey,
+} from "@/types";
 
 export interface QuestionItem {
   id: string;
-  question: LibraryQuestion;
+  question: LibraryQuestion | null;
   prompt: string;
   options: string[];
   answerIndex: number;
   wordKey: WordKey;
   senseId: SenseId;
-  type: GeneratedQuestionKind;
+  type: PracticeQuestionTask;
+  acceptedMeanings?: string[];
   /** Passage items carry the shared bank so the practice view can show it. */
   optionBank?: string[];
   blank?: number;
@@ -29,7 +36,7 @@ function seededRandom(seed: string): () => number {
   };
 }
 
-function seededShuffle<T>(values: T[], seed: string): T[] {
+export function seededShuffle<T>(values: T[], seed: string): T[] {
   const random = seededRandom(seed);
   const result = [...values];
   for (let index = result.length - 1; index > 0; index -= 1) {
@@ -39,9 +46,16 @@ function seededShuffle<T>(values: T[], seed: string): T[] {
   return result;
 }
 
-function shuffleOptions(options: string[], answerIndex: number, seed: string): { options: string[]; answerIndex: number } {
+function shuffleOptions(
+  options: string[],
+  answerIndex: number,
+  seed: string,
+): { options: string[]; answerIndex: number } {
   if (options.length < 2) return { options, answerIndex };
-  const order = seededShuffle(options.map((_, index) => index), seed);
+  const order = seededShuffle(
+    options.map((_, index) => index),
+    seed,
+  );
   return {
     options: order.map((index) => options[index] ?? ""),
     answerIndex: order.indexOf(answerIndex),
@@ -53,13 +67,26 @@ function applyOptionShuffle(item: QuestionItem): QuestionItem {
   // would break the "each option used once" contract the format depends on.
   if (item.optionBank) return item;
   const shuffled = shuffleOptions(item.options, item.answerIndex, item.id);
-  if (shuffled.answerIndex === item.answerIndex && shuffled.options.every((option, index) => option === item.options[index])) return item;
-  return { ...item, options: shuffled.options, answerIndex: shuffled.answerIndex };
+  if (
+    shuffled.answerIndex === item.answerIndex &&
+    shuffled.options.every((option, index) => option === item.options[index])
+  )
+    return item;
+  return {
+    ...item,
+    options: shuffled.options,
+    answerIndex: shuffled.answerIndex,
+  };
 }
 
-export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<WordKey, WordEntry>): QuestionItem[][] {
+export function buildQuestionGroups(
+  questions: LibraryQuestion[],
+  words: Record<WordKey, WordEntry>,
+): QuestionItem[][] {
   const meaningBySense = new Map(
-    Object.values(words).flatMap((word) => word.senses.map((sense) => [sense.id, sense.meaningZh] as const)),
+    Object.values(words).flatMap((word) =>
+      word.senses.map((sense) => [sense.id, sense.meaningZh] as const),
+    ),
   );
   return questions.map((question): QuestionItem[] => {
     if (question.kind === "reading") {
@@ -96,4 +123,3 @@ export function buildQuestionGroups(questions: LibraryQuestion[], words: Record<
     return [applyOptionShuffle(base)];
   });
 }
-
