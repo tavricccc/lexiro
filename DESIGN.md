@@ -52,6 +52,10 @@ typography:
   hint:
     fontSize: "0.8125rem"
     lineHeight: 1.6
+  result-score:
+    fontSize: "3.5rem"
+    fontWeight: 500
+    lineHeight: 1
 rounded:
   control: "1.5rem"
   card: "1.75rem"
@@ -138,6 +142,7 @@ components:
 所有介面、中英文教材與數字共用 page 中的字體堆疊，以字級、字重和行長分工。
 page 對應工作區頁面標題，section 是首頁任務標題，group 保留既有分組標題；body
 是首頁說明，lead 為共用標題說明，row 為列表內容，hint 為輔助文字。
+result-score 僅用於結算區的本輪記得或答對數量，數字採等寬排列。
 首頁說明行長最多 45ch，共用 lead 最多 56ch。中文字距只輕微收緊，避免擠壓字形。
 
 ## Layout
@@ -154,6 +159,7 @@ frontmatter 的間距是手機基準；48rem 起，標題、內容、區段與�
 
 **The 穩定操作 Rule.** 用分頁切換工作內容；主要操作在右、次要操作在左。
 桌機操作跟隨黏附頁首，手機操作保持底部位置；StepActions 只在手機預留底部空間。
+預留區必須是內容的最後一段，位於所有動態解析之後，並隨操作列實際高度更新。
 首頁與教材頁的具體內容依 `.impeccable/surfaces/app-workspace.md` 維護。
 
 ## Elevation & Depth
@@ -199,6 +205,11 @@ Hover、停用與鍵盤焦點沿用共用語意 token 與元件。
 進度列同時呈現數量、目標、比例與提示文字；達標後，播放圖示換為勾選。
 完成區延續墨綠與春綠，只有儲存成功才能宣布完成。動畫輔助狀態辨識，沒有裝飾性
 入場等待；減少動態效果設定保留最終數值與狀態。
+
+結算頁由完成區、AI 說明與底部預留區依序排列，不以視窗最小高度置中長文。
+手機完成區與解析區使用 section-gap 分隔；長文可捲到固定操作列上方。
+單字卡自評未記熟時顯示「單字介紹」，AI 說明指定詞義、例句、用法與記憶重點；
+答題練習使用「錯題解析」，混合練習使用「學習解析」。重練按鈕與各模式用語一致。
 
 共用動態使用 generated motion ladder；進度條的 180ms 是局部例外，詳見
 `docs/design-system.md` 與 sidecar，不作為新的全域尺度。

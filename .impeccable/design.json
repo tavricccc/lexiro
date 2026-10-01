@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-30T06:41:08.750Z",
+  "generatedAt": "2026-10-01T04:01:19.112Z",
   "title": "Design System: Lexiro",
   "extensions": {
     "colorMeta": {
@@ -89,6 +89,10 @@
       "hint": {
         "displayName": "輔助說明",
         "purpose": "較安靜的提示。"
+      },
+      "result-score": {
+        "displayName": "本輪完成數量",
+        "purpose": "結算區56px等寬數字；依已儲存的記得或答對數量顯示。"
       }
     },
     "shadows": [
@@ -235,6 +239,13 @@
       "description": "黏附頁首右側的36px操作；桌機沒有底部操作列與佔位。",
       "html": "<button class=\"ds-header-action\">開始背單字</button>",
       "css": ".ds-header-action{height:2.25rem;padding:0 .875rem;border:0;border-radius:var(--radius-control);background:var(--primary);color:var(--primary-foreground);font-family:var(--font-sans);font-size:.8125rem;font-weight:500;box-shadow:var(--shadow-control)}.ds-header-action:hover{background:var(--primary-hover)}.ds-header-action:focus-visible{outline:2px solid var(--primary);outline-offset:2px}.ds-header-action:active{transform:translateY(1px) scale(.98)}"
+    },
+    {
+      "name": "結算說明閱讀順序",
+      "kind": "custom",
+      "description": "單字卡顯示單字介紹；完成區與解析相隔section-gap，操作列預留區放在最後。此片段僅示意內容順序，不模擬固定操作列。",
+      "html": "<div class=\"ds-result\"><section class=\"ds-result-finish\"><p class=\"ds-result-score\">17<span>/18</span></p><p>這一輪記得或答對的題數；學習進度已儲存。</p></section><section class=\"ds-result-explanation\"><h2>單字介紹</h2><h3>a rural area</h3><p>字義、例句與用法依提供的單字內容介紹。</p></section><div class=\"ds-result-space\" aria-hidden=\"true\"></div></div>",
+      "css": ".ds-result{display:flex;flex-direction:column;font-family:var(--font-sans);color:var(--foreground)}.ds-result-finish{padding:2rem 1.5rem;text-align:center;border-radius:var(--radius-stage);background:var(--study-ink);color:var(--study-paper)}.ds-result-score{margin:0;font-size:3.5rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}.ds-result-score span{color:var(--study-soft)}.ds-result-explanation{margin-top:var(--section-gap);border-top:var(--hairline) solid var(--rule);padding-top:1.5rem}.ds-result-explanation h2{margin:0;font-size:1.125rem;font-weight:500;line-height:1.45}.ds-result-explanation h3{margin:1rem 0 .5rem;font-size:1rem}.ds-result-explanation p{font-size:.875rem;line-height:1.65}.ds-result-space{min-height:5.5rem;margin-top:1rem} @media(min-width:48rem){.ds-result-space{display:none}}"
     }
   ],
   "narrative": {
@@ -249,7 +260,7 @@
     "rules": [
       {
         "name": "穩定操作",
-        "body": "用分頁切換工作內容；主要操作在右、次要操作在左。桌機操作跟隨黏附頁首，手機操作保持底部位置；StepActions 只在手機預留底部空間。",
+        "body": "用分頁切換工作內容；主要操作在右、次要操作在左。桌機操作跟隨黏附頁首，手機操作保持底部位置；StepActions 只在手機預留底部空間。預留區必須是內容的最後一段，位於所有動態解析之後，並隨操作列實際高度更新。",
         "section": "layout"
       }
     ],

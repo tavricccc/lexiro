@@ -183,6 +183,28 @@ one task. From tablet width, those values grow to 0.75rem, 1.5rem, 2rem and
 `.block-gap` cover the others. Keep the safe-area inset in the app shell so
 phone content starts below the status bar without an extra page-level offset.
 
+### Practice results and AI explanations
+
+`ResultPanel` keeps the saved result, AI explanation and `StepActions` spacer in
+that reading order. The spacer is the last child, including after an explanation
+arrives. On mobile it reserves the measured height of the fixed action panel;
+placing it before the explanation creates a blank gap and leaves the last lines
+behind the buttons. Desktop actions stay in the sticky header and need no spacer.
+
+The result uses normal document flow instead of a viewport-height centered
+column. Mobile section spacing is 1.5rem, with 1.5rem of padding above the
+explanation heading. The existing page and list gutters remain unchanged.
+
+Card results use 「單字介紹」 and 「再複習未記熟單字」. Their AI content introduces
+the supplied meaning, example, usage and memory cues. Question results retain
+「錯題解析」 and 「重做錯題」; mixed results use 「學習解析」 and
+「再練習待加強內容」. Memory self-ratings do not establish an answer mistake.
+
+Local verification on 2026-10-01 used synthetic introduction text at 393×852 and
+1366×900. The mobile final line remained above the fixed footer after scrolling
+to the end, and desktop actions stayed in the header without horizontal overflow.
+This verifies layout, not live paid AI output or cache hit rates.
+
 ## Motion
 
 Every duration and curve in the product is a rung of one ladder, generated from
