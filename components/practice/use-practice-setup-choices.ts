@@ -26,9 +26,9 @@ export function usePracticeSetupChoices(
 ) {
   const uid = useCloudStore((store) => store.user?.uid);
   const initialTasks = () =>
-    initialTrack === "questions"
-      ? [...DEFAULT_QUESTION_TASKS]
-      : [...DEFAULT_CARD_TASKS];
+    initialTrack === "fsrs"
+      ? [...DEFAULT_CARD_TASKS]
+      : [...DEFAULT_QUESTION_TASKS];
   const saved = useResumableDraft<PracticeSetupDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:practice-setup:${initialSet || "all"}:${initialTrack ?? "choose"}`,
     {

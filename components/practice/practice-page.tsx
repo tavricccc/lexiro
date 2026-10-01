@@ -405,6 +405,7 @@ export function PracticePage({
       }
       onSkip={() => void actions.skip()}
       onAnswer={(choice) => void actions.answer(choice)}
+      onCheckSpelling={(correct) => setSelected(correct ? 0 : 1)}
       onNext={() => actions.next()}
     />
   );

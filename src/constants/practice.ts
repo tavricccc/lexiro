@@ -2,18 +2,9 @@ import type {
   PracticeCardTask,
   PracticeQuestionTask,
   PracticeTask,
-  PracticeTrack,
 } from "../types/session";
 
-/**
- * A session belongs to one track. 每日複習 draws the words FSRS says are due and
- * asks them as cards; 做題目 draws from the saved question bank. The track is
- * the first thing the setup screen asks, and it decides which of the two task
- * lists below the rest of the screen is choosing from.
- */
-export const PRACTICE_TRACKS: PracticeTrack[] = ["fsrs", "questions"];
-
-/** How a due word is asked. Picking both is the "隨機混合" option. */
+/** Spelling keeps the scheduled pool; all formats share one setup and queue. */
 export const PRACTICE_CARD_TASKS: PracticeCardTask[] = ["spelling"];
 
 /** Question formats, in 學測 paper order. */
@@ -46,10 +37,6 @@ export function isPracticeTask(value: unknown): value is PracticeTask {
 
 export function isCardTask(task: PracticeTask): task is PracticeCardTask {
   return PRACTICE_CARD_TASKS.includes(task as PracticeCardTask);
-}
-
-export function trackOfTask(task: PracticeTask): PracticeTrack {
-  return isCardTask(task) ? "fsrs" : "questions";
 }
 
 /** Keeps a task list in the canonical order, de-duplicated. */

@@ -17,6 +17,8 @@ import {
 } from "@/src/lib/library-metrics";
 import { localDateKey } from "@/src/lib/date";
 import { StudyProgress } from "./study-progress";
+import { buildMeaningQuestionGroups } from "@/components/practice/meaning-questions";
+import { senseToStudyWord } from "@/src/lib/library";
 
 const GUIDE = [
   ["home.guideStepOne", "home.guideStepOneHint"],
@@ -33,7 +35,20 @@ export function FocusCanvas() {
     () => countReviewableSenses(library.words, cards),
     [cards, library.words],
   );
-  const questionCount = useMemo(() => countQuestionItems(library), [library]);
+  const questionCount = useMemo(
+    () =>
+      countQuestionItems(library) +
+      new Set(
+        buildMeaningQuestionGroups(
+          Object.values(library.words).flatMap((word) =>
+            word.senses.map((sense) => senseToStudyWord(word, sense)),
+          ),
+        )
+          .flat()
+          .map((item) => item.wordKey),
+      ).size,
+    [library],
+  );
   const hasContent = Object.keys(library.words).length > 0;
   const activity = stats.dailyHistory[localDateKey()];
   const wordsToday = activity ? activity.memoryAgain + activity.memoryGood : 0;
@@ -44,18 +59,14 @@ export function FocusCanvas() {
     questionsToday >= stats.dailyQuestionGoal;
   const primaryHref = !hasContent
     ? "/app/sets/new"
-    : reviewCount > 0
-      ? "/app/practice?track=fsrs"
-      : questionCount > 0
-        ? "/app/practice?track=questions"
-        : "/app/sets/new";
+    : questionCount > 0
+      ? "/app/practice"
+      : "/app/sets/new";
   const primaryLabel = !hasContent
     ? "home.createFirstSet"
-    : reviewCount > 0
-      ? "home.startReview"
-      : questionCount > 0
-        ? "home.startQuestions"
-        : "library.newSet";
+    : questionCount > 0
+      ? "home.startQuestions"
+      : "library.newSet";
 
   return (
     <section className="study-home">
@@ -109,7 +120,7 @@ export function FocusCanvas() {
               <>
                 <div className="study-checklist">
                   <StudyProgress
-                    href="/app/practice?track=fsrs"
+                    href="/app/practice"
                     label={t("home.wordsToday")}
                     value={wordsToday}
                     goal={stats.dailyWordGoal}
@@ -117,7 +128,7 @@ export function FocusCanvas() {
                     emptyHint={t("home.nothingDue")}
                   />
                   <StudyProgress
-                    href="/app/practice?track=questions"
+                    href="/app/practice"
                     label={t("home.questionsToday")}
                     value={questionsToday}
                     goal={stats.dailyQuestionGoal}

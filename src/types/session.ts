@@ -70,9 +70,8 @@ export interface ResultRow {
 }
 
 /**
- * A session belongs to one track, and within it asks for one or more tasks.
- * 每日複習 asks the words FSRS has scheduled, as cards or as spelling or as a
- * mix of both; 做題目 asks any combination of the exam formats.
+ * Old entry links can preset a task selection; they no longer split the setup.
+ * Local meaning questions, spelling and saved exam formats share one queue.
  */
 export type PracticeTrack = "fsrs" | "questions";
 export type PracticeCardTask = "spelling";

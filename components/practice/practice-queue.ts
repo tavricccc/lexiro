@@ -119,9 +119,8 @@ type GroupInput = Pick<
 
 /**
  * Cards are the scheduled pool: what FSRS says is due, in the order it is due,
- * topped up with words that have never been seen. How a card is asked —
- * 單字卡 or 拼字 — changes the screen, not which words come up, so both card
- * tasks draw from this one pool.
+ * topped up with words that have never been seen. Spelling uses this pool;
+ * local meaning questions remain available for any saved word.
  */
 function cardPool({ cards, leechOnly, studyItems }: PoolInput): StudyWord[] {
   const pool = leechOnly

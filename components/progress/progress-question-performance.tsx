@@ -83,9 +83,11 @@ export function ProgressQuestionPerformance() {
               >
                 <span className="text-sm font-medium">
                   {questionFormatLabel(style)}
-                  <span className="ml-2 font-normal text-muted-foreground">
-                    {difficultyLabel(Number(level))}
-                  </span>
+                  {style !== "meaning" && (
+                    <span className="ml-2 font-normal text-muted-foreground">
+                      {difficultyLabel(Number(level))}
+                    </span>
+                  )}
                 </span>
                 <span
                   aria-hidden

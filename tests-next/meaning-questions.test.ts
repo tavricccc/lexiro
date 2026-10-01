@@ -53,7 +53,7 @@ describe("local English-to-Chinese questions", () => {
   it("does not invent distractors when fewer than three distinct wrong meanings exist", () => {
     expect(buildMeaningQuestionGroups(words.slice(0, 3))).toEqual([]);
   });
-  it("mixes with normal questions, asks one meaning per word, and restores the exact saved choices", () => {
+  it("asks one meaning per word and restores the exact saved choices", () => {
     const groups = buildMeaningQuestionGroups(words);
     const queue = buildPracticeQueue({
       amount: 20,

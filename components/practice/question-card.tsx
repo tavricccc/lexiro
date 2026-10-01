@@ -3,9 +3,7 @@
 import { motion } from "motion/react";
 import type { QuestionItem } from "@/components/practice/practice-content";
 import { PassageView } from "@/components/practice/passage-view";
-import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { timing } from "@/lib/motion-timing";
 import { PracticeTaskLabel } from "@/components/practice/practice-task-label";
@@ -17,16 +15,12 @@ export function QuestionCard({
   item,
   selected,
   busy,
-  last,
   onAnswer,
-  onNext,
 }: {
   item: QuestionItem;
   selected: number | null;
   busy: boolean;
-  last: boolean;
   onAnswer: (choice: number) => void;
-  onNext: () => void;
 }) {
   const answered = selected !== null;
   const correct = answered && isCorrectChoice(item, selected);
@@ -131,19 +125,14 @@ export function QuestionCard({
                 })}
               </p>
             )}
-            {item.meaning && <p className="mt-2 type-lead">{item.meaning}</p>}
+            {item.meaning &&
+              (item.type !== "meaning" ||
+                (item.acceptedMeanings?.length ?? 0) > 1) && (
+                <p className="mt-2 type-lead">{item.meaning}</p>
+              )}
           </motion.div>
         )}
       </section>
-      {answered && (
-        <StepActions width="wide">
-          <Button className="w-full" size="lg" disabled={busy} onClick={onNext}>
-            {busy
-              ? t("practice.recording")
-              : t(last ? "practice.viewResult" : "practice.next")}
-          </Button>
-        </StepActions>
-      )}
     </>
   );
 }

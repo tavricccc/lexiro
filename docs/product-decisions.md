@@ -114,15 +114,18 @@ the same destinations, capabilities, labels and task order.
 Structure is carried by hairlines, margins and typographic hierarchy rather than
 by nested cards; at most one orchestrated entrance animation per screen.
 
-**Starting a session asks for a track, then for shape.** Practice used to be a
-choice between 背單字 and 做題目, where each branch carried its own hidden filter
-row. It is now two steps: 每日複習 or 做題目, then the range and the length —
-which both branches share — followed by only what that branch needs. 每日複習
-asks how the words FSRS has scheduled should come at you (單字卡, 拼字, or both
-mixed); 做題目 asks which of the six exam formats to include, as checkboxes with
-counts, because choosing three of six was never something one dropdown could
-say. A session is a queue of entries rather than a mode, so the entry under the
-cursor decides what the screen asks and a passage keeps its items together.
+**練習使用同一份題型清單。** 不再先選每日複習或做題目；範圍、題數、英選中、
+拼字與既有六種題型在同一頁設定，可以混在同一輪。舊的 track 連結只預選題型。
+英選中直接從單字庫出題，不呼叫 AI，也不新增題庫紀錄。每題顯示一個英文單字
+與四個不同的中文選項；任何已收錄詞義都可以作為正解，但選項只包含其中一義。
+其他三項來自其他單字，排除目標單字的所有已收錄詞義與重複中文；不足三個干擾項
+就不出該題。英選中每輪同一個字只出一次，且不受 AI 題目難度篩選影響。
+答題會記錄題型表現與單字練習進度，保留 FSRS 排程。拼字使用實際輸入判分，
+確認結果後按下一題儲存，不再詢問是否記得。閱讀文章的子題仍保持連續。
+
+題目、選項與對錯回饋共同置中；固定操作列的預留空間在置中群組之外。視窗高度
+不足時，內容從上方開始並可捲動。中斷的英選中練習保存當次選項及答案順序，
+v3 單字卡草稿遷移為 v4 英選中草稿，已有的學習資料不變。
 
 Saved sets open in read mode at `/app/sets/[setId]`; headwords are not controls.
 The explicit edit button opens a word-edit subpage, while adding manually,

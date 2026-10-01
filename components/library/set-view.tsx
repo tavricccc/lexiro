@@ -279,9 +279,7 @@ export function SetView({ setId }: { setId: string }) {
             tab === "questions" ? questions.length > 0 : senseIds.length > 0
           ) ? (
             <Button asChild size="lg">
-              <Link
-                href={`/app/practice?set=${setId}${tab === "questions" ? "&track=questions" : "&track=fsrs"}`}
-              >
+              <Link href={`/app/practice?set=${setId}`}>
                 <Icons.start />
                 {t("setDetail.start")}
               </Link>

@@ -30,10 +30,9 @@ function isIntegerArray(value: unknown, upperBound: number): value is number[] {
 /**
  * Reads back an interrupted session.
  *
- * Only version 3 is accepted. Earlier snapshots described a session as a single
- * mode with one kind of item in it, which the mixed queue has no faithful
- * translation for; the cost of dropping one is re-picking a session, and no
- * learning data lives here.
+ * Version 3 queues migrate self-rated cards to local meaning questions.
+ * Version 4 also saves meaning choices so a library update cannot reshuffle
+ * an interrupted question. Earlier single-mode drafts have no queue to migrate.
  */
 export function parsePracticeSession(
   raw: string | null,
@@ -54,7 +53,7 @@ export function parsePracticeSession(
   ) {
     const wasCard =
       typeof value.entryIds[Number(value.index)] === "string" &&
-      value.entryIds[Number(value.index)].startsWith("card:flashcard:");
+      value.entryIds[Number(value.index)].startsWith("card:");
     Object.assign(value, {
       schemaVersion: 4,
       tasks: value.tasks.map((task) =>

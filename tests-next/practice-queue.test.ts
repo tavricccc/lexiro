@@ -104,6 +104,29 @@ const base = {
 };
 
 describe("practice queue", () => {
+  it("mixes local meaning choices with saved exam questions in the same queue", () => {
+    const queue = buildPracticeQueue({
+      ...base,
+      amount: 4,
+      oneSensePerWord: true,
+      questionGroups: buildQuestionGroups(
+        [vocabularyQuestion(1), vocabularyQuestion(2)],
+        {},
+      ),
+      tasks: ["meaning", "vocabulary"],
+    });
+    expect(queue).toHaveLength(4);
+    expect(new Set(queue.map((entry) => entry.task))).toEqual(
+      new Set(["meaning", "vocabulary"]),
+    );
+    expect(
+      new Set(
+        queue.map((entry) =>
+          entry.kind === "question" ? entry.item.wordKey : entry.word.wordKey,
+        ),
+      ).size,
+    ).toBe(4);
+  });
   it("asks each scheduled word once when both card styles are mixed", () => {
     const queue = buildPracticeQueue({
       ...base,

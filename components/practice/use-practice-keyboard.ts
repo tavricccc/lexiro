@@ -36,35 +36,34 @@ export function usePracticeKeyboard({
     if (!enabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (
-        busy || event.defaultPrevented || event.repeat || event.isComposing ||
-        event.ctrlKey || event.metaKey || event.altKey || event.shiftKey
-      ) return;
+        busy ||
+        event.defaultPrevented ||
+        event.repeat ||
+        event.isComposing ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        event.shiftKey
+      )
+        return;
       const target = event.target;
       if (
         target instanceof Element &&
-        target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="dialog"], [role="combobox"], [role="listbox"], [role="menu"]')
-      ) return;
+        target.closest(
+          'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="dialog"], [role="combobox"], [role="listbox"], [role="menu"]',
+        )
+      )
+        return;
       const nativeEnterControl =
         event.key === "Enter" &&
         (target instanceof HTMLButtonElement ||
           target instanceof HTMLAnchorElement);
       if (nativeEnterControl) return;
-      if (kind === "card") {
-        if (!revealed && event.key === "Enter") {
-          event.preventDefault();
-          onReveal();
-        } else if (revealed && event.key.toLocaleLowerCase() === "a") {
-          event.preventDefault();
-          onRate("again");
-        } else if (revealed && event.key.toLocaleLowerCase() === "g") {
-          event.preventDefault();
-          onRate("good");
-        }
-        return;
-      }
+      if (kind === "card") return; // The spelling form and its next button own Enter.
       const key = event.key.toLocaleLowerCase();
-      const digits = Array.from({ length: Math.min(optionCount, 9) }, (_, index) =>
-        String(index + 1),
+      const digits = Array.from(
+        { length: Math.min(optionCount, 9) },
+        (_, index) => String(index + 1),
       );
       const letters = Array.from({ length: optionCount }, (_, index) =>
         String.fromCharCode(97 + index),

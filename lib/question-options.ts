@@ -1,4 +1,8 @@
-import type { GeneratedQuestionKind, PassageFormat, QuestionStyle } from "@/types";
+import type {
+  GeneratedQuestionKind,
+  PassageFormat,
+  QuestionStyle,
+} from "@/types";
 
 import { t, type TranslationKey } from "@/lib/i18n";
 
@@ -33,7 +37,10 @@ const FORMAT_KEYS = {
   wordBank: ["questions.wordBank", "questions.wordBankHint"],
   discourse: ["questions.discourse", "questions.discourseHint"],
   reading: ["questions.reading", "questions.readingHint"],
-} as const satisfies Record<GeneratedQuestionKind, readonly [TranslationKey, TranslationKey]>;
+} as const satisfies Record<
+  GeneratedQuestionKind,
+  readonly [TranslationKey, TranslationKey]
+>;
 
 export const SENTENCE_STYLES: QuestionStyle[] = ["vocabulary", "grammar"];
 export const PASSAGE_FORMAT_VALUES: PassageFormat[] = [
@@ -49,6 +56,7 @@ export function difficultyLabel(level: number): string {
 }
 
 export function questionFormatLabel(format: string): string {
+  if (format === "meaning") return t("practice.taskMeaning");
   const entry = FORMAT_KEYS[format as GeneratedQuestionKind];
   return entry ? t(entry[0]) : format;
 }
@@ -85,7 +93,9 @@ export function difficultyOptions(allLabel?: string): LabelledOption[] {
   return allLabel ? [{ label: allLabel, value: "all" }, ...options] : options;
 }
 
-function formatOptions(values: readonly GeneratedQuestionKind[]): LabelledOption[] {
+function formatOptions(
+  values: readonly GeneratedQuestionKind[],
+): LabelledOption[] {
   return values.map((value) => ({
     description: questionFormatHint(value),
     label: questionFormatLabel(value),

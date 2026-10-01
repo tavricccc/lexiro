@@ -32,6 +32,20 @@ beforeEach(() => {
 });
 
 describe("durable practice completion", () => {
+  it("persists local meaning answers as questions and word practice", async () => {
+    await useLearningStore
+      .getState()
+      .recordQuestion(asSenseId("bank"), "meaning", 1, true, false, "good");
+    useLearningStore.setState({ loaded: false, stats: createDefaultStats() });
+    await useLearningStore.getState().hydrate();
+    const { stats, progress } = useLearningStore.getState();
+    expect(stats.todayMemoryReviews).toBe(1);
+    expect(stats.todayQuestionReviews).toBe(1);
+    expect(
+      stats.questionStatsBySense[asSenseId("bank")]?.["meaning:1"]?.correct,
+    ).toBe(1);
+    expect(progress.cards[asSenseId("bank")].reviewCount).toBe(1);
+  });
   it("keeps counters unchanged when saving an answer fails", async () => {
     storage.write.mockRejectedValueOnce(new Error("disk full"));
     await expect(

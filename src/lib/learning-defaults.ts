@@ -26,7 +26,9 @@ const QUESTION_STAT_TYPES: QuestionStatType[] = [
 
 export const QUESTION_STAT_KEYS: QuestionStatKey[] =
   QUESTION_STAT_TYPES.flatMap((type) =>
-    ([1, 2, 3] as const).map((level) => `${type}:${level}` as QuestionStatKey),
+    (type === "meaning" ? [1] : [1, 2, 3]).map(
+      (level) => `${type}:${level}` as QuestionStatKey,
+    ),
   );
 
 export function emptyQuestionStats(): QuestionStatTotals {

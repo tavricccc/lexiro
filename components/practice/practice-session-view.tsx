@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { BackControl } from "@/components/ui/back-control";
 import { HeaderBackdrop } from "@/components/ui/header-backdrop";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
+import { StepActions } from "@/components/ui/step-actions";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import type { DraftPersistence } from "@/lib/draft-persistence";
@@ -39,6 +40,7 @@ export function PracticeSessionView({
   onToggleMark,
   onSkip,
   onAnswer,
+  onCheckSpelling,
   onNext,
 }: {
   entry: PracticeEntry;
@@ -57,6 +59,7 @@ export function PracticeSessionView({
   onToggleMark: () => void;
   onSkip: () => void;
   onAnswer: (choice: number) => void;
+  onCheckSpelling: (correct: boolean) => void;
   onNext: () => void;
 }) {
   const typing = entry.kind === "card" && entry.task === "spelling";
@@ -109,10 +112,11 @@ export function PracticeSessionView({
         {entry.kind === "card" ? (
           <ReviewCard
             item={entry.word}
-            task={entry.task}
             revealed={revealed}
             busy={busy}
-            typing={typing}
+            last={index === total - 1}
+            selected={selected}
+            onChecked={onCheckSpelling}
             onReveal={onReveal}
             onRate={onRate}
           />
@@ -145,13 +149,22 @@ export function PracticeSessionView({
               item={entry.item}
               selected={selected}
               busy={busy}
-              last={index === total - 1}
               onAnswer={onAnswer}
-              onNext={onNext}
             />
           </div>
         )}
       </motion.div>
+      {entry.kind === "question" && selected !== null && (
+        <StepActions width="wide">
+          <Button className="w-full" size="lg" disabled={busy} onClick={onNext}>
+            {busy
+              ? t("practice.recording")
+              : t(
+                  index === total - 1 ? "practice.viewResult" : "practice.next",
+                )}
+          </Button>
+        </StepActions>
+      )}
       <KeyboardHints
         kind={entry.kind}
         optionCount={entry.kind === "question" ? entry.item.options.length : 4}
