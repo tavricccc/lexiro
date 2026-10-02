@@ -22,7 +22,7 @@ email 及管理修改都更新版本；三個管理設定一起更新版本。�
 
 原始完整規格是 [backend-blueprint.html](backend-blueprint.html)，2026-09-12 從使用者指定的 [Claude artifact](https://claude.ai/code/artifact/b803b459-390b-4006-a077-a45d90d1dc20) 匯入，僅移除平台脚本與登入包裝。原稿不覆寫；優先順序為使用者最新指示 → 本檔補充 → 原始藍圖。
 
-前端 `lexiro` 與 private 後端 `lexiro-worker` 是同層的獨立 repository。直接在 main 分段提交，不建 branch 或 PR。使用者已要求本次修正完成、驗證通過後推送並建立新版本 Release；完整實作前不 push，不在本機操作正式 D1 或手動部署 Worker。
+前端 lexiro 與 private lexiro-worker 是同層獨立 repository，直接在 main 分段提交。原實作批次的推送與 Release 授權只適用於當次工作；後續是否推送依該次使用者要求。Main push 會觸發部署，本機開發不操作正式 D1 或手動部署 Worker。
 
 ## 目前決策
 
