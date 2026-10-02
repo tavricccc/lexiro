@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { ListActionRow, ListSection } from "@/components/ui/list";
@@ -20,6 +20,8 @@ export function DataSection() {
   const library = useLibraryStore();
   const learning = useLearningStore();
   const [pending, setPending] = useState<PreparedBackupImport | null>(null);
+  const [reading, setReading] = useState(false);
+  const importInput = useRef<HTMLInputElement>(null);
 
   const exportBackup = () => {
     const backup = createFullBackup(
@@ -32,6 +34,7 @@ export function DataSection() {
   };
 
   const importBackup = async (file: File) => {
+    setReading(true);
     try {
       const backup = await readFullBackup(file);
       setPending(
@@ -48,6 +51,8 @@ export function DataSection() {
           message: reason instanceof Error ? reason.message : String(reason),
         }),
       );
+    } finally {
+      setReading(false);
     }
   };
 
@@ -55,31 +60,33 @@ export function DataSection() {
     if (!pending) return;
     await library.importState(pending.library);
     await learning.importState(pending.progress, pending.stats);
-    setPending(null);
     toast.success(t("settings.importDone"));
   };
 
   return (
     <>
       <ListSection>
-        <ListActionRow onClick={exportBackup}>
+        <ListActionRow disabled={reading} onClick={exportBackup}>
           {t("settings.export")}
         </ListActionRow>
-        {/* Reading a file needs a real input; the row is its label so the
-            whole row opens the picker, the way every other row works. */}
-        <label className="t-row flex min-h-[3.25rem] w-full cursor-pointer items-center justify-center py-[var(--row-padding-block)] text-center type-row text-primary">
-          {t("settings.import")}
-          <input
-            accept=".zip,application/zip"
-            className="sr-only"
-            onChange={(event) => {
-              const file = event.target.files?.[0];
-              if (file) void importBackup(file);
-              event.target.value = "";
-            }}
-            type="file"
-          />
-        </label>
+        <ListActionRow
+          busy={reading}
+          onClick={() => importInput.current?.click()}
+        >
+          {t(reading ? "settings.readingBackup" : "settings.import")}
+        </ListActionRow>
+        <input
+          accept=".zip,application/zip"
+          aria-label={t("settings.import")}
+          hidden
+          ref={importInput}
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) void importBackup(file);
+            event.target.value = "";
+          }}
+          type="file"
+        />
       </ListSection>
 
       <ConfirmDialog

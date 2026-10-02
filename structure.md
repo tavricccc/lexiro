@@ -37,6 +37,11 @@ ramp live in `app/globals.css`; the rules that go with them are in
 ladder in `config/motion.config.json`, generated into `src/generated/` for both
 CSS and JavaScript, so nothing states a literal duration of its own.
 
+`components/ui/confirm-dialog.tsx` 統一執行鎖定、忙碌回饋、成功關閉、視窗內錯誤與
+可聚焦的重試，刪除／匯入呼叫端只負責操作。`components/me/data-section.tsx`
+使用共用操作列顯示備份讀取狀態。`tests-next/confirmation-actions.test.tsx`
+驗證重複提交、執行中關閉、失敗重試及兩段匯入尚未完成時的回饋。
+
 `components/ui/search-field.tsx` 是教材／題庫共用的即時搜尋欄位，含一鍵清除、
 焦點回復與輸入法安全的 Escape 操作。`lib/browse-routes.ts` 承載列表條件與
 編輯返回目的地；頁面讀取路由條件，搜尋只替換當前歷史項目。單字集題目分頁、

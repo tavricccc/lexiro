@@ -1,5 +1,17 @@
 # Confirmed product decisions
 
+## 確認操作的執行回饋（2026-10-02）
+
+共用確認視窗負責執行中、失敗與重試狀態。點下確認後停用再次提交與關閉，
+顯示正在處理；成功完成後才關閉。失敗原因留在原視窗，焦點回到重試按鈕，
+不另外開一個錯誤視窗。較長內容可在視窗內捲動。依據
+[Apple Feedback](https://developer.apple.com/design/human-interface-guidelines/feedback)
+與 [Progress indicators](https://developer.apple.com/design/human-interface-guidelines/progress-indicators) 的狀態與可恢復錯誤指引。
+
+單字集、資料夾、題目刪除與備份匯入共用這段行為。登入前的本機資料提示也
+保留登入失敗原因，讓人直接重試。備份讀取期間在原本的匯入操作顯示讀取狀態；
+正式匯入仍需確認。教材與學習紀錄都儲存成功，才顯示匯入完成。
+
 ## 搜尋與返回位置（2026-10-02）
 
 教材搜尋保留所在資料夾與關鍵字；題庫保留關鍵字、題型與難度。搜尋即時更新，
