@@ -1,5 +1,5 @@
 // Real model trials through the user's authenticated Codex CLI, without reading credentials.
-// node scripts/evaluate-ai-prompts.mjs --run baseline|optimized [case-id-substring]
+// node scripts/evaluate-ai-prompts.mjs --run baseline|optimized|highschool-v5 [case-id-substring]
 // Outputs are synthetic evaluation artifacts, not public API transport/caching measurements.
 import { spawn } from "node:child_process";
 import { readFile, writeFile, mkdir, mkdtemp, readdir } from "node:fs/promises";
@@ -10,10 +10,10 @@ import { createServer } from "vite";
 const phase = process.argv[3];
 if (
   process.argv[2] !== "--run" ||
-  !["baseline", "optimized", "final", "final-tuned"].includes(phase)
+  !["baseline", "optimized", "final", "final-tuned", "highschool-v5"].includes(phase)
 ) {
   process.stdout.write(
-    "Usage: node scripts/evaluate-ai-prompts.mjs --run baseline|optimized [case filter]\nRuns actual GPT-5.6 Luna low requests using Codex account usage.\n",
+    "Usage: node scripts/evaluate-ai-prompts.mjs --run baseline|optimized|final|final-tuned|highschool-v5 [case filter]\nRuns actual GPT-6 Luna low requests using Codex account usage.\n",
   );
   process.exit(0);
 }
@@ -93,7 +93,6 @@ try {
             : trial.kind === "words"
               ? wordTask(buildWordGenerationSources(trial.raw))
               : questionTask(
-                  trial.words,
                   trial.words,
                   trial.kind,
                   trial.difficulty,

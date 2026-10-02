@@ -8,6 +8,7 @@ const frontend = resolve(
 );
 const fixtures = join(root, "tests-next/fixtures/prompt-eval");
 const artifacts = resolve(root, "../lexiro-prompt-eval-private");
+const phase = process.argv[2] || "optimized";
 const vite = await createServer({
   root: frontend,
   configFile: join(frontend, "vitest.next.config.ts"),
@@ -35,18 +36,16 @@ try {
     }
   }
   const latest = new Map();
-  for (const phase of ["optimized"]) {
-    for (const name of await readdir(join(artifacts, phase))) {
-      if (!name.endsWith(".json") || /^(requests|summary)/.test(name)) continue;
-      const reply = JSON.parse(
-        await readFile(join(artifacts, phase, name), "utf8"),
-      );
-      if (cases.has(reply.id))
-        latest.set(`${reply.id}:${reply.turn}`, {
-          reply,
-          file: `${phase}/${name}`,
-        });
-    }
+  for (const name of await readdir(join(artifacts, phase))) {
+    if (!name.endsWith(".json") || /^(requests|summary|validation)/.test(name)) continue;
+    const reply = JSON.parse(
+      await readFile(join(artifacts, phase, name), "utf8"),
+    );
+    if (cases.has(reply.id))
+      latest.set(`${reply.id}:${reply.turn}`, {
+        reply,
+        file: `${phase}/${name}`,
+      });
   }
   const results = [];
   for (const { reply, file } of latest.values()) {
@@ -56,12 +55,9 @@ try {
         ? { steps: [{ parse: parseOrganizedWordInput }] }
         : trial.kind === "words"
           ? wordTask(
-              trial.raw,
               buildWordGenerationSources(trial.raw),
-              trial.batchSize ?? 10,
             )
           : questionTask(
-              trial.words,
               trial.words,
               trial.kind,
               trial.difficulty,
@@ -87,7 +83,7 @@ try {
     results,
   };
   await writeFile(
-    join(artifacts, "validation.json"),
+    join(artifacts, phase, "validation.json"),
     JSON.stringify(report, null, 2),
   );
   process.stdout.write(JSON.stringify(report, null, 2));

@@ -1,5 +1,35 @@
 # 2026-09-12 managed／多義與整理版本
 
+## 2026-10-02 高中題目品質校準
+
+本次依 [115 學年度起適用的學測英文考科考試說明](https://www.ceec.edu.tw/files/file_pool/1/0P091472305863258925/01_115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E8%B5%B7%E9%81%A9%E7%94%A8%E5%AD%B8%E6%B8%AC%E8%8B%B1%E6%96%87%E8%80%83%E7%A7%91%E8%80%83%E8%A9%A6%E8%AA%AA%E6%98%8E.pdf) 與 [115 學測英文試題特色](https://www.ceec.edu.tw/xcepaper/cont?qunit=0Q105367191322447606&sid=0Q105583094870257539&xsmsid=0J066588036013658199) 調整六種題型。參考詞彙以第 1 至 5 級的 4,500 詞為主；難度取決於語境判讀、線索距離與跨句／篇章整合，避免依靠艱深詞或繁複句法。官方說明中的篇章約 180 至 400 詞作為校準依據，各題型與難度的實際長度仍是本產品的練習規格，統一讀取 `@lexiro/ai-contract` 的 `questionLengthRange`。
+
+詞彙題現在要求一至兩句完整情境，同詞性與合適屈折的四個選項都能進入句法位置，至少兩個干擾項與情境相關，再由具體語意排除。文意選填完整題組採十格十選項；來源不足時減少空格並補足誘答詞，保留完整篇章長度。篇章結構維持四格五選項。
+
+閱讀題要求主旨與不同閱讀任務，中等及進階納入跨句推論。錯項可以混淆文中人物或時序、擴大範圍、倒置因果或做過度推論，只要能由文本排除；不再要求所有錯項都與原文字面矛盾。選項長度與句法結構相近，避免正解總是最長、最具體或唯一直接回顯原文。
+
+只有題目快取鍵改為 `lexiro-questions-20261002-v5`；單字、補充詞義、整理及解釋的快取鍵保留。這次本地檢查驗證出題介接與固定前綴，沒有呼叫付費生成 API；提示詞品質仍需以後續實際產出與人工內容審查確認，不能把結構驗證當成唯一解或教學品質保證。
+
+## 2026-10-03 少量真實 CLI 評測
+
+用已登入的 Codex CLI 執行 `gpt-6-luna`／low、read-only，回條確認模型與設定；僅採樣 `vocabulary-two-turn` 與 `reading-difficulty-2`。首次各兩輪，發現問題後各重跑一次，沒有擴大題型或全量重試。請求、原始回覆、回條與每輪結果存於 private sibling 的 `../lexiro-prompt-eval-private/highschool-v5/`；每次執行另有 `runs/<UTC timestamp>/` 快照，保留第一次結構通過但內容不合格的樣本。完整逐題審查見該目錄的 `content-review.json`。
+
+詞彙初版 8 + 1 題全通過解析，但狗題只有陌生人開門、`so loudly` 及鄰居亮燈；`barked`、`growled`、`howled`、`whined` 均可合理代入，人工唯一解審查未通過。加入反向檢查錯項及聲音型態反例後，唯一一次重跑仍為 8 + 1 題解析通過，狗題改為 `short, sharp bursts`，已補上原先缺少的區別線索。
+
+重跑的九題逐題審查仍發現多解：疾病後 `gradually began to recover` 可同樣使用 `improve`；用牆上水痕 `estimate how high the water had risen` 也可合理使用 `measure`。`rescue`／`guide`、`isolate`／`treat` 及情緒詞的排除還需要更明確語境；`contamination` 的錯項 `mixture` 在該句缺冠詞，干擾力也偏弱。最後補入這兩組已確認的近義詞反例，要求無法排除時更換錯項或重寫情境，不以常見程度、詞庫目標或「choose the best」作唯一解依據。這次最後的詞彙提示未再採樣，不能宣稱已證明普遍改善。
+
+閱讀初版兩篇分別 277、267 詞，各四子題，解析通過；第一篇只有主旨與原句查找，並把目標 `reliable` 改成 `trusted`。第二篇所稱推論只是換詞重述已明說的梯子短缺。之後加上必填 `skill` 與逐字原文 `evidence`：至少主旨及兩種閱讀任務，中等以上必須有推論與來自不同句子的兩處依據。新契約唯一一次重跑產生兩篇各 261 詞的文章、各四子題；目標詞已實際出現，選項約 9–16 詞，最新四輪解析／重驗全通過。
+
+閱讀內容仍未全面通過人工審查。第一篇推論題的主要依據已直接寫「因共用地圖與紀錄表而結果可靠」，第二句只提供一般回顧，並未增加必要推論資訊；錯項如「地圖讓溪水速度相同」也過於容易排除。第二篇問兒童初學書籍的 `shortage`，正解內容可由文章支持，`evidence` 卻引用花園水槽快空了的句子，文字存在而語意不相干。契約能強制閱讀任務欄位與原文依據，仍不能自動證明依據支持正解、跨句推論層級或錯項干擾力。
+
+```powershell
+node scripts/evaluate-ai-prompts.mjs --run highschool-v5 vocabulary-two-turn
+node scripts/evaluate-ai-prompts.mjs --run highschool-v5 reading-difficulty-2
+node scripts/validate-prompt-eval.mjs highschool-v5
+```
+
+前兩個命令使用 Codex 帳戶額度；最後一個只重驗已存回覆，寫入同一 private phase 的 `validation.json`。這是少量合成來源的診斷樣本，並非正式 Worker、Responses API 傳輸、付費 API、快取／計費或部署驗收；不把解析通過率當作題目品質通過率。
+
 ## 2026-09-24 快取與成本基準
 
 獨立詞彙／文法題的 structured output 現在要求 `sentence`、`usage`、`answer`、`distractors`。`usage` 是模型自己填好片語佔位詞後，從句子逐字摘出的連續片段；`answer` 是單獨要挖空的連續片段。程式驗證 `usage` 在句中恰好一次，並用來源模板的固定詞順序核對，沒有「佔位詞最多幾字」的限制。文法題可以考 `usage` 之外的相關文法詞，詞彙題的 `answer` 必須是 `usage` 的目標字形。規則寫在共用前綴，題型差異留在穩定的題型區段，來源及修復訊息仍在後段。
