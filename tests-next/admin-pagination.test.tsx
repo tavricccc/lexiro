@@ -13,11 +13,13 @@ describe("admin cursor navigation", () => {
   it("loads the admin menu without offset parameters and identifies incomplete totals", async () => {
     managed.mockReset();
     managed.mockResolvedValue({ accounts: [], nextCursor: null, models: [],
-      pendingUsage: 1, unavailableUsage: 0, unverifiedDebits: 0, freeTrial: false });
+      pendingUsage: 1, unavailableUsage: 0, unverifiedDebits: 0, freeTrial: false, version: 0 });
     render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
       <AdminPanel />
     </QueryClientProvider>);
-    expect(await screen.findByText("部分成本待確認，合計只含已知用量。")).toBeTruthy();
+    expect(await screen.findByText("部分用量待確認，總成本與等值點數暫列未知。")).toBeTruthy();
+    expect(screen.getByText("未知")).toBeVisible();
+    expect(screen.queryByText("0 點")).not.toBeInTheDocument();
     expect(managed).toHaveBeenCalledWith("/admin/accounts");
     expect(managed).toHaveBeenCalledWith("/admin/usage");
   });
@@ -31,7 +33,7 @@ describe("admin cursor navigation", () => {
       const next = url.includes("?cursor=");
       const email = next ? "second@example.test" : "first@example.test";
       return {
-        accounts: [{ uid: email, email, points: 10, monthly: 0, renews_at: 0, note: null }],
+        accounts: [{ version: 0, uid: email, email, points: 10, monthly: 0, renews_at: 0, note: null }],
         entries: [{ id: email, uid: email, email, model: "gpt-6-luna", points: 1,
           input: 1, cached: 0, cacheWrite: 0, output: 1, credits: 1, costUsd: 0.0000006, created_at: 1,
           status: "complete", usageState: "reported", assessedPoints: 1, debitVerified: 1 }],

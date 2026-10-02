@@ -27,6 +27,29 @@ afterEach(() => {
 });
 
 describe("managed AI boundary", () => {
+  it("reports stale admin edits and management failures in the correct action context", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi
+        .fn()
+        .mockResolvedValueOnce(
+          Response.json({ error: { code: "stale_account" } }, { status: 409 }),
+        )
+        .mockResolvedValueOnce(
+          Response.json(
+            { error: { code: "upstream_unavailable" } },
+            { status: 500 },
+          ),
+        ),
+    );
+    await expect(managedFetch("/admin/accounts/u")).rejects.toMatchObject({
+      code: "stale_account",
+      message: "帳號資料已變動。請重新載入帳號，確認最新內容後再調整。",
+    });
+    await expect(managedFetch("/admin/settings")).rejects.toThrow(
+      "管理操作暫時無法完成",
+    );
+  });
   it("refreshes Firebase once on 401 and authenticates the second request", async () => {
     const fetcher = vi
       .fn()

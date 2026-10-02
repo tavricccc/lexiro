@@ -1,8 +1,12 @@
 "use client";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import type { AdminAccount, AdminAccountsPage } from "@lexiro/ai-contract";
-import { useState } from "react";
+import type {
+  AdminAccount,
+  AdminAccountAdjustment,
+  AdminAccountsPage,
+} from "@lexiro/ai-contract";
+import { useRef, useState } from "react";
 
 import { toast } from "sonner";
 
@@ -11,6 +15,7 @@ import { useAdminPagination } from "./use-admin-pagination";
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { ResumeChoice } from "@/components/ui/resume-choice";
 import { StepActions } from "@/components/ui/step-actions";
@@ -24,6 +29,12 @@ import {
 import { managedJson, notifyManagedAccountChanged } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { canonicalHash } from "@/src/lib/hash";
+import {
+  accountAdjustment,
+  adjustmentBalance,
+  hasAccountAdjustment,
+} from "@/src/lib/admin-account-adjustment";
+import { AiRequestError } from "@/src/lib/ai/errors";
 import { useCloudStore } from "@/stores/cloud-store";
 
 export function AdminAccountList() {
@@ -84,6 +95,7 @@ export function AdminAccountEditor({ accountUid }: { accountUid: string }) {
         `/admin/accounts/${encodeURIComponent(accountUid)}`,
       ),
     retry: false,
+    refetchOnWindowFocus: false,
   });
   if (account.error)
     return (
@@ -142,17 +154,102 @@ function AccountForm({
   );
   const { direction, amount, monthly, note } = saved.draft;
   const [busy, setBusy] = useState(false);
+  const saving = useRef(false);
+  const [review, setReview] = useState<AdminAccountAdjustment | null>(null);
+  const [problem, setProblem] = useState("");
+  const [stale, setStale] = useState(false);
+  const adjustment = accountAdjustment(account, {
+    direction,
+    amount,
+    monthly,
+    note,
+  });
+  const resulting = adjustmentBalance(account, adjustment);
+  const changed = hasAccountAdjustment(adjustment);
 
-  const magnitude = Math.max(0, Math.floor(Number(amount) || 0));
-  const addPoints = direction === "add" ? magnitude : -magnitude;
-  const allowance = Math.max(0, Math.floor(Number(monthly) || 0));
-  // A balance floors at zero and a newly set allowance is handed over at once,
-  // so the preview has to say both or it promises something else.
-  const adjusted = Math.max(0, account.points + addPoints);
-  const resulting =
-    allowance > 0 && allowance !== account.monthly
-      ? Math.max(adjusted, allowance)
-      : adjusted;
+  const apply = async (value: AdminAccountAdjustment) => {
+    if (saving.current) return;
+    saving.current = true;
+    setBusy(true);
+    setProblem("");
+    setStale(false);
+    try {
+      const stored = await managedJson<AdminAccount>(
+        `/admin/accounts/${encodeURIComponent(account.uid)}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(value),
+        },
+      );
+      saved.update({
+        direction: "add",
+        amount: "0",
+        monthly: String(stored.monthly),
+        note: stored.note ?? "",
+      });
+      saved.clear();
+      client.setQueryData(["admin-account", cloudUid, account.uid], stored);
+      void client.invalidateQueries({ queryKey: ["admin-accounts", cloudUid] });
+      notifyManagedAccountChanged();
+      toast.success(
+        stored.points < 0
+          ? t("admin.noteSavedPending")
+          : t("admin.accountSaved", { points: stored.points }),
+      );
+    } catch (reason) {
+      setStale(
+        reason instanceof AiRequestError && reason.code === "stale_account",
+      );
+      setProblem(
+        reason instanceof Error ? reason.message : t("managed.failed"),
+      );
+      throw reason;
+    } finally {
+      saving.current = false;
+      setBusy(false);
+    }
+  };
+  const reload = async () => {
+    await client.fetchQuery({
+      queryKey: ["admin-account", cloudUid, account.uid],
+      queryFn: () =>
+        managedJson<AdminAccount>(
+          `/admin/accounts/${encodeURIComponent(account.uid)}`,
+        ),
+      staleTime: 0,
+    });
+    setReview(null);
+    setStale(false);
+    setProblem("");
+  };
+  const reviewDescription = review
+    ? [
+        t("admin.accountTarget", { email: account.email }),
+        review.addPoints !== undefined
+          ? t(
+              review.addPoints > 0
+                ? "admin.confirmAddPoints"
+                : "admin.confirmSubtractPoints",
+              { points: Math.abs(review.addPoints) },
+            )
+          : "",
+        review.monthly !== undefined
+          ? review.monthly > 0
+            ? t("admin.confirmMonthly", { points: review.monthly })
+            : t("admin.confirmMonthlyOff")
+          : "",
+        review.note !== undefined
+          ? t("admin.confirmNote", {
+              note: review.note || t("admin.emptyNote"),
+            })
+          : "",
+        t("admin.balancePreview", {
+          points: adjustmentBalance(account, review),
+        }),
+      ]
+        .filter(Boolean)
+        .join("\n")
+    : "";
 
   if (saved.status === "checking")
     return (
@@ -181,37 +278,49 @@ function AccountForm({
       id="admin-account-form"
       onSubmit={(event) => {
         event.preventDefault();
-        setBusy(true);
-        void managedJson(`/admin/accounts/${encodeURIComponent(account.uid)}`, {
-          method: "PATCH",
-          body: JSON.stringify({ addPoints, monthly: allowance, note }),
-        })
-          .then(async () => {
-            await client.invalidateQueries({
-              queryKey: ["admin-accounts", cloudUid],
-            });
-            await client.invalidateQueries({
-              queryKey: ["admin-account", cloudUid],
-            });
-            notifyManagedAccountChanged();
-            toast.success(t("admin.accountSaved", { points: resulting }));
-            saved.restart();
-          })
-          .catch((reason: unknown) =>
-            toast.error(
-              reason instanceof Error ? reason.message : t("managed.failed"),
-            ),
-          )
-          .finally(() => setBusy(false));
+        if (saving.current || !changed) return;
+        if (
+          adjustment.addPoints !== undefined ||
+          adjustment.monthly !== undefined
+        )
+          setReview(adjustment);
+        else void apply(adjustment).catch(() => undefined);
       }}
     >
       <DraftSaveStatus status={saved.persistence} />
+      {problem && (
+        <div className="space-y-3">
+          <p className="text-sm text-destructive" role="alert">
+            {problem}
+          </p>
+          {stale && (
+            <Button
+              disabled={busy}
+              type="button"
+              onClick={() =>
+                void reload().catch((reason: unknown) =>
+                  setProblem(
+                    reason instanceof Error
+                      ? reason.message
+                      : t("managed.failed"),
+                  ),
+                )
+              }
+              variant="outline"
+            >
+              <Icons.refresh />
+              {t("admin.reloadAccount")}
+            </Button>
+          )}
+        </div>
+      )}
       <ListSection>
         <ListRow icon={Icons.account} label={account.email} />
         <ListRow
           icon={Icons.credit}
           label={t("managed.pointsLabel")}
           value={String(account.points)}
+          detail={account.points < 0 ? t("admin.reservationHint") : undefined}
         />
         <ListRow
           icon={Icons.refresh}
@@ -277,8 +386,8 @@ function AccountForm({
       <StepActions>
         <Button
           className="w-full"
-          disabled={busy}
           form="admin-account-form"
+          disabled={busy || !changed}
           size="lg"
           type="submit"
         >
@@ -286,6 +395,19 @@ function AccountForm({
           {t(busy ? "admin.saving" : "admin.save")}
         </Button>
       </StepActions>
+      <ConfirmDialog
+        open={review !== null}
+        onOpenChange={(open) => {
+          if (!open) setReview(null);
+        }}
+        title={t("admin.confirmAccount")}
+        description={reviewDescription}
+        confirmLabel={t("admin.confirmSave")}
+        onConfirm={() => (review ? apply(review) : undefined)}
+        onRetry={stale ? reload : undefined}
+        retryLabel={stale ? t("admin.reloadAccount") : undefined}
+        tone="default"
+      />
     </form>
   );
 }

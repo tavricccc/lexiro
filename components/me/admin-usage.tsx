@@ -36,7 +36,7 @@ interface AccountSpend {
   tokens: number;
   points: number;
   cost: number | null;
-  credits: number;
+  credits: number | null;
 }
 
 function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
@@ -54,7 +54,10 @@ function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
     current.runs += row.runs;
     current.tokens += row.input + row.output;
     current.points += row.points;
-    current.credits += row.credits;
+    current.credits =
+      current.credits !== null && row.credits !== null
+        ? current.credits + row.credits
+        : null;
     current.cost =
       current.cost === null || row.costUsd === null
         ? null
@@ -81,7 +84,7 @@ interface KindCost {
   runs: number;
   units: number;
   costUsd: number | null;
-  actual: number;
+  actual: number | null;
   quoted: number | null;
   gap: number | null;
 }
@@ -90,7 +93,7 @@ function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
   return rows
     .filter((row) => row.units > 0)
     .map((row) => {
-      const actual = row.credits / row.units;
+      const actual = row.credits === null ? null : row.credits / row.units;
       const quoted = AI_MODELS.includes(row.model as AiModel)
         ? rate(row.kind, row.tier, row.model as AiModel) / 2
         : null;
@@ -104,7 +107,10 @@ function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
         costUsd: row.costUsd,
         actual,
         quoted,
-        gap: quoted !== null ? (actual - quoted) / quoted : null,
+        gap:
+          quoted !== null && actual !== null
+            ? (actual - quoted) / quoted
+            : null,
       };
     })
     .sort((left, right) => Math.abs(right.gap ?? 0) - Math.abs(left.gap ?? 0));
@@ -137,13 +143,17 @@ export function AdminUsage() {
   const models = usage.data?.models ?? [];
   const accounts = byAccount(usage.data?.users ?? []);
   const kinds = byKind(usage.data?.kinds ?? []);
-  const total = models.some((model) => model.costUsd === null)
-    ? null
-    : models.reduce((sum, model) => sum + model.costUsd!, 0);
-  const totalCredits = models.reduce(
-    (sum, model) => sum + (model.credits ?? 0),
-    0,
-  );
+  const incomplete =
+    (usage.data?.pendingUsage ?? 0) > 0 ||
+    (usage.data?.unavailableUsage ?? 0) > 0;
+  const total =
+    incomplete || models.some((model) => model.costUsd === null)
+      ? null
+      : models.reduce((sum, model) => sum + model.costUsd!, 0);
+  const totalCredits =
+    incomplete || models.some((model) => model.credits === null)
+      ? null
+      : models.reduce((sum, model) => sum + model.credits!, 0);
   return (
     <div className="space-y-7">
       <LiquidTabs
@@ -239,10 +249,16 @@ export function AdminUsage() {
                         runs: entry.runs,
                         units: entry.units.toLocaleString(),
                       })
-                    : t("admin.kindUnquoted", {
-                        runs: entry.runs,
-                        units: entry.units,
-                      })}
+                    : entry.quoted !== null
+                      ? t("admin.kindIncomplete", {
+                          runs: entry.runs,
+                          units: entry.units,
+                          quoted: entry.quoted.toFixed(1),
+                        })
+                      : t("admin.kindUnquoted", {
+                          runs: entry.runs,
+                          units: entry.units,
+                        })}
                   {" · "}
                   {t("admin.kindTotalCost", {
                     cost: formatCost(entry.costUsd),
@@ -251,7 +267,11 @@ export function AdminUsage() {
               }
               key={entry.key}
               label={`${jobKindLabel(entry.kind)} · ${t(`managed.${entry.tier}`)}`}
-              value={t("admin.kindCost", { cost: entry.actual.toFixed(2) })}
+              value={
+                entry.actual === null
+                  ? t("admin.kindCostUnknown")
+                  : t("admin.kindCost", { cost: entry.actual.toFixed(2) })
+              }
             />
           ))}
           {!usage.isPending && kinds.length === 0 && (

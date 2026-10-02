@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { AdminIssue, type AdminSettingsValue } from "./admin-shared";
@@ -20,6 +20,8 @@ import {
 import { managedJson } from "@/lib/managed-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
+import { AiRequestError } from "@/src/lib/ai/errors";
+import type { AdminSettingsAdjustment } from "@lexiro/ai-contract";
 
 interface AdminSettingsDraft {
   freeTrial: boolean;
@@ -79,6 +81,16 @@ function AdminSettingsForm({
   );
   const draft = saved.draft;
   const [busy, setBusy] = useState(false);
+  const saving = useRef(false);
+  const [problem, setProblem] = useState("");
+  const [stale, setStale] = useState(false);
+  const patch: AdminSettingsAdjustment = { expected: initial };
+  if (draft.freeTrial !== initial.freeTrial) patch.freeTrial = draft.freeTrial;
+  if (Number(draft.defaultInitial) !== initial.defaultInitial)
+    patch.defaultInitial = Number(draft.defaultInitial);
+  if (Number(draft.defaultMonthly) !== initial.defaultMonthly)
+    patch.defaultMonthly = Number(draft.defaultMonthly);
+  const changed = Object.keys(patch).length > 1;
   if (saved.status === "checking")
     return (
       <ListSection>
@@ -106,31 +118,82 @@ function AdminSettingsForm({
       id="admin-settings-form"
       onSubmit={(event) => {
         event.preventDefault();
+        if (saving.current || !changed) return;
+        saving.current = true;
         setBusy(true);
+        setProblem("");
+        setStale(false);
         void managedJson<AdminSettingsValue>("/admin/settings", {
           method: "PATCH",
-          body: JSON.stringify({
-            freeTrial: draft.freeTrial,
-            defaultInitial: Number(draft.defaultInitial),
-            defaultMonthly: Number(draft.defaultMonthly),
-          } satisfies AdminSettingsValue),
+          body: JSON.stringify(patch),
         })
-          .then(async () => {
-            saved.clear();
-            await client.invalidateQueries({
-              queryKey: ["admin-settings", uid],
+          .then((stored) => {
+            saved.update({
+              freeTrial: stored.freeTrial,
+              defaultInitial: String(stored.defaultInitial),
+              defaultMonthly: String(stored.defaultMonthly),
             });
+            saved.clear();
+            client.setQueryData(["admin-settings", uid], stored);
             toast.success(t("admin.settingsSaved"));
           })
-          .catch((reason: unknown) =>
-            toast.error(
+          .catch((reason: unknown) => {
+            setStale(
+              reason instanceof AiRequestError &&
+                reason.code === "stale_settings",
+            );
+            setProblem(
               reason instanceof Error ? reason.message : t("managed.failed"),
-            ),
-          )
-          .finally(() => setBusy(false));
+            );
+          })
+          .finally(() => {
+            saving.current = false;
+            setBusy(false);
+          });
       }}
     >
       <DraftSaveStatus status={saved.persistence} />
+      {problem && (
+        <p className="text-sm text-destructive" role="alert">
+          {problem}
+        </p>
+      )}
+      {stale && (
+        <Button
+          disabled={busy}
+          type="button"
+          variant="outline"
+          onClick={() => {
+            setBusy(true);
+            void client
+              .fetchQuery({
+                queryKey: ["admin-settings", uid],
+                queryFn: () =>
+                  managedJson<AdminSettingsValue>("/admin/settings"),
+                staleTime: 0,
+              })
+              .then((stored) => {
+                saved.update({
+                  freeTrial: stored.freeTrial,
+                  defaultInitial: String(stored.defaultInitial),
+                  defaultMonthly: String(stored.defaultMonthly),
+                });
+                saved.clear();
+                setStale(false);
+                setProblem("");
+              })
+              .catch((reason: unknown) =>
+                setProblem(
+                  reason instanceof Error ? reason.message : t("admin.failed"),
+                ),
+              )
+              .finally(() => setBusy(false));
+          }}
+        >
+          <Icons.refresh />
+          {t("admin.reloadSettings")}
+        </Button>
+      )}
       <ListSection footer={t("admin.trialHint")}>
         <ListSwitchRow
           checked={draft.freeTrial}
@@ -169,8 +232,8 @@ function AdminSettingsForm({
       <StepActions>
         <Button
           className="w-full"
-          disabled={busy}
           form="admin-settings-form"
+          disabled={busy || !changed}
           size="lg"
           type="submit"
         >

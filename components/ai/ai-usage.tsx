@@ -4,7 +4,7 @@ import { t } from "@/lib/i18n";
 
 /** Small runs still show their calculated cost below one cent. */
 export function formatCost(cost: number | null): string {
-  if (cost === null) return t("admin.noPrice");
+  if (cost === null) return t("admin.costUnknown");
   return `US$${cost.toFixed(6)}`;
 }
 

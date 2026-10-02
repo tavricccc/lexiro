@@ -37,6 +37,11 @@ ramp live in `app/globals.css`; the rules that go with them are in
 ladder in `config/motion.config.json`, generated into `src/generated/` for both
 CSS and JavaScript, so nothing states a literal duration of its own.
 
+`src/lib/admin-account-adjustment.ts` 產生有變動的帳號欄位與確認餘額；
+`components/me/admin-accounts.tsx` 在點數／額度調整前確認，並依後端結果更新。
+管理帳號與設定使用 `@lexiro/ai-contract` 2.1.0 的閱讀狀態檢查；過期修改只能
+重新載入後再次確認。管理用量彙總的未知 credit 保留 null，不當成免費成本。
+
 `components/ui/confirm-dialog.tsx` 統一執行鎖定、忙碌回饋、成功關閉、視窗內錯誤與
 可聚焦的重試，刪除／匯入呼叫端只負責操作。`components/me/data-section.tsx`
 使用共用操作列顯示備份讀取狀態。`tests-next/confirmation-actions.test.tsx`

@@ -12,6 +12,8 @@ interface ConfirmDialogProps {
   confirmLabel?: string;
   description: string;
   onConfirm: () => void | Promise<void>;
+  onRetry?: () => void | Promise<void>;
+  retryLabel?: string;
   onOpenChange: (open: boolean) => void;
   open: boolean;
   title: string;
@@ -28,6 +30,8 @@ export function ConfirmDialog({
   confirmLabel = t("common.confirm"),
   description,
   onConfirm,
+  onRetry,
+  retryLabel = t("common.retry"),
   onOpenChange,
   open,
   title,
@@ -50,7 +54,7 @@ export function ConfirmDialog({
     setBusy(true);
     setError("");
     try {
-      await onConfirm();
+      await (error && onRetry ? onRetry() : onConfirm());
       onOpenChange(false);
     } catch (reason) {
       setError(
@@ -98,7 +102,7 @@ export function ConfirmDialog({
             </div>
             <div>
               <Dialog.Title className="type-section">{title}</Dialog.Title>
-              <Dialog.Description className="mt-2 type-lead">
+              <Dialog.Description className="mt-2 whitespace-pre-line [overflow-wrap:anywhere] type-lead">
                 {description}
               </Dialog.Description>
             </div>
@@ -132,7 +136,7 @@ export function ConfirmDialog({
                   {busy
                     ? t("common.processing")
                     : error
-                      ? t("common.retry")
+                      ? retryLabel
                       : confirmLabel}
                 </span>
               </Button>

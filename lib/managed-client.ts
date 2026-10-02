@@ -21,6 +21,13 @@ const messages: Record<number, TranslationKey> = {
   429: "managed.rateLimited",
   503: "managed.unavailable",
 };
+const adminMessages: Record<number, TranslationKey> = {
+  400: "admin.invalidInput",
+  404: "admin.dataUnavailable",
+  409: "admin.accountBusy",
+  500: "admin.failed",
+  503: "admin.unavailable",
+};
 
 export async function managedFetch(
   path: string,
@@ -34,8 +41,12 @@ export async function managedFetch(
     ]),
   };
   const base = process.env.NEXT_PUBLIC_AI_WORKER_URL;
+  const adminRequest = path.startsWith("/admin/");
   if (!base)
-    throw new AiRequestError(t("managed.unavailable"), { retryable: false });
+    throw new AiRequestError(
+      t(adminRequest ? "admin.unavailable" : "managed.unavailable"),
+      { retryable: false },
+    );
   const auth = getFirebaseAuth();
   if (!auth)
     throw new AiRequestError(t("managed.signInRequired"), {
@@ -65,10 +76,13 @@ export async function managedFetch(
       });
     } catch (reason) {
       if (init.signal?.aborted) throw init.signal.reason;
-      throw new AiRequestError(t("managed.unavailable"), {
-        retryable: true,
-        code: reason instanceof TypeError ? "network" : "request_failed",
-      });
+      throw new AiRequestError(
+        t(adminRequest ? "admin.unavailable" : "managed.unavailable"),
+        {
+          retryable: true,
+          code: reason instanceof TypeError ? "network" : "request_failed",
+        },
+      );
     }
     if (auth.currentUser?.uid !== uid) {
       await response.body?.cancel();
@@ -101,11 +115,18 @@ export async function managedFetch(
             : Math.max(0, Date.parse(retryAfter) - Date.now());
       throw new AiRequestError(
         t(
-          code === "account_exists"
-            ? "managed.accountExists"
-            : code === "retry_limit"
-              ? "managed.retryLimit"
-              : (messages[response.status] ?? "managed.failed"),
+          code === "stale_account"
+            ? "admin.staleAccount"
+            : code === "stale_settings"
+              ? "admin.staleSettings"
+              : code === "account_exists"
+                ? "managed.accountExists"
+                : code === "retry_limit"
+                  ? "managed.retryLimit"
+                  : adminRequest && adminMessages[response.status]
+                    ? adminMessages[response.status]
+                    : (messages[response.status] ??
+                      (adminRequest ? "admin.failed" : "managed.failed")),
         ),
         {
           status: response.status,

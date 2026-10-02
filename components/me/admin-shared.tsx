@@ -3,13 +3,7 @@
 import { ListActionRow, ListRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 
-export interface AdminSettingsValue {
-  /** Whether a brand new account is handed the defaults below, or nothing. */
-  freeTrial: boolean;
-  defaultInitial: number;
-  defaultMonthly: number;
-}
-
+export type { AdminSettingsValue } from "@lexiro/ai-contract";
 
 export function AdminIssue({
   message,
@@ -41,7 +35,9 @@ export function AdminPager({
   return (
     <ListSection>
       {hasPrevious && (
-        <ListActionRow onClick={onPrevious}>{t("admin.previous")}</ListActionRow>
+        <ListActionRow onClick={onPrevious}>
+          {t("admin.previous")}
+        </ListActionRow>
       )}
       {hasNext && (
         <ListActionRow onClick={onNext}>{t("admin.next")}</ListActionRow>

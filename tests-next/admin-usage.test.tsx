@@ -79,6 +79,17 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe("the administrator's per-kind cost report", () => {
+  it("does not turn missing historical unit cost into zero or a false price gap", async () => {
+    managed.mockResolvedValue({
+      ...report,
+      kinds: [{ ...report.kinds[0], credits: null }],
+    } satisfies UsageReport);
+    await showKindReport();
+    expect(await screen.findByText("單位點數成本未提供")).toBeVisible();
+    expect(screen.getByText(/實際成本尚未齊全/)).toBeVisible();
+    expect(screen.queryByText("0.00 點")).not.toBeInTheDocument();
+    expect(screen.queryByText(/差 −100%/)).not.toBeInTheDocument();
+  });
   it("compares each family with its own quote even for the same kind and tier", async () => {
     managed.mockResolvedValue({
       ...report,

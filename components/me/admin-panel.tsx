@@ -1,7 +1,10 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { type AdminAccountsPage, type AdminUsageReport } from "@lexiro/ai-contract";
+import {
+  type AdminAccountsPage,
+  type AdminUsageReport,
+} from "@lexiro/ai-contract";
 
 import { formatCost } from "@/components/ai/ai-usage";
 import { CreditBadge } from "@/components/ai/credit-badge";
@@ -16,10 +19,7 @@ export function AdminPanel() {
   const uid = useCloudStore((store) => store.user?.uid);
   const accounts = useQuery({
     queryKey: ["admin-accounts", uid, undefined],
-    queryFn: () =>
-      managedJson<AdminAccountsPage>(
-        "/admin/accounts",
-      ),
+    queryFn: () => managedJson<AdminAccountsPage>("/admin/accounts"),
     retry: false,
   });
   const settings = useQuery({
@@ -34,11 +34,14 @@ export function AdminPanel() {
   });
   const issue =
     accounts.error?.message || settings.error?.message || usage.error?.message;
-  const cost = totalCost(usage.data?.models ?? []);
-  const credits = usage.data?.models.reduce(
-    (total, model) => total + (model.credits ?? 0),
-    0,
-  );
+  const incomplete =
+    (usage.data?.pendingUsage ?? 0) > 0 ||
+    (usage.data?.unavailableUsage ?? 0) > 0;
+  const cost = incomplete ? null : totalCost(usage.data?.models ?? []);
+  const credits =
+    incomplete || usage.data?.models.some((model) => model.credits === null)
+      ? null
+      : usage.data?.models.reduce((total, model) => total + model.credits!, 0);
 
   return (
     <div className="space-y-7">
@@ -59,9 +62,14 @@ export function AdminPanel() {
           label={t("admin.accounts")}
           value={
             accounts.data
-              ? t(accounts.data.nextCursor ? "admin.accountsMore" : "admin.accountsCount", {
-                  count: accounts.data.accounts.length,
-                })
+              ? t(
+                  accounts.data.nextCursor
+                    ? "admin.accountsMore"
+                    : "admin.accountsCount",
+                  {
+                    count: accounts.data.accounts.length,
+                  },
+                )
               : t("common.loading")
           }
         />
@@ -69,12 +77,17 @@ export function AdminPanel() {
           href="/app/me/admin/usage"
           icon={Icons.stats}
           label={t("admin.usage")}
-          detail={usage.data && (usage.data.pendingUsage > 0 || usage.data.unavailableUsage > 0) ? t("admin.usageIncomplete") : undefined}
+          detail={
+            usage.data &&
+            (usage.data.pendingUsage > 0 || usage.data.unavailableUsage > 0)
+              ? t("admin.usageIncomplete")
+              : undefined
+          }
           value={
             usage.data ? (
               <span className="flex items-center gap-2">
                 <span>{formatCost(cost)}</span>
-                {credits !== undefined && (
+                {credits !== undefined && credits !== null && (
                   <CreditBadge
                     label={t("admin.creditEquivalent", { credits })}
                     value={credits}
