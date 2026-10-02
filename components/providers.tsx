@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { AppPreload } from "@/components/app-preload";
+import { AppUpdateMonitor } from "@/components/app-update-monitor";
 import { NavigationFeedback } from "@/components/motion/navigation-feedback";
 import { timing } from "@/lib/motion-timing";
 import { useState, type ReactNode } from "react";
@@ -21,11 +22,17 @@ export function Providers({ children }: { children: ReactNode }) {
   );
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
       <MotionConfig reducedMotion="user" transition={timing("control")}>
         <TooltipProvider>
           <QueryClientProvider client={queryClient}>
             <AppPreload />
+            <AppUpdateMonitor />
             {children}
             <NavigationFeedback />
             <Toaster position="bottom-center" />

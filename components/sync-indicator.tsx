@@ -13,15 +13,7 @@ import {
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
-
-function statusCopy(status: SyncStatus): string {
-  if (status === "disabled") return t("settings.syncDisabled");
-  if (status === "signed-out") return t("settings.syncSignedOut");
-  if (status === "offline") return t("settings.syncOffline");
-  if (status === "error") return t("settings.syncError");
-  if (status === "synced") return t("settings.syncSynced");
-  return t("settings.syncWorking");
-}
+import { syncStatusLabel } from "@/lib/sync-status";
 
 function statusIcon(status: SyncStatus, pending: number) {
   if (status === "disabled" || status === "signed-out") return Icons.syncOff;
@@ -41,8 +33,8 @@ export function SyncIndicator({ className }: { className?: string }) {
   const label = localOnly
     ? t("settings.localOnly")
     : pending
-      ? `${statusCopy(status)} · ${t("settings.syncPendingCount", { count: pending })}`
-      : statusCopy(status);
+      ? `${syncStatusLabel(status, pending)} · ${t("settings.syncPendingCount", { count: pending })}`
+      : syncStatusLabel(status, pending);
 
   return (
     <Tooltip>

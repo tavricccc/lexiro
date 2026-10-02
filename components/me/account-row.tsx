@@ -22,7 +22,10 @@ export function AccountRow() {
   const initials = displayName.trim().slice(0, 1).toLocaleUpperCase() || "L";
   return (
     <section className="rule-card rule-list">
-      <Link className="t-row flex min-h-20 items-center gap-4 py-4" href="/app/sync">
+      <Link
+        className="t-row flex min-h-20 items-center gap-4 py-4"
+        href="/app/sync"
+      >
         <Avatar className="size-12 shrink-0 ring-1 ring-border">
           {cloud.user?.photoURL && (
             <AvatarImage alt="" src={cloud.user.photoURL} />
@@ -36,9 +39,12 @@ export function AccountRow() {
           <span className="type-row-detail mt-0.5 block truncate">{email}</span>
         </span>
         <span className="type-row-value shrink-0 text-sm">
-          {syncStatusLabel(cloud.status)}
+          {syncStatusLabel(cloud.status, cloud.pending)}
         </span>
-        <Icons.open aria-hidden className="size-4 shrink-0 text-muted-foreground/70" />
+        <Icons.open
+          aria-hidden
+          className="size-4 shrink-0 text-muted-foreground/70"
+        />
       </Link>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { AccountRow } from "@/components/me/account-row";
+import { AppUpdateSection } from "./app-update-section";
 import { useManagedAccount } from "@/components/ai/use-managed-account";
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
@@ -53,6 +54,7 @@ export function MePage() {
           />
         )}
       </ListSection>
+      <AppUpdateSection />
     </div>
   );
 }

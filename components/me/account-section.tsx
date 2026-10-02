@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -36,6 +36,7 @@ export function AccountSection() {
   const stats = useLearningStore((store) => store.stats);
   const [confirmSignIn, setConfirmSignIn] = useState(false);
   const [working, setWorking] = useState<"in" | "sync" | "out" | null>(null);
+  const currentAction = useRef(0);
   const isWorking =
     working !== null ||
     cloud.status === "syncing" ||
@@ -49,15 +50,18 @@ export function AccountSection() {
     action: () => Promise<void>,
     done: () => string | null,
   ) => {
+    const actionId = ++currentAction.current;
     setWorking(step);
     try {
       await action();
+      if (actionId !== currentAction.current) return;
       const message = done();
       if (message) toast.success(message);
     } catch (reason) {
+      if (actionId !== currentAction.current) return;
       toast.error(t("me.actionFailed", { message: errorMessage(reason) }));
     } finally {
-      setWorking(null);
+      if (actionId === currentAction.current) setWorking(null);
     }
   };
 
@@ -72,7 +76,9 @@ export function AccountSection() {
       "sync",
       () => cloud.sync({ reconcileAccount: true }),
       () =>
-        useCloudStore.getState().status === "synced"
+        useCloudStore.getState().user?.uid === cloud.user?.uid &&
+        useCloudStore.getState().status === "synced" &&
+        useCloudStore.getState().pending === 0
           ? t("me.syncComplete")
           : null,
     );
@@ -80,7 +86,7 @@ export function AccountSection() {
     run(
       "out",
       () => cloud.signOut(),
-      () => t("me.signedOut"),
+      () => (useCloudStore.getState().user ? null : t("me.signedOut")),
     );
 
   const requestSignIn = () => {
@@ -120,7 +126,7 @@ export function AccountSection() {
           icon={cloud.error ? Icons.syncOff : Icons.sync}
           label={t("sync.statusLabel")}
           tone={cloud.error ? "destructive" : "default"}
-          value={syncStatusLabel(cloud.status)}
+          value={syncStatusLabel(cloud.status, cloud.pending)}
         />
         {cloud.pending > 0 && (
           <ListRow
@@ -164,7 +170,7 @@ export function AccountSection() {
             </ListActionRow>
             <ListActionRow
               busy={working === "out"}
-              disabled={isWorking}
+              disabled={working === "in" || working === "out" || !cloud.ready}
               onClick={() => void signOut()}
               tone="destructive"
             >

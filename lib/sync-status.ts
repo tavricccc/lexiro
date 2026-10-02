@@ -1,7 +1,9 @@
 import { t } from "@/lib/i18n";
+import type { SyncStatus } from "@/types";
 
 /** One word for what the cloud is doing, shared by every place that says it. */
-export function syncStatusLabel(status: string): string {
+export function syncStatusLabel(status: SyncStatus, pending = 0): string {
+  if (status === "synced" && pending > 0) return t("settings.syncQueued");
   if (status === "disabled") return t("settings.syncDisabled");
   if (status === "signed-out") return t("settings.syncSignedOut");
   if (status === "synced") return t("settings.syncSynced");

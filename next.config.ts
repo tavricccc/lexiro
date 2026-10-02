@@ -4,6 +4,7 @@ import type { NextConfig } from "next";
 const withSerwist = withSerwistInit({
   swSrc: "app/sw.ts",
   swDest: "public/sw.js",
+  reloadOnOnline: false,
   disable: process.env.NODE_ENV === "development",
 });
 

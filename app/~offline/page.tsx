@@ -3,17 +3,27 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/i18n";
+import { OfflineRetryButton } from "@/components/offline-retry-button";
 
 export default function OfflinePage() {
   return (
     <main className="grid min-h-screen place-items-center px-6">
       <section className="max-w-md text-center">
-        <Image className="mx-auto mb-8 size-20 rounded-3xl" src="/icons/lexiro.png" width={80} height={80} alt="" />
+        <Image
+          className="mx-auto mb-8 size-20 rounded-3xl"
+          src="/icons/lexiro.png"
+          width={80}
+          height={80}
+          alt=""
+        />
         <h1 className="type-page">{t("offline.title")}</h1>
-        <p className="mt-3 text-ink-muted">{t("offline.description")}</p>
-        <Button asChild className="mt-7">
-          <Link href="/app">{t("offline.action")}</Link>
-        </Button>
+        <p className="mt-3 text-muted-foreground">{t("offline.description")}</p>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <OfflineRetryButton />
+          <Button asChild variant="outline">
+            <Link href="/app">{t("offline.action")}</Link>
+          </Button>
+        </div>
       </section>
     </main>
   );
