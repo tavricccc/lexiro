@@ -1,6 +1,15 @@
 export * from "./words";
 export * from "./formats";
 
+export const AI_MODELS = ["gpt-5.6-luna", "gpt-6-luna"] as const;
+export type AiModel = (typeof AI_MODELS)[number];
+export const DEFAULT_AI_MODEL: AiModel = "gpt-6-luna";
+/** Estimate at the largest token-price ratio; settlement uses actual usage. */
+const MODEL_ESTIMATE_FACTOR: Record<AiModel, number> = {
+  "gpt-5.6-luna": 2.4,
+  "gpt-6-luna": 1,
+};
+
 export const TIERS = ["lite", "thinking", "pro"] as const;
 export type Tier = (typeof TIERS)[number];
 /**
@@ -51,6 +60,7 @@ export interface GenerationInput {
   limit?: 1 | 2 | 3;
 }
 export interface GenerationRequest extends GenerationInput {
+  model: AiModel;
   session: string;
   tier: Tier;
   cursor?: string;
@@ -108,6 +118,7 @@ export interface AdminUsageEntry {
  * price is above or below what the work costs.
  */
 export interface AdminKindUsage {
+  model: string;
   kind: JobKind;
   tier: Tier;
   runs: number;
@@ -176,6 +187,7 @@ export const MODEL_PRICES: Record<
   string,
   { input: number; cached: number; cacheWrite: number; output: number }
 > = {
+  "gpt-5.6-luna": { input: 0.2, cached: 0.02, cacheWrite: 0.25, output: 1.2 },
   "gpt-6-luna": { input: 0.1, cached: 0.01, cacheWrite: 0.125, output: 0.5 },
   "gpt-5.6-terra": { input: 2, cached: 0.2, cacheWrite: 2.5, output: 12 },
 };
@@ -204,7 +216,8 @@ export function responseCost(usage: TokenUsage): number | null {
     ordinary === null ||
     input === undefined ||
     output === undefined ||
-    usage.model !== "gpt-6-luna" ||
+    usage.model === undefined ||
+    !AI_MODELS.includes(usage.model as AiModel) ||
     input <= LONG_CONTEXT_INPUT_THRESHOLD
   ) return ordinary;
   const outputCost = (output * MODEL_PRICES[usage.model].output) / 1_000_000;
@@ -231,10 +244,8 @@ export const LIMITS = {
  * and assumes medium reasoning, where lite runs low — so a rate at or below it
  * is charging no more than the run costs.
  */
-export function rate(kind: JobKind, tier: Tier): number {
-  if (kind === "organizeImage") return 12;
-  if (kind === "organizeText" || kind === "explain") return 10;
-  return (
+export function rate(kind: JobKind, tier: Tier, model: AiModel = DEFAULT_AI_MODEL): number {
+  const base = kind === "organizeImage" ? 12 : kind === "organizeText" || kind === "explain" ? 10 : (
     {
       words: 2,
       senses: 2,
@@ -246,12 +257,14 @@ export function rate(kind: JobKind, tier: Tier): number {
       reading: 30,
     }[kind] * MULTIPLIER[tier]
   );
+  return Math.ceil(base * MODEL_ESTIMATE_FACTOR[model]);
 }
 export function estimatePoints(
   kind: JobKind,
   count: number,
   tier: Tier,
+  model: AiModel = DEFAULT_AI_MODEL,
 ): { min: number; max: number } {
-  const max = Math.ceil((rate(kind, tier) * count) / 2);
-  return { min: kind === "reading" ? count * 9 * MULTIPLIER[tier] : max, max };
+  const max = Math.ceil((rate(kind, tier, model) * count) / 2);
+  return { min: kind === "reading" ? Math.ceil(count * 9 * MULTIPLIER[tier] * MODEL_ESTIMATE_FACTOR[model]) : max, max };
 }
