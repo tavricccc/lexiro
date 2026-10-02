@@ -1,5 +1,30 @@
 # Confirmed product decisions
 
+## App 離線與更新流程（2026-10-02）
+
+重新連線不重整正在使用的畫面；原本 Serwist 的 `reloadOnOnline` 預設為 true，
+此專案明確關閉。新版 service worker 等候明確的更新操作，第一次安裝仍正常
+啟用。依據 [Serwist reloadOnOnline](https://serwist.pages.dev/docs/next/configuring/reload-on-online)、
+[等待更新與接管說明](https://serwist.pages.dev/docs/window) 及
+[web.dev PWA Update](https://web.dev/learn/pwa/update)。
+
+「我的」顯示檢查更新／重新啟動更新，取得新版時不另外跳出視窗。重啟先等
+帳號資料、教材、學習與模型偏好的本機寫入結束，再要求新版接管；接管後
+才重新啟動，而且使用者仍須停留在更新入口。其他分頁的更新不重整目前
+畫面；離線時保留現在的 App，連線後可再檢查。沒有用 package 版號或 commit
+假裝伺服器目前版本，僅呈現實際的等待／接管狀態。
+
+頁面載入失敗時可以重試原 URL，或回到 App；不把所有載入失敗都稱為斷線。
+同步狀態仍有 pending 時呈現「等待同步」，也不顯示手動同步完成的成功訊息。
+同步期間仍可登出，舊操作完成不會清除登出的忙碌狀態或顯示過期的成功訊息。
+既有帳號切換檢查會拒絕舊同步的回覆與完成狀態；登入完成只宣告身分登入。
+此輪沒有改持久化 schema。
+Serwist 預設的跨來源 NetworkFirst 會保存 API GET 回覆，不能當成帳號資料的
+離線存放處。帶 Authorization 的 GET 與跨來源動態資料明確走 NetworkOnly；
+啟用新版時刪除舊的登入回覆及 cross-origin 資料快取，App 頁面、公開圖片、
+字型、程式與其他資產不因這個清理被刪除。教材與學習內容仍由帳號 namespace
+的 IndexedDB 保存，額度與管理結果不使用 HTTP 快取補值。
+
 ## 備份與同步期間的資料保留（2026-10-02）
 
 備份確認只保存原始檔案與所選帳號，不保存要寫回的本機快照。確認數量隨

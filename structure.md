@@ -47,6 +47,20 @@ CSS and JavaScript, so nothing states a literal duration of its own.
 使用共用操作列顯示備份讀取狀態。`tests-next/confirmation-actions.test.tsx`
 驗證重複提交、執行中關閉、失敗重試及兩段匯入尚未完成時的回饋。
 
+`components/app-update-monitor.tsx` 在 root provider 觀察瀏覽器更新；
+`lib/app-update.ts` 管等待新版、儲存、接管與重新啟動的時序，
+`stores/app-update-store.ts` 只保存本分頁的暫時狀態。
+`components/me/app-update-section.tsx` 在「我的」提供檢查／重新啟動更新，
+不打斷練習或編輯。`app/sw.ts` 等候明確的 SKIP_WAITING，
+`next.config.ts` 關閉重新連線自動重整。`components/offline-retry-button.tsx`
+讓載入失敗頁面重試原 URL，另保留回到 App 的入口。
+`tests-next/app-update.test.ts` 驗證儲存、接管、首次安裝、跨分頁更新與停止重啟；
+`tests-next/sync-status-ux.test.tsx` 驗證待同步文案、背景同步登出及更新忙碌回饋。
+`lib/sync-status.ts` 統一全 App 的同步文案，pending 未清空不顯示已同步。
+`src/lib/service-worker-cache.ts` 讓登入請求與跨來源資料走 NetworkOnly；啟用新版
+時清除舊的登入／跨來源資料快取，保留 App 頁面及公開資產。
+`tests-next/service-worker-cache.test.ts` 驗證快取分類與清理範圍。
+
 `lib/backup-actions.ts` 協調完整匯入／匯出與帳號邊界；
 `src/lib/account-data-queue.ts` 讓跨 store 備份操作與 namespace 切換依序完成。
 `src/lib/full-backup.ts` 的 `previewBackupImport` 只回傳預覽數量，不回傳要寫回
