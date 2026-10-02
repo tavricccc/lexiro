@@ -27,6 +27,18 @@ const run = (id: string, at: number, state = "reported", verified = 1) => fixtur
 ).bind(id, at, state === "reported" ? 2 : null, state, verified);
 
 describe("indexed admin reports", () => {
+  it("separates model families for one kind and prices 5.6 long contexts correctly", async () => {
+    const now = nowSeconds();
+    await fixture.db.prepare(`INSERT INTO usage_log
+      (id,uid,points,model,created_at,credits,status,usage_state,debit_verified,kind,tier,units,input,cached,cache_write,output)
+      VALUES ('six','u',1,'gpt-6-luna',?,1,'complete','reported',1,'vocabulary','lite',1,300000,200000,20000,1000),
+      ('five','u',2,'gpt-5.6-luna',?,2,'complete','reported',1,'vocabulary','lite',1,300000,200000,20000,1000)`)
+      .bind(now, now).run();
+    const report = await (await request("/admin/usage")).json() as { kinds: { model: string; costUsd: number }[] };
+    expect(report.kinds).toHaveLength(2);
+    expect(report.kinds.find((row) => row.model === "gpt-5.6-luna")?.costUsd).toBeCloseTo(0.0518);
+    expect(report.kinds.find((row) => row.model === "gpt-6-luna")?.costUsd).toBeCloseTo(0.02575);
+  });
   it("pages accounts by email and uid without shifting after a new account arrives", async () => {
     await fixture.db.prepare(`WITH RECURSIVE n(value) AS (SELECT 0 UNION ALL SELECT value+1 FROM n WHERE value<119)
       INSERT INTO accounts(uid,email,points,monthly,renews_at,updated_at)

@@ -12,7 +12,7 @@
 | `migrations/0001_billing.sql`～`0011_report_indexes.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、可調試用／新帳號方案預設，以及每筆 usage 的結束狀態與 uid 索引 |
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
-| `src/admin-usage.ts`、`src/pagination.ts`、`tests-next/admin-report.test.ts` | 近 30 天報表、未知成本／歷史未核實扣款計數、版本化游標分頁及行為測試。usage 按時間／id 遞減，帳戶按 email／uid 遞增；`cursor`／`nextCursor` 取代 offset，沒有舊參數相容分支 |
+| `src/admin-usage.ts`、`src/pagination.ts`、`tests-next/admin-report.test.ts` | 近 30 天報表（題型／檔位／模型分組，各次請求分別計算長上下文成本）、未知成本／歷史未核實扣款計數、版本化游標分頁及行為測試。usage 按時間／id 遞減，帳戶按 email／uid 遞增；`cursor`／`nextCursor` 取代 offset，沒有舊參數相容分支 |
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限。`cacheKey` 跟著用到的那段 prompt 走而不是 job kind：`senses`（補充多義）逐字沿用 `generateWordSet`，因此與 `words` 共用 `WORD_CACHE_KEY`，由建立單字集的流量把前綴暖著。補充以「字」為計費單位，回傳 0 個詞義照樣算完成 |
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、每批 1–10 張 WebP 輸入檢查與逐張計費來源；圖片不落地。`text/plain` body 每行一張 base64，每張至多 1.5 MB、整批 body 至多 20,000,009 bytes；同批只發一次多圖片 Responses 請求，仍逐張預留與記錄來源完成。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
