@@ -6,7 +6,7 @@ import type {
   QuestionStyle,
 } from "@/types";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
@@ -32,6 +32,11 @@ import {
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
+import {
+  QuestionWorkspace,
+  type QuestionWorkspacePane,
+} from "./question-workspace";
+import { QuestionPreview } from "./question-preview";
 
 interface Values {
   answerIndex: number;
@@ -116,6 +121,26 @@ function QuestionEditorForm({
   });
   const answerIndex = form.watch("answerIndex");
   const options = form.watch("options");
+  const [pane, setPane] = useState<QuestionWorkspacePane>("passage");
+  const values = form.watch();
+  const previewSource = parseSenseKey(values.source, state.words);
+  const preview: MultipleChoiceQuestion | null = previewSource
+    ? {
+        id: "editing-preview",
+        fingerprint: "editing-preview",
+        kind: "multipleChoice",
+        questionStyle: values.questionStyle,
+        difficulty: Number(values.difficulty) as 1 | 2 | 3,
+        prompt: values.prompt,
+        options: values.options,
+        answerIndex: values.answerIndex,
+        explanation: values.explanation,
+        wordKey: previewSource.wordKey,
+        senseId: previewSource.senseId,
+        createdAt: current?.createdAt ?? "",
+        updatedAt: current?.updatedAt ?? "",
+      }
+    : null;
 
   useEffect(() => {
     if (saved.status !== "active") return;
@@ -158,6 +183,9 @@ function QuestionEditorForm({
       senseId,
       updatedAt: timestamp,
       wordKey,
+      ...(current?.kind === "multipleChoice"
+        ? { trap: current.trap, whyWrong: current.whyWrong }
+        : {}),
     };
     // The store validates on save; without this the button silently did
     // nothing and the reason only appeared in the console.
@@ -201,7 +229,7 @@ function QuestionEditorForm({
 
   return (
     <form
-      className="mx-auto max-w-3xl"
+      className="mx-auto max-w-6xl"
       id="question-editor-form"
       onSubmit={submit}
     >
@@ -211,58 +239,93 @@ function QuestionEditorForm({
         title={t("questions.edit")}
       />
 
-      <div className="rule-card grid gap-4 py-6 sm:grid-cols-2">
-        <SelectField
-          label={t("questions.type")}
-          onValueChange={(value) =>
-            form.setValue("questionStyle", value as Values["questionStyle"])
-          }
-          options={sentenceStyleOptions()}
-          value={form.watch("questionStyle")}
-        />
-        <SelectField
-          label={t("practice.difficulty")}
-          onValueChange={(value) =>
-            form.setValue("difficulty", Number(value) as Values["difficulty"])
-          }
-          options={difficultyOptions()}
-          value={String(form.watch("difficulty"))}
-        />
-        <SelectField
-          className="sm:col-span-2"
-          label={t("questions.linkedSense")}
-          onValueChange={(value) => form.setValue("source", value)}
-          options={senses}
-          placeholder={t("questions.selectSense")}
-          value={form.watch("source")}
-        />
-      </div>
+      <QuestionWorkspace
+        pane={pane}
+        onPaneChange={setPane}
+        passageLabel={t("questions.editing")}
+        questionsLabel={t("questions.preview")}
+        passage={
+          <div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <SelectField
+                label={t("questions.type")}
+                onValueChange={(value) =>
+                  form.setValue(
+                    "questionStyle",
+                    value as Values["questionStyle"],
+                  )
+                }
+                options={sentenceStyleOptions()}
+                value={form.watch("questionStyle")}
+              />
+              <SelectField
+                label={t("practice.difficulty")}
+                onValueChange={(value) =>
+                  form.setValue(
+                    "difficulty",
+                    Number(value) as Values["difficulty"],
+                  )
+                }
+                options={difficultyOptions()}
+                value={String(form.watch("difficulty"))}
+              />
+              <SelectField
+                className="sm:col-span-2"
+                label={t("questions.linkedSense")}
+                onValueChange={(value) => form.setValue("source", value)}
+                options={senses}
+                placeholder={t("questions.selectSense")}
+                value={form.watch("source")}
+              />
+            </div>
 
-      <div className="mt-7 grid gap-5">
-        <Field label={t("questions.prompt")}>
-          <Textarea
-            {...form.register("prompt", { required: true })}
-            className="min-h-28 leading-7"
-          />
-        </Field>
+            <div className="mt-7 grid gap-5">
+              <Field label={t("questions.prompt")}>
+                <Textarea
+                  {...form.register("prompt", { required: true })}
+                  className="min-h-28 text-base leading-7"
+                />
+              </Field>
 
-        <AnswerOptions
-          answerIndex={answerIndex}
-          name="answerIndex"
-          onAnswerChange={(index) => form.setValue("answerIndex", index)}
-          onOptionChange={(index, value) =>
-            form.setValue(
-              "options",
-              options.map((option, at) => (at === index ? value : option)),
-            )
-          }
-          options={options}
-        />
+              <AnswerOptions
+                answerIndex={answerIndex}
+                name="answerIndex"
+                onAnswerChange={(index) => form.setValue("answerIndex", index)}
+                onOptionChange={(index, value) =>
+                  form.setValue(
+                    "options",
+                    options.map((option, at) =>
+                      at === index ? value : option,
+                    ),
+                  )
+                }
+                options={options}
+              />
 
-        <Field label={t("questions.explanation")}>
-          <Textarea {...form.register("explanation")} className="min-h-20" />
-        </Field>
-      </div>
+              <Field label={t("questions.explanation")}>
+                <Textarea
+                  {...form.register("explanation")}
+                  className="min-h-24 text-base leading-7"
+                />
+              </Field>
+            </div>
+          </div>
+        }
+        questions={
+          <section className="space-y-5 rule-t pt-5 lg:border-t-0 lg:pt-0">
+            <h2 className="text-base font-semibold">
+              {t("questions.preview")}
+            </h2>
+            {preview ? (
+              <QuestionPreview question={preview} />
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                {t("questions.selectSense")}
+              </p>
+            )}
+          </section>
+        }
+      />
 
       <StepActions width="wide">
         {(form.formState.errors.root ||

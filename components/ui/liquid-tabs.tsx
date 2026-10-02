@@ -20,6 +20,7 @@ interface LiquidTabsProps {
   disabled?: boolean;
   onValueChange: (value: string) => void;
   options: LiquidTabOption[];
+  panelIds?: Record<string, string>;
   value: string;
 }
 
@@ -29,6 +30,7 @@ export function LiquidTabs({
   disabled = false,
   onValueChange,
   options,
+  panelIds,
   value,
 }: LiquidTabsProps) {
   const layoutId = React.useId();
@@ -42,7 +44,11 @@ export function LiquidTabs({
       {/* The rail is the pill's frame of reference, and it scrolls on its own
           axis, so measuring the pill against the document would offset it by
           whatever the rail has scrolled. */}
-      <TabsPrimitive.List asChild aria-label={ariaLabel} aria-disabled={disabled}>
+      <TabsPrimitive.List
+        asChild
+        aria-label={ariaLabel}
+        aria-disabled={disabled}
+      >
         <motion.div
           layoutRoot
           layoutScroll
@@ -59,11 +65,15 @@ export function LiquidTabs({
                 data-liquid-tab={option.value}
                 data-displayed-active={option.value === value}
                 disabled={disabled}
+                {...(panelIds
+                  ? { "aria-controls": panelIds[option.value] }
+                  : {})}
                 key={option.value}
                 value={option.value}
               >
                 {option.value === value && (
                   <motion.span
+                    key="pill"
                     aria-hidden
                     className="t-tabs-pill absolute inset-0 z-0 rounded-full bg-[var(--tabs-pill-bg)] shadow-[var(--shadow-control)]"
                     initial={false}
@@ -71,8 +81,9 @@ export function LiquidTabs({
                     transition={timing("nav", "nav")}
                   />
                 )}
-                <span className="relative z-10 contents">{option.icon}</span>
+                <span key="icon" className="relative z-10 contents">{option.icon}</span>
                 <span
+                  key="label"
                   className={cn(
                     "relative z-10",
                     option.shortLabel && "hidden sm:inline",
@@ -81,7 +92,7 @@ export function LiquidTabs({
                   {option.label}
                 </span>
                 {option.shortLabel ? (
-                  <span className="relative z-10 sm:hidden">
+                  <span key="short-label" className="relative z-10 sm:hidden">
                     {option.shortLabel}
                   </span>
                 ) : null}

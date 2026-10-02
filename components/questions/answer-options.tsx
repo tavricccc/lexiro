@@ -53,11 +53,11 @@ export function AnswerOptions({
               aria-hidden
               className="w-4 shrink-0 text-sm text-muted-foreground"
             >
-              {index + 1}
+              {String.fromCharCode(65 + index)}
             </span>
             <Input
               aria-label={`${labelPrefix}${t("questions.optionLabel", { index: index + 1 })}`}
-              className="bg-card"
+              className="min-h-11 bg-card text-base"
               name={`${name}-option-${index}`}
               onChange={(event) => onOptionChange(index, event.target.value)}
               placeholder={t("questions.optionLabel", { index: index + 1 })}

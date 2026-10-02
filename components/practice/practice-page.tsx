@@ -14,6 +14,7 @@ import {
 } from "@/components/practice/practice-queue";
 import { ResultPanel } from "@/components/practice/result-panel";
 import { PracticeSessionView } from "@/components/practice/practice-session-view";
+import type { AnsweredBlank } from "@/components/practice/passage-view";
 import { PracticeSetup } from "@/components/practice/practice-setup";
 import { BackControl } from "@/components/ui/back-control";
 import { ResumeChoice } from "@/components/ui/resume-choice";
@@ -184,6 +185,26 @@ export function PracticePage({
     current?.kind === "question" && selected !== null ? index + 1 : index;
   const progressRatio = total ? Math.min(1, completedSteps / total) : 0;
   const wrongContent = buildWrongContent(wrong, activeEntries, answerChoices);
+  const answeredBlanks: Record<number, AnsweredBlank> = {};
+  if (
+    current?.kind === "question" &&
+    current.item.question?.kind === "reading"
+  ) {
+    const questionId = current.item.question.id;
+    activeEntries.forEach((entry, position) => {
+      if (
+        entry.kind === "question" &&
+        entry.item.blank &&
+        entry.item.question?.id === questionId &&
+        answerChoices[position] !== undefined &&
+        answerChoices[position] !== null
+      ) {
+        answeredBlanks[entry.item.blank] = {
+          answer: entry.item.options[entry.item.answerIndex],
+        };
+      }
+    });
+  }
 
   useEffect(() => {
     setPracticeActive(started && !complete);
@@ -390,6 +411,8 @@ export function PracticePage({
       persistence={sessionPersistence}
       revealed={revealed}
       selected={selected}
+      pendingChoice={actions.pendingChoice}
+      answeredBlanks={answeredBlanks}
       marked={marked.includes(index)}
       busy={actions.actionBusy}
       animateCard={actions.animateNextCard}

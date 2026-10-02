@@ -4,7 +4,7 @@ import { AnswerOptions } from "@/components/questions/answer-options";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { SelectField, type SelectOption } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 
@@ -14,6 +14,9 @@ export interface ReadingChildDraft {
   options: string[];
   prompt: string;
   source: string;
+  blank?: number;
+  explanation?: string;
+  whyWrong?: Record<string, string>;
 }
 
 export interface ReadingChildErrors {
@@ -30,6 +33,8 @@ export function ReadingChildEditor({
   onUpdate,
   senses,
   submitted,
+  sharedBank,
+  blankFormat = false,
 }: {
   child: ReadingChildDraft;
   errors: ReadingChildErrors;
@@ -38,10 +43,12 @@ export function ReadingChildEditor({
   onUpdate: (patch: Partial<ReadingChildDraft>) => void;
   senses: SelectOption[];
   submitted: boolean;
+  sharedBank?: string[];
+  blankFormat?: boolean;
 }) {
   const label = t("questions.childPrompt", { index: index + 1 });
   return (
-    <section className="py-6" data-reading-child>
+    <section className="py-2" data-reading-child>
       <div className="flex items-center justify-between gap-3">
         <h2 className="type-subsection">{label}</h2>
         {onRemove && (
@@ -70,29 +77,55 @@ export function ReadingChildEditor({
             {errors.source}
           </p>
         )}
-        <Field error={submitted && errors.prompt} label={t("questions.prompt")}>
-          <Input
-            name={`reading-prompt-${index}`}
-            onChange={(event) => onUpdate({ prompt: event.target.value })}
-            placeholder={t("questions.prompt")}
-            value={child.prompt}
+        {!blankFormat && (
+          <Field
+            error={submitted && errors.prompt}
+            label={t("questions.prompt")}
+          >
+            <Textarea
+              name={`reading-prompt-${index}`}
+              onChange={(event) => onUpdate({ prompt: event.target.value })}
+              placeholder={t("questions.prompt")}
+              value={child.prompt}
+              className="min-h-24 text-base leading-7"
+            />
+          </Field>
+        )}
+        {sharedBank ? (
+          <SelectField
+            label={t("questions.blankAnswer", { index: child.blank! })}
+            description={t("questions.blankAnswerHint")}
+            value={String(child.answerIndex)}
+            onValueChange={(value) => onUpdate({ answerIndex: Number(value) })}
+            options={sharedBank.map((option, at) => ({
+              value: String(at),
+              label: `${String.fromCharCode(65 + at)} · ${option}`,
+            }))}
+          />
+        ) : (
+          <AnswerOptions
+            answerIndex={child.answerIndex}
+            error={submitted && errors.options}
+            labelPrefix={`${label} · `}
+            name={`reading-answer-${index}`}
+            onAnswerChange={(answerIndex) => onUpdate({ answerIndex })}
+            onOptionChange={(optionIndex, value) =>
+              onUpdate({
+                options: child.options.map((option, at) =>
+                  at === optionIndex ? value : option,
+                ),
+              })
+            }
+            options={child.options}
+          />
+        )}
+        <Field label={t("questions.explanation")}>
+          <Textarea
+            value={child.explanation ?? ""}
+            onChange={(event) => onUpdate({ explanation: event.target.value })}
+            className="min-h-24 text-base leading-7"
           />
         </Field>
-        <AnswerOptions
-          answerIndex={child.answerIndex}
-          error={submitted && errors.options}
-          labelPrefix={`${label} · `}
-          name={`reading-answer-${index}`}
-          onAnswerChange={(answerIndex) => onUpdate({ answerIndex })}
-          onOptionChange={(optionIndex, value) =>
-            onUpdate({
-              options: child.options.map((option, at) =>
-                at === optionIndex ? value : option,
-              ),
-            })
-          }
-          options={child.options}
-        />
       </div>
     </section>
   );

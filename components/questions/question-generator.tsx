@@ -56,6 +56,7 @@ interface QuestionDraft {
   chosenSetId: string;
   kind: GeneratedQuestionKind;
   difficulty: GeneratedQuestionDifficulty;
+  excludedQuestionIds: string[];
   run?: AiGenerationSnapshot<LibraryQuestion>;
 }
 const FORMATS: GeneratedQuestionKind[] = [
@@ -73,18 +74,30 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
       chosenSetId: "",
       kind: "vocabulary",
       difficulty: 2,
+      excludedQuestionIds: [],
     },
   );
-  const back = <BackControl href={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />;
+  const back = (
+    <BackControl href={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
+  );
   if (saved.status === "checking") return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
         back={back}
-        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.questionDescription")}
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.questionDescription",
+        )}
         invalid={saved.status === "invalid"}
         onRestart={saved.restart}
-        onResume={saved.resume}
+        onResume={() => {
+          const pending = saved.pending!;
+          saved.resume();
+          if (!("excludedQuestionIds" in pending))
+            saved.update({ excludedQuestionIds: [] });
+        }}
       />
     );
   return (
@@ -143,7 +156,7 @@ function QuestionGeneratorFlow({
   );
   const generation = useAiGeneration<LibraryQuestion>({
     initialSnapshot: draft.run,
-    onSnapshotChange: (run) => update({ run }),
+    onSnapshotChange: (run) => update({ run, excludedQuestionIds: [] }),
     merge: (items) => {
       const byId = new Map<string, LibraryQuestion>();
       for (const item of items) byId.set(item.fingerprint || item.id, item);
@@ -151,6 +164,9 @@ function QuestionGeneratorFlow({
     },
   });
   const { reset, state: run } = generation;
+  const selectedItems = run.items.filter(
+    (item) => !draft.excludedQuestionIds.includes(item.id),
+  );
   useReviewHandoff(run.status, () => update({ step: "review" }));
   const configKey = `${selectedSetId}:${kind}:${difficulty}`;
   const previousConfig = useRef(configKey);
@@ -191,13 +207,21 @@ function QuestionGeneratorFlow({
         title={t("questions.generateTitle")}
         footer={
           senseCount ? (
-            <Button className="w-full" onClick={() => update({ step: "run" })} size="lg">
+            <Button
+              className="w-full"
+              onClick={() => update({ step: "run" })}
+              size="lg"
+            >
               <Icons.next />
               {t("questions.next")}
             </Button>
           ) : (
             <Button asChild className="w-full" size="lg">
-              <Link href={selectedSet ? `/app/sets/${selectedSetId}` : "/app/sets/new"}>
+              <Link
+                href={
+                  selectedSet ? `/app/sets/${selectedSetId}` : "/app/sets/new"
+                }
+              >
                 <Icons.create />
                 {t(
                   selectedSet
@@ -265,7 +289,9 @@ function QuestionGeneratorFlow({
                 <ListPicker
                   label={t("practice.difficulty")}
                   onChange={(value) =>
-                    update({ difficulty: Number(value) as GeneratedQuestionDifficulty })
+                    update({
+                      difficulty: Number(value) as GeneratedQuestionDifficulty,
+                    })
                   }
                   options={difficultyOptions()}
                   value={String(difficulty)}
@@ -285,24 +311,38 @@ function QuestionGeneratorFlow({
         total={3}
         title={t("questions.stepReview")}
         width="wide"
+        className="max-w-6xl"
         onBack={() => {
           if (!saving) update({ step: "run" });
         }}
         recap={recap}
       >
         <fieldset disabled={saving} className="min-w-0 space-y-7">
-          <GeneratedQuestionResults items={run.items} words={words} />
-          <p className="type-hint">{t("ai.savedHint")}</p>
+          <GeneratedQuestionResults
+            items={run.items}
+            words={words}
+            excludedIds={draft.excludedQuestionIds}
+            onToggle={(id) =>
+              update({
+                excludedQuestionIds: draft.excludedQuestionIds.includes(id)
+                  ? draft.excludedQuestionIds.filter((value) => value !== id)
+                  : [...draft.excludedQuestionIds, id],
+              })
+            }
+          />
+          <p className="type-hint">
+            {t("questions.selectedQuestions", { count: selectedItems.length })}
+          </p>
           <StepActions width="wide">
             <Button
               className="w-full"
-              disabled={saving || !run.items.length}
-              onClick={() => void storeAll(run.items)}
+              disabled={saving || !selectedItems.length}
+              onClick={() => void storeAll(selectedItems)}
               size="lg"
               type="button"
             >
               <Icons.success />
-              {t("ai.applyQuestions")}
+              {t("questions.saveSelected", { count: selectedItems.length })}
             </Button>
             <Button
               disabled={saving}
@@ -329,7 +369,7 @@ function QuestionGeneratorFlow({
           reset();
           update({ step: "configure", run: undefined });
         }}
-        title={t("questions.generatedCount", { count: run.items.length })}
+        title={t("questions.generatedCount", { count: selectedItems.length })}
       />
     );
 
@@ -356,9 +396,7 @@ function QuestionGeneratorFlow({
           onCancel={generation.cancel}
           onResume={generation.resume}
           onAppend={
-            task.steps.length
-              ? () => generation.append(task)
-              : undefined
+            task.steps.length ? () => generation.append(task) : undefined
           }
           onReview={
             run.items.length && run.status !== "running"

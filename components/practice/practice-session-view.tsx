@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { ReviewCard } from "@/components/practice/review-card";
 import { QuestionCard } from "@/components/practice/question-card";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
+import type { AnsweredBlank } from "@/components/practice/passage-view";
 import { Button } from "@/components/ui/button";
 import { BackControl } from "@/components/ui/back-control";
 import { HeaderBackdrop } from "@/components/ui/header-backdrop";
@@ -31,6 +32,8 @@ export function PracticeSessionView({
   persistence,
   revealed,
   selected,
+  pendingChoice,
+  answeredBlanks,
   marked,
   busy,
   animateCard,
@@ -50,6 +53,8 @@ export function PracticeSessionView({
   persistence: DraftPersistence;
   revealed: boolean;
   selected: number | null;
+  pendingChoice: number | null;
+  answeredBlanks: Record<number, AnsweredBlank>;
   marked: boolean;
   busy: boolean;
   animateCard: boolean;
@@ -63,18 +68,24 @@ export function PracticeSessionView({
   onNext: () => void;
 }) {
   const typing = entry.kind === "card" && entry.task === "spelling";
+  const passage =
+    entry.kind === "question" && entry.item.question?.kind === "reading"
+      ? entry.item.question
+      : null;
   return (
     // A session owns the whole screen, so it is a column: the material takes
     // the room it needs and the controls end up where a thumb already is,
     // instead of floating in the middle of a half-empty page.
     <div
       data-motion-view="practice-session"
-      className="mx-auto flex min-h-[calc(100dvh-6rem)] max-w-3xl flex-col"
+      className={`mx-auto flex min-h-[calc(100dvh-6rem)] flex-col ${passage ? "max-w-6xl" : "max-w-3xl"}`}
     >
       <div className="page-header pb-3 pt-1">
-        <HeaderBackdrop />
+        <HeaderBackdrop contained />
         <div className="flex flex-wrap items-center justify-between gap-x-3 text-sm text-muted-foreground">
-          <BackControl onClick={onLeave} />
+          <div inert={busy} className={busy ? "opacity-50" : undefined}>
+            <BackControl onClick={onLeave} />
+          </div>
           <span className="tabular-nums">
             {t("practice.progress", { current: index + 1, total })}
           </span>
@@ -104,7 +115,7 @@ export function PracticeSessionView({
       </div>
       <motion.div
         className="flex flex-1 flex-col"
-        key={entry.id}
+        key={passage ? `passage:${passage.id}` : entry.id}
         initial={animateCard ? { opacity: 0.72 } : false}
         animate={{ opacity: 1 }}
         transition={practiceTransition}
@@ -121,12 +132,17 @@ export function PracticeSessionView({
             onRate={onRate}
           />
         ) : (
-          <div className="my-auto py-5" data-practice-question-group>
+          <div
+            className={passage ? "py-4" : "my-auto py-5"}
+            data-practice-question-group
+          >
             <div className="mb-3 flex justify-end gap-1">
               <Button
                 className="min-h-11 sm:min-h-9"
                 size="sm"
                 variant={marked ? "secondary" : "ghost"}
+                disabled={busy}
+                aria-pressed={marked}
                 onClick={onToggleMark}
               >
                 <Icons.mark />
@@ -140,14 +156,24 @@ export function PracticeSessionView({
                   disabled={busy}
                   onClick={onSkip}
                 >
-                  <Icons.skip />
-                  {t("practice.skip")}
+                  {busy && pendingChoice === null ? (
+                    <Icons.loading className="animate-spin motion-reduce:animate-none" />
+                  ) : (
+                    <Icons.skip />
+                  )}
+                  {t(
+                    busy && pendingChoice === null
+                      ? "practice.recording"
+                      : "practice.skip",
+                  )}
                 </Button>
               )}
             </div>
             <QuestionCard
               item={entry.item}
               selected={selected}
+              pendingChoice={pendingChoice}
+              answeredBlanks={answeredBlanks}
               busy={busy}
               onAnswer={onAnswer}
             />

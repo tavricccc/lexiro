@@ -1,5 +1,5 @@
-import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { GeneratedQuestionResults } from "@/components/questions/generated-question-results";
 import { QuestionPreview } from "@/components/questions/question-preview";
@@ -81,6 +81,7 @@ describe("generated question review", () => {
     render(<QuestionPreview question={question} />);
     expect(screen.getByText("文章 31 個英文詞")).toBeInTheDocument();
     expect(screen.getByText("空格答案")).toBeInTheDocument();
+    fireEvent.click(screen.getByText("空格答案"));
     expect(screen.getByText("第 1 格")).toBeInTheDocument();
     expect(
       screen.getByText("C · The doors were unlocked."),
@@ -92,5 +93,46 @@ describe("generated question review", () => {
     expect(
       screen.getByText("B · They thanked the helpers."),
     ).toBeInTheDocument();
+  });
+
+  it("reviews one item at a time and can exclude the current question from saving", () => {
+    const items: LibraryQuestion[] = [
+      "The river _____ through the valley.",
+      "The museum _____ its oldest painting.",
+    ].map((prompt, index) => ({
+      id: `question-${index}`,
+      fingerprint: `question-${index}`,
+      kind: "multipleChoice",
+      questionStyle: "vocabulary",
+      difficulty: 2,
+      createdAt: "2026-10-03",
+      updatedAt: "2026-10-03",
+      wordKey: normalizeWordKey("preserve"),
+      senseId: asSenseId("preserve:v.:1"),
+      prompt,
+      options: ["preserves", "measures", "observes", "collects"],
+      answerIndex: 0,
+    }));
+    const onToggle = vi.fn();
+    render(
+      <GeneratedQuestionResults items={items} words={[]} onToggle={onToggle} />,
+    );
+    expect(
+      screen.getByText(
+        items[0].kind === "multipleChoice" ? items[0].prompt : "",
+      ),
+    ).toBeVisible();
+    expect(
+      screen.queryByText("The museum _____ its oldest painting."),
+    ).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "下一題" }));
+    expect(
+      screen.getByText("The museum _____ its oldest painting."),
+    ).toBeVisible();
+    expect(
+      screen.queryByText("The river _____ through the valley."),
+    ).toBeNull();
+    fireEvent.click(screen.getByRole("checkbox", { name: "納入題庫" }));
+    expect(onToggle).toHaveBeenCalledWith("question-1");
   });
 });

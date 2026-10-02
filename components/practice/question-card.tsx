@@ -1,138 +1,177 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useId, useState } from "react";
 import type { QuestionItem } from "@/components/practice/practice-content";
-import { PassageView } from "@/components/practice/passage-view";
+import {
+  PassageView,
+  type AnsweredBlank,
+} from "@/components/practice/passage-view";
+import { Button } from "@/components/ui/button";
+import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Icons } from "@/components/ui/icons";
+import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
-import { timing } from "@/lib/motion-timing";
 import { PracticeTaskLabel } from "@/components/practice/practice-task-label";
-import { isCorrectChoice } from "./meaning-questions";
-
-const practiceTransition = timing("control", "arrive");
+import { QuestionOptions } from "./question-options";
+import { QuestionFeedback } from "./question-feedback";
 
 export function QuestionCard({
   item,
   selected,
+  pendingChoice,
   busy,
+  answeredBlanks,
   onAnswer,
 }: {
   item: QuestionItem;
   selected: number | null;
+  pendingChoice: number | null;
   busy: boolean;
+  answeredBlanks: Record<number, AnsweredBlank>;
   onAnswer: (choice: number) => void;
 }) {
-  const answered = selected !== null;
-  const correct = answered && isCorrectChoice(item, selected);
+  const [mobileView, setMobileView] = useState("question");
+  const blankId = useId();
+  const panelIds = {
+    passage: `${blankId}-passage`,
+    question: `${blankId}-question`,
+  };
+  const passage = item.question?.kind === "reading" ? item.question : null;
+  const childIndex = passage?.questions.findIndex(
+    (child) => item.id === `reading:${passage.id}:${child.id}`,
+  );
+  const locateBlank = () => {
+    setMobileView("passage");
+    requestAnimationFrame(() => {
+      document
+        .getElementById(blankId)
+        ?.scrollIntoView({ block: "center", behavior: "smooth" });
+    });
+  };
+
   return (
-    <>
-      <section className="rounded-2xl bg-muted/70 p-5 sm:p-7">
-        {item.question?.kind === "reading" ? (
-          <div className="mb-6 rule-b pb-6">
-            <PracticeTaskLabel task={item.type} />
-            <PassageView
-              activeBlank={item.blank}
-              passage={item.question.passage}
-            />
-          </div>
-        ) : (
-          <PracticeTaskLabel task={item.type} />
-        )}
-        {/* A blank-format item has no question of its own -- the passage is the
-          question, so the heading just says which blank is being filled. */}
-        <h1
-          className={
-            item.type === "meaning"
-              ? "type-page text-center"
-              : "max-w-2xl text-[1.0625rem] font-semibold leading-7 tracking-[-0.01em] sm:text-lg"
-          }
-        >
-          {item.blank
-            ? t("questions.blankLabel", { index: item.blank })
-            : item.prompt}
-        </h1>
-        {item.optionBank && (
-          <p className="mt-1.5 text-xs text-muted-foreground">
-            {t("practice.sharedBankHint")}
-          </p>
-        )}
-        {/* A 文意選填 bank runs to ten short words; ten full-width rows would push
-          the passage off screen, so a wide bank goes two-up. */}
-        <div
-          className={`mt-6 grid gap-2.5${item.options.length > 5 ? " sm:grid-cols-2" : ""}`}
-        >
-          {item.options.map((option, optionIndex) => {
-            const isCorrect = isCorrectChoice(item, optionIndex);
-            const isSelected = selected === optionIndex;
-            const stateClass =
-              answered && isCorrect
-                ? "border-success/25 bg-success/10 text-foreground"
-                : answered && isSelected
-                  ? "border-destructive/30 bg-destructive/10 text-foreground"
-                  : "border-border bg-card hover:border-foreground/20 hover:bg-card/80";
-            const badgeClass =
-              answered && isCorrect
-                ? "bg-success text-success-foreground"
-                : answered && isSelected
-                  ? "bg-destructive text-destructive-foreground"
-                  : "bg-muted text-muted-foreground";
-            return (
-              <button
-                key={optionIndex}
-                type="button"
-                disabled={answered || busy}
-                onClick={() => onAnswer(optionIndex)}
-                className={`flex min-h-14 w-full items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-[background-color,border-color] duration-[var(--motion-control)] ease-[var(--ease-move)] disabled:cursor-default disabled:opacity-100 ${stateClass}`}
-              >
-                <span
-                  className={`grid size-7 shrink-0 place-items-center rounded-lg text-xs font-semibold transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] ${badgeClass}`}
-                >
-                  {String.fromCharCode(65 + optionIndex)}
-                </span>
-                <span className="min-w-0 flex-1 leading-6">{option}</span>
-                {answered && isCorrect && (
-                  <Icons.success className="size-4 shrink-0 text-success" />
-                )}
-                {answered && isSelected && !isCorrect && (
-                  <Icons.incorrect className="size-4 shrink-0 text-destructive" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-        {answered && (
-          <motion.div
-            className="mt-6 rule-t pt-5"
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={practiceTransition}
-            aria-live="polite"
-          >
-            <p
-              className={`flex items-center gap-2 text-sm font-semibold ${correct ? "text-success" : "text-destructive"}`}
-            >
-              {correct ? (
-                <Icons.success className="size-4" />
-              ) : (
-                <Icons.incorrect className="size-4" />
-              )}
-              {correct ? t("practice.correct") : t("practice.incorrect")}
-            </p>
-            {!correct && (
-              <p className="mt-2 text-sm text-foreground">
-                {t("practice.answer", {
-                  answer: item.options[item.answerIndex] ?? "",
-                })}
-              </p>
+    <div>
+      {passage && (
+        <LiquidTabs
+          className="mb-5 w-full lg:hidden [&_.t-tabs]:flex [&_.t-tabs]:w-full [&_.t-tab]:flex-1"
+          ariaLabel={t("practice.passageTab")}
+          value={mobileView}
+          onValueChange={setMobileView}
+          panelIds={panelIds}
+          options={[
+            {
+              value: "question",
+              label: t("practice.questionTab"),
+              icon: <Icons.practice className="size-4" />,
+            },
+            {
+              value: "passage",
+              label: t("practice.passageTab"),
+              icon: <Icons.reading className="size-4" />,
+            },
+          ]}
+        />
+      )}
+      <div
+        className={
+          passage
+            ? "grid items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-8"
+            : undefined
+        }
+      >
+        {passage && (
+          <section
+            id={panelIds.passage}
+            role="tabpanel"
+            aria-label={t("questions.passageSection")}
+            className={cn(
+              "min-w-0 rounded-[var(--radius-card)] bg-card p-5 sm:p-6 lg:sticky lg:top-28",
+              mobileView !== "passage" && "hidden lg:block",
             )}
-            {item.meaning &&
-              (item.type !== "meaning" ||
-                (item.acceptedMeanings?.length ?? 0) > 1) && (
-                <p className="mt-2 type-lead">{item.meaning}</p>
+          >
+            <h2 className="mb-4 text-base font-semibold leading-6">
+              {passage.title}
+            </h2>
+            <div
+              tabIndex={0}
+              className={cn(
+                "overflow-y-auto overscroll-contain pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:max-h-[calc(100dvh-17rem)]",
+                selected === null
+                  ? "max-h-[calc(100dvh-25rem)]"
+                  : "max-h-[calc(100dvh-29rem)]",
               )}
-          </motion.div>
+            >
+              <PassageView
+                activeBlank={item.blank}
+                activeBlankId={blankId}
+                answeredBlanks={answeredBlanks}
+                passage={passage.passage}
+              />
+            </div>
+          </section>
         )}
-      </section>
-    </>
+        <section
+          id={passage ? panelIds.question : undefined}
+          role={passage ? "tabpanel" : undefined}
+          aria-label={t("practice.questionTab")}
+          className={cn(
+            "min-w-0",
+            passage && mobileView !== "question" && "hidden lg:block",
+          )}
+        >
+          {passage && childIndex !== undefined && (
+            <p className="mb-3 text-sm tabular-nums text-muted-foreground">
+              {t("practice.questionPosition", {
+                current: childIndex + 1,
+                total: passage.questions.length,
+              })}
+            </p>
+          )}
+          {!passage && <PracticeTaskLabel task={item.type} />}
+          <h1
+            className={
+              item.type === "meaning"
+                ? "type-page text-center"
+                : "text-lg font-semibold leading-8 tracking-[-0.01em]"
+            }
+          >
+            {item.blank
+              ? t("questions.blankLabel", { index: item.blank })
+              : item.prompt}
+          </h1>
+          {item.blank && (
+            <Button
+              className="mt-2 min-h-11 lg:min-h-9"
+              size="sm"
+              variant="ghost"
+              onClick={locateBlank}
+            >
+              <Icons.reading />
+              {t("practice.locateBlank", { index: item.blank })}
+            </Button>
+          )}
+          {item.optionBank && (
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              {t("practice.sharedBankHint")}
+            </p>
+          )}
+          <QuestionOptions
+            item={item}
+            selected={selected}
+            pendingChoice={pendingChoice}
+            busy={busy}
+            onAnswer={onAnswer}
+          />
+          {busy && pendingChoice !== null && (
+            <p role="status" className="mt-4 text-sm text-muted-foreground">
+              {t("practice.recording")}
+            </p>
+          )}
+          {selected !== null && (
+            <QuestionFeedback item={item} selected={selected} />
+          )}
+        </section>
+      </div>
+    </div>
   );
 }

@@ -2,20 +2,34 @@
 
 import type { ReadingPack } from "@/types";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
-
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { countEnglishWords } from "@lexiro/ai-contract";
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { PassageView } from "@/components/practice/passage-view";
 import {
   ReadingChildEditor,
   type ReadingChildDraft,
   type ReadingChildErrors,
-} from "@/components/questions/reading-child-editor";
+} from "./reading-child-editor";
+import { QuestionPager } from "./question-pager";
+import {
+  QuestionWorkspace,
+  type QuestionWorkspacePane,
+} from "./question-workspace";
+import {
+  emptyReadingChild,
+  migrateReadingFormDraft,
+  readingFormFromPack,
+  readingPackFromForm,
+  type ReadingFormDraft,
+} from "./reading-form";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { PageHeader } from "@/components/ui/page-header";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
@@ -24,25 +38,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
-import { randomUUID } from "@/src/lib/id";
-import { parseSenseKey, senseKey } from "@/src/lib/library";
-import { difficultyOptions } from "@/lib/question-options";
+import { senseKey } from "@/src/lib/library";
+import { difficultyOptions, questionFormatLabel } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
-
-interface ReadingFormDraft {
-  title: string;
-  passage: string;
-  difficulty: 1 | 2 | 3;
-  children: ReadingChildDraft[];
-}
-
-const emptyChild = (): ReadingChildDraft => ({
-  answerIndex: 0,
-  options: ["", "", "", ""],
-  prompt: "",
-  source: "",
-});
 
 export function ReadingEditor({
   readingId,
@@ -54,6 +53,16 @@ export function ReadingEditor({
   const router = useRouter();
   const uid = useCloudStore((store) => store.user?.uid);
   const { state, saveQuestion } = useLibraryStore();
+  const found = state.questions.find((question) => question.id === readingId);
+  const current: ReadingPack | undefined =
+    found?.kind === "reading" ? found : undefined;
+  const initial = readingFormFromPack(current);
+  const saved = useResumableDraft<ReadingFormDraft>(
+    `lexiro:flow-draft:v1:${uid ?? "local"}:edit-reading:${readingId}:${current?.updatedAt ?? "new"}`,
+    initial,
+  );
+  const { title, passage, difficulty, format, children, optionBank } =
+    saved.draft;
   const senses = useMemo(
     () =>
       Object.values(state.words).flatMap((word) =>
@@ -64,56 +73,33 @@ export function ReadingEditor({
       ),
     [state.words],
   );
-
-  const current = readingId
-    ? state.questions.find(
-        (question) => question.id === readingId && question.kind === "reading",
-      )
-    : undefined;
-  const saved = useResumableDraft<ReadingFormDraft>(
-    `lexiro:flow-draft:v1:${uid ?? "local"}:edit-reading:${readingId}:${current?.updatedAt ?? "new"}`,
-    {
-      title: current?.kind === "reading" ? current.title : "",
-      passage: current?.kind === "reading" ? current.passage : "",
-      difficulty: current?.kind === "reading" ? current.difficulty : 2,
-      children:
-        current?.kind === "reading"
-          ? current.questions.map((child) => ({
-              answerIndex: child.answerIndex,
-              id: child.id,
-              options: [...child.options],
-              prompt: child.prompt,
-              source: senseKey(child.wordKey, child.senseId),
-            }))
-          : [emptyChild(), emptyChild(), emptyChild()],
-    },
-  );
-  const { title, passage, difficulty, children } = saved.draft;
-  const titleRef = useRef<HTMLInputElement>(null);
-  const passageRef = useRef<HTMLTextAreaElement>(null);
-  const childrenRef = useRef<HTMLDivElement>(null);
-  // Validation stays quiet until the first submit, so a half-filled form is
-  // not already shouting at someone who has just started typing.
+  const [pane, setPane] = useState<QuestionWorkspacePane>("passage");
+  const [articleMode, setArticleMode] = useState("edit");
+  const [questionMode, setQuestionMode] = useState("answers");
+  const [index, setIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saving, setSaving] = useState(false);
   const savePending = useRef(false);
+  const titleRef = useRef<HTMLInputElement>(null);
+  const passageRef = useRef<HTMLTextAreaElement>(null);
+  const questionRef = useRef<HTMLDivElement>(null);
   const previousDraft = useRef(saved.draft);
+  const blankId = useId();
   useEffect(() => {
     if (previousDraft.current === saved.draft) return;
     previousDraft.current = saved.draft;
     setSaveError("");
   }, [saved.draft]);
 
-  const update = (index: number, value: Partial<ReadingChildDraft>) =>
+  const update = (at: number, value: Partial<ReadingChildDraft>) =>
     saved.update({
-      children: children.map((item, at) =>
-        at === index ? { ...item, ...value } : item,
+      children: children.map((child, position) =>
+        position === at ? { ...child, ...value } : child,
       ),
     });
-
   const childErrors: ReadingChildErrors[] = children.map((child) => ({
-    options: child.options.some((option) => !option.trim())
+    options: (optionBank ?? child.options).some((option) => !option.trim())
       ? t("questions.optionsRequired")
       : undefined,
     prompt: child.prompt.trim() ? undefined : t("setEditor.required"),
@@ -127,70 +113,66 @@ export function ReadingEditor({
     childErrors.every(
       (errors) => !errors.options && !errors.prompt && !errors.source,
     );
-
+  const activeChild = children[index];
+  const fullPassage = children.reduce(
+    (text, child) =>
+      child.blank === undefined
+        ? text
+        : text.replace(
+            `__${child.blank}__`,
+            (optionBank ?? child.options)[child.answerIndex],
+          ),
+    passage,
+  );
+  const locate = () => {
+    setArticleMode("preview");
+    setPane("passage");
+    requestAnimationFrame(() =>
+      document
+        .getElementById(blankId)
+        ?.scrollIntoView({ block: "center", behavior: "smooth" }),
+    );
+  };
   const submit = async () => {
     if (savePending.current) return;
     setSubmitted(true);
     setSaveError("");
     if (!valid) {
-      const firstChild = childErrors.findIndex(
-        (errors) => errors.source || errors.prompt || errors.options,
-      );
-      const section = childrenRef.current?.querySelectorAll(
-        "[data-reading-child]",
-      )[firstChild];
-      const target = titleError
-        ? titleRef.current
-        : passageError
-          ? passageRef.current
-          : childErrors[firstChild]?.source
-            ? section?.querySelector<HTMLElement>("[role=combobox]")
-            : childErrors[firstChild]?.prompt
-              ? section?.querySelector<HTMLElement>(
-                  "input[name^=reading-prompt]",
-                )
-              : section?.querySelector<HTMLElement>("input[name$=option-0]");
-      target?.focus({ preventScroll: true });
-      target?.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (titleError) {
+        setPane("passage");
+        titleRef.current?.focus();
+      } else if (passageError) {
+        setPane("passage");
+        setArticleMode("edit");
+        requestAnimationFrame(() => passageRef.current?.focus());
+      } else {
+        const missing = childErrors.findIndex(
+          (errors) => errors.options || errors.prompt || errors.source,
+        );
+        setIndex(missing);
+        setQuestionMode(
+          optionBank && optionBank.some((option) => !option.trim())
+            ? "bank"
+            : "answers",
+        );
+        setPane("questions");
+        requestAnimationFrame(() => {
+          const selector = childErrors[missing].source
+            ? '[role="combobox"]'
+            : childErrors[missing].prompt
+              ? 'textarea[name^="reading-prompt"]'
+              : 'input[name$="option-0"], textarea';
+          questionRef.current?.querySelector<HTMLElement>(selector)?.focus();
+        });
+      }
       return;
     }
-    const timestamp = new Date().toISOString();
-    const sources = children.map((child) =>
-      parseSenseKey(child.source, state.words),
-    );
-    if (sources.some((source) => !source)) {
-      setSaveError(t("questions.unknownSense"));
-      return;
-    }
-    const questions = children.map((child, index) => {
-      const { senseId, wordKey } = sources[index]!;
-      return {
-        answerIndex: child.answerIndex,
-        id: child.id ?? randomUUID(),
-        kind: "multipleChoice" as const,
-        options: child.options.map((option) => option.trim()),
-        prompt: child.prompt.trim(),
-        senseId,
-        wordKey,
-      };
-    });
-    const pack: ReadingPack = {
-      createdAt: current?.createdAt ?? timestamp,
-      difficulty,
-      fingerprint: current?.fingerprint ?? "pending",
-      format: "reading",
-      id: current?.id ?? randomUUID(),
-      kind: "reading",
-      passage,
-      questions,
-      title,
-      updatedAt: timestamp,
-      wordKeys: [...new Set(questions.map((child) => child.wordKey))],
-    };
     savePending.current = true;
     setSaving(true);
     try {
-      const result = await saveQuestion(pack);
+      const result = await saveQuestion(
+        readingPackFromForm(saved.draft, state.words, current),
+      );
       if (result === "duplicate") {
         setSaveError(t("questions.duplicate"));
         return;
@@ -217,102 +199,246 @@ export function ReadingEditor({
         )}
         invalid={saved.status === "invalid"}
         onRestart={saved.restart}
-        onResume={saved.resume}
+        onResume={() => {
+          const migrated = migrateReadingFormDraft(saved.pending!, initial);
+          saved.resume();
+          saved.update(migrated);
+        }}
       />
     );
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-6xl">
       <PageHeader
         actions={<DraftSaveStatus status={saved.persistence} />}
         back={<BackControl href={returnHref} />}
-        title={t("questions.editReading")}
+        title={t("questions.editFormat", { name: questionFormatLabel(format) })}
       />
-
       <fieldset className="min-w-0 border-0 p-0" disabled={saving}>
-        <div className="grid gap-4">
+        <div className="mb-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_12rem]">
           <Field
             error={submitted && titleError}
             label={t("questions.readingTitle")}
           >
             <Input
-              onChange={(event) => saved.update({ title: event.target.value })}
-              placeholder={t("questions.readingTitle")}
               ref={titleRef}
               value={title}
-            />
-          </Field>
-          <Field
-            error={submitted && passageError}
-            label={t("questions.passage")}
-          >
-            <Textarea
-              className="min-h-52 text-[1.0625rem] leading-[1.75]"
-              onChange={(event) =>
-                saved.update({ passage: event.target.value })
-              }
-              placeholder={t("questions.passage")}
-              ref={passageRef}
-              value={passage}
+              onChange={(event) => saved.update({ title: event.target.value })}
+              className="text-base"
             />
           </Field>
           <SelectField
-            className="sm:max-w-56"
             label={t("practice.difficulty")}
+            value={String(difficulty)}
+            options={difficultyOptions()}
             onValueChange={(value) =>
               saved.update({ difficulty: Number(value) as 1 | 2 | 3 })
             }
-            options={difficultyOptions()}
-            value={String(difficulty)}
           />
         </div>
-
-        <div className="section-gap rule-card rule-list" ref={childrenRef}>
-          {children.map((child, index) => (
-            <ReadingChildEditor
-              child={child}
-              errors={childErrors[index]}
-              index={index}
-              key={child.id ?? index}
-              onRemove={
-                children.length > 1
-                  ? () =>
-                      saved.update({
-                        children: children.filter((_, at) => at !== index),
-                      })
-                  : undefined
-              }
-              onUpdate={(patch) => update(index, patch)}
-              senses={senses}
-              submitted={submitted}
-            />
-          ))}
-        </div>
-
-        <Button
-          className="mt-6"
-          onClick={() =>
-            saved.update({ children: [...children, emptyChild()] })
+        <QuestionWorkspace
+          pane={pane}
+          onPaneChange={setPane}
+          passage={
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <LiquidTabs
+                  ariaLabel={t("questions.editorTabs")}
+                  value={articleMode}
+                  options={[
+                    { value: "edit", label: t("questions.editPassage") },
+                    { value: "preview", label: t("questions.passagePreview") },
+                  ]}
+                  onValueChange={setArticleMode}
+                />
+                <span className="text-sm text-muted-foreground">
+                  {t("questions.passageWordCount", {
+                    count: countEnglishWords(fullPassage),
+                  })}
+                </span>
+              </div>
+              {articleMode === "edit" ? (
+                <Field
+                  error={submitted && passageError}
+                  label={t("questions.passage")}
+                >
+                  <Textarea
+                    ref={passageRef}
+                    value={passage}
+                    onChange={(event) =>
+                      saved.update({ passage: event.target.value })
+                    }
+                    className="h-[min(60dvh,34rem)] min-h-80 resize-y text-base leading-8"
+                  />
+                </Field>
+              ) : (
+                <div className="rounded-[var(--radius-card)] bg-card p-5 sm:p-6">
+                  <div className="max-w-[68ch]">
+                    <PassageView
+                      passage={passage}
+                      activeBlank={activeChild.blank}
+                      activeBlankId={blankId}
+                    />
+                  </div>
+                </div>
+              )}
+              <details className="rule-t pt-3">
+                <summary className="flex min-h-11 cursor-pointer items-center text-sm font-medium md:min-h-9">
+                  {t("questions.explanation")}
+                </summary>
+                <Textarea
+                  aria-label={t("questions.explanation")}
+                  value={saved.draft.explanation ?? ""}
+                  onChange={(event) =>
+                    saved.update({ explanation: event.target.value })
+                  }
+                  className="mt-3 min-h-24 text-base leading-7"
+                />
+              </details>
+            </div>
           }
-          size="sm"
-          type="button"
-          variant="secondary"
-        >
-          <Icons.create />
-          {t("questions.addChild")}
-        </Button>
+          questions={
+            <div className="space-y-5" ref={questionRef}>
+              {optionBank && (
+                <LiquidTabs
+                  ariaLabel={t("questions.questionsPane")}
+                  value={questionMode}
+                  options={[
+                    { value: "answers", label: t("questions.answerKey") },
+                    { value: "bank", label: t("questions.sharedOptions") },
+                  ]}
+                  onValueChange={setQuestionMode}
+                />
+              )}
+              {questionMode === "bank" && optionBank ? (
+                <div className="space-y-4">
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    {t("questions.optionBankHint")}
+                  </p>
+                  <div className="grid gap-3">
+                    {optionBank.map((option, at) => (
+                      <Field
+                        key={at}
+                        label={String.fromCharCode(65 + at)}
+                        error={
+                          submitted &&
+                          !option.trim() &&
+                          t("questions.optionsRequired")
+                        }
+                      >
+                        {format === "discourse" ? (
+                          <Textarea
+                            aria-label={`${t("questions.optionBank")} ${String.fromCharCode(65 + at)}`}
+                            value={option}
+                            onChange={(event) =>
+                              saved.update({
+                                optionBank: optionBank.map((value, position) =>
+                                  position === at ? event.target.value : value,
+                                ),
+                              })
+                            }
+                            className="min-h-20 text-base leading-7"
+                          />
+                        ) : (
+                          <Input
+                            aria-label={`${t("questions.optionBank")} ${String.fromCharCode(65 + at)}`}
+                            value={option}
+                            onChange={(event) =>
+                              saved.update({
+                                optionBank: optionBank.map((value, position) =>
+                                  position === at ? event.target.value : value,
+                                ),
+                              })
+                            }
+                            className="text-base"
+                          />
+                        )}
+                      </Field>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <QuestionPager
+                    index={index}
+                    total={children.length}
+                    blanks={format !== "reading"}
+                    disabled={saving}
+                    onChange={setIndex}
+                  />
+                  {activeChild.blank && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={locate}
+                    >
+                      <Icons.search />
+                      {t("questions.locateBlank", { index: activeChild.blank })}
+                    </Button>
+                  )}
+                  <ReadingChildEditor
+                    key={activeChild.id ?? index}
+                    child={activeChild}
+                    errors={childErrors[index]}
+                    index={index}
+                    onUpdate={(patch) => update(index, patch)}
+                    onRemove={
+                      format === "reading" && children.length > 1
+                        ? () => {
+                            saved.update({
+                              children: children.filter(
+                                (_, at) => at !== index,
+                              ),
+                            });
+                            setIndex(Math.max(0, index - 1));
+                          }
+                        : undefined
+                    }
+                    senses={senses}
+                    submitted={submitted}
+                    sharedBank={optionBank}
+                    blankFormat={format !== "reading"}
+                  />
+                  {format === "reading" && (
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => {
+                        saved.update({
+                          children: [...children, emptyReadingChild()],
+                        });
+                        setIndex(children.length);
+                        setPane("questions");
+                      }}
+                    >
+                      <Icons.create />
+                      {t("questions.addChild")}
+                    </Button>
+                  )}
+                </>
+              )}
+            </div>
+          }
+        />
       </fieldset>
+      {saveError && (
+        <p className="mt-5 text-sm text-destructive" role="alert">
+          {saveError}
+        </p>
+      )}
+      {submitted && !valid && (
+        <p className="mt-5 text-sm text-destructive" role="alert">
+          {t("questions.fixErrors")}
+        </p>
+      )}
       <StepActions width="wide">
-        {(saveError || (submitted && !valid)) && (
-          <p className="text-sm text-destructive" role="alert">
-            {saveError || t("questions.fixErrors")}
-          </p>
-        )}
         <Button
           disabled={saving}
           onClick={() => void submit()}
-          size="lg"
           type="button"
+          size="lg"
         >
           <Icons.success />
           {t(saving ? "setEditor.saving" : "questions.save")}

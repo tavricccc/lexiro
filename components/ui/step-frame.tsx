@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
+import { cn } from "@/lib/cn";
 
 /**
  * One step of a guided flow.
@@ -26,6 +27,7 @@ export function StepFrame({
   title,
   total,
   width = "narrow",
+  className,
 }: {
   /** Leaving the flow entirely, when there is no earlier step to go back to. */
   back?: ReactNode;
@@ -41,10 +43,14 @@ export function StepFrame({
   total: number;
   /** A step that reviews produced content needs more room than one that asks. */
   width?: "narrow" | "wide";
+  className?: string;
 }) {
   return (
     <div
-      className={width === "wide" ? "mx-auto max-w-3xl" : "mx-auto max-w-xl"}
+      className={cn(
+        width === "wide" ? "mx-auto max-w-3xl" : "mx-auto max-w-xl",
+        className,
+      )}
     >
       <PageHeader
         back={onBack ? <BackControl onClick={onBack} /> : back}

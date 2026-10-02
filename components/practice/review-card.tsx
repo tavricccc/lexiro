@@ -46,7 +46,7 @@ export function ReviewCard({
   };
   return (
     <>
-      <section className="my-auto rounded-2xl bg-muted/70 px-5 py-9 text-center sm:px-8 sm:py-11">
+      <section className="my-auto rounded-[var(--radius-card)] bg-card px-5 py-8 text-center sm:px-8 sm:py-10">
         <PracticeTaskLabel task="spelling" />
         <h1 className="type-page">{item.meaning}</h1>
         <p className="mt-2 text-sm text-muted-foreground">{item.pos}</p>
@@ -69,19 +69,20 @@ export function ReviewCard({
                 spellCheck={false}
                 disabled={busy}
                 aria-label={t("practice.typingPlaceholder")}
-                className="h-11 min-w-0 flex-1 rounded-xl border bg-card px-3.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+                className="h-11 min-w-0 flex-1 rounded-[var(--radius-control)] border bg-background px-4 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
               />
               <Button type="submit" disabled={busy || !typedValue.trim()}>
                 {t("practice.check")}
               </Button>
             </form>
             <button
-              className="mx-auto mt-4 block py-2 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              className="mx-auto mt-4 block min-h-11 rounded-[var(--radius-control)] px-3 py-2 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
               onClick={() => {
                 onChecked(false);
                 onReveal();
               }}
               type="button"
+              disabled={busy}
             >
               {t("practice.typingShowAnswer")}
             </button>
