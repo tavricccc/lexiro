@@ -74,12 +74,29 @@ export interface AccountInfo {
   admin: boolean;
 }
 export interface AdminAccount {
+  version: number;
   uid: string;
   email: string;
   points: number;
   monthly: number;
   renews_at: number;
   note: string | null;
+}
+export interface AdminAccountAdjustment {
+  /** Snapshot reviewed by the administrator; stale edits never overwrite it. */
+  expected: Pick<AdminAccount, "version" | "points" | "monthly" | "renews_at" | "note">;
+  addPoints?: number;
+  monthly?: number;
+  note?: string;
+}
+export interface AdminSettingsValue {
+  version: number;
+  freeTrial: boolean;
+  defaultInitial: number;
+  defaultMonthly: number;
+}
+export interface AdminSettingsAdjustment extends Partial<Omit<AdminSettingsValue, "version">> {
+  expected: AdminSettingsValue;
 }
 export interface TokenUsage {
   model?: string;
@@ -127,7 +144,7 @@ export interface AdminKindUsage {
   cached: number;
   cacheWrite: number;
   output: number;
-  credits: number;
+  credits: number | null;
   costUsd: number | null;
   points: number;
 }
@@ -141,7 +158,7 @@ export interface AdminUserUsage {
   cached: number;
   cacheWrite: number;
   output: number;
-  credits: number;
+  credits: number | null;
   costUsd: number | null;
   points: number;
 }
