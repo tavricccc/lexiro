@@ -3,7 +3,12 @@ import {
   CLOUD_SYNC_PENDING_EVENT,
   SYNC_JOURNAL_STORAGE_KEY,
 } from "@/constants";
-import { getStorageNamespace, loadFromStorage, removeRetiredAiSettings, saveToStorage } from "./persist";
+import {
+  getStorageNamespace,
+  loadFromStorage,
+  removeRetiredAiSettings,
+  saveToStorage,
+} from "./persist";
 
 /**
  * What this device has changed and not yet pushed.
@@ -24,7 +29,7 @@ import { getStorageNamespace, loadFromStorage, removeRetiredAiSettings, saveToSt
  * `dirty` and `tombstones` are mutually exclusive per record: recreating a
  * deleted record clears its tombstone, deleting a dirty record replaces it.
  */
-export type SyncBlobKind = "progress" | "stats";
+export type SyncBlobKind = "progress" | "stats" | "preferences";
 
 export interface SyncDirtyEntry extends LibraryRecordRef {
   version: number;
@@ -37,7 +42,7 @@ export interface SyncTombstone extends LibraryRecordRef {
 }
 
 export interface SyncJournal {
-  schemaVersion: 3;
+  schemaVersion: 4;
   /** How far this device has read the cloud's change feed. Empty means never. */
   cursor: string;
   /**
@@ -61,7 +66,7 @@ export interface SyncClearRef {
   version: number;
 }
 
-const SYNC_JOURNAL_SCHEMA_VERSION = 3 as const;
+const SYNC_JOURNAL_SCHEMA_VERSION = 4 as const;
 
 export function refKey(ref: LibraryRecordRef): string {
   return `${ref.kind}:${ref.id}`;
@@ -75,7 +80,7 @@ function emptyJournal(): SyncJournal {
     version: 0,
     dirty: {},
     tombstones: {},
-    blobs: { progress: 0, stats: 0 },
+    blobs: { progress: 0, stats: 0, preferences: 0 },
   };
 }
 
@@ -106,9 +111,24 @@ async function readJournal(): Promise<SyncJournal> {
   try {
     if (stored.value) {
       let parsed: unknown = JSON.parse(stored.value);
-      if (parsed && typeof parsed === "object" && "schemaVersion" in parsed && parsed.schemaVersion === 2) {
-        const previous = parsed as Omit<SyncJournal, "schemaVersion"> & { schemaVersion: 2 };
-        parsed = { ...previous, schemaVersion: 3, blobs: { progress: previous.blobs.progress, stats: previous.blobs.stats } };
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        "schemaVersion" in parsed &&
+        (parsed.schemaVersion === 2 || parsed.schemaVersion === 3)
+      ) {
+        const previous = parsed as Omit<SyncJournal, "schemaVersion"> & {
+          schemaVersion: 2 | 3;
+        };
+        parsed = {
+          ...previous,
+          schemaVersion: 4,
+          blobs: {
+            progress: previous.blobs.progress,
+            stats: previous.blobs.stats,
+            preferences: 0,
+          },
+        };
         migrated = isJournal(parsed);
       }
       if (isJournal(parsed)) journal = parsed;
@@ -131,11 +151,14 @@ async function readJournal(): Promise<SyncJournal> {
 async function update(
   mutate: (journal: SyncJournal) => boolean,
 ): Promise<SyncJournal> {
-  const run = queue.catch(() => undefined).then(async () => {
-    const journal = await readJournal();
-    if (mutate(journal)) await saveToStorage(SYNC_JOURNAL_STORAGE_KEY, journal);
-    return journal;
-  });
+  const run = queue
+    .catch(() => undefined)
+    .then(async () => {
+      const journal = await readJournal();
+      if (mutate(journal))
+        await saveToStorage(SYNC_JOURNAL_STORAGE_KEY, journal);
+      return journal;
+    });
   queue = run;
   return run;
 }

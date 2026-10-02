@@ -13,6 +13,7 @@ import { managedTurn } from "@/lib/managed-client";
 import { createAiSession } from "@/src/lib/ai/session";
 import { useCloudStore } from "@/stores/cloud-store";
 import { estimatePoints } from "@lexiro/ai-contract";
+import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 export function ResultPanel({
   correct,
@@ -38,7 +39,8 @@ export function ResultPanel({
   const [busy, setBusy] = useState(false);
   const requestRef = useRef<AbortController | null>(null);
   const uid = useCloudStore((store) => store.user?.uid);
-  const explanationCost = estimatePoints("explain", 1, "lite").max;
+  const model = useAiPreferencesStore((store) => store.preferences.model);
+  const explanationCost = estimatePoints("explain", 1, "lite", model).max;
 
   // Leaving the result screen drops the request instead of letting it run to its
   // timeout and then write into a component that is gone.

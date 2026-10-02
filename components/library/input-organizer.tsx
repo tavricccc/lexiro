@@ -1,6 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { LIMITS, buildWordGenerationSources } from "@lexiro/ai-contract";
+import {
+  LIMITS,
+  buildWordGenerationSources,
+  estimatePoints,
+} from "@lexiro/ai-contract";
 import { Button } from "@/components/ui/button";
 import { CreditBadge } from "@/components/ai/credit-badge";
 import {
@@ -24,6 +28,7 @@ import { createAiSession } from "@/src/lib/ai/session";
 import { parseOrganizedWordInput } from "@/src/lib/word-generation";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
+import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 export type OrganizerPhase = "input" | "review";
 export interface InputOrganizerDraft {
@@ -87,6 +92,8 @@ export function InputOrganizer({
     onDraftRef.current?.({ input, review, addingPhotos });
   }, [input, review, addingPhotos]);
   const uid = useCloudStore((store) => store.user?.uid);
+  const chosenModel = useAiPreferencesStore((store) => store.preferences.model);
+  const textCost = estimatePoints("organizeText", 1, "lite", chosenModel).max;
   useEffect(() => () => controller.current?.abort(), [uid]);
   useEffect(() => {
     if (!photoProgress || !busy) return;
@@ -157,6 +164,7 @@ export function InputOrganizer({
     const current = startRun();
     const totalBatches = Math.ceil(files.length / LIMITS.images);
     const startedAt = Date.now();
+    const model = useAiPreferencesStore.getState().preferences.model;
     try {
       for (
         let batchStart = nextBatchStart;
@@ -199,6 +207,7 @@ export function InputOrganizer({
             headers: {
               "content-type": "text/plain",
               "x-session-id": crypto.randomUUID(),
+              "x-ai-model": model,
             },
             body: images.join("\n"),
             signal: current.signal,
@@ -420,8 +429,8 @@ export function InputOrganizer({
               <Icons.generate />
               {t("managed.organize")}
               <CreditBadge
-                label={t("managed.expectedPoints", { points: 5 })}
-                value={t("managed.expectedShort", { points: 5 })}
+                label={t("managed.expectedPoints", { points: textCost })}
+                value={t("managed.expectedShort", { points: textCost })}
               />
             </Button>
             <PhotoInputButton

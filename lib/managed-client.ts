@@ -272,6 +272,7 @@ export async function managedTurn(
         ...input,
         session: session.sessionId,
         tier: session.tier,
+        model: session.model,
         cursor: session.cursor,
         repair: options.repair,
         // `append` belongs to the round, so every segment of it asks for fresh
@@ -290,8 +291,7 @@ export async function managedTurn(
   try {
     result = await readManagedStream(response, { ...options, signal });
   } catch (reason) {
-    if (reason instanceof AiRequestError)
-      addUsage(session.usage, reason.usage);
+    if (reason instanceof AiRequestError) addUsage(session.usage, reason.usage);
     throw reason;
   }
   addUsage(session.usage, result.usage);

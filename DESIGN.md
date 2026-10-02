@@ -222,6 +222,10 @@ Hover、停用與鍵盤焦點沿用共用語意 token 與元件。
 
 ## Do's and Don'ts
 
+學習設定的 AI 模型沿用 ListSection、ListPicker 與 SaveStatus，不增加另一套選擇介面。
+模型名稱只在此設定呈現；其他生成頁維持既有 Lite／Thinking／Pro 與預估點數。
+切換使用目前帳號的偏好，登入後同步；正在執行的工作仍顯示原模型的預估。
+
 ### Do:
 
 - **Do** 用既有 token、共用字級與元件保持一致，讓學習內容成為畫面主角。

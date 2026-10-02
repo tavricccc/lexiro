@@ -8,6 +8,7 @@ import { useAutosave } from "@/components/me/use-autosave";
 import { ListPicker, ListSection, ListStepperRow } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
+import { AiModelPreference } from "./ai-model-preference";
 
 const THEMES = ["system", "light", "dark"] as const;
 const THEME_LABEL = {
@@ -53,6 +54,7 @@ export function PreferencesSection() {
           value={current}
         />
       </ListSection>
+      <AiModelPreference />
       <ListSection
         header={t("settings.learning")}
         headerAction={

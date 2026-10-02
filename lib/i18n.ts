@@ -467,6 +467,10 @@ export const zhTW = {
     scheduled: "已排程",
   },
   settings: {
+    ai: "AI",
+    aiModel: "AI 模型",
+    aiModelHint:
+      "所有 AI 功能共用這個選擇，新的工作會依所選模型計費。登入後自動同步到其他裝置。",
     localOnly: "資料保存在此裝置，尚未啟用雲端同步",
     title: "設定",
     description: "學習目標、AI、帳號與資料都集中在這裡。",
@@ -671,8 +675,8 @@ export const zhTW = {
       "可以繼續加入；超過 10 張會自動分批整理，目前結果會一起保留。",
     photoProgress: "正在整理第 {current} 批，共 {total} 批（每批最多 10 張）",
     photoBatch: "第 {start}–{end} 張照片",
-    photoPoints: "每張預計 6 點",
-    photoPointsShort: "每張 6",
+    photoPoints: "每張預計 {points} 點",
+    photoPointsShort: "每張 {points}",
     reorganize: "重新整理",
     reviewLines: "確認整理結果",
     reviewHint:
@@ -692,6 +696,7 @@ export const zhTW = {
     explain: "錯題講解",
   },
   admin: {
+    kindUnquoted: "{runs} 次 · {units} 單位 · 歷史模型無目前預估",
     trial: "新帳號免費試用",
     trialHint:
       "關閉時，新註冊的人仍然會出現在名單上，只是從 0 點開始，由你決定要給多少。",

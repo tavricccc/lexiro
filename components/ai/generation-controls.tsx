@@ -4,11 +4,13 @@ import {
   TIERS,
   type JobKind,
   type Tier,
+  type AiModel,
 } from "@lexiro/ai-contract";
 import { ListChoiceGroup, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { CreditBadge } from "./credit-badge";
 import { useManagedAccount } from "./use-managed-account";
+import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 /**
  * Choosing how hard the model should think.
@@ -25,14 +27,20 @@ export function GenerationControls({
   kind,
   onTierChange,
   tier,
+  model: requestedModel,
 }: {
   count: number;
   disabled?: boolean;
   kind: JobKind;
   onTierChange: (tier: Tier) => void;
   tier: Tier;
+  model?: AiModel;
 }) {
   const account = useManagedAccount();
+  const preferredModel = useAiPreferencesStore(
+    (store) => store.preferences.model,
+  );
+  const model = requestedModel ?? preferredModel;
   // An administrator is not spending points, so the rows say what the tier is
   // for and nothing else; the tokens arrive once the run has run.
   const admin = account.data?.admin === true;
@@ -55,21 +63,26 @@ export function GenerationControls({
         onSelect={onTierChange}
         value={tier}
         options={TIERS.map((value) => {
-          const estimate = estimatePoints(kind, count, value);
+          const estimate = estimatePoints(kind, count, value, model);
           return {
             id: value,
             detail: t(`managed.${value}Hint`),
             label: t(`managed.${value}`),
-            value: admin || !count ? undefined : (
-              <CreditBadge
-                label={estimate.min === estimate.max
-                  ? t("managed.expectedPoints", { points: estimate.max })
-                  : t("managed.expectedPointsRange", estimate)}
-                value={estimate.min === estimate.max
-                  ? t("managed.expectedShort", { points: estimate.max })
-                  : t("managed.expectedRangeShort", estimate)}
-              />
-            ),
+            value:
+              admin || !count ? undefined : (
+                <CreditBadge
+                  label={
+                    estimate.min === estimate.max
+                      ? t("managed.expectedPoints", { points: estimate.max })
+                      : t("managed.expectedPointsRange", estimate)
+                  }
+                  value={
+                    estimate.min === estimate.max
+                      ? t("managed.expectedShort", { points: estimate.max })
+                      : t("managed.expectedRangeShort", estimate)
+                  }
+                />
+              ),
           };
         })}
       />

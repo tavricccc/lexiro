@@ -16,6 +16,7 @@ const report: UsageReport = {
   kinds: [
     {
       kind: "vocabulary",
+      model: "gpt-6-luna",
       tier: "lite",
       runs: 4,
       units: 40,
@@ -29,6 +30,7 @@ const report: UsageReport = {
     },
     {
       kind: "reading",
+      model: "gpt-6-luna",
       tier: "pro",
       runs: 2,
       units: 2,
@@ -70,16 +72,52 @@ async function showKindReport() {
   fireEvent.click(tab);
 }
 
-beforeEach(() => { managed.mockReset(); managed.mockResolvedValue(report); });
+beforeEach(() => {
+  managed.mockReset();
+  managed.mockResolvedValue(report);
+});
 afterEach(cleanup);
 
 describe("the administrator's per-kind cost report", () => {
+  it("compares each family with its own quote even for the same kind and tier", async () => {
+    managed.mockResolvedValue({
+      ...report,
+      kinds: [report.kinds[0], { ...report.kinds[0], model: "gpt-5.6-luna" }],
+    });
+    await showKindReport();
+    expect(
+      await screen.findByText(/報價 1.5 點 · 4 次 · 40 單位 · 差 −33%/),
+    ).toBeTruthy();
+    expect(
+      screen.getByText(/報價 0.5 點 · 4 次 · 40 單位 · 差 \+100%/),
+    ).toBeTruthy();
+  });
   it("shows pending costs as unknown rather than free", async () => {
-    managed.mockResolvedValue({ ...report, pendingUsage: 1, unverifiedDebits: 2, entries: [{
-      id: "pending", uid: "u", email: "u@example.test", model: "gpt-6-luna", points: 0,
-      input: null, cached: null, cacheWrite: null, output: null, credits: null, costUsd: null,
-      created_at: 1, status: "complete", usageState: "pending", assessedPoints: null, debitVerified: 0,
-    }] } satisfies UsageReport);
+    managed.mockResolvedValue({
+      ...report,
+      pendingUsage: 1,
+      unverifiedDebits: 2,
+      entries: [
+        {
+          id: "pending",
+          uid: "u",
+          email: "u@example.test",
+          model: "gpt-6-luna",
+          points: 0,
+          input: null,
+          cached: null,
+          cacheWrite: null,
+          output: null,
+          credits: null,
+          costUsd: null,
+          created_at: 1,
+          status: "complete",
+          usageState: "pending",
+          assessedPoints: null,
+          debitVerified: 0,
+        },
+      ],
+    } satisfies UsageReport);
     show();
     expect(await screen.findByText("1 筆用量待核對")).toBeTruthy();
     expect(screen.getByText("2 筆歷史扣款無法核實")).toBeTruthy();

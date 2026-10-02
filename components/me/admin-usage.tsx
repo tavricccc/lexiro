@@ -2,6 +2,8 @@
 
 import {
   rate,
+  AI_MODELS,
+  type AiModel,
   type AdminKindUsage,
   type AdminUserUsage,
   type AdminUsageReport,
@@ -53,12 +55,15 @@ function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
     current.tokens += row.input + row.output;
     current.points += row.points;
     current.credits += row.credits;
-    current.cost = current.cost === null || row.costUsd === null
-      ? null
-      : current.cost + row.costUsd;
+    current.cost =
+      current.cost === null || row.costUsd === null
+        ? null
+        : current.cost + row.costUsd;
     spend.set(row.uid, current);
   }
-  return [...spend.values()].sort((left, right) => (right.cost ?? -1) - (left.cost ?? -1));
+  return [...spend.values()].sort(
+    (left, right) => (right.cost ?? -1) - (left.cost ?? -1),
+  );
 }
 
 /**
@@ -69,6 +74,7 @@ function byAccount(rows: readonly AdminUserUsage[]): AccountSpend[] {
  * what the work costs, which is the direction worth acting on.
  */
 interface KindCost {
+  model: string;
   key: string;
   kind: JobKind;
   tier: Tier;
@@ -76,8 +82,8 @@ interface KindCost {
   units: number;
   costUsd: number | null;
   actual: number;
-  quoted: number;
-  gap: number;
+  quoted: number | null;
+  gap: number | null;
 }
 
 function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
@@ -85,9 +91,12 @@ function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
     .filter((row) => row.units > 0)
     .map((row) => {
       const actual = row.credits / row.units;
-      const quoted = rate(row.kind, row.tier) / 2;
+      const quoted = AI_MODELS.includes(row.model as AiModel)
+        ? rate(row.kind, row.tier, row.model as AiModel) / 2
+        : null;
       return {
-        key: `${row.kind}-${row.tier}`,
+        key: `${row.kind}-${row.tier}-${row.model}`,
+        model: row.model,
         kind: row.kind,
         tier: row.tier,
         runs: row.runs,
@@ -95,10 +104,10 @@ function byKind(rows: readonly AdminKindUsage[]): KindCost[] {
         costUsd: row.costUsd,
         actual,
         quoted,
-        gap: quoted > 0 ? (actual - quoted) / quoted : 0,
+        gap: quoted !== null ? (actual - quoted) / quoted : null,
       };
     })
-    .sort((left, right) => Math.abs(right.gap) - Math.abs(left.gap));
+    .sort((left, right) => Math.abs(right.gap ?? 0) - Math.abs(left.gap ?? 0));
 }
 
 const percent = (value: number) =>
@@ -112,7 +121,10 @@ export function AdminUsage() {
   );
   const usage = useQuery({
     queryKey: ["admin-usage", uid, pages.cursor],
-    queryFn: () => managedJson<AdminUsageReport>(`/admin/usage${pages.cursor ? `?cursor=${encodeURIComponent(pages.cursor)}` : ""}`),
+    queryFn: () =>
+      managedJson<AdminUsageReport>(
+        `/admin/usage${pages.cursor ? `?cursor=${encodeURIComponent(pages.cursor)}` : ""}`,
+      ),
     retry: false,
   });
   if (usage.error)
@@ -145,13 +157,34 @@ export function AdminUsage() {
         ]}
         value={view}
       />
-      {usage.data && (usage.data.pendingUsage > 0 || usage.data.unavailableUsage > 0 || usage.data.unverifiedDebits > 0) && (
-        <ListSection footer={t("admin.knownUsageOnly")}>
-          {usage.data.pendingUsage > 0 && <ListRow label={t("admin.pendingUsage", { count: usage.data.pendingUsage })} />}
-          {usage.data.unavailableUsage > 0 && <ListRow label={t("admin.unavailableUsage", { count: usage.data.unavailableUsage })} />}
-          {usage.data.unverifiedDebits > 0 && <ListRow label={t("admin.unverifiedDebits", { count: usage.data.unverifiedDebits })} />}
-        </ListSection>
-      )}
+      {usage.data &&
+        (usage.data.pendingUsage > 0 ||
+          usage.data.unavailableUsage > 0 ||
+          usage.data.unverifiedDebits > 0) && (
+          <ListSection footer={t("admin.knownUsageOnly")}>
+            {usage.data.pendingUsage > 0 && (
+              <ListRow
+                label={t("admin.pendingUsage", {
+                  count: usage.data.pendingUsage,
+                })}
+              />
+            )}
+            {usage.data.unavailableUsage > 0 && (
+              <ListRow
+                label={t("admin.unavailableUsage", {
+                  count: usage.data.unavailableUsage,
+                })}
+              />
+            )}
+            {usage.data.unverifiedDebits > 0 && (
+              <ListRow
+                label={t("admin.unverifiedDebits", {
+                  count: usage.data.unverifiedDebits,
+                })}
+              />
+            )}
+          </ListSection>
+        )}
       {view === "models" && (
         <ListSection
           footer={t("admin.spentWindow")}
@@ -163,16 +196,16 @@ export function AdminUsage() {
               detail={t("admin.modelTotals", {
                 runs: model.runs,
                 tokens: (model.input + model.output).toLocaleString(),
-                cached: model.input > 0 ? Math.round(model.cached / model.input * 100) : 0,
+                cached:
+                  model.input > 0
+                    ? Math.round((model.cached / model.input) * 100)
+                    : 0,
                 writes: model.cacheWrite.toLocaleString(),
               })}
               key={model.model}
               label={model.model}
               value={
-                <UsageValue
-                  cost={model.costUsd}
-                  credits={model.credits}
-                />
+                <UsageValue cost={model.costUsd} credits={model.credits} />
               }
             />
           ))}
@@ -195,15 +228,27 @@ export function AdminUsage() {
           {usage.isPending && <ListRow label={t("common.loading")} />}
           {kinds.map((entry) => (
             <ListRow
-              detail={<>
-                {t("admin.kindTotals", {
-                  delta: percent(entry.gap),
-                  quoted: entry.quoted.toFixed(1),
-                  runs: entry.runs,
-                  units: entry.units.toLocaleString(),
-                })}
-                {" · "}{t("admin.kindTotalCost", { cost: formatCost(entry.costUsd) })}
-              </>}
+              detail={
+                <>
+                  {entry.model}
+                  {" · "}
+                  {entry.quoted !== null && entry.gap !== null
+                    ? t("admin.kindTotals", {
+                        delta: percent(entry.gap),
+                        quoted: entry.quoted.toFixed(1),
+                        runs: entry.runs,
+                        units: entry.units.toLocaleString(),
+                      })
+                    : t("admin.kindUnquoted", {
+                        runs: entry.runs,
+                        units: entry.units,
+                      })}
+                  {" · "}
+                  {t("admin.kindTotalCost", {
+                    cost: formatCost(entry.costUsd),
+                  })}
+                </>
+              }
               key={entry.key}
               label={`${jobKindLabel(entry.kind)} · ${t(`managed.${entry.tier}`)}`}
               value={t("admin.kindCost", { cost: entry.actual.toFixed(2) })}
@@ -244,12 +289,16 @@ export function AdminUsage() {
           {usage.isPending && <ListRow label={t("common.loading")} />}
           {usage.data?.entries.map((entry) => (
             <ListRow
-              detail={entry.usageState === "reported" ? t("admin.runTotals", {
-                input: (entry.input ?? 0).toLocaleString(),
-                cached: (entry.cached ?? 0).toLocaleString(),
-                writes: (entry.cacheWrite ?? 0).toLocaleString(),
-                output: (entry.output ?? 0).toLocaleString(),
-              }) : entry.model}
+              detail={
+                entry.usageState === "reported"
+                  ? t("admin.runTotals", {
+                      input: (entry.input ?? 0).toLocaleString(),
+                      cached: (entry.cached ?? 0).toLocaleString(),
+                      writes: (entry.cacheWrite ?? 0).toLocaleString(),
+                      output: (entry.output ?? 0).toLocaleString(),
+                    })
+                  : entry.model
+              }
               key={entry.id}
               label={
                 entry.usageState !== "reported"
@@ -258,12 +307,13 @@ export function AdminUsage() {
                     ? (entry.email ?? entry.uid)
                     : `${entry.email ?? entry.uid} · ${t("admin.runFailed")}`
               }
-              value={entry.usageState !== "reported" ? t("admin.costUnknown") : (
-                <UsageValue
-                  cost={entry.costUsd}
-                  credits={entry.credits}
-                />
-              )}
+              value={
+                entry.usageState !== "reported" ? (
+                  t("admin.costUnknown")
+                ) : (
+                  <UsageValue cost={entry.costUsd} credits={entry.credits} />
+                )
+              }
             />
           ))}
           {!usage.isPending && usage.data?.entries.length === 0 && (

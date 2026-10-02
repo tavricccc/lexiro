@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LIMITS } from "@lexiro/ai-contract";
+import { LIMITS, estimatePoints } from "@lexiro/ai-contract";
+import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 import { CreditBadge } from "@/components/ai/credit-badge";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,8 @@ export function PhotoInputButton({
   onFiles: (files: File[]) => void;
   showCost?: boolean;
 }) {
+  const model = useAiPreferencesStore((store) => store.preferences.model);
+  const points = estimatePoints("organizeImage", 1, "lite", model).max;
   return (
     <Button asChild type="button" variant="secondary" disabled={disabled}>
       <label>
@@ -39,8 +42,8 @@ export function PhotoInputButton({
         {label}
         {showCost && (
           <CreditBadge
-            label={t("managed.photoPoints")}
-            value={t("managed.photoPointsShort")}
+            label={t("managed.photoPoints", { points })}
+            value={t("managed.photoPointsShort", { points })}
           />
         )}
         <input
@@ -78,6 +81,8 @@ export function PhotoSelection({
   processed: number;
 }) {
   const remaining = files.length - processed;
+  const model = useAiPreferencesStore((store) => store.preferences.model);
+  const points = estimatePoints("organizeImage", 1, "lite", model).max;
   const batches = Math.ceil(remaining / LIMITS.images);
   const [previews, setPreviews] = useState<{ file: File; url: string }[]>([]);
   useEffect(() => {
@@ -95,7 +100,7 @@ export function PhotoSelection({
         <p className="mt-1 type-hint">
           {t("managed.photoConfirmSummary", { count: remaining, batches })}
         </p>
-        <p className="mt-1 type-hint">{t("managed.photoPoints")}</p>
+        <p className="mt-1 type-hint">{t("managed.photoPoints", { points })}</p>
         {processed > 0 && (
           <p className="mt-2 type-hint">
             {t("managed.photoCompletedKept", { count: processed })}

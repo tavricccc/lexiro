@@ -11,6 +11,7 @@ import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
 import { TaskProgress } from "@/components/ui/task-progress";
 import { t } from "@/lib/i18n";
+import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 function formatDiagnostic(value: string): string {
   try {
@@ -67,10 +68,12 @@ export function AiRunPanel<T>({
 }) {
   const [now, setNow] = useState(0);
   const account = useManagedAccount();
+  const model = useAiPreferencesStore((store) => store.preferences.model);
   const admin = account.data?.admin === true;
   const running = state.status === "running",
     started = state.status !== "idle",
     done = state.status === "done";
+  const runModel = started && !done ? (state.model ?? model) : model;
   const canRun =
     ready &&
     (configured || !billableCount) &&
@@ -79,8 +82,9 @@ export function AiRunPanel<T>({
     kind,
     appendBillableCount ?? billableCount,
     tier,
+    model,
   );
-  const startCost = estimatePoints(kind, billableCount, tier);
+  const startCost = estimatePoints(kind, billableCount, tier, runModel);
   const insufficientPoints =
     !admin && account.data !== undefined && account.data.points < startCost.min;
   const canStart = canRun && !insufficientPoints;
@@ -112,6 +116,7 @@ export function AiRunPanel<T>({
         kind={kind}
         onTierChange={onTierChange}
         tier={tier}
+        model={runModel}
       />
 
       {started && (

@@ -122,6 +122,17 @@ service cloud.firestore {
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
+      match /preferences/ai {
+        allow read: if signedIn(uid);
+        allow create, update: if ownerCreate(uid)
+          && request.resource.data.keys().hasOnly(['ownerId', 'changedBy', 'schemaVersion', 'model', 'updatedAt'])
+          && request.resource.data.schemaVersion == 1
+          && request.resource.data.model in ['gpt-5.6-luna', 'gpt-6-luna']
+          && request.resource.data.changedBy is string
+          && request.resource.data.updatedAt is string;
+        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
+      }
+
 
 
     }

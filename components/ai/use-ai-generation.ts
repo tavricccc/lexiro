@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Tier, TokenUsage } from "@lexiro/ai-contract";
+import type { AiModel, Tier, TokenUsage } from "@lexiro/ai-contract";
 import type { AiTask, AiPhase } from "@/src/types/ai";
 import { createAiSession, resetConversation } from "@/src/lib/ai/session";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
@@ -30,6 +30,7 @@ export function useReviewHandoff(status: AiRunStatus, onDone: () => void) {
   }, [status]);
 }
 export interface AiRunState<T> {
+  model?: AiModel;
   status: AiRunStatus;
   phase: AiPhase;
   characters: number;
@@ -145,6 +146,7 @@ export function useAiGeneration<T>({
     setState((s) => ({
       ...s,
       status: "running",
+      model: run.session.model,
       error: "",
       diagnostic: null,
       startedAt: start,

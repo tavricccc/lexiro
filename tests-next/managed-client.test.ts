@@ -1,24 +1,43 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { addUsage, managedFetch, managedTurn, readManagedStream } from "@/lib/managed-client";
+import {
+  addUsage,
+  managedFetch,
+  managedTurn,
+  readManagedStream,
+} from "@/lib/managed-client";
 import { responseCost } from "@lexiro/ai-contract";
 import type { AiSession } from "@/src/types/ai";
 
-const auth = vi.hoisted(() => ({ currentUser: { uid: "a", getIdToken: vi.fn() }, authStateReady: vi.fn(async () => {}) }));
+const auth = vi.hoisted(() => ({
+  currentUser: { uid: "a", getIdToken: vi.fn() },
+  authStateReady: vi.fn(async () => {}),
+}));
 vi.mock("@/src/lib/firebase", () => ({ getFirebaseAuth: () => auth }));
 beforeEach(() => {
   vi.stubEnv("NEXT_PUBLIC_AI_WORKER_URL", "https://worker.example");
   auth.currentUser.uid = "a";
-  auth.currentUser.getIdToken.mockReset().mockResolvedValueOnce("initial").mockResolvedValue("fresh");
+  auth.currentUser.getIdToken
+    .mockReset()
+    .mockResolvedValueOnce("initial")
+    .mockResolvedValue("fresh");
 });
-afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
+});
 
 describe("managed AI boundary", () => {
   it("refreshes Firebase once on 401 and authenticates the second request", async () => {
-    const fetcher = vi.fn().mockResolvedValueOnce(new Response("", { status: 401 })).mockResolvedValueOnce(new Response("{}"));
+    const fetcher = vi
+      .fn()
+      .mockResolvedValueOnce(new Response("", { status: 401 }))
+      .mockResolvedValueOnce(new Response("{}"));
     vi.stubGlobal("fetch", fetcher);
     await managedFetch("/me");
     expect(auth.currentUser.getIdToken.mock.calls).toEqual([[false], [true]]);
-    expect(new Headers(fetcher.mock.calls[1][1].headers).get("Authorization")).toBe("Bearer fresh");
+    expect(
+      new Headers(fetcher.mock.calls[1][1].headers).get("Authorization"),
+    ).toBe("Bearer fresh");
   });
   it("does not loop after a second unauthorized response", async () => {
     const fetcher = vi.fn(async () => new Response("", { status: 401 }));
@@ -27,11 +46,30 @@ describe("managed AI boundary", () => {
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
   it("discards an old account's in-flight response", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => { auth.currentUser.uid = "b"; return new Response("{}"); }));
-    await expect(managedFetch("/me")).rejects.toMatchObject({ name: "AbortError" });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => {
+        auth.currentUser.uid = "b";
+        return new Response("{}");
+      }),
+    );
+    await expect(managedFetch("/me")).rejects.toMatchObject({
+      name: "AbortError",
+    });
   });
   it("keeps upstream error text out of the public message but exposes it for photo debugging", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ error: { code: "upstream", message: "provider image failure" } }), { status: 500 })));
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(
+        async () =>
+          new Response(
+            JSON.stringify({
+              error: { code: "upstream", message: "provider image failure" },
+            }),
+            { status: 500 },
+          ),
+      ),
+    );
     const request = managedFetch("/generate");
     await expect(request).rejects.not.toThrow("provider image failure");
     await expect(request).rejects.toMatchObject({
@@ -40,19 +78,57 @@ describe("managed AI boundary", () => {
   });
   it("reads UTF-8 SSE in byte-sized chunks and keeps model and usage", async () => {
     const events = [
-      { type: "response.created", response: { id: "resp_test", model: "internal" } },
+      {
+        type: "response.created",
+        response: { id: "resp_test", model: "internal" },
+      },
       { type: "response.output_text.delta", delta: "中文 🌲" },
-      { type: "response.completed", response: { usage: { input_tokens: 40, output_tokens: 12, input_tokens_details: { cached_tokens: 32 } }, lexiro: { credits: 3 } } },
-    ].map((e) => `data: ${JSON.stringify(e)}\r\n\r\n`).join("");
+      {
+        type: "response.completed",
+        response: {
+          usage: {
+            input_tokens: 40,
+            output_tokens: 12,
+            input_tokens_details: { cached_tokens: 32 },
+          },
+          lexiro: { credits: 3 },
+        },
+      },
+    ]
+      .map((e) => `data: ${JSON.stringify(e)}\r\n\r\n`)
+      .join("");
     const bytes = new TextEncoder().encode(events);
-    const stream = new ReadableStream<Uint8Array>({ start(c) { for (const byte of bytes) c.enqueue(new Uint8Array([byte])); c.close(); } });
+    const stream = new ReadableStream<Uint8Array>({
+      start(c) {
+        for (const byte of bytes) c.enqueue(new Uint8Array([byte]));
+        c.close();
+      },
+    });
     const result = await readManagedStream(new Response(stream), {});
-    expect(result).toEqual({ text: "中文 🌲", id: "resp_test", complete: true, stopReason: "complete", usage: { model: "internal", input: 40, cached: 32, output: 12, credits: 3 } });
+    expect(result).toEqual({
+      text: "中文 🌲",
+      id: "resp_test",
+      complete: true,
+      stopReason: "complete",
+      usage: {
+        model: "internal",
+        input: 40,
+        cached: 32,
+        output: 12,
+        credits: 3,
+      },
+    });
   });
   it("accumulates cache-write tokens for the displayed provider cost", () => {
     const total = addUsage(
       { model: "gpt-6-luna", input: 40, cacheWrite: 10 },
-      { model: "gpt-6-luna", input: 60, cached: 20, cacheWrite: 15, output: 12 },
+      {
+        model: "gpt-6-luna",
+        input: 60,
+        cached: 20,
+        cacheWrite: 15,
+        output: 12,
+      },
     );
     expect(total).toMatchObject({
       model: "gpt-6-luna",
@@ -64,9 +140,15 @@ describe("managed AI boundary", () => {
   });
   it("adds each response's real token cost, including cache writes and net savings", () => {
     const usage = addUsage(
-      addUsage({}, {
-        model: "gpt-6-luna", input: 10_000, cacheWrite: 2_000, output: 1_000,
-      }),
+      addUsage(
+        {},
+        {
+          model: "gpt-6-luna",
+          input: 10_000,
+          cacheWrite: 2_000,
+          output: 1_000,
+        },
+      ),
       { model: "gpt-6-luna", input: 10_000, cached: 6_000, output: 1_000 },
     );
     expect(usage).toMatchObject({
@@ -76,34 +158,69 @@ describe("managed AI boundary", () => {
     });
     expect(usage.costUsd).toBeCloseTo(0.00251);
     expect(usage.uncachedCostUsd).toBeCloseTo(0.003);
-    expect(responseCost({
-      model: "gpt-6-luna", input: 300_000, output: 100_000,
-    })).toBeCloseTo(0.135);
+    expect(
+      responseCost({
+        model: "gpt-6-luna",
+        input: 300_000,
+        output: 100_000,
+      }),
+    ).toBeCloseTo(0.135);
   });
   it("keeps reported cost when a response is truncated", async () => {
     const frames = [
-      { type: "response.created", response: { id: "resp_truncated", model: "gpt-6-luna" } },
-      { type: "response.incomplete", response: {
-        incomplete_details: { reason: "max_output_tokens" },
-        usage: { input_tokens: 10_000, output_tokens: 1_000,
-          input_tokens_details: { cached_tokens: 6_000, cache_write_tokens: 2_000 } },
-      } },
-    ].map((event) => `data: ${JSON.stringify(event)}\n\n`).join("");
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(frames)));
+      {
+        type: "response.created",
+        response: { id: "resp_truncated", model: "gpt-6-luna" },
+      },
+      {
+        type: "response.incomplete",
+        response: {
+          incomplete_details: { reason: "max_output_tokens" },
+          usage: {
+            input_tokens: 10_000,
+            output_tokens: 1_000,
+            input_tokens_details: {
+              cached_tokens: 6_000,
+              cache_write_tokens: 2_000,
+            },
+          },
+        },
+      },
+    ]
+      .map((event) => `data: ${JSON.stringify(event)}\n\n`)
+      .join("");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response(frames)),
+    );
     const session: AiSession = {
+      model: "gpt-6-luna",
       tier: "lite",
       context: "",
       sessionId: crypto.randomUUID(),
       notices: [],
       usage: {},
     };
-    await expect(managedTurn(session, { kind: "explain", raw: "test" })).rejects.toMatchObject({
+    await expect(
+      managedTurn(session, { kind: "explain", raw: "test" }),
+    ).rejects.toMatchObject({
       code: "truncated",
     });
-    expect(session.usage).toMatchObject({ input: 10_000, cached: 6_000, cacheWrite: 2_000 });
+    expect(session.usage).toMatchObject({
+      input: 10_000,
+      cached: 6_000,
+      cacheWrite: 2_000,
+    });
     expect(session.usage.costUsd).toBeCloseTo(0.00101);
   });
   it("does not accept a disconnected stream as completed content", async () => {
-    await expect(readManagedStream(new Response('data: {"type":"response.output_text.delta","delta":"partial"}\n\n'), {})).rejects.toMatchObject({ streamBroken: true });
+    await expect(
+      readManagedStream(
+        new Response(
+          'data: {"type":"response.output_text.delta","delta":"partial"}\n\n',
+        ),
+        {},
+      ),
+    ).rejects.toMatchObject({ streamBroken: true });
   });
 });

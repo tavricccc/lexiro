@@ -16,6 +16,8 @@ import {
 } from "./cloud-sync-schema";
 import { prepareFirestoreData } from "./firestore-data";
 import { estimateJsonBytes } from "./hash";
+import { readCloudPreferences } from "./cloud-preferences";
+import type { AiPreferences } from "./ai-preferences";
 
 /** Account-wide review schedules and statistics merge field by field before upload. */
 
@@ -49,7 +51,10 @@ export function mergeProgress(
   const cards: Record<string, CardProgress> = { ...remote.cards };
   for (const [senseId, card] of Object.entries(local.cards)) {
     const current = cards[senseId];
-    if (!current || laterOf(card.lastReview, current.lastReview) === (card.lastReview ?? ""))
+    if (
+      !current ||
+      laterOf(card.lastReview, current.lastReview) === (card.lastReview ?? "")
+    )
       cards[senseId] = card;
   }
   return {
@@ -115,6 +120,7 @@ export function mergeStats(
 }
 
 export interface CloudBlobs {
+  preferences: AiPreferences | null;
   progress: LearningProgress | null;
   stats: DashboardStats | null;
 }
@@ -132,15 +138,17 @@ export async function readCloudBlobs(
   uid: string,
   signal?: AbortSignal,
 ): Promise<CloudBlobs> {
-  const [progress, stats] = await withDeadline(
+  const [progress, stats, preferences] = await withDeadline(
     Promise.all([
       getDoc(cloudDocument(db, uid, "progress", "global")),
       getDoc(cloudDocument(db, uid, "stats", "summary")),
+      readCloudPreferences(db, uid),
     ]),
     "Account documents download",
     signal,
   );
   return {
+    preferences,
     progress: progress.exists()
       ? normalizeCloudProgress(progress.data(), uid)
       : null,

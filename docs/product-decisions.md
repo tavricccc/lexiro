@@ -60,7 +60,7 @@ Thinking or Pro, and see point estimates before generation. Provider settings,
 credentials and prompts belong to the private backend. The previous manual
 copy/paste prompt workflow and BYO-key settings have been removed.
 
-Typed lists and photos first pass through fixed-price AI organization. The
+Typed lists and photos first pass through AI organization with a point estimate. The
 learner edits and confirms the resulting list before paying for generation.
 Generated words preserve supplied meanings, may add at most one common meaning,
 and include an example for each meaning. Preview edits are saved only when applied.
@@ -105,6 +105,22 @@ thing.
 
 Learning preferences save automatically. The account page shows managed point
 balance and renewal; authorized administrators manage account allowances there.
+
+AI 模型在學習設定中全域選擇 GPT-5.6 Luna 或 GPT-6 Luna，只影響目前帳號。
+兩者共用 Lite／Thinking／Pro 與既有 prompt，分別使用 low／medium／high。
+文字整理、圖片整理、單字與題目生成、解析都套用此選擇；一輪執行期間固定
+使用啟動時的模型，新的工作才讀取新的偏好。
+
+模型偏好另存於帳號的 `preferences/ai`，以獨立 v1 schema 同步，不混入學習
+統計。IndexedDB 依帳號隔離，sync journal 的 v2／v3 遷移到 v4，保留既有
+待上傳內容並新增 preferences 標記。其他裝置監聽偏好文件，單獨改模型也能
+更新，不必等待教材異動。尚未選擇的帳號預設 GPT-6 Luna。
+
+預估與預留依模型調整；5.6 使用 token 牌價最大比例 2.4 倍作為保守預估。
+真正扣款仍按每次回覆的 input、cache read、cache write、output 計算，套用
+該模型的快取及長上下文費率，不再乘一次檔位倍率。官方來源：
+[GPT-5.6 Luna](https://developers.openai.com/api/docs/models/gpt-5.6-luna) 與
+[Standard pricing](https://developers.openai.com/api/docs/pricing)。
 
 ## Interface
 

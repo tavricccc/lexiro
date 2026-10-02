@@ -11,6 +11,14 @@ import {
   useLearningStore,
 } from "@/stores/learning-store";
 import { flushLibraryMutations, useLibraryStore } from "@/stores/library-store";
+import {
+  flushAiPreferenceMutations,
+  useAiPreferencesStore,
+} from "@/stores/ai-preferences-store";
+import {
+  watchCloudPreferences,
+  writeCloudPreferences,
+} from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
 import { canonicalHash } from "@/src/lib/hash";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
@@ -32,7 +40,7 @@ import {
   getFirebaseFirestore,
 } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
-import { setStorageNamespace } from "@/src/lib/persist";
+import { getStorageNamespace, setStorageNamespace } from "@/src/lib/persist";
 import {
   clearBlobDirty,
   clearPushedRecords,
@@ -137,6 +145,7 @@ async function hydrateLocal(): Promise<void> {
   await Promise.all([
     useLibraryStore.getState().hydrate(),
     useLearningStore.getState().hydrate(),
+    useAiPreferencesStore.getState().hydrate(),
   ]);
   const libraryError = useLibraryStore.getState().error;
   if (libraryError) throw new Error(libraryError);
@@ -145,12 +154,14 @@ async function hydrateLocal(): Promise<void> {
 async function enterNamespace(namespace: string): Promise<void> {
   await flushLibraryMutations();
   await flushLearningMutations();
+  await flushAiPreferenceMutations();
   setStorageNamespace(namespace);
   accountDocumentsRead = "";
   resetSyncJournalCache();
   await Promise.all([
     useLibraryStore.getState().reloadNamespace(),
     useLearningStore.getState().reloadNamespace(),
+    useAiPreferencesStore.getState().reloadNamespace(),
   ]);
   const libraryError = useLibraryStore.getState().error;
   if (libraryError) throw new Error(libraryError);
@@ -257,10 +268,22 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
           }
           set({ user, ready: true, status: "syncing", error: "" });
           const db = getFirebaseFirestore();
-          if (db)
-            unwatch = watchCloudChanges(db, user.uid, () => {
+          if (db) {
+            const stopLibraryWatch = watchCloudChanges(db, user.uid, () => {
               void get().sync();
             });
+            const stopPreferencesWatch = watchCloudPreferences(
+              db,
+              user.uid,
+              () => {
+                void get().sync({ reconcileAccount: true });
+              },
+            );
+            unwatch = () => {
+              stopLibraryWatch();
+              stopPreferencesWatch();
+            };
+          }
           await get().sync();
         })().catch(loadFailed);
       });
@@ -334,13 +357,16 @@ async function refreshPending(set: SetState): Promise<void> {
 async function reconcileAccountDocuments(
   db: Firestore,
   uid: string,
-  dirtyBlobs: { progress: number; stats: number },
+  dirtyBlobs: { progress: number; stats: number; preferences: number },
 ): Promise<void> {
   const blobs = await readCloudBlobs(db, uid);
+  if (getStorageNamespace() !== uid) return;
   accountDocumentsRead = uid;
   const learning = useLearningStore.getState();
   const progress = mergeProgress(learning.progress, blobs.progress);
   const stats = mergeStats(learning.stats, blobs.stats);
+  if (blobs.preferences)
+    await useAiPreferencesStore.getState().applyRemote(blobs.preferences);
 
   // Writing an identical value back would still rewrite IndexedDB and wake
   // every listener on every sync, so it is only applied when it differs.
@@ -351,14 +377,25 @@ async function reconcileAccountDocuments(
     await learning.importState(progress, stats, { markPending: false });
 
   const work: Promise<unknown>[] = [];
+  if (getStorageNamespace() !== uid) return;
   if (dirtyBlobs.progress > 0 || !blobs.progress)
     work.push(writeCloudProgress(db, uid, progress));
   if (dirtyBlobs.stats > 0 || !blobs.stats)
     work.push(writeCloudStats(db, uid, stats));
+  if (dirtyBlobs.preferences > 0 || !blobs.preferences)
+    work.push(
+      writeCloudPreferences(
+        db,
+        uid,
+        useAiPreferencesStore.getState().preferences,
+      ),
+    );
   await Promise.all(work);
+  if (getStorageNamespace() !== uid) return;
   await clearBlobDirty([
     { kind: "progress", version: dirtyBlobs.progress },
     { kind: "stats", version: dirtyBlobs.stats },
+    { kind: "preferences", version: dirtyBlobs.preferences },
   ]);
 }
 
@@ -370,6 +407,8 @@ async function runSync(
   const user = get().user;
   const db = getFirebaseFirestore();
   if (!user || !db) return;
+  const sameAccount = () =>
+    get().user?.uid === user.uid && getStorageNamespace() === user.uid;
   if (!online()) {
     set({ status: "offline" });
     await refreshPending(set);
@@ -389,6 +428,7 @@ async function runSync(
     // back from the merge and then pushed, rather than being overwritten by an
     // older copy that merely reached the server first.
     const pulled = await pullRecords(db, user.uid, journal.cursor);
+    if (!sameAccount()) return;
     if (pulled.records.length) {
       const merged = applyCloudRecords(
         useLibraryStore.getState().state,
@@ -403,14 +443,17 @@ async function runSync(
       reconcileAccount ||
       accountDocumentsRead !== user.uid ||
       dirtyBlobs.progress > 0 ||
-      dirtyBlobs.stats > 0
+      dirtyBlobs.stats > 0 ||
+      dirtyBlobs.preferences > 0
     )
       await reconcileAccountDocuments(db, user.uid, dirtyBlobs);
+    if (!sameAccount()) return;
 
     // Push after the merge, so what goes up is the reconciled value rather than
     // the copy this device happened to be holding.
     const work = pendingRecords(useLibraryStore.getState().state, journal);
     if (work.records.length) await pushRecords(db, user.uid, work.records);
+    if (!sameAccount()) return;
 
     await clearPushedRecords(work.clear);
     await markSeeded();
@@ -421,6 +464,7 @@ async function runSync(
     await refreshPending(set);
     set({ ready: true, status: "synced", error: "" });
   } catch (reason) {
+    if (!sameAccount()) return;
     await refreshPending(set);
     set({
       ready: true,

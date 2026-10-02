@@ -32,7 +32,13 @@ function library(
         wordKey,
         word: wordKey,
         senses: [
-          { id: senseId, pos: "n.", meaningZh: `${wordKey} 意思`, examples: [], supplementary: false },
+          {
+            id: senseId,
+            pos: "n.",
+            meaningZh: `${wordKey} 意思`,
+            examples: [],
+            supplementary: false,
+          },
         ],
         updatedAt: timestamp,
       },
@@ -67,13 +73,13 @@ function emptyLibrary(): LibraryState {
 
 function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     cursor: "1757000000.000000000|set-0123456789abcdef0123456789abcdef",
     seeded: true,
     version: 5,
     dirty: {},
     tombstones: {},
-    blobs: { progress: 0, stats: 0 },
+    blobs: { progress: 0, stats: 0, preferences: 0 },
     ...patch,
   };
 }
