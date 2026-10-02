@@ -16,7 +16,6 @@ import { Button } from "@/components/ui/button";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
@@ -241,7 +240,10 @@ function QuestionEditorForm({
 
       <div className="mt-7 grid gap-5">
         <Field label={t("questions.prompt")}>
-          <Input {...form.register("prompt", { required: true })} />
+          <Textarea
+            {...form.register("prompt", { required: true })}
+            className="min-h-28 leading-7"
+          />
         </Field>
 
         <AnswerOptions

@@ -46,7 +46,7 @@ Journal 是 sidecar，記未送 record、刪除與 learning／preference blob。
 | Pending preference drafts | 1 | preference-drafts.ts，只存編輯欄位 |
 | Full backup ZIP | 4 | constants/backup.ts，內含 lexiro-backup.json，舊版本拒絕 |
 | Set share ZIP | 1 | types/backup.ts，內含 lexiro-set.json |
-| AI contract | 2.1.0 | packages/ai-contract/package.json，與 private Worker tgz 同步 |
+| AI contract | 2.2.0 | packages/ai-contract/package.json，與 private Worker tgz 同步 |
 
 版號各自演進，修改一段 prompt 不會重設全部資料。備份匯出等待保存；匯入預覽只回數量，確認後在 queue 合併最新 state，不拿預覽快照覆蓋後續編輯。
 

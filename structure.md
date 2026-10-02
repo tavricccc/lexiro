@@ -34,7 +34,7 @@ Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer�
 
 `components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share、full-backup 和 learning-backup 處理。
 
-Question formats 定義學測題型，question-assembly 檢查確切 usage／answer span，question-builders 產生不需模型的部分。Generated results 呈現目標字／義供校對。
+Question formats 重用 AI contract 的學測題型表；question-quality 檢查新生成情境／完整文章的字數，question-assembly 檢查確切 usage／answer span，question-builders 負責選項排序與正解位置。詞彙題的情境和干擾項統一由 Worker 生成。Generated results 呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
 
 ## 練習與學習
 
@@ -52,7 +52,7 @@ Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回
 
 AI task builders、runner、session 只組來源資料、拆批、解析及接續。Managed client 管 token refresh、帳號邊界、串流、usage；generation controls 與 resumable drafts 分開生成及校對畫面。Photo organizer 先確認選圖，WebP 編碼後每十張單次上傳並依序處理。
 
-AI preference store 在開始 session 時固定模型，contract 2.1.0 與 Worker tgz 共同規範請求、估算和管理 expected 版本。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
+AI preference store 在開始 session 時固定模型，contract 2.2.0 與 Worker tgz 共同規範請求、估算、題型／篇幅和管理 expected 版本。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
 
 Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。ConfirmDialog 統一鎖定、失敗與重試；backup-actions 協調兩段匯入，admin-account-adjustment 只送變更並確認餘額，admin pagination 用 cursor history。
 

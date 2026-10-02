@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Lexiro primarily serves its owner as a personal English vocabulary and practice workspace. It must work naturally on both mobile and desktop; existing navigation habits are not commitments and may be replaced when a clearer workflow exists.
+Lexiro serves Taiwanese senior high school students as a personal English vocabulary and practice workspace. Study material and AI questions should support high school English and GSAT-style contextual reading. It must work naturally on both mobile and desktop; existing navigation habits are not commitments and may be replaced when a clearer workflow exists.
 
 ## Product Purpose
 

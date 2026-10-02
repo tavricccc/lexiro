@@ -21,7 +21,7 @@ Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 re
 
 `src/lib/ai/tasks.ts`：單字每批 25 個來源、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙／文法每批最多八個來源。Runner 依序執行並保留有效部分，來源的 ref 跟著內容傳递。
 
-句子題回傳確切 usage span 與 answer span。Assembler 檢查各出現一次、詞彙 answer 從 usage 開始，再挖空並排序選項；不以固定單字變形表假稱已證明英文語意。校對畫面顯示目標詞義，加入才寫 Library。
+所有 AI 題目都由 Worker 生成情境與干擾選項，不再優先用舊例句挖空或從詞庫隨機補選項。新回覆先通過共用的高中篇幅門檻；句子題再檢查確切 usage span 與 answer span，各出現一次、詞彙 answer 從 usage 開始，再挖空並排序選項。校對畫面顯示目標詞義、全文字數和共用選項答案配對，加入才寫 Library。語意與唯一解仍須校對，完整規格見[高中題目品質](question-quality.md)。
 
 照片確認後先縮 WebP，每張最多 1.5 MB、長邊 1800；每批 1-10 張。text/plain 每行一張 base64，整批上限 20,000,009 bytes，headers 帶 `X-Session-Id`、`X-AI-Model`。Worker 驗證後一次送多圖片 Responses request，圖片不落地。不同批次依序執行，已完成部分保留。
 
@@ -29,7 +29,7 @@ Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 re
 
 ## 模型、估算與結算
 
-共用 contract 2.1.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
+共用 contract 2.2.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
 
 程式 `MODEL_PRICES` 記錄 Standard／cache read／cache write／output 的採用費率；兩個模型 input 超過 272,000 時，整次 response 的 input 成本 2 倍、output 1.5 倍。每個 response 先計價再彙總，不能把多次 input 加總後套長上下文門檻。這是版本化程式契約，不是本文件查證的供應商即時牌價。
 

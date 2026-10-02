@@ -9,6 +9,7 @@ README 提供專案入口；下列章節按目前 checkout 的程式、型別和
 | [架構](architecture.md) | UI／store／domain／保存／Firestore／Worker 的交接 |
 | [資料與同步](data-and-sync.md) | 詞義身份、IndexedDB commit、dirty journal、merge、版號 |
 | [練習](practice.md) | 題型、排程、判分、存檔、接續與結果解說 |
+| [高中題目品質](question-quality.md) | 官方依據、題型篇幅、干擾選項與生成驗證 |
 | [AI API](ai-api.md) | 串流、模型偏好、批次、結算與 private 邊界 |
 | [設定](configuration.md) | 公開環境變數、local／GitHub 名稱與配置 |
 | [本機開發](local-development.md) | 安裝、純本機、emulator、Worker 與 production PWA |
