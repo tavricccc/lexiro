@@ -13,6 +13,7 @@ const mocks = vi.hoisted(() => ({
   seeded: vi.fn(),
   clear: vi.fn(),
   auth: vi.fn(),
+  blobs: vi.fn(),
   journal: null as SyncJournal | null,
 }));
 vi.mock("idb-keyval", () => ({
@@ -55,11 +56,7 @@ vi.mock("@/src/lib/cloud-sync", async (original) => ({
 }));
 vi.mock("@/src/lib/cloud-account", async (original) => ({
   ...(await original<typeof import("@/src/lib/cloud-account")>()),
-  readCloudBlobs: async () => ({
-    progress: { cards: {}, updatedAt: "2026-10-01T00:00:00.000Z" },
-    stats: createDefaultStats(),
-    preferences: null,
-  }),
+  readCloudBlobs: mocks.blobs,
   writeCloudProgress: async () => {},
   writeCloudStats: async () => {},
 }));
@@ -69,6 +66,7 @@ vi.mock("@/src/lib/cloud-preferences", () => ({
 }));
 const { useCloudStore } = await import("@/stores/cloud-store");
 const { useLibraryStore } = await import("@/stores/library-store");
+const { useLearningStore } = await import("@/stores/learning-store");
 const noChange: LibraryCommitStats = {
   writtenBlobs: 0,
   totalRecords: 0,
@@ -91,6 +89,11 @@ beforeEach(() => {
   };
   mocks.commit.mockResolvedValue(noChange);
   mocks.auth.mockResolvedValue(null);
+  mocks.blobs.mockResolvedValue({
+    progress: { cards: {}, updatedAt: "2026-10-01T00:00:00.000Z" },
+    stats: createDefaultStats(),
+    preferences: null,
+  });
   mocks.pull.mockResolvedValue({ records: [], cursor: "after" });
   useLibraryStore.setState({ state: emptyLibraryState(), status: "ready" });
   useCloudStore.setState({
@@ -111,6 +114,27 @@ describe("synchronization state consistency", () => {
     await useCloudStore.getState().sync();
     expect(mocks.pull).not.toHaveBeenCalled();
     expect(mocks.cursor).not.toHaveBeenCalled();
+  });
+  it("discards account documents when a different sign-in starts before the read completes", async () => {
+    let finishRead!: () => void;
+    mocks.blobs.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          finishRead = () =>
+            resolve({ progress: null, stats: null, preferences: null });
+        }),
+    );
+    const synced = useCloudStore.getState().sync({ reconcileAccount: true });
+    await vi.waitFor(() => expect(mocks.blobs).toHaveBeenCalledOnce());
+    const apply = vi.spyOn(useLearningStore.getState(), "applyRemoteState");
+    useCloudStore.setState({
+      ready: false,
+      user: { uid: "account-b" } as User,
+    });
+    finishRead();
+    await synced;
+    expect(apply).not.toHaveBeenCalled();
+    apply.mockRestore();
   });
   it("preserves a local rename that was saving when the remote tombstone arrived", async () => {
     const folder = await useLibraryStore.getState().createFolder("原名");

@@ -352,6 +352,7 @@ const writeSyncForAccount = serializeAccountDataAction(
   async (uid: string, write: () => Promise<void>): Promise<boolean> => {
     if (
       useCloudStore.getState().user?.uid !== uid ||
+      !useCloudStore.getState().ready ||
       getStorageNamespace() !== uid
     )
       return false;
@@ -374,14 +375,21 @@ async function reconcileAccountDocuments(
   dirtyBlobs: { progress: number; stats: number; preferences: number },
 ): Promise<void> {
   const blobs = await readCloudBlobs(db, uid);
-  if (getStorageNamespace() !== uid) return;
+  if (
+    getStorageNamespace() !== uid ||
+    useCloudStore.getState().user?.uid !== uid ||
+    !useCloudStore.getState().ready
+  )
+    return;
   accountDocumentsRead = uid;
   if (blobs.preferences)
     await useAiPreferencesStore.getState().applyRemote(blobs.preferences);
   const merged = await useLearningStore
     .getState()
     .applyRemoteState((current) =>
-      getStorageNamespace() === uid
+      getStorageNamespace() === uid &&
+      useCloudStore.getState().user?.uid === uid &&
+      useCloudStore.getState().ready
         ? {
             progress: mergeProgress(current.progress, blobs.progress),
             stats: mergeStats(current.stats, blobs.stats),
@@ -426,7 +434,9 @@ async function runSync(
   if (!user || !db || !get().ready || getStorageNamespace() !== user.uid)
     return;
   const sameAccount = () =>
-    get().user?.uid === user.uid && getStorageNamespace() === user.uid;
+    get().ready &&
+    get().user?.uid === user.uid &&
+    getStorageNamespace() === user.uid;
   if (!online()) {
     set({ status: "offline" });
     await refreshPending(set);
