@@ -2,6 +2,14 @@ import type { QuestionKind } from "./index";
 
 type Difficulty = 1 | 2 | 3;
 
+export const READING_SKILLS = [
+  "mainIdea",
+  "detail",
+  "inference",
+  "reference",
+  "vocabulary",
+] as const;
+
 export interface QuestionLengthRange {
   min: number;
   max: number;

@@ -12,7 +12,7 @@ import { questionUsesWords } from "./question-ownership";
 import { createSourceRef } from "./source-ref";
 import { extractJsonText } from "./ai/json";
 import { assembleGeneratedQuestions } from "./question-assembly";
-import { generatedQuestionLengthIssue } from "./question-quality";
+import { generatedQuestionQualityIssue } from "./question-quality";
 import {
   isPassageKind,
   READING_MIN_QUESTIONS,
@@ -181,8 +181,8 @@ export function normalizeQuestionGenerationJson(
   } catch {
     throw new Error("AI 題目回覆不是有效 JSON");
   }
-  const lengthIssue = generatedQuestionLengthIssue(value, kind, difficulty);
-  if (lengthIssue) throw new Error(lengthIssue);
+  const qualityIssue = generatedQuestionQualityIssue(value, kind, difficulty);
+  if (qualityIssue) throw new Error(qualityIssue);
   const assembled = assembleGeneratedQuestions(
     value,
     kind,

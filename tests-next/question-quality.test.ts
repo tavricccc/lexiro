@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { countEnglishWords, questionLengthRange } from "@lexiro/ai-contract";
 import { questionTask } from "@/src/lib/ai/tasks";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
-import { generatedQuestionLengthIssue } from "@/src/lib/question-quality";
+import { generatedQuestionQualityIssue } from "@/src/lib/question-quality";
 import type { WordEntry } from "@/types";
 
 const source: WordEntry = {
@@ -28,6 +28,78 @@ const item = {
 };
 
 describe("high-school generation quality gate", () => {
+  it("requires a main idea, a cross-sentence inference and verifiable quoted evidence in reading", () => {
+    const first = "The school had only one ladder.";
+    const second =
+      "Three teams planned to paint different rooms at the same time.";
+    const reply = {
+      title: "A school project",
+      passage: `${first} ${second} ${Array.from({ length: 230 }, () => "context").join(" ")}.`,
+      items: [
+        {
+          question: "What is the main idea?",
+          answer: "Planning a school project.",
+          distractors: [
+            "Buying classroom furniture.",
+            "Organizing a sports contest.",
+            "Choosing books for a library.",
+          ],
+          skill: "mainIdea",
+          evidence: [first],
+        },
+        {
+          question: "What can be inferred about the teams?",
+          answer: "Some teams would need to wait.",
+          distractors: [
+            "They would cancel the entire project.",
+            "They had already completed every room.",
+            "They would buy several new buildings.",
+          ],
+          skill: "inference",
+          evidence: [first, second],
+        },
+        {
+          question: "How many teams planned to paint?",
+          answer: "Three teams.",
+          distractors: ["Two teams.", "Four teams.", "Five teams."],
+          skill: "detail",
+          evidence: [second],
+        },
+      ],
+    };
+    const [step] = questionTask([source], "reading", 2).steps;
+    const [pack] = step.parse(JSON.stringify(reply));
+    expect(pack.kind === "reading" && pack.questions).toHaveLength(3);
+    const noInference = {
+      ...reply,
+      items: reply.items.map((entry) => ({
+        ...entry,
+        skill: entry.skill === "inference" ? "detail" : entry.skill,
+      })),
+    };
+    expect(() => step.parse(JSON.stringify(noInference))).toThrow(/推論題/);
+    const repeatedEvidence = {
+      ...reply,
+      items: reply.items.map((entry) => ({
+        ...entry,
+        evidence: [first, first],
+      })),
+    };
+    expect(() => step.parse(JSON.stringify(repeatedEvidence))).toThrow(
+      /兩處不同句子/,
+    );
+    const inventedEvidence = {
+      ...reply,
+      items: reply.items.map((entry) => ({
+        ...entry,
+        evidence: ["They bought new equipment."],
+      })),
+    };
+    expect(() => step.parse(JSON.stringify(inventedEvidence))).toThrow(
+      /逐字引用/,
+    );
+  });
+
   it("counts contractions and hyphenated words once without counting blank numbers", () => {
     expect(
       countEnglishWords("The well-known student can't fill __10__ or _____."),
@@ -87,14 +159,14 @@ describe("high-school generation quality gate", () => {
     const prose = (count: number) =>
       Array.from({ length: count }, () => "text").join(" ");
     expect(
-      generatedQuestionLengthIssue(
+      generatedQuestionQualityIssue(
         { passage: prose(range.min) },
         "discourse",
         3,
       ),
     ).toBeNull();
     expect(
-      generatedQuestionLengthIssue(
+      generatedQuestionQualityIssue(
         { passage: prose(range.max + 1) },
         "discourse",
         3,

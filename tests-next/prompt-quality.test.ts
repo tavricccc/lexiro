@@ -27,7 +27,6 @@ const assemble = (
   sentence: string,
   distractors: string[],
   kind: "vocabulary" | "grammar",
-  pool: WordEntry[] = [],
   usage = answer,
 ) =>
   assembleGeneratedQuestions(
@@ -134,7 +133,6 @@ describe("issues found in real Luna prompt trials", () => {
       "Yesterday, Mei went to the library.",
       ["go", "goes", "going"],
       "grammar",
-      [word("walk"), word("jump"), word("sleep")],
     );
     expect(new Set(questions[0].options)).toEqual(
       new Set(["went", "go", "goes", "going"]),
@@ -147,7 +145,6 @@ describe("issues found in real Luna prompt trials", () => {
       "Mia is interested in studying ancient maps.",
       ["on", "at", "to"],
       "grammar",
-      [],
       "interested",
     );
     expect(question.prompt).toBe(
@@ -160,7 +157,6 @@ describe("issues found in real Luna prompt trials", () => {
         "Mia lives in Taipei.",
         ["on", "at", "to"],
         "grammar",
-        [],
         "interested",
       ),
     ).toThrow();
@@ -182,7 +178,6 @@ describe("issues found in real Luna prompt trials", () => {
       "The sensor can detect leaks before the pipe bursts.",
       ["repair", "prevent", "cause"],
       "vocabulary",
-      [word("jump"), word("sleep"), word("eat")],
     );
     expect(new Set(question.options)).toEqual(
       new Set(["detect", "repair", "prevent", "cause"]),

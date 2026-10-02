@@ -15,14 +15,6 @@ function word(name: string, pos = "v.", examples: string[] = []): WordEntry {
   };
 }
 
-const pool = [
-  word("wander", "v.", ["We wander through the old town."]),
-  word("linger"),
-  word("drift"),
-  word("roam"),
-  word("subtle", "adj."),
-];
-
 describe("whole-set generation scope", () => {
   it("includes every sense in the set and excludes other sets", () => {
     const first = word("wander");
