@@ -1,9 +1,10 @@
 "use client";
-import { useRef, useState } from "react";
 import { AI_MODELS, type AiModel } from "@lexiro/ai-contract";
 import { ListPicker, ListSection } from "@/components/ui/list";
 import { SaveStatus } from "./save-status";
-import type { AutosaveStatus } from "./use-autosave";
+import { useAutosave } from "./use-autosave";
+import { PreferenceRecovery } from "./preference-recovery";
+import { parseModelPatch } from "@/src/lib/preference-drafts";
 import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 import { t } from "@/lib/i18n";
 
@@ -13,41 +14,50 @@ const MODEL_LABELS: Record<AiModel, string> = {
 };
 
 export function AiModelPreference() {
-  const { preferences, setModel } = useAiPreferencesStore();
-  const [status, setStatus] = useState<AutosaveStatus>("idle");
-  const requested = useRef(preferences.model);
-  const revision = useRef(0);
-  const save = async (model: AiModel) => {
-    const current = ++revision.current;
-    requested.current = model;
-    setStatus("saving");
-    try {
-      await setModel(model);
-      if (current === revision.current) setStatus("saved");
-    } catch {
-      if (current === revision.current) setStatus("error");
-    }
-  };
+  const { preferences, setModel, loaded } = useAiPreferencesStore();
+  const autosave = useAutosave(({ model }) => setModel(model), {
+    key: "model",
+    parse: parseModelPatch,
+    delay: 0,
+    ready: loaded,
+  });
+  const recovering =
+    autosave.recovery === "offer" || autosave.recovery === "invalid";
   return (
     <ListSection
       header={t("settings.ai")}
-      footer={t("settings.aiModelHint")}
+      footer={
+        <>
+          {t("settings.aiModelHint")}
+          {autosave.draftError && !recovering && (
+            <span className="mt-2 block" role="alert">
+              {t("settings.pendingStorageFailed")}
+            </span>
+          )}
+        </>
+      }
       headerAction={
-        <SaveStatus
-          status={status}
-          onRetry={() => void save(requested.current)}
-        />
+        <SaveStatus status={autosave.status} onRetry={autosave.retry} />
       }
     >
       <ListPicker
+        disabled={!loaded || autosave.recovery !== "active"}
         label={t("settings.aiModel")}
-        value={preferences.model}
-        onChange={(value) => void save(value as AiModel)}
+        value={autosave.value?.model ?? preferences.model}
+        onChange={(value) => autosave.update({ model: value as AiModel })}
         options={AI_MODELS.map((model) => ({
           label: MODEL_LABELS[model],
           value: model,
         }))}
       />
+      {recovering && (
+        <PreferenceRecovery
+          invalid={autosave.recovery === "invalid"}
+          draftError={autosave.draftError}
+          onResume={autosave.retry}
+          onDiscard={autosave.discard}
+        />
+      )}
     </ListSection>
   );
 }

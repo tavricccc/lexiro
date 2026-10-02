@@ -14,6 +14,7 @@ import { createMutationQueue } from "@/src/lib/mutation-queue";
 import { t } from "@/lib/i18n";
 import { mergeBackupLearning } from "@/src/lib/learning-backup";
 import { canonicalHash } from "@/src/lib/hash";
+import type { GoalPatch } from "@/src/lib/preference-drafts";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
 import { localDateKey } from "@/src/lib/date";
@@ -50,7 +51,7 @@ interface LearningStore {
     retry?: boolean,
     rating?: ReviewRating,
   ) => Promise<void>;
-  setGoals: (words: number, questions: number) => Promise<void>;
+  setGoals: (patch: GoalPatch) => Promise<void>;
   importBackup: (
     progress: LearningProgress,
     stats: DashboardStats,
@@ -208,11 +209,10 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       set({ progress, stats });
     },
   ),
-  setGoals: serial(async (words, questions) => {
+  setGoals: serial(async (patch) => {
     const stats = {
       ...get().stats,
-      dailyWordGoal: words,
-      dailyQuestionGoal: questions,
+      ...patch,
       updatedAt: new Date().toISOString(),
     };
     await persist(get().progress, stats);

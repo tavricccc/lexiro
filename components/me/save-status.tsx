@@ -5,9 +5,7 @@ import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 
 /**
- * One quiet line per group instead of a save button. It says what happened and
- * then gets out of the way, which is why it never occupies layout space it
- * would have to give back.
+ * One quiet line per group, with an explicit retry when persistence fails.
  */
 export function SaveStatus({
   status,
@@ -19,6 +17,7 @@ export function SaveStatus({
   if (status === "error")
     return (
       <button
+        aria-live="polite"
         type="button"
         onClick={onRetry}
         className="inline-flex min-h-11 items-center gap-1.5 text-sm text-destructive underline underline-offset-4"

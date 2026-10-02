@@ -484,6 +484,11 @@ export const zhTW = {
     applyFailed: "目前無法重新啟動，請稍後重試。",
   },
   settings: {
+    pendingChanges: "上次有修改尚未完成儲存。要套用修改，還是保留目前設定？",
+    pendingInvalid: "未完成的修改無法讀取。可以清除這份暫存，保留目前設定。",
+    applyPending: "套用未完成修改",
+    keepCurrent: "保留目前設定",
+    pendingStorageFailed: "目前無法保留未完成的修改。請留在此頁，直到顯示已儲存。",
     syncQueued: "等待同步",
     ai: "AI",
     aiModel: "AI 模型",

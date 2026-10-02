@@ -66,6 +66,7 @@ afterEach(cleanup);
 beforeEach(async () => {
   await flushAiPreferenceMutations();
   fixture.storage.clear();
+  localStorage.clear();
   fixture.remote = null;
   fixture.callbacks = [];
   fixture.setDoc.mockClear();
@@ -88,9 +89,12 @@ describe("per-account AI model preference", () => {
         screen.getByRole("combobox", { name: "AI 模型" }),
       ).toHaveTextContent("GPT-5.6 Luna"),
     );
-    expect(useAiPreferencesStore.getState().preferences.model).toBe(
-      "gpt-5.6-luna",
+    await vi.waitFor(() =>
+      expect(useAiPreferencesStore.getState().preferences.model).toBe(
+        "gpt-5.6-luna",
+      ),
     );
+    expect(screen.getByText("已儲存")).toBeInTheDocument();
   });
   it("persists selection, queues sync, and keeps an active AI session on its original model", async () => {
     await useAiPreferencesStore.getState().setModel("gpt-5.6-luna");

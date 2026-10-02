@@ -34,6 +34,25 @@ beforeEach(() => {
 });
 
 describe("durable practice completion", () => {
+  it("changes only the edited goal while preserving newer stats and the other goal", async () => {
+    const store = useLearningStore.getState();
+    await store.applyRemoteState((current) => ({
+      ...current,
+      stats: {
+        ...current.stats,
+        dailyQuestionGoal: 42,
+        totalQuestionReviews: 12,
+      },
+    }));
+    await store.setGoals({ dailyWordGoal: 20 });
+    useLearningStore.setState({ loaded: false, stats: createDefaultStats() });
+    await store.hydrate();
+    expect(useLearningStore.getState().stats).toMatchObject({
+      dailyWordGoal: 20,
+      dailyQuestionGoal: 42,
+      totalQuestionReviews: 12,
+    });
+  });
   it("persists local meaning answers as questions and word practice", async () => {
     await useLearningStore
       .getState()
