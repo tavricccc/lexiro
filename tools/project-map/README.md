@@ -8,6 +8,8 @@ node tools/project-map/build.mjs
 
 預設輸出桌面 `Lexiro-程式流程地圖.html`。第二個參數可指定輸出絕對路徑，第三個參數可指定 private Worker repo；未指定時使用同層 lexiro-worker。產生器需要這兩個 checkout 與前端已安裝依賴，成品只需瀏覽器，可搬走離線開啟。
 
+閱讀目標與範圍見 [PRODUCT.md](PRODUCT.md)，介面規格見 [DESIGN.md](DESIGN.md)。左上角可切換亮暗色；編號節點、選取狀態與相鄰連線標示目前步驟。Lexiro 的森林綠識別與 Novae 共用相同操作方式。
+
 | 檔案 | 責任 |
 | --- | --- |
 | content.mjs | 架構、使用者／AI／管理／自動流程與完整 route 解說 |

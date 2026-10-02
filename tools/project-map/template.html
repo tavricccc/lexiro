@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lexiro 程式地圖</title>
+  <style>/*__MAP_CSS__*/</style>
+</head>
+<body>
+  <div class="workspace" id="workspace">
+    <aside class="navigation" id="navigation" aria-label="分類與事件">
+      <div class="nav-head">
+        <div class="brand"><h1>Lexiro 程式地圖</h1><div class="brand-actions"><button id="theme-toggle" aria-label="切換亮暗色">深色</button><button class="icon mobile-only" id="close-nav" aria-label="關閉目錄"></button></div></div>
+        <label class="search-label" for="search">搜尋操作、設定、模型與原碼</label>
+        <div class="search-wrap"><input id="search" type="search" placeholder="例如：詞義、同步、FSRS" autocomplete="off"><button class="icon" id="clear-search" aria-label="清除搜尋" hidden></button></div>
+      </div>
+      <nav class="nav-tree" id="nav-tree" aria-label="地圖目錄"></nav>
+      <footer class="nav-footer" id="nav-footer"></footer>
+    </aside>
+    <main class="main" id="main">
+      <button class="icon menu mobile-only" id="open-nav" aria-label="選分類與事件"></button>
+      <section class="canvas" id="canvas" tabindex="0" aria-label="程式卡片地圖，可拖曳與縮放">
+        <div class="flow-context"><h2 id="flow-title"></h2><p id="flow-summary"></p></div>
+        <div class="world" id="world"><svg id="connections" aria-hidden="true"></svg><div id="cards"></div></div>
+        <div class="zoom-controls" aria-label="畫布縮放">
+          <button class="icon" id="zoom-out" aria-label="縮小"></button><output id="zoom-level">100%</output><button class="icon" id="zoom-in" aria-label="放大"></button>
+          <button id="fit">適合畫面</button><button id="locate" disabled>定位卡片</button>
+        </div>
+        <p class="canvas-help">拖曳平移、滾輪縮放，點選節點查看解說</p>
+      </section>
+      <section class="document" id="document" hidden aria-label="原碼與盤點"></section>
+      <div class="sr-only" id="announce" aria-live="polite"></div>
+    </main>
+    <aside class="inspector" id="inspector" hidden aria-label="選取卡片詳細解說">
+      <div class="inspector-head"><span id="inspector-context"></span><button class="icon" id="close-inspector" aria-label="關閉卡片解說"></button></div>
+      <div class="inspector-body" id="inspector-body"></div>
+      <div class="step-controls" id="step-controls"><button id="previous">上一步</button><output id="step-count"></output><button id="next">下一步</button></div>
+    </aside>
+  </div>
+  <button class="nav-scrim" id="nav-scrim" aria-label="關閉目錄" hidden></button>
+  <script>
+  const DATA = /*__PROJECT_DATA__*/;
+  /*__MAP_JS__*/
+  </script>
+</body>
+</html>

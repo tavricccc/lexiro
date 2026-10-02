@@ -85,6 +85,9 @@ npm run build
 - [測試與驗證](docs/testing.md)
 - [文件與流程地圖維護](docs/documentation-maintenance.md)
 - [程式責任索引](structure.md)
+- [離線程式流程地圖](tools/project-map/README.md)
+
+執行 `node tools/project-map/build.mjs` 產生桌面的 `Lexiro-程式流程地圖.html`，內嵌公開原碼、資料形狀與流程；Worker 只提供核對後的 schema／排程／版本 metadata。成品可離線閱讀，更新程式後重新產生。
 
 ## 現行邊界
 

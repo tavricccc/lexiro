@@ -58,7 +58,7 @@ Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。Co
 
 ## 更新、驗證和交付
 
-`app/sw.ts`、service-worker-cache 管 App cache 與私人資料 NetworkOnly；app-update-monitor、app-update、app-update-store 管保存／SKIP_WAITING／controller 接管／重啟。Offline retry 重試原 URL，重新連線不自动刷新。
+`app/sw.ts`、service-worker-cache 管 App cache 與私人資料 NetworkOnly；app-update-monitor、app-update、app-update-store 管保存／SKIP_WAITING／controller 接管／重啟。Offline retry 重試原 URL，重新連線不自動刷新。
 
 `.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt、部署 Rules／indexes、發布 Vercel。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。命令與證據範圍見[測試](docs/testing.md)與[部署](docs/deployment.md)。
 

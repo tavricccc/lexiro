@@ -49,6 +49,7 @@
     }
   },
   "devDependencies": {
+    "@babel/parser": "7.29.8",
     "@serwist/webpack-plugin": "9.5.12",
     "@tailwindcss/postcss": "4.3.3",
     "@testing-library/jest-dom": "6.9.1",

@@ -35,7 +35,7 @@ Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 re
 
 一般帳號以 D1 原子預留，餘額大於零可開始一批，最終扣到零為下限；生成中的負值只是預留。管理員不預留、不鎖定、不累計重試次數，但記供應商成本。Token／USD／credit 詳細用量只在管理介面呈現。
 
-缺 usage 先補查 stored response，仍未知就保存 pending metadata；有產出的帳號保留預留，取消／失敗釋放。帳號下次請求和每日 Cron 有界補查。成本保持 null，不能填零或用估算冒充。來源成功身份和 provider cost 分開，同 session 成功來源重試有冪等規则，新 session 重新計費。
+缺 usage 先補查 stored response，仍未知就保存 pending metadata；有產出的帳號保留預留，取消／失敗釋放。帳號下次請求和每日 Cron 有界補查。成本保持 null，不能填零或用估算冒充。來源成功身份和 provider cost 分開，同 session 成功來源重試有冪等規則，新 session 重新計費。
 
 管理 PATCH 帶 expected 版本；帳號／設定有變則 409，不會部分套用。資金調整等待預留／結算完成，備註可更新；未知歷史 credit 與未核實 debit 不列為已知零成本。
 
