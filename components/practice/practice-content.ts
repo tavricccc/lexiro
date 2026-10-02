@@ -21,6 +21,8 @@ export interface QuestionItem {
   blank?: number;
   difficulty: 1 | 2 | 3;
   meaning: string;
+  explanation?: string;
+  whyWrong?: Record<string, string>;
 }
 
 function seededRandom(seed: string): () => number {
@@ -104,6 +106,8 @@ export function buildQuestionGroups(
           optionBank: question.optionBank,
           difficulty: question.difficulty,
           meaning: meaningBySense.get(child.senseId) ?? "",
+          explanation: child.explanation,
+          whyWrong: child.whyWrong,
         };
         return applyOptionShuffle(base);
       });
@@ -119,6 +123,8 @@ export function buildQuestionGroups(
       type: question.questionStyle,
       difficulty: question.difficulty,
       meaning: meaningBySense.get(question.senseId) ?? "",
+      explanation: question.explanation,
+      whyWrong: question.whyWrong,
     };
     return [applyOptionShuffle(base)];
   });

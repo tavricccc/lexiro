@@ -127,6 +127,8 @@ export interface ReadingChildQuestion {
   answerIndex: number
   wordKey: WordKey
   senseId: SenseId
+  explanation?: string
+  whyWrong?: Record<string, string>
 }
 
 /**

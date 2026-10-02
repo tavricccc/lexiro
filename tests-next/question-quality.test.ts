@@ -25,6 +25,8 @@ const item = {
   answer: "detect",
   usage: "detect",
   distractors: ["prevent", "repair", "contain"],
+  explanation: "感測器先察覺漏氣，才採取後續處理。",
+  whyWrong: ["尚未阻止漏氣。", "尚未進行修理。", "沒有圍堵漏氣。"],
 };
 
 describe("high-school generation quality gate", () => {
@@ -67,6 +69,10 @@ describe("high-school generation quality gate", () => {
         },
       ],
     };
+    reply.items.forEach((entry) => Object.assign(entry, {
+      explanation: "依據文章所述的行動與限制判斷。",
+      whyWrong: ["文章不支持這個選項。", "與文章情境矛盾。", "將可能性誤當成事實。"],
+    }));
     const [step] = questionTask([source], "reading", 2).steps;
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(3);
@@ -131,7 +137,7 @@ describe("high-school generation quality gate", () => {
     const reply = {
       title: "A safety project",
       passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`,
-      blanks: [{ answer: "detect" }],
+      blanks: [{ answer: "detect", explanation: "察覺到訊號。", whyWrong: Array.from({ length: 9 }, () => "情境未描述這個行動。") }],
       extraOptions: [
         "repair",
         "contain",

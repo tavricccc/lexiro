@@ -97,6 +97,8 @@ describe("AI task boundaries", () => {
             sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -114,6 +116,8 @@ describe("AI task boundaries", () => {
             sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -154,6 +158,8 @@ describe("AI task boundaries", () => {
         items: [
           {
             answer: "was found in possession of",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: [
               "was accused of",
               "was charged with",
@@ -166,6 +172,8 @@ describe("AI task boundaries", () => {
           },
           {
             answer: "committed",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["witnessed", "prevented", "reported"],
             sentence:
               "The shop’s security video clearly showed that the thief committed the crime by breaking a window and taking several laptops while the owner was away.",
@@ -173,6 +181,8 @@ describe("AI task boundaries", () => {
           },
           {
             answer: "committed",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["limited", "postponed", "considered"],
             sentence:
               "After volunteering at the animal shelter for a month, Leo committed himself to caring for abandoned pets every weekend instead of spending his free time playing games.",
@@ -204,12 +214,16 @@ describe("AI task boundaries", () => {
       sentence: "Students who move to a new school often adapt more quickly when classmates invite them to join activities and explain the routines of their new classroom.",
       answer: "adapt",
       usage: "adapt",
+      explanation: "這是結構測試用的審題解說。",
+      whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
       distractors: ["sleep", "wait", "leave"],
     };
     const invalid = {
       sentence: "The method helps students solve difficult mathematical problems by separating each problem into smaller steps, allowing them to check their calculations before writing a final answer.",
       answer: "method",
       usage: "formula",
+      explanation: "這是結構測試用的審題解說。",
+      whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
       distractors: ["plan", "rule", "formula"],
     };
     const replies = [

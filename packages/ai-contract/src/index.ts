@@ -100,6 +100,8 @@ export interface AdminSettingsAdjustment extends Partial<Omit<AdminSettingsValue
   expected: AdminSettingsValue;
 }
 export interface TokenUsage {
+  /** Provider responses priced individually before combining a reviewed turn. */
+  parts?: TokenUsage[];
   model?: string;
   input?: number;
   cached?: number;
@@ -227,6 +229,12 @@ export function estimateCost(usage: TokenUsage): number | null {
 }
 /** Price one provider response, including GPT-6 Luna's long-context tier. */
 export function responseCost(usage: TokenUsage): number | null {
+  if (usage.parts) {
+    const costs = usage.parts.map(responseCost);
+    return costs.some((cost) => cost === null)
+      ? null
+      : costs.reduce<number>((sum, cost) => sum + cost!, 0);
+  }
   const ordinary = estimateCost(usage);
   const input = usage.input;
   const output = usage.output;
@@ -275,7 +283,8 @@ export function rate(kind: JobKind, tier: Tier, model: AiModel = DEFAULT_AI_MODE
       reading: 30,
     }[kind] * MULTIPLIER[tier]
   );
-  return Math.ceil(base * MODEL_ESTIMATE_FACTOR[model]);
+  const reviewFactor = (QUESTION_KINDS as readonly JobKind[]).includes(kind) ? 2 : 1;
+  return Math.ceil(base * MODEL_ESTIMATE_FACTOR[model] * reviewFactor);
 }
 export function estimatePoints(
   kind: JobKind,
@@ -284,5 +293,5 @@ export function estimatePoints(
   model: AiModel = DEFAULT_AI_MODEL,
 ): { min: number; max: number } {
   const max = Math.ceil((rate(kind, tier, model) * count) / 2);
-  return { min: kind === "reading" ? Math.ceil(count * 9 * MULTIPLIER[tier] * MODEL_ESTIMATE_FACTOR[model]) : max, max };
+  return { min: kind === "reading" ? Math.ceil(count * 18 * MULTIPLIER[tier] * MODEL_ESTIMATE_FACTOR[model]) : max, max };
 }

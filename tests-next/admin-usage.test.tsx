@@ -97,10 +97,10 @@ describe("the administrator's per-kind cost report", () => {
     });
     await showKindReport();
     expect(
-      await screen.findByText(/報價 1.5 點 · 4 次 · 40 單位 · 差 −33%/),
+      await screen.findByText(/報價 2.5 點 · 4 次 · 40 單位 · 差 −60%/),
     ).toBeTruthy();
     expect(
-      screen.getByText(/報價 0.5 點 · 4 次 · 40 單位 · 差 \+100%/),
+      screen.getByText(/報價 1.0 點 · 4 次 · 40 單位 · 差 0%/),
     ).toBeTruthy();
   });
   it("shows pending costs as unknown rather than free", async () => {
@@ -143,22 +143,21 @@ describe("the administrator's per-kind cost report", () => {
 
   it("prices one billable unit against what that unit is quoted at", async () => {
     await showKindReport();
-    // 40 credits over 40 units is 1.00 each; vocabulary at lite is quoted at
-    // half a point, so the quote is half what the work costs.
+    // The revised quote covers both writing and independent review.
     expect(await screen.findByText("1.00 點")).toBeTruthy();
     expect(
-      screen.getByText(/報價 0.5 點 · 4 次 · 40 單位 · 差 \+100%/),
+      screen.getByText(/報價 1.0 點 · 4 次 · 40 單位 · 差 0%/),
     ).toBeTruthy();
     expect(screen.getByText(/總成本 US\$0\.005000/)).toBeTruthy();
   });
 
   it("names the work and the tier, and reads a quote that is too high", async () => {
     await showKindReport();
-    // Reading at pro is quoted at 150 points a passage; 120 is what it cost.
+    // Reading at pro covers two responses at 300 points a passage.
     expect(await screen.findByText("閱讀測驗 · Pro")).toBeTruthy();
     expect(screen.getByText("120.00 點")).toBeTruthy();
     expect(
-      screen.getByText(/報價 150.0 點 · 2 次 · 2 單位 · 差 −20%/),
+      screen.getByText(/報價 300.0 點 · 2 次 · 2 單位 · 差 −60%/),
     ).toBeTruthy();
   });
 
@@ -166,8 +165,8 @@ describe("the administrator's per-kind cost report", () => {
     await showKindReport();
     const rows = await screen.findAllByText(/^(詞彙題|閱讀測驗) · /);
     expect(rows.map((row) => row.textContent)).toEqual([
-      "詞彙題 · Lite",
       "閱讀測驗 · Pro",
+      "詞彙題 · Lite",
     ]);
   });
 });

@@ -55,6 +55,16 @@ function stringArray(value: unknown): string[] {
     : [];
 }
 
+/** Reasons use option text as their key, so shuffling never changes their meaning. */
+function teaching(source: Record<string, unknown> | undefined, distractors: string[]) {
+  if (!source || typeof source.explanation !== "string" || !Array.isArray(source.whyWrong)) return {};
+  const reasons = source.whyWrong;
+  return {
+    explanation: source.explanation.trim(),
+    whyWrong: Object.fromEntries(distractors.map((option, index) => [option, text(reasons[index])])),
+  };
+}
+
 /**
  * Distractors are only usable if they are distinct from each other and from the
  * answer, and are the same shape as the answer (one token for a word-level
@@ -127,6 +137,7 @@ function multipleChoiceItem(
   answer: string,
   distractors: string[],
   difficulty: QuestionDifficulty,
+  source: Record<string, unknown>,
 ): Record<string, unknown> {
   const { answerIndex, options } = placeAnswer(
     answer,
@@ -141,6 +152,7 @@ function multipleChoiceItem(
     prompt,
     questionStyle: style,
     sourceRef: slot.sourceRef,
+    ...teaching(source, distractors),
   };
 }
 
@@ -194,7 +206,7 @@ function assembleSentences(
       return dropped.push(`${slot.word.word}：干擾選項不足或重複`);
 
     questions.push(
-      multipleChoiceItem(slot, kind, prompt, answer, distractors, difficulty),
+      multipleChoiceItem(slot, kind, prompt, answer, distractors, difficulty, raw),
     );
   });
 
@@ -266,6 +278,7 @@ function assemblePassage(
           options,
           prompt: question,
           sourceRef: slot.sourceRef,
+          ...teaching(raw, distractors),
         },
       ];
     });
@@ -294,10 +307,10 @@ function assemblePassage(
   // reach its distractors after the blanks have been sorted into reading order.
   const raw =
     format === "discourse"
-      ? stringArray(value.removals).map((sentence) => ({
-          answer: sentence,
+      ? (Array.isArray(value.removals) ? value.removals : []).filter(isRecord).map((item) => ({
+          answer: text(item.sentence),
           ref: "",
-          source: undefined as Record<string, unknown> | undefined,
+          source: item,
         }))
       : (Array.isArray(value.blanks) ? value.blanks : []).flatMap((item) =>
           isRecord(item)
@@ -330,6 +343,9 @@ function assemblePassage(
 
   const { children, passage } = cutBlanks(rawPassage, located);
   const answers = children.map((child) => child.answer);
+  const sourceByAnswer = new Map(
+    raw.map((item) => [item.answer.toLocaleLowerCase(), item.source]),
+  );
 
   if (spec.sharedBank) {
     const extras =
@@ -359,6 +375,10 @@ function assemblePassage(
               options: bank,
               prompt: `Blank ${index + 1}`,
               sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
+              ...teaching(sourceByAnswer.get(child.answer.toLocaleLowerCase()), [
+                ...raw.filter((item) => item.answer !== child.answer).map((item) => item.answer),
+                ...extras,
+              ]),
             })),
             title,
             wordKeys,
@@ -369,9 +389,6 @@ function assemblePassage(
   }
 
   // Cloze: every blank keeps its own four options.
-  const sourceByAnswer = new Map(
-    raw.map((item) => [item.answer.toLocaleLowerCase(), item.source]),
-  );
   const questions = children.flatMap((child, index) => {
     const source = sourceByAnswer.get(child.answer.toLocaleLowerCase());
     const distractors = usableDistractors(
@@ -397,6 +414,7 @@ function assemblePassage(
         options,
         prompt: `Blank ${index + 1}`,
         sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
+        ...teaching(source, distractors),
       },
     ];
   });

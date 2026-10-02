@@ -25,13 +25,28 @@ export function generatedQuestionQualityIssue(
   if (isPassageKind(kind)) {
     const lengthIssue = check(value.passage, "文章");
     if (lengthIssue) return lengthIssue;
-    return kind === "reading" ? readingEvidenceIssue(value, difficulty) : null;
+    const evidenceIssue = kind === "reading" ? readingEvidenceIssue(value, difficulty) : null;
+    return evidenceIssue ?? teachingIssue(value, kind);
   }
   if (!Array.isArray(value.items)) return null;
   for (const [index, item] of value.items.entries()) {
     if (!isRecord(item)) continue;
     const issue = check(item.sentence, `第 ${index + 1} 題`);
     if (issue) return issue;
+  }
+  return teachingIssue(value, kind);
+}
+
+function teachingIssue(value: Record<string, unknown>, kind: GeneratedQuestionKind): string | null {
+  const items = kind === "discourse" ? value.removals
+    : kind === "cloze" || kind === "wordBank" ? value.blanks : value.items;
+  if (!Array.isArray(items)) return null;
+  const reasons = kind === "wordBank" ? 9 : kind === "discourse" ? 4 : 3;
+  for (const [index, item] of items.entries()) {
+    if (!isRecord(item) || typeof item.explanation !== "string" || !item.explanation.trim())
+      return `第 ${index + 1} 題缺少審題後的作答解說`;
+    if (!Array.isArray(item.whyWrong) || item.whyWrong.length !== reasons || item.whyWrong.some((reason) => typeof reason !== "string" || !reason.trim()))
+      return `第 ${index + 1} 題必須逐一說明 ${reasons} 個干擾選項為何不成立`;
   }
   return null;
 }

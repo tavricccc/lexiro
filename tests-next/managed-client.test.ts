@@ -27,6 +27,37 @@ afterEach(() => {
 });
 
 describe("managed AI boundary", () => {
+  it("reports review progress and rejects unapproved work without retrying", async () => {
+    const phases = vi.fn();
+    const characters = vi.fn();
+    const frames = [
+      { type: "lexiro.question.progress", phase: "draft", characters: 100 },
+      { type: "lexiro.question.progress", phase: "review", characters: 20 },
+      { type: "error", code: "question_quality_rejected", response: {
+        model: "gpt-6-luna", lexiro: { usageParts: [
+          { model: "gpt-6-luna", input: 200_000, output: 1_000 },
+          { model: "gpt-6-luna", input: 200_000, output: 1_000 },
+        ] },
+      } },
+    ].map((event) => `data: ${JSON.stringify(event)}\n\n`).join("");
+    const result = readManagedStream(new Response(frames), { onPhase: phases, onCharacters: characters });
+    await expect(result).rejects.toMatchObject({ code: "question_quality_rejected", retryable: false });
+    expect(phases.mock.calls).toEqual([["generating"], ["reviewing"]]);
+    expect(characters.mock.calls).toEqual([[100], [20]]);
+    try { await result; } catch (error) {
+      expect(addUsage({}, (error as {usage: Parameters<typeof addUsage>[1]}).usage).costUsd).toBeCloseTo(0.041);
+    }
+  });
+  it("prices each review response individually before summing", () => {
+    const parts = [
+      {model: "gpt-6-luna", input: 200_000, output: 1_000, cached: 50_000},
+      {model: "gpt-6-luna", input: 200_000, output: 1_000},
+    ];
+    const usage = addUsage({}, {model: "gpt-6-luna", input: 400_000, output: 2_000, parts});
+    expect(usage.costUsd).toBeCloseTo(0.0365);
+    expect(usage.uncachedCostUsd).toBeCloseTo(0.041);
+    expect(responseCost({parts: [parts[0], {model: "gpt-6-luna"}]})).toBeNull();
+  });
   it("reports stale admin edits and management failures in the correct action context", async () => {
     vi.stubGlobal(
       "fetch",

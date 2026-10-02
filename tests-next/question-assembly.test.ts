@@ -265,8 +265,8 @@ describe("assembling the model's reply", () => {
     const payload = assembleGeneratedQuestions(
       {
         blanks: [
-          { answer: "linger", distractors: ["ran", "sat", "grew"], ref: "s1" },
-          { answer: "wander", distractors: ["ran", "sat", "grew"], ref: "s2" },
+          { answer: "linger", distractors: ["ran", "sat", "grew"], ref: "s1", explanation: "停留在門邊。", whyWrong: ["未跑動。", "未坐下。", "未生長。"] },
+          { answer: "wander", distractors: ["ran", "sat", "grew"], ref: "s2", explanation: "先在外面漫步。", whyWrong: ["未跑動。", "未坐下。", "未生長。"] },
         ],
         passage: "First they wander outside, and later they linger by the door.",
         title: "A walk",
@@ -274,10 +274,12 @@ describe("assembling the model's reply", () => {
       "cloze",
       2,
       words,
-    ).payload as { questions: Array<{ passage: string; questions: Array<{ blank: number }> }> };
+    ).payload as { questions: Array<{ passage: string; questions: Array<{ blank: number; explanation: string; whyWrong: Record<string,string> }> }> };
     const pack = payload.questions[0];
     expect(pack.passage).toBe("First they __1__ outside, and later they __2__ by the door.");
     expect(pack.questions.map((child) => child.blank)).toEqual([1, 2]);
+    expect(pack.questions.map((child) => child.explanation)).toEqual(["先在外面漫步。", "停留在門邊。"]);
+    expect(pack.questions[0].whyWrong.ran).toBe("未跑動。");
   });
 
   it("gives a word-bank passage one shared bank with every answer in it", () => {
@@ -308,7 +310,7 @@ describe("assembling the model's reply", () => {
       {
         extraOption: "Nobody ever returned.",
         passage: "The town was quiet. They wandered in. A dog followed them. The sun set.",
-        removals: ["They wandered in.", "A dog followed them."],
+        removals: [{sentence: "They wandered in."}, {sentence: "A dog followed them."}],
         title: "Quiet town",
       },
       "discourse",

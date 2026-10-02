@@ -100,6 +100,8 @@ describe("issues found in real Luna prompt trials", () => {
             sentence: "During the chemistry lesson, a sensor could detect a small gas leak before anyone smelled it, so the teacher opened the windows and led everyone outside.",
             answer: "detect",
             usage: "detect",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["prevent", "repair", "announce"],
           },
           {
@@ -107,6 +109,8 @@ describe("issues found in real Luna prompt trials", () => {
               "Although Mia was reluctant to speak during the class debate at first, she finally shared her idea after her classmates encouraged her and listened patiently.",
             answer: "reluctant",
             usage: "reluctant",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["eager", "proud", "ready"],
           },
           {
@@ -114,6 +118,8 @@ describe("issues found in real Luna prompt trials", () => {
               "One consequence of leaving the freezer door open throughout the night was that all the food spoiled, forcing the restaurant to cancel its planned lunch service.",
             answer: "consequence",
             usage: "consequence",
+            explanation: "這是結構測試用的審題解說。",
+            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
             distractors: ["benefit", "symptom", "decision"],
           },
         ],

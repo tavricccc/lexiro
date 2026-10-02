@@ -26,7 +26,7 @@ import {
   questionPromptIssue,
 } from "./question-shape";
 import { PASSAGE_FORMATS } from "./question-formats";
-import { assertKnownKeys, requiredText } from "./schema";
+import { assertKnownKeys, isRecord, requiredText } from "./schema";
 import { containsHan } from "./validation";
 
 export interface QuestionSourceRef {
@@ -308,17 +308,7 @@ function normalizeMultipleChoice(
     value.explanation,
     `questions[${index}].explanation`,
   );
-  let whyWrong: Record<string, string> | undefined;
-  if (value.whyWrong !== undefined) {
-    if (
-      !value.whyWrong ||
-      typeof value.whyWrong !== "object" ||
-      Array.isArray(value.whyWrong) ||
-      !Object.values(value.whyWrong).every((item) => typeof item === "string")
-    )
-      throw new Error(`questions[${index}].whyWrong 格式錯誤`);
-    whyWrong = value.whyWrong as Record<string, string>;
-  }
+  const whyWrong = readWhyWrong(value.whyWrong, `questions[${index}].whyWrong`);
   const content: Omit<
     MultipleChoiceQuestion,
     "id" | "fingerprint" | "createdAt" | "updatedAt"
@@ -344,6 +334,13 @@ function normalizeMultipleChoice(
     createdAt: generatedTimestamp(value.createdAt, now, refs),
     updatedAt: generatedTimestamp(value.updatedAt, now, refs),
   };
+}
+
+function readWhyWrong(value: unknown, field: string): Record<string, string> | undefined {
+  if (value === undefined) return undefined;
+  if (!isRecord(value) || !Object.values(value).every((item) => typeof item === "string"))
+    throw new Error(`${field} 格式錯誤`);
+  return value as Record<string, string>;
 }
 
 function normalizeReading(
@@ -426,6 +423,8 @@ function normalizeReading(
         "answerIndex",
         "wordKey",
         "senseId",
+        "explanation",
+        "whyWrong",
       ],
       `reading.questions[${childIndex}]`,
     );
@@ -490,6 +489,8 @@ function normalizeReading(
       answerIndex,
       wordKey,
       senseId,
+      explanation: optionalText(child.explanation, `reading.questions[${childIndex}].explanation`),
+      whyWrong: readWhyWrong(child.whyWrong, `reading.questions[${childIndex}].whyWrong`),
     };
     const id = refs
       ? childQuestionId(normalized)

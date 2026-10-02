@@ -3,6 +3,7 @@ export type AiPhase =
   | "connecting"
   | "thinking"
   | "generating"
+  | "reviewing"
   | "validating"
   | "retrying"
   | "rebuilding";

@@ -123,6 +123,8 @@ export async function managedFetch(
                 ? "managed.accountExists"
                 : code === "retry_limit"
                   ? "managed.retryLimit"
+                  : code === "question_quality_rejected"
+                    ? "managed.questionQualityRejected"
                   : adminRequest && adminMessages[response.status]
                     ? adminMessages[response.status]
                     : (messages[response.status] ??
@@ -137,6 +139,7 @@ export async function managedFetch(
             : undefined,
           retryable:
             code !== "retry_limit" &&
+            code !== "question_quality_rejected" &&
             (response.status === 429 || response.status >= 500),
         },
       );
@@ -189,6 +192,11 @@ export async function readManagedStream(
       .join("\n");
     if (!dataText || dataText === "[DONE]") return;
     const data = JSON.parse(dataText);
+    if (data.type === "lexiro.question.progress") {
+      options.onPhase?.(data.phase === "review" ? "reviewing" : "generating");
+      options.onCharacters?.(count(data.characters) ?? 0);
+      return;
+    }
     if (data.type === "response.created") id = data.response.id;
     if (typeof data.response?.model === "string")
       terminal.usage.model = data.response.model;
@@ -207,14 +215,17 @@ export async function readManagedStream(
     }
     const credits = count(data.response?.lexiro?.credits);
     if (credits !== undefined) terminal.usage.credits = credits;
+    if (Array.isArray(data.response?.lexiro?.usageParts))
+      terminal.usage.parts = data.response.lexiro.usageParts;
     if (data.type === "response.output_text.delta") {
       text += data.delta;
       options.onCharacters?.(text.length);
       options.onPhase?.("generating");
     }
     if (data.type === "error" || data.type === "response.failed")
-      throw new AiRequestError(t("managed.failed"), {
-        retryable: true,
+      throw new AiRequestError(t(data.code === "question_quality_rejected" ? "managed.questionQualityRejected" : "managed.failed"), {
+        code: data.code,
+        retryable: data.code !== "question_quality_rejected",
         usage: { ...terminal.usage },
       });
     if (data.type === "response.completed") {
@@ -323,7 +334,9 @@ export async function managedTurn(
 export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   if (!turn) return total;
   const cost = responseCost(turn);
-  const uncachedCost = responseCost({ ...turn, cached: 0, cacheWrite: 0 });
+  const uncachedCost = responseCost({ ...turn, cached: 0, cacheWrite: 0,
+    ...(turn.parts ? { parts: turn.parts.map((part) => ({ ...part, cached: 0, cacheWrite: 0 })) } : {}),
+  });
   if (cost !== null && uncachedCost !== null) {
     total.costUsd = (total.costUsd ?? 0) + cost;
     total.uncachedCostUsd = (total.uncachedCostUsd ?? 0) + uncachedCost;
