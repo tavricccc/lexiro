@@ -69,10 +69,10 @@ export async function deferUsage(
   ];
   if (!chargeable) {
     statements.push(
-      db.prepare(`UPDATE accounts SET points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)
+      db.prepare(`UPDATE accounts SET version=version+1, points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)
         WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`).bind(attempt, uid, attempt),
       db.prepare("DELETE FROM charges WHERE attempt_id=?").bind(attempt),
-      db.prepare("UPDATE accounts SET inflight_id=NULL,inflight_at=NULL WHERE uid=? AND inflight_id=?").bind(uid, attempt),
+      db.prepare("UPDATE accounts SET version=version+1, inflight_id=NULL,inflight_at=NULL WHERE uid=? AND inflight_id=?").bind(uid, attempt),
     );
   }
   await db.batch(statements);

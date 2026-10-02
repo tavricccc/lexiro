@@ -1,5 +1,23 @@
 # 後端實作決策與驗收狀態
 
+## 管理一致性檢查（2026-10-02）
+
+帳號與管理設定修改必須提供 `expected` 閱讀狀態，過期請求回傳 409 的
+`stale_account`／`stale_settings`，不以新狀態代替舊狀態直接執行。帳號更新
+使用單一 `UPDATE ... RETURNING`，設定則在同一敘述中固定閱讀狀態並更新／回傳
+三個設定值，避免讀取後又被其他更新混入。SQLite 的
+[MATERIALIZED 說明](https://www.sqlite.org/lang_with.html#materialization_hints)
+是設定更新的查詢依據；本地 D1 測試驗證多欄及並行更新均不會部分套用。
+
+Migration 0012 為帳號與設定加入遞增版本。帳號預留、退款、結算、續期、
+email 及管理修改都更新版本；三個管理設定一起更新版本。即使資料變動後
+回到原值，舊的閱讀狀態也不能再次調整點數或覆寫設定。
+
+免費試用的開關與預設只作用於新帳號，既有餘額與月額度不變。備註更新保留
+生成中的預留，資金調整仍等待結算。彙總 credit 若有任何缺漏，整組保留 NULL；
+不能把歷史缺漏當成 0，再推算單位成本差異。管理回覆及前端快取使用實際儲存
+結果，共用契約 2.1.0；沒有舊修改格式的相容分支。
+
 ## 規格依據
 
 原始完整規格是 [backend-blueprint.html](backend-blueprint.html)，2026-09-12 從使用者指定的 [Claude artifact](https://claude.ai/code/artifact/b803b459-390b-4006-a077-a45d90d1dc20) 匯入，僅移除平台脚本與登入包裝。原稿不覆寫；優先順序為使用者最新指示 → 本檔補充 → 原始藍圖。
@@ -23,7 +41,7 @@
 | 重試限制 | 扣款識別含 session，成功後 30 分鐘內同 session 重試不重扣。嘗試上限識別不含 session，換 UUID 不能重置每來源 6 次／30 分鐘上限 |
 | 缺少 usage | 先補查 stored response。仍無有效 usage 時，成本為 NULL；有 response id 則持久化為 `pending`，有產出的帳戶保留預留並暫停新生成，取消／失敗立即退款。帳戶下次請求及 Cron 有界重查，成功後原子結算；不以預估成本冒充實際成本 |
 | 無法補查 | 沒有 response id 時標為 `unavailable` 並釋放預留。已有 id 卻持續查不到 usage 時保留待核對，不自動免單或解鎖；需營運者向供應商確認，不能刪除 pending 列假裝已結算 |
-| 報表 | 成本合計只含已回報用量，未知成本另列。帳戶與 usage 使用 `cursor`／`nextCursor`，不接受舊 `offset`；時間範圍與游標查詢有 D1 索引 |
+| 報表 | 分組使用已回報用量；缺漏的成本／credit 保留未知，有待核對或無法回報用量時總成本／credit 也列為未知。帳戶與 usage 使用 `cursor`／`nextCursor`，不接受舊 `offset`；時間範圍與游標查詢有 D1 索引 |
 | 管理員 | 只依 `ADMIN_EMAILS` secret 與 verified email 判定；不預留、不鎖定、不累計重試次數，但記錄 cursor 與供應商成本 |
 | 共用套件 | public `packages/ai-contract` 保存無秘密的解析器、型別與牌價；private repo 使用版本化 tgz，可獨立安裝 |
 | 照片 | 前端縮圖／WebP；Worker 有界讀取、驗證、雜湊及串流 envelope，圖片不落地。真實圖片價格與 Workers CPU 仍需正式量測 |

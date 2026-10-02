@@ -40,7 +40,7 @@ describe("unknown provider usage", () => {
         { id: "known", points: 7, credits: 7, usage_state: "reported", debit_verified: 0 },
         { id: "unknown", points: 0, credits: 0, usage_state: "unavailable", debit_verified: 0 },
       ]);
-      expect((await account(legacy.db, "u"))!.points).toBe(100);
+      expect((await legacy.db.prepare("SELECT points FROM accounts WHERE uid='u'").first<{ points: number }>())!.points).toBe(100);
     } finally { await legacy.runtime.dispose(); }
   });
 

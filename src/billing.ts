@@ -62,7 +62,7 @@ export async function account(
 ): Promise<AdminAccount | null> {
   return db
     .prepare(
-      "SELECT uid,email,points,monthly,renews_at,note FROM accounts WHERE uid=?",
+      "SELECT uid,email,points,monthly,renews_at,note,version FROM accounts WHERE uid=?",
     )
     .bind(uid)
     .first<AdminAccount>();
@@ -91,7 +91,7 @@ export async function ensureAccount(
       COALESCE((SELECT CAST(value AS INTEGER) FROM settings WHERE key='default_initial' AND EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')),0),
       COALESCE((SELECT CAST(value AS INTEGER) FROM settings WHERE key='default_monthly' AND EXISTS(SELECT 1 FROM settings WHERE key='free_trial' AND value='true')),0),
       ?,?
-    ON CONFLICT(uid) DO UPDATE SET email=excluded.email WHERE accounts.email<>excluded.email`,
+    ON CONFLICT(uid) DO UPDATE SET email=excluded.email,version=accounts.version+1 WHERE accounts.email<>excluded.email`,
     )
     .bind(uid, email, nextRenewal(now), new Date().toISOString())
     .run();
@@ -118,7 +118,7 @@ export async function reserve(
   const results = await db.batch([
     db
       .prepare(
-        `UPDATE accounts SET points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))
+        `UPDATE accounts SET version=version+1, points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))
       WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
       .bind(uid, now - 120, uid, uid, now - 120),
@@ -129,7 +129,7 @@ export async function reserve(
       .bind(uid, now - 120, now - 1800),
     db
       .prepare(
-        `UPDATE accounts SET inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)
+        `UPDATE accounts SET version=version+1, inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)
          AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)`,
       )
       .bind(now, attempt, uid, now - 120),
@@ -168,7 +168,7 @@ export async function reserve(
       // NULL deliberately violates NOT NULL: D1 rolls the inserts back as well.
       db
         .prepare(
-          `UPDATE accounts SET points=CASE WHEN inflight_id=?
+          `UPDATE accounts SET version=version+1, points=CASE WHEN inflight_id=?
         THEN points-(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?) ELSE NULL END,
         updated_at=? WHERE uid=?`,
         )
@@ -200,7 +200,7 @@ export async function reserve(
 export async function release(db: D1Database, uid: string, attempt: string) {
   await db
     .prepare(
-      "UPDATE accounts SET inflight_at=NULL,inflight_id=NULL WHERE uid=? AND inflight_id=?",
+      "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE uid=? AND inflight_id=?",
     )
     .bind(uid, attempt)
     .run();
@@ -256,7 +256,7 @@ export async function settle(
     ),
     db
       .prepare(
-        `UPDATE accounts SET points=MAX(0,points+
+        `UPDATE accounts SET version=version+1, points=MAX(0,points+
         (SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)-?),updated_at=?
         WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`,
       )
@@ -296,7 +296,7 @@ export async function settle(
   statements.push(
     db
       .prepare(
-        "UPDATE accounts SET inflight_at=NULL,inflight_id=NULL WHERE uid=? AND inflight_id=?",
+        "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE uid=? AND inflight_id=?",
       )
       .bind(uid, attempt),
   );
@@ -323,7 +323,7 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
     db.prepare("DELETE FROM attempt_limits WHERE expires_at<=?").bind(now),
     db
       .prepare(
-        `UPDATE accounts SET points=points+COALESCE((SELECT SUM(points) FROM charges
+        `UPDATE accounts SET version=version+1, points=points+COALESCE((SELECT SUM(points) FROM charges
       WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'
         AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)),0)
       WHERE EXISTS(SELECT 1 FROM charges WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'
@@ -337,7 +337,7 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
       .bind(now - 120),
     db
       .prepare(
-        "UPDATE accounts SET inflight_at=NULL,inflight_id=NULL WHERE inflight_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=accounts.inflight_id)",
+        "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE inflight_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=accounts.inflight_id)",
       )
       .bind(now - 120),
   ]);
@@ -354,7 +354,7 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
     } while (renewal <= now);
     return db
       .prepare(
-        "UPDATE accounts SET points=monthly,renews_at=?,updated_at=? WHERE uid=? AND renews_at<=? AND monthly>0 AND inflight_at IS NULL",
+        "UPDATE accounts SET version=version+1, points=monthly,renews_at=?,updated_at=? WHERE uid=? AND renews_at<=? AND monthly>0 AND inflight_at IS NULL",
       )
       .bind(renewal, new Date(now * 1000).toISOString(), row.uid, now);
   });
