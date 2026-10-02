@@ -10,8 +10,8 @@ type QuestionStyle = "vocabulary" | "grammar";
  * prompt builder, the response validator, the practice runtime and the UI — so
  * "how many blanks does 篇章結構 have" has exactly one answer in the codebase.
  *
- * Counts follow the 115 學年度 paper, scaled down where a full exam section
- * would be too long for one study session:
+ * Counts follow the 115 學年度 paper. A final batch with fewer source senses
+ * may have fewer blanks; it keeps the passage length and full option bank:
  *
  *  - 詞彙題      一句一格，四選一。學測 10 題。
  *  - 文法題      同上，但考時態、語態、連接詞等結構。段考常見。
@@ -67,7 +67,7 @@ export const PASSAGE_FORMATS: Record<PassageFormat, PassageFormatSpec> = {
   },
   wordBank: {
     format: "wordBank",
-    blanks: 8,
+    blanks: 10,
     optionCount: 10,
     sharedBank: true,
     sentenceOptions: false,

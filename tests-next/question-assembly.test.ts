@@ -1,12 +1,7 @@
 import type { WordEntry } from "@/types";
 import { describe, expect, it } from "vitest";
 
-import {
-  blankOutWord,
-  buildVocabularyFromLibrary,
-  libraryDistractors,
-  placeAnswer,
-} from "@/src/lib/question-builders";
+import { placeAnswer } from "@/src/lib/question-builders";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
 import { getSetGenerationWords } from "@/src/lib/question-generation";
@@ -42,24 +37,6 @@ describe("whole-set generation scope", () => {
   });
 });
 
-describe("blanking out a word", () => {
-  it("replaces a whole-word occurrence", () => {
-    expect(blankOutWord("We wander home.", "wander")).toBe("We _____ home.");
-  });
-
-  it("ignores the word inside a longer word", () => {
-    expect(blankOutWord("The wanderer left.", "wander")).toBeNull();
-  });
-
-  it("is case insensitive but keeps the rest of the sentence intact", () => {
-    expect(blankOutWord("Wander with me.", "wander")).toBe("_____ with me.");
-  });
-
-  it("refuses an inflected form rather than guessing at morphology", () => {
-    expect(blankOutWord("We wandered home.", "wander")).toBeNull();
-  });
-});
-
 describe("placing the answer", () => {
   it("reports the index the answer actually landed on", () => {
     for (const seed of ["a", "b", "c", "d", "e", "f"]) {
@@ -76,35 +53,6 @@ describe("placing the answer", () => {
   });
 });
 
-describe("library distractors", () => {
-  it("only offers words of the same part of speech", () => {
-    const distractors = libraryDistractors(pool[0], "v.", pool, 3, "seed");
-    expect(distractors).toHaveLength(3);
-    expect(distractors).not.toContain("subtle");
-    expect(distractors).not.toContain("wander");
-  });
-
-  it("returns fewer than asked rather than inventing words", () => {
-    expect(libraryDistractors(pool[4], "adj.", pool, 3, "seed")).toHaveLength(0);
-  });
-});
-
-describe("building a question with no model at all", () => {
-  it("uses the learner's own example sentence", () => {
-    const built = buildVocabularyFromLibrary(pool[0], pool[0].senses[0], pool, 2);
-    expect(built).not.toBeNull();
-    expect(built?.prompt).toBe("We _____ through the old town.");
-    expect(built?.options[built.answerIndex]).toBe("wander");
-    expect(built?.options).toHaveLength(4);
-    expect(built?.questionStyle).toBe("vocabulary");
-  });
-
-  it("declines when the example does not contain the base form", () => {
-    const awkward = word("adapt", "v.", ["They adapted quickly."]);
-    expect(buildVocabularyFromLibrary(awkward, awkward.senses[0], pool, 2)).toBeNull();
-  });
-});
-
 describe("assembling the model's reply", () => {
   const target = [word("wander", "v.")];
 
@@ -114,7 +62,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       target,
-      pool,
     ).payload as { questions: Array<{ answerIndex: number; options: string[]; prompt: string }> };
     const question = payload.questions[0];
     expect(question.prompt).toBe("They _____ for hours.");
@@ -134,7 +81,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("be found in possession of", "phr. v.")],
-      pool,
     );
     const [question] = result.payload.questions as Array<{ answerIndex: number; options: string[]; prompt: string }>;
     expect(result.dropped).toEqual([]);
@@ -154,7 +100,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       two,
-      pool,
     );
     expect((result.payload.questions as unknown[])).toHaveLength(1);
     expect(result.dropped).toHaveLength(1);
@@ -166,7 +111,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       target,
-      pool,
     );
     const [question] = result.payload.questions as Array<{ options: string[]; answerIndex: number; sourceRef: string }>;
     expect(result.dropped).toEqual([]);
@@ -180,7 +124,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("formula", "n.")],
-      [word("formula", "n.")],
     )).toThrow(/formula/);
   });
 
@@ -190,7 +133,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("formula", "n.")],
-      pool,
     )).toThrow(/答案必須位於目標用法開頭且不超出範圍/);
   });
 
@@ -218,7 +160,6 @@ describe("assembling the model's reply", () => {
       },
       "vocabulary",
       2,
-      targets,
       targets,
     );
     const questions = result.payload.questions as Array<{
@@ -248,7 +189,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("convince sb of sth", "phr.")],
-      pool,
     );
     expect((result.payload.questions as unknown[])).toHaveLength(1);
   });
@@ -265,7 +205,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("convince sb of sth", "phr.")],
-      pool,
     );
     const [question] = result.payload.questions as Array<{ prompt: string }>;
     expect(question.prompt).toBe(`The repeated trials _____${usage.slice("convinced".length)}.`);
@@ -284,7 +223,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("give sb a hand", "phr.")],
-      pool,
     );
     expect((result.payload.questions as unknown[])).toHaveLength(1);
     expect(result.dropped).toEqual([]);
@@ -301,7 +239,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("turn down", "phr. v.")],
-      pool,
     );
     const [question] = result.payload.questions as Array<{ prompt: string }>;
     expect(question.prompt).toBe("She _____ the offer down after reading the details.");
@@ -318,7 +255,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("convince sb of sth", "phr.")],
-      pool,
     )).toThrow(/目標用法/);
   });
 
@@ -328,7 +264,6 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       target,
-      pool,
     ).payload as { questions: Array<{ sourceRef: string }> };
     expect(payload.questions[0].sourceRef).toBe("source-1-1");
   });
@@ -347,7 +282,6 @@ describe("assembling the model's reply", () => {
       "cloze",
       2,
       words,
-      pool,
     ).payload as { questions: Array<{ passage: string; questions: Array<{ blank: number }> }> };
     const pack = payload.questions[0];
     expect(pack.passage).toBe("First they __1__ outside, and later they __2__ by the door.");
@@ -366,7 +300,6 @@ describe("assembling the model's reply", () => {
       "wordBank",
       2,
       words,
-      pool,
     ).payload as {
       questions: Array<{ optionBank: string[]; questions: Array<{ answerIndex: number; options: string[] }> }>;
     };
@@ -389,7 +322,6 @@ describe("assembling the model's reply", () => {
       "discourse",
       2,
       [word("wander", "v.")],
-      pool,
     ).payload as {
       questions: Array<{ optionBank: string[]; passage: string; questions: unknown[] }>;
     };
@@ -410,7 +342,6 @@ describe("assembling the model's reply", () => {
         "cloze",
         2,
         [word("wander", "v.")],
-        pool,
       ),
     ).toThrow();
   });

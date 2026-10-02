@@ -35,7 +35,6 @@ const assemble = (
     kind,
     2,
     [source],
-    pool,
   ).payload.questions as {
     answerIndex: number;
     options: string[];
@@ -88,32 +87,32 @@ describe("issues found in real Luna prompt trials", () => {
     ]);
   });
 
-  it("accepts the compact no-ref Luna low vocabulary result", () => {
+  it("maps no-ref vocabulary results with sufficient context to their source senses", () => {
     const words = [
       word("detect", ["察覺；發現"]),
       word("reluctant", ["不情願的"], "adj."),
       word("consequence", ["後果"], "n."),
     ];
-    const [step] = questionTask(words, words, "vocabulary", 2).steps;
+    const [step] = questionTask(words, "vocabulary", 2).steps;
     const questions = step.parse(
       JSON.stringify({
         items: [
           {
-            sentence: "A sensor can detect a gas leak before anyone smells it.",
+            sentence: "During the chemistry lesson, a sensor could detect a small gas leak before anyone smelled it, so the teacher opened the windows and led everyone outside.",
             answer: "detect",
             usage: "detect",
             distractors: ["prevent", "repair", "announce"],
           },
           {
             sentence:
-              "Although Mia was reluctant to speak at first, she shared her idea after her classmates encouraged her.",
+              "Although Mia was reluctant to speak during the class debate at first, she finally shared her idea after her classmates encouraged her and listened patiently.",
             answer: "reluctant",
             usage: "reluctant",
             distractors: ["eager", "proud", "ready"],
           },
           {
             sentence:
-              "One consequence of leaving the freezer door open was that all the food spoiled overnight.",
+              "One consequence of leaving the freezer door open throughout the night was that all the food spoiled, forcing the restaurant to cancel its planned lunch service.",
             answer: "consequence",
             usage: "consequence",
             distractors: ["benefit", "symptom", "decision"],
@@ -201,7 +200,7 @@ describe("issues found in real Luna prompt trials", () => {
       "choose",
       "close",
     ].map((w) => word(w));
-    const task = questionTask(words, words, "vocabulary", 2);
+    const task = questionTask(words, "vocabulary", 2);
     const request = JSON.parse(task.steps[1].prompt);
     expect(request.sources).toHaveLength(1);
     expect(request.sources[0].ref).toBe("s9");

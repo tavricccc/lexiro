@@ -87,14 +87,14 @@ describe("AI task boundaries", () => {
       "choose",
       "close",
     ].map(word);
-    const task = questionTask(words, words, "vocabulary", 2);
+    const task = questionTask(words, "vocabulary", 2);
     expect(task.steps[1].prompt).toContain("s9");
     const parsed = task.steps[1].parse(
       JSON.stringify({
         items: [
           {
             ref: "s9",
-            sentence: "Please close the door before we leave.",
+            sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",
             distractors: ["watch", "bring", "carry"],
@@ -111,7 +111,7 @@ describe("AI task boundaries", () => {
         items: [
           {
             ref: "s1",
-            sentence: "Please close the door.",
+            sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",
             distractors: ["watch", "bring", "carry"],
@@ -146,7 +146,6 @@ describe("AI task boundaries", () => {
     ];
     const [step] = questionTask(
       [phrase, commit],
-      [phrase, commit],
       "vocabulary",
       2,
     ).steps;
@@ -161,22 +160,22 @@ describe("AI task boundaries", () => {
               "was suspected of",
             ],
             sentence:
-              "During the school trip, a student was found in possession of a key that had gone missing from the science lab.",
+              "During the school trip, a student was found in possession of a key that had gone missing from the locked science lab earlier that morning.",
             usage:
-              "was found in possession of a key that had gone missing from the science lab",
+              "was found in possession of a key that had gone missing from the locked science lab earlier that morning",
           },
           {
             answer: "committed",
             distractors: ["witnessed", "prevented", "reported"],
             sentence:
-              "The shop’s security video showed that the thief committed the crime by breaking a window and taking several laptops.",
+              "The shop’s security video clearly showed that the thief committed the crime by breaking a window and taking several laptops while the owner was away.",
             usage: "committed",
           },
           {
             answer: "committed",
             distractors: ["limited", "postponed", "considered"],
             sentence:
-              "After volunteering at the animal shelter for a month, Leo committed himself to caring for abandoned pets every weekend.",
+              "After volunteering at the animal shelter for a month, Leo committed himself to caring for abandoned pets every weekend instead of spending his free time playing games.",
             usage: "committed",
           },
         ],
@@ -191,7 +190,7 @@ describe("AI task boundaries", () => {
   });
   it("keeps a valid question when another question in the same reply fails", async () => {
     const words = [word("adapt"), word("formula")];
-    const task = questionTask(words, words, "vocabulary", 2);
+    const task = questionTask(words, "vocabulary", 2);
     const run: AiRun<LibraryQuestion> = {
       task,
       session: createAiSession("lite", task.context),
@@ -202,13 +201,13 @@ describe("AI task boundaries", () => {
       segments: 0,
     };
     const valid = {
-      sentence: "They adapt quickly to change.",
+      sentence: "Students who move to a new school often adapt more quickly when classmates invite them to join activities and explain the routines of their new classroom.",
       answer: "adapt",
       usage: "adapt",
       distractors: ["sleep", "wait", "leave"],
     };
     const invalid = {
-      sentence: "The method helps us solve it.",
+      sentence: "The method helps students solve difficult mathematical problems by separating each problem into smaller steps, allowing them to check their calculations before writing a final answer.",
       answer: "method",
       usage: "formula",
       distractors: ["plan", "rule", "formula"],
@@ -250,9 +249,10 @@ describe("AI task boundaries", () => {
       "create",
       "cross",
     ].map(word);
-    const task = questionTask(words, words, "wordBank", 2);
+    const task = questionTask(words, "wordBank", 2);
     expect(task.steps).toHaveLength(2);
-    expect(JSON.parse(task.steps[1].prompt).sources).toHaveLength(3);
+    expect(JSON.parse(task.steps[0].prompt).sources).toHaveLength(10);
+    expect(JSON.parse(task.steps[1].prompt).sources).toHaveLength(1);
     expect(task.steps.every((s) => !s.split && s.count === 1)).toBe(true);
   });
 });

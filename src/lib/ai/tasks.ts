@@ -130,7 +130,6 @@ export function supplementTask(
 
 export function questionTask(
   words: WordEntry[],
-  pool: WordEntry[],
   kind: GeneratedQuestionKind,
   difficulty: QuestionDifficulty,
 ): AiTask<LibraryQuestion> {
@@ -157,7 +156,6 @@ export function questionTask(
           kind,
           difficulty,
           batch,
-          pool,
         );
         const parsed = parseLibraryImport(normalized, {
           allowedDifficulty: difficulty,

@@ -7,7 +7,7 @@ import type {
 import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
-import { libraryDistractors, placeAnswer } from "./question-builders";
+import { placeAnswer } from "./question-builders";
 
 /**
  * Turns the model's prose into graded questions.
@@ -149,7 +149,6 @@ function assembleSentences(
   kind: "vocabulary" | "grammar",
   difficulty: QuestionDifficulty,
   words: WordEntry[],
-  pool: WordEntry[],
 ): AssemblyResult {
   const slots = buildSlots(words);
   const items = Array.isArray(value.items) ? value.items : [];
@@ -185,23 +184,9 @@ function assembleSentences(
       return dropped.push(`${slot.word.word}：答案必須位於目標用法開頭且不超出範圍`);
     const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
 
-    const fromLibrary =
-      kind === "vocabulary" &&
-      raw.distractors === undefined &&
-      answer.toLocaleLowerCase() === slot.word.word.trim().toLocaleLowerCase()
-        ? libraryDistractors(
-            slot.word,
-            slot.word.senses[slot.senseIndex]?.pos ?? "",
-            pool,
-            3,
-            `${slot.sourceRef}:pool`,
-          )
-        : [];
     const distractors = usableDistractors(
       answer,
-      raw.distractors === undefined
-        ? fromLibrary
-        : stringArray(raw.distractors),
+      stringArray(raw.distractors),
       3,
       true,
     );
@@ -340,8 +325,8 @@ function assemblePassage(
     });
   });
 
-  if (located.length < 2)
-    throw new Error(dropped[0] ?? "文章中找不到足夠的空格位置");
+  if (!located.length)
+    throw new Error(dropped[0] ?? "文章中找不到可用的空格位置");
 
   const { children, passage } = cutBlanks(rawPassage, located);
   const answers = children.map((child) => child.answer);
@@ -455,10 +440,9 @@ export function assembleGeneratedQuestions(
   kind: GeneratedQuestionKind,
   difficulty: QuestionDifficulty,
   words: WordEntry[],
-  pool: WordEntry[],
 ): AssemblyResult {
   if (!isRecord(value)) throw new Error("AI 回覆必須是 JSON object");
   return isPassageKind(kind)
     ? assemblePassage(value, kind, difficulty, words)
-    : assembleSentences(value, kind, difficulty, words, pool);
+    : assembleSentences(value, kind, difficulty, words);
 }

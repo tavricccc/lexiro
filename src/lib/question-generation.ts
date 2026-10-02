@@ -12,6 +12,7 @@ import { questionUsesWords } from "./question-ownership";
 import { createSourceRef } from "./source-ref";
 import { extractJsonText } from "./ai/json";
 import { assembleGeneratedQuestions } from "./question-assembly";
+import { generatedQuestionLengthIssue } from "./question-quality";
 import {
   isPassageKind,
   READING_MIN_QUESTIONS,
@@ -166,15 +167,13 @@ export function filterQuestionsForWords(
 /**
  * Parses the model's reply and assembles finished questions from it.
  *
- * Preserve context-specific model distractors. The learner's `pool` is only a
- * fallback for vocabulary replies that omit distractors explicitly.
+ * Require context-specific model distractors and the shared editorial length.
  */
 export function normalizeQuestionGenerationJson(
   responseText: string,
   kind: GeneratedQuestionKind,
   difficulty: GeneratedQuestionDifficulty,
   words: WordEntry[],
-  pool: WordEntry[] = words,
 ): string {
   let value: unknown;
   try {
@@ -182,12 +181,13 @@ export function normalizeQuestionGenerationJson(
   } catch {
     throw new Error("AI 題目回覆不是有效 JSON");
   }
+  const lengthIssue = generatedQuestionLengthIssue(value, kind, difficulty);
+  if (lengthIssue) throw new Error(lengthIssue);
   const assembled = assembleGeneratedQuestions(
     value,
     kind,
     difficulty,
     words,
-    pool,
   );
   if (assembled.dropped.length) throw new Error(assembled.dropped.join("；"));
   return JSON.stringify(assembled.payload);

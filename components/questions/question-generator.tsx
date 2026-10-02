@@ -49,7 +49,6 @@ import {
   type GeneratedQuestionKind,
 } from "@/src/lib/question-generation";
 import { isPassageKind } from "@/src/lib/question-formats";
-import { buildLibraryQuestions } from "@/src/lib/question-builders";
 
 type Step = "configure" | "run" | "review" | "done";
 interface QuestionDraft {
@@ -138,21 +137,9 @@ function QuestionGeneratorFlow({
     (count, word) => count + word.senses.length,
     0,
   );
-  const prebuilt = useMemo(
-    () =>
-      kind === "vocabulary"
-        ? buildLibraryQuestions(words, pool, difficulty)
-        : null,
-    [difficulty, kind, pool, words],
-  );
-  const aiWords = prebuilt ? prebuilt.remaining : words;
   const task = useMemo(
-    () => questionTask(aiWords, pool, kind, difficulty),
-    [aiWords, pool, kind, difficulty],
-  );
-  const moreTask = useMemo(
-    () => questionTask(words, pool, kind, difficulty),
-    [words, pool, kind, difficulty],
+    () => questionTask(words, kind, difficulty),
+    [words, kind, difficulty],
   );
   const generation = useAiGeneration<LibraryQuestion>({
     initialSnapshot: draft.run,
@@ -366,12 +353,11 @@ function QuestionGeneratorFlow({
           actionLabel={t("questions.generate")}
           configured={generation.configured}
           ready={generation.ready}
-          localCount={prebuilt?.built.length ?? 0}
           onCancel={generation.cancel}
           onResume={generation.resume}
           onAppend={
-            moreTask.steps.length
-              ? () => generation.append(moreTask)
+            task.steps.length
+              ? () => generation.append(task)
               : undefined
           }
           onReview={
@@ -379,10 +365,10 @@ function QuestionGeneratorFlow({
               ? () => update({ step: "review" })
               : undefined
           }
-          onStart={() => generation.start(task, prebuilt?.built ?? [])}
+          onStart={() => generation.start(task)}
           kind={task.kind}
           billableCount={task.billableCount}
-          appendBillableCount={moreTask.billableCount}
+          appendBillableCount={task.billableCount}
           tier={generation.tier}
           onTierChange={generation.setTier}
           state={run}
