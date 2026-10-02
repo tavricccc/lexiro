@@ -61,7 +61,6 @@ export function SetView({
   );
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [moveOpen, setMoveOpen] = useState(false);
-  const [deleting, setDeleting] = useState(false);
 
   const current = state.sets.find((entry) => entry.id === setId);
 
@@ -129,7 +128,6 @@ export function SetView({
   }
 
   const removeSet = async () => {
-    setDeleting(true);
     await deleteSet(setId);
     router.push(libraryHref);
   };
@@ -324,7 +322,6 @@ export function SetView({
       />
 
       <ConfirmDialog
-        busy={deleting}
         confirmLabel={t("setDetail.delete")}
         description={t("setDetail.deleteConfirm", { name: current.setName })}
         onConfirm={removeSet}

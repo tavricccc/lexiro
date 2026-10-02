@@ -481,6 +481,7 @@ export const zhTW = {
     data: "資料與備份",
     export: "匯出完整備份",
     import: "匯入備份",
+    readingBackup: "正在讀取備份…",
     importConfirm: "匯入會把內容合併進目前資料，確定繼續嗎？",
     importDone: "備份已匯入",
     importPreview:
@@ -779,6 +780,8 @@ export const zhTW = {
     unlimited: "無限額度",
   },
   common: {
+    processing: "正在處理…",
+    actionFailed: "操作未完成：{message}",
     clearSearch: "清除搜尋",
     learningDataUnreadable:
       "這個裝置的學習紀錄無法讀取，原始資料已保留。請先重新載入；若仍失敗，請保留目前的瀏覽器資料以便復原。",

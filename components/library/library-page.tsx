@@ -347,7 +347,6 @@ export function LibraryPage({
         onConfirm={async () => {
           if (deleteFolderId) await deleteFolder(deleteFolderId);
           setCurrentFolderId(ALL_FOLDER_ID);
-          setDeleteFolderId(null);
         }}
         onOpenChange={(open) => {
           if (!open) setDeleteFolderId(null);

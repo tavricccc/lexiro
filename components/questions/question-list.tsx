@@ -229,7 +229,6 @@ export function QuestionList({
         confirmLabel={t("questions.delete")}
         onConfirm={async () => {
           if (deleteTarget) await deleteQuestion(deleteTarget);
-          setDeleteTarget(null);
         }}
       />
     </div>

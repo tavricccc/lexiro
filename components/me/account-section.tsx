@@ -181,8 +181,13 @@ export function AccountSection() {
         confirmLabel={t("settings.continueSignIn")}
         description={t("settings.guestDataWarning")}
         onConfirm={async () => {
-          setConfirmSignIn(false);
-          await signIn();
+          setWorking("in");
+          try {
+            await cloud.signIn();
+            toast.success(t("me.signedIn"));
+          } finally {
+            setWorking(null);
+          }
         }}
         onOpenChange={setConfirmSignIn}
         open={confirmSignIn}
