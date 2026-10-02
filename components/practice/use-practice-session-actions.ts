@@ -53,6 +53,7 @@ export function usePracticeSessionActions({
   setters: SessionSetters;
 }) {
   const [actionBusy, setActionBusy] = useState(false);
+  const [pendingChoice, setPendingChoice] = useState<number | null>(null);
   const [animateNextCard, setAnimateNextCard] = useState(true);
   const actionPending = useRef(false);
   const rateSense = useLearningStore((store) => store.rateSense);
@@ -70,6 +71,7 @@ export function usePracticeSessionActions({
   const resetAttempt = () => {
     actionPending.current = false;
     setActionBusy(false);
+    setPendingChoice(null);
     setters.setIndex(0);
     setters.setCorrect(0);
     setters.setWrong([]);
@@ -116,21 +118,10 @@ export function usePracticeSessionActions({
     if (!item) return;
     actionPending.current = true;
     setActionBusy(true);
+    setPendingChoice(choice);
     const isCorrect = isCorrectChoice(item, choice);
-    setters.setSelected(choice);
-    setters.setRevealed(true);
-    setters.setAnswerChoices((values) => {
-      const nextChoices = [...values];
-      while (nextChoices.length <= index) nextChoices.push(null);
-      nextChoices[index] = choice;
-      return nextChoices;
-    });
-    if (isCorrect) setters.setCorrect((value) => value + 1);
-    else setters.setWrong((value) => [...value, index]);
     const addedFailedSense =
       !isCorrect && !questionFailedSenses.includes(item.senseId);
-    if (addedFailedSense)
-      setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
     try {
       const card = progressCards[item.senseId];
       const reviewedToday = card?.lastReview
@@ -149,24 +140,25 @@ export function usePracticeSessionActions({
         retrying,
         rating,
       );
+      setters.setSelected(choice);
+      setters.setRevealed(true);
+      setters.setAnswerChoices((values) => {
+        const nextChoices = [...values];
+        while (nextChoices.length <= index) nextChoices.push(null);
+        nextChoices[index] = choice;
+        return nextChoices;
+      });
+      if (isCorrect) setters.setCorrect((value) => value + 1);
+      else setters.setWrong((value) => [...value, index]);
+      if (addedFailedSense)
+        setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
     } catch (reason) {
       console.error(reason);
       toast.error(t("practice.recordFailed"));
-      setters.setSelected(null);
-      setters.setRevealed(false);
-      setters.setAnswerChoices((values) =>
-        values.map((value, position) => (position === index ? null : value)),
-      );
-      if (isCorrect) setters.setCorrect((value) => Math.max(0, value - 1));
-      else
-        setters.setWrong((values) => values.filter((value) => value !== index));
-      if (addedFailedSense)
-        setters.setQuestionFailedSenses((values) =>
-          values.filter((id) => id !== item.senseId),
-        );
     } finally {
       actionPending.current = false;
       setActionBusy(false);
+      setPendingChoice(null);
     }
   };
 
@@ -176,8 +168,6 @@ export function usePracticeSessionActions({
     actionPending.current = true;
     setActionBusy(true);
     try {
-      setters.setSkipped((values) => [...values, index]);
-      setters.setWrong((values) => [...values, index]);
       await recordQuestion(
         item.senseId,
         item.type,
@@ -185,12 +175,12 @@ export function usePracticeSessionActions({
         false,
         retrying,
       );
+      setters.setSkipped((values) => [...values, index]);
+      setters.setWrong((values) => [...values, index]);
       advance();
     } catch (reason) {
       console.error(reason);
       toast.error(t("practice.recordFailed"));
-      setters.setSkipped((values) => values.filter((value) => value !== index));
-      setters.setWrong((values) => values.filter((value) => value !== index));
     } finally {
       actionPending.current = false;
       setActionBusy(false);
@@ -207,6 +197,7 @@ export function usePracticeSessionActions({
   };
 
   const leave = () => {
+    if (actionPending.current) return;
     setters.setStarted(false);
     setters.setEntries(null);
     setters.setRetrying(false);
@@ -226,6 +217,7 @@ export function usePracticeSessionActions({
 
   return {
     actionBusy,
+    pendingChoice,
     animateNextCard,
     answer,
     begin,
