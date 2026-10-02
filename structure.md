@@ -47,6 +47,16 @@ CSS and JavaScript, so nothing states a literal duration of its own.
 使用共用操作列顯示備份讀取狀態。`tests-next/confirmation-actions.test.tsx`
 驗證重複提交、執行中關閉、失敗重試及兩段匯入尚未完成時的回饋。
 
+`lib/backup-actions.ts` 協調完整匯入／匯出與帳號邊界；
+`src/lib/account-data-queue.ts` 讓跨 store 備份操作與 namespace 切換依序完成。
+`src/lib/full-backup.ts` 的 `previewBackupImport` 只回傳預覽數量，不回傳要寫回
+的快照；教材匯入在 library store 中合併最新資料，學習匯入使用
+`src/lib/learning-backup.ts` 保留既有學習卡與已存在的本機統計。
+`tests-next/backup-actions.test.ts` 驗證兩段匯入不跨帳號、過期操作拒絕及匯出
+等待儲存；store mutation／persistence 測試驗證佇列中的修改與重試仍保留。
+`tests-next/cloud-state-consistency.test.ts` 驗證登入切換期間不使用前帳號游標、
+同步抵達時保留尚在儲存的本機編輯，以及登出後不寫入舊同步的完成狀態。
+
 `components/ui/search-field.tsx` 是教材／題庫共用的即時搜尋欄位，含一鍵清除、
 焦點回復與輸入法安全的 Escape 操作。`lib/browse-routes.ts` 承載列表條件與
 編輯返回目的地；頁面讀取路由條件，搜尋只替換當前歷史項目。單字集題目分頁、
@@ -179,6 +189,12 @@ moved. AI credentials and configuration belong to the managed Worker;
 the retired credential settings route remains inaccessible. Model choice is the
 separate owner-only `preferences/ai` document; its listener requests account reconciliation.
 `stores/cloud-store.ts` selects the account namespace before loading local data.
+Remote merges receive the latest state inside each store's mutation queue;
+the library merge reads the current dirty journal there as well, so edits made
+while a cloud request is in flight remain protected.
+Cursor and sync-journal completion writes share the account-data queue and
+verify their owner before running. Sync starts only after that account's local
+namespace has loaded.
 
 `src/lib/sync-journal.ts` holds what this device has changed and not yet sent.
 It is a sidecar: domain records carry no synchronization fields. The list of

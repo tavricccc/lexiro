@@ -373,6 +373,11 @@ feature component gets an icon from. The rules live beside the map:
 
 ## Copy
 
+備份操作在原按鈕顯示「正在讀取備份」／「正在準備備份」，等待期間停用重複
+操作。匯入確認的數量隨目前資料更新，執行中固定閱讀內容；失敗保留同一檔案
+供重試。部分儲存成功時要說明已合併的教材與未完成的學習紀錄，帳號變動則
+提供重新選檔。完成回饋只在教材與學習紀錄都儲存後出現。
+
 All user-facing strings live in `lib/i18n.ts` and are reached through `t()`. The
 key union is derived from the object, so a missing key is a type error rather
 than a string that leaks to the screen.

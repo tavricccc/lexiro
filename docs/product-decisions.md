@@ -1,5 +1,22 @@
 # Confirmed product decisions
 
+## 備份與同步期間的資料保留（2026-10-02）
+
+備份確認只保存原始檔案與所選帳號，不保存要寫回的本機快照。確認數量隨
+最新教材與學習卡更新；開始執行後固定該次確認內容。教材與學習紀錄分別在
+各自的儲存佇列內合併最新資料，重試同一來源也不覆蓋期間新增的內容。
+教材已成功而學習紀錄失敗時，訊息明確說明已完成與未完成的部分；兩段都
+成功才顯示完成。既有學習卡優先，本機有學習活動時保留本機統計，否則採用
+備份統計。確認文案遵循 [Apple Alerts](https://developer.apple.com/design/human-interface-guidelines/alerts)
+的清楚描述與具體行動原則，不暗示尚未發生的刪除或成功。
+
+完整匯入／匯出與帳號 namespace 切換共用佇列。切換不會插入兩段匯入之間，
+過期帳號的備份操作在寫入前拒絕；匯出先等現有教材與學習寫入完成。同步的
+教材／學習合併也在各自佇列內讀取最新資料與 dirty 記錄，保留同步請求期間
+的本機編輯。此輪未改持久化 schema，完整備份仍為 v4。
+同步只有在登入帳號與已載入的 namespace 相符時開始。同步游標、dirty 清除
+與完成標記同樣在帳號佇列內檢查 owner，過期的同步不修改新帳號狀態。
+
 ## 管理操作與資料一致性（2026-10-02）
 
 帳號點數／額度變動在儲存前確認目標帳號、變動方向、每期額度與預估餘額；
@@ -224,9 +241,10 @@ the account permanently unable to sync with nothing the user could do about it,
 so `repairLibraryState` resolves every conflict to something: a duplicate name
 gets a suffix, a reference to something that is gone is dropped.
 
-AI configuration is no longer browser data. Journal v3 retires the AI dirty flag
-and local credentials while preserving queued library work. Full backup v2
-imports v1 library and learning data but discards its retired AI settings.
+AI credentials are no longer browser data. Journal v4 preserves queued library
+and learning work and tracks the separate model preference. Full backup v4
+contains the current library, learning progress and statistics, without credentials;
+older backup versions are refused.
 
 **The workspace opens on local data.** Startup waited for the first cloud
 reconciliation before showing anything, which put a network round trip — and
