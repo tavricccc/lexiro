@@ -4,6 +4,7 @@ import {
   LIMITS,
   QUESTION_KINDS,
   TIERS,
+  AI_MODELS,
   rate,
   type GenerationRequest,
   type Tier,
@@ -23,11 +24,11 @@ import {
   organizeOutput,
 } from "./organize";
 
-export const MODELS: Record<Tier, { model: string; effort: "low" | "medium" | "high" }> =
+export const REASONING: Record<Tier, "low" | "medium" | "high"> =
   {
-    lite: { model: "gpt-6-luna", effort: "low" },
-    thinking: { model: "gpt-6-luna", effort: "medium" },
-    pro: { model: "gpt-6-luna", effort: "high" },
+    lite: "low",
+    thinking: "medium",
+    pro: "high",
   };
 const inputSchema = z.strictObject({
   kind: z.enum([
@@ -53,6 +54,7 @@ const inputSchema = z.strictObject({
   limit: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
   session: z.string().uuid(),
   tier: z.enum(TIERS),
+  model: z.enum(AI_MODELS),
   cursor: z
     .string()
     .regex(/^resp_[A-Za-z0-9_-]{1,200}$/)
@@ -185,17 +187,17 @@ export async function prepareGeneration(
     units: await Promise.all(
       rawUnits.map(async (unit, index) => ({
         id: await fingerprint(
-          JSON.stringify([uid, request.session, request.kind, tier, unit]),
+          JSON.stringify([uid, request.session, request.kind, request.model, tier, unit]),
         ),
         // The retry ceiling deliberately excludes the session: it is a client
         // value, and a new uuid per attempt would otherwise reset the ceiling.
         limitId: await fingerprint(
-          JSON.stringify([uid, request.kind, tier, unit]),
+          JSON.stringify([uid, request.kind, request.model, tier, unit]),
         ),
         index,
       })),
     ),
-    halfRate: rate(request.kind, tier),
+    halfRate: rate(request.kind, tier, request.model),
     cacheKey,
   };
 }
@@ -253,11 +255,10 @@ function cachedInstructionInput(prepared: PreparedGeneration) {
 }
 
 export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
-  const model = MODELS[prepared.request.tier];
   return {
-    model: model.model,
+    model: prepared.request.model,
     service_tier: "default" as const,
-    reasoning: { effort: model.effort },
+    reasoning: { effort: REASONING[prepared.request.tier] },
     stream: true,
     store: true,
     input: [

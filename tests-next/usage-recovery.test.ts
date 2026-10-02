@@ -18,7 +18,7 @@ const complete = () => ({
 });
 const usage = { input_tokens: 900, output_tokens: 60 };
 async function start() {
-  const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", tier: "lite", session: crypto.randomUUID() }, "u");
+  const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID() }, "u");
   const hold = await reserve(fixture.db, "u", prepared.units, prepared.halfRate);
   return { prepared, hold };
 }
@@ -74,7 +74,7 @@ describe("unknown provider usage", () => {
   });
 
   it("caps a delayed debit at the original balance even when the estimate exceeded it", async () => {
-    const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", tier: "lite", session: crypto.randomUUID() }, "u");
+    const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID() }, "u");
     const hold = await reserve(fixture.db, "u", prepared.units, 1000);
     await settleGeneration(fixture.db, hold, prepared, { status: "complete", cursor: "resp_pending", response: complete() }, "gpt-6-luna");
     expect((await account(fixture.db, "u"))!.points).toBe(-400);

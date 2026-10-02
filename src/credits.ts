@@ -1,4 +1,4 @@
-import { LONG_CONTEXT_INPUT_THRESHOLD, MODEL_PRICES, type TokenUsage } from "@lexiro/ai-contract";
+import { LONG_CONTEXT_INPUT_THRESHOLD, MODEL_PRICES, AI_MODELS, type AiModel, type TokenUsage } from "@lexiro/ai-contract";
 
 // Private billing basis. The public client receives only estimated or settled
 // credit amounts; it does not receive this conversion rule.
@@ -29,7 +29,7 @@ export function creditsFromUsage(usage: TokenUsage): number | null {
     cacheWrite * scaledPrice(price.cacheWrite);
   const scaledOutput = output * scaledPrice(price.output);
   const longContext =
-    usage.model === "gpt-6-luna" && input > BigInt(LONG_CONTEXT_INPUT_THRESHOLD);
+    AI_MODELS.includes(usage.model as AiModel) && input > BigInt(LONG_CONTEXT_INPUT_THRESHOLD);
   const scaledCostTwice =
     scaledInput * (longContext ? 4n : 2n) +
     scaledOutput * (longContext ? 3n : 2n);

@@ -19,7 +19,7 @@ import {
 } from "./billing";
 import { adminRequest } from "./admin";
 import { HttpError, readBody } from "./http";
-import { MODELS, prepareGeneration, upstreamBody } from "./generation";
+import { prepareGeneration, upstreamBody } from "./generation";
 import { prepareImages } from "./organize";
 import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
@@ -58,7 +58,7 @@ export function createWorker(
           ? { "access-control-allow-origin": origin }
           : {}),
         "access-control-allow-headers":
-          "Authorization, Content-Type, X-Session-Id",
+          "Authorization, Content-Type, X-Session-Id, X-AI-Model",
         "access-control-allow-methods": "GET, POST, PATCH, OPTIONS",
         "access-control-expose-headers": "X-Context-Rebuilt, Retry-After",
       };
@@ -110,6 +110,7 @@ export function createWorker(
               await readBody(request, LIMITS.bodyBytes),
               request.headers.get("x-session-id"),
               identity.uid,
+              request.headers.get("x-ai-model"),
             )
           : await prepareGeneration(
               JSON.parse(await readBody(request, 100_000)),
@@ -130,7 +131,7 @@ export function createWorker(
               prepared.units,
               prepared.halfRate,
             );
-        const model = MODELS[prepared.request.tier].model;
+        const model = prepared.request.model;
         try {
           let cursor =
             prepared.request.cursor &&

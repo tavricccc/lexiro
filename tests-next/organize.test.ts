@@ -20,6 +20,17 @@ function webp(width = 1800, height = 1200) {
 }
 
 describe("input organization", () => {
+  it("applies the chosen family to photo requests and their estimate without changing the prompt", async () => {
+    const session = crypto.randomUUID();
+    const earlier = await prepareImages(webp(), session, "u", "gpt-5.6-luna");
+    const latest = await prepareImages(webp(), session, "u", "gpt-6-luna");
+    const body = await new Response(upstreamBody(earlier)).json();
+    expect(body).toMatchObject({ model: "gpt-5.6-luna", reasoning: { effort: "low" } });
+    expect([earlier.halfRate, latest.halfRate]).toEqual([29, 12]);
+    expect(earlier.units[0].id).not.toBe(latest.units[0].id);
+    expect(earlier.instructions).toBe(latest.instructions);
+    await expect(prepareImages(webp(), session, "u", "unknown")).rejects.toMatchObject({ status: 400 });
+  });
   it.each(["failed", "cancelled"] as const)("releases the entire ten-photo hold when the batch is %s", async (status) => {
     const fixture = await testDatabase();
     try {
@@ -38,7 +49,7 @@ describe("input organization", () => {
   });
 
   it("uses the same cacheable fixed prefix and Lite price for text and photos", async () => {
-    const text = await prepareGeneration({ kind: "organizeText", raw: "apple", tier: "pro", session: crypto.randomUUID() }, "u");
+    const text = await prepareGeneration({ kind: "organizeText", raw: "apple", model: "gpt-6-luna", tier: "pro", session: crypto.randomUUID() }, "u");
     const image = await prepareImages(webp(), crypto.randomUUID(), "u");
     expect(text.instructions).toBe(image.instructions);
     expect(text.cacheKey).toBe(image.cacheKey);

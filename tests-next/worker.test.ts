@@ -34,7 +34,7 @@ const verify = vi.fn(async (request: Request) => {
 });
 const frame = (type: string, value: object) =>
   `event: ${type}\ndata: ${JSON.stringify({ type, ...value })}\n\n`;
-function provider(result?: object, capture?: (request: unknown) => void) {
+function provider(result?: object, capture?: (request: unknown) => void, usage = { input_tokens: 100, output_tokens: 20 }) {
   return vi.fn<typeof fetch>(async (_url, options) => {
     const body = await new Response(options!.body as BodyInit).json();
     capture?.(body);
@@ -54,7 +54,7 @@ function provider(result?: object, capture?: (request: unknown) => void) {
       instructions: body.instructions,
       model: body.model,
       output: [{ content: [{ type: "output_text", text: output }] }],
-      usage: { input_tokens: 100, output_tokens: 20 },
+      usage,
     };
     return new Response(
       frame("response.created", { response }) +
@@ -70,6 +70,7 @@ function req(
   token = "user",
   method = body ? "POST" : "GET",
 ) {
+  const payload = (path === "/generate" || path === "/organize") && typeof body === "object" && body !== null && !Array.isArray(body) ? { model: "gpt-6-luna", ...body } : body;
   return new Request(`https://worker.test${path}`, {
     method,
     headers: {
@@ -77,7 +78,7 @@ function req(
       authorization: `Bearer ${token}`,
       "content-type": "application/json",
     },
-    ...(body ? { body: JSON.stringify(body) } : {}),
+    ...(body ? { body: JSON.stringify(payload) } : {}),
   });
 }
 async function call(request: Request, upstream = provider()) {
@@ -103,6 +104,13 @@ const generation = () => ({
 });
 
 describe("Worker HTTP boundary", () => {
+  it.each([["gpt-5.6-luna", 11], ["gpt-6-luna", 5]] as const)("routes %s and settles its own reported token cost", async (model, credits) => {
+    const upstream = provider(undefined, (request) => expect(request).toMatchObject({ model, reasoning: { effort: "low" } }), { input_tokens: 1000, output_tokens: 1000 });
+    const result = await call(req("/generate", { ...generation(), model }), upstream);
+    expect(result.response.status).toBe(200);
+    expect(await env.DB.prepare("SELECT model,credits,points FROM usage_log").first()).toEqual({ model, credits, points: credits });
+    expect((await account(env.DB, "u"))!.points).toBe(100 - credits);
+  });
   it("persists missing usage and reconciles it on the next account request", async () => {
     const output = JSON.stringify({ items: [{ senses: [{ pos: "n.", meaningZh: "蘋果", example: "I ate an apple." }] }] });
     const response = { id: "resp_pending", status: "completed", output: [{ content: [{ type: "output_text", text: output }] }] };
@@ -146,7 +154,7 @@ describe("Worker HTTP boundary", () => {
     const result = await call(new Request("https://worker.test/organize", {
       method: "POST",
       headers: {
-        authorization: "Bearer user", "content-type": "text/plain", "x-session-id": crypto.randomUUID(),
+        authorization: "Bearer user", "content-type": "text/plain", "x-session-id": crypto.randomUUID(), "x-ai-model": "gpt-6-luna",
         ...(limit === "bytes" ? { "content-length": String(LIMITS.bodyBytes + 1) } : {}),
       },
       body: limit === "count" ? Array(11).fill("AAAA").join("\n") : "AAAA",
@@ -174,7 +182,7 @@ describe("Worker HTTP boundary", () => {
     const session = crypto.randomUUID();
     const request = () => new Request("https://worker.test/organize", {
       method: "POST",
-      headers: { authorization: "Bearer user", "content-type": "text/plain", "x-session-id": session },
+      headers: { authorization: "Bearer user", "content-type": "text/plain", "x-session-id": session, "x-ai-model": "gpt-6-luna" },
       body: images.join("\n"),
     });
     const capture = vi.fn();

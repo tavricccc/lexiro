@@ -116,7 +116,7 @@ try {
                   {
                     ...JSON.parse(step.prompt),
                     session: crypto.randomUUID(),
-                    tier: "lite",
+                    model: "gpt-6-luna", tier: "lite",
                   },
                   "prompt-eval",
                 );
@@ -131,7 +131,7 @@ try {
         {
           ...JSON.parse(task.steps[0].prompt),
           session: crypto.randomUUID(),
-          tier: "lite",
+          model: "gpt-6-luna", tier: "lite",
         },
         "prompt-eval",
       );

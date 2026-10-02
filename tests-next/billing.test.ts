@@ -28,6 +28,9 @@ const units = (ids: string[]) => ids.map((id) => ({ id, limitId: id }));
 
 describe("D1 atomic credit ledger", () => {
   it("converts provider usage to whole credits with exact upward rounding", () => {
+    expect(creditsFromUsage({ model: "gpt-5.6-luna", input: 300_000, output: 100_000 })).toBe(2250);
+    expect(creditsFromUsage({ model: "gpt-5.6-luna", input: 1_000_000, cached: 1_000_000 })).toBe(300);
+    expect(creditsFromUsage({ model: "gpt-5.6-luna", input: 1_000_000, cacheWrite: 1_000_000 })).toBe(3750);
     expect(
       creditsFromUsage({
         model: "gpt-6-luna",

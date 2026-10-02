@@ -41,7 +41,7 @@ async function settleSupplement(text: string, limit: 1 | 2 | 3) {
   const session = crypto.randomUUID();
   const request = {
     kind: "senses",
-    tier: "lite",
+    model: "gpt-6-luna", tier: "lite",
     session,
     limit,
     sources: [
@@ -78,7 +78,7 @@ async function settleSupplement(text: string, limit: 1 | 2 | 3) {
 describe("reading retry identity", () => {
   it.each([3, 4, 5])("keeps a completed %i-question article free to retry in the same session", async (count) => {
     const request = {
-      kind: "reading", tier: "lite", session: crypto.randomUUID(), difficulty: 2,
+      kind: "reading", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID(), difficulty: 2,
       sources: [{ ref: "s1", word: "apple", pos: "n.", meaningZh: "蘋果" }],
     } as const;
     const prepared = await prepareGeneration(request, "u");

@@ -1,15 +1,23 @@
 import { describe, expect, it } from "vitest";
 import { encode } from "gpt-tokenizer";
-import { MODELS, prepareGeneration, upstreamRequest } from "../src/generation";
-import { QUESTION_KINDS } from "@lexiro/ai-contract";
+import { REASONING, prepareGeneration, upstreamRequest } from "../src/generation";
+import { QUESTION_KINDS, AI_MODELS, TIERS } from "@lexiro/ai-contract";
 import { QUESTION_CACHE_KEY, TASK_RULES } from "../src/question-prompts";
 
 describe("private generation prompts", () => {
-  it("uses GPT-6 Luna for every tier with increasing reasoning effort", () => {
-    expect(MODELS).toEqual({
-      lite: { model: "gpt-6-luna", effort: "low" },
-      thinking: { model: "gpt-6-luna", effort: "medium" },
-      pro: { model: "gpt-6-luna", effort: "high" },
+  it.each(AI_MODELS)("routes %s for every reasoning tier and keeps model-specific charge identities", async (model) => {
+    for (const tier of TIERS) {
+      const prepared = await prepareGeneration({ kind: "words", raw: "bank n. 銀行", model, tier, session: "00000000-0000-4000-8000-000000000001" }, "uid");
+      expect(upstreamRequest(prepared)).toMatchObject({ model, reasoning: { effort: REASONING[tier] } });
+      const other = await prepareGeneration({ ...prepared.request, model: model === "gpt-6-luna" ? "gpt-5.6-luna" : "gpt-6-luna" }, "uid");
+      expect(prepared.units[0].id).not.toBe(other.units[0].id);
+    }
+  });
+  it("keeps the same increasing reasoning effort for both model families", () => {
+    expect(REASONING).toEqual({
+      lite: "low",
+      thinking: "medium",
+      pro: "high",
     });
   });
   it.each(["words", ...QUESTION_KINDS] as const)(
@@ -20,7 +28,7 @@ describe("private generation prompts", () => {
           prepareGeneration(
             {
               kind,
-              tier: "lite",
+              model: "gpt-6-luna", tier: "lite",
               session: crypto.randomUUID(),
               ...(kind === "words"
                 ? { raw: word }
@@ -68,7 +76,7 @@ describe("private generation prompts", () => {
           prepareGeneration(
             {
               kind,
-              tier: "lite",
+              model: "gpt-6-luna", tier: "lite",
               session: crypto.randomUUID(),
               sources: [
                 { ref: "s1", word: "bank", pos: "n.", meaningZh: "銀行" },
@@ -95,13 +103,13 @@ describe("private generation prompts", () => {
   it("sends supplementing on the word prefix and the word cache key", async () => {
     const session = crypto.randomUUID();
     const words = await prepareGeneration(
-      { kind: "words", tier: "lite", session, raw: "bank n. 銀行" },
+      { kind: "words", model: "gpt-6-luna", tier: "lite", session, raw: "bank n. 銀行" },
       "uid",
     );
     const supplement = await prepareGeneration(
       {
         kind: "senses",
-        tier: "lite",
+        model: "gpt-6-luna", tier: "lite",
         session,
         limit: 2,
         sources: [{ ref: "s1", word: "bank", pos: "n.", meaningZh: "銀行" }],
@@ -119,7 +127,7 @@ describe("private generation prompts", () => {
     const prepared = await prepareGeneration(
       {
         kind: "senses",
-        tier: "lite",
+        model: "gpt-6-luna", tier: "lite",
         session: crypto.randomUUID(),
         limit: 3,
         sources: [

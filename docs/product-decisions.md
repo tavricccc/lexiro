@@ -11,7 +11,7 @@
 | 項目 | 決策 |
 | --- | --- |
 | 免費 CPU | 盡量符合免費額度，不把本地 benchmark 當成 Cloudflare CPU 證明，也不自動升級付費方案 |
-| 模型、reasoning、tokens | 一般使用者介面不展示；程式碼及網路回應可存在，不做模型 ID 混淆。管理員可查看用量 |
+| 模型、reasoning、tokens | 模型名稱只在使用者要求的設定選單呈現；生成頁維持細分檔位，不展示 reasoning 與 tokens。程式碼及網路回應可存在，不做模型 ID 混淆；管理員可查看用量 |
 | Prompt／API key | 留在 private 後端；保留 Responses 協定與原文字，移除 instructions/input/prompt 回顯並中和錯誤 |
 | 餘額下限 | 使用者原話「就只有那一批跑完，然後只扣到 0 點，不要讓他扣到變負數」。餘額大於 0 就能開始，預估超額仍執行；結算最低為 0，下一批才因不足被拒 |
 | 計費 | 固定點數只供預估與預留；完成後依 input、cache read、cache write、output usage 換算整數 credit，換算基準只在 private Worker |
@@ -27,6 +27,12 @@
 | 管理員 | 只依 `ADMIN_EMAILS` secret 與 verified email 判定；不預留、不鎖定、不累計重試次數，但記錄 cursor 與供應商成本 |
 | 共用套件 | public `packages/ai-contract` 保存無秘密的解析器、型別與牌價；private repo 使用版本化 tgz，可獨立安裝 |
 | 照片 | 前端縮圖／WebP；Worker 有界讀取、驗證、雜湊及串流 envelope，圖片不落地。真實圖片價格與 Workers CPU 仍需正式量測 |
+| 模型偏好 | 目前使用者全域選擇 GPT-5.6 Luna 或 GPT-6 Luna，由前端的 owner-only Firestore 偏好同步；JSON 請求必須帶 model，照片用 X-AI-Model。僅接受這兩個模型，沒有模型失敗後的替代路徑 |
+| 模型與檔位 | 兩者共用 low／medium／high 與既有 prompt；每輪固定模型。扣款及重試來源識別含模型，切換模型不會沿用另一模型的已付費來源 |
+| 模型計費 | 5.6 的 Standard input／cached／cache write／output 每百萬 token 為 $0.20／$0.02／$0.25／$1.20；6 為 $0.10／$0.01／$0.125／$0.50。兩者超過 272K input 時，全請求 input 2×、output 1.5×；實扣仍按 usage，以整數算術向上取整。預估依最大 token 費率比例 2.4× 調整，不作為實扣 |
+
+牌價依 [GPT-5.6 Luna 文件](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
+與 [Standard pricing](https://developers.openai.com/api/docs/pricing)，2026-10-02 核對。
 
 Firestore rules 是使用者資料權限邊界；Worker 是 AI 身分、管理員、額度及供應商憑證的邊界。帳號由第一次已驗證請求建立，沒有手動建立帳號或前端授權管理員的流程。
 

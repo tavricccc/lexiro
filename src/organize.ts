@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { LIMITS } from "@lexiro/ai-contract";
+import { LIMITS, AI_MODELS, DEFAULT_AI_MODEL, rate } from "@lexiro/ai-contract";
 import { fingerprint, HttpError } from "./http";
 import type { PreparedGeneration } from "./generation";
 import { jsonSchema } from "./schemas";
@@ -102,30 +102,34 @@ export async function prepareImages(
   body: string,
   session: string | null,
   uid: string,
+  requestedModel: string | null = DEFAULT_AI_MODEL,
 ): Promise<PreparedGeneration> {
   if (!z.string().uuid().safeParse(session).success)
     throw new HttpError(400, "invalid_input");
   const images = body.split("\n");
   if (images.length > LIMITS.images)
     throw new HttpError(413, "input_limit", "images");
+  const parsedModel = z.enum(AI_MODELS).safeParse(requestedModel);
+  if (!parsedModel.success) throw new HttpError(400, "invalid_input", "model");
+  const model = parsedModel.data;
   const units: PreparedGeneration["units"] = [];
   for (const [index, base64] of images.entries()) {
     validateWebp(base64);
     const hash = await fingerprint(base64);
     units.push({
-      id: await fingerprint(JSON.stringify([uid, session, "organizeImage", hash])),
-      limitId: await fingerprint(JSON.stringify([uid, "organizeImage", hash])),
+      id: await fingerprint(JSON.stringify([uid, session, "organizeImage", model, hash])),
+      limitId: await fingerprint(JSON.stringify([uid, "organizeImage", model, hash])),
       index,
     });
   }
   return {
-    request: { kind: "organizeImage", session: session!, tier: "lite" },
+    request: { kind: "organizeImage", session: session!, tier: "lite", model },
     instructions: organizeInstructions,
     input: `依序整理這 ${images.length} 張照片中的英文學習清單，合併為一份清單。`,
     images,
     schema: jsonSchema(organizeOutput),
     units,
-    halfRate: 12,
+    halfRate: rate("organizeImage", "lite", model),
     cacheKey: ORGANIZE_CACHE_KEY,
   };
 }
