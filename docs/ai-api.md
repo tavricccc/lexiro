@@ -1,11 +1,44 @@
-# AI generation
+# AI 生成與 API
 
-The browser sends Firebase-authenticated, data-only requests to `NEXT_PUBLIC_AI_WORKER_URL`. The private Worker owns provider credentials, prompts, output schemas, tier settings and billing. There are no browser API keys, provider settings or manual prompt panels. Token usage and cost are shown to administrators only.
+Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_URL`。Private Worker 保存 prompt、output schema、provider key、計費與管理設定；前端沒有 provider key 或手動 prompt 面板。
 
-`src/lib/ai/tasks.ts` splits source data into verifiable steps. Vocabulary and grammar use at most eight sources per request. `runner.ts` executes them serially and retains valid partial results. Each sentence result names the exact `usage` span in the sentence as well as the `answer` span to blank. The assembler checks that the spans occur exactly once and, for vocabulary, that the answer begins the usage. It does not attempt to prove English inflection or meaning with a fixed word-form list. The review screen shows each generated question beside its target word and meaning before saving. `session.ts` stores a random session identifier, selected tier and last accepted response cursor. Pausing retains pending work in memory; refreshing the page ends that in-memory task. Applying the preview writes it to the library.
+## 請求與串流
 
-`lib/managed-client.ts` refreshes the Firebase token once on HTTP 401, rejects results after account changes, consumes Responses text events, and adds each turn's reported tokens and USD cost onto the session, including reported usage on failed responses. UI shows Lite, Thinking and Pro with point estimates. An administrator is never charged: the Worker skips reservation entirely for them, so they see 無限額度 and, after a run, fresh input, cache reads, cache writes, output tokens, and estimated provider cost. Every response is priced separately from `MODEL_PRICES` in `packages/ai-contract`; cache reads use the discounted rate, cache writes use the 1.25× rate, and GPT-6 Luna requests above 272,000 input tokens use its long-context tier. The displayed net cache saving compares actual cost to pricing the same input tokens without caching. It is a provider-price estimate based on reported usage, not an invoice or an authorization boundary. The backend independently computes charges and aggregates per-response USD cost in the administrator report.
+| 入口 | 請求與責任 |
+| --- | --- |
+| `GET /me` | 登入帳號點數、月額度、續期與 admin 身份 |
+| `POST /generate` | JSON：kind、model、session、tier 與 raw／sources；可帶 cursor、repair |
+| `POST /organize` | 文字 JSON，或 text/plain 的多張 WebP base64 |
+| `/admin/accounts`、`/admin/accounts/{uid}` | 管理帳號、cursor 翻頁與 expected PATCH |
+| `/admin/usage` | 近 30 天、各模型／工作／帳號的用量與未知成本 |
+| `/admin/settings` | 新帳號初值與免費試用，expected PATCH |
 
-`packages/ai-contract` contains public source parsing, request types and pricing arithmetic. Private prompts and evaluation tooling live in the separate `lexiro-worker` repository. Prompt evaluation is described there; stored parser passes do not prove educational quality, production connectivity or Workers CPU cost.
+`managed-client.ts` 只在 401 強制刷新 token 一次。串流消費 Responses text events，累計每個 response 的 usage；帳號改變會中止／拒絕舊結果。Worker 保留文字內容，用白名單重建 Response metadata，移除 instructions／input／prompt 回顯並中和上游錯誤。
 
-Full backups now use version 2. Importing version 1 preserves library and learning data while dropping retired AI settings. Sync journal version 3 preserves pending records, deletions and cursor while removing the AI settings dirty flag and local credentials. Existing Firestore learning-data shapes remain version 6.
+Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 response。暫停保留記憶體中的 pending work；重新整理結束未完成工作。流程草稿另保存已完成且可校對的成果，恢復它不必再次生成。
+
+## 批次與校對
+
+`src/lib/ai/tasks.ts`：單字每批 25 個來源、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙／文法每批最多八個來源。Runner 依序執行並保留有效部分，來源的 ref 跟著內容傳递。
+
+句子題回傳確切 usage span 與 answer span。Assembler 檢查各出現一次、詞彙 answer 從 usage 開始，再挖空並排序選項；不以固定單字變形表假稱已證明英文語意。校對畫面顯示目標詞義，加入才寫 Library。
+
+照片確認後先縮 WebP，每張最多 1.5 MB、長邊 1800；每批 1-10 張。text/plain 每行一張 base64，整批上限 20,000,009 bytes，headers 帶 `X-Session-Id`、`X-AI-Model`。Worker 驗證後一次送多圖片 Responses request，圖片不落地。不同批次依序執行，已完成部分保留。
+
+照片整理只驗 lines 陣列、長度與格式。Prompt 對來源範圍的要求不等於 deterministic 語意過濾；沒有可證明自動排除所有相關詞／同反義詞的來源追溯檢查。
+
+## 模型、估算與結算
+
+共用 contract 2.1.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
+
+程式 `MODEL_PRICES` 記錄 Standard／cache read／cache write／output 的採用費率；兩個模型 input 超過 272,000 時，整次 response 的 input 成本 2 倍、output 1.5 倍。每個 response 先計價再彙總，不能把多次 input 加總後套長上下文門檻。這是版本化程式契約，不是本文件查證的供應商即時牌價。
+
+一般帳號以 D1 原子預留，餘額大於零可開始一批，最終扣到零為下限；生成中的負值只是預留。管理員不預留、不鎖定、不累計重試次數，但記供應商成本。Token／USD／credit 詳細用量只在管理介面呈現。
+
+缺 usage 先補查 stored response，仍未知就保存 pending metadata；有產出的帳號保留預留，取消／失敗釋放。帳號下次請求和每日 Cron 有界補查。成本保持 null，不能填零或用估算冒充。來源成功身份和 provider cost 分開，同 session 成功來源重試有冪等規则，新 session 重新計費。
+
+管理 PATCH 帶 expected 版本；帳號／設定有變則 409，不會部分套用。資金調整等待預留／結算完成，備註可更新；未知歷史 credit 與未核實 debit 不列為已知零成本。
+
+## 維護邊界
+
+公開型別、來源 parser 和估算在 packages/ai-contract，Worker 使用版本化 tgz。更新 contract 要同步 repack、Worker lockfile 與測試；prompt／schema／評測只在 private repo。各儲存格式版本見[資料與同步](data-and-sync.md)，評測方法見[Prompt 評測](prompt-evaluation.md)。

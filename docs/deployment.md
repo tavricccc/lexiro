@@ -46,3 +46,11 @@ Managed AI 另外需要在 GitHub `Production` Environment variables 設定 `NEX
 6. 關閉 Vercel Git Integration 的重複自動部署；production deployment 由 GitHub Actions 負責。
 
 本機與 Vercel 都使用根路徑 `/`。Next.js App Router 會處理路由，不需要 SPA fallback rewrite。
+
+公開介紹位於 `/`，學習工作區位於 `/app`；原有深連結由 next.config.ts redirects 處理。Frontend workflow 的 App Check 開關仍由設定明確控制，只有 site key 不會自動啟用。
+
+## 前後端契約與發布確認
+
+AI contract 目前為 2.1.0，private Worker 使用相同版本 tgz。修改模型、必要請求欄位或管理 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
+
+發布完成以 Actions 的部署結果為準，不能只看 git push 成功。另確認登入、Rules／indexes、跨裝置同步、AI 串流與結算，以及 PWA 更新。只改前端文件仍會符合此 workflow 的 push 觸發條件；本機 commit 本身不會部署。

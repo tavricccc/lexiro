@@ -22,8 +22,8 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 
 - Vocabulary is collected and organized into folders and sets.
 - A word may contain multiple Chinese meanings, parts of speech, and shared examples.
-- New vocabulary is entered manually or organized by AI; AI-organized words are saved as soon as they validate and edited afterwards rather than confirmed beforehand.
-- Questions may be authored manually or generated with AI; generated questions are saved as soon as they validate and edited or deleted afterwards.
+- New vocabulary is entered manually or organized by AI; validated generated results are reviewed and added explicitly, with completed output retained for recovery.
+- Questions may be authored manually or generated with AI; generated questions are reviewed with their target senses before they are added to the Library.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and FSRS review.
 - The application is expected to remain useful offline and synchronize later when signed in.
 - Learning goals and AI model changes save locally with inline progress and retry. Unfinished changes survive leaving the screen; returning offers applying them or keeping the current settings, within the original account.
@@ -31,7 +31,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 ## Capabilities and Constraints
 
 - Preserve the Lexiro name and current application icon.
-- Replace the Vue/Vite frontend with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and shadcn/ui.
+- The frontend uses Next.js 16, React 19, TypeScript, Tailwind CSS 4, and shared Radix-based UI primitives; the Vue/Vite migration is complete.
 - Zustand, TanStack Query, React Hook Form with Zod, Motion, Lucide React, and Serwist PWA may be used where they improve the product rather than as mandatory decoration.
 - Firebase authentication and Firestore may be retained as the remote backend.
 - Existing local and cloud user data must be migrated once into the new canonical schema. Do not keep a permanent legacy compatibility path or two competing data models.
@@ -65,7 +65,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - Confirmed product and data decisions: `docs/product-decisions.md`.
 - Visual tokens and reusable visual rules: `DESIGN.md`; component and icon implementation rules: `docs/design-system.md`.
 - Current implementation and tests document the working capability set.
-- Local verification covers creating and saving material, switching tabs, and entering practice. 266 tests, lint, typecheck, and build pass; real Firebase synchronization and paid AI execution were not verified.
+- Historical workspace verification recorded 266 tests plus lint, typecheck, and build. That count belongs to that revision; current verification is reported per change. Real Firebase synchronization and paid AI execution require separate live evidence.
 - Current compact desktop and mobile Today screenshots are `.impeccable/review/compact-desktop.png` and `compact-mobile.png`; earlier Library, saved set, and dark Today captures remain as supporting evidence for those states.
 - Current icon assets: `public/icons/lexiro.png` and `public/icons/apple-touch-icon.png`.
 - Existing generated vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.

@@ -1,267 +1,65 @@
-# Lexiro project structure
+# Lexiro 程式責任索引
 
-Lexiro is a Next.js App Router vocabulary-learning PWA. The UI is React; the existing canonical vocabulary domain and Firebase backend live under `src/`.
+Lexiro 的 Next.js 介面、browser domain 與本機／Firestore 保存都在此 repository。AI server 是同層獨立 private `lexiro-worker`，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
 
-```text
-app/             routes, layouts, manifest, service worker
-components/      feature components and shared React UI
-components/motion/ the route surface and the shared motion behaviours
-config/          generator input: the motion ladder
-scripts/         code generators (`npm run generate:motion`)
-src/generated/   generated output; never edited by hand
-lib/             frontend helpers and Traditional Chinese copy
-stores/          Zustand application stores
-src/constants/   shared domain constants
-src/lib/         domain logic, persistence, Firebase, import/export
-src/types/       canonical domain types
-tests-next/      Vitest unit and integrity tests
-docs/            design system, product decisions, deployment
-public/          Lexiro icons and Open Doodles illustration
-packages/ai-contract/ public AI input types, source parser and integer pricing arithmetic; contains no prompts or credentials
-```
+## 目錄
 
-`app/page.tsx` is Lexiro's public introduction at `/`, outside the workspace
-layout. `app/app/` contains the full learning workspace at `/app` and its child
-routes. `components/marketing/landing-practice.tsx` owns the public page's
-interactive sample question. `next.config.ts` redirects old workspace deep links
-to their `/app` locations; the account screen links back to the public page.
+| 路徑 | 責任 |
+| --- | --- |
+| `app/` | App Router、公開首頁、/app 工作區、manifest、Service Worker |
+| `components/` | Domain 畫面、React UI、AI 流程與動態 |
+| `lib/` | Client orchestration、managed API、路由、更新、備份 |
+| `stores/` | Library、learning、cloud、AI preference、UI、update state |
+| `src/lib/` | 詞義、題目、FSRS、儲存、同步、備份與 migration |
+| `src/types/`、`src/constants/` | Canonical domain 型別、版本與上限 |
+| `packages/ai-contract/` | 公開來源 parser、API 型別、模型與價格算術 |
+| `config/`、`src/generated/` | 動態 token 的來源／生成輸出 |
+| `scripts/` | Motion generator 與 client prompt boundary |
+| `tests-next/` | Vitest domain／元件行為檢查 |
+| `public/` | Icons、HarmonyOS Sans TC、Open Doodles 等公開資產 |
+| `docs/` | 操作、架構、資料、AI、配置、部署、驗證與決策 |
+| `tools/project-map/` | 離線 HTML 程式地圖的資料、驗證、樣式與互動 |
 
-Shared UI primitives live in `components/ui/` and are the only definition of a
-control's markup: `Field`/`FieldRow`, `SelectField`, `PageHeader`, the
-`LoadingState`/`EmptyState`/`ErrorState` trio, `Markdown`, and the `Icons`
-concept map. Feature components compose these rather than hand-rolling labels,
-native `<select>` elements or their own empty states, and they take icons from
-`Icons` rather than importing from `lucide-react`. Design tokens and the brand
-ramp live in `app/globals.css`; the rules that go with them are in
-`docs/design-system.md`. Every duration and easing in the product comes from one
-ladder in `config/motion.config.json`, generated into `src/generated/` for both
-CSS and JavaScript, so nothing states a literal duration of its own.
+## 畫面與導覽
 
-`src/lib/admin-account-adjustment.ts` 產生有變動的帳號欄位與確認餘額；
-`components/me/admin-accounts.tsx` 在點數／額度調整前確認，並依後端結果更新。
-管理帳號與設定使用 `@lexiro/ai-contract` 2.1.0 的閱讀狀態檢查；過期修改只能
-重新載入後再次確認。管理用量彙總的未知 credit 保留 null，不當成免費成本。
+`app/page.tsx` 是公開介紹，`app/app/` 為工作區。`next.config.ts` 處理舊 deep links；實際 page 清單見[路由](docs/routes-and-permissions.md)。
 
-`components/ui/confirm-dialog.tsx` 統一執行鎖定、忙碌回饋、成功關閉、視窗內錯誤與
-可聚焦的重試，刪除／匯入呼叫端只負責操作。`components/me/data-section.tsx`
-使用共用操作列顯示備份讀取狀態。`tests-next/confirmation-actions.test.tsx`
-驗證重複提交、執行中關閉、失敗重試及兩段匯入尚未完成時的回饋。
+`components/ui/` 是 Field、SelectField、PageHeader、Loading／Empty／ErrorState、Markdown、Icons、List、LiquidTabs、StepActions 的共用定義。Feature 使用 Icons 語意表，不各自 import 圖示。`app/globals.css` 與 `app/styles/workspace.css` 承載 tokens／工作區；規則見 DESIGN 和 design-system。
 
-`components/app-update-monitor.tsx` 在 root provider 觀察瀏覽器更新；
-`lib/app-update.ts` 管等待新版、儲存、接管與重新啟動的時序，
-`stores/app-update-store.ts` 只保存本分頁的暫時狀態。
-`components/me/app-update-section.tsx` 在「我的」提供檢查／重新啟動更新，
-不打斷練習或編輯。`app/sw.ts` 等候明確的 SKIP_WAITING，
-`next.config.ts` 關閉重新連線自動重整。`components/offline-retry-button.tsx`
-讓載入失敗頁面重試原 URL，另保留回到 App 的入口。
-`tests-next/app-update.test.ts` 驗證儲存、接管、首次安裝、跨分頁更新與停止重啟；
-`tests-next/sync-status-ux.test.tsx` 驗證待同步文案、背景同步登出及更新忙碌回饋。
-`lib/sync-status.ts` 統一全 App 的同步文案，pending 未清空不顯示已同步。
-`src/lib/service-worker-cache.ts` 讓登入請求與跨來源資料走 NetworkOnly；啟用新版
-時清除舊的登入／跨來源資料快取，保留 App 頁面及公開資產。
-`tests-next/service-worker-cache.test.ts` 驗證快取分類與清理範圍。
+`lib/navigation-memory.ts` 管 primary destinations、parent 與轉場方向；LiquidNav 使用已提交路由。PageHeader／BackControl 顯示頁面操作與返回，browse-routes 保存搜尋與返回目的地，SearchField 共用清除及輸入法安全操作。Desktop 是側欄／sticky header，mobile 是底部 capsule／固定操作；StepActions 以 portal 避開 transformed route 對 fixed footer 的限制。
 
-`components/me/use-autosave.ts` 共用學習目標／AI 模型的待存修改、背景儲存及重試；
-`src/lib/preference-drafts.ts` 驗證 partial goals 與 model，暫存只含使用者修改的欄位。
-localStorage 的 `${namespace}:lexiro_pending_goals_v1`／`lexiro_pending_model_v1`
-使用 `{version:1,id,value}`，不改 canonical learning 或 AI preferences 的 schema。
-返回設定時 `components/me/preference-recovery.tsx` 顯示待套用值，讓使用者套用或
-保留目前設定；損壞暫存只可清除。儲存使用 account queue，帳號切換後保留原帳號
-暫存，不寫入新帳號。`tests-next/settings-autosave.test.ts` 驗證生命週期與待存欄位；
-learning persistence 測試驗證目標修改不覆蓋未修改的遠端統計。
+## 教材與題目
 
-`lib/backup-actions.ts` 協調完整匯入／匯出與帳號邊界；
-`src/lib/account-data-queue.ts` 讓跨 store 備份操作與 namespace 切換依序完成。
-`src/lib/full-backup.ts` 的 `previewBackupImport` 只回傳預覽數量，不回傳要寫回
-的快照；教材匯入在 library store 中合併最新資料，學習匯入使用
-`src/lib/learning-backup.ts` 保留既有學習卡與已存在的本機統計。
-`tests-next/backup-actions.test.ts` 驗證兩段匯入不跨帳號、過期操作拒絕及匯出
-等待儲存；store mutation／persistence 測試驗證佇列中的修改與重試仍保留。
-`tests-next/cloud-state-consistency.test.ts` 驗證登入切換期間不使用前帳號游標、
-同步抵達時保留尚在儲存的本機編輯，以及登出後不寫入舊同步的完成狀態。
+Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer，內容 hash records → manifest → head；詳細模型、世代與版號見[資料與同步](docs/data-and-sync.md)。
 
-`components/ui/search-field.tsx` 是教材／題庫共用的即時搜尋欄位，含一鍵清除、
-焦點回復與輸入法安全的 Escape 操作。`lib/browse-routes.ts` 承載列表條件與
-編輯返回目的地；頁面讀取路由條件，搜尋只替換當前歷史項目。單字集題目分頁、
-單字與題目編輯沿用原本的返回位置。`src/lib/library-search.ts` 只搜尋該集收錄的
-詞義與例句；`tests-next/browse-search.test.tsx` 驗證搜尋操作、詞義範圍及返回條件。
+`components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share、full-backup 和 learning-backup 處理。
 
-The workspace shell is shared by desktop and mobile. Desktop uses a compact sidebar; mobile uses the same routes through a bottom navigation bar. On desktop the sidebar carries the wordmark and the sync status; on mobile there is no shell header at all, and `components/root-page-header.tsx` is the title bar of a primary destination — the brand mark, the title, the page's own actions and the sync status in the one row that used to be two, the upper of which said 「Lexiro」 and nothing else. `components/ui/page-header.tsx` owns each page's title, actions and back control, and `components/ui/back-control.tsx` is that back control: every screen beneath a destination uses it, so none of them can be built without a way out. Library folders use a drill-down model, similar to Windows File Explorer, instead of an always-expanded tree.
+Question formats 定義學測題型，question-assembly 檢查確切 usage／answer span，question-builders 產生不需模型的部分。Generated results 呈現目標字／義供校對。
 
-- `components/liquid-nav.tsx` — committed-path selection and Next Link pending feedback with a shared moving selection; the dock is live throughout a navigation — nothing is captured, so it never leaves the hit-test tree — and it animates nothing of its own: it belongs to the route, and the route change already covers it or uncovers it.
-- `components/ui/liquid-tabs.tsx` — controlled segmented selection with the same shared-layout motion, without pointerdown speculation, measurement loops or reset timers.
-- `lib/navigation-memory.ts` — the primary destination table, route/history direction, and adopted parents; home, library, progress and account are peers, while practice, sets/questions and sync belong to their respective primary destination. The table is what decides whether a route reveals in place and whether the floating navigation bar belongs on it, so the shell only supplies each destination's label and icon. Direction, where nothing marked one, is depth against depth: a set is a push whether it was opened from the Library that owns it or from 今天.
-- `components/practice/practice-session-view.tsx` — session frame, progress and keyboard hints; `review-card.tsx` judges spelling, `question-card.tsx` handles local meaning choices and saved question answers. The question and feedback center together; the advancing action stays in the desktop header or phone footer. `meaning-questions.ts` builds four Chinese choices locally, excluding every saved target meaning from distractors.
-- `components/practice/practice-setup.tsx`, `practice-page.tsx`, `practice-queue.ts`, `use-practice-setup-choices.ts` — one setup screen combines local meaning questions, spelling and saved formats. The count slider follows the selected set and types. The one-sense-per-word switch defaults on; local meaning questions always ask each word once. A saved practice session can resume with the exact original meaning choices.
-- `tests-next/practice-setup.test.tsx` — the slider's available range, clamping when a set has fewer questions, and starting from the same screen.
-- `tests-next/set-editor-ux.test.tsx` — manual set validation keeps the save action reachable and focuses the first incomplete word field.
-- `tests-next/editor-resume-ux.test.tsx` — word and question edits resume after interruption, and incomplete reading edits return focus to the first missing field.
-- `tests-next/practice-review.test.tsx`, `practice-keyboard.test.tsx` — observable spelling feedback and keyboard behavior, including busy, composition, editing and modifier-key isolation.
-- `tests-next/ui-accessibility.test.tsx` — accessible empty/error instructions, retry and disabled navigation behavior.
-- `tests-next/navigation.test.tsx` — cancelled touches, modified clicks, controlled selection and primary/child route relationships.
-- `lib/managed-client.ts` — Firebase-authenticated Worker requests, one forced token refresh on 401, Responses text streaming, per-turn token usage and administrator-only settled credit equivalents accumulated onto the session, and balance refresh events.
-- `components/library/word-editor.tsx`, `word-edit-page.tsx` — shared single-word editor with separate sense and example rows; the word label is inert and its edit control opens `/app/sets/[setId]/words/[wordKey]/edit`.
-- Existing word edits keep a revision-scoped local draft, so leaving and returning can restore unsaved senses without applying that draft to a newer saved word.
-- `components/questions/question-editor.tsx`, `reading-editor.tsx`, `reading-child-editor.tsx` — manual question edits keep revision-scoped drafts; validation feedback stays with the fixed save action, and a reading editor focuses the first incomplete field. Reading child fields stay in their own component.
-- `components/library/set-tools.tsx`, `set-tool-page.tsx`, `set-word-addition.tsx`, `set-sense-supplement.tsx`, `set-metadata.tsx` — the saved set puts its add and maintenance actions before the word list. The add route opens manual input with an AI organization action; switching preserves both drafts. Supplement and metadata remain separate tasks. `set-editor.tsx` asks 手動輸入 or AI 生成 before opening the chosen flow. A new set uses the folder already selected by the user; it does not ask again.
-- Set metadata edits preserve a local, revision-scoped draft and surface save errors in the fixed action area.
-- `components/library/folder-toolbar.tsx` — exposes 新增資料夾 beside the folder path, with rename, move, delete and import in the overflow menu.
-- `components/library/set-folder-picker.tsx`, `set-move-dialog.tsx` — the hierarchical destination list for moving an existing set or editing its metadata; nested folders keep their visible path depth and 未分類 remains an explicit destination.
-- `components/library/set-sense-supplement.tsx`, `src/lib/word-generation.ts`'s `parseSupplementaryJson`, `src/lib/ai/tasks.ts`'s `supplementTask` — 補充多義 asks for the meanings chosen words do not have yet. The number is a ceiling and not a quota: an empty answer is the common one and reads as an answer, not a failure. Every sense records whether it arrived this way, and both the word editor and the set's word list say so quietly rather than with a coloured badge.
-- `src/lib/word-edit.ts` — builds one-word edits from the latest library, preserving other rows and calculating only changed sense remaps.
-- `tests-next/word-edit.test.tsx` — latest-state replacement, sense remaps, actual example deletion and shared editor behavior.
-- `components/library/example-fields.tsx` — independently editable, wrapping example rows shared by inline editing and new-set creation. Form drafts use arrays, not newline-delimited text.
-- `tests-next/input-organizer.test.tsx` — no generation before confirmation; corrected review text proceeds to generation. Photo cases cover explicit selection confirmation, removing/replacing/cancelling a selection, one upload per ten-image batch, ordered serial batches, visible progress, per-file/batch failures and resumable cancellation retaining completed batches.
-- `tests-next/folder-workflow.test.tsx` — nested destination labels and preservation of the chosen folder through AI set creation.
-- `components/library/ai-set-organizer.tsx`, `input-organizer.tsx`, `photo-organization-ui.tsx`, `word-assistant.tsx`, `lib/word-photo.ts` — AI-created sets stay on one route for all four steps: choose the destination, clean and confirm the input, then generate and edit word details. Photo selection has a confirmation step before encoding or upload; the UI shows file preparation, batch progress, elapsed time, and streaming response size. Capture splits selections into batches of ten; each batch uploads once and uses one multi-image provider request, with batches processed serially. Completed batches are kept and unfinished batches can be resumed after cancellation or a later failure. Afterward it asks whether there are more. Browser image-element decoding and WebP resizing happen before upload; native WebP output is signature-checked and falls back to the bundled codec when Safari returns mislabeled bytes. Organization returns one line per word as 「英文 詞性 中文」, the part of speech inferred where the source omitted one, and `buildWordGenerationSources` in `packages/ai-contract` splits that back into the word, its `posHint` and the Chinese hint the generation step is given.
-- `components/ui/list.tsx` — the grouped list: section, reporting row, navigation row, labelled Radix single-choice group with arrow-key navigation, multi-select check row, in-place picker, switch, stepper, inline input and action row. All row variants share the same vertical padding and minimum height; every settings-shaped screen and every choice between options is built from it. A chosen row is marked by the same bare check whether it is one of many or several of many, and its tint is painted by `.t-row::before`, which bleeds past the card's gutter so it reaches the rounded corners. `ListPicker` is the select trigger itself rather than a bordered control inside a row, so a list never contains a second card.
-- `components/ui/step-actions.tsx` — the fixed safe-area action surface for guided flows, review, result and administrative save screens. It portals controls to the document body so a transformed route surface cannot trap a fixed footer on iOS, and reserves document space below long content; `StepFrame` uses it for every supplied footer.
-- `components/ui/task-progress.tsx` — shared accessible progress surface for AI generation and photo organization, with a distinct lighter segment for work currently in progress.
-- `components/ui/draft-save-status.tsx`, `components/ui/step-frame.tsx` — visible local-save feedback and sticky, accessible step progress; a failed browser write warns without discarding the active edit.
-- `lib/draft-persistence.ts` — shared client persistence state used by editable drafts and practice sessions.
-- `components/ai/use-resumable-draft.ts`, `components/ui/resume-choice.tsx` — versioned local flow drafts and the explicit 接續上次 / 不要，重新開始 decision. Manual and AI set creation, adding words, supplementing senses, question generation and practice setup persist each chosen step and editable result; completed AI output is restored without another generation request. `tests-next/resumable-draft.test.tsx` verifies reentry and restart, and `tests-next/word-assistant-save.test.tsx` verifies that a failed save keeps the generated words and can be retried.
-- Every AI run is two steps: the one that spends the points, and the one that reads what came back. The run step holds the tier, the estimate and the progress; the review step holds the output at a readable size and the only two ways onward — 重新生成, which returns to the run step with its settings intact, and 加入, which writes. `useReviewHandoff` in `components/ai/use-ai-generation.ts` performs that handover once per run, so returning to change a tier does not bounce forward again. 建立單字集 runs 輸入 → 校對清單 → 生成 → 校對結果. `components/questions/question-generator.tsx` runs 單字集與題型 → 產生 → 校對: it takes every sense in the chosen set through `getSetGenerationWords`, with no per-word scope picker.
-- `components/ai/credit-badge.tsx` — the compact estimate shown at the trailing edge of a generation choice; the credit icon replaces the repeated 點 suffix while the accessible label retains the full unit.
-- `components/ai/generation-controls.tsx`, `components/ai/use-managed-account.ts` — tier selection, point estimates and account query cache. An administrator sees 無限額度 in place of the estimate and balance.
-- `components/ai/ai-usage.tsx` — administrator-only readout of fresh input, cache reads/writes, output/reasoning tokens, per-response provider cost, net cache saving, and the credit equivalent returned by the private Worker.
-- `components/me/me-page.tsx`, `components/me/me-subpage.tsx`, `components/me/account-row.tsx`, `components/me/save-status.tsx` — 我的 is a one-column destination menu. Account, preferences, plan, data and administrator work each have their own route and browser history entry.
-- `components/progress/progress-page.tsx`, `progress-coverage.tsx`, `progress-history.tsx`, `progress-question-performance.tsx`, `progress-subpage.tsx` — 進度 starts with a concise overview — the streak, how much is known, what today asked for and how much of the week was practised; coverage, 14-day activity and question performance are separate drill-down routes so one screen does one analysis. Every figure is a reading of where the learning stands, never a running total of taps: the experience points and the level derived from them are gone.
-- `components/questions/question-bank-page.tsx` — 題庫 is a dedicated child route, rather than a tab competing with word-set browsing in 我的單字.
-- `components/me/plan-section.tsx` — account point balance and renewal date; an administrator sees 無限額度 instead.
-- `components/me/admin-panel.tsx`, `admin-accounts.tsx`, `admin-usage.tsx`, `admin-settings.tsx` — `/app/me/admin` is a three-row menu. Accounts, one account, the 30-day usage report, and global plan defaults each have their own nested route; none are simulated with component-local view state. An account exists because someone signed in, so the list is everyone who has signed in and the only thing to edit is what they are given. The usage report totals provider cost across models, then per kind of work against what that kind is quoted at, then per account, and marks a run that did not complete.
-- Administrator settings and account adjustments keep resumable drafts scoped to the fetched server values; an unchanged background refresh does not overwrite an active edit.
-- `tests-next/admin-settings-resume.test.tsx` checks draft recovery and refresh isolation.
-- `src/lib/ai/session.ts`, `runner.ts`, `tasks.ts` — managed session identity, serial generation/recovery and data-only request assembly. The old provider facade, catalog, request/reply/transport modules, settings persistence and usage component have been removed.
-- `tests-next/admin-account-form.test.tsx` — taking points away, the zero floor in the preview, and the allowance landing at once.
-- `packages/ai-contract` v2.0.0 — shared model selection, model-dependent estimates, GPT-5.6 Luna and GPT-6 Luna Standard/cache/long-context pricing, account/usage types and photo limits; no private credit conversion formula. JSON generation requests require a model; photo requests use `X-AI-Model`.
-- `components/me/ai-model-preference.tsx`, `stores/ai-preferences-store.ts`, `src/lib/ai-preferences.ts` — global model choice for the current account, durable local save and timestamp merge; storage is namespace-scoped.
-- `src/lib/cloud-preferences.ts` — owned v1 `preferences/ai` document, read/write and a separate preference-change listener. `stores/cloud-store.ts` hydrates, drains and switches the preference store with the account, then reconciles its dirty blob.
-- `tests-next/ai-preferences.test.ts` — model picker, reload, account isolation, cross-device changes, active-session model pinning and model-dependent prices.
-- `components/me/use-admin-pagination.ts` — shared cursor history for account and usage pages; no offset paging.
-- `tests-next/admin-pagination.test.tsx` — forward/back navigation against opaque account and usage cursors.
-- `tests-next/admin-usage.test.tsx` — cost per billable unit against the quoted rate, its sign, widest gap first, and explicit pending/unknown costs. Verified debit totals exclude historical charges that cannot be reconstructed.
-- `tests-next/managed-client.test.ts`, `tests-next/managed-migration.test.ts` — token refresh, account isolation, streamed text and explicit settings retirement without losing queued edits.
-- Private prompts, schemas, prefix/schema tests, prompt evaluation scripts and fixtures have moved to the separate `lexiro-worker` repository; historical model artifacts are kept outside this public tree.
-- `scripts/check-client-boundary.mjs` — postbuild scan of client string literals against hashed private instruction fingerprints, including escaped Unicode. The scanner contains no prompt text and does not prohibit model IDs.
+## 練習與學習
 
-Generated questions follow the Taiwanese senior-high formats. `src/lib/question-formats.ts`
-is the catalogue; the private backend asks a model for prose and answer
-spans; `question-assembly.ts` checks exact sentence spans, cuts the blanks, orders the options and links each
-item back to its sense without a fixed English morphology gate; `generated-question-results.tsx` shows the target word and meaning during review; and `question-builders.ts` builds what needs no model at
-all. `docs/product-decisions.md` explains why the split falls there.
+Practice setup／queue 統一詞義、拼字和已存题型。Meaning questions 本機建立四選項；review-card／question-card 判分，session actions 保存成績及必要 FSRS rating，persistence 保存 v4 題序／答案／原選項。Keyboard hook 隔離組字、編輯和忙碌狀態。
 
-The client persists local data through IndexedDB and can sync canonical records
-through Firebase. Memory review uses FSRS; question practice supports multiple
-choice, fill-in-the-blank, and reading comprehension.
+Learning store、learning-persistence 和 fsrs 保存 card／stats，進度頁從 library-metrics 與 learning-defaults 計算掌握、每日活動和連續學習。資料先保存才前進，失敗可重試；詳見[練習](docs/practice.md)。
 
-## Storage model
+## 同步與帳號
 
-`src/lib/library-repository.ts` is the only writer of the Library. It stores
-each record — folder, set, membership, word, question — under the hash of its
-own content, so saving rewrites only the records that actually changed. A
-manifest maps every record id in one generation to its content hash, and a head
-pointer names the live manifest; publishing that pointer is what makes a commit
-visible, so an interrupted write leaves the previous generation intact. The
-previous generation is retained and everything older is collected after each
-commit, which keeps IndexedDB flat instead of accumulating one full copy of the
-Library per save. `stores/library-store.ts` holds the assembled `LibraryState`
-and hands a complete state back on every mutation; the repository works out the
-difference.
+`stores/cloud-store.ts` 協調 Firebase session、namespace 載入、sync debounce、retry 與 account handoff。`src/lib/cloud-sync.ts` 按 writtenAt／documentId 拉增量並分批 push，cloud-records 合併 server-order records 並保留 dirty；sync-journal 只清已送的 version。Cloud account 合併 learning／stats，cloud-preferences 讀寫 owner-only AI 偏好。
 
-Identity and integrity both come from `canonicalHash` in `src/lib/hash.ts`:
-SHA-256 truncated to 128 bits. Sense ids, question fingerprints, cloud record
-ids and every stored checksum use it, so `firestore.rules` expects a record id
-of the form `<type>-` followed by 32 hex characters.
+Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回應不能跨帳號套用。`components/me/use-autosave.ts` 與 preference-drafts 管實際修改欄位及待存設定，preference-recovery 提供恢復選擇。同步文案由 sync-status 統一，pending 不顯示已同步。
 
-## Cloud sync
+## AI 和管理
 
-The unit of synchronization is the record, not the Library. `src/lib/cloud-records.ts`
-turns the Library into one document per folder, set, membership, word and
-question and back again; `src/lib/cloud-sync.ts` reads the account's change feed
-(`where('writtenAt', '>', cursor)`, ordered by the server's own timestamp) and
-writes what changed in batches. A deleted record keeps its document and sets
-`deleted`, so a deletion is a fact the cloud states rather than an absence the
-next device has to interpret — and `firestore.rules` refuses to delete a record
-document at all, so that fact cannot be erased into an absence.
+AI task builders、runner、session 只組來源資料、拆批、解析及接續。Managed client 管 token refresh、帳號邊界、串流、usage；generation controls 與 resumable drafts 分開生成及校對畫面。Photo organizer 先確認選圖，WebP 編碼後每十張單次上傳並依序處理。
 
-Only `writtenAt` is worth an index on a record. A record is never queried by its
-contents, so `firestore.indexes.json` exempts `payload` from single-field
-indexing; subfields inherit a parent's exemption, so the one entry covers the
-whole tree, including the article text, options and examples a question carries.
+AI preference store 在開始 session 時固定模型，contract 2.1.0 與 Worker tgz 共同規範請求、估算和管理 expected 版本。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
 
-Conflicts are settled by the server's `writtenAt`, which is also the order the
-pull walks: last write wins. A record this device has changed but not yet pushed
-is held out of the merge instead, because the push that follows will send it.
-The `updatedAt` a device writes into the document is displayed, never used to
-decide a conflict; a phone with a wrong clock would otherwise win every conflict
-for as long as its clock stayed wrong.
+Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。ConfirmDialog 統一鎖定、失敗與重試；backup-actions 協調兩段匯入，admin-account-adjustment 只送變更並確認餘額，admin pagination 用 cursor history。
 
-`meta/library` is the change marker, and it names the tab that moved it. A push
-stamps it with a server timestamp, which Firestore delivers twice — the local
-estimate, then the resolved value — so without a writer to compare against, a
-device's own push woke its own listener and bought a second, empty sync. The
-listener in `src/lib/cloud-sync.ts` therefore waits for the marker to move
-forward and to have been moved by somebody else, and ignores the first snapshot
-altogether because the caller syncs the moment it attaches.
+## 更新、驗證和交付
 
-`src/lib/cloud-account.ts` holds review schedules and statistics, merging them
-field by field. They are read only when this session has not seen them, when
-this device holds an unsent copy, or when the user presses 同步: nothing writes
-them through the change marker, so a record notification never meant they had
-moved. AI credentials and configuration belong to the managed Worker;
-the retired credential settings route remains inaccessible. Model choice is the
-separate owner-only `preferences/ai` document; its listener requests account reconciliation.
-`stores/cloud-store.ts` selects the account namespace before loading local data.
-Remote merges receive the latest state inside each store's mutation queue;
-the library merge reads the current dirty journal there as well, so edits made
-while a cloud request is in flight remain protected.
-Cursor and sync-journal completion writes share the account-data queue and
-verify their owner before running. Sync starts only after that account's local
-namespace has loaded.
+`app/sw.ts`、service-worker-cache 管 App cache 與私人資料 NetworkOnly；app-update-monitor、app-update、app-update-store 管保存／SKIP_WAITING／controller 接管／重啟。Offline retry 重試原 URL，重新連線不自动刷新。
 
-`src/lib/sync-journal.ts` holds what this device has changed and not yet sent.
-It is a sidecar: domain records carry no synchronization fields. The list of
-dirty records comes free from `LibraryRepository.commit`, which already diffs
-each commit against the previous generation, so no mutation in
-`stores/library-store.ts` has to know that sync exists. Every entry is stamped
-with a local version and a push clears only the version it sent, so an edit made
-while a request was in flight stays queued.
+`.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt、部署 Rules／indexes、發布 Vercel。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。命令與證據範圍見[測試](docs/testing.md)與[部署](docs/deployment.md)。
 
-Merging happens per record, newest `updatedAt` wins, and the result goes through
-`repairLibraryState` in `src/lib/library-repair.ts` rather than through
-validation: two devices can each make a legal change that is illegal together —
-the same set name, a question whose set the other device deleted — and a merge
-that could fail would strand the account. Learning progress merges card by card
-so neither device's reviews are lost.
-
-Learning progress and statistics share one blob per account. Background edits
-are debounced and flushed when the page is hidden; recording a card rating or
-question answer explicitly waits for IndexedDB before the practice UI advances,
-because a pagehide callback cannot guarantee an asynchronous write survives a
-reload. `tests-next/learning-persistence.test.ts` verifies that completion waits
-for storage and that a fresh hydration retains the answer. Question statistics are sparse — a format/difficulty
-row exists only once it has been practised — and `dailyHistory` is pruned to
-`DAILY_HISTORY_RETENTION_DAYS`, because progress and stats are each a single
-Firestore document and Firestore rejects anything past one mebibyte.
-
-Nothing is stored that can be read off what is already there. A day in
-`dailyHistory` holds only what the chart draws; the account-wide question
-breakdown is `questionStatsBySense` summed by `sumQuestionStats`; and how much
-is known comes from `countMastery` in `src/lib/library-metrics.ts`, which reads
-FSRS stability rather than a counter of its own. The one number that is kept
-because it cannot be derived is `streakFreezes`: `rollStatsToToday` spends one
-to carry a streak across a single missed day and earns one back every full
-week, up to `MAX_STREAK_FREEZES`.
-
-Persisted schema versions, all independent of one another:
-
-| Data                           | Version | Defined in                                                                                                                                                                                                                                                                                                                                  |
-| ------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Library repository (IndexedDB) | 2       | `src/lib/library-repository.ts`                                                                                                                                                                                                                                                                                                             |
-| Sync journal (IndexedDB)       | 4       | `src/lib/sync-journal.ts`: migrates v2/v3, preserves queued records and learning blobs, adds the model-preference blob; retired credential keys remain removed |
-| Cloud documents (Firestore)    | 8       | `src/constants/cloud.ts`, and `currentSchemaVersion()` in `firestore.rules`, which refuses any other version: v8 states on every sense whether it was supplemented; v7 dropped `xp`, `level` and the derivable `questionStats` from the statistics document, trimmed `dailyHistory` rows to what the chart draws, and added `streakFreezes` |
-| Practice session snapshot      | 4       | `src/types/session.ts`: v3 card drafts migrate to local meaning questions; v4 saves the meaning choices and selected answers |
-| AI model preferences           | 1       | `src/lib/ai-preferences.ts`; namespace-scoped IndexedDB and owner-only Firestore `preferences/ai` |
-| Flow drafts (localStorage)     | 1       | `components/ai/use-resumable-draft.ts`: first version; earlier flows had no saved drafts to migrate                                                                                                                                                                                                                                       |
-| Full backup files              | 4       | `src/constants/backup.ts`, `src/lib/share.ts`: v4 carries the v8 word shape; older files are refused rather than migrated                                                                                                                                                                                                                   |
-| Set share files                | 1       | `src/types/backup.ts`                                                                                                                                                                                                                                                                                                                       |
+新增／搬移責任時更新本檔，版號只在[資料與同步](docs/data-and-sync.md)維護，避免複製出互相矛盾的 schema 表。
