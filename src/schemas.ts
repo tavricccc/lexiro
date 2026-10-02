@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { QuestionKind as GeneratedQuestionKind } from "@lexiro/ai-contract";
+import { READING_SKILLS } from "@lexiro/ai-contract";
 
 const text = z.string();
 const texts = z.array(text);
@@ -50,7 +51,11 @@ export function questionOutput(kind: GeneratedQuestionKind) {
   return z.object({
     title: text,
     passage: text,
-    items: z.array(choices.extend({ question: text })),
+    items: z.array(choices.extend({
+      question: text,
+      skill: z.enum(READING_SKILLS),
+      evidence: texts,
+    })),
   });
 }
 export const jsonSchema = (schema: z.ZodType): Record<string, unknown> => {

@@ -84,10 +84,32 @@ describe("reading retry identity", () => {
     const prepared = await prepareGeneration(request, "u");
     const hold = await reserve(db, "u", prepared.units, prepared.halfRate);
     const result = terminal(JSON.stringify({
-      title: "A market visit", passage: "Mina bought apples and shared them with her friends.",
-      items: Array.from({ length: count }, (_, index) => ({
-        question: `Question ${index + 1}`, answer: "Apples", distractors: ["Bread", "Milk", "Rice"],
-      })),
+      title: "A market visit",
+      passage: "Mina bought apples at the market. Her friends had not brought snacks. She shared the apples with them before class.",
+      items: [
+        {
+          question: "What is the passage mainly about?", answer: "Mina shared food with her friends.",
+          distractors: ["Mina opened a market.", "Mina prepared a school meal.", "Mina sold apples to classmates."],
+          skill: "mainIdea", evidence: ["She shared the apples with them before class."],
+        },
+        {
+          question: "Why might Mina's apples have been useful to her friends?", answer: "Her friends had no snacks of their own.",
+          distractors: ["Her friends needed fruit to sell.", "Her friends had brought too much food.", "Her friends were teaching a class."],
+          skill: "inference", evidence: ["Her friends had not brought snacks.", "She shared the apples with them before class."],
+        },
+        {
+          question: "What did Mina buy?", answer: "Apples", distractors: ["Bread", "Milk", "Rice"],
+          skill: "detail", evidence: ["Mina bought apples at the market."],
+        },
+        {
+          question: "Who does them refer to?", answer: "Mina's friends", distractors: ["The sellers", "The teachers", "Mina's family"],
+          skill: "reference", evidence: ["Her friends had not brought snacks.", "She shared the apples with them before class."],
+        },
+        {
+          question: "What does shared mean here?", answer: "Gave some food to others", distractors: ["Sold food for money", "Kept all the food", "Threw the food away"],
+          skill: "vocabulary", evidence: ["She shared the apples with them before class."],
+        },
+      ].slice(0, count),
     }));
     await settleGeneration(db, hold, prepared, result, "gpt-6-luna");
     const balance = (await account(db, "u"))!.points;
