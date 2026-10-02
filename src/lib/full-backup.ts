@@ -17,13 +17,10 @@ import { normalizeFullBackupPayload } from "@/src/lib/share";
 import { keysOf } from "@/src/lib/record";
 import { localDateKey } from "@/src/lib/date";
 
-export interface PreparedBackupImport {
+export interface BackupImportPreview {
   cards: number;
-  library: LibraryState;
-  progress: LearningProgress;
   questions: number;
   sets: number;
-  stats: DashboardStats;
 }
 
 export function createFullBackup(
@@ -63,26 +60,13 @@ export async function readFullBackup(file: File): Promise<FullBackupPayload> {
   return normalizeFullBackupPayload(JSON.parse(strFromU8(raw)));
 }
 
-export function prepareBackupImport(
+export function previewBackupImport(
   backup: FullBackupPayload,
   currentLibrary: LibraryState,
   currentProgress: LearningProgress,
-  currentStats: DashboardStats,
-): PreparedBackupImport {
+): BackupImportPreview {
   const mergedLibrary = mergeLibraryStates(currentLibrary, backup.library);
-  const progress: LearningProgress = {
-    cards: { ...backup.learning.cards, ...currentProgress.cards },
-    updatedAt: new Date().toISOString(),
-  };
-  const hasLocalActivity =
-    currentStats.totalMemoryReviews > 0 ||
-    currentStats.totalQuestionReviews > 0 ||
-    Object.keys(currentStats.dailyHistory).length > 0;
-
   return {
-    library: mergedLibrary.state,
-    progress,
-    stats: hasLocalActivity ? currentStats : backup.stats,
     sets: mergedLibrary.result.addedSets,
     questions: mergedLibrary.result.addedQuestions,
     cards: keysOf(backup.learning.cards).filter(
@@ -90,4 +74,3 @@ export function prepareBackupImport(
     ).length,
   };
 }
-

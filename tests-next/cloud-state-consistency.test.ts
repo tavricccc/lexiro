@@ -1,0 +1,193 @@
+import type { User } from "firebase/auth";
+import type { SyncJournal } from "@/src/lib/sync-journal";
+import type { LibraryCommitStats } from "@/src/lib/library-repository";
+import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
+import { emptyLibraryState } from "@/src/lib/library-repository";
+import { createDefaultStats } from "@/src/lib/learning-defaults";
+import { getStorageNamespace, setStorageNamespace } from "@/src/lib/persist";
+
+const mocks = vi.hoisted(() => ({
+  pull: vi.fn(),
+  commit: vi.fn(),
+  cursor: vi.fn(),
+  seeded: vi.fn(),
+  clear: vi.fn(),
+  auth: vi.fn(),
+  journal: null as SyncJournal | null,
+}));
+vi.mock("idb-keyval", () => ({
+  get: async () => undefined,
+  set: async () => {},
+  del: async () => {},
+}));
+vi.mock("@/src/lib/firebase-config", () => ({
+  isFirebaseConfigured: () => false,
+}));
+vi.mock("@/src/lib/firebase", () => ({
+  getFirebaseFirestore: () => ({}),
+  configureFirebaseAuth: mocks.auth,
+}));
+vi.mock("@/src/lib/library-repository", async (original) => ({
+  ...(await original<typeof import("@/src/lib/library-repository")>()),
+  getLibraryRepository: () => ({
+    commit: mocks.commit,
+    loadState: async () => emptyLibraryState(),
+  }),
+}));
+vi.mock("@/src/lib/sync-journal", async (original) => ({
+  ...(await original<typeof import("@/src/lib/sync-journal")>()),
+  loadSyncJournal: async () => mocks.journal!,
+  recordLocalChanges: async (changed: LibraryCommitStats["changed"]) => {
+    for (const ref of changed)
+      mocks.journal!.dirty[`${ref.kind}:${ref.id}`] = { ...ref, version: 1 };
+  },
+  untrackChanges: async () => {},
+  clearBlobDirty: async () => {},
+  clearPushedRecords: mocks.clear,
+  setSyncCursor: mocks.cursor,
+  markSeeded: mocks.seeded,
+  resetSyncJournalCache: () => {},
+}));
+vi.mock("@/src/lib/cloud-sync", async (original) => ({
+  ...(await original<typeof import("@/src/lib/cloud-sync")>()),
+  pullRecords: mocks.pull,
+  pendingRecords: () => ({ records: [], clear: [] }),
+}));
+vi.mock("@/src/lib/cloud-account", async (original) => ({
+  ...(await original<typeof import("@/src/lib/cloud-account")>()),
+  readCloudBlobs: async () => ({
+    progress: { cards: {}, updatedAt: "2026-10-01T00:00:00.000Z" },
+    stats: createDefaultStats(),
+    preferences: null,
+  }),
+  writeCloudProgress: async () => {},
+  writeCloudStats: async () => {},
+}));
+vi.mock("@/src/lib/cloud-preferences", () => ({
+  watchCloudPreferences: () => () => {},
+  writeCloudPreferences: async () => {},
+}));
+const { useCloudStore } = await import("@/stores/cloud-store");
+const { useLibraryStore } = await import("@/stores/library-store");
+const noChange: LibraryCommitStats = {
+  writtenBlobs: 0,
+  totalRecords: 0,
+  collectedKeys: 0,
+  changed: [],
+  removed: [],
+};
+
+beforeEach(() => {
+  vi.clearAllMocks();
+  setStorageNamespace("account-a");
+  mocks.journal = {
+    schemaVersion: 4,
+    version: 0,
+    seeded: true,
+    cursor: "before",
+    dirty: {},
+    tombstones: {},
+    blobs: { progress: 0, stats: 0, preferences: 0 },
+  };
+  mocks.commit.mockResolvedValue(noChange);
+  mocks.auth.mockResolvedValue(null);
+  mocks.pull.mockResolvedValue({ records: [], cursor: "after" });
+  useLibraryStore.setState({ state: emptyLibraryState(), status: "ready" });
+  useCloudStore.setState({
+    ready: true,
+    user: { uid: "account-a" } as User,
+    error: "",
+    pending: 0,
+  });
+});
+afterEach(() => setStorageNamespace("guest"));
+
+describe("synchronization state consistency", () => {
+  it("does not pull with the preceding account's namespace during sign-in", async () => {
+    useCloudStore.setState({
+      ready: false,
+      user: { uid: "account-b" } as User,
+    });
+    await useCloudStore.getState().sync();
+    expect(mocks.pull).not.toHaveBeenCalled();
+    expect(mocks.cursor).not.toHaveBeenCalled();
+  });
+  it("preserves a local rename that was saving when the remote tombstone arrived", async () => {
+    const folder = await useLibraryStore.getState().createFolder("原名");
+    let finishWrite!: () => void;
+    mocks.commit.mockImplementationOnce(
+      () =>
+        new Promise<LibraryCommitStats>((resolve) => {
+          finishWrite = () =>
+            resolve({
+              ...noChange,
+              changed: [{ kind: "folder", id: folder.id }],
+              removed: [],
+            });
+        }),
+    );
+    const renamed = useLibraryStore
+      .getState()
+      .renameFolder(folder.id, "新名字");
+    mocks.pull.mockResolvedValueOnce({
+      records: [
+        {
+          type: "folder",
+          recordKey: folder.id,
+          deleted: true,
+          updatedAt: "2026-10-02T00:00:00.000Z",
+          payload: null,
+        },
+      ],
+      cursor: "after",
+    });
+    const synced = useCloudStore.getState().sync();
+    await vi.waitFor(() => expect(mocks.pull).toHaveBeenCalledOnce());
+    finishWrite();
+    await renamed;
+    await synced;
+    expect(
+      useLibraryStore
+        .getState()
+        .state.folders.find((entry) => entry.id === folder.id)?.name,
+    ).toBe("新名字");
+    expect(
+      mocks.commit.mock.lastCall![0].folders.some(
+        (entry: { name: string }) => entry.name === "新名字",
+      ),
+    ).toBe(true);
+  });
+  it("finishes a namespace change before rejecting an old sync's cursor and completion writes", async () => {
+    let finishWrite!: () => void;
+    mocks.commit.mockImplementationOnce(
+      () =>
+        new Promise<LibraryCommitStats>((resolve) => {
+          finishWrite = () => resolve(noChange);
+        }),
+    );
+    mocks.pull.mockResolvedValueOnce({
+      records: [
+        {
+          type: "folder",
+          recordKey: "remote",
+          deleted: true,
+          updatedAt: "2026-10-02T00:00:00.000Z",
+          payload: null,
+        },
+      ],
+      cursor: "after",
+    });
+    const synced = useCloudStore.getState().sync();
+    await vi.waitFor(() => expect(mocks.commit).toHaveBeenCalledOnce());
+    const signedOut = useCloudStore.getState().signOut();
+    await vi.waitFor(() => expect(mocks.auth).toHaveBeenCalledOnce());
+    expect(getStorageNamespace()).toBe("account-a");
+    finishWrite();
+    await signedOut;
+    await synced;
+    expect(getStorageNamespace()).toBe("guest");
+    expect(mocks.cursor).not.toHaveBeenCalled();
+    expect(mocks.seeded).not.toHaveBeenCalled();
+    expect(mocks.clear).not.toHaveBeenCalled();
+  });
+});

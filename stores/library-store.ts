@@ -28,6 +28,7 @@ import {
   resetLibraryRepositoryCache,
 } from "@/src/lib/library-repository";
 import { questionUsesWords } from "@/src/lib/question-ownership";
+import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { recordLocalChanges, untrackChanges } from "@/src/lib/sync-journal";
 
 export interface WordDraftInput {
@@ -68,7 +69,9 @@ interface LibraryStore {
   deleteQuestion: (id: string) => Promise<void>;
   importState: (state: LibraryState) => Promise<void>;
   /** Writes a state that came from the cloud, without queuing it to go back. */
-  applyRemoteState: (state: LibraryState) => Promise<void>;
+  applyRemoteState: (
+    update: (current: LibraryState) => Promise<LibraryState | null>,
+  ) => Promise<void>;
   /** Re-reads the Library after the active account changed. */
   reloadNamespace: () => Promise<void>;
 }
@@ -496,12 +499,15 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     set({ state });
   }),
 
-  importState: serial(async (state) => {
+  importState: serial(async (incoming) => {
+    const { state } = mergeLibraryStates(get().state, incoming);
     await commit(state);
     set({ state, status: "ready" });
   }),
 
-  applyRemoteState: serial(async (state) => {
+  applyRemoteState: serial(async (update) => {
+    const state = await update(get().state);
+    if (!state) return;
     const stats = await getLibraryRepository().commit(state);
     // These records arrived from the cloud. Pushing them straight back would
     // be a round trip that changes nothing, and a record dropped here because

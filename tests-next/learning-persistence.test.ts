@@ -3,6 +3,8 @@ import { LEARNING_STORAGE_KEY } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { asSenseId } from "@/src/lib/library";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
+import { reviewCard } from "@/src/lib/fsrs";
+import { mergeProgress, mergeStats } from "@/src/lib/cloud-account";
 
 const storage = vi.hoisted(() => ({
   values: new Map<string, string>(),
@@ -64,6 +66,47 @@ describe("durable practice completion", () => {
     expect(
       Object.keys(useLearningStore.getState().progress.cards),
     ).toHaveLength(2);
+  });
+  it("imports missing cards without erasing answers queued after selecting the backup, including on retry", async () => {
+    const store = useLearningStore.getState();
+    const incoming = {
+      cards: { [asSenseId("backup")]: reviewCard(null, "good") },
+      updatedAt: "2026-10-01T00:00:00.000Z",
+    };
+    await Promise.all([
+      store.rateSense(asSenseId("new-answer"), "good"),
+      store.importBackup(incoming, createDefaultStats()),
+    ]);
+    await store.rateSense(asSenseId("new-answer"), "again");
+    await store.importBackup(incoming, createDefaultStats());
+    expect(useLearningStore.getState().stats.totalMemoryReviews).toBe(2);
+    expect(
+      useLearningStore.getState().progress.cards[asSenseId("new-answer")]
+        .reviewCount,
+    ).toBe(2);
+    useLearningStore.setState({ loaded: false });
+    await store.hydrate();
+    expect(useLearningStore.getState().stats.totalMemoryReviews).toBe(2);
+    expect(Object.keys(useLearningStore.getState().progress.cards)).toEqual(
+      expect.arrayContaining(["backup", "new-answer"]),
+    );
+  });
+  it("merges a remote snapshot with an answer that finished while the snapshot was being read", async () => {
+    const store = useLearningStore.getState();
+    const old = { cards: {}, updatedAt: "2026-10-01T00:00:00.000Z" };
+    const oldStats = createDefaultStats();
+    const [, merged] = await Promise.all([
+      store.rateSense(asSenseId("new-answer"), "good"),
+      store.applyRemoteState((current) => ({
+        progress: mergeProgress(current.progress, old),
+        stats: mergeStats(current.stats, oldStats),
+      })),
+    ]);
+    expect(merged?.stats.totalMemoryReviews).toBe(1);
+    expect(merged?.progress.cards[asSenseId("new-answer")].reviewCount).toBe(1);
+    useLearningStore.setState({ loaded: false });
+    await store.hydrate();
+    expect(useLearningStore.getState().stats.totalMemoryReviews).toBe(1);
   });
 
   it("refuses unreadable learning data without replacing it with defaults", async () => {

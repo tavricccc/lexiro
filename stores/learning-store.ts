@@ -12,6 +12,8 @@ import type {
 import { create } from "zustand";
 import { createMutationQueue } from "@/src/lib/mutation-queue";
 import { t } from "@/lib/i18n";
+import { mergeBackupLearning } from "@/src/lib/learning-backup";
+import { canonicalHash } from "@/src/lib/hash";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
 import { localDateKey } from "@/src/lib/date";
@@ -32,6 +34,8 @@ import {
 } from "@/src/lib/share";
 import { markBlobDirty } from "@/src/lib/sync-journal";
 
+type LearningSnapshot = { progress: LearningProgress; stats: DashboardStats };
+
 interface LearningStore {
   progress: LearningProgress;
   stats: DashboardStats;
@@ -47,11 +51,13 @@ interface LearningStore {
     rating?: ReviewRating,
   ) => Promise<void>;
   setGoals: (words: number, questions: number) => Promise<void>;
-  importState: (
+  importBackup: (
     progress: LearningProgress,
     stats: DashboardStats,
-    options?: { markPending?: boolean },
   ) => Promise<void>;
+  applyRemoteState: (
+    update: (current: LearningSnapshot) => LearningSnapshot | null,
+  ) => Promise<LearningSnapshot | null>;
   reloadNamespace: () => Promise<void>;
   remapSenses: (
     remaps: Array<{ oldSenseId: SenseId; newSenseId: SenseId }>,
@@ -212,9 +218,25 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     await persist(get().progress, stats);
     set({ stats });
   }),
-  importState: serial(async (progress, stats, options) => {
-    await persist(progress, stats, options?.markPending ?? true);
+  importBackup: serial(async (incomingProgress, incomingStats) => {
+    const { progress, stats } = mergeBackupLearning(
+      get().progress,
+      get().stats,
+      incomingProgress,
+      incomingStats,
+    );
+    await persist(progress, stats);
     set({ progress, stats, loaded: true });
+  }),
+  applyRemoteState: serial(async (update) => {
+    const current = { progress: get().progress, stats: get().stats };
+    const merged = update(current);
+    if (!merged) return null;
+    if (canonicalHash(merged) !== canonicalHash(current)) {
+      await persist(merged.progress, merged.stats, false);
+      set({ ...merged, loaded: true });
+    }
+    return merged;
   }),
   reloadNamespace: async () => {
     set({

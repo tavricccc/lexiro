@@ -16,6 +16,9 @@ import { emptyLibraryState } from "@/src/lib/library-repository";
 import { useLibraryStore } from "@/stores/library-store";
 import { useLearningStore } from "@/stores/learning-store";
 import type { FullBackupPayload } from "@/types";
+import { asSenseId } from "@/src/lib/library";
+import { reviewCard } from "@/src/lib/fsrs";
+import { createDefaultStats } from "@/src/lib/learning-defaults";
 
 const { readBackup, success } = vi.hoisted(() => ({
   readBackup: vi.fn(),
@@ -28,15 +31,20 @@ vi.mock("@/src/lib/full-backup", async (importOriginal) => ({
 }));
 
 const originalLibraryImport = useLibraryStore.getState().importState;
-const originalLearningImport = useLearningStore.getState().importState;
+const originalLearningImport = useLearningStore.getState().importBackup;
 beforeEach(() => {
   vi.clearAllMocks();
   useLibraryStore.setState({ state: emptyLibraryState(), status: "ready" });
+  useLearningStore.setState({
+    progress: { cards: {}, updatedAt: "2026-10-02T00:00:00.000Z" },
+    stats: createDefaultStats(),
+    loaded: true,
+  });
 });
 afterEach(() => {
   cleanup();
   useLibraryStore.setState({ importState: originalLibraryImport });
-  useLearningStore.setState({ importState: originalLearningImport });
+  useLearningStore.setState({ importBackup: originalLearningImport });
 });
 
 describe("confirmation action feedback", () => {
@@ -84,7 +92,7 @@ describe("confirmation action feedback", () => {
     expect(action).toHaveBeenCalledTimes(2);
   });
 
-  it("shows backup reading progress and retains the prepared import when the second save fails", async () => {
+  it("shows backup reading progress and retains the source when the learning save fails", async () => {
     let finishReading!: (backup: FullBackupPayload) => void;
     readBackup.mockImplementationOnce(
       () =>
@@ -98,7 +106,7 @@ describe("confirmation action feedback", () => {
       .mockRejectedValueOnce(new Error("學習紀錄無法儲存"))
       .mockResolvedValue(undefined);
     useLibraryStore.setState({ importState: libraryImport });
-    useLearningStore.setState({ importState: learningImport });
+    useLearningStore.setState({ importBackup: learningImport });
     const backup = createFullBackup(
       useLibraryStore.getState().state,
       useLearningStore.getState().progress,
@@ -126,5 +134,36 @@ describe("confirmation action feedback", () => {
     expect(learningImport).toHaveBeenCalledTimes(2);
     expect(libraryImport.mock.calls[1]).toEqual(libraryImport.mock.calls[0]);
     expect(success).toHaveBeenCalledWith("備份已匯入");
+  });
+
+  it("refreshes the confirmation against newly synchronized cards and imports the original source", async () => {
+    const senseId = asSenseId("backup-sense");
+    const incoming = {
+      cards: { [senseId]: reviewCard(null, "good") },
+      updatedAt: "2026-10-02T00:00:00.000Z",
+    };
+    const backup = createFullBackup(
+      emptyLibraryState(),
+      incoming,
+      createDefaultStats(),
+    );
+    readBackup.mockResolvedValueOnce(backup);
+    const libraryImport = vi.fn().mockResolvedValue(undefined);
+    const learningImport = vi.fn().mockResolvedValue(undefined);
+    useLibraryStore.setState({ importState: libraryImport });
+    useLearningStore.setState({ importBackup: learningImport });
+    render(<DataSection />);
+    fireEvent.change(screen.getByLabelText("匯入備份", { selector: "input" }), {
+      target: { files: [new File(["fixture"], "backup.zip")] },
+    });
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveTextContent("1 筆學習卡");
+    act(() => useLearningStore.setState({ progress: incoming }));
+    expect(dialog).toHaveTextContent("0 筆學習卡");
+    fireEvent.click(within(dialog).getByRole("button", { name: "匯入備份" }));
+    await waitFor(() =>
+      expect(learningImport).toHaveBeenCalledWith(incoming, backup.stats),
+    );
+    expect(libraryImport).toHaveBeenCalledWith(backup.library);
   });
 });

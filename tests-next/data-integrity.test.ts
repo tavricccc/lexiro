@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
-import { createFullBackup, prepareBackupImport } from "@/src/lib/full-backup";
+import { createFullBackup, previewBackupImport } from "@/src/lib/full-backup";
+import { mergeBackupLearning } from "@/src/lib/learning-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { normalizeFullBackupPayload } from "@/src/lib/share";
@@ -109,15 +110,19 @@ describe("data integrity", () => {
       { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
       createDefaultStats(),
     );
-    const prepared = prepareBackupImport(
-      backup,
-      current,
-      { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
-      localStats,
-    );
+    const prepared = previewBackupImport(backup, current, {
+      cards: {},
+      updatedAt: "2026-08-16T00:00:00.000Z",
+    });
 
     expect(prepared.sets).toBe(1);
-    expect(prepared.library.sets).toHaveLength(2);
-    expect(prepared.stats.totalMemoryReviews).toBe(20);
+    expect(prepared).not.toHaveProperty("library");
+    const merged = mergeBackupLearning(
+      { cards: {}, updatedAt: "2026-08-16T00:00:00.000Z" },
+      localStats,
+      backup.learning,
+      backup.stats,
+    );
+    expect(merged.stats.totalMemoryReviews).toBe(20);
   });
 });

@@ -20,7 +20,7 @@ import {
   writeCloudPreferences,
 } from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
-import { canonicalHash } from "@/src/lib/hash";
+import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
 import {
   mergeProgress,
@@ -151,21 +151,23 @@ async function hydrateLocal(): Promise<void> {
   if (libraryError) throw new Error(libraryError);
 }
 
-async function enterNamespace(namespace: string): Promise<void> {
-  await flushLibraryMutations();
-  await flushLearningMutations();
-  await flushAiPreferenceMutations();
-  setStorageNamespace(namespace);
-  accountDocumentsRead = "";
-  resetSyncJournalCache();
-  await Promise.all([
-    useLibraryStore.getState().reloadNamespace(),
-    useLearningStore.getState().reloadNamespace(),
-    useAiPreferencesStore.getState().reloadNamespace(),
-  ]);
-  const libraryError = useLibraryStore.getState().error;
-  if (libraryError) throw new Error(libraryError);
-}
+const enterNamespace = serializeAccountDataAction(
+  async (namespace: string): Promise<void> => {
+    await flushLibraryMutations();
+    await flushLearningMutations();
+    await flushAiPreferenceMutations();
+    setStorageNamespace(namespace);
+    accountDocumentsRead = "";
+    resetSyncJournalCache();
+    await Promise.all([
+      useLibraryStore.getState().reloadNamespace(),
+      useLearningStore.getState().reloadNamespace(),
+      useAiPreferencesStore.getState().reloadNamespace(),
+    ]);
+    const libraryError = useLibraryStore.getState().error;
+    if (libraryError) throw new Error(libraryError);
+  },
+);
 
 export const useCloudStore = create<CloudStore>((set, get) => ({
   configured: isFirebaseConfigured(),
@@ -346,6 +348,18 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
 
 type SetState = (partial: Partial<CloudStore>) => void;
 
+const writeSyncForAccount = serializeAccountDataAction(
+  async (uid: string, write: () => Promise<void>): Promise<boolean> => {
+    if (
+      useCloudStore.getState().user?.uid !== uid ||
+      getStorageNamespace() !== uid
+    )
+      return false;
+    await write();
+    return true;
+  },
+);
+
 async function refreshPending(set: SetState): Promise<void> {
   set({ pending: pendingCountOf(await loadSyncJournal()) });
 }
@@ -362,19 +376,20 @@ async function reconcileAccountDocuments(
   const blobs = await readCloudBlobs(db, uid);
   if (getStorageNamespace() !== uid) return;
   accountDocumentsRead = uid;
-  const learning = useLearningStore.getState();
-  const progress = mergeProgress(learning.progress, blobs.progress);
-  const stats = mergeStats(learning.stats, blobs.stats);
   if (blobs.preferences)
     await useAiPreferencesStore.getState().applyRemote(blobs.preferences);
-
-  // Writing an identical value back would still rewrite IndexedDB and wake
-  // every listener on every sync, so it is only applied when it differs.
-  if (
-    canonicalHash({ progress, stats }) !==
-    canonicalHash({ progress: learning.progress, stats: learning.stats })
-  )
-    await learning.importState(progress, stats, { markPending: false });
+  const merged = await useLearningStore
+    .getState()
+    .applyRemoteState((current) =>
+      getStorageNamespace() === uid
+        ? {
+            progress: mergeProgress(current.progress, blobs.progress),
+            stats: mergeStats(current.stats, blobs.stats),
+          }
+        : null,
+    );
+  if (!merged) return;
+  const { progress, stats } = merged;
 
   const work: Promise<unknown>[] = [];
   if (getStorageNamespace() !== uid) return;
@@ -392,11 +407,13 @@ async function reconcileAccountDocuments(
     );
   await Promise.all(work);
   if (getStorageNamespace() !== uid) return;
-  await clearBlobDirty([
-    { kind: "progress", version: dirtyBlobs.progress },
-    { kind: "stats", version: dirtyBlobs.stats },
-    { kind: "preferences", version: dirtyBlobs.preferences },
-  ]);
+  await writeSyncForAccount(uid, () =>
+    clearBlobDirty([
+      { kind: "progress", version: dirtyBlobs.progress },
+      { kind: "stats", version: dirtyBlobs.stats },
+      { kind: "preferences", version: dirtyBlobs.preferences },
+    ]),
+  );
 }
 
 async function runSync(
@@ -406,7 +423,8 @@ async function runSync(
 ): Promise<void> {
   const user = get().user;
   const db = getFirebaseFirestore();
-  if (!user || !db) return;
+  if (!user || !db || !get().ready || getStorageNamespace() !== user.uid)
+    return;
   const sameAccount = () =>
     get().user?.uid === user.uid && getStorageNamespace() === user.uid;
   if (!online()) {
@@ -430,14 +448,22 @@ async function runSync(
     const pulled = await pullRecords(db, user.uid, journal.cursor);
     if (!sameAccount()) return;
     if (pulled.records.length) {
-      const merged = applyCloudRecords(
-        useLibraryStore.getState().state,
-        pulled.records,
-        new Set(Object.keys(journal.dirty)),
-      );
-      await useLibraryStore.getState().applyRemoteState(merged);
+      await useLibraryStore.getState().applyRemoteState(async (current) => {
+        if (!sameAccount()) return null;
+        const latestJournal = await loadSyncJournal();
+        return applyCloudRecords(
+          current,
+          pulled.records,
+          new Set(Object.keys(latestJournal.dirty)),
+        );
+      });
     }
-    if (pulled.cursor !== journal.cursor) await setSyncCursor(pulled.cursor);
+    if (!sameAccount()) return;
+    if (
+      pulled.cursor !== journal.cursor &&
+      !(await writeSyncForAccount(user.uid, () => setSyncCursor(pulled.cursor)))
+    )
+      return;
 
     if (
       reconcileAccount ||
@@ -455,8 +481,11 @@ async function runSync(
     if (work.records.length) await pushRecords(db, user.uid, work.records);
     if (!sameAccount()) return;
 
-    await clearPushedRecords(work.clear);
-    await markSeeded();
+    const finished = await writeSyncForAccount(user.uid, async () => {
+      await clearPushedRecords(work.clear);
+      await markSeeded();
+    });
+    if (!finished || !sameAccount()) return;
 
     retryAttempt = 0;
     if (retryTimer) clearTimeout(retryTimer);
