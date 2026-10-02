@@ -41,6 +41,12 @@ export function EmptyState({
       <div className="rule-card py-12 text-center" role="status">
         <p className="font-medium">{title}</p>
         <p className="mx-auto mt-1.5 max-w-[42ch] type-lead">{description}</p>
+        {(action || secondaryAction) && (
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            {action}
+            {secondaryAction}
+          </div>
+        )}
       </div>
     );
   }
@@ -78,7 +84,11 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="t-shake rule-card py-12 text-center" data-error="true" role="alert">
+    <div
+      className="t-shake rule-card py-12 text-center"
+      data-error="true"
+      role="alert"
+    >
       <div className="mx-auto grid size-10 place-items-center rounded-full bg-destructive/10 text-destructive">
         <Icons.error className="size-5" />
       </div>

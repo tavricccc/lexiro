@@ -280,6 +280,7 @@ export const zhTW = {
     emptyDescription: "用 AI 從你的單字產生第一批，或自己新增一題。",
     noResults: "沒有符合的題目",
     noResultsDescription: "換個關鍵字，或把題型與難度改回全部。",
+    clearFilters: "清除篩選",
     prompt: "題幹",
     options: "選項",
     correct: "正確答案",
@@ -778,6 +779,7 @@ export const zhTW = {
     unlimited: "無限額度",
   },
   common: {
+    clearSearch: "清除搜尋",
     learningDataUnreadable:
       "這個裝置的學習紀錄無法讀取，原始資料已保留。請先重新載入；若仍失敗，請保留目前的瀏覽器資料以便復原。",
     retry: "重試",
