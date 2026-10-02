@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
+import { withReturnTo } from "@/lib/browse-routes";
 
 export interface SetRowMetrics {
   due: number;
@@ -45,7 +46,10 @@ export function FolderRow({
           {t("library.itemCount", { count: itemCount })}
         </span>
       </span>
-      <Icons.open aria-hidden className="size-4 shrink-0 text-muted-foreground" />
+      <Icons.open
+        aria-hidden
+        className="size-4 shrink-0 text-muted-foreground"
+      />
     </button>
   );
 }
@@ -62,13 +66,16 @@ export function SetRow({
   name,
   questionCount,
   senseCount,
-}: SetRowMetrics & { id: string; name: string }) {
+  returnTo,
+}: SetRowMetrics & { id: string; name: string; returnTo?: string }) {
   const coverage = senseCount ? learned / senseCount : 0;
 
   return (
     <Link
       className="t-row group flex min-h-[3.25rem] items-center gap-3.5 py-[var(--row-padding-block)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-      href={`/app/sets/${id}`}
+      href={
+        returnTo ? withReturnTo(`/app/sets/${id}`, returnTo) : `/app/sets/${id}`
+      }
     >
       <Icons.library
         aria-hidden
@@ -101,7 +108,10 @@ export function SetRow({
           {t("setDetail.dueCount", { count: due })}
         </span>
       )}
-      <Icons.open aria-hidden className="size-4 shrink-0 text-muted-foreground" />
+      <Icons.open
+        aria-hidden
+        className="size-4 shrink-0 text-muted-foreground"
+      />
     </Link>
   );
 }

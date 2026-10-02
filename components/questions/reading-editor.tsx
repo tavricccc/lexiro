@@ -44,7 +44,13 @@ const emptyChild = (): ReadingChildDraft => ({
   source: "",
 });
 
-export function ReadingEditor({ readingId }: { readingId: string }) {
+export function ReadingEditor({
+  readingId,
+  returnHref = LIBRARY_QUESTIONS_HREF,
+}: {
+  readingId: string;
+  returnHref?: string;
+}) {
   const router = useRouter();
   const uid = useCloudStore((store) => store.user?.uid);
   const { state, saveQuestion } = useLibraryStore();
@@ -190,7 +196,7 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
         return;
       }
       saved.clear();
-      router.push(LIBRARY_QUESTIONS_HREF);
+      router.push(returnHref);
     } catch (reason) {
       setSaveError(reason instanceof Error ? reason.message : String(reason));
     } finally {
@@ -203,7 +209,7 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
-        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
+        back={<BackControl href={returnHref} />}
         description={t(
           saved.status === "invalid"
             ? "draft.invalidDescription"
@@ -219,7 +225,7 @@ export function ReadingEditor({ readingId }: { readingId: string }) {
     <div className="mx-auto max-w-3xl">
       <PageHeader
         actions={<DraftSaveStatus status={saved.persistence} />}
-        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
+        back={<BackControl href={returnHref} />}
         title={t("questions.editReading")}
       />
 

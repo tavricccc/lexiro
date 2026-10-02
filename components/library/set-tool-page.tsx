@@ -8,17 +8,19 @@ export function SetToolPage({
   children,
   setId,
   title,
+  returnHref,
 }: {
   children: ReactNode;
   setId: string;
   title: string;
+  returnHref?: string;
 }) {
   return (
     <div className="mx-auto max-w-2xl pb-4">
       <PageHeader
         back={
           <BackControl
-            href={`/app/sets/${setId}`}
+            href={returnHref ?? `/app/sets/${setId}`}
             label={t("setEditor.backToSet")}
           />
         }

@@ -7,7 +7,7 @@ import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
+import { SearchField } from "@/components/ui/search-field";
 import { EmptyState } from "@/components/ui/page-state";
 import { QuestionListSkeleton } from "@/components/ui/workspace-skeleton";
 import { SelectField } from "@/components/ui/select-field";
@@ -18,19 +18,43 @@ import {
   questionFormatOptions,
 } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
+import {
+  questionBrowseHref,
+  replaceBrowseHref,
+  withReturnTo,
+} from "@/lib/browse-routes";
 
-export function questionEditHref(question: { id: string; kind: string }) {
-  return question.kind === "reading"
-    ? `/app/questions/reading/${question.id}/edit`
-    : `/app/questions/${question.id}/edit`;
+export interface QuestionFilters {
+  q?: string;
+  kind?: string;
+  difficulty?: string;
+}
+
+export function questionEditHref(
+  question: { id: string; kind: string },
+  returnTo?: string,
+) {
+  const href =
+    question.kind === "reading"
+      ? `/app/questions/reading/${question.id}/edit`
+      : `/app/questions/${question.id}/edit`;
+  return returnTo ? withReturnTo(href, returnTo) : href;
 }
 
 /** A searchable, editable question bank. */
-export function QuestionList() {
+export function QuestionList({
+  initialFilters = {},
+}: {
+  initialFilters?: QuestionFilters;
+}) {
   const { state, status, deleteQuestion } = useLibraryStore();
-  const [query, setQuery] = useState("");
-  const [kind, setKind] = useState("all");
-  const [difficulty, setDifficulty] = useState("all");
+  const [query, setQuery] = useState(initialFilters.q ?? "");
+  const [kind, setKind] = useState(initialFilters.kind ?? "all");
+  const [difficulty, setDifficulty] = useState(
+    ["1", "2", "3"].includes(initialFilters.difficulty ?? "")
+      ? initialFilters.difficulty!
+      : "all",
+  );
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   const questions = useMemo(
@@ -68,8 +92,20 @@ export function QuestionList() {
     [state.questions],
   );
   useEffect(() => {
-    if (kind !== "all" && !presentFormats.has(kind)) setKind("all");
-  }, [kind, presentFormats]);
+    if (status === "ready" && kind !== "all" && !presentFormats.has(kind))
+      setKind("all");
+  }, [kind, presentFormats, status]);
+
+  const browseHref = questionBrowseHref(query, kind, difficulty);
+  useEffect(() => {
+    if (status === "ready") replaceBrowseHref(browseHref);
+  }, [browseHref, status]);
+
+  const resetFilters = () => {
+    setQuery("");
+    setKind("all");
+    setDifficulty("all");
+  };
 
   const filtering =
     Boolean(query.trim()) || kind !== "all" || difficulty !== "all";
@@ -78,22 +114,18 @@ export function QuestionList() {
     <div>
       {state.questions.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
-          <label className="relative block">
-            <Icons.search
-              aria-hidden
-              className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-            />
-            <Input
-              className="pl-10"
-              placeholder={t("questions.search")}
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </label>
+          <SearchField
+            label={t("questions.search")}
+            value={query}
+            onValueChange={setQuery}
+          />
           <SelectField
             ariaLabel={t("questions.type")}
             onValueChange={setKind}
-            options={questionFormatOptions(t("questions.allTypes"), presentFormats)}
+            options={questionFormatOptions(
+              t("questions.allTypes"),
+              presentFormats,
+            )}
             value={kind}
           />
           <SelectField
@@ -114,6 +146,12 @@ export function QuestionList() {
               variant="filtered"
               title={t("questions.noResults")}
               description={t("questions.noResultsDescription")}
+              action={
+                <Button variant="outline" onClick={resetFilters}>
+                  <Icons.retry />
+                  {t("questions.clearFilters")}
+                </Button>
+              }
             />
           ) : (
             <EmptyState
@@ -158,7 +196,7 @@ export function QuestionList() {
                     </p>
                     <Link
                       className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                      href={questionEditHref(question)}
+                      href={questionEditHref(question, browseHref)}
                     >
                       {question.kind === "reading"
                         ? question.title

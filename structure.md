@@ -37,6 +37,12 @@ ramp live in `app/globals.css`; the rules that go with them are in
 ladder in `config/motion.config.json`, generated into `src/generated/` for both
 CSS and JavaScript, so nothing states a literal duration of its own.
 
+`components/ui/search-field.tsx` 是教材／題庫共用的即時搜尋欄位，含一鍵清除、
+焦點回復與輸入法安全的 Escape 操作。`lib/browse-routes.ts` 承載列表條件與
+編輯返回目的地；頁面讀取路由條件，搜尋只替換當前歷史項目。單字集題目分頁、
+單字與題目編輯沿用原本的返回位置。`src/lib/library-search.ts` 只搜尋該集收錄的
+詞義與例句；`tests-next/browse-search.test.tsx` 驗證搜尋操作、詞義範圍及返回條件。
+
 The workspace shell is shared by desktop and mobile. Desktop uses a compact sidebar; mobile uses the same routes through a bottom navigation bar. On desktop the sidebar carries the wordmark and the sync status; on mobile there is no shell header at all, and `components/root-page-header.tsx` is the title bar of a primary destination — the brand mark, the title, the page's own actions and the sync status in the one row that used to be two, the upper of which said 「Lexiro」 and nothing else. `components/ui/page-header.tsx` owns each page's title, actions and back control, and `components/ui/back-control.tsx` is that back control: every screen beneath a destination uses it, so none of them can be built without a way out. Library folders use a drill-down model, similar to Windows File Explorer, instead of an always-expanded tree.
 
 - `components/liquid-nav.tsx` — committed-path selection and Next Link pending feedback with a shared moving selection; the dock is live throughout a navigation — nothing is captured, so it never leaves the hit-test tree — and it animates nothing of its own: it belongs to the route, and the route change already covers it or uncovers it.

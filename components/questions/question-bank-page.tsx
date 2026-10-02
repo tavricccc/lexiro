@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 
-import { QuestionList } from "@/components/questions/question-list";
+import {
+  QuestionList,
+  type QuestionFilters,
+} from "@/components/questions/question-list";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
@@ -10,7 +13,11 @@ import { PageHeader } from "@/components/ui/page-header";
 import { t } from "@/lib/i18n";
 
 /** The question bank is a destination in its own right, not a Library tab. */
-export function QuestionBankPage() {
+export function QuestionBankPage({
+  initialFilters,
+}: {
+  initialFilters?: QuestionFilters;
+}) {
   return (
     <div>
       <PageHeader
@@ -27,7 +34,7 @@ export function QuestionBankPage() {
         back={<BackControl href="/app/library" label={t("library.title")} />}
         title={t("questions.title")}
       />
-      <QuestionList />
+      <QuestionList initialFilters={initialFilters} />
     </div>
   );
 }

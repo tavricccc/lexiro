@@ -14,7 +14,7 @@ import { FolderRow, SetRow } from "@/components/library/library-rows";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
+import { SearchField } from "@/components/ui/search-field";
 import { RootPageHeader } from "@/components/root-page-header";
 import { StepActions } from "@/components/ui/step-actions";
 import { EmptyState, ErrorState } from "@/components/ui/page-state";
@@ -33,11 +33,19 @@ import { buildQuestionId } from "@/src/lib/library";
 import { buildLibrarySetMetrics } from "@/src/lib/library-metrics";
 import { createUniqueSetName } from "@/src/lib/set-name";
 import { readSetShare } from "@/src/lib/set-share";
+import { setMatchesQuery } from "@/src/lib/library-search";
+import { libraryBrowseHref, replaceBrowseHref } from "@/lib/browse-routes";
 
 const NO_METRICS = { due: 0, learned: 0, questionCount: 0, senseCount: 0 };
 
 /** The Library is one place for browsing and organising saved word sets. */
-export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
+export function LibraryPage({
+  initialFolderId,
+  initialQuery = "",
+}: {
+  initialFolderId?: string;
+  initialQuery?: string;
+}) {
   const { state, status, error } = useLibraryStore();
   const createFolder = useLibraryStore((store) => store.createFolder);
   const renameFolder = useLibraryStore((store) => store.renameFolder);
@@ -47,7 +55,7 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   const saveQuestion = useLibraryStore((store) => store.saveQuestion);
   const cards = useLearningStore((store) => store.progress.cards);
 
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
   const [currentFolderId, setCurrentFolderId] = useState(
     initialFolderId ?? ALL_FOLDER_ID,
   );
@@ -105,19 +113,7 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
       if (!inLocation) return false;
       if (!needle) return true;
       if (entry.setName.toLocaleLowerCase().includes(needle)) return true;
-      return (state.memberships[entry.id] ?? []).some((membership) => {
-        const word = state.words[membership.wordKey];
-        return (
-          word?.word.toLocaleLowerCase().includes(needle) ||
-          word?.senses.some(
-            (sense) =>
-              sense.meaningZh.includes(needle) ||
-              sense.examples.some((example) =>
-                example.toLocaleLowerCase().includes(needle),
-              ),
-          )
-        );
-      });
+      return setMatchesQuery(state, entry.id, needle);
     });
   }, [currentFolder, query, state]);
 
@@ -179,14 +175,9 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
   // the URL, so opening a set and coming back does not dump you at the root.
   useEffect(() => {
     if (status !== "ready") return;
-    const params = new URLSearchParams();
-    if (currentFolderId !== ALL_FOLDER_ID)
-      params.set("folderId", currentFolderId);
-    const query = params.toString();
-    const target = query ? `/app/library?${query}` : "/app/library";
-    if (`${window.location.pathname}${window.location.search}` !== target)
-      window.history.replaceState(null, "", target);
-  }, [currentFolderId, status]);
+    replaceBrowseHref(libraryBrowseHref(currentFolderId, query));
+  }, [currentFolderId, query, status]);
+  const browseHref = libraryBrowseHref(currentFolderId, query);
   const createHref = currentFolder
     ? `/app/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
     : "/app/sets/new";
@@ -241,19 +232,12 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
             onRename={(name) => renameFolder(currentFolderId, name)}
           />
 
-          <label className="relative mt-4 block">
-            <Icons.search
-              aria-hidden
-              className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-            />
-            <Input
-              aria-label={t("library.searchHere")}
-              className="pl-10"
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder={t("library.searchHere")}
-              value={query}
-            />
-          </label>
+          <SearchField
+            className="mt-4"
+            label={t("library.searchHere")}
+            value={query}
+            onValueChange={setQuery}
+          />
         </div>
 
         {/* Loading, empty, filtered-empty and the listing itself all occupy the
@@ -288,6 +272,7 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
                     <SetRow
                       id={entry.id}
                       name={entry.setName}
+                      returnTo={browseHref}
                       {...(setMetrics.get(entry.id) ?? NO_METRICS)}
                     />
                   </StaggerItem>
@@ -299,6 +284,12 @@ export function LibraryPage({ initialFolderId }: { initialFolderId?: string }) {
                 description={t("library.searchHint")}
                 title={t("library.noResults")}
                 variant="filtered"
+                action={
+                  <Button variant="outline" onClick={() => setQuery("")}>
+                    <Icons.cancel />
+                    {t("common.clearSearch")}
+                  </Button>
+                }
               />
             )}
             {status === "ready" && listEmpty && !searching && (

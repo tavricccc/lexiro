@@ -44,7 +44,13 @@ interface Values {
   source: string;
 }
 
-export function QuestionEditor({ questionId }: { questionId: string }) {
+export function QuestionEditor({
+  questionId,
+  returnHref = LIBRARY_QUESTIONS_HREF,
+}: {
+  questionId: string;
+  returnHref?: string;
+}) {
   const state = useLibraryStore((store) => store.state);
   const current = state.questions.find((entry) => entry.id === questionId);
   const senses = useMemo(
@@ -63,6 +69,7 @@ export function QuestionEditor({ questionId }: { questionId: string }) {
       questionId={questionId}
       current={current}
       senses={senses}
+      returnHref={returnHref}
     />
   );
 }
@@ -71,10 +78,12 @@ function QuestionEditorForm({
   questionId,
   current,
   senses,
+  returnHref,
 }: {
   questionId: string;
   current: LibraryQuestion | undefined;
   senses: { label: string; value: string }[];
+  returnHref: string;
 }) {
   const router = useRouter();
   const uid = useCloudStore((store) => store.user?.uid);
@@ -166,14 +175,14 @@ function QuestionEditorForm({
       return;
     }
     saved.clear();
-    router.push(LIBRARY_QUESTIONS_HREF);
+    router.push(returnHref);
   });
 
   if (saved.status === "checking") return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
-        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
+        back={<BackControl href={returnHref} />}
         description={t(
           saved.status === "invalid"
             ? "draft.invalidDescription"
@@ -199,7 +208,7 @@ function QuestionEditorForm({
     >
       <PageHeader
         actions={<DraftSaveStatus status={saved.persistence} />}
-        back={<BackControl href={LIBRARY_QUESTIONS_HREF} />}
+        back={<BackControl href={returnHref} />}
         title={t("questions.edit")}
       />
 

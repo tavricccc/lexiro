@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { questionEditHref } from "@/components/questions/question-list";
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
@@ -28,6 +28,7 @@ import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
 import { SetTools } from "@/components/library/set-tools";
 import { StepActions } from "@/components/ui/step-actions";
 import { ContentTransition } from "@/components/motion/state-transition";
+import { replaceBrowseHref, setBrowseHref } from "@/lib/browse-routes";
 
 type SetTab = "words" | "questions" | "tools";
 
@@ -43,11 +44,21 @@ type SetTab = "words" | "questions" | "tools";
  * a section below them — they are the other half of the same material, not an
  * appendix to the word list.
  */
-export function SetView({ setId }: { setId: string }) {
+export function SetView({
+  setId,
+  returnTo,
+  initialTab = "words",
+}: {
+  setId: string;
+  returnTo?: string;
+  initialTab?: string;
+}) {
   const router = useRouter();
   const { state, status, deleteSet, moveSet } = useLibraryStore();
   const cards = useLearningStore((store) => store.progress.cards);
-  const [tab, setTab] = useState<SetTab>("words");
+  const [tab, setTab] = useState<SetTab>(
+    initialTab === "questions" || initialTab === "tools" ? initialTab : "words",
+  );
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [moveOpen, setMoveOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -90,9 +101,14 @@ export function SetView({ setId }: { setId: string }) {
 
   const homeFolderId = current?.folderId;
   const libraryHref =
-    homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
+    returnTo ??
+    (homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
       ? `/app/library?folderId=${encodeURIComponent(homeFolderId)}`
-      : "/app/library";
+      : "/app/library");
+  const browseHref = setBrowseHref(setId, tab, returnTo);
+  useEffect(() => {
+    if (status === "ready") replaceBrowseHref(browseHref);
+  }, [browseHref, status]);
 
   if (status !== "ready") return <LibraryListSkeleton />;
 
@@ -194,7 +210,12 @@ export function SetView({ setId }: { setId: string }) {
                     className="py-[var(--row-padding-block)]"
                     key={entry.wordKey}
                   >
-                    <SetWordRow cards={cards} entry={entry} setId={setId} />
+                    <SetWordRow
+                      cards={cards}
+                      entry={entry}
+                      setId={setId}
+                      returnTo={browseHref}
+                    />
                   </StaggerItem>
                 ))}
               </StaggerList>
@@ -238,7 +259,7 @@ export function SetView({ setId }: { setId: string }) {
                     </p>
                     <Link
                       className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                      href={questionEditHref(question)}
+                      href={questionEditHref(question, browseHref)}
                     >
                       {question.kind === "reading"
                         ? question.title

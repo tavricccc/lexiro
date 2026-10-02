@@ -1,5 +1,16 @@
 # Confirmed product decisions
 
+## 搜尋與返回位置（2026-10-02）
+
+教材搜尋保留所在資料夾與關鍵字；題庫保留關鍵字、題型與難度。搜尋即時更新，
+清除按鈕保留輸入焦點，Escape 可清除搜尋且不干擾中文輸入法。無結果時提供
+直接清除搜尋／篩選的操作。參考 [Apple Search fields](https://developer.apple.com/design/human-interface-guidelines/search-fields) 的搜尋範圍與即時回饋指引。
+
+從列表進入單字集，或編輯單字、一般題與閱讀題，返回和儲存後回到原本的
+列表條件或單字集分頁。瀏覽狀態由路由參數承載，輸入時只替換當前歷史項目，
+不讓返回鍵逐字倒退。教材搜尋只比對該單字集收錄的意思與例句，避免共享
+單字的其他意思讓結果看起來不相關。
+
 Decisions here are product truth unless a later entry supersedes them
 explicitly. `PRODUCT.md` states the direction; this file records what was
 actually settled, and why.

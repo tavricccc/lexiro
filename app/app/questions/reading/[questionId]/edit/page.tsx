@@ -1,2 +1,18 @@
 import { ReadingEditor } from "@/components/questions/reading-editor";
-export default async function Page({ params }: { params: Promise<{ questionId: string }> }) { const { questionId } = await params; return <ReadingEditor readingId={questionId} />; }
+import { readBrowseReturn } from "@/lib/browse-routes";
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ questionId: string }>;
+  searchParams: Promise<{ returnTo?: string }>;
+}) {
+  const { questionId } = await params;
+  const { returnTo } = await searchParams;
+  return (
+    <ReadingEditor
+      readingId={questionId}
+      returnHref={readBrowseReturn(returnTo)}
+    />
+  );
+}

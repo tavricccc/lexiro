@@ -17,9 +17,11 @@ import { useLibraryStore } from "@/stores/library-store";
 export function WordEditPage({
   setId,
   wordKey,
+  returnHref,
 }: {
   setId: string;
   wordKey: string;
+  returnHref?: string;
 }) {
   const router = useRouter();
   const state = useLibraryStore((store) => store.state);
@@ -59,7 +61,7 @@ export function WordEditPage({
       wordKey={key}
       revision={word.updatedAt}
       value={value}
-      onDone={() => router.push(`/app/sets/${setId}`)}
+      onDone={() => router.push(returnHref ?? `/app/sets/${setId}`)}
     />
   );
 }

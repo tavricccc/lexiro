@@ -19,9 +19,8 @@ import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { useLibraryStore } from "@/stores/library-store";
 import type { ReadingPack } from "@/types";
 
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: vi.fn() }),
-}));
+const { push } = vi.hoisted(() => ({ push: vi.fn() }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 
 const scrollDescriptor = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,
@@ -30,6 +29,7 @@ const scrollDescriptor = Object.getOwnPropertyDescriptor(
 const originalSaveQuestion = useLibraryStore.getState().saveQuestion;
 
 beforeEach(() => {
+  push.mockClear();
   localStorage.clear();
   useLibraryStore.setState({
     state: emptyLibraryState(),
@@ -224,11 +224,13 @@ describe("interrupted manual edits", () => {
     );
     useLibraryStore.setState({ state, saveQuestion });
 
-    render(<ReadingEditor readingId="reading" />);
+    const returnHref = "/app/sets/set?tab=questions";
+    render(<ReadingEditor readingId="reading" returnHref={returnHref} />);
     fireEvent.click(await screen.findByRole("button", { name: "儲存題目" }));
     const saving = await screen.findByRole("button", { name: "正在儲存…" });
     expect(saving).toBeDisabled();
     expect(saveQuestion).toHaveBeenCalledOnce();
     await act(async () => finishSave("saved"));
+    expect(push).toHaveBeenCalledWith(returnHref);
   });
 });
