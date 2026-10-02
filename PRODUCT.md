@@ -26,6 +26,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - Questions may be authored manually or generated with AI; generated questions are saved as soon as they validate and edited or deleted afterwards.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and FSRS review.
 - The application is expected to remain useful offline and synchronize later when signed in.
+- Learning goals and AI model changes save locally with inline progress and retry. Unfinished changes survive leaving the screen; returning offers applying them or keeping the current settings, within the original account.
 
 ## Capabilities and Constraints
 

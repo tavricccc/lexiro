@@ -61,6 +61,15 @@ CSS and JavaScript, so nothing states a literal duration of its own.
 時清除舊的登入／跨來源資料快取，保留 App 頁面及公開資產。
 `tests-next/service-worker-cache.test.ts` 驗證快取分類與清理範圍。
 
+`components/me/use-autosave.ts` 共用學習目標／AI 模型的待存修改、背景儲存及重試；
+`src/lib/preference-drafts.ts` 驗證 partial goals 與 model，暫存只含使用者修改的欄位。
+localStorage 的 `${namespace}:lexiro_pending_goals_v1`／`lexiro_pending_model_v1`
+使用 `{version:1,id,value}`，不改 canonical learning 或 AI preferences 的 schema。
+返回設定時 `components/me/preference-recovery.tsx` 顯示待套用值，讓使用者套用或
+保留目前設定；損壞暫存只可清除。儲存使用 account queue，帳號切換後保留原帳號
+暫存，不寫入新帳號。`tests-next/settings-autosave.test.ts` 驗證生命週期與待存欄位；
+learning persistence 測試驗證目標修改不覆蓋未修改的遠端統計。
+
 `lib/backup-actions.ts` 協調完整匯入／匯出與帳號邊界；
 `src/lib/account-data-queue.ts` 讓跨 store 備份操作與 namespace 切換依序完成。
 `src/lib/full-backup.ts` 的 `previewBackupImport` 只回傳預覽數量，不回傳要寫回
