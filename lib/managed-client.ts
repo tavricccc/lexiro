@@ -333,13 +333,15 @@ export async function managedTurn(
 /** A run is many turns; the readout is about the run, so the turns add up. */
 export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   if (!turn) return total;
-  const cost = responseCost(turn);
-  const uncachedCost = responseCost({ ...turn, cached: 0, cacheWrite: 0,
-    ...(turn.parts ? { parts: turn.parts.map((part) => ({ ...part, cached: 0, cacheWrite: 0 })) } : {}),
-  });
+  total.parts = [...(total.parts ?? []), ...(turn.parts ?? [turn])];
+  const cost = responseCost({ parts: total.parts });
+  const uncachedCost = responseCost({ parts: total.parts.map((part) => ({ ...part, cached: 0, cacheWrite: 0 })) });
   if (cost !== null && uncachedCost !== null) {
-    total.costUsd = (total.costUsd ?? 0) + cost;
-    total.uncachedCostUsd = (total.uncachedCostUsd ?? 0) + uncachedCost;
+    total.costUsd = cost;
+    total.uncachedCostUsd = uncachedCost;
+  } else {
+    delete total.costUsd;
+    delete total.uncachedCostUsd;
   }
   if (turn.model) total.model = turn.model;
   for (const field of [

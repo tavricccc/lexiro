@@ -57,6 +57,9 @@ describe("managed AI boundary", () => {
     expect(usage.costUsd).toBeCloseTo(0.0365);
     expect(usage.uncachedCostUsd).toBeCloseTo(0.041);
     expect(responseCost({parts: [parts[0], {model: "gpt-6-luna"}]})).toBeNull();
+    addUsage(usage, {model: "gpt-6-luna", parts: [{model: "gpt-6-luna"}]});
+    addUsage(usage, parts[1]);
+    expect(usage.costUsd).toBeUndefined();
   });
   it("reports stale admin edits and management failures in the correct action context", async () => {
     vi.stubGlobal(
