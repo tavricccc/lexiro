@@ -1,4 +1,31 @@
-# 2026-09-12 managed／多義與整理版本
+# 生成與審題評測紀錄
+
+## 2026-10-03 獨立審題與攔截
+
+正式出題改為同一次預留內的初稿與 fresh 審題兩回合，不接續初稿 cursor，審題使用選定模型但至少 medium。審題稿帶逐題 explanation／whyWrong；不通過就拒絕整批，釋放預留，仍記錄各回合供應商成本。只改題目相關快取，writer 現為 `lexiro-questions-20261003-v7`、review 為 `lexiro-question-review-20261003-v3`。
+
+對既有 34 道合成 low 初稿做不提供人工批註的 medium 盲審，原始資料保存在 private sibling `highschool-review-v1`／`highschool-review-v2`。第一版八個回合中兩份通過當時結構門檻，但人工仍發現搭配無效、干擾弱，以及閱讀正解與錯項同義；不是教學品質通過率。第二版只有三個真實回覆，其餘五個因 Codex 額度用盡未完成。三份分別被審題拒絕、篇幅門檻及原文跨度門檻擋下，不能把五個 CLI 失敗算成模型出題失敗。
+
+第二版曾先寫 approved=true，後面的 whyWrong 卻承認 wary／cautious 或 estimate／measure 都合理；recover 也被改成原文不存在的字形。據此調整句子 schema 為先寫完整 sentence 再取 usage／answer，審題 schema 先列 corrected／unresolvedIssues、最後才判 approved，任一未解決問題非空即拒絕。[OpenAI Structured Outputs 文件](https://developers.openai.com/api/docs/guides/structured-outputs)確認回覆鍵順序跟隨 schema；這支持輸出順序的實作，不能證明模型判定必然正確。
+
+最後版本只再做一次 fresh `gpt-6-luna`／medium 子代理試審：直接讀目前正式 instructions／schema 和凍結的 latest 詞彙八題，不提供既有人工批註。JSON 符合 schema，但 approved=false，正式 admission 拒絕；即使獨立只檢查 corrected，也因 barked 不在原文而拒絕。人工另發現 retrieve 仍合理、pollution 的理由承認它也成立、release a gas leak 搭配不合法、isolate them 指涉錯誤，以及 estimate／measure 未排除。unresolvedIssues 空陣列與拒絕判定的診斷不一致，不能稱為完整成功審題。原請求、完整回覆及 `content-review.json` 保存在 private sibling `highschool-review-v3-subagent/`。此試審使用子代理工具，沒有正式 Responses API 的 constrained decoding、帳單或 cache metadata；不宣稱普遍改善或完整命題品質驗收。
+
+`question-review-validation` 在交付及結算前檢查完整篇幅、底線、答案／usage 恰好一次、來源順序、選項唯一、空格跨度、完整非相鄰篇章句與跨句原文依據。它驗證可機器判定的條件，不證明全文唯一解、來源詞義、實質推論或鑑別度。機器與前端核對都通過後仍需人工校對。
+
+本地合成 provider 與真正 D1 測試：157 項、typecheck、lint、build 通過，涵蓋兩回合修訂交付、拒絕不交初稿／退款、取消、同 session 不再扣、逐回合缺漏用量及 migration13。尚未驗收正式 provider、帳單、CPU、快取命中或 Firebase 生成。
+
+### 現行 prompt cache 結構
+
+Writer 與 reviewer 分別把共用規則放在第一個 developer block，題型／難度放在後續 block，來源、初稿及修復資料最後才放 user input。Reviewer 固定前綴以專案 tokenizer 計為 1,863 tokens，第一段 explicit breakpoint 配合 30 分鐘 TTL；同題型跨來源、難度及初稿保持 schema 與固定前綴一致。Lite／Thinking 的 reviewer 都採 medium，Pro 採 high；不同模型、reasoning 或題型 schema 可能形成不同前綴，不能宣稱跨所有題型共用一次 cache。
+
+依 [OpenAI prompt caching 文件](https://developers.openai.com/api/docs/guides/prompt-caching)，GPT-5.6 以上可快取前綴至少 1,024 visible input tokens，必須逐字一致，schema／模型設定也會影響匹配；cache key 可作分帳隔離，不需要靠 key 優化這些模型的路由。版本鍵只跟固定 prompt 契約走，不含 uid、session、來源或難度；保持單字／補義、整理、解釋的既有鍵。必要測試核對真正 upstreamRequest 的前綴、schema、reasoning、breakpoint、TTL 與無 writer cursor，實際命中仍以供應商 cache read／write tokens 為準。
+
+```powershell
+# 會消耗 Codex 額度；可用最後參數只選一類樣本。
+node scripts/evaluate-question-review.mjs latest-reading
+```
+
+目前預設 phase 為 `highschool-review-v3`，每次另存 timestamp 快照，CLI 非零即停止後續樣本。需要指定新的 phase 可設 `LEXIRO_REVIEW_EVAL_PHASE`，不要覆寫舊基準。其他歷史評測與來源說明保留如下。
 
 ## 2026-10-02 高中題目品質校準
 
