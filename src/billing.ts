@@ -1,5 +1,6 @@
 import type { D1Database } from "@cloudflare/workers-types";
 import type { AdminAccount } from "@lexiro/ai-contract";
+import type { UsagePart } from "./usage-parts";
 
 export class BillingError extends Error {
   constructor(public status: 402 | 409 | 429) {
@@ -30,6 +31,7 @@ export interface Usage {
   output?: number;
 }
 export interface Settlement {
+  usageParts?: readonly UsagePart[];
   cursor?: string;
   /** Assessed points before the balance cap; distinct from the actual debit. */
   charged?: number;
@@ -235,17 +237,17 @@ export async function settle(
   const statements = [
     db.prepare(
       `INSERT INTO usage_log
-       (id,uid,points,assessed_points,debit_verified,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units,usage_state)
+       (id,uid,points,assessed_points,debit_verified,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units,usage_state,usage_parts)
        SELECT ?1,?2,
          CASE WHEN EXISTS(SELECT 1 FROM charges WHERE attempt_id=?1)
            THEN MIN(?3,MAX(0,points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?1)))
            ELSE 0 END,
-         ?3,1,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15
+         ?3,1,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16
        FROM accounts WHERE uid=?2
        ON CONFLICT(id) DO UPDATE SET
          points=excluded.points,assessed_points=excluded.assessed_points,debit_verified=1,
          input=excluded.input,cached=excluded.cached,cache_write=excluded.cache_write,output=excluded.output,
-         credits=excluded.credits,status=excluded.status,usage_state=excluded.usage_state
+         credits=excluded.credits,status=excluded.status,usage_state=excluded.usage_state,usage_parts=excluded.usage_parts
        WHERE usage_log.usage_state='pending'`,
     ).bind(
       attempt, uid, chargedCredits, usage.model,
@@ -253,6 +255,7 @@ export async function settle(
       usage.output ?? null, nowSeconds(), cost, status ?? "complete",
       settlement.kind ?? "", settlement.tier ?? "", settlement.units ?? 0,
       settlement.usageState ?? "reported",
+      JSON.stringify(settlement.usageParts ?? [{ ...usage, cursor }]),
     ),
     db
       .prepare(

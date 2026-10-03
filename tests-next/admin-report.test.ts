@@ -14,6 +14,10 @@ afterEach(async () => {
   await fixture.runtime.dispose();
 });
 async function request(path: string) {
+  // These fixtures describe single provider calls using the original scalar columns.
+  await fixture.db.prepare(`UPDATE usage_log SET usage_parts=json_array(json_object(
+    'model',model,'input',input,'output',output,'cached',cached,'cacheWrite',cache_write))
+    WHERE usage_parts='[]'`).run();
   return adminRequest(
     new Request(`https://local.test${path}`),
     { DB: fixture.db } as Env,

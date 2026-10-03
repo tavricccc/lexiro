@@ -6,6 +6,14 @@ const text = z.string();
 const texts = z.array(text);
 const blank = z.object({ answer: text });
 const choices = z.object({ answer: text, distractors: texts });
+// Structured Outputs follows property order: write the context, then quote its answer.
+export const sentenceQuestionItem = z.object({ sentence: text, usage: text, answer: text, distractors: texts });
+export const readingQuestionItem = choices.extend({
+  question: text,
+  skill: z.enum(READING_SKILLS),
+  evidence: texts,
+});
+export const clozeQuestionItem = choices;
 /**
  * A word's meaning, and its part of speech when the source did not already
  * state one.
@@ -31,7 +39,7 @@ export const wordOutput = ({ min, max }: { min: number; max: number }) =>
   });
 export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary" || kind === "grammar")
-    return z.object({ items: z.array(choices.extend({ sentence: text, usage: text })) });
+    return z.object({ items: z.array(sentenceQuestionItem) });
   if (kind === "cloze")
     return z.object({ title: text, passage: text, blanks: z.array(choices) });
   if (kind === "wordBank")
@@ -51,11 +59,7 @@ export function questionOutput(kind: GeneratedQuestionKind) {
   return z.object({
     title: text,
     passage: text,
-    items: z.array(choices.extend({
-      question: text,
-      skill: z.enum(READING_SKILLS),
-      evidence: texts,
-    })),
+    items: z.array(readingQuestionItem),
   });
 }
 export const jsonSchema = (schema: z.ZodType): Record<string, unknown> => {

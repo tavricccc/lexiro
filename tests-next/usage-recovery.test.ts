@@ -27,6 +27,24 @@ const ledger = (id: string) => fixture.db.prepare(
 ).bind(id).first();
 
 describe("unknown provider usage", () => {
+  it("migrates existing one-response pending operations into recoverable usage parts", async () => {
+    const legacy = await testDatabase("0012_admin_versions.sql");
+    try {
+      const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID() }, "u");
+      const hold = await reserve(legacy.db, "u", prepared.units, prepared.halfRate);
+      await legacy.db.batch([
+        legacy.db.prepare("INSERT INTO usage_log(id,uid,points,model,created_at,credits,usage_state) VALUES(?,'u',0,'gpt-6-luna',?,NULL,'pending')").bind(hold.attempt, nowSeconds()),
+        legacy.db.prepare("INSERT INTO pending_usage(attempt_id,uid,response_id,model,chargeable,successful_ids) VALUES(?,'u','resp_pending','gpt-6-luna',1,?)").bind(hold.attempt, JSON.stringify(prepared.units.map((unit) => unit.id))),
+      ]);
+      const sql = await readFile(new URL("../migrations/0013_usage_parts.sql", import.meta.url), "utf8");
+      await legacy.db.batch(sql.split(";").map((statement) => statement.trim()).filter(Boolean).map((statement) => legacy.db.prepare(statement)));
+      const pending = await legacy.db.prepare("SELECT usage_parts FROM pending_usage").first<{ usage_parts: string }>();
+      expect(JSON.parse(pending!.usage_parts)).toEqual([{ model: "gpt-6-luna", cursor: "resp_pending" }]);
+      await reconcileUsage(legacy.db, async () => ({ ...complete(), usage }), "u");
+      expect((await legacy.db.prepare("SELECT usage_state,credits FROM usage_log").first())).toMatchObject({ usage_state: "reported", credits: 1 });
+      expect((await account(legacy.db, "u"))!.points).toBe(99);
+    } finally { await legacy.runtime.dispose(); }
+  });
   it("marks old missing usage as unavailable without inventing historical charges", async () => {
     const legacy = await testDatabase("0009_verified_debits.sql");
     try {

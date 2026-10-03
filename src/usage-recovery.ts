@@ -1,7 +1,7 @@
 import type { D1Database } from "@cloudflare/workers-types";
 import { nowSeconds, settle, type Reservation, type Settlement, type Usage } from "./billing";
-import { creditsFromUsage } from "./credits";
 import type { Env } from "./env";
+import { completeUsage, partsCost, sumUsage, type UsagePart } from "./usage-parts";
 
 export type UsageRecovery = (cursor: string) => Promise<Record<string, unknown> | undefined>;
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -48,7 +48,8 @@ export async function deferUsage(
   metadata: Settlement,
 ): Promise<void> {
   const { uid, attempt } = reservation;
-  if (!metadata.cursor) {
+  const parts = metadata.usageParts ?? [{ model, cursor: metadata.cursor }];
+  if (parts.some((part) => !completeUsage(part) && !part.cursor)) {
     await settle(db, reservation, reservation.charges, { model }, {
       ...metadata, charged: 0, cost: null, usageState: "unavailable",
     });
@@ -56,14 +57,14 @@ export async function deferUsage(
   }
   const statements = [
     db.prepare(`INSERT OR IGNORE INTO usage_log
-      (id,uid,points,model,created_at,credits,status,kind,tier,units,usage_state,debit_verified,assessed_points)
-      VALUES(?,?,0,?,?,NULL,?,?,?,?, 'pending',?,?)`)
+      (id,uid,points,model,created_at,credits,status,kind,tier,units,usage_state,debit_verified,assessed_points,usage_parts)
+      VALUES(?,?,0,?,?,NULL,?,?,?,?, 'pending',?,?,?)`)
       .bind(attempt, uid, model, nowSeconds(), metadata.status ?? "failed",
         metadata.kind ?? "", metadata.tier ?? "", metadata.units ?? 0,
-        chargeable ? 0 : 1, chargeable ? null : 0),
-    db.prepare(`INSERT OR IGNORE INTO pending_usage(attempt_id,uid,response_id,model,chargeable,successful_ids)
-      SELECT ?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM usage_log WHERE id=? AND usage_state='pending')`)
-      .bind(attempt, uid, metadata.cursor, model, chargeable ? 1 : 0, JSON.stringify(successfulIds), attempt),
+        chargeable ? 0 : 1, chargeable ? null : 0, JSON.stringify(parts)),
+    db.prepare(`INSERT OR IGNORE INTO pending_usage(attempt_id,uid,response_id,model,chargeable,successful_ids,usage_parts)
+      SELECT ?,?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM usage_log WHERE id=? AND usage_state='pending')`)
+      .bind(attempt, uid, metadata.cursor ?? parts.at(-1)!.cursor!, model, chargeable ? 1 : 0, JSON.stringify(successfulIds), JSON.stringify(parts), attempt),
     db.prepare("INSERT OR IGNORE INTO cursors(response_id,uid,created_at) VALUES(?,?,?)")
       .bind(metadata.cursor, uid, nowSeconds()),
   ];
@@ -89,6 +90,7 @@ interface PendingUsage {
   kind: string;
   tier: string;
   units: number;
+  usage_parts: string;
 }
 
 /** Bound both D1 work and provider calls; failed lookups rotate to the back. */
@@ -100,18 +102,26 @@ export async function reconcileUsage(db: D1Database, recover: UsageRecovery, uid
   const rows = await (uid === undefined ? statement : statement.bind(uid)).all<PendingUsage>();
   for (const row of rows.results) {
     await db.prepare("UPDATE pending_usage SET checked_at=? WHERE attempt_id=?").bind(nowSeconds(), row.attempt_id).run();
-    const response = await recover(row.response_id).catch(() => undefined);
-    const usage = reportedUsage(response, row.model);
-    if (!usage) continue;
-    const cost = creditsFromUsage(usage);
+    const parts = JSON.parse(row.usage_parts) as UsagePart[];
+    for (let index = 0; index < parts.length; index++) {
+      const part = parts[index];
+      if (completeUsage(part)) continue;
+      const response = await recover(part.cursor!).catch(() => undefined);
+      const usage = reportedUsage(response, part.model);
+      if (usage) parts[index] = { ...usage, cursor: part.cursor };
+    }
+    await db.prepare("UPDATE pending_usage SET usage_parts=? WHERE attempt_id=?")
+      .bind(JSON.stringify(parts), row.attempt_id).run();
+    const cost = partsCost(parts);
     if (cost === null) continue;
+    const usage = sumUsage(parts);
     const charges = (await db.prepare("SELECT id,points FROM charges WHERE attempt_id=?")
       .bind(row.attempt_id).all<{ id: string; points: number }>()).results;
     const successful = new Set(JSON.parse(row.successful_ids) as string[]);
     await settle(db, { uid: row.uid, attempt: row.attempt_id, charges },
       charges.filter((charge) => !successful.has(charge.id)), usage, {
         cursor: row.response_id, charged: row.chargeable ? cost : 0, cost,
-        status: row.status, kind: row.kind, tier: row.tier, units: row.units,
+        status: row.status, kind: row.kind, tier: row.tier, units: row.units, usageParts: parts,
       });
   }
 }

@@ -11,10 +11,10 @@ import { encodeCursor, readCursor, usageCursor } from "./pagination";
 
 /** Price each stored response before grouping; a month's total is not one context. */
 function costSql(alias: string) {
-  const input = `${alias}.input`;
-  const cached = `${alias}.cached`;
-  const writes = `${alias}.cache_write`;
-  const output = `${alias}.output`;
+  const input = "json_extract(part.value,'$.input')";
+  const cached = "json_extract(part.value,'$.cached')";
+  const writes = "json_extract(part.value,'$.cacheWrite')";
+  const output = "json_extract(part.value,'$.output')";
   const rates = Object.entries(MODEL_PRICES).map(([model, price]) => {
     const inputCost = `(${input}-${cached}-${writes})*${price.input}+${cached}*${price.cached}+${writes}*${price.cacheWrite}`;
     const outputCost = `${output}*${price.output}`;
@@ -24,8 +24,11 @@ function costSql(alias: string) {
       : ordinary;
     return `WHEN '${model}' THEN ${cost}`;
   });
-  return `CASE WHEN ${alias}.usage_state='reported' AND ${input} IS NOT NULL AND ${cached} IS NOT NULL AND ${writes} IS NOT NULL AND ${output} IS NOT NULL
-    THEN CASE ${alias}.model ${rates.join(" ")} ELSE NULL END ELSE NULL END`;
+  const cost = `CASE WHEN ${input} IS NOT NULL AND ${cached} IS NOT NULL AND ${writes} IS NOT NULL AND ${output} IS NOT NULL
+    THEN CASE json_extract(part.value,'$.model') ${rates.join(" ")} ELSE NULL END ELSE NULL END`;
+  return `CASE WHEN ${alias}.usage_state='reported' THEN
+    (SELECT CASE WHEN COUNT(*)>0 AND COUNT(*)=COUNT(${cost}) THEN SUM(${cost}) ELSE NULL END
+      FROM json_each(${alias}.usage_parts) part) ELSE NULL END`;
 }
 
 /** Keyset pages and indexed 30-day aggregates; unknown costs remain separate. */

@@ -2,7 +2,7 @@ import type {
   ExecutionContext,
   ScheduledController,
 } from "@cloudflare/workers-types";
-import { LIMITS } from "@lexiro/ai-contract";
+import { LIMITS, QUESTION_KINDS, REVIEWED_QUESTION_CONTRACT } from "@lexiro/ai-contract";
 import {
   AuthenticationError,
   isAdministrator,
@@ -24,6 +24,7 @@ import { prepareImages } from "./organize";
 import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
 import { createUsageRecovery, reconcileUsage } from "./usage-recovery";
+import { reviewedQuestionStream } from "./reviewed-question-stream";
 import type { Env } from "./env";
 
 /**
@@ -58,7 +59,7 @@ export function createWorker(
           ? { "access-control-allow-origin": origin }
           : {}),
         "access-control-allow-headers":
-          "Authorization, Content-Type, X-Session-Id, X-AI-Model",
+          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-Question-Contract",
         "access-control-allow-methods": "GET, POST, PATCH, OPTIONS",
         "access-control-expose-headers": "X-Context-Rebuilt, Retry-After",
       };
@@ -121,6 +122,9 @@ export function createWorker(
           ["organizeText", "organizeImage"].includes(prepared.request.kind)
         )
           throw new HttpError(400, "invalid_input");
+        if (QUESTION_KINDS.includes(prepared.request.kind as typeof QUESTION_KINDS[number]) &&
+            request.headers.get("x-question-contract") !== REVIEWED_QUESTION_CONTRACT)
+          throw new HttpError(426, "question_update_required");
         // An administrator holds no balance, no lock and no retry budget: the
         // run still settles so its cursor and token usage are recorded.
         const reservation = admin
@@ -142,6 +146,11 @@ export function createWorker(
             request.signal,
             AbortSignal.timeout(110_000),
           ]);
+          if (QUESTION_KINDS.includes(prepared.request.kind as typeof QUESTION_KINDS[number])) {
+            const reviewed = reviewedQuestionStream({ env, prepared, reservation, fetcher, recoverUsage, cursor, signal, admin });
+            ctx.waitUntil(reviewed.done);
+            return decorate(new Response(reviewed.body, { headers: { "content-type": "text/event-stream" } }));
+          }
           const send = () =>
             fetcher(`${env.OPENAI_BASE_URL}/responses`, {
               method: "POST",
