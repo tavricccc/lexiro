@@ -58,6 +58,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - Forest-green selection and action controls, mist-white content, compact title bars, and generous shared corners keep the workspace personal and directly operable. Buttons, tabs, forms, lists, and overlays share the larger radius scale. Ink-green and spring-green surfaces remain in completion feedback.
 - Back controls show only an arrow; their accessible labels retain the return destination.
 - Progress pairs counts and bars with text; reaching a goal changes the play mark to a check. Completion feedback must follow successful storage rather than an optimistic visual result.
+- Question review and passage practice use an article/question workspace: two columns from 1024px, tabs on narrower screens, one focused item at a time. Generation can exclude individual questions or packs before saving. Shared banks are edited once; explanations stay aligned when options change. Same-passage practice preserves reading position and reveals only the current item's explanation after storage succeeds.
 - Open Doodles may accompany empty, loading, and completion states without competing with learning content. Highlights uses the same forest-green family for semantic emphasis. This revision retains the committed SVG assets and adds no raster artwork.
 
 ## Evidence on Hand

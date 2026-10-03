@@ -1,5 +1,5 @@
-# Prompt evaluation
+# Prompt 評測
 
-Prompt sources, schemas, synthetic input fixtures and evaluation scripts are maintained in the private `lexiro-worker` repository. Public frontend tests cover parsing, assembly, serial execution, partial recovery and request boundaries.
+Prompt、schema、合成來源與模型評測腳本維護在 private `lexiro-worker`。公開前端測試涵蓋解析、組題、序列執行、恢復、審題進度、請求契約及使用量邊界。
 
-The private evaluator uses the production frontend parsers through a local frontend checkout. Its real-model runs consume Codex account usage. Revalidating saved responses does not call a model. A successful parser result is not a complete educational-quality or production API test.
+Private evaluator 透過本地 checkout 使用實際前端 parser；真實 CLI 執行消耗 Codex 額度，重驗已存回覆不呼叫模型。2026-10-03 的審題第二版只完成三回合，後續因額度用盡未完成。最後版本另以一個 fresh 6 Luna／medium 子代理盲審八題，模型拒絕，修訂稿也未通過原文跨度檢查；請求、回覆及人工發現保存在 private sibling。不能以 parser 通過或模型自稱 approved 當作唯一解、干擾力或正式 API 驗收。範圍見[高中題目品質](question-quality.md)。

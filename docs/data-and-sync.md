@@ -46,9 +46,11 @@ Journal 是 sidecar，記未送 record、刪除與 learning／preference blob。
 | Pending preference drafts | 1 | preference-drafts.ts，只存編輯欄位 |
 | Full backup ZIP | 4 | constants/backup.ts，內含 lexiro-backup.json，舊版本拒絕 |
 | Set share ZIP | 1 | types/backup.ts，內含 lexiro-set.json |
-| AI contract | 2.2.0 | packages/ai-contract/package.json，與 private Worker tgz 同步 |
+| AI contract | 2.3.0 | packages/ai-contract/package.json，與 private Worker tgz 同步 |
 
 版號各自演進，修改一段 prompt 不會重設全部資料。備份匯出等待保存；匯入預覽只回數量，確認後在 queue 合併最新 state，不拿預覽快照覆蓋後續編輯。
+
+題組子題新增可選 `explanation`／`whyWrong`，沿用原 canonical 題目與備份格式；舊題沒有解析仍可編輯。Reading editor 舊草稿一次補回原題型、共用選項與空格；single editor 草稿一次補上可編輯的理由。這些升級不清除原題、詞義、學習進度或同步佇列。
 
 ## Firestore 權限
 

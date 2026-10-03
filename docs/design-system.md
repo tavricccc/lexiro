@@ -321,10 +321,28 @@ StepActions 在桌機將操作 portal 到 PageHeader 右側的 `data-page-action
 主綠。保留原 SVG 來源紀錄；這次沒有新增 raster 素材。插畫是輔助內容，使用
 `aria-hidden`，不能取代操作標籤或狀態文字。
 
-本機驗證範圍涵蓋新增與儲存教材、分頁切換、進入練習，以及手機／桌機／手機深色
+2026-10-01 的本機驗證範圍涵蓋新增與儲存教材、分頁切換、進入練習，以及手機／桌機／手機深色
 畫面。266 tests、lint、typecheck、build 通過；當前精簡殼層圖為
 `.impeccable/review/compact-desktop.png` 與 `compact-mobile.png`。
 真實 Firebase 同步與付費 AI 執行不在本機驗證範圍。
+
+## 題目與文章工作區
+
+2026-10-03 改版沿用原 token 與固定操作。`QuestionWorkspace`／`QuestionCard` 的畫布
+最大寬度 72rem，從 64rem 起文章與當前小題並列，更窄時由 LiquidTabs 切換。
+文章字級手機 1rem、從 40rem 起 1.0625rem，行高 1.9；校對選項與解說使用
+1rem、行高 1.75。完整錯項文字與理由上下排列，不能使用不可收縮的長文字欄。
+
+`QuestionPager` 切換題目及空格，答案鍵可以定位原文。共用 bank 只編輯一次，
+`OptionReasons` 以選項文字維護理由；`DistractorReasonsEditor` 提供逐項校對。
+分頁連到實際 panel，文章支援鍵盤捲動；同篇下一題保留閱讀位置。
+
+這次真正 App 的合成教材檢查範圍為 1366×900、390×844 的編輯、閱讀、作答及
+長理由排版；修改選項與理由後，實際保存並重新開啟確認。獨立複核發現的長理由
+排版及選項／理由關聯兩項均修正後判為 resolved。未用模型產出的圖片或臨時 mock 路由
+當驗收畫面。深色、200% zoom、真實雲端與登入生成不在這批畫面證據中。
+
+最後靜態 detector 僅回報既有鍵盤提示 11px 的字級 advisory；不將它擴成新的正文尺度。
 
 ## Components
 

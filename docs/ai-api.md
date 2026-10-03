@@ -13,15 +13,17 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 | `/admin/usage` | 近 30 天、各模型／工作／帳號的用量與未知成本 |
 | `/admin/settings` | 新帳號初值與免費試用，expected PATCH |
 
-`managed-client.ts` 只在 401 強制刷新 token 一次。串流消費 Responses text events，累計每個 response 的 usage；帳號改變會中止／拒絕舊結果。Worker 保留文字內容，用白名單重建 Response metadata，移除 instructions／input／prompt 回顯並中和上游錯誤。
+`managed-client.ts` 只在 401 強制刷新 token 一次。串流消費 Responses text events，累計每個 response 的 usage；帳號改變會中止／拒絕舊結果。Worker 用白名單重建 Response metadata，移除 instructions／input／prompt 回顯並中和上游錯誤。題目額外使用 `lexiro.question.progress` 表示出題／審題進度，初稿不轉發。
+
+題目請求帶 `X-Question-Contract: reviewed-v1`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。`question_quality_rejected` 不自動重試，也不保留未核准的初稿。
 
 Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 response。暫停保留記憶體中的 pending work；重新整理結束未完成工作。流程草稿另保存已完成且可校對的成果，恢復它不必再次生成。
 
 ## 批次與校對
 
-`src/lib/ai/tasks.ts`：單字每批 25 個來源、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙／文法每批最多八個來源。Runner 依序執行並保留有效部分，來源的 ref 跟著內容傳递。
+`src/lib/ai/tasks.ts`：單字每批 25 個來源、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙／文法每批最多八個來源。Runner 依序執行並保留有效部分，來源的 ref 跟著內容傳遞。
 
-所有 AI 題目都由 Worker 生成情境與干擾選項，不再優先用舊例句挖空或從詞庫隨機補選項。新回覆先通過共用的高中篇幅門檻；句子題再檢查確切 usage span 與 answer span，各出現一次、詞彙 answer 從 usage 開始，再挖空並排序選項。校對畫面顯示目標詞義、全文字數和共用選項答案配對，加入才寫 Library。語意與唯一解仍須校對，完整規格見[高中題目品質](question-quality.md)。
+所有 AI 題目由 Worker 出初稿並獨立審題，核准稿通過高中篇幅、跨度與閱讀依據門檻後才回前端。句子題完整寫出 sentence，再取 usage／answer，程式負責挖空及排序。校對一次看一題／題組，可取消納入後儲存選取項目；新增的逐題解說與錯項理由跟選項保存。語意與唯一解仍須校對，完整規格見[高中題目品質](question-quality.md)。
 
 照片確認後先縮 WebP，每張最多 1.5 MB、長邊 1800；每批 1-10 張。text/plain 每行一張 base64，整批上限 20,000,009 bytes，headers 帶 `X-Session-Id`、`X-AI-Model`。Worker 驗證後一次送多圖片 Responses request，圖片不落地。不同批次依序執行，已完成部分保留。
 
@@ -29,7 +31,9 @@ Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 re
 
 ## 模型、估算與結算
 
-共用 contract 2.2.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
+共用 contract 2.3.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
+
+題目估算另含兩回合係數，審題至少 medium；不是實測成本上界。兩回合仍只預留與結算一次，拒絕／取消整批釋放預留。`response.lexiro.usageParts` 與 client `TokenUsage.parts` 保留每個 response 的用量，各自計價後加總。任一回合用量缺漏，整批成本維持未知並逐 cursor 補查；不能用已知一半冒充總成本。
 
 程式 `MODEL_PRICES` 記錄 Standard／cache read／cache write／output 的採用費率；兩個模型 input 超過 272,000 時，整次 response 的 input 成本 2 倍、output 1.5 倍。每個 response 先計價再彙總，不能把多次 input 加總後套長上下文門檻。這是版本化程式契約，不是本文件查證的供應商即時牌價。
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-01T04:01:19.112Z",
+  "generatedAt": "2026-10-03T00:31:48.903Z",
   "title": "Design System: Lexiro",
   "extensions": {
     "colorMeta": {
@@ -93,6 +93,18 @@
       "result-score": {
         "displayName": "本輪完成數量",
         "purpose": "結算區56px等寬數字；依已儲存的記得或答對數量顯示。"
+      },
+      "question-body": {
+        "displayName": "題目校對內容",
+        "purpose": "校對選項與逐題解說；長選項與理由上下排列。"
+      },
+      "passage-mobile": {
+        "displayName": "手機文章",
+        "purpose": "手機閱讀面，16px／1.9；從 40rem 起使用 passage。"
+      },
+      "passage": {
+        "displayName": "文章",
+        "purpose": "從 40rem 起的閱讀面，17px／1.9。"
       }
     },
     "shadows": [
@@ -167,6 +179,10 @@
       {
         "name": "saved-set-columns",
         "value": "80rem"
+      },
+      {
+        "name": "reading-workspace",
+        "value": "64rem"
       }
     ]
   },
@@ -246,6 +262,13 @@
       "description": "單字卡顯示單字介紹；完成區與解析相隔section-gap，操作列預留區放在最後。此片段僅示意內容順序，不模擬固定操作列。",
       "html": "<div class=\"ds-result\"><section class=\"ds-result-finish\"><p class=\"ds-result-score\">17<span>/18</span></p><p>這一輪記得或答對的題數；學習進度已儲存。</p></section><section class=\"ds-result-explanation\"><h2>單字介紹</h2><h3>a rural area</h3><p>字義、例句與用法依提供的單字內容介紹。</p></section><div class=\"ds-result-space\" aria-hidden=\"true\"></div></div>",
       "css": ".ds-result{display:flex;flex-direction:column;font-family:var(--font-sans);color:var(--foreground)}.ds-result-finish{padding:2rem 1.5rem;text-align:center;border-radius:var(--radius-stage);background:var(--study-ink);color:var(--study-paper)}.ds-result-score{margin:0;font-size:3.5rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}.ds-result-score span{color:var(--study-soft)}.ds-result-explanation{margin-top:var(--section-gap);border-top:var(--hairline) solid var(--rule);padding-top:1.5rem}.ds-result-explanation h2{margin:0;font-size:1.125rem;font-weight:500;line-height:1.45}.ds-result-explanation h3{margin:1rem 0 .5rem;font-size:1rem}.ds-result-explanation p{font-size:.875rem;line-height:1.65}.ds-result-space{min-height:5.5rem;margin-top:1rem} @media(min-width:48rem){.ds-result-space{display:none}}"
+    },
+    {
+      "name": "練習選項",
+      "kind": "button",
+      "description": "白色答題列至少56px，28px字母標記；長英文自然換行。四選一縱排，十個共用選項雙欄。pending只表示選取，儲存成功才揭答。",
+      "html": "<button class=\"ds-answer\" type=\"button\" aria-pressed=\"false\"><span class=\"ds-answer-letter\">A</span><span class=\"ds-answer-text\">The group checked the records before reaching its conclusion.</span></button>",
+      "css": ".ds-answer{display:flex;align-items:center;gap:.75rem;width:100%;min-height:3.5rem;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius-control);background:var(--card);color:var(--foreground);text-align:left;font-family:var(--font-sans);font-size:.9375rem;transition:background-color var(--motion-control),border-color var(--motion-control)}.ds-answer-letter{display:grid;place-items:center;width:1.75rem;height:1.75rem;flex-shrink:0;border-radius:9999px;background:var(--muted);color:var(--muted-foreground);font-size:.75rem;font-weight:600}.ds-answer-text{flex:1;min-width:0;line-height:1.5rem}.ds-answer:hover{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 5%,var(--card))}.ds-answer:focus-visible{outline:2px solid var(--ring);outline-offset:2px}.ds-answer[aria-pressed=\"true\"]{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 10%,var(--card))}.ds-answer:disabled{cursor:default}"
     }
   ],
   "narrative": {
