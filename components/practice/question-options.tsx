@@ -21,7 +21,7 @@ export function QuestionOptions({
     <div
       className={cn(
         "mt-5 grid gap-2.5",
-        item.options.length > 5 && "grid-cols-2",
+        item.options.length > 5 && "sm:grid-cols-2",
       )}
     >
       {item.options.map((option, optionIndex) => {
@@ -52,7 +52,7 @@ export function QuestionOptions({
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
-              "flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-[0.9375rem] transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
+              "flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
               stateClass,
             )}
           >
@@ -64,7 +64,9 @@ export function QuestionOptions({
             >
               {String.fromCharCode(65 + optionIndex)}
             </span>
-            <span className="min-w-0 flex-1 leading-6">{option}</span>
+            <span className="min-w-0 flex-1 break-words leading-6">
+              {option}
+            </span>
             {isPending && (
               <Icons.loading
                 aria-hidden

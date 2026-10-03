@@ -21,7 +21,10 @@ import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { isDue } from "@/src/lib/fsrs";
-import { questionBelongsToMemberships } from "@/src/lib/question-ownership";
+import {
+  isExamQuestion,
+  questionBelongsToMemberships,
+} from "@/src/lib/question-ownership";
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 import { SetMoveDialog } from "@/components/library/set-move-dialog";
 import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
@@ -92,8 +95,13 @@ export function SetView({
 
   const questions = useMemo(
     () =>
-      state.questions.filter((question) =>
-        questionBelongsToMemberships(question, state.memberships[setId] ?? []),
+      state.questions.filter(
+        (question) =>
+          isExamQuestion(question) &&
+          questionBelongsToMemberships(
+            question,
+            state.memberships[setId] ?? [],
+          ),
       ),
     [setId, state.memberships, state.questions],
   );

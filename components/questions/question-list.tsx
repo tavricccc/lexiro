@@ -12,6 +12,7 @@ import { EmptyState } from "@/components/ui/page-state";
 import { QuestionListSkeleton } from "@/components/ui/workspace-skeleton";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
+import { isExamQuestion } from "@/src/lib/question-ownership";
 import {
   difficultyOptions,
   questionFormatLabel,
@@ -60,6 +61,7 @@ export function QuestionList({
   const questions = useMemo(
     () =>
       state.questions.filter((question) => {
+        if (!isExamQuestion(question)) return false;
         const type =
           question.kind === "reading"
             ? question.format
@@ -83,11 +85,13 @@ export function QuestionList({
   const presentFormats = useMemo(
     () =>
       new Set<string>(
-        state.questions.map((question) =>
-          question.kind === "reading"
-            ? question.format
-            : question.questionStyle,
-        ),
+        state.questions
+          .filter(isExamQuestion)
+          .map((question) =>
+            question.kind === "reading"
+              ? question.format
+              : question.questionStyle,
+          ),
       ),
     [state.questions],
   );
@@ -112,7 +116,7 @@ export function QuestionList({
 
   return (
     <div>
-      {state.questions.length > 0 && (
+      {presentFormats.size > 0 && (
         <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_9rem]">
           <SearchField
             label={t("questions.search")}

@@ -90,7 +90,10 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
             ? "draft.invalidDescription"
             : "draft.questionDescription",
         )}
-        invalid={saved.status === "invalid"}
+        invalid={
+          saved.status === "invalid" ||
+          Boolean(saved.pending && !FORMATS.includes(saved.pending.kind))
+        }
         onRestart={saved.restart}
         onResume={() => {
           const pending = saved.pending!;

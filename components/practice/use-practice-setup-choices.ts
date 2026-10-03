@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { DEFAULT_CARD_TASKS, DEFAULT_QUESTION_TASKS } from "@/constants";
+import { isPracticeTask } from "@/src/constants/practice";
 import { useCloudStore } from "@/stores/cloud-store";
 import type {
   PracticeTask,
@@ -65,9 +66,9 @@ export function usePracticeSetupChoices(
     saved.resume();
     setTasks([
       ...new Set(
-        draft.tasks.map((task) =>
-          String(task) === "flashcard" ? "meaning" : task,
-        ),
+        draft.tasks
+          .map((task) => (String(task) === "flashcard" ? "meaning" : task))
+          .filter(isPracticeTask),
       ),
     ]);
     setSetId(draft.setId);

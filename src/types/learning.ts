@@ -4,7 +4,7 @@ export type ReviewRating = "again" | "good";
 import type { GeneratedQuestionKind } from "./library";
 
 /** Stats are kept per exam format, so the progress page mirrors a real paper. */
-export type QuestionStatType = GeneratedQuestionKind | "meaning";
+export type QuestionStatType = GeneratedQuestionKind | "meaning" | "grammar";
 export type QuestionStatKey = `${QuestionStatType}:${1 | 2 | 3}`;
 
 export interface QuestionStats {

@@ -67,7 +67,7 @@ describe("local English-to-Chinese questions", () => {
       studyItems: words,
     });
     const keys = queue.map((entry) =>
-      entry.kind === "question" ? entry.item.wordKey : entry.word.wordKey,
+      entry.item.wordKey,
     );
     expect(new Set(keys).size).toBe(queue.length);
     const saved = Object.fromEntries(

@@ -62,7 +62,6 @@ export type {
   SessionEntry,
   SessionHeaderModel,
   SessionStatus,
-  PracticeCardTask,
   PracticeQuestionTask,
   PracticeSessionSnapshot,
   PracticeTask,

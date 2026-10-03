@@ -19,9 +19,8 @@ export type QuestionCreateChoice = 'question' | 'reading'
 export type VocabularyDifficultyFilter = 'all' | '1' | '2' | '3'
 
 /**
- * Single-sentence formats. Both are one sentence with one blank and four
- * options, which is how 詞彙題 and 文法題 appear on a Taiwanese paper; they
- * differ in what the blank tests, not in shape.
+ * Persisted single-sentence records. grammar is retained only for historical
+ * backups; it is excluded from authoring, the bank and practice.
  */
 export type QuestionStyle = 'vocabulary' | 'grammar'
 
@@ -32,7 +31,7 @@ export type QuestionStyle = 'vocabulary' | 'grammar'
 export type PassageFormat = 'reading' | 'cloze' | 'wordBank' | 'discourse'
 
 /** What the generator can be asked to produce. */
-export type GeneratedQuestionKind = QuestionStyle | PassageFormat
+export type GeneratedQuestionKind = 'vocabulary' | PassageFormat
 
 export type VocabularyQuestionTypeFilter = 'all' | QuestionStyle | PassageFormat
 

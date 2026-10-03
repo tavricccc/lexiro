@@ -112,6 +112,18 @@ export function PracticePage({
     () => questionGroups.flat(),
     [questionGroups],
   );
+  const retiredEntryIds = useMemo(
+    () =>
+      new Set(
+        state.questions.flatMap((question) =>
+          question.kind === "multipleChoice" &&
+          question.questionStyle === "grammar"
+            ? [`question:${question.id}`]
+            : [],
+        ),
+      ),
+    [state.questions],
+  );
   const setIds = useMemo(
     () => new Set(state.sets.map((entry) => entry.id)),
     [state.sets],
@@ -142,7 +154,9 @@ export function PracticePage({
       studyItems,
     ],
   );
-  const hasQuestionContent = state.questions.length > 0;
+  const hasQuestionContent = questionGroups.some(
+    (group) => group[0]?.type !== "meaning" && group.length > 0,
+  );
   const availableQuestionCount = useMemo(
     () =>
       countQuestionAvailability({
@@ -236,6 +250,7 @@ export function PracticePage({
     enabled: libraryStatus === "ready" && learningLoaded,
     initialSet,
     memberships: state.memberships,
+    retiredEntryIds,
     restoreAttempted,
     setIds,
     onOffer: useCallback((snapshot, entries) => {
@@ -291,12 +306,8 @@ export function PracticePage({
 
   usePracticeKeyboard({
     enabled: started && !complete && Boolean(current),
-    kind: current?.kind ?? "card",
-    revealed,
     selected,
     busy: actions.actionBusy,
-    onReveal: () => setRevealed(true),
-    onRate: (rating) => void actions.rate(rating, true),
     onAnswer: (choice) => void actions.answer(choice),
     onNext: () => actions.next(true),
     optionCount: current?.kind === "question" ? current.item.options.length : 4,
@@ -387,13 +398,7 @@ export function PracticePage({
         skipped={skipped.length}
         marked={marked.length}
         wrongContent={wrongContent}
-        mode={
-          activeEntries.every((entry) => entry.kind === "card")
-            ? "cards"
-            : activeEntries.every((entry) => entry.kind === "question")
-              ? "questions"
-              : "mixed"
-        }
+        mode="questions"
         onRetry={() => actions.retry(wrong)}
         onRetryMarked={marked.length ? () => actions.retry(marked) : undefined}
       />
@@ -409,7 +414,6 @@ export function PracticePage({
       total={total}
       progressRatio={progressRatio}
       persistence={sessionPersistence}
-      revealed={revealed}
       selected={selected}
       pendingChoice={actions.pendingChoice}
       answeredBlanks={answeredBlanks}
@@ -417,8 +421,6 @@ export function PracticePage({
       busy={actions.actionBusy}
       animateCard={actions.animateNextCard}
       onLeave={actions.leave}
-      onReveal={() => setRevealed(true)}
-      onRate={(rating) => void actions.rate(rating)}
       onToggleMark={() =>
         setMarked((values) =>
           values.includes(index)
@@ -428,7 +430,6 @@ export function PracticePage({
       }
       onSkip={() => void actions.skip()}
       onAnswer={(choice) => void actions.answer(choice)}
-      onCheckSpelling={(correct) => setSelected(correct ? 0 : 1)}
       onNext={() => actions.next()}
     />
   );

@@ -1,5 +1,7 @@
 "use client";
 
+import { QuestionMetadata } from "./question-metadata";
+
 import type { ReadingPack } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
@@ -34,13 +36,12 @@ import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { PageHeader } from "@/components/ui/page-header";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
-import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { senseKey } from "@/src/lib/library";
-import { difficultyOptions, questionFormatLabel } from "@/lib/question-options";
+import { questionFormatLabel } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 
@@ -216,27 +217,14 @@ export function ReadingEditor({
         title={t("questions.editFormat", { name: questionFormatLabel(format) })}
       />
       <fieldset className="min-w-0 border-0 p-0" disabled={saving}>
-        <div className="mb-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_12rem]">
-          <Field
-            error={submitted && titleError}
-            label={t("questions.readingTitle")}
-          >
-            <Input
-              ref={titleRef}
-              value={title}
-              onChange={(event) => saved.update({ title: event.target.value })}
-              className="text-base"
-            />
-          </Field>
-          <SelectField
-            label={t("practice.difficulty")}
-            value={String(difficulty)}
-            options={difficultyOptions()}
-            onValueChange={(value) =>
-              saved.update({ difficulty: Number(value) as 1 | 2 | 3 })
-            }
-          />
-        </div>
+        <QuestionMetadata
+          title={title}
+          difficulty={difficulty}
+          titleRef={titleRef}
+          titleError={submitted && titleError}
+          onTitleChange={(title) => saved.update({ title })}
+          onDifficultyChange={(difficulty) => saved.update({ difficulty })}
+        />
         <QuestionWorkspace
           pane={pane}
           onPaneChange={setPane}

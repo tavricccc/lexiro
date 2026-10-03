@@ -1,7 +1,6 @@
-import type { PracticeCardTask, PracticeTask } from "@/types";
+import type { PracticeTask } from "@/types";
 
-import { isCardTask } from "@/constants";
-import { t, type TranslationKey } from "@/lib/i18n";
+import { t } from "@/lib/i18n";
 import {
   questionFormatHint,
   questionFormatLabel,
@@ -12,23 +11,12 @@ import {
  * screen, the session header and the result screen can name any task through
  * one pair of functions without knowing which half it came from.
  */
-const CARD_TASK_KEYS = {
-  spelling: ["practice.taskSpelling", "practice.taskSpellingHint"],
-} as const satisfies Record<
-  PracticeCardTask,
-  readonly [TranslationKey, TranslationKey]
->;
-
 export function practiceTaskLabel(task: PracticeTask): string {
   if (task === "meaning") return t("practice.taskMeaning");
-  return isCardTask(task)
-    ? t(CARD_TASK_KEYS[task][0])
-    : questionFormatLabel(task);
+  return questionFormatLabel(task);
 }
 
 export function practiceTaskHint(task: PracticeTask): string {
   if (task === "meaning") return t("practice.taskMeaningHint");
-  return isCardTask(task)
-    ? t(CARD_TASK_KEYS[task][1])
-    : questionFormatHint(task);
+  return questionFormatHint(task);
 }

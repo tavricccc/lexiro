@@ -25,7 +25,6 @@ export const MULTIPLIER: Record<Tier, number> = {
 };
 export const QUESTION_KINDS = [
   "vocabulary",
-  "grammar",
   "cloze",
   "wordBank",
   "discourse",
@@ -277,7 +276,6 @@ export function rate(kind: JobKind, tier: Tier, model: AiModel = DEFAULT_AI_MODE
       words: 2,
       senses: 2,
       vocabulary: 1,
-      grammar: 2,
       wordBank: 2,
       cloze: 3,
       discourse: 24,

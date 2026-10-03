@@ -9,7 +9,7 @@ import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { isSameLocalDay } from "@/src/lib/date";
 import { isCorrectChoice } from "./meaning-questions";
-import type { CardProgress, ReviewRating, SenseId } from "@/types";
+import type { CardProgress, SenseId } from "@/types";
 
 type Setter<T> = Dispatch<SetStateAction<T>>;
 
@@ -56,13 +56,8 @@ export function usePracticeSessionActions({
   const [pendingChoice, setPendingChoice] = useState<number | null>(null);
   const [animateNextCard, setAnimateNextCard] = useState(true);
   const actionPending = useRef(false);
-  const rateSense = useLearningStore((store) => store.rateSense);
   const recordQuestion = useLearningStore((store) => store.recordQuestion);
 
-  const cardAt = (position: number) => {
-    const entry = activeEntries[position];
-    return entry?.kind === "card" ? entry : null;
-  };
   const questionAt = (position: number) => {
     const entry = activeEntries[position];
     return entry?.kind === "question" ? entry.item : null;
@@ -91,25 +86,6 @@ export function usePracticeSessionActions({
 
   const next = (fromKeyboard = false) => {
     if (!actionPending.current) advance(fromKeyboard);
-  };
-
-  const rate = async (rating: ReviewRating, fromKeyboard = false) => {
-    const entry = cardAt(index);
-    if (!entry || actionPending.current) return;
-    actionPending.current = true;
-    setActionBusy(true);
-    try {
-      await rateSense(entry.word.id, rating);
-      if (rating === "good") setters.setCorrect((value) => value + 1);
-      else setters.setWrong((value) => [...value, index]);
-      advance(fromKeyboard);
-    } catch (reason) {
-      console.error(reason);
-      toast.error(t("practice.recordFailed"));
-    } finally {
-      actionPending.current = false;
-      setActionBusy(false);
-    }
   };
 
   const answer = async (choice: number) => {
@@ -223,7 +199,6 @@ export function usePracticeSessionActions({
     begin,
     leave,
     next,
-    rate,
     retry,
     skip,
   };

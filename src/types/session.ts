@@ -74,14 +74,13 @@ export interface ResultRow {
  * Local meaning questions, spelling and saved exam formats share one queue.
  */
 export type PracticeTrack = "fsrs" | "questions";
-export type PracticeCardTask = "spelling";
 export type PracticeQuestionTask = "meaning" | GeneratedQuestionKind;
-export type PracticeTask = PracticeCardTask | PracticeQuestionTask;
+export type PracticeTask = PracticeQuestionTask;
 
 export type WorkspaceQuestionDifficulty = "all" | "1" | "2" | "3";
 
 export interface PracticeSessionSnapshot {
-  schemaVersion: 4;
+  schemaVersion: 5;
   tasks: PracticeTask[];
   setId: string;
   amount: number;

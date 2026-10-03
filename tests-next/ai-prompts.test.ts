@@ -146,7 +146,6 @@ describe("question batching", () => {
 
   it("uses eight independent questions per batch while passage groups follow their format", () => {
     expect(questionBatchSize("vocabulary")).toBe(8);
-    expect(questionBatchSize("grammar")).toBe(8);
     expect(questionBatchSize("wordBank")).toBeGreaterThan(
       questionBatchSize("discourse"),
     );

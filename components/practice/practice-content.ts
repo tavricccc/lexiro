@@ -112,6 +112,7 @@ export function buildQuestionGroups(
         return applyOptionShuffle(base);
       });
     }
+    if (question.questionStyle !== "vocabulary") return [];
     const base: QuestionItem = {
       id: `question:${question.id}`,
       question,

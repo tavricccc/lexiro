@@ -132,7 +132,7 @@ function resolveSlot(
 
 function multipleChoiceItem(
   slot: SenseSlot,
-  style: "vocabulary" | "grammar",
+  style: "vocabulary",
   prompt: string,
   answer: string,
   distractors: string[],
@@ -158,7 +158,7 @@ function multipleChoiceItem(
 
 function assembleSentences(
   value: Record<string, unknown>,
-  kind: "vocabulary" | "grammar",
+  kind: "vocabulary",
   difficulty: QuestionDifficulty,
   words: WordEntry[],
 ): AssemblyResult {
@@ -189,7 +189,6 @@ function assembleSentences(
         `${slot.word.word}：答案在句中出現 ${hits.length} 次，必須恰好一次`,
       );
     if (
-      kind === "vocabulary" &&
       (hits[0] !== usageHits[0] ||
         !usage.toLocaleLowerCase().startsWith(answer.toLocaleLowerCase()))
     )

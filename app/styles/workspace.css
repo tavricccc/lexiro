@@ -271,6 +271,25 @@
   display: none;
 }
 
+/* A short landscape study viewport needs the full width for its passage. */
+@media (min-width: 48rem) and (max-width: 63.999rem) and (max-height: 31.25rem) {
+  .app-shell[data-focus="true"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-shell[data-focus="true"] .workspace-sidebar {
+    display: none;
+  }
+  .app-shell[data-focus="true"] .workspace-body {
+    grid-column: 1;
+  }
+  .app-shell[data-focus="true"] [data-slot="button"] {
+    min-height: 2.75rem;
+  }
+  .app-shell[data-focus="true"] [data-slot="button"][data-size^="icon"] {
+    min-width: 2.75rem;
+  }
+}
+
 @media (min-width: 48rem) {
   :root {
     --workspace-title-height: 3.25rem;

@@ -29,11 +29,6 @@ const QUESTION_LENGTHS: Record<
     2: { min: 24, max: 40 },
     3: { min: 28, max: 48 },
   },
-  grammar: {
-    1: { min: 16, max: 30 },
-    2: { min: 20, max: 38 },
-    3: { min: 24, max: 45 },
-  },
   cloze: {
     1: { min: 180, max: 220 },
     2: { min: 200, max: 260 },

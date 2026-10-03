@@ -6,7 +6,7 @@ import {
 } from "@/src/lib/practice-session";
 
 const validSession = {
-  schemaVersion: 4,
+  schemaVersion: 5,
   meaningChoices: {},
   tasks: ["vocabulary", "reading"],
   setId: "set-1",
@@ -32,20 +32,61 @@ describe("practice session persistence", () => {
     );
   });
 
-  it("keeps a mixed card session, ordering its tasks canonically", () => {
+  it("migrates mixed retired tasks without losing saved answers or repeating completed items", () => {
     const session = {
       ...validSession,
-      schemaVersion: 3,
-      tasks: ["spelling", "flashcard"],
-      entryIds: ["card:flashcard:sense-one", "card:spelling:sense-two"],
-      selected: null,
-      correct: 1,
-      answerChoices: [null, null],
+      schemaVersion: 4,
+      tasks: ["spelling", "grammar", "meaning", "reading"],
+      entryIds: [
+        "card:spelling:s1",
+        "meaning:s2",
+        "question:grammar",
+        "reading:one:c1",
+      ],
+      index: 3,
+      selected: 2,
+      correct: 2,
+      wrong: [1, 2],
+      skipped: [2],
+      marked: [0, 3],
+      answerChoices: [null, 0, null, 2],
     };
-    expect(parsePracticeSession(JSON.stringify(session))?.tasks).toEqual([
-      "meaning",
-      "spelling",
-    ]);
+    expect(
+      parsePracticeSession(
+        JSON.stringify(session),
+        new Set(["question:grammar"]),
+      ),
+    ).toMatchObject({
+      schemaVersion: 5,
+      tasks: ["meaning", "reading"],
+      entryIds: ["meaning:s2", "reading:one:c1"],
+      index: 1,
+      correct: 1,
+      wrong: [0],
+      skipped: [],
+      marked: [1],
+      selected: 2,
+      answerChoices: [0, 2],
+    });
+  });
+
+  it("ends an unfinished session containing only removed modes", () => {
+    expect(
+      parsePracticeSession(
+        JSON.stringify({
+          ...validSession,
+          schemaVersion: 4,
+          tasks: ["spelling"],
+          entryIds: ["card:spelling:s1"],
+          index: 0,
+          correct: 0,
+          wrong: [],
+          marked: [],
+          answerChoices: [null],
+          selected: null,
+        }),
+      ),
+    ).toBeNull();
   });
 
   it("accepts a choice from a ten-option 文意選填 bank", () => {

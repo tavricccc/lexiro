@@ -1,7 +1,6 @@
 import type {
   CardProgress,
   PracticeQuestionTask,
-  PracticeCardTask,
   PracticeTask,
   SenseId,
   StudyWord,
@@ -10,12 +9,7 @@ import type {
 } from "@/types";
 
 import type { QuestionItem } from "@/components/practice/practice-content";
-import {
-  isCardTask,
-  PRACTICE_CARD_TASKS,
-  PRACTICE_QUESTION_TASKS,
-} from "@/constants";
-import { isDue, isLeech } from "@/src/lib/fsrs";
+import { PRACTICE_QUESTION_TASKS } from "@/constants";
 import { buildMeaningQuestionGroups } from "./meaning-questions";
 
 /**
@@ -23,28 +17,12 @@ import { buildMeaningQuestionGroups } from "./meaning-questions";
  * task the setup screen was told to include, so 每日複習 and 詞彙題 arrive
  * shuffled together rather than as two separate sessions.
  */
-export type PracticeEntry =
-  | { id: string; kind: "card"; task: PracticeCardTask; word: StudyWord }
-  | {
-      id: string;
-      kind: "question";
-      task: PracticeQuestionTask;
-      item: QuestionItem;
-    };
-
-export function cardEntryId(task: PracticeCardTask, senseId: SenseId): string {
-  return `card:${task}:${senseId}`;
-}
-
-/** The inverse of `cardEntryId`, for rebuilding an interrupted session. */
-export function parseCardEntryId(
-  id: string,
-): { task: PracticeCardTask; senseId: string } | null {
-  const [prefix, task, ...rest] = id.split(":");
-  if (prefix !== "card" || !rest.length) return null;
-  if (task !== "spelling") return null;
-  return { task, senseId: rest.join(":") };
-}
+export type PracticeEntry = {
+  id: string;
+  kind: "question";
+  task: PracticeQuestionTask;
+  item: QuestionItem;
+};
 
 /**
  * Rebuilds a saved queue from its ids. Anything the library no longer contains
@@ -60,7 +38,6 @@ export function entriesFromIds(
     { options: string[]; answerIndex: number }
   > = {},
 ): PracticeEntry[] | null {
-  const wordsById = new Map(studyItems.map((word) => [String(word.id), word]));
   const questionsById = new Map(
     [...questionItems, ...buildMeaningQuestionGroups(studyItems).flat()].map(
       (item) => [item.id, item],
@@ -68,13 +45,6 @@ export function entriesFromIds(
   );
   const entries: PracticeEntry[] = [];
   for (const id of ids) {
-    const card = parseCardEntryId(id);
-    if (card) {
-      const word = wordsById.get(card.senseId);
-      if (!word || !tasks.includes(card.task)) return null;
-      entries.push({ id, kind: "card", task: card.task, word });
-      continue;
-    }
     const item = questionsById.get(id);
     if (!item || !tasks.includes(item.type)) return null;
     entries.push({
@@ -118,26 +88,6 @@ type GroupInput = Pick<
 >;
 
 /**
- * Cards are the scheduled pool: what FSRS says is due, in the order it is due,
- * topped up with words that have never been seen. Spelling uses this pool;
- * local meaning questions remain available for any saved word.
- */
-function cardPool({ cards, leechOnly, studyItems }: PoolInput): StudyWord[] {
-  const pool = leechOnly
-    ? studyItems.filter((item) => isLeech(cards[item.id] ?? null))
-    : studyItems;
-  const due = pool
-    .filter((item) => cards[item.id] && isDue(cards[item.id]))
-    .sort(
-      (a, b) =>
-        new Date(cards[a.id].due).getTime() -
-        new Date(cards[b.id].due).getTime(),
-    );
-  const fresh = pool.filter((item) => !cards[item.id]);
-  return [...due, ...fresh];
-}
-
-/**
  * Questions stay grouped: a 閱讀測驗 passage carries several items that
  * share context. Items from one passage stay contiguous when drawn.
  */
@@ -175,8 +125,6 @@ export function countTaskAvailability(
 ): Record<PracticeTask, number> {
   const counts = {} as Record<PracticeTask, number>;
   const groups = withMeaningQuestions(input);
-  const scheduled = cardPool(input).length;
-  for (const task of PRACTICE_CARD_TASKS) counts[task] = scheduled;
   for (const task of PRACTICE_QUESTION_TASKS)
     counts[task] =
       task === "meaning"
@@ -197,23 +145,18 @@ export function countQuestionAvailability(
   input: GroupInput & PoolInput & Pick<QueueInput, "oneSensePerWord" | "tasks">,
 ): number {
   const groups = withMeaningQuestions(input);
-  const items = input.tasks
-    .filter((task): task is PracticeQuestionTask => !isCardTask(task))
-    .flatMap((task) => questionPool(task, groups).flat());
-  const spelling = input.tasks.includes("spelling") ? cardPool(input) : [];
+  const items = input.tasks.flatMap((task) =>
+    questionPool(task, groups).flat(),
+  );
   if (input.oneSensePerWord)
-    return new Set([
-      ...items.map((item) => item.wordKey),
-      ...spelling.map((word) => word.wordKey),
-    ]).size;
+    return new Set(items.map((item) => item.wordKey)).size;
   return (
     items.filter((item) => item.type !== "meaning").length +
     new Set(
       items
         .filter((item) => item.type === "meaning")
         .map((item) => item.wordKey),
-    ).size +
-    spelling.length
+    ).size
   );
 }
 
@@ -241,47 +184,22 @@ function withMeaningQuestions<
  */
 export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
   const { amount, oneSensePerWord, tasks } = input;
-  const mixedWithCards = tasks.some(isCardTask);
-  // Both card tasks share one cursor position into one pool, so 隨機混合 asks
-  // each due word once and only varies how it is asked.
-  const scheduled = tasks.some(isCardTask) ? cardPool(input) : [];
-  const cardCursors = new Map<
-    PracticeCardTask,
-    { pool: StudyWord[]; at: number }
-  >();
   const questionCursors = new Map<
     PracticeQuestionTask,
     { pool: QuestionItem[][]; at: number }
   >();
   for (const task of tasks) {
-    if (isCardTask(task)) cardCursors.set(task, { pool: scheduled, at: 0 });
-    else
-      questionCursors.set(task, {
-        pool: questionPool(task, withMeaningQuestions(input)),
-        at: 0,
-      });
+    questionCursors.set(task, {
+      pool: questionPool(task, withMeaningQuestions(input)),
+      at: 0,
+    });
   }
 
-  const usedSenses = new Set<SenseId>();
   const usedWords = new Set<WordKey>();
   const units: PracticeEntry[][] = [];
   let taken = 0;
 
   const nextUnit = (task: PracticeTask): PracticeEntry[] | null => {
-    if (isCardTask(task)) {
-      const cursor = cardCursors.get(task);
-      if (!cursor) return null;
-      while (cursor.at < cursor.pool.length) {
-        const word = cursor.pool[cursor.at];
-        cursor.at += 1;
-        if (usedSenses.has(word.id)) continue;
-        if (oneSensePerWord && usedWords.has(word.wordKey)) continue;
-        usedSenses.add(word.id);
-        if (oneSensePerWord) usedWords.add(word.wordKey);
-        return [{ id: cardEntryId(task, word.id), kind: "card", task, word }];
-      }
-      return null;
-    }
     const cursor = questionCursors.get(task);
     if (!cursor) return null;
     while (cursor.at < cursor.pool.length) {
@@ -298,13 +216,6 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
             })
           : group;
       if (!eligible.length) continue;
-      if (
-        mixedWithCards &&
-        eligible.some((item) => usedSenses.has(item.senseId))
-      )
-        continue;
-      if (mixedWithCards)
-        eligible.forEach((item) => usedSenses.add(item.senseId));
       if (oneSensePerWord || task === "meaning")
         eligible.forEach((item) => usedWords.add(item.wordKey));
       return eligible.map((item): PracticeEntry => ({
@@ -345,16 +256,6 @@ export function buildWrongContent(
       items: wrong.map((value) => {
         const entry = entries[value];
         if (!entry) return { type: "unknown" };
-        if (entry.kind === "card") {
-          const { word } = entry;
-          return {
-            type: "review",
-            word: word.word,
-            pos: word.pos,
-            meaning: word.meaning,
-            example: word.example ?? "",
-          };
-        }
         const { item } = entry;
         const chosenIndex = answerChoices[value];
         const userAnswer =

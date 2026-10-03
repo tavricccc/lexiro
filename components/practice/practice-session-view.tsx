@@ -1,9 +1,7 @@
 "use client";
 
-import type { ReviewRating } from "@/types";
 import { motion } from "motion/react";
 
-import { ReviewCard } from "@/components/practice/review-card";
 import { QuestionCard } from "@/components/practice/question-card";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import type { AnsweredBlank } from "@/components/practice/passage-view";
@@ -30,7 +28,6 @@ export function PracticeSessionView({
   total,
   progressRatio,
   persistence,
-  revealed,
   selected,
   pendingChoice,
   answeredBlanks,
@@ -38,12 +35,9 @@ export function PracticeSessionView({
   busy,
   animateCard,
   onLeave,
-  onReveal,
-  onRate,
   onToggleMark,
   onSkip,
   onAnswer,
-  onCheckSpelling,
   onNext,
 }: {
   entry: PracticeEntry;
@@ -51,7 +45,6 @@ export function PracticeSessionView({
   total: number;
   progressRatio: number;
   persistence: DraftPersistence;
-  revealed: boolean;
   selected: number | null;
   pendingChoice: number | null;
   answeredBlanks: Record<number, AnsweredBlank>;
@@ -59,15 +52,11 @@ export function PracticeSessionView({
   busy: boolean;
   animateCard: boolean;
   onLeave: () => void;
-  onReveal: () => void;
-  onRate: (rating: ReviewRating) => void;
   onToggleMark: () => void;
   onSkip: () => void;
   onAnswer: (choice: number) => void;
-  onCheckSpelling: (correct: boolean) => void;
   onNext: () => void;
 }) {
-  const typing = entry.kind === "card" && entry.task === "spelling";
   const passage =
     entry.kind === "question" && entry.item.question?.kind === "reading"
       ? entry.item.question
@@ -120,65 +109,52 @@ export function PracticeSessionView({
         animate={{ opacity: 1 }}
         transition={practiceTransition}
       >
-        {entry.kind === "card" ? (
-          <ReviewCard
-            item={entry.word}
-            revealed={revealed}
-            busy={busy}
-            last={index === total - 1}
-            selected={selected}
-            onChecked={onCheckSpelling}
-            onReveal={onReveal}
-            onRate={onRate}
-          />
-        ) : (
-          <div
-            className={passage ? "py-4" : "my-auto py-5"}
-            data-practice-question-group
-          >
-            <div className="mb-3 flex justify-end gap-1">
+        <div
+          className={passage ? "py-4" : "my-auto py-5"}
+          data-practice-question-group
+        >
+          <div className="mb-3 flex justify-end gap-1">
+            <Button
+              className="min-h-11 sm:min-h-9"
+              size="sm"
+              variant={marked ? "secondary" : "ghost"}
+              disabled={busy}
+              aria-pressed={marked}
+              onClick={onToggleMark}
+            >
+              <Icons.mark />
+              {t("practice.mark")}
+            </Button>
+            {selected === null && (
               <Button
                 className="min-h-11 sm:min-h-9"
                 size="sm"
-                variant={marked ? "secondary" : "ghost"}
+                variant="ghost"
                 disabled={busy}
-                aria-pressed={marked}
-                onClick={onToggleMark}
+                onClick={onSkip}
               >
-                <Icons.mark />
-                {t("practice.mark")}
+                {busy && pendingChoice === null ? (
+                  <Icons.loading className="animate-spin motion-reduce:animate-none" />
+                ) : (
+                  <Icons.skip />
+                )}
+                {t(
+                  busy && pendingChoice === null
+                    ? "practice.recording"
+                    : "practice.skip",
+                )}
               </Button>
-              {selected === null && (
-                <Button
-                  className="min-h-11 sm:min-h-9"
-                  size="sm"
-                  variant="ghost"
-                  disabled={busy}
-                  onClick={onSkip}
-                >
-                  {busy && pendingChoice === null ? (
-                    <Icons.loading className="animate-spin motion-reduce:animate-none" />
-                  ) : (
-                    <Icons.skip />
-                  )}
-                  {t(
-                    busy && pendingChoice === null
-                      ? "practice.recording"
-                      : "practice.skip",
-                  )}
-                </Button>
-              )}
-            </div>
-            <QuestionCard
-              item={entry.item}
-              selected={selected}
-              pendingChoice={pendingChoice}
-              answeredBlanks={answeredBlanks}
-              busy={busy}
-              onAnswer={onAnswer}
-            />
+            )}
           </div>
-        )}
+          <QuestionCard
+            item={entry.item}
+            selected={selected}
+            pendingChoice={pendingChoice}
+            answeredBlanks={answeredBlanks}
+            busy={busy}
+            onAnswer={onAnswer}
+          />
+        </div>
       </motion.div>
       {entry.kind === "question" && selected !== null && (
         <StepActions width="wide">
@@ -192,51 +168,32 @@ export function PracticeSessionView({
         </StepActions>
       )}
       <KeyboardHints
-        kind={entry.kind}
-        optionCount={entry.kind === "question" ? entry.item.options.length : 4}
-        revealed={revealed}
+        optionCount={entry.item.options.length}
         answered={selected !== null}
-        typing={typing}
       />
     </div>
   );
 }
 
 function KeyboardHints({
-  kind,
   optionCount,
-  revealed,
   answered,
-  typing,
 }: {
-  kind: PracticeEntry["kind"];
   optionCount: number;
-  revealed: boolean;
   answered: boolean;
-  typing: boolean;
 }) {
-  const card = kind === "card" && !typing;
   return (
     <div
       aria-hidden
       className="mt-6 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground md:flex"
     >
-      {card && !revealed && (
-        <ShortcutHint keys="Enter" label={t("practice.reveal")} />
-      )}
-      {card && revealed && (
-        <ShortcutHint keys="A" label={t("practice.again")} />
-      )}
-      {card && revealed && <ShortcutHint keys="G" label={t("practice.good")} />}
-      {kind === "question" && !answered && (
+      {!answered && (
         <ShortcutHint
           keys={optionCount > 9 ? "A – J" : `1 – ${optionCount}`}
           label={t("practice.shortcutAnswer")}
         />
       )}
-      {kind === "question" && answered && (
-        <ShortcutHint keys="Enter" label={t("practice.next")} />
-      )}
+      {answered && <ShortcutHint keys="Enter" label={t("practice.next")} />}
     </div>
   );
 }

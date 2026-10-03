@@ -29,6 +29,7 @@ export function useRestorePracticeSession({
   enabled,
   initialSet,
   memberships,
+  retiredEntryIds,
   restoreAttempted,
   setIds,
   onOffer,
@@ -39,6 +40,7 @@ export function useRestorePracticeSession({
   enabled: boolean;
   initialSet: string;
   memberships: Record<string, SetMembership[]>;
+  retiredEntryIds: ReadonlySet<string>;
   restoreAttempted: { current: boolean };
   setIds: Set<string>;
   onOffer: (
@@ -57,7 +59,7 @@ export function useRestorePracticeSession({
       onChecked();
       return;
     }
-    const saved = parsePracticeSession(raw);
+    const saved = parsePracticeSession(raw, retiredEntryIds);
     if (!saved) {
       if (raw) localStorage.removeItem(practiceStorageKey());
       onChecked();
@@ -82,10 +84,7 @@ export function useRestorePracticeSession({
       saved.meaningChoices,
     );
     const outOfScope = entries?.some(
-      (entry) =>
-        !allowed.has(
-          entry.kind === "card" ? entry.word.id : entry.item.senseId,
-        ),
+      (entry) => !allowed.has(entry.item.senseId),
     );
     if (!entries || outOfScope || (saved.setId && !setIds.has(saved.setId))) {
       localStorage.removeItem(practiceStorageKey());
@@ -99,6 +98,7 @@ export function useRestorePracticeSession({
     enabled,
     initialSet,
     memberships,
+    retiredEntryIds,
     onOffer,
     onChecked,
     restoreAttempted,
@@ -158,7 +158,7 @@ export function usePersistPracticeSession({
     const entryIds = entries.map((entry) => entry.id);
     if (!entryIds.length) return;
     const snapshot: PracticeSessionSnapshot = {
-      schemaVersion: 4,
+      schemaVersion: 5,
       meaningChoices: Object.fromEntries(
         entries.flatMap((entry) =>
           entry.kind === "question" && entry.task === "meaning"

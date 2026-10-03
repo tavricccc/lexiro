@@ -1,8 +1,4 @@
-import type {
-  GeneratedQuestionKind,
-  PassageFormat,
-  QuestionStyle,
-} from "@/types";
+import type { GeneratedQuestionKind, PassageFormat } from "@/types";
 
 import { t, type TranslationKey } from "@/lib/i18n";
 
@@ -14,7 +10,6 @@ import { t, type TranslationKey } from "@/lib/i18n";
  *
  * The names are the ones a Taiwanese student sees on a real paper, and the
  * order follows the 學測 paper: 詞彙題, 綜合測驗, 文意選填, 篇章結構, 閱讀測驗,
- * with the 段考 文法題 alongside the sentence formats.
  */
 
 export interface LabelledOption {
@@ -32,7 +27,6 @@ const DIFFICULTY_KEYS = [
 /** Paper order, with the label and the one-line explanation of each format. */
 const FORMAT_KEYS = {
   vocabulary: ["questions.vocabulary", "questions.vocabularyHint"],
-  grammar: ["questions.grammar", "questions.grammarHint"],
   cloze: ["questions.cloze", "questions.clozeHint"],
   wordBank: ["questions.wordBank", "questions.wordBankHint"],
   discourse: ["questions.discourse", "questions.discourseHint"],
@@ -42,7 +36,7 @@ const FORMAT_KEYS = {
   readonly [TranslationKey, TranslationKey]
 >;
 
-export const SENTENCE_STYLES: QuestionStyle[] = ["vocabulary", "grammar"];
+export const SENTENCE_STYLES = ["vocabulary"] as const;
 export const PASSAGE_FORMAT_VALUES: PassageFormat[] = [
   "cloze",
   "wordBank",
@@ -56,6 +50,7 @@ export function difficultyLabel(level: number): string {
 }
 
 export function questionFormatLabel(format: string): string {
+  if (format === "grammar") return t("questions.retiredGrammar");
   if (format === "meaning") return t("practice.taskMeaning");
   const entry = FORMAT_KEYS[format as GeneratedQuestionKind];
   return entry ? t(entry[0]) : format;
@@ -123,7 +118,7 @@ export function questionFormatOptions(
   return allLabel ? [{ label: allLabel, value: "all" }, ...options] : options;
 }
 
-/** The two formats the single-question editor can author by hand. */
+/** The single-question editor authors vocabulary only. */
 export function sentenceStyleOptions(): LabelledOption[] {
   return formatOptions(SENTENCE_STYLES);
 }

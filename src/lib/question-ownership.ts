@@ -6,6 +6,11 @@ import type {
   WordKey,
 } from "@/types";
 
+/** Retired grammar records remain available to backups, outside active study. */
+export function isExamQuestion(question: LibraryQuestion): boolean {
+  return question.kind === "reading" || question.questionStyle === "vocabulary";
+}
+
 export function questionUsesWords(
   question: LibraryQuestion,
   words: Record<WordKey, WordEntry>,

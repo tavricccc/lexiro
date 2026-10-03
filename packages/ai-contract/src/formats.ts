@@ -1,10 +1,10 @@
 import type { QuestionKind as GeneratedQuestionKind } from "./index";
-type PassageFormat = Exclude<GeneratedQuestionKind, "vocabulary" | "grammar">;
-type QuestionStyle = "vocabulary" | "grammar";
+type PassageFormat = Exclude<GeneratedQuestionKind, "vocabulary">;
+type QuestionStyle = "vocabulary";
 
 /**
  * The shapes Lexiro generates, modelled on the papers a Taiwanese senior high
- * student actually sits: the five 學測 selection formats plus the 段考 staples.
+ * student actually sits: the five 學測 selection formats.
  *
  * Everything downstream reads this table rather than hard-coding counts — the
  * prompt builder, the response validator, the practice runtime and the UI — so
@@ -14,7 +14,6 @@ type QuestionStyle = "vocabulary" | "grammar";
  * may have fewer blanks; it keeps the passage length and full option bank:
  *
  *  - 詞彙題      一句一格，四選一。學測 10 題。
- *  - 文法題      同上，但考時態、語態、連接詞等結構。段考常見。
  *  - 綜合測驗    一篇短文數格，每格自己的四個選項。學測每篇 5 格。
  *  - 文意選填    一篇短文十格，共用一組選項，每個選項只能用一次。
  *  - 篇章結構    一篇短文四格，五個「整句」選項擇四（115 學年度起改為五選四）。
@@ -43,11 +42,10 @@ export interface PassageFormatSpec {
 }
 
 export const SENTENCE_FORMATS: Record<
-  "vocabulary" | "grammar",
+  "vocabulary",
   SentenceFormatSpec
 > = {
   vocabulary: { optionCount: 4, style: "vocabulary" },
-  grammar: { optionCount: 4, style: "grammar" },
 };
 
 export const PASSAGE_FORMATS: Record<PassageFormat, PassageFormatSpec> = {
@@ -91,7 +89,7 @@ export const PASSAGE_KINDS = [
   "discourse",
   "reading",
 ] as const;
-export const SENTENCE_KINDS = ["vocabulary", "grammar"] as const;
+export const SENTENCE_KINDS = ["vocabulary"] as const;
 
 export function isPassageKind(
   kind: GeneratedQuestionKind,

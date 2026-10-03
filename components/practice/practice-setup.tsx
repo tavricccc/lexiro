@@ -169,38 +169,47 @@ export function PracticeSetup({
               </div>
             )}
           </ListSection>
-          <section>
-            <h2 className="type-list-header mb-2 px-1">
-              {t("practice.formatsTitle")}
-            </h2>
-            <ChoiceChecklist
-              onToggle={(value, checked) =>
-                onTasksChange(
-                  PRACTICE_TASKS.filter((task) =>
-                    task === value ? checked : tasks.includes(task),
-                  ),
-                )
-              }
-              options={availableFormats.map((task) => ({
-                description: practiceTaskHint(task),
-                icon:
-                  task !== "meaning" &&
-                  task !== "spelling" &&
-                  isPassageKind(task)
-                    ? Icons.reading
-                    : Icons.question,
-                label: practiceTaskLabel(task),
-                meta: t("practice.formatReady", { count: counts[task] }),
-                value: task,
-              }))}
-              selected={tasks}
-            />
-            {hasWords && counts.meaning === 0 && (
-              <p className="mt-3 text-sm text-muted-foreground">
-                {t("practice.meaningPoolHint")}
-              </p>
-            )}
-          </section>
+          {[
+            {
+              title: t("practice.wordReview"),
+              formats: availableFormats.filter((task) => task === "meaning"),
+            },
+            {
+              title: t("practice.examFormats"),
+              formats: availableFormats.filter((task) => task !== "meaning"),
+            },
+          ]
+            .filter((group) => group.formats.length > 0)
+            .map((group) => (
+              <section key={group.title}>
+                <h2 className="type-list-header mb-2 px-1">{group.title}</h2>
+                <ChoiceChecklist
+                  onToggle={(value, checked) =>
+                    onTasksChange(
+                      PRACTICE_TASKS.filter((task) =>
+                        task === value ? checked : tasks.includes(task),
+                      ),
+                    )
+                  }
+                  options={group.formats.map((task) => ({
+                    description: practiceTaskHint(task),
+                    icon:
+                      task !== "meaning" && isPassageKind(task)
+                        ? Icons.reading
+                        : Icons.question,
+                    label: practiceTaskLabel(task),
+                    meta: t("practice.formatReady", { count: counts[task] }),
+                    value: task,
+                  }))}
+                  selected={tasks}
+                />
+              </section>
+            ))}
+          {hasWords && counts.meaning === 0 && (
+            <p className="text-sm text-muted-foreground">
+              {t("practice.meaningPoolHint")}
+            </p>
+          )}
           <ListSection>
             <ListSwitchRow
               checked={oneSensePerWord}

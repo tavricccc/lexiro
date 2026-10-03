@@ -1,6 +1,5 @@
 import type {
   PracticeSessionSnapshot,
-  PracticeTask,
   WorkspaceQuestionDifficulty,
 } from "@/types";
 import { isPracticeTask, orderPracticeTasks } from "../constants/practice";
@@ -36,6 +35,7 @@ function isIntegerArray(value: unknown, upperBound: number): value is number[] {
  */
 export function parsePracticeSession(
   raw: string | null,
+  retiredEntryIds: ReadonlySet<string> = new Set(),
 ): PracticeSessionSnapshot | null {
   if (!raw) return null;
 
@@ -68,7 +68,8 @@ export function parsePracticeSession(
       ...(wasCard ? { selected: null, revealed: false } : {}),
     });
   }
-  if (value.schemaVersion !== 4) return null;
+  const migrating = value.schemaVersion === 4;
+  if (!migrating && value.schemaVersion !== 5) return null;
 
   const entryIds = value.entryIds;
   const rawTasks = value.tasks;
@@ -80,7 +81,11 @@ export function parsePracticeSession(
     new Set(entryIds).size !== entryIds.length ||
     !Array.isArray(rawTasks) ||
     rawTasks.length === 0 ||
-    !rawTasks.every(isPracticeTask) ||
+    !rawTasks.every(
+      (task) =>
+        isPracticeTask(task) ||
+        (migrating && (task === "spelling" || task === "grammar")),
+    ) ||
     typeof difficulty !== "string" ||
     !DIFFICULTIES.has(difficulty as WorkspaceQuestionDifficulty) ||
     typeof value.setId !== "string" ||
@@ -143,10 +148,10 @@ export function parsePracticeSession(
     )
   )
     return null;
-  return {
-    schemaVersion: 4,
+  const snapshot: PracticeSessionSnapshot = {
+    schemaVersion: 5,
     meaningChoices: meaningChoices as PracticeSessionSnapshot["meaningChoices"],
-    tasks: orderPracticeTasks(rawTasks as PracticeTask[]),
+    tasks: orderPracticeTasks(rawTasks.filter(isPracticeTask)),
     setId: value.setId,
     amount: Number(value.amount),
     index: Number(value.index),
@@ -164,6 +169,45 @@ export function parsePracticeSession(
       Array.isArray(rawAnswerChoices)
         ? (rawAnswerChoices[position] ?? null)
         : null,
+    ),
+  };
+  return migrating ? removeRetiredEntries(snapshot, retiredEntryIds) : snapshot;
+}
+
+/** Preserve saved answers and positions while removing retired tasks once. */
+function removeRetiredEntries(
+  snapshot: PracticeSessionSnapshot,
+  retired: ReadonlySet<string>,
+): PracticeSessionSnapshot | null {
+  const kept = snapshot.entryIds.flatMap((id, index) =>
+    id.startsWith("card:spelling:") || retired.has(id) ? [] : [index],
+  );
+  const index = kept.filter((oldIndex) => oldIndex < snapshot.index).length;
+  if (!snapshot.tasks.length || index >= kept.length) return null;
+  const positions = new Map(kept.map((oldIndex, next) => [oldIndex, next]));
+  const remap = (values: number[]) =>
+    values.flatMap((oldIndex) =>
+      positions.has(oldIndex) ? [positions.get(oldIndex)!] : [],
+    );
+  const currentKept = positions.has(snapshot.index);
+  const selected = currentKept ? snapshot.selected : null;
+  const wrong = remap(snapshot.wrong);
+  const entryIds = kept.map((oldIndex) => snapshot.entryIds[oldIndex]);
+  return {
+    ...snapshot,
+    index,
+    entryIds,
+    selected,
+    revealed: currentKept && snapshot.revealed,
+    correct: index + (selected === null ? 0 : 1) - wrong.length,
+    wrong,
+    skipped: remap(snapshot.skipped),
+    marked: remap(snapshot.marked),
+    answerChoices: kept.map((oldIndex) => snapshot.answerChoices[oldIndex]),
+    meaningChoices: Object.fromEntries(
+      Object.entries(snapshot.meaningChoices).filter(([id]) =>
+        entryIds.includes(id),
+      ),
     ),
   };
 }

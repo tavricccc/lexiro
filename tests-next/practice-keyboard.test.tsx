@@ -13,34 +13,31 @@ describe("practice keyboard shortcuts", () => {
     { ctrlKey: true }, { metaKey: true }, { altKey: true },
     { shiftKey: true }, { repeat: true }, { isComposing: true },
   ])("ignores modified, repeated and composing keys: %j", (modifiers) => {
-    const onRate = vi.fn();
+    const onAnswer = vi.fn();
     renderHook(() => usePracticeKeyboard({
-      enabled: true, kind: "card", revealed: true, selected: null,
-      busy: false, onReveal: vi.fn(), onRate, onAnswer: vi.fn(), onNext: vi.fn(),
+      enabled: true, selected: null,
+      busy: false, onAnswer, onNext: vi.fn(),
     }));
     fireEvent.keyDown(window, { key: "a", ...modifiers });
-    expect(onRate).not.toHaveBeenCalled();
+    expect(onAnswer).not.toHaveBeenCalled();
   });
 
-  it("does not rate or answer while saving", () => {
-    const onRate = vi.fn();
+  it("does not answer while saving", () => {
     const onAnswer = vi.fn();
-    const { rerender } = renderHook(({ kind }: { kind: "card" | "question" }) => usePracticeKeyboard({
-      enabled: true, kind, revealed: true, selected: null,
-      busy: true, onReveal: vi.fn(), onRate, onAnswer, onNext: vi.fn(),
-    }), { initialProps: { kind: "card" } });
+    renderHook(() => usePracticeKeyboard({
+      enabled: true, selected: null,
+      busy: true, onAnswer, onNext: vi.fn(),
+    }));
     fireEvent.keyDown(window, { key: "a" });
-    rerender({ kind: "question" });
     fireEvent.keyDown(window, { key: "1" });
-    expect(onRate).not.toHaveBeenCalled();
     expect(onAnswer).not.toHaveBeenCalled();
   });
 
   it.each(['<div contenteditable="true"><span></span></div>', '<div role="dialog"><span></span></div>', '<select><option>One</option></select>'])("leaves editing and modal keys alone: %s", (html) => {
     const onAnswer = vi.fn();
     renderHook(() => usePracticeKeyboard({
-      enabled: true, kind: "question", revealed: false, selected: null,
-      busy: false, onReveal: vi.fn(), onRate: vi.fn(), onAnswer, onNext: vi.fn(),
+      enabled: true, selected: null,
+      busy: false, onAnswer, onNext: vi.fn(),
     }));
     const container = document.createElement("div");
     container.innerHTML = html;
@@ -53,12 +50,8 @@ describe("practice keyboard shortcuts", () => {
     const onNext = vi.fn();
     renderHook(() => usePracticeKeyboard({
       enabled: true,
-      kind: "question",
-      revealed: true,
       selected: 1,
       busy: false,
-      onReveal: vi.fn(),
-      onRate: vi.fn(),
       onAnswer: vi.fn(),
       onNext,
     }));
@@ -73,12 +66,8 @@ describe("practice keyboard shortcuts", () => {
     const onNext = vi.fn();
     renderHook(() => usePracticeKeyboard({
       enabled: true,
-      kind: "question",
-      revealed: true,
       selected: 1,
       busy: false,
-      onReveal: vi.fn(),
-      onRate: vi.fn(),
       onAnswer: vi.fn(),
       onNext,
     }));

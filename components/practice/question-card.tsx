@@ -97,8 +97,8 @@ export function QuestionCard({
               className={cn(
                 "overflow-y-auto overscroll-contain pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:max-h-[calc(100dvh-17rem)]",
                 selected === null
-                  ? "max-h-[calc(100dvh-25rem)]"
-                  : "max-h-[calc(100dvh-29rem)]",
+                  ? "max-h-[max(12rem,calc(100dvh-25rem))]"
+                  : "max-h-[max(12rem,calc(100dvh-29rem))]",
               )}
             >
               <PassageView
@@ -108,6 +108,15 @@ export function QuestionCard({
                 passage={passage.passage}
               />
             </div>
+            <Button
+              type="button"
+              variant="secondary"
+              className="mt-4 min-h-11 w-full lg:hidden"
+              onClick={() => setMobileView("question")}
+            >
+              <Icons.practice />
+              {t("practice.backToQuestion")}
+            </Button>
           </section>
         )}
         <section

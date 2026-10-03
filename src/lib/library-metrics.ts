@@ -8,6 +8,7 @@ import type {
 
 import { MASTERED_STABILITY_DAYS } from "@/constants";
 import { isDue } from "@/src/lib/fsrs";
+import { isExamQuestion } from "./question-ownership";
 
 export interface LibrarySetMetrics {
   due: number;
@@ -33,6 +34,7 @@ export function countReviewableSenses(
 export function countQuestionItems(state: LibraryState): number {
   let count = 0;
   for (const question of state.questions) {
+    if (!isExamQuestion(question)) continue;
     count += question.kind === "reading" ? question.questions.length : 1;
   }
   return count;
@@ -74,6 +76,7 @@ export function buildLibrarySetMetrics(
   }
 
   for (const question of state.questions) {
+    if (!isExamQuestion(question)) continue;
     const senseIds =
       question.kind === "reading"
         ? question.questions.map((child) => child.senseId)

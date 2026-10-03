@@ -17,7 +17,7 @@ import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Field } from "@/components/ui/field";
 import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
-import { LoadingState } from "@/components/ui/page-state";
+import { EmptyState, LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
 import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
@@ -71,6 +71,19 @@ export function QuestionEditor({
       ),
     [state.words],
   );
+  if (current?.kind === "multipleChoice" && current.questionStyle === "grammar")
+    return (
+      <div>
+        <PageHeader
+          back={<BackControl href={returnHref} />}
+          title={t("questions.retiredTitle")}
+        />
+        <EmptyState
+          title={t("questions.retiredTitle")}
+          description={t("questions.retiredHint")}
+        />
+      </div>
+    );
   return (
     <QuestionEditorForm
       key={`${questionId}:${current?.updatedAt ?? senses[0]?.value ?? "new"}`}
@@ -230,7 +243,10 @@ function QuestionEditorForm({
             ? "draft.invalidDescription"
             : "draft.questionEditDescription",
         )}
-        invalid={saved.status === "invalid"}
+        invalid={
+          saved.status === "invalid" ||
+          saved.pending?.questionStyle === "grammar"
+        }
         onRestart={() => {
           saved.restart();
           form.reset(initial);

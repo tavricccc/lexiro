@@ -122,27 +122,11 @@ describe("practice queue", () => {
     expect(
       new Set(
         queue.map((entry) =>
-          entry.kind === "question" ? entry.item.wordKey : entry.word.wordKey,
+          entry.item.wordKey,
         ),
       ).size,
     ).toBe(4);
   });
-  it("asks each scheduled word once when both card styles are mixed", () => {
-    const queue = buildPracticeQueue({
-      ...base,
-      amount: 4,
-      tasks: ["meaning", "spelling"],
-    });
-    expect(queue).toHaveLength(4);
-    const senses = queue.map((entry) =>
-      entry.kind === "card" ? entry.word.id : entry.item.senseId,
-    );
-    expect(new Set(senses).size).toBe(4);
-    expect(new Set(queue.map((entry) => entry.task))).toEqual(
-      new Set(["meaning", "spelling"]),
-    );
-  });
-
   it("stops at the requested length", () => {
     const queue = buildPracticeQueue({
       ...base,
@@ -168,6 +152,12 @@ describe("practice queue", () => {
     );
     expect(positions).toHaveLength(3);
     expect(positions[2] - positions[0]).toBe(2);
+  });
+
+  it("keeps retired grammar records out of active practice without mutating the stored question", () => {
+    const retired = { ...vocabularyQuestion(1), questionStyle: "grammar" as const };
+    expect(buildQuestionGroups([retired], {})).toEqual([[]]);
+    expect(retired.questionStyle).toBe("grammar");
   });
 
   it("honors an exact question count even when a passage has more items", () => {
@@ -244,22 +234,11 @@ describe("practice queue", () => {
       questionGroups: buildQuestionGroups([vocabularyQuestion(1)], {}),
     });
     expect(counts.meaning).toBe(4);
-    expect(counts.spelling).toBe(4);
+    expect(counts).not.toHaveProperty("spelling");
+    expect(counts).not.toHaveProperty("grammar");
     expect(counts.vocabulary).toBe(1);
     expect(counts.reading).toBe(0);
   });
 
-  it("does not ask the same sense as a card and again as a question", () => {
-    const queue = buildPracticeQueue({
-      ...base,
-      amount: 8,
-      questionGroups: buildQuestionGroups([1, 2].map(vocabularyQuestion), {}),
-      tasks: ["spelling", "vocabulary"],
-    });
-    const senses = queue.map((entry) =>
-      entry.kind === "card" ? entry.word.id : entry.item.senseId,
-    );
-    expect(new Set(senses).size).toBe(senses.length);
-    expect(senses).toHaveLength(4);
-  });
+
 });

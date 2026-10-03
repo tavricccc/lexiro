@@ -26,7 +26,7 @@ const assemble = (
   answer: string,
   sentence: string,
   distractors: string[],
-  kind: "vocabulary" | "grammar",
+  kind: "vocabulary",
   usage = answer,
 ) =>
   assembleGeneratedQuestions(
@@ -131,51 +131,6 @@ describe("issues found in real Luna prompt trials", () => {
         question.kind === "reading" ? "" : question.wordKey,
       ),
     ).toEqual(["detect", "reluctant", "consequence"]);
-  });
-  it("preserves grammar forms supplied by the model rather than replacing them with library verbs", () => {
-    const questions = assemble(
-      word("go"),
-      "went",
-      "Yesterday, Mei went to the library.",
-      ["go", "goes", "going"],
-      "grammar",
-    );
-    expect(new Set(questions[0].options)).toEqual(
-      new Set(["went", "go", "goes", "going"]),
-    );
-  });
-  it("can test a related grammar feature while retaining the selected vocabulary in context", () => {
-    const [question] = assemble(
-      word("interested", ["感興趣的"], "adj."),
-      "in",
-      "Mia is interested in studying ancient maps.",
-      ["on", "at", "to"],
-      "grammar",
-      "interested",
-    );
-    expect(question.prompt).toBe(
-      "Mia is interested _____ studying ancient maps.",
-    );
-    expect(() =>
-      assemble(
-        word("interested"),
-        "in",
-        "Mia lives in Taipei.",
-        ["on", "at", "to"],
-        "grammar",
-        "interested",
-      ),
-    ).toThrow();
-  });
-  it("accepts competing multiword verb forms for a single-word grammar answer", () => {
-    const [question] = assemble(
-      word("go"),
-      "went",
-      "Last Friday, Mei went to the museum.",
-      ["has gone", "goes", "going"],
-      "grammar",
-    );
-    expect(question.options).toContain("has gone");
   });
   it("preserves context-designed vocabulary distractors", () => {
     const [question] = assemble(

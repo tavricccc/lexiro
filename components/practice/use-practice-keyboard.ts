@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReviewRating } from "@/types";
 import { useEffect } from "react";
 
 /**
@@ -10,23 +9,15 @@ import { useEffect } from "react";
  */
 export function usePracticeKeyboard({
   enabled,
-  kind,
-  revealed,
   selected,
   busy,
-  onReveal,
-  onRate,
   onAnswer,
   onNext,
   optionCount = 4,
 }: {
   enabled: boolean;
-  kind: "card" | "question";
-  revealed: boolean;
   selected: number | null;
   busy: boolean;
-  onReveal: () => void;
-  onRate: (rating: ReviewRating) => void;
   onAnswer: (choice: number) => void;
   onNext: () => void;
   /** A 文意選填 bank can run to ten options, so the letter keys go past D. */
@@ -59,7 +50,6 @@ export function usePracticeKeyboard({
         (target instanceof HTMLButtonElement ||
           target instanceof HTMLAnchorElement);
       if (nativeEnterControl) return;
-      if (kind === "card") return; // The spelling form and its next button own Enter.
       const key = event.key.toLocaleLowerCase();
       const digits = Array.from(
         { length: Math.min(optionCount, 9) },
@@ -80,16 +70,5 @@ export function usePracticeKeyboard({
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [
-    busy,
-    enabled,
-    kind,
-    onAnswer,
-    onNext,
-    onRate,
-    onReveal,
-    optionCount,
-    revealed,
-    selected,
-  ]);
+  }, [busy, enabled, onAnswer, onNext, optionCount, selected]);
 }
