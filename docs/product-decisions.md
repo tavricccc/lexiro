@@ -161,7 +161,6 @@ are written down. It follows the 115 學年度 學測 paper:
 | Format | 題型 | Shape |
 | --- | --- | --- |
 | `vocabulary` | 詞彙題 | one sentence, one blank, four options |
-| `grammar` | 文法題 | same shape, tests structure rather than meaning (段考) |
 | `cloze` | 綜合測驗 | passage with blanks, each blank its own four options |
 | `wordBank` | 文意選填 | passage with blanks, one shared bank, each option used once |
 | `discourse` | 篇章結構 | passage with four sentences removed, five sentence options |
@@ -170,8 +169,9 @@ are written down. It follows the 115 學年度 學測 paper:
 篇章結構 is five-options-for-four-blanks, which is the 115 學年度 change from the
 previous four-for-four; getting one wrong no longer forces a second one wrong.
 
-Both sentence formats require exactly one blank, because a 詞彙題 without a
-blank is not a 詞彙題.
+詞彙題保留單格四選一。2026-10-03 使用者指定只留學測題型，獨立文法生成與拼字
+已移除；英選中保留為單字複習。文法在綜合測驗的文章中處理。舊 grammar record 與
+歷史統計保留供備份，題庫、計數及練習不納入。
 
 Free-response 中譯英 and 英文作文 are deliberately out of scope: they cannot be
 graded automatically, and a wrong auto-grade on a translation teaches the wrong
@@ -206,18 +206,18 @@ the same destinations, capabilities, labels and task order.
 Structure is carried by hairlines, margins and typographic hierarchy rather than
 by nested cards; at most one orchestrated entrance animation per screen.
 
-**練習使用同一份題型清單。** 不再先選每日複習或做題目；範圍、題數、英選中、
-拼字與既有六種題型在同一頁設定，可以混在同一輪。舊的 track 連結只預選題型。
+**練習使用同一份題型清單。** 範圍、題數、英選中與學測五種選擇題型在同一頁設定，
+單字複習與學測題型分組，可以混在同一輪。舊的 track 連結只預選題型。
 英選中直接從單字庫出題，不呼叫 AI，也不新增題庫紀錄。每題顯示一個英文單字
 與四個不同的中文選項；任何已收錄詞義都可以作為正解，但選項只包含其中一義。
 其他三項來自其他單字，排除目標單字的所有已收錄詞義與重複中文；不足三個干擾項
 就不出該題。英選中每輪同一個字只出一次，且不受 AI 題目難度篩選影響。
-答題會記錄題型表現與單字練習進度，保留 FSRS 排程。拼字使用實際輸入判分，
-確認結果後按下一題儲存，不再詢問是否記得。閱讀文章的子題仍保持連續。
+答題會記錄題型表現與單字練習進度，保留 FSRS 排程。保存成功才揭答與前進；閱讀
+文章的子題仍保持連續，共用已用正解在按鈕及快捷鍵上都停用。
 
 題目、選項與對錯回饋共同置中；固定操作列的預留空間在置中群組之外。視窗高度
 不足時，內容從上方開始並可捲動。中斷的英選中練習保存當次選項及答案順序，
-v3 單字卡草稿遷移為 v4 英選中草稿，已有的學習資料不變。
+v3 單字卡草稿先轉為英選中，再升為 v5，移除退役模式並重排答案及題序；既有學習資料不變。
 
 Saved sets open in read mode at `/app/sets/[setId]`; headwords are not controls.
 The explicit edit button opens a word-edit subpage, while adding manually,

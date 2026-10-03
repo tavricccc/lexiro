@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-03T00:31:48.903Z",
+  "generatedAt": "2026-10-03T04:39:03.599Z",
   "title": "Design System: Lexiro",
   "extensions": {
     "colorMeta": {
@@ -105,6 +105,10 @@
       "passage": {
         "displayName": "文章",
         "purpose": "從 40rem 起的閱讀面，17px／1.9。"
+      },
+      "answer-option": {
+        "displayName": "練習選項",
+        "purpose": "手機與桌機皆為16px／24px；長英文自然換行，共用已用答案標記格號。"
       }
     },
     "shadows": [
@@ -266,9 +270,9 @@
     {
       "name": "練習選項",
       "kind": "button",
-      "description": "白色答題列至少56px，28px字母標記；長英文自然換行。四選一縱排，十個共用選項雙欄。pending只表示選取，儲存成功才揭答。",
+      "description": "白色答題列至少56px、16px正文、28px字母標記；四選一縱排，十選項手機單欄、640px起雙欄。已揭正解標記格號並停用，儲存成功才揭答。",
       "html": "<button class=\"ds-answer\" type=\"button\" aria-pressed=\"false\"><span class=\"ds-answer-letter\">A</span><span class=\"ds-answer-text\">The group checked the records before reaching its conclusion.</span></button>",
-      "css": ".ds-answer{display:flex;align-items:center;gap:.75rem;width:100%;min-height:3.5rem;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius-control);background:var(--card);color:var(--foreground);text-align:left;font-family:var(--font-sans);font-size:.9375rem;transition:background-color var(--motion-control),border-color var(--motion-control)}.ds-answer-letter{display:grid;place-items:center;width:1.75rem;height:1.75rem;flex-shrink:0;border-radius:9999px;background:var(--muted);color:var(--muted-foreground);font-size:.75rem;font-weight:600}.ds-answer-text{flex:1;min-width:0;line-height:1.5rem}.ds-answer:hover{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 5%,var(--card))}.ds-answer:focus-visible{outline:2px solid var(--ring);outline-offset:2px}.ds-answer[aria-pressed=\"true\"]{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 10%,var(--card))}.ds-answer:disabled{cursor:default}"
+      "css": ".ds-answer{display:flex;align-items:center;gap:.75rem;width:100%;min-height:3.5rem;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius-control);background:var(--card);color:var(--foreground);text-align:left;font-family:var(--font-sans);font-size:1rem;transition:background-color var(--motion-control),border-color var(--motion-control)}.ds-answer-letter{display:grid;place-items:center;width:1.75rem;height:1.75rem;flex-shrink:0;border-radius:9999px;background:var(--muted);color:var(--muted-foreground);font-size:.75rem;font-weight:600}.ds-answer-text{flex:1;min-width:0;line-height:1.5rem}.ds-answer:hover{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 5%,var(--card))}.ds-answer:focus-visible{outline:2px solid var(--ring);outline-offset:2px}.ds-answer[aria-pressed=\"true\"]{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 10%,var(--card))}.ds-answer:disabled{cursor:default}"
     }
   ],
   "narrative": {

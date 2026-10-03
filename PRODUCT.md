@@ -25,6 +25,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - New vocabulary is entered manually or organized by AI; validated generated results are reviewed and added explicitly, with completed output retained for recovery.
 - Questions may be authored manually or generated with AI; generated questions are reviewed with their target senses before they are added to the Library.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and FSRS review.
+- 英選中保留為單字複習；AI 與題庫練習只提供學測的詞彙、綜合測驗、文意選填、篇章結構與閱讀。拼字及獨立文法題停用，舊資料保留供備份。
 - The application is expected to remain useful offline and synchronize later when signed in.
 - Learning goals and AI model changes save locally with inline progress and retry. Unfinished changes survive leaving the screen; returning offers applying them or keeping the current settings, within the original account.
 
@@ -59,6 +60,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 - Back controls show only an arrow; their accessible labels retain the return destination.
 - Progress pairs counts and bars with text; reaching a goal changes the play mark to a check. Completion feedback must follow successful storage rather than an optimistic visual result.
 - Question review and passage practice use an article/question workspace: two columns from 1024px, tabs on narrower screens, one focused item at a time. Generation can exclude individual questions or packs before saving. Shared banks are edited once; explanations stay aligned when options change. Same-passage practice preserves reading position and reveals only the current item's explanation after storage succeeds.
+- 手機校對收合標題與難度，錯誤展開後聚焦；練習文章可一鍵回題目。十選項在手機單欄，已用正解標示格號並停用。768–1023px、高度不超過 500px 的專注練習收起側欄，桌機配置保持既有比例。
 - Open Doodles may accompany empty, loading, and completion states without competing with learning content. Highlights uses the same forest-green family for semantic emphasis. This revision retains the committed SVG assets and adds no raster artwork.
 
 ## Evidence on Hand

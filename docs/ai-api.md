@@ -17,11 +17,13 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 
 題目請求帶 `X-Question-Contract: reviewed-v1`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。`question_quality_rejected` 不自動重試，也不保留未核准的初稿。
 
+題型只接受 vocabulary、cloze、wordBank、discourse、reading；停用的 grammar 在預留前回 400／invalid_input。題目固定規則在快取前綴，來源、初稿、難度及 lengthRange 留在最後輸入。只更新題目 writer／review 的版本，單字、補義、整理及解釋的快取保留；實際命中看供應商回報。
+
 Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 response。暫停保留記憶體中的 pending work；重新整理結束未完成工作。流程草稿另保存已完成且可校對的成果，恢復它不必再次生成。
 
 ## 批次與校對
 
-`src/lib/ai/tasks.ts`：單字每批 25 個來源、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙／文法每批最多八個來源。Runner 依序執行並保留有效部分，來源的 ref 跟著內容傳遞。
+`src/lib/ai/tasks.ts`：單字每批 25 個來源、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙每批最多八個來源。Runner 依序執行並保留有效部分，來源的 ref 跟著內容傳遞。
 
 所有 AI 題目由 Worker 出初稿並獨立審題，核准稿通過高中篇幅、跨度與閱讀依據門檻後才回前端。句子題完整寫出 sentence，再取 usage／answer，程式負責挖空及排序。校對一次看一題／題組，可取消納入後儲存選取項目；新增的逐題解說與錯項理由跟選項保存。語意與唯一解仍須校對，完整規格見[高中題目品質](question-quality.md)。
 
@@ -31,7 +33,7 @@ Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 re
 
 ## 模型、估算與結算
 
-共用 contract 2.3.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
+共用 contract 3.0.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna`，預設後者。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai。Lite／Thinking／Pro 估算倍率為 1／2／10，模型的估算因子分開；實扣按回報 usage，估算不是扣款保證。
 
 題目估算另含兩回合係數，審題至少 medium；不是實測成本上界。兩回合仍只預留與結算一次，拒絕／取消整批釋放預留。`response.lexiro.usageParts` 與 client `TokenUsage.parts` 保留每個 response 的用量，各自計價後加總。任一回合用量缺漏，整批成本維持未知並逐 cursor 補查；不能用已知一半冒充總成本。
 
