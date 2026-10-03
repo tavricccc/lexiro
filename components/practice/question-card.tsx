@@ -170,6 +170,7 @@ export function QuestionCard({
             pendingChoice={pendingChoice}
             busy={busy}
             onAnswer={onAnswer}
+            answeredBlanks={answeredBlanks}
           />
           {busy && pendingChoice !== null && (
             <p role="status" className="mt-4 text-sm text-muted-foreground">

@@ -67,6 +67,34 @@ afterEach(() => {
 });
 
 describe("practice reading workspace", () => {
+  it("marks a revealed bank answer as used and prevents selecting it for the next blank", () => {
+    const onAnswer = vi.fn();
+    const item = {
+      ...itemAt(1),
+      type: "wordBank" as const,
+      optionBank: ["committee", "evidence", "shadow"],
+      options: ["committee", "evidence", "shadow"],
+      answerIndex: 1,
+    };
+    render(
+      <QuestionCard
+        item={item}
+        selected={null}
+        pendingChoice={null}
+        busy={false}
+        answeredBlanks={{ 1: { answer: "committee" } }}
+        onAnswer={onAnswer}
+      />,
+    );
+    const used = screen.getByRole("button", {
+      name: /committee.*已用於第 1 格/,
+    });
+    expect(used).toBeDisabled();
+    fireEvent.click(used);
+    expect(onAnswer).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: /evidence/ }));
+    expect(onAnswer).toHaveBeenCalledWith(1);
+  });
   it("keeps feedback private while saving and reveals only this question's explanation", () => {
     const props = {
       item: itemAt(0),

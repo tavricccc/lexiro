@@ -4,7 +4,10 @@ import type { PracticeSessionSnapshot, PracticeTrack, SenseId } from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
 
-import { buildQuestionGroups } from "@/components/practice/practice-content";
+import {
+  buildQuestionGroups,
+  usedBlankForOption,
+} from "@/components/practice/practice-content";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import {
   buildPracticeQueue,
@@ -308,7 +311,14 @@ export function PracticePage({
     enabled: started && !complete && Boolean(current),
     selected,
     busy: actions.actionBusy,
-    onAnswer: (choice) => void actions.answer(choice),
+    onAnswer: (choice) => {
+      if (
+        current &&
+        usedBlankForOption(current.item, choice, answeredBlanks) !== undefined
+      )
+        return;
+      void actions.answer(choice);
+    },
     onNext: () => actions.next(true),
     optionCount: current?.kind === "question" ? current.item.options.length : 4,
   });
@@ -429,7 +439,13 @@ export function PracticePage({
         )
       }
       onSkip={() => void actions.skip()}
-      onAnswer={(choice) => void actions.answer(choice)}
+      onAnswer={(choice) => {
+        if (
+          usedBlankForOption(current.item, choice, answeredBlanks) !== undefined
+        )
+          return;
+        void actions.answer(choice);
+      }}
       onNext={() => actions.next()}
     />
   );

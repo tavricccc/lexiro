@@ -431,6 +431,7 @@ export const zhTW = {
     passageTab: "文章",
     questionTab: "題目",
     backToQuestion: "回到題目",
+    usedInBlank: "已用於第 {index} 格",
     questionPosition: "本篇第 {current} / {total} 題",
     locateBlank: "找到第 {index} 格",
     answer: "正確答案：{answer}",

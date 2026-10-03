@@ -1,4 +1,7 @@
 import type { QuestionItem } from "./practice-content";
+import { usedBlankForOption } from "./practice-content";
+import type { AnsweredBlank } from "./passage-view";
+import { t } from "@/lib/i18n";
 import { isCorrectChoice } from "./meaning-questions";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
@@ -9,12 +12,14 @@ export function QuestionOptions({
   pendingChoice,
   busy,
   onAnswer,
+  answeredBlanks,
 }: {
   item: QuestionItem;
   selected: number | null;
   pendingChoice: number | null;
   busy: boolean;
   onAnswer: (choice: number) => void;
+  answeredBlanks: Record<number, AnsweredBlank>;
 }) {
   const answered = selected !== null;
   return (
@@ -25,6 +30,7 @@ export function QuestionOptions({
       )}
     >
       {item.options.map((option, optionIndex) => {
+        const usedBlank = usedBlankForOption(item, optionIndex, answeredBlanks);
         const isCorrect = isCorrectChoice(item, optionIndex);
         const isSelected = selected === optionIndex;
         const isPending = !answered && pendingChoice === optionIndex;
@@ -35,7 +41,9 @@ export function QuestionOptions({
               ? "border-destructive/40 bg-destructive/10"
               : isPending
                 ? "border-primary bg-primary/10"
-                : "border-border/70 bg-card hover:border-primary/50 hover:bg-primary/5";
+                : usedBlank !== undefined
+                  ? "border-border/70 bg-muted/30 text-muted-foreground"
+                  : "border-border/70 bg-card hover:border-primary/50 hover:bg-primary/5";
         const badgeClass =
           answered && isCorrect
             ? "bg-success text-success-foreground"
@@ -48,7 +56,7 @@ export function QuestionOptions({
           <button
             key={`${item.id}:${optionIndex}`}
             type="button"
-            disabled={answered || busy}
+            disabled={answered || busy || usedBlank !== undefined}
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
@@ -66,6 +74,11 @@ export function QuestionOptions({
             </span>
             <span className="min-w-0 flex-1 break-words leading-6">
               {option}
+              {usedBlank !== undefined && (
+                <span className="block text-sm text-muted-foreground">
+                  {t("practice.usedInBlank", { index: usedBlank })}
+                </span>
+              )}
             </span>
             {isPending && (
               <Icons.loading

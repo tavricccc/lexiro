@@ -25,6 +25,21 @@ export interface QuestionItem {
   whyWrong?: Record<string, string>;
 }
 
+/** A revealed correct bank answer is consumed by its earlier blank. */
+export function usedBlankForOption(
+  item: QuestionItem,
+  optionIndex: number,
+  answered: Readonly<Record<number, { answer: string }>>,
+): number | undefined {
+  if (!item.optionBank) return undefined;
+  const used = Object.entries(answered).find(
+    ([blank, value]) =>
+      Number(blank) !== item.blank &&
+      value.answer === item.options[optionIndex],
+  );
+  return used ? Number(used[0]) : undefined;
+}
+
 function seededRandom(seed: string): () => number {
   let state = 2166136261;
   for (let index = 0; index < seed.length; index += 1) {
