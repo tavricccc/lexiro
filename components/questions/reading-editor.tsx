@@ -142,7 +142,7 @@ export function ReadingEditor({
     if (!valid) {
       if (titleError) {
         setPane("passage");
-        titleRef.current?.focus();
+        requestAnimationFrame(() => titleRef.current?.focus());
       } else if (passageError) {
         setPane("passage");
         setArticleMode("edit");

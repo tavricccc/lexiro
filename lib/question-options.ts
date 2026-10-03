@@ -117,8 +117,3 @@ export function questionFormatOptions(
   const options = formatOptions(values);
   return allLabel ? [{ label: allLabel, value: "all" }, ...options] : options;
 }
-
-/** The single-question editor authors vocabulary only. */
-export function sentenceStyleOptions(): LabelledOption[] {
-  return formatOptions(SENTENCE_STYLES);
-}

@@ -156,7 +156,7 @@ describe("interrupted manual edits", () => {
     render(<ReadingEditor readingId="new" />);
     const title = await screen.findByRole("textbox", { name: "文章標題" });
     fireEvent.click(screen.getByRole("button", { name: "儲存題目" }));
-    expect(title).toHaveFocus();
+    await waitFor(() => expect(title).toHaveFocus());
     expect(screen.getByText("還有欄位沒填完，補齊後就能儲存。")).toBeVisible();
   });
 

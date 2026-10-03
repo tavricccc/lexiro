@@ -26,10 +26,7 @@ import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { randomUUID } from "@/src/lib/id";
 import { parseSenseKey, senseKey } from "@/src/lib/library";
-import {
-  difficultyOptions,
-  sentenceStyleOptions,
-} from "@/lib/question-options";
+import { difficultyOptions } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import {
@@ -283,7 +280,7 @@ function QuestionEditorForm({
       <PageHeader
         actions={<DraftSaveStatus status={saved.persistence} />}
         back={<BackControl href={returnHref} />}
-        title={t("questions.edit")}
+        title={t("questions.editFormat", { name: t("questions.vocabulary") })}
       />
 
       <QuestionWorkspace
@@ -294,17 +291,6 @@ function QuestionEditorForm({
         passage={
           <div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <SelectField
-                label={t("questions.type")}
-                onValueChange={(value) =>
-                  form.setValue(
-                    "questionStyle",
-                    value as Values["questionStyle"],
-                  )
-                }
-                options={sentenceStyleOptions()}
-                value={form.watch("questionStyle")}
-              />
               <SelectField
                 label={t("practice.difficulty")}
                 onValueChange={(value) =>
