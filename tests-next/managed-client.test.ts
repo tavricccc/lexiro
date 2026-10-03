@@ -27,6 +27,18 @@ afterEach(() => {
 });
 
 describe("managed AI boundary", () => {
+  it("declares the reviewed question contract only for question requests", async () => {
+    const fetcher = vi.fn<typeof fetch>(async () => new Response([
+      'data: {"type":"response.output_text.delta","delta":"{}"}\n\n',
+      'data: {"type":"response.completed","response":{}}\n\n',
+    ].join("")));
+    vi.stubGlobal("fetch", fetcher);
+    const session: AiSession = {model:"gpt-6-luna",tier:"lite",sessionId:crypto.randomUUID(),context:"",notices:[],usage:{}};
+    await managedTurn(session, {kind:"vocabulary",sources:[],difficulty:2});
+    await managedTurn(session, {kind:"explain",raw:"test"});
+    expect(new Headers(fetcher.mock.calls[0][1]!.headers).get("X-Question-Contract")).toBe("reviewed-v1");
+    expect(new Headers(fetcher.mock.calls[1][1]!.headers).has("X-Question-Contract")).toBe(false);
+  });
   it("reports review progress and rejects unapproved work without retrying", async () => {
     const phases = vi.fn();
     const characters = vi.fn();

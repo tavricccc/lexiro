@@ -675,6 +675,7 @@ export const zhTW = {
   },
   managed: {
     questionQualityRejected: "這批題目未通過審題，請重新產生。",
+    questionUpdateRequired: "出題格式已更新，請先啟用應用程式更新，再重新產生題目。",
     retryLimit:
       "這個來源已達本輪重試上限。已完成的內容仍保留，可重新生成開啟新一輪。",
     accountExists: "此帳號已有額度紀錄，請直接調整現有帳號。",

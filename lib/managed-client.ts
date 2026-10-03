@@ -1,7 +1,7 @@
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { AiRequestError } from "@/src/lib/ai/errors";
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
-import { responseCost } from "@lexiro/ai-contract";
+import { responseCost, QUESTION_KINDS, REVIEWED_QUESTION_CONTRACT } from "@lexiro/ai-contract";
 import type {
   AccountInfo,
   GenerationInput,
@@ -125,6 +125,8 @@ export async function managedFetch(
                   ? "managed.retryLimit"
                   : code === "question_quality_rejected"
                     ? "managed.questionQualityRejected"
+                    : code === "question_update_required"
+                      ? "managed.questionUpdateRequired"
                   : adminRequest && adminMessages[response.status]
                     ? adminMessages[response.status]
                     : (messages[response.status] ??
@@ -298,7 +300,10 @@ export async function managedTurn(
     input.kind === "organizeText" ? "/organize" : "/generate",
     {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",
+        ...((QUESTION_KINDS as readonly string[]).includes(input.kind)
+          ? { "X-Question-Contract": REVIEWED_QUESTION_CONTRACT } : {}),
+      },
       signal,
       body: JSON.stringify({
         ...input,

@@ -32,6 +32,8 @@ export const QUESTION_KINDS = [
   "reading",
 ] as const;
 export type QuestionKind = (typeof QUESTION_KINDS)[number];
+/** Reviewed replies include per-choice teaching and structured discourse removals. */
+export const REVIEWED_QUESTION_CONTRACT = "reviewed-v1";
 /**
  * `senses` supplements a word that is already in the Library with meanings it
  * does not have yet. It is priced per word rather than per meaning returned:
@@ -266,9 +268,8 @@ export const LIMITS = {
  *
  * Calibrated against measured runs, one unit being one source word except for
  * discourse and reading, which are one document however many words went in.
- * The measurement is an upper bound — it prices the whole prompt as uncached
- * and assumes medium reasoning, where lite runs low — so a rate at or below it
- * is charging no more than the run costs.
+ * Question estimates include drafting and independent review. These are planning
+ * estimates; actual reasoning, teaching text and cache use determine settlement.
  */
 export function rate(kind: JobKind, tier: Tier, model: AiModel = DEFAULT_AI_MODEL): number {
   const base = kind === "organizeImage" ? 12 : kind === "organizeText" || kind === "explain" ? 10 : (
