@@ -21,6 +21,7 @@ import {
   migrateReadingFormDraft,
   readingFormFromPack,
   readingPackFromForm,
+  updateReadingOptionBank,
   type ReadingFormDraft,
 } from "./reading-form";
 import { BackControl } from "@/components/ui/back-control";
@@ -331,11 +332,13 @@ export function ReadingEditor({
                             aria-label={`${t("questions.optionBank")} ${String.fromCharCode(65 + at)}`}
                             value={option}
                             onChange={(event) =>
-                              saved.update({
-                                optionBank: optionBank.map((value, position) =>
-                                  position === at ? event.target.value : value,
+                              saved.update(
+                                updateReadingOptionBank(
+                                  saved.draft,
+                                  at,
+                                  event.target.value,
                                 ),
-                              })
+                              )
                             }
                             className="min-h-20 text-base leading-7"
                           />
@@ -344,11 +347,13 @@ export function ReadingEditor({
                             aria-label={`${t("questions.optionBank")} ${String.fromCharCode(65 + at)}`}
                             value={option}
                             onChange={(event) =>
-                              saved.update({
-                                optionBank: optionBank.map((value, position) =>
-                                  position === at ? event.target.value : value,
+                              saved.update(
+                                updateReadingOptionBank(
+                                  saved.draft,
+                                  at,
+                                  event.target.value,
                                 ),
-                              })
+                              )
                             }
                             className="text-base"
                           />

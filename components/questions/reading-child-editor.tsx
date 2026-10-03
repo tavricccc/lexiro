@@ -7,6 +7,8 @@ import { Icons } from "@/components/ui/icons";
 import { Textarea } from "@/components/ui/textarea";
 import { SelectField, type SelectOption } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
+import { DistractorReasonsEditor } from "./distractor-reasons-editor";
+import { remapOptionReasons } from "./option-reasons";
 
 export interface ReadingChildDraft {
   answerIndex: number;
@@ -96,7 +98,17 @@ export function ReadingChildEditor({
             label={t("questions.blankAnswer", { index: child.blank! })}
             description={t("questions.blankAnswerHint")}
             value={String(child.answerIndex)}
-            onValueChange={(value) => onUpdate({ answerIndex: Number(value) })}
+            onValueChange={(value) =>
+              onUpdate({
+                answerIndex: Number(value),
+                whyWrong: remapOptionReasons(
+                  sharedBank,
+                  sharedBank,
+                  child.whyWrong,
+                  Number(value),
+                ),
+              })
+            }
             options={sharedBank.map((option, at) => ({
               value: String(at),
               label: `${String.fromCharCode(65 + at)} · ${option}`,
@@ -108,14 +120,31 @@ export function ReadingChildEditor({
             error={submitted && errors.options}
             labelPrefix={`${label} · `}
             name={`reading-answer-${index}`}
-            onAnswerChange={(answerIndex) => onUpdate({ answerIndex })}
-            onOptionChange={(optionIndex, value) =>
+            onAnswerChange={(answerIndex) =>
               onUpdate({
-                options: child.options.map((option, at) =>
-                  at === optionIndex ? value : option,
+                answerIndex,
+                whyWrong: remapOptionReasons(
+                  child.options,
+                  child.options,
+                  child.whyWrong,
+                  answerIndex,
                 ),
               })
             }
+            onOptionChange={(optionIndex, value) => {
+              const options = child.options.map((option, at) =>
+                at === optionIndex ? value : option,
+              );
+              onUpdate({
+                options,
+                whyWrong: remapOptionReasons(
+                  child.options,
+                  options,
+                  child.whyWrong,
+                  child.answerIndex,
+                ),
+              });
+            }}
             options={child.options}
           />
         )}
@@ -126,6 +155,12 @@ export function ReadingChildEditor({
             className="min-h-24 text-base leading-7"
           />
         </Field>
+        <DistractorReasonsEditor
+          options={sharedBank ?? child.options}
+          answerIndex={child.answerIndex}
+          reasons={child.whyWrong}
+          onChange={(whyWrong) => onUpdate({ whyWrong })}
+        />
       </div>
     </section>
   );

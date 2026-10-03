@@ -37,6 +37,8 @@ import {
   type QuestionWorkspacePane,
 } from "./question-workspace";
 import { QuestionPreview } from "./question-preview";
+import { DistractorReasonsEditor } from "./distractor-reasons-editor";
+import { normalizeOptionReasons, remapOptionReasons } from "./option-reasons";
 
 interface Values {
   answerIndex: number;
@@ -46,6 +48,8 @@ interface Values {
   prompt: string;
   questionStyle: QuestionStyle;
   source: string;
+  whyWrong?: Record<string, string>;
+  reasonsVersion: 1;
 }
 
 export function QuestionEditor({
@@ -102,6 +106,8 @@ function QuestionEditorForm({
           prompt: current.prompt,
           questionStyle: current.questionStyle,
           source: senseKey(current.wordKey, current.senseId),
+          whyWrong: current.whyWrong,
+          reasonsVersion: 1,
         }
       : {
           answerIndex: 0,
@@ -111,6 +117,7 @@ function QuestionEditorForm({
           prompt: "",
           questionStyle: "vocabulary",
           source: senses[0]?.value ?? "",
+          reasonsVersion: 1,
         };
   const saved = useResumableDraft<Values>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:edit-question:${questionId}:${current?.updatedAt ?? "new"}`,
@@ -135,6 +142,11 @@ function QuestionEditorForm({
         options: values.options,
         answerIndex: values.answerIndex,
         explanation: values.explanation,
+        whyWrong: normalizeOptionReasons(
+          values.options,
+          values.whyWrong,
+          values.answerIndex,
+        ),
         wordKey: previewSource.wordKey,
         senseId: previewSource.senseId,
         createdAt: current?.createdAt ?? "",
@@ -174,6 +186,11 @@ function QuestionEditorForm({
       createdAt: current?.createdAt ?? timestamp,
       difficulty: Number(values.difficulty) as 1 | 2 | 3,
       explanation: values.explanation.trim() || undefined,
+      whyWrong: normalizeOptionReasons(
+        values.options,
+        values.whyWrong,
+        Number(values.answerIndex),
+      ),
       fingerprint: current?.fingerprint ?? "pending",
       id: current?.id ?? randomUUID(),
       kind: "multipleChoice",
@@ -183,9 +200,7 @@ function QuestionEditorForm({
       senseId,
       updatedAt: timestamp,
       wordKey,
-      ...(current?.kind === "multipleChoice"
-        ? { trap: current.trap, whyWrong: current.whyWrong }
-        : {}),
+      ...(current?.kind === "multipleChoice" ? { trap: current.trap } : {}),
     };
     // The store validates on save; without this the button silently did
     // nothing and the reason only appeared in the console.
@@ -221,8 +236,24 @@ function QuestionEditorForm({
           form.reset(initial);
         }}
         onResume={() => {
-          form.reset(saved.pending!);
+          const pending = saved.pending! as
+            Values | Omit<Values, "reasonsVersion">;
+          const restored: Values =
+            "reasonsVersion" in pending
+              ? pending
+              : {
+                  ...pending,
+                  reasonsVersion: 1,
+                  whyWrong: remapOptionReasons(
+                    initial.options,
+                    pending.options,
+                    initial.whyWrong,
+                    pending.answerIndex,
+                  ),
+                };
+          form.reset(restored);
           saved.resume();
+          saved.update(restored);
         }}
       />
     );
@@ -290,15 +321,33 @@ function QuestionEditorForm({
               <AnswerOptions
                 answerIndex={answerIndex}
                 name="answerIndex"
-                onAnswerChange={(index) => form.setValue("answerIndex", index)}
-                onOptionChange={(index, value) =>
+                onAnswerChange={(index) => {
                   form.setValue(
-                    "options",
-                    options.map((option, at) =>
-                      at === index ? value : option,
+                    "whyWrong",
+                    remapOptionReasons(
+                      options,
+                      options,
+                      values.whyWrong,
+                      index,
                     ),
-                  )
-                }
+                  );
+                  form.setValue("answerIndex", index);
+                }}
+                onOptionChange={(index, value) => {
+                  const nextOptions = options.map((option, at) =>
+                    at === index ? value : option,
+                  );
+                  form.setValue(
+                    "whyWrong",
+                    remapOptionReasons(
+                      options,
+                      nextOptions,
+                      values.whyWrong,
+                      answerIndex,
+                    ),
+                  );
+                  form.setValue("options", nextOptions);
+                }}
                 options={options}
               />
 
@@ -308,6 +357,12 @@ function QuestionEditorForm({
                   className="min-h-24 text-base leading-7"
                 />
               </Field>
+              <DistractorReasonsEditor
+                options={options}
+                answerIndex={answerIndex}
+                reasons={values.whyWrong}
+                onChange={(reasons) => form.setValue("whyWrong", reasons)}
+              />
             </div>
           </div>
         }

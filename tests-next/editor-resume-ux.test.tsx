@@ -160,6 +160,61 @@ describe("interrupted manual edits", () => {
     expect(screen.getByText("還有欄位沒填完，補齊後就能儲存。")).toBeVisible();
   });
 
+  it("uses edited distractor reasons in both the single-question preview and saved question", async () => {
+    const state = emptyLibraryState();
+    const wordKey = normalizeWordKey("observe");
+    const senseId = buildSenseId(wordKey, "v.", "觀察");
+    state.words[wordKey] = {
+      wordKey,
+      word: "observe",
+      updatedAt: "2026-10-03",
+      senses: [
+        {
+          id: senseId,
+          pos: "v.",
+          meaningZh: "觀察",
+          examples: [],
+          supplementary: false,
+        },
+      ],
+    };
+    state.questions = [
+      {
+        id: "reason-question",
+        fingerprint: "reason-question",
+        kind: "multipleChoice",
+        questionStyle: "vocabulary",
+        difficulty: 2,
+        createdAt: "2026-10-03",
+        updatedAt: "2026-10-03",
+        wordKey,
+        senseId,
+        prompt:
+          "The students _____ the classroom before deciding what to change.",
+        options: ["observe", "compare", "record", "collect"],
+        answerIndex: 0,
+        whyWrong: { compare: "原本的解析。" },
+      },
+    ];
+    const saveQuestion = vi.fn().mockResolvedValue("saved");
+    useLibraryStore.setState({ state, saveQuestion });
+    render(<QuestionEditor questionId="reason-question" />);
+    await screen.findByRole("textbox", { name: "題幹" });
+    fireEvent.click(screen.getByText("干擾選項解析"));
+    const reason = await screen.findByRole("textbox", { name: "B · compare" });
+    fireEvent.change(reason, {
+      target: { value: "題幹尚未提供兩個可比較的結果。" },
+    });
+    expect(
+      screen.getByText("題幹尚未提供兩個可比較的結果。", { selector: "dd" }),
+    ).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "儲存題目" }));
+    await waitFor(() => expect(saveQuestion).toHaveBeenCalledOnce());
+    expect(saveQuestion.mock.calls[0][0].whyWrong).toEqual({
+      compare: "題幹尚未提供兩個可比較的結果。",
+    });
+  });
+
   it("restores a reading passage after interruption", async () => {
     const first = render(<ReadingEditor readingId="new" />);
     const passage = await screen.findByRole("textbox", { name: "文章內容" });

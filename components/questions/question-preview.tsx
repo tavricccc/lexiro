@@ -11,6 +11,7 @@ import { t } from "@/lib/i18n";
 import { questionFormatLabel } from "@/lib/question-options";
 import { SENTENCE_BLANK } from "@/src/lib/question-formats";
 import { QuestionPager } from "./question-pager";
+import { normalizeOptionReasons } from "./option-reasons";
 import {
   QuestionWorkspace,
   type QuestionWorkspacePane,
@@ -42,7 +43,11 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
         />
         <Explanation
           explanation={question.explanation}
-          whyWrong={question.whyWrong}
+          whyWrong={normalizeOptionReasons(
+            question.options,
+            question.whyWrong,
+            question.answerIndex,
+          )}
         />
       </section>
     );
@@ -123,7 +128,11 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
           />
           <Explanation
             explanation={child.explanation}
-            whyWrong={child.whyWrong}
+            whyWrong={normalizeOptionReasons(
+              child.options,
+              child.whyWrong,
+              child.answerIndex,
+            )}
           />
           {question.optionBank && (
             <details className="rule-t pt-3">
@@ -243,8 +252,10 @@ function Explanation({
       {whyWrong && (
         <dl className="grid gap-3 text-sm">
           {Object.entries(whyWrong).map(([option, reason]) => (
-            <div className="flex gap-3" key={option}>
-              <dt className="shrink-0 font-medium">{option}</dt>
+            <div className="grid min-w-0 gap-1" key={option}>
+              <dt className="min-w-0 whitespace-normal break-words font-medium">
+                {option}
+              </dt>
               <dd className="min-w-0 leading-6 text-muted-foreground">
                 {reason}
               </dd>

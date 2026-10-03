@@ -5,6 +5,7 @@ import {
   readingFormFromPack,
   readingPackFromForm,
   migrateReadingFormDraft,
+  updateReadingOptionBank,
 } from "@/components/questions/reading-form";
 
 const wordKey = normalizeWordKey("observe");
@@ -74,13 +75,38 @@ describe("passage question editing", () => {
     },
   );
 
-  it("edits a shared bank once and gives every blank the same updated options", () => {
+  it("rekeys shared-bank reasons independently and removes a newly correct option's reason on save", () => {
     const original = pack("wordBank");
-    const draft = readingFormFromPack(original);
-    draft.optionBank![1] = "examine";
+    original.questions.push({
+      ...original.questions[0],
+      id: "child-2",
+      blank: 2,
+      whyWrong: { compare: "第二格沒有比較兩個事物。" },
+    });
+    const draft = updateReadingOptionBank(
+      readingFormFromPack(original),
+      1,
+      " examine ",
+    );
+    expect(draft.children[0].whyWrong).toEqual({
+      examine: "尚未比較不同結果。",
+    });
+    expect(draft.children[1].whyWrong).toEqual({
+      examine: "第二格沒有比較兩個事物。",
+    });
     const saved = readingPackFromForm(draft, words, original);
     expect(saved.optionBank![1]).toBe("examine");
     expect(saved.questions[0].options).toEqual(saved.optionBank);
+    expect(saved.questions[0].whyWrong).toEqual({
+      examine: "尚未比較不同結果。",
+    });
+    expect(readingFormFromPack(saved).children[1].whyWrong).toEqual({
+      examine: "第二格沒有比較兩個事物。",
+    });
+    draft.children[0].answerIndex = 1;
+    expect(
+      readingPackFromForm(draft, words, original).questions[0].whyWrong,
+    ).toBeUndefined();
   });
 
   it("migrates an old editor draft without losing its edited passage", () => {

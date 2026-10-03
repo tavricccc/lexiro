@@ -3,6 +3,7 @@ import { t } from "@/lib/i18n";
 import { parseSenseKey, senseKey } from "@/src/lib/library";
 import { randomUUID } from "@/src/lib/id";
 import type { ReadingChildDraft } from "./reading-child-editor";
+import { normalizeOptionReasons, remapOptionReasons } from "./option-reasons";
 
 export interface ReadingFormDraft {
   title: string;
@@ -61,23 +62,67 @@ export function migrateReadingFormDraft(
     | Omit<ReadingFormDraft, "format" | "optionBank" | "explanation">,
   initial: ReadingFormDraft,
 ): ReadingFormDraft {
-  if ("format" in draft) return draft;
+  const migrated =
+    "format" in draft
+      ? draft
+      : {
+          ...draft,
+          format: initial.format,
+          optionBank: initial.optionBank,
+          explanation: initial.explanation,
+          children: draft.children.map((child) => {
+            const original = initial.children.find(
+              (entry) => entry.id === child.id,
+            );
+            return original
+              ? {
+                  ...child,
+                  blank: original.blank,
+                  explanation: original.explanation,
+                  whyWrong: original.whyWrong,
+                }
+              : child;
+          }),
+        };
+  return {
+    ...migrated,
+    children: migrated.children.map((child) => {
+      const options = migrated.optionBank ?? child.options;
+      return {
+        ...child,
+        options,
+        whyWrong: remapOptionReasons(
+          child.options,
+          options,
+          child.whyWrong,
+          child.answerIndex,
+        ),
+      };
+    }),
+  };
+}
+
+export function updateReadingOptionBank(
+  draft: ReadingFormDraft,
+  index: number,
+  value: string,
+): ReadingFormDraft {
+  const optionBank = draft.optionBank!.map((option, at) =>
+    at === index ? value : option,
+  );
   return {
     ...draft,
-    format: initial.format,
-    optionBank: initial.optionBank,
-    explanation: initial.explanation,
-    children: draft.children.map((child) => {
-      const original = initial.children.find((entry) => entry.id === child.id);
-      return original
-        ? {
-            ...child,
-            blank: original.blank,
-            explanation: original.explanation,
-            whyWrong: original.whyWrong,
-          }
-        : child;
-    }),
+    optionBank,
+    children: draft.children.map((child) => ({
+      ...child,
+      options: optionBank,
+      whyWrong: remapOptionReasons(
+        child.options,
+        optionBank,
+        child.whyWrong,
+        child.answerIndex,
+      ),
+    })),
   };
 }
 
@@ -91,17 +136,27 @@ export function readingPackFromForm(
   const questions = draft.children.map((child) => {
     const source = parseSenseKey(child.source, words);
     if (!source) throw new Error(t("questions.unknownSense"));
+    const options = bank ?? child.options.map((option) => option.trim());
     return {
       id: child.id ?? randomUUID(),
       kind: "multipleChoice" as const,
       ...(draft.format === "reading" ? {} : { blank: child.blank }),
       prompt: child.prompt.trim(),
-      options: bank ?? child.options.map((option) => option.trim()),
+      options,
       answerIndex: child.answerIndex,
       wordKey: source.wordKey,
       senseId: source.senseId,
       explanation: child.explanation?.trim() || undefined,
-      whyWrong: child.whyWrong,
+      whyWrong: normalizeOptionReasons(
+        options,
+        remapOptionReasons(
+          child.options,
+          options,
+          child.whyWrong,
+          child.answerIndex,
+        ),
+        child.answerIndex,
+      ),
     };
   });
   return {
