@@ -14,7 +14,6 @@ import { jsonSchema, questionOutput, wordOutput } from "../src/schemas";
  */
 const KINDS: GeneratedQuestionKind[] = [
   "vocabulary",
-  "grammar",
   "cloze",
   "wordBank",
   "discourse",
@@ -67,7 +66,7 @@ describe("structured output schemas", () => {
       answer: "convinced",
       distractors: ["informed", "warned", "reminded"],
     };
-    for (const kind of ["vocabulary", "grammar"] as const) {
+    for (const kind of ["vocabulary"] as const) {
       expect(questionOutput(kind).parse({ items: [item] })).toEqual({ items: [item] });
       const { usage: _unused, ...withoutUsage } = item;
       expect(() => questionOutput(kind).parse({ items: [withoutUsage] })).toThrow();

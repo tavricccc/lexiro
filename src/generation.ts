@@ -242,7 +242,7 @@ function cachedInstructionInput(prepared: PreparedGeneration) {
         prepared.instructions.slice(prepared.cachePrefix.length).trimStart(),
       ]
     : [prepared.instructions];
-  return blocks.map((text) => ({
+  return blocks.filter(Boolean).map((text) => ({
     role: "developer" as const,
     content: [
       {

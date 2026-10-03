@@ -114,9 +114,9 @@ describe("private generation prompts", () => {
       type: "input_text", text: QUESTION_REVIEW_RULES, prompt_cache_breakpoint: { mode: "explicit" },
     }] });
     expect(requests[0].input[1]).not.toEqual(requests[1].input[1]);
-    expect(requests[0].input[2]).not.toEqual(requests[1].input[2]);
     expect(requests[0].text).toEqual(requests[1].text);
     for (const request of requests) {
+      expect(request.input).toHaveLength(2);
       expect(request).toMatchObject({ model: "gpt-6-luna", reasoning: { effort: "medium" },
         prompt_cache_key: QUESTION_REVIEW_CACHE_KEY, prompt_cache_options: { mode: "explicit", ttl: "30m" } });
       expect(request).not.toHaveProperty("previous_response_id");

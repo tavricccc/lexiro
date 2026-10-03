@@ -123,7 +123,7 @@ export async function settleGeneration(
             prepared.units.forEach((unit) => valid.add(unit.index));
         } else if (kind !== "words" && kind !== "senses") {
           const schema = questionOutput(kind);
-          if (kind === "vocabulary" || kind === "grammar") {
+          if (kind === "vocabulary") {
             if (Array.isArray(data.items))
               data.items.forEach((item, index) => {
                 if (schema.safeParse({ items: [item] }).success)

@@ -29,10 +29,10 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
     if (count < range.min || count > range.max) reject(`全文有 ${count} 詞，必須為 ${range.min}–${range.max} 詞`);
   }
   if (list.some((item) => !/\p{Script=Han}/u.test(String(item.explanation)) || (item.whyWrong as string[]).some((reason) => !/\p{Script=Han}/u.test(reason)))) reject("缺少繁體中文逐題解說");
-  if (["vocabulary", "grammar", "cloze", "reading"].includes(kind)) {
+  if (["vocabulary", "cloze", "reading"].includes(kind)) {
     if (list.some((item) => (item.distractors as string[]).length !== 3 || new Set([item.answer, ...(item.distractors as string[])].map((option) => key(String(option)))).size !== 4)) reject("四選項不足或重複");
   }
-  if (kind === "vocabulary" || kind === "grammar") {
+  if (kind === "vocabulary") {
     for (const item of list) {
       const sentence = String(item.sentence), usage = String(item.usage), answer = String(item.answer);
       const usageAt = hits(sentence, usage), answerAt = hits(sentence, answer);

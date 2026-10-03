@@ -47,6 +47,17 @@ function events(text: string) {
 }
 
 describe("reviewed question HTTP pipeline", () => {
+  it("rejects the removed grammar format before reserving or calling the provider", async () => {
+    const original = request(crypto.randomUUID());
+    const payload = await original.json() as Record<string, unknown>;
+    const req = new Request(original.url, { method: "POST", headers: original.headers, body: JSON.stringify({ ...payload, kind: "grammar" }) });
+    const fetcher = vi.fn<typeof fetch>();
+    const response = await start(req, fetcher).response;
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: { code: "invalid_input" } });
+    expect(fetcher).not.toHaveBeenCalled();
+    expect((await env.DB.prepare("SELECT id FROM charges").all()).results).toEqual([]);
+  });
   it("rejects an old question client before reserving points or calling the provider", async () => {
     const req = request(crypto.randomUUID());
     req.headers.delete("x-question-contract");
