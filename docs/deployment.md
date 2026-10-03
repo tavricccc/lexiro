@@ -12,7 +12,7 @@ Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號�
 
 GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CLOUDFLARE_API_TOKEN`、`OPENAI_API_KEY`、`ADMIN_EMAILS`。Cloudflare token 限定為 Tavric account，權限需包含 Workers Scripts:Edit 與 D1:Edit。Workflow 仍不執行消耗帳號用量的 prompt 評測。
 
-## 照片批次介面（現行共用合約 2.3.0）
+## 照片批次介面（現行共用合約 3.0.0）
 
 `POST /organize` 的 `text/plain` body 以換行分隔 1-10 張 WebP base64，`X-Session-Id` 識別同批 session，`X-AI-Model` 必須是共用合約接受的模型。每張最多 1.5 MB／長邊 1800，整批 body 上限 20,000,009 bytes。Worker 在預留前驗證每張圖片，一次上游請求含整批 input_image；預留依 `rate('organizeImage', tier, model)`，實扣按回報 usage。成功保留各來源身份，失敗或取消釋放預留。照片格式本身不新增 D1 migration。
 
@@ -21,7 +21,7 @@ GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CL
 ## 持久化與共用契約
 
 - 部署依序套用未完成 migrations，目前到 `0013_usage_parts.sql`，轉換既有 usage／pending 的單回合紀錄。本地測試只用 `npm run db:migrate`。
-- 前端與 Worker 使用 `@lexiro/ai-contract` 2.3.0。題目帶 `X-Question-Contract: reviewed-v1`，舊版在預留前回 426。游標請求使用 cursor、回應 nextCursor，舊 offset 回 400。JSON 生成帶 model，管理 PATCH 帶 expected 版本；沒有舊格式相容分支。
+- 前端與 Worker 使用 `@lexiro/ai-contract` 3.0.0。題目帶 `X-Question-Contract: reviewed-v1`，舊版在預留前回 426。游標請求使用 cursor、回應 nextCursor，舊 offset 回 400。JSON 生成帶 model，管理 PATCH 帶 expected 版本；沒有舊格式相容分支。
 - 舊 usage 保留原值並標成未核實；缺少 input／output 的歷史零成本列另標為 `unavailable`，不列入已知成本。不臆測實扣，也不自動修正既有餘額。管理頁的已扣點數只合計新版本可核實的紀錄。
 - `pending_usage` 只含 response id、來源識別與計費 metadata，不保存 prompt 或輸出。Cron 每次最多補查 5 筆，帳戶請求最多 1 筆；每次供應商查詢上限 10 秒。取消／失敗不鎖住點數；有產出的待核對項目保留預留，直到取得有效 usage。
 - 監控報表的待核對筆數。持續無法取得 usage 時，需向供應商查明，不要刪除 pending 列、改帳戶負餘額或冒填零成本。此版本沒有自動估價／免單與人工核銷端點。
@@ -32,4 +32,4 @@ Cron 為每日 UTC 00:00（臺灣 08:00），先補查 pending usage 再執行�
 
 更新 public contract 後，在前端 `packages/ai-contract` 執行 npm pack，將版本化 tgz 放入本 repo 的 vendor，更新 package.json／lockfile，再跑四個 gate。契約欄位改變時先發布 Worker 再發布前端。完整 HTTP／結算時序見[架構](architecture.md)。
 
-本次出題先部署 Worker 的 migration 與審題管線，再部署新前端。部署期間舊 App 出題被拒絕但不扣點；使用者明確啟用 PWA 更新後取得新契約，不能為發布自動清空草稿或刷新。單字、補充、整理與解說快取鍵不變；題目 writer 使用 `lexiro-questions-20261003-v7`，review 使用 `lexiro-question-review-20261003-v3`。
+本輪不新增 D1 migration，先部署 Worker 的五種學測題型與快取前綴，再部署新前端。grammar 請求在預留前回 400，其他缺少 reviewed-v1 的學測題目仍回 426；使用者明確啟用 PWA 更新後取得新介面，不能為發布自動清空草稿或刷新。單字、補充、整理與解說快取鍵不變；題目 writer 使用 `lexiro-questions-20261003-v8`，review 使用 `lexiro-question-review-20261003-v4`。

@@ -16,13 +16,13 @@
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；調整必須帶閱讀時的 `expected` 狀態，原子拒絕過期修改並直接回傳實際儲存結果。帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session 讓新一輪要付費，重試上限的識別不含 session，client 換 uuid 不能重置上限。`cacheKey` 跟著用到的那段 prompt 走而不是 job kind：`senses`（補充多義）逐字沿用 `generateWordSet`，因此與 `words` 共用 `WORD_CACHE_KEY`，由建立單字集的流量把前綴暖著。補充以「字」為計費單位，回傳 0 個詞義照樣算完成 |
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、每批 1–10 張 WebP 輸入檢查與逐張計費來源；圖片不落地。`text/plain` body 每行一張 base64，每張至多 1.5 MB、整批 body 至多 20,000,009 bytes；同批只發一次多圖片 Responses 請求，仍逐張預留與記錄來源完成。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
-| `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 已實測固定提示與供應商 structured-output schema，只放 private repo |
+| `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 固定提示與供應商 structured-output schema，只放 private repo；採樣與限制見 prompt 評測紀錄 |
 | `src/question-review.ts`、`src/question-review-validation.ts` | 獨立審題 schema／規則及核准前門檻；先修訂與逐項解說，最後判定未解決問題及 approved，檢查篇幅、跨度、選項與原文依據 |
 | `src/reviewed-question-stream.ts`、`tests-next/reviewed-questions.test.ts` | 題目同預留出稿→fresh reviewer，共用 110 秒，僅交付核准稿；進度 SSE、品質拒絕／退款、取消、兩回合結算與舊客戶端契約檢查 |
 | `src/usage-parts.ts`、`tests-next/question-review-validation.test.ts` | 各回合完整用量、各自計價後加總；核准稿機器門檻及輸出判定順序的必要反例檢查 |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
-| `vendor/lexiro-ai-contract-2.3.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、難度篇幅、兩回合預估、逐 response 成本及 reviewed-v1 契約。JSON 必須帶模型，題目另帶 X-Question-Contract，照片由 X-AI-Model 選擇；已付費來源依模型區分 |
+| `vendor/lexiro-ai-contract-3.0.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、難度篇幅、兩回合預估、逐 response 成本及 reviewed-v1 契約。JSON 必須帶模型，題目另帶 X-Question-Contract，照片由 X-AI-Model 選擇；已付費來源依模型區分 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |

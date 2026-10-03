@@ -20,6 +20,8 @@ Prepare generation／images 驗輸入並產生每來源身份，D1 reserve 原�
 
 題目必須帶 `X-Question-Contract: reviewed-v1`，不符在預留前回 426。`reviewed-question-stream` 在同一次預留內執行出稿／獨立審題，審題不帶初稿 cursor，沿用選定模型但至少 medium。兩回合共用 110 秒，不另開每回合上限。前端只收到 phase／字數進度及核准後的 corrected JSON，初稿和審題問題不轉發。
 
+現行題型只有 vocabulary、cloze、wordBank、discourse、reading；停用 grammar 在預留前回 400。Reviewer 只送一個固定 developer block，題型、difficulty、lengthRange、來源及初稿都在最後 user input；每種題型 schema 不隨來源數量或難度改變。Writer 的共用規則也有明確快取前綴，其他功能快取不變。
+
 `question-review` 先輸出來源、診斷、修訂及未解決問題，最後才作 approved 判定；未解決問題非空或結構／篇幅／依據不符則 `question_quality_rejected`，整批退款且不交稿。只保留最終審題 cursor；後續出題仍須以當輪來源與 schema 為準。
 
 Terminal 結算發生在終止事件交給前端之前。完整 usage 直接記成本與實扣；缺 usage 先補查 stored response，仍未知就記 pending。Pending 只存 response ID、來源與計費 metadata，不存圖片／prompt／輸出。取消、失敗與無法回報成本都保留明確狀態。
