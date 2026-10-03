@@ -3,6 +3,7 @@ import { encode } from "gpt-tokenizer";
 import { REASONING, prepareGeneration, upstreamRequest } from "../src/generation";
 import { QUESTION_KINDS, AI_MODELS, TIERS } from "@lexiro/ai-contract";
 import { QUESTION_CACHE_KEY, TASK_RULES } from "../src/question-prompts";
+import { prepareQuestionReview, QUESTION_REVIEW_CACHE_KEY, QUESTION_REVIEW_RULES } from "../src/question-review";
 
 describe("private generation prompts", () => {
   it.each(AI_MODELS)("routes %s for every reasoning tier and keeps model-specific charge identities", async (model) => {
@@ -96,6 +97,30 @@ describe("private generation prompts", () => {
       new Set([QUESTION_CACHE_KEY]),
     );
     expect(new Set(prepared.map((entry) => entry.instructions)).size).toBe(4);
+  });
+
+  it("keeps the review prefix, schema and settings stable before variable difficulty and draft data", async () => {
+    const requests = await Promise.all(([1, 3] as const).map(async (difficulty) => {
+      const prepared = await prepareGeneration({
+        kind: "vocabulary", model: "gpt-6-luna", tier: difficulty === 1 ? "lite" : "thinking",
+        session: crypto.randomUUID(), difficulty,
+        sources: [{ ref: `source-${difficulty}`, word: difficulty === 1 ? "river" : "bank", pos: "n.", meaningZh: difficulty === 1 ? "河流" : "銀行" }],
+      }, `user-${difficulty}`);
+      return upstreamRequest(prepareQuestionReview(prepared, { items: [{ sentence: `draft-${difficulty}` }] }));
+    }));
+    expect(encode(QUESTION_REVIEW_RULES).length).toBeGreaterThanOrEqual(1024);
+    expect(requests[0].input[0]).toEqual(requests[1].input[0]);
+    expect(requests[0].input[0]).toEqual({ role: "developer", content: [{
+      type: "input_text", text: QUESTION_REVIEW_RULES, prompt_cache_breakpoint: { mode: "explicit" },
+    }] });
+    expect(requests[0].input[1]).not.toEqual(requests[1].input[1]);
+    expect(requests[0].input[2]).not.toEqual(requests[1].input[2]);
+    expect(requests[0].text).toEqual(requests[1].text);
+    for (const request of requests) {
+      expect(request).toMatchObject({ model: "gpt-6-luna", reasoning: { effort: "medium" },
+        prompt_cache_key: QUESTION_REVIEW_CACHE_KEY, prompt_cache_options: { mode: "explicit", ttl: "30m" } });
+      expect(request).not.toHaveProperty("previous_response_id");
+    }
   });
 
   // Supplementing is a rare press. Sharing the word prefix byte for byte is
