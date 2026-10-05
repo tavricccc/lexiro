@@ -181,6 +181,9 @@ describe("per-account AI model preference", () => {
       12,
     );
     expect(estimatePoints("organizeText", 1, "lite", "gpt-6-luna").max).toBe(5);
+    expect(estimatePoints("organizeText", 1, "pro", "gpt-5.6-luna")).toEqual(estimatePoints("organizeText", 1, "pro", "gpt-6-luna"));
+    expect(responseCost({ model: "gpt-6.1-sol", input: 1000, cached: 500, output: 100 })).toBeCloseTo(0.00205);
+    expect(responseCost({ model: "gpt-6.1-sol", input: 300_000, output: 100_000 })).toBeCloseTo(2.7);
     expect(
       responseCost({ model: "gpt-5.6-luna", input: 300_000, output: 100_000 }),
     ).toBeCloseTo(0.3);
