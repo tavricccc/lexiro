@@ -15,6 +15,8 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 
 `managed-client.ts` 只在 401 強制刷新 token 一次。串流消費 Responses text events，累計每個 response 的 usage；帳號改變會中止／拒絕舊結果。Worker 用白名單重建 Response metadata，移除 instructions／input／prompt 回顯並中和上游錯誤。題目額外使用 `lexiro.question.progress` 表示出題／審題進度，初稿不轉發。
 
+已驗證管理員的生成錯誤另附 diagnostic：出稿／審題階段、實際模型與 reasoning、上游 HTTP 狀態、request ID 及 code／param／type／message。HTTP 與 SSE 都保留診斷至管理員面板；供應商 key 遮蔽，不轉發 request body、prompt 或其他回應欄位。一般帳號不接收此欄位。
+
 題目請求帶 `X-Question-Contract: reviewed-v1`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。`question_quality_rejected` 不自動重試，也不保留未核准的初稿。
 
 題型只接受 vocabulary、cloze、wordBank、discourse、reading；停用的 grammar 在預留前回 400／invalid_input。題目固定規則在快取前綴，來源、初稿、難度及 lengthRange 留在最後輸入。只更新題目 writer／review 的版本，單字、補義、整理及解釋的快取保留；實際命中看供應商回報。

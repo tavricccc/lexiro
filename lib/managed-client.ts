@@ -102,6 +102,7 @@ export async function managedFetch(
           typeof body?.error?.code === "string" ? body.error.code : undefined;
         if (typeof body?.error?.message === "string")
           debugMessage = body.error.message;
+        if (body?.error?.diagnostic) debugMessage = JSON.stringify(body.error.diagnostic);
       } catch {
         /* Keep the response text so the photo flow can expose it for debugging. */
       }
@@ -237,6 +238,7 @@ export async function readManagedStream(
         code: data.code,
         retryable: data.code !== "question_quality_rejected",
         usage: { ...terminal.usage },
+        debugMessage: data.diagnostic ? JSON.stringify(data.diagnostic) : data.response?.lexiro?.diagnostic ? JSON.stringify(data.response.lexiro.diagnostic) : undefined,
       });
     if (data.type === "response.completed") {
       complete = true;

@@ -27,6 +27,11 @@ afterEach(() => {
 });
 
 describe("managed AI boundary", () => {
+  it("preserves administrator diagnostics from failed question streams", async () => {
+    const diagnostic = { phase: "draft", status: 400, requestId: "req_test", provider: { code: "unsupported_parameter", param: "reasoning.effort" } };
+    const stream = new Response(`data: ${JSON.stringify({ type: "error", code: "upstream_unavailable", diagnostic })}\n\n`);
+    await expect(readManagedStream(stream, {})).rejects.toMatchObject({ code: "upstream_unavailable", debugMessage: JSON.stringify(diagnostic) });
+  });
   it("declares the reviewed question contract only for question requests", async () => {
     const fetcher = vi.fn<typeof fetch>(async () => new Response([
       'data: {"type":"response.output_text.delta","delta":"{}"}\n\n',

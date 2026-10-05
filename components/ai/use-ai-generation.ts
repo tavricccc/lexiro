@@ -187,9 +187,9 @@ export function useAiGeneration<T>({
                 response: reason.response,
                 responseId: reason.responseId,
               }
-            : reason instanceof AiRequestError && reason.debugMessage
-              ? { response: reason.debugMessage }
-              : null;
+            : reason instanceof AiRequestError
+              ? { response: reason.debugMessage ?? JSON.stringify({ code: reason.code, status: reason.status, message: reason.message }) }
+              : { response: reason instanceof Error ? reason.message : String(reason) };
         setState((s) => ({
           ...s,
           status: controller.signal.aborted ? "cancelled" : "error",
