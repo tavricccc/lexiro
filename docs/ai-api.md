@@ -7,7 +7,8 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 | 入口 | 請求與責任 |
 | --- | --- |
 | `GET /me` | 登入帳號點數、月額度、續期與 admin 身份 |
-| `POST /generate` | JSON：kind、model、session、tier 與 raw／sources；可帶 cursor、repair |
+| `POST /generate` | JSON：kind、model、session、tier 與 raw／sources；可帶 repair；X-Generation-Id 固定同一次操作 |
+| `GET /generation/{session}/{id}` | 登入者取回自己的原任務串流或已完成結果，不再次呼叫模型 |
 | `POST /organize` | 文字 JSON，或 text/plain 的多張 WebP base64 |
 | `/admin/accounts`、`/admin/accounts/{uid}` | 管理帳號、cursor 翻頁與 expected PATCH |
 | `/admin/usage` | 近 30 天、各模型／工作／帳號的用量與未知成本 |
@@ -21,7 +22,9 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 
 題型只接受 vocabulary、cloze、wordBank、discourse、reading；停用的 grammar 在預留前回 400／invalid_input。題目固定規則在快取前綴，來源、初稿、難度及 lengthRange 留在最後輸入。只更新題目 writer／review 的版本，單字、補義、整理及解釋的快取保留；實際命中看供應商回報。
 
-Session 在開始時固定模型、檔位與 UUID，cursor 只接已接受的 response。暫停保留記憶體中的 pending work；重新整理結束未完成工作。流程草稿另保存已完成且可校對的成果，恢復它不必再次生成。
+Session 在開始時固定模型、檔位與 UUID，每批不帶 previous_response_id，上下文獨立。Worker 以每帳號／session 的 Durable Object 管理工作，與供應商用 WebSocket 連線，手機仍透過 SSE 接收。固定 prompt／schema／cache key 不變，只有本批來源在動態尾端；快取命中以 provider usage 為準。
+
+生成需帶 X-Generation-Id，缺少時回 426，啟用 App 更新後使用新介面。斷線自動接回原任務，四次連線失敗後可在同頁面手動續跑；暫停只停止瀏覽器接收與後續批次，本批後端仍會完成。每批上限 10 分鐘，完成／失敗結果保存至任務開始後 30 分鐘，以 alarm 清除。圖片與私有提示只存在執行中的記憶體，不存入 Durable Object；短暫保存來源、輸出及結算 metadata 用於回放。重新整理會失去瀏覽器的 pending 任務 ID；流程草稿仍保存已完成且可校對的成果。
 
 ## 批次與校對
 

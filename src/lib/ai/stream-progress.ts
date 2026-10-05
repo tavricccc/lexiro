@@ -36,6 +36,7 @@ export function createStreamProgress(kind: JobKind) {
     if (!path.length && passageKinds.has(kind) && isRecord(value) && typeof value.passage === "string" && counts.questions) counts.units = 1;
   };
   return (text: string): StreamCounts => {
+    if (!text.length) { offset = 0; stringStart = -1; escaped = false; keyString = false; frames.length = 0; counts.units = 0; counts.senses = 0; counts.questions = 0; }
     for (; offset < text.length; offset++) {
       const char = text[offset];
       if (stringStart >= 0) {

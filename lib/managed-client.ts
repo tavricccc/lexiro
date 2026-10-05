@@ -8,6 +8,7 @@ import type {
   TokenUsage,
 } from "@lexiro/ai-contract";
 import { t, type TranslationKey } from "./i18n";
+import { resumeGeneration } from "./generation-connection";
 
 export const MANAGED_ACCOUNT_CHANGED = "lexiro:managed-account-changed";
 export function notifyManagedAccountChanged() {
@@ -37,7 +38,7 @@ export async function managedFetch(
     ...init,
     signal: AbortSignal.any([
       ...(init.signal ? [init.signal] : []),
-      AbortSignal.timeout(120_000),
+      AbortSignal.timeout(/^\/(generate|organize|generation)(\/|$)/.test(path) ? 660_000 : 120_000),
     ]),
   };
   const base = process.env.NEXT_PUBLIC_AI_WORKER_URL;
@@ -124,6 +125,10 @@ export async function managedFetch(
                 ? "managed.accountExists"
                 : code === "retry_limit"
                   ? "managed.retryLimit"
+                  : code === "generation_expired"
+                    ? "ai.generationExpired"
+                    : code === "generation_update_required"
+                      ? "managed.questionUpdateRequired"
                   : code === "question_quality_rejected"
                     ? "managed.questionQualityRejected"
                     : code === "question_update_required"
@@ -173,6 +178,8 @@ export async function readManagedStream(
 ): Promise<AiTurnResult> {
   if (!response.body)
     throw new AiRequestError(t("ai.emptyReply"), { retryable: true });
+  options.onText?.("");
+  options.onCharacters?.(0);
   const reader = response.body.getReader(),
     decoder = new TextDecoder();
   let buffer = "",
@@ -201,6 +208,10 @@ export async function readManagedStream(
       .join("\n");
     if (!dataText || dataText === "[DONE]") return;
     const data = JSON.parse(dataText);
+    if (data.type === "lexiro.job") {
+      options.onBatchStartedAt?.(data.startedAt);
+      return;
+    }
     if (data.type === "lexiro.question.progress") {
       reviewed = true;
       options.onPhase?.(data.phase === "review" ? "reviewing" : "generating");
@@ -236,10 +247,10 @@ export async function readManagedStream(
     }
     if (data.type === "error" || data.type === "response.failed")
       throw new AiRequestError(t(data.code === "question_quality_rejected" ? "managed.questionQualityRejected" : "managed.failed"), {
-        code: data.code,
-        retryable: data.code !== "question_quality_rejected",
+        code: data.error?.code ?? data.code ?? "generation_failed",
+        retryable: false,
         usage: { ...terminal.usage },
-        debugMessage: data.diagnostic ? JSON.stringify(data.diagnostic) : data.response?.lexiro?.diagnostic ? JSON.stringify(data.response.lexiro.diagnostic) : undefined,
+        debugMessage: data.error?.diagnostic ? JSON.stringify(data.error.diagnostic) : data.diagnostic ? JSON.stringify(data.diagnostic) : data.response?.lexiro?.diagnostic ? JSON.stringify(data.response.lexiro.diagnostic) : undefined,
       });
     if (data.type === "response.completed") {
       complete = true;
@@ -274,6 +285,7 @@ export async function readManagedStream(
   }
   if (!complete)
     throw new AiRequestError(t("ai.streamFailed"), {
+      code: "stream_disconnected",
       retryable: true,
       streamBroken: true,
       usage: { ...terminal.usage },
@@ -305,12 +317,8 @@ export async function managedTurn(
   options: AiTurnOptions = {},
 ): Promise<AiTurnResult> {
   options.onPhase?.("connecting");
-  const signal = AbortSignal.any([
-    ...(options.signal ? [options.signal] : []),
-    AbortSignal.timeout(120_000),
-  ]);
-  const response = await managedFetch(
-    input.kind === "organizeText" ? "/organize" : "/generate",
+  const signal = options.signal;
+  const init =
     {
       method: "POST",
       headers: { "Content-Type": "application/json",
@@ -323,7 +331,6 @@ export async function managedTurn(
         session: session.sessionId,
         tier: session.tier,
         model: session.model,
-        cursor: session.cursor,
         repair: options.repair,
         // `append` belongs to the round, so every segment of it asks for fresh
         // wording — but never a repair turn. Telling the model to rewrite
@@ -331,21 +338,20 @@ export async function managedTurn(
         // instructions pulling against each other.
         newVersion: session.append && !options.repair,
       }),
-    },
-  );
-  if (response.headers.get("x-context-rebuilt") === "1") {
-    session.cursor = undefined;
-    session.notices.push(t("ai.contextRebuilt"));
-  }
+    };
   let result: AiTurnResult;
   try {
-    result = await readManagedStream(response, { ...options, signal });
+    result = await managedGeneration(session, input.kind === "organizeText" ? "/organize" : "/generate", init, { ...options, signal });
   } catch (reason) {
     if (reason instanceof AiRequestError) addUsage(session.usage, reason.usage);
     throw reason;
   }
   addUsage(session.usage, result.usage);
   return result;
+}
+
+export function managedGeneration(session: AiSession, path: string, init: RequestInit, options: AiTurnOptions) {
+  return resumeGeneration(session, path, init, options, managedFetch, readManagedStream);
 }
 
 /** A run is many turns; the readout is about the run, so the turns add up. */

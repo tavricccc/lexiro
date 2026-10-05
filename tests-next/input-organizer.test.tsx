@@ -28,6 +28,7 @@ vi.mock("@/lib/managed-client", async (importOriginal) => ({
   managedTurn: send,
   managedFetch,
   readManagedStream,
+  managedGeneration: async (_session: unknown, path: string, init: RequestInit, options: unknown) => readManagedStream(await managedFetch(path, init), options),
 }));
 vi.mock("@/lib/word-photo", () => ({ encodeWordPhoto }));
 vi.mock("@jsquash/webp", () => ({ encode: encodeWebp }));

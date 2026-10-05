@@ -6,13 +6,16 @@ export type AiPhase =
   | "reviewing"
   | "validating"
   | "retrying"
-  | "rebuilding";
+  | "rebuilding"
+  | "reconnecting";
+// A disconnected browser subscribes to the same operation rather than generating again.
 export interface AiSession {
   model: AiModel;
   tier: Tier;
   sessionId: string;
   context: string;
   cursor?: string;
+  pendingTurn?: { id: string; signature: string; started: boolean };
   /**
    * This round is an extra version of work already generated, so the model is
    * asked for different wording. A round owns its session, so a new run always
@@ -37,6 +40,7 @@ export interface AiTurnOptions {
   onTokens?: (count: number) => void;
   onText?: (text: string) => void;
   onPhase?: (phase: AiPhase) => void;
+  onBatchStartedAt?: (startedAt: number) => void;
 }
 export interface AiTask<T> {
   id: string;

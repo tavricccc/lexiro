@@ -30,7 +30,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
 import {
-  managedFetch,
+  managedGeneration,
   managedTurn,
   readManagedStream,
   addUsage,
@@ -99,6 +99,8 @@ export function InputOrganizer({
   const [tokens, setTokens] = useState(0);
   const tokenRate = useTokenRate(tokens, busy, startedAt);
   const controller = useRef<AbortController | null>(null);
+  const textSession = useRef<ReturnType<typeof createAiSession> | null>(null);
+  const photoSessions = useRef(new Map<number, ReturnType<typeof createAiSession>>());
   const onDraftRef = useRef(onDraftChange);
   onDraftRef.current = onDraftChange;
   const firstDraft = useRef(true);
@@ -184,13 +186,15 @@ export function InputOrganizer({
 
   const organizeText = async () => {
     const current = startRun();
-    const session = createAiSession(tier, input, chosenModel);
+    const session = textSession.current?.pendingTurn && textSession.current.context === input && textSession.current.model === chosenModel && textSession.current.tier === tier
+      ? textSession.current : createAiSession(tier, input, chosenModel);
+    textSession.current = session;
     let reply: Awaited<ReturnType<typeof managedTurn>> | undefined;
     try {
       reply = await managedTurn(
         session,
         { kind: "organizeText", raw: input },
-        { signal: current.signal, onTokens: setTokens },
+        { signal: current.signal, onTokens: setTokens, onBatchStartedAt: setStartedAt },
       );
       recordUsage(reply.usage);
       current.signal.throwIfAborted();
@@ -282,14 +286,16 @@ export function InputOrganizer({
           }
         }
         let reply: Awaited<ReturnType<typeof readManagedStream>> | undefined;
-        const session = crypto.randomUUID();
+        const photoSession = photoSessions.current.get(batchStart) ?? createAiSession(tier, "photos", model);
+        photoSessions.current.set(batchStart, photoSession);
+        const session = photoSession.sessionId;
         setTokens(0);
         setStartedAt(Date.now());
         try {
           setPhotoProgress(
             (progress) => progress && { ...progress, phase: "organizing" },
           );
-          const response = await managedFetch("/organize", {
+          reply = await managedGeneration(photoSession, "/organize", {
             method: "POST",
             headers: {
               "content-type": "text/plain",
@@ -299,10 +305,10 @@ export function InputOrganizer({
             },
             body: images.join("\n"),
             signal: current.signal,
-          });
-          reply = await readManagedStream(response, {
+          }, {
             signal: current.signal,
             onTokens: setTokens,
+            onBatchStartedAt: setStartedAt,
             onCharacters: (characters) =>
               setPhotoProgress((progress) =>
                 controller.current === current && progress
@@ -311,6 +317,7 @@ export function InputOrganizer({
               ),
           });
           recordUsage(reply.usage);
+          photoSessions.current.delete(batchStart);
           current.signal.throwIfAborted();
           const cleaned = parseOrganizedWordInput(reply.text).join("\n");
           if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));

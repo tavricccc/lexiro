@@ -119,6 +119,7 @@ export async function runTask<T>(
               report();
             },
             onText: (text) => { streamed = parseProgress(text); report(); },
+            onBatchStartedAt: (startedAt) => { batchStartedAt = startedAt; report(); },
           });
           break;
         } catch (reason) {

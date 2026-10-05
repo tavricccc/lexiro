@@ -60,7 +60,7 @@ describe("managed AI boundary", () => {
     const result = readManagedStream(new Response(frames), { onPhase: phases, onCharacters: characters });
     await expect(result).rejects.toMatchObject({ code: "question_quality_rejected", retryable: false });
     expect(phases.mock.calls).toEqual([["generating"], ["reviewing"]]);
-    expect(characters.mock.calls).toEqual([[100], [20]]);
+    expect(characters.mock.calls).toEqual([[0], [100], [20]]);
     try { await result; } catch (error) {
       expect(addUsage({}, (error as {usage: Parameters<typeof addUsage>[1]}).usage).costUsd).toBeCloseTo(0.041);
     }
