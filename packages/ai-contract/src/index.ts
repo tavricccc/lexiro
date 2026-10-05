@@ -32,8 +32,8 @@ export const QUESTION_KINDS = [
   "reading",
 ] as const;
 export type QuestionKind = (typeof QUESTION_KINDS)[number];
-/** Reviewed replies include per-choice teaching and structured discourse removals. */
-export const REVIEWED_QUESTION_CONTRACT = "reviewed-v1";
+/** One generation supplies questions and per-choice teaching. */
+export const QUESTION_GENERATION_CONTRACT = "single-pass-v1";
 /**
  * `senses` supplements a word that is already in the Library with meanings it
  * does not have yet. It is priced per word rather than per meaning returned:
@@ -61,6 +61,7 @@ export interface GenerationInput {
   difficulty?: 1 | 2 | 3;
   /** For `senses`, the most meanings one word may gain. Fewer is a valid answer. */
   limit?: 1 | 2 | 3;
+  itemRepair?: { index: number; passage: string; items: unknown[]; extraOptions?: string[] };
 }
 export interface GenerationRequest extends GenerationInput {
   model: AiModel;
@@ -286,8 +287,7 @@ export function rate(kind: JobKind, tier: Tier, model: AiModel = DEFAULT_AI_MODE
       reading: 30,
     }[kind] * MULTIPLIER[tier]
   );
-  const reviewFactor = (QUESTION_KINDS as readonly JobKind[]).includes(kind) ? 2 : 1;
-  return Math.ceil(base * factor * reviewFactor);
+  return Math.ceil(base * factor);
 }
 export function estimatePoints(
   kind: JobKind,
@@ -296,5 +296,5 @@ export function estimatePoints(
   model: AiModel = DEFAULT_AI_MODEL,
 ): { min: number; max: number } {
   const max = Math.ceil((rate(kind, tier, model) * count) / 2);
-  return { min: kind === "reading" ? Math.ceil(count * 18 * MULTIPLIER[tier] * (tier === "pro" ? 1 : MODEL_ESTIMATE_FACTOR[model])) : max, max };
+  return { min: kind === "reading" ? Math.ceil(count * 9 * MULTIPLIER[tier] * (tier === "pro" ? 1 : MODEL_ESTIMATE_FACTOR[model])) : max, max };
 }
