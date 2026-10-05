@@ -1,4 +1,5 @@
 import type { Env } from "./env";
+import { countTokens } from "gpt-tokenizer/encoding/o200k_base";
 import type { Reservation } from "./billing";
 import { settle } from "./billing";
 import { upstreamBody, type PreparedGeneration } from "./generation";
@@ -74,7 +75,7 @@ export function reviewedQuestionStream(options: Options) {
         signal.throwIfAborted();
         const part: UsagePart = { model: prepared.request.model };
         parts.push(part);
-        emit("lexiro.question.progress", { phase, characters: 0 });
+        emit("lexiro.question.progress", { phase, characters: 0, tokens: 0 });
         const response = await options.fetcher(`${options.env.OPENAI_BASE_URL}/responses`, {
           method: "POST",
           headers: { authorization: `Bearer ${options.env.OPENAI_API_KEY}`, "content-type": "application/json" },
@@ -86,6 +87,7 @@ export function reviewedQuestionStream(options: Options) {
         }
         let terminal: StreamTerminal | undefined;
         let characters = 0;
+        let text = "", lastProgress = 0;
         const stream = sanitizeResponseStream(response.body, { model: prepared.request.model,
           onTerminal: async (value) => {
             terminal = value;
@@ -109,7 +111,12 @@ export function reviewedQuestionStream(options: Options) {
             if (event.type === "response.created") part.cursor = event.response!.id;
             if (event.type === "response.output_text.delta") {
               characters += event.delta!.length;
-              emit("lexiro.question.progress", { phase, characters });
+              text += event.delta!;
+              const now = Date.now();
+              if (now - lastProgress >= 100) {
+                emit("lexiro.question.progress", { phase, characters, tokens: countTokens(text, { allowedSpecial: new Set() }) });
+                lastProgress = now;
+              }
             }
           }
         } finally {
@@ -118,6 +125,7 @@ export function reviewedQuestionStream(options: Options) {
           reader.releaseLock();
         }
         signal.throwIfAborted();
+        emit("lexiro.question.progress", { phase, characters, tokens: countTokens(text, { allowedSpecial: new Set() }) });
         if (!terminal || terminal.status !== "complete" || !terminal.response)
           throw new Error("upstream_unavailable");
         return JSON.parse(outputText(terminal.response)) as unknown;

@@ -22,7 +22,7 @@
 | `src/usage-parts.ts`、`tests-next/question-review-validation.test.ts` | 各回合完整用量、各自計價後加總；核准稿機器門檻及輸出判定順序的必要反例檢查 |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
-| `vendor/lexiro-ai-contract-3.0.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、難度篇幅、兩回合預估、逐 response 成本及 reviewed-v1 契約。JSON 必須帶模型，題目另帶 X-Question-Contract，照片由 X-AI-Model 選擇；已付費來源依模型區分 |
+| `vendor/lexiro-ai-contract-3.1.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、兩回合預估與 reviewed-v1 契約、Sol 價格及 Pro/low 路由。JSON 必須帶模型與檔位，照片由 X-AI-Model／X-AI-Tier 選擇；已付費來源依實際模型及檔位區分 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
@@ -38,6 +38,8 @@
 | `README.md`、`docs/architecture.md` | 本機入口、端點、D1／pending usage 生命週期及排程；現行配置與發布見 deployment |
 
 一般公開串流保留 Responses 文字與必要 metadata。題目先用 `lexiro.question.progress` 傳出稿／審題進度，核准後才送 response.created／output_text.delta／completed，不轉發初稿或審題診斷。對外 usageParts 不含 cursor；內部保存各回合 cursor 供 reconciliation。API key 始終只用於後端供應商請求標頭，上游錯誤文字不直接回傳。
+
+題目進度另傳 o200k tokenizer 計算的輸出 token 數，每 100ms 最多一次；前端據此顯示前 500ms 的約 TPS，不包含推理 token。這是進度估計，最終費用只使用供應商 usage。
 
 `onTerminal` 在終止事件送給前端之前完成結算或持久化待核對項目，並寫入 cursor。用量齊全時立即釋放鎖，缺少 usage 的有產出項目則保留預留等待補查。取消也會發出一次內部終止通知。此處只保護協定層的上下文回顯，不改寫模型產生的內容。
 
