@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { estimatePoints, type JobKind, type Tier } from "@lexiro/ai-contract";
 import type { AiRunState } from "./use-ai-generation";
 import { AiUsage } from "./ai-usage";
+import { AiDiagnostic } from "./ai-diagnostic";
+import { useTokenRate } from "./use-token-rate";
 import { GenerationControls } from "./generation-controls";
 import { useManagedAccount } from "./use-managed-account";
 import { Button } from "@/components/ui/button";
@@ -12,15 +14,6 @@ import { StepActions } from "@/components/ui/step-actions";
 import { TaskProgress } from "@/components/ui/task-progress";
 import { t } from "@/lib/i18n";
 import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
-
-function formatDiagnostic(value: string): string {
-  try {
-    const parsed: unknown = JSON.parse(value);
-    return JSON.stringify(parsed, null, 2);
-  } catch {
-    return value;
-  }
-}
 
 /**
  * The screen a generation runs on.
@@ -73,6 +66,7 @@ export function AiRunPanel<T>({
   const running = state.status === "running",
     started = state.status !== "idle",
     done = state.status === "done";
+  const tokenRate = useTokenRate(state.tokens ?? 0, running);
   const runModel = started && !done ? (state.model ?? model) : model;
   const canRun =
     ready &&
@@ -135,8 +129,8 @@ export function AiRunPanel<T>({
           <span>{t("ai.completedSegments", { count: state.segments })}</span>
           {running && (
             <span className="tabular-nums">
-              {t("ai.progressCharacters", {
-                count: state.characters.toLocaleString(),
+              {t("ai.progressTps", {
+                rate: tokenRate.toFixed(1),
               })}
             </span>
           )}
@@ -153,32 +147,7 @@ export function AiRunPanel<T>({
       )}
 
       {admin && state.error && state.diagnostic && (
-        <details open className="border-t pt-3 text-sm">
-          <summary className="cursor-pointer font-medium">
-            {t("ai.adminDiagnostic")}
-          </summary>
-          {state.diagnostic.responseId && (
-            <p className="mt-3 break-all text-xs text-muted-foreground">
-              {t("ai.adminResponseId", {
-                id: state.diagnostic.responseId,
-              })}
-            </p>
-          )}
-          {state.diagnostic.request && (
-            <div className="mt-3">
-              <p className="mb-1 font-medium">{t("ai.adminRequest")}</p>
-              <pre className="max-h-64 overflow-auto whitespace-pre-wrap break-all rounded-lg bg-[var(--surface-inset)] p-3 text-xs">
-                {formatDiagnostic(state.diagnostic.request)}
-              </pre>
-            </div>
-          )}
-          <div className="mt-3">
-            <p className="mb-1 font-medium">{t("ai.adminResponse")}</p>
-            <pre className="max-h-64 overflow-auto whitespace-pre-wrap break-all rounded-lg bg-[var(--surface-inset)] p-3 text-xs">
-              {formatDiagnostic(state.diagnostic.response)}
-            </pre>
-          </div>
-        </details>
+        <AiDiagnostic diagnostic={state.diagnostic} />
       )}
 
       {ready && !configured && billableCount > 0 && (

@@ -23,6 +23,7 @@ export interface AiRun<T> {
 export interface AiRunUpdate<T> {
   phase: AiPhase;
   characters: number;
+  tokens: number;
   items: T[];
   completed: number;
   total: number;
@@ -57,11 +58,12 @@ export async function runTask<T>(
   const send = options.send ?? generateTurn,
     wait = options.wait ?? waitForRetry;
   let phase: AiPhase = "connecting",
-    characters = 0;
+    characters = 0, tokens = 0;
   const report = () =>
     options.onUpdate({
       phase,
       characters,
+      tokens,
       items: [...run.items],
       completed: run.completed,
       total: run.total,
@@ -85,6 +87,7 @@ export async function runTask<T>(
       const prompt = step.prompt;
       for (let attempt = 0; attempt < 3; attempt++) {
         characters = 0;
+        tokens = 0;
         try {
           reply = await send(run.session, prompt, {
             signal: options.signal,
@@ -95,6 +98,10 @@ export async function runTask<T>(
             },
             onCharacters: (count) => {
               characters = count;
+              report();
+            },
+            onTokens: (count) => {
+              tokens = count;
               report();
             },
           });

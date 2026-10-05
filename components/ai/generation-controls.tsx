@@ -1,12 +1,13 @@
 "use client";
 import {
   estimatePoints,
+  AI_MODELS,
   TIERS,
   type JobKind,
   type Tier,
   type AiModel,
 } from "@lexiro/ai-contract";
-import { ListChoiceGroup, ListSection } from "@/components/ui/list";
+import { ListChoiceGroup, ListPicker, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
 import { CreditBadge } from "./credit-badge";
 import { useManagedAccount } from "./use-managed-account";
@@ -28,6 +29,7 @@ export function GenerationControls({
   onTierChange,
   tier,
   model: requestedModel,
+  onModelChange,
 }: {
   count: number;
   disabled?: boolean;
@@ -35,6 +37,7 @@ export function GenerationControls({
   onTierChange: (tier: Tier) => void;
   tier: Tier;
   model?: AiModel;
+  onModelChange?: (model: AiModel) => void;
 }) {
   const account = useManagedAccount();
   const preferredModel = useAiPreferencesStore(
@@ -47,16 +50,35 @@ export function GenerationControls({
   return (
     <ListSection
       footer={
-        account.error
-          ? account.error.message
-          : admin
-            ? t("admin.unlimited")
-            : account.data
-              ? t("managed.balance", { points: account.data.points })
-              : undefined
+        <>
+          {onModelChange && (
+            <span className="mb-1 block">
+              {t("managed.organizerModelHint")}
+            </span>
+          )}
+          {account.error
+            ? account.error.message
+            : admin
+              ? t("admin.unlimited")
+              : account.data
+                ? t("managed.balance", { points: account.data.points })
+                : undefined}
+        </>
       }
       header={t("managed.tier")}
     >
+      {onModelChange && (
+        <ListPicker
+          disabled={disabled}
+          label={t("settings.aiModel")}
+          value={model}
+          onChange={(value) => onModelChange(value as AiModel)}
+          options={AI_MODELS.map((value) => ({
+            value,
+            label: value === "gpt-6-luna" ? "GPT-6 Luna" : "GPT-5.6 Luna",
+          }))}
+        />
+      )}
       <ListChoiceGroup
         disabled={disabled}
         label={t("managed.tier")}

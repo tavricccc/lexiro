@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LIMITS, estimatePoints } from "@lexiro/ai-contract";
+import {
+  LIMITS,
+  estimatePoints,
+  type AiModel,
+  type Tier,
+} from "@lexiro/ai-contract";
 import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 import { CreditBadge } from "@/components/ai/credit-badge";
@@ -27,14 +32,23 @@ export function PhotoInputButton({
   label,
   onFiles,
   showCost = true,
+  model: requestedModel,
+  tier = "lite",
 }: {
   disabled: boolean;
   label: string;
   onFiles: (files: File[]) => void;
   showCost?: boolean;
+  model?: AiModel;
+  tier?: Tier;
 }) {
   const model = useAiPreferencesStore((store) => store.preferences.model);
-  const points = estimatePoints("organizeImage", 1, "lite", model).max;
+  const points = estimatePoints(
+    "organizeImage",
+    1,
+    tier,
+    requestedModel ?? model,
+  ).max;
   return (
     <Button asChild type="button" variant="secondary" disabled={disabled}>
       <label>
@@ -71,6 +85,9 @@ export function PhotoSelection({
   onRemove,
   onReplace,
   processed,
+  model: requestedModel,
+  tier = "lite",
+  admin = false,
 }: {
   error: string;
   files: File[];
@@ -79,10 +96,18 @@ export function PhotoSelection({
   onRemove: (index: number) => void;
   onReplace: (files: File[]) => void;
   processed: number;
+  model?: AiModel;
+  tier?: Tier;
+  admin?: boolean;
 }) {
   const remaining = files.length - processed;
   const model = useAiPreferencesStore((store) => store.preferences.model);
-  const points = estimatePoints("organizeImage", 1, "lite", model).max;
+  const points = estimatePoints(
+    "organizeImage",
+    1,
+    tier,
+    requestedModel ?? model,
+  ).max;
   const batches = Math.ceil(remaining / LIMITS.images);
   const [previews, setPreviews] = useState<{ file: File; url: string }[]>([]);
   useEffect(() => {
@@ -100,7 +125,11 @@ export function PhotoSelection({
         <p className="mt-1 type-hint">
           {t("managed.photoConfirmSummary", { count: remaining, batches })}
         </p>
-        <p className="mt-1 type-hint">{t("managed.photoPoints", { points })}</p>
+        {!admin && (
+          <p className="mt-1 type-hint">
+            {t("managed.photoPoints", { points })}
+          </p>
+        )}
         {processed > 0 && (
           <p className="mt-2 type-hint">
             {t("managed.photoCompletedKept", { count: processed })}
@@ -178,9 +207,11 @@ export function PhotoSelection({
 export function PhotoRunProgress({
   progress,
   seconds,
+  tokenRate,
 }: {
   progress: PhotoProgressState;
   seconds: number;
+  tokenRate: number;
 }) {
   return (
     <TaskProgress
@@ -210,10 +241,7 @@ export function PhotoRunProgress({
               prepared: progress.prepared,
               total: progress.batchSize,
             })
-          : t("managed.photoStreamingDetail", {
-              current: progress.currentBatch,
-              count: progress.characters.toLocaleString(),
-            })}
+          : t("ai.progressTps", { rate: tokenRate.toFixed(1) })}
       </span>
     </TaskProgress>
   );

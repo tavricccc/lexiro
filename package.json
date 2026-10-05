@@ -26,6 +26,7 @@
     "clsx": "2.1.1",
     "fflate": "0.8.3",
     "firebase": "12.17.0",
+    "gpt-tokenizer": "^4.0.0",
     "harmonyos-sans-webfont-splitted": "1.2.1",
     "idb-keyval": "6.2.4",
     "lucide-react": "0.544.0",

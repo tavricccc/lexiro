@@ -34,6 +34,7 @@ export interface AiTurnOptions {
   signal?: AbortSignal;
   repair?: string;
   onCharacters?: (count: number) => void;
+  onTokens?: (count: number) => void;
   onPhase?: (phase: AiPhase) => void;
 }
 export interface AiTask<T> {

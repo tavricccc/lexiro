@@ -34,6 +34,7 @@ export interface AiRunState<T> {
   status: AiRunStatus;
   phase: AiPhase;
   characters: number;
+  tokens?: number;
   completed: number;
   total: number;
   segments: number;

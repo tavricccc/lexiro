@@ -1,12 +1,12 @@
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
-import type { GenerationInput, Tier } from "@lexiro/ai-contract";
+import type { AiModel, GenerationInput, Tier } from "@lexiro/ai-contract";
 import { managedTurn } from "@/lib/managed-client";
 import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
-export function createAiSession(tier: Tier, context: string): AiSession {
+export function createAiSession(tier: Tier, context: string, model: AiModel = useAiPreferencesStore.getState().preferences.model): AiSession {
   return {
     tier,
-    model: useAiPreferencesStore.getState().preferences.model,
+    model,
     context,
     sessionId: crypto.randomUUID(),
     notices: [],

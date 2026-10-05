@@ -178,6 +178,12 @@ export async function readManagedStream(
     text = "",
     id: string | undefined,
     complete = false;
+  const { countTokens } = options.onTokens ? await import("gpt-tokenizer/encoding/o200k_base") : { countTokens: undefined };
+  let reviewed = false;
+  options.onTokens?.(0);
+  const tokenTimer = countTokens ? setInterval(() => {
+    if (!reviewed) options.onTokens?.(countTokens(text, { allowedSpecial: new Set() }));
+  }, 100) : undefined;
   const terminal: {
     stopReason: AiTurnResult["stopReason"];
     usage: TokenUsage;
@@ -195,8 +201,10 @@ export async function readManagedStream(
     if (!dataText || dataText === "[DONE]") return;
     const data = JSON.parse(dataText);
     if (data.type === "lexiro.question.progress") {
+      reviewed = true;
       options.onPhase?.(data.phase === "review" ? "reviewing" : "generating");
       options.onCharacters?.(count(data.characters) ?? 0);
+      options.onTokens?.(count(data.tokens) ?? 0);
       return;
     }
     if (data.type === "response.created") id = data.response.id;
@@ -255,6 +263,8 @@ export async function readManagedStream(
       if (done) break;
     }
   } finally {
+    clearInterval(tokenTimer);
+    if (countTokens && !reviewed) options.onTokens?.(countTokens(text, { allowedSpecial: new Set() }));
     await reader.cancel();
     reader.releaseLock();
     notifyManagedAccountChanged();

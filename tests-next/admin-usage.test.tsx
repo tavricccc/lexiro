@@ -157,7 +157,7 @@ describe("the administrator's per-kind cost report", () => {
     expect(await screen.findByText("閱讀測驗 · Pro")).toBeTruthy();
     expect(screen.getByText("120.00 點")).toBeTruthy();
     expect(
-      screen.getByText(/報價 300.0 點 · 2 次 · 2 單位 · 差 −60%/),
+      screen.getByText(/報價 600.0 點 · 2 次 · 2 單位 · 差 −80%/),
     ).toBeTruthy();
   });
 

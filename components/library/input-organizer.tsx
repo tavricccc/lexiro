@@ -4,7 +4,19 @@ import {
   LIMITS,
   buildWordGenerationSources,
   estimatePoints,
+  type AiModel,
+  type Tier,
+  type TokenUsage,
 } from "@lexiro/ai-contract";
+import { GenerationControls } from "@/components/ai/generation-controls";
+import { AiUsage } from "@/components/ai/ai-usage";
+import {
+  AiDiagnostic,
+  type AiDiagnosticValue,
+} from "@/components/ai/ai-diagnostic";
+import { useManagedAccount } from "@/components/ai/use-managed-account";
+import { useTokenRate } from "@/components/ai/use-token-rate";
+import { TaskProgress } from "@/components/ui/task-progress";
 import { Button } from "@/components/ui/button";
 import { CreditBadge } from "@/components/ai/credit-badge";
 import {
@@ -21,6 +33,7 @@ import {
   managedFetch,
   managedTurn,
   readManagedStream,
+  addUsage,
 } from "@/lib/managed-client";
 import { encodeWordPhoto } from "@/lib/word-photo";
 import { AiRequestError } from "@/src/lib/ai/errors";
@@ -35,6 +48,8 @@ export interface InputOrganizerDraft {
   input: string;
   review: string;
   addingPhotos: boolean;
+  model?: AiModel;
+  tier?: Tier;
 }
 
 function formatPhotoError(name: string, reason: unknown) {
@@ -80,53 +95,121 @@ export function InputOrganizer({
     null,
   );
   const [now, setNow] = useState(0);
+  const [startedAt, setStartedAt] = useState(0);
+  const [tokens, setTokens] = useState(0);
+  const tokenRate = useTokenRate(tokens, busy);
   const controller = useRef<AbortController | null>(null);
   const onDraftRef = useRef(onDraftChange);
   onDraftRef.current = onDraftChange;
   const firstDraft = useRef(true);
+  const preferredModel = useAiPreferencesStore((store) => store.preferences.model);
+  const [modelOverride, setChosenModel] = useState<AiModel | undefined>(initialDraft?.model);
+  const chosenModel = modelOverride ?? preferredModel;
+  const [tier, setTier] = useState<Tier>(initialDraft?.tier ?? "lite");
   useEffect(() => {
     if (firstDraft.current) {
       firstDraft.current = false;
       return;
     }
-    onDraftRef.current?.({ input, review, addingPhotos });
-  }, [input, review, addingPhotos]);
+    onDraftRef.current?.({
+      input,
+      review,
+      addingPhotos,
+      model: chosenModel,
+      tier,
+    });
+  }, [input, review, addingPhotos, chosenModel, tier]);
   const uid = useCloudStore((store) => store.user?.uid);
-  const chosenModel = useAiPreferencesStore((store) => store.preferences.model);
-  const textCost = estimatePoints("organizeText", 1, "lite", chosenModel).max;
+  const account = useManagedAccount();
+  const admin = account.data?.admin === true;
+  const [usage, setUsage] = useState<TokenUsage | null>(null);
+  const [diagnostic, setDiagnostic] = useState<AiDiagnosticValue | null>(null);
+  const textCost = estimatePoints("organizeText", 1, tier, chosenModel).max;
   useEffect(() => () => controller.current?.abort(), [uid]);
   useEffect(() => {
-    if (!photoProgress || !busy) return;
+    if (!busy) return;
     setNow(Date.now());
     const timer = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(timer);
-  }, [busy, photoProgress?.startedAt]);
+  }, [busy]);
 
-  const startRun = () => {
+  const startRun = (keepUsage = false) => {
     const current = new AbortController();
     controller.current?.abort();
     controller.current = current;
     setBusy(true);
+    setStartedAt(Date.now());
+    setTokens(0);
     setError("");
+    setDiagnostic(null);
+    if (!keepUsage) setUsage({});
     return current;
   };
 
+  const recordUsage = (value: TokenUsage | undefined) => {
+    if (value) setUsage((total) => addUsage({ ...total }, value));
+  };
+  const recordFailure = (
+    reason: unknown,
+    request: string,
+    reply?: { text: string; id?: string },
+  ) => {
+    if (reason instanceof AiRequestError) recordUsage(reason.usage);
+    setDiagnostic({
+      request,
+      response:
+        reply?.text ??
+        (reason instanceof AiRequestError ? reason.debugMessage : undefined) ??
+        (reason instanceof Error ? reason.message : String(reason)),
+      responseId: reply?.id,
+    });
+  };
+  const adminPanel = admin && (
+    <>
+      {usage && <AiUsage usage={usage} />}
+      {error && diagnostic && <AiDiagnostic diagnostic={diagnostic} />}
+    </>
+  );
+  const controls = (
+    <GenerationControls
+      count={pendingPhotos ? pendingPhotos.length - nextBatchStart : 1}
+      disabled={busy}
+      kind={pendingPhotos || addingPhotos ? "organizeImage" : "organizeText"}
+      model={chosenModel}
+      onModelChange={setChosenModel}
+      onTierChange={setTier}
+      tier={tier}
+    />
+  );
+
   const organizeText = async () => {
     const current = startRun();
+    const session = createAiSession(tier, input, chosenModel);
+    let reply: Awaited<ReturnType<typeof managedTurn>> | undefined;
     try {
-      const text = (
-        await managedTurn(
-          createAiSession("lite", input),
-          { kind: "organizeText", raw: input },
-          { signal: current.signal },
-        )
-      ).text;
+      reply = await managedTurn(
+        session,
+        { kind: "organizeText", raw: input },
+        { signal: current.signal, onTokens: setTokens },
+      );
+      recordUsage(reply.usage);
       current.signal.throwIfAborted();
-      const cleaned = parseOrganizedWordInput(text).join("\n");
+      const cleaned = parseOrganizedWordInput(reply.text).join("\n");
       if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
       setReview(cleaned);
       onPhase("review");
     } catch (reason) {
+      recordFailure(
+        reason,
+        JSON.stringify({
+          kind: "organizeText",
+          raw: input,
+          model: chosenModel,
+          tier,
+          session: session.sessionId,
+        }),
+        reply,
+      );
       if (!current.signal.aborted)
         setError(
           reason instanceof Error ? reason.message : t("managed.failed"),
@@ -161,10 +244,10 @@ export function InputOrganizer({
   const organizePhotos = async () => {
     const files = pendingPhotos;
     if (!files || busy) return;
-    const current = startRun();
+    const current = startRun(nextBatchStart > 0);
     const totalBatches = Math.ceil(files.length / LIMITS.images);
     const startedAt = Date.now();
-    const model = useAiPreferencesStore.getState().preferences.model;
+    const model = chosenModel;
     try {
       for (
         let batchStart = nextBatchStart;
@@ -198,6 +281,8 @@ export function InputOrganizer({
             return;
           }
         }
+        let reply: Awaited<ReturnType<typeof readManagedStream>> | undefined;
+        const session = crypto.randomUUID();
         try {
           setPhotoProgress(
             (progress) => progress && { ...progress, phase: "organizing" },
@@ -206,25 +291,26 @@ export function InputOrganizer({
             method: "POST",
             headers: {
               "content-type": "text/plain",
-              "x-session-id": crypto.randomUUID(),
+              "x-session-id": session,
               "x-ai-model": model,
+              "x-ai-tier": tier,
             },
             body: images.join("\n"),
             signal: current.signal,
           });
-          const text = (
-            await readManagedStream(response, {
-              signal: current.signal,
-              onCharacters: (characters) =>
-                setPhotoProgress((progress) =>
-                  controller.current === current && progress
-                    ? { ...progress, characters }
-                    : progress,
-                ),
-            })
-          ).text;
+          reply = await readManagedStream(response, {
+            signal: current.signal,
+            onTokens: setTokens,
+            onCharacters: (characters) =>
+              setPhotoProgress((progress) =>
+                controller.current === current && progress
+                  ? { ...progress, characters }
+                  : progress,
+              ),
+          });
+          recordUsage(reply.usage);
           current.signal.throwIfAborted();
-          const cleaned = parseOrganizedWordInput(text).join("\n");
+          const cleaned = parseOrganizedWordInput(reply.text).join("\n");
           if (!cleaned.trim()) throw new Error(t("managed.noWordsRecognized"));
           setReview((currentReview) =>
             [currentReview, cleaned].filter(Boolean).join("\n"),
@@ -239,6 +325,17 @@ export function InputOrganizer({
               },
           );
         } catch (reason) {
+          recordFailure(
+            reason,
+            JSON.stringify({
+              kind: "organizeImage",
+              images: batch.length,
+              model,
+              tier,
+              session,
+            }),
+            reply,
+          );
           if (!current.signal.aborted)
             setError(
               formatPhotoError(
@@ -286,6 +383,7 @@ export function InputOrganizer({
             value={review}
           />
         </Field>
+        {adminPanel}
         {error && (
           <p role="alert" className="text-sm text-destructive">
             {error}
@@ -316,27 +414,37 @@ export function InputOrganizer({
 
   if (pendingPhotos && !busy)
     return (
-      <PhotoSelection
-        error={error}
-        files={pendingPhotos}
-        onCancel={cancelPhotoSelection}
-        onConfirm={() => void organizePhotos()}
-        onRemove={removePhoto}
-        onReplace={selectPhotos}
-        processed={nextBatchStart}
-      />
+      <div className="space-y-4">
+        {controls}
+        {adminPanel}
+        <PhotoSelection
+          error={error}
+          files={pendingPhotos}
+          onCancel={cancelPhotoSelection}
+          onConfirm={() => void organizePhotos()}
+          onRemove={removePhoto}
+          onReplace={selectPhotos}
+          processed={nextBatchStart}
+          model={chosenModel}
+          tier={tier}
+          admin={admin}
+        />
+      </div>
     );
 
   if (photoProgress && busy)
     return (
       <div className="space-y-7">
+        {controls}
         <PhotoRunProgress
+          tokenRate={tokenRate}
           progress={photoProgress}
           seconds={Math.max(
             0,
             Math.floor((now - photoProgress.startedAt) / 1000),
           )}
         />
+        {adminPanel}
         <StepActions width="wide">
           <Button
             className="w-full"
@@ -353,6 +461,7 @@ export function InputOrganizer({
 
   return (
     <div className="space-y-4">
+      {controls}
       {addingPhotos ? (
         <div className="space-y-3">
           <p className="font-medium">{t("managed.morePhotosQuestion")}</p>
@@ -370,6 +479,23 @@ export function InputOrganizer({
             onChange={(event) => setInput(event.target.value)}
           />
         </Field>
+      )}
+      {adminPanel}
+      {busy && !photoProgress && (
+        <TaskProgress
+          elapsed={t("ai.elapsed", {
+            seconds: Math.max(0, Math.floor((now - startedAt) / 1000)),
+          })}
+          label={t("managed.photoProgressLabel")}
+          max={1}
+          summary={t("ai.generating")}
+          title={t("managed.organize")}
+          value={0}
+        >
+          <span className="tabular-nums">
+            {t("ai.progressTps", { rate: tokenRate.toFixed(1) })}
+          </span>
+        </TaskProgress>
       )}
       <StepActions width="wide">
         {!uid && (
@@ -411,6 +537,9 @@ export function InputOrganizer({
               {t("managed.noMorePhotos")}
             </Button>
             <PhotoInputButton
+              model={chosenModel}
+              tier={tier}
+              showCost={!admin}
               disabled={!uid}
               label={t("managed.addPhotos")}
               onFiles={selectPhotos}
@@ -428,12 +557,17 @@ export function InputOrganizer({
             >
               <Icons.generate />
               {t("managed.organize")}
-              <CreditBadge
-                label={t("managed.expectedPoints", { points: textCost })}
-                value={t("managed.expectedShort", { points: textCost })}
-              />
+              {!admin && (
+                <CreditBadge
+                  label={t("managed.expectedPoints", { points: textCost })}
+                  value={t("managed.expectedShort", { points: textCost })}
+                />
+              )}
             </Button>
             <PhotoInputButton
+              model={chosenModel}
+              tier={tier}
+              showCost={!admin}
               disabled={!uid}
               label={t("managed.photo")}
               onFiles={selectPhotos}

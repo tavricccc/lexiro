@@ -17,11 +17,14 @@ const managedFetch = vi.hoisted(() => vi.fn());
 const readManagedStream = vi.hoisted(() => vi.fn());
 const encodeWordPhoto = vi.hoisted(() => vi.fn());
 const encodeWebp = vi.hoisted(() => vi.fn());
+const managedAccount = vi.hoisted(() => ({ data: { admin: false, points: 10000 } }));
+vi.mock("@/components/ai/use-managed-account", () => ({ useManagedAccount: () => managedAccount }));
 vi.mock("@/stores/cloud-store", () => ({
   useCloudStore: (select: (value: { user: { uid: string } }) => unknown) =>
     select({ user: { uid: "user" } }),
 }));
-vi.mock("@/lib/managed-client", () => ({
+vi.mock("@/lib/managed-client", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/managed-client")>()),
   managedTurn: send,
   managedFetch,
   readManagedStream,
@@ -29,6 +32,7 @@ vi.mock("@/lib/managed-client", () => ({
 vi.mock("@/lib/word-photo", () => ({ encodeWordPhoto }));
 vi.mock("@jsquash/webp", () => ({ encode: encodeWebp }));
 beforeEach(() => {
+  managedAccount.data.admin = false;
   vi.resetAllMocks();
   managedFetch.mockResolvedValue({});
   encodeWordPhoto.mockResolvedValue("encoded-photo");
@@ -60,6 +64,24 @@ function selectAndConfirmPhotos(files: File[]) {
 }
 
 describe("organize before generating", () => {
+  it("sends Pro for both text and photos and shows administrator usage on review", async () => {
+    managedAccount.data.admin = true;
+    const reply = { text: '{"lines":["bank n. 銀行"]}', usage: { model: "gpt-6.1-sol", input: 1000, cached: 500, output: 100, reasoning: 20 } };
+    send.mockResolvedValue(reply);
+    readManagedStream.mockResolvedValue(reply);
+    render(<Host onConfirm={vi.fn()} />);
+    fireEvent.click(screen.getByRole("radio", { name: /Pro/ }));
+    fireEvent.change(screen.getByLabelText(/單字與提示/), { target: { value: "bank" } });
+    fireEvent.click(screen.getByRole("button", { name: "整理輸入" }));
+    await screen.findByDisplayValue("bank n. 銀行");
+    expect(send.mock.calls[0][0]).toMatchObject({ model: "gpt-6-luna", tier: "pro" });
+    expect(screen.getByText("gpt-6.1-sol", { exact: false })).toBeInTheDocument();
+    expect(screen.getByText("US$0.002050")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "重新整理" }));
+    selectAndConfirmPhotos([new File(["photo"], "bank.jpg")]);
+    await screen.findByText("還有其他照片嗎？");
+    expect(managedFetch.mock.calls[0][1].headers).toMatchObject({ "x-ai-model": "gpt-6-luna", "x-ai-tier": "pro" });
+  });
   it("waits for confirmation and lets people revise or cancel the photo selection", () => {
     render(<Host onConfirm={vi.fn()} />);
     const first = new File(["photo"], "first.jpg", { type: "image/jpeg" });

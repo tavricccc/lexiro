@@ -15,3 +15,5 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 Code-led direction; no approved image comp and no new raster assets. Existing SVG illustration provenance remains in the committed asset.
 Local verification: material creation and storage, tab switching and entry into practice; 266 tests, lint, typecheck and build pass. Current compact screenshots: review/compact-desktop.png and review/compact-mobile.png. Earlier Library, saved-set and dark Today captures support those states. Real Firebase sync and paid AI execution are unverified.
 Back controls show the arrow only; accessible labels retain the destination.
+整理文字／照片沿用 GenerationControls、ListPicker 與 TaskProgress；Pro 固定 Sol/low，TPS 為前 500ms、每 100ms 更新的輸出估計。管理員用量與診斷共用既有元件，所有人可選模型與檔位。
+本輪元件行為與靜態設計檢查通過；未做瀏覽器視覺驗收。
