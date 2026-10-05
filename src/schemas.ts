@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { QuestionKind as GeneratedQuestionKind } from "@lexiro/ai-contract";
 import { READING_SKILLS } from "@lexiro/ai-contract";
+const teaching = (count: number) => ({ explanation: z.string().min(1), whyWrong: z.array(z.string().min(1)).length(count) });
 
 const text = z.string();
 const texts = z.array(text);
@@ -39,28 +40,35 @@ export const wordOutput = ({ min, max }: { min: number; max: number }) =>
   });
 export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary")
-    return z.object({ items: z.array(sentenceQuestionItem) });
+    return z.object({ items: z.array(sentenceQuestionItem.extend(teaching(3))) });
   if (kind === "cloze")
-    return z.object({ title: text, passage: text, blanks: z.array(choices) });
+    return z.object({ title: text, passage: text, blanks: z.array(choices.extend(teaching(3))) });
   if (kind === "wordBank")
     return z.object({
       title: text,
       passage: text,
-      blanks: z.array(blank),
+      blanks: z.array(blank.extend(teaching(9))),
       extraOptions: texts,
     });
   if (kind === "discourse")
     return z.object({
       title: text,
       passage: text,
-      removals: texts,
+      removals: z.array(z.object({ sentence: text, ...teaching(4) })),
       extraOption: text,
     });
   return z.object({
     title: text,
     passage: text,
-    items: z.array(readingQuestionItem),
+    items: z.array(readingQuestionItem.extend(teaching(3))),
   });
+}
+export function questionItemOutput(kind: GeneratedQuestionKind) {
+  const item = kind === "cloze" ? choices.extend(teaching(3))
+    : kind === "wordBank" ? blank.extend(teaching(9))
+    : kind === "discourse" ? z.object({ sentence: text, ...teaching(4) })
+    : readingQuestionItem.extend(teaching(3));
+  return z.object({ items: z.array(item).length(1) });
 }
 export const jsonSchema = (schema: z.ZodType): Record<string, unknown> => {
   const { $schema: _version, ...result } = z.toJSONSchema(schema);

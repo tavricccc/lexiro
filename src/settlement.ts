@@ -9,7 +9,7 @@ import { deferUsage, reportedUsage, type UsageRecovery } from "./usage-recovery"
 import { supplementWords, type PreparedGeneration } from "./generation";
 import type { StreamTerminal } from "./response-stream";
 import { creditsFromUsage } from "./credits";
-import { wordOutput, questionOutput } from "./schemas";
+import { wordOutput, questionOutput, questionItemOutput } from "./schemas";
 
 const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
@@ -78,7 +78,9 @@ export async function settleGeneration(
         data = null;
       }
       if (record(data)) {
-        if (kind === "words" && Array.isArray(data.items)) {
+        if (prepared.request.itemRepair && questionItemOutput(kind as import("@lexiro/ai-contract").QuestionKind).safeParse(data).success) {
+          valid.add(0);
+        } else if (kind === "words" && Array.isArray(data.items)) {
           const sources = buildWordGenerationSources(prepared.request.raw!);
           data.items.forEach((item, index) => {
             const parsed = wordOutput({ min: 1, max: 1 }).safeParse({

@@ -2,7 +2,7 @@ import type {
   ExecutionContext,
   ScheduledController,
 } from "@cloudflare/workers-types";
-import { LIMITS, QUESTION_KINDS, REVIEWED_QUESTION_CONTRACT } from "@lexiro/ai-contract";
+import { LIMITS, QUESTION_KINDS, QUESTION_GENERATION_CONTRACT } from "@lexiro/ai-contract";
 import {
   AuthenticationError,
   isAdministrator,
@@ -25,7 +25,6 @@ import { prepareImages } from "./organize";
 import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
 import { createUsageRecovery, reconcileUsage } from "./usage-recovery";
-import { reviewedQuestionStream } from "./reviewed-question-stream";
 import type { Env } from "./env";
 
 /**
@@ -126,7 +125,7 @@ export function createWorker(
         )
           throw new HttpError(400, "invalid_input");
         if (QUESTION_KINDS.includes(prepared.request.kind as typeof QUESTION_KINDS[number]) &&
-            request.headers.get("x-question-contract") !== REVIEWED_QUESTION_CONTRACT)
+            request.headers.get("x-question-contract") !== QUESTION_GENERATION_CONTRACT)
           throw new HttpError(426, "question_update_required");
         // An administrator holds no balance, no lock and no retry budget: the
         // run still settles so its cursor and token usage are recorded.
@@ -149,11 +148,6 @@ export function createWorker(
             request.signal,
             AbortSignal.timeout(110_000),
           ]);
-          if (QUESTION_KINDS.includes(prepared.request.kind as typeof QUESTION_KINDS[number])) {
-            const reviewed = reviewedQuestionStream({ env, prepared, reservation, fetcher, recoverUsage, cursor, signal, admin });
-            ctx.waitUntil(reviewed.done);
-            return decorate(new Response(reviewed.body, { headers: { "content-type": "text/event-stream" } }));
-          }
           const send = () =>
             fetcher(`${env.OPENAI_BASE_URL}/responses`, {
               method: "POST",

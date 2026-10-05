@@ -65,6 +65,8 @@ describe("structured output schemas", () => {
       usage: "convinced the committee of its safety",
       answer: "convinced",
       distractors: ["informed", "warned", "reminded"],
+      explanation: "說明",
+      whyWrong: ["一", "二", "三"],
     };
     for (const kind of ["vocabulary"] as const) {
       expect(questionOutput(kind).parse({ items: [item] })).toEqual({ items: [item] });

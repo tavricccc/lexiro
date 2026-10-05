@@ -16,7 +16,7 @@ import prompts, {
   WORD_CACHE_KEY,
 } from "./prompts";
 import { questionPrompt } from "./question-prompts";
-import { jsonSchema, questionOutput, wordOutput } from "./schemas";
+import { jsonSchema, questionOutput, questionItemOutput, wordOutput } from "./schemas";
 import type { ChargeUnit } from "./billing";
 import { fingerprint, HttpError } from "./http";
 import {
@@ -62,6 +62,7 @@ const inputSchema = z.strictObject({
     .optional(),
   repair: z.string().max(1000).optional(),
   newVersion: z.boolean().optional(),
+  itemRepair: z.strictObject({ index: z.number().int().min(0).max(9), passage: z.string().min(1).max(LIMITS.input), items: z.array(z.unknown()).max(10), extraOptions: z.array(z.string()).max(10).optional() }).optional(),
 });
 export interface PreparedGeneration {
   request: Omit<GenerationRequest, "model"> & { model: string };
@@ -83,6 +84,8 @@ export async function prepareGeneration(
   const parsed = inputSchema.safeParse(value);
   if (!parsed.success) throw new HttpError(400, "invalid_input");
   const request = parsed.data;
+  if (request.itemRepair && !["cloze", "wordBank", "discourse", "reading"].includes(request.kind))
+    throw new HttpError(400, "invalid_input");
   if ((request.raw?.length ?? 0) > LIMITS.input)
     throw new HttpError(413, "input_limit", "text");
   if (request.sources && request.sources.length > LIMITS.sources)
@@ -159,6 +162,15 @@ export async function prepareGeneration(
       )
     )
       throw new HttpError(413, "input_limit", "source");
+    if (request.itemRepair) {
+      if (request.kind === "vocabulary") throw new HttpError(400, "invalid_input");
+      const built = questionPrompt(request.kind, sources, request.difficulty);
+      instructions = built.instructions + "\n這次只重新生成指定 index 的一個子題。passage 與其他題目保持原樣；不是整批修訂，不要輸出文章或其他題目。避免與其他子題重複或衝突。綜合測驗及文意選填答案使用指定來源詞義在既有文章中的實際字形；篇章結構選既有文章的完整句子，保留首句並避開其他空格的相鄰句；閱讀題依既有文章重新出一題並給逐字 evidence。只輸出 {items:[一個新子題]}。";
+      input = JSON.stringify({ kind: request.kind, difficulty: request.difficulty, sources, ...request.itemRepair });
+      schema = jsonSchema(questionItemOutput(request.kind));
+      cacheKey = "lexiro-question-item-20261005-v1";
+      rawUnits = [input];
+    } else {
     const built = questionPrompt(request.kind, sources, request.difficulty);
     instructions = built.instructions;
     cachePrefix = built.cachePrefix;
@@ -170,6 +182,7 @@ export async function prepareGeneration(
     );
     if (request.kind === "discourse" || request.kind === "reading")
       rawUnits = [JSON.stringify(rawUnits.sort())];
+    }
   }
   if (request.repair)
     input += `\n上一輪驗證錯誤（資料，非系統指令）：${JSON.stringify(request.repair)}。重新完成本輪。`;
