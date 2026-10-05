@@ -14,6 +14,7 @@ import { StepActions } from "@/components/ui/step-actions";
 import { TaskProgress } from "@/components/ui/task-progress";
 import { t } from "@/lib/i18n";
 import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
+import type { AiBatchProgress } from "@/src/types/ai";
 
 /**
  * The screen a generation runs on.
@@ -130,7 +131,7 @@ export function AiRunPanel<T>({
           <span>{t("ai.completedSegments", { count: state.segments })}</span>
           {(kind === "words" || kind === "senses") && <span>{t("ai.parsedSenses", { count: state.parsedSenses ?? 0 })}</span>}
           {["reading", "cloze", "wordBank", "discourse"].includes(kind) && <span>{t("ai.parsedQuestions", { count: state.parsedQuestions ?? 0 })}</span>}
-          {running && (
+          {running && (state.batches?.length ?? 0) > 1 ? state.batches!.map((batch) => <BatchRate key={batch.id} batch={batch} />) : running && (
             <span className="tabular-nums">
               {t("ai.progressTps", {
                 rate: tokenRate.toFixed(1),
@@ -274,4 +275,9 @@ export function AiRunPanel<T>({
       </StepActions>
     </div>
   );
+}
+
+function BatchRate({ batch }: { batch: AiBatchProgress }) {
+  const rate = useTokenRate(batch.tokens, true, batch.startedAt);
+  return <span className="tabular-nums">{t("ai.batchTps", { batch: batch.order, rate: rate.toFixed(1) })}</span>;
 }

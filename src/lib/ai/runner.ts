@@ -10,6 +10,8 @@ import { t } from "@/lib/i18n";
 import { AiRequestError, AiValidationError } from "./errors";
 import { commitTurn, generateTurn, resetConversation } from "./session";
 import { createStreamProgress, savedStreamCounts, type StreamCounts } from "./stream-progress";
+import { runParallelTask, type ParallelRunState } from "./parallel-runner";
+import type { AiBatchProgress } from "@/src/types/ai";
 
 export interface AiRun<T> {
   task: AiTask<T>;
@@ -20,6 +22,7 @@ export interface AiRun<T> {
   total: number;
   segments: number;
   repair?: { stepId: string; feedback: string };
+  parallel?: ParallelRunState<T>;
 }
 export interface AiRunUpdate<T> {
   phase: AiPhase;
@@ -35,6 +38,7 @@ export interface AiRunUpdate<T> {
   segments: number;
   notices: string[];
   usage: TokenUsage;
+  batches?: AiBatchProgress[];
 }
 export function waitForRetry(ms: number, signal?: AbortSignal): Promise<void> {
   signal?.throwIfAborted();
@@ -50,7 +54,14 @@ export function waitForRetry(ms: number, signal?: AbortSignal): Promise<void> {
     signal?.addEventListener("abort", abort, { once: true });
   });
 }
-export async function runTask<T>(
+export async function runTask<T>(run: AiRun<T>, options: {
+  signal: AbortSignal; onUpdate: (update: AiRunUpdate<T>) => void;
+  merge?: (items: T[]) => T[]; send?: typeof generateTurn; wait?: typeof waitForRetry;
+}) {
+  if (run.parallel || run.pending.length > 1) return runParallelTask(run, options, runSequentialTask);
+  return runSequentialTask(run, options);
+}
+async function runSequentialTask<T>(
   run: AiRun<T>,
   options: {
     signal: AbortSignal;

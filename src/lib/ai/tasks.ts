@@ -25,13 +25,27 @@ import { extractJsonText } from "./json";
 import { t } from "@/lib/i18n";
 import { isRecord } from "../schema";
 import { passageRepairs } from "./passage-repair";
+import { LIMITS } from "@lexiro/ai-contract";
 
 export function chunks<T>(items: T[], size: number): T[][] {
   return Array.from({ length: Math.ceil(items.length / size) }, (_, i) =>
     items.slice(i * size, (i + 1) * size),
   );
 }
-const WORD_BATCH_SIZE = 25;
+const WORD_BATCH_SIZE = 30;
+function wordBatches(sources: WordGenerationSource[]) {
+  const batches: WordGenerationSource[][] = [];
+  let batch: WordGenerationSource[] = [], characters = 0;
+  for (const source of sources) {
+    if (batch.length && (batch.length === WORD_BATCH_SIZE || characters + source.raw.length + 1 > LIMITS.input)) {
+      batches.push(batch); batch = []; characters = 0;
+    }
+    characters += source.raw.length + (batch.length ? 1 : 0);
+    batch.push(source);
+  }
+  if (batch.length) batches.push(batch);
+  return batches;
+}
 const wordInput = (sources: WordGenerationSource[]) => JSON.stringify({ kind: "words", raw: sources.map((source) => source.raw).join("\n") });
 
 export function wordTask(
@@ -81,7 +95,7 @@ export function wordTask(
     kind: "words",
     billableCount: sources.length,
     context: wordInput(sources),
-    steps: chunks(sources, WORD_BATCH_SIZE).map(make),
+    steps: wordBatches(sources).map(make),
   };
 }
 

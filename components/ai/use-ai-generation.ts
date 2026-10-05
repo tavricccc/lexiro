@@ -1,9 +1,10 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { AiModel, Tier, TokenUsage } from "@lexiro/ai-contract";
-import type { AiTask, AiPhase } from "@/src/types/ai";
+import type { AiTask, AiPhase, AiBatchProgress } from "@/src/types/ai";
 import { createAiSession, resetConversation } from "@/src/lib/ai/session";
 import { runTask, type AiRun } from "@/src/lib/ai/runner";
+import { replaceRunItems } from "@/src/lib/ai/parallel-runner";
 import { AiRequestError, AiValidationError } from "@/src/lib/ai/errors";
 import { useCloudStore } from "@/stores/cloud-store";
 import { t } from "@/lib/i18n";
@@ -39,6 +40,7 @@ export interface AiRunState<T> {
   parsedSenses?: number;
   parsedQuestions?: number;
   batchStartedAt?: number;
+  batches?: AiBatchProgress[];
   completed: number;
   total: number;
   segments: number;
@@ -269,7 +271,7 @@ export function useAiGeneration<T>({
     setState(initialState<T>());
   }, []);
   const setItems = useCallback((items: T[]) => {
-    if (runRef.current) runRef.current.items = [...items];
+    if (runRef.current) replaceRunItems(runRef.current, items);
     setState((s) => ({ ...s, items }));
     setItemsRevision((value) => value + 1);
   }, []);

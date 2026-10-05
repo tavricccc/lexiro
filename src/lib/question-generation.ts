@@ -24,7 +24,7 @@ import {
 export type { GeneratedQuestionKind };
 export type GeneratedQuestionDifficulty = QuestionDifficulty;
 
-const QUESTION_BATCH_SIZE = 8;
+const QUESTION_BATCH_SIZE = 16;
 
 export function getSetGenerationWords(
   words: WordEntry[],
@@ -59,7 +59,7 @@ export function getQuestionSourceRefs(words: WordEntry[]): QuestionSourceRefs {
 }
 
 /**
- * The target size for independent questions is eight. Passage formats generate a
+ * Independent questions target sixteen sources. Passage formats generate a
  * complete, indivisible question group per request, so their group size remains
  * defined by the format (for example, five cloze blanks or one reading passage).
  */

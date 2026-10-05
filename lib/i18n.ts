@@ -151,6 +151,7 @@ export const zhTW = {
     completedSegments: "已完成 {count} 段",
     builtLocally: "{count} 題直接用你的例句產生，不需送出",
     progressTps: "本批平均約 {rate} TPS",
+    batchTps: "第 {batch} 批平均約 {rate} TPS",
     progressLabel: "產生進度",
     stop: "停止",
   },

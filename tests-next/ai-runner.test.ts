@@ -33,14 +33,15 @@ function createRun(steps?: AiTaskStep<string>[]): AiRun<string> {
     segments: 0,
   };
 }
-describe("serial task generation", () => {
-  it("commits one segment before sending the next and preserves the same session", async () => {
+describe("task generation", () => {
+  it("warms one segment then preserves the session identity across independent parallel contexts", async () => {
     const run = createRun();
     let active = 0,
       peak = 0;
     const send = vi.fn(async (session, prompt) => {
       peak = Math.max(peak, ++active);
-      expect(session.cursor).toBe(run.completed ? run.items.at(-1) : undefined);
+      expect(session.sessionId).toBe(run.session.sessionId);
+      expect(session.cursor).toBeUndefined();
       await Promise.resolve();
       active--;
       return reply(prompt);
@@ -51,9 +52,9 @@ describe("serial task generation", () => {
       send,
       onUpdate,
     });
-    expect(peak).toBe(1);
+    expect(peak).toBe(2);
     expect(run.items).toEqual(["a", "b", "c"]);
-    expect(run.session.cursor).toBe("c");
+    expect(run.session.cursor).toBeUndefined();
     expect(
       onUpdate.mock.calls.some(
         ([u]) => u.completed === 1 && u.items.length === 1,

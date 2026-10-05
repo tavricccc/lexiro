@@ -33,6 +33,13 @@ export interface AiTurnResult {
   complete: boolean;
   usage?: TokenUsage;
 }
+export interface AiBatchProgress {
+  id: string;
+  order: number;
+  startedAt: number;
+  tokens: number;
+  phase: AiPhase;
+}
 export interface AiTurnOptions {
   signal?: AbortSignal;
   repair?: string;

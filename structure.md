@@ -66,6 +66,8 @@ AI preference store 在開始 session 時固定模型，整理頁可另選兩個
 
 `lib/generation-connection.ts` 為每次生成固定 operation ID，網路中斷用 authenticated GET 接回同一次生成；同頁面的手動續跑保留該 ID。生成不帶前一批 cursor，每批上下文獨立；固定 prompt／schema／cache key 保持不變。管理員可看 transport／job ID／response ID／耗時與中斷原因。批次 TPS 以後端原任務開始時間計算，回放不重複累計用量。
 
+`src/lib/ai/parallel-runner.ts` 先用實際第一批產出暖快取，再最多兩個 lanes 並行；每個 lane 保存自己的 session 用量／pending job 與局部修復工作，父流程按來源順序合併成果。暫停期間編輯已接受成果會重設合併基準，保留未完成任務 ID。詞彙題每批 16 個詞義、單字最多 30 個來源／5,000 字元；進度聚合計數、TPS 逐批顯示。
+
 Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。ConfirmDialog 統一鎖定、失敗與重試；backup-actions 協調兩段匯入，admin-account-adjustment 只送變更並確認餘額，admin pagination 用 cursor history。
 
 ## 更新、驗證和交付

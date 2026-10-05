@@ -32,14 +32,14 @@ const generated = () => ({
 describe("AI task boundaries", () => {
   it("places all sources in the first context and targets only the next stable references", () => {
     const sources = buildWordGenerationSources(
-      Array.from({ length: 26 }, (_, index) => `word-${index + 1}`).join(", "),
+      Array.from({ length: 31 }, (_, index) => `word-${index + 1}`).join(", "),
     );
     const task = wordTask(sources);
-    expect(task.steps.map((step) => step.count)).toEqual([25, 1]);
-    expect(task.context).toContain("word-26");
+    expect(task.steps.map((step) => step.count)).toEqual([30, 1]);
+    expect(task.context).toContain("word-31");
     expect(JSON.parse(task.steps[1].prompt)).toEqual({
       kind: "words",
-      raw: "word-26",
+      raw: "word-31",
     });
   });
   it("keeps valid words from a partly invalid segment and requests only missing sources", async () => {
@@ -85,15 +85,16 @@ describe("AI task boundaries", () => {
       "build",
       "carry",
       "choose",
+      "create", "cross", "decide", "deliver", "discover", "explain", "finish", "follow",
       "close",
     ].map(word);
     const task = questionTask(words, "vocabulary", 2);
-    expect(task.steps[1].prompt).toContain("s9");
+    expect(task.steps[1].prompt).toContain("s17");
     const parsed = task.steps[1].parse(
       JSON.stringify({
         items: [
           {
-            ref: "s9",
+            ref: "s17",
             sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",

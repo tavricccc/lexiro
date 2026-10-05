@@ -144,8 +144,8 @@ describe("question batching", () => {
       updatedAt: "2026-08-16T00:00:00.000Z",
     }));
 
-  it("uses eight independent questions per batch while passage groups follow their format", () => {
-    expect(questionBatchSize("vocabulary")).toBe(8);
+  it("uses sixteen independent questions per batch while passage groups follow their format", () => {
+    expect(questionBatchSize("vocabulary")).toBe(16);
     expect(questionBatchSize("wordBank")).toBeGreaterThan(
       questionBatchSize("discourse"),
     );
