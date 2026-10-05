@@ -35,6 +35,7 @@ export interface AiTurnOptions {
   repair?: string;
   onCharacters?: (count: number) => void;
   onTokens?: (count: number) => void;
+  onText?: (text: string) => void;
   onPhase?: (phase: AiPhase) => void;
 }
 export interface AiTask<T> {
@@ -51,9 +52,11 @@ export interface AiTaskStep<T> {
   /** Serialized generation data, never a system prompt. */
   prompt: string;
   count: number;
+  stagedQuestions?: number;
+  retryInvalid?: boolean;
   parse: (text: string) => T[];
   recover?: (
     text: string,
-  ) => { items: T[]; completed: number; remaining: AiTaskStep<T> } | null;
+  ) => { items: T[]; completed: number; remaining: AiTaskStep<T>[] } | null;
   split?: () => AiTaskStep<T>[];
 }

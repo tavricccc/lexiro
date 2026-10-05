@@ -76,6 +76,15 @@ describe("high-school generation quality gate", () => {
     const [step] = questionTask([source], "reading", 2).steps;
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(3);
+    const broken = { ...reply, items: reply.items.map((entry, index) => index === 1 ? { ...entry, evidence: ["Not in the passage."] } : entry) };
+    const recovery = step.recover!(JSON.stringify(broken));
+    expect(recovery?.remaining).toHaveLength(1);
+    const repairStep = recovery!.remaining[0];
+    expect(JSON.parse(repairStep.prompt).itemRepair).toMatchObject({ index: 1, passage: reply.passage });
+    expect(repairStep.stagedQuestions).toBe(2);
+    const [repaired] = repairStep.parse(JSON.stringify({ items: [reply.items[1]] }));
+    expect(repaired.kind === "reading" && repaired.passage).toBe(pack.kind === "reading" && pack.passage);
+    expect(repaired.kind === "reading" && repaired.questions).toHaveLength(3);
     const noInference = {
       ...reply,
       items: reply.items.map((entry) => ({

@@ -66,7 +66,8 @@ export function AiRunPanel<T>({
   const running = state.status === "running",
     started = state.status !== "idle",
     done = state.status === "done";
-  const tokenRate = useTokenRate(state.tokens ?? 0, running);
+  const tokenRate = useTokenRate(state.tokens ?? 0, running, state.batchStartedAt ?? state.startedAt ?? 0);
+  const progress = running ? state.receivedUnits ?? state.completed : state.completed;
   const runModel = started && !done ? (state.model ?? model) : model;
   const canRun =
     ready &&
@@ -118,15 +119,17 @@ export function AiRunPanel<T>({
           elapsed={t("ai.elapsed", { seconds })}
           label={t("ai.progressLabel")}
           max={state.total}
-          summary={t("ai.completedItems", {
-            completed: state.completed,
+          summary={t(running ? "ai.parsedItems" : "ai.completedItems", {
+            completed: progress,
             total: state.total,
             unit,
           })}
           title={ready ? title : t("common.loading")}
-          value={state.total ? state.completed : done ? 1 : 0}
+          value={state.total ? progress : done ? 1 : 0}
         >
           <span>{t("ai.completedSegments", { count: state.segments })}</span>
+          {(kind === "words" || kind === "senses") && <span>{t("ai.parsedSenses", { count: state.parsedSenses ?? 0 })}</span>}
+          {["reading", "cloze", "wordBank", "discourse"].includes(kind) && <span>{t("ai.parsedQuestions", { count: state.parsedQuestions ?? 0 })}</span>}
           {running && (
             <span className="tabular-nums">
               {t("ai.progressTps", {

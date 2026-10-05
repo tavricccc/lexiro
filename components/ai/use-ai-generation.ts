@@ -35,6 +35,10 @@ export interface AiRunState<T> {
   phase: AiPhase;
   characters: number;
   tokens?: number;
+  receivedUnits?: number;
+  parsedSenses?: number;
+  parsedQuestions?: number;
+  batchStartedAt?: number;
   completed: number;
   total: number;
   segments: number;

@@ -58,9 +58,11 @@ Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回
 
 AI task builders、runner、session 只組來源資料、拆批、解析及接續。Managed client 管 token refresh、帳號邊界、串流、usage；generation controls 與 resumable drafts 分開生成及校對畫面。Photo organizer 先確認選圖，WebP 編碼後每十張單次上傳並依序處理。
 
-AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 3.1.0 與 Worker tgz 共同規範請求、估算、題型／篇幅和管理 expected 版本。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
+AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 3.2.0 與 Worker tgz 共同規範請求、單次生成與單題重生、估算、題型／篇幅和管理 expected 版本。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
 
-`components/ai/ai-diagnostic.tsx` 共用管理員錯誤診斷；AiUsage 在生成與整理流程呈現實際用量。`components/ai/use-token-rate.ts` 每 100ms 更新前 500ms 的輸出 TPS，所有使用者都能在 TaskProgress 看見；本機 tokenizer 的估計不包含推理 token，供應商回報負責最終結算。
+`components/ai/ai-diagnostic.tsx` 共用管理員錯誤診斷；AiUsage 在生成與整理流程呈現實際用量。`components/ai/use-token-rate.ts` 每 100ms 更新該批次平均輸出 TPS，所有使用者都能在 TaskProgress 看見；本機 tokenizer 的估計不包含推理 token，供應商回報負責最終結算。
+
+`src/lib/ai/stream-progress.ts` 逐字掃描串流 JSON，只計數完整題目／詞義物件。`passage-repair.ts` 保留文章與有效子題，為錯誤子題建立獨立重生工作；runner 逐項保存通過驗證的結果，詞彙题及單字批次也只補缺少的個別來源。
 
 Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。ConfirmDialog 統一鎖定、失敗與重試；backup-actions 協調兩段匯入，admin-account-adjustment 只送變更並確認餘額，admin pagination 用 cursor history。
 

@@ -1,33 +1,24 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import { useTokenRate } from "@/components/ai/use-token-rate";
-
 afterEach(() => vi.useRealTimers());
-
-it("updates every 100 ms using only the preceding 500 ms and resets between turns", () => {
-  vi.useFakeTimers({ toFake: ["setInterval", "clearInterval", "performance"] });
-  const { result, rerender } = renderHook(
-    ({ tokens, active }) => useTokenRate(tokens, active),
-    { initialProps: { tokens: 0, active: true } },
-  );
-  rerender({ tokens: 10, active: true });
+it("refreshes the batch average every 100 ms and starts over for the next batch", () => {
+  vi.useFakeTimers();
+  vi.setSystemTime(1000);
+  const { result, rerender } = renderHook(({ tokens, active, startedAt }) => useTokenRate(tokens, active, startedAt), { initialProps: { tokens: 0, active: true, startedAt: 1000 } });
+  rerender({ tokens: 10, active: true, startedAt: 1000 });
   act(() => vi.advanceTimersByTime(99));
   expect(result.current).toBe(0);
   act(() => vi.advanceTimersByTime(1));
-  expect(result.current).toBe(20);
+  expect(result.current).toBe(100);
   act(() => vi.advanceTimersByTime(400));
   expect(result.current).toBe(20);
+  rerender({ tokens: 30, active: true, startedAt: 1000 });
+  act(() => vi.advanceTimersByTime(500));
+  expect(result.current).toBe(30);
+  rerender({ tokens: 5, active: true, startedAt: 2000 });
   act(() => vi.advanceTimersByTime(100));
-  expect(result.current).toBe(0);
-  rerender({ tokens: 15, active: true });
-  act(() => vi.advanceTimersByTime(100));
-  expect(result.current).toBe(10);
-  rerender({ tokens: 0, active: true });
-  act(() => vi.advanceTimersByTime(100));
-  expect(result.current).toBe(0);
-  rerender({ tokens: 4, active: true });
-  act(() => vi.advanceTimersByTime(100));
-  expect(result.current).toBe(8);
-  rerender({ tokens: 4, active: false });
+  expect(result.current).toBe(50);
+  rerender({ tokens: 5, active: false, startedAt: 2000 });
   expect(result.current).toBe(0);
 });

@@ -97,7 +97,7 @@ export function InputOrganizer({
   const [now, setNow] = useState(0);
   const [startedAt, setStartedAt] = useState(0);
   const [tokens, setTokens] = useState(0);
-  const tokenRate = useTokenRate(tokens, busy);
+  const tokenRate = useTokenRate(tokens, busy, startedAt);
   const controller = useRef<AbortController | null>(null);
   const onDraftRef = useRef(onDraftChange);
   onDraftRef.current = onDraftChange;
@@ -283,6 +283,8 @@ export function InputOrganizer({
         }
         let reply: Awaited<ReturnType<typeof readManagedStream>> | undefined;
         const session = crypto.randomUUID();
+        setTokens(0);
+        setStartedAt(Date.now());
         try {
           setPhotoProgress(
             (progress) => progress && { ...progress, phase: "organizing" },

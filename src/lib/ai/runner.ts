@@ -9,6 +9,7 @@ import type {
 import { t } from "@/lib/i18n";
 import { AiRequestError, AiValidationError } from "./errors";
 import { commitTurn, generateTurn, resetConversation } from "./session";
+import { createStreamProgress, savedStreamCounts, type StreamCounts } from "./stream-progress";
 
 export interface AiRun<T> {
   task: AiTask<T>;
@@ -24,6 +25,10 @@ export interface AiRunUpdate<T> {
   phase: AiPhase;
   characters: number;
   tokens: number;
+  receivedUnits: number;
+  parsedSenses: number;
+  parsedQuestions: number;
+  batchStartedAt: number;
   items: T[];
   completed: number;
   total: number;
@@ -59,11 +64,17 @@ export async function runTask<T>(
     wait = options.wait ?? waitForRetry;
   let phase: AiPhase = "connecting",
     characters = 0, tokens = 0;
+  let batchStartedAt = Date.now();
+  let streamed: StreamCounts = { units: 0, senses: 0, questions: 0 };
   const report = () =>
     options.onUpdate({
       phase,
       characters,
       tokens,
+      batchStartedAt,
+      receivedUnits: Math.min(run.total, run.completed + streamed.units),
+      parsedSenses: savedStreamCounts(run.items, run.task.kind).senses + streamed.senses,
+      parsedQuestions: savedStreamCounts(run.items, run.task.kind).questions + (run.pending[0]?.stagedQuestions ?? 0) + streamed.questions,
       items: [...run.items],
       completed: run.completed,
       total: run.total,
@@ -88,6 +99,9 @@ export async function runTask<T>(
       for (let attempt = 0; attempt < 3; attempt++) {
         characters = 0;
         tokens = 0;
+        batchStartedAt = Date.now();
+        streamed = { units: 0, senses: 0, questions: 0 };
+        const parseProgress = createStreamProgress(run.task.kind);
         try {
           reply = await send(run.session, prompt, {
             signal: options.signal,
@@ -104,6 +118,7 @@ export async function runTask<T>(
               tokens = count;
               report();
             },
+            onText: (text) => { streamed = parseProgress(text); report(); },
           });
           break;
         } catch (reason) {
@@ -173,10 +188,11 @@ export async function runTask<T>(
             recovered = null;
         }
         if (recovered) {
+          streamed = { units: 0, senses: 0, questions: 0 };
           const combined = [...run.items, ...recovered.items];
           run.items = options.merge ? options.merge(combined) : combined;
           run.completed += recovered.completed;
-          run.pending.splice(0, 1, recovered.remaining);
+          run.pending.splice(0, 1, ...recovered.remaining);
           run.repair = undefined;
           run.session.notices.push(t("ai.partialRecovered"));
           report();
@@ -187,7 +203,7 @@ export async function runTask<T>(
           previousReply: reply.text,
         }).slice(0, 1000);
         run.repair = { stepId: step.id, feedback };
-        if (validation === 1)
+        if (validation === 1 || step.retryInvalid === false)
           throw new AiValidationError(
             reason instanceof Error ? reason.message : String(reason),
             step.prompt,
@@ -200,6 +216,7 @@ export async function runTask<T>(
       }
       options.signal.throwIfAborted();
       const combined = [...run.items, ...parsed];
+      streamed = { units: 0, senses: 0, questions: 0 };
       run.items = options.merge ? options.merge(combined) : combined;
       commitTurn(run.session, prompt, reply);
       run.pending.shift();

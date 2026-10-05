@@ -24,6 +24,7 @@ import { senseKey } from "../library";
 import { extractJsonText } from "./json";
 import { t } from "@/lib/i18n";
 import { isRecord } from "../schema";
+import { passageRepairs } from "./passage-repair";
 
 export function chunks<T>(items: T[], size: number): T[][] {
   return Array.from({ length: Math.ceil(items.length / size) }, (_, i) =>
@@ -39,6 +40,7 @@ export function wordTask(
   const make = (batch: WordGenerationSource[]): AiTaskStep<WordDraft> => ({
     id: batch.map((s) => s.sourceRef).join(","),
     count: batch.length,
+    retryInvalid: batch.length === 1,
     context: wordInput(batch),
     prompt: wordInput(batch),
     parse: (text) => {
@@ -62,11 +64,11 @@ export function wordTask(
           remaining.push(source);
         }
       });
-      return items.length && remaining.length
+      return batch.length > 1 && remaining.length
         ? {
             items,
             completed: batch.length - remaining.length,
-            remaining: make(remaining),
+            remaining: remaining.map((source) => make([source])),
           }
         : null;
     },
@@ -147,6 +149,7 @@ export function questionTask(
     const step: AiTaskStep<LibraryQuestion> = {
       id: refs.join(","),
       count: passage ? 1 : refs.length,
+      retryInvalid: !passage && refs.length === 1,
       context: input(batch),
       prompt: input(batch),
       parse: (text) => {
@@ -184,7 +187,8 @@ export function questionTask(
           }
         : {}),
     };
-    if (!passage)
+    if (passage) step.recover = (text) => passageRepairs({ text, kind, difficulty, words: batch, input: JSON.parse(input(batch)) as import("@lexiro/ai-contract").GenerationInput, parentId: step.id, parse: step.parse });
+    else
       step.recover = (text) => {
         const data: unknown = JSON.parse(extractJsonText(text));
         if (!isRecord(data) || !Array.isArray(data.items)) return null;
@@ -205,11 +209,11 @@ export function questionTask(
             remaining.push(unit);
           }
         });
-        return items.length && remaining.length
+        return units.length > 1 && remaining.length
           ? {
               items,
               completed: units.length - remaining.length,
-              remaining: make(remaining),
+              remaining: remaining.map((unit) => make([unit])),
             }
           : null;
       };

@@ -44,7 +44,7 @@ function teachingIssue(value: Record<string, unknown>, kind: GeneratedQuestionKi
   const reasons = kind === "wordBank" ? 9 : kind === "discourse" ? 4 : 3;
   for (const [index, item] of items.entries()) {
     if (!isRecord(item) || typeof item.explanation !== "string" || !item.explanation.trim())
-      return `第 ${index + 1} 題缺少審題後的作答解說`;
+      return `第 ${index + 1} 題缺少作答解說`;
     if (!Array.isArray(item.whyWrong) || item.whyWrong.length !== reasons || item.whyWrong.some((reason) => typeof reason !== "string" || !reason.trim()))
       return `第 ${index + 1} 題必須逐一說明 ${reasons} 個干擾選項為何不成立`;
   }
@@ -55,6 +55,7 @@ function teachingIssue(value: Record<string, unknown>, kind: GeneratedQuestionKi
 function readingEvidenceIssue(
   value: Record<string, unknown>,
   difficulty: QuestionDifficulty,
+  checkGroup = true,
 ): string | null {
   if (typeof value.passage !== "string" || !Array.isArray(value.items))
     return null;
@@ -97,9 +98,18 @@ function readingEvidenceIssue(
     if (!independent)
       return `閱讀第 ${index + 1} 題推論需要兩處不同句子的原文依據；不能將原句查找標成 inference`;
   }
+  if (!checkGroup) return null;
   if (!skills.has("mainIdea")) return "閱讀測驗至少需要一題全篇主旨題 mainIdea";
   if (skills.size < 2) return "閱讀測驗至少需要兩種不同的閱讀任務";
   if (difficulty >= 2 && !skills.has("inference"))
     return "中等與進階閱讀至少需要一題結合兩處線索的推論題 inference";
   return null;
+}
+
+export function generatedQuestionItemIssue(value: Record<string, unknown>, kind: GeneratedQuestionKind, difficulty: QuestionDifficulty, index: number): string | null {
+  const field = kind === "cloze" || kind === "wordBank" ? "blanks" : kind === "discourse" ? "removals" : "items";
+  const items = value[field];
+  if (!Array.isArray(items) || !isRecord(items[index])) return "子題資料不完整";
+  const isolated = { ...value, [field]: [items[index]] };
+  return (kind === "reading" ? readingEvidenceIssue(isolated, difficulty, false) : null) ?? teachingIssue(isolated, kind);
 }

@@ -1,7 +1,7 @@
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { AiRequestError } from "@/src/lib/ai/errors";
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
-import { responseCost, QUESTION_KINDS, REVIEWED_QUESTION_CONTRACT } from "@lexiro/ai-contract";
+import { responseCost, QUESTION_KINDS, QUESTION_GENERATION_CONTRACT } from "@lexiro/ai-contract";
 import type {
   AccountInfo,
   GenerationInput,
@@ -230,6 +230,7 @@ export async function readManagedStream(
       terminal.usage.parts = data.response.lexiro.usageParts;
     if (data.type === "response.output_text.delta") {
       text += data.delta;
+      options.onText?.(text);
       options.onCharacters?.(text.length);
       options.onPhase?.("generating");
     }
@@ -314,7 +315,7 @@ export async function managedTurn(
       method: "POST",
       headers: { "Content-Type": "application/json",
         ...((QUESTION_KINDS as readonly string[]).includes(input.kind)
-          ? { "X-Question-Contract": REVIEWED_QUESTION_CONTRACT } : {}),
+          ? { "X-Question-Contract": QUESTION_GENERATION_CONTRACT } : {}),
       },
       signal,
       body: JSON.stringify({
