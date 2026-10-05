@@ -6,7 +6,7 @@
 
 Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號或換行分隔的管理員 email。只接受已驗證 email 的 Firebase identity，沒有授權管理員的前端欄位或 API。不要把這些值寫入 repo。
 
-部署由 `.github/workflows/deploy.yml` 負責：main push 或手動執行會先完成完整驗證（typecheck、lint、test、build），再套用未完成的 D1 migrations、同步 Worker secrets、`wrangler deploy`，最後以 production origin 做 OPTIONS/CORS health check。推上 main 就是部署，沒有另外的手動步驟。本機開發維持 `npm run dev`、`npm run db:migrate`，不使用 remote。
+部署由 `.github/workflows/deploy.yml` 負責：main push 或手動執行會先完成完整驗證（typecheck、lint、test、build），production WebSocket handshake 成功後再套用未完成的 D1 migrations、同步 Worker secrets、`wrangler deploy`，最後以 production origin 做 OPTIONS/CORS health check。推上 main 就是部署，沒有另外的手動步驟。本機開發維持 `npm run dev`、`npm run db:migrate`，不使用 remote。
 
 前端 GitHub Production Environment variable `NEXT_PUBLIC_AI_WORKER_URL` 指向 Worker 的 HTTPS origin。Firebase 使用者資料仍由原本 Firestore rules 管理，Worker 只負責 AI、額度與管理功能。
 
@@ -19,6 +19,10 @@ GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CL
 先發布 Worker，再發布使用批次上傳的前端；發布後重新載入頁面。批次共用既有整理輸出長度與生成來源數限制，不代表可無限制輸入文字。CPU 與真實多圖辨識品質仍需正式量測，本地驗證只使用合成圖片與 provider。
 
 ## 持久化與共用契約
+
+- `GENERATIONS` 綁定 GenerationRoom，`generation-room-v1` 使用 SQLite Durable Object。部署前 handshake probe 不產生模型輸出；不支援時停止部署，不自動改用 HTTP 生成。
+- 生成 POST 必須帶 X-Generation-Id；GET /generation/{session}/{id} 依已驗證 uid 路由至同一 actor，跨帳號無法取得結果。每批 10 分鐘上限；來源、輸出及结算 metadata 在 30 分鐘內可回放，alarm 到期刪除。D1 lease 為 15 分鐘；沒有新 D1 schema migration。
+- WebSocket 可共用連線，但每批不帶 previous_response_id；prompt、schema 與快取版號不變。WS 閒置 15 秒關閉。瀏覽器斷線不取消本批；本頁續跑接原 job，重新整理僅保留原本流程草稿已完成成果。
 
 - 部署依序套用未完成 migrations，目前到 `0013_usage_parts.sql`，轉換既有 usage／pending 的單回合紀錄。本地測試只用 `npm run db:migrate`。
 - 前端與 Worker 使用 `@lexiro/ai-contract` 3.2.0。題目帶 `X-Question-Contract: single-pass-v1`，舊版在預留前回 426。游標請求使用 cursor、回應 nextCursor，舊 offset 回 400。JSON 生成帶 model，管理 PATCH 帶 expected 版本；沒有舊格式相容分支。

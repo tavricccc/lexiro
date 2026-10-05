@@ -9,6 +9,7 @@
 | `GET /me` | 確保帳號存在、續期與有界 usage reconciliation，回餘額／方案／身份 |
 | `POST /generate` | 嚴格 GenerationRequest，選定模型、來源和檔位 |
 | `POST /organize` | 文字 JSON 或多圖片 text/plain，單批單次上游 request |
+| `GET /generation/{session}/{id}` | 經驗證 uid 的原任務 SSE 訂閱／回放，不重新生成 |
 | `GET /admin/accounts`、`GET /admin/usage` | Cursor 分頁與近 30 天報表 |
 | `PATCH /admin/accounts/{uid}` | Expected 版本的原子點數／額度／備註更新 |
 | `GET /admin/settings`、`PATCH /admin/settings` | 新帳號初始方案與版本檢查 |
@@ -16,13 +17,15 @@
 
 ## 生成與計費
 
-Prepare generation／images 驗輸入並產生每來源身份，D1 reserve 原子處理餘額、鎖與嘗試紀錄。Provider request 最多 110 秒；response-stream 白名單保留必要 metadata、輸出文字與 usage，不回顯 prompt／input／instructions。
+Prepare generation／images 驗輸入並產生每來源身份。每次生成帶 X-Generation-Id；GenerationRoom 按 uid／session 路由、比對請求 fingerprint，同一 ID 僅 D1 reserve 一次。重連 GET 回放同一任務，不再發出模型生成請求。每批最多 10 分鐘，D1 租期 15 分鐘。手機 SSE 訂閱與上游 WebSocket 工作互相獨立，訂閱中斷不取消本批。response-stream 白名單保留必要 metadata、輸出文字與 usage，不回顯 prompt／input／instructions。
 
-題目必須帶 `X-Question-Contract: reviewed-v1`，不符在預留前回 426。`reviewed-question-stream` 在同一次預留內執行出稿／獨立審題，審題不帶初稿 cursor，沿用選定模型但至少 medium。兩回合共用 110 秒，不另開每回合上限。前端只收到 phase／字數進度及核准後的 corrected JSON，初稿和審題問題不轉發。
+題目必須帶 `X-Question-Contract: single-pass-v1`，不符在預留前回 426。題目與解說單次生成，獨立模型審題暫停；前端仍做格式、篇幅與證據驗證。有效題目保留，錯誤子題獨立重生，文章不整批重送。
 
-現行題型只有 vocabulary、cloze、wordBank、discourse、reading；停用 grammar 在預留前回 400。Reviewer 只送一個固定 developer block，題型、difficulty、lengthRange、來源及初稿都在最後 user input；每種題型 schema 不隨來源數量或難度改變。Writer 的共用規則也有明確快取前綴，其他功能快取不變。
+現行題型只有 vocabulary、cloze、wordBank、discourse、reading；停用 grammar 在預留前回 400。每批不帶 previous_response_id，固定規則與 schema 在前綴、來源及難度在尾端；WebSocket 復用不表示模型上下文串接。Prompt cache key 不含 uid／session／job，沿用本輪之前的提示版號，避免不必要冷啟動。是否命中由 provider usage 證明。
 
-`question-review` 先輸出來源、診斷、修訂及未解決問題，最後才作 approved 判定；未解決問題非空或結構／篇幅／依據不符則 `question_quality_rejected`，整批退款且不交稿。只保留最終審題 cursor；後續出題仍須以當輪來源與 schema 為準。
+上游 WebSocket 中斷後，已知 response ID 只用 GET 取回原 response；queued／in_progress 有界等待至批次 deadline，不新建一份生成。無法恢復則管理員看到 transport、close code／reason、job／response ID、耗時与逾時上限；一般帳號只看到可理解的錯誤。部署前握手探測不生成 token，失敗就不发布。
+
+SQLite Durable Object 暫存來源、輸出與結算 metadata 至任務開始後 30 分鐘，用 alarm 刪除；圖片、私有提示與憑證不落入 actor storage。重連回放不再扣款，瀏覽器只累計最後完整回覆的用量。重新整理後失去瀏覽器 pending ID，目前只保留流程草稿已完成的成果。
 
 Terminal 結算發生在終止事件交給前端之前。完整 usage 直接記成本與實扣；缺 usage 先補查 stored response，仍未知就記 pending。Pending 只存 response ID、來源與計費 metadata，不存圖片／prompt／輸出。取消、失敗與無法回報成本都保留明確狀態。
 

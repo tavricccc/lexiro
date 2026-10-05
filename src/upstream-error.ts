@@ -15,7 +15,8 @@ export function upstreamDiagnostic(value: unknown, context: Record<string, unkno
       }
     }
   }
-  return { ...context, ...(Object.keys(provider).length ? { provider } : {}) };
+  const safeContext = Object.fromEntries(Object.entries(context).map(([key, value]) => [key, typeof value === "string" && secret ? value.replaceAll(secret, "[redacted]") : value]));
+  return { ...safeContext, ...(Object.keys(provider).length ? { provider } : {}) };
 }
 
 export class UpstreamError extends HttpError {

@@ -12,20 +12,17 @@ import {
   account,
   BillingError,
   ensureAccount,
-  ownsCursor,
-  reserve,
   scheduledMaintenance,
-  settle,
 } from "./billing";
 import { adminRequest } from "./admin";
 import { HttpError, readBody } from "./http";
-import { prepareGeneration, upstreamBody, REASONING } from "./generation";
-import { UpstreamError, upstreamFailure, upstreamDiagnostic } from "./upstream-error";
+import { prepareGeneration } from "./generation";
+import { UpstreamError } from "./upstream-error";
 import { prepareImages } from "./organize";
-import { sanitizeResponseStream } from "./response-stream";
-import { settleGeneration } from "./settlement";
 import { createUsageRecovery, reconcileUsage } from "./usage-recovery";
 import type { Env } from "./env";
+export { GenerationRoom } from "./generation-room";
+type RoomFetcher = (uid: string, session: string) => { fetch(request: Request): Promise<Response> };
 
 /**
  * `ALLOWED_ORIGIN` is the complete list, comma separated. A development origin
@@ -44,12 +41,13 @@ export function allowedOrigin(origin: string, allowed: string): boolean {
 export function createWorker(
   verify = verifyFirebaseToken,
   fetcher: typeof fetch = fetch,
+  rooms?: RoomFetcher,
 ) {
   return {
     async fetch(
       request: Request,
       env: Env,
-      ctx: ExecutionContext,
+      _ctx: ExecutionContext,
     ): Promise<Response> {
       const origin = request.headers.get("origin");
       const cors: Record<string, string> = {
@@ -59,9 +57,9 @@ export function createWorker(
           ? { "access-control-allow-origin": origin }
           : {}),
         "access-control-allow-headers":
-          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-AI-Tier, X-Question-Contract",
+          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-AI-Tier, X-Question-Contract, X-Generation-Id",
         "access-control-allow-methods": "GET, POST, PATCH, OPTIONS",
-        "access-control-expose-headers": "X-Context-Rebuilt, Retry-After",
+        "access-control-expose-headers": "X-Generation-Id, Retry-After",
       };
       const decorate = (response: Response) => {
         const headers = new Headers(response.headers);
@@ -99,6 +97,9 @@ export function createWorker(
             }),
           );
         }
+        const room = (session: string): ReturnType<RoomFetcher> => rooms ? rooms(identity.uid, session) : env.GENERATIONS!.get(env.GENERATIONS!.idFromName(`${identity.uid}:${session}`)) as unknown as ReturnType<RoomFetcher>;
+        const resume = /^\/generation\/([0-9a-f-]{36})\/([0-9a-f-]{36})$/.exec(path);
+        if (resume && request.method === "GET") return decorate(await room(resume[1]).fetch(new Request(`https://generation/${resume[2]}`)));
         if (
           !["/generate", "/organize"].includes(path) ||
           request.method !== "POST"
@@ -127,105 +128,11 @@ export function createWorker(
         if (QUESTION_KINDS.includes(prepared.request.kind as typeof QUESTION_KINDS[number]) &&
             request.headers.get("x-question-contract") !== QUESTION_GENERATION_CONTRACT)
           throw new HttpError(426, "question_update_required");
-        // An administrator holds no balance, no lock and no retry budget: the
-        // run still settles so its cursor and token usage are recorded.
-        const reservation = admin
-          ? { uid: identity.uid, attempt: crypto.randomUUID(), charges: [] }
-          : await reserve(
-              env.DB,
-              identity.uid,
-              prepared.units,
-              prepared.halfRate,
-            );
-        const model = prepared.request.model;
-        try {
-          let cursor =
-            prepared.request.cursor &&
-            (await ownsCursor(env.DB, identity.uid, prepared.request.cursor))
-              ? prepared.request.cursor
-              : undefined;
-          const signal = AbortSignal.any([
-            request.signal,
-            AbortSignal.timeout(110_000),
-          ]);
-          const send = () =>
-            fetcher(`${env.OPENAI_BASE_URL}/responses`, {
-              method: "POST",
-              headers: {
-                authorization: `Bearer ${env.OPENAI_API_KEY}`,
-                "content-type": "application/json",
-              },
-              body: upstreamBody(prepared, cursor),
-              signal,
-            });
-          let response = await send();
-          if (cursor && (response.status === 400 || response.status === 404)) {
-            const detail: unknown = await response.json();
-            if (
-              detail &&
-              typeof detail === "object" &&
-              "error" in detail &&
-              detail.error &&
-              typeof detail.error === "object" &&
-              "param" in detail.error &&
-              detail.error.param === "previous_response_id"
-            ) {
-              cursor = undefined;
-              response = await send();
-            }
-          }
-          if (!response.ok || !response.body) {
-            throw await upstreamFailure(response, { phase: "generate", model, reasoning: { effort: REASONING[prepared.request.tier] } }, env.OPENAI_API_KEY);
-          }
-          const finished = Promise.withResolvers<void>();
-          ctx.waitUntil(finished.promise);
-          const body = sanitizeResponseStream(response.body, {
-            model,
-            onTerminal: async (terminal) => {
-              try {
-                const credits = await settleGeneration(
-                  env.DB,
-                  reservation,
-                  prepared,
-                  terminal,
-                  model,
-                  recoverUsage,
-                );
-                finished.resolve();
-                return admin ? {
-                  ...(credits !== undefined ? { credits } : {}),
-                  ...(terminal.status === "failed" || terminal.status === "truncated" ? {
-                    diagnostic: upstreamDiagnostic(terminal.response, { phase: "generate", model, responseId: terminal.cursor, stopReason: terminal.status }, env.OPENAI_API_KEY),
-                  } : {}),
-                } : undefined;
-              } catch (reason) {
-                finished.reject(reason);
-                throw reason;
-              }
-            },
-          });
-          return decorate(
-            new Response(body, {
-              headers: {
-                "content-type": "text/event-stream",
-                ...(prepared.request.cursor && !cursor
-                  ? { "x-context-rebuilt": "1" }
-                  : {}),
-              },
-            }),
-          );
-        } catch (reason) {
-          await settle(env.DB, reservation, reservation.charges, { model }, {
-            charged: 0,
-            cost: null,
-            usageState: "unavailable",
-            status: "failed",
-            kind: prepared.request.kind,
-            tier: prepared.request.tier,
-            units: prepared.units.length,
-          });
-          throw reason;
-        }
+        const jobId = request.headers.get("x-generation-id");
+        if (!jobId || !/^[0-9a-f-]{36}$/.test(jobId)) throw new HttpError(426, "generation_update_required");
+        return decorate(await room(prepared.request.session).fetch(new Request(`https://generation/${jobId}`, {
+          method: "POST", body: JSON.stringify({ uid: identity.uid, admin, prepared }),
+        })));
       } catch (reason) {
         const error =
           reason instanceof HttpError

@@ -9,6 +9,14 @@ FIREBASE_PROJECT_ID = "replace-with-firebase-project-id"
 ALLOWED_ORIGIN = "https://lexiro.vercel.app"
 OPENAI_BASE_URL = "https://api.openai.com/v1"
 
+[[durable_objects.bindings]]
+name = "GENERATIONS"
+class_name = "GenerationRoom"
+
+[[migrations]]
+tag = "generation-room-v1"
+new_sqlite_classes = ["GenerationRoom"]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "lexiro-billing"

@@ -47,8 +47,8 @@ export function outputText(response: Record<string, unknown>): string {
 /**
  * Settles one run and writes it to the ledger.
  *
- * A run that ends without a terminal event — the client hung up, the 110 second
- * ceiling hit, the stream broke — has already cost real tokens upstream. When a
+ * A run that ends without a terminal event — the generation deadline hit or the
+ * provider stream could not be recovered — has already cost real tokens upstream. When a
  * response id exists, `recoverUsage` fetches the stored response so that cost is
  * recorded instead of silently counted as nothing. The user is not charged for
  * it; only the administrator's ledger learns about it.

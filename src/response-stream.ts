@@ -238,7 +238,7 @@ export function sanitizeResponseStream(
       if (!cancelled) throw new Error("Stream ended before terminal event");
     } catch (reason) {
       try {
-        await finish({ cursor, status: cancelled ? "cancelled" : "failed", response: { error: { message: reason instanceof Error ? reason.message : String(reason) } } });
+        await finish({ cursor, status: cancelled ? "cancelled" : "failed", response: { error: { message: reason instanceof Error ? reason.message : String(reason), ...(record(reason) && typeof reason.code === "string" ? { code: reason.code } : {}), ...(record(reason) && record(reason.details) ? { details: reason.details } : {}) } } });
       } catch {
         /* Settlement errors must not become public provider details. */
       }

@@ -12,6 +12,11 @@
 | `migrations/0001_billing.sql`～`0013_usage_parts.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、方案預設、usage 狀態與索引、管理版本，以及一次操作各回合 usage／cursor；舊單回合資料一次轉成單一 part |
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
+| `src/generation-room.ts` | 每帳號／session 的 SQLite Durable Object，固定 operation ID 去重、獨立背景生成、SSE 訂閱／回放、10 分鐘上限與 30 分鐘結果清除；斷線不取消上游、不重複預留或結算 |
+| `src/provider-websocket.ts` | 持續 WebSocket 連線與 Responses 事件轉換；每批独立上下文，斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 15 秒關閉連線 |
+| `tests-next/generation-room.test.ts`、`tests-next/provider-websocket.test.ts` | 斷線續跑／去重／扣款、上游結果恢復，以及真正 workerd／SQLite DO／WebSocket 連線復用與回放 |
+| `tests-next/room-fixture.ts` | 合成供應商與記憶體 actor storage 的本地測試 fixture |
+| `scripts/probe-websocket.mjs` | 部署前使用 production key 驗證供應商 WebSocket handshake，無模型生成、不輸出金鑰 |
 | `src/upstream-error.ts` | 上游 HTTP／串流錯誤的管理員診斷：只取錯誤欄位、階段、模型、狀態及 request ID，遮蔽供應商 key；一般帳號不接收診斷 |
 | `src/admin-usage.ts`、`src/pagination.ts`、`tests-next/admin-report.test.ts` | 近 30 天報表（題型／檔位／模型分組，各次請求分別計算長上下文成本）、未知成本／歷史未核實扣款計數、版本化游標分頁及行為測試。usage 按時間／id 遞減，帳戶按 email／uid 遞增；`cursor`／`nextCursor` 取代 offset，沒有舊參數相容分支 |
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；調整必須帶閱讀時的 `expected` 狀態，原子拒絕過期修改並直接回傳實際儲存結果。帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
@@ -48,6 +53,8 @@
 帳戶的負餘額只表示生成中的預留。管理員可更新備註，但額度調整必須等結算完成，不能把預留餘額歸零。閱讀測驗完成 3–5 題都保留來源成功紀錄，同一 session 重試不再次扣款。`usage_log.credits` 是供應商成本，`assessed_points` 是套用餘額上限前的應收點數，`points` 是實際扣款；`debit_verified=0` 表示尚未核實的扣款，包括歷史紀錄與待核對項目。
 
 ## 持久化版本
+
+Durable Object namespace `GENERATIONS` 使用 `generation-room-v1` SQLite migration；回放來源／輸出與結算 metadata 至任務開始後 30 分鐘，由 alarm 刪除。圖片、私有提示與憑證不保存於 actor storage。D1 預留租期為 15 分鐘，長於批次 10 分鐘上限，避免仍執行的任務被 120 秒舊鎖回收。
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |

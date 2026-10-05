@@ -6,6 +6,7 @@ import { createWorker } from "../src/index";
 import { AuthenticationError } from "../src/auth";
 import type { Env } from "../src/env";
 import { account, ensureAccount, reserve, settle } from "../src/billing";
+import { roomFixture } from "./room-fixture";
 
 let database: Awaited<ReturnType<typeof testDatabase>>, env: Env;
 beforeEach(async () => {
@@ -87,6 +88,7 @@ function req(
       origin: "https://lexiro.test",
       authorization: `Bearer ${token}`,
       "content-type": "application/json",
+      "x-generation-id": crypto.randomUUID(),
     },
     ...(body ? { body: JSON.stringify(payload) } : {}),
   });
@@ -97,7 +99,7 @@ async function call(request: Request, upstream = provider()) {
     waitUntil: (promise: Promise<unknown>) => pending.push(promise),
     passThroughOnException: () => {},
   } as unknown as ExecutionContext;
-  const response = await createWorker(verify, upstream).fetch(
+  const response = await createWorker(verify, upstream, roomFixture(env, upstream, pending)).fetch(
     request,
     env,
     context,
@@ -318,6 +320,7 @@ describe("Worker HTTP boundary", () => {
             authorization: "Bearer user",
             "content-type": "text/plain",
             "x-session-id": session,
+            "x-generation-id": crypto.randomUUID(),
             "x-ai-model": "gpt-6-luna",
           },
           body: images.join("\n"),
@@ -363,28 +366,17 @@ describe("Worker HTTP boundary", () => {
       expect((await account(env.DB, "u"))!.points).toBe(99);
     },
   );
-  it("rebuilds an owned but provider-expired cursor without charging twice", async () => {
+  it("uses independent context even when an owned cursor was supplied", async () => {
     await env.DB.prepare("INSERT INTO cursors VALUES(?,?,?)")
       .bind("resp_expired", "u", Math.floor(Date.now() / 1000))
       .run();
     const upstream = provider();
-    upstream.mockImplementationOnce(async () =>
-      Response.json(
-        {
-          error: {
-            param: "previous_response_id",
-            message: "private diagnostic",
-          },
-        },
-        { status: 400 },
-      ),
-    );
     const result = await call(
       req("/generate", { ...generation(), cursor: "resp_expired" }),
       upstream,
     );
-    expect(upstream).toHaveBeenCalledTimes(2);
-    expect(result.response.headers.get("x-context-rebuilt")).toBe("1");
+    expect(upstream).toHaveBeenCalledOnce();
+    expect(JSON.parse(String(upstream.mock.calls[0][1]!.body)).previous_response_id).toBeUndefined();
     expect(result.text).not.toContain("private diagnostic");
     expect((await account(env.DB, "u"))!.points).toBe(99);
   });
@@ -779,7 +771,7 @@ describe("Worker HTTP boundary", () => {
     const body = { ...generation(), cursor: "resp_someone_else" };
     const upstream = provider();
     const result = await call(req("/generate", body), upstream);
-    expect(result.response.headers.get("x-context-rebuilt")).toBe("1");
+    expect(result.response.headers.get("x-context-rebuilt")).toBeNull();
     expect(
       JSON.parse(String(upstream.mock.calls[0][1]!.body)).previous_response_id,
     ).toBeUndefined();
@@ -799,10 +791,9 @@ describe("Worker HTTP boundary", () => {
         new Response("private key and prompt diagnostics", { status: 503 }),
     );
     const result = await call(req("/generate", generation()), upstream);
-    expect(result.response.status).toBe(503);
-    expect(JSON.parse(result.text)).toEqual({
-      error: { code: "upstream_unavailable" },
-    });
+    expect(result.response.status).toBe(200);
+    expect(result.text).toContain('"code":"upstream_unavailable"');
+    expect(result.text).not.toContain("private key and prompt diagnostics");
     expect((await account(env.DB, "u"))!.points).toBe(100);
     expect(
       await env.DB.prepare(

@@ -4,6 +4,7 @@ import { QUESTION_GENERATION_CONTRACT } from "@lexiro/ai-contract";
 import { testDatabase } from "./database";
 import { createWorker } from "../src/index";
 import type { Env } from "../src/env";
+import { roomFixture } from "./room-fixture";
 let fixture: Awaited<ReturnType<typeof testDatabase>>;
 let env: Env;
 beforeEach(async () => {
@@ -18,7 +19,8 @@ const frame = (type: string, value: object) => `event: ${type}\ndata: ${JSON.str
 function start(req: Request, fetcher: typeof fetch) {
   const pending: Promise<unknown>[] = [];
   const context = { waitUntil: (promise: Promise<unknown>) => pending.push(promise) } as unknown as ExecutionContext;
-  return { pending, response: createWorker(verify, fetcher).fetch(req, env, context) };
+  req.headers.set("x-generation-id", crypto.randomUUID());
+  return { pending, response: createWorker(verify, fetcher, roomFixture(env, fetcher, pending)).fetch(req, env, context) };
 }
 describe("single-pass question HTTP pipeline", () => {
   it("uses one native-compatible provider call and forwards content before completion", async () => {
@@ -37,7 +39,7 @@ describe("single-pass question HTTP pipeline", () => {
     const reader = (await operation.response).body!.getReader();
     const decoder = new TextDecoder();
     let output = decoder.decode((await reader.read()).value);
-    output += decoder.decode((await reader.read()).value);
+    while (!output.includes("response.output_text.delta")) output += decoder.decode((await reader.read()).value);
     expect(output).toContain("response.output_text.delta");
     expect(output).not.toContain("response.completed");
     release.resolve();
@@ -59,11 +61,12 @@ describe("single-pass question HTTP pipeline", () => {
     const upstream = vi.fn<typeof fetch>(async () => Response.json({ error: { code: "unsupported_parameter", param: "reasoning.effort", message: `Rejected ${env.OPENAI_API_KEY}` }, instructions: "private prompt" }, { status: 400, headers: { "x-request-id": "req_test" } }));
     const operation = start(request(), upstream);
     const response = await operation.response;
-    const body = await response.json() as { error: { diagnostic?: unknown } };
-    expect(response.status).toBe(500);
-    if (admin) expect(body.error.diagnostic).toMatchObject({ phase: "generate", status: 400, requestId: "req_test", provider: { message: "Rejected [redacted]" } });
-    else expect(body.error).not.toHaveProperty("diagnostic");
-    expect(JSON.stringify(body)).not.toContain("private prompt");
-    expect(JSON.stringify(body)).not.toContain(env.OPENAI_API_KEY);
+    const body = await response.text();
+    await Promise.all(operation.pending);
+    expect(response.status).toBe(200);
+    if (admin) expect(body).toContain('"message":"Rejected [redacted]"');
+    else expect(body).not.toContain("diagnostic");
+    expect(body).not.toContain("private prompt");
+    expect(body).not.toContain(env.OPENAI_API_KEY);
   });
 });

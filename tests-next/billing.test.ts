@@ -81,7 +81,7 @@ describe("D1 atomic credit ledger", () => {
   });
   it("refunds an abandoned attempt before reclaiming its expired lock", async () => {
     const abandoned = await reserve(db, "u", units(["a"]), 2);
-    const expired = Math.floor(Date.now() / 1000) - 121;
+    const expired = Math.floor(Date.now() / 1000) - 901;
     await db.batch([
       db
         .prepare("UPDATE accounts SET inflight_at=? WHERE uid='u'")

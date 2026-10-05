@@ -58,6 +58,9 @@ jobs:
       - name: Set Firebase project binding
         run: sed -i "s/replace-with-firebase-project-id/$FIREBASE_PROJECT_ID/" wrangler.toml
 
+      - name: Verify provider WebSocket support
+        run: node scripts/probe-websocket.mjs
+
       - name: Apply D1 migrations
         run: npx wrangler d1 migrations apply DB --remote
 

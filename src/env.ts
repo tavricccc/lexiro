@@ -1,6 +1,7 @@
-import type { D1Database } from "@cloudflare/workers-types";
+import type { D1Database, DurableObjectNamespace } from "@cloudflare/workers-types";
 export interface Env {
   DB: D1Database;
+  GENERATIONS?: DurableObjectNamespace;
   FIREBASE_PROJECT_ID: string;
   ADMIN_EMAILS: string;
   OPENAI_API_KEY: string;

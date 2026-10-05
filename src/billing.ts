@@ -123,18 +123,18 @@ export async function reserve(
         `UPDATE accounts SET version=version+1, points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))
       WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
-      .bind(uid, now - 120, uid, uid, now - 120),
+      .bind(uid, now - 900, uid, uid, now - 900),
     db
       .prepare(
         "DELETE FROM charges WHERE uid=? AND ((created_at<=? AND attempt_id NOT LIKE 'settled:%') OR (created_at<=? AND attempt_id LIKE 'settled:%')) AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
-      .bind(uid, now - 120, now - 1800),
+      .bind(uid, now - 900, now - 1800),
     db
       .prepare(
         `UPDATE accounts SET version=version+1, inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)
          AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)`,
       )
-      .bind(now, attempt, uid, now - 120),
+      .bind(now, attempt, uid, now - 900),
     db.prepare("SELECT points FROM accounts WHERE uid=?").bind(uid),
   ]);
   const lock = results[2];
@@ -332,17 +332,17 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
       WHERE EXISTS(SELECT 1 FROM charges WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'
         AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
-      .bind(now - 120, now - 120),
+      .bind(now - 900, now - 900),
     db
       .prepare(
         "DELETE FROM charges WHERE created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
-      .bind(now - 120),
+      .bind(now - 900),
     db
       .prepare(
         "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE inflight_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=accounts.inflight_id)",
       )
-      .bind(now - 120),
+      .bind(now - 900),
   ]);
   const due = await db
     .prepare(

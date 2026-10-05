@@ -269,12 +269,12 @@ function cachedInstructionInput(prepared: PreparedGeneration) {
   }));
 }
 
-export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
+export function upstreamRequest(prepared: PreparedGeneration, cursor?: string, websocket = false) {
   return {
     model: prepared.request.model,
     service_tier: "default" as const,
     reasoning: { effort: REASONING[prepared.request.tier] },
-    stream: true,
+    ...(websocket ? { type: "response.create" } : { stream: true }),
     store: true,
     input: [
       ...cachedInstructionInput(prepared),
@@ -303,8 +303,9 @@ export function upstreamRequest(prepared: PreparedGeneration, cursor?: string) {
 export function upstreamBody(
   prepared: PreparedGeneration,
   cursor?: string,
+  websocket = false,
 ): string | ReadableStream<Uint8Array> {
-  const body = upstreamRequest(prepared, cursor);
+  const body = upstreamRequest(prepared, cursor, websocket);
   if (!prepared.images) return JSON.stringify(body);
   const marker = "LEXIRO_IMAGE_BODY";
   const imageBody = {
