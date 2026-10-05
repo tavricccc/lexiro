@@ -5,6 +5,7 @@ import {
   QUESTION_KINDS,
   TIERS,
   AI_MODELS,
+  generationModel,
   rate,
   type GenerationRequest,
   type Tier,
@@ -28,7 +29,7 @@ export const REASONING: Record<Tier, "low" | "medium" | "high"> =
   {
     lite: "low",
     thinking: "medium",
-    pro: "high",
+    pro: "low",
   };
 const inputSchema = z.strictObject({
   kind: z.enum([
@@ -63,7 +64,7 @@ const inputSchema = z.strictObject({
   newVersion: z.boolean().optional(),
 });
 export interface PreparedGeneration {
-  request: GenerationRequest;
+  request: Omit<GenerationRequest, "model"> & { model: string };
   instructions: string;
   /** A first reusable block shared by several specialized prompts. */
   cachePrefix?: string;
@@ -175,11 +176,12 @@ export async function prepareGeneration(
   if (request.newVersion)
     input += "\n這次追加新版本，換用不同的情境與措辭，不重複前面的句子或文章。";
   const tier =
-    request.kind === "explain" || request.kind === "organizeText"
+    request.kind === "explain"
       ? "lite"
       : request.tier;
+  const model = generationModel(request.model, tier);
   return {
-    request: { ...request, tier },
+    request: { ...request, tier, model },
     instructions,
     ...(cachePrefix ? { cachePrefix } : {}),
     input,
@@ -187,12 +189,12 @@ export async function prepareGeneration(
     units: await Promise.all(
       rawUnits.map(async (unit, index) => ({
         id: await fingerprint(
-          JSON.stringify([uid, request.session, request.kind, request.model, tier, unit]),
+          JSON.stringify([uid, request.session, request.kind, model, tier, unit]),
         ),
         // The retry ceiling deliberately excludes the session: it is a client
         // value, and a new uuid per attempt would otherwise reset the ceiling.
         limitId: await fingerprint(
-          JSON.stringify([uid, request.kind, request.model, tier, unit]),
+          JSON.stringify([uid, request.kind, model, tier, unit]),
         ),
         index,
       })),

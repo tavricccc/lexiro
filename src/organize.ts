@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { LIMITS, AI_MODELS, DEFAULT_AI_MODEL, rate } from "@lexiro/ai-contract";
+import { LIMITS, AI_MODELS, DEFAULT_AI_MODEL, TIERS, generationModel, rate } from "@lexiro/ai-contract";
 import { fingerprint, HttpError } from "./http";
 import type { PreparedGeneration } from "./generation";
 import { jsonSchema } from "./schemas";
@@ -103,6 +103,7 @@ export async function prepareImages(
   session: string | null,
   uid: string,
   requestedModel: string | null = DEFAULT_AI_MODEL,
+  requestedTier: string | null = "lite",
 ): Promise<PreparedGeneration> {
   if (!z.string().uuid().safeParse(session).success)
     throw new HttpError(400, "invalid_input");
@@ -111,25 +112,28 @@ export async function prepareImages(
     throw new HttpError(413, "input_limit", "images");
   const parsedModel = z.enum(AI_MODELS).safeParse(requestedModel);
   if (!parsedModel.success) throw new HttpError(400, "invalid_input", "model");
-  const model = parsedModel.data;
+  const parsedTier = z.enum(TIERS).safeParse(requestedTier);
+  if (!parsedTier.success) throw new HttpError(400, "invalid_input", "tier");
+  const tier = parsedTier.data;
+  const model = generationModel(parsedModel.data, tier);
   const units: PreparedGeneration["units"] = [];
   for (const [index, base64] of images.entries()) {
     validateWebp(base64);
     const hash = await fingerprint(base64);
     units.push({
-      id: await fingerprint(JSON.stringify([uid, session, "organizeImage", model, hash])),
-      limitId: await fingerprint(JSON.stringify([uid, "organizeImage", model, hash])),
+      id: await fingerprint(JSON.stringify([uid, session, "organizeImage", model, tier, hash])),
+      limitId: await fingerprint(JSON.stringify([uid, "organizeImage", model, tier, hash])),
       index,
     });
   }
   return {
-    request: { kind: "organizeImage", session: session!, tier: "lite", model },
+    request: { kind: "organizeImage", session: session!, tier, model },
     instructions: organizeInstructions,
     input: `依序整理這 ${images.length} 張照片中的英文學習清單，合併為一份清單。`,
     images,
     schema: jsonSchema(organizeOutput),
     units,
-    halfRate: rate("organizeImage", "lite", model),
+    halfRate: rate("organizeImage", tier, parsedModel.data),
     cacheKey: ORGANIZE_CACHE_KEY,
   };
 }

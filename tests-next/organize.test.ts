@@ -48,14 +48,16 @@ describe("input organization", () => {
     } finally { await fixture.runtime.dispose(); }
   });
 
-  it("uses the same cacheable fixed prefix and Lite price for text and photos", async () => {
+  it("uses Sol/low and the same cacheable fixed prefix for Pro text and photos", async () => {
     const text = await prepareGeneration({ kind: "organizeText", raw: "apple", model: "gpt-6-luna", tier: "pro", session: crypto.randomUUID() }, "u");
-    const image = await prepareImages(webp(), crypto.randomUUID(), "u");
+    const image = await prepareImages(webp(), crypto.randomUUID(), "u", "gpt-5.6-luna", "pro");
     expect(text.instructions).toBe(image.instructions);
     expect(text.cacheKey).toBe(image.cacheKey);
     expect(encode(organizeInstructions).length).toBeGreaterThanOrEqual(1024);
-    expect(text.request.tier).toBe("lite");
-    expect([text.halfRate, image.halfRate]).toEqual([10, 12]);
+    expect(text.request.tier).toBe("pro");
+    expect([text.halfRate, image.halfRate]).toEqual([200, 240]);
+    expect(await new Response(upstreamBody(text)).json()).toMatchObject({ model: "gpt-6.1-sol", reasoning: { effort: "low" } });
+    expect(await new Response(upstreamBody(image)).json()).toMatchObject({ model: "gpt-6.1-sol", reasoning: { effort: "low" } });
   });
 
   it.each([1, 10])("streams %i images in one ordered upstream request", async (count) => {

@@ -59,7 +59,7 @@ export function createWorker(
           ? { "access-control-allow-origin": origin }
           : {}),
         "access-control-allow-headers":
-          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-Question-Contract",
+          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-AI-Tier, X-Question-Contract",
         "access-control-allow-methods": "GET, POST, PATCH, OPTIONS",
         "access-control-expose-headers": "X-Context-Rebuilt, Retry-After",
       };
@@ -112,6 +112,7 @@ export function createWorker(
               request.headers.get("x-session-id"),
               identity.uid,
               request.headers.get("x-ai-model"),
+              request.headers.get("x-ai-tier") ?? "lite",
             )
           : await prepareGeneration(
               JSON.parse(await readBody(request, 100_000)),

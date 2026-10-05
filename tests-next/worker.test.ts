@@ -388,7 +388,8 @@ describe("Worker HTTP boundary", () => {
     expect(result.text).not.toContain("private diagnostic");
     expect((await account(env.DB, "u"))!.points).toBe(99);
   });
-  it("forces text organization to Lite and settles its actual provider cost", async () => {
+  it("routes Pro text organization to Sol/low and settles its actual provider cost", async () => {
+    const upstream = provider({ lines: ["apple 蘋果"] });
     const result = await call(
       req("/organize", {
         kind: "organizeText",
@@ -396,11 +397,12 @@ describe("Worker HTTP boundary", () => {
         tier: "pro",
         session: crypto.randomUUID(),
       }),
-      provider({ lines: ["apple 蘋果"] }),
+      upstream,
     );
     expect(result.response.status).toBe(200);
     expect(result.text).toContain("apple 蘋果");
-    expect((await account(env.DB, "u"))!.points).toBe(99);
+    expect(JSON.parse(upstream.mock.calls[0][1]!.body as string)).toMatchObject({ model: "gpt-6.1-sol", reasoning: { effort: "low" } });
+    expect((await account(env.DB, "u"))!.points).toBe(97);
   });
   it("returns account points without keys or model configuration", async () => {
     const result = await call(req("/me"));
@@ -434,6 +436,7 @@ describe("Worker HTTP boundary", () => {
       }),
     );
     expect(allowed.response.status).toBe(204);
+    expect(allowed.response.headers.get("access-control-allow-headers")).toContain("X-AI-Tier");
     expect(allowed.response.headers.get("access-control-allow-origin")).toBe(
       "http://localhost:3000",
     );

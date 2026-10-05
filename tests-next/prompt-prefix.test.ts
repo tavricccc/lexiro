@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { encode } from "gpt-tokenizer";
 import { REASONING, prepareGeneration, upstreamRequest } from "../src/generation";
-import { QUESTION_KINDS, AI_MODELS, TIERS } from "@lexiro/ai-contract";
+import { QUESTION_KINDS, AI_MODELS, TIERS, generationModel } from "@lexiro/ai-contract";
 import { QUESTION_CACHE_KEY, TASK_RULES } from "../src/question-prompts";
 import { prepareQuestionReview, QUESTION_REVIEW_CACHE_KEY, QUESTION_REVIEW_RULES } from "../src/question-review";
 
@@ -9,16 +9,17 @@ describe("private generation prompts", () => {
   it.each(AI_MODELS)("routes %s for every reasoning tier and keeps model-specific charge identities", async (model) => {
     for (const tier of TIERS) {
       const prepared = await prepareGeneration({ kind: "words", raw: "bank n. 銀行", model, tier, session: "00000000-0000-4000-8000-000000000001" }, "uid");
-      expect(upstreamRequest(prepared)).toMatchObject({ model, reasoning: { effort: REASONING[tier] } });
+      expect(upstreamRequest(prepared)).toMatchObject({ model: generationModel(model, tier), reasoning: { effort: REASONING[tier] } });
       const other = await prepareGeneration({ ...prepared.request, model: model === "gpt-6-luna" ? "gpt-5.6-luna" : "gpt-6-luna" }, "uid");
-      expect(prepared.units[0].id).not.toBe(other.units[0].id);
+      if (tier === "pro") expect(prepared.units[0].id).toBe(other.units[0].id);
+      else expect(prepared.units[0].id).not.toBe(other.units[0].id);
     }
   });
-  it("keeps the same increasing reasoning effort for both model families", () => {
+  it("uses low effort for Pro's Sol model", () => {
     expect(REASONING).toEqual({
       lite: "low",
       thinking: "medium",
-      pro: "high",
+      pro: "low",
     });
   });
   it.each(["words", ...QUESTION_KINDS] as const)(
