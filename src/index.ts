@@ -19,7 +19,8 @@ import {
 } from "./billing";
 import { adminRequest } from "./admin";
 import { HttpError, readBody } from "./http";
-import { prepareGeneration, upstreamBody } from "./generation";
+import { prepareGeneration, upstreamBody, REASONING } from "./generation";
+import { UpstreamError, upstreamFailure, upstreamDiagnostic } from "./upstream-error";
 import { prepareImages } from "./organize";
 import { sanitizeResponseStream } from "./response-stream";
 import { settleGeneration } from "./settlement";
@@ -72,13 +73,14 @@ export function createWorker(
           headers,
         });
       };
+      let admin = false;
       try {
         if (origin && !allowedOrigin(origin, env.ALLOWED_ORIGIN))
           throw new HttpError(403, "forbidden_origin");
         if (request.method === "OPTIONS")
           return new Response(null, { status: 204, headers: cors });
         const identity = await verify(request, env.FIREBASE_PROJECT_ID);
-        const admin = isAdministrator(identity, env.ADMIN_EMAILS);
+        admin = isAdministrator(identity, env.ADMIN_EMAILS);
         const path = new URL(request.url).pathname;
         if (path.startsWith("/admin/")) {
           if (!admin) throw new HttpError(404, "not_found");
@@ -179,17 +181,7 @@ export function createWorker(
             }
           }
           if (!response.ok || !response.body) {
-            await response.body?.cancel();
-            throw new HttpError(
-              response.status === 429
-                ? 429
-                : response.status >= 500
-                  ? 503
-                  : 500,
-              "upstream_unavailable",
-              undefined,
-              response.headers.get("retry-after") ?? undefined,
-            );
+            throw await upstreamFailure(response, { phase: "generate", model, reasoning: { effort: REASONING[prepared.request.tier] } }, env.OPENAI_API_KEY);
           }
           const finished = Promise.withResolvers<void>();
           ctx.waitUntil(finished.promise);
@@ -206,7 +198,12 @@ export function createWorker(
                   recoverUsage,
                 );
                 finished.resolve();
-                return admin && credits !== undefined ? { credits } : undefined;
+                return admin ? {
+                  ...(credits !== undefined ? { credits } : {}),
+                  ...(terminal.status === "failed" || terminal.status === "truncated" ? {
+                    diagnostic: upstreamDiagnostic(terminal.response, { phase: "generate", model, responseId: terminal.cursor, stopReason: terminal.status }, env.OPENAI_API_KEY),
+                  } : {}),
+                } : undefined;
               } catch (reason) {
                 finished.reject(reason);
                 throw reason;
@@ -252,6 +249,7 @@ export function createWorker(
               error: {
                 code: error.code,
                 ...(error.field ? { field: error.field } : {}),
+                ...(admin && reason instanceof UpstreamError ? { diagnostic: reason.diagnostic } : {}),
               },
             },
             {

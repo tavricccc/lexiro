@@ -47,6 +47,20 @@ function events(text: string) {
 }
 
 describe("reviewed question HTTP pipeline", () => {
+  it.each([false, true])("reports provider parameter failures only to administrators (admin=%s)", async (admin) => {
+    if (admin) env.ADMIN_EMAILS = "u@example.test";
+    const fetcher = vi.fn<typeof fetch>(async () => Response.json({ error: { code: "unsupported_parameter", param: "reasoning.effort", type: "invalid_request_error", message: `Rejected reasoning parameter; key=${env.OPENAI_API_KEY}` }, instructions: "private prompt" }, { status: 400, headers: { "x-request-id": "req_test" } }));
+    const operation = start(request(crypto.randomUUID()), fetcher);
+    const text = await (await operation.response).text();
+    await Promise.all(operation.pending);
+    const failure = events(text).find((event) => event.type === "error")!;
+    expect(failure.code).toBe("upstream_unavailable");
+    if (admin) expect(failure.diagnostic).toMatchObject({ phase: "draft", status: 400, requestId: "req_test", provider: { code: "unsupported_parameter", param: "reasoning.effort", message: "Rejected reasoning parameter; key=[redacted]" } });
+    else expect(failure).not.toHaveProperty("diagnostic");
+    expect(text).not.toContain(env.OPENAI_API_KEY);
+    expect(text).not.toContain("private prompt");
+    expect((await account(env.DB, "u"))!.points).toBe(100);
+  });
   it("rejects the removed grammar format before reserving or calling the provider", async () => {
     const original = request(crypto.randomUUID());
     const payload = await original.json() as Record<string, unknown>;

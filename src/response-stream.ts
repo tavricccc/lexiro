@@ -17,8 +17,8 @@ const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 const encodeEvent = (event: string, value: Record<string, unknown>) =>
   encoder.encode(`event: ${event}\ndata: ${JSON.stringify(value)}\n\n`);
-const failure = () =>
-  encodeEvent("error", { type: "error", code: "upstream_unavailable" });
+const failure = (metadata?: Record<string, unknown>) =>
+  encodeEvent("error", { type: "error", code: "upstream_unavailable", ...(metadata?.diagnostic ? { diagnostic: metadata.diagnostic } : {}) });
 const TEXT_EVENTS = new Set([
   "response.output_text.delta",
   "response.output_text.done",
@@ -172,8 +172,9 @@ export function sanitizeResponseStream(
           continue;
         }
         if (frame.event === "error") {
-          await finish({ cursor, status: "failed" });
-          if (!cancelled) yield failure();
+          const event: unknown = JSON.parse(frame.data);
+          await finish({ cursor, status: "failed", response: { error: record(event) && event.error ? event.error : event } });
+          if (!cancelled) yield failure(terminalMetadata);
           return;
         }
         // Only known events are forwarded; unexpected metadata cannot bypass redaction.
@@ -235,13 +236,13 @@ export function sanitizeResponseStream(
         if (terminal) return;
       }
       if (!cancelled) throw new Error("Stream ended before terminal event");
-    } catch {
+    } catch (reason) {
       try {
-        await finish({ cursor, status: cancelled ? "cancelled" : "failed" });
+        await finish({ cursor, status: cancelled ? "cancelled" : "failed", response: { error: { message: reason instanceof Error ? reason.message : String(reason) } } });
       } catch {
         /* Settlement errors must not become public provider details. */
       }
-      if (!cancelled) yield failure();
+      if (!cancelled) yield failure(terminalMetadata);
     } finally {
       try {
         await reader.cancel();

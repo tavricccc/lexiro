@@ -1,8 +1,9 @@
 import type { Env } from "./env";
 import { countTokens } from "gpt-tokenizer/encoding/o200k_base";
+import { UpstreamError, upstreamFailure, upstreamDiagnostic } from "./upstream-error";
 import type { Reservation } from "./billing";
 import { settle } from "./billing";
-import { upstreamBody, type PreparedGeneration } from "./generation";
+import { upstreamBody, REASONING, type PreparedGeneration } from "./generation";
 import { sanitizeResponseStream, type StreamTerminal } from "./response-stream";
 import { outputText } from "./settlement";
 import { prepareQuestionReview, approvedQuestionResult } from "./question-review";
@@ -33,6 +34,7 @@ export function reviewedQuestionStream(options: Options) {
   const finished = Promise.withResolvers<void>();
   const parts: UsagePart[] = [];
   let settled = false;
+  let phase: "draft" | "review" = "draft";
   const publicUsage = () => ({ model: options.prepared.request.model,
     ...(parts.length && parts.every(completeUsage) ? { usage: {
       input_tokens: sumUsage(parts).input, output_tokens: sumUsage(parts).output,
@@ -82,8 +84,7 @@ export function reviewedQuestionStream(options: Options) {
           body: upstreamBody(prepared, cursor), signal,
         });
         if (!response.ok || !response.body) {
-          await response.body?.cancel();
-          throw new Error("upstream_unavailable");
+          throw await upstreamFailure(response, { phase, model: prepared.request.model, reasoning: { effort: REASONING[prepared.request.tier] } }, options.env.OPENAI_API_KEY);
         }
         let terminal: StreamTerminal | undefined;
         let characters = 0;
@@ -127,16 +128,17 @@ export function reviewedQuestionStream(options: Options) {
         signal.throwIfAborted();
         emit("lexiro.question.progress", { phase, characters, tokens: countTokens(text, { allowedSpecial: new Set() }) });
         if (!terminal || terminal.status !== "complete" || !terminal.response)
-          throw new Error("upstream_unavailable");
+          throw new UpstreamError(upstreamDiagnostic(terminal?.response, { phase, model: prepared.request.model, responseId: terminal?.cursor, stopReason: terminal?.status ?? "missing_terminal" }, options.env.OPENAI_API_KEY));
         return JSON.parse(outputText(terminal.response)) as unknown;
       };
       const run = async () => {
         try {
           const draft = await collect(options.prepared, "draft", options.cursor);
+          phase = "review";
           const review = await collect(prepareQuestionReview(options.prepared, draft), "review");
           let corrected: unknown;
           try { corrected = approvedQuestionResult(options.prepared, review); }
-          catch { throw new QualityRejected(); }
+          catch (reason) { throw new QualityRejected(reason instanceof Error ? reason.message : String(reason)); }
           signal.throwIfAborted();
           const cost = await finish(true, "complete");
           signal.throwIfAborted();
@@ -155,7 +157,9 @@ export function reviewedQuestionStream(options: Options) {
           try {
             await finish(false, signal.aborted ? "cancelled" : reason instanceof QualityRejected ? "question_quality_rejected" : "failed");
             if (!cancelled.signal.aborted) {
-              emit("error", { code: reason instanceof QualityRejected ? "question_quality_rejected" : "upstream_unavailable", response: publicUsage() });
+              emit("error", { code: reason instanceof QualityRejected ? "question_quality_rejected" : "upstream_unavailable", response: publicUsage(),
+                ...(options.admin ? { diagnostic: reason instanceof UpstreamError ? reason.diagnostic : upstreamDiagnostic({ message: reason instanceof Error ? reason.message : String(reason) }, { phase, model: options.prepared.request.model }, options.env.OPENAI_API_KEY) } : {}),
+              });
               controller.close();
             }
             finished.resolve();
