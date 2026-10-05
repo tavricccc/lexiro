@@ -62,12 +62,11 @@ export function PracticeSessionView({
       ? entry.item.question
       : null;
   return (
-    // A session owns the whole screen, so it is a column: the material takes
-    // the room it needs and the controls end up where a thumb already is,
-    // instead of floating in the middle of a half-empty page.
+    // Keep the question directly below progress; extra viewport height never
+    // pushes short questions or their answer choices downward.
     <div
       data-motion-view="practice-session"
-      className={`mx-auto flex min-h-[calc(100dvh-6rem)] flex-col ${passage ? "max-w-6xl" : "max-w-3xl"}`}
+      className={`mx-auto flex flex-col ${passage ? "max-w-6xl" : "max-w-3xl"}`}
     >
       <div className="page-header pb-3 pt-1">
         <HeaderBackdrop contained />
@@ -103,14 +102,14 @@ export function PracticeSessionView({
         </div>
       </div>
       <motion.div
-        className="flex flex-1 flex-col"
+        className="flex flex-col"
         key={passage ? `passage:${passage.id}` : entry.id}
         initial={animateCard ? { opacity: 0.72 } : false}
         animate={{ opacity: 1 }}
         transition={practiceTransition}
       >
         <div
-          className={passage ? "py-4" : "my-auto py-5"}
+          className="pb-4 pt-1"
           data-practice-question-group
         >
           <div className="mb-3 flex justify-end gap-1">
