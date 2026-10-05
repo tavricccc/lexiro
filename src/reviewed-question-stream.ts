@@ -29,6 +29,8 @@ class QualityRejected extends Error {}
 
 /** One reservation, two independent model calls, and only the approved final prose. */
 export function reviewedQuestionStream(options: Options) {
+  // Calling native fetch as options.fetcher() gives it the wrong receiver in Workers.
+  const fetcher = options.fetcher;
   const cancelled = new AbortController();
   const signal = AbortSignal.any([options.signal, cancelled.signal]);
   const finished = Promise.withResolvers<void>();
@@ -78,7 +80,7 @@ export function reviewedQuestionStream(options: Options) {
         const part: UsagePart = { model: prepared.request.model };
         parts.push(part);
         emit("lexiro.question.progress", { phase, characters: 0, tokens: 0 });
-        const response = await options.fetcher(`${options.env.OPENAI_BASE_URL}/responses`, {
+        const response = await fetcher(`${options.env.OPENAI_BASE_URL}/responses`, {
           method: "POST",
           headers: { authorization: `Bearer ${options.env.OPENAI_API_KEY}`, "content-type": "application/json" },
           body: upstreamBody(prepared, cursor), signal,

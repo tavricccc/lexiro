@@ -87,7 +87,8 @@ describe("reviewed question HTTP pipeline", () => {
   it("replaces an ambiguous draft through an independent reviewer, settles both calls once, and makes retries free", async () => {
     await env.DB.prepare("UPDATE accounts SET points=1000 WHERE uid='u'").run();
     const calls: Record<string, unknown>[] = [];
-    const fetcher = vi.fn<typeof fetch>(async (_url, options) => {
+    const fetcher = vi.fn<typeof fetch>(async function (this: unknown, _url, options) {
+      expect(this).toBeUndefined();
       calls.push(await new Response(options!.body as BodyInit).json() as Record<string, unknown>);
       return calls.length % 2 ? reply("resp_draft", draft) : reply("resp_review", approved);
     });
