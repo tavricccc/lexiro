@@ -2,8 +2,7 @@ import type { D1Database } from "@cloudflare/workers-types";
 import {
   LONG_CONTEXT_INPUT_THRESHOLD,
   MODEL_PRICES,
-  AI_MODELS,
-  type AiModel,
+  LONG_CONTEXT_MODELS,
   type AdminUsageEntry,
 } from "@lexiro/ai-contract";
 import { nowSeconds } from "./billing";
@@ -19,7 +18,7 @@ function costSql(alias: string) {
     const inputCost = `(${input}-${cached}-${writes})*${price.input}+${cached}*${price.cached}+${writes}*${price.cacheWrite}`;
     const outputCost = `${output}*${price.output}`;
     const ordinary = `(${inputCost}+${outputCost})/1000000.0`;
-    const cost = AI_MODELS.includes(model as AiModel)
+    const cost = LONG_CONTEXT_MODELS.includes(model)
       ? `CASE WHEN ${input}>${LONG_CONTEXT_INPUT_THRESHOLD} THEN (2*(${inputCost})+1.5*(${outputCost}))/1000000.0 ELSE ${ordinary} END`
       : ordinary;
     return `WHEN '${model}' THEN ${cost}`;

@@ -46,6 +46,23 @@ const run = (id: string, at: number, state = "reported", verified = 1) =>
     .bind(id, at, state === "reported" ? 2 : null, state, verified);
 
 describe("indexed admin reports", () => {
+  it("prices Sol contexts in entries and every aggregate using the shared response rates", async () => {
+    const now = nowSeconds();
+    await fixture.db.prepare(`INSERT INTO usage_log
+      (id,uid,points,model,created_at,credits,status,usage_state,debit_verified,kind,tier,units,input,cached,cache_write,output)
+      VALUES
+      ('sol-boundary','u',1,'gpt-6.1-sol',?,1,'complete','reported',1,'vocabulary','pro',1,272000,200000,20000,1000),
+      ('sol-long','u',1,'gpt-6.1-sol',?,1,'complete','reported',1,'vocabulary','pro',1,300000,200000,20000,1000)`)
+      .bind(now, now).run();
+    const report = (await (await request("/admin/usage")).json()) as Report & {
+      kinds: { costUsd: number | null }[];
+    };
+    expect(report.entries.find((row) => row.id === "sol-boundary")?.costUsd).toBeCloseTo(0.184);
+    expect(report.entries.find((row) => row.id === "sol-long")?.costUsd).toBeCloseTo(0.475);
+    expect(report.models[0].costUsd).toBeCloseTo(0.659);
+    expect(report.users[0].costUsd).toBeCloseTo(0.659);
+    expect(report.kinds[0].costUsd).toBeCloseTo(0.659);
+  });
   it("keeps missing historical credits unknown in model, account, and kind aggregates", async () => {
     const now = nowSeconds();
     await fixture.db
