@@ -5,60 +5,72 @@ import { upstreamFailure } from "./upstream-error";
 export class TransportError extends Error {
   constructor(public code: string, message: string, public details: Record<string, unknown> = {}) { super(message); }
 }
-export type ProviderSender = (prepared: PreparedGeneration, cursor: string | undefined, signal: AbortSignal) => Promise<ReadableStream<Uint8Array>>;
+export type ProviderSender = (prepared: PreparedGeneration, cursor: string | undefined, signal: AbortSignal, streamId: string) => Promise<ReadableStream<Uint8Array>>;
 const encoder = new TextEncoder();
 export const providerFrame = (event: Record<string, unknown>) => encoder.encode(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`);
 
-/** One socket per authenticated session; each turn completes before the next starts. */
+/** One socket, two independent named lanes, one parser; no conversation history is shared. */
 export class ProviderWebSocket {
   private socket?: WebSocket;
+  private connecting?: Promise<WebSocket>;
+  private lanes = new Map<string, { event(value: Record<string, unknown>): void; fail(reason: Error): void }>();
   private idle?: ReturnType<typeof setTimeout>;
   constructor(private env: Env, private fetcher: typeof fetch = fetch) {}
   close() { clearTimeout(this.idle); this.socket?.close(1000, "Session idle"); this.socket = undefined; }
-  send: ProviderSender = async (prepared, cursor, signal) => {
+  private async connect(prepared: PreparedGeneration, signal: AbortSignal) {
+    const fetcher = this.fetcher;
+    const response = await fetcher(`${this.env.OPENAI_BASE_URL}/responses`, { headers: { Upgrade: "websocket", Authorization: `Bearer ${this.env.OPENAI_API_KEY}` }, signal });
+    const upgraded = response as Response & { webSocket?: WebSocket };
+    if (response.status !== 101 || !upgraded.webSocket)
+      throw await upstreamFailure(response, { phase: "connect", transport: "websocket", model: prepared.request.model }, this.env.OPENAI_API_KEY);
+    const socket = upgraded.webSocket;
+    (socket as WebSocket & { accept(): void }).accept();
+    this.socket = socket;
+    socket.addEventListener("message", (event: MessageEvent) => {
+      try {
+        const item = JSON.parse(String(event.data)) as Record<string, unknown>;
+        if (typeof item.stream_id !== "string") throw new TransportError("missing_stream_identity", "Provider event did not identify its multiplexed stream");
+        this.lanes.get(item.stream_id)?.event(item);
+      } catch (reason) { this.failAll(reason instanceof Error ? reason : new Error(String(reason))); }
+    });
+    socket.addEventListener("close", (event: CloseEvent) => this.failAll(new TransportError("upstream_socket_closed", "Provider WebSocket closed before completion", { closeCode: event.code, closeReason: event.reason })));
+    socket.addEventListener("error", () => this.failAll(new TransportError("upstream_socket_error", "Provider WebSocket connection failed")));
+    return socket;
+  }
+  private failAll(reason: Error) {
+    for (const lane of this.lanes.values()) lane.fail(reason);
+    this.close();
+  }
+  send: ProviderSender = async (prepared, cursor, signal, streamId) => {
     clearTimeout(this.idle);
     signal.throwIfAborted();
     if (!this.socket || this.socket.readyState !== 1) {
-      const fetcher = this.fetcher;
-      const response = await fetcher(`${this.env.OPENAI_BASE_URL}/responses`, {
-        headers: { Upgrade: "websocket", Authorization: `Bearer ${this.env.OPENAI_API_KEY}` }, signal,
-      });
-      const upgraded = response as Response & { webSocket?: WebSocket };
-      if (response.status !== 101 || !upgraded.webSocket)
-        throw await upstreamFailure(response, { phase: "connect", transport: "websocket", model: prepared.request.model }, this.env.OPENAI_API_KEY);
-      this.socket = upgraded.webSocket;
-      (this.socket as WebSocket & { accept(): void }).accept();
+      this.connecting ??= this.connect(prepared, signal).finally(() => { this.connecting = undefined; });
+      await this.connecting;
     }
-    const socket = this.socket;
-    const body = upstreamBody(prepared, cursor, true);
+    const socket = this.socket!;
+    const body = upstreamBody(prepared, cursor, true, streamId);
     const value = typeof body === "string" ? body : await new Response(body).text();
     const stream = new ReadableStream<Uint8Array>({
       start: (controller) => {
         let ended = false;
         const cleanup = () => {
           ended = true;
-          socket.removeEventListener("message", message);
-          socket.removeEventListener("close", close);
-          socket.removeEventListener("error", error);
+          this.lanes.delete(streamId);
           signal.removeEventListener("abort", abort);
+          if (!this.lanes.size) this.idle = setTimeout(() => this.close(), 60_000);
         };
-        const fail = (reason: Error) => { if (ended) return; cleanup(); controller.error(reason); this.close(); };
-        const message = (event: MessageEvent) => {
+        const fail = (reason: Error) => { if (ended) return; cleanup(); controller.error(reason); };
+        const message = (item: Record<string, unknown>) => {
           try {
-            const item = JSON.parse(String(event.data));
             controller.enqueue(providerFrame(item));
-            if (["response.completed", "response.incomplete", "response.failed", "error"].includes(item.type)) {
+            if (["response.completed", "response.incomplete", "response.failed", "error"].includes(String(item.type))) {
               cleanup(); controller.close();
-              this.idle = setTimeout(() => this.close(), 15_000);
             }
           } catch (reason) { fail(reason instanceof Error ? reason : new Error(String(reason))); }
         };
-        const close = (event: CloseEvent) => fail(new TransportError("upstream_socket_closed", "Provider WebSocket closed before completion", { closeCode: event.code, closeReason: event.reason }));
-        const error = () => fail(new TransportError("upstream_socket_error", "Provider WebSocket connection failed"));
         const abort = () => fail(signal.reason instanceof Error ? signal.reason : new TransportError("generation_cancelled", "Generation cancelled"));
-        socket.addEventListener("message", message);
-        socket.addEventListener("close", close);
-        socket.addEventListener("error", error);
+        this.lanes.set(streamId, { event: message, fail });
         signal.addEventListener("abort", abort, { once: true });
         socket.send(value);
       },

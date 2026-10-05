@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "oxlint src tests-next scripts",
     "test": "vitest run",
-    "build": "esbuild src/index.ts src/response-stream.ts --bundle --platform=browser --format=esm --outdir=dist",
+    "build": "esbuild src/index.ts src/response-stream.ts src/cache-probe-input.ts --bundle --platform=browser --format=esm --outdir=dist",
     "dev": "wrangler dev",
     "db:migrate": "wrangler d1 migrations apply DB --local",
     "benchmark:stream": "node scripts/benchmark-stream.mjs"

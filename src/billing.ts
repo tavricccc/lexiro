@@ -1,6 +1,7 @@
 import type { D1Database } from "@cloudflare/workers-types";
 import type { AdminAccount } from "@lexiro/ai-contract";
 import type { UsagePart } from "./usage-parts";
+import { releaseLeaseStatements } from "./generation-leases";
 
 export class BillingError extends Error {
   constructor(public status: 402 | 409 | 429) {
@@ -112,11 +113,13 @@ export async function reserve(
   uid: string,
   units: ChargeUnit[],
   halfRate: number,
+  session?: string,
 ): Promise<Reservation> {
   const attempt = crypto.randomUUID(),
     now = nowSeconds();
   const ids = units.map((unit) => unit.id);
   const limitIds = units.map((unit) => unit.limitId);
+  const leaseSession = session ?? attempt;
   const results = await db.batch([
     db
       .prepare(
@@ -129,17 +132,20 @@ export async function reserve(
         "DELETE FROM charges WHERE uid=? AND ((created_at<=? AND attempt_id NOT LIKE 'settled:%') OR (created_at<=? AND attempt_id LIKE 'settled:%')) AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
       .bind(uid, now - 900, now - 1800),
-    db
-      .prepare(
-        `UPDATE accounts SET version=version+1, inflight_at=?,inflight_id=? WHERE uid=? AND (inflight_at IS NULL OR inflight_at<=?)
-         AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)`,
-      )
-      .bind(now, attempt, uid, now - 900),
-    db.prepare("SELECT points FROM accounts WHERE uid=?").bind(uid),
+    db.prepare("DELETE FROM generation_leases WHERE uid=? AND started_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=generation_leases.attempt_id)").bind(uid, now - 900),
+    db.prepare(`INSERT INTO generation_leases(attempt_id,uid,session_id,started_at)
+      SELECT ?,uid,?,? FROM accounts WHERE uid=?
+      AND points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=accounts.uid AND attempt_id NOT LIKE 'settled:%')>0
+      AND (SELECT COUNT(*) FROM generation_leases WHERE uid=accounts.uid)<2
+      AND NOT EXISTS(SELECT 1 FROM generation_leases WHERE uid=accounts.uid AND session_id!=?)
+      AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)`)
+      .bind(attempt, leaseSession, now, uid, leaseSession),
+    db.prepare("UPDATE accounts SET version=version+1,inflight_at=?,inflight_id=? WHERE uid=? AND EXISTS(SELECT 1 FROM generation_leases WHERE attempt_id=?)").bind(now, leaseSession, uid, attempt),
+    db.prepare("SELECT points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=accounts.uid AND attempt_id NOT LIKE 'settled:%') AS points FROM accounts WHERE uid=?").bind(uid),
   ]);
-  const lock = results[2];
-  const balance = (results[3].results as { points: number }[])[0];
-  if (!lock.meta.changes) throw new BillingError(balance ? 409 : 402);
+  const lock = results[3];
+  const balance = (results[5].results as { points: number }[])[0];
+  if (!lock.meta.changes) throw new BillingError(!balance || balance.points <= 0 ? 402 : 409);
   // An account with nothing left does not start another batch. The balance is
   // read after the stale-charge reclaim above, so an abandoned hold cannot
   // masquerade as an empty account.
@@ -170,7 +176,7 @@ export async function reserve(
       // NULL deliberately violates NOT NULL: D1 rolls the inserts back as well.
       db
         .prepare(
-          `UPDATE accounts SET version=version+1, points=CASE WHEN inflight_id=?
+          `UPDATE accounts SET version=version+1, points=CASE WHEN EXISTS(SELECT 1 FROM generation_leases WHERE attempt_id=?)
         THEN points-(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?) ELSE NULL END,
         updated_at=? WHERE uid=?`,
         )
@@ -200,12 +206,7 @@ export async function reserve(
 }
 
 export async function release(db: D1Database, uid: string, attempt: string) {
-  await db
-    .prepare(
-      "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE uid=? AND inflight_id=?",
-    )
-    .bind(uid, attempt)
-    .run();
+  await db.batch(releaseLeaseStatements(db, uid, attempt));
 }
 
 /**
@@ -240,7 +241,7 @@ export async function settle(
        (id,uid,points,assessed_points,debit_verified,model,input,cached,cache_write,output,created_at,credits,status,kind,tier,units,usage_state,usage_parts)
        SELECT ?1,?2,
          CASE WHEN EXISTS(SELECT 1 FROM charges WHERE attempt_id=?1)
-           THEN MIN(?3,MAX(0,points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?1)))
+           THEN MIN(?3,MAX(0,points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=?2 AND attempt_id NOT LIKE 'settled:%')))
            ELSE 0 END,
          ?3,1,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16
        FROM accounts WHERE uid=?2
@@ -259,11 +260,13 @@ export async function settle(
     ),
     db
       .prepare(
-        `UPDATE accounts SET version=version+1, points=MAX(0,points+
-        (SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)-?),updated_at=?
-        WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`,
+        `UPDATE accounts SET version=version+1, points=CASE
+          WHEN EXISTS(SELECT 1 FROM charges WHERE uid=?4 AND attempt_id!=?1 AND attempt_id NOT LIKE 'settled:%')
+          THEN points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?1)-?2
+          ELSE MAX(0,points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?1)-?2) END,
+          updated_at=?3 WHERE uid=?4 AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?1)`,
       )
-      .bind(attempt, chargedCredits, new Date().toISOString(), uid, attempt),
+      .bind(attempt, chargedCredits, new Date().toISOString(), uid),
   ];
   for (const refund of refunds) {
     statements.push(
@@ -296,13 +299,7 @@ export async function settle(
         )
         .bind(cursor, uid, nowSeconds()),
     );
-  statements.push(
-    db
-      .prepare(
-        "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE uid=? AND inflight_id=?",
-      )
-      .bind(uid, attempt),
-  );
+  statements.push(...releaseLeaseStatements(db, uid, attempt));
   statements.push(db.prepare("DELETE FROM pending_usage WHERE attempt_id=?").bind(attempt));
   await db.batch(statements);
 }
@@ -338,11 +335,8 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
         "DELETE FROM charges WHERE created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
       .bind(now - 900),
-    db
-      .prepare(
-        "UPDATE accounts SET version=version+1, inflight_at=NULL,inflight_id=NULL WHERE inflight_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=accounts.inflight_id)",
-      )
-      .bind(now - 900),
+    db.prepare("DELETE FROM generation_leases WHERE started_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=generation_leases.attempt_id)").bind(now - 900),
+    db.prepare("UPDATE accounts SET version=version+1,inflight_id=NULL,inflight_at=NULL WHERE inflight_id IS NOT NULL AND NOT EXISTS(SELECT 1 FROM generation_leases WHERE uid=accounts.uid) AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)"),
   ]);
   const due = await db
     .prepare(

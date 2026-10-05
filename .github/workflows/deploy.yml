@@ -4,6 +4,11 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      verify_cache:
+        description: "Verify all three model routes with nine small paid cache probes"
+        type: boolean
+        default: false
 permissions:
   contents: read
 
@@ -60,6 +65,12 @@ jobs:
 
       - name: Verify provider WebSocket support
         run: node scripts/probe-websocket.mjs
+
+      - name: Verify parallel prefix cache
+        if: inputs.verify_cache || contains(github.event.head_commit.message, '[cache-probe]')
+        run: |
+          npm run build
+          node scripts/probe-generation-cache.mjs
 
       - name: Apply D1 migrations
         run: npx wrangler d1 migrations apply DB --remote

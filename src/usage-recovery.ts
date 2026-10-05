@@ -2,6 +2,7 @@ import type { D1Database } from "@cloudflare/workers-types";
 import { nowSeconds, settle, type Reservation, type Settlement, type Usage } from "./billing";
 import type { Env } from "./env";
 import { completeUsage, partsCost, sumUsage, type UsagePart } from "./usage-parts";
+import { releaseLeaseStatements } from "./generation-leases";
 
 export type UsageRecovery = (cursor: string) => Promise<Record<string, unknown> | undefined>;
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -73,7 +74,7 @@ export async function deferUsage(
       db.prepare(`UPDATE accounts SET version=version+1, points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE attempt_id=?)
         WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE attempt_id=?)`).bind(attempt, uid, attempt),
       db.prepare("DELETE FROM charges WHERE attempt_id=?").bind(attempt),
-      db.prepare("UPDATE accounts SET version=version+1, inflight_id=NULL,inflight_at=NULL WHERE uid=? AND inflight_id=?").bind(uid, attempt),
+      ...releaseLeaseStatements(db, uid, attempt),
     );
   }
   await db.batch(statements);

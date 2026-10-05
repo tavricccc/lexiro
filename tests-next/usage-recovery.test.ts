@@ -31,13 +31,17 @@ describe("unknown provider usage", () => {
     const legacy = await testDatabase("0012_admin_versions.sql");
     try {
       const prepared = await prepareGeneration({ kind: "words", raw: "apple n. 蘋果", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID() }, "u");
-      const hold = await reserve(legacy.db, "u", prepared.units, prepared.halfRate);
+      const hold = { uid: "u", attempt: crypto.randomUUID() };
       await legacy.db.batch([
+        legacy.db.prepare("UPDATE accounts SET points=99,inflight_id=?,inflight_at=? WHERE uid='u'").bind(hold.attempt, nowSeconds()),
+        legacy.db.prepare("INSERT INTO charges(id,uid,points,attempt_id,created_at) VALUES(?,'u',1,?,?)").bind(prepared.units[0].id, hold.attempt, nowSeconds()),
         legacy.db.prepare("INSERT INTO usage_log(id,uid,points,model,created_at,credits,usage_state) VALUES(?,'u',0,'gpt-6-luna',?,NULL,'pending')").bind(hold.attempt, nowSeconds()),
         legacy.db.prepare("INSERT INTO pending_usage(attempt_id,uid,response_id,model,chargeable,successful_ids) VALUES(?,'u','resp_pending','gpt-6-luna',1,?)").bind(hold.attempt, JSON.stringify(prepared.units.map((unit) => unit.id))),
       ]);
       const sql = await readFile(new URL("../migrations/0013_usage_parts.sql", import.meta.url), "utf8");
       await legacy.db.batch(sql.split(";").map((statement) => statement.trim()).filter(Boolean).map((statement) => legacy.db.prepare(statement)));
+      const leases = await readFile(new URL("../migrations/0014_generation_leases.sql", import.meta.url), "utf8");
+      await legacy.db.batch(leases.split(";").map((statement) => statement.trim()).filter(Boolean).map((statement) => legacy.db.prepare(statement)));
       const pending = await legacy.db.prepare("SELECT usage_parts FROM pending_usage").first<{ usage_parts: string }>();
       expect(JSON.parse(pending!.usage_parts)).toEqual([{ model: "gpt-6-luna", cursor: "resp_pending" }]);
       await reconcileUsage(legacy.db, async () => ({ ...complete(), usage }), "u");

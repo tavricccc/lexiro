@@ -13,7 +13,10 @@
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/generation-room.ts` | 每帳號／session 的 SQLite Durable Object，固定 operation ID 去重、獨立背景生成、SSE 訂閱／回放、10 分鐘上限與 30 分鐘結果清除；斷線不取消上游、不重複預留或結算 |
-| `src/provider-websocket.ts` | 持續 WebSocket 連線與 Responses 事件轉換；每批独立上下文，斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 15 秒關閉連線 |
+| `src/provider-websocket.ts` | 一條持續 WebSocket 的兩個 stream_id lanes，共用事件 parser、獨立上下文；斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 60 秒關閉連線 |
+| `src/generation-leases.ts`、`migrations/0014_generation_leases.sql` | 每 attempt 一個並行預留名額，同一帳號／session 最多兩個；結算或失敗只釋放自己的名額，其他預留仍保持鎖定；轉換既有 inflight reservation |
+| `src/cache-probe-input.ts`、`scripts/probe-generation-cache.mjs` | 三個實際模型路由各一個暖快取與兩個並行小樣本，最多 128 輸出 tokens／次，讀取真實 cache read／write 用量及連線時間；首次部署以 [cache-probe] 啟用，之後按需手動重跑 |
+| `docs/generation-performance.md` | Pi 機制的版本化研究、暖快取後有限並行、批次／費用邊界與正式 cache probe 維護方法 |
 | `tests-next/generation-room.test.ts`、`tests-next/provider-websocket.test.ts` | 斷線續跑／去重／扣款、上游結果恢復，以及真正 workerd／SQLite DO／WebSocket 連線復用與回放 |
 | `tests-next/room-fixture.ts` | 合成供應商與記憶體 actor storage 的本地測試 fixture |
 | `scripts/probe-websocket.mjs` | 部署前使用 production key 驗證供應商 WebSocket handshake，無模型生成、不輸出金鑰 |
@@ -54,8 +57,8 @@
 
 ## 持久化版本
 
-Durable Object namespace `GENERATIONS` 使用 `generation-room-v1` SQLite migration；回放來源／輸出與結算 metadata 至任務開始後 30 分鐘，由 alarm 刪除。圖片、私有提示與憑證不保存於 actor storage。D1 預留租期為 15 分鐘，長於批次 10 分鐘上限，避免仍執行的任務被 120 秒舊鎖回收。
+Durable Object namespace `GENERATIONS` 使用 `generation-room-v1` SQLite migration；回放來源／輸出與結算 metadata 至任務開始後 30 分鐘，由 alarm 刪除。圖片、私有提示與憑證不保存於 actor storage。D1 版本 14 新增 generation_leases，租期 15 分鐘；同 session 最多兩個預留。其他批次仍有預留時保留負值，最後一批結算才套用餘額零下限，避免提前歸零導致多退點數。
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |
-| D1 計費 | 13 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額；`0005_usage_status.sql` 記錄每筆 usage 的結束狀態並加上 uid 索引；`0006_registered_accounts.sql` 移除與 `default_initial` 重複的 `trial_points`；`0007_usage_kind.sql` 記錄工作種類、檔位與計費單位數；`0008_cache_write_usage.sql` 分開記錄 GPT-5.6 cache write token，讓首次暖快取的 1.25 倍費率不會被低估；`0009_verified_debits.sql` 新增 `assessed_points` 與 `debit_verified`，新 usage 的 `points` 記錄實扣而非扣款前成本，歷史資料不臆測回填；`0010_pending_usage.sql` 新增 `usage_state` 與可恢復的 `pending_usage`，未知成本保留 NULL，不列為零成本完成；`0011_report_indexes.sql` 建立全站時間／id 與帳戶 email／uid 索引，支援報表時間範圍與游標分頁；`0012_admin_versions.sql` 新增帳號／設定遞增版本，資料恢復原值仍拒絕舊請求；`0013_usage_parts.sql` 加入逐回合 usage／cursor 並把舊單回合紀錄轉成一個 part，缺漏任一回合維持未知總成本 |
+| D1 計費 | 14 | `0001_billing.sql` 建立計費；`0002_attempt_limits.sql` 新增重試限制；`0003_actual_credits.sql` 新增 nullable 歷史相容 credit 與試用設定；`0004_plan_defaults.sql` 新增管理員可調的新帳號初始點數，不改既有餘額；`0005_usage_status.sql` 記錄每筆 usage 的結束狀態並加上 uid 索引；`0006_registered_accounts.sql` 移除與 `default_initial` 重複的 `trial_points`；`0007_usage_kind.sql` 記錄工作種類、檔位與計費單位數；`0008_cache_write_usage.sql` 分開記錄 GPT-5.6 cache write token，讓首次暖快取的 1.25 倍費率不會被低估；`0009_verified_debits.sql` 新增 `assessed_points` 與 `debit_verified`，新 usage 的 `points` 記錄實扣而非扣款前成本，歷史資料不臆測回填；`0010_pending_usage.sql` 新增 `usage_state` 與可恢復的 `pending_usage`，未知成本保留 NULL，不列為零成本完成；`0011_report_indexes.sql` 建立全站時間／id 與帳戶 email／uid 索引，支援報表時間範圍與游標分頁；`0012_admin_versions.sql` 新增帳號／設定遞增版本，資料恢復原值仍拒絕舊請求；`0013_usage_parts.sql` 加入逐回合 usage／cursor 並把舊單回合紀錄轉成一個 part，缺漏任一回合維持未知總成本 |

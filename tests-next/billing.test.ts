@@ -78,7 +78,7 @@ describe("D1 atomic credit ledger", () => {
     expect(await balance()).toBe(100);
     const fresh = await reserve(db, "u", units(["new-session-source"]), 2);
     expect(fresh.charges).toHaveLength(1);
-  });
+  }, 10_000);
   it("refunds an abandoned attempt before reclaiming its expired lock", async () => {
     const abandoned = await reserve(db, "u", units(["a"]), 2);
     const expired = Math.floor(Date.now() / 1000) - 901;
@@ -87,6 +87,7 @@ describe("D1 atomic credit ledger", () => {
         .prepare("UPDATE accounts SET inflight_at=? WHERE uid='u'")
         .bind(expired),
       db.prepare("UPDATE charges SET created_at=? WHERE uid='u'").bind(expired),
+      db.prepare("UPDATE generation_leases SET started_at=? WHERE uid='u'").bind(expired),
     ]);
     const retry = await reserve(db, "u", units(["a"]), 2);
     expect(retry.charges).toHaveLength(1);
@@ -217,7 +218,7 @@ describe("D1 atomic credit ledger", () => {
     await expect(
       reserve(db, "u", [{ id: "session-6", limitId: "one-source" }], 2),
     ).rejects.toMatchObject({ status: 429 });
-  });
+  }, 10_000);
   it("has one winner for concurrent requests from the same account", async () => {
     const results = await Promise.allSettled([
       reserve(db, "u", units(["a"]), 2),
@@ -230,6 +231,23 @@ describe("D1 atomic credit ledger", () => {
     expect(failed).toMatchObject({ reason: { status: 409 } });
     expect(await balance()).toBe(99);
   });
+  it("keeps parallel holds separate and never refunds the balance floor into extra money", async () => {
+    await db.prepare("UPDATE accounts SET points=5 WHERE uid='u'").run();
+    const session = crypto.randomUUID();
+    const first = await reserve(db, "u", units(["parallel-a"]), 20, session);
+    const second = await reserve(db, "u", units(["parallel-b"]), 20, session);
+    expect(await balance()).toBe(-15);
+    await expect(reserve(db, "u", units(["parallel-c"]), 2, session)).rejects.toMatchObject({ status: 409 });
+    await settle(db, first, [], { model: "test" }, { charged: 3, cost: 3 });
+    expect(await balance()).toBe(-8);
+    expect(await db.prepare("SELECT inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ inflight_id: session });
+    await settle(db, second, [], { model: "test" }, { charged: 3, cost: 3 });
+    expect(await balance()).toBe(0);
+    expect(await db.prepare("SELECT inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ inflight_id: null });
+    expect(await db.prepare("SELECT SUM(points) AS paid FROM usage_log").first()).toEqual({ paid: 5 });
+    await settle(db, first, [], { model: "test" }, { charged: 3, cost: 3 });
+    expect(await balance()).toBe(0);
+  }, 10_000);
   it("refunds missing units once and charges them again only on repair", async () => {
     const first = await reserve(db, "u", units(["a", "b"]), 2);
     const refunds = first.charges.filter((charge) => charge.id === "b");

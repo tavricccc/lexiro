@@ -41,7 +41,7 @@ export class GenerationRoom {
         const signature = await fingerprint(JSON.stringify(input.prepared.request));
         if (job && job.signature !== signature) throw new HttpError(409, "generation_conflict");
         if (!job) {
-          if (this.running.size) throw new HttpError(409, "generation_in_progress");
+          if (!this.creating.has(id) && this.running.size + this.creating.size >= 2) throw new HttpError(409, "generation_in_progress");
           let creating = this.creating.get(id);
           if (!creating) {
             creating = this.create(id, signature, input);
@@ -61,7 +61,7 @@ export class GenerationRoom {
     }
   }
   private async create(id: string, signature: string, input: { uid: string; admin: boolean; prepared: PreparedGeneration }): Promise<Job> {
-    const reservation = input.admin ? { uid: input.uid, attempt: crypto.randomUUID(), charges: [] } : await reserve(this.env.DB, input.uid, input.prepared.units, input.prepared.halfRate);
+    const reservation = input.admin ? { uid: input.uid, attempt: crypto.randomUUID(), charges: [] } : await reserve(this.env.DB, input.uid, input.prepared.units, input.prepared.halfRate, input.prepared.request.session);
     const job: Job = { ...input, id, signature, startedAt: Date.now(), expiresAt: Date.now() + RESULT_TTL_MS, reservation, text: "" };
     this.jobs.set(id, job);
     await this.save(job);
@@ -141,7 +141,7 @@ export class GenerationRoom {
       return job.admin ? { ...(credits !== undefined ? { credits } : {}), ...(terminal.status !== "complete" ? { diagnostic: diagnostic(terminal.response?.error ?? new Error("Provider response did not complete")) } : {}) } : undefined;
     };
     try {
-      const upstream = restore ? await this.restoredStream(job, signal) : recoverProviderStream(await this.sender(job.prepared, undefined, signal), this.env, signal, this.fetcher);
+      const upstream = restore ? await this.restoredStream(job, signal) : recoverProviderStream(await this.sender(job.prepared, undefined, signal, job.id), this.env, signal, this.fetcher);
       const stream = sanitizeResponseStream(upstream, { model, onTerminal: finish });
       const reader = stream.getReader();
       try {

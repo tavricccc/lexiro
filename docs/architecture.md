@@ -35,7 +35,7 @@ Terminal 結算發生在終止事件交給前端之前。完整 usage 直接記�
 
 ## D1 與排程
 
-Migrations 0001-0013 建立並演進帳號、設定、session／來源、usage、pending 與管理版本。0013 將舊單回合紀錄及 pending 轉成單一 part，保留原值及 response ID，沒有兩套永久格式。帳號／設定 revision 每次相關異動遞增，資料回到原值仍不能讓舊 expected 請求通過。未知歷史成本與未核實實扣不猜測回填。
+Migrations 0001-0014 建立並演進帳號、設定、session／來源、usage、pending、管理版本與獨立 generation leases。0013 將舊單回合紀錄及 pending 轉成單一 part，保留原值及 response ID；0014 轉換既有 inflight reservation，並支援同 session 最多兩個名額。帳號／設定 revision 每次相關異動遞增，資料回到原值仍不能讓舊 expected 請求通過。未知歷史成本與未核實實扣不猜測回填。
 
 Wrangler Cron `0 0 * * *` 每日 UTC 00:00（臺灣 08:00）先 reconcile pending usage，再 scheduledMaintenance；帳號請求也可補查／觸發自己的到期續期。這是計費維護，不是教材同步或 FSRS 排程。
 

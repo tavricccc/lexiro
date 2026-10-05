@@ -21,8 +21,9 @@ GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CL
 ## 持久化與共用契約
 
 - `GENERATIONS` 綁定 GenerationRoom，`generation-room-v1` 使用 SQLite Durable Object。部署前 handshake probe 不產生模型輸出；不支援時停止部署，不自動改用 HTTP 生成。
-- 生成 POST 必須帶 X-Generation-Id；GET /generation/{session}/{id} 依已驗證 uid 路由至同一 actor，跨帳號無法取得結果。每批 10 分鐘上限；來源、輸出及结算 metadata 在 30 分鐘內可回放，alarm 到期刪除。D1 lease 為 15 分鐘；沒有新 D1 schema migration。
-- WebSocket 可共用連線，但每批不帶 previous_response_id；prompt、schema 與快取版號不變。WS 閒置 15 秒關閉。瀏覽器斷線不取消本批；本頁續跑接原 job，重新整理僅保留原本流程草稿已完成成果。
+- 生成 POST 必須帶 X-Generation-Id；GET /generation/{session}/{id} 依已驗證 uid 路由至同一 actor，跨帳號無法取得結果。每批 10 分鐘上限；來源、輸出及結算 metadata 在 30 分鐘內可回放，alarm 到期刪除。D1 lease 為 15 分鐘，schema migration 到 0014。
+- WebSocket 用兩個 stream_id lanes 共用連線，但每批不帶 previous_response_id。WS 閒置 60 秒關閉。瀏覽器斷線不取消本批；本頁續跑接原 job，重新整理僅保留原本流程草稿已完成成果。
+- `0014_generation_leases.sql` 轉換既有預留並支援同 session 兩批並行；第一個實際批次完成後才並行。詞彙題每批 16 來源，精簡解說，因此題目 key 更新至 lexiro-questions-20261005-v10；其他工作快取版號保留。首次發布以 [cache-probe] 執行正式快取小樣本，兩個並行回條都需至少 1,024 cached tokens 才部署。參見[生成效能](generation-performance.md)。
 
 - 部署依序套用未完成 migrations，目前到 `0013_usage_parts.sql`，轉換既有 usage／pending 的單回合紀錄。本地測試只用 `npm run db:migrate`。
 - 前端與 Worker 使用 `@lexiro/ai-contract` 3.2.0。題目帶 `X-Question-Contract: single-pass-v1`，舊版在預留前回 426。游標請求使用 cursor、回應 nextCursor，舊 offset 回 400。JSON 生成帶 model，管理 PATCH 帶 expected 版本；沒有舊格式相容分支。
