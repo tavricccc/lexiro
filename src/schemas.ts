@@ -47,15 +47,15 @@ export function questionOutput(kind: GeneratedQuestionKind) {
     return z.object({
       title: text,
       passage: text,
-      blanks: z.array(blank.extend(teaching(9))),
       extraOptions: texts,
+      blanks: z.array(blank.extend(teaching(9))),
     });
   if (kind === "discourse")
     return z.object({
       title: text,
       passage: text,
-      removals: z.array(z.object({ sentence: text, ...teaching(4) })),
       extraOption: text,
+      removals: z.array(z.object({ sentence: text, ...teaching(4) })),
     });
   return z.object({
     title: text,

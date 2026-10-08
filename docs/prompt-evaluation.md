@@ -8,7 +8,7 @@
 
 保留舊 backend bundle 作 baseline，所有請求在執行前保存；原圖不提交。回條保存在 ignored `artifacts/ai-quality/<phase>/<model>/<timestamp-id>/`，包含原始文字、schema、來源覆蓋、解析、可回收題目及用量。首次 parse 失敗只報第一個問題，不代表所有子題都失敗；以正式 step.recover 回收結果記錄可保留與待補來源。
 
-採樣限定 baseline 照片、tuned 各階段及一次指定案例修復。子代理主要檢查錯義、明顯多解、來源範圍與解析對位；弱干擾、可更自然或未達完整學測風格列建議，不把結構通過率當作教學品質分數。詳細最終數量及保留問題見本地 content-review／run summary。
+採樣限定 baseline 照片、tuned 各階段及一次指定案例修復。子代理主要檢查錯義、明顯多解、來源範圍與解析對位；弱干擾、可更自然或未達完整學測風格列建議，不把結構通過率當作教學品質分數。詳細數量與待校對問題見 [本輪結果](luna-photo-evaluation.md) 及本地 content-review／run summary。
 
 ```powershell
 # PowerShell 7；使用 Codex 帳戶額度，原圖目錄及 {lines:[...]} 參考檔由自己提供。

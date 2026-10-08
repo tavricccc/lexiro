@@ -17,6 +17,7 @@
 | `src/generation-leases.ts`、`migrations/0014_generation_leases.sql` | 每 attempt 一個並行預留名額，同一帳號／session 最多兩個；結算或失敗只釋放自己的名額，其他預留仍保持鎖定；轉換既有 inflight reservation |
 | `src/cache-probe-input.ts`、`scripts/probe-generation-cache.mjs` | 三個實際模型路由各一個暖快取與兩個並行小樣本，最多 128 輸出 tokens／次，讀取真實 cache read／write 用量及連線時間；首次部署以 [cache-probe] 啟用，之後按需手動重跑 |
 | `docs/generation-performance.md` | Pi 機制的版本化研究、暖快取後有限並行、批次／費用邊界與正式 cache probe 維護方法 |
+| `docs/luna-photo-evaluation.md` | 五張教材與兩個 Luna 的有界實測、子代理核對、待校對問題與 CLI 快取界線 |
 | `tests-next/generation-room.test.ts`、`tests-next/provider-websocket.test.ts` | 斷線續跑／去重／扣款、上游結果恢復，以及真正 workerd／SQLite DO／WebSocket 連線復用與回放 |
 | `tests-next/room-fixture.ts` | 合成供應商與記憶體 actor storage 的本地測試 fixture |
 | `scripts/probe-websocket.mjs` | 部署前使用 production key 驗證供應商 WebSocket handshake，無模型生成、不輸出金鑰 |

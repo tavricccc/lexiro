@@ -12,7 +12,7 @@
 
 單字生成與補充多義現在共用相同 developer 訊息、cache key 及 provider schema，schema 的 senses 上限固定為 3。一般模式仍要求恰好一義，補充上限仍依每次 limit；parser 與 settlement 保持原語意限制。這讓不同模式與補充上限不再因輸出 schema 分開固定前綴。
 
-題目每個題型的完整 developer 訊息及 schema 跨三個難度保持相同，difficulty、字數範圍、寫作目標與來源移到最後 user input。不同題型的 schema 與不同模型／effort 仍可能形成不同快取，不能只看共用規則文字宣稱跨題型命中。單字 key 為 `lexiro-words-20261008-v5`，題目為 `lexiro-questions-20261008-v11`，整理為 `lexiro-organize-20261008-v6`，子題重生為 `lexiro-question-item-20261008-v2`。
+題目每個題型的完整 developer 訊息及 schema 跨三個難度保持相同，difficulty、字數範圍、寫作目標與來源移到最後 user input。不同題型的 schema 與不同模型／effort 仍可能形成不同快取，不能只看共用規則文字宣稱跨題型命中。單字 key 為 `lexiro-words-20261008-v5`，題目為 `lexiro-questions-20261008-v12`，整理為 `lexiro-organize-20261008-v6`，子題重生為 `lexiro-question-item-20261008-v3`。
 
 照片以編號主詞為主，一般詞族派生可略過，保留特殊義或易混淆差異；不再把學習用紅色斜線當成刪除。文字模式仍保留使用者明列的不同英文單位。完整正解與所有錯項解析保留；出題範例與 provider schema 一致，不再用字串範例示意實際為 object 的篇章 removals。
 
