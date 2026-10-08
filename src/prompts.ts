@@ -8,7 +8,7 @@
  * Changing the instructions has to change this, or a stale prefix keeps being
  * served to every account at once.
  */
-export const WORD_CACHE_KEY = "lexiro-words-20260920-v4";
+export const WORD_CACHE_KEY = "lexiro-words-20261008-v5";
 /** The mistake explanation prompt's own version. */
 export const EXPLAIN_CACHE_KEY = "lexiro-explain-20261001-v2";
 

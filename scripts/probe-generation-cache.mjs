@@ -15,6 +15,7 @@ socket.on("message", (data) => {
   const task = pending.get(event.stream_id);
   if (!task) return;
   if (event.type === "response.created") task.firstEventMs ??= Date.now() - task.startedAt;
+  if (event.type === "response.output_text.delta" && event.delta) task.firstTextMs ??= Date.now() - task.startedAt;
   if (event.type === "error" || event.type === "response.failed") {
     clearTimeout(task.timer); pending.delete(event.stream_id);
     task.reject(new Error(`Provider rejected the cache probe (${event.error?.code ?? event.response?.error?.code ?? "unknown"})`));
@@ -22,7 +23,7 @@ socket.on("message", (data) => {
   if (["response.completed", "response.incomplete"].includes(event.type)) {
     clearTimeout(task.timer); pending.delete(event.stream_id);
     const usage = event.response.usage;
-    task.resolve({ model: event.response.model, input: usage?.input_tokens, cached: usage?.input_tokens_details?.cached_tokens ?? 0, cacheWrite: usage?.input_tokens_details?.cache_write_tokens ?? 0, output: usage?.output_tokens, firstEventMs: task.firstEventMs, elapsedMs: Date.now() - task.startedAt });
+    task.resolve({ model: event.response.model, status: event.response.status, input: usage?.input_tokens, cached: usage?.input_tokens_details?.cached_tokens ?? 0, cacheWrite: usage?.input_tokens_details?.cache_write_tokens ?? 0, output: usage?.output_tokens, firstEventMs: task.firstEventMs, firstTextMs: task.firstTextMs ?? null, elapsedMs: Date.now() - task.startedAt });
   }
 });
 socket.on("close", () => { for (const task of pending.values()) { clearTimeout(task.timer); task.reject(new Error("Cache probe socket closed")); } });

@@ -97,7 +97,21 @@ describe("private generation prompts", () => {
     expect(new Set(prepared.map((entry) => entry.cacheKey))).toEqual(
       new Set([QUESTION_CACHE_KEY]),
     );
-    expect(new Set(prepared.map((entry) => entry.instructions)).size).toBe(4);
+    expect(new Set(prepared.map((entry) => entry.instructions)).size).toBe(2);
+    expect(prepared[0].input).not.toBe(prepared[1].input);
+  });
+
+  it.each(QUESTION_KINDS)("keeps %s's full cached messages and schema stable across difficulties", async (kind) => {
+    const requests = await Promise.all(([1, 2, 3] as const).map(async (difficulty) => upstreamRequest(await prepareGeneration({
+      kind, difficulty, model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID(),
+      sources: [{ ref: "s1", word: "bank", pos: "n.", meaningZh: "銀行" }],
+    }, "uid"))));
+    for (const request of requests.slice(1)) {
+      expect(request.input.slice(0, -1)).toEqual(requests[0].input.slice(0, -1));
+      expect(request.text).toEqual(requests[0].text);
+      expect(request.prompt_cache_key).toBe(requests[0].prompt_cache_key);
+    }
+    expect(new Set(requests.map((request) => request.input.at(-1)?.content)).size).toBe(3);
   });
 
   it("keeps the review prefix, schema and settings stable before variable difficulty and draft data", async () => {
@@ -144,9 +158,20 @@ describe("private generation prompts", () => {
     );
     expect(supplement.instructions).toBe(words.instructions);
     expect(supplement.cacheKey).toBe(words.cacheKey);
+    expect(upstreamRequest(supplement).text).toEqual(upstreamRequest(words).text);
     expect(supplement.input).not.toBe(words.input);
     expect(supplement.input).toContain("銀行");
     expect(supplement.input).toContain("2");
+  });
+
+  it.each([1, 2, 3] as const)("keeps the shared word schema for supplement limit %s", async (limit) => {
+    const base = { model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID() } as const;
+    const words = upstreamRequest(await prepareGeneration({ ...base, kind: "words", raw: "bank n. 銀行" }, "uid"));
+    const senses = upstreamRequest(await prepareGeneration({ ...base, kind: "senses", limit,
+      sources: [{ ref: "s1", word: "bank", pos: "n.", meaningZh: "銀行" }],
+    }, "uid"));
+    expect(senses.input[0]).toEqual(words.input[0]);
+    expect(senses.text).toEqual(words.text);
   });
 
   it("charges supplementing by the word, however many meanings it already has", async () => {
