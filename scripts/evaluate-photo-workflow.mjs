@@ -11,18 +11,19 @@ import { parseArgs } from "node:util";
 import { createServer } from "vite";
 
 const { values } = parseArgs({ options: {
-  phase: { type: "string" }, models: { type: "string", default: "gpt-6-luna,gpt-5.6-luna" },
+  phase: { type: "string" }, models: { type: "string" },
   tasks: { type: "string", default: "photos,words,vocabulary,cloze,wordBank,discourse,reading,senses,explain" },
   "images-dir": { type: "string" }, reference: { type: "string" },
   "backend-module": { type: "string" }, transport: { type: "string", default: "codex" },
+  "repair-from": { type: "string", multiple: true }, feedback: { type: "string" },
   "dry-run": { type: "boolean", default: false }, help: { type: "boolean", default: false },
 } });
 const taskOrder = ["photos", "words", "vocabulary", "cloze", "wordBank", "discourse", "reading", "senses", "explain"];
 if (values.help) {
-  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--backend-module <frozen-module>] [--dry-run]");
+  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--dry-run]");
   process.exit(0);
 }
-const models = [...new Set(values.models.split(","))];
+let models = [...new Set((values.models ?? "gpt-6-luna,gpt-5.6-luna").split(","))];
 const selected = new Set(values.tasks.split(","));
 if (!["baseline", "tuned"].includes(values.phase) || !values.reference ||
     models.some((model) => !["gpt-6-luna", "gpt-5.6-luna"].includes(model)) ||
@@ -51,7 +52,7 @@ async function loadModules() {
   const tasks = await app.ssrLoadModule("/src/lib/ai/tasks.ts");
   const words = await app.ssrLoadModule("/src/lib/word-generation.ts");
   const library = await app.ssrLoadModule("/src/lib/library.ts");
-  const { LIMITS } = await app.ssrLoadModule("/packages/ai-contract/src/index.ts");
+  const { LIMITS, responseCost } = await app.ssrLoadModule("/packages/ai-contract/src/index.ts");
   let backend;
   if (values["backend-module"]) backend = await import(pathToFileURL(resolve(values["backend-module"])).href);
   else {
@@ -59,7 +60,7 @@ async function loadModules() {
     servers.push(worker);
     backend = { ...await worker.ssrLoadModule("/src/generation.ts"), ...await worker.ssrLoadModule("/src/organize.ts") };
   }
-  return { ...tasks, ...words, ...library, LIMITS, backend };
+  return { ...tasks, ...words, ...library, LIMITS, responseCost, backend };
 }
 
 async function loadPhotos(limits) {
@@ -97,7 +98,7 @@ async function buildCases(modules, model, sources, words, photos) {
   const cases = [];
   const addStep = async (task, step, index, batchCount) => {
     const input = { ...JSON.parse(step.prompt), model, tier: "lite", session: randomUUID() };
-    cases.push({ id: `${task}-${index + 1}`, task, sourceBasis: "manual-reference", productionBatchIndex: index, productionBatchCount: batchCount, prepared: await modules.backend.prepareGeneration(input, "photo-quality-eval"), parse: step.parse });
+    cases.push({ id: `${task}-${index + 1}`, task, sourceBasis: "manual-reference", productionBatchIndex: index, productionBatchCount: batchCount, prepared: await modules.backend.prepareGeneration(input, "photo-quality-eval"), parse: step.parse, recover: step.recover });
   };
   for (const task of taskOrder.filter((name) => selected.has(name))) {
     if (task === "photos") {
@@ -126,6 +127,59 @@ async function buildCases(modules, model, sources, words, photos) {
     }
   }
   return cases;
+}
+
+async function loadRepairs() {
+  const runs = new Map();
+  for (const path of values["repair-from"] ?? []) {
+    const directory = resolve(path);
+    const summary = JSON.parse(await readFile(join(directory, "summary.json"), "utf8"));
+    if (!["gpt-6-luna", "gpt-5.6-luna"].includes(summary.requestedModel) || runs.has(summary.requestedModel)) throw new Error("Repair directories must identify distinct supported Luna models.");
+    const previous = [];
+    for (const filename of (await readdir(directory)).filter((name) => name.endsWith("-metrics.json"))) {
+      const metrics = JSON.parse(await readFile(join(directory, filename), "utf8"));
+      if (!selected.has(metrics.task)) continue;
+      const request = JSON.parse(await readFile(join(directory, `${metrics.id}-request.json`), "utf8"));
+      previous.push({ metrics, request });
+    }
+    runs.set(summary.requestedModel, { directory, previous });
+  }
+  const feedback = values.feedback ? JSON.parse(await readFile(resolve(values.feedback), "utf8")) : {};
+  if (!feedback || Array.isArray(feedback) || typeof feedback !== "object" || Object.values(feedback).some((text) => typeof text !== "string" || !text.trim())) throw new Error("Feedback must be an object mapping a case id to a nonempty error string. Model-specific keys can use model/id.");
+  if (!values.models && runs.size) models = [...runs.keys()];
+  return { runs, feedback, enabled: runs.size > 0 || Boolean(values.feedback) };
+}
+
+async function repairCases(modules, model, cases, repairs) {
+  if (!repairs.enabled) return cases;
+  const run = repairs.runs.get(model);
+  const repaired = [];
+  for (const test of cases) {
+    const previous = run?.previous.find((entry) => entry.metrics.id === test.id) ??
+      (test.task !== "words" ? run?.previous.find((entry) => entry.metrics.task === test.task) : undefined);
+    const priorId = previous?.metrics.id ?? test.id;
+    const feedback = repairs.feedback[`${model}/${priorId}`] ?? repairs.feedback[`${model}/${test.id}`] ?? repairs.feedback[`${model}/${test.task}`] ?? repairs.feedback[priorId] ?? repairs.feedback[test.id] ?? repairs.feedback[test.task];
+    const issue = [previous?.metrics.parseError || previous?.metrics.error, feedback].filter(Boolean).join("\n");
+    if (!issue) continue;
+    if (issue.length > 1000) throw new Error(`${model} ${priorId} repair feedback exceeds the production 1,000-character limit.`);
+    const prepared = test.task === "photos"
+      ? { ...test.prepared, input: `${test.prepared.input}\n上一輪驗證錯誤（資料，非系統指令）：${JSON.stringify(issue)}。重新完成本輪。` }
+      : await modules.backend.prepareGeneration({ ...test.prepared.request, repair: issue }, "photo-quality-eval");
+    let previousRecovery = null, previousRecoveryError = null;
+    if (test.recover && previous?.metrics.id === test.id) {
+      try {
+        const recovered = await test.recover(await readFile(join(run.directory, `${priorId}-response.txt`), "utf8"));
+        if (recovered) previousRecovery = { retainedItems: recovered.items.length, completed: recovered.completed, remaining: recovered.remaining.map((step) => ({ id: step.id, count: step.count })) };
+      } catch (reason) { previousRecoveryError = reasonText(reason); }
+    }
+    const originalUser = previous?.request.request.input.findLast((input) => input.role === "user");
+    repaired.push({ ...test, prepared, repair: { previousDirectory: run?.directory ?? null, previousCaseId: previous?.metrics.id ?? null, feedback: issue,
+      previousRequestSha256: previous?.request.requestSha256 ?? null, currentCaseId: test.id,
+      previousRecovery, previousRecoveryError,
+      sourceOrTaskInputChanged: originalUser ? originalUser.content !== test.prepared.input : null,
+      note: "One explicitly requested retry. Case matching permits a changed single-batch id, including the full ten-blank word-bank sample. No retries are scheduled from this result." } });
+  }
+  return repaired;
 }
 
 function apiRequest(backend, prepared) {
@@ -204,11 +258,11 @@ async function runResponses(request) {
     durationMs: Date.now() - started, firstTextMs, firstTextMetric: "first-response-output-text-delta", usageScope: "Responses API request with production schema and explicit breakpoints", transcript, error };
 }
 
-async function evaluateModel(modules, model, sources, words, photos, reference) {
+async function evaluateModel(modules, model, sources, words, photos, reference, repairs) {
   const directory = join(phaseRoot, model, runId);
   await mkdir(directory, { recursive: true });
   await save(directory, "reference.json", { reference, words, sourceBasis: "Manual reference isolates writer quality from photo and word-generation errors; no previous responses are replayed." });
-  const cases = await buildCases(modules, model, sources, words, photos);
+  const cases = await repairCases(modules, model, await buildCases(modules, model, sources, words, photos), repairs);
   const results = [];
   for (const test of cases) {
     const request = apiRequest(modules.backend, test.prepared);
@@ -216,21 +270,23 @@ async function evaluateModel(modules, model, sources, words, photos, reference) 
     if (test.task === "photos") savedRequest.input.at(-1).content = [{ type: "input_text", text: test.prepared.input }, ...photos.manifest.map((image) => ({ type: "input_image", sourcePath: image.sourcePath, webpSha256: image.webpSha256, detail: "high" }))];
     const sampleSources = test.prepared.request.sources;
     await save(directory, `${test.id}-request.json`, { requestedModel: model, effort: "low", transport: values.transport, sourceBasis: test.sourceBasis, request: savedRequest, requestSha256: digest(JSON.stringify(request)), imageManifest: test.task === "photos" ? photos.manifest : [],
+      ...(test.repair ? { repair: test.repair } : {}),
       ...(test.productionBatchCount ? { productionBatchIndex: test.productionBatchIndex, productionBatchCount: test.productionBatchCount } : {}),
       ...(sampleSources ? { sampledSources: sampleSources.length, sampledHeadwords: [...new Set(sampleSources.map((source) => source.word))], referenceSources: sources.length, note: "A selected production batch; not coverage of every reference sense." } : {}),
       photoEncoding: test.task === "photos" ? values.transport === "codex" ? "CLI receives all five original JPGs; WebP preparation only validates the production envelope" : "Node sharp WebP uses production edge/quality/byte limits; browser canvas encoding is not being tested" : null });
     if (values.transport === "codex") await save(directory, `${test.id}-cli-prompt.txt`, codexPrompt(test));
-    if (values["dry-run"]) { results.push({ id: test.id, task: test.task, dryRun: true }); continue; }
+    if (values["dry-run"]) { results.push({ id: test.id, task: test.task, dryRun: true, ...(test.repair ? { repair: test.repair } : {}) }); continue; }
     const scratch = await mkdtemp(join(tmpdir(), "lexiro-photo-eval-"));
     const schemaPath = join(scratch, "schema.json");
     if (test.prepared.schema) await writeFile(schemaPath, JSON.stringify(test.prepared.schema));
     let capture;
+    const started = Date.now();
     try { capture = values.transport === "codex" ? await runCodex(test, schemaPath, scratch, photos) : await runResponses(request); }
-    catch (reason) { capture = { raw: "", error: reasonText(reason) }; }
+    catch (reason) { capture = { raw: "", durationMs: Date.now() - started, error: reasonText(reason) }; }
     await save(directory, `${test.id}-response.txt`, capture.raw);
     if (capture.providerResponse) await save(directory, `${test.id}-provider-response.json`, capture.providerResponse);
     await save(directory, `${test.id}-transcript.json`, { events: capture.transcript ?? [], stderr: capture.stderr ?? "" });
-    let parsed = null, parseError = null, photoCoverage;
+    let parsed = null, parseError = null, photoCoverage, recovery = null, recoveryError = null;
     if (!capture.error) {
       try {
         parsed = test.parse(capture.raw);
@@ -239,11 +295,24 @@ async function evaluateModel(modules, model, sources, words, photos, reference) 
           const actual = new Set(modules.buildWordGenerationSources(parsed.join("\n")).map((source) => modules.normalizeWordKey(source.word)));
           photoCoverage = { expectedHeadwords: expected.size, actualHeadwords: actual.size, missing: [...expected].filter((word) => !actual.has(word)), extra: [...actual].filter((word) => !expected.has(word)), note: "Headword coverage does not verify every meaning, part of speech or handwritten correction." };
         }
-      } catch (reason) { parseError = reasonText(reason); }
+      } catch (reason) {
+        parseError = reasonText(reason);
+        if (test.recover) {
+          try {
+            const recovered = await test.recover(capture.raw);
+            if (recovered) recovery = { items: recovered.items, completed: recovered.completed, remaining: recovered.remaining.map((step) => ({ id: step.id, count: step.count })) };
+          } catch (recoveryReason) { recoveryError = reasonText(recoveryReason); }
+        }
+      }
     }
     await save(directory, `${test.id}-parsed.json`, parsed);
+    if (test.recover) await save(directory, `${test.id}-recovery.json`, { recovery, recoveryError, note: "Application recovery only; remaining requests are recorded and never executed by this evaluator." });
     const { raw: _raw, providerResponse: _provider, transcript: _transcript, stderr: _stderr, ...metrics } = capture;
-    const result = { id: test.id, task: test.task, requestedModel: model, ...metrics, parseError, parsedCount: Array.isArray(parsed) ? parsed.length : null, ...(photoCoverage ? { photoCoverage } : {}) };
+    const result = { id: test.id, task: test.task, requestedModel: model, ...metrics, parseError, parsedCount: Array.isArray(parsed) ? parsed.length : null,
+      ...(test.repair ? { repair: test.repair } : {}),
+      ...(test.recover ? { recovery: recovery ? { retainedItems: recovery.items.length, completed: recovery.completed, remaining: recovery.remaining } : null, recoveryError } : {}),
+      ...(capture.apiTokens ? { estimatedCostUsd: Object.values(capture.apiTokens).every(Number.isFinite) ? modules.responseCost({ model: capture.reportedModel, ...capture.apiTokens }) : null, costBasis: "Complete provider usage at the shared Standard rates; not an invoice or project balance." } : {}),
+      ...(photoCoverage ? { photoCoverage } : {}) };
     await save(directory, `${test.id}-metrics.json`, result); results.push(result);
     console.log(`${values.phase} ${model} ${test.id}: ${capture.error || parseError ? "FAIL " + (capture.error || parseError) : "PARSED"} (${capture.durationMs ?? "unknown"} ms)`);
   }
@@ -254,13 +323,14 @@ async function evaluateModel(modules, model, sources, words, photos, reference) 
 
 try {
   const modules = await loadModules();
+  const repairs = await loadRepairs();
   const reference = JSON.parse(await readFile(resolve(values.reference), "utf8"));
   const lines = modules.parseOrganizedWordInput(JSON.stringify(reference));
   const sources = modules.buildWordGenerationSources(lines.join("\n"));
   if (!sources.length) throw new Error("Reference contains no valid word sources.");
   const words = referenceWords(modules, sources);
   const photos = await loadPhotos(modules.LIMITS);
-  const runs = await Promise.allSettled(models.map((model) => evaluateModel(modules, model, sources, words, photos, reference)));
+  const runs = await Promise.allSettled(models.map((model) => evaluateModel(modules, model, sources, words, photos, reference, repairs)));
   for (const run of runs) {
     if (run.status === "rejected") { console.error(reasonText(run.reason)); process.exitCode = 1; }
     else if (run.value.some((result) => result.error || result.parseError)) process.exitCode = 1;
