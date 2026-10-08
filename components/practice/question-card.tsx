@@ -11,7 +11,6 @@ import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
-import { PracticeTaskLabel } from "@/components/practice/practice-task-label";
 import { QuestionOptions } from "./question-options";
 import { QuestionFeedback } from "./question-feedback";
 
@@ -89,7 +88,7 @@ export function QuestionCard({
               mobileView !== "passage" && "hidden lg:block",
             )}
           >
-            <h2 className="mb-4 text-base font-semibold leading-6">
+            <h2 className="question-text mb-4 text-base font-semibold leading-6">
               {passage.title}
             </h2>
             <div
@@ -136,12 +135,11 @@ export function QuestionCard({
               })}
             </p>
           )}
-          {!passage && <PracticeTaskLabel task={item.type} />}
           <h1
             className={
               item.type === "meaning"
-                ? "type-page text-center"
-                : "text-lg font-semibold leading-8 tracking-[-0.01em]"
+                ? "question-text type-page text-center"
+                : "question-text text-lg font-semibold leading-8 tracking-[-0.01em]"
             }
           >
             {item.blank

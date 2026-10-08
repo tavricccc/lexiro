@@ -33,7 +33,7 @@ export function PassageView({
   if (cursor < passage.length) parts.push(passage.slice(cursor));
 
   return (
-    <p className="max-w-[72ch] whitespace-pre-line text-base leading-[1.9] text-foreground selection:bg-primary/20 sm:text-[1.0625rem]">
+    <p className="question-text max-w-[72ch] whitespace-pre-line text-base leading-[1.9] text-foreground selection:bg-primary/20 sm:text-[1.0625rem]">
       {parts.map((part, index) =>
         typeof part === "string" ? (
           <span key={index}>{part}</span>

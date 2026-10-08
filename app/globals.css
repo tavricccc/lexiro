@@ -192,6 +192,17 @@
   border-color: var(--border);
   scrollbar-color: var(--input) transparent;
   scrollbar-width: thin;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Question prose keeps the system selection and translation tools. */
+.question-text,
+.question-text * {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
 }
 
 *::-webkit-scrollbar {

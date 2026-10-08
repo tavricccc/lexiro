@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 
 import { QuestionCard } from "@/components/practice/question-card";
+import { PracticeTaskLabel } from "@/components/practice/practice-task-label";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import type { AnsweredBlank } from "@/components/practice/passage-view";
 import { Button } from "@/components/ui/button";
@@ -68,15 +69,58 @@ export function PracticeSessionView({
       data-motion-view="practice-session"
       className={`mx-auto flex flex-col ${passage ? "max-w-6xl" : "max-w-3xl"}`}
     >
-      <div className="page-header pb-3 pt-1">
+      <div className="page-header" data-practice-header>
         <HeaderBackdrop contained />
-        <div className="flex flex-wrap items-center justify-between gap-x-3 text-sm text-muted-foreground">
+        <div className="flex items-center gap-1 text-sm text-muted-foreground md:gap-2">
           <div inert={busy} className={busy ? "opacity-50" : undefined}>
             <BackControl onClick={onLeave} />
           </div>
-          <span className="tabular-nums">
-            {t("practice.progress", { current: index + 1, total })}
-          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5">
+              <span className="whitespace-nowrap tabular-nums">
+                {t("practice.progress", { current: index + 1, total })}
+              </span>
+              <DraftSaveStatus
+                compact
+                status={persistence === "saved" ? "saved" : "idle"}
+              />
+            </div>
+            <PracticeTaskLabel task={entry.item.type} />
+          </div>
+          <Button
+            size="icon"
+            variant={marked ? "secondary" : "ghost"}
+            disabled={busy}
+            aria-label={t("practice.mark")}
+            aria-pressed={marked}
+            title={t("practice.mark")}
+            onClick={onToggleMark}
+          >
+            <Icons.mark aria-hidden />
+          </Button>
+          {selected === null && (
+            <Button
+              size="icon"
+              variant="ghost"
+              disabled={busy}
+              aria-label={t(
+                busy && pendingChoice === null
+                  ? "practice.recording"
+                  : "practice.skip",
+              )}
+              title={t("practice.skip")}
+              onClick={onSkip}
+            >
+              {busy && pendingChoice === null ? (
+                <Icons.loading
+                  aria-hidden
+                  className="animate-spin motion-reduce:animate-none"
+                />
+              ) : (
+                <Icons.skip aria-hidden />
+              )}
+            </Button>
+          )}
           <div
             className="page-action-host hidden md:flex"
             data-page-actions-host
@@ -97,9 +141,11 @@ export function PracticeSessionView({
             transition={practiceTransition}
           />
         </div>
-        <div className="mt-1 text-right">
-          <DraftSaveStatus status={persistence} />
-        </div>
+        {persistence === "error" && (
+          <div className="mt-1">
+            <DraftSaveStatus status="error" />
+          </div>
+        )}
       </div>
       <motion.div
         className="flex flex-col"
@@ -108,43 +154,7 @@ export function PracticeSessionView({
         animate={{ opacity: 1 }}
         transition={practiceTransition}
       >
-        <div
-          className="pb-4 pt-1"
-          data-practice-question-group
-        >
-          <div className="mb-3 flex justify-end gap-1">
-            <Button
-              className="min-h-11 sm:min-h-9"
-              size="sm"
-              variant={marked ? "secondary" : "ghost"}
-              disabled={busy}
-              aria-pressed={marked}
-              onClick={onToggleMark}
-            >
-              <Icons.mark />
-              {t("practice.mark")}
-            </Button>
-            {selected === null && (
-              <Button
-                className="min-h-11 sm:min-h-9"
-                size="sm"
-                variant="ghost"
-                disabled={busy}
-                onClick={onSkip}
-              >
-                {busy && pendingChoice === null ? (
-                  <Icons.loading className="animate-spin motion-reduce:animate-none" />
-                ) : (
-                  <Icons.skip />
-                )}
-                {t(
-                  busy && pendingChoice === null
-                    ? "practice.recording"
-                    : "practice.skip",
-                )}
-              </Button>
-            )}
-          </div>
+        <div className="pb-4" data-practice-question-group>
           <QuestionCard
             item={entry.item}
             selected={selected}

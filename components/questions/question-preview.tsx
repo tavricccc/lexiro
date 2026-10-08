@@ -34,7 +34,7 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
             ),
           )}
         />
-        <p className="max-w-[65ch] text-base leading-8 sm:text-lg">
+        <p className="question-text max-w-[65ch] text-base leading-8 sm:text-lg">
           {question.prompt}
         </p>
         <OptionList
@@ -85,7 +85,7 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
             passage
             wordCount={countEnglishWords(completePassage)}
           />
-          <h2 className="mt-4 text-xl font-semibold leading-8">
+          <h2 className="question-text mt-4 text-xl font-semibold leading-8">
             {question.title}
           </h2>
           <div className="mt-5 max-w-[68ch]">
@@ -117,7 +117,7 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
               {t("questions.locateBlank", { index: child.blank })}
             </Button>
           ) : (
-            <h3 className="text-base font-semibold leading-7">
+            <h3 className="question-text text-base font-semibold leading-7">
               {child.prompt}
             </h3>
           )}
