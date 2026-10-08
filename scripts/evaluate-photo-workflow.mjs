@@ -114,9 +114,14 @@ async function buildCases(modules, model, sources, words, photos) {
       const prepared = await modules.backend.prepareGeneration({ kind: "explain", raw: JSON.stringify({ items }), model, tier: "lite", session: randomUUID() }, "photo-quality-eval");
       cases.push({ id: "explain-1", task, sourceBasis: "manual-reference-review-cards", prepared, parse: (text) => { if (!text.trim()) throw new Error("Empty explanation."); return { markdown: text }; } });
     } else {
-      const steps = modules.questionTask(words, task, 2).steps;
+      // Ten distinct headwords exercise the complete 90-reason word-bank output.
+      const start = Math.floor(words.length / 2);
+      const sample = task === "wordBank"
+        ? [...words.slice(start), ...words.slice(0, start)].slice(0, 10).map((word) => ({ ...word, senses: [word.senses[0]] }))
+        : words;
+      const steps = modules.questionTask(sample, task, 2).steps;
       // Rotate the sampled production batch so later headwords and senses are tested too.
-      const index = { vocabulary: 1, cloze: 0, wordBank: 1, discourse: 2, reading: 3 }[task] % steps.length;
+      const index = { vocabulary: 1, cloze: 0, wordBank: 0, discourse: 2, reading: 3 }[task] % steps.length;
       await addStep(task, steps[index], index, steps.length);
     }
   }
