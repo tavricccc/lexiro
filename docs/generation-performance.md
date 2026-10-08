@@ -8,7 +8,17 @@
 - [API key Responses path](https://github.com/earendil-works/pi/blob/b2b5c42f6138b73ec4b2f49ec0ca468800f88586/packages/ai/src/api/openai-responses.ts) 使用 Responses SDK 的 HTTP stream；Pi 的不同 provider 路徑並非都使用相同 WebSocket transport。
 - [Cache warming 設定](https://github.com/earendil-works/pi/blob/b2b5c42f6138b73ec4b2f49ec0ca468800f88586/packages/coding-agent/docs/settings.md) 只在估計可避免足夠 cache miss 費用時 refresh；refresh 用量仍計費。Lexiro 的短時流程使用實際第一批產出暖前綴，不額外生成暖快取稿。
 
-## Lexiro 的實作
+## 2026-10-08 快取契約與教材整理
+
+單字生成與補充多義現在共用相同 developer 訊息、cache key 及 provider schema，schema 的 senses 上限固定為 3。一般模式仍要求恰好一義，補充上限仍依每次 limit；parser 與 settlement 保持原語意限制。這讓不同模式與補充上限不再因輸出 schema 分開固定前綴。
+
+題目每個題型的完整 developer 訊息及 schema 跨三個難度保持相同，difficulty、字數範圍、寫作目標與來源移到最後 user input。不同題型的 schema 與不同模型／effort 仍可能形成不同快取，不能只看共用規則文字宣稱跨題型命中。單字 key 為 `lexiro-words-20261008-v5`，題目為 `lexiro-questions-20261008-v11`，整理為 `lexiro-organize-20261008-v6`，子題重生為 `lexiro-question-item-20261008-v2`。
+
+照片以編號主詞為主，一般詞族派生可略過，保留特殊義或易混淆差異；不再把學習用紅色斜線當成刪除。文字模式仍保留使用者明列的不同英文單位。完整正解與所有錯項解析保留；出題範例與 provider schema 一致，不再用字串範例示意實際為 object 的篇章 removals。
+
+這次以已登入 Codex CLI 實跑兩個 Luna，回條的 cached_input_tokens 包含 CLI 上下文，無法測得這個正式 API prefix 的命中率。可用 `evaluate-photo-workflow.mjs --transport responses` 配合 API key 重新核對正式讀取／寫入及成本；本機沒有該金鑰，本輪沒有執行這條路徑。短解說 prompt 保持原版，不為達到快取門檻增加無用輸入。
+
+## 2026-10-05 並行批次實作
 
 詞彙題每批由 8 增至 16 個詞義，53 個來源由 7 批減至 4 批。單字最多 30 個來源且 raw 不超過 5,000 字元。文章題組仍按格式保持完整；8192 輸出 token 上限包含思考，用語更聰明不表示可無限增大回覆。
 
@@ -22,7 +32,7 @@
 
 首次發布的 commit 標記 [cache-probe] 會在部署前測試 gpt-6-luna／low、gpt-5.6-luna／low、Pro 的 gpt-6.1-sol／low。每條路由先一個實際請求暖快取，再兩個並行請求；每次最多 128 output tokens，共九次。輸入另計費，不寫入使用者 D1 帳目。以實際 input_tokens_details.cached_tokens 判斷，兩個並行回條都需至少 1,024 cache read tokens；失敗停止部署。
 
-回條只列模型、input／cache read／cache write／output、首事件與完成時間及估計 USD，不列 prompt、生成內容或 key。這確認 multiplexing 與 cache read，不代表 16 題的教育品質、手機體感速度或 Workers 免費 CPU 額度已實測。
+回條只列模型、狀態、input／cache read／cache write／output、首事件、首個文字 delta 與完成時間及估計 USD，不列 prompt、生成內容或 key。首事件不是首文字時間；128-token 回條可能 incomplete，只能確認 multiplexing 與 cache read，不代表題目內容品質或 Workers 免費 CPU 額度已實測。
 
 需要重查時執行：
 

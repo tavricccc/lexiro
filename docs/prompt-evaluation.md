@@ -1,5 +1,24 @@
 # 生成與審題評測紀錄
 
+## 2026-10-08 五張教材照片與兩個 Luna
+
+本輪使用使用者提供的五張 Unit 09 教材照片，獨立子代理先建立參考，再核對原始模型回覆。依使用者補充，11 個編號主詞優先保留，一般詞性轉換／透明派生可略過；另以 continual、mechanic、dominate 的差異作語意備查。參考清單不是要求所有大字次詞一律收滿的 exact-count 門檻。
+
+兩個指定模型為 `gpt-6-luna`／`gpt-5.6-luna`，均以 low 實跑已登入 Codex CLI；沒有替換成較大模型或改成獨立 AI 審題。照片整理與 32 個受控詞義的單字／五題型／補義／解說分開採樣，後者用相同人工來源隔離 OCR 差異，不宣稱是把每份照片回覆直接接成同一條端到端管線。題型各抽一個正式批次；文意選填第二輪另用十個不同詞的一義，驗證十格及每格九項完整錯項理由。
+
+保留舊 backend bundle 作 baseline，所有請求在執行前保存；原圖不提交。回條保存在 ignored `artifacts/ai-quality/<phase>/<model>/<timestamp-id>/`，包含原始文字、schema、來源覆蓋、解析、可回收題目及用量。首次 parse 失敗只報第一個問題，不代表所有子題都失敗；以正式 step.recover 回收結果記錄可保留與待補來源。
+
+採樣限定 baseline 照片、tuned 各階段及一次指定案例修復。子代理主要檢查錯義、明顯多解、來源範圍與解析對位；弱干擾、可更自然或未達完整學測風格列建議，不把結構通過率當作教學品質分數。詳細最終數量及保留問題見本地 content-review／run summary。
+
+```powershell
+# PowerShell 7；使用 Codex 帳戶額度，原圖目錄及 {lines:[...]} 參考檔由自己提供。
+$env:CODEX_PROMPT_EVAL_CLI = (Get-Command codex).Source
+node scripts/evaluate-photo-workflow.mjs --phase tuned `
+  --images-dir '<五張 JPG 所在目錄>' --reference '<參考詞義 JSON>' --transport codex
+```
+
+CLI 回條未提供 actual model metadata 時保持 null，只記明確指定的模型，不自行補成 provider 確認。CLI 快取 token 包含其工具／系統上下文，API 費用保持未知；正式 Responses 路徑需要可用 API key，沒有自動 fallback，也沒有觸發正式部署。下列較早版本保留為歷史紀錄。
+
 ## 2026-10-03 獨立審題與攔截
 
 本輪進一步只保留學測五種選擇題型，移除獨立 grammar 生成；文法仍可在 cloze 評量。
