@@ -14,9 +14,12 @@ export function QuestionFeedback({
   selected: number;
 }) {
   const correct = isCorrectChoice(item, selected);
-  const wrongReason = !correct
-    ? item.whyWrong?.[item.options[selected]]
-    : undefined;
+  const optionReasons = item.options.flatMap((option, index) => {
+    const reason = item.whyWrong?.[option];
+    return reason && !isCorrectChoice(item, index)
+      ? [{ option, index, reason }]
+      : [];
+  });
   return (
     <motion.div
       className="mt-6 rule-t pt-5"
@@ -38,20 +41,35 @@ export function QuestionFeedback({
         )}
         {correct ? t("practice.correct") : t("practice.incorrect")}
       </p>
-      {!correct && (
-        <p className="mt-2 text-sm leading-6">
-          {t("practice.answer", { answer: item.options[item.answerIndex] })}
-        </p>
-      )}
-      {wrongReason && (
-        <p className="mt-3 text-sm leading-7 text-muted-foreground">
-          {wrongReason}
-        </p>
-      )}
+      <p className="mt-2 text-sm leading-6">
+        {t("practice.answer", { answer: item.options[item.answerIndex] })}
+      </p>
       {item.explanation && (
         <p className="mt-3 whitespace-pre-line text-sm leading-7">
           {item.explanation}
         </p>
+      )}
+      {optionReasons.length > 0 && (
+        <section className="mt-4" aria-label={t("practice.optionReasons")}>
+          <h2 className="text-sm font-semibold">
+            {t("practice.optionReasons")}
+          </h2>
+          <dl className="mt-3 grid gap-3">
+            {optionReasons.map(({ option, index, reason }) => (
+              <div key={option} className="min-w-0">
+                <dt className="break-words text-sm font-medium leading-6">
+                  <span className="mr-2 text-muted-foreground">
+                    {String.fromCharCode(65 + index)}
+                  </span>
+                  {option}
+                </dt>
+                <dd className="mt-1 whitespace-pre-line break-words text-sm leading-7 text-muted-foreground">
+                  {reason}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       )}
       {item.question?.kind !== "reading" &&
         item.meaning &&

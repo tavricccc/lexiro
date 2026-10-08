@@ -317,6 +317,12 @@ StepActions 在桌機將操作 portal 到 PageHeader 右側的 `data-page-action
 
 返回控制是手機 44px、桌機 36px 箭頭按鈕，只顯示圖示，保留 `aria-label` 提供完整返回目的地。
 
+全站含公開頁、工作區與 portal 彈出層預設使用 `user-select: none`、
+`-webkit-user-select: none` 與 `-webkit-touch-callout: none`。
+英文題幹、文章標題與正文用 `question-text` 明確恢復 `user-select: text` 和
+`-webkit-touch-callout: default`，讓系統選字／翻譯可用；作答按鈕及操作區維持停用。
+欄位仍可打字、貼上、移動游標，沿用主綠 caret 與鍵盤焦點。
+
 閱讀插畫沿用 `public/illustrations/open-doodles-reading.svg`，以 CSS mask 套用
 主綠。保留原 SVG 來源紀錄；這次沒有新增 raster 素材。插畫是輔助內容，使用
 `aria-hidden`，不能取代操作標籤或狀態文字。
@@ -336,6 +342,21 @@ StepActions 在桌機將操作 portal 到 PageHeader 右側的 `data-page-action
 `QuestionPager` 切換題目及空格，答案鍵可以定位原文。共用 bank 只編輯一次，
 `OptionReasons` 以選項文字維護理由；`DistractorReasonsEditor` 提供逐項校對。
 分頁連到實際 panel，文章支援鍵盤捲動；同篇下一題保留閱讀位置。
+
+專注答題的頁首把返回、題數／題型、保存圖示、稍後複習與跳過放在同一列，
+下面只留進度條；次要圖示按鈕保留手機 44px 目標及完整無障礙名稱。
+保存成功以勾選圖示呈現，完整狀態供輔助技術與桌機 title 讀取；失敗展開就地文字。
+題幹直接接在頁首後，不再另占保存與標記操作兩列。
+每題完成保存後，答對與答錯都顯示正解、解說及依目前選項順序排列的全部已有錯項解析。
+文章只顯示當前小題的解析，未作答或仍保存中的題目維持不揭答。
+
+2026-10-08 的 headless Chromium 檢查使用真正 App 與獨立合成教材，涵蓋
+390×844、320×740 深色與 1366×900。手機頁首高 68px、桌機 52px，題幹距頁首
+12px；三種尺寸沒有橫向溢出，完整解析可捲至固定操作列上方。
+英文題幹可實際拖選；操作按鈕維持不可選取，搜尋欄位可正常輸入。
+11 個練習／共用無障礙測試、typecheck 與 lint 通過。畫面與量測保存於
+`.impeccable/review/practice-compact-*.png`、`practice-feedback-*.png` 與 `practice-ui-qa.json`。
+實體 iPhone 的系統長按翻譯尚未驗證；本輪沒有新增翻譯 API。
 
 這次真正 App 的合成教材檢查範圍為 1366×900、390×844 的編輯、閱讀、作答及
 長理由排版；修改選項與理由後，實際保存並重新開啟確認。獨立複核發現的長理由

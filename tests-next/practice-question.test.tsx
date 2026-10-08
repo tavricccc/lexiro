@@ -57,7 +57,11 @@ function itemAt(index: number): QuestionItem {
     difficulty: 2,
     meaning: "",
     explanation: "This question follows the subject of studied.",
-    whyWrong: { weather: "Weather cannot perform this investigation." },
+    whyWrong: {
+      weather: "Weather cannot perform this investigation.",
+      shadow: "A shadow cannot study evidence.",
+      building: "A building cannot act as the investigating group.",
+    },
   };
 }
 
@@ -95,36 +99,43 @@ describe("practice reading workspace", () => {
     fireEvent.click(screen.getByRole("button", { name: /evidence/ }));
     expect(onAnswer).toHaveBeenCalledWith(1);
   });
-  it("keeps feedback private while saving and reveals only this question's explanation", () => {
-    const props = {
-      item: itemAt(0),
-      selected: null as number | null,
-      pendingChoice: 1 as number | null,
-      busy: true,
-      answeredBlanks: {},
-      onAnswer: vi.fn(),
-    };
-    const { rerender } = render(<QuestionCard {...props} />);
-    expect(screen.getByRole("button", { name: /weather/ })).toHaveAttribute(
-      "aria-pressed",
-      "true",
-    );
-    expect(screen.queryByText("這題答錯了")).toBeNull();
-    expect(screen.queryByText(props.item.explanation!)).toBeNull();
-    rerender(
-      <QuestionCard
-        {...props}
-        selected={1}
-        pendingChoice={null}
-        busy={false}
-      />,
-    );
-    expect(
-      screen.getByText("Weather cannot perform this investigation."),
-    ).toBeVisible();
-    expect(screen.getByText(props.item.explanation!)).toBeVisible();
-    expect(screen.queryByText(passage.explanation!)).toBeNull();
-  });
+  it.each([0, 1])(
+    "keeps feedback private while saving and reveals every option reason after choosing %i",
+    (choice) => {
+      const props = {
+        item: itemAt(0),
+        selected: null as number | null,
+        pendingChoice: 1 as number | null,
+        busy: true,
+        answeredBlanks: {},
+        onAnswer: vi.fn(),
+      };
+      const { rerender } = render(<QuestionCard {...props} />);
+      expect(screen.getByRole("button", { name: /weather/ })).toHaveAttribute(
+        "aria-pressed",
+        "true",
+      );
+      expect(screen.queryByText("這題答錯了")).toBeNull();
+      expect(screen.queryByText(props.item.explanation!)).toBeNull();
+      for (const reason of Object.values(props.item.whyWrong!)) {
+        expect(screen.queryByText(reason)).toBeNull();
+      }
+      rerender(
+        <QuestionCard
+          {...props}
+          selected={choice}
+          pendingChoice={null}
+          busy={false}
+        />,
+      );
+      for (const reason of Object.values(props.item.whyWrong!)) {
+        expect(screen.getByText(reason)).toBeVisible();
+      }
+      expect(screen.getByText("正確答案：committee")).toBeVisible();
+      expect(screen.getByText(props.item.explanation!)).toBeVisible();
+      expect(screen.queryByText(passage.explanation!)).toBeNull();
+    },
+  );
 
   it("locates the current blank and retains the article tab, scroll and revealed context for the next item", async () => {
     const scrollIntoView = vi.fn();

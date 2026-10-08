@@ -441,6 +441,7 @@ export const zhTW = {
     questionPosition: "本篇第 {current} / {total} 題",
     locateBlank: "找到第 {index} 格",
     answer: "正確答案：{answer}",
+    optionReasons: "其他選項解析",
     progress: "第 {current} / {total} 題",
     progressLabel: "練習進度",
     complete: "完成練習",
