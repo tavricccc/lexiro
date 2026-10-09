@@ -18,13 +18,13 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 
 已驗證管理員的生成錯誤另附 diagnostic：出稿／審題階段、實際模型與 reasoning、上游 HTTP 狀態、request ID 及 code／param／type／message。HTTP 與 SSE 都保留診斷至管理員面板；供應商 key 遮蔽，不轉發 request body、prompt 或其他回應欄位。一般帳號不接收此欄位。
 
-題目請求帶 `X-Question-Contract: single-pass-v1`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。
+題目請求帶 `X-Question-Contract: single-pass-v2`，共用套件為 4.0.0。原始錯項理由為 `{option, reason}[]`；共用題組先提供完整 `options`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。
 
 題型只接受 vocabulary、cloze、wordBank、discourse、reading；停用的 grammar 在預留前回 400／invalid_input。題目固定規則在快取前綴，來源、初稿、難度及 lengthRange 留在最後輸入。只更新題目 writer／review 的版本，單字、補義、整理及解釋的快取保留；實際命中看供應商回報。
 
 Session 在開始時固定模型、檔位與 UUID，每批不帶 previous_response_id，上下文獨立。Worker 以每帳號／session 的 Durable Object 管理工作，與供應商用 WebSocket 連線，手機仍透過 SSE 接收。固定 prompt／schema／cache key 不變，只有本批來源在動態尾端；快取命中以 provider usage 為準。
 
-生成需帶 X-Generation-Id，缺少時回 426，啟用 App 更新後使用新介面。斷線自動接回原任務，四次連線失敗後可在同頁面手動續跑；暫停只停止瀏覽器接收與後續批次，本批後端仍會完成。每批上限 10 分鐘，完成／失敗結果保存至任務開始後 30 分鐘，以 alarm 清除。圖片與私有提示只存在執行中的記憶體，不存入 Durable Object；短暫保存來源、輸出及結算 metadata 用於回放。重新整理會失去瀏覽器的 pending 任務 ID；流程草稿仍保存已完成且可校對的成果。
+生成需帶 X-Generation-Id，缺少時回 426，啟用 App 更新後使用新介面。斷線自動接回原任務，四次連線失敗後可手動續跑；暫停只停止瀏覽器接收與後續批次，本批後端仍會完成。每批上限 10 分鐘，完成／失敗結果保存至任務開始後 30 分鐘，以 alarm 清除。圖片與私有提示只存在執行中的記憶體，不存入 Durable Object；短暫保存來源、輸出及結算 metadata 用於回放。瀏覽器草稿保存 session、pending operation ID、lane 與子題修復來源；重新整理後驗證帳號、任務、契約與期限，再接回原任務。結果過期或契約不符時保留已完成成果並顯示無法接續原因，不自動另外生成。
 
 ## 批次與校對
 
@@ -32,7 +32,7 @@ Session 在開始時固定模型、檔位與 UUID，每批不帶 previous_respon
 
 `parallel-runner.ts` 保存未完成 lane，暫停／錯誤後續跑沿用該 lane 的 pending job；已完成或已編輯的成果保留。進度聚合所有 lanes 的已解析數，TPS 分別顯示每批自己的平均。快取與並行的正式小樣本驗證、Pi 原始碼參考及重跑方法見 private Worker docs/generation-performance.md。
 
-所有 AI 題目及解說同次生成，暫停獨立模型審題。前端保留篇幅、跨度、閱讀依據與格式驗證；有效題目保留，錯誤詞彙題逐題重生，文章題保留原文與有效子題，只重生錯誤子題。無法修復的文章錯誤停止該段，讓使用者手動重試。句子題完整寫出 sentence，再取 usage／answer，程式負責挖空及排序。校對一次看一題／題組，可取消納入後儲存選取項目；逐題解說與錯項理由跟選項保存。語意與唯一解仍須人工校對。
+所有 AI 題目及解說同次生成，暫停獨立模型審題。前端檢查篇幅、來源詞形、跨度、完整非相鄰刪句、共用誘答選項與閱讀依據；有效題目保留，錯誤詞彙題逐題補缺。文章子題的理由／依據錯誤可保留原文針對修復；文章長度、共用選項或結構錯誤必須重新生成整個題組。句子題完整寫出 sentence，再取 usage／answer，程式負責挖空及排序。校對一次看一題／題組，保留取消納入名單；儲存失敗保留草稿與已加入數量，重試不重複加入。語意與唯一解仍須人工校對。
 
 照片確認後先縮 WebP，每張最多 1.5 MB、長邊 1800；每批 1-10 張。text/plain 每行一張 base64，整批上限 20,000,009 bytes，headers 帶 `X-Session-Id`、`X-AI-Model`、`X-AI-Tier`。Worker 驗證後一次送多圖片 Responses request，圖片不落地。不同批次依序執行，已完成部分保留。
 
@@ -40,7 +40,7 @@ Session 在開始時固定模型、檔位與 UUID，每批不帶 previous_respon
 
 ## 模型、估算與結算
 
-共用 contract 3.2.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna` 偏好，預設後者；Pro 由 Worker 統一送 `gpt-6.1-sol`、`reasoning: { effort: "low" }`。Lite／Thinking 使用所選 Luna 的 low／medium。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai；整理文字與照片可另選模型與檔位，保存於流程草稿。Lite／Thinking／Pro 估算倍率為 1／2／20；Pro 的估算不再乘 Luna 家族因子。實扣按供應商回報 usage，估算不是扣款保證。[官方 Sol 規格與費率](https://developers.openai.com/api/docs/models/gpt-6.1-sol)。
+共用 contract 4.0.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna` 偏好，預設後者；Pro 由 Worker 統一送 `gpt-6.1-sol`、`reasoning: { effort: "low" }`。Lite／Thinking 使用所選 Luna 的 low／medium。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai；整理文字與照片可另選模型與檔位，保存於流程草稿。Lite／Thinking／Pro 估算倍率為 1／2／20；Pro 的估算不再乘 Luna 家族因子。實扣按供應商回報 usage，估算不是扣款保證。[官方 Sol 規格與費率](https://developers.openai.com/api/docs/models/gpt-6.1-sol)。
 
 題目估算已移除第二次審題的係數；失敗子題的重生仍會消耗供應商用量，估算不是實測成本上界。`TokenUsage.parts` 保留每次 response 用量，各自計價後加總。用量缺漏維持未知並逐 cursor 補查。
 
