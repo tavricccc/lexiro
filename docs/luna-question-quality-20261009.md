@@ -10,13 +10,13 @@
 
 | 題型 | 首次結構 | 一次 native recovery 後 | 語意與教學要求 |
 | --- | --- | --- | --- |
-| 詞彙 | 未通過；可保留 5／6 | 6／6；5 題保留＋1 題補缺 | estimate／calculate、investment／expense 等近義仍未排除；補缺不會修正保留題的多解 |
+| 詞彙 | 未通過；可保留 5／6 | 6／6；5 題保留＋1 題補缺 | estimate／calculate／guess、investment／expense 的近義辨析與理由排他性仍弱；補缺只修缺字，保留題仍需校對 |
 | 綜合測驗 | 5 格通過 | 沿用首次 | 詞義題有本文線索，但前兩格仍為 continual／estimated，沒有完成兩個 aux 選形格 |
 | 文意選填 | 6 格及 54 理由通過 | 沿用首次 | 原先三個錯誤詞性斷言消失；unused automatic 可以自然替換 mechanical timer，出現真多解 |
 | 篇章結構 | 未通過；前兩移除相鄰 | 不適用 | 固定 bank 的結構失敗無法單題修復，沒有重生整組；全文也未分成要求的三至五段 |
 | 閱讀 | 3 題通過 | 沿用首次 | 正解及錯項理由可用但較直接；第三題把明示讀數相同改述成 inference，仍不是兩個必要事實 |
 
-本輪六次請求都有內容回覆，沒有傳輸失敗。可用但誘答較弱、正文或解析錯誤、結構失敗分開記錄；不把弱題全部拒絕，也不把格式通過宣稱為全題組可直接交付。這是最後一次有界修正後的完整五型驗收，不追加整輪，也不把 v17 high 的人工回饋稿當作 v19 medium 的 fresh 成功。
+本輪六次請求都有內容回覆，沒有傳輸失敗。主代理獨立覆核確認 automatic 的第二合理答案、閱讀錯標技能與篇章相鄰移除；詞彙近義辨析及綜合測驗 mechanical／digital、noisy 等較弱理由仍需校對，沒有一概把弱項判為全卷錯。可用但誘答較弱、正文或解析錯誤、結構失敗分開記錄，不把格式通過宣稱為全題組可直接交付。這是最後一次有界修正後的完整五型驗收，不追加整輪，也不把 v17 high 的人工回饋稿當作 v19 medium 的 fresh 成功。
 
 ## 方法與版本界線
 
@@ -26,7 +26,7 @@
 - 全部使用已登入 Codex CLI，明確指定模型與 effort；沒有正式 API key，沒有 Responses API、正式計費、快取率或部署驗收。回條缺 actual model 時保持 null。
 - CLI 或供應商失敗停止該模型後續案例。兩次 300 秒 CLI timeout 沒有產出，列為傳輸失敗，不算模型內容失敗，也不把尚未執行的案例算成出題失敗。
 
-原始資料、凍結 v12–v19 模組、來源、請求、schema、回覆、解析及代理逐題核對放在 ignored `artifacts/ai-quality/`。完整索引為 `artifacts/ai-quality/20261009-quality/release-v19-stage-metrics.json`，最後逐題紀錄為 `release-v19-content-review.json`，原回覆及補缺重驗為 `release-v19-revalidation.json`；v18 主代理獨立覆核仍保留 `release-v18-independent-review.json`，較早索引保持原樣。共 65 次 CLI 請求、63 份內容回覆、2 次傳輸 timeout；其中 2 次是明示回饋的整批新稿，2 次是分屬 v17 high 與 v19 medium 的單來源補缺。
+原始資料、凍結 v12–v19 模組、來源、請求、schema、回覆、解析及代理逐題核對放在 ignored `artifacts/ai-quality/`。完整索引為 `artifacts/ai-quality/20261009-quality/release-v19-stage-metrics.json`，最後逐題紀錄為 `release-v19-content-review-final.json`，主代理獨立覆核為 `release-v19-independent-review.json`，原回覆及補缺重驗為 `release-v19-revalidation.json`。v18 覆核及較早索引保持原樣。共 65 次 CLI 請求、63 份內容回覆、2 次傳輸 timeout；其中 2 次是明示回饋的整批新稿，2 次是分屬 v17 high 與 v19 medium 的單來源補缺。
 
 ## 首次產出與一次修復
 
