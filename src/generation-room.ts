@@ -1,4 +1,5 @@
 import type { DurableObjectState } from "@cloudflare/workers-types";
+import { MAX_PARALLEL_GENERATIONS } from "@lexiro/ai-contract";
 import type { Env } from "./env";
 import { reserve, BillingError, type Reservation } from "./billing";
 import type { PreparedGeneration } from "./generation";
@@ -41,7 +42,7 @@ export class GenerationRoom {
         const signature = await fingerprint(JSON.stringify(input.prepared.request));
         if (job && job.signature !== signature) throw new HttpError(409, "generation_conflict");
         if (!job) {
-          if (!this.creating.has(id) && this.running.size + this.creating.size >= 2) throw new HttpError(409, "generation_in_progress");
+          if (!this.creating.has(id) && this.running.size + this.creating.size >= MAX_PARALLEL_GENERATIONS) throw new HttpError(409, "generation_in_progress");
           let creating = this.creating.get(id);
           if (!creating) {
             creating = this.create(id, signature, input);

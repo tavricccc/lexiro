@@ -6,6 +6,74 @@ import { WebSocketServer } from "ws";
 import { build } from "esbuild";
 import { Miniflare } from "miniflare";
 import { prepareGeneration, upstreamRequest } from "../src/generation";
+import { ProviderWebSocket, TransportError } from "../src/provider-websocket";
+import { testDatabase } from "./database";
+import type { Env } from "../src/env";
+
+class ControlledSocket extends EventTarget {
+  readyState = 1;
+  sent: Record<string, unknown>[] = [];
+  accept() {}
+  send(value: string) { this.sent.push(JSON.parse(value) as Record<string, unknown>); }
+  close() { this.readyState = 3; }
+  emit(value: Record<string, unknown>) {
+    this.dispatchEvent(new MessageEvent("message", { data: JSON.stringify(value) }));
+  }
+}
+
+describe("provider lane lifecycle", () => {
+  it("waits for an aborted lane's provider terminal and ignores events from a replaced socket", async () => {
+    const fixture = await testDatabase();
+    const sockets: ControlledSocket[] = [];
+    const env: Env = { DB: fixture.db, OPENAI_API_KEY: "synthetic", OPENAI_BASE_URL: "https://provider.test/v1", ADMIN_EMAILS: "", FIREBASE_PROJECT_ID: "test", ALLOWED_ORIGIN: "https://lexiro.test" };
+    const fetcher: typeof fetch = async () => {
+      const socket = new ControlledSocket();
+      sockets.push(socket);
+      return { status: 101, webSocket: socket } as unknown as Response;
+    };
+    const transport = new ProviderWebSocket(env, fetcher);
+    try {
+      const prepared = await prepareGeneration({ kind: "words", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID(), raw: "apple" }, "u");
+      const abort = new AbortController();
+      const first = await transport.send(prepared, undefined, abort.signal, "old-operation");
+      abort.abort(new TransportError("test_cancelled", "Cancelled"));
+      await expect(first.getReader().read()).rejects.toMatchObject({ code: "test_cancelled" });
+
+      const second = await transport.send(prepared, undefined, new AbortController().signal, "second-operation");
+      const socket = sockets[0];
+      expect(socket.sent.map((item) => item.stream_id)).toEqual(["old-operation", "second-operation"]);
+      socket.emit({ type: "response.output_text.delta", stream_id: "old-operation", delta: "stale text" });
+      socket.emit({ type: "response.completed", stream_id: "old-operation", response: { id: "old-response" } });
+
+      const third = await transport.send(prepared, undefined, new AbortController().signal, "third-operation");
+      expect(socket.sent[2].stream_id).toBe("old-operation");
+      socket.emit({ type: "response.output_text.delta", stream_id: "second-operation", delta: "second text" });
+      socket.emit({ type: "response.completed", stream_id: "second-operation", response: { id: "second-response" } });
+      socket.emit({ type: "response.output_text.delta", stream_id: "old-operation", delta: "third text" });
+      socket.emit({ type: "response.completed", stream_id: "old-operation", response: { id: "third-response" } });
+      const secondText = await new Response(second).text();
+      expect(secondText).toContain("second text");
+      expect(secondText).not.toContain("stale text");
+      expect(secondText).not.toContain("old-response");
+      expect(await new Response(third).text()).toContain("third text");
+
+      transport.close();
+      const fourth = await transport.send(prepared, undefined, new AbortController().signal, "fourth-operation");
+      socket.dispatchEvent(new Event("error"));
+      socket.dispatchEvent(Object.assign(new Event("close"), { code: 1011, reason: "old socket closed late" }));
+      socket.emit({ type: "response.output_text.delta", stream_id: "fourth-operation", delta: "old socket text" });
+      sockets[1].emit({ type: "response.output_text.delta", stream_id: "fourth-operation", delta: "fresh text" });
+      sockets[1].emit({ type: "response.completed", stream_id: "fourth-operation", response: { id: "fresh-response" } });
+      const fourthText = await new Response(fourth).text();
+      expect(fourthText).toContain("fresh text");
+      expect(fourthText).not.toContain("old socket text");
+      expect(sockets).toHaveLength(2);
+    } finally {
+      transport.close();
+      await fixture.runtime.dispose();
+    }
+  });
+});
 
 describe("native Workers WebSocket and Durable Object transport", () => {
   it("reuses one socket across independent batches and persists replayable results", async () => {
@@ -16,6 +84,7 @@ describe("native Workers WebSocket and Durable Object transport", () => {
     let connections = 0, turns = 0, active = 0, peak = 0;
     const responseIds = new Map<string, string>();
     const streamNames = new Set<string>();
+    const parallelCompletions: (() => void)[] = [];
     const inputs: Record<string, unknown>[] = [];
     sockets.on("connection", (socket) => {
       connections++;
@@ -32,7 +101,11 @@ describe("native Workers WebSocket and Durable Object transport", () => {
         responseIds.set(JSON.stringify(request.input), response.id);
         socket.send(JSON.stringify({ type: "response.created", stream_id: request.stream_id, response: { id: response.id, model: response.model } }));
         socket.send(JSON.stringify({ type: "response.output_text.delta", stream_id: request.stream_id, delta: text }));
-        setTimeout(() => { active--; socket.send(JSON.stringify({ type: "response.completed", stream_id: request.stream_id, response })); }, 250);
+        const complete = () => { active--; socket.send(JSON.stringify({ type: "response.completed", stream_id: request.stream_id, response })); };
+        if (turns > 1 && turns <= 5) {
+          parallelCompletions.push(complete);
+          if (parallelCompletions.length === 4) parallelCompletions.forEach((finish) => finish());
+        } else setTimeout(complete, 250);
       });
     });
     let runtime: Miniflare | undefined;
@@ -61,22 +134,26 @@ describe("native Workers WebSocket and Durable Object transport", () => {
         return { text, responseId: responseIds.get(JSON.stringify(upstreamRequest(prepared).input))! };
       };
       await call(firstId, "apple");
-      const ids = [crypto.randomUUID(), crypto.randomUUID()];
-      const replies = await Promise.all(ids.map((id, index) => call(id, index ? "current" : "bank")));
-      replies.forEach((reply, index) => { expect(reply.text).toContain(reply.responseId); expect(reply.text).not.toContain(replies[1 - index].responseId); });
-      expect(peak).toBe(2);
-      expect(turns).toBe(3);
+      const sourcesInFlight = ["bank", "current", "rescue", "witness"];
+      const replies = await Promise.all(sourcesInFlight.map((source) => call(crypto.randomUUID(), source)));
+      replies.forEach((reply, index) => {
+        expect(reply.text).toContain(reply.responseId);
+        for (const other of replies.filter((_, otherIndex) => otherIndex !== index))
+          expect(reply.text).not.toContain(other.responseId);
+      });
+      expect(peak).toBe(4);
+      expect(turns).toBe(5);
       expect(connections).toBe(1);
       expect(inputs.every((input) => input.type === "response.create" && !input.previous_response_id && !("stream" in input))).toBe(true);
       expect(await (await runtime.dispatchFetch(`https://test/${firstId}`)).text()).toContain("response.completed");
-      expect(turns).toBe(3);
-      expect(await db.prepare("SELECT COUNT(*) AS count FROM usage_log").first()).toEqual({ count: 3 });
-      expect(await db.prepare("SELECT points,inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ points: 97, inflight_id: null });
-      const sources = ["ant", "bee", "cat", "dog", "elk", "fox", "gnu", "hen", "ibis", "jay", "kite", "lark", "mole", "newt", "owl", "pig", "quail", "rat", "seal", "toad", "vole", "wolf", "yak", "zebra", "pond", "stone", "road", "river", "hill", "lake", "cloud", "rain", "snow"];
+      expect(turns).toBe(5);
+      expect(await db.prepare("SELECT COUNT(*) AS count FROM usage_log").first()).toEqual({ count: 5 });
+      expect(await db.prepare("SELECT points,inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ points: 95, inflight_id: null });
+      const sources = ["ant", "bee", "cat", "dog", "elk", "fox", "gnu", "hen", "ibis", "jay", "kite", "lark", "mole", "newt", "owl", "pig", "quail", "rat", "seal", "toad", "vole", "wolf", "yak", "zebra", "pond", "stone", "road", "river", "hill", "lake", "cloud"];
       for (const raw of sources) await call(crypto.randomUUID(), raw);
       expect(turns).toBe(36);
       expect(connections).toBe(1);
-      expect(streamNames.size).toBe(2);
+      expect(streamNames.size).toBe(4);
       const replay = await (await runtime.dispatchFetch(`https://test/${firstId}`)).text();
       expect(replay).toContain("resp_native_1");
       expect(replay).not.toContain("resp_native_36");

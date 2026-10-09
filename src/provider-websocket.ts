@@ -7,6 +7,7 @@ export class TransportError extends Error {
 }
 export type ProviderSender = (prepared: PreparedGeneration, cursor: string | undefined, signal: AbortSignal, streamId: string) => Promise<ReadableStream<Uint8Array>>;
 const encoder = new TextEncoder();
+const terminalEvents = new Set(["response.completed", "response.incomplete", "response.failed", "error"]);
 export const providerFrame = (event: Record<string, unknown>) => encoder.encode(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`);
 
 /** One socket and reusable independent lanes; no conversation history is shared. */
@@ -15,9 +16,17 @@ export class ProviderWebSocket {
   private connecting?: Promise<WebSocket>;
   private lanes = new Map<string, { event(value: Record<string, unknown>): void; fail(reason: Error): void }>();
   private idleStreamIds: string[] = [];
+  private retiringStreamIds = new Set<string>();
   private idle?: ReturnType<typeof setTimeout>;
   constructor(private env: Env, private fetcher: typeof fetch = fetch) {}
-  close() { clearTimeout(this.idle); this.socket?.close(1000, "Session idle"); this.socket = undefined; this.idleStreamIds = []; }
+  close() {
+    clearTimeout(this.idle);
+    const socket = this.socket;
+    this.socket = undefined;
+    this.idleStreamIds = [];
+    this.retiringStreamIds.clear();
+    socket?.close(1000, "Session idle");
+  }
   private async connect(prepared: PreparedGeneration, signal: AbortSignal) {
     const fetcher = this.fetcher;
     const response = await fetcher(`${this.env.OPENAI_BASE_URL}/responses`, { headers: { Upgrade: "websocket", Authorization: `Bearer ${this.env.OPENAI_API_KEY}` }, signal });
@@ -28,14 +37,22 @@ export class ProviderWebSocket {
     (socket as WebSocket & { accept(): void }).accept();
     this.socket = socket;
     socket.addEventListener("message", (event: MessageEvent) => {
+      if (this.socket !== socket) return;
       try {
         const item = JSON.parse(String(event.data)) as Record<string, unknown>;
         if (typeof item.stream_id !== "string") throw new TransportError("missing_stream_identity", "Provider event did not identify its multiplexed stream");
-        this.lanes.get(item.stream_id)?.event(item);
+        const lane = this.lanes.get(item.stream_id);
+        if (lane) lane.event(item);
+        else if (terminalEvents.has(String(item.type)) && this.retiringStreamIds.delete(item.stream_id))
+          this.idleStreamIds.push(item.stream_id);
       } catch (reason) { this.failAll(reason instanceof Error ? reason : new Error(String(reason))); }
     });
-    socket.addEventListener("close", (event: CloseEvent) => this.failAll(new TransportError("upstream_socket_closed", "Provider WebSocket closed before completion", { closeCode: event.code, closeReason: event.reason })));
-    socket.addEventListener("error", () => this.failAll(new TransportError("upstream_socket_error", "Provider WebSocket connection failed")));
+    socket.addEventListener("close", (event: CloseEvent) => {
+      if (this.socket === socket) this.failAll(new TransportError("upstream_socket_closed", "Provider WebSocket closed before completion", { closeCode: event.code, closeReason: event.reason }));
+    });
+    socket.addEventListener("error", () => {
+      if (this.socket === socket) this.failAll(new TransportError("upstream_socket_error", "Provider WebSocket connection failed"));
+    });
     return socket;
   }
   private failAll(reason: Error) {
@@ -66,10 +83,11 @@ export class ProviderWebSocket {
     const stream = new ReadableStream<Uint8Array>({
       start: (controller) => {
         let ended = false;
-        const cleanup = () => {
+        const cleanup = (reusable = false) => {
           ended = true;
           this.lanes.delete(laneId);
-          this.idleStreamIds.push(laneId);
+          if (reusable) this.idleStreamIds.push(laneId);
+          else this.retiringStreamIds.add(laneId);
           signal.removeEventListener("abort", abort);
           if (!this.lanes.size) this.idle = setTimeout(() => this.close(), 60_000);
         };
@@ -77,8 +95,8 @@ export class ProviderWebSocket {
         const message = (item: Record<string, unknown>) => {
           try {
             controller.enqueue(providerFrame(item));
-            if (["response.completed", "response.incomplete", "response.failed", "error"].includes(String(item.type))) {
-              cleanup(); controller.close();
+            if (terminalEvents.has(String(item.type))) {
+              cleanup(true); controller.close();
             }
           } catch (reason) { fail(reason instanceof Error ? reason : new Error(String(reason))); }
         };

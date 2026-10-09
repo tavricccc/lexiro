@@ -231,17 +231,25 @@ describe("D1 atomic credit ledger", () => {
     expect(failed).toMatchObject({ reason: { status: 409 } });
     expect(await balance()).toBe(99);
   });
-  it("keeps parallel holds separate and never refunds the balance floor into extra money", async () => {
+  it("bounds four parallel holds and never refunds the balance floor into extra money", async () => {
     await db.prepare("UPDATE accounts SET points=5 WHERE uid='u'").run();
     const session = crypto.randomUUID();
-    const first = await reserve(db, "u", units(["parallel-a"]), 20, session);
-    const second = await reserve(db, "u", units(["parallel-b"]), 20, session);
-    expect(await balance()).toBe(-15);
-    await expect(reserve(db, "u", units(["parallel-c"]), 2, session)).rejects.toMatchObject({ status: 409 });
+    const [first, second, third, fourth] = await Promise.all(
+      ["parallel-a", "parallel-b", "parallel-c", "parallel-d"].map((source) =>
+        reserve(db, "u", units([source]), 20, session),
+      ),
+    );
+    expect(await balance()).toBe(-35);
+    await expect(reserve(db, "u", units(["parallel-e"]), 2, session)).rejects.toMatchObject({ status: 409 });
+    await expect(reserve(db, "u", units(["other-session"]), 2, crypto.randomUUID())).rejects.toMatchObject({ status: 409 });
     await settle(db, first, [], { model: "test" }, { charged: 3, cost: 3 });
-    expect(await balance()).toBe(-8);
+    expect(await balance()).toBe(-28);
     expect(await db.prepare("SELECT inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ inflight_id: session });
     await settle(db, second, [], { model: "test" }, { charged: 3, cost: 3 });
+    expect(await balance()).toBe(-21);
+    await settle(db, third, [], { model: "test" }, { charged: 3, cost: 3 });
+    expect(await balance()).toBe(-14);
+    await settle(db, fourth, [], { model: "test" }, { charged: 3, cost: 3 });
     expect(await balance()).toBe(0);
     expect(await db.prepare("SELECT inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ inflight_id: null });
     expect(await db.prepare("SELECT SUM(points) AS paid FROM usage_log").first()).toEqual({ paid: 5 });

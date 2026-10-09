@@ -56,11 +56,13 @@ describe("single-pass question HTTP pipeline", () => {
     expect(response.status).toBe(426);
     expect(fetcher).not.toHaveBeenCalled();
   });
-  it("rejects positional-reason clients before calling the provider", async () => {
+  it("rejects the prior usage-anchor contract before reserving or calling the provider", async () => {
     const fetcher = vi.fn<typeof fetch>();
-    const response = await start(request("single-pass-v1"), fetcher).response;
+    const response = await start(request("single-pass-v2"), fetcher).response;
     expect(response.status).toBe(426);
     expect(fetcher).not.toHaveBeenCalled();
+    expect(await env.DB.prepare("SELECT COUNT(*) AS count FROM charges").first()).toEqual({ count: 0 });
+    expect(await env.DB.prepare("SELECT COUNT(*) AS count FROM generation_leases").first()).toEqual({ count: 0 });
   });
   it.each([false, true])("keeps provider diagnostics administrator-only (admin=%s)", async (admin) => {
     if (admin) env.ADMIN_EMAILS = "u@example.test";
