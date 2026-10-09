@@ -13,13 +13,14 @@
 | `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/generation-room.ts` | 每帳號／session 的 SQLite Durable Object，固定 operation ID 去重、獨立背景生成、SSE 訂閱／回放、10 分鐘上限與 30 分鐘結果清除；斷線不取消上游、不重複預留或結算 |
-| `src/provider-websocket.ts` | 一條持續 WebSocket 的兩個 stream_id lanes，共用事件 parser、獨立上下文；斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 60 秒關閉連線 |
-| `src/generation-leases.ts`、`migrations/0014_generation_leases.sql` | 每 attempt 一個並行預留名額，同一帳號／session 最多兩個；結算或失敗只釋放自己的名額，其他預留仍保持鎖定；轉換既有 inflight reservation |
+| `src/provider-websocket.ts` | 一條持續 WebSocket 的最多四個可重用 stream_id lanes，共用事件 parser、獨立上下文；上游終止才重用名稱，中止後的晚到文字及舊 socket 事件不混入新工作；斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 60 秒關閉連線 |
+| `src/generation-leases.ts`、`migrations/0014_generation_leases.sql` | 每 attempt 一個並行預留名額，同一帳號／session 最多四個；結算或失敗只釋放自己的名額，其他預留仍保持鎖定；轉換既有 inflight reservation |
 | `src/cache-probe-input.ts`、`scripts/probe-generation-cache.mjs` | 三個實際模型路由各一個暖快取與兩個並行小樣本，最多 128 輸出 tokens／次，讀取真實 cache read／write 用量及連線時間；首次部署以 [cache-probe] 啟用，之後按需手動重跑 |
 | `docs/generation-performance.md` | Pi 機制的版本化研究、暖快取後有限並行、批次／費用邊界與正式 cache probe 維護方法 |
 | `docs/luna-photo-evaluation.md` | 五張教材與兩個 Luna 的有界實測、子代理核對、待校對問題與 CLI 快取界線 |
 | `docs/luna-question-quality-20261009.md` | 凍結 v12 與 v13–v19、low／medium／high、明示回饋及單來源補缺的有界校準，最後正式 Thinking medium 五型 fresh／一次 native recovery 與語意分開，保留未達成穩定品質的界線 |
-| `docs/question-prompt-purpose.md` | v20–v23 命題目的、完整正反例、精確空格代入、逐題／整組檢查與 usage 錨點 raw v3；凍結 A/B 候選及未宣稱穩定品質的實測界線 |
+| `docs/question-prompt-purpose.md` | v20–v25 命題目的、完整正反例、真實空格流程及 WordBank 來源 ref／usage 錨點 raw v3；凍結 A/B 候選及獨立語意覆核的實測界線 |
+| `docs/luna-workload-results-20261009.md` | 70 次新 CLI 請求、273 子題與 943 理由的逐項覆核；4／8／16、4／1、low／medium 的配對、明確空格與 ref 改善，以及尚未達成穩定語意品質的界線 |
 | `tests-next/generation-room.test.ts`、`tests-next/provider-websocket.test.ts` | 斷線續跑／去重／扣款、上游結果恢復，以及真正 workerd／SQLite DO／WebSocket 連線復用與回放 |
 | `tests-next/room-fixture.ts` | 合成供應商與記憶體 actor storage 的本地測試 fixture |
 | `scripts/probe-websocket.mjs` | 部署前使用 production key 驗證供應商 WebSocket handshake，無模型生成、不輸出金鑰 |
@@ -32,10 +33,11 @@
 | `src/question-review.ts`、`src/question-review-validation.ts` | 獨立審題 schema／規則及核准前門檻；先修訂與逐項解說，最後判定未解決問題及 approved，檢查篇幅、跨度、選項與原文依據 |
 | `src/reviewed-question-stream.ts` | 暫停使用的獨立審題流程，未匯入正式 Worker 入口 |
 | `tests-next/question-generation.test.ts` | 題目單次生成、即時文字串流、native fetch receiver、管理員診斷及舊契約拒絕 |
+| `tests-next/generation-item-repair.test.ts` | 文意選填按 raw item ref 綁定修復來源，拒絕缺失／未知 ref，不以 index 猜來源；其他題型的修復輸入保持原契約 |
 | `src/usage-parts.ts`、`tests-next/question-review-validation.test.ts` | 各回合完整用量、各自計價後加總；核准稿機器門檻及輸出判定順序的必要反例檢查 |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
-| `vendor/lexiro-ai-contract-4.0.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、單次生成預估與 single-pass-v2 契約、itemRepair、Sol 價格及 Pro/low 路由。JSON 必須帶模型與檔位，照片由 X-AI-Model／X-AI-Tier 選擇；已付費來源依實際模型及檔位區分 |
+| `vendor/lexiro-ai-contract-5.0.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、單次生成預估與 single-pass-v3 契約、usage 定位與四批並行共用上限、itemRepair、Sol 價格及 Pro/low 路由。JSON 必須帶模型與檔位，照片由 X-AI-Model／X-AI-Tier 選擇；已付費來源依實際模型及檔位區分 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
@@ -44,7 +46,7 @@
 | `scripts/evaluate-question-review.mjs` | 對凍結初稿做 fresh medium CLI 盲審，保留每次請求、schema、回覆與回條；CLI 失敗即停止後續樣本，不以 parser 通過率冒充教育品質 |
 | `tests-next/fixtures/prompt-eval/`、`docs/prompt-evaluation.md` | 從公開前端移入的歷史合成案例、片語實際用法案例與評測方法；`luna-quality-sources.json` 是現行 near-synonym／角色／多義風險的合成來源；`luna-workload-sources.json` 固定原 16 詞加 8 個正常變形／片語來源，供小批次與並行對照；歷史 medium artifacts 另存本地 ignored artifacts/historical-medium |
 | `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema、writer／reviewer 固定前綴與 schema／設定跨輸入一致性、最低 tokenizer 長度驗證，以及補充多義與單字共用同一前綴及快取鍵 |
-| `tests-next/settlement.test.ts` | 補充多義的結算：空詞義仍算完成、回傳一個或兩個收費相同、超過上限或語言錯誤的字不列入已完成 |
+| `tests-next/settlement.test.ts` | 補充多義的結算：空詞義仍算完成、回傳一個或兩個收費相同、超過上限或語言錯誤的字不列入已完成；文意選填完整且唯一 ref 覆蓋及修復身份、無效來源重試與真實用量一次結算 |
 | `tests-next/organize.test.ts` | 整理固定價格／前綴、1／10 張的單一串流 envelope、張數／逐張 WebP 限制、逐張冪等與失敗／取消整批退款 |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
 | `.github/workflows/deploy.yml`、`docs/deployment.md` | main push 先完整驗證，再套用 D1 migrations、同步 secrets、部署 Worker 並做 CORS health check；以及正式設定與上線驗收清單 |
@@ -62,7 +64,7 @@
 
 ## 持久化版本
 
-Durable Object namespace `GENERATIONS` 使用 `generation-room-v1` SQLite migration；回放來源／輸出與結算 metadata 至任務開始後 30 分鐘，由 alarm 刪除。圖片、私有提示與憑證不保存於 actor storage。D1 版本 14 新增 generation_leases，租期 15 分鐘；同 session 最多兩個預留。其他批次仍有預留時保留負值，最後一批結算才套用餘額零下限，避免提前歸零導致多退點數。
+Durable Object namespace `GENERATIONS` 使用 `generation-room-v1` SQLite migration；回放來源／輸出與結算 metadata 至任務開始後 30 分鐘，由 alarm 刪除。圖片、私有提示與憑證不保存於 actor storage。D1 版本 14 新增 generation_leases，租期 15 分鐘；同 session 最多四個預留。其他批次仍有預留時保留負值，最後一批結算才套用餘額零下限，避免提前歸零導致多退點數。
 
 | 資料 | 版本 | Migration |
 | --- | --- | --- |

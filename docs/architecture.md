@@ -25,7 +25,7 @@ Prepare generation／images 驗輸入並產生每來源身份。每次生成帶 
 
 上游 WebSocket 中斷後，已知 response ID 只用 GET 取回原 response；queued／in_progress 有界等待至批次 deadline，不新建一份生成。無法恢復則管理員看到 transport、close code／reason、job／response ID、耗時与逾時上限；一般帳號只看到可理解的錯誤。部署前握手探測不生成 token，失敗就不发布。
 
-SQLite Durable Object 暫存來源、輸出與結算 metadata 至任務開始後 30 分鐘，用 alarm 刪除；圖片、私有提示與憑證不落入 actor storage。重連回放不再扣款，瀏覽器只累計最後完整回覆的用量。重新整理後失去瀏覽器 pending ID，目前只保留流程草稿已完成的成果。
+SQLite Durable Object 暫存來源、輸出與結算 metadata 至任務開始後 30 分鐘，用 alarm 刪除；圖片、私有提示與憑證不落入 actor storage。重連回放不再扣款，瀏覽器只累計最後完整回覆的用量。生成草稿保存各 lane 的 pending operation ID；重新整理後驗證帳號、契約與期限，再接回原工作，無法接續時仍保留已完成成果。
 
 Terminal 結算發生在終止事件交給前端之前。完整 usage 直接記成本與實扣；缺 usage 先補查 stored response，仍未知就記 pending。Pending 只存 response ID、來源與計費 metadata，不存圖片／prompt／輸出。取消、失敗與無法回報成本都保留明確狀態。
 
@@ -35,7 +35,7 @@ Terminal 結算發生在終止事件交給前端之前。完整 usage 直接記�
 
 ## D1 與排程
 
-Migrations 0001-0014 建立並演進帳號、設定、session／來源、usage、pending、管理版本與獨立 generation leases。0013 將舊單回合紀錄及 pending 轉成單一 part，保留原值及 response ID；0014 轉換既有 inflight reservation，並支援同 session 最多兩個名額。帳號／設定 revision 每次相關異動遞增，資料回到原值仍不能讓舊 expected 請求通過。未知歷史成本與未核實實扣不猜測回填。
+Migrations 0001-0014 建立並演進帳號、設定、session／來源、usage、pending、管理版本與獨立 generation leases。0013 將舊單回合紀錄及 pending 轉成單一 part，保留原值及 response ID；0014 轉換既有 inflight reservation。每個 attempt 持有自己的名額；目前前端、actor 與 D1 共用上限四個，同 session 並行、其他 session 互斥。調整上限沒有改資料 schema。帳號／設定 revision 每次相關異動遞增，資料回到原值仍不能讓舊 expected 請求通過。未知歷史成本與未核實實扣不猜測回填。
 
 Wrangler Cron `0 0 * * *` 每日 UTC 00:00（臺灣 08:00）先 reconcile pending usage，再 scheduledMaintenance；帳號請求也可補查／觸發自己的到期續期。這是計費維護，不是教材同步或 FSRS 排程。
 

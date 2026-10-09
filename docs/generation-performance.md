@@ -30,9 +30,15 @@
 
 ## 細批次的 lane 重用（2026-10-09）
 
-Provider 的 `stream_id` 是連線內的路由名稱，operation ID 是 Lexiro 保留與回放工作的識別，兩者不必相同。完成的 lane 現在可供下一個獨立批次使用；請求內容、回覆、用量與結算仍各自屬於原 operation。
+Provider 的 `stream_id` 是連線內的路由名稱，operation ID 是 Lexiro 保留與回放工作的識別，兩者不必相同。收到上游終止事件的 lane 可供下一個獨立批次使用；本地中止先等待上游終止，晚到文字不交給下一批。換連線後忽略舊 socket 的文字、error 與 close。請求內容、回覆、用量與結算仍各自屬於原 operation。
 
-[官方 WebSocket 限制](https://developers.openai.com/api/docs/guides/websocket-mode#limits-per-connection)為每條連線最多 32 個不同 named stream；若每個小批次都創造新名稱，長輪生成會先耗盡名稱。重用完成 lane 可保留同一連線，請求沒有 `previous_response_id` 時也不會繼承前一批內容。本機 workerd／D1 合成測試在同一連線完成 36 次獨立請求，只用兩個名稱，並確認第一個 operation 的回放及 36 筆結算仍正確。這是傳輸行為驗證，不是正式供應商效能或計費量測。
+[官方 WebSocket 限制](https://developers.openai.com/api/docs/guides/websocket-mode#limits-per-connection)為每條連線最多 32 個不同 named stream；若每個小批次都創造新名稱，長輪生成會先耗盡名稱。重用完成 lane 可保留同一連線，請求沒有 `previous_response_id` 時也不會繼承前一批內容。本機 workerd／D1 合成測試在同一連線完成 36 次獨立請求，只用四個名稱，並確認第一個 operation 的回放及 36 筆結算仍正確。這是傳輸行為驗證，不是正式供應商效能或計費量測。
+
+## 四題批次與四路上限（2026-10-09）
+
+詞彙題現在每批四個來源，第一批仍是正常產出，完成後最多四路。前端排程、後端 actor 與 D1 預留共用 contract 5.0.0 的 `MAX_PARALLEL_GENERATIONS = 4`；不同 session 仍互斥。文章型保留完整題組，不把共用文章或選項拆成單格請求。上方 2026-10-05 的十六題／兩路是歷史配置。
+
+固定 24 來源與 v23／medium 的 CLI 實測，四題兩路約 101.5 秒、四題四路約 73.2 秒，約少 28%；十六題兩路設定因 warm-first 後只剩一批，實際最大並行為一。v24 單題四路約 79 秒，四題四路約 63 秒；單題仍有多解及錯誤理由，未採單題一請求。這些是有限樣本，CLI tokens 不等於正式 API 成本。完整回條、品質覆核及同 schema／parser 配對界線見 [Luna 批次實測](luna-workload-results-20261009.md)。
 
 ## 真實供應商快取驗證
 

@@ -12,7 +12,7 @@ Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號�
 
 GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CLOUDFLARE_API_TOKEN`、`OPENAI_API_KEY`、`ADMIN_EMAILS`。Cloudflare token 限定為 Tavric account，權限需包含 Workers Scripts:Edit 與 D1:Edit。Workflow 仍不執行消耗帳號用量的 prompt 評測。
 
-## 照片批次介面（現行共用合約 3.2.0）
+## 照片批次介面（現行共用合約 5.0.0）
 
 `POST /organize` 的 `text/plain` body 以換行分隔 1-10 張 WebP base64，`X-Session-Id` 識別同批 session，`X-AI-Model` 必須是共用合約接受的 Luna 模型；`X-AI-Tier` 選擇 lite／thinking／pro，Pro 統一使用 gpt-6.1-sol／low。每張最多 1.5 MB／長邊 1800，整批 body 上限 20,000,009 bytes。Worker 在預留前驗證每張圖片，一次上游請求含整批 input_image；預留依 `rate('organizeImage', tier, model)`，實扣按回報 usage。成功保留各來源身份，失敗或取消釋放預留。照片格式本身不新增 D1 migration。
 
@@ -22,11 +22,11 @@ GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CL
 
 - `GENERATIONS` 綁定 GenerationRoom，`generation-room-v1` 使用 SQLite Durable Object。部署前 handshake probe 不產生模型輸出；不支援時停止部署，不自動改用 HTTP 生成。
 - 生成 POST 必須帶 X-Generation-Id；GET /generation/{session}/{id} 依已驗證 uid 路由至同一 actor，跨帳號無法取得結果。每批 10 分鐘上限；來源、輸出及結算 metadata 在 30 分鐘內可回放，alarm 到期刪除。D1 lease 為 15 分鐘，schema migration 到 0014。
-- WebSocket 用兩個 stream_id lanes 共用連線，但每批不帶 previous_response_id。WS 閒置 60 秒關閉。瀏覽器斷線不取消本批；本頁續跑接原 job，重新整理僅保留原本流程草稿已完成成果。
-- `0014_generation_leases.sql` 轉換既有預留並支援同 session 兩批並行；第一個實際批次完成後才並行。詞彙題每批 16 來源，精簡解說，因此題目 key 更新至 lexiro-questions-20261005-v10；其他工作快取版號保留。首次發布以 [cache-probe] 執行正式快取小樣本，兩個並行回條都需至少 1,024 cached tokens 才部署。參見[生成效能](generation-performance.md)。
+- WebSocket 最多四個 stream_id lanes 共用連線，上游終止後名稱可重用，本地中止先等待上游終止；每批不帶 previous_response_id。WS 閒置 60 秒關閉。瀏覽器斷線不取消本批；流程草稿保存 pending operation 與 lanes，驗證帳號、契約及期限後接回原工作。
+- `0014_generation_leases.sql` 保存各 attempt 預留；程式透過共用 `MAX_PARALLEL_GENERATIONS=4` 控制同 session 四批並行，其他 session 保持互斥。第一個實際批次完成後才並行。詞彙題每批四個來源，文章題組仍保持完整；正式題目 writer 為 v25，其他工作快取版號保留。首次發布以 [cache-probe] 執行正式快取小樣本，兩個並行回條都需至少 1,024 cached tokens 才部署。四路實際供應商效能及 CPU 另驗，不能以兩路 probe 代替。參見[生成效能](generation-performance.md)。
 
-- 部署依序套用未完成 migrations，目前到 `0013_usage_parts.sql`，轉換既有 usage／pending 的單回合紀錄。本地測試只用 `npm run db:migrate`。
-- 前端與 Worker 使用 `@lexiro/ai-contract` 3.2.0。題目帶 `X-Question-Contract: single-pass-v1`，舊版在預留前回 426。游標請求使用 cursor、回應 nextCursor，舊 offset 回 400。JSON 生成帶 model，管理 PATCH 帶 expected 版本；沒有舊格式相容分支。
+- 部署依序套用未完成 migrations，目前到 `0014_generation_leases.sql`，轉換既有 inflight 預留。本輪上限及 raw 契約變更不增加 D1 migration；本地測試只用 `npm run db:migrate`。
+- 前端與 Worker 使用 `@lexiro/ai-contract` 5.0.0。題目帶 `X-Question-Contract: single-pass-v3`，綜合測驗／文意選填每格必填 usage，文意選填另必填本批來源 ref，生成、修復與來源完成結算均不猜陣列順序；舊版在預留與上游呼叫前回 426。游標請求使用 cursor、回應 nextCursor，舊 offset 回 400。JSON 生成帶 model，管理 PATCH 帶 expected 版本；沒有舊格式相容分支。
 - 舊 usage 保留原值並標成未核實；缺少 input／output 的歷史零成本列另標為 `unavailable`，不列入已知成本。不臆測實扣，也不自動修正既有餘額。管理頁的已扣點數只合計新版本可核實的紀錄。
 - `pending_usage` 只含 response id、來源識別與計費 metadata，不保存 prompt 或輸出。Cron 每次最多補查 5 筆，帳戶請求最多 1 筆；每次供應商查詢上限 10 秒。取消／失敗不鎖住點數；有產出的待核對項目保留預留，直到取得有效 usage。
 - 監控報表的待核對筆數。持續無法取得 usage 時，需向供應商查明，不要刪除 pending 列、改帳戶負餘額或冒填零成本。此版本沒有自動估價／免單與人工核銷端點。
@@ -37,4 +37,4 @@ Cron 為每日 UTC 00:00（臺灣 08:00），先補查 pending usage 再執行�
 
 更新 public contract 後，在前端 `packages/ai-contract` 執行 npm pack，將版本化 tgz 放入本 repo 的 vendor，更新 package.json／lockfile，再跑四個 gate。契約欄位改變時先發布 Worker 再發布前端。完整 HTTP／結算時序見[架構](architecture.md)。
 
-本輪不新增 D1 migration，先部署 Worker 的單次生成與 itemRepair，再部署新前端。grammar 請求在預留前回 400，缺少 single-pass-v1 的題目請求回 426；使用者明確啟用 PWA 更新後取得新介面，不能為發布自動清空草稿或刷新。單字、補充、整理與解說快取鍵不變；題目 writer 使用 `lexiro-questions-20261005-v9`，單題重生使用 `lexiro-question-item-20261005-v1`。独立審題流程暫停，不打包到正式入口。
+本輪不新增 D1 migration，先部署 Worker 的 single-pass-v3 與 itemRepair，再部署新前端。grammar 請求在預留前回 400，缺少 single-pass-v3 的題目請求回 426；使用者明確啟用 PWA 更新後取得新介面，不能為發布自動清空草稿或刷新。已保存題庫及練習資料不需遷移，契約不符的生成草稿保留已完成題目並說明無法接續原因。單字、補充、整理與解說快取鍵不變；題目 writer 使用 `lexiro-questions-20261009-v25`，單題重生使用 `lexiro-question-item-20261009-v15`。獨立審題流程暫停，不打包到正式入口。
