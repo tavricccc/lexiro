@@ -2,7 +2,7 @@
 
 ## 2026-10-09 出題契約與有界能力對照
 
-現行題目 writer 為 `lexiro-questions-20261009-v18`、raw 契約 `single-pass-v2`。錯項解說明確綁定候選文字，共用選項先生成；正式仍單次 writer，Lite／Thinking／Pro 分級及不相關快取不變。本輪有凍結 v12 基線、兩個 Luna／low、5.6／medium 與 high、一次明確人工回饋及單來源補缺；v18 其他三型各有一次 high 格式驗收。原始失敗與傳輸 timeout 全保留。格式與解析改善已驗證，語意仍沒有五題型全面穩定通過；CLI high 不能當成正式 Thinking medium 的證據，詳見 [本輪紀錄](luna-question-quality-20261009.md)。
+現行題目 writer 為 `lexiro-questions-20261009-v19`、raw 契約 `single-pass-v2`。錯項解說明確綁定候選文字，共用選項先生成；正式仍單次 writer，Lite／Thinking／Pro 分級及不相關快取不變。v19 改原文含義／搭配理由並讓閱讀先選 skill／evidence；同六詞的正式 5.6 Thinking medium 五型 fresh 首次 parser 3／5，一次 native reliable 補缺後 4／5，仍有多解、錯標推論及缺 aux 格。此前凍結 v12、兩個 Luna／low、5.6 medium／high、明確人工回饋與 v18 high 全留為歷史。原始失敗與傳輸 timeout 全保留；high 人工回饋稿不能當成 medium fresh 的證據，也不能以較弱但可用的題目混同錯誤解析，詳見 [本輪紀錄](luna-question-quality-20261009.md)。
 
 ## 2026-10-08 五張教材照片與兩個 Luna
 

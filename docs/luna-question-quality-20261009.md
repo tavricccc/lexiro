@@ -1,16 +1,32 @@
 # 2026-10-09 Luna 題目品質校準
 
-本輪完成單次生成契約、解析對位及可機器驗證條件的改善；**尚未證明 GPT-5.6 Luna 在五題型都能一遍穩定產出沒有多解的題目**。低推理、中推理及高推理都保留原始失敗，不能用 parser 通過數、168 個後端測試或一次修復的成功樣本代替語意驗收。
+本輪完成單次生成契約、解析對位及可機器驗證條件的改善；**最後 v19／GPT-5.6 Luna 正式 Thinking medium 的五題型 fresh＋一次 native recovery，仍未達穩定可用目標**。首次 parser 3／5，一次補缺後 4／5；另有真多解、錯標推論及缺少指定文法格。低推理、中推理及高推理都保留原始失敗，不能用 parser 通過數、168 個後端測試或一次修復的成功樣本代替語意驗收。
+
+## v19 正式 Thinking 五題型驗收
+
+最後修正針對已觀察到的兩個根因：文意選填理由以原文含義及搭配排除候選，不用單一詞性標籤否定其他常見用法；閱讀 schema 改為 `skill → evidence → question → answer`。閱讀另給正面兩事實結構：只有一套器材，加上三組同時要使用，才推出必須協調輪流；本文保留兩個事實，結論留給讀者。
+
+使用同六個高風險來源、難度三及正式 `--tier thinking`，沒有 `--effort` 覆寫或 manual feedback。先 fresh 文意選填與閱讀，再 fresh 詞彙、綜合與篇章；僅一次正式 `step.recover` 補回漏掉 reliable 的單來源。fresh 前端 `f2bb49c` 重驗結果如下：
+
+| 題型 | 首次結構 | 一次 native recovery 後 | 語意與教學要求 |
+| --- | --- | --- | --- |
+| 詞彙 | 未通過；可保留 5／6 | 6／6；5 題保留＋1 題補缺 | estimate／calculate、investment／expense 等近義仍未排除；補缺不會修正保留題的多解 |
+| 綜合測驗 | 5 格通過 | 沿用首次 | 詞義題有本文線索，但前兩格仍為 continual／estimated，沒有完成兩個 aux 選形格 |
+| 文意選填 | 6 格及 54 理由通過 | 沿用首次 | 原先三個錯誤詞性斷言消失；unused automatic 可以自然替換 mechanical timer，出現真多解 |
+| 篇章結構 | 未通過；前兩移除相鄰 | 不適用 | 固定 bank 的結構失敗無法單題修復，沒有重生整組；全文也未分成要求的三至五段 |
+| 閱讀 | 3 題通過 | 沿用首次 | 正解及錯項理由可用但較直接；第三題把明示讀數相同改述成 inference，仍不是兩個必要事實 |
+
+本輪六次請求都有內容回覆，沒有傳輸失敗。可用但誘答較弱、正文或解析錯誤、結構失敗分開記錄；不把弱題全部拒絕，也不把格式通過宣稱為全題組可直接交付。這是最後一次有界修正後的完整五型驗收，不追加整輪，也不把 v17 high 的人工回饋稿當作 v19 medium 的 fresh 成功。
 
 ## 方法與版本界線
 
-- A 來源是前次 Unit 09 的 32 個受控詞義；B 來源是 16 個合成高中詞義，涵蓋近義、角色、機械描述及多義風險。v17／v18 另抽 B 的六個高風險來源，不改來源詞性或中文義。
+- A 來源是前次 Unit 09 的 32 個受控詞義；B 來源是 16 個合成高中詞義，涵蓋近義、角色、機械描述及多義風險。v17–v19 另抽 B 的六個高風險來源，不改來源詞性或中文義。
 - v12 後端在修改前凍結，基線使用前端 `7313ca7`、`single-pass-v1`。之後的 `single-pass-v2` 同時改 schema 與 parser，不能把 parser 的新門檻當成純提示 A/B 分數。
 - 題組用正式 `questionTask`、writer、schema、parser 與 `step.recover`。每次請求先保存，回覆及回條不可覆寫。後續前端追加篇章及詞形門檻時，保留每次載入的版本界線，不改寫舊 metrics。
 - 全部使用已登入 Codex CLI，明確指定模型與 effort；沒有正式 API key，沒有 Responses API、正式計費、快取率或部署驗收。回條缺 actual model 時保持 null。
 - CLI 或供應商失敗停止該模型後續案例。兩次 300 秒 CLI timeout 沒有產出，列為傳輸失敗，不算模型內容失敗，也不把尚未執行的案例算成出題失敗。
 
-原始資料、凍結 v12–v18 模組、來源、請求、schema、回覆、解析及人工核對放在 ignored `artifacts/ai-quality/`。最終索引為 `artifacts/ai-quality/20261009-quality/stage-metrics-complete.json` 與 `content-review-complete.json`，主代理的獨立覆核另存 `release-v18-independent-review.json`；較早索引保持原樣。共 59 次 CLI 請求、57 份內容回覆、2 次傳輸 timeout；其中 2 次是明示回饋的整批新稿，1 次是單來源補缺。
+原始資料、凍結 v12–v19 模組、來源、請求、schema、回覆、解析及代理逐題核對放在 ignored `artifacts/ai-quality/`。完整索引為 `artifacts/ai-quality/20261009-quality/release-v19-stage-metrics.json`，最後逐題紀錄為 `release-v19-content-review.json`，原回覆及補缺重驗為 `release-v19-revalidation.json`；v18 主代理獨立覆核仍保留 `release-v18-independent-review.json`，較早索引保持原樣。共 65 次 CLI 請求、63 份內容回覆、2 次傳輸 timeout；其中 2 次是明示回饋的整批新稿，2 次是分屬 v17 high 與 v19 medium 的單來源補缺。
 
 ## 首次產出與一次修復
 
@@ -53,12 +69,12 @@ v16 A 閱讀四個正解有本文支持，但字義題錯寫目標字位於 seco
 1. `@lexiro/ai-contract` 4.0.0 與 `single-pass-v2` 取代舊題目 raw 契約；不接受舊 positional reasons。
 2. `whyWrong` 使用 `{option,reason}`，每個理由明確綁定完整實際候選。文意選填十個與篇章五個 `options` 在逐題解析前生成；前端拒絕重複、缺漏或陌生候選。
 3. Schema 限制英文欄位不含漢字、中文解析含漢字、正文不畫底線，並固定已知選項／理由數量。這些限制能減少格式失敗，不能證明語意唯一。
-4. 詞彙先寫定 distractors，再寫情境與複製 usage／answer。閱讀先寫 skill／evidence，再編寫選項。v18 英文 brief 只保留一個完整正面示範，與題型規則分檔維護；用觀察到的事件、機制、因果提供線索，避免題幹列舉否定候選。綜合測驗前兩格明確以外部 aux 選形。
+4. 詞彙先寫定 distractors，再寫情境與複製 usage／answer。v19 閱讀 schema 先寫 skill／evidence，再寫 question／answer／distractors，題型規則給必要兩事實正例。英文 brief 與題型規則分檔維護，用觀察到的事件、機制、因果提供線索，避免題幹列舉否定候選；文意選填理由以原文含義與搭配說明。綜合測驗前兩格要求外部 aux 選形，但此要求仍需語意驗收。
 5. 前端檢查來源單字的合法詞形、完整篇章句、首尾句、相鄰空格、已知字數及未使用共用候選不得出現在正文。固定 bank 的文章或結構失敗重做整組；解說或單題失敗才用局部修復。
 6. 評測可指定 difficulty、正式批次索引與 tier；`--effort` 僅作明示能力對照。正式 Lite＝low、Thinking＝medium、Pro＝Sol／low 及計費保持原樣。
 7. `--targeted-repair` 只跑一次正式 `step.recover` 產生的剩餘子題，最多四個；沒有可局部修復的結果時直接拒絕，不自行改成整組重試。
 
-現行題目鍵為 `lexiro-questions-20261009-v18`，局部子題鍵為 `lexiro-question-item-20261009-v9`。words、senses、organizeText、explain 的完整 instructions、schema、cache key 與凍結 v12 逐項比對皆相同，回條為 `release-v18-cache-verification.json`。v18 共用前綴 1,339 tokens、詞彙完整固定 instructions 1,522 tokens；這是本地 tokenizer 數字，沒有證明正式 cache hit。CLI high 樣本與正式 Thinking 的 medium 亦保持明確區分。
+現行題目鍵為 `lexiro-questions-20261009-v19`，局部子題鍵為 `lexiro-question-item-20261009-v10`。words、senses、organizeText、explain 的完整 instructions、schema、cache key 與凍結 v12 逐項比對皆相同，回條為 `release-v19-cache-verification.json`。v19 共用前綴 1,339 tokens、閱讀完整固定 instructions 1,692 tokens；這是本地 tokenizer 數字，沒有證明正式 cache hit。歷史 CLI high 樣本與最後正式 Thinking 的 medium 保持明確區分。
 
 ## 自行重跑
 

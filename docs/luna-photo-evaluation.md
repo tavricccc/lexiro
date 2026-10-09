@@ -1,6 +1,6 @@
 # 2026-10-08 Luna 教材照片評測
 
-後續 v12 基線、v13–v18、low／medium／high、一次人工回饋與單來源補缺的完整界線見 [2026-10-09 題目品質校準](luna-question-quality-20261009.md)。下表仍是前次 v11 照片及題目採樣，不覆寫為本次結果。
+後續 v12 基線、v13–v19、low／medium／high、人工回饋與 v19 正式 Thinking 五型 fresh＋一次 native recovery 的完整界線見 [2026-10-09 題目品質校準](luna-question-quality-20261009.md)。下表仍是前次 v11 照片及題目採樣，不覆寫為本次結果。
 
 以使用者提供的五張 Unit 09 照片及受控的 32 個詞義，實跑 GPT-6 Luna、GPT-5.6 Luna／low。子代理先建立照片參考，再核對原始回覆；以日常可用為準，主要檢查錯義、明顯多解與解析對位。
 
