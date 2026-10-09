@@ -78,7 +78,15 @@ export async function settleGeneration(
         data = null;
       }
       if (record(data)) {
-        if (prepared.request.itemRepair && questionItemOutput(kind as import("@lexiro/ai-contract").QuestionKind).safeParse(data).success) {
+        if (kind === "wordBank" && prepared.request.itemRepair) {
+          const parsed = questionItemOutput("wordBank").safeParse(data);
+          const original = prepared.request.itemRepair.items[prepared.request.itemRepair.index];
+          if (parsed.success && record(original)) {
+            const replacement = parsed.data.items[0];
+            if ("ref" in replacement && replacement.ref === original.ref)
+              valid.add(0);
+          }
+        } else if (prepared.request.itemRepair && questionItemOutput(kind as import("@lexiro/ai-contract").QuestionKind).safeParse(data).success) {
           valid.add(0);
         } else if (kind === "words" && Array.isArray(data.items)) {
           const sources = buildWordGenerationSources(prepared.request.raw!);
@@ -132,7 +140,14 @@ export async function settleGeneration(
                   valid.add(index);
               });
           } else if (schema.safeParse(data).success) {
-            prepared.units.forEach((unit) => valid.add(unit.index));
+            const refs = kind === "wordBank" && Array.isArray(data.blanks)
+              ? data.blanks.map((item: unknown) => record(item) ? item.ref : undefined)
+              : null;
+            if (kind !== "wordBank" || (refs !== null &&
+                refs.length === prepared.request.sources!.length &&
+                new Set(refs).size === refs.length &&
+                refs.every((ref) => prepared.request.sources!.some((source) => source.ref === ref))))
+              prepared.units.forEach((unit) => valid.add(unit.index));
           }
         }
       }

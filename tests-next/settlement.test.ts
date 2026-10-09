@@ -30,6 +30,22 @@ const terminal = (text: string): StreamTerminal => ({
   },
 });
 
+const bankOptions = ["is", "child", "are", "were", "adult", "student", "doctor", "open", "arrive", "quiet"];
+const bankPassage = "The hall is open. One child waited outside.";
+const bankBlanks = [
+  { ref: "s2", usage: "One child waited outside", answer: "child" },
+  { ref: "s1", usage: "The hall is open", answer: "is" },
+].map((item) => ({ ...item, explanation: "依本位置的原文用法判斷。", whyWrong: bankOptions.filter((option) => option !== item.answer).map((option) => ({ option, reason: "此候選不符合本位置的用法。" })) }));
+const bankRequest = () => ({
+  kind: "wordBank" as const, model: "gpt-6-luna" as const, tier: "lite" as const,
+  session: crypto.randomUUID(), difficulty: 2 as const,
+  sources: [{ ref: "s1", word: "be", pos: "aux.", meaningZh: "是" }, { ref: "s2", word: "child", pos: "n.", meaningZh: "孩子" }],
+});
+const bankResult = (refs = ["s2", "s1"]) => ({
+  title: "A hall", passage: bankPassage, options: bankOptions,
+  blanks: refs.map((ref, index) => ({ ...bankBlanks[index], ref })),
+});
+
 /**
  * Settles one supplement run over bank and current.
  *
@@ -119,6 +135,58 @@ describe("reading retry identity", () => {
     expect((await account(db, "u"))!.points).toBe(balance);
     const fresh = await prepareGeneration({ ...request, session: crypto.randomUUID() }, "u");
     expect((await reserve(db, "u", fresh.units, fresh.halfRate)).charges).toHaveLength(1);
+  });
+});
+
+describe("WordBank source identity settlement", () => {
+  it("retains every completed source identity when valid refs are in reverse order", async () => {
+    const prepared = await prepareGeneration(bankRequest(), "u");
+    const hold = await reserve(db, "u", prepared.units, prepared.halfRate);
+    await settleGeneration(db, hold, prepared, terminal(JSON.stringify(bankResult())), "gpt-6-luna");
+    const saved = await db.prepare("SELECT id,attempt_id FROM charges WHERE uid='u' ORDER BY id").all<{ id: string; attempt_id: string }>();
+    expect(saved.results.map((row) => row.id)).toEqual(prepared.units.map((unit) => unit.id).sort());
+    expect(saved.results.every((row) => row.attempt_id === `settled:${hold.attempt}`)).toBe(true);
+    const retry = await reserve(db, "u", prepared.units, prepared.halfRate);
+    expect(retry.charges).toEqual([]);
+    await settle(db, retry, [], { model: "gpt-6-luna" }, { charged: 0, cost: 0 });
+  });
+
+  it.each([
+    { issue: "missing", refs: ["s2"] },
+    { issue: "unknown", refs: ["s2", "s99"] },
+    { issue: "duplicate", refs: ["s2", "s2"] },
+  ])("does not retain completed identities for $issue source coverage", async ({ refs }) => {
+    const prepared = await prepareGeneration(bankRequest(), "u");
+    const before = (await account(db, "u"))!.points;
+    const hold = await reserve(db, "u", prepared.units, prepared.halfRate);
+    const charged = await settleGeneration(db, hold, prepared, terminal(JSON.stringify(bankResult(refs))), "gpt-6-luna");
+    expect(charged).toBeGreaterThan(0);
+    expect((await db.prepare("SELECT id FROM charges WHERE uid='u'").all()).results).toEqual([]);
+    expect(before - (await account(db, "u"))!.points).toBe(charged);
+    expect(await db.prepare("SELECT input,output,points,credits,usage_state FROM usage_log WHERE id=?").bind(hold.attempt).first())
+      .toMatchObject({ input: 900, output: 60, points: charged, credits: charged, usage_state: "reported" });
+    const retry = await reserve(db, "u", prepared.units, prepared.halfRate);
+    expect(retry.charges.map((charge) => charge.id).sort()).toEqual(prepared.units.map((unit) => unit.id).sort());
+    await settle(db, retry, retry.charges, { model: "gpt-6-luna" }, { charged: 0, cost: 0 });
+  });
+
+  it.each([{ ref: "s2", retained: true }, { ref: "s1", retained: false }])("retains a repaired identity only for its original ref ($ref)", async ({ ref, retained }) => {
+    const request = { ...bankRequest(), itemRepair: { index: 0, passage: bankPassage, items: bankBlanks } };
+    const prepared = await prepareGeneration(request, "u");
+    const before = (await account(db, "u"))!.points;
+    const hold = await reserve(db, "u", prepared.units, prepared.halfRate);
+    const result = terminal(JSON.stringify({ items: [{ ...bankBlanks[0], ref }] }));
+    const charged = await settleGeneration(db, hold, prepared, result, "gpt-6-luna");
+    const after = (await account(db, "u"))!.points;
+    expect(charged).toBeGreaterThan(0);
+    expect(before - after).toBe(charged);
+    await settleGeneration(db, hold, prepared, result, "gpt-6-luna");
+    expect((await account(db, "u"))!.points).toBe(after);
+    expect((await db.prepare("SELECT input,output,points,credits,usage_state FROM usage_log WHERE id=?").bind(hold.attempt).all()).results)
+      .toEqual([{ input: 900, output: 60, points: charged, credits: charged, usage_state: "reported" }]);
+    const retry = await reserve(db, "u", prepared.units, prepared.halfRate);
+    expect(retry.charges.map((charge) => charge.id)).toEqual(retained ? [] : [prepared.units[0].id]);
+    await settle(db, retry, retry.charges, { model: "gpt-6-luna" }, { charged: 0, cost: 0 });
   });
 });
 
