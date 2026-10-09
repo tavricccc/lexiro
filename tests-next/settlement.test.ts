@@ -109,7 +109,7 @@ describe("reading retry identity", () => {
           question: "What does shared mean here?", answer: "Gave some food to others", distractors: ["Sold food for money", "Kept all the food", "Threw the food away"],
           skill: "vocabulary", evidence: ["She shared the apples with them before class."],
         },
-      ].slice(0, count).map((item) => ({ ...item, explanation: "依文章線索作答。", whyWrong: ["與文章不符。", "與文章不符。", "與文章不符。"] })),
+      ].slice(0, count).map((item) => ({ ...item, explanation: "依文章線索作答。", whyWrong: item.distractors.map((option) => ({ option, reason: "與文章不符。" })) })),
     }));
     await settleGeneration(db, hold, prepared, result, "gpt-6-luna");
     const balance = (await account(db, "u"))!.points;

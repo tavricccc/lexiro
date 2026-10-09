@@ -15,20 +15,24 @@ const { values } = parseArgs({ options: {
   tasks: { type: "string", default: "photos,words,vocabulary,cloze,wordBank,discourse,reading,senses,explain" },
   "images-dir": { type: "string" }, reference: { type: "string" },
   "backend-module": { type: "string" }, transport: { type: "string", default: "codex" },
+  difficulty: { type: "string", default: "2" }, "batch-index": { type: "string" },
   "repair-from": { type: "string", multiple: true }, feedback: { type: "string" },
   "dry-run": { type: "boolean", default: false }, help: { type: "boolean", default: false },
 } });
 const taskOrder = ["photos", "words", "vocabulary", "cloze", "wordBank", "discourse", "reading", "senses", "explain"];
 if (values.help) {
-  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--dry-run]");
+  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--difficulty 1|2|3] [--batch-index <zero-based-production-batch>] [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--dry-run]");
   process.exit(0);
 }
 let models = [...new Set((values.models ?? "gpt-6-luna,gpt-5.6-luna").split(","))];
 const selected = new Set(values.tasks.split(","));
+const difficulty = Number(values.difficulty);
+const batchIndex = values["batch-index"] === undefined ? null : Number(values["batch-index"]);
 if (!["baseline", "tuned"].includes(values.phase) || !values.reference ||
     models.some((model) => !["gpt-6-luna", "gpt-5.6-luna"].includes(model)) ||
     [...selected].some((task) => !taskOrder.includes(task)) ||
-    !["codex", "responses"].includes(values.transport)) throw new Error("Invalid phase, models, tasks, reference or transport; use --help.");
+    !["codex", "responses"].includes(values.transport) || ![1, 2, 3].includes(difficulty) ||
+    (batchIndex !== null && (!Number.isSafeInteger(batchIndex) || batchIndex < 0))) throw new Error("Invalid phase, models, tasks, reference, transport, difficulty or batch index; use --help.");
 if (values.phase === "baseline" && !values["backend-module"]) throw new Error("Baseline requires --backend-module so later prompt edits cannot replace the baseline.");
 if (selected.has("photos") && !values["images-dir"]) throw new Error("Photos require --images-dir.");
 if (values.transport === "responses" && !values["dry-run"] && !process.env.OPENAI_API_KEY) throw new Error("Responses requires OPENAI_API_KEY; no transport fallback is used.");
@@ -120,9 +124,9 @@ async function buildCases(modules, model, sources, words, photos) {
       const sample = task === "wordBank"
         ? [...words.slice(start), ...words.slice(0, start)].slice(0, 10).map((word) => ({ ...word, senses: [word.senses[0]] }))
         : words;
-      const steps = modules.questionTask(sample, task, 2).steps;
+      const steps = modules.questionTask(sample, task, difficulty).steps;
       // Rotate the sampled production batch so later headwords and senses are tested too.
-      const index = { vocabulary: 1, cloze: 0, wordBank: 0, discourse: 2, reading: 3 }[task] % steps.length;
+      const index = (batchIndex ?? { vocabulary: 1, cloze: 0, wordBank: 0, discourse: 2, reading: 3 }[task]) % steps.length;
       await addStep(task, steps[index], index, steps.length);
     }
   }
@@ -269,7 +273,7 @@ async function evaluateModel(modules, model, sources, words, photos, reference, 
     const savedRequest = structuredClone(request);
     if (test.task === "photos") savedRequest.input.at(-1).content = [{ type: "input_text", text: test.prepared.input }, ...photos.manifest.map((image) => ({ type: "input_image", sourcePath: image.sourcePath, webpSha256: image.webpSha256, detail: "high" }))];
     const sampleSources = test.prepared.request.sources;
-    await save(directory, `${test.id}-request.json`, { requestedModel: model, effort: "low", transport: values.transport, sourceBasis: test.sourceBasis, request: savedRequest, requestSha256: digest(JSON.stringify(request)), imageManifest: test.task === "photos" ? photos.manifest : [],
+    await save(directory, `${test.id}-request.json`, { requestedModel: model, effort: "low", transport: values.transport, sourceBasis: test.sourceBasis, difficulty, cacheKey: test.prepared.cacheKey, request: savedRequest, requestSha256: digest(JSON.stringify(request)), imageManifest: test.task === "photos" ? photos.manifest : [],
       ...(test.repair ? { repair: test.repair } : {}),
       ...(test.productionBatchCount ? { productionBatchIndex: test.productionBatchIndex, productionBatchCount: test.productionBatchCount } : {}),
       ...(sampleSources ? { sampledSources: sampleSources.length, sampledHeadwords: [...new Set(sampleSources.map((source) => source.word))], referenceSources: sources.length, note: "A selected production batch; not coverage of every reference sense." } : {}),
@@ -315,8 +319,9 @@ async function evaluateModel(modules, model, sources, words, photos, reference, 
       ...(photoCoverage ? { photoCoverage } : {}) };
     await save(directory, `${test.id}-metrics.json`, result); results.push(result);
     console.log(`${values.phase} ${model} ${test.id}: ${capture.error || parseError ? "FAIL " + (capture.error || parseError) : "PARSED"} (${capture.durationMs ?? "unknown"} ms)`);
+    if (capture.error) break;
   }
-  await save(directory, "summary.json", { phase: values.phase, transport: values.transport, requestedModel: model, backendModule: values["backend-module"] ? resolve(values["backend-module"]) : "current src", immutableRun: runId, results });
+  await save(directory, "summary.json", { phase: values.phase, transport: values.transport, requestedModel: model, difficulty, batchIndex, backendModule: values["backend-module"] ? resolve(values["backend-module"]) : "current src", immutableRun: runId, plannedCases: cases.length, completedCases: results.length, results });
   console.log(`Artifacts: ${directory}`);
   return results;
 }

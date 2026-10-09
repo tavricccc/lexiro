@@ -28,7 +28,16 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
     const count = countEnglishWords(value);
     if (count < range.min || count > range.max) reject(`全文有 ${count} 詞，必須為 ${range.min}–${range.max} 詞`);
   }
-  if (list.some((item) => !/\p{Script=Han}/u.test(String(item.explanation)) || (item.whyWrong as string[]).some((reason) => !/\p{Script=Han}/u.test(reason)))) reject("缺少繁體中文逐題解說");
+  if (list.some((item) => !/\p{Script=Han}/u.test(String(item.explanation)) || (item.whyWrong as { reason: string }[]).some(({ reason }) => !/\p{Script=Han}/u.test(reason)))) reject("缺少繁體中文逐題解說");
+  for (const item of list) {
+    const answer = String(kind === "discourse" ? item.sentence : item.answer);
+    const options = ["wordBank", "discourse"].includes(kind)
+      ? (result.options as string[]).filter((option) => option !== answer)
+      : item.distractors as string[];
+    const reasons = item.whyWrong as { option: string; reason: string }[];
+    const actual = new Set(reasons.map(({ option }) => option));
+    if (actual.size !== reasons.length || actual.size !== options.length || options.some((option) => !actual.has(option))) reject("錯項解說必須逐字且完整對應本題候選");
+  }
   if (["vocabulary", "cloze", "reading"].includes(kind)) {
     if (list.some((item) => (item.distractors as string[]).length !== 3 || new Set([item.answer, ...(item.distractors as string[])].map((option) => key(String(option)))).size !== 4)) reject("四選項不足或重複");
   }
@@ -63,9 +72,10 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
   }).sort((a, b) => a.at - b.at);
   if (spans.some((span, index) => index > 0 && spans[index - 1].end > span.at)) reject("空格答案範圍重疊");
   if (kind === "wordBank" || kind === "discourse") {
-    const extras = kind === "wordBank" ? result.extraOptions as string[] : [String(result.extraOption)];
-    const options = [...answers, ...extras];
+    const options = result.options as string[];
     if (options.length !== PASSAGE_FORMATS[kind].optionCount || new Set(options.map(key)).size !== options.length) reject("共用選項不足或重複");
+    if (answers.some((answer) => !options.includes(answer))) reject("空格答案不在共用選項");
+    const extras = options.filter((option) => !answers.includes(option));
     if (extras.some((extra) => hits(passage, extra).length)) reject("額外誘答選項不得已存在全文");
   }
   if (kind === "discourse") {

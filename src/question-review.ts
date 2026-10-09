@@ -1,24 +1,13 @@
 import { z } from "zod";
-import { PASSAGE_FORMATS, questionLengthRange, type QuestionKind } from "@lexiro/ai-contract";
-import { sentenceQuestionItem, readingQuestionItem, clozeQuestionItem, jsonSchema } from "./schemas";
+import { questionLengthRange, type QuestionKind } from "@lexiro/ai-contract";
+import { questionOutput, jsonSchema } from "./schemas";
 import type { PreparedGeneration } from "./generation";
 import { validateReviewedQuestion } from "./question-review-validation";
 
-export const QUESTION_REVIEW_CACHE_KEY = "lexiro-question-review-20261003-v4";
+export const QUESTION_REVIEW_CACHE_KEY = "lexiro-question-review-20261009-v5";
 const text = z.string().min(1);
-const teaching = (count: number) => ({ explanation: text, whyWrong: z.array(text).length(count) });
 
-export function correctedQuestionOutput(kind: QuestionKind) {
-  if (kind === "vocabulary")
-    return z.object({ items: z.array(sentenceQuestionItem.extend(teaching(3))) });
-  if (kind === "reading")
-    return z.object({ title: text, passage: text, items: z.array(readingQuestionItem.extend(teaching(3))) });
-  if (kind === "cloze")
-    return z.object({ title: text, passage: text, blanks: z.array(clozeQuestionItem.extend(teaching(3))) });
-  if (kind === "wordBank")
-    return z.object({ title: text, passage: text, blanks: z.array(z.object({ answer: text, ...teaching(PASSAGE_FORMATS.wordBank.optionCount - 1) })), extraOptions: z.array(text) });
-  return z.object({ title: text, passage: text, removals: z.array(z.object({ sentence: text, ...teaching(4) })), extraOption: text });
-}
+export const correctedQuestionOutput = questionOutput;
 
 export function questionReviewOutput(kind: QuestionKind) {
   // Decide only after writing and checking the corrected content and every reason.
@@ -37,8 +26,8 @@ sourceRefs 必須逐字複製 sources 的 ref 陣列並保持相同順序。詞�
 中等以上閱讀至少一題主旨及一題真正跨句推論，至少兩種閱讀操作。推論須結合兩句不同且必要的資訊；遮住任何一條依據再檢查，若另一句已直接給出答案，不能標 inference，必須實際重寫問題及選項。原句已說 because 共用地圖所以結果可靠，再問共用地圖促成一致結果只是細節換詞。推論錯項也須是人物、時序、因果或範圍的合理誤讀；地圖改變水流速度、志工阻止暴風雨不是高中程度的有效干擾。
 閱讀正解與每個錯項逐一比較「主張」而非表面措辭：若兩項互為同義、都由本文支持，必須改掉其中一項，不能把正確的同義主張判錯，也不能以「只是明示資訊而非推論／不是最佳」排除它。不能為了製造推論題，在文章加一句 because／therefore 把所問的結論直接說完；應在不同句子提供必要的條件或限制，讓讀者自己整合出未被單句明說的結論，再用真正改變範圍、主體、因果或時序的錯項形成競爭。
 文章必須使用來源的實際合法字形與指定詞義，不能把 reliable 全換成 trusted。不能刪掉來源、降低指定難度或漏題來逃避審題。文意選填與篇章結構要逐格試放所有共用選項並檢查完整排列，消除可互換答案；篇章結構保留首句、不挖相鄰句，四格五選項。
-修正版每題提供繁體中文 explanation：指出文字依據或搭配並說明為何是唯一正解。whyWrong 每項以繁體中文具體說明相對應錯項為何在本題不成立；若理由只是「較不常用／不是目標單字／不是最佳」，代表仍未修好。不要編造未給的情境，也不要把其他子題答案混入本題解說。
-題型、難度及篇幅讀最後 input 的 kind、difficulty、lengthRange；完整句題／文章須介於 lengthRange.min、lengthRange.max 個英文單字。corrected 保持該題型格式並加解說。whyWrong 的順序：獨立四選一及綜合測驗對應 distractors；文意選填按其他 blanks 的 answer（保留原 blanks 順序，排除本格）再接 extraOptions；篇章結構按其他 removals 的 sentence（保留原順序，排除本格）再接 extraOption。removals 每筆為 {sentence,explanation,whyWrong}。
+修正版每題提供繁體中文 explanation：指出文字依據或搭配並說明為何是唯一正解。whyWrong 每項為 {option,reason}，option 逐字複製完整實際錯項，reason 以繁體中文具體說明它為何在本題不成立；若理由只是「較不常用／不是目標單字／不是最佳」，代表仍未修好。不要編造未給的情境，也不要把其他子題答案混入本題解說。
+題型、難度及篇幅讀最後 input 的 kind、difficulty、lengthRange；完整句題／文章須介於 lengthRange.min、lengthRange.max 個英文單字。corrected 保持該題型格式並加解說。文意選填與篇章結構先寫定十個／五個 options，再寫 blanks／removals；全部答案是 options 的逐字子集，額外誘答詞不在全文。whyWrong 必須完整且不重複涵蓋本題其他實際候選：獨立四選一及綜合測驗是三個 distractors；文意選填是 options 除本格 answer 的九項；篇章結構是 options 除本格 sentence 的四項。以選項文字對位，不靠陣列位置，不寫不存在的候選或正解。
 issues 列出初稿已發現的具體問題。完成 corrected 全部題目與 whyWrong 後，最後逐一查有沒有理由承認錯项仍合理、仍與正解同義、只因不是最佳才排除；有任何一項就把尚未修好的問題列入 unresolvedIssues，不能寫成已修好。unresolvedIssues 只列修正版剩餘問題，沒有才回空陣列。最後才決定 approved，僅在 unresolvedIssues 為空且所有修正版題目重新代入、依據核對與難度檢查都通過時 true；仍有不確定、多解、弱干擾或錯誤依據必須 false。不能先宣布 approved 再替它辯護。只能輸出 schema 要求的 JSON，不附前言、Markdown 或檢查過程。`;
 
 export function prepareQuestionReview(prepared: PreparedGeneration, draft: unknown): PreparedGeneration {

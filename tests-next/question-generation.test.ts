@@ -13,7 +13,7 @@ beforeEach(async () => {
 });
 afterEach(async () => { await fixture.runtime.dispose(); });
 const verify = async () => ({ uid: "u", email: "u@example.test", emailVerified: true });
-const item = { sentence: "After missing several weeks of school because of a serious illness, Leo followed his doctor's plan and gradually began to recover; soon he could attend classes without feeling weak.", usage: "recover", answer: "recover", distractors: ["decline", "collapse", "worsen"], explanation: "身體恢復。", whyWrong: ["衰退", "倒下", "變差"] };
+const item = { sentence: "After missing several weeks of school because of a serious illness, Leo followed his doctor's plan and gradually began to recover; soon he could attend classes without feeling weak.", usage: "recover", answer: "recover", distractors: ["decline", "collapse", "worsen"], explanation: "身體恢復。", whyWrong: [{ option: "decline", reason: "衰退" }, { option: "collapse", reason: "倒下" }, { option: "worsen", reason: "變差" }] };
 const request = (contract: string = QUESTION_GENERATION_CONTRACT) => new Request("https://worker.test/generate", { method: "POST", headers: { origin: "https://lexiro.test", "content-type": "application/json", "x-question-contract": contract }, body: JSON.stringify({ kind: "vocabulary", model: "gpt-6-luna", tier: "lite", session: crypto.randomUUID(), difficulty: 2, sources: [{ ref: "s1", word: "recover", pos: "v.", meaningZh: "康復" }] }) });
 const frame = (type: string, value: object) => `event: ${type}\ndata: ${JSON.stringify({ type, ...value })}\n\n`;
 function start(req: Request, fetcher: typeof fetch) {
@@ -53,6 +53,12 @@ describe("single-pass question HTTP pipeline", () => {
   it("rejects the retired reviewed contract before calling the provider", async () => {
     const fetcher = vi.fn<typeof fetch>();
     const response = await start(request("reviewed-v1"), fetcher).response;
+    expect(response.status).toBe(426);
+    expect(fetcher).not.toHaveBeenCalled();
+  });
+  it("rejects positional-reason clients before calling the provider", async () => {
+    const fetcher = vi.fn<typeof fetch>();
+    const response = await start(request("single-pass-v1"), fetcher).response;
     expect(response.status).toBe(426);
     expect(fetcher).not.toHaveBeenCalled();
   });

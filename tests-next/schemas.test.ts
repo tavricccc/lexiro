@@ -66,13 +66,28 @@ describe("structured output schemas", () => {
       answer: "convinced",
       distractors: ["informed", "warned", "reminded"],
       explanation: "說明",
-      whyWrong: ["一", "二", "三"],
+      whyWrong: [
+        { option: "informed", reason: "一" },
+        { option: "warned", reason: "二" },
+        { option: "reminded", reason: "三" },
+      ],
     };
     for (const kind of ["vocabulary"] as const) {
       expect(questionOutput(kind).parse({ items: [item] })).toEqual({ items: [item] });
       const { usage: _unused, ...withoutUsage } = item;
       expect(() => questionOutput(kind).parse({ items: [withoutUsage] })).toThrow();
+      expect(() => questionOutput(kind).parse({ items: [{ ...item, sentence: item.sentence.replace("convinced", "___") }] })).toThrow();
     }
+  });
+
+  it("requires explicit option text for every wrong-answer reason", () => {
+    const item = {
+      sentence: "The report convinced the committee of its safety.",
+      usage: "convinced", answer: "convinced", distractors: ["informed", "warned", "reminded"],
+      explanation: "說明", whyWrong: ["一", "二", "三"],
+    };
+    expect(() => questionOutput("vocabulary").parse({ items: [item] })).toThrow();
+    expect(() => questionOutput("wordBank").parse({ title: "A test", passage: "A test passage.", extraOptions: [], blanks: [] })).toThrow();
   });
 
   it("asks for a part of speech every time, and takes null for one already known", () => {

@@ -1,18 +1,28 @@
 import { z } from "zod";
 import type { QuestionKind as GeneratedQuestionKind } from "@lexiro/ai-contract";
 import { READING_SKILLS } from "@lexiro/ai-contract";
-const teaching = (count: number) => ({ explanation: z.string().min(1), whyWrong: z.array(z.string().min(1)).length(count) });
-
-const text = z.string();
+const text = z.string().min(1);
+const prose = text.regex(/^[^_]+$/).describe("完整英文原文，包含答案，不得使用底線、空格標記或中文翻譯。");
 const texts = z.array(text);
+export const teaching = (count: number) => ({
+  explanation: text,
+  whyWrong: z.array(z.object({ option: text, reason: text })).length(count),
+});
 const blank = z.object({ answer: text });
-const choices = z.object({ answer: text, distractors: texts });
+const choices = z.object({ answer: text, distractors: texts.length(3) });
 // Structured Outputs follows property order: write the context, then quote its answer.
-export const sentenceQuestionItem = z.object({ sentence: text, usage: text, answer: text, distractors: texts });
-export const readingQuestionItem = choices.extend({
+export const sentenceQuestionItem = z.object({
+  sentence: prose.describe("一至兩句完整情境，合計落在本輪字數範圍中段；先寫正文，保留目標詞的實際字形。"),
+  usage: text.describe("單字來源時與 answer 完全相同，不包含冠詞、修飾語或相鄰詞；片語來源才包含完整且逐字存在的實現片語。"),
+  answer: text.describe("從最終句子逐字複製的目標單字字形，恰好出現一次，也是 usage 的開頭。"),
+  distractors: texts.length(3).describe("三個符合句法但被本題明確文字排除的候選，不可只是不同描述面向或同時能成立的角色。"),
+});
+export const readingQuestionItem = z.object({
   question: text,
   skill: z.enum(READING_SKILLS),
-  evidence: texts,
+  evidence: texts.min(1),
+  answer: text,
+  distractors: texts.length(3),
 });
 export const clozeQuestionItem = choices;
 /**
@@ -42,25 +52,25 @@ export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary")
     return z.object({ items: z.array(sentenceQuestionItem.extend(teaching(3))) });
   if (kind === "cloze")
-    return z.object({ title: text, passage: text, blanks: z.array(choices.extend(teaching(3))) });
+    return z.object({ title: text, passage: prose, blanks: z.array(choices.extend(teaching(3))) });
   if (kind === "wordBank")
     return z.object({
       title: text,
-      passage: text,
-      extraOptions: texts,
-      blanks: z.array(blank.extend(teaching(9))),
+      passage: prose,
+      options: texts.length(10),
+      blanks: z.array(blank.extend(teaching(9))).min(1).max(10),
     });
   if (kind === "discourse")
     return z.object({
       title: text,
-      passage: text,
-      extraOption: text,
-      removals: z.array(z.object({ sentence: text, ...teaching(4) })),
+      passage: prose,
+      options: texts.length(5),
+      removals: z.array(z.object({ sentence: text, ...teaching(4) })).length(4),
     });
   return z.object({
     title: text,
-    passage: text,
-    items: z.array(readingQuestionItem.extend(teaching(3))),
+    passage: prose,
+    items: z.array(readingQuestionItem.extend(teaching(3))).min(3).max(5),
   });
 }
 export function questionItemOutput(kind: GeneratedQuestionKind) {
