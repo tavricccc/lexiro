@@ -129,10 +129,22 @@ function QuestionGeneratorFlow({
 }) {
   const { state } = useLibraryStore();
   const { step, chosenSetId, kind, difficulty } = draft;
-  const { saving, save: storeAll } = useSaveGeneratedQuestions(() => {
+  const {
+    saving,
+    save: storeAll,
+    saveError,
+    saveDiagnostic,
+    clearError,
+  } = useSaveGeneratedQuestions(() => {
     update({ step: "done", run: undefined });
     clear();
   });
+  const saveNotice = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!saveError || !saveNotice.current) return;
+    saveNotice.current.scrollIntoView({ block: "start" });
+    saveNotice.current.focus({ preventScroll: true });
+  }, [saveError]);
 
   const defaultSetId =
     state.sets.find((entry) =>
@@ -322,6 +334,27 @@ function QuestionGeneratorFlow({
         recap={recap}
       >
         <fieldset disabled={saving} className="min-w-0 space-y-7">
+          {saveError && (
+            <div
+              ref={saveNotice}
+              tabIndex={-1}
+              role="alert"
+              data-question-save-error
+              className="scroll-mt-24 space-y-2 rounded-[var(--radius-control)] bg-destructive/10 px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+            >
+              <p className="leading-6 text-destructive">{saveError}</p>
+              {saveDiagnostic && (
+                <details>
+                  <summary className="min-h-11 cursor-pointer py-2 leading-6 text-muted-foreground md:min-h-9">
+                    {t("questions.saveErrorDetails")}
+                  </summary>
+                  <p className="break-words whitespace-pre-line leading-6 text-muted-foreground">
+                    {saveDiagnostic}
+                  </p>
+                </details>
+              )}
+            </div>
+          )}
           <GeneratedQuestionResults
             items={run.items}
             words={words}
@@ -346,7 +379,9 @@ function QuestionGeneratorFlow({
               type="button"
             >
               <Icons.success />
-              {t("questions.saveSelected", { count: selectedItems.length })}
+              {t(saveError ? "questions.retrySave" : "questions.saveSelected", {
+                count: selectedItems.length,
+              })}
             </Button>
             <Button
               disabled={saving}
@@ -410,6 +445,7 @@ function QuestionGeneratorFlow({
               : undefined
           }
           onStart={() => {
+            clearError();
             update({ excludedQuestionIds: [] });
             generation.start(task);
           }}

@@ -8,11 +8,18 @@ import { t } from "@/lib/i18n";
 export function useSaveGeneratedQuestions(onDone: () => void) {
   const saveQuestion = useLibraryStore((s) => s.saveQuestion);
   const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saveDiagnostic, setSaveDiagnostic] = useState("");
+  const clearError = () => {
+    setSaveError("");
+    setSaveDiagnostic("");
+  };
   const busy = useRef(false);
   const save = async (questions: LibraryQuestion[]) => {
     if (busy.current) return;
     busy.current = true;
     setSaving(true);
+    clearError();
     let stored = 0;
     try {
       for (const question of questions)
@@ -28,13 +35,15 @@ export function useSaveGeneratedQuestions(onDone: () => void) {
           : t("questions.savedCount", { count: stored }),
       );
     } catch (reason) {
-      toast.error(
-        reason instanceof Error ? reason.message : t("ai.invalidReply"),
-      );
+      const message =
+        reason instanceof Error ? reason.message : t("ai.invalidReply");
+      setSaveError(t("questions.saveFailedKept", { count: stored }));
+      setSaveDiagnostic(message);
+      toast.error(t("questions.saveFailedToast"));
     } finally {
       busy.current = false;
       setSaving(false);
     }
   };
-  return { saving, save };
+  return { saving, save, saveError, saveDiagnostic, clearError };
 }

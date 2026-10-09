@@ -31,6 +31,7 @@ export function PracticeSessionView({
   persistence,
   selected,
   pendingChoice,
+  recordFailed = false,
   answeredBlanks,
   marked,
   busy,
@@ -48,6 +49,7 @@ export function PracticeSessionView({
   persistence: DraftPersistence;
   selected: number | null;
   pendingChoice: number | null;
+  recordFailed?: boolean;
   answeredBlanks: Record<number, AnsweredBlank>;
   marked: boolean;
   busy: boolean;
@@ -73,7 +75,7 @@ export function PracticeSessionView({
         <HeaderBackdrop contained />
         <div className="flex items-center gap-1 text-sm text-muted-foreground md:gap-2">
           <div inert={busy} className={busy ? "opacity-50" : undefined}>
-            <BackControl onClick={onLeave} />
+            <BackControl onClick={onLeave} label={t("practice.pause")} />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
@@ -147,6 +149,11 @@ export function PracticeSessionView({
           </div>
         )}
       </div>
+      {recordFailed && (
+        <p role="alert" className="mb-4 text-sm leading-6 text-destructive">
+          {t("practice.recordFailed")} {t("practice.recordRetryHint")}
+        </p>
+      )}
       <motion.div
         className="flex flex-col"
         key={passage ? `passage:${passage.id}` : entry.id}

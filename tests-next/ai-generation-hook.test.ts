@@ -2,6 +2,8 @@ import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useAiGeneration } from "@/components/ai/use-ai-generation";
 import type { AiTask, AiTurnResult } from "@/src/types/ai";
+import { AiRequestError } from "@/src/lib/ai/errors";
+import type { AiGenerationSnapshot } from "@/components/ai/use-ai-generation";
 
 const mocks = vi.hoisted(() => ({ send: vi.fn(), uid: "fixture" }));
 vi.mock("@/stores/cloud-store", () => ({
@@ -101,6 +103,39 @@ describe("generation lifecycle", () => {
     expect(result.current.canResume).toBe(false);
     expect(result.current.canAppend).toBe(false);
     expect(mocks.send).not.toHaveBeenCalled();
+  });
+  it("never turns a server-expired operation into a fresh request after reload", async () => {
+    let snapshot: AiGenerationSnapshot<string> | undefined;
+    const currentTask = task(["expired"]);
+    mocks.send.mockRejectedValueOnce(
+      new AiRequestError("expired", {
+        code: "generation_expired",
+        retryable: false,
+      }),
+    );
+    const active = renderHook(() =>
+      useAiGeneration<string>({
+        task: currentTask,
+        onSnapshotChange: (value) => {
+          snapshot = value;
+        },
+      }),
+    );
+    act(() => active.result.current.start(currentTask));
+    await waitFor(() =>
+      expect(active.result.current.state.resumeUnavailable).toBe("expired"),
+    );
+    await waitFor(() =>
+      expect(snapshot?.state.resumeUnavailable).toBe("expired"),
+    );
+    expect(active.result.current.canResume).toBe(false);
+    active.unmount();
+    const restored = renderHook(() =>
+      useAiGeneration<string>({ initialSnapshot: snapshot, task: currentTask }),
+    );
+    expect(restored.result.current.canResume).toBe(false);
+    act(() => restored.result.current.resume());
+    expect(mocks.send).toHaveBeenCalledOnce();
   });
   it("retains results on pause, resumes pending work, and appends a new round", async () => {
     let release: (r: AiTurnResult) => void = () => {};

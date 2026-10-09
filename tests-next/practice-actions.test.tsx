@@ -42,7 +42,9 @@ function useSession() {
   const [entries, setEntries] = useState<PracticeEntry[] | null>([entry]);
   const [index, setIndex] = useState(0);
   const [marked, setMarked] = useState<number[]>([]);
-  const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>([]);
+  const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>(
+    [],
+  );
   const [retrying, setRetrying] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
@@ -58,16 +60,35 @@ function useSession() {
     retrying,
     selected,
     setters: {
-      setAnswerChoices, setCorrect, setEntries, setIndex, setMarked,
-      setQuestionFailedSenses, setRetrying, setRevealed, setSelected,
-      setSkipped, setStarted, setWrong,
+      setAnswerChoices,
+      setCorrect,
+      setEntries,
+      setIndex,
+      setMarked,
+      setQuestionFailedSenses,
+      setRetrying,
+      setRevealed,
+      setSelected,
+      setSkipped,
+      setStarted,
+      setWrong,
     },
   });
   return {
     actions,
     state: {
-      answerChoices, correct, entries, index, marked, questionFailedSenses,
-      retrying, revealed, selected, skipped, started, wrong,
+      answerChoices,
+      correct,
+      entries,
+      index,
+      marked,
+      questionFailedSenses,
+      retrying,
+      revealed,
+      selected,
+      skipped,
+      started,
+      wrong,
     },
   };
 }
@@ -75,10 +96,12 @@ function useSession() {
 function pendingRecord() {
   let resolve!: () => void;
   let reject!: (reason: Error) => void;
-  recordQuestion.mockReturnValueOnce(new Promise<void>((yes, no) => {
-    resolve = yes;
-    reject = no;
-  }));
+  recordQuestion.mockReturnValueOnce(
+    new Promise<void>((yes, no) => {
+      resolve = yes;
+      reject = no;
+    }),
+  );
   return { resolve, reject };
 }
 
@@ -93,17 +116,28 @@ describe("practice action persistence", () => {
     const pending = pendingRecord();
     const { result } = renderHook(useSession);
     let task!: Promise<void>;
-    act(() => { task = result.current.actions.answer(0); });
+    act(() => {
+      task = result.current.actions.answer(0);
+    });
     expect(result.current.actions.pendingChoice).toBe(0);
     expect(result.current.actions.actionBusy).toBe(true);
     expect(result.current.state).toMatchObject({
-      selected: null, revealed: false, answerChoices: [], correct: 0,
+      selected: null,
+      revealed: false,
+      answerChoices: [],
+      correct: 0,
     });
     act(() => result.current.actions.leave());
     expect(result.current.state.started).toBe(true);
-    await act(async () => { pending.resolve(); await task; });
+    await act(async () => {
+      pending.resolve();
+      await task;
+    });
     expect(result.current.state).toMatchObject({
-      selected: 0, revealed: true, answerChoices: [0], correct: 1,
+      selected: 0,
+      revealed: true,
+      answerChoices: [0],
+      correct: 1,
     });
     expect(result.current.actions.pendingChoice).toBeNull();
   });
@@ -113,26 +147,53 @@ describe("practice action persistence", () => {
     vi.spyOn(console, "error").mockImplementation(() => {});
     const { result } = renderHook(useSession);
     let task!: Promise<void>;
-    act(() => { task = result.current.actions.answer(1); });
+    act(() => {
+      task = result.current.actions.answer(1);
+    });
     await act(async () => {
       pending.reject(new Error("storage unavailable"));
       await task;
     });
     expect(result.current.state).toMatchObject({
-      selected: null, revealed: false, answerChoices: [], correct: 0,
-      wrong: [], questionFailedSenses: [], index: 0,
+      selected: null,
+      revealed: false,
+      answerChoices: [],
+      correct: 0,
+      wrong: [],
+      questionFailedSenses: [],
+      index: 0,
     });
     expect(result.current.actions.actionBusy).toBe(false);
+    expect(result.current.actions.recordFailed).toBe(true);
     expect(showError).toHaveBeenCalledOnce();
+    recordQuestion.mockResolvedValueOnce(undefined);
+    await act(async () => {
+      await result.current.actions.answer(0);
+    });
+    expect(result.current.actions.recordFailed).toBe(false);
+    expect(result.current.state).toMatchObject({ selected: 0, correct: 1 });
   });
 
   it("only counts a skipped question after recording succeeds", async () => {
     const pending = pendingRecord();
     const { result } = renderHook(useSession);
     let task!: Promise<void>;
-    act(() => { task = result.current.actions.skip(); });
-    expect(result.current.state).toMatchObject({ skipped: [], wrong: [], index: 0 });
-    await act(async () => { pending.resolve(); await task; });
-    expect(result.current.state).toMatchObject({ skipped: [0], wrong: [0], index: 1 });
+    act(() => {
+      task = result.current.actions.skip();
+    });
+    expect(result.current.state).toMatchObject({
+      skipped: [],
+      wrong: [],
+      index: 0,
+    });
+    await act(async () => {
+      pending.resolve();
+      await task;
+    });
+    expect(result.current.state).toMatchObject({
+      skipped: [0],
+      wrong: [0],
+      index: 1,
+    });
   });
 });

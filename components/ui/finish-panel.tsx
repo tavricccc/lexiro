@@ -6,6 +6,7 @@ import { useLayoutEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { HeaderBackdrop } from "@/components/ui/header-backdrop";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 
@@ -37,16 +38,22 @@ export function FinishPanel({
   }, []);
 
   return (
-    <div className="mx-auto flex min-h-[70dvh] max-w-xl flex-col items-center justify-center py-8 text-center">
-      <div className="flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-        <Icons.success className="size-7" />
+    <div className="mx-auto max-w-xl">
+      <div className="page-header hidden md:flex md:justify-end">
+        <HeaderBackdrop contained />
+        <div className="page-action-host" data-page-actions-host />
       </div>
-      <h1 className="mt-5 type-page">{title}</h1>
-      {description && (
-        <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">
-          {description}
-        </p>
-      )}
+      <div className="flex min-h-[70dvh] flex-col items-center justify-center py-8 text-center">
+        <div className="flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <Icons.success className="size-7" />
+        </div>
+        <h1 className="mt-5 type-page">{title}</h1>
+        {description && (
+          <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">
+            {description}
+          </p>
+        )}
+      </div>
       <StepActions>
         <Button asChild className="w-full" size="lg">
           <Link href={finishHref}>

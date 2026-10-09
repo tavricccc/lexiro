@@ -114,13 +114,21 @@ function restoreGeneration<T>(
           segments: run.segments,
         }
       : {}),
-    status: done ? "done" : previous.status === "idle" ? "idle" : "cancelled",
+    status: done
+      ? "done"
+      : previous.status === "error"
+        ? "error"
+        : previous.status === "idle"
+          ? "idle"
+          : "cancelled",
     startedAt: null,
     diagnostic: null,
     remaining,
     receivedUnits: run?.completed ?? previous.completed,
     batches: undefined,
-    resumeUnavailable: remaining ? restored.reason : undefined,
+    resumeUnavailable: remaining
+      ? (previous.resumeUnavailable ?? restored.reason)
+      : undefined,
   };
   return { state, run };
 }
@@ -287,6 +295,17 @@ export function useAiGeneration<T>({
               ? reason.message
               : t("ai.invalidReply"),
           diagnostic,
+          resumeUnavailable:
+            reason instanceof AiRequestError &&
+            reason.code === "generation_expired"
+              ? "expired"
+              : reason instanceof AiRequestError &&
+                  [
+                    "generation_update_required",
+                    "question_update_required",
+                  ].includes(reason.code ?? "")
+                ? "changed"
+                : undefined,
         }));
       }
     } finally {
@@ -322,7 +341,12 @@ export function useAiGeneration<T>({
   );
   const resume = useCallback(() => {
     const run = runRef.current;
-    if (abortRef.current || !run?.pending.length) return;
+    if (
+      abortRef.current ||
+      !run?.pending.length ||
+      stateRef.current.resumeUnavailable
+    )
+      return;
     if (generationRunExpired(run)) {
       setState((previous) => ({
         ...previous,

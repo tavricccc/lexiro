@@ -155,25 +155,10 @@ export function usePersistPracticeSession({
       }
       return;
     }
-    const entryIds = entries.map((entry) => entry.id);
-    if (!entryIds.length) return;
-    const snapshot: PracticeSessionSnapshot = {
-      schemaVersion: 5,
-      meaningChoices: Object.fromEntries(
-        entries.flatMap((entry) =>
-          entry.kind === "question" && entry.task === "meaning"
-            ? [
-                [
-                  entry.id,
-                  {
-                    options: entry.item.options,
-                    answerIndex: entry.item.answerIndex,
-                  },
-                ],
-              ]
-            : [],
-        ),
-      ),
+    if (!entries.length) return;
+    const snapshot = buildPracticeSnapshot({
+      entries,
+      answerChoices,
       tasks,
       setId,
       amount,
@@ -185,13 +170,9 @@ export function usePersistPracticeSession({
       selected,
       revealed,
       difficulty,
-      entryIds,
       failedSenseIds,
       retrying,
-      answerChoices: entries.map(
-        (_, position) => answerChoices[position] ?? null,
-      ),
-    };
+    });
     try {
       localStorage.setItem(practiceStorageKey(), JSON.stringify(snapshot));
       setPersistence("saved");
@@ -218,4 +199,38 @@ export function usePersistPracticeSession({
     wrong,
   ]);
   return persistence;
+}
+
+/** Use the same snapshot for disk persistence and an in-app pause. */
+export function buildPracticeSnapshot({
+  entries,
+  answerChoices,
+  ...session
+}: Omit<
+  Parameters<typeof usePersistPracticeSession>[0],
+  "started" | "complete"
+>): PracticeSessionSnapshot {
+  return {
+    ...session,
+    schemaVersion: 5,
+    meaningChoices: Object.fromEntries(
+      entries.flatMap((entry) =>
+        entry.kind === "question" && entry.task === "meaning"
+          ? [
+              [
+                entry.id,
+                {
+                  options: entry.item.options,
+                  answerIndex: entry.item.answerIndex,
+                },
+              ],
+            ]
+          : [],
+      ),
+    ),
+    entryIds: entries.map((entry) => entry.id),
+    answerChoices: entries.map(
+      (_, position) => answerChoices[position] ?? null,
+    ),
+  };
 }

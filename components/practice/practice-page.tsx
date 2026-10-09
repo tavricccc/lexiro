@@ -26,6 +26,7 @@ import { usePracticeKeyboard } from "@/components/practice/use-practice-keyboard
 import {
   usePersistPracticeSession,
   useRestorePracticeSession,
+  buildPracticeSnapshot,
 } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
 import { usePracticeSetupChoices } from "@/components/practice/use-practice-setup-choices";
@@ -426,11 +427,35 @@ export function PracticePage({
       persistence={sessionPersistence}
       selected={selected}
       pendingChoice={actions.pendingChoice}
+      recordFailed={actions.recordFailed}
       answeredBlanks={answeredBlanks}
       marked={marked.includes(index)}
       busy={actions.actionBusy}
       animateCard={actions.animateNextCard}
-      onLeave={actions.leave}
+      onLeave={() => {
+        if (actions.actionBusy) return;
+        setPendingSession({
+          entries: activeEntries,
+          snapshot: buildPracticeSnapshot({
+            entries: activeEntries,
+            answerChoices,
+            tasks,
+            setId,
+            amount,
+            index,
+            correct,
+            wrong,
+            skipped,
+            marked,
+            selected,
+            revealed,
+            difficulty,
+            failedSenseIds: questionFailedSenses,
+            retrying,
+          }),
+        });
+        actions.leave();
+      }}
       onToggleMark={() =>
         setMarked((values) =>
           values.includes(index)

@@ -364,6 +364,11 @@ export const zhTW = {
     generatedDescription: "都寫進題庫了，之後隨時可以編輯或刪除。",
     generateMore: "繼續生成題目",
     savedCount: "已加入 {count} 題",
+    saveFailedKept:
+      "這次已加入 {count} 題；其他結果仍保留在草稿。尚未全部儲存，可以重試。",
+    retrySave: "重試儲存",
+    saveFailedToast: "題目尚未全部儲存，可以重試。",
+    saveErrorDetails: "查看原因",
     savedCountWithDuplicates:
       "已加入 {count} 題，{duplicates} 題與現有題目重複",
     duplicate: "題庫中已有內容完全相同的題目。",
@@ -436,6 +441,8 @@ export const zhTW = {
     viewResult: "查看結果",
     recording: "正在記錄…",
     recordFailed: "記錄學習進度失敗，請再試一次。",
+    recordRetryHint: "這一題尚未記錄，可以重新選答案或按跳過。",
+    pause: "暫停這輪練習",
     skip: "跳過",
     shortcutAnswer: "選擇答案",
     mark: "稍後複習",

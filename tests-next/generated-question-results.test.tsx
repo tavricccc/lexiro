@@ -114,7 +114,7 @@ describe("generated question review", () => {
       answerIndex: 0,
     }));
     const onToggle = vi.fn();
-    render(
+    const { rerender } = render(
       <GeneratedQuestionResults items={items} words={[]} onToggle={onToggle} />,
     );
     expect(
@@ -134,5 +134,16 @@ describe("generated question review", () => {
     ).toBeNull();
     fireEvent.click(screen.getByRole("checkbox", { name: "納入題庫" }));
     expect(onToggle).toHaveBeenCalledWith("question-1");
+    rerender(
+      <GeneratedQuestionResults
+        items={[items[0]]}
+        words={[]}
+        onToggle={onToggle}
+      />,
+    );
+    expect(
+      screen.getByText("The river _____ through the valley."),
+    ).toBeVisible();
+    expect(screen.getByRole("button", { name: "下一題" })).toBeDisabled();
   });
 });

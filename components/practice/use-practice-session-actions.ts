@@ -54,6 +54,7 @@ export function usePracticeSessionActions({
 }) {
   const [actionBusy, setActionBusy] = useState(false);
   const [pendingChoice, setPendingChoice] = useState<number | null>(null);
+  const [recordFailed, setRecordFailed] = useState(false);
   const [animateNextCard, setAnimateNextCard] = useState(true);
   const actionPending = useRef(false);
   const recordQuestion = useLearningStore((store) => store.recordQuestion);
@@ -67,6 +68,7 @@ export function usePracticeSessionActions({
     actionPending.current = false;
     setActionBusy(false);
     setPendingChoice(null);
+    setRecordFailed(false);
     setters.setIndex(0);
     setters.setCorrect(0);
     setters.setWrong([]);
@@ -78,6 +80,7 @@ export function usePracticeSessionActions({
   };
 
   const advance = (fromKeyboard = false) => {
+    setRecordFailed(false);
     setAnimateNextCard(!fromKeyboard);
     setters.setIndex((value) => value + 1);
     setters.setRevealed(false);
@@ -93,6 +96,7 @@ export function usePracticeSessionActions({
     const item = questionAt(index);
     if (!item) return;
     actionPending.current = true;
+    setRecordFailed(false);
     setActionBusy(true);
     setPendingChoice(choice);
     const isCorrect = isCorrectChoice(item, choice);
@@ -129,6 +133,7 @@ export function usePracticeSessionActions({
       if (addedFailedSense)
         setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
     } catch (reason) {
+      setRecordFailed(true);
       console.error(reason);
       toast.error(t("practice.recordFailed"));
     } finally {
@@ -142,6 +147,7 @@ export function usePracticeSessionActions({
     const item = questionAt(index);
     if (!item || selected !== null || actionPending.current) return;
     actionPending.current = true;
+    setRecordFailed(false);
     setActionBusy(true);
     try {
       await recordQuestion(
@@ -155,6 +161,7 @@ export function usePracticeSessionActions({
       setters.setWrong((values) => [...values, index]);
       advance();
     } catch (reason) {
+      setRecordFailed(true);
       console.error(reason);
       toast.error(t("practice.recordFailed"));
     } finally {
@@ -194,6 +201,7 @@ export function usePracticeSessionActions({
   return {
     actionBusy,
     pendingChoice,
+    recordFailed,
     animateNextCard,
     answer,
     begin,
