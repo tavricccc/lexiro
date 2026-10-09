@@ -3,7 +3,7 @@ import { PASSAGE_FORMATS, READING_MIN_QUESTIONS, READING_MAX_QUESTIONS, question
 import { COMMON_QUESTION_BRIEF } from "./question-brief";
 
 type QuestionDifficulty = 1 | 2 | 3;
-export const QUESTION_CACHE_KEY = "lexiro-questions-20261009-v23";
+export const QUESTION_CACHE_KEY = "lexiro-questions-20261009-v24";
 export const TASK_RULES = COMMON_QUESTION_BRIEF;
 const DIFFICULTY: Record<QuestionDifficulty, string> = {
   1: "Difficulty 1: direct, sufficient clues and simple high-school sentence structures.",
@@ -13,7 +13,7 @@ const DIFFICULTY: Record<QuestionDifficulty, string> = {
 
 const FORMAT_RULES: Record<QuestionKind, string> = {
   vocabulary: `Vocabulary purpose: one useful meaning or word-form distinction per activeRef, at most sixteen sources.
-Write distractors first, then a complete natural context. Finish the answer-substitution and explanation checks for one source before moving to the next. Meaning items keep all four choices grammatical; a source such as be may instead teach an actually selected form. Keep each context in the current length range and source order.
+Write the complete natural context, locate usage and decide the exact answer hole, then choose distractors for that hole. Finish the answer-substitution and explanation checks for one source before moving to the next. Meaning items keep all four choices grammatical; a source such as be may instead teach an actually selected form. Keep each context in the current length range and source order.
 Copy the actual tested form as answer and a unique natural span containing it as usage. A single word can use its own form when that is unambiguous; a phrase keeps its complete realization. For a phrase you may blank the entire realized phrase or a suitable contiguous part, but insert every choice into that exact answer-sized hole before approving it. Choices must fit any outside auxiliary, object and particle; they need not have identical word counts. The tested answer appears once inside the copied usage, even if a common word occurs elsewhere in the sentence. Each item has distractors, sentence, usage, answer, explanation and three linked whyWrong objects. The source meaning and the masked scene must agree. A definition or the original target word alone does not prove the answer.`,
 
   cloze: `Cloze purpose: learn how meaning and grammar work inside one connected passage, rather than solve five unrelated vocabulary sentences.

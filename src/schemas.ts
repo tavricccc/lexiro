@@ -13,12 +13,12 @@ export const teaching = (count: number) => ({
 const anchoredUsage = english.describe("先定位原文中恰好一處的完整自然用法span；目標answer只需在該usage內恰好一次，其他位置可有同字，依明確usage定位實際空格。可保留分離片語中的受詞。");
 const blank = z.object({ usage: anchoredUsage, answer: english });
 const choices = z.object({ usage: anchoredUsage, answer: english, distractors: texts.length(3) });
-// Structured Outputs follows property order: write the context, then quote its answer.
+// Decide the context, anchor and exact hole before choosing its replacements.
 export const sentenceQuestionItem = z.object({
-  distractors: texts.length(3).describe("先定本題學習的詞義或合法詞形，選三個對應該辨析點的候選；詞義題候選文法自然，詞形題由實際句法選形，避免另一同時成立的合法屬性。"),
   sentence: prose.describe("一至兩句完整情境，合計落在本輪字數範圍中段；先寫正文，保留目標詞的實際字形。"),
   usage: english.describe("原句內恰好一處的自然用法span；單字可用本身或必要的上下文以定位，片語保留完整實現，可含動詞與particle之間的受詞，如 took her coat off。"),
   answer: english.describe("真正挖掉與被選項替換的原文span，在已定位usage內恰好一次。片語可取完整實現如 took her coat off，或相容的局部如 took／made；每個候選須插入實際剪掉answer的句子，配合外面保留的aux／受詞／particle。"),
+  distractors: texts.length(3).describe("答案範圍已確定，再選三個對應該辨析點且適合真實空格的候選；保留外面的冠詞、助動詞、受詞及particle，詞義題文法自然，詞形題由實際句法選形，排除依據只來自遮答後留下的情境。"),
 });
 export const readingQuestionItem = z.object({
   skill: z.enum(READING_SKILLS),
