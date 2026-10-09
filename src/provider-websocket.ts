@@ -9,14 +9,15 @@ export type ProviderSender = (prepared: PreparedGeneration, cursor: string | und
 const encoder = new TextEncoder();
 export const providerFrame = (event: Record<string, unknown>) => encoder.encode(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`);
 
-/** One socket, two independent named lanes, one parser; no conversation history is shared. */
+/** One socket and reusable independent lanes; no conversation history is shared. */
 export class ProviderWebSocket {
   private socket?: WebSocket;
   private connecting?: Promise<WebSocket>;
   private lanes = new Map<string, { event(value: Record<string, unknown>): void; fail(reason: Error): void }>();
+  private idleStreamIds: string[] = [];
   private idle?: ReturnType<typeof setTimeout>;
   constructor(private env: Env, private fetcher: typeof fetch = fetch) {}
-  close() { clearTimeout(this.idle); this.socket?.close(1000, "Session idle"); this.socket = undefined; }
+  close() { clearTimeout(this.idle); this.socket?.close(1000, "Session idle"); this.socket = undefined; this.idleStreamIds = []; }
   private async connect(prepared: PreparedGeneration, signal: AbortSignal) {
     const fetcher = this.fetcher;
     const response = await fetcher(`${this.env.OPENAI_BASE_URL}/responses`, { headers: { Upgrade: "websocket", Authorization: `Bearer ${this.env.OPENAI_API_KEY}` }, signal });
@@ -49,14 +50,26 @@ export class ProviderWebSocket {
       await this.connecting;
     }
     const socket = this.socket!;
-    const body = upstreamBody(prepared, cursor, true, streamId);
-    const value = typeof body === "string" ? body : await new Response(body).text();
+    // Provider stream names belong to a connection, while operation IDs belong
+    // to retained jobs. Reuse a finished lane instead of consuming one new name
+    // per batch and eventually reaching the provider's 32-name limit.
+    const laneId = this.idleStreamIds.pop() ?? streamId;
+    let value: string;
+    try {
+      const body = upstreamBody(prepared, cursor, true, laneId);
+      value = typeof body === "string" ? body : await new Response(body).text();
+      signal.throwIfAborted();
+    } catch (reason) {
+      this.idleStreamIds.push(laneId);
+      throw reason;
+    }
     const stream = new ReadableStream<Uint8Array>({
       start: (controller) => {
         let ended = false;
         const cleanup = () => {
           ended = true;
-          this.lanes.delete(streamId);
+          this.lanes.delete(laneId);
+          this.idleStreamIds.push(laneId);
           signal.removeEventListener("abort", abort);
           if (!this.lanes.size) this.idle = setTimeout(() => this.close(), 60_000);
         };
@@ -70,9 +83,10 @@ export class ProviderWebSocket {
           } catch (reason) { fail(reason instanceof Error ? reason : new Error(String(reason))); }
         };
         const abort = () => fail(signal.reason instanceof Error ? signal.reason : new TransportError("generation_cancelled", "Generation cancelled"));
-        this.lanes.set(streamId, { event: message, fail });
+        this.lanes.set(laneId, { event: message, fail });
         signal.addEventListener("abort", abort, { once: true });
-        socket.send(value);
+        try { socket.send(value); }
+        catch (reason) { fail(reason instanceof Error ? reason : new Error(String(reason))); }
       },
     });
     return stream;

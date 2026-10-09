@@ -5,7 +5,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { WebSocketServer } from "ws";
 import { build } from "esbuild";
 import { Miniflare } from "miniflare";
-import { prepareGeneration } from "../src/generation";
+import { prepareGeneration, upstreamRequest } from "../src/generation";
 
 describe("native Workers WebSocket and Durable Object transport", () => {
   it("reuses one socket across independent batches and persists replayable results", async () => {
@@ -15,14 +15,21 @@ describe("native Workers WebSocket and Durable Object transport", () => {
     if (!address || typeof address === "string") throw new Error("Missing test server port");
     let connections = 0, turns = 0, active = 0, peak = 0;
     const responseIds = new Map<string, string>();
+    const streamNames = new Set<string>();
     const inputs: Record<string, unknown>[] = [];
     sockets.on("connection", (socket) => {
       connections++;
       socket.on("message", (data) => {
-        const request = JSON.parse(data.toString()); inputs.push(request); turns++; peak = Math.max(peak, ++active);
+        const request = JSON.parse(data.toString()); inputs.push(request); turns++;
+        streamNames.add(request.stream_id);
+        if (streamNames.size > 32) {
+          socket.send(JSON.stringify({ type: "error", stream_id: request.stream_id, error: { code: "websocket_stream_limit_reached" } }));
+          return;
+        }
+        peak = Math.max(peak, ++active);
         const text = JSON.stringify({ items: [{ senses: [{ pos: "n.", meaningZh: "蘋果", example: "The apple is red." }] }] });
         const response = { id: `resp_native_${turns}`, model: "gpt-6-luna", status: "completed", output: [{ content: [{ type: "output_text", text }] }], usage: { input_tokens: 100, output_tokens: 20 } };
-        responseIds.set(request.stream_id, response.id);
+        responseIds.set(JSON.stringify(request.input), response.id);
         socket.send(JSON.stringify({ type: "response.created", stream_id: request.stream_id, response: { id: response.id, model: response.model } }));
         socket.send(JSON.stringify({ type: "response.output_text.delta", stream_id: request.stream_id, delta: text }));
         setTimeout(() => { active--; socket.send(JSON.stringify({ type: "response.completed", stream_id: request.stream_id, response })); }, 250);
@@ -51,12 +58,12 @@ describe("native Workers WebSocket and Durable Object transport", () => {
         expect(response.status).toBe(200);
         const text = await response.text();
         expect(text).toContain("response.completed");
-        return text;
+        return { text, responseId: responseIds.get(JSON.stringify(upstreamRequest(prepared).input))! };
       };
       await call(firstId, "apple");
       const ids = [crypto.randomUUID(), crypto.randomUUID()];
       const replies = await Promise.all(ids.map((id, index) => call(id, index ? "current" : "bank")));
-      replies.forEach((reply, index) => { expect(reply).toContain(responseIds.get(ids[index])); expect(reply).not.toContain(responseIds.get(ids[1 - index])); });
+      replies.forEach((reply, index) => { expect(reply.text).toContain(reply.responseId); expect(reply.text).not.toContain(replies[1 - index].responseId); });
       expect(peak).toBe(2);
       expect(turns).toBe(3);
       expect(connections).toBe(1);
@@ -65,11 +72,22 @@ describe("native Workers WebSocket and Durable Object transport", () => {
       expect(turns).toBe(3);
       expect(await db.prepare("SELECT COUNT(*) AS count FROM usage_log").first()).toEqual({ count: 3 });
       expect(await db.prepare("SELECT points,inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ points: 97, inflight_id: null });
+      const sources = ["ant", "bee", "cat", "dog", "elk", "fox", "gnu", "hen", "ibis", "jay", "kite", "lark", "mole", "newt", "owl", "pig", "quail", "rat", "seal", "toad", "vole", "wolf", "yak", "zebra", "pond", "stone", "road", "river", "hill", "lake", "cloud", "rain", "snow"];
+      for (const raw of sources) await call(crypto.randomUUID(), raw);
+      expect(turns).toBe(36);
+      expect(connections).toBe(1);
+      expect(streamNames.size).toBe(2);
+      const replay = await (await runtime.dispatchFetch(`https://test/${firstId}`)).text();
+      expect(replay).toContain("resp_native_1");
+      expect(replay).not.toContain("resp_native_36");
+      expect(turns).toBe(36);
+      expect(await db.prepare("SELECT COUNT(*) AS count FROM usage_log").first()).toEqual({ count: 36 });
+      expect(await db.prepare("SELECT points,inflight_id FROM accounts WHERE uid='u'").first()).toEqual({ points: 64, inflight_id: null });
     } finally {
       await runtime?.dispose();
       for (const socket of sockets.clients) socket.terminate();
       await new Promise<void>((resolve) => sockets.close(() => resolve()));
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }
-  }, 20_000);
+  }, 30_000);
 });

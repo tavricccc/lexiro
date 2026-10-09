@@ -28,6 +28,12 @@
 
 一般帳號同 session 可有兩個預留，其他 session 保持互斥。每 attempt 都有自己的 lease；未結算的另一個 hold 必須保留，不能把第一批結算後的負預留提前歸零。結算、退款與費用報表仍逐 response 記錄。
 
+## 細批次的 lane 重用（2026-10-09）
+
+Provider 的 `stream_id` 是連線內的路由名稱，operation ID 是 Lexiro 保留與回放工作的識別，兩者不必相同。完成的 lane 現在可供下一個獨立批次使用；請求內容、回覆、用量與結算仍各自屬於原 operation。
+
+[官方 WebSocket 限制](https://developers.openai.com/api/docs/guides/websocket-mode#limits-per-connection)為每條連線最多 32 個不同 named stream；若每個小批次都創造新名稱，長輪生成會先耗盡名稱。重用完成 lane 可保留同一連線，請求沒有 `previous_response_id` 時也不會繼承前一批內容。本機 workerd／D1 合成測試在同一連線完成 36 次獨立請求，只用兩個名稱，並確認第一個 operation 的回放及 36 筆結算仍正確。這是傳輸行為驗證，不是正式供應商效能或計費量測。
+
 ## 真實供應商快取驗證
 
 首次發布的 commit 標記 [cache-probe] 會在部署前測試 gpt-6-luna／low、gpt-5.6-luna／low、Pro 的 gpt-6.1-sol／low。每條路由先一個實際請求暖快取，再兩個並行請求；每次最多 128 output tokens，共九次。輸入另計費，不寫入使用者 D1 帳目。以實際 input_tokens_details.cached_tokens 判斷，兩個並行回條都需至少 1,024 cache read tokens；失敗停止部署。
