@@ -28,6 +28,12 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
   const list = (result.items ?? result.blanks ?? result.removals) as Record<string, unknown>[];
   const expected = kind === "reading" ? null : kind === "discourse" ? 4 : prepared.request.sources!.length;
   if (expected !== null && list.length !== expected) reject(`題數必須為 ${expected}`);
+  if (kind === "wordBank") {
+    const refs = new Set(list.map((item) => String(item.ref)));
+    const sourceRefs = new Set(prepared.request.sources!.map((source) => source.ref));
+    if (refs.size !== list.length || refs.size !== sourceRefs.size || [...refs].some((ref) => !sourceRefs.has(ref)))
+      reject("wordBank ref 必須逐字對應每個來源且恰好一次");
+  }
   if (kind === "reading" && (list.length < 3 || list.length > 5)) reject("閱讀必須有三至五題");
   const range = questionLengthRange(kind, prepared.request.difficulty!);
   const prose = typeof result.passage === "string" ? [result.passage] : list.map((item) => String(item.sentence));

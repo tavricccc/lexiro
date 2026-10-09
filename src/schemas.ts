@@ -11,7 +11,8 @@ export const teaching = (count: number) => ({
   whyWrong: z.array(z.object({ option: english, reason: chinese })).length(count),
 });
 const anchoredUsage = english.describe("先定位原文中恰好一處的完整自然用法span；目標answer只需在該usage內恰好一次，其他位置可有同字，依明確usage定位實際空格。可保留分離片語中的受詞。");
-const blank = z.object({ usage: anchoredUsage, answer: english });
+export const wordBankSourceRef = text.regex(/^s[1-9]\d*$/).describe("本空格對應的來源 ref，逐字複製 sources.ref；每個來源恰好一次。陣列位置不是來源身分。單題修復保留原題 targetRef。");
+const wordBankBlank = z.object({ ref: wordBankSourceRef, usage: anchoredUsage, answer: english });
 const choices = z.object({ usage: anchoredUsage, answer: english, distractors: texts.length(3) });
 // Decide the context, anchor and exact hole before choosing its replacements.
 export const sentenceQuestionItem = z.object({
@@ -61,7 +62,7 @@ export function questionOutput(kind: GeneratedQuestionKind) {
       title: english,
       passage: prose,
       options: texts.length(10),
-      blanks: z.array(blank.extend(teaching(9))).min(1).max(10),
+      blanks: z.array(wordBankBlank.extend(teaching(9))).min(1).max(10),
     });
   if (kind === "discourse")
     return z.object({
@@ -78,7 +79,7 @@ export function questionOutput(kind: GeneratedQuestionKind) {
 }
 export function questionItemOutput(kind: GeneratedQuestionKind) {
   const item = kind === "cloze" ? choices.extend(teaching(3))
-    : kind === "wordBank" ? blank.extend(teaching(9))
+    : kind === "wordBank" ? wordBankBlank.extend(teaching(9))
     : kind === "discourse" ? z.object({ sentence: english, ...teaching(4) })
     : readingQuestionItem.extend(teaching(3));
   return z.object({ items: z.array(item).length(1) });

@@ -42,12 +42,23 @@ describe("reviewed-result admission", () => {
     const preparedCloze = await prepared("cloze", 2);
     const options = ["took care", "cloud", "cloud", "archive", "report", "compare", "measure", "prepare", "recent", "steady"];
     const bank = { title: "Observations", passage: `The students took care of the cloud records. ${passage}`, options,
-      blanks: [{ usage: "took care of the cloud records", answer: "took care", explanation: "第一格解說。", whyWrong: whyWrong(options.slice(1)) }, { usage: "took care of the cloud records", answer: "cloud", explanation: "第二格解說。", whyWrong: whyWrong(options.filter((_, index) => index !== 1)) }] };
+      blanks: [{ ref: "s1", usage: "took care of the cloud records", answer: "took care", explanation: "第一格解說。", whyWrong: whyWrong(options.slice(1)) }, { ref: "s2", usage: "took care of the cloud records", answer: "cloud", explanation: "第二格解說。", whyWrong: whyWrong(options.filter((_, index) => index !== 1)) }] };
     expect(() => approvedQuestionResult(preparedBank, wrapper(bank, 2))).toThrow(/候選|重複/);
     const cloze = { title: "Observations", passage: `The students took care of the records. ${passage.split(/(?<=\.)\s/).slice(0, 8).join(" ")}`,
       blanks: [{ usage: "took care of the records", answer: "took care", distractors: ["watched", "ignored", "forgot"], ...teaching(["watched", "ignored", "forgot"]) },
         { usage: "took care of the records", answer: "care of", distractors: ["look at", "listen to", "wait for"], ...teaching(["look at", "listen to", "wait for"]) }] };
     expect(() => approvedQuestionResult(preparedCloze, wrapper(cloze, 2))).toThrow(/重疊/);
+  });
+  it("accepts passage-order banks with exact source-ref coverage and rejects misbinding", async () => {
+    const config = await prepared("wordBank", 2);
+    const options = ["recover", "cloud", "archive", "report", "compare", "measure", "prepare", "recent", "steady", "isolate"];
+    const bank = { title: "Observations", passage: `The cloud map helped the students recover their missing records. ${passage}`, options,
+      blanks: [{ ref: "s2", usage: "The cloud map", answer: "cloud", ...teaching(options.filter((option) => option !== "cloud")) },
+        { ref: "s1", usage: "recover their missing records", answer: "recover", ...teaching(options.filter((option) => option !== "recover")) }] };
+    expect(() => approvedQuestionResult(config, wrapper(bank, 2))).not.toThrow();
+    for (const ref of ["s2", "s99"]) {
+      expect(() => approvedQuestionResult(config, wrapper({ ...bank, blanks: [bank.blanks[0], { ...bank.blanks[1], ref }] }, 2))).toThrow(/ref/);
+    }
   });
   it("locates a target inside unique usage while the same word appears elsewhere", async () => {
     const config = await prepared("vocabulary");
