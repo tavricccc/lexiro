@@ -15,6 +15,7 @@ import {
 } from "../question-quality";
 import { extractJsonText } from "./json";
 import { discourseStructureIssue } from "../question-discourse";
+import { sourceWordFormIssue } from "../question-word-forms";
 
 /** Keep the article and good children; every replacement request produces one child. */
 export function passageRepairs({
@@ -52,6 +53,25 @@ export function passageRepairs({
   if (sharedQuestionBankIssue(draft, kind)) return null;
   if (kind === "discourse" && discourseStructureIssue(draft)) return null;
   const items = draft[field] as unknown[];
+  if (kind === "wordBank") {
+    const sources = words.flatMap((word) =>
+      word.senses.map((sense) => ({ word: word.word, pos: sense.pos })),
+    );
+    if (
+      items.some(
+        (item, index) =>
+          isRecord(item) &&
+          typeof item.answer === "string" &&
+          sources[index] &&
+          sourceWordFormIssue(
+            sources[index].word,
+            sources[index].pos,
+            item.answer,
+          ),
+      )
+    )
+      return null; // A new answer also needs new prose and a new shared bank.
+  }
   const issue = (index: number) => {
     const value = items[index];
     const quality = generatedQuestionItemIssue(draft, kind, difficulty, index);

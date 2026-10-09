@@ -9,6 +9,7 @@ import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { placeAnswer } from "./question-builders";
 import { assembleOptionTeaching } from "./question-teaching";
+import { sourceWordFormIssue } from "./question-word-forms";
 
 /**
  * Turns the model's prose into graded questions.
@@ -186,6 +187,12 @@ function assembleSentences(
       return dropped.push(
         `${slot.word.word}：答案必須位於目標用法開頭且不超出範圍`,
       );
+    const wordFormIssue = sourceWordFormIssue(
+      slot.word.word,
+      slot.word.senses[slot.senseIndex].pos,
+      answer,
+    );
+    if (wordFormIssue) return dropped.push(wordFormIssue);
     const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
 
     const distractors = usableDistractors(
@@ -322,6 +329,18 @@ function assemblePassage(
 
   const located: CutBlank[] = [];
   raw.forEach((item, position) => {
+    const slot = resolveSlot(slots, item.ref, position);
+    if (format === "wordBank" && slot) {
+      const wordFormIssue = sourceWordFormIssue(
+        slot.word.word,
+        slot.word.senses[slot.senseIndex].pos,
+        item.answer,
+      );
+      if (wordFormIssue) {
+        dropped.push(wordFormIssue);
+        return;
+      }
+    }
     const hits = occurrences(rawPassage, item.answer);
     if (hits.length !== 1) {
       dropped.push(
@@ -342,7 +361,7 @@ function assemblePassage(
     located.push({
       answer: item.answer,
       at: hits[0],
-      slot: resolveSlot(slots, item.ref, position),
+      slot,
     });
   });
 

@@ -97,17 +97,28 @@ describe("assembling the model's reply", () => {
     expect(result.dropped).toHaveLength(1);
   });
 
-  it("keeps a structurally valid answer for the review step", () => {
-    const result = assembleGeneratedQuestions(
+  it("rejects a synonym that replaces the assigned source word", () => {
+    expect(() => assembleGeneratedQuestions(
       { items: [{ answer: "sprinted", usage: "sprinted", distractors: ["ran", "sat", "grew"], ref: "s1", sentence: "They sprinted home." }] },
       "vocabulary",
       2,
       target,
+    )).toThrow(/不是指定單字.*合法詞形/);
+  });
+
+  it("keeps irregular verb, noun plural and adjective forms without allowing derivations", () => {
+    const result = assembleGeneratedQuestions(
+      { items: [
+        { answer: "went", usage: "went", distractors: ["stayed", "sat", "waited"], sentence: "They went home." },
+        { answer: "children", usage: "children", distractors: ["parents", "teachers", "friends"], sentence: "The children arrived." },
+        { answer: "better", usage: "better", distractors: ["worse", "smaller", "colder"], sentence: "It is better now." },
+        { answer: "rescuers", usage: "rescuers", distractors: ["guards", "pilots", "nurses"], sentence: "The rescuers arrived." },
+      ] },
+      "vocabulary", 2,
+      [word("go"), word("child", "n."), word("good", "adj."), word("rescue")],
     );
-    const [question] = result.payload.questions as Array<{ options: string[]; answerIndex: number; sourceRef: string }>;
-    expect(result.dropped).toEqual([]);
-    expect(question.options[question.answerIndex]).toBe("sprinted");
-    expect(question.sourceRef).toBe("source-1-1");
+    expect((result.payload.questions as unknown[])).toHaveLength(3);
+    expect(result.dropped).toEqual([expect.stringContaining("rescuers")]);
   });
 
   it("rejects a vocabulary answer outside the named target usage", () => {
