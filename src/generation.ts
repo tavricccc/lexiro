@@ -165,10 +165,10 @@ export async function prepareGeneration(
     if (request.itemRepair) {
       if (request.kind === "vocabulary") throw new HttpError(400, "invalid_input");
       const built = questionPrompt(request.kind, sources, request.difficulty);
-      instructions = built.instructions + "\n本輪只完成指定 index 的一個子題，檢查其候選與理由後輸出，不重做整批。既有 passage、共用候選及其他題目固定，整組數量／篇幅規則不要求你另寫全文。綜合測驗可選既有文章中的來源詞或相關grammar實際字形，按此位置的學習目的出題，不強制改成另一個不存在的語法位置。文意選填沿用此位置的實際來源答案與固定 bank。篇章結構沿用固定 bank 的完整句，不改移除位置來假修整篇。閱讀先選skill與既有本文的必要evidence再寫本題，答案可改述或推論；沒有兩個必要事實就不用虛假inference標籤。whyWrong沿用{option,reason}逐字綁定實際錯項；共用bank由既有items的answer／sentence與extraOptions合成。只輸出{items:[一個新子題]}，完成候選代入、原文依據與解說核對，不輸出檢查過程。";
+      instructions = built.instructions + "\n本輪只完成指定 index 的一個子題，檢查其候選與理由後輸出，不重做整批。既有 passage、共用候選及其他題目固定，整組數量／篇幅規則不要求你另寫全文。綜合測驗／文意選填先定位既有文章中唯一的完整usage，再逐字取其中唯一answer；別處同字不影響此位置，實際空格不得與其他題重疊。綜合測驗可取來源詞或相關grammar實際字形，不強制移到另一個不存在的語法位置；不同usage可有相同answer。文意選填沿用此位置的實際來源及固定bank，片語可取內部固定目標詞，不猜sourcehead，bank每個答案仍用於一格。篇章結構沿用固定bank的完整句，不改移除位置來假修整篇。閱讀先選skill與既有本文的必要evidence再寫本題，答案可改述或推論；沒有兩個必要事實就不用虛假inference標籤。whyWrong沿用{option,reason}逐字綁定實際錯項；共用bank由既有items的answer／sentence與extraOptions合成。只輸出{items:[一個新子題]}，完成候選代入、原文依據與解說核對，不輸出檢查過程。";
       input = JSON.stringify({ kind: request.kind, difficulty: request.difficulty, sources, ...request.itemRepair });
       schema = jsonSchema(questionItemOutput(request.kind));
-      cacheKey = "lexiro-question-item-20261009-v12";
+      cacheKey = "lexiro-question-item-20261009-v13";
       rawUnits = [input];
     } else {
     const built = questionPrompt(request.kind, sources, request.difficulty);

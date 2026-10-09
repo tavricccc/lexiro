@@ -10,8 +10,9 @@ export const teaching = (count: number) => ({
   explanation: chinese,
   whyWrong: z.array(z.object({ option: english, reason: chinese })).length(count),
 });
-const blank = z.object({ answer: english });
-const choices = z.object({ answer: english, distractors: texts.length(3) });
+const anchoredUsage = english.describe("先定位原文中恰好一處的完整自然用法span；目標answer只需在該usage內恰好一次，其他位置可有同字，依明確usage定位實際空格。可保留分離片語中的受詞。");
+const blank = z.object({ usage: anchoredUsage, answer: english });
+const choices = z.object({ usage: anchoredUsage, answer: english, distractors: texts.length(3) });
 // Structured Outputs follows property order: write the context, then quote its answer.
 export const sentenceQuestionItem = z.object({
   distractors: texts.length(3).describe("先定本題學習的詞義或合法詞形，選三個對應該辨析點的候選；詞義題候選文法自然，詞形題由實際句法選形，避免另一同時成立的合法屬性。"),

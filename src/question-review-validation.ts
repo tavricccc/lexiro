@@ -7,11 +7,19 @@ function hits(prose: string, span: string): number[] {
   const positions: number[] = [];
   let from = 0;
   for (;;) {
-    const at = prose.toLocaleLowerCase().indexOf(span.toLocaleLowerCase(), from);
+    const at = prose.indexOf(span, from);
     if (at < 0 || !span) return positions;
     if (!/[A-Za-z0-9]/.test(prose[at - 1] ?? "") && !/[A-Za-z0-9]/.test(prose[at + span.length] ?? "")) positions.push(at);
     from = at + 1;
   }
+}
+
+function anchoredSpan(prose: string, item: Record<string, unknown>) {
+  const usage = String(item.usage), answer = String(item.answer);
+  const usageAt = hits(prose, usage), answerAt = hits(usage, answer);
+  if (usageAt.length !== 1 || answerAt.length !== 1) reject("usage 必須在原文恰好一處，answer 必須在該 usage 內恰好一次");
+  const at = usageAt[0] + answerAt[0];
+  return { at, end: at + answer.length };
 }
 
 /** Shared admission for every reviewed format, before settlement and delivery. */
@@ -42,12 +50,7 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
     if (list.some((item) => (item.distractors as string[]).length !== 3 || new Set([item.answer, ...(item.distractors as string[])].map((option) => key(String(option)))).size !== 4)) reject("四選項不足或重複");
   }
   if (kind === "vocabulary") {
-    for (const item of list) {
-      const sentence = String(item.sentence), usage = String(item.usage), answer = String(item.answer);
-      const usageAt = hits(sentence, usage), answerAt = hits(sentence, answer);
-      if (usageAt.length !== 1 || answerAt.length !== 1) reject("usage 與 answer 必須逐字出現在全文恰好一次");
-      if (kind === "vocabulary" && (usageAt[0] !== answerAt[0] || !key(usage).startsWith(key(answer)))) reject("詞彙答案必須位於 usage 開頭");
-    }
+    for (const item of list) anchoredSpan(String(item.sentence), item);
     return;
   }
   const passage = String(result.passage);
@@ -64,19 +67,21 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
     return;
   }
   const answers = list.map((item) => String(kind === "discourse" ? item.sentence : item.answer));
-  if (new Set(answers.map(key)).size !== answers.length) reject("空格答案重複");
-  const spans = answers.map((answer) => {
+  if (kind !== "cloze" && new Set(answers.map(key)).size !== answers.length) reject("空格答案重複");
+  const spans = (kind === "cloze" || kind === "wordBank" ? list.map((item) => anchoredSpan(passage, item)) : answers.map((answer) => {
     const at = hits(passage, answer);
-    if (at.length !== 1) reject(`答案「${answer}」必须在全文恰好一次`);
+    if (at.length !== 1) reject(`答案「${answer}」必須在全文恰好一次`);
     return { at: at[0], end: at[0] + answer.length };
-  }).sort((a, b) => a.at - b.at);
+  })).sort((a, b) => a.at - b.at);
   if (spans.some((span, index) => index > 0 && spans[index - 1].end > span.at)) reject("空格答案範圍重疊");
   if (kind === "wordBank" || kind === "discourse") {
     const options = result.options as string[];
     if (options.length !== PASSAGE_FORMATS[kind].optionCount || new Set(options.map(key)).size !== options.length) reject("共用選項不足或重複");
     if (answers.some((answer) => !options.includes(answer))) reject("空格答案不在共用選項");
-    const extras = options.filter((option) => !answers.includes(option));
-    if (extras.some((extra) => hits(passage, extra).length)) reject("額外誘答選項不得已存在全文");
+    if (kind === "discourse") {
+      const extras = options.filter((option) => !answers.includes(option));
+      if (extras.some((extra) => hits(passage, extra).length)) reject("額外誘答選項不得已存在全文");
+    }
   }
   if (kind === "discourse") {
     const sentences = [...passage.matchAll(/[^.!?]+[.!?]+[”"’']*/gu)].map((match) => match[0].trim());

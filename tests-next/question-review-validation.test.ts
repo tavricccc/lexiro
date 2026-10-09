@@ -32,7 +32,6 @@ describe("reviewed-result admission", () => {
     { ...base, sentence: sentence.replace("recover", "_____") },
     { ...base, usage: "missing" },
     { ...base, sentence: sentence.replace("recover", "recover and recover") },
-    { ...base, usage: "to recover" },
     { ...base, distractors: ["decline", "decline", "worsen"] },
   ])("rejects a claimed approval with unusable sentence content", async (item) => {
     const config = await prepared("vocabulary");
@@ -43,12 +42,23 @@ describe("reviewed-result admission", () => {
     const preparedCloze = await prepared("cloze", 2);
     const options = ["took care", "cloud", "cloud", "archive", "report", "compare", "measure", "prepare", "recent", "steady"];
     const bank = { title: "Observations", passage: `The students took care of the cloud records. ${passage}`, options,
-      blanks: [{ answer: "took care", explanation: "第一格解說。", whyWrong: whyWrong(options.slice(1)) }, { answer: "cloud", explanation: "第二格解說。", whyWrong: whyWrong(options.filter((_, index) => index !== 1)) }] };
+      blanks: [{ usage: "took care of the cloud records", answer: "took care", explanation: "第一格解說。", whyWrong: whyWrong(options.slice(1)) }, { usage: "took care of the cloud records", answer: "cloud", explanation: "第二格解說。", whyWrong: whyWrong(options.filter((_, index) => index !== 1)) }] };
     expect(() => approvedQuestionResult(preparedBank, wrapper(bank, 2))).toThrow(/候選|重複/);
     const cloze = { title: "Observations", passage: `The students took care of the records. ${passage.split(/(?<=\.)\s/).slice(0, 8).join(" ")}`,
-      blanks: [{ answer: "took care", distractors: ["watched", "ignored", "forgot"], ...teaching(["watched", "ignored", "forgot"]) },
-        { answer: "care of", distractors: ["look at", "listen to", "wait for"], ...teaching(["look at", "listen to", "wait for"]) }] };
+      blanks: [{ usage: "took care of the records", answer: "took care", distractors: ["watched", "ignored", "forgot"], ...teaching(["watched", "ignored", "forgot"]) },
+        { usage: "took care of the records", answer: "care of", distractors: ["look at", "listen to", "wait for"], ...teaching(["look at", "listen to", "wait for"]) }] };
     expect(() => approvedQuestionResult(preparedCloze, wrapper(cloze, 2))).toThrow(/重疊/);
+  });
+  it("locates a target inside unique usage while the same word appears elsewhere", async () => {
+    const config = await prepared("vocabulary");
+    const item = { ...base, sentence: "Today, the exhibition is open to the public, and the entrance is clearly marked. Visitors can leave their coats with the volunteers before entering the hall for the afternoon show.", usage: "the exhibition is open", answer: "is", distractors: ["are", "am", "been"], ...teaching(["are", "am", "been"]) };
+    expect(() => approvedQuestionResult(config, wrapper({ items: [item] }))).not.toThrow();
+    expect(() => approvedQuestionResult(config, wrapper({ items: [{ ...base, usage: "to recover" }] }))).not.toThrow();
+  });
+  it("allows equal cloze answers anchored to different contexts", async () => {
+    const config = await prepared("cloze", 2);
+    const result = { title: "Two rooms", passage: `The hall is reserved today. The classroom is available to members. ${passage.split(/(?<=\.)\s/).slice(0, 8).join(" ")}`, blanks: ["The hall is reserved today", "The classroom is available to members"].map((usage) => ({ usage, answer: "is", distractors: ["are", "am", "been"], ...teaching(["are", "am", "been"]) })) };
+    expect(() => approvedQuestionResult(config, wrapper(result, 2))).not.toThrow();
   });
   it("requires whole, nonadjacent discourse sentences and keeps the opening", async () => {
     const config = await prepared("discourse");

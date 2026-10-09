@@ -132,4 +132,13 @@ describe("structured output schemas", () => {
       }),
     ).toThrow();
   });
+  it.each(["cloze", "wordBank"] as const)("requires an explicit usage anchor in %s rather than accepting the retired raw shape", (kind) => {
+    const answer = "is";
+    const options = [answer, "are", "am", "been", "was", "were", "be", "has", "have", "being"];
+    const item = { usage: "The hall is reserved", answer, ...(kind === "cloze" ? { distractors: options.slice(1, 4) } : {}), explanation: "由此位置的主詞與用法判斷。", whyWrong: options.slice(1, kind === "cloze" ? 4 : 10).map((option) => ({ option, reason: "此形式不符合這個位置的用法。" })) };
+    const raw = { title: "A room", passage: "The hall is reserved and the entrance is marked.", ...(kind === "wordBank" ? { options } : {}), blanks: [item] };
+    expect(() => questionOutput(kind).parse(raw)).not.toThrow();
+    const { usage: _usage, ...retiredItem } = item;
+    expect(() => questionOutput(kind).parse({ ...raw, blanks: [retiredItem] })).toThrow();
+  });
 });
