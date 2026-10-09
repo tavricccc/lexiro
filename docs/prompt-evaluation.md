@@ -1,5 +1,9 @@
 # 生成與審題評測紀錄
 
+## 2026-10-09 出題契約與有界能力對照
+
+現行題目 writer 為 `lexiro-questions-20261009-v18`、raw 契約 `single-pass-v2`。錯項解說明確綁定候選文字，共用選項先生成；正式仍單次 writer，Lite／Thinking／Pro 分級及不相關快取不變。本輪有凍結 v12 基線、兩個 Luna／low、5.6／medium 與 high、一次明確人工回饋及單來源補缺；v18 其他三型各有一次 high 格式驗收。原始失敗與傳輸 timeout 全保留。格式與解析改善已驗證，語意仍沒有五題型全面穩定通過；CLI high 不能當成正式 Thinking medium 的證據，詳見 [本輪紀錄](luna-question-quality-20261009.md)。
+
 ## 2026-10-08 五張教材照片與兩個 Luna
 
 本輪使用使用者提供的五張 Unit 09 教材照片，獨立子代理先建立參考，再核對原始模型回覆。依使用者補充，11 個編號主詞優先保留，一般詞性轉換／透明派生可略過；另以 continual、mechanic、dominate 的差異作語意備查。參考清單不是要求所有大字次詞一律收滿的 exact-count 門檻。

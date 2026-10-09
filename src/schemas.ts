@@ -14,10 +14,10 @@ const blank = z.object({ answer: english });
 const choices = z.object({ answer: english, distractors: texts.length(3) });
 // Structured Outputs follows property order: write the context, then quote its answer.
 export const sentenceQuestionItem = z.object({
+  distractors: texts.length(3).describe("先寫定三個在同一判斷維度競爭、且可由自然情境排除的候選；之後寫句子時提供排除每個候選的線索，不以材質、身份等可能同時成立的描述充數。"),
   sentence: prose.describe("一至兩句完整情境，合計落在本輪字數範圍中段；先寫正文，保留目標詞的實際字形。"),
   usage: english.describe("單字來源時與 answer 完全相同，不包含冠詞、修飾語或相鄰詞；片語來源才包含完整且逐字存在的實現片語。"),
   answer: english.describe("從最終句子逐字複製的目標單字字形，恰好出現一次，也是 usage 的開頭。"),
-  distractors: texts.length(3).describe("三個符合句法但被本題明確文字排除的候選，不可只是不同描述面向或同時能成立的角色。"),
 });
 export const readingQuestionItem = z.object({
   question: english,

@@ -18,6 +18,7 @@
 | `src/cache-probe-input.ts`、`scripts/probe-generation-cache.mjs` | 三個實際模型路由各一個暖快取與兩個並行小樣本，最多 128 輸出 tokens／次，讀取真實 cache read／write 用量及連線時間；首次部署以 [cache-probe] 啟用，之後按需手動重跑 |
 | `docs/generation-performance.md` | Pi 機制的版本化研究、暖快取後有限並行、批次／費用邊界與正式 cache probe 維護方法 |
 | `docs/luna-photo-evaluation.md` | 五張教材與兩個 Luna 的有界實測、子代理核對、待校對問題與 CLI 快取界線 |
+| `docs/luna-question-quality-20261009.md` | 凍結 v12 與 v13–v18、low／medium／high、一次明示回饋及單來源補缺的有界題目校準，首次 parser／回收與人工語意分開，保留未達成穩定品質的界線 |
 | `tests-next/generation-room.test.ts`、`tests-next/provider-websocket.test.ts` | 斷線續跑／去重／扣款、上游結果恢復，以及真正 workerd／SQLite DO／WebSocket 連線復用與回放 |
 | `tests-next/room-fixture.ts` | 合成供應商與記憶體 actor storage 的本地測試 fixture |
 | `scripts/probe-websocket.mjs` | 部署前使用 production key 驗證供應商 WebSocket handshake，無模型生成、不輸出金鑰 |
@@ -26,7 +27,7 @@
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；調整必須帶閱讀時的 `expected` 狀態，原子拒絕過期修改並直接回傳實際儲存結果。帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session，重試上限不含 session。`words`／`senses` 共用固定提示、`WORD_CACHE_KEY` 與 0–3 義的 provider schema；一般模式恰好一義、補充不得超過 limit，仍由 parser／settlement 按模式驗證。補充以字計費，回傳零義仍算完成 |
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、每批 1–10 張 WebP 輸入檢查與逐張計費來源；圖片不落地。`text/plain` body 每行一張 base64，每張至多 1.5 MB、整批 body 至多 20,000,009 bytes；同批只發一次多圖片 Responses 請求，仍逐張預留與記錄來源完成。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
-| `src/prompts.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 固定提示與供應商 structured-output schema，只放 private repo；題目錯項以 `{option,reason}` 綁定完整文字，文意選填／篇章結構先寫完整 `options` 再解析；採樣與限制見 prompt 評測紀錄 |
+| `src/prompts.ts`、`src/question-brief.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 固定提示與供應商 structured-output schema，只放 private repo；題目共用英文正向 brief 與單一完整示範，題型／難度固定規則分開維護；錯項以 `{option,reason}` 綁定完整文字，文意選填／篇章結構先寫完整 `options` 再解析；採樣與限制見 prompt 評測紀錄 |
 | `src/question-review.ts`、`src/question-review-validation.ts` | 獨立審題 schema／規則及核准前門檻；先修訂與逐項解說，最後判定未解決問題及 approved，檢查篇幅、跨度、選項與原文依據 |
 | `src/reviewed-question-stream.ts` | 暫停使用的獨立審題流程，未匯入正式 Worker 入口 |
 | `tests-next/question-generation.test.ts` | 題目單次生成、即時文字串流、native fetch receiver、管理員診斷及舊契約拒絕 |
@@ -37,7 +38,7 @@
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
-| `scripts/evaluate-photo-workflow.mjs` | 五張教材照片與受控詞義的兩個 Luna／low 評測；可指定難度／正式批次索引，使用正式 prompt、schema、parser 及局部回收，不可覆寫的 baseline／tuned 回條，指定失敗案例的一次修復。CLI 或供應商失敗停止該模型後續樣本；CLI 用量不當成正式 API 快取或費用；原圖與內容回條只留 ignored artifacts |
+| `scripts/evaluate-photo-workflow.mjs` | 五張教材照片與受控詞義的 Luna 評測；可指定難度／正式批次索引／tier，明示 effort 覆寫僅作能力對照。使用正式 prompt、schema、parser 及一次有界局部回收，不可覆寫的 baseline／tuned 回條。CLI 或供應商失敗停止該模型後續樣本；CLI 用量不當成正式 API 快取或費用；原圖與內容回條只留 ignored artifacts |
 | `scripts/evaluate-question-review.mjs` | 對凍結初稿做 fresh medium CLI 盲審，保留每次請求、schema、回覆與回條；CLI 失敗即停止後續樣本，不以 parser 通過率冒充教育品質 |
 | `tests-next/fixtures/prompt-eval/`、`docs/prompt-evaluation.md` | 從公開前端移入的歷史合成案例、片語實際用法案例與評測方法；`luna-quality-sources.json` 是現行 near-synonym／角色／多義風險的合成來源；歷史 medium artifacts 另存本地 ignored artifacts/historical-medium |
 | `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema、writer／reviewer 固定前綴與 schema／設定跨輸入一致性、最低 tokenizer 長度驗證，以及補充多義與單字共用同一前綴及快取鍵 |

@@ -16,13 +16,15 @@ const { values } = parseArgs({ options: {
   "images-dir": { type: "string" }, reference: { type: "string" },
   "backend-module": { type: "string" }, transport: { type: "string", default: "codex" },
   difficulty: { type: "string", default: "2" }, "batch-index": { type: "string" },
+  tier: { type: "string", default: "lite" },
+  effort: { type: "string" },
   "repair-from": { type: "string", multiple: true }, feedback: { type: "string" },
   "targeted-repair": { type: "boolean", default: false },
   "dry-run": { type: "boolean", default: false }, help: { type: "boolean", default: false },
 } });
 const taskOrder = ["photos", "words", "vocabulary", "cloze", "wordBank", "discourse", "reading", "senses", "explain"];
 if (values.help) {
-  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--difficulty 1|2|3] [--batch-index <zero-based-production-batch>] [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--targeted-repair] [--dry-run]");
+  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--difficulty 1|2|3] [--batch-index <zero-based-production-batch>] [--tier lite|thinking] [--effort low|medium|high (evaluation override only)] [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--targeted-repair] [--dry-run]");
   process.exit(0);
 }
 let models = [...new Set((values.models ?? "gpt-6-luna,gpt-5.6-luna").split(","))];
@@ -32,7 +34,8 @@ const batchIndex = values["batch-index"] === undefined ? null : Number(values["b
 if (!["baseline", "tuned"].includes(values.phase) || !values.reference ||
     models.some((model) => !["gpt-6-luna", "gpt-5.6-luna"].includes(model)) ||
     [...selected].some((task) => !taskOrder.includes(task)) ||
-    !["codex", "responses"].includes(values.transport) || ![1, 2, 3].includes(difficulty) ||
+    !["codex", "responses"].includes(values.transport) || !["lite", "thinking"].includes(values.tier) ||
+    (values.effort && !["low", "medium", "high"].includes(values.effort)) || ![1, 2, 3].includes(difficulty) ||
     (batchIndex !== null && (!Number.isSafeInteger(batchIndex) || batchIndex < 0))) throw new Error("Invalid phase, models, tasks, reference, transport, difficulty or batch index; use --help.");
 if (values.phase === "baseline" && !values["backend-module"]) throw new Error("Baseline requires --backend-module so later prompt edits cannot replace the baseline.");
 if (values["targeted-repair"] && !values["repair-from"]?.length) throw new Error("Targeted repair requires an immutable previous run.");
@@ -103,12 +106,12 @@ function referenceWords(modules, sources) {
 async function buildCases(modules, model, sources, words, photos) {
   const cases = [];
   const addStep = async (task, step, index, batchCount) => {
-    const input = { ...JSON.parse(step.prompt), model, tier: "lite", session: randomUUID() };
+    const input = { ...JSON.parse(step.prompt), model, tier: values.tier, session: randomUUID() };
     cases.push({ id: `${task}-${index + 1}`, task, sourceBasis: "manual-reference", productionBatchIndex: index, productionBatchCount: batchCount, prepared: await modules.backend.prepareGeneration(input, "photo-quality-eval"), parse: step.parse, recover: step.recover });
   };
   for (const task of taskOrder.filter((name) => selected.has(name))) {
     if (task === "photos") {
-      cases.push({ id: "photos-1", task, sourceBasis: "five-source-photos", prepared: await modules.backend.prepareImages(photos.encoded.join("\n"), randomUUID(), "photo-quality-eval", model, "lite"), parse: modules.parseOrganizedWordInput });
+      cases.push({ id: "photos-1", task, sourceBasis: "five-source-photos", prepared: await modules.backend.prepareImages(photos.encoded.join("\n"), randomUUID(), "photo-quality-eval", model, values.tier), parse: modules.parseOrganizedWordInput });
     } else if (task === "words") {
       const steps = modules.wordTask(sources).steps;
       for (const [index, step] of steps.entries()) await addStep(task, step, index, steps.length);
@@ -118,7 +121,7 @@ async function buildCases(modules, model, sources, words, photos) {
       await addStep(task, steps[0], 0, steps.length);
     } else if (task === "explain") {
       const items = words.slice(0, 5).map((word) => ({ type: "review", word: word.word, pos: word.senses[0].pos, meaning: word.senses[0].meaningZh, example: "" }));
-      const prepared = await modules.backend.prepareGeneration({ kind: "explain", raw: JSON.stringify({ items }), model, tier: "lite", session: randomUUID() }, "photo-quality-eval");
+      const prepared = await modules.backend.prepareGeneration({ kind: "explain", raw: JSON.stringify({ items }), model, tier: values.tier, session: randomUUID() }, "photo-quality-eval");
       cases.push({ id: "explain-1", task, sourceBasis: "manual-reference-review-cards", prepared, parse: (text) => { if (!text.trim()) throw new Error("Empty explanation."); return { markdown: text }; } });
     } else {
       // Ten distinct headwords exercise the complete 90-reason word-bank output.
@@ -174,7 +177,7 @@ async function repairCases(modules, model, cases, repairs) {
       if (!recovered?.remaining.length) throw new Error(`${model} ${priorId} cannot be repaired with production item recovery; use an explicit full-case repair.`);
       if (recovered.remaining.length > 4) throw new Error(`${model} ${priorId} needs ${recovered.remaining.length} item repairs; this bounded trial permits at most four.`);
       for (const [index, step] of recovered.remaining.entries()) {
-        const prepared = await modules.backend.prepareGeneration({ ...JSON.parse(step.prompt), model, tier: "lite", session: randomUUID(), repair: issue }, "photo-quality-eval");
+        const prepared = await modules.backend.prepareGeneration({ ...JSON.parse(step.prompt), model, tier: values.tier, session: randomUUID(), repair: issue }, "photo-quality-eval");
         repaired.push({ ...test, id: `${test.id}-repair-${index + 1}`, prepared, parse: step.parse, recover: undefined,
           repair: { previousDirectory: run.directory, previousCaseId: priorId, previousRequestSha256: previous.request.requestSha256,
             feedback: issue, productionStepId: step.id, previousRecovery: { retainedItems: recovered.items.length, completed: recovered.completed, repairSteps: recovered.remaining.length },
@@ -204,6 +207,7 @@ async function repairCases(modules, model, cases, repairs) {
 
 function apiRequest(backend, prepared) {
   const request = backend.upstreamRequest(prepared);
+  if (values.effort) request.reasoning.effort = values.effort;
   if (prepared.images) request.input[request.input.length - 1] = { role: "user", content: [
     { type: "input_text", text: prepared.input },
     ...prepared.images.map((base64) => ({ type: "input_image", image_url: `data:image/webp;base64,${base64}`, detail: "high" })),
@@ -219,7 +223,7 @@ async function runCodex(test, schemaPath, scratch, photos) {
   const answerPath = join(scratch, "answer.txt");
   const isScript = cli.endsWith(".js");
   const args = [ ...(isScript ? [cli] : []), "exec", "--ignore-user-config", "--ephemeral", "--skip-git-repo-check", "--sandbox", "read-only", "--cd", scratch,
-    "--model", test.prepared.request.model, "-c", 'model_reasoning_effort="low"', "--json", "--color", "never",
+    "--model", test.prepared.request.model, "-c", `model_reasoning_effort="${test.effort}"`, "--json", "--color", "never",
     ...(test.task === "photos" ? photos.paths.flatMap((path) => ["--image", path]) : []),
     ...(test.prepared.schema ? ["--output-schema", schemaPath] : []), "--output-last-message", answerPath, "-" ];
   const started = Date.now();
@@ -289,7 +293,7 @@ async function evaluateModel(modules, model, sources, words, photos, reference, 
     const savedRequest = structuredClone(request);
     if (test.task === "photos") savedRequest.input.at(-1).content = [{ type: "input_text", text: test.prepared.input }, ...photos.manifest.map((image) => ({ type: "input_image", sourcePath: image.sourcePath, webpSha256: image.webpSha256, detail: "high" }))];
     const sampleSources = test.prepared.request.sources;
-    await save(directory, `${test.id}-request.json`, { requestedModel: model, effort: "low", transport: values.transport, sourceBasis: test.sourceBasis, difficulty, cacheKey: test.prepared.cacheKey, request: savedRequest, requestSha256: digest(JSON.stringify(request)), imageManifest: test.task === "photos" ? photos.manifest : [],
+    await save(directory, `${test.id}-request.json`, { requestedModel: model, tier: test.prepared.request.tier, effort: request.reasoning.effort, effortOverride: values.effort ?? null, transport: values.transport, sourceBasis: test.sourceBasis, difficulty, cacheKey: test.prepared.cacheKey, request: savedRequest, requestSha256: digest(JSON.stringify(request)), imageManifest: test.task === "photos" ? photos.manifest : [],
       ...(test.repair ? { repair: test.repair } : {}),
       ...(test.productionBatchCount ? { productionBatchIndex: test.productionBatchIndex, productionBatchCount: test.productionBatchCount } : {}),
       ...(sampleSources ? { sampledSources: sampleSources.length, sampledHeadwords: [...new Set(sampleSources.map((source) => source.word))], referenceSources: sources.length, note: "A selected production batch; not coverage of every reference sense." } : {}),
@@ -301,7 +305,7 @@ async function evaluateModel(modules, model, sources, words, photos, reference, 
     if (test.prepared.schema) await writeFile(schemaPath, JSON.stringify(test.prepared.schema));
     let capture;
     const started = Date.now();
-    try { capture = values.transport === "codex" ? await runCodex(test, schemaPath, scratch, photos) : await runResponses(request); }
+    try { capture = values.transport === "codex" ? await runCodex({ ...test, effort: request.reasoning.effort }, schemaPath, scratch, photos) : await runResponses(request); }
     catch (reason) { capture = { raw: "", durationMs: Date.now() - started, error: reasonText(reason) }; }
     await save(directory, `${test.id}-response.txt`, capture.raw);
     if (capture.providerResponse) await save(directory, `${test.id}-provider-response.json`, capture.providerResponse);
@@ -337,7 +341,7 @@ async function evaluateModel(modules, model, sources, words, photos, reference, 
     console.log(`${values.phase} ${model} ${test.id}: ${capture.error || parseError ? "FAIL " + (capture.error || parseError) : "PARSED"} (${capture.durationMs ?? "unknown"} ms)`);
     if (capture.error) break;
   }
-  await save(directory, "summary.json", { phase: values.phase, transport: values.transport, requestedModel: model, difficulty, batchIndex, backendModule: values["backend-module"] ? resolve(values["backend-module"]) : "current src", immutableRun: runId, plannedCases: cases.length, completedCases: results.length, results });
+  await save(directory, "summary.json", { phase: values.phase, transport: values.transport, requestedModel: model, requestedTier: values.tier, effortOverride: values.effort ?? null, difficulty, batchIndex, backendModule: values["backend-module"] ? resolve(values["backend-module"]) : "current src", immutableRun: runId, plannedCases: cases.length, completedCases: results.length, results });
   console.log(`Artifacts: ${directory}`);
   return results;
 }
