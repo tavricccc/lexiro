@@ -1,30 +1,41 @@
-import { Inflectors } from "en-inflectors";
+import nlp from "compromise";
 import { normalizePartOfSpeech } from "@lexiro/ai-contract";
 
+const BRITISH_PAST: Record<string, string> = {
+  burnt: "burn",
+  dreamt: "dream",
+  leant: "lean",
+  leapt: "leap",
+  learnt: "learn",
+  smelt: "smell",
+  spelt: "spell",
+  spilt: "spill",
+  spoilt: "spoil",
+};
+
 /** Inflections preserve the source word; derivations and synonyms do not. */
-function wordForms(word: string, pos: string): Set<string> {
-  const forms = new Set([word]);
-  const inflect = new Inflectors(word);
-  if (pos === "n.") forms.add(inflect.toPlural());
+function hasWordForm(word: string, pos: string, candidate: string): boolean {
+  if (candidate === word) return true;
+  const actual = nlp(candidate);
+  if (pos === "n.") {
+    actual.tag("Noun");
+    return actual.nouns().toSingular().text() === word;
+  }
   if (["v.", "phr. v.", "phr.", "aux."].includes(pos)) {
-    for (const form of [
-      inflect.toPresent(),
-      inflect.toPast(),
-      inflect.toPastParticiple(),
-      inflect.toPresentS(),
-      inflect.toGerund(),
-    ])
-      forms.add(form);
-    if (word === "be") {
-      for (const form of ["am", "is", "are", "was", "were", "been", "being"])
-        forms.add(form);
-    }
+    actual.tag("Verb");
+    return (
+      BRITISH_PAST[candidate] === word ||
+      actual.verbs().toInfinitive().text() === word
+    );
   }
   if (pos === "adj." || pos === "adv.") {
-    forms.add(inflect.comparative());
-    forms.add(inflect.superlative());
+    const source = nlp(word);
+    source.tag("Adjective");
+    const comparative = source.adjectives().toComparative().text();
+    const superlative = source.adjectives().toSuperlative().text();
+    return candidate === comparative || candidate === superlative;
   }
-  return forms;
+  return false;
 }
 
 export function sourceWordFormIssue(
@@ -38,7 +49,7 @@ export function sourceWordFormIssue(
   // in the sentence. Checking its complete collocation still needs review.
   const actual =
     sourceWords.length === 1 ? candidate : candidate.split(/\s+/)[0];
-  return wordForms(sourceWords[0], normalizePartOfSpeech(pos)).has(actual)
+  return hasWordForm(sourceWords[0], normalizePartOfSpeech(pos), actual)
     ? null
     : `「${answer}」不是指定單字「${source}」的合法詞形；請保留來源單字，不要換成同義詞或衍生詞`;
 }

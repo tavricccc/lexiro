@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { placeAnswer } from "@/src/lib/question-builders";
 import { asSenseId, normalizeWordKey } from "@/src/lib/library";
 import { assembleGeneratedQuestions } from "@/src/lib/question-assembly";
+import { sourceWordFormIssue } from "@/src/lib/question-word-forms";
 import { getSetGenerationWords } from "@/src/lib/question-generation";
 
 function word(name: string, pos = "v.", examples: string[] = []): WordEntry {
@@ -119,6 +120,10 @@ describe("assembling the model's reply", () => {
     );
     expect((result.payload.questions as unknown[])).toHaveLength(3);
     expect(result.dropped).toEqual([expect.stringContaining("rescuers")]);
+    for (const [source, answer] of [
+      ["learn", "learned"], ["learn", "learnt"],
+      ["travel", "traveled"], ["travel", "travelled"], ["tug", "tugged"],
+    ]) expect(sourceWordFormIssue(source, "v.", answer)).toBeNull();
   });
 
   it("rejects a vocabulary answer outside the named target usage", () => {
