@@ -1,5 +1,7 @@
 # 2026-10-09 Luna 題目品質校準
 
+本檔保存 v19 為止的實測。後續命題目的／正反例、usage 錨點與精確空格代入候選見 [v20–v23 提示與契約](question-prompt-purpose.md)，不將新候選離線檢查改寫為本輪模型成功。
+
 本輪完成單次生成契約、解析對位及可機器驗證條件的改善；**最後 v19／GPT-5.6 Luna 正式 Thinking medium 的五題型 fresh＋一次 native recovery，仍未達穩定可用目標**。首次 parser 3／5，一次補缺後 4／5；另有真多解、錯標推論及缺少指定文法格。低推理、中推理及高推理都保留原始失敗，不能用 parser 通過數、168 個後端測試或一次修復的成功樣本代替語意驗收。
 
 ## v19 正式 Thinking 五題型驗收
@@ -74,7 +76,7 @@ v16 A 閱讀四個正解有本文支持，但字義題錯寫目標字位於 seco
 6. 評測可指定 difficulty、正式批次索引與 tier；`--effort` 僅作明示能力對照。正式 Lite＝low、Thinking＝medium、Pro＝Sol／low 及計費保持原樣。
 7. `--targeted-repair` 只跑一次正式 `step.recover` 產生的剩餘子題，最多四個；沒有可局部修復的結果時直接拒絕，不自行改成整組重試。
 
-現行題目鍵為 `lexiro-questions-20261009-v19`，局部子題鍵為 `lexiro-question-item-20261009-v10`。words、senses、organizeText、explain 的完整 instructions、schema、cache key 與凍結 v12 逐項比對皆相同，回條為 `release-v19-cache-verification.json`。v19 共用前綴 1,339 tokens、閱讀完整固定 instructions 1,692 tokens；這是本地 tokenizer 數字，沒有證明正式 cache hit。歷史 CLI high 樣本與最後正式 Thinking 的 medium 保持明確區分。
+該輪使用題目鍵 `lexiro-questions-20261009-v19`、局部子題鍵 `lexiro-question-item-20261009-v10`。words、senses、organizeText、explain 的完整 instructions、schema、cache key 與凍結 v12 逐項比對皆相同，回條為 `release-v19-cache-verification.json`。v19 共用前綴 1,339 tokens、閱讀完整固定 instructions 1,692 tokens；這是本地 tokenizer 數字，沒有證明正式 cache hit。歷史 CLI high 樣本與最後正式 Thinking 的 medium 保持明確區分。
 
 ## 自行重跑
 

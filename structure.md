@@ -19,6 +19,7 @@
 | `docs/generation-performance.md` | Pi 機制的版本化研究、暖快取後有限並行、批次／費用邊界與正式 cache probe 維護方法 |
 | `docs/luna-photo-evaluation.md` | 五張教材與兩個 Luna 的有界實測、子代理核對、待校對問題與 CLI 快取界線 |
 | `docs/luna-question-quality-20261009.md` | 凍結 v12 與 v13–v19、low／medium／high、明示回饋及單來源補缺的有界校準，最後正式 Thinking medium 五型 fresh／一次 native recovery 與語意分開，保留未達成穩定品質的界線 |
+| `docs/question-prompt-purpose.md` | v20–v23 命題目的、完整正反例、精確空格代入、逐題／整組檢查與 usage 錨點 raw v3；凍結 A/B 候選及未宣稱穩定品質的實測界線 |
 | `tests-next/generation-room.test.ts`、`tests-next/provider-websocket.test.ts` | 斷線續跑／去重／扣款、上游結果恢復，以及真正 workerd／SQLite DO／WebSocket 連線復用與回放 |
 | `tests-next/room-fixture.ts` | 合成供應商與記憶體 actor storage 的本地測試 fixture |
 | `scripts/probe-websocket.mjs` | 部署前使用 production key 驗證供應商 WebSocket handshake，無模型生成、不輸出金鑰 |
@@ -27,7 +28,7 @@
 | `src/admin.ts` | 帳號、點數、月額度、免費試用與新帳號方案預設管理端點；調整必須帶閱讀時的 `expected` 狀態，原子拒絕過期修改並直接回傳實際儲存結果。帳號由登入產生，沒有手動建立端點；`/admin/usage` 回傳最近紀錄、近 30 天每個模型的 token 與成本、每個帳號分模型的成本與已扣點數，以及每種工作分檔位的計費單位數與成本 |
 | `src/generation.ts`、`src/settlement.ts` | 嚴格輸入、prompt 組裝、模型設定、每來源扣款識別與輸出結算。扣款識別含 session，重試上限不含 session。`words`／`senses` 共用固定提示、`WORD_CACHE_KEY` 與 0–3 義的 provider schema；一般模式恰好一義、補充不得超過 limit，仍由 parser／settlement 按模式驗證。補充以字計費，回傳零義仍算完成 |
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、每批 1–10 張 WebP 輸入檢查與逐張計費來源；圖片不落地。`text/plain` body 每行一張 base64，每張至多 1.5 MB、整批 body 至多 20,000,009 bytes；同批只發一次多圖片 Responses 請求，仍逐張預留與記錄來源完成。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
-| `src/prompts.ts`、`src/question-brief.ts`、`src/question-prompts.ts`、`src/schemas.ts` | 固定提示與供應商 structured-output schema，只放 private repo；題目共用英文正向 brief 與單一完整示範，題型／難度固定規則分開維護；錯項以 `{option,reason}` 綁定完整文字，文意選填／篇章結構先寫完整 `options` 再解析；採樣與限制見 prompt 評測紀錄 |
+| `src/prompts.ts`、`src/question-brief.ts`、`src/question-prompts.ts`、`src/schemas.ts` | Private 固定提示與 structured-output schema；共用命題目的／正反例／逐題檢查與題型規則分檔，reading 先 skill/evidence，挖空題先 usage 定位 actual answer；共享候選完整文字先定，再以 `{option,reason}` 解析 |
 | `src/question-review.ts`、`src/question-review-validation.ts` | 獨立審題 schema／規則及核准前門檻；先修訂與逐項解說，最後判定未解決問題及 approved，檢查篇幅、跨度、選項與原文依據 |
 | `src/reviewed-question-stream.ts` | 暫停使用的獨立審題流程，未匯入正式 Worker 入口 |
 | `tests-next/question-generation.test.ts` | 題目單次生成、即時文字串流、native fetch receiver、管理員診斷及舊契約拒絕 |

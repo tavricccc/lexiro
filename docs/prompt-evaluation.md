@@ -1,8 +1,10 @@
 # 生成與審題評測紀錄
 
+後續 v20–v23 已改為命題目的、正反例、逐題檢查及真正遮掉 answer 後的候選代入，並將文章型 raw 移為 required usage 錨點；新候選實測由主代理控制，方法及版本界線見 [目的與契約](question-prompt-purpose.md)。下列 v19 結果仍是前輪凍結資料。
+
 ## 2026-10-09 出題契約與有界能力對照
 
-現行題目 writer 為 `lexiro-questions-20261009-v19`、raw 契約 `single-pass-v2`。錯項解說明確綁定候選文字，共用選項先生成；正式仍單次 writer，Lite／Thinking／Pro 分級及不相關快取不變。v19 改原文含義／搭配理由並讓閱讀先選 skill／evidence；同六詞的正式 5.6 Thinking medium 五型 fresh 首次 parser 3／5，一次 native reliable 補缺後 4／5，仍有多解、錯標推論及缺 aux 格。此前凍結 v12、兩個 Luna／low、5.6 medium／high、明確人工回饋與 v18 high 全留為歷史。原始失敗與傳輸 timeout 全保留；high 人工回饋稿不能當成 medium fresh 的證據，也不能以較弱但可用的題目混同錯誤解析，詳見 [本輪紀錄](luna-question-quality-20261009.md)。
+該輪題目 writer 為 `lexiro-questions-20261009-v19`、raw 契約 `single-pass-v2`。錯項解說明確綁定候選文字，共用選項先生成；正式仍單次 writer，Lite／Thinking／Pro 分級及不相關快取不變。v19 改原文含義／搭配理由並讓閱讀先選 skill／evidence；同六詞的正式 5.6 Thinking medium 五型 fresh 首次 parser 3／5，一次 native reliable 補缺後 4／5，仍有多解、錯標推論及缺 aux 格。此前凍結 v12、兩個 Luna／low、5.6 medium／high、明確人工回饋與 v18 high 全留為歷史。原始失敗與傳輸 timeout 全保留；high 人工回饋稿不能當成 medium fresh 的證據，也不能以較弱但可用的題目混同錯誤解析，詳見 [本輪紀錄](luna-question-quality-20261009.md)。
 
 ## 2026-10-08 五張教材照片與兩個 Luna
 
