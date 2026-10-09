@@ -33,7 +33,7 @@
 | `src/usage-parts.ts`、`tests-next/question-review-validation.test.ts` | 各回合完整用量、各自計價後加總；核准稿機器門檻及輸出判定順序的必要反例檢查 |
 | `tests-next/database.ts`、`tests-next/worker.test.ts` | 本地 D1 fixture 與 HTTP/CORS/管理/生成整合測試 |
 | `tests-next/billing.test.ts` | 以 Miniflare 真正 D1/SQLite 驗證扣款、回滾、重試、並發、退款與續期 |
-| `vendor/lexiro-ai-contract-4.0.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、單次生成預估與 single-pass-v1 契約、itemRepair、Sol 價格及 Pro/low 路由。JSON 必須帶模型與檔位，照片由 X-AI-Model／X-AI-Tier 選擇；已付費來源依實際模型及檔位區分 |
+| `vendor/lexiro-ai-contract-4.0.0.tgz` | 來自 public frontend packages/ai-contract 的無祕密共用套件；高中題型、單次生成預估與 single-pass-v2 契約、itemRepair、Sol 價格及 Pro/low 路由。JSON 必須帶模型與檔位，照片由 X-AI-Model／X-AI-Tier 選擇；已付費來源依實際模型及檔位區分 |
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |

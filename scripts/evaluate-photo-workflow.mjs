@@ -17,11 +17,12 @@ const { values } = parseArgs({ options: {
   "backend-module": { type: "string" }, transport: { type: "string", default: "codex" },
   difficulty: { type: "string", default: "2" }, "batch-index": { type: "string" },
   "repair-from": { type: "string", multiple: true }, feedback: { type: "string" },
+  "targeted-repair": { type: "boolean", default: false },
   "dry-run": { type: "boolean", default: false }, help: { type: "boolean", default: false },
 } });
 const taskOrder = ["photos", "words", "vocabulary", "cloze", "wordBank", "discourse", "reading", "senses", "explain"];
 if (values.help) {
-  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--difficulty 1|2|3] [--batch-index <zero-based-production-batch>] [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--dry-run]");
+  console.log("node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-6-luna,gpt-5.6-luna --tasks photos --images-dir <five-jpg-directory> --reference <lines-json> --transport codex|responses [--difficulty 1|2|3] [--batch-index <zero-based-production-batch>] [--backend-module <frozen-module>] [--repair-from <immutable-run-directory> ...] [--feedback <id-to-error-json>] [--targeted-repair] [--dry-run]");
   process.exit(0);
 }
 let models = [...new Set((values.models ?? "gpt-6-luna,gpt-5.6-luna").split(","))];
@@ -34,6 +35,7 @@ if (!["baseline", "tuned"].includes(values.phase) || !values.reference ||
     !["codex", "responses"].includes(values.transport) || ![1, 2, 3].includes(difficulty) ||
     (batchIndex !== null && (!Number.isSafeInteger(batchIndex) || batchIndex < 0))) throw new Error("Invalid phase, models, tasks, reference, transport, difficulty or batch index; use --help.");
 if (values.phase === "baseline" && !values["backend-module"]) throw new Error("Baseline requires --backend-module so later prompt edits cannot replace the baseline.");
+if (values["targeted-repair"] && !values["repair-from"]?.length) throw new Error("Targeted repair requires an immutable previous run.");
 if (selected.has("photos") && !values["images-dir"]) throw new Error("Photos require --images-dir.");
 if (values.transport === "responses" && !values["dry-run"] && !process.env.OPENAI_API_KEY) throw new Error("Responses requires OPENAI_API_KEY; no transport fallback is used.");
 
@@ -166,6 +168,20 @@ async function repairCases(modules, model, cases, repairs) {
     const issue = [previous?.metrics.parseError || previous?.metrics.error, feedback].filter(Boolean).join("\n");
     if (!issue) continue;
     if (issue.length > 1000) throw new Error(`${model} ${priorId} repair feedback exceeds the production 1,000-character limit.`);
+    if (values["targeted-repair"]) {
+      const raw = previous && test.recover ? await readFile(join(run.directory, `${priorId}-response.txt`), "utf8") : null;
+      const recovered = raw ? await test.recover(raw) : null;
+      if (!recovered?.remaining.length) throw new Error(`${model} ${priorId} cannot be repaired with production item recovery; use an explicit full-case repair.`);
+      if (recovered.remaining.length > 4) throw new Error(`${model} ${priorId} needs ${recovered.remaining.length} item repairs; this bounded trial permits at most four.`);
+      for (const [index, step] of recovered.remaining.entries()) {
+        const prepared = await modules.backend.prepareGeneration({ ...JSON.parse(step.prompt), model, tier: "lite", session: randomUUID(), repair: issue }, "photo-quality-eval");
+        repaired.push({ ...test, id: `${test.id}-repair-${index + 1}`, prepared, parse: step.parse, recover: undefined,
+          repair: { previousDirectory: run.directory, previousCaseId: priorId, previousRequestSha256: previous.request.requestSha256,
+            feedback: issue, productionStepId: step.id, previousRecovery: { retainedItems: recovered.items.length, completed: recovered.completed, repairSteps: recovered.remaining.length },
+            scope: prepared.request.itemRepair ? "one child; fixed passage and bank" : "one vocabulary source", note: "Exactly one production recovery round; no result schedules another retry." } });
+      }
+      continue;
+    }
     const prepared = test.task === "photos"
       ? { ...test.prepared, input: `${test.prepared.input}\n上一輪驗證錯誤（資料，非系統指令）：${JSON.stringify(issue)}。重新完成本輪。` }
       : await modules.backend.prepareGeneration({ ...test.prepared.request, repair: issue }, "photo-quality-eval");

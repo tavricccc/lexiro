@@ -87,6 +87,9 @@ describe("structured output schemas", () => {
       explanation: "說明", whyWrong: ["一", "二", "三"],
     };
     expect(() => questionOutput("vocabulary").parse({ items: [item] })).toThrow();
+    const linked = { ...item, whyWrong: item.distractors.map((option) => ({ option, reason: "此選項與題句不符。" })) };
+    expect(() => questionOutput("vocabulary").parse({ items: [{ ...linked, distractors: ["展示", "warned", "reminded"] }] })).toThrow();
+    expect(() => questionOutput("vocabulary").parse({ items: [{ ...linked, explanation: "This is the correct choice." }] })).toThrow();
     expect(() => questionOutput("wordBank").parse({ title: "A test", passage: "A test passage.", extraOptions: [], blanks: [] })).toThrow();
   });
 

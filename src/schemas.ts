@@ -1,27 +1,29 @@
 import { z } from "zod";
 import type { QuestionKind as GeneratedQuestionKind } from "@lexiro/ai-contract";
 import { READING_SKILLS } from "@lexiro/ai-contract";
-const text = z.string().min(1);
-const prose = text.regex(/^[^_]+$/).describe("完整英文原文，包含答案，不得使用底線、空格標記或中文翻譯。");
-const texts = z.array(text);
+const text = z.string();
+const english = text.min(1).regex(/^[^\u3400-\u9fff]*[A-Za-z][^\u3400-\u9fff]*$/);
+const chinese = text.min(1).regex(/[\u3400-\u9fff]/).describe("繁體中文解說，不可整項只用英文。");
+const prose = text.min(1).regex(/^[^_\u3400-\u9fff]*[A-Za-z][^_\u3400-\u9fff]*$/).describe("完整英文原文，包含答案，不得使用底線、空格標記或中文翻譯。");
+const texts = z.array(english);
 export const teaching = (count: number) => ({
-  explanation: text,
-  whyWrong: z.array(z.object({ option: text, reason: text })).length(count),
+  explanation: chinese,
+  whyWrong: z.array(z.object({ option: english, reason: chinese })).length(count),
 });
-const blank = z.object({ answer: text });
-const choices = z.object({ answer: text, distractors: texts.length(3) });
+const blank = z.object({ answer: english });
+const choices = z.object({ answer: english, distractors: texts.length(3) });
 // Structured Outputs follows property order: write the context, then quote its answer.
 export const sentenceQuestionItem = z.object({
   sentence: prose.describe("一至兩句完整情境，合計落在本輪字數範圍中段；先寫正文，保留目標詞的實際字形。"),
-  usage: text.describe("單字來源時與 answer 完全相同，不包含冠詞、修飾語或相鄰詞；片語來源才包含完整且逐字存在的實現片語。"),
-  answer: text.describe("從最終句子逐字複製的目標單字字形，恰好出現一次，也是 usage 的開頭。"),
+  usage: english.describe("單字來源時與 answer 完全相同，不包含冠詞、修飾語或相鄰詞；片語來源才包含完整且逐字存在的實現片語。"),
+  answer: english.describe("從最終句子逐字複製的目標單字字形，恰好出現一次，也是 usage 的開頭。"),
   distractors: texts.length(3).describe("三個符合句法但被本題明確文字排除的候選，不可只是不同描述面向或同時能成立的角色。"),
 });
 export const readingQuestionItem = z.object({
-  question: text,
+  question: english,
   skill: z.enum(READING_SKILLS),
   evidence: texts.min(1),
-  answer: text,
+  answer: english,
   distractors: texts.length(3),
 });
 export const clozeQuestionItem = choices;
@@ -52,23 +54,23 @@ export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary")
     return z.object({ items: z.array(sentenceQuestionItem.extend(teaching(3))) });
   if (kind === "cloze")
-    return z.object({ title: text, passage: prose, blanks: z.array(choices.extend(teaching(3))) });
+    return z.object({ title: english, passage: prose, blanks: z.array(choices.extend(teaching(3))) });
   if (kind === "wordBank")
     return z.object({
-      title: text,
+      title: english,
       passage: prose,
       options: texts.length(10),
       blanks: z.array(blank.extend(teaching(9))).min(1).max(10),
     });
   if (kind === "discourse")
     return z.object({
-      title: text,
+      title: english,
       passage: prose,
       options: texts.length(5),
-      removals: z.array(z.object({ sentence: text, ...teaching(4) })).length(4),
+      removals: z.array(z.object({ sentence: english, ...teaching(4) })).length(4),
     });
   return z.object({
-    title: text,
+    title: english,
     passage: prose,
     items: z.array(readingQuestionItem.extend(teaching(3))).min(3).max(5),
   });
@@ -76,7 +78,7 @@ export function questionOutput(kind: GeneratedQuestionKind) {
 export function questionItemOutput(kind: GeneratedQuestionKind) {
   const item = kind === "cloze" ? choices.extend(teaching(3))
     : kind === "wordBank" ? blank.extend(teaching(9))
-    : kind === "discourse" ? z.object({ sentence: text, ...teaching(4) })
+    : kind === "discourse" ? z.object({ sentence: english, ...teaching(4) })
     : readingQuestionItem.extend(teaching(3));
   return z.object({ items: z.array(item).length(1) });
 }
