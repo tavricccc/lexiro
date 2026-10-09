@@ -190,6 +190,21 @@ describe("high-school generation quality gate", () => {
     expect(step.recover!(JSON.stringify({ ...draft, options: options.slice(1) }))).toBeNull();
   });
 
+  it("keeps whole, separated discourse sentences and rejects repairs that would change the bank", () => {
+    const sentences = Array.from({ length: 12 }, (_, index) => `During stage ${index + 1}, the students carefully recorded every result from their project before comparing the observations with earlier notes and discussing possible explanations together.`);
+    const selected = [2, 4, 6, 8].map((index) => sentences[index]);
+    const options = [...selected, "The team immediately abandoned the project without collecting any evidence."];
+    const draft = { title: "A project", passage: sentences.join(" "), options,
+      removals: selected.map((sentence) => ({ sentence, explanation: "上下文描述同一階段的研究步驟。", whyWrong: options.filter((option) => option !== sentence).map((option) => ({ option, reason: "這個選項無法銜接本格前後的階段。" })) })) };
+    expect(generatedQuestionQualityIssue(draft, "discourse", 2)).toBeNull();
+    const adjacent = { ...draft, removals: draft.removals.map((entry, index) => index === 1 ? { ...entry, sentence: sentences[3] } : entry) };
+    expect(generatedQuestionQualityIssue(adjacent, "discourse", 2)).toMatch(/相鄰/);
+    expect(questionTask([source], "discourse", 2).steps[0].recover!(JSON.stringify(adjacent))).toBeNull();
+    for (const sentence of [sentences[0], sentences[11]])
+      expect(generatedQuestionQualityIssue({ ...draft, removals: [{ ...draft.removals[0], sentence }] }, "discourse", 2)).toMatch(/首句或末句/);
+    expect(generatedQuestionQualityIssue({ ...draft, removals: [{ ...draft.removals[0], sentence: selected[0].slice(12) }] }, "discourse", 2)).toMatch(/完整原句/);
+  });
+
   it("applies both limits to original passages before cutting whole sentences", () => {
     const range = questionLengthRange("discourse", 3);
     const prose = (count: number) =>

@@ -14,6 +14,7 @@ import {
   sharedQuestionBankIssue,
 } from "../question-quality";
 import { extractJsonText } from "./json";
+import { discourseStructureIssue } from "../question-discourse";
 
 /** Keep the article and good children; every replacement request produces one child. */
 export function passageRepairs({
@@ -49,6 +50,7 @@ export function passageRepairs({
   )
     return null;
   if (sharedQuestionBankIssue(draft, kind)) return null;
+  if (kind === "discourse" && discourseStructureIssue(draft)) return null;
   const items = draft[field] as unknown[];
   const issue = (index: number) => {
     const value = items[index];

@@ -8,6 +8,7 @@ import type { GeneratedQuestionKind, QuestionDifficulty } from "@/types";
 import { isPassageKind } from "./question-formats";
 import { isRecord } from "./schema";
 import { optionTeachingIssue } from "./question-teaching";
+import { discourseStructureIssue } from "./question-discourse";
 
 /** Validate new prose and reading audits; existing saved and manual work stays editable. */
 export function generatedQuestionQualityIssue(
@@ -28,7 +29,11 @@ export function generatedQuestionQualityIssue(
     const lengthIssue = check(value.passage, "文章");
     if (lengthIssue) return lengthIssue;
     const evidenceIssue =
-      kind === "reading" ? readingEvidenceIssue(value, difficulty) : null;
+      kind === "reading"
+        ? readingEvidenceIssue(value, difficulty)
+        : kind === "discourse"
+          ? discourseStructureIssue(value)
+          : null;
     return evidenceIssue ?? teachingIssue(value, kind);
   }
   if (!Array.isArray(value.items)) return null;
