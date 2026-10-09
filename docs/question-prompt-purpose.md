@@ -1,27 +1,29 @@
 # 目的、示範與逐題檢查的出題提示
 
-這輪已實作並分別凍結 v20–v23 候選，效能與題目語意由主代理控制 A/B。離線契約檢查及本地測試不能當作 Luna 已穩定出題的證據。v19 的五型首次／一次回收結果保留於 [前輪校準](luna-question-quality-20261009.md)。
+這輪已實作並分別凍結 v20–v24 候選，效能與題目語意由主代理控制 A/B。離線契約檢查及本地測試不能當作 Luna 已穩定出題的證據。v19 的五型首次／一次回收結果保留於 [前輪校準](luna-question-quality-20261009.md)。
 
 ## 命題出發點
 
 每題先決定學習者要辨認的詞義、詞形、銜接或推論，再決定能讓該辨析成立的文本證據。來源詞是教材，不是宣布正解的理由。題幹以觀察、行動、數量、因果和順序提供線索，錯項解說回到實際文本。
 
-v23 共用 brief 包含一個完整 take off 正例及一個機械計時器反例。正例用脫鞋前後的具體結果辨認動作，完整答案與候選替換相同的空格範圍。反例呈現 fixed schedule 同樣支持 automatic；指定來源 mechanical 並不能排除另一合理答案。閱讀規則另有完整單題正反例：只有一台顯微鏡加上三組同時需要使用，才推出協調使用時間；兩個引用若其中一句已明說答案，應標 detail，另出真正的 inference。
+v24 共用 brief 包含 be 與 look forward to 的完整單題正例，並以實際回填句示範 bright／performing 重複的反例。機械計時器的短對照保留 fixed schedule 同樣支持 automatic 的根因；指定來源 mechanical 並不能排除另一合理答案。閱讀規則另有完整單題正反例：只有一台顯微鏡加上三組同時需要使用，才推出協調使用時間；兩個引用若其中一句已明說答案，應標 detail，另出真正的 inference。
 
 每完成一題，按以下順序核對，再寫下一題：
 
 1. 學習目的與證據。
-2. 選出對應同一辨析點的候選。
-3. 用自然情境提供足夠正面線索。
-4. 定位 usage，遮掉精確 answer，再將候選逐一插入學習者真正看到的空格。
+2. 用自然情境提供足夠正面線索。
+3. 定位 usage，決定並遮掉精確 answer，確認學習者真正看到的空格。
+4. 才選出對應同一辨析點、適合該空格的候選，再逐一填回。
 5. 錯項理由是否有剩餘本文依據，不能以原本的答案字證明答案。
 6. 來源詞義、合法詞形、原文 span、實際選項覆蓋及可讀性。
 
 全部子題完成後再檢查共享題組的完整配置、未用候選、相鄰線索及題間答案洩漏。這是同一次 writer 的內容檢查，沒有新增 paid reviewer、額外 HTTP 回合、可見推理欄位或檢查紀錄。正常教學解析仍使用繁體中文。
 
-## v23 實際空格與可觀察線索
+## 實際空格與可觀察線索
 
-usage 只定位，程式實際挖掉的是 answer。若原文是 `Mira took her muddy shoes off beside the door`，answer 取完整 `took her muddy shoes off`，候選可用 `put her muddy shoes on`，代入後仍是完整自然的句子；若 answer 只取 `took` 卻沿用該候選，就會留下 `put her muddy shoes on her muddy shoes off`。頭詞或完整片語都可以，但每個候選須配合空格外保留的助動詞、受詞和 particle，不能只比較 JSON 裡的詞義。這不要求每個選項字數完全相同。
+usage 只定位，程式實際挖掉的是 answer。v24 schema 與 writer 一致依 `sentence → usage → answer → distractors → teaching` 決定範圍，再選候選，修正先寫干擾項、後來卻挖局部答案的順序衝突。`both signs were bright` 若只挖 were，候選是 was／are／is；was bright 會留下 bright bright。`look forward to performing` 若只挖 look forward to，候選不能再帶 performing。頭詞、固定片語或整段動作都可，但每個選項須配合保留的冠詞、助動詞、受詞及 particle；例如留下 an 時，donation 不能直接填成 an donation。這不要求選項字數完全相同。
+
+被 answer 一起挖掉的地點、動作或屬性，也不能當排除候選的證據。理由須回到剩餘句意，不用「未提及 X 所以 X 不可能」或「X 通常 Y 所以一定不 Z」排錯；近義或獨立屬性若同樣自然，應調整情境或候選。這些是 writer 的品質檢查，沒有新增前端語意猜測門檻。
 
 短對照另示範 loud dog 不能單靠聲量排除 howl；一連串短促、間隔的 woof 是 bark 的可觀察線索。見到搶案也不能宣告一個人不是 victim／suspect；應以他在該調查提供獨立見聞的實際角色命題。較弱但可排除的候選可用，不把「人物可能還有另一屬性」一概判成多解；必須看代入後的完整句意。
 
@@ -61,14 +63,20 @@ intended raw 契約為 `@lexiro/ai-contract` 5.0.0／`single-pass-v3`。cloze、
 
 ## 凍結與對照
 
-`artifacts/ai-quality/20261009-purpose-prompts/` 保留不可覆寫的 baseline v19、其五型原 prepared requests、reference 及各版候選／manifest。v20 用於目的與例子；v21 對齊詞彙 usage 定位；v22 對齊文章型 usage；v23 補實際剪空格／片語替換與可觀察線索。vocabulary 的 v21／v22 raw schema 相同；v23 僅修改 answer 描述，A/B 可用 evaluator 的 `--schema-module` 固定同一 schema。舊文章型 raw 在新的 v3 parser 不相容，這種拒收不能計成舊模型語意失敗。
+`artifacts/ai-quality/20261009-purpose-prompts/` 保留不可覆寫的 baseline v19、其五型原 prepared requests、reference 及各版候選／manifest。v20 用於目的與例子；v21 對齊詞彙 usage 定位；v22 對齊文章型 usage；v23 補實際剪空格／片語替換與可觀察線索；v24 改為先決定空格再選候選，整合兩個實際粒度反例。vocabulary 的 v21／v22 raw schema 相同；v23 修改 answer 描述，v24 再改 property order 和 distractors 描述，字段型態不變。A/B 可用 evaluator 的 `--schema-module` 固定同一 schema。舊文章型 raw 在新的 v3 parser 不相容，這種拒收不能計成舊模型語意失敗。
 
-v22 共用前綴 1,760 tokens；v23 共用前綴 2,154，詞彙 2,464、cloze 2,830、WordBank 2,617、discourse 2,490、reading 3,088 固定 instructions tokens。這是本地 tokenizer 計數，沒有證明正式快取命中。現行 `lexiro-questions-20261009-v23`／`lexiro-question-item-20261009-v14` 只更新題目契約；words、senses、organizeText、explain 的 instructions、schema、cache key 與凍結 v19 逐項相同。詞彙批次 1／4／8／16 配合難度 1／2／3 的十二種組合均保持相同固定 instructions 與 schema。
+v22 共用前綴 1,760 tokens；v23 為 2,154，v24 精煉為 2,083。v24 詞彙 2,405、cloze 2,759、WordBank 2,546、discourse 2,419、reading 3,017 固定 instructions tokens。這是本地 tokenizer 計數，沒有證明正式快取命中。本次僅題目鍵升 `lexiro-questions-20261009-v24`，itemRepair 保持 `lexiro-question-item-20261009-v14`；words、senses、organizeText、explain 的 instructions、schema、cache key 與凍結 v19 逐項相同。詞彙批次 1／4／8／16 配合難度 1／2／3 的十二種組合均保持相同固定 instructions 與 schema。
 
-v23 bundle 是 `candidate-v23-backend.mjs`，SHA-256 `6111661bff5635f53cbd1a737a7aa529d106201e26d891b1a713ee1e2468decf`；同目錄 manifest 保存每個來源檔、schema、版本及 tokenizer 數值。凍結候選不能在模型輪次中途覆寫。
+v24 bundle 是 `candidate-v24-backend.mjs`，SHA-256 `0074c6d2ee6e88d55bf53ec21c506237fac5c1a6479905ce8c39c2d8935ceab9`；同目錄 manifest 保存每個來源檔、schema、版本、兩個正例的實際回填及 tokenizer 數值。原 v23 bundle 與所有實驗原稿不變，凍結候選不能在模型輪次中途覆寫。
 
-批次 1／4／8／16 與並行 1／2 的對照由主代理控制，固定來源排序、難度、model／effort 及同一前端 parser，再分開量測整輪時間、首次／native partial recovery 與語意品質。尚未依本文自行選定正式預設，也未升級 tier。候選 freeze 以 local vendor 4 編譯供 CLI prepare；HTTP v3 header 及最終全面 gate 需和 root 最後的 vendor 5 pack 一起整合。
+批次 1／4／8／16 與有界並行的對照由主代理控制，固定來源排序、難度、model／effort 及同一前端 parser，再分開量測整輪時間、首次／native partial recovery 與語意品質。正式批次和並行的比較及決策見 [工作量評測](luna-workload-evaluation.md)，tier 沒有升級。v20–v23 freeze 使用 local vendor 4；v24 已使用 vendor 5，HTTP v3 與並行配置的最終全面 gate 由主代理統一整合。
 
-v23 在上述 vendor 4 工作區完成 typecheck、lint、build 與 15 個測試檔／174 個測試，包含 stream lane 重用；此結果不是 v3 HTTP 整合或實際模型品質驗收。提示代理在這輪沒有發新模型請求，對照請求由主代理統一派送。
+v23 在 vendor 4 工作區完成 typecheck、lint、build 與 15 個測試檔／174 個測試；v24 在 vendor 5 通過 typecheck、lint 與三個目標測試檔／43 個測試。這些不是模型品質驗收；最終全面 gate 保留給主代理的 runtime／並行整合。提示代理在這輪沒有發新模型請求，對照請求由主代理統一派送。
+
+## v23 每批四題的獨立語意覆核
+
+只讀 `2026-10-09T14-38-14-121Z-26d56e2b` 的六份 raw response，遮實際 answer 後逐項填回，覆核 24 題與 72 個理由。此份獨立分類為 9 題 usable、7 題 advisory、8 題 needsFix。範圍錯誤是 were 留下 bright、look forward to 留下 performing，錯項卻再帶相同字；另有 bank 的設施／位置硬排除、雨衣 carried 後掛起仍合理、stayed 郵局不能返校的錯誤解說，以及測量／情節的排他性不足。rescue、witness、turn off 有保留的實際證據；bark 有聲型線索但後文洩漏 barked，列 advisory。mechanical／digital、reliable 的其他屬性及部分弱項保留為建議，沒有一概判多解。
+
+報告是同輪 ignored `review-v23-b4-quality.json`，readable JSON 與報告均以不同名稱／不可覆寫方式建立。此審核沒有讀任何 native recovery、parser metrics 或其他代理報告；24 是 fresh raw 審查數，不能改稱修復後通過率。v24 是對已觀察根因的候選，結果待主代理實測，沒有以離線例子冒稱穩定。
 
 [OpenAI reasoning best practices](https://developers.openai.com/api/docs/guides/reasoning-best-practices) 支持明確完成標準與貼近任務的示範，不要求模型輸出思考步驟。[Latency optimization](https://developers.openai.com/api/docs/guides/latency-optimization) 說明小模型可嘗試較詳細提示與例子、獨立工作可並行；這些是評測方向，並非本專案的品質或甜蜜點結論。
