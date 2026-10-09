@@ -28,6 +28,16 @@ function oldContext(modules, task, request, reference, sources) {
   return { input: generation, words: wordsForSources(modules, generation.sources, reference.words) };
 }
 
+export function historicalWordBankWithoutRef(modules, task, request, raw) {
+  if (task !== 'wordBank' || modules.questionContract !== 'single-pass-v3' ||
+    request.request.text?.format?.schema?.properties?.blanks?.items?.required?.includes('ref')) return false;
+  let data;
+  try { data = JSON.parse(modules.extractJsonText(raw)); }
+  catch { return false; } // Malformed replies still go through the native content-failure path.
+  return Array.isArray(data?.blanks) && data.blanks.some(blank =>
+    blank !== null && typeof blank === 'object' && !Array.isArray(blank) && !Object.hasOwn(blank, 'ref'));
+}
+
 async function replayCase(modules, directory, id, parents) {
   const [request, metrics, reference] = await Promise.all([json(join(directory, `${id}-request.json`)), json(join(directory, `${id}-metrics.json`)), json(join(directory, 'reference.json'))]);
   const sources = reference.sources ?? modules.buildWordGenerationSources(modules.parseOrganizedWordInput(JSON.stringify(reference.reference)).join('\n'));
@@ -68,15 +78,16 @@ export async function revalidate(config, modules) {
     for (const original of cases) {
       if (original.status === 'SKIPPED') { results.push({ id: original.id, status: 'SKIPPED', skipReason: original.skipReason }); continue; }
       const saved = await json(join(directory, `${original.id}-request.json`));
-      if (!original.error && ['cloze', 'wordBank', 'discourse', 'reading'].includes(original.task) && modules.questionContract === 'single-pass-v3' && /^lexiro-questions-20261009-v(?:19|20|21)$/.test(saved.cacheKey)) {
-        const raw = await readFile(join(directory, `${original.id}-response.txt`), 'utf8');
+      const raw = await readFile(join(directory, `${original.id}-response.txt`), 'utf8');
+      const legacyPassage = ['cloze', 'wordBank', 'discourse', 'reading'].includes(original.task) && modules.questionContract === 'single-pass-v3' && /^lexiro-questions-20261009-v(?:19|20|21)$/.test(saved.cacheKey);
+      const missingHistoricalRef = historicalWordBankWithoutRef(modules, original.task, saved, raw);
+      if (!original.error && (legacyPassage || missingHistoricalRef)) {
         const result = { id: original.id, task: original.task, status: 'INCOMPATIBLE_CONTRACT', sourceResponseSha256: digest(raw),
-          savedContract: 'single-pass-v2 passage raw', parserContract: modules.questionContract,
+          savedContract: legacyPassage ? 'single-pass-v2 passage raw' : 'single-pass-v3 WordBank without required blank.ref', parserContract: modules.questionContract,
           note: 'Historical raw-contract mismatch; not scored as model semantic or content failure.' };
         await save(output, `${original.id}-revalidation.json`, result); results.push(result); continue;
       }
       const replay = await replayCase(modules, directory, original.id, parents);
-      const raw = await readFile(join(directory, `${original.id}-response.txt`), 'utf8');
       const analysis = parseCapture(modules, replay.test, { raw, error: original.error ?? null }, replay.sources, replay.units);
       const result = { id: original.id, task: original.task, ...analysis.metrics, sourceResponseSha256: digest(raw),
         originalParseError: original.parseError ?? null, originalTransportError: original.error ?? null, originalDurationMs: original.durationMs,

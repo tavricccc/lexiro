@@ -8,7 +8,7 @@
 
 只對照提示時，兩邊另外指定相同的 `--schema-module <candidate-v21-backend.mjs>`；有效 schema 由該凍結模組提供，舊 writer 的 instructions／input／cache key 不變，原 schema 及 SHA 另存。未指定時完整保留各版本自己的凍結 schema，適合歷史重跑，不能把它宣稱為只改提示的 A/B。
 
-`--batch-size 1|4|8|16` 只控制詞彙題，每個 chunk 使用正式 `questionTask` parser 與 `prepareGeneration`。指定大小後預設跑完整來源池，24 詞分別是 24／6／3／2 批；`--batch-index` 才選單一 probe。文章型沿用正式完整文章與候選庫，一個題組就是一個不可分割請求；不隨詞彙大小拆每格。
+`--batch-size 1|4|8|16` 只控制詞彙題，每個 chunk 使用共用 domain 的 `questionBatchTask` 與 `prepareGeneration`。它把指定完整批次交給與正式生成相同的 parser／recovery；正式 `questionTask` 仍照產品的 `splitGenerationBatches` 拆批，不受評測設定影響。指定大小後預設跑完整來源池，24 詞分別是 24／6／3／2 批；`--batch-index` 才選單一 probe。文章型沿用正式 `questionTask` 的完整文章與候選庫，一個題組就是一個不可分割請求；不隨詞彙大小拆每格。重驗既有詞彙回覆也以保存的完整 sources 建原生單批 parser，因此歷史 8／16 題不會被新的正式 4 題預設拆散。
 
 `--concurrency 1|2|4` 是整輪上限，兩模型合計也受同一上限控制。4 只允許 Codex CLI；Responses 路徑至多 2。`--warm-first` 等每個模型／題型／cache key 的第一批完成後，才釋放該組剩下的獨立請求。CLI 或供應商失敗後停止該模型的新派送，已開始的請求保留回條，不追加重試。明示 `--targeted-repair` 維持一次原生修復且只能並行 1，避免改變共用文章的依序回收語意。
 
@@ -40,7 +40,7 @@ v19 對照把 `--phase` 換成 `baseline`，`--backend-module` 換成同資料�
 
 整批通過是 `PARSED`；parser 拒絕但原生 recovery 保留可存題目是 `PARTIAL`。`retainedUnits`／`retainedSourceIndices` 記錄可保存成果，`remainingUnits` 記錄未執行的修復步驟；首次可保留成果包含 PARTIAL。文章僅暫存的 child 另記 `stagedChildren`，不能當作已保存的完整題組。結構失敗、傳輸失敗、尚未派送分別記錄，不把漏跑批次列為出題失敗。這些是機器契約與覆蓋指標，逐題的多解、明確錯誤與可用但弱仍需另外評閱。
 
-目前文章 raw 契約遷移到 `single-pass-v3`；重驗 v19–v21 的舊文章回覆標成 `INCOMPATIBLE_CONTRACT`，不算模型內容或語意失敗。詞彙 raw 形狀未變，仍可用同一個當前 parser 做 v19／v21 對照。
+目前文章 raw 契約遷移到 `single-pass-v3`；重驗 v19–v21 的舊文章回覆標成 `INCOMPATIBLE_CONTRACT`，不算模型內容或語意失敗。WordBank 新契約要求每格 `ref`；只有保存的 schema 未要求 `ref`、而舊回覆實際缺少該欄位時，才另標歷史契約不相容。新 schema 已要求 `ref` 卻漏寫、未知／重複／錯誤 `ref`，仍交給正式 parser 記錄內容失敗，不當成歷史不相容。詞彙 raw 形狀未變，仍可用同一個當前 parser 做 v19／v21 對照。
 
 CLI JSONL 的 `turn.completed` 用量包含 Codex context；第一個文字事件可能已是完整 agent message，不能稱為 provider TTFT。[官方非互動模式文件](https://learn.chatgpt.com/docs/non-interactive-mode)列出 JSONL 事件與最終用量。CLI cap 4 只證明 CLI 程序有重疊，不能推論正式 Provider WebSocket 有四個 lane，也不能當 Cloudflare CPU 或正式費用驗收。API request 的 `max_output_tokens` 與觀察到的 CLI output 分開記；CLI 輸出超過 API budget 只記診斷。
 

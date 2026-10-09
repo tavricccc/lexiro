@@ -19,7 +19,8 @@ export async function loadModules(config) {
     const parserFiles = (await Promise.all(['src/lib', 'packages/ai-contract/src'].map(directory => sourceFiles(frontend, directory)))).flat().sort();
     const hashes = await Promise.all(parserFiles.map(async file => [file.replaceAll('\\', '/'), digest(await readFile(join(frontend, file)))]));
     const frontendVersion = { head: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: frontend, encoding: 'utf8' }).trim(), files: Object.fromEntries(hashes), sha256: digest(JSON.stringify(hashes)) };
-    const tasks = await app.ssrLoadModule('/src/lib/ai/tasks.ts');
+    const { questionBatchTask, ...tasks } = await app.ssrLoadModule('/src/lib/ai/tasks.ts');
+    const { extractJsonText } = await app.ssrLoadModule('/src/lib/ai/json.ts');
     const words = await app.ssrLoadModule('/src/lib/word-generation.ts');
     const library = await app.ssrLoadModule('/src/lib/library.ts');
     const { LIMITS, responseCost, QUESTION_GENERATION_CONTRACT } = await app.ssrLoadModule('/packages/ai-contract/src/index.ts');
@@ -44,7 +45,7 @@ export async function loadModules(config) {
         schemaBackend = await import(pathToFileURL(file).href);
       }
     }
-    return { ...tasks, ...words, ...library, LIMITS, responseCost, questionContract: QUESTION_GENERATION_CONTRACT, backend, schemaBackend, schemaVersion, frontendVersion, backendVersion,
+    return { ...tasks, questionBatchTask, extractJsonText, ...words, ...library, LIMITS, responseCost, questionContract: QUESTION_GENERATION_CONTRACT, backend, schemaBackend, schemaVersion, frontendVersion, backendVersion,
       close: () => Promise.all(servers.map(server => server.close())) };
   } catch (reason) { await Promise.all(servers.map(server => server.close())); throw reason; }
 }

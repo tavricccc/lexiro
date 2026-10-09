@@ -36,7 +36,7 @@ export async function buildCases(config, modules, model, sources, words, units, 
       if (batchIndex !== null && batchIndex >= batches.length) throw new Error(`Vocabulary batch index ${batchIndex} is outside ${batches.length} evaluation batches.`);
       for (const [index, batch] of batches.entries()) {
         if (batchIndex !== null && index !== batchIndex) continue;
-        const steps = modules.questionTask(batch.map(unit => unit.word), task, difficulty).steps;
+        const steps = modules.questionBatchTask(batch.map(unit => unit.word), task, difficulty).steps;
         if (steps.length !== 1) throw new Error('An evaluation vocabulary chunk must produce exactly one native task step.');
         await addStep(task, steps[0], index, batches.length, 'evaluation-vocabulary');
       }
@@ -64,7 +64,8 @@ export function parserForContext(modules, task, context) {
     }
     return modules.supplementTask([...grouped.values()], context.input.limit).steps[0];
   }
-  const steps = modules.questionTask(context.words, task, context.input.difficulty).steps;
+  const taskFactory = task === 'vocabulary' ? modules.questionBatchTask : modules.questionTask;
+  const steps = taskFactory(context.words, task, context.input.difficulty).steps;
   if (steps.length !== 1) throw new Error('Saved parser context unexpectedly splits a complete request.');
   return steps[0];
 }
