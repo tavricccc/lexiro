@@ -49,6 +49,10 @@ export function summarize(results, planned, timing) {
     const values = executed.filter(predicate).map(result => result.completedAtMs);
     return values.length ? Math.min(...values) : null;
   };
+  const fromRoundStart = predicate => {
+    const value = first(predicate);
+    return value === null ? null : value + timing.executionStartOffsetMs;
+  };
   const coverage = Object.fromEntries([...new Set(planned.map(test => test.task))].map(task => {
     const scope = results.filter(result => result.task === task);
     const expected = [...new Set(planned.filter(test => test.task === task).flatMap(test => test.sourceIndices ?? []))].sort((a, b) => a - b);
@@ -59,6 +63,9 @@ export function summarize(results, planned, timing) {
   return { ...timing, firstReplyMs: first(result => result.replyCharacters > 0),
     firstAcceptedBatchMs: first(result => result.status === 'PARSED' && result.acceptedResult),
     firstRetainedResultMs: first(result => result.retainedUnits > 0),
+    firstReplyFromRoundStartMs: fromRoundStart(result => result.replyCharacters > 0),
+    firstAcceptedBatchFromRoundStartMs: fromRoundStart(result => result.status === 'PARSED' && result.acceptedResult),
+    firstRetainedResultFromRoundStartMs: fromRoundStart(result => result.retainedUnits > 0),
     plannedCases: planned.length, completedCases: executed.length, skippedCases: results.filter(result => result.status === 'SKIPPED').length,
     counts: Object.fromEntries(['PARSED', 'PARTIAL', 'CONTENT_FAIL', 'TRANSPORT_FAIL', 'SKIPPED', 'PLANNED'].map(status => [status, results.filter(result => result.status === status).length])),
     coverage,

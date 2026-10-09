@@ -6,7 +6,7 @@ export const taskOrder = ['photos', 'words', 'vocabulary', 'cloze', 'wordBank', 
 export function configuration(args = process.argv.slice(2)) {
   const { values } = parseArgs({ args, options: {
     phase: { type: 'string' }, models: { type: 'string' }, tasks: { type: 'string', default: taskOrder.join(',') },
-    'images-dir': { type: 'string' }, reference: { type: 'string' }, 'backend-module': { type: 'string' },
+    'images-dir': { type: 'string' }, reference: { type: 'string' }, 'backend-module': { type: 'string' }, 'schema-module': { type: 'string' },
     transport: { type: 'string', default: 'codex' }, difficulty: { type: 'string', default: '2' },
     'batch-index': { type: 'string' }, 'batch-size': { type: 'string' }, concurrency: { type: 'string', default: '1' },
     'warm-first': { type: 'boolean', default: false }, tier: { type: 'string', default: 'lite' }, effort: { type: 'string' },
@@ -33,7 +33,7 @@ export function configuration(args = process.argv.slice(2)) {
   if (!replay && selected.has('photos') && !values['images-dir']) throw new Error('Photos require --images-dir.');
   if (values['targeted-repair'] && !values['repair-from']?.length) throw new Error('Targeted repair requires an immutable previous run.');
   if (values['targeted-repair'] && concurrency !== 1) throw new Error('Native repair steps share ordered parent state; use --concurrency 1.');
-  if (replay && (values['dry-run'] || values['repair-from'] || values.feedback)) throw new Error('Revalidation reads existing replies only; do not combine it with generation or repair planning.');
+  if (replay && (values['dry-run'] || values['repair-from'] || values.feedback || values['schema-module'])) throw new Error('Revalidation reads existing replies only; do not replace their schema or combine it with generation/repair planning.');
   if (!replay && values.transport === 'responses' && !values['dry-run'] && !process.env.OPENAI_API_KEY) throw new Error('Responses requires OPENAI_API_KEY; no transport fallback is used.');
   const root = resolve(import.meta.dirname, '../..');
   const frontend = resolve(process.env.LEXIRO_FRONTEND_PATH || join(root, '../lexiro'));
@@ -43,7 +43,7 @@ export function configuration(args = process.argv.slice(2)) {
 }
 
 export const help = `node scripts/evaluate-photo-workflow.mjs --phase baseline|tuned --models gpt-5.6-luna --tasks vocabulary --reference <lines-json>
-  [--backend-module <frozen-v19-or-candidate-module>] [--batch-size 1|4|8|16] [--batch-index <zero-based-batch>]
+  [--backend-module <frozen-v19-or-candidate-module>] [--schema-module <one-frozen-schema-for-A/B>] [--batch-size 1|4|8|16] [--batch-index <zero-based-batch>]
   [--concurrency 1|2|4] [--warm-first] [--tier lite|thinking] [--effort low|medium|high] [--difficulty 1|2|3]
   [--transport codex|responses] [--images-dir <five-jpg-directory>] [--repair-from <run> ...] [--feedback <json>] [--targeted-repair] [--dry-run]
 node scripts/evaluate-photo-workflow.mjs --revalidate-from <immutable-run-directory> ...

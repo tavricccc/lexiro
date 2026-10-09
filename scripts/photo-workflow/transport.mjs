@@ -2,6 +2,7 @@ import { spawn } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { reasonText } from "./artifacts.mjs";
+import { StringDecoder } from "node:string_decoder";
 
 export function apiRequest(config, backend, prepared) {
   const { values } = config;
@@ -29,6 +30,7 @@ export async function runCodex(config, test, schemaPath, scratch, photos) {
   const started = Date.now();
   const capture = await new Promise((resolveCall, reject) => {
     const child = spawn(isScript ? process.execPath : cli, args, { windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
+    const stdoutDecoder = new StringDecoder('utf8'), stderrDecoder = new StringDecoder('utf8');
     let buffer = "", jsonl = "", stderr = "", firstTextMs = null, usage = null, reportedModel = null, timedOut = false;
     const transcript = [];
     const consume = (line) => {
@@ -40,11 +42,11 @@ export async function runCodex(config, test, schemaPath, scratch, photos) {
       reportedModel ??= event.model ?? event.response?.model ?? null;
       transcript.push({ type: event.type, atMs: Date.now() - started, ...(event.item ? { itemType: event.item.type, itemStatus: event.item.status } : {}), ...(event.usage ? { usage: event.usage } : {}), ...(event.error ? { error: reasonText(event.error.message ?? event.error) } : {}) });
     };
-    child.stdout.on("data", (chunk) => { jsonl += chunk.toString(); buffer += chunk.toString(); let at; while ((at = buffer.indexOf("\n")) >= 0) { consume(buffer.slice(0, at)); buffer = buffer.slice(at + 1); } });
-    child.stderr.on("data", (chunk) => { stderr += chunk.toString(); });
+    child.stdout.on("data", (chunk) => { const text = stdoutDecoder.write(chunk); jsonl += text; buffer += text; let at; while ((at = buffer.indexOf("\n")) >= 0) { consume(buffer.slice(0, at)); buffer = buffer.slice(at + 1); } });
+    child.stderr.on("data", (chunk) => { stderr += stderrDecoder.write(chunk); });
     child.on("error", reject);
     const timer = setTimeout(() => { timedOut = true; child.kill(); }, 300_000);
-    child.on("close", (code) => { clearTimeout(timer); consume(buffer); resolveCall({ code, timedOut, stderr: reasonText(stderr), firstTextMs, usage, reportedModel, transcript, jsonl: reasonText(jsonl) }); });
+    child.on("close", (code) => { clearTimeout(timer); const tail = stdoutDecoder.end(); buffer += tail; jsonl += tail; stderr += stderrDecoder.end(); consume(buffer); resolveCall({ code, timedOut, stderr: reasonText(stderr), firstTextMs, usage, reportedModel, transcript, jsonl: reasonText(jsonl) }); });
     child.stdin.end(codexPrompt(test));
   });
   const raw = await readFile(answerPath, "utf8").catch((reason) => { if (reason.code === "ENOENT") return ""; throw reason; });

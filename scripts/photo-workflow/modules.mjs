@@ -23,7 +23,7 @@ export async function loadModules(config) {
     const words = await app.ssrLoadModule('/src/lib/word-generation.ts');
     const library = await app.ssrLoadModule('/src/lib/library.ts');
     const { LIMITS, responseCost, QUESTION_GENERATION_CONTRACT } = await app.ssrLoadModule('/packages/ai-contract/src/index.ts');
-    let backend = null, backendVersion = null;
+    let backend = null, backendVersion = null, schemaBackend = null, schemaVersion = null;
     if (!config.replay) {
       if (values['backend-module']) {
         const file = resolve(values['backend-module']);
@@ -38,8 +38,13 @@ export async function loadModules(config) {
         const hashes = await Promise.all(files.map(async file => [file, digest(await readFile(join(root, file)))]));
         backendVersion = { path: 'current src', files: Object.fromEntries(hashes), sha256: digest(JSON.stringify(hashes)), frozen: false };
       }
+      if (values['schema-module']) {
+        const file = resolve(values['schema-module']);
+        schemaVersion = { path: file, sha256: digest(await readFile(file)), frozen: true };
+        schemaBackend = await import(pathToFileURL(file).href);
+      }
     }
-    return { ...tasks, ...words, ...library, LIMITS, responseCost, questionContract: QUESTION_GENERATION_CONTRACT, backend, frontendVersion, backendVersion,
+    return { ...tasks, ...words, ...library, LIMITS, responseCost, questionContract: QUESTION_GENERATION_CONTRACT, backend, schemaBackend, schemaVersion, frontendVersion, backendVersion,
       close: () => Promise.all(servers.map(server => server.close())) };
   } catch (reason) { await Promise.all(servers.map(server => server.close())); throw reason; }
 }

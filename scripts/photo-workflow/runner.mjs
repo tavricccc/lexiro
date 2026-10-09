@@ -19,12 +19,14 @@ async function saveRequest(config, directory, model, test, request, photos, sour
     generationInput: test.prepared.request, parserContext: test.parserContext, sourceIndices: test.sourceIndices,
     batchMode: test.batchMode, batchSize: config.batchSize, productionBatchIndex: test.productionBatchIndex, productionBatchCount: test.productionBatchCount,
     schemaSha256: test.prepared.schema ? digest(JSON.stringify(test.prepared.schema)) : null,
+    ...(test.schemaOverride ? { schemaOverride: test.schemaOverride } : {}),
     fixedPromptSha256: digest(JSON.stringify({ instructions: test.prepared.instructions, schema: test.prepared.schema, cacheKey: test.prepared.cacheKey })),
     imageManifest: test.task === 'photos' ? photos.manifest : [], ...(test.repair ? { repair: test.repair } : {}),
     ...(sampleSources ? { sampledSources: sampleSources.length, sampledHeadwords: [...new Set(sampleSources.map(source => source.word))], referenceSources: sources.length } : {}),
     photoEncoding: test.task === 'photos' ? config.values.transport === 'codex' ? 'CLI receives all five original JPGs; WebP preparation validates the production envelope' : 'sharp WebP uses production limits; browser canvas encoding is not tested' : null,
   });
   if (config.values.transport === 'codex') await save(directory, `${test.id}-cli-prompt.txt`, codexPrompt(test));
+  if (test.schemaOverride) await save(directory, `${test.id}-original-schema.json`, test.originalSchema ?? null);
 }
 
 async function executeJob(config, modules, job, sources, units, photos, executionStarted) {
@@ -76,6 +78,16 @@ export async function evaluateRound(config, modules, { reference, sources, words
     const cases = await repairCases(config, modules, model, await buildCases(config, modules, model, sources, words, units, photos), repairs);
     modelCases.set(model, cases);
     for (const test of cases) {
+      if (modules.schemaBackend) {
+        const preparedSchema = test.task === 'photos'
+          ? await modules.schemaBackend.prepareImages(photos.encoded.join('\n'), test.prepared.request.session, 'photo-quality-eval', model, config.values.tier)
+          : await modules.schemaBackend.prepareGeneration(test.prepared.request, 'photo-quality-eval');
+        test.originalSchema = test.prepared.schema;
+        test.schemaOverride = { module: modules.schemaVersion, originalSha256: test.originalSchema ? digest(JSON.stringify(test.originalSchema)) : null,
+          effectiveSha256: preparedSchema.schema ? digest(JSON.stringify(preparedSchema.schema)) : null,
+          scope: 'Evaluation only: fixed writer instructions/input/cache key are preserved; both A/B arms use this one schema.' };
+        test.prepared = { ...test.prepared, schema: preparedSchema.schema };
+      }
       const request = apiRequest(config, modules.backend, test.prepared);
       await saveRequest(config, directory, model, test, request, photos, sources);
       jobs.push({ model, test, directory, request, groupKey: `${model}/${test.task}/${test.prepared.cacheKey}` });
@@ -86,7 +98,7 @@ export async function evaluateRound(config, modules, { reference, sources, words
     cliExecutable: config.values.transport === 'codex' ? config.cli : null,
     difficulty: config.difficulty, batchSize: config.batchSize, batchIndex: config.batchIndex, concurrency: config.concurrency,
     warmFirst: config.values['warm-first'], effortOverride: config.values.effort ?? null, immutableRun: config.runId,
-    sourceReferenceSha256: digest(JSON.stringify(reference)), frontendParser: modules.frontendVersion, parserContract: modules.questionContract, backend: modules.backendVersion };
+    sourceReferenceSha256: digest(JSON.stringify(reference)), frontendParser: modules.frontendVersion, parserContract: modules.questionContract, backend: modules.backendVersion, schemaModule: modules.schemaVersion };
   await save(roundDirectory, 'plan.json', { ...settings, modelDirectories: Object.fromEntries(directories), plannedCases: jobs.map(job => ({ model: job.model, id: job.test.id, task: job.test.task, groupKey: job.groupKey,
     sourceIndices: job.test.sourceIndices, sourceWords: job.test.prepared.request.sources?.map(source => source.word) ?? [], batchMode: job.test.batchMode,
     apiRequestedMaxOutputTokens: job.request.max_output_tokens, cacheKey: job.test.prepared.cacheKey })),
@@ -100,7 +112,7 @@ export async function evaluateRound(config, modules, { reference, sources, words
     if (outcome.skipped) await save(outcome.job.directory, `${outcome.job.test.id}-metrics.json`, result);
     results.push(result);
   }
-  const timing = { preparationMs, executionWallClockMs: Date.now() - executionStarted, roundWallClockMs: Date.now() - config.startedAt, maximumActiveRequests: scheduling.maximumActive, stoppedModels: scheduling.stoppedModels };
+  const timing = { preparationMs, executionStartOffsetMs: executionStarted - config.startedAt, executionWallClockMs: Date.now() - executionStarted, roundWallClockMs: Date.now() - config.startedAt, maximumActiveRequests: scheduling.maximumActive, stoppedModels: scheduling.stoppedModels };
   for (const model of config.models) {
     const scoped = results.filter(result => result.requestedModel === model);
     await save(directories.get(model), 'summary.json', { ...settings, requestedModel: model, ...summarize(scoped, modelCases.get(model), timing), results: scoped });

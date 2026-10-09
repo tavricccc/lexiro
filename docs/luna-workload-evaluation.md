@@ -6,6 +6,8 @@
 
 同一次 A/B 使用同一份 reference、難度、模型、tier／effort、parser fingerprint、批次與並行設定。`--backend-module` 指向已凍結的 v19 或候選模組；不在實測中讀取會變動的 prompt 原始碼。計畫保存 backend SHA、目前 parser 檔案 SHA、schema SHA、固定提示 SHA、API 請求與 CLI 輸入。各批按原始 reference 索引合併，原請求／回覆／回條一律以新的 run ID 保存，禁止覆寫。
 
+只對照提示時，兩邊另外指定相同的 `--schema-module <candidate-v21-backend.mjs>`；有效 schema 由該凍結模組提供，舊 writer 的 instructions／input／cache key 不變，原 schema 及 SHA 另存。未指定時完整保留各版本自己的凍結 schema，適合歷史重跑，不能把它宣稱為只改提示的 A/B。
+
 `--batch-size 1|4|8|16` 只控制詞彙題，每個 chunk 使用正式 `questionTask` parser 與 `prepareGeneration`。指定大小後預設跑完整來源池，24 詞分別是 24／6／3／2 批；`--batch-index` 才選單一 probe。文章型沿用正式完整文章與候選庫，一個題組就是一個不可分割請求；不隨詞彙大小拆每格。
 
 `--concurrency 1|2|4` 是整輪上限，兩模型合計也受同一上限控制。4 只允許 Codex CLI；Responses 路徑至多 2。`--warm-first` 等每個模型／題型／cache key 的第一批完成後，才釋放該組剩下的獨立請求。CLI 或供應商失敗後停止該模型的新派送，已開始的請求保留回條，不追加重試。明示 `--targeted-repair` 維持一次原生修復且只能並行 1，避免改變共用文章的依序回收語意。
@@ -17,7 +19,8 @@
 node scripts/evaluate-photo-workflow.mjs --phase tuned --models gpt-5.6-luna `
   --tasks vocabulary --reference tests-next/fixtures/prompt-eval/luna-workload-sources.json `
   --difficulty 3 --tier thinking --batch-size 8 --concurrency 2 --warm-first `
-  --backend-module artifacts/ai-quality/20261009-purpose-prompts/candidate-v21-backend.mjs --dry-run
+  --backend-module artifacts/ai-quality/20261009-purpose-prompts/candidate-v21-backend.mjs `
+  --schema-module artifacts/ai-quality/20261009-purpose-prompts/candidate-v21-backend.mjs --dry-run
 
 # 受控實測：先設定已安裝的 Codex executable／JS entry，再移除上面的 --dry-run。
 # 正式 Thinking 由 frozen backend 決定 medium；--effort low|medium|high 僅是明示評測覆寫。

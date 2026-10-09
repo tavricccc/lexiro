@@ -36,7 +36,8 @@ test('partial native recovery contributes retained source coverage and first sav
   const analysis = parseCapture({}, step, { raw: '{}', error: null }, [], units);
   assert.equal(analysis.metrics.status, 'PARTIAL'); assert.equal(analysis.metrics.retainedUnits, 2);
   assert.deepEqual(analysis.metrics.retainedSourceIndices, [0, 2]);
-  const summary = summarize([{ ...analysis.metrics, task: 'vocabulary', completedAtMs: 50 }], [step], {});
+  const summary = summarize([{ ...analysis.metrics, task: 'vocabulary', completedAtMs: 50 }], [step], { executionStartOffsetMs: 7 });
   assert.equal(summary.firstRetainedResultMs, 50); assert.equal(summary.firstAcceptedBatchMs, null);
+  assert.equal(summary.firstRetainedResultFromRoundStartMs, 57);
   assert.deepEqual(summary.coverage.vocabulary.missingPlannedSources, [1]);
 });
