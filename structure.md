@@ -38,9 +38,10 @@
 | `tests-next/response-stream.test.ts` | 文字保持不變、metadata 不外流、分塊、拒答、錯誤、取消與背壓行為 |
 | `scripts/benchmark-stream.mjs` | 合成串流在本地 Node 的效能量測，不代表 Workers CPU 額度 |
 | `scripts/evaluate-ai-prompts.mjs`、`scripts/validate-prompt-eval.mjs` | 真實 Luna/low 評測與既有回覆重新驗證；透過 `LEXIRO_FRONTEND_PATH`（預設同層 lexiro）使用目前前端解析器 |
-| `scripts/evaluate-photo-workflow.mjs` | 五張教材照片與受控詞義的 Luna 評測；可指定難度／正式批次索引／tier，明示 effort 覆寫僅作能力對照。使用正式 prompt、schema、parser 及一次有界局部回收，不可覆寫的 baseline／tuned 回條。CLI 或供應商失敗停止該模型後續樣本；CLI 用量不當成正式 API 快取或費用；原圖與內容回條只留 ignored artifacts |
+| `scripts/evaluate-photo-workflow.mjs`、`scripts/photo-workflow/` | 評測入口與 config／modules／sources／cases／photos／repairs／transport／scheduler／runner／metrics／replay 責任檔；固定來源、凍結 backend、詞彙 1／4／8／16 小批次、整輪有界並行與暖首批、不可覆寫計畫與回覆、原生 PARTIAL 來源覆蓋及 saved-reply 重驗。文章／候選庫保持完整，傳輸失敗停止該模型新派送；CLI 指標不代表正式 API 用量或成本 |
+| `docs/luna-workload-evaluation.md`、`scripts/photo-workflow/evaluation.test.mjs` | 固定 24 來源的 A/B 命令、整輪時間／來源／token 指標界線，以及真正有界排程、暖首批、傳輸停止與部分成果的必要行為測試 |
 | `scripts/evaluate-question-review.mjs` | 對凍結初稿做 fresh medium CLI 盲審，保留每次請求、schema、回覆與回條；CLI 失敗即停止後續樣本，不以 parser 通過率冒充教育品質 |
-| `tests-next/fixtures/prompt-eval/`、`docs/prompt-evaluation.md` | 從公開前端移入的歷史合成案例、片語實際用法案例與評測方法；`luna-quality-sources.json` 是現行 near-synonym／角色／多義風險的合成來源；歷史 medium artifacts 另存本地 ignored artifacts/historical-medium |
+| `tests-next/fixtures/prompt-eval/`、`docs/prompt-evaluation.md` | 從公開前端移入的歷史合成案例、片語實際用法案例與評測方法；`luna-quality-sources.json` 是現行 near-synonym／角色／多義風險的合成來源；`luna-workload-sources.json` 固定原 16 詞加 8 個正常變形／片語來源，供小批次與並行對照；歷史 medium artifacts 另存本地 ignored artifacts/historical-medium |
 | `tests-next/schemas.test.ts`、`tests-next/prompt-prefix.test.ts` | strict schema、writer／reviewer 固定前綴與 schema／設定跨輸入一致性、最低 tokenizer 長度驗證，以及補充多義與單字共用同一前綴及快取鍵 |
 | `tests-next/settlement.test.ts` | 補充多義的結算：空詞義仍算完成、回傳一個或兩個收費相同、超過上限或語言錯誤的字不列入已完成 |
 | `tests-next/organize.test.ts` | 整理固定價格／前綴、1／10 張的單一串流 envelope、張數／逐張 WebP 限制、逐張冪等與失敗／取消整批退款 |
