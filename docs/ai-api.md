@@ -18,7 +18,7 @@ Browser 只送 Firebase-authenticated 的來源資料到 `NEXT_PUBLIC_AI_WORKER_
 
 已驗證管理員的生成錯誤另附 diagnostic：出稿／審題階段、實際模型與 reasoning、上游 HTTP 狀態、request ID 及 code／param／type／message。HTTP 與 SSE 都保留診斷至管理員面板；供應商 key 遮蔽，不轉發 request body、prompt 或其他回應欄位。一般帳號不接收此欄位。
 
-題目請求帶 `X-Question-Contract: single-pass-v2`，共用套件為 4.0.0。原始錯項理由為 `{option, reason}[]`；共用題組先提供完整 `options`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。
+題目請求帶 `X-Question-Contract: single-pass-v3`，共用套件為 5.0.0。詞彙、綜合測驗與文意選填的 raw 子題必填 `usage`，依完整實際用法定位 `answer` 的空格；正文別處可正常重複同字，綜合測驗不同格也可各考 `is`。文意選填另必填本批 `s1..sn` 來源 `ref`，空格可按文章順序排列，assembly 與單題修復都按 ref 綁定來源，不猜陣列順序。原始錯項理由為 `{option, reason}[]`；共用題組先提供完整 `options`。舊版或缺少此契約的請求在預留與 provider 呼叫前回 426／`question_update_required`，需先啟用 App 更新。已保存的 normalized 題庫格式不變。
 
 題型只接受 vocabulary、cloze、wordBank、discourse、reading；停用的 grammar 在預留前回 400／invalid_input。題目固定規則在快取前綴，來源、初稿、難度及 lengthRange 留在最後輸入。只更新題目 writer／review 的版本，單字、補義、整理及解釋的快取保留；實際命中看供應商回報。
 
@@ -28,7 +28,7 @@ Session 在開始時固定模型、檔位與 UUID，每批不帶 previous_respon
 
 ## 批次與校對
 
-`src/lib/ai/tasks.ts`：單字每批最多 30 個來源且 raw 不超過 5,000 字元、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙每批最多 16 個來源。完整文章的題組大小保留各格式規格。第一批是正常產出並暖快取，之後最多兩批並行；每批的上下文、重連 ID、校驗及用量獨立，接受成果仍按來源順序合併。
+`src/lib/ai/tasks.ts`：單字每批最多 30 個來源且 raw 不超過 5,000 字元、補充多義每批十字；題目批次由 `splitGenerationBatches` 決定，詞彙每批最多 4 個來源。完整文章的題組大小保留各格式規格。第一批是正常產出並暖快取，之後最多四批並行；前端、後端 actor 與 D1 預留共用 `MAX_PARALLEL_GENERATIONS`。每批的上下文、重連 ID、校驗及用量獨立，接受成果仍按來源順序合併。
 
 `parallel-runner.ts` 保存未完成 lane，暫停／錯誤後續跑沿用該 lane 的 pending job；已完成或已編輯的成果保留。進度聚合所有 lanes 的已解析數，TPS 分別顯示每批自己的平均。快取與並行的正式小樣本驗證、Pi 原始碼參考及重跑方法見 private Worker docs/generation-performance.md。
 
@@ -40,7 +40,7 @@ Session 在開始時固定模型、檔位與 UUID，每批不帶 previous_respon
 
 ## 模型、估算與結算
 
-共用 contract 4.0.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna` 偏好，預設後者；Pro 由 Worker 統一送 `gpt-6.1-sol`、`reasoning: { effort: "low" }`。Lite／Thinking 使用所選 Luna 的 low／medium。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai；整理文字與照片可另選模型與檔位，保存於流程草稿。Lite／Thinking／Pro 估算倍率為 1／2／20；Pro 的估算不再乘 Luna 家族因子。實扣按供應商回報 usage，估算不是扣款保證。[官方 Sol 規格與費率](https://developers.openai.com/api/docs/models/gpt-6.1-sol)。
+共用 contract 5.0.0 接受 `gpt-5.6-luna` 與 `gpt-6-luna` 偏好，預設後者；Pro 由 Worker 統一送 `gpt-6.1-sol`、`reasoning: { effort: "low" }`。Lite／Thinking 使用所選 Luna 的 low／medium。帳號模型偏好保存在本機及 owner-only Firestore preferences/ai；整理文字與照片可另選模型與檔位，保存於流程草稿。Lite／Thinking／Pro 估算倍率為 1／2／20；Pro 的估算不再乘 Luna 家族因子。實扣按供應商回報 usage，估算不是扣款保證。[官方 Sol 規格與費率](https://developers.openai.com/api/docs/models/gpt-6.1-sol)。
 
 題目估算已移除第二次審題的係數；失敗子題的重生仍會消耗供應商用量，估算不是實測成本上界。`TokenUsage.parts` 保留每次 response 用量，各自計價後加總。用量缺漏維持未知並逐 cursor 補查。
 
