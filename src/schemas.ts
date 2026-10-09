@@ -18,7 +18,7 @@ export const sentenceQuestionItem = z.object({
   distractors: texts.length(3).describe("先定本題學習的詞義或合法詞形，選三個對應該辨析點的候選；詞義題候選文法自然，詞形題由實際句法選形，避免另一同時成立的合法屬性。"),
   sentence: prose.describe("一至兩句完整情境，合計落在本輪字數範圍中段；先寫正文，保留目標詞的實際字形。"),
   usage: english.describe("原句內恰好一處的自然用法span；單字可用本身或必要的上下文以定位，片語保留完整實現，可含動詞與particle之間的受詞，如 took her coat off。"),
-  answer: english.describe("從最終 usage 逐字複製的實際目標詞形，在已定位的usage內恰好一次；句中其他位置的同字不影響此span。片語可取 took her coat off 的 took，或 is made up of three parts 的 made。"),
+  answer: english.describe("真正挖掉與被選項替換的原文span，在已定位usage內恰好一次。片語可取完整實現如 took her coat off，或相容的局部如 took／made；每個候選須插入實際剪掉answer的句子，配合外面保留的aux／受詞／particle。"),
 });
 export const readingQuestionItem = z.object({
   skill: z.enum(READING_SKILLS),
