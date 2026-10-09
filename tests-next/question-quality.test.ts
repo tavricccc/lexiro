@@ -152,7 +152,7 @@ describe("high-school generation quality gate", () => {
       title: "A safety project",
       passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`,
       options,
-      blanks: [{ answer: "detect", usage: "detect signals", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) }],
+      blanks: [{ ref: "s1", answer: "detect", usage: "detect signals", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) }],
     };
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(1);
@@ -179,7 +179,7 @@ describe("high-school generation quality gate", () => {
   it("repairs shared-bank teaching against the same actual options", () => {
     const [step] = questionTask([source], "wordBank", 2).steps;
     const options = ["detect", "repair", "contain", "prevent", "support", "observe", "record", "compare", "measure", "repeat"];
-    const valid = { answer: "detect", usage: "detect signals", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) };
+    const valid = { ref: "s1", answer: "detect", usage: "detect signals", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) };
     const draft = { title: "A safety project", passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`, options, blanks: [{ ...valid, whyWrong: [{ option: "invented", reason: "不存在的選項。" }, ...valid.whyWrong.slice(1)] }] };
     const recovery = step.recover!(JSON.stringify(draft));
     expect(recovery?.remaining).toHaveLength(1);

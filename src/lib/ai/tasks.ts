@@ -35,10 +35,17 @@ export function chunks<T>(items: T[], size: number): T[][] {
 const WORD_BATCH_SIZE = 30;
 function wordBatches(sources: WordGenerationSource[]) {
   const batches: WordGenerationSource[][] = [];
-  let batch: WordGenerationSource[] = [], characters = 0;
+  let batch: WordGenerationSource[] = [],
+    characters = 0;
   for (const source of sources) {
-    if (batch.length && (batch.length === WORD_BATCH_SIZE || characters + source.raw.length + 1 > LIMITS.input)) {
-      batches.push(batch); batch = []; characters = 0;
+    if (
+      batch.length &&
+      (batch.length === WORD_BATCH_SIZE ||
+        characters + source.raw.length + 1 > LIMITS.input)
+    ) {
+      batches.push(batch);
+      batch = [];
+      characters = 0;
     }
     characters += source.raw.length + (batch.length ? 1 : 0);
     batch.push(source);
@@ -46,11 +53,13 @@ function wordBatches(sources: WordGenerationSource[]) {
   if (batch.length) batches.push(batch);
   return batches;
 }
-const wordInput = (sources: WordGenerationSource[]) => JSON.stringify({ kind: "words", raw: sources.map((source) => source.raw).join("\n") });
+const wordInput = (sources: WordGenerationSource[]) =>
+  JSON.stringify({
+    kind: "words",
+    raw: sources.map((source) => source.raw).join("\n"),
+  });
 
-export function wordTask(
-  sources: WordGenerationSource[],
-): AiTask<WordDraft> {
+export function wordTask(sources: WordGenerationSource[]): AiTask<WordDraft> {
   const make = (batch: WordGenerationSource[]): AiTaskStep<WordDraft> => ({
     id: batch.map((s) => s.sourceRef).join(","),
     count: batch.length,
@@ -154,7 +163,26 @@ export function questionTask(
       .flatMap((w) => w.senses.map((s) => senseKey(w.wordKey, s.id)))
       .map((key, i) => [key, `s${i + 1}`]),
   );
-  const input = (batch: WordEntry[]) => JSON.stringify({ kind, difficulty, sources: batch.flatMap((word) => word.senses.map((sense) => ({ ref: globalRefs.get(senseKey(word.wordKey, sense.id))!, word: word.word, pos: sense.pos, meaningZh: sense.meaningZh, ...(sense.examples.length ? { knownExample: sense.examples[0] } : {}) }))) });
+  const input = (batch: WordEntry[]) => {
+    // WordBank refs belong to one passage; the task's step IDs remain global.
+    let sourceIndex = 0;
+    return JSON.stringify({
+      kind,
+      difficulty,
+      sources: batch.flatMap((word) =>
+        word.senses.map((sense) => ({
+          ref:
+            kind === "wordBank"
+              ? `s${++sourceIndex}`
+              : globalRefs.get(senseKey(word.wordKey, sense.id))!,
+          word: word.word,
+          pos: sense.pos,
+          meaningZh: sense.meaningZh,
+          ...(sense.examples.length ? { knownExample: sense.examples[0] } : {}),
+        })),
+      ),
+    });
+  };
   const make = (batch: WordEntry[]): AiTaskStep<LibraryQuestion> => {
     const refs = batch.flatMap((w) =>
       w.senses.map((s) => globalRefs.get(senseKey(w.wordKey, s.id))!),
@@ -201,7 +229,19 @@ export function questionTask(
           }
         : {}),
     };
-    if (passage) step.recover = (text) => passageRepairs({ text, kind, difficulty, words: batch, input: JSON.parse(input(batch)) as import("@lexiro/ai-contract").GenerationInput, parentId: step.id, parse: step.parse });
+    if (passage)
+      step.recover = (text) =>
+        passageRepairs({
+          text,
+          kind,
+          difficulty,
+          words: batch,
+          input: JSON.parse(
+            input(batch),
+          ) as import("@lexiro/ai-contract").GenerationInput,
+          parentId: step.id,
+          parse: step.parse,
+        });
     else
       step.recover = (text) => {
         const data: unknown = JSON.parse(extractJsonText(text));
@@ -238,7 +278,10 @@ export function questionTask(
   return {
     id: `questions-${kind}`,
     kind,
-    billableCount: kind === "discourse" || kind === "reading" ? batches.length : globalRefs.size,
+    billableCount:
+      kind === "discourse" || kind === "reading"
+        ? batches.length
+        : globalRefs.size,
     context,
     steps: batches.map(make),
     key: (q) => q.fingerprint || q.id,

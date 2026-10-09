@@ -7,7 +7,10 @@ import type {
 import type { AiTaskStep } from "@/src/types/ai";
 import type { GenerationInput } from "@lexiro/ai-contract";
 import { isRecord } from "../schema";
-import { assembleGeneratedQuestions } from "../question-assembly";
+import {
+  assembleGeneratedQuestions,
+  wordBankSourceSlots,
+} from "../question-assembly";
 import {
   generatedQuestionItemIssue,
   generatedQuestionQualityIssue,
@@ -56,23 +59,24 @@ export function passageRepairs({
   if (sharedQuestionBankProseIssue(draft, kind)) return null;
   if (kind === "discourse" && discourseStructureIssue(draft)) return null;
   const items = draft[field] as unknown[];
+  let bankSlots: ReturnType<typeof wordBankSourceSlots> | null = null;
   if (kind === "wordBank") {
-    const sources = words.flatMap((word) =>
-      word.senses.map((sense) => ({ word: word.word, pos: sense.pos })),
-    );
+    try {
+      bankSlots = wordBankSourceSlots(words, items);
+    } catch {
+      return null; // Missing ownership cannot be guessed by a teaching repair.
+    }
     if (
-      items.some(
-        (item, index) =>
-          isRecord(item) &&
-          typeof item.answer === "string" &&
-          sources[index] &&
-          sourceWordFormIssue(
-            sources[index].word,
-            sources[index].pos,
-            item.answer,
-            typeof item.usage === "string" ? item.usage : undefined,
-          ),
-      )
+      items.some((item) => {
+        if (!isRecord(item) || typeof item.answer !== "string") return false;
+        const slot = bankSlots!.get(String(item.ref).trim())!;
+        return sourceWordFormIssue(
+          slot.word.word,
+          slot.word.senses[slot.senseIndex].pos,
+          item.answer,
+          typeof item.usage === "string" ? item.usage : undefined,
+        );
+      })
     )
       return null; // A new answer also needs new prose and a new shared bank.
   }
@@ -81,6 +85,18 @@ export function passageRepairs({
     const quality = generatedQuestionItemIssue(draft, kind, difficulty, index);
     if (quality) return quality;
     if (!isRecord(value)) return "子題資料不完整";
+    if (kind === "wordBank") {
+      const slot = bankSlots!.get(String(value.ref).trim())!;
+      if (typeof value.answer === "string") {
+        const formIssue = sourceWordFormIssue(
+          slot.word.word,
+          slot.word.senses[slot.senseIndex].pos,
+          value.answer,
+          typeof value.usage === "string" ? value.usage : undefined,
+        );
+        if (formIssue) return formIssue;
+      }
+    }
     if (kind === "reading") {
       return (
         assembleGeneratedQuestions(
@@ -193,7 +209,16 @@ export function passageRepairs({
         )
           throw new Error("重新生成必須只回傳一個子題");
         const previous = items[index];
-        items[index] = value.items[0];
+        const replacement = value.items[0];
+        if (
+          kind === "wordBank" &&
+          (!isRecord(previous) ||
+            !isRecord(replacement) ||
+            typeof replacement.ref !== "string" ||
+            replacement.ref.trim() !== String(previous.ref).trim())
+        )
+          throw new Error("文意選填重新生成必須保留本格的來源 ref");
+        items[index] = replacement;
         const error = issue(index);
         if (error) {
           items[index] = previous;

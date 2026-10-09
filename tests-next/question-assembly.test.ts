@@ -405,7 +405,7 @@ describe("assembling the model's reply", () => {
     for (const format of ["cloze", "wordBank"] as const) {
       expect(() => assembleGeneratedQuestions({
         title: "No anchor", passage: "The room is ready.",
-        blanks: [{ answer: "is", distractors: ["has", "does", "can"] }],
+        blanks: [{ ref: "s1", answer: "is", distractors: ["has", "does", "can"] }],
         options: ["is", "was", "were", "are", "has", "have", "had", "does", "do", "can"],
       }, format, 2, [word("be", "aux.")])).toThrow(/缺少目標用法 usage/);
     }

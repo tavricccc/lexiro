@@ -91,6 +91,26 @@ function buildSlots(words: WordEntry[]): SenseSlot[] {
   return slots;
 }
 
+/** WordBank blanks may follow prose order, so their declared refs own the senses. */
+export function wordBankSourceSlots(
+  words: WordEntry[],
+  blanks: unknown[],
+): Map<string, SenseSlot> {
+  const slots = new Map(buildSlots(words).map((slot) => [slot.ref, slot]));
+  const seen = new Set<string>();
+  blanks.forEach((blank, index) => {
+    const ref = isRecord(blank) ? text(blank.ref) : "";
+    if (!ref) throw new Error(`文意選填第 ${index + 1} 格缺少來源 ref`);
+    if (!slots.has(ref))
+      throw new Error(`文意選填第 ${index + 1} 格有未知的來源 ref「${ref}」`);
+    if (seen.has(ref)) throw new Error(`文意選填來源 ref「${ref}」重複`);
+    seen.add(ref);
+  });
+  if (seen.size !== slots.size)
+    throw new Error("文意選填必須將本批每個來源 ref 各配置一次");
+  return slots;
+}
+
 /**
  * Source ownership is positional and assigned here rather than echoed by the
  * model. Reading can contain more questions than source senses, so it cycles
@@ -287,6 +307,13 @@ function assemblePassage(
   // Blank formats: locate every answer span in the finished prose, then cut.
   // The source record travels with the answer so the cloze branch can still
   // reach its distractors after the blanks have been sorted into reading order.
+  const bankSlots =
+    format === "wordBank"
+      ? wordBankSourceSlots(
+          words,
+          Array.isArray(value.blanks) ? value.blanks : [],
+        )
+      : null;
   const raw =
     format === "discourse"
       ? (Array.isArray(value.removals) ? value.removals : [])
@@ -312,7 +339,9 @@ function assemblePassage(
 
   const located: CutBlank[] = [];
   raw.forEach((item, position) => {
-    const slot = resolveSlot(slots, item.ref, position);
+    const slot = bankSlots
+      ? bankSlots.get(item.ref)!
+      : resolveSlot(slots, item.ref, position);
     let at: number;
     if (format === "discourse") {
       const hits = occurrences(rawPassage, item.answer);
@@ -405,7 +434,10 @@ function assemblePassage(
               kind: "multipleChoice",
               options: bank,
               prompt: `Blank ${index + 1}`,
-              sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
+              sourceRef:
+                format === "wordBank"
+                  ? child.slot!.sourceRef
+                  : (child.slot ?? slots[index % slots.length]).sourceRef,
               ...assembleOptionTeaching(
                 child.source,
                 candidates.filter((option) => option !== child.answer),
