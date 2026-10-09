@@ -51,8 +51,10 @@ Managed AI 另外需要在 GitHub `Production` Environment variables 設定 `NEX
 
 ## 前後端契約與發布確認
 
-AI contract 目前為 3.0.0，private Worker 使用相同版本 tgz。修改模型、必要請求欄位或管理 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
+AI contract 目前為 4.0.0，private Worker 使用相同版本 tgz。修改模型、必要請求欄位或管理 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
 
-這輪不新增 D1／Firestore migration；現行 D1 到 `0013_usage_parts.sql`。Worker 先發布只接受五種學測題型的 contract 3.0.0，停用的 grammar 在預留前回 400，沒有 reviewed-v1 契約的學測請求仍回 426。前端部署後由使用者明確啟用 PWA 更新；不要為切換契約自動刷新或丟棄未完成寫入。練習 v4 草稿在本機升為 v5。
+這輪不新增 D1／Firestore migration；現行 D1 到 `0014_generation_leases.sql`。Worker 先發布五種學測題型的 contract 4.0.0／`single-pass-v2`，單次產生題目與解說，原始錯項理由帶選項文字，共用題組先提供完整選項。停用的 grammar 在預留前回 400，舊題目生成契約回 426；單字／詞義仍使用各自契約。前端部署後由使用者明確啟用 PWA 更新；不要為切換契約自動刷新或丟棄未完成寫入。既有已保存的題庫資料與練習 v5 不需遷移。
+
+生成草稿可保留已完成成果與尚在期限內的 operation ID，重新開頁後接回原任務。契約、帳號或任務不一致及結果過期時，保留已完成成果並說明無法接續原因，由使用者明確選擇重生，不能自動另外發起付費生成。
 
 發布完成以 Actions 的部署結果為準，不能只看 git push 成功。另確認登入、Rules／indexes、跨裝置同步、AI 串流與結算，以及 PWA 更新。只改前端文件仍會符合此 workflow 的 push 觸發條件；本機 commit 本身不會部署。

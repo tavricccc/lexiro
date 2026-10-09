@@ -34,7 +34,7 @@ Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer�
 
 `components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share、full-backup 和 learning-backup 處理。
 
-Question formats 重用 AI contract 的學測題型表；question-quality 檢查新生成情境／完整文章的字數與共用 options，question-teaching 核對中文解說、錯項 option／reason 的唯一對應，question-assembly 檢查確切 usage／answer span 與空格重疊，question-builders 負責選項排序與正解位置。共用選項先寫定，理由依選項文字保存，不依模型輸出順序配對。詞彙題的情境和干擾項統一由 Worker 生成。Generated results 呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
+Question formats 重用 AI contract 的學測題型表；question-quality 檢查新生成情境／完整文章的字數與共用 options，question-teaching 核對中文解說、錯項 option／reason 的唯一對應，question-word-forms 檢查來源合法詞形，question-discourse 檢查完整非相鄰刪句，question-assembly 檢查確切 usage／answer span 與空格重疊，question-builders 負責選項排序與正解位置。共用選項先寫定，理由依選項文字保存，不依模型輸出順序配對。詞彙題的情境和干擾項統一由 Worker 生成。Generated results 呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
 
 QuestionWorkspace 管桌機雙欄／手機分頁，QuestionPager 一次切換一題或空格。ReadingForm 保留 canonical 題型與共用 bank，並遷移舊編輯草稿；OptionReasons 同步選項文字與理由，DistractorReasonsEditor 供單題及子題校對。生成結果保留可選取／排除名單，加入時只保存選取項目。
 
@@ -58,11 +58,11 @@ Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回
 
 AI task builders、runner、session 只組來源資料、拆批、解析及接續。Managed client 管 token refresh、帳號邊界、串流、usage；generation controls 與 resumable drafts 分開生成及校對畫面。Photo organizer 先確認選圖，WebP 編碼後每十張單次上傳並依序處理。
 
-AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 4.0.0 與 Worker tgz 共同規範請求、single-pass-v2 單次生成與單題重生、估算、題型／篇幅和管理 expected 版本。新 raw 共用 options 與帶 option 的錯項理由不接受旧格式；既有 normalized 題目資料不變。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
+AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 4.0.0 與 Worker tgz 共同規範請求、single-pass-v2 單次生成與單題重生、估算、題型／篇幅和管理 expected 版本。新 raw 共用 options 與帶 option 的錯項理由不接受舊格式；既有 normalized 題目資料不變。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
 
 `components/ai/ai-diagnostic.tsx` 共用管理員錯誤診斷；AiUsage 在生成與整理流程呈現實際用量。`components/ai/use-token-rate.ts` 每 100ms 更新該批次平均輸出 TPS，所有使用者都能在 TaskProgress 看見；本機 tokenizer 的估計不包含推理 token，供應商回報負責最終結算。
 
-`src/lib/ai/stream-progress.ts` 逐字掃描串流 JSON，只計數完整題目／詞義物件。`passage-repair.ts` 保留文章與有效子題，為錯誤子題建立獨立重生工作；runner 逐項保存通過驗證的結果，詞彙题及單字批次也只補缺少的個別來源。
+`src/lib/ai/stream-progress.ts` 逐字掃描串流 JSON，只計數完整題目／詞義物件。`passage-repair.ts` 保留文章與有效子題，為錯誤子題建立獨立重生工作；runner 逐項保存通過驗證的結果，詞彙題及單字批次也只補缺少的個別來源。
 
 `lib/generation-connection.ts` 為每次生成固定 operation ID，網路中斷用 authenticated GET 接回同一次生成；同頁面的手動續跑保留該 ID。生成不帶前一批 cursor，每批上下文獨立；固定 prompt／schema／cache key 保持不變。管理員可看 transport／job ID／response ID／耗時與中斷原因。批次 TPS 以後端原任務開始時間計算，回放不重複累計用量。
 
