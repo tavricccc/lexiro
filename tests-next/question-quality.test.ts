@@ -188,6 +188,9 @@ describe("high-school generation quality gate", () => {
     expect(pack.kind === "reading" && pack.optionBank).toHaveLength(10);
     expect(pack.kind === "reading" && pack.questions[0].whyWrong).toHaveProperty("repair", "情境未描述這個行動。");
     expect(step.recover!(JSON.stringify({ ...draft, options: options.slice(1) }))).toBeNull();
+    const extraInProse = { ...draft, passage: draft.passage.replace("Students detect", "Students detect and repair"), blanks: [valid] };
+    expect(generatedQuestionQualityIssue(extraInProse, "wordBank", 2)).toMatch(/額外誘答選項.*文章/);
+    expect(step.recover!(JSON.stringify(extraInProse))).toBeNull();
   });
 
   it("keeps whole, separated discourse sentences and rejects repairs that would change the bank", () => {
@@ -197,6 +200,9 @@ describe("high-school generation quality gate", () => {
     const draft = { title: "A project", passage: sentences.join(" "), options,
       removals: selected.map((sentence) => ({ sentence, explanation: "上下文描述同一階段的研究步驟。", whyWrong: options.filter((option) => option !== sentence).map((option) => ({ option, reason: "這個選項無法銜接本格前後的階段。" })) })) };
     expect(generatedQuestionQualityIssue(draft, "discourse", 2)).toBeNull();
+    const withUnusedSentence = { ...draft, passage: sentences.map((sentence, index) => index === 10 ? options[4] : sentence).join(" ") };
+    expect(generatedQuestionQualityIssue(withUnusedSentence, "discourse", 2)).toMatch(/額外誘答選項.*文章/);
+    expect(questionTask([source], "discourse", 2).steps[0].recover!(JSON.stringify(withUnusedSentence))).toBeNull();
     const adjacent = { ...draft, removals: draft.removals.map((entry, index) => index === 1 ? { ...entry, sentence: sentences[3] } : entry) };
     expect(generatedQuestionQualityIssue(adjacent, "discourse", 2)).toMatch(/相鄰/);
     expect(questionTask([source], "discourse", 2).steps[0].recover!(JSON.stringify(adjacent))).toBeNull();

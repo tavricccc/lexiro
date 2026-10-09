@@ -9,6 +9,7 @@ import { isPassageKind } from "./question-formats";
 import { isRecord } from "./schema";
 import { optionTeachingIssue } from "./question-teaching";
 import { discourseStructureIssue } from "./question-discourse";
+import { wordOccurrences } from "./question-spans";
 
 /** Validate new prose and reading audits; existing saved and manual work stays editable. */
 export function generatedQuestionQualityIssue(
@@ -34,7 +35,11 @@ export function generatedQuestionQualityIssue(
         : kind === "discourse"
           ? discourseStructureIssue(value)
           : null;
-    return evidenceIssue ?? teachingIssue(value, kind);
+    return (
+      evidenceIssue ??
+      teachingIssue(value, kind) ??
+      sharedQuestionBankProseIssue(value, kind)
+    );
   }
   if (!Array.isArray(value.items)) return null;
   for (const [index, item] of value.items.entries()) {
@@ -62,6 +67,36 @@ export function sharedQuestionBankIssue(
       bank.length
   )
     return `共用選項必須有 ${PASSAGE_FORMATS[kind].optionCount} 個不重複選項`;
+  return null;
+}
+
+/** Extra bank options belong outside the prose, including the unused sentence. */
+export function sharedQuestionBankProseIssue(
+  value: Record<string, unknown>,
+  kind: GeneratedQuestionKind,
+): string | null {
+  if (kind !== "wordBank" && kind !== "discourse") return null;
+  const items = kind === "wordBank" ? value.blanks : value.removals;
+  if (
+    typeof value.passage !== "string" ||
+    !Array.isArray(items) ||
+    !Array.isArray(value.options)
+  )
+    return null;
+  const answers = new Set(
+    items.filter(isRecord).flatMap((item) => {
+      const answer = kind === "wordBank" ? item.answer : item.sentence;
+      return typeof answer === "string" ? [answer.trim()] : [];
+    }),
+  );
+  for (const option of value.options) {
+    if (
+      typeof option === "string" &&
+      !answers.has(option.trim()) &&
+      wordOccurrences(value.passage, option).length
+    )
+      return "額外誘答選項不得出現在完整文章中；請重新安排共用選項與文章，不能把錯項當成本文事實";
+  }
   return null;
 }
 
