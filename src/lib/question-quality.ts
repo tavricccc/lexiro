@@ -2,10 +2,12 @@ import {
   countEnglishWords,
   questionLengthRange,
   READING_SKILLS,
+  PASSAGE_FORMATS,
 } from "@lexiro/ai-contract";
 import type { GeneratedQuestionKind, QuestionDifficulty } from "@/types";
 import { isPassageKind } from "./question-formats";
 import { isRecord } from "./schema";
+import { optionTeachingIssue } from "./question-teaching";
 
 /** Validate new prose and reading audits; existing saved and manual work stays editable. */
 export function generatedQuestionQualityIssue(
@@ -25,7 +27,8 @@ export function generatedQuestionQualityIssue(
   if (isPassageKind(kind)) {
     const lengthIssue = check(value.passage, "文章");
     if (lengthIssue) return lengthIssue;
-    const evidenceIssue = kind === "reading" ? readingEvidenceIssue(value, difficulty) : null;
+    const evidenceIssue =
+      kind === "reading" ? readingEvidenceIssue(value, difficulty) : null;
     return evidenceIssue ?? teachingIssue(value, kind);
   }
   if (!Array.isArray(value.items)) return null;
@@ -37,16 +40,59 @@ export function generatedQuestionQualityIssue(
   return teachingIssue(value, kind);
 }
 
-function teachingIssue(value: Record<string, unknown>, kind: GeneratedQuestionKind): string | null {
-  const items = kind === "discourse" ? value.removals
-    : kind === "cloze" || kind === "wordBank" ? value.blanks : value.items;
+export function sharedQuestionBankIssue(
+  value: Record<string, unknown>,
+  kind: GeneratedQuestionKind,
+): string | null {
+  if (kind !== "wordBank" && kind !== "discourse") return null;
+  if (
+    !Array.isArray(value.options) ||
+    value.options.some((option) => typeof option !== "string" || !option.trim())
+  )
+    return "共用選項必須先提供完整 options";
+  const bank = (value.options as string[]).map((option) => option.trim());
+  if (
+    bank.length !== PASSAGE_FORMATS[kind].optionCount ||
+    new Set(bank.map((option) => option.toLocaleLowerCase())).size !==
+      bank.length
+  )
+    return `共用選項必須有 ${PASSAGE_FORMATS[kind].optionCount} 個不重複選項`;
+  return null;
+}
+
+function teachingIssue(
+  value: Record<string, unknown>,
+  kind: GeneratedQuestionKind,
+): string | null {
+  const items =
+    kind === "discourse"
+      ? value.removals
+      : kind === "cloze" || kind === "wordBank"
+        ? value.blanks
+        : value.items;
   if (!Array.isArray(items)) return null;
-  const reasons = kind === "wordBank" ? 9 : kind === "discourse" ? 4 : 3;
+  const shared = kind === "wordBank" || kind === "discourse";
+  const bankIssue = sharedQuestionBankIssue(value, kind);
+  if (bankIssue) return bankIssue;
+  const bank = shared
+    ? (value.options as string[]).map((option) => option.trim())
+    : [];
   for (const [index, item] of items.entries()) {
-    if (!isRecord(item) || typeof item.explanation !== "string" || !item.explanation.trim())
-      return `第 ${index + 1} 題缺少作答解說`;
-    if (!Array.isArray(item.whyWrong) || item.whyWrong.length !== reasons || item.whyWrong.some((reason) => typeof reason !== "string" || !reason.trim()))
-      return `第 ${index + 1} 題必須逐一說明 ${reasons} 個干擾選項為何不成立`;
+    if (!isRecord(item)) return `第 ${index + 1} 題資料不完整`;
+    const answer = kind === "discourse" ? item.sentence : item.answer;
+    if (shared && (typeof answer !== "string" || !bank.includes(answer.trim())))
+      return `第 ${index + 1} 題答案必須逐字對應共用選項`;
+    const distractors = shared
+      ? bank.filter((option) => option !== (answer as string).trim())
+      : Array.isArray(item.distractors)
+        ? item.distractors
+            .filter((option): option is string => typeof option === "string")
+            .map((option) => option.trim())
+        : [];
+    if (!shared && distractors.length !== 3)
+      return `第 ${index + 1} 題干擾選項不足`;
+    const issue = optionTeachingIssue(item, distractors);
+    if (issue) return `第 ${index + 1} 題${issue}`;
   }
   return null;
 }
@@ -106,10 +152,24 @@ function readingEvidenceIssue(
   return null;
 }
 
-export function generatedQuestionItemIssue(value: Record<string, unknown>, kind: GeneratedQuestionKind, difficulty: QuestionDifficulty, index: number): string | null {
-  const field = kind === "cloze" || kind === "wordBank" ? "blanks" : kind === "discourse" ? "removals" : "items";
+export function generatedQuestionItemIssue(
+  value: Record<string, unknown>,
+  kind: GeneratedQuestionKind,
+  difficulty: QuestionDifficulty,
+  index: number,
+): string | null {
+  const field =
+    kind === "cloze" || kind === "wordBank"
+      ? "blanks"
+      : kind === "discourse"
+        ? "removals"
+        : "items";
   const items = value[field];
   if (!Array.isArray(items) || !isRecord(items[index])) return "子題資料不完整";
   const isolated = { ...value, [field]: [items[index]] };
-  return (kind === "reading" ? readingEvidenceIssue(isolated, difficulty, false) : null) ?? teachingIssue(isolated, kind);
+  return (
+    (kind === "reading"
+      ? readingEvidenceIssue(isolated, difficulty, false)
+      : null) ?? teachingIssue(isolated, kind)
+  );
 }

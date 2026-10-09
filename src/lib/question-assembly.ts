@@ -8,6 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { placeAnswer } from "./question-builders";
+import { assembleOptionTeaching } from "./question-teaching";
 
 /**
  * Turns the model's prose into graded questions.
@@ -53,16 +54,6 @@ function stringArray(value: unknown): string[] {
   return Array.isArray(value)
     ? value.map((item) => text(item)).filter(Boolean)
     : [];
-}
-
-/** Reasons use option text as their key, so shuffling never changes their meaning. */
-function teaching(source: Record<string, unknown> | undefined, distractors: string[]) {
-  if (!source || typeof source.explanation !== "string" || !Array.isArray(source.whyWrong)) return {};
-  const reasons = source.whyWrong;
-  return {
-    explanation: source.explanation.trim(),
-    whyWrong: Object.fromEntries(distractors.map((option, index) => [option, text(reasons[index])])),
-  };
 }
 
 /**
@@ -152,7 +143,7 @@ function multipleChoiceItem(
     prompt,
     questionStyle: style,
     sourceRef: slot.sourceRef,
-    ...teaching(source, distractors),
+    ...assembleOptionTeaching(source, distractors),
   };
 }
 
@@ -189,10 +180,12 @@ function assembleSentences(
         `${slot.word.word}：答案在句中出現 ${hits.length} 次，必須恰好一次`,
       );
     if (
-      (hits[0] !== usageHits[0] ||
-        !usage.toLocaleLowerCase().startsWith(answer.toLocaleLowerCase()))
+      hits[0] !== usageHits[0] ||
+      !usage.toLocaleLowerCase().startsWith(answer.toLocaleLowerCase())
     )
-      return dropped.push(`${slot.word.word}：答案必須位於目標用法開頭且不超出範圍`);
+      return dropped.push(
+        `${slot.word.word}：答案必須位於目標用法開頭且不超出範圍`,
+      );
     const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
 
     const distractors = usableDistractors(
@@ -205,7 +198,15 @@ function assembleSentences(
       return dropped.push(`${slot.word.word}：干擾選項不足或重複`);
 
     questions.push(
-      multipleChoiceItem(slot, kind, prompt, answer, distractors, difficulty, raw),
+      multipleChoiceItem(
+        slot,
+        kind,
+        prompt,
+        answer,
+        distractors,
+        difficulty,
+        raw,
+      ),
     );
   });
 
@@ -277,7 +278,7 @@ function assemblePassage(
           options,
           prompt: question,
           sourceRef: slot.sourceRef,
-          ...teaching(raw, distractors),
+          ...assembleOptionTeaching(raw, distractors),
         },
       ];
     });
@@ -306,11 +307,13 @@ function assemblePassage(
   // reach its distractors after the blanks have been sorted into reading order.
   const raw =
     format === "discourse"
-      ? (Array.isArray(value.removals) ? value.removals : []).filter(isRecord).map((item) => ({
-          answer: text(item.sentence),
-          ref: "",
-          source: item,
-        }))
+      ? (Array.isArray(value.removals) ? value.removals : [])
+          .filter(isRecord)
+          .map((item) => ({
+            answer: text(item.sentence),
+            ref: "",
+            source: item,
+          }))
       : (Array.isArray(value.blanks) ? value.blanks : []).flatMap((item) =>
           isRecord(item)
             ? [{ answer: text(item.answer), ref: text(item.ref), source: item }]
@@ -326,7 +329,13 @@ function assemblePassage(
       );
       return;
     }
-    if (located.some((existing) => Math.abs(existing.at - hits[0]) < 1)) {
+    if (
+      located.some(
+        (existing) =>
+          hits[0] < existing.at + existing.answer.length &&
+          existing.at < hits[0] + item.answer.length,
+      )
+    ) {
       dropped.push(`「${item.answer.slice(0, 24)}」與其他空格重疊`);
       return;
     }
@@ -347,13 +356,19 @@ function assemblePassage(
   );
 
   if (spec.sharedBank) {
-    const extras =
-      format === "discourse"
-        ? [text(value.extraOption)].filter(Boolean)
-        : stringArray(value.extraOptions);
+    const candidates = stringArray(value.options);
+    if (
+      candidates.length !== spec.optionCount ||
+      new Set(candidates.map((option) => option.toLocaleLowerCase())).size !==
+        candidates.length ||
+      answers.some((answer) => !candidates.includes(answer))
+    )
+      throw new Error(
+        `共用選項必須有 ${spec.optionCount} 個不重複選項並包含每格答案`,
+      );
     const bank = placeAnswer(
-      answers[0],
-      [...answers.slice(1), ...extras],
+      candidates[0],
+      candidates.slice(1),
       `${title}:bank`,
     ).options;
     return {
@@ -374,10 +389,10 @@ function assemblePassage(
               options: bank,
               prompt: `Blank ${index + 1}`,
               sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
-              ...teaching(sourceByAnswer.get(child.answer.toLocaleLowerCase()), [
-                ...raw.filter((item) => item.answer !== child.answer).map((item) => item.answer),
-                ...extras,
-              ]),
+              ...assembleOptionTeaching(
+                sourceByAnswer.get(child.answer.toLocaleLowerCase()),
+                candidates.filter((option) => option !== child.answer),
+              ),
             })),
             title,
             wordKeys,
@@ -413,7 +428,7 @@ function assemblePassage(
         options,
         prompt: `Blank ${index + 1}`,
         sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
-        ...teaching(source, distractors),
+        ...assembleOptionTeaching(source, distractors),
       },
     ];
   });

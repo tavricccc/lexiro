@@ -101,7 +101,7 @@ describe("issues found in real Luna prompt trials", () => {
             answer: "detect",
             usage: "detect",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["prevent", "repair", "announce"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["prevent", "repair", "announce"],
           },
           {
@@ -110,7 +110,7 @@ describe("issues found in real Luna prompt trials", () => {
             answer: "reluctant",
             usage: "reluctant",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["eager", "proud", "ready"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["eager", "proud", "ready"],
           },
           {
@@ -119,7 +119,7 @@ describe("issues found in real Luna prompt trials", () => {
             answer: "consequence",
             usage: "consequence",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["benefit", "symptom", "decision"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["benefit", "symptom", "decision"],
           },
         ],

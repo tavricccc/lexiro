@@ -99,7 +99,7 @@ describe("AI task boundaries", () => {
             answer: "close",
             usage: "close",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["watch", "bring", "carry"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -118,7 +118,7 @@ describe("AI task boundaries", () => {
             answer: "close",
             usage: "close",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["watch", "bring", "carry"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -160,7 +160,11 @@ describe("AI task boundaries", () => {
           {
             answer: "was found in possession of",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: [
+              "was accused of",
+              "was charged with",
+              "was suspected of",
+            ].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: [
               "was accused of",
               "was charged with",
@@ -174,7 +178,7 @@ describe("AI task boundaries", () => {
           {
             answer: "committed",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["witnessed", "prevented", "reported"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["witnessed", "prevented", "reported"],
             sentence:
               "The shop’s security video clearly showed that the thief committed the crime by breaking a window and taking several laptops while the owner was away.",
@@ -183,7 +187,7 @@ describe("AI task boundaries", () => {
           {
             answer: "committed",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+            whyWrong: ["limited", "postponed", "considered"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
             distractors: ["limited", "postponed", "considered"],
             sentence:
               "After volunteering at the animal shelter for a month, Leo committed himself to caring for abandoned pets every weekend instead of spending his free time playing games.",
@@ -216,7 +220,7 @@ describe("AI task boundaries", () => {
       answer: "adapt",
       usage: "adapt",
       explanation: "這是結構測試用的審題解說。",
-      whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+      whyWrong: ["sleep", "wait", "leave"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
       distractors: ["sleep", "wait", "leave"],
     };
     const invalid = {
@@ -224,7 +228,7 @@ describe("AI task boundaries", () => {
       answer: "method",
       usage: "formula",
       explanation: "這是結構測試用的審題解說。",
-      whyWrong: ["不符線索一。", "不符線索二。", "不符線索三。"],
+      whyWrong: ["plan", "rule", "formula"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
       distractors: ["plan", "rule", "formula"],
     };
     const replies = [

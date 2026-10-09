@@ -33,7 +33,7 @@ export const QUESTION_KINDS = [
 ] as const;
 export type QuestionKind = (typeof QUESTION_KINDS)[number];
 /** One generation supplies questions and per-choice teaching. */
-export const QUESTION_GENERATION_CONTRACT = "single-pass-v1";
+export const QUESTION_GENERATION_CONTRACT = "single-pass-v2";
 /**
  * `senses` supplements a word that is already in the Library with meanings it
  * does not have yet. It is priced per word rather than per meaning returned:

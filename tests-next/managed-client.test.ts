@@ -41,7 +41,7 @@ describe("managed AI boundary", () => {
     const session: AiSession = {model:"gpt-6-luna",tier:"lite",sessionId:crypto.randomUUID(),context:"",notices:[],usage:{}};
     await managedTurn(session, {kind:"vocabulary",sources:[],difficulty:2});
     await managedTurn(session, {kind:"explain",raw:"test"});
-    expect(new Headers(fetcher.mock.calls[0][1]!.headers).get("X-Question-Contract")).toBe("single-pass-v1");
+    expect(new Headers(fetcher.mock.calls[0][1]!.headers).get("X-Question-Contract")).toBe("single-pass-v2");
     expect(new Headers(fetcher.mock.calls[1][1]!.headers).has("X-Question-Contract")).toBe(false);
   });
   it("reports review progress and rejects unapproved work without retrying", async () => {

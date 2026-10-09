@@ -26,7 +26,11 @@ const item = {
   usage: "detect",
   distractors: ["prevent", "repair", "contain"],
   explanation: "感測器先察覺漏氣，才採取後續處理。",
-  whyWrong: ["尚未阻止漏氣。", "尚未進行修理。", "沒有圍堵漏氣。"],
+  whyWrong: [
+    { option: "prevent", reason: "尚未阻止漏氣。" },
+    { option: "repair", reason: "尚未進行修理。" },
+    { option: "contain", reason: "沒有圍堵漏氣。" },
+  ],
 };
 
 describe("high-school generation quality gate", () => {
@@ -71,7 +75,7 @@ describe("high-school generation quality gate", () => {
     };
     reply.items.forEach((entry) => Object.assign(entry, {
       explanation: "依據文章所述的行動與限制判斷。",
-      whyWrong: ["文章不支持這個選項。", "與文章情境矛盾。", "將可能性誤當成事實。"],
+      whyWrong: entry.distractors.map((option, index) => ({ option, reason: ["文章不支持這個選項。", "與文章情境矛盾。", "將可能性誤當成事實。"][index] })),
     }));
     const [step] = questionTask([source], "reading", 2).steps;
     const [pack] = step.parse(JSON.stringify(reply));
@@ -143,21 +147,12 @@ describe("high-school generation quality gate", () => {
 
   it("checks full passage length even for a final batch with one blank", () => {
     const [step] = questionTask([source], "wordBank", 2).steps;
+    const options = ["detect", "repair", "contain", "prevent", "support", "observe", "record", "compare", "measure", "repeat"];
     const reply = {
       title: "A safety project",
       passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`,
-      blanks: [{ answer: "detect", explanation: "察覺到訊號。", whyWrong: Array.from({ length: 9 }, () => "情境未描述這個行動。") }],
-      extraOptions: [
-        "repair",
-        "contain",
-        "prevent",
-        "support",
-        "observe",
-        "record",
-        "compare",
-        "measure",
-        "repeat",
-      ],
+      options,
+      blanks: [{ answer: "detect", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) }],
     };
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(1);
@@ -167,6 +162,32 @@ describe("high-school generation quality gate", () => {
         JSON.stringify({ ...reply, passage: "Students detect signals." }),
       ),
     ).toThrow(/240–320/);
+  });
+
+  it("keeps explanation ownership despite reason order and repairs only an unrelated option", () => {
+    const [step] = questionTask([source], "vocabulary", 2).steps;
+    const [question] = step.parse(JSON.stringify({ items: [{ ...item, whyWrong: [...item.whyWrong].reverse() }] }));
+    expect(question.kind === "multipleChoice" && question.whyWrong).toMatchObject({
+      prevent: "尚未阻止漏氣。", repair: "尚未進行修理。", contain: "沒有圍堵漏氣。",
+    });
+    expect(() => step.parse(JSON.stringify({ items: [{ ...item, whyWrong: [{ option: "detect", reason: "這是正解。" }, ...item.whyWrong.slice(1)] }] }))).toThrow(/不屬於本題干擾選項/);
+    expect(() => step.parse(JSON.stringify({ items: [{ ...item, whyWrong: [item.whyWrong[0], item.whyWrong[0], item.whyWrong[2]] }] }))).toThrow(/解說重複/);
+    expect(() => step.parse(JSON.stringify({ items: [{ ...item, explanation: "The sensor notices the leak first." }] }))).toThrow(/必須以中文/);
+    expect(() => step.parse(JSON.stringify({ items: [{ ...item, whyWrong: item.whyWrong.map((entry) => ({ ...entry, reason: "This action is not described." })) }] }))).toThrow(/必須以中文/);
+  });
+
+  it("repairs shared-bank teaching against the same actual options", () => {
+    const [step] = questionTask([source], "wordBank", 2).steps;
+    const options = ["detect", "repair", "contain", "prevent", "support", "observe", "record", "compare", "measure", "repeat"];
+    const valid = { answer: "detect", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) };
+    const draft = { title: "A safety project", passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`, options, blanks: [{ ...valid, whyWrong: [{ option: "invented", reason: "不存在的選項。" }, ...valid.whyWrong.slice(1)] }] };
+    const recovery = step.recover!(JSON.stringify(draft));
+    expect(recovery?.remaining).toHaveLength(1);
+    expect(JSON.parse(recovery!.remaining[0].prompt).itemRepair.extraOptions).toEqual(options.slice(1));
+    const [pack] = recovery!.remaining[0].parse(JSON.stringify({ items: [valid] }));
+    expect(pack.kind === "reading" && pack.optionBank).toHaveLength(10);
+    expect(pack.kind === "reading" && pack.questions[0].whyWrong).toHaveProperty("repair", "情境未描述這個行動。");
+    expect(step.recover!(JSON.stringify({ ...draft, options: options.slice(1) }))).toBeNull();
   });
 
   it("applies both limits to original passages before cutting whole sentences", () => {

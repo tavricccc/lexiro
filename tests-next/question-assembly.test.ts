@@ -265,8 +265,8 @@ describe("assembling the model's reply", () => {
     const payload = assembleGeneratedQuestions(
       {
         blanks: [
-          { answer: "linger", distractors: ["ran", "sat", "grew"], ref: "s1", explanation: "停留在門邊。", whyWrong: ["未跑動。", "未坐下。", "未生長。"] },
-          { answer: "wander", distractors: ["ran", "sat", "grew"], ref: "s2", explanation: "先在外面漫步。", whyWrong: ["未跑動。", "未坐下。", "未生長。"] },
+          { answer: "linger", distractors: ["ran", "sat", "grew"], ref: "s1", explanation: "停留在門邊。", whyWrong: [{ option: "sat", reason: "未坐下。" }, { option: "grew", reason: "未生長。" }, { option: "ran", reason: "未跑動。" }] },
+          { answer: "wander", distractors: ["ran", "sat", "grew"], ref: "s2", explanation: "先在外面漫步。", whyWrong: [{ option: "ran", reason: "未跑動。" }, { option: "sat", reason: "未坐下。" }, { option: "grew", reason: "未生長。" }] },
         ],
         passage: "First they wander outside, and later they linger by the door.",
         title: "A walk",
@@ -287,7 +287,7 @@ describe("assembling the model's reply", () => {
     const payload = assembleGeneratedQuestions(
       {
         blanks: [{ answer: "wander", ref: "s2" }, { answer: "linger", ref: "s1" }],
-        extraOptions: ["drift", "roam"],
+        options: ["linger", "wander", "drift", "roam", "stay", "run", "jump", "skip", "sit", "walk"],
         passage: "They wander at dawn and linger at dusk.",
         title: "A day",
       },
@@ -298,8 +298,8 @@ describe("assembling the model's reply", () => {
       questions: Array<{ optionBank: string[]; questions: Array<{ answerIndex: number; options: string[] }> }>;
     };
     const pack = payload.questions[0];
-    expect(pack.optionBank).toHaveLength(4);
-    expect(new Set(pack.optionBank).size).toBe(4);
+    expect(pack.optionBank).toHaveLength(10);
+    expect(new Set(pack.optionBank).size).toBe(10);
     const chosen = pack.questions.map((child) => child.options[child.answerIndex]);
     expect(new Set(chosen).size).toBe(chosen.length);
     expect(chosen.sort()).toEqual(["linger", "wander"]);
@@ -308,7 +308,7 @@ describe("assembling the model's reply", () => {
   it("removes whole sentences for 篇章結構 and offers one extra", () => {
     const payload = assembleGeneratedQuestions(
       {
-        extraOption: "Nobody ever returned.",
+        options: ["The wind grew stronger.", "Nobody ever returned.", "They wandered in.", "A dog followed them.", "It was still early."],
         passage: "The town was quiet. They wandered in. A dog followed them. The sun set.",
         removals: [{sentence: "They wandered in."}, {sentence: "A dog followed them."}],
         title: "Quiet town",
@@ -321,7 +321,7 @@ describe("assembling the model's reply", () => {
     };
     const pack = payload.questions[0];
     expect(pack.passage).toBe("The town was quiet. __1__ __2__ The sun set.");
-    expect(pack.optionBank).toHaveLength(3);
+    expect(pack.optionBank).toHaveLength(5);
     expect(pack.questions).toHaveLength(2);
   });
 
@@ -338,5 +338,17 @@ describe("assembling the model's reply", () => {
         [word("wander", "v.")],
       ),
     ).toThrow();
+  });
+
+  it("does not cut nested answer spans into overlapping blanks", () => {
+    const result = assembleGeneratedQuestions({
+      title: "Tools", passage: "They repaired the chemical machinery at noon.",
+      blanks: [
+        { answer: "chemical machinery", distractors: ["the classroom", "the garden", "the kitchen"] },
+        { answer: "machinery", distractors: ["machine", "equipment", "device"] },
+      ],
+    }, "cloze", 2, [word("chemical machinery", "n."), word("machinery", "n.")]);
+    expect(result.dropped).toContain("「machinery」與其他空格重疊");
+    expect(result.payload.questions).toMatchObject([{ passage: "They repaired the __1__ at noon." }]);
   });
 });

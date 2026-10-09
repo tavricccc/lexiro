@@ -1,6 +1,6 @@
 import { expect, it } from "vitest";
 import { createStreamProgress } from "@/src/lib/ai/stream-progress";
-const question = { sentence: 'A sentence with "quotes", } and {.', usage: "sentence", answer: "sentence", distractors: ["a", "b", "c"], explanation: "說明", whyWrong: ["一", "二", "三"] };
+const question = { sentence: 'A sentence with "quotes", } and {.', usage: "sentence", answer: "sentence", distractors: ["a", "b", "c"], explanation: "說明", whyWrong: [{ option: "b", reason: "二" }, { option: "c", reason: "三" }, { option: "a", reason: "一" }] };
 it("counts complete questions across arbitrary packet boundaries without counting quoted braces", () => {
   const parse = createStreamProgress("vocabulary");
   const first = '{"items":[' + JSON.stringify(question);
