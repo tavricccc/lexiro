@@ -20,9 +20,9 @@ export const sentenceQuestionItem = z.object({
   answer: english.describe("從最終句子逐字複製的目標單字字形，恰好出現一次，也是 usage 的開頭。"),
 });
 export const readingQuestionItem = z.object({
-  question: english,
   skill: z.enum(READING_SKILLS),
-  evidence: texts.min(1),
+  evidence: texts.min(1).describe("先選支撐 skill 的完整原文句。inference 至少兩個必要事實，拿掉任一句後不能推出答案，本文保留事實而不預先說出結論。"),
+  question: english,
   answer: english,
   distractors: texts.length(3),
 });

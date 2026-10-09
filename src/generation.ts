@@ -168,7 +168,7 @@ export async function prepareGeneration(
       instructions = built.instructions + "\n這次只重新生成指定 index 的一個子題。passage、共用候選與其他題目保持原樣；不是整批修訂，不要輸出文章、options 或其他題目。避免與其他子題重複或衝突。綜合測驗及文意選填答案使用指定來源詞義在既有文章中的實際字形；篇章結構選既有文章的完整句子，保留首句並避開其他空格的相鄰句；閱讀題依既有文章重新出一題並給逐字 evidence。whyWrong 沿用 {option,reason} 格式，逐字引用本題實際候選，文意選填及篇章結構的共用候選由既有 items 的 answer／sentence 與 extraOptions 合成，不能另造選項。只輸出 {items:[一個新子題]}。";
       input = JSON.stringify({ kind: request.kind, difficulty: request.difficulty, sources, ...request.itemRepair });
       schema = jsonSchema(questionItemOutput(request.kind));
-      cacheKey = "lexiro-question-item-20261009-v9";
+      cacheKey = "lexiro-question-item-20261009-v10";
       rawUnits = [input];
     } else {
     const built = questionPrompt(request.kind, sources, request.difficulty);
