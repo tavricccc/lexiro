@@ -58,7 +58,11 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
-        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.supplementDescription")}
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.supplementDescription",
+        )}
         header={false}
         invalid={saved.status === "invalid"}
         onRestart={saved.restart}
@@ -94,11 +98,6 @@ function SupplementFlow({
   const { chosen, limit, phase } = draft;
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
-  const generation = useAiGeneration<WordDraft>({
-    initialSnapshot: draft.run,
-    onSnapshotChange: (run) => update({ run }),
-  });
-
   const words = useMemo(
     () =>
       (state.memberships[setId] ?? []).flatMap((membership) => {
@@ -128,6 +127,11 @@ function SupplementFlow({
     [chosen, words],
   );
   const task = useMemo(() => supplementTask(sources, limit), [limit, sources]);
+  const generation = useAiGeneration<WordDraft>({
+    initialSnapshot: draft.run,
+    task,
+    onSnapshotChange: (run) => update({ run }),
+  });
 
   const { items, status } = generation.state;
   useReviewHandoff(status, () => update({ phase: "review" }));
@@ -239,7 +243,9 @@ function SupplementFlow({
         <ListActionRow
           disabled={running}
           onClick={() =>
-            update({ chosen: allChosen ? [] : words.map((entry) => entry.wordKey) })
+            update({
+              chosen: allChosen ? [] : words.map((entry) => entry.wordKey),
+            })
           }
         >
           {t(allChosen ? "supplement.clearAll" : "supplement.selectAll")}
@@ -271,9 +277,11 @@ function SupplementFlow({
         configured={generation.configured}
         kind="senses"
         onCancel={generation.cancel}
-        onResume={generation.resume}
+        onResume={generation.canResume ? generation.resume : undefined}
         onReview={
-          items.length && !running ? () => update({ phase: "review" }) : undefined
+          items.length && !running
+            ? () => update({ phase: "review" })
+            : undefined
         }
         onStart={() => {
           setError("");

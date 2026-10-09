@@ -66,13 +66,14 @@ export function WordAssistant({
   const [applying, setApplying] = useState(false);
   const [saveError, setSaveError] = useState("");
   const sources = useMemo(() => buildWordGenerationSources(raw), [raw]);
+  const task = useMemo(() => wordTask(sources), [sources]);
   const generation = useAiGeneration<WordDraft>({
     initialSnapshot: initialRun,
+    task,
     merge: mergeWordDrafts,
     onSnapshotChange: onRunChange,
   });
   const { state } = generation;
-  const task = useMemo(() => wordTask(sources), [sources]);
   useReviewHandoff(state.status, () => onPhase("review"));
   const running = state.status === "running";
 
@@ -118,7 +119,8 @@ export function WordAssistant({
               } catch (reason) {
                 setSaveError(
                   t("ai.applyFailed", {
-                    message: reason instanceof Error ? reason.message : String(reason),
+                    message:
+                      reason instanceof Error ? reason.message : String(reason),
                   }),
                 );
               } finally {
@@ -151,7 +153,7 @@ export function WordAssistant({
       configured={generation.configured}
       kind={task.kind}
       onCancel={generation.cancel}
-      onResume={generation.resume}
+      onResume={generation.canResume ? generation.resume : undefined}
       onReview={
         state.items.length && !running ? () => onPhase("review") : undefined
       }

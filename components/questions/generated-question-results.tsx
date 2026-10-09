@@ -31,7 +31,8 @@ export function GeneratedQuestionResults({
     ),
   );
   if (!items.length) return null;
-  const question = items[index];
+  const currentIndex = Math.min(index, items.length - 1);
+  const question = items[currentIndex];
   const source =
     question.kind === "reading"
       ? null
@@ -41,7 +42,7 @@ export function GeneratedQuestionResults({
       <div className="flex flex-wrap items-start justify-between gap-4 rule-b pb-5">
         <div className="min-w-0 flex-1">
           <QuestionPager
-            index={index}
+            index={currentIndex}
             total={items.length}
             onChange={setIndex}
           />

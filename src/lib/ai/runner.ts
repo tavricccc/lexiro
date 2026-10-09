@@ -9,9 +9,14 @@ import type {
 import { t } from "@/lib/i18n";
 import { AiRequestError, AiValidationError } from "./errors";
 import { commitTurn, generateTurn, resetConversation } from "./session";
-import { createStreamProgress, savedStreamCounts, type StreamCounts } from "./stream-progress";
+import {
+  createStreamProgress,
+  savedStreamCounts,
+  type StreamCounts,
+} from "./stream-progress";
 import { runParallelTask, type ParallelRunState } from "./parallel-runner";
 import type { AiBatchProgress } from "@/src/types/ai";
+import { recordStepParse, registerDerivedSteps } from "./run-checkpoint";
 
 export interface AiRun<T> {
   task: AiTask<T>;
@@ -54,11 +59,19 @@ export function waitForRetry(ms: number, signal?: AbortSignal): Promise<void> {
     signal?.addEventListener("abort", abort, { once: true });
   });
 }
-export async function runTask<T>(run: AiRun<T>, options: {
-  signal: AbortSignal; onUpdate: (update: AiRunUpdate<T>) => void;
-  merge?: (items: T[]) => T[]; send?: typeof generateTurn; wait?: typeof waitForRetry;
-}) {
-  if (run.parallel || run.pending.length > 1) return runParallelTask(run, options, runSequentialTask);
+export async function runTask<T>(
+  run: AiRun<T>,
+  options: {
+    signal: AbortSignal;
+    onUpdate: (update: AiRunUpdate<T>) => void;
+    merge?: (items: T[]) => T[];
+    send?: typeof generateTurn;
+    wait?: typeof waitForRetry;
+    onCheckpoint?: () => void;
+  },
+) {
+  if (run.parallel || run.pending.length > 1)
+    return runParallelTask(run, options, runSequentialTask);
   return runSequentialTask(run, options);
 }
 async function runSequentialTask<T>(
@@ -69,12 +82,14 @@ async function runSequentialTask<T>(
     merge?: (items: T[]) => T[];
     send?: typeof generateTurn;
     wait?: typeof waitForRetry;
+    onCheckpoint?: () => void;
   },
 ) {
   const send = options.send ?? generateTurn,
     wait = options.wait ?? waitForRetry;
   let phase: AiPhase = "connecting",
-    characters = 0, tokens = 0;
+    characters = 0,
+    tokens = 0;
   let batchStartedAt = Date.now();
   let streamed: StreamCounts = { units: 0, senses: 0, questions: 0 };
   const report = () =>
@@ -84,8 +99,12 @@ async function runSequentialTask<T>(
       tokens,
       batchStartedAt,
       receivedUnits: Math.min(run.total, run.completed + streamed.units),
-      parsedSenses: savedStreamCounts(run.items, run.task.kind).senses + streamed.senses,
-      parsedQuestions: savedStreamCounts(run.items, run.task.kind).questions + (run.pending[0]?.stagedQuestions ?? 0) + streamed.questions,
+      parsedSenses:
+        savedStreamCounts(run.items, run.task.kind).senses + streamed.senses,
+      parsedQuestions:
+        savedStreamCounts(run.items, run.task.kind).questions +
+        (run.pending[0]?.stagedQuestions ?? 0) +
+        streamed.questions,
       items: [...run.items],
       completed: run.completed,
       total: run.total,
@@ -117,6 +136,7 @@ async function runSequentialTask<T>(
           reply = await send(run.session, prompt, {
             signal: options.signal,
             repair,
+            onCheckpoint: options.onCheckpoint,
             onPhase: (next) => {
               phase = next;
               report();
@@ -129,8 +149,14 @@ async function runSequentialTask<T>(
               tokens = count;
               report();
             },
-            onText: (text) => { streamed = parseProgress(text); report(); },
-            onBatchStartedAt: (startedAt) => { batchStartedAt = startedAt; report(); },
+            onText: (text) => {
+              streamed = parseProgress(text);
+              report();
+            },
+            onBatchStartedAt: (startedAt) => {
+              batchStartedAt = startedAt;
+              report();
+            },
           });
           break;
         } catch (reason) {
@@ -154,8 +180,10 @@ async function runSequentialTask<T>(
           ) {
             const smaller = step.split();
             if (smaller.length > 1) {
+              registerDerivedSteps(step, smaller, "split");
               run.pending.splice(0, 1, ...smaller);
               run.session.notices.push(t("ai.smallerSegments"));
+              options.onCheckpoint?.();
               break;
             }
           }
@@ -178,6 +206,7 @@ async function runSequentialTask<T>(
       phase = "validating";
       report();
       try {
+        recordStepParse(step, reply.text);
         parsed = step.parse(reply.text);
         if (run.task.key) {
           const keys = new Set(run.items.map(run.task.key));
@@ -200,6 +229,12 @@ async function runSequentialTask<T>(
             recovered = null;
         }
         if (recovered) {
+          registerDerivedSteps(
+            step,
+            recovered.remaining,
+            "recover",
+            reply.text,
+          );
           streamed = { units: 0, senses: 0, questions: 0 };
           const combined = [...run.items, ...recovered.items];
           run.items = options.merge ? options.merge(combined) : combined;
@@ -208,6 +243,7 @@ async function runSequentialTask<T>(
           run.repair = undefined;
           run.session.notices.push(t("ai.partialRecovered"));
           report();
+          options.onCheckpoint?.();
           break;
         }
         const feedback = JSON.stringify({
@@ -236,6 +272,7 @@ async function runSequentialTask<T>(
       run.completed += step.count;
       run.segments++;
       report();
+      options.onCheckpoint?.();
       break;
     }
   }

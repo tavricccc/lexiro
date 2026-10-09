@@ -50,7 +50,7 @@ export function AiRunPanel<T>({
   localCount?: number;
   onAppend?: () => void;
   onCancel: () => void;
-  onResume: () => void;
+  onResume?: () => void;
   /** Going on to the step that reviews what came back. */
   onReview?: () => void;
   onStart: () => void;
@@ -67,8 +67,14 @@ export function AiRunPanel<T>({
   const running = state.status === "running",
     started = state.status !== "idle",
     done = state.status === "done";
-  const tokenRate = useTokenRate(state.tokens ?? 0, running, state.batchStartedAt ?? state.startedAt ?? 0);
-  const progress = running ? state.receivedUnits ?? state.completed : state.completed;
+  const tokenRate = useTokenRate(
+    state.tokens ?? 0,
+    running,
+    state.batchStartedAt ?? state.startedAt ?? 0,
+  );
+  const progress = running
+    ? (state.receivedUnits ?? state.completed)
+    : state.completed;
   const runModel = started && !done ? (state.model ?? model) : model;
   const canRun =
     ready &&
@@ -84,6 +90,8 @@ export function AiRunPanel<T>({
   const insufficientPoints =
     !admin && account.data !== undefined && account.data.points < startCost.min;
   const canStart = canRun && !insufficientPoints;
+  const resumable = state.remaining > 0 && Boolean(onResume);
+  const reviewPrimary = Boolean(onReview && (done || (started && !onResume)));
   useEffect(() => {
     if (!running) return;
     setNow(Date.now());
@@ -95,20 +103,22 @@ export function AiRunPanel<T>({
       (state.startedAt ? Math.max(0, now - state.startedAt) : 0)) /
       1000,
   );
-  const title = running
-    ? t(`ai.${state.phase}`)
-    : done
-      ? t("ai.done")
-      : state.status === "cancelled"
-        ? t("ai.paused")
-        : state.status === "error"
-          ? t("ai.needsAttention")
-          : t("ai.ready");
+  const title = state.resumeUnavailable
+    ? t("ai.keptResults")
+    : running
+      ? t(`ai.${state.phase}`)
+      : done
+        ? t("ai.done")
+        : state.status === "cancelled"
+          ? t("ai.paused")
+          : state.status === "error"
+            ? t("ai.needsAttention")
+            : t("ai.ready");
   return (
     <div className="space-y-[var(--section-gap)]">
       <GenerationControls
         count={billableCount}
-        disabled={running}
+        disabled={running || resumable}
         kind={kind}
         onTierChange={onTierChange}
         tier={tier}
@@ -129,16 +139,35 @@ export function AiRunPanel<T>({
           value={state.total ? progress : done ? 1 : 0}
         >
           <span>{t("ai.completedSegments", { count: state.segments })}</span>
-          {(kind === "words" || kind === "senses") && <span>{t("ai.parsedSenses", { count: state.parsedSenses ?? 0 })}</span>}
-          {["reading", "cloze", "wordBank", "discourse"].includes(kind) && <span>{t("ai.parsedQuestions", { count: state.parsedQuestions ?? 0 })}</span>}
-          {running && (state.batches?.length ?? 0) > 1 ? state.batches!.map((batch) => <BatchRate key={batch.id} batch={batch} />) : running && (
-            <span className="tabular-nums">
-              {t("ai.progressTps", {
-                rate: tokenRate.toFixed(1),
-              })}
+          {(kind === "words" || kind === "senses") && (
+            <span>
+              {t("ai.parsedSenses", { count: state.parsedSenses ?? 0 })}
             </span>
           )}
+          {["reading", "cloze", "wordBank", "discourse"].includes(kind) && (
+            <span>
+              {t("ai.parsedQuestions", { count: state.parsedQuestions ?? 0 })}
+            </span>
+          )}
+          {running && (state.batches?.length ?? 0) > 1
+            ? state.batches!.map((batch) => (
+                <BatchRate key={batch.id} batch={batch} />
+              ))
+            : running && (
+                <span className="tabular-nums">
+                  {t("ai.progressTps", {
+                    rate: tokenRate.toFixed(1),
+                  })}
+                </span>
+              )}
         </TaskProgress>
+      )}
+      {state.resumeUnavailable && (
+        <p className="type-hint" role="status">
+          {t(
+            `ai.restore${state.resumeUnavailable === "expired" ? "Expired" : state.resumeUnavailable === "changed" ? "Changed" : "Legacy"}`,
+          )}
+        </p>
       )}
 
       {state.error && (
@@ -206,27 +235,21 @@ export function AiRunPanel<T>({
           <>
             <Button
               className="w-full"
-              disabled={
-                done && onReview
-                  ? false
-                  : state.remaining > 0
-                    ? !canRun
-                    : !canStart
-              }
+              disabled={reviewPrimary ? false : resumable ? !canRun : !canStart}
               onClick={
-                done && onReview
+                reviewPrimary
                   ? onReview
-                  : state.remaining > 0 && canRun
+                  : resumable && canRun
                     ? onResume
                     : onStart
               }
               size="lg"
               type="button"
             >
-              {done && onReview ? <Icons.next /> : <Icons.generate />}
-              {done && onReview
-                ? t("ai.viewResults")
-                : state.remaining > 0 && canRun
+              {reviewPrimary ? <Icons.next /> : <Icons.generate />}
+              {reviewPrimary
+                ? t(done ? "ai.viewResults" : "ai.viewCompletedResults")
+                : resumable && canRun
                   ? t(
                       state.status === "error"
                         ? "ai.retryCurrent"
@@ -236,13 +259,13 @@ export function AiRunPanel<T>({
                     ? t("ai.regenerate")
                     : actionLabel}
             </Button>
-            {(state.remaining > 0 || (done && onReview)) && canStart && (
+            {(state.remaining > 0 || reviewPrimary) && canStart && (
               <Button onClick={onStart} type="button" variant="ghost">
                 <Icons.generate />
                 {t("ai.regenerate")}
               </Button>
             )}
-            {state.remaining > 0 && state.items.length > 0 && onReview && (
+            {resumable && state.items.length > 0 && onReview && (
               <Button onClick={onReview} type="button" variant="ghost">
                 <Icons.next />
                 {t("ai.viewCompletedResults")}
@@ -279,5 +302,9 @@ export function AiRunPanel<T>({
 
 function BatchRate({ batch }: { batch: AiBatchProgress }) {
   const rate = useTokenRate(batch.tokens, true, batch.startedAt);
-  return <span className="tabular-nums">{t("ai.batchTps", { batch: batch.order, rate: rate.toFixed(1) })}</span>;
+  return (
+    <span className="tabular-nums">
+      {t("ai.batchTps", { batch: batch.order, rate: rate.toFixed(1) })}
+    </span>
+  );
 }

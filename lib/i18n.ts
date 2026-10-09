@@ -133,8 +133,14 @@ export const zhTW = {
     wordsUnit: "個單字",
     questionsUnit: "題",
     packsUnit: "個題組",
-    keepWorking: "你可以先看已完成的內容；後續結果會接著出現。",
+    keepWorking: "已完成的內容會保留；離開後可接續這次生成。",
     keptResults: "已完成的內容都保留著。",
+    restoreExpired:
+      "上次生成已超過 30 分鐘的保留時間。已完成內容仍可保存；剩下的需明確重新生成。",
+    restoreChanged:
+      "來源或出題版本已變更，無法接續上次生成。已完成內容仍可校對保存。",
+    restoreLegacy:
+      "這份舊草稿只有已完成內容，無法接續未完成段落。可以先保存結果，再重新生成。",
     viewResults: "查看結果",
     viewCompletedResults: "查看已完成結果",
     resume: "繼續剩下的",
@@ -270,7 +276,8 @@ export const zhTW = {
     targetWord: "目標：{word}",
     retiredGrammar: "文法題（已停用）",
     retiredTitle: "這個題型已停用",
-    retiredHint: "學測題型只保留詞彙、綜合測驗、文意選填、篇章結構與閱讀。舊題保留在備份資料中。",
+    retiredHint:
+      "學測題型只保留詞彙、綜合測驗、文意選填、篇章結構與閱讀。舊題保留在備份資料中。",
     metadata: "編輯標題與難度",
     cloze: "綜合測驗",
     clozeHint: "一篇短文數格，每格各有四個選項",
@@ -310,7 +317,8 @@ export const zhTW = {
     editFormat: "校對{name}",
     blankAnswer: "第 {index} 格的答案",
     optionBankHint: "這組選項由整篇共用。修改一次，所有空格會一起更新。",
-    blankAnswerHint: "每個選項只能使用一次。選定答案後，可在文章中找到對應空格。",
+    blankAnswerHint:
+      "每個選項只能使用一次。選定答案後，可在文章中找到對應空格。",
     blankLabel: "第 {index} 格",
     usedOption: "已用過",
     difficulty: "難度 {level}",
@@ -529,7 +537,8 @@ export const zhTW = {
     pendingInvalid: "未完成的修改無法讀取。可以清除這份暫存，保留目前設定。",
     applyPending: "套用未完成修改",
     keepCurrent: "保留目前設定",
-    pendingStorageFailed: "目前無法保留未完成的修改。請留在此頁，直到顯示已儲存。",
+    pendingStorageFailed:
+      "目前無法保留未完成的修改。請留在此頁，直到顯示已儲存。",
     syncQueued: "等待同步",
     ai: "AI",
     aiModel: "AI 模型",
@@ -550,7 +559,8 @@ export const zhTW = {
     backupAccountChanged: "帳號已切換。請重新選擇備份，確認要匯入的帳號。",
     backupExportAccountChanged: "帳號已切換。請確認目前帳號後重新匯出。",
     chooseBackupAgain: "重新選擇備份",
-    importLearningFailed: "教材已合併，但學習紀錄尚未匯入：{message}。可重試完成匯入，已儲存的教材會保留。",
+    importLearningFailed:
+      "教材已合併，但學習紀錄尚未匯入：{message}。可重試完成匯入，已儲存的教材會保留。",
     importConfirm: "匯入會把內容合併進目前資料，確定繼續嗎？",
     importDone: "備份已匯入",
     importPreview:
@@ -682,7 +692,8 @@ export const zhTW = {
   },
   managed: {
     questionQualityRejected: "這批題目未通過審題，請重新產生。",
-    questionUpdateRequired: "出題格式已更新，請先啟用應用程式更新，再重新產生題目。",
+    questionUpdateRequired:
+      "出題格式已更新，請先啟用應用程式更新，再重新產生題目。",
     retryLimit:
       "這個來源已達本輪重試上限。已完成的內容仍保留，可重新生成開啟新一輪。",
     accountExists: "此帳號已有額度紀錄，請直接調整現有帳號。",
@@ -712,7 +723,8 @@ export const zhTW = {
     liteHint: "日常單字與練習 · 1 倍點數",
     thinkingHint: "需要更多思考的內容 · 2 倍點數",
     proHint: "進階模型 · 低量思考 · 20 倍點數",
-    organizerModelHint: "Lite／Thinking 使用所選模型；Pro 固定使用 GPT-6.1 Sol。",
+    organizerModelHint:
+      "Lite／Thinking 使用所選模型；Pro 固定使用 GPT-6.1 Sol。",
     planTitle: "方案與點數",
     pointsLabel: "剩餘點數",
     allowanceLabel: "額度",
@@ -938,7 +950,8 @@ export const zhTW = {
   },
   offline: {
     title: "暫時無法開啟此頁",
-    description: "裝置上的教材與學習紀錄仍保留。你可以重試此頁，或先回到 Lexiro。",
+    description:
+      "裝置上的教材與學習紀錄仍保留。你可以重試此頁，或先回到 Lexiro。",
     retry: "重試此頁",
     action: "回到 Lexiro",
   },

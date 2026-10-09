@@ -67,6 +67,41 @@ describe("generation lifecycle", () => {
     expect(result.current.state.status).toBe("done");
     expect(mocks.send).not.toHaveBeenCalled();
   });
+  it("keeps a legacy partial snapshot paused instead of claiming completion", () => {
+    const { result } = renderHook(() =>
+      useAiGeneration<string>({
+        initialSnapshot: {
+          tier: "lite",
+          state: {
+            status: "running",
+            phase: "generating",
+            characters: 20,
+            completed: 1,
+            total: 3,
+            segments: 1,
+            error: "",
+            items: ["accepted"],
+            notices: [],
+            startedAt: null,
+            elapsedMs: 250,
+            remaining: 2,
+            usage: {},
+            diagnostic: null,
+          },
+        },
+      }),
+    );
+    expect(result.current.state).toMatchObject({
+      status: "cancelled",
+      completed: 1,
+      total: 3,
+      remaining: 2,
+      resumeUnavailable: "legacy",
+    });
+    expect(result.current.canResume).toBe(false);
+    expect(result.current.canAppend).toBe(false);
+    expect(mocks.send).not.toHaveBeenCalled();
+  });
   it("retains results on pause, resumes pending work, and appends a new round", async () => {
     let release: (r: AiTurnResult) => void = () => {};
     mocks.send.mockResolvedValueOnce(response("a")).mockImplementationOnce(

@@ -159,7 +159,8 @@ function QuestionGeneratorFlow({
   );
   const generation = useAiGeneration<LibraryQuestion>({
     initialSnapshot: draft.run,
-    onSnapshotChange: (run) => update({ run, excludedQuestionIds: [] }),
+    task,
+    onSnapshotChange: (run) => update({ run }),
     merge: (items) => {
       const byId = new Map<string, LibraryQuestion>();
       for (const item of items) byId.set(item.fingerprint || item.id, item);
@@ -397,16 +398,21 @@ function QuestionGeneratorFlow({
           configured={generation.configured}
           ready={generation.ready}
           onCancel={generation.cancel}
-          onResume={generation.resume}
+          onResume={generation.canResume ? generation.resume : undefined}
           onAppend={
-            task.steps.length ? () => generation.append(task) : undefined
+            generation.canAppend && task.steps.length
+              ? () => generation.append(task)
+              : undefined
           }
           onReview={
             run.items.length && run.status !== "running"
               ? () => update({ step: "review" })
               : undefined
           }
-          onStart={() => generation.start(task)}
+          onStart={() => {
+            update({ excludedQuestionIds: [] });
+            generation.start(task);
+          }}
           kind={task.kind}
           billableCount={task.billableCount}
           appendBillableCount={task.billableCount}

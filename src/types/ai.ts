@@ -15,7 +15,12 @@ export interface AiSession {
   sessionId: string;
   context: string;
   cursor?: string;
-  pendingTurn?: { id: string; signature: string; started: boolean };
+  pendingTurn?: {
+    id: string;
+    signature: string;
+    started: boolean;
+    createdAt: number;
+  };
   /**
    * This round is an extra version of work already generated, so the model is
    * asked for different wording. A round owns its session, so a new run always
@@ -48,6 +53,7 @@ export interface AiTurnOptions {
   onText?: (text: string) => void;
   onPhase?: (phase: AiPhase) => void;
   onBatchStartedAt?: (startedAt: number) => void;
+  onCheckpoint?: () => void;
 }
 export interface AiTask<T> {
   id: string;

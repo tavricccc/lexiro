@@ -8,6 +8,13 @@ import { replaceRunItems } from "@/src/lib/ai/parallel-runner";
 import { AiRequestError, AiValidationError } from "@/src/lib/ai/errors";
 import { useCloudStore } from "@/stores/cloud-store";
 import { t } from "@/lib/i18n";
+import {
+  checkpointRun,
+  generationRunExpired,
+  registerTaskSteps,
+  restoreRunCheckpoint,
+  type AiRunCheckpoint,
+} from "@/src/lib/ai/run-checkpoint";
 
 export type AiRunStatus = "idle" | "running" | "done" | "error" | "cancelled";
 
@@ -56,10 +63,12 @@ export interface AiRunState<T> {
     response: string;
     responseId?: string;
   } | null;
+  resumeUnavailable?: "changed" | "expired" | "legacy";
 }
 export interface AiGenerationSnapshot<T> {
   state: AiRunState<T>;
   tier: Tier;
+  checkpoint?: AiRunCheckpoint<T>;
 }
 const initialState = <T>(): AiRunState<T> => ({
   status: "idle",
@@ -78,40 +87,72 @@ const initialState = <T>(): AiRunState<T> => ({
   diagnostic: null,
 });
 
-function restoredState<T>(snapshot?: AiGenerationSnapshot<T>): AiRunState<T> {
-  if (!snapshot) return initialState<T>();
+function restoreGeneration<T>(
+  snapshot: AiGenerationSnapshot<T> | undefined,
+  task: AiTask<T> | undefined,
+  accountId: string,
+) {
+  if (!snapshot) return { state: initialState<T>(), run: undefined };
   const previous = snapshot.state;
-  return previous.items.length
-    ? {
-        ...previous,
-        status: "done",
-        startedAt: null,
-        remaining: 0,
-        total: previous.completed,
-        diagnostic: null,
-      }
-    : initialState<T>();
+  const restored: {
+    run?: AiRun<T>;
+    reason?: "changed" | "expired" | "legacy";
+  } =
+    snapshot.checkpoint && task
+      ? restoreRunCheckpoint(snapshot.checkpoint, task, accountId)
+      : { reason: previous.remaining ? ("legacy" as const) : undefined };
+  const run = restored.run;
+  const remaining = run?.pending.length ?? previous.remaining;
+  const done = previous.status === "done" && remaining === 0;
+  const state: AiRunState<T> = {
+    ...previous,
+    ...(run
+      ? {
+          items: run.items,
+          completed: run.completed,
+          total: run.total,
+          segments: run.segments,
+        }
+      : {}),
+    status: done ? "done" : previous.status === "idle" ? "idle" : "cancelled",
+    startedAt: null,
+    diagnostic: null,
+    remaining,
+    receivedUnits: run?.completed ?? previous.completed,
+    batches: undefined,
+    resumeUnavailable: remaining ? restored.reason : undefined,
+  };
+  return { state, run };
 }
 
 export function useAiGeneration<T>({
   initialSnapshot,
   merge,
   onSnapshotChange,
+  task,
 }: {
   initialSnapshot?: AiGenerationSnapshot<T>;
   merge?: (items: T[]) => T[];
   onSnapshotChange?: (snapshot: AiGenerationSnapshot<T>) => void;
+  task?: AiTask<T>;
 } = {}) {
-  const [state, setState] = useState<AiRunState<T>>(() =>
-    restoredState(initialSnapshot),
-  );
-  const [tier, setTier] = useState<Tier>(initialSnapshot?.tier ?? "lite");
-  const [itemsRevision, setItemsRevision] = useState(0);
   const ready = useCloudStore((store) => store.ready);
   const uid = useCloudStore((store) => store.user?.uid);
+  const [restored] = useState(() =>
+    restoreGeneration(initialSnapshot, task, uid ?? "local"),
+  );
+  const [state, setState] = useState<AiRunState<T>>(restored.state);
+  const [tier, setTier] = useState<Tier>(initialSnapshot?.tier ?? "lite");
+  const [itemsRevision, setItemsRevision] = useState(0);
   const abortRef = useRef<AbortController | null>(null),
-    runRef = useRef<AiRun<T> | null>(null),
+    runRef = useRef<AiRun<T> | null>(restored.run ?? null),
     generationId = useRef(0);
+  const stateRef = useRef(state);
+  stateRef.current = state;
+  const uidRef = useRef(uid);
+  uidRef.current = uid;
+  const tierRef = useRef(tier);
+  tierRef.current = tier;
   const mergeRef = useRef(merge);
   mergeRef.current = merge;
   const onSnapshotRef = useRef(onSnapshotChange);
@@ -125,6 +166,14 @@ export function useAiGeneration<T>({
     onSnapshotRef.current?.({
       state: { ...state, diagnostic: null, startedAt: null },
       tier,
+      ...(runRef.current
+        ? {
+            checkpoint: checkpointRun(
+              runRef.current,
+              uidRef.current ?? "local",
+            ),
+          }
+        : {}),
     });
   }, [state.status, state.completed, state.segments, tier, itemsRevision]);
   const previousUid = useRef(uid);
@@ -166,6 +215,24 @@ export function useAiGeneration<T>({
       await runTask(run, {
         signal: controller.signal,
         merge: mergeRef.current,
+        onCheckpoint: () => {
+          if (id !== generationId.current) return;
+          onSnapshotRef.current?.({
+            state: {
+              ...stateRef.current,
+              status: "running",
+              startedAt: null,
+              diagnostic: null,
+              items: [...run.items],
+              completed: run.completed,
+              total: run.total,
+              segments: run.segments,
+              remaining: run.pending.length,
+            },
+            tier: tierRef.current,
+            checkpoint: checkpointRun(run, uidRef.current ?? "local"),
+          });
+        },
         onUpdate: (update) => {
           if (id === generationId.current)
             setState((s) => ({
@@ -194,8 +261,19 @@ export function useAiGeneration<T>({
                 responseId: reason.responseId,
               }
             : reason instanceof AiRequestError
-              ? { response: reason.debugMessage ?? JSON.stringify({ code: reason.code, status: reason.status, message: reason.message }) }
-              : { response: reason instanceof Error ? reason.message : String(reason) };
+              ? {
+                  response:
+                    reason.debugMessage ??
+                    JSON.stringify({
+                      code: reason.code,
+                      status: reason.status,
+                      message: reason.message,
+                    }),
+                }
+              : {
+                  response:
+                    reason instanceof Error ? reason.message : String(reason),
+                };
         setState((s) => ({
           ...s,
           status: controller.signal.aborted ? "cancelled" : "error",
@@ -236,20 +314,32 @@ export function useAiGeneration<T>({
         segments: 0,
       };
       runRef.current = run;
+      registerTaskSteps(task);
       setState(initialState<T>());
       void execute(run);
     },
     [execute, ready, uid, tier],
   );
   const resume = useCallback(() => {
-    if (!abortRef.current && runRef.current?.pending.length)
-      void execute(runRef.current);
+    const run = runRef.current;
+    if (abortRef.current || !run?.pending.length) return;
+    if (generationRunExpired(run)) {
+      setState((previous) => ({
+        ...previous,
+        status: "cancelled",
+        error: "",
+        resumeUnavailable: "expired",
+      }));
+      return;
+    }
+    void execute(run);
   }, [execute]);
   const append = useCallback(
     (task?: AiTask<T>) => {
       const run = runRef.current;
       if (!run || abortRef.current || run.pending.length) return;
       if (task) run.task = task;
+      registerTaskSteps(run.task);
       if (run.session.context !== run.task.context || run.session.tier !== tier)
         resetConversation(run.session);
       run.session.context = run.task.context;
@@ -279,6 +369,10 @@ export function useAiGeneration<T>({
     state,
     ready,
     configured: Boolean(uid && process.env.NEXT_PUBLIC_AI_WORKER_URL),
+    canResume: Boolean(
+      runRef.current?.pending.length && !state.resumeUnavailable,
+    ),
+    canAppend: Boolean(runRef.current && !runRef.current.pending.length),
     tier,
     setTier,
     start,
