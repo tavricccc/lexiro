@@ -14,10 +14,10 @@ const blank = z.object({ answer: english });
 const choices = z.object({ answer: english, distractors: texts.length(3) });
 // Structured Outputs follows property order: write the context, then quote its answer.
 export const sentenceQuestionItem = z.object({
-  distractors: texts.length(3).describe("先寫定三個在同一判斷維度競爭、且可由自然情境排除的候選；之後寫句子時提供排除每個候選的線索，不以材質、身份等可能同時成立的描述充數。"),
+  distractors: texts.length(3).describe("先定本題學習的詞義或合法詞形，選三個對應該辨析點的候選；詞義題候選文法自然，詞形題由實際句法選形，避免另一同時成立的合法屬性。"),
   sentence: prose.describe("一至兩句完整情境，合計落在本輪字數範圍中段；先寫正文，保留目標詞的實際字形。"),
-  usage: english.describe("單字來源時與 answer 完全相同，不包含冠詞、修飾語或相鄰詞；片語來源才包含完整且逐字存在的實現片語。"),
-  answer: english.describe("從最終句子逐字複製的目標單字字形，恰好出現一次，也是 usage 的開頭。"),
+  usage: english.describe("單字來源時與 answer 相同；片語是原句內完整實現片語，可包含置於動詞與particle之間的受詞，如 took her coat off，不硬接成 took off。"),
+  answer: english.describe("從最終 usage 逐字複製的實際目標詞形，恰好出現一次；片語可取實現後的目標字，如 took her coat off 中的 took，或 is made up of three parts 中的 made。"),
 });
 export const readingQuestionItem = z.object({
   skill: z.enum(READING_SKILLS),
@@ -71,7 +71,7 @@ export function questionOutput(kind: GeneratedQuestionKind) {
     });
   return z.object({
     title: english,
-    passage: prose,
+    passage: prose.describe("完整英文閱讀本文，包含支撐題目的事實與可逐字引用的句子；推論結論不必出現在本文，留在answer以兩個必要事實推出。"),
     items: z.array(readingQuestionItem.extend(teaching(3))).min(3).max(5),
   });
 }

@@ -165,10 +165,10 @@ export async function prepareGeneration(
     if (request.itemRepair) {
       if (request.kind === "vocabulary") throw new HttpError(400, "invalid_input");
       const built = questionPrompt(request.kind, sources, request.difficulty);
-      instructions = built.instructions + "\n這次只重新生成指定 index 的一個子題。passage、共用候選與其他題目保持原樣；不是整批修訂，不要輸出文章、options 或其他題目。避免與其他子題重複或衝突。綜合測驗及文意選填答案使用指定來源詞義在既有文章中的實際字形；篇章結構選既有文章的完整句子，保留首句並避開其他空格的相鄰句；閱讀題依既有文章重新出一題並給逐字 evidence。whyWrong 沿用 {option,reason} 格式，逐字引用本題實際候選，文意選填及篇章結構的共用候選由既有 items 的 answer／sentence 與 extraOptions 合成，不能另造選項。只輸出 {items:[一個新子題]}。";
+      instructions = built.instructions + "\n本輪只完成指定 index 的一個子題，檢查其候選與理由後輸出，不重做整批。既有 passage、共用候選及其他題目固定，整組數量／篇幅規則不要求你另寫全文。綜合測驗可選既有文章中的來源詞或相關grammar實際字形，按此位置的學習目的出題，不強制改成另一個不存在的語法位置。文意選填沿用此位置的實際來源答案與固定 bank。篇章結構沿用固定 bank 的完整句，不改移除位置來假修整篇。閱讀先選skill與既有本文的必要evidence再寫本題，答案可改述或推論；沒有兩個必要事實就不用虛假inference標籤。whyWrong沿用{option,reason}逐字綁定實際錯項；共用bank由既有items的answer／sentence與extraOptions合成。只輸出{items:[一個新子題]}，完成候選代入、原文依據與解說核對，不輸出檢查過程。";
       input = JSON.stringify({ kind: request.kind, difficulty: request.difficulty, sources, ...request.itemRepair });
       schema = jsonSchema(questionItemOutput(request.kind));
-      cacheKey = "lexiro-question-item-20261009-v10";
+      cacheKey = "lexiro-question-item-20261009-v11";
       rawUnits = [input];
     } else {
     const built = questionPrompt(request.kind, sources, request.difficulty);
