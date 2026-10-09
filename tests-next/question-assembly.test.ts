@@ -141,7 +141,7 @@ describe("assembling the model's reply", () => {
       "vocabulary",
       2,
       [word("formula", "n.")],
-    )).toThrow(/答案必須位於目標用法開頭且不超出範圍/);
+    )).toThrow(/答案必須位於目標用法內且不超出範圍/);
   });
 
   it("blanks the model's verb in two placeholder phrase usages", () => {
@@ -250,6 +250,51 @@ describe("assembling the model's reply", () => {
     );
     const [question] = result.payload.questions as Array<{ prompt: string }>;
     expect(question.prompt).toBe("She _____ the offer down after reading the details.");
+  });
+
+  it("keeps the named usage and blanks its actual middle source fragment", () => {
+    const result = assembleGeneratedQuestions(
+      { items: [{
+        answer: "made",
+        usage: "is made up of recycled glass",
+        distractors: ["called", "kept", "brought"],
+        sentence: "The display is made up of recycled glass.",
+      }] }, "vocabulary", 2, [word("be made up of", "phr.")],
+    );
+    const [question] = result.payload.questions as Array<{ prompt: string }>;
+    expect(question.prompt).toBe("The display is _____ up of recycled glass.");
+    expect(result.dropped).toEqual([]);
+  });
+
+  it("preserves objects and particles when cutting a separable head", () => {
+    const result = assembleGeneratedQuestions(
+      { items: [
+        { answer: "turned", usage: "turned the light off", sentence: "She turned the light off before leaving.", distractors: ["switched", "shut", "pulled"] },
+        { answer: "took", usage: "took his coat off", sentence: "He took his coat off after entering.", distractors: ["put", "sent", "got"] },
+      ] }, "vocabulary", 2, [word("turn off", "phr. v."), word("take off", "phr. v.")],
+    );
+    expect((result.payload.questions as Array<{ prompt: string }>).map((item) => item.prompt)).toEqual([
+      "She _____ the light off before leaving.",
+      "He _____ his coat off after entering.",
+    ]);
+    expect(result.dropped).toEqual([]);
+  });
+
+  it("uses a unique named usage even when be appears elsewhere in the sentence", () => {
+    const result = assembleGeneratedQuestions({ items: [{
+      answer: "is", usage: "is made up of glass",
+      sentence: "The bottle is made up of glass, and its surface is smooth.",
+      distractors: ["has", "does", "can"],
+    }] }, "vocabulary", 2, [word("be made up of", "phr.")]);
+    const [question] = result.payload.questions as Array<{ prompt: string }>;
+    expect(question.prompt).toBe("The bottle _____ made up of glass, and its surface is smooth.");
+  });
+
+  it("does not guess which repeated answer within a usage to blank", () => {
+    expect(() => assembleGeneratedQuestions({ items: [{
+      answer: "is", usage: "is complete and is ready",
+      sentence: "The project is complete and is ready.", distractors: ["has", "does", "can"],
+    }] }, "vocabulary", 2, [word("be", "aux.")])).toThrow(/目標用法中出現 2 次/);
   });
 
   it("rejects a model-named usage that is absent from the sentence", () => {

@@ -156,26 +156,24 @@ function assembleSentences(
     const usageHits = occurrences(sentence, usage);
     if (usageHits.length !== 1)
       return dropped.push(`${slot.word.word}：目標用法必須在句中恰好出現一次`);
-    const hits = occurrences(sentence, answer);
-    // The blank is cut here, never typed by the model.
+    // The model names a complete, unique usage. Locate the answer inside that
+    // actual span, so another "is" elsewhere cannot move or invalidate it.
+    const hits = occurrences(usage, answer);
     if (hits.length !== 1)
       return dropped.push(
-        `${slot.word.word}：答案在句中出現 ${hits.length} 次，必須恰好一次`,
-      );
-    if (
-      hits[0] !== usageHits[0] ||
-      !usage.toLocaleLowerCase().startsWith(answer.toLocaleLowerCase())
-    )
-      return dropped.push(
-        `${slot.word.word}：答案必須位於目標用法開頭且不超出範圍`,
+        hits.length
+          ? `${slot.word.word}：答案在目標用法中出現 ${hits.length} 次，必須恰好一次`
+          : `${slot.word.word}：答案必須位於目標用法內且不超出範圍`,
       );
     const wordFormIssue = sourceWordFormIssue(
       slot.word.word,
       slot.word.senses[slot.senseIndex].pos,
       answer,
+      usage,
     );
     if (wordFormIssue) return dropped.push(wordFormIssue);
-    const prompt = `${sentence.slice(0, hits[0])}_____${sentence.slice(hits[0] + answer.length)}`;
+    const answerAt = usageHits[0] + hits[0];
+    const prompt = `${sentence.slice(0, answerAt)}_____${sentence.slice(answerAt + answer.length)}`;
 
     const distractors = usableDistractors(
       answer,
