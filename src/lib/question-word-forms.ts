@@ -176,8 +176,8 @@ export function sourceWordFormIssue(
             ));
   if (!related)
     return `「${answer}」不是指定單字「${source}」的合法詞形；請保留來源單字，不要換成同義詞或衍生詞`;
-  // Word-bank replies name only the answer; no full collocation is claimed
-  // there. A vocabulary reply supplies the complete actual usage separately.
+  // Vocabulary and word-bank replies anchor a phrase with its complete
+  // actual usage, even when the answer removes only a contiguous part.
   if (
     usage &&
     sourceWords.length > 1 &&

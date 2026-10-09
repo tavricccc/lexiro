@@ -33,7 +33,9 @@ export const QUESTION_KINDS = [
 ] as const;
 export type QuestionKind = (typeof QUESTION_KINDS)[number];
 /** One generation supplies questions and per-choice teaching. */
-export const QUESTION_GENERATION_CONTRACT = "single-pass-v2";
+export const QUESTION_GENERATION_CONTRACT = "single-pass-v3";
+/** Warm the first productive batch, then share this bound across client and leases. */
+export const MAX_PARALLEL_GENERATIONS = 4;
 /**
  * `senses` supplements a word that is already in the Library with meanings it
  * does not have yet. It is priced per word rather than per meaning returned:
@@ -270,7 +272,7 @@ export const LIMITS = {
  *
  * Calibrated against measured runs, one unit being one source word except for
  * discourse and reading, which are one document however many words went in.
- * Question estimates include drafting and independent review. These are planning
+ * Question estimates include the single drafting and teaching response. These are planning
  * estimates; actual reasoning, teaching text and cache use determine settlement.
  */
 export function rate(kind: JobKind, tier: Tier, model: AiModel = DEFAULT_AI_MODEL): number {

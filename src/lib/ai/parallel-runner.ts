@@ -1,5 +1,5 @@
 import type { AiRun, AiRunUpdate } from "./runner";
-import type { TokenUsage } from "@lexiro/ai-contract";
+import { MAX_PARALLEL_GENERATIONS, type TokenUsage } from "@lexiro/ai-contract";
 import { addUsage } from "@/lib/managed-client";
 import { savedStreamCounts } from "./stream-progress";
 
@@ -41,7 +41,7 @@ export function replaceRunItems<T>(run: AiRun<T>, items: T[]) {
   }
 }
 
-/** First productive batch warms the shared prefix; then at most two independent lanes run. */
+/** First productive batch warms the shared prefix; then independent lanes share one bound. */
 export async function runParallelTask<T>(
   run: AiRun<T>,
   options: Options<T>,
@@ -186,7 +186,7 @@ export async function runParallelTask<T>(
       }
     }
   };
-  await Promise.all([worker(), worker()]);
+  await Promise.all(Array.from({ length: MAX_PARALLEL_GENERATIONS }, worker));
   if (failure) throw failure;
   run.parallel = undefined;
 }

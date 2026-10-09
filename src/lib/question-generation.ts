@@ -24,7 +24,7 @@ import {
 export type { GeneratedQuestionKind };
 export type GeneratedQuestionDifficulty = QuestionDifficulty;
 
-const QUESTION_BATCH_SIZE = 16;
+const QUESTION_BATCH_SIZE = 4;
 
 export function getSetGenerationWords(
   words: WordEntry[],
@@ -59,7 +59,7 @@ export function getQuestionSourceRefs(words: WordEntry[]): QuestionSourceRefs {
 }
 
 /**
- * Independent questions target sixteen sources. Passage formats generate a
+ * Independent questions target four sources. Passage formats generate a
  * complete, indivisible question group per request, so their group size remains
  * defined by the format (for example, five cloze blanks or one reading passage).
  */
@@ -74,8 +74,8 @@ export function splitGenerationBatches(
   const size = questionBatchSize(kind);
 
   if (isPassageKind(kind)) {
-    // A passage has one occurrence per target. Put different senses of the
-    // same spelling into separate packs, and count senses rather than entries.
+    // Keep different senses of the same spelling in separate passages,
+    // and count senses rather than word entries.
     if (words.every((word) => word.senses.length === 1)) {
       const packs: WordEntry[][] = [];
       for (let index = 0; index < words.length; index += size)

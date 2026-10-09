@@ -158,7 +158,7 @@ describe("issues found in real Luna prompt trials", () => {
       "close",
     ].map((w) => word(w));
     const task = questionTask(words, "vocabulary", 2);
-    const request = JSON.parse(task.steps[1].prompt);
+    const request = JSON.parse(task.steps.at(-1)!.prompt);
     expect(request.sources).toHaveLength(1);
     expect(request.sources[0].ref).toBe("s17");
     expect(request).not.toHaveProperty("instructions");

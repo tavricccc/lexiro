@@ -89,8 +89,9 @@ describe("AI task boundaries", () => {
       "close",
     ].map(word);
     const task = questionTask(words, "vocabulary", 2);
-    expect(task.steps[1].prompt).toContain("s17");
-    const parsed = task.steps[1].parse(
+    const last = task.steps.at(-1)!;
+    expect(last.prompt).toContain("s17");
+    const parsed = last.parse(
       JSON.stringify({
         items: [
           {
@@ -109,7 +110,7 @@ describe("AI task boundaries", () => {
       wordKey: "close",
       senseId: "close-sense",
     });
-    const withWrongEcho = task.steps[1].parse(
+    const withWrongEcho = last.parse(
       JSON.stringify({
         items: [
           {

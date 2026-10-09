@@ -158,6 +158,24 @@ export function questionTask(
   kind: GeneratedQuestionKind,
   difficulty: QuestionDifficulty,
 ): AiTask<LibraryQuestion> {
+  return createQuestionTask(words, kind, difficulty, splitGenerationBatches(words, kind));
+}
+
+/** Executes a supplied complete batch through the same parser and recovery as production. */
+export function questionBatchTask(
+  words: WordEntry[],
+  kind: GeneratedQuestionKind,
+  difficulty: QuestionDifficulty,
+): AiTask<LibraryQuestion> {
+  return createQuestionTask(words, kind, difficulty, [words]);
+}
+
+function createQuestionTask(
+  words: WordEntry[],
+  kind: GeneratedQuestionKind,
+  difficulty: QuestionDifficulty,
+  batches: WordEntry[][],
+): AiTask<LibraryQuestion> {
   const globalRefs = new Map(
     words
       .flatMap((w) => w.senses.map((s) => senseKey(w.wordKey, s.id)))
@@ -273,7 +291,6 @@ export function questionTask(
       };
     return step;
   };
-  const batches = splitGenerationBatches(words, kind);
   const context = input(words);
   return {
     id: `questions-${kind}`,
