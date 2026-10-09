@@ -152,7 +152,7 @@ describe("high-school generation quality gate", () => {
       title: "A safety project",
       passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`,
       options,
-      blanks: [{ answer: "detect", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) }],
+      blanks: [{ answer: "detect", usage: "detect signals", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) }],
     };
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(1);
@@ -179,7 +179,7 @@ describe("high-school generation quality gate", () => {
   it("repairs shared-bank teaching against the same actual options", () => {
     const [step] = questionTask([source], "wordBank", 2).steps;
     const options = ["detect", "repair", "contain", "prevent", "support", "observe", "record", "compare", "measure", "repeat"];
-    const valid = { answer: "detect", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) };
+    const valid = { answer: "detect", usage: "detect signals", explanation: "察覺到訊號。", whyWrong: options.slice(1).map((option) => ({ option, reason: "情境未描述這個行動。" })) };
     const draft = { title: "A safety project", passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`, options, blanks: [{ ...valid, whyWrong: [{ option: "invented", reason: "不存在的選項。" }, ...valid.whyWrong.slice(1)] }] };
     const recovery = step.recover!(JSON.stringify(draft));
     expect(recovery?.remaining).toHaveLength(1);
@@ -188,9 +188,26 @@ describe("high-school generation quality gate", () => {
     expect(pack.kind === "reading" && pack.optionBank).toHaveLength(10);
     expect(pack.kind === "reading" && pack.questions[0].whyWrong).toHaveProperty("repair", "情境未描述這個行動。");
     expect(step.recover!(JSON.stringify({ ...draft, options: options.slice(1) }))).toBeNull();
-    const extraInProse = { ...draft, passage: draft.passage.replace("Students detect", "Students detect and repair"), blanks: [valid] };
-    expect(generatedQuestionQualityIssue(extraInProse, "wordBank", 2)).toMatch(/額外誘答選項.*文章/);
-    expect(step.recover!(JSON.stringify(extraInProse))).toBeNull();
+    const extraInProse = { ...draft, passage: draft.passage.replace("Students detect", "Students repair tools and detect"), blanks: [valid] };
+    expect(generatedQuestionQualityIssue(extraInProse, "wordBank", 2)).toBeNull();
+    const [extraPack] = step.parse(JSON.stringify(extraInProse));
+    expect(extraPack.kind === "reading" && extraPack.passage).toContain("Students repair tools and __1__ signals");
+  });
+
+  it("repairs only the bad cloze teaching when independently anchored blanks share is", () => {
+    const roomSource = (word: string): WordEntry => ({ ...source, word, wordKey: normalizeWordKey(word), senses: [{ ...source.senses[0], pos: "phr.", meaningZh: "房間的狀態" }] });
+    const ready = { answer: "is", usage: "is ready", ref: "s1", distractors: ["are", "were", "can"], explanation: "第一個房間已準備好。", whyWrong: [{ option: "are", reason: "第一個房間是單數。" }, { option: "were", reason: "沒有說是過去。" }, { option: "can", reason: "後面不是原形動詞。" }] };
+    const available = { answer: "is", usage: "is available", ref: "s2", distractors: ["was", "has", "does"], explanation: "第二個房間目前可以使用。", whyWrong: [{ option: "was", reason: "描述目前的狀態。" }, { option: "has", reason: "不是表示擁有。" }, { option: "does", reason: "不是一般動作。" }] };
+    const reply = { title: "Rooms", passage: `The first room is ready. ${Array.from({ length: 205 }, () => "context").join(" ")}. Another room is available.`, blanks: [ready, available] };
+    const [step] = questionTask([roomSource("be ready"), roomSource("be available")], "cloze", 2).steps;
+    const broken = { ...reply, blanks: [ready, { ...available, whyWrong: [{ option: "invented", reason: "不存在的選項。" }, ...available.whyWrong.slice(1)] }] };
+    const recovery = step.recover!(JSON.stringify(broken));
+    expect(recovery?.remaining).toHaveLength(1);
+    expect(recovery!.remaining[0].stagedQuestions).toBe(1);
+    expect(JSON.parse(recovery!.remaining[0].prompt).itemRepair.items.map((item: { usage: string }) => item.usage)).toEqual(["is ready", "is available"]);
+    const [pack] = recovery!.remaining[0].parse(JSON.stringify({ items: [available] }));
+    expect(pack.kind === "reading" && pack.questions[0].whyWrong).toHaveProperty("are", "第一個房間是單數。");
+    expect(pack.kind === "reading" && pack.questions[1].whyWrong).toHaveProperty("was", "描述目前的狀態。");
   });
 
   it("keeps whole, separated discourse sentences and rejects repairs that would change the bank", () => {

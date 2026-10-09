@@ -14,12 +14,14 @@ describe("source word forms", () => {
       expect(sourceWordFormIssue("be", "aux.", answer)).toBeNull();
     for (const [source, pos, answer] of [
       ["witness", "n.", "witness"],
+      ["witness", "n.", "a witness"],
       ["plot", "n.", "plots"],
       ["rescue", "n.", "rescued"],
       ["clean", "adj.", "cleaned"],
       ["close", "adj.", "closing"],
       ["run", "v.", "running"],
       ["child", "n.", "children's"],
+      ["café", "n.", "cafés"],
       ["reliable", "adj.", "more reliable"],
       ["reliable", "adj.", "most reliable"],
     ])
@@ -29,6 +31,10 @@ describe("source word forms", () => {
   it("accepts standard irregular and UK/US forms missed by reverse NLP", () => {
     for (const [source, answer] of [
       ["lie", "lay"],
+      ["can", "could"],
+      ["may", "might"],
+      ["shall", "should"],
+      ["will", "would"],
       ["lie", "lain"],
       ["dwell", "dwelt"],
       ["wake", "woke"],

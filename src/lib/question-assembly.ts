@@ -10,7 +10,10 @@ import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { placeAnswer } from "./question-builders";
 import { assembleOptionTeaching } from "./question-teaching";
 import { sourceWordFormIssue } from "./question-word-forms";
-import { wordOccurrences as occurrences } from "./question-spans";
+import {
+  locateUsageAnswer,
+  wordOccurrences as occurrences,
+} from "./question-spans";
 
 /**
  * Turns the model's prose into graded questions.
@@ -153,18 +156,9 @@ function assembleSentences(
     const usage = text(raw.usage);
     if (!sentence || !answer || !usage)
       return dropped.push(`${slot.word.word}：缺少句子、目標用法或答案`);
-    const usageHits = occurrences(sentence, usage);
-    if (usageHits.length !== 1)
-      return dropped.push(`${slot.word.word}：目標用法必須在句中恰好出現一次`);
-    // The model names a complete, unique usage. Locate the answer inside that
-    // actual span, so another "is" elsewhere cannot move or invalidate it.
-    const hits = occurrences(usage, answer);
-    if (hits.length !== 1)
-      return dropped.push(
-        hits.length
-          ? `${slot.word.word}：答案在目標用法中出現 ${hits.length} 次，必須恰好一次`
-          : `${slot.word.word}：答案必須位於目標用法內且不超出範圍`,
-      );
+    const location = locateUsageAnswer(sentence, usage, answer);
+    if ("issue" in location)
+      return dropped.push(`${slot.word.word}：${location.issue}`);
     const wordFormIssue = sourceWordFormIssue(
       slot.word.word,
       slot.word.senses[slot.senseIndex].pos,
@@ -172,7 +166,7 @@ function assembleSentences(
       usage,
     );
     if (wordFormIssue) return dropped.push(wordFormIssue);
-    const answerAt = usageHits[0] + hits[0];
+    const answerAt = location.at;
     const prompt = `${sentence.slice(0, answerAt)}_____${sentence.slice(answerAt + answer.length)}`;
 
     const distractors = usableDistractors(
@@ -205,6 +199,7 @@ interface CutBlank {
   answer: string;
   at: number;
   slot: SenseSlot | null;
+  source: Record<string, unknown>;
 }
 
 /** Cuts the named spans out of a passage and numbers the holes in reading order. */
@@ -298,41 +293,61 @@ function assemblePassage(
           .filter(isRecord)
           .map((item) => ({
             answer: text(item.sentence),
+            usage: "",
             ref: "",
             source: item,
           }))
       : (Array.isArray(value.blanks) ? value.blanks : []).flatMap((item) =>
           isRecord(item)
-            ? [{ answer: text(item.answer), ref: text(item.ref), source: item }]
+            ? [
+                {
+                  answer: text(item.answer),
+                  usage: text(item.usage),
+                  ref: text(item.ref),
+                  source: item,
+                },
+              ]
             : [],
         );
 
   const located: CutBlank[] = [];
   raw.forEach((item, position) => {
     const slot = resolveSlot(slots, item.ref, position);
+    let at: number;
+    if (format === "discourse") {
+      const hits = occurrences(rawPassage, item.answer);
+      if (hits.length !== 1) {
+        dropped.push(
+          `「${item.answer.slice(0, 24)}」在文章中出現 ${hits.length} 次，必須恰好一次`,
+        );
+        return;
+      }
+      at = hits[0];
+    } else {
+      const location = locateUsageAnswer(rawPassage, item.usage, item.answer);
+      if ("issue" in location) {
+        dropped.push(`第 ${position + 1} 格：${location.issue}`);
+        return;
+      }
+      at = location.at;
+    }
     if (format === "wordBank" && slot) {
       const wordFormIssue = sourceWordFormIssue(
         slot.word.word,
         slot.word.senses[slot.senseIndex].pos,
         item.answer,
+        item.usage,
       );
       if (wordFormIssue) {
         dropped.push(wordFormIssue);
         return;
       }
     }
-    const hits = occurrences(rawPassage, item.answer);
-    if (hits.length !== 1) {
-      dropped.push(
-        `「${item.answer.slice(0, 24)}」在文章中出現 ${hits.length} 次，必須恰好一次`,
-      );
-      return;
-    }
     if (
       located.some(
         (existing) =>
-          hits[0] < existing.at + existing.answer.length &&
-          existing.at < hits[0] + item.answer.length,
+          at < existing.at + existing.answer.length &&
+          existing.at < at + item.answer.length,
       )
     ) {
       dropped.push(`「${item.answer.slice(0, 24)}」與其他空格重疊`);
@@ -340,8 +355,9 @@ function assemblePassage(
     }
     located.push({
       answer: item.answer,
-      at: hits[0],
+      at,
       slot,
+      source: item.source,
     });
   });
 
@@ -350,9 +366,6 @@ function assemblePassage(
 
   const { children, passage } = cutBlanks(rawPassage, located);
   const answers = children.map((child) => child.answer);
-  const sourceByAnswer = new Map(
-    raw.map((item) => [item.answer.toLocaleLowerCase(), item.source]),
-  );
 
   if (spec.sharedBank) {
     const candidates = stringArray(value.options);
@@ -365,6 +378,11 @@ function assemblePassage(
       throw new Error(
         `共用選項必須有 ${spec.optionCount} 個不重複選項並包含每格答案`,
       );
+    if (
+      new Set(answers.map((answer) => answer.toLocaleLowerCase())).size !==
+      answers.length
+    )
+      throw new Error("共用選項的每個答案只能配置到一個空格");
     const bank = placeAnswer(
       candidates[0],
       candidates.slice(1),
@@ -389,7 +407,7 @@ function assemblePassage(
               prompt: `Blank ${index + 1}`,
               sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
               ...assembleOptionTeaching(
-                sourceByAnswer.get(child.answer.toLocaleLowerCase()),
+                child.source,
                 candidates.filter((option) => option !== child.answer),
               ),
             })),
@@ -403,7 +421,7 @@ function assemblePassage(
 
   // Cloze: every blank keeps its own four options.
   const questions = children.flatMap((child, index) => {
-    const source = sourceByAnswer.get(child.answer.toLocaleLowerCase());
+    const source = child.source;
     const distractors = usableDistractors(
       child.answer,
       stringArray(source?.distractors),

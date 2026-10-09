@@ -70,13 +70,13 @@ export function sharedQuestionBankIssue(
   return null;
 }
 
-/** Extra bank options belong outside the prose, including the unused sentence. */
+/** An unused discourse sentence stays outside the prose; word-bank words may recur. */
 export function sharedQuestionBankProseIssue(
   value: Record<string, unknown>,
   kind: GeneratedQuestionKind,
 ): string | null {
-  if (kind !== "wordBank" && kind !== "discourse") return null;
-  const items = kind === "wordBank" ? value.blanks : value.removals;
+  if (kind !== "discourse") return null;
+  const items = value.removals;
   if (
     typeof value.passage !== "string" ||
     !Array.isArray(items) ||
@@ -85,7 +85,7 @@ export function sharedQuestionBankProseIssue(
     return null;
   const answers = new Set(
     items.filter(isRecord).flatMap((item) => {
-      const answer = kind === "wordBank" ? item.answer : item.sentence;
+      const answer = item.sentence;
       return typeof answer === "string" ? [answer.trim()] : [];
     }),
   );

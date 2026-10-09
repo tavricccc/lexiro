@@ -11,6 +11,10 @@ const VERB_VARIANTS: Record<string, readonly string[]> = {
   were: ["be"],
   been: ["be"],
   being: ["be"],
+  could: ["can"],
+  might: ["may"],
+  should: ["shall"],
+  would: ["will"],
   lay: ["lie"],
   lain: ["lie"],
   abode: ["abide"],
@@ -53,11 +57,14 @@ const SPELLING_VARIANTS: Record<string, string> = {
   fulfil: "fulfill",
 };
 
-const spelling = (word: string): string => SPELLING_VARIANTS[word] ?? word;
+// The inflector folds Latin accents; this comparison never rewrites the stored
+// source, supplied usage, answer text, or the actual span we cut.
+const spelling = (word: string): string =>
+  (SPELLING_VARIANTS[word] ?? word).normalize("NFD").replace(/\p{M}/gu, "");
 const normalized = (text: string): string =>
   text.trim().toLocaleLowerCase().replaceAll("’", "'");
 const tokens = (text: string): string[] =>
-  normalized(text).match(/[a-z]+(?:['-][a-z]+)*/g) ?? [];
+  normalized(text).match(/\p{L}+(?:['-]\p{L}+)*/gu) ?? [];
 const placeholder = (word: string): boolean =>
   /^(?:sb|sth|somebody|someone|something)(?:'s)?$/.test(word) ||
   word === "one's";
@@ -149,7 +156,11 @@ export function sourceWordFormIssue(
   const fixedSource = sourceWords.filter((word) => !placeholder(word));
   const related =
     sourceWords.length === 1
-      ? hasWordForm(sourceWords[0], candidate, normalizePartOfSpeech(pos))
+      ? hasWordForm(sourceWords[0], candidate, normalizePartOfSpeech(pos)) ||
+        (answerWords.length > 1 &&
+          answerWords.some((part) =>
+            hasWordForm(sourceWords[0], part, normalizePartOfSpeech(pos)),
+          ))
       : usage
         ? fixedSource.some((word) =>
             answerWords.some((part) => hasWordForm(word, part)),

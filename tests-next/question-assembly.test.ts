@@ -326,8 +326,8 @@ describe("assembling the model's reply", () => {
     const payload = assembleGeneratedQuestions(
       {
         blanks: [
-          { answer: "linger", distractors: ["ran", "sat", "grew"], ref: "s1", explanation: "停留在門邊。", whyWrong: [{ option: "sat", reason: "未坐下。" }, { option: "grew", reason: "未生長。" }, { option: "ran", reason: "未跑動。" }] },
-          { answer: "wander", distractors: ["ran", "sat", "grew"], ref: "s2", explanation: "先在外面漫步。", whyWrong: [{ option: "ran", reason: "未跑動。" }, { option: "sat", reason: "未坐下。" }, { option: "grew", reason: "未生長。" }] },
+          { answer: "linger", usage: "linger by the door", distractors: ["ran", "sat", "grew"], ref: "s1", explanation: "停留在門邊。", whyWrong: [{ option: "sat", reason: "未坐下。" }, { option: "grew", reason: "未生長。" }, { option: "ran", reason: "未跑動。" }] },
+          { answer: "wander", usage: "wander outside", distractors: ["ran", "sat", "grew"], ref: "s2", explanation: "先在外面漫步。", whyWrong: [{ option: "ran", reason: "未跑動。" }, { option: "sat", reason: "未坐下。" }, { option: "grew", reason: "未生長。" }] },
         ],
         passage: "First they wander outside, and later they linger by the door.",
         title: "A walk",
@@ -347,7 +347,7 @@ describe("assembling the model's reply", () => {
     const words = [word("linger", "v."), word("wander", "v.")];
     const payload = assembleGeneratedQuestions(
       {
-        blanks: [{ answer: "wander", ref: "s2" }, { answer: "linger", ref: "s1" }],
+        blanks: [{ answer: "wander", usage: "wander at dawn", ref: "s2" }, { answer: "linger", usage: "linger at dusk", ref: "s1" }],
         options: ["linger", "wander", "drift", "roam", "stay", "run", "jump", "skip", "sit", "walk"],
         passage: "They wander at dawn and linger at dusk.",
         title: "A day",
@@ -386,11 +386,11 @@ describe("assembling the model's reply", () => {
     expect(pack.questions).toHaveLength(2);
   });
 
-  it("refuses a passage where an answer appears twice", () => {
+  it("refuses a nonunique declared usage without guessing its location", () => {
     expect(() =>
       assembleGeneratedQuestions(
         {
-          blanks: [{ answer: "wander", distractors: ["a", "b", "c"], ref: "s1" }],
+          blanks: [{ answer: "wander", usage: "wander", distractors: ["a", "b", "c"], ref: "s1" }],
           passage: "They wander, and they wander again.",
           title: "Twice",
         },
@@ -398,15 +398,57 @@ describe("assembling the model's reply", () => {
         2,
         [word("wander", "v.")],
       ),
-    ).toThrow();
+    ).toThrow(/目標用法必須在原文恰好出現一次/);
+  });
+
+  it("requires explicit usage anchors for new cloze and word-bank replies", () => {
+    for (const format of ["cloze", "wordBank"] as const) {
+      expect(() => assembleGeneratedQuestions({
+        title: "No anchor", passage: "The room is ready.",
+        blanks: [{ answer: "is", distractors: ["has", "does", "can"] }],
+        options: ["is", "was", "were", "are", "has", "have", "had", "does", "do", "can"],
+      }, format, 2, [word("be", "aux.")])).toThrow(/缺少目標用法 usage/);
+    }
+  });
+
+  it("keeps independent teaching when cloze blanks share the answer is", () => {
+    const result = assembleGeneratedQuestions({
+      title: "Rooms", passage: "The room is ready, while a backup is available.",
+      blanks: [
+        { answer: "is", usage: "is available", ref: "s2", distractors: ["was", "has", "does"], explanation: "後半句的可使用狀態。", whyWrong: [{ option: "was", reason: "後半句不描述過去。" }, { option: "has", reason: "後半句描述狀態。" }, { option: "does", reason: "後半句不描述動作。" }] },
+        { answer: "is", usage: "is ready", ref: "s1", distractors: ["are", "were", "can"], explanation: "前半句的準備狀態。", whyWrong: [{ option: "are", reason: "前半句的主詞為單數。" }, { option: "were", reason: "前半句不描述過去。" }, { option: "can", reason: "前半句沒有原形動詞。" }] },
+      ],
+    }, "cloze", 2, [word("be ready", "phr."), word("be available", "phr.")]);
+    const [pack] = result.payload.questions as Array<{ passage: string; questions: Array<{ explanation: string; whyWrong: Record<string, string>; options: string[] }> }>;
+    expect(result.dropped).toEqual([]);
+    expect(pack.passage).toBe("The room __1__ ready, while a backup __2__ available.");
+    expect(pack.questions.map((item) => item.explanation)).toEqual(["前半句的準備狀態。", "後半句的可使用狀態。"]);
+    expect(pack.questions[0].whyWrong.are).toBe("前半句的主詞為單數。");
+    expect(pack.questions[1].whyWrong.was).toBe("後半句不描述過去。");
+  });
+
+  it("anchors repeated be and a middle phrase fragment in the shared word bank", () => {
+    const result = assembleGeneratedQuestions({
+      title: "Glass", passage: "The vase is made up of glass; its label is clear. He took his coat off after the repair work.",
+      options: ["is", "made", "took", "repair", "kept", "got", "put", "saw", "offered", "was"],
+      blanks: [
+        { answer: "is", usage: "is clear", ref: "s1" },
+        { answer: "made", usage: "is made up of glass", ref: "s2" },
+        { answer: "took", usage: "took his coat off", ref: "s3" },
+      ],
+    }, "wordBank", 2, [word("be", "aux."), word("be made up of", "phr."), word("take off", "phr. v.")]);
+    const [pack] = result.payload.questions as Array<{ passage: string; optionBank: string[]; questions: Array<{ answerIndex: number }> }>;
+    expect(result.dropped).toEqual([]);
+    expect(pack.passage).toBe("The vase is __1__ up of glass; its label __2__ clear. He __3__ his coat off after the repair work.");
+    expect(pack.questions.map((item) => pack.optionBank[item.answerIndex])).toEqual(["made", "is", "took"]);
   });
 
   it("does not cut nested answer spans into overlapping blanks", () => {
     const result = assembleGeneratedQuestions({
       title: "Tools", passage: "They repaired the chemical machinery at noon.",
       blanks: [
-        { answer: "chemical machinery", distractors: ["the classroom", "the garden", "the kitchen"] },
-        { answer: "machinery", distractors: ["machine", "equipment", "device"] },
+        { answer: "chemical machinery", usage: "chemical machinery", distractors: ["the classroom", "the garden", "the kitchen"] },
+        { answer: "machinery", usage: "chemical machinery", distractors: ["machine", "equipment", "device"] },
       ],
     }, "cloze", 2, [word("chemical machinery", "n."), word("machinery", "n.")]);
     expect(result.dropped).toContain("「machinery」與其他空格重疊");

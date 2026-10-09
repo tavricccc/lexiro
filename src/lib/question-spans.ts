@@ -16,3 +16,22 @@ export function wordOccurrences(haystack: string, needle: string): number[] {
     from = at + 1;
   }
 }
+
+/** The supplied usage anchors the answer; prose outside it may repeat a word. */
+export function locateUsageAnswer(
+  prose: string,
+  usage: string,
+  answer: string,
+): { at: number } | { issue: string } {
+  if (!usage.trim()) return { issue: "缺少目標用法 usage" };
+  const usages = wordOccurrences(prose, usage);
+  if (usages.length !== 1) return { issue: "目標用法必須在原文恰好出現一次" };
+  const answers = wordOccurrences(usage, answer);
+  if (answers.length !== 1)
+    return {
+      issue: answers.length
+        ? `答案在目標用法中出現 ${answers.length} 次，必須恰好一次`
+        : "答案必須位於目標用法內且不超出範圍",
+    };
+  return { at: usages[0] + answers[0] };
+}

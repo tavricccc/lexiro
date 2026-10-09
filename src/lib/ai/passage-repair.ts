@@ -17,6 +17,7 @@ import {
 import { extractJsonText } from "./json";
 import { discourseStructureIssue } from "../question-discourse";
 import { sourceWordFormIssue } from "../question-word-forms";
+import { locateUsageAnswer } from "../question-spans";
 
 /** Keep the article and good children; every replacement request produces one child. */
 export function passageRepairs({
@@ -69,6 +70,7 @@ export function passageRepairs({
             sources[index].word,
             sources[index].pos,
             item.answer,
+            typeof item.usage === "string" ? item.usage : undefined,
           ),
       )
     )
@@ -93,10 +95,20 @@ export function passageRepairs({
     if (
       typeof answer !== "string" ||
       !answer.trim() ||
-      (draft.passage as string).split(answer).length !== 2
+      (kind === "discourse" &&
+        (draft.passage as string).split(answer).length !== 2)
     )
       return "答案必須在既有文章中恰好出現一次";
+    if (kind === "cloze" || kind === "wordBank") {
+      const location = locateUsageAnswer(
+        draft.passage as string,
+        typeof value.usage === "string" ? value.usage.trim() : "",
+        answer.trim(),
+      );
+      if ("issue" in location) return location.issue;
+    }
     if (
+      kind !== "cloze" &&
       items
         .slice(0, index)
         .some(
