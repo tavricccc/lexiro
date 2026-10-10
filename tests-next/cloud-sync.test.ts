@@ -7,7 +7,8 @@ import { serverTimestamp } from "firebase/firestore";
 import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { applyCloudRecords, cloudRecordId } from "@/src/lib/cloud-records";
 import { normalizeCloudProgress } from "@/src/lib/cloud-sync-schema";
-import { mergeProgress } from "@/src/lib/cloud-account";
+import { mergeProgress, mergeStats } from "@/src/lib/cloud-account";
+import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { pendingRecords } from "@/src/lib/cloud-sync";
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
@@ -73,12 +74,13 @@ function emptyLibrary(): LibraryState {
 
 function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
   return {
-    schemaVersion: 4,
+    schemaVersion: 5,
     cursor: "1757000000.000000000|set-0123456789abcdef0123456789abcdef",
     seeded: true,
     version: 5,
     dirty: {},
     tombstones: {},
+    legacyPendingRefs: {},
     blobs: { progress: 0, stats: 0, preferences: 0 },
     ...patch,
   };
@@ -322,18 +324,55 @@ describe("mergeProgress", () => {
       updatedAt: LATER,
     } as unknown as LearningProgress;
     const remote: LearningProgress = {
-      cards: { a: card(EARLIER, 1), c: card(LATER, 2) },
+      cards: { a: card(EARLIER, 1), b: card(LATER, 4), c: card(LATER, 2) },
       updatedAt: EARLIER,
     } as unknown as LearningProgress;
 
     const merged = mergeProgress(local, remote);
     expect(Object.keys(merged.cards).sort()).toEqual(["a", "b", "c"]);
     expect(merged.cards["a" as keyof typeof merged.cards].reps).toBe(3);
+    expect(merged.cards["b" as keyof typeof merged.cards].reps).toBe(4);
   });
 
   it("keeps local progress when the cloud has none", () => {
     const local: LearningProgress = { cards: {}, updatedAt: LATER };
     expect(mergeProgress(local, null)).toBe(local);
+  });
+});
+
+describe("mergeStats", () => {
+  it("retains newer remote per-sense counts and each device's sparse formats after identity migration", () => {
+    const senseId = buildSenseId(buildSetWordKey("one", "adapt"), "v.", "適應");
+    const local = {
+      ...createDefaultStats(),
+      updatedAt: EARLIER,
+      totalQuestionReviews: 4,
+      questionStatsBySense: {
+        [senseId]: {
+          "vocabulary:1": { total: 3, correct: 1, retry: 1 },
+          "reading:2": { total: 1, correct: 1, retry: 0 },
+        },
+      },
+    };
+    const remote = {
+      ...createDefaultStats(),
+      updatedAt: LATER,
+      totalQuestionReviews: 9,
+      questionStatsBySense: {
+        [senseId]: {
+          "vocabulary:1": { total: 5, correct: 4, retry: 2 },
+          "cloze:2": { total: 4, correct: 3, retry: 1 },
+        },
+      },
+    };
+    const merged = mergeStats(local, remote);
+    expect(merged.questionStatsBySense[senseId]).toEqual({
+      "vocabulary:1": { total: 5, correct: 4, retry: 2 },
+      "reading:2": { total: 1, correct: 1, retry: 0 },
+      "cloze:2": { total: 4, correct: 3, retry: 1 },
+    });
+    expect(merged.totalQuestionReviews).toBe(9);
+    expect(mergeStats(merged, remote)).toEqual(merged);
   });
 });
 

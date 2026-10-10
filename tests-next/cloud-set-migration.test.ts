@@ -88,6 +88,7 @@ import {
 } from "@/constants";
 import {
   allLibraryRefs,
+  applyCloudRecords,
   cloudRecordId,
   recordForRef,
   validateCloudRecord,
@@ -107,6 +108,8 @@ import {
 } from "@/src/lib/library";
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
+import { legacyPendingCloudRefRemaps } from "@/src/lib/cloud-pending-scope";
+import { scopeSetContent } from "@/src/lib/library-set-migration";
 
 const UID = "migration-account";
 const TIME = "2026-10-09T00:00:00.000Z";
@@ -240,6 +243,76 @@ beforeEach(() => {
 });
 
 describe("one-way set isolation in the cloud", () => {
+  it("resolves payload-less v1 deletions from v9 material even after the legacy source was removed", () => {
+    const plan = createCloudSetMigrationPlan(legacySource());
+    const remaps = legacyPendingCloudRefRemaps(
+      plan.records,
+      [
+        { kind: "word", id: "adapt" },
+        { kind: "question", id: "shared-question" },
+      ],
+      [],
+    );
+    expect(
+      remaps
+        .find((remap) => remap.source.kind === "word")!
+        .targets.map((ref) => ref.id)
+        .sort(),
+    ).toEqual(Object.keys(plan.state.words).sort());
+    expect(
+      remaps
+        .find((remap) => remap.source.kind === "question")!
+        .targets.map((ref) => ref.id)
+        .sort(),
+    ).toEqual(plan.state.questions.map((question) => question.id).sort());
+    const held = new Set(
+      remaps.flatMap((remap) =>
+        remap.targets.map((ref) => `${ref.kind}:${ref.id}`),
+      ),
+    );
+    const after = applyCloudRecords(
+      { ...plan.state, words: {}, sets: [], memberships: {}, questions: [] },
+      plan.records,
+      held,
+    );
+    expect(after.words).toEqual({});
+    expect(after.sets).toEqual([]);
+    expect(after.questions).toEqual([]);
+  });
+
+  it("keeps an independent v2 copy when the source-set question is deleted", () => {
+    const plan = createCloudSetMigrationPlan(legacySource());
+    const original = plan.state.questions.find(
+      (question) =>
+        question.kind === "multipleChoice" &&
+        question.wordKey === buildSetWordKey("first", "adapt"),
+    )!;
+    const copy = scopeSetContent(
+      "second",
+      Object.values(plan.state.words),
+      plan.state.memberships.first,
+      [original],
+    );
+    const both = { ...plan.state, questions: [original, ...copy.questions] };
+    const records = allLibraryRefs(both).map((ref) => recordForRef(both, ref)!);
+    // The ordinary v2 tombstone is deliberately absent from legacy markers.
+    expect(
+      legacyPendingCloudRefRemaps(
+        records,
+        [],
+        both.sets.map((set) => set.id),
+      ),
+    ).toEqual([]);
+    const after = applyCloudRecords(
+      { ...both, questions: copy.questions },
+      records,
+      new Set([`question:${original.id}`]),
+    );
+    expect(after.questions.map((question) => question.id)).toEqual(
+      copy.questions.map((question) => question.id),
+    );
+  });
+
   it("copies each visible source and its learning history while preserving aggregate activity and deleted records", () => {
     const source = legacySource();
     source.records.push({

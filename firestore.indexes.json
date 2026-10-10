@@ -2,7 +2,7 @@
   "indexes": [],
   "fieldOverrides": [
     {
-      "collectionGroup": "records",
+      "collectionGroup": "records-v9",
       "fieldPath": "payload",
       "indexes": []
     }

@@ -20,6 +20,7 @@ import {
   writeCloudPreferences,
 } from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
+import { legacyPendingCloudRefRemaps } from "@/src/lib/cloud-pending-scope";
 import {
   cleanupLegacyCloudCopies,
   ensureCloudSetIsolation,
@@ -49,6 +50,7 @@ import {
   clearBlobDirty,
   clearPushedRecords,
   loadSyncJournal,
+  remapPendingLibraryRefs,
   markSeeded,
   pendingCountOf,
   resetSyncJournalCache,
@@ -472,7 +474,7 @@ async function runSync(
       isolatedAccount = user.uid;
     }
     const journal = await loadSyncJournal();
-    // Captured before any request goes out: the journal is live, and an edit
+    // Captured before any request goes out: an edit
     // made while a write is in flight must stay queued rather than be cleared
     // along with the older value that actually went up.
     const dirtyBlobs = { ...journal.blobs };
@@ -481,12 +483,25 @@ async function runSync(
     // still marked dirty when the cloud copy arrives, so the local edit is held
     // back from the merge and then pushed, rather than being overwritten by an
     // older copy that merely reached the server first.
-    const pulled = await pullRecords(db, user.uid, journal.cursor);
+    const pullCursor = Object.keys(journal.legacyPendingRefs).length
+      ? ""
+      : journal.cursor;
+    const pulled = await pullRecords(db, user.uid, pullCursor);
     if (!sameAccount()) return;
     if (pulled.records.length) {
       await useLibraryStore.getState().applyRemoteState(async (current) => {
         if (!sameAccount()) return null;
-        const latestJournal = await loadSyncJournal();
+        let latestJournal = await loadSyncJournal();
+        const remaps = legacyPendingCloudRefRemaps(
+          pulled.records,
+          Object.values(latestJournal.legacyPendingRefs),
+          current.sets.map((entry) => entry.id),
+        );
+        if (remaps.length) {
+          await remapPendingLibraryRefs(remaps);
+          if (!sameAccount()) return null;
+          latestJournal = await loadSyncJournal();
+        }
         return applyCloudRecords(
           current,
           pulled.records,
@@ -516,7 +531,12 @@ async function runSync(
 
     // Push after the merge, so what goes up is the reconciled value rather than
     // the copy this device happened to be holding.
-    const work = pendingRecords(useLibraryStore.getState().state, journal);
+    const pendingJournal = await loadSyncJournal();
+    if (!sameAccount()) return;
+    const work = pendingRecords(
+      useLibraryStore.getState().state,
+      pendingJournal,
+    );
     if (work.records.length) await pushRecords(db, user.uid, work.records);
     if (!sameAccount()) return;
 

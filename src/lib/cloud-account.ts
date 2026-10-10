@@ -23,6 +23,8 @@ import { prepareFirestoreData } from "./firestore-data";
 import { estimateJsonBytes } from "./hash";
 import { readCloudPreferences } from "./cloud-preferences";
 import type { AiPreferences } from "./ai-preferences";
+import { QUESTION_STAT_KEYS } from "./learning-defaults";
+import { entriesOf } from "./record";
 
 /** Account-wide review schedules and statistics merge field by field before upload. */
 
@@ -96,8 +98,23 @@ export function mergeStats(
   }
   const questionStatsBySense = {
     ...remote.questionStatsBySense,
-    ...local.questionStatsBySense,
   };
+  for (const [senseId, incoming] of entriesOf(local.questionStatsBySense)) {
+    const totals = { ...questionStatsBySense[senseId] };
+    for (const key of QUESTION_STAT_KEYS) {
+      const row = incoming[key];
+      if (!row) continue;
+      const current = totals[key];
+      totals[key] = current
+        ? {
+            total: Math.max(row.total, current.total),
+            correct: Math.max(row.correct, current.correct),
+            retry: Math.max(row.retry, current.retry),
+          }
+        : row;
+    }
+    questionStatsBySense[senseId] = totals;
+  }
   return {
     ...newest,
     totalMemoryReviews: Math.max(
