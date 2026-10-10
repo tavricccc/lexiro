@@ -50,3 +50,5 @@ D1 schema 不變，不需要資料 migration。發布步驟見 [D1 維護](d1-cl
 2026-10-11：後端 `dc86551` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38066261701) 與前端 `88bc186` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38066476190) 都成功。前後端共 597 個本機測試、typecheck、lint、build 通過；本機 HTTP OAuth／18 tools／partial／atomic／唯讀驗證及原有授權隔離也通過。
 
 正式 health、OAuth discovery 與前端授權／連線管理頁皆 HTTP 200，未授權 MCP 仍為 401。本次新增的 97／100 批次證據來自本機原生 D1，未做正式帳號的批次寫入或長任務 CPU 測量；沒有修改使用者的教材或呼叫模型 API。
+
+2026-10-11 提示詞恢復：後端 `54fc8a3` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38068141765) 成功。所有五型 rules／specification 已直接使用內建 questionPrompt；完整共用及題型指引都恢復，寫入仍保留 partial／atomic、Warning 與穩定來源。共用契約 3.0.1 修正綜合測驗文法空格被誤擋；前後端 599 個本機測試、typecheck、lint、build 通過，五型提示逐一與內建輸出完全相同。沒有改動內建提示原稿或其快取版本，沒有呼叫模型。公開前端只更新共用套件與文件，網站執行程式沒有變動，本次僅發布 Agent Worker。
