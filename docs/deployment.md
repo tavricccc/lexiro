@@ -10,7 +10,7 @@ Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號�
 
 部署由 `.github/workflows/deploy.yml` 負責：main push 或手動執行會先完成完整驗證（typecheck、lint、test、build），production WebSocket handshake 成功後再套用未完成的 D1 migrations、同步 Worker secrets、`wrangler deploy`，最後以 production origin 做 OPTIONS/CORS health check。推上 main 就是部署，沒有另外的手動步驟。本機開發維持 `npm run dev`、`npm run db:migrate`，不使用 remote。
 
-前端 GitHub Production Environment variable `NEXT_PUBLIC_AI_WORKER_URL` 指向生成 Worker 的 HTTPS origin。瀏覽器的 Firebase 使用者資料仍由原本 Firestore rules 管理；生成 Worker 負責 AI、額度與管理，新增 Agent Worker 則以專用 service account 讀寫教材並檢查 uid／setId scope。
+前端 GitHub Production Environment variable `NEXT_PUBLIC_AI_WORKER_URL` 指向生成 Worker 的 HTTPS origin。Firebase 只負責登入；生成 Worker 負責 AI、額度與管理，Agent Worker 以專用 D1 處理教材與同步並檢查 uid／setId scope。Agent 的發布另見 [Agent 部署](agent-deployment.md)，不需要 Firebase service account。
 
 GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CLOUDFLARE_API_TOKEN`、`OPENAI_API_KEY`、`ADMIN_EMAILS`。Cloudflare token 限定為 Tavric account，權限需包含 Workers Scripts:Edit 與 D1:Edit。Workflow 仍不執行消耗帳號用量的 prompt 評測。
 

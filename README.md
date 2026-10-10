@@ -1,6 +1,6 @@
 # Lexiro Worker
 
-Lexiro 的獨立 private AI 後端，負責 Firebase 身分、模型生成、點數預留／結算、用量及管理。教材、詞義、練習與 Firestore 同步由公開前端處理。Prompt、schema 和供應商 key 留在此邊界。
+Lexiro 的 private 後端包含獨立的生成 Worker 與 Agent Worker。生成 Worker 負責模型、點數預留／結算、用量及管理；Agent Worker 負責教材 D1、MCP OAuth、單集授權 URL 與網站同步。Firebase 只負責登入。Prompt、schema 和供應商 key 留在生成 Worker 邊界，Agent Worker 沒有模型 API key。
 
 ## 請求流程
 

@@ -46,4 +46,6 @@ instructions 明定「使用者未說明題型時，先問」並要求「已說�
 
 本輪已改用正式 D1AgentLibrary 實作與真本機 CLOUD_DB，沒有 snapshot repository 替身；Firebase 模擬僅用於身分驗證。舊 Firestore 資料不遷移、不設 fallback。腳本會重置 A 合成集的單字、生成及刪除資料，並留下一個生成題作檢查；OAuth CRUD 使用另建的合成集與資料夾並刪除。未處理使用者的 134 筆資料。
 
-界線：尚未證實 production OAuth、ChatGPT 新增 MCP、正式 Firebase 登入或部署；本機 D1 的通過不代表正式環境讀量或效能。EXPLAIN 檢查原題目 JOIN 發現 planner 先從 `cloud_question_sources_word(uid=?)` 掃全帳號來源；第一次改為本集來源 subquery 後，來源子查詢已限定本集，但外層仍使用 records PK 的 `uid=?` 前綴掃全帳號。word JOIN 也先掃 records 的 uid 前綴；已回報主代理，待再次調整索引選擇。
+EXPLAIN 檢查原 JOIN 發現 planner 先掃 uid 的全帳號來源／records；目前已用 CROSS JOIN 固定本集 membership 起點，並以 INDEXED BY cloud_records_key 讓 words／questions 逐 key 查詢。再次 EXPLAIN 已確認限定本集的索引路徑；不能把這項結果換算成正式累積 rows 用量。
+
+正式 OAuth、Firebase Auth、200 筆與共用同步後續已通過 45 項 HTTPS 檢查並發布，見 [正式發布回條](agent-deployment.md#正式發布回條)。此文件前表記錄的是本機操作；工程端沒有驗收 ChatGPT 新增 MCP 的 UI 或長任務效能。

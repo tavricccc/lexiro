@@ -51,3 +51,11 @@ Frontend workflow 同步 NEXT_PUBLIC_AGENT_WORKER_URL 至 Vercel，再 build／d
 正式 smoke 僅用可清除的合成 Firebase 使用者，驗證 200 筆、資料夾、sync／MCP／URL 共用 records、版本／重送／撤銷，再刪除合成資料。不可把 localhost latency 當正式 CPU 或 D1 rows 用量。D1 免費容量／配額見 [官方計價](https://developers.cloudflare.com/d1/platform/pricing/) 與 [限制](https://developers.cloudflare.com/d1/platform/limits/)。
 
 原 Firestore 直接回 HTTP 429、RESOURCE_EXHAUSTED、Quota exceeded；其 Monitoring／Billing 讀取遭 403，沒有完整用量明細。舊 Agent 每次讀集會讀整個帳號題庫，是已確認的讀取放大缺陷；不能宣稱它是全部用量的唯一成因。
+
+## 正式發布回條
+
+Backend `1a6a82e` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38063285944) 與 frontend `0234252` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38063531929) 都成功。CI 各通過 193／400 個測試及 typecheck、lint、build。
+
+正式 HTTPS 45 項檢查通過：真實 Firebase Auth、OAuth S256、17 tools、200 筆新增及讀回、201 筆拒絕且 revision 不變、資料夾 CRUD、URL 分類、網站 records 寫入後 MCP 讀回、進度／統計／偏好 CAS、回條重送、刪集 tombstone、refresh 與撤銷。沒有呼叫模型 API。合成 Firebase 帳號、CLOUD_DB 資料、AGENT_DB links、OAuth client 已清除。
+
+Agent runtime 的 FIREBASE_SERVICE_ACCOUNT 與 private GitHub Production 對應副本已刪除；`wrangler secret list --config wrangler.agent.toml` 回空陣列。一次性診斷憑證 artifact 已刪除。前端正式 bundle 已含 D1 同步且未含 Firestore endpoint；OAuth／連線管理頁 HTTP 200。未驗收長任務 CPU 或正式 D1 累積用量。
