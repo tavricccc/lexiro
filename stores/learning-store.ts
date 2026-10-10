@@ -15,6 +15,8 @@ import { t } from "@/lib/i18n";
 import { mergeBackupLearning } from "@/src/lib/learning-backup";
 import { canonicalHash } from "@/src/lib/hash";
 import type { GoalPatch } from "@/src/lib/preference-drafts";
+import { remapLearningSnapshot } from "@/src/lib/learning-scope-migration";
+import type { SenseScopeRemap } from "@/src/lib/library-set-migration";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
 import { localDateKey } from "@/src/lib/date";
@@ -63,6 +65,7 @@ interface LearningStore {
   remapSenses: (
     remaps: Array<{ oldSenseId: SenseId; newSenseId: SenseId }>,
   ) => Promise<void>;
+  isolateSenses: (remaps: SenseScopeRemap[]) => Promise<void>;
   pruneToSenseIds: (senseIds: Set<SenseId>) => Promise<void>;
 }
 
@@ -246,6 +249,17 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     });
     await get().hydrate();
   },
+  isolateSenses: serial(async (remaps) => {
+    const current = { progress: get().progress, stats: get().stats };
+    const migrated = remapLearningSnapshot(
+      current.progress,
+      current.stats,
+      remaps,
+    );
+    if (canonicalHash(migrated) === canonicalHash(current)) return;
+    await persist(migrated.progress, migrated.stats);
+    set({ ...migrated, loaded: true });
+  }),
   remapSenses: serial(async (remaps) => {
     const cards = { ...get().progress.cards };
     const bySense = { ...get().stats.questionStatsBySense };

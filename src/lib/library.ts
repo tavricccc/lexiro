@@ -16,9 +16,18 @@ import { randomUUID } from "./id";
 import { normalizePartOfSpeech } from "@lexiro/ai-contract";
 export { normalizePartOfSpeech } from "@lexiro/ai-contract";
 
-/** The only way to produce a `WordKey`. Idempotent, so it is safe to re-apply. */
+/** Normalized spelling for drafts and legacy material; persisted keys use the set owner. */
 export function normalizeWordKey(word: string): WordKey {
   return word.trim().toLocaleLowerCase().replace(/\s+/g, " ") as WordKey;
+}
+
+/** Persisted words belong to one set; spelling is only the within-set lookup key. */
+export function buildSetWordKey(setId: string, word: string): WordKey {
+  return `word-${canonicalHash({ setId, word: normalizeWordKey(word) })}` as WordKey;
+}
+
+export function isSetWordKey(wordKey: string): boolean {
+  return /^word-[0-9a-f]{32}$/u.test(wordKey);
 }
 
 /**

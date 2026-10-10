@@ -1,9 +1,9 @@
 import type { Brand } from './brand'
 
 /**
- * A word after normalization: trimmed, lower-cased and single-spaced. Only
- * `normalizeWordKey` produces one, so a value of this type is known to be in
- * the form the Library indexes words by.
+ * A checked word identity. Persisted Library keys include the owning set;
+ * normalized spellings are used only while preparing or migrating material.
+ * `buildSetWordKey` creates the persisted identity from a set and its spelling.
  */
 export type WordKey = Brand<string, 'WordKey'>
 

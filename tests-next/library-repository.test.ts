@@ -58,7 +58,7 @@ describe('LibraryRepository', () => {
     const repository = new LibraryRepository('tester')
     await repository.commit(libraryWith(['alpha', 'beta']))
     const loaded = await new LibraryRepository('tester').loadState()
-    expect(Object.keys(loaded.words).toSorted()).toEqual(['alpha', 'beta'])
+    expect(Object.values(loaded.words).map(word => word.word).toSorted()).toEqual(['alpha', 'beta'])
     expect(loaded.sets).toHaveLength(1)
     expect(loaded.memberships['set-1']).toHaveLength(2)
   })
@@ -90,7 +90,7 @@ describe('LibraryRepository', () => {
     // Only the live and previous generations keep blobs, so storage stays flat
     // instead of accumulating a full copy of the Library per save.
     const loaded = await repository.loadState()
-    expect(Object.keys(loaded.words)).toEqual(['delta'])
+    expect(Object.values(loaded.words).map(word => word.word)).toEqual(['delta'])
     expect(blobKeys().length).toBeLessThanOrEqual(8)
   })
 
@@ -112,7 +112,7 @@ describe('LibraryRepository', () => {
     store.set('tester:lexiro-library:head', head)
 
     const loaded = await new LibraryRepository('tester').loadState()
-    expect(Object.keys(loaded.words)).toEqual(['alpha'])
+    expect(Object.values(loaded.words).map(word => word.word)).toEqual(['alpha'])
   })
 
   it('recovers the newest complete generation when the head is lost', async () => {
@@ -122,7 +122,7 @@ describe('LibraryRepository', () => {
     store.delete('tester:lexiro-library:head')
 
     const loaded = await new LibraryRepository('tester').loadState()
-    expect(Object.keys(loaded.words)).toEqual(['beta'])
+    expect(Object.values(loaded.words).map(word => word.word)).toEqual(['beta'])
     expect(store.has('tester:lexiro-library:head')).toBe(true)
   })
 
@@ -131,7 +131,7 @@ describe('LibraryRepository', () => {
     await repository.commit(libraryWith(['alpha']))
     const wordBlob = blobKeys().find((key) => {
       const value = store.get(key) as { wordKey?: string }
-      return value?.wordKey === 'alpha'
+      return (value as { word?: string })?.word === 'alpha'
     })!
     store.set(wordBlob, { ...(store.get(wordBlob) as object), word: 'tampered' })
 
@@ -147,12 +147,12 @@ describe('LibraryRepository', () => {
     await repository.commit(libraryWith(['beta']))
     const betaBlob = blobKeys().find((key) => {
       const value = store.get(key) as { wordKey?: string }
-      return value?.wordKey === 'beta'
+      return (value as { word?: string })?.word === 'beta'
     })!
     store.set(betaBlob, { ...(store.get(betaBlob) as object), word: 'tampered' })
 
     const loaded = await new LibraryRepository('tester').loadState()
-    expect(Object.keys(loaded.words)).toEqual(['alpha'])
+    expect(Object.values(loaded.words).map(word => word.word)).toEqual(['alpha'])
   })
 
   it('starts from an empty library when nothing is stored', async () => {

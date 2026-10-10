@@ -18,7 +18,14 @@ import type {
 import { FULL_BACKUP_VERSION } from "@/constants";
 import { normalizeFolderParentId, UNCATEGORIZED_FOLDER_ID } from "./folders";
 import { QUESTION_STAT_KEYS } from "./learning-defaults";
-import { asSenseId, normalizeWordKey } from "./library";
+import { asSenseId, buildSetWordKey, normalizeWordKey } from "./library";
+import {
+  isolateLibrarySets,
+  LIBRARY_STATE_VERSION,
+  scopeSetContent,
+  type LibraryScopeMigration,
+} from "./library-set-migration";
+import { remapLearningSnapshot } from "./learning-scope-migration";
 import { keysOf } from "./record";
 import { parseLibraryImportValue } from "./library-import";
 import {
@@ -115,7 +122,7 @@ function normalizeQuestionsForWords(
   return questions;
 }
 
-export function normalizeSharedSet(value: unknown): SharedSet {
+export function normalizeSharedSet(value: unknown, legacy = false): SharedSet {
   const source = requiredObject(value, "單字集");
   assertKnownKeys(
     source,
@@ -173,7 +180,7 @@ export function normalizeSharedSet(value: unknown): SharedSet {
     throw new Error("單字集 questions 包含沒有 membership 的題目");
   if (typeof source.folderId !== "string" || !source.folderId.trim())
     throw new Error("單字集必須指定資料夾");
-  return {
+  const normalized: SharedSet = {
     id: requiredText(source.id, "id"),
     setName: requiredText(source.setName, "setName"),
     folderId: source.folderId.trim(),
@@ -183,6 +190,27 @@ export function normalizeSharedSet(value: unknown): SharedSet {
     memberships,
     questions,
   };
+  if (legacy) {
+    const scoped = scopeSetContent(
+      normalized.id,
+      words,
+      memberships,
+      questions,
+    );
+    return {
+      ...normalized,
+      words: scoped.words,
+      memberships: scoped.memberships,
+      questions: scoped.questions,
+    };
+  }
+  if (
+    words.some(
+      (word) => word.wordKey !== buildSetWordKey(normalized.id, word.word),
+    )
+  )
+    throw new Error("單字集內容必須使用本集獨立身份");
+  return normalized;
 }
 
 export function normalizeSharePayload(value: unknown): SetSharePayload {
@@ -192,17 +220,17 @@ export function normalizeSharePayload(value: unknown): SetSharePayload {
     ["version", "exportedAt", "appName", "kind", "sets"],
     "匯入資料",
   );
-  if (requiredNumber(source.version, "version") !== 1)
-    throw new Error("只支援分享檔 version 1");
+  const version = requiredNumber(source.version, "version");
+  if (version !== 1 && version !== 2) throw new Error("不支援此分享檔版本");
   if (source.kind !== "set-share") throw new Error("不是有效的單字集分享檔");
   if (!Array.isArray(source.sets) || !source.sets.length)
     throw new Error("分享檔至少需要一個單字集");
   return {
-    version: requiredNumber(source.version, "version"),
+    version: 2,
     exportedAt: requiredText(source.exportedAt, "exportedAt"),
     appName: requiredText(source.appName, "appName"),
     kind: "set-share",
-    sets: source.sets.map(normalizeSharedSet),
+    sets: source.sets.map((set) => normalizeSharedSet(set, version === 1)),
   };
 }
 
@@ -253,7 +281,9 @@ function normalizeSet(
   };
 }
 
-export function normalizeLibraryState(value: unknown): LibraryState {
+export function normalizeLibraryStateWithMigration(
+  value: unknown,
+): LibraryScopeMigration {
   const source = requiredObject(value, "library");
   assertKnownKeys(
     source,
@@ -268,7 +298,7 @@ export function normalizeLibraryState(value: unknown): LibraryState {
     ],
     "library",
   );
-  if (source.version !== 1)
+  if (source.version !== 1 && source.version !== LIBRARY_STATE_VERSION)
     throw new Error("完整備份的 library version 不受支援");
   const rawWords = requiredObject(source.words, "library.words");
   const words: Record<WordKey, WordEntry> = {};
@@ -348,6 +378,15 @@ export function normalizeLibraryState(value: unknown): LibraryState {
   for (const set of sets) {
     if (!memberships[set.id])
       throw new Error(`library.memberships 缺少 setId ${set.id}`);
+    if (
+      source.version === LIBRARY_STATE_VERSION &&
+      memberships[set.id].some(
+        (member) =>
+          member.wordKey !==
+          buildSetWordKey(set.id, words[member.wordKey].word),
+      )
+    )
+      throw new Error(`單字集 ${set.setName} 包含其他單字集的內容`);
   }
   const referencedWordKeys = new Set(
     Object.values(memberships).flatMap((membershipsForSet) =>
@@ -370,8 +409,8 @@ export function normalizeLibraryState(value: unknown): LibraryState {
     questions.length
   )
     throw new Error("library.questions 包含重複 fingerprint");
-  return {
-    version: 1,
+  const state: LibraryState = {
+    version: Number(source.version),
     words,
     sets,
     memberships,
@@ -379,6 +418,21 @@ export function normalizeLibraryState(value: unknown): LibraryState {
     questions,
     updatedAt: requiredText(source.updatedAt, "library.updatedAt"),
   };
+  if (
+    state.version === LIBRARY_STATE_VERSION &&
+    questions.some(
+      (question) =>
+        !sets.some((set) =>
+          questionBelongsToMemberships(question, memberships[set.id]),
+        ),
+    )
+  )
+    throw new Error("題目所有來源必須屬於同一個單字集");
+  return isolateLibrarySets(state);
+}
+
+export function normalizeLibraryState(value: unknown): LibraryState {
+  return normalizeLibraryStateWithMigration(value).state;
 }
 
 function normalizeCard(value: unknown, field: string) {
@@ -608,15 +662,22 @@ export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
     "完整備份",
   );
   if (source.kind !== "full-backup") throw new Error("不是有效的完整備份檔");
-  if (requiredNumber(source.version, "version") !== FULL_BACKUP_VERSION)
+  const version = requiredNumber(source.version, "version");
+  if (version !== FULL_BACKUP_VERSION && version !== 4)
     throw new Error("不支援此完整備份版本");
+  const migrated = normalizeLibraryStateWithMigration(source.library);
+  const learning = remapLearningSnapshot(
+    normalizeLearningProgress(source.learning),
+    normalizeDashboardStats(source.stats),
+    migrated.senseRemaps,
+  );
   return {
-    version: requiredNumber(source.version, "version"),
+    version: FULL_BACKUP_VERSION,
     exportedAt: requiredText(source.exportedAt, "exportedAt"),
     appName: requiredText(source.appName, "appName"),
     kind: "full-backup",
-    library: normalizeLibraryState(source.library),
-    learning: normalizeLearningProgress(source.learning),
-    stats: normalizeDashboardStats(source.stats),
+    library: migrated.state,
+    learning: learning.progress,
+    stats: learning.stats,
   };
 }

@@ -31,7 +31,8 @@ describe("managed settings migration", () => {
     storage.set("a:lexiro_sync_journal", JSON.stringify(previous));
     expect(await loadSyncJournal()).toEqual({
       ...previous,
-      schemaVersion: 4,
+      schemaVersion: 5,
+      legacyPendingRefs: {},
       blobs: { progress: 4, stats: 3, preferences: 0 },
     });
   });
@@ -59,7 +60,8 @@ describe("managed settings migration", () => {
     const journal = await loadSyncJournal();
     expect(journal).toEqual({
       ...previous,
-      schemaVersion: 4,
+      schemaVersion: 5,
+      legacyPendingRefs: {},
       blobs: { progress: 4, stats: 3, preferences: 0 },
     });
     expect(storage.has("a:lexiro_ai_settings")).toBe(false);

@@ -1,4 +1,5 @@
 import type { LibraryRecordRef } from "./library-repository";
+import { cloneJson } from "./clone";
 import {
   CLOUD_SYNC_PENDING_EVENT,
   SYNC_JOURNAL_STORAGE_KEY,
@@ -42,7 +43,7 @@ export interface SyncTombstone extends LibraryRecordRef {
 }
 
 export interface SyncJournal {
-  schemaVersion: 4;
+  schemaVersion: 5;
   /** How far this device has read the cloud's change feed. Empty means never. */
   cursor: string;
   /**
@@ -56,6 +57,8 @@ export interface SyncJournal {
   version: number;
   dirty: Record<string, SyncDirtyEntry>;
   tombstones: Record<string, SyncTombstone>;
+  /** Unresolved v1 sources, recorded before local set isolation changes their ids. */
+  legacyPendingRefs: Record<string, SyncDirtyEntry>;
   /** The version at which each blob was last touched; zero means clean. */
   blobs: Record<SyncBlobKind, number>;
 }
@@ -66,7 +69,14 @@ export interface SyncClearRef {
   version: number;
 }
 
-const SYNC_JOURNAL_SCHEMA_VERSION = 4 as const;
+export interface PendingLibraryRefRemap {
+  source: LibraryRecordRef;
+  targets: LibraryRecordRef[];
+  /** New owner/source records needed only when an edited legacy question is copied. */
+  dirtyDependencies?: LibraryRecordRef[];
+}
+
+const SYNC_JOURNAL_SCHEMA_VERSION = 5 as const;
 
 export function refKey(ref: LibraryRecordRef): string {
   return `${ref.kind}:${ref.id}`;
@@ -80,6 +90,7 @@ function emptyJournal(): SyncJournal {
     version: 0,
     dirty: {},
     tombstones: {},
+    legacyPendingRefs: {},
     blobs: { progress: 0, stats: 0, preferences: 0 },
   };
 }
@@ -97,6 +108,7 @@ function isJournal(value: unknown): value is SyncJournal {
     typeof journal.version === "number" &&
     Boolean(journal.dirty) &&
     Boolean(journal.tombstones) &&
+    Boolean(journal.legacyPendingRefs) &&
     Boolean(journal.blobs)
   );
 }
@@ -115,18 +127,21 @@ async function readJournal(): Promise<SyncJournal> {
         parsed &&
         typeof parsed === "object" &&
         "schemaVersion" in parsed &&
-        (parsed.schemaVersion === 2 || parsed.schemaVersion === 3)
+        (parsed.schemaVersion === 2 ||
+          parsed.schemaVersion === 3 ||
+          parsed.schemaVersion === 4)
       ) {
         const previous = parsed as Omit<SyncJournal, "schemaVersion"> & {
-          schemaVersion: 2 | 3;
+          schemaVersion: 2 | 3 | 4;
         };
         parsed = {
           ...previous,
-          schemaVersion: 4,
+          schemaVersion: SYNC_JOURNAL_SCHEMA_VERSION,
+          legacyPendingRefs: {},
           blobs: {
             progress: previous.blobs.progress,
             stats: previous.blobs.stats,
-            preferences: 0,
+            preferences: previous.blobs.preferences ?? 0,
           },
         };
         migrated = isJournal(parsed);
@@ -155,9 +170,11 @@ async function update(
     .catch(() => undefined)
     .then(async () => {
       const journal = await readJournal();
-      if (mutate(journal))
-        await saveToStorage(SYNC_JOURNAL_STORAGE_KEY, journal);
-      return journal;
+      const next = cloneJson(journal);
+      if (!mutate(next)) return journal;
+      await saveToStorage(SYNC_JOURNAL_STORAGE_KEY, next);
+      journals.set(getStorageNamespace(), next);
+      return next;
     });
   queue = run;
   return run;
@@ -184,11 +201,13 @@ export async function recordLocalChanges(
     const version = journal.version;
     for (const ref of changed) {
       const key = refKey(ref);
+      delete journal.legacyPendingRefs[key];
       delete journal.tombstones[key];
       journal.dirty[key] = { kind: ref.kind, id: ref.id, version };
     }
     for (const ref of removed) {
       const key = refKey(ref);
+      delete journal.legacyPendingRefs[key];
       delete journal.dirty[key];
       journal.tombstones[key] = {
         kind: ref.kind,
@@ -200,6 +219,73 @@ export async function recordLocalChanges(
     return true;
   });
   notifySyncPending();
+}
+
+/** Rebind pending edits/deletions without treating clean migrated copies as edits. */
+export async function remapPendingLibraryRefs(
+  remaps: readonly PendingLibraryRefRemap[],
+  legacyPending: readonly SyncDirtyEntry[] = [],
+): Promise<void> {
+  if (!remaps.length && !legacyPending.length) return;
+  await update((journal) => {
+    const dirty = { ...journal.dirty };
+    const tombstones = { ...journal.tombstones };
+    let changed = false;
+    for (const entry of legacyPending) {
+      const key = refKey(entry);
+      const version = dirty[key]?.version ?? tombstones[key]?.version;
+      if (
+        version !== entry.version ||
+        journal.legacyPendingRefs[key]?.version === version
+      )
+        continue;
+      journal.legacyPendingRefs[key] = { ...entry };
+      changed = true;
+    }
+    for (const { source, targets, dirtyDependencies = [] } of remaps) {
+      const sourceKey = refKey(source);
+      const edit = dirty[sourceKey];
+      const deletion = tombstones[sourceKey];
+      if (!edit && !deletion) continue;
+      const destinationRefs = edit
+        ? [...targets, ...dirtyDependencies]
+        : targets;
+      if (!destinationRefs.length) continue;
+      const destinationKeys = new Set(destinationRefs.map(refKey));
+      if (journal.legacyPendingRefs[sourceKey]) {
+        delete journal.legacyPendingRefs[sourceKey];
+        changed = true;
+      }
+      if (!destinationKeys.has(sourceKey)) {
+        delete journal.dirty[sourceKey];
+        delete journal.tombstones[sourceKey];
+        changed = true;
+      }
+      for (const target of destinationRefs) {
+        const key = refKey(target);
+        if (key === sourceKey) continue;
+        const entry = edit ?? deletion;
+        const currentVersion = Math.max(
+          journal.dirty[key]?.version ?? 0,
+          journal.tombstones[key]?.version ?? 0,
+        );
+        if (currentVersion >= entry.version) continue;
+        if (edit) {
+          delete journal.tombstones[key];
+          journal.dirty[key] = { ...target, version: edit.version };
+        } else {
+          delete journal.dirty[key];
+          journal.tombstones[key] = {
+            ...target,
+            version: deletion.version,
+            deletedAt: deletion.deletedAt,
+          };
+        }
+        changed = true;
+      }
+    }
+    return changed;
+  });
 }
 
 /**
@@ -218,6 +304,7 @@ export async function untrackChanges(
       const key = refKey(ref);
       delete journal.dirty[key];
       delete journal.tombstones[key];
+      delete journal.legacyPendingRefs[key];
     }
     return true;
   });
@@ -258,10 +345,12 @@ export async function clearPushedRecords(
     for (const entry of entries) {
       if (journal.dirty[entry.key]?.version === entry.version) {
         delete journal.dirty[entry.key];
+        delete journal.legacyPendingRefs[entry.key];
         changed = true;
       }
       if (journal.tombstones[entry.key]?.version === entry.version) {
         delete journal.tombstones[entry.key];
+        delete journal.legacyPendingRefs[entry.key];
         changed = true;
       }
     }

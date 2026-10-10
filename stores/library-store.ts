@@ -17,6 +17,7 @@ import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { randomUUID } from "@/src/lib/id";
 import {
   buildSenseId,
+  buildSetWordKey,
   canonicalizeQuestion,
   normalizePartOfSpeech,
   normalizeWordKey,
@@ -27,9 +28,20 @@ import {
   getLibraryRepository,
   resetLibraryRepositoryCache,
 } from "@/src/lib/library-repository";
-import { questionUsesWords } from "@/src/lib/question-ownership";
+import {
+  questionBelongsToMemberships,
+  questionUsesWords,
+} from "@/src/lib/question-ownership";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
-import { recordLocalChanges, untrackChanges } from "@/src/lib/sync-journal";
+import {
+  loadSyncJournal,
+  recordLocalChanges,
+  remapPendingLibraryRefs,
+  setSyncCursor,
+  untrackChanges,
+} from "@/src/lib/sync-journal";
+import { normalizeLibraryStateWithMigration } from "@/src/lib/share";
+import { LIBRARY_STATE_VERSION } from "@/src/lib/library-set-migration";
 
 export interface WordDraftInput {
   word: string;
@@ -67,6 +79,7 @@ interface LibraryStore {
   deleteSet: (id: string) => Promise<void>;
   saveQuestion: (question: LibraryQuestion) => Promise<SaveQuestionResult>;
   deleteQuestion: (id: string) => Promise<void>;
+  clearQuestions: (setId?: string) => Promise<void>;
   importState: (state: LibraryState) => Promise<void>;
   /** Writes a state that came from the cloud, without queuing it to go back. */
   applyRemoteState: (
@@ -93,6 +106,29 @@ export { flushLibraryMutations };
 async function commit(state: LibraryState) {
   const stats = await getLibraryRepository().commit(state);
   await recordLocalChanges(stats.changed, stats.removed);
+}
+
+/** Finish the durable migration before exposing the new identities to the UI. */
+async function loadCurrentLibrary(): Promise<LibraryState> {
+  const repository = getLibraryRepository();
+  const stored = await repository.loadState();
+  const migration = normalizeLibraryStateWithMigration(stored);
+  let intent = await repository.scopeMigrationIntent();
+  if (stored.version !== LIBRARY_STATE_VERSION) {
+    const journal = await loadSyncJournal();
+    intent = await repository.beginScopeMigration(migration, journal);
+    await repository.commit(migration.state);
+  }
+  if (intent) {
+    const { useLearningStore } = await import("@/stores/learning-store");
+    await useLearningStore.getState().reloadNamespace();
+    await useLearningStore.getState().isolateSenses(intent.senseRemaps);
+    await remapPendingLibraryRefs(intent.recordRemaps, intent.legacyPending);
+    await recordLocalChanges(intent.initialChanged, []);
+    await setSyncCursor("");
+    await repository.completeScopeMigration();
+  }
+  return migration.state;
 }
 
 function folderDescendants(
@@ -122,7 +158,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     if (get().status === "loading" || get().status === "ready") return;
     set({ status: "loading", error: null });
     try {
-      const state = await getLibraryRepository().loadState();
+      const state = await loadCurrentLibrary();
       set({ state, status: "ready" });
     } catch (error) {
       set({
@@ -298,10 +334,10 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       const membershipMap = new Map<WordKey, Set<SenseId>>();
       const writtenSenses = new Set<SenseId>();
       for (const draft of drafts) {
-        const wordKey = normalizeWordKey(draft.word);
+        const wordKey = buildSetWordKey(setId, draft.word);
         const pos = normalizePartOfSpeech(draft.pos) || draft.pos.trim();
         const meaningZh = draft.meaningZh.trim();
-        if (!wordKey || !pos || !meaningZh) continue;
+        if (!normalizeWordKey(draft.word) || !pos || !meaningZh) continue;
         const senseId = buildSenseId(wordKey, pos, meaningZh);
         const current = words[wordKey];
         const entry: WordEntry = current ?? {
@@ -355,33 +391,17 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       const remapBySense = new Map(
         remaps.map((entry) => [entry.oldSenseId, entry]),
       );
-      const remappedMemberships: Record<string, SetMembership[]> =
-        Object.fromEntries(
-          Object.entries(get().state.memberships).map(
-            ([membershipSetId, entries]) => {
-              const grouped = new Map<WordKey, Set<SenseId>>();
-              for (const entry of entries) {
-                for (const senseId of entry.senseIds) {
-                  const remap = remapBySense.get(senseId);
-                  const targetWordKey = remap?.newWordKey ?? entry.wordKey;
-                  const targetSenseId = remap?.newSenseId ?? senseId;
-                  const targetSenses =
-                    grouped.get(targetWordKey) ?? new Set<SenseId>();
-                  targetSenses.add(targetSenseId);
-                  grouped.set(targetWordKey, targetSenses);
-                }
-              }
-              return [
-                membershipSetId,
-                [...grouped].map(([wordKey, senseIds]) => ({
-                  wordKey,
-                  senseIds: [...senseIds],
-                })),
-              ];
-            },
-          ),
-        );
-      const nextMemberships = { ...remappedMemberships, [setId]: memberships };
+      const ownedSenses = new Set(
+        (get().state.memberships[setId] ?? []).flatMap(
+          (member) => member.senseIds,
+        ),
+      );
+      if (remaps.some((remap) => !ownedSenses.has(remap.oldSenseId)))
+        throw new Error("只能修改本集的詞義來源");
+      const nextMemberships = {
+        ...get().state.memberships,
+        [setId]: memberships,
+      };
       const prunedWords = pruneWordsToMemberships(words, nextMemberships);
       const state: LibraryState = {
         ...get().state,
@@ -422,7 +442,8 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
                 }
               : question;
           })
-          .filter((question) => questionUsesWords(question, prunedWords)),
+          .filter((question) => questionUsesWords(question, prunedWords))
+          .map(canonicalizeQuestion),
         updatedAt: timestamp,
       };
       await commit(state);
@@ -466,6 +487,15 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       ...question,
       updatedAt: timestamp,
     });
+    if (
+      !get().state.sets.some((entry) =>
+        questionBelongsToMemberships(
+          normalized,
+          get().state.memberships[entry.id] ?? [],
+        ),
+      )
+    )
+      throw new Error("題目所有來源必須屬於同一個單字集");
     const exists = get().state.questions.some(
       (entry) => entry.id === normalized.id,
     );
@@ -499,6 +529,27 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     set({ state });
   }),
 
+  clearQuestions: serial(async (setId) => {
+    const current = get().state;
+    if (setId && !current.sets.some((entry) => entry.id === setId))
+      throw new Error("找不到要清空題目的單字集");
+    const state = {
+      ...current,
+      questions: setId
+        ? current.questions.filter(
+            (question) =>
+              !questionBelongsToMemberships(
+                question,
+                current.memberships[setId] ?? [],
+              ),
+          )
+        : [],
+      updatedAt: now(),
+    };
+    await commit(state);
+    set({ state });
+  }),
+
   importState: serial(async (incoming) => {
     const { state } = mergeLibraryStates(get().state, incoming);
     await commit(state);
@@ -520,7 +571,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     resetLibraryRepositoryCache();
     set({ status: "loading", error: null });
     try {
-      const state = await getLibraryRepository().loadState();
+      const state = await loadCurrentLibrary();
       set({ state, status: "ready" });
     } catch (error) {
       set({

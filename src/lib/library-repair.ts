@@ -17,6 +17,13 @@ import { sanitizeMemberships } from "./library-membership";
 import { questionUsesWords } from "./question-ownership";
 import { entriesOf } from "./record";
 import { createUniqueSetName } from "./set-name";
+import {
+  isolateLibrarySets,
+  LIBRARY_STATE_VERSION,
+  type LibraryScopeMigration,
+} from "./library-set-migration";
+import { buildSetWordKey } from "./library";
+import { questionBelongsToMemberships } from "./question-ownership";
 
 /**
  * Makes a Library state satisfy every invariant `normalizeLibraryState` checks,
@@ -34,6 +41,7 @@ import { createUniqueSetName } from "./set-name";
  * same records independently arrive at the same Library.
  */
 export interface LibraryDraft {
+  version?: number;
   words: Record<WordKey, WordEntry>;
   sets: LibrarySet[];
   memberships: Record<string, SetMembership[]>;
@@ -145,7 +153,9 @@ function repairSets(sets: LibrarySet[], folderIds: Set<string>): LibrarySet[] {
     });
 }
 
-export function repairLibraryState(draft: LibraryDraft): LibraryState {
+export function repairLibraryStateWithMigration(
+  draft: LibraryDraft,
+): LibraryScopeMigration {
   const folders = repairFolders(draft.folders);
   const folderIds = new Set(folders.map((folder) => folder.id));
   const sets = repairSets(draft.sets, folderIds);
@@ -154,7 +164,12 @@ export function repairLibraryState(draft: LibraryDraft): LibraryState {
   const memberships: Record<string, SetMembership[]> = {};
   for (const [setId, entries] of Object.entries(draft.memberships)) {
     if (!setIds.has(setId)) continue;
-    const sanitized = sanitizeMemberships(entries, draft.words);
+    const sanitized = sanitizeMemberships(entries, draft.words).filter(
+      (member) =>
+        draft.version === 1 ||
+        member.wordKey ===
+          buildSetWordKey(setId, draft.words[member.wordKey].word),
+    );
     if (sanitized.length) memberships[setId] = sanitized;
   }
 
@@ -170,13 +185,20 @@ export function repairLibraryState(draft: LibraryDraft): LibraryState {
     if (seenIds.has(question.id) || seenFingerprints.has(question.fingerprint))
       continue;
     if (!questionUsesWords(question, words)) continue;
+    if (
+      draft.version !== 1 &&
+      !sets.some((set) =>
+        questionBelongsToMemberships(question, memberships[set.id] ?? []),
+      )
+    )
+      continue;
     seenIds.add(question.id);
     seenFingerprints.add(question.fingerprint);
     questions.push(question);
   }
 
-  return {
-    version: 1,
+  const state = {
+    version: draft.version ?? LIBRARY_STATE_VERSION,
     words,
     sets: sets.filter((entry) => populated.has(entry.id)),
     memberships,
@@ -184,4 +206,9 @@ export function repairLibraryState(draft: LibraryDraft): LibraryState {
     questions,
     updatedAt: draft.updatedAt,
   };
+  return isolateLibrarySets(state);
+}
+
+export function repairLibraryState(draft: LibraryDraft): LibraryState {
+  return repairLibraryStateWithMigration(draft).state;
 }

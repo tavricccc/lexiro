@@ -17,6 +17,7 @@ import {
   buildQuestionFingerprint,
   buildQuestionId,
   buildSenseId,
+  isSetWordKey,
   normalizePartOfSpeech,
   normalizeWordKey,
 } from "./library";
@@ -145,7 +146,7 @@ function normalizeWord(value: unknown, index: number): WordEntry {
   const word = requiredText(source.word, `words[${index}].word`);
   const rawWordKey = requiredText(source.wordKey, `words[${index}].wordKey`);
   const wordKey = normalizeWordKey(rawWordKey);
-  if (wordKey !== normalizeWordKey(word))
+  if (!isSetWordKey(wordKey) && wordKey !== normalizeWordKey(word))
     throw new Error(`words[${index}].wordKey 必須與 word 相符`);
   const rawSenses = source.senses;
   if (!Array.isArray(rawSenses))

@@ -18,6 +18,16 @@ import { canonicalHash } from "./hash";
 import { randomUUID } from "./id";
 import { getStorageNamespace } from "./persist";
 import { normalizeLibraryState } from "./share";
+import {
+  LIBRARY_STATE_VERSION,
+  type LibraryScopeMigration,
+  type SenseScopeRemap,
+} from "./library-set-migration";
+import type {
+  PendingLibraryRefRemap,
+  SyncJournal,
+  SyncDirtyEntry,
+} from "./sync-journal";
 
 /**
  * Content-addressed store for the Library.
@@ -34,7 +44,7 @@ import { normalizeLibraryState } from "./share";
  * blobs deleted underneath it; everything older is collected after each commit,
  * which is what keeps IndexedDB from growing without bound.
  */
-export const LIBRARY_REPOSITORY_SCHEMA_VERSION = 2 as const;
+export const LIBRARY_REPOSITORY_SCHEMA_VERSION = 3 as const;
 
 export type LibraryRecordKind =
   "folder" | "set" | "membership" | "word" | "question";
@@ -63,7 +73,7 @@ interface LibraryRecord {
 
 /** One generation: every record id in the Library mapped to its content hash. */
 interface LibraryManifest {
-  schemaVersion: typeof LIBRARY_REPOSITORY_SCHEMA_VERSION;
+  schemaVersion: 2 | typeof LIBRARY_REPOSITORY_SCHEMA_VERSION;
   generation: string;
   /**
    * Commit order. Recovery cannot rank generations by `updatedAt`, which is the
@@ -77,7 +87,7 @@ interface LibraryManifest {
 }
 
 interface LibraryHead {
-  schemaVersion: typeof LIBRARY_REPOSITORY_SCHEMA_VERSION;
+  schemaVersion: 2 | typeof LIBRARY_REPOSITORY_SCHEMA_VERSION;
   generation: string;
   previousGeneration?: string;
   updatedAt: string;
@@ -99,6 +109,13 @@ export interface LibraryCommitStats {
   removed: LibraryRecordRef[];
 }
 
+export interface LibraryScopeMigrationIntent {
+  senseRemaps: SenseScopeRemap[];
+  recordRemaps: PendingLibraryRefRemap[];
+  initialChanged: LibraryRecordRef[];
+  legacyPending: SyncDirtyEntry[];
+}
+
 function emptyEntries(): LibraryManifest["entries"] {
   return { folder: {}, set: {}, membership: {}, word: {}, question: {} };
 }
@@ -107,7 +124,7 @@ export function emptyLibraryState(
   now = new Date().toISOString(),
 ): LibraryState {
   return {
-    version: 1,
+    version: LIBRARY_STATE_VERSION,
     words: {},
     sets: [],
     memberships: {},
@@ -188,7 +205,8 @@ function isManifest(
   if (!value || typeof value !== "object") return false;
   const manifest = value as Partial<LibraryManifest>;
   return (
-    manifest.schemaVersion === LIBRARY_REPOSITORY_SCHEMA_VERSION &&
+    (manifest.schemaVersion === 2 ||
+      manifest.schemaVersion === LIBRARY_REPOSITORY_SCHEMA_VERSION) &&
     manifest.generation === generation &&
     typeof manifest.updatedAt === "string" &&
     Boolean(manifest.entries) &&
@@ -217,6 +235,37 @@ export class LibraryRepository {
 
   private blobKey(hash: string): string {
     return `${this.prefix}:blob:${hash}`;
+  }
+
+  async scopeMigrationIntent(): Promise<
+    LibraryScopeMigrationIntent | undefined
+  > {
+    return get<LibraryScopeMigrationIntent>(`${this.prefix}:scope-migration`);
+  }
+
+  async beginScopeMigration(
+    migration: LibraryScopeMigration,
+    journal: SyncJournal,
+  ): Promise<LibraryScopeMigrationIntent> {
+    const intent = {
+      senseRemaps: migration.senseRemaps,
+      recordRemaps: migration.recordRemaps,
+      initialChanged: journal.seeded
+        ? []
+        : recordsOf(migration.state).map(({ kind, id }) => ({ kind, id })),
+      legacyPending: [
+        ...Object.values(journal.dirty),
+        ...Object.values(journal.tombstones),
+      ]
+        .filter((ref) => ref.kind === "word" || ref.kind === "question")
+        .map(({ kind, id, version }) => ({ kind, id, version })),
+    };
+    await set(`${this.prefix}:scope-migration`, intent);
+    return intent;
+  }
+
+  async completeScopeMigration(): Promise<void> {
+    await del(`${this.prefix}:scope-migration`);
   }
 
   private async readManifest(
@@ -252,7 +301,7 @@ export class LibraryRepository {
       }
     }
     return {
-      version: 1,
+      version: manifest.schemaVersion === 2 ? 1 : LIBRARY_STATE_VERSION,
       words,
       sets,
       memberships,
@@ -291,7 +340,7 @@ export class LibraryRepository {
         continue;
       }
       const head: LibraryHead = {
-        schemaVersion: LIBRARY_REPOSITORY_SCHEMA_VERSION,
+        schemaVersion: manifest.schemaVersion,
         generation: manifest.generation,
         updatedAt: manifest.updatedAt,
         manifestChecksum: manifestChecksum(manifest),
@@ -307,7 +356,8 @@ export class LibraryRepository {
     if (this.manifest) return this.manifest;
     const head = await get<LibraryHead>(this.headKey());
     if (
-      head?.schemaVersion === LIBRARY_REPOSITORY_SCHEMA_VERSION &&
+      (head?.schemaVersion === 2 ||
+        head?.schemaVersion === LIBRARY_REPOSITORY_SCHEMA_VERSION) &&
       head.generation
     ) {
       const manifest = await this.readManifest(head.generation);

@@ -12,6 +12,7 @@ import { questionUsesWords } from "./question-ownership";
 import { entriesOf } from "./record";
 import { createUniqueSetName } from "./set-name";
 import { normalizeLibraryState } from "./share";
+import { LIBRARY_STATE_VERSION } from "./library-set-migration";
 
 export interface LibraryMergeResult {
   addedSets: number;
@@ -160,7 +161,7 @@ export function mergeLibraryStates(
   }
   const populatedSetIds = new Set(Object.keys(sanitizedMemberships));
   const pruned = pruneOrphans({
-    version: 1,
+    version: LIBRARY_STATE_VERSION,
     words: nextWords,
     sets: nextSets.filter((set) => populatedSetIds.has(set.id)),
     memberships: sanitizedMemberships,
