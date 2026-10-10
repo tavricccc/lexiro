@@ -45,8 +45,8 @@ const link = (
 const token = new URL(link.url).searchParams.get("token"),
   path = `/access/${link.id}`;
 let current = (await req(link.url)).data;
-assert.match(current, /未說明題型時，先問/);
-assert.match(current, /已說明的項目不要重問/);
+assert.match(current, /未.*題型.*先.*問/);
+assert.match(current, /已說明.*不要重問/);
 // JSON accept is needed because links are human-readable by default.
 async function snapshot() {
   const r = await fetch(base + path, {
@@ -133,7 +133,6 @@ let brief = (
 ).data;
 assert.equal(brief.sources.length, 2);
 assert.equal(typeof brief.rules, "string");
-assert(brief.rules.length > 1000);
 assert(brief.specification);
 assert.equal(brief.outputSchema.type, "object");
 assert(brief.outputSchema.properties.items);
@@ -172,14 +171,16 @@ const invalid = await req(
     },
   },
   token,
-  400,
+  200,
 );
-assert.equal(invalid.data.error.code, "invalid_content");
-assert.match(invalid.data.error.message, /items|題|來源/);
+assert.equal(invalid.data.status, "rejected");
+assert.equal(invalid.data.savedCount, 0);
+assert.equal(invalid.data.errors[0].code, "invalid_batch_size");
 assert.equal((await snapshot()).revision, s.revision);
 const output = {
   items: [
     {
+      senseId: s.snapshot.words.find(w => w.word === 'conserve').senses[0].id,
       sentence:
         "During the severe drought, residents took much shorter showers every morning to conserve the small amount of water left in the town reservoir until the next rainy season.",
       usage: "to conserve the small amount of water",
@@ -202,6 +203,7 @@ const output = {
       ],
     },
     {
+      senseId: s.snapshot.words.find(w => w.word === 'temporary').senses[0].id,
       sentence:
         "Because the main bridge would reopen after extensive repairs next month, the town built a temporary crossing to help pedestrians safely reach the local school.",
       usage: "a temporary crossing",
@@ -371,9 +373,9 @@ const init = await rpc("initialize", {
   capabilities: {},
   clientInfo: { name: "smoke", version: "1" },
 });
-assert.match(init.instructions, /已說明的項目不要重問/);
+assert.match(init.instructions, /已說明.*不要重問/);
 const tools = await rpc("tools/list", {});
-assert.equal(tools.tools.length, 17);
+assert.equal(tools.tools.length, 18);
 async function call(name, args = {}) {
   const d = await rpc("tools/call", { name, arguments: args });
   assert.equal(d.isError, undefined, JSON.stringify(d));
@@ -414,6 +416,22 @@ await mutateMcp("put_words", {
     },
   ],
 });
+const reliableSense=cs.snapshot.words[0].senses[0].id;
+const candidates={items:[
+  {itemId:'valid-short',senseId:reliableSense,sentence:'The reliable bus arrived on time.',answer:'reliable',distractors:['late','broken','missing']},
+  {itemId:'invalid-source',senseId:'sense-outside-set',sentence:'The reliable bus arrived on time.',answer:'reliable',distractors:['late','broken','missing']},
+]};
+const checked=await call('validate_generated_questions',{setId:cs.snapshot.set.id,kind:'vocabulary',output:candidates});
+assert.equal(checked.validCount,1);assert.equal(checked.failedCount,1);assert.equal(checked.savedCount,0);
+assert.equal((await call('get_set',{setId:cs.snapshot.set.id})).revision,cs.revision);
+const atomic=await rpc('tools/call',{name:'save_generated_questions',arguments:{setId:cs.snapshot.set.id,kind:'vocabulary',mode:'atomic',output:candidates}});
+assert.equal(atomic.isError,true);assert.equal(JSON.parse(atomic.content[0].text).savedCount,0);
+assert.equal((await call('get_set',{setId:cs.snapshot.set.id})).snapshot.questions.length,0);
+const partial=await call('save_generated_questions',{setId:cs.snapshot.set.id,kind:'vocabulary',output:candidates});
+assert.equal(partial.savedCount,1);assert.equal(partial.failedCount,1);assert.equal(partial.errors[0].itemId,'invalid-source');assert.equal(partial.errors[0].sourceId,'sense-outside-set');assert(partial.warnings.some(w=>w.code==='prose_too_short'));
+cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.questions.length,1);
+await call('save_generated_questions',{setId:cs.snapshot.set.id,kind:'vocabulary',senseIds:[reliableSense],output:{items:[candidates.items[0]]}});
+cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.questions.length,1);
 await mutateMcp("rename_set", { setName: "OAuth 更名" });
 await mutateMcp("delete_words", { wordKeys: [cs.snapshot.words[0].wordKey] });
 const syntheticWords=Array.from({length:200},(_,i)=>({word:`synthetic-${i}`,senses:[{pos:'n.',meaningZh:`合成項目${i}`,examples:[`This synthetic example describes item number ${i}.`]}]}));

@@ -55,21 +55,29 @@ export class D1AgentLibrary implements AgentLibraryRepository {
     const valid = validateAgentSnapshot(snapshot, snapshot.set.id), id = crypto.randomUUID();
     await this.cloud.commit(uid, before.head, changedSnapshotRecords(null, valid), [], "agent:create", id, await fingerprint(JSON.stringify(valid)), { created: valid.set.id });
   }
-  async mutate(uid: string, setId: string, revision: string, operationId: string, action: unknown, apply: (snapshot: AgentSetSnapshot) => AgentMutationResult) {
+  async mutate(uid: string, setId: string, revision: string | undefined, operationId: string, action: unknown, apply: (snapshot: AgentSetSnapshot, blockedQuestionIds: string[]) => AgentMutationResult) {
     const hash = await fingerprint(JSON.stringify({ setId, revision, action }));
     const previous = await this.cloud.operation<MutationReceipt>(uid, operationId, hash);
     if (previous) return previous;
     const before = await this.load(uid, setId);
     if (!before.snapshot) throw new HttpError(404, "set_not_found");
-    if (agentSetRevision(before.snapshot) !== revision) throw new HttpError(409, "stale_set");
-    const { snapshot: after, senseRemaps } = apply(before.snapshot);
+    if (revision !== undefined && agentSetRevision(before.snapshot) !== revision) throw new HttpError(409, "stale_set");
+    const oldQuestions = new Set(before.snapshot.questions.map(q => q.id));
+    const requested = action && typeof action === "object" && "questions" in action && Array.isArray(action.questions)
+      ? action.questions.flatMap(q => q && typeof q === "object" && "id" in q && typeof q.id === "string" && !oldQuestions.has(q.id) ? [q.id] : []) : [];
+    const collisions = async (ids: string[]) => {
+      if (!ids.length) return [];
+      const rows = await this.env.CLOUD_DB.prepare("SELECT record_key FROM cloud_records INDEXED BY cloud_records_key WHERE uid=? AND kind='question' AND record_key IN (SELECT value FROM json_each(?)) AND deleted=0")
+        .bind(uid, JSON.stringify(ids)).all<{ record_key: string }>();
+      return rows.results.map(row => row.record_key);
+    };
+    const blocked = await collisions(requested);
+    const { snapshot: after, senseRemaps, validation } = apply(before.snapshot, blocked);
     if (after) await this.folderExists(uid, after.set.folderId);
     const records = changedSnapshotRecords(before.snapshot, after);
-    const oldQuestions = new Set(before.snapshot.questions.map(q => q.id));
-    for (const record of records) if (record.type === "question" && !record.deleted && !oldQuestions.has(record.recordKey)) {
-      const collision = await this.env.CLOUD_DB.prepare("SELECT id FROM cloud_records WHERE uid=? AND id=? AND deleted=0").bind(uid, agentRecordId("question", record.recordKey)).first();
-      if (collision) throw new HttpError(403, "question_outside_scope");
-    }
+    const newQuestions = records.filter(record => record.type === "question" && !record.deleted && !oldQuestions.has(record.recordKey)).map(record => record.recordKey);
+    if (newQuestions.some(id => blocked.includes(id)) || (await collisions(newQuestions.filter(id => !requested.includes(id)))).length)
+      throw new HttpError(403, "question_outside_scope");
     const surviving = new Set(after?.words.flatMap(w => w.senses.map(s => s.id)) ?? []);
     const removed = before.snapshot.words.flatMap(w => w.senses.map(s => s.id)).filter(id => !surviving.has(id));
     const blobs: BlobWrite[] = [];
@@ -81,7 +89,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       for (const id of removed) delete items[id];
       blobs.push({ kind: blob.kind, data: { ...blob.data, [key]: items, updatedAt: new Date().toISOString() } });
     }
-    const receipt: MutationReceipt = { operationId, setId, revision: agentSetRevision(after), wordCount: after?.words.length ?? 0, questionCount: after?.questions.length ?? 0, deleted: !after };
+    const receipt: MutationReceipt = { operationId, setId, revision: agentSetRevision(after), wordCount: after?.words.length ?? 0, questionCount: after?.questions.length ?? 0, deleted: !after, ...validation };
     return this.cloud.commit(uid, before.head, records, blobs, `agent:${operationId}`, operationId, hash, receipt);
   }
   async folders(uid: string) {
@@ -89,12 +97,12 @@ export class D1AgentLibrary implements AgentLibraryRepository {
     if (!folders.some(f => f.id === UNCATEGORIZED_FOLDER_ID)) folders.unshift({ id: UNCATEGORIZED_FOLDER_ID, name: "未分類", order: -1, createdAt: new Date(0).toISOString(), updatedAt: new Date(0).toISOString() });
     return { folders, revision: agentFoldersRevision(folders) };
   }
-  async mutateFolders(uid: string, revision: string, operationId: string, action: AgentFolderMutation) {
+  async mutateFolders(uid: string, revision: string | undefined, operationId: string, action: AgentFolderMutation) {
     const hash = await fingerprint(JSON.stringify({ revision, action }));
     const previous = await this.cloud.operation<ReturnType<typeof mutateAgentFolders>>(uid, operationId, hash);
     if (previous) return previous;
     const head = await this.cloud.head(uid), before = await this.folders(uid);
-    if (before.revision !== revision) throw new HttpError(409, "stale_folders");
+    if (revision !== undefined && before.revision !== revision) throw new HttpError(409, "stale_folders");
     const occupied = action.type === "delete_folder" ? (await this.list(uid)).map(set => set.folderId) : [];
     const result = mutateAgentFolders(before.folders, action, crypto.randomUUID(), occupied);
     const now = new Date().toISOString();

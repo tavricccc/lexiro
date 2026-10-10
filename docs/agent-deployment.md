@@ -18,15 +18,16 @@ Agent Worker 不需要 Google service-account secret 或模型 API key。生成�
 
 ## 架構與限制
 
-`library-migrations/0001_library.sql` 為 schema v1：cloud_accounts、cloud_records、cloud_memberships、cloud_question_sources、cloud_blobs、cloud_operations。原生教材 DTO 維持 v9，共用 package 2.0.0。
+`library-migrations/0001_library.sql` 為 schema v1：cloud_accounts、cloud_records、cloud_memberships、cloud_question_sources、cloud_blobs、cloud_operations。原生教材 DTO 維持 v9，共用 package 3.0.0；本次批次寫入規則沒有 D1 schema 變動。
 
 - 前端 `/sync/*` 只接受 Firebase ID token；uid 永遠由驗證結果取得。
 - Agent 與 URL 共用 D1AgentLibrary；讀字／題目從本集來源索引開始，不掃全帳號 records。EXPLAIN 已確認索引路徑。
 - JSON 批次＋CAS ticket＋operation 回條在同一 D1 batch。會員／題目來源只刪除真的移除項，不重建未變動資料；相同 records 不重寫。
 - Blob revision 拒絕過期進度／統計／偏好；來源刪除／重綁與進度調整一起提交。
-- MCP 17 tools，包含資料夾 CRUD、move_set 與 create_set.folderId。只刪空資料夾、拒絕循環／同層同名／其他 uid 的分類。
+- MCP 18 tools，包含資料夾 CRUD、move_set、create_set.folderId 與唯讀 validate_generated_questions。只刪空資料夾、拒絕循環／同層同名／其他 uid 的分類。
 - put_words／delete_words 每次最多 200；201 拒絕，題目仍按 brief 拆批。
 - URL 只管理固定 uid＋setId，可讀分類目的地並移動本集，不能改整棵資料夾樹。
+- 題目用 senseId 綁定，支援 partial／atomic 與逐題 Error／Warning；篇幅只是警告，解說選填。MCP revision／operationId 選填，但提供時保留舊版本與重送檢查；交易 CAS 仍有效。ID 衝突以本次候選 keys 批次查索引，不逐題查詢。
 
 ## 下次發布
 

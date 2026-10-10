@@ -7,6 +7,7 @@ import {
   createScopedSet,
   readAgentSet,
   readGenerationBrief,
+  validateGeneratedQuestions,
 } from "./operations";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
 import { HttpError } from "../http";
@@ -23,8 +24,8 @@ const id = z.string().uuid(),
   text = z.string().min(1);
 const writeFields = {
   setId: id,
-  expectedRevision: z.string(),
-  operationId: id,
+  expectedRevision: z.string().optional().describe("可省略；提供時會拒絕覆蓋過期版本。可直接使用上一筆回條的 revision。"),
+  operationId: id.optional().describe("可省略，由服務產生。需要斷線重送去重時，提供並沿用同一 UUID。"),
 };
 export async function handleAgentMcp(
   request: Request,
@@ -32,7 +33,7 @@ export async function handleAgentMcp(
   repo: AgentLibraryRepository,
 ) {
   const server = new McpServer(
-    { name: "Lexiro", version: "1.0.0" },
+    { name: "Lexiro", version: "1.1.0" },
     { instructions: AGENT_INSTRUCTIONS },
   );
   const tool = (
@@ -52,7 +53,7 @@ export async function handleAgentMcp(
           readOnlyHint: readOnly,
           destructiveHint: destructive,
           openWorldHint: false,
-          idempotentHint: name !== "create_set",
+          idempotentHint: readOnly,
         },
         _meta: {
           securitySchemes: [
@@ -64,6 +65,7 @@ export async function handleAgentMcp(
         try {
           const result = await run(args);
           return {
+            ...(result && typeof result === "object" && "status" in result && result.status === "rejected" ? { isError: true } : {}),
             content: [{ type: "text" as const, text: JSON.stringify(result) }],
           };
         } catch (reason) {
@@ -118,19 +120,19 @@ export async function handleAgentMcp(
   );
   tool(
     "get_set",
-    "讀取單字集、單字／詞義、題目及 revision；編輯前先讀。",
+    "讀取單字集、單字／詞義、題目及 revision；需要目前內容或來源 ID 時使用。",
     { setId: id },
     (args) => readAgentSet(repo, identity, String(args.setId)),
     true,
   );
   tool(
-    "list_folders", "列出目前使用者的資料夾、父層與資料夾 revision，分類前先查已有目的地。", {},
+    "list_folders", "需要分類目的地時，列出目前使用者的資料夾、父層與 revision。", {},
     async () => repo.folders(identity.uid), true,
   );
-  const folderWrite = { expectedRevision: text, operationId: id };
+  const folderWrite = { expectedRevision: writeFields.expectedRevision, operationId: writeFields.operationId };
   const mutateFolder = (args: Record<string, unknown>, action: AgentFolderMutation) => {
     if (identity.setId) throw new HttpError(403, "folder_outside_scope");
-    return repo.mutateFolders(identity.uid, String(args.expectedRevision), String(args.operationId), action);
+    return repo.mutateFolders(identity.uid, args.expectedRevision as string | undefined, (args.operationId as string | undefined) ?? crypto.randomUUID(), action);
   };
   tool("create_folder", "建立自己的資料夾，可指定父資料夾；同一層名稱不可重複。",
     { ...folderWrite, name: text, parentId: text.optional() },
@@ -142,14 +144,14 @@ export async function handleAgentMcp(
     { ...folderWrite, folderId: text }, args => mutateFolder(args, { type: "delete_folder", folderId: String(args.folderId) }), false, true);
   tool(
     "create_set",
-    "依使用者要求從零建立自己的單字集；先問名稱及來源，之後新增單字。",
+    "依使用者要求建立自己的單字集，可指定資料夾；已知道名稱及來源就直接建立。",
     { setName: text, folderId: text.optional() },
     (args) => createScopedSet(repo, identity, String(args.setName), args.folderId as string | undefined),
   );
   tool(
     "get_generation_brief",
-    "使用者未指定時，先問題型、難度、數量及新增或編輯，再取命題規則。由你自己生成，服務不呼叫模型。",
-    { setId: id, kind, difficulty, senseIds: z.array(text).optional() },
+    "取得可用來源與儲存格式，選用工具。使用者要求優先，可只替指定單字出題，不要求用完來源或依來源順序。",
+    { setId: id, kind, difficulty: difficulty.default(2), senseIds: z.array(text).optional() },
     (args) =>
       readGenerationBrief(
         repo,
@@ -166,7 +168,7 @@ export async function handleAgentMcp(
       expectedRevision: args.expectedRevision,
       operationId: args.operationId,
       action,
-    });
+    }, "mcp");
   tool(
     "rename_set",
     "修改本集名稱。",
@@ -174,26 +176,26 @@ export async function handleAgentMcp(
     (args) => mutate(args, { type: "rename_set", setName: args.setName }),
   );
   tool(
-    "move_set", "把本集移至目前使用者既有資料夾；先 list_folders 取得folderId，未分類為 __uncategorized__。",
+    "move_set", "把本集移至自己的既有資料夾；folderId 可取自 list_folders，未分類為 __uncategorized__。",
     { ...writeFields, folderId: text }, args => mutate(args, { type: "move_set", folderId: args.folderId }),
   );
   tool(
     "put_words",
-    "每次新增或編輯1至200筆本集單字；更大批次按200拆批並重讀revision。修改保留 wordKey、詞義id；所列單字的 senses 是完整替換。",
+    "每次新增或編輯1至200筆指定單字，其他單字保持原狀。修改保留 wordKey、詞義id；所列單字的 senses 是完整替換，examples 可省略。",
     {
       ...writeFields,
       words: z
         .array(
-          z.strictObject({
+          z.object({
             wordKey: text.optional(),
             word: text,
             senses: z
               .array(
-                z.strictObject({
+                z.object({
                   id: text.optional(),
                   pos: text,
                   meaningZh: text,
-                  examples: z.array(text),
+                  examples: z.array(text).optional(),
                   supplementary: z.boolean().optional(),
                 }),
               )
@@ -214,23 +216,32 @@ export async function handleAgentMcp(
   );
   tool(
     "put_questions",
-    "新增或編輯完整正式題目。修改保留 id；來源 wordKey／senseId 只可取自本集。",
+    "新增或編輯最多200個完整題目／題組。修改保留 id，來源只可取自本集；預設 partial 儲存有效題，atomic 則有錯全批不寫入。",
     {
       ...writeFields,
-      questions: z.array(z.record(z.string(), z.unknown())).min(1),
+      questions: z.array(z.record(z.string(), z.unknown())).min(1).max(200),
+      mode: z.enum(["atomic", "partial"]).default("partial"),
     },
     (args) =>
-      mutate(args, { type: "put_questions", questions: args.questions }),
+      mutate(args, { type: "put_questions", questions: args.questions, mode: args.mode }),
   );
+  const generatedFields = {
+    setId: id, kind, difficulty: difficulty.default(2),
+    senseIds: z.array(text).min(1).optional(),
+    output: z.record(z.string(), z.unknown()),
+    mode: z.enum(["atomic", "partial"]).default("partial"),
+  };
+  tool("validate_generated_questions", "唯讀檢查自己生成的候選題；回傳穩定來源 ID、逐題錯誤與警告，不寫入、不改 revision、不呼叫模型。", generatedFields,
+    args => validateGeneratedQuestions(repo, identity, String(args.setId), {
+      kind: kind.parse(args.kind), difficulty: difficulty.parse(args.difficulty),
+      senseIds: args.senseIds as string[] | undefined, output: args.output, mode: args.mode as "atomic" | "partial",
+    }), true);
   tool(
     "save_generated_questions",
-    "提交你自己生成的 raw JSON，程式驗證、挖空及綁定来源。先取得命題規則。",
+    "提交自己生成的 JSON，每題以 senseId 綁定來源，順序不限。預設 partial：儲存有效題並回傳逐題錯誤；atomic 有錯則全批不寫入。篇幅只回傳 warning，解說選填，brief 選用。",
     {
       ...writeFields,
-      kind,
-      difficulty,
-      senseIds: z.array(text).min(1),
-      output: z.record(z.string(), z.unknown()),
+      ...generatedFields,
     },
     (args) =>
       mutate(args, {
@@ -239,6 +250,7 @@ export async function handleAgentMcp(
         difficulty: args.difficulty,
         senseIds: args.senseIds,
         output: args.output,
+        mode: args.mode,
       }),
   );
   tool(

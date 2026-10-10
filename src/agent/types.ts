@@ -10,6 +10,7 @@ import type {
   AgentFolderMutation,
   AgentFolderMutationResult,
   VocabFolder,
+  AgentQuestionReport,
 } from "@lexiro/agent-contract";
 export interface AgentEnv {
   AGENT_DB: D1Database;
@@ -25,7 +26,7 @@ export interface AgentIdentity {
   email: string;
   setId?: string;
 }
-export interface MutationReceipt {
+export interface MutationReceipt extends Partial<AgentQuestionReport> {
   operationId: string;
   setId: string;
   revision: string;
@@ -36,16 +37,16 @@ export interface MutationReceipt {
 export interface AgentLibraryRepository {
   list(uid: string): Promise<{ id: string; setName: string; folderId: string }[]>;
   folders(uid: string): Promise<{ folders: VocabFolder[]; revision: string }>;
-  mutateFolders(uid: string, revision: string, operationId: string, action: AgentFolderMutation): Promise<AgentFolderMutationResult>;
+  mutateFolders(uid: string, revision: string | undefined, operationId: string, action: AgentFolderMutation): Promise<AgentFolderMutationResult>;
   read(uid: string, setId: string): Promise<AgentSetSnapshot | null>;
   create(uid: string, snapshot: AgentSetSnapshot): Promise<void>;
   mutate(
     uid: string,
     setId: string,
-    revision: string,
+    revision: string | undefined,
     operationId: string,
     action: unknown,
-    apply: (snapshot: AgentSetSnapshot) => AgentMutationResult,
+    apply: (snapshot: AgentSetSnapshot, blockedQuestionIds: string[]) => AgentMutationResult,
   ): Promise<MutationReceipt>;
 }
 export type AgentContext = ExecutionContext & { props?: unknown };

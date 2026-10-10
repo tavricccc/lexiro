@@ -8,6 +8,7 @@ import { handleCloudApi } from '../src/cloud/api';
 import { DEFAULT_AI_MODEL } from '@lexiro/ai-contract';
 import { snapshotRecords } from '../src/cloud/records';
 import type { AgentEnv } from '../src/agent/types';
+import { applyAgentMutation, validateGeneratedQuestions } from '../src/agent/operations';
 
 const A='11111111-1111-4111-8111-111111111111';
 const B='22222222-2222-4222-8222-222222222222';
@@ -28,6 +29,40 @@ function words(count:number) {
 }
 
 describe('native D1 agent library with synthetic users',()=>{
+  it('validates without writes, atomically rejects or partially saves 97/100, replays diagnostics and isolates question IDs',async()=>{
+    const f=await fixture();
+    try {
+      const identity={uid:'a',email:'synthetic@example.invalid'};
+      await applyAgentMutation(f.repo,identity,A,{action:{type:'put_words',words:[{word:'rescue',senses:[{pos:'v.',meaningZh:'救援'}]}]}},'mcp');
+      const before=(await f.repo.read('a',A))!,senseId=before.words[0].senses[0].id;
+      const items=Array.from({length:100},(_,i)=>({itemId:`candidate-${i}`,senseId,sentence:`They rescue stranded hikers during emergency number ${i}.`,answer:'rescue',distractors:['ignore','delay','watch']}));
+      items[17].senseId='sense-foreign' as typeof senseId;items[42].distractors[0]='rescue';items[75].sentence='They went home before midnight.';
+      const generation={kind:'vocabulary' as const,difficulty:2 as const,output:{items}};
+      const head=await f.db.prepare('SELECT revision FROM cloud_accounts WHERE uid=?').bind('a').first();
+      const checked=await validateGeneratedQuestions(f.repo,identity,A,generation);
+      expect(checked).toMatchObject({dryRun:true,savedCount:0,validCount:97,failedCount:3});
+      expect(await f.db.prepare('SELECT revision FROM cloud_accounts WHERE uid=?').bind('a').first()).toEqual(head);
+      const atomic=await applyAgentMutation(f.repo,identity,A,{action:{type:'generated_questions',...generation,mode:'atomic'}},'mcp');
+      expect(atomic).toMatchObject({status:'rejected',savedCount:0,revision:agentSetRevision(before)});
+      const envelope={operationId:randomUUID(),action:{type:'generated_questions',...generation}};
+      const receipt=await applyAgentMutation(f.repo,identity,A,envelope,'mcp');
+      expect(receipt).toMatchObject({status:'partial_success',submittedCount:100,savedCount:97,failedCount:3,questionCount:97});
+      expect(await applyAgentMutation(f.repo,identity,A,envelope,'mcp')).toEqual(receipt);
+      expect((await f.repo.read('a',A))!.questions).toHaveLength(97);
+      const other=mutateAgentSet(createAgentSet(randomUUID(),'同帳號另一集'),{type:'put_words',words:[{word:'rescue',senses:[{pos:'v.',meaningZh:'救援'}]}]}).snapshot!;
+      const foreign={id:'occupied-question',kind:'multipleChoice',questionStyle:'vocabulary',difficulty:2,prompt:'They _____ the hikers.',options:['rescue','ignore','delay','watch'],answerIndex:0,wordKey:other.words[0].wordKey,senseId:other.words[0].senses[0].id};
+      await f.repo.create('a',other);
+      await applyAgentMutation(f.repo,identity,other.set.id,{action:{type:'put_questions',questions:[foreign]}},'mcp');
+      const collision=await applyAgentMutation(f.repo,identity,A,{action:{type:'put_questions',questions:[
+        {...foreign,wordKey:before.words[0].wordKey,senseId},
+        {...foreign,id:'allowed-question',wordKey:before.words[0].wordKey,senseId},
+      ]}},'mcp');
+      expect(collision).toMatchObject({status:'partial_success',savedCount:1,failedCount:1,questionCount:98});
+      expect(collision.errors?.[0].code).toBe('question_outside_scope');
+      expect((await f.repo.read('a',other.set.id))!.questions[0].id).toBe('occupied-question');
+      expect(await f.repo.read('b',A)).toBeNull();
+    }finally{await f.runtime.dispose();}
+  });
   it('stores 200 words, rejects 201 without writing, and reuses a receipt exactly',async()=>{
     const f=await fixture();
     try {

@@ -4,22 +4,32 @@ import {
   agentSetRevision,
   createAgentSet,
   mutateAgentSet,
+  validateAgentGeneratedQuestions,
   type GeneratedQuestionKind,
   type QuestionDifficulty,
 } from "@lexiro/agent-contract";
 import { HttpError } from "../http";
-import { questionPrompt } from "../question-prompts";
-import { jsonSchema, questionOutput } from "../schemas";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
 export const mutationEnvelope = z.strictObject({
   expectedRevision: z.string().regex(/^[a-f0-9]{32}$/),
   operationId: z.string().uuid(),
   action: z.unknown(),
 });
+const mcpMutationEnvelope = mutationEnvelope.extend({
+  expectedRevision: mutationEnvelope.shape.expectedRevision.optional(),
+  operationId: mutationEnvelope.shape.operationId.default(() => crypto.randomUUID()),
+});
 export function scopedSet(identity: AgentIdentity, setId: string) {
   if (identity.setId && identity.setId !== setId)
     throw new HttpError(403, "set_outside_scope");
   return setId;
+}
+export async function validateGeneratedQuestions(
+  repo: AgentLibraryRepository, identity: AgentIdentity, setId: string,
+  value: Parameters<typeof validateAgentGeneratedQuestions>[1],
+) {
+  const { snapshot, revision } = await readAgentSet(repo, identity, setId);
+  return { ...validateAgentGeneratedQuestions(snapshot, value), revision, dryRun: true };
 }
 export async function readAgentSet(
   repo: AgentLibraryRepository,
@@ -35,17 +45,18 @@ export async function applyAgentMutation(
   identity: AgentIdentity,
   setId: string,
   value: unknown,
+  transport: "url" | "mcp" = "url",
 ) {
-  const input = mutationEnvelope.parse(value);
+  const input = (transport === "mcp" ? mcpMutationEnvelope : mutationEnvelope).parse(value);
   return repo.mutate(
     identity.uid,
     scopedSet(identity, setId),
     input.expectedRevision,
     input.operationId,
     input.action,
-    (snapshot) => {
+    (snapshot, blockedQuestionIds) => {
       try {
-        return mutateAgentSet(snapshot, input.action);
+        return mutateAgentSet(snapshot, input.action, blockedQuestionIds);
       } catch (reason) {
         const error = new HttpError(400, "invalid_content");
         error.message =
@@ -77,14 +88,13 @@ export async function readGenerationBrief(
   const { snapshot, revision } = await readAgentSet(repo, identity, setId);
   let brief: ReturnType<typeof agentGenerationBrief>;
   try {
-    if (senseIds) z.array(z.string().min(1)).min(1).max(30).parse(senseIds);
+    if (senseIds) z.array(z.string().min(1)).min(1).parse(senseIds);
     brief = agentGenerationBrief(snapshot, kind, difficulty, senseIds);
   } catch (reason) {
     const error = new HttpError(400, "invalid_content");
     error.message = reason instanceof Error ? reason.message : "來源格式錯誤";
     throw error;
   }
-  const prompt = questionPrompt(kind, brief.sources, difficulty);
   return {
     ...brief,
     setId,
@@ -96,8 +106,7 @@ export async function readGenerationBrief(
       discourse: 30,
       reading: 30,
     }[kind],
-    rules: prompt.instructions,
-    specification: prompt.input,
-    outputSchema: jsonSchema(questionOutput(kind)),
+    rules: brief.instructions,
+    specification: { kind, difficulty, sources: brief.sources },
   };
 }
