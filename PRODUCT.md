@@ -16,14 +16,15 @@ Lexiro turns personally collected vocabulary senses and examples into an offline
 
 ## Positioning
 
-Lexiro treats a vocabulary sense—not a loose word string or a copy inside each set—as the durable unit shared by organization, questions, review scheduling, and statistics. Sets are views over shared learning material rather than isolated copies.
+Each vocabulary set owns its words, senses, examples, questions, review scheduling, and per-sense statistics. Matching spellings in different sets are independent material. Copying or sharing creates new identities; editing or deleting one copy affects its own set.
 
 ## Operating Context
 
 - Vocabulary is collected and organized into folders and sets.
-- A word may contain multiple Chinese meanings, parts of speech, and shared examples.
+- A word may contain multiple Chinese meanings, parts of speech, and examples within its own set.
 - New vocabulary is entered manually or organized by AI; validated generated results are reviewed and added explicitly, with completed output retained for recovery.
 - Questions may be authored manually or generated with AI; generated questions are reviewed with their target senses before they are added to the Library.
+- Saving examples never creates saved questions. A saved set can clear its own questions, and the question bank can clear all questions; both preserve vocabulary, examples, and learning history and offer generation after successful deletion.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and FSRS review.
 - 英選中保留為單字複習；AI 與題庫練習只提供學測的詞彙、綜合測驗、文意選填、篇章結構與閱讀。拼字及獨立文法題停用，舊資料保留供備份。
 - The application is expected to remain useful offline and synchronize later when signed in.
@@ -77,7 +78,7 @@ Lexiro treats a vocabulary sense—not a loose word string or a copy inside each
 ## Product Principles
 
 1. Optimize for one person's daily learning flow, not administrative completeness.
-2. Keep one canonical sense-centered data model across sets, questions, review, and statistics.
+2. Keep one canonical set-owned data model linking senses, questions, review, and statistics.
 3. Make capture lightweight and consequential edits explicit, previewable, and reversible where practical.
 4. Remain trustworthy offline; migration and synchronization must never silently discard learning data.
 5. Prefer a smaller number of coherent workflows over parallel legacy paths and duplicated settings.

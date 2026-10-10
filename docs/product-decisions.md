@@ -1,5 +1,17 @@
 # Confirmed product decisions
 
+## 單字集內容獨立與重新出題（2026-10-10）
+
+依使用者要求，每個單字集各自保存單字、詞義、例句與題目。同一拼字出現在不同集時，編輯、補充詞義、刪除與生成都只作用於所選集。新題目的全部來源必須在同一集；全題庫的生成入口先選集。分享匯入會重建整組來源與子題 ID，不保留跨集可變的參照。
+
+舊共享資料按每集原本收錄的詞義與可見題目，一次複製為獨立資料。每詞義的學習卡與歷史明細各自承接；帳號總次數、每日紀錄與連續天數不因此增加。舊文章題若來源橫跨多集，保存在明確的「遷移保留題組」，保留文章與全部子題。
+
+單字集的題目分頁可一次清空本集題目；全題庫可一次清空全部題目，涵蓋不在篩選結果中的題目與歷史文法題。確認視窗說明範圍與數量，保存成功後才顯示完成並提供「重新生成題目」。單字、詞義、例句、學習紀錄與其他集的題目保持原狀。保存例句不會自動建立題目；英選中仍是即時單字複習，不寫入題庫。
+
+英選中的正解仍只採本集收錄詞義。其他集同拼字的合法意思只參與「排除錯項」：例如 bank 分別收錄銀行與河岸，兩義不會互相當作錯誤翻譯；不把別集詞義補進本集答案或教材。同一輪以各集單字身份為來源，每個身份最多一次。
+
+本機和雲端各自從舊格式完成一次遷移。新版雲端使用 v9 路徑，保留原待送編輯與刪除的來源紀錄，不把未修改的本機舊副本當成新編輯覆蓋雲端。遷移中斷可接續；完整發布後才清理雲端舊資料。已完成的生成結果與練習草稿重綁原所選集；原付費操作 ID、用量、題序與呈現選項不重抽。來源無法確認時保留原稿並提示處理，不自動開新付費工作。
+
 ## 出題與練習的接續回饋（2026-10-09）
 
 AI 生成重新開啟後保留實際完成數與原工作操作 ID。只接續未完成段落，不把部分成果標為全部完成，也不默默重新付費。帳號、來源與出題契約必須相符；超過 30 分鐘的未完成操作無法續接，已完成題目仍可校對保存。校對排除選擇保留到使用者明確重新生成。
@@ -131,15 +143,13 @@ distractor, a coherent passage — and the rest is built in code. In practice:
   distractors and reports where it landed.
 - The model never returns ids, fingerprints, timestamps, or the link back to the
   source sense. Those are minted from the request.
-- Locally built questions use same-part-of-speech library distractors. Generated
-  questions retain the model's context-specific distractors after validation.
-- A 詞彙題 whose sense already has an example sentence containing the base form
-  is built with **no request at all**: their sentence, their word, their
-  distractors.
+- Saved exam questions retain the model's context-specific distractors after
+  validation. Example sentences remain study material; they are never converted
+  automatically into saved questions.
 - An item the model got wrong is dropped and reported, not saved; a batch with
   nothing usable fails so it can be retried.
 
-**AI uses the managed Worker and runs serially.** Learners sign in, choose Lite,
+**AI uses the managed Worker with bounded independent requests.** Learners sign in, choose Lite,
 Thinking or Pro, and see point estimates before generation. Provider settings,
 credentials and prompts belong to the private backend. The previous manual
 copy/paste prompt workflow and BYO-key settings have been removed.
@@ -219,7 +229,7 @@ by nested cards; at most one orchestrated entrance animation per screen.
 英選中直接從單字庫出題，不呼叫 AI，也不新增題庫紀錄。每題顯示一個英文單字
 與四個不同的中文選項；任何已收錄詞義都可以作為正解，但選項只包含其中一義。
 其他三項來自其他單字，排除目標單字的所有已收錄詞義與重複中文；不足三個干擾項
-就不出該題。英選中每輪同一個字只出一次，且不受 AI 題目難度篩選影響。
+就不出該題。英選中每輪同一個集內的字只出一次，且不受 AI 題目難度篩選影響。
 答題會記錄題型表現與單字練習進度，保留 FSRS 排程。保存成功才揭答與前進；閱讀
 文章的子題仍保持連續，共用已用正解在按鈕及快捷鍵上都停用。
 
@@ -274,10 +284,10 @@ the account permanently unable to sync with nothing the user could do about it,
 so `repairLibraryState` resolves every conflict to something: a duplicate name
 gets a suffix, a reference to something that is gone is dropped.
 
-AI credentials are no longer browser data. Journal v4 preserves queued library
-and learning work and tracks the separate model preference. Full backup v4
-contains the current library, learning progress and statistics, without credentials;
-older backup versions are refused.
+AI credentials are no longer browser data. Journal v5 preserves queued library
+and learning work, tracks the separate model preference, and records unresolved
+legacy sources during set isolation. Full backup v5 contains the current library,
+learning progress and statistics without credentials; v4 is migrated once on import.
 
 **The workspace opens on local data.** Startup waited for the first cloud
 reconciliation before showing anything, which put a network round trip — and

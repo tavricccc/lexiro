@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/re
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { WordEditor } from "@/components/library/word-editor";
 import { prepareWordEdit } from "@/src/lib/word-edit";
-import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
+import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 import { emptyLibraryState } from "@/src/lib/library-repository";
 import { useLibraryStore } from "@/stores/library-store";
 import type { LibraryState } from "@/types";
@@ -15,7 +15,7 @@ function fixture(): LibraryState {
   const state = emptyLibraryState();
   state.sets = [{ id: "set", setName: "latest name", folderId: "folder", createdAt: "2026-09-12", updatedAt: "2026-09-12" }];
   for (const word of ["apple", "river"]) {
-    const wordKey = normalizeWordKey(word), id = buildSenseId(wordKey, "n.", word);
+    const wordKey = buildSetWordKey("set", word), id = buildSenseId(wordKey, "n.", word);
     state.words[wordKey] = { wordKey, word, senses: [{ id, pos: "n.", meaningZh: word, examples: ["first", "second"], supplementary: false }], updatedAt: "2026-09-12" };
   }
   state.memberships.set = Object.values(state.words).map((word) => ({ wordKey: word.wordKey, senseIds: word.senses.map((sense) => sense.id) }));
@@ -24,20 +24,20 @@ function fixture(): LibraryState {
 
 describe("single-word editing", () => {
   it("preserves current metadata and unrelated words and remaps only the edited sense", () => {
-    const state = fixture(), key = normalizeWordKey("apple"), old = state.words[key].senses[0];
+    const state = fixture(), key = buildSetWordKey("set", "apple"), old = state.words[key].senses[0];
     const input = prepareWordEdit(state, "set", key, { word: "apple", senses: [{ id: old.id, pos: "n.", meaning: "蘋果", examples: ["new example"], supplementary: false }] });
     expect(input.setName).toBe("latest name");
     expect(input.words.find((word) => word.word === "river")?.examples).toEqual(["first", "second"]);
     expect(input.remaps).toEqual([{ oldWordKey: key, oldSenseId: old.id, newWordKey: key, newSenseId: buildSenseId(key, "n.", "蘋果") }]);
   });
   it("really deletes an example when saving unchanged word identity", async () => {
-    const state = fixture(), key = normalizeWordKey("apple"), old = state.words[key].senses[0];
+    const state = fixture(), key = buildSetWordKey("set", "apple"), old = state.words[key].senses[0];
     useLibraryStore.setState({ state, status: "ready" });
     const input = prepareWordEdit(state, "set", key, { word: "apple", senses: [{ id: old.id, pos: old.pos, meaning: old.meaningZh, examples: ["second"], supplementary: false }] });
     expect(input.remaps).toEqual([]);
     await useLibraryStore.getState().saveSet(input);
     expect(useLibraryStore.getState().state.words[key].senses[0].examples).toEqual(["second"]);
-    expect(useLibraryStore.getState().state.words[normalizeWordKey("river")].senses[0].examples).toEqual(["first", "second"]);
+    expect(useLibraryStore.getState().state.words[buildSetWordKey("set", "river")].senses[0].examples).toEqual(["first", "second"]);
   });
   it("saves separately editable examples and leaves the original preview untouched", async () => {
     const value = { word: "apple", senses: [{ id: "a", pos: "n.", meaning: "蘋果", examples: ["first", "second"], supplementary: false }] }, save = vi.fn();

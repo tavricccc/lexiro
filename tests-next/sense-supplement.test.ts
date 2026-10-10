@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
+import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 import { emptyLibraryState } from "@/src/lib/library-repository";
 import { supplementTask } from "@/src/lib/ai/tasks";
 import { prepareWordEdit, setWordDrafts } from "@/src/lib/word-edit";
@@ -112,7 +112,7 @@ describe("what a supplemented meaning survives", () => {
         { word: "bank", pos: "n.", meaningZh: "河岸", examples: [], supplementary: true },
       ],
     });
-    const key = normalizeWordKey("bank");
+    const key = buildSetWordKey("set", "bank");
     const saved = () => useLibraryStore.getState().state.words[key].senses;
     expect(saved().map((sense) => sense.supplementary)).toEqual([false, true]);
     expect(setWordDrafts(useLibraryStore.getState().state, "set")[1].supplementary).toBe(true);

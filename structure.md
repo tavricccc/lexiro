@@ -34,6 +34,8 @@ Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer�
 
 `components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share、full-backup 和 learning-backup 處理。
 
+`library-set-migration.ts` 建立每集獨立內容、一次重綁舊來源；`learning-scope-migration.ts` 承接歷史卡片與明細，不增加帳號總量。`set-share.ts` 為分享複製重建新集的父／子題來源。`source-scope.ts` 讓單句／文章編輯來源限制在一集；`clear-questions-control.tsx` 共用清空範圍、確認、保存回饋及重新生成入口。保存例句不建立題目。
+
 Question formats 重用 AI contract 的學測題型表；question-quality 檢查新生成情境／完整文章的字數與共用 options，question-teaching 核對中文解說、錯項 option／reason 的唯一對應，question-word-forms 檢查來源合法詞形，question-discourse 檢查完整非相鄰刪句，question-assembly 檢查確切 usage／answer span 與空格重疊，question-builders 負責選項排序與正解位置。共用選項先寫定，理由依選項文字保存，不依模型輸出順序配對。詞彙題的情境和干擾項統一由 Worker 生成。Generated results 呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
 
 QuestionWorkspace 管桌機雙欄／手機分頁，QuestionPager 一次切換一題或空格。ReadingForm 保留 canonical 題型與共用 bank，並遷移舊編輯草稿；OptionReasons 同步選項文字與理由，DistractorReasonsEditor 供單題及子題校對。生成結果保留可選取／排除名單，加入時只保存選取項目。
@@ -44,6 +46,10 @@ QuestionMetadata 在手機收合標題與難度；錯誤展開後聚焦，桌機
 
 Practice setup／queue 統一英選中與五種學測題型。Meaning questions 本機建立四選項；question-card 判分，session actions 保存成績及必要 FSRS rating，persistence 保存 v5 題序／答案／原選項。practice-session 一次移除舊拼字／文法 entry 並重排；Keyboard hook 隔離組字、編輯和忙碌狀態。退役的 review-card 及其拼字測試已移除。
 
+Meaning questions 的可接受答案依本集 wordKey 取得；同拼字在其他集的合法詞義只用於排除歧義錯項，不合併成本集內容。
+
+`practice-scope-migration.ts` 從最新 Library 反算舊 entry／sense 身份，一次遷移練習草稿並保存當次呈現選項；缺來源或寫入失敗時保留原稿供明確重新開始。Queue 套用已存選項，不因新 ID 重新抽順序。
+
 QuestionCard 協調文章分頁、定位、一鍵返回與同篇閱讀位置；QuestionOptions／QuestionFeedback 分別管選取及本小題解說。practice-content 的 usedBlankForOption 讓共用已用答案在點擊及快捷鍵共用相同判斷。Session actions 等學習紀錄成功才揭答，pendingChoice 只表示暫時選取。
 
 Learning store、learning-persistence 和 fsrs 保存 card／stats，進度頁從 library-metrics 與 learning-defaults 計算掌握、每日活動和連續學習。資料先保存才前進，失敗可重試；詳見[練習](docs/practice.md)。
@@ -51,6 +57,10 @@ Learning store、learning-persistence 和 fsrs 保存 card／stats，進度頁�
 ## 同步與帳號
 
 `stores/cloud-store.ts` 協調 Firebase session、namespace 載入、sync debounce、retry 與 account handoff。`src/lib/cloud-sync.ts` 按 writtenAt／documentId 拉增量並分批 push，cloud-records 合併 server-order records 並保留 dirty；sync-journal 只清已送的 version。Cloud account 合併 learning／stats，cloud-preferences 讀寫 owner-only AI 偏好。
+
+`cloud-set-migration.ts` 從完整唯讀舊遠端資料建立新路徑，分批 transaction 後原子發布學習資料與完成 marker；成功後才清理舊副本。本機 migration intent 保留真實待送編輯／刪除的身份與版本；Journal 舊來源標記只用於升級時解開尚未對映的紀錄，不影響一般新版刪除。
+
+`cloud-pending-scope.ts` 將 Journal 持久標記的舊待送來源，對應到完整新版記錄中的集合副本，供原子重綁刪除／修改使用；離線舊刪除不復活，新版集合的獨立題目副本也不被連帶刪除。
 
 Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回應不能跨帳號套用。`components/me/use-autosave.ts` 與 preference-drafts 管實際修改欄位及待存設定，preference-recovery 提供恢復選擇。同步文案由 sync-status 統一，pending 不顯示已同步。
 
@@ -60,7 +70,11 @@ AI task builders、runner、session 只組來源資料、拆批、解析及接�
 
 `src/lib/ai/run-checkpoint.ts` 保存 session、pending operation ID、lanes、已接收回覆與修復來源。重新整理後先核對帳號、任務、契約及期限，再接回原生成；過期與契約錯誤保留完成成果並顯示原因，不自動發起新付費任務。生成結果及練習的儲存失敗保留草稿、答案與部分成功數量，重試走原保存流程。
 
-AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 4.0.0 與 Worker tgz 共同規範請求、single-pass-v2 單次生成與單題重生、估算、題型／篇幅和管理 expected 版本。新 raw 共用 options 與帶 option 的錯項理由不接受舊格式；既有 normalized 題目資料不變。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
+`components/questions/question-generation-draft.ts` 一次重綁已完成題目與各層 checkpoint 成果，保留付費 metadata；`question-draft-recovery.tsx` 在來源無法確認時保留原稿，提供純本機選集重綁，不掛載會清空成果的生成流程。
+
+`components/library/supplement-source-scope.ts` 一次重綁舊補充詞義草稿的選字來源，僅使用本集別名；來源無法確認時保留已完成詞義與原操作，先在本集重選再掛載流程。
+
+AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 5.0.0 與 Worker tgz 共同規範請求、single-pass-v3 單次生成與單題重生、估算、題型／篇幅和管理 expected 版本。新 raw 共用 options 與帶 option 的錯項理由不接受舊格式。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
 
 `components/ai/ai-diagnostic.tsx` 共用管理員錯誤診斷；AiUsage 在生成與整理流程呈現實際用量。`components/ai/use-token-rate.ts` 每 100ms 更新該批次平均輸出 TPS，所有使用者都能在 TaskProgress 看見；本機 tokenizer 的估計不包含推理 token，供應商回報負責最終結算。
 
@@ -68,7 +82,7 @@ AI preference store 在開始 session 時固定模型，整理頁可另選兩個
 
 `lib/generation-connection.ts` 為每次生成固定 operation ID，網路中斷用 authenticated GET 接回同一次生成；同頁面的手動續跑保留該 ID。生成不帶前一批 cursor，每批上下文獨立；固定 prompt／schema／cache key 保持不變。管理員可看 transport／job ID／response ID／耗時與中斷原因。批次 TPS 以後端原任務開始時間計算，回放不重複累計用量。
 
-`src/lib/ai/parallel-runner.ts` 先用實際第一批產出暖快取，再最多兩個 lanes 並行；每個 lane 保存自己的 session 用量／pending job 與局部修復工作，父流程按來源順序合併成果。暫停期間編輯已接受成果會重設合併基準，保留未完成任務 ID。詞彙題每批 16 個詞義、單字最多 30 個來源／5,000 字元；進度聚合計數、TPS 逐批顯示。
+`src/lib/ai/parallel-runner.ts` 先用實際第一批產出暖快取，再最多四個 lanes 並行；每個 lane 保存自己的 session 用量／pending job 與局部修復工作，父流程按來源順序合併成果。暫停期間編輯已接受成果會重設合併基準，保留未完成任務 ID。詞彙題每批四個詞義、文章題維持完整題組，單字最多 30 個來源／5,000 字元；進度聚合計數、TPS 逐批顯示。
 
 Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。ConfirmDialog 統一鎖定、失敗與重試；backup-actions 協調兩段匯入，admin-account-adjustment 只送變更並確認餘額，admin pagination 用 cursor history。
 

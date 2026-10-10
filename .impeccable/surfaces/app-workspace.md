@@ -17,3 +17,6 @@ Local verification: material creation and storage, tab switching and entry into 
 Back controls show the arrow only; accessible labels retain the destination.
 整理文字／照片沿用 GenerationControls、ListPicker 與 TaskProgress；Pro 固定 Sol/low，TPS 為前 500ms、每 100ms 更新的輸出估計。管理員用量與診斷共用既有元件，所有人可選模型與檔位。
 本輪元件行為與靜態設計檢查通過；未做瀏覽器視覺驗收。
+
+2026-10-10 內容隔離延續此方向：單字集與題庫共用清空控制，明確區分本集／全庫，確認保存後才顯示重新生成入口。控制維持手機 44px、桌機 36px；編輯固定來源集，無法重綁的生成、補義與練習草稿在原工作區保留成果並提供恢復選擇。
+本次 finish review 以元件互動測試、既有 token／元件來源與靜態檢查核對；沒有新圖像、版型或配色。瀏覽器視覺與真實 Firebase 多裝置驗收仍未執行。
