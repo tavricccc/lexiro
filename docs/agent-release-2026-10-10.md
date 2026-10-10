@@ -73,3 +73,5 @@ URL 首頁／get_set 改回摘要；列表回 items 分頁，brief 預設只回�
 本機195次 HTTP 回歸通過；`gpt-6.1-sol low` 子代理依補齊的指引用6次 HTTP、全部200完成新增、一次取來源與完整提示、生成保存、細部編輯與一次精確讀回。合成200詞／199題的整集教材 JSON 約60,322 tokens，首頁約1,004、指定5詞與3題約746（o200k_base估算）。條件與範例見 [按需操作](agent-query.md)。
 
 本次只有 Agent runtime 和文件變更，執行 deploy-agent.yml 即可；不需要新版資料 migration、共用套件或 Vercel 發布。完整五型原提示與內建生成共用，沒有修改使用者教材或呼叫模型 API。
+
+發布回條：後端 `b728392`（實作 `0e5011e`）的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38072862060) 成功，遠端197個測試與全部發布檢查通過。正式 health／OAuth discovery 200、未授權 MCP POST 401。公開前端 `5ffc3f0` 僅更新文件，本次沒有 Vercel 發布；新功能的 authenticated 讀寫證據來自本機合成資料與子代理，未寫入正式使用者教材或測量正式CPU。
