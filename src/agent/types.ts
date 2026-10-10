@@ -12,6 +12,7 @@ import type {
   VocabFolder,
   AgentQuestionReport,
 } from "@lexiro/agent-contract";
+import type { AgentQuery } from "./query";
 export interface AgentEnv {
   AGENT_DB: D1Database;
   CLOUD_DB: D1Database;
@@ -35,9 +36,17 @@ export interface MutationReceipt extends Partial<AgentQuestionReport> {
   deleted: boolean;
 }
 export interface AgentLibraryRepository {
-  list(uid: string): Promise<{ id: string; setName: string; folderId: string }[]>;
+  query(uid: string, query: AgentQuery): Promise<Record<string, unknown>>;
+  list(
+    uid: string,
+  ): Promise<{ id: string; setName: string; folderId: string }[]>;
   folders(uid: string): Promise<{ folders: VocabFolder[]; revision: string }>;
-  mutateFolders(uid: string, revision: string | undefined, operationId: string, action: AgentFolderMutation): Promise<AgentFolderMutationResult>;
+  mutateFolders(
+    uid: string,
+    revision: string | undefined,
+    operationId: string,
+    action: AgentFolderMutation,
+  ): Promise<AgentFolderMutationResult>;
   read(uid: string, setId: string): Promise<AgentSetSnapshot | null>;
   create(uid: string, snapshot: AgentSetSnapshot): Promise<void>;
   mutate(
@@ -46,7 +55,10 @@ export interface AgentLibraryRepository {
     revision: string | undefined,
     operationId: string,
     action: unknown,
-    apply: (snapshot: AgentSetSnapshot, blockedQuestionIds: string[]) => AgentMutationResult,
+    apply: (
+      snapshot: AgentSetSnapshot,
+      blockedQuestionIds: string[],
+    ) => AgentMutationResult,
   ): Promise<MutationReceipt>;
 }
 export type AgentContext = ExecutionContext & { props?: unknown };

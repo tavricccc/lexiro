@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";
-import { mutateAgentSet, UNCATEGORIZED_FOLDER_ID } from "@lexiro/agent-contract";
-const DEFAULT_AI_MODEL="gpt-6-luna";
+import { UNCATEGORIZED_FOLDER_ID } from "@lexiro/agent-contract";
+import { countTokens } from "gpt-tokenizer/encoding/o200k_base";
+const DEFAULT_AI_MODEL = "gpt-6-luna";
 import { execFileSync } from "node:child_process";
 const base = "http://127.0.0.1:8791",
   A = "11111111-1111-4111-8111-111111111111",
@@ -53,7 +54,34 @@ async function snapshot() {
     headers: { authorization: `Bearer ${token}`, accept: "application/json" },
   });
   assert.equal(r.status, 200);
-  return r.json();
+  const summary = await r.json();
+  assert.equal(summary.snapshot, undefined);
+  const readPages = async (resource) => {
+    const items = [];
+    let cursor;
+    do {
+      const page = (
+        await req(
+          `${path}/${resource}?view=detail&limit=50${cursor ? "&cursor=" + encodeURIComponent(cursor) : ""}`,
+          "GET",
+          undefined,
+          token,
+        )
+      ).data;
+      items.push(...page.items);
+      cursor = page.nextCursor;
+    } while (cursor);
+    return items;
+  };
+  // Reconstruct material only inside this local regression script.
+  return {
+    revision: summary.revision,
+    snapshot: {
+      set: summary.set,
+      words: await readPages("words"),
+      questions: await readPages("questions"),
+    },
+  };
 }
 async function mutate(action) {
   const s = await snapshot();
@@ -131,31 +159,36 @@ let brief = (
     token,
   )
 ).data;
-assert.equal(brief.sources.length, 2);
-assert.equal(typeof brief.rules, "string");
+assert.equal(brief.sourceCount, 2);
+assert.equal(brief.rules, undefined);
 assert(brief.specification);
-assert.equal(brief.outputSchema.type, "object");
-assert(brief.outputSchema.properties.items);
+const prompt = (
+  await req(`${path}/prompt?kind=vocabulary`, "GET", undefined, token)
+).data;
+assert.equal(typeof prompt.rules, "string");
+assert.equal(prompt.outputSchema.type, "object");
+assert(prompt.outputSchema.properties.items);
 const selectedSense = s.snapshot.words[0].senses[0].id;
 const subset = (
   await req(
-    `${path}/brief?kind=vocabulary&difficulty=2&senseId=${encodeURIComponent(selectedSense)}`,
-    "GET",
-    undefined,
+    `${path}/query`,
+    "POST",
+    { requests: [{ resource: "sources", senseIds: [selectedSense] }] },
     token,
   )
 ).data;
 assert.deepEqual(
-  subset.sources.map((source) => source.senseId),
+  subset.results[0].data.items.map((source) => source.senseId),
   [selectedSense],
 );
-await req(
+const absent = await req(
   `${path}/brief?kind=vocabulary&difficulty=2&senseId=sense-outside-set`,
   "GET",
   undefined,
   token,
-  400,
+  200,
 );
+assert.equal(absent.data.sourceCount, 0);
 const invalid = await req(
   path,
   "PATCH",
@@ -180,7 +213,7 @@ assert.equal((await snapshot()).revision, s.revision);
 const output = {
   items: [
     {
-      senseId: s.snapshot.words.find(w => w.word === 'conserve').senses[0].id,
+      senseId: s.snapshot.words.find((w) => w.word === "conserve").senses[0].id,
       sentence:
         "During the severe drought, residents took much shorter showers every morning to conserve the small amount of water left in the town reservoir until the next rainy season.",
       usage: "to conserve the small amount of water",
@@ -203,7 +236,8 @@ const output = {
       ],
     },
     {
-      senseId: s.snapshot.words.find(w => w.word === 'temporary').senses[0].id,
+      senseId: s.snapshot.words.find((w) => w.word === "temporary").senses[0]
+        .id,
       sentence:
         "Because the main bridge would reopen after extensive repairs next month, the town built a temporary crossing to help pedestrians safely reach the local school.",
       usage: "a temporary crossing",
@@ -235,11 +269,6 @@ const generated = {
   senseIds: s.snapshot.words.flatMap((w) => w.senses.map((v) => v.id)),
   output,
 };
-try {
-  mutateAgentSet(s.snapshot, generated);
-} catch (error) {
-  console.log("Local parser diagnosis:", error.message);
-}
 await mutate(generated);
 s = await snapshot();
 assert.equal(s.snapshot.questions.length, 2);
@@ -375,21 +404,61 @@ const init = await rpc("initialize", {
 });
 assert.match(init.instructions, /已說明.*不要重問/);
 const tools = await rpc("tools/list", {});
-assert.equal(tools.tools.length, 18);
+assert.equal(tools.tools.length, 27);
 async function call(name, args = {}) {
   const d = await rpc("tools/call", { name, arguments: args });
   assert.equal(d.isError, undefined, JSON.stringify(d));
   return JSON.parse(d.content[0].text);
 }
+async function mcpSnapshot(args) {
+  const summary = await call("get_set", args);
+  assert.equal(summary.snapshot, undefined);
+  const readPages = async (name) => {
+    const items = [];
+    let cursor;
+    do {
+      const page = await call(name, {
+        setId: args.setId,
+        view: "detail",
+        limit: 50,
+        ...(cursor ? { cursor } : {}),
+      });
+      items.push(...page.items);
+      cursor = page.nextCursor;
+    } while (cursor);
+    return items;
+  };
+  return {
+    revision: summary.revision,
+    snapshot: {
+      set: summary.set,
+      words: await readPages("list_words"),
+      questions: await readPages("list_questions"),
+    },
+  };
+}
 const sets = await call("list_sets");
-assert(sets.sets.every((v) => v.id !== B));
-const folderState=await call("list_folders");
-const folder=await call("create_folder",{expectedRevision:folderState.revision,operationId:randomUUID(),name:`HTTP 合成 ${randomUUID()}`});
-const updatedFolder=await call("update_folder",{expectedRevision:folder.revision,operationId:randomUUID(),folderId:folder.folder.id,name:`HTTP 更名 ${randomUUID()}`,parentId:null});
-assert.equal(updatedFolder.folder.parentId,undefined);
-const created = await call("create_set", { setName: "OAuth 合成 CRUD",folderId:folder.folder.id });
-assert.equal(created.snapshot.set.folderId,folder.folder.id);
-let cs = created;
+assert(sets.items.every((v) => v.id !== B));
+const folderState = await call("list_folders");
+const folder = await call("create_folder", {
+  expectedRevision: folderState.revision,
+  operationId: randomUUID(),
+  name: `HTTP 合成 ${randomUUID()}`,
+});
+const updatedFolder = await call("update_folder", {
+  expectedRevision: folder.revision,
+  operationId: randomUUID(),
+  folderId: folder.folder.id,
+  name: `HTTP 更名 ${randomUUID()}`,
+  parentId: null,
+});
+assert.equal(updatedFolder.folder.parentId, undefined);
+const created = await call("create_set", {
+  setName: "OAuth 合成 CRUD",
+  folderId: folder.folder.id,
+});
+assert.equal(created.set.folderId, folder.folder.id);
+let cs = await mcpSnapshot({ setId: created.set.id });
 const mutateMcp = async (name, args) => {
   const r = await call(name, {
     setId: cs.snapshot.set.id,
@@ -397,7 +466,7 @@ const mutateMcp = async (name, args) => {
     operationId: randomUUID(),
     ...args,
   });
-  cs = await call("get_set", { setId: r.setId });
+  cs = await mcpSnapshot({ setId: r.setId });
   return r;
 };
 await mutateMcp("put_words", {
@@ -416,56 +485,418 @@ await mutateMcp("put_words", {
     },
   ],
 });
-const reliableSense=cs.snapshot.words[0].senses[0].id;
-const candidates={items:[
-  {itemId:'valid-short',senseId:reliableSense,sentence:'The reliable bus arrived on time.',answer:'reliable',distractors:['late','broken','missing']},
-  {itemId:'invalid-source',senseId:'sense-outside-set',sentence:'The reliable bus arrived on time.',answer:'reliable',distractors:['late','broken','missing']},
-]};
-const checked=await call('validate_generated_questions',{setId:cs.snapshot.set.id,kind:'vocabulary',output:candidates});
-assert.equal(checked.validCount,1);assert.equal(checked.failedCount,1);assert.equal(checked.savedCount,0);
-assert.equal((await call('get_set',{setId:cs.snapshot.set.id})).revision,cs.revision);
-const atomic=await rpc('tools/call',{name:'save_generated_questions',arguments:{setId:cs.snapshot.set.id,kind:'vocabulary',mode:'atomic',output:candidates}});
-assert.equal(atomic.isError,true);assert.equal(JSON.parse(atomic.content[0].text).savedCount,0);
-assert.equal((await call('get_set',{setId:cs.snapshot.set.id})).snapshot.questions.length,0);
-const partial=await call('save_generated_questions',{setId:cs.snapshot.set.id,kind:'vocabulary',output:candidates});
-assert.equal(partial.savedCount,1);assert.equal(partial.failedCount,1);assert.equal(partial.errors[0].itemId,'invalid-source');assert.equal(partial.errors[0].sourceId,'sense-outside-set');assert(partial.warnings.some(w=>w.code==='prose_too_short'));
-cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.questions.length,1);
-await call('save_generated_questions',{setId:cs.snapshot.set.id,kind:'vocabulary',senseIds:[reliableSense],output:{items:[candidates.items[0]]}});
-cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.questions.length,1);
+const reliableSense = cs.snapshot.words[0].senses[0].id;
+const candidates = {
+  items: [
+    {
+      itemId: "valid-short",
+      senseId: reliableSense,
+      sentence: "The reliable bus arrived on time.",
+      answer: "reliable",
+      distractors: ["late", "broken", "missing"],
+    },
+    {
+      itemId: "invalid-source",
+      senseId: "sense-outside-set",
+      sentence: "The reliable bus arrived on time.",
+      answer: "reliable",
+      distractors: ["late", "broken", "missing"],
+    },
+  ],
+};
+const checked = await call("validate_generated_questions", {
+  setId: cs.snapshot.set.id,
+  kind: "vocabulary",
+  output: candidates,
+});
+assert.equal(checked.validCount, 1);
+assert.equal(checked.failedCount, 1);
+assert.equal(checked.savedCount, 0);
+assert.equal(
+  (await mcpSnapshot({ setId: cs.snapshot.set.id })).revision,
+  cs.revision,
+);
+const atomic = await rpc("tools/call", {
+  name: "save_generated_questions",
+  arguments: {
+    setId: cs.snapshot.set.id,
+    kind: "vocabulary",
+    mode: "atomic",
+    output: candidates,
+  },
+});
+assert.equal(atomic.isError, true);
+assert.equal(JSON.parse(atomic.content[0].text).savedCount, 0);
+assert.equal(
+  (await mcpSnapshot({ setId: cs.snapshot.set.id })).snapshot.questions.length,
+  0,
+);
+const partial = await call("save_generated_questions", {
+  setId: cs.snapshot.set.id,
+  kind: "vocabulary",
+  output: candidates,
+});
+assert.equal(partial.savedCount, 1);
+assert.equal(partial.failedCount, 1);
+assert.equal(partial.errors[0].itemId, "invalid-source");
+assert.equal(partial.errors[0].sourceId, "sense-outside-set");
+assert(partial.warnings.some((w) => w.code === "prose_too_short"));
+cs = await mcpSnapshot({ setId: cs.snapshot.set.id });
+assert.equal(cs.snapshot.questions.length, 1);
+await call("save_generated_questions", {
+  setId: cs.snapshot.set.id,
+  kind: "vocabulary",
+  senseIds: [reliableSense],
+  output: { items: [candidates.items[0]] },
+});
+cs = await mcpSnapshot({ setId: cs.snapshot.set.id });
+assert.equal(cs.snapshot.questions.length, 1);
 await mutateMcp("rename_set", { setName: "OAuth 更名" });
 await mutateMcp("delete_words", { wordKeys: [cs.snapshot.words[0].wordKey] });
-const syntheticWords=Array.from({length:200},(_,i)=>({word:`synthetic-${i}`,senses:[{pos:'n.',meaningZh:`合成項目${i}`,examples:[`This synthetic example describes item number ${i}.`]}]}));
-const bulkReceipt=await mutateMcp("put_words",{words:syntheticWords});
-assert.equal(bulkReceipt.wordCount,200);assert.equal(cs.snapshot.words.length,200);
-const tooMany=await rpc('tools/call',{name:'put_words',arguments:{setId:cs.snapshot.set.id,expectedRevision:cs.revision,operationId:randomUUID(),words:[...syntheticWords,syntheticWords[0]]}});assert.equal(tooMany.isError,true);
-const setLink=(await req('/links','POST',{setId:cs.snapshot.set.id},'local-user-a',201)).data;
-const setToken=new URL(setLink.url).searchParams.get('token'),setPath=`/access/${setLink.id}`;
-const scopedFolders=(await req(setPath+'/folders','GET',undefined,setToken)).data;
-assert(scopedFolders.folders.some(f=>f.id===folder.folder.id));
-await req(setPath+'/folders','PATCH',{expectedRevision:scopedFolders.revision,operationId:randomUUID(),action:{type:'delete_folder',folderId:folder.folder.id}},setToken,405);
-await req(setPath,'PATCH',{expectedRevision:cs.revision,operationId:randomUUID(),action:{type:'move_set',folderId:UNCATEGORIZED_FOLDER_ID}},setToken);
-cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.set.folderId,UNCATEGORIZED_FOLDER_ID);
-await mutateMcp('move_set',{folderId:folder.folder.id});
-const nonempty=await rpc('tools/call',{name:'delete_folder',arguments:{expectedRevision:(await call('list_folders')).revision,operationId:randomUUID(),folderId:folder.folder.id}});assert.equal(nonempty.isError,true);
-const nativeStatus=(await req('/sync/status','GET',undefined,'local-user-a')).data;assert(nativeStatus.revision>0);
-const records=[];let cursor='',more=true;while(more){const page=(await req('/sync/records'+(cursor?'?cursor='+encodeURIComponent(cursor):''),'GET',undefined,'local-user-a')).data;records.push(...page.records);cursor=page.cursor;more=page.hasMore;}
-assert(records.some(r=>r.type==='word'&&r.recordKey===cs.snapshot.words[0].wordKey));
-assert(records.some(r=>r.type==='set'&&r.recordKey===cs.snapshot.set.id&&r.payload.folderId===folder.folder.id));
-const pushed={operationId:randomUUID(),origin:randomUUID(),records:[{type:'set',recordKey:cs.snapshot.set.id,deleted:false,updatedAt:new Date().toISOString(),payload:{...cs.snapshot.set,setName:'前端 HTTP 更新'}}]};
-const pushReceipt=(await req('/sync/records','POST',pushed,'local-user-a')).data;assert.deepEqual((await req('/sync/records','POST',pushed,'local-user-a')).data,pushReceipt);
-cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.set.setName,'前端 HTTP 更新');
-const blobStatus=(await req('/sync/status','GET',undefined,'local-user-a')).data;
-const blobInput={operationId:randomUUID(),origin:randomUUID(),expectedRevision:blobStatus.blobRevision,blobs:[{kind:'preferences',data:{schemaVersion:1,model:DEFAULT_AI_MODEL,updatedAt:new Date().toISOString()}}]};
-const blobReceipt=(await req('/sync/blobs','POST',blobInput,'local-user-a')).data;assert.deepEqual((await req('/sync/blobs','POST',blobInput,'local-user-a')).data,blobReceipt);
-assert.equal((await req('/sync/blobs','GET',undefined,'local-user-a')).data.blobs.preferences.schemaVersion,1);
-await req('/sync/blobs','POST',{...blobInput,operationId:randomUUID()},'local-user-a',409);
+const syntheticWords = Array.from({ length: 200 }, (_, i) => ({
+  word: `synthetic-${i}`,
+  senses: [
+    {
+      pos: "n.",
+      meaningZh: `合成項目${i}`,
+      examples: [`This synthetic example describes item number ${i}.`],
+    },
+  ],
+}));
+const bulkReceipt = await mutateMcp("put_words", { words: syntheticWords });
+assert.equal(bulkReceipt.wordCount, 200);
+assert.equal(cs.snapshot.words.length, 200);
+const tooMany = await rpc("tools/call", {
+  name: "put_words",
+  arguments: {
+    setId: cs.snapshot.set.id,
+    expectedRevision: cs.revision,
+    operationId: randomUUID(),
+    words: [...syntheticWords, syntheticWords[0]],
+  },
+});
+assert.equal(tooMany.isError, true);
+const setLink = (
+  await req(
+    "/links",
+    "POST",
+    { setId: cs.snapshot.set.id },
+    "local-user-a",
+    201,
+  )
+).data;
+const setToken = new URL(setLink.url).searchParams.get("token"),
+  setPath = `/access/${setLink.id}`;
+const syntheticQuestions = cs.snapshot.words.map((word, i) => ({
+  id: `query-synthetic-${String(i).padStart(3, "0")}`,
+  kind: "multipleChoice",
+  questionStyle: "vocabulary",
+  difficulty: (i % 3) + 1,
+  prompt: `Students discussed synthetic item ${i} at school before they chose _____.`,
+  options: [word.word, "ignore", "delay", "leave"],
+  answerIndex: 0,
+  wordKey: word.wordKey,
+  senseId: word.senses[0].id,
+  explanation: `這是第${i}筆合成測試解析，僅驗證資料存取。`,
+}));
+assert.equal(
+  (await mutateMcp("put_questions", { questions: syntheticQuestions }))
+    .savedCount,
+  200,
+);
+const queries = [
+  {
+    resource: "words",
+    setId: cs.snapshot.set.id,
+    from: 11,
+    to: 15,
+    fields: ["wordKey", "word", "senses.id"],
+  },
+  {
+    resource: "questions",
+    setId: cs.snapshot.set.id,
+    q: "school",
+    questionType: "vocabulary",
+    difficulty: 2,
+    limit: 3,
+  },
+  { resource: "prompt", kind: "vocabulary" },
+  {
+    resource: "brief",
+    setId: cs.snapshot.set.id,
+    kind: "vocabulary",
+    from: 1,
+    to: 4,
+  },
+];
+const mcpBatch = await call("read_batch", { requests: queries });
+const restBatch = (
+  await req(setPath + "/query", "POST", { requests: queries }, setToken)
+).data;
+assert.deepEqual(restBatch.results, mcpBatch.results);
+assert.equal(restBatch.results[0].data.items.length, 5);
+assert.equal(restBatch.results[1].data.items.length, 3);
+assert.equal(restBatch.results[3].data.sourceCount, 4);
+assert.equal(restBatch.results[3].data.rules, undefined);
+assert.equal(restBatch.characters, JSON.stringify(restBatch).length);
+const fullPrompts = await call("read_batch", {
+  maxCharacters: 128000,
+  requests: ["vocabulary", "cloze", "wordBank", "discourse", "reading"].map(
+    (kind) => ({ resource: "prompt", kind }),
+  ),
+});
+assert(
+  fullPrompts.results.every(
+    (entry) =>
+      typeof entry.data?.rules === "string" &&
+      entry.data.outputSchema.type === "object",
+  ),
+);
+await req(
+  setPath + "/query",
+  "POST",
+  { requests: [{ resource: "set", setId: B }] },
+  setToken,
+);
+const oneWord = cs.snapshot.words[0],
+  oneSense = oneWord.senses[0],
+  oneQuestion = cs.snapshot.questions[0];
+await req(
+  `${setPath}/words/${encodeURIComponent(oneWord.wordKey)}/senses/${encodeURIComponent(oneSense.id)}`,
+  "PATCH",
+  { patch: { appendExamples: ["Only this sense gets the new example."] } },
+  setToken,
+);
+const changedWord = (
+  await req(
+    `${setPath}/words/${encodeURIComponent(oneWord.wordKey)}`,
+    "GET",
+    undefined,
+    setToken,
+  )
+).data.word;
+assert.equal(changedWord.senses[0].examples.length, 2);
+assert.equal(
+  (
+    await call("edit_question", {
+      setId: cs.snapshot.set.id,
+      questionId: oneQuestion.id,
+      patch: { explanation: "只更新這一題的解說。" },
+    })
+  ).savedCount,
+  1,
+);
+assert.equal(
+  (
+    await req(
+      `${setPath}/questions/${encodeURIComponent(oneQuestion.id)}?fields=id,explanation`,
+      "GET",
+      undefined,
+      setToken,
+    )
+  ).data.question.explanation,
+  "只更新這一題的解說。",
+);
+await req(
+  `${setPath}/questions/${encodeURIComponent(oneQuestion.id)}`,
+  "DELETE",
+  undefined,
+  setToken,
+);
+await req(
+  `${setPath}/questions/${encodeURIComponent(oneQuestion.id)}`,
+  "GET",
+  undefined,
+  setToken,
+  404,
+);
+cs = await mcpSnapshot({ setId: cs.snapshot.set.id });
+const summary = (await req(setPath, "GET", undefined, setToken)).data;
+const compactRead = (
+  await req(
+    setPath + "/query",
+    "POST",
+    {
+      requests: [
+        { resource: "words", from: 11, to: 15, fields: ["wordKey", "word"] },
+        {
+          resource: "questions",
+          questionType: "vocabulary",
+          difficulty: 2,
+          limit: 3,
+        },
+      ],
+    },
+    setToken,
+  )
+).data;
+const fullText = JSON.stringify({
+  snapshot: cs.snapshot,
+  revision: cs.revision,
+});
+const responseMeasurement = {
+  fixture: "200 synthetic words, 199 synthetic questions",
+  tokenizer: "o200k_base estimate",
+  previousWholeSnapshot: {
+    characters: fullText.length,
+    tokens: countTokens(fullText),
+  },
+  newBootstrap: { characters: summary.length, tokens: countTokens(summary) },
+  selectedBatch: {
+    characters: JSON.stringify(compactRead).length,
+    tokens: countTokens(JSON.stringify(compactRead)),
+  },
+};
+const scopedFolders = (
+  await req(setPath + "/folders", "GET", undefined, setToken)
+).data;
+assert(scopedFolders.items.some((f) => f.id === folder.folder.id));
+await req(
+  setPath + "/folders",
+  "PATCH",
+  {
+    expectedRevision: scopedFolders.revision,
+    operationId: randomUUID(),
+    action: { type: "delete_folder", folderId: folder.folder.id },
+  },
+  setToken,
+  405,
+);
+await req(
+  setPath,
+  "PATCH",
+  {
+    expectedRevision: cs.revision,
+    operationId: randomUUID(),
+    action: { type: "move_set", folderId: UNCATEGORIZED_FOLDER_ID },
+  },
+  setToken,
+);
+cs = await mcpSnapshot({ setId: cs.snapshot.set.id });
+assert.equal(cs.snapshot.set.folderId, UNCATEGORIZED_FOLDER_ID);
+await mutateMcp("move_set", { folderId: folder.folder.id });
+const nonempty = await rpc("tools/call", {
+  name: "delete_folder",
+  arguments: {
+    expectedRevision: (await call("list_folders")).revision,
+    operationId: randomUUID(),
+    folderId: folder.folder.id,
+  },
+});
+assert.equal(nonempty.isError, true);
+const nativeStatus = (
+  await req("/sync/status", "GET", undefined, "local-user-a")
+).data;
+assert(nativeStatus.revision > 0);
+const records = [];
+let cursor = "",
+  more = true;
+while (more) {
+  const page = (
+    await req(
+      "/sync/records" + (cursor ? "?cursor=" + encodeURIComponent(cursor) : ""),
+      "GET",
+      undefined,
+      "local-user-a",
+    )
+  ).data;
+  records.push(...page.records);
+  cursor = page.cursor;
+  more = page.hasMore;
+}
+assert(
+  records.some(
+    (r) => r.type === "word" && r.recordKey === cs.snapshot.words[0].wordKey,
+  ),
+);
+assert(
+  records.some(
+    (r) =>
+      r.type === "set" &&
+      r.recordKey === cs.snapshot.set.id &&
+      r.payload.folderId === folder.folder.id,
+  ),
+);
+const pushed = {
+  operationId: randomUUID(),
+  origin: randomUUID(),
+  records: [
+    {
+      type: "set",
+      recordKey: cs.snapshot.set.id,
+      deleted: false,
+      updatedAt: new Date().toISOString(),
+      payload: { ...cs.snapshot.set, setName: "前端 HTTP 更新" },
+    },
+  ],
+};
+const pushReceipt = (await req("/sync/records", "POST", pushed, "local-user-a"))
+  .data;
+assert.deepEqual(
+  (await req("/sync/records", "POST", pushed, "local-user-a")).data,
+  pushReceipt,
+);
+cs = await mcpSnapshot({ setId: cs.snapshot.set.id });
+assert.equal(cs.snapshot.set.setName, "前端 HTTP 更新");
+const blobStatus = (await req("/sync/status", "GET", undefined, "local-user-a"))
+  .data;
+const blobInput = {
+  operationId: randomUUID(),
+  origin: randomUUID(),
+  expectedRevision: blobStatus.blobRevision,
+  blobs: [
+    {
+      kind: "preferences",
+      data: {
+        schemaVersion: 1,
+        model: DEFAULT_AI_MODEL,
+        updatedAt: new Date().toISOString(),
+      },
+    },
+  ],
+};
+const blobReceipt = (
+  await req("/sync/blobs", "POST", blobInput, "local-user-a")
+).data;
+assert.deepEqual(
+  (await req("/sync/blobs", "POST", blobInput, "local-user-a")).data,
+  blobReceipt,
+);
+assert.equal(
+  (await req("/sync/blobs", "GET", undefined, "local-user-a")).data.blobs
+    .preferences.schemaVersion,
+  1,
+);
+await req(
+  "/sync/blobs",
+  "POST",
+  { ...blobInput, operationId: randomUUID() },
+  "local-user-a",
+  409,
+);
 await call("delete_set", {
   setId: cs.snapshot.set.id,
   expectedRevision: cs.revision,
   operationId: randomUUID(),
 });
-const deletionFeed=(await req('/sync/records?cursor='+encodeURIComponent(cursor),'GET',undefined,'local-user-a')).data;assert(deletionFeed.records.some(r=>r.type==='set'&&r.recordKey===cs.snapshot.set.id&&r.deleted));
-await call('delete_folder',{expectedRevision:(await call('list_folders')).revision,operationId:randomUUID(),folderId:folder.folder.id});
+const deletionFeed = (
+  await req(
+    "/sync/records?cursor=" + encodeURIComponent(cursor),
+    "GET",
+    undefined,
+    "local-user-a",
+  )
+).data;
+assert(
+  deletionFeed.records.some(
+    (r) => r.type === "set" && r.recordKey === cs.snapshot.set.id && r.deleted,
+  ),
+);
+await call("delete_folder", {
+  expectedRevision: (await call("list_folders")).revision,
+  operationId: randomUUID(),
+  folderId: folder.folder.id,
+});
 const denied = await rpc("tools/call", {
   name: "get_set",
   arguments: { setId: B },
@@ -582,7 +1013,15 @@ console.log(
   JSON.stringify(
     {
       passed: true,
-      results,
+      responseMeasurement,
+      requestCount: results.length,
+      statusCounts: results.reduce(
+        (counts, result) => ({
+          ...counts,
+          [result.status]: (counts[result.status] ?? 0) + 1,
+        }),
+        {},
+      ),
       instructionAssessment:
         "未提供題型先問；已提供項目不重問。兩題按英文情境與三項繁中排除理由自行生成；未呼叫模型 API。",
     },

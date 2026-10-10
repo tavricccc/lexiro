@@ -7,12 +7,9 @@ import { D1AgentLibrary } from "./library-repository";
 import { handleCloudApi } from "../cloud/api";
 import type { AgentEnv, AgentIdentity, AgentLibraryRepository } from "./types";
 import { createAgentLink, linkIdentity, linkOptions } from "./access";
-import {
-  applyAgentMutation,
-  readAgentSet,
-  readGenerationBrief,
-} from "./operations";
-import { AGENT_INSTRUCTIONS, urlInstructions } from "./instructions";
+import { readAgentSet } from "./operations";
+import { AGENT_INSTRUCTIONS } from "./instructions";
+import { handleAgentAccess } from "./resource-api";
 import { handleAgentMcp } from "./mcp";
 import {
   startAuthorization,
@@ -43,58 +40,21 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         return startAuthorization(request, env);
       if (path === "/health")
         return Response.json({ service: "lexiro-agent", version: 1 });
-      const access = /^\/access\/([0-9a-f-]{36})(\/brief|\/folders)?$/.exec(path);
+      const access = /^\/access\/([0-9a-f-]{36})(\/.*)?$/.exec(path);
       if (access) {
         const identity = await linkIdentity(request, env, access[1]);
-        if (request.method === "GET" && access[2] === "/folders") return Response.json(await repo.folders(identity.uid));
-        if (request.method === "GET" && access[2] === "/brief") {
-          const url = new URL(request.url);
-          return Response.json(
-            await readGenerationBrief(
-              repo,
-              identity,
-              identity.setId!,
-              z
-                .enum([
-                  "vocabulary",
-                  "cloze",
-                  "wordBank",
-                  "discourse",
-                  "reading",
-                ])
-                .parse(url.searchParams.get("kind")),
-              z
-                .union([z.literal(1), z.literal(2), z.literal(3)])
-                .parse(Number(url.searchParams.get("difficulty"))),
-              url.searchParams.has("senseId")
-                ? url.searchParams.getAll("senseId")
-                : undefined,
-            ),
-          );
-        }
-        if (request.method === "GET") {
-          const result = await readAgentSet(repo, identity, identity.setId!);
-          const instructions = urlInstructions(env.AGENT_PUBLIC_URL, access[1]);
-          if (request.headers.get("accept")?.includes("application/json"))
-            return Response.json({ ...result, instructions });
-          return new Response(
-            `# Lexiro 單字集 Agent 授權\n\n${instructions}\n\n目前資料：\n\n\`\`\`json\n${JSON.stringify(result, null, 2)}\n\`\`\``,
-            { headers: { "Content-Type": "text/plain; charset=utf-8" } },
-          );
-        }
-        if (request.method === "PATCH" && !access[2])
-          return Response.json(
-            await applyAgentMutation(
-              repo,
-              identity,
-              identity.setId!,
-              JSON.parse(await readBody(request, 1000000)),
-            ),
-          );
-        throw new HttpError(405, "method_not_allowed");
+        return handleAgentAccess(
+          request,
+          env,
+          repo,
+          identity,
+          access[1],
+          access[2] ?? "",
+        );
       }
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
-      if (path.startsWith("/sync/")) return handleCloudApi(request, identity.uid, env.CLOUD_DB);
+      if (path.startsWith("/sync/"))
+        return handleCloudApi(request, identity.uid, env.CLOUD_DB);
       if (path === "/links" && request.method === "POST") {
         const input = linkOptions.parse(
           JSON.parse(await readBody(request, 2000)),

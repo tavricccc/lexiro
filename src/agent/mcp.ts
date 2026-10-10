@@ -5,10 +5,13 @@ import { AGENT_INSTRUCTIONS } from "./instructions";
 import {
   applyAgentMutation,
   createScopedSet,
-  readAgentSet,
   readGenerationBrief,
   validateGeneratedQuestions,
+  readAgentResource,
+  readAgentBatch,
+  batchQuerySchema,
 } from "./operations";
+import { compactReceipt, project } from "./query";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
 import { HttpError } from "../http";
 import type { AgentFolderMutation } from "@lexiro/agent-contract";
@@ -24,8 +27,22 @@ const id = z.string().uuid(),
   text = z.string().min(1);
 const writeFields = {
   setId: id,
-  expectedRevision: z.string().optional().describe("可省略；提供時會拒絕覆蓋過期版本。可直接使用上一筆回條的 revision。"),
-  operationId: id.optional().describe("可省略，由服務產生。需要斷線重送去重時，提供並沿用同一 UUID。"),
+  expectedRevision: z
+    .string()
+    .optional()
+    .describe(
+      "可省略；提供時會拒絕覆蓋過期版本。可直接使用上一筆回條的 revision。",
+    ),
+  operationId: id
+    .optional()
+    .describe("可省略，由服務產生。需要斷線重送去重時，提供並沿用同一 UUID。"),
+  responseFields: z
+    .array(text)
+    .max(20)
+    .optional()
+    .describe(
+      "只回傳指定回條欄位，例如 revision 或 items.questionIds；預設精簡回條。",
+    ),
 };
 export async function handleAgentMcp(
   request: Request,
@@ -33,7 +50,7 @@ export async function handleAgentMcp(
   repo: AgentLibraryRepository,
 ) {
   const server = new McpServer(
-    { name: "Lexiro", version: "1.1.0" },
+    { name: "Lexiro", version: "2.0.0" },
     { instructions: AGENT_INSTRUCTIONS },
   );
   const tool = (
@@ -63,9 +80,46 @@ export async function handleAgentMcp(
       },
       async (args) => {
         try {
-          const result = await run(args);
+          const raw = await run(args);
+          let result = raw;
+          if (!readOnly && raw && typeof raw === "object") {
+            const record = raw as Record<string, unknown>;
+            if ("savedCount" in record || "operationId" in record)
+              result = args.responseFields
+                ? project(record, args.responseFields as string[])
+                : compactReceipt(record);
+            else if ("folders" in record) {
+              const { folders: _folders, ...small } = record;
+              result = small;
+            }
+          }
+          if (readOnly && raw && typeof raw === "object" && "savedCount" in raw)
+            result = args.responseFields
+              ? project(raw, args.responseFields as string[])
+              : compactReceipt(raw as Record<string, unknown>);
+          if (
+            JSON.stringify(result).length > Number(args.maxCharacters ?? 32000)
+          )
+            result =
+              raw && typeof raw === "object" && "operationId" in raw
+                ? {
+                    ...compactReceipt(raw as Record<string, unknown>),
+                    responseLimited: true,
+                  }
+                : {
+                    status: "rejected",
+                    error: {
+                      code: "response_too_large",
+                      message: "縮小範圍、使用 summary 或只指定需要的 fields。",
+                    },
+                  };
           return {
-            ...(result && typeof result === "object" && "status" in result && result.status === "rejected" ? { isError: true } : {}),
+            ...(result &&
+            typeof result === "object" &&
+            "status" in result &&
+            result.status === "rejected"
+              ? { isError: true }
+              : {}),
             content: [{ type: "text" as const, text: JSON.stringify(result) }],
           };
         } catch (reason) {
@@ -104,54 +158,126 @@ export async function handleAgentMcp(
   );
   tool(
     "list_sets",
-    "列出目前使用者授權範圍內的單字集。",
-    {},
-    async () => ({
-      sets: identity.setId
-        ? [
-            {
-              ...(await readAgentSet(repo, identity, identity.setId)).snapshot
-                .set,
-            },
-          ]
-        : await repo.list(identity.uid),
-    }),
+    "分頁列出自己的單字集，可搜尋名稱或指定資料夾；預設20筆。",
+    {
+      q: text.optional(),
+      folderId: text.optional(),
+      cursor: text.optional(),
+      from: z.number().int().min(1).optional(),
+      to: z.number().int().min(1).optional(),
+      limit: z.number().int().min(1).max(50).optional(),
+      fields: z.array(text).optional(),
+    },
+    (args) => readAgentResource(repo, identity, { ...args, resource: "sets" }),
     true,
   );
   tool(
     "get_set",
-    "讀取單字集、單字／詞義、題目及 revision；需要目前內容或來源 ID 時使用。",
-    { setId: id },
-    (args) => readAgentSet(repo, identity, String(args.setId)),
+    "只讀單字集名稱、數量與 revision，不回傳整包教材；單字／題目用分頁或指定ID讀取。",
+    { setId: id, fields: z.array(text).optional() },
+    (args) => readAgentResource(repo, identity, { ...args, resource: "set" }),
     true,
   );
   tool(
-    "list_folders", "需要分類目的地時，列出目前使用者的資料夾、父層與 revision。", {},
-    async () => repo.folders(identity.uid), true,
+    "list_folders",
+    "分頁搜尋資料夾名稱與父層，預設20筆；未分類另以uncategorized回傳。",
+    {
+      q: text.optional(),
+      cursor: text.optional(),
+      from: z.number().int().min(1).optional(),
+      to: z.number().int().min(1).optional(),
+      limit: z.number().int().min(1).max(50).optional(),
+      fields: z.array(text).optional(),
+    },
+    (args) =>
+      readAgentResource(repo, identity, { ...args, resource: "folders" }),
+    true,
   );
-  const folderWrite = { expectedRevision: writeFields.expectedRevision, operationId: writeFields.operationId };
-  const mutateFolder = (args: Record<string, unknown>, action: AgentFolderMutation) => {
-    if (identity.setId) throw new HttpError(403, "folder_outside_scope");
-    return repo.mutateFolders(identity.uid, args.expectedRevision as string | undefined, (args.operationId as string | undefined) ?? crypto.randomUUID(), action);
+  const folderWrite = {
+    expectedRevision: writeFields.expectedRevision,
+    operationId: writeFields.operationId,
   };
-  tool("create_folder", "建立自己的資料夾，可指定父資料夾；同一層名稱不可重複。",
+  const mutateFolder = (
+    args: Record<string, unknown>,
+    action: AgentFolderMutation,
+  ) => {
+    if (identity.setId) throw new HttpError(403, "folder_outside_scope");
+    return repo.mutateFolders(
+      identity.uid,
+      args.expectedRevision as string | undefined,
+      (args.operationId as string | undefined) ?? crypto.randomUUID(),
+      action,
+    );
+  };
+  tool(
+    "create_folder",
+    "建立自己的資料夾，可指定父資料夾；同一層名稱不可重複。",
     { ...folderWrite, name: text, parentId: text.optional() },
-    args => mutateFolder(args, { type: "create_folder", name: String(args.name), ...(args.parentId ? { parentId: String(args.parentId) } : {}) }));
-  tool("update_folder", "改名或移動自己的資料夾；parentId:null 移到根層，不能移入自己或子資料夾。",
-    { ...folderWrite, folderId: text, name: text.optional(), parentId: text.nullable().optional() },
-    args => mutateFolder(args, { type: "update_folder", folderId: String(args.folderId), ...(args.name !== undefined ? { name: String(args.name) } : {}), ...(args.parentId !== undefined ? { parentId: args.parentId === null ? null : String(args.parentId) } : {}) }));
-  tool("delete_folder", "刪除自己的空資料夾；有內容時先依使用者意思移出或逐一刪除教材，不能刪未分類。",
-    { ...folderWrite, folderId: text }, args => mutateFolder(args, { type: "delete_folder", folderId: String(args.folderId) }), false, true);
+    (args) =>
+      mutateFolder(args, {
+        type: "create_folder",
+        name: String(args.name),
+        ...(args.parentId ? { parentId: String(args.parentId) } : {}),
+      }),
+  );
+  tool(
+    "update_folder",
+    "改名或移動自己的資料夾；parentId:null 移到根層，不能移入自己或子資料夾。",
+    {
+      ...folderWrite,
+      folderId: text,
+      name: text.optional(),
+      parentId: text.nullable().optional(),
+    },
+    (args) =>
+      mutateFolder(args, {
+        type: "update_folder",
+        folderId: String(args.folderId),
+        ...(args.name !== undefined ? { name: String(args.name) } : {}),
+        ...(args.parentId !== undefined
+          ? { parentId: args.parentId === null ? null : String(args.parentId) }
+          : {}),
+      }),
+  );
+  tool(
+    "delete_folder",
+    "刪除自己的空資料夾；有內容時先依使用者意思移出或逐一刪除教材，不能刪未分類。",
+    { ...folderWrite, folderId: text },
+    (args) =>
+      mutateFolder(args, {
+        type: "delete_folder",
+        folderId: String(args.folderId),
+      }),
+    false,
+    true,
+  );
   tool(
     "create_set",
     "依使用者要求建立自己的單字集，可指定資料夾；已知道名稱及來源就直接建立。",
     { setName: text, folderId: text.optional() },
-    (args) => createScopedSet(repo, identity, String(args.setName), args.folderId as string | undefined),
+    (args) =>
+      createScopedSet(
+        repo,
+        identity,
+        String(args.setName),
+        args.folderId as string | undefined,
+      ),
   );
   tool(
     "get_generation_brief",
-    "取得與內建生成相同的完整命題提示，涵蓋所有五種題型，並附可用來源與寫入格式。可用 senseIds 指定要出的單字；已取得提示可沿用，使用者要求優先。",
-    { setId: id, kind, difficulty: difficulty.default(2), senseIds: z.array(text).optional() },
+    "只取目前批次的來源與命題specification，預設不重複提示詞。先get_generation_prompt一次；可指定來源ID或範圍，includePrompt:true才附完整原提示。",
+    {
+      setId: id,
+      kind,
+      difficulty: difficulty.default(2),
+      senseIds: z.array(text).max(50).optional(),
+      cursor: text.optional(),
+      from: z.number().int().min(1).optional(),
+      to: z.number().int().min(1).optional(),
+      limit: z.number().int().min(1).max(50).optional(),
+      includePrompt: z.boolean().default(false),
+      includeExamples: z.boolean().default(false),
+    },
     (args) =>
       readGenerationBrief(
         repo,
@@ -160,15 +286,152 @@ export async function handleAgentMcp(
         kind.parse(args.kind),
         difficulty.parse(args.difficulty),
         args.senseIds as string[] | undefined,
+        args,
       ),
     true,
   );
   const mutate = (args: Record<string, unknown>, action: unknown) =>
-    applyAgentMutation(repo, identity, String(args.setId), {
-      expectedRevision: args.expectedRevision,
-      operationId: args.operationId,
-      action,
-    }, "mcp");
+    applyAgentMutation(
+      repo,
+      identity,
+      String(args.setId),
+      {
+        expectedRevision: args.expectedRevision,
+        operationId: args.operationId,
+        action,
+      },
+      "mcp",
+    );
+  const pageFields = {
+    setId: id,
+    q: text.optional(),
+    cursor: text.optional(),
+    from: z.number().int().min(1).optional(),
+    to: z.number().int().min(1).optional(),
+    limit: z.number().int().min(1).max(50).optional(),
+    fields: z.array(text).max(20).optional(),
+    view: z.enum(["summary", "detail"]).default("summary"),
+  };
+  tool(
+    "read_batch",
+    "一次讀取多種資料、搜尋或不同範圍。requests最多10項，各項resource可為set/sets/folders/words/word/questions/question/sources/brief/prompt/operation/diagnostics；可帶setId、q、from/to、limit/cursor、fields、questionType、difficulty、wordKeys、senseIds。預設總回傳上限32000字元，重複查詢只回reference。",
+    batchQuerySchema.shape,
+    (args) => readAgentBatch(repo, identity, args),
+    true,
+  );
+  tool(
+    "get_generation_prompt",
+    "只取一種題型的完整原始提示與schema，不附教材；與內建生成相同，每型取得一次後沿用。",
+    { kind, difficulty: difficulty.default(2) },
+    (args) =>
+      readAgentResource(repo, identity, { ...args, resource: "prompt" }),
+    true,
+  );
+  tool(
+    "list_words",
+    "分頁搜尋單字或中文詞義，支援from/to與fields。預設20筆摘要，不附例句。",
+    {
+      ...pageFields,
+      wordKeys: z.array(text).max(50).optional(),
+      senseIds: z.array(text).max(50).optional(),
+    },
+    (args) => readAgentResource(repo, identity, { ...args, resource: "words" }),
+    true,
+  );
+  tool(
+    "get_word",
+    "只取一個單字，fields可只指定某些詞義／例句欄位；不附其他教材。",
+    { setId: id, wordKey: text, fields: z.array(text).max(20).optional() },
+    (args) => readAgentResource(repo, identity, { ...args, resource: "word" }),
+    true,
+  );
+  tool(
+    "list_questions",
+    "分頁搜尋題幹、文章或解說，篩選題型／難度／來源。預設只回ID及160字摘要；questionId可列出該文章的子題。",
+    {
+      ...pageFields,
+      questionId: text.optional(),
+      questionType: z
+        .enum([
+          "vocabulary",
+          "grammar",
+          "cloze",
+          "wordBank",
+          "discourse",
+          "reading",
+        ])
+        .optional(),
+      difficulty: difficulty.optional(),
+      wordKeys: z.array(text).max(50).optional(),
+      senseIds: z.array(text).max(50).optional(),
+    },
+    (args) =>
+      readAgentResource(repo, identity, { ...args, resource: "questions" }),
+    true,
+  );
+  tool(
+    "get_question",
+    "只取指定題目；文章預設不附全文或全部子題，childId取單一子題、includePassage:true才取正文，fields可精確選欄位。",
+    {
+      setId: id,
+      questionId: text,
+      childId: text.optional(),
+      includePassage: z.boolean().default(false),
+      fields: z.array(text).max(20).optional(),
+    },
+    (args) =>
+      readAgentResource(repo, identity, { ...args, resource: "question" }),
+    true,
+  );
+  tool(
+    "edit_word",
+    "只修改指定單字的拼字，其餘詞義／例句保留；版本與重送保護可選。",
+    { ...writeFields, wordKey: text, patch: z.object({ word: text }) },
+    (args) =>
+      mutate(args, {
+        type: "edit_word",
+        wordKey: args.wordKey,
+        patch: args.patch,
+      }),
+  );
+  tool(
+    "edit_sense",
+    "只新增、修改或刪除一個詞義，其他詞義保留。patch可帶pos、meaningZh、examples（替換）、appendExamples（追加）、supplementary。update/delete需senseId；刪最後一義請delete_words。",
+    {
+      ...writeFields,
+      wordKey: text,
+      senseId: text.optional(),
+      action: z.enum(["add", "update", "delete"]).default("update"),
+      patch: z.record(z.string(), z.unknown()).optional(),
+    },
+    (args) =>
+      mutate(args, {
+        type: "edit_sense",
+        wordKey: args.wordKey,
+        senseId: args.senseId,
+        action: args.action,
+        patch: args.patch,
+      }),
+    false,
+    true,
+  );
+  tool(
+    "edit_question",
+    "只更新指定題目欄位；childId可只編輯一個子題，正文及兄弟題保留。patch不需提供完整題目。",
+    {
+      ...writeFields,
+      questionId: text,
+      childId: text.optional(),
+      patch: z.record(z.string(), z.unknown()),
+    },
+    (args) =>
+      mutate(args, {
+        type: "edit_question",
+        questionId: args.questionId,
+        childId: args.childId,
+        patch: args.patch,
+      }),
+  );
   tool(
     "rename_set",
     "修改本集名稱。",
@@ -176,8 +439,10 @@ export async function handleAgentMcp(
     (args) => mutate(args, { type: "rename_set", setName: args.setName }),
   );
   tool(
-    "move_set", "把本集移至自己的既有資料夾；folderId 可取自 list_folders，未分類為 __uncategorized__。",
-    { ...writeFields, folderId: text }, args => mutate(args, { type: "move_set", folderId: args.folderId }),
+    "move_set",
+    "把本集移至自己的既有資料夾；folderId 可取自 list_folders，未分類為 __uncategorized__。",
+    { ...writeFields, folderId: text },
+    (args) => mutate(args, { type: "move_set", folderId: args.folderId }),
   );
   tool(
     "put_words",
@@ -202,7 +467,8 @@ export async function handleAgentMcp(
               .min(1),
           }),
         )
-        .min(1).max(200),
+        .min(1)
+        .max(200),
     },
     (args) => mutate(args, { type: "put_words", words: args.words }),
   );
@@ -223,19 +489,34 @@ export async function handleAgentMcp(
       mode: z.enum(["atomic", "partial"]).default("partial"),
     },
     (args) =>
-      mutate(args, { type: "put_questions", questions: args.questions, mode: args.mode }),
+      mutate(args, {
+        type: "put_questions",
+        questions: args.questions,
+        mode: args.mode,
+      }),
   );
   const generatedFields = {
-    setId: id, kind, difficulty: difficulty.default(2),
+    setId: id,
+    kind,
+    difficulty: difficulty.default(2),
     senseIds: z.array(text).min(1).optional(),
     output: z.record(z.string(), z.unknown()),
     mode: z.enum(["atomic", "partial"]).default("partial"),
   };
-  tool("validate_generated_questions", "唯讀檢查自己生成的候選題；回傳穩定來源 ID、逐題錯誤與警告，不寫入、不改 revision、不呼叫模型。", generatedFields,
-    args => validateGeneratedQuestions(repo, identity, String(args.setId), {
-      kind: kind.parse(args.kind), difficulty: difficulty.parse(args.difficulty),
-      senseIds: args.senseIds as string[] | undefined, output: args.output, mode: args.mode as "atomic" | "partial",
-    }), true);
+  tool(
+    "validate_generated_questions",
+    "唯讀檢查自己生成的候選題；回傳穩定來源 ID、逐題錯誤與警告，不寫入、不改 revision、不呼叫模型。",
+    { ...generatedFields, responseFields: writeFields.responseFields },
+    (args) =>
+      validateGeneratedQuestions(repo, identity, String(args.setId), {
+        kind: kind.parse(args.kind),
+        difficulty: difficulty.parse(args.difficulty),
+        senseIds: args.senseIds as string[] | undefined,
+        output: args.output,
+        mode: args.mode as "atomic" | "partial",
+      }),
+    true,
+  );
   tool(
     "save_generated_questions",
     "提交自己生成的 JSON，每題以 senseId 綁定來源，順序不限。預設 partial：儲存有效題並回傳逐題錯誤；atomic 有錯則全批不寫入。篇幅只回傳 warning，解說選填，brief 選用。",

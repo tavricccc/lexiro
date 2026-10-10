@@ -8,7 +8,9 @@
 | `src/usage-recovery.ts`、`tests-next/usage-recovery.test.ts` | 驗證完整 usage、補查 stored response、持久化待核對結算，並在帳戶請求與 Cron 有界重試。只保存計費識別，不保存 prompt、圖片或生成內容；有產出的待核對帳戶保留預留，取消／失敗立即釋放預留但繼續補記成本 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
-| `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、18 個教材／驗證工具；所有題型 brief 直接用內建 questionPrompt，寫入保留 senseId、逐題診斷、partial／atomic 與寬鬆品質門檻 |
+| `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、27 個教材／驗證工具；read_batch 一次按需讀多種資料，完整 questionPrompt 獨立取得，寫入保留 senseId、partial／atomic 與寬鬆品質門檻 |
+| `src/agent/query.ts` | D1 索引查詢、單字／題目搜尋、題型／難度篩選、範圍與游標分頁、巢狀欄位投影及精簡回條 |
+| `src/agent/edits.ts`、`resource-api.ts` | 單字／詞義／題目／子題 patch；單集 REST 路由及多資料 POST query，首次讀取只回摘要與操作指引 |
 | `src/agent/access.ts`、`operations.ts`、`types.ts` | per-user／per-set bearer URL、兩小時預設期限、hashed token、版本與 operation ID envelope、資料 scope |
 | `src/agent/library-repository.ts` | D1 教材 repository；本集 memberships/source 索引讀取、資料夾 CRUD、來源進度調整、版本衝突與冪等回條 |
 | `src/cloud/{api,repository,records}.ts` | Firebase Auth owner 同步 API、D1 change feed／blob CAS、JSON 批次交易與原生教材序列化；Agent 和瀏覽器使用同一資料庫 |
