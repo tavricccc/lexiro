@@ -38,23 +38,49 @@ export function entriesFromIds(
     { options: string[]; answerIndex: number }
   > = {},
 ): PracticeEntry[] | null {
-  const questionsById = new Map(
-    [...questionItems, ...buildMeaningQuestionGroups(studyItems).flat()].map(
-      (item) => [item.id, item],
-    ),
+  const questionsById = new Map(questionItems.map((item) => [item.id, item]));
+  const studyById = new Map<string, StudyWord>(
+    studyItems.map((word) => [word.id, word]),
   );
   const entries: PracticeEntry[] = [];
   for (const id of ids) {
-    const item = questionsById.get(id);
+    const choices = meaningChoices[id];
+    let item = questionsById.get(id);
+    if (id.startsWith("meaning:")) {
+      const word = studyById.get(id.slice("meaning:".length));
+      if (!word || !choices) return null;
+      const acceptedMeanings = [
+        ...new Set(
+          studyItems
+            .filter((entry) => entry.wordKey === word.wordKey)
+            .map((entry) => entry.meaning.trim()),
+        ),
+      ];
+      item = {
+        id,
+        question: null,
+        prompt: word.word,
+        wordKey: word.wordKey,
+        senseId: word.id,
+        type: "meaning",
+        difficulty: 1,
+        meaning: acceptedMeanings.join("；"),
+        acceptedMeanings,
+        ...choices,
+      };
+    }
     if (!item || !tasks.includes(item.type)) return null;
     entries.push({
       id,
       kind: "question",
       task: item.type,
-      item:
-        item.type === "meaning" && meaningChoices[id]
-          ? { ...item, ...meaningChoices[id] }
-          : item,
+      item: choices
+        ? {
+            ...item,
+            ...choices,
+            ...(item.optionBank ? { optionBank: choices.options } : {}),
+          }
+        : item,
     });
   }
   return entries;

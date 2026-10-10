@@ -63,7 +63,7 @@ export function seededShuffle<T>(values: T[], seed: string): T[] {
   return result;
 }
 
-function shuffleOptions(
+export function shuffleOptions(
   options: string[],
   answerIndex: number,
   seed: string,

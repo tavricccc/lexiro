@@ -138,13 +138,15 @@ export function parsePracticeSession(
         !entryIds.includes(id) ||
         !isRecord(choices) ||
         !Array.isArray(choices.options) ||
-        choices.options.length !== 4 ||
+        (id.startsWith("meaning:")
+          ? choices.options.length !== 4
+          : choices.options.length < 2 || choices.options.length > 10) ||
         !choices.options.every(
           (option) => typeof option === "string" && option.trim(),
         ) ||
         !Number.isInteger(choices.answerIndex) ||
         Number(choices.answerIndex) < 0 ||
-        Number(choices.answerIndex) > 3,
+        Number(choices.answerIndex) >= choices.options.length,
     )
   )
     return null;

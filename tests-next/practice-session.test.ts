@@ -94,6 +94,25 @@ describe("practice session persistence", () => {
     expect(parsePracticeSession(JSON.stringify(session))?.selected).toBe(9);
   });
 
+  it("retains saved shared-bank option order while bounding its answer index", () => {
+    const options = Array.from({ length: 10 }, (_, index) => `option ${index}`);
+    const session = {
+      ...validSession,
+      meaningChoices: { "question:one": { options, answerIndex: 9 } },
+    };
+    expect(
+      parsePracticeSession(JSON.stringify(session))?.meaningChoices,
+    ).toEqual(session.meaningChoices);
+    expect(
+      parsePracticeSession(
+        JSON.stringify({
+          ...session,
+          meaningChoices: { "question:one": { options, answerIndex: 10 } },
+        }),
+      ),
+    ).toBeNull();
+  });
+
   it("restores a session with more than one hundred questions", () => {
     const session = {
       ...validSession,

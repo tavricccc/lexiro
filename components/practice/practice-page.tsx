@@ -27,6 +27,7 @@ import {
   usePersistPracticeSession,
   useRestorePracticeSession,
   buildPracticeSnapshot,
+  type PracticeRestoreIssue,
 } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
 import { usePracticeSetupChoices } from "@/components/practice/use-practice-setup-choices";
@@ -73,6 +74,10 @@ export function PracticePage({
     entries: PracticeEntry[];
   } | null>(null);
   const [resumeChecked, setResumeChecked] = useState(false);
+  const [restoreIssue, setRestoreIssue] = useState<PracticeRestoreIssue | null>(
+    null,
+  );
+  const [restartError, setRestartError] = useState("");
   const [retrying, setRetrying] = useState(false);
   const [questionFailedSenses, setQuestionFailedSenses] = useState<SenseId[]>(
     [],
@@ -127,10 +132,6 @@ export function PracticePage({
         ),
       ),
     [state.questions],
-  );
-  const setIds = useMemo(
-    () => new Set(state.sets.map((entry) => entry.id)),
-    [state.sets],
   );
 
   const poolInput = {
@@ -253,15 +254,15 @@ export function PracticePage({
     allStudyItems,
     enabled: libraryStatus === "ready" && learningLoaded,
     initialSet,
-    memberships: state.memberships,
+    library: state,
     retiredEntryIds,
     restoreAttempted,
-    setIds,
     onOffer: useCallback((snapshot, entries) => {
       setPendingSession({ snapshot, entries });
       setResumeChecked(true);
     }, []),
     onChecked: useCallback(() => setResumeChecked(true), []),
+    onUnavailable: useCallback((issue) => setRestoreIssue(issue), []),
   });
 
   const sessionPersistence = usePersistPracticeSession({
@@ -328,23 +329,54 @@ export function PracticePage({
     return <PracticePageSkeleton />;
   }
   if (!resumeChecked) return <PracticePageSkeleton />;
-  if (pendingSession) {
+  if (pendingSession || restoreIssue) {
+    const issueDescription = {
+      unreadable:
+        "上次的練習草稿無法讀取，原始資料仍保留。選擇重新開始才會清除原進度。",
+      source:
+        "找不到上次練習的部分來源，原草稿仍保留。選擇重新開始才會清除原進度。",
+      storage:
+        "暫時無法讀取或保存上次練習。請確認瀏覽器儲存空間後重新載入；重新開始會清除已有草稿。",
+    };
     return (
-      <ResumeChoice
-        back={
-          <BackControl href={initialSet ? `/app/sets/${initialSet}` : "/app"} />
-        }
-        description={t("draft.practiceDescription")}
-        onResume={() => {
-          restoreSession(pendingSession.snapshot, pendingSession.entries);
-          setPendingSession(null);
-        }}
-        onRestart={() => {
-          localStorage.removeItem(practiceStorageKey());
-          setup.restart();
-          setPendingSession(null);
-        }}
-      />
+      <>
+        <ResumeChoice
+          back={
+            <BackControl
+              href={initialSet ? `/app/sets/${initialSet}` : "/app"}
+            />
+          }
+          description={
+            restoreIssue
+              ? issueDescription[restoreIssue]
+              : t("draft.practiceDescription")
+          }
+          invalid={Boolean(restoreIssue)}
+          onResume={() => {
+            if (!pendingSession) return;
+            restoreSession(pendingSession.snapshot, pendingSession.entries);
+            setPendingSession(null);
+          }}
+          onRestart={() => {
+            try {
+              localStorage.removeItem(practiceStorageKey());
+              setup.restart();
+              setPendingSession(null);
+              setRestoreIssue(null);
+              setRestartError("");
+            } catch {
+              setRestartError(
+                "無法清除舊進度。請確認瀏覽器儲存空間後再試一次。",
+              );
+            }
+          }}
+        />
+        {restartError && (
+          <p className="mx-auto max-w-xl text-sm text-destructive" role="alert">
+            {restartError}
+          </p>
+        )}
+      </>
     );
   }
   if (!started && setup.saved.status === "checking")

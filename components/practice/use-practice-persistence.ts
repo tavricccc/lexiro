@@ -9,8 +9,8 @@ import {
 import type {
   PracticeSessionSnapshot,
   PracticeTask,
+  LibraryState,
   SenseId,
-  SetMembership,
   StudyWord,
   WorkspaceQuestionDifficulty,
 } from "@/types";
@@ -22,32 +22,35 @@ import {
   canRestorePracticeSession,
   parsePracticeSession,
 } from "@/src/lib/practice-session";
+import { migratePracticeScope } from "@/src/lib/practice-scope-migration";
+
+export type PracticeRestoreIssue = "unreadable" | "source" | "storage";
 
 export function useRestorePracticeSession({
   allQuestionItems,
   allStudyItems,
   enabled,
   initialSet,
-  memberships,
+  library,
   retiredEntryIds,
   restoreAttempted,
-  setIds,
   onOffer,
   onChecked,
+  onUnavailable,
 }: {
   allQuestionItems: QuestionItem[];
   allStudyItems: StudyWord[];
   enabled: boolean;
   initialSet: string;
-  memberships: Record<string, SetMembership[]>;
+  library: LibraryState;
   retiredEntryIds: ReadonlySet<string>;
   restoreAttempted: { current: boolean };
-  setIds: Set<string>;
   onOffer: (
     snapshot: PracticeSessionSnapshot,
     entries: PracticeEntry[],
   ) => void;
   onChecked: () => void;
+  onUnavailable: (issue: PracticeRestoreIssue) => void;
 }) {
   useEffect(() => {
     if (restoreAttempted.current || !enabled) return;
@@ -56,12 +59,13 @@ export function useRestorePracticeSession({
     try {
       raw = readPracticeDraft();
     } catch {
+      onUnavailable("storage");
       onChecked();
       return;
     }
     const saved = parsePracticeSession(raw, retiredEntryIds);
     if (!saved) {
-      if (raw) localStorage.removeItem(practiceStorageKey());
+      if (raw) onUnavailable("unreadable");
       onChecked();
       return;
     }
@@ -70,39 +74,55 @@ export function useRestorePracticeSession({
       return;
     }
 
+    const migrated = migratePracticeScope(saved, library);
+    if (!migrated) {
+      onUnavailable("source");
+      onChecked();
+      return;
+    }
+    const restored = migrated.snapshot;
     const allowed = new Set(
-      (saved.setId
-        ? (memberships[saved.setId] ?? [])
-        : Object.values(memberships).flat()
+      (restored.setId
+        ? (library.memberships[restored.setId] ?? [])
+        : Object.values(library.memberships).flat()
       ).flatMap((entry) => entry.senseIds),
     );
+    if (migrated.changed) {
+      try {
+        localStorage.setItem(practiceStorageKey(), JSON.stringify(restored));
+      } catch {
+        onUnavailable("storage");
+        onChecked();
+        return;
+      }
+    }
     const entries = entriesFromIds(
-      saved.entryIds,
-      saved.tasks,
+      restored.entryIds,
+      restored.tasks,
       allStudyItems,
       allQuestionItems,
-      saved.meaningChoices,
+      restored.meaningChoices,
     );
     const outOfScope = entries?.some(
       (entry) => !allowed.has(entry.item.senseId),
     );
-    if (!entries || outOfScope || (saved.setId && !setIds.has(saved.setId))) {
-      localStorage.removeItem(practiceStorageKey());
+    if (!entries || outOfScope) {
+      onUnavailable("source");
       onChecked();
       return;
     }
-    onOffer(saved, entries);
+    onOffer(restored, entries);
   }, [
     allQuestionItems,
     allStudyItems,
     enabled,
     initialSet,
-    memberships,
+    library,
     retiredEntryIds,
     onOffer,
     onChecked,
+    onUnavailable,
     restoreAttempted,
-    setIds,
   ]);
 }
 
@@ -214,19 +234,13 @@ export function buildPracticeSnapshot({
     ...session,
     schemaVersion: 5,
     meaningChoices: Object.fromEntries(
-      entries.flatMap((entry) =>
-        entry.kind === "question" && entry.task === "meaning"
-          ? [
-              [
-                entry.id,
-                {
-                  options: entry.item.options,
-                  answerIndex: entry.item.answerIndex,
-                },
-              ],
-            ]
-          : [],
-      ),
+      entries.map((entry) => [
+        entry.id,
+        {
+          options: [...entry.item.options],
+          answerIndex: entry.item.answerIndex,
+        },
+      ]),
     ),
     entryIds: entries.map((entry) => entry.id),
     answerChoices: entries.map(
