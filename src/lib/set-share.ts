@@ -1,10 +1,16 @@
 import { strFromU8, strToU8, unzipSync, zipSync } from "fflate";
 import type {
+  LibraryQuestion,
+  LibrarySet,
   LibraryState,
   SetSharePayload,
   SharedSet,
   WordEntry,
 } from "@/types";
+import type {
+  SaveQuestionResult,
+  WordDraftInput,
+} from "@/stores/library-store";
 import {
   APP_NAME,
   EXPORT_VERSION,
@@ -14,6 +20,49 @@ import {
 } from "@/constants";
 import { questionBelongsToMemberships } from "./question-ownership";
 import { normalizeSharePayload } from "./share";
+import { scopeSetContent } from "./library-set-migration";
+
+interface SetShareWriter {
+  saveSet: (input: {
+    setName: string;
+    folderId?: string;
+    words: WordDraftInput[];
+  }) => Promise<LibrarySet>;
+  saveQuestion: (question: LibraryQuestion) => Promise<SaveQuestionResult>;
+}
+
+/** Copies a share into a new set before rebinding its saved questions. */
+export async function copySharedSet(
+  sharedSet: SharedSet,
+  input: { setName: string; folderId?: string },
+  writer: SetShareWriter,
+): Promise<LibrarySet> {
+  const wordsByKey = new Map(
+    sharedSet.words.map((word) => [word.wordKey, word]),
+  );
+  const drafts = sharedSet.memberships.flatMap((membership) => {
+    const word = wordsByKey.get(membership.wordKey)!;
+    return membership.senseIds.map((senseId) => {
+      const sense = word.senses.find((entry) => entry.id === senseId)!;
+      return {
+        examples: [...sense.examples],
+        meaningZh: sense.meaningZh,
+        pos: sense.pos,
+        supplementary: sense.supplementary,
+        word: word.word,
+      };
+    });
+  });
+  const imported = await writer.saveSet({ ...input, words: drafts });
+  const copied = scopeSetContent(
+    imported.id,
+    sharedSet.words,
+    sharedSet.memberships,
+    sharedSet.questions,
+  );
+  for (const question of copied.questions) await writer.saveQuestion(question);
+  return imported;
+}
 
 function wordsForMemberships(
   library: LibraryState,

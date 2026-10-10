@@ -29,10 +29,9 @@ import {
   countDirectItems,
   UNCATEGORIZED_FOLDER_ID,
 } from "@/src/lib/folders";
-import { buildQuestionId } from "@/src/lib/library";
 import { buildLibrarySetMetrics } from "@/src/lib/library-metrics";
 import { createUniqueSetName } from "@/src/lib/set-name";
-import { readSetShare } from "@/src/lib/set-share";
+import { copySharedSet, readSetShare } from "@/src/lib/set-share";
 import { setMatchesQuery } from "@/src/lib/library-search";
 import { libraryBrowseHref, replaceBrowseHref } from "@/lib/browse-routes";
 
@@ -124,37 +123,14 @@ export function LibraryPage({
       const existingNames = new Set(state.sets.map((entry) => entry.setName));
       let lastFolderId = currentFolder?.id;
       for (const sharedSet of payload.sets) {
-        const wordsByKey = new Map(
-          sharedSet.words.map((word) => [word.wordKey, word]),
-        );
-        const drafts = sharedSet.memberships.flatMap((membership) => {
-          const word = wordsByKey.get(membership.wordKey);
-          if (!word) return [];
-          return membership.senseIds.flatMap((senseId) => {
-            const sense = word.senses.find((entry) => entry.id === senseId);
-            return sense
-              ? [
-                  {
-                    examples: sense.examples,
-                    meaningZh: sense.meaningZh,
-                    pos: sense.pos,
-                    supplementary: sense.supplementary,
-                    word: word.word,
-                  },
-                ]
-              : [];
-          });
-        });
         const setName = createUniqueSetName(sharedSet.setName, existingNames);
         existingNames.add(setName);
-        const imported = await saveSet({
-          folderId: currentFolder?.id,
-          setName,
-          words: drafts,
-        });
+        const imported = await copySharedSet(
+          sharedSet,
+          { folderId: currentFolder?.id, setName },
+          { saveSet, saveQuestion },
+        );
         lastFolderId = imported.folderId;
-        for (const question of sharedSet.questions)
-          await saveQuestion({ ...question, id: buildQuestionId() });
       }
       if (currentFolder && lastFolderId) setCurrentFolderId(lastFolderId);
       toast.success(t("library.importDone", { count: payload.sets.length }));
