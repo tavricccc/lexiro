@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { questionEditHref } from "@/components/questions/question-list";
+import { ClearQuestionsControl } from "@/components/questions/clear-questions-control";
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
@@ -93,18 +94,14 @@ export function SetView({
     return card && isDue(card);
   }).length;
 
-  const questions = useMemo(
+  const savedQuestions = useMemo(
     () =>
-      state.questions.filter(
-        (question) =>
-          isExamQuestion(question) &&
-          questionBelongsToMemberships(
-            question,
-            state.memberships[setId] ?? [],
-          ),
+      state.questions.filter((question) =>
+        questionBelongsToMemberships(question, state.memberships[setId] ?? []),
       ),
     [setId, state.memberships, state.questions],
   );
+  const questions = savedQuestions.filter(isExamQuestion);
 
   const homeFolderId = current?.folderId;
   const libraryHref =
@@ -237,6 +234,12 @@ export function SetView({
           <SetTools setId={setId} />
         ) : (
           <>
+            <ClearQuestionsControl
+              key={setId}
+              questions={savedQuestions}
+              setId={setId}
+              setName={current.setName}
+            />
             {/* Making questions is what you come to this tab to do when it is
               empty and the obvious next step when it is not, so it is a control
               on the tab rather than a line in the page's overflow menu. */}

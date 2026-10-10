@@ -75,7 +75,7 @@ export const zhTW = {
       "Lexiro 依記憶狀況安排複習。打開「今天」，就知道哪些詞義等著你。",
     practiceTitle: "題目跟著詞庫走。",
     practiceBody:
-      "詞義、題目與複習用同一份學習資料。同一個字不用在不同單字集裡重複建立，修改時也比較好整理。",
+      "每個單字集的詞義、例句與題目各自獨立。同一集內，題目與複習會連結到對應詞義，修改時也比較好整理。",
     practicePointOne: "支援學測五種選擇題型",
     practicePointTwo: "可以手動編寫，也能用 AI 輔助整理與出題",
     practicePointThree: "本機可用，登入後可跨裝置同步",
@@ -267,6 +267,25 @@ export const zhTW = {
   },
   questions: {
     title: "題庫",
+    clearSet: "清空本集全部題目",
+    clearAll: "清空全部題目",
+    clearSetConfirm:
+      "確定清空「{name}」的全部 {count} 題嗎？其他單字集的題目會保留。",
+    clearAllConfirm:
+      "確定清空整個題庫的全部 {count} 題嗎？這會清空所有單字集的題目。",
+    clearPacks: "其中包含 {count} 組閱讀／文章題組，題數已計入各組小題。",
+    clearPreserves:
+      "詞義、例句與學習進度會保留。清空後可重新生成題目，原有題目無法還原。",
+    confirmClear: "確認清空",
+    cleared: "已清空 {count} 題，可以重新生成。",
+    sourceSet: "來源單字集",
+    selectSourceSet: "選擇單字集",
+    sourceSetHint:
+      "這題的詞義來源只使用所選單字集。切換單字集後，請重新選擇詞義。",
+    readingSourceSetHint:
+      "整組題目只使用同一個單字集。切換單字集後，各小題的詞義需要重新選擇。",
+    originalSourceSetHint: "已儲存題目的來源限於原單字集。",
+    sourceOutsideSet: "請選擇來源單字集中的詞義。",
     generate: "AI 產生",
     search: "搜尋題目",
     allTypes: "全部題型",
@@ -335,7 +354,7 @@ export const zhTW = {
     type: "題型",
     save: "儲存題目",
     delete: "刪除題目",
-    deleteConfirm: "確定刪除這題？使用相同詞義的所有單字集都會受影響。",
+    deleteConfirm: "確定刪除這題？此題所屬單字集的詞義、例句與學習進度會保留。",
     edit: "編輯題目",
     explanation: "解析",
     selectSense: "選擇詞義",

@@ -68,6 +68,7 @@ export function ReadingChildEditor({
 
       <div className="mt-4 grid gap-4">
         <SelectField
+          ariaLabel={t("questions.linkedSense")}
           description={t("questions.linkedSense")}
           onValueChange={(source) => onUpdate({ source })}
           options={senses}

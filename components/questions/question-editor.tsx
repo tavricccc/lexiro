@@ -36,6 +36,12 @@ import {
 import { QuestionPreview } from "./question-preview";
 import { DistractorReasonsEditor } from "./distractor-reasons-editor";
 import { normalizeOptionReasons, remapOptionReasons } from "./option-reasons";
+import {
+  draftSourceSetId,
+  questionSourceOptions,
+  questionSourceSetId,
+  questionSourceWords,
+} from "./question-source-scope";
 
 interface Values {
   answerIndex: number;
@@ -44,6 +50,7 @@ interface Values {
   options: string[];
   prompt: string;
   questionStyle: QuestionStyle;
+  selectedSetId: string;
   source: string;
   whyWrong?: Record<string, string>;
   reasonsVersion: 1;
@@ -58,16 +65,6 @@ export function QuestionEditor({
 }) {
   const state = useLibraryStore((store) => store.state);
   const current = state.questions.find((entry) => entry.id === questionId);
-  const senses = useMemo(
-    () =>
-      Object.values(state.words).flatMap((word) =>
-        word.senses.map((sense) => ({
-          label: `${word.word} · ${sense.pos} ${sense.meaningZh}`,
-          value: senseKey(word.wordKey, sense.id),
-        })),
-      ),
-    [state.words],
-  );
   if (current?.kind === "multipleChoice" && current.questionStyle === "grammar")
     return (
       <div>
@@ -83,10 +80,9 @@ export function QuestionEditor({
     );
   return (
     <QuestionEditorForm
-      key={`${questionId}:${current?.updatedAt ?? senses[0]?.value ?? "new"}`}
+      key={`${questionId}:${current?.updatedAt ?? "new"}`}
       questionId={questionId}
       current={current}
-      senses={senses}
       returnHref={returnHref}
     />
   );
@@ -95,17 +91,24 @@ export function QuestionEditor({
 function QuestionEditorForm({
   questionId,
   current,
-  senses,
   returnHref,
 }: {
   questionId: string;
   current: LibraryQuestion | undefined;
-  senses: { label: string; value: string }[];
   returnHref: string;
 }) {
   const router = useRouter();
   const uid = useCloudStore((store) => store.user?.uid);
   const { state, saveQuestion } = useLibraryStore();
+  const originalSetId = current
+    ? questionSourceSetId(state, current)
+    : undefined;
+  const initialSetId = current
+    ? (originalSetId ?? "")
+    : (state.sets[0]?.id ?? "");
+  const initialSenses = questionSourceOptions(
+    questionSourceWords(state, initialSetId),
+  );
   const initial: Values =
     current && current.kind !== "reading"
       ? {
@@ -115,6 +118,7 @@ function QuestionEditorForm({
           options: [0, 1, 2, 3].map((index) => current.options[index] ?? ""),
           prompt: current.prompt,
           questionStyle: current.questionStyle,
+          selectedSetId: initialSetId,
           source: senseKey(current.wordKey, current.senseId),
           whyWrong: current.whyWrong,
           reasonsVersion: 1,
@@ -126,7 +130,8 @@ function QuestionEditorForm({
           options: ["", "", "", ""],
           prompt: "",
           questionStyle: "vocabulary",
-          source: senses[0]?.value ?? "",
+          selectedSetId: initialSetId,
+          source: initialSenses[0]?.value ?? "",
           reasonsVersion: 1,
         };
   const saved = useResumableDraft<Values>(
@@ -140,7 +145,16 @@ function QuestionEditorForm({
   const options = form.watch("options");
   const [pane, setPane] = useState<QuestionWorkspacePane>("passage");
   const values = form.watch();
-  const previewSource = parseSenseKey(values.source, state.words);
+  const selectedSetId = current ? (originalSetId ?? "") : values.selectedSetId;
+  const sourceWords = useMemo(
+    () => questionSourceWords(state, selectedSetId),
+    [selectedSetId, state.memberships, state.words],
+  );
+  const senses = useMemo(
+    () => questionSourceOptions(sourceWords),
+    [sourceWords],
+  );
+  const previewSource = parseSenseKey(values.source, sourceWords);
   const preview: MultipleChoiceQuestion | null = previewSource
     ? {
         id: "editing-preview",
@@ -184,9 +198,9 @@ function QuestionEditorForm({
         ?.focus();
       return;
     }
-    const source = parseSenseKey(values.source, state.words);
+    const source = parseSenseKey(values.source, sourceWords);
     if (!source) {
-      form.setError("source", { message: t("questions.unknownSense") });
+      form.setError("source", { message: t("questions.sourceOutsideSet") });
       return;
     }
     const { senseId, wordKey } = source;
@@ -250,20 +264,25 @@ function QuestionEditorForm({
         }}
         onResume={() => {
           const pending = saved.pending! as
-            Values | Omit<Values, "reasonsVersion">;
-          const restored: Values =
-            "reasonsVersion" in pending
-              ? pending
-              : {
-                  ...pending,
-                  reasonsVersion: 1,
-                  whyWrong: remapOptionReasons(
+            Values | Omit<Values, "reasonsVersion" | "selectedSetId">;
+          const restored: Values = {
+            ...pending,
+            selectedSetId: current
+              ? (originalSetId ?? "")
+              : "selectedSetId" in pending
+                ? pending.selectedSetId
+                : (draftSourceSetId(state, [pending.source]) ?? ""),
+            reasonsVersion: 1,
+            whyWrong:
+              "reasonsVersion" in pending
+                ? pending.whyWrong
+                : remapOptionReasons(
                     initial.options,
                     pending.options,
                     initial.whyWrong,
                     pending.answerIndex,
                   ),
-                };
+          };
           form.reset(restored);
           saved.resume();
           saved.update(restored);
@@ -292,6 +311,26 @@ function QuestionEditorForm({
           <div>
             <div className="grid gap-4 sm:grid-cols-2">
               <SelectField
+                description={t(
+                  current
+                    ? "questions.originalSourceSetHint"
+                    : "questions.sourceSetHint",
+                )}
+                disabled={Boolean(current)}
+                label={t("questions.sourceSet")}
+                onValueChange={(value) => {
+                  form.setValue("selectedSetId", value);
+                  form.setValue("source", "");
+                  form.clearErrors("source");
+                }}
+                options={state.sets.map((set) => ({
+                  label: set.setName,
+                  value: set.id,
+                }))}
+                placeholder={t("questions.selectSourceSet")}
+                value={selectedSetId}
+              />
+              <SelectField
                 label={t("practice.difficulty")}
                 onValueChange={(value) =>
                   form.setValue(
@@ -305,7 +344,10 @@ function QuestionEditorForm({
               <SelectField
                 className="sm:col-span-2"
                 label={t("questions.linkedSense")}
-                onValueChange={(value) => form.setValue("source", value)}
+                onValueChange={(value) => {
+                  form.setValue("source", value);
+                  form.clearErrors("source");
+                }}
                 options={senses}
                 placeholder={t("questions.selectSense")}
                 value={form.watch("source")}

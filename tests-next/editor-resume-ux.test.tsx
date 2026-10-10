@@ -178,6 +178,16 @@ describe("interrupted manual edits", () => {
         },
       ],
     };
+    state.sets = [
+      {
+        id: "set",
+        setName: "觀察練習",
+        folderId: UNCATEGORIZED_FOLDER_ID,
+        createdAt: "2026-10-03",
+        updatedAt: "2026-10-03",
+      },
+    ];
+    state.memberships.set = [{ wordKey, senseIds: [senseId] }];
     state.questions = [
       {
         id: "reason-question",
@@ -269,6 +279,16 @@ describe("interrupted manual edits", () => {
         },
       ],
     };
+    state.sets = [
+      {
+        id: "set",
+        setName: "水果練習",
+        folderId: UNCATEGORIZED_FOLDER_ID,
+        createdAt: "2026-09-26",
+        updatedAt: "2026-09-26",
+      },
+    ];
+    state.memberships.set = [{ wordKey, senseIds: [senseId] }];
     state.questions = [reading];
     let finishSave: (value: "saved") => void = () => undefined;
     const saveQuestion = vi.fn(

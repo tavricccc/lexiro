@@ -36,14 +36,23 @@ import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { PageHeader } from "@/components/ui/page-header";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
+import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
 import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
-import { senseKey } from "@/src/lib/library";
+import { parseSenseKey } from "@/src/lib/library";
 import { questionFormatLabel } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
+import {
+  draftSourceSetId,
+  questionSourceOptions,
+  questionSourceSetId,
+  questionSourceWords,
+} from "./question-source-scope";
+
+type ReadingEditorDraft = ReadingFormDraft & { selectedSetId: string };
 
 export function ReadingEditor({
   readingId,
@@ -58,22 +67,29 @@ export function ReadingEditor({
   const found = state.questions.find((question) => question.id === readingId);
   const current: ReadingPack | undefined =
     found?.kind === "reading" ? found : undefined;
-  const initial = readingFormFromPack(current);
-  const saved = useResumableDraft<ReadingFormDraft>(
+  const originalSetId = current
+    ? questionSourceSetId(state, current)
+    : undefined;
+  const initial: ReadingEditorDraft = {
+    ...readingFormFromPack(current),
+    selectedSetId: current ? (originalSetId ?? "") : (state.sets[0]?.id ?? ""),
+  };
+  const saved = useResumableDraft<ReadingEditorDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:edit-reading:${readingId}:${current?.updatedAt ?? "new"}`,
     initial,
   );
   const { title, passage, difficulty, format, children, optionBank } =
     saved.draft;
+  const selectedSetId = current
+    ? (originalSetId ?? "")
+    : saved.draft.selectedSetId;
+  const sourceWords = useMemo(
+    () => questionSourceWords(state, selectedSetId),
+    [selectedSetId, state.memberships, state.words],
+  );
   const senses = useMemo(
-    () =>
-      Object.values(state.words).flatMap((word) =>
-        word.senses.map((sense) => ({
-          label: `${word.word} · ${sense.meaningZh}`,
-          value: senseKey(word.wordKey, sense.id),
-        })),
-      ),
-    [state.words],
+    () => questionSourceOptions(sourceWords),
+    [sourceWords],
   );
   const [pane, setPane] = useState<QuestionWorkspacePane>("passage");
   const [articleMode, setArticleMode] = useState("edit");
@@ -105,7 +121,11 @@ export function ReadingEditor({
       ? t("questions.optionsRequired")
       : undefined,
     prompt: child.prompt.trim() ? undefined : t("setEditor.required"),
-    source: child.source ? undefined : t("questions.senseRequired"),
+    source: !child.source
+      ? t("questions.senseRequired")
+      : parseSenseKey(child.source, sourceWords)
+        ? undefined
+        : t("questions.sourceOutsideSet"),
   }));
   const titleError = title.trim() ? undefined : t("setEditor.required");
   const passageError = passage.trim() ? undefined : t("setEditor.required");
@@ -173,7 +193,7 @@ export function ReadingEditor({
     setSaving(true);
     try {
       const result = await saveQuestion(
-        readingPackFromForm(saved.draft, state.words, current),
+        readingPackFromForm(saved.draft, sourceWords, current),
       );
       if (result === "duplicate") {
         setSaveError(t("questions.duplicate"));
@@ -203,8 +223,16 @@ export function ReadingEditor({
         onRestart={saved.restart}
         onResume={() => {
           const migrated = migrateReadingFormDraft(saved.pending!, initial);
+          const selectedSetId = current
+            ? (originalSetId ?? "")
+            : (saved.pending!.selectedSetId ??
+              draftSourceSetId(
+                state,
+                migrated.children.map((child) => child.source),
+              ) ??
+              "");
           saved.resume();
-          saved.update(migrated);
+          saved.update({ ...migrated, selectedSetId });
         }}
       />
     );
@@ -217,6 +245,28 @@ export function ReadingEditor({
         title={t("questions.editFormat", { name: questionFormatLabel(format) })}
       />
       <fieldset className="min-w-0 border-0 p-0" disabled={saving}>
+        <SelectField
+          className="mb-5 max-w-xl"
+          description={t(
+            current
+              ? "questions.originalSourceSetHint"
+              : "questions.readingSourceSetHint",
+          )}
+          disabled={Boolean(current)}
+          label={t("questions.sourceSet")}
+          onValueChange={(selectedSetId) =>
+            saved.update({
+              selectedSetId,
+              children: children.map((child) => ({ ...child, source: "" })),
+            })
+          }
+          options={state.sets.map((set) => ({
+            label: set.setName,
+            value: set.id,
+          }))}
+          placeholder={t("questions.selectSourceSet")}
+          value={selectedSetId}
+        />
         <QuestionMetadata
           title={title}
           difficulty={difficulty}
