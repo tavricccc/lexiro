@@ -1,6 +1,6 @@
-# Agent 功能變更與下一次部署
+# Agent 功能變更與部署維護
 
-2026-10-10。MCP OAuth 與單字集授權 URL 已完成本機實作；尚未部署或驗收正式 ChatGPT／Firestore 連線。
+2026-10-10。MCP OAuth 與單字集授權 URL 已完成；正式服務使用既有 Firebase project，Agent 入口為 `https://lexiro-agent.tavric.workers.dev`。HTTP OAuth／Firestore CRUD 已驗證，ChatGPT 的連線 UI 尚未操作。
 
 ## 這次新增的功能
 
@@ -19,22 +19,21 @@
 
 上一輪本機驗證：前端 415 個、private backend 191 個測試，以及 typecheck、lint、build 通過。`gpt-6.1-sol low` Sub-agent 實際生成兩題後讀回、編輯與刪除，並驗證 OAuth 更新／解除、URL 到期／撤銷及跨帳號／跨集限制。這些結果不代表已驗收正式 Firebase、ChatGPT 或 Cloudflare CPU。
 
-## 下一次部署順序
+## 下一次部署
 
-1. 先在 private `lexiro-worker` 配置並部署獨立的 Agent Worker。它需要專用 D1、OAuth KV、Firebase service-account secret，以及正式前端原點；不能只部署原本的生成 Worker。
-2. 取得 Agent 的固定 HTTPS 原點，把 `NEXT_PUBLIC_AGENT_WORKER_URL` 設成該原點，值不帶 `/mcp` 或結尾 `/`。
-3. 在前端 GitHub `Production` Environment 新增同名 variable，並在 `.github/workflows/deploy.yml` 的 job `env` 補上以下一行。目前 workflow 尚未包含它：
+正式 D1、OAuth KV 與 Firebase 憑證已配置；之後不需重建 Firebase，也不需重新建立 Agent 資源。後端變更先發布獨立 Agent Worker，再發布前端：
 
-   ```yaml
-   NEXT_PUBLIC_AGENT_WORKER_URL: ${{ vars.NEXT_PUBLIC_AGENT_WORKER_URL }}
-   ```
+```powershell
+gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
+# 確認 Agent workflow 成功，再發布前端
+gh workflow run deploy.yml --repo tavricccc/lexiro --ref main
+```
 
-4. Vercel Project 的 Production Environment 也設定同名變數、同一個值。現有 workflow 先做一般 build，再 pull Vercel production settings、執行 Vercel prebuilt build；兩處設定一致才能讓驗證與發布使用同一個 Agent 服務。
-5. 確認 Firebase Authentication 的 Authorized domains 包含實際正式前端 hostname。沿用現有 Firebase `authDomain`；不需要因為加入 MCP 就把它改成 `vercel.app`。
-6. 在需要發布時 push 前端 main 或執行現有 workflow。它會驗證、部署 Firestore rules／indexes，再發布 Vercel 前端。使用者依既有 PWA 更新流程明確啟用新版。
-7. 上線後，以測試帳號驗證新增空白集、既有集 URL、命題與編輯、到期／撤銷、OAuth 同意／解除，以及 ChatGPT 的 MCP 連線。正式測試資料不要使用重要的既有集。
+Agent workflow 會完整驗證、套用專用 migration、同步 Firebase secret、部署及檢查 discovery；模型 API key 不會接到 Agent Worker。前端 workflow 使用 GitHub `Production` variable `NEXT_PUBLIC_AGENT_WORKER_URL`，目前值為 `https://lexiro-agent.tavric.workers.dev`，並自動同步到 Vercel Production 後重新 build。
 
-後端逐步命令、設定值、migration 與驗收回條在 private `lexiro-worker/docs/agent-deployment.md`。既有功能的使用說明見 [Agent 操作](agent-access.md)。以上是下一次發布的待辦，本次只有補文件。
+若只改前端，照既有 main 發布流程即可。若更換 Agent 網址，更新上述 variable 與 private Worker 的 `AGENT_PUBLIC_URL`，值不帶 `/mcp` 或結尾 `/`，再依序發布及重新連結 MCP。前端 domain 改動才需調整 `APP_ORIGIN` 與 Firebase Authorized domains；同一 Firebase 專案與登入設定繼續使用。
+
+使用者依既有 PWA 更新流程明確啟用新版。上線 smoke 使用可清除的測試帳號及單字集；ChatGPT UI 連結、Cron 實際執行及大集 CPU 需另驗收。後端配置、首次發布及維護細節在 private `lexiro-worker/docs/agent-deployment.md`；操作見 [Agent 使用說明](agent-access.md)。
 
 ## 免費 vercel.app 網域
 
@@ -43,3 +42,11 @@
 前端提供登入、OAuth 同意與教材介面；MCP、授權 URL、discovery 和 token endpoint 在獨立 Cloudflare Agent Worker。`APP_ORIGIN` 指向固定的正式前端原點，`NEXT_PUBLIC_AGENT_WORKER_URL` 指向固定 Agent 原點，ChatGPT 貼的是 Agent 原點加 `/mcp`。不要把每次部署不同的 Preview URL 用作正式 `APP_ORIGIN`；Vercel 區分單次部署網址和指向目前正式版的 Production URL。[Vercel 部署網址](https://vercel.com/docs/deployments/generated-urls)。
 
 兩小時是 URL token 的有效期；Agent 期間分次向 Worker 讀寫，沒有一個需要 Vercel 持續執行兩小時的請求。若之後換前端網域，要更新 `APP_ORIGIN` 與 Firebase Authorized domains；若換 Agent 網域，則要更新 Agent 公開原點、前端變數並重新連結 MCP。
+
+## 2026-10-10 上線回條
+
+- Frontend commit `7e7b505` 的 [正式 deployment workflow](https://github.com/tavricccc/lexiro/actions/runs/38058006644) 成功，包含 typecheck、lint、tests、build、Firebase rules／indexes 與 Vercel prebuilt 發布。
+- 正式網站為 `https://lexiro.vercel.app`；`/agent/authorize` 與 `/app/me/agents` HTTP 200，發布後的 JS bundle 已包含正確 Agent 原點。
+- Backend commit `95985cf` 的 [Agent deployment workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38057821258) 成功，192 個測試通過。首次正式測試發現的 Cloudflare 原生 fetch 接收物件問題已修正及重新發布。
+- 正式 HTTPS 38 個檢查通過：真實 Firebase custom-token 換 ID token、Firestore 原生教材讀寫、MCP OAuth／12 tools、URL 命題 brief、題目新增／編輯／刪除、更名與重送、撤銷及解除後拒絕存取。測試沒有呼叫模型 API，合成帳號與教材已清除。
+- ChatGPT UI 尚未手動連結；可使用 `https://lexiro-agent.tavric.workers.dev/mcp` 選 OAuth 連線。Cron 真正執行與長任務 CPU 尚待觀察。
