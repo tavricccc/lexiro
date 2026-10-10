@@ -8,6 +8,7 @@ import {
   buildPracticeQueue,
   entriesFromIds,
 } from "@/components/practice/practice-queue";
+import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 
 function word(name: string, meaning: string): StudyWord {
   return {
@@ -31,6 +32,39 @@ const words = [
 ];
 
 describe("local English-to-Chinese questions", () => {
+  it("keeps scoped accepted meanings independent while excluding all same-spelling senses and aliases from distractors", () => {
+    const scoped = (setId: string, name: string, meaning: string) => {
+      const wordKey = buildSetWordKey(setId, name);
+      return {
+        ...word(name, meaning),
+        wordKey,
+        id: buildSenseId(wordKey, "n.", meaning),
+      };
+    };
+    const bankA = scoped("set-a", "bank", "銀行");
+    const bankB = scoped("set-b", "BANK", "河岸");
+    const items = buildMeaningQuestionGroups([
+      bankA,
+      bankB,
+      scoped("set-b", "shore", "海岸、河岸"),
+      scoped("set-a", "apple", "蘋果"),
+      scoped("set-b", "cloud", "雲"),
+      scoped("set-a", "book", "書"),
+    ]).flat();
+    const first = items.find((item) => item.wordKey === bankA.wordKey)!;
+    const second = items.find((item) => item.wordKey === bankB.wordKey)!;
+    expect(first.acceptedMeanings).toEqual(["銀行"]);
+    expect(second.acceptedMeanings).toEqual(["河岸"]);
+    expect(new Set(first.options)).toEqual(
+      new Set(["銀行", "蘋果", "雲", "書"]),
+    );
+    expect(new Set(second.options)).toEqual(
+      new Set(["河岸", "蘋果", "雲", "書"]),
+    );
+    expect(first.senseId).toBe(bankA.id);
+    expect(second.senseId).toBe(bankB.id);
+  });
+
   it("uses any saved sense as the answer and keeps exactly one target meaning among four distinct options", () => {
     const bankItems = buildMeaningQuestionGroups(words)
       .flat()
@@ -66,9 +100,7 @@ describe("local English-to-Chinese questions", () => {
       questionGroups: groups,
       studyItems: words,
     });
-    const keys = queue.map((entry) =>
-      entry.item.wordKey,
-    );
+    const keys = queue.map((entry) => entry.item.wordKey);
     expect(new Set(keys).size).toBe(queue.length);
     const saved = Object.fromEntries(
       queue.flatMap((entry) =>

@@ -1,4 +1,5 @@
 import type { StudyWord } from "@/types";
+import { normalizeWordKey } from "@/src/lib/library";
 import { seededShuffle, type QuestionItem } from "./practice-content";
 
 /** Ignore presentation punctuation when comparing saved Chinese meanings. */
@@ -18,30 +19,36 @@ export function buildMeaningQuestionGroups(
   words: readonly StudyWord[],
 ): QuestionItem[][] {
   const byWord = new Map<string, StudyWord[]>();
+  const excludedBySpelling = new Map<string, Set<string>>();
   for (const word of words) {
     const senses = byWord.get(word.wordKey) ?? [];
     senses.push(word);
     byWord.set(word.wordKey, senses);
+    const spelling = normalizeWordKey(word.word);
+    const excluded = excludedBySpelling.get(spelling) ?? new Set<string>();
+    meaningParts(word.meaning).forEach((part) => excluded.add(part));
+    excludedBySpelling.set(spelling, excluded);
   }
   return words.flatMap((word) => {
     const senses = byWord.get(word.wordKey)!;
     const acceptedMeanings = [
       ...new Set(senses.map((sense) => sense.meaning.trim())),
     ];
-    const accepted = new Set(acceptedMeanings.flatMap(meaningParts));
+    const spelling = normalizeWordKey(word.word);
+    const excluded = excludedBySpelling.get(spelling)!;
     const seen = new Set<string>();
     const distractors = seededShuffle(
       [...words],
       `meaning:${word.id}:distractors`,
     )
       .filter((other) => {
-        if (other.wordKey === word.wordKey) return false;
+        if (normalizeWordKey(other.word) === spelling) return false;
         const key = meaningKey(other.meaning);
         const parts = meaningParts(other.meaning);
         if (
           !key ||
           !parts.length ||
-          parts.some((part) => accepted.has(part)) ||
+          parts.some((part) => excluded.has(part)) ||
           seen.has(key)
         )
           return false;
