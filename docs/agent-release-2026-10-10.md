@@ -59,3 +59,9 @@ Agent workflow 會完整驗證、套用 `agent-migrations` 與 `library-migratio
 - 正式 HTTPS 45 項檢查通過：真實 Firebase Auth、OAuth S256、17 個 MCP 工具、一次寫入及讀回 200 筆、201 筆拒絕且不部分寫入、資料夾 CRUD、URL 分類、網站同步與 MCP 共用資料、進度／統計／偏好 CAS、重送、刪除 tombstone、refresh 與撤銷。
 - 測試未呼叫模型 API。合成 Firebase 帳號、D1 資料、URL 與 OAuth client 已清除；未匯入或修改使用者的 134 筆教材。
 - Agent Worker 的 Firebase service-account secret 與 private GitHub Production 對應副本已刪除；Worker secret list 為空。一次性診斷憑證 artifact 已刪除。
+
+## 2026-10-11 Agent 批次寫入更新
+
+共用契約 3.0.0 已發布，MCP 新增唯讀 validate_generated_questions，共 18 tools。來源改用每題 senseId，不要求順序或全來源覆蓋；partial 保存有效題並回逐題錯誤，atomic 有錯則不保存題目。篇幅只回 Warning，解說選填；不呼叫模型做難度、風格或語意相似度評鑑。MCP revision／operationId 選填，提供時保留版本與回條保護，D1 CAS 一直有效。
+
+後端 `dc86551` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38066261701) 與前端 `88bc186` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38066476190) 都成功。本機合成 100 題確認 97 保存、3 錯誤；前後端 597 個測試、typecheck、lint、build 和本機 MCP HTTP 驗證通過。正式 discovery／前端路由驗證通過；未測正式 100 題寫入或 CPU，未修改使用者教材。完整規則與回條見 [批次寫入](agent-validation.md)。

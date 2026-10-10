@@ -42,3 +42,9 @@ MCP 的 expectedRevision／operationId 選填；省略時服務用當前資料�
 合成 100 題案例確認 97 題保存、3 題具穩定識別的錯誤；atomic 零寫入、唯讀驗證不改 revision、來源亂序／子集、拆批重送及原有內建生成篇幅限制皆有驗證。D1 題目 ID 衝突使用 JSON 批次查詢，避免每題各查一次耗盡 Worker 子請求額度。跨集 ID 衝突在 partial 模式只拒絕該題。
 
 D1 schema 不變，不需要資料 migration。發布步驟見 [D1 維護](d1-cloud.md)：先 Agent workflow，再前端 workflow。
+
+## 發布回條
+
+2026-10-11：後端 `dc86551` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38066261701) 與前端 `88bc186` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38066476190) 都成功。前後端共 597 個本機測試、typecheck、lint、build 通過；本機 HTTP OAuth／18 tools／partial／atomic／唯讀驗證及原有授權隔離也通過。
+
+正式 health、OAuth discovery 與前端授權／連線管理頁皆 HTTP 200，未授權 MCP 仍為 401。本次新增的 97／100 批次證據來自本機原生 D1，未做正式帳號的批次寫入或長任務 CPU 測量；沒有修改使用者的教材或呼叫模型 API。
