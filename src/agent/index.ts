@@ -3,7 +3,8 @@ import type { ExecutionContext } from "@cloudflare/workers-types";
 import { z } from "zod";
 import { verifyFirebaseToken, AuthenticationError } from "../auth";
 import { readBody, HttpError } from "../http";
-import { FirestoreAgentLibrary } from "./library-repository";
+import { D1AgentLibrary } from "./library-repository";
+import { handleCloudApi } from "../cloud/api";
 import type { AgentEnv, AgentIdentity, AgentLibraryRepository } from "./types";
 import { createAgentLink, linkIdentity, linkOptions } from "./access";
 import {
@@ -28,7 +29,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
   const repository = (env: AgentEnv) => {
     let repo = repositories.get(env);
     if (!repo) {
-      repo = dependencies.repository?.(env) ?? new FirestoreAgentLibrary(env);
+      repo = dependencies.repository?.(env) ?? new D1AgentLibrary(env);
       repositories.set(env, repo);
     }
     return repo;
@@ -42,10 +43,11 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         return startAuthorization(request, env);
       if (path === "/health")
         return Response.json({ service: "lexiro-agent", version: 1 });
-      const access = /^\/access\/([0-9a-f-]{36})(\/brief)?$/.exec(path);
+      const access = /^\/access\/([0-9a-f-]{36})(\/brief|\/folders)?$/.exec(path);
       if (access) {
         const identity = await linkIdentity(request, env, access[1]);
-        if (request.method === "GET" && access[2]) {
+        if (request.method === "GET" && access[2] === "/folders") return Response.json(await repo.folders(identity.uid));
+        if (request.method === "GET" && access[2] === "/brief") {
           const url = new URL(request.url);
           return Response.json(
             await readGenerationBrief(
@@ -92,6 +94,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         throw new HttpError(405, "method_not_allowed");
       }
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
+      if (path.startsWith("/sync/")) return handleCloudApi(request, identity.uid, env.CLOUD_DB);
       if (path === "/links" && request.method === "POST") {
         const input = linkOptions.parse(
           JSON.parse(await readBody(request, 2000)),

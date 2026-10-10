@@ -10,6 +10,7 @@ import {
 } from "./operations";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
 import { HttpError } from "../http";
+import type { AgentFolderMutation } from "@lexiro/agent-contract";
 const kind = z.enum([
   "vocabulary",
   "cloze",
@@ -123,10 +124,27 @@ export async function handleAgentMcp(
     true,
   );
   tool(
+    "list_folders", "列出目前使用者的資料夾、父層與資料夾 revision，分類前先查已有目的地。", {},
+    async () => repo.folders(identity.uid), true,
+  );
+  const folderWrite = { expectedRevision: text, operationId: id };
+  const mutateFolder = (args: Record<string, unknown>, action: AgentFolderMutation) => {
+    if (identity.setId) throw new HttpError(403, "folder_outside_scope");
+    return repo.mutateFolders(identity.uid, String(args.expectedRevision), String(args.operationId), action);
+  };
+  tool("create_folder", "建立自己的資料夾，可指定父資料夾；同一層名稱不可重複。",
+    { ...folderWrite, name: text, parentId: text.optional() },
+    args => mutateFolder(args, { type: "create_folder", name: String(args.name), ...(args.parentId ? { parentId: String(args.parentId) } : {}) }));
+  tool("update_folder", "改名或移動自己的資料夾；parentId:null 移到根層，不能移入自己或子資料夾。",
+    { ...folderWrite, folderId: text, name: text.optional(), parentId: text.nullable().optional() },
+    args => mutateFolder(args, { type: "update_folder", folderId: String(args.folderId), ...(args.name !== undefined ? { name: String(args.name) } : {}), ...(args.parentId !== undefined ? { parentId: args.parentId === null ? null : String(args.parentId) } : {}) }));
+  tool("delete_folder", "刪除自己的空資料夾；有內容時先依使用者意思移出或逐一刪除教材，不能刪未分類。",
+    { ...folderWrite, folderId: text }, args => mutateFolder(args, { type: "delete_folder", folderId: String(args.folderId) }), false, true);
+  tool(
     "create_set",
     "依使用者要求從零建立自己的單字集；先問名稱及來源，之後新增單字。",
-    { setName: text },
-    (args) => createScopedSet(repo, identity, String(args.setName)),
+    { setName: text, folderId: text.optional() },
+    (args) => createScopedSet(repo, identity, String(args.setName), args.folderId as string | undefined),
   );
   tool(
     "get_generation_brief",
@@ -156,8 +174,12 @@ export async function handleAgentMcp(
     (args) => mutate(args, { type: "rename_set", setName: args.setName }),
   );
   tool(
+    "move_set", "把本集移至目前使用者既有資料夾；先 list_folders 取得folderId，未分類為 __uncategorized__。",
+    { ...writeFields, folderId: text }, args => mutate(args, { type: "move_set", folderId: args.folderId }),
+  );
+  tool(
     "put_words",
-    "新增或編輯本集單字。修改保留 wordKey，修改既有詞義保留 id；每個所列單字的 senses 是完整替換。",
+    "每次新增或編輯1至200筆本集單字；更大批次按200拆批並重讀revision。修改保留 wordKey、詞義id；所列單字的 senses 是完整替換。",
     {
       ...writeFields,
       words: z
@@ -178,14 +200,14 @@ export async function handleAgentMcp(
               .min(1),
           }),
         )
-        .min(1),
+        .min(1).max(200),
     },
     (args) => mutate(args, { type: "put_words", words: args.words }),
   );
   tool(
     "delete_words",
     "刪除本集指定單字與其失效題目，保留其他單字集。",
-    { ...writeFields, wordKeys: z.array(text).min(1) },
+    { ...writeFields, wordKeys: z.array(text).min(1).max(200) },
     (args) => mutate(args, { type: "delete_words", wordKeys: args.wordKeys }),
     false,
     true,

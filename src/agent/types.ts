@@ -7,15 +7,18 @@ import type { OAuthHelpers } from "@cloudflare/workers-oauth-provider";
 import type {
   AgentSetSnapshot,
   AgentMutationResult,
+  AgentFolderMutation,
+  AgentFolderMutationResult,
+  VocabFolder,
 } from "@lexiro/agent-contract";
 export interface AgentEnv {
   AGENT_DB: D1Database;
+  CLOUD_DB: D1Database;
   OAUTH_KV: KVNamespace;
   OAUTH_PROVIDER: OAuthHelpers;
   AGENT_PUBLIC_URL: string;
   APP_ORIGIN: string;
   FIREBASE_PROJECT_ID: string;
-  FIREBASE_SERVICE_ACCOUNT: string;
 }
 export interface AgentIdentity {
   uid: string;
@@ -31,7 +34,9 @@ export interface MutationReceipt {
   deleted: boolean;
 }
 export interface AgentLibraryRepository {
-  list(uid: string): Promise<{ id: string; setName: string }[]>;
+  list(uid: string): Promise<{ id: string; setName: string; folderId: string }[]>;
+  folders(uid: string): Promise<{ folders: VocabFolder[]; revision: string }>;
+  mutateFolders(uid: string, revision: string, operationId: string, action: AgentFolderMutation): Promise<AgentFolderMutationResult>;
   read(uid: string, setId: string): Promise<AgentSetSnapshot | null>;
   create(uid: string, snapshot: AgentSetSnapshot): Promise<void>;
   mutate(

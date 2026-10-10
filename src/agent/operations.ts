@@ -59,9 +59,10 @@ export async function createScopedSet(
   repo: AgentLibraryRepository,
   identity: AgentIdentity,
   setName: string,
+  folderId?: string,
 ) {
   const id = identity.setId ?? crypto.randomUUID();
-  const snapshot = createAgentSet(id, setName);
+  const snapshot = createAgentSet(id, setName, folderId);
   await repo.create(identity.uid, snapshot);
   return { snapshot, revision: agentSetRevision(snapshot) };
 }

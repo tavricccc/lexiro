@@ -1,391 +1,105 @@
 import {
-  agentRecordId,
-  agentSetRevision,
-  validateAgentSnapshot,
-  type AgentSetSnapshot,
-  type AgentMutationResult,
+  agentRecordId, agentSetRevision, agentFoldersRevision, mutateAgentFolders,
+  validateAgentSnapshot, UNCATEGORIZED_FOLDER_ID,
+  type AgentSetSnapshot, type AgentMutationResult, type AgentFolderMutation,
+  type VocabFolder, type AgentCloudRecord,
 } from "@lexiro/agent-contract";
-import type {
-  AgentEnv,
-  AgentLibraryRepository,
-  MutationReceipt,
-} from "./types";
-import {
-  decodeFields,
-  encodeFields,
-  type FirestoreDocument,
-} from "./firestore-values";
-import { googleAccessToken } from "./google-auth";
+import type { AgentEnv, AgentLibraryRepository, MutationReceipt } from "./types";
+import { CloudD1Repository, type AccountHead, type BlobWrite } from "../cloud/repository";
+import { changedSnapshotRecords, recordValue, type RecordRow } from "../cloud/records";
 import { fingerprint, HttpError } from "../http";
 
-export class FirestoreAgentLibrary implements AgentLibraryRepository {
-  private token: () => Promise<string>;
-  private root: string;
-  constructor(
-    env: AgentEnv,
-    private fetcher: typeof fetch = (input, init) => fetch(input, init),
-  ) {
-    this.root = `projects/${encodeURIComponent(env.FIREBASE_PROJECT_ID)}/databases/(default)/documents`;
-    this.token = googleAccessToken(env, fetcher);
-  }
-  private name(uid: string, path: string) {
-    return `${this.root}/users/${encodeURIComponent(uid)}/${path}`;
-  }
-  private async call<T>(suffix: string, body: unknown): Promise<T> {
-    const response = await this.fetcher(
-      `https://firestore.googleapis.com/v1/${this.root}${suffix}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${await this.token()}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(20000),
-      },
-    );
-    if (!response.ok)
-      throw new HttpError(
-        response.status === 409 ? 409 : 503,
-        response.status === 409 ? "stale_set" : "firestore_unavailable",
-      );
-    return response.json() as Promise<T>;
-  }
-  private async documents(uid: string, paths: string[], transaction?: string) {
-    if (!paths.length) return [];
-    const result = await this.call<
-      { found?: FirestoreDocument; missing?: string }[]
-    >(":batchGet", {
-      documents: paths.map((path) => this.name(uid, path)),
-      ...(transaction ? { transaction } : {}),
-    });
-    return result.flatMap((item) => (item.found ? [item.found] : []));
-  }
-  private async query(uid: string, type: string, transaction?: string) {
-    const result = await this.call<{ document?: FirestoreDocument }[]>(
-      `/users/${encodeURIComponent(uid)}:runQuery`,
-      {
-        structuredQuery: {
-          from: [{ collectionId: "records-v9" }],
-          where: {
-            fieldFilter: {
-              field: { fieldPath: "type" },
-              op: "EQUAL",
-              value: { stringValue: type },
-            },
-          },
-        },
-        ...(transaction ? { transaction } : {}),
-      },
-    );
-    return result
-      .flatMap((item) => (item.document ? [item.document] : []))
-      .filter((doc) => decodeFields(doc.fields).deleted === false);
-  }
+export class D1AgentLibrary implements AgentLibraryRepository {
+  private cloud: CloudD1Repository;
+  constructor(private env: AgentEnv) { this.cloud = new CloudD1Repository(env.CLOUD_DB); }
   async list(uid: string) {
-    return (await this.query(uid, "set")).map((doc) => {
-      const data = decodeFields(doc.fields);
-      const set = data.payload as { id: string; setName: string };
-      return { id: set.id, setName: set.setName };
+    return (await this.cloud.rows(uid, "set")).map(row => {
+      const set = JSON.parse(row.payload!) as AgentSetSnapshot["set"];
+      return { id: set.id, setName: set.setName, folderId: set.folderId };
     });
   }
-  private async load(
-    uid: string,
-    setId: string,
-    transaction?: string,
-  ): Promise<AgentSetSnapshot | null> {
-    const records = await this.documents(
-      uid,
-      [
-        `records-v9/${agentRecordId("set", setId)}`,
-        `records-v9/${agentRecordId("membership", setId)}`,
-      ],
-      transaction,
-    );
-    const values = records.map((doc) => decodeFields(doc.fields));
-    const set = values.find(
-      (value) => value.type === "set" && value.deleted === false,
-    )?.payload;
-    if (!set) return null;
-    const members = (
-      values.find(
-        (value) => value.type === "membership" && value.deleted === false,
-      )?.payload as
-        { members?: { wordKey: string; senseIds: string[] }[] } | undefined
-    )?.members;
-    if (!members) throw new HttpError(409, "set_sync_incomplete");
-    const wordDocs = await this.documents(
-      uid,
-      members.map(
-        (member) => `records-v9/${agentRecordId("word", member.wordKey)}`,
-      ),
-      transaction,
-    );
-    const words = members.flatMap((member) => {
-      const doc = wordDocs.find((doc) =>
-        doc.name.endsWith(
-          `/records-v9/${agentRecordId("word", member.wordKey)}`,
-        ),
-      );
-      if (!doc) return [];
-      const data = decodeFields(doc.fields);
-      return data.deleted === false ? [data.payload] : [];
-    });
-    const keys = new Set(members.map((member) => member.wordKey));
-    const questions = (await this.query(uid, "question", transaction))
-      .map((doc) => decodeFields(doc.fields).payload)
-      .filter((value) => {
-        const q = value as {
-          kind: string;
-          wordKey?: string;
-          wordKeys?: string[];
-        };
-        return q.kind === "reading"
-          ? q.wordKeys?.some((key) => keys.has(key))
-          : q.wordKey && keys.has(q.wordKey);
-      });
-    return validateAgentSnapshot(
-      { set, words, memberships: members, questions },
-      setId,
-    );
+  private async load(uid: string, setId: string) {
+    const db = this.env.CLOUD_DB;
+    const result = await db.batch([
+      db.prepare("SELECT revision,blob_revision,changed_by,blob_changed_by FROM cloud_accounts WHERE uid=?").bind(uid),
+      db.prepare("SELECT id,kind,record_key,payload,deleted,updated_at,seq FROM cloud_records WHERE uid=? AND id IN (?,?) AND deleted=0").bind(uid, agentRecordId("set", setId), agentRecordId("membership", setId)),
+      db.prepare("SELECT r.* FROM cloud_memberships m CROSS JOIN cloud_records r INDEXED BY cloud_records_key WHERE m.uid=? AND m.set_id=? AND r.uid=m.uid AND r.kind='word' AND r.record_key=m.word_key AND r.deleted=0 ORDER BY r.id").bind(uid, setId),
+      db.prepare("SELECT r.* FROM cloud_records r INDEXED BY cloud_records_key WHERE r.uid=? AND r.kind='question' AND r.deleted=0 AND r.record_key IN (SELECT q.question_id FROM cloud_memberships m CROSS JOIN cloud_question_sources q WHERE m.uid=? AND m.set_id=? AND q.uid=m.uid AND q.word_key=m.word_key) ORDER BY r.id").bind(uid, uid, setId),
+      db.prepare("SELECT kind,data FROM cloud_blobs WHERE uid=?").bind(uid),
+    ]);
+    const head = (result[0].results[0] as unknown as AccountHead | undefined) ?? { revision: 0, blob_revision: 0, changed_by: "", blob_changed_by: "" };
+    const rows = result[1].results as unknown as RecordRow[];
+    const set = rows.find(row => row.kind === "set");
+    const blobs = (result[4].results as unknown as { kind: BlobWrite["kind"]; data: string }[]).map(row => ({ kind: row.kind, data: JSON.parse(row.data) as Record<string, unknown> }));
+    if (!set) return { snapshot: null, head, blobs };
+    const membership = rows.find(row => row.kind === "membership");
+    if (!membership) throw new HttpError(409, "set_sync_incomplete");
+    const snapshot = validateAgentSnapshot({
+      set: JSON.parse(set.payload!),
+      memberships: JSON.parse(membership.payload!).members,
+      words: (result[2].results as unknown as RecordRow[]).map(row => JSON.parse(row.payload!)),
+      questions: (result[3].results as unknown as RecordRow[]).map(row => JSON.parse(row.payload!)),
+    }, setId);
+    return { snapshot, head, blobs };
   }
-  read(uid: string, setId: string) {
-    return this.load(uid, setId);
-  }
-  private records(snapshot: AgentSetSnapshot | null) {
-    const records = new Map<
-      string,
-      {
-        type: string;
-        recordKey: string;
-        payload: Record<string, unknown>;
-        updatedAt: string;
-      }
-    >();
-    if (!snapshot) return records;
-    const put = (
-      type: string,
-      id: string,
-      payload: Record<string, unknown>,
-      updatedAt: string,
-    ) =>
-      records.set(agentRecordId(type, id), {
-        type,
-        recordKey: id,
-        payload,
-        updatedAt,
-      });
-    put("set", snapshot.set.id, { ...snapshot.set }, snapshot.set.updatedAt);
-    put(
-      "membership",
-      snapshot.set.id,
-      { members: snapshot.memberships },
-      snapshot.set.updatedAt,
-    );
-    for (const word of snapshot.words)
-      put("word", word.wordKey, { ...word }, word.updatedAt);
-    for (const q of snapshot.questions)
-      put("question", q.id, { ...q }, q.updatedAt);
-    return records;
-  }
-  private write(
-    uid: string,
-    path: string,
-    data: Record<string, unknown>,
-    timestampField?: string,
-  ) {
-    return {
-      update: { name: this.name(uid, path), fields: encodeFields(data) },
-      ...(timestampField
-        ? {
-            updateTransforms: [
-              { fieldPath: timestampField, setToServerValue: "REQUEST_TIME" },
-            ],
-          }
-        : {}),
-    };
-  }
-  private async persist(
-    uid: string,
-    before: AgentSetSnapshot | null,
-    after: AgentSetSnapshot | null,
-    transaction: string,
-    operationId?: string,
-    operationHash?: string,
-    remaps: AgentMutationResult["senseRemaps"] = [],
-  ) {
-    const old = this.records(before),
-      next = this.records(after),
-      now = new Date().toISOString();
-    const writes: unknown[] = [];
-    for (const [id, record] of next) {
-      if (JSON.stringify(record) === JSON.stringify(old.get(id))) continue;
-      if (record.type === "question" && !old.has(id)) {
-        const collision = await this.documents(
-          uid,
-          [`records-v9/${id}`],
-          transaction,
-        );
-        if (collision.some((doc) => decodeFields(doc.fields).deleted === false))
-          throw new HttpError(403, "question_outside_scope");
-      }
-      writes.push(
-        this.write(
-          uid,
-          `records-v9/${id}`,
-          { ...record, ownerId: uid, schemaVersion: 9, deleted: false },
-          "writtenAt",
-        ),
-      );
-    }
-    for (const [id, record] of old)
-      if (!next.has(id))
-        writes.push(
-          this.write(
-            uid,
-            `records-v9/${id}`,
-            {
-              type: record.type,
-              recordKey: record.recordKey,
-              updatedAt: now,
-              ownerId: uid,
-              schemaVersion: 9,
-              deleted: true,
-            },
-            "writtenAt",
-          ),
-        );
-    const surviving = new Set(
-      after?.words.flatMap((w) => w.senses.map((s) => s.id)) ?? [],
-    );
-    const removed = new Set(
-      before?.words
-        .flatMap((w) => w.senses.map((s) => s.id))
-        .filter((id) => !surviving.has(id)) ?? [],
-    );
-    if (removed.size) {
-      const blobs = await this.documents(
-        uid,
-        ["progress/global-v9", "stats/summary-v9"],
-        transaction,
-      );
-      for (const doc of blobs) {
-        const data = decodeFields(doc.fields),
-          key = doc.name.endsWith("global-v9")
-            ? "cards"
-            : "questionStatsBySense";
-        const items = { ...(data[key] as Record<string, unknown>) };
-        for (const remap of remaps)
-          if (items[remap.from] !== undefined && items[remap.to] === undefined)
-            items[remap.to] = items[remap.from];
-        for (const id of removed) delete items[id];
-        writes.push(
-          this.write(uid, doc.name.slice(this.name(uid, "").length), {
-            ...data,
-            [key]: items,
-            updatedAt: now,
-          }),
-        );
-      }
-    }
-    writes.push(
-      this.write(
-        uid,
-        "meta/library-v9",
-        {
-          ownerId: uid,
-          schemaVersion: 9,
-          changedBy: `agent:${operationId ?? "create"}`,
-        },
-        "changedAt",
-      ),
-    );
-    const receipt: MutationReceipt = {
-      operationId: operationId ?? "create",
-      setId: (after ?? before)!.set.id,
-      revision: agentSetRevision(after),
-      wordCount: after?.words.length ?? 0,
-      questionCount: after?.questions.length ?? 0,
-      deleted: !after,
-    };
-    if (operationId)
-      writes.push(
-        this.write(uid, `agent-operations/${operationId}`, {
-          setId: receipt.setId,
-          operationHash,
-          receipt,
-          createdAt: now,
-        }),
-      );
-    await this.call(":commit", { transaction, writes });
-    return receipt;
+  async read(uid: string, setId: string) { return (await this.load(uid, setId)).snapshot; }
+  private async folderExists(uid: string, id: string) {
+    if (id === UNCATEGORIZED_FOLDER_ID) return;
+    const row = await this.env.CLOUD_DB.prepare("SELECT id FROM cloud_records WHERE uid=? AND id=? AND kind='folder' AND deleted=0").bind(uid, agentRecordId("folder", id)).first();
+    if (!row) throw new HttpError(400, "folder_not_found");
   }
   async create(uid: string, snapshot: AgentSetSnapshot) {
-    const { transaction } = await this.call<{ transaction: string }>(
-      ":beginTransaction",
-      { options: { readWrite: {} } },
-    );
-    try {
-      if (await this.load(uid, snapshot.set.id, transaction))
-        throw new HttpError(409, "set_exists");
-      await this.persist(
-        uid,
-        null,
-        validateAgentSnapshot(snapshot, snapshot.set.id),
-        transaction,
-      );
-    } catch (reason) {
-      await this.call(":rollback", { transaction });
-      throw reason;
-    }
+    const before = await this.load(uid, snapshot.set.id);
+    if (before.snapshot) throw new HttpError(409, "set_exists");
+    await this.folderExists(uid, snapshot.set.folderId);
+    const valid = validateAgentSnapshot(snapshot, snapshot.set.id), id = crypto.randomUUID();
+    await this.cloud.commit(uid, before.head, changedSnapshotRecords(null, valid), [], "agent:create", id, await fingerprint(JSON.stringify(valid)), { created: valid.set.id });
   }
-  async mutate(
-    uid: string,
-    setId: string,
-    revision: string,
-    operationId: string,
-    action: unknown,
-    apply: (snapshot: AgentSetSnapshot) => AgentMutationResult,
-  ) {
-    const operationHash = await fingerprint(
-      JSON.stringify({ setId, revision, action }),
-    );
-    const { transaction } = await this.call<{ transaction: string }>(
-      ":beginTransaction",
-      { options: { readWrite: {} } },
-    );
-    try {
-      const previous = (
-        await this.documents(
-          uid,
-          [`agent-operations/${operationId}`],
-          transaction,
-        )
-      )[0];
-      if (previous) {
-        const data = decodeFields(previous.fields);
-        if (data.operationHash !== operationHash)
-          throw new HttpError(409, "operation_conflict");
-        await this.call(":rollback", { transaction });
-        return data.receipt as MutationReceipt;
-      }
-      const before = await this.load(uid, setId, transaction);
-      if (!before) throw new HttpError(404, "set_not_found");
-      if (agentSetRevision(before) !== revision)
-        throw new HttpError(409, "stale_set");
-      const { snapshot: after, senseRemaps } = apply(before);
-      return await this.persist(
-        uid,
-        before,
-        after,
-        transaction,
-        operationId,
-        operationHash,
-        senseRemaps,
-      );
-    } catch (reason) {
-      await this.call(":rollback", { transaction });
-      throw reason;
+  async mutate(uid: string, setId: string, revision: string, operationId: string, action: unknown, apply: (snapshot: AgentSetSnapshot) => AgentMutationResult) {
+    const hash = await fingerprint(JSON.stringify({ setId, revision, action }));
+    const previous = await this.cloud.operation<MutationReceipt>(uid, operationId, hash);
+    if (previous) return previous;
+    const before = await this.load(uid, setId);
+    if (!before.snapshot) throw new HttpError(404, "set_not_found");
+    if (agentSetRevision(before.snapshot) !== revision) throw new HttpError(409, "stale_set");
+    const { snapshot: after, senseRemaps } = apply(before.snapshot);
+    if (after) await this.folderExists(uid, after.set.folderId);
+    const records = changedSnapshotRecords(before.snapshot, after);
+    const oldQuestions = new Set(before.snapshot.questions.map(q => q.id));
+    for (const record of records) if (record.type === "question" && !record.deleted && !oldQuestions.has(record.recordKey)) {
+      const collision = await this.env.CLOUD_DB.prepare("SELECT id FROM cloud_records WHERE uid=? AND id=? AND deleted=0").bind(uid, agentRecordId("question", record.recordKey)).first();
+      if (collision) throw new HttpError(403, "question_outside_scope");
     }
+    const surviving = new Set(after?.words.flatMap(w => w.senses.map(s => s.id)) ?? []);
+    const removed = before.snapshot.words.flatMap(w => w.senses.map(s => s.id)).filter(id => !surviving.has(id));
+    const blobs: BlobWrite[] = [];
+    if (removed.length) for (const blob of before.blobs) {
+      if (blob.kind === "preferences") continue;
+      const key = blob.kind === "progress" ? "cards" : "questionStatsBySense";
+      const items = { ...(blob.data[key] as Record<string, unknown>) };
+      for (const remap of senseRemaps) if (items[remap.from] !== undefined && items[remap.to] === undefined) items[remap.to] = items[remap.from];
+      for (const id of removed) delete items[id];
+      blobs.push({ kind: blob.kind, data: { ...blob.data, [key]: items, updatedAt: new Date().toISOString() } });
+    }
+    const receipt: MutationReceipt = { operationId, setId, revision: agentSetRevision(after), wordCount: after?.words.length ?? 0, questionCount: after?.questions.length ?? 0, deleted: !after };
+    return this.cloud.commit(uid, before.head, records, blobs, `agent:${operationId}`, operationId, hash, receipt);
+  }
+  async folders(uid: string) {
+    const folders = (await this.cloud.rows(uid, "folder")).map(row => recordValue(row).payload as unknown as VocabFolder);
+    if (!folders.some(f => f.id === UNCATEGORIZED_FOLDER_ID)) folders.unshift({ id: UNCATEGORIZED_FOLDER_ID, name: "未分類", order: -1, createdAt: new Date(0).toISOString(), updatedAt: new Date(0).toISOString() });
+    return { folders, revision: agentFoldersRevision(folders) };
+  }
+  async mutateFolders(uid: string, revision: string, operationId: string, action: AgentFolderMutation) {
+    const hash = await fingerprint(JSON.stringify({ revision, action }));
+    const previous = await this.cloud.operation<ReturnType<typeof mutateAgentFolders>>(uid, operationId, hash);
+    if (previous) return previous;
+    const head = await this.cloud.head(uid), before = await this.folders(uid);
+    if (before.revision !== revision) throw new HttpError(409, "stale_folders");
+    const occupied = action.type === "delete_folder" ? (await this.list(uid)).map(set => set.folderId) : [];
+    const result = mutateAgentFolders(before.folders, action, crypto.randomUUID(), occupied);
+    const now = new Date().toISOString();
+    const records: AgentCloudRecord[] = result.folder ? [{ type: "folder", recordKey: result.folder.id, payload: { ...result.folder }, deleted: false, updatedAt: now }]
+      : [{ type: "folder", recordKey: (action as { folderId: string }).folderId, payload: null, deleted: true, updatedAt: now }];
+    return this.cloud.commit(uid, head, records, [], `agent:${operationId}`, operationId, hash, result);
   }
 }

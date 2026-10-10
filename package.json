@@ -11,6 +11,7 @@
     "dev": "wrangler dev",
     "dev:agent": "wrangler dev --config wrangler.agent-local.toml --port 8791",
     "db:migrate:agent": "wrangler d1 migrations apply AGENT_DB --local --config wrangler.agent-local.toml",
+    "db:migrate:cloud": "wrangler d1 migrations apply CLOUD_DB --local --config wrangler.agent-local.toml",
     "test:agent": "node scripts/agent-smoke.mjs",
     "db:migrate": "wrangler d1 migrations apply DB --local",
     "benchmark:stream": "node scripts/benchmark-stream.mjs"
@@ -30,7 +31,7 @@
   },
   "dependencies": {
     "@cloudflare/workers-oauth-provider": "^1.2.3",
-    "@lexiro/agent-contract": "file:vendor/lexiro-agent-contract-1.0.0.tgz",
+    "@lexiro/agent-contract": "file:vendor/lexiro-agent-contract-2.0.0.tgz",
     "@lexiro/ai-contract": "file:vendor/lexiro-ai-contract-5.0.0.tgz",
     "@modelcontextprotocol/sdk": "^1.32.1",
     "jose": "^6.2.12",

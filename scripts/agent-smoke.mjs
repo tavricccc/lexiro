@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";
-import { mutateAgentSet } from "@lexiro/agent-contract";
+import { mutateAgentSet, UNCATEGORIZED_FOLDER_ID } from "@lexiro/agent-contract";
+const DEFAULT_AI_MODEL="gpt-6-luna";
 import { execFileSync } from "node:child_process";
 const base = "http://127.0.0.1:8791",
   A = "11111111-1111-4111-8111-111111111111",
@@ -372,7 +373,7 @@ const init = await rpc("initialize", {
 });
 assert.match(init.instructions, /已說明的項目不要重問/);
 const tools = await rpc("tools/list", {});
-assert.equal(tools.tools.length, 12);
+assert.equal(tools.tools.length, 17);
 async function call(name, args = {}) {
   const d = await rpc("tools/call", { name, arguments: args });
   assert.equal(d.isError, undefined, JSON.stringify(d));
@@ -380,7 +381,12 @@ async function call(name, args = {}) {
 }
 const sets = await call("list_sets");
 assert(sets.sets.every((v) => v.id !== B));
-const created = await call("create_set", { setName: "OAuth 合成 CRUD" });
+const folderState=await call("list_folders");
+const folder=await call("create_folder",{expectedRevision:folderState.revision,operationId:randomUUID(),name:`HTTP 合成 ${randomUUID()}`});
+const updatedFolder=await call("update_folder",{expectedRevision:folder.revision,operationId:randomUUID(),folderId:folder.folder.id,name:`HTTP 更名 ${randomUUID()}`,parentId:null});
+assert.equal(updatedFolder.folder.parentId,undefined);
+const created = await call("create_set", { setName: "OAuth 合成 CRUD",folderId:folder.folder.id });
+assert.equal(created.snapshot.set.folderId,folder.folder.id);
 let cs = created;
 const mutateMcp = async (name, args) => {
   const r = await call(name, {
@@ -410,11 +416,38 @@ await mutateMcp("put_words", {
 });
 await mutateMcp("rename_set", { setName: "OAuth 更名" });
 await mutateMcp("delete_words", { wordKeys: [cs.snapshot.words[0].wordKey] });
+const syntheticWords=Array.from({length:200},(_,i)=>({word:`synthetic-${i}`,senses:[{pos:'n.',meaningZh:`合成項目${i}`,examples:[`This synthetic example describes item number ${i}.`]}]}));
+const bulkReceipt=await mutateMcp("put_words",{words:syntheticWords});
+assert.equal(bulkReceipt.wordCount,200);assert.equal(cs.snapshot.words.length,200);
+const tooMany=await rpc('tools/call',{name:'put_words',arguments:{setId:cs.snapshot.set.id,expectedRevision:cs.revision,operationId:randomUUID(),words:[...syntheticWords,syntheticWords[0]]}});assert.equal(tooMany.isError,true);
+const setLink=(await req('/links','POST',{setId:cs.snapshot.set.id},'local-user-a',201)).data;
+const setToken=new URL(setLink.url).searchParams.get('token'),setPath=`/access/${setLink.id}`;
+const scopedFolders=(await req(setPath+'/folders','GET',undefined,setToken)).data;
+assert(scopedFolders.folders.some(f=>f.id===folder.folder.id));
+await req(setPath+'/folders','PATCH',{expectedRevision:scopedFolders.revision,operationId:randomUUID(),action:{type:'delete_folder',folderId:folder.folder.id}},setToken,405);
+await req(setPath,'PATCH',{expectedRevision:cs.revision,operationId:randomUUID(),action:{type:'move_set',folderId:UNCATEGORIZED_FOLDER_ID}},setToken);
+cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.set.folderId,UNCATEGORIZED_FOLDER_ID);
+await mutateMcp('move_set',{folderId:folder.folder.id});
+const nonempty=await rpc('tools/call',{name:'delete_folder',arguments:{expectedRevision:(await call('list_folders')).revision,operationId:randomUUID(),folderId:folder.folder.id}});assert.equal(nonempty.isError,true);
+const nativeStatus=(await req('/sync/status','GET',undefined,'local-user-a')).data;assert(nativeStatus.revision>0);
+const records=[];let cursor='',more=true;while(more){const page=(await req('/sync/records'+(cursor?'?cursor='+encodeURIComponent(cursor):''),'GET',undefined,'local-user-a')).data;records.push(...page.records);cursor=page.cursor;more=page.hasMore;}
+assert(records.some(r=>r.type==='word'&&r.recordKey===cs.snapshot.words[0].wordKey));
+assert(records.some(r=>r.type==='set'&&r.recordKey===cs.snapshot.set.id&&r.payload.folderId===folder.folder.id));
+const pushed={operationId:randomUUID(),origin:randomUUID(),records:[{type:'set',recordKey:cs.snapshot.set.id,deleted:false,updatedAt:new Date().toISOString(),payload:{...cs.snapshot.set,setName:'前端 HTTP 更新'}}]};
+const pushReceipt=(await req('/sync/records','POST',pushed,'local-user-a')).data;assert.deepEqual((await req('/sync/records','POST',pushed,'local-user-a')).data,pushReceipt);
+cs=await call('get_set',{setId:cs.snapshot.set.id});assert.equal(cs.snapshot.set.setName,'前端 HTTP 更新');
+const blobStatus=(await req('/sync/status','GET',undefined,'local-user-a')).data;
+const blobInput={operationId:randomUUID(),origin:randomUUID(),expectedRevision:blobStatus.blobRevision,blobs:[{kind:'preferences',data:{schemaVersion:1,model:DEFAULT_AI_MODEL,updatedAt:new Date().toISOString()}}]};
+const blobReceipt=(await req('/sync/blobs','POST',blobInput,'local-user-a')).data;assert.deepEqual((await req('/sync/blobs','POST',blobInput,'local-user-a')).data,blobReceipt);
+assert.equal((await req('/sync/blobs','GET',undefined,'local-user-a')).data.blobs.preferences.schemaVersion,1);
+await req('/sync/blobs','POST',{...blobInput,operationId:randomUUID()},'local-user-a',409);
 await call("delete_set", {
   setId: cs.snapshot.set.id,
   expectedRevision: cs.revision,
   operationId: randomUUID(),
 });
+const deletionFeed=(await req('/sync/records?cursor='+encodeURIComponent(cursor),'GET',undefined,'local-user-a')).data;assert(deletionFeed.records.some(r=>r.type==='set'&&r.recordKey===cs.snapshot.set.id&&r.deleted));
+await call('delete_folder',{expectedRevision:(await call('list_folders')).revision,operationId:randomUUID(),folderId:folder.folder.id});
 const denied = await rpc("tools/call", {
   name: "get_set",
   arguments: { setId: B },

@@ -10,11 +10,13 @@
 | `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
 | `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、完整教材 CRUD 工具、缺少題型先詢問的 Agent 操作規則；共用正式命題 brief／schema |
 | `src/agent/access.ts`、`operations.ts`、`types.ts` | per-user／per-set bearer URL、兩小時預設期限、hashed token、版本與 operation ID envelope、資料 scope |
-| `src/agent/library-repository.ts`、`firestore-values.ts`、`google-auth.ts` | Google service-account REST 認證與 Firestore 原生 v9 transaction；教材、source 進度、meta marker 與冪等回條同步提交 |
+| `src/agent/library-repository.ts` | D1 教材 repository；本集 memberships/source 索引讀取、資料夾 CRUD、來源進度調整、版本衝突與冪等回條 |
+| `src/cloud/{api,repository,records}.ts` | Firebase Auth owner 同步 API、D1 change feed／blob CAS、JSON 批次交易與原生教材序列化；Agent 和瀏覽器使用同一資料庫 |
+| `library-migrations/0001_library.sql` | 專用 CLOUD_DB schema v1：帳號版本、教材、來源索引、學習／偏好 blobs、操作回條；不遷移 Firestore |
 | `agent-migrations/0001_agent_access.sql` | Agent D1 schema v1，URL scope／到期／撤銷與一次性 OAuth 授權請求，與計費 migrations 分開 |
-| `vendor/lexiro-agent-contract-1.0.0.tgz` | 公開前端共用的無秘密教材 CRUD／來源／題目解析套件，直接重用正式 library parser |
+| `vendor/lexiro-agent-contract-2.0.0.tgz` | 公開共用教材／資料夾／雲端 DTO 契約與 parser；200 筆上限，不含模型金鑰或 private prompt |
 | `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
-| `tests-next/agent-firestore.test.ts`、`scripts/agent-smoke.mjs` | production repository 合成 REST transaction 驗證，以及 localhost 真 HTTP OAuth／MCP／URL CRUD 和隔離／撤銷／到期驗證 |
+| `tests-next/agent-d1.test.ts`、`scripts/agent-smoke.mjs` | 真 D1 batch／CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通及 HTTP OAuth／URL 驗證 |
 | `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |
 | `docs/agent-deployment.md` | 2026-10-10 Agent 變更、正式資源與 secrets、獨立部署 workflow、Vercel 免費網域及首次發布驗收回條 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |

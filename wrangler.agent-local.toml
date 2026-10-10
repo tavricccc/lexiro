@@ -11,6 +11,11 @@ binding = "AGENT_DB"
 database_name = "lexiro-agent-access-local"
 database_id = "00000000-0000-4000-8000-000000000001"
 migrations_dir = "agent-migrations"
+[[d1_databases]]
+binding = "CLOUD_DB"
+database_name = "lexiro-library-local"
+database_id = "00000000-0000-4000-8000-000000000002"
+migrations_dir = "library-migrations"
 [[kv_namespaces]]
 binding = "OAUTH_KV"
 id = "00000000000000000000000000000001"
