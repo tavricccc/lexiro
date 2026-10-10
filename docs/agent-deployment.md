@@ -136,3 +136,4 @@ curl.exe --silent --show-error --include "$agentOrigin/mcp"
 - 38 個正式 HTTP 檢查通過：MCP 建集／加字、URL 兩小時 scope、命題 brief、自行撰寫的詞彙題上傳／修改／刪除、集更名、同 operation 重送、原生 Firestore records-v9 讀回、URL 撤銷 410、刪集、解除後 token 401。測試未呼叫模型 API。
 - 合成 Firebase 使用者、Firestore 文件、失敗測試遺留 grants 均已清除／撤銷；加密憑證 artifact 已刪除，一次性私鑰在工作完成後移除。正式 Worker secret 清單只有 `FIREBASE_SERVICE_ACCOUNT`。
 - Cron schedule 已發布；每小時真正執行結果、長時間／大集 CPU、Google 登入與 ChatGPT UI 連結仍需觀察／實際驗收，不能由本次 HTTP smoke 推定。
+- 配套前端 `7e7b505` 的 [Vercel 正式 deployment run](https://github.com/tavricccc/lexiro/actions/runs/38058006644) 成功；正式 `/agent/authorize` 與 `/app/me/agents` HTTP 200，發布 bundle 使用正確 Agent origin。
