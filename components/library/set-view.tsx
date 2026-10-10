@@ -28,6 +28,7 @@ import {
 } from "@/src/lib/question-ownership";
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 import { SetMoveDialog } from "@/components/library/set-move-dialog";
+import { AgentAccessDialog } from "@/components/agent/access-dialog";
 import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
 import { SetTools } from "@/components/library/set-tools";
 import { StepActions } from "@/components/ui/step-actions";
@@ -65,6 +66,7 @@ export function SetView({
   );
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [moveOpen, setMoveOpen] = useState(false);
+  const [agentOpen, setAgentOpen] = useState(false);
 
   const current = state.sets.find((entry) => entry.id === setId);
 
@@ -142,6 +144,10 @@ export function SetView({
       <PageHeader
         actions={
           <>
+            <Button variant="outline" onClick={() => setAgentOpen(true)}>
+              <Icons.ai />
+              {t("agent.generateUrl")}
+            </Button>
             <Menu
               actions={[
                 {
@@ -330,6 +336,11 @@ export function SetView({
         onOpenChange={setMoveOpen}
         open={moveOpen}
         setName={current.setName}
+      />
+      <AgentAccessDialog
+        open={agentOpen}
+        onOpenChange={setAgentOpen}
+        setId={setId}
       />
 
       <ConfirmDialog

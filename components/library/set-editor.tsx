@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -29,6 +29,7 @@ import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { createUniqueSetName } from "@/src/lib/set-name";
+import { AgentAccessDialog } from "@/components/agent/access-dialog";
 
 interface SetEditorDraft {
   entry: "ask" | "manual";
@@ -45,15 +46,20 @@ export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
       form: { setName: t("setEditor.defaultSetName"), words: [emptyWord] },
     },
   );
-  const cancelHref = initialFolderId && initialFolderId !== UNCATEGORIZED_FOLDER_ID
-    ? `/app/library?folderId=${encodeURIComponent(initialFolderId)}`
-    : "/app/library";
+  const cancelHref =
+    initialFolderId && initialFolderId !== UNCATEGORIZED_FOLDER_ID
+      ? `/app/library?folderId=${encodeURIComponent(initialFolderId)}`
+      : "/app/library";
   if (saved.status === "checking") return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
         back={<BackControl href={cancelHref} />}
-        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.manualSetDescription")}
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.manualSetDescription",
+        )}
         invalid={saved.status === "invalid"}
         onRestart={saved.restart}
         onResume={saved.resume}
@@ -84,6 +90,8 @@ function SetEditorFlow({
   clear: () => void;
 }) {
   const router = useRouter();
+  const [agentOpen, setAgentOpen] = useState(false);
+  const agentSetId = useRef<string | undefined>(undefined);
   const formRef = useRef<HTMLFormElement>(null);
   const { state, status, saveSet } = useLibraryStore();
   const entry = draft.entry;
@@ -99,43 +107,93 @@ function SetEditorFlow({
   const setName = form.watch("setName");
   const errors = form.formState.errors;
 
-  const submit = form.handleSubmit(async (values) => {
-    try {
-      const saved = await saveSet({
-        folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
-        setName: createUniqueSetName(values.setName, state.sets.map((entry) => entry.setName)),
-        words: values.words.map((word) => ({
-          examples: word.examples.map((value) => value.trim()).filter(Boolean),
-          meaningZh: word.meaningZh,
-          pos: word.pos,
-          supplementary: word.supplementary,
-          word: word.word,
-        })),
-      });
-      clear();
-      router.push(`/app/sets/${saved.id}`);
-    } catch (reason) {
-      form.setError("root", {
-        message: t("setEditor.saveFailed", {
-          message: reason instanceof Error ? reason.message : String(reason),
-        }),
-      });
-    }
-  }, (invalid) => {
-    const wordErrors = Array.isArray(invalid.words) ? invalid.words : [];
-    const fieldName = invalid.setName
-      ? "setName"
-      : wordErrors.flatMap((word, index) =>
-          (["word", "pos", "meaningZh"] as const)
-            .filter((key) => word?.[key])
-            .map((key) => `words.${index}.${key}`),
-        )[0];
-    const field = fieldName && formRef.current?.elements.namedItem(fieldName);
-    if (field instanceof HTMLElement) {
-      field.focus({ preventScroll: true });
-      field.scrollIntoView({ block: "center", behavior: "smooth" });
-    }
-  });
+  const createAgentSet = async () => {
+    const values = form.getValues();
+    const rows = values.words.filter(
+      (word) =>
+        word.word.trim() ||
+        word.pos.trim() ||
+        word.meaningZh.trim() ||
+        word.examples.some((example) => example.trim()),
+    );
+    if (
+      !values.setName.trim() ||
+      (rows.length &&
+        !setFormSchema.safeParse({ ...values, words: rows }).success)
+    )
+      throw new Error(t("setEditor.fixErrors"));
+    const saved = await saveSet({
+      folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+      setName: createUniqueSetName(
+        values.setName,
+        state.sets.map((item) => item.setName),
+      ),
+      words: rows.map((word) => ({
+        ...word,
+        examples: word.examples.map((value) => value.trim()).filter(Boolean),
+      })),
+    });
+    agentSetId.current = saved.id;
+    clear();
+    return saved.id;
+  };
+  const agentDialog = (
+    <AgentAccessDialog
+      open={agentOpen}
+      onOpenChange={(open) => {
+        setAgentOpen(open);
+        if (!open && agentSetId.current)
+          router.push(`/app/sets/${agentSetId.current}`);
+      }}
+      createSet={createAgentSet}
+    />
+  );
+
+  const submit = form.handleSubmit(
+    async (values) => {
+      try {
+        const saved = await saveSet({
+          folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+          setName: createUniqueSetName(
+            values.setName,
+            state.sets.map((entry) => entry.setName),
+          ),
+          words: values.words.map((word) => ({
+            examples: word.examples
+              .map((value) => value.trim())
+              .filter(Boolean),
+            meaningZh: word.meaningZh,
+            pos: word.pos,
+            supplementary: word.supplementary,
+            word: word.word,
+          })),
+        });
+        clear();
+        router.push(`/app/sets/${saved.id}`);
+      } catch (reason) {
+        form.setError("root", {
+          message: t("setEditor.saveFailed", {
+            message: reason instanceof Error ? reason.message : String(reason),
+          }),
+        });
+      }
+    },
+    (invalid) => {
+      const wordErrors = Array.isArray(invalid.words) ? invalid.words : [];
+      const fieldName = invalid.setName
+        ? "setName"
+        : wordErrors.flatMap((word, index) =>
+            (["word", "pos", "meaningZh"] as const)
+              .filter((key) => word?.[key])
+              .map((key) => `words.${index}.${key}`),
+          )[0];
+      const field = fieldName && formRef.current?.elements.namedItem(fieldName);
+      if (field instanceof HTMLElement) {
+        field.focus({ preventScroll: true });
+        field.scrollIntoView({ block: "center", behavior: "smooth" });
+      }
+    },
+  );
 
   const homeFolderId = initialFolderId;
   const cancelHref =
@@ -171,15 +229,21 @@ function SetEditorFlow({
     </div>
   );
 
-  const backLink = <BackControl href={cancelHref} label={t("setEditor.cancel")} />;
+  const backLink = (
+    <BackControl href={cancelHref} label={t("setEditor.cancel")} />
+  );
 
   if (entry === "ask") {
     return (
       <div className="mx-auto max-w-xl">
-        <PageHeader back={<BackControl href={cancelHref} />} title={t("setEditor.howTitle")} />
+        <PageHeader
+          back={<BackControl href={cancelHref} />}
+          title={t("setEditor.howTitle")}
+        />
         <ChoiceList
           onSelect={(value) => {
             if (value === "ai") router.push(organizeHref);
+            else if (value === "agent") setAgentOpen(true);
             else update({ entry: "manual" });
           }}
           options={[
@@ -195,18 +259,38 @@ function SetEditorFlow({
               label: t("setEditor.aiWay"),
               value: "ai",
             },
+            {
+              description: t("agent.agentWayHint"),
+              icon: Icons.ai,
+              label: t("agent.agentWay"),
+              value: "agent",
+            },
           ]}
         />
+        {agentDialog}
       </div>
     );
   }
 
   return (
-    <form className="mx-auto max-w-3xl" id="new-set-form" onSubmit={submit} ref={formRef}>
+    <form
+      className="mx-auto max-w-3xl"
+      id="new-set-form"
+      onSubmit={submit}
+      ref={formRef}
+    >
       <PageHeader
         actions={
           <>
             <DraftSaveStatus status={persistence} />
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setAgentOpen(true)}
+            >
+              <Icons.ai />
+              {t("agent.generateUrl")}
+            </Button>
             <Button asChild variant="outline">
               <Link href={organizeHref}>
                 <Icons.generate />
@@ -282,6 +366,7 @@ function SetEditorFlow({
         </StepActions>
       </div>
 
+      {agentDialog}
     </form>
   );
 }

@@ -20,3 +20,6 @@ Back controls show the arrow only; accessible labels retain the destination.
 
 2026-10-10 內容隔離延續此方向：單字集與題庫共用清空控制，明確區分本集／全庫，確認保存後才顯示重新生成入口。控制維持手機 44px、桌機 36px；編輯固定來源集，無法重綁的生成、補義與練習草稿在原工作區保留成果並提供恢復選擇。
 本次 finish review 以元件互動測試、既有 token／元件來源與靜態檢查核對；沒有新圖像、版型或配色。瀏覽器視覺與真實 Firebase 多裝置驗收仍未執行。
+
+2026-10-10 Agent 連線為普通延伸：單字集增加 scoped URL，並提供 MCP OAuth 同意與連線管理；沿用既有入口、浮層、列表、語意 token 與本地化文案，無新圖像或視覺世界變更。
+本次獨立 finish review 為 ship，範圍限定訪客桌機／手機截圖與指定 Agent 元件及入口，detector JSON 為 []；三項元件測試涵蓋登入前不建集、同步失敗重試保留已建集與公開 OAuth 初始化／錯誤。登入後視覺、正式 Firestore／ChatGPT 連線、鍵盤循環、computed contrast 與深色模式未實測，完整證據見 docs/agent-ui-review.md。

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --webpack -H 0.0.0.0",
+    "prepare": "npm run build --prefix packages/agent-contract",
+    "prebuild": "npm run build --prefix packages/agent-contract",
     "build": "next build --webpack",
     "postbuild": "node scripts/check-client-boundary.mjs",
     "start": "next start",

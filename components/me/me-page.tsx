@@ -46,6 +46,12 @@ export function MePage() {
           icon={Icons.backup}
           label={t("settings.data")}
         />
+        <ListNavRow
+          href="/app/me/agents"
+          icon={Icons.ai}
+          label={t("agent.connections")}
+          detail={t("agent.connectionsHint")}
+        />
         {account.data?.admin && (
           <ListNavRow
             href="/app/me/admin"

@@ -349,7 +349,7 @@ export function cloudLibraryMarkerData(uid: string) {
 export function watchCloudChanges(
   db: Firestore,
   uid: string,
-  onChange: () => void,
+  onChange: (changedBy?: string) => void,
 ): () => void {
   let seen: Timestamp | null = null;
   let started = false;
@@ -367,7 +367,10 @@ export function watchCloudChanges(
       }
       if (!advanced) return;
       if (snapshot.get("changedBy") === SYNC_ORIGIN_ID) return;
-      onChange();
+      const changedBy: unknown = snapshot.get("changedBy");
+      if (typeof changedBy === "string" && changedBy.startsWith("agent:"))
+        onChange(changedBy);
+      else onChange();
     },
     () => {
       // A dropped listener is not a failed sync. The next manual or scheduled

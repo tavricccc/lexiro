@@ -1,12 +1,32 @@
-import { build } from 'esbuild';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-import { resolve, dirname } from 'node:path';
+import { build } from "esbuild";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { resolve, dirname } from "node:path";
 const directory = dirname(fileURLToPath(import.meta.url));
-const root = resolve(directory, '../..');
-await mkdir(resolve(directory, 'dist'), { recursive: true });
-await build({ entryPoints: [resolve(directory, 'src/index.ts')], outfile: resolve(directory, 'dist/index.js'), bundle: true, platform: 'browser', format: 'esm', target: 'es2022', tsconfig: resolve(root, 'tsconfig.json') });
-const declarations = await readFile(resolve(directory, 'src/public.ts'), 'utf8');
-await writeFile(resolve(directory, 'dist/index.d.ts'), declarations.replaceAll('../../../src/types/library', './library-types'));
-await writeFile(resolve(directory, 'dist/library-types.d.ts'), await readFile(resolve(root, 'src/types/library.ts'), 'utf8'));
-await writeFile(resolve(directory, 'dist/brand.d.ts'), await readFile(resolve(root, 'src/types/brand.ts'), 'utf8'));
+const root = resolve(directory, "../..");
+await mkdir(resolve(directory, "dist"), { recursive: true });
+await build({
+  entryPoints: [resolve(directory, "src/index.ts")],
+  outfile: resolve(directory, "dist/index.js"),
+  bundle: true,
+  platform: "browser",
+  format: "esm",
+  target: "es2022",
+  tsconfig: resolve(root, "tsconfig.json"),
+});
+const declarations = await readFile(
+  resolve(directory, "src/public.ts"),
+  "utf8",
+);
+await writeFile(
+  resolve(directory, "dist/index.d.ts"),
+  declarations.replaceAll("../../../src/types/library", "./library-types"),
+);
+await writeFile(
+  resolve(directory, "dist/library-types.d.ts"),
+  await readFile(resolve(root, "src/types/library.ts"), "utf8"),
+);
+await writeFile(
+  resolve(directory, "dist/brand.d.ts"),
+  await readFile(resolve(root, "src/types/brand.ts"), "utf8"),
+);

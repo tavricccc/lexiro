@@ -283,9 +283,15 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
           set({ user, ready: true, status: "syncing", error: "" });
           const db = getFirebaseFirestore();
           if (db) {
-            const stopLibraryWatch = watchCloudChanges(db, user.uid, () => {
-              void get().sync();
-            });
+            const stopLibraryWatch = watchCloudChanges(
+              db,
+              user.uid,
+              (changedBy) => {
+                void get().sync({
+                  reconcileAccount: changedBy?.startsWith("agent:"),
+                });
+              },
+            );
             const stopPreferencesWatch = watchCloudPreferences(
               db,
               user.uid,
@@ -402,10 +408,33 @@ async function reconcileAccountDocuments(
       getStorageNamespace() === uid &&
       useCloudStore.getState().user?.uid === uid &&
       useCloudStore.getState().ready
-        ? {
-            progress: mergeProgress(current.progress, blobs.progress),
-            stats: mergeStats(current.stats, blobs.stats),
-          }
+        ? (() => {
+            const senseIds = new Set<string>(
+              Object.values(useLibraryStore.getState().state.words).flatMap(
+                (word) => word.senses.map((sense) => sense.id),
+              ),
+            );
+            const progress = mergeProgress(current.progress, blobs.progress);
+            const stats = mergeStats(current.stats, blobs.stats);
+            return {
+              progress: {
+                ...progress,
+                cards: Object.fromEntries(
+                  Object.entries(progress.cards).filter(([id]) =>
+                    senseIds.has(id),
+                  ),
+                ),
+              },
+              stats: {
+                ...stats,
+                questionStatsBySense: Object.fromEntries(
+                  Object.entries(stats.questionStatsBySense).filter(([id]) =>
+                    senseIds.has(id),
+                  ),
+                ),
+              },
+            };
+          })()
         : null,
     );
   if (!merged) return;
