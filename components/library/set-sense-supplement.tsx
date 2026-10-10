@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
@@ -29,6 +30,8 @@ import { setWordDrafts } from "@/src/lib/word-edit";
 import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import type { WordDraft, WordKey } from "@/types";
+import { rebindSupplementSources } from "./supplement-source-scope";
+import { questionSourceWords } from "@/components/questions/question-source-scope";
 
 const LIMITS = [1, 2, 3] as const;
 type Limit = (typeof LIMITS)[number];
@@ -50,11 +53,18 @@ interface SupplementDraft {
  */
 export function SetSenseSupplement({ setId }: { setId: string }) {
   const uid = useCloudStore((store) => store.user?.uid);
+  const { state, status } = useLibraryStore();
+  const [recoveryChosen, setRecoveryChosen] = useState<WordKey[] | null>(null);
+  const words = useMemo(
+    () => Object.values(questionSourceWords(state, setId)),
+    [setId, state.memberships, state.words],
+  );
   const saved = useResumableDraft<SupplementDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:supplement:${setId}`,
     { chosen: [], limit: 1, phase: "run" },
   );
-  if (saved.status === "checking") return <LoadingState />;
+  if (status !== "ready" || saved.status === "checking")
+    return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
@@ -66,8 +76,66 @@ export function SetSenseSupplement({ setId }: { setId: string }) {
         header={false}
         invalid={saved.status === "invalid"}
         onRestart={saved.restart}
-        onResume={saved.resume}
+        onResume={() => {
+          const rebound = rebindSupplementSources(saved.pending!.chosen, words);
+          saved.resume();
+          if (rebound.missing.length) setRecoveryChosen(rebound.selected);
+          else saved.update({ chosen: rebound.selected });
+        }}
       />
+    );
+  if (recoveryChosen)
+    return (
+      <div className="space-y-5">
+        <p className="text-sm leading-6 text-destructive" role="alert">
+          {t("supplement.sourcesUnavailable")}
+        </p>
+        <ListSection header={t("supplement.wordsHeader")}>
+          {words.map((word) => (
+            <ListCheckRow
+              checked={recoveryChosen.includes(word.wordKey)}
+              detail={t("supplement.existing", { count: word.senses.length })}
+              key={word.wordKey}
+              label={word.word}
+              onCheckedChange={(checked) =>
+                setRecoveryChosen(
+                  checked
+                    ? [...recoveryChosen, word.wordKey]
+                    : recoveryChosen.filter((key) => key !== word.wordKey),
+                )
+              }
+            />
+          ))}
+        </ListSection>
+        <p className="type-hint">{t("supplement.sourceRecoveryHint")}</p>
+        <Button asChild size="sm" variant="outline">
+          <Link href={`/app/sets/${setId}/add`}>
+            <Icons.create />
+            {t("setEditor.addWord")}
+          </Link>
+        </Button>
+        {saved.draft.run?.state.items.length ? (
+          <ListSection header={t("supplement.resultsHeader")}>
+            {saved.draft.run.state.items.map((draft) => (
+              <SupplementResult draft={draft} key={draft.word} />
+            ))}
+          </ListSection>
+        ) : null}
+        <StepActions>
+          <Button
+            disabled={!recoveryChosen.length}
+            onClick={() => {
+              saved.update({ chosen: recoveryChosen });
+              setRecoveryChosen(null);
+            }}
+            size="lg"
+            type="button"
+          >
+            <Icons.success />
+            {t("supplement.confirmSources")}
+          </Button>
+        </StepActions>
+      </div>
     );
   return (
     <SupplementFlow

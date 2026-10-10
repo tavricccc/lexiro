@@ -950,6 +950,11 @@ export const zhTW = {
     unexpectedError: "發生未預期的錯誤，已保留本機資料。請重新載入再試一次。",
   },
   supplement: {
+    sourcesUnavailable:
+      "原本選取的部分單字已不在本集中。已完成的詞義與原生成紀錄仍保留，請重新選擇本集來源。",
+    sourceRecoveryHint:
+      "確認來源只在本機進行，不會重新生成或扣點。可以先把原單字補回本集；來源改動時，未完成的工作可能無法接續。",
+    confirmSources: "確認本集來源",
     title: "補充多義",
     intro: "勾選要補充的字，AI 只補它們還沒有的常用詞義。",
     wordsHeader: "要補充的單字",
