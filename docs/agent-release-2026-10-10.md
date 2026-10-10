@@ -1,6 +1,6 @@
 # Agent 功能變更與部署維護
 
-2026-10-10。MCP OAuth 與單字集授權 URL 已完成；正式服務使用既有 Firebase project，Agent 入口為 `https://lexiro-agent.tavric.workers.dev`。HTTP OAuth／Firestore CRUD 已驗證，ChatGPT 的連線 UI 尚未操作。
+2026-10-10。MCP OAuth 與單字集授權 URL 已完成；教材與同步已改用 D1，Firebase 只保留登入。Agent 入口為 `https://lexiro-agent.tavric.workers.dev`。正式 OAuth／D1 CRUD 已驗證；工程端未操作 ChatGPT 連線 UI。
 
 ## 這次新增的功能
 
@@ -13,15 +13,16 @@
 | 既有集入口 | 集頁首按「產生授權 URL」，讓 Agent 接續新增、修改或刪除內容 |
 | 連線管理 | 「我的 → Agent 連線」提供 MCP 網址、已授權應用程式、解除連線與 URL 撤銷 |
 | 命題 instructions | 未提供時先詢問題型、難度、數量及新增／編輯需求；已提供的資訊不重問，支援五種學測題型及後續編輯 |
-| 寫入與同步 | 沿用既有雲端教材；版本衝突會拒絕覆蓋，重送同一操作不重複新增，刪除來源會移除失效題目，保留其他集與整體學習歷史 |
+| 寫入與同步 | 網站、MCP、授權 URL 共用 D1；版本衝突拒絕覆蓋，同一操作重送不重複新增，刪除來源會移除失效題目 |
+| 資料夾與批次上限 | MCP 可新增、改名、移動與刪除空資料夾，建立集可指定資料夾；單次單字新增／刪除上限 200 筆，201 筆拒絕 |
 
-前端 commits：`0533ec3`（共用 Agent 教材契約）、`4277f00`（URL 入口、OAuth 同意頁、連線管理與同步）。共用 `@lexiro/agent-contract` 1.0.0 在安裝與 build 時產生 bundle，不需手動把 dist 放入版控。
+初版前端 commits：`0533ec3`（共用 Agent 教材契約）、`4277f00`（URL 入口、OAuth 同意頁、連線管理與同步）。目前共用契約為 2.0.0，在安裝與 build 時產生 bundle，不需手動把 dist 放入版控。
 
 上一輪本機驗證：前端 415 個、private backend 191 個測試，以及 typecheck、lint、build 通過。`gpt-6.1-sol low` Sub-agent 實際生成兩題後讀回、編輯與刪除，並驗證 OAuth 更新／解除、URL 到期／撤銷及跨帳號／跨集限制。這些結果不代表已驗收正式 Firebase、ChatGPT 或 Cloudflare CPU。
 
 ## 下一次部署
 
-正式 D1、OAuth KV 與 Firebase 憑證已配置；之後不需重建 Firebase，也不需重新建立 Agent 資源。後端變更先發布獨立 Agent Worker，再發布前端：
+正式 AGENT_DB、CLOUD_DB 與 OAuth KV 已配置；Firebase Auth 沿用原專案，Agent 不再需要 service-account 憑證。後端變更先發布獨立 Agent Worker，再發布前端：
 
 ```powershell
 gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
@@ -29,11 +30,11 @@ gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
 gh workflow run deploy.yml --repo tavricccc/lexiro --ref main
 ```
 
-Agent workflow 會完整驗證、套用專用 migration、同步 Firebase secret、部署及檢查 discovery；模型 API key 不會接到 Agent Worker。前端 workflow 使用 GitHub `Production` variable `NEXT_PUBLIC_AGENT_WORKER_URL`，目前值為 `https://lexiro-agent.tavric.workers.dev`，並自動同步到 Vercel Production 後重新 build。
+Agent workflow 會完整驗證、套用 `agent-migrations` 與 `library-migrations`、部署及檢查 discovery；不再同步 Firebase secret。Agent Worker 沒有模型 API key。前端 workflow 使用 GitHub `Production` variable `NEXT_PUBLIC_AGENT_WORKER_URL`，目前值為 `https://lexiro-agent.tavric.workers.dev`，並自動同步到 Vercel Production 後重新 build；不再發布 Firestore rules／indexes。
 
 若只改前端，照既有 main 發布流程即可。若更換 Agent 網址，更新上述 variable 與 private Worker 的 `AGENT_PUBLIC_URL`，值不帶 `/mcp` 或結尾 `/`，再依序發布及重新連結 MCP。前端 domain 改動才需調整 `APP_ORIGIN` 與 Firebase Authorized domains；同一 Firebase 專案與登入設定繼續使用。
 
-使用者依既有 PWA 更新流程明確啟用新版。上線 smoke 使用可清除的測試帳號及單字集；ChatGPT UI 連結、Cron 實際執行及大集 CPU 需另驗收。後端配置、首次發布及維護細節在 private `lexiro-worker/docs/agent-deployment.md`；操作見 [Agent 使用說明](agent-access.md)。
+使用者依既有 PWA 更新流程明確啟用新版。依使用者決定，D1 從空白開始，不遷移舊資料；`d1-v1` 本機 namespace 防止舊快取自動上傳。134 筆教材匯入由原本的 Agent 處理。Cron 實際執行及長任務 CPU 需另觀察。維護細節見 [D1 雲端維護](d1-cloud.md) 與 private `lexiro-worker/docs/agent-deployment.md`；操作見 [Agent 使用說明](agent-access.md)。
 
 ## 免費 vercel.app 網域
 
@@ -43,10 +44,18 @@ Agent workflow 會完整驗證、套用專用 migration、同步 Firebase secret
 
 兩小時是 URL token 的有效期；Agent 期間分次向 Worker 讀寫，沒有一個需要 Vercel 持續執行兩小時的請求。若之後換前端網域，要更新 `APP_ORIGIN` 與 Firebase Authorized domains；若換 Agent 網域，則要更新 Agent 公開原點、前端變數並重新連結 MCP。
 
-## 2026-10-10 上線回條
+## 初版 Firestore 上線回條（已由 D1 版本取代）
 
 - Frontend commit `7e7b505` 的 [正式 deployment workflow](https://github.com/tavricccc/lexiro/actions/runs/38058006644) 成功，包含 typecheck、lint、tests、build、Firebase rules／indexes 與 Vercel prebuilt 發布。
 - 正式網站為 `https://lexiro.vercel.app`；`/agent/authorize` 與 `/app/me/agents` HTTP 200，發布後的 JS bundle 已包含正確 Agent 原點。
 - Backend commit `95985cf` 的 [Agent deployment workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38057821258) 成功，192 個測試通過。首次正式測試發現的 Cloudflare 原生 fetch 接收物件問題已修正及重新發布。
 - 正式 HTTPS 38 個檢查通過：真實 Firebase custom-token 換 ID token、Firestore 原生教材讀寫、MCP OAuth／12 tools、URL 命題 brief、題目新增／編輯／刪除、更名與重送、撤銷及解除後拒絕存取。測試沒有呼叫模型 API，合成帳號與教材已清除。
 - ChatGPT UI 尚未手動連結；可使用 `https://lexiro-agent.tavric.workers.dev/mcp` 選 OAuth 連線。Cron 真正執行與長任務 CPU 尚待觀察。
+
+## D1 正式上線回條
+
+- Backend commit `1a6a82e` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38063285944) 成功，193 個測試、typecheck、lint、build、兩組 D1 migrations 與 discovery 通過。
+- Frontend commit `0234252` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38063531929) 成功，400 個測試、typecheck、lint、build 與發布通過。正式 JS 已含 D1 同步程式，不含 Firestore endpoint；OAuth／連線管理頁 HTTP 200。
+- 正式 HTTPS 45 項檢查通過：真實 Firebase Auth、OAuth S256、17 個 MCP 工具、一次寫入及讀回 200 筆、201 筆拒絕且不部分寫入、資料夾 CRUD、URL 分類、網站同步與 MCP 共用資料、進度／統計／偏好 CAS、重送、刪除 tombstone、refresh 與撤銷。
+- 測試未呼叫模型 API。合成 Firebase 帳號、D1 資料、URL 與 OAuth client 已清除；未匯入或修改使用者的 134 筆教材。
+- Agent Worker 的 Firebase service-account secret 與 private GitHub Production 對應副本已刪除；Worker secret list 為空。一次性診斷憑證 artifact 已刪除。

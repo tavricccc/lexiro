@@ -37,3 +37,9 @@ Agent workflow 會檢查、套用 `agent-migrations` 與 `library-migrations`、
 D1 免費配額為每日 500 萬讀取 rows、10 萬寫入 rows，每個資料庫最大 500 MB。讀取依實際掃描 rows 計算，索引會影響讀写用量；不能只計算 HTTP 次數。此版本以索引限制本集來源，並使用差異寫入降低放大。正式用量仍以 Cloudflare 指標為準。[D1 計價](https://developers.cloudflare.com/d1/platform/pricing/)、[限制](https://developers.cloudflare.com/d1/platform/limits/)。
 
 原 Firestore 故障已直接確認為 HTTP 429、`RESOURCE_EXHAUSTED`、`Quota exceeded.`。當時 service account 無 Monitoring／Billing 查看權限，未取得完整用量明細，因此不能聲稱知道精確消耗量或唯一成因。
+
+## 已發布與驗證
+
+後端 `1a6a82e` 與前端 `0234252` 已發布成功；CI 各通過 193／400 個測試及 typecheck、lint、build。正式 HTTPS 45 項檢查通過，包含真實 Firebase Auth、OAuth、200 筆新增／讀回、201 筆拒絕、資料夾、URL、共用同步、blob CAS、refresh 與撤銷。測試沒有呼叫模型 API，合成帳號、教材、授權 URL 與 OAuth client 已清除。
+
+Agent Worker 的 Firebase service-account secret 及 private GitHub 對應副本已刪除，目前 Worker secret list 為空。具體 workflows 與發布記錄見 [上線回條](agent-release-2026-10-10.md#d1-正式上線回條)。
