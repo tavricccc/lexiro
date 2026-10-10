@@ -16,17 +16,17 @@
 | 寫入與同步 | 網站、MCP、授權 URL 共用 D1；版本衝突拒絕覆蓋，同一操作重送不重複新增，刪除來源會移除失效題目 |
 | 資料夾與批次上限 | MCP 可新增、改名、移動與刪除空資料夾，建立集可指定資料夾；單次單字新增／刪除上限 200 筆，201 筆拒絕 |
 
-初版前端 commits：`0533ec3`（共用 Agent 教材契約）、`4277f00`（URL 入口、OAuth 同意頁、連線管理與同步）。目前共用契約為 2.0.0，在安裝與 build 時產生 bundle，不需手動把 dist 放入版控。
+初版前端 commits：`0533ec3`（共用 Agent 教材契約）、`4277f00`（URL 入口、OAuth 同意頁、連線管理與同步）。初版共用契約為 2.0.0，在安裝與 build 時產生 bundle，不需手動把 dist 放入版控；目前契約為 3.0.1。
 
 上一輪本機驗證：前端 415 個、private backend 191 個測試，以及 typecheck、lint、build 通過。`gpt-6.1-sol low` Sub-agent 實際生成兩題後讀回、編輯與刪除，並驗證 OAuth 更新／解除、URL 到期／撤銷及跨帳號／跨集限制。這些結果不代表已驗收正式 Firebase、ChatGPT 或 Cloudflare CPU。
 
 ## 下一次部署
 
-正式 AGENT_DB、CLOUD_DB 與 OAuth KV 已配置；Firebase Auth 沿用原專案，Agent 不再需要 service-account 憑證。後端變更先發布獨立 Agent Worker，再發布前端：
+正式 AGENT_DB、CLOUD_DB 與 OAuth KV 已配置；Firebase Auth 沿用原專案，Agent 不再需要 service-account 憑證。後端變更發布獨立 Agent Worker；有前端 runtime 變更時再發布前端：
 
 ```powershell
 gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
-# 確認 Agent workflow 成功，再發布前端
+# 有前端 runtime 變更時，確認 Agent 成功後再發布前端
 gh workflow run deploy.yml --repo tavricccc/lexiro --ref main
 ```
 
@@ -65,3 +65,11 @@ Agent workflow 會完整驗證、套用 `agent-migrations` 與 `library-migratio
 共用契約 3.0.0 已發布，MCP 新增唯讀 validate_generated_questions，共 18 tools。來源改用每題 senseId，不要求順序或全來源覆蓋；partial 保存有效題並回逐題錯誤，atomic 有錯則不保存題目。篇幅只回 Warning，解說選填；不呼叫模型做難度、風格或語意相似度評鑑。MCP revision／operationId 選填，提供時保留版本與回條保護，D1 CAS 一直有效。
 
 後端 `dc86551` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38066261701) 與前端 `88bc186` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38066476190) 都成功。本機合成 100 題確認 97 保存、3 錯誤；前後端 597 個測試、typecheck、lint、build 和本機 MCP HTTP 驗證通過。正式 discovery／前端路由驗證通過；未測正式 100 題寫入或 CPU，未修改使用者教材。完整規則與回條見 [批次寫入](agent-validation.md)。
+
+## 2026-10-11 按需查詢更新
+
+URL 首頁／get_set 改回摘要；列表回 items 分頁，brief 預設只回小批 specification，完整提示改從 prompt 取一次。Agent 應重新讀首頁或重新整理 MCP 工具定義。MCP read_batch 和 REST POST query 共用13種 resource，可一次搜尋多種資料、篩題型與難度、讀指定範圍／欄位；27個工具也支援單字、單一詞義、例句及子題 patch。保存結果預設精簡，診斷另按需分頁讀。
+
+本機195次 HTTP 回歸通過；`gpt-6.1-sol low` 子代理依補齊的指引用6次 HTTP、全部200完成新增、一次取來源與完整提示、生成保存、細部編輯與一次精確讀回。合成200詞／199題的整集教材 JSON 約60,322 tokens，首頁約1,004、指定5詞與3題約746（o200k_base估算）。條件與範例見 [按需操作](agent-query.md)。
+
+本次只有 Agent runtime 和文件變更，執行 deploy-agent.yml 即可；不需要新版資料 migration、共用套件或 Vercel 發布。完整五型原提示與內建生成共用，沒有修改使用者教材或呼叫模型 API。

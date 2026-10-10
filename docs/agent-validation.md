@@ -1,10 +1,10 @@
 # Agent 題目批次寫入
 
-2026-10-11。共用契約 3.0.1；MCP 有 18 個工具。Agent 和內建 AI 的所有題型共用同一套命題提示詞，Agent 的寫入驗證另採寬鬆規則。
+2026-10-11。共用契約 3.0.1；MCP 有 27 個工具。Agent 和內建 AI 的所有題型共用同一套命題提示詞，Agent 的寫入驗證另採寬鬆規則。查詢與細部編輯見 [按需操作](agent-query.md)。
 
 ## 使用者要求優先
 
-Agent 可以只替指定單字出題、調整順序、同字出多題，不必覆蓋整個來源清單。`get_generation_brief` 的 rules／specification 直接來自內建生成的 questionPrompt 函式：詞彙、綜合測驗、文意選填、篇章結構、閱讀都保留完整共用與題型指引，包括語境、唯一解、干擾選項、解說與原文依據。已取得提示可沿用；API 不強制先取 brief 才允許寫入。
+Agent 可以只替指定單字出題、調整順序、同字出多題，不必覆蓋整個來源清單。`get_generation_prompt` 的 rules 與 `get_generation_brief` 的 specification 直接來自內建 questionPrompt：五型都保留完整共用與題型指引，包括語境、唯一解、干擾選項、解說與原文依據。完整提示取得一次後沿用，brief 預設只回小批來源；可在同一次 read_batch 取得兩者。API 不強制先取 brief 才允許寫入。
 
 提示詞指導 Agent 如何生成；寫入端仍允許解說、逐錯項理由、閱讀 skill／evidence 選填及任意 JSON 欄位順序。篇幅仍是 Warning，partial／atomic、穩定 senseId 及唯讀驗證維持原行為。綜合測驗允許依共用提示考文法：來源 continual 的句子可以挖空 been；來源 ID 必須有效，答案仍須唯一定位。
 
@@ -29,21 +29,21 @@ Error 拒絕該題；篇幅偏短／偏長與完全相同內容是 Warning，允
 
 每批上限 200 個獨立題目或題組。單一文章題組以整組為驗證單位，避免修剪部分子題後破壞正文、空格與答案關係。
 
-回條含 `status`（success／partial_success／rejected）、`submittedCount`、`validCount`、`savedCount`、`failedCount`、`errors`、`warnings`、`items`。每項診斷含 `itemId`、`sourceId`、`sourceWord`、`sourceIndex`、`field`、`code`、`severity`、`message`；字數警告另含 actual／recommendedMin／recommendedMax。sourceIndex 只是本次提交位置，跨批修正以 itemId／sourceId 為準。可自行提供 itemId，省略時由內容產生。
+精簡回條含 `status`（success／partial_success／rejected）、提交／保存／失敗數、revision、operationId、最多10筆 errors 和3筆 warnings，以及完整 errorCount／warningCount。用 `responseFields` 選取 items.questionIds 等欄位，或用 operationId 分頁讀更多診斷。每項診斷含 itemId、sourceId、sourceWord、sourceIndex、field、code、severity、message；字數警告另含 actual／recommendedMin／recommendedMax。跨批修正以 itemId／sourceId 為準，sourceIndex 只是本次位置。
 
-requestedSenseIds／usedSenseIds／unusedSenseIds 只提供覆蓋資訊，不強迫補齊刻意省略的來源。原始生成題 ID 依內容與穩定本集來源產生，跨批重送不新增重複題；自行提供的 itemId 可識別後續修訂。
+requestedSenseIds／usedSenseIds／unusedSenseIds 可明確選取，只提供覆蓋資訊，不強迫補齊刻意省略的來源。原始生成題 ID 依內容與穩定本集來源產生，跨批重送不新增重複題；自行提供的 itemId 可識別後續修訂。
 
 ## 版本與重送
 
 MCP 的 expectedRevision／operationId 選填；省略時服務用當前資料與新 UUID 執行，D1 CAS 仍保護交易期間的並發。提供 expectedRevision 可保護 Agent 先前讀過的版本。重送需沿用同一 UUID operationId，才能取得完全相同的回條。每筆回條直接附新 revision，不必每批額外重讀。
 
-單集 URL 的 PATCH 仍需要 `{expectedRevision,operationId,action}`；題目內容與 partial／atomic 共用同一規則。整批拒絕會回結構化診斷與零 savedCount，不會部分寫入。MCP 用 isError 提示 rejected；部分成功仍是成功回應，Agent 應如實回報未完成的項目。
+單集 URL 的 PATCH 接受 `{action,expectedRevision?,operationId?}`，也可用細部 REST 路徑；題目內容與 partial／atomic 共用同一規則。整批拒絕回結構化診斷與零 savedCount，MCP 用 isError 提示 rejected；部分成功仍是成功回應，Agent 應如實回報未完成的項目。
 
 ## 工程驗證
 
 合成 100 題案例確認 97 題保存、3 題具穩定識別的錯誤；atomic 零寫入、唯讀驗證不改 revision、來源亂序／子集、拆批重送及原有內建生成篇幅限制皆有驗證。D1 題目 ID 衝突使用 JSON 批次查詢，避免每題各查一次耗盡 Worker 子請求額度。跨集 ID 衝突在 partial 模式只拒絕該題。
 
-D1 schema 不變，不需要資料 migration。發布步驟見 [D1 維護](d1-cloud.md)：先 Agent workflow，再前端 workflow。
+D1 schema 不變，不需要資料 migration。此次按需查詢只改 Agent runtime，執行 Agent workflow 即可；前端 runtime 改動時再發布前端。維護見 [D1 雲端](d1-cloud.md)。
 
 ## 發布回條
 

@@ -92,5 +92,7 @@ Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。Co
 
 `packages/agent-contract/src/generation.ts` 提供 Agent 專用生成格式與穩定 senseId 綁定；`validation.ts` 負責逐題 Error／Warning、partial／atomic 與可重送的題目識別。共用挖空器 `src/lib/question-assembly.ts` 保留內建生成模式，Agent 模式不套篇幅／教學品質門檻。MCP 使用說明見 [批次寫入](docs/agent-validation.md)。
 
+`docs/agent-query.md` 記錄 Agent Worker 的按需查詢與細部編輯：MCP read_batch／REST POST query、搜尋、題型／範圍／欄位與小批來源。這些執行程式位於同層 private Worker，公開前端保存操作文件。
+
 
 新增／搬移責任時更新本檔，版號只在[資料與同步](docs/data-and-sync.md)維護，避免複製出互相矛盾的 schema 表。
