@@ -2,7 +2,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { Miniflare } from "miniflare";
 export async function testDatabase(lastMigration?: string) {
   const runtime = new Miniflare({ workers: [{ config: {
-    type: "worker", name: "billing-test", compatibilityDate: "2026-09-12",
+    name: "billing-test", compatibilityDate: "2026-09-12",
     manifest: { mainModule: "index.js", modules: { "index.js": { type: "esm", contents: "export default {fetch(){return new Response('local test')}}" } } },
     env: { DB: { type: "d1" } },
   } }] });

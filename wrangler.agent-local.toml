@@ -1,0 +1,16 @@
+name = "lexiro-agent-local"
+main = "tests-next/agent-local-entry.ts"
+compatibility_date = "2026-10-10"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+[vars]
+AGENT_PUBLIC_URL = "http://127.0.0.1:8791"
+APP_ORIGIN = "http://127.0.0.1:3601"
+FIREBASE_PROJECT_ID = "lexiro-agent-local"
+[[d1_databases]]
+binding = "AGENT_DB"
+database_name = "lexiro-agent-access-local"
+database_id = "00000000-0000-4000-8000-000000000001"
+migrations_dir = "agent-migrations"
+[[kv_namespaces]]
+binding = "OAUTH_KV"
+id = "00000000000000000000000000000001"

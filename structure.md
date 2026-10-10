@@ -7,6 +7,15 @@
 | `src/response-stream.ts` | 保留 Responses SSE 協定；公開的 `response` 物件以白名單重建（`id`、`model`、`status`、`usage`、`incomplete_details.reason`、中和過的 `error`），供應商日後新增的欄位一律不轉發。文字事件不解析 JSON，內部完成通知保留伺服器結算需要的原始回覆，並只為管理員附上已結算 credit 等值 |
 | `src/usage-recovery.ts`、`tests-next/usage-recovery.test.ts` | 驗證完整 usage、補查 stored response、持久化待核對結算，並在帳戶請求與 Cron 有界重試。只保存計費識別，不保存 prompt、圖片或生成內容；有產出的待核對帳戶保留預留，取消／失敗立即釋放預留但繼續補記成本 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
+| `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
+| `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、完整教材 CRUD 工具、缺少題型先詢問的 Agent 操作規則；共用正式命題 brief／schema |
+| `src/agent/access.ts`、`operations.ts`、`types.ts` | per-user／per-set bearer URL、兩小時預設期限、hashed token、版本與 operation ID envelope、資料 scope |
+| `src/agent/library-repository.ts`、`firestore-values.ts`、`google-auth.ts` | Google service-account REST 認證與 Firestore 原生 v9 transaction；教材、source 進度、meta marker 與冪等回條同步提交 |
+| `agent-migrations/0001_agent_access.sql` | Agent D1 schema v1，URL scope／到期／撤銷與一次性 OAuth 授權請求，與計費 migrations 分開 |
+| `vendor/lexiro-agent-contract-1.0.0.tgz` | 公開前端共用的無秘密教材 CRUD／來源／題目解析套件，直接重用正式 library parser |
+| `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
+| `tests-next/agent-firestore.test.ts`、`scripts/agent-smoke.mjs` | production repository 合成 REST transaction 驗證，以及 localhost 真 HTTP OAuth／MCP／URL CRUD 和隔離／撤銷／到期驗證 |
+| `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `src/billing.ts`、`src/credits.ts` | 任何登入者第一次請求就建立 accounts 列（`ensureAccount`），免費試用開啟時帶入新帳號預設點數與每期額度、關閉時為 0；D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker。餘額大於 0 就能開始一批，預估超過餘額也照跑，結算以 0 為下限，帳戶不會變負數 |
 | `migrations/0001_billing.sql`～`0013_usage_parts.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、方案預設、usage 狀態與索引、管理版本，以及一次操作各回合 usage／cursor；舊單回合資料一次轉成單一 part |

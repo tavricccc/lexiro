@@ -7,26 +7,32 @@
     "typecheck": "tsc --noEmit",
     "lint": "oxlint src tests-next scripts",
     "test": "vitest run",
-    "build": "esbuild src/index.ts src/response-stream.ts src/cache-probe-input.ts --bundle --platform=browser --format=esm --outdir=dist",
+    "build": "esbuild src/index.ts src/response-stream.ts src/cache-probe-input.ts src/agent/index.ts --bundle --platform=browser --format=esm --external:cloudflare:* --outdir=dist",
     "dev": "wrangler dev",
+    "dev:agent": "wrangler dev --config wrangler.agent-local.toml --port 8791",
+    "db:migrate:agent": "wrangler d1 migrations apply AGENT_DB --local --config wrangler.agent-local.toml",
+    "test:agent": "node scripts/agent-smoke.mjs",
     "db:migrate": "wrangler d1 migrations apply DB --local",
     "benchmark:stream": "node scripts/benchmark-stream.mjs"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20260911.1",
+    "@cloudflare/workers-types": "^5.20261010.1",
     "@types/node": "^26.1.2",
     "@types/ws": "^8.18.2",
     "esbuild": "^0.28.2",
     "gpt-tokenizer": "^4.0.0",
-    "miniflare": "^5.20260911.0-alpha",
+    "miniflare": "^5.20261006.1-alpha",
     "oxlint": "^1.41.0",
     "typescript": "^7.0.2",
     "vitest": "^4.1.11",
-    "wrangler": "^4.131.1",
+    "wrangler": "^4.149.0",
     "ws": "^8.22.0"
   },
   "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^1.2.3",
+    "@lexiro/agent-contract": "file:vendor/lexiro-agent-contract-1.0.0.tgz",
     "@lexiro/ai-contract": "file:vendor/lexiro-ai-contract-5.0.0.tgz",
+    "@modelcontextprotocol/sdk": "^1.32.1",
     "jose": "^6.2.12",
     "zod": "^4.6.2"
   }

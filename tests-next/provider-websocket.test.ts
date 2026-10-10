@@ -112,7 +112,7 @@ describe("native Workers WebSocket and Durable Object transport", () => {
     try {
       const bundled = await build({ stdin: { contents: 'import { GenerationRoom } from "./src/generation-room"; export { GenerationRoom }; export default { fetch(request, env) { return env.GENERATIONS.get(env.GENERATIONS.idFromName("synthetic-session")).fetch(request); } };', resolveDir: process.cwd(), loader: "ts" }, bundle: true, platform: "browser", format: "esm", write: false });
       runtime = new Miniflare({ workers: [{ config: {
-        type: "worker", name: "socket-test", compatibilityDate: "2026-09-12",
+        name: "socket-test", compatibilityDate: "2026-09-12",
         manifest: { mainModule: "index.js", modules: { "index.js": { type: "esm", contents: bundled.outputFiles[0].text } } },
         exports: { GenerationRoom: { type: "durable-object", storage: "sqlite" } },
         env: { DB: { type: "d1" }, GENERATIONS: { type: "durable-object", worker: "socket-test", exportName: "GenerationRoom" }, OPENAI_API_KEY: { type: "json", value: "synthetic" }, OPENAI_BASE_URL: { type: "json", value: `http://127.0.0.1:${address.port}/v1` } },

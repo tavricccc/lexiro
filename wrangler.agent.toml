@@ -1,0 +1,22 @@
+name = "lexiro-agent"
+main = "src/agent/index.ts"
+compatibility_date = "2026-10-10"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+[triggers]
+crons = ["17 * * * *"]
+
+[vars]
+AGENT_PUBLIC_URL = "https://lexiro-agent.YOUR-SUBDOMAIN.workers.dev"
+APP_ORIGIN = "https://lexiro.vercel.app"
+FIREBASE_PROJECT_ID = "replace-with-firebase-project-id"
+
+[[d1_databases]]
+binding = "AGENT_DB"
+database_name = "lexiro-agent-access"
+database_id = "replace-with-agent-database-id"
+migrations_dir = "agent-migrations"
+
+[[kv_namespaces]]
+binding = "OAUTH_KV"
+id = "replace-with-oauth-kv-id"
