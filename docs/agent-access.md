@@ -2,7 +2,7 @@
 
 Agent 自己生成教材，Lexiro 只驗證、讀寫原本的 Firestore 資料。`wrangler.agent.toml` 是獨立 Worker，沒有模型供應商 API key、計費 DB 或生成 Durable Object binding。原本付費生成服務保持獨立。
 
-本次變更紀錄與下一次正式發布的完整順序見 [Agent 首次部署](agent-deployment.md)，包含目前 workflow 尚缺的設定、Vercel 網域與正式驗收。
+本次變更、正式發布回條與後續維護見 [Agent 部署](agent-deployment.md)，包含獨立 workflow、Firebase 憑證、Vercel 網域與驗收範圍。
 
 ## 授權範圍
 
@@ -40,27 +40,23 @@ npm run test:agent
 
 測試入口只在 `wrangler.agent-local.toml`，使用本機 D1 與合成使用者，不包含正式 Firebase 驗證的 bypass。測試腳本會重新 seed 本機 fixture，限本機使用。`src/agent/index.ts` 才是正式入口。真實 HTTP、DCR、PKCE、token 更新、MCP 工具與 URL CRUD 的結果見 [agent-local-results.md](agent-local-results.md)。Firestore production repository 另以合成 REST transport 驗證 transaction、原生記錄、scope、回條與刪除保留範圍；這不代表已連正式 Firestore。
 
-## 正式設定（尚未執行）
+## 正式設定與後續發布
 
-1. 建立專用 D1 與 KV，把回傳 ID 填入 `wrangler.agent.toml`。設定 `AGENT_PUBLIC_URL` 為固定 HTTPS 原点、`APP_ORIGIN` 為 Lexiro 實際前端原點、`FIREBASE_PROJECT_ID` 為同一 Firebase project。
-2. 專用 Google service account 只授予 Firestore 所需 `roles/datastore.user`，JSON 金鑰以 `FIREBASE_SERVICE_ACCOUNT` Worker secret 提交。該身分由 IAM 控制，後端負責逐請求限制使用者／單字集；Firestore Web rules 不會代替 service-account 的 scope 檢查。不要把金鑰存入版控，也不要把模型 API key 複製到此 Worker。
-3. 前端設定 `NEXT_PUBLIC_AGENT_WORKER_URL`，重新 build。
-4. 在完成本機驗證、實際配置並取得部署授權後，執行專用設定的 migration/deploy；現有部署 workflow 只部署生成 Worker，不會自動部署 Agent Worker。
+`wrangler.agent.toml` 已填入正式 D1／KV、`wordmem-497209` 與固定 Agent 原點 `https://lexiro-agent.tavric.workers.dev`。沿用現有 Firebase project 和 service account；既有部署不需重新建立 Firebase 或 Agent 資源。
+
+Firebase JSON 已設定為 Worker secret 與 private backend GitHub `Production` 的 `FIREBASE_SERVICE_ACCOUNT`。該身分由 IAM 控制，後端按請求限制使用者／單字集；Firestore Web rules 不會代替 service-account 的 scope 檢查。不要把金鑰存入版控，也不要把模型 API key 複製到此 Worker。
+
+Agent 使用獨立 `deploy-agent.yml`，相關 main 變更會自動觸發，亦可手動發布。前端 workflow 已把 GitHub `NEXT_PUBLIC_AGENT_WORKER_URL` 同步到 Vercel Production，再重新 build。
 
 ```powershell
-npx wrangler d1 create lexiro-agent-access
-npx wrangler kv namespace create OAUTH_KV
-# 先把 IDs、網址、Firebase project 寫入 wrangler.agent.toml
-npx wrangler secret put FIREBASE_SERVICE_ACCOUNT --config wrangler.agent.toml
-npx wrangler d1 migrations apply AGENT_DB --remote --config wrangler.agent.toml
-npx wrangler deploy --config wrangler.agent.toml
+gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
 ```
 
-這些正式命令是維護說明，本次沒有執行。每小時 Cron 清除過期授權請求、過期／撤銷七天以上的 URL 記錄，並分頁清理 OAuth KV。Firestore 操作回條保留，以便長時間後仍辨識重送操作。
+正式 migration、Worker 發布與 HTTPS OAuth／CRUD 已於 2026-10-10 執行；具體結果與尚待 ChatGPT UI 驗收的部分見部署回條。每小時 Cron 清除過期授權請求、過期／撤銷七天以上的 URL 記錄，並分頁清理 OAuth KV。Firestore 操作回條保留，以便長時間後仍辨識重送操作。
 
 ## 使用
 
-ChatGPT／Codex 加入遠端 MCP：貼 `https://你的-agent-domain/mcp`，選 OAuth，在 Lexiro 登入並同意完整教材管理權限。服務提供 protected-resource／authorization-server discovery、DCR 和 CIMD。實際 ChatGPT 使用資格與自訂 App 設定依當時帳號功能為準；需要對正式 HTTPS 服務另做連線驗收。
+ChatGPT／Codex 加入遠端 MCP：貼 `https://lexiro-agent.tavric.workers.dev/mcp`，選 OAuth，在 Lexiro 登入並同意完整教材管理權限。服務提供 protected-resource／authorization-server discovery、DCR 和 CIMD。正式 HTTP 協定已驗證，ChatGPT 的連線 UI 尚未操作。
 
 URL：Lexiro 新增集選「交給自己的 Agent」，或既有集按「產生授權 URL」，複製給支援 HTTP GET／PATCH 的 Agent。一般 ChatGPT 對話只讀一個網頁不會因此得到 HTTP 寫入工具，ChatGPT 應透過 MCP 操作；Codex／CLI Agent 可直接讀 URL 再依 instructions 寫入。不要把 token 記入公開檔案、截圖或操作報告。撤銷及 OAuth 解除入口在「我的 → Agent 連線」。
 

@@ -1,6 +1,6 @@
 # Agent 變更紀錄與首次正式部署
 
-2026-10-10。實作已 commit，本機驗證完成；Agent 的正式 D1、KV、service account 和 HTTPS 服務尚未配置或部署。本文件記錄下一次發布的操作，不是正式環境已完成的回條。
+2026-10-10。正式資源已配置，沿用既有 Firebase project `wordmem-497209` 與 service account。Agent Worker 使用 `https://lexiro-agent.tavric.workers.dev`；當次發布與正式驗證結果見文件末尾。
 
 ## 這次變更
 
@@ -18,11 +18,11 @@
 
 Backend commits：`60a53e2`、`7fd6aaf`。配套 frontend commits：`0533ec3`、`4277f00`。上一輪 frontend 415／backend 191 個測試與四個 gate 通過；具體 HTTP 和 Sub-agent 回條見 [本機測試結果](agent-local-results.md)。正式 Firebase 登入、Firestore、ChatGPT 連線、Cron 與 Cloudflare CPU 仍待驗收。
 
-## 目前部署流程缺少什麼
+## 部署流程
 
-`.github/workflows/deploy.yml` 使用預設 `wrangler.toml`，只部署生成 Worker、計費 DB 與模型相關 secrets。它不會建立 Agent DB／KV、設定 Agent 的 Firebase secret、套用 agent-migrations 或部署 `wrangler.agent.toml`。首次 Agent 發布需走下面的專用命令；日後若要自動部署，再建立獨立的 Agent job／workflow。
+`.github/workflows/deploy.yml` 使用預設 `wrangler.toml`，部署生成 Worker、計費 DB 與模型相關 secrets。Agent 使用獨立 `.github/workflows/deploy-agent.yml`：完整檢查後套用 Agent migration、同步 Firebase secret、發布 `wrangler.agent.toml`，再驗證 discovery 與未授權 MCP。相關程式／配置變更會自動觸發，也可手動執行。首次網址傳播可能短暫回 404，health／discovery 檢查最多重試六次。
 
-前端 workflow 尚未傳入 `NEXT_PUBLIC_AGENT_WORKER_URL`，部署前需補 GitHub Production variable 及 job env，Vercel Production 設相同值。僅新增 GitHub variable 不會自動成為 job 的環境變數。
+前端 workflow 已傳入 GitHub `Production` variable `NEXT_PUBLIC_AGENT_WORKER_URL`，並在發布時同步同名 Vercel Production 變數，再 pull settings／build。日後改 Agent origin 時更新 GitHub variable 並重新發布。
 
 ## 1. 確認三個原點與 Firebase project
 
@@ -34,7 +34,7 @@ Backend commits：`60a53e2`、`7fd6aaf`。配套 frontend commits：`0533ec3`、
 | ChatGPT／Codex MCP 網址 | `AGENT_PUBLIC_URL` 加 `/mcp` |
 | Agent `FIREBASE_PROJECT_ID` | 與前端 Firebase project、service account 的 `project_id` 相同 |
 
-目前設定檔中的 `https://lexiro.vercel.app` 是待核對的前端值；Agent 子網域、D1／KV ID 和 Firebase project 仍有 placeholder。部署前逐項替換，使用同一個 canonical Agent origin 做 discovery、OAuth 和 MCP 測試。
+正式前端為 `https://lexiro.vercel.app`，Agent 為 `https://lexiro-agent.tavric.workers.dev`。`wrangler.agent.toml` 已填入 Firebase project、Agent DB `8d68c8b8-cb7c-4b04-8d07-40555bb34f72` 與 OAuth KV `8dbae4f064ff4a5f8f0c7037b6c57345`；既有部署不要重建資源。下面建立命令供新環境使用。
 
 ## 2. 建立專用資源與憑證
 
@@ -48,13 +48,15 @@ npx wrangler kv namespace create OAUTH_KV --config wrangler.agent.toml
 
 把回傳 IDs 分別填入 `wrangler.agent.toml` 的 `AGENT_DB.database_id` 和 `OAUTH_KV.id`，同時填入上一節的 vars。兩個資源都供 Agent 使用；不要填原本計費 DB 的 ID，也不要把 local fixture 的假 ID 帶上正式環境。若使用 API token，需有建立／管理 Worker、D1 與 KV 的權限；原本只供生成 Worker 使用的 token 可能需補 KV 權限。
 
-在相同 Google Cloud／Firebase project 建立專用 service account，授予 Firestore 讀寫所需的 `roles/datastore.user`，取得 JSON 金鑰，透過 Worker secret 提交：
+沿用同一個 Firebase project；service account 須有 Firestore 讀寫權限（例如 `roles/datastore.user`）。可重用現有帳號；新建較小權限的專用帳號是選項，並非必須。以完整 JSON 設定 Worker secret：
 
 ```powershell
 npx wrangler secret put FIREBASE_SERVICE_ACCOUNT --config wrangler.agent.toml
 ```
 
-依提示提交完整 JSON，不把內容寫進 TOML、公開 repo、前端環境變數或文件。前端既有的 GitHub `FIREBASE_SERVICE_ACCOUNT` 用於發布 rules／indexes，不等於 Agent secret 已設定；Agent 建議使用獨立、較小權限的身分。此 Worker 不需要 `OPENAI_API_KEY` 或 `ADMIN_EMAILS`。
+依提示提交完整 JSON，不把內容寫進 TOML、公開 repo、前端環境變數或文件。本次已把前端 GitHub 的既有 `FIREBASE_SERVICE_ACCOUNT` 接到 Agent Worker，並設定 private backend `Production` 的同名 secret，供後續 workflow 使用。Agent Worker secrets 只有 Firebase 憑證，不需要 `OPENAI_API_KEY` 或 `ADMIN_EMAILS`。
+
+若原始 JSON 只存在 GitHub secret，可使用前端手動 workflow `prepare-agent-credential.yml`：部署者產生一次性 RSA-3072 公鑰／私鑰，只把 DER 公鑰的 base64 作為 input；workflow 用 AES-256-GCM 加密 JSON，以 RSA-OAEP-SHA256 包裝 AES key。取回 artifact 後在本機記憶體解密，透過 stdin 交給 Wrangler／`gh secret set`；完成後刪除 artifact 和一次性私鑰。workflow 不輸出或保存明文 JSON，artifact 最長保留一天。
 
 Service account 透過 IAM 存取 Firestore，教材 scope 由 Agent Worker 按 uid／setId 檢查。不要為了 Agent 放寬 Firestore Web rules；它使用原本 v9 教材格式。
 
@@ -71,7 +73,11 @@ npx wrangler d1 migrations apply AGENT_DB --remote --config wrangler.agent.toml
 npx wrangler deploy --config wrangler.agent.toml
 ```
 
-本次新增的 migration 是 `agent-migrations/0001_agent_access.sql`，只套到 `AGENT_DB`。`agent-migrations/fixtures/local-agent.sql` 和 `tests-next/agent-local-entry.ts` 只用於本機，不發布到正式服務。上述 remote／deploy 命令留給下一次已授權發布，本次未執行。
+`agent-migrations/0001_agent_access.sql` 已在本次授權發布中套用到正式 `AGENT_DB`。`agent-migrations/fixtures/local-agent.sql` 和 `tests-next/agent-local-entry.ts` 只用於本機，不發布到正式服務。後續發布可直接執行：
+
+```powershell
+gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
+```
 
 確認 Wrangler 回傳的網址與 `AGENT_PUBLIC_URL` 一致，檢查 Agent secret、D1、KV、每小時 Cron 和正式入口。原本生成 Worker 若同時更新，仍依 [生成 Worker 部署文件](deployment.md) 發布；Agent 的專用部署不會代替它。
 
@@ -83,7 +89,7 @@ npx wrangler deploy --config wrangler.agent.toml
 NEXT_PUBLIC_AGENT_WORKER_URL: ${{ vars.NEXT_PUBLIC_AGENT_WORKER_URL }}
 ```
 
-Vercel Project 的 Production Environment 也設定同名變數、同一個 Agent 原點。現有流程先做一般 build，再 pull Vercel production settings 並執行 Vercel build；兩處保持一致。`NEXT_PUBLIC_` 值在 build 時進入前端，改值後須重新 build／deploy。
+前端 workflow 已包含這一行，並自動以 `vercel env add --force` 同步 Vercel Production 的值。流程先做一般 build，再 pull 更新後的 Vercel production settings 並執行 Vercel build。`NEXT_PUBLIC_` 值在 build 時進入前端，改值後須重新 build／deploy。
 
 Firebase Authentication → Settings → Authorized domains 應包含正式前端 hostname，例如 `lexiro.vercel.app`，此處只填 hostname。沿用原本 Firebase `authDomain`／Google provider；前端的 `/agent/authorize` 是 MCP 同意頁，不是 Google 的 `__/auth/handler`。[Firebase Google 登入](https://firebase.google.com/docs/auth/web/google-signin)、[網域驗證 FAQ](https://firebase.google.com/docs/auth/faq-and-troubleshooting)。
 
@@ -121,3 +127,12 @@ curl.exe --silent --show-error --include "$agentOrigin/mcp"
 前端使用 Production URL，避免每次改動會不同的單次部署／Preview URL；它會影響 `APP_ORIGIN` 的 CORS 與授權頁返回位址匹配。[Vercel 部署網址](https://vercel.com/docs/deployments/generated-urls)。MCP、OAuth discovery、token 與授權 URL 在 Agent Worker；兩小時是 bearer URL 的有效期，Agent 分次讀寫，不依賴 Vercel 長請求。
 
 若更換前端域名，更新 `APP_ORIGIN`、Firebase Authorized domains，再驗證登入與 CORS。若更換 Agent 域名，更新 `AGENT_PUBLIC_URL`、前端公開變數並重新連結 MCP；先前發出的舊 hostname URL 不會自動換址。
+
+## 2026-10-10 正式部署回條
+
+- Backend 發布 commit：`95985cf`；[Agent deployment run](https://github.com/tavricccc/lexiro-worker/actions/runs/38057821258) 成功。typecheck／lint／build 與 192 個測試通過；Worker version `c47d7332-7587-4e19-989b-0d145054e9c7`，100% traffic。
+- 首次正式 CRUD 發現 repository 把原生 `fetch` 作為物件 method 呼叫，Cloudflare 回 `Illegal invocation`。已改成呼叫 global fetch 的 wrapper，並新增接收物件的回歸測試；修正後重新發布及驗收。
+- 用 service-account 簽署的 custom token 向真實 Firebase Authentication 換取 ID token，再完成正式 HTTPS 的 DCR／S256 PKCE、授權 approve、access token、MCP initialize／12 tools、refresh 和 grant revoke。這是 HTTP 協定驗證，未操作 Google 登入瀏覽器或 ChatGPT 的連線 UI。
+- 38 個正式 HTTP 檢查通過：MCP 建集／加字、URL 兩小時 scope、命題 brief、自行撰寫的詞彙題上傳／修改／刪除、集更名、同 operation 重送、原生 Firestore records-v9 讀回、URL 撤銷 410、刪集、解除後 token 401。測試未呼叫模型 API。
+- 合成 Firebase 使用者、Firestore 文件、失敗測試遺留 grants 均已清除／撤銷；加密憑證 artifact 已刪除，一次性私鑰在工作完成後移除。正式 Worker secret 清單只有 `FIREBASE_SERVICE_ACCOUNT`。
+- Cron schedule 已發布；每小時真正執行結果、長時間／大集 CPU、Google 登入與 ChatGPT UI 連結仍需觀察／實際驗收，不能由本次 HTTP smoke 推定。
