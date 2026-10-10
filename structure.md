@@ -60,6 +60,7 @@
 | `tests-next/organize.test.ts` | 整理固定價格／前綴、1／10 張的單一串流 envelope、張數／逐張 WebP 限制、逐張冪等與失敗／取消整批退款 |
 | `package.json`、`tsconfig.json` | 獨立套件與檢查設定 |
 | `.github/workflows/deploy.yml`、`docs/deployment.md` | main push 先完整驗證，再套用 D1 migrations、同步 secrets、部署 Worker 並做 CORS health check；以及正式設定與上線驗收清單 |
+| `.github/workflows/deploy-agent.yml` | 獨立 Agent 正式發布：完整驗證、專用 D1 migration、Firebase secret、Worker 部署與 OAuth discovery；不載入模型金鑰 |
 | `docs/backend-blueprint.html` | 完整原始藍圖，移除平台執行腳本與登入包裝後的本地版本 |
 | `docs/product-decisions.md` | 使用者補充、矛盾處理與階段驗收；優先於原始藍圖 |
 | `README.md`、`docs/architecture.md` | 本機入口、端點、D1／pending usage 生命週期及排程；現行配置與發布見 deployment |

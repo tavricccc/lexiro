@@ -1,5 +1,6 @@
 name = "lexiro-agent"
 main = "src/agent/index.ts"
+account_id = "3a6b9f53daa83fc24242d05bc590a2ee"
 compatibility_date = "2026-10-10"
 compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
 
@@ -7,16 +8,16 @@ compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
 crons = ["17 * * * *"]
 
 [vars]
-AGENT_PUBLIC_URL = "https://lexiro-agent.YOUR-SUBDOMAIN.workers.dev"
+AGENT_PUBLIC_URL = "https://lexiro-agent.tavric.workers.dev"
 APP_ORIGIN = "https://lexiro.vercel.app"
-FIREBASE_PROJECT_ID = "replace-with-firebase-project-id"
+FIREBASE_PROJECT_ID = "wordmem-497209"
 
 [[d1_databases]]
 binding = "AGENT_DB"
 database_name = "lexiro-agent-access"
-database_id = "replace-with-agent-database-id"
+database_id = "8d68c8b8-cb7c-4b04-8d07-40555bb34f72"
 migrations_dir = "agent-migrations"
 
 [[kv_namespaces]]
 binding = "OAUTH_KV"
-id = "replace-with-oauth-kv-id"
+id = "8dbae4f064ff4a5f8f0c7037b6c57345"

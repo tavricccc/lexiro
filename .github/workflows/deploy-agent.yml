@@ -1,0 +1,63 @@
+name: Verify and deploy Agent Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - src/agent/**
+      - src/auth.ts
+      - src/http.ts
+      - src/prompts.ts
+      - src/question-brief.ts
+      - src/question-prompts.ts
+      - src/schemas.ts
+      - vendor/**
+      - agent-migrations/**
+      - wrangler.agent.toml
+      - package.json
+      - package-lock.json
+      - .github/workflows/deploy-agent.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lexiro-agent-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+      - name: Validate Agent credentials
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$FIREBASE_SERVICE_ACCOUNT"
+      - name: Apply Agent access migrations
+        run: npx wrangler d1 migrations apply AGENT_DB --remote --config wrangler.agent.toml
+      - name: Set Firebase credential
+        run: printf %s "$FIREBASE_SERVICE_ACCOUNT" | npx wrangler secret put FIREBASE_SERVICE_ACCOUNT --config wrangler.agent.toml
+      - name: Deploy Agent
+        run: npx wrangler deploy --config wrangler.agent.toml
+      - name: Verify public OAuth discovery
+        run: |
+          curl --fail --silent --show-error https://lexiro-agent.tavric.workers.dev/health
+          curl --fail --silent --show-error https://lexiro-agent.tavric.workers.dev/.well-known/oauth-authorization-server
+          curl --fail --silent --show-error https://lexiro-agent.tavric.workers.dev/.well-known/oauth-protected-resource/mcp
+          status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://lexiro-agent.tavric.workers.dev/mcp)
+          test "$status" = 401
