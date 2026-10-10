@@ -92,4 +92,6 @@ Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。Co
 
 `.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt、部署 Rules／indexes、發布 Vercel。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。命令與證據範圍見[測試](docs/testing.md)與[部署](docs/deployment.md)。
 
+`.github/workflows/prepare-agent-credential.yml` 只接受手動執行；`scripts/seal-agent-credential.mjs` 用部署者的一次性 RSA 公鑰與 AES-GCM 封裝既有 Firebase service-account secret，供 private Agent Worker 初次設定或輪替。artifact 只保留一天，明文憑證不寫入檔案或 log。
+
 新增／搬移責任時更新本檔，版號只在[資料與同步](docs/data-and-sync.md)維護，避免複製出互相矛盾的 schema 表。
