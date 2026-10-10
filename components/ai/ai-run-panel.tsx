@@ -30,7 +30,6 @@ export function AiRunPanel<T>({
   billableCount,
   configured,
   kind,
-  localCount = 0,
   onAppend,
   onCancel,
   onResume,
@@ -47,7 +46,6 @@ export function AiRunPanel<T>({
   billableCount: number;
   configured: boolean;
   kind: JobKind;
-  localCount?: number;
   onAppend?: () => void;
   onCancel: () => void;
   onResume?: () => void;
@@ -76,10 +74,7 @@ export function AiRunPanel<T>({
     ? (state.receivedUnits ?? state.completed)
     : state.completed;
   const runModel = started && !done ? (state.model ?? model) : model;
-  const canRun =
-    ready &&
-    (configured || !billableCount) &&
-    Boolean(billableCount || localCount);
+  const canRun = ready && configured && billableCount > 0;
   const appendCost = estimatePoints(
     kind,
     appendBillableCount ?? billableCount,
@@ -196,11 +191,6 @@ export function AiRunPanel<T>({
         </p>
       )}
 
-      {localCount > 0 && (
-        <p className="type-hint">
-          {t("ai.builtLocally", { count: localCount })}
-        </p>
-      )}
       {!running && insufficientPoints && state.remaining === 0 && !done && (
         <p className="text-sm text-destructive" role="status">
           {t("managed.noPoints")}

@@ -18,6 +18,43 @@ beforeEach(() => {
 });
 
 describe("library mutations", () => {
+  it("stores new and edited examples without creating questions or replacing saved ones", async () => {
+    const store = useLibraryStore.getState();
+    const draft = {
+      word: "calm",
+      pos: "adj.",
+      meaningZh: "平靜的",
+      examples: ["The lake was calm after the storm."],
+      supplementary: false,
+    };
+    const savedSet = await store.saveSet({ setName: "課文單字", words: [draft] });
+    const membership = useLibraryStore.getState().state.memberships[savedSet.id][0];
+    expect(useLibraryStore.getState().state.questions).toEqual([]);
+
+    await store.saveQuestion({
+      id: "saved-question",
+      fingerprint: "",
+      kind: "multipleChoice",
+      questionStyle: "vocabulary",
+      difficulty: 2,
+      wordKey: membership.wordKey,
+      senseId: membership.senseIds[0],
+      prompt: "With no waves in sight, the lake stayed _____.",
+      options: ["calm", "rough", "noisy", "crowded"],
+      answerIndex: 0,
+      createdAt: "2026-10-10T00:00:00.000Z",
+      updatedAt: "2026-10-10T00:00:00.000Z",
+    });
+    const savedQuestion = useLibraryStore.getState().state.questions[0];
+    const examples = ["She remained calm while everyone else panicked.", "The sea was calm at dawn."];
+    await store.saveSet({ id: savedSet.id, setName: savedSet.setName, words: [{ ...draft, examples }] });
+
+    const state = useLibraryStore.getState().state;
+    expect(state.words[membership.wordKey].senses[0].examples).toEqual(examples);
+    expect(state.questions).toEqual([savedQuestion]);
+    expect(mocks.commit.mock.lastCall![0].questions).toEqual([savedQuestion]);
+  });
+
   it("preserves both simultaneous edits on disk and in memory", async () => {
     const store = useLibraryStore.getState();
     await Promise.all([store.createFolder("學校"), store.createFolder("生活")]);
