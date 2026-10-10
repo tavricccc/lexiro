@@ -57,7 +57,7 @@ export function ClearQuestionsControl({
           >
             {t("questions.cleared", { count: completed })}
           </p>
-          <Button asChild size="sm" variant="outline">
+          <Button asChild className="h-11 md:h-9" size="sm" variant="outline">
             <Link
               href={
                 setId
@@ -72,6 +72,7 @@ export function ClearQuestionsControl({
         </>
       )}
       <Button
+        className="h-11 md:h-9"
         disabled={status !== "ready" || questions.length === 0}
         onClick={() => {
           setCompleted(null);
