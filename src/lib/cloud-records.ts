@@ -12,8 +12,14 @@ import { refKey, type SyncTombstone } from "./sync-journal";
 import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { CloudSyncError } from "./cloud-sync-errors";
 import { hashText } from "./hash";
-import { repairLibraryState } from "./library-repair";
+import {
+  repairLibraryState,
+  repairLibraryStateWithMigration,
+  type LibraryDraft,
+} from "./library-repair";
 import { isRecord } from "./schema";
+import { isSetWordKey } from "./library";
+import { normalizeLibraryState } from "./share";
 
 /**
  * One Library record as the cloud stores it.
@@ -46,8 +52,7 @@ export const CLOUD_RECORD_ID_PATTERN =
   /^(folder|set|membership|word|question)-[0-9a-f]{32}$/u;
 
 /**
- * A word key is user text folded to lower case, so it can hold slashes and
- * anything else Firestore refuses in a document id. Hashing the Library's id
+ * Hashing the Library's opaque, set-scoped id
  * gives every record a uniform, legal name, and lets the security rules check
  * the shape of an id with one expression.
  */
@@ -114,7 +119,10 @@ export function tombstoneRecord(tombstone: SyncTombstone): CloudRecord {
 /** Every record in the Library, for the first push of an account. */
 export function allLibraryRefs(state: LibraryState): LibraryRecordRef[] {
   return [
-    ...state.folders.map((folder) => ({ kind: "folder" as const, id: folder.id })),
+    ...state.folders.map((folder) => ({
+      kind: "folder" as const,
+      id: folder.id,
+    })),
     ...state.sets.map((entry) => ({ kind: "set" as const, id: entry.id })),
     ...Object.keys(state.memberships).map((id) => ({
       kind: "membership" as const,
@@ -137,15 +145,36 @@ export function validateCloudRecord(
   uid: string,
   documentId: string,
 ): CloudRecord {
+  return validateRecord(value, uid, documentId, CLOUD_SCHEMA_VERSION);
+}
+
+/** Used only while reading the fixed source of the one-way v8 migration. */
+export function validateLegacyCloudRecord(
+  value: unknown,
+  uid: string,
+  documentId: string,
+): CloudRecord {
+  return validateRecord(value, uid, documentId, 8);
+}
+
+function validateRecord(
+  value: unknown,
+  uid: string,
+  documentId: string,
+  schemaVersion: 8 | 9,
+): CloudRecord {
   if (!isRecord(value)) invalid("格式錯誤");
   if (value.ownerId !== uid) invalid("不屬於這個帳號");
-  if (value.schemaVersion !== CLOUD_SCHEMA_VERSION)
+  if (value.schemaVersion !== schemaVersion)
     throw new CloudSyncError(
       "cloud/schema-unsupported",
       `雲端記錄使用不支援的 schema（${String(value.schemaVersion)}）`,
     );
   const type = value.type;
-  if (typeof type !== "string" || !RECORD_TYPES.includes(type as LibraryRecordKind))
+  if (
+    typeof type !== "string" ||
+    !RECORD_TYPES.includes(type as LibraryRecordKind)
+  )
     invalid("的 type 無效");
   const recordKey = value.recordKey;
   if (typeof recordKey !== "string" || !recordKey) invalid("缺少 recordKey");
@@ -155,8 +184,15 @@ export function validateCloudRecord(
   const updatedAt = value.updatedAt;
   if (typeof updatedAt !== "string" || !updatedAt) invalid("缺少 updatedAt");
   const deleted = value.deleted === true;
-  if (deleted) return { type: kind, recordKey, deleted, updatedAt, payload: null };
+  if (deleted)
+    return { type: kind, recordKey, deleted, updatedAt, payload: null };
   if (!isRecord(value.payload)) invalid("缺少 payload");
+  if (
+    schemaVersion === CLOUD_SCHEMA_VERSION &&
+    kind === "word" &&
+    (!isSetWordKey(recordKey) || value.payload.wordKey !== recordKey)
+  )
+    invalid("的單字 key 必須是相符的集合來源 id");
   return { type: kind, recordKey, deleted, updatedAt, payload: value.payload };
 }
 
@@ -184,6 +220,40 @@ export function applyCloudRecords(
   dirty: ReadonlySet<string> = new Set(),
   now = new Date().toISOString(),
 ): LibraryState {
+  return normalizeLibraryState(
+    repairLibraryState(cloudRecordDraft(state, records, dirty, now)),
+  );
+}
+
+/** Assemble all legacy records before repairing/migrating their shared sources. */
+export function migrateCloudRecords(
+  records: readonly CloudRecord[],
+  updatedAt: string,
+) {
+  return repairLibraryStateWithMigration(
+    cloudRecordDraft(
+      {
+        version: 1,
+        words: {},
+        sets: [],
+        memberships: {},
+        folders: [],
+        questions: [],
+        updatedAt,
+      },
+      records,
+      new Set(),
+      updatedAt,
+    ),
+  );
+}
+
+function cloudRecordDraft(
+  state: LibraryDraft,
+  records: readonly CloudRecord[],
+  dirty: ReadonlySet<string>,
+  now: string,
+) {
   const folders = new Map(state.folders.map((entry) => [entry.id, entry]));
   const sets = new Map(state.sets.map((entry) => [entry.id, entry]));
   const questions = new Map(state.questions.map((entry) => [entry.id, entry]));
@@ -225,12 +295,13 @@ export function applyCloudRecords(
     }
   }
 
-  return repairLibraryState({
+  return {
+    version: state.version,
     words: words as Record<WordKey, WordEntry>,
     sets: [...sets.values()],
     memberships,
     folders: [...folders.values()],
     questions: [...questions.values()],
     updatedAt: now,
-  });
+  };
 }

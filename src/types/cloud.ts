@@ -1,4 +1,4 @@
-import type { DashboardStats, LearningProgress } from './learning'
+import type { DashboardStats, LearningProgress } from "./learning";
 
 /**
  * What the cloud stores.
@@ -9,37 +9,38 @@ import type { DashboardStats, LearningProgress } from './learning'
  * on its own and read back through a change feed ordered by `writtenAt`, which
  * the server stamps so no device can move another device's cursor.
  */
-export type CloudRecordType = 'folder' | 'set' | 'membership' | 'word' | 'question'
+export type CloudRecordType =
+  "folder" | "set" | "membership" | "word" | "question";
 
 export interface FirestoreRecordDoc {
-  ownerId: string
-  schemaVersion: 8
-  type: CloudRecordType
+  ownerId: string;
+  schemaVersion: 9;
+  type: CloudRecordType;
   /** The Library's own id for this record: a word key, set id, folder id or question id. */
-  recordKey: string
-  deleted: boolean
+  recordKey: string;
+  deleted: boolean;
   /** The record's own `updatedAt`, or when it was deleted. Decides conflicts. */
-  updatedAt: string
-  payload?: Record<string, unknown>
+  updatedAt: string;
+  payload?: Record<string, unknown>;
   /** Server-stamped. The change feed is ordered by this and nothing else. */
-  writtenAt: unknown
+  writtenAt: unknown;
 }
 
 /** Bumped on every push, so other devices learn there is something to pull. */
 export interface FirestoreLibraryMetaDoc {
-  ownerId: string
-  schemaVersion: 8
-  changedAt: unknown
+  ownerId: string;
+  schemaVersion: 9;
+  changedAt: unknown;
   /** Which tab moved the marker, so a listener can ignore its own push. */
-  changedBy: string
+  changedBy: string;
 }
 
 export interface FirestoreProgressDoc extends LearningProgress {
-  ownerId: string
-  schemaVersion: 8
+  ownerId: string;
+  schemaVersion: 9;
 }
 
 export interface FirestoreStatsDoc extends DashboardStats {
-  ownerId: string
-  schemaVersion: 8
+  ownerId: string;
+  schemaVersion: 9;
 }

@@ -20,6 +20,10 @@ import {
   writeCloudPreferences,
 } from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
+import {
+  cleanupLegacyCloudCopies,
+  ensureCloudSetIsolation,
+} from "@/src/lib/cloud-set-migration";
 import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
 import {
@@ -110,6 +114,8 @@ const SYNC_MAX_DELAY_MS = 15_000;
  * overwrites the cloud's, and whenever the user asks for a sync by hand.
  */
 let accountDocumentsRead = "";
+let isolatedAccount = "";
+let retiredCopiesCleaned = "";
 /** How long the workspace waits on auth before opening on local data anyway. */
 const AUTH_WAIT_MS = 1_500;
 const MAX_RETRY_ATTEMPTS = 3;
@@ -142,13 +148,15 @@ function online(): boolean {
 
 /** Loads this namespace's local data. The namespace must already be set. */
 async function hydrateLocal(): Promise<void> {
+  // Library migration durably remaps the learning snapshot before publishing
+  // the new head. Its dependent store must not race that read/write sequence.
+  await useLibraryStore.getState().hydrate();
+  const libraryError = useLibraryStore.getState().error;
+  if (libraryError) throw new Error(libraryError);
   await Promise.all([
-    useLibraryStore.getState().hydrate(),
     useLearningStore.getState().hydrate(),
     useAiPreferencesStore.getState().hydrate(),
   ]);
-  const libraryError = useLibraryStore.getState().error;
-  if (libraryError) throw new Error(libraryError);
 }
 
 const enterNamespace = serializeAccountDataAction(
@@ -158,14 +166,16 @@ const enterNamespace = serializeAccountDataAction(
     await flushAiPreferenceMutations();
     setStorageNamespace(namespace);
     accountDocumentsRead = "";
+    isolatedAccount = "";
+    retiredCopiesCleaned = "";
     resetSyncJournalCache();
+    await useLibraryStore.getState().reloadNamespace();
+    const libraryError = useLibraryStore.getState().error;
+    if (libraryError) throw new Error(libraryError);
     await Promise.all([
-      useLibraryStore.getState().reloadNamespace(),
       useLearningStore.getState().reloadNamespace(),
       useAiPreferencesStore.getState().reloadNamespace(),
     ]);
-    const libraryError = useLibraryStore.getState().error;
-    if (libraryError) throw new Error(libraryError);
   },
 );
 
@@ -445,6 +455,22 @@ async function runSync(
 
   set({ status: "syncing", error: "" });
   try {
+    if (isolatedAccount !== user.uid) {
+      const migration = await ensureCloudSetIsolation(
+        db,
+        user.uid,
+        sameAccount,
+      );
+      if (!migration.completed || !sameAccount()) return;
+      // A legacy cursor belongs to the old collection. Read the entire new
+      // feed once; dirty entries and tombstones retain their exact versions.
+      if (
+        migration.migrated &&
+        !(await writeSyncForAccount(user.uid, () => setSyncCursor("")))
+      )
+        return;
+      isolatedAccount = user.uid;
+    }
     const journal = await loadSyncJournal();
     // Captured before any request goes out: the journal is live, and an edit
     // made while a write is in flight must stay queued rather than be cleared
@@ -464,7 +490,10 @@ async function runSync(
         return applyCloudRecords(
           current,
           pulled.records,
-          new Set(Object.keys(latestJournal.dirty)),
+          new Set([
+            ...Object.keys(latestJournal.dirty),
+            ...Object.keys(latestJournal.tombstones),
+          ]),
         );
       });
     }
@@ -502,6 +531,16 @@ async function runSync(
     retryTimer = null;
     await refreshPending(set);
     set({ ready: true, status: "synced", error: "" });
+    if (retiredCopiesCleaned !== user.uid && sameAccount()) {
+      // This deletes only retired copies after the new account is published.
+      // Retry on a later sync if cleanup fails; it cannot invalidate v9 data.
+      const cleaned = await cleanupLegacyCloudCopies(
+        db,
+        user.uid,
+        sameAccount,
+      ).catch(() => false);
+      if (cleaned && sameAccount()) retiredCopiesCleaned = user.uid;
+    }
   } catch (reason) {
     if (!sameAccount()) return;
     await refreshPending(set);

@@ -14,6 +14,7 @@ const mocks = vi.hoisted(() => ({
   clear: vi.fn(),
   auth: vi.fn(),
   blobs: vi.fn(),
+  isolation: vi.fn(),
   journal: null as SyncJournal | null,
 }));
 vi.mock("idb-keyval", () => ({
@@ -33,6 +34,7 @@ vi.mock("@/src/lib/library-repository", async (original) => ({
   getLibraryRepository: () => ({
     commit: mocks.commit,
     loadState: async () => emptyLibraryState(),
+    scopeMigrationIntent: async () => null,
   }),
 }));
 vi.mock("@/src/lib/sync-journal", async (original) => ({
@@ -64,6 +66,10 @@ vi.mock("@/src/lib/cloud-preferences", () => ({
   watchCloudPreferences: () => () => {},
   writeCloudPreferences: async () => {},
 }));
+vi.mock("@/src/lib/cloud-set-migration", () => ({
+  ensureCloudSetIsolation: mocks.isolation,
+  cleanupLegacyCloudCopies: async () => true,
+}));
 const { useCloudStore } = await import("@/stores/cloud-store");
 const { useLibraryStore } = await import("@/stores/library-store");
 const { useLearningStore } = await import("@/stores/learning-store");
@@ -89,6 +95,7 @@ beforeEach(() => {
   };
   mocks.commit.mockResolvedValue(noChange);
   mocks.auth.mockResolvedValue(null);
+  mocks.isolation.mockResolvedValue({ completed: true, migrated: false });
   mocks.blobs.mockResolvedValue({
     progress: { cards: {}, updatedAt: "2026-10-01T00:00:00.000Z" },
     stats: createDefaultStats(),
@@ -112,6 +119,28 @@ describe("synchronization state consistency", () => {
       user: { uid: "account-b" } as User,
     });
     await useCloudStore.getState().sync();
+    expect(mocks.pull).not.toHaveBeenCalled();
+    expect(mocks.cursor).not.toHaveBeenCalled();
+  });
+  it("does not start the v9 feed or save a migration cursor after the account changes", async () => {
+    setStorageNamespace("migrating-account");
+    useCloudStore.setState({ user: { uid: "migrating-account" } as User });
+    let finishMigration!: () => void;
+    mocks.isolation.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          finishMigration = () => resolve({ completed: true, migrated: true });
+        }),
+    );
+    const synced = useCloudStore.getState().sync();
+    await vi.waitFor(() => expect(mocks.isolation).toHaveBeenCalledOnce());
+    expect(mocks.pull).not.toHaveBeenCalled();
+    useCloudStore.setState({
+      ready: false,
+      user: { uid: "account-b" } as User,
+    });
+    finishMigration();
+    await synced;
     expect(mocks.pull).not.toHaveBeenCalled();
     expect(mocks.cursor).not.toHaveBeenCalled();
   });

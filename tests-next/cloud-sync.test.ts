@@ -10,7 +10,7 @@ import { normalizeCloudProgress } from "@/src/lib/cloud-sync-schema";
 import { mergeProgress } from "@/src/lib/cloud-account";
 import { pendingRecords } from "@/src/lib/cloud-sync";
 import { createUncategorizedFolder } from "@/src/lib/folders";
-import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
+import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 import { prepareFirestoreData } from "@/src/lib/firestore-data";
 import { repairLibraryState } from "@/src/lib/library-repair";
 
@@ -23,19 +23,19 @@ function library(
   setName: string,
   timestamp = EARLIER,
 ): LibraryState {
-  const wordKey = normalizeWordKey(rawWordKey);
-  const senseId = buildSenseId(wordKey, "n.", `${wordKey} 意思`);
+  const wordKey = buildSetWordKey(setId, rawWordKey);
+  const senseId = buildSenseId(wordKey, "n.", `${rawWordKey} 意思`);
   return {
-    version: 1,
+    version: 2,
     words: {
       [wordKey]: {
         wordKey,
-        word: wordKey,
+        word: rawWordKey,
         senses: [
           {
             id: senseId,
             pos: "n.",
-            meaningZh: `${wordKey} 意思`,
+            meaningZh: `${rawWordKey} 意思`,
             examples: [],
             supplementary: false,
           },
@@ -61,7 +61,7 @@ function library(
 
 function emptyLibrary(): LibraryState {
   return {
-    version: 1,
+    version: 2,
     words: {},
     sets: [],
     memberships: {},
@@ -148,10 +148,10 @@ describe("applyCloudRecords", () => {
       },
       {
         type: "word",
-        recordKey: "revise",
+        recordKey: buildSetWordKey("two", "revise"),
         deleted: false,
         updatedAt: LATER,
-        payload: { ...other.words[normalizeWordKey("revise")] },
+        payload: { ...other.words[buildSetWordKey("two", "revise")] },
       },
       {
         type: "membership",
@@ -162,7 +162,14 @@ describe("applyCloudRecords", () => {
       },
     ]);
     expect(merged.sets.map((entry) => entry.id).sort()).toEqual(["one", "two"]);
-    expect(Object.keys(merged.words).sort()).toEqual(["adapt", "revise"]);
+    expect(
+      Object.values(merged.words)
+        .map((word) => word.word)
+        .sort(),
+    ).toEqual(["adapt", "revise"]);
+    expect(merged.memberships.two[0].wordKey).toBe(
+      buildSetWordKey("two", "revise"),
+    );
   });
 
   it("takes the cloud copy even when the device that wrote it has a slow clock", () => {

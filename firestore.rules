@@ -6,7 +6,7 @@ service cloud.firestore {
     // to be written out at each of the four documents, so a version bump could
     // leave one behind and lock the account out of writing anything at all.
     function currentSchemaVersion() {
-      return 8;
+      return 9;
     }
 
     function signedIn(uid) {
@@ -15,6 +15,15 @@ service cloud.firestore {
 
     function ownerCreate(uid) {
       return signedIn(uid) && request.resource.data.ownerId == uid;
+    }
+
+    // The old source stays fixed until the complete isolated account is visible.
+    // Only retired copies may be removed; v9 records retain normal tombstones.
+    function isolationPublished(uid) {
+      let marker = /databases/$(database)/documents/users/$(uid)/meta/library-v9;
+      return exists(marker)
+        && get(marker).data.ownerId == uid
+        && get(marker).data.schemaVersion == currentSchemaVersion();
     }
 
     function validProgress() {
@@ -90,10 +99,15 @@ service cloud.firestore {
       allow read, delete: if signedIn(uid);
       allow create, update: if signedIn(uid) && request.resource.data.ownerId == uid;
 
-      // No delete. A record leaves the Library by being rewritten with
-      // `deleted`, and a document that could simply vanish would let one device
-      // resurrect on the next pull what another device threw away.
+      // Frozen v8 source. A v9 marker permits removing only these retired copies.
       match /records/{recordId} {
+        allow read: if signedIn(uid);
+        allow delete: if signedIn(uid) && isolationPublished(uid);
+      }
+
+      // A live record leaves by being rewritten with `deleted`; it must not
+      // vanish and be resurrected by a device that still has an older copy.
+      match /records-v9/{recordId} {
         allow read: if signedIn(uid);
         allow create, update: if signedIn(uid) && validRecord(uid, recordId);
       }
@@ -101,25 +115,37 @@ service cloud.firestore {
       // Bumped on every push so other devices learn there is something to pull.
       // `changedBy` names the tab that pushed, so its own listener can tell the
       // server's confirmation of its own write from somebody else's change.
-      match /meta/{documentId} {
+      match /meta/library-v9 {
         allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid)
           && request.resource.data.keys().hasOnly(['ownerId', 'schemaVersion', 'changedAt', 'changedBy'])
           && request.resource.data.changedBy is string
           && request.resource.data.schemaVersion == currentSchemaVersion();
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
+      }
+
+      match /meta/library {
+        allow read: if signedIn(uid);
+        allow delete: if signedIn(uid) && isolationPublished(uid);
       }
 
       match /progress/global {
         allow read: if signedIn(uid);
+        allow delete: if signedIn(uid) && isolationPublished(uid);
+      }
+
+      match /progress/global-v9 {
+        allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid) && validProgress();
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
       match /stats/summary {
         allow read: if signedIn(uid);
+        allow delete: if signedIn(uid) && isolationPublished(uid);
+      }
+
+      match /stats/summary-v9 {
+        allow read: if signedIn(uid);
         allow create, update: if ownerCreate(uid) && validStats();
-        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
       match /preferences/ai {

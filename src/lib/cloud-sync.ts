@@ -29,6 +29,8 @@ import {
 } from "firebase/firestore";
 import {
   CLOUD_RECORD_PAGE_SIZE,
+  CLOUD_RECORD_COLLECTION,
+  CLOUD_LIBRARY_META_ID,
   CLOUD_SCHEMA_VERSION,
   CLOUD_WRITE_BATCH_SIZE,
 } from "@/constants";
@@ -61,7 +63,7 @@ import { refKey } from "./sync-journal";
  */
 
 export function recordsCollection(db: Firestore, uid: string) {
-  return collection(db, "users", uid, "records");
+  return collection(db, "users", uid, CLOUD_RECORD_COLLECTION);
 }
 
 export function cloudDocument(
@@ -76,7 +78,7 @@ export function cloudDocument(
 /**
  * Who wrote the change marker. One id per tab, made once when the module loads.
  *
- * A push finishes by stamping `meta/library` with a server timestamp, and
+ * A push finishes by stamping `meta/library-v9` with a server timestamp, and
  * Firestore delivers that document twice: once holding the local estimate, then
  * again when the server resolves the real value. Only the first is marked as a
  * pending write, so the second read as another device's change and bought a
@@ -147,7 +149,10 @@ function parseCursor(
   if (!stamp || !id) return null;
   const [seconds, nanoseconds] = stamp.split(".");
   if (!seconds || nanoseconds === undefined) return null;
-  if (!Number.isFinite(Number(seconds)) || !Number.isFinite(Number(nanoseconds)))
+  if (
+    !Number.isFinite(Number(seconds)) ||
+    !Number.isFinite(Number(nanoseconds))
+  )
     return null;
   return {
     time: new Timestamp(Number(seconds), Number(nanoseconds)),
@@ -282,17 +287,8 @@ export async function pushRecords(
     for (const { record } of slice) {
       const id = cloudRecordId({ kind: record.type, id: record.recordKey });
       batch.set(
-        cloudDocument(db, uid, "records", id),
-        prepareFirestoreData({
-          ownerId: uid,
-          schemaVersion: CLOUD_SCHEMA_VERSION,
-          type: record.type,
-          recordKey: record.recordKey,
-          deleted: record.deleted,
-          updatedAt: record.updatedAt,
-          ...(record.payload ? { payload: record.payload } : {}),
-          writtenAt: serverTimestamp(),
-        } satisfies FirestoreRecordDoc),
+        cloudDocument(db, uid, CLOUD_RECORD_COLLECTION, id),
+        cloudRecordData(uid, record),
       );
     }
     await withDeadline(
@@ -300,21 +296,41 @@ export async function pushRecords(
       `Record upload ${offset / CLOUD_WRITE_BATCH_SIZE + 1}`,
       signal,
     );
-    onProgress?.(Math.min(offset + slice.length, records.length), records.length);
+    onProgress?.(
+      Math.min(offset + slice.length, records.length),
+      records.length,
+    );
   }
   await withDeadline(
     setDoc(
-      cloudDocument(db, uid, "meta", "library"),
-      prepareFirestoreData({
-        ownerId: uid,
-        schemaVersion: CLOUD_SCHEMA_VERSION,
-        changedAt: serverTimestamp(),
-        changedBy: SYNC_ORIGIN_ID,
-      } satisfies FirestoreLibraryMetaDoc),
+      cloudDocument(db, uid, "meta", CLOUD_LIBRARY_META_ID),
+      cloudLibraryMarkerData(uid),
     ),
     "Library change marker",
     signal,
   );
+}
+
+export function cloudRecordData(uid: string, record: CloudRecord) {
+  return prepareFirestoreData({
+    ownerId: uid,
+    schemaVersion: CLOUD_SCHEMA_VERSION,
+    type: record.type,
+    recordKey: record.recordKey,
+    deleted: record.deleted,
+    updatedAt: record.updatedAt,
+    ...(record.payload ? { payload: record.payload } : {}),
+    writtenAt: serverTimestamp(),
+  } satisfies FirestoreRecordDoc);
+}
+
+export function cloudLibraryMarkerData(uid: string) {
+  return prepareFirestoreData({
+    ownerId: uid,
+    schemaVersion: CLOUD_SCHEMA_VERSION,
+    changedAt: serverTimestamp(),
+    changedBy: SYNC_ORIGIN_ID,
+  } satisfies FirestoreLibraryMetaDoc);
 }
 
 /**
@@ -338,7 +354,7 @@ export function watchCloudChanges(
   let seen: Timestamp | null = null;
   let started = false;
   return onSnapshot(
-    cloudDocument(db, uid, "meta", "library"),
+    cloudDocument(db, uid, "meta", CLOUD_LIBRARY_META_ID),
     (snapshot) => {
       if (snapshot.metadata.hasPendingWrites || !snapshot.exists()) return;
       const changedAt: unknown = snapshot.get("changedAt");

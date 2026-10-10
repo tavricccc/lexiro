@@ -7,7 +7,12 @@ import type {
   LearningProgress,
 } from "@/types";
 import { getDoc, setDoc } from "firebase/firestore";
-import { CLOUD_SCHEMA_VERSION, MAX_CLOUD_DOCUMENT_BYTES } from "@/constants";
+import {
+  CLOUD_SCHEMA_VERSION,
+  CLOUD_PROGRESS_DOCUMENT_ID,
+  CLOUD_STATS_DOCUMENT_ID,
+  MAX_CLOUD_DOCUMENT_BYTES,
+} from "@/constants";
 import { cloudDocument, withDeadline } from "./cloud-sync";
 import { CloudSyncError } from "./cloud-sync-errors";
 import {
@@ -140,8 +145,8 @@ export async function readCloudBlobs(
 ): Promise<CloudBlobs> {
   const [progress, stats, preferences] = await withDeadline(
     Promise.all([
-      getDoc(cloudDocument(db, uid, "progress", "global")),
-      getDoc(cloudDocument(db, uid, "stats", "summary")),
+      getDoc(cloudDocument(db, uid, "progress", CLOUD_PROGRESS_DOCUMENT_ID)),
+      getDoc(cloudDocument(db, uid, "stats", CLOUD_STATS_DOCUMENT_ID)),
       readCloudPreferences(db, uid),
     ]),
     "Account documents download",
@@ -162,15 +167,10 @@ export async function writeCloudProgress(
   progress: LearningProgress,
   signal?: AbortSignal,
 ): Promise<void> {
-  assertFits(progress, "學習進度");
   await withDeadline(
     setDoc(
-      cloudDocument(db, uid, "progress", "global"),
-      prepareFirestoreData({
-        ...progress,
-        ownerId: uid,
-        schemaVersion: CLOUD_SCHEMA_VERSION,
-      } satisfies FirestoreProgressDoc),
+      cloudDocument(db, uid, "progress", CLOUD_PROGRESS_DOCUMENT_ID),
+      cloudProgressData(uid, progress),
     ),
     "Progress upload",
     signal,
@@ -183,17 +183,30 @@ export async function writeCloudStats(
   stats: DashboardStats,
   signal?: AbortSignal,
 ): Promise<void> {
-  assertFits(stats, "學習統計");
   await withDeadline(
     setDoc(
-      cloudDocument(db, uid, "stats", "summary"),
-      prepareFirestoreData({
-        ...stats,
-        ownerId: uid,
-        schemaVersion: CLOUD_SCHEMA_VERSION,
-      } satisfies FirestoreStatsDoc),
+      cloudDocument(db, uid, "stats", CLOUD_STATS_DOCUMENT_ID),
+      cloudStatsData(uid, stats),
     ),
     "Stats upload",
     signal,
   );
+}
+
+export function cloudProgressData(uid: string, progress: LearningProgress) {
+  assertFits(progress, "學習進度");
+  return prepareFirestoreData({
+    ...progress,
+    ownerId: uid,
+    schemaVersion: CLOUD_SCHEMA_VERSION,
+  } satisfies FirestoreProgressDoc);
+}
+
+export function cloudStatsData(uid: string, stats: DashboardStats) {
+  assertFits(stats, "學習統計");
+  return prepareFirestoreData({
+    ...stats,
+    ownerId: uid,
+    schemaVersion: CLOUD_SCHEMA_VERSION,
+  } satisfies FirestoreStatsDoc);
 }
