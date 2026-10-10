@@ -41,13 +41,14 @@ const wordInput = z.strictObject({
 });
 const mutation = z.discriminatedUnion("type", [
   z.strictObject({ type: z.literal("rename_set"), setName: text.max(200) }),
+  z.strictObject({ type: z.literal("move_set"), folderId: text }),
   z.strictObject({
     type: z.literal("put_words"),
-    words: z.array(wordInput).min(1).max(100),
+    words: z.array(wordInput).min(1).max(200),
   }),
   z.strictObject({
     type: z.literal("delete_words"),
-    wordKeys: z.array(text).min(1).max(100),
+    wordKeys: z.array(text).min(1).max(200),
   }),
   z.strictObject({
     type: z.literal("put_questions"),
@@ -241,6 +242,7 @@ export function mutateAgentSet(
   const now = new Date().toISOString();
   const remaps: { from: string; to: string }[] = [];
   if (action.type === "rename_set") next.set.setName = action.setName;
+  if (action.type === "move_set") next.set.folderId = action.folderId;
   if (action.type === "put_words") {
     for (const draft of action.words) {
       const previous = draft.wordKey
@@ -377,6 +379,12 @@ export function mutateAgentSet(
     senseRemaps: remaps,
   };
 }
+export {
+  agentFoldersRevision,
+  mutateAgentFolders,
+  UNCATEGORIZED_FOLDER_ID,
+} from "./folders";
+export { agentCloudRecord, agentCloudBlob } from "./cloud";
 export function agentGenerationBrief(
   snapshot: AgentSetSnapshot,
   kind: GeneratedQuestionKind,

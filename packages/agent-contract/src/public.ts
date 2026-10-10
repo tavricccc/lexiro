@@ -3,6 +3,7 @@ import type {
   WordEntry,
   SetMembership,
   LibraryQuestion,
+  VocabFolder,
   GeneratedQuestionKind,
   QuestionDifficulty,
 } from "../../../src/types/library";
@@ -11,6 +12,7 @@ export type {
   WordEntry,
   SetMembership,
   LibraryQuestion,
+  VocabFolder,
   GeneratedQuestionKind,
   QuestionDifficulty,
 } from "../../../src/types/library";
@@ -33,6 +35,7 @@ export interface AgentWordInput {
 }
 export type AgentMutation =
   | { type: "rename_set"; setName: string }
+  | { type: "move_set"; folderId: string }
   | { type: "put_words"; words: AgentWordInput[] }
   | { type: "delete_words"; wordKeys: string[] }
   | { type: "put_questions"; questions: unknown[] }
@@ -67,6 +70,32 @@ export declare function agentSetRevision(
   snapshot: AgentSetSnapshot | null,
 ): string;
 export declare function agentRecordId(kind: string, id: string): string;
+export type AgentFolderMutation =
+  | { type: "create_folder"; name: string; parentId?: string }
+  | { type: "update_folder"; folderId: string; name?: string; parentId?: string | null }
+  | { type: "delete_folder"; folderId: string };
+export interface AgentFolderMutationResult {
+  folders: VocabFolder[];
+  folder: VocabFolder | null;
+  revision: string;
+}
+export declare const UNCATEGORIZED_FOLDER_ID: string;
+export interface AgentCloudRecord {
+  type: "folder" | "set" | "membership" | "word" | "question";
+  recordKey: string;
+  deleted: boolean;
+  updatedAt: string;
+  payload: Record<string, unknown> | null;
+}
+export declare function agentCloudRecord(value: unknown, uid: string): AgentCloudRecord;
+export declare function agentCloudBlob(kind: "progress" | "stats" | "preferences", value: unknown, uid: string): Record<string, unknown>;
+export declare function agentFoldersRevision(folders: VocabFolder[]): string;
+export declare function mutateAgentFolders(
+  folders: VocabFolder[],
+  action: AgentFolderMutation,
+  newFolderId: string,
+  occupiedFolderIds: string[],
+): AgentFolderMutationResult;
 export declare function agentGenerationBrief(
   snapshot: AgentSetSnapshot,
   kind: GeneratedQuestionKind,
