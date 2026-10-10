@@ -9,3 +9,5 @@
 此路徑使用獨立 Agent Worker，不呼叫原本 Worker 的模型 API、不扣 Lexiro 生成點數。Agent 本身的訂閱用量仍由你使用的平台決定。教材沿用正式資料與驗證規則，雲端修改會同步回 Lexiro。
 
 前端需設定 `NEXT_PUBLIC_AGENT_WORKER_URL`。服務尚須配置正式 D1、OAuth KV、Firebase service-account secret 與 HTTPS 網址；private `lexiro-worker/docs/agent-access.md` 提供配置、migration 與本機驗證方式。本次只完成本機測試，尚未部署或驗收正式 ChatGPT／Firestore。
+
+本次變更、下一次部署順序與免費 `vercel.app` 網域設定見 [Agent 變更與發布](agent-release-2026-10-10.md)。
