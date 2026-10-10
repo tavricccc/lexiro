@@ -66,3 +66,9 @@ Agent runtime 的 FIREBASE_SERVICE_ACCOUNT 與 private GitHub Production 對應�
 後端 `dc86551` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38066261701) 與前端 `88bc186` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38066476190) 都成功。共用 package 3.0.0，資料 schema 不變；前後端本機共 597 個測試與 typecheck／lint／build 通過。本機 HTTP 已驗證18 tools、partial／atomic、唯讀驗證、警告可儲存、穩定來源／重送及原有 OAuth／URL 隔離，見 [本機回條](agent-local-results.md)。
 
 正式 health／discovery／前端路由皆 200，未授權 MCP 401。本次沒有用正式帳號批次寫入；97／100 是原生本機 D1 證據，不是正式 CPU 或 rows 用量測量。沒有模型審題或生成 API 呼叫，沒有修改使用者教材。下次發布仍依前述 Agent→frontend 順序。
+
+## 所有題型提示詞恢復
+
+2026-10-11，`54fc8a3` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38068141765) 成功。MCP／單集 URL 的 rules／specification 重新直接使用內建 questionPrompt，五型品質指引完整恢復；Agent 通用 instructions 只補充使用者優先及寫入操作。內建提示內容、QUESTION_CACHE_KEY 和生成／計費 Worker 均未更動。沒有模型呼叫。
+
+共用契約 3.0.1 支援原提示中的綜合測驗文法題，來源 continual 的句子可挖空 been；仍要求有效來源、唯一答案定位及正確選項。前後端 599 個本機測試、typecheck／lint／build 通過，五型返回提示与內建輸出逐一完全相同，brief 不改資料庫 revision；partial／atomic 和 Warning 仍通過。本次僅 Agent 有執行程式變動，因此只發布 Agent Worker；公開前端更新套件及文件，不需 Vercel 發布。正式 health／OAuth discovery 200；未寫入使用者教材或測正式長任務 CPU。
