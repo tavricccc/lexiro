@@ -1,6 +1,6 @@
 # Lexiro 程式責任索引
 
-Lexiro 的 Next.js 介面、browser domain 與本機／Firestore 保存都在此 repository。AI server 是同層獨立 private `lexiro-worker`，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
+Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 repository。Firebase 只保留 Auth；同層 private `lexiro-worker` 提供 Agent／同步及獨立生成服務，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
 
 ## 目錄
 
@@ -56,11 +56,9 @@ Learning store、learning-persistence 和 fsrs 保存 card／stats，進度頁�
 
 ## 同步與帳號
 
-`stores/cloud-store.ts` 協調 Firebase session、namespace 載入、sync debounce、retry 與 account handoff。`src/lib/cloud-sync.ts` 按 writtenAt／documentId 拉增量並分批 push，cloud-records 合併 server-order records 並保留 dirty；sync-journal 只清已送的 version。Cloud account 合併 learning／stats，cloud-preferences 讀寫 owner-only AI 偏好。
+`stores/cloud-store.ts` 協調 Firebase Auth、`d1-v1:` namespace、sync debounce、retry 與 account handoff。`src/lib/cloud-client.ts` 以 ID token 呼叫 Agent Worker；`cloud-sync.ts` 按 D1 seq／recordId 拉增量、分批 push，visible／online 每 30 秒只查一筆狀態。Cloud records 合併 server-order records 並保留 dirty；journal 只清已送 version。Cloud account／preferences 以 blob revision 防止覆蓋並行修改。
 
-`cloud-set-migration.ts` 從完整唯讀舊遠端資料建立新路徑，分批 transaction 後原子發布學習資料與完成 marker；成功後才清理舊副本。本機 migration intent 保留真實待送編輯／刪除的身份與版本；Journal 舊來源標記只用於升級時解開尚未對映的紀錄，不影響一般新版刪除。
-
-`cloud-pending-scope.ts` 將 Journal 持久標記的舊待送來源，對應到完整新版記錄中的集合副本，供原子重綁刪除／修改使用；離線舊刪除不復活，新版集合的獨立題目副本也不被連帶刪除。
+新 D1 雲端從空白資料開始，不遷移 Firestore 或舊帳號快取。Firestore SDK／rules／indexes／service-account 部署流程已移除；本機仍以 IndexedDB 保存離線編輯及 journal。
 
 Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回應不能跨帳號套用。`components/me/use-autosave.ts` 與 preference-drafts 管實際修改欄位及待存設定，preference-recovery 提供恢復選擇。同步文案由 sync-status 統一，pending 不顯示已同步。
 
@@ -90,8 +88,7 @@ Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。Co
 
 `app/sw.ts`、service-worker-cache 管 App cache 與私人資料 NetworkOnly；app-update-monitor、app-update、app-update-store 管保存／SKIP_WAITING／controller 接管／重啟。Offline retry 重試原 URL，重新連線不自動刷新。
 
-`.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt、部署 Rules／indexes、發布 Vercel。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。命令與證據範圍見[測試](docs/testing.md)與[部署](docs/deployment.md)。
+`.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt 並發布 Vercel；不再部署 Firestore。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。D1 後端先以獨立 Agent workflow 套 migration／發布，維護見 [D1 雲端](docs/d1-cloud.md)。
 
-`.github/workflows/prepare-agent-credential.yml` 只接受手動執行；`scripts/seal-agent-credential.mjs` 用部署者的一次性 RSA 公鑰與 AES-GCM 封裝既有 Firebase service-account secret，供 private Agent Worker 初次設定或輪替。artifact 只保留一天，明文憑證不寫入檔案或 log。
 
 新增／搬移責任時更新本檔，版號只在[資料與同步](docs/data-and-sync.md)維護，避免複製出互相矛盾的 schema 表。

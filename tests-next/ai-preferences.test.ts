@@ -13,10 +13,9 @@ import { createAiSession } from "@/src/lib/ai/session";
 import {
   readCloudPreferences,
   writeCloudPreferences,
-  watchCloudPreferences,
 } from "@/src/lib/cloud-preferences";
 import { estimatePoints, responseCost } from "@lexiro/ai-contract";
-import type { Firestore } from "firebase/firestore";
+import type { CloudClient } from "@/src/lib/cloud-client";
 import { createElement } from "react";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach } from "vitest";
@@ -25,14 +24,7 @@ import { AiModelPreference } from "@/components/me/ai-model-preference";
 const fixture = vi.hoisted(() => ({
   storage: new Map<string, string>(),
   remote: null as Record<string, unknown> | null,
-  callbacks: [] as Array<
-    (snapshot: {
-      exists: () => boolean;
-      get: (key: string) => unknown;
-      metadata: { hasPendingWrites: boolean };
-    }) => void
-  >,
-  setDoc: vi.fn<(...args: unknown[]) => Promise<void>>(async () => {}),
+  request: vi.fn(),
 }));
 vi.mock("idb-keyval", () => ({
   get: async (key: string) => fixture.storage.get(key),
@@ -49,27 +41,16 @@ vi.mock("@/src/lib/cloud-sync", () => ({
     `users/${uid}/${collection}/${id}`,
   withDeadline: (operation: Promise<unknown>) => operation,
 }));
-vi.mock("firebase/firestore", () => ({
-  getDoc: async () => ({
-    exists: () => fixture.remote !== null,
-    data: () => fixture.remote,
-  }),
-  setDoc: (...args: unknown[]) => fixture.setDoc(...args),
-  onSnapshot: (_doc: unknown, callback: (typeof fixture.callbacks)[number]) => {
-    fixture.callbacks.push(callback);
-    return () => {};
-  },
-}));
-
-const db = {} as Firestore;
+const db = { uid: "a", blobRevision: 0, request: fixture.request } as CloudClient;
 afterEach(cleanup);
 beforeEach(async () => {
   await flushAiPreferenceMutations();
   fixture.storage.clear();
   localStorage.clear();
   fixture.remote = null;
-  fixture.callbacks = [];
-  fixture.setDoc.mockClear();
+  db.blobRevision = 0;
+  fixture.request.mockReset();
+  fixture.request.mockImplementation(async (_path: string, body?: unknown) => body ? { revision: 2 } : { revision: 1, blobs: { preferences: fixture.remote } });
   resetSyncJournalCache();
   setStorageNamespace("a");
   useAiPreferencesStore.setState({
@@ -140,11 +121,14 @@ describe("per-account AI model preference", () => {
       "a",
       useAiPreferencesStore.getState().preferences,
     );
-    expect(fixture.setDoc).toHaveBeenCalledWith("users/a/preferences/ai", {
-      ...fixture.remote,
-      changedBy: "this-tab",
-    });
-    await expect(readCloudPreferences(db, "b")).rejects.toThrow("格式錯誤");
+    expect(fixture.request).toHaveBeenLastCalledWith("/sync/blobs", {
+      expectedRevision: 1,
+      blobs: [{ kind: "preferences", data: remote }],
+      origin: "this-tab",
+      operationId: expect.any(String),
+    }, undefined);
+    expect(db.blobRevision).toBe(2);
+    await expect(readCloudPreferences(db, "b")).rejects.toThrow("auth/account-changed");
   });
   it("keeps a newer local edit when an older device syncs", () => {
     const local = {
@@ -159,22 +143,6 @@ describe("per-account AI model preference", () => {
         updatedAt: "2026-10-02T01:00:00.000Z",
       }),
     ).toBe(local);
-  });
-  it("notifies an open device of a preference-only change and ignores its own writes", () => {
-    const change = vi.fn();
-    watchCloudPreferences(db, "a", change);
-    const snapshot = (owner: string, stamp: string) => ({
-      exists: () => true,
-      metadata: { hasPendingWrites: false },
-      get: (key: string) =>
-        ({ model: "gpt-5.6-luna", updatedAt: stamp, changedBy: owner })[
-          key as "model" | "updatedAt" | "changedBy"
-        ],
-    });
-    fixture.callbacks[0](snapshot("other-tab", "before"));
-    fixture.callbacks[0](snapshot("this-tab", "own"));
-    fixture.callbacks[0](snapshot("other-tab", "after"));
-    expect(change).toHaveBeenCalledOnce();
   });
   it("changes estimates and prices both families' long-context input and output", () => {
     expect(estimatePoints("organizeText", 1, "lite", "gpt-5.6-luna").max).toBe(

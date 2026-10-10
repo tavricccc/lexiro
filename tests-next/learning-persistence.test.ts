@@ -129,13 +129,13 @@ describe("durable practice completion", () => {
   });
 
   it("refuses unreadable learning data without replacing it with defaults", async () => {
-    storage.values.set(`guest:${LEARNING_STORAGE_KEY}`, "broken data");
+    storage.values.set(`d1-v1:guest:${LEARNING_STORAGE_KEY}`, "broken data");
     useLearningStore.setState({ loaded: false });
     await expect(useLearningStore.getState().hydrate()).rejects.toThrow(
       "原始資料已保留",
     );
     expect(useLearningStore.getState().loaded).toBe(false);
-    expect(storage.values.get(`guest:${LEARNING_STORAGE_KEY}`)).toBe(
+    expect(storage.values.get(`d1-v1:guest:${LEARNING_STORAGE_KEY}`)).toBe(
       "broken data",
     );
     expect(storage.write).not.toHaveBeenCalled();
@@ -168,7 +168,7 @@ describe("durable practice completion", () => {
       finishWrite();
       await result;
       const saved = JSON.parse(
-        storage.values.get(`guest:${LEARNING_STORAGE_KEY}`)!,
+        storage.values.get(`d1-v1:guest:${LEARNING_STORAGE_KEY}`)!,
       ) as {
         stats: { totalMemoryReviews: number; totalQuestionReviews: number };
       };

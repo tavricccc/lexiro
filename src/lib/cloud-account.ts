@@ -1,27 +1,22 @@
-import type { Firestore } from "firebase/firestore";
+import type { CloudClient } from "./cloud-client";
 import type {
   CardProgress,
   DashboardStats,
-  FirestoreProgressDoc,
-  FirestoreStatsDoc,
   LearningProgress,
 } from "@/types";
-import { getDoc, setDoc } from "firebase/firestore";
 import {
   CLOUD_SCHEMA_VERSION,
-  CLOUD_PROGRESS_DOCUMENT_ID,
-  CLOUD_STATS_DOCUMENT_ID,
   MAX_CLOUD_DOCUMENT_BYTES,
 } from "@/constants";
-import { cloudDocument, withDeadline } from "./cloud-sync";
+import { SYNC_ORIGIN_ID } from "./cloud-sync";
+import { randomUUID } from "./id";
 import { CloudSyncError } from "./cloud-sync-errors";
 import {
   normalizeCloudProgress,
   normalizeCloudStats,
 } from "./cloud-sync-schema";
-import { prepareFirestoreData } from "./firestore-data";
 import { estimateJsonBytes } from "./hash";
-import { readCloudPreferences } from "./cloud-preferences";
+import { normalizeCloudPreferences } from "./cloud-preferences";
 import type { AiPreferences } from "./ai-preferences";
 import { QUESTION_STAT_KEYS } from "./learning-defaults";
 import { entriesOf } from "./record";
@@ -147,83 +142,58 @@ export interface CloudBlobs {
   stats: DashboardStats | null;
 }
 
-/**
- * Both whole documents, read together.
- *
- * `getDoc` is deliberate where the old code forced `getDocFromServer`: the
- * SDK's persistent cache answers instantly when nothing has changed and still
- * serves an answer when the network is gone, which is most of what made a sync
- * feel slow before.
- */
 export async function readCloudBlobs(
-  db: Firestore,
+  db: CloudClient,
   uid: string,
   signal?: AbortSignal,
 ): Promise<CloudBlobs> {
-  const [progress, stats, preferences] = await withDeadline(
-    Promise.all([
-      getDoc(cloudDocument(db, uid, "progress", CLOUD_PROGRESS_DOCUMENT_ID)),
-      getDoc(cloudDocument(db, uid, "stats", CLOUD_STATS_DOCUMENT_ID)),
-      readCloudPreferences(db, uid),
-    ]),
-    "Account documents download",
-    signal,
-  );
+  if (db.uid !== uid) throw new Error("auth/account-changed");
+  const { blobs, revision } = await db.request<{ blobs: { progress?: unknown; stats?: unknown; preferences?: unknown }; revision: number }>("/sync/blobs", undefined, signal);
+  db.blobRevision = revision;
   return {
-    preferences,
-    progress: progress.exists()
-      ? normalizeCloudProgress(progress.data(), uid)
-      : null,
-    stats: stats.exists() ? normalizeCloudStats(stats.data(), uid) : null,
+    preferences: blobs.preferences ? normalizeCloudPreferences(blobs.preferences, uid) : null,
+    progress: blobs.progress ? normalizeCloudProgress(blobs.progress, uid) : null,
+    stats: blobs.stats ? normalizeCloudStats(blobs.stats, uid) : null,
   };
 }
 
 export async function writeCloudProgress(
-  db: Firestore,
+  db: CloudClient,
   uid: string,
   progress: LearningProgress,
   signal?: AbortSignal,
 ): Promise<void> {
-  await withDeadline(
-    setDoc(
-      cloudDocument(db, uid, "progress", CLOUD_PROGRESS_DOCUMENT_ID),
-      cloudProgressData(uid, progress),
-    ),
-    "Progress upload",
-    signal,
-  );
+  await writeCloudBlob(db, uid, "progress", cloudProgressData(uid, progress), signal);
 }
 
 export async function writeCloudStats(
-  db: Firestore,
+  db: CloudClient,
   uid: string,
   stats: DashboardStats,
   signal?: AbortSignal,
 ): Promise<void> {
-  await withDeadline(
-    setDoc(
-      cloudDocument(db, uid, "stats", CLOUD_STATS_DOCUMENT_ID),
-      cloudStatsData(uid, stats),
-    ),
-    "Stats upload",
-    signal,
-  );
+  await writeCloudBlob(db, uid, "stats", cloudStatsData(uid, stats), signal);
+}
+export async function writeCloudBlob(db: CloudClient, uid: string, kind: "progress" | "stats" | "preferences", data: unknown, signal?: AbortSignal) {
+  if (db.uid !== uid) throw new Error("auth/account-changed");
+  const result = await db.request<{ revision: number }>("/sync/blobs", { expectedRevision: db.blobRevision, blobs: [{ kind, data }], origin: SYNC_ORIGIN_ID, operationId: randomUUID() }, signal);
+  db.blobRevision = result.revision;
 }
 
 export function cloudProgressData(uid: string, progress: LearningProgress) {
   assertFits(progress, "學習進度");
-  return prepareFirestoreData({
+  return {
     ...progress,
     ownerId: uid,
     schemaVersion: CLOUD_SCHEMA_VERSION,
-  } satisfies FirestoreProgressDoc);
+  };
 }
 
 export function cloudStatsData(uid: string, stats: DashboardStats) {
   assertFits(stats, "學習統計");
-  return prepareFirestoreData({
+  return {
     ...stats,
     ownerId: uid,
     schemaVersion: CLOUD_SCHEMA_VERSION,
-  } satisfies FirestoreStatsDoc);
+  };
 }

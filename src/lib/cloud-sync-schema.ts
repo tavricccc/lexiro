@@ -21,7 +21,7 @@ function validateEnvelope(
   uid: string,
   field: string,
   payloadKeys: readonly string[],
-  schemaVersion: 8 | 9,
+  schemaVersion: 9,
 ): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value))
     throw new CloudSyncError("cloud/data-invalid", `${field} 格式錯誤`);
@@ -46,17 +46,10 @@ export function normalizeCloudProgress(
   return normalizeProgress(value, uid, CLOUD_SCHEMA_VERSION);
 }
 
-export function normalizeLegacyCloudProgress(
-  value: unknown,
-  uid: string,
-): LearningProgress {
-  return normalizeProgress(value, uid, 8);
-}
-
 function normalizeProgress(
   value: unknown,
   uid: string,
-  schemaVersion: 8 | 9,
+  schemaVersion: 9,
 ): LearningProgress {
   const remote = validateEnvelope(
     value,
@@ -78,17 +71,10 @@ export function normalizeCloudStats(
   return normalizeStats(value, uid, CLOUD_SCHEMA_VERSION);
 }
 
-export function normalizeLegacyCloudStats(
-  value: unknown,
-  uid: string,
-): DashboardStats {
-  return normalizeStats(value, uid, 8);
-}
-
 function normalizeStats(
   value: unknown,
   uid: string,
-  schemaVersion: 8 | 9,
+  schemaVersion: 9,
 ): DashboardStats {
   const remote = validateEnvelope(
     value,

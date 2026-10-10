@@ -8,10 +8,6 @@ export type {
 } from "./backup";
 export type {
   CloudRecordType,
-  FirestoreLibraryMetaDoc,
-  FirestoreProgressDoc,
-  FirestoreRecordDoc,
-  FirestoreStatsDoc,
 } from "./cloud";
 export type {
   CardProgress,

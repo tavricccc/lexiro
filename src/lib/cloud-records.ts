@@ -14,7 +14,6 @@ import { CloudSyncError } from "./cloud-sync-errors";
 import { hashText } from "./hash";
 import {
   repairLibraryState,
-  repairLibraryStateWithMigration,
   type LibraryDraft,
 } from "./library-repair";
 import { isRecord } from "./schema";
@@ -145,27 +144,17 @@ export function validateCloudRecord(
   uid: string,
   documentId: string,
 ): CloudRecord {
-  return validateRecord(value, uid, documentId, CLOUD_SCHEMA_VERSION);
-}
-
-/** Used only while reading the fixed source of the one-way v8 migration. */
-export function validateLegacyCloudRecord(
-  value: unknown,
-  uid: string,
-  documentId: string,
-): CloudRecord {
-  return validateRecord(value, uid, documentId, 8);
+  return validateRecord(value, uid, documentId);
 }
 
 function validateRecord(
   value: unknown,
   uid: string,
   documentId: string,
-  schemaVersion: 8 | 9,
 ): CloudRecord {
   if (!isRecord(value)) invalid("格式錯誤");
   if (value.ownerId !== uid) invalid("不屬於這個帳號");
-  if (value.schemaVersion !== schemaVersion)
+  if (value.schemaVersion !== CLOUD_SCHEMA_VERSION)
     throw new CloudSyncError(
       "cloud/schema-unsupported",
       `雲端記錄使用不支援的 schema（${String(value.schemaVersion)}）`,
@@ -188,7 +177,6 @@ function validateRecord(
     return { type: kind, recordKey, deleted, updatedAt, payload: null };
   if (!isRecord(value.payload)) invalid("缺少 payload");
   if (
-    schemaVersion === CLOUD_SCHEMA_VERSION &&
     kind === "word" &&
     (!isSetWordKey(recordKey) || value.payload.wordKey !== recordKey)
   )
@@ -200,7 +188,7 @@ function validateRecord(
  * Folds pulled records into the Library, one record at a time, in the order the
  * server wrote them.
  *
- * Order comes from `writtenAt`, which Firestore stamps and its rules require,
+ * Order comes from D1's server-assigned sequence,
  * rather than from the `updatedAt` a device wrote into the document. A phone
  * whose clock reads 2030 would otherwise win every conflict for years, and the
  * device that lost would keep losing with no way to state a newer edit.
@@ -222,29 +210,6 @@ export function applyCloudRecords(
 ): LibraryState {
   return normalizeLibraryState(
     repairLibraryState(cloudRecordDraft(state, records, dirty, now)),
-  );
-}
-
-/** Assemble all legacy records before repairing/migrating their shared sources. */
-export function migrateCloudRecords(
-  records: readonly CloudRecord[],
-  updatedAt: string,
-) {
-  return repairLibraryStateWithMigration(
-    cloudRecordDraft(
-      {
-        version: 1,
-        words: {},
-        sets: [],
-        memberships: {},
-        folders: [],
-        questions: [],
-        updatedAt,
-      },
-      records,
-      new Set(),
-      updatedAt,
-    ),
   );
 }
 

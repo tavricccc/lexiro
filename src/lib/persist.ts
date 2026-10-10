@@ -6,13 +6,13 @@ export interface StorageLoadResult {
 }
 
 const pendingWrites = new Map<string, Promise<void>>();
-let storageNamespace = "guest";
+let storageNamespace = "d1-v1:guest";
 
 const scopedKeys = new Set(NAMESPACE_SCOPED_KEYS);
 
 export function setStorageNamespace(namespace: string): void {
   const normalized = namespace.trim();
-  storageNamespace = normalized || "guest";
+  storageNamespace = normalized || "d1-v1:guest";
 }
 
 export function getStorageNamespace(): string {

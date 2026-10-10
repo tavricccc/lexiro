@@ -17,11 +17,11 @@
 
 同拼字在不同集有不同 wordKey／SenseId／題目指紋。`normalizeWordKey` 只供草稿拼字比對和舊資料遷移，不能用來建立新保存內容的全域身份。保存例句不會自動建立題目。`clearQuestions(setId)` 清空本集，不帶 setId 清空全題庫，包含歷史文法題；兩者保留單字、詞義、例句、FSRS 與學習紀錄。
 
-## 一次遷移
+## 備份與本機 domain 格式
 
 `library-set-migration.ts` 按舊 membership 複製每集原本收錄的詞義與可見題目，重綁 word、sense、父題與子題身份並重算指紋。跨集且無單一歸屬的歷史文章題保存在「遷移保留題組」，不拆散文章或丟棄子題。`learning-scope-migration.ts` 承接每詞義卡片與明細，帳號總量、每日紀錄及連續天數不增加；重試不累加。
 
-本機先保存 migration intent，再提交新 head，最後保存學習資料與 pending journal 身份對映；全部完成才移除 intent 並讓 UI 就緒。中斷或寫入失敗可繼續。已同步的乾淨舊副本不標成新編輯；真實待送編輯／刪除保留原 version 與 deletedAt。無本機 payload 可對映的舊刪除保留來源標記，待完整 v9 拉取解開；一般新版刪除不展開為其他集的刪除。
+上述為本機／手動備份匯入的 domain 格式處理。這次 D1 切換不讀 Firestore 或舊帳號 namespace；從空白新雲端及新快取開始，不做雲端遷移或 fallback。
 
 Full backup v4／set share v1 匯入時一次升級，新匯出只有 v5／v2。分享複製到新集時重建全部來源與父／子題身份。舊生成草稿只依原所選集重綁完成成果，保留付費操作 ID、checkpoint 用量與原 task hash；不假造可續接狀態。舊全庫草稿若未記集，須明確選原集才能重綁；來源無法確認時保留原稿。
 
@@ -37,15 +37,15 @@ Journal 更新先持久化，成功後才替換記憶體副本；失敗不假裝
 
 ## 同步規則
 
-Firestore 每個 record 一份 document：`users/{uid}/records-v9/{type}-{hash}`。刪除保留 `deleted: true` tombstone；Rules 拒絕直接刪新版 record，其他裝置才能看見刪除事實。`meta/library-v9` 保存 server changedAt 和分頁 changedBy，避免自己的 push 觸發多餘同步。學習與統計使用 `progress/global-v9`、`stats/summary-v9`；模型偏好仍為 `preferences/ai`。
+D1 `cloud_records` 保存 folder／set／membership／word／question，以 uid＋recordId 為主鍵。刪除保留 tombstone，其他裝置才能看見刪除。cloud_accounts 保存 record／blob revision 和寫入來源，學習／統計／偏好放 cloud_blobs；Agent 和前端使用同一 repository。
 
-`cloud-set-migration.ts` 先讀完整唯讀 v8 遠端來源，建立獨立內容與學習資料，不拿本機快照當遠端基準。每批 transaction 檢查完成 marker 並保留已存在的 v9 寫入，最後原子發布學習文件與完成 marker，才開始一般 v9 同步。完成後才允許清理舊路徑，清理失敗不阻塞新版同步。
+Firestore cloud migration、SDK、rules／indexes 與 service-account REST 已移除。namespace 為 `d1-v1:<uid>`／`d1-v1:guest`，避免舊 cursor、journal 或資料自動進入新後端。
 
-增量以 server `writtenAt + documentId` 排序，每頁／寫入批次 400 筆。Cursor 同時記時間與 ID，避免同 timestamp 跨頁漏資料。Merge 依 server 寫入順序覆寫；updatedAt 是 domain metadata，不用裝置時鐘決定 Library 衝突。本機尚未 push 的 dirty record 與 tombstone 保留。升級時重置舊 feed cursor，不清空待送資料。
+增量按 server `(seq,recordId)`，每頁／寫入批次 400。Cursor 同時記 sequence 與 ID，避免同批跨頁漏資料。Merge 依 server 寫入順序，本機尚未送的 dirty／tombstone 保留。寫入以 D1 batch＋CAS ticket＋operation 回條原子提交；未變動 records／來源不重寫。
 
 Journal 是 sidecar，記未送 record、刪除與 learning／preference blob。每筆有本機 version，push 只清自己送出的版本，送出期間的新編輯仍待同步。帳號切換隔離 cursor、journal、listener 與回應。
 
-學習進度按 card 合併、統計按欄位處理；模型偏好為 owner-only `preferences/ai` v1，用其 updatedAt 合併。這兩者不是 Library 的 server-order 規則。每日目標只保存實際修改欄位，避免覆蓋新同步的統計。
+學習按 card、統計按欄位、模型偏好按 updatedAt 合併；blob revision 拒絕過期覆蓋。每日目標只保存實際修改欄位，避免覆蓋新同步統計。visible／online 每 30 秒查一筆狀態，有外部改動才拉增量；隱藏／離線停止請求。
 
 同步單次 request 上限 10 秒，失敗保留 journal。Learning／stats 上傳前檢查 900 KiB，每日歷史保留 90 天。這些是程式配置，不是已量測的雲端成本。
 
@@ -56,9 +56,10 @@ Journal 是 sidecar，記未送 record、刪除與 learning／preference blob。
 | Library state | 2 | 每集獨立內容；v1 一次遷移 |
 | Library repository | 3 | head／manifest；schema 2 載入後完成 migration intent |
 | Sync journal | 5 | 保留 v2／v3／v4 待送 records、blobs，新增舊來源標記 |
-| Firestore records／learning | 9 | 先從唯讀 v8 遷移，一般同步只使用 v9 路徑 |
+| Cloud records／learning DTO | 9 | 固定原生教材格式，由 D1 owner API 驗證 |
+| D1 library schema | 1 | library-migrations/0001_library.sql |
 | Practice snapshot | 5 | types/session.ts，v3 先轉詞義題，v4 移除退役模式並重排位置／答案 |
-| AI preferences | 1 | ai-preferences.ts、preferences/ai |
+| AI preferences | 1 | ai-preferences.ts、cloud_blobs |
 | Flow drafts | 1 | use-resumable-draft.ts |
 | Pending preference drafts | 1 | preference-drafts.ts，只存編輯欄位 |
 | Full backup ZIP | 5 | lexiro-backup.json；v4 一次匯入升級 |
@@ -73,8 +74,8 @@ Journal 是 sidecar，記未送 record、刪除與 learning／preference blob。
 
 本次單字集隔離才升級 Library repository 與 Firestore 版號；清空題目包含已存的歷史文法題。練習 v5 的 meaningChoices 欄位保存所有題型的原呈現選項，重綁身份後不重抽順序。
 
-## Firestore 權限
+## D1 權限
 
-Rules 要求登入 UID 等於 path UID，ownerId 相符、schema 正確且欄位集合合法。Record ID 是類型加 32 hex 字元，payload 不做單欄索引，查詢使用 writtenAt。AI prompt、憑證與 D1 billing 不在這組文件內。
+Worker 驗證 Firebase ID token，uid 永遠由驗證結果取得；每個 SQL 都限定 uid。Record ID 為 type＋32 hex。單字及題目透過本集 memberships／sources 索引定位，不掃全帳號題庫。模型 key 與 billing 仍在獨立生成 Worker。
 
-本機單元／元件測試不代表完成真實 Firebase 帳號、多裝置同步或部署驗收；正式使用需要前端與 Rules 一起發布。
+本機測試不代表正式 Firebase／D1／多裝置已驗收；先發布 Agent Worker／migration，再發布前端，見 [D1 維護](d1-cloud.md)。

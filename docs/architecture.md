@@ -40,9 +40,9 @@ Public task builder 拆批，`runner.ts` 依序呼叫 managed client。Worker �
 
 ## 登入與同步
 
-Cloud store 等待 Firebase session，先切到 UID namespace 載入本機資料，再 reconcile 遠端。Library 以 Firestore `writtenAt + documentId` 拉取增量，保留未推送的 dirty records，push 後只清本次 journal version。學習資料與模型偏好另走 account／preference 文件。
+Cloud store 等待 Firebase Auth，先切到 `d1-v1:<uid>` namespace，再 reconcile D1。Library 以 server `(seq,recordId)` 拉增量，保留未送 dirty records，push 後只清本次 journal version。學習與偏好使用 blob revision。前端與 Agent 共用 Worker repository，Firebase 不再儲存教材。
 
-離線時仍保存本機，journal 保留未送變更。重新連線、其他分頁的 meta marker 或手動同步觸發下一次 reconcile；帳號改變時拒絕過期回覆。詳見[資料與同步](data-and-sync.md)。
+離線保存本機並保留 journal。visible／online 每 30 秒查一筆狀態，有外部變更才拉增量；重新連線／手動同步亦可 reconcile，帳號改變拒絕舊回覆。舊 Firestore 與快取不遷移，見 [D1 雲端](d1-cloud.md)。
 
 ## PWA 更新
 

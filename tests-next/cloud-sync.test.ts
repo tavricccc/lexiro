@@ -2,7 +2,6 @@ import type { CardProgress, LearningProgress, LibraryState } from "@/types";
 import type { SyncJournal } from "@/src/lib/sync-journal";
 import { describe, expect, it } from "vitest";
 
-import { serverTimestamp } from "firebase/firestore";
 
 import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { applyCloudRecords, cloudRecordId } from "@/src/lib/cloud-records";
@@ -12,7 +11,6 @@ import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { pendingRecords } from "@/src/lib/cloud-sync";
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
-import { prepareFirestoreData } from "@/src/lib/firestore-data";
 import { repairLibraryState } from "@/src/lib/library-repair";
 
 const EARLIER = "2026-09-01T00:00:00.000Z";
@@ -75,7 +73,7 @@ function emptyLibrary(): LibraryState {
 function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
   return {
     schemaVersion: 5,
-    cursor: "1757000000.000000000|set-0123456789abcdef0123456789abcdef",
+    cursor: "42|set-0123456789abcdef0123456789abcdef",
     seeded: true,
     version: 5,
     dirty: {},
@@ -87,7 +85,7 @@ function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
 }
 
 describe("record identity", () => {
-  it("gives a word key with characters Firestore rejects a legal document id", () => {
+  it("gives arbitrary word keys a stable record identity", () => {
     const id = cloudRecordId({ kind: "word", id: "look/after" });
     expect(id).toMatch(/^word-[0-9a-f]{32}$/u);
   });
@@ -175,7 +173,7 @@ describe("applyCloudRecords", () => {
   });
 
   it("takes the cloud copy even when the device that wrote it has a slow clock", () => {
-    // Order is the server's `writtenAt`, which is what the pull is sorted by.
+    // Order is the server sequence, which is what the pull is sorted by.
     // A device whose own clock reads earlier — or years ahead — no longer wins
     // or loses conflicts on the strength of that clock alone.
     const local = library("one", "adapt", "新名字", LATER);
@@ -399,26 +397,5 @@ describe("normalizeCloudProgress", () => {
     expect(() =>
       normalizeCloudProgress({ ...document, schemaVersion: 5 }, UID),
     ).toThrow();
-  });
-});
-
-describe("prepareFirestoreData", () => {
-  it("lets a server timestamp through instead of inspecting it", () => {
-    // The regression: every record write carries `writtenAt: serverTimestamp()`,
-    // and the guard rejected the sentinel as "必須是一般物件" before the request
-    // was ever sent, so nothing could be pushed at all.
-    const sentinel = serverTimestamp();
-    const prepared = prepareFirestoreData({
-      ownerId: "user-1",
-      deleted: false,
-      writtenAt: sentinel,
-    });
-    expect(prepared.writtenAt).toBe(sentinel);
-  });
-
-  it("still refuses a value Firestore cannot store", () => {
-    expect(() => prepareFirestoreData({ when: new Date() })).toThrow(
-      /一般物件/u,
-    );
   });
 });

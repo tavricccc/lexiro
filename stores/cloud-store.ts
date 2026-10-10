@@ -2,7 +2,7 @@
 
 import type { SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
-import type { Firestore } from "firebase/firestore";
+import { getCloudClient, accountNamespace, type CloudClient } from "@/src/lib/cloud-client";
 import { create } from "zustand";
 
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
@@ -15,16 +15,8 @@ import {
   flushAiPreferenceMutations,
   useAiPreferencesStore,
 } from "@/stores/ai-preferences-store";
-import {
-  watchCloudPreferences,
-  writeCloudPreferences,
-} from "@/src/lib/cloud-preferences";
+import { writeCloudPreferences } from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
-import { legacyPendingCloudRefRemaps } from "@/src/lib/cloud-pending-scope";
-import {
-  cleanupLegacyCloudCopies,
-  ensureCloudSetIsolation,
-} from "@/src/lib/cloud-set-migration";
 import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
 import {
@@ -42,7 +34,6 @@ import {
 } from "@/src/lib/cloud-sync";
 import {
   configureFirebaseAuth,
-  getFirebaseFirestore,
 } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
 import { getStorageNamespace, setStorageNamespace } from "@/src/lib/persist";
@@ -50,7 +41,6 @@ import {
   clearBlobDirty,
   clearPushedRecords,
   loadSyncJournal,
-  remapPendingLibraryRefs,
   markSeeded,
   pendingCountOf,
   resetSyncJournalCache,
@@ -116,8 +106,6 @@ const SYNC_MAX_DELAY_MS = 15_000;
  * overwrites the cloud's, and whenever the user asks for a sync by hand.
  */
 let accountDocumentsRead = "";
-let isolatedAccount = "";
-let retiredCopiesCleaned = "";
 /** How long the workspace waits on auth before opening on local data anyway. */
 const AUTH_WAIT_MS = 1_500;
 const MAX_RETRY_ATTEMPTS = 3;
@@ -168,8 +156,6 @@ const enterNamespace = serializeAccountDataAction(
     await flushAiPreferenceMutations();
     setStorageNamespace(namespace);
     accountDocumentsRead = "";
-    isolatedAccount = "";
-    retiredCopiesCleaned = "";
     resetSyncJournalCache();
     await useLibraryStore.getState().reloadNamespace();
     const libraryError = useLibraryStore.getState().error;
@@ -274,35 +260,25 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
         void (async () => {
           // The namespace comes first, always. Everything read before this
           // point would belong to the wrong account.
-          await enterNamespace(user ? user.uid : "guest");
+          await enterNamespace(accountNamespace(user ? user.uid : "guest"));
           await refreshPending(set);
           if (!user) {
             set({ user: null, ready: true, status: "signed-out", error: "" });
             return;
           }
           set({ user, ready: true, status: "syncing", error: "" });
-          const db = getFirebaseFirestore();
+          const db = getCloudClient();
           if (db) {
             const stopLibraryWatch = watchCloudChanges(
               db,
               user.uid,
-              (changedBy) => {
+              (changedBy, accountChanged) => {
                 void get().sync({
-                  reconcileAccount: changedBy?.startsWith("agent:"),
+                  reconcileAccount: accountChanged || changedBy?.startsWith("agent:"),
                 });
               },
             );
-            const stopPreferencesWatch = watchCloudPreferences(
-              db,
-              user.uid,
-              () => {
-                void get().sync({ reconcileAccount: true });
-              },
-            );
-            unwatch = () => {
-              stopLibraryWatch();
-              stopPreferencesWatch();
-            };
+            unwatch = stopLibraryWatch;
           }
           await get().sync();
         })().catch(loadFailed);
@@ -332,7 +308,7 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     clearDebounce();
     unwatch?.();
     unwatch = null;
-    await enterNamespace("guest");
+    await enterNamespace(accountNamespace("guest"));
     set({
       user: null,
       ready: true,
@@ -371,7 +347,7 @@ const writeSyncForAccount = serializeAccountDataAction(
     if (
       useCloudStore.getState().user?.uid !== uid ||
       !useCloudStore.getState().ready ||
-      getStorageNamespace() !== uid
+      getStorageNamespace() !== accountNamespace(uid)
     )
       return false;
     await write();
@@ -388,13 +364,13 @@ async function refreshPending(set: SetState): Promise<void> {
  * writes back whichever side this device owes.
  */
 async function reconcileAccountDocuments(
-  db: Firestore,
+  db: CloudClient,
   uid: string,
   dirtyBlobs: { progress: number; stats: number; preferences: number },
 ): Promise<void> {
   const blobs = await readCloudBlobs(db, uid);
   if (
-    getStorageNamespace() !== uid ||
+    getStorageNamespace() !== accountNamespace(uid) ||
     useCloudStore.getState().user?.uid !== uid ||
     !useCloudStore.getState().ready
   )
@@ -405,7 +381,7 @@ async function reconcileAccountDocuments(
   const merged = await useLearningStore
     .getState()
     .applyRemoteState((current) =>
-      getStorageNamespace() === uid &&
+      getStorageNamespace() === accountNamespace(uid) &&
       useCloudStore.getState().user?.uid === uid &&
       useCloudStore.getState().ready
         ? (() => {
@@ -440,22 +416,22 @@ async function reconcileAccountDocuments(
   if (!merged) return;
   const { progress, stats } = merged;
 
-  const work: Promise<unknown>[] = [];
-  if (getStorageNamespace() !== uid) return;
+  const work: (() => Promise<unknown>)[] = [];
+  if (getStorageNamespace() !== accountNamespace(uid)) return;
   if (dirtyBlobs.progress > 0 || !blobs.progress)
-    work.push(writeCloudProgress(db, uid, progress));
+    work.push(() => writeCloudProgress(db, uid, progress));
   if (dirtyBlobs.stats > 0 || !blobs.stats)
-    work.push(writeCloudStats(db, uid, stats));
+    work.push(() => writeCloudStats(db, uid, stats));
   if (dirtyBlobs.preferences > 0 || !blobs.preferences)
     work.push(
-      writeCloudPreferences(
+      () => writeCloudPreferences(
         db,
         uid,
         useAiPreferencesStore.getState().preferences,
       ),
     );
-  await Promise.all(work);
-  if (getStorageNamespace() !== uid) return;
+  for (const write of work) await write();
+  if (getStorageNamespace() !== accountNamespace(uid)) return;
   await writeSyncForAccount(uid, () =>
     clearBlobDirty([
       { kind: "progress", version: dirtyBlobs.progress },
@@ -471,13 +447,13 @@ async function runSync(
   reconcileAccount: boolean,
 ): Promise<void> {
   const user = get().user;
-  const db = getFirebaseFirestore();
-  if (!user || !db || !get().ready || getStorageNamespace() !== user.uid)
+  const db = getCloudClient();
+  if (!user || !db || !get().ready || getStorageNamespace() !== accountNamespace(user.uid))
     return;
   const sameAccount = () =>
     get().ready &&
     get().user?.uid === user.uid &&
-    getStorageNamespace() === user.uid;
+    getStorageNamespace() === accountNamespace(user.uid);
   if (!online()) {
     set({ status: "offline" });
     await refreshPending(set);
@@ -486,22 +462,6 @@ async function runSync(
 
   set({ status: "syncing", error: "" });
   try {
-    if (isolatedAccount !== user.uid) {
-      const migration = await ensureCloudSetIsolation(
-        db,
-        user.uid,
-        sameAccount,
-      );
-      if (!migration.completed || !sameAccount()) return;
-      // A legacy cursor belongs to the old collection. Read the entire new
-      // feed once; dirty entries and tombstones retain their exact versions.
-      if (
-        migration.migrated &&
-        !(await writeSyncForAccount(user.uid, () => setSyncCursor("")))
-      )
-        return;
-      isolatedAccount = user.uid;
-    }
     const journal = await loadSyncJournal();
     // Captured before any request goes out: an edit
     // made while a write is in flight must stay queued rather than be cleared
@@ -512,25 +472,12 @@ async function runSync(
     // still marked dirty when the cloud copy arrives, so the local edit is held
     // back from the merge and then pushed, rather than being overwritten by an
     // older copy that merely reached the server first.
-    const pullCursor = Object.keys(journal.legacyPendingRefs).length
-      ? ""
-      : journal.cursor;
-    const pulled = await pullRecords(db, user.uid, pullCursor);
+    const pulled = await pullRecords(db, user.uid, journal.cursor);
     if (!sameAccount()) return;
     if (pulled.records.length) {
       await useLibraryStore.getState().applyRemoteState(async (current) => {
         if (!sameAccount()) return null;
-        let latestJournal = await loadSyncJournal();
-        const remaps = legacyPendingCloudRefRemaps(
-          pulled.records,
-          Object.values(latestJournal.legacyPendingRefs),
-          current.sets.map((entry) => entry.id),
-        );
-        if (remaps.length) {
-          await remapPendingLibraryRefs(remaps);
-          if (!sameAccount()) return null;
-          latestJournal = await loadSyncJournal();
-        }
+        const latestJournal = await loadSyncJournal();
         return applyCloudRecords(
           current,
           pulled.records,
@@ -580,16 +527,6 @@ async function runSync(
     retryTimer = null;
     await refreshPending(set);
     set({ ready: true, status: "synced", error: "" });
-    if (retiredCopiesCleaned !== user.uid && sameAccount()) {
-      // This deletes only retired copies after the new account is published.
-      // Retry on a later sync if cleanup fails; it cannot invalidate v9 data.
-      const cleaned = await cleanupLegacyCloudCopies(
-        db,
-        user.uid,
-        sameAccount,
-      ).catch(() => false);
-      if (cleaned && sameAccount()) retiredCopiesCleaned = user.uid;
-    }
   } catch (reason) {
     if (!sameAccount()) return;
     await refreshPending(set);
