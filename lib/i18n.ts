@@ -706,7 +706,7 @@ export const zhTW = {
     summary:
       "{senses} 個詞義 · {learned} 個已學習 · {due} 個待複習 · {questions} 題",
     toolsHeader: "這組字的整理",
-    deleteConfirm: "確定刪除「{name}」嗎？這不會刪除仍被其他單字集使用的詞義。",
+    deleteConfirm: "確定刪除「{name}」嗎？此集的詞義、例句與題目也會刪除，其他單字集會保留。",
     share: "匯出分享檔",
     generateQuestions: "為這組字產生題目",
     dueCount: "{count} 個待複習",
