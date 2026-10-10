@@ -60,3 +60,9 @@ Backend `1a6a82e` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worke
 正式 HTTPS 45 項檢查通過：真實 Firebase Auth、OAuth S256、17 tools、200 筆新增及讀回、201 筆拒絕且 revision 不變、資料夾 CRUD、URL 分類、網站 records 寫入後 MCP 讀回、進度／統計／偏好 CAS、回條重送、刪集 tombstone、refresh 與撤銷。沒有呼叫模型 API。合成 Firebase 帳號、CLOUD_DB 資料、AGENT_DB links、OAuth client 已清除。
 
 Agent runtime 的 FIREBASE_SERVICE_ACCOUNT 與 private GitHub Production 對應副本已刪除；`wrangler secret list --config wrangler.agent.toml` 回空陣列。一次性診斷憑證 artifact 已刪除。前端正式 bundle 已含 D1 同步且未含 Firestore endpoint；OAuth／連線管理頁 HTTP 200。未驗收長任務 CPU 或正式 D1 累積用量。
+
+## 2026-10-11 批次更新發布
+
+後端 `dc86551` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38066261701) 與前端 `88bc186` 的 [Vercel workflow](https://github.com/tavricccc/lexiro/actions/runs/38066476190) 都成功。共用 package 3.0.0，資料 schema 不變；前後端本機共 597 個測試與 typecheck／lint／build 通過。本機 HTTP 已驗證18 tools、partial／atomic、唯讀驗證、警告可儲存、穩定來源／重送及原有 OAuth／URL 隔離，見 [本機回條](agent-local-results.md)。
+
+正式 health／discovery／前端路由皆 200，未授權 MCP 401。本次沒有用正式帳號批次寫入；97／100 是原生本機 D1 證據，不是正式 CPU 或 rows 用量測量。沒有模型審題或生成 API 呼叫，沒有修改使用者教材。下次發布仍依前述 Agent→frontend 順序。
