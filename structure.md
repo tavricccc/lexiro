@@ -16,6 +16,7 @@
 | `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
 | `tests-next/agent-firestore.test.ts`、`scripts/agent-smoke.mjs` | production repository 合成 REST transaction 驗證，以及 localhost 真 HTTP OAuth／MCP／URL CRUD 和隔離／撤銷／到期驗證 |
 | `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |
+| `docs/agent-deployment.md` | 2026-10-10 Agent 變更、首次部署資源與 secrets、workflow 待補設定、Vercel 免費網域及正式驗收順序 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
 | `src/billing.ts`、`src/credits.ts` | 任何登入者第一次請求就建立 accounts 列（`ensureAccount`），免費試用開啟時帶入新帳號預設點數與每期額度、關閉時為 0；D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker。餘額大於 0 就能開始一批，預估超過餘額也照跑，結算以 0 為下限，帳戶不會變負數 |
 | `migrations/0001_billing.sql`～`0013_usage_parts.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、方案預設、usage 狀態與索引、管理版本，以及一次操作各回合 usage／cursor；舊單回合資料一次轉成單一 part |

@@ -2,6 +2,8 @@
 
 Agent 自己生成教材，Lexiro 只驗證、讀寫原本的 Firestore 資料。`wrangler.agent.toml` 是獨立 Worker，沒有模型供應商 API key、計費 DB 或生成 Durable Object binding。原本付費生成服務保持獨立。
 
+本次變更紀錄與下一次正式發布的完整順序見 [Agent 首次部署](agent-deployment.md)，包含目前 workflow 尚缺的設定、Vercel 網域與正式驗收。
+
 ## 授權範圍
 
 | 入口 | 身分 | 範圍 | 有效時間 |

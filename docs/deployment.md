@@ -1,5 +1,7 @@
 # Worker 設定與部署
 
+本文件的自動流程部署 `wrangler.toml` 生成 Worker。新增的 MCP／OAuth／單字集授權 URL 使用獨立 `wrangler.agent.toml`，首次發布需另外配置 D1、KV、Firebase secret 與前端公開變數；見 [Agent 變更與部署](agent-deployment.md)。
+
 正式 D1 已建立為 `lexiro-billing`（APAC）。未套用的 migration 由部署流程自動套用，不需要手動跑 `--remote`。
 
 一般設定：`FIREBASE_PROJECT_ID` 必須和前端 Firebase project 相同；`ALLOWED_ORIGIN` 為允許呼叫的 origin 完整清單，逗號分隔，正式環境只放前端 HTTPS origin，開發用的 localhost 只寫在本機 `.dev.vars`；`OPENAI_BASE_URL` 為供應商 Responses API 根網址。餘額不會透支，不需要額外設定。
@@ -8,7 +10,7 @@ Worker secrets：`OPENAI_API_KEY` 是供應商金鑰，`ADMIN_EMAILS` 是逗號�
 
 部署由 `.github/workflows/deploy.yml` 負責：main push 或手動執行會先完成完整驗證（typecheck、lint、test、build），production WebSocket handshake 成功後再套用未完成的 D1 migrations、同步 Worker secrets、`wrangler deploy`，最後以 production origin 做 OPTIONS/CORS health check。推上 main 就是部署，沒有另外的手動步驟。本機開發維持 `npm run dev`、`npm run db:migrate`，不使用 remote。
 
-前端 GitHub Production Environment variable `NEXT_PUBLIC_AI_WORKER_URL` 指向 Worker 的 HTTPS origin。Firebase 使用者資料仍由原本 Firestore rules 管理，Worker 只負責 AI、額度與管理功能。
+前端 GitHub Production Environment variable `NEXT_PUBLIC_AI_WORKER_URL` 指向生成 Worker 的 HTTPS origin。瀏覽器的 Firebase 使用者資料仍由原本 Firestore rules 管理；生成 Worker 負責 AI、額度與管理，新增 Agent Worker 則以專用 service account 讀寫教材並檢查 uid／setId scope。
 
 GitHub `Production` Environment 必須設定 secrets `FIREBASE_PROJECT_ID`、`CLOUDFLARE_API_TOKEN`、`OPENAI_API_KEY`、`ADMIN_EMAILS`。Cloudflare token 限定為 Tavric account，權限需包含 Workers Scripts:Edit 與 D1:Edit。Workflow 仍不執行消耗帳號用量的 prompt 評測。
 
