@@ -107,8 +107,10 @@ export function collectAgentGeneratedQuestions(
         const usage = typeof raw.usage === "string" ? raw.usage : answer;
         const location = locateUsageAnswer(prose, usage, answer);
         if ("issue" in location) throw new AgentQuestionError("answer_not_locatable", "usage", location.issue, slot.sense.id);
-        const issue = sourceWordFormIssue(slot.word.word, slot.sense.pos, answer, usage);
-        if (issue) throw new AgentQuestionError("source_answer_mismatch", "answer", issue, slot.sense.id);
+        if (kind !== "cloze") {
+          const issue = sourceWordFormIssue(slot.word.word, slot.sense.pos, answer, usage);
+          if (issue) throw new AgentQuestionError("source_answer_mismatch", "answer", issue, slot.sense.id);
+        }
       }
       if (Array.isArray(raw.distractors)) {
         const options = [answer, ...raw.distractors as string[]].map(option => option.trim().toLocaleLowerCase());

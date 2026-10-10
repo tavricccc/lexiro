@@ -5,7 +5,7 @@
 ## 資料與同步
 
 - 前端和 MCP／授權 URL 共用同一套 D1 repository；網站看到的就是 Agent 寫入的原生教材。
-- Library records 保留目前教材格式 v9；D1 schema 為 v1，共用 `@lexiro/agent-contract` 3.0.0。
+- Library records 保留目前教材格式 v9；D1 schema 為 v1，共用 `@lexiro/agent-contract` 3.0.1。
 - `/sync/records` 按 `(seq,recordId)` 分頁拉取及批次寫入；刪除使用 tombstone。進度、統計、偏好走 `/sync/blobs`，以 blob revision 拒絕過期覆蓋。
 - 寫入以 D1 batch transaction、帳號 CAS ticket 與 operationId 回條保護；斷線重送沿用同一操作，journal 只清已成功提交的本機版本。
 - 讀字、題目都以本集 memberships/source 索引限定來源；不查整個帳號題庫。未變動的成員／題目來源不重建；相同 records 不反覆改寫。

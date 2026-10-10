@@ -9,6 +9,19 @@ function library() {
   ] }).snapshot!;
 }
 describe("Agent question writes", () => {
+  it("accepts cloze grammar blanks from the shared prompt even when the answer differs from the source word", () => {
+    const snapshot = mutateAgentSet(createAgentSet(setId, "綜合測驗"), { type: "put_words", words: [
+      { word: "continual", senses: [{ pos: "adj.", meaningZh: "持續的" }] },
+    ] }).snapshot!;
+    const senseId = snapshot.words[0].senses[0].id;
+    const result = mutateAgentSet(snapshot, { type: "generated_questions", kind: "cloze", difficulty: 2, output: {
+      title: "Repairs", passage: "By Friday, the library's continual repairs had been completed.",
+      blanks: [{ senseId, usage: "continual repairs had been completed", answer: "been", distractors: ["be", "being", "is"] }],
+    } });
+    expect(result.validation?.savedCount).toBe(1);
+    expect(result.validation?.errors).toEqual([]);
+    expect(result.snapshot?.questions[0]).toMatchObject({ kind: "reading", format: "cloze", passage: "By Friday, the library's continual repairs had __1__ completed." });
+  });
   it("validates 100 candidates without writes, saves 97, and reports stable IDs for only the 3 errors", () => {
     const snapshot = library(), senseId = snapshot.words[0].senses[0].id;
     const items = Array.from({ length: 100 }, (_, index) => ({ itemId: `candidate-${index}`, senseId,
