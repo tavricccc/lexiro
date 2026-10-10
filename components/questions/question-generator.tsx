@@ -2,13 +2,12 @@
 
 import type { LibraryQuestion } from "@/types";
 import Link from "next/link";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";
 import {
   useAiGeneration,
   useReviewHandoff,
-  type AiGenerationSnapshot,
 } from "@/components/ai/use-ai-generation";
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";
 import { GeneratedQuestionResults } from "./generated-question-results";
@@ -49,16 +48,14 @@ import {
   type GeneratedQuestionKind,
 } from "@/src/lib/question-generation";
 import { isPassageKind } from "@/src/lib/question-formats";
+import { questionSourceWords } from "./question-source-scope";
+import { QuestionDraftRecovery } from "./question-draft-recovery";
+import {
+  rebindQuestionDraftSources,
+  retainUnfinishedQuestionCheckpoint,
+  type QuestionDraft,
+} from "./question-generation-draft";
 
-type Step = "configure" | "run" | "review" | "done";
-interface QuestionDraft {
-  step: Step;
-  chosenSetId: string;
-  kind: GeneratedQuestionKind;
-  difficulty: GeneratedQuestionDifficulty;
-  excludedQuestionIds: string[];
-  run?: AiGenerationSnapshot<LibraryQuestion>;
-}
 const FORMATS: GeneratedQuestionKind[] = [
   ...SENTENCE_STYLES,
   ...PASSAGE_FORMAT_VALUES,
@@ -67,6 +64,11 @@ const FORMATS: GeneratedQuestionKind[] = [
 /** Generate from every sense in one set, without individual word selection. */
 export function QuestionGenerator({ setId }: { setId?: string }) {
   const uid = useCloudStore((store) => store.user?.uid);
+  const { state, status } = useLibraryStore();
+  const [recovery, setRecovery] = useState<{
+    setId: string;
+    error: string;
+  } | null>(null);
   const saved = useResumableDraft<QuestionDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:questions:${setId ?? "all"}`,
     {
@@ -80,7 +82,24 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
   const back = (
     <BackControl href={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF} />
   );
-  if (saved.status === "checking") return <LoadingState />;
+  const restoreSources = (pending: QuestionDraft, sourceSetId: string) => {
+    try {
+      const rebound = rebindQuestionDraftSources(
+        pending,
+        sourceSetId,
+        Object.values(questionSourceWords(state, sourceSetId)),
+      );
+      saved.update(rebound);
+      setRecovery(null);
+    } catch (reason) {
+      setRecovery({
+        setId: sourceSetId,
+        error: reason instanceof Error ? reason.message : String(reason),
+      });
+    }
+  };
+  if (status !== "ready" || saved.status === "checking")
+    return <LoadingState />;
   if (saved.status === "offer" || saved.status === "invalid")
     return (
       <ResumeChoice
@@ -98,9 +117,25 @@ export function QuestionGenerator({ setId }: { setId?: string }) {
         onResume={() => {
           const pending = saved.pending!;
           saved.resume();
-          if (!("excludedQuestionIds" in pending))
-            saved.update({ excludedQuestionIds: [] });
+          restoreSources(pending, setId ?? pending.chosenSetId);
         }}
+      />
+    );
+  if (recovery)
+    return (
+      <QuestionDraftRecovery
+        backHref={setId ? `/app/sets/${setId}` : LIBRARY_QUESTIONS_HREF}
+        draft={saved.draft}
+        error={recovery.error}
+        fixedSet={Boolean(setId)}
+        onSetChange={(id) => {
+          saved.update({ chosenSetId: id });
+          setRecovery({ ...recovery, setId: id });
+        }}
+        onRetry={() => restoreSources(saved.draft, recovery.setId)}
+        selectedSetId={recovery.setId}
+        sets={state.sets}
+        words={Object.values(state.words)}
       />
     );
   return (
@@ -172,7 +207,8 @@ function QuestionGeneratorFlow({
   const generation = useAiGeneration<LibraryQuestion>({
     initialSnapshot: draft.run,
     task,
-    onSnapshotChange: (run) => update({ run }),
+    onSnapshotChange: (run) =>
+      update({ run: retainUnfinishedQuestionCheckpoint(draft.run, run) }),
     merge: (items) => {
       const byId = new Map<string, LibraryQuestion>();
       for (const item of items) byId.set(item.fingerprint || item.id, item);
@@ -225,7 +261,9 @@ function QuestionGeneratorFlow({
           senseCount ? (
             <Button
               className="w-full"
-              onClick={() => update({ step: "run" })}
+              onClick={() =>
+                update({ step: "run", chosenSetId: selectedSetId })
+              }
               size="lg"
             >
               <Icons.next />

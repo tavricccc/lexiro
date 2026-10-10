@@ -184,6 +184,10 @@ describe("independent set question controls", () => {
     expect(
       await screen.findByText("已清空 4 題，可以重新生成。"),
     ).toBeVisible();
+    expect(screen.getByRole("link", { name: "重新生成題目" })).toHaveAttribute(
+      "href",
+      "/app/questions/generate?set=a",
+    );
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(
       useLibraryStore.getState().state.questions.map((question) => question.id),
@@ -206,6 +210,10 @@ describe("independent set question controls", () => {
     expect(
       await screen.findByText("已清空 5 題，可以重新生成。"),
     ).toBeVisible();
+    expect(screen.getByRole("link", { name: "重新生成題目" })).toHaveAttribute(
+      "href",
+      "/app/questions/generate",
+    );
     expect(clearQuestions).toHaveBeenCalledWith(undefined);
   });
 

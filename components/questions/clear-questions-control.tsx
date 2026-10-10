@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { LibraryQuestion } from "@/types";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
@@ -49,12 +50,26 @@ export function ClearQuestionsControl({
   return (
     <div className="mb-4 flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
       {completed !== null && (
-        <p
-          className="mr-auto text-sm leading-6 text-muted-foreground"
-          role="status"
-        >
-          {t("questions.cleared", { count: completed })}
-        </p>
+        <>
+          <p
+            className="mr-auto text-sm leading-6 text-muted-foreground"
+            role="status"
+          >
+            {t("questions.cleared", { count: completed })}
+          </p>
+          <Button asChild size="sm" variant="outline">
+            <Link
+              href={
+                setId
+                  ? `/app/questions/generate?set=${encodeURIComponent(setId)}`
+                  : "/app/questions/generate"
+              }
+            >
+              <Icons.generate />
+              {t("questions.generateAfterClear")}
+            </Link>
+          </Button>
+        </>
       )}
       <Button
         disabled={status !== "ready" || questions.length === 0}

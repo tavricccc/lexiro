@@ -278,6 +278,7 @@ export const zhTW = {
       "詞義、例句與學習進度會保留。清空後可重新生成題目，原有題目無法還原。",
     confirmClear: "確認清空",
     cleared: "已清空 {count} 題，可以重新生成。",
+    generateAfterClear: "重新生成題目",
     sourceSet: "來源單字集",
     selectSourceSet: "選擇單字集",
     sourceSetHint:
@@ -286,6 +287,14 @@ export const zhTW = {
       "整組題目只使用同一個單字集。切換單字集後，各小題的詞義需要重新選擇。",
     originalSourceSetHint: "已儲存題目的來源限於原單字集。",
     sourceOutsideSet: "請選擇來源單字集中的詞義。",
+    draftSourceRequired: "請確認原本使用的單字集與詞義，再重新對應已完成題目。",
+    draftRecoveryTitle: "恢復已完成題目",
+    draftRecoveryKept:
+      "已完成的 {count} 題／題組與原生成紀錄仍保留。重新對應來源只在本機進行，不會重新生成或扣點。",
+    draftRecoveryHint:
+      "選擇原本的來源單字集；若詞義已被移除，請先補回原集詞義，再重試。",
+    checkSourceSet: "檢查本集詞義",
+    rebindDraftSources: "重新對應已完成題目",
     generate: "AI 產生",
     search: "搜尋題目",
     allTypes: "全部題型",
@@ -706,7 +715,8 @@ export const zhTW = {
     summary:
       "{senses} 個詞義 · {learned} 個已學習 · {due} 個待複習 · {questions} 題",
     toolsHeader: "這組字的整理",
-    deleteConfirm: "確定刪除「{name}」嗎？此集的詞義、例句與題目也會刪除，其他單字集會保留。",
+    deleteConfirm:
+      "確定刪除「{name}」嗎？此集的詞義、例句與題目也會刪除，其他單字集會保留。",
     share: "匯出分享檔",
     generateQuestions: "為這組字產生題目",
     dueCount: "{count} 個待複習",
