@@ -56,8 +56,8 @@ jobs:
         run: npx wrangler deploy --config wrangler.agent.toml
       - name: Verify public OAuth discovery
         run: |
-          curl --fail --silent --show-error https://lexiro-agent.tavric.workers.dev/health
-          curl --fail --silent --show-error https://lexiro-agent.tavric.workers.dev/.well-known/oauth-authorization-server
-          curl --fail --silent --show-error https://lexiro-agent.tavric.workers.dev/.well-known/oauth-protected-resource/mcp
+          curl --fail --silent --show-error --retry 6 --retry-all-errors --retry-delay 2 https://lexiro-agent.tavric.workers.dev/health
+          curl --fail --silent --show-error --retry 6 --retry-all-errors --retry-delay 2 https://lexiro-agent.tavric.workers.dev/.well-known/oauth-authorization-server
+          curl --fail --silent --show-error --retry 6 --retry-all-errors --retry-delay 2 https://lexiro-agent.tavric.workers.dev/.well-known/oauth-protected-resource/mcp
           status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://lexiro-agent.tavric.workers.dev/mcp)
           test "$status" = 401

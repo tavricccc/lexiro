@@ -23,7 +23,7 @@ export class FirestoreAgentLibrary implements AgentLibraryRepository {
   private root: string;
   constructor(
     env: AgentEnv,
-    private fetcher: typeof fetch = fetch,
+    private fetcher: typeof fetch = (input, init) => fetch(input, init),
   ) {
     this.root = `projects/${encodeURIComponent(env.FIREBASE_PROJECT_ID)}/databases/(default)/documents`;
     this.token = googleAccessToken(env, fetcher);

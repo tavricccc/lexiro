@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { exportPKCS8, generateKeyPair } from "jose";
 import {
   agentRecordId,
@@ -102,6 +102,8 @@ async function fixture() {
   };
   return {
     repo: new FirestoreAgentLibrary(env, fetcher),
+    env,
+    fetcher,
     docs,
     root,
     commits: () => commits,
@@ -109,6 +111,20 @@ async function fixture() {
 }
 
 describe("production Firestore agent repository with synthetic REST transport", () => {
+  it("calls the default global transport without using the repository as its receiver", async () => {
+    const f = await fixture();
+    vi.stubGlobal("fetch", function (this: unknown, ...args: Parameters<typeof fetch>) {
+      expect(this).not.toBeInstanceOf(FirestoreAgentLibrary);
+      return f.fetcher(...args);
+    });
+    try {
+      const repo = new FirestoreAgentLibrary(f.env);
+      await repo.create("u", createAgentSet(setId, "正式 transport"));
+      expect((await repo.read("u", setId))?.set.setName).toBe("正式 transport");
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
   it("writes native scoped records and atomically reuses an operation receipt", async () => {
     const f = await fixture();
     await f.repo.create("u", createAgentSet(setId, "測試"));
