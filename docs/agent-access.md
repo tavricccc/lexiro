@@ -77,3 +77,5 @@ Content-Type: application/json
 ```
 
 生成題目先 `GET /access/{id}/brief?kind=vocabulary&difficulty=2`，帶同一 token；依 brief 的 `sources`、`outputSchema`、`rules` 生成 raw JSON，再提交 `generated_questions` 的 kind、difficulty、senseIds 與 output。後續編輯讀回正式題目，保留 id，用 `put_questions` 提交完整物件。
+
+較大的單字集按 `recommendedMaxSources` 分批；URL brief 可重複带 `senseId` query 參數只選這批來源，MCP `get_generation_brief` 使用 `senseIds`。每次提交同一批 senseIds，沿用 brief 的來源 ref，完成一批後重讀最新 revision 再處理下一批。本機前端用 `http://localhost:3601`，Agent 公開原點用 `http://127.0.0.1:8791`，避免 OAuth audience 與瀏覽器 CORS 原點不一致。

@@ -21,6 +21,7 @@
 | sets:read 單獨 scope 存取 MCP | 403 insufficient_scope |
 | 空 items 的 generated_questions | 400 invalid_content，附具體 items 錯誤；revision 不變 |
 | vocabulary brief 完整規則、specification、outputSchema | 200；rules 大於 1000 字，schema 為 object 且包含 items |
+| brief 選取本集單一 senseId／其他集來源 | 200、只有該來源／400 invalid_content |
 | refresh_token exchange，再用新 access token 存取 tools/list | 200／200 |
 | connections 列出 clientName=Local Smoke，解除後再列出 | 200／200；該連線消失 |
 | 解除後原 access token 與 refresh 換出的 access token | 均 401 |
