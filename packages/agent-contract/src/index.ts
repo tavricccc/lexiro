@@ -17,24 +17,25 @@ import {
 } from "@/src/lib/library";
 import { canonicalHash, hashText } from "@/src/lib/hash";
 import { parseLibraryImportValue } from "@/src/lib/library-import";
-import { questionBatchTask } from "@/src/lib/ai/tasks";
+import { agentQuestionOutputSchema, collectAgentGeneratedQuestions } from "./generation";
+import { AgentQuestionError, validateQuestionItems } from "./validation";
+import type { AgentQuestionReport, AgentQuestionWriteMode } from "./public";
 import {
   questionUsesWords,
   questionBelongsToMemberships,
 } from "@/src/lib/question-ownership";
-import { questionLengthRange } from "@lexiro/ai-contract";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 
 export const AGENT_CONTRACT_VERSION = 1 as const;
 const text = z.string().trim().min(1).max(10000);
-const sense = z.strictObject({
+const sense = z.object({
   id: text.optional(),
   pos: text,
   meaningZh: text,
-  examples: z.array(text).max(20),
+  examples: z.array(text).max(20).default([]),
   supplementary: z.boolean().optional(),
 });
-const wordInput = z.strictObject({
+const wordInput = z.object({
   wordKey: text.optional(),
   word: text.max(200),
   senses: z.array(sense).min(1).max(20),
@@ -52,7 +53,8 @@ const mutation = z.discriminatedUnion("type", [
   }),
   z.strictObject({
     type: z.literal("put_questions"),
-    questions: z.array(z.unknown()).min(1).max(30),
+    questions: z.array(z.unknown()).min(1).max(200),
+    mode: z.enum(["atomic", "partial"]).default("partial"),
   }),
   z.strictObject({
     type: z.literal("delete_questions"),
@@ -62,8 +64,9 @@ const mutation = z.discriminatedUnion("type", [
     type: z.literal("generated_questions"),
     kind: z.enum(["vocabulary", "cloze", "wordBank", "discourse", "reading"]),
     difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]),
-    senseIds: z.array(text).min(1).max(30),
+    senseIds: z.array(text).min(1).optional(),
     output: z.unknown(),
+    mode: z.enum(["atomic", "partial"]).default("partial"),
   }),
   z.strictObject({ type: z.literal("delete_set") }),
 ]);
@@ -127,7 +130,7 @@ function checkedQuestions(
     kind: "questions",
     schemaVersion: 1,
     questions: values,
-  });
+  }, { requireEnglish: false });
   if (!parsed.valid) throw new Error(parsed.error);
   if (parsed.data.kind !== "questions") throw new Error("題目資料格式錯誤");
   const byKey = Object.fromEntries(words.map((word) => [word.wordKey, word]));
@@ -225,16 +228,14 @@ function selectedWords(snapshot: AgentSetSnapshot, ids: string[]) {
       senses: word.senses.filter((s) => wanted.has(s.id)),
     }))
     .filter((w) => w.senses.length);
-  if (
-    words.reduce((n, w) => n + w.senses.length, 0) !== wanted.size ||
-    wanted.size !== ids.length
-  )
-    throw new Error("來源詞義必須完整、唯一且屬於本集");
+  if (words.reduce((n, w) => n + w.senses.length, 0) !== wanted.size)
+    throw new Error("來源詞義必須屬於本集");
   return words;
 }
 export function mutateAgentSet(
   snapshot: AgentSetSnapshot,
   value: unknown,
+  blockedQuestionIds: string[] = [],
 ): AgentMutationResult {
   const action = mutation.parse(value);
   if (action.type === "delete_set") return { snapshot: null, senseRemaps: [] };
@@ -256,12 +257,7 @@ export function mutateAgentSet(
         throw new Error("改名後的單字已存在");
       const senses = draft.senses.map((s) => {
         const pos = normalizePartOfSpeech(s.pos);
-        if (
-          !pos ||
-          !/[\p{Script=Han}]/u.test(s.meaningZh) ||
-          s.examples.some((example) => /\p{Script=Han}/u.test(example))
-        )
-          throw new Error("詞性、繁體中文詞義或英文例句格式錯誤");
+        if (!pos) throw new Error("詞性格式錯誤");
         const id = buildSenseId(wordKey, pos, s.meaningZh);
         if (s.id) {
           if (!previous?.senses.some((old) => old.id === s.id))
@@ -339,45 +335,47 @@ export function mutateAgentSet(
     );
   }
   let additions: LibraryQuestion[] = [];
+  let validation: AgentQuestionReport | undefined;
   if (action.type === "put_questions") {
-    const prepared = action.questions.map((value) => {
+    const parsed = validateQuestionItems(next, action.questions, action.mode, [], value => {
       const source = z.record(z.string(), z.unknown()).parse(value);
       const id =
         typeof source.id === "string"
           ? source.id
           : `question-${crypto.randomUUID()}`;
+      if (blockedQuestionIds.includes(id)) throw new AgentQuestionError("question_outside_scope", "id", "題目 ID 已屬於其他單字集。", typeof source.senseId === "string" ? source.senseId : undefined);
       const old = next.questions.find((q) => q.id === id);
-      return {
+      return checkedQuestions([{
         ...source,
         id,
         createdAt: old?.createdAt ?? now,
         updatedAt: now,
-      };
+      }], next.words, true);
     });
-    additions = checkedQuestions(prepared, next.words, true);
+    additions = parsed.questions;
+    validation = parsed.report;
   }
   if (action.type === "generated_questions") {
-    const task = questionBatchTask(
-      selectedWords(next, action.senseIds),
-      action.kind,
-      action.difficulty,
-    );
-    additions = task.steps[0].parse(JSON.stringify(action.output));
+    const parsed = collectAgentGeneratedQuestions(next, action.kind, action.difficulty, action.senseIds, action.output, action.mode);
+    additions = parsed.questions;
+    validation = parsed.report;
   }
+  if (validation && !additions.length) return { snapshot, senseRemaps: [], validation };
   for (const q of additions) {
-    if (
-      next.questions.some(
-        (old) => old.id !== q.id && old.fingerprint === q.fingerprint,
-      )
-    )
-      throw new Error("這個題目內容已存在");
-    next.questions = [...next.questions.filter((old) => old.id !== q.id), q];
+    const old = next.questions.find(old => old.id === q.id);
+    if (old?.fingerprint === q.fingerprint) continue;
+    next.questions = [...next.questions.filter((old) => old.id !== q.id), { ...q, createdAt: old?.createdAt ?? q.createdAt }];
   }
   next.set.updatedAt = now;
   return {
     snapshot: validateAgentSnapshot(next, next.set.id),
     senseRemaps: remaps,
+    ...(validation ? { validation: { ...validation, savedCount: additions.length } } : {}),
   };
+}
+export function validateAgentGeneratedQuestions(snapshot: AgentSetSnapshot,
+  value: { kind: GeneratedQuestionKind; difficulty: QuestionDifficulty; senseIds?: string[]; output: unknown; mode?: AgentQuestionWriteMode }) {
+  return collectAgentGeneratedQuestions(snapshot, value.kind, value.difficulty, value.senseIds, value.output, value.mode ?? "partial").report;
 }
 export {
   agentFoldersRevision,
@@ -405,11 +403,11 @@ export function agentGenerationBrief(
       ...(s.examples[0] ? { knownExample: s.examples[0] } : {}),
     })),
   );
-  const { min, max } = questionLengthRange(kind, difficulty);
   return {
     kind,
     difficulty,
     sources,
-    instructions: `你自己生成內容，再用 generated_questions 提交；不呼叫任何模型 API。英文正文篇幅 ${min}–${max} words。先寫完整正文，再指定 usage（原文唯一定位片段）與 answer（usage 內恰好一次的真正挖空片段），程式負責挖空。詞彙題每個來源一題，輸出 {items:[{sentence,usage,answer,distractors:[三項],explanation,whyWrong:[{option,reason}]}]}。綜合測驗輸出 {title,passage,blanks:[{usage,answer,distractors,explanation,whyWrong}]}。文意選填輸出 {title,passage,options:[十個完整候選],blanks:[{ref,usage,answer,explanation,whyWrong}]}，ref 逐字綁定來源、每來源恰好一次、九個錯項理由。篇章結構輸出 {title,passage,options:[五個完整句],removals:[{sentence,explanation,whyWrong}]}，四個完整且非相鄰刪句、四個錯项理由。閱讀輸出 {title,passage,items:[{skill,evidence:[完整原文句],question,answer,distractors,explanation,whyWrong}]}，3–5 子題，skill 為 detail/mainIdea/inference/vocabulary/reference；推論至少兩個必要事實。題目和例句用自然英文，解說與每個錯項理由用台灣繁體中文。先把所有選項代入實際空格，確認唯一解；理由須依遮答後仍存在的線索。依 sources 順序保留來源，文章題組不可拆成零散小題；勿輸出檢查過程。`,
+    instructions: `由你自己生成並提交，服務不呼叫模型 API。依使用者要求決定指定單字、題數、篇幅、難度、順序與解說；sources 是可用來源，不必全部使用，也不必每個來源各出一題。每題用 senseId 綁定穩定來源，不以陣列位置綁定；同一來源可以出多題。只有一個來源時可省略 senseId，也可使用本 brief 的 ref。正文保留答案，answer 指定要挖空的原文片段；只有一處時可省略 usage，重複時用 usage 指定位置。explanation、whyWrong、閱讀 skill／evidence 均非寫入必需。格式見 outputSchema，JSON 欄位順序不限。一般選擇題需要三個錯項，共用選項庫依網站格式為文意選填十項、篇章結構五項。篇幅偏離只回傳 warning，不阻擋儲存；來源錯誤、答案無法定位、選項錯誤才是 error。mode 預設 partial，可先儲存有效獨立題目並取得逐題錯誤；atomic 則有任何 error 就不儲存。文章題組保持完整，以整組為一單位。validate_generated_questions 可先唯讀驗證。也可直接用 put_questions 新增或編輯完整題目，無須先取得本 brief。題目難度、風格、語意相似度由你自行判斷，依使用者要求決定是否合併屈折／衍生詞的出題；原始詞條全部保留。`,
+    outputSchema: agentQuestionOutputSchema(kind),
   };
 }

@@ -29,7 +29,7 @@ export interface AgentWordInput {
     id?: string;
     pos: string;
     meaningZh: string;
-    examples: string[];
+    examples?: string[];
     supplementary?: boolean;
   }[];
 }
@@ -38,20 +38,54 @@ export type AgentMutation =
   | { type: "move_set"; folderId: string }
   | { type: "put_words"; words: AgentWordInput[] }
   | { type: "delete_words"; wordKeys: string[] }
-  | { type: "put_questions"; questions: unknown[] }
+  | { type: "put_questions"; questions: unknown[]; mode?: AgentQuestionWriteMode }
   | { type: "delete_questions"; questionIds: string[] }
   | {
       type: "generated_questions";
       kind: GeneratedQuestionKind;
       difficulty: QuestionDifficulty;
-      senseIds: string[];
+      senseIds?: string[];
       output: unknown;
+      mode?: AgentQuestionWriteMode;
     }
   | { type: "delete_set" };
 export interface AgentMutationResult {
   snapshot: AgentSetSnapshot | null;
   senseRemaps: { from: string; to: string }[];
+  validation?: AgentQuestionReport;
 }
+export type AgentQuestionWriteMode = "atomic" | "partial";
+export interface AgentQuestionDiagnostic {
+  itemId: string;
+  sourceId?: string;
+  sourceWord?: string;
+  sourceIndex: number;
+  severity: "error" | "warning";
+  code: string;
+  field: string;
+  message: string;
+  actual?: number;
+  recommendedMin?: number;
+  recommendedMax?: number;
+}
+export interface AgentQuestionReport {
+  status: "success" | "partial_success" | "rejected";
+  mode: AgentQuestionWriteMode;
+  submittedCount: number;
+  validCount: number;
+  savedCount: number;
+  failedCount: number;
+  errors: AgentQuestionDiagnostic[];
+  warnings: AgentQuestionDiagnostic[];
+  items: { itemId: string; sourceIds: string[]; questionIds: string[]; valid: boolean }[];
+  requestedSenseIds: string[];
+  usedSenseIds: string[];
+  unusedSenseIds: string[];
+}
+export declare function validateAgentGeneratedQuestions(
+  snapshot: AgentSetSnapshot,
+  value: { kind: GeneratedQuestionKind; difficulty: QuestionDifficulty; senseIds?: string[]; output: unknown; mode?: AgentQuestionWriteMode },
+): AgentQuestionReport;
 export declare const AGENT_CONTRACT_VERSION: 1;
 export declare function createAgentSet(
   setId: string,
@@ -65,6 +99,7 @@ export declare function validateAgentSnapshot(
 export declare function mutateAgentSet(
   snapshot: AgentSetSnapshot,
   value: unknown,
+  blockedQuestionIds?: string[],
 ): AgentMutationResult;
 export declare function agentSetRevision(
   snapshot: AgentSetSnapshot | null,
@@ -113,4 +148,5 @@ export declare function agentGenerationBrief(
     knownExample?: string;
   }[];
   instructions: string;
+  outputSchema: Record<string, unknown>;
 };

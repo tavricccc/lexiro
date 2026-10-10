@@ -8,6 +8,7 @@ README 提供專案入口；下列章節按目前 checkout 的程式、型別和
 | [路由與權限](routes-and-permissions.md) | `/` 與 `/app`、登入、資料所有權、Worker 管理員 |
 | [架構](architecture.md) | UI／store／domain／IndexedDB／D1／Worker 的交接 |
 | [D1 雲端](d1-cloud.md) | 新雲端、資料夾／200 筆、配額與發布維護 |
+| [Agent 批次寫入](agent-validation.md) | senseId、逐題診斷、partial／atomic、唯讀驗證與無模型品質提示 |
 | [資料與同步](data-and-sync.md) | 詞義身份、IndexedDB commit、dirty journal、merge、版號 |
 | [練習](practice.md) | 題型、排程、判分、存檔、接續與結果解說 |
 | [高中題目品質](question-quality.md) | 官方依據、題型篇幅、干擾選項與生成驗證 |

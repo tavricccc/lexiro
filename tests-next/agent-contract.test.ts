@@ -64,8 +64,7 @@ describe("agent set contract", () => {
       createAgentSet(setId, "測試"),
       words,
     ).snapshot!;
-    expect(() =>
-      mutateAgentSet(snapshot, {
+    const result = mutateAgentSet(snapshot, {
         type: "put_questions",
         questions: [
           {
@@ -79,8 +78,11 @@ describe("agent set contract", () => {
             answerIndex: 0,
           },
         ],
-      }),
-    ).toThrow("單字集");
+      });
+    expect(result.validation?.status).toBe("rejected");
+    expect(result.validation?.savedCount).toBe(0);
+    expect(result.validation?.errors[0].message).toContain("單字集");
+    expect(result.snapshot?.questions).toEqual([]);
   });
   it("deletes owned words and the whole set", () => {
     const snapshot = mutateAgentSet(

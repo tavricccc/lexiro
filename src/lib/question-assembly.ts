@@ -8,7 +8,7 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { placeAnswer } from "./question-builders";
-import { assembleOptionTeaching } from "./question-teaching";
+import { assembleAgentTeaching, assembleOptionTeaching } from "./question-teaching";
 import { sourceWordFormIssue } from "./question-word-forms";
 import {
   locateUsageAnswer,
@@ -30,6 +30,12 @@ export interface AssemblyResult {
   payload: Record<string, unknown>;
   /** Items the model got wrong badly enough to discard, for reporting. */
   dropped: string[];
+}
+
+type AssemblyMode = "generated" | "agent";
+
+function teaching(source: Record<string, unknown>, distractors: string[], mode: AssemblyMode) {
+  return mode === "agent" ? assembleAgentTeaching(source) : assembleOptionTeaching(source, distractors);
 }
 
 function text(value: unknown): string {
@@ -95,6 +101,7 @@ function buildSlots(words: WordEntry[]): SenseSlot[] {
 export function wordBankSourceSlots(
   words: WordEntry[],
   blanks: unknown[],
+  mode: AssemblyMode = "generated",
 ): Map<string, SenseSlot> {
   const slots = new Map(buildSlots(words).map((slot) => [slot.ref, slot]));
   const seen = new Set<string>();
@@ -103,10 +110,10 @@ export function wordBankSourceSlots(
     if (!ref) throw new Error(`文意選填第 ${index + 1} 格缺少來源 ref`);
     if (!slots.has(ref))
       throw new Error(`文意選填第 ${index + 1} 格有未知的來源 ref「${ref}」`);
-    if (seen.has(ref)) throw new Error(`文意選填來源 ref「${ref}」重複`);
+    if (mode === "generated" && seen.has(ref)) throw new Error(`文意選填來源 ref「${ref}」重複`);
     seen.add(ref);
   });
-  if (seen.size !== slots.size)
+  if (mode === "generated" && seen.size !== slots.size)
     throw new Error("文意選填必須將本批每個來源 ref 各配置一次");
   return slots;
 }
@@ -120,8 +127,13 @@ function resolveSlot(
   slots: SenseSlot[],
   ref: string,
   position: number,
+  mode: AssemblyMode = "generated",
 ): SenseSlot | null {
   if (!slots.length) return null;
+  if (mode === "agent") {
+    if (ref) return slots.find((slot) => slot.ref === ref) ?? null;
+    return slots.length === 1 ? slots[0] : null;
+  }
   return (
     slots.find((slot) => slot.ref === ref) ?? slots[position % slots.length]
   );
@@ -135,11 +147,12 @@ function multipleChoiceItem(
   distractors: string[],
   difficulty: QuestionDifficulty,
   source: Record<string, unknown>,
+  mode: AssemblyMode,
 ): Record<string, unknown> {
   const { answerIndex, options } = placeAnswer(
     answer,
     distractors,
-    `${slot.sourceRef}:${prompt}`,
+    `${mode === "agent" ? slot.word.senses[slot.senseIndex].id : slot.sourceRef}:${prompt}`,
   );
   return {
     answerIndex,
@@ -149,7 +162,7 @@ function multipleChoiceItem(
     prompt,
     questionStyle: style,
     sourceRef: slot.sourceRef,
-    ...assembleOptionTeaching(source, distractors),
+    ...teaching(source, distractors, mode),
   };
 }
 
@@ -158,6 +171,7 @@ function assembleSentences(
   kind: "vocabulary",
   difficulty: QuestionDifficulty,
   words: WordEntry[],
+  mode: AssemblyMode,
 ): AssemblyResult {
   const slots = buildSlots(words);
   const items = Array.isArray(value.items) ? value.items : [];
@@ -168,24 +182,21 @@ function assembleSentences(
 
   items.forEach((raw, position) => {
     if (!isRecord(raw)) return dropped.push(`第 ${position + 1} 筆格式錯誤`);
-    const slot = resolveSlot(slots, text(raw.ref), position);
+    const slot = resolveSlot(slots, text(raw.ref), position, mode);
     if (!slot) return dropped.push(`第 ${position + 1} 筆對不到輸入詞義`);
 
     const sentence = text(raw.sentence);
     const answer = text(raw.answer);
-    const usage = text(raw.usage);
+    const usage = text(raw.usage) || (mode === "agent" ? answer : "");
     if (!sentence || !answer || !usage)
       return dropped.push(`${slot.word.word}：缺少句子、目標用法或答案`);
     const location = locateUsageAnswer(sentence, usage, answer);
     if ("issue" in location)
       return dropped.push(`${slot.word.word}：${location.issue}`);
-    const wordFormIssue = sourceWordFormIssue(
-      slot.word.word,
-      slot.word.senses[slot.senseIndex].pos,
-      answer,
-      usage,
-    );
-    if (wordFormIssue) return dropped.push(wordFormIssue);
+    if (mode === "generated") {
+      const wordFormIssue = sourceWordFormIssue(slot.word.word, slot.word.senses[slot.senseIndex].pos, answer, usage);
+      if (wordFormIssue) return dropped.push(wordFormIssue);
+    }
     const answerAt = location.at;
     const prompt = `${sentence.slice(0, answerAt)}_____${sentence.slice(answerAt + answer.length)}`;
 
@@ -207,6 +218,7 @@ function assembleSentences(
         distractors,
         difficulty,
         raw,
+        mode,
       ),
     );
   });
@@ -242,6 +254,7 @@ function assemblePassage(
   format: PassageFormat,
   difficulty: QuestionDifficulty,
   words: WordEntry[],
+  mode: AssemblyMode,
 ): AssemblyResult {
   const spec = PASSAGE_FORMATS[format];
   const slots = buildSlots(words);
@@ -256,13 +269,14 @@ function assemblePassage(
     const items = Array.isArray(value.items) ? value.items : [];
     const children = items.flatMap((raw, position) => {
       if (!isRecord(raw)) return [];
-      const slot = resolveSlot(slots, text(raw.ref), position);
+      const slot = resolveSlot(slots, text(raw.ref), position, text(raw.ref) ? mode : "generated");
       const question = text(raw.question);
       const answer = text(raw.answer);
       const distractors = usableDistractors(
         answer,
         stringArray(raw.distractors),
         3,
+        mode === "agent",
       );
       if (!slot || !question || !answer || !distractors) {
         dropped.push(`閱讀題第 ${position + 1} 題資料不完整`);
@@ -271,7 +285,7 @@ function assemblePassage(
       const { answerIndex, options } = placeAnswer(
         answer,
         distractors,
-        `${slot.sourceRef}:${question}`,
+        `${mode === "agent" ? slot.word.senses[slot.senseIndex].id : slot.sourceRef}:${question}`,
       );
       return [
         {
@@ -280,7 +294,7 @@ function assemblePassage(
           options,
           prompt: question,
           sourceRef: slot.sourceRef,
-          ...assembleOptionTeaching(raw, distractors),
+          ...teaching(raw, distractors, mode),
         },
       ];
     });
@@ -312,6 +326,7 @@ function assemblePassage(
       ? wordBankSourceSlots(
           words,
           Array.isArray(value.blanks) ? value.blanks : [],
+          mode,
         )
       : null;
   const raw =
@@ -329,7 +344,7 @@ function assemblePassage(
             ? [
                 {
                   answer: text(item.answer),
-                  usage: text(item.usage),
+                  usage: text(item.usage) || (mode === "agent" ? text(item.answer) : ""),
                   ref: text(item.ref),
                   source: item,
                 },
@@ -341,7 +356,11 @@ function assemblePassage(
   raw.forEach((item, position) => {
     const slot = bankSlots
       ? bankSlots.get(item.ref)!
-      : resolveSlot(slots, item.ref, position);
+      : resolveSlot(slots, item.ref, position, format === "discourse" ? "generated" : mode);
+    if (mode === "agent" && !slot) {
+      dropped.push(`第 ${position + 1} 格缺少有效來源 ref；請指定 sources.ref`);
+      return;
+    }
     let at: number;
     if (format === "discourse") {
       const hits = occurrences(rawPassage, item.answer);
@@ -360,7 +379,7 @@ function assemblePassage(
       }
       at = location.at;
     }
-    if (format === "wordBank" && slot) {
+    if (mode === "generated" && format === "wordBank" && slot) {
       const wordFormIssue = sourceWordFormIssue(
         slot.word.word,
         slot.word.senses[slot.senseIndex].pos,
@@ -438,9 +457,10 @@ function assemblePassage(
                 format === "wordBank"
                   ? child.slot!.sourceRef
                   : (child.slot ?? slots[index % slots.length]).sourceRef,
-              ...assembleOptionTeaching(
+              ...teaching(
                 child.source,
                 candidates.filter((option) => option !== child.answer),
+                mode,
               ),
             })),
             title,
@@ -477,7 +497,7 @@ function assemblePassage(
         options,
         prompt: `Blank ${index + 1}`,
         sourceRef: (child.slot ?? slots[index % slots.length]).sourceRef,
-        ...assembleOptionTeaching(source, distractors),
+        ...teaching(source, distractors, mode),
       },
     ];
   });
@@ -521,9 +541,10 @@ export function assembleGeneratedQuestions(
   kind: GeneratedQuestionKind,
   difficulty: QuestionDifficulty,
   words: WordEntry[],
+  mode: AssemblyMode = "generated",
 ): AssemblyResult {
   if (!isRecord(value)) throw new Error("AI 回覆必須是 JSON object");
   return isPassageKind(kind)
-    ? assemblePassage(value, kind, difficulty, words)
-    : assembleSentences(value, kind, difficulty, words);
+    ? assemblePassage(value, kind, difficulty, words, mode)
+    : assembleSentences(value, kind, difficulty, words, mode);
 }

@@ -5,7 +5,7 @@
 ## 資料與同步
 
 - 前端和 MCP／授權 URL 共用同一套 D1 repository；網站看到的就是 Agent 寫入的原生教材。
-- Library records 保留目前教材格式 v9；D1 schema 為 v1，共用 `@lexiro/agent-contract` 2.0.0。
+- Library records 保留目前教材格式 v9；D1 schema 為 v1，共用 `@lexiro/agent-contract` 3.0.0。
 - `/sync/records` 按 `(seq,recordId)` 分頁拉取及批次寫入；刪除使用 tombstone。進度、統計、偏好走 `/sync/blobs`，以 blob revision 拒絕過期覆蓋。
 - 寫入以 D1 batch transaction、帳號 CAS ticket 與 operationId 回條保護；斷線重送沿用同一操作，journal 只清已成功提交的本機版本。
 - 讀字、題目都以本集 memberships/source 索引限定來源；不查整個帳號題庫。未變動的成員／題目來源不重建；相同 records 不反覆改寫。
@@ -13,9 +13,9 @@
 
 ## 資料夾與 200 筆
 
-MCP 現有 17 個工具，新增 `list_folders`、`create_folder`、`update_folder`、`delete_folder`、`move_set`。建立集可帶 `folderId`。資料夾名稱同層不可重複、不可移進自己或子資料夾；刪除只接受空資料夾，教材的刪除仍須依使用者要求逐一操作。
+MCP 現有 18 個工具，包含資料夾 CRUD、`move_set` 與唯讀 `validate_generated_questions`。建立集可帶 `folderId`。資料夾名稱同層不可重複、不可移進自己或子資料夾；刪除只接受空資料夾，教材的刪除仍須依使用者要求逐一操作。
 
-`put_words`／`delete_words` 每次最多 200 筆；201 筆直接拒絕，不留下部分寫入。題目生成仍遵循 brief 的批量建議。單集 URL 可以列出自己的分類目的地並移動授權集，不能藉此編輯其他集或管理整個資料夾樹。
+`put_words`／`delete_words` 每次最多 200 筆；201 筆直接拒絕，不留下部分寫入。題目每批最多 200 個獨立題目／題組，支援 partial／atomic 與逐題 Error／Warning，見 [Agent 批次寫入](agent-validation.md)。單集 URL 可以列出自己的分類目的地並移動授權集，不能藉此編輯其他集或管理整個資料夾樹。
 
 ## 配置與下次發布
 

@@ -1,5 +1,27 @@
 import { isRecord } from "./schema";
 import { containsHan } from "./validation";
+import { z } from "zod";
+
+const agentTeaching = z.object({
+  explanation: z.string().optional(),
+  whyWrong: z.union([
+    z.array(z.object({ option: z.string(), reason: z.string() })),
+    z.record(z.string(), z.string()),
+  ]).optional(),
+});
+
+/** Agent-authored explanations may be partial and follow the user's language. */
+export function assembleAgentTeaching(item: Record<string, unknown>) {
+  const parsed = agentTeaching.parse(item);
+  return {
+    ...(parsed.explanation !== undefined ? { explanation: parsed.explanation } : {}),
+    ...(parsed.whyWrong !== undefined ? {
+      whyWrong: Array.isArray(parsed.whyWrong)
+        ? Object.fromEntries(parsed.whyWrong.map(({ option, reason }) => [option, reason]))
+        : parsed.whyWrong,
+    } : {}),
+  };
+}
 
 /** Model explanations name the actual option; display shuffling is independent. */
 export function optionTeachingIssue(
