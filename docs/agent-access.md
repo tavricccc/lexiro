@@ -10,7 +10,7 @@ create_set 可帶 folderId；需要分類 ID 時用 list_folders。parentId:null
 
 action 支援 rename_set、move_set、put_words、delete_words、put_questions、delete_questions、generated_questions、delete_set。所列單字 senses 完整替換，其餘保留。來源刪除／重綁會調整失效題目及來源進度，保留其他集與整體歷史；D1 batch 原子提交及操作回條避免重送。
 
-題目 brief 是選用格式參考：`/access/{id}/brief?kind=vocabulary&difficulty=2` 或 get_generation_brief。每題用穩定 senseId，來源順序不限，可只生成指定字、同字多題，不強迫覆蓋全來源。解說、逐錯項理由、閱讀 skill／evidence 選填；篇幅是 warning，來源／答案定位／選項結構錯誤是 error。
+命題使用 `/access/{id}/brief?kind=vocabulary&difficulty=2` 或 get_generation_brief 取得完整提示。rules／specification 直接由內建 questionPrompt 函式產生，所有五種題型共用同一套品質指引，不另維護簡化版。已取得提示可沿用。寫入仍以穩定 senseId 綁定，來源順序不限，可只生成指定字、同字多題，不強迫覆蓋全來源；解說、逐錯項理由、閱讀 skill／evidence 選填。篇幅是 warning，來源／答案定位／選項結構錯誤是 error。綜合測驗依提示可挖空相關文法詞，不必等於來源字。
 
 validate_generated_questions 只讀並回逐題診斷，不改 revision。save_generated_questions 與 put_questions 預設 mode:partial，只保存有效獨立題目／完整題組，mode:atomic 有任何 error 就零寫入。每批最多 200 個獨立題目／題組；回 savedCount、failedCount、errors、warnings 與 itemId／sourceId，sourceIndex 只是本次位置。可只修正錯誤項；生成題 ID 穩定，拆批不重複新增。沒有另用模型評難度、風格或語意相似度；出題去重由 Agent 判斷，原始詞條保留。
 

@@ -18,7 +18,7 @@ Agent Worker 不需要 Google service-account secret 或模型 API key。生成�
 
 ## 架構與限制
 
-`library-migrations/0001_library.sql` 為 schema v1：cloud_accounts、cloud_records、cloud_memberships、cloud_question_sources、cloud_blobs、cloud_operations。原生教材 DTO 維持 v9，共用 package 3.0.0；本次批次寫入規則沒有 D1 schema 變動。
+`library-migrations/0001_library.sql` 為 schema v1：cloud_accounts、cloud_records、cloud_memberships、cloud_question_sources、cloud_blobs、cloud_operations。原生教材 DTO 維持 v9，共用 package 3.0.1；本次命題提示恢復及綜合測驗寫入修正沒有 D1 schema 變動。
 
 - 前端 `/sync/*` 只接受 Firebase ID token；uid 永遠由驗證結果取得。
 - Agent 與 URL 共用 D1AgentLibrary；讀字／題目從本集來源索引開始，不掃全帳號 records。EXPLAIN 已確認索引路徑。

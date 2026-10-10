@@ -150,7 +150,7 @@ export async function handleAgentMcp(
   );
   tool(
     "get_generation_brief",
-    "取得可用來源與儲存格式，選用工具。使用者要求優先，可只替指定單字出題，不要求用完來源或依來源順序。",
+    "取得與內建生成相同的完整命題提示，涵蓋所有五種題型，並附可用來源與寫入格式。可用 senseIds 指定要出的單字；已取得提示可沿用，使用者要求優先。",
     { setId: id, kind, difficulty: difficulty.default(2), senseIds: z.array(text).optional() },
     (args) =>
       readGenerationBrief(

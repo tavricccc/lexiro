@@ -8,13 +8,13 @@
 | `src/usage-recovery.ts`、`tests-next/usage-recovery.test.ts` | 驗證完整 usage、補查 stored response、持久化待核對結算，並在帳戶請求與 Cron 有界重試。只保存計費識別，不保存 prompt、圖片或生成內容；有產出的待核對帳戶保留預留，取消／失敗立即釋放預留但繼續補記成本 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
 | `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
-| `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、18 個教材／驗證工具、選用 Agent 格式 brief；senseId 綁定、逐題診斷、partial／atomic，不套內建 AI 品質門檻 |
+| `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、18 個教材／驗證工具；所有題型 brief 直接用內建 questionPrompt，寫入保留 senseId、逐題診斷、partial／atomic 與寬鬆品質門檻 |
 | `src/agent/access.ts`、`operations.ts`、`types.ts` | per-user／per-set bearer URL、兩小時預設期限、hashed token、版本與 operation ID envelope、資料 scope |
 | `src/agent/library-repository.ts` | D1 教材 repository；本集 memberships/source 索引讀取、資料夾 CRUD、來源進度調整、版本衝突與冪等回條 |
 | `src/cloud/{api,repository,records}.ts` | Firebase Auth owner 同步 API、D1 change feed／blob CAS、JSON 批次交易與原生教材序列化；Agent 和瀏覽器使用同一資料庫 |
 | `library-migrations/0001_library.sql` | 專用 CLOUD_DB schema v1：帳號版本、教材、來源索引、學習／偏好 blobs、操作回條；不遷移 Firestore |
 | `agent-migrations/0001_agent_access.sql` | Agent D1 schema v1，URL scope／到期／撤銷與一次性 OAuth 授權請求，與計費 migrations 分開 |
-| `vendor/lexiro-agent-contract-3.0.0.tgz` | 公開共用教材／資料夾／雲端 DTO、Agent 逐題驗證與部分成功；每批 200 筆，不含模型金鑰或 private prompt |
+| `vendor/lexiro-agent-contract-3.0.1.tgz` | 公開共用教材／資料夾／雲端 DTO、Agent 逐題驗證與部分成功，支援綜合測驗文法空格；每批 200 筆，不含模型金鑰或 private prompt |
 | `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
 | `tests-next/agent-d1.test.ts`、`scripts/agent-smoke.mjs` | 真 D1 batch／CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通及 HTTP OAuth／URL 驗證 |
 | `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |

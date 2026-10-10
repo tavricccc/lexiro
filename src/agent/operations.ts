@@ -9,6 +9,7 @@ import {
   type QuestionDifficulty,
 } from "@lexiro/agent-contract";
 import { HttpError } from "../http";
+import { questionPrompt } from "../question-prompts";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
 export const mutationEnvelope = z.strictObject({
   expectedRevision: z.string().regex(/^[a-f0-9]{32}$/),
@@ -95,6 +96,7 @@ export async function readGenerationBrief(
     error.message = reason instanceof Error ? reason.message : "來源格式錯誤";
     throw error;
   }
+  const prompt = questionPrompt(kind, brief.sources, difficulty);
   return {
     ...brief,
     setId,
@@ -106,7 +108,7 @@ export async function readGenerationBrief(
       discourse: 30,
       reading: 30,
     }[kind],
-    rules: brief.instructions,
-    specification: { kind, difficulty, sources: brief.sources },
+    rules: prompt.instructions,
+    specification: prompt.input,
   };
 }

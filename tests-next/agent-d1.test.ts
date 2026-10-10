@@ -8,7 +8,8 @@ import { handleCloudApi } from '../src/cloud/api';
 import { DEFAULT_AI_MODEL } from '@lexiro/ai-contract';
 import { snapshotRecords } from '../src/cloud/records';
 import type { AgentEnv } from '../src/agent/types';
-import { applyAgentMutation, validateGeneratedQuestions } from '../src/agent/operations';
+import { applyAgentMutation, readGenerationBrief, validateGeneratedQuestions } from '../src/agent/operations';
+import { questionPrompt } from '../src/question-prompts';
 
 const A='11111111-1111-4111-8111-111111111111';
 const B='22222222-2222-4222-8222-222222222222';
@@ -29,6 +30,22 @@ function words(count:number) {
 }
 
 describe('native D1 agent library with synthetic users',()=>{
+  it('returns the exact built-in prompt for every Agent question format without writing',async()=>{
+    const f=await fixture();
+    try {
+      const identity={uid:'a',email:'synthetic@example.invalid'};
+      await applyAgentMutation(f.repo,identity,A,{action:{type:'put_words',words:[{word:'rescue',senses:[{pos:'v.',meaningZh:'救援'}]}]}},'mcp');
+      const before=await f.db.prepare('SELECT revision FROM cloud_accounts WHERE uid=?').bind('a').first();
+      for(const kind of ['vocabulary','cloze','wordBank','discourse','reading'] as const){
+        const brief=await readGenerationBrief(f.repo,identity,A,kind,2);
+        const builtIn=questionPrompt(kind,brief.sources,2);
+        expect(brief.rules).toBe(builtIn.instructions);
+        expect(brief.specification).toBe(builtIn.input);
+        expect(brief.outputSchema.type).toBe('object');
+      }
+      expect(await f.db.prepare('SELECT revision FROM cloud_accounts WHERE uid=?').bind('a').first()).toEqual(before);
+    }finally{await f.runtime.dispose();}
+  });
   it('validates without writes, atomically rejects or partially saves 97/100, replays diagnostics and isolates question IDs',async()=>{
     const f=await fixture();
     try {
