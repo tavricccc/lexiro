@@ -57,3 +57,15 @@ EXPLAIN 檢查原 JOIN 發現 planner 先掃 uid 的全帳號來源／records；
 Native D1 測試另以 100 題確認 partial 保存 97、三個錯誤各有穩定來源與代碼、atomic 零寫入、唯讀驗證不改帳號 revision、相同 operationId 回條完全相同。跨集既有題目 ID 只拒絕該項，其餘有效項仍保存。
 
 題目 ID 衝突已改 JSON 批次查詢；EXPLAIN 先發現 SQLite 使用 uid／kind／deleted 掃全帳號題目，隨後改為 cloud_records_key covering index，確認查詢使用 uid／kind／record_key／deleted 限定各個候選 ID。此證據是本機查詢計畫，不是正式 CPU 或累積 rows 測量。未呼叫模型 API、未處理使用者的 134 筆教材。
+
+## 2026-10-11 按需查詢與細部操作
+
+最新本機 HTTP smoke exit 0／passed true，195 次請求的預期狀態全部符合。MCP 為27 tools；read_batch 與 REST POST query 對相同 requests 回傳相同資料，一次取得不同搜尋／範圍、完整 prompt 與小批 brief。五型完整提示亦可在一次 read_batch 用較大明確預算取得。
+
+Native D1 測試驗證範圍11–15與游標接續16–20、中文詞義／選項搜尋、題型與難度篩選、巢狀 fields、跨帳號／跨集限制、重複查詢 reference、單項失敗、回應預算與精確 characters 計數。只 patch 一義保留其他義，只 patch 一子題保留正文與兄弟題；保存回條及診斷可分頁讀取。
+
+200 個合成單字、199 題，o200k_base 一次估算：重建整集單字／題目 JSON 163,540字元／60,322 tokens，URL 首頁2,327字元／1,004 tokens，指定5個單字與3題的一次查詢1,849字元／746 tokens。比較不含 membership、Agent 其他對話／工具定義／推理或完整命題提示，不能當平台實際扣款或正式 CPU／D1 rows 數據。
+
+`gpt-6.1-sol low` 子代理依本機首頁實際操作：首次發現新增 words 和生成 output envelope 沒有範例，13次請求含3次格式400後完成。指引補上 body 範例、保存格式欄位與搜尋範圍，題目搜尋加入選項。複驗正好6次 HTTP、全部200：讀指引→新增 aid→一次取來源／完整提示／限定brief→自行生成並保存一題→PATCH追加例句→一次精確讀回單字／題目／搜尋摘要。題目savedCount=1，兩例句、來源、四選項、正解、解說及排除理由讀回正確；不代表五型教育品質驗收。
+
+只用 localhost 合成資料，沒有正式教材寫入、正式模型 API 或新的 Firebase 憑證。網站 runtime／D1 schema 沒有變動，完整提示原稿仍與內建共用。

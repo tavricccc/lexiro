@@ -24,10 +24,11 @@ Agent Worker 不需要 Google service-account secret 或模型 API key。生成�
 - Agent 與 URL 共用 D1AgentLibrary；讀字／題目從本集來源索引開始，不掃全帳號 records。EXPLAIN 已確認索引路徑。
 - JSON 批次＋CAS ticket＋operation 回條在同一 D1 batch。會員／題目來源只刪除真的移除項，不重建未變動資料；相同 records 不重寫。
 - Blob revision 拒絕過期進度／統計／偏好；來源刪除／重綁與進度調整一起提交。
-- MCP 18 tools，包含資料夾 CRUD、move_set、create_set.folderId 與唯讀 validate_generated_questions。只刪空資料夾、拒絕循環／同層同名／其他 uid 的分類。
+- MCP 27 tools，包含 read_batch、分頁搜尋、詞義／子題 patch、資料夾 CRUD 與唯讀驗證。只刪空資料夾、拒絕循環／同層同名／其他 uid 的分類。
 - put_words／delete_words 每次最多 200；201 拒絕，題目仍按 brief 拆批。
 - URL 只管理固定 uid＋setId，可讀分類目的地並移動本集，不能改整棵資料夾樹。
-- 題目用 senseId 綁定，支援 partial／atomic 與逐題 Error／Warning；篇幅只是警告，解說選填。MCP revision／operationId 選填，但提供時保留舊版本與重送檢查；交易 CAS 仍有效。ID 衝突以本次候選 keys 批次查索引，不逐題查詢。
+- 題目用 senseId 綁定，支援 partial／atomic 與逐題 Error／Warning；篇幅只是警告，解說選填。MCP／REST revision／operationId 選填，提供時保留舊版本與重送檢查；交易 CAS 仍有效。ID 衝突以本次候選 keys 批次查索引。
+- URL 首頁及 get_set 只回摘要；words／questions 用 items 分頁。read_batch／POST query 一次最多10項查詢，支援搜尋、題型、範圍及欄位；完整 prompt 取一次，brief 只回小批來源 specification。
 
 ## 下次發布
 
@@ -37,7 +38,7 @@ gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
 
 獨立 workflow 執行 typecheck／lint／test／build、兩組 D1 migrations、deploy、health／OAuth discovery／MCP 401 檢查。Cloudflare 初次網址傳播的有限重試保留；不呼叫模型、不複製生成 Worker 的 keys。
 
-後端成功後發布前端：
+有前端 runtime 變動時，後端成功後再發布前端；本次按需查詢只改 Agent runtime，不需執行以下前端命令：
 
 ```powershell
 gh workflow run deploy.yml --repo tavricccc/lexiro --ref main
