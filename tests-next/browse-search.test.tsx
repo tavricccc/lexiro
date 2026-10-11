@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchField } from "@/components/ui/search-field";
 import { QuestionList } from "@/components/questions/question-list";
@@ -186,5 +192,104 @@ describe("collection search and return paths", () => {
     expect(
       readBrowseReturn("https://example.com/app/questions"),
     ).toBeUndefined();
+  });
+
+  it("searches visible set senses and examples, preserves the edit return, and clears an empty result", () => {
+    window.history.replaceState(null, "", "/app/sets/set");
+    const parent = libraryBrowseHref("parent", "銀行 & bank");
+    render(<SetView setId="set" initialQuery=" OPEN " returnTo={parent} />);
+    const input = screen.getByRole("searchbox", {
+      name: "搜尋本集單字、中文或例句",
+    });
+    expect(input).toHaveValue(" OPEN ");
+    expect(screen.getByText("1 / 1 個單字")).toBeVisible();
+    const edit = screen.getByRole("link", { name: "編輯" });
+    const returnTo = new URL(
+      edit.getAttribute("href")!,
+      window.location.origin,
+    ).searchParams.get("returnTo")!;
+    const destination = new URL(returnTo, window.location.origin);
+    expect(destination.searchParams.get("q")).toBe(" OPEN ");
+    expect(destination.searchParams.get("returnTo")).toBe(parent);
+    fireEvent.change(input, { target: { value: "river" } });
+    expect(screen.queryByText("bank")).not.toBeInTheDocument();
+    expect(screen.getByText("本集中沒有符合的內容")).toBeVisible();
+    expect(screen.getByRole("link", { name: "開始練這組字" })).toBeVisible();
+    fireEvent.click(
+      screen.getAllByRole("button", { name: "清除搜尋" }).at(-1)!,
+    );
+    expect(input).toHaveValue("");
+    expect(screen.getByText("bank")).toBeVisible();
+    expect(window.location.search).not.toContain("q=");
+  });
+
+  it("carries the set query between words and questions and restores it after editing", async () => {
+    window.history.replaceState(null, "", "/app/sets/set");
+    const view = render(<SetView setId="set" initialQuery="bank" />);
+    const tab = screen.getByRole("tab", { name: "題目 1" });
+    fireEvent.mouseDown(tab);
+    fireEvent.click(tab);
+    const link = await screen.findByRole("link", {
+      name: "Which bank is open?",
+    });
+    const returnTo = new URL(
+      link.getAttribute("href")!,
+      window.location.origin,
+    ).searchParams.get("returnTo")!;
+    const destination = new URL(returnTo, window.location.origin);
+    expect(destination.searchParams.get("q")).toBe("bank");
+    expect(destination.searchParams.get("tab")).toBe("questions");
+    view.unmount();
+    render(
+      <SetView
+        setId="set"
+        initialTab={destination.searchParams.get("tab")!}
+        initialQuery={destination.searchParams.get("q")!}
+      />,
+    );
+    expect(screen.getByRole("searchbox")).toHaveValue("bank");
+    expect(screen.getByText("1 / 1 題／題組")).toBeVisible();
+  });
+
+  it("finds reading child prompts, individual options and shared options in both set and bank search", async () => {
+    const state = library();
+    const source = state.questions[0];
+    if (source.kind !== "multipleChoice") throw new Error("Expected fixture");
+    state.questions = [
+      {
+        ...source,
+        id: "reading",
+        kind: "reading",
+        format: "wordBank",
+        title: "A journey",
+        passage: "People travel every year.",
+        wordKeys: [source.wordKey],
+        questions: [
+          {
+            ...source,
+            id: "child",
+            prompt: "Why visit?",
+            options: ["airplane"],
+          },
+        ],
+        optionBank: ["harbour"],
+      },
+    ];
+    useLibraryStore.setState({ state });
+    window.history.replaceState(null, "", "/app/sets/set");
+    const view = render(
+      <SetView setId="set" initialTab="questions" initialQuery="HARBOUR" />,
+    );
+    expect(screen.getByRole("link", { name: "A journey" })).toBeVisible();
+    view.unmount();
+    window.history.replaceState(null, "", "/app/questions");
+    render(<QuestionList initialFilters={{ q: "visit" }} />);
+    expect(screen.getByRole("link", { name: "A journey" })).toBeVisible();
+    fireEvent.change(screen.getByRole("searchbox"), {
+      target: { value: "airplane" },
+    });
+    await waitFor(() =>
+      expect(screen.getByRole("link", { name: "A journey" })).toBeVisible(),
+    );
   });
 });

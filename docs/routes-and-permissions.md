@@ -22,6 +22,9 @@
 
 表中短名稱接在同列完整 parent route 後；是否真的有 page 以 `app/**/page.tsx` 為準。舊工作區 deep links 由 `next.config.ts` 導向 `/app`。列表搜尋與返回目的地由 `lib/browse-routes.ts` 維持，搜尋只替換當前 history。
 
+單字集的 `tab` 與 `q` 分別保存分頁和集內搜尋；編輯連結的 `returnTo` 包含這兩項及上層詞庫位置。
+替換搜尋網址會保留 Lexiro 的 history index 與其他自訂狀態，Next.js 自行補上路由狀態。
+
 ## 存取邊界
 
 本機教材與練習不要求登入。Firestore 要求 Firebase UID 等於文件 owner；AI Worker 要求 Firebase ID token。App Check 的啟用由明確開關控制，屬 Firebase 資料存取的 attestation；目前 Worker 本身驗 ID token 與 Origin，不驗 App Check token。

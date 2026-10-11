@@ -13,6 +13,7 @@ import { QuestionListSkeleton } from "@/components/ui/workspace-skeleton";
 import { SelectField } from "@/components/ui/select-field";
 import { t } from "@/lib/i18n";
 import { isExamQuestion } from "@/src/lib/question-ownership";
+import { questionMatchesQuery } from "@/src/lib/library-search";
 import {
   difficultyOptions,
   questionFormatLabel,
@@ -69,13 +70,7 @@ export function QuestionList({
         if (kind !== "all" && type !== kind) return false;
         if (difficulty !== "all" && question.difficulty !== Number(difficulty))
           return false;
-        const text =
-          question.kind === "reading"
-            ? `${question.title} ${question.passage}`
-            : question.prompt;
-        return text
-          .toLocaleLowerCase()
-          .includes(query.trim().toLocaleLowerCase());
+        return questionMatchesQuery(question, query.trim().toLocaleLowerCase());
       }),
     [difficulty, kind, query, state.questions],
   );

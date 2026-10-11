@@ -750,6 +750,12 @@ export const zhTW = {
     discard: "捨棄並離開",
   },
   setDetail: {
+    searchWords: "搜尋本集單字、中文或例句",
+    searchQuestions: "搜尋本集題目、文章或選項",
+    wordSearchCount: "{count} / {total} 個單字",
+    questionSearchCount: "{count} / {total} 題／題組",
+    noSearchResults: "本集中沒有符合的內容",
+    noSearchResultsHint: "換個關鍵字，或清除搜尋查看本集全部內容。",
     back: "回到詞庫",
     edit: "編輯",
     editWord: "編輯單字",

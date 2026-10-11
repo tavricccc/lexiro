@@ -4,9 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
-import { questionEditHref } from "@/components/questions/question-list";
 import { ClearQuestionsControl } from "@/components/questions/clear-questions-control";
-import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
@@ -14,10 +12,10 @@ import { Icons } from "@/components/ui/icons";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Menu } from "@/components/ui/menu";
 import { PageHeader } from "@/components/ui/page-header";
+import { SearchField } from "@/components/ui/search-field";
 import { EmptyState } from "@/components/ui/page-state";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
-import { questionFormatLabel } from "@/lib/question-options";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
@@ -29,7 +27,15 @@ import {
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 import { SetMoveDialog } from "@/components/library/set-move-dialog";
 import { AgentAccessDialog } from "@/components/agent/access-dialog";
-import { SetWordRow, type ViewWord } from "@/components/library/set-word-row";
+import type { ViewWord } from "@/components/library/set-word-row";
+import {
+  SetQuestionList,
+  SetWordList,
+} from "@/components/library/set-content-list";
+import {
+  questionMatchesQuery,
+  wordMatchesQuery,
+} from "@/src/lib/library-search";
 import { SetTools } from "@/components/library/set-tools";
 import { StepActions } from "@/components/ui/step-actions";
 import { ContentTransition } from "@/components/motion/state-transition";
@@ -53,10 +59,12 @@ export function SetView({
   setId,
   returnTo,
   initialTab = "words",
+  initialQuery = "",
 }: {
   setId: string;
   returnTo?: string;
   initialTab?: string;
+  initialQuery?: string;
 }) {
   const router = useRouter();
   const { state, status, deleteSet, moveSet } = useLibraryStore();
@@ -65,6 +73,7 @@ export function SetView({
     initialTab === "questions" || initialTab === "tools" ? initialTab : "words",
   );
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [query, setQuery] = useState(initialQuery);
   const [moveOpen, setMoveOpen] = useState(false);
   const [agentOpen, setAgentOpen] = useState(false);
 
@@ -103,7 +112,21 @@ export function SetView({
       ),
     [setId, state.memberships, state.questions],
   );
-  const questions = savedQuestions.filter(isExamQuestion);
+  const questions = useMemo(
+    () => savedQuestions.filter(isExamQuestion),
+    [savedQuestions],
+  );
+  const needle = query.trim().toLocaleLowerCase();
+  const visibleWords = useMemo(
+    () => words.filter((word) => wordMatchesQuery(word, needle)),
+    [words, needle],
+  );
+  const visibleQuestions = useMemo(
+    () =>
+      questions.filter((question) => questionMatchesQuery(question, needle)),
+    [questions, needle],
+  );
+  const filtering = Boolean(needle);
 
   const homeFolderId = current?.folderId;
   const libraryHref =
@@ -111,7 +134,7 @@ export function SetView({
     (homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
       ? `/app/library?folderId=${encodeURIComponent(homeFolderId)}`
       : "/app/library");
-  const browseHref = setBrowseHref(setId, tab, returnTo);
+  const browseHref = setBrowseHref(setId, tab, returnTo, query);
   useEffect(() => {
     if (status === "ready") replaceBrowseHref(browseHref);
   }, [browseHref, status]);
@@ -209,33 +232,47 @@ export function SetView({
       />
 
       <ContentTransition identity={tab}>
-        {tab === "words" ? (
-          <div className="space-y-7">
-            {words.length ? (
-              <StaggerList as="ul" className="rule-card rule-list">
-                {words.map((entry) => (
-                  <StaggerItem
-                    as="li"
-                    className="py-[var(--row-padding-block)]"
-                    key={entry.wordKey}
-                  >
-                    <SetWordRow
-                      cards={cards}
-                      entry={entry}
-                      setId={setId}
-                      returnTo={browseHref}
-                    />
-                  </StaggerItem>
-                ))}
-              </StaggerList>
-            ) : (
-              <EmptyState
-                variant="filtered"
-                title={t("setDetail.noWords")}
-                description={t("setDetail.noWordsDescription")}
-              />
+        {tab !== "tools" && (
+          <div className="mb-4 space-y-2">
+            <SearchField
+              label={t(
+                tab === "words"
+                  ? "setDetail.searchWords"
+                  : "setDetail.searchQuestions",
+              )}
+              value={query}
+              onValueChange={setQuery}
+            />
+            {filtering && (
+              <p
+                className="text-sm tabular-nums text-muted-foreground"
+                role="status"
+              >
+                {t(
+                  tab === "words"
+                    ? "setDetail.wordSearchCount"
+                    : "setDetail.questionSearchCount",
+                  {
+                    count:
+                      tab === "words"
+                        ? visibleWords.length
+                        : visibleQuestions.length,
+                    total: tab === "words" ? words.length : questions.length,
+                  },
+                )}
+              </p>
             )}
           </div>
+        )}
+        {tab === "words" ? (
+          <SetWordList
+            words={visibleWords}
+            cards={cards}
+            setId={setId}
+            returnTo={browseHref}
+            filtering={filtering && words.length > 0}
+            onClear={() => setQuery("")}
+          />
         ) : tab === "tools" ? (
           <SetTools setId={setId} />
         ) : (
@@ -246,50 +283,12 @@ export function SetView({
               setId={setId}
               setName={current.setName}
             />
-            {/* Making questions is what you come to this tab to do when it is
-              empty and the obvious next step when it is not, so it is a control
-              on the tab rather than a line in the page's overflow menu. */}
-
-            {questions.length ? (
-              <StaggerList as="ul" className="rule-card rule-list">
-                {questions.map((question) => (
-                  <StaggerItem
-                    as="li"
-                    className="py-[var(--row-padding-block)]"
-                    key={question.id}
-                  >
-                    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                      <span className="font-medium text-foreground">
-                        {questionFormatLabel(
-                          question.kind === "reading"
-                            ? question.format
-                            : question.questionStyle,
-                        )}
-                      </span>
-                      <span>
-                        {t("questions.difficulty", {
-                          level: question.difficulty,
-                        })}
-                      </span>
-                    </p>
-                    <Link
-                      className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-                      href={questionEditHref(question, browseHref)}
-                    >
-                      {question.kind === "reading"
-                        ? question.title
-                        : question.prompt}
-                    </Link>
-                  </StaggerItem>
-                ))}
-              </StaggerList>
-            ) : (
-              <EmptyState
-                variant="filtered"
-                title={t("questions.empty")}
-                description={t("setDetail.noQuestionsDescription")}
-              />
-            )}
+            <SetQuestionList
+              questions={visibleQuestions}
+              returnTo={browseHref}
+              filtering={filtering && questions.length > 0}
+              onClear={() => setQuery("")}
+            />
           </>
         )}
       </ContentTransition>

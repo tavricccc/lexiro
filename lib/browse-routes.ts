@@ -40,9 +40,15 @@ export function readBrowseReturn(
     return value;
 }
 
-export function setBrowseHref(setId: string, tab: string, returnTo?: string) {
+export function setBrowseHref(
+  setId: string,
+  tab: string,
+  returnTo?: string,
+  query = "",
+) {
   const params = new URLSearchParams();
   if (tab !== "words") params.set("tab", tab);
+  if (query) params.set("q", query);
   if (returnTo) params.set("returnTo", returnTo);
   return queryHref(`/app/sets/${setId}`, params);
 }

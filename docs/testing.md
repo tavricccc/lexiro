@@ -33,3 +33,12 @@ Private Worker 的檢查在自己的 repo：typecheck、lint、test、build，�
 前端 63 檔／351 項、Worker 14 檔／168 項測試通過，兩邊型別、lint、建置也通過；前端 client boundary 檢查 101 個產物。CLI 模型採樣與這些程式檢查分開記錄，沒有把結構通過當成語意合格。
 
 真正 App 的合成教材在 1366×900、390×844、320×740 深色尺寸驗證作答、重新整理接續、暫停返回、排除名單、部分儲存失敗／重試與完成頁導覽；沒有橫向溢出或 JS 錯誤。最新版錯誤訊息的桌機／手機圖片另由 fresh reviewer 開啟確認。圖片及回條保存在 ignored `.impeccable/review/20261009-ux/`。這不是實體 iPhone 長按翻譯、正式 Firebase／provider 計費或上線驗收。
+
+## 2026-10-11 集內搜尋
+
+前端 73 檔／408 項測試、typecheck、lint、production build 通過；client boundary 檢查 101 個產物。
+`browse-search.test.tsx` 的 8 項案例涵蓋搜尋清除與中文組字、詞義隔離、集內搜尋、分頁／編輯返回、
+題組小題及選項搜尋，以及篩選網址保留自訂 history 狀態。Impeccable detector 回傳 `[]`。
+
+本輪檢視既有工作區圖片、共享樣式和元件，沒有新增瀏覽器截圖；新版桌機／手機版面、computed contrast、
+正式登入同步及部署未驗收。

@@ -6,16 +6,17 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ setId: string }>;
-  searchParams: Promise<{ returnTo?: string; tab?: string }>;
+  searchParams: Promise<{ returnTo?: string; tab?: string; q?: string }>;
 }) {
   const { setId } = await params;
-  const { returnTo, tab } = await searchParams;
+  const { returnTo, tab, q } = await searchParams;
   return (
     <SetView
-      key={`${setId}:${tab ?? "words"}`}
+      key={`${setId}:${tab ?? "words"}:${q ?? ""}`}
       setId={setId}
       returnTo={readBrowseReturn(returnTo)}
       initialTab={tab}
+      initialQuery={q}
     />
   );
 }

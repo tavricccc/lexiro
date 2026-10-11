@@ -317,6 +317,15 @@ StepActions 在桌機將操作 portal 到 PageHeader 右側的 `data-page-action
 
 返回控制是手機 44px、桌機 36px 箭頭按鈕，只顯示圖示，保留 `aria-label` 提供完整返回目的地。
 
+單字集內搜尋沿用 `SearchField`，位於單字／題目列表上方。兩個分頁共用關鍵字，工具分頁隱藏搜尋；
+有關鍵字時用 `role="status"` 回報符合數量。題目數量以「題／題組」表明列表單位。
+無符合內容時提供清除搜尋，不把篩選結果當成尚未建立教材。沒有教材時保留原空狀態。
+SearchField 的清除按鈕與 Escape 保留焦點；中文組字時不攔截 Escape。
+
+`set-content-list.tsx` 負責單字／題目列表與搜尋空狀態，`set-view.tsx` 維持整集統計與操作。
+`src/lib/library-search.ts` 共用搜尋規則：單字只傳入本集詞義，題庫與單字集都查文章、小題及選項。
+篩選不改動練習、匯出或清空本集題目的範圍。
+
 全站含公開頁、工作區與 portal 彈出層預設使用 `user-select: none`、
 `-webkit-user-select: none` 與 `-webkit-touch-callout: none`。
 英文題幹、文章標題與正文用 `question-text` 明確恢復 `user-select: text` 和

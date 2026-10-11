@@ -23,3 +23,7 @@ Back controls show the arrow only; accessible labels retain the destination.
 
 2026-10-10 Agent 連線為普通延伸：單字集增加 scoped URL，並提供 MCP OAuth 同意與連線管理；沿用既有入口、浮層、列表、語意 token 與本地化文案，無新圖像或視覺世界變更。
 本次獨立 finish review 為 ship，範圍限定訪客桌機／手機截圖與指定 Agent 元件及入口，detector JSON 為 []；三項元件測試涵蓋登入前不建集、同步失敗重試保留已建集與公開 OAuth 初始化／錯誤。登入後視覺、正式 Firestore／ChatGPT 連線、鍵盤循環、computed contrast 與深色模式未實測，完整證據見 docs/agent-ui-review.md。
+
+2026-10-11 單字集搜尋沿用 SearchField、原列表與空狀態。兩個內容分頁共用關鍵字，符合數量就地回報；編輯返回保留篩選。練習和清空題目仍以整集為範圍。
+本輪以既有手機單字集與桌機工作區圖片核對視覺語言，並用元件測試驗證本集詞義隔離、題組搜尋、分頁切換、返回及清除；尚未執行新版瀏覽器視覺驗收。
+本機 73 檔／408 項測試、typecheck、lint、production build 與 101 個產物的 client boundary 檢查通過，detector 為 `[]`。
