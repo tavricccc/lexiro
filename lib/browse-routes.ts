@@ -57,6 +57,10 @@ export function replaceBrowseHref(href: string) {
   if (
     window.location.pathname === href.split("?")[0] &&
     `${window.location.pathname}${window.location.search}` !== href
-  )
-    window.history.replaceState(null, "", href);
+  ) {
+    // Next.js reattaches its router state for external history updates. Passing
+    // its markers ourselves would bypass that update; retain custom state only.
+    const { __NA, _N, ...state } = window.history.state ?? {};
+    window.history.replaceState(state, "", href);
+  }
 }

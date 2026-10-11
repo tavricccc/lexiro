@@ -8,7 +8,11 @@ import { emptyLibraryState } from "@/src/lib/library-repository";
 import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { setMatchesQuery } from "@/src/lib/library-search";
-import { libraryBrowseHref, readBrowseReturn } from "@/lib/browse-routes";
+import {
+  libraryBrowseHref,
+  readBrowseReturn,
+  replaceBrowseHref,
+} from "@/lib/browse-routes";
 import { useLibraryStore } from "@/stores/library-store";
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
@@ -78,6 +82,31 @@ afterEach(() => {
 });
 
 describe("collection search and return paths", () => {
+  it("preserves custom history state while letting Next.js process filtering", () => {
+    const routerTree = { tree: ["app", "library"] };
+    window.history.replaceState(
+      {
+        __NA: true,
+        __PRIVATE_NEXTJS_INTERNALS_TREE: routerTree,
+        __lexiroHistoryIndex: 7,
+        scrollPosition: 120,
+      },
+      "",
+      "/app/library",
+    );
+    const historyLength = window.history.length;
+    const replace = vi.spyOn(window.history, "replaceState");
+    replaceBrowseHref("/app/library?q=bank");
+    expect(replace.mock.calls[0][0]).not.toHaveProperty("__NA");
+    expect(window.history.state).toMatchObject({
+      __lexiroHistoryIndex: 7,
+      scrollPosition: 120,
+      __PRIVATE_NEXTJS_INTERNALS_TREE: routerTree,
+    });
+    expect(window.history.length).toBe(historyLength);
+    replace.mockRestore();
+  });
+
   it("clears with one tap or Escape, restores input focus, and respects IME composition", () => {
     function Search() {
       const [value, setValue] = useState("bank");
