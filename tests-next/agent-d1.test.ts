@@ -23,7 +23,9 @@ import {
   validateGeneratedQuestions,
 } from "../src/agent/operations";
 import { questionPrompt } from "../src/question-prompts";
-import { handleAgentMcp } from "../src/agent/mcp";
+import { handleAgentMcp, readRequest } from "../src/agent/mcp";
+import { querySchema } from "../src/agent/query";
+import { AGENT_INSTRUCTIONS } from "../src/agent/instructions";
 
 const A = "11111111-1111-4111-8111-111111111111";
 const B = "22222222-2222-4222-8222-222222222222";
@@ -911,7 +913,60 @@ describe("native D1 agent library with synthetic users", () => {
         "validate",
         "delete",
       ]);
-      expect(JSON.stringify(list.result).length).toBeLessThan(4000);
+      // Clients often drop server instructions, so tool schemas carry the
+      // action and request vocabulary; keep the whole per-conversation cost small.
+      const listed = JSON.stringify(list.result);
+      expect(listed.length + AGENT_INSTRUCTIONS.length).toBeLessThan(7000);
+      for (const name of [
+        "put_words",
+        "edit_sense",
+        "delete_words",
+        "resource",
+        "nextCursor",
+      ])
+        expect(listed).toContain(name);
+
+      expect(Object.keys(readRequest.shape).sort()).toEqual(
+        Object.keys(querySchema.shape).sort(),
+      );
+      const raw = async (name: string, args: unknown) => {
+        const { result } = await rpc("tools/call", { name, arguments: args });
+        return {
+          isError: result.isError ?? false,
+          text: result.content[0].text,
+        };
+      };
+      const misnamed = await raw("read", { requests: [{ type: "sets" }] });
+      expect(misnamed.isError).toBe(true);
+      expect(misnamed.text).toContain("resource");
+      expect(misnamed.text).toContain("type");
+      const badResource = await raw("read", {
+        requests: [{ resource: "nope" }],
+      });
+      expect(badResource.text).toContain('"diagnostics"');
+      const badAction = await raw("write", {
+        setId: A,
+        action: { type: "addWords" },
+      });
+      expect(badAction.isError).toBe(true);
+      expect(badAction.text).toContain("put_words");
+      const badWords = await call("write", {
+        setId: A,
+        action: { type: "put_words", words: [{ word: "x" }] },
+      });
+      expect(badWords.isError).toBe(true);
+      expect((badWords.data.error as { message: string }).message).toMatch(
+        /^words\.0\.senses: /,
+      );
+      const savedShape = await call("validate", {
+        setId: A,
+        kind: "vocabulary",
+        output: { items: [{ prompt: "x", options: ["a"], answerIndex: 0 }] },
+      });
+      expect(savedShape.data.hint).toContain("outputSchema");
+      expect(
+        (savedShape.data.errors as { message: string }[])[0].message,
+      ).not.toMatch(/^\s*\[/);
 
       const saved = await call("write", {
         setId: A,
@@ -931,11 +986,12 @@ describe("native D1 agent library with synthetic users", () => {
       expect(results[0].data.items).toHaveLength(3);
       expect(results[1].data.wordCount).toBe(3);
 
-      const misplaced = await call("write", {
+      const misplaced = await raw("write", {
         setId: A,
         action: { type: "delete_set" },
       });
       expect(misplaced.isError).toBe(true);
+      expect(misplaced.text).toContain("rename_set");
       expect((await repo.read("a", A))?.words).toHaveLength(3);
       const outsider = await call(
         "write",

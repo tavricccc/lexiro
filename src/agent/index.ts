@@ -2,7 +2,7 @@ import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
 import type { ExecutionContext } from "@cloudflare/workers-types";
 import { z } from "zod";
 import { verifyFirebaseToken, AuthenticationError } from "../auth";
-import { readBody, HttpError } from "../http";
+import { readBody, HttpError, issueText } from "../http";
 import { D1AgentLibrary } from "./library-repository";
 import { handleCloudApi } from "../cloud/api";
 import type { AgentEnv, AgentIdentity, AgentLibraryRepository } from "./types";
@@ -235,10 +235,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
                         : "agent_unavailable",
                 ...(status === 400
                   ? {
-                      message:
-                        reason instanceof Error
-                          ? reason.message
-                          : "輸入格式錯誤",
+                      message: issueText(reason),
                     }
                   : {}),
               },

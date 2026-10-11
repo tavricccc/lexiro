@@ -7,11 +7,10 @@ import {
   createScopedSet,
   validateGeneratedQuestions,
   readAgentBatch,
-  batchQuerySchema,
 } from "./operations";
-import { compactReceipt, project } from "./query";
+import { compactReceipt, project, querySchema } from "./query";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
-import { HttpError } from "../http";
+import { HttpError, issueText } from "../http";
 import type { AgentFolderMutation } from "@lexiro/agent-contract";
 const kind = z.enum([
   "vocabulary",
@@ -21,33 +20,87 @@ const kind = z.enum([
   "reading",
 ]);
 const difficulty = z.union([z.literal(1), z.literal(2), z.literal(3)]);
-const text = z.string().min(1);
-const action = z.object({ type: z.string() }).passthrough();
-const writeFields = {
-  setId: z.string().optional(),
-  expectedRevision: z.string().optional(),
-  operationId: z.string().optional(),
-  responseFields: z.array(text).max(20).optional(),
-};
-const folderTypes = ["create_folder", "update_folder", "delete_folder"];
+const level = z.number().int().min(1).max(3);
 const writeTypes = [
-  "rename_set",
-  "move_set",
   "put_words",
   "edit_word",
   "edit_sense",
+  "generated_questions",
   "put_questions",
   "edit_question",
-  "generated_questions",
+  "rename_set",
+  "move_set",
   "create_folder",
   "update_folder",
-];
+] as const;
 const deleteTypes = [
   "delete_words",
   "delete_questions",
   "delete_set",
   "delete_folder",
-];
+] as const;
+const folderTypes = ["create_folder", "update_folder", "delete_folder"];
+const writeFields = (types: readonly [string, ...string[]]) => ({
+  setId: z.string().optional().describe("資料夾操作以外必填"),
+  action: z.object({ type: z.enum(types) }).passthrough(),
+  expectedRevision: z.string().optional(),
+  operationId: z.string().optional().describe("重送時沿用同一 UUID"),
+  responseFields: z.array(z.string()).max(20).optional(),
+});
+// MCP-facing shapes stay lean so tools/list is small; lengths and formats are
+// enforced by querySchema and the contract. Strict read requests make a
+// misspelled key fail with its name.
+export const readRequest = z.strictObject({
+  resource: querySchema.shape.resource.describe(
+    "sets/folders 列表；set 摘要；words、questions 列表；word(wordKey)、question(questionId,childId?) 單筆；prompt(kind) 出題規則與 outputSchema；brief(setId,kind,difficulty) 出題來源；sources；operation、diagnostics(operationId)",
+  ),
+  setId: z.string().optional(),
+  wordKey: z.string().optional(),
+  questionId: z.string().optional(),
+  childId: z.string().optional(),
+  operationId: z.string().optional(),
+  folderId: z.string().optional(),
+  q: z
+    .string()
+    .optional()
+    .describe("子字串搜尋：單字英文/中文義，題目題幹/文章/選項/解說"),
+  questionType: querySchema.shape.questionType,
+  kind: kind.optional(),
+  difficulty: level.optional(),
+  wordKeys: z.array(z.string()).max(50).optional(),
+  senseIds: z.array(z.string()).max(50).optional(),
+  from: z
+    .number()
+    .int()
+    .min(1)
+    .optional()
+    .describe("1 起算含兩端，不可與 cursor 併用"),
+  to: z.number().int().min(1).optional(),
+  limit: z.number().int().min(1).max(50).optional().describe("預設 20"),
+  cursor: z.string().optional().describe("上一頁的 nextCursor"),
+  view: z.enum(["summary", "detail"]).optional(),
+  fields: z
+    .array(z.string())
+    .max(20)
+    .optional()
+    .describe("已存格式欄位，可巢狀，如 senses.id"),
+  includeExamples: z.boolean().optional(),
+  includePassage: z.boolean().optional(),
+  includePrompt: z.boolean().optional(),
+  severity: z.enum(["error", "warning"]).optional(),
+});
+const READ = `讀資料，一次最多10個 request，各自成功或失敗。列表預設20筆摘要、依固定ID排序，回 nextCursor；需要完整內容才 view:"detail"，或用 fields 只取需要的欄位。例：{requests:[{resource:"words",setId,q:"rescue",fields:["wordKey","word","senses.id"]},{resource:"prompt",kind:"vocabulary"},{resource:"brief",setId,kind:"vocabulary",difficulty:2,limit:16}]}`;
+const WRITE = `新增或修改，回精簡回條與新 revision。action 依 type：
+put_words{words:[{word,senses:[{pos,meaningZh,examples?}]}]} 新增；帶 wordKey 則覆寫該字且 senses 整組替換
+edit_word{wordKey,patch:{word}} 只改拼字
+edit_sense{wordKey,senseId?,action:"add"|"update"|"delete",patch?:{pos?,meaningZh?,examples?,appendExamples?}}
+generated_questions{kind,difficulty,output,senseIds?} output 依 read prompt 的 outputSchema，每題用 senseId 綁來源
+put_questions{questions} 已存題完整物件（read 回來的格式），帶 id 為覆寫
+edit_question{questionId,childId?,patch} 只傳要改的欄位
+rename_set{setName}、move_set{folderId}、create_folder{name,parentId?}、update_folder{folderId,name?,parentId?}
+題目類可加 mode:"partial"(預設，只存有效題)|"atomic"(有錯全不存)；每批≤200筆。`;
+const DELETE = `刪除，不可復原，先確認使用者意思。action 依 type：delete_words{wordKeys}、delete_questions{questionIds}、delete_set（整集）、delete_folder{folderId}（只限空資料夾）。`;
+const VALIDATE = `只檢查生成題、不寫入，回條同 write generated_questions。output 依 read {resource:"prompt",kind} 的 outputSchema，與已存題格式不同。`;
 export async function handleAgentMcp(
   request: Request,
   identity: AgentIdentity,
@@ -132,9 +185,10 @@ export async function handleAgentMcp(
                     code:
                       reason instanceof HttpError
                         ? reason.code
-                        : "invalid_content",
-                    message:
-                      reason instanceof Error ? reason.message : "操作失敗",
+                        : reason instanceof z.ZodError
+                          ? "invalid_input"
+                          : "invalid_content",
+                    message: issueText(reason, "操作失敗"),
                   },
                 }),
               },
@@ -144,12 +198,25 @@ export async function handleAgentMcp(
       },
     );
   };
-  const mutate = (args: Record<string, unknown>, allowed: string[]) => {
-    const act = action.parse(args.action);
-    if (!allowed.includes(act.type))
-      throw new HttpError(400, "unsupported_action");
+  const fail = (status: number, code: string, message: string) => {
+    const error = new HttpError(status, code);
+    error.message = message;
+    return error;
+  };
+  const mutate = (
+    args: Record<string, unknown>,
+    allowed: readonly string[],
+  ) => {
+    const act = args.action as { type: string };
+    if (!allowed.includes(act?.type))
+      throw fail(
+        400,
+        "unsupported_action",
+        `action.type 可用：${allowed.join("|")}`,
+      );
     if (folderTypes.includes(act.type)) {
-      if (identity.setId) throw new HttpError(403, "folder_outside_scope");
+      if (identity.setId)
+        throw fail(403, "folder_outside_scope", "此授權只限單一單字集");
       return repo.mutateFolders(
         identity.uid,
         args.expectedRevision as string | undefined,
@@ -158,7 +225,7 @@ export async function handleAgentMcp(
       );
     }
     const setId = (args.setId as string | undefined) ?? identity.setId;
-    if (!setId) throw new HttpError(400, "set_id_required");
+    if (!setId) throw fail(400, "set_id_required", "此操作需要 setId");
     return applyAgentMutation(
       repo,
       identity,
@@ -173,15 +240,24 @@ export async function handleAgentMcp(
   };
   tool(
     "read",
-    "讀取任何資料，一次最多10個 requests。",
-    batchQuerySchema.shape,
+    READ,
+    {
+      requests: z.array(readRequest).min(1).max(10),
+      maxCharacters: z
+        .number()
+        .int()
+        .min(2000)
+        .max(128000)
+        .optional()
+        .describe("預設 32000"),
+    },
     (args) => readAgentBatch(repo, identity, args),
     true,
   );
   tool(
     "create_set",
-    "建立單字集。",
-    { name: text, folderId: text.optional() },
+    "建立空白單字集，回 set.id 與 revision；之後用 write 加入內容。",
+    { name: z.string(), folderId: z.string().optional() },
     (args) =>
       createScopedSet(
         repo,
@@ -190,20 +266,17 @@ export async function handleAgentMcp(
         args.folderId as string | undefined,
       ),
   );
-  tool(
-    "write",
-    "新增或修改；action.type 見說明。",
-    { ...writeFields, action },
-    (args) => mutate(args, writeTypes),
+  tool("write", WRITE, writeFields(writeTypes), (args) =>
+    mutate(args, writeTypes),
   );
   tool(
     "validate",
-    "只檢查生成題，不寫入。",
+    VALIDATE,
     {
-      setId: text,
+      setId: z.string(),
       kind,
-      difficulty: difficulty.default(2),
-      senseIds: z.array(text).optional(),
+      difficulty: level.default(2),
+      senseIds: z.array(z.string()).optional(),
       output: z.record(z.string(), z.unknown()),
     },
     (args) =>
@@ -218,8 +291,8 @@ export async function handleAgentMcp(
   );
   tool(
     "delete",
-    "刪除；action.type 見說明。",
-    { ...writeFields, action },
+    DELETE,
+    writeFields(deleteTypes),
     (args) => mutate(args, deleteTypes),
     false,
     true,

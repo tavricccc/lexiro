@@ -9,7 +9,7 @@ import {
 } from "@lexiro/agent-contract";
 import { questionLengthRange } from "@lexiro/ai-contract";
 import { questionPrompt, QUESTION_CACHE_KEY } from "../question-prompts";
-import { fingerprint, HttpError } from "../http";
+import { fingerprint, HttpError, issueText } from "../http";
 
 const text = z.string().trim().min(1).max(300);
 const ids = z.array(text).min(1).max(50).optional();
@@ -140,13 +140,28 @@ export function compactReceipt(value: Record<string, unknown>) {
     ...rest,
     ...(errors !== undefined
       ? {
-          errors: errorList.slice(0, 10),
+          errors: errorList
+            .slice(0, 10)
+            .map((error) =>
+              error && typeof error === "object" && "message" in error
+                ? { ...error, message: issueText(String(error.message)) }
+                : error,
+            ),
           errorCount: errorList.length,
           hasMoreErrors: errorList.length > 10,
         }
       : {}),
     ...(warnings !== undefined
       ? { warnings: warningList.slice(0, 3), warningCount: warningList.length }
+      : {}),
+    ...(errorList.some(
+      (error) =>
+        (error as { code?: unknown } | null)?.code ===
+        "invalid_question_structure",
+    )
+      ? {
+          hint: '生成題 output 須符合 read {resource:"prompt",kind} 的 outputSchema；已存題格式（prompt/options/answerIndex）請用 put_questions。',
+        }
       : {}),
   };
 }

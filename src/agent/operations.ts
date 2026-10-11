@@ -6,7 +6,7 @@ import {
   type GeneratedQuestionKind,
   type QuestionDifficulty,
 } from "@lexiro/agent-contract";
-import { HttpError } from "../http";
+import { HttpError, issueText } from "../http";
 import { querySchema, project, type AgentQuery } from "./query";
 import { mutateAgentResource } from "./edits";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
@@ -97,17 +97,11 @@ export async function readAgentBatch(
         seen.set(key, index);
       }
     } catch (reason) {
-      const message =
-        reason instanceof z.ZodError
-          ? reason.issues[0]?.message
-          : reason instanceof Error
-            ? reason.message
-            : "查詢失敗";
       results.push({
         index,
         error: {
           code: reason instanceof HttpError ? reason.code : "invalid_query",
-          message: message?.slice(0, 80),
+          message: issueText(reason, "查詢失敗").slice(0, 600),
         },
       });
     }
@@ -158,8 +152,7 @@ export async function applyAgentMutation(
       } catch (reason) {
         if (reason instanceof HttpError) throw reason;
         const error = new HttpError(400, "invalid_content");
-        error.message =
-          reason instanceof Error ? reason.message : "內容格式錯誤";
+        error.message = issueText(reason, "內容格式錯誤");
         throw error;
       }
     },
