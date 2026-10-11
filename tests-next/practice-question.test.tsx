@@ -165,7 +165,7 @@ describe("practice reading workspace", () => {
       marked: false,
       busy: false,
       animateCard: false,
-      onLeave: vi.fn(),
+      backHref: "/app",
       onReveal: vi.fn(),
       onRate: vi.fn(),
       onToggleMark: vi.fn(),

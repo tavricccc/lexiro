@@ -42,3 +42,7 @@ Private Worker 的檢查在自己的 repo：typecheck、lint、test、build，�
 
 本輪檢視既有工作區圖片、共享樣式和元件，沒有新增瀏覽器截圖；新版桌機／手機版面、computed contrast、
 正式登入同步及部署未驗收。
+
+同日練習返回修正以 `practice-exit.test.tsx` 驗證回到今天／來源單字集、退出時不詢問接續、
+下次進入恢復已答內容且不重複記分。完整 74 檔／410 項測試、typecheck、lint、build 與 client boundary 通過。
+未新增瀏覽器視覺驗收；detector 僅提示原有鍵盤提示字級，該樣式未修改。

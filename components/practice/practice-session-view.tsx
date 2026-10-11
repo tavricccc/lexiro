@@ -36,7 +36,7 @@ export function PracticeSessionView({
   marked,
   busy,
   animateCard,
-  onLeave,
+  backHref,
   onToggleMark,
   onSkip,
   onAnswer,
@@ -54,7 +54,7 @@ export function PracticeSessionView({
   marked: boolean;
   busy: boolean;
   animateCard: boolean;
-  onLeave: () => void;
+  backHref: string;
   onToggleMark: () => void;
   onSkip: () => void;
   onAnswer: (choice: number) => void;
@@ -75,7 +75,7 @@ export function PracticeSessionView({
         <HeaderBackdrop contained />
         <div className="flex items-center gap-1 text-sm text-muted-foreground md:gap-2">
           <div inert={busy} className={busy ? "opacity-50" : undefined}>
-            <BackControl onClick={onLeave} label={t("practice.pause")} />
+            <BackControl href={backHref} label={t("practice.exit")} />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">

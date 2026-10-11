@@ -179,15 +179,6 @@ export function usePracticeSessionActions({
     setters.setStarted(true);
   };
 
-  const leave = () => {
-    if (actionPending.current) return;
-    setters.setStarted(false);
-    setters.setEntries(null);
-    setters.setRetrying(false);
-    setters.setQuestionFailedSenses([]);
-    resetAttempt();
-  };
-
   const retry = (indices: number[]) => {
     setters.setEntries(
       indices.map((value) => activeEntries[value]).filter(Boolean),
@@ -205,7 +196,6 @@ export function usePracticeSessionActions({
     animateNextCard,
     answer,
     begin,
-    leave,
     next,
     retry,
     skip,

@@ -127,7 +127,6 @@ describe("practice action persistence", () => {
       answerChoices: [],
       correct: 0,
     });
-    act(() => result.current.actions.leave());
     expect(result.current.state.started).toBe(true);
     await act(async () => {
       pending.resolve();

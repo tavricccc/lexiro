@@ -522,7 +522,7 @@ export const zhTW = {
     recording: "正在記錄…",
     recordFailed: "記錄學習進度失敗，請再試一次。",
     recordRetryHint: "這一題尚未記錄，可以重新選答案或按跳過。",
-    pause: "暫停這輪練習",
+    exit: "退出練習",
     skip: "跳過",
     shortcutAnswer: "選擇答案",
     mark: "稍後複習",

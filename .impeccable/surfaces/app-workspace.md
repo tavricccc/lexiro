@@ -27,3 +27,6 @@ Back controls show the arrow only; accessible labels retain the destination.
 2026-10-11 單字集搜尋沿用 SearchField、原列表與空狀態。兩個內容分頁共用關鍵字，符合數量就地回報；編輯返回保留篩選。練習和清空題目仍以整集為範圍。
 本輪以既有手機單字集與桌機工作區圖片核對視覺語言，並用元件測試驗證本集詞義隔離、題組搜尋、分頁切換、返回及清除；尚未執行新版瀏覽器視覺驗收。
 本機 73 檔／408 項測試、typecheck、lint、production build 與 101 個產物的 client boundary 檢查通過，detector 為 `[]`。
+
+2026-10-11 練習返回依使用者修正直接退出至來源單字集或今天，保留已存 snapshot。接續／重新開始只在下次進入時顯示，保存中仍停用返回。沿用原箭頭與位置，無視覺樣式變更。
+返回修正的兩項回歸案例及完整 74 檔／410 項測試、型別、lint、build 和 client boundary 通過；detector 僅有既存鍵盤提示字級 advisory。未新增瀏覽器視覺驗收。
