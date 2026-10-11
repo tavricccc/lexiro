@@ -402,13 +402,72 @@ const init = await rpc("initialize", {
   capabilities: {},
   clientInfo: { name: "smoke", version: "1" },
 });
-assert.match(init.instructions, /已說明.*不要重問/);
+assert.match(init.instructions, /已說過的不重問/);
 const tools = await rpc("tools/list", {});
-assert.equal(tools.tools.length, 27);
+assert.deepEqual(
+  tools.tools.map((t) => t.name),
+  ["read", "create_set", "write", "validate", "delete"],
+);
+const readResources = {
+  get_set: "set",
+  list_sets: "sets",
+  list_folders: "folders",
+  list_words: "words",
+  get_word: "word",
+  list_questions: "questions",
+  get_question: "question",
+  get_generation_prompt: "prompt",
+  get_generation_brief: "brief",
+};
+const mcpEnvelope = [
+  "setId",
+  "expectedRevision",
+  "operationId",
+  "responseFields",
+];
+// Maps each step's operation onto the five compact MCP tools.
+async function tool(name, args = {}) {
+  let request;
+  if (readResources[name])
+    request = {
+      name: "read",
+      arguments: { requests: [{ resource: readResources[name], ...args }] },
+    };
+  else if (name === "read_batch") request = { name: "read", arguments: args };
+  else if (name === "create_set")
+    request = {
+      name,
+      arguments: { name: args.setName, folderId: args.folderId },
+    };
+  else if (name === "validate_generated_questions")
+    request = { name: "validate", arguments: args };
+  else {
+    const type =
+      name === "save_generated_questions" ? "generated_questions" : name;
+    const outer = {},
+      action = { type };
+    for (const [key, value] of Object.entries(args))
+      (mcpEnvelope.includes(key) ? outer : action)[key] = value;
+    if (type === "generated_questions") action.difficulty ??= 2;
+    request = {
+      name: type.startsWith("delete_") ? "delete" : "write",
+      arguments: { ...outer, action },
+    };
+  }
+  const d = await rpc("tools/call", request);
+  let data = JSON.parse(d.content[0].text);
+  let isError = d.isError === true;
+  if (request.name === "read" && name !== "read_batch") {
+    const entry = data.results[0];
+    isError ||= Boolean(entry.error);
+    data = entry.data ?? entry;
+  }
+  return { isError, data };
+}
 async function call(name, args = {}) {
-  const d = await rpc("tools/call", { name, arguments: args });
-  assert.equal(d.isError, undefined, JSON.stringify(d));
-  return JSON.parse(d.content[0].text);
+  const r = await tool(name, args);
+  assert.equal(r.isError, false, JSON.stringify(r.data));
+  return r.data;
 }
 async function mcpSnapshot(args) {
   const summary = await call("get_set", args);
@@ -516,17 +575,14 @@ assert.equal(
   (await mcpSnapshot({ setId: cs.snapshot.set.id })).revision,
   cs.revision,
 );
-const atomic = await rpc("tools/call", {
-  name: "save_generated_questions",
-  arguments: {
-    setId: cs.snapshot.set.id,
-    kind: "vocabulary",
-    mode: "atomic",
-    output: candidates,
-  },
+const atomic = await tool("save_generated_questions", {
+  setId: cs.snapshot.set.id,
+  kind: "vocabulary",
+  mode: "atomic",
+  output: candidates,
 });
 assert.equal(atomic.isError, true);
-assert.equal(JSON.parse(atomic.content[0].text).savedCount, 0);
+assert.equal(atomic.data.savedCount, 0);
 assert.equal(
   (await mcpSnapshot({ setId: cs.snapshot.set.id })).snapshot.questions.length,
   0,
@@ -566,14 +622,11 @@ const syntheticWords = Array.from({ length: 200 }, (_, i) => ({
 const bulkReceipt = await mutateMcp("put_words", { words: syntheticWords });
 assert.equal(bulkReceipt.wordCount, 200);
 assert.equal(cs.snapshot.words.length, 200);
-const tooMany = await rpc("tools/call", {
-  name: "put_words",
-  arguments: {
-    setId: cs.snapshot.set.id,
-    expectedRevision: cs.revision,
-    operationId: randomUUID(),
-    words: [...syntheticWords, syntheticWords[0]],
-  },
+const tooMany = await tool("put_words", {
+  setId: cs.snapshot.set.id,
+  expectedRevision: cs.revision,
+  operationId: randomUUID(),
+  words: [...syntheticWords, syntheticWords[0]],
 });
 assert.equal(tooMany.isError, true);
 const setLink = (
@@ -775,13 +828,10 @@ await req(
 cs = await mcpSnapshot({ setId: cs.snapshot.set.id });
 assert.equal(cs.snapshot.set.folderId, UNCATEGORIZED_FOLDER_ID);
 await mutateMcp("move_set", { folderId: folder.folder.id });
-const nonempty = await rpc("tools/call", {
-  name: "delete_folder",
-  arguments: {
-    expectedRevision: (await call("list_folders")).revision,
-    operationId: randomUUID(),
-    folderId: folder.folder.id,
-  },
+const nonempty = await tool("delete_folder", {
+  expectedRevision: (await call("list_folders")).revision,
+  operationId: randomUUID(),
+  folderId: folder.folder.id,
 });
 assert.equal(nonempty.isError, true);
 const nativeStatus = (
@@ -897,10 +947,7 @@ await call("delete_folder", {
   operationId: randomUUID(),
   folderId: folder.folder.id,
 });
-const denied = await rpc("tools/call", {
-  name: "get_set",
-  arguments: { setId: B },
-});
+const denied = await tool("get_set", { setId: B });
 assert.equal(denied.isError, true);
 // Expiry fixture changes only the synthetic local D1 record.
 execFileSync(

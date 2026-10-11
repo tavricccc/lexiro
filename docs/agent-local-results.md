@@ -60,7 +60,7 @@ Native D1 測試另以 100 題確認 partial 保存 97、三個錯誤各有穩�
 
 ## 2026-10-11 按需查詢與細部操作
 
-最新本機 HTTP smoke exit 0／passed true，195 次請求的預期狀態全部符合。MCP 為27 tools；read_batch 與 REST POST query 對相同 requests 回傳相同資料，一次取得不同搜尋／範圍、完整 prompt 與小批 brief。五型完整提示亦可在一次 read_batch 用較大明確預算取得。
+最新本機 HTTP smoke exit 0／passed true，195 次請求的預期狀態全部符合。MCP 為5 tools（read／create_set／write／validate／delete）；MCP read 與 REST POST query 對相同 requests 回傳相同資料，一次取得不同搜尋／範圍、完整 prompt 與小批 brief。五型完整提示亦可在一次 MCP read 用較大明確預算取得。
 
 Native D1 測試驗證範圍11–15與游標接續16–20、中文詞義／選項搜尋、題型與難度篩選、巢狀 fields、跨帳號／跨集限制、重複查詢 reference、單項失敗、回應預算與精確 characters 計數。只 patch 一義保留其他義，只 patch 一子題保留正文與兄弟題；保存回條及診斷可分頁讀取。
 

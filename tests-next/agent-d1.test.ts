@@ -23,6 +23,7 @@ import {
   validateGeneratedQuestions,
 } from "../src/agent/operations";
 import { questionPrompt } from "../src/question-prompts";
+import { handleAgentMcp } from "../src/agent/mcp";
 
 const A = "11111111-1111-4111-8111-111111111111";
 const B = "22222222-2222-4222-8222-222222222222";
@@ -865,6 +866,99 @@ describe("native D1 agent library with synthetic users", () => {
       expect((await f.repo.read("b", B))!.set.setName).toBe("合成 B");
     } finally {
       await f.runtime.dispose();
+    }
+  });
+  it("serves five compact MCP tools that read, write, delete and scope folders", async () => {
+    const { runtime, repo } = await fixture();
+    try {
+      const rpc = async (method: string, params: unknown, uid = "a") => {
+        const response = await handleAgentMcp(
+          new Request("http://local/mcp", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              accept: "application/json, text/event-stream",
+            },
+            body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
+          }),
+          { uid, email: `${uid}@example.test` },
+          repo,
+        );
+        return (await response.json()) as {
+          result: {
+            tools: { name: string }[];
+            isError?: boolean;
+            content: { text: string }[];
+          };
+        };
+      };
+      const call = async (name: string, args: unknown, uid = "a") => {
+        const { result } = await rpc(
+          "tools/call",
+          { name, arguments: args },
+          uid,
+        );
+        return {
+          isError: result.isError ?? false,
+          data: JSON.parse(result.content[0].text) as Record<string, unknown>,
+        };
+      };
+      const list = await rpc("tools/list", {});
+      expect(list.result.tools.map((tool) => tool.name)).toEqual([
+        "read",
+        "create_set",
+        "write",
+        "validate",
+        "delete",
+      ]);
+      expect(JSON.stringify(list.result).length).toBeLessThan(4000);
+
+      const saved = await call("write", {
+        setId: A,
+        action: { type: "put_words", words: words(3) },
+      });
+      expect(saved.isError).toBe(false);
+      expect(saved.data.wordCount).toBe(3);
+      const read = await call("read", {
+        requests: [
+          { resource: "words", setId: A, fields: ["wordKey", "word"] },
+          { resource: "set", setId: A },
+        ],
+      });
+      const results = read.data.results as {
+        data: { items?: { wordKey: string }[]; wordCount?: number };
+      }[];
+      expect(results[0].data.items).toHaveLength(3);
+      expect(results[1].data.wordCount).toBe(3);
+
+      const misplaced = await call("write", {
+        setId: A,
+        action: { type: "delete_set" },
+      });
+      expect(misplaced.isError).toBe(true);
+      expect((await repo.read("a", A))?.words).toHaveLength(3);
+      const outsider = await call(
+        "write",
+        { setId: A, action: { type: "put_words", words: words(1) } },
+        "b",
+      );
+      expect(outsider.isError).toBe(true);
+
+      const folder = await call("write", {
+        action: { type: "create_folder", name: "MCP" },
+      });
+      expect(folder.isError).toBe(false);
+      const removed = await call("delete", {
+        setId: A,
+        action: {
+          type: "delete_words",
+          wordKeys: [results[0].data.items?.[0].wordKey],
+        },
+      });
+      expect(removed.isError).toBe(false);
+      expect((await repo.read("a", A))?.words).toHaveLength(2);
+    } finally {
+      await runtime.dispose();
     }
   });
 });
