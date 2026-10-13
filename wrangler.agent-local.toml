@@ -19,3 +19,11 @@ migrations_dir = "library-migrations"
 [[kv_namespaces]]
 binding = "OAUTH_KV"
 id = "00000000000000000000000000000001"
+
+[[durable_objects.bindings]]
+name = "ROOMS"
+class_name = "GameRoom"
+
+[[migrations]]
+tag = "game-room-v1"
+new_sqlite_classes = ["GameRoom"]

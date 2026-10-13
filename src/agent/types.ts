@@ -1,3 +1,4 @@
+import type { RoomNamespace } from "../rooms/api";
 import type {
   D1Database,
   KVNamespace,
@@ -21,6 +22,7 @@ export interface AgentEnv {
   AGENT_PUBLIC_URL: string;
   APP_ORIGIN: string;
   FIREBASE_PROJECT_ID: string;
+  ROOMS: RoomNamespace;
 }
 export interface AgentIdentity {
   uid: string;

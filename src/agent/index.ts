@@ -6,6 +6,7 @@ import { readBody, HttpError, issueText } from "../http";
 import { D1AgentLibrary } from "./library-repository";
 import { handleCloudApi } from "../cloud/api";
 import { handleShareApi } from "../cloud/shares";
+import { connectRoom, handleRoomApi, isRoomSocketPath } from "../rooms/api";
 import type { AgentEnv, AgentIdentity, AgentLibraryRepository } from "./types";
 import { createAgentLink, linkIdentity, linkOptions } from "./access";
 import { readAgentSet } from "./operations";
@@ -58,6 +59,8 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         return handleCloudApi(request, identity.uid, env.CLOUD_DB);
       if (path === "/shares" || path.startsWith("/shares/"))
         return handleShareApi(request, identity.uid, env.CLOUD_DB, repo);
+      if (path === "/rooms" || path.startsWith("/rooms/"))
+        return handleRoomApi(request, identity.uid, env.ROOMS);
       if (path === "/links" && request.method === "POST") {
         const input = linkOptions.parse(
           JSON.parse(await readBody(request, 2000)),
@@ -214,6 +217,14 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
           throw new HttpError(403, "forbidden_origin");
         if (request.method === "OPTIONS")
           return decorate(new Response(null, { status: 204 }));
+        // A socket upgrade must reach the client untouched: rebuilding the
+        // response to add headers would drop the socket. Browsers always send
+        // Origin on a WebSocket, so the app origin is required here.
+        if (isRoomSocketPath(new URL(request.url).pathname)) {
+          if (origin !== env.APP_ORIGIN)
+            throw new HttpError(403, "forbidden_origin");
+          return await connectRoom(request, env.ROOMS);
+        }
         return decorate(await provider(env).fetch(request, env, ctx));
       } catch (reason) {
         const status =
@@ -251,4 +262,5 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
   };
 }
 export default createAgentWorker();
+export { GameRoom } from "../rooms/game-room";
 export { AGENT_INSTRUCTIONS };

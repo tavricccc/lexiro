@@ -17,6 +17,7 @@
 | `library-migrations/0001_library.sql` | 專用 CLOUD_DB schema v1：帳號版本、教材、來源索引、學習／偏好 blobs、操作回條；不遷移 Firestore |
 | `library-migrations/0002_drop_learning_blobs.sql`、`0003_set_shares.sql` | 刪除學習進度／統計 blobs，blob 只留 preferences 與跨裝置 practice；單字集分享連結表（每集一條，撤銷即刪） |
 | `src/cloud/shares.ts` | 登入後的分享連結：建立／列出／撤銷，任何登入者持連結讀取擁有者最新同步的單字集 |
+| `src/rooms/protocol.ts`、`game-room.ts`、`api.ts` | 連線對戰：登入者建立 6 碼房間（最多 8 人），房主送出自己題庫的題目；GameRoom Durable Object 以 alarm 推進題目、伺服器判分（答案不送給玩家）、不等斷線者、重連直接回到目前題目；WebSocket 用一次性 ticket 授權 |
 | `agent-migrations/0001_agent_access.sql` | Agent D1 schema v1，URL scope／到期／撤銷與一次性 OAuth 授權請求，與計費 migrations 分開 |
 | `vendor/lexiro-agent-contract-4.1.0.tgz` | 公開共用教材／資料夾／雲端 DTO、Agent 逐題驗證與部分成功，支援綜合測驗文法空格；每批 200 筆，不含模型金鑰或 private prompt |
 | `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
