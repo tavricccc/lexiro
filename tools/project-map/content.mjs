@@ -46,20 +46,19 @@ export const flows=[
     step('選集合與 tasks','選題型、數量／難度和每字一義，從同一設定頁開始。','browser','components/practice/practice-setup.tsx','穩定的 entryIds 與題序'),
     step('產生練習佇列','本機詞義選項／拼字／已存題目組合；不足選項的詞義題略過。','browser','components/practice/practice-queue.ts','本題與接受答案'),
     step('回答與判定','Question／review card 顯示答案回饋；輸入法、編輯欄位與忙碌狀態不觸發切題捷徑。','browser','components/practice/use-practice-session-actions.ts','成績及必要 rating'),
-    step('Learning 保存','按 sense 更新 FSRS／題型統計，await IndexedDB；失敗復原本次作答供重試。','database','stores/learning-store.ts','保存完成'),
+    step('Learning 保存','按 sense 更新答題進度／題型統計，await IndexedDB；失敗復原本次作答供重試。','database','stores/learning-store.ts','保存完成'),
     step('前進與結果','保存完成才能往下。結果列錯誤／略過／標記，可重新練習或線上解說。','browser','components/practice/practice-page.tsx','完成'),
   ]),
   flow('meaning','本機四選一中文詞義題','使用者操作','無模型、無網路，用教材產生可重現選項。',[
     step('取該字所有詞義','同 wordKey 的意思全部列為可接受範圍。','browser','components/practice/meaning-questions.ts','可接受的中文答案'),
     step('選三個干擾答案','排除同字、目標詞義交集及重複中文；找不到三個就不產題。','browser','components/practice/meaning-questions.ts','四個不同選項'),
     step('種子排序與保存','固定 entry ID 種子，snapshot v4 保存原選項，接續不重新亂排。','database','components/practice/use-practice-persistence.ts','使用者選擇'),
-    step('判分與學習','接受任一目標意思；記 meaning:1，並依本次首次錯誤／當日複習條件決定 FSRS rating。','browser','components/practice/use-practice-session-actions.ts','完成'),
+    step('判分與學習','接受任一目標意思；記 meaning:1，並依本次首次錯誤／當日複習條件決定進度 rating。','browser','components/practice/use-practice-session-actions.ts','完成'),
   ]),
-  flow('fsrs','FSRS 到期與掌握程度','自動化與時間','以詞義保存 card，沒有瀏覽器關閉後仍跑的複習 Cron。',[
-    step('到期選取','新卡或 due <= now 為到期，進度從每詞義 card 計算。','browser','src/lib/fsrs.ts','again／good'),
-    step('執行 scheduler','ts-fsrs 關閉 fuzz，更新 due、stability、difficulty 與 reps／lapses。','browser','src/lib/fsrs.ts','新 CardProgress'),
-    step('持久化後生效','Learning store 保存新 card；相同單字集的共享 SenseId 讀到同份排程。','database','stores/learning-store.ts','掌握與進度讀取'),
-    step('統計閱讀','Stability 21 天計入掌握，lapses >=4 為難記項目；數字是程式規則。','browser','src/constants/learning.ts','完成'),
+  flow('card-progress','答題進度與掌握程度','自動化與時間','以詞義保存對錯計數，不排程、沒有到期。',[
+    step('記錄作答','again／good 更新作答、答對、答錯次數與連續答對。','browser','src/lib/card-progress.ts','新 CardProgress'),
+    step('持久化後生效','Learning store 保存新 card；相同單字集的共享 SenseId 讀到同份進度。','database','stores/learning-store.ts','掌握與進度讀取'),
+    step('統計閱讀','連續答對 >=3 計入掌握，答錯 >=4 為難記項目；數字是程式規則。','browser','src/constants/learning.ts','完成'),
   ]),
   flow('practice-resume','中斷練習與精確接續','自動化與時間','題序、已答狀態與詞義選項都保留，接續不是新一輪計分。',[
     step('Snapshot v4','Tasks、entryIds、答案、錯題、index 和 meaningChoices 保存到 namespace localStorage。','database','src/types/session.ts','下一次恢復讀取'),
@@ -141,7 +140,7 @@ export const flows=[
     step('保留未知','任何成本缺漏整組保留 null，debitVerified=0 的歷史實扣另列。','browser','components/me/admin-usage.tsx','下一頁游標與實際讀數'),
     step('前後頁與重試','Opaque nextCursor，不用 offset；重新讀取不把未知當免費。','browser','components/me/use-admin-pagination.ts','完成'),
   ]),
-  flow('billing-recovery','延遲 usage 與每日計費維護','自動化與時間','Worker Cron 是計費維護，與瀏覽器教材／FSRS 無關。',[
+  flow('billing-recovery','延遲 usage 與每日計費維護','自動化與時間','Worker Cron 是計費維護，與瀏覽器教材／進度無關。',[
     step('終止缺 usage','先補查 stored response，仍未知就寫 pending metadata，不保存 prompt／輸出。','worker','docs/ai-api.md','待核對的 D1 record'),
     step('保留責任','有產出保留預留，取消／失敗退款；unavailable 不冒填零成本。','database','docs/ai-api.md','下次帳號 request／Cron'),
     step('有界補查','每天 UTC00:00，臺灣08:00，先 reconcile 再 maintenance；帳號請求補查最多一筆。','async','docs/ai-api.md','有有效 usage 才結算'),
@@ -197,5 +196,7 @@ export const routeSpecs={
   '/app/me/admin/accounts/[uid]':['單一帳號調整','admin','components/me/admin-accounts.tsx'],
   '/app/me/admin/settings':['新帳號方案預設','admin','components/me/admin-settings.tsx'],
   '/app/me/admin/usage':['用量報表與未知成本','admin','components/me/admin-usage.tsx'],
+  '/app/me/agents':['教材助手連線與 URL 管理','account','components/agent/connections-page.tsx'],
+  '/agent/authorize':['教材助手 OAuth 連結授權','account','components/agent/oauth-consent.tsx'],
   '/~offline':['載入失敗重試原URL','offline','components/offline-retry-button.tsx'],
 };

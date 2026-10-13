@@ -11,7 +11,7 @@ export const settingSpecs=[
   ['cloudBatch','雲端寫入批次','src/constants/cloud.ts','CLOUD_WRITE_BATCH_SIZE','程式常數','每批送 changed records，完成只清已送 journal version。','下一次 push。'],
   ['cloudSize','學習文件上限','src/constants/cloud.ts','MAX_CLOUD_DOCUMENT_BYTES','程式常數','上傳前檢查 learning／stats blob，不假稱無限容量。','每次上傳前。'],
   ['history','每日歷史保留','src/lib/learning-defaults.ts','DAILY_HISTORY_RETENTION_DAYS','程式常數','裁去圖表不用的舊活動。','讀／寫 stats 時。'],
-  ['mastered','掌握的 stability','src/constants/learning.ts','MASTERED_STABILITY_DAYS','程式常數','以 FSRS stability 判掌握，不用點按總數。','進度計算。'],
+  ['mastered','掌握的連續答對','src/constants/learning.ts','MASTERED_STREAK','程式常數','連續答對三次判掌握，答錯歸零。','進度計算。'],
   ['freezeEarn','取得 streak freeze','src/constants/learning.ts','STREAK_FREEZE_EARNED_EVERY_DAYS','程式常數','連續學習達週期可取得一次。','日期統計滾動。'],
   ['freezeMax','Streak freeze 上限','src/constants/learning.ts','MAX_STREAK_FREEZES','程式常數','限制可保存的缺日保護次數。','日期統計滾動。'],
   ['syncDebounce','同步合併等待','stores/cloud-store.ts','SYNC_DEBOUNCE_MS','分頁 runtime','合併短時間修改，pagehide／visibility 可 flush。','下一次 pending event。'],

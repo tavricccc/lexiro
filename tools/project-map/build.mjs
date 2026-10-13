@@ -104,7 +104,7 @@ const data={
   groups,flows:allFlows,models,settings,sources,routes,endpoints,timers,
   inventory:{intro:allFlows.length+' 個流程、'+models.length+' 個資料模型、'+settings.length+' 組設定、'+routes.length+' 個 page 入口。Lexiro 沒有 Novae 的 action registry／PostgreSQL triggers，操作依 store／domain／Worker endpoint 追蹤。',sections:[
     {title:'Private Worker 核對範圍',paragraphs:['Worker 版本：'+workerHead,'共用 AI contract：'+contractVersion,'Cron：'+cron+'，UTC00:00／臺灣08:00','不內嵌 private prompt、Worker 原碼、憑證、provider input 或帳號資料。'],headers:['Migration'],rows:migrations.map(p=>[p])},
-    {title:'保存與同步的責任',paragraphs:['Library repository v2、journal v4、Firestore v8、practice v4、AI preference v1、full backup v4、set share v1。','Library 依 server writtenAt 合併，未送 dirty 保留；learning／preference 另有自己的合併規則。','Browser 日程不是 Worker Cron；FSRS／每日學習資料在 App 讀寫時更新。']},
+    {title:'保存與同步的責任',paragraphs:['Library repository v2、journal v4、Firestore v8、practice v4、AI preference v1、full backup v4、set share v1。','Library 依 server writtenAt 合併，未送 dirty 保留；learning／preference 另有自己的合併規則。','Browser 日程不是 Worker Cron；答題進度／每日學習資料在 App 讀寫時更新。']},
   ]},
 };
 let html=fs.readFileSync(path.join(here,'template.html'),'utf8').replace('/*__PROJECT_DATA__*/',()=>JSON.stringify(data).replaceAll('<','\\u003c').replaceAll('\u2028','\\u2028').replaceAll('\u2029','\\u2029')).replace('/*__MAP_CSS__*/',()=>fs.readFileSync(path.join(here,'map.css'),'utf8')).replace('/*__MAP_JS__*/',()=>fs.readFileSync(path.join(here,'map.js'),'utf8'));
