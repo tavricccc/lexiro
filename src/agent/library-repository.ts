@@ -16,11 +16,7 @@ import type {
   AgentLibraryRepository,
   MutationReceipt,
 } from "./types";
-import {
-  CloudD1Repository,
-  type AccountHead,
-  type BlobWrite,
-} from "../cloud/repository";
+import { CloudD1Repository, type AccountHead } from "../cloud/repository";
 import {
   changedSnapshotRecords,
   recordValue,
@@ -40,7 +36,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       return { id: set.id, setName: set.setName, folderId: set.folderId };
     });
   }
-  private async load(uid: string, setId: string, includeBlobs = true) {
+  private async load(uid: string, setId: string) {
     const db = this.env.CLOUD_DB;
     const result = await db.batch([
       db
@@ -67,13 +63,6 @@ export class D1AgentLibrary implements AgentLibraryRepository {
           "SELECT r.* FROM cloud_records r INDEXED BY cloud_records_key WHERE r.uid=? AND r.kind='question' AND r.deleted=0 AND r.record_key IN (SELECT q.question_id FROM cloud_memberships m CROSS JOIN cloud_question_sources q WHERE m.uid=? AND m.set_id=? AND q.uid=m.uid AND q.word_key=m.word_key) ORDER BY r.id",
         )
         .bind(uid, uid, setId),
-      ...(includeBlobs
-        ? [
-            db
-              .prepare("SELECT kind,data FROM cloud_blobs WHERE uid=?")
-              .bind(uid),
-          ]
-        : []),
     ]);
     const head = (result[0].results[0] as unknown as
       AccountHead | undefined) ?? {
@@ -84,18 +73,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
     };
     const rows = result[1].results as unknown as RecordRow[];
     const set = rows.find((row) => row.kind === "set");
-    const blobs = includeBlobs
-      ? (
-          result[4].results as unknown as {
-            kind: BlobWrite["kind"];
-            data: string;
-          }[]
-        ).map((row) => ({
-          kind: row.kind,
-          data: JSON.parse(row.data) as Record<string, unknown>,
-        }))
-      : [];
-    if (!set) return { snapshot: null, head, blobs };
+    if (!set) return { snapshot: null, head };
     const membership = rows.find((row) => row.kind === "membership");
     if (!membership) throw new HttpError(409, "set_sync_incomplete");
     const snapshot = validateAgentSnapshot(
@@ -111,10 +89,10 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       },
       setId,
     );
-    return { snapshot, head, blobs };
+    return { snapshot, head };
   }
   async read(uid: string, setId: string) {
-    return (await this.load(uid, setId, false)).snapshot;
+    return (await this.load(uid, setId)).snapshot;
   }
   async query(
     uid: string,
@@ -213,11 +191,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       return rows.results.map((row) => row.record_key);
     };
     const blocked = await collisions(requested);
-    const {
-      snapshot: after,
-      senseRemaps,
-      validation,
-    } = apply(before.snapshot, blocked);
+    const { snapshot: after, validation } = apply(before.snapshot, blocked);
     if (after) await this.folderExists(uid, after.set.folderId);
     const records = changedSnapshotRecords(before.snapshot, after);
     const newQuestions = records
@@ -234,31 +208,6 @@ export class D1AgentLibrary implements AgentLibraryRepository {
         .length
     )
       throw new HttpError(403, "question_outside_scope");
-    const surviving = new Set(
-      after?.words.flatMap((w) => w.senses.map((s) => s.id)) ?? [],
-    );
-    const removed = before.snapshot.words
-      .flatMap((w) => w.senses.map((s) => s.id))
-      .filter((id) => !surviving.has(id));
-    const blobs: BlobWrite[] = [];
-    if (removed.length)
-      for (const blob of before.blobs) {
-        if (blob.kind === "preferences") continue;
-        const key = blob.kind === "progress" ? "cards" : "questionStatsBySense";
-        const items = { ...(blob.data[key] as Record<string, unknown>) };
-        for (const remap of senseRemaps)
-          if (items[remap.from] !== undefined && items[remap.to] === undefined)
-            items[remap.to] = items[remap.from];
-        for (const id of removed) delete items[id];
-        blobs.push({
-          kind: blob.kind,
-          data: {
-            ...blob.data,
-            [key]: items,
-            updatedAt: new Date().toISOString(),
-          },
-        });
-      }
     const receipt: MutationReceipt = {
       operationId,
       setId,
@@ -272,7 +221,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       uid,
       before.head,
       records,
-      blobs,
+      [],
       `agent:${operationId}`,
       operationId,
       hash,

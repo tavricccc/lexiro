@@ -3,7 +3,7 @@ import { agentRecordId, type AgentCloudRecord } from "@lexiro/agent-contract";
 import { HttpError } from "../http";
 import { recordValue, type RecordRow } from "./records";
 export interface AccountHead { revision: number; blob_revision: number; changed_by: string; blob_changed_by: string }
-export type BlobKind = "progress" | "stats" | "preferences";
+export type BlobKind = "preferences";
 export interface BlobWrite { kind: BlobKind; data: Record<string, unknown> }
 export class CloudD1Repository {
   constructor(readonly db: D1Database) {}
@@ -21,7 +21,7 @@ export class CloudD1Repository {
     return (await this.db.prepare("SELECT id,kind,record_key,payload,deleted,updated_at,seq FROM cloud_records WHERE uid=? AND kind=? AND deleted=0").bind(uid, kind).all<RecordRow>()).results;
   }
   async blobs(uid: string) {
-    const rows = (await this.db.prepare("SELECT kind,data FROM cloud_blobs WHERE uid=?").bind(uid).all<{ kind: BlobKind; data: string }>()).results;
+    const rows = (await this.db.prepare("SELECT kind,data FROM cloud_blobs WHERE uid=? AND kind='preferences'").bind(uid).all<{ kind: BlobKind; data: string }>()).results;
     return Object.fromEntries(rows.map(row => [row.kind, JSON.parse(row.data)])) as Partial<Record<BlobKind, Record<string, unknown>>>;
   }
   async pull(uid: string, cursor: string, limit = 400) {

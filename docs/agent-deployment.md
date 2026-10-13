@@ -1,6 +1,6 @@
 # D1 Agent 與同步部署
 
-2026-10-10。Firebase 保留 Auth；教材、學習紀錄與偏好改存 D1。前端和 Agent 共用資料及交易。使用者指定不遷移舊資料，新的 CLOUD_DB 從空白開始；不保留 Firestore fallback。單字匯入不屬於這次工程工作。
+2026-10-10。Firebase 保留 Auth；教材與偏好改存 D1。前端和 Agent 共用資料及交易。使用者指定不遷移舊資料，新的 CLOUD_DB 從空白開始；不保留 Firestore fallback。單字匯入不屬於這次工程工作。
 
 ## 正式配置
 
@@ -23,7 +23,7 @@ Agent Worker 不需要 Google service-account secret 或模型 API key。生成�
 - 前端 `/sync/*` 只接受 Firebase ID token；uid 永遠由驗證結果取得。
 - Agent 與 URL 共用 D1AgentLibrary；讀字／題目從本集來源索引開始，不掃全帳號 records。EXPLAIN 已確認索引路徑。
 - JSON 批次＋CAS ticket＋operation 回條在同一 D1 batch。會員／題目來源只刪除真的移除項，不重建未變動資料；相同 records 不重寫。
-- Blob revision 拒絕過期進度／統計／偏好；來源刪除／重綁與進度調整一起提交。
+- Blob revision 拒絕過期偏好。學習進度／統計已從 App 移除，`library-migrations/0002_drop_learning_blobs.sql` 刪除既有列。
 - MCP 5 tools（read／create_set／write／validate／delete），write／delete 以 action.type 涵蓋詞義／子題 patch、資料夾 CRUD；validate 唯讀。只刪空資料夾、拒絕循環／同層同名／其他 uid 的分類。
 - put_words／delete_words 每次最多 200；201 拒絕，題目仍按 brief 拆批。
 - URL 只管理固定 uid＋setId，可讀分類目的地並移動本集，不能改整棵資料夾樹。
