@@ -85,11 +85,14 @@ export function questionDuration(question: LiveQuestion, seconds?: number): numb
   }
 }
 
-/** Kahoot-style: a correct answer earns 500 plus up to 500 more for speed. */
+/**
+ * A correct answer earns 200 plus up to 800 more for speed, so a quick answer
+ * is worth far more than a slow one and a trailing player can catch up.
+ */
 export function scoreFor(correct: boolean, remainingMs: number, durationMs: number) {
   if (!correct) return 0;
   const ratio = Math.max(0, Math.min(1, remainingMs / durationMs));
-  return Math.round(500 + 500 * ratio);
+  return Math.round(200 + 800 * ratio);
 }
 
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
