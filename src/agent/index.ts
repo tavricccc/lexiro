@@ -5,6 +5,7 @@ import { verifyFirebaseToken, AuthenticationError } from "../auth";
 import { readBody, HttpError, issueText } from "../http";
 import { D1AgentLibrary } from "./library-repository";
 import { handleCloudApi } from "../cloud/api";
+import { handleShareApi } from "../cloud/shares";
 import type { AgentEnv, AgentIdentity, AgentLibraryRepository } from "./types";
 import { createAgentLink, linkIdentity, linkOptions } from "./access";
 import { readAgentSet } from "./operations";
@@ -55,6 +56,8 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
       if (path.startsWith("/sync/"))
         return handleCloudApi(request, identity.uid, env.CLOUD_DB);
+      if (path === "/shares" || path.startsWith("/shares/"))
+        return handleShareApi(request, identity.uid, env.CLOUD_DB, repo);
       if (path === "/links" && request.method === "POST") {
         const input = linkOptions.parse(
           JSON.parse(await readBody(request, 2000)),
