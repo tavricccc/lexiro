@@ -374,7 +374,7 @@ function QuestionStage({
             className={
               question.type === "meaning"
                 ? "question-text type-page text-left"
-                : "question-text text-[1.0625rem] font-normal leading-[1.75] tracking-normal text-foreground/90 [word-spacing:0.02em]"
+                : "question-text text-[1.0625rem] font-semibold leading-[1.75] tracking-normal text-foreground/90 [word-spacing:0.02em]"
             }
           >
             {question.blank
